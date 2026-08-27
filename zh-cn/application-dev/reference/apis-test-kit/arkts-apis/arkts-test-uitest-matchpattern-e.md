@@ -2,9 +2,7 @@
 
 控件属性支持的匹配模式。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare enum MatchPattern--><!--Device-unnamed-declare enum MatchPattern-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -14,13 +12,11 @@
 EQUALS = 0
 ```
 
-等于给定值。 从API version 11开始，该接口支持在原子化服务中使用。
+等于给定值。从API version 11开始，该接口支持在原子化服务中使用。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-MatchPattern-EQUALS = 0--><!--Device-MatchPattern-EQUALS = 0-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -30,13 +26,11 @@ EQUALS = 0
 CONTAINS = 1
 ```
 
-包含给定值。 从API version 11开始，该接口支持在原子化服务中使用。
+包含给定值。从API version 11开始，该接口支持在原子化服务中使用。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-MatchPattern-CONTAINS = 1--><!--Device-MatchPattern-CONTAINS = 1-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -46,13 +40,11 @@ CONTAINS = 1
 STARTS_WITH = 2
 ```
 
-以给定值开始。 从API version 11开始，该接口支持在原子化服务中使用。
+以给定值开始。从API version 11开始，该接口支持在原子化服务中使用。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-MatchPattern-STARTS_WITH = 2--><!--Device-MatchPattern-STARTS_WITH = 2-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -62,13 +54,11 @@ STARTS_WITH = 2
 ENDS_WITH = 3
 ```
 
-以给定的值结束。 从API version 11开始，该接口支持在原子化服务中使用。
+以给定的值结束。从API version 11开始，该接口支持在原子化服务中使用。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-MatchPattern-ENDS_WITH = 3--><!--Device-MatchPattern-ENDS_WITH = 3-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -78,13 +68,11 @@ ENDS_WITH = 3
 REG_EXP = 4
 ```
 
-正则表达式匹配。 从API version 18开始，该接口支持在原子化服务中使用。
+正则表达式匹配。从API version 18开始，该接口支持在原子化服务中使用。
 
-**起始版本：** 23
+**起始版本：** 18
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-MatchPattern-REG_EXP = 4--><!--Device-MatchPattern-REG_EXP = 4-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -94,13 +82,10 @@ REG_EXP = 4
 REG_EXP_ICASE = 5
 ```
 
-正则表达式匹配，忽略大小写。 从API version 18开始，该接口支持在原子化服务中使用。
+正则表达式匹配，忽略大小写。从API version 18开始，该接口支持在原子化服务中使用。
 
-**起始版本：** 23
+**起始版本：** 18
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-MatchPattern-REG_EXP_ICASE = 5--><!--Device-MatchPattern-REG_EXP_ICASE = 5-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Test.UiTest
-

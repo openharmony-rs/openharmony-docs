@@ -1,10 +1,8 @@
 # HuksExceptionErrCode
 
-表示错误码的枚举以及对应的错误信息，错误码表示错误类型，错误信息展示错误详情。 关于错误码的具体信息，可在[通用错误码](../../errorcode-universal.md)和 [HUKS错误码](../errorcode-huks.md)中查看。
+表示错误码的枚举以及对应的错误信息，错误码表示错误类型，错误信息展示错误详情。关于错误码的具体信息，可在[通用错误码](../../errorcode-universal.md)和 [HUKS错误码](../errorcode-huks.md)中查看。
 
 **起始版本：** 9
-
-<!--Device-huks-export enum HuksExceptionErrCode--><!--Device-huks-export enum HuksExceptionErrCode-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -20,8 +18,6 @@ HUKS_ERR_CODE_PERMISSION_FAIL = 201
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_PERMISSION_FAIL = 201--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_PERMISSION_FAIL = 201-End-->
-
 **系统能力：** SystemCapability.Security.Huks.Core
 
 ## HUKS_ERR_CODE_NOT_SYSTEM_APP
@@ -33,8 +29,6 @@ HUKS_ERR_CODE_NOT_SYSTEM_APP = 202
 非系统应用不可以调用系统API。
 
 **起始版本：** 12
-
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_NOT_SYSTEM_APP = 202--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_NOT_SYSTEM_APP = 202-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -50,8 +44,6 @@ HUKS_ERR_CODE_ILLEGAL_ARGUMENT = 401
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_ILLEGAL_ARGUMENT = 401--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_ILLEGAL_ARGUMENT = 401-End-->
-
 **系统能力：** SystemCapability.Security.Huks.Core
 
 ## HUKS_ERR_CODE_NOT_SUPPORTED_API
@@ -65,8 +57,6 @@ HUKS_ERR_CODE_NOT_SUPPORTED_API = 801
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_NOT_SUPPORTED_API = 801--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_NOT_SUPPORTED_API = 801-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -82,8 +72,6 @@ HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED = 12000001
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED = 12000001--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED = 12000001-End-->
-
 **系统能力：** SystemCapability.Security.Huks.Core
 
 ## HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT
@@ -97,8 +85,6 @@ HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT = 12000002
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT = 12000002--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT = 12000002-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -114,8 +100,6 @@ HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT = 12000003
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT = 12000003--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT = 12000003-End-->
-
 **系统能力：** SystemCapability.Security.Huks.Core
 
 ## HUKS_ERR_CODE_FILE_OPERATION_FAIL
@@ -129,8 +113,6 @@ HUKS_ERR_CODE_FILE_OPERATION_FAIL = 12000004
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_FILE_OPERATION_FAIL = 12000004--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_FILE_OPERATION_FAIL = 12000004-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -146,8 +128,6 @@ HUKS_ERR_CODE_COMMUNICATION_FAIL = 12000005
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_COMMUNICATION_FAIL = 12000005--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_COMMUNICATION_FAIL = 12000005-End-->
-
 **系统能力：** SystemCapability.Security.Huks.Core
 
 ## HUKS_ERR_CODE_CRYPTO_FAIL
@@ -161,8 +141,6 @@ HUKS_ERR_CODE_CRYPTO_FAIL = 12000006
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_CRYPTO_FAIL = 12000006--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_CRYPTO_FAIL = 12000006-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -178,8 +156,6 @@ HUKS_ERR_CODE_KEY_AUTH_PERMANENTLY_INVALIDATED = 12000007
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_KEY_AUTH_PERMANENTLY_INVALIDATED = 12000007--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_KEY_AUTH_PERMANENTLY_INVALIDATED = 12000007-End-->
-
 **系统能力：** SystemCapability.Security.Huks.Core
 
 ## HUKS_ERR_CODE_KEY_AUTH_VERIFY_FAILED
@@ -193,8 +169,6 @@ HUKS_ERR_CODE_KEY_AUTH_VERIFY_FAILED = 12000008
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_KEY_AUTH_VERIFY_FAILED = 12000008--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_KEY_AUTH_VERIFY_FAILED = 12000008-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -210,8 +184,6 @@ HUKS_ERR_CODE_KEY_AUTH_TIME_OUT = 12000009
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_KEY_AUTH_TIME_OUT = 12000009--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_KEY_AUTH_TIME_OUT = 12000009-End-->
-
 **系统能力：** SystemCapability.Security.Huks.Core
 
 ## HUKS_ERR_CODE_SESSION_LIMIT
@@ -225,8 +197,6 @@ HUKS_ERR_CODE_SESSION_LIMIT = 12000010
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_SESSION_LIMIT = 12000010--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_SESSION_LIMIT = 12000010-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -242,8 +212,6 @@ HUKS_ERR_CODE_ITEM_NOT_EXIST = 12000011
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_ITEM_NOT_EXIST = 12000011--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_ITEM_NOT_EXIST = 12000011-End-->
-
 **系统能力：** SystemCapability.Security.Huks.Core
 
 ## HUKS_ERR_CODE_EXTERNAL_ERROR
@@ -257,8 +225,6 @@ HUKS_ERR_CODE_EXTERNAL_ERROR = 12000012
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_EXTERNAL_ERROR = 12000012--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_EXTERNAL_ERROR = 12000012-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -274,8 +240,6 @@ HUKS_ERR_CODE_CREDENTIAL_NOT_EXIST = 12000013
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_CREDENTIAL_NOT_EXIST = 12000013--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_CREDENTIAL_NOT_EXIST = 12000013-End-->
-
 **系统能力：** SystemCapability.Security.Huks.Core
 
 ## HUKS_ERR_CODE_INSUFFICIENT_MEMORY
@@ -289,8 +253,6 @@ HUKS_ERR_CODE_INSUFFICIENT_MEMORY = 12000014
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_INSUFFICIENT_MEMORY = 12000014--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_INSUFFICIENT_MEMORY = 12000014-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -306,8 +268,6 @@ HUKS_ERR_CODE_CALL_SERVICE_FAILED = 12000015
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_CALL_SERVICE_FAILED = 12000015--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_CALL_SERVICE_FAILED = 12000015-End-->
-
 **系统能力：** SystemCapability.Security.Huks.Core
 
 ## HUKS_ERR_CODE_DEVICE_PASSWORD_UNSET
@@ -321,8 +281,6 @@ HUKS_ERR_CODE_DEVICE_PASSWORD_UNSET = 12000016
 **起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_DEVICE_PASSWORD_UNSET = 12000016--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_DEVICE_PASSWORD_UNSET = 12000016-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -338,8 +296,6 @@ HUKS_ERR_CODE_KEY_ALREADY_EXIST = 12000017
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_KEY_ALREADY_EXIST = 12000017--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_KEY_ALREADY_EXIST = 12000017-End-->
-
 **系统能力：** SystemCapability.Security.Huks.Core
 
 ## HUKS_ERR_CODE_INVALID_ARGUMENT
@@ -353,8 +309,6 @@ HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018
 **起始版本：** 20
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -370,8 +324,6 @@ HUKS_ERR_CODE_ITEM_EXISTS = 12000019
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_ITEM_EXISTS = 12000019--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_ITEM_EXISTS = 12000019-End-->
-
 **系统能力：** SystemCapability.Security.Huks.Core
 
 ## HUKS_ERR_CODE_EXTERNAL_MODULE
@@ -385,8 +337,6 @@ HUKS_ERR_CODE_EXTERNAL_MODULE = 12000020
 **起始版本：** 22
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_EXTERNAL_MODULE = 12000020--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_EXTERNAL_MODULE = 12000020-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -402,8 +352,6 @@ Ukey PIN码被锁。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_PIN_LOCKED = 12000021--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_PIN_LOCKED = 12000021-End-->
-
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
 ## HUKS_ERR_CODE_PIN_INCORRECT
@@ -417,8 +365,6 @@ Ukey PIN码错误。
 **起始版本：** 22
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_PIN_INCORRECT = 12000022--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_PIN_INCORRECT = 12000022-End-->
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -434,8 +380,6 @@ Ukey PIN码未认证。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_PIN_NO_AUTH = 12000023--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_PIN_NO_AUTH = 12000023-End-->
-
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
 ## HUKS_ERR_CODE_BUSY
@@ -449,8 +393,6 @@ HUKS_ERR_CODE_BUSY = 12000024
 **起始版本：** 22
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_BUSY = 12000024--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_BUSY = 12000024-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -466,8 +408,6 @@ HUKS_ERR_CODE_EXCEED_LIMIT = 12000025
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_EXCEED_LIMIT = 12000025--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_EXCEED_LIMIT = 12000025-End-->
-
 **系统能力：** SystemCapability.Security.Huks.Core
 
 ## HUKS_ERR_CODE_SE_FAULT
@@ -481,8 +421,6 @@ HUKS_ERR_CODE_SE_FAULT = 12000026
 **起始版本：** 26.0.0
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_SE_FAULT = 12000026--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_SE_FAULT = 12000026-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -500,7 +438,4 @@ HUKS_ERR_CODE_NETWORK_UNAVAILABLE = 12000027
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_NETWORK_UNAVAILABLE = 12000027--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_NETWORK_UNAVAILABLE = 12000027-End-->
-
 **系统能力：** SystemCapability.Security.Huks.Extension
-

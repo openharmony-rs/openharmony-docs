@@ -53,7 +53,6 @@
 - [Media Kit API参考](apis-media-kit/Readme-CN.md)
 - [Media Library Kit API参考](apis-media-library-kit/Readme-CN.md)
 - [Network Kit API参考](apis-network-kit/Readme-CN.md)
-- [Neural Network Runtime Kit API参考](apis-neural-network-runtime-kit/Readme-CN.md)
 - [Notification Kit API参考](apis-notification-kit/Readme-CN.md)
 - [Performance Analysis Kit API参考](apis-performance-analysis-kit/Readme-CN.md)
 - [Sensor Service Kit API参考](apis-sensor-service-kit/Readme-CN.md)

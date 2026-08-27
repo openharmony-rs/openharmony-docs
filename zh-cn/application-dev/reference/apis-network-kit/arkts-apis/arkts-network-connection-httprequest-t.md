@@ -10,9 +10,6 @@ type HttpRequest = http.HttpRequest
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-connection-type HttpRequest = http.HttpRequest--><!--Device-connection-type HttpRequest = http.HttpRequest-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
 
 **属性类型：** http.HttpRequest
-

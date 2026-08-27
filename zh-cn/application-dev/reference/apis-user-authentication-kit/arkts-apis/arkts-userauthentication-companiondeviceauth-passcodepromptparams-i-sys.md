@@ -1,10 +1,8 @@
 # PasscodePromptParams（系统接口）
 
-提示输入辅助设备密码时框架携带的选项。
+提示输入辅助设备密码时框架携带的选项。@interface PasscodePromptParams
 
 **起始版本：** 26.1.0
-
-<!--Device-companionDeviceAuth-interface PasscodePromptParams--><!--Device-companionDeviceAuth-interface PasscodePromptParams-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -30,9 +28,6 @@ challenge: Uint8Array
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PasscodePromptParams-challenge: Uint8Array--><!--Device-PasscodePromptParams-challenge: Uint8Array-End-->
-
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **系统接口：** 此接口为系统接口。
-

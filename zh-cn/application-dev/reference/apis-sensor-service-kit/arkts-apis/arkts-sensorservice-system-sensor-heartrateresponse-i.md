@@ -10,8 +10,6 @@
 
 **需要权限：** ohos.permission.READ_HEALTH_DATA
 
-<!--Device-unnamed-export interface HeartRateResponse--><!--Device-unnamed-export interface HeartRateResponse-End-->
-
 **系统能力：** SystemCapability.Sensors.Sensor.Lite
 
 ## 导入模块
@@ -40,7 +38,4 @@ heartRate: number
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-HeartRateResponse-heartRate: number--><!--Device-HeartRateResponse-heartRate: number-End-->
-
 **系统能力：** SystemCapability.Sensors.Sensor.Lite
-

@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
 ```
 
 ## getAbilityDelegator
@@ -14,11 +13,9 @@ function getAbilityDelegator(): AbilityDelegator
 
 获取应用程序的[AbilityDelegator](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegator-i.md)对象，该对象能够使用调度测试框架的相关功能。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-abilityDelegatorRegistry-function getAbilityDelegator(): AbilityDelegator--><!--Device-abilityDelegatorRegistry-function getAbilityDelegator(): AbilityDelegator-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -52,4 +49,3 @@ abilityDelegator.startAbility(want, (err: BusinessError) => {
   }
 });
 ```
-

@@ -9,14 +9,12 @@ import { notificationManager } from '@kit.NotificationKit';
 ## getBadgeNumber
 
 ```TypeScript
-function getBadgeNumber(): Promise<long>
+function getBadgeNumber(): Promise<number>
 ```
 
-获取当前应用角标数量。使用Promise异步回调。 用于查询当前应用桌面图标上显示的角标数字。
+获取当前应用角标数量。使用Promise异步回调。用于查询当前应用桌面图标上显示的角标数字。
 
-**起始版本：** 23
-
-<!--Device-notificationManager-function getBadgeNumber(): Promise<long>--><!--Device-notificationManager-function getBadgeNumber(): Promise<long>-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -28,7 +26,7 @@ setBadgeNumber 设定角标个数。
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;long&gt; | Promise对象，返回当前应用角标数量。（查询的角标数量与当前应用通知开关，桌面角标开关是否开启无关） |
+| Promise & lt;number & gt; | Promise对象，返回当前应用角标数量。（查询的角标数量与当前应用通知开关，桌面角标开关是否开启无关） |
 
 **错误码：**
 
@@ -40,8 +38,6 @@ setBadgeNumber 设定角标个数。
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -51,17 +47,3 @@ notificationManager.getBadgeNumber().then((badgeNumber: number) => {
   console.error(`Failed to get badge number. Code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-notificationManager.getBadgeNumber().then((badgeNumber: long) => {
-  console.info(`Succeeded in getting badge number, badgeNumber is ${JSON.stringify(badgeNumber)}`);
-}).catch((err: Error): void => {
-  let error: BusinessError = err as BusinessError;
-  console.info(`Failed to get badge number. Code is ${error.code}, message is ${error.message}`);
-});
-```
-

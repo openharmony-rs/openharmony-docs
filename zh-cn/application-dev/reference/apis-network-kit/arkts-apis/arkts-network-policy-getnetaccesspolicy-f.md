@@ -12,13 +12,11 @@ import { policy } from '@kit.NetworkKit';
 function getNetAccessPolicy(): Promise<NetAccessPolicy>
 ```
 
-查询自身应用的联网策略（是否允许使用蜂窝、Wi-Fi网络上网），可在设备中“设置 > 移动网络 > 流量管理 > 应用联网”中查看。使用Promise异步回调。
+查询自身应用的联网策略（是否允许使用蜂窝、Wi-Fi网络上网），可在设备中“设置 &gt; 移动网络 &gt; 流量管理 &gt; 应用联网”中查看。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-policy-function getNetAccessPolicy(): Promise<NetAccessPolicy>--><!--Device-policy-function getNetAccessPolicy(): Promise<NetAccessPolicy>-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -47,4 +45,3 @@ policy.getNetAccessPolicy().then((policyInfo: policy.NetAccessPolicy) => {
   console.error(`getNetAccessPolicy fail. error info: ${err.code} - ${err.message}`);
 });
 ```
-

@@ -19,17 +19,15 @@ function addLocalService(context: Context, serviceInfo: LocalServiceInfo,
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-mdns-function addLocalService(context: Context, serviceInfo: LocalServiceInfo,                           callback: AsyncCallback<LocalServiceInfo>): void--><!--Device-mdns-function addLocalService(context: Context, serviceInfo: LocalServiceInfo,                           callback: AsyncCallback<LocalServiceInfo>): void-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.MDNS
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 应用的上下文。 <br>FA模型的应用Context定义见Context。 <br>Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。 |
+| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 应用的上下文。 FA模型的应用Context定义见Context。 Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。 |
 | serviceInfo | [LocalServiceInfo](arkts-network-mdns-localserviceinfo-i.md) | 是 | mDNS服务的信息。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[LocalServiceInfo](arkts-network-mdns-localserviceinfo-i.md)&gt; | 是 | Callback used to return the result. If the operation is successful, **error** is **undefined** and **data** is the mDNS服务的信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[LocalServiceInfo](arkts-network-mdns-localserviceinfo-i.md)&gt; | 是 | Callback used to return the result. If the operation is successful, **error** is **undefined** and **data** is the mDNS服务的信息。 |
 
 **错误码：**
 
@@ -37,8 +35,8 @@ function addLocalService(context: Context, serviceInfo: LocalServiceInfo,
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
-| [2204003](../errorcode-net-mdns.md#2204003-重复注册) | Callback duplicated. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
+| [2204003](../errorcode-net-mdns.md#2204003-重复注册) | Callback duplicated. |
 | [2204008](../errorcode-net-mdns.md#2204008-删除服务失败) | Failed to delete the service instance. |
 | [2204010](../errorcode-net-mdns.md#2204010-发送消息失败) | Failed to send the message. |
 
@@ -83,15 +81,13 @@ function addLocalService(context: Context, serviceInfo: LocalServiceInfo): Promi
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-mdns-function addLocalService(context: Context, serviceInfo: LocalServiceInfo): Promise<LocalServiceInfo>--><!--Device-mdns-function addLocalService(context: Context, serviceInfo: LocalServiceInfo): Promise<LocalServiceInfo>-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.MDNS
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 应用的上下文。 <br>FA模型的应用Context定义见Context。 <br>Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。 |
+| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 应用的上下文。 FA模型的应用Context定义见Context。 Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。 |
 | serviceInfo | [LocalServiceInfo](arkts-network-mdns-localserviceinfo-i.md) | 是 | MDNS服务的信息。 |
 
 **返回值：**
@@ -106,8 +102,8 @@ function addLocalService(context: Context, serviceInfo: LocalServiceInfo): Promi
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
-| [2204003](../errorcode-net-mdns.md#2204003-重复注册) | Callback duplicated. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
+| [2204003](../errorcode-net-mdns.md#2204003-重复注册) | Callback duplicated. |
 | [2204008](../errorcode-net-mdns.md#2204008-删除服务失败) | Failed to delete the service instance. |
 | [2204010](../errorcode-net-mdns.md#2204010-发送消息失败) | Failed to send the message. |
 
@@ -137,4 +133,3 @@ mdns.addLocalService(context, localServiceInfo).then((data: mdns.LocalServiceInf
   console.info(JSON.stringify(data));
 });
 ```
-

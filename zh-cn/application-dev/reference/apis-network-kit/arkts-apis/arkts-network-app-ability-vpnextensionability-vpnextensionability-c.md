@@ -1,10 +1,8 @@
 # VpnExtensionAbility
 
-VpnExtensionContext是VpnExtensionAbility的上下文环境，继承自 [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)。 VpnExtensionContext可直接作为VpnExtension的上下文环境，提供允许访问特定于VpnExtensionAbility的资源的能力。
+VpnExtensionContext是VpnExtensionAbility的上下文环境，继承自 [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)。VpnExtensionContext可直接作为VpnExtension的上下文环境，提供允许访问特定于VpnExtensionAbility的资源的能力。
 
 **起始版本：** 11
-
-<!--Device-unnamed-export default class VpnExtensionAbility--><!--Device-unnamed-export default class VpnExtensionAbility-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -20,13 +18,15 @@ import { VpnExtensionAbility, VpnExtensionContext } from '@kit.NetworkKit';
 onCreate(want: Want): void
 ```
 
-拓展VPN启动初始化的时候进行回调。 > **说明：** > > 建议配对调用[onDestroy](#ondestroy)监听拓展VPN的销毁，及时执行资源清理等操作。
+拓展VPN启动初始化的时候进行回调。
+
+> **说明：**
+> 
+> 建议配对调用[onDestroy](#ondestroy)监听拓展VPN的销毁，及时执行资源清理等操作。
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-VpnExtensionAbility-onCreate(want: Want): void--><!--Device-VpnExtensionAbility-onCreate(want: Want): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -61,8 +61,6 @@ onDestroy(): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-VpnExtensionAbility-onDestroy(): void--><!--Device-VpnExtensionAbility-onDestroy(): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **示例**
@@ -85,13 +83,10 @@ context: VpnExtensionContext
 
 指定context。
 
-**类型：** VpnExtensionContext
+**类型：** [VpnExtensionContext](arkts-network-vpnextensioncontext-c.md)
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-VpnExtensionAbility-context: VpnExtensionContext--><!--Device-VpnExtensionAbility-context: VpnExtensionContext-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-

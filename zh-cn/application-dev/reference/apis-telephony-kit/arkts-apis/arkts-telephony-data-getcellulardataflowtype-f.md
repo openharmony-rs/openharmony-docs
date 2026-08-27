@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { data } from '@kit.TelephonyKit';
 ```
 
 ## getCellularDataFlowType
@@ -14,12 +13,10 @@ function getCellularDataFlowType(callback: AsyncCallback<DataFlowType>): void
 
 获取蜂窝网络的数据流类型（对应信号栏旁边的上下行箭头），使用callback方式作为异步方法。
 
-**起始版本：** 23
+**起始版本：** 7
 
 **需要权限：** 
 - API版本22+：ohos.permission.GET_NETWORK_INFO
-
-<!--Device-data-function getCellularDataFlowType(callback: AsyncCallback<DataFlowType>): void--><!--Device-data-function getCellularDataFlowType(callback: AsyncCallback<DataFlowType>): void-End-->
 
 **系统能力：** SystemCapability.Telephony.CellularData
 
@@ -27,7 +24,7 @@ function getCellularDataFlowType(callback: AsyncCallback<DataFlowType>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;DataFlowType&gt; | 是 | 以callback形式异步返回结果。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DataFlowType&gt; | 是 | 以callback形式异步返回结果。 |
 
 **错误码：**
 
@@ -59,12 +56,10 @@ function getCellularDataFlowType(): Promise<DataFlowType>
 
 获取蜂窝网络的数据流类型（对应信号栏旁边的上下行箭头），使用Promise方式作为异步方法。
 
-**起始版本：** 23
+**起始版本：** 7
 
 **需要权限：** 
 - API版本22+：ohos.permission.GET_NETWORK_INFO
-
-<!--Device-data-function getCellularDataFlowType(): Promise<DataFlowType>--><!--Device-data-function getCellularDataFlowType(): Promise<DataFlowType>-End-->
 
 **系统能力：** SystemCapability.Telephony.CellularData
 
@@ -72,7 +67,7 @@ function getCellularDataFlowType(): Promise<DataFlowType>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;DataFlowType&gt; | 以Promise形式返回蜂窝网络的数据流类型（对应信号栏旁边的上下行箭头）。 |
+| Promise & lt;DataFlowType & gt; | 以Promise形式返回蜂窝网络的数据流类型（对应信号栏旁边的上下行箭头）。 |
 
 **错误码：**
 
@@ -92,4 +87,3 @@ data.getCellularDataFlowType().then((contextData: data.DataFlowType) => {
     console.error(`getCellularDataFlowType fail. code: ${err.code}, message: ${err.message}`);
 });
 ```
-

@@ -1,10 +1,6 @@
 # OperatorSimCard（系统接口）
 
-Indicates the operator of SIM.
-
-**起始版本：** 23
-
-<!--Device-sim-export enum OperatorSimCard--><!--Device-sim-export enum OperatorSimCard-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -18,11 +14,8 @@ CHINA_TELECOM_CARD = 'china_telecom_card'
 
 Indicates the China Telecom card.
 
-**起始版本：** 23
-
-<!--Device-OperatorSimCard-CHINA_TELECOM_CARD = 'china_telecom_card'--><!--Device-OperatorSimCard-CHINA_TELECOM_CARD = 'china_telecom_card'-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
 **系统接口：** 此接口为系统接口。
-

@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { connection } from '@kit.NetworkKit';
 ```
 
 ## getProxyMode
@@ -17,8 +16,6 @@ function getProxyMode(): Promise<ProxyMode>
 **起始版本：** 20
 
 **需要权限：** ohos.permission.CONNECTIVITY_INTERNAL
-
-<!--Device-connection-function getProxyMode(): Promise<ProxyMode>--><!--Device-connection-function getProxyMode(): Promise<ProxyMode>-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -49,4 +46,3 @@ connection.getProxyMode().then(mode => {
     console.error("Error getting proxy mode:", error);
 });
 ```
-

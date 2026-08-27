@@ -18,8 +18,6 @@ function getErrorInfo(): HuksExternalErrorInfo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-huksExternalCrypto-function getErrorInfo(): HuksExternalErrorInfo--><!--Device-huksExternalCrypto-function getErrorInfo(): HuksExternalErrorInfo-End-->
-
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
 **返回值：**
@@ -45,9 +43,11 @@ const resourceId = JSON.stringify({
   providerName: "testProviderName",
   bundleName: "com.example.cryptoapplication",
   abilityName: "CryptoExtension",
-  index: "testKey"
+  index: {
+    key: "testKey"
+  } as ESObject
 });
-const pin = "123456"; // 此处为示例，实际业务中应替换为真实的用户PIN码
+const pin = '123456'; // 此处为示例，实际业务中应替换为真实的用户PIN码
 const params: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
   {
     tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_UKEY_PIN,
@@ -61,9 +61,8 @@ async function testFunction() : Promise<void>
     await huksExternalCrypto.authUkeyPin(resourceId, params);
   } catch (error) {
     const errorInfo = huksExternalCrypto.getErrorInfo();
-    console.info(`errno: ${errorInfo.errno}`);
-    console.info(`errorDesc: ${errorInfo.errorDesc}`);
+    console.error(`errno: ${errorInfo.errno}`);
+    console.error(`errorDesc: ${errorInfo.errorDesc}`);
   }
 }
 ```
-

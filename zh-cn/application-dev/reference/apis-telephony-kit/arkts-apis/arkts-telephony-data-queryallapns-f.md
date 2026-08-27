@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { data } from '@kit.TelephonyKit';
 ```
 
 ## queryAllApns
@@ -14,11 +13,9 @@ function queryAllApns(): Promise<Array<ApnInfo>>
 
 异步获取默认移动数据的SIM卡的APN（access point name，接入点名称）信息。
 
-**起始版本：** 23
+**起始版本：** 16
 
 **需要权限：** ohos.permission.MANAGE_APN_SETTING
-
-<!--Device-data-function queryAllApns(): Promise<Array<ApnInfo>>--><!--Device-data-function queryAllApns(): Promise<Array<ApnInfo>>-End-->
 
 **系统能力：** SystemCapability.Telephony.CellularData
 
@@ -46,4 +43,3 @@ data.queryAllApns().then((apnInfos: Array<data.ApnInfo>) => {
     console.error(`queryAllApns failed. code: ${err.code}, message: ${err.message}`);
 });
 ```
-

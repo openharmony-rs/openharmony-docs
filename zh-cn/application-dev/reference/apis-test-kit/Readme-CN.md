@@ -9,5 +9,5 @@
 
 - [ArkTS API](arkts-apis/Readme-CN.md)<!--arkts-testkit-->
 - 错误码<!--test-arkts-errcode-->
-  - [uitest错误码](errorcode-uitest.md)
-  - [perftest错误码](errorcode-perftest.md)
+  - [UiTest错误码](errorcode-uitest.md)
+  - [PerfTest错误码](errorcode-perftest.md)

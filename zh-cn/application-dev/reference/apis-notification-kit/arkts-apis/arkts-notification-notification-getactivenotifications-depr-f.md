@@ -3,9 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from '@kit.NotificationKit';
-import { notificationSubscribe } from '@kit.NotificationKit';
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
 ```
 
 ## getActiveNotifications
@@ -22,15 +19,30 @@ function getActiveNotifications(callback: AsyncCallback<Array<NotificationReques
 
 **替代接口：** [getActiveNotifications](arkts-notification-notificationmanager-getactivenotifications-f.md)
 
-<!--Device-notification-function getActiveNotifications(callback: AsyncCallback<Array<NotificationRequest>>): void--><!--Device-notification-function getActiveNotifications(callback: AsyncCallback<Array<NotificationRequest>>): void-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md)&gt;&gt; | 是 | 获取当前应用通知列表回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md)&gt;&gt; | 是 | 获取当前应用通知列表回调函数。 |
+
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+import NotificationManager from '@ohos.notificationManager';
+
+let getActiveNotificationsCallback = (err: Base.BusinessError, data: NotificationManager.NotificationRequest[]) => {
+  if (err) {
+    console.error("getActiveNotifications failed " + JSON.stringify(err));
+  } else {
+    console.info("getActiveNotifications success");
+  }
+}
+
+Notification.getActiveNotifications(getActiveNotificationsCallback);
+```
 
 
 ## getActiveNotifications
@@ -47,8 +59,6 @@ function getActiveNotifications(): Promise<Array<NotificationRequest>>
 
 **替代接口：** [getActiveNotifications](arkts-notification-notificationmanager-getactivenotifications-f.md)
 
-<!--Device-notification-function getActiveNotifications(): Promise<Array<NotificationRequest>>--><!--Device-notification-function getActiveNotifications(): Promise<Array<NotificationRequest>>-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **返回值：**
@@ -57,3 +67,30 @@ function getActiveNotifications(): Promise<Array<NotificationRequest>>
 | --- | --- |
 | Promise&lt;Array&lt;[NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md)&gt;&gt; | 以Promise形式返回获取当前应用通知列表。 |
 
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+import NotificationManager from '@ohos.notificationManager';
+
+let getActiveNotificationsCallback = (err: Base.BusinessError, data: NotificationManager.NotificationRequest[]) => {
+  if (err) {
+    console.error("getActiveNotifications failed " + JSON.stringify(err));
+  } else {
+    console.info("getActiveNotifications success");
+  }
+}
+
+Notification.getActiveNotifications(getActiveNotificationsCallback);
+```
+
+```TypeScript
+import Base from '@ohos.base';
+import NotificationManager from '@ohos.notificationManager';
+
+Notification.getActiveNotifications().then((data: NotificationManager.NotificationRequest[]) => {
+  console.info("getActiveNotifications success, data: " + JSON.stringify(data));
+}).catch((err: Base.BusinessError) => {
+  console.error(`getActiveNotifications failed, code is ${err}`);
+});
+```

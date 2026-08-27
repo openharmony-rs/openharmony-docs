@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { sensor } from '@kit.SensorServiceKit';
 ```
 
 ## getAngleModify
@@ -21,17 +20,15 @@ Obtains the angle change between two rotation matrices. This API uses an asynchr
 
 **替代接口：** [getAngleVariation](arkts-sensorservice-sensor-getanglevariation-f.md)(currentRotationMatrix: Array&lt;double&gt;, preRotationMatrix: Array&lt;double&gt;, callback: AsyncCallback&lt;Array&lt;double&gt;&gt;)
 
-<!--Device-sensor-function getAngleModify(currentRotationMatrix: Array<number>, preRotationMatrix: Array<number>,    callback: AsyncCallback<Array<number>>): void--><!--Device-sensor-function getAngleModify(currentRotationMatrix: Array<number>, preRotationMatrix: Array<number>,    callback: AsyncCallback<Array<number>>): void-End-->
-
 **系统能力：** SystemCapability.Sensors.Sensor
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| currentRotationMatrix | Array&lt;number&gt; | 是 | Current rotation matrix. |
-| preRotationMatrix | Array&lt;number&gt; | 是 | The other rotation matrix. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;number&gt;&gt; | 是 | Callback used to return the angle change around the z, x, and y axes, in degrees. |
+| currentRotationMatrix | Array & lt;number & gt; | 是 | Current rotation matrix. |
+| preRotationMatrix | Array & lt;number & gt; | 是 | The other rotation matrix. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;number&gt;&gt; | 是 | Callback used to return the angle change around the z, x, and y axes, in degrees. |
 
 **示例**
 
@@ -66,22 +63,20 @@ Obtains the angle change between two rotation matrices. This API uses a promise 
 
 **替代接口：** [getAngleVariation](arkts-sensorservice-sensor-getanglevariation-f.md)(currentRotationMatrix: Array&lt;double&gt;, preRotationMatrix: Array&lt;double&gt;)
 
-<!--Device-sensor-function getAngleModify(currentRotationMatrix: Array<number>, preRotationMatrix: Array<number>): Promise<Array<number>>--><!--Device-sensor-function getAngleModify(currentRotationMatrix: Array<number>, preRotationMatrix: Array<number>): Promise<Array<number>>-End-->
-
 **系统能力：** SystemCapability.Sensors.Sensor
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| currentRotationMatrix | Array&lt;number&gt; | 是 | Current rotation matrix. |
-| preRotationMatrix | Array&lt;number&gt; | 是 | The other rotation matrix. |
+| currentRotationMatrix | Array & lt;number & gt; | 是 | Current rotation matrix. |
+| preRotationMatrix | Array & lt;number & gt; | 是 | The other rotation matrix. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the angle change around the z, x, and y axes, in degrees. |
+| Promise & lt;Array & lt;number & gt; & gt; | Promise used to return the angle change around the z, x, and y axes, in degrees. |
 
 **示例**
 
@@ -100,4 +95,3 @@ promise.then((data: Array<number>) => {
   console.info('Succeeded in getting promise::catch', e);
 })
 ```
-

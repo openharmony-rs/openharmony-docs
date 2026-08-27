@@ -8,8 +8,6 @@
 
 **替代接口：** [event](arkts-performanceanalysis-hiappevent-event-n.md)
 
-<!--Device-FaultLogger-enum FaultType--><!--Device-FaultLogger-enum FaultType-End-->
-
 **系统能力：** SystemCapability.HiviewDFX.Hiview.FaultLogger
 
 ## NO_SPECIFIC
@@ -23,8 +21,6 @@ NO_SPECIFIC = 0
 **起始版本：** 8
 
 **废弃版本：** 18
-
-<!--Device-FaultType-NO_SPECIFIC = 0--><!--Device-FaultType-NO_SPECIFIC = 0-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.FaultLogger
 
@@ -40,8 +36,6 @@ Native运行时异常。
 
 **废弃版本：** 18
 
-<!--Device-FaultType-CPP_CRASH = 2--><!--Device-FaultType-CPP_CRASH = 2-End-->
-
 **系统能力：** SystemCapability.HiviewDFX.Hiview.FaultLogger
 
 ## JS_CRASH
@@ -55,8 +49,6 @@ JS程序故障类型。
 **起始版本：** 8
 
 **废弃版本：** 18
-
-<!--Device-FaultType-JS_CRASH = 3--><!--Device-FaultType-JS_CRASH = 3-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.FaultLogger
 
@@ -72,7 +64,4 @@ APP_FREEZE = 4
 
 **废弃版本：** 18
 
-<!--Device-FaultType-APP_FREEZE = 4--><!--Device-FaultType-APP_FREEZE = 4-End-->
-
 **系统能力：** SystemCapability.HiviewDFX.Hiview.FaultLogger
-

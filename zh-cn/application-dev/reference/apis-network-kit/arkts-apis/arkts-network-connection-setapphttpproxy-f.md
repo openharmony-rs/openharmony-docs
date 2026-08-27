@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { connection } from '@kit.NetworkKit';
 ```
 
 ## setAppHttpProxy
@@ -12,11 +11,14 @@ import { connection } from '@kit.NetworkKit';
 function setAppHttpProxy(httpProxy: HttpProxy): void
 ```
 
-设置应用级Http代理配置信息。 > **说明：** > > 若需使用本接口所配置的代理信息，则需在[HttpRequestOptions](arkts-network-http-httprequestoptions-i.md)字段中将usingProxy设置为true以启用代理转 > 发。本接口仅负责配置代理规则，不校验代理服务的有效性。
+设置应用级Http代理配置信息。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 若需使用本接口所配置的代理信息，则需在[HttpRequestOptions](arkts-network-http-httprequestoptions-i.md)字段中将usingProxy设置为true以启用代理转
+> 发。本接口仅负责配置代理规则，不校验代理服务的有效性。
 
-<!--Device-connection-function setAppHttpProxy(httpProxy: HttpProxy): void--><!--Device-connection-function setAppHttpProxy(httpProxy: HttpProxy): void-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -66,4 +68,3 @@ httpRequest.request("EXAMPLE_URL", options, (err: BusinessError, data: http.Http
   }
 });
 ```
-

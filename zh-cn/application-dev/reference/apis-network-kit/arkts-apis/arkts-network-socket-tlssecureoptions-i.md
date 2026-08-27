@@ -4,8 +4,6 @@ TLS安全相关操作。当本地证书cert和私钥key不为空时，开启双�
 
 **起始版本：** 9
 
-<!--Device-socket-export interface TLSSecureOptions--><!--Device-socket-export interface TLSSecureOptions-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
 
 ## 导入模块
@@ -26,8 +24,6 @@ ca?: string | Array<string>
 
 **起始版本：** 9
 
-<!--Device-TLSSecureOptions-ca?: string | Array<string>--><!--Device-TLSSecureOptions-ca?: string | Array<string>-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
 
 ## cert
@@ -41,8 +37,6 @@ cert?: string | Array<string>
 **类型：** string \| Array&lt;string&gt;
 
 **起始版本：** 9
-
-<!--Device-TLSSecureOptions-cert?: string | Array<string>--><!--Device-TLSSecureOptions-cert?: string | Array<string>-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -58,8 +52,6 @@ cipherSuite?: string
 
 **起始版本：** 9
 
-<!--Device-TLSSecureOptions-cipherSuite?: string--><!--Device-TLSSecureOptions-cipherSuite?: string-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
 
 ## isBidirectionalAuthentication
@@ -73,8 +65,6 @@ isBidirectionalAuthentication?: boolean
 **类型：** boolean
 
 **起始版本：** 12
-
-<!--Device-TLSSecureOptions-isBidirectionalAuthentication?: boolean--><!--Device-TLSSecureOptions-isBidirectionalAuthentication?: boolean-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -90,8 +80,6 @@ key?: string
 
 **起始版本：** 9
 
-<!--Device-TLSSecureOptions-key?: string--><!--Device-TLSSecureOptions-key?: string-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
 
 ## password
@@ -105,8 +93,6 @@ password?: string
 **类型：** string
 
 **起始版本：** 9
-
-<!--Device-TLSSecureOptions-password?: string--><!--Device-TLSSecureOptions-password?: string-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -122,8 +108,6 @@ TLS的协议版本，默认为"TLSv1.2"。
 
 **起始版本：** 9
 
-<!--Device-TLSSecureOptions-protocols?: Protocol | Array<Protocol>--><!--Device-TLSSecureOptions-protocols?: Protocol | Array<Protocol>-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
 
 ## signatureAlgorithms
@@ -137,8 +121,6 @@ signatureAlgorithms?: string
 **类型：** string
 
 **起始版本：** 9
-
-<!--Device-TLSSecureOptions-signatureAlgorithms?: string--><!--Device-TLSSecureOptions-signatureAlgorithms?: string-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -154,7 +136,4 @@ useRemoteCipherPrefer?: boolean
 
 **起始版本：** 9
 
-<!--Device-TLSSecureOptions-useRemoteCipherPrefer?: boolean--><!--Device-TLSSecureOptions-useRemoteCipherPrefer?: boolean-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
-

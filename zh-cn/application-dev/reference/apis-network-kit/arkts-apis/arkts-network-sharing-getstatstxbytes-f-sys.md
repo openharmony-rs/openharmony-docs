@@ -3,22 +3,19 @@
 ## 导入模块
 
 ```TypeScript
-import { sharing } from '@kit.NetworkKit';
 ```
 
 ## getStatsTxBytes
 
 ```TypeScript
-function getStatsTxBytes(callback: AsyncCallback<int>): void
+function getStatsTxBytes(callback: AsyncCallback<number>): void
 ```
 
 获取共享网络发送数据量，使用 callback 异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.CONNECTIVITY_INTERNAL
-
-<!--Device-sharing-function getStatsTxBytes(callback: AsyncCallback<int>): void--><!--Device-sharing-function getStatsTxBytes(callback: AsyncCallback<int>): void-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetSharing
 
@@ -28,17 +25,17 @@ function getStatsTxBytes(callback: AsyncCallback<int>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | 回调函数，number 代表数据量，单位：KB。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数，number 代表数据量，单位：KB。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
-| [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
-| [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Failed to connect to the service. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Failed to connect to the service. |
+| [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
 
 **示例**
 
@@ -56,16 +53,14 @@ sharing.getStatsTxBytes((error: BusinessError, data: number) => {
 ## getStatsTxBytes
 
 ```TypeScript
-function getStatsTxBytes(): Promise<int>
+function getStatsTxBytes(): Promise<number>
 ```
 
 获取共享网络发送数据量，使用 Promise 异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.CONNECTIVITY_INTERNAL
-
-<!--Device-sharing-function getStatsTxBytes(): Promise<int>--><!--Device-sharing-function getStatsTxBytes(): Promise<int>-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetSharing
 
@@ -75,17 +70,17 @@ function getStatsTxBytes(): Promise<int>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;int&gt; | 以 Promise 形式返回共享网络发送数据量，单位：KB。 |
+| Promise & lt;number & gt; | 以 Promise 形式返回共享网络发送数据量，单位：KB。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
-| [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
-| [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Failed to connect to the service. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Failed to connect to the service. |
+| [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
 
 **示例**
 
@@ -102,4 +97,3 @@ sharing
     console.error(JSON.stringify(error));
   });
 ```
-

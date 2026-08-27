@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { call } from '@kit.TelephonyKit';
 ```
 
 ## hasCallSync
@@ -14,9 +13,7 @@ function hasCallSync(): boolean
 
 判断是否存在通话。
 
-**起始版本：** 23
-
-<!--Device-call-function hasCallSync(): boolean--><!--Device-call-function hasCallSync(): boolean-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -32,4 +29,3 @@ function hasCallSync(): boolean
 let hasCall: boolean = call.hasCallSync();
 console.info(`hasCallSync success, has call is ` + hasCall);
 ```
-

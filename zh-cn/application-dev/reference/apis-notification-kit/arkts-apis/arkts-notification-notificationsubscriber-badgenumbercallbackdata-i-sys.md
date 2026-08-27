@@ -2,9 +2,7 @@
 
 应用角标数量变化的回调函数类型。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface BadgeNumberCallbackData--><!--Device-unnamed-export interface BadgeNumberCallbackData-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -20,9 +18,7 @@ readonly appInstanceKey?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-BadgeNumberCallbackData-readonly appInstanceKey?: string--><!--Device-BadgeNumberCallbackData-readonly appInstanceKey?: string-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -31,16 +27,14 @@ readonly appInstanceKey?: string
 ## badgeNumber
 
 ```TypeScript
-readonly badgeNumber: int
+readonly badgeNumber: number
 ```
 
 角标个数。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-BadgeNumberCallbackData-readonly badgeNumber: int--><!--Device-BadgeNumberCallbackData-readonly badgeNumber: int-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -56,9 +50,7 @@ readonly bundle: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-BadgeNumberCallbackData-readonly bundle: string--><!--Device-BadgeNumberCallbackData-readonly bundle: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -80,8 +72,6 @@ readonly instanceKey?: number
 
 **替代接口：** [appInstanceKey](#appinstancekey)
 
-<!--Device-BadgeNumberCallbackData-readonly instanceKey?: number--><!--Device-BadgeNumberCallbackData-readonly instanceKey?: number-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -89,18 +79,15 @@ readonly instanceKey?: number
 ## uid
 
 ```TypeScript
-readonly uid: int
+readonly uid: number
 ```
 
 应用的uid。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-BadgeNumberCallbackData-readonly uid: int--><!--Device-BadgeNumberCallbackData-readonly uid: int-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
-

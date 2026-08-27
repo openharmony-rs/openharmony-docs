@@ -2,9 +2,7 @@
 
 用于描述通知扩展订阅的信息。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface NotificationExtensionSubscriptionInfo--><!--Device-unnamed-export interface NotificationExtensionSubscriptionInfo-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -18,9 +16,7 @@ addr: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-NotificationExtensionSubscriptionInfo-addr: string--><!--Device-NotificationExtensionSubscriptionInfo-addr: string-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -34,9 +30,6 @@ type: notificationExtensionSubscription.SubscribeType
 
 **类型：** notificationExtensionSubscription.SubscribeType
 
-**起始版本：** 23
-
-<!--Device-NotificationExtensionSubscriptionInfo-type: notificationExtensionSubscription.SubscribeType--><!--Device-NotificationExtensionSubscriptionInfo-type: notificationExtensionSubscription.SubscribeType-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Notification.Notification
-

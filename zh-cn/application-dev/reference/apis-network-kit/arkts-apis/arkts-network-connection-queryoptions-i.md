@@ -4,14 +4,11 @@
 
 **起始版本：** 23
 
-<!--Device-connection-export interface QueryOptions--><!--Device-connection-export interface QueryOptions-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 ## 导入模块
 
 ```TypeScript
-import { connection } from '@kit.NetworkKit';
 ```
 
 ## family
@@ -26,7 +23,4 @@ family?: FamilyType
 
 **起始版本：** 23
 
-<!--Device-QueryOptions-family?: FamilyType--><!--Device-QueryOptions-family?: FamilyType-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Core
-

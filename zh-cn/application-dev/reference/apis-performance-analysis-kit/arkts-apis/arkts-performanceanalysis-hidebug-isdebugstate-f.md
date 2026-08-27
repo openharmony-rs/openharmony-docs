@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## isDebugState
@@ -14,9 +13,7 @@ function isDebugState(): boolean
 
 获取应用进程的调试状态。
 
-**起始版本：** 23
-
-<!--Device-hidebug-function isDebugState(): boolean--><!--Device-hidebug-function isDebugState(): boolean-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -33,4 +30,3 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 console.info(`isDebugState = ${hidebug.isDebugState()}`)
 ```
-

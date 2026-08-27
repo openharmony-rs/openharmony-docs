@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { sim } from '@kit.TelephonyKit';
 ```
 
 ## getAllSimAccountInfoList
@@ -14,11 +13,9 @@ function getAllSimAccountInfoList(callback: AsyncCallback<Array<IccAccountInfo>>
 
 Get the list of all SIM card account information.
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.GET_TELEPHONY_STATE
-
-<!--Device-sim-function getAllSimAccountInfoList(callback: AsyncCallback<Array<IccAccountInfo>>): void--><!--Device-sim-function getAllSimAccountInfoList(callback: AsyncCallback<Array<IccAccountInfo>>): void-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -28,19 +25,19 @@ Get the list of all SIM card account information.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[IccAccountInfo](arkts-telephony-sim-iccaccountinfo-i.md)&gt;&gt; | 是 | The callback is used to return the array of [IccAccountInfo](arkts-telephony-sim-iccaccountinfo-i.md). The ICCID and phone number will be null if has no ohos.permission.GET_TELEPHONY_STATE. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[IccAccountInfo](arkts-telephony-sim-iccaccountinfo-i.md)&gt;&gt; | 是 | The callback is used to return the array of [IccAccountInfo](arkts-telephony-sim-iccaccountinfo-i.md). The ICCID and phone number will be null if has no ohos.permission.GET_TELEPHONY_STATE. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [8300004](../errorcode-telephony.md#8300004-未识别sim卡) | Do not have sim card. |
+| [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
-| [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
+| [8300004](../errorcode-telephony.md#8300004-未识别sim卡) | Do not have sim card. |
+| [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
 **示例**
 
@@ -48,7 +45,7 @@ Get the list of all SIM card account information.
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-sim.getAllSimAccountInfoList((err: BusinessError) => {
+sim.getAllSimAccountInfoList((err: BusinessError, data: Array<sim.IccAccountInfo>) => {
     console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
@@ -62,11 +59,9 @@ function getAllSimAccountInfoList(): Promise<Array<IccAccountInfo>>
 
 Get the list of all SIM card account information.
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.GET_TELEPHONY_STATE
-
-<!--Device-sim-function getAllSimAccountInfoList(): Promise<Array<IccAccountInfo>>--><!--Device-sim-function getAllSimAccountInfoList(): Promise<Array<IccAccountInfo>>-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -83,11 +78,11 @@ Get the list of all SIM card account information.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [8300004](../errorcode-telephony.md#8300004-未识别sim卡) | Do not have sim card. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
+| [8300004](../errorcode-telephony.md#8300004-未识别sim卡) | Do not have sim card. |
+| [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
 **示例**
 
@@ -95,7 +90,7 @@ Get the list of all SIM card account information.
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-async getAllSimAccountInfoList(): Promise<ResponseData<sim.IccAccountInfo[] | null>> {
+sim.getAllSimAccountInfoList().then((data: Array<sim.IccAccountInfo>) => {
     try {
       const accountInfoList: sim.IccAccountInfo[] =
         await sim.getAllSimAccountInfoList();
@@ -105,4 +100,3 @@ async getAllSimAccountInfoList(): Promise<ResponseData<sim.IccAccountInfo[] | nu
     }
   }
 ```
-

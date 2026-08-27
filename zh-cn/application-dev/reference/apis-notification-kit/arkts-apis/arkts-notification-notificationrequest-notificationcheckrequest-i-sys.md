@@ -2,9 +2,7 @@
 
 描述通知的鉴权信息。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface NotificationCheckRequest--><!--Device-unnamed-export interface NotificationCheckRequest-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -20,9 +18,7 @@ contentType: notificationManager.ContentType
 
 **类型：** notificationManager.ContentType
 
-**起始版本：** 23
-
-<!--Device-NotificationCheckRequest-contentType: notificationManager.ContentType--><!--Device-NotificationCheckRequest-contentType: notificationManager.ContentType-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -38,9 +34,7 @@ extraInfoKeys: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 23
-
-<!--Device-NotificationCheckRequest-extraInfoKeys: Array<string>--><!--Device-NotificationCheckRequest-extraInfoKeys: Array<string>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -56,11 +50,8 @@ slotType: notificationManager.SlotType
 
 **类型：** notificationManager.SlotType
 
-**起始版本：** 23
-
-<!--Device-NotificationCheckRequest-slotType: notificationManager.SlotType--><!--Device-NotificationCheckRequest-slotType: notificationManager.SlotType-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
-

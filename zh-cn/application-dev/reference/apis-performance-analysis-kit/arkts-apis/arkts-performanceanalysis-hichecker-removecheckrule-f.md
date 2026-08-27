@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { hichecker } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## removeCheckRule
@@ -14,9 +13,7 @@ function removeCheckRule(rule: bigint) : void
 
 删除一条或多条规则，删除的规则后续将不再生效。
 
-**起始版本：** 23
-
-<!--Device-hichecker-function removeCheckRule(rule: bigint) : void--><!--Device-hichecker-function removeCheckRule(rule: bigint) : void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.HiviewDFX.HiChecker
 
@@ -47,4 +44,3 @@ try {
     console.error(`code: ${(err as BusinessError).code}, message: ${(err as BusinessError).message}`);
 }
 ```
-

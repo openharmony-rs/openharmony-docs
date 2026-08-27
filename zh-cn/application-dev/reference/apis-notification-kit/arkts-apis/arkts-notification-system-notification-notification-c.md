@@ -8,8 +8,6 @@
 
 **替代接口：** [notification/notification](arkts-notification.md)
 
-<!--Device-unnamed-declare class Notification--><!--Device-unnamed-declare class Notification-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 ## 导入模块
@@ -32,8 +30,6 @@ static show(options?: ShowNotificationOptions): void
 
 **替代接口：** [notification/notification](arkts-notification.md)
 
-<!--Device-Notification-static show(options?: ShowNotificationOptions): void--><!--Device-Notification-static show(options?: ShowNotificationOptions): void-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **参数：**
@@ -42,3 +38,20 @@ static show(options?: ShowNotificationOptions): void
 | --- | --- | --- | --- |
 | options | [ShowNotificationOptions](arkts-notification-system-notification-shownotificationoptions-i.md) | 否 | 通知标题。 |
 
+**示例**
+
+```TypeScript
+let notificationObj: notification = {
+  show() {
+    notification.show({
+      contentTitle: 'title info',
+      contentText: 'text',
+      clickAction: {
+        bundleName: 'com.example.testapp',
+        abilityName: 'notificationDemo',
+        uri: '/path/to/notification'
+      }
+    });
+  }
+}
+```

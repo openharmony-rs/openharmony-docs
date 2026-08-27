@@ -3,9 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from '@kit.NotificationKit';
-import { notificationSubscribe } from '@kit.NotificationKit';
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
 ```
 
 ## getDoNotDisturbDate
@@ -24,8 +21,6 @@ function getDoNotDisturbDate(callback: AsyncCallback<DoNotDisturbDate>): void
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
-<!--Device-notification-function getDoNotDisturbDate(callback: AsyncCallback<DoNotDisturbDate>): void--><!--Device-notification-function getDoNotDisturbDate(callback: AsyncCallback<DoNotDisturbDate>): void-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -34,7 +29,23 @@ function getDoNotDisturbDate(callback: AsyncCallback<DoNotDisturbDate>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;DoNotDisturbDate&gt; | 是 | 查询免打扰时间回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DoNotDisturbDate&gt; | 是 | 查询免打扰时间回调函数。 |
+
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+
+let getDoNotDisturbDateCallback = (err: Base.BusinessError, data: Notification.DoNotDisturbDate) => {
+  if (err) {
+    console.error("getDoNotDisturbDate failed " + JSON.stringify(err));
+  } else {
+    console.info("getDoNotDisturbDate success");
+  }
+}
+
+Notification.getDoNotDisturbDate(getDoNotDisturbDateCallback);
+```
 
 
 ## getDoNotDisturbDate
@@ -53,8 +64,6 @@ function getDoNotDisturbDate(): Promise<DoNotDisturbDate>
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
-<!--Device-notification-function getDoNotDisturbDate(): Promise<DoNotDisturbDate>--><!--Device-notification-function getDoNotDisturbDate(): Promise<DoNotDisturbDate>-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -63,7 +72,19 @@ function getDoNotDisturbDate(): Promise<DoNotDisturbDate>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;DoNotDisturbDate&gt; | 以Promise形式返回查询到的免打扰时间。 |
+| Promise & lt;DoNotDisturbDate & gt; | 以Promise形式返回查询到的免打扰时间。 |
+
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+
+Notification.getDoNotDisturbDate().then((data: Notification.DoNotDisturbDate) => {
+  console.info("getDoNotDisturbDate success, data: " + JSON.stringify(data));
+}).catch((err: Base.BusinessError) => {
+  console.error(`getDoNotDisturbDate failed, code is ${err}`);
+});
+```
 
 
 ## getDoNotDisturbDate
@@ -82,8 +103,6 @@ function getDoNotDisturbDate(userId: number, callback: AsyncCallback<DoNotDistur
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
-<!--Device-notification-function getDoNotDisturbDate(userId: number, callback: AsyncCallback<DoNotDisturbDate>): void--><!--Device-notification-function getDoNotDisturbDate(userId: number, callback: AsyncCallback<DoNotDisturbDate>): void-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -93,7 +112,25 @@ function getDoNotDisturbDate(userId: number, callback: AsyncCallback<DoNotDistur
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | userId | number | 是 | 用户ID。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;DoNotDisturbDate&gt; | 是 | 查询免打扰时间回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DoNotDisturbDate&gt; | 是 | 查询免打扰时间回调函数。 |
+
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+
+let getDoNotDisturbDateCallback = (err: Base.BusinessError, data: Notification.DoNotDisturbDate) => {
+  if (err) {
+    console.error("getDoNotDisturbDate failed " + JSON.stringify(err));
+  } else {
+    console.info("getDoNotDisturbDate success");
+  }
+}
+
+let userId: number = 1;
+
+Notification.getDoNotDisturbDate(userId, getDoNotDisturbDateCallback);
+```
 
 
 ## getDoNotDisturbDate
@@ -112,8 +149,6 @@ function getDoNotDisturbDate(userId: number): Promise<DoNotDisturbDate>
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
-<!--Device-notification-function getDoNotDisturbDate(userId: number): Promise<DoNotDisturbDate>--><!--Device-notification-function getDoNotDisturbDate(userId: number): Promise<DoNotDisturbDate>-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -128,5 +163,18 @@ function getDoNotDisturbDate(userId: number): Promise<DoNotDisturbDate>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;DoNotDisturbDate&gt; | 以Promise形式返回查询到的免打扰时间。 |
+| Promise & lt;DoNotDisturbDate & gt; | 以Promise形式返回查询到的免打扰时间。 |
 
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+
+let userId: number = 1;
+
+Notification.getDoNotDisturbDate(userId).then((data: Notification.DoNotDisturbDate) => {
+  console.info("getDoNotDisturbDate success, data: " + JSON.stringify(data));
+}).catch((err: Base.BusinessError) => {
+  console.error(`getDoNotDisturbDate failed, code is ${err}`);
+});
+```

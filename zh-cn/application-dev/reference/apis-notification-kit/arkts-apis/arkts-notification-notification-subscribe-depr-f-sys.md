@@ -3,9 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from '@kit.NotificationKit';
-import { notificationSubscribe } from '@kit.NotificationKit';
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
 ```
 
 ## subscribe
@@ -24,8 +21,6 @@ function subscribe(subscriber: NotificationSubscriber, callback: AsyncCallback<v
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
-<!--Device-notification-function subscribe(subscriber: NotificationSubscriber, callback: AsyncCallback<void>): void--><!--Device-notification-function subscribe(subscriber: NotificationSubscriber, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -35,7 +30,29 @@ function subscribe(subscriber: NotificationSubscriber, callback: AsyncCallback<v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | subscriber | [NotificationSubscriber](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md) | 是 | 通知订阅对象。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 订阅动作回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 订阅动作回调函数。 |
+
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+import NotificationSubscribe from '@ohos.notificationSubscribe';
+
+let subscribeCallback = (err: Base.BusinessError) => {
+  if (err) {
+    console.error("subscribe failed " + JSON.stringify(err));
+  } else {
+    console.info("subscribe success");
+  }
+}
+function onConsumeCallback(data: NotificationSubscribe.SubscribeCallbackData) {
+  console.info("Consume callback: " + JSON.stringify(data));
+}
+let subscriber: NotificationSubscribe.NotificationSubscriber = {
+  onConsume: onConsumeCallback
+};
+Notification.subscribe(subscriber, subscribeCallback);
+```
 
 
 ## subscribe
@@ -58,8 +75,6 @@ function subscribe(
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
-<!--Device-notification-function subscribe(    subscriber: NotificationSubscriber,    info: NotificationSubscribeInfo,    callback: AsyncCallback<void>  ): void--><!--Device-notification-function subscribe(    subscriber: NotificationSubscriber,    info: NotificationSubscribeInfo,    callback: AsyncCallback<void>  ): void-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -70,7 +85,33 @@ function subscribe(
 | --- | --- | --- | --- |
 | subscriber | [NotificationSubscriber](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md) | 是 | 通知订阅对象。 |
 | info | [NotificationSubscribeInfo](arkts-notification-notificationsubscribeinfo-notificationsubscribeinfo-i-sys.md) | 是 | 通知订阅信息。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 订阅动作回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 订阅动作回调函数。 |
+
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+import NotificationSubscribe from '@ohos.notificationSubscribe';
+
+// subscribe回调
+let subscribeCallback = (err: Base.BusinessError) => {
+  if (err) {
+    console.error("subscribe failed " + JSON.stringify(err));
+  } else {
+    console.info("subscribe success");
+  }
+}
+let onConsumeCallback = (data: NotificationSubscribe.SubscribeCallbackData) => {
+  console.info("Consume callback: " + JSON.stringify(data));
+}
+let subscriber: NotificationSubscribe.NotificationSubscriber = {
+  onConsume: onConsumeCallback
+};
+let info: NotificationSubscribe.NotificationSubscribeInfo = {
+  bundleNames: ["bundleName1", "bundleName2"]
+};
+Notification.subscribe(subscriber, info, subscribeCallback);
+```
 
 
 ## subscribe
@@ -89,8 +130,6 @@ function subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscr
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
-<!--Device-notification-function subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscribeInfo): Promise<void>--><!--Device-notification-function subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscribeInfo): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -106,5 +145,23 @@ function subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
 
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+import NotificationSubscribe from '@ohos.notificationSubscribe';
+
+function onConsumeCallback(data: NotificationSubscribe.SubscribeCallbackData) {
+  console.info("Consume callback: " + JSON.stringify(data));
+}
+let subscriber: NotificationSubscribe.NotificationSubscriber = {
+  onConsume: onConsumeCallback
+};
+Notification.subscribe(subscriber).then(() => {
+  console.info("subscribe success");
+}).catch((err: Base.BusinessError) => {
+  console.error(`subscribe failed, code is ${err}`);
+});
+```

@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { connection } from '@kit.NetworkKit';
 ```
 
 ## getNetExtAttribute
@@ -18,8 +17,6 @@ function getNetExtAttribute(netHandle: NetHandle): Promise<string>
 
 **需要权限：** ohos.permission.GET_NETWORK_INFO
 
-<!--Device-connection-function getNetExtAttribute(netHandle: NetHandle): Promise<string>--><!--Device-connection-function getNetExtAttribute(netHandle: NetHandle): Promise<string>-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 **参数：**
@@ -32,16 +29,16 @@ function getNetExtAttribute(netHandle: NetHandle): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回的网络扩展属性。 |
+| Promise & lt;string & gt; | Promise对象，返回的网络扩展属性。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
 **示例**
 
@@ -61,4 +58,3 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   })
 });
 ```
-

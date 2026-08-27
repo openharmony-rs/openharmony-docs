@@ -4,8 +4,6 @@
 
 **起始版本：** 15
 
-<!--Device-http-export enum AddressFamily--><!--Device-http-export enum AddressFamily-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
 
 ## DEFAULT
@@ -17,8 +15,6 @@ DEFAULT = 'CURL_IPRESOLVE_WHATEVER'
 设置此选项后，系统将自行选择目标域名的IPv4地址或IPv6地址。
 
 **起始版本：** 15
-
-<!--Device-AddressFamily-DEFAULT = 'CURL_IPRESOLVE_WHATEVER'--><!--Device-AddressFamily-DEFAULT = 'CURL_IPRESOLVE_WHATEVER'-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -32,8 +28,6 @@ ONLY_V4 = 'CURL_IPRESOLVE_V4'
 
 **起始版本：** 15
 
-<!--Device-AddressFamily-ONLY_V4 = 'CURL_IPRESOLVE_V4'--><!--Device-AddressFamily-ONLY_V4 = 'CURL_IPRESOLVE_V4'-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
 
 ## ONLY_V6
@@ -46,7 +40,4 @@ ONLY_V6 = 'CURL_IPRESOLVE_V6'
 
 **起始版本：** 15
 
-<!--Device-AddressFamily-ONLY_V6 = 'CURL_IPRESOLVE_V6'--><!--Device-AddressFamily-ONLY_V6 = 'CURL_IPRESOLVE_V6'-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
-

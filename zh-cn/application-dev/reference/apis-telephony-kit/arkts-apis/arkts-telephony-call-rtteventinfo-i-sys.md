@@ -2,9 +2,7 @@
 
 rtt通话事件
 
-**起始版本：** 23
-
-<!--Device-call-export interface RttEventInfo--><!--Device-call-export interface RttEventInfo-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -13,22 +11,19 @@ rtt通话事件
 ## 导入模块
 
 ```TypeScript
-import { call } from '@kit.TelephonyKit';
 ```
 
 ## callId
 
 ```TypeScript
-callId: int
+callId: number
 ```
 
 rtt通话id
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-RttEventInfo-callId: int--><!--Device-RttEventInfo-callId: int-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -37,16 +32,14 @@ rtt通话id
 ## eventType
 
 ```TypeScript
-eventType: int
+eventType: number
 ```
 
 rtt通话事件类型
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-RttEventInfo-eventType: int--><!--Device-RttEventInfo-eventType: int-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -55,18 +48,15 @@ rtt通话事件类型
 ## reason
 
 ```TypeScript
-reason: int
+reason: number
 ```
 
 rtt事件原因
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-RttEventInfo-reason: int--><!--Device-RttEventInfo-reason: int-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
 **系统接口：** 此接口为系统接口。
-

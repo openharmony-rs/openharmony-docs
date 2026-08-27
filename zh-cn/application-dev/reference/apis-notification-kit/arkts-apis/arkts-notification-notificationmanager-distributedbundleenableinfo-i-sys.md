@@ -2,9 +2,7 @@
 
 描述多设备协同的包信息。
 
-**起始版本：** 23
-
-<!--Device-notificationManager-export interface DistributedBundleEnableInfo--><!--Device-notificationManager-export interface DistributedBundleEnableInfo-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -26,9 +24,7 @@ bundleName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-DistributedBundleEnableInfo-bundleName: string--><!--Device-DistributedBundleEnableInfo-bundleName: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -44,9 +40,7 @@ enable?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-DistributedBundleEnableInfo-enable?: boolean--><!--Device-DistributedBundleEnableInfo-enable?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -55,18 +49,15 @@ enable?: boolean
 ## uid
 
 ```TypeScript
-uid: int
+uid: number
 ```
 
 应用的UID。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-DistributedBundleEnableInfo-uid: int--><!--Device-DistributedBundleEnableInfo-uid: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
-

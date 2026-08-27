@@ -20,4 +20,3 @@ import { Notification, ActionResult, ShowNotificationOptions } from '@kit.Notifi
 | --- | --- |
 | [ActionResult](arkts-notification-system-notification-actionresult-i.md) |  |
 | [ShowNotificationOptions](arkts-notification-system-notification-shownotificationoptions-i.md) |  |
-

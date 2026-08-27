@@ -3,9 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from '@kit.NotificationKit';
-import { notificationSubscribe } from '@kit.NotificationKit';
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
 ```
 
 ## getActiveNotificationCount
@@ -22,15 +19,29 @@ function getActiveNotificationCount(callback: AsyncCallback<number>): void
 
 **替代接口：** [getActiveNotificationCount](arkts-notification-notificationmanager-getactivenotificationcount-f.md)
 
-<!--Device-notification-function getActiveNotificationCount(callback: AsyncCallback<number>): void--><!--Device-notification-function getActiveNotificationCount(callback: AsyncCallback<number>): void-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 获取未删除通知数回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 获取未删除通知数回调函数。 |
+
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+
+let getActiveNotificationCountCallback = (err: Base.BusinessError, data: number) => {
+  if (err) {
+    console.error("getActiveNotificationCount failed " + JSON.stringify(err));
+  } else {
+    console.info("getActiveNotificationCount success");
+  }
+}
+
+Notification.getActiveNotificationCount(getActiveNotificationCountCallback);
+```
 
 
 ## getActiveNotificationCount
@@ -47,13 +58,22 @@ function getActiveNotificationCount(): Promise<number>
 
 **替代接口：** [getActiveNotificationCount](arkts-notification-notificationmanager-getactivenotificationcount-f.md)
 
-<!--Device-notification-function getActiveNotificationCount(): Promise<number>--><!--Device-notification-function getActiveNotificationCount(): Promise<number>-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | 以Promise形式返回获取当前应用未删除通知数。 |
+| Promise & lt;number & gt; | 以Promise形式返回获取当前应用未删除通知数。 |
 
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+
+Notification.getActiveNotificationCount().then((data: number) => {
+  console.info("getActiveNotificationCount success, data: " + JSON.stringify(data));
+}).catch((err: Base.BusinessError) => {
+  console.error(`getActiveNotificationCount failed, code is ${err}`);
+});
+```

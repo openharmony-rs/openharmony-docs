@@ -2,9 +2,7 @@
 
 彩信优先级类型。
 
-**起始版本：** 23
-
-<!--Device-sms-export enum MmsPriorityType--><!--Device-sms-export enum MmsPriorityType-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -18,9 +16,7 @@ MMS_LOW = 128
 
 彩信优先级低
 
-**起始版本：** 23
-
-<!--Device-MmsPriorityType-MMS_LOW = 128--><!--Device-MmsPriorityType-MMS_LOW = 128-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -34,9 +30,7 @@ MMS_NORMAL = 129
 
 彩信优先级正常
 
-**起始版本：** 23
-
-<!--Device-MmsPriorityType-MMS_NORMAL = 129--><!--Device-MmsPriorityType-MMS_NORMAL = 129-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -50,11 +44,8 @@ MMS_HIGH = 130
 
 彩信优先级高
 
-**起始版本：** 23
-
-<!--Device-MmsPriorityType-MMS_HIGH = 130--><!--Device-MmsPriorityType-MMS_HIGH = 130-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
 **系统接口：** 此接口为系统接口。
-

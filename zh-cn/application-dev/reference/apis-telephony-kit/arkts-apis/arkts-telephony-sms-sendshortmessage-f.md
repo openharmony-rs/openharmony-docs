@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { sms } from '@kit.TelephonyKit';
 ```
 
 ## sendShortMessage
@@ -14,11 +13,9 @@ function sendShortMessage(options: SendMessageOptions, callback: AsyncCallback<v
 
 发送短信。使用callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **需要权限：** ohos.permission.SEND_MESSAGES
-
-<!--Device-sms-function sendShortMessage(options: SendMessageOptions, callback: AsyncCallback<void>): void--><!--Device-sms-function sendShortMessage(options: SendMessageOptions, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -27,18 +24,18 @@ function sendShortMessage(options: SendMessageOptions, callback: AsyncCallback<v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [SendMessageOptions](arkts-telephony-sms-sendmessageoptions-i.md) | 是 | 发送短信的参数和回调，参考[SendMessageOptions](arkts-telephony-sms-sendmessageoptions-i.md)。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 发送短信的回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 发送短信的回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
-| [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
+| [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
 **示例**
 
@@ -58,7 +55,7 @@ let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: B
         console.error('deliveryCallback: err->${JSON.stringify(err)}');
         return;
     }
-    console.info('deliveryCallback: data->${JSON.stringify(data)}'); 
+    console.info('deliveryCallback: data->${JSON.stringify(data)}');
 };
 let options: sms.SendMessageOptions = {
     slotId: 0,
@@ -83,11 +80,9 @@ function sendShortMessage(options: SendMessageOptions): Promise<void>
 
 发送短信。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **需要权限：** ohos.permission.SEND_MESSAGES
-
-<!--Device-sms-function sendShortMessage(options: SendMessageOptions): Promise<void>--><!--Device-sms-function sendShortMessage(options: SendMessageOptions): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -101,18 +96,18 @@ function sendShortMessage(options: SendMessageOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 以Promise形式返回发送短信的结果。 |
+| Promise & lt;void & gt; | 以Promise形式返回发送短信的结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
-| [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
+| [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
 **示例**
 
@@ -132,7 +127,7 @@ let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: B
         console.error('deliveryCallback: err->${JSON.stringify(err)}');
         return;
     }
-    console.info('deliveryCallback: data->${JSON.stringify(data)}'); 
+    console.info('deliveryCallback: data->${JSON.stringify(data)}');
 };
 let options: sms.SendMessageOptions = {
     slotId: 0,
@@ -150,4 +145,3 @@ promise.then(() => {
     console.error(`sendShortMessage failed, promise: errCode:${err.code},errMsg:${err.message}`);
 });
 ```
-

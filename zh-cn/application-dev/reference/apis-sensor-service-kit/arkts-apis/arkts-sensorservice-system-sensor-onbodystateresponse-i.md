@@ -8,8 +8,6 @@
 
 **替代接口：** [WearDetectionResponse](arkts-sensorservice-sensor-weardetectionresponse-i.md)
 
-<!--Device-unnamed-export interface OnBodyStateResponse--><!--Device-unnamed-export interface OnBodyStateResponse-End-->
-
 **系统能力：** SystemCapability.Sensors.Sensor.Lite
 
 ## 导入模块
@@ -36,7 +34,4 @@ value: boolean
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-OnBodyStateResponse-value: boolean--><!--Device-OnBodyStateResponse-value: boolean-End-->
-
 **系统能力：** SystemCapability.Sensors.Sensor.Lite
-

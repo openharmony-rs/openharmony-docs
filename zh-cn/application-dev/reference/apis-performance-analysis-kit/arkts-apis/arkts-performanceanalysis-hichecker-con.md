@@ -6,11 +6,9 @@
 const RULE_CAUTION_PRINT_LOG = 9223372036854775808n
 ```
 
-告警规则，当有告警时记录日志。
+The caution rule print log.
 
-**起始版本：** 23
-
-<!--Device-hichecker-const RULE_CAUTION_PRINT_LOG = 9223372036854775808n--><!--Device-hichecker-const RULE_CAUTION_PRINT_LOG = 9223372036854775808n-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.HiviewDFX.HiChecker
 
@@ -20,11 +18,9 @@ const RULE_CAUTION_PRINT_LOG = 9223372036854775808n
 const RULE_CAUTION_TRIGGER_CRASH = 4611686018427387904n
 ```
 
-告警规则，当有告警时让应用退出。
+The caution rule trigger crash.
 
-**起始版本：** 23
-
-<!--Device-hichecker-const RULE_CAUTION_TRIGGER_CRASH = 4611686018427387904n--><!--Device-hichecker-const RULE_CAUTION_TRIGGER_CRASH = 4611686018427387904n-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.HiviewDFX.HiChecker
 
@@ -34,11 +30,9 @@ const RULE_CAUTION_TRIGGER_CRASH = 4611686018427387904n
 const RULE_CHECK_ABILITY_CONNECTION_LEAK = 8589934592n
 ```
 
-检测规则，检测是否发生ability泄露。
+The process rule check ability connection leak.
 
-**起始版本：** 23
-
-<!--Device-hichecker-const RULE_CHECK_ABILITY_CONNECTION_LEAK = 8589934592n--><!--Device-hichecker-const RULE_CHECK_ABILITY_CONNECTION_LEAK = 8589934592n-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.HiviewDFX.HiChecker
 
@@ -48,11 +42,9 @@ const RULE_CHECK_ABILITY_CONNECTION_LEAK = 8589934592n
 const RULE_CHECK_ARKUI_PERFORMANCE = 17179869184n
 ```
 
-检测规则，检测arkui性能。
+The process rule check ability Arkui performance
 
-**起始版本：** 23
-
-<!--Device-hichecker-const RULE_CHECK_ARKUI_PERFORMANCE = 17179869184n--><!--Device-hichecker-const RULE_CHECK_ARKUI_PERFORMANCE = 17179869184n-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.HiviewDFX.HiChecker
 
@@ -62,11 +54,10 @@ const RULE_CHECK_ARKUI_PERFORMANCE = 17179869184n
 const RULE_THREAD_CHECK_NETWORK_USAGE = 2n
 ```
 
-检测规则，检测线程是否调用网络耗时接口。
+检测规则，检测线程是否调用网络耗时接口。  
+**起始版本**: 26.0.0
 
 **起始版本：** 26.0.0
-
-<!--Device-hichecker-const RULE_THREAD_CHECK_NETWORK_USAGE = 2n--><!--Device-hichecker-const RULE_THREAD_CHECK_NETWORK_USAGE = 2n-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiChecker
 
@@ -76,11 +67,8 @@ const RULE_THREAD_CHECK_NETWORK_USAGE = 2n
 const RULE_THREAD_CHECK_SLOW_PROCESS = 1n
 ```
 
-检测规则，检测是否有耗时函数被调用。
+The thread rule check slow process.
 
-**起始版本：** 23
-
-<!--Device-hichecker-const RULE_THREAD_CHECK_SLOW_PROCESS = 1n--><!--Device-hichecker-const RULE_THREAD_CHECK_SLOW_PROCESS = 1n-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.HiviewDFX.HiChecker
-

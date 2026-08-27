@@ -1,17 +1,14 @@
 # On
 
-UiTest框架从API version 9开始，通过On类提供了丰富的控件特征描述API，用于进行控件筛选来匹配/查找出目标控件。 On提供的API能力具有以下几个特点： 1、支持单属性匹配和多属性组合匹配，例如同时指定目标控件text和id。 2、控件属性支持多种匹配模式。 3、支持控件绝对定位，相对定位，可通过[ON.isBefore](#isbefore)和[ON.isAfter](#isafter)等API限定邻近控件特征进行辅助定位。 On类提供的所有API均为同步接口，建议使用者通过静态构造器ON来链式创建On对象。
+UiTest框架从API version 9开始，通过On类提供了丰富的控件特征描述API，用于进行控件筛选来匹配/查找出目标控件。On提供的API能力具有以下几个特点：1、支持单属性匹配和多属性组合匹配，例如同时指定目标控件text和id。2、控件属性支持多种匹配模式。3、支持控件绝对定位，相对定位，可通过[ON.isBefore](#isbefore)和[ON.isAfter](#isafter)等API限定邻近控件特征进行辅助定位。On类提供的所有API均为同步接口，建议使用者通过静态构造器ON来链式创建On对象。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare class On--><!--Device-unnamed-declare class On-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Test.UiTest
 
 ## 导入模块
 
 ```TypeScript
-import { Component, DisplayRotation, Driver, MatchPattern, MouseButton, ON, On, PointerMatrix, ResizeDirection, UIElementInfo, UIEventObserver, UiDirection, UiWindow, WindowMode, Point, WindowFilter, Rect, TouchPadSwipeOptions, InputTextMode, WindowChangeType, ComponentEventType, WindowChangeOptions, ComponentEventOptions, TouchOptions, KeyOptions, PenKey, PenMode, PenKeyOperation, PenKeyOperationOptions } from '@kit.TestKit';
 import { UiComponent, UiDriver, BY, By } from '@kit.TestKit';
 ```
 
@@ -21,13 +18,11 @@ import { UiComponent, UiDriver, BY, By } from '@kit.TestKit';
 afterComponent(com: Component): On
 ```
 
-要求目标组件位于由给定[Component](arkts-test-uitest-component-c.md)指定的另一个组件之后 对象，用于相对于组件定位。
+指定目标控件位于给出的特征控件（参数 [Component](arkts-test-uitest-component-c.md)）之后，返回 On 对象自身。
 
 **起始版本：** 26.0.0
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-On-afterComponent(com: Component): On--><!--Device-On-afterComponent(com: Component): On-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -35,13 +30,13 @@ afterComponent(com: Component): On
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| com | [Component](arkts-test-uitest-component-c.md) | 是 | 描述了目标组件在的后面。 |
+| com | [Component](arkts-test-uitest-component-c.md) | 是 | 特征控件，目标控件须位于该控件之后。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [On](arkts-test-uitest-on-c.md) | this { |
+| [On](arkts-test-uitest-on-c.md) | 返回指定目标控件位于给出的特征控件之后的 On 对象. |
 
 **错误码：**
 
@@ -68,13 +63,11 @@ async function demo() {
 beforeComponent(com: Component): On
 ```
 
-要求目标组件位于由给定[Component](arkts-test-uitest-component-c.md)指定的另一个组件之前 对象，用于相对于组件定位。
+指定目标控件位于给出的特征控件（参数 [Component](arkts-test-uitest-component-c.md)）之前，返回 On 对象自身。
 
 **起始版本：** 26.0.0
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-On-beforeComponent(com: Component): On--><!--Device-On-beforeComponent(com: Component): On-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -82,13 +75,13 @@ beforeComponent(com: Component): On
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| com | [Component](arkts-test-uitest-component-c.md) | 是 | 目标组件前面的组件如所示。 |
+| com | [Component](arkts-test-uitest-component-c.md) | 是 | 特征控件，目标控件须位于该控件之前。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [On](arkts-test-uitest-on-c.md) | this { |
+| [On](arkts-test-uitest-on-c.md) | 返回指定目标控件位于给出的特征控件之前的 On 对象. |
 
 **错误码：**
 
@@ -112,16 +105,14 @@ async function demo() {
 ## belongingDisplay
 
 ```TypeScript
-belongingDisplay(displayId: int): On
+belongingDisplay(displayId: number): On
 ```
 
-获取指定屏幕内的控件对象，返回On对象自身。
+指定目标控件所属的屏幕，返回On对象自身。
 
-**起始版本：** 23
+**起始版本：** 20
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-On-belongingDisplay(displayId: int): On--><!--Device-On-belongingDisplay(displayId: int): On-End-->
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -129,7 +120,7 @@ belongingDisplay(displayId: int): On
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| displayId | int | 是 | 指定控件所属屏幕ID，取值范围：大于等于0的整数。 **说明：** 传入displayId不存在时，将抛出17000007异常。可通过 [getAllDisplays](../../apis-arkui/arkts-apis/arkts-arkui-display-getalldisplays-f.md)获取当前所有的 display对象，并由display对象获取对应的屏幕ID。<!--RP2--><!--RP2End--> |
+| displayId | number | 是 | 指定控件所属屏幕ID，取值范围：大于等于0的整数。 **说明：** 传入displayId不存在时，将抛出17000007异常。可通过 [getAllDisplays](../../apis-arkui/arkts-apis/arkts-arkui-display-getalldisplays-f.md)获取当前所有的 display对象，并由display对象获取对应的屏幕ID。 |
 
 **返回值：**
 
@@ -160,11 +151,9 @@ checkable(b?: boolean): On
 
 指定目标控件能否被勾选状态属性，返回On对象自身。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-On-checkable(b?: boolean): On--><!--Device-On-checkable(b?: boolean): On-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -172,7 +161,7 @@ checkable(b?: boolean): On
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| b | boolean | 否 | 指定控件能否被勾选状态。true：能被勾选。false：不能被勾选。默认为true。<!--RP2--><!--RP2End--><br>**起始版本：** 10 |
+| b | boolean | 否 | 指定控件能否被勾选状态。true：能被勾选。false：不能被勾选。默认为true。 |
 
 **返回值：**
 
@@ -203,11 +192,9 @@ checked(b?: boolean): On
 
 指定目标控件的被勾选状态属性，返回On对象自身。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-On-checked(b?: boolean): On--><!--Device-On-checked(b?: boolean): On-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -215,7 +202,7 @@ checked(b?: boolean): On
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| b | boolean | 否 | 指定控件被勾选状态。true：被勾选。false：未被勾选。默认为true。<!--RP2--><!--RP2End--><br>**起始版本：** 10 |
+| b | boolean | 否 | 指定控件被勾选状态。true：被勾选。false：未被勾选。默认为true。 |
 
 **返回值：**
 
@@ -246,11 +233,9 @@ clickable(b?: boolean): On
 
 指定目标控件的可点击状态属性，返回On对象自身。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-On-clickable(b?: boolean): On--><!--Device-On-clickable(b?: boolean): On-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -258,7 +243,7 @@ clickable(b?: boolean): On
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| b | boolean | 否 | 指定控件可点击状态。true：可点击。false：不可点击。默认为true。<!--RP2--><!--RP2End--><br>**起始版本：** 10 |
+| b | boolean | 否 | 指定控件可点击状态。true：可点击。false：不可点击。默认为true。 |
 
 **返回值：**
 
@@ -289,11 +274,9 @@ description(val: string, pattern?: MatchPattern): On
 
 指定目标控件的描述属性，支持多种匹配模式，返回On对象自身。
 
-**起始版本：** 23
+**起始版本：** 11
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-On-description(val: string, pattern?: MatchPattern): On--><!--Device-On-description(val: string, pattern?: MatchPattern): On-End-->
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -301,7 +284,7 @@ description(val: string, pattern?: MatchPattern): On
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| val | string | 是 | 控件的描述属性。 <!--RP2--><!--RP2End--> |
+| val | string | 是 | 控件的描述属性。 |
 | pattern | [MatchPattern](arkts-test-uitest-matchpattern-e.md) | 否 | 指定的文本匹配模式，默认为[EQUALS](arkts-test-uitest-matchpattern-e.md)。 |
 
 **返回值：**
@@ -333,11 +316,9 @@ enabled(b?: boolean): On
 
 指定目标控件的使能状态属性，返回On对象自身。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-On-enabled(b?: boolean): On--><!--Device-On-enabled(b?: boolean): On-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -345,7 +326,7 @@ enabled(b?: boolean): On
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| b | boolean | 否 | 指定控件使能状态。true：使能。false：未使能。默认为true。<!--RP2--><!--RP2End--><br>**起始版本：** 10 |
+| b | boolean | 否 | 指定控件使能状态。true：使能。false：未使能。默认为true。 |
 
 **返回值：**
 
@@ -376,11 +357,9 @@ focused(b?: boolean): On
 
 指定目标控件的获焦状态属性，返回On对象自身。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-On-focused(b?: boolean): On--><!--Device-On-focused(b?: boolean): On-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -388,7 +367,7 @@ focused(b?: boolean): On
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| b | boolean | 否 | 控件获焦状态。true：获焦。false：未获焦。默认为true。<!--RP2--><!--RP2End--><br>**起始版本：** 10 |
+| b | boolean | 否 | 控件获焦状态。true：获焦。false：未获焦。默认为true。 |
 
 **返回值：**
 
@@ -417,13 +396,11 @@ let on: On = ON.focused(true); // 使用静态构造器ON创建On对象，指定
 hint(val: string, pattern?: MatchPattern): On
 ```
 
-获取指定提示文本的控件对象，返回On对象自身。
+指定目标控件的提示文本属性，返回On对象自身。
 
-**起始版本：** 23
+**起始版本：** 18
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-On-hint(val: string, pattern?: MatchPattern): On--><!--Device-On-hint(val: string, pattern?: MatchPattern): On-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -431,14 +408,14 @@ hint(val: string, pattern?: MatchPattern): On
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| val | string | 是 | 指定控件提示文本。 <!--RP2--><!--RP2End--> |
+| val | string | 是 | 指定控件提示文本。 |
 | pattern | [MatchPattern](arkts-test-uitest-matchpattern-e.md) | 否 | 指定的文本匹配模式，默认为[EQUALS](arkts-test-uitest-matchpattern-e.md)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [On](arkts-test-uitest-on-c.md) | 返回指定提示文本控件的On对象。 |
+| [On](arkts-test-uitest-on-c.md) | 返回指定目标控件hint属性的On对象。 |
 
 **错误码：**
 
@@ -463,11 +440,9 @@ id(id: string): On
 
 指定目标控件id属性，返回On对象自身。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-On-id(id: string): On--><!--Device-On-id(id: string): On-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -475,7 +450,7 @@ id(id: string): On
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 是 | 指定控件的id值。<!--RP2--><!--RP2End--> |
+| id | string | 是 | 指定控件的id值。 |
 
 **返回值：**
 
@@ -506,11 +481,9 @@ id(id: string, pattern: MatchPattern): On
 
 指定目标控件id属性和匹配模式，返回On对象自身。
 
-**起始版本：** 23
+**起始版本：** 18
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-On-id(id: string, pattern: MatchPattern): On--><!--Device-On-id(id: string, pattern: MatchPattern): On-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -518,7 +491,7 @@ id(id: string, pattern: MatchPattern): On
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 是 | 指定控件的id值。<!--RP2--><!--RP2End--> |
+| id | string | 是 | 指定控件的id值。 |
 | pattern | [MatchPattern](arkts-test-uitest-matchpattern-e.md) | 是 | 指定的文本匹配模式。 |
 
 **返回值：**
@@ -550,11 +523,9 @@ inWindow(bundleName: string): On
 
 指定目标控件位于给出的应用窗口内，返回On对象自身。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-On-inWindow(bundleName: string): On--><!--Device-On-inWindow(bundleName: string): On-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -562,7 +533,7 @@ inWindow(bundleName: string): On
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | 应用窗口的包名。<!--RP2--><!--RP2End--> |
+| bundleName | string | 是 | 应用窗口的包名。 |
 
 **返回值：**
 
@@ -593,11 +564,9 @@ isAfter(on: On): On
 
 指定目标控件位于给出的特征属性控件之后，返回On对象自身。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-On-isAfter(on: On): On--><!--Device-On-isAfter(on: On): On-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -605,7 +574,7 @@ isAfter(on: On): On
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| on | [On](arkts-test-uitest-on-c.md) | 是 | 特征控件的属性要求。 <!--RP3--><!--RP3End--> |
+| on | [On](arkts-test-uitest-on-c.md) | 是 | 特征控件的属性要求。 |
 
 **返回值：**
 
@@ -626,7 +595,7 @@ isAfter(on: On): On
 import { On, ON } from '@kit.TestKit';
 
 // 使用静态构造器ON创建On对象，指定目标控件位于给出的特征属性控件之后。
-let on: On = ON.type('Text').isAfter(ON.text('123')); // 查找text为123之后的第一个Text组件
+let on: On = ON.type('Text').isAfter(ON.text('123')); // 查找text为123之后的第一个Text组件。
 ```
 
 ## isBefore
@@ -637,11 +606,9 @@ isBefore(on: On): On
 
 指定目标控件位于给出的特征属性控件之前，返回On对象自身。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-On-isBefore(on: On): On--><!--Device-On-isBefore(on: On): On-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -649,7 +616,7 @@ isBefore(on: On): On
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| on | [On](arkts-test-uitest-on-c.md) | 是 | 特征控件的属性要求。 <!--RP3--><!--RP3End--> |
+| on | [On](arkts-test-uitest-on-c.md) | 是 | 特征控件的属性要求。 |
 
 **返回值：**
 
@@ -681,11 +648,9 @@ longClickable(b?: boolean): On
 
 指定目标控件的可长按点击状态属性，返回On对象自身。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-On-longClickable(b?: boolean): On--><!--Device-On-longClickable(b?: boolean): On-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -693,7 +658,7 @@ longClickable(b?: boolean): On
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| b | boolean | 否 | 指定控件可长按点击状态。true：可长按点击。false：不可长按点击。默认为true。<!--RP2--><!--RP2End--><br>**起始版本：** 10 |
+| b | boolean | 否 | 指定控件可长按点击状态。true：可长按点击。false：不可长按点击。默认为true。 |
 
 **返回值：**
 
@@ -722,13 +687,17 @@ let on: On = ON.longClickable(true); // 使用静态构造器ON创建On对象，
 originalText(text: string, pattern?: MatchPattern): On
 ```
 
-指定控件的文本内容和文本匹配模式，返回On对象自身。 > **说明：**> > 如果控件的无障碍属性 > [accessibilityLevel](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) > 设置为'no'或'no-hide-descendants'，可以使用本接口指定目标控件的文本属性用于查找控件，使用[On.text()](#text)接口不生效。
+指定控件的文本内容和文本匹配模式，返回On对象自身。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 如果控件的无障碍属性
+> accessibilityLevel
+> 设置为'no'或'no-hide-descendants'，可以使用本接口指定目标控件的文本属性用于查找控件，使用[On.text()](#text)接口不生效。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**起始版本：** 20
 
-<!--Device-On-originalText(text: string, pattern?: MatchPattern): On--><!--Device-On-originalText(text: string, pattern?: MatchPattern): On-End-->
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -736,7 +705,7 @@ originalText(text: string, pattern?: MatchPattern): On
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| text | string | 是 | 指定控件文本，用于匹配目标控件文本。 <!--RP2--><!--RP2End--> |
+| text | string | 是 | 指定控件文本，用于匹配目标控件文本。 |
 | pattern | [MatchPattern](arkts-test-uitest-matchpattern-e.md) | 否 | 指定的文本匹配模式，默认为[EQUALS](arkts-test-uitest-matchpattern-e.md)。 |
 
 **返回值：**
@@ -768,11 +737,9 @@ scrollable(b?: boolean): On
 
 指定目标控件的可滑动状态属性，返回On对象自身。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-On-scrollable(b?: boolean): On--><!--Device-On-scrollable(b?: boolean): On-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -780,7 +747,7 @@ scrollable(b?: boolean): On
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| b | boolean | 否 | 控件可滑动状态。true：可滑动。false：不可滑动。默认为true。<!--RP2--><!--RP2End--><br>**起始版本：** 10 |
+| b | boolean | 否 | 控件可滑动状态。true：可滑动。false：不可滑动。默认为true。 |
 
 **返回值：**
 
@@ -811,11 +778,9 @@ selected(b?: boolean): On
 
 指定目标控件的被选中状态属性，返回On对象自身。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-On-selected(b?: boolean): On--><!--Device-On-selected(b?: boolean): On-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -823,7 +788,7 @@ selected(b?: boolean): On
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| b | boolean | 否 | 指定控件被选中状态。true：被选中。false：未被选中。默认为true。<!--RP2--><!--RP2End--><br>**起始版本：** 10 |
+| b | boolean | 否 | 指定控件被选中状态。true：被选中。false：未被选中。默认为true。 |
 
 **返回值：**
 
@@ -852,13 +817,17 @@ let on: On = ON.selected(true); // 使用静态构造器ON创建On对象，指�
 text(txt: string, pattern?: MatchPattern): On
 ```
 
-指定目标控件文本属性，支持多种匹配模式，返回On对象自身。 > **说明：**> > 如果控件的无障碍属性 > [accessibilityLevel](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) > 设置为'no'或'no-hide-descendants'，无法使用本接口指定目标控件的文本属性用于查找控件，可以使用[On.originalText()](#originaltext)接口实现。
+指定目标控件文本属性，支持多种匹配模式，返回On对象自身。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 如果控件的无障碍属性
+> accessibilityLevel
+> 设置为'no'或'no-hide-descendants'，无法使用本接口指定目标控件的文本属性用于查找控件，可以使用[On.originalText()](#originaltext)接口实现。
+
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-On-text(txt: string, pattern?: MatchPattern): On--><!--Device-On-text(txt: string, pattern?: MatchPattern): On-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -866,8 +835,8 @@ text(txt: string, pattern?: MatchPattern): On
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| txt | string | 是 | 指定控件文本，用于匹配目标控件文本。<!--RP2--><!--RP2End--> |
-| pattern | [MatchPattern](arkts-test-uitest-matchpattern-e.md) | 否 | 指定的文本匹配模式，默认为[EQUALS](arkts-test-uitest-matchpattern-e.md)。<br>**起始版本：** 10 |
+| txt | string | 是 | 指定控件文本，用于匹配目标控件文本。 |
+| pattern | [MatchPattern](arkts-test-uitest-matchpattern-e.md) | 否 | 指定的文本匹配模式，默认为[EQUALS](arkts-test-uitest-matchpattern-e.md)。 |
 
 **返回值：**
 
@@ -898,11 +867,9 @@ type(tp: string): On
 
 指定目标控件的控件类型属性，返回On对象自身。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-On-type(tp: string): On--><!--Device-On-type(tp: string): On-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -910,7 +877,7 @@ type(tp: string): On
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tp | string | 是 | 指定控件类型。<!--RP2--><!--RP2End--> |
+| tp | string | 是 | 指定控件类型。 |
 
 **返回值：**
 
@@ -941,11 +908,9 @@ type(tp: string, pattern: MatchPattern): On
 
 指定目标控件的控件类型属性和匹配模式，返回On对象自身。
 
-**起始版本：** 23
+**起始版本：** 18
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-On-type(tp: string, pattern: MatchPattern): On--><!--Device-On-type(tp: string, pattern: MatchPattern): On-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -953,7 +918,7 @@ type(tp: string, pattern: MatchPattern): On
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tp | string | 是 | 指定控件类型。<!--RP2--><!--RP2End--> |
+| tp | string | 是 | 指定控件类型。 |
 | pattern | [MatchPattern](arkts-test-uitest-matchpattern-e.md) | 是 | 指定的文本匹配模式。 |
 
 **返回值：**
@@ -985,11 +950,9 @@ within(on: On): On
 
 指定目标控件位于给出的特征属性控件之内，返回On对象自身。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-On-within(on: On): On--><!--Device-On-within(on: On): On-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -997,7 +960,7 @@ within(on: On): On
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| on | [On](arkts-test-uitest-on-c.md) | 是 | 特征控件的属性要求。<!--RP3--><!--RP3End--> |
+| on | [On](arkts-test-uitest-on-c.md) | 是 | 特征控件的属性要求。 |
 
 **返回值：**
 
@@ -1018,7 +981,7 @@ within(on: On): On
 import { On, ON } from '@kit.TestKit';
 
 // 使用静态构造器ON创建On对象，指定目标控件位于给出的特征属性控件之内。
-let on: On = ON.text('java').within(ON.type('Scroll')); // 查找Scroll里面的text为java的子组件。
+let on: On = ON.text('java').within(ON.type('Scroll')); // 查找Scroller里面的text为java的子组件。
 ```
 
 ## withinComponent
@@ -1027,13 +990,11 @@ let on: On = ON.text('java').within(ON.type('Scroll')); // 查找Scroll里面的
 withinComponent(com: Component): On
 ```
 
-要求目标组件位于由给定[Component](arkts-test-uitest-component-c.md)指定的另一个组件的内部 对象，用于相对于组件定位。
+指定目标控件位于给出的特征控件（参数 [Component](arkts-test-uitest-component-c.md)）之内，返回 On 对象自身。
 
 **起始版本：** 26.0.0
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-On-withinComponent(com: Component): On--><!--Device-On-withinComponent(com: Component): On-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -1041,13 +1002,13 @@ withinComponent(com: Component): On
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| com | [Component](arkts-test-uitest-component-c.md) | 是 | 描述目标组件所在的组件。 |
+| com | [Component](arkts-test-uitest-component-c.md) | 是 | 特征控件，目标控件须位于该控件之内。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [On](arkts-test-uitest-on-c.md) | this { |
+| [On](arkts-test-uitest-on-c.md) | 返回指定目标控件位于给出的特征控件之内的 On 对象. |
 
 **错误码：**
 
@@ -1067,4 +1028,3 @@ async function demo() {
   let on: On = ON.text('123').withinComponent(component); // 查找第一个Text组件内部的text为123的组件。
 }
 ```
-

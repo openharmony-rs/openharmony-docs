@@ -4,8 +4,6 @@
 
 **起始版本：** 23
 
-<!--Device-companionDeviceAuth-interface DeviceStatus--><!--Device-companionDeviceAuth-interface DeviceStatus-End-->
-
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **系统接口：** 此接口为系统接口。
@@ -30,8 +28,6 @@ deviceKey: DeviceKey
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DeviceStatus-deviceKey: DeviceKey--><!--Device-DeviceStatus-deviceKey: DeviceKey-End-->
-
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **系统接口：** 此接口为系统接口。
@@ -49,8 +45,6 @@ deviceModelInfo: string
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceStatus-deviceModelInfo: string--><!--Device-DeviceStatus-deviceModelInfo: string-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -70,8 +64,6 @@ deviceName: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DeviceStatus-deviceName: string--><!--Device-DeviceStatus-deviceName: string-End-->
-
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **系统接口：** 此接口为系统接口。
@@ -89,8 +81,6 @@ deviceUserName: string
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceStatus-deviceUserName: string--><!--Device-DeviceStatus-deviceUserName: string-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -110,8 +100,6 @@ isOnline: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DeviceStatus-isOnline: boolean--><!--Device-DeviceStatus-isOnline: boolean-End-->
-
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **系统接口：** 此接口为系统接口。
@@ -119,20 +107,17 @@ isOnline: boolean
 ## supportedBusinessIds
 
 ```TypeScript
-supportedBusinessIds: int[]
+supportedBusinessIds: number[]
 ```
 
 设备支持的业务ID列表。表示该设备支持的业务场景范围，如解锁锁屏、解锁应用锁等。不同设备因认证安全性差异，支持的业务范围不同。
 
-**类型：** int[]
+**类型：** number[]
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DeviceStatus-supportedBusinessIds: int[]--><!--Device-DeviceStatus-supportedBusinessIds: int[]-End-->
-
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **系统接口：** 此接口为系统接口。
-

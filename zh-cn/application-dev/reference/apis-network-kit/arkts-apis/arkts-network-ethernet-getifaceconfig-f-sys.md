@@ -18,8 +18,6 @@ function getIfaceConfig(iface: string, callback: AsyncCallback<InterfaceConfigur
 
 **需要权限：** ohos.permission.GET_NETWORK_INFO
 
-<!--Device-ethernet-function getIfaceConfig(iface: string, callback: AsyncCallback<InterfaceConfiguration>): void--><!--Device-ethernet-function getIfaceConfig(iface: string, callback: AsyncCallback<InterfaceConfiguration>): void-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Ethernet
 
 **系统接口：** 此接口为系统接口。
@@ -29,18 +27,18 @@ function getIfaceConfig(iface: string, callback: AsyncCallback<InterfaceConfigur
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | iface | string | 是 | 指定网络接口。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[InterfaceConfiguration](arkts-network-ethernet-interfaceconfiguration-i-sys.md)&gt; | 是 | 回调函数。返回指定网络接口信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[InterfaceConfiguration](arkts-network-ethernet-interfaceconfiguration-i-sys.md)&gt; | 是 | 回调函数。返回指定网络接口信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [2200001](../errorcode-net-ethernet.md#2200001-非法参数值) | Invalid parameter value. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
-| [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
-| [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Failed to connect to the service. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [2200001](../errorcode-net-ethernet.md#2200001-非法参数值) | Invalid parameter value. |
+| [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Failed to connect to the service. |
+| [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
 | [2201005](../errorcode-net-ethernet.md#2201005-设备信息不存在) | Device information does not exist. |
 
 **示例**
@@ -76,8 +74,6 @@ function getIfaceConfig(iface: string): Promise<InterfaceConfiguration>
 
 **需要权限：** ohos.permission.GET_NETWORK_INFO
 
-<!--Device-ethernet-function getIfaceConfig(iface: string): Promise<InterfaceConfiguration>--><!--Device-ethernet-function getIfaceConfig(iface: string): Promise<InterfaceConfiguration>-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Ethernet
 
 **系统接口：** 此接口为系统接口。
@@ -98,12 +94,12 @@ function getIfaceConfig(iface: string): Promise<InterfaceConfiguration>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [2200001](../errorcode-net-ethernet.md#2200001-非法参数值) | Invalid parameter value. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
-| [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
-| [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Failed to connect to the service. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [2200001](../errorcode-net-ethernet.md#2200001-非法参数值) | Invalid parameter value. |
+| [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Failed to connect to the service. |
+| [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
 | [2201005](../errorcode-net-ethernet.md#2201005-设备信息不存在) | Device information does not exist. |
 
 **示例**
@@ -123,4 +119,3 @@ ethernet.getIfaceConfig("eth0").then((data: ethernet.InterfaceConfiguration) => 
   console.error("getIfaceConfig promise error = " + JSON.stringify(error));
 });
 ```
-

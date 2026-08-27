@@ -10,5 +10,3 @@
 - [C API](c-apis/Readme-CN.md)<!--c-telephony-kit-->
 - 错误码<!--telephony-arkts-errcode-->
   - [电话子系统错误码](errorcode-telephony.md)
-
-

@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';
-import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 ```
 
 ## exportKeyItem
@@ -13,13 +12,15 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 function exportKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksReturnResult>): void
 ```
 
-导出密钥。使用callback异步回调。 > **说明：** > > 导出[HuksKeySecurityLevel](arkts-universalkeystore-huks-hukskeysecuritylevel-e.md)中定义的SE安全级别公钥需要ohos.permission.ACCESS_SE_KEY权限。
+导出密钥。使用callback异步回调。
+
+> **说明：**
+> 
+> 导出[HuksKeySecurityLevel](arkts-universalkeystore-huks-hukskeysecuritylevel-e.md)中定义的SE安全级别公钥需要ohos.permission.ACCESS_SE_KEY权限。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-huks-function exportKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksReturnResult>): void--><!--Device-huks-function exportKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksReturnResult>): void-End-->
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.Huks.Core
@@ -30,29 +31,29 @@ function exportKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCa
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | keyAlias | string | 是 | 密钥别名，应与所用密钥生成时使用的别名相同。 |
-| options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 用于导出密钥时指定密钥的属性，如使用[HuksAuthStorageLevel](arkts-universalkeystore-huks-huksauthstoragelevel-e.md)指定需导出密钥的安 全级别，<br>可传空，当API version ≥ 12时，传空默认为CE，当API version ＜ 12时，传空默认为DE。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[HuksReturnResult](arkts-universalkeystore-huks-huksreturnresult-i.md)&gt; | 是 | 回调函数。当导出密钥成功时，err为undefined，data为获取到的HuksReturnResult；否则为错误对象 。HuksReturnResult中的outData返回从HUKS中导出的公钥。 |
+| options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 用于导出密钥时指定密钥的属性，如使用[HuksAuthStorageLevel](arkts-universalkeystore-huks-huksauthstoragelevel-e.md)指定需导出密钥的安 全级别，可传空，当API version ≥ 12时，传空默认为CE，当API version ＜ 12时，传空默认为DE。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[HuksReturnResult](arkts-universalkeystore-huks-huksreturnresult-i.md)&gt; | 是 | 回调函数。当导出密钥成功时，err为undefined，data为获取到的HuksReturnResult；否则为错误对象 。HuksReturnResult中的outData返回从HUKS中导出的公钥。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
-| [12000020](../errorcode-huks.md#12000020-依赖的模块报错) | the provider operation failed<br>**适用版本：** 26.0.0+ |
-| [12000018](../errorcode-huks.md#12000018-输入参数非法) | the group id specified by the access group tag is invalid<br>**适用版本：** 23+ |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>**适用版本：** 26.0.0+ |
-| [12000026](../errorcode-huks.md#12000026-安全元件故障) | the secure element is not available<br>**适用版本：** 26.0.0+ |
-| [12000024](../errorcode-huks.md#12000024-设备或资源繁忙) | the provider or UKey is busy<br>**适用版本：** 26.0.0+ |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine |
-| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
-| [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
-| [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid<br>**适用版本：** 9 - 11 |
-| [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing<br>**适用版本：** 9 - 11 |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
 | [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | algorithm mode is not supported |
-| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
-| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
+| [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing<br>**适用版本：** 9 - 11 |
+| [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid<br>**适用版本：** 9 - 11 |
+| [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
+| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
+| [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine |
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist |
+| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
+| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
+| [12000018](../errorcode-huks.md#12000018-输入参数非法) | the group id specified by the access group tag is invalid<br>**适用版本：** 23+ |
+| [12000020](../errorcode-huks.md#12000020-依赖的模块报错) | the provider operation failed<br>**适用版本：** 26.0.0+ |
+| [12000024](../errorcode-huks.md#12000024-设备或资源繁忙) | the provider or UKey is busy<br>**适用版本：** 26.0.0+ |
+| [12000026](../errorcode-huks.md#12000026-安全元件故障) | the secure element is not available<br>**适用版本：** 26.0.0+ |
 
 **示例**
 
@@ -82,13 +83,15 @@ huks.exportKeyItem(keyAlias, emptyOptions, (error, data) => {
 function exportKeyItem(keyAlias: string, options: HuksOptions): Promise<HuksReturnResult>
 ```
 
-导出密钥。使用Promise异步回调。 > **说明：** > > 导出[HuksKeySecurityLevel](arkts-universalkeystore-huks-hukskeysecuritylevel-e.md)中定义的SE安全级别公钥需要ohos.permission.ACCESS_SE_KEY权限。
+导出密钥。使用Promise异步回调。
+
+> **说明：**
+> 
+> 导出[HuksKeySecurityLevel](arkts-universalkeystore-huks-hukskeysecuritylevel-e.md)中定义的SE安全级别公钥需要ohos.permission.ACCESS_SE_KEY权限。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-huks-function exportKeyItem(keyAlias: string, options: HuksOptions): Promise<HuksReturnResult>--><!--Device-huks-function exportKeyItem(keyAlias: string, options: HuksOptions): Promise<HuksReturnResult>-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -109,22 +112,22 @@ function exportKeyItem(keyAlias: string, options: HuksOptions): Promise<HuksRetu
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
-| [12000020](../errorcode-huks.md#12000020-依赖的模块报错) | the provider operation failed<br>**适用版本：** 26.0.0+ |
-| [12000018](../errorcode-huks.md#12000018-输入参数非法) | the group id specified by the access group tag is invalid<br>**适用版本：** 23+ |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>**适用版本：** 26.0.0+ |
-| [12000026](../errorcode-huks.md#12000026-安全元件故障) | the secure element is not available<br>**适用版本：** 26.0.0+ |
-| [12000024](../errorcode-huks.md#12000024-设备或资源繁忙) | the provider or UKey is busy<br>**适用版本：** 26.0.0+ |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine |
-| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
-| [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
-| [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid<br>**适用版本：** 9 - 11 |
-| [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing<br>**适用版本：** 9 - 11 |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
 | [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | algorithm mode is not supported |
-| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
-| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
+| [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing<br>**适用版本：** 9 - 11 |
+| [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid<br>**适用版本：** 9 - 11 |
+| [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
+| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
+| [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine |
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist |
+| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
+| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
+| [12000018](../errorcode-huks.md#12000018-输入参数非法) | the group id specified by the access group tag is invalid<br>**适用版本：** 23+ |
+| [12000020](../errorcode-huks.md#12000020-依赖的模块报错) | the provider operation failed<br>**适用版本：** 26.0.0+ |
+| [12000024](../errorcode-huks.md#12000024-设备或资源繁忙) | the provider or UKey is busy<br>**适用版本：** 26.0.0+ |
+| [12000026](../errorcode-huks.md#12000026-安全元件故障) | the secure element is not available<br>**适用版本：** 26.0.0+ |
 
 **示例**
 
@@ -143,4 +146,3 @@ huks.exportKeyItem(keyAlias, emptyOptions)
     console.info(`promise: exportKeyItem success, data = ${JSON.stringify(data)}`);
   });
 ```
-

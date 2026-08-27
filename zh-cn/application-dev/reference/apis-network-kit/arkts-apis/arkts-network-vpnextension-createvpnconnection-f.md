@@ -12,13 +12,15 @@ import { vpnExtension } from '@kit.NetworkKit';
 function createVpnConnection(context: VpnExtensionContext): VpnConnection
 ```
 
-创建一个三方VPN连接对象。 > **说明：** > > 调用createVpnConnection接口前，需要先调用startVpnExtensionAbility接口启用VPN功能。
+创建一个三方VPN连接对象。
+
+> **说明：**
+> 
+> 调用createVpnConnection接口前，需要先调用startVpnExtensionAbility接口启用VPN功能。
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-vpnExtension-function createVpnConnection(context: VpnExtensionContext): VpnConnection--><!--Device-vpnExtension-function createVpnConnection(context: VpnExtensionContext): VpnConnection-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
@@ -39,4 +41,3 @@ function createVpnConnection(context: VpnExtensionContext): VpnConnection
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
-

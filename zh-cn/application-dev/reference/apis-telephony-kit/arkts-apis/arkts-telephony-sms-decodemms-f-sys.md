@@ -3,20 +3,17 @@
 ## 导入模块
 
 ```TypeScript
-import { sms } from '@kit.TelephonyKit';
 ```
 
 ## decodeMms
 
 ```TypeScript
-function decodeMms(mmsFilePathName: string | Array<int>, callback: AsyncCallback<MmsInformation>): void
+function decodeMms(mmsFilePathName: string | Array<number>, callback: AsyncCallback<MmsInformation>): void
 ```
 
 彩信解码。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-sms-function decodeMms(mmsFilePathName: string | Array<int>, callback: AsyncCallback<MmsInformation>): void--><!--Device-sms-function decodeMms(mmsFilePathName: string | Array<int>, callback: AsyncCallback<MmsInformation>): void-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -26,19 +23,19 @@ function decodeMms(mmsFilePathName: string | Array<int>, callback: AsyncCallback
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mmsFilePathName | string \| Array&lt;int&gt; | 是 | 彩信文件路径。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[MmsInformation](arkts-telephony-sms-mmsinformation-i-sys.md)&gt; | 是 | 获取｛@code MmsInformation｝的回调函数。 |
+| mmsFilePathName | string \| Array & lt;number & gt; | 是 | 彩信文件路径。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[MmsInformation](arkts-telephony-sms-mmsinformation-i-sys.md)&gt; | 是 | 获取｛@code MmsInformation｝的回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
-| [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
+| [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
 **示例**
 
@@ -61,14 +58,12 @@ sms.decodeMms(mmsPdu, (err: BusinessError, data: sms.MmsInformation) => {
 ## decodeMms
 
 ```TypeScript
-function decodeMms(mmsFilePathName: string | Array<int>): Promise<MmsInformation>
+function decodeMms(mmsFilePathName: string | Array<number>): Promise<MmsInformation>
 ```
 
 彩信解码。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-sms-function decodeMms(mmsFilePathName: string | Array<int>): Promise<MmsInformation>--><!--Device-sms-function decodeMms(mmsFilePathName: string | Array<int>): Promise<MmsInformation>-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -78,7 +73,7 @@ function decodeMms(mmsFilePathName: string | Array<int>): Promise<MmsInformation
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mmsFilePathName | string \| Array&lt;int&gt; | 是 | 彩信文件路径。 |
+| mmsFilePathName | string \| Array & lt;number & gt; | 是 | 彩信文件路径。 |
 
 **返回值：**
 
@@ -90,12 +85,12 @@ function decodeMms(mmsFilePathName: string | Array<int>): Promise<MmsInformation
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
-| [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
+| [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
 **示例**
 
@@ -119,4 +114,3 @@ promiseArr.then((data: sms.MmsInformation) => {
     console.error(`decodeMms failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
-

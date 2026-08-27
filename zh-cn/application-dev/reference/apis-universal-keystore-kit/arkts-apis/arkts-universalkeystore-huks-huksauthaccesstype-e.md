@@ -4,8 +4,6 @@
 
 **起始版本：** 9
 
-<!--Device-huks-export enum HuksAuthAccessType--><!--Device-huks-export enum HuksAuthAccessType-End-->
-
 **系统能力：** SystemCapability.Security.Huks.Extension
 
 ## HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD
@@ -19,8 +17,6 @@ HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD = 1 << 0
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HuksAuthAccessType-HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD = 1 << 0--><!--Device-HuksAuthAccessType-HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD = 1 << 0-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -36,8 +32,6 @@ HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL = 1 << 1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HuksAuthAccessType-HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL = 1 << 1--><!--Device-HuksAuthAccessType-HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL = 1 << 1-End-->
-
 **系统能力：** SystemCapability.Security.Huks.Extension
 
 ## HUKS_AUTH_ACCESS_ALWAYS_VALID
@@ -52,7 +46,4 @@ HUKS_AUTH_ACCESS_ALWAYS_VALID = 1 << 2
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HuksAuthAccessType-HUKS_AUTH_ACCESS_ALWAYS_VALID = 1 << 2--><!--Device-HuksAuthAccessType-HUKS_AUTH_ACCESS_ALWAYS_VALID = 1 << 2-End-->
-
 **系统能力：** SystemCapability.Security.Huks.Extension
-

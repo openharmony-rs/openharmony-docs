@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { sms } from '@kit.TelephonyKit';
 ```
 
 ## updateSimMessage
@@ -14,11 +13,9 @@ function updateSimMessage(options: UpdateSimMessageOptions, callback: AsyncCallb
 
 更新SIM卡消息。使用callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 7
 
 **需要权限：** ohos.permission.RECEIVE_SMS and ohos.permission.SEND_MESSAGES
-
-<!--Device-sms-function updateSimMessage(options: UpdateSimMessageOptions, callback: AsyncCallback<void>): void--><!--Device-sms-function updateSimMessage(options: UpdateSimMessageOptions, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -29,19 +26,19 @@ function updateSimMessage(options: UpdateSimMessageOptions, callback: AsyncCallb
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [UpdateSimMessageOptions](arkts-telephony-sms-updatesimmessageoptions-i-sys.md) | 是 | 更新SIM卡消息选项。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 更新SIM卡消息的回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 更新SIM卡消息的回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
-| [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
+| [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
 **示例**
 
@@ -70,11 +67,9 @@ function updateSimMessage(options: UpdateSimMessageOptions): Promise<void>
 
 更新SIM卡消息。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 7
 
 **需要权限：** ohos.permission.RECEIVE_SMS and ohos.permission.SEND_MESSAGES
-
-<!--Device-sms-function updateSimMessage(options: UpdateSimMessageOptions): Promise<void>--><!--Device-sms-function updateSimMessage(options: UpdateSimMessageOptions): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -90,19 +85,19 @@ function updateSimMessage(options: UpdateSimMessageOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 以Promise形式返回更新的结果。 |
+| Promise & lt;void & gt; | 以Promise形式返回更新的结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
-| [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
+| [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
 **示例**
 
@@ -124,4 +119,3 @@ promise.then(() => {
     console.error(`updateSimMessage failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
-

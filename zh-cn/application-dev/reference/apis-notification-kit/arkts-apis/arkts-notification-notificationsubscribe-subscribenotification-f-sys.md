@@ -20,8 +20,6 @@ function subscribeNotification(subscriber: NotificationSubscriber): Promise<void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-notificationSubscribe-function subscribeNotification(subscriber: NotificationSubscriber): Promise<void>--><!--Device-notificationSubscribe-function subscribeNotification(subscriber: NotificationSubscriber): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -36,21 +34,19 @@ function subscribeNotification(subscriber: NotificationSubscriber): Promise<void
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.The user does not exist. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
+| [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.The user does not exist. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -65,23 +61,6 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info('subscribeNotification success');
 }).catch((err: BusinessError) => {
   console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
-  console.info(`Consume callback: ${JSON.stringify(data)}`);
-}
-let subscriber: notificationSubscribe.NotificationSubscriber = {
-  onConsume: onConsumeCallback
-};
-notificationSubscribe.subscribeNotification(subscriber).then(() => {
-  console.info('subscribeNotification success');
-}).catch((err: Error) => {
-  let error: BusinessError = err as BusinessError;
-  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -100,8 +79,6 @@ function subscribeNotification(subscriber: NotificationSubscriber, info: Notific
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-notificationSubscribe-function subscribeNotification(subscriber: NotificationSubscriber, info: NotificationSubscribeInfo): Promise<void>--><!--Device-notificationSubscribe-function subscribeNotification(subscriber: NotificationSubscriber, info: NotificationSubscribeInfo): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -117,21 +94,19 @@ function subscribeNotification(subscriber: NotificationSubscriber, info: Notific
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.The user does not exist. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
+| [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.The user does not exist. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -151,24 +126,3 @@ notificationSubscribe.subscribeNotification(subscriber, subscribeInfo).then(() =
   console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
-  console.info(`Consume callback: ${JSON.stringify(data)}`);
-}
-let subscriber: notificationSubscribe.NotificationSubscriber = {
-  onConsume: onConsumeCallback
-};
-let subscribeInfo: notificationSubscribe.NotificationSubscribeInfo = {
-  bundleNames: ['bundleName1', 'bundleName2'],
-}
-notificationSubscribe.subscribeNotification(subscriber, subscribeInfo).then(() => {
-  console.info('subscribeNotification success');
-}).catch((err: Error) => {
-  let error: BusinessError = err as BusinessError;
-  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
-});
-```
-

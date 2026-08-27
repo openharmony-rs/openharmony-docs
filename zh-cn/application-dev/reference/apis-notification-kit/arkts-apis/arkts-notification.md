@@ -6,18 +6,13 @@
 
 **废弃版本：** 9
 
-**替代接口：** notificationSubscribe/notificationSubscribe
-
-<!--Device-unnamed-declare namespace notification--><!--Device-unnamed-declare namespace notification-End-->
+**替代接口：** [notificationManager/notificationManager](arkts-notificationmanager.md)
 
 **系统能力：** SystemCapability.Notification.Notification
 
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from '@kit.NotificationKit';
-import { notificationSubscribe } from '@kit.NotificationKit';
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
 ```
 
 ## 汇总
@@ -156,4 +151,3 @@ import { notificationExtensionSubscription } from '@kit.NotificationKit';
 | [RemoveReason](arkts-notification-notification-removereason-depr-e-sys.md) | 通知删除原因。 |
 | [SourceType](arkts-notification-notification-sourcetype-depr-e-sys.md) | 通知来源类型。 |
 <!--DelEnd-->
-

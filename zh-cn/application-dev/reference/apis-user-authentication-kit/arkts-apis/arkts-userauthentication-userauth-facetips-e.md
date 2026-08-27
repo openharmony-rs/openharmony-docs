@@ -6,8 +6,6 @@
 
 **废弃版本：** 11
 
-<!--Device-userAuth-enum FaceTips--><!--Device-userAuth-enum FaceTips-End-->
-
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 ## FACE_AUTH_TIP_TOO_BRIGHT
@@ -21,8 +19,6 @@ FACE_AUTH_TIP_TOO_BRIGHT = 1
 **起始版本：** 8
 
 **废弃版本：** 11
-
-<!--Device-FaceTips-FACE_AUTH_TIP_TOO_BRIGHT = 1--><!--Device-FaceTips-FACE_AUTH_TIP_TOO_BRIGHT = 1-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -38,8 +34,6 @@ FACE_AUTH_TIP_TOO_DARK = 2
 
 **废弃版本：** 11
 
-<!--Device-FaceTips-FACE_AUTH_TIP_TOO_DARK = 2--><!--Device-FaceTips-FACE_AUTH_TIP_TOO_DARK = 2-End-->
-
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 ## FACE_AUTH_TIP_TOO_CLOSE
@@ -53,8 +47,6 @@ FACE_AUTH_TIP_TOO_CLOSE = 3
 **起始版本：** 8
 
 **废弃版本：** 11
-
-<!--Device-FaceTips-FACE_AUTH_TIP_TOO_CLOSE = 3--><!--Device-FaceTips-FACE_AUTH_TIP_TOO_CLOSE = 3-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -70,8 +62,6 @@ FACE_AUTH_TIP_TOO_FAR = 4
 
 **废弃版本：** 11
 
-<!--Device-FaceTips-FACE_AUTH_TIP_TOO_FAR = 4--><!--Device-FaceTips-FACE_AUTH_TIP_TOO_FAR = 4-End-->
-
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 ## FACE_AUTH_TIP_TOO_HIGH
@@ -85,8 +75,6 @@ FACE_AUTH_TIP_TOO_HIGH = 5
 **起始版本：** 8
 
 **废弃版本：** 11
-
-<!--Device-FaceTips-FACE_AUTH_TIP_TOO_HIGH = 5--><!--Device-FaceTips-FACE_AUTH_TIP_TOO_HIGH = 5-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -102,8 +90,6 @@ FACE_AUTH_TIP_TOO_LOW = 6
 
 **废弃版本：** 11
 
-<!--Device-FaceTips-FACE_AUTH_TIP_TOO_LOW = 6--><!--Device-FaceTips-FACE_AUTH_TIP_TOO_LOW = 6-End-->
-
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 ## FACE_AUTH_TIP_TOO_RIGHT
@@ -117,8 +103,6 @@ FACE_AUTH_TIP_TOO_RIGHT = 7
 **起始版本：** 8
 
 **废弃版本：** 11
-
-<!--Device-FaceTips-FACE_AUTH_TIP_TOO_RIGHT = 7--><!--Device-FaceTips-FACE_AUTH_TIP_TOO_RIGHT = 7-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -134,8 +118,6 @@ FACE_AUTH_TIP_TOO_LEFT = 8
 
 **废弃版本：** 11
 
-<!--Device-FaceTips-FACE_AUTH_TIP_TOO_LEFT = 8--><!--Device-FaceTips-FACE_AUTH_TIP_TOO_LEFT = 8-End-->
-
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 ## FACE_AUTH_TIP_TOO_MUCH_MOTION
@@ -149,8 +131,6 @@ FACE_AUTH_TIP_TOO_MUCH_MOTION = 9
 **起始版本：** 8
 
 **废弃版本：** 11
-
-<!--Device-FaceTips-FACE_AUTH_TIP_TOO_MUCH_MOTION = 9--><!--Device-FaceTips-FACE_AUTH_TIP_TOO_MUCH_MOTION = 9-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -166,8 +146,6 @@ FACE_AUTH_TIP_POOR_GAZE = 10
 
 **废弃版本：** 11
 
-<!--Device-FaceTips-FACE_AUTH_TIP_POOR_GAZE = 10--><!--Device-FaceTips-FACE_AUTH_TIP_POOR_GAZE = 10-End-->
-
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 ## FACE_AUTH_TIP_NOT_DETECTED
@@ -182,7 +160,4 @@ FACE_AUTH_TIP_NOT_DETECTED = 11
 
 **废弃版本：** 11
 
-<!--Device-FaceTips-FACE_AUTH_TIP_NOT_DETECTED = 11--><!--Device-FaceTips-FACE_AUTH_TIP_NOT_DETECTED = 11-End-->
-
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
-

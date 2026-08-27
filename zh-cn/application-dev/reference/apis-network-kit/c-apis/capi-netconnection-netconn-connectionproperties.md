@@ -1,7 +1,7 @@
 # NetConn_ConnectionProperties
 
 ```c
-typedef struct NetConn_ConnectionProperties {...} NetConn_ConnectionProperties
+struct NetConn_ConnectionProperties {...}
 ```
 
 ## 概述

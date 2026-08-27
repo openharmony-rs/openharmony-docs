@@ -1,4 +1,4 @@
-# notificationSorting
+# notificationSorting(Provides sorting information about an active notification)
 
 ## 汇总
 
@@ -7,6 +7,5 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [NotificationSorting](arkts-notification-notificationsorting-notificationsorting-i-sys.md) | 提供有关活动通知的排序信息。 |
+| [NotificationSorting(Provides sorting information about an active notification)](arkts-notification-notificationsorting-notificationsorting-i-sys.md) | 提供有关活动通知的排序信息。 |
 <!--DelEnd-->
-

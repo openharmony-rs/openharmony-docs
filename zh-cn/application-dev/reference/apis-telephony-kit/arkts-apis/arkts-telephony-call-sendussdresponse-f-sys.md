@@ -3,13 +3,12 @@
 ## 导入模块
 
 ```TypeScript
-import { call } from '@kit.TelephonyKit';
 ```
 
 ## sendUssdResponse
 
 ```TypeScript
-function sendUssdResponse(slotId: int, content: string): void
+function sendUssdResponse(slotId: number, content: string): void
 ```
 
 用于向运营商发送USSD业务（Unstructured Supplementary Service Data，非结构化补充数据业务）的响应消息。
@@ -17,8 +16,6 @@ function sendUssdResponse(slotId: int, content: string): void
 **起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
-
-<!--Device-call-function sendUssdResponse(slotId: int, content: string): void--><!--Device-call-function sendUssdResponse(slotId: int, content: string): void-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -28,18 +25,18 @@ function sendUssdResponse(slotId: int, content: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slotId | int | 是 | 表示发送响应的卡槽ID。 |
+| slotId | number | 是 | 表示发送响应的卡槽ID。 |
 | content | string | 是 | 表示响应内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
 | 8400001 | Invalid parameter value. |
 | 8400002 | Operation failed. Cannot connect to service. |
 | 8400003 | System internal error, system database write fail. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
 
 **示例**
 
@@ -49,7 +46,7 @@ import { call } from '@kit.TelephonyKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 function testSendUssdResponse() {
-    const slotId: int = 0;
+    const slotId: number = 0;
     const content: string = "OK";
 
     try {
@@ -60,4 +57,3 @@ function testSendUssdResponse() {
     }
 }
 ```
-

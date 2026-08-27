@@ -1,10 +1,12 @@
-# NetFirewallDnsParams(网络防火墙)
+# NetFirewallDnsParams
 
-防火墙规则DNS信息。 > **说明：**> > 当[addNetFirewallRule](arkts-network-netfirewall-addnetfirewallrule-f.md)的入参rule.type配置为RULE_DNS时，该字段不能为空。
+防火墙规则DNS信息。
+
+> **说明：**
+> 
+> 当[addNetFirewallRule](arkts-network-netfirewall-addnetfirewallrule-f.md)的入参rule.type配置为RULE_DNS时，该字段不能为空。
 
 **起始版本：** 15
-
-<!--Device-netFirewall-interface NetFirewallDnsParams--><!--Device-netFirewall-interface NetFirewallDnsParams-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -26,8 +28,6 @@ primaryDns: string
 
 **起始版本：** 15
 
-<!--Device-NetFirewallDnsParams-primaryDns: string--><!--Device-NetFirewallDnsParams-primaryDns: string-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 ## standbyDns
@@ -42,7 +42,4 @@ standbyDns?: string
 
 **起始版本：** 15
 
-<!--Device-NetFirewallDnsParams-standbyDns?: string--><!--Device-NetFirewallDnsParams-standbyDns?: string-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
-

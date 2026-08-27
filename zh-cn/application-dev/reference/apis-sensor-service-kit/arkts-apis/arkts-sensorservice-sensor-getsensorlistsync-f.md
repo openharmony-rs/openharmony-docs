@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { sensor } from '@kit.SensorServiceKit';
 ```
 
 ## getSensorListSync
@@ -14,9 +13,7 @@ function getSensorListSync(): Array<Sensor>
 
 获取设备上的所有传感器信息，使用同步方式返回结果。
 
-**起始版本：** 23
-
-<!--Device-sensor-function getSensorListSync(): Array<Sensor>--><!--Device-sensor-function getSensorListSync(): Array<Sensor>-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -24,13 +21,13 @@ function getSensorListSync(): Array<Sensor>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;Sensor&gt; | 使用同步方式返回传感器属性列表。 |
+| Array & lt;Sensor & gt; | 使用同步方式返回传感器属性列表。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;   2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **示例**
 
@@ -49,4 +46,3 @@ try {
     console.error(`Failed to get singleSensor . Code: ${e.code}, message: ${e.message}`);
 }
 ```
-

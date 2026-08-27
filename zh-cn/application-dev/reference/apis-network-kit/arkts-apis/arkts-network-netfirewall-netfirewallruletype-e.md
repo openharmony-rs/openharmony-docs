@@ -1,10 +1,8 @@
-# NetFirewallRuleType(网络防火墙)
+# NetFirewallRuleType
 
 枚举类型，防火墙规则类型，包含IP、Domain、DNS。
 
 **起始版本：** 15
-
-<!--Device-netFirewall-enum NetFirewallRuleType--><!--Device-netFirewall-enum NetFirewallRuleType-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -18,8 +16,6 @@ IP类规则。
 
 **起始版本：** 15
 
-<!--Device-NetFirewallRuleType-RULE_IP = 1--><!--Device-NetFirewallRuleType-RULE_IP = 1-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 ## RULE_DOMAIN
@@ -31,8 +27,6 @@ RULE_DOMAIN = 2
 域名类规则。
 
 **起始版本：** 15
-
-<!--Device-NetFirewallRuleType-RULE_DOMAIN = 2--><!--Device-NetFirewallRuleType-RULE_DOMAIN = 2-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -46,7 +40,4 @@ DNS规则。
 
 **起始版本：** 15
 
-<!--Device-NetFirewallRuleType-RULE_DNS = 3--><!--Device-NetFirewallRuleType-RULE_DNS = 3-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-policy-export interface NetworkAccessPolicy--><!--Device-policy-export interface NetworkAccessPolicy-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -28,8 +26,6 @@ allowCellular?: boolean
 
 **起始版本：** 12
 
-<!--Device-NetworkAccessPolicy-allowCellular?: boolean--><!--Device-NetworkAccessPolicy-allowCellular?: boolean-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -45,8 +41,6 @@ allowWiFi?: boolean
 **类型：** boolean
 
 **起始版本：** 12
-
-<!--Device-NetworkAccessPolicy-allowWiFi?: boolean--><!--Device-NetworkAccessPolicy-allowWiFi?: boolean-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -64,8 +58,6 @@ alwaysAllowCellular?: boolean
 
 **起始版本：** 18
 
-<!--Device-NetworkAccessPolicy-alwaysAllowCellular?: boolean--><!--Device-NetworkAccessPolicy-alwaysAllowCellular?: boolean-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -82,9 +74,6 @@ alwaysAllowWiFi?: boolean
 
 **起始版本：** 18
 
-<!--Device-NetworkAccessPolicy-alwaysAllowWiFi?: boolean--><!--Device-NetworkAccessPolicy-alwaysAllowWiFi?: boolean-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 **系统接口：** 此接口为系统接口。
-

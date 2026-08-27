@@ -12,11 +12,9 @@ import { notificationManager } from '@kit.NotificationKit';
 function removeSlot(slotType: SlotType, callback: AsyncCallback<void>): void
 ```
 
-删除当前应用指定类型的通知渠道。使用callback异步回调。 删除后，对应类型的通知渠道及其配置将被永久移除，后续发布该类型通知时系统将自动创建默认渠道。 已通过该渠道发布的通知不受影响，仍可在通知中心查看。 适用于需要重新配置渠道时先删除再创建的场景。
+删除当前应用指定类型的通知渠道。使用callback异步回调。删除后，对应类型的通知渠道及其配置将被永久移除，后续发布该类型通知时系统将自动创建默认渠道。 已通过该渠道发布的通知不受影响，仍可在通知中心查看。 适用于需要重新配置渠道时先删除再创建的场景。
 
-**起始版本：** 23
-
-<!--Device-notificationManager-function removeSlot(slotType: SlotType, callback: AsyncCallback<void>): void--><!--Device-notificationManager-function removeSlot(slotType: SlotType, callback: AsyncCallback<void>): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -33,7 +31,7 @@ removeAllSlots 删除所有通知渠道。
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | slotType | SlotType | 是 | 通知渠道类型，例如社交通讯、服务提醒、内容咨询等类型。 需传入已创建的渠道类型，否则删除操作无效。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当删除指定类型的通知渠道成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当删除指定类型的通知渠道成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -45,8 +43,6 @@ removeAllSlots 删除所有通知渠道。
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -63,23 +59,6 @@ let slotType: notificationManager.SlotType = notificationManager.SlotType.SOCIAL
 notificationManager.removeSlot(slotType, removeSlotCallback);
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// removeSlot回调
-let removeSlotCallback = (err: BusinessError | null): void => {
-  if (err) {
-    console.error(`Failed to remove slot. Code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info(`Succeeded in removing slot.`);
-  }
-}
-let slotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
-notificationManager.removeSlot(slotType, removeSlotCallback);
-```
-
 
 ## removeSlot
 
@@ -87,11 +66,9 @@ notificationManager.removeSlot(slotType, removeSlotCallback);
 function removeSlot(slotType: SlotType): Promise<void>
 ```
 
-删除当前应用指定类型的通知渠道。使用Promise异步回调。 删除后，对应类型的通知渠道及其配置将被永久移除，后续发布该类型通知时系统将自动创建默认渠道。 已通过该渠道发布的通知不受影响，仍可在通知中心查看。 适用于需要重新配置渠道时先删除再创建的场景。
+删除当前应用指定类型的通知渠道。使用Promise异步回调。删除后，对应类型的通知渠道及其配置将被永久移除，后续发布该类型通知时系统将自动创建默认渠道。 已通过该渠道发布的通知不受影响，仍可在通知中心查看。 适用于需要重新配置渠道时先删除再创建的场景。
 
-**起始版本：** 23
-
-<!--Device-notificationManager-function removeSlot(slotType: SlotType): Promise<void>--><!--Device-notificationManager-function removeSlot(slotType: SlotType): Promise<void>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -113,7 +90,7 @@ removeAllSlots 删除所有通知渠道。
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -126,8 +103,6 @@ removeAllSlots 删除所有通知渠道。
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -138,18 +113,3 @@ notificationManager.removeSlot(slotType).then(() => {
   console.error(`Failed to remove slot. Code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let slotType: notificationManager.SlotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
-notificationManager.removeSlot(slotType).then(() => {
-  console.info(`Succeeded in removing slot.`);
-}).catch((err: Error): void => {
-  let error: BusinessError = err as BusinessError;
-  console.error(`Failed to remove slot. Code is ${error.code}, message is ${error.message}`);
-});
-```
-

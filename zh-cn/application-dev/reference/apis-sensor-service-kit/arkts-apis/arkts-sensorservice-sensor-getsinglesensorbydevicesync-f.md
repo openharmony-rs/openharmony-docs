@@ -3,20 +3,17 @@
 ## 导入模块
 
 ```TypeScript
-import { sensor } from '@kit.SensorServiceKit';
 ```
 
 ## getSingleSensorByDeviceSync
 
 ```TypeScript
-function getSingleSensorByDeviceSync(type: SensorId, deviceId?: int): Array<Sensor>
+function getSingleSensorByDeviceSync(type: SensorId, deviceId?: number): Array<Sensor>
 ```
 
 同步获取指定设备和类型的传感器信息。如果存在外设且未指定设备ID，获取到的传感器将是所有符合指定传感器类型的本地和外设传感器。如果不存在外设，则仅获取本地的传感器。
 
-**起始版本：** 23
-
-<!--Device-sensor-function getSingleSensorByDeviceSync(type: SensorId, deviceId?: int): Array<Sensor>--><!--Device-sensor-function getSingleSensorByDeviceSync(type: SensorId, deviceId?: int): Array<Sensor>-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -25,13 +22,13 @@ function getSingleSensorByDeviceSync(type: SensorId, deviceId?: int): Array<Sens
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | [SensorId](arkts-sensorservice-sensor-sensorid-e.md) | 是 | 指定传感器类型。 |
-| deviceId | int | 否 | 设备ID，默认为查询本地设备，默认值为-1，表示本地设备，设备ID需通过 [getSensorList](arkts-sensorservice-sensor-getsensorlist-f.md)查询或者监听设备上下线接口 [sensorStatusChange](arkts-sensorservice-sensor-onsensorstatuschange-f.md)获取。 |
+| deviceId | number | 否 | 设备ID，默认为查询本地设备，默认值为-1，表示本地设备，设备ID需通过 [getSensorList](arkts-sensorservice-sensor-getsensorlist-f.md)查询或者监听设备上下线接口 [sensorStatusChange](arkts-sensorservice-sensor-on-f.md#onsensorstatuschange)获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;Sensor&gt; | 传感器属性列表。 |
+| Array & lt;Sensor & gt; | 传感器属性列表。 |
 
 **示例**
 
@@ -50,4 +47,3 @@ try {
   console.error(`Failed to get sensorList. Code: ${e.code}, message: ${e.message}`);
 }
 ```
-

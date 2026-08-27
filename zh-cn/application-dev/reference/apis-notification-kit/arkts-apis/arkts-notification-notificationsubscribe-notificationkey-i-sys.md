@@ -2,9 +2,7 @@
 
 通知键值。
 
-**起始版本：** 23
-
-<!--Device-notificationSubscribe-export interface NotificationKey--><!--Device-notificationSubscribe-export interface NotificationKey-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -19,16 +17,14 @@ import { notificationSubscribe } from '@kit.NotificationKit';
 ## id
 
 ```TypeScript
-id: int
+id: number
 ```
 
 通知ID。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-NotificationKey-id: int--><!--Device-NotificationKey-id: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -44,11 +40,8 @@ label?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-NotificationKey-label?: string--><!--Device-NotificationKey-label?: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
-

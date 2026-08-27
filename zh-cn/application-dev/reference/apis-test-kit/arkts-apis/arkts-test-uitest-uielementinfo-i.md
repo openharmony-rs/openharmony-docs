@@ -2,16 +2,13 @@
 
 UI事件的相关信息。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare interface UIElementInfo--><!--Device-unnamed-declare interface UIElementInfo-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Test.UiTest
 
 ## 导入模块
 
 ```TypeScript
-import { Component, DisplayRotation, Driver, MatchPattern, MouseButton, ON, On, PointerMatrix, ResizeDirection, UIElementInfo, UIEventObserver, UiDirection, UiWindow, WindowMode, Point, WindowFilter, Rect, TouchPadSwipeOptions, InputTextMode, WindowChangeType, ComponentEventType, WindowChangeOptions, ComponentEventOptions, TouchOptions, KeyOptions, PenKey, PenMode, PenKeyOperation, PenKeyOperationOptions } from '@kit.TestKit';
 import { UiComponent, UiDriver, BY, By } from '@kit.TestKit';
 ```
 
@@ -21,15 +18,13 @@ import { UiComponent, UiDriver, BY, By } from '@kit.TestKit';
 readonly bundleName: string
 ```
 
-应用包名。 从API version 11开始，该接口支持在原子化服务中使用。
+应用包名。从API version 11开始，该接口支持在原子化服务中使用。
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UIElementInfo-readonly bundleName: string--><!--Device-UIElementInfo-readonly bundleName: string-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -39,15 +34,13 @@ readonly bundleName: string
 readonly componentEventType?: ComponentEventType
 ```
 
-控件操作事件类型，若非控件操作事件返回ComponentEventType.COMPONENT_UNDEFINED。 从API version 22开始，该接口支持在原子化服务中使用。
+控件操作事件类型，若非控件操作事件返回ComponentEventType.COMPONENT_UNDEFINED。从API version 22开始，该接口支持在原子化服务中使用。
 
 **类型：** [ComponentEventType](arkts-test-uitest-componenteventtype-e.md)
 
-**起始版本：** 23
+**起始版本：** 22
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UIElementInfo-readonly componentEventType?: ComponentEventType--><!--Device-UIElementInfo-readonly componentEventType?: ComponentEventType-End-->
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -57,15 +50,13 @@ readonly componentEventType?: ComponentEventType
 readonly componentId?: string
 ```
 
-控件id，若非控件操作事件返回空字符串。 从API version 22开始，该接口支持在原子化服务中使用。
+控件id，若非控件操作事件返回空字符串。从API version 22开始，该接口支持在原子化服务中使用。
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 22
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UIElementInfo-readonly componentId?: string--><!--Device-UIElementInfo-readonly componentId?: string-End-->
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -75,15 +66,13 @@ readonly componentId?: string
 readonly componentRect?: Rect
 ```
 
-控件边框信息，若非控件操作事件则返回属性值均为0的Rect对象。 从API version 22开始，该接口支持在原子化服务中使用。
+控件边框信息，若非控件操作事件则返回属性值均为0的Rect对象。从API version 22开始，该接口支持在原子化服务中使用。
 
 **类型：** [Rect](arkts-test-uitest-rect-i.md)
 
-**起始版本：** 23
+**起始版本：** 22
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UIElementInfo-readonly componentRect?: Rect--><!--Device-UIElementInfo-readonly componentRect?: Rect-End-->
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -97,13 +86,27 @@ readonly text: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-UIElementInfo-readonly text: string--><!--Device-UIElementInfo-readonly text: string-End-->
-
 **系统能力：** SystemCapability.Test.UiTest
+
+**示例**
+
+```TypeScript
+// xxx.test.ets
+import { On, ON } from '@kit.TestKit';
+
+let on: On = ON.text('123'); // 使用静态构造器ON创建On对象，指定目标控件的text属性。
+```
+
+```TypeScript
+// xxx.test.ets
+import { BY, By } from '@kit.TestKit';
+
+let by: By = BY.text('123'); // 使用静态构造器BY创建By对象，指定目标控件的text属性。
+```
 
 ## type
 
@@ -111,17 +114,38 @@ readonly text: string
 readonly type: string
 ```
 
-控件/窗口类型。 从API version 11开始，该接口支持在原子化服务中使用。
+控件/窗口类型。从API version 11开始，该接口支持在原子化服务中使用。
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-UIElementInfo-readonly type: string--><!--Device-UIElementInfo-readonly type: string-End-->
-
 **系统能力：** SystemCapability.Test.UiTest
+
+**示例**
+
+```TypeScript
+// xxx.test.ets
+import { On, ON } from '@kit.TestKit';
+
+let on: On = ON.type('Button'); // 使用静态构造器ON创建On对象，指定目标控件的控件类型属性。
+```
+
+```TypeScript
+// xxx.test.ets
+import { On, ON, MatchPattern } from '@kit.TestKit';
+
+let on: On = ON.type('Button', MatchPattern.EQUALS); // 使用静态构造器ON创建On对象，指定目标控件的控件类型属性。
+```
+
+```TypeScript
+// xxx.test.ets
+import { By, BY } from '@kit.TestKit';
+
+let by: By = BY.type('Button'); // 使用静态构造器BY创建By对象，指定目标控件的控件类型属性。
+```
 
 ## windowChangeType
 
@@ -129,33 +153,28 @@ readonly type: string
 readonly windowChangeType?: WindowChangeType
 ```
 
-窗口变化事件类型，若非窗口变化事件返回WindowChangeType.WINDOW_UNDEFINED。 从API version 22开始，该接口支持在原子化服务中使用。
+窗口变化事件类型，若非窗口变化事件返回WindowChangeType.WINDOW_UNDEFINED。从API version 22开始，该接口支持在原子化服务中使用。
 
 **类型：** [WindowChangeType](arkts-test-uitest-windowchangetype-e.md)
 
-**起始版本：** 23
+**起始版本：** 22
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UIElementInfo-readonly windowChangeType?: WindowChangeType--><!--Device-UIElementInfo-readonly windowChangeType?: WindowChangeType-End-->
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Test.UiTest
 
 ## windowId
 
 ```TypeScript
-readonly windowId?: int
+readonly windowId?: number
 ```
 
-控件所属窗口id。 从API version 22开始，该接口支持在原子化服务中使用。
+控件所属窗口id。从API version 22开始，该接口支持在原子化服务中使用。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 22
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-UIElementInfo-readonly windowId?: int--><!--Device-UIElementInfo-readonly windowId?: int-End-->
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Test.UiTest
-

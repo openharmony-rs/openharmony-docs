@@ -3,9 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from '@kit.NotificationKit';
-import { notificationSubscribe } from '@kit.NotificationKit';
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
 ```
 
 ## cancelAll
@@ -22,15 +19,29 @@ function cancelAll(callback: AsyncCallback<void>): void
 
 **替代接口：** [cancelAll](arkts-notification-notificationmanager-cancelall-f.md)
 
-<!--Device-notification-function cancelAll(callback: AsyncCallback<void>): void--><!--Device-notification-function cancelAll(callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 表示被指定的回调方法。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 表示被指定的回调方法。 |
+
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+
+// cancel回调
+let cancelAllCallback = (err: Base.BusinessError) => {
+  if (err) {
+    console.error("cancelAll failed " + JSON.stringify(err));
+  } else {
+    console.info("cancelAll success");
+  }
+}
+Notification.cancelAll(cancelAllCallback);
+```
 
 
 ## cancelAll
@@ -47,13 +58,22 @@ function cancelAll(): Promise<void>
 
 **替代接口：** [cancelAll](arkts-notification-notificationmanager-cancelall-f.md)
 
-<!--Device-notification-function cancelAll(): Promise<void>--><!--Device-notification-function cancelAll(): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
 
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+
+Notification.cancelAll().then(() => {
+  console.info("cancelAll success");
+}).catch((err: Base.BusinessError) => {
+  console.error(`cancelAll failed, code is ${err}`);
+});
+```

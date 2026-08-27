@@ -14,11 +14,9 @@ function isUserGranted(): Promise<boolean>
 
 查询“允许获取本机通知”的开关状态。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **需要权限：** ohos.permission.SUBSCRIBE_NOTIFICATION
-
-<!--Device-notificationExtensionSubscription-function isUserGranted(): Promise<boolean>--><!--Device-notificationExtensionSubscription-function isUserGranted(): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -26,7 +24,7 @@ function isUserGranted(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示功能已启用；返回false表示功能未启用。 |
+| Promise & lt;boolean & gt; | Promise对象。返回true表示功能已启用；返回false表示功能未启用。 |
 
 **错误码：**
 
@@ -37,8 +35,6 @@ function isUserGranted(): Promise<boolean>
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
@@ -51,19 +47,3 @@ notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
   console.error(`isUserGranted fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
-  if (isOpen) {
-    console.info('isUserGranted true');
-  } else {
-    console.info('isUserGranted false');
-  }
-}).catch((error: Error) => {
-  let err = error as BusinessError
-  console.error(`isUserGranted fail, code is ${err.code}, message is ${err.message}`);
-});
-```
-

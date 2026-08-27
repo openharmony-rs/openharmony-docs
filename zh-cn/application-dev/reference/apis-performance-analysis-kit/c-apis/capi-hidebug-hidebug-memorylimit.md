@@ -6,7 +6,7 @@ typedef struct HiDebug_MemoryLimit {...} HiDebug_MemoryLimit
 
 ## 概述
 
-Defines the struct for the memory limit of the application process.
+应用程序进程内存限制结构类型定义。
 
 **起始版本：** 12
 
@@ -20,7 +20,7 @@ Defines the struct for the memory limit of the application process.
 
 | 名称 | 描述 |
 | -- | -- |
-| uint64_t rssLimit | Limit on the physical memory size of the application process, in KB. Currently, the system does not limit thephysical memory size of the process. However, the available physical memory of the process cannot exceed themaximum physical memory of the device. You can call {@link OH_HiDebug_GetSystemMemInfo} to obtain the physicalmemory usage of the device. |
-| uint64_t vssLimit | Limit on the virtual set size, in KB. |
+| uint64_t rssLimit | 应用程序进程可用的物理内存限制，以KB为单位，实际当前系统未对进程可用物理内存做限制，但是进程的可用物理内存仍然不会超过设备的实际最大可用物理内存，当前设备的物理内存使用情况可通过{@link OH_HiDebug_GetSystemMemInfo}获取。 |
+| uint64_t vssLimit | 应用程序进程的虚拟内存限制，以KB为单位。 |
 
 

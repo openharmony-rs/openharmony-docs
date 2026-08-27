@@ -3,22 +3,19 @@
 ## 导入模块
 
 ```TypeScript
-import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## getGraphicsMemorySummary
 
 ```TypeScript
-function getGraphicsMemorySummary(interval?: int): Promise<GraphicsMemorySummary>
+function getGraphicsMemorySummary(interval?: number): Promise<GraphicsMemorySummary>
 ```
 
 获取应用显存数据，使用Promise进行异步回调。
 
-**起始版本：** 23
+**起始版本：** 21
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-hidebug-function getGraphicsMemorySummary(interval?: int): Promise<GraphicsMemorySummary>--><!--Device-hidebug-function getGraphicsMemorySummary(interval?: int): Promise<GraphicsMemorySummary>-End-->
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -26,7 +23,7 @@ function getGraphicsMemorySummary(interval?: int): Promise<GraphicsMemorySummary
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| interval | int | 否 | 显存数据缓存值有效时间，单位为秒。默认值：300。取值范围为[2-3600]。若传入值超出取值范围时，将使用默认值。 当显存数据缓存值存在时间超过该值时，获取最新显存数据并更新缓存值；否则，直接获取缓存值。 取值范围为全体整数。 |
+| interval | number | 否 | 显存数据缓存值有效时间，单位为秒。默认值：300。取值范围为[2-3600]。若传入值超出取值范围时，将使用默认值。当显存数据缓存值存在时间超过该值时，获取最新显存 数据并更新缓存值；否则，直接获取缓存值。 |
 
 **返回值：**
 
@@ -52,4 +49,3 @@ hidebug.getGraphicsMemorySummary().then((ret: hidebug.GraphicsMemorySummary) => 
   console.error(`error code: ${error.code}, error msg: ${error.message}.`);
 })
 ```
-

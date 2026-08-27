@@ -2,16 +2,13 @@
 
 客户端证书类型。
 
-**起始版本：** 23
-
-<!--Device-webSocket-export interface ClientCert--><!--Device-webSocket-export interface ClientCert-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 ## 导入模块
 
 ```TypeScript
-import { webSocket } from '@kit.NetworkKit';
 ```
 
 ## certPath
@@ -24,9 +21,7 @@ certPath: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ClientCert-certPath: string--><!--Device-ClientCert-certPath: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -40,9 +35,7 @@ keyPassword?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ClientCert-keyPassword?: string--><!--Device-ClientCert-keyPassword?: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -56,9 +49,6 @@ keyPath: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ClientCert-keyPath: string--><!--Device-ClientCert-keyPath: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Communication.NetStack
-

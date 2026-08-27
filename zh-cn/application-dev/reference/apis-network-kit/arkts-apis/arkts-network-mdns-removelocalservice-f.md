@@ -19,17 +19,15 @@ function removeLocalService(context: Context, serviceInfo: LocalServiceInfo,
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-mdns-function removeLocalService(context: Context, serviceInfo: LocalServiceInfo,                              callback: AsyncCallback<LocalServiceInfo>): void--><!--Device-mdns-function removeLocalService(context: Context, serviceInfo: LocalServiceInfo,                              callback: AsyncCallback<LocalServiceInfo>): void-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.MDNS
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 应用的上下文。 <br>FA模型的应用Context定义见Context。 <br>Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。 |
+| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 应用的上下文。 FA模型的应用Context定义见Context。 Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。 |
 | serviceInfo | [LocalServiceInfo](arkts-network-mdns-localserviceinfo-i.md) | 是 | MDNS服务的信息。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[LocalServiceInfo](arkts-network-mdns-localserviceinfo-i.md)&gt; | 是 | Callback used to return the result. If the operation is successful, **error** is **undefined** and **data** is the MDNS服务的信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[LocalServiceInfo](arkts-network-mdns-localserviceinfo-i.md)&gt; | 是 | Callback used to return the result. If the operation is successful, **error** is **undefined** and **data** is the MDNS服务的信息。 |
 
 **错误码：**
 
@@ -83,15 +81,13 @@ function removeLocalService(context: Context, serviceInfo: LocalServiceInfo): Pr
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-mdns-function removeLocalService(context: Context, serviceInfo: LocalServiceInfo): Promise<LocalServiceInfo>--><!--Device-mdns-function removeLocalService(context: Context, serviceInfo: LocalServiceInfo): Promise<LocalServiceInfo>-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.MDNS
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 应用的上下文。 <br>FA模型的应用Context定义见Context。 <br>Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。 |
+| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 应用的上下文。 FA模型的应用Context定义见Context。 Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。 |
 | serviceInfo | [LocalServiceInfo](arkts-network-mdns-localserviceinfo-i.md) | 是 | MDNS服务的信息。 |
 
 **返回值：**
@@ -136,4 +132,3 @@ mdns.removeLocalService(context, localServiceInfo).then((data: mdns.LocalService
   console.info(JSON.stringify(data));
 });
 ```
-

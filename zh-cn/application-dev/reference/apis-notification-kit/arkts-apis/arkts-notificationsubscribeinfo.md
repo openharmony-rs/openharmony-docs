@@ -1,4 +1,4 @@
-# notificationSubscribeInfo
+# notificationSubscribeInfo(Sets filter criteria of publishers for subscribing to desired notifications)
 
 ## 汇总
 
@@ -7,8 +7,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [NotificationSubscribeInfo](arkts-notification-notificationsubscribeinfo-notificationsubscribeinfo-i-sys.md) | 通知发布者的信息。 |
-| [PictureOptions](arkts-notification-notificationsubscribeinfo-pictureoptions-i-sys.md) | 实况通知图片配置项。 |
-| [VoiceContentOptions](arkts-notification-notificationsubscribeinfo-voicecontentoptions-i-sys.md) | 通知语音播报配置项。 |
+| [NotificationSubscribeInfo(Sets filter criteria of publishers for subscribing to desired notifications)](arkts-notification-notificationsubscribeinfo-notificationsubscribeinfo-i-sys.md) | 通知发布者的信息。 |
+| [PictureOptions(Sets filter criteria of publishers for subscribing to desired notifications)](arkts-notification-notificationsubscribeinfo-pictureoptions-i-sys.md) | 实况通知图片配置项。 |
+| [VoiceContentOptions(Sets filter criteria of publishers for subscribing to desired notifications)](arkts-notification-notificationsubscribeinfo-voicecontentoptions-i-sys.md) | 通知语音播报配置项。 |
 <!--DelEnd-->
-

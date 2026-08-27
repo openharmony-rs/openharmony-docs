@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { call } from '@kit.TelephonyKit';
 ```
 
 ## hasVoiceCapability
@@ -14,9 +13,7 @@ function hasVoiceCapability(): boolean
 
 检查当前设备是否具备语音通话能力。
 
-**起始版本：** 23
-
-<!--Device-call-function hasVoiceCapability(): boolean--><!--Device-call-function hasVoiceCapability(): boolean-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -32,4 +29,3 @@ function hasVoiceCapability(): boolean
 let result: boolean = call.hasVoiceCapability();
 console.info(`hasVoiceCapability: ${JSON.stringify(result)}`);
 ```
-

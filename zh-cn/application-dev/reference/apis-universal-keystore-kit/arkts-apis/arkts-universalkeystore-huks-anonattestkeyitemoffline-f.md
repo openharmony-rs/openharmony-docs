@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';
-import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 ```
 
 ## anonAttestKeyItemOffline
@@ -13,15 +12,29 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 function anonAttestKeyItemOffline(keyAlias: string, params: HuksParam[]): Promise<HuksReturnResult>
 ```
 
-离线模式下获取匿名化密钥证书。使用Promise异步回调。 > **说明：** > > - 离线密钥证明依赖网络，需要定期联网使用该接口以更新离线证书，推荐优先使用离线匿名密钥证明。 > > - 离线匿名密钥证明需保证本地时间是准确的，否则可能导致对端校验证书超期失败。 > **说明：**> > > - Offline key attestation depends on the network. You need to periodically connect to the network to use this API > to update the offline certificate. Offline anonymous key attestation is recommended. > > > - Offline anonymous key attestation requires that the local time be accurate. Otherwise, the peer end may fail to > verify the certificate expiration。
+离线模式下获取匿名化密钥证书。使用Promise异步回调。
+
+> **说明：**
+> 
+> - 离线密钥证明依赖网络，需要定期联网使用该接口以更新离线证书，推荐优先使用离线匿名密钥证明。
+> 
+> - 离线匿名密钥证明需保证本地时间是准确的，否则可能导致对端校验证书超期失败。
+
+> **说明：**
+> 
+> 
+> - Offline key attestation depends on the network. You need to periodically connect to the network to use this API
+> to update the offline certificate. Offline anonymous key attestation is recommended.
+> 
+> 
+> - Offline anonymous key attestation requires that the local time be accurate. Otherwise, the peer end may fail to
+> verify the certificate expiration。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-huks-function anonAttestKeyItemOffline(keyAlias: string, params: HuksParam[]): Promise<HuksReturnResult>--><!--Device-huks-function anonAttestKeyItemOffline(keyAlias: string, params: HuksParam[]): Promise<HuksReturnResult>-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -43,16 +56,16 @@ function anonAttestKeyItemOffline(keyAlias: string, params: HuksParam[]): Promis
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | The API is not supported. |
-| [12000006](../errorcode-huks.md#12000006-算法库操作失败) | The encryption engine is faulty. |
-| [12000005](../errorcode-huks.md#12000005-进程通信错误) | The IPC communication failed. |
-| [12000004](../errorcode-huks.md#12000004-文件错误) | The file operation failed. |
-| [12000018](../errorcode-huks.md#12000018-输入参数非法) | The parameter is incorrect. Possible causes: 1. A mandatory parameter is left empty. 2. The parameter type is incorrect. 3. The parameter verification failed. 4. The group ID specified by the access group tag is invalid. |
 | [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | The algorithm mode is not supported. |
-| [12000014](../errorcode-huks.md#12000014-内存不足) | The memory is insufficient. |
-| [12000012](../errorcode-huks.md#12000012-外部错误) | The device environment or input parameter is abnormal. |
+| [12000004](../errorcode-huks.md#12000004-文件错误) | The file operation failed. |
+| [12000005](../errorcode-huks.md#12000005-进程通信错误) | The IPC communication failed. |
+| [12000006](../errorcode-huks.md#12000006-算法库操作失败) | The encryption engine is faulty. |
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | The queried entity does not exist. |
-| [12000027](../errorcode-huks.md#12000027-网络不可用) | The network is unavailable. Check network connections. |
+| [12000012](../errorcode-huks.md#12000012-外部错误) | The device environment or input parameter is abnormal. |
+| [12000014](../errorcode-huks.md#12000014-内存不足) | The memory is insufficient. |
+| [12000018](../errorcode-huks.md#12000018-输入参数非法) | The parameter is incorrect. Possible causes: 1. A mandatory parameter is left empty. 2. The parameter type is incorrect. 3. The parameter verification failed. 4. The group ID specified by the access group tag is invalid. |
 | [12000024](../errorcode-huks.md#12000024-设备或资源繁忙) | The operation times out. This may be caused by network jitter. You can try again later. |
+| [12000027](../errorcode-huks.md#12000027-网络不可用) | The network is unavailable. Check network connections. |
 
 **示例**
 
@@ -70,7 +83,7 @@ function stringToUint8Array(str: string): Uint8Array {
 }
 
 let challenge = stringToUint8Array('challenge_data');
-let keyAliasString = "key anon local attest";
+let keyAliasString = 'key anon local attest';
 
 /* 1. 生成密钥 */
 async function generateKey(alias: string) {
@@ -122,4 +135,3 @@ async function anonAttestKeyOffline() {
   await huks.anonAttestKeyItemOffline(aliasString, properties);
 }
 ```
-

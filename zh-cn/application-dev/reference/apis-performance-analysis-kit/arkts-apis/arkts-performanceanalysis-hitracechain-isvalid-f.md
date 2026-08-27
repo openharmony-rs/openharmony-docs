@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { hiTraceChain } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## isValid
@@ -14,9 +13,7 @@ function isValid(id: HiTraceId): boolean
 
 判断HiTraceId是否有效，同步接口。
 
-**起始版本：** 23
-
-<!--Device-hiTraceChain-function isValid(id: HiTraceId): boolean--><!--Device-hiTraceChain-function isValid(id: HiTraceId): boolean-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
 
@@ -45,4 +42,3 @@ if (traceIdIsvalid) {
 // 业务结束，结束跟踪。
 hiTraceChain.end(traceId);
 ```
-

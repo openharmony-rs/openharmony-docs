@@ -2,9 +2,7 @@
 
 勿扰模式的配置信息。
 
-**起始版本：** 23
-
-<!--Device-notificationManager-export interface DoNotDisturbProfile--><!--Device-notificationManager-export interface DoNotDisturbProfile-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -19,16 +17,14 @@ import { notificationManager } from '@kit.NotificationKit';
 ## id
 
 ```TypeScript
-id: long
+id: number
 ```
 
 勿扰模式编号。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-DoNotDisturbProfile-id: long--><!--Device-DoNotDisturbProfile-id: long-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -44,9 +40,7 @@ name: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-DoNotDisturbProfile-name: string--><!--Device-DoNotDisturbProfile-name: string-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -62,11 +56,8 @@ trustlist?: Array<BundleOption>
 
 **类型：** Array&lt;BundleOption&gt;
 
-**起始版本：** 23
-
-<!--Device-DoNotDisturbProfile-trustlist?: Array<BundleOption>--><!--Device-DoNotDisturbProfile-trustlist?: Array<BundleOption>-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
-

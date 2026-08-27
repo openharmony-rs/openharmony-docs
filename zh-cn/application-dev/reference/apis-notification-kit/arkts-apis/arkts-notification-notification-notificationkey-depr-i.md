@@ -6,16 +6,11 @@
 
 **废弃版本：** 9
 
-<!--Device-notification-export interface NotificationKey--><!--Device-notification-export interface NotificationKey-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from '@kit.NotificationKit';
-import { notificationSubscribe } from '@kit.NotificationKit';
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
 ```
 
 ## id
@@ -33,8 +28,6 @@ id: number
 **废弃版本：** 9
 
 **替代接口：** NotificationKey
-
-<!--Device-NotificationKey-id: number--><!--Device-NotificationKey-id: number-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -54,7 +47,4 @@ label?: string
 
 **替代接口：** NotificationKey
 
-<!--Device-NotificationKey-label?: string--><!--Device-NotificationKey-label?: string-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
-

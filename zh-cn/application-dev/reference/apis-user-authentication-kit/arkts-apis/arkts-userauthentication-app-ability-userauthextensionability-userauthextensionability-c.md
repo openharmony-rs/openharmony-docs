@@ -1,14 +1,12 @@
 # UserAuthExtensionAbility（系统接口）
 
-用户认证扩展能力组件
+用户认证扩展能力组件@extends UIExtensionAbility
 
 **继承/实现关系：** UserAuthExtensionAbility extends [UIExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)
 
-**起始版本：** 23
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-unnamed-export default class UserAuthExtensionAbility--><!--Device-unnamed-export default class UserAuthExtensionAbility-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -19,4 +17,3 @@
 ```TypeScript
 import { UserAuthExtensionAbility } from '@kit.UserAuthenticationKit';
 ```
-

@@ -2,31 +2,26 @@
 
 指示传感器信息。
 
-**起始版本：** 23
-
-<!--Device-sensor-interface Sensor--><!--Device-sensor-interface Sensor-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
 ## 导入模块
 
 ```TypeScript
-import { sensor } from '@kit.SensorServiceKit';
 ```
 
 ## deviceId
 
 ```TypeScript
-deviceId?: int
+deviceId?: number
 ```
 
 设备ID。-1表示本地设备，其它值表示远程设备。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Sensor-deviceId?: int--><!--Device-Sensor-deviceId?: int-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -40,9 +35,7 @@ deviceName?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Sensor-deviceName?: string--><!--Device-Sensor-deviceName?: string-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -56,9 +49,7 @@ firmwareVersion:string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Sensor-firmwareVersion:string--><!--Device-Sensor-firmwareVersion:string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -72,9 +63,7 @@ hardwareVersion:string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Sensor-hardwareVersion:string--><!--Device-Sensor-hardwareVersion:string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -88,9 +77,7 @@ isLocalSensor?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-Sensor-isLocalSensor?: boolean--><!--Device-Sensor-isLocalSensor?: boolean-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -106,119 +93,103 @@ isMockSensor?: boolean
 
 **起始版本：** 23
 
-<!--Device-Sensor-isMockSensor?: boolean--><!--Device-Sensor-isMockSensor?: boolean-End-->
-
 **系统能力：** SystemCapability.Sensors.Sensor
 
 ## maxRange
 
 ```TypeScript
-maxRange:double
+maxRange:number
 ```
 
 传感器最大测量范围。单位：取决于具体传感器类型（如加速度传感器为m/s²）。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Sensor-maxRange:double--><!--Device-Sensor-maxRange:double-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
 ## maxSamplePeriod
 
 ```TypeScript
-maxSamplePeriod:long
+maxSamplePeriod:number
 ```
 
 传感器最大采样周期。单位：ns（纳秒）。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Sensor-maxSamplePeriod:long--><!--Device-Sensor-maxSamplePeriod:long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
 ## minSamplePeriod
 
 ```TypeScript
-minSamplePeriod:long
+minSamplePeriod:number
 ```
 
 传感器最小采样周期。单位：ns（纳秒）。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Sensor-minSamplePeriod:long--><!--Device-Sensor-minSamplePeriod:long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
 ## power
 
 ```TypeScript
-power:double
+power:number
 ```
 
 传感器估计功耗。单位：mA（毫安）。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Sensor-power:double--><!--Device-Sensor-power:double-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
 ## precision
 
 ```TypeScript
-precision:double
+precision:number
 ```
 
 传感器精度。单位：取决于具体传感器类型。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Sensor-precision:double--><!--Device-Sensor-precision:double-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
 ## sensorId
 
 ```TypeScript
-sensorId:int
+sensorId:number
 ```
 
 传感器类型ID，对应[SensorId](arkts-sensorservice-sensor-sensorid-e.md)枚举值。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Sensor-sensorId:int--><!--Device-Sensor-sensorId:int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
 ## sensorIndex
 
 ```TypeScript
-sensorIndex?: int
+sensorIndex?: number
 ```
 
 传感器索引，同一类型传感器可能有多个实例，通过sensorIndex区分。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Sensor-sensorIndex?: int--><!--Device-Sensor-sensorIndex?: int-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -232,9 +203,7 @@ sensorName:string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Sensor-sensorName:string--><!--Device-Sensor-sensorName:string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -248,9 +217,6 @@ vendorName:string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Sensor-vendorName:string--><!--Device-Sensor-vendorName:string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Sensors.Sensor
-

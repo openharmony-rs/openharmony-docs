@@ -2,16 +2,13 @@
 
 APN信息。
 
-**起始版本：** 23
-
-<!--Device-data-interface ApnInfo--><!--Device-data-interface ApnInfo-End-->
+**起始版本：** 16
 
 **系统能力：** SystemCapability.Telephony.CellularData
 
 ## 导入模块
 
 ```TypeScript
-import { data } from '@kit.TelephonyKit';
 ```
 
 ## apn
@@ -24,9 +21,7 @@ APN。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ApnInfo-apn: string--><!--Device-ApnInfo-apn: string-End-->
+**起始版本：** 16
 
 **系统能力：** SystemCapability.Telephony.CellularData
 
@@ -40,9 +35,7 @@ APN名称。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ApnInfo-apnName: string--><!--Device-ApnInfo-apnName: string-End-->
+**起始版本：** 16
 
 **系统能力：** SystemCapability.Telephony.CellularData
 
@@ -56,9 +49,7 @@ Sim卡的mcc。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ApnInfo-mcc: string--><!--Device-ApnInfo-mcc: string-End-->
+**起始版本：** 16
 
 **系统能力：** SystemCapability.Telephony.CellularData
 
@@ -72,9 +63,7 @@ mmsproxy?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ApnInfo-mmsproxy?: string--><!--Device-ApnInfo-mmsproxy?: string-End-->
+**起始版本：** 16
 
 **系统能力：** SystemCapability.Telephony.CellularData
 
@@ -88,9 +77,7 @@ Sim卡的mnc。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ApnInfo-mnc: string--><!--Device-ApnInfo-mnc: string-End-->
+**起始版本：** 16
 
 **系统能力：** SystemCapability.Telephony.CellularData
 
@@ -104,9 +91,7 @@ proxy?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ApnInfo-proxy?: string--><!--Device-ApnInfo-proxy?: string-End-->
+**起始版本：** 16
 
 **系统能力：** SystemCapability.Telephony.CellularData
 
@@ -120,9 +105,7 @@ APN类型。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ApnInfo-type?: string--><!--Device-ApnInfo-type?: string-End-->
+**起始版本：** 16
 
 **系统能力：** SystemCapability.Telephony.CellularData
 
@@ -136,9 +119,6 @@ user?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ApnInfo-user?: string--><!--Device-ApnInfo-user?: string-End-->
+**起始版本：** 16
 
 **系统能力：** SystemCapability.Telephony.CellularData
-

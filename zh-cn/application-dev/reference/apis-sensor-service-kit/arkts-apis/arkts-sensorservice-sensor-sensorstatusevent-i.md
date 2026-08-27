@@ -2,31 +2,26 @@
 
 设备状态变化事件数据，用于描述传感器上下线事件的信息。
 
-**起始版本：** 23
-
-<!--Device-sensor-interface SensorStatusEvent--><!--Device-sensor-interface SensorStatusEvent-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
 ## 导入模块
 
 ```TypeScript
-import { sensor } from '@kit.SensorServiceKit';
 ```
 
 ## deviceId
 
 ```TypeScript
-deviceId: int
+deviceId: number
 ```
 
 设备ID。-1表示本地设备，其它值表示远程设备。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SensorStatusEvent-deviceId: int--><!--Device-SensorStatusEvent-deviceId: int-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -40,9 +35,7 @@ deviceName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SensorStatusEvent-deviceName: string--><!--Device-SensorStatusEvent-deviceName: string-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -56,57 +49,48 @@ isSensorOnline: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-SensorStatusEvent-isSensorOnline: boolean--><!--Device-SensorStatusEvent-isSensorOnline: boolean-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
 ## sensorId
 
 ```TypeScript
-sensorId: int
+sensorId: number
 ```
 
 传感器类型ID，对应[SensorId](arkts-sensorservice-sensor-sensorid-e.md)枚举值。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SensorStatusEvent-sensorId: int--><!--Device-SensorStatusEvent-sensorId: int-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
 ## sensorIndex
 
 ```TypeScript
-sensorIndex: int
+sensorIndex: number
 ```
 
 传感器索引，同一类型传感器可能有多个实例，通过sensorIndex区分。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SensorStatusEvent-sensorIndex: int--><!--Device-SensorStatusEvent-sensorIndex: int-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
 ## timestamp
 
 ```TypeScript
-timestamp: long
+timestamp: number
 ```
 
 事件发生的时间戳。从设备开机开始计时到事件发生的时间。单位：ms（毫秒）。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SensorStatusEvent-timestamp: long--><!--Device-SensorStatusEvent-timestamp: long-End-->
+**起始版本：** 19
 
 **系统能力：** SystemCapability.Sensors.Sensor
-

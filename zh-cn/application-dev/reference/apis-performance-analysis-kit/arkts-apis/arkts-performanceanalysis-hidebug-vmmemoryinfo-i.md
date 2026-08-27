@@ -2,16 +2,13 @@
 
 VM内存信息。
 
-**起始版本：** 23
-
-<!--Device-hidebug-interface VMMemoryInfo--><!--Device-hidebug-interface VMMemoryInfo-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## 导入模块
 
 ```TypeScript
-import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## allArraySize
@@ -24,9 +21,7 @@ allArraySize: bigint
 
 **类型：** bigint
 
-**起始版本：** 23
-
-<!--Device-VMMemoryInfo-allArraySize: bigint--><!--Device-VMMemoryInfo-allArraySize: bigint-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -40,9 +35,7 @@ heapUsed: bigint
 
 **类型：** bigint
 
-**起始版本：** 23
-
-<!--Device-VMMemoryInfo-heapUsed: bigint--><!--Device-VMMemoryInfo-heapUsed: bigint-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -56,9 +49,6 @@ totalHeap: bigint
 
 **类型：** bigint
 
-**起始版本：** 23
-
-<!--Device-VMMemoryInfo-totalHeap: bigint--><!--Device-VMMemoryInfo-totalHeap: bigint-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
-

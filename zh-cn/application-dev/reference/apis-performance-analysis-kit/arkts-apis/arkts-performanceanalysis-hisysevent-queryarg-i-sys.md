@@ -2,9 +2,7 @@
 
 系统事件查询参数对象接口。
 
-**起始版本：** 23
-
-<!--Device-hiSysEvent-interface QueryArg--><!--Device-hiSysEvent-interface QueryArg-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
@@ -13,22 +11,19 @@
 ## 导入模块
 
 ```TypeScript
-import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## beginTime
 
 ```TypeScript
-beginTime: long
+beginTime: number
 ```
 
 查询的系统事件起始时间（13位时间戳），表示距1970年1月1日0时0分0秒0毫秒的毫秒数。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-QueryArg-beginTime: long--><!--Device-QueryArg-beginTime: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
@@ -37,16 +32,14 @@ beginTime: long
 ## endTime
 
 ```TypeScript
-endTime: long
+endTime: number
 ```
 
 查询的系统事件结束时间（13位时间戳），表示距1970年1月1日0时0分0秒0毫秒的毫秒数。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-QueryArg-endTime: long--><!--Device-QueryArg-endTime: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
@@ -55,16 +48,14 @@ endTime: long
 ## fromSeq
 
 ```TypeScript
-fromSeq?: long | null | undefined
+fromSeq?: number
 ```
 
 查询的系统事件起始序列号，默认值为-1。
 
-**类型：** long \| null \| undefined
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-QueryArg-fromSeq?: long | null | undefined--><!--Device-QueryArg-fromSeq?: long | null | undefined-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
@@ -73,16 +64,14 @@ fromSeq?: long | null | undefined
 ## maxEvents
 
 ```TypeScript
-maxEvents: long
+maxEvents: number
 ```
 
 查询的系统事件最多条数。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-QueryArg-maxEvents: long--><!--Device-QueryArg-maxEvents: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
@@ -91,18 +80,15 @@ maxEvents: long
 ## toSeq
 
 ```TypeScript
-toSeq?: long | null | undefined
+toSeq?: number
 ```
 
 查询的系统事件结束序列号，默认值为-1。
 
-**类型：** long \| null \| undefined
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-QueryArg-toSeq?: long | null | undefined--><!--Device-QueryArg-toSeq?: long | null | undefined-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
 **系统接口：** 此接口为系统接口。
-

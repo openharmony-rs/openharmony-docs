@@ -8,9 +8,6 @@ type UDPSocket = socket.UDPSocket
 
 **起始版本：** 8
 
-<!--Device-connection-type UDPSocket = socket.UDPSocket--><!--Device-connection-type UDPSocket = socket.UDPSocket-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
 
 **属性类型：** socket.UDPSocket
-

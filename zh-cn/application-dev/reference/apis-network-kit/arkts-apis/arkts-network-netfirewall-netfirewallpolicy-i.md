@@ -1,10 +1,8 @@
-# NetFirewallPolicy(网络防火墙)
+# NetFirewallPolicy
 
 防火墙策略，包含防火墙开关状态，默认的出站/入站行为（允许/阻止）。
 
 **起始版本：** 15
-
-<!--Device-netFirewall-interface NetFirewallPolicy--><!--Device-netFirewall-interface NetFirewallPolicy-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -26,8 +24,6 @@ inAction: FirewallRuleAction
 
 **起始版本：** 15
 
-<!--Device-NetFirewallPolicy-inAction: FirewallRuleAction--><!--Device-NetFirewallPolicy-inAction: FirewallRuleAction-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 ## isOpen
@@ -41,8 +37,6 @@ isOpen: boolean
 **类型：** boolean
 
 **起始版本：** 15
-
-<!--Device-NetFirewallPolicy-isOpen: boolean--><!--Device-NetFirewallPolicy-isOpen: boolean-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -58,7 +52,4 @@ outAction: FirewallRuleAction
 
 **起始版本：** 15
 
-<!--Device-NetFirewallPolicy-outAction: FirewallRuleAction--><!--Device-NetFirewallPolicy-outAction: FirewallRuleAction-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
-

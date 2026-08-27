@@ -10,4 +10,3 @@
 - [C API](c-apis/Readme-CN.md)<!--c-notification-kit-->
 - 错误码<!--notification-arkts-errcode-->
   - [通知错误码](errorcode-notification.md)
-

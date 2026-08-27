@@ -4,14 +4,11 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-http-export interface ValidationContext--><!--Device-http-export interface ValidationContext-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
 
 ## 导入模块
 
 ```TypeScript
-import { http } from '@kit.NetworkKit';
 ```
 
 ## host
@@ -27,8 +24,6 @@ host: string
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ValidationContext-host: string--><!--Device-ValidationContext-host: string-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -46,8 +41,6 @@ ip: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ValidationContext-ip: string--><!--Device-ValidationContext-ip: string-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
 
 ## pemCerts
@@ -63,8 +56,6 @@ pemCerts: string[]
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ValidationContext-pemCerts: string[]--><!--Device-ValidationContext-pemCerts: string[]-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -82,7 +73,4 @@ X509证书链
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ValidationContext-x509Certs: X509Cert[]--><!--Device-ValidationContext-x509Certs: X509Cert[]-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
-

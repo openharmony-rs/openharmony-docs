@@ -6,7 +6,7 @@ typedef struct HiDebug_NativeStackFrame {...} HiDebug_NativeStackFrame
 
 ## 概述
 
-Defines the native stack frame content.
+native栈帧内容的定义。
 
 **起始版本：** 20
 
@@ -20,11 +20,11 @@ Defines the native stack frame content.
 
 | 名称 | 描述 |
 | -- | -- |
-| uint64_t relativePc | Relative PC address, which is the offset of the current PC relative to the start address of its mapping area (such as an executable file or shared library). |
-| uint64_t funcOffset | Offset of the function corresponding to the current stack frame in its mapping area (such as an executable fileor shared library). |
-| const char* mapName | Name of the mapping area to which the current stack frame belongs. |
-| const char* functionName | Name of the function corresponding to the current stack frame. |
-| const char* buildId | Build ID that uniquely identifies the current mapping area (such as an executable file or shared library).During debugging and symbol parsing, **buildId** ensures that the symbol file version matches the actual binaryfile version. |
-| const char* reserved | Reserved field for future extension. |
+| uint64_t relativePc | 相对pc地址。当前pc相对于其所在的映射区域（如可执行文件或共享库）起始地址的偏移量。 |
+| uint64_t funcOffset | 函数偏移量。当前栈帧对应的函数在其所在的映射区域（如可执行文件或共享库）内的偏移量。 |
+| const char* mapName | 映射名称。当前栈帧所属的映射区域的名称。 |
+| const char* functionName | 函数名称。当前栈帧对应的函数的名称。 |
+| const char* buildId | 构建标识符。当前映射区域（如可执行文件或共享库）相关的唯一标识符。在调试和符号解析时，buildId可确保使用的符号文件与实际运行的二进制文件版本一致。 |
+| const char* reserved | 保留字段。为了后续扩展预留的字段。 |
 
 

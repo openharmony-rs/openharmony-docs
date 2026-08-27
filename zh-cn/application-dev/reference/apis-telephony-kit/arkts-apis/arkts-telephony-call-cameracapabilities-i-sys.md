@@ -2,9 +2,7 @@
 
 视频通话本端相机画面分辨率信息。
 
-**起始版本：** 23
-
-<!--Device-call-export interface CameraCapabilities--><!--Device-call-export interface CameraCapabilities-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -13,22 +11,19 @@
 ## 导入模块
 
 ```TypeScript
-import { call } from '@kit.TelephonyKit';
 ```
 
 ## callId
 
 ```TypeScript
-callId: int
+callId: number
 ```
 
 呼叫Id。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-CameraCapabilities-callId: int--><!--Device-CameraCapabilities-callId: int-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -37,16 +32,14 @@ callId: int
 ## height
 
 ```TypeScript
-height: int
+height: number
 ```
 
 本端画面图像尺寸高(像素)。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-CameraCapabilities-height: int--><!--Device-CameraCapabilities-height: int-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -55,18 +48,15 @@ height: int
 ## width
 
 ```TypeScript
-width: int
+width: number
 ```
 
 本端画面图像尺寸宽(像素)。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-CameraCapabilities-width: int--><!--Device-CameraCapabilities-width: int-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
 **系统接口：** 此接口为系统接口。
-

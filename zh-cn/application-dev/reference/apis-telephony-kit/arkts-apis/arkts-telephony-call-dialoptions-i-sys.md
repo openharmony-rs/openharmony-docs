@@ -2,31 +2,29 @@
 
 拨打电话的可选参数。
 
-**起始版本：** 23
-
-<!--Device-call-export interface DialOptions--><!--Device-call-export interface DialOptions-End-->
+**起始版本：** 6
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
 ## 导入模块
 
 ```TypeScript
-import { call } from '@kit.TelephonyKit';
 ```
 
 ## accountId
 
 ```TypeScript
-accountId?: int
+accountId?: number
 ```
 
-帐户Id。 - 0：卡槽1。 - 1：卡槽2。 。此接口为系统接口。
+帐户Id。  
+- 0：卡槽1。  
+- 1：卡槽2。  
+。此接口为系统接口。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-DialOptions-accountId?: int--><!--Device-DialOptions-accountId?: int-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -42,9 +40,7 @@ dialScene?: DialScene
 
 **类型：** [DialScene](arkts-telephony-call-dialscene-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-DialOptions-dialScene?: DialScene--><!--Device-DialOptions-dialScene?: DialScene-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -60,9 +56,7 @@ dialType?: DialType
 
 **类型：** [DialType](arkts-telephony-call-dialtype-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-DialOptions-dialType?: DialType--><!--Device-DialOptions-dialType?: DialType-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -78,11 +72,8 @@ videoState?: VideoStateType
 
 **类型：** [VideoStateType](arkts-telephony-call-videostatetype-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-DialOptions-videoState?: VideoStateType--><!--Device-DialOptions-videoState?: VideoStateType-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
 **系统接口：** 此接口为系统接口。
-

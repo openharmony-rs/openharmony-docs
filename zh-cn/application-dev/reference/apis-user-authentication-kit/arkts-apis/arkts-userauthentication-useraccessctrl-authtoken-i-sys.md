@@ -2,9 +2,7 @@
 
 认证令牌数据。表示校验通过后返回解析后的AuthToken数据，包含认证的详细信息，如挑战值、认证信任等级、认证类型、用户ID等。
 
-**起始版本：** 23
-
-<!--Device-userAccessCtrl-interface AuthToken--><!--Device-userAccessCtrl-interface AuthToken-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -26,9 +24,7 @@ authTrustLevel: userAuth.AuthTrustLevel
 
 **类型：** userAuth.AuthTrustLevel
 
-**起始版本：** 23
-
-<!--Device-AuthToken-authTrustLevel: userAuth.AuthTrustLevel--><!--Device-AuthToken-authTrustLevel: userAuth.AuthTrustLevel-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -44,9 +40,7 @@ authType: userAuth.UserAuthType
 
 **类型：** userAuth.UserAuthType
 
-**起始版本：** 23
-
-<!--Device-AuthToken-authType: userAuth.UserAuthType--><!--Device-AuthToken-authType: userAuth.UserAuthType-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -62,9 +56,7 @@ challenge: Uint8Array
 
 **类型：** Uint8Array
 
-**起始版本：** 23
-
-<!--Device-AuthToken-challenge: Uint8Array--><!--Device-AuthToken-challenge: Uint8Array-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -80,9 +72,7 @@ credentialId?: bigint
 
 **类型：** bigint
 
-**起始版本：** 23
-
-<!--Device-AuthToken-credentialId?: bigint--><!--Device-AuthToken-credentialId?: bigint-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -98,9 +88,7 @@ enrolledId?: bigint
 
 **类型：** bigint
 
-**起始版本：** 23
-
-<!--Device-AuthToken-enrolledId?: bigint--><!--Device-AuthToken-enrolledId?: bigint-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -116,9 +104,7 @@ secureUid?: bigint
 
 **类型：** bigint
 
-**起始版本：** 23
-
-<!--Device-AuthToken-secureUid?: bigint--><!--Device-AuthToken-secureUid?: bigint-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -134,9 +120,7 @@ AuthToken签发后经过的时间。自AuthToken签发至当前的时间间隔�
 
 **类型：** bigint
 
-**起始版本：** 23
-
-<!--Device-AuthToken-timeInterval: bigint--><!--Device-AuthToken-timeInterval: bigint-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -152,9 +136,7 @@ tokenType: AuthTokenType
 
 **类型：** [AuthTokenType](arkts-userauthentication-useraccessctrl-authtokentype-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-AuthToken-tokenType: AuthTokenType--><!--Device-AuthToken-tokenType: AuthTokenType-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -163,18 +145,15 @@ tokenType: AuthTokenType
 ## userId
 
 ```TypeScript
-userId: int
+userId: number
 ```
 
 用户ID。表示完成认证的用户标识，取值为非负整数。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AuthToken-userId: int--><!--Device-AuthToken-userId: int-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **系统接口：** 此接口为系统接口。
-

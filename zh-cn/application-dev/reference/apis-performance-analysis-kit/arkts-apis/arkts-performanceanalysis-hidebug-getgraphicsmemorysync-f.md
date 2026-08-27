@@ -3,22 +3,23 @@
 ## 导入模块
 
 ```TypeScript
-import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## getGraphicsMemorySync
 
 ```TypeScript
-function getGraphicsMemorySync(): int
+function getGraphicsMemorySync(): number
 ```
 
-使用同步方式获取应用显存总大小（gl + graph）。 > **注意** > > 由于该接口涉及多次跨进程通信，其耗时可能达到秒级。为了避免引入性能问题，建议不要在主线程调用该接口，推荐使用异步接口`getGraphicsMemory`。
+使用同步方式获取应用显存总大小（gl + graph）。
 
-**起始版本：** 23
+> **注意**：
+> 
+> 由于该接口涉及多次跨进程通信，其耗时可能达到秒级。为了避免引入性能问题，建议不要在主线程调用该接口，推荐使用异步接口`getGraphicsMemory`。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**起始版本：** 14
 
-<!--Device-hidebug-function getGraphicsMemorySync(): int--><!--Device-hidebug-function getGraphicsMemorySync(): int-End-->
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -26,7 +27,7 @@ function getGraphicsMemorySync(): int
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 应用显存总大小，单位为KB。 |
+| number | 应用显存总大小，单位为KB。 |
 
 **错误码：**
 
@@ -46,4 +47,3 @@ try {
   console.error(`error code: ${(error as BusinessError).code}, error msg: ${(error as BusinessError).message}`);
 }
 ```
-

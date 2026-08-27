@@ -1,10 +1,8 @@
-# NetFirewallDomainParams(网络防火墙)
+# NetFirewallDomainParams
 
 防火墙规则域名参数，目前不支持中文域名。
 
 **起始版本：** 15
-
-<!--Device-netFirewall-interface NetFirewallDomainParams--><!--Device-netFirewall-interface NetFirewallDomainParams-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -26,8 +24,6 @@ domain: string
 
 **起始版本：** 15
 
-<!--Device-NetFirewallDomainParams-domain: string--><!--Device-NetFirewallDomainParams-domain: string-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 ## isWildcard
@@ -42,7 +38,4 @@ isWildcard: boolean
 
 **起始版本：** 15
 
-<!--Device-NetFirewallDomainParams-isWildcard: boolean--><!--Device-NetFirewallDomainParams-isWildcard: boolean-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
-

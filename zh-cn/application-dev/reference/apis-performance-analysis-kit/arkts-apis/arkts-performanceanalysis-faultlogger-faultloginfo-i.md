@@ -6,8 +6,6 @@
 
 **废弃版本：** 18
 
-<!--Device-FaultLogger-interface FaultLogInfo--><!--Device-FaultLogger-interface FaultLogInfo-End-->
-
 **系统能力：** SystemCapability.HiviewDFX.Hiview.FaultLogger
 
 ## 导入模块
@@ -30,8 +28,6 @@ fullLog: string
 
 **废弃版本：** 18
 
-<!--Device-FaultLogInfo-fullLog: string--><!--Device-FaultLogInfo-fullLog: string-End-->
-
 **系统能力：** SystemCapability.HiviewDFX.Hiview.FaultLogger
 
 ## module
@@ -47,8 +43,6 @@ module: string
 **起始版本：** 8
 
 **废弃版本：** 18
-
-<!--Device-FaultLogInfo-module: string--><!--Device-FaultLogInfo-module: string-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.FaultLogger
 
@@ -66,8 +60,6 @@ pid: number
 
 **废弃版本：** 18
 
-<!--Device-FaultLogInfo-pid: number--><!--Device-FaultLogInfo-pid: number-End-->
-
 **系统能力：** SystemCapability.HiviewDFX.Hiview.FaultLogger
 
 ## reason
@@ -83,8 +75,6 @@ reason: string
 **起始版本：** 8
 
 **废弃版本：** 18
-
-<!--Device-FaultLogInfo-reason: string--><!--Device-FaultLogInfo-reason: string-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.FaultLogger
 
@@ -102,8 +92,6 @@ summary: string
 
 **废弃版本：** 18
 
-<!--Device-FaultLogInfo-summary: string--><!--Device-FaultLogInfo-summary: string-End-->
-
 **系统能力：** SystemCapability.HiviewDFX.Hiview.FaultLogger
 
 ## timestamp
@@ -119,8 +107,6 @@ timestamp: number
 **起始版本：** 8
 
 **废弃版本：** 18
-
-<!--Device-FaultLogInfo-timestamp: number--><!--Device-FaultLogInfo-timestamp: number-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.FaultLogger
 
@@ -138,8 +124,6 @@ type: FaultType
 
 **废弃版本：** 18
 
-<!--Device-FaultLogInfo-type: FaultType--><!--Device-FaultLogInfo-type: FaultType-End-->
-
 **系统能力：** SystemCapability.HiviewDFX.Hiview.FaultLogger
 
 ## uid
@@ -156,7 +140,4 @@ uid: number
 
 **废弃版本：** 18
 
-<!--Device-FaultLogInfo-uid: number--><!--Device-FaultLogInfo-uid: number-End-->
-
 **系统能力：** SystemCapability.HiviewDFX.Hiview.FaultLogger
-

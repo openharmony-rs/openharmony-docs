@@ -3,20 +3,17 @@
 ## 导入模块
 
 ```TypeScript
-import { sensor } from '@kit.SensorServiceKit';
 ```
 
 ## getRotationMatrix
 
 ```TypeScript
-function getRotationMatrix(rotationVector: Array<double>, callback: AsyncCallback<Array<double>>): void
+function getRotationMatrix(rotationVector: Array<number>, callback: AsyncCallback<Array<number>>): void
 ```
 
 根据旋转矢量获取旋转矩阵。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-sensor-function getRotationMatrix(rotationVector: Array<double>, callback: AsyncCallback<Array<double>>): void--><!--Device-sensor-function getRotationMatrix(rotationVector: Array<double>, callback: AsyncCallback<Array<double>>): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -24,23 +21,21 @@ function getRotationMatrix(rotationVector: Array<double>, callback: AsyncCallbac
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rotationVector | Array&lt;double&gt; | 是 | 旋转矢量。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;double&gt;&gt; | 是 | 回调函数，异步返回3*3旋转矩阵。 |
+| rotationVector | Array & lt;number & gt; | 是 | 旋转矢量。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;number&gt;&gt; | 是 | 回调函数，异步返回3*3旋转矩阵。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;   2. Incorrect parameter types; 3. Parameter verification failed. |
+| [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;   2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 使用try catch对可能出现的异常进行捕获
 try {
@@ -60,40 +55,16 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { sensor } from '@kit.SensorServiceKit';
-
-// 使用try catch对可能出现的异常进行捕获
-try {
-  let rotationVector = [0.20046076, 0.21907, 0.73978853, 0.60376877];
-  sensor.getRotationMatrix(rotationVector, (err: BusinessError<void> | null, data: Array<double> | undefined) => {
-    if (err) {
-      console.error(`Failed to get rotationMatrix. Code: ${err?.code}, message: ${err?.message}`);
-      return;
-    }
-    console.info('Succeeded getting rotationMatrix: ' + JSON.stringify(data));
-  })
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  console.error(`Failed to get rotationMatrix. Code: ${e.code}, message: ${e.message}`);
-}
-```
-
 
 ## getRotationMatrix
 
 ```TypeScript
-function getRotationMatrix(rotationVector: Array<double>): Promise<Array<double>>
+function getRotationMatrix(rotationVector: Array<number>): Promise<Array<number>>
 ```
 
 根据旋转矢量获取旋转矩阵。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-sensor-function getRotationMatrix(rotationVector: Array<double>): Promise<Array<double>>--><!--Device-sensor-function getRotationMatrix(rotationVector: Array<double>): Promise<Array<double>>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -101,28 +72,26 @@ function getRotationMatrix(rotationVector: Array<double>): Promise<Array<double>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rotationVector | Array&lt;double&gt; | 是 | 旋转矢量。 |
+| rotationVector | Array & lt;number & gt; | 是 | 旋转矢量。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;double&gt;&gt; | Promise对象，使用异步方式返回旋转矩阵。 |
+| Promise & lt;Array & lt;number & gt; & gt; | Promise对象，使用异步方式返回旋转矩阵。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;   2. Incorrect parameter types; 3. Parameter verification failed. |
+| [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;   2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 使用try catch对可能出现的异常进行捕获
 try {
@@ -141,39 +110,16 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { sensor } from '@kit.SensorServiceKit';
-
-// 使用try catch对可能出现的异常进行捕获
-try {
-  let rotationVector = [0.20046076, 0.21907, 0.73978853, 0.60376877];
-  const promise = sensor.getRotationMatrix(rotationVector);
-  promise.then((data) => {
-    console.info('Succeeded getting rotationMatrix: ' + JSON.stringify(data));
-  }, (err) => {
-    console.error(`Failed to get rotationMatrix. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  console.error(`Failed to get rotationMatrix. Code: ${e.code}, message: ${e.message}`);
-}
-```
-
 
 ## getRotationMatrix
 
 ```TypeScript
-function getRotationMatrix(gravity: Array<double>, geomagnetic: Array<double>, callback: AsyncCallback<RotationMatrixResponse>): void
+function getRotationMatrix(gravity: Array<number>, geomagnetic: Array<number>, callback: AsyncCallback<RotationMatrixResponse>): void
 ```
 
 根据重力矢量和地磁矢量计算旋转矩阵。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-sensor-function getRotationMatrix(gravity: Array<double>, geomagnetic: Array<double>, callback: AsyncCallback<RotationMatrixResponse>): void--><!--Device-sensor-function getRotationMatrix(gravity: Array<double>, geomagnetic: Array<double>, callback: AsyncCallback<RotationMatrixResponse>): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -181,24 +127,22 @@ function getRotationMatrix(gravity: Array<double>, geomagnetic: Array<double>, c
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| gravity | Array&lt;double&gt; | 是 | 重力矢量。 |
-| geomagnetic | Array&lt;double&gt; | 是 | 地磁矢量。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[RotationMatrixResponse](arkts-sensorservice-sensor-rotationmatrixresponse-i.md)&gt; | 是 | 回调函数，异步返回旋转矩阵。 |
+| gravity | Array & lt;number & gt; | 是 | 重力矢量。 |
+| geomagnetic | Array & lt;number & gt; | 是 | 地磁矢量。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[RotationMatrixResponse](arkts-sensorservice-sensor-rotationmatrixresponse-i.md)&gt; | 是 | 回调函数，异步返回旋转矩阵。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;   2. Incorrect parameter types; 3. Parameter verification failed. |
+| [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;   2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 使用try catch对可能出现的异常进行捕获
 try {
@@ -217,41 +161,16 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { sensor } from '@kit.SensorServiceKit';
-
-// 使用try catch对可能出现的异常进行捕获
-try {
-  let gravity: double[] = [-0.27775216, 0.5351276, 9.788099];
-  let geomagnetic: double[] = [210.87253, -78.6096, -111.44444];
-  sensor.getRotationMatrix(gravity, geomagnetic, (err: BusinessError<void> | null, data: sensor.RotationMatrixResponse | undefined) => {
-    if (err) {
-      console.error(`Failed to get rotationMatrix. Code: ${err?.code}, message: ${err?.message}`);
-      return;
-    }
-    console.info('Succeeded in getting rotationMatrix' + JSON.stringify(data));
-  });
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  console.error(`Failed to get rotationMatrix. Code: ${e.code}, message: ${e.message}`);
-}
-```
-
 
 ## getRotationMatrix
 
 ```TypeScript
-function getRotationMatrix(gravity: Array<double>, geomagnetic: Array<double>): Promise<RotationMatrixResponse>
+function getRotationMatrix(gravity: Array<number>, geomagnetic: Array<number>): Promise<RotationMatrixResponse>
 ```
 
 根据重力矢量和地磁矢量计算旋转矩阵。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-sensor-function getRotationMatrix(gravity: Array<double>, geomagnetic: Array<double>): Promise<RotationMatrixResponse>--><!--Device-sensor-function getRotationMatrix(gravity: Array<double>, geomagnetic: Array<double>): Promise<RotationMatrixResponse>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -259,8 +178,8 @@ function getRotationMatrix(gravity: Array<double>, geomagnetic: Array<double>): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| gravity | Array&lt;double&gt; | 是 | 重力向量。 |
-| geomagnetic | Array&lt;double&gt; | 是 | 地磁矢量。 |
+| gravity | Array & lt;number & gt; | 是 | 重力向量。 |
+| geomagnetic | Array & lt;number & gt; | 是 | 地磁矢量。 |
 
 **返回值：**
 
@@ -272,16 +191,14 @@ function getRotationMatrix(gravity: Array<double>, geomagnetic: Array<double>): 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;   2. Incorrect parameter types; 3. Parameter verification failed. |
+| [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;   2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 使用try catch对可能出现的异常进行捕获
 try {
@@ -298,26 +215,3 @@ try {
   console.error(`Failed to get rotationMatrix. Code: ${e.code}, message: ${e.message}`);
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { sensor } from '@kit.SensorServiceKit';
-
-// 使用try catch对可能出现的异常进行捕获
-try {
-  let gravity = [-0.27775216, 0.5351276, 9.788099];
-  let geomagnetic = [210.87253, -78.6096, -111.44444];
-  const promise = sensor.getRotationMatrix(gravity, geomagnetic);
-  promise.then((data) => {
-    console.info('Succeeded in getting rotationMatrix' + JSON.stringify(data));
-  }, (err) => {
-    console.error(`Failed to get rotationMatrix. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  console.error(`Failed to get rotationMatrix. Code: ${e.code}, message: ${e.message}`);
-}
-```
-

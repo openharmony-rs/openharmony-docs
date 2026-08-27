@@ -3,22 +3,19 @@
 ## 导入模块
 
 ```TypeScript
-import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## removeProcessor
 
 ```TypeScript
-function removeProcessor(id: long): void
+function removeProcessor(id: number): void
 ```
 
 移除上报事件的数据处理者。
 
-**起始版本：** 23
+**起始版本：** 11
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-hiAppEvent-function removeProcessor(id: long): void--><!--Device-hiAppEvent-function removeProcessor(id: long): void-End-->
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -26,7 +23,7 @@ function removeProcessor(id: long): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | long | 是 | 上报事件数据处理者ID。值大于0。由调用[addProcessor](arkts-performanceanalysis-hiappevent-addprocessor-f.md)或 [addProcessorFromConfig](arkts-performanceanalysis-hiappevent-addprocessorfromconfig-f.md)接口返回值所得。 |
+| id | number | 是 | 上报事件数据处理者ID。值大于0。由调用[addProcessor](arkts-performanceanalysis-hiappevent-addprocessor-f.md)或 [addProcessorFromConfig](arkts-performanceanalysis-hiappevent-addprocessorfromconfig-f.md)接口返回值所得。 |
 
 **错误码：**
 
@@ -35,8 +32,6 @@ function removeProcessor(id: long): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -52,21 +47,3 @@ try {
   hilog.error(0x0000, 'hiAppEvent', `failed to removeProcessor event, code=${error.code}`);
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@ohos.base';
-
-try {
-  let processor: hiAppEvent.Processor = {
-    name: 'analytics_demo'
-  };
-  let id: long = hiAppEvent.addProcessor(processor);
-  hiAppEvent.removeProcessor(id);
-} catch (error: BusinessError) {
-  hilog.error(0x0000, 'hiAppEvent', `failed to removeProcessor event, code=${error.code}`);
-}
-```
-

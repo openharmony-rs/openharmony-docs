@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { vpn } from '@kit.NetworkKit';
-import { vpnExtension } from '@kit.NetworkKit';
 ```
 
 ## createVpnConnection
@@ -16,8 +15,6 @@ function createVpnConnection(context: AbilityContext): VpnConnection
 创建一个 VPN 连接对象。
 
 **起始版本：** 10
-
-<!--Device-vpn-function createVpnConnection(context: AbilityContext): VpnConnection--><!--Device-vpn-function createVpnConnection(context: AbilityContext): VpnConnection-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Vpn
 
@@ -39,8 +36,8 @@ function createVpnConnection(context: AbilityContext): VpnConnection
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
 
 **示例**
 
@@ -62,4 +59,3 @@ struct Index {
   build() {  }
 }
 ```
-

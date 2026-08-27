@@ -4,31 +4,25 @@
 
 **继承/实现关系：** PedometerResponse extends [Response](arkts-sensorservice-sensor-response-i.md)
 
-**起始版本：** 23
-
-<!--Device-sensor-interface PedometerResponse--><!--Device-sensor-interface PedometerResponse-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
 ## 导入模块
 
 ```TypeScript
-import { sensor } from '@kit.SensorServiceKit';
 ```
 
 ## steps
 
 ```TypeScript
-steps: double
+steps: number
 ```
 
 用户的行走步数。单位：步。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-PedometerResponse-steps: double--><!--Device-PedometerResponse-steps: double-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Sensors.Sensor
-

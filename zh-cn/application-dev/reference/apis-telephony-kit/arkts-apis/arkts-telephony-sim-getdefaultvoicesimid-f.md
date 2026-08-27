@@ -3,20 +3,17 @@
 ## 导入模块
 
 ```TypeScript
-import { sim } from '@kit.TelephonyKit';
 ```
 
 ## getDefaultVoiceSimId
 
 ```TypeScript
-function getDefaultVoiceSimId(callback: AsyncCallback<int>): void
+function getDefaultVoiceSimId(callback: AsyncCallback<number>): void
 ```
 
-Obtains the default SIM ID for the voice service.
+获取默认语音业务的SIM卡ID。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-sim-function getDefaultVoiceSimId(callback: AsyncCallback<int>): void--><!--Device-sim-function getDefaultVoiceSimId(callback: AsyncCallback<int>): void-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -24,19 +21,19 @@ Obtains the default SIM ID for the voice service.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | Returns the SIM ID of the default voice sim and SIM ID will increase from 1. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。与SIM卡绑定，从1开始递增。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [8301001](../errorcode-telephony.md#8301001-sim卡未激活) | SIM card is not activated. |
-| [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
-| [8300004](../errorcode-telephony.md#8300004-未识别sim卡) | No SIM card found. |
+| [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
-| [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
+| [8300004](../errorcode-telephony.md#8300004-未识别sim卡) | No SIM card found. |
+| [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
+| [8301001](../errorcode-telephony.md#8301001-sim卡未激活) | SIM card is not activated. |
 
 **示例**
 
@@ -53,14 +50,12 @@ sim.getDefaultVoiceSimId((err: BusinessError, data: number) => {
 ## getDefaultVoiceSimId
 
 ```TypeScript
-function getDefaultVoiceSimId(): Promise<int>
+function getDefaultVoiceSimId(): Promise<number>
 ```
 
-Obtains the default SIM ID for the voice service.
+获取默认语音业务的SIM卡ID。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-sim-function getDefaultVoiceSimId(): Promise<int>--><!--Device-sim-function getDefaultVoiceSimId(): Promise<int>-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -68,18 +63,18 @@ Obtains the default SIM ID for the voice service.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;int&gt; | Returns the SIM ID of the default voice sim and SIM ID will increase from 1. |
+| Promise & lt;number & gt; | 以Promise形式返回默认语音业务的SIM卡ID。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [8301001](../errorcode-telephony.md#8301001-sim卡未激活) | SIM card is not activated. |
-| [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
-| [8300004](../errorcode-telephony.md#8300004-未识别sim卡) | No SIM card found. |
+| [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
-| [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
+| [8300004](../errorcode-telephony.md#8300004-未识别sim卡) | No SIM card found. |
+| [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
+| [8301001](../errorcode-telephony.md#8301001-sim卡未激活) | SIM card is not activated. |
 
 **示例**
 
@@ -94,4 +89,3 @@ promise.then((data: number) => {
     console.error(`getDefaultVoiceSimId failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
-

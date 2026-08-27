@@ -2,16 +2,13 @@
 
 订阅数据持有者类，用于对事件信息进行处理。
 
-**起始版本：** 23
-
-<!--Device-hiAppEvent-class AppEventPackageHolder--><!--Device-hiAppEvent-class AppEventPackageHolder-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
 ## 导入模块
 
 ```TypeScript
-import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## constructor
@@ -22,11 +19,9 @@ constructor(watcherName: string)
 
 类构造函数，用于创建订阅数据持有者实例。先通过[addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md)添加事件观察者，再通过观察者名称关联到应用内已添加的观察者对象。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AppEventPackageHolder-constructor(watcherName: string)--><!--Device-AppEventPackageHolder-constructor(watcherName: string)-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -56,16 +51,14 @@ let holder1: hiAppEvent.AppEventPackageHolder = new hiAppEvent.AppEventPackageHo
 ## setRow
 
 ```TypeScript
-setRow(size: int): void
+setRow(size: number): void
 ```
 
 设置每次取出的事件包的数据条数，优先级高于setSize，和setSize同时调用时仅setRow生效。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AppEventPackageHolder-setRow(size: int): void--><!--Device-AppEventPackageHolder-setRow(size: int): void-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -73,7 +66,7 @@ setRow(size: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| size | int | 是 | 事件条数，单位为条。取值范围(0, 2^31-1]，超出范围会抛异常。 |
+| size | number | 是 | 事件条数，单位为条。取值范围(0, 2^31-1]，超出范围会抛异常。 |
 
 **错误码：**
 
@@ -94,16 +87,14 @@ holder3.setRow(1000);
 ## setSize
 
 ```TypeScript
-setSize(size: int): void
+setSize(size: number): void
 ```
 
 设置每次取出的事件包的数据大小阈值。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AppEventPackageHolder-setSize(size: int): void--><!--Device-AppEventPackageHolder-setSize(size: int): void-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -111,7 +102,7 @@ setSize(size: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| size | int | 是 | 数据大小阈值，单位为byte。取值范围[0, 2^31-1]，超出范围会抛异常。 |
+| size | number | 是 | 数据大小阈值，单位为byte。取值范围[0, 2^31-1]，超出范围会抛异常。 |
 
 **错误码：**
 
@@ -135,13 +126,11 @@ holder2.setSize(1000);
 takeNext(): AppEventPackage
 ```
 
-获取订阅事件。 系统根据setSize设置的数据大小阈值或setRow设置的条数来取出订阅事件数据，默认取1条订阅事件。当订阅事件数据全部被取出时返回null。 当setRow和setSize同时调用时仅setRow生效。
+获取订阅事件。系统根据setSize设置的数据大小阈值或setRow设置的条数来取出订阅事件数据，默认取1条订阅事件。当订阅事件数据全部被取出时返回null。当setRow和setSize同时调用时仅setRow生效。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AppEventPackageHolder-takeNext(): AppEventPackage--><!--Device-AppEventPackageHolder-takeNext(): AppEventPackage-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -159,26 +148,3 @@ let holder4: hiAppEvent.AppEventPackageHolder = new hiAppEvent.AppEventPackageHo
 // 获取订阅事件
 let eventPkg: hiAppEvent.AppEventPackage | null = holder4.takeNext();
 ```
-
-## takeNext
-
-```TypeScript
-takeNext(): AppEventPackage | null
-```
-
-获取订阅事件。 <br>系统根据 **setSize** 设置的数据大小阈值或 **setRow** 设置的条数来取出订阅事件数据，默认取1条订阅事件。 当订阅事件数据全部被取出时返回null。 <br>当 **setRow** 和 **setSize** 同时调用时仅 **setRow** 生效。
-
-**起始版本：** 23
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AppEventPackageHolder-takeNext(): AppEventPackage | null--><!--Device-AppEventPackageHolder-takeNext(): AppEventPackage | null-End-->
-
-**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [AppEventPackage](arkts-performanceanalysis-hiappevent-appeventpackage-i.md) | 取出的事件包对象，订阅事件数据被全部取出后 会返回null。 |
-

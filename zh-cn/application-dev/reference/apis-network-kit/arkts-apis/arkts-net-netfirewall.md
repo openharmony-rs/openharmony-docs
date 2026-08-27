@@ -4,8 +4,6 @@
 
 **起始版本：** 14
 
-<!--Device-unnamed-declare namespace netFirewall--><!--Device-unnamed-declare namespace netFirewall-End-->
-
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 ## 导入模块
@@ -67,4 +65,3 @@ import { netFirewall } from '@kit.NetworkKit';
 | [NetFirewallOrderType(网络防火墙)](arkts-network-netfirewall-netfirewallordertype-e.md) | 枚举类型，防火墙规则排序顺序，包含升序或降序。 |
 | [NetFirewallRuleDirection(网络防火墙)](arkts-network-netfirewall-netfirewallruledirection-e.md) | 枚举类型，防火墙规则方向，包含入站、出站。 |
 | [NetFirewallRuleType(网络防火墙)](arkts-network-netfirewall-netfirewallruletype-e.md) | 枚举类型，防火墙规则类型，包含IP、Domain、DNS。 |
-

@@ -10,8 +10,6 @@
 
 **需要权限：** ohos.permission.ACTIVITY_MOTION
 
-<!--Device-unnamed-export interface StepCounterResponse--><!--Device-unnamed-export interface StepCounterResponse-End-->
-
 **系统能力：** SystemCapability.Sensors.Sensor.Lite
 
 ## 导入模块
@@ -40,7 +38,4 @@ steps: number
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-StepCounterResponse-steps: number--><!--Device-StepCounterResponse-steps: number-End-->
-
 **系统能力：** SystemCapability.Sensors.Sensor.Lite
-

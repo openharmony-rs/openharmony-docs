@@ -2,9 +2,7 @@
 
 彩信读取原始索引。
 
-**起始版本：** 23
-
-<!--Device-sms-export interface MmsReadOrigInd--><!--Device-sms-export interface MmsReadOrigInd-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -13,22 +11,19 @@
 ## 导入模块
 
 ```TypeScript
-import { sms } from '@kit.TelephonyKit';
 ```
 
 ## date
 
 ```TypeScript
-date: long
+date: number
 ```
 
 日期
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-MmsReadOrigInd-date: long--><!--Device-MmsReadOrigInd-date: long-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -44,9 +39,7 @@ from: MmsAddress
 
 **类型：** [MmsAddress](arkts-telephony-sms-mmsaddress-i-sys.md)
 
-**起始版本：** 23
-
-<!--Device-MmsReadOrigInd-from: MmsAddress--><!--Device-MmsReadOrigInd-from: MmsAddress-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -62,9 +55,7 @@ messageId: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-MmsReadOrigInd-messageId: string--><!--Device-MmsReadOrigInd-messageId: string-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -73,16 +64,14 @@ messageId: string
 ## readStatus
 
 ```TypeScript
-readStatus: int
+readStatus: number
 ```
 
 阅读状态
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-MmsReadOrigInd-readStatus: int--><!--Device-MmsReadOrigInd-readStatus: int-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -98,9 +87,7 @@ to: Array<MmsAddress>
 
 **类型：** Array&lt;[MmsAddress](arkts-telephony-sms-mmsaddress-i-sys.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-MmsReadOrigInd-to: Array<MmsAddress>--><!--Device-MmsReadOrigInd-to: Array<MmsAddress>-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -116,11 +103,8 @@ version: MmsVersionType
 
 **类型：** [MmsVersionType](arkts-telephony-sms-mmsversiontype-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-MmsReadOrigInd-version: MmsVersionType--><!--Device-MmsReadOrigInd-version: MmsVersionType-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
 **系统接口：** 此接口为系统接口。
-

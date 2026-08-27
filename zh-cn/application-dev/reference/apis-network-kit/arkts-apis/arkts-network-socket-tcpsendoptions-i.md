@@ -4,8 +4,6 @@ TCPSocket发送请求的参数。
 
 **起始版本：** 7
 
-<!--Device-socket-export interface TCPSendOptions--><!--Device-socket-export interface TCPSendOptions-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
 
 ## 导入模块
@@ -26,8 +24,6 @@ data: string | ArrayBuffer
 
 **起始版本：** 7
 
-<!--Device-TCPSendOptions-data: string | ArrayBuffer--><!--Device-TCPSendOptions-data: string | ArrayBuffer-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
 
 ## encoding
@@ -42,7 +38,4 @@ encoding?: string
 
 **起始版本：** 7
 
-<!--Device-TCPSendOptions-encoding?: string--><!--Device-TCPSendOptions-encoding?: string-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
-

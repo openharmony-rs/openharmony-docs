@@ -2,9 +2,7 @@
 
 彩信发送请求。
 
-**起始版本：** 23
-
-<!--Device-sms-export interface MmsSendReq--><!--Device-sms-export interface MmsSendReq-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -13,7 +11,6 @@
 ## 导入模块
 
 ```TypeScript
-import { sms } from '@kit.TelephonyKit';
 ```
 
 ## bcc
@@ -26,9 +23,7 @@ bcc?: Array<MmsAddress>
 
 **类型：** Array&lt;[MmsAddress](arkts-telephony-sms-mmsaddress-i-sys.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-MmsSendReq-bcc?: Array<MmsAddress>--><!--Device-MmsSendReq-bcc?: Array<MmsAddress>-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -44,9 +39,7 @@ cc?: Array<MmsAddress>
 
 **类型：** Array&lt;[MmsAddress](arkts-telephony-sms-mmsaddress-i-sys.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-MmsSendReq-cc?: Array<MmsAddress>--><!--Device-MmsSendReq-cc?: Array<MmsAddress>-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -62,9 +55,7 @@ contentType: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-MmsSendReq-contentType: string--><!--Device-MmsSendReq-contentType: string-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -73,16 +64,14 @@ contentType: string
 ## date
 
 ```TypeScript
-date?: long
+date?: number
 ```
 
 日期
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-MmsSendReq-date?: long--><!--Device-MmsSendReq-date?: long-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -91,16 +80,14 @@ date?: long
 ## deliveryReport
 
 ```TypeScript
-deliveryReport?: int
+deliveryReport?: number
 ```
 
 交付报告
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-MmsSendReq-deliveryReport?: int--><!--Device-MmsSendReq-deliveryReport?: int-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -109,16 +96,14 @@ deliveryReport?: int
 ## expiry
 
 ```TypeScript
-expiry?: int
+expiry?: number
 ```
 
 到期
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-MmsSendReq-expiry?: int--><!--Device-MmsSendReq-expiry?: int-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -134,9 +119,7 @@ from: MmsAddress
 
 **类型：** [MmsAddress](arkts-telephony-sms-mmsaddress-i-sys.md)
 
-**起始版本：** 23
-
-<!--Device-MmsSendReq-from: MmsAddress--><!--Device-MmsSendReq-from: MmsAddress-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -145,16 +128,14 @@ from: MmsAddress
 ## messageClass
 
 ```TypeScript
-messageClass?: int
+messageClass?: number
 ```
 
 消息类
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-MmsSendReq-messageClass?: int--><!--Device-MmsSendReq-messageClass?: int-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -170,9 +151,7 @@ priority?: MmsPriorityType
 
 **类型：** [MmsPriorityType](arkts-telephony-sms-mmsprioritytype-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-MmsSendReq-priority?: MmsPriorityType--><!--Device-MmsSendReq-priority?: MmsPriorityType-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -181,16 +160,14 @@ priority?: MmsPriorityType
 ## readReport
 
 ```TypeScript
-readReport?: int
+readReport?: number
 ```
 
 阅读报告
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-MmsSendReq-readReport?: int--><!--Device-MmsSendReq-readReport?: int-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -199,16 +176,14 @@ readReport?: int
 ## senderVisibility
 
 ```TypeScript
-senderVisibility?: int
+senderVisibility?: number
 ```
 
 发件人可见性
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-MmsSendReq-senderVisibility?: int--><!--Device-MmsSendReq-senderVisibility?: int-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -224,9 +199,7 @@ subject?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-MmsSendReq-subject?: string--><!--Device-MmsSendReq-subject?: string-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -242,9 +215,7 @@ to?: Array<MmsAddress>
 
 **类型：** Array&lt;[MmsAddress](arkts-telephony-sms-mmsaddress-i-sys.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-MmsSendReq-to?: Array<MmsAddress>--><!--Device-MmsSendReq-to?: Array<MmsAddress>-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -260,9 +231,7 @@ transactionId: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-MmsSendReq-transactionId: string--><!--Device-MmsSendReq-transactionId: string-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -278,11 +247,8 @@ version: MmsVersionType
 
 **类型：** [MmsVersionType](arkts-telephony-sms-mmsversiontype-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-MmsSendReq-version: MmsVersionType--><!--Device-MmsSendReq-version: MmsVersionType-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
 **系统接口：** 此接口为系统接口。
-

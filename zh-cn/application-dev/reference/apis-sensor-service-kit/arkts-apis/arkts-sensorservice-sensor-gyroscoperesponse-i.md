@@ -4,69 +4,59 @@
 
 **继承/实现关系：** GyroscopeResponse extends [Response](arkts-sensorservice-sensor-response-i.md)
 
-**起始版本：** 23
-
-<!--Device-sensor-interface GyroscopeResponse--><!--Device-sensor-interface GyroscopeResponse-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
 ## 导入模块
 
 ```TypeScript
-import { sensor } from '@kit.SensorServiceKit';
 ```
 
 ## x
 
 ```TypeScript
-x: double
+x: number
 ```
 
 设备x轴方向的旋转角速度。单位：rad/s（弧度/秒）；取值为实际上报物理量。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GyroscopeResponse-x: double--><!--Device-GyroscopeResponse-x: double-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
 ## y
 
 ```TypeScript
-y: double
+y: number
 ```
 
 设备y轴方向的旋转角速度。单位：rad/s（弧度/秒）；取值为实际上报物理量。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-GyroscopeResponse-y: double--><!--Device-GyroscopeResponse-y: double-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
 ## z
 
 ```TypeScript
-z: double
+z: number
 ```
 
 设备z轴方向的旋转角速度。单位：rad/s（弧度/秒）；取值为实际上报物理量。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-GyroscopeResponse-z: double--><!--Device-GyroscopeResponse-z: double-End-->
-
 **系统能力：** SystemCapability.Sensors.Sensor
-

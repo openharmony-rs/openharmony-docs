@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { sms } from '@kit.TelephonyKit';
 ```
 
 ## setCBConfig
@@ -14,11 +13,9 @@ function setCBConfig(options: CBConfigOptions, callback: AsyncCallback<void>): v
 
 设置小区广播配置。使用callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 7
 
 **需要权限：** ohos.permission.RECEIVE_SMS
-
-<!--Device-sms-function setCBConfig(options: CBConfigOptions, callback: AsyncCallback<void>): void--><!--Device-sms-function setCBConfig(options: CBConfigOptions, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -29,19 +26,19 @@ function setCBConfig(options: CBConfigOptions, callback: AsyncCallback<void>): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [CBConfigOptions](arkts-telephony-sms-cbconfigoptions-i-sys.md) | 是 | 小区广播配置选项。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 设置小区广播配置的回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 设置小区广播配置的回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
-| [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
+| [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
 **示例**
 
@@ -70,11 +67,9 @@ function setCBConfig(options: CBConfigOptions): Promise<void>
 
 设置小区广播配置。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 7
 
 **需要权限：** ohos.permission.RECEIVE_SMS
-
-<!--Device-sms-function setCBConfig(options: CBConfigOptions): Promise<void>--><!--Device-sms-function setCBConfig(options: CBConfigOptions): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -90,19 +85,19 @@ function setCBConfig(options: CBConfigOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 以Promise形式返回设置的结果。 |
+| Promise & lt;void & gt; | 以Promise形式返回设置的结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
-| [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
+| [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
 **示例**
 
@@ -124,4 +119,3 @@ promise.then(() => {
     console.error(`setCBConfig failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
-

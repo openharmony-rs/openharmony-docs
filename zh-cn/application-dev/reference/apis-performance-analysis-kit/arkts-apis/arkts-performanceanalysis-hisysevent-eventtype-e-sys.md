@@ -2,9 +2,7 @@
 
 系统事件类型枚举。
 
-**起始版本：** 23
-
-<!--Device-hiSysEvent-enum EventType--><!--Device-hiSysEvent-enum EventType-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
@@ -18,9 +16,7 @@ FAULT = 1
 
 错误事件类型。
 
-**起始版本：** 23
-
-<!--Device-EventType-FAULT = 1--><!--Device-EventType-FAULT = 1-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
@@ -34,9 +30,7 @@ STATISTIC = 2
 
 统计事件类型。
 
-**起始版本：** 23
-
-<!--Device-EventType-STATISTIC = 2--><!--Device-EventType-STATISTIC = 2-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
@@ -50,9 +44,7 @@ SECURITY = 3
 
 安全事件类型。
 
-**起始版本：** 23
-
-<!--Device-EventType-SECURITY = 3--><!--Device-EventType-SECURITY = 3-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
@@ -66,11 +58,8 @@ BEHAVIOR = 4
 
 用户行为事件类型。
 
-**起始版本：** 23
-
-<!--Device-EventType-BEHAVIOR = 4--><!--Device-EventType-BEHAVIOR = 4-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
 **系统接口：** 此接口为系统接口。
-

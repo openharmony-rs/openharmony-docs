@@ -2,9 +2,7 @@
 
 彩信发送标识。
 
-**起始版本：** 23
-
-<!--Device-sms-export interface MmsDeliveryInd--><!--Device-sms-export interface MmsDeliveryInd-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -13,22 +11,19 @@
 ## 导入模块
 
 ```TypeScript
-import { sms } from '@kit.TelephonyKit';
 ```
 
 ## date
 
 ```TypeScript
-date: long
+date: number
 ```
 
 日期
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-MmsDeliveryInd-date: long--><!--Device-MmsDeliveryInd-date: long-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -44,9 +39,7 @@ messageId: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-MmsDeliveryInd-messageId: string--><!--Device-MmsDeliveryInd-messageId: string-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -55,16 +48,14 @@ messageId: string
 ## status
 
 ```TypeScript
-status: int
+status: number
 ```
 
 状态
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-MmsDeliveryInd-status: int--><!--Device-MmsDeliveryInd-status: int-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -80,9 +71,7 @@ to: Array<MmsAddress>
 
 **类型：** Array&lt;[MmsAddress](arkts-telephony-sms-mmsaddress-i-sys.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-MmsDeliveryInd-to: Array<MmsAddress>--><!--Device-MmsDeliveryInd-to: Array<MmsAddress>-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -98,11 +87,8 @@ version: MmsVersionType
 
 **类型：** [MmsVersionType](arkts-telephony-sms-mmsversiontype-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-MmsDeliveryInd-version: MmsVersionType--><!--Device-MmsDeliveryInd-version: MmsVersionType-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
 **系统接口：** 此接口为系统接口。
-

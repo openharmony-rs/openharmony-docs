@@ -3,9 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from '@kit.NotificationKit';
-import { notificationSubscribe } from '@kit.NotificationKit';
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
 ```
 
 ## publish
@@ -24,8 +21,6 @@ function publish(request: NotificationRequest, userId: number, callback: AsyncCa
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
-<!--Device-notification-function publish(request: NotificationRequest, userId: number, callback: AsyncCallback<void>): void--><!--Device-notification-function publish(request: NotificationRequest, userId: number, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -36,7 +31,38 @@ function publish(request: NotificationRequest, userId: number, callback: AsyncCa
 | --- | --- | --- | --- |
 | request | [NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md) | 是 | 用于设置要发布通知的内容和相关配置信息。 |
 | userId | number | 是 | 用户ID。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 被指定的回调方法。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 被指定的回调方法。 |
+
+**示例**
+
+```TypeScript
+import NotificationManager from '@ohos.notificationManager';
+import Base from '@ohos.base';
+
+// publish回调
+let publishCallback = (err: Base.BusinessError) => {
+  if (err) {
+    console.error(`publish failed, code is ${err.code}`);
+  } else {
+    console.info("publish success");
+  }
+}
+// 用户ID
+let userId: number = 1;
+// 通知Request对象
+let notificationRequest: NotificationManager.NotificationRequest = {
+  id: 1,
+  content: {
+    contentType: Notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+    normal: {
+      title: "test_title",
+      text: "test_text",
+      additionalText: "test_additionalText"
+    }
+  }
+};
+Notification.publish(notificationRequest, userId, publishCallback);
+```
 
 
 ## publish
@@ -55,8 +81,6 @@ function publish(request: NotificationRequest, userId: number): Promise<void>
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
-<!--Device-notification-function publish(request: NotificationRequest, userId: number): Promise<void>--><!--Device-notification-function publish(request: NotificationRequest, userId: number): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -72,5 +96,31 @@ function publish(request: NotificationRequest, userId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
+**示例**
+
+```TypeScript
+import NotificationManager from '@ohos.notificationManager';
+import Base from '@ohos.base';
+
+let notificationRequest: NotificationManager.NotificationRequest = {
+  id: 1,
+  content: {
+    contentType: Notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+    normal: {
+      title: "test_title",
+      text: "test_text",
+      additionalText: "test_additionalText"
+    }
+  }
+};
+
+let userId: number = 1;
+
+Notification.publish(notificationRequest, userId).then(() => {
+  console.info("publish success");
+}).catch((err: Base.BusinessError) => {
+  console.error(`publish failed, code is ${err}`);
+});
+```

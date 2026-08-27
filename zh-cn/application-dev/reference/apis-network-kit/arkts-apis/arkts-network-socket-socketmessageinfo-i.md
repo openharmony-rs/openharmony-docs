@@ -4,8 +4,6 @@ socket连接信息
 
 **起始版本：** 11
 
-<!--Device-socket-export interface SocketMessageInfo--><!--Device-socket-export interface SocketMessageInfo-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
 
 ## 导入模块
@@ -26,8 +24,6 @@ message: ArrayBuffer
 
 **起始版本：** 11
 
-<!--Device-SocketMessageInfo-message: ArrayBuffer--><!--Device-SocketMessageInfo-message: ArrayBuffer-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
 
 ## remoteInfo
@@ -42,7 +38,4 @@ socket连接信息。
 
 **起始版本：** 11
 
-<!--Device-SocketMessageInfo-remoteInfo: SocketRemoteInfo--><!--Device-SocketMessageInfo-remoteInfo: SocketRemoteInfo-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
-

@@ -2,16 +2,13 @@
 
 TLS加密版本及套件配置。
 
-**起始版本：** 23
-
-<!--Device-http-export interface TlsConfig--><!--Device-http-export interface TlsConfig-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 ## 导入模块
 
 ```TypeScript
-import { http } from '@kit.NetworkKit';
 ```
 
 ## cipherSuites
@@ -24,11 +21,9 @@ cipherSuites?: CipherSuite[]
 
 **类型：** [CipherSuite](arkts-network-http-ciphersuite-t.md)[]
 
-**起始版本：** 23
+**起始版本：** 18
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TlsConfig-cipherSuites?: CipherSuite[]--><!--Device-TlsConfig-cipherSuites?: CipherSuite[]-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -42,11 +37,9 @@ TLS最高版本号。
 
 **类型：** [TlsVersion](arkts-network-http-tlsversion-e.md)
 
-**起始版本：** 23
+**起始版本：** 18
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TlsConfig-tlsVersionMax: TlsVersion--><!--Device-TlsConfig-tlsVersionMax: TlsVersion-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -60,11 +53,8 @@ TLS最低版本号。
 
 **类型：** [TlsVersion](arkts-network-http-tlsversion-e.md)
 
-**起始版本：** 23
+**起始版本：** 18
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TlsConfig-tlsVersionMin: TlsVersion--><!--Device-TlsConfig-tlsVersionMin: TlsVersion-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
-

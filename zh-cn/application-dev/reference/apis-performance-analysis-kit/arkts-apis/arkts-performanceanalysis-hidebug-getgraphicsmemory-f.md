@@ -3,22 +3,19 @@
 ## 导入模块
 
 ```TypeScript
-import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## getGraphicsMemory
 
 ```TypeScript
-function getGraphicsMemory(): Promise<int>
+function getGraphicsMemory(): Promise<number>
 ```
 
 获取应用显存总大小（gl + graph），使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 14
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-hidebug-function getGraphicsMemory(): Promise<int>--><!--Device-hidebug-function getGraphicsMemory(): Promise<int>-End-->
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -26,7 +23,7 @@ function getGraphicsMemory(): Promise<int>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;int&gt; | promise对象，返回应用显存总大小，单位为KB。 |
+| Promise & lt;number & gt; | promise对象，返回应用显存总大小，单位为KB。 |
 
 **错误码：**
 
@@ -36,10 +33,8 @@ function getGraphicsMemory(): Promise<int>
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
-import { hidebug, hilog } from '@kit.PerformanceAnalysisKit';
+import { hidebug } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 hidebug.getGraphicsMemory().then((ret: number) => {
@@ -48,16 +43,3 @@ hidebug.getGraphicsMemory().then((ret: number) => {
   console.error(`error code: ${error.code}, error msg: ${error.message}`);
 })
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { hidebug, hilog } from '@kit.PerformanceAnalysisKit';
-
-hidebug.getGraphicsMemory().then((ret: int) => {
-  console.info(`graphicsMemory: ${ret}`)
-}).catch((error: Error) => {
-  console.error(`error code: ${error.code}, error msg: ${error.message}`);
-})
-```
-

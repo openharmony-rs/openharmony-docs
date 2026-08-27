@@ -1,17 +1,31 @@
 # @ohos.vibrator
 
-vibrator模块是设备马达振动的控制模块，属于SensorServiceKit。该模块提供精确控制设备马达振动的能力，支持按指定时长、预置效果、自定义配置文件、自定义振动模式等多种方式触发振动，并支持按指定模式或全部模式停止振动。 此外，模块还提供振动效果支持查询、马达设备信息查询、马达上下线状态监听等能力。 vibrator模块主要用于增强用户交互体验，通过触觉感知反馈为应用提供直观的物理反馈能力。典型使用场景包括： - 交互反馈：点击、长按、滑动、拖拽等触控操作的短振反馈，推荐使用VibratePreset预置效果以保持与系统整体振感风格一致。 - 通知提醒：消息通知、来电响铃、闹钟等场景的振动提醒。 - 游戏与多媒体：游戏操作反馈、表情包拟真效果等复杂场景的精细振动，推荐使用VibrateFromFile或VibrateFromPattern自定义振动效果。 - 多设备协同：在分布式场景下，通过指定设备ID和马达ID控制远端设备振动。 vibrator模块的核心能力围绕"启动振动"和"停止振动"两条主线展开，整体使用流程如下： 启动振动流程： 1. 若使用预置振动效果（VibratePreset），建议先调用[vibrator.isSupportEffect](arkts-sensorservice-vibrator-issupporteffect-f.md) 或[vibrator.isSupportEffectSync](arkts-sensorservice-vibrator-issupporteffectsync-f.md)查询当前设备是否支持该效果；若使用自定义振动配置文件（VibrateFromFile）， 建议先确认设备支持自定义振动模式（可通过[vibrator.isHdHapticSupported](arkts-sensorservice-vibrator-ishdhapticsupported-f.md)查询是否支持高清振动）； 若使用自定义振动模式（VibrateFromPattern），需先通过[VibratorPatternBuilder](arkts-sensorservice-vibrator-vibratorpatternbuilder-c.md)构建振动序列。 2. 调用[vibrator.startVibration](arkts-sensorservice-vibrator-startvibration-f.md) 启动振动，需同时指定振动效果（VibrateEffect）和振动属性（VibrateAttribute）。振动属性中的usage参数决定了振动的场景类型，不同场景类型受系统振动开关管控规则不同。 停止振动流程： - 停止指定时长振动或预置效果振动：调用 [vibrator.stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md)（API version 9），传入对应的VibratorStopMode。 - 停止自定义振动（VibrateFromFile或VibrateFromPattern）：调用[vibrator.stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md)（API version 10+，无参数版本）停止所有模式振动。 - 停止所有模式振动：调用[vibrator.stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md)（无参数版本）或 [vibrator.stopVibrationSync](arkts-sensorservice-vibrator-stopvibrationsync-f.md)（同步版本）。 - 停止指定设备的马达振动：调用[vibrator.stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md)（API version 19+，传入 VibratorInfoParam）。 多马达设备场景： 从API version 19开始，支持多设备多马达场景。可通过[vibrator.getVibratorInfoSync](arkts-sensorservice-vibrator-getvibratorinfosync-f.md)查询马达信息，通过 [vibrator.on](arkts-sensorservice-vibrator-onvibratorstatechange-f.md)监听马达上下线事件，以便动态选择合适的马达触发振动。 振动效果类型对比： | 振动效果类型 | 适用场景 | 个性化程度 | 推荐优先级 | | --- | --- | --- | --- | | VibratePreset | 交互反馈类的短振场景（点击、长按、滑动、拖拽等） | 低，使用系统预置效果 | 推荐，与系统整体振感反馈体验风格一致 | | VibrateFromFile | 复杂场景效果（表情包拟真效果、游戏场景/操作反馈） | 高，支持自定义振动配置文件 | 适用于需要精细振动的场景 | | VibrateFromPattern | 与VibrateFromFile一致，但更灵活 | 高，支持振动事件数组组合 | 适用于需要动态组合振动事件的场景 | | VibrateTime | 基础时长振动，仅控制启停 | 低，无法调节强度和频率 | 仅满足基础功能需求 |
+vibrator模块是设备马达振动的控制模块，属于SensorServiceKit。该模块提供精确控制设备马达振动的能力，支持按指定时长、预置效果、自定义配置文件、自定义振动模式等多种方式触发振动，并支持按指定模式或全部模式停止振动。 此外，模块还提供振动效果支持查询、马达设备信息查询、马达上下线状态监听等能力。 vibrator模块主要用于增强用户交互体验，通过触觉感知反馈为应用提供直观的物理反馈能力。典型使用场景包括：  
+- 交互反馈：点击、长按、滑动、拖拽等触控操作的短振反馈，推荐使用VibratePreset预置效果以保持与系统整体振感风格一致。  
+- 通知提醒：消息通知、来电响铃、闹钟等场景的振动提醒。  
+- 游戏与多媒体：游戏操作反馈、表情包拟真效果等复杂场景的精细振动，推荐使用VibrateFromFile或VibrateFromPattern自定义振动效果。  
+- 多设备协同：在分布式场景下，通过指定设备ID和马达ID控制远端设备振动。  
+vibrator模块的核心能力围绕"启动振动"和"停止振动"两条主线展开，整体使用流程如下： 启动振动流程：
+1. 若使用预置振动效果（VibratePreset），建议先调用[vibrator.isSupportEffect](arkts-sensorservice-vibrator-issupporteffect-f.md)
+或[vibrator.isSupportEffectSync](arkts-sensorservice-vibrator-issupporteffectsync-f.md)查询当前设备是否支持该效果；若使用自定义振动配置文件（VibrateFromFile）， 建议先确认设备支持自定义振动模式（可通过[vibrator.isHdHapticSupported](arkts-sensorservice-vibrator-ishdhapticsupported-f.md)查询是否支持高清振动）； 若使用自定义振动模式（VibrateFromPattern），需先通过[VibratorPatternBuilder](arkts-sensorservice-vibrator-vibratorpatternbuilder-c.md)构建振动序列。
+2. 调用[vibrator.startVibration](arkts-sensorservice-vibrator-startvibration-f.md)
+启动振动，需同时指定振动效果（VibrateEffect）和振动属性（VibrateAttribute）。振动属性中的usage参数决定了振动的场景类型，不同场景类型受系统振动开关管控规则不同。 停止振动流程：  
+- 停止指定时长振动或预置效果振动：调用  
+[vibrator.stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md)（API version 9），传入对应的VibratorStopMode。  
+- 停止自定义振动（VibrateFromFile或VibrateFromPattern）：调用[vibrator.stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md)（API version  
+10+，无参数版本）停止所有模式振动。  
+- 停止所有模式振动：调用[vibrator.stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md)（无参数版本）或  
+[vibrator.stopVibrationSync](arkts-sensorservice-vibrator-stopvibrationsync-f.md)（同步版本）。  
+- 停止指定设备的马达振动：调用[vibrator.stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md)（API version 19+，传入  
+VibratorInfoParam）。 多马达设备场景： 从API version 19开始，支持多设备多马达场景。可通过[vibrator.getVibratorInfoSync](arkts-sensorservice-vibrator-getvibratorinfosync-f.md)查询马达信息，通过 [vibrator.on](arkts-sensorservice-vibrator-on-f.md#onvibratorstatechange)监听马达上下线事件，以便动态选择合适的马达触发振动。 振动效果类型对比： | 振动效果类型 | 适用场景 | 个性化程度 | 推荐优先级 | | --- | --- | --- | --- | | VibratePreset | 交互反馈类的短振场景（点击、长按、滑动、拖拽等） | 低，使用系统预置效果 | 推荐，与系统整体振感反馈体验风格一致 | | VibrateFromFile | 复杂场景效果（表情包拟真效果、游戏场景/操作反馈） | 高，支持自定义振动配置文件 | 适用于需要精细振动的场景 | | VibrateFromPattern | 与VibrateFromFile一致，但更灵活 | 高，支持振动事件数组组合 | 适用于需要动态组合振动事件的场景 | | VibrateTime | 基础时长振动，仅控制启停 | 低，无法调节强度和频率 | 仅满足基础功能需求 |
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare namespace vibrator--><!--Device-unnamed-declare namespace vibrator-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
 
 ## 导入模块
 
 ```TypeScript
-import { vibrator } from '@kit.SensorServiceKit';
 ```
 
 ## 汇总
@@ -20,16 +34,14 @@ import { vibrator } from '@kit.SensorServiceKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getEffectInfoSync](arkts-sensorservice-vibrator-geteffectinfosync-f.md) | 通过设备ID和马达ID获取预置振动效果信息，用于判断该预置振动效果是否受指定设备的指定马达支持。 <br>用于多设备多马达场景下确认指定设备的指定马达是否支持某个预置振动效果，不传param时默认查询本地设备。适用于触发振动前确认效果可用性，避免在不支持的设备或马达上触发振动效果不佳。返回EffectInfo对象， isEffectSupported字段指示是否支持该预置振动效果：返回true时可直接用于startVibration (#vibratorstartvibration9)，返回false时使用该effectId触发振动可能效果不 佳。如果需要跨设备查询预置振动效果是否支持，请使用getEffectInfoSync；如果仅查询本地设备，请使用isSupportEffect。 |
+| [getEffectInfoSync](arkts-sensorservice-vibrator-geteffectinfosync-f.md) | 通过设备ID和马达ID获取预置振动效果信息，用于判断该预置振动效果是否受指定设备的指定马达支持。 用于多设备多马达场景下确认指定设备的指定马达是否支持某个预置振动效果，不传param时默认查询本地设备。适用于触发振动前确认效果可用性，避免在不支持的设备或马达上触发振动效果不佳。返回EffectInfo对象， isEffectSupported字段指示是否支持该预置振动效果：返回true时可直接用于startVibration (#vibratorstartvibration9)，返回false时使用该effectId触发振动可能效果不 佳。如果需要跨设备查询预置振动效果是否支持，请使用getEffectInfoSync；如果仅查询本地设备，请使用isSupportEffect。 |
 | [getVibratorInfoSync](arkts-sensorservice-vibrator-getvibratorinfosync-f.md) | 查询一个或所有设备的马达信息列表。适用于在触发振动前查询设备马达能力和多马达设备的马达ID，以便选择合适的马达触发振动。 不传param时查询所有设备马达信息；传入VibratorInfoParam可查询指定设备或马达。返回VibratorInfo数组，包含deviceId、vibratorId、deviceName、 isHdHapticSupported、isLocalVibrator等属性，可用于startVibration (#vibratorstartvibration9)和stopVibration (# vibratorstopvibration19)中指定马达和设备。 |
 | [isHdHapticSupported](arkts-sensorservice-vibrator-ishdhapticsupported-f.md) | 查询当前设备是否支持高清振动。 适用于在触发高清振动前确认设备是否支持，避免在不支持的设备上调用VibrateFromFile或VibrateFromPattern类型振动导致振动效果不佳或返回错误码801。返回true表示设备支持高清振动，可使用 VibrateFromFile和VibrateFromPattern类型触发振动；返回false表示不支持，使用自定义振动类型将返回错误码801或效果不佳。 |
 | [isSupportEffect](arkts-sensorservice-vibrator-issupporteffect-f.md) | 查询当前设备是否支持传入的预置振动效果effectId。使用callback异步回调。 当开发者需要在触发预置振动前确认当前设备是否支持指定的振动效果时使用此接口。由于不同设备可能预置不同的振动效果，建议在使用 [vibrator.startVibration](arkts-sensorservice-vibrator-startvibration-f.md) 的VibratePreset类型前先调用此接口查询，避免在不支持的设备上触发振动效果不佳。调用成功后，通过callback返回boolean结果：返回true表示设备支持该effectId，可直接用于startVibration； 返回false表示不支持，此时使用该effectId触发振动可能效果不佳或无法振动。 |
 | [isSupportEffect](arkts-sensorservice-vibrator-issupporteffect-f.md) | 查询当前设备是否支持传入的预置振动效果effectId。使用promise异步回调。 当开发者需要在触发预置振动前确认当前设备是否支持指定的振动效果时使用此接口。与callback版本功能一致，开发者可根据异步回调风格偏好选择使用。调用成功时Promise resolve返回boolean结果：返回true表示设备 支持该effectId；返回false表示不支持，此时使用该effectId触发振动可能效果不佳或无法振动。 |
 | [isSupportEffectSync](arkts-sensorservice-vibrator-issupporteffectsync-f.md) | 查询当前设备是否支持预设的振动效果。此接口为同步接口，会阻塞主线程直到查询完成，容易影响UI交互，需谨慎使用。 当开发者需要在触发预置振动前立即确认当前设备是否支持指定的振动效果时使用此接口。适用于对实时性要求高且查询逻辑简单的场景。返回boolean结果：返回true表示设备支持该effectId，可用于 [startVibration](arkts-sensorservice-vibrator-startvibration-f.md) ；返回false表示不支持，使用该effectId触发振动可能效果不佳或无法振动。与异步版本 [vibrator.isSupportEffect](arkts-sensorservice-vibrator-issupporteffect-f.md)相比，本接 口为同步接口，直接返回结果无需回调，但会阻塞主线程。建议在非UI线程中使用，或在UI线程中优先使用异步版本以避免影响交互响应。 |
-| [offVibratorStateChange](arkts-sensorservice-vibrator-offvibratorstatechange-f.md) | Unregister a callback function for vibrator plugin or unplug events. |
-| [off_vibratorStateChange](arkts-sensorservice-vibrator-offvibratorstatechange-f.md) | 注销马达上线或下线事件的回调函数。 当开发者不再需要监听马达上下线状态变化时使用此接口注销回调。传入callback时注销指定回调；不传callback时注销该类型下所有已注册的回调。注销成功后，不再触发对应的回调函数。若传入的callback未注册过，注销操作无效 但不会报错。需先通过[vibrator.on](arkts-sensorservice-vibrator-onvibratorstatechange-f.md)注册回调后才能注销。同一type重复注册同一callback不会覆盖，需先off再on。 |
-| [onVibratorStateChange](arkts-sensorservice-vibrator-onvibratorstatechange-f.md) | Register a callback function to be called when a vibrator plugin or unplug event occurs. |
-| [on_vibratorStateChange](arkts-sensorservice-vibrator-onvibratorstatechange-f.md) | 注册马达上线或下线事件的回调函数。当马达设备上线或下线时触发回调。 当开发者需要实时感知马达设备的上下线状态变化时使用此接口。适用于分布式多设备场景中动态获取马达设备信息，以便在马达上线时及时触发振动或在下线时停止振动。注册成功后，当马达设备上线或下线时，系统将回调 VibratorStatusEvent对象，包含设备ID、马达数量、上下线状态等信息。回调中获取的deviceId可用于 [startVibration](arkts-sensorservice-vibrator-startvibration-f.md) 和[stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md)等接口指定目标设备。 注册回调后，需在合适的时机调用 [vibrator.off](arkts-sensorservice-vibrator-offvibratorstatechange-f.md)注销回调，避免内存泄 露。同一type重复注册同一callback不会覆盖，需先off再on。 |
+| [off](arkts-sensorservice-vibrator-off-f.md#offvibratorstatechange) | 注销马达上线或下线事件的回调函数。 当开发者不再需要监听马达上下线状态变化时使用此接口注销回调。传入callback时注销指定回调；不传callback时注销该类型下所有已注册的回调。注销成功后，不再触发对应的回调函数。若传入的callback未注册过，注销操作无效 但不会报错。需先通过[vibrator.on](arkts-sensorservice-vibrator-on-f.md#onvibratorstatechange)注册回调后才能注销。同一type重复注册同一callback不会覆盖，需先off再on。 |
+| [on](arkts-sensorservice-vibrator-on-f.md#onvibratorstatechange) | 注册马达上线或下线事件的回调函数。当马达设备上线或下线时触发回调。 当开发者需要实时感知马达设备的上下线状态变化时使用此接口。适用于分布式多设备场景中动态获取马达设备信息，以便在马达上线时及时触发振动或在下线时停止振动。注册成功后，当马达设备上线或下线时，系统将回调 VibratorStatusEvent对象，包含设备ID、马达数量、上下线状态等信息。回调中获取的deviceId可用于 [startVibration](arkts-sensorservice-vibrator-startvibration-f.md) 和[stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md)等接口指定目标设备。 注册回调后，需在合适的时机调用 vibrator.off注销回调，避免内存泄 露。同一type重复注册同一callback不会覆盖，需先off再on。 |
 | [startVibration](arkts-sensorservice-vibrator-startvibration-f.md) | 根据指定的振动效果和振动属性触发马达振动，使用callback异步回调。 适用于为用户交互提供触觉反馈、为通知/闹钟等事件提供振动提醒，或在游戏、多媒体等场景中提供沉浸式振动体验。调用成功后，设备马达将按指定效果和属性开始振动；若同一马达已有正在进行的振动，新请求将按系统优先级规则处理。同功能还提供 Promise版本vibrator.startVibration (#vibratorstartvibration9-1)，开发者可根据回调风格偏好选择。 |
 | [startVibration](arkts-sensorservice-vibrator-startvibration-f.md) | 根据指定的振动效果和振动属性触发马达振动，使用promise异步回调。 适用于交互触觉反馈、事件振动提醒或游戏、多媒体等沉浸式振动场景。调用成功时Promise resolve无返回值；调用失败时Promise reject返回错误对象。若同一马达已有振动正在进行，新请求按系统优先级规则处理。同功能还 提供callback版本vibrator.startVibration (#vibratorstartvibration9)，开发者可根据回调风格偏好选择。 |
 | [stop](arkts-sensorservice-vibrator-stop-f.md) | 按照指定模式停止马达的振动。 |
@@ -57,7 +69,7 @@ import { vibrator } from '@kit.SensorServiceKit';
 | --- | --- |
 | [ContinuousParam](arkts-sensorservice-vibrator-continuousparam-i.md) | 连续振动参数。用于[VibratorPatternBuilder.addContinuousEvent](arkts-sensorservice-vibrator-vibratorpatternbuilder-c.md#addcontinuousevent)的 options参数，指定长振事件的振动强度、频率、振动调节曲线和通道编号。 |
 | [EffectInfo](arkts-sensorservice-vibrator-effectinfo-i.md) | 查询的预置效果信息。通过[vibrator.getEffectInfoSync](arkts-sensorservice-vibrator-geteffectinfosync-f.md)返回此对象，用于判断预置振动效果是否受指定设备的指定马达支持。 |
-| [HapticFileDescriptor](arkts-sensorservice-vibrator-hapticfiledescriptor-i.md) | 自定义振动配置文件的描述符，必须确认资源文件可用，其参数可通过fileIo.open从 沙箱路径获取或者通过 [getRawFd](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getrawfd) 从HAP资源获取。使用场景：振动序列被存储在一个文件中，需要根据偏移量和长度进行振动，振动序列存储格式，请参考 [振动效果说明](../../../device/sensor/vibrator-guidelines.md#振动效果说明)。 使用时需注意以下问题： - 振动结束后建议及时关闭文件描述符，避免资源泄露。使用getRawFd获取的文件描述符需通过closeRawFd关闭，使用fileIo.open获取的需通过fileIo.close关闭。 |
+| [HapticFileDescriptor](arkts-sensorservice-vibrator-hapticfiledescriptor-i.md) | 自定义振动配置文件的描述符，必须确认资源文件可用，其参数可通过[fileIo.open](../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopen)从 沙箱路径获取或者通过 [getRawFd](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getrawfd) 从HAP资源获取。使用场景：振动序列被存储在一个文件中，需要根据偏移量和长度进行振动，振动序列存储格式，请参考 [振动效果说明](../../../device/sensor/vibrator-guidelines.md#振动效果说明)。 使用时需注意以下问题：  - 振动结束后建议及时关闭文件描述符，避免资源泄露。使用getRawFd获取的文件描述符需通过closeRawFd关闭，使用fileIo.open获取的需通过fileIo.close关闭。 |
 | [TransientParam](arkts-sensorservice-vibrator-transientparam-i.md) | 瞬态振动参数。用于[VibratorPatternBuilder.addTransientEvent](arkts-sensorservice-vibrator-vibratorpatternbuilder-c.md#addtransientevent)的 options参数，指定短振事件的振动强度、频率和通道编号。 |
 | [VibrateAttribute](arkts-sensorservice-vibrator-vibrateattribute-i.md) | 马达振动属性。用于 [startVibration](arkts-sensorservice-vibrator-startvibration-f.md) 接口的attribute参数，指定马达ID、设备ID和振动使用场景。 |
 | [VibrateFromFile](arkts-sensorservice-vibrator-vibratefromfile-i.md) | 自定义振动类型。仅部分设备支持高清振动的设备可用，当设备不支持此振动类型时，返回错误码801。当调用 [vibrator.startVibration&lt;sup&gt;9+&lt;/sup&gt;](arkts-sensorservice-vibrator-startvibration-f.md) 或 [vibrator.startVibration&lt;sup&gt;9+&lt;/sup&gt;](arkts-sensorservice-vibrator-startvibration-f.md) 时，[VibrateEffect&lt;sup&gt;9+&lt;/sup&gt;](arkts-sensorservice-vibrator-vibrateeffect-t.md)参数的值可以为VibrateFromFile，表示触发自定义振动类型。适用于匹配复杂场景效果的交互反馈（如表情 包触发的拟真效果、游戏场景/操作反馈）。 适用于需要按照振动配置文件定制精细振动效果的交互反馈场景。建议先通过[vibrator.isHdHapticSupported](arkts-sensorservice-vibrator-ishdhapticsupported-f.md)确认设备是否支持高清振动。 |
@@ -69,7 +81,7 @@ import { vibrator } from '@kit.SensorServiceKit';
 | [VibratorInfo](arkts-sensorservice-vibrator-vibratorinfo-i.md) | 表示查询的马达信息。通过[vibrator.getVibratorInfoSync](arkts-sensorservice-vibrator-getvibratorinfosync-f.md)返回此对象，用于获取设备马达能力和选择合适的马达触发振动。 |
 | [VibratorInfoParam](arkts-sensorservice-vibrator-vibratorinfoparam-i.md) | 设备上马达的参数。用于指定需要查询或控制的设备和马达信息。默认情况下，VibratorInfoParam默认为查询或控制本地全部马达。 |
 | [VibratorPattern](arkts-sensorservice-vibrator-vibratorpattern-i.md) | 马达振动序列，每个events代表一个振动事件。通过[VibratorPatternBuilder.build](arkts-sensorservice-vibrator-vibratorpatternbuilder-c.md#build)方法生成，作为 [VibrateFromPattern](arkts-sensorservice-vibrator-vibratefrompattern-i.md)的pattern参数传入 [startVibration](arkts-sensorservice-vibrator-startvibration-f.md) 接口触发振动。 |
-| [VibratorStatusEvent](arkts-sensorservice-vibrator-vibratorstatusevent-i.md) | 振动设备上线、下线状态事件信息。当马达设备上线或下线时，通过[vibrator.on](arkts-sensorservice-vibrator-onvibratorstatechange-f.md)回调传递此对象。 |
+| [VibratorStatusEvent](arkts-sensorservice-vibrator-vibratorstatusevent-i.md) | 振动设备上线、下线状态事件信息。当马达设备上线或下线时，通过[vibrator.on](arkts-sensorservice-vibrator-on-f.md#onvibratorstatechange)回调传递此对象。 |
 
 <!--Del-->
 ### 接口（系统接口）
@@ -92,6 +104,5 @@ import { vibrator } from '@kit.SensorServiceKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [Usage](arkts-sensorservice-vibrator-usage-t.md) | 振动使用场景。不同usage值对应不同的系统振动开关管控规则，开发者需根据实际业务场景选择合适的usage值。 <!--RP1End--> |
+| [Usage](arkts-sensorservice-vibrator-usage-t.md) | 振动使用场景。不同usage值对应不同的系统振动开关管控规则，开发者需根据实际业务场景选择合适的usage值。<!--RP1End--> |
 | [VibrateEffect](arkts-sensorservice-vibrator-vibrateeffect-t.md) | 马达振动效果，支持以下四种：在调用 [vibrator.startVibration&lt;sup&gt;9+&lt;/sup&gt;](arkts-sensorservice-vibrator-startvibration-f.md) 或 [vibrator.startVibration&lt;sup&gt;9+&lt;/sup&gt;](arkts-sensorservice-vibrator-startvibration-f.md) 接口时，此参数的四种类型表示以四种不同的形式触发振动。 |
-

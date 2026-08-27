@@ -3,20 +3,19 @@
 ## 导入模块
 
 ```TypeScript
-import { sim } from '@kit.TelephonyKit';
 ```
 
 ## getSimLabel
 
 ```TypeScript
-function getSimLabel(slotId: int, callback: AsyncCallback<SimLabel>): void
+function getSimLabel(slotId: number, callback: AsyncCallback<SimLabel>): void
 ```
 
-Obtains the SIM card label.
+查看卡槽ID和SIM卡的对应关系：  
+- 卡槽1对应SIM卡1或SIM卡2  
+- 卡槽2对应SIM卡2或ESIMX
 
-**起始版本：** 23
-
-<!--Device-sim-function getSimLabel(slotId: int, callback: AsyncCallback<SimLabel>): void--><!--Device-sim-function getSimLabel(slotId: int, callback: AsyncCallback<SimLabel>): void-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -24,17 +23,17 @@ Obtains the SIM card label.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slotId | int | 是 | SIM card slot ID. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[SimLabel](arkts-telephony-sim-simlabel-i.md)&gt; | 是 | Callback used to return the SIM card label. |
+| slotId | number | 是 | 卡槽ID。   - 0：卡槽1。   - 1：卡槽2。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SimLabel](arkts-telephony-sim-simlabel-i.md)&gt; | 是 | 回调函数。获取SIM卡标签信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
+| [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
-| [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
+| [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
 **示例**
 
@@ -51,14 +50,12 @@ sim.getSimLabel(0, (err: BusinessError, data: sim.SimLabel) => {
 ## getSimLabel
 
 ```TypeScript
-function getSimLabel(slotId: int): Promise<SimLabel>
+function getSimLabel(slotId: number): Promise<SimLabel>
 ```
 
-获取SIM卡标签名称
+获取SIM卡的标签信息。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-sim-function getSimLabel(slotId: int): Promise<SimLabel>--><!--Device-sim-function getSimLabel(slotId: int): Promise<SimLabel>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -66,22 +63,22 @@ function getSimLabel(slotId: int): Promise<SimLabel>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slotId | int | 是 | 卡槽索引号 |
+| slotId | number | 是 | 卡槽ID。   - 0：卡槽1。   - 1：卡槽2。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[SimLabel](arkts-telephony-sim-simlabel-i.md)&gt; | 返回SIM卡标签： |
+| Promise&lt;[SimLabel](arkts-telephony-sim-simlabel-i.md)&gt; | 回调函数。获取SIM卡标签信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
+| [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
-| [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
+| [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
 **示例**
 
@@ -92,7 +89,6 @@ import { sim } from '@kit.TelephonyKit';
 sim.getSimLabel(0).then((data: sim.SimLabel) => {
   console.info(`getSimLabel success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`getSimState failed, promise: err->${JSON.stringify(err)}`);
+  console.error(`getSimLabel failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
-

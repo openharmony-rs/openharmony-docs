@@ -4,14 +4,11 @@ HTTP拦截器接口。用户可以实现此接口来定义拦截处理函数。
 
 **起始版本：** 22
 
-<!--Device-http-export interface HttpInterceptor--><!--Device-http-export interface HttpInterceptor-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
 
 ## 导入模块
 
 ```TypeScript
-import { http } from '@kit.NetworkKit';
 ```
 
 ## interceptorHandle
@@ -25,8 +22,6 @@ interceptorHandle(reqContext: HttpRequestContext, rspContext: HttpResponse): Pro
 **起始版本：** 22
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HttpInterceptor-interceptorHandle(reqContext: HttpRequestContext, rspContext: HttpResponse): Promise<ChainContinue>--><!--Device-HttpInterceptor-interceptorHandle(reqContext: HttpRequestContext, rspContext: HttpResponse): Promise<ChainContinue>-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -77,7 +72,4 @@ The type of this interceptor. It defines when this intercptor would be called.
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HttpInterceptor-interceptorType: InterceptorType--><!--Device-HttpInterceptor-interceptorType: InterceptorType-End-->
-
 **系统能力：** SystemCapability.Communication.NetStack
-

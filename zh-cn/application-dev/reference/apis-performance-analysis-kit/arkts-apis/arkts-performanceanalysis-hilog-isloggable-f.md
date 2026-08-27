@@ -3,22 +3,19 @@
 ## 导入模块
 
 ```TypeScript
-import { hilog } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## isLoggable
 
 ```TypeScript
-function isLoggable(domain: int, tag: string, level: LogLevel): boolean
+function isLoggable(domain: number, tag: string, level: LogLevel): boolean
 ```
 
 在打印日志前调用该接口，用于检查指定领域标识、日志标识和级别的日志是否可以打印。
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-hilog-function isLoggable(domain: int, tag: string, level: LogLevel): boolean--><!--Device-hilog-function isLoggable(domain: int, tag: string, level: LogLevel): boolean-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiLog
 
@@ -26,7 +23,7 @@ function isLoggable(domain: int, tag: string, level: LogLevel): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| domain | int | 是 | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br/>建议开发者在应用内根据需要自定义划分。 |
+| domain | number | 是 | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。建议开发者在应用内根据需要自定义划分。 |
 | tag | string | 是 | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。tag长度最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。 |
 | level | [LogLevel](arkts-performanceanalysis-hilog-loglevel-e.md) | 是 | 日志级别。 |
 
@@ -41,4 +38,3 @@ function isLoggable(domain: int, tag: string, level: LogLevel): boolean
 ```TypeScript
 hilog.isLoggable(0x0001, "testTag", hilog.LogLevel.INFO);
 ```
-

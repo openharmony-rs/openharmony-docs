@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
 ```
 
 ## getArguments
@@ -14,11 +13,9 @@ function getArguments(): AbilityDelegatorArgs
 
 获取单元测试参数[AbilityDelegatorArgs](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegatorargs-abilitydelegatorargs-i.md)对象。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-abilityDelegatorRegistry-function getArguments(): AbilityDelegatorArgs--><!--Device-abilityDelegatorRegistry-function getArguments(): AbilityDelegatorArgs-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -41,4 +38,3 @@ console.info(`getArguments parameters: ${JSON.stringify(args.parameters)}`);
 console.info(`getArguments testCaseNames: ${args.testCaseNames}`);
 console.info(`getArguments testRunnerClassName: ${args.testRunnerClassName}`);
 ```
-

@@ -4,14 +4,11 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-hiRetrieval-interface HiRetrievalConfig--><!--Device-hiRetrieval-interface HiRetrievalConfig-End-->
-
 **系统能力：** SystemCapability.HiviewDFX.HiRetrieval
 
 ## 导入模块
 
 ```TypeScript
-import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## deviceModel
@@ -27,8 +24,6 @@ deviceModel: string
 **起始版本：** 26.0.0
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HiRetrievalConfig-deviceModel: string--><!--Device-HiRetrievalConfig-deviceModel: string-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiRetrieval
 
@@ -46,8 +41,6 @@ deviceType: string
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HiRetrievalConfig-deviceType: string--><!--Device-HiRetrievalConfig-deviceType: string-End-->
-
 **系统能力：** SystemCapability.HiviewDFX.HiRetrieval
 
 ## userType
@@ -64,7 +57,4 @@ userType: string
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HiRetrievalConfig-userType: string--><!--Device-HiRetrievalConfig-userType: string-End-->
-
 **系统能力：** SystemCapability.HiviewDFX.HiRetrieval
-

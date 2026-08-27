@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';
-import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 ```
 
 ## importKey
@@ -13,15 +12,19 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 function importKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void
 ```
 
-导入明文密钥，使用Callback方式回调异步返回结果。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [huks.importKeyItem&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-importkeyitem-f.md) > 替代。
+导入明文密钥，使用Callback方式回调异步返回结果。
+
+> **说明：**
+> 
+> 从API version 8开始支持，从API version 9开始废弃，建议使用
+> [huks.importKeyItem&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-importkeyitem-f.md)
+> 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
 **替代接口：** [importKeyItem](arkts-universalkeystore-huks-importkeyitem-f.md)(keyAlias: string, options: HuksOptions, callback: AsyncCallback&lt;void&gt;)
-
-<!--Device-huks-function importKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void--><!--Device-huks-function importKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -31,7 +34,7 @@ function importKey(keyAlias: string, options: HuksOptions, callback: AsyncCallba
 | --- | --- | --- | --- |
 | keyAlias | string | 是 | 密钥别名。密钥别名的最大长度为128字节，建议不包含个人信息等敏感词汇。 |
 | options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 用于导入时所需TAG和需要导入的密钥。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[HuksResult](arkts-universalkeystore-huks-huksresult-i.md)&gt; | 是 | 回调函数。当导入密钥成功时，err为undefined，data为获取到的HuksResult；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[HuksResult](arkts-universalkeystore-huks-huksresult-i.md)&gt; | 是 | 回调函数。当导入密钥成功时，err为undefined，data为获取到的HuksResult；否则为错误对象。 |
 
 **示例**
 
@@ -88,15 +91,18 @@ huks.importKey(keyAlias, options, (err, data) => {
 function importKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>
 ```
 
-导入明文密钥。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [huks.importKeyItem&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-importkeyitem-f.md)替代。
+导入明文密钥。使用Promise异步回调。
+
+> **说明：**
+> 
+> 从API version 8开始支持，从API version 9开始废弃，建议使用
+> [huks.importKeyItem&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-importkeyitem-f.md)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
 **替代接口：** [importKeyItem](arkts-universalkeystore-huks-importkeyitem-f.md)(keyAlias: string, options: HuksOptions)
-
-<!--Device-huks-function importKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>--><!--Device-huks-function importKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -160,4 +166,3 @@ let huksOptions: huks.HuksOptions = {
 /* 2. 导入密钥 */
 let result = huks.importKey(keyAlias, huksOptions);
 ```
-

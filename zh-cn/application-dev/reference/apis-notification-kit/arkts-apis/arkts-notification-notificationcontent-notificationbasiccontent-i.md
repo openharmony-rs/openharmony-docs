@@ -2,9 +2,7 @@
 
 描述普通文本通知，用于展示标题和正文内容，是其他通知类型的基础内容结构。 其他通知类型（如长文本、多行文本、图片、实况窗）均继承本接口，在此基础上扩展各自特有字段。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface NotificationBasicContent--><!--Device-unnamed-export interface NotificationBasicContent-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -18,9 +16,7 @@ additionalText?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-NotificationBasicContent-additionalText?: string--><!--Device-NotificationBasicContent-additionalText?: string-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -34,9 +30,7 @@ lockscreenPicture?: image.PixelMap
 
 **类型：** image.PixelMap
 
-**起始版本：** 23
-
-<!--Device-NotificationBasicContent-lockscreenPicture?: image.PixelMap--><!--Device-NotificationBasicContent-lockscreenPicture?: image.PixelMap-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -50,9 +44,7 @@ text: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-NotificationBasicContent-text: string--><!--Device-NotificationBasicContent-text: string-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -66,9 +58,6 @@ title: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-NotificationBasicContent-title: string--><!--Device-NotificationBasicContent-title: string-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Notification.Notification
-

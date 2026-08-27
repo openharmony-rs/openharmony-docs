@@ -14,11 +14,9 @@ function unsubscribe(): Promise<void>
 
 取消通知扩展的订阅。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **需要权限：** ohos.permission.SUBSCRIBE_NOTIFICATION
-
-<!--Device-notificationExtensionSubscription-function unsubscribe(): Promise<void>--><!--Device-notificationExtensionSubscription-function unsubscribe(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -30,7 +28,7 @@ subscribe 订阅通知扩展。
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -42,8 +40,6 @@ subscribe 订阅通知扩展。
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 notificationExtensionSubscription.unsubscribe().then(() => {
   console.info(`unsubscribe success`);
@@ -51,15 +47,3 @@ notificationExtensionSubscription.unsubscribe().then(() => {
   console.error(`unsubscribe fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-notificationExtensionSubscription.unsubscribe().then(() => {
-  console.info('unsubscribe success');
-}).catch((error: Error) => {
-  let err = error as BusinessError
-  console.error(`unsubscribe fail, code is ${err.code}, message is ${err.message}`);
-});
-```
-

@@ -12,9 +12,6 @@ export type InteropAbilityMonitor = _InteropAbilityMonitor
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-abilityDelegatorRegistry-export type InteropAbilityMonitor = _InteropAbilityMonitor--><!--Device-abilityDelegatorRegistry-export type InteropAbilityMonitor = _InteropAbilityMonitor-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **属性类型：** _InteropAbilityMonitor
-

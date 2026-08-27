@@ -4,8 +4,6 @@
 
 **起始版本：** 23
 
-<!--Device-companionDeviceAuth-enum DeviceIdType--><!--Device-companionDeviceAuth-enum DeviceIdType-End-->
-
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **系统接口：** 此接口为系统接口。
@@ -21,8 +19,6 @@ UNIFIED_DEVICE_ID = 1
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceIdType-UNIFIED_DEVICE_ID = 1--><!--Device-DeviceIdType-UNIFIED_DEVICE_ID = 1-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -40,9 +36,6 @@ VENDOR_BEGIN = 10000
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DeviceIdType-VENDOR_BEGIN = 10000--><!--Device-DeviceIdType-VENDOR_BEGIN = 10000-End-->
-
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **系统接口：** 此接口为系统接口。
-

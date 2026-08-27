@@ -2,9 +2,7 @@
 
 描述通知智能聚合信息字段。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface UnifiedGroupInfo--><!--Device-unnamed-export interface UnifiedGroupInfo-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -20,9 +18,7 @@ content?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-UnifiedGroupInfo-content?: string--><!--Device-UnifiedGroupInfo-content?: string-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -31,16 +27,14 @@ content?: string
 ## extraInfo
 
 ```TypeScript
-extraInfo?: Record<string, RecordData>
+extraInfo?: { [key: string]: any }
 ```
 
 其他聚合信息。
 
-**类型：** Record&lt;string, [RecordData](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt;
+**类型：** { [key: string]: any }
 
-**起始版本：** 23
-
-<!--Device-UnifiedGroupInfo-extraInfo?: Record<string, RecordData>--><!--Device-UnifiedGroupInfo-extraInfo?: Record<string, RecordData>-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -56,9 +50,7 @@ key?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-UnifiedGroupInfo-key?: string--><!--Device-UnifiedGroupInfo-key?: string-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -74,9 +66,7 @@ sceneName?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-UnifiedGroupInfo-sceneName?: string--><!--Device-UnifiedGroupInfo-sceneName?: string-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -92,11 +82,8 @@ title?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-UnifiedGroupInfo-title?: string--><!--Device-UnifiedGroupInfo-title?: string-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
-

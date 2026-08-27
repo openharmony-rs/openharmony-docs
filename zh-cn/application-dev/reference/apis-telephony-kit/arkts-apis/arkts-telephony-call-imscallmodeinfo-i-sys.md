@@ -2,9 +2,7 @@
 
 视频通话模式信息。
 
-**起始版本：** 23
-
-<!--Device-call-export interface ImsCallModeInfo--><!--Device-call-export interface ImsCallModeInfo-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -13,22 +11,19 @@
 ## 导入模块
 
 ```TypeScript
-import { call } from '@kit.TelephonyKit';
 ```
 
 ## callId
 
 ```TypeScript
-callId: int
+callId: number
 ```
 
 呼叫Id。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ImsCallModeInfo-callId: int--><!--Device-ImsCallModeInfo-callId: int-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -44,9 +39,7 @@ imsCallMode: ImsCallMode
 
 **类型：** [ImsCallMode](arkts-telephony-call-imscallmode-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-ImsCallModeInfo-imsCallMode: ImsCallMode--><!--Device-ImsCallModeInfo-imsCallMode: ImsCallMode-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -62,9 +55,7 @@ isRequestInfo: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-ImsCallModeInfo-isRequestInfo: boolean--><!--Device-ImsCallModeInfo-isRequestInfo: boolean-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -80,11 +71,8 @@ result: VideoRequestResultType
 
 **类型：** [VideoRequestResultType](arkts-telephony-call-videorequestresulttype-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-ImsCallModeInfo-result: VideoRequestResultType--><!--Device-ImsCallModeInfo-result: VideoRequestResultType-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
 **系统接口：** 此接口为系统接口。
-

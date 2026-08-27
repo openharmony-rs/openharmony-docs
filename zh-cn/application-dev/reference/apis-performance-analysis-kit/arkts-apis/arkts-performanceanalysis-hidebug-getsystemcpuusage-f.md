@@ -3,20 +3,21 @@
 ## 导入模块
 
 ```TypeScript
-import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## getSystemCpuUsage
 
 ```TypeScript
-function getSystemCpuUsage(): double
+function getSystemCpuUsage(): number
 ```
 
-获取系统的CPU资源占用情况。 > **注意** > > 由于该接口涉及跨进程通信，耗时较长，为了避免引入性能问题，建议不要在主线程中直接调用该接口。
+获取系统的CPU资源占用情况。
 
-**起始版本：** 23
+> **注意**：
+> 
+> 由于该接口涉及跨进程通信，耗时较长，为了避免引入性能问题，建议不要在主线程中直接调用该接口。
 
-<!--Device-hidebug-function getSystemCpuUsage(): double--><!--Device-hidebug-function getSystemCpuUsage(): double-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -24,7 +25,7 @@ function getSystemCpuUsage(): double
 
 | 类型 | 说明 |
 | --- | --- |
-| double | 系统CPU资源占用情况。如占用率为50%，则返回0.5。 |
+| number | 系统CPU资源占用情况。如占用率为50%，则返回0.5。 |
 
 **错误码：**
 
@@ -44,4 +45,3 @@ try {
   console.error(`error code: ${(error as BusinessError).code}, error msg: ${(error as BusinessError).message}`);
 }
 ```
-

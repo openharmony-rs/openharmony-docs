@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## getUserProperty
@@ -14,11 +13,9 @@ function getUserProperty(name: string): string
 
 获取通过setUserProperty接口设置的value值。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-hiAppEvent-function getUserProperty(name: string): string--><!--Device-hiAppEvent-function getUserProperty(name: string): string-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -38,11 +35,9 @@ function getUserProperty(name: string): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -55,19 +50,3 @@ try {
   hilog.error(0x0000, 'hiAppEvent', `failed to getUserProperty event, code=${error.code}`);
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@ohos.base';
-
-hiAppEvent.setUserProperty('key', 'value');
-try {
-  let value: string = hiAppEvent.getUserProperty('key');
-  hilog.info(0x0000, 'hiAppEvent', `getUserProperty event was successful, userProperty=${value}`);
-} catch (error: BusinessError) {
-  hilog.error(0x0000, 'hiAppEvent', `failed to getUserProperty event, code=${error.code}`);
-}
-```
-

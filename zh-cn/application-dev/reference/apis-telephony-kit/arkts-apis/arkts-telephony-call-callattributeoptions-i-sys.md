@@ -2,9 +2,7 @@
 
 调用属性选项。
 
-**起始版本：** 23
-
-<!--Device-call-export interface CallAttributeOptions--><!--Device-call-export interface CallAttributeOptions-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -13,22 +11,19 @@
 ## 导入模块
 
 ```TypeScript
-import { call } from '@kit.TelephonyKit';
 ```
 
 ## accountId
 
 ```TypeScript
-accountId: int
+accountId: number
 ```
 
 帐户Id。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-CallAttributeOptions-accountId: int--><!--Device-CallAttributeOptions-accountId: int-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -44,9 +39,7 @@ accountNumber: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-CallAttributeOptions-accountNumber: string--><!--Device-CallAttributeOptions-accountNumber: string-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -55,16 +48,14 @@ accountNumber: string
 ## callId
 
 ```TypeScript
-callId: int
+callId: number
 ```
 
 呼叫Id。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-CallAttributeOptions-callId: int--><!--Device-CallAttributeOptions-callId: int-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -80,9 +71,7 @@ callState: DetailedCallState
 
 **类型：** [DetailedCallState](arkts-telephony-call-detailedcallstate-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-CallAttributeOptions-callState: DetailedCallState--><!--Device-CallAttributeOptions-callState: DetailedCallState-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -98,9 +87,7 @@ callType: CallType
 
 **类型：** [CallType](arkts-telephony-call-calltype-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-CallAttributeOptions-callType: CallType--><!--Device-CallAttributeOptions-callType: CallType-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -116,9 +103,7 @@ conferenceState: ConferenceState
 
 **类型：** [ConferenceState](arkts-telephony-call-conferencestate-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-CallAttributeOptions-conferenceState: ConferenceState--><!--Device-CallAttributeOptions-conferenceState: ConferenceState-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -127,16 +112,14 @@ conferenceState: ConferenceState
 ## crsType
 
 ```TypeScript
-crsType: int
+crsType: number
 ```
 
 视频彩振类型。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-CallAttributeOptions-crsType: int--><!--Device-CallAttributeOptions-crsType: int-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -152,9 +135,7 @@ Indicates the extra call parameters.
 
 **类型：** Record&lt;string, Object&gt;
 
-**起始版本：** 23
-
-<!--Device-CallAttributeOptions-extraParams?: Record<string, Object>--><!--Device-CallAttributeOptions-extraParams?: Record<string, Object>-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -166,13 +147,14 @@ Indicates the extra call parameters.
 isCustomAccessibility?: boolean
 ```
 
-应用是否支持自定义无障碍能力，默认为false。 -true:支持 -false:不支持 **起始版本:** 26.0.0
+应用是否支持自定义无障碍能力，默认为false。  
+-true:支持  
+-false:不支持  
+**起始版本:** 26.0.0
 
 **类型：** boolean
 
 **起始版本：** 26.0.0
-
-<!--Device-CallAttributeOptions-isCustomAccessibility?: boolean--><!--Device-CallAttributeOptions-isCustomAccessibility?: boolean-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -184,13 +166,13 @@ isCustomAccessibility?: boolean
 isEcc: boolean
 ```
 
-判断是否是Ecc，默认false。 -true：是 -false：否
+判断是否是Ecc，默认false。  
+-true：是  
+-false：否
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-CallAttributeOptions-isEcc: boolean--><!--Device-CallAttributeOptions-isEcc: boolean-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -206,9 +188,7 @@ numberLocation?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-CallAttributeOptions-numberLocation?: string--><!--Device-CallAttributeOptions-numberLocation?: string-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -224,9 +204,7 @@ numberMarkInfo?: NumberMarkInfo
 
 **类型：** [NumberMarkInfo](arkts-telephony-call-numbermarkinfo-i-sys.md)
 
-**起始版本：** 23
-
-<!--Device-CallAttributeOptions-numberMarkInfo?: NumberMarkInfo--><!--Device-CallAttributeOptions-numberMarkInfo?: NumberMarkInfo-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -235,16 +213,14 @@ numberMarkInfo?: NumberMarkInfo
 ## originalCallType
 
 ```TypeScript
-originalCallType: int
+originalCallType: number
 ```
 
 视频彩振原始呼叫类型。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-CallAttributeOptions-originalCallType: int--><!--Device-CallAttributeOptions-originalCallType: int-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -260,9 +236,7 @@ rtt通话状态
 
 **类型：** [RttState](arkts-telephony-call-rttstate-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-CallAttributeOptions-rttState?: RttState--><!--Device-CallAttributeOptions-rttState?: RttState-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -274,13 +248,13 @@ rtt通话状态
 speakerphoneOn: boolean
 ```
 
-判断是否是扬声器接通电话，默认false。 -true：是 -false：否
+判断是否是扬声器接通电话，默认false。  
+-true：是  
+-false：否
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-CallAttributeOptions-speakerphoneOn: boolean--><!--Device-CallAttributeOptions-speakerphoneOn: boolean-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -289,16 +263,14 @@ speakerphoneOn: boolean
 ## startTime
 
 ```TypeScript
-startTime: int
+startTime: number
 ```
 
 开始时间。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-CallAttributeOptions-startTime: int--><!--Device-CallAttributeOptions-startTime: int-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -314,9 +286,7 @@ videoState: VideoStateType
 
 **类型：** [VideoStateType](arkts-telephony-call-videostatetype-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-CallAttributeOptions-videoState: VideoStateType--><!--Device-CallAttributeOptions-videoState: VideoStateType-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -332,9 +302,7 @@ VoIP通话信息。
 
 **类型：** [VoipCallAttribute](arkts-telephony-call-voipcallattribute-i-sys.md)
 
-**起始版本：** 23
-
-<!--Device-CallAttributeOptions-voipCallAttribute?: VoipCallAttribute--><!--Device-CallAttributeOptions-voipCallAttribute?: VoipCallAttribute-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -346,15 +314,13 @@ VoIP通话信息。
 xCallType?: XCallType
 ```
 
-XCALL类型。 **起始版本:** 26.0.0
+XCALL类型。  
+**起始版本:** 26.0.0
 
 **类型：** [XCallType](arkts-telephony-call-xcalltype-e-sys.md)
 
 **起始版本：** 26.0.0
 
-<!--Device-CallAttributeOptions-xCallType?: XCallType--><!--Device-CallAttributeOptions-xCallType?: XCallType-End-->
-
 **系统能力：** SystemCapability.Telephony.CallManager
 
 **系统接口：** 此接口为系统接口。
-

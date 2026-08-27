@@ -2,9 +2,7 @@
 
 SIM卡短消息。
 
-**起始版本：** 23
-
-<!--Device-sms-export interface SimShortMessage--><!--Device-sms-export interface SimShortMessage-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -13,22 +11,19 @@ SIM卡短消息。
 ## 导入模块
 
 ```TypeScript
-import { sms } from '@kit.TelephonyKit';
 ```
 
 ## indexOnSim
 
 ```TypeScript
-indexOnSim: int
+indexOnSim: number
 ```
 
 SIM卡索引
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SimShortMessage-indexOnSim: int--><!--Device-SimShortMessage-indexOnSim: int-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -44,9 +39,7 @@ shortMessage: ShortMessage
 
 **类型：** [ShortMessage](arkts-telephony-sms-shortmessage-i.md)
 
-**起始版本：** 23
-
-<!--Device-SimShortMessage-shortMessage: ShortMessage--><!--Device-SimShortMessage-shortMessage: ShortMessage-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -62,11 +55,8 @@ SIM卡消息状态
 
 **类型：** [SimMessageStatus](arkts-telephony-sms-simmessagestatus-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-SimShortMessage-simMessageStatus: SimMessageStatus--><!--Device-SimShortMessage-simMessageStatus: SimMessageStatus-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
 **系统接口：** 此接口为系统接口。
-

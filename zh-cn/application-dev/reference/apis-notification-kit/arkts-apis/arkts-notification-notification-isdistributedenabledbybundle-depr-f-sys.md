@@ -3,9 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from '@kit.NotificationKit';
-import { notificationSubscribe } from '@kit.NotificationKit';
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
 ```
 
 ## isDistributedEnabledByBundle
@@ -24,8 +21,6 @@ function isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallb
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
-<!--Device-notification-function isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback<boolean>): void--><!--Device-notification-function isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback<boolean>): void-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -35,7 +30,27 @@ function isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallb
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundle | BundleOption | 是 | 应用的包。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 查询指定应用是否支持分布式通知的回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 查询指定应用是否支持分布式通知的回调函数。 |
+
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+
+let isDistributedEnabledByBundleCallback = (err: Base.BusinessError, data: boolean) => {
+  if (err) {
+    console.error("isDistributedEnabledByBundle failed " + JSON.stringify(err));
+  } else {
+    console.info("isDistributedEnabledByBundle success" + JSON.stringify(data));
+  }
+};
+
+let bundle: Notification.BundleOption = {
+  bundle: "bundleName1",
+};
+
+Notification.isDistributedEnabledByBundle(bundle, isDistributedEnabledByBundleCallback);
+```
 
 
 ## isDistributedEnabledByBundle
@@ -54,8 +69,6 @@ function isDistributedEnabledByBundle(bundle: BundleOption): Promise<boolean>
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
-<!--Device-notification-function isDistributedEnabledByBundle(bundle: BundleOption): Promise<boolean>--><!--Device-notification-function isDistributedEnabledByBundle(bundle: BundleOption): Promise<boolean>-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -70,5 +83,20 @@ function isDistributedEnabledByBundle(bundle: BundleOption): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise方式返回指定应用是否支持分布式通知的结果。 |
+| Promise & lt;boolean & gt; | Promise方式返回指定应用是否支持分布式通知的结果。 |
 
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+
+let bundle: Notification.BundleOption = {
+  bundle: "bundleName1",
+};
+
+Notification.isDistributedEnabledByBundle(bundle).then((data: boolean) => {
+  console.info("isDistributedEnabledByBundle success, data: " + JSON.stringify(data));
+}).catch((err: Base.BusinessError) => {
+  console.error(`isDistributedEnabledByBundle failed, code is ${err}`);
+});
+```

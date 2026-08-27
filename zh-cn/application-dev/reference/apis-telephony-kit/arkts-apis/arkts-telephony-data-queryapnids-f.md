@@ -3,22 +3,19 @@
 ## 导入模块
 
 ```TypeScript
-import { data } from '@kit.TelephonyKit';
 ```
 
 ## queryApnIds
 
 ```TypeScript
-function queryApnIds(apnInfo: ApnInfo): Promise<Array<int>>
+function queryApnIds(apnInfo: ApnInfo): Promise<Array<number>>
 ```
 
 异步获取传入的ApnInfo对应的ApnId信息。
 
-**起始版本：** 23
+**起始版本：** 16
 
 **需要权限：** ohos.permission.MANAGE_APN_SETTING
-
-<!--Device-data-function queryApnIds(apnInfo: ApnInfo): Promise<Array<int>>--><!--Device-data-function queryApnIds(apnInfo: ApnInfo): Promise<Array<int>>-End-->
 
 **系统能力：** SystemCapability.Telephony.CellularData
 
@@ -32,7 +29,7 @@ function queryApnIds(apnInfo: ApnInfo): Promise<Array<int>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;int&gt;&gt; | Promise对象，返回传入的ApnInfo对应的ApnId信息列表。 |
+| Promise & lt;Array & lt;number & gt; & gt; | Promise对象，返回传入的ApnInfo对应的ApnId信息列表。 |
 
 **错误码：**
 
@@ -60,4 +57,3 @@ data.queryApnIds(apnInfo).then((apnIds: Array<number>) => {
     console.error(`queryApnIds failed. code: ${err.code}, message: ${err.message}`);
 });
 ```
-

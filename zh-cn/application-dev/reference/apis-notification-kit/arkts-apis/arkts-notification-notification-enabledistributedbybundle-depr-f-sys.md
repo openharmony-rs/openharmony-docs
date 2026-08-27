@@ -3,9 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from '@kit.NotificationKit';
-import { notificationSubscribe } from '@kit.NotificationKit';
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
 ```
 
 ## enableDistributedByBundle
@@ -24,8 +21,6 @@ function enableDistributedByBundle(bundle: BundleOption, enable: boolean, callba
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
-<!--Device-notification-function enableDistributedByBundle(bundle: BundleOption, enable: boolean, callback: AsyncCallback<void>): void--><!--Device-notification-function enableDistributedByBundle(bundle: BundleOption, enable: boolean, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -36,7 +31,29 @@ function enableDistributedByBundle(bundle: BundleOption, enable: boolean, callba
 | --- | --- | --- | --- |
 | bundle | BundleOption | 是 | 应用的包信息。 |
 | enable | boolean | 是 | 是否支持。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 应用程序是否支持分布式通知的回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 应用程序是否支持分布式通知的回调函数。 |
+
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+
+let enableDistributedByBundleCallback = (err: Base.BusinessError) => {
+  if (err) {
+    console.error("enableDistributedByBundle failed " + JSON.stringify(err));
+  } else {
+    console.info("enableDistributedByBundle success");
+  }
+};
+
+let bundle: Notification.BundleOption = {
+  bundle: "bundleName1",
+};
+
+let enable: boolean = true;
+
+Notification.enableDistributedByBundle(bundle, enable, enableDistributedByBundleCallback);
+```
 
 
 ## enableDistributedByBundle
@@ -55,8 +72,6 @@ function enableDistributedByBundle(bundle: BundleOption, enable: boolean): Promi
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
-<!--Device-notification-function enableDistributedByBundle(bundle: BundleOption, enable: boolean): Promise<void>--><!--Device-notification-function enableDistributedByBundle(bundle: BundleOption, enable: boolean): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -72,5 +87,22 @@ function enableDistributedByBundle(bundle: BundleOption, enable: boolean): Promi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
 
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+
+let enable: boolean = true;
+
+let bundle: Notification.BundleOption = {
+  bundle: "bundleName1",
+};
+
+Notification.enableDistributedByBundle(bundle, enable).then(() => {
+  console.info("enableDistributedByBundle success");
+}).catch((err: Base.BusinessError) => {
+  console.error(`enableDistributedByBundle failed, code is ${err}`);
+});
+```

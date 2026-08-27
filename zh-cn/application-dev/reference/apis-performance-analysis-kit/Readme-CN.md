@@ -10,7 +10,7 @@
 - [ArkTS API](arkts-apis/Readme-CN.md)<!--arkts-performanceanalysiskit-->
 - [C API](c-apis/Readme-CN.md)<!--c-performance-analysis-kit-->
 - 错误码<!--performance-analysis-errcode-->
-  - [Faultlogger错误码](errorcode-faultlogger.md)
+  - [Faultlogger 错误码](errorcode-faultlogger.md)
   - [应用事件打点错误码](errorcode-hiappevent.md)
   - [HiDebug错误码](errorcode-hiviewdfx-hidebug.md)
   - [HiDebug CpuUsage错误码](errorcode-hiviewdfx-hidebug-cpuusage.md)
@@ -22,4 +22,3 @@
   - [系统事件错误码](errorcode-hisysevent-sys.md)
   - [维测日志错误码](errorcode-loglibrary-sys.md)
     <!--DelEnd-->
-

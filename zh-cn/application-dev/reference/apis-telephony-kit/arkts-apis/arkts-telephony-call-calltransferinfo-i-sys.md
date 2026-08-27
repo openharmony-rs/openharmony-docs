@@ -2,9 +2,7 @@
 
 呼叫转移信息。
 
-**起始版本：** 23
-
-<!--Device-call-export interface CallTransferInfo--><!--Device-call-export interface CallTransferInfo-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -13,22 +11,19 @@
 ## 导入模块
 
 ```TypeScript
-import { call } from '@kit.TelephonyKit';
 ```
 
 ## endHour
 
 ```TypeScript
-endHour?: int
+endHour?: number
 ```
 
 结束时间的小时数。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-CallTransferInfo-endHour?: int--><!--Device-CallTransferInfo-endHour?: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -37,16 +32,14 @@ endHour?: int
 ## endMinute
 
 ```TypeScript
-endMinute?: int
+endMinute?: number
 ```
 
 结束时间的分钟数。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-CallTransferInfo-endMinute?: int--><!--Device-CallTransferInfo-endMinute?: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -62,9 +55,7 @@ settingType: CallTransferSettingType
 
 **类型：** [CallTransferSettingType](arkts-telephony-call-calltransfersettingtype-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-CallTransferInfo-settingType: CallTransferSettingType--><!--Device-CallTransferInfo-settingType: CallTransferSettingType-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -73,16 +64,14 @@ settingType: CallTransferSettingType
 ## startHour
 
 ```TypeScript
-startHour?: int
+startHour?: number
 ```
 
 开始时间的小时数。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-CallTransferInfo-startHour?: int--><!--Device-CallTransferInfo-startHour?: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -91,16 +80,14 @@ startHour?: int
 ## startMinute
 
 ```TypeScript
-startMinute?: int
+startMinute?: number
 ```
 
 开始时间的分钟数。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-CallTransferInfo-startMinute?: int--><!--Device-CallTransferInfo-startMinute?: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -116,9 +103,7 @@ transferNum: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-CallTransferInfo-transferNum: string--><!--Device-CallTransferInfo-transferNum: string-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -132,13 +117,10 @@ type: CallTransferType
 
 呼叫转移类型。
 
-**类型：** [CallTransferType](arkts-telephony-call-calltransfertype-e-sys.md)
+**类型：** [CallTransferType](arkts-telephony-call-calltransfertype-e.md)
 
-**起始版本：** 23
-
-<!--Device-CallTransferInfo-type: CallTransferType--><!--Device-CallTransferInfo-type: CallTransferType-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
 **系统接口：** 此接口为系统接口。
-

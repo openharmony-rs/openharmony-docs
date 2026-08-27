@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { connection } from '@kit.NetworkKit';
 ```
 
 ## getPacFileUrl
@@ -15,8 +14,6 @@ function getPacFileUrl(): string
 获取当前PAC脚本的URL地址。
 
 **起始版本：** 20
-
-<!--Device-connection-function getPacFileUrl(): string--><!--Device-connection-function getPacFileUrl(): string-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -40,4 +37,3 @@ import { connection } from '@kit.NetworkKit';
 let pacFileUrl = connection.getPacFileUrl();
 console.info("Succeeded to get pacFileUrl");
 ```
-

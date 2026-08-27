@@ -180,6 +180,7 @@
   <!--Del-->
   - [isDistributedEnabledBySlot(系统接口)](arkts-notification-notificationmanager-isdistributedenabledbyslot-f-sys.md)<!--DelEnd-->
   - [isGeofenceEnabled](arkts-notification-notificationmanager-isgeofenceenabled-f.md)
+  - [isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f.md)
   <!--Del-->
   - [isNotificationEnabled(系统接口)](arkts-notification-notificationmanager-isnotificationenabled-f-sys.md)<!--DelEnd-->
   - [isNotificationEnabledSync](arkts-notification-notificationmanager-isnotificationenabledsync-f.md)
@@ -201,17 +202,13 @@
   - [isSupportDoNotDisturbMode(系统接口)](arkts-notification-notificationmanager-issupportdonotdisturbmode-f-sys.md)<!--DelEnd-->
   - [isSupportTemplate](arkts-notification-notificationmanager-issupporttemplate-f.md)
   <!--Del-->
-  - [off_checkNotification(系统接口)](arkts-notification-notificationmanager-offchecknotification-f-sys.md)<!--DelEnd-->
+  - [off(系统接口)](arkts-notification-notificationmanager-off-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [offBadgeNumberQuery(系统接口)](arkts-notification-notificationmanager-offbadgenumberquery-f-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [offCheckNotification(系统接口)](arkts-notification-notificationmanager-offchecknotification-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [on_checkNotification(系统接口)](arkts-notification-notificationmanager-onchecknotification-f-sys.md)<!--DelEnd-->
+  - [on(系统接口)](arkts-notification-notificationmanager-on-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [onBadgeNumberQuery(系统接口)](arkts-notification-notificationmanager-onbadgenumberquery-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [onCheckNotification(系统接口)](arkts-notification-notificationmanager-onchecknotification-f-sys.md)<!--DelEnd-->
   - [openNotificationSettings](arkts-notification-notificationmanager-opennotificationsettings-f.md)
   - [openNotificationSettingsWithResult](arkts-notification-notificationmanager-opennotificationsettingswithresult-f.md)
   - [publish](arkts-notification-notificationmanager-publish-f.md)
@@ -441,18 +438,12 @@
   - [ActionResult](arkts-notification-system-notification-actionresult-i.md)
   - [ShowNotificationOptions](arkts-notification-system-notification-shownotificationoptions-i.md)
 - notification<!--arkts-notificationkit-notification-->
+  - [notificationActionButton](arkts-notificationactionbutton.md)
+    - [NotificationActionButton](arkts-notification-notificationactionbutton-notificationactionbutton-i.md)
   - [NotificationCommonDef](arkts-notificationcommondef.md)
     - [BundleOption](arkts-notification-notificationcommondef-bundleoption-i.md)
     - [GrantedBundleInfo](arkts-notification-notificationcommondef-grantedbundleinfo-i.md)
     - [UserGrantSetting](arkts-notification-notificationcommondef-usergrantsetting-i.md)
-  - [NotificationExtensionContent](arkts-notificationextensioncontent.md)
-    - [NotificationExtensionContent](arkts-notification-notificationextensioncontent-i.md)
-  - [NotificationExtensionSubscriptionInfo](arkts-notificationextensionsubscriptioninfo.md)
-    - [NotificationExtensionSubscriptionInfo](arkts-notification-notificationextensionsubscriptioninfo-i.md)
-  - [NotificationInfo](arkts-notificationinfo.md)
-    - [NotificationInfo](arkts-notification-notificationinfo-i.md)
-  - [notificationActionButton](arkts-notificationactionbutton.md)
-    - [NotificationActionButton](arkts-notification-notificationactionbutton-notificationactionbutton-i.md)
   - [notificationContent](arkts-notificationcontent.md)
     - [NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md)
     <!--Del-->
@@ -484,12 +475,17 @@
     - [LiveViewStatus(系统接口)](arkts-notification-notificationcontent-liveviewstatus-e-sys.md)<!--DelEnd-->
     <!--Del-->
     - [LiveViewTypes(系统接口)](arkts-notification-notificationcontent-liveviewtypes-e-sys.md)<!--DelEnd-->
+  - [NotificationExtensionContent](arkts-notificationextensioncontent.md)
+    - [NotificationExtensionContent](arkts-notification-notificationextensioncontent-i.md)
+  - [NotificationExtensionSubscriptionInfo](arkts-notificationextensionsubscriptioninfo.md)
+    - [NotificationExtensionSubscriptionInfo](arkts-notification-notificationextensionsubscriptioninfo-i.md)
   - [notificationFlags](arkts-notificationflags.md)
     - [NotificationFlags](arkts-notification-notificationflags-notificationflags-i.md)
     <!--Del-->
     - [NotificationFlags(系统接口)](arkts-notification-notificationflags-notificationflags-i-sys.md)<!--DelEnd-->
-    <!--Del-->
-    - [NotificationFlagStatus(系统接口)](arkts-notification-notificationflags-notificationflagstatus-e-sys.md)<!--DelEnd-->
+    - [NotificationFlagStatus](arkts-notification-notificationflags-notificationflagstatus-e.md)
+  - [NotificationInfo](arkts-notificationinfo.md)
+    - [NotificationInfo](arkts-notification-notificationinfo-i.md)
   - [notificationRequest](arkts-notificationrequest.md)
     - [DistributedOptions](arkts-notification-notificationrequest-distributedoptions-i.md)
     <!--Del-->
@@ -559,8 +555,6 @@
     - [SubscribeCallbackData(系统接口)](arkts-notification-notificationsubscriber-subscribecallbackdata-i-sys.md)<!--DelEnd-->
     <!--Del-->
     - [VoiceContent(系统接口)](arkts-notification-notificationsubscriber-voicecontent-i-sys.md)<!--DelEnd-->
-    <!--Del-->
-    - [BadgeEnabledChangedCallback(系统接口)](arkts-notification-badgeenabledchangedcallback-t-sys.md)<!--DelEnd-->
     <!--Del-->
     - [EnabledSilentReminderChangedCallback(系统接口)](arkts-notification-enabledsilentreminderchangedcallback-t-sys.md)<!--DelEnd-->
     <!--Del-->

@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { userAuth } from '@kit.UserAuthenticationKit';
-import { UserAuthIcon } from '@kit.UserAuthenticationKit';
 ```
 
 ## queryReusableAuthResult
@@ -15,11 +14,9 @@ function queryReusableAuthResult(authParam: AuthParam): Uint8Array
 
 查询是否有可复用的身份认证结果。该接口用于在发起认证前查询是否存在满足复用条件的认证结果，若存在则直接返回可复用的AuthToken，无需用户再次进行认证交互。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
-
-<!--Device-userAuth-function queryReusableAuthResult(authParam: AuthParam): Uint8Array--><!--Device-userAuth-function queryReusableAuthResult(authParam: AuthParam): Uint8Array-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -41,10 +38,10 @@ function queryReusableAuthResult(authParam: AuthParam): Uint8Array
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [12500008](../errorcode-useriam.md#12500008-参数校验失败) | The parameter is out of range. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied. Called by non-system application. |
 | [12500002](../errorcode-useriam.md#12500002-身份认证系统通用错误码) | General operation error. |
+| [12500008](../errorcode-useriam.md#12500008-参数校验失败) | The parameter is out of range. |
 | [12500017](../errorcode-useriam.md#12500017-复用身份认证结果失败) | Failed to reuse authentication result. |
 
 **示例**
@@ -56,12 +53,12 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 try {
   const rand = cryptoFramework.createRandom();
-  const len = 16;
+  const len: number = 16;
   const randData: Uint8Array = rand?.generateRandomSync(len)?.data;
   const reuseUnlockResult: userAuth.ReuseUnlockResult = {
     reuseMode: userAuth.ReuseMode.AUTH_TYPE_RELEVANT,
     reuseDuration: userAuth.MAX_ALLOWABLE_REUSE_DURATION,
-  }
+  };
   const authParam: userAuth.AuthParam = {
     challenge: randData,
     authType: [userAuth.UserAuthType.PIN],
@@ -72,7 +69,6 @@ try {
   console.info('query reuse auth result successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`query reuse auth result failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to query reuse auth result. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
-

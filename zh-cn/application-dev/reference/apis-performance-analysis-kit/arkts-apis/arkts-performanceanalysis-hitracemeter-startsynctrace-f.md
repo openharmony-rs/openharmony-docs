@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
 ```
 
 ## startSyncTrace
@@ -14,11 +13,9 @@ function startSyncTrace(level: HiTraceOutputLevel, name: string, customArgs?: st
 
 标记一个同步跟踪耗时任务的开始，分级控制跟踪输出。适用于需要跟踪同步代码块执行耗时的场景，能够帮助开发者定位同步操作的耗时问题，优化应用响应 速度。具体示例可参考[finishSyncTrace()](arkts-performanceanalysis-hitracemeter-finishsynctrace-f.md)中的示例。
 
-**起始版本：** 23
+**起始版本：** 19
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-hiTraceMeter-function startSyncTrace(level: HiTraceOutputLevel, name: string, customArgs?: string): void--><!--Device-hiTraceMeter-function startSyncTrace(level: HiTraceOutputLevel, name: string, customArgs?: string): void-End-->
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
 
@@ -41,4 +38,3 @@ hiTraceMeter.startSyncTrace(COMMERCIAL, "myTestFunc", "");
 hiTraceMeter.startSyncTrace(COMMERCIAL, "myTestFunc", "key=value");
 hiTraceMeter.startSyncTrace(COMMERCIAL, "myTestFunc", "key1=value1,key2=value2");
 ```
-

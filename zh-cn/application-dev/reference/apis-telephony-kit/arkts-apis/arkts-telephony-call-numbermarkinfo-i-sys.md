@@ -2,9 +2,7 @@
 
 电话号码的标记信息。
 
-**起始版本：** 23
-
-<!--Device-call-export interface NumberMarkInfo--><!--Device-call-export interface NumberMarkInfo-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -13,7 +11,6 @@
 ## 导入模块
 
 ```TypeScript
-import { call } from '@kit.TelephonyKit';
 ```
 
 ## isCloud
@@ -22,13 +19,13 @@ import { call } from '@kit.TelephonyKit';
 isCloud?: boolean
 ```
 
-号码的标记是否来自云端，默认为false。 -true：是 -false：否
+号码的标记是否来自云端，默认为false。  
+-true：是  
+-false：否
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-NumberMarkInfo-isCloud?: boolean--><!--Device-NumberMarkInfo-isCloud?: boolean-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -44,9 +41,7 @@ markContent?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-NumberMarkInfo-markContent?: string--><!--Device-NumberMarkInfo-markContent?: string-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -55,16 +50,14 @@ markContent?: string
 ## markCount
 
 ```TypeScript
-markCount?: int
+markCount?: number
 ```
 
 号码的标记次数。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-NumberMarkInfo-markCount?: int--><!--Device-NumberMarkInfo-markCount?: int-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -80,9 +73,7 @@ markDetails?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-NumberMarkInfo-markDetails?: string--><!--Device-NumberMarkInfo-markDetails?: string-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -98,9 +89,7 @@ markSource?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-NumberMarkInfo-markSource?: string--><!--Device-NumberMarkInfo-markSource?: string-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -116,11 +105,8 @@ markType: MarkType
 
 **类型：** [MarkType](arkts-telephony-call-marktype-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-NumberMarkInfo-markType: MarkType--><!--Device-NumberMarkInfo-markType: MarkType-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
 **系统接口：** 此接口为系统接口。
-
