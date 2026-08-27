@@ -1792,7 +1792,7 @@ struct Alone {
 
 ### 示例24（设置菜单的沉浸光感）
 
-该示例通过设置[ContextMenuOptions](#contextmenuoptions10)中的systemMaterial属性，实现了菜单的沉浸光感视效。
+该示例通过[ContextMenuOptions](#contextmenuoptions10)中的systemMaterial属性设置组件的系统材质，实现了菜单的沉浸光感视效。
 
 组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
 

@@ -10,7 +10,7 @@
 
 ## 导航类组件
 
-导航类组件包括Navigation标题栏、底部页签，是页面导航与内容定位的辅助元素，通常固定在页面顶部或底部。沉浸光感为导航类组件赋予了通透的悬浮质感，让导航栏在滚动内容之上呈现轻盈的分层效果，内容透过材质层自然渗透，建立导航区域与内容之间的视觉层次。导航类组件通常使用较薄的材质样式（ULTRA_THIN或THIN），在保持背景通透的同时避免过度遮挡内容。
+导航类组件包括Navigation标题栏、底部页签、索引条，是页面导航与内容定位的辅助元素，通常固定在页面顶部或底部。沉浸光感为导航类组件赋予了通透的悬浮质感，让导航栏在滚动内容之上呈现轻盈的分层效果，内容透过材质层自然渗透，建立导航区域与内容之间的视觉层次。导航类组件通常使用较薄的材质样式（ULTRA_THIN或THIN），在保持背景通透的同时避免过度遮挡内容。
   
 ### Navigation标题栏
 
@@ -37,9 +37,20 @@ Navigation标题栏支持通过[NavigationTitleOptions](../reference/apis-arkui/
  
 组件开启沉浸光感的效果请参见[示例24（TabBar悬浮样式）](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#示例24tabbar悬浮样式)。
 
+### 索引条（AlphabetIndexer）
+
+应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)模式下，索引条默认开启沉浸光感，沉浸式系统材质样式默认取值为THICK。
+ 
+索引条参数[popupBackground](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md#popupbackground)和[popupBackgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md#popupbackgroundblurstyle12)均未主动设置（或参数value传入undefined）时，提示弹窗默认开启沉浸光感，默认材质样式为THICK；也可通过[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)属性主动设置沉浸光感效果。
+ 
+- 高算力、中算力设备默认显示为沉浸光感THICK样式，低算力设备不显示沉浸光感效果，显示为白色背景。
+- popupBackground、popupBackgroundBlurStyle属性和沉浸光感能力互斥。主动设置popupBackground或popupBackgroundBlurStyle后无沉浸光感效果。
+
+组件开启沉浸光感的效果请参见[示例3（设置提示弹窗背景模糊材质）](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md#示例3设置提示弹窗背景模糊材质)。
+
 ## 弹窗类组件
 
-弹窗类组件包括Toast、Popup、Tips、Menu和Dialog，是浮层元素，在内容之上建立视觉层次。沉浸光感为弹窗类组件赋予了核心价值：沉浸式系统材质让弹窗背景呈现轻盈通透的质感，底层内容透过材质层自然渗透，配合折射、高光、阴影等多层效果，使弹窗在内容之上建立清晰的视觉层次；沉浸式空间动效为弹窗和菜单的弹出过程增添形变、流光等动态表现，使弹出过程灵动自然。弹窗类组件通常使用较厚的材质样式（THICK或ULTRA_THICK），以获得更强的背景模糊效果，确保弹窗内容与背景内容之间有清晰的视觉分离。Toast和Dialog在未主动设置背景色、背景模糊等自定义样式时默认开启沉浸光感；Menu在应用处于[ENABLE](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)模式时默认开启。
+弹窗类组件包括Toast、Popup、Tips、Menu和Dialog，是浮层元素，在内容之上建立视觉层次。沉浸光感为弹窗类组件赋予了核心价值：沉浸式系统材质让弹窗背景呈现轻盈通透的质感，底层内容透过材质层自然渗透，配合折射、高光、阴影等多层效果，使弹窗在内容之上建立清晰的视觉层次；沉浸式空间动效为弹窗和菜单的弹出过程增添形变、流光等动态表现，使弹出过程灵动自然。弹窗类组件通常使用较厚的材质样式（THICK或ULTRA_THICK），以获得更强的背景模糊效果，确保弹窗内容与背景内容之间有清晰的视觉分离。
 
 ### 即时反馈（Toast）
 
@@ -55,7 +66,7 @@ Toast支持通过[ShowToastOptions](../reference/apis-arkui/js-apis-promptAction
 
 应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)模式下，气泡提示不会默认开启沉浸光感。
 
-气泡支持通过[PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)中的systemMaterial字段设置沉浸光感效果；悬浮提示通过[TipsOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-tips.md#tipsoptions类型说明)中的systemMaterial字段设置。设置undefined时会清除由该接口设置的沉浸光感效果。
+气泡支持通过[PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)中的systemMaterial字段设置沉浸光感效果；悬浮提示通过[TipsOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-tips.md#tipsoptions类型说明)中的systemMaterial字段设置。
 
 组件开启沉浸光感的效果请参见[示例9（设置Popup的沉浸光感视觉效果）](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#示例9设置popup的沉浸光感视觉效果)和[示例3（设置悬浮气泡的沉浸光感视效）](../reference/apis-arkui/arkui-ts/ts-universal-attributes-tips.md#示例3设置悬浮气泡的沉浸光感视效)。
 
@@ -81,7 +92,7 @@ Toast支持通过[ShowToastOptions](../reference/apis-arkui/js-apis-promptAction
 
 ## 按钮与选择类组件
 
-选择类组件包括Button、Select、Toggle、Slider、ChipGroup和SegmentButton，是内嵌于内容流中的交互元素，用户通过它们进行选择和操作。沉浸光感为选择类组件提供了细腻的交互反馈与通透的视觉质感：沉浸式系统材质通常使用较薄的材质样式（ULTRA_THIN或THIN），在保持组件背景通透的同时，通过[ImmersiveOptions](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)中的交互形变（interactive）和点光源（lightEffect）为按压、触摸等操作提供灵动的视觉反馈，替代组件默认的按压态和悬浮态效果。当应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)模式时，选择类组件默认开启沉浸光感。部分组件（如Toggle和Slider）传入的材质参数仅作为开启沉浸光感的开关标记，实际使用组件内部预设的视觉参数，材质效果随设备算力档位变化。在薄材质样式下，开发者可通过自动反色（colorInvert）功能保障文字可读性。
+选择类组件包括Button、Select、Toggle、Slider、ChipGroup和SegmentButton，是内嵌于内容流中的交互元素，用户通过它们进行选择和操作。沉浸光感为选择类组件提供了细腻的交互反馈与通透的视觉质感：沉浸式系统材质通常使用较薄的材质样式（ULTRA_THIN或THIN），在保持组件背景通透的同时，通过[ImmersiveOptions](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)中的交互形变（interactive）和点光源（lightEffect）为按压、触摸等操作提供灵动的视觉反馈，替代组件默认的按压态和悬浮态效果。
 
 ### 按钮（Button）
 
@@ -144,25 +155,10 @@ Toast支持通过[ShowToastOptions](../reference/apis-arkui/js-apis-promptAction
 
 应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)模式下，操作块默认开启沉浸光感，沉浸式系统材质样式默认取值为THIN。
  
-[SegmentButton](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md)支持通过SegmentButtonOptions中的backgroundSystemMaterial字段设置沉浸光感效；[SegmentButtonV2](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md)通过各类分段按钮options参数中的backgroundSystemMaterial字段设置。
+[SegmentButton](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md)支持通过SegmentButtonOptions中的backgroundSystemMaterial字段设置沉浸光感效果；[SegmentButtonV2](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md)通过各类分段按钮options参数中的backgroundSystemMaterial字段设置。
  
 - SegmentButton的胶囊类多选分段按钮（[SegmentButtonOptions](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md#segmentbuttonoptions)的type为“capsule”且[SegmentButtonOptions](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md#segmentbuttonoptions)的multiply为true）不支持backgroundSystemMaterial，设置后不生效。
-- 设置沉浸光感效果后分段按钮的动效发生改变；SegmentButtonV2开启沉浸光感时支持选中项背景跟随手指拖拽。
-- 设置自动反色材质时，如果fontColor、selectedFontColor（SegmentButtonV2为itemFontColor、itemSelectedFontColor、itemIconFillColor、itemSelectedIconFillColor等）使用支持反色的系统资源，颜色自动适配到材质背景色的反色。
+- SegmentButtonV2开启沉浸光感后，支持选中项背景跟随手指拖拽，否则不支持跟随手指拖拽。
+- 设置自动反色时，即colorInvert为true，如果SegmentButton中的fontColor、selectedFontColor，或SegmentButtonV2中的itemFontColor、itemSelectedFontColor、itemIconFillColor、itemSelectedIconFillColor等使用支持反色的系统资源，颜色自动适配到材质背景色的反色。
  
 组件开启沉浸光感的效果请参见[示例8（设置背景板材质）](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md#示例8设置背景板材质)和[示例6（设置背景板材质）](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md#示例6设置背景板材质)。
-
-## 操作类组件
-
-操作类组件包括索引条（AlphabetIndexer），是辅助内容操作与快速定位的功能元素。沉浸光感为操作类组件提供了与内容之间的视觉分层能力，呈现轻盈通透的质感。
- 
-### 索引条（AlphabetIndexer）
-
-应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)模式下，索引条默认开启沉浸光感，沉浸式系统材质样式默认取值为THICK。
- 
-索引条参数[popupBackground](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md#popupbackground)和[popupBackgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md#popupbackgroundblurstyle12)均未主动设置（或参数value传入undefined）时，提示弹窗默认开启沉浸光感，默认材质样式为THICK；也可通过[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)属性主动设置沉浸光感效果。
- 
-- 高算力、中算力设备默认显示为沉浸光感THICK样式，低算力设备不显示沉浸光感效果，显示为白色背景。
-- popupBackground、popupBackgroundBlurStyle属性和沉浸光感能力互斥。主动设置popupBackground或popupBackgroundBlurStyle后无沉浸光感效果。
-
-组件开启沉浸光感的效果请参见[示例3（设置提示弹窗背景模糊材质）](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md#示例3设置提示弹窗背景模糊材质)。

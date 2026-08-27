@@ -427,11 +427,11 @@ struct ToggleMaterialTest {
       Toggle({ type: ToggleType.Switch, isOn: true })
         .systemMaterial(undefined)
 
-      // 开启沉浸光感效果（systemMaterial参数任意仅作为沉浸光感开关，最终使用组件侧固定参数），默认白色点光源（颜色为switchPointColor默认值）
+      // 开启系统材质效果（systemMaterial参数任意仅作为系统材质开关，最终使用组件侧固定参数），默认白色点光源（颜色为switchPointColor默认值）
       Toggle({ type: ToggleType.Switch, isOn: true })
         .systemMaterial(new uiMaterial.Material())
 
-      // 开启沉浸光感效果（systemMaterial参数任意仅作为沉浸光感开关，最终使用组件侧固定参数），点光源颜色跟随switchPointColor设置
+      // 开启系统材质效果（systemMaterial参数任意仅作为系统材质开关，最终使用组件侧固定参数），点光源颜色跟随switchPointColor设置
       Toggle({ type: ToggleType.Switch, isOn: true })
         .systemMaterial(new uiMaterial.Material())
         .switchPointColor(Color.Red)

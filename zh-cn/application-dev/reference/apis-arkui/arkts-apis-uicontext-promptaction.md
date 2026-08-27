@@ -317,7 +317,7 @@ showToast(options: promptAction.ShowToastOptions): void
 
 **示例：**
 
-该示例通过设置options参数中的systemMaterial属性，实现了Toast的沉浸光感效果。
+该示例通过options参数中的systemMaterial属性设置组件的系统材质，实现了Toast的沉浸光感效果。
 
 从API版本26.0.0开始，参数options的类型[promptAction.ShowToastOptions](js-apis-promptAction.md#showtoastoptions)中新增了systemMaterial属性。
 
@@ -342,7 +342,7 @@ struct Index {
               message: 'Message Info',
               duration: 2000,
               showMode:promptAction.ToastShowMode.DEFAULT,
-              // 设置沉浸光感
+              // 设置系统材质接口
               systemMaterial: new uiMaterial.ImmersiveMaterial({
                 style: uiMaterial.ImmersiveStyle.THIN
               })
