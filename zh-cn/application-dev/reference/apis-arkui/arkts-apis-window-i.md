@@ -57,9 +57,11 @@
 
 **ArkTS-Sta起始版本：** 23
 
+**系统能力：** SystemCapability.Window.SessionManager
+
 | 名称                                   | 类型 |  只读 |   可选  | 说明 |
 | ------------------------------------- | -------- | ---- | ---- | ------- |
-| contentColor     | string   |  否  |  否   | 状态栏文字颜色，固定为ARGB格式，如：`#E5FFFFFF`。 <br> **系统能力：** SystemCapability.Window.SessionManager|
+| contentColor     | string   |  否  |  否   | 状态栏文字颜色，固定为ARGB格式，如：`#E5FFFFFF`。|
 
 ## SystemBarStyle<sup>12+</sup>
 
