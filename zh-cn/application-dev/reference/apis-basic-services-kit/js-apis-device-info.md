@@ -328,7 +328,6 @@ console.info('the value of the DeviceTypes is :' + deviceTypesInfoCar);
 
 apiAvailable(version: string | number): boolean;
 
-<!--RP13-->
 检查指定的API版本在当前设备上是否可用。<br>
 此方法提供OpenHarmony及其各发行版系统版本的兼容性检查。该方法会根据输入格式和API版本范围自动选择合适的版本检查方法。
 
@@ -355,22 +354,21 @@ apiAvailable(version: string | number): boolean;
 ```ts
 import { deviceInfo } from '@kit.BasicServicesKit';
 
-// 检查API版本是否大于等于26.0.0（返回true表示当前设备API版本满足要求）
+// 针对API version 26.0.0及以后的OpenHarmony底座及发行版接口
 if (deviceInfo.apiAvailable('26.0.0')) {
   // 需要版本隔离的方法
 }
 
 
-// Check API 5.0.1 (Distribution OS version, API 26.0.0-)
+// 针对Distribution OS专有接口，即接口标记为since M.S.F(N)的接口
 if (deviceInfo.apiAvailable('5.0.1')) {
   // 需要版本隔离的方法
 }
 
 
-// Check API 13 (OpenHarmony SDK version, API 26.0.0-)
+// 针对OpenHarmony底座公共接口，即接口标记为since N
 if (deviceInfo.apiAvailable(13)) {
   // 需要版本隔离的方法
 }
 
 ```
-<!--RP13End-->
