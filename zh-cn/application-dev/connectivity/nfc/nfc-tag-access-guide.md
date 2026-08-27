@@ -388,9 +388,9 @@ export default class EntryAbility extends UIAbility {
   1. NDEF标签可能存在1或多个Record。通过包名拉起OpenHarmony应用需要特定的Record记录：其中type为“ohos.com:pkg”，payload为“应用实际包名”。
   2. 根据应用业务逻辑的需要，标签内的第一个Record可以放入一个URI类型的数据（可选）。如果存在URI类型的Record，NFC拉起应用时会以want.uri格式传递给应用，此时应用可以通过识别URI来跳转到指定页面。
 
-> **说明：**
->
->若应用拉起时需要URI数据，第一个Record必须为URI类型。
+  > **说明：**
+  >
+  >若应用拉起时需要URI数据，第一个Record必须为URI类型。
 
 - 应用接收参数示例<br>
 拉起应用时，应用可以通过want里传入的参数来完成业务逻辑，通过卡片拉起应用时，携带的want内容如下：
