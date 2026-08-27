@@ -98,19 +98,19 @@
 4. 处理设备的连接与断开的事件。
    <!-- @[handle_device_attached_detached](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
    
-    ```ts
-    function handleDeviceAttached(mechInfo: mechanicManager.MechInfo) {
-    console.info(`New device is connected: ${mechInfo.mechName} (ID: ${mechInfo.mechId})`);
-    savedMechanicIds.push(mechInfo.mechId);
-    // To do sth.
-    }
+   ``` TypeScript
+   function handleDeviceAttached(mechInfo: mechanicManager.MechInfo) {
+     console.info(`New device is connected: ${mechInfo.mechName} (ID: ${mechInfo.mechId})`);
+     savedMechanicIds.push(mechInfo.mechId);
+     // To do sth.
+   }
    
-    function handleDeviceDetached(mechInfo: mechanicManager.MechInfo) {
-    console.info(`Device disconnected: ${mechInfo.mechName} (ID: ${mechInfo.mechId})`);
-    savedMechanicIds.filter(id => id !== mechInfo.mechId);
-    // To do sth.
-    }
-    ```
+   function handleDeviceDetached(mechInfo: mechanicManager.MechInfo) {
+     console.info(`Device disconnected: ${mechInfo.mechName} (ID: ${mechInfo.mechId})`);
+     savedMechanicIds = savedMechanicIds.filter(id => id !== mechInfo.mechId);
+     // To do sth.
+   }
+   ```
    
 5. 取消连接状态的监听。
    <!-- @[off_attachStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
