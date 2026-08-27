@@ -188,7 +188,7 @@ try {
             console.error("getKVStore err: "  + JSON.stringify(err));
             return;
         }
-        console.error("getKVStore success");
+        console.info("getKVStore success");
         kvStore = store;
     });
 } catch (e) {
@@ -234,7 +234,7 @@ try {
         securityLevel : distributedData.SecurityLevel.S3,
     };
     kvManager.getKVStore('storeId', options).then((store) => {
-        console.error("getKVStore success");
+        console.info("getKVStore success");
         kvStore = store;
     }).catch((err) => {
         console.error("getKVStore err: "  + JSON.stringify(err));
@@ -278,10 +278,10 @@ const options = {
 }
 try {
     kvManager.getKVStore('storeId', options, async function (err, store) {
-        console.error('getKVStore success');
+        console.info('getKVStore success');
         kvStore = store;
         kvManager.closeKVStore('appId', 'storeId', kvStore, function (err, data) {
-            console.error('closeKVStore success');
+            console.info('closeKVStore success');
         });
     });
 } catch (e) {
@@ -328,10 +328,10 @@ const options = {
 }
 try {
     kvManager.getKVStore('storeId', options).then(async (store) => {
-        console.error('getKVStore success');
+        console.info('getKVStore success');
         kvStore = store;
         kvManager.closeKVStore('appId', 'storeId', kvStore).then(() => {
-            console.error('closeKVStore success');
+            console.info('closeKVStore success');
         }).catch((err) => {
             console.error('closeKVStore err ' + JSON.stringify(err));
         });
@@ -376,10 +376,10 @@ const options = {
 }
 try {
     kvManager.getKVStore('store', options, async function (err, store) {
-        console.error('getKVStore success');
+        console.info('getKVStore success');
         kvStore = store;
         kvManager.deleteKVStore('appId', 'storeId', function (err, data) {
-            console.error('deleteKVStore success');
+            console.info('deleteKVStore success');
         });
     });
 } catch (e) {
@@ -425,10 +425,10 @@ const options = {
 }
 try {
     kvManager.getKVStore('storeId', options).then(async (store) => {
-        console.error('getKVStore success');
+        console.info('getKVStore success');
         kvStore = store;
         kvManager.deleteKVStore('appId', 'storeId').then(() => {
-            console.error('deleteKVStore success');
+            console.info('deleteKVStore success');
         }).catch((err) => {
             console.error('deleteKVStore err ' + JSON.stringify(err));
         });
@@ -463,7 +463,7 @@ let kvManager;
 try {
     kvManager.getAllKVStoreId('appId', function (err, data) {
         console.info('GetAllKVStoreId success');
-        console.error('GetAllKVStoreId size = ' + data.length);
+        console.info('GetAllKVStoreId size = ' + data.length);
     });
 } catch (e) {
     console.error('GetAllKVStoreId e ' + e);
@@ -500,7 +500,7 @@ try {
     console.info('GetAllKVStoreId');
     kvManager.getAllKVStoreId('appId').then((data) => {
         console.info('getAllKVStoreId success');
-        console.error('size = ' + data.length);
+        console.info('size = ' + data.length);
     }).catch((err) => {
         console.error('getAllKVStoreId err ' + JSON.stringify(err));
     });
@@ -709,13 +709,13 @@ try {
     node.appendChild(child1);
     node.appendChild(child2);
     node.appendChild(child3);
-    console.error("appendNode " + JSON.stringify(node));
+    console.info("appendNode " + JSON.stringify(node));
     child1 = null;
     child2 = null;
     child3 = null;
     node = null;
 } catch (e) {
-    console.info("AppendChild " + e);
+    console.error("AppendChild " + e);
 }
 ```
 
@@ -963,7 +963,7 @@ try {
         console.error('getResultSet failed: ' + err);
     });
     const moved5 = resultSet.move(1);
-    console.error("move succeed:" + moved5);
+    console.info("move succeed:" + moved5);
 } catch (e) {
     console.error("move failed: " + e);
 }
@@ -2066,7 +2066,7 @@ getSqlLike():string
 try {
     let query = new distributedData.Query();
     let sql1 = query.getSqlLike();
-    console.error("GetSqlLike sql=" + sql1);
+    console.info("GetSqlLike sql=" + sql1);
 } catch (e) {
     console.error("duplicated calls should be ok : " + e);
 }
@@ -2185,7 +2185,7 @@ try {
                 console.error("delete err: " + JSON.stringify(err));
                 return;
             }
-            console.error("delete success");
+            console.info("delete success");
         });
     });
 }catch (e) {
@@ -2223,7 +2223,7 @@ try {
     kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT).then((data) => {
         console.info("put success: " + JSON.stringify(data));
         kvStore.delete(KEY_TEST_STRING_ELEMENT).then((data) => {
-            console.error("delete success");
+            console.info("delete success");
         }).catch((err) => {
             console.error("delete err: " + JSON.stringify(err));
         });
@@ -2256,7 +2256,7 @@ on(event: 'dataChange', type: SubscribeType, listener: Callback&lt;ChangeNotific
 ```js
 let kvStore;
 kvStore.on('dataChange', distributedData.SubscribeType.SUBSCRIBE_TYPE_LOCAL, function (data) {
-    console.error("dataChange callback call data: " + JSON.stringify(data));
+    console.info("dataChange callback call data: " + JSON.stringify(data));
 });
 ```
 
@@ -2307,7 +2307,7 @@ off(event:'dataChange', listener?: Callback&lt;ChangeNotification&gt;): void
 let kvStore;
 class KvstoreModel {
     call(data) {
-        console.error("dataChange: " + data);
+        console.info("dataChange: " + data);
     }
     subscribeDataChange() {
         if (kvStore != null) {
@@ -2343,7 +2343,7 @@ off(event: 'syncComplete', syncCallback?: Callback&lt;Array&lt;[string, number]&
 let kvStore;
 class KvstoreModel {
     call(data) {
-        console.error("syncComplete: " + data);
+        console.info("syncComplete: " + data);
     }
     subscribeSyncComplete() {
         if (kvStore != null) {
@@ -2400,7 +2400,7 @@ try {
         });
     });
 }catch(e) {
-    console.error('PutBatch e ' + JSON.stringify(e));
+    console.info('PutBatch e ' + JSON.stringify(e));
 }
 ```
 
@@ -2455,7 +2455,7 @@ try {
         console.error('putBatch fail ' + JSON.stringify(err));
     });
 }catch(e) {
-    console.error('PutBatch e ' + JSON.stringify(e));
+    console.info('PutBatch e ' + JSON.stringify(e));
 }
 ```
 
@@ -2866,7 +2866,7 @@ try {
     const localLabels = ['A', 'B'];
     const remoteSupportLabels = ['C', 'D'];
     kvStore.setSyncRange(localLabels, remoteSupportLabels, function (err,data) {
-        console.error('SetSyncRange put success');
+        console.info('SetSyncRange put success');
     });
 }catch(e) {
     console.error('SetSyncRange e ' + e);
@@ -2904,7 +2904,7 @@ try {
     const localLabels = ['A', 'B'];
     const remoteSupportLabels = ['C', 'D'];
     kvStore.setSyncRange(localLabels, remoteSupportLabels).then((err) => {
-        console.error('setSyncRange success');
+        console.info('setSyncRange success');
     }).catch((err) => {
         console.error('delete fail ' + err);
     });
@@ -3156,8 +3156,8 @@ try {
             console.info('getEntries success');
             console.info('entries.length: ' + entries.length);
             console.info('entries[0]: ' + JSON.stringify(entries[0]));
-            console.error('entries[0].value: ' + JSON.stringify(entries[0].value));
-            console.error('entries[0].value.value: ' + entries[0].value.value);
+            console.info('entries[0].value: ' + JSON.stringify(entries[0].value));
+            console.info('entries[0].value.value: ' + entries[0].value.value);
         }).catch((err) => {
             console.error('getEntries fail ' + JSON.stringify(err));
         });
@@ -3794,7 +3794,7 @@ try {
     kvStore.sync(deviceIds, mode, 1000);
   });
 } catch (e) {
-  console.info('Sync e' + e);
+  console.error('Sync e' + e);
 }
 ```
 
@@ -3819,7 +3819,7 @@ on(event: 'dataChange', type: SubscribeType, listener: Callback&lt;ChangeNotific
 ```js
 let kvStore;
 kvStore.on('dataChange', distributedData.SubscribeType.SUBSCRIBE_TYPE_LOCAL, function (data) {
-    console.error("dataChange callback call data: " + JSON.stringify(data));
+    console.info("dataChange callback call data: " + JSON.stringify(data));
 });
 ```
 
@@ -3846,10 +3846,10 @@ const KEY_TEST_FLOAT_ELEMENT = 'key_test_float';
 const VALUE_TEST_FLOAT_ELEMENT = 321.12;
 try {
     kvStore.on('syncComplete', function (data) {
-        console.error('syncComplete ' + data)
+        console.info('syncComplete ' + data)
     });
     kvStore.put(KEY_TEST_FLOAT_ELEMENT, VALUE_TEST_FLOAT_ELEMENT).then((data) => {
-        console.error('syncComplete put success');
+        console.info('syncComplete put success');
     }).catch((error) => {
         console.error('syncComplete put fail ' + error);
     });
@@ -3879,7 +3879,7 @@ off(event:'dataChange', listener?: Callback&lt;ChangeNotification&gt;): void
 let kvStore;
 class KvstoreModel {
     call(data) {
-        console.error("dataChange: " + data);
+        console.info("dataChange: " + data);
     }
     subscribeDataChange() {
         if (kvStore != null) {
@@ -3915,7 +3915,7 @@ off(event: 'syncComplete', syncCallback?: Callback&lt;Array&lt;[string, number]&
 let kvStore;
 class KvstoreModel {
     call(data) {
-        console.error("syncComplete: " + data);
+        console.info("syncComplete: " + data);
     }
     subscribeSyncComplete() {
         if (kvStore != null) {
@@ -4096,7 +4096,7 @@ try{
         });
     })
 }catch(e) {
-    console.info('get e' + e);
+    console.error('get e' + e);
 }
 ```
 
@@ -4238,8 +4238,8 @@ try {
             console.info('getEntries success');
             console.info('entries.length: ' + entries.length);
             console.info('entries[0]: ' + JSON.stringify(entries[0]));
-            console.error('entries[0].value: ' + JSON.stringify(entries[0].value));
-            console.error('entries[0].value.value: ' + entries[0].value.value);
+            console.info('entries[0].value: ' + JSON.stringify(entries[0].value));
+            console.info('entries[0].value.value: ' + entries[0].value.value);
         }).catch((err) => {
             console.error('getEntries fail ' + JSON.stringify(err));
         });
@@ -5199,7 +5199,7 @@ try {
     kvStore.sync(deviceIds, mode, 1000);
   });
 } catch (e) {
-  console.info('Sync e' + e);
+  console.error('Sync e' + e);
 }
 ```
 
@@ -5224,7 +5224,7 @@ on(event: 'dataChange', type: SubscribeType, listener: Callback&lt;ChangeNotific
 ```js
 let kvStore;
 kvStore.on('dataChange', distributedData.SubscribeType.SUBSCRIBE_TYPE_LOCAL, function (data) {
-    console.error("dataChange callback call data: " + JSON.stringify(data));
+    console.info("dataChange callback call data: " + JSON.stringify(data));
 });
 ```
 
@@ -5251,10 +5251,10 @@ const KEY_TEST_FLOAT_ELEMENT = 'key_test_float';
 const VALUE_TEST_FLOAT_ELEMENT = 321.12;
 try {
     kvStore.on('syncComplete', function (data) {
-        console.error('syncComplete ' + data)
+        console.info('syncComplete ' + data)
     });
     kvStore.put(KEY_TEST_FLOAT_ELEMENT, VALUE_TEST_FLOAT_ELEMENT).then((data) => {
-        console.error('syncComplete put success');
+        console.info('syncComplete put success');
     }).catch((error) => {
         console.error('syncComplete put fail ' + error);
     });
@@ -5284,7 +5284,7 @@ off(event:'dataChange', listener?: Callback&lt;ChangeNotification&gt;): void
 let kvStore;
 class KvstoreModel {
     call(data) {
-        console.error("dataChange: " + data);
+        console.info("dataChange: " + data);
     }
     subscribeDataChange() {
         if (kvStore != null) {
@@ -5320,7 +5320,7 @@ off(event: 'syncComplete', syncCallback?: Callback&lt;Array&lt;[string, number]&
 let kvStore;
 class KvstoreModel {
     call(data) {
-        console.error("syncComplete: " + data);
+        console.info("syncComplete: " + data);
     }
     subscribeSyncComplete() {
         if (kvStore != null) {
