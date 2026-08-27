@@ -65,5 +65,3 @@
   - [鼠标光标错误码](errorcode-pointer.md)
   - [红外管理错误码](errorcode-infraredemitter.md)
   - [输入事件注入错误码](errorcode-inputeventclient.md)
-- 术语
-  - [Input Kit术语](input-kit-glossary.md)
