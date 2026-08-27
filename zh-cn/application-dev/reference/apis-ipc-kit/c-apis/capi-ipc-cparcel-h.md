@@ -4,6 +4,8 @@
 
 提供IPC序列化/反序列化C接口，用于在IPC通信过程中对数据进行序列化和反序列化操作。
 
+**引用文件：** <IPCKit/ipc_cparcel.h>
+
 **库：** libipc_capi.so
 
 **系统能力：** SystemCapability.Communication.IPC.Core
@@ -1079,7 +1081,7 @@ int OH_IPCParcel_WriteFileDescriptor(OHIPCParcel *parcel, int32_t fd)
 | 参数项 | 描述 |
 | -- | -- |
 | [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) *parcel | OHIPCParcel对象的指针，不能为空。 |
-| int32_t fd | 要写入的文件描述符，取值原则：有效的文件描述符，为非负整数。传入负数或无效文件描述符时返回OH_IPC_CHECK_PAARM_ERROR错误。 |
+| int32_t fd | 要写入的文件描述符，取值原则：有效的文件描述符，为非负整数。传入负数或无效文件描述符时返回OH_IPC_CHECK_PARAM_ERROR错误。 |
 
 **返回：**
 

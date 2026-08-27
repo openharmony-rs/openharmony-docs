@@ -2,9 +2,7 @@
 
 选中文本时，光标移动的方向
 
-**起始版本：** 23
-
-<!--Device-inputMethodEngine-export interface Movement--><!--Device-inputMethodEngine-export interface Movement-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -24,9 +22,6 @@ direction: Direction
 
 **类型：** Direction
 
-**起始版本：** 23
-
-<!--Device-Movement-direction: Direction--><!--Device-Movement-direction: Direction-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
-

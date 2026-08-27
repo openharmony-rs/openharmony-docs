@@ -24,6 +24,6 @@ SCSI INQUIRY 数据，用于存储SCSI外设的INQUIRY命令查询结果。
 | char idVendor[SCSIPERIPHERAL_VENDOR_ID_LEN + 1] | 制造商 ID。 |
 | char idProduct[SCSIPERIPHERAL_PRODUCT_ID_LEN + 1] | 产品 ID。 |
 | char revProduct[SCSIPERIPHERAL_PRODUCT_REV_LEN + 1] | 产品版本。 |
-| [ScsiPeripheral_DeviceMemMap](capi-scsiperipheralddk-scsiperipheral-devicememmap.md) *data | 指向设备内存映射的指针，用于存储查询得到的数据。 |
+| [ScsiPeripheral_DeviceMemMap*](capi-scsiperipheralddk-scsiperipheral-devicememmap.md) data | 指向设备内存映射的指针，用于存储查询得到的数据。 |
 
 

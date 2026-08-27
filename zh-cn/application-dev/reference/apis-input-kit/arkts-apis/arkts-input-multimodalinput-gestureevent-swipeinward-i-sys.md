@@ -2,9 +2,7 @@
 
 向内滑动事件。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export declare interface SwipeInward--><!--Device-unnamed-export declare interface SwipeInward-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -13,7 +11,6 @@
 ## 导入模块
 
 ```TypeScript
-import { ActionType, FourFingersSwipe, Pinch, Rotate, ThreeFingersSwipe, ThreeFingersTap, SwipeInward, TouchGestureEvent } from '@kit.InputKit';
 ```
 
 ## type
@@ -26,9 +23,7 @@ type: ActionType
 
 **类型：** [ActionType](arkts-input-multimodalinput-gestureevent-actiontype-e.md)
 
-**起始版本：** 23
-
-<!--Device-SwipeInward-type: ActionType--><!--Device-SwipeInward-type: ActionType-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -37,16 +32,14 @@ type: ActionType
 ## x
 
 ```TypeScript
-x: int
+x: number
 ```
 
 滑动事件触发点的横坐标，单位为像素。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SwipeInward-x: int--><!--Device-SwipeInward-x: int-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -55,18 +48,15 @@ x: int
 ## y
 
 ```TypeScript
-y: int
+y: number
 ```
 
 滑动事件触发点的纵坐标，单位为像素。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SwipeInward-y: int--><!--Device-SwipeInward-y: int-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
 **系统接口：** 此接口为系统接口。
-

@@ -706,7 +706,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromImageSource(OH_ImagePackerNat
 | -- | -- |
 | [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | 被操作的OH_ImagePackerNative指针。 |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 编码选项参数。 |
-| OH_ImageSourceNative *imageSource | 用于编码的image source指针。 |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *imageSource | 用于编码的image source指针。 |
 | uint8_t *outData | 用于存储打包图像输出数据的缓冲区。 |
 | size_t *size | 用于存储打包图像输出数据的缓冲区大小。 |
 
@@ -762,7 +762,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromPicture(OH_ImagePackerNative 
 | -- | -- |
 | [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | 被操作的OH_ImagePackerNative指针。 |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 编码选项参数。 |
-| OH_PictureNative *picture | 用于编码的Picture指针。 |
+| [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) *picture | 用于编码的Picture指针。 |
 | uint8_t *outData | 用于存储打包图像输出数据的缓冲区。 |
 | size_t *size | 用于存储打包图像输出数据的缓冲区大小。 |
 
@@ -819,7 +819,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromImageSource(OH_ImagePackerNat
 | -- | -- |
 | [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | 被操作的OH_ImagePackerNative指针。 |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 编码选项参数。 |
-| OH_ImageSourceNative *imageSource | 用于编码的image source指针。 |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *imageSource | 用于编码的image source指针。 |
 | int32_t fd | 可写的文件描述符。 |
 
 **返回：**
@@ -873,7 +873,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromPicture(OH_ImagePackerNative 
 | -- | -- |
 | [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | 被操作的OH_ImagePackerNative指针。 |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 编码选项参数。 |
-| OH_PictureNative *picture | 用于编码的picture指针。 |
+| [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) *picture | 用于编码的picture指针。 |
 | int32_t fd | 可写的文件描述符。 |
 
 **返回：**

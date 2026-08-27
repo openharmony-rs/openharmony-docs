@@ -16,15 +16,14 @@ function registerConversationListener(
   ): void
 ```
 
-注册会话监听，接收来自同一账号下可信设备的数据。当远端设备通过 [postConversationData](arkts-distributedservice-conversation-postconversationdata-f-sys.md)发送数据到达本地设备后， 数据分发至与Bundle名和Ability名匹配的已注册回调函数。同一Bundle名和Ability名只能注册一个监听器，重复注册将覆盖 之前已注册的监听器。 **配对调用**：需与注销监听器[unregisterConversationListener](arkts-distributedservice-conversation-unregisterconversationlistener-f-sys.md)配对 使用，不再需要接收消息时应调用注销监听器以释放资源，未注销会导致资源持续占用。
+注册会话监听，接收来自同一账号下可信设备的数据。当远端设备通过 [postConversationData](arkts-distributedservice-conversation-postconversationdata-f-sys.md)发送数据到达本地设备后， 数据分发至与Bundle名和Ability名匹配的已注册回调函数。同一Bundle名和Ability名只能注册一个监听器，重复注册将覆盖 之前已注册的监听器。  
+**配对调用**：需与注销监听器[unregisterConversationListener](arkts-distributedservice-conversation-unregisterconversationlistener-f-sys.md)配对 使用，不再需要接收消息时应调用注销监听器以释放资源，未注销会导致资源持续占用。
 
 **起始版本：** 26.1.0
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC and ohos.permission.sec.ACCESS_UDID
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-conversation-function registerConversationListener(    bundleName: string,    abilityName: string,    dataCallback: DataCallback  ): void--><!--Device-conversation-function registerConversationListener(    bundleName: string,    abilityName: string,    dataCallback: DataCallback  ): void-End-->
 
 **系统能力：** SystemCapability.Communication.SoftBus.Core
 
@@ -42,11 +41,11 @@ function registerConversationListener(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameter. The bundleName, abilityName or dataCallback is invalid or empty. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. The application does not have the required permission to access distributed data. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [2000001](../../apis-distributedservice-kit/errorcode-conversation.md#2000001-内部错误) | Internal error. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameter. The bundleName, abilityName or dataCallback is invalid or empty. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [2000001](../errorcode-conversation.md#2000001-内部错误) | Internal error. |
 
 **示例**
 
@@ -67,4 +66,3 @@ try {
   console.error(`registerConversationListener errCode: ${e.code}, errMessage: ${e.message}`);
 }
 ```
-

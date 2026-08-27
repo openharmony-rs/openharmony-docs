@@ -2,9 +2,7 @@
 
 按键注入描述信息。
 
-**起始版本：** 23
-
-<!--Device-inputEventClient-interface KeyEvent--><!--Device-inputEventClient-interface KeyEvent-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -13,7 +11,6 @@
 ## 导入模块
 
 ```TypeScript
-import { inputEventClient } from '@kit.InputKit';
 ```
 
 ## isIntercepted
@@ -22,13 +19,11 @@ import { inputEventClient } from '@kit.InputKit';
 isIntercepted: boolean
 ```
 
-按键是否可以被拦截。 true表示可以被拦截，false表示不可被拦截。
+按键是否可以被拦截。true表示可以被拦截，false表示不可被拦截。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-KeyEvent-isIntercepted: boolean--><!--Device-KeyEvent-isIntercepted: boolean-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -40,13 +35,11 @@ isIntercepted: boolean
 isPressed: boolean
 ```
 
-按键是否按下。 true表示按键按下，false表示按键抬起。
+按键是否按下。true表示按键按下，false表示按键抬起。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-KeyEvent-isPressed: boolean--><!--Device-KeyEvent-isPressed: boolean-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -55,16 +48,14 @@ isPressed: boolean
 ## keyCode
 
 ```TypeScript
-keyCode: int
+keyCode: number
 ```
 
 按键键值。当前仅支持返回键/KEYCODE_BACK键。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-KeyEvent-keyCode: int--><!--Device-KeyEvent-keyCode: int-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -73,18 +64,15 @@ keyCode: int
 ## keyDownDuration
 
 ```TypeScript
-keyDownDuration: int
+keyDownDuration: number
 ```
 
 按键按下持续时间，单位为微秒（μs）。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-KeyEvent-keyDownDuration: int--><!--Device-KeyEvent-keyDownDuration: int-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **系统接口：** 此接口为系统接口。
-

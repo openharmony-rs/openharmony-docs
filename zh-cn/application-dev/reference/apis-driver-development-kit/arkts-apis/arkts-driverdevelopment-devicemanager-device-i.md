@@ -2,9 +2,7 @@
 
 外设信息。
 
-**起始版本：** 23
-
-<!--Device-deviceManager-interface Device--><!--Device-deviceManager-interface Device-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
@@ -24,9 +22,7 @@ busType: BusType
 
 **类型：** [BusType](arkts-driverdevelopment-devicemanager-bustype-e.md)
 
-**起始版本：** 23
-
-<!--Device-Device-busType: BusType--><!--Device-Device-busType: BusType-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
@@ -40,25 +36,20 @@ description: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Device-description: string--><!--Device-Device-description: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
 ## deviceId
 
 ```TypeScript
-deviceId: long
+deviceId: number
 ```
 
 设备ID。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Device-deviceId: long--><!--Device-Device-deviceId: long-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
-

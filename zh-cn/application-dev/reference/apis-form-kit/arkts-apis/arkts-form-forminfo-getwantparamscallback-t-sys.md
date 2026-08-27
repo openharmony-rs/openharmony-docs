@@ -10,8 +10,6 @@ type GetWantParamsCallback = (formInfo: Array<formInfo.FormInfo>) => Array<Recor
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-formInfo-type GetWantParamsCallback = (formInfo: Array<formInfo.FormInfo>) => Array<Record<string, Object>>--><!--Device-formInfo-type GetWantParamsCallback = (formInfo: Array<formInfo.FormInfo>) => Array<Record<string, Object>>-End-->
-
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
@@ -26,5 +24,23 @@ type GetWantParamsCallback = (formInfo: Array<formInfo.FormInfo>) => Array<Recor
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;Record&lt;string, Object&gt;&gt; | 返回卡片参数列表，与输入的卡片信息列表一一对应。 |
+| Array & lt;Record & lt;string, Object & gt; & gt; | 返回卡片参数列表，与输入的卡片信息列表一一对应。 |
 
+**示例**
+
+```TypeScript
+import { formInfo } from '@kit.FormKit';
+
+let getWantParamsCallback: formInfo.GetWantParamsCallback =
+  (formInfo: Array<formInfo.FormInfo>): Array<Record<string, Object>> => {
+    console.info('get want params callback, form count: ' + formInfo.length);
+    let wantParamsList: Array<Record<string, Object>> = [];
+    for (let i = 0; i < formInfo.length; i++) {
+      let params: Record<string, Object> = {
+        'key': 'value'
+      };
+      wantParamsList.push(params);
+    }
+    return wantParamsList;
+  };
+```

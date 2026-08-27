@@ -1,4 +1,4 @@
-# DataCallback(跨设备唤醒与消息传输)（系统接口）
+# DataCallback（系统接口）
 
 ```TypeScript
 type DataCallback = (deviceId: string, msg: ArrayBuffer) => void
@@ -10,8 +10,6 @@ type DataCallback = (deviceId: string, msg: ArrayBuffer) => void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-conversation-type DataCallback = (deviceId: string, msg: ArrayBuffer) => void--><!--Device-conversation-type DataCallback = (deviceId: string, msg: ArrayBuffer) => void-End-->
-
 **系统能力：** SystemCapability.Communication.SoftBus.Core
 
 **系统接口：** 此接口为系统接口。
@@ -22,4 +20,3 @@ type DataCallback = (deviceId: string, msg: ArrayBuffer) => void
 | --- | --- | --- | --- |
 | deviceId | string | 是 | 发送数据的源设备的networkId或UDID。 |
 | msg | ArrayBuffer | 是 | 接收到的数据内容，为ArrayBuffer格式的二进制数据，数据格式与发送端发送的数据格式一致， 由应用层协议定义。 |
-

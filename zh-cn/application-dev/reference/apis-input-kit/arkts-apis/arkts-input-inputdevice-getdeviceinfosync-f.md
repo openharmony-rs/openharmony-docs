@@ -3,21 +3,17 @@
 ## 导入模块
 
 ```TypeScript
-import { inputDevice } from '@kit.InputKit';
-import { inputDeviceCooperate } from '@kit.InputKit';
 ```
 
 ## getDeviceInfoSync
 
 ```TypeScript
-function getDeviceInfoSync(deviceId: int): InputDeviceData
+function getDeviceInfoSync(deviceId: number): InputDeviceData
 ```
 
 获取指定输入设备的信息。
 
-**起始版本：** 23
-
-<!--Device-inputDevice-function getDeviceInfoSync(deviceId: int): InputDeviceData--><!--Device-inputDevice-function getDeviceInfoSync(deviceId: int): InputDeviceData-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -25,7 +21,7 @@ function getDeviceInfoSync(deviceId: int): InputDeviceData
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceId | int | 是 | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
+| deviceId | number | 是 | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
 
 **返回值：**
 
@@ -37,12 +33,10 @@ function getDeviceInfoSync(deviceId: int): InputDeviceData
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 import { inputDevice } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -66,31 +60,3 @@ struct Index {
   }
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
-import { inputDevice } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          // 获取输入设备ID为1的设备信息。
-          try {
-            let deviceData: inputDevice.InputDeviceData = inputDevice.getDeviceInfoSync(1);
-            console.info(`Succeeded in getting device info: ${JSON.stringify(deviceData)}.`);
-          } catch (error) {
-            console.error(`Failed to get device info, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-

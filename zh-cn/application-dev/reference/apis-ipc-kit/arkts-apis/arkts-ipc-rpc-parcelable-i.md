@@ -2,9 +2,7 @@
 
 在进程间通信（IPC）期间，将类的对象写入MessageSequence并从MessageSequence中恢复它们。
 
-**起始版本：** 23
-
-<!--Device-rpc-interface Parcelable--><!--Device-rpc-interface Parcelable-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -22,9 +20,7 @@ marshalling(dataOut: MessageSequence): boolean
 
 将此可序列对象封送到MessageSequence中。
 
-**起始版本：** 23
-
-<!--Device-Parcelable-marshalling(dataOut: MessageSequence): boolean--><!--Device-Parcelable-marshalling(dataOut: MessageSequence): boolean-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -85,9 +81,7 @@ unmarshalling(dataIn: MessageSequence): boolean
 
 从MessageSequence中解封此可序列对象。
 
-**起始版本：** 23
-
-<!--Device-Parcelable-unmarshalling(dataIn: MessageSequence): boolean--><!--Device-Parcelable-unmarshalling(dataIn: MessageSequence): boolean-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -139,4 +133,3 @@ try {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
 ```
-

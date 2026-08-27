@@ -2,9 +2,7 @@
 
 光标信息。
 
-**起始版本：** 23
-
-<!--Device-inputMethod-export interface CursorInfo--><!--Device-inputMethod-export interface CursorInfo-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -12,92 +10,78 @@
 
 ```TypeScript
 import { inputMethod } from '@kit.IMEKit';
-import { inputMethodEngine } from '@kit.IMEKit';
-import { InputMethodListDialog, PatternOptions, Pattern } from '@kit.IMEKit';
-import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
-import { InputMethodExtraConfig } from '@kit.IMEKit';
-import { inputMethodSystemPanelManager } from '@kit.IMEKit';
 ```
 
 ## displayId
 
 ```TypeScript
-displayId?: long
+displayId?: number
 ```
 
-光标所在显示器的ID。
+光标所在显示器的ID，该参数应为整数，最小值为0，默认值为0。
 
-**类型：** long
+**类型：** number
+
+**默认值：** 0
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-CursorInfo-displayId?: long--><!--Device-CursorInfo-displayId?: long-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 ## height
 
 ```TypeScript
-height: double
+height: number
 ```
 
 光标的高度，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的高度。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-CursorInfo-height: double--><!--Device-CursorInfo-height: double-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 ## left
 
 ```TypeScript
-left: double
+left: number
 ```
 
 光标的横坐标，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的宽度。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-CursorInfo-left: double--><!--Device-CursorInfo-left: double-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 ## top
 
 ```TypeScript
-top: double
+top: number
 ```
 
 光标的纵坐标，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的高度。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-CursorInfo-top: double--><!--Device-CursorInfo-top: double-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 ## width
 
 ```TypeScript
-width: double
+width: number
 ```
 
 光标的宽度，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的宽度。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-CursorInfo-width: double--><!--Device-CursorInfo-width: double-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
-

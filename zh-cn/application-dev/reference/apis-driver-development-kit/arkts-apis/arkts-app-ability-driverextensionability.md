@@ -18,5 +18,4 @@ import { DriverExtensionAbility, DriverExtensionContext } from '@kit.DriverDevel
 
 | 名称 | 说明 |
 | --- | --- |
-| [DriverExtensionContext](arkts-driverdevelopment-driverextensioncontext-t.md) | DriverExtensionAbility的上下文环境。 |
-
+| [DriverExtensionContext](arkts-driverdevelopment-driverextensioncontext-t.md) | DriverExtensionAbility的上下文环境，继承自ExtensionContext，其具体使用方法可参考DriverExtensionContext。 |

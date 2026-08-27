@@ -1,23 +1,25 @@
 # MouseController
 
-提供模拟鼠标操作的功能。模拟鼠标操作序列必须满足以下要求：<br>1. 鼠标按键只能在抬起状态下被按下。<br>2. 鼠标按键只能在被按下后才能抬起。<br>3. 有效的轴事件序列必须先调用beginAxis开始事件，然后调用零次或多次updateAxis更新事件，最后调用endAxis结束事件。<br> 4. 同一时间只能有一个进行中的轴事件序列。
+提供模拟鼠标操作的功能。模拟鼠标操作序列必须满足以下要求：
+1. 鼠标按键只能在抬起状态下被按下。
+2. 鼠标按键只能在被按下后才能抬起。
+3. 有效的轴事件序列必须先调用beginAxis开始事件，然后调用零次或多次updateAxis更新事件，最后调用endAxis结束事件。
+
+4. 同一时间只能有一个进行中的轴事件序列。
 
 **起始版本：** 26.0.0
-
-<!--Device-inputEventClient-interface MouseController--><!--Device-inputEventClient-interface MouseController-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
 ## 导入模块
 
 ```TypeScript
-import { inputEventClient } from '@kit.InputKit';
 ```
 
 ## beginAxis
 
 ```TypeScript
-beginAxis(axis: Axis, value: int): Promise<void>
+beginAxis(axis: Axis, value: number): Promise<void>
 ```
 
 开始轴事件。使用Promise异步回调。
@@ -28,8 +30,6 @@ beginAxis(axis: Axis, value: int): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MouseController-beginAxis(axis: Axis, value: int): Promise<void>--><!--Device-MouseController-beginAxis(axis: Axis, value: int): Promise<void>-End-->
-
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **参数：**
@@ -37,21 +37,21 @@ beginAxis(axis: Axis, value: int): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | axis | [Axis](arkts-input-multimodalinput-mouseevent-axis-e.md) | 是 | 轴类型。 |
-| value | int | 是 | 轴值。 |
+| value | number | 是 | 轴值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [4300001](../errorcode-inputeventclient.md#4300001-状态错误) | The axis event is in progress. |
 | [3800001](../errorcode-infraredemitter.md#3800001-多模输入服务内部错误) | Input service exception. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例**
 
@@ -104,8 +104,6 @@ endAxis(axis: Axis): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MouseController-endAxis(axis: Axis): Promise<void>--><!--Device-MouseController-endAxis(axis: Axis): Promise<void>-End-->
-
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **参数：**
@@ -118,15 +116,15 @@ endAxis(axis: Axis): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [4300001](../errorcode-inputeventclient.md#4300001-状态错误) | The axis event is not in progress. |
 | [3800001](../errorcode-infraredemitter.md#3800001-多模输入服务内部错误) | Input service exception. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例**
 
@@ -135,7 +133,7 @@ endAxis(axis: Axis): Promise<void>
 ## moveTo
 
 ```TypeScript
-moveTo(displayId: int, displayX: int, displayY: int): Promise<void>
+moveTo(displayId: number, displayX: number, displayY: number): Promise<void>
 ```
 
 将鼠标光标移动到指定的显示器坐标。使用Promise异步回调。
@@ -146,31 +144,29 @@ moveTo(displayId: int, displayX: int, displayY: int): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MouseController-moveTo(displayId: int, displayX: int, displayY: int): Promise<void>--><!--Device-MouseController-moveTo(displayId: int, displayX: int, displayY: int): Promise<void>-End-->
-
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| displayId | int | 是 | 目标显示器ID。 |
-| displayX | int | 是 | 目标位置相对于显示器左边缘的X坐标，单位为像素（px）。若超出显示器有效范围，则实际坐标值会规约到有效范围[0, 显示器宽度-1]。 |
-| displayY | int | 是 | 目标位置相对于显示器上边缘的Y坐标，单位为像素（px）。若超出显示器有效范围，则实际坐标值会规约到有效范围[0, 显示器高度-1]。 |
+| displayId | number | 是 | 目标显示器ID。 |
+| displayX | number | 是 | 目标位置相对于显示器左边缘的X坐标，单位为像素（px）。若超出显示器有效范围，则实际坐标值会规约到有效范围[0, 显示器宽度-1]。 |
+| displayY | number | 是 | 目标位置相对于显示器上边缘的Y坐标，单位为像素（px）。若超出显示器有效范围，则实际坐标值会规约到有效范围[0, 显示器高度-1]。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [4300002](../errorcode-inputeventclient.md#4300002-显示器不存在) | The display does not exist. |
 | [3800001](../errorcode-infraredemitter.md#3800001-多模输入服务内部错误) | Input service exception. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例**
 
@@ -215,8 +211,6 @@ pressButton(button: Button): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MouseController-pressButton(button: Button): Promise<void>--><!--Device-MouseController-pressButton(button: Button): Promise<void>-End-->
-
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **参数：**
@@ -229,15 +223,15 @@ pressButton(button: Button): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [4300001](../errorcode-inputeventclient.md#4300001-状态错误) | The mouse button is already pressed. |
 | [3800001](../errorcode-infraredemitter.md#3800001-多模输入服务内部错误) | Input service exception. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例**
 
@@ -286,8 +280,6 @@ releaseButton(button: Button): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MouseController-releaseButton(button: Button): Promise<void>--><!--Device-MouseController-releaseButton(button: Button): Promise<void>-End-->
-
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **参数：**
@@ -300,15 +292,15 @@ releaseButton(button: Button): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [4300001](../errorcode-inputeventclient.md#4300001-状态错误) | The mouse button is not pressed. |
 | [3800001](../errorcode-infraredemitter.md#3800001-多模输入服务内部错误) | Input service exception. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例**
 
@@ -317,7 +309,7 @@ releaseButton(button: Button): Promise<void>
 ## updateAxis
 
 ```TypeScript
-updateAxis(axis: Axis, value: int): Promise<void>
+updateAxis(axis: Axis, value: number): Promise<void>
 ```
 
 更新轴事件。使用Promise异步回调。
@@ -328,8 +320,6 @@ updateAxis(axis: Axis, value: int): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MouseController-updateAxis(axis: Axis, value: int): Promise<void>--><!--Device-MouseController-updateAxis(axis: Axis, value: int): Promise<void>-End-->
-
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **参数：**
@@ -337,23 +327,22 @@ updateAxis(axis: Axis, value: int): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | axis | [Axis](arkts-input-multimodalinput-mouseevent-axis-e.md) | 是 | 轴类型。 |
-| value | int | 是 | 轴值。 |
+| value | number | 是 | 轴值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [4300001](../errorcode-inputeventclient.md#4300001-状态错误) | The axis event is not in progress. |
 | [3800001](../errorcode-infraredemitter.md#3800001-多模输入服务内部错误) | Input service exception. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例**
 
 参见[beginAxis](#beginaxis)示例。
-

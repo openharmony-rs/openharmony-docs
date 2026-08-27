@@ -2,9 +2,7 @@
 
 表示图像的组件类型的枚举。
 
-**起始版本：** 23
-
-<!--Device-image-enum ComponentType--><!--Device-image-enum ComponentType-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -16,9 +14,7 @@ YUV_Y = 1
 
 亮度信息。
 
-**起始版本：** 23
-
-<!--Device-ComponentType-YUV_Y = 1--><!--Device-ComponentType-YUV_Y = 1-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -30,9 +26,7 @@ YUV_U = 2
 
 色度信息。
 
-**起始版本：** 23
-
-<!--Device-ComponentType-YUV_U = 2--><!--Device-ComponentType-YUV_U = 2-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -44,9 +38,7 @@ YUV_V = 3
 
 色度信息。
 
-**起始版本：** 23
-
-<!--Device-ComponentType-YUV_V = 3--><!--Device-ComponentType-YUV_V = 3-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -58,9 +50,6 @@ JPEG = 4
 
 JPEG 类型。
 
-**起始版本：** 23
-
-<!--Device-ComponentType-JPEG = 4--><!--Device-ComponentType-JPEG = 4-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
-

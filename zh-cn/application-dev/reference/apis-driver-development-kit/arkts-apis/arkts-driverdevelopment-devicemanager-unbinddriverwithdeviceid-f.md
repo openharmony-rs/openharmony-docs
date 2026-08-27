@@ -9,16 +9,14 @@ import { deviceManager } from '@kit.DriverDevelopmentKit';
 ## unbindDriverWithDeviceId
 
 ```TypeScript
-function unbindDriverWithDeviceId(deviceId: long): Promise<int>
+function unbindDriverWithDeviceId(deviceId: number): Promise<number>
 ```
 
 解除设备绑定，调用前需要先通过bindDriverWithDeviceId绑定设备。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 19
 
 **需要权限：** ohos.permission.ACCESS_DDK_DRIVERS
-
-<!--Device-deviceManager-function unbindDriverWithDeviceId(deviceId: long): Promise<int>--><!--Device-deviceManager-function unbindDriverWithDeviceId(deviceId: long): Promise<int>-End-->
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
@@ -26,21 +24,21 @@ function unbindDriverWithDeviceId(deviceId: long): Promise<int>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceId | long | 是 | 设备ID，通过[queryDevices](arkts-driverdevelopment-devicemanager-querydevices-f.md)获得。 |
+| deviceId | number | 是 | 设备ID，通过[queryDevices](arkts-driverdevelopment-devicemanager-querydevices-f.md)获得。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;int&gt; | Promise对象，返回解除绑定的设备ID。 |
+| Promise & lt;number & gt; | Promise对象，返回解除绑定的设备ID。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [26300001](../../apis-driverdevelopment-kit/errorcode-deviceManager.md#26300001-扩展外设驱动服务异常) | ExternalDeviceManager service exception. |
-| [26300003](../../apis-driverdevelopment-kit/errorcode-deviceManager.md#26300003-驱动客户端未绑定任何驱动服务端) | There is no binding relationship. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The permission check failed. |
+| [26300001](../errorcode-deviceManager.md#26300001-扩展外设驱动服务异常) | ExternalDeviceManager service exception. |
+| [26300003](../errorcode-deviceManager.md#26300003-驱动客户端未绑定任何驱动服务端) | There is no binding relationship. |
 
 **示例**
 
@@ -59,4 +57,3 @@ try {
   console.error(`unbindDriverWithDeviceId fail. Code is ${error.code}, message is ${error.message}`);
 }
 ```
-

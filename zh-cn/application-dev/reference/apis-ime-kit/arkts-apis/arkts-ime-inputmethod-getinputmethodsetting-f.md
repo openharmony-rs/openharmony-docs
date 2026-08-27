@@ -4,11 +4,6 @@
 
 ```TypeScript
 import { inputMethod } from '@kit.IMEKit';
-import { inputMethodEngine } from '@kit.IMEKit';
-import { InputMethodListDialog, PatternOptions, Pattern } from '@kit.IMEKit';
-import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
-import { InputMethodExtraConfig } from '@kit.IMEKit';
-import { inputMethodSystemPanelManager } from '@kit.IMEKit';
 ```
 
 ## getInputMethodSetting
@@ -25,8 +20,6 @@ function getInputMethodSetting(): InputMethodSetting
 
 **替代接口：** [getSetting](arkts-ime-inputmethod-getsetting-f.md)
 
-<!--Device-inputMethod-function getInputMethodSetting(): InputMethodSetting--><!--Device-inputMethod-function getInputMethodSetting(): InputMethodSetting-End-->
-
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 **返回值：**
@@ -40,4 +33,3 @@ function getInputMethodSetting(): InputMethodSetting
 ```TypeScript
 let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getInputMethodSetting();
 ```
-

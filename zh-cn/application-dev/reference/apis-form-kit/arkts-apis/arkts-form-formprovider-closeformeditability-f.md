@@ -18,15 +18,13 @@ function closeFormEditAbility(isMainPage?: boolean): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-formProvider-function closeFormEditAbility(isMainPage?: boolean): void--><!--Device-formProvider-function closeFormEditAbility(isMainPage?: boolean): void-End-->
-
 **系统能力：** SystemCapability.Ability.Form
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isMainPage | boolean | 否 | 是否关闭主编辑页。 <br>- true：关闭主编辑页，适合在主编辑页完成配置后关闭的场景。 <br>- false：关闭非主编辑页，适合在多级编辑页场景下关闭当前非主编辑页的场景。 <br>默认值：true（通常关闭当前编辑页时使用默认值即可）。 |
+| isMainPage | boolean | 否 | 是否关闭主编辑页。    - true：关闭主编辑页，适合在主编辑页完成配置后关闭的场景。    - false：关闭非主编辑页，适合在多级编辑页场景下关闭当前非主编辑页的场景。    默认值：true（通常关闭当前编辑页时使用默认值即可）。 |
 
 **错误码：**
 
@@ -37,8 +35,6 @@ function closeFormEditAbility(isMainPage?: boolean): void
 | [16501015](../errorcode-form.md#16501015-不能关闭其他应用的半模态卡片编辑页) | Cannot close the widget editing page opened by other apps. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { formProvider } from '@kit.FormKit';
@@ -79,47 +75,3 @@ struct Page {
   }
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-'use static'
-
-import { formProvider } from '@kit.FormKit';
-import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
-
-@Entry
-@Component
-struct Index {
-  @State stateVar: string = 'state var';
-  message: string = 'var';
-
-  build() {
-    Column(undefined) {
-      Text('Hello World').fontSize(20)
-      Button(this.message).backgroundColor('#FFFF00FF')
-        .onClick((e: ClickEvent) => {
-          try {
-            formProvider.closeFormEditAbility();
-            console.info('close FormEditAbility success.');
-          } catch (error) {
-            console.error(`close FormEditAbility failed, code: ${error.code}, message: ${error.message}`);
-          }
-        })
-      Text(this.stateVar).fontSize(20)
-      Child({ stateVar: this.stateVar })
-    }
-  }
-}
-
-@Component
-struct Child {
-  @State stateVar: string = 'Child';
-
-  build() {
-    Text(this.stateVar).fontSize(50)
-  }
-}
-```
-

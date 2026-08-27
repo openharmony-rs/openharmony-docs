@@ -4,8 +4,6 @@ IPC上下文信息，包括PID和UID、本端和对端设备ID、检查接口调
 
 **起始版本：** 23
 
-<!--Device-rpc-class CallingInfo--><!--Device-rpc-class CallingInfo-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 ## 导入模块
@@ -28,8 +26,6 @@ readonly callerPid: number
 
 **起始版本：** 23
 
-<!--Device-CallingInfo-readonly callerPid: number--><!--Device-CallingInfo-readonly callerPid: number-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 ## callerTokenId
@@ -45,8 +41,6 @@ readonly callerTokenId: number
 **默认值：** -1
 
 **起始版本：** 23
-
-<!--Device-CallingInfo-readonly callerTokenId: number--><!--Device-CallingInfo-readonly callerTokenId: number-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -64,8 +58,6 @@ readonly callerUid: number
 
 **起始版本：** 23
 
-<!--Device-CallingInfo-readonly callerUid: number--><!--Device-CallingInfo-readonly callerUid: number-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 ## isLocalCalling
@@ -82,9 +74,27 @@ readonly isLocalCalling: boolean
 
 **起始版本：** 23
 
-<!--Device-CallingInfo-readonly isLocalCalling: boolean--><!--Device-CallingInfo-readonly isLocalCalling: boolean-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
+
+**示例**
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+class Stub extends rpc.RemoteObject {
+  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+    option: rpc.MessageOption): boolean | Promise<boolean> {
+    try {
+      let isLocalCalling = rpc.IPCSkeleton.isLocalCalling();
+      hilog.info(0x0000, 'testTag', 'RpcServer: isLocalCalling is ' + isLocalCalling);
+    } catch (error) {
+      hilog.error(0x0000, 'testTag', 'error ' + error);
+    }
+    return true;
+  }
+}
+```
 
 ## localDeviceId
 
@@ -97,8 +107,6 @@ readonly localDeviceId: string
 **类型：** string
 
 **起始版本：** 23
-
-<!--Device-CallingInfo-readonly localDeviceId: string--><!--Device-CallingInfo-readonly localDeviceId: string-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -114,7 +122,4 @@ readonly remoteDeviceId: string
 
 **起始版本：** 23
 
-<!--Device-CallingInfo-readonly remoteDeviceId: string--><!--Device-CallingInfo-readonly remoteDeviceId: string-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
-

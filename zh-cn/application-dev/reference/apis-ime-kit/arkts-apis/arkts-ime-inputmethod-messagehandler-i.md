@@ -1,10 +1,23 @@
 # MessageHandler
 
-自定义通信对象。
+自定义通信对象。   
+> **说明：**
+   
+> 
+   
+> 开发者可通过注册此对象来接收输入法应用发送的自定义通信数据，接收到自定义通信数据时会触发此对象中
+   
+> [onMessage](#onmessage)回调函数。
+   
+> 
+   
+> 此对象全局唯一，多次注册仅保留最后一次注册的对象及有效性，并触发上一个已注册对象的[onTerminated](#onterminated)回调函数。
+   
+> 
+   
+> 若取消注册全局已注册的对象时，会触发被取消对象中[onTerminated](#onterminated)回调函数。
 
-**起始版本：** 23
-
-<!--Device-inputMethod-interface MessageHandler--><!--Device-inputMethod-interface MessageHandler-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -12,11 +25,6 @@
 
 ```TypeScript
 import { inputMethod } from '@kit.IMEKit';
-import { inputMethodEngine } from '@kit.IMEKit';
-import { InputMethodListDialog, PatternOptions, Pattern } from '@kit.IMEKit';
-import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
-import { InputMethodExtraConfig } from '@kit.IMEKit';
-import { inputMethodSystemPanelManager } from '@kit.IMEKit';
 ```
 
 ## onMessage
@@ -25,11 +33,18 @@ import { inputMethodSystemPanelManager } from '@kit.IMEKit';
 onMessage(msgId: string, msgParam?: ArrayBuffer): void
 ```
 
-接收输入法应用发送的自定义数据回调函数。
+接收输入法应用发送的自定义数据回调函数。   
+> **说明：**
+   
+> 
+   
+> 当已注册的MessageHandler接收到来自输入法应用发送的自定义通信数据时，会触发该回调函数。
+   
+> 
+   
+> msgId为必选参数，msgParam为可选参数。存在收到仅有msgId自定义数据的可能，需与数据发送方确认自定义数据。
 
 **起始版本：** 15
-
-<!--Device-MessageHandler-onMessage(msgId: string, msgParam?: ArrayBuffer): void--><!--Device-MessageHandler-onMessage(msgId: string, msgParam?: ArrayBuffer): void-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -62,11 +77,18 @@ inputMethodController.recvMessage(messageHandler);
 onTerminated(): void
 ```
 
-监听对象终止回调函数。
+监听对象终止回调函数。   
+> **说明：**
+   
+> 
+   
+> 当应用注册新的MessageHandler对象时，会触发上一个已注册MessageHandler对象的OnTerminated回调函数。
+   
+> 
+   
+> 当应用取消注册时，会触发当前已注册MessageHandler对象的OnTerminated回调函数。
 
 **起始版本：** 15
-
-<!--Device-MessageHandler-onTerminated(): void--><!--Device-MessageHandler-onTerminated(): void-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -85,36 +107,3 @@ let messageHandler: inputMethod.MessageHandler = {
 };
 inputMethodController.recvMessage(messageHandler);
 ```
-
-## onMessage
-
-```TypeScript
-onMessage: OnMessageCallback
-```
-
-onMessage(msgId: string, msgParam?: ArrayBuffer): void
-
-**类型：** OnMessageCallback
-
-**起始版本：** 23
-
-<!--Device-MessageHandler-onMessage: OnMessageCallback--><!--Device-MessageHandler-onMessage: OnMessageCallback-End-->
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-## onTerminated
-
-```TypeScript
-onTerminated: Callback<void>
-```
-
-onTerminated(): void 监听对象终止回调函数。
-
-**类型：** [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt;
-
-**起始版本：** 23
-
-<!--Device-MessageHandler-onTerminated: Callback<void>--><!--Device-MessageHandler-onTerminated: Callback<void>-End-->
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-

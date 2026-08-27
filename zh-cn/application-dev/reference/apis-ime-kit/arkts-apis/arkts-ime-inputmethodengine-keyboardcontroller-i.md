@@ -2,9 +2,7 @@
 
 下列API均需使用 on('inputStart') 获取到KeyboardController实例后，通过实例调用。
 
-**起始版本：** 23
-
-<!--Device-inputMethodEngine-interface KeyboardController--><!--Device-inputMethodEngine-interface KeyboardController-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -22,9 +20,7 @@ exitCurrentInputType(callback: AsyncCallback<void>): void
 
 退出当前输入类型，仅支持系统配置的默认输入法应用调用。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-KeyboardController-exitCurrentInputType(callback: AsyncCallback<void>): void--><!--Device-KeyboardController-exitCurrentInputType(callback: AsyncCallback<void>): void-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -32,14 +28,14 @@ exitCurrentInputType(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当退出当前输入类型成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当退出当前输入类型成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [12800010](../errorcode-inputmethod-framework.md#12800010-不是系统配置的默认输入法) | not the preconfigured default input method. |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| [12800010](../errorcode-inputmethod-framework.md#12800010-不是系统配置的默认输入法) | not the preconfigured default input method. |
 
 **示例**
 
@@ -63,9 +59,7 @@ exitCurrentInputType(): Promise<void>
 
 退出当前输入类型，仅支持系统配置的默认输入法应用调用。使用promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-KeyboardController-exitCurrentInputType(): Promise<void>--><!--Device-KeyboardController-exitCurrentInputType(): Promise<void>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -73,14 +67,14 @@ exitCurrentInputType(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [12800010](../errorcode-inputmethod-framework.md#12800010-不是系统配置的默认输入法) | not the preconfigured default input method. |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| [12800010](../errorcode-inputmethod-framework.md#12800010-不是系统配置的默认输入法) | not the preconfigured default input method. |
 
 **示例**
 
@@ -102,9 +96,7 @@ hide(callback: AsyncCallback<void>): void
 
 隐藏输入法。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-KeyboardController-hide(callback: AsyncCallback<void>): void--><!--Device-KeyboardController-hide(callback: AsyncCallback<void>): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -112,7 +104,7 @@ hide(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当输入法隐藏成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当输入法隐藏成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -121,6 +113,18 @@ hide(callback: AsyncCallback<void>): void
 | [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+panel.hide((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to hide panel. Code is ${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in hiding the panel.');
+});
+```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -142,9 +146,7 @@ hide(): Promise<void>
 
 隐藏输入法。使用promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-KeyboardController-hide(): Promise<void>--><!--Device-KeyboardController-hide(): Promise<void>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -152,7 +154,7 @@ hide(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -161,6 +163,16 @@ hide(): Promise<void>
 | [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+panel.hide().then(() => {
+  console.info('Succeeded in hiding the panel.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to hide panel. Code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -178,7 +190,12 @@ keyboardController.hide().then(() => {
 hideKeyboard(callback: AsyncCallback<void>): void
 ```
 
-隐藏输入法。使用callback异步回调。
+隐藏输入法。使用callback异步回调。   
+> **说明：**
+   
+> 
+   
+> 从 API version 8开始支持，从API version 9开始废弃。
 
 **起始版本：** 8
 
@@ -186,15 +203,13 @@ hideKeyboard(callback: AsyncCallback<void>): void
 
 **替代接口：** [hide](#hide)(callback: AsyncCallback&lt;void&gt;)
 
-<!--Device-KeyboardController-hideKeyboard(callback: AsyncCallback<void>): void--><!--Device-KeyboardController-hideKeyboard(callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当输入法隐藏成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当输入法隐藏成功，err为undefined，否则为错误对象。 |
 
 **示例**
 
@@ -216,7 +231,12 @@ keyboardController.hideKeyboard((err: BusinessError) => {
 hideKeyboard(): Promise<void>
 ```
 
-隐藏输入法。使用promise异步回调。
+隐藏输入法。使用promise异步回调。   
+> **说明：**
+   
+> 
+   
+> 从 API version 8开始支持，从API version 9开始废弃。
 
 **起始版本：** 8
 
@@ -224,15 +244,13 @@ hideKeyboard(): Promise<void>
 
 **替代接口：** [hide](#hide)()
 
-<!--Device-KeyboardController-hideKeyboard(): Promise<void>--><!--Device-KeyboardController-hideKeyboard(): Promise<void>-End-->
-
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **示例**
 
@@ -245,4 +263,3 @@ keyboardController.hideKeyboard().then(() => {
   console.error(`Failed to hideKeyboard. Code is ${err.code}, message is ${err.message}`);
 });
 ```
-

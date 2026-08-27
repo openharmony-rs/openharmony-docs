@@ -149,6 +149,6 @@ InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_Atta
 
 | 类型 | 说明 |
 | -- | -- |
-| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 返回一个特定的错误码。      <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示成功。requestKeyboardReason已被赋值为正确的枚举值。      <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 非预期的空指针。表示options或requestKeyboardReason为空指针，调用前需确保这两个参数  已正确初始化且不为NULL。      <br>错误处理建议： 若返回IME_ERR_NULL_POINTER，检查options和requestKeyboardReason是否为有效指针；若返IME_ERR_OK，  requestKeyboardReason即为正确的配置值。具体错误码可以参考[InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 返回一个特定的错误码。      <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示成功。requestKeyboardReason已被赋值为正确的枚举值。      <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 非预期的空指针。表示options或requestKeyboardReason为空指针，调用前需确保这两个参数  已正确初始化且不为NULL。      <br>错误处理建议： 若返回IME_ERR_NULL_POINTER，检查options和requestKeyboardReason是否为有效指针；若返回IME_ERR_OK，  requestKeyboardReason即为正确的配置值。具体错误码可以参考[InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |
 
 

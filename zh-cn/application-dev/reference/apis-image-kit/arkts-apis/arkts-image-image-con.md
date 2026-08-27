@@ -3,208 +3,182 @@
 ## CAPTURE_MODE_FRONT_LENS_NIGHT_VIEW
 
 ```TypeScript
-const CAPTURE_MODE_FRONT_LENS_NIGHT_VIEW : int
+const CAPTURE_MODE_FRONT_LENS_NIGHT_VIEW = 7
 ```
 
-Capture mode: night view with front lens.
+拍摄模式：前置摄像头夜景模式。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-image-const CAPTURE_MODE_FRONT_LENS_NIGHT_VIEW : int--><!--Device-image-const CAPTURE_MODE_FRONT_LENS_NIGHT_VIEW : int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## CAPTURE_MODE_LIGHT_GRAFFITI
 
 ```TypeScript
-const CAPTURE_MODE_LIGHT_GRAFFITI : int
+const CAPTURE_MODE_LIGHT_GRAFFITI = 10
 ```
 
-Capture mode: light graffiti.
+拍摄模式：轻涂鸦模式。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-image-const CAPTURE_MODE_LIGHT_GRAFFITI : int--><!--Device-image-const CAPTURE_MODE_LIGHT_GRAFFITI : int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## CAPTURE_MODE_MOVING_PHOTO
 
 ```TypeScript
-const CAPTURE_MODE_MOVING_PHOTO : int
+const CAPTURE_MODE_MOVING_PHOTO = 20
 ```
 
-Capture mode: moving photos.
+拍摄模式：动态照片模式。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-image-const CAPTURE_MODE_MOVING_PHOTO : int--><!--Device-image-const CAPTURE_MODE_MOVING_PHOTO : int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## CAPTURE_MODE_PANORAMA
 
 ```TypeScript
-const CAPTURE_MODE_PANORAMA : int
+const CAPTURE_MODE_PANORAMA = 8
 ```
 
-Capture mode: panorama.
+拍摄模式：全景模式。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-image-const CAPTURE_MODE_PANORAMA : int--><!--Device-image-const CAPTURE_MODE_PANORAMA : int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## CAPTURE_MODE_PORTRAIT
 
 ```TypeScript
-const CAPTURE_MODE_PORTRAIT : int
+const CAPTURE_MODE_PORTRAIT = 23
 ```
 
-Capture mode: portrait.
+拍摄模式：人像模式。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-image-const CAPTURE_MODE_PORTRAIT : int--><!--Device-image-const CAPTURE_MODE_PORTRAIT : int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## CAPTURE_MODE_PROFESSIONAL
 
 ```TypeScript
-const CAPTURE_MODE_PROFESSIONAL : int
+const CAPTURE_MODE_PROFESSIONAL = 2
 ```
 
-Capture mode: professional.
+拍摄模式：专业模式。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-image-const CAPTURE_MODE_PROFESSIONAL : int--><!--Device-image-const CAPTURE_MODE_PROFESSIONAL : int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## CAPTURE_MODE_REAR_LENS_NIGHT_VIEW
 
 ```TypeScript
-const CAPTURE_MODE_REAR_LENS_NIGHT_VIEW : int
+const CAPTURE_MODE_REAR_LENS_NIGHT_VIEW = 42
 ```
 
-Capture mode: night view with rear lens.
+拍摄模式：后镜头夜景模式。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-image-const CAPTURE_MODE_REAR_LENS_NIGHT_VIEW : int--><!--Device-image-const CAPTURE_MODE_REAR_LENS_NIGHT_VIEW : int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## CAPTURE_MODE_SILKY_WATER
 
 ```TypeScript
-const CAPTURE_MODE_SILKY_WATER : int
+const CAPTURE_MODE_SILKY_WATER = 11
 ```
 
-Capture mode: silky water.
+拍摄模式：缎面感水流模式。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-image-const CAPTURE_MODE_SILKY_WATER : int--><!--Device-image-const CAPTURE_MODE_SILKY_WATER : int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## CAPTURE_MODE_SNAP_SHOT
 
 ```TypeScript
-const CAPTURE_MODE_SNAP_SHOT : int
+const CAPTURE_MODE_SNAP_SHOT = 62
 ```
 
-Capture mode: snap shot.
+拍摄模式：抓拍模式。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-image-const CAPTURE_MODE_SNAP_SHOT : int--><!--Device-image-const CAPTURE_MODE_SNAP_SHOT : int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## CAPTURE_MODE_STAR_TRACK
 
 ```TypeScript
-const CAPTURE_MODE_STAR_TRACK : int
+const CAPTURE_MODE_STAR_TRACK = 12
 ```
 
-Capture mode: star track.
+拍摄模式：星轨模式。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-image-const CAPTURE_MODE_STAR_TRACK : int--><!--Device-image-const CAPTURE_MODE_STAR_TRACK : int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## CAPTURE_MODE_SUPER_MACRO
 
 ```TypeScript
-const CAPTURE_MODE_SUPER_MACRO : int
+const CAPTURE_MODE_SUPER_MACRO = 47
 ```
 
-Capture mode: super macro.
+拍摄模式：超微距模式。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-image-const CAPTURE_MODE_SUPER_MACRO : int--><!--Device-image-const CAPTURE_MODE_SUPER_MACRO : int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## CAPTURE_MODE_TAIL_LIGHT
 
 ```TypeScript
-const CAPTURE_MODE_TAIL_LIGHT : int
+const CAPTURE_MODE_TAIL_LIGHT = 9
 ```
 
-Capture mode: tail light.
+拍摄模式：尾灯模式。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-image-const CAPTURE_MODE_TAIL_LIGHT : int--><!--Device-image-const CAPTURE_MODE_TAIL_LIGHT : int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## CAPTURE_MODE_WIDEAPERTURE
 
 ```TypeScript
-const CAPTURE_MODE_WIDEAPERTURE : int
+const CAPTURE_MODE_WIDEAPERTURE = 19
 ```
 
-Capture mode: wide aperture.
+拍摄模式：广角模式。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-image-const CAPTURE_MODE_WIDEAPERTURE : int--><!--Device-image-const CAPTURE_MODE_WIDEAPERTURE : int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -220,8 +194,6 @@ Dublin Core元数据命名空间。 Namespace uri: 'http://purl.org/dc/elements/
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-image-const DUBLIN_CORE: XMPNamespace--><!--Device-image-const DUBLIN_CORE: XMPNamespace-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## EXIF
@@ -235,8 +207,6 @@ EXIF元数据命名空间。 Namespace uri: 'http://ns.adobe.com/exif/1.0/', pre
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-image-const EXIF: XMPNamespace--><!--Device-image-const EXIF: XMPNamespace-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -252,39 +222,33 @@ TIFF图像格式参数命名空间。 Namespace uri: 'http://ns.adobe.com/tiff/1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-image-const TIFF: XMPNamespace--><!--Device-image-const TIFF: XMPNamespace-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## XMAGE_WATERMARK_MODE_AT_THE_BOTTOM
 
 ```TypeScript
-const XMAGE_WATERMARK_MODE_AT_THE_BOTTOM : int
+const XMAGE_WATERMARK_MODE_AT_THE_BOTTOM = 9
 ```
 
-The XMAGE watermark is at the bottom of the photo.
+XMAGE水印模式：XMAGE水印固定位于图像底部中央。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-image-const XMAGE_WATERMARK_MODE_AT_THE_BOTTOM : int--><!--Device-image-const XMAGE_WATERMARK_MODE_AT_THE_BOTTOM : int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## XMAGE_WATERMARK_MODE_BORDER
 
 ```TypeScript
-const XMAGE_WATERMARK_MODE_BORDER : int
+const XMAGE_WATERMARK_MODE_BORDER = 10
 ```
 
-The XMAGE watermark is around the edges of the photo.
+XMAGE水印模式：XMAGE水印会自动调整到边界位置，系统根据图像内容选择最适合的边界区域。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-image-const XMAGE_WATERMARK_MODE_BORDER : int--><!--Device-image-const XMAGE_WATERMARK_MODE_BORDER : int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -300,8 +264,6 @@ XMP基础命名空间。 Namespace uri: 'http://ns.adobe.com/xap/1.0/', prefix: 
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-image-const XMP_BASIC: XMPNamespace--><!--Device-image-const XMP_BASIC: XMPNamespace-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## XMP_RIGHTS
@@ -316,7 +278,4 @@ XMP版权与权限命名空间。 Namespace uri: 'http://ns.adobe.com/xap/1.0/ri
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-image-const XMP_RIGHTS: XMPNamespace--><!--Device-image-const XMP_RIGHTS: XMPNamespace-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
-

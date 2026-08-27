@@ -4,6 +4,8 @@
 
 提供在SCSI Peripheral DDK（驱动开发工具包）API中使用的枚举变量、结构体和宏。
 
+**引用文件：** <scsi_peripheral/scsi_peripheral_types.h>
+
 **库：** libscsi.z.so
 
 **系统能力：** SystemCapability.Driver.SCSI.Extension

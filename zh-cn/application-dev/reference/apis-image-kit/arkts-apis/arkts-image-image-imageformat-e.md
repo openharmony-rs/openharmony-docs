@@ -2,9 +2,7 @@
 
 表示图片格式的枚举。
 
-**起始版本：** 23
-
-<!--Device-image-enum ImageFormat--><!--Device-image-enum ImageFormat-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -16,9 +14,7 @@ YCBCR_422_SP = 1000
 
 YCBCR422半平面格式。
 
-**起始版本：** 23
-
-<!--Device-ImageFormat-YCBCR_422_SP = 1000--><!--Device-ImageFormat-YCBCR_422_SP = 1000-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -30,9 +26,6 @@ JPEG = 2000
 
 JPEG编码格式。
 
-**起始版本：** 23
-
-<!--Device-ImageFormat-JPEG = 2000--><!--Device-ImageFormat-JPEG = 2000-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
-

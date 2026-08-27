@@ -6,8 +6,6 @@
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-unnamed-declare namespace inputMethodSystemPanelManager--><!--Device-unnamed-declare namespace inputMethodSystemPanelManager-End-->
-
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 **系统接口：** 此接口为系统接口。
@@ -54,6 +52,5 @@ import { inputMethodSystemPanelManager } from '@kit.IMEKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [CommandDataType](arkts-ime-inputmethodsystempanelmanager-commanddatatype-t-sys.md) | 表示命令的数据类型。 |
+| [CommandDataType](arkts-ime-inputmethodsystempanelmanager-commanddatatype-t-sys.md) | 表示私有数据的数据类型。 |
 <!--DelEnd-->
-

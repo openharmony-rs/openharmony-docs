@@ -2,9 +2,7 @@
 
 指纹手势事件的类型和相对侧边指纹器件的偏移位置。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export declare interface FingerprintEvent--><!--Device-unnamed-export declare interface FingerprintEvent-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -13,8 +11,6 @@
 ## 导入模块
 
 ```TypeScript
-import { shortKey } from '@kit.InputKit';
-import { FingerprintEvent } from '@kit.InputKit';
 ```
 
 ## action
@@ -27,9 +23,7 @@ action: FingerprintAction
 
 **类型：** [FingerprintAction](arkts-input-multimodalinput-shortkey-fingerprintaction-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-FingerprintEvent-action: FingerprintAction--><!--Device-FingerprintEvent-action: FingerprintAction-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -38,16 +32,14 @@ action: FingerprintAction
 ## distanceX
 
 ```TypeScript
-distanceX: double
+distanceX: number
 ```
 
 相对于侧边指纹器件短轴偏移量（正数表示向右移动，负数表示向左移动）。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-FingerprintEvent-distanceX: double--><!--Device-FingerprintEvent-distanceX: double-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -56,18 +48,15 @@ distanceX: double
 ## distanceY
 
 ```TypeScript
-distanceY: double
+distanceY: number
 ```
 
 相对于侧边指纹器件长轴偏移量（正数表示向上移动，负数表示向下移动）。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-FingerprintEvent-distanceY: double--><!--Device-FingerprintEvent-distanceY: double-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
 **系统接口：** 此接口为系统接口。
-

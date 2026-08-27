@@ -4,8 +4,6 @@
 
 **起始版本：** 24
 
-<!--Device-distributedDeviceManager-interface DeviceIdentification--><!--Device-distributedDeviceManager-interface DeviceIdentification-End-->
-
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
 **系统接口：** 此接口为系统接口。
@@ -30,8 +28,6 @@ deviceId: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DeviceIdentification-deviceId: string--><!--Device-DeviceIdentification-deviceId: string-End-->
-
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
 **系统接口：** 此接口为系统接口。
@@ -52,9 +48,6 @@ udid: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DeviceIdentification-udid: string--><!--Device-DeviceIdentification-udid: string-End-->
-
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
 **系统接口：** 此接口为系统接口。
-

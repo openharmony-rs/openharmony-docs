@@ -2,9 +2,7 @@
 
 按键注入描述信息。
 
-**起始版本：** 23
-
-<!--Device-inputEventClient-interface KeyEventData--><!--Device-inputEventClient-interface KeyEventData-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -13,7 +11,6 @@
 ## 导入模块
 
 ```TypeScript
-import { inputEventClient } from '@kit.InputKit';
 ```
 
 ## keyEvent
@@ -26,11 +23,8 @@ keyEvent: KeyEvent
 
 **类型：** KeyEvent
 
-**起始版本：** 23
-
-<!--Device-KeyEventData-keyEvent: KeyEvent--><!--Device-KeyEventData-keyEvent: KeyEvent-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **系统接口：** 此接口为系统接口。
-

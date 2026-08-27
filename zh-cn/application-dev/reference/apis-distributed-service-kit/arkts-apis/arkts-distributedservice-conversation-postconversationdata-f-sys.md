@@ -25,8 +25,6 @@ function postConversationData(
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-conversation-function postConversationData(    deviceId: string,    bundleName: string,    abilityName: string,    msg: ArrayBuffer  ): Promise<void>--><!--Device-conversation-function postConversationData(    deviceId: string,    bundleName: string,    abilityName: string,    msg: ArrayBuffer  ): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Communication.SoftBus.Core
 
 **系统接口：** 此接口为系统接口。
@@ -44,21 +42,21 @@ function postConversationData(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回值的Promise对象。 |
+| Promise & lt;void & gt; | 无返回值的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameter. The deviceId, bundleName, abilityName or msg is invalid or empty. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. The application does not have the required permission to access distributed data. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [2004004](../../apis-distributedservice-kit/errorcode-conversation.md#2004004-等待对端确认超时) | Timeout while waiting for acknowledgement from the remote side. |
-| [2004002](../../apis-distributedservice-kit/errorcode-conversation.md#2004002-对端拉起ability失败) | Failed to start ability on the remote side. |
-| [2004003](../../apis-distributedservice-kit/errorcode-conversation.md#2004003-发送数据失败) | Failed to send data. |
-| [2000001](../../apis-distributedservice-kit/errorcode-conversation.md#2000001-内部错误) | Internal error. |
-| [2004001](../../apis-distributedservice-kit/errorcode-conversation.md#2004001-对端设备系统版本过低) | Remote system version is too low. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameter. The deviceId, bundleName, abilityName or msg is invalid or empty. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [2000001](../errorcode-conversation.md#2000001-内部错误) | Internal error. |
+| [2004001](../errorcode-conversation.md#2004001-对端设备系统版本过低) | Remote system version is too low. |
+| [2004002](../errorcode-conversation.md#2004002-对端拉起ability失败) | Failed to start ability on the remote side. |
+| [2004003](../errorcode-conversation.md#2004003-发送数据失败) | Failed to send data. |
+| [2004004](../errorcode-conversation.md#2004004-等待对端确认超时) | Timeout while waiting for acknowledgement from the remote side. |
 
 **示例**
 
@@ -84,4 +82,3 @@ try {
   console.error(`postConversationData errCode: ${e.code}, errMessage: ${e.message}`);
 }
 ```
-

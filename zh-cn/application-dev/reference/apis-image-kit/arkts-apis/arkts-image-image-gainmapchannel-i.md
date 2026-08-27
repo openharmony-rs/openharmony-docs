@@ -2,9 +2,7 @@
 
 Gainmap图单个通道的数据内容，参考ISO 21496-1。
 
-**起始版本：** 23
-
-<!--Device-image-interface GainmapChannel--><!--Device-image-interface GainmapChannel-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -17,80 +15,69 @@ import { image } from '@kit.ImageKit';
 ## alternateOffset
 
 ```TypeScript
-alternateOffset: double
+alternateOffset: number
 ```
 
 The per-component alternate offset.
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-GainmapChannel-alternateOffset: double--><!--Device-GainmapChannel-alternateOffset: double-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## baseOffset
 
 ```TypeScript
-baseOffset: double
+baseOffset: number
 ```
 
 The per-component baseline offset.
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-GainmapChannel-baseOffset: double--><!--Device-GainmapChannel-baseOffset: double-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## gainmapMax
 
 ```TypeScript
-gainmapMax: double
+gainmapMax: number
 ```
 
 The per-component max gain map values.
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-GainmapChannel-gainmapMax: double--><!--Device-GainmapChannel-gainmapMax: double-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## gainmapMin
 
 ```TypeScript
-gainmapMin: double
+gainmapMin: number
 ```
 
 The per-component min gain map values.
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-GainmapChannel-gainmapMin: double--><!--Device-GainmapChannel-gainmapMin: double-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## gamma
 
 ```TypeScript
-gamma: double
+gamma: number
 ```
 
 The per-component gamma values.
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-GainmapChannel-gamma: double--><!--Device-GainmapChannel-gamma: double-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
-

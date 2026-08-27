@@ -3,20 +3,21 @@
 ## 导入模块
 
 ```TypeScript
-import { pointer } from '@kit.InputKit';
 ```
 
 ## setPointerColor
 
 ```TypeScript
-function setPointerColor(color: int, callback: AsyncCallback<void>): void
+function setPointerColor(color: number, callback: AsyncCallback<void>): void
 ```
 
-设置鼠标光标颜色，使用callback异步回调。 > **说明：** > > 设置和调试时，需连接外部设备，如鼠标、蓝牙等。
+设置鼠标光标颜色，使用callback异步回调。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 设置和调试时，需连接外部设备，如鼠标、蓝牙等。
 
-<!--Device-pointer-function setPointerColor(color: int, callback: AsyncCallback<void>): void--><!--Device-pointer-function setPointerColor(color: int, callback: AsyncCallback<void>): void-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Pointer
 
@@ -26,19 +27,17 @@ function setPointerColor(color: int, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | int | 是 | 鼠标光标颜色，默认为黑色：0x000000。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当设置成功，err为undefined，否则为错误对象。 |
+| color | number | 是 | 鼠标光标颜色，默认为黑色：0x000000。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permission error. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
-
-ArkTS-Dyn示例:
 
 ```TypeScript
 import { pointer } from '@kit.InputKit';
@@ -69,51 +68,20 @@ struct Index {
 }
 ```
 
-ArkTS-Sta示例:
-
-```TypeScript
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
-import { pointer } from '@kit.InputKit';
-import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
-
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // 设置鼠标指针颜色
-            pointer.setPointerColor(0xF6C800, (error: BusinessError<void>|null, data: undefined) => {
-              if (error) {
-                console.error(`Failed to set pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-                return;
-              }
-              console.info(`Succeeded in setting pointer color.`);
-            });
-          } catch (error) {
-            console.error(`Failed to set pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-
 
 ## setPointerColor
 
 ```TypeScript
-function setPointerColor(color: int): Promise<void>
+function setPointerColor(color: number): Promise<void>
 ```
 
-设置鼠标光标颜色，使用Promise异步回调。 > **说明：** > > 设置和调试时，需连接外部设备，如鼠标、蓝牙等。
+设置鼠标光标颜色，使用Promise异步回调。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 设置和调试时，需连接外部设备，如鼠标、蓝牙等。
 
-<!--Device-pointer-function setPointerColor(color: int): Promise<void>--><!--Device-pointer-function setPointerColor(color: int): Promise<void>-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Pointer
 
@@ -123,24 +91,22 @@ function setPointerColor(color: int): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | int | 是 | 鼠标光标颜色，默认为黑色：0x000000。 |
+| color | number | 是 | 鼠标光标颜色，默认为黑色：0x000000。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permission error. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { pointer } from '@kit.InputKit';
@@ -168,32 +134,3 @@ struct Index {
   }
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
-import { pointer } from '@kit.InputKit';
-import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // 设置鼠标指针颜色
-            pointer.setPointerColor(0xF6C800).then(() => {
-              console.info(`Succeeded in setting pointer color.`);
-            });
-          } catch (error) {
-            console.error(`Failed to set pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-

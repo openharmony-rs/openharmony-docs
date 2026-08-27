@@ -16,6 +16,5 @@
   - [RequestResult](arkts-ipc-rpc-requestresult-i.md)
   - [SendRequestResult](arkts-ipc-rpc-sendrequestresult-i.md)
   - [Sequenceable](arkts-ipc-rpc-sequenceable-i.md)
-  - [OnRemoteDiedFunc](arkts-ipc-rpc-onremotediedfunc-t.md)
   - [ErrorCode](arkts-ipc-rpc-errorcode-e.md)
   - [TypeCode](arkts-ipc-rpc-typecode-e.md)

@@ -6,8 +6,6 @@ ExifMetadata implements Metadata Exif（Exchangeable image file format）元数�
 
 **起始版本：** 23
 
-<!--Device-image-class ExifMetadata--><!--Device-image-class ExifMetadata-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## 导入模块
@@ -28,8 +26,6 @@ clone(): Promise<ExifMetadata>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-clone(): Promise<ExifMetadata>--><!--Device-ExifMetadata-clone(): Promise<ExifMetadata>-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **返回值：**
@@ -37,6 +33,36 @@ clone(): Promise<ExifMetadata>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;[ExifMetadata](arkts-image-image-exifmetadata-c.md)&gt; | Promise对象，成功返回Exif元数据实例。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function exifMetadataClone(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["ImageWidth", "ImageLength"]);
+  if (metaData != undefined && metaData.exifMetadata != undefined) {
+    let new_metadata = await metaData.exifMetadata.clone();
+    new_metadata.getProperties(["ImageWidth"]).then((data1) => {
+      console.info(`Succeeded in cloning metadata and getting properties. Data: ${JSON.stringify(data1)}.`);
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to clone metadata and get properties. Code: ${err.code}, message: ${err.message}.`);
+    });
+  } else {
+    console.error('Metadata is null.');
+  }
+}
+```
 
 ## createInstance
 
@@ -50,8 +76,6 @@ static createInstance(): ExifMetadata
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-static createInstance(): ExifMetadata--><!--Device-ExifMetadata-static createInstance(): ExifMetadata-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **返回值：**
@@ -59,6 +83,17 @@ static createInstance(): ExifMetadata
 | 类型 | 说明 |
 | --- | --- |
 | [ExifMetadata](arkts-image-image-exifmetadata-c.md) | 返回ExifMetadata的空实例。 |
+
+**示例**
+
+```TypeScript
+async function exifMetadataCreateInstance(context: Context) {
+  let exifMetadata = image.ExifMetadata.createInstance();
+  if (exifMetadata != undefined) {
+    console.info("Succeeded in creating an ExifMetadata instance.");
+  }
+}
+```
 
 ## getAllProperties
 
@@ -72,15 +107,127 @@ getAllProperties(): Promise<Record<string, string | null>>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-getAllProperties(): Promise<Record<string, string | null>>--><!--Device-ExifMetadata-getAllProperties(): Promise<Record<string, string | null>>-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Record&lt;string, string \| null&gt;&gt; | Promise对象，返回元数据拥有的所有属性的值。 |
+| Promise & lt;Record & lt;string, string \ | null & gt; & gt; | Promise对象，返回元数据拥有的所有属性的值。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function GetAllProperties(context: Context) {
+  const resourceMgr = context.resourceManager;
+  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // 图片包含exif metadata。
+  let ops: image.SourceOptions = {
+    sourceDensity: 98,
+  }
+  let imageSource: image.ImageSource = image.createImageSource(rawFile.buffer as ArrayBuffer, ops);
+  let commodityPixelMap: image.PixelMap = await imageSource.createPixelMap();
+  let pictureObj: image.Picture = image.createPicture(commodityPixelMap);
+  let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
+  let metaData: image.Metadata | null = await pictureObj.getMetadata(metadataType);
+  if (metaData != null) {
+    await metaData.getAllProperties().then((data2) => {
+      const count = Object.keys(data2).length;
+      console.info('Metadata have ', count, ' properties');
+      console.info(`Get metadata all properties: ${data2}`);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to get metadata all properties. error.code is ${error.code}, error.message is ${error.message}`);
+    });
+  } else {
+    console.error('Metadata is null.');
+  }
+}
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function exifMetadataGetAllProperties(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["ImageWidth", "ImageLength"]);
+  if (metaData != undefined && metaData.exifMetadata != undefined) {
+    await metaData.exifMetadata.getAllProperties().then((data) => {
+      const count = Object.keys(data).length;
+      console.info(`Succeeded in getting all properties. Count: ${count}, data: ${JSON.stringify(data)}.`);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to get all properties. Code: ${error.code}, message: ${error.message}.`);
+    });
+  } else {
+    console.error('Metadata is null.');
+  }
+}
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function makerNoteHuaweiGetAllProperties(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]);
+  if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
+    await metaData.makerNoteHuaweiMetadata.getAllProperties().then((data) => {
+      const count = Object.keys(data).length;
+      console.info(`Succeeded in getting all properties. Count: ${count}, data: ${JSON.stringify(data)}.`);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to get all properties. Code: ${error.code}, message: ${error.message}.`);
+    });
+  } else {
+    console.error('Metadata is null.');
+  }
+}
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/heifs.heic';  // 图片包含HeifsMetadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function heifsMetadataGetAllProperties(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["HeifsDelayTime"]);
+  if (metaData != undefined && metaData.heifsMetadata != undefined) {
+    await metaData.heifsMetadata.getAllProperties().then((data) => {
+      const count = Object.keys(data).length;
+      console.info(`Succeeded in getting all properties. Count: ${count}, data: ${JSON.stringify(data)}.`);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to get all properties. Code: ${error.code}, message: ${error.message}.`);
+    });
+  } else {
+    console.error('Metadata is null.');
+  }
+}
+```
 
 ## getBlob
 
@@ -94,15 +241,109 @@ getBlob(): Promise<ArrayBuffer>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-getBlob(): Promise<ArrayBuffer>--><!--Device-ExifMetadata-getBlob(): Promise<ArrayBuffer>-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;ArrayBuffer&gt; | Promise对象，返回元数据的二进制数据。 |
+| Promise & lt;ArrayBuffer & gt; | Promise对象，返回元数据的二进制数据。 |
+
+**示例**
+
+```TypeScript
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function GetBlob(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let pictureObj: image.Picture = await imageSource.createPicture();
+  let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
+  let metaData: image.Metadata | null = await pictureObj.getMetadata(metadataType);
+  if (metaData != null) {
+    let blob = await metaData.getBlob();
+    if (blob != undefined) {
+      console.info("Succeeded in getting blob.");
+    }
+  }
+}
+```
+
+```TypeScript
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function exifMetadataGetBlob(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["ImageWidth", "ImageLength"]);
+  if (metaData != undefined && metaData.exifMetadata != undefined) {
+    let blob = await metaData.exifMetadata.getBlob();
+    if (blob != undefined) {
+      console.info("Succeeded in getting blob.");
+    }
+  }
+}
+```
+
+```TypeScript
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function makerNoteHuaweiGetBlob(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]);
+  if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
+    let blob = await metaData.makerNoteHuaweiMetadata.getBlob();
+    if (blob != undefined) {
+      console.info("Succeeded in getting blob.");
+    }
+  }
+}
+```
+
+```TypeScript
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/heifs.heic';  // 图片包含HeifsMetadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function heifsMetadataGetBlob(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["HeifsDelayTime"]);
+  if (metaData != undefined && metaData.heifsMetadata != undefined) {
+    let blob = await metaData.heifsMetadata.getBlob();
+    if (blob != undefined) {
+      console.info("Succeeded in getting blob.");
+    }
+  }
+}
+```
 
 ## getProperties
 
@@ -110,13 +351,11 @@ getBlob(): Promise<ArrayBuffer>
 getProperties(key: Array<string>): Promise<Record<string, string | null>>
 ```
 
-获取图像的元数据属性值。使用Promise异步回调。 要查询的属性的具体信息请参考[PropertyKey](arkts-image-image-propertykey-e.md)。
+获取图像的元数据属性值。使用Promise异步回调。要查询的属性的具体信息请参考[PropertyKey](arkts-image-image-propertykey-e.md)。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-getProperties(key: Array<string>): Promise<Record<string, string | null>>--><!--Device-ExifMetadata-getProperties(key: Array<string>): Promise<Record<string, string | null>>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -124,19 +363,128 @@ getProperties(key: Array<string>): Promise<Record<string, string | null>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | Array&lt;string&gt; | 是 | 要获取的值的属性名称。 |
+| key | Array & lt;string & gt; | 是 | 要获取的值的属性名称。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Record&lt;string, string \| null&gt;&gt; | Promise对象，返回获取到的图像元数据属性值。 |
+| Promise & lt;Record & lt;string, string \ | null & gt; & gt; | Promise对象，返回获取到的图像元数据属性值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [7600202](../errorcode-image.md#7600202-不支持的元数据读写) | Unsupported metadata. Possible causes: unsupported metadata type. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function GetProperties(context: Context) {
+  const resourceMgr = context.resourceManager;
+  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // 图片包含exif metadata。
+  let ops: image.SourceOptions = {
+    sourceDensity: 98,
+  }
+  let imageSource: image.ImageSource = image.createImageSource(rawFile.buffer as ArrayBuffer, ops);
+  let commodityPixelMap: image.PixelMap = await imageSource.createPixelMap();
+  let pictureObj: image.Picture = image.createPicture(commodityPixelMap);
+  let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
+  let metaData: image.Metadata | null = await pictureObj.getMetadata(metadataType);
+  if (metaData != null) {
+    await metaData.getProperties(["ImageWidth", "ImageLength"]).then((data2) => {
+      console.info('Get properties ',JSON.stringify(data2));
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to get properties. error.code is ${error.code}, error.message is ${error.message}`);
+    });
+  } else {
+    console.error('Metadata is null.');
+  }
+}
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function exifMetadataGetProperties(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["ImageWidth", "ImageLength"]);
+  if (metaData != undefined && metaData.exifMetadata != undefined) {
+    await metaData.exifMetadata.getProperties(["ImageWidth", "ImageLength"]).then((data) => {
+      console.info(`Succeeded in getting properties. Data: ${JSON.stringify(data)}.`);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to get properties. Code: ${error.code}, message: ${error.message}.`);
+    });
+  } else {
+    console.error('Metadata is null.');
+  }
+}
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function makerNoteHuaweiGetProperties(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]);
+  if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
+    await metaData.makerNoteHuaweiMetadata.getProperties(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]).then((data) => {
+      console.info(`Succeeded in getting properties. Data: ${JSON.stringify(data)}.`);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to get properties. Code: ${error.code}, message: ${error.message}.`);
+    });
+  } else {
+    console.error('Metadata is null.');
+  }
+}
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/heifs.heic';  // 图片包含HeifsMetadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function heifsMetadataGetProperties(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["HeifsDelayTime"]);
+  if (metaData != undefined && metaData.heifsMetadata != undefined) {
+    await metaData.heifsMetadata.getProperties(["HeifsDelayTime"]).then((data) => {
+      console.info('Succeeded in getting properties. ',JSON.stringify(data));
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to get properties. error.code is ${error.code}, error.message is ${error.message}`);
+    });
+  } else {
+    console.error('Metadata is null.');
+  }
+}
+```
 
 ## setBlob
 
@@ -150,8 +498,6 @@ setBlob(blob: ArrayBuffer): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-setBlob(blob: ArrayBuffer): Promise<void>--><!--Device-ExifMetadata-setBlob(blob: ArrayBuffer): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **参数：**
@@ -164,7 +510,7 @@ setBlob(blob: ArrayBuffer): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -172,19 +518,133 @@ setBlob(blob: ArrayBuffer): Promise<void>
 | --- | --- |
 | [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter. Possible causes: The blob is empty or has a length of 0. |
 
+**示例**
+
+```TypeScript
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function setBlob(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let pictureObj: image.Picture = await imageSource.createPicture();
+  let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
+  let metaData: image.Metadata | null = await pictureObj.getMetadata(metadataType);
+  if (metaData != null) {
+    let blob = await metaData.getBlob();
+    if (blob != undefined) {
+      console.info("Succeeded in getting blob.");
+      metaData.setBlob(blob);
+    }
+    let new_blob = metaData.getBlob();
+    if (new_blob != undefined) {
+      console.info("new_blob is not undefined");
+    }
+  }
+}
+```
+
+```TypeScript
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function exifMetadataSetBlob(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["ImageWidth", "ImageLength"]);
+  if (metaData != undefined && metaData.exifMetadata != undefined) {
+    let blob = await metaData.exifMetadata.getBlob();
+    if (blob != undefined) {
+      console.info("Succeeded in getting blob.");
+      metaData.exifMetadata.setBlob(blob);
+    }
+    let new_blob = metaData.exifMetadata.getBlob();
+    if (new_blob != undefined) {
+      console.info("new_blob is not undefined");
+    }
+  }
+}
+```
+
+```TypeScript
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function makerNoteHuaweiSetBlob(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]);
+  if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
+    let blob = await metaData.makerNoteHuaweiMetadata.getBlob();
+    if (blob != undefined) {
+      console.info("Succeeded in getting blob.");
+      metaData.makerNoteHuaweiMetadata.setBlob(blob);
+    }
+    let new_blob = metaData.makerNoteHuaweiMetadata.getBlob();
+    if (new_blob != undefined) {
+      console.info("new_blob is not undefined");
+    }
+  }
+}
+```
+
+```TypeScript
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/heifs.heic';  // 图片包含HeifsMetadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function heifsMetadataSetBlob(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["HeifsDelayTime"]);
+  if (metaData != undefined && metaData.heifsMetadata != undefined) {
+    let blob = await metaData.heifsMetadata.getBlob();
+    if (blob != undefined) {
+      console.info("Succeeded in getting blob.");
+      metaData.heifsMetadata.setBlob(blob);
+    }
+    let new_blob = metaData.heifsMetadata.getBlob();
+    if (new_blob != undefined) {
+      console.info("new_blob is not undefined");
+    }
+  }
+}
+```
+
 ## setProperties
 
 ```TypeScript
 setProperties(records: Record<string, string | null>): Promise<void>
 ```
 
-批量设置图片元数据中的指定属性的值。使用Promise异步回调。 要查询的属性的具体信息请参考[PropertyKey](arkts-image-image-propertykey-e.md)。
+批量设置图片元数据中的指定属性的值。使用Promise异步回调。要查询的属性的具体信息请参考[PropertyKey](arkts-image-image-propertykey-e.md)。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-setProperties(records: Record<string, string | null>): Promise<void>--><!--Device-ExifMetadata-setProperties(records: Record<string, string | null>): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -192,13 +652,13 @@ setProperties(records: Record<string, string | null>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| records | Record&lt;string, string \| null&gt; | 是 | 用户要修改的ExifMetadata对象的属性和键值对的集合。 |
+| records | Record & lt;string, string \ | null & gt; | 是 | 用户要修改的ExifMetadata对象的属性和键值对的集合。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -206,21 +666,143 @@ setProperties(records: Record<string, string | null>): Promise<void>
 | --- | --- |
 | [7600202](../errorcode-image.md#7600202-不支持的元数据读写) | Unsupported metadata. Possible causes: unsupported metadata type. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function SetProperties(context: Context) {
+  const resourceMgr = context.resourceManager;
+  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // 图片包含exif metadata。
+  let ops: image.SourceOptions = {
+    sourceDensity: 98,
+  }
+  let imageSource: image.ImageSource = image.createImageSource(rawFile.buffer as ArrayBuffer, ops);
+  let commodityPixelMap: image.PixelMap = await imageSource.createPixelMap();
+  let pictureObj: image.Picture = image.createPicture(commodityPixelMap);
+  let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
+  let metaData: image.Metadata | null = await pictureObj.getMetadata(metadataType);
+  if (metaData != null) {
+    let setkey: Record<string, string | null> = {
+      "ImageWidth": "200",
+      "ImageLength": "300"
+    };
+    await metaData.setProperties(setkey).then(async () => {
+      console.info('Succeeded in setting AuxPictureObj properties.');
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to set metadata Properties. code is ${error.code}, message is ${error.message}`);
+    })
+  } else {
+    console.error('AuxPictureObj metadata is null. ');
+  }
+}
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function exifMetadataSetProperties(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["ImageWidth", "ImageLength"]);
+  if (metaData != undefined && metaData.exifMetadata != undefined) {
+    let setkey: Record<string, string | null> = {
+      "ImageWidth": "200",
+      "ImageLength": "300"
+    };
+    await metaData.exifMetadata.setProperties(setkey).then(async () => {
+      console.info('Succeeded in setting properties.');
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to set metadata Properties. code is ${error.code}, message is ${error.message}`);
+    })
+  } else {
+    console.error('metadata is null. ');
+  }
+}
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function makerNoteHuaweiSetProperties(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]);
+  if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
+    let setkey: Record<string, string | null> = {
+      "HwMnoteIsXmageSupported": "1",
+      "HwMnoteXmageMode": "9"
+    };
+    await metaData.makerNoteHuaweiMetadata.setProperties(setkey).then(async () => {
+      console.info('Succeeded in setting properties.');
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to set metadata Properties. code is ${error.code}, message is ${error.message}`);
+    })
+  } else {
+    console.error('metadata is null. ');
+  }
+}
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/heifs.heic';  // 图片包含HeifsMetadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function heifsMetadataSetProperties(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["HeifsDelayTime"]);
+  if (metaData != undefined && metaData.heifsMetadata != undefined) {
+    let setkey: Record<string, string | null> = {
+      "HeifsDelayTime": "200",
+    };
+    await metaData.heifsMetadata.setProperties(setkey).then(async () => {
+      console.info('Succeeded in setting properties.');
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to set metadata Properties. code is ${error.code}, message is ${error.message}`);
+    })
+  } else {
+    console.error('metadata is null. ');
+  }
+}
+```
+
 ## apertureValue
 
 ```TypeScript
-apertureValue?: double
+apertureValue?: number
 ```
 
 镜头光圈。单位为APEX。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-apertureValue?: double--><!--Device-ExifMetadata-apertureValue?: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -238,25 +820,21 @@ artist?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-artist?: string--><!--Device-ExifMetadata-artist?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## bitsPerSample
 
 ```TypeScript
-bitsPerSample?: int[]
+bitsPerSample?: number[]
 ```
 
 像素各分量的位数。如RGB是3分量，格式是8，8，8。
 
-**类型：** int[]
+**类型：** number[]
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-bitsPerSample?: int[]--><!--Device-ExifMetadata-bitsPerSample?: int[]-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -274,25 +852,21 @@ bodySerialNumber?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-bodySerialNumber?: string--><!--Device-ExifMetadata-bodySerialNumber?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## brightnessValue
 
 ```TypeScript
-brightnessValue?: double
+brightnessValue?: number
 ```
 
 图像的亮度值。单位为APEX。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-brightnessValue?: double--><!--Device-ExifMetadata-brightnessValue?: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -310,8 +884,6 @@ cameraOwnerName?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-cameraOwnerName?: string--><!--Device-ExifMetadata-cameraOwnerName?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## cfaPattern
@@ -328,25 +900,21 @@ cfaPattern?: ArrayBuffer
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-cfaPattern?: ArrayBuffer--><!--Device-ExifMetadata-cfaPattern?: ArrayBuffer-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## colorSpace
 
 ```TypeScript
-colorSpace?: int
+colorSpace?: number
 ```
 
 颜色空间信息标签，通常记录为颜色空间说明符。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-colorSpace?: int--><!--Device-ExifMetadata-colorSpace?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -364,79 +932,69 @@ componentsConfiguration?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-componentsConfiguration?: string--><!--Device-ExifMetadata-componentsConfiguration?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## compositeImage
 
 ```TypeScript
-compositeImage?: int
+compositeImage?: number
 ```
 
 指示图像是否为合成图像。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-compositeImage?: int--><!--Device-ExifMetadata-compositeImage?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## compressedBitsPerPixel
 
 ```TypeScript
-compressedBitsPerPixel?: double
+compressedBitsPerPixel?: number
 ```
 
 图像压缩方案。单位为每像素比特。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-compressedBitsPerPixel?: double--><!--Device-ExifMetadata-compressedBitsPerPixel?: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## compression
 
 ```TypeScript
-compression?: int
+compression?: number
 ```
 
 用于图像压缩的算法标准。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-compression?: int--><!--Device-ExifMetadata-compression?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## contrast
 
 ```TypeScript
-contrast?: int
+contrast?: number
 ```
 
 相机应用的对比度优化策略。例如：标准处理、弱化对比度等。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-contrast?: int--><!--Device-ExifMetadata-contrast?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -454,25 +1012,21 @@ copyright?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-copyright?: string--><!--Device-ExifMetadata-copyright?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## customRendered
 
 ```TypeScript
-customRendered?: int
+customRendered?: number
 ```
 
 表示对图像数据的特殊处理，如HDR合成、AI场景增强。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-customRendered?: int--><!--Device-ExifMetadata-customRendered?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -482,15 +1036,13 @@ customRendered?: int
 dateTime?: string
 ```
 
-图像创建的日期和时间。 在本标准中，指文件更改的日期和时间。格式为：“YYYY:MM:DD HH:MM:SS”，时间以24小时格式显示。例如：“2025:12:15 18:44:59”。
+图像创建的日期和时间。在本标准中，指文件更改的日期和时间。格式为：“YYYY:MM:DD HH:MM:SS”，时间以24小时格式显示。例如：“2025:12:15 18:44:59”。
 
 **类型：** string
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-dateTime?: string--><!--Device-ExifMetadata-dateTime?: string-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -500,15 +1052,13 @@ dateTime?: string
 dateTimeDigitized?: string
 ```
 
-将图像作为数字数据存储的日期和时间。 例如，如果DSC捕获了图像，并同时记录了文件，则DateTimeOriginal和DateTimeDigitized将具有相同的内容。格式为“YYYY:MM:DD HH:MM:SS”，时间以24小时格式显示。
+将图像作为数字数据存储的日期和时间。例如，如果DSC捕获了图像，并同时记录了文件，则DateTimeOriginal和DateTimeDigitized将具有相同的内容。格式为“YYYY:MM:DD HH:MM:SS”，时间以24小时格式显示。
 
 **类型：** string
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-dateTimeDigitized?: string--><!--Device-ExifMetadata-dateTimeDigitized?: string-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -518,15 +1068,13 @@ dateTimeDigitized?: string
 dateTimeOriginal?: string
 ```
 
-生成原始图像数据的日期和时间。 对于DSC（Digital Still Camera 数码静态相机），会记录拍摄照片的日期和时间。格式为“YYYY:MM:DD HH:MM:SS”，时间以24小时格式显示。
+生成原始图像数据的日期和时间。对于DSC（Digital Still Camera 数码静态相机），会记录拍摄照片的日期和时间。格式为“YYYY:MM:DD HH:MM:SS”，时间以24小时格式显示。
 
 **类型：** string
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-dateTimeOriginal?: string--><!--Device-ExifMetadata-dateTimeOriginal?: string-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -544,25 +1092,21 @@ deviceSettingDescription?: ArrayBuffer
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-deviceSettingDescription?: ArrayBuffer--><!--Device-ExifMetadata-deviceSettingDescription?: ArrayBuffer-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## digitalZoomRatio
 
 ```TypeScript
-digitalZoomRatio?: double
+digitalZoomRatio?: number
 ```
 
 拍摄时的数字变焦比。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-digitalZoomRatio?: double--><!--Device-ExifMetadata-digitalZoomRatio?: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -580,115 +1124,85 @@ exifVersion?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-exifVersion?: string--><!--Device-ExifMetadata-exifVersion?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## exposureBiasValue
 
 ```TypeScript
-exposureBiasValue?: double
+exposureBiasValue?: number
 ```
 
 曝光偏差值。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-exposureBiasValue?: double--><!--Device-ExifMetadata-exposureBiasValue?: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## exposureIndex
 
 ```TypeScript
-exposureIndex?: double
+exposureIndex?: number
 ```
 
 拍摄时选定的曝光指数。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-exposureIndex?: double--><!--Device-ExifMetadata-exposureIndex?: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## exposureMode
 
 ```TypeScript
-exposureMode?: int
+exposureMode?: number
 ```
 
 曝光模式。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-exposureMode?: int--><!--Device-ExifMetadata-exposureMode?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## exposureProgram
 
 ```TypeScript
-exposureProgram?: int
+exposureProgram?: number
 ```
 
 相机在拍摄照片时用于设置曝光的程序类。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-exposureProgram?: int--><!--Device-ExifMetadata-exposureProgram?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## exposureTime
 
 ```TypeScript
-exposureTime?: double
+exposureTime?: number
 ```
 
 曝光时间。单位为秒（s）。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-exposureTime?: double--><!--Device-ExifMetadata-exposureTime?: double-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## fNumber
-
-```TypeScript
-fNumber?: double
-```
-
-光圈值，如f/1.8。
-
-**类型：** double
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-fNumber?: double--><!--Device-ExifMetadata-fNumber?: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -706,43 +1220,37 @@ fileSource?: ArrayBuffer
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-fileSource?: ArrayBuffer--><!--Device-ExifMetadata-fileSource?: ArrayBuffer-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## flash
 
 ```TypeScript
-flash?: int
+flash?: number
 ```
 
 闪光。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-flash?: int--><!--Device-ExifMetadata-flash?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## flashEnergy
 
 ```TypeScript
-flashEnergy?: double
+flashEnergy?: number
 ```
 
 图像捕获时的闪光灯能量。单位为光束烛光秒（BCPS，Beam Candlepower Seconds）。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-flashEnergy?: double--><!--Device-ExifMetadata-flashEnergy?: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -760,169 +1268,165 @@ FPXR（FlashPix Extension Resource）支持的FlashPix格式版本，用于增�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-flashpixVersion?: string--><!--Device-ExifMetadata-flashpixVersion?: string-End-->
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## fNumber
+
+```TypeScript
+fNumber?: number
+```
+
+光圈值，如f/1.8。
+
+**类型：** number
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## focalLength
 
 ```TypeScript
-focalLength?: double
+focalLength?: number
 ```
 
 焦距。单位为毫米（mm）。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-focalLength?: double--><!--Device-ExifMetadata-focalLength?: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## focalLengthIn35mmFilm
 
 ```TypeScript
-focalLengthIn35mmFilm?: int
+focalLengthIn35mmFilm?: number
 ```
 
 换算成35mm等效焦距。单位为毫米（mm）。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-focalLengthIn35mmFilm?: int--><!--Device-ExifMetadata-focalLengthIn35mmFilm?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## focalPlaneResolutionUnit
 
 ```TypeScript
-focalPlaneResolutionUnit?: int
+focalPlaneResolutionUnit?: number
 ```
 
 FocalPlaneXResolution和FocalPlaneYResolution的测量单位。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-focalPlaneResolutionUnit?: int--><!--Device-ExifMetadata-focalPlaneResolutionUnit?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## focalPlaneXResolution
 
 ```TypeScript
-focalPlaneXResolution?: double
+focalPlaneXResolution?: number
 ```
 
 传感器物理平面X轴方向上每单位物理长度的像素数量。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-focalPlaneXResolution?: double--><!--Device-ExifMetadata-focalPlaneXResolution?: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## focalPlaneYResolution
 
 ```TypeScript
-focalPlaneYResolution?: double
+focalPlaneYResolution?: number
 ```
 
 传感器物理平面Y轴方向上每单位物理长度的像素数量。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-focalPlaneYResolution?: double--><!--Device-ExifMetadata-focalPlaneYResolution?: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## gainControl
 
 ```TypeScript
-gainControl?: int
+gainControl?: number
 ```
 
 整体图像增益调整程度。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-gainControl?: int--><!--Device-ExifMetadata-gainControl?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## gamma
 
 ```TypeScript
-gamma?: double
+gamma?: number
 ```
 
 每个组件的伽玛值。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-gamma?: double--><!--Device-ExifMetadata-gamma?: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## gpsAltitude
 
 ```TypeScript
-gpsAltitude?: double
+gpsAltitude?: number
 ```
 
 基于GPSAltitudeRef中的参考高度。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-gpsAltitude?: double--><!--Device-ExifMetadata-gpsAltitude?: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## gpsAltitudeRef
 
 ```TypeScript
-gpsAltitudeRef?: int
+gpsAltitudeRef?: number
 ```
 
 用于GPS的参考高度。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-gpsAltitudeRef?: int--><!--Device-ExifMetadata-gpsAltitudeRef?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -940,8 +1444,6 @@ GPS区域名称的字符串。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-gpsAreaInformation?: string--><!--Device-ExifMetadata-gpsAreaInformation?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## gpsDateStamp
@@ -958,25 +1460,21 @@ GPS日期戳。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-gpsDateStamp?: string--><!--Device-ExifMetadata-gpsDateStamp?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## gpsDestBearing
 
 ```TypeScript
-gpsDestBearing?: double
+gpsDestBearing?: number
 ```
 
 到达目的地的方位。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-gpsDestBearing?: double--><!--Device-ExifMetadata-gpsDestBearing?: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -994,25 +1492,21 @@ gpsDestBearingRef?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-gpsDestBearingRef?: string--><!--Device-ExifMetadata-gpsDestBearingRef?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## gpsDestDistance
 
 ```TypeScript
-gpsDestDistance?: double
+gpsDestDistance?: number
 ```
 
 到目的地的距离。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-gpsDestDistance?: double--><!--Device-ExifMetadata-gpsDestDistance?: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -1030,25 +1524,21 @@ gpsDestDistanceRef?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-gpsDestDistanceRef?: string--><!--Device-ExifMetadata-gpsDestDistanceRef?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## gpsDestLatitude
 
 ```TypeScript
-gpsDestLatitude?: double[]
+gpsDestLatitude?: number[]
 ```
 
 目的地的纬度。
 
-**类型：** double[]
+**类型：** number[]
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-gpsDestLatitude?: double[]--><!--Device-ExifMetadata-gpsDestLatitude?: double[]-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -1066,25 +1556,21 @@ gpsDestLatitudeRef?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-gpsDestLatitudeRef?: string--><!--Device-ExifMetadata-gpsDestLatitudeRef?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## gpsDestLongitude
 
 ```TypeScript
-gpsDestLongitude?: double[]
+gpsDestLongitude?: number[]
 ```
 
 目的地的经度。
 
-**类型：** double[]
+**类型：** number[]
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-gpsDestLongitude?: double[]--><!--Device-ExifMetadata-gpsDestLongitude?: double[]-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -1102,79 +1588,69 @@ gpsDestLongitudeRef?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-gpsDestLongitudeRef?: string--><!--Device-ExifMetadata-gpsDestLongitudeRef?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## gpsDifferential
 
 ```TypeScript
-gpsDifferential?: int
+gpsDifferential?: number
 ```
 
 是否对GPS数据应用了差分校正，这对精确定位精度至关重要。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-gpsDifferential?: int--><!--Device-ExifMetadata-gpsDifferential?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## gpsDop
 
 ```TypeScript
-gpsDop?: double
+gpsDop?: number
 ```
 
 GPS数据精度DOP精度衰减因子（Dilution of Precision）。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-gpsDop?: double--><!--Device-ExifMetadata-gpsDop?: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## gpsHPositioningError
 
 ```TypeScript
-gpsHPositioningError?: double
+gpsHPositioningError?: number
 ```
 
 水平定位误差。单位为米（m）。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-gpsHPositioningError?: double--><!--Device-ExifMetadata-gpsHPositioningError?: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## gpsImgDirection
 
 ```TypeScript
-gpsImgDirection?: double
+gpsImgDirection?: number
 ```
 
 拍摄时图像的方向。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-gpsImgDirection?: double--><!--Device-ExifMetadata-gpsImgDirection?: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -1192,25 +1668,21 @@ gpsImgDirectionRef?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-gpsImgDirectionRef?: string--><!--Device-ExifMetadata-gpsImgDirectionRef?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## gpsLatitude
 
 ```TypeScript
-gpsLatitude?: double[]
+gpsLatitude?: number[]
 ```
 
-GPS纬度。 纬度用三个RATIONAL（分数形式存储的数值）值表示，分别是度、分和秒，格式为dd/1、mm/1、ss/1。 当使用度数和分钟时，分钟分数最多保留两位小数，格式为dd/1，mmmm/100,0/1。
+GPS纬度。纬度用三个RATIONAL（分数形式存储的数值）值表示，分别是度、分和秒，格式为dd/1、mm/1、ss/1。当使用度数和分钟时，分钟分数最多保留两位小数，格式为dd/1，mmmm/100,0/1。
 
-**类型：** double[]
+**类型：** number[]
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-gpsLatitude?: double[]--><!--Device-ExifMetadata-gpsLatitude?: double[]-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -1228,25 +1700,21 @@ GPS纬度参考。例如，N表示北纬，S表示南纬。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-gpsLatitudeRef?: string--><!--Device-ExifMetadata-gpsLatitudeRef?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## gpsLongitude
 
 ```TypeScript
-gpsLongitude?: double[]
+gpsLongitude?: number[]
 ```
 
-GPS经度。 经度用三个RATIONAL（分数形式存储的数值）值表示，分别是度、分和秒，格式为dd/1、mm/1、ss/1。 当使用度数和分钟时，分钟分数最多保留两位小数，格式为dd/1，mmmm/100，0/1。
+GPS经度。经度用三个RATIONAL（分数形式存储的数值）值表示，分别是度、分和秒，格式为dd/1、mm/1、ss/1。当使用度数和分钟时，分钟分数最多保留两位小数，格式为dd/1，mmmm/100，0/1。
 
-**类型：** double[]
+**类型：** number[]
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-gpsLongitude?: double[]--><!--Device-ExifMetadata-gpsLongitude?: double[]-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -1264,8 +1732,6 @@ GPS经度参考。例如，E表示东经，W表示西经。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-gpsLongitudeRef?: string--><!--Device-ExifMetadata-gpsLongitudeRef?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## gpsMapDatum
@@ -1281,8 +1747,6 @@ GPS接收机使用的大地测量数据。
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-gpsMapDatum?: string--><!--Device-ExifMetadata-gpsMapDatum?: string-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -1300,8 +1764,6 @@ GPS测量模式。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-gpsMeasureMode?: string--><!--Device-ExifMetadata-gpsMeasureMode?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## gpsProcessingMethod
@@ -1317,8 +1779,6 @@ gpsProcessingMethod?: string
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-gpsProcessingMethod?: string--><!--Device-ExifMetadata-gpsProcessingMethod?: string-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -1336,25 +1796,21 @@ gpsSatellites?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-gpsSatellites?: string--><!--Device-ExifMetadata-gpsSatellites?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## gpsSpeed
 
 ```TypeScript
-gpsSpeed?: double
+gpsSpeed?: number
 ```
 
 GPS接收器移动的速度。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-gpsSpeed?: double--><!--Device-ExifMetadata-gpsSpeed?: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -1372,8 +1828,6 @@ GPS接收器移动速度的单位。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-gpsSpeedRef?: string--><!--Device-ExifMetadata-gpsSpeedRef?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## gpsStatus
@@ -1390,43 +1844,37 @@ gpsStatus?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-gpsStatus?: string--><!--Device-ExifMetadata-gpsStatus?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## gpsTimestamp
 
 ```TypeScript
-gpsTimestamp?: double[]
+gpsTimestamp?: number[]
 ```
 
 GPS时间戳。
 
-**类型：** double[]
+**类型：** number[]
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-gpsTimestamp?: double[]--><!--Device-ExifMetadata-gpsTimestamp?: double[]-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## gpsTrack
 
 ```TypeScript
-gpsTrack?: double
+gpsTrack?: number
 ```
 
 GPS接收器移动的方向。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-gpsTrack?: double--><!--Device-ExifMetadata-gpsTrack?: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -1444,25 +1892,21 @@ gpsTrackRef?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-gpsTrackRef?: string--><!--Device-ExifMetadata-gpsTrackRef?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## gpsVersionID
 
 ```TypeScript
-gpsVersionID?: int[]
+gpsVersionID?: number[]
 ```
 
 GPS信息的格式版本标识符。
 
-**类型：** int[]
+**类型：** number[]
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-gpsVersionID?: int[]--><!--Device-ExifMetadata-gpsVersionID?: int[]-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -1480,25 +1924,21 @@ imageDescription?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-imageDescription?: string--><!--Device-ExifMetadata-imageDescription?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## imageLength
 
 ```TypeScript
-imageLength?: int
+imageLength?: number
 ```
 
 图像长度。单位为像素（px）。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-imageLength?: int--><!--Device-ExifMetadata-imageLength?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -1516,115 +1956,101 @@ imageUniqueId?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-imageUniqueId?: string--><!--Device-ExifMetadata-imageUniqueId?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## imageWidth
 
 ```TypeScript
-imageWidth?: int
+imageWidth?: number
 ```
 
 图像宽度。单位为像素（px）。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-imageWidth?: int--><!--Device-ExifMetadata-imageWidth?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## isoSpeedLatitudeyyy
 
 ```TypeScript
-isoSpeedLatitudeyyy?: int
+isoSpeedLatitudeyyy?: number
 ```
 
 表示相机传感器在单次曝光中可记录的最大动态范围。单位为EV。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-isoSpeedLatitudeyyy?: int--><!--Device-ExifMetadata-isoSpeedLatitudeyyy?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## isoSpeedLatitudezzz
 
 ```TypeScript
-isoSpeedLatitudezzz?: int
+isoSpeedLatitudezzz?: number
 ```
 
 表示相机传感器在过曝方向保护高光细节的能力边界。单位为EV。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-isoSpeedLatitudezzz?: int--><!--Device-ExifMetadata-isoSpeedLatitudezzz?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## isoSpeedRatings
 
 ```TypeScript
-isoSpeedRatings?: int
+isoSpeedRatings?: number
 ```
 
 ISO 12232中指定的相机或输入设备的ISO速度和ISO纬度。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-isoSpeedRatings?: int--><!--Device-ExifMetadata-isoSpeedRatings?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## jpegInterchangeFormat
 
 ```TypeScript
-jpegInterchangeFormat?: int
+jpegInterchangeFormat?: number
 ```
 
 JPEG交换格式比特流的SOI（Start of Image）标记。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-jpegInterchangeFormat?: int--><!--Device-ExifMetadata-jpegInterchangeFormat?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## jpegInterchangeFormatLength
 
 ```TypeScript
-jpegInterchangeFormatLength?: int
+jpegInterchangeFormatLength?: number
 ```
 
 JPEG流的字节数。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-jpegInterchangeFormatLength?: int--><!--Device-ExifMetadata-jpegInterchangeFormatLength?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -1642,8 +2068,6 @@ lensMake?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-lensMake?: string--><!--Device-ExifMetadata-lensMake?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## lensModel
@@ -1659,8 +2083,6 @@ lensModel?: string
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-lensModel?: string--><!--Device-ExifMetadata-lensModel?: string-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -1678,43 +2100,37 @@ lensSerialNumber?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-lensSerialNumber?: string--><!--Device-ExifMetadata-lensSerialNumber?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## lensSpecification
 
 ```TypeScript
-lensSpecification?: double[]
+lensSpecification?: number[]
 ```
 
 所用镜头的规格。
 
-**类型：** double[]
+**类型：** number[]
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-lensSpecification?: double[]--><!--Device-ExifMetadata-lensSpecification?: double[]-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## lightSource
 
 ```TypeScript
-lightSource?: int
+lightSource?: number
 ```
 
 光源。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-lightSource?: int--><!--Device-ExifMetadata-lightSource?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -1732,8 +2148,6 @@ make?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-make?: string--><!--Device-ExifMetadata-make?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## makerNote
@@ -1750,43 +2164,37 @@ Exif/相机文件系统设计规则DCF（Design rule for Camera File system）�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-makerNote?: ArrayBuffer--><!--Device-ExifMetadata-makerNote?: ArrayBuffer-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## maxApertureValue
 
 ```TypeScript
-maxApertureValue?: double
+maxApertureValue?: number
 ```
 
 镜头的最小光圈值。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-maxApertureValue?: double--><!--Device-ExifMetadata-maxApertureValue?: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## meteringMode
 
 ```TypeScript
-meteringMode?: int
+meteringMode?: number
 ```
 
 测光模式。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-meteringMode?: int--><!--Device-ExifMetadata-meteringMode?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -1804,25 +2212,21 @@ model?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-model?: string--><!--Device-ExifMetadata-model?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## newSubfileType
 
 ```TypeScript
-newSubfileType?: int
+newSubfileType?: number
 ```
 
 表示该子文件的数据类型（例如文本/图像等基本类型，而非具体存储格式）。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-newSubfileType?: int--><!--Device-ExifMetadata-newSubfileType?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -1840,8 +2244,6 @@ ISO 14524中规定的光电转换函数（OECF）。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-oecf?: ArrayBuffer--><!--Device-ExifMetadata-oecf?: ArrayBuffer-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## offsetTime
@@ -1857,8 +2259,6 @@ offsetTime?: string
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-offsetTime?: string--><!--Device-ExifMetadata-offsetTime?: string-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -1876,8 +2276,6 @@ offsetTimeDigitized?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-offsetTimeDigitized?: string--><!--Device-ExifMetadata-offsetTimeDigitized?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## offsetTimeOriginal
@@ -1893,8 +2291,6 @@ offsetTimeOriginal?: string
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-offsetTimeOriginal?: string--><!--Device-ExifMetadata-offsetTimeOriginal?: string-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -1912,169 +2308,149 @@ orientation?: Orientation
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-orientation?: Orientation--><!--Device-ExifMetadata-orientation?: Orientation-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## photoMode
-
-```TypeScript
-photoMode?: int
-```
-
-照片模式。
-
-**类型：** int
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-photoMode?: int--><!--Device-ExifMetadata-photoMode?: int-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## photographicSensitivity
 
 ```TypeScript
-photographicSensitivity?: int[]
+photographicSensitivity?: number[]
 ```
 
 拍摄图像时相机或输入设备的灵敏度。
 
-**类型：** int[]
+**类型：** number[]
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-photographicSensitivity?: int[]--><!--Device-ExifMetadata-photographicSensitivity?: int[]-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## photometricInterpretation
 
 ```TypeScript
-photometricInterpretation?: int
+photometricInterpretation?: number
 ```
 
 像素组成，如RGB（红绿蓝，Red Green Blue）和YCbCr（亮度-蓝色色差-红色色差，Luma-Chrominance）。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-photometricInterpretation?: int--><!--Device-ExifMetadata-photometricInterpretation?: int-End-->
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## photoMode
+
+```TypeScript
+photoMode?: number
+```
+
+照片模式。
+
+**类型：** number
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## pixelXDimension
 
 ```TypeScript
-pixelXDimension?: int
+pixelXDimension?: number
 ```
 
 图像在X轴上的（二维坐标系中的Horizontal Axis）尺寸。单位为像素（px）。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-pixelXDimension?: int--><!--Device-ExifMetadata-pixelXDimension?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## pixelYDimension
 
 ```TypeScript
-pixelYDimension?: int
+pixelYDimension?: number
 ```
 
 图像在Y轴上的（二维坐标系中的Vertical Axis）尺寸。单位为像素（px）。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-pixelYDimension?: int--><!--Device-ExifMetadata-pixelYDimension?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## planarConfiguration
 
 ```TypeScript
-planarConfiguration?: int
+planarConfiguration?: number
 ```
 
 指示像素分量是以块状或平面格式记录。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-planarConfiguration?: int--><!--Device-ExifMetadata-planarConfiguration?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## primaryChromaticities
 
 ```TypeScript
-primaryChromaticities?: double[]
+primaryChromaticities?: number[]
 ```
 
 图像原色的色度。
 
-**类型：** double[]
+**类型：** number[]
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-primaryChromaticities?: double[]--><!--Device-ExifMetadata-primaryChromaticities?: double[]-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## recommendedExposureIndex
 
 ```TypeScript
-recommendedExposureIndex?: int
+recommendedExposureIndex?: number
 ```
 
 推荐曝光指数。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-recommendedExposureIndex?: int--><!--Device-ExifMetadata-recommendedExposureIndex?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## referenceBlackWhite
 
 ```TypeScript
-referenceBlackWhite?: double[]
+referenceBlackWhite?: number[]
 ```
 
 参考黑点值和白点值。
 
-**类型：** double[]
+**类型：** number[]
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-referenceBlackWhite?: double[]--><!--Device-ExifMetadata-referenceBlackWhite?: double[]-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -2092,97 +2468,85 @@ relatedSoundFile?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-relatedSoundFile?: string--><!--Device-ExifMetadata-relatedSoundFile?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## resolutionUnit
 
 ```TypeScript
-resolutionUnit?: int
+resolutionUnit?: number
 ```
 
 用于测量宽度方向上的图像分辨率和高度方向上的图像分辨率的单位。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-resolutionUnit?: int--><!--Device-ExifMetadata-resolutionUnit?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## rowsPerStrip
 
 ```TypeScript
-rowsPerStrip?: int
+rowsPerStrip?: number
 ```
 
 每条图像数据的行数。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-rowsPerStrip?: int--><!--Device-ExifMetadata-rowsPerStrip?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## samplesPerPixel
 
 ```TypeScript
-samplesPerPixel?: int
+samplesPerPixel?: number
 ```
 
-记录每个像素的颜色分量数量，适用于RGB（红绿蓝，Red Green Blue）和YCbCr（亮度-蓝色色差-红色色差，Luma-Chrominance）色彩模型。 由于这两种模型都是三分量模型（一个亮度分量加两个色度分量，或三个颜色通道），因此该标签的标准值为3。 对于JPEG压缩图像，此标签将会被对应的JPEG标记替换。
+记录每个像素的颜色分量数量，适用于RGB（红绿蓝，Red Green Blue）和YCbCr（亮度-蓝色色差-红色色差，Luma-Chrominance）色彩模型。由于这两种模型都是三分量模型（一个亮度分量加两个色度分量，或三个颜色通道），因此该标签的标准值为3。对于JPEG压缩图像，此标签将会被对应的JPEG标记替换。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-samplesPerPixel?: int--><!--Device-ExifMetadata-samplesPerPixel?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## saturation
 
 ```TypeScript
-saturation?: int
+saturation?: number
 ```
 
 相机应用的色彩饱和度调节策略。例如：标准、降饱和模式等。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-saturation?: int--><!--Device-ExifMetadata-saturation?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## sceneCaptureType
 
 ```TypeScript
-sceneCaptureType?: int
+sceneCaptureType?: number
 ```
 
 拍摄的场景类型。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-sceneCaptureType?: int--><!--Device-ExifMetadata-sceneCaptureType?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -2200,79 +2564,69 @@ sceneType?: ArrayBuffer
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-sceneType?: ArrayBuffer--><!--Device-ExifMetadata-sceneType?: ArrayBuffer-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## sensingMethod
 
 ```TypeScript
-sensingMethod?: int
+sensingMethod?: number
 ```
 
 摄像头的图像传感器类型。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-sensingMethod?: int--><!--Device-ExifMetadata-sensingMethod?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## sensitivityType
 
 ```TypeScript
-sensitivityType?: int
+sensitivityType?: number
 ```
 
 灵敏度类型。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-sensitivityType?: int--><!--Device-ExifMetadata-sensitivityType?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## sharpness
 
 ```TypeScript
-sharpness?: int
+sharpness?: number
 ```
 
 相机应用的边缘增强处理方式。例如：弱锐化、标准锐化等。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-sharpness?: int--><!--Device-ExifMetadata-sharpness?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## shutterSpeedValue
 
 ```TypeScript
-shutterSpeedValue?: double
+shutterSpeedValue?: number
 ```
 
 快门速度，表示为摄影曝光相加系统值APEX（Additive System of Photographic Exposure）。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-shutterSpeedValue?: double--><!--Device-ExifMetadata-shutterSpeedValue?: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -2290,8 +2644,6 @@ software?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-software?: string--><!--Device-ExifMetadata-software?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## sourceExposureTimesOfCompositeImage
@@ -2308,25 +2660,21 @@ sourceExposureTimesOfCompositeImage?: ArrayBuffer
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-sourceExposureTimesOfCompositeImage?: ArrayBuffer--><!--Device-ExifMetadata-sourceExposureTimesOfCompositeImage?: ArrayBuffer-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## sourceImageNumberOfCompositeImage
 
 ```TypeScript
-sourceImageNumberOfCompositeImage?: int[]
+sourceImageNumberOfCompositeImage?: number[]
 ```
 
 用于合成图像的源图像数量。
 
-**类型：** int[]
+**类型：** number[]
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-sourceImageNumberOfCompositeImage?: int[]--><!--Device-ExifMetadata-sourceImageNumberOfCompositeImage?: int[]-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -2344,8 +2692,6 @@ spatialFrequencyResponse?: ArrayBuffer
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-spatialFrequencyResponse?: ArrayBuffer--><!--Device-ExifMetadata-spatialFrequencyResponse?: ArrayBuffer-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## spectralSensitivity
@@ -2362,151 +2708,133 @@ spectralSensitivity?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-spectralSensitivity?: string--><!--Device-ExifMetadata-spectralSensitivity?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## standardOutputSensitivity
 
 ```TypeScript
-standardOutputSensitivity?: int
+standardOutputSensitivity?: number
 ```
 
 标准输出灵敏度。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-standardOutputSensitivity?: int--><!--Device-ExifMetadata-standardOutputSensitivity?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## stripByteCounts
 
 ```TypeScript
-stripByteCounts?: int[]
+stripByteCounts?: number[]
 ```
 
 压缩后每个条带中的字节数。
 
-**类型：** int[]
+**类型：** number[]
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-stripByteCounts?: int[]--><!--Device-ExifMetadata-stripByteCounts?: int[]-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## stripOffsets
 
 ```TypeScript
-stripOffsets?: int[]
+stripOffsets?: number[]
 ```
 
-图像数据的分块存储偏移量，单位为字节（Byte）。 为提高大图像访问效率，原始像素数据被分割为多个连续区块（称为条带）。 此标签按顺序存储每个条带在文件中的起始位置偏移量。
+图像数据的分块存储偏移量，单位为字节（Byte）。为提高大图像访问效率，原始像素数据被分割为多个连续区块（称为条带）。此标签按顺序存储每个条带在文件中的起始位置偏移量。
 
-**类型：** int[]
+**类型：** number[]
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-stripOffsets?: int[]--><!--Device-ExifMetadata-stripOffsets?: int[]-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## subfileType
 
 ```TypeScript
-subfileType?: int
+subfileType?: number
 ```
 
 已弃用标签，表示该子文件中的数据类型。请使用newSubfileType替代。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-subfileType?: int--><!--Device-ExifMetadata-subfileType?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## subjectArea
 
 ```TypeScript
-subjectArea?: int[]
+subjectArea?: number[]
 ```
 
 用于指示主要对象在整个场景中的位置和区域。
 
-**类型：** int[]
+**类型：** number[]
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-subjectArea?: int[]--><!--Device-ExifMetadata-subjectArea?: int[]-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## subjectDistance
 
 ```TypeScript
-subjectDistance?: double
+subjectDistance?: number
 ```
 
 拍照设备到被摄体的距离。单位为米（m）。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-subjectDistance?: double--><!--Device-ExifMetadata-subjectDistance?: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## subjectDistanceRange
 
 ```TypeScript
-subjectDistanceRange?: int
+subjectDistanceRange?: number
 ```
 
 指示到对象的距离范围。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-subjectDistanceRange?: int--><!--Device-ExifMetadata-subjectDistanceRange?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## subjectLocation
 
 ```TypeScript
-subjectLocation?: int[]
+subjectLocation?: number[]
 ```
 
 图像中主体的像素坐标（基于左上角原点）。
 
-**类型：** int[]
+**类型：** number[]
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-subjectLocation?: int[]--><!--Device-ExifMetadata-subjectLocation?: int[]-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -2524,8 +2852,6 @@ subsecTime?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-subsecTime?: string--><!--Device-ExifMetadata-subsecTime?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## subsecTimeDigitized
@@ -2541,8 +2867,6 @@ subsecTimeDigitized?: string
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-subsecTimeDigitized?: string--><!--Device-ExifMetadata-subsecTimeDigitized?: string-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -2560,8 +2884,6 @@ subsecTimeOriginal?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-subsecTimeOriginal?: string--><!--Device-ExifMetadata-subsecTimeOriginal?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## transferFunction
@@ -2577,8 +2899,6 @@ transferFunction?: string
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-transferFunction?: string--><!--Device-ExifMetadata-transferFunction?: string-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -2596,133 +2916,116 @@ userComment?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-userComment?: string--><!--Device-ExifMetadata-userComment?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## whiteBalance
 
 ```TypeScript
-whiteBalance?: int
+whiteBalance?: number
 ```
 
 白平衡。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-whiteBalance?: int--><!--Device-ExifMetadata-whiteBalance?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## whitePoint
 
 ```TypeScript
-whitePoint?: double[]
+whitePoint?: number[]
 ```
 
 图像白点的色度。
 
-**类型：** double[]
+**类型：** number[]
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-whitePoint?: double[]--><!--Device-ExifMetadata-whitePoint?: double[]-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## xResolution
 
 ```TypeScript
-xResolution?: double
+xResolution?: number
 ```
 
 宽度方向上的图像分辨率。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-xResolution?: double--><!--Device-ExifMetadata-xResolution?: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## yCbCrCoefficients
 
 ```TypeScript
-yCbCrCoefficients?: double[]
+yCbCrCoefficients?: number[]
 ```
 
 用于将RGB图像数据转换为YCbCr图像数据的变换矩阵系数。
 
-**类型：** double[]
+**类型：** number[]
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-yCbCrCoefficients?: double[]--><!--Device-ExifMetadata-yCbCrCoefficients?: double[]-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## yCbCrPositioning
 
 ```TypeScript
-yCbCrPositioning?: int
+yCbCrPositioning?: number
 ```
 
 色度分量相对于亮度分量的位置。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-yCbCrPositioning?: int--><!--Device-ExifMetadata-yCbCrPositioning?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## yCbCrSubSampling
 
 ```TypeScript
-yCbCrSubSampling?: int[]
+yCbCrSubSampling?: number[]
 ```
 
 色度分量与亮度分量的采样比。
 
-**类型：** int[]
+**类型：** number[]
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExifMetadata-yCbCrSubSampling?: int[]--><!--Device-ExifMetadata-yCbCrSubSampling?: int[]-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## yResolution
 
 ```TypeScript
-yResolution?: double
+yResolution?: number
 ```
 
 高度方向上的图像分辨率。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExifMetadata-yResolution?: double--><!--Device-ExifMetadata-yResolution?: double-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
-

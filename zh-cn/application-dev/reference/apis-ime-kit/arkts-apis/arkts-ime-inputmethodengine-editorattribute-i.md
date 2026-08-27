@@ -2,9 +2,7 @@
 
 编辑框属性值。
 
-**起始版本：** 23
-
-<!--Device-inputMethodEngine-interface EditorAttribute--><!--Device-inputMethodEngine-interface EditorAttribute-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -24,9 +22,7 @@ readonly abilityName?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-EditorAttribute-readonly abilityName?: string--><!--Device-EditorAttribute-readonly abilityName?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -40,9 +36,7 @@ readonly bundleName?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-EditorAttribute-readonly bundleName?: string--><!--Device-EditorAttribute-readonly bundleName?: string-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -56,9 +50,7 @@ readonly capitalizeMode?: CapitalizeMode
 
 **类型：** CapitalizeMode
 
-**起始版本：** 23
-
-<!--Device-EditorAttribute-readonly capitalizeMode?: CapitalizeMode--><!--Device-EditorAttribute-readonly capitalizeMode?: CapitalizeMode-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -68,7 +60,9 @@ readonly capitalizeMode?: CapitalizeMode
 readonly consumeKeyEvents?: boolean
 ```
 
-编辑框是否具有完整处理字母、字符、功能等按键的能力。 - 值为true，表示具备此能力。 - 值为false，表示不具备此能力。
+编辑框是否具有完整处理字母、字符、功能等按键的能力。   
+- 值为true，表示具备此能力。   
+- 值为false，表示不具备此能力。
 
 **类型：** boolean
 
@@ -76,39 +70,33 @@ readonly consumeKeyEvents?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-EditorAttribute-readonly consumeKeyEvents?: boolean--><!--Device-EditorAttribute-readonly consumeKeyEvents?: boolean-End-->
-
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 ## displayId
 
 ```TypeScript
-readonly displayId?: long
+readonly displayId?: number
 ```
 
 编辑框设置窗口对应的屏幕ID。如果没有设置windowId，取当前焦点窗口屏幕ID。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-EditorAttribute-readonly displayId?: long--><!--Device-EditorAttribute-readonly displayId?: long-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 ## enterKeyType
 
 ```TypeScript
-readonly enterKeyType: int
+readonly enterKeyType: number
 ```
 
-编辑框的功能属性
+编辑框的功能属性。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-EditorAttribute-readonly enterKeyType: int--><!--Device-EditorAttribute-readonly enterKeyType: int-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -122,9 +110,7 @@ readonly extraConfig?: InputMethodExtraConfig
 
 **类型：** [InputMethodExtraConfig](arkts-ime-inputmethod-extraconfig-inputmethodextraconfig-i.md)
 
-**起始版本：** 23
-
-<!--Device-EditorAttribute-readonly extraConfig?: InputMethodExtraConfig--><!--Device-EditorAttribute-readonly extraConfig?: InputMethodExtraConfig-End-->
+**起始版本：** 22
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -138,9 +124,7 @@ readonly gradientMode?: GradientMode
 
 **类型：** [GradientMode](arkts-ime-inputmethodengine-gradientmode-e.md)
 
-**起始版本：** 23
-
-<!--Device-EditorAttribute-readonly gradientMode?: GradientMode--><!--Device-EditorAttribute-readonly gradientMode?: GradientMode-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -154,25 +138,21 @@ readonly immersiveMode?: ImmersiveMode
 
 **类型：** ImmersiveMode
 
-**起始版本：** 23
-
-<!--Device-EditorAttribute-readonly immersiveMode?: ImmersiveMode--><!--Device-EditorAttribute-readonly immersiveMode?: ImmersiveMode-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 ## inputPattern
 
 ```TypeScript
-readonly inputPattern: int
+readonly inputPattern: number
 ```
 
-编辑框的文本属性
+编辑框的文本属性。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-EditorAttribute-readonly inputPattern: int--><!--Device-EditorAttribute-readonly inputPattern: int-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -182,13 +162,13 @@ readonly inputPattern: int
 isTextPreviewSupported: boolean
 ```
 
-编辑框是否支持预上屏。 - 值为true，表示支持。 - 值为false，表示不支持。
+编辑框是否支持预上屏。   
+- 值为true，表示支持。   
+- 值为false，表示不支持。
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-EditorAttribute-isTextPreviewSupported: boolean--><!--Device-EditorAttribute-isTextPreviewSupported: boolean-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -202,25 +182,20 @@ readonly placeholder?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-EditorAttribute-readonly placeholder?: string--><!--Device-EditorAttribute-readonly placeholder?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 ## windowId
 
 ```TypeScript
-readonly windowId?: int
+readonly windowId?: number
 ```
 
 编辑框设置所属窗口ID。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-EditorAttribute-readonly windowId?: int--><!--Device-EditorAttribute-readonly windowId?: int-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
-

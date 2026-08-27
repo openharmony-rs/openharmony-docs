@@ -3,22 +3,19 @@
 ## 导入模块
 
 ```TypeScript
-import { inputMonitor } from '@kit.InputKit';
 ```
 
 ## queryTouchEvents
 
 ```TypeScript
-function queryTouchEvents(count: int) : Promise<Array<TouchEvent>>
+function queryTouchEvents(count: number) : Promise<Array<TouchEvent>>
 ```
 
 查询最近的触屏输入事件，最多支持查询100条事件，从API版本26.0.0开始，最多支持查询60条事件，使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.INPUT_MONITORING
-
-<!--Device-inputMonitor-function queryTouchEvents(count: int) : Promise<Array<TouchEvent>>--><!--Device-inputMonitor-function queryTouchEvents(count: int) : Promise<Array<TouchEvent>>-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -28,13 +25,13 @@ function queryTouchEvents(count: int) : Promise<Array<TouchEvent>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| count | int | 是 | 需要查询的触屏输入事件数量，取值范围为[0, 100]的整数。小于0时取值为0、大于100时取值为100。从API版本26.0.0开始，大于60时取值为60。如果实际触屏输入事件只有30个， 但该参数取值为50 ，则仅支持查询到30个触屏输入事件。 |
+| count | number | 是 | 需要查询的触屏输入事件数量，取值范围为[0, 100]的整数。小于0时取值为0、大于100时取值为100。从API版本26.0.0开始，大于60时取值为60。如果实际触屏输入事件只有30个， 但该参数取值为50 ，则仅支持查询到30个触屏输入事件。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;[TouchEvent](arkts-input-multimodalinput-touchevent-touchevent-i.md)&gt;&gt; | Promise对象，返回查询到的触屏输入事件。包含以下有效信息，其余均为无效信息：<br/>- actionTime：触屏输入事件发生的时间，表示系统 启动运行至今逝去的微秒数，单位为微秒（μs）。<br/>- [SourceType]{ |
+| Promise&lt;Array&lt;[TouchEvent](arkts-input-multimodalinput-touchevent-touchevent-i.md)&gt;&gt; | Promise对象，返回查询到的触屏输入事件。包含以下有效信息，其余均为无效信息： |
 
 **错误码：**
 
@@ -44,8 +41,6 @@ function queryTouchEvents(count: int) : Promise<Array<TouchEvent>>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { inputMonitor, TouchEvent } from '@kit.InputKit';
@@ -66,34 +61,3 @@ try {
   console.error(`Failed to query touch events, Code: ${code}, message: ${message}.`);
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { inputMonitor, TouchEvent } from '@kit.InputKit'
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // 查询触屏事件数量
-            inputMonitor.queryTouchEvents(10).then((events: Array<TouchEvent>) => {
-              console.info(`Succeeded in querying touch events, events=${events}.`);
-            });
-          } catch(error) {
-            const code = (error as BusinessError).code;
-            const message = (error as BusinessError).message;
-            console.error(`Failed to query touch events, Code: ${code}, message: ${message}.`);
-          }
-        })
-    }
-  }
-}
-```
-

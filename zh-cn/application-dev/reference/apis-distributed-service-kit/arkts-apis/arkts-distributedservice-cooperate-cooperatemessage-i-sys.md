@@ -2,9 +2,7 @@
 
 键鼠穿越的消息。
 
-**起始版本：** 23
-
-<!--Device-cooperate-interface CooperateMessage--><!--Device-cooperate-interface CooperateMessage-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -26,9 +24,7 @@ networkId: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-CooperateMessage-networkId: string--><!--Device-CooperateMessage-networkId: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -44,11 +40,8 @@ state: CooperateState
 
 **类型：** [CooperateState](arkts-distributedservice-cooperate-cooperatestate-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-CooperateMessage-state: CooperateState--><!--Device-CooperateMessage-state: CooperateState-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Cooperate
 
 **系统接口：** 此接口为系统接口。
-

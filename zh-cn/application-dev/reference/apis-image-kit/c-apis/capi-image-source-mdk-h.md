@@ -39,7 +39,7 @@
 | [int32_t OH_ImageSource_CreateFromFd(napi_env env, int32_t fd, struct OhosImageSourceOps* ops, napi_value *res)](#oh_imagesource_createfromfd) | 通过给定的文件描述符fd和[OhosImageSourceOps](capi-image-ohosimagesourceops.md)结构体，获取JavaScript native层API ImageSource对象。 |
 | [int32_t OH_ImageSource_CreateFromData(napi_env env, uint8_t* data, size_t dataSize, struct OhosImageSourceOps* ops, napi_value *res)](#oh_imagesource_createfromdata) | 通过给定的图像源缓冲区资源data和[OhosImageSourceOps](capi-image-ohosimagesourceops.md)结构体，获取JavaScript native层API ImageSource对象。 |
 | [int32_t OH_ImageSource_CreateFromRawFile(napi_env env, RawFileDescriptor rawFile, struct OhosImageSourceOps* ops, napi_value *res)](#oh_imagesource_createfromrawfile) | 通过给定的资源描述符[RawFileDescriptor](../LocalizationKit/capi-rawfile-rawfiledescriptor.md)和[OhosImageSourceOps](capi-image-ohosimagesourceops.md)结构体，获取JavaScript native层API ImageSource对象。 |
-| [int32_t OH_ImageSource_CreateIncremental(napi_env env, struct OhosImageSource* source, struct OhosImageSourceOps* ops, napi_value *res)](#oh_imagesource_createincremental) | 通过给定的信息[OhosImageSource](capi-image-ohosimagesource.md)和[OhosImageSourceOps](capi-image-ohosimagesourceops.md)结构，获取增量类型的JavaScript Native API ImageSource对象，图像数据应通过[OH_ImageSource_UpdateData](capi-image-source-mdk-h.md#oh_imagesource_updatedata)更新。(API11废弃) |
+| [int32_t OH_ImageSource_CreateIncremental(napi_env env, struct OhosImageSource* source, struct OhosImageSourceOps* ops, napi_value *res)](#oh_imagesource_createincremental) | 通过[OhosImageSource](capi-image-ohosimagesource.md)和[OhosImageSourceOps](capi-image-ohosimagesourceops.md)结构体，获取增量类型的JavaScript Native API ImageSource对象。图像数据应通过[OH_ImageSource_UpdateData](capi-image-source-mdk-h.md#oh_imagesource_updatedata)更新。(API11废弃) |
 | [int32_t OH_ImageSource_CreateIncrementalFromData(napi_env env, uint8_t* data, size_t dataSize, struct OhosImageSourceOps* ops, napi_value *res)](#oh_imagesource_createincrementalfromdata) | 通过给定的图像源缓冲区资源data和[OhosImageSourceOps](capi-image-ohosimagesourceops.md)结构体，获取增量类型的JavaScript Native API ImageSource对象，图像数据应通过[OH_ImageSource_UpdateData](capi-image-source-mdk-h.md#oh_imagesource_updatedata)更新。 |
 | [int32_t OH_ImageSource_GetSupportedFormats(struct OhosImageSourceSupportedFormatList* res)](#oh_imagesource_getsupportedformats) | 获取所有支持的解码格式元标记。 |
 | [ImageSourceNative* OH_ImageSource_InitNative(napi_env env, napi_value source)](#oh_imagesource_initnative) | 从输入JavaScript native层ImageSource对象中，转换成[ImageSourceNative](capi-image-imagesourcenative-.md)值。 |
@@ -248,7 +248,7 @@ int32_t OH_ImageSource_CreateIncremental(napi_env env, struct OhosImageSource* s
 
 **描述**
 
-通过给定的信息[OhosImageSource](capi-image-ohosimagesource.md)和[OhosImageSourceOps](capi-image-ohosimagesourceops.md)结构，获取增量类型的JavaScript Native API ImageSource对象，图像数据应通过[OH_ImageSource_UpdateData](capi-image-source-mdk-h.md#oh_imagesource_updatedata)更新。
+通过[OhosImageSource](capi-image-ohosimagesource.md)和[OhosImageSourceOps](capi-image-ohosimagesourceops.md)结构体，获取增量类型的JavaScript Native API ImageSource对象。图像数据应通过[OH_ImageSource_UpdateData](capi-image-source-mdk-h.md#oh_imagesource_updatedata)更新。
 
 **起始版本：** 10
 

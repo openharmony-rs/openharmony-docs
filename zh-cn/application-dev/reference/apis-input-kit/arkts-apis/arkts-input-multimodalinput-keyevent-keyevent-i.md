@@ -1,19 +1,16 @@
 # KeyEvent
 
-按键事件。
+按键事件。@interface KeyEvent [since 9 - 11]
 
 **继承/实现关系：** KeyEvent extends [InputEvent](arkts-input-multimodalinput-inputevent-inputevent-i.md)
 
-**起始版本：** 23
-
-<!--Device-unnamed-export declare interface KeyEvent--><!--Device-unnamed-export declare interface KeyEvent-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
 ## 导入模块
 
 ```TypeScript
-import { Action, Key, KeyEvent } from '@kit.InputKit';
 ```
 
 ## action
@@ -26,11 +23,9 @@ action: Action
 
 **类型：** [Action](arkts-input-multimodalinput-keyevent-action-e.md)
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-KeyEvent-action: Action--><!--Device-KeyEvent-action: Action-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -40,15 +35,13 @@ action: Action
 altKey: boolean
 ```
 
-当前altKey是否处于按下状态。 <br/>true表示处于按下状态，false表示处于抬起状态。
+当前altKey是否处于按下状态。 true表示处于按下状态，false表示处于抬起状态。
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-KeyEvent-altKey: boolean--><!--Device-KeyEvent-altKey: boolean-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -58,15 +51,13 @@ altKey: boolean
 capsLock: boolean
 ```
 
-当前capsLock是否处于使能状态。 <br/>true表示处于使能状态，false表示处于未使能状态。
+当前capsLock是否处于使能状态。 true表示处于使能状态，false表示处于未使能状态。
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-KeyEvent-capsLock: boolean--><!--Device-KeyEvent-capsLock: boolean-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -76,15 +67,13 @@ capsLock: boolean
 ctrlKey: boolean
 ```
 
-当前ctrlKey是否处于按下状态。 <br/>true表示处于按下状态，false表示处于抬起状态。
+当前ctrlKey是否处于按下状态。 true表示处于按下状态，false表示处于抬起状态。
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-KeyEvent-ctrlKey: boolean--><!--Device-KeyEvent-ctrlKey: boolean-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -94,15 +83,13 @@ ctrlKey: boolean
 fnKey: boolean
 ```
 
-当前fnKey是否处于按下状态。 <br/>true表示处于按下状态，false表示处于抬起状态。
+当前fnKey是否处于按下状态。 true表示处于按下状态，false表示处于抬起状态。
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-KeyEvent-fnKey: boolean--><!--Device-KeyEvent-fnKey: boolean-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -116,11 +103,9 @@ key: Key
 
 **类型：** [Key](arkts-input-multimodalinput-keyevent-key-i.md)
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-KeyEvent-key: Key--><!--Device-KeyEvent-key: Key-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -134,11 +119,9 @@ keys: Key[]
 
 **类型：** [Key](arkts-input-multimodalinput-keyevent-key-i.md)[]
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-KeyEvent-keys: Key[]--><!--Device-KeyEvent-keys: Key[]-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -148,15 +131,13 @@ keys: Key[]
 logoKey: boolean
 ```
 
-当前logoKey是否处于按下状态。 <br/>true表示处于按下状态，false表示处于抬起状态。
+当前logoKey是否处于按下状态。 true表示处于按下状态，false表示处于抬起状态。
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-KeyEvent-logoKey: boolean--><!--Device-KeyEvent-logoKey: boolean-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -166,15 +147,13 @@ logoKey: boolean
 numLock: boolean
 ```
 
-当前numLock是否处于使能状态。 <br/>true表示处于使能状态，false表示处于未使能状态。
+当前numLock是否处于使能状态。 true表示处于使能状态，false表示处于未使能状态。
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-KeyEvent-numLock: boolean--><!--Device-KeyEvent-numLock: boolean-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -184,15 +163,13 @@ numLock: boolean
 scrollLock: boolean
 ```
 
-当前scrollLock是否处于使能状态。 <br/>true表示处于使能状态，false表示处于未使能状态。
+当前scrollLock是否处于使能状态。 true表示处于使能状态，false表示处于未使能状态。
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-KeyEvent-scrollLock: boolean--><!--Device-KeyEvent-scrollLock: boolean-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -202,33 +179,28 @@ scrollLock: boolean
 shiftKey: boolean
 ```
 
-当前shiftKey是否处于按下状态。 <br/>true表示处于按下状态，false表示处于抬起状态。
+当前shiftKey是否处于按下状态。 true表示处于按下状态，false表示处于抬起状态。
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-KeyEvent-shiftKey: boolean--><!--Device-KeyEvent-shiftKey: boolean-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
 ## unicodeChar
 
 ```TypeScript
-unicodeChar: int
+unicodeChar: number
 ```
 
 按键对应的unicode字符。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-KeyEvent-unicodeChar: int--><!--Device-KeyEvent-unicodeChar: int-End-->
-
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
-

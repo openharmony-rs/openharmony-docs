@@ -4,9 +4,7 @@ FormEditExtensionContext是 [FormEditExtensionAbility](arkts-form-app-form-forme
 
 **继承/实现关系：** FormEditExtensionContext extends UIExtensionContext
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare class FormEditExtensionContext--><!--Device-unnamed-declare class FormEditExtensionContext-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -16,13 +14,13 @@ FormEditExtensionContext是 [FormEditExtensionAbility](arkts-form-app-form-forme
 startSecondPage(want: Want): Promise<AbilityResult>
 ```
 
-拉起需要被编辑的卡片提供方页面。使用Promise异步回调。 - 用户在卡片编辑界面点击编辑按钮，需要打开卡片提供方的编辑页面。 - 用户需要修改卡片配置或内容时，拉起卡片提供方应用进行编辑。
+拉起需要被编辑的卡片提供方页面。使用Promise异步回调。  
+- 用户在卡片编辑界面点击编辑按钮，需要打开卡片提供方的编辑页面。  
+- 用户需要修改卡片配置或内容时，拉起卡片提供方应用进行编辑。
 
-**起始版本：** 23
+**起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FormEditExtensionContext-startSecondPage(want: Want): Promise<AbilityResult>--><!--Device-FormEditExtensionContext-startSecondPage(want: Want): Promise<AbilityResult>-End-->
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -42,14 +40,12 @@ startSecondPage(want: Want): Promise<AbilityResult>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
-| [16500050](../errorcode-form.md#16500050-进程间通信失败) | An IPC connection error happened. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not a system application. |
+| [16500050](../errorcode-form.md#16500050-进程间通信失败) | An IPC connection error happened. |
 | [16500100](../errorcode-form.md#16500100-获取卡片配置信息失败) | Failed to obtain the configuration information. |
+| [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { FormEditExtensionAbility } from '@kit.FormKit';
@@ -79,39 +75,6 @@ export default class ExampleFormEditAbility extends FormEditExtensionAbility {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-'use static'
-
-import { FormEditExtensionAbility } from '@kit.FormKit';
-import { Want, UIExtensionContentSession } from '@kit.AbilityKit';
-import { BusinessError, RecordData } from '@kit.BasicServicesKit';
-
-const TAG: string = '[testTag] ExampleFormEditExtensionAbility'
-
-export default class ExampleFormEditAbility extends FormEditExtensionAbility {
-  abilityName: string = 'FormEditSecPageAbility'
-
-  onSessionCreate(want: Want, session: UIExtensionContentSession) {
-    try {
-      this.context.startSecondPage({
-        bundleName: 'com.example.formEditDemo',
-        parameters: {
-          "secPageAbilityName": this.abilityName
-        } as Record<string, RecordData>
-
-      }).then(data => {
-        console.info(TAG, `startSecondPage result resultCode: ${data.resultCode}`)
-      });
-    } catch (error) {
-      console.error(TAG, `startSecondPage failed: code: ${error.code} message: ${error.message}`)
-      return
-    }
-  }
-}
-```
-
 ## startUIAbility
 
 ```TypeScript
@@ -123,8 +86,6 @@ startUIAbility(want: Want): Promise<void>
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FormEditExtensionContext-startUIAbility(want: Want): Promise<void>--><!--Device-FormEditExtensionContext-startUIAbility(want: Want): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -138,21 +99,19 @@ startUIAbility(want: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [16000130](../../apis-ability-kit/errorcode-ability.md#16000130-uiability不属于调用方) | The target UIAbility does not belong to the caller. |
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | An IPC connection error happened. |
+| [16500100](../errorcode-form.md#16500100-获取卡片配置信息失败) | Failed to obtain the configuration information. |
+| [16000130](../../apis-ability-kit/errorcode-ability.md#16000130-uiability不属于调用方) | The target UIAbility does not belong to the caller. |
 | [16501014](../errorcode-form.md#16501014-半模态卡片编辑页不在前台) | The form edit page is not in the foreground. The current operation is not supported. |
 | [16000121](../../apis-ability-kit/errorcode-ability.md#16000121-待启动的目标组件类型不是uiability) | The target component type is not a UIAbility. |
-| [16500100](../errorcode-form.md#16500100-获取卡片配置信息失败) | Failed to obtain the configuration information. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { FormEditExtensionAbility } from '@kit.FormKit'
@@ -177,37 +136,3 @@ export default class ExampleFormEditAbility extends FormEditExtensionAbility {
   }
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-'use static'
-
-import { FormEditExtensionAbility } from '@kit.FormKit';
-import { Want, UIExtensionContentSession } from '@kit.AbilityKit';
-import { BusinessError, RecordData } from '@kit.BasicServicesKit';
-
-const TAG: string = '[testTag] ExampleFormEditExtensionAbility'
-
-export default class ExampleFormEditAbility extends FormEditExtensionAbility {
-  abilityName: string = 'FormEditSecPageAbility'
-
-  onSessionCreate(want: Want, session: UIExtensionContentSession) {
-    try {
-      this.context.startSecondPage({
-        bundleName: 'com.example.formEditDemo',
-        parameters: {
-          "secPageAbilityName": this.abilityName
-        } as Record<string, RecordData>
-
-      }).then(data => {
-        console.info(TAG, `startSecondPage result resultCode: ${data.resultCode}`)
-      });
-    } catch (error) {
-      console.error(TAG, `startSecondPage failed: code: ${error.code} message: ${error.message}`)
-      return
-    }
-  }
-}
-```
-

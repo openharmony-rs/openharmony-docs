@@ -4,19 +4,12 @@
 
 **起始版本：** 23
 
-<!--Device-inputMethod-export interface AttachOptions--><!--Device-inputMethod-export interface AttachOptions-End-->
-
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 ## 导入模块
 
 ```TypeScript
 import { inputMethod } from '@kit.IMEKit';
-import { inputMethodEngine } from '@kit.IMEKit';
-import { InputMethodListDialog, PatternOptions, Pattern } from '@kit.IMEKit';
-import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
-import { InputMethodExtraConfig } from '@kit.IMEKit';
-import { inputMethodSystemPanelManager } from '@kit.IMEKit';
 ```
 
 ## requestKeyboardReason
@@ -35,8 +28,6 @@ requestKeyboardReason?: RequestKeyboardReason
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AttachOptions-requestKeyboardReason?: RequestKeyboardReason--><!--Device-AttachOptions-requestKeyboardReason?: RequestKeyboardReason-End-->
-
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 ## showKeyboard
@@ -45,7 +36,9 @@ requestKeyboardReason?: RequestKeyboardReason
 showKeyboard?: boolean
 ```
 
-绑定输入法成功后，是否拉起输入法键盘。 - true表示拉起。 - false表示不拉起。
+绑定输入法成功后，是否拉起输入法键盘。   
+- true表示拉起。   
+- false表示不拉起。
 
 **类型：** boolean
 
@@ -55,7 +48,4 @@ showKeyboard?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AttachOptions-showKeyboard?: boolean--><!--Device-AttachOptions-showKeyboard?: boolean-End-->
-
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
-

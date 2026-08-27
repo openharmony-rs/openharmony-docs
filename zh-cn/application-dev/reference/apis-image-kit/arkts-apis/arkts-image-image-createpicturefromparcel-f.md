@@ -12,11 +12,9 @@ import { image } from '@kit.ImageKit';
 function createPictureFromParcel(sequence: rpc.MessageSequence): Picture
 ```
 
-从MessageSequence中获取Picture。 由于图片占用内存较大，所以当Picture对象使用完成后，应主动调用[release](arkts-image-image-picture-i.md#release)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+从MessageSequence中获取Picture。由于图片占用内存较大，所以当Picture对象使用完成后，应主动调用[release](arkts-image-image-picture-i.md#release)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
-**起始版本：** 23
-
-<!--Device-image-function createPictureFromParcel(sequence: rpc.MessageSequence): Picture--><!--Device-image-function createPictureFromParcel(sequence: rpc.MessageSequence): Picture-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -36,12 +34,10 @@ function createPictureFromParcel(sequence: rpc.MessageSequence): Picture
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [62980097](../errorcode-image.md#62980097-pixelmap序列化传输失败) | IPC error. Possible cause: 1.IPC communication failed. 2. Image upload exception. 3. Decode process exception. 4. Insufficient memory. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [62980097](../errorcode-image.md#62980097-pixelmap序列化传输失败) | IPC error. Possible cause: 1.IPC communication failed. 2. Image upload exception. 3. Decode process exception. 4. Insufficient memory. |
 
 **示例**
-
-ArkTS-Dyn示例:
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -95,58 +91,3 @@ async function marshallingUnmarshalling(context: Context) {
   }
 }
 ```
-
-ArkTS-Sta示例:
-
-```TypeScript
-import { common } from '@kit.AbilityKit';
-import { resourceManager } from '@kit.LocalizationKit';
-import { rpc } from '@kit.IPCKit';
-
-class MySequence implements rpc.Parcelable {
-  picture_: image.Picture;
-
-  constructor(conPicture: image.Picture) {
-    this.picture_ = conPicture;
-  }
-
-  marshalling(messageSequence: rpc.MessageSequence): boolean {
-    this.picture_.marshalling(messageSequence);
-    console.info(0x00000, 'MySequence', 'marshalling success!');
-    return true;
-  }
-
-  unmarshalling(messageSequence: rpc.MessageSequence): boolean {
-    let picture: image.Picture = image.createPictureFromParcel(messageSequence)
-    this.picture_ = picture;
-    console.info(0x00000, 'MySequence', 'unmarshalling success!');
-    return true;
-  }
-}
-
-function MarshallingUnMarshallingFunc(context: common.UIAbilityContext): void {
-  const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("test_image.jpg");
-  let opts: image.SourceOptions = { sourceDensity: 98 };
-  try {
-
-  } catch (err) {
-    let imageSource = image.createImageSource(rawFile.buffer as ArrayBuffer, opts);
-    let pixelMap: image.PixelMap = await imageSource.createPixelMap();
-    let picture: image.Picture = image.createPicture(pixelMap);
-    if (picture != null || picture != undefined) {
-      let parcelable: MySequence = new MySequence(picture);
-      let data: rpc.MessageSequence = rpc.MessageSequence.create();
-      // marshalling
-      data.writeParcelable(parcelable);
-
-      let ret: MySequence = new MySequence(picture);
-      // unmarshalling
-      data.readParcelable(ret);
-    } else {
-      console.error(0x00000, 'MarshallingUnMarshallingFunc', 'picture is null!');
-    }
-  }
-}
-```
-

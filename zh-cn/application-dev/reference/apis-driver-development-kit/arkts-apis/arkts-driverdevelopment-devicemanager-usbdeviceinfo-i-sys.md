@@ -4,9 +4,7 @@ USB设备详细信息，继承自[DeviceInfo](arkts-driverdevelopment-devicemana
 
 **继承/实现关系：** USBDeviceInfo extends [DeviceInfo](arkts-driverdevelopment-devicemanager-deviceinfo-i-sys.md)
 
-**起始版本：** 23
-
-<!--Device-deviceManager-interface USBDeviceInfo--><!--Device-deviceManager-interface USBDeviceInfo-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
@@ -28,9 +26,7 @@ USB设备接口描述符列表。
 
 **类型：** Array&lt;Readonly&lt;[USBInterfaceDesc](arkts-driverdevelopment-devicemanager-usbinterfacedesc-i-sys.md)&gt;&gt;
 
-**起始版本：** 23
-
-<!--Device-USBDeviceInfo-interfaceDescList: Array<Readonly<USBInterfaceDesc>>--><!--Device-USBDeviceInfo-interfaceDescList: Array<Readonly<USBInterfaceDesc>>-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
@@ -39,16 +35,14 @@ USB设备接口描述符列表。
 ## productId
 
 ```TypeScript
-productId: int
+productId: number
 ```
 
 USB设备Product ID。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-USBDeviceInfo-productId: int--><!--Device-USBDeviceInfo-productId: int-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
@@ -57,18 +51,15 @@ USB设备Product ID。
 ## vendorId
 
 ```TypeScript
-vendorId: int
+vendorId: number
 ```
 
 USB设备Vendor ID。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-USBDeviceInfo-vendorId: int--><!--Device-USBDeviceInfo-vendorId: int-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
 **系统接口：** 此接口为系统接口。
-

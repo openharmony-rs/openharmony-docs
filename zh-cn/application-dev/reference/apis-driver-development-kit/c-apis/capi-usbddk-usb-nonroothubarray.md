@@ -20,7 +20,7 @@ typedef struct Usb_NonRootHubArray {...} Usb_NonRootHubArray
 
 | 名称 | 描述 |
 | -- | -- |
-| uint64_t* nonRootHubIds |  |
-| uint32_t num |  |
+| uint64_t* nonRootHubIds | 开发者申请好的非根集线器设备ID数组首地址，申请的数组大小建议不超过128，以避免过度占用内存。非根USB集线器设备ID由总线号左移32位加上设备地址构造而成。<br>**起始版本：** 26.0.0 |
+| uint32_t num | 实际返回的非根集线器数量，根据数量遍历nonRootHubIds获得非根集线器设备ID。当该值为0时，表示不存在非根集线器设备。<br>**起始版本：** 26.0.0 |
 
 

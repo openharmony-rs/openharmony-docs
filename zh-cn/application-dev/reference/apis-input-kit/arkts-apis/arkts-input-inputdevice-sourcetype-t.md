@@ -6,9 +6,7 @@ type SourceType = 'keyboard' | 'mouse' | 'touchpad' | 'touchscreen' | 'joystick'
 
 输入设备的输入能力。包括键盘、鼠标、触摸屏、轨迹球、触控板、操纵杆等。
 
-**起始版本：** 23
-
-<!--Device-inputDevice-type SourceType = 'keyboard' | 'mouse' | 'touchpad' | 'touchscreen' | 'joystick' | 'trackball'--><!--Device-inputDevice-type SourceType = 'keyboard' | 'mouse' | 'touchpad' | 'touchscreen' | 'joystick' | 'trackball'-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -20,4 +18,3 @@ type SourceType = 'keyboard' | 'mouse' | 'touchpad' | 'touchscreen' | 'joystick'
 | 'touchscreen' | 表示输入设备是触摸屏。 |
 | 'joystick' | 表示输入设备是操纵杆。 |
 | 'trackball' | 表示输入设备是轨迹球。 |
-

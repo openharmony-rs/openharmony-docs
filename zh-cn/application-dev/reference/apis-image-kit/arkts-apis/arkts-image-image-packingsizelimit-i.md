@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-image-interface PackingSizeLimit--><!--Device-image-interface PackingSizeLimit-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 ## 导入模块
@@ -28,8 +26,6 @@ level: AntiAliasingLevel
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PackingSizeLimit-level: AntiAliasingLevel--><!--Device-PackingSizeLimit-level: AntiAliasingLevel-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 ## maxSize
@@ -38,7 +34,7 @@ level: AntiAliasingLevel
 maxSize: Size
 ```
 
-最大编码尺寸。 当指定的width或者height大于0时，原图尺寸超过限制将保持原宽高比进行缩放，确保图像尺寸不超过该边界。 默认值为{width: 0, height: 0}，表示不限制编码尺寸。 单位：像素（px）。
+最大编码尺寸。当指定的width或者height大于0时，原图尺寸超过限制将保持原宽高比进行缩放，确保图像尺寸不超过该边界。默认值为{width: 0, height: 0}，表示不限制编码尺寸。单位：像素（px）。
 
 **类型：** Size
 
@@ -46,7 +42,4 @@ maxSize: Size
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PackingSizeLimit-maxSize: Size--><!--Device-PackingSizeLimit-maxSize: Size-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
-

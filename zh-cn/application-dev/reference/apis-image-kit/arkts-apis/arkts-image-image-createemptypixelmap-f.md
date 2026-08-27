@@ -12,7 +12,7 @@ import { image } from '@kit.ImageKit';
 function createEmptyPixelMap(param: InitializationOptions): PixelMap
 ```
 
-Creates an empty PixelMap. The following pixel format is not supported for PixelMap creation: ASTC_4x4.
+Creates an empty PixelMap.The following pixel format is not supported for PixelMap creation: ASTC_4x4.
 
 **起始版本：** 26.0.0
 
@@ -21,8 +21,6 @@ Creates an empty PixelMap. The following pixel format is not supported for Pixel
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-image-function createEmptyPixelMap(param: InitializationOptions): PixelMap--><!--Device-image-function createEmptyPixelMap(param: InitializationOptions): PixelMap-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -42,13 +40,11 @@ Creates an empty PixelMap. The following pixel format is not supported for Pixel
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [7600305](../errorcode-image.md#7600305-创建pixelmap失败) | Failed to create the PixelMap. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
 | [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter. |
 | [7600301](../errorcode-image.md#7600301-申请内存失败) | Failed to allocate memory. Possible causes: 1. The resulting PixelMap size is too large. 2. The system is out of memory. |
+| [7600305](../errorcode-image.md#7600305-创建pixelmap失败) | Failed to create the PixelMap. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -69,23 +65,3 @@ function createEmptyPixelMap() {
   }
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-function createEmptyPixelMap() {
-  const config: image.InitializationOptions = {
-    size: { width: 6, height: 4 },
-    pixelFormat: image.PixelMapFormat.RGBA_1010102, // 新创建的PixelMap的像素格式。
-    editable: true
-  };
-
-  try {
-    const pixelMap = image.createEmptyPixelMap(config);
-    console.info('Succeeded in creating the empty PixelMap.');
-  } catch (err) {
-    console.error(`Failed to create the empty PixelMap. Code: ${err.code}, message: ${err.message}`);
-  }
-}
-```
-

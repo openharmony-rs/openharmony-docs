@@ -8,8 +8,6 @@
 
 **替代接口：** [RequestResult](arkts-ipc-rpc-requestresult-i.md)
 
-<!--Device-rpc-interface SendRequestResult--><!--Device-rpc-interface SendRequestResult-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 ## 导入模块
@@ -34,8 +32,6 @@ code: number
 
 **替代接口：** [code](arkts-ipc-rpc-requestresult-i.md#code)
 
-<!--Device-SendRequestResult-code: number--><!--Device-SendRequestResult-code: number-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 ## data
@@ -53,8 +49,6 @@ data: MessageParcel
 **废弃版本：** 9
 
 **替代接口：** [data](arkts-ipc-rpc-requestresult-i.md#data)
-
-<!--Device-SendRequestResult-data: MessageParcel--><!--Device-SendRequestResult-data: MessageParcel-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -74,8 +68,6 @@ errCode: number
 
 **替代接口：** [errCode](arkts-ipc-rpc-requestresult-i.md#errcode)
 
-<!--Device-SendRequestResult-errCode: number--><!--Device-SendRequestResult-errCode: number-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 ## reply
@@ -94,7 +86,4 @@ reply: MessageParcel
 
 **替代接口：** [reply](arkts-ipc-rpc-requestresult-i.md#reply)
 
-<!--Device-SendRequestResult-reply: MessageParcel--><!--Device-SendRequestResult-reply: MessageParcel-End-->
-
 **系统能力：** SystemCapability.Communication.IPC.Core
-

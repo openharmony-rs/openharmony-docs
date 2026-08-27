@@ -1,10 +1,8 @@
-# DeviceNodeInfo(跨设备唤醒与消息传输)（系统接口）
+# DeviceNodeInfo（系统接口）
 
 设备节点信息，包括networkId、设备名称、设备类型标识符、近场状态和UDID。
 
 **起始版本：** 26.1.0
-
-<!--Device-conversation-interface DeviceNodeInfo--><!--Device-conversation-interface DeviceNodeInfo-End-->
 
 **系统能力：** SystemCapability.Communication.SoftBus.Core
 
@@ -30,8 +28,6 @@ deviceName: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DeviceNodeInfo-deviceName: string--><!--Device-DeviceNodeInfo-deviceName: string-End-->
-
 **系统能力：** SystemCapability.Communication.SoftBus.Core
 
 **系统接口：** 此接口为系统接口。
@@ -39,18 +35,16 @@ deviceName: string
 ## deviceTypeId
 
 ```TypeScript
-deviceTypeId: int
+deviceTypeId: number
 ```
 
 设备类型标识符，表示设备的类别，取值为整数，例如：0x0E-手机、0x11-平板、0x9C-电视、0x0C-PC等（具体数值以系统定义为准）。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceNodeInfo-deviceTypeId: int--><!--Device-DeviceNodeInfo-deviceTypeId: int-End-->
 
 **系统能力：** SystemCapability.Communication.SoftBus.Core
 
@@ -70,8 +64,6 @@ nearby: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DeviceNodeInfo-nearby: boolean--><!--Device-DeviceNodeInfo-nearby: boolean-End-->
-
 **系统能力：** SystemCapability.Communication.SoftBus.Core
 
 **系统接口：** 此接口为系统接口。
@@ -89,8 +81,6 @@ networkId: string
 **起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeviceNodeInfo-networkId: string--><!--Device-DeviceNodeInfo-networkId: string-End-->
 
 **系统能力：** SystemCapability.Communication.SoftBus.Core
 
@@ -110,9 +100,6 @@ udid: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DeviceNodeInfo-udid: string--><!--Device-DeviceNodeInfo-udid: string-End-->
-
 **系统能力：** SystemCapability.Communication.SoftBus.Core
 
 **系统接口：** 此接口为系统接口。
-

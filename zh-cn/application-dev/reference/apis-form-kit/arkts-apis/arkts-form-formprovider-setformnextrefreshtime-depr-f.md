@@ -19,8 +19,6 @@ function setFormNextRefreshTime(formId: string, minute: number, callback: AsyncC
 
 **替代接口：** [setFormNextRefreshTime](arkts-form-formprovider-setformnextrefreshtime-f.md)
 
-<!--Device-formProvider-function setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback<void>): void--><!--Device-formProvider-function setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.Ability.Form
 
 **参数：**
@@ -29,7 +27,7 @@ function setFormNextRefreshTime(formId: string, minute: number, callback: AsyncC
 | --- | --- | --- | --- |
 | formId | string | 是 | 卡片标识。 |
 | minute | number | 是 | 指定多久之后刷新。单位分钟，大于等于5。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **示例**
 
@@ -60,8 +58,6 @@ function setFormNextRefreshTime(formId: string, minute: number): Promise<void>
 
 **替代接口：** [setFormNextRefreshTime](arkts-form-formprovider-setformnextrefreshtime-f.md)
 
-<!--Device-formProvider-function setFormNextRefreshTime(formId: string, minute: number): Promise<void>--><!--Device-formProvider-function setFormNextRefreshTime(formId: string, minute: number): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Ability.Form
 
 **参数：**
@@ -75,7 +71,7 @@ function setFormNextRefreshTime(formId: string, minute: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -90,4 +86,3 @@ formProvider.setFormNextRefreshTime(formId, 5).then(() => {
   console.error(`formProvider setFormNextRefreshTime, errorCode: ${error.code}, errorMessage: ${error.message}`);
 });
 ```
-

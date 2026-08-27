@@ -20,8 +20,6 @@ function unregisterConversationListener(bundleName: string, abilityName: string)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-conversation-function unregisterConversationListener(bundleName: string, abilityName: string): void--><!--Device-conversation-function unregisterConversationListener(bundleName: string, abilityName: string): void-End-->
-
 **系统能力：** SystemCapability.Communication.SoftBus.Core
 
 **系统接口：** 此接口为系统接口。
@@ -37,11 +35,11 @@ function unregisterConversationListener(bundleName: string, abilityName: string)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameter. The bundleName or abilityName is invalid or empty. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. The application does not have the required permission to access distributed data. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [2000001](../../apis-distributedservice-kit/errorcode-conversation.md#2000001-内部错误) | Internal error. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameter. The bundleName or abilityName is invalid or empty. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [2000001](../errorcode-conversation.md#2000001-内部错误) | Internal error. |
 
 **示例**
 
@@ -60,4 +58,3 @@ try {
   console.error(`unregisterConversationListener errCode: ${e.code}, errMessage: ${e.message}`);
 }
 ```
-

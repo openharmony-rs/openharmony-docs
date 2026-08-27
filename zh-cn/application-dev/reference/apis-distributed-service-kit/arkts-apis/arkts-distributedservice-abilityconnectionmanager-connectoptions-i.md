@@ -2,9 +2,7 @@
 
 应用连接时所需的连接选项。
 
-**起始版本：** 23
-
-<!--Device-abilityConnectionManager-interface ConnectOptions--><!--Device-abilityConnectionManager-interface ConnectOptions-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
@@ -20,15 +18,13 @@ import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 needSendData?: boolean
 ```
 
-true代表需要传输数据，false代表不需要传输数据。
+是否需要传输数据。传入true表示需要传输数据（可调用sendMessage和sendData方法）， 传入false表示不需要传输数据。不传入时默认为false。
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ConnectOptions-needSendData?: boolean--><!--Device-ConnectOptions-needSendData?: boolean-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
@@ -38,15 +34,13 @@ true代表需要传输数据，false代表不需要传输数据。
 parameters?: Record<string, string>
 ```
 
-配置连接所需的额外信息。
+配置连接所需的额外信息。当需要传递自定义参数到对端设备时传入此参数， 例如身份标识、业务标识等。不传入时不传递额外信息。
 
 **类型：** Record&lt;string, string&gt;
 
-**起始版本：** 23
+**起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ConnectOptions-parameters?: Record<string, string>--><!--Device-ConnectOptions-parameters?: Record<string, string>-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
@@ -56,15 +50,12 @@ parameters?: Record<string, string>
 startOptions?: StartOptionParams
 ```
 
-配置应用启动选项。
+应用启动选项。START_IN_FOREGROUND（值为0）表示将对端应用启动至前台， 适合需要用户交互的场景。不传入时使用系统默认启动配置。
 
 **类型：** [StartOptionParams](arkts-distributedservice-abilityconnectionmanager-startoptionparams-e.md)
 
-**起始版本：** 23
+**起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ConnectOptions-startOptions?: StartOptionParams--><!--Device-ConnectOptions-startOptions?: StartOptionParams-End-->
-
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
-

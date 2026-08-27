@@ -28,6 +28,6 @@ SCSI响应参数结构体，包含状态、错误诊断数据、传输结果等�
 | uint16_t hostStatus | 主机适配器状态。例如：成功（0x00）、无法连接（0x01）、总线忙（0x02）、超时（0x03）。 |
 | uint16_t driverStatus | 驱动状态。例如：成功（0x00）、设备或资源忙（0x01）。 |
 | int32_t resId | 实际传输的数据长度差值，即未传输的字节数。 |
-| uint32_t duration | 执行SCSI命令消耗的时间（单位：毫秒）。 |
+| uint32_t duration | 执行SCSI命令消耗的时间（单位：ms）。 |
 
 

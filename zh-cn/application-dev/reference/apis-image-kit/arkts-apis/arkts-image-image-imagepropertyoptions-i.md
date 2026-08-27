@@ -2,9 +2,7 @@
 
 表示查询图片属性的索引。
 
-**起始版本：** 23
-
-<!--Device-image-interface ImagePropertyOptions--><!--Device-image-interface ImagePropertyOptions-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -24,25 +22,20 @@ defaultValue?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ImagePropertyOptions-defaultValue?: string--><!--Device-ImagePropertyOptions-defaultValue?: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 ## index
 
 ```TypeScript
-index?: int
+index?: number
 ```
 
 图片序号。默认值为0。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ImagePropertyOptions-index?: int--><!--Device-ImagePropertyOptions-index?: int-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
-

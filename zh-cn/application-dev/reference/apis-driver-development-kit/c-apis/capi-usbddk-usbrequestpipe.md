@@ -21,7 +21,7 @@ typedef struct UsbRequestPipe {...} __attribute__((aligned(8))) UsbRequestPipe
 | 名称 | 描述 |
 | -- | -- |
 | uint64_t interfaceHandle | 接口操作句柄，用于标识USB设备上的接口，由{@link OH_Usb_ClaimInterface}接口获取。 |
-| uint32_t timeout | 超时时间，单位：毫秒。值为0表示等待直到操作完成；非0值表示在指定毫秒数内未完成则超时。 |
+| uint32_t timeout | 超时时间，单位：ms。值为0表示等待直到操作完成；非0值表示在指定毫秒数内未完成则超时。 |
 | uint8_t endpoint | 要通信的端点的地址。 |
 
 

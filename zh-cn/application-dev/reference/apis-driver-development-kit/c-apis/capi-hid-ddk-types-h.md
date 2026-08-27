@@ -171,7 +171,7 @@ enum Hid_KeyCode
 | HID_KEY_RIGHT_BRACKET = 27 | 键“]”。 |
 | HID_KEY_ENTER = 28 | 键回车。 |
 | HID_KEY_LEFT_SHIFT = 42 | 键左shift。 |
-| HID_KEY_BACKSLASH = 43 | 键“”。 |
+| HID_KEY_BACKSLASH = 43 | 键“\”。 |
 | HID_KEY_SEMICOLON = 39 | 键“;”。 |
 | HID_KEY_APOSTROPHE = 40 | 键“'”。 |
 | HID_KEY_SPACE = 57 | 键空格。 |
@@ -300,9 +300,9 @@ enum Hid_RelAxes
 | HID_REL_RZ = 0x05 | 右模拟摇杆的 Z 轴。 |
 | HID_REL_HWHEEL = 0x06 | 水平滚轮，表示鼠标水平滚轮的滚动方向和距离，用于水平方向的滚动操作。 |
 | HID_REL_DIAL = 0x07 | 刻度，表示旋钮或刻度盘的旋转方向和距离，用于调节音量、亮度或其他可调节参数。 |
-| HID_REL_WHEEL = 0x08 | 滚轮。 |
-| HID_REL_MISC = 0x09 | 其他类型的绝对坐标轴，用于不适合归入上述分类的特殊轴类型。 |
-| HID_REL_RESERVED = 0x0a | Reserved |
+| HID_REL_WHEEL = 0x08 | 垂直滚轮，表示鼠标垂直滚轮的滚动方向和距离，用于垂直方向的滚动操作。 |
+| HID_REL_MISC = 0x09 | 其他类型的相对坐标事件，用于不适合归入上述分类的特殊相对坐标事件。 |
+| HID_REL_RESERVED = 0x0a | 预留。 |
 | HID_REL_WHEEL_HI_RES = 0x0b | 高分辨率滚轮，表示鼠标高分辨率滚轮的滚动方向和距离，提供比普通滚轮更高的分辨率和精度。 |
 | HID_REL_HWHEEL_HI_RES = 0x0c | 高分辨率水平滚轮，表示鼠标高分辨率水平滚轮的滚动方向和距离，提供比普通水平滚轮更高的分辨率和精度。 |
 
@@ -348,11 +348,11 @@ HID DDK错误码定义。
 | HID_DDK_NULL_PTR = 27300002 | 空指针异常，从API 16起，取值由-4变更为27300002。请检查传入参数的有效性。 |
 | HID_DDK_INVALID_OPERATION = 27300003 | 非法操作，从API 16起，取值由-3变更为27300003。可能原因：调用API的时机或顺序不正确。请检查调用时机、以及是否初始化DDK。 |
 | HID_DDK_TIMEOUT = 27300004 | 超时，从API 16起，取值由-5变更为27300004。请检查设备状态和超时时间设置。 |
-| HID_DDK_INIT_ERROR = 27300005 |  |
-| HID_DDK_SERVICE_ERROR = 27300006 |  |
-| HID_DDK_MEMORY_ERROR  = 27300007 |  |
-| HID_DDK_IO_ERROR = 27300008 |  |
-| HID_DDK_DEVICE_NOT_FOUND = 27300009 |  |
+| HID_DDK_INIT_ERROR = 27300005 | 初始化DDK失败或DDK未初始化。请检查系统服务状态，确保在调用API前先初始化DDK。<br>**起始版本：** 18 |
+| HID_DDK_SERVICE_ERROR = 27300006 | 服务通信过程中错误。可能原因：服务内部错误。请检查当前操作和设备状态。<br>**起始版本：** 18 |
+| HID_DDK_MEMORY_ERROR = 27300007 | 内存相关的错误，包括：内存数据拷贝失败、内存申请失败等。请检查内存使用情况和相关参数。<br>**起始版本：** 18 |
+| HID_DDK_IO_ERROR = 27300008 | I/O操作失败。请检查设备状态和传输参数。<br>**起始版本：** 18 |
+| HID_DDK_DEVICE_NOT_FOUND = 27300009 | 设备未找到。可能原因：设备未连接或设备ID错误。请检查设备是否连接、设备ID是否正确。<br>**起始版本：** 18 |
 
 ### Hid_ReportType
 

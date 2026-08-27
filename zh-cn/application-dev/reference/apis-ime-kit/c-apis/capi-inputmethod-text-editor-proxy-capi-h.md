@@ -171,7 +171,7 @@ typedef void (*OH_TextEditorProxy_SendKeyboardStatusFunc)(InputMethod_TextEditor
 | 参数项 | 描述 |
 | -- | -- |
 | [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) \*textEditorProxy | 输入指针，指向当前被回调的TextEditorProxy实例。 |
-| [InputMethod_KeyboardStatus](capi-inputmethod-types-capi-h.md#inputmethod_keyboardstatus) keyboardStatus | 输入参数，键盘状态。取值范围：[InputMethod_KeyboardStatus](capi-inputmethod-types-capi-h.md#inputmethod_keyboardstatus)枚举值（IME_KEYBOARD_NONE=0、IME_KEYBOARD_SHOW=1、IME_KEYBOARD_HIDE=2）。使用后效果：设置为IME_KEYBOARD_SHOW时表示键盘已弹出，IME_KEYBOARD_HIDE时表示键盘已收起。 |
+| [InputMethod_KeyboardStatus](capi-inputmethod-types-capi-h.md#inputmethod_keyboardstatus) keyboardStatus | 输入参数，键盘状态。取值范围：[InputMethod_KeyboardStatus](capi-inputmethod-types-capi-h.md#inputmethod_keyboardstatus)枚举值（IME_KEYBOARD_STATUS_NONE=0、IME_KEYBOARD_STATUS_HIDE=1、IME_KEYBOARD_STATUS_SHOW=2）。使用后效果：设置为IME_KEYBOARD_STATUS_SHOW时表示键盘已弹出，IME_KEYBOARD_STATUS_HIDE时表示键盘已收起。 |
 
 ### OH_TextEditorProxy_SendEnterKeyFunc()
 

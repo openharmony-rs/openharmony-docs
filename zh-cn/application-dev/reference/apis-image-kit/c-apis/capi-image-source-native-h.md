@@ -1040,7 +1040,7 @@ Image_ErrorCode OH_ImageSourceNative_CreatePicture(OH_ImageSourceNative *source,
 | -- | -- |
 | [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被操作的OH_ImageSourceNative指针。 |
 | [OH_DecodingOptionsForPicture](capi-image-nativemodule-oh-decodingoptionsforpicture.md) *options | 解码参数。 |
-| [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) **picture | 指向c++本地层创建的OH_PictureNative对象的指针。 |
+| OH_PictureNative **picture | 指向c++本地层创建的OH_PictureNative对象的指针。 |
 
 **返回：**
 
@@ -1066,7 +1066,7 @@ Image_ErrorCode OH_ImageSourceNative_CreatePictureAtIndex(OH_ImageSourceNative *
 | -- | -- |
 | [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被操作的OH_ImageSourceNative指针。 |
 | uint32_t index | 解码图片序号。 |
-| [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) **picture | 指向c++本地层创建的OH_PictureNative对象的指针。 |
+| OH_PictureNative **picture | 指向c++本地层创建的OH_PictureNative对象的指针。 |
 
 **返回：**
 
@@ -1294,7 +1294,7 @@ Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredAuxiliaryPictures(OH_Deco
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_DecodingOptionsForPicture](capi-image-nativemodule-oh-decodingoptionsforpicture.md) *options | 被操作的OH_DecodingOptionsForPicture指针。 |
-| [Image_AuxiliaryPictureType](capi-picture-native-h.md#image_auxiliarypicturetype) **desiredAuxiliaryPictures | 解码选项中的期望辅助图。 |
+| Image_AuxiliaryPictureType **desiredAuxiliaryPictures | 解码选项中的期望辅助图。 |
 | size_t *length | 期望辅助图长度。 |
 
 **返回：**
@@ -1320,7 +1320,7 @@ Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredAuxiliaryPictures(OH_Deco
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_DecodingOptionsForPicture](capi-image-nativemodule-oh-decodingoptionsforpicture.md) *options | 被操作的OH_DecodingOptionsForPicture指针。 |
-| [Image_AuxiliaryPictureType](capi-picture-native-h.md#image_auxiliarypicturetype) *desiredAuxiliaryPictures | 将要设置的期望辅助图。 |
+| Image_AuxiliaryPictureType *desiredAuxiliaryPictures | 将要设置的期望辅助图。 |
 | size_t length | 期望辅助图长度。 |
 
 **返回：**

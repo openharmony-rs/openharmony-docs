@@ -4,16 +4,13 @@
 
 **继承/实现关系：** TouchEvent extends [InputEvent](arkts-input-multimodalinput-inputevent-inputevent-i.md)
 
-**起始版本：** 23
-
-<!--Device-unnamed-export declare interface TouchEvent--><!--Device-unnamed-export declare interface TouchEvent-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
 ## 导入模块
 
 ```TypeScript
-import { Action as KeyAction, SourceType, ToolType, Touch, TouchEvent, FixedMode } from '@kit.InputKit';
 ```
 
 ## action
@@ -26,9 +23,7 @@ action: Action
 
 **类型：** [Action](arkts-input-multimodalinput-touchevent-action-e.md)
 
-**起始版本：** 23
-
-<!--Device-TouchEvent-action: Action--><!--Device-TouchEvent-action: Action-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -42,9 +37,7 @@ sourceType: SourceType
 
 **类型：** [SourceType](arkts-input-multimodalinput-touchevent-sourcetype-e.md)
 
-**起始版本：** 23
-
-<!--Device-TouchEvent-sourceType: SourceType--><!--Device-TouchEvent-sourceType: SourceType-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -58,9 +51,7 @@ touch: Touch
 
 **类型：** [Touch](arkts-input-multimodalinput-touchevent-touch-i.md)
 
-**起始版本：** 23
-
-<!--Device-TouchEvent-touch: Touch--><!--Device-TouchEvent-touch: Touch-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -74,9 +65,6 @@ touches: Touch[]
 
 **类型：** [Touch](arkts-input-multimodalinput-touchevent-touch-i.md)[]
 
-**起始版本：** 23
-
-<!--Device-TouchEvent-touches: Touch[]--><!--Device-TouchEvent-touches: Touch[]-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
-

@@ -2,9 +2,7 @@
 
 用于获取IPC上下文信息，包括获取UID和PID、获取本端和对端设备ID、检查接口调用是否在同一设备上。
 
-**起始版本：** 23
-
-<!--Device-rpc-class IPCSkeleton--><!--Device-rpc-class IPCSkeleton-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -22,9 +20,7 @@ static flushCmdBuffer(object: IRemoteObject): void
 
 静态方法，将所有挂起的命令从指定的RemoteProxy刷新到相应的RemoteObject。建议在任何时间执行敏感操作之前调用此方法。
 
-**起始版本：** 23
-
-<!--Device-IPCSkeleton-static flushCmdBuffer(object: IRemoteObject): void--><!--Device-IPCSkeleton-static flushCmdBuffer(object: IRemoteObject): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -79,9 +75,7 @@ static flushCommands(object: IRemoteObject): number
 
 **废弃版本：** 9
 
-**替代接口：** static flushCmdBuffer(object: IRemoteObject)
-
-<!--Device-IPCSkeleton-static flushCommands(object: IRemoteObject): number--><!--Device-IPCSkeleton-static flushCommands(object: IRemoteObject): number-End-->
+**替代接口：** static
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -132,9 +126,7 @@ static getCallingDeviceID(): string
 
 静态方法，获取调用者进程所在的设备ID。
 
-**起始版本：** 23
-
-<!--Device-IPCSkeleton-static getCallingDeviceID(): string--><!--Device-IPCSkeleton-static getCallingDeviceID(): string-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -167,14 +159,12 @@ class Stub extends rpc.RemoteObject {
 ## getCallingPid
 
 ```TypeScript
-static getCallingPid(): int
+static getCallingPid(): number
 ```
 
 静态方法，获取调用者的PID。此方法由[RemoteObject](arkts-ipc-rpc-remoteobject-c.md)对象在IPC上下文环境（ [onRemoteMessageRequest](arkts-ipc-rpc-remoteobject-c.md#onremotemessagerequest)）中调用，不在则返回本进程的PID。
 
-**起始版本：** 23
-
-<!--Device-IPCSkeleton-static getCallingPid(): int--><!--Device-IPCSkeleton-static getCallingPid(): int-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -182,11 +172,9 @@ static getCallingPid(): int
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 返回调用者的PID。 |
+| number | 返回调用者的PID。 |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -206,42 +194,37 @@ class Stub extends rpc.RemoteObject {
 }
 ```
 
-ArkTS-Sta示例：
-
 ```TypeScript
-import rpc from '@ohos.rpc';
-import hilog from 'ohos.hilog';
-import { BusinessError } from '@ohos.base';
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-class Stub extends rpc.RemoteObject {
+class TestRemoteObject extends rpc.RemoteObject {
   constructor(descriptor: string) {
     super(descriptor);
   }
-
-  onRemoteMessageRequest(code: int, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
     option: rpc.MessageOption): boolean | Promise<boolean> {
-    try {
-      let callerPid = rpc.IPCSkeleton.getCallingPid();
-      hilog.info(0x0000, 'testTag', 'RpcServer: getCallingPid result: ' + callerPid);
-    } catch (error) {
-      hilog.error(0x0000, 'testTag', 'error ' + error);
-    }
+    // 根据业务实际逻辑，进行相应处理
     return true;
   }
+}
+try {
+  let testRemoteObject = new TestRemoteObject("testObject");
+  hilog.info(0x0000, 'testTag', 'RpcServer: getCallingPid: ' + testRemoteObject.getCallingPid());
+} catch (error) {
+  hilog.error(0x0000, 'testTag', 'error: ' + error);
 }
 ```
 
 ## getCallingTokenId
 
 ```TypeScript
-static getCallingTokenId(): long
+static getCallingTokenId(): number
 ```
 
 静态方法，获取调用者的TokenId，用于被调用方对调用方的身份校验。
 
-**起始版本：** 23
-
-<!--Device-IPCSkeleton-static getCallingTokenId(): long--><!--Device-IPCSkeleton-static getCallingTokenId(): long-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -249,11 +232,9 @@ static getCallingTokenId(): long
 
 | 类型 | 说明 |
 | --- | --- |
-| long | 返回调用者的TokenId。 |
+| number | 返回调用者的TokenId。 |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -261,31 +242,6 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 class Stub extends rpc.RemoteObject {
   onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption): boolean | Promise<boolean> {
-    try {
-      let callerTokenId = rpc.IPCSkeleton.getCallingTokenId();
-      hilog.info(0x0000, 'testTag', 'RpcServer: getCallingTokenId result: ' + callerTokenId);
-    } catch (error) {
-      hilog.error(0x0000, 'testTag', 'error ' + error);
-    }
-    return true;
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import rpc from '@ohos.rpc';
-import hilog from 'ohos.hilog';
-import { BusinessError } from '@ohos.base';
-
-class Stub extends rpc.RemoteObject {
-  constructor(descriptor: string) {
-    super(descriptor);
-  }
-
-  onRemoteMessageRequest(code: int, data: rpc.MessageSequence, reply: rpc.MessageSequence,
     option: rpc.MessageOption): boolean | Promise<boolean> {
     try {
       let callerTokenId = rpc.IPCSkeleton.getCallingTokenId();
@@ -301,14 +257,12 @@ class Stub extends rpc.RemoteObject {
 ## getCallingUid
 
 ```TypeScript
-static getCallingUid(): int
+static getCallingUid(): number
 ```
 
 静态方法，获取调用者的UID。此方法由[RemoteObject](arkts-ipc-rpc-remoteobject-c.md)对象在IPC上下文环境（ [onRemoteMessageRequest](arkts-ipc-rpc-remoteobject-c.md#onremotemessagerequest)）中调用，不在则返回本进程的UID。
 
-**起始版本：** 23
-
-<!--Device-IPCSkeleton-static getCallingUid(): int--><!--Device-IPCSkeleton-static getCallingUid(): int-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -316,11 +270,9 @@ static getCallingUid(): int
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 返回调用者的UID。 |
+| number | 返回调用者的UID。 |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -340,28 +292,25 @@ class Stub extends rpc.RemoteObject {
 }
 ```
 
-ArkTS-Sta示例：
-
 ```TypeScript
-import rpc from '@ohos.rpc';
-import hilog from 'ohos.hilog';
-import { BusinessError } from '@ohos.base';
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-class Stub extends rpc.RemoteObject {
+class TestRemoteObject extends rpc.RemoteObject {
   constructor(descriptor: string) {
     super(descriptor);
   }
-
-  onRemoteMessageRequest(code: int, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
     option: rpc.MessageOption): boolean | Promise<boolean> {
-    try {
-      let callerUid = rpc.IPCSkeleton.getCallingUid();
-      hilog.info(0x0000, 'testTag', 'RpcServer: getCallingUid result: ' + callerUid);
-    } catch (error) {
-      hilog.error(0x0000, 'testTag', 'error ' + error);
-    }
+    // 根据业务实际逻辑，进行相应处理
     return true;
   }
+}
+try {
+  let testRemoteObject = new TestRemoteObject("testObject");
+  hilog.info(0x0000, 'testTag', 'RpcServer: getCallingUid: ' + testRemoteObject.getCallingUid());
+} catch (error) {
+  hilog.error(0x0000, 'testTag', 'error: ' + error);
 }
 ```
 
@@ -373,9 +322,7 @@ static getContextObject(): IRemoteObject
 
 静态方法，获取系统服务管理器（SAMGR）对象。
 
-**起始版本：** 23
-
-<!--Device-IPCSkeleton-static getContextObject(): IRemoteObject--><!--Device-IPCSkeleton-static getContextObject(): IRemoteObject-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -407,9 +354,7 @@ static getLocalDeviceID(): string
 
 静态方法，获取本端设备ID。
 
-**起始版本：** 23
-
-<!--Device-IPCSkeleton-static getLocalDeviceID(): string--><!--Device-IPCSkeleton-static getLocalDeviceID(): string-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -447,9 +392,7 @@ static isLocalCalling(): boolean
 
 静态方法，检查当前通信对端是否是本设备的进程。
 
-**起始版本：** 23
-
-<!--Device-IPCSkeleton-static isLocalCalling(): boolean--><!--Device-IPCSkeleton-static isLocalCalling(): boolean-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -487,9 +430,7 @@ static resetCallingIdentity(): string
 
 静态方法，将远程用户的UID和PID替换为本地用户的UID和PID。它可以用于身份验证等场景。
 
-**起始版本：** 23
-
-<!--Device-IPCSkeleton-static resetCallingIdentity(): string--><!--Device-IPCSkeleton-static resetCallingIdentity(): string-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -527,9 +468,7 @@ static restoreCallingIdentity(identity: string): void
 
 静态方法，将UID和PID恢复为远程用户的UID和PID。它通常在使用resetCallingIdentity后调用，需要resetCallingIdentity返回的远程用户的UID和PID。该接口仅支持在IPC上下文（ [onRemoteMessageRequest](arkts-ipc-rpc-remoteobject-c.md#onremotemessagerequest)）中使用，否则直接返回。
 
-**起始版本：** 23
-
-<!--Device-IPCSkeleton-static restoreCallingIdentity(identity: string): void--><!--Device-IPCSkeleton-static restoreCallingIdentity(identity: string): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -578,9 +517,7 @@ static setCallingIdentity(identity: string): boolean
 
 **废弃版本：** 9
 
-**替代接口：** static restoreCallingIdentity(identity: string)
-
-<!--Device-IPCSkeleton-static setCallingIdentity(identity: string): boolean--><!--Device-IPCSkeleton-static setCallingIdentity(identity: string): boolean-End-->
+**替代接口：** static
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -617,4 +554,3 @@ class Stub extends rpc.RemoteObject {
   }
 }
 ```
-

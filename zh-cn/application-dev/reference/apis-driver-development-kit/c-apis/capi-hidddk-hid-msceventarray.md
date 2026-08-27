@@ -21,6 +21,6 @@ typedef struct Hid_MscEventArray {...} Hid_MscEventArray
 | 名称 | 描述 |
 | -- | -- |
 | [Hid_MscEvent](capi-hid-ddk-types-h.md#hid_mscevent) *hidMscEvent | 其他特殊事件属性编码数组的指针，指向调用方预先分配的数组（不允许为空指针），数组大小不小于length。 |
-| uint16_t length | 数组的有效长度，不超过hidEventType数组的实际长度。 |
+| uint16_t length | 数组的有效长度，不超过hidMscEvent数组的实际长度。 |
 
 

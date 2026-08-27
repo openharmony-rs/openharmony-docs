@@ -3,76 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { inputConsumer } from '@kit.InputKit';
 ```
-
-## onKey
-
-```TypeScript
-function onKey(keyOptions: KeyOptions, callback: Callback<KeyOptions>): void
-```
-
-订阅系统快捷键，当满足条件的组合按键输入事件发生时，使用Callback异步方式上报组合按键数据。
-
-**起始版本：** 23
-
-<!--Device-inputConsumer-function onKey(keyOptions: KeyOptions, callback: Callback<KeyOptions>): void--><!--Device-inputConsumer-function onKey(keyOptions: KeyOptions, callback: Callback<KeyOptions>): void-End-->
-
-**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| keyOptions | KeyOptions | 是 | 组合键选项，支持triggerType参数。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;KeyOptions&gt; | 是 | 回调函数，返回组合按键数据 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
-
-**示例**
-
-```TypeScript
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { inputConsumer, KeyCode } from '@kit.InputKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          let leftAltKey = 2045;
-          let tabKey = 2049;
-          let keyOptions: inputConsumer.KeyOptions = {
-            preKeys: [ leftAltKey ],
-            finalKey: tabKey,
-            isFinalKeyDown: true,
-            finalKeyDownDuration: 0
-          };
-          let callback = (keyOptions: inputConsumer.KeyOptions) => {
-            console.info(`Succeeded in consuming key, keyOptions: ${JSON.stringify(keyOptions)}`);
-          }
-          try {
-            // 订阅按键事件
-            inputConsumer.onKey(keyOptions, callback);
-          } catch (error) {
-            console.error(`Failed to subscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-
 
 ## onKey
 
@@ -80,13 +11,14 @@ struct Index {
 function onKey(keyOptions: KeyOptions, callback:KeyCommandCallback): void
 ```
 
-订阅组合按键（按键命令模式），支持通过triggerType指定不同的触发模式。当满足条件的组合按键输入事件发生时，使用callback异步回调。 与[inputConsumer.on('key')](#onkey)现有接口的区别： - 本接口的keyOptions支持triggerType参数，可选择按键按下触发、重复按下触发、重复按下或抬起均会触发等模式。 - 本接口回调参数为KeyCommandCallback类型，同时接收KeyOptions和KeyEvent对象。 - 本接口采用事件消费机制，可通过事件消费阻止按键事件向后传递。
+订阅组合按键（按键命令模式），支持通过triggerType指定不同的触发模式。当满足条件的组合按键输入事件发生时，使用callback异步回调。与inputConsumer.on('key')现有接口的区别：  
+- 本接口的keyOptions支持triggerType参数，可选择按键按下触发、重复按下触发、重复按下或抬起均会触发等模式。  
+- 本接口回调参数为KeyCommandCallback类型，同时接收KeyOptions和KeyEvent对象。  
+- 本接口采用事件消费机制，可通过事件消费阻止按键事件向后传递。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-inputConsumer-function onKey(keyOptions: KeyOptions, callback:KeyCommandCallback): void--><!--Device-inputConsumer-function onKey(keyOptions: KeyOptions, callback:KeyCommandCallback): void-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
@@ -176,4 +108,3 @@ try {
   console.error(`Failed to subscribe. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-

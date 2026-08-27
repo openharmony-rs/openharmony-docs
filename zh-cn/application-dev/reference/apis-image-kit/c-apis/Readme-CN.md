@@ -1,6 +1,8 @@
 # C API<!--c-image-kit-->
 
 - 头文件
+    - [image_processing_types.h](capi-image-processing-types-h.md)
+    - [image_processing.h](capi-image-processing-h.md)
     - [image_pixel_map_napi.h](capi-image-pixel-map-napi-h.md)
     - [image_packer_mdk.h](capi-image-packer-mdk-h.md)
     - [image_pixel_map_mdk.h](capi-image-pixel-map-mdk-h.md)
@@ -15,10 +17,19 @@
     - [image_native.h](capi-image-native-h.md)
     - [image_common.h](capi-image-common-h.md)
     - [image_source_native.h](capi-image-source-native-h.md)
+    - [image_effect_filter.h](capi-image-effect-filter-h.md)
+    - [image_effect.h](capi-image-effect-h.md)
+    - [image_effect_errors.h](capi-image-effect-errors-h.md)
 - 模块
+    - [ImageProcessing](capi-imageprocessing.md)
     - [Image](capi-image.md)
     - [Image_NativeModule](capi-image-nativemodule.md)
+    - [ImageEffect](capi-imageeffect.md)
 - 结构体
+    - [ImageProcessing_ColorSpaceInfo](capi-imageprocessing-imageprocessing-colorspaceinfo.md)
+    - [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)
+    - [OH_PixelmapNative](capi-imageprocessing-oh-pixelmapnative.md)
+    - [OH_AVFormat](capi-imageprocessing-oh-avformat.md)
     - [OhosPixelMapInfo](capi-image-ohospixelmapinfo.md)
     - [ImagePacker_Opts_](capi-image-imagepacker-opts-.md)
     - [ImagePacker_Native_](capi-image-imagepacker-native-.md)
@@ -74,3 +85,7 @@
     - [OH_DecodingOptionsForPicture](capi-image-nativemodule-oh-decodingoptionsforpicture.md)
     - [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md)
     - [OH_ImageRawData](capi-image-nativemodule-oh-imagerawdata.md)
+    - [OH_EffectFilter](capi-imageeffect-oh-effectfilter.md)
+    - [OH_EffectFilterInfo](capi-imageeffect-oh-effectfilterinfo.md)
+    - [OH_EffectBufferInfo](capi-imageeffect-oh-effectbufferinfo.md)
+    - [OH_ImageEffect](capi-imageeffect-oh-imageeffect.md)

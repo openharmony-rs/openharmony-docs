@@ -4,6 +4,8 @@
 
 提供IPC错误码定义，用于标识和处理IPC通信过程中可能发生的各类错误。开发者可根据返回的错误码快速定位问题原因，如参数错误、序列化失败、内存分配失败、远端对象死亡等场景，从而采取相应的错误处理措施。
 
+**引用文件：** <IPCKit/ipc_cparcel.h>
+
 **库：** libipc_capi.so
 
 **系统能力：** SystemCapability.Communication.IPC.Core

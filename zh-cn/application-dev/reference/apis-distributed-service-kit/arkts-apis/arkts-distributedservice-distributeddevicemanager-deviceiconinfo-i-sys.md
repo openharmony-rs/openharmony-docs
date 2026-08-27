@@ -2,9 +2,7 @@
 
 设备图标信息。
 
-**起始版本：** 23
-
-<!--Device-distributedDeviceManager-interface DeviceIconInfo--><!--Device-distributedDeviceManager-interface DeviceIconInfo-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
@@ -26,9 +24,7 @@ icon: ArrayBuffer
 
 **类型：** ArrayBuffer
 
-**起始版本：** 23
-
-<!--Device-DeviceIconInfo-icon: ArrayBuffer--><!--Device-DeviceIconInfo-icon: ArrayBuffer-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
@@ -44,9 +40,7 @@ imageType: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-DeviceIconInfo-imageType: string--><!--Device-DeviceIconInfo-imageType: string-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
@@ -62,9 +56,7 @@ internalModel?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-DeviceIconInfo-internalModel?: string--><!--Device-DeviceIconInfo-internalModel?: string-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
@@ -80,9 +72,7 @@ productId: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-DeviceIconInfo-productId: string--><!--Device-DeviceIconInfo-productId: string-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
@@ -94,13 +84,13 @@ productId: string
 specName: string
 ```
 
-图片规格名称。取值范围： - lg：大图，尺寸为1016064px。 - sm：小图，尺寸为65536px。
+图片规格名称。取值范围：  
+- lg：大图，尺寸为1016064px。  
+- sm：小图，尺寸为65536px。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-DeviceIconInfo-specName: string--><!--Device-DeviceIconInfo-specName: string-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
@@ -116,9 +106,7 @@ subProductId?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-DeviceIconInfo-subProductId?: string--><!--Device-DeviceIconInfo-subProductId?: string-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
@@ -134,11 +122,8 @@ URL。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-DeviceIconInfo-url: string--><!--Device-DeviceIconInfo-url: string-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
 **系统接口：** 此接口为系统接口。
-

@@ -2,9 +2,7 @@
 
 当代理通道状态变化时，用于表示代理通道的连接状态。
 
-**起始版本：** 23
-
-<!--Device-proxyChannelManager-interface ChannelStateInfo--><!--Device-proxyChannelManager-interface ChannelStateInfo-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
@@ -17,18 +15,16 @@ import { proxyChannelManager } from '@kit.DistributedServiceKit';
 ## channelId
 
 ```TypeScript
-channelId: int
+channelId: number
 ```
 
 代理通道的channelId，取值范围为1~2147483647。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ChannelStateInfo-channelId: int--><!--Device-ChannelStateInfo-channelId: int-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
@@ -42,11 +38,8 @@ state: ChannelState
 
 **类型：** [ChannelState](arkts-distributedservice-proxychannelmanager-channelstate-e.md)
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ChannelStateInfo-state: ChannelState--><!--Device-ChannelStateInfo-state: ChannelState-End-->
-
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
-

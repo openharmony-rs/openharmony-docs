@@ -2,9 +2,7 @@
 
 触屏注入描述信息。
 
-**起始版本：** 23
-
-<!--Device-inputEventClient-interface TouchEventData--><!--Device-inputEventClient-interface TouchEventData-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -13,7 +11,6 @@
 ## 导入模块
 
 ```TypeScript
-import { inputEventClient } from '@kit.InputKit';
 ```
 
 ## touchEvent
@@ -26,9 +23,7 @@ touchEvent: TouchEvent
 
 **类型：** [TouchEvent](arkts-input-multimodalinput-touchevent-touchevent-i.md)
 
-**起始版本：** 23
-
-<!--Device-TouchEventData-touchEvent: TouchEvent--><!--Device-TouchEventData-touchEvent: TouchEvent-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -44,11 +39,8 @@ useGlobalCoordinate?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-TouchEventData-useGlobalCoordinate?: boolean--><!--Device-TouchEventData-useGlobalCoordinate?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **系统接口：** 此接口为系统接口。
-

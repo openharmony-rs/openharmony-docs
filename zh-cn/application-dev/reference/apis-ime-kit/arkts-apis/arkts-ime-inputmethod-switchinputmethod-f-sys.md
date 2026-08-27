@@ -4,11 +4,6 @@
 
 ```TypeScript
 import { inputMethod } from '@kit.IMEKit';
-import { inputMethodEngine } from '@kit.IMEKit';
-import { InputMethodListDialog, PatternOptions, Pattern } from '@kit.IMEKit';
-import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
-import { InputMethodExtraConfig } from '@kit.IMEKit';
-import { inputMethodSystemPanelManager } from '@kit.IMEKit';
 ```
 
 ## switchInputMethod
@@ -19,11 +14,9 @@ function switchInputMethod(bundleName: string, subtypeId?: string): Promise<void
 
 切换输入法，使用promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **需要权限：** ohos.permission.CONNECT_IME_ABILITY
-
-<!--Device-inputMethod-function switchInputMethod(bundleName: string, subtypeId?: string): Promise<void>--><!--Device-inputMethod-function switchInputMethod(bundleName: string, subtypeId?: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -40,16 +33,16 @@ function switchInputMethod(bundleName: string, subtypeId?: string): Promise<void
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| [12800005](../errorcode-inputmethod-framework.md#12800005-配置持久化失败) | configuration persistence error. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | permissions check fails. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [12800005](../errorcode-inputmethod-framework.md#12800005-配置持久化失败) | configuration persistence error. |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例**
@@ -88,4 +81,3 @@ async function switchInputMethodWithSubtype() {
 
 switchInputMethodWithSubtype();
 ```
-

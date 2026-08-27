@@ -10,8 +10,6 @@ type PublishFormCrossBundleControlCallback = (info: PublishFormCrossBundleInfo) 
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-formInfo-type PublishFormCrossBundleControlCallback = (info: PublishFormCrossBundleInfo) => boolean--><!--Device-formInfo-type PublishFormCrossBundleControlCallback = (info: PublishFormCrossBundleInfo) => boolean-End-->
-
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
@@ -26,5 +24,16 @@ type PublishFormCrossBundleControlCallback = (info: PublishFormCrossBundleInfo) 
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 跨应用加卡管控结果。<br/>- true：表示管控通过。<br/>- false：表示管控未通过。 |
+| boolean | 跨应用加卡管控结果。 |
 
+**示例**
+
+```TypeScript
+import { formInfo } from '@kit.FormKit';
+
+let publishFormCrossBundleControlCallback: formInfo.PublishFormCrossBundleControlCallback =
+  (info: formInfo.PublishFormCrossBundleInfo): boolean => {
+    console.info('publish form cross bundle info callback success.');
+    return true;
+  };
+```

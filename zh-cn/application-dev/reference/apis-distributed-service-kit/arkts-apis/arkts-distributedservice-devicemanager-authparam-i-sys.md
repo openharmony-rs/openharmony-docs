@@ -6,8 +6,6 @@
 
 **废弃版本：** 11
 
-<!--Device-deviceManager-interface AuthParam--><!--Device-deviceManager-interface AuthParam-End-->
-
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
 **系统接口：** 此接口为系统接口。
@@ -32,8 +30,6 @@ authType: number
 
 **废弃版本：** 11
 
-<!--Device-AuthParam-authType: number--><!--Device-AuthParam-authType: number-End-->
-
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
 **系统接口：** 此接口为系统接口。
@@ -52,9 +48,6 @@ extraInfo: { [key: string]: any }
 
 **废弃版本：** 11
 
-<!--Device-AuthParam-extraInfo: { [key: string]: any }--><!--Device-AuthParam-extraInfo: { [key: string]: any }-End-->
-
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
 **系统接口：** 此接口为系统接口。
-

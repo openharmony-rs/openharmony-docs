@@ -6,8 +6,6 @@
 
 **废弃版本：** 11
 
-<!--Device-deviceManager-interface PublishInfo--><!--Device-deviceManager-interface PublishInfo-End-->
-
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
 **系统接口：** 此接口为系统接口。
@@ -32,8 +30,6 @@ freq: ExchangeFreq
 
 **废弃版本：** 11
 
-<!--Device-PublishInfo-freq: ExchangeFreq--><!--Device-PublishInfo-freq: ExchangeFreq-End-->
-
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
 **系统接口：** 此接口为系统接口。
@@ -51,8 +47,6 @@ mode: DiscoverMode
 **起始版本：** 9
 
 **废弃版本：** 11
-
-<!--Device-PublishInfo-mode: DiscoverMode--><!--Device-PublishInfo-mode: DiscoverMode-End-->
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
@@ -72,8 +66,6 @@ publishId: number
 
 **废弃版本：** 11
 
-<!--Device-PublishInfo-publishId: number--><!--Device-PublishInfo-publishId: number-End-->
-
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
 **系统接口：** 此接口为系统接口。
@@ -92,9 +84,6 @@ ranging: boolean
 
 **废弃版本：** 11
 
-<!--Device-PublishInfo-ranging: boolean--><!--Device-PublishInfo-ranging: boolean-End-->
-
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
 **系统接口：** 此接口为系统接口。
-

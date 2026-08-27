@@ -9,16 +9,14 @@ import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 ## getSurfaceId
 
 ```TypeScript
-function getSurfaceId(streamId: int, param: SurfaceParam): string
+function getSurfaceId(streamId: number, param: SurfaceParam): string
 ```
 
-Obtains the transmission surface.
+获取指定传输流绑定的Surface的唯一标识符。Surface ID可用于将Surface与组件关联，实现音视频数据的显示。
 
-**起始版本：** 23
+**起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-abilityConnectionManager-function getSurfaceId(streamId: int, param: SurfaceParam): string--><!--Device-abilityConnectionManager-function getSurfaceId(streamId: int, param: SurfaceParam): string-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
@@ -28,21 +26,21 @@ Obtains the transmission surface.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| streamId | int | 是 | Indicates the ID of a transport stream. |
-| param | [SurfaceParam](arkts-distributedservice-abilityconnectionmanager-surfaceparam-i-sys.md) | 是 | Surface Parameters |
+| streamId | number | 是 | 表示传输流ID，需通过createStream接口创建传输流后获取。 |
+| param | [SurfaceParam](arkts-distributedservice-abilityconnectionmanager-surfaceparam-i-sys.md) | 是 | 表示Surface的配置参数。需在流启动前完成Surface绑定。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | Returns the ID of a surface. |
+| string | Surface的唯一标识符，可用于后续setSurfaceId等操作。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 **示例**
 
@@ -52,7 +50,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 hilog.info(0x0000, 'testTag', 'getSurfaceId');
 let sessionId = 100;
-abilityConnectionManager.createStream(sessionId ,{name: 'receive', role: 0}).then(async (streamId) => {
+abilityConnectionManager.createStream(sessionId, {name: 'receive', role: 0}).then(async (streamId) => {
   let surfaceParam: abilityConnectionManager.SurfaceParam = {
     width: 640,
     height: 480,
@@ -61,4 +59,3 @@ abilityConnectionManager.createStream(sessionId ,{name: 'receive', role: 0}).the
   let surfaceId = abilityConnectionManager.getSurfaceId(streamId, surfaceParam);
 })
 ```
-

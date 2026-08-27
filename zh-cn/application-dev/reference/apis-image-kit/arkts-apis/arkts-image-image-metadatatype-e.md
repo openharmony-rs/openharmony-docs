@@ -2,9 +2,7 @@
 
 表示图片元数据类型的枚举。
 
-**起始版本：** 23
-
-<!--Device-image-enum MetadataType--><!--Device-image-enum MetadataType-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -16,9 +14,7 @@ EXIF_METADATA = 1
 
 exif数据。
 
-**起始版本：** 23
-
-<!--Device-MetadataType-EXIF_METADATA = 1--><!--Device-MetadataType-EXIF_METADATA = 1-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -30,9 +26,7 @@ FRAGMENT_METADATA = 2
 
 水印裁剪图元数据。
 
-**起始版本：** 23
-
-<!--Device-MetadataType-FRAGMENT_METADATA = 2--><!--Device-MetadataType-FRAGMENT_METADATA = 2-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -44,9 +38,7 @@ GIF_METADATA = 5
 
 GIF图片元数据。
 
-**起始版本：** 23
-
-<!--Device-MetadataType-GIF_METADATA = 5--><!--Device-MetadataType-GIF_METADATA = 5-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -62,8 +54,6 @@ HEIF序列图片元数据。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MetadataType-HEIFS_METADATA = 15--><!--Device-MetadataType-HEIFS_METADATA = 15-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## DNG_METADATA
@@ -77,8 +67,6 @@ DNG图片元数据。
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-MetadataType-DNG_METADATA = 16--><!--Device-MetadataType-DNG_METADATA = 16-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -94,8 +82,6 @@ WebP图片元数据。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MetadataType-WEBP_METADATA = 17--><!--Device-MetadataType-WEBP_METADATA = 17-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## PNG_METADATA
@@ -109,8 +95,6 @@ PNG图片元数据。
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-MetadataType-PNG_METADATA = 19--><!--Device-MetadataType-PNG_METADATA = 19-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -126,8 +110,6 @@ JFIF图片元数据。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MetadataType-JFIF_METADATA = 20--><!--Device-MetadataType-JFIF_METADATA = 20-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## TIFF_METADATA
@@ -141,8 +123,6 @@ TIFF图片元数据。
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-MetadataType-TIFF_METADATA = 21--><!--Device-MetadataType-TIFF_METADATA = 21-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -158,8 +138,6 @@ XMP图片元数据。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MetadataType-XMP_METADATA = 22--><!--Device-MetadataType-XMP_METADATA = 22-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## AVIS_METADATA
@@ -174,7 +152,4 @@ AVIS图片元数据。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MetadataType-AVIS_METADATA = 23--><!--Device-MetadataType-AVIS_METADATA = 23-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
-

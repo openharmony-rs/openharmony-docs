@@ -2,9 +2,7 @@
 
 视频像素格式配置选项。
 
-**起始版本：** 23
-
-<!--Device-abilityConnectionManager-export enum VideoPixelFormat--><!--Device-abilityConnectionManager-export enum VideoPixelFormat-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
@@ -18,11 +16,9 @@ UNKNOWN = -1
 
 未知格式。
 
-**起始版本：** 23
+**起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-VideoPixelFormat-UNKNOWN = -1--><!--Device-VideoPixelFormat-UNKNOWN = -1-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
@@ -34,13 +30,11 @@ UNKNOWN = -1
 NV12 = 0
 ```
 
-NV12。yuv 420 semiplanar。
+表示NV12，YUV420半平面格式。
 
-**起始版本：** 23
+**起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-VideoPixelFormat-NV12 = 0--><!--Device-VideoPixelFormat-NV12 = 0-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
@@ -52,15 +46,12 @@ NV12。yuv 420 semiplanar。
 NV21 = 1
 ```
 
-NV21。yvu 420 semiplanar。
+表示NV21，YUV420半平面格式。
 
-**起始版本：** 23
+**起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-VideoPixelFormat-NV21 = 1--><!--Device-VideoPixelFormat-NV21 = 1-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
 **系统接口：** 此接口为系统接口。
-

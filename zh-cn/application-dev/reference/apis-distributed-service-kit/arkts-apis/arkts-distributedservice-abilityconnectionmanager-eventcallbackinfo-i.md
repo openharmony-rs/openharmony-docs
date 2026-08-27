@@ -2,9 +2,7 @@
 
 回调方法的接收信息。
 
-**起始版本：** 23
-
-<!--Device-abilityConnectionManager-interface EventCallbackInfo--><!--Device-abilityConnectionManager-interface EventCallbackInfo-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
@@ -20,15 +18,13 @@ import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 data?: ArrayBuffer
 ```
 
-表示接收的字节流。
+表示接收的字节流。触发receiveData事件时存在，包含接收到的二进制数据。其他事件类型下不存在。
 
 **类型：** ArrayBuffer
 
-**起始版本：** 23
+**起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-EventCallbackInfo-data?: ArrayBuffer--><!--Device-EventCallbackInfo-data?: ArrayBuffer-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
@@ -38,15 +34,13 @@ data?: ArrayBuffer
 msg?: string
 ```
 
-表示接收的消息。
+表示接收的消息。触发receiveMessage事件时存在，包含接收到的文本消息内容。其他事件类型下不存在。
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-EventCallbackInfo-msg?: string--><!--Device-EventCallbackInfo-msg?: string-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
@@ -56,33 +50,28 @@ msg?: string
 reason?: DisconnectReason
 ```
 
-表示断连原因。
+表示断连原因。触发disconnect事件时存在，用于标识具体的断连原因。其他事件类型下不存在。
 
 **类型：** [DisconnectReason](arkts-distributedservice-abilityconnectionmanager-disconnectreason-e.md)
 
-**起始版本：** 23
+**起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-EventCallbackInfo-reason?: DisconnectReason--><!--Device-EventCallbackInfo-reason?: DisconnectReason-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
 ## sessionId
 
 ```TypeScript
-sessionId: int
+sessionId: number
 ```
 
 表示当前事件对应的协同会话ID。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-EventCallbackInfo-sessionId: int--><!--Device-EventCallbackInfo-sessionId: int-End-->
-
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
-

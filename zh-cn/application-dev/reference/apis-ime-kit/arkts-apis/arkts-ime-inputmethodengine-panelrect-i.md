@@ -2,9 +2,7 @@
 
 输入法面板位置大小信息。
 
-**起始版本：** 23
-
-<!--Device-inputMethodEngine-export interface PanelRect--><!--Device-inputMethodEngine-export interface PanelRect-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -24,9 +22,7 @@ landscapeRect: window.Rect
 
 **类型：** window.Rect
 
-**起始版本：** 23
-
-<!--Device-PanelRect-landscapeRect: window.Rect--><!--Device-PanelRect-landscapeRect: window.Rect-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -40,9 +36,6 @@ portraitRect: window.Rect
 
 **类型：** window.Rect
 
-**起始版本：** 23
-
-<!--Device-PanelRect-portraitRect: window.Rect--><!--Device-PanelRect-portraitRect: window.Rect-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
-

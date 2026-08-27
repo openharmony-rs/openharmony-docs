@@ -2,9 +2,7 @@
 
 分布式设备基本信息。
 
-**起始版本：** 23
-
-<!--Device-distributedDeviceManager-interface DeviceBasicInfo--><!--Device-distributedDeviceManager-interface DeviceBasicInfo-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
@@ -24,9 +22,7 @@ deviceId: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-DeviceBasicInfo-deviceId: string--><!--Device-DeviceBasicInfo-deviceId: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
@@ -40,9 +36,7 @@ deviceName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-DeviceBasicInfo-deviceName: string--><!--Device-DeviceBasicInfo-deviceName: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
@@ -56,9 +50,7 @@ deviceType: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-DeviceBasicInfo-deviceType: string--><!--Device-DeviceBasicInfo-deviceType: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
@@ -68,13 +60,10 @@ deviceType: string
 networkId?: string
 ```
 
-设备网络标识。
+设备网络标识。未提供时默认为空字符串。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-DeviceBasicInfo-networkId?: string--><!--Device-DeviceBasicInfo-networkId?: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
-

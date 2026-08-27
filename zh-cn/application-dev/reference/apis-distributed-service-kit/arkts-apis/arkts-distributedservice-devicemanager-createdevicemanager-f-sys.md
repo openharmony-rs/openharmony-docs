@@ -20,8 +20,6 @@ function createDeviceManager(bundleName: string, callback: AsyncCallback<DeviceM
 
 **替代接口：** [createDeviceManager](arkts-distributedservice-distributeddevicemanager-createdevicemanager-f.md)
 
-<!--Device-deviceManager-function createDeviceManager(bundleName: string, callback: AsyncCallback<DeviceManager>): void--><!--Device-deviceManager-function createDeviceManager(bundleName: string, callback: AsyncCallback<DeviceManager>): void-End-->
-
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
 **系统接口：** 此接口为系统接口。
@@ -31,7 +29,7 @@ function createDeviceManager(bundleName: string, callback: AsyncCallback<DeviceM
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 指示应用程序的Bundle名称。长度范围1~255字符。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;DeviceManager&gt; | 是 | DeviceManager实例创建时调用的回调，返回设备管理器对象实例。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DeviceManager&gt; | 是 | DeviceManager实例创建时调用的回调，返回设备管理器对象实例。 |
 
 **错误码：**
 
@@ -61,4 +59,3 @@ try {
   console.error("createDeviceManager errCode:" + e.code + ",errMessage:" + e.message);
 }
 ```
-

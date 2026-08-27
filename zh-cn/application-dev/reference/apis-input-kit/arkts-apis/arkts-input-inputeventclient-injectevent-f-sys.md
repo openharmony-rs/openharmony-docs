@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { inputEventClient } from '@kit.InputKit';
 ```
 
 ## injectEvent
@@ -19,8 +18,6 @@ function injectEvent({ KeyEvent: KeyEvent }): void
 **需要权限：** 
 - API版本12+：ohos.permission.INJECT_INPUT_EVENT
 
-<!--Device-inputEventClient-function injectEvent({ KeyEvent: KeyEvent }): void--><!--Device-inputEventClient-function injectEvent({ KeyEvent: KeyEvent }): void-End-->
-
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **系统接口：** 此接口为系统接口。
@@ -29,13 +26,13 @@ function injectEvent({ KeyEvent: KeyEvent }): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| { KeyEvent: KeyEvent } | 0.0 | 是 |  |
+| KeyEvent | KeyEvent | 是 |  |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types; 3. Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied.<br>**适用版本：** 12+ |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api.<br>**适用版本：** 12+ |
 
@@ -78,72 +75,3 @@ struct Index {
   }
 }
 ```
-
-
-## injectEvent
-
-```TypeScript
-function injectEvent(keyEvent: KeyEventInfo): void
-```
-
-按键(包括单个按键和组合键)注入。
-
-**起始版本：** 23
-
-**需要权限：** ohos.permission.INJECT_INPUT_EVENT
-
-<!--Device-inputEventClient-function injectEvent(keyEvent: KeyEventInfo): void--><!--Device-inputEventClient-function injectEvent(keyEvent: KeyEventInfo): void-End-->
-
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| keyEvent | [KeyEventInfo](arkts-input-inputeventclient-keyeventinfo-i-sys.md) | 是 | 按键注入描述信息。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
-
-**示例**
-
-```TypeScript
-import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { inputEventClient, KeyCode } from '@kit.InputKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-              let backKeyUp: inputEventClient.KeyEvent = {
-                isPressed: false,
-                keyCode: KeyCode.KEYCODE_BACK,
-                keyDownDuration: 0,
-                isIntercepted: false
-              };
-              let keyEventInfo: inputEventClient.KeyEventInfo = {
-                KeyEvent: backKeyUp
-              }
-              // 注入按键事件
-              inputEventClient.injectEvent(keyEventInfo);
-          } catch (error) {
-            console.error(`Failed to inject KeyEvent, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-

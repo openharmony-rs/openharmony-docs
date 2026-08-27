@@ -2,9 +2,7 @@
 
 表示图片像素格式的枚举。
 
-**起始版本：** 23
-
-<!--Device-image-enum PixelMapFormat--><!--Device-image-enum PixelMapFormat-End-->
+**起始版本：** 7
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -16,13 +14,11 @@ UNKNOWN = 0
 
 未知格式。
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-PixelMapFormat-UNKNOWN = 0--><!--Device-PixelMapFormat-UNKNOWN = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -34,9 +30,7 @@ ARGB_8888 = 1
 
 颜色信息由透明度（Alpha）与R（Red）、G（Green）、B（Blue）四部分组成，每个部分占8位，总共占32位，按照从高位到低位的顺序储存。该格式当前仅支持PixelMap的接口。
 
-**起始版本：** 23
-
-<!--Device-PixelMapFormat-ARGB_8888 = 1--><!--Device-PixelMapFormat-ARGB_8888 = 1-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -48,13 +42,11 @@ RGB_565 = 2
 
 颜色信息由R（Red）、G（Green）、B（Blue）三部分组成，R占5位，G占6位，B占5位，总共占16位，按照从高位到低位的顺序储存。
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-PixelMapFormat-RGB_565 = 2--><!--Device-PixelMapFormat-RGB_565 = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -66,13 +58,11 @@ RGBA_8888 = 3
 
 颜色信息由R（Red）、G（Green）、B（Blue）与透明度（Alpha）四部分组成，每个部分占8位，总共占32位，按照从高位到低位的顺序储存。对应 [相机服务CameraFormat中的CAMERA_FORMAT_RGBA_8888](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameraformat-e.md)。
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-PixelMapFormat-RGBA_8888 = 3--><!--Device-PixelMapFormat-RGBA_8888 = 3-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -84,13 +74,11 @@ BGRA_8888 = 4
 
 颜色信息由B（Blue）、G（Green）、R（Red）与透明度（Alpha）四部分组成，每个部分占8位，总共占32位，按照从高位到低位的顺序储存。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-PixelMapFormat-BGRA_8888 = 4--><!--Device-PixelMapFormat-BGRA_8888 = 4-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -102,13 +90,11 @@ RGB_888 = 5
 
 颜色信息由R（Red）、G（Green）、B（Blue）三部分组成，每个部分占8位，总共占24位，按照从高位到低位的顺序储存。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-PixelMapFormat-RGB_888 = 5--><!--Device-PixelMapFormat-RGB_888 = 5-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -120,13 +106,11 @@ ALPHA_8 = 6
 
 颜色信息仅包含透明度（Alpha），每个像素占8位，按照从高位到低位的顺序储存。一个或多个像素组成一行像素，每行像素数据按4字节对齐，如果一行像素所占的字节数不是4的整数倍，则在行末填充空白字节以满足对齐要求。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-PixelMapFormat-ALPHA_8 = 6--><!--Device-PixelMapFormat-ALPHA_8 = 6-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -138,13 +122,11 @@ RGBA_F16 = 7
 
 颜色信息由R（Red）、G（Green）、B（Blue）与透明度（Alpha）四部分组成，每个部分占16位，总共占64位，按照从高位到低位的顺序以FP16半精度浮点数的形式储存。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-PixelMapFormat-RGBA_F16 = 7--><!--Device-PixelMapFormat-RGBA_F16 = 7-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -156,13 +138,11 @@ NV21 = 8
 
 YVU像素排列，V分量在U分量之前。颜色信息由亮度分量Y和交错排列的色度分量V和U组成，其中Y分量占8位，UV分量因4:2:0采样平均占4位，总共平均占12位，按照从高位到低位的顺序储存。对应 [相机服务CameraFormat中的CAMERA_FORMAT_YUV_420_SP](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameraformat-e.md)。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-PixelMapFormat-NV21 = 8--><!--Device-PixelMapFormat-NV21 = 8-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -174,13 +154,11 @@ NV12 = 9
 
 YUV像素排列，U分量在V分量之前。颜色信息由亮度分量Y和交错排列的色度分量U和V组成，其中Y分量占8位，UV分量因4:2:0采样平均占4位，总共平均占12位，按照从高位到低位的顺序储存。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-PixelMapFormat-NV12 = 9--><!--Device-PixelMapFormat-NV12 = 9-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -192,9 +170,7 @@ RGBA_1010102 = 10
 
 颜色信息由R（Red）、G（Green）、B（Blue）与透明度（Alpha）四部分组成，其中R、G、B分别占10位，透明度占2位，总共占32位，按照从高位到低位的顺序储存。
 
-**起始版本：** 23
-
-<!--Device-PixelMapFormat-RGBA_1010102 = 10--><!--Device-PixelMapFormat-RGBA_1010102 = 10-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -206,9 +182,7 @@ YCBCR_P010 = 11
 
 颜色信息由亮度分量Y和色度分量Cb与Cr组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位，按照从高位到低位的顺序 储存。对应[相机服务CameraFormat中的CAMERA_FORMAT_YCBCR_P010](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameraformat-e.md)。
 
-**起始版本：** 23
-
-<!--Device-PixelMapFormat-YCBCR_P010 = 11--><!--Device-PixelMapFormat-YCBCR_P010 = 11-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -220,9 +194,7 @@ YCRCB_P010 = 12
 
 颜色信息由亮度分量Y和色度分量Cr与Cb组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位，按照从高位到低位的顺序 储存。对应[相机服务CameraFormat中的CAMERA_FORMAT_YCRCB_P010](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameraformat-e.md)。
 
-**起始版本：** 23
-
-<!--Device-PixelMapFormat-YCRCB_P010 = 12--><!--Device-PixelMapFormat-YCRCB_P010 = 12-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -237,8 +209,6 @@ Y8 = 14
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PixelMapFormat-Y8 = 14--><!--Device-PixelMapFormat-Y8 = 14-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -256,8 +226,6 @@ Indicates that each pixel is stored on 8 bits, without 4-byte stride alignment. 
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-PixelMapFormat-ALPHA_U8 = 15--><!--Device-PixelMapFormat-ALPHA_U8 = 15-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## ALPHA_F16
@@ -274,8 +242,6 @@ Indicates that each pixel is stored on 16 bits. Each pixel contains 1 component:
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-PixelMapFormat-ALPHA_F16 = 16--><!--Device-PixelMapFormat-ALPHA_F16 = 16-End-->
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## ASTC_4x4
@@ -286,9 +252,6 @@ ASTC_4x4 = 102
 
 The storage format is ASTC 4x4 format, and the memory usage is only 1/4 of RGBA_8888. This format is only used for direct display scenes and does not support pixel access or post- processing editing.
 
-**起始版本：** 23
-
-<!--Device-PixelMapFormat-ASTC_4x4 = 102--><!--Device-PixelMapFormat-ASTC_4x4 = 102-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
-

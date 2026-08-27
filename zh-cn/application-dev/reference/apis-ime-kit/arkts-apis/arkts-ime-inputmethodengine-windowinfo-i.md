@@ -2,9 +2,7 @@
 
 窗口信息。
 
-**起始版本：** 23
-
-<!--Device-inputMethodEngine-export interface WindowInfo--><!--Device-inputMethodEngine-export interface WindowInfo-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -24,9 +22,7 @@ rect: window.Rect
 
 **类型：** window.Rect
 
-**起始版本：** 23
-
-<!--Device-WindowInfo-rect: window.Rect--><!--Device-WindowInfo-rect: window.Rect-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -40,9 +36,6 @@ status: window.WindowStatusType
 
 **类型：** window.WindowStatusType
 
-**起始版本：** 23
-
-<!--Device-WindowInfo-status: window.WindowStatusType--><!--Device-WindowInfo-status: window.WindowStatusType-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
