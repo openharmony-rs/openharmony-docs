@@ -18,7 +18,7 @@ RecentPhotoComponent不支持嵌套，且不应在其上覆盖设置overlay属�
 ## 导入模块
 
 ```ts
-// 在API version 23之前的版本中，需要使用 "import { api1, api2, ... } from '@ohos.file.PhotoPickerComponent'"的导入方式。
+// 在API version 23之前的版本中，需要使用"import { api1, api2, ... } from '@ohos.file.PhotoPickerComponent'"的导入方式。
 import {
   RecentPhotoComponent, RecentPhotoOptions, RecentPhotoCheckResultCallback, RecentPhotoInfo, RecentPhotoCheckInfoCallback,
   RecentPhotoClickCallback, PhotoSource
