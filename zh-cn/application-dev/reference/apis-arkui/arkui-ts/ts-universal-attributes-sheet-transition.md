@@ -1049,4 +1049,3 @@ struct SheetMaterialExample {
 ```
 
 ![zh-cn_sheet](figures/sheetMaterial-new-s.jpg)
-
