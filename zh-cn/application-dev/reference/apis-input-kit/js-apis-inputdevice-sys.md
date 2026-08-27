@@ -891,7 +891,7 @@ struct Index {
 }
 ```
 
-## inputDevice.bindToDisplay<sup>26+</sup>
+## inputDevice.bindToDisplay<sup>26.1.0+</sup>
 
 ArkTS-Dyn: bindToDisplay(inputDeviceId: number, displayId: number): Promise&lt;void&gt;
 
@@ -905,9 +905,9 @@ ArkTS-Sta: bindToDisplay(inputDeviceId: int, displayId: int): Promise&lt;void&gt
 
 **系统API**：此接口为系统接口。
 
-**ArkTS-Dyn起始版本**：26
+**ArkTS-Dyn起始版本**：26.1.0
 
-**ArkTS-Sta起始版本**：26
+**ArkTS-Sta起始版本**：26.1.0
 
 **参数**：
 
