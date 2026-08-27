@@ -56,7 +56,7 @@
 
 1. 组件级关闭：组件级设置[uiMaterial.Material.empty](../reference/apis-arkui/arkts-apis-uimaterial.md#empty)。默认开启、应用级接入和组件级接入三种接入方式均可通过该操作关闭。
 
-2. 应用级关闭：[应用级开关](#应用级开启)设置为disable，只针对应用级开启的组件。
+2. 应用级关闭：应用级开关设置为disable，只针对应用级开启的组件。
 
 此外，部分组件的沉浸式系统材质由多个独立接口控制。以Select为例，其下拉按钮的沉浸式系统材质通过[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)设置，下拉菜单的沉浸式系统材质通过独立的[menuSystemMaterial](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md#menusystemmaterial)接口设置，两者相互独立、可分别开启或关闭。
 
