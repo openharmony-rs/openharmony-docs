@@ -559,7 +559,7 @@ When the size of the flex container is not large enough, the following attribute
   }.width('90%').height(120).padding(10).backgroundColor('#AFEEEE')
   ```
 
-  ![flexBasis](figures/flexBasis.png)
+  ![flexBasis](figures/flexbasis.png)
 
 - [flexGrow](../reference/apis-arkui//arkui-ts/ts-universal-attributes-flex-layout.md#flexgrow): percentage of the flex container's remaining space that is allocated to the child element.
 
@@ -585,7 +585,7 @@ When the size of the flex container is not large enough, the following attribute
   }.width(360).height(120).padding(10).backgroundColor('#AFEEEE')
   ```
 
-  ![flexGrow](figures/flexGrow.png)
+  ![flexGrow](figures/flexgrow.png)
 
   In the preceding figure, the flex container has a width of 360 vp. The three child elements each have an initial width of 100 vp, with combined left and right margins totaling 20 vp, resulting in a total initial width of 320 vp. The remaining 40 vp of space in the flex container is distributed among the child elements according to their **flexGrow** values. The third child element, which has no **flexGrow** value set, does not participate in the distribution of the remaining space.
 
@@ -617,7 +617,7 @@ When the size of the flex container is not large enough, the following attribute
   }.width(400).height(120).padding(10).backgroundColor('#AFEEEE')
   ```
 
-  ![flexShrink](figures/flexShrink.png)
+  ![flexShrink](figures/flexshrink.png)
 
   In this example, the parent container has a width of 400 vp. The three child elements each have an initial width of 200 vp, with left and right padding totaling 20 vp. The available layout space within the parent container is 380 vp, creating an overflow of 220 vp beyond the available space.
 
