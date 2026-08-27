@@ -234,7 +234,7 @@ isWearDetectionSupported(deviceId: string, callback: AsyncCallback&lt;boolean&gt
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
 | deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
-| callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数。当接口调用成功，err为undefined，data为佩戴检测能力支持结果；否则为错误对象。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数。当接口调用成功，err为undefined，data为true表示支持佩戴检测能力，data为false表示不支持佩戴检测能力；否则为错误对象。 |
 
 **错误码**：
 
@@ -329,7 +329,7 @@ isWearDetectionEnabled(deviceId: string, callback: AsyncCallback&lt;boolean&gt;)
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
 | deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
-| callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数。当接口调用成功，err为undefined，data为佩戴检测能力开启结果；否则为错误对象。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数。当接口调用成功，err为undefined，data为true表示佩戴检测能力已开启，data为false表示佩戴检测能力未开启；否则为错误对象。 |
 
 **错误码**：
 

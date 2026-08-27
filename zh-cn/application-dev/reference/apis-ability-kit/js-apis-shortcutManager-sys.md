@@ -46,7 +46,7 @@ ArkTS-Sta: addDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: int): Prom
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1) | 是   | 快捷方式信息。 |
-| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户id。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。|
+| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户ID。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。|
 
 **返回值：**
 
@@ -170,7 +170,7 @@ ArkTS-Sta: deleteDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: int): P
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1) | 是   | 快捷方式信息。 |
-| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户id。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。|
+| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户ID。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。|
 
 **返回值：**
 
@@ -296,7 +296,7 @@ updateDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: number): Promise\<
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1) | 是   | 快捷方式信息。 |
-| userId     | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是   | 用户id。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。|
+| userId     | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是   | 用户ID。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。|
 
 **返回值：**
 
@@ -325,7 +325,7 @@ import { shortcutManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-// 请开发者替换为实际的快捷方式信息、用户id。
+// 请开发者替换为实际的快捷方式信息、用户ID。
 let shortcutInfo: shortcutManager.ShortcutInfo = {
   id: 'test1',
   bundleName: 'com.example.myapplication',
@@ -375,7 +375,7 @@ ArkTS-Sta: getAllDesktopShortcutInfo(userId: int): Promise<Array\<ShortcutInfo>>
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
-| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 被查询的用户id。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。|
+| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 被查询的用户ID。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。|
 
 **返回值：**
 
@@ -475,7 +475,7 @@ ArkTS-Sta: addDynamicShortcutInfos(shortcutInfo: Array\<ShortcutInfo>, userId: i
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 |  shortcutInfo   |   Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1)>    |   是  |  待添加的动态快捷方式信息。通过本接口提交时，会做如下校验：</br> 1.ShortcutInfo中的sourceType字段会被设置为2。</br> 2.ShortcutInfo中的moduleName字段在对应的应用中不存在时，会抛出17700002错误码。</br> 3.ShortcutInfo中的hostAbility字段被设置为非空的字符串时，会校验对应的ability是否存在，不存在时，会抛出17700003错误码。  |
-| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 动态快捷方式所属的用户id。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户，取值范围：大于等于0。|
+| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 动态快捷方式所属的用户ID。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户，取值范围：大于等于0。|
 
 **返回值：**
 
@@ -499,7 +499,7 @@ ArkTS-Sta: addDynamicShortcutInfos(shortcutInfo: Array\<ShortcutInfo>, userId: i
 | 17700026 | The specified bundle is disabled.|
 | 17700061 | The specified app index is invalid.|
 | 17700070 | The specified shortcut id is illegal.|
-| 18100001 | A combination of bundleName and appIndex in the shutcutInfo list is different from the others.|
+| 18100001 | A combination of bundleName and appIndex in the shortcutInfo list is different from the others.|
 
 **示例：**
 
@@ -567,7 +567,7 @@ ArkTS-Sta: deleteDynamicShortcutInfos(bundleName: string, appIndex: int, userId:
 | ---------- | ------ | ---- | -------------- |
 | bundleName   |   string    |   是  |   要删除的动态快捷方式所属的包名。    |
 | appIndex   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 要删除的动态快捷方式所属的分身索引。支持取值为：1、2、3、4、5。 |
-| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 要删除的动态快捷方式所属的用户id。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户，取值范围：大于等于0。|
+| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 要删除的动态快捷方式所属的用户ID。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户，取值范围：大于等于0。|
 | ids     |  Array\<string> | 否   | 要删除的动态快捷方式id列表。缺省或传入列表为空时，表示删除所有符合条件的动态快捷方式。|
 
 **返回值：**

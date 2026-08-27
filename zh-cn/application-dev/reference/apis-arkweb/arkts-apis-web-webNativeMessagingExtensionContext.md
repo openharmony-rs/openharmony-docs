@@ -35,6 +35,8 @@ import WebNativeMessagingExtensionContext from '@ohos.web.WebNativeMessagingExte
 
 WebNativeMessagingExtensionContext是Web原生消息扩展的上下文，包含所需交互能力。
 
+**系统能力:** SystemCapability.Web.Webview.Core
+
 ### startAbility
 
 startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;

@@ -20,9 +20,9 @@ ANI引用、`ani_env`和VM相关资源都有明确的生命周期边界。native
 ani_object g_obj;
 void NativeFuncImpl(ani_env* env, ani_object param) {
     ani_object newObj {};
-    if (env->Object_New(cls, ctor, &newObj) != ANI_OK) {
-        std::cerr << "Failed to create object" << std::endl;
-        return;
+    ani_status status = env->Object_New(cls, ctor, &newObj);
+    if (status != ANI_OK) {
+        // handle error and return
     }
     g_obj = newObj; // Local reference leakage, will cause UB
 }
@@ -33,16 +33,20 @@ void NativeFuncImpl(ani_env* env, ani_object param) {
 ani_ref g_obj;
 void OnEnterImpl(ani_env *env, ani_object param) {
     ani_object newObj {};
-    if (env->Object_New(cls, ctor, &newObj) != ANI_OK) {
-        std::cerr << "Failed to create object" << std::endl;
-        return;
+    ani_status status = env->Object_New(cls, ctor, &newObj);
+    if (status != ANI_OK) {
+        // handle error and return
     }
-    if (env->GlobalReference_Create(newObj, &g_obj) != ANI_OK) {
-        std::cerr << "Failed to create global reference" << std::endl;
+    status = env->GlobalReference_Create(newObj, &g_obj);
+    if (status != ANI_OK) {
+        // handle error and return
     }
 }
 void OnExitImpl(ani_env *env) {
-    env->GlobalReference_Delete(g_obj);
+    ani_status status = env->GlobalReference_Delete(g_obj);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
 }
 ```
 
@@ -77,8 +81,10 @@ void BackgroundWorkerThread(ani_vm* vm) {
     ani_env *env {nullptr};
     ani_option interopEnabled {"--interop=disable", nullptr};
     ani_options aniArgs {1, &interopEnabled};
-    auto status = vm->AttachCurrentThread(&aniArgs, ANI_VERSION_1, &env);
-    if (status != ANI_OK) return;
+    ani_status status = vm->AttachCurrentThread(&aniArgs, ANI_VERSION_1, &env);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
 
     // 模拟一个长期的任务循环（例如：监听网络、传感器、渲染循环）
     while (g_isRunning) {
@@ -89,17 +95,27 @@ void BackgroundWorkerThread(ani_vm* vm) {
     }
     
     // 2. 线程卸载：只有到了这里，引用才会被释放
-    vm->DetachCurrentThread();
+    status = vm->DetachCurrentThread();
+    if (status != ANI_OK) {
+        // handle error and return
+    }
 }
 
 // 具体的处理函数
 void HandleOneDataPacket(ani_env* env) {
     // 创建一个新的局部引用 (Object_New)
     ani_object data;
-    if (env->Object_New(cls, ctor, &data) != ANI_OK) return;
+    ani_status status = env->Object_New(cls, ctor, &data);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
 
     // 回调ArkTS层
-    env->Object_CallMethod_Void(callback, method, data);
+    status = env->Object_CallMethod_Void(callback, method, data);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
+
 
     // 【错误】：没有手动Delete。
     // 当前场景为native->native回调没有手动Delete是错误的，而在ArkTS->native场景下，这里不需要delete。
@@ -115,24 +131,35 @@ void BackgroundWorkerThread(ani_vm* vm) {
     ani_env *env {nullptr};
     ani_option interopEnabled {"--interop=disable", nullptr};
     ani_options aniArgs {1, &interopEnabled};
-    auto status = vm->AttachCurrentThread(&aniArgs, ANI_VERSION_1, &env);
-    if (status != ANI_OK) return;
+    ani_status status = vm->AttachCurrentThread(&aniArgs, ANI_VERSION_1, &env);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
 
     while (g_isRunning) {
         // 最佳实践：在循环的每一次迭代中建立独立的引用作用域
         // 这样可以确保每次循环结束，产生的所有引用（无论多少）都会被清空
-        env->CreateLocalScope(16); 
+        ani_status status = env->CreateLocalScope(16);
+        if (status != ANI_OK) {
+            // handle error and return
+        }
 
         // 执行具体的业务逻辑（里面可能创建了object, string, array等）
         HandleOneDataPacket(env);
 
         // 弹栈：一次性销毁本次循环中创建的所有局部引用
-        env->DestroyLocalScope();
-        
+        status = env->DestroyLocalScope();
+        if (status != ANI_OK) {
+            // handle error and return
+        }
+
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
     
-    vm->DetachCurrentThread();
+    status = vm->DetachCurrentThread();
+    if (status != ANI_OK) {
+        // handle error and return
+    }
 }
 ```
 
@@ -148,7 +175,10 @@ void BackgroundWorkerThread(ani_vm* vm) {
 从`env`获取`vm`：
 ```cpp
 ani_vm *vm = nullptr;
-env->GetVM(&vm);
+ani_status status = env->GetVM(&vm);
+if (status != ANI_OK) {
+    // handle error and return
+}
 ```
 
 在另一个线程中：
@@ -157,7 +187,10 @@ env->GetVM(&vm);
    ```cpp
    ani_env *env = nullptr;
    ani_options aniArgs {0, nullptr};
-   auto status = vm->AttachCurrentThread(&aniArgs, ANI_VERSION_1, &env);
+   ani_status status = vm->AttachCurrentThread(&aniArgs, ANI_VERSION_1, &env);
+   if (status != ANI_OK) {
+       // handle error and return
+   }
    // env可正常使用，用于native调用ArkTS对象
    ```
 
@@ -165,13 +198,19 @@ env->GetVM(&vm);
 
    ```cpp
    ani_env *env;
-   auto status = vm->GetEnv(ANI_VERSION_1, &env);
+   ani_status status = vm->GetEnv(ANI_VERSION_1, &env);
+   if (status != ANI_OK) {
+       // handle error and return
+   }
    ```
 
 3. 线程结束时主动分离：
 
    ```cpp
-   vm->DetachCurrentThread();
+   ani_status status = vm->DetachCurrentThread();
+   if (status != ANI_OK) {
+       // handle error and return
+   }
    ```
 
 > **注意：**
@@ -235,6 +274,9 @@ std::array vmOptions {
 ani_options createVmArgs {vmOptions.size(), vmOptions.data()};
 ani_vm *vm = nullptr;
 ani_status status = ANI_CreateVM(&createVmArgs, ANI_VERSION_1, &vm);
+if (status != ANI_OK) {
+    // handle error and return
+}
 ```
 
 **`AttachCurrentThread`参数**
@@ -254,7 +296,10 @@ ani_status status = ANI_CreateVM(&createVmArgs, ANI_VERSION_1, &vm);
 ani_env *env {nullptr};
 ani_option interopEnabled {"--interop=enable", nullptr};
 ani_options aniArgs {1, &interopEnabled};
-auto status = vm->AttachCurrentThread(&aniArgs, ANI_VERSION_1, &env);
+ani_status status = vm->AttachCurrentThread(&aniArgs, ANI_VERSION_1, &env);
+if (status != ANI_OK) {
+    // handle error and return
+}
 // env可用于JS ↔ ArkTS互操作的线程
 ```
 
@@ -265,7 +310,10 @@ ani_env *env {nullptr};
 void *externalJsEnv = GetExternalJsEnv();
 ani_option interopEnabled {"--interop=enable", externalJsEnv};
 ani_options aniArgs {1, &interopEnabled};
-auto status = vm->AttachCurrentThread(&aniArgs, ANI_VERSION_1, &env);
+ani_status status = vm->AttachCurrentThread(&aniArgs, ANI_VERSION_1, &env);
+if (status != ANI_OK) {
+    // handle error and return
+}
 ```
 
 - 普通native线程调用`AttachCurrentThread`时`ani_options`通常直接传`nullptr`即可，默认不启用interop。

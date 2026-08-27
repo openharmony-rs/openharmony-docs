@@ -393,14 +393,16 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ## VideoMode<sup>22+</sup>
 
-枚举，视频文件的log模式。
+表示视频文件的log模式类型的枚举。
+
+视频入库后，系统会异步判断其是否为log模式。判断完成前，取值为DEFAULT；判断完成后，log模式视频的取值会更新为LOG_VIDEO。由于取值可能变化，不建议将VideoMode作为查询条件。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
-| DEFAULT |  0 |  默认类型。<br>取值为0表示当前视频非log模式或尚未判断类型。待视频类型异步判断完成后，若该视频为log模式，VideoMode将更新为LOG_VIDEO。因此不建议使用VideoMode作为查询条件。 |
-| LOG_VIDEO |  1 |  log模式视频的文件类型。  |
+| DEFAULT |  0 | 非log模式视频，或尚未完成log模式判断的视频。 |
+| LOG_VIDEO |  1 | log模式视频。 |
 
 ## OperationType<sup>22+</sup>
 

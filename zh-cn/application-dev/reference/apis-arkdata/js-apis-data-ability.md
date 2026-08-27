@@ -53,6 +53,8 @@ createRdbPredicates(name: string, dataAbilityPredicates: DataAbilityPredicates):
 
 提供用于实现不同查询方法的谓词。
 
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
 **初始化：**
 
   ```js
