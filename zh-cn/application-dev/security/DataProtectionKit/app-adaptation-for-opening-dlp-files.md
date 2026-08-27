@@ -175,6 +175,9 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
       }
     ]
     ```
+    
+    2.4 应用内使用文件Picker进行文件加密分享
+    <!-- @[dlp_callFilePicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
   
 3. 应用内支持对DLP文件权限设置。
 
@@ -788,3 +791,12 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
       }
     }
     ```
+## 常见问题
+
+### FUSE文件无法打开
+
+**问题描述**：应用可以打开正常文件，无法打开FUSE文件。
+
+**解决方法**：
+- 排查是否对want做了特定限制，导致DLP沙箱分身无法获取到FUSE文件。
+- 排查是否以读写权限打开了只读的FUSE文件。
