@@ -1612,3 +1612,5 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .value[0].i32 | Whether the new SVG parsing capability is enabled. The value **1** indicates the new SVG parsing capability is enabled, and **0** indicates the original SVG parsing capability is retained. |
+
+<!--no_check-->
