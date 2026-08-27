@@ -16,13 +16,13 @@ formHost模块提供了卡片使用方相关接口的能力，包括对使用方
 >
 > 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
-## 导入模块
+## formHost.导入模块
 
 ```ts
 import { formHost } from '@kit.FormKit';
 ```
 
-## deleteForm
+## formHost.formHost.deleteForm
 
 deleteForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -101,7 +101,7 @@ try {
 }
 ```
 
-## deleteForm
+## formHost.deleteForm
 
 deleteForm(formId: string): Promise&lt;void&gt;
 
@@ -180,7 +180,7 @@ try {
 }
 ```
 
-## releaseForm
+## formHost.formHost.releaseForm
 
 releaseForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -255,7 +255,7 @@ try {
 }
 ```
 
-## releaseForm
+## formHost.releaseForm
 
 releaseForm(formId: string, isReleaseCache: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -331,7 +331,7 @@ try {
 }
 ```
 
-## releaseForm
+## formHost.releaseForm
 
 releaseForm(formId: string, isReleaseCache?: boolean): Promise&lt;void&gt;
 
@@ -412,7 +412,7 @@ try {
 }
 ```
 
-## requestForm
+## formHost.requestForm
 
 requestForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -487,7 +487,7 @@ try {
 }
 ```
 
-## requestForm
+## formHost.requestForm
 
 requestForm(formId: string): Promise&lt;void&gt;
 
@@ -567,7 +567,7 @@ try {
 }
 ```
 
-## requestFormWithParams<sup>12+</sup>
+## formHost.requestFormWithParams<sup>12+</sup>
 
 requestFormWithParams(formId: string, wantParams?: Record<string, Object>): Promise&lt;void&gt;
 
@@ -654,7 +654,7 @@ try {
 }
 ```
 
-## castToNormalForm
+## formHost.castToNormalForm
 
 castToNormalForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -729,7 +729,7 @@ try {
 }
 ```
 
-## castToNormalForm
+## formHost.castToNormalForm
 
 castToNormalForm(formId: string): Promise&lt;void&gt;
 
@@ -809,7 +809,7 @@ try {
 }
 ```
 
-## notifyVisibleForms
+## formHost.notifyVisibleForms
 
 notifyVisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -882,7 +882,7 @@ try {
 }
 ```
 
-## notifyVisibleForms
+## formHost.notifyVisibleForms
 
 notifyVisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -960,7 +960,7 @@ try {
 }
 ```
 
-## notifyInvisibleForms
+## formHost.notifyInvisibleForms
 
 notifyInvisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -1033,7 +1033,7 @@ try {
 }
 ```
 
-## notifyInvisibleForms
+## formHost.notifyInvisibleForms
 
 notifyInvisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -1111,7 +1111,7 @@ try {
 }
 ```
 
-## enableFormsUpdate
+## formHost.enableFormsUpdate
 
 enableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -1185,7 +1185,7 @@ try {
 }
 ```
 
-## enableFormsUpdate
+## formHost.enableFormsUpdate
 
 enableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -1264,7 +1264,7 @@ try {
 }
 ```
 
-## disableFormsUpdate
+## formHost.disableFormsUpdate
 
 disableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -1339,7 +1339,7 @@ try {
 }
 ```
 
-## disableFormsUpdate
+## formHost.disableFormsUpdate
 
 disableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -1419,7 +1419,7 @@ try {
 }
 ```
 
-## isSystemReady
+## formHost.isSystemReady
 
 isSystemReady(callback: AsyncCallback&lt;void&gt;): void
 
@@ -1483,7 +1483,7 @@ try {
 }
 ```
 
-## isSystemReady
+## formHost.isSystemReady
 
 isSystemReady(): Promise&lt;void&gt;
 
@@ -1546,7 +1546,7 @@ try {
 }
 ```
 
-## getAllFormsInfo
+## formHost.getAllFormsInfo
 
 getAllFormsInfo(callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
@@ -1619,7 +1619,7 @@ try {
 }
 ```
 
-## getAllFormsInfo
+## formHost.getAllFormsInfo
 
 getAllFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
@@ -1687,7 +1687,7 @@ try {
 }
 ```
 
-## getFormsInfo
+## formHost.getFormsInfo
 
 getFormsInfo(bundleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
@@ -1762,7 +1762,7 @@ try {
 }
 ```
 
-## getFormsInfo
+## formHost.getFormsInfo
 
 getFormsInfo(bundleName: string, moduleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
@@ -1838,7 +1838,7 @@ try {
 }
 ```
 
-## getFormsInfo
+## formHost.getFormsInfo
 
 getFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
@@ -1915,7 +1915,7 @@ try {
 }
 ```
 
-## getFormsInfo<sup>12+</sup>
+## formHost.getFormsInfo<sup>12+</sup>
 
 getFormsInfo(filter: formInfo.FormInfoFilter): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
@@ -2001,7 +2001,7 @@ try {
 }
 ```
 
-## deleteInvalidForms
+## formHost.deleteInvalidForms
 
 ArkTS-Dyn: deleteInvalidForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;number&gt;): void
 
@@ -2079,7 +2079,7 @@ try {
 }
 ```
 
-## deleteInvalidForms
+## formHost.deleteInvalidForms
 
 ArkTS-Dyn: deleteInvalidForms(formIds: Array&lt;string&gt;): Promise&lt;number&gt;
 
@@ -2157,7 +2157,7 @@ try {
   console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
-## acquireFormState
+## formHost.acquireFormState
 
 acquireFormState(want: Want, callback: AsyncCallback&lt;formInfo.FormStateInfo&gt;): void
 
@@ -2255,7 +2255,7 @@ try {
 }
 ```
 
-## acquireFormState
+## formHost.acquireFormState
 
 acquireFormState(want: Want): Promise&lt;formInfo.FormStateInfo&gt;
 
@@ -2354,7 +2354,7 @@ try {
 }
 ```
 
-## on('formUninstall')
+## formHost.on('formUninstall')
 
 on(type: 'formUninstall', callback: Callback&lt;string&gt;): void
 
@@ -2396,7 +2396,7 @@ formHost.on('formUninstall', (formId: string) => {
 });
 ```
 
-## off('formUninstall')
+## formHost.formHost.off('formUninstall')
 
 off(type: 'formUninstall', callback?: Callback&lt;string&gt;): void
 
@@ -2438,7 +2438,7 @@ formHost.off('formUninstall', (formId: string) => {
 });
 ```
 
-## notifyFormsVisible
+## formHost.formHost.notifyFormsVisible
 
 notifyFormsVisible(formIds: Array&lt;string&gt;, isVisible: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -2513,7 +2513,7 @@ try {
 }
 ```
 
-## notifyFormsVisible
+## formHost.notifyFormsVisible
 
 notifyFormsVisible(formIds: Array&lt;string&gt;, isVisible: boolean): Promise&lt;void&gt;
 
@@ -2593,7 +2593,7 @@ try {
 }
 ```
 
-## notifyFormsEnableUpdate
+## formHost.notifyFormsEnableUpdate
 
 notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -2668,7 +2668,7 @@ try {
 }
 ```
 
-## notifyFormsEnableUpdate
+## formHost.notifyFormsEnableUpdate
 
 notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean): Promise&lt;void&gt;
 
@@ -2747,7 +2747,7 @@ try {
   console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
-## shareForm
+## formHost.shareForm
 
 shareForm(formId: string, deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -2824,7 +2824,7 @@ try {
 }
 ```
 
-## shareForm
+## formHost.shareForm
 
 shareForm(formId: string, deviceId: string): Promise&lt;void&gt;
 
@@ -2906,7 +2906,7 @@ try {
 }
 ```
 
-## notifyFormsPrivacyProtected
+## formHost.notifyFormsPrivacyProtected
 
 notifyFormsPrivacyProtected(formIds: Array\<string>, isProtected: boolean, callback: AsyncCallback\<void>): void
 
@@ -2980,7 +2980,7 @@ try {
 }
 ```
 
-## notifyFormsPrivacyProtected
+## formHost.notifyFormsPrivacyProtected
 
 notifyFormsPrivacyProtected(formIds: Array\<string\>, isProtected: boolean): Promise\<void\>
 
@@ -3059,7 +3059,7 @@ try {
 }
 ```
 
-## acquireFormData<sup>10+</sup>
+## formHost.acquireFormData<sup>10+</sup>
 
 acquireFormData(formId: string, callback: AsyncCallback\<Record\<string, Object>>): void
 
@@ -3138,7 +3138,7 @@ try {
 }
 ```
 
-## acquireFormData<sup>10+</sup>
+## formHost.acquireFormData<sup>10+</sup>
 
 acquireFormData(formId: string): Promise\<Record\<string, Object>>
 
@@ -3219,7 +3219,7 @@ try {
 }
 ```
 
-## setRouterProxy<sup>11+</sup>
+## formHost.setRouterProxy<sup>11+</sup>
 
 setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -3378,7 +3378,7 @@ struct CardExample {
 }
 ```
 
-## setRouterProxy<sup>11+</sup>
+## formHost.setRouterProxy<sup>11+</sup>
 
 setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;): Promise&lt;void&gt;
 
@@ -3543,7 +3543,7 @@ struct CardExample {
 }
 ```
 
-## clearRouterProxy<sup>11+</sup>
+## formHost.clearRouterProxy<sup>11+</sup>
 
 clearRouterProxy(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -3617,7 +3617,7 @@ try {
 }
 ```
 
-## clearRouterProxy<sup>11+</sup>
+## formHost.clearRouterProxy<sup>11+</sup>
 
 clearRouterProxy(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -3695,7 +3695,7 @@ try {
   console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
-## setFormsRecyclable<sup>11+</sup>
+## formHost.setFormsRecyclable<sup>11+</sup>
 
 setFormsRecyclable(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -3770,7 +3770,7 @@ try {
 }
 ```
 
-## setFormsRecyclable<sup>11+</sup>
+## formHost.setFormsRecyclable<sup>11+</sup>
 
 setFormsRecyclable(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -3849,7 +3849,7 @@ try {
   console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
-## recoverForms<sup>11+</sup>
+## formHost.recoverForms<sup>11+</sup>
 
 recoverForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -3923,7 +3923,7 @@ try {
   console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
-## recoverForms<sup>11+</sup>
+## formHost.recoverForms<sup>11+</sup>
 
 recoverForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -4003,7 +4003,7 @@ try {
   console.info(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
-## recycleForms<sup>12+</sup>
+## formHost.recycleForms<sup>12+</sup>
 
 recycleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -4084,7 +4084,7 @@ try {
 }
 ```
 
-## updateFormLocation<sup>12+</sup>
+## formHost.updateFormLocation<sup>12+</sup>
 updateFormLocation(formId: string, location: formInfo.FormLocation): void;
 
 更新卡片位置。
@@ -4152,7 +4152,7 @@ try {
 }
 ```
 
-## setPublishFormResult<sup>12+</sup>
+## formHost.setPublishFormResult<sup>12+</sup>
 
 setPublishFormResult(formId: string, result: formInfo.PublishFormResult): void;
 
@@ -4221,7 +4221,7 @@ try {
   console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
-## updateFormLockedState<sup>22+</sup>
+## formHost.updateFormLockedState<sup>22+</sup>
 
 updateFormLockedState(formId: string, isLocked: boolean): Promise&lt;void&gt;
 
@@ -4302,7 +4302,7 @@ try {
 }
 ```
 
-## addForm<sup>12+</sup>
+## formHost.addForm<sup>12+</sup>
 
 addForm(want: Want): Promise&lt;formInfo.RunningFormInfo&gt;
 
@@ -4411,7 +4411,7 @@ try {
 }
 ```
 
-## formHost.on('formOverflow')<sup>20+</sup>
+## formHost.formHost.on('formOverflow')<sup>20+</sup>
 
 on(type: 'formOverflow', callback: Callback&lt;formInfo.OverflowRequest&gt;): void
 
@@ -4455,7 +4455,7 @@ try {
 }
 ```
 
-## formHost.onFormOverflow<sup>23+</sup>
+## formHost.formHost.onFormOverflow<sup>23+</sup>
 
 onFormOverflow(callback: Callback\<formInfo.OverflowRequest\>): void
 
@@ -4502,7 +4502,7 @@ try {
 }
 ```
 
-## formHost.off('formOverflow')<sup>20+</sup>
+## formHost.formHost.off('formOverflow')<sup>20+</sup>
 
 off(type: 'formOverflow', callback?: Callback&lt;formInfo.OverflowRequest&gt;): void
 
@@ -4546,7 +4546,7 @@ try {
 }   
 ```
 
-## formHost.offFormOverflow<sup>23+</sup>
+## formHost.formHost.offFormOverflow<sup>23+</sup>
 
 offFormOverflow(callback?: Callback\<formInfo.OverflowRequest\>): void
 
@@ -4593,7 +4593,7 @@ try {
 }
 ```
 
-## formHost.on('changeSceneAnimationState')<sup>20+</sup>
+## formHost.formHost.on('changeSceneAnimationState')<sup>20+</sup>
 
 on(type: 'changeSceneAnimationState', callback: Callback&lt;formInfo.ChangeSceneAnimationStateRequest&gt;): void
 
@@ -4637,7 +4637,7 @@ try {
 }
 ```
 
-## formHost.onChangeSceneAnimationState<sup>23+</sup>
+## formHost.formHost.onChangeSceneAnimationState<sup>23+</sup>
 
 onChangeSceneAnimationState(callback: Callback\<formInfo.ChangeSceneAnimationStateRequest\>): void
 
@@ -4686,7 +4686,7 @@ try {
 }
 ```
 
-## formHost.off('changeSceneAnimationState')<sup>20+</sup>
+## formHost.formHost.off('changeSceneAnimationState')<sup>20+</sup>
 
 off(type: 'changeSceneAnimationState', callback?: Callback&lt;formInfo.ChangeSceneAnimationStateRequest&gt;): void
 
@@ -4730,7 +4730,7 @@ try {
 }
 ```
 
-## formHost.offChangeSceneAnimationState<sup>23+</sup>
+## formHost.formHost.offChangeSceneAnimationState<sup>23+</sup>
 
 offChangeSceneAnimationState(callback?: Callback\<formInfo.ChangeSceneAnimationStateRequest\>): void
 
@@ -4777,7 +4777,7 @@ try {
 }
 ```
 
-## formHost.on('getFormRect')<sup>20+</sup>
+## formHost.formHost.on('getFormRect')<sup>20+</sup>
 
 on(type: 'getFormRect', callback: formInfo.GetFormRectInfoCallback): void
 
@@ -4831,7 +4831,7 @@ try {
 }
 ```
 
-## formHost.onGetFormRect<sup>23+</sup>
+## formHost.formHost.onGetFormRect<sup>23+</sup>
 
 onGetFormRect(callback: formInfo.GetFormRectInfoCallback): void
 
@@ -4891,7 +4891,7 @@ try {
 }
 ```
 
-## formHost.off('getFormRect')<sup>20+</sup>
+## formHost.formHost.off('getFormRect')<sup>20+</sup>
 
 off(type: 'getFormRect', callback?: formInfo.GetFormRectInfoCallback): void
 
@@ -4933,7 +4933,7 @@ try {
 }
 ```
 
-## formHost.offGetFormRect<sup>23+</sup>
+## formHost.formHost.offGetFormRect<sup>23+</sup>
 
 offGetFormRect(callback?: formInfo.GetFormRectInfoCallback): void
 
@@ -4989,7 +4989,7 @@ try {
 }
 ```
 
-## formHost.updateFormSize<sup>20+</sup>
+## formHost.formHost.updateFormSize<sup>20+</sup>
 
 updateFormSize(formId: string, newDimension: formInfo.FormDimension, newRect: formInfo.Rect): void
 
@@ -5065,7 +5065,7 @@ try {
 }
 ```
 
-## formHost.onGetLiveFormStatus<sup>23+</sup>
+## formHost.formHost.onGetLiveFormStatus<sup>23+</sup>
 
 onGetLiveFormStatus(callback: formInfo.GetLiveFormStatusCallback): void
 
@@ -5111,7 +5111,7 @@ try {
 }
 ```
 
-## formHost.offGetLiveFormStatus<sup>23+</sup>
+## formHost.formHost.offGetLiveFormStatus<sup>23+</sup>
 
 offGetLiveFormStatus(callback?: formInfo.GetLiveFormStatusCallback): void
 
@@ -5157,7 +5157,7 @@ try {
 }
 ```
 
-## formHost.onFormUninstall<sup>23+</sup>
+## formHost.formHost.onFormUninstall<sup>23+</sup>
 
 onFormUninstall(callback: Callback&lt;string&gt;): void
 
@@ -5206,7 +5206,7 @@ try {
 }
 ```
 
-## formHost.offFormUninstall<sup>23+</sup>
+## formHost.formHost.offFormUninstall<sup>23+</sup>
 
 offFormUninstall(callback?: Callback&lt;string&gt;): void
 
@@ -5254,7 +5254,7 @@ try {
 ```
 
 
-## getAllTemplateFormsInfo<sup>23+</sup>
+## formHost.getAllTemplateFormsInfo<sup>23+</sup>
 
 getAllTemplateFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
@@ -5328,7 +5328,7 @@ try {
 ```
 
 
-## getTemplateFormsInfo<sup>23+</sup>
+## formHost.formHost.getTemplateFormsInfo<sup>23+</sup>
 
 getTemplateFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
@@ -5408,7 +5408,7 @@ try {
 }
 ```
 
-## formHost.onTemplateFormDetailInfoChange<sup>23+</sup>
+## formHost.formHost.onTemplateFormDetailInfoChange<sup>23+</sup>
 
 onTemplateFormDetailInfoChange(callback: formInfo.TemplateFormDetailInfoCallback): void
 
@@ -5484,7 +5484,7 @@ try {
 ```
 
 
-## formHost.offTemplateFormDetailInfoChange<sup>23+</sup>
+## formHost.formHost.offTemplateFormDetailInfoChange<sup>23+</sup>
 
 offTemplateFormDetailInfoChange(callback?: formInfo.TemplateFormDetailInfoCallback): void
 
@@ -5549,7 +5549,7 @@ try {
 }
 ```
 
-## formHost.getFormIdsByFormLocation<sup>24+</sup>
+## formHost.formHost.getFormIdsByFormLocation<sup>24+</sup>
 
 getFormIdsByFormLocation(location: formInfo.FormLocation): Promise&lt;Array&lt;string&gt;&gt;
 
@@ -5627,7 +5627,7 @@ try {
 }
 ```
 
-## formHost.onGetWantParamsCallback
+## formHost.formHost.onGetWantParamsCallback
 
 onGetWantParamsCallback(callback: formInfo.GetWantParamsCallback): void
 
@@ -5712,7 +5712,7 @@ try {
 }
 ```
 
-## formHost.offGetWantParamsCallback
+## formHost.formHost.offGetWantParamsCallback
 
 offGetWantParamsCallback(callback?: formInfo.GetWantParamsCallback): void
 
