@@ -585,7 +585,7 @@ In the preceding scenario, to enable touch event propagation, wrap the syntax no
   }
   ```
 
-Alternatively, for custom components, you can directly set attributes. In this case, a **__Common__** node is generated, and the custom component's attributes are mounted to the **__Common__** node, achieving the same effect.
+Alternatively, for custom components, you can directly set attributes. In this case, a \_\_Common\_\_ node is generated, and the custom component's attributes are mounted to the \_\_Common\_\_ node, achieving the same effect.
 
 ![BuilderNode_BuilderProxyNode_3](figures/BuilderNode_BuilderProxyNode_3.png)
 
@@ -635,7 +635,7 @@ Alternatively, for custom components, you can directly set attributes. In this c
   
   @Builder
   function buildGreenColumn() {
-    // Setting attributes directly on the custom component generates a __Common__ node (no BuilderProxyNode).
+    // Setting attributes directly on the custom component generates a \_\_Common\_\_ node (no BuilderProxyNode).
     GreenColumnComponent()
       .hitTestBehavior(HitTestMode.Transparent)
   }

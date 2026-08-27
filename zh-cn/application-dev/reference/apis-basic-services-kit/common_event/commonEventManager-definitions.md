@@ -227,7 +227,7 @@
 
 **取值：** "usual.event.MANAGE_PACKAGE_STORAGE"
 
-### COMMON_EVENT_SKILL_CHANGED<sup>26+</sup>
+### COMMON_EVENT_SKILL_CHANGED
 
 表示设备上应用的skill发生变化的公共事件。
 
@@ -238,6 +238,8 @@
 > 应用默认只能接收自身应用的skill变化事件。
 > 
 > 申请ohos.permission.MANAGE_SKILL_PRIVILEGE权限后能接收自身应用和其他应用的skill变化事件。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 

@@ -493,8 +493,7 @@ struct SelectionContainerExample1 {
 }
 ```
 
-<!--Del-->![selectionContainerDemo] (figures/selectionContainerDemo.png)
-<!--DelEnd-->
+![selectionContainerDemo](figures/selectionContainerDemo.png)
 
 ### Example 2: Binding a Custom Selection Menu
 
@@ -593,8 +592,7 @@ struct SelectionContainerExample2 {
 }
 ```
 
-<!--Del-->![selectionContainerBindMenu] (figures/selectionContainerBindMenu.png)
-<!--DelEnd-->
+![selectionContainerBindMenu](figures/selectionContainerBindMenu.png)
 
 ### Example 3: Extending Menu Options
 
@@ -737,8 +735,7 @@ struct SelectionContainerExample3 {
 }
 ```
 
-<!--Del-->![selectionContainerEditMenu] (figures/selectionContainerEditMenu.png)
-<!--DelEnd-->
+![selectionContainerEditMenu](figures/selectionContainerEditMenu.png)
 
 ### Example 4: Closing the Selection Menu and Clearing Text Selection Through the Controllers
 
@@ -795,5 +792,4 @@ struct SelectionContainerControllerExample {
 }
 ```
 
-<!--Del-->![selectionContainerController] (figures/selectionContainerController.gif)
-<!--DelEnd-->
+![selectionContainerController](figures/selectionContainerController.gif)

@@ -16,7 +16,7 @@ typedef struct OH_MediaAssetManager OH_MediaAssetManager
 
 此结构提供了请求媒体库资源的能力。
 
-如果创建失败，则返回空指针。
+创建该结构体实例失败时返回空指针。
 
 **起始版本：** 12
 

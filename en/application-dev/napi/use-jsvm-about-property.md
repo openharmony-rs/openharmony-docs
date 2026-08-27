@@ -1,27 +1,23 @@
 # Setting JS Object Properties Using JSVM-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=fa3fc214ef4b265f033bc3f0d0a2df54f511a497 translatedAt=2026-08-12T06:33:31.112Z pushedAt=2026-08-12T10:58:17.882Z -->
+<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-08-26T02:57:38.917Z pushedAt=2026-08-26T03:38:56.480Z -->
 
 ## Introduction
 
-This topic walks you through on how to obtain and set properties of a JavaScript (JS) object using JSVM-API. Properly using these APIs help to implement more complex functionalities and logic.
+This topic walks you through on how to obtain and set properties of a JavaScript (JS) object using JSVM-API. Properly using these APIs helps to implement more complex functionalities and logic.
 
 ## Basic Concepts
 
 Before working with JS objects using JSVM-API, you need to understand the following concepts:
 
 - Object: a composite data type that allows values of different types in an independent entity in JS. An object is a collection of properties and methods. A property is a value associated with the object, and a method is an operation that the object can perform.
-
 - Property: a feature, in the key-value format, of an object in JS. Each property has a name (key or identifier) and a value. The property value can be of any data type, including the basic type, object, and function.
-
 - Enumerable property: a property in JS with **enumerable** set to **true**. An enumerable property can be traversed by **for...in**.
-
 - Own property: a property defined for an object rather than inherited from the prototype chain.
 
 ## Available APIs
@@ -37,7 +33,7 @@ Before working with JS objects using JSVM-API, you need to understand the follow
 | OH_JSVM_SetNamedProperty   | Sets a property with the given property name for a JS object. This API is equivalent to calling **OH_JSVM_SetProperty** with a **JSVM_Value** created from the string passed in as **utf8Name**.|
 | OH_JSVM_GetNamedProperty   | Obtains a property from a JS object. This API is equivalent to calling **OH_JSVM_GetProperty** with a **JSVM_Value** created from the string passed in as **utf8Name**.|
 | OH_JSVM_HasNamedProperty   | Checks whether a JS object has the specified property. This API is equivalent to calling **OH_JSVM_HasProperty** with a **JSVM_Value** created from the string passed in as **utf8Name**.|
-| OH_JSVM_DefineProperties   | Defines multiple properties for a JS object.|
+| OH_JSVM_DefineProperties   | Defines multiple properties for a JS object. |
 | OH_JSVM_GetAllPropertyNames | Obtains the names of all available properties of a JS object as a JS array.|
 
 ## Example
@@ -89,7 +85,6 @@ const char *SRC_CALL_NATIVE = R"JS(
 ```
 
 Expected result:
-
 ```ts
 JSVM OH_JSVM_GetPropertyNames success
 ```
@@ -146,7 +141,6 @@ const char *SRC_CALL_NATIVE = R"JS(
 ```
 
 Expected result:
-
 ```ts
 JSVM OH_JSVM_SetProperty success
 ```
@@ -196,7 +190,6 @@ const char *SRC_CALL_NATIVE = R"JS(
 ```
 
 Expected result:
-
 ```ts
 JSVM OH_JSVM_GetProperty success
 ```
@@ -217,7 +210,7 @@ static JSVM_Value HasProperty(JSVM_Env env, JSVM_CallbackInfo info)
     size_t argc = 2;
     JSVM_Value args[2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
-    // Pass the parameters to the OH_JSVM_HasProperty method. If the API call succeeds, convert the result to the JSVM_Value type and throw it; otherwise, throw an error.
+    // Pass the parameters to OH_JSVM_HasProperty. If the API is called successfully, convert the result to the JSVM_Value type and throw it; otherwise, throw an error.
     bool result = false;
     JSVM_Status status = OH_JSVM_HasProperty(env, args[0], args[1], &result);
     if (status != JSVM_OK) {
@@ -226,7 +219,7 @@ static JSVM_Value HasProperty(JSVM_Env env, JSVM_CallbackInfo info)
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM OH_JSVM_HasProperty success:%{public}d", result);
     }
-    // If the specified property exists in the given object, output true and convert the result to the JSVM_Value type and throw it.
+    // If the passed property exists in the passed object, output true and convert the result to the JSVM_Value type and throw it.
     JSVM_Value returnResult = nullptr;
     OH_JSVM_GetBoolean(env, result, &returnResult);
     return returnResult;
@@ -250,7 +243,6 @@ const char *SRC_CALL_NATIVE = R"JS(
 ```
 
 Expected result:
-
 ```ts
 // hasProperty (obj, "data") output
 JSVM OH_JSVM_HasProperty success:1
@@ -314,7 +306,6 @@ const char *SRC_CALL_NATIVE = R"JS(
 ```
 
 Expected result:
-
 ```ts
 JSVM OH_JSVM_DeleteProperty success:1
 ```
@@ -382,7 +373,6 @@ const char *SRC_CALL_NATIVE = R"JS(
 ```
 
 Expected result:
-
 ```ts
 // hasOwnProperty (obj, "message") output
 JSVM OH_JSVM_HasOwnProperty success:1
@@ -447,7 +437,6 @@ const char *SRC_CALL_NATIVE = R"JS(
 ```
 
 Expected result:
-
 ```ts
 JSVM OH_JSVM_SetNamedProperty success
 ```
@@ -502,7 +491,6 @@ const char *SRC_CALL_NATIVE = R"JS(
 ```
 
 Expected result:
-
 ```ts
 JSVM OH_JSVM_GetNamedProperty success
 ```
@@ -560,7 +548,6 @@ const char *SRC_CALL_NATIVE = R"JS(
 ```
 
 Expected result:
-
 ```ts
 JSVM OH_JSVM_HasNamedProperty success:1
 ```
@@ -701,7 +688,6 @@ const char *SRC_CALL_NATIVE = R"JS(
 ```
 
 Expected result:
-
 ```ts
 JSVM DefineMethodPropertiesExample success:26
 JSVM defineStringPropertiesExample success:Hello!
@@ -756,7 +742,6 @@ const char *SRC_CALL_NATIVE = R"JS(
 ```
 
 Expected result:
-
 ```ts
 JSVM OH_JSVM_GetAllPropertyNames success
 ```

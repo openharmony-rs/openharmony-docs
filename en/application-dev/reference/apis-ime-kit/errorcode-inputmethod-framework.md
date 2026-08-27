@@ -1,16 +1,18 @@
 # Input Method Framework Error Codes
+
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=4c244f2ed12456a4c6059eccff764e442d7872b9 translatedAt=2026-08-24T07:41:46.634Z pushedAt=2026-08-26T09:18:29.219Z -->
 
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-## 12800001 Package Manager Error
+## 12800001 Bundle Manager Service Exception
 
 **Error Message**
 
@@ -18,45 +20,51 @@ Bundle manager error.
 
 **Description**
 
-This error code is reported when an API of the package manager, such as **getInputMethods** and **listCurrentInputMethodSubtype**, fails to be called to obtain information.
+This error code is reported when the system fails to obtain information such as the input method application bundle name and version number by calling bundle management APIs.
 
 **Possible Causes**
 
-The package manager is not working correctly when APIs such as **getInputMethods** and **listCurrentInputMethodSubtype** are called to obtain the input method subtype.
+This error code is thrown when APIs such as **getInputMethods** and **listCurrentInputMethodSubtype** are called to obtain input methods and their subtypes, and an error occurs within the bundle manager service.
 
 **Solution**
 
-None
+Check the bundle manager service status and ensure that the service is running properly.
 
 ## 12800002 Input Method Engine Error
 
 **Error Message**
 
 Input method engine error. Possible causes:
+
 1. input method panel not created.
-2. the input method application does not subscribe to related events.
+
+2. input method application does not subscribe to input method panel lifecycle events.
 
 **Description**
 
-The input method process is suspended in operations such as displaying and hiding the keyboard.
+This error code is reported when operations such as showing or hiding the keyboard fail because the input method panel is not created or the input method application does not subscribe to related events.
 
 **Possible Causes**
 
 1. The input method panel is not created.
+
 2. The input method application does not subscribe to related events.
 
 **Solution**
 
-Check whether the input method process is running properly. For example, click the text input box in an application to check whether the input keyboard is displayed.
+Check whether the input method application process is running normally. Tap the application dialog box to trigger the keyboard display. If the keyboard is displayed normally, the process is running normally.
 
 ## 12800003 Input Method Client Error
 
 **Error Message**
 
 Input method client error. Possible causes: 
+
 1. the edit box is not focused.
+
 2. no edit box is bound to current input method application.
-3. ipc failed due to the large amount of data transferred or other reasons.
+
+3. ipc failed due to data transferred exceeding 1MB or invalid data format.
 
 **Description**
 
@@ -65,14 +73,18 @@ This error code is reported when the API for showing or hiding the keyboard fail
 **Possible Causes**
 
 1. The application is not focused.
-2. The input method is disconnected from the application due to a service error with the application.
-3. IPC fails because the data volume to transmit is too large.
+
+2. The application client service is abnormal, causing the input method application to disconnect from the application client.
+
+3. IPC fails because the data volume to transmit exceeds 1 MB or the data format is incorrect.
 
 **Solution**
 
-1. Bind the input method to the application again: Close the background process of the application, start the application again, and touch a text input box. If the keyboard is displayed properly, the issue is resolved.
-2. Place the application in the foreground and ensure that it is not covered by other applications or windows. Then touch the text input box to display the input method.
-3. According to [IPC Constraints](../../ipc/ipc-rpc-overview.md#constraints), you must limit the volume of data to be transmitted to a small size before initiating the request. Note that the total data transmitted at the IPC layer during each API call is the sum of the data sent by the application and the necessary data required for system-layer processing. Therefore, the maximum data an application can send when calling an API is less than the maximum allowed by IPC.
+1. Attach the input method app to the app again: terminate the background process of the application, restart the application, and trigger the display of the input method keyboard. The issue is resolved if the keyboard is shown normally. To hide the keyboard, call the **hideTextInput** API which shall be used in pairs with **showTextInput**.
+
+2. Switch the application to the foreground, ensure that it is not covered by other apps or windows, and trigger the keyboard to pop up.
+
+3. According to the IPC constraints and limitations, adjust the volume of data to be transmitted to a smaller size before initiating the request. The total volume of data transmitted at the IPC layer in a single API call equals the volume of data sent by the application side plus the necessary data required for system-layer processing. Therefore, the maximum volume of data that an application can actually send when calling an API (about 1 MB) is smaller than the maximum volume of data limited by IPC itself (about 1.2 MB). Note: **showTextInput** and **hideTextInput** must be called in pairs to avoid resource leaks.
 
 ## 12800004 Not an Input Method
 
@@ -86,13 +98,13 @@ This error code is reported when an API exclusive to input methods is called by 
 
 **Possible Causes**
 
-An API that can be called only by an input method is called by an application of another type.
+A non-input-method application called an API that is supported only by input method applications.
 
 **Solution**
 
 Call the API only in an input method.
 
-## 12800005 Configuration Persistence Error
+## 12800005 Configuration Persistence Failure
 
 **Error Message**
 
@@ -100,15 +112,15 @@ Configuration persistence error.
 
 **Description**
 
-This error code is reported when the configuration fails to be saved during input method switching.
+This error code is reported when configuration persistence fails.
 
 **Possible Causes**
 
-An exception occurs with the system parameter configuration module.
+When the API for switching input methods is called, input method configuration parameters are saved. An error is thrown if an exception occurs in the system parameter configuration module and causes the parameters to fail to be saved.
 
 **Solution**
 
-Run `hdc shell param get persist.sys.default_ime` to view the default input method parameters. If the parameters are displayed, the system parameter configuration module is working properly. In this case, restart the device and try again.
+Run the command **hdc shell param get persist.sys.default_ime** to check the default input method parameter. If the parameter is displayed normally, the system parameter configuration module is working properly. It is recommended that you restart the device and retry the configuration persistence operation.
 
 ## 12800006 Input Method Controller Error
 
@@ -122,7 +134,7 @@ This error code is reported when the input method controller fails to be obtaine
 
 **Possible Causes**
 
-An error occurs during invoking of the **getController** API.
+This error code is thrown if an application encounters an exception when calling the **getController** API to obtain the **InputMethodController**.
 
 **Solution**
 
@@ -136,11 +148,11 @@ Input method setter error. Possible cause: create InputMethodSetting object fail
 
 **Description**
 
-This error code is reported when an **InputMethodSetting** instance fails to be obtained.
+This error code is reported when the system fails to obtain the input method setter.
 
 **Possible Causes**
 
-An error occurs during invoking of the **getSetting** API.
+This error code is thrown if an application encounters an exception when calling the **getSetting** API to obtain the **InputMethodSetting**.
 
 **Solution**
 
@@ -154,15 +166,15 @@ Input method manager service error. Possible cause: a system error, such as null
 
 **Description**
 
-This error code is reported when an API of the [input method framework](js-apis-inputmethod.md) fails to be called.
+This error code is reported when an API in the input method framework is called and an exception occurs in obtaining the service because it depends on the input method manager service.
 
 **Possible Causes**
 
-The input method manager service fails to be found.
+This error code is thrown when an application calls any API of the [input method framework](js-apis-inputmethod.md) and the required input method manager service cannot be found.
 
 **Solution**
 
-Run `ps -A | grep inputmethod` to check the process ID of the input method service. If the process ID is found, the service is working properly.
+Run the command **ps -A | grep inputmethod** to check the process ID of the input method service. If the process exists, the service is running normally.
 
 ## 12800009 Input Method Client Detached
 
@@ -176,11 +188,11 @@ This error code is reported when the current application is not attached to an i
 
 **Possible Causes**
 
-The current application calls **showTextInput** or **hideTextInput** when not attached to an input method.
+This error code is thrown when the current app is not attached to an input method and operations such as **showTextInput** and **hideTextInput** are performed.
 
 **Solution**
 
-Call the `attach` API and then try again.
+First call the [attach](js-apis-inputmethod.md#attach10) API to establish attachment, and then call APIs such as **showTextInput** to perform keyboard operations. The complete call process is: **attach** → **showTextInput** (shows the keyboard) → **hideTextInput** (hides the keyboard). **hideTextInput** and **showTextInput** must be used in pairs to release resources.
 
 ## 12800010 Not Preconfigured Default Input Method
 
@@ -208,7 +220,7 @@ Text preview not supported.
 
 **Description**
 
-Preview of the text input box is not supported.
+The current edit box does not support the text preview feature.
 
 **Possible Causes**
 
@@ -230,11 +242,11 @@ The input method panel of the soft keyboard type is not created.
 
 **Possible Causes**
 
-The input method panel of the soft keyboard type is not created.
+The input method app has not created a soft keyboard type panel.
 
 **Solution**
 
-Use [createPanel](js-apis-inputmethodengine.md#createpanel10) to create a [panel](js-apis-inputmethodengine.md#panel10) of the [soft keyboard type](js-apis-inputmethodengine.md#paneltype10).
+Create the panel through the [createPanel](js-apis-inputmethodengine.md#createpanel10) API.
 
 ## 12800013 Window Manager Service Error
 
@@ -266,7 +278,7 @@ The input method application is in non-full access mode.
 
 **Possible Causes**
 
-This error is thrown if the input method is in non-full access mode after you call an API that requires the full access mode to be enabled.
+This error code is thrown when an API that requires full access mode is called but the current input method is not in full access mode.
 
 **Solution**
 
@@ -288,7 +300,7 @@ This error is thrown if the message receiver does not register [MessageHandler](
 
 **Solution**
 
-To receive custom communication data, register a **MessageHandler** for the message receiver, call [recvMessage](js-apis-inputmethodengine.md#recvmessage15) in the input method application, and call [recvMessage](js-apis-inputmethod.md#recvmessage15) for the input method client.
+The message receiving side must first register a **MessageHandler** to receive custom communication data before calling **recvMessage** to receive messages. Calling sequence: first register a **MessageHandler** (to listen for data), and then call **recvMessage** (to receive data). The input method application side calls [recvMessage](js-apis-inputmethodengine.md#recvmessage15), and the input method client side calls [recvMessage](js-apis-inputmethod.md#recvmessage15). Calling **recvMessage** without registering **MessageHandler** will result in failure to receive data.
 
 ## 12800016 Input Method Client Not in Edit Mode
 
@@ -306,13 +318,13 @@ The input method client exits the edit mode after being attached. For example, [
 
 **Solution**
 
-Enter the edit mode again after the input method client is attached and exits the edit mode. For example, the self-drawing component should enter the edit mode again by calling [showTextInput](js-apis-inputmethod.md#showtextinput10).
+After the input method client is attached and exits the editing state, it needs to re-enter the editing state. The complete call process is: **attach** (to establish attachment) → **showTextInput** (to enter the editing state) → **hideTextInput** (to exit the editing state). For example, a self-drawn control needs to call [showTextInput](js-apis-inputmethod.md#showtextinput10) to re-enter the editing state. Note: After **hideTextInput** is called, other editing operations cannot be called directly; **showTextInput** must be called first to re-enter the editing state.
 
 ## 12800017 Invalid Panel Type or Panel Flag
 
 **Error Message**
 
-Invalid panel type or panel flag.
+Invalid panel type or panel flag. Valid values are defined in PanelType and PanelFlag enums.
 
 **Description**
 
@@ -320,11 +332,13 @@ Invalid panel type or panel flag.
 
 **Possible Causes**
 
-This error is thrown if the [panel type](js-apis-inputmethodengine.md#paneltype10) or [panel flag](js-apis-inputmethodengine.md#panelflag10) of the input method does not support API call, or you cannot pass the type or flag to the API.
+This error code is thrown when the input method panel type or panel flag is not supported for invocation, or when the invoked API does not accept the currently passed panel type or panel flag.
 
 **Solution**
 
 Read the API usage description and adjust the input method panel type or panel status as required.
+
+<!--Del-->
 
 ## 12800018 Input Method Not Found
 
@@ -344,7 +358,6 @@ The input method is not installed.
 
 Call the [getAllInputMethods](js-apis-inputmethod.md#getallinputmethods11) to query all installed input methods.
 
-<!--Del-->
 ## 12800019 Unsupported Operation by Default Input Method
 
 **Error Message**
@@ -365,19 +378,24 @@ Call the [getDefaultInputMethod](js-apis-inputmethod.md#inputmethodgetdefaultinp
 
 <!--DelEnd-->
 
-## 12800020 Invalid Immersive Effect
+## 12800020 Immersive Effect Parameter Configuration Error
 
 **Error Message**
 
 Invalid immersive effect.
+
 1. The gradient mode and the fluid light mode can only be used when the immersive mode is enabled.
+
 2. The fluid light mode can only be used when the gradient mode is enabled.
+
 3. When the gradient mode is not enabled, the gradient height can only be 0.
 
 **Description**
 
 1. Gradient mode and fluid light mode can be used only when the immersive mode is enabled.
+
 2. The fluid light mode can be used only when the gradient mode is enabled.
+
 3. If the gradient mode is disabled, the gradient height can only be 0 px.
 
 **Possible Causes**
@@ -385,12 +403,14 @@ Invalid immersive effect.
 The input parameters do not meet the preceding requirements when the [setImmersiveEffect](js-apis-inputmethodengine.md#setimmersiveeffect20) API is called to set the [ImmersiveEffect](js-apis-inputmethodengine.md#immersiveeffect20).
 
 **Solution**
-1. Enable the immersive mode, and then set the gradient mode and fluid light mode.
-2. Enable the gradient mode and then set the fluid light mode.
-3. If the gradient mode is disabled, set the gradient height to 0 px.
 
+1. First set the **immersiveEnabled** property of **ImmersiveEffect** to **true** to enable the immersive mode, and then set **gradientMode** to enable the gradient mode and **fluidLightMode** to enable the fluid light mode.
 
-## 12800021 Unsupported Operation by Default Input Method
+2. First set the **gradientMode** property to enable the gradient mode, and then set the **fluidLightMode** property to enable the fluid light mode.
+
+3. When the gradient mode is not enabled (**gradientMode** is **false**), set the **gradientHeight** property to 0 px.
+
+## 12800021 Incorrect Call Sequence
 
 **Error Message**
 
@@ -398,25 +418,32 @@ This operation is allowed only after adjustPanelRect or resize is called.
 
 **Description**
 
-The current API can be called only after any of the following APIs is called:
+The **setImmersiveEffect** API can be called only after any of the following APIs is called:
+
   - [adjustPanelRect](js-apis-inputmethodengine.md#adjustpanelrect12) (available since API version 12)
+
   - [adjustPanelRect](js-apis-inputmethodengine.md#adjustpanelrect15) (available since API version 15)
+
   - [resize](js-apis-inputmethodengine.md#resize10) (available since API version 10)
 
 **Possible Causes**
 
 The [setImmersiveEffect](js-apis-inputmethodengine.md#setimmersiveeffect20) API can be called only after any of the following APIs is called:
+
   - [adjustPanelRect](js-apis-inputmethodengine.md#adjustpanelrect12) (available since API version 12)
+
   - [adjustPanelRect](js-apis-inputmethodengine.md#adjustpanelrect15) (available since API version 15)
+
   - [resize](js-apis-inputmethodengine.md#resize10) (available since API version 10)
 
 **Solution**
 
 The **setImmersiveEffect** API can be called only after any of the following APIs is called:
-  - [adjustPanelRect](js-apis-inputmethodengine.md#adjustpanelrect12) (available since API version 12)
-  - [adjustPanelRect](js-apis-inputmethodengine.md#adjustpanelrect15) (available since API version 15)
-  - [resize](js-apis-inputmethodengine.md#resize10) (available since API version 10)
-  
+
+  - **adjustPanelRect** (available since API version 12 or 15)
+
+  - **resize** (available since API version 10)
+
 ## 12800022 Invalid displayId
 
 **Error Message**
@@ -425,39 +452,102 @@ Invalid displayId.
 
 **Description**
 
-Invalid displayId.
+**displayId** is invalid or does not exist.
 
 **Possible Causes**
 
-The **displayId** passed to the [getSystemPanelCurrentInsets](js-apis-inputmethodengine.md#getsystempanelcurrentinsets21) API is invalid.
+This error code is thrown when the **displayId** passed to the [getSystemPanelCurrentInsets](js-apis-inputmethodengine.md#getsystempanelcurrentinsets21) API is invalid and the API call fails.
 
 **Solution**
 
-You can call the [getDisplayId](js-apis-inputmethodengine.md#getdisplayid15) API to obtain the ID of the current window.
+Call the [getDisplayId](js-apis-inputmethodengine.md#getdisplayid15) API to obtain the ID of the current window.
+
 <!--Del-->
+
+## 12800023 Specified User Not Exist
+
+**Error Message**
+
+The specified user does not exist.
+
+**Description**
+
+The specified user does not exist.
+
+**Possible Causes**
+
+This error code is thrown when an API with the **userId** parameter is called but the user corresponding to the passed **userId** does not exist.
+
+**Solution**
+
+Verify the validity of the user ID through system user management APIs such as **getOsAccountLocalIdFromNumber**, or check whether the passed **userId** parameter is correct.
+
+## 12800024 Specified User Not in the Foreground
+
+**Error Message**
+
+The specified user is not in the foreground.
+
+**Description**
+
+The specified user is not in the foreground.
+
+**Possible Causes**
+
+This error code is thrown when an API with the **userId** parameter is called but the user corresponding to the passed **userId** is not in the foreground.
+
+**Solution**
+
+Ensure that the target user is in the foreground before calling the related API.
+
+## 12800025 Cross-User Operation Denied
+
+**Error Message**
+
+Cross-user operation denied. Only user 0 applications are authorized for this operation.
+
+**Description**
+
+Cross‑user operation denied. Only applications belonging to user 0 are granted permission to perform this operation.
+
+**Possible Causes**
+
+An application of a user other than user 0 attempts to access or operate on data or features of another user.
+
+**Solution**
+
+Ensure that only applications for user 0 call the APIs for such cross‑user operations.
+
 ## 12800026 Input Method System Panel Error
 
 **Error Message**
 
 Input method system panel error. Possible causes: 
+
 1. system panel not connected.
-2. ipc failed due to large amount of data transferred or other reasons.
+
+2. ipc failed due to data transferred exceeding 1MB or invalid data format.
+
 3. the caller is not system panel.
 
 **Description**
 
-The operation on the input method system panel fails.
+An input method system panel operation failed. For example, an application may encounter an exception while invoking a system panel API.
 
 **Possible Causes**
 
 1. The system panel is not connected.
-2. IPC fails because the data volume to transmit is too large.
+
+2. The IPC failed because the amount of data transferred exceeds 1 MB or the data format is incorrect.
+
 3. The caller is not the system panel.
 
 **Solution**
 
-1. Ensure that the system channel is connected by calling the [connectSystemChannel](./js-apis-inputmethod-system-panel-manager-sys.md#inputmethodsystempanelmanagerconnectsystemchannel) API.
-2. Adjust the volume of data to be transmitted by referring to [IPC Constraints](../../ipc/ipc-rpc-overview.md#constraints).
+1. Ensure that the [connectSystemChannel](js-apis-inputmethod-system-panel-manager-sys.md#inputmethodsystempanelmanagerconnectsystemchannel) API has been called to connect the system channel.
+
+2. Refer to [IPC constraints](../../ipc/ipc-rpc-overview.md#constraints). Reduce the amount of data to be transferred before initiating the request. Note that the total amount of data transferred at the IPC layer in a single API call consists of data sent by the application plus data required for system-layer processing. Therefore, the maximum amount of data that an application can actually send when calling an API is smaller than the IPC‑enforced maximum data limit.
+
 3. Ensure that the caller is the system panel.
+
 <!--DelEnd-->
-<!--no_check-->
