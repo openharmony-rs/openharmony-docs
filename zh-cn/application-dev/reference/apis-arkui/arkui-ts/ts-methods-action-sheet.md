@@ -746,9 +746,11 @@ struct ActionSheetExample {
 ```
 ![image-action-backgroundEffect](figures/image-action-backgroundEffect.png)
 
-### 示例9（设置弹窗的系统材质）
+### 示例9（设置弹窗的沉浸光感效果）
 
-该示例通过配置[ActionSheetOptions](#actionsheetoptions对象说明)中的systemMaterial属性，实现系统材质效果。
+该示例通过[ActionSheetOptions](#actionsheetoptions对象说明)中的systemMaterial属性设置组件的系统材质，实现沉浸光感效果。
+
+组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
 
 从API版本26.0.0开始，在[ActionSheetOptions](#actionsheetoptions对象说明)中新增了systemMaterial属性。
 
@@ -795,9 +797,17 @@ struct ActionSheetExample {
       }
       .height('100%')
       .width('100%')
-      .backgroundColor(Color.Gray)
+      // 请开发者替换为实际资源文件
+      .backgroundImage($r("app.media.img"))
+      .backgroundImageSize({ width: '100%', height: '100%' })
     }
   }
 }
 ```
-![zh-cn_image_action_sheet_systemMaterial](figures/zh-cn_image_action_systemMaterial.png)
+未设置系统材质时：
+
+![未设置系统材质时](figures/actionsheetwithoutmaterial.gif)
+
+设置系统材质后：
+
+![设置系统材质后](figures/actionsheetwithmaterial.gif)

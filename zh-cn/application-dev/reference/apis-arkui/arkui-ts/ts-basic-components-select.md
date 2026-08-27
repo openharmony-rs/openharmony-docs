@@ -1834,9 +1834,11 @@ struct Index {
 
 ![select-menu-keyboard-avoid](figures/selectKeyboardAvoid.gif)
 
-### 示例11（设置Select和下拉菜单系统材质）
+### 示例11（设置Select和下拉菜单沉浸光感效果）
 
-该示例通过调用[menuSystemMaterial](#menusystemmaterial)接口实现下拉菜单系统材质效果，通过[SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial)接口实现select组件系统材质效果。
+该示例通过调用[menuSystemMaterial](#menusystemmaterial)接口设置下拉菜单的系统材质，实现沉浸光感效果；通过[SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial)接口设置Select组件的系统材质，实现沉浸光感效果。
+
+组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
 
 从API版本26.0.0开始，新增menuSystemMaterial接口。
 
@@ -1876,8 +1878,8 @@ struct Index {
 ```
 未设置系统材质时：
 
-![select-without-menu-new-material](figures/selectWithoutNewMaterial.PNG)
+![未设置系统材质时](figures/selectWithoutNewMaterial.gif)
 
 设置系统材质后：
 
-![select-menu-new-material](figures/selectNewMaterial.PNG)
+![设置系统材质后](figures/selectNewMaterial.gif)
