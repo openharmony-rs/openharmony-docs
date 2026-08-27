@@ -5,13 +5,14 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=21b6d1d094db4584b626a309264de1223dc97568 translatedAt=2026-08-27T04:06:24.390Z pushedAt=2026-08-27T11:56:18.853Z -->
 
-The **WLAN** module provides basic wireless local area network (WLAN) functions, peer-to-peer (P2P) functions, and WLAN message notification services. It allows applications to communicate with other devices over WLAN.
+This module provides basic Wi-Fi functions (such as Wi-Fi scanning, connection management, connection information query, and signal strength acquisition), peer-to-peer (P2P) functions (such as device discovery, group creation and management, and P2P connection), and Wi-Fi notifications. It is applicable to scenarios where apps access the network or perform P2P data transmission and connection with other devices over Wi-Fi.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> The APIs of this module are no longer maintained since API version 9. You are advised to use [@ohos.wifiManager (WLAN)](js-apis-wifiManager.md).
+> Since API version 9, this API is no longer maintained. You are advised to use [@ohos.wifiManager (WLAN)](js-apis-wifiManager.md).
 
 
 ## Modules to Import
@@ -25,7 +26,7 @@ import wifi from '@ohos.wifi';
 
 isWifiActive(): boolean
 
-Checks whether WLAN is enabled.
+Checks whether Wi-Fi is enabled.
 
 > **NOTE**
 >
@@ -39,7 +40,7 @@ Checks whether WLAN is enabled.
 
   | Type| Description|
   | -------- | -------- |
-  | boolean | Returns **true** if WLAN is enabled; returns **false** otherwise.|
+  | boolean | Returns **true** if Wi-Fi is enabled; returns **false** otherwise.|
 
 **Example**
 
@@ -49,7 +50,7 @@ import wifi from '@ohos.wifi';
 try {
   let isWifiActive = wifi.isWifiActive();
   console.info("isWifiActive:" + isWifiActive);
-}catch(error){
+} catch (error) {
   console.error("failed:" + JSON.stringify(error));
 }
 ```
@@ -58,7 +59,7 @@ try {
 
 scan(): boolean
 
-Starts a scan for WLAN.
+Starts Wi-Fi scanning.
 
 > **NOTE**
 >
@@ -96,7 +97,7 @@ Obtains the scan result. This API uses a promise to return the result.
 >
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [wifiManager.getScanInfoList](js-apis-wifiManager.md#wifimanagergetscaninfolist10) instead.
 
-**Required permissions**: ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION or ohos.permission.GET_WIFI_PEERS_MAC (
+**Required permissions**: ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION or ohos.permission.GET_WIFI_PEERS_MAC
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
@@ -117,7 +118,7 @@ Obtains the scan result. This API uses an asynchronous callback to return the re
 >
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [wifiManager.getScanInfoList](js-apis-wifiManager.md#wifimanagergetscaninfolist10) instead.
 
-**Required permissions**: ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION or ohos.permission.GET_WIFI_PEERS_MAC (
+**Required permissions**: ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION or ohos.permission.GET_WIFI_PEERS_MAC
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
@@ -149,10 +150,9 @@ wifi.getScanInfos().then(result => {
 });
 ```
 
-
 ## WifiScanInfo<sup>(deprecated)</sup>
 
-Represents WLAN hotspot information.
+Represents the Wi-Fi hotspot information.
 
 > **NOTE**
 >
@@ -160,23 +160,21 @@ Represents WLAN hotspot information.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
-
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | No| No| Service set identifier (SSID) of the hotspot, in UTF-8 format. The maximum length is 32 bytes.|
 | bssid | string | No| No| Basic service set identifier (BSSID) of the hotspot, for example, **00:11:22:33:44:55**.|
 | capabilities | string | No| No| Hotspot capabilities.|
-| securityType | [WifiSecurityType](#wifisecuritytypedeprecated) | No| No| WLAN security type.|
+| securityType | [WifiSecurityType](#wifisecuritytypedeprecated) | No | No | Wi-Fi encryption type. |
 | rssi | number | No| No| Received signal strength indicator (RSSI) of the hotspot, in dBm.|
-| band | number | No| No| Frequency band of the WLAN access point (AP). The value **1** indicates 2.4 GHz, and the value **2** indicates 5 GHz.|
-| frequency | number | No| No| Frequency of the WLAN AP.|
-| channelWidth | number | No| No| Channel width of the WLAN AP.|
+| band | number | No | No | Frequency band of the Wi-Fi access point. The value **1** indicates 2.4 GHz, and the value **2** indicates 5 GHz. |
+| frequency | number | No | No | Frequency of the Wi-Fi access point, in MHz. |
+| channelWidth | number | No | No | Bandwidth of the Wi-Fi access point. |
 | timestamp | number | No| No| Timestamp.|
-
 
 ## WifiSecurityType<sup>(deprecated)</sup>
 
-Enumerates the WLAN security types.
+Enumerates the Wi-Fi security types.
 
 > **NOTE**
 >
@@ -192,10 +190,9 @@ Enumerates the WLAN security types.
 | WIFI_SEC_TYPE_PSK | 3 | Pre-shared key (PSK).|
 | WIFI_SEC_TYPE_SAE | 4 | Simultaneous Authentication of Equals (SAE).|
 
-
 ## WifiDeviceConfig<sup>(deprecated)</sup>
 
-Represents the WLAN configuration.
+Represents the Wi-Fi configuration information.
 
 > **NOTE**
 >
@@ -210,8 +207,6 @@ Represents the WLAN configuration.
 | preSharedKey | string | No| No| PSK of the hotspot. The maximum length is 64 bytes.|
 | isHiddenSsid | boolean | No| No| Whether the network is hidden. The value **true** indicates that the network is hidden, and the value **false** indicates the opposite.|
 | securityType | [WifiSecurityType](#wifisecuritytypedeprecated) | No| No| Security type.|
-
-
 
 ## wifi.addUntrustedConfig<sup>(deprecated)</sup>
 
@@ -231,7 +226,7 @@ Adds the configuration of an untrusted network. This API uses a promise to retur
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | Yes| WLAN configuration.|
+  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | Yes | Wi-Fi configuration information. |
 
 **Return value**
 
@@ -289,8 +284,8 @@ Adds the configuration of an untrusted network. This API uses an asynchronous ca
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | Yes| WLAN configuration.|
-  | callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is **true**. If the operation fails, **data** is **false**. If **err** is not **0**, an error has occurred.|
+  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | Yes | Wi-Fi configuration information. |
+  | callback | AsyncCallback&lt;boolean&gt; | Yes | Callback used to return the result. If the operation is successful, **error** is **0** and **data** is **true**. If the operation fails, **data** is **false** and **error** is not **0**. |
 
 **Example**
 ```ts
@@ -316,7 +311,7 @@ try {
       domains: []
     }
   }
-  wifi.addUntrustedConfig(config,(error,result) => {
+  wifi.addUntrustedConfig(config, (error, result) => {
     console.info("result:" + JSON.stringify(result));
   });  
 }catch(error){
@@ -342,7 +337,7 @@ Removes the configuration of an untrusted network. This API uses a promise to re
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | Yes| WLAN configuration.|
+  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | Yes | Wi-Fi configuration information. |
 
 **Return value**
 
@@ -402,8 +397,8 @@ Removes the configuration of an untrusted network. This API uses an asynchronous
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | Yes| WLAN configuration.|
-  | callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is **true**. If the operation fails, **data** is **false**. If **err** is not **0**, an error has occurred.|
+  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | Yes | Wi-Fi configuration information. |
+  | callback | AsyncCallback&lt;boolean&gt; | Yes | Callback used to return the result. If the operation is successful, **error** is **0** and **data** is **true**. If the operation fails, **data** is **false** and **error** is not **0**. |
 
 **Example**
 ```ts
@@ -429,7 +424,7 @@ try {
       domains: []
     }
   }
-  wifi.removeUntrustedConfig(config,(error,result) => {
+  wifi.removeUntrustedConfig(config, (error, result) => {
   console.info("result:" + JSON.stringify(result));
   });  
 }catch(error){
@@ -441,7 +436,7 @@ try {
 
 getSignalLevel(rssi: number, band: number): number
 
-Obtains the WLAN signal level.
+Queries the Wi-Fi signal strength.
 
 > **NOTE**
 >
@@ -456,7 +451,7 @@ Obtains the WLAN signal level.
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | rssi | number | Yes| RSSI of the hotspot, in dBm.|
-  | band | number | Yes| Frequency band of the WLAN AP.|
+  | band | number | Yes | Frequency band of the Wi-Fi access point. |
 
 **Return value**
 
@@ -471,7 +466,7 @@ import wifi from '@ohos.wifi';
 try {
   let rssi = 0;
   let band = 0;
-  let level = wifi.getSignalLevel(rssi,band);
+  let level = wifi.getSignalLevel(rssi, band);
   console.info("level:" + JSON.stringify(level));
 }catch(error){
   console.error("failed:" + JSON.stringify(error));
@@ -483,7 +478,7 @@ try {
 
 getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 
-Obtains information about the WLAN connection. This API uses a promise to return the result.
+Obtains Wi-Fi connection information. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -497,14 +492,14 @@ Obtains information about the WLAN connection. This API uses a promise to return
 
   | Type| Description|
   | -------- | -------- |
-  | Promise&lt;[WifiLinkedInfo](#wifilinkedinfodeprecated)&gt; | Promise used to return the WLAN connection information.|
+  | Promise&lt;[WifiLinkedInfo](#wifilinkedinfodeprecated)&gt; | Promise used to return the Wi-Fi connection information. |
 
 
 ## wifi.getLinkedInfo<sup>(deprecated)</sup>
 
 getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 
-Obtains information about the WLAN connection. This API uses an asynchronous callback to return the result.
+Obtains Wi-Fi connection information. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -518,7 +513,7 @@ Obtains information about the WLAN connection. This API uses an asynchronous cal
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[WifiLinkedInfo](#wifilinkedinfodeprecated)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the WLAN connection information obtained. If **err** is not **0**, an error has occurred.|
+  | **callback** | AsyncCallback&lt;[WifiLinkedInfo](#wifilinkedinfodeprecated)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the Wi-Fi connection information obtained. If the operation fails, **err** is not **0**. |
 
 **Example**
 ```ts
@@ -542,7 +537,7 @@ wifi.getLinkedInfo().then(data => {
 
 ## WifiLinkedInfo<sup>(deprecated)</sup>
 
-Represents the WLAN connection information.
+Provides information about a Wi-Fi connection.
 
 > **NOTE**
 >
@@ -555,19 +550,19 @@ Represents the WLAN connection information.
 | ssid | string | No| No| Service set identifier (SSID) of the hotspot, in UTF-8 format. The maximum length is 32 bytes.|
 | bssid | string | No| No| BSSID of the hotspot, for example, **00:11:22:33:44:55**.|
 | rssi | number | No| No| RSSI of the hotspot, in dBm.|
-| band | number | No| No| Frequency band of the WLAN access point (AP). The value **1** indicates 2.4 GHz, and the value **2** indicates 5 GHz.|
-| linkSpeed | number | No| No| Speed of the WLAN AP, in Mbit/s.|
-| frequency | number | No| No| Frequency of the WLAN AP.|
-| isHidden | boolean | No| No| Whether to hide the WLAN AP. The value **true** indicates that the network is hidden, and the value **false** indicates the opposite.|
-| isRestricted | boolean | No| No| Whether to restrict data volume at the WLAN AP. The value **true** means to restrict data volume at the WLAN AP, and the value **false** indicates the opposite.|
+| band | number | No | No | Frequency band of the Wi-Fi access point. The value **1** indicates 2.4 GHz, and the value **2** indicates 5 GHz. |
+| linkSpeed | number | No | No | Speed of the Wi-Fi access point, in Mbit/s. |
+| frequency | number | No | No | Frequency of the Wi-Fi access point, in MHz. |
+| isHidden | boolean | No | No | Whether the Wi-Fi access point is a hidden network. The value **true** indicates that the Wi-Fi access point is a hidden network; the value **false** indicates the opposite. |
+| isRestricted | boolean | No | No | Whether to restrict data volume at the Wi-Fi access point. The value **true** means to restrict data volume at the Wi-Fi access point, and the value **false** indicates the opposite. |
 | macAddress | string | No| No| MAC address of the device.|
-| ipAddress | number | No| No| IP address of the device that sets up the WLAN connection.|
-| connState | [ConnState](#connstatedeprecated) | No| No| WLAN connection state.|
+| ipAddress | number | No | No | IP address of the Wi-Fi connection. |
+| connState | [ConnState](#connstatedeprecated) | No | No | Wi-Fi connection status. |
 
 
 ## ConnState<sup>(deprecated)</sup>
 
-Enumerates the WLAN connection states.
+Enumerates the Wi-Fi connection statuses.
 
 > **NOTE**
 >
@@ -578,20 +573,20 @@ Enumerates the WLAN connection states.
 | Name| Value| Description|
 | -------- | -------- | -------- |
 | SCANNING | 0 | The device is scanning for available APs.|
-| CONNECTING | 1 | A WLAN connection is being established.|
-| AUTHENTICATING | 2 | An authentication is being performed for a WLAN connection.|
-| OBTAINING_IPADDR | 3 | The IP address of the WLAN connection is being acquired.|
-| CONNECTED | 4 | A WLAN connection is established.|
-| DISCONNECTING | 5 | The WLAN connection is being disconnected.|
-| DISCONNECTED | 6 | The WLAN connection is disconnected.|
-| UNKNOWN | 7 | Failed to set up the WLAN connection.|
+| CONNECTING | 1 | A Wi-Fi connection is being established. |
+| AUTHENTICATING | 2 | The Wi-Fi connection is being authenticated. |
+| OBTAINING_IPADDR | 3 | The IP address of the Wi-Fi connection is being obtained. |
+| CONNECTED | 4 | The Wi-Fi connection is established. |
+| DISCONNECTING | 5 | The Wi-Fi connection is being disconnected. |
+| DISCONNECTED | 6 | The Wi-Fi connection is disconnected. |
+| UNKNOWN | 7 | The Wi-Fi connection fails to be established. |
 
 
 ## wifi.isConnected<sup>(deprecated)</sup>
 
 isConnected(): boolean
 
-Checks whether the WLAN is connected.
+Checks whether the Wi-Fi connection is established.
 
 > **NOTE**
 >
@@ -605,14 +600,14 @@ Checks whether the WLAN is connected.
 
   | Type| Description|
   | -------- | -------- |
-  | boolean | Returns **true** if the WLAN is connected; returns **false** otherwise.|
+  | boolean | Returns **true** if the Wi-Fi connection is established; returns **false** otherwise.|
 
 
 ## wifi.isFeatureSupported<sup>(deprecated)</sup>
 
 isFeatureSupported(featureId: number): boolean
 
-Checks whether the device supports the specified WLAN feature.
+Checks whether the device supports the Wi-Fi feature specified by the feature ID.
 
 > **NOTE**
 >
@@ -684,13 +679,13 @@ try {
 
 ## IpInfo<sup>(deprecated)</sup>
 
-IP information obtained.
+Represents the IP information obtained.
 
 > **NOTE**
 >
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.getIpInfo](js-apis-wifiManager.md#wifimanagergetipinfo) instead.
 
-**System capability**: SystemCapability.Communication.WiFi.AP.Core
+**System capability**: SystemCapability.Communication.WiFi.STA
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
@@ -700,7 +695,7 @@ IP information obtained.
 | primaryDns | number | No| No| IP address of the preferred DNS server.|
 | secondDns | number | No| No| IP address of the alternate DNS server.|
 | serverIp | number | No| No| IP address of the DHCP server.|
-| leaseDuration | number | No| No| Lease duration of the IP address.|
+| leaseDuration | number | No | No | Lease duration of the IP address, in seconds. |
 
 
 ## wifi.getCountryCode<sup>(deprecated)</sup>
@@ -760,7 +755,7 @@ Obtains P2P connection information. This API uses a promise to return the result
 
 ## WifiP2pLinkedInfo<sup>(deprecated)</sup>
 
-Represents the WLAN connection information.
+Provides information about the P2P connection.
 
 > **NOTE**
 >
@@ -809,7 +804,7 @@ Obtains P2P connection information. This API uses an asynchronous callback to re
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfodeprecated)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the P2P link information. If **err** is not **0**, an error has occurred.|
+  | callback | AsyncCallback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfodeprecated)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the P2P link information. If the operation fails, **err** is not **0**. |
 
 **Example**
 ```ts
@@ -867,7 +862,7 @@ Obtains the current P2P group information. This API uses an asynchronous callbac
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[WifiP2pGroupInfo](#wifip2pgroupinfodeprecated)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the group information obtained. If **err** is not **0**, an error has occurred.|
+  | **callback** | AsyncCallback&lt;[WifiP2pGroupInfo](#wifip2pgroupinfodeprecated)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the group information obtained. If the operation fails, **err** is not **0**. |
 
 **Example**
 ```ts
@@ -925,7 +920,7 @@ Obtains the P2P peer device list. This API uses an asynchronous callback to retu
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[WifiP2pDevice](#wifip2pdevicedeprecated)[]&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the peer device list obtained. If **err** is not **0**, an error has occurred.|
+  | **callback** | AsyncCallback&lt;[WifiP2pDevice](#wifip2pdevicedeprecated)[]&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the peer device list obtained. If the operation fails, **err** is not **0**. |
 
 **Example**
 ```ts
@@ -960,7 +955,7 @@ Represents the P2P device information.
 | deviceAddress | string | No| No| MAC address of the device.|
 | primaryDeviceType | string | No| No| Type of the primary device.|
 | deviceStatus | [P2pDeviceStatus](#p2pdevicestatusdeprecated) | No| No| Device status.|
-| groupCapabilitys | number | No| No| Group capabilities.|
+| groupCapabilitys | number | No | No | Group capability, in the form of bitmask. |
 
 
 ## P2pDeviceStatus<sup>(deprecated)</sup>
@@ -1059,8 +1054,8 @@ Enumerates the P2P group frequency bands.
 | Name| Value| Description|
 | -------- | -------- | -------- |
 | GO_BAND_AUTO | 0 | Auto.|
-| GO_BAND_2GHZ | 1 | 2 GHz.|
-| GO_BAND_5GHZ | 2 | 5 GHz.|
+| GO_BAND_2GHZ | 1 | 2 GHz. |
+| GO_BAND_5GHZ | 2 | 5 GHz. |
 
 
 ## wifi.removeGroup<sup>(deprecated)</sup>
@@ -1130,7 +1125,7 @@ let recvP2pConnectionChangeFunc = (result:wifi.WifiP2pLinkedInfo) => {
     console.info("p2p connection change receive event: " + JSON.stringify(result));
     wifi.getP2pLinkedInfo((err, data:wifi.WifiP2pLinkedInfo) => {
         if (err) {
-            console.error('failed to get getP2pLinkedInfo: ' + JSON.stringify(err));
+            console.error("failed to get getP2pLinkedInfo: " + JSON.stringify(err));
             return;
         }
         console.info("get getP2pLinkedInfo: " + JSON.stringify(data));
@@ -1269,7 +1264,7 @@ Stops discovering devices.
 
   | Type| Description|
   | -------- | -------- |
-  | boolean | **true** if the operation is successful; **false** otherwise.|
+  | boolean | Whether the device discovery is stopped successfully. **true** if the operation is successful; **false** otherwise. |
 
 **Example**
 ```ts
@@ -1300,7 +1295,7 @@ Represents the P2P group information.
 | interface | string | No| No| Interface name.|
 | groupName | string | No| No| Group name.|
 | networkId | number | No| No| Network ID.|
-| frequency | number | No| No| Frequency of the group.|
+| frequency | number | No | No | Frequency of the group, in MHz. |
 | clientDevices | [WifiP2pDevice](#wifip2pdevicedeprecated)[] | No| No| List of connected devices.|
 | goIpAddress | string | No| No| IP address of the group.|
 
@@ -1310,7 +1305,7 @@ Represents the P2P group information.
 
 on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 
-Subscribes to WLAN state changes.
+Subscribes to Wi-Fi status change events.
 
 > **NOTE**
 >
@@ -1341,7 +1336,7 @@ Subscribes to WLAN state changes.
 
 off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;): void
 
-Unsubscribes from WLAN state changes.
+Unsubscribes from Wi-Fi status change events.
 
 > **NOTE**
 >
@@ -1378,7 +1373,7 @@ wifi.off("wifiStateChange", recvPowerNotifyFunc);
 
 on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
 
-Subscribes to WLAN connection state changes.
+Subscribes to Wi-Fi connection status change events.
 
 > **NOTE**
 >
@@ -1407,7 +1402,7 @@ Subscribes to WLAN connection state changes.
 
 off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;): void
 
-Unsubscribes from WLAN connection state changes.
+Unsubscribes from Wi-Fi connection status change events.
 
 > **NOTE**
 >
