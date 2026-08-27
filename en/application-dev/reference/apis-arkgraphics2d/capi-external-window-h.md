@@ -6,7 +6,7 @@
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=8a0b7b0116da0f707a83c8194124c940f8cd867f translatedAt=2026-08-25T13:04:20.550Z pushedAt=2026-08-26T07:38:28.246Z -->
+<!-- md-trans-meta sourceCommit=8a0b7b0116da0f707a83c8194124c940f8cd867f translatedAt=2026-08-25T13:04:20.550Z pushedAt=2026-08-27T01:21:49.263Z -->
 
 ## Overview
 
@@ -1242,7 +1242,7 @@ This interface is a non-thread-safe type interface.
 | Name | Description |
 | -- | -- |
 | [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | A pointer to a structure instance of [OHNativeWindow](capi-nativewindow-nativewindow.md). |
-| [OH_NativeBuffer_3D_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_3d_metadatakey) metadataKey | The 3D metadata type of OHNativeWindow. |
+| [OH_NativeBuffer_3D_MetadataKey](capi-buffer-common-h.md) metadataKey | The 3D metadata type of OHNativeWindow. |
 | int32_t size | The size of the uint8_t vector. |
 | uint8_t *metadata | A pointer to the uint8_t vector. |
 
@@ -1273,7 +1273,7 @@ This interface is a non-thread-safe type interface.
 | Name | Description |
 | -- | -- |
 | [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | A pointer to a struct instance of [OHNativeWindow](capi-nativewindow-nativewindow.md). |
-| [OH_NativeBuffer_3D_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_3d_metadatakey) metadataKey | The 3D metadata type of the OHNativeWindow. |
+| [OH_NativeBuffer_3D_MetadataKey](capi-buffer-common-h.md) metadataKey | The 3D metadata type of the OHNativeWindow. |
 | int32_t *size | The size of the uint8_t vector. |
 | uint8_t **metadata | A secondary pointer to the uint8_t vector, used as an output parameter. |
 
