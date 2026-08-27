@@ -2,9 +2,7 @@
 
 保存图片/视频到媒体库的配置，包括保存的文件名等。
 
-**起始版本：** 23
-
-<!--Device-photoAccessHelper-interface PhotoCreationConfig--><!--Device-photoAccessHelper-interface PhotoCreationConfig-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -24,11 +22,9 @@ fileNameExtension: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PhotoCreationConfig-fileNameExtension: string--><!--Device-PhotoCreationConfig-fileNameExtension: string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -42,11 +38,9 @@ photoType: PhotoType
 
 **类型：** PhotoType
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PhotoCreationConfig-photoType: PhotoType--><!--Device-PhotoCreationConfig-photoType: PhotoType-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -60,11 +54,9 @@ subtype?: PhotoSubtype
 
 **类型：** PhotoSubtype
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PhotoCreationConfig-subtype?: PhotoSubtype--><!--Device-PhotoCreationConfig-subtype?: PhotoSubtype-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -74,15 +66,15 @@ subtype?: PhotoSubtype
 title?: string
 ```
 
-图片或者视频的标题，不传入时由系统生成。参数规格为： - 不应包含扩展名。 - 文件名字符串长度为1~255（资产文件名为标题+扩展名）。 - 不允许出现的非法英文字符，包括：. \ / : * ? " ' ` &lt; &gt; | { } [ ]
+图片或者视频的标题，不传入时由系统生成。参数规格为：  
+- 不应包含扩展名。  
+- 文件名字符串长度为1~255（资产文件名为标题+扩展名）。  
+- 不允许出现的非法英文字符，包括：. \ / : * ? " ' ` &lt; &gt; | { } [ ]
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PhotoCreationConfig-title?: string--><!--Device-PhotoCreationConfig-title?: string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-

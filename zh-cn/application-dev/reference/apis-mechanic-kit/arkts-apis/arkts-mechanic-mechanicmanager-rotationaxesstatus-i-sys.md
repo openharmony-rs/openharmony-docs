@@ -2,9 +2,7 @@
 
 Rotation axes status
 
-**起始版本：** 23
-
-<!--Device-mechanicManager-export interface RotationAxesStatus--><!--Device-mechanicManager-export interface RotationAxesStatus-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -13,7 +11,6 @@ Rotation axes status
 ## 导入模块
 
 ```TypeScript
-import { mechanicManager } from '@kit.MechanicKit';
 ```
 
 ## pitchEnabled
@@ -26,9 +23,7 @@ pitchEnabled: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-RotationAxesStatus-pitchEnabled: boolean--><!--Device-RotationAxesStatus-pitchEnabled: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -44,9 +39,7 @@ Whether the pitch axis is limited.
 
 **类型：** [RotationAxisLimited](arkts-mechanic-mechanicmanager-rotationaxislimited-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-RotationAxesStatus-pitchLimited?: RotationAxisLimited--><!--Device-RotationAxesStatus-pitchLimited?: RotationAxisLimited-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -62,9 +55,7 @@ rollEnabled: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-RotationAxesStatus-rollEnabled: boolean--><!--Device-RotationAxesStatus-rollEnabled: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -80,9 +71,7 @@ Whether the roll axis is limited.
 
 **类型：** [RotationAxisLimited](arkts-mechanic-mechanicmanager-rotationaxislimited-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-RotationAxesStatus-rollLimited?: RotationAxisLimited--><!--Device-RotationAxesStatus-rollLimited?: RotationAxisLimited-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -98,9 +87,7 @@ yawEnabled: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-RotationAxesStatus-yawEnabled: boolean--><!--Device-RotationAxesStatus-yawEnabled: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -116,11 +103,8 @@ yawLimited?: RotationAxisLimited
 
 **类型：** [RotationAxisLimited](arkts-mechanic-mechanicmanager-rotationaxislimited-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-RotationAxesStatus-yawLimited?: RotationAxisLimited--><!--Device-RotationAxesStatus-yawLimited?: RotationAxisLimited-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
 **系统接口：** 此接口为系统接口。
-

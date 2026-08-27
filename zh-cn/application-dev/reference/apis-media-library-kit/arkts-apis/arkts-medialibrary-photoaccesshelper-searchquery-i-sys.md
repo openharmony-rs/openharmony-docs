@@ -4,8 +4,6 @@
 
 **起始版本：** 26.1.0
 
-<!--Device-photoAccessHelper-interface SearchQuery--><!--Device-photoAccessHelper-interface SearchQuery-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
@@ -19,18 +17,16 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 ## offset
 
 ```TypeScript
-offset: int
+offset: number
 ```
 
 分页偏移量。 取值限定为整数。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SearchQuery-offset: int--><!--Device-SearchQuery-offset: int-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -50,8 +46,6 @@ queryString: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SearchQuery-queryString: string--><!--Device-SearchQuery-queryString: string-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
@@ -59,20 +53,17 @@ queryString: string
 ## size
 
 ```TypeScript
-size: int
+size: number
 ```
 
 每个查询要返回的结果数。 取值限定为整数。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SearchQuery-size: int--><!--Device-SearchQuery-size: int-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
-

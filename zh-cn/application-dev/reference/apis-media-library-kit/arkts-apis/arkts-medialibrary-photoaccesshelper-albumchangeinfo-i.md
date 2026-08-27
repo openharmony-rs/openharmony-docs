@@ -2,9 +2,7 @@
 
 相册信息。
 
-**起始版本：** 23
-
-<!--Device-photoAccessHelper-interface AlbumChangeInfo--><!--Device-photoAccessHelper-interface AlbumChangeInfo-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -24,9 +22,7 @@ albumName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AlbumChangeInfo-albumName: string--><!--Device-AlbumChangeInfo-albumName: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -40,9 +36,7 @@ albumSubtype: AlbumSubtype
 
 **类型：** AlbumSubtype
 
-**起始版本：** 23
-
-<!--Device-AlbumChangeInfo-albumSubtype: AlbumSubtype--><!--Device-AlbumChangeInfo-albumSubtype: AlbumSubtype-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -56,9 +50,7 @@ albumType: AlbumType
 
 **类型：** AlbumType
 
-**起始版本：** 23
-
-<!--Device-AlbumChangeInfo-albumType: AlbumType--><!--Device-AlbumChangeInfo-albumType: AlbumType-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -72,25 +64,21 @@ albumUri: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AlbumChangeInfo-albumUri: string--><!--Device-AlbumChangeInfo-albumUri: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## count
 
 ```TypeScript
-count: int
+count: number
 ```
 
 相册中的资产总数，包括图片和视频。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AlbumChangeInfo-count: int--><!--Device-AlbumChangeInfo-count: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -104,41 +92,34 @@ coverUri: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AlbumChangeInfo-coverUri: string--><!--Device-AlbumChangeInfo-coverUri: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## imageCount
 
 ```TypeScript
-imageCount: int
+imageCount: number
 ```
 
 相册中的图片数量。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AlbumChangeInfo-imageCount: int--><!--Device-AlbumChangeInfo-imageCount: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## videoCount
 
 ```TypeScript
-videoCount: int
+videoCount: number
 ```
 
 相册中的视频数量。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AlbumChangeInfo-videoCount: int--><!--Device-AlbumChangeInfo-videoCount: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-

@@ -12,15 +12,13 @@ import { deviceSettings } from '@kit.MDMKit';
 function removeHiddenSettingsMenu(admin: Want, menusToHidden: Array<SettingsMenu>): void
 ```
 
-将设置项从当前用户下的隐藏设置项列表中移除。隐藏设置项列表中的设置项在当前用户的设置菜单中会被隐藏，隐藏后不可以在设置的搜索中搜索到，如果通过某种方式搜索到该设置项，点击后也无法打开。若移除后剩余的隐藏设置项列表为空，则设置项会全 部显示。调用接口后即刻生效，无需重启设置应用。 从API版本26.0.0开始，调用 [setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md)接口禁用 [SUPER_HUB](arkts-mdm-restrictions-featureforaccount-e.md)后，再调用该接口将中转站从隐藏设置项列表中移除时，会发生策略冲突，抛出9 200010错误码。
+将设置项从当前用户下的隐藏设置项列表中移除。隐藏设置项列表中的设置项在当前用户的设置菜单中会被隐藏，隐藏后不可以在设置的搜索中搜索到，如果通过某种方式搜索到该设置项，点击后也无法打开。若移除后剩余的隐藏设置项列表为空，则设置项会全 部显示。调用接口后即刻生效，无需重启设置应用。从API版本26.0.0开始，调用 [setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md)接口禁用 [SUPER_HUB](arkts-mdm-restrictions-featureforaccount-e.md)后，再调用该接口将中转站从隐藏设置项列表中移除时，会发生策略冲突，抛出9 200010错误码。
 
 **起始版本：** 24
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SETTINGS
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-deviceSettings-function removeHiddenSettingsMenu(admin: Want, menusToHidden: Array<SettingsMenu>): void--><!--Device-deviceSettings-function removeHiddenSettingsMenu(admin: Want, menusToHidden: Array<SettingsMenu>): void-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -35,13 +33,13 @@ function removeHiddenSettingsMenu(admin: Want, menusToHidden: Array<SettingsMenu
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200012](../errorcode-enterpriseDeviceManager.md#9200012-参数校验失败) | Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [9200010](../errorcode-enterpriseDeviceManager.md#9200010-策略冲突) | A conflict policy has been configured.<br>**适用版本：** 26.0.0+ |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [9200016](../errorcode-enterpriseDeviceManager.md#9200016-服务超时) | Service timeout. |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [9200010](../errorcode-enterpriseDeviceManager.md#9200010-策略冲突) | A conflict policy has been configured.<br>**适用版本：** 26.0.0+ |
+| [9200012](../errorcode-enterpriseDeviceManager.md#9200012-参数校验失败) | Parameter verification failed. |
+| [9200016](../errorcode-enterpriseDeviceManager.md#9200016-服务超时) | Service timeout. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例**
 
@@ -68,4 +66,3 @@ try {
   console.error(`Failed to remove hidden settings menu. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-

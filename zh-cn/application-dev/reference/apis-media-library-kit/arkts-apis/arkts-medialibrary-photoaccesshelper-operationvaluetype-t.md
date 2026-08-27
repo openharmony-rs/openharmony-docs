@@ -1,18 +1,16 @@
 # OperationValueType
 
 ```TypeScript
-export type OperationValueType = long | double | string | boolean
+export type OperationValueType = number | number | string | boolean
 ```
 
 表示不同谓词所需要匹配的值。
 
-**起始版本：** 26.0.0
+**起始版本：** 22
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-photoAccessHelper-export type OperationValueType = long | double | string | boolean--><!--Device-photoAccessHelper-export type OperationValueType = long | double | string | boolean-End-->
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -22,4 +20,3 @@ export type OperationValueType = long | double | string | boolean
 | double | 表示字段类型为数字，可取小数。 |
 | string | 表示字段类型为字符串，可取任意值。 |
 | boolean | 表示字段类型为布尔值。 |
-

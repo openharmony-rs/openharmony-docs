@@ -9,7 +9,7 @@ import { i18n } from '@kit.LocalizationKit';
 ## removePreferredLanguage
 
 ```TypeScript
-export function removePreferredLanguage(index: int): boolean
+export function removePreferredLanguage(index: number): boolean
 ```
 
 从系统偏好语言列表中移除指定位置的偏好语言。
@@ -18,11 +18,9 @@ export function removePreferredLanguage(index: int): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [removePreferredLanguage](../../apis-na/arkts-apis/arkts-na-i18n-system-c-sys.md#removepreferredlanguage)
+**替代接口：** [removePreferredLanguage](arkts-localization-i18n-system-c-sys.md#removepreferredlanguage)
 
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
-
-<!--Device-i18n-export function removePreferredLanguage(index: int): boolean--><!--Device-i18n-export function removePreferredLanguage(index: int): boolean-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -30,7 +28,7 @@ export function removePreferredLanguage(index: int): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | int | 是 | 待移除偏好语言在系统偏好语言列表中的位置。 |
+| index | number | 是 | 待移除偏好语言在系统偏好语言列表中的位置。 |
 
 **返回值：**
 
@@ -47,4 +45,3 @@ import { i18n } from '@kit.LocalizationKit';
 let index: number = 0;
 let success: boolean = i18n.removePreferredLanguage(index);
 ```
-

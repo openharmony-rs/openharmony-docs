@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-systemManager-interface PackageDescription--><!--Device-systemManager-interface PackageDescription-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## 导入模块
@@ -28,7 +26,4 @@ notify?: NotifyDescription
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PackageDescription-notify?: NotifyDescription--><!--Device-PackageDescription-notify?: NotifyDescription-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-

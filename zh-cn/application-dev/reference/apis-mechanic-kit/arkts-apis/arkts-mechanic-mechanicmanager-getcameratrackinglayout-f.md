@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { mechanicManager } from '@kit.MechanicKit';
 ```
 
 ## getCameraTrackingLayout
@@ -14,9 +13,7 @@ function getCameraTrackingLayout(): CameraTrackingLayout
 
 获取当前摄像头跟踪布局
 
-**起始版本：** 23
-
-<!--Device-mechanicManager-function getCameraTrackingLayout(): CameraTrackingLayout--><!--Device-mechanicManager-function getCameraTrackingLayout(): CameraTrackingLayout-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -41,4 +38,3 @@ console.info('Query layout');
 let layout = mechanicManager.getCameraTrackingLayout();
 console.info(`'Succeeded in querying layout, current layout:' ${layout}`);
 ```
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-applicationManager-enum ServiceType--><!--Device-applicationManager-enum ServiceType-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## COLLABORATION_SERVICE
@@ -20,7 +18,4 @@ COLLABORATION_SERVICE  = 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ServiceType-COLLABORATION_SERVICE  = 0--><!--Device-ServiceType-COLLABORATION_SERVICE  = 0-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-

@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { mechanicManager } from '@kit.MechanicKit';
 ```
 
 ## connectDevice
@@ -19,8 +18,6 @@ function connectDevice(addrInfo: AddressInfo, params: ConnectParam): Promise<Att
 **需要权限：** ohos.permission.CONNECT_MECHANIC_HARDWARE
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-mechanicManager-function connectDevice(addrInfo: AddressInfo, params: ConnectParam): Promise<AttachStateChangeInfo>--><!--Device-mechanicManager-function connectDevice(addrInfo: AddressInfo, params: ConnectParam): Promise<AttachStateChangeInfo>-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -46,4 +43,3 @@ function connectDevice(addrInfo: AddressInfo, params: ConnectParam): Promise<Att
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [33300001](../errorcode-mechanic.md#33300001-系统错误) | Service exception. |
-

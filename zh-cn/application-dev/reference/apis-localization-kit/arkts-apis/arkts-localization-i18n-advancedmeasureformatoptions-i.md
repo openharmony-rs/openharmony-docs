@@ -4,8 +4,6 @@
 
 **起始版本：** 23
 
-<!--Device-i18n-export interface AdvancedMeasureFormatOptions--><!--Device-i18n-export interface AdvancedMeasureFormatOptions-End-->
-
 **系统能力：** SystemCapability.Global.I18n
 
 ## 导入模块
@@ -22,7 +20,7 @@ unitUsage?: UnitUsage
 
 单位格式化使用场景的枚举。
 
-**类型：** [UnitUsage](../../apis-na/arkts-apis/arkts-na-i18n-unitusage-e.md)
+**类型：** [UnitUsage](arkts-localization-i18n-unitusage-e.md)
 
 **起始版本：** 23
 
@@ -30,7 +28,4 @@ unitUsage?: UnitUsage
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AdvancedMeasureFormatOptions-unitUsage?: UnitUsage--><!--Device-AdvancedMeasureFormatOptions-unitUsage?: UnitUsage-End-->
-
 **系统能力：** SystemCapability.Global.I18n
-

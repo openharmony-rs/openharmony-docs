@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-systemManager-interface UpdateResult--><!--Device-systemManager-interface UpdateResult-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## 导入模块
@@ -28,8 +26,6 @@ errorInfo: ErrorInfo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UpdateResult-errorInfo: ErrorInfo--><!--Device-UpdateResult-errorInfo: ErrorInfo-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## status
@@ -45,8 +41,6 @@ status: UpdateStatus
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UpdateResult-status: UpdateStatus--><!--Device-UpdateResult-status: UpdateStatus-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -64,7 +58,4 @@ version: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UpdateResult-version: string--><!--Device-UpdateResult-version: string-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-

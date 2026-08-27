@@ -20,20 +20,17 @@ function offRealTimeWeather(callback?: Callback<RealTimeWeatherInfo>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-carAwareness-function offRealTimeWeather(callback?: Callback<RealTimeWeatherInfo>): void--><!--Device-carAwareness-function offRealTimeWeather(callback?: Callback<RealTimeWeatherInfo>): void-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.CarAwareness
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[RealTimeWeatherInfo](arkts-multimodalawareness-carawareness-realtimeweatherinfo-i.md)&gt; | 否 | 获取对应能力数据的回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[RealTimeWeatherInfo](arkts-multimodalawareness-carawareness-realtimeweatherinfo-i.md)&gt; | 否 | 获取对应能力数据的回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [34000001](../../apis-multimodalawareness-kit/errorcode-carAwareness.md#34000001-服务异常) | Service exception. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-
+| [34000001](../errorcode-carAwareness.md#34000001-服务异常) | Service exception. |

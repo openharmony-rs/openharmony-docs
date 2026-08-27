@@ -27,8 +27,6 @@ function getDisallowedPolicy(admin: Want | null, feature: string): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-restrictions-function getDisallowedPolicy(admin: Want | null, feature: string): boolean--><!--Device-restrictions-function getDisallowedPolicy(admin: Want | null, feature: string): boolean-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
@@ -36,7 +34,7 @@ function getDisallowedPolicy(admin: Want | null, feature: string): boolean
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) \| null | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>**起始版本：** 12 - 19 |
-| feature | string | 是 | 支持查询的特性清单参考下表2。 <br/> **说明：** 从API version 15开始，应用申请权限 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS并通过 [startAdminProvision](arkts-mdm-adminmanager-startadminprovision-f.md)激活为 [BDA](../../../mdm/mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)，可以使用此接口获取以下特性状态：bluetooth、hdc、microphone、 usb、wifi、tethering、camera，从API版本26.0.0开始，新增支持使用此接口获取mtpServer特性状态。 |
+| feature | string | 是 | 支持查询的特性清单参考下表2。    **说明：** 从API version 15开始，应用申请权限 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS并通过 [startAdminProvision](arkts-mdm-adminmanager-startadminprovision-f.md)激活为 [BDA](../../../mdm/mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)，可以使用此接口获取以下特性状态：bluetooth、hdc、microphone、 usb、wifi、tethering、camera，从API版本26.0.0开始，新增支持使用此接口获取mtpServer特性状态。 |
 
 **返回值：**
 
@@ -48,9 +46,9 @@ function getDisallowedPolicy(admin: Want | null, feature: string): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例**
 
@@ -88,8 +86,6 @@ function getDisallowedPolicy(admin: Want | null, feature: FeatureForDevice): boo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-restrictions-function getDisallowedPolicy(admin: Want | null, feature: FeatureForDevice): boolean--><!--Device-restrictions-function getDisallowedPolicy(admin: Want | null, feature: FeatureForDevice): boolean-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
@@ -109,10 +105,10 @@ function getDisallowedPolicy(admin: Want | null, feature: FeatureForDevice): boo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例**
 
@@ -133,4 +129,3 @@ try {
   console.error(`Failed to get Wi-Fi P2P disabled status. Code is ${err.code}, message is ${err.message}`);
 }
 ```
-

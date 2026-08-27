@@ -4,8 +4,6 @@ USB存储设备访问策略的枚举。
 
 **起始版本：** 12
 
-<!--Device-usbManager-export enum UsbPolicy--><!--Device-usbManager-export enum UsbPolicy-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## READ_WRITE
@@ -19,8 +17,6 @@ READ_WRITE = 0
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UsbPolicy-READ_WRITE = 0--><!--Device-UsbPolicy-READ_WRITE = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -36,8 +32,6 @@ READ_ONLY = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UsbPolicy-READ_ONLY = 1--><!--Device-UsbPolicy-READ_ONLY = 1-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## DISABLED
@@ -52,7 +46,4 @@ DISABLED = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UsbPolicy-DISABLED = 2--><!--Device-UsbPolicy-DISABLED = 2-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-

@@ -1,10 +1,8 @@
 # PixelMapParams
 
-Defines the format parameters of the video thumbnail to be obtained.
+获取视频缩略图时，输出缩略图的格式参数。
 
-**起始版本：** 23
-
-<!--Device-media-interface PixelMapParams--><!--Device-media-interface PixelMapParams-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
@@ -20,13 +18,12 @@ import { media } from '@kit.MediaKit';
 autoFlip?: boolean
 ```
 
-Auto flip the thumbnail when video has mirror attribute (Vertical Flip or Horizontal Flip). If the value is false, the returned thumbnail will not be flipped. **System API**: This is a system API.
+当视频具有镜像属性（垂直翻转或水平翻转）时，自动翻转缩略图。如果该值为false，则返回的缩略图将不会翻转。  
+**System API**: This is a system API.
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-PixelMapParams-autoFlip?: boolean--><!--Device-PixelMapParams-autoFlip?: boolean-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
@@ -38,15 +35,13 @@ Auto flip the thumbnail when video has mirror attribute (Vertical Flip or Horizo
 colorFormat?: PixelFormat
 ```
 
-Color format of the thumbnail. **System API**: This is a system API.
+输出的缩略图颜色格式。  
+**System API**: This is a system API.
 
 **类型：** [PixelFormat](arkts-media-media-pixelformat-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-PixelMapParams-colorFormat?: PixelFormat--><!--Device-PixelMapParams-colorFormat?: PixelFormat-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
 **系统接口：** 此接口为系统接口。
-

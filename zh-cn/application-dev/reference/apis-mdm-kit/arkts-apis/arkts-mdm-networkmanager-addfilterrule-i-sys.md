@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-<!--Device-networkManager-interface AddFilterRule--><!--Device-networkManager-interface AddFilterRule-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **系统接口：** 此接口为系统接口。
@@ -30,8 +28,6 @@ action: Action
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AddFilterRule-action: Action--><!--Device-AddFilterRule-action: Action-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **系统接口：** 此接口为系统接口。
@@ -49,8 +45,6 @@ ip目标地址。
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AddFilterRule-destAddr?: string--><!--Device-AddFilterRule-destAddr?: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -70,8 +64,6 @@ ip目标端口。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AddFilterRule-destPort?: string--><!--Device-AddFilterRule-destPort?: string-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **系统接口：** 此接口为系统接口。
@@ -89,8 +81,6 @@ direction: Direction
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AddFilterRule-direction: Direction--><!--Device-AddFilterRule-direction: Direction-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -110,8 +100,6 @@ method: AddMethod
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AddFilterRule-method: AddMethod--><!--Device-AddFilterRule-method: AddMethod-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **系统接口：** 此接口为系统接口。
@@ -129,8 +117,6 @@ protocol?: Protocol
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AddFilterRule-protocol?: Protocol--><!--Device-AddFilterRule-protocol?: Protocol-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -150,8 +136,6 @@ ruleNo?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AddFilterRule-ruleNo?: number--><!--Device-AddFilterRule-ruleNo?: number-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **系统接口：** 此接口为系统接口。
@@ -169,8 +153,6 @@ ip源地址。
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AddFilterRule-srcAddr?: string--><!--Device-AddFilterRule-srcAddr?: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -190,8 +172,6 @@ ip源端口。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AddFilterRule-srcPort?: string--><!--Device-AddFilterRule-srcPort?: string-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **系统接口：** 此接口为系统接口。
@@ -210,9 +190,6 @@ uid?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AddFilterRule-uid?: string--><!--Device-AddFilterRule-uid?: string-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **系统接口：** 此接口为系统接口。
-

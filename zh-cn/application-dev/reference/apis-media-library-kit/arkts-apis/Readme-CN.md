@@ -32,6 +32,7 @@
   <!--Del-->
   - [MediaAssetEditData(系统接口)](arkts-medialibrary-photoaccesshelper-mediaasseteditdata-c-sys.md)<!--DelEnd-->
   - [MediaAssetManager](arkts-medialibrary-photoaccesshelper-mediaassetmanager-c.md)
+  - [MediaAssetsChangeRequest](arkts-medialibrary-photoaccesshelper-mediaassetschangerequest-c.md)
   <!--Del-->
   - [MediaAssetsChangeRequest(系统接口)](arkts-medialibrary-photoaccesshelper-mediaassetschangerequest-c-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -106,8 +107,6 @@
   - [Entity(系统接口)](arkts-medialibrary-photoaccesshelper-entity-i-sys.md)<!--DelEnd-->
   - [FetchOptions](arkts-medialibrary-photoaccesshelper-fetchoptions-i.md)
   - [FetchResult](arkts-medialibrary-photoaccesshelper-fetchresult-i.md)
-  <!--Del-->
-  - [FetchResult(系统接口)](arkts-medialibrary-photoaccesshelper-fetchresult-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [FormInfo(系统接口)](arkts-medialibrary-photoaccesshelper-forminfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -280,8 +279,6 @@
   - [PickerColorMode](arkts-medialibrary-photoaccesshelper-pickercolormode-e.md)
   - [PlayMode](arkts-medialibrary-photoaccesshelper-playmode-e.md)
   - [PositionType](arkts-medialibrary-photoaccesshelper-positiontype-e.md)
-  <!--Del-->
-  - [PositionType(系统接口)](arkts-medialibrary-photoaccesshelper-positiontype-e-sys.md)<!--DelEnd-->
   - [PreferredCompatibleMode](arkts-medialibrary-photoaccesshelper-preferredcompatiblemode-e.md)
   <!--Del-->
   - [RankingMethod(系统接口)](arkts-medialibrary-photoaccesshelper-rankingmethod-e-sys.md)<!--DelEnd-->

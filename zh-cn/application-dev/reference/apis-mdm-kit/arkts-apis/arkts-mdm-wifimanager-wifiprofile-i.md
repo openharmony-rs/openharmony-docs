@@ -4,8 +4,6 @@ Wi-Fi配置信息。
 
 **起始版本：** 12
 
-<!--Device-wifiManager-interface WifiProfile--><!--Device-wifiManager-interface WifiProfile-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## 导入模块
@@ -28,8 +26,6 @@ Wi-Fi热点的MAC地址，长度6个字节，例如：00:11:22:33:44:55。获取
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WifiProfile-bssid?: string--><!--Device-WifiProfile-bssid?: string-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## creatorUid
@@ -45,8 +41,6 @@ creatorUid?: number
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WifiProfile-creatorUid?: number--><!--Device-WifiProfile-creatorUid?: number-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -64,8 +58,6 @@ disableReason?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WifiProfile-disableReason?: number--><!--Device-WifiProfile-disableReason?: number-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## eapProfile
@@ -81,8 +73,6 @@ eapProfile?: WifiEapProfile
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WifiProfile-eapProfile?: WifiEapProfile--><!--Device-WifiProfile-eapProfile?: WifiEapProfile-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -100,8 +90,6 @@ IP地址类型，默认值DHCP。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WifiProfile-ipType?: IpType--><!--Device-WifiProfile-ipType?: IpType-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## isHiddenSsid
@@ -117,8 +105,6 @@ isHiddenSsid?: boolean
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WifiProfile-isHiddenSsid?: boolean--><!--Device-WifiProfile-isHiddenSsid?: boolean-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -136,8 +122,6 @@ netId?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WifiProfile-netId?: number--><!--Device-WifiProfile-netId?: number-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## preSharedKey
@@ -153,8 +137,6 @@ preSharedKey: string
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WifiProfile-preSharedKey: string--><!--Device-WifiProfile-preSharedKey: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -172,8 +154,6 @@ MAC地址。randomMacType为设备MAC类型时，该字段必填。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WifiProfile-randomMacAddr?: string--><!--Device-WifiProfile-randomMacAddr?: string-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## randomMacType
@@ -189,8 +169,6 @@ randomMacType?: number
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WifiProfile-randomMacType?: number--><!--Device-WifiProfile-randomMacType?: number-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -208,8 +186,6 @@ securityType: WifiSecurityType
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WifiProfile-securityType: WifiSecurityType--><!--Device-WifiProfile-securityType: WifiSecurityType-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## ssid
@@ -225,8 +201,6 @@ Wi-Fi热点名称，最大长度为32字节，编码格式为UTF-8。
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WifiProfile-ssid: string--><!--Device-WifiProfile-ssid: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -244,7 +218,4 @@ staticIp?: IpProfile
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WifiProfile-staticIp?: IpProfile--><!--Device-WifiProfile-staticIp?: IpProfile-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-

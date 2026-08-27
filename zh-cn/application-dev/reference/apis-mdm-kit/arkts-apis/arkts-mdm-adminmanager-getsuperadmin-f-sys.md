@@ -14,11 +14,9 @@ function getSuperAdmin(): Promise<Want>
 
 查询首用户（u100）下的超级设备管理应用。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-adminManager-function getSuperAdmin(): Promise<Want>--><!--Device-adminManager-function getSuperAdmin(): Promise<Want>-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -48,4 +46,3 @@ adminManager.getSuperAdmin().then((result) => {
   console.error(`Failed to get super admin. Code: ${err.code}, message: ${err.message}`);
 })
 ```
-

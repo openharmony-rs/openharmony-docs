@@ -1,10 +1,8 @@
 # PolicyChangedEvent
 
-策略变更事件。 该接口目前在 [onAdminPolicyChanged](../../apis-na/arkts-apis/arkts-na-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md#onadminpolicychanged) 接口中作为回调入参使用。
+策略变更事件。该接口目前在 [onAdminPolicyChanged](arkts-mdm-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md#onadminpolicychanged) 接口中作为回调入参使用。
 
 **起始版本：** 26.0.0
-
-<!--Device-common-export interface PolicyChangedEvent--><!--Device-common-export interface PolicyChangedEvent-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -28,8 +26,6 @@ bundleName: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PolicyChangedEvent-bundleName: string--><!--Device-PolicyChangedEvent-bundleName: string-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## functionName
@@ -45,8 +41,6 @@ functionName: string
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PolicyChangedEvent-functionName: string--><!--Device-PolicyChangedEvent-functionName: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -64,8 +58,6 @@ parameters: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PolicyChangedEvent-parameters: string--><!--Device-PolicyChangedEvent-parameters: string-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## time
@@ -82,7 +74,4 @@ time: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PolicyChangedEvent-time: number--><!--Device-PolicyChangedEvent-time: number-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-

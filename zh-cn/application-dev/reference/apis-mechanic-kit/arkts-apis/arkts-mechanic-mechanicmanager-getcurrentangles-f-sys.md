@@ -3,20 +3,17 @@
 ## 导入模块
 
 ```TypeScript
-import { mechanicManager } from '@kit.MechanicKit';
 ```
 
 ## getCurrentAngles
 
 ```TypeScript
-function getCurrentAngles(mechId: int): EulerAngles
+function getCurrentAngles(mechId: number): EulerAngles
 ```
 
 获取机械设备的当前角度
 
-**起始版本：** 23
-
-<!--Device-mechanicManager-function getCurrentAngles(mechId: int): EulerAngles--><!--Device-mechanicManager-function getCurrentAngles(mechId: int): EulerAngles-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -26,7 +23,7 @@ function getCurrentAngles(mechId: int): EulerAngles
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mechId | int | 是 | 机械设备ID |
+| mechId | number | 是 | 机械设备ID |
 
 **返回值：**
 
@@ -49,4 +46,3 @@ console.info('Query current location');
 let currentAngles: mechanicManager.EulerAngles = mechanicManager.getCurrentAngles(0);
 console.info(`'Query current location, location:' ${currentAngles}`);
 ```
-

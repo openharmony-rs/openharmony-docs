@@ -2,9 +2,7 @@
 
 批量下载进度信息。
 
-**起始版本：** 23
-
-<!--Device-photoAccessHelper-interface CloudAssetDownloadProgressInfo--><!--Device-photoAccessHelper-interface CloudAssetDownloadProgressInfo-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -19,16 +17,14 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 ## autoPauseReason
 
 ```TypeScript
-readonly autoPauseReason: int
+readonly autoPauseReason: number
 ```
 
 自动通知原因。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-CloudAssetDownloadProgressInfo-readonly autoPauseReason: int--><!--Device-CloudAssetDownloadProgressInfo-readonly autoPauseReason: int-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -44,9 +40,7 @@ readonly downloadEventType: CloudAssetDownloadNotifyType
 
 **类型：** [CloudAssetDownloadNotifyType](arkts-medialibrary-photoaccesshelper-cloudassetdownloadnotifytype-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-CloudAssetDownloadProgressInfo-readonly downloadEventType: CloudAssetDownloadNotifyType--><!--Device-CloudAssetDownloadProgressInfo-readonly downloadEventType: CloudAssetDownloadNotifyType-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -55,16 +49,14 @@ readonly downloadEventType: CloudAssetDownloadNotifyType
 ## fileId
 
 ```TypeScript
-readonly fileId: int
+readonly fileId: number
 ```
 
 批量下载文件id。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-CloudAssetDownloadProgressInfo-readonly fileId: int--><!--Device-CloudAssetDownloadProgressInfo-readonly fileId: int-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -73,18 +65,15 @@ readonly fileId: int
 ## percent
 
 ```TypeScript
-readonly percent: int
+readonly percent: number
 ```
 
 下载进度信息。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-CloudAssetDownloadProgressInfo-readonly percent: int--><!--Device-CloudAssetDownloadProgressInfo-readonly percent: int-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
-

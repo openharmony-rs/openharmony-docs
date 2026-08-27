@@ -18,11 +18,9 @@ export function set24HourClock(option: boolean): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [set24HourClock](../../apis-na/arkts-apis/arkts-na-i18n-system-c-sys.md#set24hourclock)
+**替代接口：** [set24HourClock](arkts-localization-i18n-system-c-sys.md#set24hourclock)
 
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
-
-<!--Device-i18n-export function set24HourClock(option: boolean): boolean--><!--Device-i18n-export function set24HourClock(option: boolean): boolean-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -46,4 +44,3 @@ import { i18n } from '@kit.LocalizationKit';
 // 将系统时间设置为24小时制
 let success: boolean = i18n.set24HourClock(true);
 ```
-

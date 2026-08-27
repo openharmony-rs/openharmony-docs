@@ -4,8 +4,6 @@
 
 **起始版本：** 24
 
-<!--Device-restrictions-enum FeatureForDevice--><!--Device-restrictions-enum FeatureForDevice-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## WIFI_P2P
@@ -19,8 +17,6 @@ Wi-Fi P2P（点对点连接），允许设备在没有接入点的情况下直�
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FeatureForDevice-WIFI_P2P = 0--><!--Device-FeatureForDevice-WIFI_P2P = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -36,8 +32,6 @@ x键
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForDevice-X_KEY = 1--><!--Device-FeatureForDevice-X_KEY = 1-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## LOCAL_INPUT
@@ -51,8 +45,6 @@ LOCAL_INPUT = 2
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FeatureForDevice-LOCAL_INPUT = 2--><!--Device-FeatureForDevice-LOCAL_INPUT = 2-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -68,8 +60,6 @@ PACKET_FILTERING = 3
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForDevice-PACKET_FILTERING = 3--><!--Device-FeatureForDevice-PACKET_FILTERING = 3-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## SUDO
@@ -83,8 +73,6 @@ SUDO = 4
 **起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FeatureForDevice-SUDO = 4--><!--Device-FeatureForDevice-SUDO = 4-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -100,8 +88,6 @@ TRAFFIC_REDIRECTION = 5
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForDevice-TRAFFIC_REDIRECTION = 5--><!--Device-FeatureForDevice-TRAFFIC_REDIRECTION = 5-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## CORE_DUMP
@@ -115,8 +101,6 @@ CORE_DUMP = 6
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FeatureForDevice-CORE_DUMP = 6--><!--Device-FeatureForDevice-CORE_DUMP = 6-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -132,8 +116,6 @@ RS-232串口管控策略。禁用后，无法通过RS-232串口传输数据。�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForDevice-RS232 = 7--><!--Device-FeatureForDevice-RS232 = 7-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## DISK_ERASURE
@@ -147,8 +129,6 @@ DISK_ERASURE = 8
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FeatureForDevice-DISK_ERASURE = 8--><!--Device-FeatureForDevice-DISK_ERASURE = 8-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -164,8 +144,6 @@ BLUETOOTH = 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForDevice-BLUETOOTH = 9--><!--Device-FeatureForDevice-BLUETOOTH = 9-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## MODIFY_DATE_TIME
@@ -179,8 +157,6 @@ MODIFY_DATE_TIME = 10
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FeatureForDevice-MODIFY_DATE_TIME = 10--><!--Device-FeatureForDevice-MODIFY_DATE_TIME = 10-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -196,8 +172,6 @@ PRINTER = 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForDevice-PRINTER = 11--><!--Device-FeatureForDevice-PRINTER = 11-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## HDC
@@ -211,8 +185,6 @@ HDC = 12
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FeatureForDevice-HDC = 12--><!--Device-FeatureForDevice-HDC = 12-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -228,8 +200,6 @@ MICROPHONE = 13
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForDevice-MICROPHONE = 13--><!--Device-FeatureForDevice-MICROPHONE = 13-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## FINGERPRINT
@@ -244,8 +214,6 @@ FINGERPRINT = 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForDevice-FINGERPRINT = 14--><!--Device-FeatureForDevice-FINGERPRINT = 14-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## USB
@@ -254,13 +222,11 @@ FINGERPRINT = 14
 USB = 15
 ```
 
-设备USB能力。禁用后外接的USB设备无法使用，即在当前设备为HOST模式时，无法外接其他DEVICE设备。 以下五种情况再禁用设备USB能力，会报策略冲突。 1）通过[addAllowedUsbDevices](arkts-mdm-usbmanager-addallowedusbdevices-f.md)接口添加了USB设备可用名单。 2）通过[setUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-setusbstoragedeviceaccesspolicy-f.md)接口 设置了USB存储设备访问策略为只读/禁用。 3）通过[addDisallowedUsbDevices](arkts-mdm-usbmanager-adddisallowedusbdevices-f.md)接口添加了禁止使用的USB设 备类型。 4）通过[setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md)接口禁用了某用户USB存储设备写入能力。 5）禁用USB转串口（[USB_SERIAL](#featurefordevice)）。
+设备USB能力。禁用后外接的USB设备无法使用，即在当前设备为HOST模式时，无法外接其他DEVICE设备。以下五种情况再禁用设备USB能力，会报策略冲突。1）通过[addAllowedUsbDevices](arkts-mdm-usbmanager-addallowedusbdevices-f.md)接口添加了USB设备可用名单。2）通过[setUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-setusbstoragedeviceaccesspolicy-f.md)接口 设置了USB存储设备访问策略为只读/禁用。3）通过[addDisallowedUsbDevices](arkts-mdm-usbmanager-adddisallowedusbdevices-f.md)接口添加了禁止使用的USB设 备类型。4）通过[setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md)接口禁用了某用户USB存储设备写入能力。5）禁用USB转串口（[USB_SERIAL](#featurefordevice)）。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FeatureForDevice-USB = 15--><!--Device-FeatureForDevice-USB = 15-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -276,8 +242,6 @@ WIFI = 16
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForDevice-WIFI = 16--><!--Device-FeatureForDevice-WIFI = 16-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## TETHERING
@@ -291,8 +255,6 @@ TETHERING = 17
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FeatureForDevice-TETHERING = 17--><!--Device-FeatureForDevice-TETHERING = 17-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -308,8 +270,6 @@ INACTIVE_USER_FREEZE = 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForDevice-INACTIVE_USER_FREEZE = 18--><!--Device-FeatureForDevice-INACTIVE_USER_FREEZE = 18-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## CAMERA
@@ -323,8 +283,6 @@ CAMERA = 19
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FeatureForDevice-CAMERA = 19--><!--Device-FeatureForDevice-CAMERA = 19-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -340,8 +298,6 @@ MTP客户端能力（包含读取和写入），当前仅支持PC/2in1设备使�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForDevice-MTP_CLIENT = 20--><!--Device-FeatureForDevice-MTP_CLIENT = 20-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## MTP_SERVER
@@ -355,8 +311,6 @@ MTP服务端能力，当前仅支持手机、平板设备使用。
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FeatureForDevice-MTP_SERVER = 21--><!--Device-FeatureForDevice-MTP_SERVER = 21-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -372,8 +326,6 @@ samba客户端能力，当前仅支持PC/2in1设备使用。samba是在Linux和U
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForDevice-SAMBA_CLIENT = 22--><!--Device-FeatureForDevice-SAMBA_CLIENT = 22-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## SAMBA_SERVER
@@ -387,8 +339,6 @@ samba服务端能力，当前仅支持PC/2in1设备使用。
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FeatureForDevice-SAMBA_SERVER = 23--><!--Device-FeatureForDevice-SAMBA_SERVER = 23-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -404,8 +354,6 @@ BACKUP_AND_RESTORE = 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForDevice-BACKUP_AND_RESTORE = 24--><!--Device-FeatureForDevice-BACKUP_AND_RESTORE = 24-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## MAINTENANCE_MODE
@@ -419,8 +367,6 @@ MAINTENANCE_MODE = 25
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FeatureForDevice-MAINTENANCE_MODE = 25--><!--Device-FeatureForDevice-MAINTENANCE_MODE = 25-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -436,8 +382,6 @@ multimedia messaging service，设备接收、发送彩信的能力，当前仅�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForDevice-MMS = 26--><!--Device-FeatureForDevice-MMS = 26-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## SMS
@@ -451,8 +395,6 @@ short messaging service，设备接收、发送短信的能力，当前仅支持
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FeatureForDevice-SMS = 27--><!--Device-FeatureForDevice-SMS = 27-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -468,8 +410,6 @@ MOBILE_DATA = 28
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForDevice-MOBILE_DATA = 28--><!--Device-FeatureForDevice-MOBILE_DATA = 28-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## AIRPLANE_MODE
@@ -483,8 +423,6 @@ AIRPLANE_MODE = 29
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FeatureForDevice-AIRPLANE_MODE = 29--><!--Device-FeatureForDevice-AIRPLANE_MODE = 29-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -500,8 +438,6 @@ Virtual Private Network（虚拟专用网络），VPN能力。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForDevice-VPN = 30--><!--Device-FeatureForDevice-VPN = 30-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## NOTIFICATION
@@ -515,8 +451,6 @@ NOTIFICATION = 31
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FeatureForDevice-NOTIFICATION = 31--><!--Device-FeatureForDevice-NOTIFICATION = 31-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -532,8 +466,6 @@ Near Field Communication（近距离无线通信），NFC能力，当前仅支�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForDevice-NFC = 32--><!--Device-FeatureForDevice-NFC = 32-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## PRIVATE_SPACE
@@ -547,8 +479,6 @@ PRIVATE_SPACE = 33
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FeatureForDevice-PRIVATE_SPACE = 33--><!--Device-FeatureForDevice-PRIVATE_SPACE = 33-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -564,8 +494,6 @@ TELEPHONE_CALL = 34
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForDevice-TELEPHONE_CALL = 34--><!--Device-FeatureForDevice-TELEPHONE_CALL = 34-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## APP_CLONE
@@ -580,8 +508,6 @@ APP_CLONE = 35
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForDevice-APP_CLONE = 35--><!--Device-FeatureForDevice-APP_CLONE = 35-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## EXTERNAL_STORAGE_CARD
@@ -590,13 +516,11 @@ APP_CLONE = 35
 EXTERNAL_STORAGE_CARD = 36
 ```
 
-外置存储能力，禁用后设备无法使用外置存储，并且当前已连接的外置存储会被卸载。如果外置存储卸载时有文件正在被使用，可能会导致卸载失败，返回9200013错误码。 外置存储禁用后重新启用，需要手动重新连接外置存储。
+外置存储能力，禁用后设备无法使用外置存储，并且当前已连接的外置存储会被卸载。如果外置存储卸载时有文件正在被使用，可能会导致卸载失败，返回9200013错误码。外置存储禁用后重新启用，需要手动重新连接外置存储。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FeatureForDevice-EXTERNAL_STORAGE_CARD = 36--><!--Device-FeatureForDevice-EXTERNAL_STORAGE_CARD = 36-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -612,8 +536,6 @@ Wi-Fi连接时使用随机MAC能力，设置禁用后，连接Wi-Fi仅能使用�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForDevice-RANDOM_MAC = 37--><!--Device-FeatureForDevice-RANDOM_MAC = 37-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## UNMUTE_DEVICE
@@ -627,8 +549,6 @@ UNMUTE_DEVICE = 38
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FeatureForDevice-UNMUTE_DEVICE = 38--><!--Device-FeatureForDevice-UNMUTE_DEVICE = 38-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -644,8 +564,6 @@ HDC_REMOTE = 39
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForDevice-HDC_REMOTE = 39--><!--Device-FeatureForDevice-HDC_REMOTE = 39-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## VIRTUAL_SERVICE
@@ -660,8 +578,6 @@ VIRTUAL_SERVICE = 40
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForDevice-VIRTUAL_SERVICE = 40--><!--Device-FeatureForDevice-VIRTUAL_SERVICE = 40-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## USB_SERIAL
@@ -670,13 +586,11 @@ VIRTUAL_SERVICE = 40
 USB_SERIAL = 41
 ```
 
-设备USB转串口能力。禁用后外接的USB转串口设备无法使用。以下两种情况再禁用设备USB转串口能力，会报策略冲突。 1）通过[addAllowedUsbDevices](arkts-mdm-usbmanager-addallowedusbdevices-f.md)接口添加了USB设备可用名单。 2）禁用设备USB能力（[USB](#featurefordevice)）。
+设备USB转串口能力。禁用后外接的USB转串口设备无法使用。以下两种情况再禁用设备USB转串口能力，会报策略冲突。1）通过[addAllowedUsbDevices](arkts-mdm-usbmanager-addallowedusbdevices-f.md)接口添加了USB设备可用名单。2）禁用设备USB能力（[USB](#featurefordevice)）。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FeatureForDevice-USB_SERIAL = 41--><!--Device-FeatureForDevice-USB_SERIAL = 41-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -692,8 +606,6 @@ SCREEN_SHOT = 42
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForDevice-SCREEN_SHOT = 42--><!--Device-FeatureForDevice-SCREEN_SHOT = 42-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## SCREEN_RECORD
@@ -707,8 +619,6 @@ SCREEN_RECORD = 43
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FeatureForDevice-SCREEN_RECORD = 43--><!--Device-FeatureForDevice-SCREEN_RECORD = 43-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -724,8 +634,6 @@ DISK_RECOVERY_KEY = 44
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForDevice-DISK_RECOVERY_KEY = 44--><!--Device-FeatureForDevice-DISK_RECOVERY_KEY = 44-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## NEAR_LINK
@@ -739,8 +647,6 @@ NEAR_LINK = 45
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FeatureForDevice-NEAR_LINK = 45--><!--Device-FeatureForDevice-NEAR_LINK = 45-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -756,8 +662,6 @@ DEVELOPER_MODE = 46
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForDevice-DEVELOPER_MODE = 46--><!--Device-FeatureForDevice-DEVELOPER_MODE = 46-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## RESET_FACTORY
@@ -771,8 +675,6 @@ RESET_FACTORY = 47
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FeatureForDevice-RESET_FACTORY = 47--><!--Device-FeatureForDevice-RESET_FACTORY = 47-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -788,8 +690,6 @@ REMOTE_DESK = 48
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForDevice-REMOTE_DESK = 48--><!--Device-FeatureForDevice-REMOTE_DESK = 48-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## REMOTE_DIAGNOSIS
@@ -803,8 +703,6 @@ REMOTE_DIAGNOSIS = 49
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FeatureForDevice-REMOTE_DIAGNOSIS = 49--><!--Device-FeatureForDevice-REMOTE_DIAGNOSIS = 49-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -820,7 +718,4 @@ OTA_UPDATE = 50
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FeatureForDevice-OTA_UPDATE = 50--><!--Device-FeatureForDevice-OTA_UPDATE = 50-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-

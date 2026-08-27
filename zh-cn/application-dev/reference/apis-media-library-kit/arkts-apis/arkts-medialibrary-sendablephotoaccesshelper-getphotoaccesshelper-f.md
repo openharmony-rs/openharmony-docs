@@ -20,8 +20,6 @@ function getPhotoAccessHelper(context: Context): PhotoAccessHelper
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-sendablePhotoAccessHelper-function getPhotoAccessHelper(context: Context): PhotoAccessHelper--><!--Device-sendablePhotoAccessHelper-function getPhotoAccessHelper(context: Context): PhotoAccessHelper-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **参数：**
@@ -40,7 +38,7 @@ function getPhotoAccessHelper(context: Context): PhotoAccessHelper
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 
 **示例**
 
@@ -63,4 +61,3 @@ struct Index {
   }
 }
 ```
-

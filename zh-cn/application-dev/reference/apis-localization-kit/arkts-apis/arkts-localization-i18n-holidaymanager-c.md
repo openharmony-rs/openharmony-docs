@@ -2,9 +2,7 @@
 
 提供解析节假日数据的能力，包括节假日判断和指定年份节假日列表获取等。
 
-**起始版本：** 23
-
-<!--Device-i18n-export class HolidayManager--><!--Device-i18n-export class HolidayManager-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -22,11 +20,9 @@ constructor(icsPath: String)
 
 创建HolidayManager对象，用于解析节假日数据。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HolidayManager-constructor(icsPath: String)--><!--Device-HolidayManager-constructor(icsPath: String)-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -61,16 +57,14 @@ try {
 ## getHolidayInfoItemArray
 
 ```TypeScript
-getHolidayInfoItemArray(year?: int): Array<HolidayInfoItem>
+getHolidayInfoItemArray(year?: number): Array<HolidayInfoItem>
 ```
 
 获取指定年的节假日信息列表。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HolidayManager-getHolidayInfoItemArray(year?: int): Array<HolidayInfoItem>--><!--Device-HolidayManager-getHolidayInfoItemArray(year?: int): Array<HolidayInfoItem>-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -78,13 +72,13 @@ getHolidayInfoItemArray(year?: int): Array<HolidayInfoItem>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| year | int | 否 | 年，例如2023。 <br>默认值：当前年份。 |
+| year | number | 否 | 年，例如2023。 默认值：当前年份。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[HolidayInfoItem](../../apis-na/arkts-apis/arkts-na-i18n-holidayinfoitem-i.md)&gt; | 返回节假日信息列表。 |
+| Array&lt;[HolidayInfoItem](arkts-localization-i18n-holidayinfoitem-i.md)&gt; | 返回节假日信息列表。 |
 
 **错误码：**
 
@@ -117,11 +111,9 @@ isHoliday(date?: Date): boolean
 
 判断指定的日期是否是节假日。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HolidayManager-isHoliday(date?: Date): boolean--><!--Device-HolidayManager-isHoliday(date?: Date): boolean-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -129,7 +121,7 @@ isHoliday(date?: Date): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| date | Date | 否 | 时间日期。 <br>**说明：** <br>月份从0开始计数，0表示一月。 <br>默认值：当前日期。 |
+| date | Date | 否 | 时间日期。    **说明：** 月份从0开始计数，0表示一月。 默认值：当前日期。 |
 
 **返回值：**
 
@@ -159,4 +151,3 @@ try {
   console.error(`call holidayManager.isHoliday failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
-

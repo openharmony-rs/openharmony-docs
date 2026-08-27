@@ -12,7 +12,12 @@ import { resourceManager } from '@kit.LocalizationKit';
 export function getSystemResourceManager(): ResourceManager
 ```
 
-获取系统资源管理对象，用于访问系统预置的资源。 > **说明：**> > 该接口获取到的系统资源管理ResourceManager对象中的Configuration为默认值。默认值如下：{"locale": "", "direction": -1, "deviceType": -1, " > screenDensity": 0, "colorMode": 1, "mcc": 0, "mnc": 0}。
+获取系统资源管理对象，用于访问系统预置的资源。
+
+> **说明：**
+> 
+> 该接口获取到的系统资源管理ResourceManager对象中的Configuration为默认值。默认值如下：{"locale": "", "direction": -1, "deviceType": -1, "
+> screenDensity": 0, "colorMode": 1, "mcc": 0, "mnc": 0}。
 
 **起始版本：** 10
 
@@ -21,8 +26,6 @@ export function getSystemResourceManager(): ResourceManager
 **替代接口：** [getSysResourceManager](arkts-localization-resourcemanager-getsysresourcemanager-f.md)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-resourceManager-export function getSystemResourceManager(): ResourceManager--><!--Device-resourceManager-export function getSystemResourceManager(): ResourceManager-End-->
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -57,4 +60,3 @@ try {
   console.error(`getSystemResourceManager failed, error code: ${code}, message: ${message}.`);
 }
 ```
-

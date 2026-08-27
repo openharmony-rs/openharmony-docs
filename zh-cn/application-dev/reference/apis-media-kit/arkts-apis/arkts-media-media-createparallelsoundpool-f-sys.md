@@ -9,14 +9,12 @@ import { media } from '@kit.MediaKit';
 ## createParallelSoundPool
 
 ```TypeScript
-function createParallelSoundPool(maxStreams: int, audioRenderInfo: audio.AudioRendererInfo): Promise<SoundPool>
+function createParallelSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendererInfo): Promise<SoundPool>
 ```
 
-Creates a **SoundPool** instance. This API uses a promise to return the result. If a **SoundPool** instance created using [createSoundPool](arkts-media-media-createsoundpool-f.md) is used to play the same sound again, it stops the current audio and restarts the audio. However, if the instance is created using **createParallelSoundPool**, it keeps playing the first audio and starts the new one alongside it.
+创建音频池实例。使用Promise异步回调。使用[createSoundPool](arkts-media-media-createsoundpool-f.md)创建的音频池实例，在重复播放相同音频时，会停止之前的播放并重新开始；而使用 createParallelSoundPool创建的实例，在重复播放相同音频时，不会停止之前的音频，而是并行播放。
 
-**起始版本：** 23
-
-<!--Device-media-function createParallelSoundPool(maxStreams: int, audioRenderInfo: audio.AudioRendererInfo): Promise<SoundPool>--><!--Device-media-function createParallelSoundPool(maxStreams: int, audioRenderInfo: audio.AudioRendererInfo): Promise<SoundPool>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -26,14 +24,14 @@ Creates a **SoundPool** instance. This API uses a promise to return the result. 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| maxStreams | int | 是 | Maximum number of streams that can be played by the **SoundPool** instance. The value is an integer ranging from 1 to 32. |
-| audioRenderInfo | audio.AudioRendererInfo | 是 | Audio renderer parameters. |
+| maxStreams | number | 是 | soundPool实例的最大播放的流数，设置范围为1-32的正整数。 |
+| audioRenderInfo | audio.AudioRendererInfo | 是 | 音频播放参数信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;SoundPool&gt; | Promise used to return the result. If the operation is successful, a **SoundPool** instance is returned; otherwise, **null** is returned. The instance is used for loading and playback. |
+| Promise & lt;SoundPool & gt; | Promise对象，返回SoundPool实例，失败时返回null。用于音频池实例的加载播放功能。 |
 
 **错误码：**
 
@@ -65,4 +63,3 @@ media.createParallelSoundPool(5, audioRendererInfo).then((soundpool_: media.Soun
   console.error(`soundpool catchCallback, error message:${error.message}`);
 });
 ```
-

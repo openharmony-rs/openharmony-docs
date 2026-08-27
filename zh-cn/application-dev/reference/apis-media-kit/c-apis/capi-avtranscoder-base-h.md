@@ -4,6 +4,8 @@
 
 定义了媒体AVTranscoder的结构体和枚举。
 
+**引用文件：** <multimedia/player_framework/avtranscoder_base.h>
+
 **库：** libavtranscoder.so
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
@@ -18,8 +20,8 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) | OH_AVTranscoder | 初始化AVTranscoder。 |
-| [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) | OH_AVTranscoder_Config | 初始化AVTranscoder_Config。 |
+| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) | OH_AVTranscoder | 定义AVTranscoder结构体类型。 |
+| [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) | OH_AVTranscoder_Config | 初始化OH_AVTranscoder_Config。 |
 
 ### 枚举
 
@@ -33,7 +35,7 @@
 | -- | -- | -- |
 | [typedef void (\*OH_AVTranscoder_OnStateChange)(OH_AVTranscoder *transcoder, OH_AVTranscoder_State state, void *userData)](#oh_avtranscoder_onstatechange) | OH_AVTranscoder_OnStateChange | 转码过程的状态回调函数。 |
 | [typedef void (\*OH_AVTranscoder_OnError)(OH_AVTranscoder *transcoder, int32_t errorCode, const char *errorMsg, void *userData)](#oh_avtranscoder_onerror) | OH_AVTranscoder_OnError | 转码过程中错误事件的回调函数。 |
-| [typedef void (\*OH_AVTranscoder_OnProgressUpdate)(OH_AVTranscoder *transcoder, int32_t progress, void *userData)](#oh_avtranscoder_onprogressupdate) | OH_AVTranscoder_OnProgressUpdate | 回调转码进度更新时调用。 |
+| [typedef void (\*OH_AVTranscoder_OnProgressUpdate)(OH_AVTranscoder *transcoder, int32_t progress, void *userData)](#oh_avtranscoder_onprogressupdate) | OH_AVTranscoder_OnProgressUpdate | 转码进度更新时的回调函数。 |
 
 ## 枚举类型说明
 
@@ -76,9 +78,9 @@ typedef void (*OH_AVTranscoder_OnStateChange)(OH_AVTranscoder *transcoder, OH_AV
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) \*transcoder | The pointer to an OH_AVTranscoder instance. |
-| [OH_AVTranscoder_State](capi-avtranscoder-base-h.md#oh_avtranscoder_state) state | Indicates the transcoder state. For details, see [OH_AVTranscoder_State](capi-avtranscoder-base-h.md#oh_avtranscoder_state). |
-| void \*userData | Pointer to user specific data. |
+| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) \*transcoder | OH_AVTranscoder实例的指针。 |
+| [OH_AVTranscoder_State](capi-avtranscoder-base-h.md#oh_avtranscoder_state) state | 转码状态，详细说明请参见[OH_AVTranscoder_State](capi-avtranscoder-base-h.md#oh_avtranscoder_state). |
+| void \*userData | 用户特定数据的指针。 |
 
 ### OH_AVTranscoder_OnError()
 
@@ -96,10 +98,10 @@ typedef void (*OH_AVTranscoder_OnError)(OH_AVTranscoder *transcoder, int32_t err
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) \*transcoder | Pointer to an OH_AVTranscoder instance. |
-| int32_t errorCode | Error code.{@link AV_ERR_NO_MEMORY} if memory is insufficient.{@link AV_ERR_IO} if IO access failed.{@link AV_ERR_INVALID_STATE} if current state does not support this operation.{@link AV_ERR_UNSUPPORT} if unsupported function.{@link AV_ERR_INVALID_VAL} if the parameter check failed.{@link AV_ERR_OPERATE_NOT_PERMIT} if operation not allowed. |
-| const char \*errorMsg | Error message. |
-| void \*userData | Pointer to user specific data. |
+| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) \*transcoder | OH_AVTranscoder实例的指针。 |
+| int32_t errorCode | 错误码{@link AV_ERR_NO_MEMORY} 无内存，取值为1。{@link AV_ERR_OPERATE_NOT_PERMIT} 操作不允许，取值为2。{@link AV_ERR_INVALID_VAL} 参数检查失败，取值为3。{@link AV_ERR_IO} IO错误，取值为4。{@link AV_ERR_INVALID_STATE} 当前状态不支持此操作，取值为8。{@link AV_ERR_UNSUPPORT} 不支持的接口，取值为9。 |
+| const char \*errorMsg | 错误消息。 |
+| void \*userData | 用户特定数据的指针。 |
 
 ### OH_AVTranscoder_OnProgressUpdate()
 
@@ -109,7 +111,7 @@ typedef void (*OH_AVTranscoder_OnProgressUpdate)(OH_AVTranscoder *transcoder, in
 
 **描述**
 
-回调转码进度更新时调用。
+转码进度更新时的回调函数。
 
 **起始版本：** 20
 
@@ -117,8 +119,8 @@ typedef void (*OH_AVTranscoder_OnProgressUpdate)(OH_AVTranscoder *transcoder, in
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) \*transcoder | Pointer to an OH_AVTranscoder instance. |
-| int32_t progress | Transcoding progress, in percentage. |
-| void \*userData | Pointer to user specific data. |
+| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) \*transcoder | OH_AVTranscoder实例的指针。 |
+| int32_t progress | 转码百分比进度。 |
+| void \*userData | 用户特定数据的指针。 |
 
 

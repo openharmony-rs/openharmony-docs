@@ -2,9 +2,7 @@
 
 提供索引相关的能力，包括区域索引列表和文本索引值获取。
 
-**起始版本：** 23
-
-<!--Device-i18n-export class IndexUtil--><!--Device-i18n-export class IndexUtil-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -22,11 +20,9 @@ addLocale(locale: string): void
 
 在当前区域的索引列表中，添加新区域的索引列表，形成复合列表。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-IndexUtil-addLocale(locale: string): void--><!--Device-IndexUtil-addLocale(locale: string): void-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -53,11 +49,9 @@ getIndex(text: string): string
 
 获取输入文本对应的索引值。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-IndexUtil-getIndex(text: string): string--><!--Device-IndexUtil-getIndex(text: string): string-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -90,11 +84,9 @@ getIndexList(): Array<string>
 
 获取当前区域的索引列表。
 
-**起始版本：** 23
+**起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-IndexUtil-getIndexList(): Array<string>--><!--Device-IndexUtil-getIndexList(): Array<string>-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -102,7 +94,7 @@ getIndexList(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;string&gt; | 当前区域的索引列表。第一个元素和最后一个元素为“...”。 |
+| Array & lt;string & gt; | 当前区域的索引列表。第一个元素和最后一个元素为“...”。 |
 
 **示例**
 
@@ -114,4 +106,3 @@ let indexUtil: i18n.IndexUtil = i18n.getInstance('zh-CN');
 // 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '...' ]
 let indexList: Array<string> = indexUtil.getIndexList();
 ```
-

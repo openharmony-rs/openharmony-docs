@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-photoAccessHelper-enum MediaAssetPermissionState--><!--Device-photoAccessHelper-enum MediaAssetPermissionState-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## URI_FORMAT_ERROR
@@ -19,8 +17,6 @@ URI格式错误或非媒体库URI。
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-MediaAssetPermissionState-URI_FORMAT_ERROR = 0--><!--Device-MediaAssetPermissionState-URI_FORMAT_ERROR = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -36,8 +32,6 @@ FILE_NOT_EXIST = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MediaAssetPermissionState-FILE_NOT_EXIST = 1--><!--Device-MediaAssetPermissionState-FILE_NOT_EXIST = 1-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## READ_PERMISSION
@@ -51,8 +45,6 @@ READ_PERMISSION = 2
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-MediaAssetPermissionState-READ_PERMISSION = 2--><!--Device-MediaAssetPermissionState-READ_PERMISSION = 2-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -68,7 +60,4 @@ NO_READ_PERMISSION = 3
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MediaAssetPermissionState-NO_READ_PERMISSION = 3--><!--Device-MediaAssetPermissionState-NO_READ_PERMISSION = 3-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-

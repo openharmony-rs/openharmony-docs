@@ -4,8 +4,6 @@
 
 **起始版本：** 24
 
-<!--Device-photoAccessHelper-enum LivePhoto4dStatus--><!--Device-photoAccessHelper-enum LivePhoto4dStatus-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
@@ -21,8 +19,6 @@ UNIDENTIFIED = 0
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-LivePhoto4dStatus-UNIDENTIFIED = 0--><!--Device-LivePhoto4dStatus-UNIDENTIFIED = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -40,8 +36,6 @@ UNSUPPORTED = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-LivePhoto4dStatus-UNSUPPORTED = 1--><!--Device-LivePhoto4dStatus-UNSUPPORTED = 1-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
@@ -57,8 +51,6 @@ SUPPORTED = 2
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-LivePhoto4dStatus-SUPPORTED = 2--><!--Device-LivePhoto4dStatus-SUPPORTED = 2-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -76,8 +68,6 @@ USED = 3
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-LivePhoto4dStatus-USED = 3--><!--Device-LivePhoto4dStatus-USED = 3-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
@@ -94,9 +84,6 @@ LIVEPHOTO_4D = 4
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-LivePhoto4dStatus-LIVEPHOTO_4D = 4--><!--Device-LivePhoto4dStatus-LIVEPHOTO_4D = 4-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
-

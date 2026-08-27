@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-wifiManager-interface WifiEapProfile--><!--Device-wifiManager-interface WifiEapProfile-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## 导入模块
@@ -28,8 +26,6 @@ altSubjectMatch: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WifiEapProfile-altSubjectMatch: string--><!--Device-WifiEapProfile-altSubjectMatch: string-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## anonymousIdentity
@@ -45,8 +41,6 @@ anonymousIdentity: string
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WifiEapProfile-anonymousIdentity: string--><!--Device-WifiEapProfile-anonymousIdentity: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -64,8 +58,6 @@ CA 证书别名。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WifiEapProfile-caCertAliases: string--><!--Device-WifiEapProfile-caCertAliases: string-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## caPath
@@ -81,8 +73,6 @@ CA 证书路径。
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WifiEapProfile-caPath: string--><!--Device-WifiEapProfile-caPath: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -100,8 +90,6 @@ certEntry: Uint8Array
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WifiEapProfile-certEntry: Uint8Array--><!--Device-WifiEapProfile-certEntry: Uint8Array-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## certPassword
@@ -117,8 +105,6 @@ CA证书密码。
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WifiEapProfile-certPassword: string--><!--Device-WifiEapProfile-certPassword: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -136,8 +122,6 @@ clientCertAliases: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WifiEapProfile-clientCertAliases: string--><!--Device-WifiEapProfile-clientCertAliases: string-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## domainSuffixMatch
@@ -153,8 +137,6 @@ domainSuffixMatch: string
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WifiEapProfile-domainSuffixMatch: string--><!--Device-WifiEapProfile-domainSuffixMatch: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -172,8 +154,6 @@ EAP认证方式。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WifiEapProfile-eapMethod: EapMethod--><!--Device-WifiEapProfile-eapMethod: EapMethod-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## eapSubId
@@ -189,8 +169,6 @@ SIM卡的子ID。
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WifiEapProfile-eapSubId: number--><!--Device-WifiEapProfile-eapSubId: number-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -208,8 +186,6 @@ identity: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WifiEapProfile-identity: string--><!--Device-WifiEapProfile-identity: string-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## password
@@ -225,8 +201,6 @@ PWD类型，密码认证。无需服务器证书。
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WifiEapProfile-password: string--><!--Device-WifiEapProfile-password: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -244,8 +218,6 @@ phase2Method: Phase2Method
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WifiEapProfile-phase2Method: Phase2Method--><!--Device-WifiEapProfile-phase2Method: Phase2Method-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## plmn
@@ -261,8 +233,6 @@ plmn: string
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WifiEapProfile-plmn: string--><!--Device-WifiEapProfile-plmn: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -280,7 +250,4 @@ realm: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WifiEapProfile-realm: string--><!--Device-WifiEapProfile-realm: string-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 26.1.0
 
-<!--Device-photoAccessHelper-interface ToolInvokeConfig--><!--Device-photoAccessHelper-interface ToolInvokeConfig-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
@@ -30,8 +28,6 @@ param?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ToolInvokeConfig-param?: string--><!--Device-ToolInvokeConfig-param?: string-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
@@ -50,9 +46,6 @@ type: AnalysisToolType
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ToolInvokeConfig-type: AnalysisToolType--><!--Device-ToolInvokeConfig-type: AnalysisToolType-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
-

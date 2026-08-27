@@ -4,8 +4,6 @@
 
 **起始版本：** 23
 
-<!--Device-systemManager-interface KeyEventPolicy--><!--Device-systemManager-interface KeyEventPolicy-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## 导入模块
@@ -28,8 +26,6 @@ keyCode: KeyCode
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-KeyEventPolicy-keyCode: KeyCode--><!--Device-KeyEventPolicy-keyCode: KeyCode-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## keyPolicy
@@ -46,7 +42,4 @@ keyPolicy: KeyPolicy
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-KeyEventPolicy-keyPolicy: KeyPolicy--><!--Device-KeyEventPolicy-keyPolicy: KeyPolicy-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-

@@ -2,9 +2,7 @@
 
 错误信息。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface ErrorInfo--><!--Device-unnamed-export interface ErrorInfo-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -14,13 +12,11 @@
 errorCode: T
 ```
 
-错误码。errorCode的类型T为BusinessError类型。
+错误码。errorCode的类型T为[BusinessError](../../../reference/apis-basic-services-kit/js-apis-base.md)类型。
 
 **类型：** T
 
-**起始版本：** 23
-
-<!--Device-ErrorInfo-errorCode: T--><!--Device-ErrorInfo-errorCode: T-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -34,41 +30,34 @@ errorType?: ErrorType
 
 **类型：** [ErrorType](arkts-media-soundpool-errortype-e.md)
 
-**起始版本：** 23
-
-<!--Device-ErrorInfo-errorType?: ErrorType--><!--Device-ErrorInfo-errorType?: ErrorType-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
 ## soundId
 
 ```TypeScript
-soundId?: int
+soundId?: number
 ```
 
 发生错误的资源ID，load方法能够获取soundId。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ErrorInfo-soundId?: int--><!--Device-ErrorInfo-soundId?: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
 ## streamId
 
 ```TypeScript
-streamId?: int
+streamId?: number
 ```
 
 发生错误的音频流ID，play方法能够获取streamId。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ErrorInfo-streamId?: int--><!--Device-ErrorInfo-streamId?: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
-

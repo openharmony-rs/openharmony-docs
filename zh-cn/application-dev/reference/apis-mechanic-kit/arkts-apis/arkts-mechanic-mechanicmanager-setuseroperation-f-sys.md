@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { mechanicManager } from '@kit.MechanicKit';
 ```
 
 ## setUserOperation
@@ -14,11 +13,9 @@ function setUserOperation(operation: Operation, mac: string, params: string): vo
 
 设置用户操作
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.CONNECT_MECHANIC_HARDWARE
-
-<!--Device-mechanicManager-function setUserOperation(operation: Operation, mac: string, params: string): void--><!--Device-mechanicManager-function setUserOperation(operation: Operation, mac: string, params: string): void-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -47,4 +44,3 @@ console.info('User operate');
 mechanicManager.setUserOperation(mechanicManager.Operation.CONNECT, "58:51:9e:e7:79:6d", "operatingParams");
 console.info('User operation was successful');
 ```
-

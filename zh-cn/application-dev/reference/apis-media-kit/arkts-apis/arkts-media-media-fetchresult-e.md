@@ -4,8 +4,6 @@
 
 **起始版本：** 23
 
-<!--Device-media-enum FetchResult--><!--Device-media-enum FetchResult-End-->
-
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
 ## FETCH_FAILED
@@ -19,8 +17,6 @@ FETCH_FAILED = 0
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FetchResult-FETCH_FAILED = 0--><!--Device-FetchResult-FETCH_FAILED = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -36,8 +32,6 @@ FETCH_SUCCEEDED = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FetchResult-FETCH_SUCCEEDED = 1--><!--Device-FetchResult-FETCH_SUCCEEDED = 1-End-->
-
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
 ## FETCH_CANCELED
@@ -52,7 +46,4 @@ FETCH_CANCELED = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FetchResult-FETCH_CANCELED = 2--><!--Device-FetchResult-FETCH_CANCELED = 2-End-->
-
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
-

@@ -6,8 +6,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-userStatus-export interface ComfortReminderData--><!--Device-userStatus-export interface ComfortReminderData-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.UserStatus
 
 **系统接口：** 此接口为系统接口。
@@ -21,18 +19,16 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 ## eventType
 
 ```TypeScript
-eventType: int
+eventType: number
 ```
 
 表示事件类型。取值为0或1，0表示注视事件，1表示环境音事件。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ComfortReminderData-eventType: int--><!--Device-ComfortReminderData-eventType: int-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.UserStatus
 
@@ -52,8 +48,6 @@ fusionReminderData: ReminderLevel
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ComfortReminderData-fusionReminderData: ReminderLevel--><!--Device-ComfortReminderData-fusionReminderData: ReminderLevel-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.UserStatus
 
 **系统接口：** 此接口为系统接口。
@@ -72,9 +66,6 @@ swingReminderData: ReminderLevel
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ComfortReminderData-swingReminderData: ReminderLevel--><!--Device-ComfortReminderData-swingReminderData: ReminderLevel-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.UserStatus
 
 **系统接口：** 此接口为系统接口。
-

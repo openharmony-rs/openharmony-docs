@@ -2,9 +2,7 @@
 
 共享图片资产。
 
-**起始版本：** 23
-
-<!--Device-photoAccessHelper-interface SharedPhotoAsset--><!--Device-photoAccessHelper-interface SharedPhotoAsset-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -26,9 +24,7 @@ cameraShotKey: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-cameraShotKey: string--><!--Device-SharedPhotoAsset-cameraShotKey: string-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -44,9 +40,7 @@ data: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-data: string--><!--Device-SharedPhotoAsset-data: string-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -55,16 +49,14 @@ data: string
 ## dateAdded
 
 ```TypeScript
-dateAdded: long
+dateAdded: number
 ```
 
 添加了图片资产数据，单位：秒。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-dateAdded: long--><!--Device-SharedPhotoAsset-dateAdded: long-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -73,16 +65,14 @@ dateAdded: long
 ## dateAddedMs
 
 ```TypeScript
-dateAddedMs: long
+dateAddedMs: number
 ```
 
 图片资产数据添加后经过时间，单位：毫秒。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-dateAddedMs: long--><!--Device-SharedPhotoAsset-dateAddedMs: long-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -98,9 +88,7 @@ dateDay: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-dateDay: string--><!--Device-SharedPhotoAsset-dateDay: string-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -109,16 +97,14 @@ dateDay: string
 ## dateModified
 
 ```TypeScript
-dateModified: long
+dateModified: number
 ```
 
 更改了图片资产数据，单位：秒。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-dateModified: long--><!--Device-SharedPhotoAsset-dateModified: long-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -127,16 +113,14 @@ dateModified: long
 ## dateModifiedMs
 
 ```TypeScript
-dateModifiedMs: long
+dateModifiedMs: number
 ```
 
 文件修改时的Unix时间戳。单位为毫秒。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-dateModifiedMs: long--><!--Device-SharedPhotoAsset-dateModifiedMs: long-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -152,9 +136,7 @@ dateMonth: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-dateMonth: string--><!--Device-SharedPhotoAsset-dateMonth: string-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -163,16 +145,14 @@ dateMonth: string
 ## dateTaken
 
 ```TypeScript
-dateTaken: long
+dateTaken: number
 ```
 
 图片资产拍照后存入本地时间，单位：秒。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-dateTaken: long--><!--Device-SharedPhotoAsset-dateTaken: long-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -181,16 +161,14 @@ dateTaken: long
 ## dateTrashed
 
 ```TypeScript
-dateTrashed: long
+dateTrashed: number
 ```
 
 图片资产是否在回收站中。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-dateTrashed: long--><!--Device-SharedPhotoAsset-dateTrashed: long-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -199,16 +177,14 @@ dateTrashed: long
 ## dateTrashedMs
 
 ```TypeScript
-dateTrashedMs: long
+dateTrashedMs: number
 ```
 
 图片资产数据进回收站后经过时间，单位：毫秒。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-dateTrashedMs: long--><!--Device-SharedPhotoAsset-dateTrashedMs: long-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -224,9 +200,7 @@ dateYear: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-dateYear: string--><!--Device-SharedPhotoAsset-dateYear: string-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -242,9 +216,7 @@ displayName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-displayName: string--><!--Device-SharedPhotoAsset-displayName: string-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -253,16 +225,14 @@ displayName: string
 ## duration
 
 ```TypeScript
-duration: int
+duration: number
 ```
 
 视频类型的图片资产时长，单位：毫秒。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-duration: int--><!--Device-SharedPhotoAsset-duration: int-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -278,9 +248,7 @@ dynamicRangeType: DynamicRangeType
 
 **类型：** DynamicRangeType
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-dynamicRangeType: DynamicRangeType--><!--Device-SharedPhotoAsset-dynamicRangeType: DynamicRangeType-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -289,16 +257,14 @@ dynamicRangeType: DynamicRangeType
 ## fileId
 
 ```TypeScript
-fileId: int
+fileId: number
 ```
 
 图片资产标识id。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-fileId: int--><!--Device-SharedPhotoAsset-fileId: int-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -307,16 +273,14 @@ fileId: int
 ## height
 
 ```TypeScript
-height: int
+height: number
 ```
 
 图片资产的像素高度，单位：像素。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-height: int--><!--Device-SharedPhotoAsset-height: int-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -332,9 +296,7 @@ hidden: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-hidden: boolean--><!--Device-SharedPhotoAsset-hidden: boolean-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -350,9 +312,7 @@ isFavorite: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-isFavorite: boolean--><!--Device-SharedPhotoAsset-isFavorite: boolean-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -368,9 +328,7 @@ lcdSize: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-lcdSize: string--><!--Device-SharedPhotoAsset-lcdSize: string-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -386,9 +344,7 @@ mediaType: PhotoType
 
 **类型：** PhotoType
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-mediaType: PhotoType--><!--Device-SharedPhotoAsset-mediaType: PhotoType-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -404,9 +360,7 @@ movingPhotoEffectMode: MovingPhotoEffectMode
 
 **类型：** MovingPhotoEffectMode
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-movingPhotoEffectMode: MovingPhotoEffectMode--><!--Device-SharedPhotoAsset-movingPhotoEffectMode: MovingPhotoEffectMode-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -415,16 +369,14 @@ movingPhotoEffectMode: MovingPhotoEffectMode
 ## orientation
 
 ```TypeScript
-orientation: int
+orientation: number
 ```
 
 图片资产的旋转角度，单位：度（°）。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-orientation: int--><!--Device-SharedPhotoAsset-orientation: int-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -440,9 +392,7 @@ pending: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-pending: boolean--><!--Device-SharedPhotoAsset-pending: boolean-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -458,9 +408,7 @@ position: PositionType
 
 **类型：** PositionType
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-position: PositionType--><!--Device-SharedPhotoAsset-position: PositionType-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -469,16 +417,14 @@ position: PositionType
 ## size
 
 ```TypeScript
-size: long
+size: number
 ```
 
 图片资产文件大小，单位：字节。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-size: long--><!--Device-SharedPhotoAsset-size: long-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -494,9 +440,7 @@ subtype: PhotoSubtype
 
 **类型：** PhotoSubtype
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-subtype: PhotoSubtype--><!--Device-SharedPhotoAsset-subtype: PhotoSubtype-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -512,9 +456,7 @@ thmSize: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-thmSize: string--><!--Device-SharedPhotoAsset-thmSize: string-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -523,16 +465,14 @@ thmSize: string
 ## thumbnailModifiedMs
 
 ```TypeScript
-thumbnailModifiedMs?: long
+thumbnailModifiedMs?: number
 ```
 
 图片资产的缩略图状态改变后经过时间，单位：毫秒。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-thumbnailModifiedMs?: long--><!--Device-SharedPhotoAsset-thumbnailModifiedMs?: long-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -548,9 +488,7 @@ thumbnailReady: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-thumbnailReady: boolean--><!--Device-SharedPhotoAsset-thumbnailReady: boolean-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -566,9 +504,7 @@ thumbnailVisible: ThumbnailVisibility
 
 **类型：** ThumbnailVisibility
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-thumbnailVisible: ThumbnailVisibility--><!--Device-SharedPhotoAsset-thumbnailVisible: ThumbnailVisibility-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -584,9 +520,7 @@ title: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-title: string--><!--Device-SharedPhotoAsset-title: string-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -602,9 +536,7 @@ uri: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-uri: string--><!--Device-SharedPhotoAsset-uri: string-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -620,9 +552,7 @@ userComment: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-userComment: string--><!--Device-SharedPhotoAsset-userComment: string-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -631,18 +561,15 @@ userComment: string
 ## width
 
 ```TypeScript
-width: int
+width: number
 ```
 
 图片资产的像素宽度，单位：像素。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SharedPhotoAsset-width: int--><!--Device-SharedPhotoAsset-width: int-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
-

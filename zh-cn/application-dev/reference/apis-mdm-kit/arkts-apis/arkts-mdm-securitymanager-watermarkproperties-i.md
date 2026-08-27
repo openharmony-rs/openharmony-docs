@@ -1,10 +1,8 @@
-# WatermarkProperties(安全管理)
+# WatermarkProperties
 
 水印属性。
 
 **起始版本：** 26.0.0
-
-<!--Device-securityManager-export interface WatermarkProperties--><!--Device-securityManager-export interface WatermarkProperties-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -28,8 +26,6 @@ intervalsCol: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WatermarkProperties-intervalsCol: number--><!--Device-WatermarkProperties-intervalsCol: number-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## intervalsRow
@@ -46,7 +42,4 @@ intervalsRow: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WatermarkProperties-intervalsRow: number--><!--Device-WatermarkProperties-intervalsRow: number-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-

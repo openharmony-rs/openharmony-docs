@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { mechanicManager } from '@kit.MechanicKit';
 ```
 
 ## subscribe
@@ -16,8 +15,6 @@ function subscribe(events: MechEventType[], callback: Callback<MechEvent>): void
 
 **起始版本：** 26.0.0
 
-<!--Device-mechanicManager-function subscribe(events: MechEventType[], callback: Callback<MechEvent>): void--><!--Device-mechanicManager-function subscribe(events: MechEventType[], callback: Callback<MechEvent>): void-End-->
-
 **系统能力：** SystemCapability.Mechanic.Core
 
 **系统接口：** 此接口为系统接口。
@@ -27,7 +24,7 @@ function subscribe(events: MechEventType[], callback: Callback<MechEvent>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | events | [MechEventType](arkts-mechanic-mechanicmanager-mecheventtype-e-sys.md)[] | 是 | 订阅的事件列表。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[MechEvent](arkts-mechanic-mechanicmanager-mechevent-i-sys.md)&gt; | 是 | 事件回调函数。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[MechEvent](arkts-mechanic-mechanicmanager-mechevent-i-sys.md)&gt; | 是 | 事件回调函数。 |
 
 **错误码：**
 
@@ -37,4 +34,3 @@ function subscribe(events: MechEventType[], callback: Callback<MechEvent>): void
 | [33300001](../errorcode-mechanic.md#33300001-系统错误) | Service exception. |
 | [33300002](../errorcode-mechanic.md#33300002-设备未连接) | Device not connected. |
 | [33300003](../errorcode-mechanic.md#33300003-功能不支持) | Feature not supported. |
-

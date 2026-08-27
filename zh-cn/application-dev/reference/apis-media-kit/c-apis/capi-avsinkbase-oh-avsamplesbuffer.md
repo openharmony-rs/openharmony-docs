@@ -6,7 +6,7 @@ typedef struct OH_AVSamplesBuffer OH_AVSamplesBuffer
 
 ## 概述
 
-LowPowerAVSink输入数据的结构体。应用在收到DataNeeded回调后需要将数据打包装进OH_AVSamplesBuffer实例中送给对应的lowpower_avsink。
+LowPowerAVSink输入数据的结构体。应用在收到DataNeeded回调后需要将数据打包装进OH_AVSamplesBuffer实例中送给对应的LowPowerAVSink。
 
 **起始版本：** 20
 

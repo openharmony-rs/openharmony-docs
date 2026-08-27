@@ -2,9 +2,7 @@
 
 媒体资产（图片/视频）的具体变更数据。
 
-**起始版本：** 23
-
-<!--Device-photoAccessHelper-interface PhotoAssetChangeData--><!--Device-photoAccessHelper-interface PhotoAssetChangeData-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -24,9 +22,7 @@ thumbnailChangeStatus: ThumbnailChangeStatus
 
 **类型：** [ThumbnailChangeStatus](arkts-medialibrary-photoaccesshelper-thumbnailchangestatus-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-PhotoAssetChangeData-thumbnailChangeStatus: ThumbnailChangeStatus--><!--Device-PhotoAssetChangeData-thumbnailChangeStatus: ThumbnailChangeStatus-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -35,18 +31,15 @@ thumbnailChangeStatus: ThumbnailChangeStatus
 ## version
 
 ```TypeScript
-version: long
+version: number
 ```
 
 媒体资产（图片/视频）信息通知的版本号，用于确定通知的顺序。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-PhotoAssetChangeData-version: long--><!--Device-PhotoAssetChangeData-version: long-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 26.1.0
 
-<!--Device-carAwareness-export interface SpatialMotionInfo--><!--Device-carAwareness-export interface SpatialMotionInfo-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.CarAwareness
 
 ## 导入模块
@@ -28,8 +26,6 @@ event: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SpatialMotionInfo-event: number--><!--Device-SpatialMotionInfo-event: number-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.CarAwareness
 
 ## pointX
@@ -45,8 +41,6 @@ pointX: number
 **起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SpatialMotionInfo-pointX: number--><!--Device-SpatialMotionInfo-pointX: number-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.CarAwareness
 
@@ -64,8 +58,6 @@ pointY: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SpatialMotionInfo-pointY: number--><!--Device-SpatialMotionInfo-pointY: number-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.CarAwareness
 
 ## timestamp
@@ -82,7 +74,4 @@ timestamp: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SpatialMotionInfo-timestamp: number--><!--Device-SpatialMotionInfo-timestamp: number-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.CarAwareness
-

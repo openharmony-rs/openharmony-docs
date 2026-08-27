@@ -22,21 +22,18 @@ function onRefueling(callback: Callback<RefuelingInfo>): void
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-carAwareness-function onRefueling(callback: Callback<RefuelingInfo>): void--><!--Device-carAwareness-function onRefueling(callback: Callback<RefuelingInfo>): void-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.CarAwareness
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[RefuelingInfo](arkts-multimodalawareness-carawareness-refuelinginfo-i.md)&gt; | 是 | 获取对应能力数据的回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[RefuelingInfo](arkts-multimodalawareness-carawareness-refuelinginfo-i.md)&gt; | 是 | 获取对应能力数据的回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [34000002](../../apis-multimodalawareness-kit/errorcode-carAwareness.md#34000002-指定能力不支持) | Specific capability not supported. |
-| [34000001](../../apis-multimodalawareness-kit/errorcode-carAwareness.md#34000001-服务异常) | Service exception. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-
+| [34000001](../errorcode-carAwareness.md#34000001-服务异常) | Service exception. |
+| [34000002](../errorcode-carAwareness.md#34000002-指定能力不支持) | Specific capability not supported. |

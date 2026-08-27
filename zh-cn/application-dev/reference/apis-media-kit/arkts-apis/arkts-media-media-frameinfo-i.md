@@ -1,10 +1,8 @@
 # FrameInfo
 
-Defines the frame info when fetch picture form a video.
+批量获取视频缩略图操作的返回值，包含请求抽帧的时间点、实际抽帧的时间点、从视频中输出缩略图的格式参数和获取单张缩略图操作的结果。
 
 **起始版本：** 23
-
-<!--Device-media-interface FrameInfo--><!--Device-media-interface FrameInfo-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -17,18 +15,16 @@ import { media } from '@kit.MediaKit';
 ## actualTimeUs
 
 ```TypeScript
-actualTimeUs?: long
+actualTimeUs?: number
 ```
 
-The actual frame time.
+实际抽帧的时间点。
 
-**类型：** long
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FrameInfo-actualTimeUs?: long--><!--Device-FrameInfo-actualTimeUs?: long-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -38,7 +34,7 @@ The actual frame time.
 image?: image.PixelMap
 ```
 
-The image extracted from video.
+从视频中输出缩略图的格式参数。
 
 **类型：** image.PixelMap
 
@@ -46,25 +42,21 @@ The image extracted from video.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FrameInfo-image?: image.PixelMap--><!--Device-FrameInfo-image?: image.PixelMap-End-->
-
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
 ## requestedTimeUs
 
 ```TypeScript
-requestedTimeUs: long
+requestedTimeUs: number
 ```
 
-The requested frame time.
+请求抽帧的时间点。
 
-**类型：** long
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FrameInfo-requestedTimeUs: long--><!--Device-FrameInfo-requestedTimeUs: long-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -74,7 +66,7 @@ The requested frame time.
 result: FetchResult
 ```
 
-The fetch result code - succeed, failed or cancelled.
+获取单张缩略图任务的结果。例如成功，失败或任务被取消。
 
 **类型：** FetchResult
 
@@ -82,7 +74,4 @@ The fetch result code - succeed, failed or cancelled.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FrameInfo-result: FetchResult--><!--Device-FrameInfo-result: FetchResult-End-->
-
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
-

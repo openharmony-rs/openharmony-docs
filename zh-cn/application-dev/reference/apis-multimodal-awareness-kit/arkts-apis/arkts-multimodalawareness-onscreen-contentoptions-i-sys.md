@@ -2,9 +2,7 @@
 
 屏上内容的获取选项。
 
-**起始版本：** 23
-
-<!--Device-onScreen-export interface ContentOptions--><!--Device-onScreen-export interface ContentOptions-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -26,9 +24,7 @@ contentUnderstand?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-ContentOptions-contentUnderstand?: boolean--><!--Device-ContentOptions-contentUnderstand?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -44,9 +40,7 @@ pageLink?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-ContentOptions-pageLink?: boolean--><!--Device-ContentOptions-pageLink?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -62,9 +56,7 @@ textOnly?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-ContentOptions-textOnly?: boolean--><!--Device-ContentOptions-textOnly?: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -73,18 +65,15 @@ textOnly?: boolean
 ## windowId
 
 ```TypeScript
-windowId?: int
+windowId?: number
 ```
 
 需要获取内容的窗口ID，不赋值或赋值undefined则默认获取全屏窗口。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ContentOptions-windowId?: int--><!--Device-ContentOptions-windowId?: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **系统接口：** 此接口为系统接口。
-

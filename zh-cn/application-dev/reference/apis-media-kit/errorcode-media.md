@@ -8,7 +8,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
 ## 5400101 内存分配失败
 
@@ -54,7 +54,7 @@ Operation not allowed.
 
 ### 触发场景1：调用load加载音频失败-传入无效的资源
 
-调用load返回错误码`5400102`时，根据系统日志按照以下场景进行排查。
+调用[load](js-apis-inner-multimedia-soundPool.md#load)返回错误码`5400102`时，根据系统日志按照以下场景进行排查。
 
 **判断依据**
 
@@ -182,7 +182,7 @@ I/O error: video decode failed.
 
 1. 检查视频资源的编码格式（如H.264、H.265、VP8等）是否为系统支持的解码格式。
 2. 检查视频流的参数（分辨率、帧率、profile/level）是否超出硬件解码器的支持范围，超出时考虑使用软件解码或降低码流规格。
-3. 检查是否在解码器处于错误状态时调用了start/reset等方法，确保按照正确的状态流转顺序使用AVPlayer播放视频(ArkTS)。
+3. 检查是否在解码器处于错误状态时调用了start/reset等方法，确保按照正确的状态流转顺序[使用AVPlayer播放视频(ArkTS)](../../media/media/video-playback.md)。
 4. 确认网络是否通畅，网络不稳定可能导致码流数据不完整，进而引发解码失败。
 5. 如果上述检查均无异常，调用`avPlayer.release()`销毁当前实例，然后重新创建AVPlayer实例并再次尝试播放。
 6. 如果重新创建后仍然报错，建议记录详细日志并停止播放操作，排查是否为底层HDI（Hardware Device Interface）驱动异常。
@@ -430,7 +430,7 @@ Unsupported format.
 
 当前使用的格式规格不支持，用户需要切换为支持的规格。
 
-支持的规格请根据实际使用的模块功能，参考Media Kit简介中对应模块的规格介绍。
+支持的规格请根据实际使用的模块功能，参考[Media Kit简介](../../media/media/media-kit-intro.md)中对应模块的规格介绍。
 
 ### 触发场景：解封装失败
 
@@ -753,7 +753,7 @@ Http cleartext traffic is not permitted.
 **处理步骤**
 
 1. 确认network_config.json配置文件中是否对相关域名进行HTTP明文访问拦截。
-2. 如果不需要拦截，则参考明文HTTP访问权限配置说明对域名权限进行配置。
+2. 如果不需要拦截，则参考[明文HTTP访问权限配置说明](../../network/http-request.md#明文http访问权限配置说明)对域名权限进行配置。
 
 ## 5410002 不支持SEEK_CONTINUOUS模式的Seek
 
@@ -803,7 +803,7 @@ Super resolution not enabled.
 
 **可能原因**
 
-若没有通过PlaybackStrategy使能超分，则每次调用超分相关接口时会返回该错误码。
+若没有通过[PlaybackStrategy](./arkts-apis-media-i.md#playbackstrategy12)使能超分，则每次调用超分相关接口时会返回该错误码。
 
 **处理步骤**
 

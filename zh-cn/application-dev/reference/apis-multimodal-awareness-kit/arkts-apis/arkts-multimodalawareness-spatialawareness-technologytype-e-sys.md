@@ -1,10 +1,8 @@
 # TechnologyType（系统接口）
 
-提供输入信号的类型。接口根据输入信号类型，执行对应算法。
+提供输入信号的类型。接口根据输入信号类型，执行对应算法。@enum { number } 测距技术类型
 
 **起始版本：** 23
-
-<!--Device-spatialAwareness-export enum TechnologyType--><!--Device-spatialAwareness-export enum TechnologyType-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -22,8 +20,6 @@ BLE_RSSI = 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-TechnologyType-BLE_RSSI = 0--><!--Device-TechnologyType-BLE_RSSI = 0-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 **系统接口：** 此接口为系统接口。
@@ -39,8 +35,6 @@ WIFI_RSSI = 1
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TechnologyType-WIFI_RSSI = 1--><!--Device-TechnologyType-WIFI_RSSI = 1-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -58,8 +52,6 @@ ULTRASOUND = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-TechnologyType-ULTRASOUND = 2--><!--Device-TechnologyType-ULTRASOUND = 2-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 **系统接口：** 此接口为系统接口。
@@ -75,8 +67,6 @@ NEAR_LINK = 3
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TechnologyType-NEAR_LINK = 3--><!--Device-TechnologyType-NEAR_LINK = 3-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -94,9 +84,6 @@ WIFI_BLE_RSSI = 4
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-TechnologyType-WIFI_BLE_RSSI = 4--><!--Device-TechnologyType-WIFI_BLE_RSSI = 4-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 **系统接口：** 此接口为系统接口。
-

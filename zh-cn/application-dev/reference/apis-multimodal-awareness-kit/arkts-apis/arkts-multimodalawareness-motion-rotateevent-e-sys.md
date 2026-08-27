@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-motion-export enum RotateEvent--><!--Device-motion-export enum RotateEvent-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.Motion
 
 **系统接口：** 此接口为系统接口。
@@ -21,8 +19,6 @@ UNCHANGED = -1
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-RotateEvent-UNCHANGED = -1--><!--Device-RotateEvent-UNCHANGED = -1-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.Motion
 
@@ -40,8 +36,6 @@ UPRIGHT = 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-RotateEvent-UPRIGHT = 0--><!--Device-RotateEvent-UPRIGHT = 0-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.Motion
 
 **系统接口：** 此接口为系统接口。
@@ -57,8 +51,6 @@ LEFT = 1
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-RotateEvent-LEFT = 1--><!--Device-RotateEvent-LEFT = 1-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.Motion
 
@@ -76,8 +68,6 @@ INVERTED = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-RotateEvent-INVERTED = 2--><!--Device-RotateEvent-INVERTED = 2-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.Motion
 
 **系统接口：** 此接口为系统接口。
@@ -94,9 +84,6 @@ RIGHT = 3
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-RotateEvent-RIGHT = 3--><!--Device-RotateEvent-RIGHT = 3-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.Motion
 
 **系统接口：** 此接口为系统接口。
-

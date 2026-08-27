@@ -4,8 +4,6 @@
 
 **起始版本：** 20
 
-<!--Device-bundleManager-enum AppDistributionType--><!--Device-bundleManager-enum AppDistributionType-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## APP_GALLERY
@@ -19,8 +17,6 @@ APP_GALLERY = 1
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AppDistributionType-APP_GALLERY = 1--><!--Device-AppDistributionType-APP_GALLERY = 1-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -36,8 +32,6 @@ ENTERPRISE = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AppDistributionType-ENTERPRISE = 2--><!--Device-AppDistributionType-ENTERPRISE = 2-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## ENTERPRISE_NORMAL
@@ -51,8 +45,6 @@ ENTERPRISE_NORMAL = 3
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AppDistributionType-ENTERPRISE_NORMAL = 3--><!--Device-AppDistributionType-ENTERPRISE_NORMAL = 3-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -68,8 +60,6 @@ ENTERPRISE_MDM = 4
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AppDistributionType-ENTERPRISE_MDM = 4--><!--Device-AppDistributionType-ENTERPRISE_MDM = 4-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## INTERNALTESTING
@@ -83,8 +73,6 @@ INTERNALTESTING = 5
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AppDistributionType-INTERNALTESTING = 5--><!--Device-AppDistributionType-INTERNALTESTING = 5-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -100,7 +88,4 @@ CROWDTESTING = 6
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AppDistributionType-CROWDTESTING = 6--><!--Device-AppDistributionType-CROWDTESTING = 6-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-

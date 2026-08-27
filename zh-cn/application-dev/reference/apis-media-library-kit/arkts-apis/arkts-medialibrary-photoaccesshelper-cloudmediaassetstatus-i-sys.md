@@ -2,9 +2,7 @@
 
 云端媒体资产下载任务的详细信息，应用调用云端资产下载任务查询接口的返回类型。
 
-**起始版本：** 23
-
-<!--Device-photoAccessHelper-interface CloudMediaAssetStatus--><!--Device-photoAccessHelper-interface CloudMediaAssetStatus-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -26,9 +24,7 @@ readonly errorCode: CloudMediaTaskPauseCause
 
 **类型：** [CloudMediaTaskPauseCause](arkts-medialibrary-photoaccesshelper-cloudmediataskpausecause-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-CloudMediaAssetStatus-readonly errorCode: CloudMediaTaskPauseCause--><!--Device-CloudMediaAssetStatus-readonly errorCode: CloudMediaTaskPauseCause-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -44,9 +40,7 @@ readonly taskInfo: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-CloudMediaAssetStatus-readonly taskInfo: string--><!--Device-CloudMediaAssetStatus-readonly taskInfo: string-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -62,11 +56,8 @@ readonly taskStatus: CloudMediaAssetTaskStatus
 
 **类型：** [CloudMediaAssetTaskStatus](arkts-medialibrary-photoaccesshelper-cloudmediaassettaskstatus-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-CloudMediaAssetStatus-readonly taskStatus: CloudMediaAssetTaskStatus--><!--Device-CloudMediaAssetStatus-readonly taskStatus: CloudMediaAssetTaskStatus-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
-

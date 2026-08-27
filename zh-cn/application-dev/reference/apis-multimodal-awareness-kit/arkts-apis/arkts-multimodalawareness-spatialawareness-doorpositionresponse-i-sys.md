@@ -1,10 +1,8 @@
 # DoorPositionResponse（系统接口）
 
-门内外识别接口执行完成后的回调结果。
+门内外识别接口执行完成后的回调结果。 @interface DoorPositionResponse
 
 **起始版本：** 23
-
-<!--Device-spatialAwareness-export interface DoorPositionResponse--><!--Device-spatialAwareness-export interface DoorPositionResponse-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -30,8 +28,6 @@ deviceId: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DoorPositionResponse-deviceId: string--><!--Device-DoorPositionResponse-deviceId: string-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 **系统接口：** 此接口为系统接口。
@@ -39,18 +35,16 @@ deviceId: string
 ## doorLockCode
 
 ```TypeScript
-doorLockCode: int
+doorLockCode: number
 ```
 
 表示门锁校验码，结果≥0。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DoorPositionResponse-doorLockCode: int--><!--Device-DoorPositionResponse-doorLockCode: int-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -70,9 +64,6 @@ position: PositionRelativeToDoor
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DoorPositionResponse-position: PositionRelativeToDoor--><!--Device-DoorPositionResponse-position: PositionRelativeToDoor-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 **系统接口：** 此接口为系统接口。
-

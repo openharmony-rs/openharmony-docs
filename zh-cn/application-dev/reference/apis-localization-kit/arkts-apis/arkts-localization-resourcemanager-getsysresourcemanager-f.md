@@ -14,11 +14,9 @@ export function getSysResourceManager(): ResourceManager
 
 获取系统资源管理对象，用于访问系统预置的资源。
 
-**起始版本：** 23
+**起始版本：** 20
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-resourceManager-export function getSysResourceManager(): ResourceManager--><!--Device-resourceManager-export function getSysResourceManager(): ResourceManager-End-->
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -54,4 +52,3 @@ try {
   console.error(`getSysResourceManager failed, error code: ${code}, message: ${message}.`);
 }
 ```
-

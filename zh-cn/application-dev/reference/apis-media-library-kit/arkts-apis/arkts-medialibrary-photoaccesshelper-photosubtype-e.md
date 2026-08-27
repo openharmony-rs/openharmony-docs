@@ -1,14 +1,24 @@
-# PhotoSubtype（系统接口）
+# PhotoSubtype
 
 PhotoSubtype是不同[PhotoAsset](arkts-medialibrary-photoaccesshelper-photoasset-i.md)类型的枚举。
 
-**起始版本：** 23
-
-<!--Device-photoAccessHelper-export enum PhotoSubtype--><!--Device-photoAccessHelper-export enum PhotoSubtype-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**系统接口：** 此接口为系统接口。
+## DEFAULT
+
+```TypeScript
+DEFAULT = 0
+```
+
+默认照片文件类型。
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## MOVING_PHOTO
 
@@ -18,11 +28,9 @@ MOVING_PHOTO = 3
 
 动态照片文件类型。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PhotoSubtype-MOVING_PHOTO = 3--><!--Device-PhotoSubtype-MOVING_PHOTO = 3-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -34,11 +42,8 @@ BURST = 4
 
 连拍照片文件类型。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PhotoSubtype-BURST = 4--><!--Device-PhotoSubtype-BURST = 4-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-

@@ -2,9 +2,7 @@
 
 图库选择选项基类。
 
-**起始版本：** 26.0.0
-
-<!--Device-photoAccessHelper-export class BaseSelectOptions--><!--Device-photoAccessHelper-export class BaseSelectOptions-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -13,24 +11,6 @@
 ```TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 ```
-
-## MIMEType
-
-```TypeScript
-MIMEType?: PhotoViewMIMETypes
-```
-
-可选择的媒体文件类型，若无此参数，则默认为图片和视频类型。
-
-**类型：** PhotoViewMIMETypes
-
-**起始版本：** 26.0.0
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BaseSelectOptions-MIMEType?: PhotoViewMIMETypes--><!--Device-BaseSelectOptions-MIMEType?: PhotoViewMIMETypes-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## assetCompatibleCapability
 
@@ -42,13 +22,11 @@ assetCompatibleCapability?: AssetCompatibleCapability
 
 **类型：** [AssetCompatibleCapability](arkts-medialibrary-photoaccesshelper-assetcompatiblecapability-i.md)
 
-**起始版本：** 26.0.0
+**起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BaseSelectOptions-assetCompatibleCapability?: AssetCompatibleCapability--><!--Device-BaseSelectOptions-assetCompatibleCapability?: AssetCompatibleCapability-End-->
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -58,17 +36,18 @@ assetCompatibleCapability?: AssetCompatibleCapability
 assetFilter?: Array<OperationItem>
 ```
 
-媒体资产过滤器，长度限制为50个，超出取前50个。 **注意：** 1. 当使用该过滤器时，其他过滤器会失效。 2. 当配置多个条件时，过滤条件前后需要配置英文括号，否则可能和内部过滤项冲突。
+媒体资产过滤器，长度限制为50个，超出取前50个。  
+**注意：**
+1. 当使用该过滤器时，其他过滤器会失效。
+2. 当配置多个条件时，过滤条件前后需要配置英文括号，否则可能和内部过滤项冲突。
 
 **类型：** Array&lt;[OperationItem](arkts-medialibrary-photoaccesshelper-operationitem-c.md)&gt;
 
-**起始版本：** 26.0.0
+**起始版本：** 22
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BaseSelectOptions-assetFilter?: Array<OperationItem>--><!--Device-BaseSelectOptions-assetFilter?: Array<OperationItem>-End-->
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -82,13 +61,11 @@ autoPlayScenes?: Array<AutoPlayScene>
 
 **类型：** Array&lt;[AutoPlayScene](arkts-medialibrary-photoaccesshelper-autoplayscene-c.md)&gt;
 
-**起始版本：** 26.0.0
+**起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BaseSelectOptions-autoPlayScenes?: Array<AutoPlayScene>--><!--Device-BaseSelectOptions-autoPlayScenes?: Array<AutoPlayScene>-End-->
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -98,15 +75,18 @@ autoPlayScenes?: Array<AutoPlayScene>
 combinedMediaTypeFilter?: Array<string>
 ```
 
-将过滤条件配置为字符串数组，支持多种类型组合。 字符串格式如下：`photoType | photoSubType1,photoSubType2, … | mimeType1,mimeType2, …`。 - 第1段指定1个photoType，固定为image（图片）或video（视频）。 - 第2段指定1~N个photoSubType，多个photoSubType之间使用逗号隔开，之间为“或（OR）”的逻辑取并集；N目前支持最大为1；可选的PhotoSubType包括movingPhoto或“*”（忽略）。 - 第3段指定1~N个mimeType，多个mimeType之间使用逗号隔开，之间为“或（OR）”的逻辑取并集；N最大为10，格式类似于 [MimeTypeFilter](arkts-medialibrary-photoaccesshelper-mimetypefilter-c.md)。 三段过滤的组合取交集处理。 支持“非”的逻辑。对于需要排除的类型，进行加括号的方式进行标识；一个string最多可使用1个括号。 当应用配置的过滤条件string不满足上述规格时，过滤结果为空。 配置该参数时，仅取数组前三个参数进行处理，MIMEType、mimeTypeFilter参数自动失效。 **原子化服务API：** 从API version 20开始支持在原子化服务中使用。
+将过滤条件配置为字符串数组，支持多种类型组合。字符串格式如下：`photoType | photoSubType1,photoSubType2, … | mimeType1,mimeType2, …`。  
+- 第1段指定1个photoType，固定为image（图片）或video（视频）。  
+- 第2段指定1~N个photoSubType，多个photoSubType之间使用逗号隔开，之间为“或（OR）”的逻辑取并集；N目前支持最大为1；可选的PhotoSubType包括movingPhoto或“*”（忽略）。  
+- 第3段指定1~N个mimeType，多个mimeType之间使用逗号隔开，之间为“或（OR）”的逻辑取并集；N最大为10，格式类似于  
+[MimeTypeFilter](arkts-medialibrary-photoaccesshelper-mimetypefilter-c.md)。三段过滤的组合取交集处理。支持“非”的逻辑。对于需要排除的类型，进行加括号的方式进行标识；一个string最多可使用1个括号。当应用配置的过滤条件string不满足上述规格时，过滤结果为空。配置该参数时，仅取数组前三个参数进行处理，MIMEType、mimeTypeFilter参数自动失效。  
+**原子化服务API：** 从API version 20开始支持在原子化服务中使用。
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 26.0.0
+**起始版本：** 20
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BaseSelectOptions-combinedMediaTypeFilter?: Array<string>--><!--Device-BaseSelectOptions-combinedMediaTypeFilter?: Array<string>-End-->
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -116,15 +96,13 @@ combinedMediaTypeFilter?: Array<string>
 fileSizeFilter?: FileSizeFilter
 ```
 
-可选择媒体文件大小的过滤配置。 配置该参数时，仅显示配置文件大小范围的媒体文件，建议提示用户仅支持选择指定大小的图片/视频。
+可选择媒体文件大小的过滤配置。配置该参数时，仅显示配置文件大小范围的媒体文件，建议提示用户仅支持选择指定大小的图片/视频。
 
 **类型：** [FileSizeFilter](arkts-medialibrary-photoaccesshelper-filesizefilter-c.md)
 
-**起始版本：** 26.0.0
+**起始版本：** 19
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BaseSelectOptions-fileSizeFilter?: FileSizeFilter--><!--Device-BaseSelectOptions-fileSizeFilter?: FileSizeFilter-End-->
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -138,13 +116,11 @@ globalMovingPhotoState?: MovingPhotoBadgeStateType
 
 **类型：** [MovingPhotoBadgeStateType](arkts-medialibrary-photoaccesshelper-movingphotobadgestatetype-e.md)
 
-**起始版本：** 26.0.0
+**起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BaseSelectOptions-globalMovingPhotoState?: MovingPhotoBadgeStateType--><!--Device-BaseSelectOptions-globalMovingPhotoState?: MovingPhotoBadgeStateType-End-->
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -158,13 +134,11 @@ picker内宫格捏合模式。
 
 **类型：** [GridPinchMode](arkts-medialibrary-photoaccesshelper-gridpinchmode-c.md)
 
-**起始版本：** 26.0.0
+**起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BaseSelectOptions-gridPinchMode?: GridPinchMode--><!--Device-BaseSelectOptions-gridPinchMode?: GridPinchMode-End-->
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -174,15 +148,14 @@ picker内宫格捏合模式。
 isMovingPhotoBadgeShown?: boolean
 ```
 
-是否在大图浏览模式下展示动态照片图标，true表示展示，false表示不展示，默认为false。 若设置为true，[Photoselectresult](arkts-medialibrary-photoaccesshelper-photoselectresult-c.md)返回movingPhotoBadgeStates数组，动态照片默认返回状态为 [MOVING_PHOTO_ENABLED](arkts-medialibrary-photoaccesshelper-movingphotobadgestatetype-e.md)。 **注意：** 必须同时使用isMovingPhotoBadgeShown和MovingPhotoBadgeStateType判断照片是否是动态照片。
+是否在大图浏览模式下展示动态照片图标，true表示展示，false表示不展示，默认为false。若设置为true，[Photoselectresult](arkts-medialibrary-photoaccesshelper-photoselectresult-c.md)返回movingPhotoBadgeStates数组，动态照片默认返回状态为 [MOVING_PHOTO_ENABLED](arkts-medialibrary-photoaccesshelper-movingphotobadgestatetype-e.md)。  
+**注意：** 必须同时使用isMovingPhotoBadgeShown和MovingPhotoBadgeStateType判断照片是否是动态照片。
 
 **类型：** boolean
 
-**起始版本：** 26.0.0
+**起始版本：** 22
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BaseSelectOptions-isMovingPhotoBadgeShown?: boolean--><!--Device-BaseSelectOptions-isMovingPhotoBadgeShown?: boolean-End-->
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -196,11 +169,9 @@ isPhotoTakingSupported?: boolean
 
 **类型：** boolean
 
-**起始版本：** 26.0.0
+**起始版本：** 11
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BaseSelectOptions-isPhotoTakingSupported?: boolean--><!--Device-BaseSelectOptions-isPhotoTakingSupported?: boolean-End-->
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -214,11 +185,9 @@ isPreviewForSingleSelectionSupported?: boolean
 
 **类型：** boolean
 
-**起始版本：** 26.0.0
+**起始版本：** 12
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BaseSelectOptions-isPreviewForSingleSelectionSupported?: boolean--><!--Device-BaseSelectOptions-isPreviewForSingleSelectionSupported?: boolean-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -232,29 +201,41 @@ isSearchSupported?: boolean
 
 **类型：** boolean
 
-**起始版本：** 26.0.0
+**起始版本：** 11
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BaseSelectOptions-isSearchSupported?: boolean--><!--Device-BaseSelectOptions-isSearchSupported?: boolean-End-->
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## maxSelectNumber
 
 ```TypeScript
-maxSelectNumber?: int
+maxSelectNumber?: number
 ```
 
 选择媒体文件数量的最大值（最大可设置的值为500，若不设置则默认为50）。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 26.0.0
+**起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-BaseSelectOptions-maxSelectNumber?: int--><!--Device-BaseSelectOptions-maxSelectNumber?: int-End-->
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## MIMEType
+
+```TypeScript
+MIMEType?: PhotoViewMIMETypes
+```
+
+可选择的媒体文件类型，若无此参数，则默认为图片和视频类型。
+
+**类型：** PhotoViewMIMETypes
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -264,15 +245,13 @@ maxSelectNumber?: int
 mimeTypeFilter?: MimeTypeFilter
 ```
 
-文件类型的过滤配置，支持指定多个类型过滤。 当配置mimeTypeFilter参数时，MIMEType的配置自动失效。 配置该参数时，仅显示配置过滤类型对应的媒体文件，建议提示用户仅支持选择指定类型的图片/视频。
+文件类型的过滤配置，支持指定多个类型过滤。当配置mimeTypeFilter参数时，MIMEType的配置自动失效。配置该参数时，仅显示配置过滤类型对应的媒体文件，建议提示用户仅支持选择指定类型的图片/视频。
 
 **类型：** [MimeTypeFilter](arkts-medialibrary-photoaccesshelper-mimetypefilter-c.md)
 
-**起始版本：** 26.0.0
+**起始版本：** 19
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BaseSelectOptions-mimeTypeFilter?: MimeTypeFilter--><!--Device-BaseSelectOptions-mimeTypeFilter?: MimeTypeFilter-End-->
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -282,15 +261,13 @@ mimeTypeFilter?: MimeTypeFilter
 photoViewMimeTypeFileSizeFilters?: Array<PhotoViewMimeTypeFileSizeFilter>
 ```
 
-指定媒体文件类型和文件大小进行过滤。 配置该参数时，仅取数组前三个参数进行处理，MIMETypes和fileSizeFilter自动失效。
+指定媒体文件类型和文件大小进行过滤。配置该参数时，仅取数组前三个参数进行处理，MIMETypes和fileSizeFilter自动失效。
 
 **类型：** Array&lt;[PhotoViewMimeTypeFileSizeFilter](arkts-medialibrary-photoaccesshelper-photoviewmimetypefilesizefilter-c.md)&gt;
 
-**起始版本：** 26.0.0
+**起始版本：** 20
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BaseSelectOptions-photoViewMimeTypeFileSizeFilters?: Array<PhotoViewMimeTypeFileSizeFilter>--><!--Device-BaseSelectOptions-photoViewMimeTypeFileSizeFilters?: Array<PhotoViewMimeTypeFileSizeFilter>-End-->
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -310,8 +287,6 @@ preferredCompatibleMode?: PreferredCompatibleMode
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-BaseSelectOptions-preferredCompatibleMode?: PreferredCompatibleMode--><!--Device-BaseSelectOptions-preferredCompatibleMode?: PreferredCompatibleMode-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## preselectedUris
@@ -324,11 +299,9 @@ preselectedUris?: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 26.0.0
+**起始版本：** 11
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BaseSelectOptions-preselectedUris?: Array<string>--><!--Device-BaseSelectOptions-preselectedUris?: Array<string>-End-->
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -342,11 +315,9 @@ recommendationOptions?: RecommendationOptions
 
 **类型：** [RecommendationOptions](arkts-medialibrary-photoaccesshelper-recommendationoptions-c.md)
 
-**起始版本：** 26.0.0
+**起始版本：** 11
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BaseSelectOptions-recommendationOptions?: RecommendationOptions--><!--Device-BaseSelectOptions-recommendationOptions?: RecommendationOptions-End-->
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -360,13 +331,11 @@ showDateOnScrollbar?: boolean
 
 **类型：** boolean
 
-**起始版本：** 26.0.0
+**起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BaseSelectOptions-showDateOnScrollbar?: boolean--><!--Device-BaseSelectOptions-showDateOnScrollbar?: boolean-End-->
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -380,11 +349,9 @@ singleSelectionMode?: SingleSelectionMode
 
 **类型：** [SingleSelectionMode](arkts-medialibrary-photoaccesshelper-singleselectionmode-e.md)
 
-**起始版本：** 26.0.0
+**起始版本：** 18
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BaseSelectOptions-singleSelectionMode?: SingleSelectionMode--><!--Device-BaseSelectOptions-singleSelectionMode?: SingleSelectionMode-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -394,15 +361,12 @@ singleSelectionMode?: SingleSelectionMode
 videoDurationFilter?: VideoDurationFilter
 ```
 
-可选择媒体文件视频时长的过滤配置。 配置该参数时，仅显示配置视频时长范围的媒体文件，建议提示用户仅支持选择指定时长视频。
+可选择媒体文件视频时长的过滤配置。配置该参数时，仅显示配置视频时长范围的媒体文件，建议提示用户仅支持选择指定时长视频。
 
 **类型：** [VideoDurationFilter](arkts-medialibrary-photoaccesshelper-videodurationfilter-c.md)
 
-**起始版本：** 26.0.0
+**起始版本：** 19
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-BaseSelectOptions-videoDurationFilter?: VideoDurationFilter--><!--Device-BaseSelectOptions-videoDurationFilter?: VideoDurationFilter-End-->
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-

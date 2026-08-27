@@ -1,10 +1,8 @@
-# Collator(国际化-Intl)
+# Collator
 
 提供字符串排序的能力。
 
-**起始版本：** 23
-
-<!--Device-intl-export class Collator--><!--Device-intl-export class Collator-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -17,7 +15,7 @@ import { intl } from '@kit.LocalizationKit';
 ## compare
 
 ```TypeScript
-compare(first: string, second: string): int
+compare(first: string, second: string): number
 ```
 
 根据配置项的排序规则，比较两个字符串。
@@ -25,8 +23,6 @@ compare(first: string, second: string): int
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Collator-compare(first: string, second: string): int--><!--Device-Collator-compare(first: string, second: string): int-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -41,7 +37,7 @@ compare(first: string, second: string): int
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 比较结果。 <br>- number为负数时，表示first排序在second之前。 <br>- number为0时，表示first与second排序相同。 <br>- number为正数，表示first排序在second之后。 |
+| number | 比较结果。 |
 
 **示例**
 
@@ -66,8 +62,6 @@ constructor()
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Collator-constructor()--><!--Device-Collator-constructor()-End-->
-
 **系统能力：** SystemCapability.Global.I18n
 
 **示例**
@@ -75,8 +69,45 @@ constructor()
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';
 
+// 默认构造函数使用系统当前区域ID创建
+let locale = new intl.Locale();
+// 返回系统当前区域ID
+let localeID = locale.toString();
+```
+
+```TypeScript
+import { intl } from '@kit.LocalizationKit';
+
+// 使用系统当前区域ID创建DateTimeFormat对象
+let formatter: intl.DateTimeFormat = new intl.DateTimeFormat();
+```
+
+```TypeScript
+import { intl } from '@kit.LocalizationKit';
+
+// 使用系统当前区域ID创建NumberFormat对象
+let formatter: intl.NumberFormat = new intl.NumberFormat();
+```
+
+```TypeScript
+import { intl } from '@kit.LocalizationKit';
+
 // 使用系统区域创建Collator对象
 let collator = new intl.Collator();
+```
+
+```TypeScript
+import { intl } from '@kit.LocalizationKit';
+
+// 使用系统区域创建PluralRules对象
+let pluralRules = new intl.PluralRules();
+```
+
+```TypeScript
+import { intl } from '@kit.LocalizationKit';
+
+// 使用系统区域创建RelativeTimeFormat对象
+let formatter: intl.RelativeTimeFormat = new intl.RelativeTimeFormat();
 ```
 
 ## constructor
@@ -91,16 +122,14 @@ constructor(locale: string | Array<string>, options?: CollatorOptions)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Collator-constructor(locale: string | Array<string>, options?: CollatorOptions)--><!--Device-Collator-constructor(locale: string | Array<string>, options?: CollatorOptions)-End-->
-
 **系统能力：** SystemCapability.Global.I18n
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| locale | string \| Array&lt;string&gt; | 是 | 区域ID或区域ID数组。输入是区域ID数组时，使用第一个有效的区域ID。 |
-| options | [CollatorOptions](arkts-localization-intl-collatoroptions-i.md) | 否 | 创建排序对象时可设置的配置项。 <br>默认值：所有属性都取默认值时的配置项。 |
+| locale | string \| Array & lt;string & gt; | 是 | 区域ID或区域ID数组。输入是区域ID数组时，使用第一个有效的区域ID。 |
+| options | [CollatorOptions](arkts-localization-intl-collatoroptions-i.md) | 否 | 创建排序对象时可设置的配置项。 默认值：所有属性都取默认值时的配置项。 |
 
 **示例**
 
@@ -123,8 +152,6 @@ resolvedOptions(): CollatorOptions
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Collator-resolvedOptions(): CollatorOptions--><!--Device-Collator-resolvedOptions(): CollatorOptions-End-->
-
 **系统能力：** SystemCapability.Global.I18n
 
 **返回值：**
@@ -144,4 +171,3 @@ let options = collator.resolvedOptions();
 let usage = options.usage; // usage = 'sort'
 let ignorePunctuation = options.ignorePunctuation; // ignorePunctuation = true
 ```
-

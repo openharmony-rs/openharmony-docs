@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { mechanicManager } from '@kit.MechanicKit';
 ```
 
 ## setCameraTrackingEnabled
@@ -14,9 +13,7 @@ function setCameraTrackingEnabled(isEnabled: boolean): void
 
 启用或禁用摄像机跟踪
 
-**起始版本：** 23
-
-<!--Device-mechanicManager-function setCameraTrackingEnabled(isEnabled: boolean): void--><!--Device-mechanicManager-function setCameraTrackingEnabled(isEnabled: boolean): void-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -42,4 +39,3 @@ console.info('Enable tracing');
 mechanicManager.setCameraTrackingEnabled(true);
 console.info('Succeeded in enabling tracking.');
 ```
-

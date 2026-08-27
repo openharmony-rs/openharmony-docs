@@ -6,8 +6,6 @@
 
 **起始版本：** 12
 
-<!--Device-sendablePhotoAccessHelper-interface PhotoAsset--><!--Device-sendablePhotoAccessHelper-interface PhotoAsset-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## 导入模块
@@ -28,8 +26,6 @@ getAnalysisData(analysisType: photoAccessHelper.AnalysisType): Promise<string>
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
-<!--Device-PhotoAsset-getAnalysisData(analysisType: photoAccessHelper.AnalysisType): Promise<string>--><!--Device-PhotoAsset-getAnalysisData(analysisType: photoAccessHelper.AnalysisType): Promise<string>-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
@@ -44,16 +40,46 @@ getAnalysisData(analysisType: photoAccessHelper.AnalysisType): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回指定分析数据结果。 |
+| Promise & lt;string & gt; | Promise对象，返回指定分析数据结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | 14000011 | Internal system error |
+
+**示例**
+
+phAccessHelper的创建请参考[@ohos.file.sendablePhotoAccessHelper (基于Sendable对象的相册管理模块)](arkts-file-sendablephotoaccesshelper.md)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { common } from '@kit.AbilityKit';
+
+async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper) {
+  try {
+    console.info('getAnalysisDataDemo')
+    let fetchOptions: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: new dataSharePredicates.DataSharePredicates()
+    }
+    let fetchResult: sendablePhotoAccessHelper.FetchResult<sendablePhotoAccessHelper.PhotoAsset> =
+      await phAccessHelper.getAssets(fetchOptions);
+    let photoAsset: sendablePhotoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    if (photoAsset != undefined) {
+      let analysisData: string = await photoAsset.getAnalysisData(
+        photoAccessHelper.AnalysisType.ANALYSIS_OCR);
+      console.info('get ocr result: ' + JSON.stringify(analysisData));
+    }
+    fetchResult.close();
+  } catch (err) {
+    console.error(`getAnalysisDataDemofailed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
 
 ## requestSource
 
@@ -67,8 +93,6 @@ requestSource(): Promise<number>
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
-<!--Device-PhotoAsset-requestSource(): Promise<number>--><!--Device-PhotoAsset-requestSource(): Promise<number>-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
@@ -77,7 +101,7 @@ requestSource(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象，返回源文件fd。 |
+| Promise & lt;number & gt; | Promise对象，返回源文件fd。 |
 
 **错误码：**
 
@@ -116,4 +140,3 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
   }
 }
 ```
-

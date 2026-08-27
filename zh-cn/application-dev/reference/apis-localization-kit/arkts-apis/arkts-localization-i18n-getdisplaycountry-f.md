@@ -18,9 +18,7 @@ export function getDisplayCountry(country: string, locale: string, sentenceCase?
 
 **废弃版本：** 9
 
-**替代接口：** [getDisplayCountry](../../apis-na/arkts-apis/arkts-na-i18n-system-c.md#getdisplaycountry)
-
-<!--Device-i18n-export function getDisplayCountry(country: string, locale: string, sentenceCase?: boolean): string--><!--Device-i18n-export function getDisplayCountry(country: string, locale: string, sentenceCase?: boolean): string-End-->
+**替代接口：** [getDisplayCountry](arkts-localization-i18n-system-c.md#getdisplaycountry)
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -41,9 +39,20 @@ export function getDisplayCountry(country: string, locale: string, sentenceCase?
 **示例**
 
 ```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n } from '@kit.LocalizationKit';
+
+try {
+  let displayCountry: string = i18n.System.getDisplayCountry('CN', 'en-GB'); // displayCountry = 'China'
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`call System.getDisplayCountry failed, error code: ${err.code}, message: ${err.message}.`);
+}
+```
+
+```TypeScript
 import { i18n } from '@kit.LocalizationKit';
 
 let countryName: string = i18n.getDisplayCountry('zh-CN', 'en-GB', true); // countryName = 'China'
 countryName = i18n.getDisplayCountry('zh-CN', 'en-GB'); // countryName = 'China'
 ```
-

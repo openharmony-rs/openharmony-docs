@@ -2,9 +2,7 @@
 
 包含已授权的uri列表和无效的uri列表。
 
-**起始版本：** 26.0.0
-
-<!--Device-photoAccessHelper-export class RequestReadPermissionResult--><!--Device-photoAccessHelper-export class RequestReadPermissionResult-End-->
+**起始版本：** 23
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -24,13 +22,11 @@ authorizedUris?: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 26.0.0
+**起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RequestReadPermissionResult-authorizedUris?: Array<string>--><!--Device-RequestReadPermissionResult-authorizedUris?: Array<string>-End-->
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -44,13 +40,10 @@ invalidUris?: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 26.0.0
+**起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RequestReadPermissionResult-invalidUris?: Array<string>--><!--Device-RequestReadPermissionResult-invalidUris?: Array<string>-End-->
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-

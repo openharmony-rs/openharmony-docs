@@ -9,14 +9,12 @@ import { media } from '@kit.MediaKit';
 ## getAVScreenCaptureConfigurableParameters
 
 ```TypeScript
-function getAVScreenCaptureConfigurableParameters(sessionId: int): Promise<string>
+function getAVScreenCaptureConfigurableParameters(sessionId: number): Promise<string>
 ```
 
 get Configurations which user can changes from AVScreenCapture server
 
-**起始版本：** 23
-
-<!--Device-media-function getAVScreenCaptureConfigurableParameters(sessionId: int): Promise<string>--><!--Device-media-function getAVScreenCaptureConfigurableParameters(sessionId: int): Promise<string>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -26,20 +24,20 @@ get Configurations which user can changes from AVScreenCapture server
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sessionId | int | 是 | The AVScreenCapture server session ID. |
+| sessionId | number | 是 | The AVScreenCapture server session ID. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Returns a configurable configuration item string. |
+| Promise & lt;string & gt; | Returns a configurable configuration item string. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) |  |
 | [5400109](../errorcode-media.md#5400109-会话id不存在) | Sessions not exist. Return by promise. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) |  |
 
 **示例**
 
@@ -55,4 +53,3 @@ try {
   console.error(`getAVScreenCaptureConfigurableParameters error, error message: ${error.message}`);
 }
 ```
-

@@ -2,9 +2,7 @@
 
 提供封装文件属性的方法。
 
-**起始版本：** 23
-
-<!--Device-photoAccessHelper-interface PhotoAsset--><!--Device-photoAccessHelper-interface PhotoAsset-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -22,11 +20,9 @@ clone(title: string): Promise<PhotoAsset>
 
 克隆资产，可设置文件名，但不支持修改文件类型。使用promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 14
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
-
-<!--Device-PhotoAsset-clone(title: string): Promise<PhotoAsset>--><!--Device-PhotoAsset-clone(title: string): Promise<PhotoAsset>-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -34,21 +30,47 @@ clone(title: string): Promise<PhotoAsset>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| title | string | 是 | 克隆后资产的标题。参数规格为： <br>- 不应包含扩展名。 <br>- 文件名字符串长度的取值范围为[1, 255]（资产文件名为标题+扩展名）。 <br>- 不允许出现的非法英文字符，包括：. \ / : ? " ' ` &lt; &gt; \| { } [ ] |
+| title | string | 是 | 克隆后资产的标题。参数规格为：    - 不应包含扩展名。    - 文件名字符串长度的取值范围为[1, 255]（资产文件名为标题+扩展名）。    - 不允许出现的非法英文字符，包括：. \ / : * ? " ' ` &lt; &gt; \| { } [ ] |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;PhotoAsset&gt; | Promise对象，返回 [PhotoAsset]{ |
+| Promise & lt;PhotoAsset & gt; | Promise对象，返回 [PhotoAsset]{ |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| 14000011 | Internal system error. It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
+| 14000011 | Internal system error. It is recommended to retry and check the logs. Possible causes:  1. Database corrupted;  2. The file system is abnormal;  3. The IPC request timed out. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { systemDateTime } from '@kit.BasicServicesKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    let title: string = systemDateTime.getTime().toString();
+    let newAsset: photoAccessHelper.PhotoAsset = await photoAsset.clone(title);
+    console.info('get new asset successfully');
+  } catch (error) {
+    console.error(`failed to get new asset. message =  ${error.code}, ${error.message}`);
+  }
+}
+```
 
 ## close
 
@@ -62,9 +84,7 @@ close(fd: number, callback: AsyncCallback<void>): void
 
 **废弃版本：** 11
 
-**替代接口：** [close](../../apis-na/arkts-apis/arkts-na-fileio-close-f.md)
-
-<!--Device-PhotoAsset-close(fd: number, callback: AsyncCallback<void>): void--><!--Device-PhotoAsset-close(fd: number, callback: AsyncCallback<void>): void-End-->
+**替代接口：** close
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -73,15 +93,47 @@ close(fd: number, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | fd | number | 是 | 文件描述符。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当关闭当前文件成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当关闭当前文件成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | 13900020 | Invalid argument. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | System inner fail |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('closeDemo');
+  try {
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOption: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+    };
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+    let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    let fd: number = await photoAsset.getReadOnlyFd();
+    console.info('file fd', fd);
+    photoAsset.close(fd, (err) => {
+      if (err === undefined) {
+        console.info('asset close succeed.');
+      } else {
+        console.error(`close failed, error: ${err.code}, ${err.message}`);
+      }
+    });
+  } catch (err) {
+    console.error(`close failed, error: ${err.code}, ${err.message}`);
+  }
+}
+```
 
 ## close
 
@@ -95,9 +147,7 @@ close(fd: number): Promise<void>
 
 **废弃版本：** 11
 
-**替代接口：** [close](../../apis-na/arkts-apis/arkts-na-fileio-close-f.md)
-
-<!--Device-PhotoAsset-close(fd: number): Promise<void>--><!--Device-PhotoAsset-close(fd: number): Promise<void>-End-->
+**替代接口：** close
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -111,15 +161,42 @@ close(fd: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | 13900020 | Invalid argument |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | System inner fail |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('closeDemo');
+  try {
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOption: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+    };
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+    let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    let fd: number = await asset.getReadOnlyFd();
+    console.info('file fd', fd);
+    await asset.close(fd);
+    console.info('asset close succeed.');
+  } catch (err) {
+    console.error(`close failed, error: ${err.code}, ${err.message}`);
+  }
+}
+```
 
 ## commitModify
 
@@ -129,13 +206,11 @@ commitModify(callback: AsyncCallback<void>): void
 
 修改文件的元数据。使用callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PhotoAsset-commitModify(callback: AsyncCallback<void>): void--><!--Device-PhotoAsset-commitModify(callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -143,18 +218,82 @@ commitModify(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当修改文件元数据成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当修改文件元数据成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
-| 14000001 | Invalid display name |
-| 13900012 | Permission denied<br>**适用版本：** 10+ |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied<br>**适用版本：** 11+ |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types. |
+| 13900012 | Permission denied<br>**适用版本：** 10 |
+| 13900020 | Invalid argument |
+| 14000001 | Invalid display name |
 | 14000011 | System inner fail |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('albumCommitModifyDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let albumFetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let albumList: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, albumFetchOptions);
+  if (albumList === undefined) {
+    console.error('albumList is undefined');
+    return;
+  }
+  let album: photoAccessHelper.Album = await albumList.getFirstObject();
+  if (album === undefined) {
+    console.error('album is undefined');
+    return;
+  }
+  album.albumName = 'hello';
+  album.commitModify((err) => {
+    if (err !== undefined) {
+      console.error(`commitModify failed with error: ${err.code}, ${err.message}`);
+    } else {
+      console.info('commitModify successfully');
+    }
+  });
+}
+```
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('commitModifyDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: ['title'],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+  let title: string = photoAccessHelper.PhotoKeys.TITLE.toString();
+  let photoAssetTitle: photoAccessHelper.MemberType = photoAsset.get(title);
+  console.info('photoAsset get photoAssetTitle = ', photoAssetTitle);
+  photoAsset.set(title, 'newTitle2');
+  photoAsset.commitModify((err) => {
+    if (err === undefined) {
+      let newPhotoAssetTitle: photoAccessHelper.MemberType = photoAsset.get(title);
+      console.info('photoAsset get newPhotoAssetTitle = ', newPhotoAssetTitle);
+    } else {
+      console.error(`commitModify failed, error: ${err.code}, ${err.message}`);
+    }
+  });
+}
+```
 
 ## commitModify
 
@@ -164,13 +303,11 @@ commitModify(): Promise<void>
 
 修改文件的元数据。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PhotoAsset-commitModify(): Promise<void>--><!--Device-PhotoAsset-commitModify(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -178,18 +315,84 @@ commitModify(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
-| 14000001 | Invalid display name |
-| 13900012 | Permission denied<br>**适用版本：** 10+ |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied<br>**适用版本：** 11+ |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types. |
+| 13900012 | Permission denied<br>**适用版本：** 10 |
+| 13900020 | Invalid argument |
+| 14000001 | Invalid display name |
 | 14000011 | System inner fail |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('albumCommitModifyDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let albumFetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let albumList: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, albumFetchOptions);
+  if (albumList === undefined) {
+    console.error('albumList is undefined');
+    return;
+  }
+  let album: photoAccessHelper.Album = await albumList.getFirstObject();
+  if (album === undefined) {
+    console.error('album is undefined');
+    return;
+  }
+  album.albumName = 'hello';
+  album.commitModify().then(() => {
+    console.info('commitModify successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`commitModify failed with error: ${err.code}, ${err.message}`);
+  });
+}
+```
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('commitModifyDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: ['title'],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+  if (photoAsset === undefined) {
+    console.error('commitModifyPromise photoAsset is undefined');
+    return;
+  }
+  let title: string = photoAccessHelper.PhotoKeys.TITLE.toString();
+  let photoAssetTitle: photoAccessHelper.MemberType = photoAsset.get(title);
+  console.info('photoAsset get photoAssetTitle = ', photoAssetTitle);
+  photoAsset.set(title, 'newTitle3');
+  try {
+    await photoAsset.commitModify();
+    let newPhotoAssetTitle: photoAccessHelper.MemberType = photoAsset.get(title);
+    console.info('photoAsset get newPhotoAssetTitle = ', newPhotoAssetTitle);
+  } catch (err) {
+    console.error(`release failed. error: ${err.code}, ${err.message}`);
+  }
+}
+```
 
 ## get
 
@@ -199,11 +402,9 @@ get(member: string): MemberType
 
 获取PhotoAsset成员参数的值。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PhotoAsset-get(member: string): MemberType--><!--Device-PhotoAsset-get(member: string): MemberType-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -226,23 +427,47 @@ get(member: string): MemberType
 | 13900020 | Invalid argument |
 | 14000014 | The provided member must be a property name of PhotoKey. |
 
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('photoAssetGetDemo');
+  try {
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOption: photoAccessHelper.FetchOptions = {
+      fetchColumns: ['title'],
+      predicates: predicates
+    };
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+    let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    let title: photoAccessHelper.PhotoKeys = photoAccessHelper.PhotoKeys.TITLE;
+    let photoAssetTitle: photoAccessHelper.MemberType = photoAsset.get(title.toString());
+    console.info('photoAsset Get photoAssetTitle = ', photoAssetTitle);
+  } catch (err) {
+    console.error(`release failed. error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ## getReadOnlyFd
 
 ```TypeScript
 getReadOnlyFd(callback: AsyncCallback<number>): void
 ```
 
-以只读方式打开当前文件。使用callback异步回调。 使用完毕后调用close释放文件描述符。
+以只读方式打开当前文件。使用callback异步回调。使用完毕后调用close释放文件描述符。
 
 **起始版本：** 10
 
 **废弃版本：** 11
 
-**替代接口：** [open](../../apis-na/arkts-apis/arkts-na-fileio-open-f.md)
+**替代接口：** open
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
-
-<!--Device-PhotoAsset-getReadOnlyFd(callback: AsyncCallback<number>): void--><!--Device-PhotoAsset-getReadOnlyFd(callback: AsyncCallback<number>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -250,16 +475,44 @@ getReadOnlyFd(callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。当打开当前文件成功，err为undefined，data为文件描述符； 否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当打开当前文件成功，err为undefined，data为文件描述符； 否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| 14000011 | System inner fail. Possible causes: <br>1. The database is corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types. |
+| 13900020 | Invalid argument |
+| 14000011 | System inner fail. Possible causes:  1. The database is corrupted;  2. The file system is abnormal;  3. The IPC request timed out. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getReadOnlyFdDemo');
+  // 需要保证设备中存在可读取图片视频文件。
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let assetResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+  let photoAsset: photoAccessHelper.PhotoAsset = await assetResult.getFirstObject();
+  photoAsset.getReadOnlyFd((err, fd) => {
+    if (fd !== undefined) {
+      console.info('File fd' + fd);
+      photoAsset.close(fd);
+    } else {
+      console.error(`getReadOnlyFd err: ${err.code}, ${err.message}`);
+    }
+  });
+}
+```
 
 ## getReadOnlyFd
 
@@ -267,17 +520,15 @@ getReadOnlyFd(callback: AsyncCallback<number>): void
 getReadOnlyFd(): Promise<number>
 ```
 
-以只读方式打开当前文件。使用promise异步回调。 返回的文件描述符在使用完毕后需要调用close进行释放。
+以只读方式打开当前文件。使用promise异步回调。返回的文件描述符在使用完毕后需要调用close进行释放。
 
 **起始版本：** 10
 
 **废弃版本：** 11
 
-**替代接口：** [open](../../apis-na/arkts-apis/arkts-na-fileio-open-f.md)
+**替代接口：** open
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
-
-<!--Device-PhotoAsset-getReadOnlyFd(): Promise<number>--><!--Device-PhotoAsset-getReadOnlyFd(): Promise<number>-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -285,16 +536,51 @@ getReadOnlyFd(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象，返回文件描述符。 |
+| Promise & lt;number & gt; | Promise对象，返回文件描述符。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| 14000011 | System inner fail. Possible causes: <br>1. The database is corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types. |
+| 13900020 | Invalid argument |
+| 14000011 | System inner fail. Possible causes:  1. The database is corrupted;  2. The file system is abnormal;  3. The IPC request timed out. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getReadOnlyFdDemo');
+  try {
+    // 需要保证设备中存在可读取图片视频文件。
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOptions: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+    };
+    let assetResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    let photoAsset: photoAccessHelper.PhotoAsset = await assetResult.getFirstObject();
+    if (photoAsset === undefined) {
+      console.error('photoAsset is undefined');
+      return;
+    }
+    let fd: number = await photoAsset.getReadOnlyFd();
+    if (fd !== undefined) {
+      console.info('File fd' + fd);
+      photoAsset.close(fd);
+    } else {
+      console.error('getReadOnlyFd fail');
+    }
+  } catch (err) {
+    console.error(`getReadOnlyFd demo err: ${err.code}, ${err.message}`);
+  }
+}
+```
 
 ## getThumbnail
 
@@ -304,13 +590,11 @@ getThumbnail(callback: AsyncCallback<image.PixelMap>): void
 
 获取文件的缩略图。使用callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PhotoAsset-getThumbnail(callback: AsyncCallback<image.PixelMap>): void--><!--Device-PhotoAsset-getThumbnail(callback: AsyncCallback<image.PixelMap>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -318,16 +602,43 @@ getThumbnail(callback: AsyncCallback<image.PixelMap>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;image.PixelMap&gt; | 是 | 回调函数。当获取文件的缩略图成功，err为undefined， data为缩略图的PixelMap；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;image.PixelMap&gt; | 是 | 回调函数。当获取文件的缩略图成功，err为undefined， data为缩略图的PixelMap；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types. |
 | 13900012 | Permission denied |
+| 13900020 | Invalid argument |
 | 14000011 | System inner fail |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getThumbnailDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+  console.info('asset displayName = ', asset.displayName);
+  asset.getThumbnail((err, pixelMap) => {
+    if (err === undefined) {
+      console.info('getThumbnail successful ' + pixelMap);
+    } else {
+      console.error(`getThumbnail fail with error: ${err.code}, ${err.message}`);
+    }
+  });
+}
+```
 
 ## getThumbnail
 
@@ -337,13 +648,11 @@ getThumbnail(size: image.Size, callback: AsyncCallback<image.PixelMap>): void
 
 获取文件的缩略图，传入缩略图尺寸。使用callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PhotoAsset-getThumbnail(size: image.Size, callback: AsyncCallback<image.PixelMap>): void--><!--Device-PhotoAsset-getThumbnail(size: image.Size, callback: AsyncCallback<image.PixelMap>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -352,16 +661,49 @@ getThumbnail(size: image.Size, callback: AsyncCallback<image.PixelMap>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | size | image.Size | 是 | 缩略图尺寸。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;image.PixelMap&gt; | 是 | 回调函数。当获取文件的缩略图成功，err为undefined， data为缩略图的PixelMap；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;image.PixelMap&gt; | 是 | 回调函数。当获取文件的缩略图成功，err为undefined， data为缩略图的PixelMap；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | 13900012 | Permission denied |
+| 13900020 | Invalid argument |
 | 14000011 | System inner fail |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { image } from '@kit.ImageKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getThumbnailDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let size: image.Size = { width: 720, height: 720 };
+  try {
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+    let asset = await fetchResult.getFirstObject();
+    console.info('asset displayName = ', asset.displayName);
+    asset.getThumbnail(size, (err, pixelMap) => {
+      if (err === undefined) {
+        console.info('getThumbnail successful ' + pixelMap);
+      } else {
+        console.error(`getThumbnail fail with error: ${err.code}, ${err.message}`);
+      }
+    });
+  } catch (error) {
+    console.error(`Error fetching assets: ${error.message}`);
+  }
+}
+```
 
 ## getThumbnail
 
@@ -371,13 +713,11 @@ getThumbnail(size?: image.Size): Promise<image.PixelMap>
 
 获取文件的缩略图，传入缩略图尺寸。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PhotoAsset-getThumbnail(size?: image.Size): Promise<image.PixelMap>--><!--Device-PhotoAsset-getThumbnail(size?: image.Size): Promise<image.PixelMap>-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -391,16 +731,44 @@ getThumbnail(size?: image.Size): Promise<image.PixelMap>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;image.PixelMap&gt; | Promise对象，返回缩略图的PixelMap。 |
+| Promise & lt;image.PixelMap & gt; | Promise对象，返回缩略图的PixelMap。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | 13900012 | Permission denied |
+| 13900020 | Invalid argument |
 | 14000011 | System inner fail |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getThumbnailDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let size: image.Size = { width: 720, height: 720 };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  let asset = await fetchResult.getFirstObject();
+  console.info('asset displayName = ', asset.displayName);
+  asset.getThumbnail(size).then((pixelMap) => {
+    console.info('getThumbnail successful ' + pixelMap);
+  }).catch((err: BusinessError) => {
+    console.error(`getThumbnail fail with error: ${err.code}, ${err.message}`);
+  });
+}
+```
 
 ## set
 
@@ -410,9 +778,7 @@ set(member: string, value: string): void
 
 设置PhotoAsset成员参数。
 
-**起始版本：** 23
-
-<!--Device-PhotoAsset-set(member: string, value: string): void--><!--Device-PhotoAsset-set(member: string, value: string): void-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -420,16 +786,41 @@ set(member: string, value: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| member | string | 是 | 成员参数名称例如： [PhotoKeys](arkts-medialibrary-photoaccesshelper-photokeys-e.md) .TITLE。字符串长度的取值范围为[1, 255]。 |
-| value | string | 是 | 设置成员参数名称，只能修改 [PhotoKeys](arkts-medialibrary-photoaccesshelper-photokeys-e.md).TITLE的值。title的参数规格为： <br>- 不应包含扩展名。 <br>- 文件名字符串长度的取值范围为[1, 255]（资产文件名为标题+扩展名）。 <br>- 不允许出现的非法英文字符，包括：. \ / : ? " ' ` &lt; &gt; \| { } [ ] |
+| member | string | 是 | 成员参数名称例如： [PhotoKeys](arkts-medialibrary-photoaccesshelper-photokeys-e.md).TITLE。字符串长度的取值范围为[1, 255]。 |
+| value | string | 是 | 设置成员参数名称，只能修改 [PhotoKeys](arkts-medialibrary-photoaccesshelper-photokeys-e.md).TITLE的值。title的参数规格为：    - 不应包含扩展名。    - 文件名字符串长度的取值范围为[1, 255]（资产文件名为标题+扩展名）。    - 不允许出现的非法英文字符，包括：. \ / : * ? " ' ` &lt; &gt; \| { } [ ] |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | 13900020 | Invalid argument |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000014 | The provided member must be a property name of PhotoKey. |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('photoAssetSetDemo');
+  try {
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOption: photoAccessHelper.FetchOptions = {
+      fetchColumns: ['title'],
+      predicates: predicates
+    };
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+    let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    let title: string = photoAccessHelper.PhotoKeys.TITLE.toString();
+    photoAsset.set(title, 'newTitle');
+  } catch (err) {
+    console.error(`release failed. error: ${err.code}, ${err.message}`);
+  }
+}
+```
 
 ## displayName
 
@@ -441,11 +832,9 @@ readonly displayName: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PhotoAsset-readonly displayName: string--><!--Device-PhotoAsset-readonly displayName: string-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -459,11 +848,9 @@ readonly photoType: PhotoType
 
 **类型：** PhotoType
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
-
-<!--Device-PhotoAsset-readonly photoType: PhotoType--><!--Device-PhotoAsset-readonly photoType: PhotoType-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -477,11 +864,8 @@ readonly uri: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PhotoAsset-readonly uri: string--><!--Device-PhotoAsset-readonly uri: string-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-

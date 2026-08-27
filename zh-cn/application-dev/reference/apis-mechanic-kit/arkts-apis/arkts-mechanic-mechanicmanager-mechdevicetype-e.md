@@ -1,10 +1,8 @@
 # MechDeviceType
 
-Enumerates the mechanical device types.
+Enumerates the mechanical device types. @enum { number }
 
-**起始版本：** 23
-
-<!--Device-mechanicManager-export enum MechDeviceType--><!--Device-mechanicManager-export enum MechDeviceType-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -16,9 +14,6 @@ GIMBAL_DEVICE = 0
 
 云台设备类型
 
-**起始版本：** 23
-
-<!--Device-MechDeviceType-GIMBAL_DEVICE = 0--><!--Device-MechDeviceType-GIMBAL_DEVICE = 0-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
-

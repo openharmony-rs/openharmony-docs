@@ -20,8 +20,6 @@ function getApplicationWindowStates(admin: Want, bundleName: string, appIndex: n
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-applicationManager-function getApplicationWindowStates(admin: Want, bundleName: string, appIndex: number): Array<WindowStateInfo>--><!--Device-applicationManager-function getApplicationWindowStates(admin: Want, bundleName: string, appIndex: number): Array<WindowStateInfo>-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
@@ -30,7 +28,7 @@ function getApplicationWindowStates(admin: Want, bundleName: string, appIndex: n
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | bundleName | string | 是 | 应用的包名。 |
-| appIndex | number | 是 | 应用分身索引，取值范围：大于等于0的整数。 <br> appIndex可以通过@ohos.bundle.bundleManager中的 [getAppCloneIdentity](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getappcloneidentity-f.md)等接口来获取。 |
+| appIndex | number | 是 | 应用分身索引，取值范围：大于等于0的整数。 appIndex可以通过@ohos.bundle.bundleManager中的 [getAppCloneIdentity](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getappcloneidentity-f.md)等接口来获取。 |
 
 **返回值：**
 
@@ -42,10 +40,10 @@ function getApplicationWindowStates(admin: Want, bundleName: string, appIndex: n
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200012](../errorcode-enterpriseDeviceManager.md#9200012-参数校验失败) | Parameter verification failed. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [9200012](../errorcode-enterpriseDeviceManager.md#9200012-参数校验失败) | Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例**
 
@@ -70,4 +68,3 @@ try {
   console.error(`Failed to get application window states. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-

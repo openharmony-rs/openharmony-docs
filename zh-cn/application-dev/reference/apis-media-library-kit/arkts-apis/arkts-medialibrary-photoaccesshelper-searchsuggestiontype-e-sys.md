@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-photoAccessHelper-enum SearchSuggestionType--><!--Device-photoAccessHelper-enum SearchSuggestionType-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
@@ -23,8 +21,6 @@ TIME_GEO_LABEL = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchSuggestionType-TIME_GEO_LABEL = 0--><!--Device-SearchSuggestionType-TIME_GEO_LABEL = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -44,8 +40,6 @@ TIME_GEO = 1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SearchSuggestionType-TIME_GEO = 1--><!--Device-SearchSuggestionType-TIME_GEO = 1-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
@@ -63,8 +57,6 @@ TIME_LABEL = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchSuggestionType-TIME_LABEL = 2--><!--Device-SearchSuggestionType-TIME_LABEL = 2-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -84,8 +76,6 @@ TIME_PEOPLE_GEO_LABEL = 3
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SearchSuggestionType-TIME_PEOPLE_GEO_LABEL = 3--><!--Device-SearchSuggestionType-TIME_PEOPLE_GEO_LABEL = 3-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
@@ -103,8 +93,6 @@ TIME_PEOPLE_GEO = 4
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SearchSuggestionType-TIME_PEOPLE_GEO = 4--><!--Device-SearchSuggestionType-TIME_PEOPLE_GEO = 4-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -124,8 +112,6 @@ TIME_PEOPLE_LABEL = 5
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SearchSuggestionType-TIME_PEOPLE_LABEL = 5--><!--Device-SearchSuggestionType-TIME_PEOPLE_LABEL = 5-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
@@ -144,9 +130,6 @@ TIME_PEOPLE = 6
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SearchSuggestionType-TIME_PEOPLE = 6--><!--Device-SearchSuggestionType-TIME_PEOPLE = 6-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
-

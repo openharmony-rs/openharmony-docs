@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-deviceControl-enum Operation--><!--Device-deviceControl-enum Operation-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## DISK_ERASURE
@@ -19,8 +17,6 @@ DISK_ERASURE = 0
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Operation-DISK_ERASURE = 0--><!--Device-Operation-DISK_ERASURE = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -36,8 +32,6 @@ RESET_FACTORY = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Operation-RESET_FACTORY = 1--><!--Device-Operation-RESET_FACTORY = 1-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## REBOOT
@@ -51,8 +45,6 @@ REBOOT = 2
 **起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Operation-REBOOT = 2--><!--Device-Operation-REBOOT = 2-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -68,8 +60,6 @@ SHUT_DOWN = 3
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Operation-SHUT_DOWN = 3--><!--Device-Operation-SHUT_DOWN = 3-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## LOCK_SCREEN
@@ -84,8 +74,6 @@ LOCK_SCREEN = 4
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Operation-LOCK_SCREEN = 4--><!--Device-Operation-LOCK_SCREEN = 4-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## LOCK_DEVICE
@@ -94,13 +82,11 @@ LOCK_SCREEN = 4
 LOCK_DEVICE = 5
 ```
 
-设备锁定。该能力使用后设备屏幕无法使用，按键无响应，仅支持锁屏文案定制，不支持在锁屏界面定制交互功能。在开发过程中，下发设备锁定策略前一定要预留逃生通道，并且确保逃生通道正常。 建议开发时保留hdc能力与远程通信能力，通过hdc命令或者远程push能力能触发设备解锁定功能。<br>如果需要实现在屏幕锁定的情况下支持自定义行为的能力， 建议使用[applicationManager.setAllowedKioskApps](arkts-mdm-applicationmanager-setallowedkioskapps-f.md) 接口配置支持Kiosk模式， 使用[applicationManager.enterKioskMode](../../apis-ability-kit/arkts-apis/arkts-ability-kioskmanager-enterkioskmode-f.md)接口进入Kiosk模式。
+设备锁定。该能力使用后设备屏幕无法使用，按键无响应，仅支持锁屏文案定制，不支持在锁屏界面定制交互功能。在开发过程中，下发设备锁定策略前一定要预留逃生通道，并且确保逃生通道正常。 建议开发时保留hdc能力与远程通信能力，通过hdc命令或者远程push能力能触发设备解锁定功能。如果需要实现在屏幕锁定的情况下支持自定义行为的能力， 建议使用[applicationManager.setAllowedKioskApps](arkts-mdm-applicationmanager-setallowedkioskapps-f.md) 接口配置支持Kiosk模式， 使用[applicationManager.enterKioskMode](../../apis-ability-kit/arkts-apis/arkts-ability-kioskmanager-enterkioskmode-f.md)接口进入Kiosk模式。
 
 **起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Operation-LOCK_DEVICE = 5--><!--Device-Operation-LOCK_DEVICE = 5-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -116,7 +102,4 @@ UNLOCK_DEVICE = 6
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Operation-UNLOCK_DEVICE = 6--><!--Device-Operation-UNLOCK_DEVICE = 6-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-

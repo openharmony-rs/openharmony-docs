@@ -2,9 +2,7 @@
 
 媒体库支持图库自定义用户统计行为。
 
-**起始版本：** 23
-
-<!--Device-photoAccessHelper-interface PhotoAssetCustomRecord--><!--Device-photoAccessHelper-interface PhotoAssetCustomRecord-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -19,16 +17,14 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 ## fileId
 
 ```TypeScript
-readonly fileId: int
+readonly fileId: number
 ```
 
 图片id，必须为大于0的整数。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-PhotoAssetCustomRecord-readonly fileId: int--><!--Device-PhotoAssetCustomRecord-readonly fileId: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -37,16 +33,14 @@ readonly fileId: int
 ## lcdJumpCount
 
 ```TypeScript
-readonly lcdJumpCount: int
+readonly lcdJumpCount: number
 ```
 
 大图跳转分享等次数，必须为大于0的整数。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-PhotoAssetCustomRecord-readonly lcdJumpCount: int--><!--Device-PhotoAssetCustomRecord-readonly lcdJumpCount: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -55,18 +49,15 @@ readonly lcdJumpCount: int
 ## shareCount
 
 ```TypeScript
-readonly shareCount: int
+readonly shareCount: number
 ```
 
 图片和视频被分享的次数，必须为大于0的整数。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-PhotoAssetCustomRecord-readonly shareCount: int--><!--Device-PhotoAssetCustomRecord-readonly shareCount: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
-

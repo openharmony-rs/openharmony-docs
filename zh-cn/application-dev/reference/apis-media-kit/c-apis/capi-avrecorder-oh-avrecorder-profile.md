@@ -6,7 +6,7 @@ typedef struct OH_AVRecorder_Profile {...} OH_AVRecorder_Profile
 
 ## 概述
 
-定义音视频录制的详细参数。通过配置音频/视频编码格式、比特率、采样率、帧率、分辨率、容器格式、HDR录制、是否启用时域可分层视频编码功能等参数，可以灵活控制录制质量和录制文件大小，适用于需要自定义录制质量、选择录制内容类型（仅音频/仅视频/音视频同时录制）、启用HDR录制或时域可分层视频编码功能的场景。通过参数设置可以选择仅录制音频或视频，或者同时录制音视频：1. 当 audioBitrate 或 audioChannels 为 0 时，不录制音频。2. 当 videoFrameWidth 或 videoFrameHeight 为 0 时，不录制视频。各参数的范围请参见[AVRecorderProfile](arkts-apis-media-i.md#avrecorderprofile9)。
+定义音视频录制的详细参数。通过配置音频/视频编码格式、比特率、采样率、帧率、分辨率、容器格式、HDR录制、是否启用时域可分层视频编码功能等参数，可以灵活控制录制质量和录制文件大小，适用于需要自定义录制质量、选择录制内容类型（仅音频/仅视频/音视频同时录制）、启用HDR录制或时域可分层视频编码功能的场景。<br>通过参数设置可以选择仅录制音频或视频，或者同时录制音视频：<br>1. 当 audioBitrate 或 audioChannels 为 0 时，不录制音频。<br>2. 当 videoFrameWidth 或 videoFrameHeight 为 0 时，不录制视频。<br>各参数的范围请参见[AVRecorderProfile](arkts-apis-media-i.md#avrecorderprofile9)。
 
 **起始版本：** 18
 

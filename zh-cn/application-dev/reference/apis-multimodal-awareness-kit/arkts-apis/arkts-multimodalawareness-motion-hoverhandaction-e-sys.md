@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-motion-export enum HoverHandAction--><!--Device-motion-export enum HoverHandAction-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.Motion
 
 **系统接口：** 此接口为系统接口。
@@ -21,8 +19,6 @@ DOWN = 0
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-HoverHandAction-DOWN = 0--><!--Device-HoverHandAction-DOWN = 0-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.Motion
 
@@ -40,9 +36,6 @@ UP = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-HoverHandAction-UP = 1--><!--Device-HoverHandAction-UP = 1-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.Motion
 
 **系统接口：** 此接口为系统接口。
-

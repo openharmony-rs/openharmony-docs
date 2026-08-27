@@ -4,8 +4,6 @@
 
 **起始版本：** 23
 
-<!--Device-onScreen-export interface OnscreenAwarenessOptions--><!--Device-onScreen-export interface OnscreenAwarenessOptions-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **系统接口：** 此接口为系统接口。
@@ -30,9 +28,6 @@ parameters?: Record<string, Object>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-OnscreenAwarenessOptions-parameters?: Record<string, Object>--><!--Device-OnscreenAwarenessOptions-parameters?: Record<string, Object>-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **系统接口：** 此接口为系统接口。
-

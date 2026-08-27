@@ -2,9 +2,7 @@
 
 相册的具体变更数据。
 
-**起始版本：** 23
-
-<!--Device-photoAccessHelper-interface AlbumChangeData--><!--Device-photoAccessHelper-interface AlbumChangeData-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -24,9 +22,7 @@ albumAfterChange: AlbumChangeInfo | null
 
 **类型：** [AlbumChangeInfo](arkts-medialibrary-photoaccesshelper-albumchangeinfo-i.md) \| null
 
-**起始版本：** 23
-
-<!--Device-AlbumChangeData-albumAfterChange: AlbumChangeInfo | null--><!--Device-AlbumChangeData-albumAfterChange: AlbumChangeInfo | null-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -40,9 +36,6 @@ albumBeforeChange: AlbumChangeInfo | null
 
 **类型：** [AlbumChangeInfo](arkts-medialibrary-photoaccesshelper-albumchangeinfo-i.md) \| null
 
-**起始版本：** 23
-
-<!--Device-AlbumChangeData-albumBeforeChange: AlbumChangeInfo | null--><!--Device-AlbumChangeData-albumBeforeChange: AlbumChangeInfo | null-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-

@@ -2,9 +2,7 @@
 
 枚举，媒体文件的动态范围类型。
 
-**起始版本：** 23
-
-<!--Device-photoAccessHelper-export enum DynamicRangeType--><!--Device-photoAccessHelper-export enum DynamicRangeType-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -16,9 +14,7 @@ SDR = 0
 
 标准动态范围类型。
 
-**起始版本：** 23
-
-<!--Device-DynamicRangeType-SDR = 0--><!--Device-DynamicRangeType-SDR = 0-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -30,9 +26,6 @@ HDR = 1
 
 高动态范围类型。
 
-**起始版本：** 23
-
-<!--Device-DynamicRangeType-HDR = 1--><!--Device-DynamicRangeType-HDR = 1-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-

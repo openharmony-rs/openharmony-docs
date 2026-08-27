@@ -20,8 +20,6 @@ function isByodAdmin(admin: Want): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-adminManager-function isByodAdmin(admin: Want): boolean--><!--Device-adminManager-function isByodAdmin(admin: Want): boolean-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
@@ -62,4 +60,3 @@ try {
   console.error(`Failed to query admin is byod admin or not. Code is ${error.code}, message is ${error.message}`);
 }
 ```
-

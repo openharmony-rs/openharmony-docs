@@ -10,4 +10,3 @@
 - [C API](c-apis/Readme-CN.md)<!--c-media-kit-->
 - 错误码<!--media-arkts-errcode-->
   - [Media错误码](errorcode-media.md)
-

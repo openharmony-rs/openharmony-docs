@@ -12,15 +12,15 @@ import { i18n } from '@kit.LocalizationKit';
 export function getSystemLocale(): string
 ```
 
-> [System.getSystemLocale](../../apis-na/arkts-apis/arkts-na-i18n-system-c.md#getsystemlocaleinstance)代替。 > 获取系统区域ID。
+
+> [System.getSystemLocale](arkts-localization-i18n-system-c.md#getsystemlocaleinstance)代替。
+> 获取系统区域ID。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
 **替代接口：** [getSystemLocale](arkts-localization-i18n-system-c.md#getsystemlocale)
-
-<!--Device-i18n-export function getSystemLocale(): string--><!--Device-i18n-export function getSystemLocale(): string-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -35,6 +35,11 @@ export function getSystemLocale(): string
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';
 
-let locale: string = i18n.getSystemLocale();
+let systemLocale: string = i18n.System.getSystemLocale(); // 如果系统语言为简体中文、地区为中国，systemLocale = 'zh-Hans-CN'
 ```
 
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+
+let locale: string = i18n.getSystemLocale();
+```

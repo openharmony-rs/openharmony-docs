@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { mechanicManager } from '@kit.MechanicKit';
 ```
 
 ## setCameraTrackingLayout
@@ -14,9 +13,7 @@ function setCameraTrackingLayout(trackingLayout: CameraTrackingLayout): void
 
 设置相机跟踪布局
 
-**起始版本：** 23
-
-<!--Device-mechanicManager-function setCameraTrackingLayout(trackingLayout: CameraTrackingLayout): void--><!--Device-mechanicManager-function setCameraTrackingLayout(trackingLayout: CameraTrackingLayout): void-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -44,4 +41,3 @@ console.info('Set layout');
 mechanicManager.setCameraTrackingLayout(mechanicManager.CameraTrackingLayout.LEFT);
 console.info('Set layout successful');
 ```
-

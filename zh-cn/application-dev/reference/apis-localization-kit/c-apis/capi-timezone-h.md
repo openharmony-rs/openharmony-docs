@@ -139,7 +139,7 @@ I18n_ErrorCode OH_i18n_GetFirstStartFromTimeArrayTimeZoneRule(TimeArrayTimeZoneR
 
 | 参数项 | 描述 |
 | -- | -- |
-| [TimeArrayTimeZoneRule](capi-i18n-timearraytimezonerule.md)* rule | 起始时间戳数组定义的时区规则[TimeArrayTimeZoneRule](docroot://reference/apis-localization-kit/capi-i18n-timearraytimezonerule.md)。 |
+| [TimeArrayTimeZoneRule](capi-i18n-timearraytimezonerule.md)* rule | 起始时间戳数组定义的时区规则[TimeArrayTimeZoneRule][TimeArrayTimeZoneRule](capi-i18n-timearraytimezonerule.md)。 |
 | [TimeZoneRuleQuery](capi-i18n-timezonerulequery.md)* query | 用于传入查询的信息，并接收查询的结果。 |
 
 **返回：**
@@ -164,7 +164,7 @@ I18n_ErrorCode OH_i18n_GetFirstStartFromAnnualTimeZoneRule(AnnualTimeZoneRule* r
 
 | 参数项 | 描述 |
 | -- | -- |
-| [AnnualTimeZoneRule](capi-i18n-annualtimezonerule.md)* rule | 每年生效的时区规则[AnnualTimeZoneRule](docroot://reference/apis-localization-kit/capi-i18n-annualtimezonerule.md)。 |
+| [AnnualTimeZoneRule](capi-i18n-annualtimezonerule.md)* rule | 每年生效的时区规则[AnnualTimeZoneRule][AnnualTimeZoneRule](capi-i18n-annualtimezonerule.md)。 |
 | [TimeZoneRuleQuery](capi-i18n-timezonerulequery.md)* query | 用于传入查询的信息，并接收查询的结果。 |
 
 **返回：**
@@ -189,7 +189,7 @@ I18n_ErrorCode OH_i18n_GetFinalStartFromTimeArrayTimeZoneRule(TimeArrayTimeZoneR
 
 | 参数项 | 描述 |
 | -- | -- |
-| [TimeArrayTimeZoneRule](capi-i18n-timearraytimezonerule.md)* rule | 起始时间戳数组定义的时区规则[TimeArrayTimeZoneRule](docroot://reference/apis-localization-kit/capi-i18n-timearraytimezonerule.md)。 |
+| [TimeArrayTimeZoneRule](capi-i18n-timearraytimezonerule.md)* rule | 起始时间戳数组定义的时区规则[TimeArrayTimeZoneRule][TimeArrayTimeZoneRule](capi-i18n-timearraytimezonerule.md)。 |
 | [TimeZoneRuleQuery](capi-i18n-timezonerulequery.md)* query | 用于传入查询的信息，并接收查询的结果。 |
 
 **返回：**
@@ -214,7 +214,7 @@ I18n_ErrorCode OH_i18n_GetFinalStartFromAnnualTimeZoneRule(AnnualTimeZoneRule* r
 
 | 参数项 | 描述 |
 | -- | -- |
-| [AnnualTimeZoneRule](capi-i18n-annualtimezonerule.md)* rule | 每年生效的时区规则[AnnualTimeZoneRule](docroot://reference/apis-localization-kit/capi-i18n-annualtimezonerule.md)。 |
+| [AnnualTimeZoneRule](capi-i18n-annualtimezonerule.md)* rule | 每年生效的时区规则[AnnualTimeZoneRule][AnnualTimeZoneRule](capi-i18n-annualtimezonerule.md)。 |
 | [TimeZoneRuleQuery](capi-i18n-timezonerulequery.md)* query | 用于传入查询的信息，并接收查询的结果。 |
 
 **返回：**
@@ -239,7 +239,7 @@ I18n_ErrorCode OH_i18n_GetNextStartFromTimeArrayTimeZoneRule(TimeArrayTimeZoneRu
 
 | 参数项 | 描述 |
 | -- | -- |
-| [TimeArrayTimeZoneRule](capi-i18n-timearraytimezonerule.md)* rule | 起始时间戳数组定义的时区规则[TimeArrayTimeZoneRule](docroot://reference/apis-localization-kit/capi-i18n-timearraytimezonerule.md)。 |
+| [TimeArrayTimeZoneRule](capi-i18n-timearraytimezonerule.md)* rule | 起始时间戳数组定义的时区规则[TimeArrayTimeZoneRule][TimeArrayTimeZoneRule](capi-i18n-timearraytimezonerule.md)。 |
 | [TimeZoneRuleQuery](capi-i18n-timezonerulequery.md)* query | 用于传入查询的信息，并接收查询的结果。 |
 
 **返回：**
@@ -264,7 +264,7 @@ I18n_ErrorCode OH_i18n_GetNextStartFromAnnualTimeZoneRule(AnnualTimeZoneRule* ru
 
 | 参数项 | 描述 |
 | -- | -- |
-| [AnnualTimeZoneRule](capi-i18n-annualtimezonerule.md)* rule | 每年生效的时区规则[AnnualTimeZoneRule](docroot://reference/apis-localization-kit/capi-i18n-annualtimezonerule.md)。 |
+| [AnnualTimeZoneRule](capi-i18n-annualtimezonerule.md)* rule | 每年生效的时区规则[AnnualTimeZoneRule][AnnualTimeZoneRule](capi-i18n-annualtimezonerule.md)。 |
 | [TimeZoneRuleQuery](capi-i18n-timezonerulequery.md)* query | 用于传入查询的信息，并接收查询的结果。 |
 
 **返回：**
@@ -289,7 +289,7 @@ I18n_ErrorCode OH_i18n_GetPrevStartFromTimeArrayTimeZoneRule(TimeArrayTimeZoneRu
 
 | 参数项 | 描述 |
 | -- | -- |
-| [TimeArrayTimeZoneRule](capi-i18n-timearraytimezonerule.md)* rule | 起始时间戳数组定义的时区规则[TimeArrayTimeZoneRule](docroot://reference/apis-localization-kit/capi-i18n-timearraytimezonerule.md)。 |
+| [TimeArrayTimeZoneRule](capi-i18n-timearraytimezonerule.md)* rule | 起始时间戳数组定义的时区规则[TimeArrayTimeZoneRule][TimeArrayTimeZoneRule](capi-i18n-timearraytimezonerule.md)。 |
 | [TimeZoneRuleQuery](capi-i18n-timezonerulequery.md)* query | 用于传入查询的信息，并接收查询的结果。 |
 
 **返回：**
@@ -314,7 +314,7 @@ I18n_ErrorCode OH_i18n_GetPrevStartFromAnnualTimeZoneRule(AnnualTimeZoneRule* ru
 
 | 参数项 | 描述 |
 | -- | -- |
-| [AnnualTimeZoneRule](capi-i18n-annualtimezonerule.md)* rule | 每年生效的时区规则[AnnualTimeZoneRule](docroot://reference/apis-localization-kit/capi-i18n-annualtimezonerule.md)。 |
+| [AnnualTimeZoneRule](capi-i18n-annualtimezonerule.md)* rule | 每年生效的时区规则[AnnualTimeZoneRule][AnnualTimeZoneRule](capi-i18n-annualtimezonerule.md)。 |
 | [TimeZoneRuleQuery](capi-i18n-timezonerulequery.md)* query | 用于传入查询的信息，并接收查询的结果。 |
 
 **返回：**
@@ -339,7 +339,7 @@ I18n_ErrorCode OH_i18n_GetStartTimeAt(TimeArrayTimeZoneRule* rule, int32_t index
 
 | 参数项 | 描述 |
 | -- | -- |
-| [TimeArrayTimeZoneRule](capi-i18n-timearraytimezonerule.md)* rule | 起始时间戳数组定义的时区规则[TimeArrayTimeZoneRule](docroot://reference/apis-localization-kit/capi-i18n-timearraytimezonerule.md)。 |
+| [TimeArrayTimeZoneRule](capi-i18n-timearraytimezonerule.md)* rule | 起始时间戳数组定义的时区规则[TimeArrayTimeZoneRule][TimeArrayTimeZoneRule](capi-i18n-timearraytimezonerule.md)。 |
 | int32_t index | 起始时间的索引。取值范围：[0, rule.numStartTimes - 1]。 |
 | double* result | 规则生效的起始时间，单位为毫秒（ms），采用Unix时间戳格式。 |
 
@@ -365,7 +365,7 @@ I18n_ErrorCode OH_i18n_GetStartInYear(AnnualTimeZoneRule* rule, int32_t year, Ti
 
 | 参数项 | 描述 |
 | -- | -- |
-| [AnnualTimeZoneRule](capi-i18n-annualtimezonerule.md)* rule | 每年生效的时区规则[AnnualTimeZoneRule](docroot://reference/apis-localization-kit/capi-i18n-annualtimezonerule.md)。 |
+| [AnnualTimeZoneRule](capi-i18n-annualtimezonerule.md)* rule | 每年生效的时区规则[AnnualTimeZoneRule][AnnualTimeZoneRule](capi-i18n-annualtimezonerule.md)。 |
 | int32_t year | 查询的年份。 |
 | [TimeZoneRuleQuery](capi-i18n-timezonerulequery.md)* query | 用于传入查询的信息，并接收查询的结果。 |
 

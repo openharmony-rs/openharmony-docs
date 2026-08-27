@@ -4,7 +4,11 @@
 
 定义AVImageGenerator的枚举。
 
+**引用文件：** <multimedia/player_framework/avimage_generator_base.h>
+
 **库：** libavimage_generator.so
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 18
 
@@ -16,7 +20,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_AVImageGenerator_QueryOptions](#oh_avimagegenerator_queryoptions) | OH_AVImageGenerator_QueryOptions | 指定时间点与视频帧对应关系的枚举类型。 |
+| [OH_AVImageGenerator_QueryOptions](#oh_avimagegenerator_queryoptions) | OH_AVImageGenerator_QueryOptions | 指定查询视频帧时，时间点与帧对应关系选项的枚举类型。 |
 
 ## 枚举类型说明
 
@@ -28,7 +32,7 @@ enum OH_AVImageGenerator_QueryOptions
 
 **描述**
 
-指定时间点与视频帧对应关系的枚举类型。
+指定查询视频帧时，时间点与帧对应关系选项的枚举类型。
 
 **起始版本：** 18
 

@@ -2,9 +2,7 @@
 
 媒体库支持图库自定义用户统计行为。
 
-**起始版本：** 23
-
-<!--Device-photoAccessHelper-class PhotoAssetCustomRecordManager--><!--Device-photoAccessHelper-class PhotoAssetCustomRecordManager-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -19,14 +17,12 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 ## addLcdJumpCount
 
 ```TypeScript
-addLcdJumpCount(ids: Array<int>): Promise<Array<int>>
+addLcdJumpCount(ids: Array<number>): Promise<Array<number>>
 ```
 
 根据[PhotoAssetCustomRecord](arkts-medialibrary-photoaccesshelper-photoassetcustomrecord-i-sys.md)中的fileId给数据库中对应数据的LcdJumpCount加1。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-PhotoAssetCustomRecordManager-addLcdJumpCount(ids: Array<int>): Promise<Array<int>>--><!--Device-PhotoAssetCustomRecordManager-addLcdJumpCount(ids: Array<int>): Promise<Array<int>>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -36,33 +32,31 @@ addLcdJumpCount(ids: Array<int>): Promise<Array<int>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ids | Array&lt;int&gt; | 是 | [PhotoAssetCustomRecord](arkts-medialibrary-photoaccesshelper-photoassetcustomrecord-i-sys.md)中的fileId集合。 |
+| ids | Array & lt;number & gt; | 是 | [PhotoAssetCustomRecord](arkts-medialibrary-photoaccesshelper-photoassetcustomrecord-i-sys.md)中的fileId集合。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;int&gt;&gt; | 更新失败的自定义用户统计行为数据中的fileId。 |
+| Promise & lt;Array & lt;number & gt; & gt; | 更新失败的自定义用户统计行为数据中的fileId。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scenario parameters fail to pass the verification.Possible causes: <br>1. The ids list is empty. <br>2. The number of ids lists exceeds 500. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scenario parameters fail to pass the verification.Possible causes:  1. The ids list is empty.  2. The number of ids lists exceeds 500. |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:  1. Database corrupted;  2. The file system is abnormal;  3. The IPC request timed out. |
 
 ## addShareCount
 
 ```TypeScript
-addShareCount(ids: Array<int>): Promise<Array<int>>
+addShareCount(ids: Array<number>): Promise<Array<number>>
 ```
 
 根据[PhotoAssetCustomRecord](arkts-medialibrary-photoaccesshelper-photoassetcustomrecord-i-sys.md)中的fileId给数据库中对应数据的shareCount加1。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-PhotoAssetCustomRecordManager-addShareCount(ids: Array<int>): Promise<Array<int>>--><!--Device-PhotoAssetCustomRecordManager-addShareCount(ids: Array<int>): Promise<Array<int>>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -72,21 +66,21 @@ addShareCount(ids: Array<int>): Promise<Array<int>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ids | Array&lt;int&gt; | 是 | [PhotoAssetCustomRecord](arkts-medialibrary-photoaccesshelper-photoassetcustomrecord-i-sys.md)中的fileId集合。 |
+| ids | Array & lt;number & gt; | 是 | [PhotoAssetCustomRecord](arkts-medialibrary-photoaccesshelper-photoassetcustomrecord-i-sys.md)中的fileId集合。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;int&gt;&gt; | 更新失败的自定义用户统计行为数据中的fileId。 |
+| Promise & lt;Array & lt;number & gt; & gt; | 更新失败的自定义用户统计行为数据中的fileId。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scenario parameters fail to pass the verification.Possible causes: <br>1. The ids list is empty. 2. The number of ids lists exceeds 500. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scenario parameters fail to pass the verification.Possible causes:  1. The ids list is empty. 2. The number of ids lists exceeds 500. |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:  1. Database corrupted;  2. The file system is abnormal;  3. The IPC request timed out. |
 
 ## createCustomRecords
 
@@ -96,9 +90,7 @@ createCustomRecords(customRecords: Array<PhotoAssetCustomRecord>): Promise<void>
 
 新增自定义用户统计行为数据。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-PhotoAssetCustomRecordManager-createCustomRecords(customRecords: Array<PhotoAssetCustomRecord>): Promise<void>--><!--Device-PhotoAssetCustomRecordManager-createCustomRecords(customRecords: Array<PhotoAssetCustomRecord>): Promise<void>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -114,15 +106,15 @@ createCustomRecords(customRecords: Array<PhotoAssetCustomRecord>): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scenario parameters fail to pass the verification.Possible causes: <br>1. The value range of mandatory parameters in photoAssetCustomRecord does not meet the requirements. <br>2. The transferred record already exists. 3. The number of transferred records exceeds 200. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scenario parameters fail to pass the verification.Possible causes:  1. The value range of mandatory parameters in photoAssetCustomRecord does not meet the requirements.  2. The transferred record already exists. 3. The number of transferred records exceeds 200. |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:  1. Database corrupted;  2. The file system is abnormal;  3. The IPC request timed out. |
 
 **示例**
 
@@ -153,8 +145,6 @@ static getCustomRecordManagerInstance(context: Context): PhotoAssetCustomRecordM
 
 **起始版本：** 20
 
-<!--Device-PhotoAssetCustomRecordManager-static getCustomRecordManagerInstance(context: Context): PhotoAssetCustomRecordManager--><!--Device-PhotoAssetCustomRecordManager-static getCustomRecordManagerInstance(context: Context): PhotoAssetCustomRecordManager-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
@@ -175,8 +165,8 @@ static getCustomRecordManagerInstance(context: Context): PhotoAssetCustomRecordM
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [23800107](../errorcode-medialibrary.md#23800107-context为空或者无效) | Context is invalid |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
+| [23800107](../errorcode-medialibrary.md#23800107-context为空或者无效) | Context is invalid |
 
 **示例**
 
@@ -194,41 +184,6 @@ async function example(context: Context) {
 }
 ```
 
-## getCustomRecordManagerInstance
-
-```TypeScript
-static getCustomRecordManagerInstance(context: Context): PhotoAssetCustomRecordManager | null
-```
-
-获取图库自定义用户统计行为实例。
-
-**起始版本：** 23
-
-<!--Device-PhotoAssetCustomRecordManager-static getCustomRecordManagerInstance(context: Context): PhotoAssetCustomRecordManager | null--><!--Device-PhotoAssetCustomRecordManager-static getCustomRecordManagerInstance(context: Context): PhotoAssetCustomRecordManager | null-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | Context of the ability instance. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [PhotoAssetCustomRecordManager](arkts-medialibrary-photoaccesshelper-photoassetcustomrecordmanager-c-sys.md) | Returns media asset custom record manager instance if operation fails, return null. |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [23800107](../errorcode-medialibrary.md#23800107-context为空或者无效) | Context is invalid |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
-
 ## getCustomRecords
 
 ```TypeScript
@@ -237,9 +192,7 @@ getCustomRecords(optionCheck: FetchOptions): Promise<FetchResult<PhotoAssetCusto
 
 根据检索选项获取自定义用户统计行为数据。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-PhotoAssetCustomRecordManager-getCustomRecords(optionCheck: FetchOptions): Promise<FetchResult<PhotoAssetCustomRecord>>--><!--Device-PhotoAssetCustomRecordManager-getCustomRecords(optionCheck: FetchOptions): Promise<FetchResult<PhotoAssetCustomRecord>>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -261,9 +214,9 @@ getCustomRecords(optionCheck: FetchOptions): Promise<FetchResult<PhotoAssetCusto
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scenario parameters fail to pass the verification.Possible causes: 1. The filter criteria or fetchColumns that are not supported by options are transferred. |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:  1. Database corrupted;  2. The file system is abnormal;  3. The IPC request timed out. |
 
 **示例**
 
@@ -297,9 +250,7 @@ removeCustomRecords(optionCheck: FetchOptions): Promise<void>
 
 根据检索选项删除自定义用户统计行为数据。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-PhotoAssetCustomRecordManager-removeCustomRecords(optionCheck: FetchOptions): Promise<void>--><!--Device-PhotoAssetCustomRecordManager-removeCustomRecords(optionCheck: FetchOptions): Promise<void>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -315,15 +266,15 @@ removeCustomRecords(optionCheck: FetchOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scenario parameters fail to pass the verification.Possible causes: <br>1. The filter criteria or fetchColumns that are not supported by options are transferred. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scenario parameters fail to pass the verification.Possible causes:  1. The filter criteria or fetchColumns that are not supported by options are transferred. |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:  1. Database corrupted;  2. The file system is abnormal;  3. The IPC request timed out. |
 
 **示例**
 
@@ -351,14 +302,12 @@ async function example(context: Context) {
 ## setCustomRecords
 
 ```TypeScript
-setCustomRecords(customRecords: Array<PhotoAssetCustomRecord>): Promise<Array<int>>
+setCustomRecords(customRecords: Array<PhotoAssetCustomRecord>): Promise<Array<number>>
 ```
 
 根据自定义用户统计行为数据，更新已存在的数据库字段。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-PhotoAssetCustomRecordManager-setCustomRecords(customRecords: Array<PhotoAssetCustomRecord>): Promise<Array<int>>--><!--Device-PhotoAssetCustomRecordManager-setCustomRecords(customRecords: Array<PhotoAssetCustomRecord>): Promise<Array<int>>-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -374,15 +323,15 @@ setCustomRecords(customRecords: Array<PhotoAssetCustomRecord>): Promise<Array<in
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;int&gt;&gt; | 更新失败的自定义用户统计行为数据中的fileId。 |
+| Promise & lt;Array & lt;number & gt; & gt; | 更新失败的自定义用户统计行为数据中的fileId。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scenario parameters fail to pass the verification.Possible causes: <br>1. The value range of mandatory parameters in photoAssetCustomRecord does not meet the requirements. <br>2. The number of transferred records exceeds 200. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scenario parameters fail to pass the verification.Possible causes:  1. The value range of mandatory parameters in photoAssetCustomRecord does not meet the requirements.  2. The number of transferred records exceeds 200. |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:  1. Database corrupted;  2. The file system is abnormal;  3. The IPC request timed out. |
 
 **示例**
 
@@ -403,4 +352,3 @@ async function example(context: Context) {
   });
 }
 ```
-

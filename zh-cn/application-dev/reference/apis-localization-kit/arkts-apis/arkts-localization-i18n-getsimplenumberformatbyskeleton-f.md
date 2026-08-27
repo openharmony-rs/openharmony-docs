@@ -14,11 +14,9 @@ export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: Intl.
 
 通过框架字符串获取SimpleNumberFormat对象。
 
-**起始版本：** 23
+**起始版本：** 20
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-i18n-export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: Intl.Locale): SimpleNumberFormat--><!--Device-i18n-export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: Intl.Locale): SimpleNumberFormat-End-->
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -33,7 +31,7 @@ export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: Intl.
 
 | 类型 | 说明 |
 | --- | --- |
-| [SimpleNumberFormat](../../apis-na/arkts-apis/arkts-na-i18n-simplenumberformat-c.md) | SimpleNumberFormat对象。 |
+| [SimpleNumberFormat](arkts-localization-i18n-simplenumberformat-c.md) | SimpleNumberFormat对象。 |
 
 **错误码：**
 
@@ -69,11 +67,9 @@ export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: intl.
 
 **废弃版本：** 20
 
-**替代接口：** [getSimpleNumberFormatBySkeleton](../../apis-na/arkts-apis/arkts-na-i18n-getsimplenumberformatbyskeleton-f.md)(skeleton: string, locale?: Intl.Locale)
+**替代接口：** [getSimpleNumberFormatBySkeleton](#getsimplenumberformatbyskeleton)(skeleton: string, locale?: Intl.Locale)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
-
-<!--Device-i18n-export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: intl.Locale): SimpleNumberFormat--><!--Device-i18n-export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: intl.Locale): SimpleNumberFormat-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -88,7 +84,7 @@ export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: intl.
 
 | 类型 | 说明 |
 | --- | --- |
-| [SimpleNumberFormat](../../apis-na/arkts-apis/arkts-na-i18n-simplenumberformat-c.md) | SimpleNumberFormat对象。 |
+| [SimpleNumberFormat](arkts-localization-i18n-simplenumberformat-c.md) | SimpleNumberFormat对象。 |
 
 **错误码：**
 
@@ -110,4 +106,3 @@ try {
   console.error(`call SimpleDateTimeFormat.getSimpleNumberFormatBySkeleton failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
-

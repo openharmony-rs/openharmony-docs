@@ -21,8 +21,6 @@ function onIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-spatialAwareness-function onIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams,    callback: Callback<DoorPositionResponse>): void--><!--Device-spatialAwareness-function onIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams,    callback: Callback<DoorPositionResponse>): void-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 **系统接口：** 此接口为系统接口。
@@ -32,18 +30,18 @@ function onIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | configParams | [DistanceMeasurementConfigParams](arkts-multimodalawareness-spatialawareness-distancemeasurementconfigparams-i-sys.md) | 是 | 测距接口配置参数 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[DoorPositionResponse](arkts-multimodalawareness-spatialawareness-doorpositionresponse-i-sys.md)&gt; | 是 | 回调函数，返回门内外信息。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[DoorPositionResponse](arkts-multimodalawareness-spatialawareness-doorpositionresponse-i-sys.md)&gt; | 是 | 回调函数，返回门内外信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Function can not work correctly due to <br> limited device capabilities. |
-| [35100004](../../apis-multimodalawareness-kit/errorcode-spatialAwareness.md#35100004-无效参数) | Parameter invalid. |
-| [35100002](../../apis-multimodalawareness-kit/errorcode-spatialAwareness.md#35100002-订阅失败) | Subscription failed. |
-| [35100001](../../apis-multimodalawareness-kit/errorcode-spatialAwareness.md#35100001-服务异常) | Service exception. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Function can not work correctly due to limited device capabilities. |
+| [35100001](../errorcode-spatialAwareness.md#35100001-服务异常) | Service exception. |
+| [35100002](../errorcode-spatialAwareness.md#35100002-订阅失败) | Subscription failed. |
+| [35100004](../errorcode-spatialAwareness.md#35100004-无效参数) | Parameter invalid. |
 
 **示例**
 
@@ -65,4 +63,3 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
       console.error(`call onIndoorOrOutdoorIdentify failed, Code: ${err.code}, message: ${err.message}`);
    }
 ```
-

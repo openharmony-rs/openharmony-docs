@@ -2,9 +2,7 @@
 
 The rotion angles, relative to the current position.
 
-**起始版本：** 23
-
-<!--Device-mechanicManager-export interface RotationAngles--><!--Device-mechanicManager-export interface RotationAngles-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -13,22 +11,19 @@ The rotion angles, relative to the current position.
 ## 导入模块
 
 ```TypeScript
-import { mechanicManager } from '@kit.MechanicKit';
 ```
 
 ## pitch
 
 ```TypeScript
-pitch?: double
+pitch?: number
 ```
 
 俯仰角，范围从-2π到2*π，以弧度为单位。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-RotationAngles-pitch?: double--><!--Device-RotationAngles-pitch?: double-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -37,16 +32,14 @@ pitch?: double
 ## roll
 
 ```TypeScript
-roll?: double
+roll?: number
 ```
 
 滚动角度，范围从-2π到2*π，以弧度为单位。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-RotationAngles-roll?: double--><!--Device-RotationAngles-roll?: double-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -55,18 +48,15 @@ roll?: double
 ## yaw
 
 ```TypeScript
-yaw?: double
+yaw?: number
 ```
 
 偏航角，范围从-2π到2*π，以弧度为单位。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-RotationAngles-yaw?: double--><!--Device-RotationAngles-yaw?: double-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
 **系统接口：** 此接口为系统接口。
-

@@ -12,15 +12,17 @@ import { systemManager } from '@kit.MDMKit';
 function notifyUpdatePackages(admin: Want, packageInfo: UpdatePackageInfo): Promise<void>
 ```
 
-通知系统更新包信息。内网升级场景下，需要先调用该接口通知系统更新包，再调用[systemManager.setOtaUpdatePolicy](arkts-mdm-systemmanager-setotaupdatepolicy-f.md)设置升级 策略。使用Promise异步回调。 > **说明：** > > 该接口比较耗时，当调用此接口后，后续如果在应用主线程调用其他同步接口时需要等待该接口异步返回。
+通知系统更新包信息。内网升级场景下，需要先调用该接口通知系统更新包，再调用[systemManager.setOtaUpdatePolicy](arkts-mdm-systemmanager-setotaupdatepolicy-f.md)设置升级 策略。使用Promise异步回调。
+
+> **说明：**
+> 
+> 该接口比较耗时，当调用此接口后，后续如果在应用主线程调用其他同步接口时需要等待该接口异步返回。
 
 **起始版本：** 12
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-systemManager-function notifyUpdatePackages(admin: Want, packageInfo: UpdatePackageInfo): Promise<void>--><!--Device-systemManager-function notifyUpdatePackages(admin: Want, packageInfo: UpdatePackageInfo): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -29,23 +31,23 @@ function notifyUpdatePackages(admin: Want, packageInfo: UpdatePackageInfo): Prom
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| packageInfo | [UpdatePackageInfo](arkts-mdm-systemmanager-updatepackageinfo-i.md) | 是 | 系统更新包信息。<br/>**说明：** 传入的UpdatePackageInfo.packages.path必须是“update”开头的zip 压缩包，传入其他形式的文件会报9201004错误码。 |
+| packageInfo | [UpdatePackageInfo](arkts-mdm-systemmanager-updatepackageinfo-i.md) | 是 | 系统更新包信息。   **说明：** 传入的UpdatePackageInfo.packages.path必须是“update”开头的zip 压缩包，传入其他形式的文件会报9201004错误码。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。当通知系统更新包失败时会抛出错误对象。 |
+| Promise & lt;void & gt; | 无返回结果的Promise对象。当通知系统更新包失败时会抛出错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9201004](../errorcode-enterpriseDeviceManager.md#9201004-系统更新包不存在或解析失败) | The update packages do not exist or analyzing failed. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [9201004](../errorcode-enterpriseDeviceManager.md#9201004-系统更新包不存在或解析失败) | The update packages do not exist or analyzing failed. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -111,4 +113,3 @@ systemManager.notifyUpdatePackages(wantTemp, updatePackageInfo).then(() => {
   console.error(`Failed to notify update packages. Code is ${error.code},message is ${error.message}`);
 });
 ```
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 26.1.0
 
-<!--Device-photoAccessHelper-interface ToolCancelConfig--><!--Device-photoAccessHelper-interface ToolCancelConfig-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
@@ -30,8 +28,6 @@ param?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ToolCancelConfig-param?: string--><!--Device-ToolCancelConfig-param?: string-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
@@ -50,9 +46,6 @@ taskId: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ToolCancelConfig-taskId: string--><!--Device-ToolCancelConfig-taskId: string-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
-

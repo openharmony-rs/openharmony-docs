@@ -2,9 +2,7 @@
 
 云增强任务状态，应用调用云增强任务查询接口的返回类型，包含云增强任务状态及部分状态下的额外信息。
 
-**起始版本：** 23
-
-<!--Device-photoAccessHelper-interface CloudEnhancementTaskState--><!--Device-photoAccessHelper-interface CloudEnhancementTaskState-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -19,16 +17,14 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 ## expectedDuration
 
 ```TypeScript
-readonly expectedDuration?: int
+readonly expectedDuration?: number
 ```
 
 排队时间，单位：毫秒。当taskStage为CloudEnhancementTaskStage.TASK_STAGE_EXECUTING时提供。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-CloudEnhancementTaskState-readonly expectedDuration?: int--><!--Device-CloudEnhancementTaskState-readonly expectedDuration?: int-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -37,16 +33,14 @@ readonly expectedDuration?: int
 ## statusCode
 
 ```TypeScript
-readonly statusCode?: int
+readonly statusCode?: number
 ```
 
 状态码。当taskStage为CloudEnhancementTaskStage.TASK_STAGE_FAILED时提供。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-CloudEnhancementTaskState-readonly statusCode?: int--><!--Device-CloudEnhancementTaskState-readonly statusCode?: int-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -62,9 +56,7 @@ readonly taskStage: CloudEnhancementTaskStage
 
 **类型：** [CloudEnhancementTaskStage](arkts-medialibrary-photoaccesshelper-cloudenhancementtaskstage-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-CloudEnhancementTaskState-readonly taskStage: CloudEnhancementTaskStage--><!--Device-CloudEnhancementTaskState-readonly taskStage: CloudEnhancementTaskStage-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -73,16 +65,14 @@ readonly taskStage: CloudEnhancementTaskStage
 ## totalFileSize
 
 ```TypeScript
-readonly totalFileSize?: int
+readonly totalFileSize?: number
 ```
 
 总文件大小，单位：字节。当taskStage为CloudEnhancementTaskStage.TASK_STAGE_UPLOADING或者 CloudEnhancementTaskStage.TASK_STAGE_DOWNLOADING时提供。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-CloudEnhancementTaskState-readonly totalFileSize?: int--><!--Device-CloudEnhancementTaskState-readonly totalFileSize?: int-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -91,18 +81,15 @@ readonly totalFileSize?: int
 ## transferredFileSize
 
 ```TypeScript
-readonly transferredFileSize?: int
+readonly transferredFileSize?: number
 ```
 
 已传输的文件大小，单位：字节。当taskStage为CloudEnhancementTaskStage.TASK_STAGE_UPLOADING或者 CloudEnhancementTaskStage.TASK_STAGE_DOWNLOADING时提供。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-CloudEnhancementTaskState-readonly transferredFileSize?: int--><!--Device-CloudEnhancementTaskState-readonly transferredFileSize?: int-End-->
+**起始版本：** 13
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
-

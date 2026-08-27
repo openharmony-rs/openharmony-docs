@@ -2,9 +2,7 @@
 
 动态照片在不同场景中的播放模式。
 
-**起始版本：** 26.0.0
-
-<!--Device-photoAccessHelper-export class AutoPlayScene--><!--Device-photoAccessHelper-export class AutoPlayScene-End-->
+**起始版本：** 23
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -24,13 +22,11 @@ playMode: PlayMode
 
 **类型：** PlayMode
 
-**起始版本：** 26.0.0
+**起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AutoPlayScene-playMode: PlayMode--><!--Device-AutoPlayScene-playMode: PlayMode-End-->
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -44,13 +40,10 @@ sceneType: SceneType
 
 **类型：** [SceneType](arkts-medialibrary-photoaccesshelper-scenetype-e.md)
 
-**起始版本：** 26.0.0
+**起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AutoPlayScene-sceneType: SceneType--><!--Device-AutoPlayScene-sceneType: SceneType-End-->
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-

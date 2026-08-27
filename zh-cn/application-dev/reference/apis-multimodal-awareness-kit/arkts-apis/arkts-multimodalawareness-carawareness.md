@@ -6,8 +6,6 @@
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-unnamed-declare namespace carAwareness--><!--Device-unnamed-declare namespace carAwareness-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.CarAwareness
 
 ## 导入模块
@@ -72,4 +70,3 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 | --- | --- |
 | [Capability](arkts-multimodalawareness-carawareness-capability-e-sys.md) | 车辆感知功能。 |
 <!--DelEnd-->
-

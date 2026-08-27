@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-photoAccessHelper-interface Progress--><!--Device-photoAccessHelper-interface Progress-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
@@ -19,18 +17,16 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 ## processed
 
 ```TypeScript
-readonly processed: int
+readonly processed: number
 ```
 
 复制操作中已处理的信息数量。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Progress-readonly processed: int--><!--Device-Progress-readonly processed: int-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -39,20 +35,17 @@ readonly processed: int
 ## remain
 
 ```TypeScript
-readonly remain: int
+readonly remain: number
 ```
 
 复制操作中剩余需要处理的信息数量。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Progress-readonly remain: int--><!--Device-Progress-readonly remain: int-End-->
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
-

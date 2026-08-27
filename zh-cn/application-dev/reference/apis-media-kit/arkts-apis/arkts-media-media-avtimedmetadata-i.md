@@ -1,10 +1,8 @@
 # AVTimedMetaData
 
-Interface for defining time base metadata
+描述基于时间的元数据的信息。
 
 **起始版本：** 26.0.0
-
-<!--Device-media-interface AVTimedMetaData--><!--Device-media-interface AVTimedMetaData-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -20,15 +18,13 @@ import { media } from '@kit.MediaKit';
 classify?: string
 ```
 
-The classification label of the time base metadata.
+基于时间的元数据的分类标签。
 
 **类型：** string
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AVTimedMetaData-classify?: string--><!--Device-AVTimedMetaData-classify?: string-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -38,7 +34,7 @@ The classification label of the time base metadata.
 contents: Record<string, object>
 ```
 
-Key-value pair set corresponding to time primitive information
+基于时间的元数据对应的键值对集合。
 
 **类型：** Record&lt;string, object&gt;
 
@@ -46,25 +42,21 @@ Key-value pair set corresponding to time primitive information
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AVTimedMetaData-contents: Record<string, object>--><!--Device-AVTimedMetaData-contents: Record<string, object>-End-->
-
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 ## duration
 
 ```TypeScript
-duration: int
+duration: number
 ```
 
-Duration of the time primitive information The value should be an integer. <br>Unit:milliseconds.
+基于时间的元数据的持续时长。 取值限定为整数。 单位：毫秒。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AVTimedMetaData-duration: int--><!--Device-AVTimedMetaData-duration: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -74,7 +66,7 @@ Duration of the time primitive information The value should be an integer. <br>U
 id?: string
 ```
 
-Defines the unique token of the time base metadata, The tag must be unique in other time metadata of the video source.
+基于时间的元数据的唯一标记。 该标记在视频源的数据信息中须保持唯一。
 
 **类型：** string
 
@@ -82,25 +74,91 @@ Defines the unique token of the time base metadata, The tag must be unique in ot
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AVTimedMetaData-id?: string--><!--Device-AVTimedMetaData-id?: string-End-->
-
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 ## start
 
 ```TypeScript
-start: int
+start: number
 ```
 
-Defines the offset value of the time primitive information relative to the start time of the entire media. The value should be an integer. <br>Unit:milliseconds.
+基于时间的元数据相对整个媒体起始时间的偏移值。 取值限定为整数。 单位：毫秒。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AVTimedMetaData-start: int--><!--Device-AVTimedMetaData-start: int-End-->
-
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// asyncallback.
+videoRecorder.start((err: BusinessError) => {
+  if (err == null) {
+    console.info('start videorecorder success');
+  } else {
+    console.error('start videorecorder failed and error is ' + err.message);
+  }
+});
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// promise.
+videoRecorder.start().then(() => {
+  console.info('start videorecorder success');
+}).catch((err: BusinessError) => {
+  console.error('start videorecorder failed and catch error is ' + err.message);
+});
+```
+
+```TypeScript
+audioRecorder.on('start', () => {    // 设置'start'事件回调。
+  console.info('audio recorder start called');
+});
+audioRecorder.start();
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avRecorder.start((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to start AVRecorder and error is: Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Succeeded in starting AVRecorder');
+  }
+});
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avRecorder.start().then(() => {
+  console.info('Succeeded in starting AVRecorder');
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to start AVRecorder and error is: Code: ${error.code}, message: ${error.message}`);
+});
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  // 创建转码实例。
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.start().then(() => {
+    console.info('start AVTranscoder success');
+  }).catch((err: BusinessError) => {
+    console.error('start AVTranscoder failed and catch error is ' + err.message);
+  });
+}
+```

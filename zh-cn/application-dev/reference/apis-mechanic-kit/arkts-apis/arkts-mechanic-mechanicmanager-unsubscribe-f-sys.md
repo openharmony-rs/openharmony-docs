@@ -3,7 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { mechanicManager } from '@kit.MechanicKit';
 ```
 
 ## unSubscribe
@@ -15,8 +14,6 @@ function unSubscribe(events: MechEventType[]): void
 取消事件注册
 
 **起始版本：** 26.0.0
-
-<!--Device-mechanicManager-function unSubscribe(events: MechEventType[]): void--><!--Device-mechanicManager-function unSubscribe(events: MechEventType[]): void-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -36,4 +33,3 @@ function unSubscribe(events: MechEventType[]): void
 | [33300001](../errorcode-mechanic.md#33300001-系统错误) | Service exception. |
 | [33300002](../errorcode-mechanic.md#33300002-设备未连接) | Device not connected. |
 | [33300003](../errorcode-mechanic.md#33300003-功能不支持) | Feature not supported. |
-

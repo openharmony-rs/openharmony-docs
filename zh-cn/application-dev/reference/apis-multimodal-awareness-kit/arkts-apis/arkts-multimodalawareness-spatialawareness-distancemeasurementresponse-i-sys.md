@@ -1,10 +1,8 @@
 # DistanceMeasurementResponse（系统接口）
 
-测距接口执行完成后的回调结果。
+测距接口执行完成后的回调结果。 @interface DistanceMeasurementResponse
 
 **起始版本：** 23
-
-<!--Device-spatialAwareness-export interface DistanceMeasurementResponse--><!--Device-spatialAwareness-export interface DistanceMeasurementResponse-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -30,8 +28,6 @@ confidence: float
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DistanceMeasurementResponse-confidence: float--><!--Device-DistanceMeasurementResponse-confidence: float-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 **系统接口：** 此接口为系统接口。
@@ -49,8 +45,6 @@ deviceId: string
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DistanceMeasurementResponse-deviceId: string--><!--Device-DistanceMeasurementResponse-deviceId: string-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -70,8 +64,6 @@ distance: float
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DistanceMeasurementResponse-distance: float--><!--Device-DistanceMeasurementResponse-distance: float-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 **系统接口：** 此接口为系统接口。
@@ -90,9 +82,6 @@ rank: DistanceRank
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DistanceMeasurementResponse-rank: DistanceRank--><!--Device-DistanceMeasurementResponse-rank: DistanceRank-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 **系统接口：** 此接口为系统接口。
-

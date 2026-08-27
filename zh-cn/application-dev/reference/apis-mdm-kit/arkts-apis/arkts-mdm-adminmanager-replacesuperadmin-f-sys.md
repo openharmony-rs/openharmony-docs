@@ -20,8 +20,6 @@ function replaceSuperAdmin(oldAdmin: Want, newAdmin: Want, isKeepPolicy: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-adminManager-function replaceSuperAdmin(oldAdmin: Want, newAdmin: Want, isKeepPolicy: boolean): void--><!--Device-adminManager-function replaceSuperAdmin(oldAdmin: Want, newAdmin: Want, isKeepPolicy: boolean): void-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **系统接口：** 此接口为系统接口。
@@ -38,11 +36,11 @@ function replaceSuperAdmin(oldAdmin: Want, newAdmin: Want, isKeepPolicy: boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200003](../errorcode-enterpriseDeviceManager.md#9200003-指定的设备管理器元能力组件无效) | The administrator ability component is invalid. |
 | [9200011](../errorcode-enterpriseDeviceManager.md#9200011-设备管理应用替换失败) | Failed to replace the administrator application of the device. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
-| [9200003](../errorcode-enterpriseDeviceManager.md#9200003-指定的设备管理器元能力组件无效) | The administrator ability component is invalid. |
 
 **示例**
 
@@ -67,4 +65,3 @@ try {
   console.error(`Failed to replace super admin. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-

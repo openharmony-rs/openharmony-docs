@@ -4,8 +4,6 @@
 
 **起始版本：** 23
 
-<!--Device-fontManager-interface DataMigrationCallback--><!--Device-fontManager-interface DataMigrationCallback-End-->
-
 **系统能力：** SystemCapability.Global.FontManager
 
 **系统接口：** 此接口为系统接口。
@@ -26,8 +24,6 @@ onHeartBeat(): void
 
 **起始版本：** 23
 
-<!--Device-DataMigrationCallback-onHeartBeat(): void--><!--Device-DataMigrationCallback-onHeartBeat(): void-End-->
-
 **系统能力：** SystemCapability.Global.FontManager
 
 **系统接口：** 此接口为系统接口。
@@ -37,22 +33,20 @@ onHeartBeat(): void
 ```TypeScript
 import { fontManager } from '@kit.LocalizationKit';
 
-class DataMigrationCallbackImpl implements fontManager.DataMigrationCallback {
-  onHeartBeat(): void {
-    console.info('onHeartBeat callback');
-  }
-  onProgress(progress : fontManager.DataMigrationProgress): void {
-    console.info('onProgress callback');
-  }
-  onResult(result : int): void {
-    console.info('onResult callback');
-  }
-}
-
 async function dataMigration() {
-  const callback = new DataMigrationCallbackImpl;
+  const callback: fontManager.DataMigrationCallback = {
+    onHeartBeat: () => {
+      console.info('onHeartBeat callback');
+    },
+    onProgress: (progress : fontManager.DataMigrationProgress) => {
+      console.info('onProgress callback');
+    },
+    onResult: (result : number) => {
+      console.info('onResult callback');
+    }
+  }
   try {
-    let res: int = fontManager.dataMigration(callback);
+    let res = await fontManager.dataMigration(callback);
     console.info('dataMigration suc. res is ' + res);
   } catch (error) {
     console.error('dataMigration err.' + error.code);
@@ -70,8 +64,6 @@ onProgress(progress : DataMigrationProgress): void
 
 **起始版本：** 23
 
-<!--Device-DataMigrationCallback-onProgress(progress : DataMigrationProgress): void--><!--Device-DataMigrationCallback-onProgress(progress : DataMigrationProgress): void-End-->
-
 **系统能力：** SystemCapability.Global.FontManager
 
 **系统接口：** 此接口为系统接口。
@@ -87,22 +79,20 @@ onProgress(progress : DataMigrationProgress): void
 ```TypeScript
 import { fontManager } from '@kit.LocalizationKit';
 
-class DataMigrationCallbackImpl implements fontManager.DataMigrationCallback {
-  onHeartBeat(): void {
-    console.info('onHeartBeat callback');
-  }
-  onProgress(progress : fontManager.DataMigrationProgress): void {
-    console.info('onProgress callback');
-  }
-  onResult(result : int): void {
-    console.info('onResult callback');
-  }
-}
-
 async function dataMigration() {
-  const callback = new DataMigrationCallbackImpl;
+  const callback: fontManager.DataMigrationCallback = {
+    onHeartBeat: () => {
+      console.info('onHeartBeat callback');
+    },
+    onProgress: (progress : fontManager.DataMigrationProgress) => {
+      console.info('onProgress callback');
+    },
+    onResult: (result : number) => {
+      console.info('onResult callback');
+    }
+  }
   try {
-    let res: int = fontManager.dataMigration(callback);
+    let res = await fontManager.dataMigration(callback);
     console.info('dataMigration suc. res is ' + res);
   } catch (error) {
     console.error('dataMigration err.' + error.code);
@@ -113,14 +103,12 @@ async function dataMigration() {
 ## onResult
 
 ```TypeScript
-onResult(result : int): void
+onResult(result : number): void
 ```
 
 回调函数，在数据迁移任务完成（无论成功或失败）后调用，用于通知开发者迁移的最终结果。当需要在迁移完成后执行后续操作（如更新UI、记录日志、通知用户等）时使用此回调。
 
 **起始版本：** 23
-
-<!--Device-DataMigrationCallback-onResult(result : int): void--><!--Device-DataMigrationCallback-onResult(result : int): void-End-->
 
 **系统能力：** SystemCapability.Global.FontManager
 
@@ -130,33 +118,30 @@ onResult(result : int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| result | int | 是 | 数据迁移结果。 <br>0：数据迁移成功。 <br>1：无需进行数据迁移。 <br>2：获取用户ID失败。 <br>3：检查目录失败。 <br>4：初始化缓存目录失败。 <br>5：打开源文件失败。 <br>6：拷贝失败。 <br>7：文件重命名失败。 <br>8：文件删除失败。 |
+| result | number | 是 | 数据迁移结果。 0：数据迁移成功。 1：无需进行数据迁移。 2：获取用户ID失败。 3：检查目录失败。 4：初始化缓存目录失败。 5：打开源文件失败。 6：拷贝失败。 7：文件重命名失败。 8：文件删除失败。 |
 
 **示例**
 
 ```TypeScript
 import { fontManager } from '@kit.LocalizationKit';
 
-class DataMigrationCallbackImpl implements fontManager.DataMigrationCallback {
-  onHeartBeat(): void {
-    console.info('onHeartBeat callback');
-  }
-  onProgress(progress : fontManager.DataMigrationProgress): void {
-    console.info('onProgress callback');
-  }
-  onResult(result : int): void {
-    console.info('onResult callback');
-  }
-}
-
 async function dataMigration() {
-  const callback = new DataMigrationCallbackImpl;
+  const callback: fontManager.DataMigrationCallback = {
+    onHeartBeat: () => {
+      console.info('onHeartBeat callback');
+    },
+    onProgress: (progress : fontManager.DataMigrationProgress) => {
+      console.info('onProgress callback');
+    },
+    onResult: (result : number) => {
+      console.info('onResult callback');
+    }
+  }
   try {
-    let res: int = fontManager.dataMigration(callback);
+    let res = await fontManager.dataMigration(callback);
     console.info('dataMigration suc. res is ' + res);
   } catch (error) {
     console.error('dataMigration err.' + error.code);
   }
 }
 ```
-

@@ -2,9 +2,7 @@
 
 枚举，时刻相册信息类型。
 
-**起始版本：** 23
-
-<!--Device-photoAccessHelper-enum HighlightAlbumInfoType--><!--Device-photoAccessHelper-enum HighlightAlbumInfoType-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -18,9 +16,7 @@ COVER_INFO = 0
 
 封面信息类别。
 
-**起始版本：** 23
-
-<!--Device-HighlightAlbumInfoType-COVER_INFO = 0--><!--Device-HighlightAlbumInfoType-COVER_INFO = 0-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -34,9 +30,7 @@ PLAY_INFO = 1
 
 音乐信息类别。
 
-**起始版本：** 23
-
-<!--Device-HighlightAlbumInfoType-PLAY_INFO = 1--><!--Device-HighlightAlbumInfoType-PLAY_INFO = 1-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -50,11 +44,8 @@ ALBUM_INFO = 2
 
 相册信息类别。
 
-**起始版本：** 26.0.0
-
-<!--Device-HighlightAlbumInfoType-ALBUM_INFO = 2--><!--Device-HighlightAlbumInfoType-ALBUM_INFO = 2-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
-

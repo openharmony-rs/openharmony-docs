@@ -2,9 +2,7 @@
 
 批量下载任务信息。
 
-**起始版本：** 23
-
-<!--Device-photoAccessHelper-interface CloudAssetDownloadStatus--><!--Device-photoAccessHelper-interface CloudAssetDownloadStatus-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -26,11 +24,8 @@ readonly taskInfos: string[]
 
 **类型：** string[]
 
-**起始版本：** 23
-
-<!--Device-CloudAssetDownloadStatus-readonly taskInfos: string[]--><!--Device-CloudAssetDownloadStatus-readonly taskInfos: string[]-End-->
+**起始版本：** 21
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
-

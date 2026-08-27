@@ -1,10 +1,8 @@
 # RotationAxisLimited（系统接口）
 
-旋转轴限位状态
+旋转轴限位状态@enum { number }
 
-**起始版本：** 23
-
-<!--Device-mechanicManager-export enum RotationAxisLimited--><!--Device-mechanicManager-export enum RotationAxisLimited-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -18,9 +16,7 @@ NOT_LIMITED = 0
 
 不限位
 
-**起始版本：** 23
-
-<!--Device-RotationAxisLimited-NOT_LIMITED = 0--><!--Device-RotationAxisLimited-NOT_LIMITED = 0-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -34,9 +30,7 @@ NEGATIVE_LIMITED = 1
 
 负限位
 
-**起始版本：** 23
-
-<!--Device-RotationAxisLimited-NEGATIVE_LIMITED = 1--><!--Device-RotationAxisLimited-NEGATIVE_LIMITED = 1-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -50,11 +44,8 @@ POSITIVE_LIMITED = 2
 
 Positive limited.
 
-**起始版本：** 23
-
-<!--Device-RotationAxisLimited-POSITIVE_LIMITED = 2--><!--Device-RotationAxisLimited-POSITIVE_LIMITED = 2-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
 **系统接口：** 此接口为系统接口。
-

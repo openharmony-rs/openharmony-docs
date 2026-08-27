@@ -2,9 +2,7 @@
 
 用于表示当前设备颜色模式。
 
-**起始版本：** 23
-
-<!--Device-resourceManager-export enum ColorMode--><!--Device-resourceManager-export enum ColorMode-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -16,11 +14,9 @@ DARK = 0
 
 深色模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ColorMode-DARK = 0--><!--Device-ColorMode-DARK = 0-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -32,11 +28,8 @@ LIGHT = 1
 
 浅色模式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ColorMode-LIGHT = 1--><!--Device-ColorMode-LIGHT = 1-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-<!--Device-wifiManager-enum IpType--><!--Device-wifiManager-enum IpType-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## STATIC
@@ -19,8 +17,6 @@ STATIC = 0
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-IpType-STATIC = 0--><!--Device-IpType-STATIC = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -36,8 +32,6 @@ DHCP = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-IpType-DHCP = 1--><!--Device-IpType-DHCP = 1-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## UNKNOWN
@@ -52,7 +46,4 @@ UNKNOWN = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-IpType-UNKNOWN = 2--><!--Device-IpType-UNKNOWN = 2-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-

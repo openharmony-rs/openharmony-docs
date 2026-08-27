@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-applicationManager-interface BundleStatsInfo--><!--Device-applicationManager-interface BundleStatsInfo-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## 导入模块
@@ -28,8 +26,6 @@ Ability在前台运行的总时长，单位：毫秒。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BundleStatsInfo-abilityInFgTotalTime: number--><!--Device-BundleStatsInfo-abilityInFgTotalTime: number-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## appIndex
@@ -45,8 +41,6 @@ appIndex: number
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BundleStatsInfo-appIndex: number--><!--Device-BundleStatsInfo-appIndex: number-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -64,7 +58,4 @@ bundleName: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-BundleStatsInfo-bundleName: string--><!--Device-BundleStatsInfo-bundleName: string-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-

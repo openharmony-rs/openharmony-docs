@@ -2,9 +2,7 @@
 
 语言或国家地区排序选项。
 
-**起始版本：** 23
-
-<!--Device-i18n-export interface SortOptions--><!--Device-i18n-export interface SortOptions-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -26,9 +24,7 @@ true表示将推荐语言或国家地区在排序结果中置顶，false表示�
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-SortOptions-isSuggestedFirst?: boolean--><!--Device-SortOptions-isSuggestedFirst?: boolean-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -44,9 +40,7 @@ true表示使用本地名称进行排序，false表示不使用本地名称进�
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-SortOptions-isUseLocalName?: boolean--><!--Device-SortOptions-isUseLocalName?: boolean-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -62,11 +56,8 @@ locale?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SortOptions-locale?: string--><!--Device-SortOptions-locale?: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Global.I18n
 
 **系统接口：** 此接口为系统接口。
-

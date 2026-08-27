@@ -6,8 +6,6 @@
 
 **起始版本：** 12
 
-<!--Device-unnamed-interface SendableResource--><!--Device-unnamed-interface SendableResource-End-->
-
 **系统能力：** SystemCapability.Global.ResourceManager
 
 ## bundleName
@@ -24,8 +22,6 @@ bundleName: string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SendableResource-bundleName: string--><!--Device-SendableResource-bundleName: string-End-->
-
 **系统能力：** SystemCapability.Global.ResourceManager
 
 ## id
@@ -34,15 +30,15 @@ bundleName: string
 id: number
 ```
 
-资源ID，取值如下： - 应用资源区间：[0x01000000, 0x06FFFFFF] 和 [0x08000000, 0xFFFFFFFF]，表示应用自身的资源ID。 - 系统资源区间：[0x07000000, 0x07FFFFFF]，表示系统预置的资源ID。
+资源ID，取值如下：  
+- 应用资源区间：[0x01000000, 0x06FFFFFF] 和 [0x08000000, 0xFFFFFFFF]，表示应用自身的资源ID。  
+- 系统资源区间：[0x07000000, 0x07FFFFFF]，表示系统预置的资源ID。
 
 **类型：** number
 
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SendableResource-id: number--><!--Device-SendableResource-id: number-End-->
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -60,8 +56,6 @@ moduleName: string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SendableResource-moduleName: string--><!--Device-SendableResource-moduleName: string-End-->
-
 **系统能力：** SystemCapability.Global.ResourceManager
 
 ## params
@@ -78,8 +72,6 @@ params?: collections.Array <string | number>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SendableResource-params?: collections.Array <string | number>--><!--Device-SendableResource-params?: collections.Array <string | number>-End-->
-
 **系统能力：** SystemCapability.Global.ResourceManager
 
 ## type
@@ -88,7 +80,19 @@ params?: collections.Array <string | number>
 type?: number
 ```
 
-资源类型，取值如下： - 10001：color - 10002：float - 10003：string - 10004：plural - 10005：boolean - 10006：intarray - 10007：integer - 10008：pattern - 10009：strarray - 20000：media - 30000：rawfile - 40000：symbol
+资源类型，取值如下：  
+- 10001：color  
+- 10002：float  
+- 10003：string  
+- 10004：plural  
+- 10005：boolean  
+- 10006：intarray  
+- 10007：integer  
+- 10008：pattern  
+- 10009：strarray  
+- 20000：media  
+- 30000：rawfile  
+- 40000：symbol
 
 **类型：** number
 
@@ -96,7 +100,4 @@ type?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SendableResource-type?: number--><!--Device-SendableResource-type?: number-End-->
-
 **系统能力：** SystemCapability.Global.ResourceManager
-

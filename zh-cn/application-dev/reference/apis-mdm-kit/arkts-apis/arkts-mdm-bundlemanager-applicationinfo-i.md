@@ -4,8 +4,6 @@
 
 **起始版本：** 20
 
-<!--Device-bundleManager-interface ApplicationInfo--><!--Device-bundleManager-interface ApplicationInfo-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## 导入模块
@@ -28,8 +26,6 @@ readonly accessTokenId: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ApplicationInfo-readonly accessTokenId: number--><!--Device-ApplicationInfo-readonly accessTokenId: number-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## appDistributionType
@@ -45,8 +41,6 @@ readonly appDistributionType: string
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ApplicationInfo-readonly appDistributionType: string--><!--Device-ApplicationInfo-readonly appDistributionType: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -64,8 +58,6 @@ readonly appIndex: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ApplicationInfo-readonly appIndex: number--><!--Device-ApplicationInfo-readonly appIndex: number-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## appProvisionType
@@ -81,8 +73,6 @@ readonly appProvisionType: string
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ApplicationInfo-readonly appProvisionType: string--><!--Device-ApplicationInfo-readonly appProvisionType: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -100,8 +90,6 @@ readonly codePath: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ApplicationInfo-readonly codePath: string--><!--Device-ApplicationInfo-readonly codePath: string-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## dataUnclearable
@@ -117,8 +105,6 @@ readonly dataUnclearable: boolean
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ApplicationInfo-readonly dataUnclearable: boolean--><!--Device-ApplicationInfo-readonly dataUnclearable: boolean-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -136,8 +122,6 @@ readonly debug: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ApplicationInfo-readonly debug: boolean--><!--Device-ApplicationInfo-readonly debug: boolean-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## description
@@ -153,8 +137,6 @@ readonly description: string
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ApplicationInfo-readonly description: string--><!--Device-ApplicationInfo-readonly description: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -172,8 +154,6 @@ readonly descriptionId: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ApplicationInfo-readonly descriptionId: number--><!--Device-ApplicationInfo-readonly descriptionId: number-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## descriptionResource
@@ -189,8 +169,6 @@ readonly descriptionResource: Resource
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ApplicationInfo-readonly descriptionResource: Resource--><!--Device-ApplicationInfo-readonly descriptionResource: Resource-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -208,8 +186,6 @@ readonly enabled: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ApplicationInfo-readonly enabled: boolean--><!--Device-ApplicationInfo-readonly enabled: boolean-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## icon
@@ -225,8 +201,6 @@ readonly icon: string
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ApplicationInfo-readonly icon: string--><!--Device-ApplicationInfo-readonly icon: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -244,8 +218,6 @@ readonly iconData: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ApplicationInfo-readonly iconData: string--><!--Device-ApplicationInfo-readonly iconData: string-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## iconId
@@ -261,8 +233,6 @@ readonly iconId: number
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ApplicationInfo-readonly iconId: number--><!--Device-ApplicationInfo-readonly iconId: number-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -280,8 +250,6 @@ readonly iconResource: Resource
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ApplicationInfo-readonly iconResource: Resource--><!--Device-ApplicationInfo-readonly iconResource: Resource-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## installSource
@@ -290,15 +258,18 @@ readonly iconResource: Resource
 readonly installSource: string
 ```
 
-应用程序的安装来源，支持的取值如下： - pre-installed表示应用为第一次开机时安装的预置应用。 - ota表示应用为系统升级时新增的预置应用。 - recovery表示卸载后再恢复的预置应用。 - bundleName表示应用由此包名对应的应用安装。 - unknown表示应用安装来源未知。
+应用程序的安装来源，支持的取值如下：  
+- pre-installed表示应用为第一次开机时安装的预置应用。  
+- ota表示应用为系统升级时新增的预置应用。  
+- recovery表示卸载后再恢复的预置应用。  
+- bundleName表示应用由此包名对应的应用安装。  
+- unknown表示应用安装来源未知。
 
 **类型：** string
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ApplicationInfo-readonly installSource: string--><!--Device-ApplicationInfo-readonly installSource: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -316,8 +287,6 @@ readonly label: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ApplicationInfo-readonly label: string--><!--Device-ApplicationInfo-readonly label: string-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## labelId
@@ -333,8 +302,6 @@ readonly labelId: number
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ApplicationInfo-readonly labelId: number--><!--Device-ApplicationInfo-readonly labelId: number-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -352,8 +319,6 @@ readonly labelResource: Resource
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ApplicationInfo-readonly labelResource: Resource--><!--Device-ApplicationInfo-readonly labelResource: Resource-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## name
@@ -369,8 +334,6 @@ readonly name: string
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ApplicationInfo-readonly name: string--><!--Device-ApplicationInfo-readonly name: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -388,8 +351,6 @@ readonly nativeLibraryPath: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ApplicationInfo-readonly nativeLibraryPath: string--><!--Device-ApplicationInfo-readonly nativeLibraryPath: string-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## process
@@ -405,8 +366,6 @@ readonly process: string
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ApplicationInfo-readonly process: string--><!--Device-ApplicationInfo-readonly process: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -424,8 +383,6 @@ readonly releaseType: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ApplicationInfo-readonly releaseType: string--><!--Device-ApplicationInfo-readonly releaseType: string-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## removable
@@ -441,8 +398,6 @@ readonly removable: boolean
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ApplicationInfo-readonly removable: boolean--><!--Device-ApplicationInfo-readonly removable: boolean-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -460,8 +415,6 @@ readonly systemApp: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ApplicationInfo-readonly systemApp: boolean--><!--Device-ApplicationInfo-readonly systemApp: boolean-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## uid
@@ -478,7 +431,4 @@ readonly uid: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ApplicationInfo-readonly uid: number--><!--Device-ApplicationInfo-readonly uid: number-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-

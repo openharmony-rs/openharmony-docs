@@ -2,9 +2,7 @@
 
 Defines the shared album asset
 
-**起始版本：** 23
-
-<!--Device-photoAccessHelper-interface SharedAlbumAsset--><!--Device-photoAccessHelper-interface SharedAlbumAsset-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -19,16 +17,14 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 ## albumId
 
 ```TypeScript
-albumId: int
+albumId: number
 ```
 
 album id of album asset
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SharedAlbumAsset-albumId: int--><!--Device-SharedAlbumAsset-albumId: int-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -44,9 +40,7 @@ album name
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SharedAlbumAsset-albumName: string--><!--Device-SharedAlbumAsset-albumName: string-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -62,9 +56,7 @@ subtype of album asset
 
 **类型：** AlbumSubtype
 
-**起始版本：** 23
-
-<!--Device-SharedAlbumAsset-albumSubType: AlbumSubtype--><!--Device-SharedAlbumAsset-albumSubType: AlbumSubtype-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -80,9 +72,7 @@ type of album asset
 
 **类型：** AlbumType
 
-**起始版本：** 23
-
-<!--Device-SharedAlbumAsset-albumType: AlbumType--><!--Device-SharedAlbumAsset-albumType: AlbumType-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -91,16 +81,14 @@ type of album asset
 ## count
 
 ```TypeScript
-count: int
+count: number
 ```
 
 number of assets in this album
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SharedAlbumAsset-count: int--><!--Device-SharedAlbumAsset-count: int-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -116,9 +104,7 @@ uri of album cover
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SharedAlbumAsset-coverUri: string--><!--Device-SharedAlbumAsset-coverUri: string-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -127,16 +113,14 @@ uri of album cover
 ## imageCount
 
 ```TypeScript
-imageCount: int
+imageCount: number
 ```
 
 number of photo assets in this album
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SharedAlbumAsset-imageCount: int--><!--Device-SharedAlbumAsset-imageCount: int-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -145,18 +129,15 @@ number of photo assets in this album
 ## videoCount
 
 ```TypeScript
-videoCount: int
+videoCount: number
 ```
 
 number of video assets in this album
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SharedAlbumAsset-videoCount: int--><!--Device-SharedAlbumAsset-videoCount: int-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
-

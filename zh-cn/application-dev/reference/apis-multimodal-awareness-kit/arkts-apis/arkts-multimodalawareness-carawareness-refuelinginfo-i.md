@@ -4,8 +4,6 @@
 
 **起始版本：** 26.1.0
 
-<!--Device-carAwareness-export interface RefuelingInfo--><!--Device-carAwareness-export interface RefuelingInfo-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.CarAwareness
 
 ## 导入模块
@@ -30,8 +28,6 @@ status: number
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RefuelingInfo-status: number--><!--Device-RefuelingInfo-status: number-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.CarAwareness
 
 ## timestamp
@@ -50,7 +46,4 @@ timestamp: number
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RefuelingInfo-timestamp: number--><!--Device-RefuelingInfo-timestamp: number-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.CarAwareness
-

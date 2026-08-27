@@ -2,9 +2,7 @@
 
 媒体资产（图片/视频）的具体变更数据。
 
-**起始版本：** 23
-
-<!--Device-photoAccessHelper-interface PhotoAssetChangeData--><!--Device-photoAccessHelper-interface PhotoAssetChangeData-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -24,9 +22,7 @@ assetAfterChange: PhotoAssetChangeInfo | null
 
 **类型：** [PhotoAssetChangeInfo](arkts-medialibrary-photoaccesshelper-photoassetchangeinfo-i.md) \| null
 
-**起始版本：** 23
-
-<!--Device-PhotoAssetChangeData-assetAfterChange: PhotoAssetChangeInfo | null--><!--Device-PhotoAssetChangeData-assetAfterChange: PhotoAssetChangeInfo | null-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -40,9 +36,7 @@ assetBeforeChange: PhotoAssetChangeInfo | null
 
 **类型：** [PhotoAssetChangeInfo](arkts-medialibrary-photoaccesshelper-photoassetchangeinfo-i.md) \| null
 
-**起始版本：** 23
-
-<!--Device-PhotoAssetChangeData-assetBeforeChange: PhotoAssetChangeInfo | null--><!--Device-PhotoAssetChangeData-assetBeforeChange: PhotoAssetChangeInfo | null-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -56,9 +50,7 @@ isContentChanged: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-PhotoAssetChangeData-isContentChanged: boolean--><!--Device-PhotoAssetChangeData-isContentChanged: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -72,9 +64,6 @@ isDeleted: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-PhotoAssetChangeData-isDeleted: boolean--><!--Device-PhotoAssetChangeData-isDeleted: boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-

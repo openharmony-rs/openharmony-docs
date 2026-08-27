@@ -4,8 +4,6 @@ IP配置信息。
 
 **起始版本：** 12
 
-<!--Device-wifiManager-interface IpProfile--><!--Device-wifiManager-interface IpProfile-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## 导入模块
@@ -28,8 +26,6 @@ DNS服务器，数组内最多包含首选DNS服务器和备用DNS服务器两�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-IpProfile-dnsServers: number[]--><!--Device-IpProfile-dnsServers: number[]-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## domains
@@ -45,8 +41,6 @@ domains: Array<string>
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-IpProfile-domains: Array<string>--><!--Device-IpProfile-domains: Array<string>-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -64,8 +58,6 @@ gateway: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-IpProfile-gateway: number--><!--Device-IpProfile-gateway: number-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## ipAddress
@@ -81,8 +73,6 @@ IP地址，十进制表示，正常点分十进制写法为192.168.1.1，对应�
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-IpProfile-ipAddress: number--><!--Device-IpProfile-ipAddress: number-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -100,7 +90,4 @@ prefixLength: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-IpProfile-prefixLength: number--><!--Device-IpProfile-prefixLength: number-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-

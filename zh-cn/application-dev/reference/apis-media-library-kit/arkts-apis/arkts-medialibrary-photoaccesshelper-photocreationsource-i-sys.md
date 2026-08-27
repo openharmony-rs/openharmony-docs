@@ -2,9 +2,7 @@
 
 代替应用创建资产传入的应用信息。
 
-**起始版本：** 23
-
-<!--Device-photoAccessHelper-interface PhotoCreationSource--><!--Device-photoAccessHelper-interface PhotoCreationSource-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -26,9 +24,7 @@ appId?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-PhotoCreationSource-appId?: string--><!--Device-PhotoCreationSource-appId?: string-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -44,9 +40,7 @@ appName?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-PhotoCreationSource-appName?: string--><!--Device-PhotoCreationSource-appName?: string-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -62,9 +56,7 @@ bundleName?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-PhotoCreationSource-bundleName?: string--><!--Device-PhotoCreationSource-bundleName?: string-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -73,18 +65,15 @@ bundleName?: string
 ## tokenId
 
 ```TypeScript
-tokenId?: long
+tokenId?: number
 ```
 
 应用标识，将访问权限授予tokenId标识的应用。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-PhotoCreationSource-tokenId?: long--><!--Device-PhotoCreationSource-tokenId?: long-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
-

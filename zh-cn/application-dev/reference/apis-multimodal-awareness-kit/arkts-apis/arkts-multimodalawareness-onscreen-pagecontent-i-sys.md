@@ -2,9 +2,7 @@
 
 屏上内容。
 
-**起始版本：** 23
-
-<!--Device-onScreen-export interface PageContent--><!--Device-onScreen-export interface PageContent-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -26,9 +24,7 @@ bundleName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-PageContent-bundleName: string--><!--Device-PageContent-bundleName: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -44,9 +40,7 @@ content?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-PageContent-content?: string--><!--Device-PageContent-content?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -62,9 +56,7 @@ pageLink?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-PageContent-pageLink?: string--><!--Device-PageContent-pageLink?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -80,9 +72,7 @@ paragraphs?: Paragraph[]
 
 **类型：** Paragraph[]
 
-**起始版本：** 23
-
-<!--Device-PageContent-paragraphs?: Paragraph[]--><!--Device-PageContent-paragraphs?: Paragraph[]-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -98,9 +88,7 @@ scenario?: Scenario
 
 **类型：** [Scenario](arkts-multimodalawareness-onscreen-scenario-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-PageContent-scenario?: Scenario--><!--Device-PageContent-scenario?: Scenario-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -109,16 +97,14 @@ scenario?: Scenario
 ## sessionId
 
 ```TypeScript
-sessionId: long
+sessionId: number
 ```
 
 此次调用该接口的session ID，标识当次调用动作。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-PageContent-sessionId: long--><!--Device-PageContent-sessionId: long-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -134,9 +120,7 @@ title?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-PageContent-title?: string--><!--Device-PageContent-title?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -145,18 +129,15 @@ title?: string
 ## windowId
 
 ```TypeScript
-windowId: int
+windowId: number
 ```
 
 获取到的屏上内容的窗口ID
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-PageContent-windowId: int--><!--Device-PageContent-windowId: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **系统接口：** 此接口为系统接口。
-

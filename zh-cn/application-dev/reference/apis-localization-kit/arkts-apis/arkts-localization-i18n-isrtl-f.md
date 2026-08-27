@@ -14,11 +14,9 @@ export function isRTL(locale: string): boolean
 
 判断语言是否为镜像语言。在镜像语言下，UI界面需要[镜像显示](../../../internationalization/i18n-ui-design.md#界面镜像)。
 
-**起始版本：** 23
+**起始版本：** 7
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-i18n-export function isRTL(locale: string): boolean--><!--Device-i18n-export function isRTL(locale: string): boolean-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -42,4 +40,3 @@ import { i18n } from '@kit.LocalizationKit';
 let isZhRTL: boolean = i18n.isRTL('zh-CN'); // 中文不是镜像语言，返回false
 let isArRTL: boolean = i18n.isRTL('ar-EG'); // 阿语是镜像语言，返回true
 ```
-

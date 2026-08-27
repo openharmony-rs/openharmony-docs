@@ -6,8 +6,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-userStatus-export interface UserFacesData--><!--Device-userStatus-export interface UserFacesData-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.UserStatus
 
 **系统接口：** 此接口为系统接口。
@@ -21,18 +19,16 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 ## angularVelocity
 
 ```TypeScript
-angularVelocity?: double[]
+angularVelocity?: number[]
 ```
 
 表示当前状态下设备的角速度。数组长度为3，分别表示绕x、y、z三个轴旋转的角速度分量，单位：rad/s。
 
-**类型：** double[]
+**类型：** number[]
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UserFacesData-angularVelocity?: double[]--><!--Device-UserFacesData-angularVelocity?: double[]-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.UserStatus
 
@@ -41,18 +37,16 @@ angularVelocity?: double[]
 ## azimuth
 
 ```TypeScript
-azimuth?: double[]
+azimuth?: number[]
 ```
 
 表示当前状态下设备的方位角。数组长度为3，分别表示偏航角（绕y轴）、俯仰角（绕x轴）和翻滚角（绕z轴），取值范围[0,360]。单位：deg。
 
-**类型：** double[]
+**类型：** number[]
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UserFacesData-azimuth?: double[]--><!--Device-UserFacesData-azimuth?: double[]-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.UserStatus
 
@@ -61,18 +55,16 @@ azimuth?: double[]
 ## faceNum
 
 ```TypeScript
-faceNum?: int
+faceNum?: number
 ```
 
 表示检测到的人脸数量。取值范围[0,3]。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UserFacesData-faceNum?: int--><!--Device-UserFacesData-faceNum?: int-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.UserStatus
 
@@ -81,18 +73,16 @@ faceNum?: int
 ## gravityAcceleration
 
 ```TypeScript
-gravityAcceleration?: double[]
+gravityAcceleration?: number[]
 ```
 
 表示当前状态下设备的重力加速度。数组长度为3，分别表示x、y、z三个方向的加速度分量，单位：m/s²。
 
-**类型：** double[]
+**类型：** number[]
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UserFacesData-gravityAcceleration?: double[]--><!--Device-UserFacesData-gravityAcceleration?: double[]-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.UserStatus
 
@@ -101,18 +91,16 @@ gravityAcceleration?: double[]
 ## linearAcceleration
 
 ```TypeScript
-linearAcceleration?: double[][]
+linearAcceleration?: number[][]
 ```
 
 表示当前状态下设备的线性加速度。二维数组，外层表示多个点位的采样，内层为长度3的数组，分别表示x、y、z三个方向的加速度分量，单位：m/s²。
 
-**类型：** double[][]
+**类型：** number[][]
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UserFacesData-linearAcceleration?: double[][]--><!--Device-UserFacesData-linearAcceleration?: double[][]-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.UserStatus
 
@@ -121,20 +109,17 @@ linearAcceleration?: double[][]
 ## visualAngle
 
 ```TypeScript
-visualAngle?: double[]
+visualAngle?: number[]
 ```
 
 表示用户看屏幕的视角。取值范围[0,90]。单位：deg。
 
-**类型：** double[]
+**类型：** number[]
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UserFacesData-visualAngle?: double[]--><!--Device-UserFacesData-visualAngle?: double[]-End-->
-
 **系统能力：** SystemCapability.MultimodalAwareness.UserStatus
 
 **系统接口：** 此接口为系统接口。
-

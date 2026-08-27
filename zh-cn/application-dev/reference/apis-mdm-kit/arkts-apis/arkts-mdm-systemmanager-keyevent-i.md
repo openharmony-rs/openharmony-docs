@@ -1,10 +1,8 @@
 # KeyEvent
 
-按键事件。 [EnterpriseAdminExtensionAbility.onKeyEvent](../../apis-na/arkts-apis/arkts-na-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md#onkeyevent) 按键事件回调触发时，传递当前按键事件信息。
+按键事件。 [EnterpriseAdminExtensionAbility.onKeyEvent](arkts-mdm-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md#onkeyevent) 按键事件回调触发时，传递当前按键事件信息。
 
 **起始版本：** 23
-
-<!--Device-systemManager-interface KeyEvent--><!--Device-systemManager-interface KeyEvent-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -28,8 +26,6 @@ actionTime: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-KeyEvent-actionTime: number--><!--Device-KeyEvent-actionTime: number-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## keyAction
@@ -45,8 +41,6 @@ keyAction: KeyAction
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-KeyEvent-keyAction: KeyAction--><!--Device-KeyEvent-keyAction: KeyAction-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -64,8 +58,6 @@ keyCode: KeyCode
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-KeyEvent-keyCode: KeyCode--><!--Device-KeyEvent-keyCode: KeyCode-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## keyItems
@@ -82,7 +74,4 @@ keyItems: Array<KeyItem>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-KeyEvent-keyItems: Array<KeyItem>--><!--Device-KeyEvent-keyItems: Array<KeyItem>-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-

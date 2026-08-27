@@ -20,8 +20,6 @@ function getFreezeExemptedApps(admin: Want): Array<common.ApplicationInstance>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-applicationManager-function getFreezeExemptedApps(admin: Want): Array<common.ApplicationInstance>--><!--Device-applicationManager-function getFreezeExemptedApps(admin: Want): Array<common.ApplicationInstance>-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
@@ -34,15 +32,15 @@ function getFreezeExemptedApps(admin: Want): Array<common.ApplicationInstance>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;common.ApplicationInstance&gt; | 后台防冻结应用名单数组。 |
+| Array & lt;common.ApplicationInstance & gt; | 后台防冻结应用名单数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例**
 
@@ -79,8 +77,6 @@ function getFreezeExemptedApps(admin: Want | null): Array<common.ApplicationInst
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-applicationManager-function getFreezeExemptedApps(admin: Want | null): Array<common.ApplicationInstance>--><!--Device-applicationManager-function getFreezeExemptedApps(admin: Want | null): Array<common.ApplicationInstance>-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
@@ -93,15 +89,15 @@ function getFreezeExemptedApps(admin: Want | null): Array<common.ApplicationInst
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;common.ApplicationInstance&gt; | 后台防冻结应用名单数组。 |
+| Array & lt;common.ApplicationInstance & gt; | 后台防冻结应用名单数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例**
 
@@ -116,4 +112,3 @@ try {
   console.error(`Failed to get FreezeExempted applications. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-

@@ -1,10 +1,8 @@
 # Operation（系统接口）
 
-用户操作
+用户操作@enum { number }
 
-**起始版本：** 23
-
-<!--Device-mechanicManager-export enum Operation--><!--Device-mechanicManager-export enum Operation-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -18,9 +16,7 @@ CONNECT = 0
 
 连接操作
 
-**起始版本：** 23
-
-<!--Device-Operation-CONNECT = 0--><!--Device-Operation-CONNECT = 0-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -34,11 +30,8 @@ DISCONNECT = 1
 
 断开操作
 
-**起始版本：** 23
-
-<!--Device-Operation-DISCONNECT = 1--><!--Device-Operation-DISCONNECT = 1-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Mechanic.Core
 
 **系统接口：** 此接口为系统接口。
-

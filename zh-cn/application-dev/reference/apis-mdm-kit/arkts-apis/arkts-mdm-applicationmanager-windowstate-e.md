@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-applicationManager-enum WindowState--><!--Device-applicationManager-enum WindowState-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## DISCONNECT
@@ -19,8 +17,6 @@ DISCONNECT = 0
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WindowState-DISCONNECT = 0--><!--Device-WindowState-DISCONNECT = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -36,8 +32,6 @@ CONNECT = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WindowState-CONNECT = 1--><!--Device-WindowState-CONNECT = 1-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## FOREGROUND
@@ -51,8 +45,6 @@ FOREGROUND = 2
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WindowState-FOREGROUND = 2--><!--Device-WindowState-FOREGROUND = 2-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -68,8 +60,6 @@ ACTIVE = 3
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WindowState-ACTIVE = 3--><!--Device-WindowState-ACTIVE = 3-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## INACTIVE
@@ -83,8 +73,6 @@ INACTIVE = 4
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WindowState-INACTIVE = 4--><!--Device-WindowState-INACTIVE = 4-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -100,7 +88,4 @@ BACKGROUND = 5
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WindowState-BACKGROUND = 5--><!--Device-WindowState-BACKGROUND = 5-End-->
-
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
