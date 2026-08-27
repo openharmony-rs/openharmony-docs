@@ -21,17 +21,20 @@ ArkTS-Sta支持以下native调用模式：
 // ets侧 native方法添加@ani.unsafe.Quick注解
 class Test {
     @ani.unsafe.Quick
-    native ProcBoolArray(a: FixedArray<boolean>, length: int): void;
+    native procBoolArray(a: ValueArray<boolean>, length: int): void;
 }
 ```
 
 ```cpp
 // C++侧 方法实现
-static void ProcBoolArray(ani_env *env, [[maybe_unused]] ani_object object, ani_fixedarray_boolean arr, ani_int length)
+static void ProcBoolArrayImpl(ani_env *env, [[maybe_unused]] ani_object object, ani_valuearray_boolean arr, ani_int length)
 {
     ani_size size = length;
     std::vector<ani_boolean> nativeBuffer(size);
-    env->FixedArray_GetRegion_Boolean(arr, 0, size, nativeBuffer.data());
+    ani_status status = env->ValueArray_GetRegion_Boolean(arr, 0, size, nativeBuffer.data());
+    if (status != ANI_OK) {
+        // handle error and return
+    }
     ani_boolean value0;
     for (ani_size i = 0; i < size ; i++) {
         value0 = nativeBuffer[i];
