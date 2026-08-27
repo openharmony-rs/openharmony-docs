@@ -272,12 +272,13 @@ struct SubIndex {
 
 connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
-连接到[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)，返回连接id。使用场景：需要与UIExtensionAbility建立连接以进行交互，例如连接到其他应用提供的UIExtensionAbility来使用其服务。
+连接到[ServiceExtensionAbility](js-apis-app-ability-serviceExtensionAbility-sys.md#serviceextensionability)，返回连接id。使用场景：需要与ServiceExtensionAbility建立连接以进行交互，例如连接到其他应用提供的ServiceExtensionAbility来使用其服务。
 
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+> - 该接口不支持连接分身应用的ServiceExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 

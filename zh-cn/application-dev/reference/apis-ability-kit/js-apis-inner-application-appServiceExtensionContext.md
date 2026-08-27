@@ -131,6 +131,10 @@ connectServiceExtensionAbility(want: Want, callback: ConnectOptions): number
 
 将当前AppServiceExtensionAbility连接到一个ServiceExtensionAbility（ServiceExtensionAbility仅支持由系统应用开发，三方应用可连接），通过ConnectOptions的onConnect回调返回的remote对象与ServiceExtensionAbility通信，以使用ServiceExtensionAbility对外提供的能力。可使用返回的connectionID调用disconnectServiceExtensionAbility()断开连接。
 
+> **说明：**
+>
+> 该接口不支持连接分身应用的ServiceExtensionAbility。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
