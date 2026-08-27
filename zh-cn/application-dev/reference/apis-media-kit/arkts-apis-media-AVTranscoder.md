@@ -81,21 +81,21 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { media } from '@kit.MediaKit';
 import { image } from '@kit.ImageKit';
 
-async function test() {
+async function test(context: Context) {
   // 创建转码实例。
   let avTranscoder = await media.createAVTranscoder();
-  
+
   // 配置水印参数。
   let watermarkConfig: media.WatermarkConfiguration = {
-      // 根据实际需求配置水印参数，单位为像素（px）。
-      top: 40,
-      left: 40,
-      width: 200,
-      height: 300,
+    // 根据实际需求配置水印参数，单位为像素（px）。
+    top: 40,
+    left: 40,
+    width: 200,
+    height: 300,
   };
 
   // 获取资源管理器
-  let resourceManager = getContext(this).resourceManager;
+  let resourceManager = context.resourceManager;
   // 获取rawfile中水印图片的描述符（'img.png'可替换为实际水印图片文件名）
   let rawFileDescriptor = resourceManager.getRawFdSync('img.png');
   // 根据文件描述符创建ImageSource
