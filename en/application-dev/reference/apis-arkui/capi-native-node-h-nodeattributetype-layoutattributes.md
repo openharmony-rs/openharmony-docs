@@ -3,10 +3,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3; @zju_ljz; @camlostshi-->
-<!--Designer: @hehongyang3; @lanshouren-->
+<!--Designer: @hehongyang3; @fenglinbailu-->
 <!--Tester: @liuli0427; @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=7b21a0cf27c2374e4d1342a56e7e006f300db1fe translatedAt=2026-08-04T10:53:00.813Z pushedAt=2026-08-06T06:19:39.191Z -->
+<!-- md-trans-meta sourceCommit=6cf262681c9e0cd9c697d71c12de487ae14f710a translatedAt=2026-08-25T02:19:51.256Z pushedAt=2026-08-26T07:59:06.463Z -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -271,25 +271,25 @@ One or four parameters can be passed:
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Color for the four borders, in 0xARGB format, for example, **0xFFFF11FF**.|
+| .value[0].u32 | Color for the four borders, in 0xARGB format, for example, `0xFFFF11FF`. |
 
 2: Specify different colors for the four borders.<br>
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Color of the top border, in 0xARGB format. The default value is **0xFF000000**.|
-| .value[1].u32 | Color of the right border, in 0xARGB format. The default value is **0xFF000000**.|
-| .value[2].u32 | Color of the bottom border, in 0xARGB format. The default value is **0xFF000000**.|
-| .value[3].u32 | Color of the left border, in 0xARGB format. The default value is **0xFF000000**.|
+| .value[0].u32 | Color of the top border, in 0xARGB format. The default value is `0xFF000000`. |
+| .value[1].u32 | Color of the right border, in 0xARGB format. The default value is `0xFF000000`. |
+| .value[2].u32 | Color of the bottom border, in 0xARGB format. The default value is `0xFF000000`. |
+| .value[3].u32 | Color of the left border, in 0xARGB format. The default value is `0xFF000000`. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Color of the top border, in 0xARGB format, for example, **0xFFFF11FF**.|
-| .value[1].u32 | Color of the right border, in 0xARGB format, for example, **0xFFFF11FF**.|
-| .value[2].u32 | Color of the bottom border, in 0xARGB format, for example, **0xFFFF11FF**.|
-| .value[3].u32 | Color of the left border, in 0xARGB format, for example, **0xFFFF11FF**.|
+| .value[0].u32 | Color of the top border, in 0xARGB format, for example, `0xFFFF11FF`. |
+| .value[1].u32 | Color of the right border, in 0xARGB format, for example, `0xFFFF11FF`. |
+| .value[2].u32 | Color of the bottom border, in 0xARGB format, for example, `0xFFFF11FF`. |
+| .value[3].u32 | Color of the left border, in 0xARGB format, for example, `0xFFFF11FF`. |
 
 ## NODE_BORDER_STYLE
 
@@ -712,7 +712,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Height, in percentage. Value range: (0, +∞). There is no default value. When not set, the size is determined by the component layout, using the width required by the child component's own content. When an invalid value is set, an error code is returned. |
+| .value[0].f32 | Height, in percentage. Value range: (0, +∞). There is no default value. When not set, the size is determined by the component layout, using the height required by the child component's own content. When an invalid value is set, an error code is returned. |
 
 **Returns**
 
@@ -1100,7 +1100,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[0].f32 | Length of the dashed line on the top border, in vp. Value range: [0, +∞). Default value: the border width value of the **NODE_BORDER_WIDTH** attribute. When an invalid value is set, the default dashed line effect is displayed. |
 | .value[1].f32 | Length of the dashed line on the right border, in vp. Value range: [0, +∞). Default value: the border width value of the **NODE_BORDER_WIDTH** attribute. When an invalid value is set, the default dashed line effect is displayed. |
 | .value[2].f32 | Length of the dashed line on the bottom border, in vp. Value range: [0, +∞). Default value: the border width value of the **NODE_BORDER_WIDTH** attribute. When an invalid value is set, the default dashed line effect is displayed. |
-| .value[3].f32 | Length of the dashed line on the left border, in vp. Value range: [0, +∞). Default value: the border width value of the **NODE_BORDER_WIDTH** attribute. If an invalid value is set, the default dashed line effect is displayed. |
+| .value[3].f32 | Length of the dashed line on the left border, in vp. Value range: [0, +∞). Default value: the border width value of the **NODE_BORDER_WIDTH** attribute. When an invalid value is set, the default dashed line effect is displayed. |
 
 **Returns**
 
@@ -1118,7 +1118,8 @@ NODE_DASH_GAP = 121
 ```
 
 Gap between dashes on the dashed line when the border style is set to dashed (**ArkUI_BorderStyle** is set to **ARKUI_BORDER_STYLE_DASHED**). The default value is the border width value of the **NODE_BORDER_WIDTH** attribute. This attribute takes effect only when the border style is dashed. This attribute can be set, reset, and obtained as required through APIs.<br>
-The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of **size** in the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) is invalid, and the actual returned **value** array length is always 4.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and format of the return value **ArkUI_AttributeItem** are as follows.<br>
+**size** in the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) is invalid, and the actual returned **value** array length is always 4.<br>
 
 **Since**: 23
 
