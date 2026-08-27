@@ -26,10 +26,11 @@ NFC标签支持一种或多种通信技术，具体技术如下：
 - NFC标签后台读写<br>
 后台读写是指不打开特定的NFC标签应用程序，电子设备触碰发现NFC标签后，根据NFC标签的技术类型，分发给能够处理的应用程序。如果能匹配到多个应用程序，则弹出应用选择器列举出应用列表给用户手动选择。用户选择指定的应用后，自动跳转到应用程序的NFC标签读写卡页面。
 - 常用读写NDEF格式Tag定制功能<br>
-手机NFC支持读取卡片信息并跳转到生态应用，有使用NDEF通用协议和应用接入[AirTouch服务](https://developer.huawei.com/consumer/cn/airtouch/)两种方式：
-1. NDEF通用协议跳转应用：在标签内写入应用的信息，电子设备触碰发现NFC标签后，根据NFC标签的NDEF信息，分发给对应的应用。
-2. 接入AirTouch服务：更高阶的应用拉起方案，通过碰一碰服务直达，满足用户碎片化需求，如：NFC碰一碰点单、支付、活动推广等，详细应用开发接入指导及标签制作参考[AirTouch服务](https://developer.huawei.com/consumer/cn/airtouch/)。
-3. 更多NDEF标签格式规范请关注[NFC论坛](https://nfc-forum.org/)。
+  手机NFC支持读取卡片信息并跳转到生态应用，有使用NDEF通用协议和应用接入[AirTouch服务](https://developer.huawei.com/consumer/cn/airtouch/)两种方式：
+     1. NDEF通用协议跳转应用：在标签内写入应用的信息，电子设备触碰发现NFC标签后，根据NFC标签的NDEF信息，分发给对应的应用。
+     2. 接入AirTouch服务：更高阶的应用拉起方案，通过碰一碰服务直达，满足用户碎片化需求，如：NFC碰一碰点单、支付、活动推广等，详细应用开发接入指导及标签制作参考[AirTouch服务](https://developer.huawei.com/consumer/cn/airtouch/)。<br>
+
+   更多NDEF标签格式规范请关注[NFC论坛](https://nfc-forum.org/)。
 - 标签读写约束条件<br>
 不管是前台读写，还是后台读写，电子设备能够发现NFC标签的前提条件是设备必须是亮屏和解锁状态。
 
@@ -384,8 +385,12 @@ export default class EntryAbility extends UIAbility {
 ```
 ### NDEF格式Tag定制
 - NFC标签定制<br>
-1. NDEF标签可能存在1或多个Record。通过包名拉起鸿蒙Next应用需要特定的Record记录：其中type为“ohos.com:pkg”，payload为“应用实际包名”。
-2. 根据应用业务逻辑的需要，标签内的第一个Record可以放入一个URI类型的数据（可选）。如果存在URI类型的Record，NFC拉起应用时会以want.uri格式传递给应用，此时应用可以通过识别URI来跳转到指定页面。注意：若应用拉起时需要URI数据，第一个Record必须为URI类型。
+  1. NDEF标签可能存在1或多个Record。通过包名拉起OpenHarmony应用需要特定的Record记录：其中type为“ohos.com:pkg”，payload为“应用实际包名”。
+  2. 根据应用业务逻辑的需要，标签内的第一个Record可以放入一个URI类型的数据（可选）。如果存在URI类型的Record，NFC拉起应用时会以want.uri格式传递给应用，此时应用可以通过识别URI来跳转到指定页面。
+
+> **说明：**
+>
+>若应用拉起时需要URI数据，第一个Record必须为URI类型。
 
 - 应用接收参数示例<br>
 拉起应用时，应用可以通过want里传入的参数来完成业务逻辑，通过卡片拉起应用时，携带的want内容如下：
@@ -401,7 +406,7 @@ want = {
     "flags": 0,
     "action": "action.system.home",
     "parameters": {
-        /**************************** NFC相关字段 *****************************/
+        // NFC相关字段
         "Atqa": "4400",
         "MifareUltralightC": false,
         "NdefForumType": 2,
@@ -410,9 +415,9 @@ want = {
         "NdefTagMode": 2,
         "Sak": 0,
         "tagRfDiscId": 2,
-        "technology": [1, 9, 6], // 读取到的卡片支持的协议类型，NfcA，NfcB，NfcF，NfcV，Ndef，IsoDep等，详见https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-nfctech
+        "technology": [1, 9, 6], // 读取到的卡片支持的协议类型，NfcA，NfcB，NfcF，NfcV，Ndef，IsoDep等
         "uid": "xxxxxxxx", // 读取到的卡片的uid
-        /**********************************************************************/
+        // 其它内容
         "component.startup.newRules": true,
         "isCallBySCB": false,
         "isShellCall": false,
@@ -420,9 +425,9 @@ want = {
         "ohos.aafwk.param.callerAbilityName": "",
         "ohos.aafwk.param.callerBundleName": "",
         "ohos.aafwk.param.callerNativeName": "_nfc_service", // NFC进程名
-        "ohos.aafwk.param.callerPid": xxx
-        "ohos.aafwk.param.callerToken": xxxx
-        "ohos.aafwk.param.callerUid": xxxx // NFC系统服务的uid，唯一标识符，可以用于判断是否是NFC拉起
+        "ohos.aafwk.param.callerPid": xxx,
+        "ohos.aafwk.param.callerToken": xxxx,
+        "ohos.aafwk.param.callerUid": xxxx,
         "ohos.aafwk.param.displayId": 0,
         "ohos.dlp.params.sandbox": false,
         "ohos.param.callerAppCloneIndex": 0,
@@ -434,3 +439,4 @@ want = {
         "fds": {},
         "entities": ["entity.system.home"]
     }
+```
