@@ -993,7 +993,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LineSpacingOptions_GetOnlyBetweenLines(con
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md)* options | 指向[OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md)对象的指针。 |
+| const [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md)* options | 指向[OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md)对象的指针。 |
 | bool* onlyBetweenLines | 输出参数，指向bool类型变量的指针，用于接收值。true表示仅在行之间应用行间距，false表示首行上方和尾行下方也会存在行间距。默认值为false。 |
 
 **返回：**
