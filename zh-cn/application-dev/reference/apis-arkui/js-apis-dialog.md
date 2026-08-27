@@ -50,7 +50,6 @@ import { dialog } from '@kit.ArkUI';
 | fontColor     | [ResourceColor](arkui-ts/ts-types.md#resourcecolor)          | 否   | 是   | 按钮文字颜色。<br/>默认值：跟随系统主题。                                               |
 | backgroundColor | [ResourceColor](arkui-ts/ts-types.md#resourcecolor)        | 否   | 是   | 按钮背景色。<br/>默认值：跟随系统主题。                                                 |
 | enabled       | boolean                                                      | 否   | 是   | 点击按钮时是否响应。值为true表示响应，值为false表示不响应。<br/>默认值：true |
-| defaultFocus  | boolean                                                      | 否   | 是   | 按钮是否为默认焦点。值为true表示为默认焦点，值为false表示不为默认焦点。<br/>默认值：false |
 | primary       | boolean                                                      | 否   | 是   | 定义按钮是否默认响应回车/空格键。值为true表示默认响应，值为false表示不默认响应。<br/>默认值：false |
 | style         | [DialogButtonStyle](arkui-ts/ts-appendix-enums.md#dialogbuttonstyle10) | 否   | 是   | 按钮的样式。<br/>默认值：DialogButtonStyle.DEFAULT           |
 | action        | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)          | 否   | 否   | 点击按钮时执行的回调。                                       |

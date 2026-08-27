@@ -2,13 +2,13 @@
 
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @zzhao0-->
+<!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=7b9a2b20c0ccde8a6fcec022ec0fcbcafa6267c4 translatedAt=2026-07-06T02:46:58.572Z pushedAt=2026-07-16T03:25:22.042Z -->
+<!-- md-trans-meta sourceCommit=8bb9848b7b451305a97994d9b8833fe195588c67 translatedAt=2026-08-20T12:26:26.448Z pushedAt=2026-08-21T02:58:38.821Z -->
 
-This module provides types and operation methods for Boids simulation animation in 3D graphics. Boids simulation animation is a computer animation method that drives individuals in a group through rules such as separation, alignment, and cohesion, making them exhibit movement characteristics similar to flocks of birds or schools of fish in nature.
+This module provides types and operation methods for Boids simulation animation in ArkGraphics 3D. Boids simulation animation is a computer animation method that drives individuals in a group through rules such as separation, alignment, and cohesion, making them exhibit movement characteristics similar to flocks of birds or schools of fish in nature.
 
 > **NOTE**
 > - The APIs of this module are system APIs.
@@ -38,9 +38,9 @@ Boids simulation parameters used to configure the behavioral attributes of each 
 > **NOTE**
 >
 > A simulation frame refers to the update cycle executed at a fixed time step in the Boids simulation, similar to FixedUpdate in Unity. The default time step is 16 ms (approximately 62.5 FPS). The simulation is driven by accumulating real time and consuming it in fixed steps. The default values of some parameters below are calculated based on this time step:
-> - **maxVelocityMag**: 0.01 / 0.016 ≈ 0.625 (m/s).
-> - **maxAccelerationMag**: maxVelocityMag / 0.016 ≈ 39.06 (m/s²).
-> - **maxTurnRate**: π × 0.75 × 0.016 ≈ 0.0377 (rad/simulation frame).
+> - **maxVelocityMag:** 0.01 / 0.016 ≈ 0.625 (m/s).
+> - **maxAccelerationMag:** maxVelocityMag / 0.016 ≈ 39.06 (m/s²).
+> - **maxTurnRate:** π × 0.75 × 0.016 ≈ 0.0377 (rad/simulation frame).
 
 | Name | Type | Read-only | Optional | Description |
 | ---- | ---- | ---- | ---- | ---- |
@@ -60,8 +60,8 @@ Boids simulation parameters used to configure the behavioral attributes of each 
 | cohesionDistance | number | No | Yes | Perception radius of the cohesion rule. Unit is m. Neighboring individuals within this distance (inclusive) contribute to the cohesion force. Value >= 0. Default value: 0.0. |
 | boundaryWeight | number | No | Yes | Weight of the boundary constraint force. The intensity with which the individual is pushed back by the boundary wall within the boundaryDistance. Value >= 0. Default value: 0.0. |
 | boundaryDistance | number | No | Yes | Effective distance of the boundary constraint force. Unit is m. The individual is subject to a repulsive force when its distance to the boundary wall is within this distance. Value >= 0. Default value: 0.0. |
-| gravityWeight | number | No | Yes | Attraction intensity of the attraction field on this individual. Value >= 0. Default value: 0.0. |
-| repulsionWeight | number | No | Yes | Repulsion intensity of the repulsion field on this individual. Value >= 0. Default value: 0.0. |
+| gravityWeight | number | No | Yes | Weight of the attraction field. The intensity with which the attraction field attracts the individual. The value must be >= 0. The default value is 0.0. |
+| repulsionWeight | number | No | Yes | Weight of the repulsion field. The intensity with which the repulsion field repels the individual. The value must be >= 0. The default value is 0.0. |
 
 ## BoidsSimGravityParameters
 
@@ -78,7 +78,7 @@ Attraction field parameters, used to configure the attraction field in the scene
 | Name | Type | Read-only | Optional | Description |
 | ---- | ---- | ---- | ---- | ---- |
 | radius | number | No | Yes | The radius of the attraction field. Only individuals strictly within this distance are attracted (boundary force is 0). Value >= 0. Default value: 0.0. |
-| accelerationMag | number | No | Yes | The magnitude of the attraction acceleration applied to the individual, with the direction pointing toward the attraction field entity. Value >= 0. Default value: 0.0. |
+| accelerationMag | number | No | Yes | Magnitude of the attraction acceleration applied to an individual, with the direction pointing to the attraction field entity. The value must be greater than or equal to 0. The default value is 0.0. |
 
 ## BoidsSimRepulsionParameters
 
@@ -95,7 +95,7 @@ Repulsion field parameters, used to configure the repulsion field in the scene.
 | Name | Type | Read-only | Optional | Description |
 | ---- | ---- | ---- | ---- | ---- |
 | radius | number | No | Yes | The radius of the repulsion field. Only individuals strictly within this distance are repelled (boundary force is 0). Value >= 0. Default value is 0.0. |
-| accelerationMag | number | No | Yes | The magnitude of the repulsion acceleration applied to the individual, whose direction points away from the repulsion field entity. Value >= 0. Default value is 0.0. |
+| accelerationMag | number | No | Yes | Magnitude of the repulsion acceleration applied to individuals, with the direction pointing away from the repulsion field entity. The value must be greater than or equal to 0. The default value is 0.0. |
 
 ## BoidsSimWorld
 
@@ -123,7 +123,7 @@ The Boids simulation world object, used to manage the lifecycle and components o
 
 play(): void
 
-Starts or resumes the Boids simulation.
+Starts or resumes the boids simulation. When the boids simulation is in the stopped state, calling this method starts the boids simulation; when the boids simulation is in the paused state, calling this method resumes the boids simulation.
 
 **Since:** 26.0.0
 
@@ -452,7 +452,7 @@ Gets the flock behavior parameters on the specified node.
 **Example**
 
 ```ts
-import { BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
+import { BoidsSimParameters, BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
 
 function queryBoidsSimComponent(world: BoidsSimWorld, node: Node): void {
   let params: BoidsSimParameters | null = world.getBoidsSimComponent(node);
@@ -491,7 +491,7 @@ Gets the attraction field parameters on the specified node.
 **Example**
 
 ```ts
-import { BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
+import { BoidsSimGravityParameters, BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
 
 function queryBoidsSimGravityComponent(world: BoidsSimWorld, node: Node): void {
   let params: BoidsSimGravityParameters | null = world.getBoidsSimGravityComponent(node);
@@ -530,7 +530,7 @@ Gets the repulsion field parameters on the specified node.
 **Example**
 
 ```ts
-import { BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
+import { BoidsSimRepulsionParameters, BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
 
 function queryBoidsSimRepulsionComponent(world: BoidsSimWorld, node: Node): void {
   let params: BoidsSimRepulsionParameters | null = world.getBoidsSimRepulsionComponent(node);
@@ -660,7 +660,7 @@ Gets the Boids simulation world instance associated with the specified scene.
 
 | Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
-| scene | [Scene](js-apis-inner-scene.md) | Yes | Object of the target scene. |
+| scene | [Scene](js-apis-inner-scene.md#scene-1) | Yes | Object of the target scene. |
 
 **Return value**
 

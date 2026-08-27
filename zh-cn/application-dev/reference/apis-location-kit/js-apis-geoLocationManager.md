@@ -84,7 +84,7 @@ import { geoLocationManager } from '@kit.LocationKit';
 | premises | string | 否 | 是 | 表示门牌号信息。 |
 | postalCode | string | 否 | 是 | 表示邮政编码信息。 |
 | phoneNumber | string | 否 | 是 | 表示联系方式信息。 |
-| addressUrl | string | 否 | 是 | 表示位置信息附件的网址信息。 |
+| addressUrl | string | 否 | 是 | 表示位置信息附近的网址信息。 |
 | descriptions | Array&lt;string&gt; | 否 | 是 | 表示附加的描述信息。目前包含城市编码cityCode（Array下标为0）和区划编码adminCode（Array下标为1），例如["025","320114001"]。 |
 | descriptionsSize | number | 否 | 是 | 表示附加的描述信息数量。取值范围为大于等于0，推荐该值小于10。 |
 
@@ -126,15 +126,13 @@ import { geoLocationManager } from '@kit.LocationKit';
 
 持续定位的请求参数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Location.Location.Core
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| interval | number | 否 | 否 | 表示上报位置信息的时间间隔，单位是秒。默认值为1，取值范围为大于等于0。等于0时对位置上报时间间隔无限制。|
-| locationScenario | [UserActivityScenario](#useractivityscenario12) &#124; [PowerConsumptionScenario](#powerconsumptionscenario12) | 否 | 否 | 表示定位的场景信息。取值范围见[UserActivityScenario](#useractivityscenario12)和[PowerConsumptionScenario](#powerconsumptionscenario12)的定义。 |
-| sportsType | [SportsType](#sportstype18) | 否 | 是 | 表示运动模式。取值范围见[SportsType](#sportstype18)定义。此参数仅在locationScenario设置为UserActivityScenario.SPORT时有效。默认值为0，表示该参数不生效。<br/>**起始版本：** 26.0.0 |
+| interval | number | 否 | 否 | 表示上报位置信息的时间间隔，单位是秒。默认值为1，取值范围为大于等于0。等于0时对位置上报时间间隔无限制。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| locationScenario | [UserActivityScenario](#useractivityscenario12) &#124; [PowerConsumptionScenario](#powerconsumptionscenario12) | 否 | 否 | 表示定位的场景信息。取值范围见[UserActivityScenario](#useractivityscenario12)和[PowerConsumptionScenario](#powerconsumptionscenario12)的定义。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| sportsType | [SportsType](#sportstype18) | 否 | 是 | 表示运动模式。取值范围见[SportsType](#sportstype18)定义。此参数仅在locationScenario设置为UserActivityScenario.SPORT时有效。默认值为0，表示该参数不生效。<br/>**起始版本：** 26.0.0 <br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 | needPoi<sup>19+ | boolean | 否 | 是 | 表示是否需要获取当前位置附近的POI信息。false代表不需要获取当前位置附近的POI信息，true代表需要获取当前位置附近的POI信息。不设置时，默认值为false。<br/>该参数仅在精确位置功能场景（即同时授权了ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION 权限）下有效，模糊位置功能生效场景（即仅授权了ohos.permission.APPROXIMATELY_LOCATION 权限）下不返回POI信息。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
 
 
@@ -244,10 +242,10 @@ GNSS围栏的配置参数。目前只支持圆形围栏。
 | altitudeAccuracy<sup>12+</sup> |number | 否 | 是 | 表示高度信息的精度，单位米。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | speedAccuracy<sup>12+</sup> | number| 否 | 是 | 表示速度信息的精度，单位米每秒。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | directionAccuracy<sup>12+</sup> | number| 否 | 是 | 表示航向信息的精度。单位是“度”，取值范围为0到360。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| uncertaintyOfTimeSinceBoot<sup>12+</sup> | number| 否 | 是 | 表示位置时间戳的不确定度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| uncertaintyOfTimeSinceBoot<sup>12+</sup> | number| 否 | 是 | 表示从开机到获取位置所经过的时间的不确定度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | sourceType<sup>12+</sup> | [LocationSourceType](#locationsourcetype12) | 否 | 是 | 表示定位结果的来源。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | poi<sup>19+</PoiInfo> | [PoiInfo](#poiinfo19) | 否 | 是 | 表示当前位置附近的POI信息。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| isFromMock | Boolean | 否 | 是 | true：位置信息来自于位置模拟功能。<br/>false：位置信息不是来自于位置模拟功能。<br/>**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。 |
+| isFromMock | boolean | 否 | 是 | true：位置信息来自于位置模拟功能。<br/>false：位置信息不是来自于位置模拟功能。<br />**起始版本：** 26.0.0 <br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 
 ## GeofenceTransition<sup>12+</sup>
@@ -518,7 +516,7 @@ POI(Point of Interest, 兴趣点)信息。
 | locality | string | 否 | 否 | 表示POI所在的城市信息，一般是市。 |
 | subLocality | string | 否 | 否 | 表示POI所在的子城市信息，一般是区/县。 |
 | address | string | 否 | 否 | 表示POI的详细地址。 |
-| additionalInfo | string | 否 | 是 | 表示POI附加信息，本字符串为JSON格式。<br />**起始版本：** 26.0.0<br/>**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束**：此接口仅可在Stage模型下使用。 |
+| additionalInfo | string | 否 | 是 | 表示POI附加信息，本字符串为JSON格式。<br />**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## PoiInfo<sup>19+</sup>
 
@@ -613,7 +611,7 @@ beacon围栏请求参数。transitionCallback与fenceExtensionAbilityName任选�
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -631,9 +629,11 @@ beacon围栏请求参数。transitionCallback与fenceExtensionAbilityName任选�
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Geocoder
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -647,7 +647,7 @@ beacon围栏请求参数。transitionCallback与fenceExtensionAbilityName任选�
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Geocoder
   
@@ -669,7 +669,7 @@ beacon围栏请求参数。transitionCallback与fenceExtensionAbilityName任选�
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -728,6 +728,7 @@ on(type: 'locationChange', request: LocationRequest | ContinuousLocationRequest,
 |801 | Capability not supported. Failed to call ${geoLocationManager.on('locationChange')} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
 |3301100 | The location switch is off.                                                 |
+|3301200 | Failed to obtain the geographical location. <br/> 适用版本：9-17 |
 
 **示例**
 
@@ -777,8 +778,6 @@ onLocationChange(request: LocationRequest | ContinuousLocationRequest, callback:
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Core
-
-**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -844,7 +843,9 @@ off(type: 'locationChange', callback?: Callback&lt;Location&gt;): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**需要权限**：从API26.0.0开始无需申请权限，API版本小于26.0.0需申请ohos.permission.APPROXIMATELY_LOCATION
+**需要权限**
+
+- API版本9-24：ohos.permission.APPROXIMATELY_LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -861,10 +862,12 @@ off(type: 'locationChange', callback?: Callback&lt;Location&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.  从API 26.0.0开始无需申请权限，不涉及此错误码。|
+|201 | Permission verification failed. The application does not have the permission required to call the API.  <br/> 适用版本：9-24|
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.off('locationChange')} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
+|3301100 | The location switch is off. <br/> 适用版本：9-17                                                |
+|3301200 | Failed to obtain the geographical location. <br/> 适用版本：9-17 |
 
 **示例**
 
@@ -901,8 +904,6 @@ offLocationChange(callback?: Callback\<Location\>): void
 **起始版本：** 26.0.0
 
 **系统能力**：SystemCapability.Location.Location.Core
-
-**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -995,7 +996,7 @@ on(type: 'locationError', callback: Callback&lt;LocationError&gt;): void
   }
 
   let locationErrorChange = (errcode: geoLocationManager.LocationError): void => {
-    console.info('locationErrorChange: data: ' + JSON.stringify(errcode));
+    console.error('locationErrorChange: data: ' + JSON.stringify(errcode));
   };
   try {
     geoLocationManager.on('locationError', locationErrorChange);
@@ -1041,7 +1042,7 @@ off(type: 'locationError', callback?: Callback&lt;LocationError&gt;): void
   import { geoLocationManager } from '@kit.LocationKit';
 
   let locationErrorChange = (errcode: geoLocationManager.LocationError): void => {
-    console.info('locationErrorChange: data: ' + JSON.stringify(errcode));
+    console.error('locationErrorChange: data: ' + JSON.stringify(errcode));
   };
   try {
     geoLocationManager.on('locationError', locationErrorChange);
@@ -1159,11 +1160,12 @@ on(type: 'cachedGnssLocationsChange', request: CachedGnssLocationsRequest, callb
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.                    |
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.on('cachedGnssLocationsChange')} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
 |3301100 | The location switch is off.                                                 |
+|3301200 | Failed to obtain the geographical location. <br/> 适用版本：9-17 |
 
 **示例**
 
@@ -1215,6 +1217,7 @@ off(type: 'cachedGnssLocationsChange', callback?: Callback&lt;Array&lt;Location&
 |801 | Capability not supported. Failed to call ${geoLocationManager.off('cachedGnssLocationsChange')} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
 |3301100 | The location switch is off.                                                 |
+|3301200 | Failed to obtain the geographical location. <br/> 适用版本：9-17 |
 
 **示例**
 
@@ -1490,7 +1493,7 @@ on(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): vo
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.    |
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.on('gnssFenceStatusChange')} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
@@ -1539,6 +1542,10 @@ off(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): v
 
 删除一个围栏，并取消订阅该围栏事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](#geolocationmanagerisgnssfenceservicesupported)接口判断对应能力是否支持。
 
+**需要权限**
+
+- API版本9-24：ohos.permission.APPROXIMATELY_LOCATION
+
 **系统能力**：SystemCapability.Location.Location.Geofence
 
 **参数**：
@@ -1555,6 +1562,7 @@ off(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): v
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API. <br/> 适用版本：9-24              |
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.off('gnssFenceStatusChange')} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
@@ -1716,7 +1724,7 @@ getCurrentLocation(request: CurrentLocationRequest | SingleLocationRequest, call
 |801 | Capability not supported. Failed to call ${geoLocationManager.getCurrentLocation} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
 |3301100 | The location switch is off.                                                 |
-|3301200 | Failed to obtain the geographical location.  |
+|3301200 | Failed to obtain the geographical location.   |
 
 **示例**
 
@@ -2725,7 +2733,9 @@ GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果
 
 **系统能力**：SystemCapability.Location.Location.Geofence
   
-**需要权限：从API26.0.0开始无需申请权限，API版本小于26.0.0需申请ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
+**需要权限**
+
+- API版本9-24：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
 **参数**：
 
@@ -2745,6 +2755,7 @@ GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API. <br/> 适用版本：12-24              |
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.removeGnssGeofence} due to limited device capabilities.          |
 |3301000 | The location service is unavailable. |
@@ -3189,7 +3200,9 @@ removeBeaconFence(beaconFence?: BeaconFence): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**需要权限**：从API26.0.0开始无需申请权限，API版本小于26.0.0需申请ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
+**需要权限**：
+
+- API版本20-24：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
@@ -3212,7 +3225,7 @@ removeBeaconFence(beaconFence?: BeaconFence): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.  从26.0.0开始无需申请权限，不涉及此错误码。 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.  <br/> 适用版本：20-24 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.removeBeaconFence} due to limited device capabilities.          |
 |3501602 | Failed to delete the fence due to incorrect beacon fence information. |
 
@@ -3252,7 +3265,7 @@ removeBeaconFence(beaconFence?: BeaconFence): Promise&lt;void&gt;
   ```
 ## geoLocationManager.isBeaconFenceSupported<sup>20+</sup>
 
-isBeaconFenceSupported(): boolean;
+isBeaconFenceSupported(): boolean
 
 判断当前设备是否支持beacon围栏。
 
@@ -3340,7 +3353,7 @@ isGnssServiceSupported(): boolean
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -3379,7 +3392,7 @@ isGnssFenceServiceSupported(): boolean
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -3418,7 +3431,7 @@ isCachedGnssServiceSupported(): boolean
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -3506,7 +3519,7 @@ findMatchingWlan(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, nee
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
@@ -3564,7 +3577,7 @@ getCurrentDistrict(params?: DistrictRequestParams): Promise&lt;DistrictInfo&gt;
 
 **起始版本：** 26.0.0
   
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -3642,7 +3655,7 @@ getPostProcessingTrack(sportsType: SportsType): Promise&lt;Array&lt;Location&gt;
 
 **起始版本：** 26.0.0
   
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.LOCATION
 
@@ -3700,7 +3713,7 @@ getPostProcessingTrack(sportsType: SportsType): Promise&lt;Array&lt;Location&gt;
       .then((res) => {
         console.info('getPostProcessingTrack len: ' + JSON.stringify(res.length));
       }).catch((err: BusinessError) => {
-        console.info('getPostProcessingTrack err: ' + JSON.stringify(err));
+        console.error('getPostProcessingTrack err: ' + JSON.stringify(err));
       })
   }
 
@@ -3723,7 +3736,7 @@ startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&l
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -3756,12 +3769,12 @@ startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&l
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
   
-  private callback = (bluetoothScanResult: geoLocationManager.BluetoothScanResult) => {
+  let callback = (bluetoothScanResult: geoLocationManager.BluetoothScanResult) => {
     if (bluetoothScanResult) {
       console.info('bluetoothScanResult: deviceId=' + bluetoothScanResult.deviceId);
         try {
            // 开发者需要考虑在合适的时机调用stopBluetoothSearch停止蓝牙扫描以节省功耗，本代码仅作为参考
-           geoLocationManager.stopBluetoothSearch(this.callback);
+           geoLocationManager.stopBluetoothSearch(callback);
         } catch (err) {
            console.error("errCode:" + err.code + ", message:" + err.message);
         }
@@ -3773,7 +3786,7 @@ startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&l
   };
    
   try {
-    geoLocationManager.startBluetoothSearch(request, this.callback);
+    geoLocationManager.startBluetoothSearch(request, callback);
   } catch (err) {
     console.error("errCode:" + err.code + ", message:" + err.message);
   }
@@ -3787,7 +3800,7 @@ stopBluetoothSearch(callback?: Callback&lt;BluetoothScanResult&gt;): void
    
 **起始版本：** 26.0.0
    
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
    
 **系统能力**：SystemCapability.Location.Location.Core
    

@@ -11,6 +11,12 @@ ViewData用于表示自动填充的视图数据信息，包含应用名称、页
 
 **起始版本：** 26.0.0
 
+## 导入模块
+
+```ts
+import { autoFillManager } from '@kit.AbilityKit';
+```
+
 ## ViewData
 
 **起始版本：** 26.0.0

@@ -34,7 +34,7 @@ setFrameRateRange(range: ExpectedFrameRateRange): void
 
 | 参数名      | 类型         | 必填   | 说明   |
 | -------- | ---------- | ---- | ---- |
-| range | [ExpectedFrameRateRange](../apis-arkui/arkui-ts/ts-explicit-animation.md#expectedframeraterange11)| 是    | 设置期望的帧率范围。其中min表示期望的最小帧率，max表示期望的最大帧率，expected表示期望的最优帧率，设置为0时，将跟随应用的帧率，需满足min ≤ expected ≤ max。<br/>默认值：{min: 0, max: 120, expected: 120} |
+| range | [ExpectedFrameRateRange](../apis-arkui/arkui-ts/ts-explicit-animation.md#expectedframeraterange11)| 是    | 设置期望的帧率范围。其中min表示期望的最小帧率，max表示期望的最大帧率，expected表示期望的最优帧率，需满足min ≤ expected ≤ max。<br/>默认值：{min: 0, max: 120, expected: 120} |
 
 **示例：**
 

@@ -1,12 +1,14 @@
-# SceneResource
+# SceneResources
+
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @zzhao0-->
+<!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=4d7e02a7df2a06122e229dcfa39cff42326177c0 translatedAt=2026-08-20T12:29:14.890Z pushedAt=2026-08-21T09:04:46.987Z -->
 
-The SceneResource module provides basic resource types in 3D graphics.
+This module provides the basic resource types commonly used in ArkGraphics 3D, including shaders, materials, meshes, animations, environments, and images, which are used to build 3D scenes.
 
 > **NOTE**
 >
@@ -15,9 +17,9 @@ The SceneResource module provides basic resource types in 3D graphics.
 ## Modules to Import
 
 ```ts
-import { SceneResourceType, SceneResource, Shader, MaterialType, CullMode, Blend, RenderSort, Material,
-  MaterialProperty, MetallicRoughnessMaterial, ShaderMaterial, SamplerFilter, SamplerAddressMode, Sampler,
-  SubMesh, Morpher, Mesh, MeshResource, Animation, EnvironmentBackgroundType, Environment, Image } from '@kit.ArkGraphics3D';
+import { SceneResourceType, SceneResource, Shader, MaterialType, CullMode, Blend, RenderSort, PolygonMode, Material, MaterialProperty,
+  MetallicRoughnessMaterial, ShaderMaterial, UnlitMaterial, OcclusionMaterial, SamplerFilter, SamplerAddressMode, Sampler, SubMesh,
+  Morpher, Mesh, MeshResource, Animation, EnvironmentBackgroundType, Environment, Image, ImageStream, Effect } from '@kit.ArkGraphics3D';
 ```
 
 ## SceneResourceType
@@ -87,7 +89,7 @@ function destroy(): void {
 
 ## Shader
 
-Shader resource, which inherits from [SceneResource](#sceneresource-1).
+Shader, inherited from [SceneResource](#sceneresource).
 
 ### Properties
 
@@ -95,7 +97,7 @@ Shader resource, which inherits from [SceneResource](#sceneresource-1).
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| inputs | Record<string, number \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| Image> | Yes| No| Inputs of the shader.|
+| inputs | Record<string, number \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| [Image](js-apis-inner-scene-resources.md#image)> | Yes | No | Shader input. |
 
 ### setShaderInputs<sup>23+</sup>
 
@@ -103,7 +105,7 @@ setShaderInputs(inputs: Record<string, number \| Vec2 \| Vec3 \| Vec4 \| Image>)
 
 Sets the inputs for the shader. This API delivers better performance than directly setting the **inputs** property.
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -111,7 +113,7 @@ Sets the inputs for the shader. This API delivers better performance than direct
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| inputs | Record<string, number \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| Image> | Yes| A mapping of strings to values for setting shader inputs.|
+| inputs | Record<string, number \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| Image> | Yes | A mapping from strings to values, used to set shader inputs. |
 
 **Example**
 
@@ -139,14 +141,14 @@ function setinputs(): void {
       if (!image) {
         return;
       }
-      // Bind the shader to the texture.
+      // Set the shader of the material.
       material.colorShader = shader;
       // Set the shader inputs.
       material.colorShader.setShaderInputs({
         "uTime": 1.0,
         "uVelocity": {x: 1.0, y: 1.0, z:-1.0, w:-1.0},
         "uTexture": image
-      })
+      });
     }
   });
 }
@@ -212,7 +214,7 @@ Enumerates the polygon drawing mode.
 
 ## Material
 
-Material resource, which inherits from [SceneResource](#sceneresource-1).
+Material type, inherited from [SceneResource](#sceneresource).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -221,7 +223,7 @@ Material resource, which inherits from [SceneResource](#sceneresource-1).
 | materialType | [MaterialType](#materialtype) | Yes| No| Material type.|
 | shadowReceiver<sup>20+</sup> | boolean | No| Yes| Whether the material receives shadows. **true** if the material receives shadows, **false** otherwise. The default is **false**.|
 | cullMode<sup>20+</sup> | [CullMode](#cullmode20) | No| Yes| Culling mode of the material, which can be used to determine whether to cull front or back faces. The default value is **BACK**.|
-| blend<sup>20+</sup> | [Blend](#blend20) | No| Yes| Whether the material is transparent. The default value is **false**.|
+| blend<sup>20+</sup> | [Blend](#blend20) | No | Yes | Transparency effect setting of the material. Defaults to undefined, which means the transparency property of the material is disabled. |
 | alphaCutoff<sup>20+</sup> | number | No| Yes| Threshold of the alpha channel. If the alpha of a pixel is greater than or equal to this threshold, the pixel is rendered; otherwise, the pixel is not rendered. Setting a value less than **1** enables this mode. The value range is [0, 1]. The default value is **1**.|
 | renderSort<sup>20+</sup> | [RenderSort](#rendersort20) | No| Yes| Rendering order, which determines the rendering sequence of materials in the rendering pipeline. The default layer ID is 32, and the default order within the layer is 0.|
 | polygonMode<sup>23+</sup> | [PolygonMode](#polygonmode23) | No| Yes| Polygon drawing mode of the model. The default value is **FILL**.|
@@ -251,7 +253,7 @@ Material resource for creating realistic appearances, using the Metallic-Roughne
 | material | [MaterialProperty](#materialproperty20) | No| No| Metal material parameters.<br>**Roughness**: strength of reflection caused by the fine surface structure details of the material.<br>**Metallic**: metallic properties of the material.<br>**Reflectance**: reflectivity of the material.|
 | ambientOcclusion | [MaterialProperty](#materialproperty20) | No| No| Ambient occlusion map, which is used to simulate the occlusion of ambient light in recesses or detailed parts of an object to enhance local shadows and improve detail realism.|
 | emissive | [MaterialProperty](#materialproperty20) | No| No| Emissive color, which is the color of the material as a light source.|
-| clearCoat | [MaterialProperty](#materialproperty20) | No| No| Clear coat, similar to car paint, carbon fiber, or a wet surface, which requires an additional transparent layer with reflective properties.|
+| clearCoat | [MaterialProperty](#materialproperty20) | No | No | Transparent layer used to overlay a reflective transparent layer on the material surface, simulating the gloss of materials such as car paint, carbon fiber, and wet surfaces. |
 | clearCoatRoughness | [MaterialProperty](#materialproperty20) | No| No| Roughness of the clear coat.|
 | clearCoatNormal | [MaterialProperty](#materialproperty20) | No| No| Normal map of the clear coat.|
 | sheen | [MaterialProperty](#materialproperty20) | No| No| Gentle, widespread shine of microfiber materials, ideal for representing fabrics and textiles.|
@@ -330,7 +332,7 @@ Sub-mesh resource.
 | ---- | ---- | ---- | ---- | ---- |
 | name | string | No| No| Name. There is no special format requirement.|
 | material | [Material](#material) | No| No| Material.|
-| aabb | [Aabb](js-apis-inner-scene-types.md#aabb) | Yes| No| Axis aligned bounding box.|
+| aabb | [Aabb](js-apis-inner-scene-types.md#aabb) | Yes | No | Axis-Aligned Bounding Box. |
 
 ## Morpher<sup>20+</sup>
 
@@ -344,7 +346,7 @@ Defines the deformation of 3D models by adjusting the weights of different defor
 
 ## Mesh
 
-Mesh resource, which inherits from [SceneResource](#sceneresource-1).
+Mesh type, inherited from [SceneResource](#sceneresource).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -356,13 +358,13 @@ Mesh resource, which inherits from [SceneResource](#sceneresource-1).
 
 ## MeshResource<sup>18+</sup>
 
-Mesh resource, which inherits from [SceneResource](#sceneresource-1).
+Mesh resource, inherited from [SceneResource](#sceneresource).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 ## Animation
 
-Animation resource, which inherits from [SceneResource](#sceneresource-1).
+Animation type, inherited from [SceneResource](#sceneresource).
 
 ### Properties
 
@@ -370,7 +372,7 @@ Animation resource, which inherits from [SceneResource](#sceneresource-1).
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| enabled | boolean | No| No| Whether the animation is enabled. **true** if enabled, **false** otherwise.|
+| enabled | boolean | No | No | Whether the animation is enabled. The value **true** indicates that the animation can be played, and **false** indicates that it cannot. |
 | speed<sup>20+</sup> | number | No| Yes| Playback speed factor of the animation. The default value is **1.0**, indicating that the animation is played at normal speed. If the value is negative, the animation plays in reverse.|
 | duration | number | Yes| No| Animation duration, in seconds. The value must be greater than or equal to 0.|
 | running | boolean | Yes| No| Whether the animation is running. **true** if running, **false** otherwise.|
@@ -500,7 +502,7 @@ function restart(): void {
 
 seek(position: number): void
 
-Plays the animation from the specified position.
+Jumps the animation progress to the specified position without changing the playback state of the animation (if playing, it continues playing; if paused, it remains paused).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -558,7 +560,7 @@ function start(): void {
 
 stop(): void
 
-Stops playing the animation and sets its progress to **0** (not started).
+Stops playing an animation and sets the animation progress to 0.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -573,7 +575,7 @@ function stop(): void {
   scene.then(async (result: Scene) => {
     if (result && result.animations && result.animations[0]) {
       let anim: Animation = result.animations[0];
-      // Stop playing the animation and set its progress to 0 (not started).
+      // Stop playing the animation and set the animation progress to 0.
       anim.stop();
     }
   });
@@ -584,7 +586,7 @@ function stop(): void {
 
 finish(): void
 
-Finishes the playing of the animation and sets its progress of **1** (finished).
+Jumps directly to the end of the animation and sets the animation progress to 1.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -599,7 +601,7 @@ function finish(): void {
   scene.then(async (result: Scene) => {
     if (result && result.animations && result.animations[0]) {
       let anim: Animation = result.animations[0];
-      // Finish the playing of the animation and set its progress of **1** (finished).
+      // Jump directly to the end of the animation and set the animation progress to 1.
       anim.finish();
     }
   });
@@ -621,7 +623,7 @@ Enumerates the environment background types, which are used to define how the ba
 
 ## Environment
 
-Environment resource, which inherits from [SceneResource](#sceneresource-1).
+Environment type, inherited from [SceneResource](#sceneresource).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -634,11 +636,11 @@ Environment resource, which inherits from [SceneResource](#sceneresource-1).
 | environmentImage | [Image](#image) \| null | No| Yes| Environment image. The default value is undefined.|
 | radianceImage | [Image](#image) \| null | No| Yes| Radiance image. The default value is undefined.|
 | irradianceCoefficients | [Vec3](js-apis-inner-scene-types.md#vec3)[] | No| Yes| Irradiance coefficients. The default value is undefined.|
-| environmentRotation<sup>23+</sup> | [Quaternion](js-apis-inner-scene-types.md#quaternion) | No| Yes| Rotation of the ambient light. The default value is undefined. The parameter must be a normalized quaternion.|
+| environmentRotation<sup>23+</sup> | [Quaternion](js-apis-inner-scene-types.md#quaternion) | No | Yes | Rotation of the ambient light. Defaults to undefined. The input parameter must be a normalized quaternion.<br>**Model restriction:** This API can be used only in the stage model.|
 
 ## Image
 
-Image resource, which inherits from [SceneResource](#sceneresource-1).
+Image type, inherited from [SceneResource](#sceneresource).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -647,9 +649,23 @@ Image resource, which inherits from [SceneResource](#sceneresource-1).
 | width | number | Yes| No| Image width, in px. The value must be greater than 0.|
 | height | number | Yes| No| Image height, in px. The value must be greater than 0.|
 
+## ImageStream
+
+Image stream type, which inherits from [Image](#image).
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+| Name | Type | Read Only | Optional | Description |
+| ---- | ---- | ---- | ---- | ---- |
+| surfaceId | string | Yes | No | Stream ID, which consists of numeric characters. The value must be an integer greater than 0. |
+
 ## Effect<sup>21+</sup>
 
-Effect resource, which inherits from [SceneResource](#sceneresource-1). It is obtained from the [createEffect](js-apis-inner-scene.md#createeffect21) API.
+Effect resource, which inherits from [SceneResource](#sceneresource). It is obtained from the [createEffect](js-apis-inner-scene.md#createeffect21) API.
 
 ### Properties
 

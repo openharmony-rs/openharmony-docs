@@ -585,6 +585,7 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_delete_callsite_info | 删除调用点信息句柄，释放关联的缓存资源。 |
 | napi_get_property_with_callsite_info | 使用调用点信息快速获取对象属性值。 |
 | napi_set_property_with_callsite_info | 使用调用点信息快速设置对象属性值。 |
+| napi_get_global_handle_count | 遍历并获取global handle数量。 |
  
 **napi_queue_async_work_with_qos**
 
@@ -944,6 +945,12 @@ napi_status napi_set_property_with_callsite_info(napi_env env,
                                                  napi_value value,
                                                  napi_callsite_info info,
                                                  bool* hit);
+```
+
+**napi_get_global_handle_count**
+
+```c
+napi_status napi_get_global_handle_count(napi_env env, size_t* count);
 ```
 
 ### 其他实用工具

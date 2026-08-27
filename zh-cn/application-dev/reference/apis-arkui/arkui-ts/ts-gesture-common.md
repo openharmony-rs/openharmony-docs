@@ -350,7 +350,7 @@ getEventTargetInfo(): EventTargetInfo
 
 ### isValid<sup>12+</sup>
 
-isValid(): boolean;
+isValid(): boolean
 
 返回当前手势识别器是否有效。
 
@@ -703,7 +703,7 @@ getDistanceMap(): Map\<SourceTool, number\>
 
 ## GestureEvent对象说明
 
-定义手势的事件信息。继承自[BaseEvent](ts-gesture-customize-judge.md#baseevent8)。
+定义手势的事件信息。继承自[BaseEvent](ts-universal-events-click.md#baseevent8)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -755,8 +755,6 @@ getDistanceMap(): Map\<SourceTool, number\>
 ## GestureType<sup>11+</sup>
 
 定义手势类型。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -854,7 +852,7 @@ type GestureType = TapGesture | LongPressGesture | PanGesture | PinchGesture | S
 
 ## BaseGestureEvent<sup>11+</sup>对象说明
 
-基础手势事件类型。继承自[BaseEvent](./ts-gesture-customize-judge.md#baseevent8)。
+基础手势事件类型。继承自[BaseEvent](./ts-universal-events-click.md#baseevent8)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

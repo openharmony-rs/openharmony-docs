@@ -19,7 +19,7 @@
 
 >**说明：** 
 >
->- 从API Version 9开始，该接口不再维护，推荐使用新接口[`@ohos.data.distributedKVStore`](js-apis-distributedKVStore.md)。
+>- 从API Version 9开始，该接口不再维护，推荐使用新接口[@ohos.data.distributedKVStore (分布式键值数据库)](js-apis-distributedKVStore.md)。
 >
 >- 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
@@ -62,14 +62,14 @@ try {
     }
     distributedData.createKVManager(kvManagerConfig, function (err, manager) {
         if (err) {
-            console.log("Failed to create KVManager: "  + JSON.stringify(err));
+            console.error("Failed to create KVManager: "  + JSON.stringify(err));
             return;
         }
-        console.log("Succeeded in creating KVManager");
+        console.info("Succeeded in creating KVManager");
         kvManager = manager;
     });
 } catch (e) {
-    console.log("An unexpected error occurred. Error:" + e);
+    console.error("An unexpected error occurred. Error:" + e);
 }
 ```
 
@@ -105,13 +105,13 @@ try {
     }
   }
   distributedData.createKVManager(kvManagerConfig).then((manager) => {
-    console.log("Succeeded in creating KVManager");
+    console.info("Succeeded in creating KVManager");
     kvManager = manager;
   }).catch((err) => {
     console.error("Failed to create KVManager: " + JSON.stringify(err));
   });
 } catch (e) {
-  console.log("An unexpected error occurred. Error:" + e);
+  console.error("An unexpected error occurred. Error:" + e);
 }
 ```
 
@@ -185,14 +185,14 @@ try {
     };
     kvManager.getKVStore('storeId', options, function (err, store) {
         if (err) {
-            console.log("getKVStore err: "  + JSON.stringify(err));
+            console.error("getKVStore err: "  + JSON.stringify(err));
             return;
         }
-        console.log("getKVStore success");
+        console.info("getKVStore success");
         kvStore = store;
     });
 } catch (e) {
-    console.log("An unexpected error occurred. Error:" + e);
+    console.error("An unexpected error occurred. Error:" + e);
 }
 ```
 
@@ -234,13 +234,13 @@ try {
         securityLevel : distributedData.SecurityLevel.S3,
     };
     kvManager.getKVStore('storeId', options).then((store) => {
-        console.log("getKVStore success");
+        console.info("getKVStore success");
         kvStore = store;
     }).catch((err) => {
-        console.log("getKVStore err: "  + JSON.stringify(err));
+        console.error("getKVStore err: "  + JSON.stringify(err));
     });
 } catch (e) {
-    console.log("An unexpected error occurred. Error:" + e);
+    console.error("An unexpected error occurred. Error:" + e);
 }
 ```
 
@@ -278,14 +278,14 @@ const options = {
 }
 try {
     kvManager.getKVStore('storeId', options, async function (err, store) {
-        console.log('getKVStore success');
+        console.info('getKVStore success');
         kvStore = store;
         kvManager.closeKVStore('appId', 'storeId', kvStore, function (err, data) {
-            console.log('closeKVStore success');
+            console.info('closeKVStore success');
         });
     });
 } catch (e) {
-    console.log('closeKVStore e ' + e);
+    console.error('closeKVStore e ' + e);
 }
 ```
 
@@ -328,18 +328,18 @@ const options = {
 }
 try {
     kvManager.getKVStore('storeId', options).then(async (store) => {
-        console.log('getKVStore success');
+        console.info('getKVStore success');
         kvStore = store;
         kvManager.closeKVStore('appId', 'storeId', kvStore).then(() => {
-            console.log('closeKVStore success');
+            console.info('closeKVStore success');
         }).catch((err) => {
-            console.log('closeKVStore err ' + JSON.stringify(err));
+            console.error('closeKVStore err ' + JSON.stringify(err));
         });
     }).catch((err) => {
-        console.log('CloseKVStore getKVStore err ' + JSON.stringify(err));
+        console.error('CloseKVStore getKVStore err ' + JSON.stringify(err));
     });
 } catch (e) {
-    console.log('closeKVStore e ' + e);
+    console.error('closeKVStore e ' + e);
 }
 ```
 
@@ -376,14 +376,14 @@ const options = {
 }
 try {
     kvManager.getKVStore('store', options, async function (err, store) {
-        console.log('getKVStore success');
+        console.info('getKVStore success');
         kvStore = store;
         kvManager.deleteKVStore('appId', 'storeId', function (err, data) {
-            console.log('deleteKVStore success');
+            console.info('deleteKVStore success');
         });
     });
 } catch (e) {
-    console.log('DeleteKVStore e ' + e);
+    console.error('DeleteKVStore e ' + e);
 }
 ```
 
@@ -425,18 +425,18 @@ const options = {
 }
 try {
     kvManager.getKVStore('storeId', options).then(async (store) => {
-        console.log('getKVStore success');
+        console.info('getKVStore success');
         kvStore = store;
         kvManager.deleteKVStore('appId', 'storeId').then(() => {
-            console.log('deleteKVStore success');
+            console.info('deleteKVStore success');
         }).catch((err) => {
-            console.log('deleteKVStore err ' + JSON.stringify(err));
+            console.error('deleteKVStore err ' + JSON.stringify(err));
         });
     }).catch((err) => {
-        console.log('getKVStore err ' + JSON.stringify(err));
+        console.error('getKVStore err ' + JSON.stringify(err));
     });
 } catch (e) {
-    console.log('deleteKVStore e ' + e);
+    console.error('deleteKVStore e ' + e);
 }
 ```
 
@@ -462,11 +462,11 @@ getAllKVStoreId(appId: string, callback: AsyncCallback&lt;string[]&gt;): void
 let kvManager;
 try {
     kvManager.getAllKVStoreId('appId', function (err, data) {
-        console.log('GetAllKVStoreId success');
-        console.log('GetAllKVStoreId size = ' + data.length);
+        console.info('GetAllKVStoreId success');
+        console.info('GetAllKVStoreId size = ' + data.length);
     });
 } catch (e) {
-    console.log('GetAllKVStoreId e ' + e);
+    console.error('GetAllKVStoreId e ' + e);
 }
 ```
 
@@ -497,15 +497,15 @@ getAllKVStoreId(appId: string): Promise&lt;string[]&gt;
 ```js
 let kvManager;
 try {
-    console.log('GetAllKVStoreId');
+    console.info('GetAllKVStoreId');
     kvManager.getAllKVStoreId('appId').then((data) => {
-        console.log('getAllKVStoreId success');
-        console.log('size = ' + data.length);
+        console.info('getAllKVStoreId success');
+        console.info('size = ' + data.length);
     }).catch((err) => {
-        console.log('getAllKVStoreId err ' + JSON.stringify(err));
+        console.error('getAllKVStoreId err ' + JSON.stringify(err));
     });
 } catch(e) {
-    console.log('getAllKVStoreId e ' + e);
+    console.error('getAllKVStoreId e ' + e);
 }
 ```
 
@@ -530,13 +530,13 @@ on(event: 'distributedDataServiceDie', deathCallback: Callback&lt;void&gt;): voi
 ```js
 let kvManager;
 try {
-    console.log('KVManagerOn');
+    console.info('KVManagerOn');
     const deathCallback = function () {
-        console.log('death callback call');
+        console.info('death callback call');
     }
     kvManager.on('distributedDataServiceDie', deathCallback);
 } catch (e) {
-    console.log("An unexpected error occurred. Error:" + e);
+    console.error("An unexpected error occurred. Error:" + e);
 }
 ```
 
@@ -562,13 +562,13 @@ off(event: 'distributedDataServiceDie', deathCallback?: Callback&lt;void&gt;): v
 ```js
 let kvManager;
 try {
-    console.log('KVManagerOff');
+    console.info('KVManagerOff');
     const deathCallback = function () {
-        console.log('death callback call');
+        console.info('death callback call');
     }
     kvManager.off('distributedDataServiceDie', deathCallback);
 } catch (e) {
-    console.log("An unexpected error occurred. Error:" + e);
+    console.error("An unexpected error occurred. Error:" + e);
 }
     
 ```
@@ -709,13 +709,13 @@ try {
     node.appendChild(child1);
     node.appendChild(child2);
     node.appendChild(child3);
-    console.log("appendNode " + JSON.stringify(node));
+    console.info("appendNode " + JSON.stringify(node));
     child1 = null;
     child2 = null;
     child3 = null;
     node = null;
 } catch (e) {
-    console.log("AppendChild " + e);
+    console.error("AppendChild " + e);
 }
 ```
 
@@ -748,15 +748,15 @@ let kvStore;
 try {
     let resultSet;
     kvStore.getResultSet('batch_test_string_key').then((result) => {
-        console.log('getResultSet succeed.');
+        console.info('getResultSet succeed.');
         resultSet = result;
     }).catch((err) => {
-        console.log('getResultSet failed: ' + err);
+        console.error('getResultSet failed: ' + err);
     });
     const count = resultSet.getCount();
-    console.log("getCount succeed:" + count);
+    console.info("getCount succeed:" + count);
 } catch (e) {
-    console.log("getCount failed: " + e);
+    console.error("getCount failed: " + e);
 }
 ```
 
@@ -781,15 +781,15 @@ let kvStore;
 try {
     let resultSet;
     kvStore.getResultSet('batch_test_string_key').then((result) => {
-        console.log('getResultSet succeeded.');
+        console.info('getResultSet succeeded.');
         resultSet = result;
     }).catch((err) => {
-        console.log('getResultSet failed: ' + err);
+        console.error('getResultSet failed: ' + err);
     });
     const position = resultSet.getPosition();
-    console.log("getPosition succeed:" + position);
+    console.info("getPosition succeed:" + position);
 } catch (e) {
-    console.log("getPosition failed: " + e);
+    console.error("getPosition failed: " + e);
 }
 ```
 
@@ -815,15 +815,15 @@ let kvStore;
 try {
     let resultSet;
     kvStore.getResultSet('batch_test_string_key').then((result) => {
-        console.log('getResultSet succeed.');
+        console.info('getResultSet succeed.');
         resultSet = result;
     }).catch((err) => {
-        console.log('getResultSet failed: ' + err);
+        console.error('getResultSet failed: ' + err);
     });
     const moved1 = resultSet.moveToFirst();
-    console.log("moveToFirst succeed: " + moved1);
+    console.info("moveToFirst succeed: " + moved1);
 } catch (e) {
-    console.log("moveToFirst failed " + e);
+    console.error("moveToFirst failed " + e);
 }
 ```
 
@@ -849,15 +849,15 @@ let kvStore;
 try {
     let resultSet;
     kvStore.getResultSet('batch_test_string_key').then((result) => {
-        console.log('getResultSet succeed.');
+        console.info('getResultSet succeed.');
         resultSet = result;
     }).catch((err) => {
-        console.log('getResultSet failed: ' + err);
+        console.error('getResultSet failed: ' + err);
     });
     const moved2 = resultSet.moveToLast();
-    console.log("moveToLast succeed:" + moved2);
+    console.info("moveToLast succeed:" + moved2);
 } catch (e) {
-    console.log("moveToLast failed: " + e);
+    console.error("moveToLast failed: " + e);
 }
 ```
 
@@ -883,15 +883,15 @@ let kvStore;
 try {
     let resultSet;
     kvStore.getResultSet('batch_test_string_key').then((result) => {
-        console.log('getResultSet succeed.');
+        console.info('getResultSet succeed.');
         resultSet = result;
     }).catch((err) => {
-        console.log('getResultSet failed: ' + err);
+        console.error('getResultSet failed: ' + err);
     });
     const moved3 = resultSet.moveToNext();
-    console.log("moveToNext succeed: " + moved3);
+    console.info("moveToNext succeed: " + moved3);
 } catch (e) {
-    console.log("moveToNext failed: " + e);
+    console.error("moveToNext failed: " + e);
 }
 ```
 
@@ -917,15 +917,15 @@ let kvStore;
 try {
     let resultSet;
     kvStore.getResultSet('batch_test_string_key').then((result) => {
-        console.log('getResultSet succeed.');
+        console.info('getResultSet succeed.');
         resultSet = result;
     }).catch((err) => {
-        console.log('getResultSet failed: ' + err);
+        console.error('getResultSet failed: ' + err);
     });
     const moved4 = resultSet.moveToPrevious();
-    console.log("moveToPrevious succeed:" + moved4);
+    console.info("moveToPrevious succeed:" + moved4);
 } catch (e) {
-    console.log("moveToPrevious failed: " + e);
+    console.error("moveToPrevious failed: " + e);
 }
 ```
 
@@ -957,15 +957,15 @@ let kvStore;
 try {
     let resultSet;
     kvStore.getResultSet('batch_test_string_key').then((result) => {
-        console.log('getResultSet succeed.');
+        console.info('getResultSet succeed.');
         resultSet = result;
     }).catch((err) => {
-        console.log('getResultSet failed: ' + err);
+        console.error('getResultSet failed: ' + err);
     });
     const moved5 = resultSet.move(1);
-    console.log("move succeed:" + moved5);
+    console.info("move succeed:" + moved5);
 } catch (e) {
-    console.log("move failed: " + e);
+    console.error("move failed: " + e);
 }
 ```
 
@@ -997,15 +997,15 @@ let kvStore;
 try {
     let resultSet;
     kvStore.getResultSet('batch_test_string_key').then((result) => {
-        console.log('getResultSet succeed.');
+        console.info('getResultSet succeed.');
         resultSet = result;
     }).catch((err) => {
-        console.log('getResultSet failed: ' + err);
+        console.error('getResultSet failed: ' + err);
     });
     const moved6 = resultSet.moveToPosition(1);
-    console.log("moveToPosition succeed: " + moved6);
+    console.info("moveToPosition succeed: " + moved6);
 } catch (e) {
-    console.log("moveToPosition failed: " + e);
+    console.error("moveToPosition failed: " + e);
 }
 ```
 
@@ -1031,15 +1031,15 @@ let kvStore;
 try {
     let resultSet;
     kvStore.getResultSet('batch_test_string_key').then((result) => {
-        console.log('getResultSet succeed.');
+        console.info('getResultSet succeed.');
         resultSet = result;
     }).catch((err) => {
-        console.log('getResultSet failed: ' + err);
+        console.error('getResultSet failed: ' + err);
     });
     const isfirst = resultSet.isFirst();
-    console.log("Check isFirst succeed:" + isfirst);
+    console.info("Check isFirst succeed:" + isfirst);
 } catch (e) {
-    console.log("Check isFirst failed: " + e);
+    console.error("Check isFirst failed: " + e);
 }
 ```
 
@@ -1065,15 +1065,15 @@ let kvStore;
 try {
     let resultSet;
     kvStore.getResultSet('batch_test_string_key').then((result) => {
-        console.log('getResultSet succeed.');
+        console.info('getResultSet succeed.');
         resultSet = result;
     }).catch((err) => {
-        console.log('getResultSet failed: ' + err);
+        console.error('getResultSet failed: ' + err);
     });
     const islast = resultSet.isLast();
-    console.log("Check isLast succeed: " + islast);
+    console.info("Check isLast succeed: " + islast);
 } catch (e) {
-    console.log("Check isLast failed: " + e);
+    console.error("Check isLast failed: " + e);
 }
 ```
 
@@ -1098,15 +1098,15 @@ let kvStore;
 try {
     let resultSet;
     kvStore.getResultSet('batch_test_string_key').then((result) => {
-        console.log('getResultSet succeed.');
+        console.info('getResultSet succeed.');
         resultSet = result;
     }).catch((err) => {
-        console.log('getResultSet failed: ' + err);
+        console.error('getResultSet failed: ' + err);
     });
     const isbeforefirst = resultSet.isBeforeFirst();
-    console.log("Check isBeforeFirst succeed: " + isbeforefirst);
+    console.info("Check isBeforeFirst succeed: " + isbeforefirst);
 } catch (e) {
-    console.log("Check isBeforeFirst failed: " + e);
+    console.error("Check isBeforeFirst failed: " + e);
 }
 ```
 
@@ -1132,15 +1132,15 @@ let kvStore;
 try {
     let resultSet;
     kvStore.getResultSet('batch_test_string_key').then((result) => {
-        console.log('getResultSet succeed.');
+        console.info('getResultSet succeed.');
         resultSet = result;
     }).catch((err) => {
-        console.log('getResultSet failed: ' + err);
+        console.error('getResultSet failed: ' + err);
     });
     const isafterlast = resultSet.isAfterLast();
-    console.log("Check isAfterLast succeed:" + isafterlast);
+    console.info("Check isAfterLast succeed:" + isafterlast);
 } catch (e) {
-    console.log("Check isAfterLast failed: " + e);
+    console.error("Check isAfterLast failed: " + e);
 }
 ```
 
@@ -1166,15 +1166,15 @@ let kvStore;
 try {
     let resultSet;
     kvStore.getResultSet('batch_test_string_key').then((result) => {
-        console.log('getResultSet succeed.');
+        console.info('getResultSet succeed.');
         resultSet = result;
     }).catch((err) => {
-        console.log('getResultSet failed: ' + err);
+        console.error('getResultSet failed: ' + err);
     });
     const entry  = resultSet.getEntry();
-    console.log("getEntry succeed:" + JSON.stringify(entry));
+    console.info("getEntry succeed:" + JSON.stringify(entry));
 } catch (e) {
-    console.log("getEntry failed: " + e);
+    console.error("getEntry failed: " + e);
 }
 ```
 
@@ -1215,12 +1215,12 @@ reset(): Query
 try {
     let query = new distributedData.Query();
     query.equalTo("key", "value");
-    console.log("query is " + query.getSqlLike());
+    console.info("query is " + query.getSqlLike());
     query.reset();
-    console.log("query is " + query.getSqlLike());
+    console.info("query is " + query.getSqlLike());
     query = null;
 } catch (e) {
-    console.log("simply calls should be ok :" + e);
+    console.error("simply calls should be ok :" + e);
 }
 ```
 
@@ -1252,10 +1252,10 @@ equalTo(field: string, value: number|string|boolean): Query
 try {
     let query = new distributedData.Query();
     query.equalTo("field", "value");
-    console.log("query is " + query.getSqlLike());
+    console.info("query is " + query.getSqlLike());
     query = null;
 } catch (e) {
-    console.log("duplicated calls should be ok :" + e);
+    console.error("duplicated calls should be ok :" + e);
 }
 ```
 
@@ -1287,10 +1287,10 @@ notEqualTo(field: string, value: number|string|boolean): Query
 try {
     let query = new distributedData.Query();
     query.notEqualTo("field", "value");
-    console.log("query is " + query.getSqlLike());
+    console.info("query is " + query.getSqlLike());
     query = null;
 } catch (e) {
-    console.log("duplicated calls should be ok :" + e);
+    console.error("duplicated calls should be ok :" + e);
 }
 ```
 
@@ -1322,10 +1322,10 @@ greaterThan(field: string, value: number|string|boolean): Query
 try {
     let query = new distributedData.Query();
     query.greaterThan("field", "value");
-    console.log("query is " + query.getSqlLike());
+    console.info("query is " + query.getSqlLike());
     query = null;
 } catch (e) {
-    console.log("duplicated calls should be ok :" + e);
+    console.error("duplicated calls should be ok :" + e);
 }
 ```
 
@@ -1357,10 +1357,10 @@ lessThan(field: string, value: number|string): Query
 try {
     let query = new distributedData.Query();
     query.lessThan("field", "value");
-    console.log("query is " + query.getSqlLike());
+    console.info("query is " + query.getSqlLike());
     query = null;
 } catch (e) {
-    console.log("duplicated calls should be ok :" + e);
+    console.error("duplicated calls should be ok :" + e);
 }
 ```
 
@@ -1392,10 +1392,10 @@ greaterThanOrEqualTo(field: string, value: number|string): Query
 try {
     let query = new distributedData.Query();
     query.greaterThanOrEqualTo("field", "value");
-    console.log("query is " + query.getSqlLike());
+    console.info("query is " + query.getSqlLike());
     query = null;
 } catch (e) {
-    console.log("duplicated calls should be ok :" + e);
+    console.error("duplicated calls should be ok :" + e);
 }
 ```
 
@@ -1427,10 +1427,10 @@ lessThanOrEqualTo(field: string, value: number|string): Query
 try {
     let query = new distributedData.Query();
     query.lessThanOrEqualTo("field", "value");
-    console.log("query is " + query.getSqlLike());
+    console.info("query is " + query.getSqlLike());
     query = null;
 } catch (e) {
-    console.log("duplicated calls should be ok :" + e);
+    console.error("duplicated calls should be ok :" + e);
 }
 ```
 
@@ -1461,10 +1461,10 @@ isNull(field: string): Query
 try {
     let query = new distributedData.Query();
     query.isNull("field");
-    console.log("query is " + query.getSqlLike());
+    console.info("query is " + query.getSqlLike());
     query = null;
 } catch (e) {
-    console.log("duplicated calls should be ok :" + e);
+    console.error("duplicated calls should be ok :" + e);
 }
 ```
 
@@ -1497,10 +1497,10 @@ inNumber(field: string, valueList: number[]): Query
 try {
     let query = new distributedData.Query();
     query.inNumber("field", [0, 1]);
-    console.log("query is " + query.getSqlLike());
+    console.info("query is " + query.getSqlLike());
     query = null;
 } catch (e) {
-    console.log("duplicated calls should be ok :" + e);
+    console.error("duplicated calls should be ok :" + e);
 }
 ```
 
@@ -1532,10 +1532,10 @@ inString(field: string, valueList: string[]): Query
 try {
     let query = new distributedData.Query();
     query.inString("field", ['test1', 'test2']);
-    console.log("query is " + query.getSqlLike());
+    console.info("query is " + query.getSqlLike());
     query = null;
 } catch (e) {
-    console.log("duplicated calls should be ok :" + e);
+    console.error("duplicated calls should be ok :" + e);
 }
 ```
 
@@ -1567,10 +1567,10 @@ notInNumber(field: string, valueList: number[]): Query
 try {
     let query = new distributedData.Query();
     query.notInNumber("field", [0, 1]);
-    console.log("query is " + query.getSqlLike());
+    console.info("query is " + query.getSqlLike());
     query = null;
 } catch (e) {
-    console.log("duplicated calls should be ok :" + e);
+    console.error("duplicated calls should be ok :" + e);
 }
 ```
 
@@ -1602,10 +1602,10 @@ notInString(field: string, valueList: string[]): Query
 try {
     let query = new distributedData.Query();
     query.notInString("field", ['test1', 'test2']);
-    console.log("query is " + query.getSqlLike());
+    console.info("query is " + query.getSqlLike());
     query = null;
 } catch (e) {
-    console.log("duplicated calls should be ok :" + e);
+    console.error("duplicated calls should be ok :" + e);
 }
 ```
 
@@ -1637,10 +1637,10 @@ like(field: string, value: string): Query
 try {
     let query = new distributedData.Query();
     query.like("field", "value");
-    console.log("query is " + query.getSqlLike());
+    console.info("query is " + query.getSqlLike());
     query = null;
 } catch (e) {
-    console.log("duplicated calls should be ok :" + e);
+    console.error("duplicated calls should be ok :" + e);
 }
 ```
 
@@ -1672,10 +1672,10 @@ unlike(field: string, value: string): Query
 try {
     let query = new distributedData.Query();
     query.unlike("field", "value");
-    console.log("query is " + query.getSqlLike());
+    console.info("query is " + query.getSqlLike());
     query = null;
 } catch (e) {
-    console.log("duplicated calls should be ok :" + e);
+    console.error("duplicated calls should be ok :" + e);
 }
 ```
 
@@ -1702,10 +1702,10 @@ try {
     query.notEqualTo("field", "value1");
     query.and();
     query.notEqualTo("field", "value2");
-    console.log("query is " + query.getSqlLike());
+    console.info("query is " + query.getSqlLike());
     query = null;
 } catch (e) {
-    console.log("duplicated calls should be ok :" + e);
+    console.error("duplicated calls should be ok :" + e);
 }
 ```
 
@@ -1732,10 +1732,10 @@ try {
     query.notEqualTo("field", "value1");
     query.or();
     query.notEqualTo("field", "value2");
-    console.log("query is " + query.getSqlLike());
+    console.info("query is " + query.getSqlLike());
     query = null;
 } catch (e) {
-    console.log("duplicated calls should be ok :" + e);
+    console.error("duplicated calls should be ok :" + e);
 }
 ```
 
@@ -1767,10 +1767,10 @@ try {
     let query = new distributedData.Query();
     query.notEqualTo("field", "value");
     query.orderByAsc("field");
-    console.log("query is " + query.getSqlLike());
+    console.info("query is " + query.getSqlLike());
     query = null;
 } catch (e) {
-    console.log("duplicated calls should be ok :" + e);
+    console.error("duplicated calls should be ok :" + e);
 }
 ```
 
@@ -1802,10 +1802,10 @@ try {
     let query = new distributedData.Query();
     query.notEqualTo("field", "value");
     query.orderByDesc("field");
-    console.log("query is " + query.getSqlLike());
+    console.info("query is " + query.getSqlLike());
     query = null;
 } catch (e) {
-    console.log("duplicated calls should be ok :" + e);
+    console.error("duplicated calls should be ok :" + e);
 }
 ```
 
@@ -1840,10 +1840,10 @@ try {
     let query = new distributedData.Query();
     query.notEqualTo("field", "value");
     query.limit(total, offset);
-    console.log("query is " + query.getSqlLike());
+    console.info("query is " + query.getSqlLike());
     query = null;
 } catch (e) {
-    console.log("duplicated calls should be ok :" + e);
+    console.error("duplicated calls should be ok :" + e);
 }
 ```
 
@@ -1874,10 +1874,10 @@ isNotNull(field: string): Query
 try {
     let query = new distributedData.Query();
     query.isNotNull("field");
-    console.log("query is " + query.getSqlLike());
+    console.info("query is " + query.getSqlLike());
     query = null;
 } catch (e) {
-    console.log("duplicated calls should be ok :" + e);
+    console.error("duplicated calls should be ok :" + e);
 }
 ```
 
@@ -1904,10 +1904,10 @@ try {
     query.beginGroup();
     query.isNotNull("field");
     query.endGroup();
-    console.log("query is " + query.getSqlLike());
+    console.info("query is " + query.getSqlLike());
     query = null;
 } catch (e) {
-    console.log("duplicated calls should be ok :" + e);
+    console.error("duplicated calls should be ok :" + e);
 }
 ```
 
@@ -1934,10 +1934,10 @@ try {
     query.beginGroup();
     query.isNotNull("field");
     query.endGroup();
-    console.log("query is " + query.getSqlLike());
+    console.info("query is " + query.getSqlLike());
     query = null;
 } catch (e) {
-    console.log("duplicated calls should be ok :" + e);
+    console.error("duplicated calls should be ok :" + e);
 }
 ```
 
@@ -1969,10 +1969,10 @@ try {
     let query = new distributedData.Query();
     query.prefixKey("$.name");
     query.prefixKey("0");
-    console.log("query is " + query.getSqlLike());
+    console.info("query is " + query.getSqlLike());
     query = null;
 } catch (e) {
-    console.log("duplicated calls should be ok :" + e);
+    console.error("duplicated calls should be ok :" + e);
 }
 ```
 
@@ -2004,10 +2004,10 @@ try {
     let query = new distributedData.Query();
     query.setSuggestIndex("$.name");
     query.setSuggestIndex("0");
-    console.log("query is " + query.getSqlLike());
+    console.info("query is " + query.getSqlLike());
     query = null;
 } catch (e) {
-   console.log("duplicated calls should be ok :" + e);
+   console.error("duplicated calls should be ok :" + e);
 }
 ```
 
@@ -2017,10 +2017,6 @@ try {
 deviceId(deviceId:string):Query
 
 添加设备ID作为key的前缀。
-> **说明：** 
->
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -2043,9 +2039,9 @@ deviceId(deviceId:string):Query
 try {
     let query = new distributedData.Query();
     query.deviceId("deviceId");
-    console.log("query is " + query.getSqlLike());
+    console.info("query is " + query.getSqlLike());
 } catch (e) {
-    console.log("should be ok on Method Chaining : " + e);
+    console.error("should be ok on Method Chaining : " + e);
 }
 ```
 
@@ -2070,9 +2066,9 @@ getSqlLike():string
 try {
     let query = new distributedData.Query();
     let sql1 = query.getSqlLike();
-    console.log("GetSqlLike sql=" + sql1);
+    console.info("GetSqlLike sql=" + sql1);
 } catch (e) {
-    console.log("duplicated calls should be ok : " + e);
+    console.error("duplicated calls should be ok : " + e);
 }
 ```
 
@@ -2108,13 +2104,13 @@ const VALUE_TEST_STRING_ELEMENT = 'value-test-string';
 try {
     kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, function (err,data) {
         if (err != undefined) {
-            console.log("put err: " + JSON.stringify(err));
+            console.error("put err: " + JSON.stringify(err));
             return;
         }
-        console.log("put success");
+        console.info("put success");
     });
 }catch (e) {
-    console.log("An unexpected error occurred. Error:" + e);
+    console.error("An unexpected error occurred. Error:" + e);
 }
 ```
 
@@ -2147,12 +2143,12 @@ const KEY_TEST_STRING_ELEMENT = 'key_test_string';
 const VALUE_TEST_STRING_ELEMENT = 'value-test-string';
 try {
     kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT).then((data) => {
-        console.log("put success: " + JSON.stringify(data));
+        console.info("put success: " + JSON.stringify(data));
     }).catch((err) => {
-        console.log("put err: " + JSON.stringify(err));
+        console.error("put err: " + JSON.stringify(err));
     });
 }catch (e) {
-    console.log("An unexpected error occurred. Error:" + e);
+    console.error("An unexpected error occurred. Error:" + e);
 }
 ```
 
@@ -2180,20 +2176,20 @@ const VALUE_TEST_STRING_ELEMENT = 'value-test-string';
 try {
     kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, function (err,data) {
         if (err != undefined) {
-            console.log("put err: " + JSON.stringify(err));
+            console.error("put err: " + JSON.stringify(err));
             return;
         }
-        console.log("put success");
+        console.info("put success");
         kvStore.delete(KEY_TEST_STRING_ELEMENT, function (err,data) {
             if (err != undefined) {
-                console.log("delete err: " + JSON.stringify(err));
+                console.error("delete err: " + JSON.stringify(err));
                 return;
             }
-            console.log("delete success");
+            console.info("delete success");
         });
     });
 }catch (e) {
-    console.log("An unexpected error occurred. Error:" + e);
+    console.error("An unexpected error occurred. Error:" + e);
 }
 ```
 
@@ -2225,17 +2221,17 @@ const KEY_TEST_STRING_ELEMENT = 'key_test_string';
 const VALUE_TEST_STRING_ELEMENT = 'value-test-string';
 try {
     kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT).then((data) => {
-        console.log("put success: " + JSON.stringify(data));
+        console.info("put success: " + JSON.stringify(data));
         kvStore.delete(KEY_TEST_STRING_ELEMENT).then((data) => {
-            console.log("delete success");
+            console.info("delete success");
         }).catch((err) => {
-            console.log("delete err: " + JSON.stringify(err));
+            console.error("delete err: " + JSON.stringify(err));
         });
     }).catch((err) => {
-        console.log("put err: " + JSON.stringify(err));
+        console.error("put err: " + JSON.stringify(err));
     });
 }catch (e) {
-    console.log("An unexpected error occurred. Error:" + e);
+    console.error("An unexpected error occurred. Error:" + e);
 }
 ```
 
@@ -2260,7 +2256,7 @@ on(event: 'dataChange', type: SubscribeType, listener: Callback&lt;ChangeNotific
 ```js
 let kvStore;
 kvStore.on('dataChange', distributedData.SubscribeType.SUBSCRIBE_TYPE_LOCAL, function (data) {
-    console.log("dataChange callback call data: " + JSON.stringify(data));
+    console.info("dataChange callback call data: " + JSON.stringify(data));
 });
 ```
 
@@ -2284,7 +2280,7 @@ on(event: 'syncComplete', syncCallback: Callback&lt;Array&lt;[string, number]&gt
 ```js
 let kvStore;
 kvStore.on('syncComplete', function (data) {
-    console.log("callback call data: " + data);
+    console.info("callback call data: " + data);
 });
 ```
 
@@ -2311,7 +2307,7 @@ off(event:'dataChange', listener?: Callback&lt;ChangeNotification&gt;): void
 let kvStore;
 class KvstoreModel {
     call(data) {
-        console.log("dataChange: " + data);
+        console.info("dataChange: " + data);
     }
     subscribeDataChange() {
         if (kvStore != null) {
@@ -2347,7 +2343,7 @@ off(event: 'syncComplete', syncCallback?: Callback&lt;Array&lt;[string, number]&
 let kvStore;
 class KvstoreModel {
     call(data) {
-        console.log("syncComplete: " + data);
+        console.info("syncComplete: " + data);
     }
     subscribeSyncComplete() {
         if (kvStore != null) {
@@ -2394,17 +2390,17 @@ try {
         }
         entries.push(entry);
     }
-    console.log('entries: ' + JSON.stringify(entries));
+    console.info('entries: ' + JSON.stringify(entries));
     kvStore.putBatch(entries, async function (err,data) {
-        console.log('putBatch success');
+        console.info('putBatch success');
         kvStore.getEntries('batch_test_string_key', function (err,entries) {
-            console.log('getEntries success');
-            console.log('entries.length: ' + entries.length);
-            console.log('entries[0]: ' + JSON.stringify(entries[0]));
+            console.info('getEntries success');
+            console.info('entries.length: ' + entries.length);
+            console.info('entries[0]: ' + JSON.stringify(entries[0]));
         });
     });
 }catch(e) {
-    console.log('PutBatch e ' + JSON.stringify(e));
+    console.info('PutBatch e ' + JSON.stringify(e));
 }
 ```
 
@@ -2446,20 +2442,20 @@ try {
         }
         entries.push(entry);
     }
-    console.log('entries: ' + JSON.stringify(entries));
+    console.info('entries: ' + JSON.stringify(entries));
     kvStore.putBatch(entries).then(async (err) => {
-        console.log('putBatch success');
+        console.info('putBatch success');
         kvStore.getEntries('batch_test_string_key').then((entries) => {
-            console.log('getEntries success');
-            console.log('PutBatch ' + JSON.stringify(entries));
+            console.info('getEntries success');
+            console.info('PutBatch ' + JSON.stringify(entries));
         }).catch((err) => {
-            console.log('getEntries fail ' + JSON.stringify(err));
+            console.error('getEntries fail ' + JSON.stringify(err));
         });
     }).catch((err) => {
-        console.log('putBatch fail ' + JSON.stringify(err));
+        console.error('putBatch fail ' + JSON.stringify(err));
     });
 }catch(e) {
-    console.log('PutBatch e ' + JSON.stringify(e));
+    console.info('PutBatch e ' + JSON.stringify(e));
 }
 ```
 
@@ -2497,15 +2493,15 @@ try {
         entries.push(entry);
         keys.push(key + i);
     }
-    console.log('entries: ' + JSON.stringify(entries));
+    console.info('entries: ' + JSON.stringify(entries));
     kvStore.putBatch(entries, async function (err,data) {
-        console.log('putBatch success');
+        console.info('putBatch success');
         kvStore.deleteBatch(keys, async function (err,data) {
-            console.log('deleteBatch success');
+            console.info('deleteBatch success');
         });
     });
 }catch(e) {
-    console.log('DeleteBatch e ' + e);
+    console.error('DeleteBatch e ' + e);
 }
 ```
 
@@ -2549,19 +2545,19 @@ try {
         entries.push(entry);
         keys.push(key + i);
     }
-    console.log('entries: ' + JSON.stringify(entries));
+    console.info('entries: ' + JSON.stringify(entries));
     kvStore.putBatch(entries).then(async (err) => {
-        console.log('putBatch success');
+        console.info('putBatch success');
         kvStore.deleteBatch(keys).then((err) => {
-            console.log('deleteBatch success');
+            console.info('deleteBatch success');
         }).catch((err) => {
-            console.log('deleteBatch fail ' + JSON.stringify(err));
+            console.error('deleteBatch fail ' + JSON.stringify(err));
         });
     }).catch((err) => {
-        console.log('putBatch fail ' + JSON.stringify(err));
+        console.error('putBatch fail ' + JSON.stringify(err));
     });
 }catch(e) {
-    console.log('DeleteBatch e ' + e);
+    console.error('DeleteBatch e ' + e);
 }
 ```
 
@@ -2601,19 +2597,19 @@ function putBatchString(len, prefix) {
 try {
     var count = 0;
     kvStore.on('dataChange', 0, function (data) {
-        console.log('startTransaction 0' + data)
+        console.info('startTransaction 0' + data)
         count++;
     });
     kvStore.startTransaction(async function (err,data) {
-        console.log('startTransaction success');
+        console.info('startTransaction success');
         let entries = putBatchString(10, 'batch_test_string_key');
-        console.log('entries: ' + JSON.stringify(entries));
+        console.info('entries: ' + JSON.stringify(entries));
         kvStore.putBatch(entries, async function (err,data) {
-            console.log('putBatch success');
+            console.info('putBatch success');
         });
     });
 }catch(e) {
-    console.log('startTransaction e ' + e);
+    console.error('startTransaction e ' + e);
 }
 ```
 
@@ -2639,16 +2635,16 @@ let kvStore;
 try {
     var count = 0;
     kvStore.on('dataChange', distributedData.SubscribeType.SUBSCRIBE_TYPE_ALL, function (data) {
-        console.log('startTransaction ' + JSON.stringify(data));
+        console.info('startTransaction ' + JSON.stringify(data));
         count++;
     });
     kvStore.startTransaction().then(async (err) => {
-        console.log('startTransaction success');
+        console.info('startTransaction success');
     }).catch((err) => {
-        console.log('startTransaction fail ' + JSON.stringify(err));
+        console.error('startTransaction fail ' + JSON.stringify(err));
     });
 }catch(e) {
-    console.log('startTransaction e ' + e);
+    console.error('startTransaction e ' + e);
 }
 ```
 
@@ -2674,13 +2670,13 @@ let kvStore;
 try {
     kvStore.commit(function (err,data) {
         if (err == undefined) {
-            console.log('commit success');
+            console.info('commit success');
         } else {
-            console.log('commit fail');
+            console.error('commit fail');
         }
     });
 }catch(e) {
-    console.log('Commit e ' + e);
+    console.error('Commit e ' + e);
 }
 ```
 
@@ -2705,12 +2701,12 @@ commit(): Promise&lt;void&gt;
 let kvStore;
 try {
     kvStore.commit().then(async (err) => {
-        console.log('commit success');
+        console.info('commit success');
     }).catch((err) => {
-        console.log('commit fail ' + JSON.stringify(err));
+        console.error('commit fail ' + JSON.stringify(err));
     });
 }catch(e) {
-    console.log('Commit e ' + e);
+    console.error('Commit e ' + e);
 }
 ```
 
@@ -2736,13 +2732,13 @@ let kvStore;
 try {
     kvStore.rollback(function (err,data) {
         if (err == undefined) {
-            console.log('commit success');
+            console.info('commit success');
         } else {
-            console.log('commit fail');
+            console.error('commit fail');
         }
     });
 }catch(e) {
-    console.log('Rollback e ' + e);
+    console.error('Rollback e ' + e);
 }
 ```
 
@@ -2767,12 +2763,12 @@ rollback(): Promise&lt;void&gt;
 let kvStore;
 try {
     kvStore.rollback().then(async (err) => {
-        console.log('rollback success');
+        console.info('rollback success');
     }).catch((err) => {
-        console.log('rollback fail ' + JSON.stringify(err));
+        console.error('rollback fail ' + JSON.stringify(err));
     });
 }catch(e) {
-    console.log('Rollback e ' + e);
+    console.error('Rollback e ' + e);
 }
 ```
 
@@ -2799,13 +2795,13 @@ let kvStore;
 try {
     kvStore.enableSync(true, function (err,data) {
         if (err == undefined) {
-            console.log('enableSync success');
+            console.info('enableSync success');
         } else {
-            console.log('enableSync fail');
+            console.error('enableSync fail');
         }
     });
 }catch(e) {
-    console.log('EnableSync e ' + e);
+    console.error('EnableSync e ' + e);
 }
 ```
 
@@ -2836,12 +2832,12 @@ enableSync(enabled: boolean): Promise&lt;void&gt;
 let kvStore;
 try {
     kvStore.enableSync(true).then((err) => {
-        console.log('enableSync success');
+        console.info('enableSync success');
     }).catch((err) => {
-        console.log('enableSync fail ' + JSON.stringify(err));
+        console.error('enableSync fail ' + JSON.stringify(err));
     });
 }catch(e) {
-    console.log('EnableSync e ' + e);
+    console.error('EnableSync e ' + e);
 }
 ```
 
@@ -2870,10 +2866,10 @@ try {
     const localLabels = ['A', 'B'];
     const remoteSupportLabels = ['C', 'D'];
     kvStore.setSyncRange(localLabels, remoteSupportLabels, function (err,data) {
-        console.log('SetSyncRange put success');
+        console.info('SetSyncRange put success');
     });
 }catch(e) {
-    console.log('SetSyncRange e ' + e);
+    console.error('SetSyncRange e ' + e);
 }
 ```
 
@@ -2908,12 +2904,12 @@ try {
     const localLabels = ['A', 'B'];
     const remoteSupportLabels = ['C', 'D'];
     kvStore.setSyncRange(localLabels, remoteSupportLabels).then((err) => {
-        console.log('setSyncRange success');
+        console.info('setSyncRange success');
     }).catch((err) => {
-        console.log('delete fail ' + err);
+        console.error('delete fail ' + err);
     });
 }catch(e) {
-    console.log('SetSyncRange e ' + e);
+    console.error('SetSyncRange e ' + e);
 }
 ```
 
@@ -3013,16 +3009,16 @@ const VALUE_TEST_STRING_ELEMENT = 'value-test-string';
 try {
     kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, function (err,data) {
         if (err != undefined) {
-            console.log("put err: " + JSON.stringify(err));
+            console.error("put err: " + JSON.stringify(err));
             return;
         }
-        console.log("put success");
+        console.info("put success");
         kvStore.get(KEY_TEST_STRING_ELEMENT, function (err,data) {
-            console.log("get success data: " + data);
+            console.info("get success data: " + data);
         });
     });
 }catch (e) {
-    console.log("An unexpected error occurred. Error:" + e);
+    console.error("An unexpected error occurred. Error:" + e);
 }
 ```
 
@@ -3056,17 +3052,17 @@ const KEY_TEST_STRING_ELEMENT = 'key_test_string';
 const VALUE_TEST_STRING_ELEMENT = 'value-test-string';
 try {
     kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT).then((data) => {
-        console.log("put success: " + JSON.stringify(data));
+        console.info("put success: " + JSON.stringify(data));
         kvStore.get(KEY_TEST_STRING_ELEMENT).then((data) => {
-            console.log("get success data: " + data);
+            console.info("get success data: " + data);
         }).catch((err) => {
-            console.log("get err: " + JSON.stringify(err));
+            console.error("get err: " + JSON.stringify(err));
         });
     }).catch((err) => {
-        console.log("put err: " + JSON.stringify(err));
+        console.error("put err: " + JSON.stringify(err));
     });
 }catch (e) {
-    console.log("An unexpected error occurred. Error:" + e);
+    console.error("An unexpected error occurred. Error:" + e);
 }
 ```
 
@@ -3103,15 +3099,15 @@ try {
         entries.push(entry);
     }
     kvStore.putBatch(entries, async function (err,data) {
-        console.log('putBatch success');
+        console.info('putBatch success');
         kvStore.getEntries('batch_test_number_key', function (err,entries) {
-            console.log('getEntries success');
-            console.log('entries.length: ' + entries.length);
-            console.log('entries[0]: ' + JSON.stringify(entries[0]));
+            console.info('getEntries success');
+            console.info('entries.length: ' + entries.length);
+            console.info('entries[0]: ' + JSON.stringify(entries[0]));
         });
     });
 }catch(e) {
-    console.log('PutBatch e ' + e);
+    console.error('PutBatch e ' + e);
 }
 ```
 
@@ -3153,23 +3149,23 @@ try {
         }
         entries.push(entry);
     }
-    console.log('entries: ' + entries);
+    console.info('entries: ' + entries);
     kvStore.putBatch(entries).then(async (err) => {
-        console.log('putBatch success');
+        console.info('putBatch success');
         kvStore.getEntries('batch_test_string_key').then((entries) => {
-            console.log('getEntries success');
-            console.log('entries.length: ' + entries.length);
-            console.log('entries[0]: ' + JSON.stringify(entries[0]));
-            console.log('entries[0].value: ' + JSON.stringify(entries[0].value));
-            console.log('entries[0].value.value: ' + entries[0].value.value);
+            console.info('getEntries success');
+            console.info('entries.length: ' + entries.length);
+            console.info('entries[0]: ' + JSON.stringify(entries[0]));
+            console.info('entries[0].value: ' + JSON.stringify(entries[0].value));
+            console.info('entries[0].value.value: ' + entries[0].value.value);
         }).catch((err) => {
-            console.log('getEntries fail ' + JSON.stringify(err));
+            console.error('getEntries fail ' + JSON.stringify(err));
         });
     }).catch((err) => {
-        console.log('putBatch fail ' + JSON.stringify(err));
+        console.error('putBatch fail ' + JSON.stringify(err));
     });
 }catch(e) {
-    console.log('PutBatch e ' + e);
+    console.error('PutBatch e ' + e);
 }
 ```
 
@@ -3207,20 +3203,20 @@ try {
         }
         entries.push(entry);
     }
-    console.log('entries: ' + JSON.stringify(entries));
+    console.info('entries: ' + JSON.stringify(entries));
     kvStore.putBatch(entries, async function (err,data) {
-        console.log('putBatch success');
+        console.info('putBatch success');
         const query = new distributedData.Query();
         query.prefixKey("batch_test");
         kvStore.getEntries(query, function (err,entries) {
-            console.log('getEntries success');
-            console.log('entries.length: ' + entries.length);
-            console.log('entries[0]: ' + JSON.stringify(entries[0]));
+            console.info('getEntries success');
+            console.info('entries.length: ' + entries.length);
+            console.info('entries[0]: ' + JSON.stringify(entries[0]));
         });
     });
-    console.log('GetEntries success');
+    console.info('GetEntries success');
 }catch(e) {
-    console.log('GetEntries e ' + e);
+    console.error('GetEntries e ' + e);
 }
 ```
 
@@ -3263,22 +3259,22 @@ try {
         }
         entries.push(entry);
     }
-    console.log('entries: ' + JSON.stringify(entries));
+    console.info('entries: ' + JSON.stringify(entries));
     kvStore.putBatch(entries).then(async (err) => {
-        console.log('putBatch success');
+        console.info('putBatch success');
         const query = new distributedData.Query();
         query.prefixKey("batch_test");
         kvStore.getEntries(query).then((entries) => {
-            console.log('getEntries success');
+            console.info('getEntries success');
         }).catch((err) => {
-            console.log('getEntries fail ' + JSON.stringify(err));
+            console.error('getEntries fail ' + JSON.stringify(err));
         });
     }).catch((err) => {
-        console.log('GetEntries putBatch fail ' + JSON.stringify(err))
+        console.error('GetEntries putBatch fail ' + JSON.stringify(err))
     });
-    console.log('GetEntries success');
+    console.info('GetEntries success');
 }catch(e) {
-    console.log('GetEntries e ' + e);
+    console.error('GetEntries e ' + e);
 }
 ```
 
@@ -3317,17 +3313,17 @@ try {
         entries.push(entry);
     }
     kvStore.putBatch(entries, async function (err, data) {
-        console.log('GetResultSet putBatch success');
+        console.info('GetResultSet putBatch success');
         kvStore.getResultSet('batch_test_string_key', async function (err, result) {
-            console.log('GetResultSet getResultSet succeed.');
+            console.info('GetResultSet getResultSet succeed.');
             resultSet = result;
             kvStore.closeResultSet(resultSet, function (err, data) {
-                console.log('GetResultSet closeResultSet success');
+                console.info('GetResultSet closeResultSet success');
             })
         });
     });
 }catch(e) {
-    console.log('GetResultSet e ' + e);
+    console.error('GetResultSet e ' + e);
 }
 ```
 
@@ -3371,23 +3367,23 @@ try {
         entries.push(entry);
     }
     kvStore.putBatch(entries).then(async (err) => {
-        console.log('putBatch success');
+        console.info('putBatch success');
     }).catch((err) => {
-        console.log('PutBatch putBatch fail ' + JSON.stringify(err));
+        console.error('PutBatch putBatch fail ' + JSON.stringify(err));
     });
     kvStore.getResultSet('batch_test_string_key').then((result) => {
-        console.log('GetResult getResultSet succeed.');
+        console.info('GetResult getResultSet succeed.');
         resultSet = result;
     }).catch((err) => {
-        console.log('getResultSet failed: ' + JSON.stringify(err));
+        console.error('getResultSet failed: ' + JSON.stringify(err));
     });
     kvStore.closeResultSet(resultSet).then((err) => {
-        console.log('GetResult closeResultSet success');
+        console.info('GetResult closeResultSet success');
     }).catch((err) => {
-        console.log('closeResultSet fail ' + JSON.stringify(err));
+        console.error('closeResultSet fail ' + JSON.stringify(err));
     });
 }catch(e) {
-    console.log('GetResult e ' + e);
+    console.error('GetResult e ' + e);
 }
 ```
 
@@ -3426,16 +3422,16 @@ try {
         entries.push(entry);
     }
     kvStore.putBatch(entries, async function (err, data) {
-        console.log('putBatch success');
+        console.info('putBatch success');
         const query = new distributedData.Query();
         query.prefixKey("batch_test");
         kvStore.getResultSet(query, async function (err, result) {
-            console.log('getResultSet succeed.');
+            console.info('getResultSet succeed.');
             resultSet = result;
         });
     });
 } catch(e) {
-    console.log('GetResultSet e ' + e);
+    console.error('GetResultSet e ' + e);
 }
 ```
 
@@ -3479,20 +3475,20 @@ try {
         entries.push(entry);
     }
     kvStore.putBatch(entries).then(async (err) => {
-        console.log('putBatch success');
+        console.info('putBatch success');
     }).catch((err) => {
-        console.log('putBatch fail ' + JSON.stringify(err));
+        console.error('putBatch fail ' + JSON.stringify(err));
     });
     const query = new distributedData.Query();
     query.prefixKey("batch_test");
     kvStore.getResultSet(query).then((result) => {
-        console.log(' getResultSet succeed.');
+        console.info(' getResultSet succeed.');
         resultSet = result;
     }).catch((err) => {
-        console.log('getResultSet failed: ' + JSON.stringify(err));
+        console.error('getResultSet failed: ' + JSON.stringify(err));
     });
 }catch(e) {
-    console.log('GetResultSet e ' + e);
+    console.error('GetResultSet e ' + e);
 }
 ```
 
@@ -3519,13 +3515,13 @@ try {
     let resultSet = null;
     kvStore.closeResultSet(resultSet, function (err, data) {
         if (err == undefined) {
-            console.log('closeResultSet success');
+            console.info('closeResultSet success');
         } else {
-            console.log('closeResultSet fail');
+            console.error('closeResultSet fail');
         }
     });
 }catch(e) {
-    console.log('CloseResultSet e ' + e);
+    console.error('CloseResultSet e ' + e);
 }
 ```
 
@@ -3557,12 +3553,12 @@ let kvStore;
 try {
     let resultSet = null;
     kvStore.closeResultSet(resultSet).then(() => {
-        console.log('closeResultSet success');
+        console.info('closeResultSet success');
     }).catch((err) => {
-        console.log('closeResultSet fail ' + JSON.stringify(err));
+        console.error('closeResultSet fail ' + JSON.stringify(err));
     });
 }catch(e) {
-    console.log('CloseResultSet e ' + e);
+    console.error('CloseResultSet e ' + e);
 }
 ```
 
@@ -3600,15 +3596,15 @@ try {
         entries.push(entry);
     }
     kvStore.putBatch(entries, async function (err, data) {
-        console.log('putBatch success');
+        console.info('putBatch success');
         const query = new distributedData.Query();
         query.prefixKey("batch_test");
         kvStore.getResultSize(query, async function (err, resultSize) {
-            console.log('getResultSet succeed.');
+            console.info('getResultSet succeed.');
         });
     });
 } catch(e) {
-    console.log('GetResultSize e ' + e);
+    console.error('GetResultSize e ' + e);
 }
 ```
 
@@ -3651,19 +3647,19 @@ try {
         entries.push(entry);
     }
     kvStore.putBatch(entries).then(async (err) => {
-        console.log('putBatch success');
+        console.info('putBatch success');
     }).catch((err) => {
-        console.log('putBatch fail ' + JSON.stringify(err));
+        console.error('putBatch fail ' + JSON.stringify(err));
     });
     const query = new distributedData.Query();
     query.prefixKey("batch_test");
     kvStore.getResultSize(query).then((resultSize) => {
-        console.log('getResultSet succeed.');
+        console.info('getResultSet succeed.');
     }).catch((err) => {
-        console.log('getResultSet failed: ' + JSON.stringify(err));
+        console.error('getResultSet failed: ' + JSON.stringify(err));
     });
 }catch(e) {
-    console.log('GetResultSize e ' + e);
+    console.error('GetResultSize e ' + e);
 }
 ```
 
@@ -3673,10 +3669,6 @@ try {
 removeDeviceData(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
 删除指定设备的数据，使用callback异步回调。
-> **说明：** 
->
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -3695,21 +3687,21 @@ const KEY_TEST_STRING_ELEMENT = 'key_test_string_2';
 const VALUE_TEST_STRING_ELEMENT = 'value-string-002';
 try {
     kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, async function (err,data) {
-        console.log('put success');
+        console.info('put success');
         const deviceid = 'no_exist_device_id';
         kvStore.removeDeviceData(deviceid, async function (err,data) {
             if (err == undefined) {
-                console.log('removeDeviceData success');
+                console.info('removeDeviceData success');
             } else {
-                console.log('removeDeviceData fail');
+                console.error('removeDeviceData fail');
                 kvStore.get(KEY_TEST_STRING_ELEMENT, async function (err,data) {
-                    console.log('RemoveDeviceData get success');
+                    console.info('RemoveDeviceData get success');
                 });
             }
         });
     });
 }catch(e) {
-    console.log('RemoveDeviceData e ' + e);
+    console.error('RemoveDeviceData e ' + e);
 }
 ```
 
@@ -3719,10 +3711,6 @@ try {
 removeDeviceData(deviceId: string): Promise&lt;void&gt;
 
 删除指定设备的数据，使用Promise异步回调。
-> **说明：** 
->
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -3746,23 +3734,23 @@ const KEY_TEST_STRING_ELEMENT = 'key_test_string_2';
 const VALUE_TEST_STRING_ELEMENT = 'value-string-001';
 try {
     kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT).then((err) => {
-        console.log('removeDeviceData put success');
+        console.info('removeDeviceData put success');
     }).catch((err) => {
-        console.log('put fail ' + JSON.stringify(err));
+        console.error('put fail ' + JSON.stringify(err));
     });
     const deviceid = 'no_exist_device_id';
     kvStore.removeDeviceData(deviceid).then((err) => {
-        console.log('removeDeviceData success');
+        console.info('removeDeviceData success');
     }).catch((err) => {
-        console.log('removeDeviceData fail ' + JSON.stringify(err));
+        console.error('removeDeviceData fail ' + JSON.stringify(err));
     });
     kvStore.get(KEY_TEST_STRING_ELEMENT).then((data) => {
-        console.log('get success data:' + data);
+        console.info('get success data:' + data);
     }).catch((err) => {
-        console.log('RemoveDeviceData get fail ' + JSON.stringify(err));
+        console.error('RemoveDeviceData get fail ' + JSON.stringify(err));
     });
 }catch(e) {
-    console.log('RemoveDeviceData e ' + e);
+    console.error('RemoveDeviceData e ' + e);
 }
 ```
 
@@ -3772,9 +3760,6 @@ try {
 sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 
 在手动同步方式下，触发数据库同步。
-> **说明：** 
->
-> 其中deviceIds为<!--RP2-->[DeviceInfo](../apis-distributedservice-kit/js-apis-device-manager-sys.md#deviceinfo)中的networkId, 通过调用[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP2End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
 
 **需要权限**： ohos.permission.DISTRIBUTED_DATASYNC。
 
@@ -3791,41 +3776,26 @@ sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 **示例：**
 
 ```js
-import deviceManager from '@ohos.distributedHardware.deviceManager';
-
-let devManager;
 let kvStore;
 const KEY_TEST_SYNC_ELEMENT = 'key_test_sync';
 const VALUE_TEST_SYNC_ELEMENT = 'value-string-001';
-// create deviceManager
-deviceManager.createDeviceManager('bundleName', (err, value) => {
-  if (!err) {
-    devManager = value;
-    let deviceIds = [];
-    if (devManager != null) {
-      var devices = devManager.getTrustedDeviceListSync();
-      for (var i = 0; i < devices.length; i++) {
-        deviceIds[i] = devices[i].networkId;
-      }
+const deviceIds = ['networkId1', 'networkId2'];
+try {
+  kvStore.on('syncComplete', function (data) {
+    console.info('Sync dataChange');
+  });
+  kvStore.put(KEY_TEST_SYNC_ELEMENT + 'testSync101', VALUE_TEST_SYNC_ELEMENT, function (err, data) {
+    if (err != undefined) {
+      console.error("put err: " + JSON.stringify(err));
+      return;
     }
-    try {
-      kvStore.on('syncComplete', function (data) {
-        console.log('Sync dataChange');
-      });
-      kvStore.put(KEY_TEST_SYNC_ELEMENT + 'testSync101', VALUE_TEST_SYNC_ELEMENT, function (err, data) {
-        if (err != undefined) {
-          console.log("put err: " + JSON.stringify(err));
-          return;
-        }
-        console.log('Succeeded in putting data');
-        const mode = distributedData.SyncMode.PULL_ONLY;
-        kvStore.sync(deviceIds, mode, 1000);
-      });
-    } catch (e) {
-      console.log('Sync e' + e);
-    }
-  }
-});
+    console.info('Succeeded in putting data');
+    const mode = distributedData.SyncMode.PULL_ONLY;
+    kvStore.sync(deviceIds, mode, 1000);
+  });
+} catch (e) {
+  console.error('Sync e' + e);
+}
 ```
 
 ### on('dataChange')<sup>8+</sup>
@@ -3849,7 +3819,7 @@ on(event: 'dataChange', type: SubscribeType, listener: Callback&lt;ChangeNotific
 ```js
 let kvStore;
 kvStore.on('dataChange', distributedData.SubscribeType.SUBSCRIBE_TYPE_LOCAL, function (data) {
-    console.log("dataChange callback call data: " + JSON.stringify(data));
+    console.info("dataChange callback call data: " + JSON.stringify(data));
 });
 ```
 
@@ -3876,15 +3846,15 @@ const KEY_TEST_FLOAT_ELEMENT = 'key_test_float';
 const VALUE_TEST_FLOAT_ELEMENT = 321.12;
 try {
     kvStore.on('syncComplete', function (data) {
-        console.log('syncComplete ' + data)
+        console.info('syncComplete ' + data)
     });
     kvStore.put(KEY_TEST_FLOAT_ELEMENT, VALUE_TEST_FLOAT_ELEMENT).then((data) => {
-        console.log('syncComplete put success');
+        console.info('syncComplete put success');
     }).catch((error) => {
-        console.log('syncComplete put fail ' + error);
+        console.error('syncComplete put fail ' + error);
     });
 }catch(e) {
-    console.log('syncComplete put e ' + e);
+    console.error('syncComplete put e ' + e);
 }
 ```
 
@@ -3909,7 +3879,7 @@ off(event:'dataChange', listener?: Callback&lt;ChangeNotification&gt;): void
 let kvStore;
 class KvstoreModel {
     call(data) {
-        console.log("dataChange: " + data);
+        console.info("dataChange: " + data);
     }
     subscribeDataChange() {
         if (kvStore != null) {
@@ -3945,7 +3915,7 @@ off(event: 'syncComplete', syncCallback?: Callback&lt;Array&lt;[string, number]&
 let kvStore;
 class KvstoreModel {
     call(data) {
-        console.log("syncComplete: " + data);
+        console.info("syncComplete: " + data);
     }
     subscribeSyncComplete() {
         if (kvStore != null) {
@@ -3982,10 +3952,10 @@ let kvStore;
 try {
     const defaultAllowedDelayMs = 500;
     kvStore.setSyncParam(defaultAllowedDelayMs, function (err,data) {
-        console.log('SetSyncParam put success');
+        console.info('SetSyncParam put success');
     });
 }catch(e) {
-    console.log('testSingleKvStoreSetSyncParam e ' + e);
+    console.error('testSingleKvStoreSetSyncParam e ' + e);
 }
 ```
 
@@ -4018,12 +3988,12 @@ let kvStore;
 try {
     const defaultAllowedDelayMs = 500;
     kvStore.setSyncParam(defaultAllowedDelayMs).then((err) => {
-        console.log('SetSyncParam put success');
+        console.info('SetSyncParam put success');
     }).catch((err) => {
-        console.log('SetSyncParam put fail ' + JSON.stringify(err));
+        console.error('SetSyncParam put fail ' + JSON.stringify(err));
     });
 }catch(e) {
-    console.log('SetSyncParam e ' + e);
+    console.error('SetSyncParam e ' + e);
 }
 ```
 
@@ -4048,10 +4018,10 @@ getSecurityLevel(callback: AsyncCallback&lt;SecurityLevel&gt;): void
 let kvStore;
 try {
     kvStore.getSecurityLevel(function (err,data) {
-        console.log('getSecurityLevel success');
+        console.info('getSecurityLevel success');
     });
 }catch(e) {
-    console.log('GetSecurityLevel e ' + e);
+    console.error('GetSecurityLevel e ' + e);
 }
 ```
 
@@ -4076,12 +4046,12 @@ getSecurityLevel(): Promise&lt;SecurityLevel&gt;
 let kvStore;
 try {
     kvStore.getSecurityLevel().then((data) => {
-        console.log(' getSecurityLevel success');
+        console.info(' getSecurityLevel success');
     }).catch((err) => {
-        console.log('getSecurityLevel fail ' + JSON.stringify(err));
+        console.error('getSecurityLevel fail ' + JSON.stringify(err));
     });
 }catch(e) {
-    console.log('GetSecurityLevel e ' + e);
+    console.error('GetSecurityLevel e ' + e);
 }
 ```
 
@@ -4101,10 +4071,6 @@ try {
 get(deviceId: string, key: string, callback: AsyncCallback&lt;boolean|string|number|Uint8Array&gt;): void
 
 获取与指定设备ID和key匹配的string值，使用callback异步回调。
-> **说明：** 
->
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
 
 **系统能力：**   SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -4124,13 +4090,13 @@ const KEY_TEST_STRING_ELEMENT = 'key_test_string_2';
 const VALUE_TEST_STRING_ELEMENT = 'value-string-002';
 try{
     kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, async function (err,data) {
-        console.log('put success');
+        console.info('put success');
         kvStore.get('localDeviceId', KEY_TEST_STRING_ELEMENT, function (err,data) {
-            console.log('get success');
+            console.info('get success');
         });
     })
 }catch(e) {
-    console.log('get e' + e);
+    console.error('get e' + e);
 }
 ```
 
@@ -4140,10 +4106,6 @@ try{
 get(deviceId: string, key: string): Promise&lt;boolean|string|number|Uint8Array&gt;
 
 获取与指定设备ID和key匹配的string值，使用Promise异步回调。
-> **说明：** 
->
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -4168,17 +4130,17 @@ const KEY_TEST_STRING_ELEMENT = 'key_test_string_2';
 const VALUE_TEST_STRING_ELEMENT = 'value-string-002';
 try {
     kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT).then(async (data) => {
-        console.log(' put success');
+        console.info(' put success');
         kvStore.get('localDeviceId', KEY_TEST_STRING_ELEMENT).then((data) => {
-            console.log('get success');
+            console.info('get success');
         }).catch((err) => {
-            console.log('get fail ' + JSON.stringify(err));
+            console.error('get fail ' + JSON.stringify(err));
         });
     }).catch((error) => {
-        console.log('put error' + error);
+        console.error('put error' + error);
     });
 } catch (e) {
-    console.log('Get e ' + e);
+    console.error('Get e ' + e);
 }
 ```
 
@@ -4188,10 +4150,6 @@ try {
 getEntries(deviceId: string, keyPrefix: string, callback: AsyncCallback&lt;Entry[]&gt;): void
 
 获取与指定设备ID和key前缀匹配的所有键值对，使用callback异步回调。
-> **说明：** 
->
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -4220,17 +4178,17 @@ try {
         }
         entries.push(entry);
     }
-    console.log('entries: ' + entries);
+    console.info('entries: ' + entries);
     kvStore.putBatch(entries, async function (err,data) {
-        console.log('putBatch success');
+        console.info('putBatch success');
         kvStore.getEntries('localDeviceId', 'batch_test_string_key', function (err,entries) {
-            console.log('getEntries success');
-            console.log('entries.length: ' + entries.length);
-            console.log('entries[0]: ' + JSON.stringify(entries[0]));
+            console.info('getEntries success');
+            console.info('entries.length: ' + entries.length);
+            console.info('entries[0]: ' + JSON.stringify(entries[0]));
         });
     });
 }catch(e) {
-    console.log('PutBatch e ' + e);
+    console.error('PutBatch e ' + e);
 }
 ```
 
@@ -4240,10 +4198,6 @@ try {
 getEntries(deviceId: string, keyPrefix: string): Promise&lt;Entry[]&gt;
 
 获取与指定设备ID和key前缀匹配的所有键值对，使用Promise异步回调。
-> **说明：** 
->
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -4277,23 +4231,23 @@ try {
         }
         entries.push(entry);
     }
-    console.log('entries: ' + entries);
+    console.info('entries: ' + entries);
     kvStore.putBatch(entries).then(async (err) => {
-        console.log('putBatch success');
+        console.info('putBatch success');
         kvStore.getEntries('localDeviceId', 'batch_test_string_key').then((entries) => {
-            console.log('getEntries success');
-            console.log('entries.length: ' + entries.length);
-            console.log('entries[0]: ' + JSON.stringify(entries[0]));
-            console.log('entries[0].value: ' + JSON.stringify(entries[0].value));
-            console.log('entries[0].value.value: ' + entries[0].value.value);
+            console.info('getEntries success');
+            console.info('entries.length: ' + entries.length);
+            console.info('entries[0]: ' + JSON.stringify(entries[0]));
+            console.info('entries[0].value: ' + JSON.stringify(entries[0].value));
+            console.info('entries[0].value.value: ' + entries[0].value.value);
         }).catch((err) => {
-            console.log('getEntries fail ' + JSON.stringify(err));
+            console.error('getEntries fail ' + JSON.stringify(err));
         });
     }).catch((err) => {
-        console.log('putBatch fail ' + JSON.stringify(err));
+        console.error('putBatch fail ' + JSON.stringify(err));
     });
 }catch(e) {
-    console.log('PutBatch e ' + e);
+    console.error('PutBatch e ' + e);
 }
 ```
 
@@ -4331,21 +4285,21 @@ try {
         }
         entries.push(entry);
     }
-    console.log('entries: ' + JSON.stringify(entries));
+    console.info('entries: ' + JSON.stringify(entries));
     kvStore.putBatch(entries, async function (err,data) {
-        console.log('putBatch success');
+        console.info('putBatch success');
         const query = new distributedData.Query();
         query.prefixKey("batch_test");
         query.deviceId('localDeviceId');
         kvStore.getEntries(query, function (err,entries) {
-            console.log('getEntries success');
-            console.log('entries.length: ' + entries.length);
-            console.log('entries[0]: ' + JSON.stringify(entries[0]));
+            console.info('getEntries success');
+            console.info('entries.length: ' + entries.length);
+            console.info('entries[0]: ' + JSON.stringify(entries[0]));
         });
     });
-    console.log('GetEntries success');
+    console.info('GetEntries success');
 }catch(e) {
-    console.log('GetEntries e ' + e);
+    console.error('GetEntries e ' + e);
 }
 ```
 
@@ -4388,22 +4342,22 @@ try {
         }
         entries.push(entry);
     }
-    console.log('entries: ' + JSON.stringify(entries));
+    console.info('entries: ' + JSON.stringify(entries));
     kvStore.putBatch(entries).then(async (err) => {
-        console.log('putBatch success');
+        console.info('putBatch success');
         const query = new distributedData.Query();
         query.prefixKey("batch_test");
         kvStore.getEntries(query).then((entries) => {
-            console.log('getEntries success');
+            console.info('getEntries success');
         }).catch((err) => {
-            console.log('getEntries fail ' + JSON.stringify(err));
+            console.error('getEntries fail ' + JSON.stringify(err));
         });
     }).catch((err) => {
-        console.log('GetEntries putBatch fail ' + JSON.stringify(err))
+        console.error('GetEntries putBatch fail ' + JSON.stringify(err))
     });
-    console.log('GetEntries success');
+    console.info('GetEntries success');
 }catch(e) {
-    console.log('GetEntries e ' + e);
+    console.error('GetEntries e ' + e);
 }
 ```
 
@@ -4413,10 +4367,6 @@ try {
 getEntries(deviceId: string, query: Query, callback: AsyncCallback&lt;Entry[]&gt;): void
 
 获取与指定设备ID和Query对象匹配的键值对列表，使用callback异步回调。
-> **说明：** 
->
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -4446,21 +4396,21 @@ try {
         }
         entries.push(entry);
     }
-    console.log('entries: ' + JSON.stringify(entries));
+    console.info('entries: ' + JSON.stringify(entries));
     kvStore.putBatch(entries, async function (err,data) {
-        console.log('putBatch success');
+        console.info('putBatch success');
         var query = new distributedData.Query();
         query.deviceId('localDeviceId');
         query.prefixKey("batch_test");
         kvStore.getEntries('localDeviceId', query, function (err,entries) {
-            console.log('getEntries success');
-            console.log('entries.length: ' + entries.length);
-            console.log('entries[0]: ' + JSON.stringify(entries[0]));
+            console.info('getEntries success');
+            console.info('entries.length: ' + entries.length);
+            console.info('entries[0]: ' + JSON.stringify(entries[0]));
         })
     });
-    console.log('GetEntries success');
+    console.info('GetEntries success');
 }catch(e) {
-    console.log('GetEntries e ' + e);
+    console.error('GetEntries e ' + e);
 }
 ```
 
@@ -4470,10 +4420,6 @@ try {
 getEntries(deviceId: string, query: Query): Promise&lt;Entry[]&gt;
 
 获取与指定设备ID和Query对象匹配的键值对列表，使用Promise异步回调。
-> **说明：** 
->
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -4508,23 +4454,23 @@ try {
         }
         entries.push(entry);
     }
-    console.log('entries: ' + JSON.stringify(entries));
+    console.info('entries: ' + JSON.stringify(entries));
     kvStore.putBatch(entries).then(async (err) => {
-        console.log('putBatch success');
+        console.info('putBatch success');
         var query = new distributedData.Query();
         query.deviceId('localDeviceId');
         query.prefixKey("batch_test");
         kvStore.getEntries('localDeviceId', query).then((entries) => {
-            console.log('getEntries success');
+            console.info('getEntries success');
         }).catch((err) => {
-            console.log('getEntries fail ' + JSON.stringify(err));
+            console.error('getEntries fail ' + JSON.stringify(err));
         });
     }).catch((err) => {
-        console.log('putBatch fail ' + JSON.stringify(err));
+        console.error('putBatch fail ' + JSON.stringify(err));
     });
-    console.log('GetEntries success');
+    console.info('GetEntries success');
 }catch(e) {
-    console.log('GetEntries e ' + e);
+    console.error('GetEntries e ' + e);
 }
 ```
 
@@ -4534,10 +4480,6 @@ try {
 getResultSet(deviceId: string, keyPrefix: string, callback: AsyncCallback&lt;KvStoreResultSet&gt;): void
 
 获取与指定设备ID和key前缀匹配的KvStoreResultSet对象，使用callback异步回调。
-> **说明：** 
->
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -4556,14 +4498,14 @@ let kvStore;
 try {
     let resultSet;
     kvStore.getResultSet('localDeviceId', 'batch_test_string_key', async function (err, result) {
-        console.log('getResultSet succeed.');
+        console.info('getResultSet succeed.');
         resultSet = result;
         kvStore.closeResultSet(resultSet, function (err, data) {
-            console.log('closeResultSet success');
+            console.info('closeResultSet success');
         })
     });
 }catch(e) {
-    console.log('GetResultSet e ' + e);
+    console.error('GetResultSet e ' + e);
 }
 ```
 
@@ -4573,10 +4515,6 @@ try {
 getResultSet(deviceId: string, keyPrefix: string): Promise&lt;KvStoreResultSet&gt;
 
 获取与指定设备ID和key前缀匹配的KvStoreResultSet对象，使用Promise异步回调。
-> **说明：** 
->
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -4600,18 +4538,18 @@ let kvStore;
 try {
     let resultSet;
     kvStore.getResultSet('localDeviceId', 'batch_test_string_key').then((result) => {
-        console.log('getResultSet succeed.');
+        console.info('getResultSet succeed.');
         resultSet = result;
     }).catch((err) => {
-        console.log('getResultSet failed: ' + JSON.stringify(err));
+        console.error('getResultSet failed: ' + JSON.stringify(err));
     });
     kvStore.closeResultSet(resultSet).then((err) => {
-        console.log('closeResultSet success');
+        console.info('closeResultSet success');
     }).catch((err) => {
-        console.log('closeResultSet fail ' + JSON.stringify(err));
+        console.error('closeResultSet fail ' + JSON.stringify(err));
     });
 }catch(e) {
-    console.log('GetResultSet e ' + e);
+    console.error('GetResultSet e ' + e);
 }
 ```
 
@@ -4650,20 +4588,20 @@ try {
         entries.push(entry);
     }
     kvStore.putBatch(entries, async function (err, data) {
-        console.log('putBatch success');
+        console.info('putBatch success');
         const query = new distributedData.Query();
         query.prefixKey("batch_test");
         query.deviceId('localDeviceId');
         kvStore.getResultSet(query, async function (err, result) {
-            console.log('getResultSet succeed.');
+            console.info('getResultSet succeed.');
             resultSet = result;
             kvStore.closeResultSet(resultSet, function (err, data) {
-                console.log('closeResultSet success');
+                console.info('closeResultSet success');
             })
         });
     });
 } catch(e) {
-    console.log('GetResultSet e ' + e);
+    console.error('GetResultSet e ' + e);
 }
 ```
 
@@ -4707,27 +4645,27 @@ try {
         entries.push(entry);
     }
     kvStore.putBatch(entries).then(async (err) => {
-        console.log('putBatch success');
+        console.info('putBatch success');
     }).catch((err) => {
-        console.log('putBatch fail ' + err);
+        console.error('putBatch fail ' + err);
     });
     const query = new distributedData.Query();
     query.deviceId('localDeviceId');
     query.prefixKey("batch_test");
-    console.log("GetResultSet " + query.getSqlLike());
+    console.info("GetResultSet " + query.getSqlLike());
     kvStore.getResultSet(query).then((result) => {
-        console.log('getResultSet succeed.');
+        console.info('getResultSet succeed.');
         resultSet = result;
     }).catch((err) => {
-        console.log('getResultSet failed: ' + JSON.stringify(err));
+        console.error('getResultSet failed: ' + JSON.stringify(err));
     });
     kvStore.closeResultSet(resultSet).then((err) => {
-        console.log('closeResultSet success');
+        console.info('closeResultSet success');
     }).catch((err) => {
-        console.log('closeResultSet fail ' + JSON.stringify(err));
+        console.error('closeResultSet fail ' + JSON.stringify(err));
     });
 }catch(e) {
-    console.log('GetResultSet e ' + e);
+    console.error('GetResultSet e ' + e);
 }
 ```
 
@@ -4737,10 +4675,6 @@ try {
 getResultSet(deviceId: string, query: Query, callback: AsyncCallback&lt;KvStoreResultSet&gt;): void
 
 获取与指定设备ID和Query对象匹配的KvStoreResultSet对象，使用callback异步回调。
-> **说明：** 
->
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -4771,19 +4705,19 @@ try {
         entries.push(entry);
     }
     kvStore.putBatch(entries, async function (err, data) {
-        console.log('putBatch success');
+        console.info('putBatch success');
         const query = new distributedData.Query();
         query.prefixKey("batch_test");
         kvStore.getResultSet('localDeviceId', query, async function (err, result) {
-            console.log('getResultSet succeed.');
+            console.info('getResultSet succeed.');
             resultSet = result;
             kvStore.closeResultSet(resultSet, function (err, data) {
-                console.log('closeResultSet success');
+                console.info('closeResultSet success');
             })
         });
     });
 } catch(e) {
-    console.log('GetResultSet e ' + e);
+    console.error('GetResultSet e ' + e);
 }
 ```
 
@@ -4793,10 +4727,6 @@ try {
 getResultSet(deviceId: string, query: Query): Promise&lt;KvStoreResultSet&gt;
 
 获取与指定设备ID和Query对象匹配的KvStoreResultSet对象，使用Promise异步回调。
-> **说明：** 
->
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -4832,28 +4762,28 @@ try {
         entries.push(entry);
     }
     kvStore.putBatch(entries).then(async (err) => {
-        console.log('GetResultSet putBatch success');
+        console.info('GetResultSet putBatch success');
     }).catch((err) => {
-        console.log('PutBatch putBatch fail ' + JSON.stringify(err));
+        console.error('PutBatch putBatch fail ' + JSON.stringify(err));
     });
     const query = new distributedData.Query();
     query.prefixKey("batch_test");
     kvStore.getResultSet('localDeviceId', query).then((result) => {
-        console.log('GetResultSet getResultSet succeed.');
+        console.info('GetResultSet getResultSet succeed.');
         resultSet = result;
     }).catch((err) => {
-        console.log('GetResultSet getResultSet failed: ' + JSON.stringify(err));
+        console.error('GetResultSet getResultSet failed: ' + JSON.stringify(err));
     });
     query.deviceId('localDeviceId');
-    console.log("GetResultSet " + query.getSqlLike());
+    console.info("GetResultSet " + query.getSqlLike());
     kvStore.closeResultSet(resultSet).then((err) => {
-        console.log('GetResultSet closeResultSet success');
+        console.info('GetResultSet closeResultSet success');
     }).catch((err) => {
-        console.log('GetResultSet closeResultSet fail ' + JSON.stringify(err));
+        console.error('GetResultSet closeResultSet fail ' + JSON.stringify(err));
     });
 
 }catch(e) {
-    console.log('GetResultSet e ' + e);
+    console.error('GetResultSet e ' + e);
 }
 ```
 
@@ -4878,17 +4808,17 @@ closeResultSet(resultSet: KvStoreResultSet, callback: AsyncCallback&lt;void&gt;)
 ```js
 let kvStore;
 try {
-    console.log('CloseResultSet success');
+    console.info('CloseResultSet success');
     let resultSet = null;
     kvStore.closeResultSet(resultSet, function (err, data) {
         if (err == undefined) {
-            console.log('closeResultSet success');
+            console.info('closeResultSet success');
         } else {
-            console.log('closeResultSet fail');
+            console.error('closeResultSet fail');
         }
     });
 }catch(e) {
-    console.log('CloseResultSet e ' + e);
+    console.error('CloseResultSet e ' + e);
 }
 ```
 
@@ -4918,15 +4848,15 @@ closeResultSet(resultSet: KvStoreResultSet): Promise&lt;void&gt;
 ```js
 let kvStore;
 try {
-    console.log('CloseResultSet success');
+    console.info('CloseResultSet success');
     let resultSet = null;
     kvStore.closeResultSet(resultSet).then(() => {
-        console.log('closeResultSet success');
+        console.info('closeResultSet success');
     }).catch((err) => {
-        console.log('closeResultSet fail ' + JSON.stringify(err));
+        console.error('closeResultSet fail ' + JSON.stringify(err));
     });
 }catch(e) {
-    console.log('CloseResultSet e ' + e);
+    console.error('CloseResultSet e ' + e);
 }
 ```
 
@@ -4964,16 +4894,16 @@ try {
         entries.push(entry);
     }
     kvStore.putBatch(entries, async function (err, data) {
-        console.log('putBatch success');
+        console.info('putBatch success');
         const query = new distributedData.Query();
         query.prefixKey("batch_test");
         query.deviceId('localDeviceId');
         kvStore.getResultSize(query, async function (err, resultSize) {
-            console.log('getResultSet succeed.');
+            console.info('getResultSet succeed.');
         });
     });
 } catch(e) {
-    console.log('GetResultSize e ' + e);
+    console.error('GetResultSize e ' + e);
 }
 ```
 
@@ -5016,20 +4946,20 @@ try {
         entries.push(entry);
     }
     kvStore.putBatch(entries).then(async (err) => {
-        console.log('putBatch success');
+        console.info('putBatch success');
     }).catch((err) => {
-        console.log('putBatch fail ' + JSON.stringify(err));
+        console.error('putBatch fail ' + JSON.stringify(err));
     });
     const query = new distributedData.Query();
     query.prefixKey("batch_test");
     query.deviceId('localDeviceId');
     kvStore.getResultSize(query).then((resultSize) => {
-        console.log('getResultSet succeed.');
+        console.info('getResultSet succeed.');
     }).catch((err) => {
-        console.log('getResultSet failed: ' + JSON.stringify(err));
+        console.error('getResultSet failed: ' + JSON.stringify(err));
     });
 }catch(e) {
-    console.log('GetResultSize e ' + e);
+    console.error('GetResultSize e ' + e);
 }
 ```
 
@@ -5039,10 +4969,6 @@ try {
 getResultSize(deviceId: string, query: Query, callback: AsyncCallback&lt;number&gt;): void;
 
 获取与指定设备ID和Query对象匹配的结果数，使用callback异步回调。
-> **说明：** 
->
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -5072,15 +4998,15 @@ try {
         entries.push(entry);
     }
     kvStore.putBatch(entries, async function (err, data) {
-        console.log('putBatch success');
+        console.info('putBatch success');
         const query = new distributedData.Query();
         query.prefixKey("batch_test");
         kvStore.getResultSize('localDeviceId', query, async function (err, resultSize) {
-            console.log('getResultSet succeed.');
+            console.info('getResultSet succeed.');
         });
     });
 } catch(e) {
-    console.log('GetResultSize e ' + e);
+    console.error('GetResultSize e ' + e);
 }
 ```
 
@@ -5090,10 +5016,6 @@ try {
 getResultSize(deviceId: string, query: Query): Promise&lt;number&gt;
 
 获取与指定设备ID和Query对象匹配的结果数，使用Promise异步回调。
-> **说明：** 
->
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -5128,19 +5050,19 @@ try {
         entries.push(entry);
     }
     kvStore.putBatch(entries).then(async (err) => {
-        console.log('putBatch success');
+        console.info('putBatch success');
     }).catch((err) => {
-        console.log('putBatch fail ' + JSON.stringify(err));
+        console.error('putBatch fail ' + JSON.stringify(err));
     });
     var query = new distributedData.Query();
     query.prefixKey("batch_test");
     kvStore.getResultSize('localDeviceId', query).then((resultSize) => {
-        console.log('getResultSet succeed.');
+        console.info('getResultSet succeed.');
     }).catch((err) => {
-        console.log('getResultSet failed: ' + JSON.stringify(err));
+        console.error('getResultSet failed: ' + JSON.stringify(err));
     });
 }catch(e) {
-    console.log('GetResultSize e ' + e);
+    console.error('GetResultSize e ' + e);
 }
 ```
 
@@ -5150,10 +5072,6 @@ try {
 removeDeviceData(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
 从当前数据库中删除指定设备的数据，使用callback异步回调。
-> **说明：** 
->
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -5172,21 +5090,21 @@ const KEY_TEST_STRING_ELEMENT = 'key_test_string';
 const VALUE_TEST_STRING_ELEMENT = 'value-string-001';
 try {
     kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, async function (err,data) {
-        console.log('RemoveDeviceData  put success');
+        console.info('RemoveDeviceData  put success');
         const deviceid = 'no_exist_device_id';
         kvStore.removeDeviceData(deviceid, async function (err,data) {
             if (err == undefined) {
-                console.log('removeDeviceData success');
+                console.info('removeDeviceData success');
             } else {
-                console.log('removeDeviceData fail');
+                console.error('removeDeviceData fail');
                 kvStore.get('localDeviceId', KEY_TEST_STRING_ELEMENT, async function (err,data) {
-                    console.log('RemoveDeviceData get success');
+                    console.info('RemoveDeviceData get success');
                 });
             }
         });
     });
 }catch(e) {
-    console.log('RemoveDeviceData e ' + e);
+    console.error('RemoveDeviceData e ' + e);
 }
 ```
 
@@ -5196,10 +5114,6 @@ try {
 removeDeviceData(deviceId: string): Promise&lt;void&gt;
 
 从当前数据库中删除指定设备的数据，使用Promise异步回调。
-> **说明：** 
->
-> 其中deviceId通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
-> deviceId具体获取方式请参考[sync接口示例](#sync)。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -5223,23 +5137,23 @@ const KEY_TEST_STRING_ELEMENT = 'key_test_string';
 const VALUE_TEST_STRING_ELEMENT = 'value-string-001';
 try {
     kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT).then((err) => {
-        console.log('RemoveDeviceData put success');
+        console.info('RemoveDeviceData put success');
     }).catch((err) => {
-        console.log('RemoveDeviceData put fail ' + JSON.stringify(err));
+        console.error('RemoveDeviceData put fail ' + JSON.stringify(err));
     });
     const deviceid = 'no_exist_device_id';
     kvStore.removeDeviceData(deviceid).then((err) => {
-        console.log('removeDeviceData success');
+        console.info('removeDeviceData success');
     }).catch((err) => {
-        console.log('removeDeviceData fail ' + JSON.stringify(err));
+        console.error('removeDeviceData fail ' + JSON.stringify(err));
     });
     kvStore.get('localDeviceId', KEY_TEST_STRING_ELEMENT).then((data) => {
-        console.log('RemoveDeviceData get success data:' + data);
+        console.info('RemoveDeviceData get success data:' + data);
     }).catch((err) => {
-        console.log('RemoveDeviceData get fail ' + JSON.stringify(err));
+        console.error('RemoveDeviceData get fail ' + JSON.stringify(err));
     });
 }catch(e) {
-    console.log('RemoveDeviceData e ' + e);
+    console.error('RemoveDeviceData e ' + e);
 }
 ```
 
@@ -5250,9 +5164,6 @@ sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 
 在手动同步方式下，触发数据库同步。
 
-> **说明：**
->
-> 其中deviceIds为<!--RP2-->[DeviceInfo](../apis-distributedservice-kit/js-apis-device-manager-sys.md#deviceinfo)中的networkId, 通过调用[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP2End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
 
 **需要权限**： ohos.permission.DISTRIBUTED_DATASYNC。
 
@@ -5269,41 +5180,27 @@ sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 **示例：**
 
 ```js
-import deviceManager from '@ohos.distributedHardware.deviceManager';
 
-let devManager;
 let kvStore;
 const KEY_TEST_SYNC_ELEMENT = 'key_test_sync';
 const VALUE_TEST_SYNC_ELEMENT = 'value-string-001';
-// create deviceManager
-deviceManager.createDeviceManager('bundleName', (err, value) => {
-  if (!err) {
-    devManager = value;
-    let deviceIds = [];
-    if (devManager != null) {
-      var devices = devManager.getTrustedDeviceListSync();
-      for (var i = 0; i < devices.length; i++) {
-        deviceIds[i] = devices[i].networkId;
-      }
+const deviceIds = ['networkId1', 'networkId2'];
+try {
+  kvStore.on('syncComplete', function (data) {
+    console.info('Sync dataChange');
+  });
+  kvStore.put(KEY_TEST_SYNC_ELEMENT + 'testSync101', VALUE_TEST_SYNC_ELEMENT, function (err, data) {
+    if (err != undefined) {
+      console.error("put err: " + JSON.stringify(err));
+      return;
     }
-    try {
-      kvStore.on('syncComplete', function (data) {
-        console.log('Sync dataChange');
-      });
-      kvStore.put(KEY_TEST_SYNC_ELEMENT + 'testSync101', VALUE_TEST_SYNC_ELEMENT, function (err, data) {
-        if (err != undefined) {
-          console.log("put err: " + JSON.stringify(err));
-          return;
-        }
-        console.log('Succeeded in putting data');
-        const mode = distributedData.SyncMode.PULL_ONLY;
-        kvStore.sync(deviceIds, mode, 1000);
-      });
-    } catch (e) {
-      console.log('Sync e' + e);
-    }
-  }
-});
+    console.info('Succeeded in putting data');
+    const mode = distributedData.SyncMode.PULL_ONLY;
+    kvStore.sync(deviceIds, mode, 1000);
+  });
+} catch (e) {
+  console.error('Sync e' + e);
+}
 ```
 
 ### on('dataChange')<sup>8+</sup>
@@ -5327,7 +5224,7 @@ on(event: 'dataChange', type: SubscribeType, listener: Callback&lt;ChangeNotific
 ```js
 let kvStore;
 kvStore.on('dataChange', distributedData.SubscribeType.SUBSCRIBE_TYPE_LOCAL, function (data) {
-    console.log("dataChange callback call data: " + JSON.stringify(data));
+    console.info("dataChange callback call data: " + JSON.stringify(data));
 });
 ```
 
@@ -5354,15 +5251,15 @@ const KEY_TEST_FLOAT_ELEMENT = 'key_test_float';
 const VALUE_TEST_FLOAT_ELEMENT = 321.12;
 try {
     kvStore.on('syncComplete', function (data) {
-        console.log('syncComplete ' + data)
+        console.info('syncComplete ' + data)
     });
     kvStore.put(KEY_TEST_FLOAT_ELEMENT, VALUE_TEST_FLOAT_ELEMENT).then((data) => {
-        console.log('syncComplete put success');
+        console.info('syncComplete put success');
     }).catch((error) => {
-        console.log('syncComplete put fail ' + error);
+        console.error('syncComplete put fail ' + error);
     });
 }catch(e) {
-    console.log('syncComplete put e ' + e);
+    console.error('syncComplete put e ' + e);
 }
 ```
 
@@ -5387,7 +5284,7 @@ off(event:'dataChange', listener?: Callback&lt;ChangeNotification&gt;): void
 let kvStore;
 class KvstoreModel {
     call(data) {
-        console.log("dataChange: " + data);
+        console.info("dataChange: " + data);
     }
     subscribeDataChange() {
         if (kvStore != null) {
@@ -5423,7 +5320,7 @@ off(event: 'syncComplete', syncCallback?: Callback&lt;Array&lt;[string, number]&
 let kvStore;
 class KvstoreModel {
     call(data) {
-        console.log("syncComplete: " + data);
+        console.info("syncComplete: " + data);
     }
     subscribeSyncComplete() {
         if (kvStore != null) {

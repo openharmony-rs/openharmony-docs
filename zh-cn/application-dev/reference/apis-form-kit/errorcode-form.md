@@ -322,6 +322,43 @@ The location of the widget is invalid.
 
 检查入参卡片位置是否在[FormLocation](js-apis-app-form-formInfo.md#formlocation20)配置列表。
 
+## 16501017 无空间发布卡片
+
+**错误信息**
+
+There is no space to publish the form.
+
+**错误描述**
+
+发布卡片时，桌面无空间容纳新卡片。
+
+**可能原因**
+
+1. 桌面当前页与下一页空间不足且桌面总页数已满。
+2. 桌面卡片数量已达上限，无法添加更多卡片。
+
+**处理步骤**
+
+删除不必要的卡片后重试发布。
+
+## 16501018 卡片不支持发布
+
+**错误信息**
+
+This form does not support publishing.
+
+**错误描述**
+
+发布卡片时，桌面不允许该卡片发布。
+
+**可能原因**
+
+卡片不支持在桌面上发布。
+
+**处理步骤**
+
+检查卡片配置是否符合当前场景，详细参考[配置文件](../../form/arkts-ui-widget-configuration.md#配置文件字段说明)renderingMode字段说明和[supportdimensions字段与设备支持关系表](../../form/arkts-ui-widget-configuration.md#supportdimensions字段与设备支持关系表)。
+
 ## 2293761 内部服务错误
 
 **错误信息**

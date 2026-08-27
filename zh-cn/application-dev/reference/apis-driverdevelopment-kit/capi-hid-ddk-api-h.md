@@ -248,14 +248,14 @@ int32_t OH_Hid_Write(Hid_DeviceHandle *dev, uint8_t *data, uint32_t length, uint
 | -- | -- |
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev | 设备操作句柄，使用前须通过[OH_Hid_Open](#oh_hid_open)打开并获取。 |
 | uint8_t *data | 待写入的数据。 |
-| uint32_t length | 写入数据的字节长度，大于0且最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)，否则无法通过参数校验。 |
+| uint32_t length | 写入数据的字节长度，大于0且最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#宏定义)，否则无法通过参数校验。 |
 | uint32_t *bytesWritten | 实际写入的数据字节数。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode) 操作成功。<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode) 权限校验失败。请确保应用已声明ohos.permission.ACCESS_DDK_HID权限。<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode) 参数校验失败。可能原因：1. dev为空；<br>             2. data为空；3. length为0；4. length超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)；<br>             5. bytesWritten为空。<br>         [HID_DDK_INIT_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) DDK未初始化，请确保已调用[OH_Hid_Init](#oh_hid_init)完成初始化。<br>         [HID_DDK_SERVICE_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 与DDK服务通信失败。可能原因：服务内部错误。请检查当前操作和设备状态。<br>         [HID_DDK_IO_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) I/O操作失败。可能原因：设备状态异常、数据传输错误等。请检查设备状态和参数。 |
+| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode) 操作成功。<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode) 权限校验失败。请确保应用已声明ohos.permission.ACCESS_DDK_HID权限。<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode) 参数校验失败。可能原因：1. dev为空；<br>             2. data为空；3. length为0；4. length超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#宏定义)；<br>             5. bytesWritten为空。<br>         [HID_DDK_INIT_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) DDK未初始化，请确保已调用[OH_Hid_Init](#oh_hid_init)完成初始化。<br>         [HID_DDK_SERVICE_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 与DDK服务通信失败。可能原因：服务内部错误。请检查当前操作和设备状态。<br>         [HID_DDK_IO_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) I/O操作失败。可能原因：设备状态异常、数据传输错误等。请检查设备状态和参数。 |
 
 ### OH_Hid_ReadTimeout()
 
@@ -278,7 +278,7 @@ int32_t OH_Hid_ReadTimeout(Hid_DeviceHandle *dev, uint8_t *data, uint32_t bufSiz
 | -- | -- |
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev | 设备操作句柄，使用前须通过[OH_Hid_Open](#oh_hid_open)打开并获取。 |
 | uint8_t *data | 存放读取数据的缓冲区。 |
-| uint32_t bufSize | 存放读取数据的缓冲区大小，大于0且最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)，否则无法通过参数校验。 |
+| uint32_t bufSize | 存放读取数据的缓冲区大小，大于0且最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#宏定义)，否则无法通过参数校验。 |
 | int timeout | 超时时间（毫秒），取值说明：大于0时，表示阻塞等待的毫秒数；等于0时表示立即返回；设置为-1时表示阻塞等待直至读出数据，不会返回超时。 |
 | uint32_t *bytesRead | 读取的字节数。 |
 
@@ -286,7 +286,7 @@ int32_t OH_Hid_ReadTimeout(Hid_DeviceHandle *dev, uint8_t *data, uint32_t bufSiz
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode) 操作成功。<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode) 权限校验失败。请确保应用已声明ohos.permission.ACCESS_DDK_HID权限。<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode) 参数校验失败。可能原因：1. dev为空；<br>             2. data为空；3. bufSize为0；4. bufSize超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)；<br>             5. bytesRead为空。<br>         [HID_DDK_INIT_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) DDK未初始化，请确保已调用[OH_Hid_Init](#oh_hid_init)完成初始化。<br>         [HID_DDK_SERVICE_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 与DDK服务通信失败。可能原因：服务内部错误。请检查当前操作和设备状态。<br>         [HID_DDK_MEMORY_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 内存数据拷贝失败。<br>         [HID_DDK_IO_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) I/O操作失败。可能原因：设备状态异常、数据传输错误等。请检查设备状态和参数。<br>         [HID_DDK_TIMEOUT](capi-hid-ddk-types-h.md#hid_ddkerrcode) 读取超时。 |
+| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode) 操作成功。<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode) 权限校验失败。请确保应用已声明ohos.permission.ACCESS_DDK_HID权限。<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode) 参数校验失败。可能原因：1. dev为空；<br>             2. data为空；3. bufSize为0；4. bufSize超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#宏定义)；<br>             5. bytesRead为空。<br>         [HID_DDK_INIT_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) DDK未初始化，请确保已调用[OH_Hid_Init](#oh_hid_init)完成初始化。<br>         [HID_DDK_SERVICE_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 与DDK服务通信失败。可能原因：服务内部错误。请检查当前操作和设备状态。<br>         [HID_DDK_MEMORY_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 内存数据拷贝失败。<br>         [HID_DDK_IO_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) I/O操作失败。可能原因：设备状态异常、数据传输错误等。请检查设备状态和参数。<br>         [HID_DDK_TIMEOUT](capi-hid-ddk-types-h.md#hid_ddkerrcode) 读取超时。 |
 
 ### OH_Hid_Read()
 
@@ -309,14 +309,14 @@ int32_t OH_Hid_Read(Hid_DeviceHandle *dev, uint8_t *data, uint32_t bufSize, uint
 | -- | -- |
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev | 设备操作句柄，使用前须通过[OH_Hid_Open](#oh_hid_open)打开并获取。 |
 | uint8_t *data | 存放读取数据的缓冲区。 |
-| uint32_t bufSize | 存放读取数据的缓冲区大小，大于0且最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)，否则无法通过参数校验。 |
+| uint32_t bufSize | 存放读取数据的缓冲区大小，大于0且最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#宏定义)，否则无法通过参数校验。 |
 | uint32_t *bytesRead | 读取的字节数。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode) 操作成功。<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode) 权限校验失败。请确保应用已声明ohos.permission.ACCESS_DDK_HID权限。<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode) 参数校验失败。可能原因：1. dev为空；<br>             2. data为空；3. bufSize为0；4. bufSize超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)；<br>             5. bytesRead为空。<br>         [HID_DDK_INIT_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) DDK未初始化，请确保已调用[OH_Hid_Init](#oh_hid_init)完成初始化。<br>         [HID_DDK_SERVICE_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 与DDK服务通信失败。可能原因：服务内部错误。请检查当前操作和设备状态。<br>         [HID_DDK_MEMORY_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 内存数据拷贝失败。<br>         [HID_DDK_IO_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) I/O操作失败。可能原因：设备状态异常、数据传输错误等。请检查设备状态和参数。<br>         [HID_DDK_TIMEOUT](capi-hid-ddk-types-h.md#hid_ddkerrcode) 读取超时。 |
+| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode) 操作成功。<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode) 权限校验失败。请确保应用已声明ohos.permission.ACCESS_DDK_HID权限。<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode) 参数校验失败。可能原因：1. dev为空；<br>             2. data为空；3. bufSize为0；4. bufSize超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#宏定义)；<br>             5. bytesRead为空。<br>         [HID_DDK_INIT_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) DDK未初始化，请确保已调用[OH_Hid_Init](#oh_hid_init)完成初始化。<br>         [HID_DDK_SERVICE_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 与DDK服务通信失败。可能原因：服务内部错误。请检查当前操作和设备状态。<br>         [HID_DDK_MEMORY_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 内存数据拷贝失败。<br>         [HID_DDK_IO_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) I/O操作失败。可能原因：设备状态异常、数据传输错误等。请检查设备状态和参数。<br>         [HID_DDK_TIMEOUT](capi-hid-ddk-types-h.md#hid_ddkerrcode) 读取超时。 |
 
 ### OH_Hid_SetNonBlocking()
 
@@ -395,13 +395,13 @@ int32_t OH_Hid_GetRawName(Hid_DeviceHandle *dev, char *data, uint32_t bufSize)
 | -- | -- |
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev | 设备操作句柄，使用前须通过[OH_Hid_Open](#oh_hid_open)打开并获取。 |
 | char *data | 存放读取数据的缓冲区。 |
-| uint32_t bufSize | 存放读取数据的缓冲区大小，大于0且最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)，否则无法通过参数校验。 |
+| uint32_t bufSize | 存放读取数据的缓冲区大小，大于0且最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#宏定义)，否则无法通过参数校验。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode) 操作成功。<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode) 权限校验失败。请确保应用已声明ohos.permission.ACCESS_DDK_HID权限。<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode) 参数校验失败。可能原因：1. dev为空；<br>             2. data为空；3. bufSize为0；4. bufSize超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)。<br>         [HID_DDK_INIT_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) DDK未初始化，请确保已调用[OH_Hid_Init](#oh_hid_init)完成初始化。<br>         [HID_DDK_SERVICE_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 与DDK服务通信失败。可能原因：服务内部错误。请检查当前操作和设备状态。<br>         [HID_DDK_MEMORY_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 内存数据拷贝失败。<br>         [HID_DDK_IO_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) I/O操作失败。可能原因：设备状态异常、数据传输错误等。请检查设备状态和参数。<br>         [HID_DDK_INVALID_OPERATION](capi-hid-ddk-types-h.md#hid_ddkerrcode) 不支持此操作。 |
+| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode) 操作成功。<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode) 权限校验失败。请确保应用已声明ohos.permission.ACCESS_DDK_HID权限。<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode) 参数校验失败。可能原因：1. dev为空；<br>             2. data为空；3. bufSize为0；4. bufSize超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#宏定义)。<br>         [HID_DDK_INIT_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) DDK未初始化，请确保已调用[OH_Hid_Init](#oh_hid_init)完成初始化。<br>         [HID_DDK_SERVICE_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 与DDK服务通信失败。可能原因：服务内部错误。请检查当前操作和设备状态。<br>         [HID_DDK_MEMORY_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 内存数据拷贝失败。<br>         [HID_DDK_IO_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) I/O操作失败。可能原因：设备状态异常、数据传输错误等。请检查设备状态和参数。<br>         [HID_DDK_INVALID_OPERATION](capi-hid-ddk-types-h.md#hid_ddkerrcode) 不支持此操作。 |
 
 ### OH_Hid_GetPhysicalAddress()
 
@@ -424,13 +424,13 @@ int32_t OH_Hid_GetPhysicalAddress(Hid_DeviceHandle *dev, char *data, uint32_t bu
 | -- | -- |
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev | 设备操作句柄，使用前须通过[OH_Hid_Open](#oh_hid_open)打开并获取。 |
 | char *data | 存放读取数据的缓冲区。 |
-| uint32_t bufSize | 存放读取数据的缓冲区大小，大于0且最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)，否则无法通过参数校验。 |
+| uint32_t bufSize | 存放读取数据的缓冲区大小，大于0且最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#宏定义)，否则无法通过参数校验。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode) 操作成功。<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode) 权限校验失败。请确保应用已声明ohos.permission.ACCESS_DDK_HID权限。<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode) 参数校验失败。可能原因：1. dev为空；<br>             2. data为空；3. bufSize为0；4. bufSize超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)。<br>         [HID_DDK_INIT_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) DDK未初始化，请确保已调用[OH_Hid_Init](#oh_hid_init)完成初始化。<br>         [HID_DDK_SERVICE_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 与DDK服务通信失败。可能原因：服务内部错误。请检查当前操作和设备状态。<br>         [HID_DDK_MEMORY_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 内存数据拷贝失败。<br>         [HID_DDK_IO_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) I/O操作失败。可能原因：设备状态异常、数据传输错误等。请检查设备状态和参数。<br>         [HID_DDK_INVALID_OPERATION](capi-hid-ddk-types-h.md#hid_ddkerrcode) 不支持此操作。 |
+| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode) 操作成功。<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode) 权限校验失败。请确保应用已声明ohos.permission.ACCESS_DDK_HID权限。<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode) 参数校验失败。可能原因：1. dev为空；<br>             2. data为空；3. bufSize为0；4. bufSize超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#宏定义)。<br>         [HID_DDK_INIT_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) DDK未初始化，请确保已调用[OH_Hid_Init](#oh_hid_init)完成初始化。<br>         [HID_DDK_SERVICE_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 与DDK服务通信失败。可能原因：服务内部错误。请检查当前操作和设备状态。<br>         [HID_DDK_MEMORY_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 内存数据拷贝失败。<br>         [HID_DDK_IO_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) I/O操作失败。可能原因：设备状态异常、数据传输错误等。请检查设备状态和参数。<br>         [HID_DDK_INVALID_OPERATION](capi-hid-ddk-types-h.md#hid_ddkerrcode) 不支持此操作。 |
 
 ### OH_Hid_GetRawUniqueId()
 
@@ -453,13 +453,13 @@ int32_t OH_Hid_GetRawUniqueId(Hid_DeviceHandle *dev, uint8_t *data, uint32_t buf
 | -- | -- |
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev | 设备操作句柄，使用前须通过[OH_Hid_Open](#oh_hid_open)打开并获取。 |
 | uint8_t *data | 存放读取数据的缓冲区。 |
-| uint32_t bufSize | 存放读取数据的缓冲区大小，大于0且最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)，否则无法通过参数校验。 |
+| uint32_t bufSize | 存放读取数据的缓冲区大小，大于0且最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#宏定义)，否则无法通过参数校验。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode) 操作成功。<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode) 权限校验失败。请确保应用已声明ohos.permission.ACCESS_DDK_HID权限。<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode) 参数校验失败。可能原因：1. dev为空；<br>             2. data为空；3. bufSize为0；4. bufSize超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)。<br>         [HID_DDK_INIT_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) DDK未初始化，请确保已调用[OH_Hid_Init](#oh_hid_init)完成初始化。<br>         [HID_DDK_SERVICE_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 与DDK服务通信失败。可能原因：服务内部错误。请检查当前操作和设备状态。<br>         [HID_DDK_MEMORY_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 内存数据拷贝失败。<br>         [HID_DDK_IO_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) I/O操作失败。可能原因：设备状态异常、数据传输错误等。请检查设备状态和参数。<br>         [HID_DDK_INVALID_OPERATION](capi-hid-ddk-types-h.md#hid_ddkerrcode) 不支持此操作。 |
+| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode) 操作成功。<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode) 权限校验失败。请确保应用已声明ohos.permission.ACCESS_DDK_HID权限。<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode) 参数校验失败。可能原因：1. dev为空；<br>             2. data为空；3. bufSize为0；4. bufSize超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#宏定义)。<br>         [HID_DDK_INIT_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) DDK未初始化，请确保已调用[OH_Hid_Init](#oh_hid_init)完成初始化。<br>         [HID_DDK_SERVICE_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 与DDK服务通信失败。可能原因：服务内部错误。请检查当前操作和设备状态。<br>         [HID_DDK_MEMORY_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 内存数据拷贝失败。<br>         [HID_DDK_IO_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) I/O操作失败。可能原因：设备状态异常、数据传输错误等。请检查设备状态和参数。<br>         [HID_DDK_INVALID_OPERATION](capi-hid-ddk-types-h.md#hid_ddkerrcode) 不支持此操作。 |
 
 ### OH_Hid_SendReport()
 
@@ -483,13 +483,13 @@ int32_t OH_Hid_SendReport(Hid_DeviceHandle *dev, Hid_ReportType reportType, cons
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev | 设备操作句柄，使用前须通过[OH_Hid_Open](#oh_hid_open)打开并获取。 |
 | [Hid_ReportType](capi-hid-ddk-types-h.md#hid_reporttype) reportType | 报告类型，可指定为输入报告、输出报告或特性报告。 |
 | const uint8_t *data | 待发送的数据。 |
-| uint32_t length | 发送数据的字节长度，大于0且最大不超过 [HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)，否则无法通过参数校验。 |
+| uint32_t length | 发送数据的字节长度，大于0且最大不超过 [HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#宏定义)，否则无法通过参数校验。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode) 操作成功。<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode) 权限校验失败。请确保应用已声明ohos.permission.ACCESS_DDK_HID权限。<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode) 参数校验失败。可能原因：1. dev为空；<br>             2. data为空；3. length为0；4. length超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)。<br>         [HID_DDK_INIT_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) DDK未初始化，请确保已调用[OH_Hid_Init](#oh_hid_init)完成初始化。<br>         [HID_DDK_SERVICE_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 与DDK服务通信失败。可能原因：服务内部错误。请检查当前操作和设备状态。<br>         [HID_DDK_IO_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) I/O操作失败。可能原因：设备状态异常、数据传输错误等。请检查设备状态和参数。<br>         [HID_DDK_INVALID_OPERATION](capi-hid-ddk-types-h.md#hid_ddkerrcode) 不支持此操作。 |
+| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode) 操作成功。<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode) 权限校验失败。请确保应用已声明ohos.permission.ACCESS_DDK_HID权限。<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode) 参数校验失败。可能原因：1. dev为空；<br>             2. data为空；3. length为0；4. length超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#宏定义)。<br>         [HID_DDK_INIT_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) DDK未初始化，请确保已调用[OH_Hid_Init](#oh_hid_init)完成初始化。<br>         [HID_DDK_SERVICE_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 与DDK服务通信失败。可能原因：服务内部错误。请检查当前操作和设备状态。<br>         [HID_DDK_IO_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) I/O操作失败。可能原因：设备状态异常、数据传输错误等。请检查设备状态和参数。<br>         [HID_DDK_INVALID_OPERATION](capi-hid-ddk-types-h.md#hid_ddkerrcode) 不支持此操作。 |
 
 ### OH_Hid_GetReport()
 
@@ -513,13 +513,13 @@ int32_t OH_Hid_GetReport(Hid_DeviceHandle *dev, Hid_ReportType reportType, uint8
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev | 设备操作句柄，使用前须通过[OH_Hid_Open](#oh_hid_open)打开并获取。 |
 | [Hid_ReportType](capi-hid-ddk-types-h.md#hid_reporttype) reportType | 报告类型。 |
 | uint8_t *data | 存放读取数据的缓冲区。 |
-| uint32_t bufSize | 存放读取数据的缓冲区大小，大于0且最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)，否则无法通过参数校验。 |
+| uint32_t bufSize | 存放读取数据的缓冲区大小，大于0且最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#宏定义)，否则无法通过参数校验。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode) 操作成功。<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode) 权限校验失败。请确保应用已声明ohos.permission.ACCESS_DDK_HID权限。<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode) 参数校验失败。可能原因：1. dev为空；<br>             2. data为空；3. bufSize为0；4. bufSize超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)。<br>         [HID_DDK_INIT_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) DDK未初始化，请确保已调用[OH_Hid_Init](#oh_hid_init)完成初始化。<br>         [HID_DDK_SERVICE_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 与DDK服务通信失败。可能原因：服务内部错误。请检查当前操作和设备状态。<br>         [HID_DDK_MEMORY_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 内存数据拷贝失败。<br>         [HID_DDK_IO_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) I/O操作失败。可能原因：设备状态异常、数据传输错误等。请检查设备状态和参数。<br>         [HID_DDK_INVALID_OPERATION](capi-hid-ddk-types-h.md#hid_ddkerrcode) 不支持此操作。 |
+| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode) 操作成功。<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode) 权限校验失败。请确保应用已声明ohos.permission.ACCESS_DDK_HID权限。<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode) 参数校验失败。可能原因：1. dev为空；<br>             2. data为空；3. bufSize为0；4. bufSize超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#宏定义)。<br>         [HID_DDK_INIT_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) DDK未初始化，请确保已调用[OH_Hid_Init](#oh_hid_init)完成初始化。<br>         [HID_DDK_SERVICE_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 与DDK服务通信失败。可能原因：服务内部错误。请检查当前操作和设备状态。<br>         [HID_DDK_MEMORY_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 内存数据拷贝失败。<br>         [HID_DDK_IO_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) I/O操作失败。可能原因：设备状态异常、数据传输错误等。请检查设备状态和参数。<br>         [HID_DDK_INVALID_OPERATION](capi-hid-ddk-types-h.md#hid_ddkerrcode) 不支持此操作。 |
 
 ### OH_Hid_GetReportDescriptor()
 
@@ -542,13 +542,13 @@ int32_t OH_Hid_GetReportDescriptor(Hid_DeviceHandle *dev, uint8_t *buf, uint32_t
 | -- | -- |
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev | 设备操作句柄，使用前须通过[OH_Hid_Open](#oh_hid_open)打开并获取。 |
 | uint8_t *buf | 存放描述符的缓冲区。 |
-| uint32_t bufSize | 缓冲区的字节大小，大于0且最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)，否则无法通过参数校验。 |
+| uint32_t bufSize | 缓冲区的字节大小，大于0且最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#宏定义)，否则无法通过参数校验。 |
 | uint32_t *bytesRead | 读取的字节数。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode) 操作成功。<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode) 权限校验失败。请确保应用已声明ohos.permission.ACCESS_DDK_HID权限。<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode) 参数校验失败。可能原因：1. dev为空；<br>             2. buf为空；3. bufSize为0；4. bufSize超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)；<br>             5. bytesRead为空。<br>         [HID_DDK_INIT_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) DDK未初始化，请确保已调用[OH_Hid_Init](#oh_hid_init)完成初始化。<br>         [HID_DDK_SERVICE_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 与DDK服务通信失败。可能原因：服务内部错误。请检查当前操作和设备状态。<br>         [HID_DDK_MEMORY_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 内存数据拷贝失败。<br>         [HID_DDK_IO_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) I/O操作失败。可能原因：设备状态异常、数据传输错误等。请检查设备状态和参数。<br>         [HID_DDK_INVALID_OPERATION](capi-hid-ddk-types-h.md#hid_ddkerrcode) 不支持此操作。 |
+| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode) 操作成功。<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode) 权限校验失败。请确保应用已声明ohos.permission.ACCESS_DDK_HID权限。<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode) 参数校验失败。可能原因：1. dev为空；<br>             2. buf为空；3. bufSize为0；4. bufSize超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#宏定义)；<br>             5. bytesRead为空。<br>         [HID_DDK_INIT_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) DDK未初始化，请确保已调用[OH_Hid_Init](#oh_hid_init)完成初始化。<br>         [HID_DDK_SERVICE_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 与DDK服务通信失败。可能原因：服务内部错误。请检查当前操作和设备状态。<br>         [HID_DDK_MEMORY_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 内存数据拷贝失败。<br>         [HID_DDK_IO_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode) I/O操作失败。可能原因：设备状态异常、数据传输错误等。请检查设备状态和参数。<br>         [HID_DDK_INVALID_OPERATION](capi-hid-ddk-types-h.md#hid_ddkerrcode) 不支持此操作。 |
 
 

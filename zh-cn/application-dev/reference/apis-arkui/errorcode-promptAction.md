@@ -164,7 +164,7 @@ The dialog cannot be opened due to subwindow create failure.
 
 **可能原因**
 
-1. 当前页面存在系统弹出窗口，拦截浮层的显示，导致弹出框的子窗创建失败。
+1. 当前页面存在系统弹出窗口，拦截浮层的显示，导致弹出框的子窗口创建失败。
 
 2. 当弹出框需要在子窗口中显示（[DialogBaseOptions](js-apis-dialog.md#dialogbaseoptions)中的showInSubWindow设置为true）时，子窗口创建失败。
 
