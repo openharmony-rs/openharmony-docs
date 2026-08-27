@@ -35,8 +35,8 @@
       - [\@Styles装饰器：定义组件重用样式](state-management/arkts-style.md)
       - [\@Extend装饰器：定义扩展组件样式](state-management/arkts-extend.md)
       - [stateStyles：多态样式](state-management/arkts-statestyles.md)
-      - [@AnimatableExtend装饰器：定义可动画属性](state-management/arkts-animatable-extend.md)
-    - [@Require装饰器：校验构造传参](state-management/arkts-require.md)
+      - [\@AnimatableExtend装饰器：定义可动画属性](state-management/arkts-animatable-extend.md)
+    - [\@Require装饰器：校验构造传参](state-management/arkts-require.md)
   - 学习UI范式状态管理<!--arkts-state-management-->
     - [状态管理概述](state-management/arkts-state-management-overview.md)
     - [状态管理原理介绍](state-management/arkts-state-management-introduce.md)
@@ -65,13 +65,13 @@
         - [\@Param装饰器：组件外部输入](state-management/arkts-new-param.md)
         - [\@Once装饰器：初始化同步一次](state-management/arkts-new-once.md)
         - [\@Event装饰器：规范组件输出](state-management/arkts-new-event.md)
-        - [\@Provider和\@Consumer装饰器：跨组件层级双向同步](state-management/arkts-new-provider-and-consumer.md)
+        - [\@Provider装饰器和\@Consumer装饰器：跨组件层级双向同步](state-management/arkts-new-provider-and-consumer.md)
       - 管理数据对象的状态<!--arkts-v2-manage-data-object-state-->
         - [\@ObservedV2装饰器和\@Trace装饰器：类属性变化观测](state-management/arkts-new-observedV2-and-trace.md)
         - [\@Monitor装饰器：状态变量修改异步监听](state-management/arkts-new-monitor.md)
         - [\@SyncMonitor装饰器：状态变量修改同步监听](state-management/arkts-new-syncmonitor.md)
         - [\@Computed装饰器：计算属性](state-management/arkts-new-computed.md)
-        - [\@Type装饰器: 标记类属性的类型](state-management/arkts-new-type.md)
+        - [\@Type装饰器：标记类属性的类型](state-management/arkts-new-type.md)
       - 管理应用拥有的状态<!--arkts-v2-manage-application-state-->
         - [AppStorageV2: 应用全局UI状态存储](state-management/arkts-new-appstoragev2.md)
         - [PersistenceV2: 持久化存储UI状态](state-management/arkts-new-persistencev2.md)
@@ -193,7 +193,13 @@
         - [绑定全模态页面（bindContentCover）](arkts-contentcover-page.md)
      - [即时反馈（Toast）](arkts-create-toast.md)
      - [设置浮层（OverlayManager）](arkts-create-overlaymanager.md)<!--RP9--><!--RP9End-->
-  - [沉浸光感](arkts-immersive-light-sense.md)
+  - 沉浸光感<!--arkts-immersive-light-sense-->
+    - [沉浸光感简介](arkts-immersive-light-sense-overview.md)
+    - [沉浸光感开发指导](arkts-immersive-light-sense-development.md)
+      - [开启沉浸光感](arkts-immersive-light-sense-enable.md)
+      - [沉浸式系统材质视效](arkts-immersive-light-sense-common-capability.md)
+    - [沉浸光感功耗优化](arkts-immersive-light-sense-constraints.md)
+    - [沉浸光感兼容性适配](arkts-immersive-light-sense-compatibility.md)
   - 几何图形绘制<!--arkts-draw-graphics-->
     - [几何图形绘制概述](arkts-shape-overview.md)
     - [绘制几何图形 (Shape)](arkts-geometric-shape-drawing.md)

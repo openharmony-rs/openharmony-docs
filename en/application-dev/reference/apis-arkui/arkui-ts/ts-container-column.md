@@ -3,10 +3,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=814c7cb9af37d443e12a84b71f28815df508c584 translatedAt=2026-07-30T02:39:25.106Z pushedAt=2026-08-01T06:42:55.896Z -->
+<!-- md-trans-meta sourceCommit=0a724a1bcf6a29fe23177af55231e875c486ee05 translatedAt=2026-08-21T02:21:45.306Z pushedAt=2026-08-21T07:09:25.992Z -->
 
 A container that lays out child components along the vertical direction. It is suitable for scenarios where multiple child components need to be arranged sequentially in the vertical direction, such as list items, form items, and card content. It supports setting attributes such as child component spacing and alignment, enabling quick implementation of vertical linear layout.
 
@@ -30,7 +30,7 @@ Creates a vertical linear layout container. You can set the spacing between chil
 
 >  **NOTE**
 >
->  When using multi-component nesting in complex UIs, if layout components are nested too deeply or too many components are nested, additional overhead will be incurred. It is recommended to optimize performance by removing redundant nodes, using layout boundaries to reduce layout calculations, and properly adopting rendering control syntax and layout component methods. For best practices, see <!--RP1-->[Layout Optimization](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-improve-layout-performance)<!--RP1End-->.
+>  When using multi-component nesting in complex UIs, if layout components are nested too deeply or too many components are nested, additional overhead will be incurred. It is recommended to optimize performance by removing redundant nodes, using layout boundaries to reduce layout calculations, and properly adopting rendering control syntax and layout component methods.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -52,7 +52,7 @@ Creates a vertical linear layout container. You can set the spacing between chil
 
 >  **NOTE**
 >
->  When using multi-component nesting in complex UIs, if layout components are nested too deeply or too many components are nested, additional overhead will be incurred. It is recommended to optimize performance by removing redundant nodes, using layout boundaries to reduce layout calculations, and properly adopting rendering control syntax and layout component methods. For best practices, see <!--RP1-->[Layout Optimization](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-improve-layout-performance)<!--RP1End-->.
+>  When using multi-component nesting in complex UIs, if layout components are nested too deeply or too many components are nested, additional overhead will be incurred. It is recommended to optimize performance by removing redundant nodes, using layout boundaries to reduce layout calculations, and properly adopting rendering control syntax and layout component methods.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 

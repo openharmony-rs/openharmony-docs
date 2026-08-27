@@ -6,7 +6,7 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=bf2b90ed048fd06cce73d08593e72af5a9f047ad translatedAt=2026-07-29T03:08:13.903Z pushedAt=2026-08-04T06:30:57.887Z -->
+<!-- md-trans-meta sourceCommit=f61ce95179b4c1b9fc3671fde09ef06c73b5f91d translatedAt=2026-08-24T06:51:17.953Z pushedAt=2026-08-25T07:34:36.023Z -->
 
 The segmented button component is used to create tab-type, single-selection, or multi-selection capsule segmented buttons. It supports multiple option types such as text, icons, and symbols, as well as graphic-text hybrid configurations, and allows customization of fonts, colors, corner radii, and other styles. The tab segmented button is suitable for tab switching scenarios, the single-selection capsule segmented button is suitable for single-selection switching scenarios, and the multi-selection capsule segmented button is suitable for multi-selection filtering scenarios.
 
@@ -187,8 +187,8 @@ CapsuleSegmentButtonV2({
 | itemPadding                      | [LocalizedPadding](ts-types.md#localizedpadding12)           | No   | @Param             | Padding of the segmented button item.<br>Default value: `{ top: LengthMetrics.resource($r('sys.float.padding_level2')), bottom: LengthMetrics.resource($r('sys.float.padding_level2')), start: LengthMetrics.resource($r('sys.float.padding_level4')), end: LengthMetrics.resource($r('sys.float.padding_level4')) }`<br>When the value is **undefined**, the default value is used.<br>This member is read-only and cannot be changed.<br>**Atomic service API:** This API can be used in atomic services since API version 18. |
 | itemShadow                       | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions) \| [ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10) | No   | @Param             | Shadow of the segmented button item.<br>Default value: **ShadowStyle.OUTER_DEFAULT_XS**<br>If the value is out of range, the default value is used.<br>This member is read-only and cannot be changed.<br>**Atomic service API:** This API can be used in atomic services since API version 18. |
 | itemSpace                        | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No   | @Param             | Spacing between segmented button items.<br>Value range: [0, +∞)<br>Default value: `LengthMetrics.vp(0)`<br>**Note:**<br>Percentage types are not supported. Abnormal values are handled as the default value.<br>This member is read-only and cannot be changed.<br>**Atomic service API:** This API can be used in atomic services since API version 18. |
-| itemMinFontScale                 | number \| [Resource](ts-types.md#resource)                   | No   | @Param             | Minimum font scale factor for the text size of the segmented button item.<br>Value range: [0, 1]<br>Default value: **0**<br>**Note:**<br>If the set minimum font scale value is less than 0, the value **0** is used. If the set minimum font scale value is greater than 1, the value **1** is used. Abnormal values do not take effect by default.<br>This member is read-only and cannot be changed.<br>**Atomic service API:** This API can be used in atomic services since API version 18. |
-| itemMaxFontScale                 | number \| [Resource](ts-types.md#resource)                   | No   | @Param             | Maximum font scale factor for the text size of the segmented button item.<br>Value range: [1, 2]<br>Default value: **1**<br>**Note:**<br>If the set value is less than 1, the value **1** is used. If the set value is greater than 2, the value **2** is used. Abnormal values do not take effect by default.<br>This member is read-only and cannot be changed.<br>**Atomic service API:** This API can be used in atomic services since API version 18. |
+| itemMinFontScale                 | number \| [Resource](ts-types.md#resource)                   | No   | @Param             | Minimum font scale multiplier for the text size of the segmented button item.<br>Value range: [0, 1]<br>Default value: **0**<br>**NOTE**<br>If the set minimum font scale value is less than 0, the value **0** is used. If the set minimum font scale value is greater than 1, the value **1** is used. Abnormal values do not take effect by default.<br>This member is read-only and cannot be changed.<br>**Atomic service API:** This API can be used in atomic services since API version 18. |
+| itemMaxFontScale                 | number \| [Resource](ts-types.md#resource)                   | No   | @Param             | Maximum font scale multiplier for the text size of the segmented button item.<br>Value range: [1, 2]<br>Default value: **1**<br>**NOTE**<br>If the set value is less than 1, the value **1** is used. If the set value is greater than 2, the value **2** is used. Abnormal values do not take effect by default.<br>This member is read-only and cannot be changed.<br>**Atomic service API:** This API can be used in atomic services since API version 18. |
 | itemFontSize                     | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No   | @Param             | Font size of the unselected option in the segmented button.<br>Value range: [0, +∞)<br>Default value: `14fp`<br>**Note:**<br>Percentage types are not supported. Abnormal values are handled as the default value.<br>When **items** sets the **textModifier**/**fontSize** attribute, **itemFontSize** does not take effect.<br>This member is read-only and cannot be changed.<br>**Atomic service API:** This API can be used in atomic services since API version 18. |
 | itemSelectedFontSize             | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No   | @Param             | Font size of the selected option in the segmented button.<br>Value range: [0, +∞)<br>Default value: `14fp`<br>**Note:**<br>Percentage types are not supported. Abnormal values are handled as the default value.<br>When **items** sets the **textModifier**/**fontSize** attribute, **itemSelectedFontSize** does not take effect.<br>This member is read-only and cannot be changed.<br>**Atomic service API:** This API can be used in atomic services since API version 18. |
 | itemFontColor                    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No   | @Param             | Font color of the unselected option in the segmented button.<br>Default value: `$r('sys.color.font_secondary')`<br>When the value is **undefined**, the default value is used.<br>**Note:**<br>When **items** sets the **textModifier**/**fontColor** attribute, **itemFontColor** does not take effect.<br>When **backgroundSystemMaterial** is set to a system material with automatic color inversion, this attribute uses a special system resource that supports color inversion, and the color automatically adapts to the inverted color of the material background.<br>This member is read-only and cannot be changed.<br>**Atomic service API:** This API can be used in atomic services since API version 18. |
@@ -1046,11 +1046,11 @@ export struct VCard {
 }
 ```
 
-![segmentbuttonv2-sample83](figures/segmentbuttonv2-sample83.gif)
+<!--Del--> <!--DelEnd-->
 
 ### Example 6: Setting the Background Material
 
-The following example uses the **backgroundSystemMaterial** attribute to set a transparent background material for the segmented button, enables automatic color inversion and interactive deformation effects, and customizes the color of the light feedback.
+The following example uses the **backgroundSystemMaterial** attribute to set a transparent background material for the segment button, enable automatic color inversion and interactive deformation effects, and customize the color of the feedback light effect.
 
 Since API version 26.0.0, the **backgroundSystemMaterial** attribute is added to [TabSegmentButtonV2](#tabsegmentbuttonv2) and [CapsuleSegmentButtonV2](#capsulesegmentbuttonv2).
 
@@ -1155,7 +1155,7 @@ export struct VCard {
 }
 ```
 
-![SegmentButtonV2NewMaterial](figures/segment_button_v2_material.gif)
+<!--Del--> <!--DelEnd-->
 
 ### Example 7: Listening to Changes in Inner Properties of Object-Type Properties
 
@@ -1202,5 +1202,4 @@ struct Index {
 }
 ```
 
-![segmentbuttonv2-sample7](figures/segmentbuttonv2-make-observed.gif)
-<!--no_check-->
+<!--Del--> <!--DelEnd-->
