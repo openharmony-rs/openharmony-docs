@@ -7324,7 +7324,7 @@ getReadOnlyFdWithCached(): Promise&lt;number&gt;
 
 以只读方式打开当前文件。若打开的是云图库中的视频文件，则视频将被缓存至图库沙箱。其他类型的资源文件不会被缓存。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **系统接口**：此接口为系统接口。
 
@@ -7344,10 +7344,10 @@ getReadOnlyFdWithCached(): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201    | Permission denied. |
+| 201    | Permission denied. Ensure the permission ohos.permission.READ_IMAGEVIDEO is declared in your module. |
 | 202     | Called by non-system application.         |
-| 23800151     | Scene parameters validate failed, possible causes: The image and video files corresponding to the photoasset do not exist.        |
-| 23800302       | Failed to open the file. Possible causes: 1. Unable to access cloud images due to network connectivity issues; 2. File system malfunction. |
+| 23800151     | Scene parameters validate failed, possible causes: The image and video files corresponding to the photoasset do not exist. Check if the photoasset is valid and the files exist in the gallery.        |
+| 23800302       | Failed to open the file. Possible causes: 1. Unable to access cloud images due to network connectivity issues; 2. File system malfunction. Please check your network connection and try again. |
 
 **示例：**
 
