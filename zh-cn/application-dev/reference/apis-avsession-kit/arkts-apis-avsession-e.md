@@ -164,7 +164,7 @@
 | ------------------ | ---- | -------- |
 | LOOP_MODE_SEQUENCE | 0    | 顺序播放。 |
 | LOOP_MODE_SINGLE   | 1    | 单曲循环。 |
-| LOOP_MODE_LIST     | 2    | 表单循环。 |
+| LOOP_MODE_LIST     | 2    | 列表循环。 |
 | LOOP_MODE_SHUFFLE  | 3    | 随机播放。 |
 | LOOP_MODE_CUSTOM<sup>11+</sup>   | 4    | 自定义播放。  |
 
