@@ -275,7 +275,7 @@ formObserver.off('formRemove', bundleName, callback);
 
 订阅通知卡片可见的事件。使用callback异步回调。
 
-​触发通知卡片可见场景为：调用[notifyVisibleForms](js-apis-app-form-formHost-sys.md#notifyvisibleforms)接口通知对应卡片可见性变更为可见状态。
+​触发通知卡片可见场景为：调用[notifyVisibleForms](js-apis-app-form-formHost-sys.md#formhostnotifyvisibleforms)接口通知对应卡片可见性变更为可见状态。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
 
@@ -317,7 +317,7 @@ formObserver.on('notifyVisible', callback);
 
 订阅通知卡片可见的事件。使用callback异步回调。
 
-​触发通知卡片可见场景为：调用[notifyVisibleForms](js-apis-app-form-formHost-sys.md#notifyvisibleforms)接口通知对应卡片可见性变更为可见状态。
+​触发通知卡片可见场景为：调用[notifyVisibleForms](js-apis-app-form-formHost-sys.md#formhostnotifyvisibleforms)接口通知对应卡片可见性变更为可见状态。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
 
@@ -412,7 +412,7 @@ formObserver.off('notifyVisible', bundleName, callback);
 
 订阅通知卡片不可见的事件。使用callback异步回调。
 
-​触发通知卡片不可见场景为：调用[notifyInvisibleForms](js-apis-app-form-formHost-sys.md#notifyinvisibleforms)接口通知对应卡片可见性变更为不可见状态。
+​触发通知卡片不可见场景为：调用[notifyInvisibleForms](js-apis-app-form-formHost-sys.md#formhostnotifyinvisibleforms)接口通知对应卡片可见性变更为不可见状态。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
 
@@ -455,7 +455,7 @@ formObserver.on('notifyInvisible', callback);
 
 订阅通知卡片不可见的事件。使用callback异步回调。
 
-​触发通知卡片不可见场景为：调用[notifyInvisibleForms](js-apis-app-form-formHost-sys.md#notifyinvisibleforms)接口通知对应卡片可见性变更为不可见状态。
+​触发通知卡片不可见场景为：调用[notifyInvisibleForms](js-apis-app-form-formHost-sys.md#formhostnotifyinvisibleforms)接口通知对应卡片可见性变更为不可见状态。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
 
