@@ -427,7 +427,7 @@ want = {
         "ohos.aafwk.param.callerNativeName": "_nfc_service", // NFC进程名
         "ohos.aafwk.param.callerPid": xxx,
         "ohos.aafwk.param.callerToken": xxxx,
-        "ohos.aafwk.param.callerUid": 1027, // NFC系统服务的uid，唯一标识符，可以用于判断是否是NFC拉起
+        "ohos.aafwk.param.callerUid": xxxx,
         "ohos.aafwk.param.displayId": 0,
         "ohos.dlp.params.sandbox": false,
         "ohos.param.callerAppCloneIndex": 0,
