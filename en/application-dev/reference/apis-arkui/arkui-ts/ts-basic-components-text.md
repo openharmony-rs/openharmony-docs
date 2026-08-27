@@ -4021,3 +4021,4 @@ The display effect may vary depending on the device sizes and is for reference o
 
 ![textUtf16GlyphHighlight](figures/textUtf16GlyphHighlight.gif)
 
+<!--no_check-->
