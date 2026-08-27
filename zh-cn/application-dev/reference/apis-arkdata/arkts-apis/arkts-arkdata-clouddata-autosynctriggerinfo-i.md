@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-cloudData-interface AutoSyncTriggerInfo--><!--Device-cloudData-interface AutoSyncTriggerInfo-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 ## 导入模块
@@ -28,7 +26,4 @@ mode: AutoSyncTriggerMode
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AutoSyncTriggerInfo-mode: AutoSyncTriggerMode--><!--Device-AutoSyncTriggerInfo-mode: AutoSyncTriggerMode-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
-

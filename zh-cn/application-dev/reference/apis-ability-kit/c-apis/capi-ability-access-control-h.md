@@ -38,7 +38,7 @@ bool OH_AT_CheckSelfPermission(const char *permission)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *permission | - 需要校验的权限名称，合法的权限名取值可在[应用权限列表](docroot://security/AccessToken/app-permissions.md)中查询。 |
+| const char *permission | - 需要校验的权限名称。 |
 
 **返回：**
 

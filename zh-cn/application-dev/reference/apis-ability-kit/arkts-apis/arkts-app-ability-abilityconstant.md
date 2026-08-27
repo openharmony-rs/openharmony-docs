@@ -2,11 +2,9 @@
 
 AbilityConstant提供Ability相关的枚举，包括应用启动原因[LaunchReason](arkts-ability-abilityconstant-launchreason-e.md)、上次退出原因 [LastExitReason](arkts-ability-abilityconstant-lastexitreason-e.md)、迁移结果[OnContinueResult](arkts-ability-abilityconstant-oncontinueresult-e.md) 等。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-unnamed-declare namespace AbilityConstant--><!--Device-unnamed-declare namespace AbilityConstant-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -53,4 +51,3 @@ import { AbilityConstant } from '@kit.AbilityKit';
 | 名称 | 说明 |
 | --- | --- |
 | [REASON_MESSAGE_DESKTOP_SHORTCUT](arkts-ability-abilityconstant-con.md#reason_message_desktop_shortcut) | 通过桌面快捷方式启动。开发者如果从[LaunchParam](arkts-ability-abilityconstant-launchparam-i.md)的launchReasonMessage属性中获取到该字符串，表示UIAbility是通过点击桌面快 捷方式启动的。 |
-

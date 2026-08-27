@@ -1,10 +1,8 @@
-# ModelConfig(智慧数据平台)
+# ModelConfig
 
-管理嵌入模型的配置信息。
+管理嵌入模型的配置信息。@interface ModelConfig
 
-**起始版本：** 23
-
-<!--Device-intelligence-interface ModelConfig--><!--Device-intelligence-interface ModelConfig-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
@@ -24,9 +22,7 @@ cachePath?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ModelConfig-cachePath?: string--><!--Device-ModelConfig-cachePath?: string-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
@@ -40,9 +36,7 @@ isNpuAvailable: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-ModelConfig-isNpuAvailable: boolean--><!--Device-ModelConfig-isNpuAvailable: boolean-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
@@ -60,8 +54,6 @@ modelInfo?: CloudModelInfo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ModelConfig-modelInfo?: CloudModelInfo--><!--Device-ModelConfig-modelInfo?: CloudModelInfo-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
 ## networkPolicy
@@ -78,8 +70,6 @@ networkPolicy?: NetworkPolicy
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ModelConfig-networkPolicy?: NetworkPolicy--><!--Device-ModelConfig-networkPolicy?: NetworkPolicy-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
 ## version
@@ -92,9 +82,6 @@ version: ModelVersion
 
 **类型：** [ModelVersion](arkts-arkdata-intelligence-modelversion-e.md)
 
-**起始版本：** 23
-
-<!--Device-ModelConfig-version: ModelVersion--><!--Device-ModelConfig-version: ModelVersion-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
-

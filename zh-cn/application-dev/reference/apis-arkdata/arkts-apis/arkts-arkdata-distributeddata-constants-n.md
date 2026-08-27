@@ -8,14 +8,11 @@ KVStore常量。
 
 **替代接口：** Constants
 
-<!--Device-distributedData-namespace Constants--><!--Device-distributedData-namespace Constants-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## 导入模块
 
 ```TypeScript
-import { distributedDataObject } from '@kit.ArkData';
 ```
 
 ## 汇总
@@ -30,4 +27,3 @@ import { distributedDataObject } from '@kit.ArkData';
 | [MAX_STORE_ID_LENGTH](arkts-arkdata-constants-con.md#max_store_id_length) | 数据库标识符允许的最大长度，单位字节。 |
 | [MAX_QUERY_LENGTH](arkts-arkdata-constants-con.md#max_query_length) | 最大查询长度，单位字节。 |
 | [MAX_BATCH_SIZE](arkts-arkdata-constants-con.md#max_batch_size) | 最大批处理操作数量。 |
-

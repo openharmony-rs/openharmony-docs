@@ -2,9 +2,7 @@
 
 文本装饰线。
 
-**起始版本：** 23
-
-<!--Device-text-interface Decoration--><!--Device-text-interface Decoration-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -24,11 +22,9 @@ color?: common2D.Color
 
 **类型：** common2D.Color
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decoration-color?: common2D.Color--><!--Device-Decoration-color?: common2D.Color-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -42,29 +38,25 @@ decorationStyle?: TextDecorationStyle
 
 **类型：** TextDecorationStyle
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decoration-decorationStyle?: TextDecorationStyle--><!--Device-Decoration-decorationStyle?: TextDecorationStyle-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## decorationThicknessScale
 
 ```TypeScript
-decorationThicknessScale?: double
+decorationThicknessScale?: number
 ```
 
 装饰线粗细系数，浮点数，默认为1.0。如果设置的值小于等于0，则不会绘制装饰线。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Decoration-decorationThicknessScale?: double--><!--Device-Decoration-decorationThicknessScale?: double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -78,11 +70,8 @@ textDecoration?: TextDecorationType
 
 **类型：** TextDecorationType
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Decoration-textDecoration?: TextDecorationType--><!--Device-Decoration-textDecoration?: TextDecorationType-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
-

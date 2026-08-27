@@ -9,16 +9,14 @@ import { bundleManager } from '@kit.AbilityKit';
 ## getBundleInfoForSelfSync
 
 ```TypeScript
-function getBundleInfoForSelfSync(bundleFlags: int): BundleInfo
+function getBundleInfoForSelfSync(bundleFlags: number): BundleInfo
 ```
 
 以同步方法根据给定的bundleFlags获取当前应用的BundleInfo。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-bundleManager-function getBundleInfoForSelfSync(bundleFlags: int): BundleInfo--><!--Device-bundleManager-function getBundleInfoForSelfSync(bundleFlags: int): BundleInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -26,7 +24,7 @@ function getBundleInfoForSelfSync(bundleFlags: int): BundleInfo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleFlags | int | 是 | 指定返回的BundleInfo所包含的信息。 |
+| bundleFlags | number | 是 | 指定返回的BundleInfo所包含的信息。 |
 
 **返回值：**
 
@@ -57,4 +55,3 @@ try {
   hilog.error(0x0000, 'testTag', 'getBundleInfoForSelfSync failed: %{public}s', message);
 }
 ```
-

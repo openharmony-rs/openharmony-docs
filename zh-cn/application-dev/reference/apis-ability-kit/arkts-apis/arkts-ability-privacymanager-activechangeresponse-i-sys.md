@@ -2,9 +2,7 @@
 
 表示某次权限使用状态变化的详情。
 
-**起始版本：** 23
-
-<!--Device-privacyManager-interface ActiveChangeResponse--><!--Device-privacyManager-interface ActiveChangeResponse-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -26,9 +24,7 @@ activeStatus: PermissionActiveStatus
 
 **类型：** [PermissionActiveStatus](arkts-ability-privacymanager-permissionactivestatus-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-ActiveChangeResponse-activeStatus: PermissionActiveStatus--><!--Device-ActiveChangeResponse-activeStatus: PermissionActiveStatus-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -37,16 +33,14 @@ activeStatus: PermissionActiveStatus
 ## callingTokenId
 
 ```TypeScript
-callingTokenId?: int
+callingTokenId?: number
 ```
 
-接口调用方的应用身份标识，当activeStatus为INACTIVE时该值无效。 默认值：0。
+接口调用方的应用身份标识，当activeStatus为INACTIVE时该值无效。默认值：0。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ActiveChangeResponse-callingTokenId?: int--><!--Device-ActiveChangeResponse-callingTokenId?: int-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -62,9 +56,7 @@ deviceId: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ActiveChangeResponse-deviceId: string--><!--Device-ActiveChangeResponse-deviceId: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -84,8 +76,6 @@ enhancedIdentity?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ActiveChangeResponse-enhancedIdentity?: string--><!--Device-ActiveChangeResponse-enhancedIdentity?: string-End-->
-
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
@@ -100,9 +90,7 @@ permissionName: Permissions
 
 **类型：** Permissions
 
-**起始版本：** 23
-
-<!--Device-ActiveChangeResponse-permissionName: Permissions--><!--Device-ActiveChangeResponse-permissionName: Permissions-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -111,16 +99,14 @@ permissionName: Permissions
 ## tokenId
 
 ```TypeScript
-tokenId: int
+tokenId: number
 ```
 
 被订阅的应用身份标识。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ActiveChangeResponse-tokenId: int--><!--Device-ActiveChangeResponse-tokenId: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -132,15 +118,12 @@ tokenId: int
 usedType?: PermissionUsedType
 ```
 
-敏感权限使用类型，当activeStatus为INACTIVE时该值无效。 默认值：NORMAL_TYPE。
+敏感权限使用类型，当activeStatus为INACTIVE时该值无效。默认值：NORMAL_TYPE。
 
 **类型：** [PermissionUsedType](arkts-ability-privacymanager-permissionusedtype-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-ActiveChangeResponse-usedType?: PermissionUsedType--><!--Device-ActiveChangeResponse-usedType?: PermissionUsedType-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
-

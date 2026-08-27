@@ -4,8 +4,6 @@
 
 **起始版本：** 26.1.0
 
-<!--Device-abilityToolAccessCtrl-interface RemoteInfo--><!--Device-abilityToolAccessCtrl-interface RemoteInfo-End-->
-
 **系统能力：** SystemCapability.Security.Asset
 
 **系统接口：** 此接口为系统接口。
@@ -27,8 +25,6 @@ domainId: string
 
 **起始版本：** 26.1.0
 
-<!--Device-RemoteInfo-domainId: string--><!--Device-RemoteInfo-domainId: string-End-->
-
 **系统能力：** SystemCapability.Security.Asset
 
 **系统接口：** 此接口为系统接口。
@@ -44,8 +40,6 @@ remoteControlParams?: RemoteControlParams
 **类型：** [RemoteControlParams](arkts-ability-abilitytoolaccessctrl-remotecontrolparams-i-sys.md)
 
 **起始版本：** 26.1.0
-
-<!--Device-RemoteInfo-remoteControlParams?: RemoteControlParams--><!--Device-RemoteInfo-remoteControlParams?: RemoteControlParams-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -63,8 +57,6 @@ remoteId: string
 
 **起始版本：** 26.1.0
 
-<!--Device-RemoteInfo-remoteId: string--><!--Device-RemoteInfo-remoteId: string-End-->
-
 **系统能力：** SystemCapability.Security.Asset
 
 **系统接口：** 此接口为系统接口。
@@ -81,9 +73,6 @@ role: Role
 
 **起始版本：** 26.1.0
 
-<!--Device-RemoteInfo-role: Role--><!--Device-RemoteInfo-role: Role-End-->
-
 **系统能力：** SystemCapability.Security.Asset
 
 **系统接口：** 此接口为系统接口。
-

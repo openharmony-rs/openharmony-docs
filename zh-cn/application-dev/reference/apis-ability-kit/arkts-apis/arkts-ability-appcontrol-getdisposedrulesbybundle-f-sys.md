@@ -14,13 +14,11 @@ function getDisposedRulesByBundle(bundleName: string): Array<DisposedRuleConfigu
 
 获取指定应用程序包设置的所有拦截规则。
 
-**起始版本：** 24
+**起始版本：** 23
 
 **需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS or ohos.permission.GET_DISPOSED_APP_STATUS
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-appControl-function getDisposedRulesByBundle(bundleName: string): Array<DisposedRuleConfiguration>--><!--Device-appControl-function getDisposedRulesByBundle(bundleName: string): Array<DisposedRuleConfiguration>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
@@ -42,9 +40,9 @@ function getDisposedRulesByBundle(bundleName: string): Array<DisposedRuleConfigu
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied. A non-system application is not allowed to call a system API. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 
 **示例**
 
@@ -62,4 +60,3 @@ try {
   console.error('getDisposedRulesByBundle failed ' + message);
 }
 ```
-

@@ -8,8 +8,6 @@ type ValueType = number | string | boolean
 
 **起始版本：** 7
 
-<!--Device-dataAbility-type ValueType = number | string | boolean--><!--Device-dataAbility-type ValueType = number | string | boolean-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 | 类型 | 说明 |
@@ -17,4 +15,3 @@ type ValueType = number | string | boolean
 | number | 表示值类型为数字。 |
 | string | 表示值类型为字符串。 |
 | boolean | 表示值类型为布尔值。 |
-

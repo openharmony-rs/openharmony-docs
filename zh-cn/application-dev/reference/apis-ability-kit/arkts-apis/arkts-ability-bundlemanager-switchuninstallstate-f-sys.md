@@ -14,11 +14,9 @@ function switchUninstallState(bundleName: string, state: boolean): void
 
 切换指定应用的可卸载状态，此接口与EDM应用拦截管控机制不互相影响。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **需要权限：** ohos.permission.CHANGE_BUNDLE_UNINSTALL_STATE
-
-<!--Device-bundleManager-function switchUninstallState(bundleName: string, state: boolean): void--><!--Device-bundleManager-function switchUninstallState(bundleName: string, state: boolean): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -35,11 +33,11 @@ function switchUninstallState(bundleName: string, state: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [17700060](../errorcode-bundle.md#17700060-指定的应用不允许被卸载) | The specified application cannot be uninstalled. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
+| [17700060](../errorcode-bundle.md#17700060-指定的应用不允许被卸载) | The specified application cannot be uninstalled. |
 
 **示例**
 
@@ -55,4 +53,3 @@ try {
   hilog.error(0x0000, 'testTag', 'switchUninstallState failed: %{public}s', message);
 }
 ```
-

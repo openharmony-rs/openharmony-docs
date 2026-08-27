@@ -2,9 +2,7 @@
 
 辅助功能超链接文本信息。详见[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)中的属性spans。
 
-**起始版本：** 23
-
-<!--Device-unnamed-interface AccessibilitySpan--><!--Device-unnamed-interface AccessibilitySpan-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -20,9 +18,7 @@ accessibilityDescription: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AccessibilitySpan-accessibilityDescription: string--><!--Device-AccessibilitySpan-accessibilityDescription: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -38,9 +34,7 @@ accessibilityLevel: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AccessibilitySpan-accessibilityLevel: string--><!--Device-AccessibilitySpan-accessibilityLevel: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -56,9 +50,7 @@ accessibilityText: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AccessibilitySpan-accessibilityText: string--><!--Device-AccessibilitySpan-accessibilityText: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -67,16 +59,14 @@ accessibilityText: string
 ## spanId
 
 ```TypeScript
-spanId: int
+spanId: number
 ```
 
 超链接文本编号。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AccessibilitySpan-spanId: int--><!--Device-AccessibilitySpan-spanId: int-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -92,11 +82,8 @@ spanText: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AccessibilitySpan-spanText: string--><!--Device-AccessibilitySpan-spanText: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
-

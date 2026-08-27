@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-export interface SkillInfo--><!--Device-unnamed-export interface SkillInfo-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 ## abilityName
@@ -23,8 +21,6 @@ Skill关联的ability名称。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SkillInfo-readonly abilityName: string--><!--Device-SkillInfo-readonly abilityName: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -44,8 +40,6 @@ Skill的应用名称。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SkillInfo-readonly bundleName: string--><!--Device-SkillInfo-readonly bundleName: string-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 ## description
@@ -63,8 +57,6 @@ Skill的描述信息。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SkillInfo-readonly description?: string--><!--Device-SkillInfo-readonly description?: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -84,8 +76,6 @@ Skill的模块名称。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SkillInfo-readonly moduleName: string--><!--Device-SkillInfo-readonly moduleName: string-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 ## permissions
@@ -103,8 +93,6 @@ Skill所需的权限。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SkillInfo-readonly permissions?: Array<string>--><!--Device-SkillInfo-readonly permissions?: Array<string>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -124,8 +112,6 @@ readonly requestPermissions?: Array<string>
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SkillInfo-readonly requestPermissions?: Array<string>--><!--Device-SkillInfo-readonly requestPermissions?: Array<string>-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 ## skillName
@@ -143,8 +129,6 @@ Skill名称。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SkillInfo-readonly skillName: string--><!--Device-SkillInfo-readonly skillName: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -164,8 +148,6 @@ Skill的安装包路径。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SkillInfo-readonly skillPath: string--><!--Device-SkillInfo-readonly skillPath: string-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 ## skillType
@@ -183,8 +165,6 @@ Skill类型。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SkillInfo-readonly skillType: SkillType--><!--Device-SkillInfo-readonly skillType: SkillType-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -204,19 +184,17 @@ Skill的srcEntries信息。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SkillInfo-readonly srcEntries?: Array<string>--><!--Device-SkillInfo-readonly srcEntries?: Array<string>-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 ## versionCode
 
 ```TypeScript
-readonly versionCode: long
+readonly versionCode: number
 ```
 
 Skill的版本号。
 
-**类型：** long
+**类型：** number
 
 **起始版本：** 26.0.0
 
@@ -224,7 +202,4 @@ Skill的版本号。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SkillInfo-readonly versionCode: long--><!--Device-SkillInfo-readonly versionCode: long-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-

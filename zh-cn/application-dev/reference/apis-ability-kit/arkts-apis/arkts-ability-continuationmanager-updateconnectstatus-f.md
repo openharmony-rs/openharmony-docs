@@ -27,8 +27,6 @@ function updateConnectStatus(
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-continuationManager-function updateConnectStatus(    token: number,    deviceId: string,    status: DeviceConnectState,    callback: AsyncCallback<void>  ): void--><!--Device-continuationManager-function updateConnectStatus(    token: number,    deviceId: string,    status: DeviceConnectState,    callback: AsyncCallback<void>  ): void-End-->
-
 **系统能力：** SystemCapability.Ability.DistributedAbilityManager
 
 **参数：**
@@ -38,7 +36,7 @@ function updateConnectStatus(
 | token | number | 是 | 注册后的token。 |
 | deviceId | string | 是 | 设备ID。 |
 | status | [DeviceConnectState](arkts-ability-continuationmanager-deviceconnectstate-e.md) | 是 | 设备连接状态。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当通知设备成功，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当通知设备成功，err为undefined，否则返回错误对象。 |
 
 **示例**
 
@@ -73,8 +71,6 @@ function updateConnectStatus(token: number, deviceId: string, status: DeviceConn
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-continuationManager-function updateConnectStatus(token: number, deviceId: string, status: DeviceConnectState): Promise<void>--><!--Device-continuationManager-function updateConnectStatus(token: number, deviceId: string, status: DeviceConnectState): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Ability.DistributedAbilityManager
 
 **参数：**
@@ -89,7 +85,7 @@ function updateConnectStatus(token: number, deviceId: string, status: DeviceConn
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise形式返回接口调用结果。 |
+| Promise & lt;void & gt; | Promise形式返回接口调用结果。 |
 
 **示例**
 
@@ -107,4 +103,3 @@ continuationManager.updateConnectStatus(token, deviceId, continuationManager.Dev
     console.error('updateConnectStatus failed, cause: ' + JSON.stringify(err));
 });
 ```
-

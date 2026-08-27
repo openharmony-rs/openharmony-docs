@@ -12,5 +12,3 @@
 - 错误码<!--arkgraphics-arkts-errcode-->
   - [色彩管理错误码](errorcode-colorspace-manager.md)
   - [图形绘制与显示错误码](errorcode-drawing.md)
-
-

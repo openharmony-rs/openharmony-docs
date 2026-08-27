@@ -20,8 +20,6 @@ function uninstallLocalPlugin(pluginBundleName: string): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-pluginBundleManager-function uninstallLocalPlugin(pluginBundleName: string): Promise<void>--><!--Device-pluginBundleManager-function uninstallLocalPlugin(pluginBundleName: string): Promise<void>-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **参数：**
@@ -34,12 +32,11 @@ function uninstallLocalPlugin(pluginBundleName: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17700092](../errorcode-bundle.md#17700092-插件包名不存在) | Failed to uninstall the plugin because the specified plugin is not found. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.kernel.SUPPORT_LOCAL_PLUGIN'. |
-
+| [17700092](../errorcode-bundle.md#17700092-插件包名不存在) | Failed to uninstall the plugin because the specified plugin is not found. |

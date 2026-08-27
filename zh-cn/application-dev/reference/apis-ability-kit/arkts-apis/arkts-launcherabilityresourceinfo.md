@@ -9,4 +9,3 @@
 | --- | --- |
 | [LauncherAbilityResourceInfo](arkts-ability-launcherabilityresourceinfo-i-sys.md) | 应用配置的入口图标和名称信息，可以通过 [getLauncherAbilityResourceInfo](arkts-ability-bundleresourcemanager-getlauncherabilityresourceinfo-f-sys.md) 获取。 |
 <!--DelEnd-->
-

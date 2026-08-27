@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-<!--Device-unnamed-interface PermissionRequestResult--><!--Device-unnamed-interface PermissionRequestResult-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## authResults
@@ -23,8 +21,6 @@ authResults: Array<number>
 **起始版本：** 7
 
 **模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-PermissionRequestResult-authResults: Array<number>--><!--Device-PermissionRequestResult-authResults: Array<number>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -44,8 +40,6 @@ permissions: Array<string>
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-PermissionRequestResult-permissions: Array<string>--><!--Device-PermissionRequestResult-permissions: Array<string>-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## requestCode
@@ -64,7 +58,4 @@ requestCode: number
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-<!--Device-PermissionRequestResult-requestCode: number--><!--Device-PermissionRequestResult-requestCode: number-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-

@@ -3,9 +3,6 @@
 ## 导入模块
 
 ```TypeScript
-import { AdComponent } from '@kit.AdsKit';
-import { AdsServiceExtensionAbility, RespCallback } from '@kit.AdsKit';
-import { AutoAdComponent } from '@kit.AdsKit';
 import { advertising } from '@kit.AdsKit';
 ```
 
@@ -18,8 +15,6 @@ function parseAdResponse(adResponse: string, listener: MultiSlotsAdLoadListener,
 解析并处理广告响应体（该接口仅对部分系统预置应用开放）。
 
 **起始版本：** 12
-
-<!--Device-advertising-function parseAdResponse(adResponse: string, listener: MultiSlotsAdLoadListener, context: common.UIAbilityContext): void--><!--Device-advertising-function parseAdResponse(adResponse: string, listener: MultiSlotsAdLoadListener, context: common.UIAbilityContext): void-End-->
 
 **系统能力：** SystemCapability.Advertising.Ads
 
@@ -37,8 +32,8 @@ function parseAdResponse(adResponse: string, listener: MultiSlotsAdLoadListener,
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Invalid input parameter.Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Device not supported. |
-| [21800005](../errorcode-ads.md#21800005-广告数据解析失败) | Failed to parse the ad response. |
 | [21800001](../errorcode-ads.md#21800001-系统内部错误) | System internal error. |
+| [21800005](../errorcode-ads.md#21800005-广告数据解析失败) | Failed to parse the ad response. |
 
 **示例**
 
@@ -66,4 +61,3 @@ function parseAdResponse(adResponse: string, context: common.UIAbilityContext): 
   advertising.parseAdResponse(adResponse, multiSlotsAdLoaderListener, context);
 }
 ```
-

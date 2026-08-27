@@ -1,14 +1,16 @@
 # ApplicationInfo
 
-应用程序信息，未做特殊说明的属性，均通过 [bundle.getApplicationInfo](arkts-ability-bundle-getapplicationinfo-f.md) 获取。 > **说明：** > > 从API version 9开始，该模块不再维护，建议使用[bundleManager-ApplicationInfo](#applicationinfo)替代。
+应用程序信息，未做特殊说明的属性，均通过 [bundle.getApplicationInfo](arkts-ability-bundle-getapplicationinfo-f.md) 获取。
+
+> **说明：**
+> 
+> 从API version 9开始，该模块不再维护，建议使用[bundleManager-ApplicationInfo](#applicationinfo)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
 **替代接口：** [ApplicationInfo](#applicationinfo)
-
-<!--Device-unnamed-export interface ApplicationInfo--><!--Device-unnamed-export interface ApplicationInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -30,8 +32,6 @@ readonly accessTokenId: number
 
 **替代接口：** accessTokenId
 
-<!--Device-ApplicationInfo-readonly accessTokenId: number--><!--Device-ApplicationInfo-readonly accessTokenId: number-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 ## codePath
@@ -51,8 +51,6 @@ readonly codePath: string
 **废弃版本：** 9
 
 **替代接口：** codePath
-
-<!--Device-ApplicationInfo-readonly codePath: string--><!--Device-ApplicationInfo-readonly codePath: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -74,8 +72,6 @@ readonly description: string
 
 **替代接口：** description
 
-<!--Device-ApplicationInfo-readonly description: string--><!--Device-ApplicationInfo-readonly description: string-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 ## descriptionId
@@ -95,8 +91,6 @@ readonly descriptionId: number
 **废弃版本：** 9
 
 **替代接口：** descriptionId
-
-<!--Device-ApplicationInfo-readonly descriptionId: number--><!--Device-ApplicationInfo-readonly descriptionId: number-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -118,8 +112,6 @@ readonly enabled: boolean
 
 **替代接口：** enabled
 
-<!--Device-ApplicationInfo-readonly enabled: boolean--><!--Device-ApplicationInfo-readonly enabled: boolean-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 ## entityType
@@ -138,8 +130,6 @@ readonly entityType: string
 
 **废弃版本：** 9
 
-<!--Device-ApplicationInfo-readonly entityType: string--><!--Device-ApplicationInfo-readonly entityType: string-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 ## entryDir
@@ -157,8 +147,6 @@ readonly entryDir: string
 **起始版本：** 7
 
 **废弃版本：** 9
-
-<!--Device-ApplicationInfo-readonly entryDir: string--><!--Device-ApplicationInfo-readonly entryDir: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -180,8 +168,6 @@ readonly icon: string
 
 **替代接口：** icon
 
-<!--Device-ApplicationInfo-readonly icon: string--><!--Device-ApplicationInfo-readonly icon: string-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 ## iconId
@@ -201,8 +187,6 @@ readonly iconId: string
 **废弃版本：** 9
 
 **替代接口：** iconId
-
-<!--Device-ApplicationInfo-readonly iconId: string--><!--Device-ApplicationInfo-readonly iconId: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -224,8 +208,6 @@ readonly label: string
 
 **替代接口：** label
 
-<!--Device-ApplicationInfo-readonly label: string--><!--Device-ApplicationInfo-readonly label: string-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 ## labelId
@@ -246,8 +228,6 @@ readonly labelId: string
 
 **替代接口：** labelId
 
-<!--Device-ApplicationInfo-readonly labelId: string--><!--Device-ApplicationInfo-readonly labelId: string-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 ## metaData
@@ -256,7 +236,7 @@ readonly labelId: string
 readonly metaData: Map<string, Array<CustomizeData>>
 ```
 
-应用程序的自定义元信息。 通过调用 [bundle.getApplicationInfo](arkts-ability-bundle-getapplicationinfo-f.md) 接口时，传入GET_APPLICATION_INFO_WITH_METADATA获取。
+应用程序的自定义元信息。通过调用 [bundle.getApplicationInfo](arkts-ability-bundle-getapplicationinfo-f.md) 接口时，传入GET_APPLICATION_INFO_WITH_METADATA获取。
 
 **类型：** Map&lt;string, Array&lt;[CustomizeData](arkts-ability-customizedata-customizedata-depr-i.md)&gt;&gt;
 
@@ -267,8 +247,6 @@ readonly metaData: Map<string, Array<CustomizeData>>
 **废弃版本：** 9
 
 **替代接口：** metadataArray
-
-<!--Device-ApplicationInfo-readonly metaData: Map<string, Array<CustomizeData>>--><!--Device-ApplicationInfo-readonly metaData: Map<string, Array<CustomizeData>>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -290,8 +268,6 @@ readonly moduleInfos: Array<ModuleInfo>
 
 **替代接口：** hapModulesInfo
 
-<!--Device-ApplicationInfo-readonly moduleInfos: Array<ModuleInfo>--><!--Device-ApplicationInfo-readonly moduleInfos: Array<ModuleInfo>-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 ## moduleSourceDirs
@@ -309,8 +285,6 @@ readonly moduleSourceDirs: Array<string>
 **起始版本：** 7
 
 **废弃版本：** 9
-
-<!--Device-ApplicationInfo-readonly moduleSourceDirs: Array<string>--><!--Device-ApplicationInfo-readonly moduleSourceDirs: Array<string>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -332,8 +306,6 @@ readonly name: string
 
 **替代接口：** name
 
-<!--Device-ApplicationInfo-readonly name: string--><!--Device-ApplicationInfo-readonly name: string-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 ## permissions
@@ -342,7 +314,7 @@ readonly name: string
 readonly permissions: Array<string>
 ```
 
-访问应用程序所需的权限。 通过调用 [bundle.getApplicationInfo](arkts-ability-bundle-getapplicationinfo-f.md) 接口时，传入GET_APPLICATION_INFO_WITH_PERMISSION获取。
+访问应用程序所需的权限。通过调用 [bundle.getApplicationInfo](arkts-ability-bundle-getapplicationinfo-f.md) 接口时，传入GET_APPLICATION_INFO_WITH_PERMISSION获取。
 
 **类型：** Array&lt;string&gt;
 
@@ -353,8 +325,6 @@ readonly permissions: Array<string>
 **废弃版本：** 9
 
 **替代接口：** permissions
-
-<!--Device-ApplicationInfo-readonly permissions: Array<string>--><!--Device-ApplicationInfo-readonly permissions: Array<string>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -376,8 +346,6 @@ readonly process: string
 
 **替代接口：** process
 
-<!--Device-ApplicationInfo-readonly process: string--><!--Device-ApplicationInfo-readonly process: string-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 ## removable
@@ -398,8 +366,6 @@ readonly removable: boolean
 
 **替代接口：** removable
 
-<!--Device-ApplicationInfo-readonly removable: boolean--><!--Device-ApplicationInfo-readonly removable: boolean-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 ## supportedModes
@@ -417,8 +383,6 @@ readonly supportedModes: number
 **起始版本：** 7
 
 **废弃版本：** 9
-
-<!--Device-ApplicationInfo-readonly supportedModes: number--><!--Device-ApplicationInfo-readonly supportedModes: number-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -440,8 +404,6 @@ readonly systemApp: boolean
 
 **替代接口：** systemApp
 
-<!--Device-ApplicationInfo-readonly systemApp: boolean--><!--Device-ApplicationInfo-readonly systemApp: boolean-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 ## uid
@@ -462,7 +424,4 @@ readonly uid: number
 
 **替代接口：** uid
 
-<!--Device-ApplicationInfo-readonly uid: number--><!--Device-ApplicationInfo-readonly uid: number-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
-

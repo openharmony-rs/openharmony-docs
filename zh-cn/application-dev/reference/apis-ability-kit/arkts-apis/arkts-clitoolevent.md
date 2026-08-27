@@ -17,4 +17,3 @@
 | --- | --- |
 | [ToolEventType](arkts-ability-clitoolevent-tooleventtype-e-sys.md) | CLI工具会话事件类型。 |
 <!--DelEnd-->
-

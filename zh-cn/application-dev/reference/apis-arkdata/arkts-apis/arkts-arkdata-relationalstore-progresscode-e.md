@@ -2,9 +2,7 @@
 
 表示端云同步过程的状态码。请使用枚举名称而非枚举值。
 
-**起始版本：** 23
-
-<!--Device-relationalStore-enum ProgressCode--><!--Device-relationalStore-enum ProgressCode-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -16,9 +14,7 @@ SUCCESS = 0
 
 表示端云同步过程成功。
 
-**起始版本：** 23
-
-<!--Device-ProgressCode-SUCCESS = 0--><!--Device-ProgressCode-SUCCESS = 0-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -30,9 +26,7 @@ UNKNOWN_ERROR = 1
 
 表示端云同步过程遇到未知错误。
 
-**起始版本：** 23
-
-<!--Device-ProgressCode-UNKNOWN_ERROR = 1--><!--Device-ProgressCode-UNKNOWN_ERROR = 1-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -44,9 +38,7 @@ NETWORK_ERROR = 2
 
 表示端云同步过程遇到网络错误。
 
-**起始版本：** 23
-
-<!--Device-ProgressCode-NETWORK_ERROR = 2--><!--Device-ProgressCode-NETWORK_ERROR = 2-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -58,9 +50,7 @@ CLOUD_DISABLED = 3
 
 表示云端不可用。
 
-**起始版本：** 23
-
-<!--Device-ProgressCode-CLOUD_DISABLED = 3--><!--Device-ProgressCode-CLOUD_DISABLED = 3-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -70,11 +60,9 @@ CLOUD_DISABLED = 3
 LOCKED_BY_OTHERS = 4
 ```
 
-表示有其他设备正在端云同步，本设备无法进行端云同步。 请确保无其他设备占用云端资源后，再使用本设备进行端云同步任务。
+表示有其他设备正在端云同步，本设备无法进行端云同步。请确保无其他设备占用云端资源后，再使用本设备进行端云同步任务。
 
-**起始版本：** 23
-
-<!--Device-ProgressCode-LOCKED_BY_OTHERS = 4--><!--Device-ProgressCode-LOCKED_BY_OTHERS = 4-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -86,9 +74,7 @@ RECORD_LIMIT_EXCEEDED = 5
 
 表示本次端云同步需要同步的条目或大小超出最大值。由云端配置最大值。
 
-**起始版本：** 23
-
-<!--Device-ProgressCode-RECORD_LIMIT_EXCEEDED = 5--><!--Device-ProgressCode-RECORD_LIMIT_EXCEEDED = 5-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -100,9 +86,7 @@ NO_SPACE_FOR_ASSET = 6
 
 表示云空间剩余空间小于待同步的资产大小。
 
-**起始版本：** 23
-
-<!--Device-ProgressCode-NO_SPACE_FOR_ASSET = 6--><!--Device-ProgressCode-NO_SPACE_FOR_ASSET = 6-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -114,9 +98,7 @@ BLOCKED_BY_NETWORK_STRATEGY = 7
 
 表示端云同步被网络策略限制。
 
-**起始版本：** 23
-
-<!--Device-ProgressCode-BLOCKED_BY_NETWORK_STRATEGY = 7--><!--Device-ProgressCode-BLOCKED_BY_NETWORK_STRATEGY = 7-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -132,7 +114,4 @@ STOP_CLOUD_SYNC = 8
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ProgressCode-STOP_CLOUD_SYNC = 8--><!--Device-ProgressCode-STOP_CLOUD_SYNC = 8-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-

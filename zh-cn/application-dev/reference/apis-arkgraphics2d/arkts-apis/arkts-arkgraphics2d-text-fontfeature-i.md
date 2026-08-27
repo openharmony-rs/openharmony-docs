@@ -2,9 +2,7 @@
 
 文本字体特征。
 
-**起始版本：** 23
-
-<!--Device-text-interface FontFeature--><!--Device-text-interface FontFeature-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -24,29 +22,24 @@ name: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-FontFeature-name: string--><!--Device-FontFeature-name: string-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## value
 
 ```TypeScript
-value: int
+value: number
 ```
 
 字体特征键值对的值。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-FontFeature-value: int--><!--Device-FontFeature-value: int-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
-

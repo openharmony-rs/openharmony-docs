@@ -2,9 +2,7 @@
 
 hap级别的快速修复信息。
 
-**起始版本：** 23
-
-<!--Device-quickFixManager-export interface HapModuleQuickFixInfo--><!--Device-quickFixManager-export interface HapModuleQuickFixInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.QuickFix
 
@@ -26,9 +24,7 @@ HAP的名称。
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-HapModuleQuickFixInfo-readonly moduleName: string--><!--Device-HapModuleQuickFixInfo-readonly moduleName: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.QuickFix
 
@@ -44,9 +40,7 @@ readonly originHapHash: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-HapModuleQuickFixInfo-readonly originHapHash: string--><!--Device-HapModuleQuickFixInfo-readonly originHapHash: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.QuickFix
 
@@ -62,11 +56,8 @@ readonly quickFixFilePath: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-HapModuleQuickFixInfo-readonly quickFixFilePath: string--><!--Device-HapModuleQuickFixInfo-readonly quickFixFilePath: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.QuickFix
 
 **系统接口：** 此接口为系统接口。
-

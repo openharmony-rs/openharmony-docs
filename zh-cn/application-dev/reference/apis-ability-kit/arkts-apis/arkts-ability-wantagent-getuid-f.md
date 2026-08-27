@@ -9,16 +9,14 @@ import { wantAgent, WantAgent } from '@kit.AbilityKit';
 ## getUid
 
 ```TypeScript
-function getUid(agent: WantAgent, callback: AsyncCallback<int>): void
+function getUid(agent: WantAgent, callback: AsyncCallback<number>): void
 ```
 
 获取WantAgent实例所属应用的UID，使用callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-wantAgent-function getUid(agent: WantAgent, callback: AsyncCallback<int>): void--><!--Device-wantAgent-function getUid(agent: WantAgent, callback: AsyncCallback<int>): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -27,7 +25,7 @@ function getUid(agent: WantAgent, callback: AsyncCallback<int>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | agent | [WantAgent](arkts-ability-wantagent-t.md) | 是 | WantAgent对象。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | 获取WantAgent实例所属应用的UID的回调方法。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 获取WantAgent实例所属应用的UID的回调方法。 |
 
 **错误码：**
 
@@ -38,8 +36,6 @@ function getUid(agent: WantAgent, callback: AsyncCallback<int>): void
 | [16000151](../errorcode-ability.md#16000151-无效wantagent对象) | Invalid wantAgent object. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { wantAgent, Want } from '@kit.AbilityKit';
@@ -112,86 +108,18 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-'use static'
-import { wantAgent, Want } from '@kit.AbilityKit';
-import type { WantAgent } from '@kit.AbilityKit';
-import { BusinessError, RecordData } from '@kit.BasicServicesKit';
-
-// wantAgent对象
-let wantAgentData: WantAgent;
-// WantAgentInfo对象
-let wantAgentInfo: wantAgent.WantAgentInfo = {
-  wants: [
-    {
-      deviceId: 'deviceId',
-      bundleName: 'com.example.myapplication',
-      abilityName: 'EntryAbility',
-      action: 'action1',
-      entities: ['entity1'],
-      type: 'MIMETYPE',
-      uri: 'key={true,true,false}',
-      parameters: {
-        'mykey0': 2222,
-        'mykey1': [1, 2, 3],
-        'mykey2': '[1, 2, 3]',
-        'mykey3': 'ssssssssssssssssssssssssss',
-        'mykey4': [false, true, false],
-        'mykey5': ['qqqqq', 'wwwwww', 'aaaaaaaaaaaaaaaaa'],
-        'mykey6': true,
-      } as Record<string, RecordData>
-    } as Want
-  ],
-  actionType: wantAgent.OperationType.START_ABILITIES,
-  requestCode: 0,
-};
-
-try {
-  wantAgent.getWantAgent(wantAgentInfo, (err, data) => {
-    if (err) {
-      console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    if (!data) {
-      console.error('getWantAgent failed: data is undefined');
-      return;
-    }
-    wantAgentData = data;
-    try {
-      wantAgent.getUid(wantAgentData, (err, data) => {
-        if (err) {
-          console.error(`getUid failed, err code: ${err.code}, err msg: ${err.message}.`);
-        } else {
-          console.info(`getUid ok, data: ${JSON.stringify(data)}.`);
-        }
-      });
-    } catch (error) {
-      let err = error as BusinessError;
-      console.error(`getUid failed, err code: ${err.code}, err msg: ${err.message}.`);
-    }
-  });
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`getWantAgent failed! ${err.code} ${err.message}`);
-}
-```
-
 
 ## getUid
 
 ```TypeScript
-function getUid(agent: WantAgent): Promise<int>
+function getUid(agent: WantAgent): Promise<number>
 ```
 
 获取WantAgent实例所属应用的UID。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-wantAgent-function getUid(agent: WantAgent): Promise<int>--><!--Device-wantAgent-function getUid(agent: WantAgent): Promise<int>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -205,7 +133,7 @@ function getUid(agent: WantAgent): Promise<int>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;int&gt; | Promise对象，返回获取WantAgent实例所属应用的UID。 |
+| Promise & lt;number & gt; | Promise对象，返回获取WantAgent实例所属应用的UID。 |
 
 **错误码：**
 
@@ -216,8 +144,6 @@ function getUid(agent: WantAgent): Promise<int>
 | [16000151](../errorcode-ability.md#16000151-无效wantagent对象) | Invalid wantAgent object. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { wantAgent, Want } from '@kit.AbilityKit';
@@ -285,69 +211,3 @@ try {
   console.error(`getWantAgent failed, err code: ${code}, err msg: ${msg}.`);
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-'use static'
-import { wantAgent, Want } from '@kit.AbilityKit';
-import type { WantAgent } from '@kit.AbilityKit';
-import { BusinessError, RecordData } from '@kit.BasicServicesKit';
-
-// wantAgent对象
-let wantAgentData: WantAgent;
-// WantAgentInfo对象
-let wantAgentInfo: wantAgent.WantAgentInfo = {
-  wants: [
-    {
-      deviceId: 'deviceId',
-      bundleName: 'com.example.myapplication',
-      abilityName: 'EntryAbility',
-      action: 'action1',
-      entities: ['entity1'],
-      type: 'MIMETYPE',
-      uri: 'key={true,true,false}',
-      parameters: {
-        'mykey0': 2222,
-        'mykey1': [1, 2, 3],
-        'mykey2': '[1, 2, 3]',
-        'mykey3': 'ssssssssssssssssssssssssss',
-        'mykey4': [false, true, false],
-        'mykey5': ['qqqqq', 'wwwwww', 'aaaaaaaaaaaaaaaaa'],
-        'mykey6': true,
-      } as Record<string, RecordData>
-    } as Want
-  ],
-  actionType: wantAgent.OperationType.START_ABILITIES,
-  requestCode: 0,
-};
-
-try {
-  wantAgent.getWantAgent(wantAgentInfo, (err, data) => {
-    if (err) {
-      console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    if (!data) {
-      console.error('getWantAgent failed: data is undefined');
-      return;
-    }
-    wantAgentData = data;
-    try {
-      wantAgent.getUid(wantAgentData).then((data) => {
-        console.info(`getUid ok, data: ${JSON.stringify(data)}.`);
-      }).catch((error) => {
-        let err = error as BusinessError;
-        console.error(`getUid failed, err code: ${err.code}, err msg: ${err.message}.`);
-      });
-    } catch (error) {
-      let err = error as BusinessError;
-      console.error(`getBundleName failed! ${err.code} ${err.message}`);
-    }
-  });
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`getWantAgent failed! ${err.code} ${err.message}`);
-}
-```
-

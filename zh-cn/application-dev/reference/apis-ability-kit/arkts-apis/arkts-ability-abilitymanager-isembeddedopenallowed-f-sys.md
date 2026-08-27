@@ -14,11 +14,9 @@ function isEmbeddedOpenAllowed(context: Context, appId: string): Promise<boolean
 
 判断是否允许嵌入式拉起[EmbeddableUIAbility](arkts-ability-app-ability-embeddableuiability-embeddableuiability-c.md)。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-abilityManager-function isEmbeddedOpenAllowed(context: Context, appId: string): Promise<boolean>--><!--Device-abilityManager-function isEmbeddedOpenAllowed(context: Context, appId: string): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -35,7 +33,7 @@ function isEmbeddedOpenAllowed(context: Context, appId: string): Promise<boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示允许嵌入式启动；返回false表示不允许嵌入式启动。 |
+| Promise & lt;boolean & gt; | Promise对象。返回true表示允许嵌入式启动；返回false表示不允许嵌入式启动。 |
 
 **错误码：**
 
@@ -56,17 +54,14 @@ export default class EntryAbility extends UIAbility {
     let appId: string = '6918661953712445909';
     try {
       abilityManager.isEmbeddedOpenAllowed(this.context, appId).then((data) => {
-        console.info(`isEmbeddedOpenAllowed data: ${data}`);
-      }).catch((e: Error) => {
-        let err = e as BusinessError;
+        console.info(`isEmbeddedOpenAllowed data: ${JSON.stringify(data)}`);
+      }).catch((err: BusinessError) => {
         console.error(`isEmbeddedOpenAllowed failed, code is ${err.code}, message is ${err.message}`);
       });
-    } catch (e) {
+    } catch (err) {
       // 处理入参错误异常
-      let err = e as BusinessError;
       console.error(`param is invalid, code is ${err.code}, message is ${err.message}`);
     }
   }
 }
 ```
-

@@ -16,21 +16,19 @@ function create(colorSpaceName: colorSpaceManager.ColorSpace): ColorSpaceManager
 
 **起始版本：** 12
 
-<!--Device-sendableColorSpaceManager-function create(colorSpaceName: colorSpaceManager.ColorSpace): ColorSpaceManager--><!--Device-sendableColorSpaceManager-function create(colorSpaceName: colorSpaceManager.ColorSpace): ColorSpaceManager-End-->
-
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| colorSpaceName | colorSpaceManager.ColorSpace | 是 | 标准色域类型枚举值。 <br>UNKNOWN与CUSTOM不可用于直接创建色域对象。 |
+| colorSpaceName | colorSpaceManager.ColorSpace | 是 | 标准色域类型枚举值。 UNKNOWN与CUSTOM不可用于直接创建色域对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ColorSpaceManager | 返回当前创建的可共享的色彩管理实例。 <br>该实例继承ISendable，可以在ArkTS并发实例间（包括主线程、TaskPool&Worker工作线程）传递，传递的行为是引用传递，参考 [Sendable使用场景](../../../arkts-utils/sendable-guide.md)。 |
+| ColorSpaceManager | 返回当前创建的可共享的色彩管理实例。 |
 
 **错误码：**
 
@@ -59,8 +57,6 @@ function create(primaries: colorSpaceManager.ColorSpacePrimaries, gamma: number)
 
 **起始版本：** 12
 
-<!--Device-sendableColorSpaceManager-function create(primaries: colorSpaceManager.ColorSpacePrimaries, gamma: number): ColorSpaceManager--><!--Device-sendableColorSpaceManager-function create(primaries: colorSpaceManager.ColorSpacePrimaries, gamma: number): ColorSpaceManager-End-->
-
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **参数：**
@@ -74,7 +70,7 @@ function create(primaries: colorSpaceManager.ColorSpacePrimaries, gamma: number)
 
 | 类型 | 说明 |
 | --- | --- |
-| ColorSpaceManager | 返回当前创建的可共享的色彩管理实例。 <br>色域类型定义为[colorSpaceManager.ColorSpace]{ |
+| ColorSpaceManager | 返回当前创建的可共享的色彩管理实例。 |
 
 **错误码：**
 
@@ -104,4 +100,3 @@ let gamma: number = 2.2;
 // 创建自定义可共享的色彩管理实例
 colorSpace = sendableColorSpaceManager.create(primaries, gamma);
 ```
-

@@ -4,8 +4,6 @@ ArkTS脚本执行结果。
 
 **起始版本：** 26.0.0
 
-<!--Device-scriptManager-interface ExecuteResult--><!--Device-scriptManager-interface ExecuteResult-End-->
-
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
 ## 导入模块
@@ -30,8 +28,6 @@ code: number
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ExecuteResult-code: number--><!--Device-ExecuteResult-code: number-End-->
-
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
 ## flags
@@ -49,8 +45,6 @@ flags?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ExecuteResult-flags?: number--><!--Device-ExecuteResult-flags?: number-End-->
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -70,8 +64,6 @@ result?: Record<string, Object>
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ExecuteResult-result?: Record<string, Object>--><!--Device-ExecuteResult-result?: Record<string, Object>-End-->
-
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
 ## uris
@@ -90,7 +82,4 @@ uris?: Array<string>
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ExecuteResult-uris?: Array<string>--><!--Device-ExecuteResult-uris?: Array<string>-End-->
-
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
-

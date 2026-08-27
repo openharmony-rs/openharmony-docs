@@ -3,11 +3,8 @@
 ## 导入模块
 
 ```TypeScript
-import { config } from '@kit.AccessibilityKit';
 import { accessibility } from '@kit.AccessibilityKit';
 import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, InjectActionType, AccessibilityFocusScene, FocusRuleType, OperateVirtualNodeResult, AccessibilitySourceType } from '@kit.AccessibilityKit';
-import { GesturePath } from '@kit.AccessibilityKit';
-import { GesturePoint } from '@kit.AccessibilityKit';
 ```
 
 ## setSeniorModeStateForSelf
@@ -22,8 +19,6 @@ function setSeniorModeStateForSelf(state: boolean): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-accessibility-function setSeniorModeStateForSelf(state: boolean): Promise<void>--><!--Device-accessibility-function setSeniorModeStateForSelf(state: boolean): Promise<void>-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
@@ -36,7 +31,7 @@ function setSeniorModeStateForSelf(state: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -67,4 +62,3 @@ struct Index {
   }
 }
 ```
-

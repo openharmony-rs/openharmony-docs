@@ -2,9 +2,7 @@
 
 系统定义的桌面图标类型数据，用于跨应用共享桌面图标信息。典型使用场景包括：桌面启动器拖拽图标、应用商店分享应用图标或创建快捷方式等。
 
-**起始版本：** 23
-
-<!--Device-uniformDataStruct-interface OpenHarmonyAppItem--><!--Device-uniformDataStruct-interface OpenHarmonyAppItem-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -24,11 +22,9 @@ abilityName: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-OpenHarmonyAppItem-abilityName: string--><!--Device-OpenHarmonyAppItem-abilityName: string-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -42,11 +38,9 @@ appIconId: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-OpenHarmonyAppItem-appIconId: string--><!--Device-OpenHarmonyAppItem-appIconId: string-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -60,11 +54,9 @@ appId: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-OpenHarmonyAppItem-appId: string--><!--Device-OpenHarmonyAppItem-appId: string-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -78,11 +70,9 @@ appLabelId: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-OpenHarmonyAppItem-appLabelId: string--><!--Device-OpenHarmonyAppItem-appLabelId: string-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -96,11 +86,9 @@ appName: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-OpenHarmonyAppItem-appName: string--><!--Device-OpenHarmonyAppItem-appName: string-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -114,29 +102,25 @@ bundleName: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-OpenHarmonyAppItem-bundleName: string--><!--Device-OpenHarmonyAppItem-bundleName: string-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## details
 
 ```TypeScript
-details?: Record<string, int | long | double | string | Uint8Array>
+details?: Record<string, number | number | number | string | Uint8Array>
 ```
 
 字典类型对象，key为string类型，value可包含number（数值类型）、string（字符串类型）或Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。
 
-**类型：** Record&lt;string, int \| long \| double \| string \| Uint8Array&gt;
+**类型：** Record&lt;string, number \| number \| number \| string \| Uint8Array&gt;
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-OpenHarmonyAppItem-details?: Record<string, int | long | double | string | Uint8Array>--><!--Device-OpenHarmonyAppItem-details?: Record<string, int | long | double | string | Uint8Array>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -150,11 +134,33 @@ readonly uniformDataType: 'openharmony.app-item'
 
 **类型：** 'openharmony.app-item'
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-OpenHarmonyAppItem-readonly uniformDataType: 'openharmony.app-item'--><!--Device-OpenHarmonyAppItem-readonly uniformDataType: 'openharmony.app-item'-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
+**示例**
+
+```TypeScript
+import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
+
+let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+let appItemDetails: Record<string, number | string | Uint8Array> = {
+  'appItemKey1': 123,
+  'appItemKey2': 'appItemValue',
+  'appItemKey3': u8Array
+};
+let appItem: uniformDataStruct.OpenHarmonyAppItem = {
+  uniformDataType: 'openharmony.app-item',
+  appId: 'MyAppId',
+  appName: 'MyAppName',
+  appIconId: 'MyAppIconId',
+  appLabelId: 'MyAppLabelId',
+  bundleName: 'MyBundleName',
+  abilityName: 'MyAbilityName',
+  details: appItemDetails
+};
+console.info('appItem.uniformDataType: ' + appItem.uniformDataType);
+let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.OPENHARMONY_APP_ITEM, appItem);
+```

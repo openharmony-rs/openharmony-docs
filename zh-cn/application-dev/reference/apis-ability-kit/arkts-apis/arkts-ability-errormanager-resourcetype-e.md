@@ -4,8 +4,6 @@
 
 **起始版本：** 24
 
-<!--Device-errorManager-export enum ResourceType--><!--Device-errorManager-export enum ResourceType-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 ## PSS_MEMORY
@@ -21,8 +19,6 @@ PSS_MEMORY = 1
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ResourceType-PSS_MEMORY = 1--><!--Device-ResourceType-PSS_MEMORY = 1-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -40,8 +36,6 @@ ION_MEMORY = 2
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ResourceType-ION_MEMORY = 2--><!--Device-ResourceType-ION_MEMORY = 2-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 ## ASHMEM_MEMORY
@@ -57,8 +51,6 @@ ASHMEM_MEMORY = 3
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ResourceType-ASHMEM_MEMORY = 3--><!--Device-ResourceType-ASHMEM_MEMORY = 3-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -76,8 +68,6 @@ GPU_MEMORY = 4
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ResourceType-GPU_MEMORY = 4--><!--Device-ResourceType-GPU_MEMORY = 4-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 ## FD
@@ -93,8 +83,6 @@ FD = 5
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ResourceType-FD = 5--><!--Device-ResourceType-FD = 5-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -112,7 +100,4 @@ THREAD = 6
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ResourceType-THREAD = 6--><!--Device-ResourceType-THREAD = 6-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
-

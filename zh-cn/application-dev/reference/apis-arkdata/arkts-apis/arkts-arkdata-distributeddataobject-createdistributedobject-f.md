@@ -20,8 +20,6 @@ function createDistributedObject(source: object): DistributedObject
 
 **替代接口：** [create](arkts-arkdata-distributeddataobject-create-f.md)
 
-<!--Device-distributedDataObject-function createDistributedObject(source: object): DistributedObject--><!--Device-distributedDataObject-function createDistributedObject(source: object): DistributedObject-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
 **参数：**
@@ -54,4 +52,3 @@ class SourceObject {
 let source: SourceObject = new SourceObject('jack', 18, false);
 let g_object: distributedDataObject.DistributedObject = distributedDataObject.createDistributedObject(source);
 ```
-

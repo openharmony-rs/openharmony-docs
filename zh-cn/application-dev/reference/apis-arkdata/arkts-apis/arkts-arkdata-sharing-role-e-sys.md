@@ -2,9 +2,7 @@
 
 端云共享参与者的角色。
 
-**起始版本：** 23
-
-<!--Device-sharing-enum Role--><!--Device-sharing-enum Role-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -18,9 +16,7 @@ ROLE_INVITER = 0
 
 端云共享邀请者。请使用枚举名称而非枚举值。
 
-**起始版本：** 23
-
-<!--Device-Role-ROLE_INVITER = 0--><!--Device-Role-ROLE_INVITER = 0-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -34,11 +30,8 @@ ROLE_INVITEE = 1
 
 端云共享被邀请者。请使用枚举名称而非枚举值。
 
-**起始版本：** 23
-
-<!--Device-Role-ROLE_INVITEE = 1--><!--Device-Role-ROLE_INVITEE = 1-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **系统接口：** 此接口为系统接口。
-

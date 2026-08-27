@@ -2,9 +2,7 @@
 
 事务对象的配置信息。
 
-**起始版本：** 23
-
-<!--Device-relationalStore-interface TransactionOptions--><!--Device-relationalStore-interface TransactionOptions-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -24,9 +22,6 @@ transactionType?: TransactionType
 
 **类型：** [TransactionType](arkts-arkdata-relationalstore-transactiontype-e.md)
 
-**起始版本：** 23
-
-<!--Device-TransactionOptions-transactionType?: TransactionType--><!--Device-TransactionOptions-transactionType?: TransactionType-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-

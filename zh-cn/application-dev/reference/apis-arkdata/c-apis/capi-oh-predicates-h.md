@@ -4,6 +4,8 @@
 
 表示关系型数据库（RDB）的谓词。
 
+**引用文件：** database/rdb/oh_predicates.h
+
 **库：** libnative_rdb_ndk.z.so
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core

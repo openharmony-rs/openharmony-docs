@@ -1,14 +1,18 @@
 # RemoteAbilityInfo（系统接口）
 
-remoteAbility信息。 > **说明：** > > 从API version 9开始，该模块不再维护，建议使用[bundleManager-RemoteAbilityInfo](#remoteabilityinfo系统接口)替代。 > > 本模块为系统接口。
+remoteAbility信息。
+
+> **说明：**
+> 
+> 从API version 9开始，该模块不再维护，建议使用[bundleManager-RemoteAbilityInfo](#remoteabilityinfo系统接口)替代。
+> 
+> 本模块为系统接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
 **替代接口：** [RemoteAbilityInfo](#remoteabilityinfo系统接口)
-
-<!--Device-unnamed-export interface RemoteAbilityInfo--><!--Device-unnamed-export interface RemoteAbilityInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
@@ -32,8 +36,6 @@ ability元素资源信息。
 
 **替代接口：** elementName
 
-<!--Device-RemoteAbilityInfo-readonly elementName: ElementName--><!--Device-RemoteAbilityInfo-readonly elementName: ElementName-End-->
-
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
 **系统接口：** 此接口为系统接口。
@@ -55,8 +57,6 @@ readonly icon: string
 **废弃版本：** 9
 
 **替代接口：** icon
-
-<!--Device-RemoteAbilityInfo-readonly icon: string--><!--Device-RemoteAbilityInfo-readonly icon: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
@@ -80,9 +80,6 @@ readonly label: string
 
 **替代接口：** label
 
-<!--Device-RemoteAbilityInfo-readonly label: string--><!--Device-RemoteAbilityInfo-readonly label: string-End-->
-
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
 **系统接口：** 此接口为系统接口。
-

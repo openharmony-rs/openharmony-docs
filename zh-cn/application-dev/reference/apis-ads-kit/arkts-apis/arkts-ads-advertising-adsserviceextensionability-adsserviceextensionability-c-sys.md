@@ -4,8 +4,6 @@
 
 **起始版本：** 11
 
-<!--Device-unnamed-export default class AdsServiceExtensionAbility--><!--Device-unnamed-export default class AdsServiceExtensionAbility-End-->
-
 **系统能力：** SystemCapability.Advertising.Ads
 
 **系统接口：** 此接口为系统接口。
@@ -25,8 +23,6 @@ onLoadAd(adParam: advertising.AdRequestParams, adOptions: advertising.AdOptions,
 单广告位请求业务实现方法，设备厂商需在该方法中实现广告请求业务逻辑并将结果回调给媒体。
 
 **起始版本：** 11
-
-<!--Device-AdsServiceExtensionAbility-onLoadAd(adParam: advertising.AdRequestParams, adOptions: advertising.AdOptions, respCallback: RespCallback)--><!--Device-AdsServiceExtensionAbility-onLoadAd(adParam: advertising.AdRequestParams, adOptions: advertising.AdOptions, respCallback: RespCallback)-End-->
 
 **系统能力：** SystemCapability.Advertising.Ads
 
@@ -66,8 +62,6 @@ onLoadAdWithMultiSlots(adParams: advertising.AdRequestParams[], adOptions: adver
 
 **起始版本：** 11
 
-<!--Device-AdsServiceExtensionAbility-onLoadAdWithMultiSlots(adParams: advertising.AdRequestParams[], adOptions: advertising.AdOptions,     respCallback: RespCallback)--><!--Device-AdsServiceExtensionAbility-onLoadAdWithMultiSlots(adParams: advertising.AdRequestParams[], adOptions: advertising.AdOptions,     respCallback: RespCallback)-End-->
-
 **系统能力：** SystemCapability.Advertising.Ads
 
 **系统接口：** 此接口为系统接口。
@@ -95,4 +89,3 @@ export default class AdsExtensionAbility extends AdsServiceExtensionAbility {
   }
 }
 ```
-

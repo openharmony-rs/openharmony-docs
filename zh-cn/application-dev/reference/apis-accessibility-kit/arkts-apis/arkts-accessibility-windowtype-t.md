@@ -6,9 +6,7 @@ export type WindowType = 'application' | 'system'
 
 表示窗口的类型。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export type WindowType = 'application' | 'system'--><!--Device-unnamed-export type WindowType = 'application' | 'system'-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -16,4 +14,3 @@ export type WindowType = 'application' | 'system'
 | --- | --- |
 | 'application' | 表示应用窗口类型。 |
 | 'system' | 表示系统窗口类型。 |
-

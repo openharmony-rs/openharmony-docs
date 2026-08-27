@@ -1,8 +1,15 @@
 # ApplicationStateObserver
 
-**起始版本：** -1
+应用状态监听器，可以作为入参传入 on('applicationState') 方法，监听应用的生命周期变化。   
+> **说明：**
+> 
+> 本模块首批接口从API version 14开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+## 导入模块  
+```ts
+import { appManager } from '@kit.AbilityKit';
+```
 
-<!--Device-unnamed-export default class ApplicationStateObserver--><!--Device-unnamed-export default class ApplicationStateObserver-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -15,8 +22,6 @@ onAbilityStateChanged(abilityStateData: AbilityStateData): void
 Ability状态发生变化时执行的回调函数。
 
 **起始版本：** 14
-
-<!--Device-ApplicationStateObserver-onAbilityStateChanged(abilityStateData: AbilityStateData): void--><!--Device-ApplicationStateObserver-onAbilityStateChanged(abilityStateData: AbilityStateData): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -36,8 +41,6 @@ onAppStarted(appStateData: AppStateData): void
 
 **起始版本：** 14
 
-<!--Device-ApplicationStateObserver-onAppStarted(appStateData: AppStateData): void--><!--Device-ApplicationStateObserver-onAppStarted(appStateData: AppStateData): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
@@ -55,8 +58,6 @@ onAppStopped(appStateData: AppStateData): void
 应用最后一个进程销毁时执行的回调函数。
 
 **起始版本：** 14
-
-<!--Device-ApplicationStateObserver-onAppStopped(appStateData: AppStateData): void--><!--Device-ApplicationStateObserver-onAppStopped(appStateData: AppStateData): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -76,8 +77,6 @@ onForegroundApplicationChanged(appStateData: AppStateData): void
 
 **起始版本：** 14
 
-<!--Device-ApplicationStateObserver-onForegroundApplicationChanged(appStateData: AppStateData): void--><!--Device-ApplicationStateObserver-onForegroundApplicationChanged(appStateData: AppStateData): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
@@ -95,8 +94,6 @@ onProcessCreated(processData: ProcessData): void
 进程创建时执行的回调函数。
 
 **起始版本：** 14
-
-<!--Device-ApplicationStateObserver-onProcessCreated(processData: ProcessData): void--><!--Device-ApplicationStateObserver-onProcessCreated(processData: ProcessData): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -116,8 +113,6 @@ onProcessDied(processData: ProcessData): void
 
 **起始版本：** 14
 
-<!--Device-ApplicationStateObserver-onProcessDied(processData: ProcessData): void--><!--Device-ApplicationStateObserver-onProcessDied(processData: ProcessData): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
@@ -136,8 +131,6 @@ onProcessStateChanged(processData: ProcessData): void
 
 **起始版本：** 14
 
-<!--Device-ApplicationStateObserver-onProcessStateChanged(processData: ProcessData): void--><!--Device-ApplicationStateObserver-onProcessStateChanged(processData: ProcessData): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
@@ -145,4 +138,3 @@ onProcessStateChanged(processData: ProcessData): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | processData | [ProcessData](arkts-ability-processdata-t.md) | 是 | 进程数据信息。 |
-

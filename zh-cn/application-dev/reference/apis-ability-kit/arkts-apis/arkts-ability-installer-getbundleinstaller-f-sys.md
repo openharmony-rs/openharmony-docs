@@ -14,9 +14,7 @@ function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void
 
 获取BundleInstaller对象。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-installer-function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void--><!--Device-installer-function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -26,18 +24,16 @@ function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;BundleInstaller&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)，获取BundleInstaller对象，err 为undefined，data为获取到的BundleInstaller对象；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;BundleInstaller&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，获取BundleInstaller对象，err 为undefined，data为获取到的BundleInstaller对象；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
 **示例**
-
-ArkTS-Dyn示例:
 
 ```TypeScript
 import { installer } from '@kit.AbilityKit';
@@ -45,28 +41,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     installer.getBundleInstaller((err: BusinessError, data: installer.BundleInstaller) => {
-        if (err) {
-            console.error('getBundleInstaller failed:' + err.message);
-        } else {
-            console.info('getBundleInstaller successfully');
-        }
-    });
-} catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('getBundleInstaller failed:' + message);
-}
-```
-
-ArkTS-Sta示例:
-
-```TypeScript
-'use static'
-
-import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-    installer.getBundleInstaller((err: BusinessError | null, data: installer.BundleInstaller | undefined) => {
         if (err) {
             console.error('getBundleInstaller failed:' + err.message);
         } else {
@@ -88,9 +62,7 @@ function getBundleInstaller(): Promise<BundleInstaller>
 
 获取BundleInstaller对象。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-installer-function getBundleInstaller(): Promise<BundleInstaller>--><!--Device-installer-function getBundleInstaller(): Promise<BundleInstaller>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -100,7 +72,7 @@ function getBundleInstaller(): Promise<BundleInstaller>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;BundleInstaller&gt; | BundleInstaller object. |
+| Promise & lt;BundleInstaller & gt; | BundleInstaller object. |
 
 **错误码：**
 
@@ -109,8 +81,6 @@ function getBundleInstaller(): Promise<BundleInstaller>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
 **示例**
-
-ArkTS-Dyn示例:
 
 ```TypeScript
 import { installer } from '@kit.AbilityKit';
@@ -127,24 +97,3 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
-
-ArkTS-Sta示例:
-
-```TypeScript
-'use static'
-
-import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
-        console.info('getBundleInstaller successfully.');
-    }).catch((error: Error) => {
-        console.error('getBundleInstaller failed. Cause: ' + (error as BusinessError).message);
-    });
-} catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('getBundleInstaller failed. Cause: ' + message);
-}
-```
-

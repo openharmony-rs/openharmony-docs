@@ -2,27 +2,23 @@
 
 应用程序信息。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface ApplicationInfo--><!--Device-unnamed-export interface ApplicationInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 ## accessTokenId
 
 ```TypeScript
-readonly accessTokenId: long
+readonly accessTokenId: number
 ```
 
-应用程序的accessTokenId，应用的身份标识，在 [程序访问控制校验接口](arkts-ability-abilityaccessctrl-atmanager-i.md#checkaccesstoken)中使用。
+应用程序的accessTokenId，应用的身份标识，在 [程序访问控制校验接口](../../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#checkaccesstoken9)中使用。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ApplicationInfo-readonly accessTokenId: long--><!--Device-ApplicationInfo-readonly accessTokenId: long-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -32,31 +28,27 @@ readonly accessTokenId: long
 readonly appDistributionType: string
 ```
 
-应用程序签名证书的分发类型，分为： &lt;li&gt;app_gallery：应用市场安装的应用。<!--RP1--><!--RP1End--> &lt;li&gt; enterprise：企业内部应用，企业自行开发、仅限企业内部员工使用的应用，不通过 应用市场等公开渠道发布，而是通过企业自己的渠道进行内部分发。<!--RP2--><!--RP2End-->&lt;li&gt; enterprise_mdm：企业 [MDM应用](../../../mdm/mdm-kit-term.md#mdm应用设备管理应用)。<!--Del-->需要被激活 [管理员特权](../../apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-enableadmin-f-sys.md) 后，才能安装普通企业应用。<!--DelEnd--><!--RP3--><!--RP3End--> &lt;li&gt;enterprise_normal：普通企业应用，无需上架华为应用市场，可通过企业 [MDM应用](../../../mdm/mdm-kit-term.md#mdm应用设备管理应用)以及离线安装器分发安装。<!--RP4--><!--RP4End-->&lt;li&gt;os_integration：预置应用，三方应用无法 申请配置。&lt;li&gt;crowdtesting：众包测试应用，是由应用市场分发给部分用户，有一定的有效期的特定应用，系统检测到应用的有效期到期后，会通知用户到应用市场更新release版本的应用。从API version 11开始被废 弃。&lt;li&gt;internaltesting：应用市场内测的应用。<!--RP5--><!--RP5End-->&lt;li&gt;none：其他。
+应用程序签名证书的分发类型，分为： &lt;li&gt;app_gallery：应用市场安装的应用。<!--RP1--><!--RP1End--> &lt;li&gt; enterprise：企业内部应用，企业自行开发、仅限企业内部员工使用的应用，不通过 应用市场等公开渠道发布，而是通过企业自己的渠道进行内部分发。<!--RP2--><!--RP2End-->&lt;li&gt; enterprise_mdm：企业 [MDM应用](../../../mdm/mdm-kit-term.md#mdm应用)。<!--Del-->需要被激活 [管理员特权](../../apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-enableadmin-f-sys.md) 后，才能安装普通企业应用。<!--DelEnd--><!--RP3--><!--RP3End--> &lt;li&gt;enterprise_normal：普通企业应用，无需上架华为应用市场，可通过企业 [MDM应用](../../../mdm/mdm-kit-term.md#mdm应用)以及离线安装器分发安装。<!--RP4--><!--RP4End-->&lt;li&gt;os_integration：预置应用，三方应用无法 申请配置。&lt;li&gt;crowdtesting：众包测试应用，是由应用市场分发给部分用户，有一定的有效期的特定应用，系统检测到应用的有效期到期后，会通知用户到应用市场更新release版本的应用。从API version 11开始被废 弃。&lt;li&gt;internaltesting：应用市场内测的应用。<!--RP5--><!--RP5End-->&lt;li&gt;none：其他。
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ApplicationInfo-readonly appDistributionType: string--><!--Device-ApplicationInfo-readonly appDistributionType: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 ## appIndex
 
 ```TypeScript
-readonly appIndex: int
+readonly appIndex: number
 ```
 
 应用包的分身索引标识，仅在分身应用中生效。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ApplicationInfo-readonly appIndex: int--><!--Device-ApplicationInfo-readonly appIndex: int-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -70,11 +62,9 @@ readonly appProvisionType: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ApplicationInfo-readonly appProvisionType: string--><!--Device-ApplicationInfo-readonly appProvisionType: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -88,11 +78,9 @@ readonly bundleType: bundleManager.BundleType
 
 **类型：** bundleManager.BundleType
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ApplicationInfo-readonly bundleType: bundleManager.BundleType--><!--Device-ApplicationInfo-readonly bundleType: bundleManager.BundleType-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -106,11 +94,9 @@ readonly cloudFileSyncEnabled: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ApplicationInfo-readonly cloudFileSyncEnabled: boolean--><!--Device-ApplicationInfo-readonly cloudFileSyncEnabled: boolean-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -124,11 +110,9 @@ readonly cloudStructuredDataSyncEnabled?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 20
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ApplicationInfo-readonly cloudStructuredDataSyncEnabled?: boolean--><!--Device-ApplicationInfo-readonly cloudStructuredDataSyncEnabled?: boolean-End-->
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -142,11 +126,9 @@ readonly codePath: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ApplicationInfo-readonly codePath: string--><!--Device-ApplicationInfo-readonly codePath: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -160,11 +142,9 @@ readonly dataUnclearable: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 11
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ApplicationInfo-readonly dataUnclearable: boolean--><!--Device-ApplicationInfo-readonly dataUnclearable: boolean-End-->
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -178,11 +158,9 @@ readonly debug: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ApplicationInfo-readonly debug: boolean--><!--Device-ApplicationInfo-readonly debug: boolean-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -196,29 +174,25 @@ readonly description: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ApplicationInfo-readonly description: string--><!--Device-ApplicationInfo-readonly description: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 ## descriptionId
 
 ```TypeScript
-readonly descriptionId: long
+readonly descriptionId: number
 ```
 
 标识应用的描述信息的资源id，是编译构建时根据应用配置的description自动生成的资源id。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ApplicationInfo-readonly descriptionId: long--><!--Device-ApplicationInfo-readonly descriptionId: long-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -232,11 +206,9 @@ readonly descriptionResource: Resource
 
 **类型：** [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md)
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ApplicationInfo-readonly descriptionResource: Resource--><!--Device-ApplicationInfo-readonly descriptionResource: Resource-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -250,11 +222,9 @@ readonly enabled: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ApplicationInfo-readonly enabled: boolean--><!--Device-ApplicationInfo-readonly enabled: boolean-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -268,29 +238,25 @@ readonly icon: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ApplicationInfo-readonly icon: string--><!--Device-ApplicationInfo-readonly icon: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 ## iconId
 
 ```TypeScript
-readonly iconId: long
+readonly iconId: number
 ```
 
 应用程序图标的资源id，是编译构建时根据应用配置的icon自动生成的资源id。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ApplicationInfo-readonly iconId: long--><!--Device-ApplicationInfo-readonly iconId: long-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -304,11 +270,9 @@ readonly iconResource: Resource
 
 **类型：** [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md)
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ApplicationInfo-readonly iconResource: Resource--><!--Device-ApplicationInfo-readonly iconResource: Resource-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -318,15 +282,18 @@ readonly iconResource: Resource
 readonly installSource: string
 ```
 
-标识应用程序的安装来源，支持的取值如下： - pre-installed：表示首次开机时已安装的预置应用。 - ota：表示系统升级时新增的预置应用。 - recovery：表示用户卸载后又手动恢复的预置应用。 - bundleName：表示由此包名对应的应用安装。该bundleName代表变量，以实际值为准。 - unknown：表示应用安装来源未知。
+标识应用程序的安装来源，支持的取值如下：  
+- pre-installed：表示首次开机时已安装的预置应用。  
+- ota：表示系统升级时新增的预置应用。  
+- recovery：表示用户卸载后又手动恢复的预置应用。  
+- bundleName：表示由此包名对应的应用安装。该bundleName代表变量，以实际值为准。  
+- unknown：表示应用安装来源未知。
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ApplicationInfo-readonly installSource: string--><!--Device-ApplicationInfo-readonly installSource: string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -340,29 +307,25 @@ readonly label: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ApplicationInfo-readonly label: string--><!--Device-ApplicationInfo-readonly label: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 ## labelId
 
 ```TypeScript
-readonly labelId: long
+readonly labelId: number
 ```
 
 标识应用名称的资源id，是编译构建时根据应用配置的label自动生成的资源id。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ApplicationInfo-readonly labelId: long--><!--Device-ApplicationInfo-readonly labelId: long-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -376,11 +339,9 @@ readonly labelResource: Resource
 
 **类型：** [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md)
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ApplicationInfo-readonly labelResource: Resource--><!--Device-ApplicationInfo-readonly labelResource: Resource-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -390,7 +351,8 @@ readonly labelResource: Resource
 readonly metadata: Map<string, Array<Metadata>>
 ```
 
-应用程序的元信息，通过调用 [getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md)接 口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_APPLICATION和GET_BUNDLE_INFO_WITH_METADATA获取。 **说明：** 从API version 9开始支持，从API version 10开始不再维护，建议使用metadataArray替代。
+应用程序的元信息，通过调用 [getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md)接 口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_APPLICATION和GET_BUNDLE_INFO_WITH_METADATA获取。  
+**说明：** 从API version 9开始支持，从API version 10开始不再维护，建议使用metadataArray替代。
 
 **类型：** Map&lt;string, Array&lt;[Metadata](arkts-ability-metadata-i.md)&gt;&gt;
 
@@ -399,8 +361,6 @@ readonly metadata: Map<string, Array<Metadata>>
 **废弃版本：** 10
 
 **替代接口：** [metadataArray](#metadataarray)
-
-<!--Device-ApplicationInfo-readonly metadata: Map<string, Array<Metadata>>--><!--Device-ApplicationInfo-readonly metadata: Map<string, Array<Metadata>>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -414,11 +374,9 @@ readonly metadataArray: Array<ModuleMetadata>
 
 **类型：** Array&lt;[ModuleMetadata](arkts-ability-applicationinfo-modulemetadata-i.md)&gt;
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ApplicationInfo-readonly metadataArray: Array<ModuleMetadata>--><!--Device-ApplicationInfo-readonly metadataArray: Array<ModuleMetadata>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -432,9 +390,7 @@ readonly multiAppMode: MultiAppMode
 
 **类型：** [MultiAppMode](arkts-ability-applicationinfo-multiappmode-i.md)
 
-**起始版本：** 23
-
-<!--Device-ApplicationInfo-readonly multiAppMode: MultiAppMode--><!--Device-ApplicationInfo-readonly multiAppMode: MultiAppMode-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -448,11 +404,9 @@ readonly name: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ApplicationInfo-readonly name: string--><!--Device-ApplicationInfo-readonly name: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -466,9 +420,7 @@ readonly nativeLibraryPath: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ApplicationInfo-readonly nativeLibraryPath: string--><!--Device-ApplicationInfo-readonly nativeLibraryPath: string-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -478,15 +430,14 @@ readonly nativeLibraryPath: string
 readonly permissions: Array<string>
 ```
 
-访问应用程序所需的权限列表<!--Del-->，可以通过调用 [getApplicationInfo](arkts-ability-bundlemanager-getapplicationinfo-f-sys.md) 接口，appFlags参数传入GET_APPLICATION_INFO_WITH_PERMISSION获取<!--DelEnd-->。 [getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md)或 者 [getBundleInfo](arkts-ability-bundlemanager-getbundleinfo-f.md) 接口获取ApplicationInfo信息时不会返回该字段内容，可以通过获取[bundleInfo](arkts-ability-bundleinfo-i.md).reqPermissionDetails信息获取权限列表。
+访问应用程序所需的权限列表<!--Del-->，可以通过调用 [getApplicationInfo](arkts-ability-bundlemanager-getapplicationinfo-f-sys.md) 接口，appFlags参数传入GET_APPLICATION_INFO_WITH_PERMISSION获取<!--DelEnd-->。  
+[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md)或 者 [getBundleInfo](arkts-ability-bundlemanager-getbundleinfo-f.md) 接口获取ApplicationInfo信息时不会返回该字段内容，可以通过获取[bundleInfo](arkts-ability-bundleinfo-i.md).reqPermissionDetails信息获取权限列表。
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ApplicationInfo-readonly permissions: Array<string>--><!--Device-ApplicationInfo-readonly permissions: Array<string>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -500,11 +451,9 @@ readonly process: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ApplicationInfo-readonly process: string--><!--Device-ApplicationInfo-readonly process: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -518,11 +467,9 @@ readonly releaseType: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ApplicationInfo-readonly releaseType: string--><!--Device-ApplicationInfo-readonly releaseType: string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -536,11 +483,9 @@ readonly removable: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ApplicationInfo-readonly removable: boolean--><!--Device-ApplicationInfo-readonly removable: boolean-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -554,29 +499,24 @@ readonly systemApp: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ApplicationInfo-readonly systemApp: boolean--><!--Device-ApplicationInfo-readonly systemApp: boolean-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 ## uid
 
 ```TypeScript
-readonly uid: int
+readonly uid: number
 ```
 
 应用程序的UID。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ApplicationInfo-readonly uid: int--><!--Device-ApplicationInfo-readonly uid: int-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-

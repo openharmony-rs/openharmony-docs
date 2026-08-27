@@ -8,8 +8,6 @@
 
 **替代接口：** ValueType
 
-<!--Device-distributedData-enum ValueType--><!--Device-distributedData-enum ValueType-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## STRING
@@ -25,8 +23,6 @@ STRING = 0
 **废弃版本：** 9
 
 **替代接口：** STRING
-
-<!--Device-ValueType-STRING = 0--><!--Device-ValueType-STRING = 0-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -44,8 +40,6 @@ INTEGER = 1
 
 **替代接口：** INTEGER
 
-<!--Device-ValueType-INTEGER = 1--><!--Device-ValueType-INTEGER = 1-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## FLOAT
@@ -61,8 +55,6 @@ FLOAT = 2
 **废弃版本：** 9
 
 **替代接口：** FLOAT
-
-<!--Device-ValueType-FLOAT = 2--><!--Device-ValueType-FLOAT = 2-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -80,8 +72,6 @@ BYTE_ARRAY = 3
 
 **替代接口：** BYTE_ARRAY
 
-<!--Device-ValueType-BYTE_ARRAY = 3--><!--Device-ValueType-BYTE_ARRAY = 3-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## BOOLEAN
@@ -97,8 +87,6 @@ BOOLEAN = 4
 **废弃版本：** 9
 
 **替代接口：** BOOLEAN
-
-<!--Device-ValueType-BOOLEAN = 4--><!--Device-ValueType-BOOLEAN = 4-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -116,7 +104,4 @@ DOUBLE = 5
 
 **替代接口：** DOUBLE
 
-<!--Device-ValueType-DOUBLE = 5--><!--Device-ValueType-DOUBLE = 5-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
-

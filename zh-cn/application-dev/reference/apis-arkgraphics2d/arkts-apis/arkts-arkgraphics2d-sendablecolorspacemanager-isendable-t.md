@@ -8,9 +8,6 @@ type ISendable = lang.ISendable
 
 **起始版本：** 12
 
-<!--Device-sendableColorSpaceManager-type ISendable = lang.ISendable--><!--Device-sendableColorSpaceManager-type ISendable = lang.ISendable-End-->
-
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **属性类型：** lang.ISendable
-

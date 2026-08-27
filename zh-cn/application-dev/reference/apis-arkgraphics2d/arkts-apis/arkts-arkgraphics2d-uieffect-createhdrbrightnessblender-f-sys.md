@@ -14,9 +14,7 @@ function createHdrBrightnessBlender(param: BrightnessBlenderParam): HdrBrightnes
 
 创建HdrBrightnessBlender实例用于给组件添加支持HDR的提亮效果。
 
-**起始版本：** 23
-
-<!--Device-uiEffect-function createHdrBrightnessBlender(param: BrightnessBlenderParam): HdrBrightnessBlender--><!--Device-uiEffect-function createHdrBrightnessBlender(param: BrightnessBlenderParam): HdrBrightnessBlender-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -43,23 +41,23 @@ function createHdrBrightnessBlender(param: BrightnessBlenderParam): HdrBrightnes
 **示例**
 
 ```TypeScript
-import { uiEffect } from "@kit.ArkGraphics2D"
+import { uiEffect } from '@kit.ArkGraphics2D';
 
-let blender : uiEffect.HdrBrightnessBlender =
+// 创建支持HDR的BrightnessBlender实例
+let blender: uiEffect.HdrBrightnessBlender =
   uiEffect.createHdrBrightnessBlender({cubicRate:1.0, quadraticRate:1.0, linearRate:1.0, degree:1.0, saturation:1.0,
-    positiveCoefficient:[2.3, 4.5, 2.0], negativeCoefficient:[0.5, 2.0, 0.5], fraction:0.0})
+    positiveCoefficient:[2.3, 4.5, 2.0], negativeCoefficient:[0.5, 2.0, 0.5], fraction:0.0});
 
 @Entry
 @Component
-struct example {
+struct Example {
   build() {
     RelativeContainer() {
-      Image($r("app.media.screenshot"))
-        .width("100%")
-        .height("100%")
+      Image($r('app.media.screenshot'))
+        .width('100%')
+        .height('100%')
         .advancedBlendMode(blender)
     }
   }
 }
 ```
-

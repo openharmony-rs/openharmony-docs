@@ -2,9 +2,7 @@
 
 AbilityManager模块提供获取、新增、修改Ability相关信息和运行状态信息的能力。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare namespace abilityManager--><!--Device-unnamed-declare namespace abilityManager-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -30,9 +28,7 @@ import { abilityManager } from '@kit.AbilityKit';
 | 名称 | 说明 |
 | --- | --- |
 | [acquireShareData](arkts-ability-abilitymanager-acquiresharedata-f-sys.md) | 系统弹框通过该接口发起原子化服务分享，触发目标UIAbility的 [onShare](arkts-ability-app-ability-uiability-uiability-c.md#onshare)回调并返回分享数据。使用 callback异步回调。 |
-| [acquireShareData](arkts-ability-abilitymanager-acquiresharedata-f-sys.md) | 系统弹框通过该接口发起原子化服务分享，调用到目标UIAbility的onShare，返回分享数据。使用callback异步回调。 |
 | [acquireShareData](arkts-ability-abilitymanager-acquiresharedata-f-sys.md) | 系统弹框通过该接口发起原子化服务分享，触发目标UIAbility的 [onShare](arkts-ability-app-ability-uiability-uiability-c.md#onshare)回调并返回分享数据。使用 Promise异步回调。 |
-| [acquireShareData](arkts-ability-abilitymanager-acquiresharedata-f-sys.md) | 系统弹框通过该接口发起原子化服务分享，调用到目标UIAbility的onShare，返回分享数据。使用Promise异步回调。 |
 | [clearPreloadedUIExtensionAbilities](arkts-ability-abilitymanager-clearpreloadeduiextensionabilities-f-sys.md) | 清除当前进程中所有已经预加载的[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)实例。使用Promise异步回调。 |
 | [clearPreloadedUIExtensionAbility](arkts-ability-abilitymanager-clearpreloadeduiextensionability-f-sys.md) | 清除指定的[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)实例。使用Promise异步回调。 |
 | [getAbilityRunningInfos](arkts-ability-abilitymanager-getabilityrunninginfos-f-sys.md) | 获取UIAbility运行相关信息。使用callback异步回调。 |
@@ -46,14 +42,12 @@ import { abilityManager } from '@kit.AbilityKit';
 | [notifyDebugAssertResult](arkts-ability-abilitymanager-notifydebugassertresult-f-sys.md) | 将断言调试结果通知应用程序。使用Promise异步回调。 |
 | [notifySaveAsResult](arkts-ability-abilitymanager-notifysaveasresult-f-sys.md) | 该接口仅供[DLP](../../apis-data-protection-kit/arkts-apis/arkts-dlppermission.md)（Data Loss Prevention, 数据丢失防护）管理应用使用，其他应用禁止使用，DLP管理应用通过该接口通知沙箱应用 另存为结果。使用callback异步回调。 |
 | [notifySaveAsResult](arkts-ability-abilitymanager-notifysaveasresult-f-sys.md) | 该接口仅供[DLP](../../apis-data-protection-kit/arkts-apis/arkts-dlppermission.md)（Data Loss Prevention, 数据丢失防护）管理应用使用，其他应用禁止使用，DLP管理应用通过该接口通知沙箱应用 另存为结果。使用Promise异步回调。 |
-| [offAbilityForegroundState](arkts-ability-abilitymanager-offabilityforegroundstate-f-sys.md) | 取消注册Ability启动和退出的观测器。 |
+| off | 取消注册Ability启动和退出的观测器。 |
 | [offPreloadedUIExtensionAbilityDestroyed](arkts-ability-abilitymanager-offpreloadeduiextensionabilitydestroyed-f-sys.md) | 注销当前进程中预加载的[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)实例的销毁监听。 |
 | [offPreloadedUIExtensionAbilityLoaded](arkts-ability-abilitymanager-offpreloadeduiextensionabilityloaded-f-sys.md) | 注销当前进程中预加载的[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)实例的加载监听。 |
-| [off_abilityForegroundState](arkts-ability-abilitymanager-offabilityforegroundstate-f-sys.md) | 取消注册Ability启动和退出的观测器。 |
-| [onAbilityForegroundState](arkts-ability-abilitymanager-onabilityforegroundstate-f-sys.md) | 注册Ability的启动和退出的观测器。 |
+| on | 注册Ability的启动和退出的观测器。 |
 | [onPreloadedUIExtensionAbilityDestroyed](arkts-ability-abilitymanager-onpreloadeduiextensionabilitydestroyed-f-sys.md) | 监听当前进程中预加载的[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)实例的销毁事件。 |
 | [onPreloadedUIExtensionAbilityLoaded](arkts-ability-abilitymanager-onpreloadeduiextensionabilityloaded-f-sys.md) | 监听当前进程中预加载的[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)实例的加载事件。 |
-| [on_abilityForegroundState](arkts-ability-abilitymanager-onabilityforegroundstate-f-sys.md) | 注册Ability的启动和退出的观测器。 |
 | [preloadUIExtensionAbility](arkts-ability-abilitymanager-preloaduiextensionability-f-sys.md) | 预加载指定的[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)并返回预加载UIExtensionAbility实例 的ID。使用Promise异步回调。 |
 | [queryAtomicServiceStartupRule](arkts-ability-abilitymanager-queryatomicservicestartuprule-f-sys.md) | 查询嵌入式拉起[EmbeddableUIAbility](arkts-ability-app-ability-embeddableuiability-embeddableuiability-c.md)的规则。使用Promise异步回调。 该接口仅在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。 |
 | [setResidentProcessEnabled](arkts-ability-abilitymanager-setresidentprocessenabled-f-sys.md) | 常驻进程支持按需启停。 |
@@ -100,4 +94,3 @@ import { abilityManager } from '@kit.AbilityKit';
 | [PreloadedUIExtensionAbilityDestroyedFn](arkts-ability-abilitymanager-preloadeduiextensionabilitydestroyedfn-t-sys.md) | 预加载[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)被销毁时的回调函数类型。 |
 | [PreloadedUIExtensionAbilityLoadedFn](arkts-ability-abilitymanager-preloadeduiextensionabilityloadedfn-t-sys.md) | 预加载[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)被加载时的回调函数类型。 |
 <!--DelEnd-->
-

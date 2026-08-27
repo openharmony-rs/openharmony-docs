@@ -2,9 +2,7 @@
 
 表示主动触发WantAgent返回的数据。
 
-**起始版本：** 23
-
-<!--Device-wantAgent-export interface CompleteData--><!--Device-wantAgent-export interface CompleteData-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -17,34 +15,32 @@ import { wantAgent, WantAgent } from '@kit.AbilityKit';
 ## extraInfo
 
 ```TypeScript
-extraInfo?: Record<string, RecordData>
+extraInfo?: Record<string, Object>
 ```
 
 额外数据。
 
-**类型：** Record&lt;string, [RecordData](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt;
+**类型：** Record&lt;string, Object&gt;
 
-**起始版本：** 23
+**起始版本：** 9
 
-<!--Device-CompleteData-extraInfo?: Record<string, RecordData>--><!--Device-CompleteData-extraInfo?: Record<string, RecordData>-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## finalCode
 
 ```TypeScript
-finalCode: int
+finalCode: number
 ```
 
 触发wantAgent的返回码。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CompleteData-finalCode: int--><!--Device-CompleteData-finalCode: int-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -58,11 +54,9 @@ finalData: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CompleteData-finalData: string--><!--Device-CompleteData-finalData: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -76,11 +70,9 @@ info: WantAgent
 
 **类型：** [WantAgent](arkts-ability-wantagent-t.md)
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CompleteData-info: WantAgent--><!--Device-CompleteData-info: WantAgent-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -94,11 +86,8 @@ want: Want
 
 **类型：** [Want](arkts-ability-app-ability-want-want-c.md)
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-CompleteData-want: Want--><!--Device-CompleteData-want: Want-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-

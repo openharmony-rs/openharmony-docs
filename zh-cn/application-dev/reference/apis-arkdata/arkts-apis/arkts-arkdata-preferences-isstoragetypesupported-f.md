@@ -14,11 +14,9 @@ function isStorageTypeSupported(type: StorageType): boolean
 
 判断当前平台是否支持传入的存储模式，此为同步接口。如果当前平台支持传入的存储模式时，该接口返回true；反之，返回false。
 
-**起始版本：** 23
+**起始版本：** 18
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-preferences-function isStorageTypeSupported(type: StorageType): boolean--><!--Device-preferences-function isStorageTypeSupported(type: StorageType): boolean-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -50,4 +48,3 @@ let isGskvSupported = preferences.isStorageTypeSupported(gskvType);
 console.info("Is xml supported in current platform: " + isXmlSupported);
 console.info("Is gskv supported in current platform: " + isGskvSupported);
 ```
-

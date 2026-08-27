@@ -2,9 +2,7 @@
 
 端云共享结果的返回值。
 
-**起始版本：** 23
-
-<!--Device-sharing-interface Result--><!--Device-sharing-interface Result-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -19,16 +17,14 @@ import { cloudData } from '@kit.ArkData';
 ## code
 
 ```TypeScript
-code: int
+code: number
 ```
 
 错误码。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-Result-code: int--><!--Device-Result-code: int-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -44,9 +40,7 @@ description?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Result-description?: string--><!--Device-Result-description?: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -62,11 +56,8 @@ value?: T
 
 **类型：** T
 
-**起始版本：** 23
-
-<!--Device-Result-value?: T--><!--Device-Result-value?: T-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **系统接口：** 此接口为系统接口。
-

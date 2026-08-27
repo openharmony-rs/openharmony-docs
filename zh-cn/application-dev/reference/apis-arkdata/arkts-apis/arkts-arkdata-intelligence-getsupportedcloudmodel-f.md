@@ -18,8 +18,6 @@ function getSupportedCloudModel(): Promise<Array<CloudModelInfo>>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-intelligence-function getSupportedCloudModel(): Promise<Array<CloudModelInfo>>--><!--Device-intelligence-function getSupportedCloudModel(): Promise<Array<CloudModelInfo>>-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
 **返回值：**
@@ -31,6 +29,8 @@ function getSupportedCloudModel(): Promise<Array<CloudModelInfo>>
 **示例**
 
 ```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
 intelligence.getSupportedCloudModel()
   .then((info: Array<intelligence.CloudModelInfo>) => {
     console.info("Succeeded in getting CloudModelInfo");
@@ -39,4 +39,3 @@ intelligence.getSupportedCloudModel()
     console.error(`Failed to get CloudModelInfo. Code: ${err.code}, message: ${err.message}`);
   });
 ```
-

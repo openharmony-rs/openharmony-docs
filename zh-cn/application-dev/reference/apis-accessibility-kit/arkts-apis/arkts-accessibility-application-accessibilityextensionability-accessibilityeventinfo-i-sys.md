@@ -2,9 +2,7 @@
 
 无障碍事件信息。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export declare interface AccessibilityEventInfo--><!--Device-unnamed-export declare interface AccessibilityEventInfo-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -14,7 +12,6 @@
 
 ```TypeScript
 import { AccessibilityExtensionAbility, AccessibilityElement, AccessibilityExtensionContext, ElementAttributeKeys, ElementAttributeValues, FocusDirection, FocusType, Rect, WindowType, AccessibilityEvent, AccessibilityEventInfo, Parameter, FocusRule, FocusCondition, FocusMoveResult, AccessibilityVirtualNode, TouchPosition } from '@kit.AccessibilityKit';
-import { AccessibilityExtensionAbility, AccessibilityElement, AccessibilityExtensionContext, FocusDirection, Rect, WindowType, AccessibilityEventInfo, Parameter, FocusRule, FocusCondition, FocusMoveResult, AccessibilityVirtualNode, TouchPosition } from '@kit.AccessibilityKit';
 ```
 
 ## eventType
@@ -27,9 +24,7 @@ eventType: AccessibilityEventType
 
 **类型：** [AccessibilityEventType](arkts-accessibility-accessibility-accessibilityeventtype-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-AccessibilityEventInfo-eventType: AccessibilityEventType--><!--Device-AccessibilityEventInfo-eventType: AccessibilityEventType-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -45,9 +40,7 @@ extraInfo?: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AccessibilityEventInfo-extraInfo?: string--><!--Device-AccessibilityEventInfo-extraInfo?: string-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -63,9 +56,7 @@ target?: AccessibilityElement
 
 **类型：** [AccessibilityElement](arkts-accessibility-accessibilityelement-t.md)
 
-**起始版本：** 23
-
-<!--Device-AccessibilityEventInfo-target?: AccessibilityElement--><!--Device-AccessibilityEventInfo-target?: AccessibilityElement-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -74,18 +65,15 @@ target?: AccessibilityElement
 ## timestamp
 
 ```TypeScript
-timestamp?: long
+timestamp?: number
 ```
 
 事件时间戳，单位为毫秒，默认值为0。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AccessibilityEventInfo-timestamp?: long--><!--Device-AccessibilityEventInfo-timestamp?: long-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
-

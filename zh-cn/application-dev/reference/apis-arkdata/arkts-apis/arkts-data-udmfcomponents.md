@@ -1,4 +1,4 @@
-# @ohos.data.UdmfComponents
+# @ohos.data.UdmfComponents(内容卡片)
 
 ## 导入模块
 
@@ -12,11 +12,10 @@ import { ContentFormCard, FormType } from '@kit.ArkData';
 
 | 名称 | 说明 |
 | --- | --- |
-| [ContentFormCard](arkts-arkdata-data-udmfcomponents-contentformcard-s.md) | 内容卡片控件，用于在应用内展示标题、描述、内容图片、应用信息等。适用于内容分发、社交动态、消息通知等场景。 |
+| [ContentFormCard(内容卡片)](arkts-arkdata-data-udmfcomponents-contentformcard-s.md) | 内容卡片控件，用于在应用内展示标题、描述、内容图片、应用信息等。适用于内容分发、社交动态、消息通知等场景。 |
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [FormType](arkts-arkdata-data-udmfcomponents-formtype-e.md) | 内容卡片类型枚举，提供了大、中、小三种尺寸。 |
-
+| [FormType(内容卡片)](arkts-arkdata-data-udmfcomponents-formtype-e.md) | 内容卡片类型枚举，提供了大、中、小三种尺寸。 |

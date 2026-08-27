@@ -1,5 +1,11 @@
 # BundleInfo
 
+The module defines the bundle information. An application can obtain its own bundle information through
+ [bundleManager.getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md)
+ , with [bundleFlags](arkts-ability-bundlemanager-bundleflag-e.md) set to the information to be
+ contained in the returned [BundleInfo](arkts-ability-bundleinfo-i.md).
+
+
 ## 汇总
 
 ### 接口
@@ -21,4 +27,3 @@
 | [BundleOptions](arkts-ability-bundleinfo-bundleoptions-i-sys.md) | 应用包选项，用于设置或查询应用相关信息。 |
 | [DynamicIconInfo](arkts-ability-bundleinfo-dynamiciconinfo-i-sys.md) | 应用的动态图标信息。 |
 <!--DelEnd-->
-

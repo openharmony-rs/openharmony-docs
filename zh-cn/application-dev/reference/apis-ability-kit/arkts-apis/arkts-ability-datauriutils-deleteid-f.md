@@ -14,9 +14,7 @@ function deleteId(uri: string): string
 
 删除指定uri路径末尾的ID。
 
-**起始版本：** 23
-
-<!--Device-dataUriUtils-function deleteId(uri: string): string--><!--Device-dataUriUtils-function deleteId(uri: string): string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -48,7 +46,6 @@ try {
   let uri = dataUriUtils.deleteId('com.example.dataUriUtils/1221');
   console.info(`delete id with the uri is: ${uri}`);
 } catch (err) {
-  console.error(`delete id err, code: ${(err as BusinessError).code}, msg: ${(err as BusinessError).message}`);
+  console.error(`delete id err, code: ${JSON.stringify((err as BusinessError).code)}, msg: ${JSON.stringify((err as BusinessError).message)}`);
 }
 ```
-

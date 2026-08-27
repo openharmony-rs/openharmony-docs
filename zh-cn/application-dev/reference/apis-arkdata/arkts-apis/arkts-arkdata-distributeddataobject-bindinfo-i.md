@@ -2,9 +2,7 @@
 
 数据库的绑定信息。当前版本只支持关系型数据库的绑定。
 
-**起始版本：** 23
-
-<!--Device-distributedDataObject-interface BindInfo--><!--Device-distributedDataObject-interface BindInfo-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -24,9 +22,7 @@ assetName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-BindInfo-assetName: string--><!--Device-BindInfo-assetName: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -40,9 +36,7 @@ field: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-BindInfo-field: string--><!--Device-BindInfo-field: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -56,9 +50,7 @@ primaryKey: commonType.ValuesBucket
 
 **类型：** commonType.ValuesBucket
 
-**起始版本：** 23
-
-<!--Device-BindInfo-primaryKey: commonType.ValuesBucket--><!--Device-BindInfo-primaryKey: commonType.ValuesBucket-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -72,9 +64,7 @@ storeName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-BindInfo-storeName: string--><!--Device-BindInfo-storeName: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -88,9 +78,6 @@ tableName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-BindInfo-tableName: string--><!--Device-BindInfo-tableName: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
-

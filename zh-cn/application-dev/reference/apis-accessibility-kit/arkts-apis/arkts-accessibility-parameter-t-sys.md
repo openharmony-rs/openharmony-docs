@@ -4,15 +4,12 @@
 export type Parameter = _Parameter
 ```
 
-Indicates executeAction parameter.
+无障碍节点元素执行特定操作时，为操作提供具体设置的参数值，请参考[Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md)。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export type Parameter = _Parameter--><!--Device-unnamed-export type Parameter = _Parameter-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
 
 **属性类型：** _Parameter
-

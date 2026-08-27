@@ -2,9 +2,7 @@
 
 应用变更信息。
 
-**起始版本：** 23
-
-<!--Device-bundleMonitor-interface BundleChangedInfo--><!--Device-bundleMonitor-interface BundleChangedInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -19,16 +17,14 @@ import { bundleMonitor } from '@kit.AbilityKit';
 ## appIndex
 
 ```TypeScript
-readonly appIndex: int
+readonly appIndex: number
 ```
 
 应用状态发生变化的应用分身索引。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-BundleChangedInfo-readonly appIndex: int--><!--Device-BundleChangedInfo-readonly appIndex: int-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -44,9 +40,7 @@ readonly bundleName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-BundleChangedInfo-readonly bundleName: string--><!--Device-BundleChangedInfo-readonly bundleName: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -55,18 +49,15 @@ readonly bundleName: string
 ## userId
 
 ```TypeScript
-readonly userId: int
+readonly userId: number
 ```
 
 应用状态发生变化的用户ID，可以通过getOsAccountLocalId接口获取。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-BundleChangedInfo-readonly userId: int--><!--Device-BundleChangedInfo-readonly userId: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
-

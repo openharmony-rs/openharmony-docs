@@ -3,22 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { appControl } from '@kit.AbilityKit';
-import { bundleManager } from '@kit.AbilityKit';
-import { bundleMonitor } from '@kit.AbilityKit';
-import { bundleResourceManager } from '@kit.AbilityKit';
 import { bundle } from '@kit.AbilityKit';
-import { defaultAppManager } from '@kit.AbilityKit';
-import { distributedBundleManager } from '@kit.AbilityKit';
-import { freeInstall } from '@kit.AbilityKit';
-import { innerBundleManager, BundleStatusCallback } from '@kit.AbilityKit';
-import { installer } from '@kit.AbilityKit';
-import { launcherBundleManager } from '@kit.AbilityKit';
-import { overlay } from '@kit.AbilityKit';
-import { shortcutManager } from '@kit.AbilityKit';
-import { skillManager } from '@kit.AbilityKit';
-import { appDomainVerify } from '@kit.AbilityKit';
-import { pluginBundleManager } from '@kit.AbilityKit';
 ```
 
 ## getAbilityLabel
@@ -27,15 +12,13 @@ import { pluginBundleManager } from '@kit.AbilityKit';
 function getAbilityLabel(bundleName: string, abilityName: string, callback: AsyncCallback<string>): void
 ```
 
-通过Bundle名称和Ability组件名获取应用名称，使用callback异步回调。 获取调用方自己的信息时不需要权限。
+通过Bundle名称和Ability组件名获取应用名称，使用callback异步回调。获取调用方自己的信息时不需要权限。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
-
-<!--Device-bundle-function getAbilityLabel(bundleName: string, abilityName: string, callback: AsyncCallback<string>): void--><!--Device-bundle-function getAbilityLabel(bundleName: string, abilityName: string, callback: AsyncCallback<string>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -45,7 +28,7 @@ function getAbilityLabel(bundleName: string, abilityName: string, callback: Asyn
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用Bundle名称。 |
 | abilityName | string | 是 | Ability名称。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 程序启动作为入参的回调函数，返回应用名称信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 程序启动作为入参的回调函数，返回应用名称信息。 |
 
 **示例**
 
@@ -71,15 +54,13 @@ bundle.getAbilityLabel(bundleName, abilityName, (err, data) => {
 function getAbilityLabel(bundleName: string, abilityName: string): Promise<string>
 ```
 
-通过Bundle名称和ability名称获取应用名称，使用Promise异步回调。 获取调用方自己的信息时不需要权限。
+通过Bundle名称和ability名称获取应用名称，使用Promise异步回调。获取调用方自己的信息时不需要权限。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
-
-<!--Device-bundle-function getAbilityLabel(bundleName: string, abilityName: string): Promise<string>--><!--Device-bundle-function getAbilityLabel(bundleName: string, abilityName: string): Promise<string>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -94,7 +75,7 @@ function getAbilityLabel(bundleName: string, abilityName: string): Promise<strin
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise形式返回应用名称信息。 |
+| Promise & lt;string & gt; | Promise形式返回应用名称信息。 |
 
 **示例**
 
@@ -112,4 +93,3 @@ bundle.getAbilityLabel(bundleName, abilityName)
     console.error('Operation failed. Cause: ' + JSON.stringify(error));
   })
 ```
-

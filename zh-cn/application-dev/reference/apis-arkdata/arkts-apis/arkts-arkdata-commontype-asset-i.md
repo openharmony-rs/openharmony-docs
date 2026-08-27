@@ -2,9 +2,7 @@
 
 记录资产附件（文件、图片、视频等类型文件）的相关信息。
 
-**起始版本：** 23
-
-<!--Device-commonType-interface Asset--><!--Device-commonType-interface Asset-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CommonType
 
@@ -24,9 +22,7 @@ createTime: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Asset-createTime: string--><!--Device-Asset-createTime: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CommonType
 
@@ -40,9 +36,7 @@ modifyTime: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Asset-modifyTime: string--><!--Device-Asset-modifyTime: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CommonType
 
@@ -56,9 +50,7 @@ name: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Asset-name: string--><!--Device-Asset-name: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CommonType
 
@@ -72,9 +64,7 @@ path: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Asset-path: string--><!--Device-Asset-path: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CommonType
 
@@ -88,9 +78,7 @@ size: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Asset-size: string--><!--Device-Asset-size: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CommonType
 
@@ -104,9 +92,7 @@ status?: AssetStatus
 
 **类型：** AssetStatus
 
-**起始版本：** 23
-
-<!--Device-Asset-status?: AssetStatus--><!--Device-Asset-status?: AssetStatus-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CommonType
 
@@ -120,9 +106,6 @@ uri: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Asset-uri: string--><!--Device-Asset-uri: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CommonType
-

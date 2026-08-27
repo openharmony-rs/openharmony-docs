@@ -1,10 +1,8 @@
-# ColorSpaceManager(色彩管理)
+# ColorSpaceManager
 
-当前色域对象实例。 下列API示例中都需先使用[create()](arkts-arkgraphics2d-colorspacemanager-create-f.md)获取到ColorSpaceManager实例，再通过此实例调用对应方法。
+当前色域对象实例。下列API示例中都需先使用[create()](arkts-arkgraphics2d-colorspacemanager-create-f.md)获取到ColorSpaceManager实例，再通过此实例调用对应方法。
 
-**起始版本：** 23
-
-<!--Device-colorSpaceManager-interface ColorSpaceManager--><!--Device-colorSpaceManager-interface ColorSpaceManager-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -22,9 +20,7 @@ getColorSpaceName(): ColorSpace
 
 获取色域类型。
 
-**起始版本：** 23
-
-<!--Device-ColorSpaceManager-getColorSpaceName(): ColorSpace--><!--Device-ColorSpaceManager-getColorSpaceName(): ColorSpace-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -55,14 +51,12 @@ try {
 ## getGamma
 
 ```TypeScript
-getGamma(): double
+getGamma(): number
 ```
 
 获取色域gamma值。
 
-**起始版本：** 23
-
-<!--Device-ColorSpaceManager-getGamma(): double--><!--Device-ColorSpaceManager-getGamma(): double-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -70,7 +64,7 @@ getGamma(): double
 
 | 类型 | 说明 |
 | --- | --- |
-| double | 返回色域gamma值。 |
+| number | 返回色域gamma值。 |
 
 **错误码：**
 
@@ -93,14 +87,12 @@ try {
 ## getWhitePoint
 
 ```TypeScript
-getWhitePoint(): Array<double>
+getWhitePoint(): Array<number>
 ```
 
 获取色域白点值。
 
-**起始版本：** 23
-
-<!--Device-ColorSpaceManager-getWhitePoint(): Array<double>--><!--Device-ColorSpaceManager-getWhitePoint(): Array<double>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -108,7 +100,7 @@ getWhitePoint(): Array<double>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;double&gt; | 返回色域白点值[x, y]。 |
+| Array & lt;number & gt; | 返回色域白点值[x, y]。 |
 
 **错误码：**
 
@@ -127,4 +119,3 @@ try {
   console.error(`Failed to get white point. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-

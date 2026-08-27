@@ -12,13 +12,11 @@ import { bundleManager } from '@kit.AbilityKit';
 function getLaunchWant(): Want
 ```
 
-获取本应用[入口UIAbility](../../../quick-start/application-package-glossary.md#uiability)的Want参数。
+获取本应用[入口UIAbility](../../../application-models/ability-terminology.md#uiability)的Want参数。
 
-**起始版本：** 23
+**起始版本：** 13
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-bundleManager-function getLaunchWant(): Want--><!--Device-bundleManager-function getLaunchWant(): Want-End-->
+**原子化服务API：** 从API版本13开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -50,4 +48,3 @@ try {
   hilog.error(0x0000, 'testTag', 'getLaunchWant failed: %{public}s', message);
 }
 ```
-

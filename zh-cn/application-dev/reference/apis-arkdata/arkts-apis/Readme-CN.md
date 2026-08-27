@@ -5,37 +5,7 @@
   <!--Del-->
   - [DataShareExtensionAbility(系统接口)](arkts-arkdata-application-datashareextensionability-datashareextensionability-c-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [BatchInsertFn(系统接口)](arkts-arkdata-batchinsertfn-t-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [BatchUpdateFn(系统接口)](arkts-arkdata-batchupdatefn-t-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [DeleteFn(系统接口)](arkts-arkdata-deletefn-t-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [DenormalizeUriFn(系统接口)](arkts-arkdata-denormalizeurifn-t-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [InsertFn(系统接口)](arkts-arkdata-insertfn-t-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [NormalizeUriFn(系统接口)](arkts-arkdata-normalizeurifn-t-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [OnCreateFn(系统接口)](arkts-arkdata-oncreatefn-t-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [QueryFn(系统接口)](arkts-arkdata-queryfn-t-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [UpdateFn(系统接口)](arkts-arkdata-updatefn-t-sys.md)<!--DelEnd-->
-  <!--Del-->
   - [UpdateOperation(系统接口)](arkts-arkdata-updateoperation-t-sys.md)<!--DelEnd-->
-<!--Del-->
-- [@ohos.data.DataShareResultSet](arkts-data-datashareresultset.md)<!--DelEnd-->
-  <!--Del-->
-  - [DataShareResultSet(系统接口)](arkts-arkdata-data-datashareresultset-datashareresultset-i-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [DataType(系统接口)](arkts-arkdata-data-datashareresultset-datatype-e-sys.md)<!--DelEnd-->
-- [@ohos.data.UdmfComponents](arkts-data-udmfcomponents.md)
-  - [ContentFormCard](arkts-arkdata-data-udmfcomponents-contentformcard-s.md)
-  - [FormType](arkts-arkdata-data-udmfcomponents-formtype-e.md)
-- [@ohos.data.ValuesBucket](arkts-data-valuesbucket.md)
-  - [ValuesBucket](arkts-arkdata-valuesbucket-t.md)
-  - [ValueType](arkts-arkdata-valuetype-t.md)
 - [@ohos.data.cloudData](arkts-data-clouddata.md)
   - [cloudData](arkts-arkdata-clouddata-n.md)
     - [sharing](arkts-arkdata-clouddata-sharing-n.md)
@@ -199,8 +169,7 @@
   - [TemplateId(系统接口)](arkts-arkdata-datashare-templateid-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [UpdateOperation(系统接口)](arkts-arkdata-datashare-updateoperation-i-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [ChangeType(系统接口)](arkts-arkdata-datashare-changetype-e-sys.md)<!--DelEnd-->
+  - [ChangeType](arkts-arkdata-datashare-changetype-e.md)
   - [DataProxyErrorCode](arkts-arkdata-datashare-dataproxyerrorcode-e.md)
   - [DataProxyMaxValueLength](arkts-arkdata-datashare-dataproxymaxvaluelength-e.md)
   - [DataProxyType](arkts-arkdata-datashare-dataproxytype-e.md)
@@ -210,6 +179,12 @@
   - [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md)
   <!--Del-->
   - [DataSharePredicates(系统接口)](arkts-arkdata-datasharepredicates-datasharepredicates-c-sys.md)<!--DelEnd-->
+<!--Del-->
+- [@ohos.data.DataShareResultSet](arkts-data-datashareresultset.md)<!--DelEnd-->
+  <!--Del-->
+  - [DataShareResultSet(系统接口)](arkts-arkdata-data-datashareresultset-datashareresultset-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [DataType(系统接口)](arkts-arkdata-data-datashareresultset-datatype-e-sys.md)<!--DelEnd-->
 - [@ohos.data.distributedData](arkts-data-distributeddata.md)
   - [distributedData](arkts-arkdata-distributeddata-n.md)
     - [Constants](arkts-arkdata-distributeddata-constants-n.md)
@@ -267,7 +242,6 @@
   <!--Del-->
   - [SingleKVStore(系统接口)](arkts-arkdata-distributedkvstore-singlekvstore-i-sys.md)<!--DelEnd-->
   - [Value](arkts-arkdata-distributedkvstore-value-i.md)
-  - [Constants](arkts-arkdata-distributedkvstore-constants-e.md)
   - [KVStoreType](arkts-arkdata-distributedkvstore-kvstoretype-e.md)
   - [SecurityLevel](arkts-arkdata-distributedkvstore-securitylevel-e.md)
   - [SubscribeType](arkts-arkdata-distributedkvstore-subscribetype-e.md)
@@ -295,7 +269,6 @@
   - [removePreferencesFromCacheSync](arkts-arkdata-preferences-removepreferencesfromcachesync-f.md)
   - [Options](arkts-arkdata-preferences-options-i.md)
   - [Preferences](arkts-arkdata-preferences-preferences-i.md)
-  - [RecordData](arkts-arkdata-preferences-recorddata-t.md)
   - [ValueType](arkts-arkdata-preferences-valuetype-t.md)
   - [StorageType](arkts-arkdata-preferences-storagetype-e.md)
   - [常量](arkts-arkdata-preferences-con.md)
@@ -426,15 +399,16 @@
   - [StorageObserver](arkts-arkdata-storage-storageobserver-i.md)
   - [ValueType](arkts-arkdata-storage-valuetype-t.md)
   - [常量](arkts-arkdata-storage-con.md)
+- [@ohos.data.UdmfComponents](arkts-data-udmfcomponents.md)
+  - [ContentFormCard](arkts-arkdata-data-udmfcomponents-contentformcard-s.md)
+  - [FormType](arkts-arkdata-data-udmfcomponents-formtype-e.md)
 - [@ohos.data.unifiedDataChannel](arkts-data-unifieddatachannel.md)
   - [convertRecordsToEntries](arkts-arkdata-unifieddatachannel-convertrecordstoentries-f.md)
   - [deleteData](arkts-arkdata-unifieddatachannel-deletedata-f.md)
   - [insertData](arkts-arkdata-unifieddatachannel-insertdata-f.md)
   - [queryData](arkts-arkdata-unifieddatachannel-querydata-f.md)
-  <!--Del-->
-  - [removeAppShareOptions(系统接口)](arkts-arkdata-unifieddatachannel-removeappshareoptions-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [setAppShareOptions(系统接口)](arkts-arkdata-unifieddatachannel-setappshareoptions-f-sys.md)<!--DelEnd-->
+  - [removeAppShareOptions](arkts-arkdata-unifieddatachannel-removeappshareoptions-f.md)
+  - [setAppShareOptions](arkts-arkdata-unifieddatachannel-setappshareoptions-f.md)
   - [updateData](arkts-arkdata-unifieddatachannel-updatedata-f.md)
   - [ApplicationDefinedRecord](arkts-arkdata-unifieddatachannel-applicationdefinedrecord-c.md)
   - [Audio](arkts-arkdata-unifieddatachannel-audio-c.md)
@@ -466,8 +440,6 @@
   - [ValueType](arkts-arkdata-unifieddatachannel-valuetype-t.md)
   - [FileConflictOptions](arkts-arkdata-unifieddatachannel-fileconflictoptions-e.md)
   - [Intention](arkts-arkdata-unifieddatachannel-intention-e.md)
-  <!--Del-->
-  - [Intention(系统接口)](arkts-arkdata-unifieddatachannel-intention-e-sys.md)<!--DelEnd-->
   - [ListenerStatus](arkts-arkdata-unifieddatachannel-listenerstatus-e.md)
   - [ProgressIndicator](arkts-arkdata-unifieddatachannel-progressindicator-e.md)
   - [ShareOptions](arkts-arkdata-unifieddatachannel-shareoptions-e.md)
@@ -494,6 +466,9 @@
   - [unregisterTypeDescriptors(系统接口)](arkts-arkdata-uniformtypedescriptor-unregistertypedescriptors-f-sys.md)<!--DelEnd-->
   - [TypeDescriptor](arkts-arkdata-uniformtypedescriptor-typedescriptor-c.md)
   - [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md)
+- [@ohos.data.ValuesBucket](arkts-data-valuesbucket.md)
+  - [ValuesBucket](arkts-arkdata-valuesbucket-t.md)
+  - [ValueType](arkts-arkdata-valuetype-t.md)
 - [@system.storage](arkts-system-storage.md)
   - [Storage](arkts-arkdata-system-storage-storage-c.md)
   - [ClearStorageOptions](arkts-arkdata-system-storage-clearstorageoptions-i.md)

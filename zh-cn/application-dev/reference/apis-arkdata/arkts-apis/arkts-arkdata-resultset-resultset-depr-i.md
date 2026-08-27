@@ -1,14 +1,16 @@
 # ResultSet
 
-结果集是指用户调用关系型数据库查询接口之后返回的结果集合，提供了多种灵活的数据访问方式，以便用户获取各项数据。 > **说明：** > > 从API Version 9开始，该接口不再维护，推荐使用新接口[ResultSet](arkts-arkdata-relationalstore-resultset-i.md)。
+结果集是指用户调用关系型数据库查询接口之后返回的结果集合，提供了多种灵活的数据访问方式，以便用户获取各项数据。
+
+> **说明：**
+> 
+> 从API Version 9开始，该接口不再维护，推荐使用新接口[ResultSet](arkts-arkdata-relationalstore-resultset-i.md)。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
 **替代接口：** [relationalStore](arkts-data-relationalstore.md)
-
-<!--Device-unnamed-export interface ResultSet--><!--Device-unnamed-export interface ResultSet-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -25,8 +27,6 @@ close(): void
 **废弃版本：** 9
 
 **替代接口：** close
-
-<!--Device-ResultSet-close(): void--><!--Device-ResultSet-close(): void-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -55,8 +55,6 @@ getBlob(columnIndex: number): Uint8Array
 **废弃版本：** 9
 
 **替代接口：** getBlob
-
-<!--Device-ResultSet-getBlob(columnIndex: number): Uint8Array--><!--Device-ResultSet-getBlob(columnIndex: number): Uint8Array-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -91,8 +89,6 @@ getColumnIndex(columnName: string): number
 **废弃版本：** 9
 
 **替代接口：** getColumnIndex
-
-<!--Device-ResultSet-getColumnIndex(columnName: string): number--><!--Device-ResultSet-getColumnIndex(columnName: string): number-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -134,8 +130,6 @@ getColumnName(columnIndex: number): string
 
 **替代接口：** getColumnName
 
-<!--Device-ResultSet-getColumnName(columnIndex: number): string--><!--Device-ResultSet-getColumnName(columnIndex: number): string-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -172,8 +166,6 @@ getDouble(columnIndex: number): number
 
 **替代接口：** getDouble
 
-<!--Device-ResultSet-getDouble(columnIndex: number): number--><!--Device-ResultSet-getDouble(columnIndex: number): number-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -208,8 +200,6 @@ getLong(columnIndex: number): number
 
 **替代接口：** getLong
 
-<!--Device-ResultSet-getLong(columnIndex: number): number--><!--Device-ResultSet-getLong(columnIndex: number): number-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -222,7 +212,7 @@ getLong(columnIndex: number): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 以Long形式返回指定列的值。<br/>该接口支持的数据范围是：Number.MIN_SAFE_INTEGER ~ Number.MAX_SAFE_INTEGER，若超出该范围，建议使用 getDouble。 |
+| number | 以Long形式返回指定列的值。 |
 
 **示例**
 
@@ -243,8 +233,6 @@ getString(columnIndex: number): string
 **废弃版本：** 9
 
 **替代接口：** getString
-
-<!--Device-ResultSet-getString(columnIndex: number): string--><!--Device-ResultSet-getString(columnIndex: number): string-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -279,8 +267,6 @@ goTo(offset: number): boolean
 **废弃版本：** 9
 
 **替代接口：** goTo
-
-<!--Device-ResultSet-goTo(offset: number): boolean--><!--Device-ResultSet-goTo(offset: number): boolean-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -323,8 +309,6 @@ goToFirstRow(): boolean
 
 **替代接口：** goToFirstRow
 
-<!--Device-ResultSet-goToFirstRow(): boolean--><!--Device-ResultSet-goToFirstRow(): boolean-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **返回值：**
@@ -359,8 +343,6 @@ goToLastRow(): boolean
 **废弃版本：** 9
 
 **替代接口：** goToLastRow
-
-<!--Device-ResultSet-goToLastRow(): boolean--><!--Device-ResultSet-goToLastRow(): boolean-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -397,8 +379,6 @@ goToNextRow(): boolean
 
 **替代接口：** goToNextRow
 
-<!--Device-ResultSet-goToNextRow(): boolean--><!--Device-ResultSet-goToNextRow(): boolean-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **返回值：**
@@ -434,8 +414,6 @@ goToPreviousRow(): boolean
 
 **替代接口：** goToPreviousRow
 
-<!--Device-ResultSet-goToPreviousRow(): boolean--><!--Device-ResultSet-goToPreviousRow(): boolean-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **返回值：**
@@ -470,8 +448,6 @@ goToRow(position: number): boolean
 **废弃版本：** 9
 
 **替代接口：** goToRow
-
-<!--Device-ResultSet-goToRow(position: number): boolean--><!--Device-ResultSet-goToRow(position: number): boolean-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -514,8 +490,6 @@ isColumnNull(columnIndex: number): boolean
 
 **替代接口：** isColumnNull
 
-<!--Device-ResultSet-isColumnNull(columnIndex: number): boolean--><!--Device-ResultSet-isColumnNull(columnIndex: number): boolean-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -542,7 +516,7 @@ const isColumnNull = resultSet.isColumnNull(resultSet.getColumnIndex("CODES"));
 columnCount: number
 ```
 
-columnCount: number 获取结果集中的列数。
+columnCount: number获取结果集中的列数。
 
 **类型：** number
 
@@ -552,8 +526,6 @@ columnCount: number 获取结果集中的列数。
 
 **替代接口：** columnCount
 
-<!--Device-ResultSet-columnCount: number--><!--Device-ResultSet-columnCount: number-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## columnNames
@@ -562,7 +534,7 @@ columnCount: number 获取结果集中的列数。
 columnNames: Array<string>
 ```
 
-columnNames: Array&lt;string&gt; 获取结果集中所有列的名称。
+columnNames: Array&lt;string&gt;获取结果集中所有列的名称。
 
 **类型：** Array&lt;string&gt;
 
@@ -572,8 +544,6 @@ columnNames: Array&lt;string&gt; 获取结果集中所有列的名称。
 
 **替代接口：** columnNames
 
-<!--Device-ResultSet-columnNames: Array<string>--><!--Device-ResultSet-columnNames: Array<string>-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## isAtFirstRow
@@ -582,7 +552,7 @@ columnNames: Array&lt;string&gt; 获取结果集中所有列的名称。
 isAtFirstRow: boolean
 ```
 
-isAtFirstRow: boolean 检查结果集是否位于第一行。
+isAtFirstRow: boolean检查结果集是否位于第一行。
 
 **类型：** boolean
 
@@ -592,8 +562,6 @@ isAtFirstRow: boolean 检查结果集是否位于第一行。
 
 **替代接口：** isAtFirstRow
 
-<!--Device-ResultSet-isAtFirstRow: boolean--><!--Device-ResultSet-isAtFirstRow: boolean-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## isAtLastRow
@@ -602,7 +570,7 @@ isAtFirstRow: boolean 检查结果集是否位于第一行。
 isAtLastRow: boolean
 ```
 
-isAtLastRow: boolean 检查结果集是否位于最后一行。
+isAtLastRow: boolean检查结果集是否位于最后一行。
 
 **类型：** boolean
 
@@ -612,8 +580,6 @@ isAtLastRow: boolean 检查结果集是否位于最后一行。
 
 **替代接口：** isAtLastRow
 
-<!--Device-ResultSet-isAtLastRow: boolean--><!--Device-ResultSet-isAtLastRow: boolean-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## isClosed
@@ -622,7 +588,7 @@ isAtLastRow: boolean 检查结果集是否位于最后一行。
 isClosed: boolean
 ```
 
-isClosed: boolean 检查当前结果集是否关闭。
+isClosed: boolean检查当前结果集是否关闭。
 
 **类型：** boolean
 
@@ -632,8 +598,6 @@ isClosed: boolean 检查当前结果集是否关闭。
 
 **替代接口：** isClosed
 
-<!--Device-ResultSet-isClosed: boolean--><!--Device-ResultSet-isClosed: boolean-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## isEnded
@@ -642,7 +606,7 @@ isClosed: boolean 检查当前结果集是否关闭。
 isEnded: boolean
 ```
 
-isEnded: boolean 检查结果集是否位于最后一行之后。
+isEnded: boolean检查结果集是否位于最后一行之后。
 
 **类型：** boolean
 
@@ -652,8 +616,6 @@ isEnded: boolean 检查结果集是否位于最后一行之后。
 
 **替代接口：** isEnded
 
-<!--Device-ResultSet-isEnded: boolean--><!--Device-ResultSet-isEnded: boolean-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## isStarted
@@ -662,7 +624,7 @@ isEnded: boolean 检查结果集是否位于最后一行之后。
 isStarted: boolean
 ```
 
-isStarted: boolean 检查指针是否移动过。
+isStarted: boolean检查指针是否移动过。
 
 **类型：** boolean
 
@@ -672,8 +634,6 @@ isStarted: boolean 检查指针是否移动过。
 
 **替代接口：** isStarted
 
-<!--Device-ResultSet-isStarted: boolean--><!--Device-ResultSet-isStarted: boolean-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## rowCount
@@ -682,7 +642,7 @@ isStarted: boolean 检查指针是否移动过。
 rowCount: number
 ```
 
-rowCount: number 获取结果集中的行数。
+rowCount: number获取结果集中的行数。
 
 **类型：** number
 
@@ -692,8 +652,6 @@ rowCount: number 获取结果集中的行数。
 
 **替代接口：** rowCount
 
-<!--Device-ResultSet-rowCount: number--><!--Device-ResultSet-rowCount: number-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## rowIndex
@@ -702,7 +660,7 @@ rowCount: number 获取结果集中的行数。
 rowIndex: number
 ```
 
-rowIndex: number 获取结果集当前行的索引。
+rowIndex: number获取结果集当前行的索引。
 
 **类型：** number
 
@@ -712,7 +670,4 @@ rowIndex: number 获取结果集当前行的索引。
 
 **替代接口：** rowIndex
 
-<!--Device-ResultSet-rowIndex: number--><!--Device-ResultSet-rowIndex: number-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-

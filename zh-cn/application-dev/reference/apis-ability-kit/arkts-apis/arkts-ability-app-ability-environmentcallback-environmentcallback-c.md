@@ -4,8 +4,6 @@ EnvironmentCallback模块提供对系统环境变化监听回调的能力。
 
 **起始版本：** 9
 
-<!--Device-unnamed-export default class EnvironmentCallback--><!--Device-unnamed-export default class EnvironmentCallback-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## 导入模块
@@ -20,15 +18,13 @@ import { EnvironmentCallback } from '@kit.AbilityKit';
 onConfigurationUpdated(config: Configuration): void
 ```
 
-[注册系统环境变化的监听](arkts-ability-applicationcontext-c.md#onabilitylifecycle) 后，在系统环境变化时触发回调。
+[注册系统环境变化的监听](arkts-ability-applicationcontext-c.md#onenvironment) 后，在系统环境变化时触发回调。
 
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-EnvironmentCallback-onConfigurationUpdated(config: Configuration): void--><!--Device-EnvironmentCallback-onConfigurationUpdated(config: Configuration): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -48,15 +44,13 @@ onConfigurationUpdated(config: Configuration): void
 onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 ```
 
-[注册系统环境变化的监听](arkts-ability-applicationcontext-c.md#onabilitylifecycle) 后，在系统内存变化时触发回调。
+[注册系统环境变化的监听](arkts-ability-applicationcontext-c.md#onenvironment) 后，在系统内存变化时触发回调。
 
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-EnvironmentCallback-onMemoryLevel(level: AbilityConstant.MemoryLevel): void--><!--Device-EnvironmentCallback-onMemoryLevel(level: AbilityConstant.MemoryLevel): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -69,4 +63,3 @@ onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 **示例**
 
 参见EnvironmentCallback使用。
-

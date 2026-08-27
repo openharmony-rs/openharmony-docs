@@ -1,10 +1,12 @@
 # LauncherAbilityResourceInfo（系统接口）
 
-应用配置的入口图标和名称信息，可以通过 [getLauncherAbilityResourceInfo](arkts-ability-bundleresourcemanager-getlauncherabilityresourceinfo-f-sys.md) 获取。 > **说明：** > > 本模块为系统接口。
+应用配置的入口图标和名称信息，可以通过 [getLauncherAbilityResourceInfo](arkts-ability-bundleresourcemanager-getlauncherabilityresourceinfo-f-sys.md) 获取。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 本模块为系统接口。
 
-<!--Device-unnamed-export interface LauncherAbilityResourceInfo--><!--Device-unnamed-export interface LauncherAbilityResourceInfo-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
@@ -20,9 +22,7 @@ readonly abilityName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-LauncherAbilityResourceInfo-readonly abilityName: string--><!--Device-LauncherAbilityResourceInfo-readonly abilityName: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
@@ -31,16 +31,14 @@ readonly abilityName: string
 ## appIndex
 
 ```TypeScript
-readonly appIndex: int
+readonly appIndex: number
 ```
 
 应用分身Id。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-LauncherAbilityResourceInfo-readonly appIndex: int--><!--Device-LauncherAbilityResourceInfo-readonly appIndex: int-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
@@ -56,9 +54,7 @@ readonly bundleName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-LauncherAbilityResourceInfo-readonly bundleName: string--><!--Device-LauncherAbilityResourceInfo-readonly bundleName: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
@@ -67,16 +63,14 @@ readonly bundleName: string
 ## drawableDescriptor
 
 ```TypeScript
-readonly drawableDescriptor: DrawableDescriptor | null
+readonly drawableDescriptor: DrawableDescriptor
 ```
 
-Indicates the drawable descriptor of this ability icon
+应用图标的drawableDescriptor对象。
 
-**类型：** [DrawableDescriptor](../../apis-arkui/arkts-apis/arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md) \| null
+**类型：** [DrawableDescriptor](../../apis-arkui/arkts-apis/arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md)
 
-**起始版本：** 23
-
-<!--Device-LauncherAbilityResourceInfo-readonly drawableDescriptor: DrawableDescriptor | null--><!--Device-LauncherAbilityResourceInfo-readonly drawableDescriptor: DrawableDescriptor | null-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
@@ -92,9 +86,7 @@ readonly icon: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-LauncherAbilityResourceInfo-readonly icon: string--><!--Device-LauncherAbilityResourceInfo-readonly icon: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
@@ -110,9 +102,7 @@ readonly label: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-LauncherAbilityResourceInfo-readonly label: string--><!--Device-LauncherAbilityResourceInfo-readonly label: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
@@ -128,11 +118,8 @@ readonly moduleName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-LauncherAbilityResourceInfo-readonly moduleName: string--><!--Device-LauncherAbilityResourceInfo-readonly moduleName: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
 **系统接口：** 此接口为系统接口。
-

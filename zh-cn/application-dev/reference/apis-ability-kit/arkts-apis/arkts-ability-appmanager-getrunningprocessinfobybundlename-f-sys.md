@@ -14,9 +14,7 @@ function getRunningProcessInfoByBundleName(bundleName: string, callback: AsyncCa
 
 通过bundleName获取有关运行进程的信息。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-appManager-function getRunningProcessInfoByBundleName(bundleName: string, callback: AsyncCallback<Array<ProcessInformation>>): void--><!--Device-appManager-function getRunningProcessInfoByBundleName(bundleName: string, callback: AsyncCallback<Array<ProcessInformation>>): void-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -27,15 +25,15 @@ function getRunningProcessInfoByBundleName(bundleName: string, callback: AsyncCa
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示Bundle名称。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;ProcessInformation&gt;&gt; | 是 | 以回调方式返回接口运行结果及有关运行进程的信息，可进行错误处理或其他自定义处理。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;ProcessInformation&gt;&gt; | 是 | 以回调方式返回接口运行结果及有关运行进程的信息，可进行错误处理或其他自定义处理。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 
 **示例**
 
@@ -43,10 +41,8 @@ function getRunningProcessInfoByBundleName(bundleName: string, callback: AsyncCa
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundleName = "bundleName";
-
-function getRunningProcessInfoByBundleNameCallback(err: BusinessError | null,
-  data: Array<appManager.ProcessInformation> | undefined) {
+let bundleName = 'bundleName';
+function getRunningProcessInfoByBundleNameCallback(err: BusinessError, data: Array<appManager.ProcessInformation>) {
   if (err) {
     console.error(`getRunningProcessInfoByBundleNameCallback fail, err: ${JSON.stringify(err)}`);
   } else {
@@ -67,14 +63,12 @@ try {
 ## getRunningProcessInfoByBundleName
 
 ```TypeScript
-function getRunningProcessInfoByBundleName(bundleName: string, userId: int, callback: AsyncCallback<Array<ProcessInformation>>): void
+function getRunningProcessInfoByBundleName(bundleName: string, userId: number, callback: AsyncCallback<Array<ProcessInformation>>): void
 ```
 
 通过bundleName和userId获取有关运行进程的信息。使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-appManager-function getRunningProcessInfoByBundleName(bundleName: string, userId: int, callback: AsyncCallback<Array<ProcessInformation>>): void--><!--Device-appManager-function getRunningProcessInfoByBundleName(bundleName: string, userId: int, callback: AsyncCallback<Array<ProcessInformation>>): void-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -85,16 +79,16 @@ function getRunningProcessInfoByBundleName(bundleName: string, userId: int, call
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示Bundle名称。 |
-| userId | int | 是 | 表示用户Id。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;ProcessInformation&gt;&gt; | 是 | 以回调方式返回接口运行结果及有关运行进程的信息，可进行错误处理或其他自定义处理。 |
+| userId | number | 是 | 表示用户Id。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;ProcessInformation&gt;&gt; | 是 | 以回调方式返回接口运行结果及有关运行进程的信息，可进行错误处理或其他自定义处理。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 
 **示例**
 
@@ -102,9 +96,9 @@ function getRunningProcessInfoByBundleName(bundleName: string, userId: int, call
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundleName = "bundleName";
+let bundleName = 'bundleName';
 let userId = 0;
-function getRunningProcessInfoByBundleNameCallback(err: BusinessError | null, data: Array<appManager.ProcessInformation>|undefined) {
+function getRunningProcessInfoByBundleNameCallback(err: BusinessError, data: Array<appManager.ProcessInformation>) {
   if (err) {
     console.error(`getRunningProcessInfoByBundleNameCallback fail, err: ${JSON.stringify(err)}`);
   } else {
@@ -130,9 +124,7 @@ function getRunningProcessInfoByBundleName(bundleName: string): Promise<Array<Pr
 
 通过bundleName获取有关运行进程的信息。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-appManager-function getRunningProcessInfoByBundleName(bundleName: string): Promise<Array<ProcessInformation>>--><!--Device-appManager-function getRunningProcessInfoByBundleName(bundleName: string): Promise<Array<ProcessInformation>>-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -148,15 +140,15 @@ function getRunningProcessInfoByBundleName(bundleName: string): Promise<Array<Pr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;ProcessInformation&gt;&gt; | 以Promise方式返回接口运行结果及有关运行进程的信息，可进行错误处理或其他自定义处理。 |
+| Promise & lt;Array & lt;ProcessInformation & gt; & gt; | 以Promise方式返回接口运行结果及有关运行进程的信息，可进行错误处理或其他自定义处理。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 
 **示例**
 
@@ -169,9 +161,8 @@ let bundleName = 'bundleName';
 try {
   appManager.getRunningProcessInfoByBundleName(bundleName).then((data) => {
     console.info('getRunningProcessInfoByBundleName success.');
-  }).catch((e: Error) => {
-    let err = e as BusinessError;
-    console.error(`getRunningProcessInfoByBundleName fail, err: ${err.code} ${err.message}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getRunningProcessInfoByBundleName fail, err: ${JSON.stringify(err)}`);
   });
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
@@ -184,14 +175,12 @@ try {
 ## getRunningProcessInfoByBundleName
 
 ```TypeScript
-function getRunningProcessInfoByBundleName(bundleName: string, userId: int): Promise<Array<ProcessInformation>>
+function getRunningProcessInfoByBundleName(bundleName: string, userId: number): Promise<Array<ProcessInformation>>
 ```
 
 通过bundleName和userId获取有关运行进程的信息。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-appManager-function getRunningProcessInfoByBundleName(bundleName: string, userId: int): Promise<Array<ProcessInformation>>--><!--Device-appManager-function getRunningProcessInfoByBundleName(bundleName: string, userId: int): Promise<Array<ProcessInformation>>-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -202,21 +191,21 @@ function getRunningProcessInfoByBundleName(bundleName: string, userId: int): Pro
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示Bundle名称。 |
-| userId | int | 是 | 表示用户Id。 |
+| userId | number | 是 | 表示用户Id。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;ProcessInformation&gt;&gt; | 以Promise方式返回接口运行结果及有关运行进程的信息，可进行错误处理或其他自定义处理。 |
+| Promise & lt;Array & lt;ProcessInformation & gt; & gt; | 以Promise方式返回接口运行结果及有关运行进程的信息，可进行错误处理或其他自定义处理。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 
 **示例**
 
@@ -230,9 +219,8 @@ let userId = 0;
 try {
   appManager.getRunningProcessInfoByBundleName(bundleName, userId).then((data) => {
     console.info('getRunningProcessInfoByBundleName success.');
-  }).catch((e: Error) => {
-    let err = e as BusinessError;
-    console.error(`getRunningProcessInfoByBundleName fail, err: ${err.code} ${err.message}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getRunningProcessInfoByBundleName fail, err: ${JSON.stringify(err)}`);
   });
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
@@ -240,4 +228,3 @@ try {
   console.error(`[appManager] error: ${code}, ${message}`);
 }
 ```
-

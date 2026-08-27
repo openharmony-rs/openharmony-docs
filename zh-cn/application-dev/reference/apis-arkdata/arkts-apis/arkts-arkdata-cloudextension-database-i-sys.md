@@ -2,9 +2,7 @@
 
 数据库结构信息。
 
-**起始版本：** 23
-
-<!--Device-cloudExtension-export interface Database--><!--Device-cloudExtension-export interface Database-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -26,9 +24,7 @@ alias: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Database-alias: string--><!--Device-Database-alias: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -44,9 +40,7 @@ name: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-Database-name: string--><!--Device-Database-name: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -62,11 +56,8 @@ tables: Array<Table>
 
 **类型：** Array&lt;[Table](arkts-arkdata-cloudextension-table-i-sys.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-Database-tables: Array<Table>--><!--Device-Database-tables: Array<Table>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **系统接口：** 此接口为系统接口。
-

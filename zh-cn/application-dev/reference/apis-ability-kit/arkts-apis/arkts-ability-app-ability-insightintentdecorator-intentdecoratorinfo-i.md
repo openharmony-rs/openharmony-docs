@@ -1,10 +1,13 @@
 # IntentDecoratorInfo
 
-意图装饰器的通用属性，用于定义意图的基本信息（包括意图名称、意图版本号）。适用于本模块的所有装饰器。 > **说明：** > > 如果根据schema与intentVersion字段，在标准意图列表存在匹配的标准意图，系统会将intentName、domain、llmDescription、keywords、parameters、result字段均设置为标准 > 意图的相应字段值。
+意图装饰器的通用属性，用于定义意图的基本信息（包括意图名称、意图版本号）。适用于本模块的所有装饰器。
+
+> **说明：**
+> 
+> 如果根据schema与intentVersion字段，在标准意图列表存在匹配的标准意图，系统会将intentName、domain、llmDescription、keywords、parameters、result字段均设置为标准
+> 意图的相应字段值。
 
 **起始版本：** 20
-
-<!--Device-unnamed-declare interface IntentDecoratorInfo--><!--Device-unnamed-declare interface IntentDecoratorInfo-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -12,7 +15,6 @@
 
 ```TypeScript
 import { InsightIntentLink, InsightIntentPage, InsightIntentFunctionMethod, InsightIntentFunction, InsightIntentEntry, LinkParamCategory, InsightIntentForm, InsightIntentEntity } from '@kit.AbilityKit';
-import { InsightIntentLink, InsightIntentPage, InsightIntentFunctionMethod, InsightIntentFunction, InsightIntentEntry, LinkParamCategory, LinkIntentParamMapping, InsightIntentEntity, InsightIntentForm } from '@kit.AbilityKit';
 ```
 
 ## displayDescription
@@ -30,8 +32,6 @@ displayDescription?: string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
-
-<!--Device-IntentDecoratorInfo-displayDescription?: string--><!--Device-IntentDecoratorInfo-displayDescription?: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -51,8 +51,6 @@ displayName: string
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-IntentDecoratorInfo-displayName: string--><!--Device-IntentDecoratorInfo-displayName: string-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## domain
@@ -71,8 +69,6 @@ domain: string
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-IntentDecoratorInfo-domain: string--><!--Device-IntentDecoratorInfo-domain: string-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## icon
@@ -81,17 +77,17 @@ domain: string
 icon?: ResourceStr
 ```
 
-表示意图图标，用于在AI入口显示。 - 当取值为字符串类型时，表示图标读取网络资源。 - 当取值为Resource时，表示图标读取本地资源。
+表示意图图标，用于在AI入口显示。  
+- 当取值为字符串类型时，表示图标读取网络资源。  
+- 当取值为[Resource](../../reference/apis-localization-kit/js-apis-resource-manager.md)时，表示图标读取本地资源。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](../../apis-arkui/arkts-apis/arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
-
-<!--Device-IntentDecoratorInfo-icon?: ResourceStr--><!--Device-IntentDecoratorInfo-icon?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -111,8 +107,6 @@ intentName: string
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-IntentDecoratorInfo-intentName: string--><!--Device-IntentDecoratorInfo-intentName: string-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## intentVersion
@@ -130,8 +124,6 @@ intentVersion: string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
-
-<!--Device-IntentDecoratorInfo-intentVersion: string--><!--Device-IntentDecoratorInfo-intentVersion: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -151,8 +143,6 @@ keywords?: string[]
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-IntentDecoratorInfo-keywords?: string[]--><!--Device-IntentDecoratorInfo-keywords?: string[]-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## llmDescription
@@ -170,8 +160,6 @@ llmDescription?: string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
-
-<!--Device-IntentDecoratorInfo-llmDescription?: string--><!--Device-IntentDecoratorInfo-llmDescription?: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -191,8 +179,6 @@ parameters?: Record<string, Object>
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-IntentDecoratorInfo-parameters?: Record<string, Object>--><!--Device-IntentDecoratorInfo-parameters?: Record<string, Object>-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## result
@@ -210,8 +196,6 @@ result?: Record<string, Object>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
-
-<!--Device-IntentDecoratorInfo-result?: Record<string, Object>--><!--Device-IntentDecoratorInfo-result?: Record<string, Object>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -231,7 +215,4 @@ schema?: string
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-IntentDecoratorInfo-schema?: string--><!--Device-IntentDecoratorInfo-schema?: string-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-

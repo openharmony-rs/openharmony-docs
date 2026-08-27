@@ -16,15 +16,13 @@ function fromSendableValues(values: collections.Array<ValueType>): NonSendableVa
 
 **起始版本：** 20
 
-<!--Device-sendableRelationalStore-function fromSendableValues(values: collections.Array<ValueType>): NonSendableValues--><!--Device-sendableRelationalStore-function fromSendableValues(values: collections.Array<ValueType>): NonSendableValues-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| values | collections.Array&lt;ValueType&gt; | 是 | 可跨线程传递的数组数据。 |
+| values | collections.Array & lt;ValueType & gt; | 是 | 可跨线程传递的数组数据。 |
 
 **返回值：**
 
@@ -50,4 +48,3 @@ array.push(1);
 array.push(2);
 const values = sendableRelationalStore.fromSendableValues(array);
 ```
-

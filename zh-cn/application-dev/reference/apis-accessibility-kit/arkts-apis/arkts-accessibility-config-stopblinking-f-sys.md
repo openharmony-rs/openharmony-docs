@@ -20,8 +20,6 @@ function stopBlinking(mode: BlinkingMode, scenario: BlinkingScenario): BlinkResu
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-config-function stopBlinking(mode: BlinkingMode, scenario: BlinkingScenario): BlinkResultCode--><!--Device-config-function stopBlinking(mode: BlinkingMode, scenario: BlinkingScenario): BlinkResultCode-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
@@ -43,9 +41,9 @@ function stopBlinking(mode: BlinkingMode, scenario: BlinkingScenario): BlinkResu
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. <br>The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. <br>A non-system application calls a system API. |
-| [9300000](../errorcode-accessibility.md#9300000-无障碍系统服务工作异常) | System abnormality.Possible causes: <br>1.Internal operation failed. <br>2.Failed to obtain the required service or client object (null pointer). <br>3.IPC communication failed. <br>4.Failed to obtain the accessibility service proxy. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [9300000](../errorcode-accessibility.md#9300000-无障碍系统服务工作异常) | System abnormality.Possible causes:  1.Internal operation failed.  2.Failed to obtain the required service or client object (null pointer).  3.IPC communication failed.  4.Failed to obtain the accessibility service proxy. |
 
 **示例**
 
@@ -59,4 +57,3 @@ try {
   console.error(`Failed to call stopBlinking, code is ${err.code}, message is ${err.message}`);
 }
 ```
-

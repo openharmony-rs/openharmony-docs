@@ -21,8 +21,6 @@ function clearUpApplicationData(bundleName: string): Promise<void>
 
 **需要权限：** ohos.permission.CLEAN_APPLICATION_DATA
 
-<!--Device-appManager-function clearUpApplicationData(bundleName: string): Promise<void>--><!--Device-appManager-function clearUpApplicationData(bundleName: string): Promise<void>-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -37,7 +35,7 @@ function clearUpApplicationData(bundleName: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -72,8 +70,6 @@ function clearUpApplicationData(bundleName: string, callback: AsyncCallback<void
 
 **需要权限：** ohos.permission.CLEAN_APPLICATION_DATA
 
-<!--Device-appManager-function clearUpApplicationData(bundleName: string, callback: AsyncCallback<void>)--><!--Device-appManager-function clearUpApplicationData(bundleName: string, callback: AsyncCallback<void>)-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -83,7 +79,7 @@ function clearUpApplicationData(bundleName: string, callback: AsyncCallback<void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示Bundle名称。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，当通过Bundle名称清除应用数据成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当通过Bundle名称清除应用数据成功，err为undefined，否则为错误对象。 |
 
 **示例**
 
@@ -103,4 +99,3 @@ function clearUpApplicationDataCallback(err: BusinessError, data: void) {
 
 appManager.clearUpApplicationData(bundleName, clearUpApplicationDataCallback);
 ```
-

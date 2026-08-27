@@ -2,9 +2,7 @@
 
 missionManager模块提供系统任务管理能力，包括对系统任务执行锁定、解锁、清理、切换到前台等操作。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare namespace missionManager--><!--Device-unnamed-declare namespace missionManager-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -37,20 +35,17 @@ import { missionManager } from '@kit.AbilityKit';
 | [getMissionSnapShot](arkts-ability-missionmanager-getmissionsnapshot-f-sys.md) | 获取任务快照。使用Promise异步回调。 |
 | [lockMission](arkts-ability-missionmanager-lockmission-f-sys.md) | 锁定指定任务ID的任务。使用callback异步回调。 |
 | [lockMission](arkts-ability-missionmanager-lockmission-f-sys.md) | 锁定指定任务ID的任务。使用Promise异步回调。 |
-| [moveMissionToFront](arkts-ability-missionmanager-movemissiontofront-f-sys.md) | 把指定任务ID的任务切到前台。使用callback异步回调。 |
-| [moveMissionToFront](arkts-ability-missionmanager-movemissiontofront-f-sys.md) | 把指定任务ID的任务切到前台，同时指定任务切换到前台时的启动参数，例如窗口模式、设备ID等。使用callback异步回调。 |
-| [moveMissionToFront](arkts-ability-missionmanager-movemissiontofront-f-sys.md) | 把指定任务ID的任务切到前台，同时指定任务切换到前台时的启动参数，例如窗口模式、设备ID等。使用Promise异步回调。 |
 | [moveMissionsToBackground](arkts-ability-missionmanager-movemissionstobackground-f-sys.md) | 将指定任务批量切到后台，返回的结果任务ID按被隐藏时的任务层级排序。使用callback异步回调。 |
 | [moveMissionsToBackground](arkts-ability-missionmanager-movemissionstobackground-f-sys.md) | 将指定任务批量切到后台，返回的结果按被隐藏时的任务层级排序。使用Promise异步回调。 |
 | [moveMissionsToForeground](arkts-ability-missionmanager-movemissionstoforeground-f-sys.md) | 将指定任务批量切到前台。使用callback异步回调。 |
 | [moveMissionsToForeground](arkts-ability-missionmanager-movemissionstoforeground-f-sys.md) | 将指定任务批量切换到前台，并将任务ID等于topMission的任务移动到最顶层。使用callback异步回调。 |
 | [moveMissionsToForeground](arkts-ability-missionmanager-movemissionstoforeground-f-sys.md) | 将指定任务批量切到前台，并将任务ID等于topMission的任务移动到最顶层。使用Promise异步回调。 |
-| [offMission](arkts-ability-missionmanager-offmission-f-sys.md) | 解注册任务状态监听器。使用callback异步回调。 |
-| [offMission](arkts-ability-missionmanager-offmission-f-sys.md) | 解注册任务状态监听。使用Promise异步回调。 |
-| [off_mission](arkts-ability-missionmanager-offmission-f-sys.md) | 解注册任务状态监听器。使用callback异步回调。 |
-| [off_mission](arkts-ability-missionmanager-offmission-f-sys.md) | 解注册任务状态监听。使用Promise异步回调。 |
-| [onMission](arkts-ability-missionmanager-onmission-f-sys.md) | 注册系统任务状态监听器。 |
-| [on_mission](arkts-ability-missionmanager-onmission-f-sys.md) | 注册系统任务状态监听器。 |
+| [moveMissionToFront](arkts-ability-missionmanager-movemissiontofront-f-sys.md) | 把指定任务ID的任务切到前台。使用callback异步回调。 |
+| [moveMissionToFront](arkts-ability-missionmanager-movemissiontofront-f-sys.md) | 把指定任务ID的任务切到前台，同时指定任务切换到前台时的启动参数，例如窗口模式、设备ID等。使用callback异步回调。 |
+| [moveMissionToFront](arkts-ability-missionmanager-movemissiontofront-f-sys.md) | 把指定任务ID的任务切到前台，同时指定任务切换到前台时的启动参数，例如窗口模式、设备ID等。使用Promise异步回调。 |
+| off | 解注册任务状态监听器。使用callback异步回调。 |
+| off | 解注册任务状态监听。使用Promise异步回调。 |
+| on | 注册系统任务状态监听器。 |
 | [unlockMission](arkts-ability-missionmanager-unlockmission-f-sys.md) | 解锁指定任务ID的任务。使用callback异步回调。 |
 | [unlockMission](arkts-ability-missionmanager-unlockmission-f-sys.md) | 解锁指定任务ID的任务。使用Promise异步回调。 |
 <!--DelEnd-->
@@ -64,4 +59,3 @@ import { missionManager } from '@kit.AbilityKit';
 | [MissionListener](arkts-ability-missionmanager-missionlistener-t-sys.md) | 定义系统任务状态监听。 |
 | [MissionSnapshot](arkts-ability-missionmanager-missionsnapshot-t-sys.md) | 任务的任务快照对象。 |
 <!--DelEnd-->
-

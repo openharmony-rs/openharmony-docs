@@ -1,10 +1,8 @@
-# TextEmbedding(智慧数据平台)
+# TextEmbedding
 
-描述文本嵌入模型的文本嵌入函数。 下列接口都需先使用[intelligence.getTextEmbeddingModel](arkts-arkdata-intelligence-gettextembeddingmodel-f.md)获取到TextEmbedding实例，再通过此实例调用对 应接口。
+描述文本嵌入模型的文本嵌入函数。下列接口都需先使用[intelligence.getTextEmbeddingModel](arkts-arkdata-intelligence-gettextembeddingmodel-f.md)获取到TextEmbedding实例，再通过此实例调用对 应接口。@interface TextEmbedding
 
-**起始版本：** 23
-
-<!--Device-intelligence-interface TextEmbedding--><!--Device-intelligence-interface TextEmbedding-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
@@ -17,14 +15,12 @@ import { intelligence } from '@kit.ArkData';
 ## getEmbedding
 
 ```TypeScript
-getEmbedding(text: string): Promise<Array<double>>
+getEmbedding(text: string): Promise<Array<number>>
 ```
 
-获取给定文本的嵌入向量。使用Promise异步回调。 该接口需先调用[loadModel](#loadmodel)加载嵌入模型，加载成功后调用getEmbedding。
+获取给定文本的嵌入向量。使用Promise异步回调。该接口需先调用[loadModel](#loadmodel)加载嵌入模型，加载成功后调用getEmbedding。
 
-**起始版本：** 23
-
-<!--Device-TextEmbedding-getEmbedding(text: string): Promise<Array<double>>--><!--Device-TextEmbedding-getEmbedding(text: string): Promise<Array<double>>-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
@@ -38,19 +34,17 @@ getEmbedding(text: string): Promise<Array<double>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;double&gt;&gt; | Promise对象，返回向量化结果的数组。 |
+| Promise & lt;Array & lt;number & gt; & gt; | Promise对象，返回向量化结果的数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [31300000](../errorcode-intelligence.md#31300000-服务内部异常) | Inner error. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -71,35 +65,15 @@ textEmbedding.loadModel()
   })
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-textEmbedding?.loadModel()
-  .then(() => {
-    let text = 'text';
-    textEmbedding?.getEmbedding(text)
-      .then((data: Array<number>) => {
-        console.info("Succeeded in getting Embedding");
-      })
-      .catch((err) => {
-        console.error(`Failed to get Embedding. Code: ${err.code}, message: ${err.message}`);
-      })
-  }).catch((err) => {
-    console.error(`Failed to load Model. Code: ${err.code}, message: ${err.message}`);
-  })
-```
-
 ## getEmbedding
 
 ```TypeScript
-getEmbedding(batchTexts: Array<string>): Promise<Array<Array<double>>>
+getEmbedding(batchTexts: Array<string>): Promise<Array<Array<number>>>
 ```
 
-获取给定批次文本的嵌入向量。批量处理可以提高性能，适用于需要同时处理多个文本的场景。使用Promise异步回调。 该接口需先调用[loadModel](#loadmodel)加载嵌入模型，加载成功后调用getEmbedding。
+获取给定批次文本的嵌入向量。批量处理可以提高性能，适用于需要同时处理多个文本的场景。使用Promise异步回调。该接口需先调用[loadModel](#loadmodel)加载嵌入模型，加载成功后调用getEmbedding。
 
-**起始版本：** 23
-
-<!--Device-TextEmbedding-getEmbedding(batchTexts: Array<string>): Promise<Array<Array<double>>>--><!--Device-TextEmbedding-getEmbedding(batchTexts: Array<string>): Promise<Array<Array<double>>>-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
@@ -107,25 +81,23 @@ getEmbedding(batchTexts: Array<string>): Promise<Array<Array<double>>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| batchTexts | Array&lt;string&gt; | 是 | 嵌入模型的文本输入批次。单个文本长度上限为512个字符。 |
+| batchTexts | Array & lt;string & gt; | 是 | 嵌入模型的文本输入批次。单个文本长度上限为512个字符。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;Array&lt;double&gt;&gt;&gt; | Promise对象，返回批次向量化结果的二维数组。 |
+| Promise & lt;Array & lt;Array & lt;number & gt; & gt; & gt; | Promise对象，返回批次向量化结果的二维数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [31300000](../errorcode-intelligence.md#31300000-服务内部异常) | Inner error. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -146,35 +118,19 @@ textEmbedding.loadModel()
   })
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-textEmbedding?.loadModel()
-  .then(() => {
-    let batchTexts = ['text1', 'text2'];
-    textEmbedding?.getEmbedding(batchTexts)
-      .then((data: Array<Array<double>>) => {
-        console.info("Succeeded in getting Embedding");
-      })
-      .catch((err) => {
-        console.error(`Failed to get Embedding. Code: ${err.code}, message: ${err.message}`);
-      })
-  }).catch((err) => {
-    console.error(`Failed to load Model. Code: ${err.code}, message: ${err.message}`);
-  })
-```
-
 ## loadModel
 
 ```TypeScript
 loadModel(): Promise<void>
 ```
 
-加载文本嵌入模型。使用Promise异步回调。 **配对调用：** - 调用loadModel()后，必须在使用完毕后调用[releaseModel()](#releasemodel)释放模型资源。 - 未调用releaseModel()会导致资源泄漏，影响系统性能。 - 建议将releaseModel()放在finally块中确保资源被正确释放。
+加载文本嵌入模型。使用Promise异步回调。  
+**配对调用：**  
+- 调用loadModel()后，必须在使用完毕后调用[releaseModel()](#releasemodel)释放模型资源。  
+- 未调用releaseModel()会导致资源泄漏，影响系统性能。  
+- 建议将releaseModel()放在finally块中确保资源被正确释放。
 
-**起始版本：** 23
-
-<!--Device-TextEmbedding-loadModel(): Promise<void>--><!--Device-TextEmbedding-loadModel(): Promise<void>-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
@@ -182,7 +138,7 @@ loadModel(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise。 |
+| Promise & lt;void & gt; | 无返回结果的Promise。 |
 
 **错误码：**
 
@@ -192,8 +148,6 @@ loadModel(): Promise<void>
 | [31300000](../errorcode-intelligence.md#31300000-服务内部异常) | Inner error. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -208,15 +162,15 @@ textEmbedding.loadModel()
   })
 ```
 
-ArkTS-Sta示例：
-
 ```TypeScript
-// textEmbedding需先通过intelligence.getTextEmbeddingModel获取
-textEmbedding?.loadModel()
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// imageEmbedding需先通过intelligence.getImageEmbeddingModel获取
+imageEmbedding.loadModel()
   .then(() => {
     console.info("Succeeded in loading Model");
   })
-  .catch((err) => {
+  .catch((err: BusinessError) => {
     console.error(`Failed to load Model. Code: ${err.code}, message: ${err.message}`);
   })
 ```
@@ -229,9 +183,7 @@ releaseModel(): Promise<void>
 
 释放文本嵌入模型。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-TextEmbedding-releaseModel(): Promise<void>--><!--Device-TextEmbedding-releaseModel(): Promise<void>-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
@@ -239,7 +191,7 @@ releaseModel(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -249,8 +201,6 @@ releaseModel(): Promise<void>
 | [31300000](../errorcode-intelligence.md#31300000-服务内部异常) | Inner error. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -265,16 +215,15 @@ textEmbedding.releaseModel()
   })
 ```
 
-ArkTS-Sta示例：
-
 ```TypeScript
-// textEmbedding需先通过intelligence.getTextEmbeddingModel获取
-textEmbedding?.releaseModel()
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// imageEmbedding需先通过intelligence.getImageEmbeddingModel获取
+imageEmbedding.releaseModel()
   .then(() => {
     console.info("Succeeded in releasing Model");
   })
-  .catch((err) => {
+  .catch((err: BusinessError) => {
     console.error(`Failed to release Model. Code: ${err.code}, message: ${err.message}`);
   })
 ```
-

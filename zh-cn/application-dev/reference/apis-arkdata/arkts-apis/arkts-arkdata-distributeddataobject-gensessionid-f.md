@@ -14,9 +14,7 @@ function genSessionId(): string
 
 随机创建一个sessionId。
 
-**起始版本：** 23
-
-<!--Device-distributedDataObject-function genSessionId(): string--><!--Device-distributedDataObject-function genSessionId(): string-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -31,4 +29,3 @@ function genSessionId(): string
 ```TypeScript
 let sessionId: string = distributedDataObject.genSessionId();
 ```
-

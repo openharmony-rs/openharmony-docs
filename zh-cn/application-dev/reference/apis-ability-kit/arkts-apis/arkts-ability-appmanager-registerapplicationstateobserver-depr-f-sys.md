@@ -17,11 +17,9 @@ function registerApplicationStateObserver(observer: ApplicationStateObserver): n
 
 **废弃版本：** 9
 
-**替代接口：** [on](arkts-ability-appmanager-onapplicationstate-f.md#onapplicationstate)
+**替代接口：** [on](arkts-ability-appmanager-on-f.md#onapplicationstate)
 
 **需要权限：** ohos.permission.RUNNING_STATE_OBSERVER
-
-<!--Device-appManager-function registerApplicationStateObserver(observer: ApplicationStateObserver): number--><!--Device-appManager-function registerApplicationStateObserver(observer: ApplicationStateObserver): number-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -69,4 +67,3 @@ const observerCode = appManager.registerApplicationStateObserver({
 });
 console.info(`observerCode: ${observerCode}.`);
 ```
-

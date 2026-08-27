@@ -6,5 +6,4 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [AppVersionInfo](arkts-ability-appversioninfo-appversioninfo-depr-i.md) | 应用版本信息，可以通过 getAppVersionInfo获取当前应 用的版本信息。 |
-
+| [AppVersionInfo](arkts-ability-appversioninfo-appversioninfo-depr-i.md) | 应用版本信息，可以通过 [getAppVersionInfo](../../../reference/apis-ability-kit/js-apis-inner-app-context.md#contextgetappversioninfo7)获取当前应 用的版本信息。 |

@@ -1,10 +1,8 @@
 # MissionListener（系统接口）
 
-定义系统任务状态监听，可以通过[on](arkts-ability-missionmanager-onmission-f-sys.md)注册。
+定义系统任务状态监听，可以通过[on](arkts-ability-missionmanager-on-f-sys.md)注册。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface MissionListener--><!--Device-unnamed-export interface MissionListener-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -13,14 +11,12 @@
 ## onMissionClosed
 
 ```TypeScript
-onMissionClosed(mission: int): void
+onMissionClosed(mission: number): void
 ```
 
 当系统关闭任务时会触发该回调函数。
 
-**起始版本：** 23
-
-<!--Device-MissionListener-onMissionClosed(mission: int): void--><!--Device-MissionListener-onMissionClosed(mission: int): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -30,11 +26,9 @@ onMissionClosed(mission: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mission | int | 是 | 表示关闭的任务ID。 |
+| mission | number | 是 | 表示关闭的任务ID。 |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { missionManager } from '@kit.AbilityKit';
@@ -81,64 +75,15 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-'use static'
-import { missionManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { PixelMap } from '@ohos.arkui.component';
-
-class ListenerCustom implements missionManager.MissionListener {
-  onMissionCreated(mission: int) {
-    console.info(`onMissionCreated mission: ${JSON.stringify(mission)}`);
-  }
-
-  onMissionDestroyed(mission: int) {
-    console.info(`onMissionDestroyed mission: ${JSON.stringify(mission)}`);
-  }
-
-  onMissionSnapshotChanged(mission: int) {
-    console.info(`onMissionSnapshotChanged mission: ${JSON.stringify(mission)}`);
-  }
-
-  onMissionMovedToFront(mission: int) {
-    console.info(`onMissionMovedToFront mission: ${JSON.stringify(mission)}`);
-  }
-
-  onMissionLabelUpdated(mission: int) {
-    console.info(`onMissionLabelUpdated mission: ${JSON.stringify(mission)}`);
-  }
-
-  onMissionIconUpdated(mission: int, icon: PixelMap) {
-    console.info(`onMissionIconUpdated mission: ${JSON.stringify(mission)}`);
-    console.info(`onMissionIconUpdated icon: ${JSON.stringify(icon)}`);
-  }
-
-  onMissionClosed(mission: int) {
-    console.info(`onMissionClosed mission: ${JSON.stringify(mission)}`);
-  }
-}
-
-try {
-  let listener = new ListenerCustom();
-  let listenerId = missionManager.onMission(listener);
-} catch (paramError) {
-  console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
-}
-```
-
 ## onMissionCreated
 
 ```TypeScript
-onMissionCreated(mission: int): void
+onMissionCreated(mission: number): void
 ```
 
 当系统创建任务时会触发该回调函数。
 
-**起始版本：** 23
-
-<!--Device-MissionListener-onMissionCreated(mission: int): void--><!--Device-MissionListener-onMissionCreated(mission: int): void-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -148,7 +93,7 @@ onMissionCreated(mission: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mission | int | 是 | 表示创建的任务ID。 |
+| mission | number | 是 | 表示创建的任务ID。 |
 
 **示例**
 
@@ -157,14 +102,12 @@ onMissionCreated(mission: int): void
 ## onMissionDestroyed
 
 ```TypeScript
-onMissionDestroyed(mission: int): void
+onMissionDestroyed(mission: number): void
 ```
 
 当系统销毁任务时会触发该回调函数。
 
-**起始版本：** 23
-
-<!--Device-MissionListener-onMissionDestroyed(mission: int): void--><!--Device-MissionListener-onMissionDestroyed(mission: int): void-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -174,7 +117,7 @@ onMissionDestroyed(mission: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mission | int | 是 | 表示销毁的任务ID。 |
+| mission | number | 是 | 表示销毁的任务ID。 |
 
 **示例**
 
@@ -183,14 +126,12 @@ onMissionDestroyed(mission: int): void
 ## onMissionIconUpdated
 
 ```TypeScript
-onMissionIconUpdated(mission: int, icon: image.PixelMap): void
+onMissionIconUpdated(mission: number, icon: image.PixelMap): void
 ```
 
 当系统更新任务图标时会触发该回调函数。
 
-**起始版本：** 23
-
-<!--Device-MissionListener-onMissionIconUpdated(mission: int, icon: image.PixelMap): void--><!--Device-MissionListener-onMissionIconUpdated(mission: int, icon: image.PixelMap): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -200,7 +141,7 @@ onMissionIconUpdated(mission: int, icon: image.PixelMap): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mission | int | 是 | 表示任务ID。 |
+| mission | number | 是 | 表示任务ID。 |
 | icon | image.PixelMap | 是 | 表示更新的任务图标。 |
 
 **示例**
@@ -210,14 +151,12 @@ onMissionIconUpdated(mission: int, icon: image.PixelMap): void
 ## onMissionLabelUpdated
 
 ```TypeScript
-onMissionLabelUpdated(mission: int): void
+onMissionLabelUpdated(mission: number): void
 ```
 
 当系统更新任务标签时会触发该回调函数。
 
-**起始版本：** 23
-
-<!--Device-MissionListener-onMissionLabelUpdated(mission: int): void--><!--Device-MissionListener-onMissionLabelUpdated(mission: int): void-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -227,7 +166,7 @@ onMissionLabelUpdated(mission: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mission | int | 是 | 表示任务ID。 |
+| mission | number | 是 | 表示任务ID。 |
 
 **示例**
 
@@ -236,14 +175,12 @@ onMissionLabelUpdated(mission: int): void
 ## onMissionMovedToFront
 
 ```TypeScript
-onMissionMovedToFront(mission: int): void
+onMissionMovedToFront(mission: number): void
 ```
 
 当系统将任务移动到前台时会触发该回调函数。
 
-**起始版本：** 23
-
-<!--Device-MissionListener-onMissionMovedToFront(mission: int): void--><!--Device-MissionListener-onMissionMovedToFront(mission: int): void-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -253,7 +190,7 @@ onMissionMovedToFront(mission: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mission | int | 是 | 表示任务ID。 |
+| mission | number | 是 | 表示任务ID。 |
 
 **示例**
 
@@ -262,14 +199,12 @@ onMissionMovedToFront(mission: int): void
 ## onMissionSnapshotChanged
 
 ```TypeScript
-onMissionSnapshotChanged(mission: int): void
+onMissionSnapshotChanged(mission: number): void
 ```
 
 当系统更新任务缩略图时会触发该回调函数。
 
-**起始版本：** 23
-
-<!--Device-MissionListener-onMissionSnapshotChanged(mission: int): void--><!--Device-MissionListener-onMissionSnapshotChanged(mission: int): void-End-->
+**起始版本：** 8
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -279,9 +214,8 @@ onMissionSnapshotChanged(mission: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mission | int | 是 | 表示任务ID。 |
+| mission | number | 是 | 表示任务ID。 |
 
 **示例**
 
 详细示例请见[onMissionClosed](#onmissionclosed)。
-

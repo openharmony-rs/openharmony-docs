@@ -1,10 +1,12 @@
 # @ohos.bundle.appControl
 
-本模块提供应用拦截能力。对应用设置处置状态后，应用会被禁止运行；用户点击桌面图标时，会根据应用的处置状态，跳转到对应的页面。本模块支持对应用的处置状态进行设置、获取、删除。 > **说明：** > > 本模块为系统接口。
+本模块提供应用拦截能力。对应用设置处置状态后，应用会被禁止运行；用户点击桌面图标时，会根据应用的处置状态，跳转到对应的页面。本模块支持对应用的处置状态进行设置、获取、删除。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 本模块为系统接口。
 
-<!--Device-unnamed-declare namespace appControl--><!--Device-unnamed-declare namespace appControl-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
@@ -62,4 +64,3 @@ import { appControl } from '@kit.AbilityKit';
 | [DisposedType](arkts-ability-appcontrol-disposedtype-e-sys.md) | 标识拦截应用程序的方式，例如禁用应用的全部能力、禁用应用的指定能力、或者不禁用。 |
 | [UninstallComponentType](arkts-ability-appcontrol-uninstallcomponenttype-e-sys.md) | 标识卸载时功能组件类型。 |
 <!--DelEnd-->
-

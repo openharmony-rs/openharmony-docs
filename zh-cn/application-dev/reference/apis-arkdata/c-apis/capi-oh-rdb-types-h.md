@@ -4,6 +4,8 @@
 
 提供与数据值相关的类型定义。
 
+**引用文件：** database/rdb/oh_rdb_types.h
+
 **库：** libnative_rdb_ndk.z.so
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -121,8 +123,8 @@ int OH_RDB_SetReturningFields(OH_RDB_ReturningContext *context, const char *cons
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) *context | 指向[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)实例的指针。 |
-| const char *const fields[] | 表示要返回的列名。 |
-| int32_t len | 字段长度。 |
+| const char *const fields[] | 要返回的字段名。 |
+| int32_t len | 字段数量。 |
 
 **返回：**
 
@@ -147,7 +149,7 @@ int OH_RDB_SetMaxReturningCount(OH_RDB_ReturningContext *context, int32_t count)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) *context | 指向[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)实例的指针。 |
-| int32_t count | 表示返回结果集的最大条目数。 |
+| int32_t count | 表示返回结果集的最大行数量。 |
 
 **返回：**
 

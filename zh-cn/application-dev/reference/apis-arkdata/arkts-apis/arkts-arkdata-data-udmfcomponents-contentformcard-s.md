@@ -4,8 +4,6 @@
 
 **起始版本：** 20
 
-<!--Device-unnamed-declare struct ContentFormCard--><!--Device-unnamed-declare struct ContentFormCard-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## 导入模块
@@ -28,34 +26,28 @@ contentFormData: uniformDataStruct.ContentForm
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ContentFormCard-contentFormData: uniformDataStruct.ContentForm--><!--Device-ContentFormCard-contentFormData: uniformDataStruct.ContentForm-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## formHeight
 
 ```TypeScript
-@Prop
-  formHeight?: double
+formHeight?: number
 ```
 
 卡片高度，当contentFormData中的title为空字符串时，卡片高度为传入的值，否则其范围在设置的内容卡片类型默认宽度的0.8 ~ 1.2倍之间，当formType为TYPE_SMALL时，其范围在设置的内容卡片类型默认 宽度的0.4 ~ 1.2倍之间。单位为vp。省略时使用内容卡片类型的默认高度。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ContentFormCard-@Prop  formHeight?: double--><!--Device-ContentFormCard-@Prop  formHeight?: double-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## formType
 
 ```TypeScript
-@Prop
-  formType: FormType
+formType: FormType
 ```
 
 内容卡片类型，影响内容卡片的大小。
@@ -66,26 +58,21 @@ contentFormData: uniformDataStruct.ContentForm
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ContentFormCard-@Prop  formType: FormType--><!--Device-ContentFormCard-@Prop  formType: FormType-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## formWidth
 
 ```TypeScript
-@Prop
-  formWidth?: double
+formWidth?: number
 ```
 
 卡片宽度，其范围在设置的内容卡片类型默认宽度的0.8 ~ 1.2倍之间，当formType为TYPE_SMALL时，其范围在设置的内容卡片类型默认宽度的0.4 ~ 1.2倍之间。单位为vp。省略时使用内容卡片类型的默认宽度。
 
-**类型：** double
+**类型：** number
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ContentFormCard-@Prop  formWidth?: double--><!--Device-ContentFormCard-@Prop  formWidth?: double-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -103,7 +90,4 @@ handleOnClick?: Function
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ContentFormCard-handleOnClick?: Function--><!--Device-ContentFormCard-handleOnClick?: Function-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
-

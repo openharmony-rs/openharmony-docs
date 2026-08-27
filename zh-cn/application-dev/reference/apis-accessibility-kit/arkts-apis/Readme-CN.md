@@ -20,32 +20,18 @@
     - [isOpenTouchGuideSync](arkts-accessibility-accessibility-isopentouchguidesync-f.md)
     - [isScreenReaderOpenSync](arkts-accessibility-accessibility-isscreenreaderopensync-f.md)
     - [isSeniorModeEnabled](arkts-accessibility-accessibility-isseniormodeenabled-f.md)
-    - [off_accessibilityStateChange](arkts-accessibility-accessibility-offaccessibilitystatechange-f.md)
-    - [off_screenReaderStateChange](arkts-accessibility-accessibility-offscreenreaderstatechange-f.md)
-    - [off_touchGuideStateChange](arkts-accessibility-accessibility-offtouchguidestatechange-f.md)
-    - [off_touchModeChange](arkts-accessibility-accessibility-offtouchmodechange-f.md)
-    - [offAccessibilityStateChange](arkts-accessibility-accessibility-offaccessibilitystatechange-f.md)
+    - [off](arkts-accessibility-accessibility-off-f.md)
     - [offAnimationReduceStateChange](arkts-accessibility-accessibility-offanimationreducestatechange-f.md)
     - [offAudioMonoStateChange](arkts-accessibility-accessibility-offaudiomonostatechange-f.md)
     - [offFlashReminderStateChange](arkts-accessibility-accessibility-offflashreminderstatechange-f.md)
-    - [offScreenReaderStateChange](arkts-accessibility-accessibility-offscreenreaderstatechange-f.md)
     - [offSeniorModeStateChange](arkts-accessibility-accessibility-offseniormodestatechange-f.md)
     - [offSeniorModeStateChangeForSelf](arkts-accessibility-accessibility-offseniormodestatechangeforself-f.md)
-    - [offTouchGuideStateChange](arkts-accessibility-accessibility-offtouchguidestatechange-f.md)
-    - [offTouchModeChange](arkts-accessibility-accessibility-offtouchmodechange-f.md)
-    - [on_accessibilityStateChange](arkts-accessibility-accessibility-onaccessibilitystatechange-f.md)
-    - [on_screenReaderStateChange](arkts-accessibility-accessibility-onscreenreaderstatechange-f.md)
-    - [on_touchGuideStateChange](arkts-accessibility-accessibility-ontouchguidestatechange-f.md)
-    - [on_touchModeChange](arkts-accessibility-accessibility-ontouchmodechange-f.md)
-    - [onAccessibilityStateChange](arkts-accessibility-accessibility-onaccessibilitystatechange-f.md)
+    - [on](arkts-accessibility-accessibility-on-f.md)
     - [onAnimationReduceStateChange](arkts-accessibility-accessibility-onanimationreducestatechange-f.md)
     - [onAudioMonoStateChange](arkts-accessibility-accessibility-onaudiomonostatechange-f.md)
     - [onFlashReminderStateChange](arkts-accessibility-accessibility-onflashreminderstatechange-f.md)
-    - [onScreenReaderStateChange](arkts-accessibility-accessibility-onscreenreaderstatechange-f.md)
     - [onSeniorModeStateChange](arkts-accessibility-accessibility-onseniormodestatechange-f.md)
     - [onSeniorModeStateChangeForSelf](arkts-accessibility-accessibility-onseniormodestatechangeforself-f.md)
-    - [onTouchGuideStateChange](arkts-accessibility-accessibility-ontouchguidestatechange-f.md)
-    - [onTouchModeChange](arkts-accessibility-accessibility-ontouchmodechange-f.md)
     - [sendAccessibilityEvent](arkts-accessibility-accessibility-sendaccessibilityevent-f.md)
     - [sendEvent](arkts-accessibility-accessibility-sendevent-f.md)
     - [setSeniorModeStateForSelf](arkts-accessibility-accessibility-setseniormodestateforself-f.md)
@@ -78,10 +64,6 @@
   - [InjectActionType(系统接口)](arkts-accessibility-accessibility-injectactiontype-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [OperateVirtualNodeResult(系统接口)](arkts-accessibility-accessibility-operatevirtualnoderesult-e-sys.md)<!--DelEnd-->
-- [@ohos.accessibility.GesturePath](arkts-accessibility-gesturepath.md)
-  - [GesturePath](arkts-accessibility-accessibility-gesturepath-gesturepath-c.md)
-- [@ohos.accessibility.GesturePoint](arkts-accessibility-gesturepoint.md)
-  - [GesturePoint](arkts-accessibility-accessibility-gesturepoint-gesturepoint-c.md)
 <!--Del-->
 - [@ohos.accessibility.config](arkts-accessibility-config.md)<!--DelEnd-->
   <!--Del-->
@@ -93,23 +75,11 @@
   <!--Del-->
   - [getSeniorModeStateForApp(系统接口)](arkts-accessibility-config-getseniormodestateforapp-f-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [off_enabledAccessibilityExtensionListChange(系统接口)](arkts-accessibility-config-offenabledaccessibilityextensionlistchange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [off_installedAccessibilityListChange(系统接口)](arkts-accessibility-config-offinstalledaccessibilitylistchange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [offEnabledAccessibilityExtensionListChange(系统接口)](arkts-accessibility-config-offenabledaccessibilityextensionlistchange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [offInstalledAccessibilityListChange(系统接口)](arkts-accessibility-config-offinstalledaccessibilitylistchange-f-sys.md)<!--DelEnd-->
+  - [off(系统接口)](arkts-accessibility-config-off-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [offSeniorModeStateChangeForApp(系统接口)](arkts-accessibility-config-offseniormodestatechangeforapp-f-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [on_enabledAccessibilityExtensionListChange(系统接口)](arkts-accessibility-config-onenabledaccessibilityextensionlistchange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [on_installedAccessibilityListChange(系统接口)](arkts-accessibility-config-oninstalledaccessibilitylistchange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [onEnabledAccessibilityExtensionListChange(系统接口)](arkts-accessibility-config-onenabledaccessibilityextensionlistchange-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [onInstalledAccessibilityListChange(系统接口)](arkts-accessibility-config-oninstalledaccessibilitylistchange-f-sys.md)<!--DelEnd-->
+  - [on(系统接口)](arkts-accessibility-config-on-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [onSeniorModeStateChangeForApp(系统接口)](arkts-accessibility-config-onseniormodestatechangeforapp-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -142,6 +112,10 @@
   - [BlinkResultCode(系统接口)](arkts-accessibility-config-blinkresultcode-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [常量(系统接口)](arkts-accessibility-config-con-sys.md)<!--DelEnd-->
+- [@ohos.accessibility.GesturePath](arkts-accessibility-gesturepath.md)
+  - [GesturePath](arkts-accessibility-accessibility-gesturepath-gesturepath-c.md)
+- [@ohos.accessibility.GesturePoint](arkts-accessibility-gesturepoint.md)
+  - [GesturePoint](arkts-accessibility-accessibility-gesturepoint-gesturepoint-c.md)
 - [@ohos.application.AccessibilityExtensionAbility](arkts-application-accessibilityextensionability.md)
   - [AccessibilityExtensionAbility](arkts-accessibility-application-accessibilityextensionability-accessibilityextensionability-c.md)
   <!--Del-->

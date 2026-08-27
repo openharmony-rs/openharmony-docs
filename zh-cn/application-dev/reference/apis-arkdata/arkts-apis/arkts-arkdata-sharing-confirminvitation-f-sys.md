@@ -14,9 +14,7 @@ function confirmInvitation(invitationCode: string, state: State, callback: Async
 
 被邀请者根据共享邀请码确认当前邀请，并获取当前邀请的共享资源标识，使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-sharing-function confirmInvitation(invitationCode: string, state: State, callback: AsyncCallback<Result<string>>): void--><!--Device-sharing-function confirmInvitation(invitationCode: string, state: State, callback: AsyncCallback<Result<string>>): void-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -28,15 +26,15 @@ function confirmInvitation(invitationCode: string, state: State, callback: Async
 | --- | --- | --- | --- |
 | invitationCode | string | 是 | 端云共享的邀请码。 |
 | state | State | 是 | 确认邀请的状态。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Result&lt;string&gt;&gt; | 是 | 回调函数。返回确认邀请的结果。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Result&lt;string&gt;&gt; | 是 | 回调函数。返回确认邀请的结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
 **示例**
 
@@ -44,14 +42,14 @@ function confirmInvitation(invitationCode: string, state: State, callback: Async
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let shareResource: string;
-cloudData.sharing.confirmInvitation('sharing_invitation_code_test', cloudData.sharing.State.STATE_ACCEPTED, ((err: BusinessError|null, result) => {
+cloudData.sharing.confirmInvitation('sharing_invitation_code_test', cloudData.sharing.State.STATE_ACCEPTED, (err: BusinessError, result) => {
   if (err) {
     console.error(`confirm invitation failed, code is ${err.code},message is ${err.message}`);
     return;
   }
   console.info(`confirm invitation succeeded, result: ${result}`);
   shareResource = result.value;
-}))
+});
 ```
 
 
@@ -63,9 +61,7 @@ function confirmInvitation(invitationCode: string, state: State): Promise<Result
 
 被邀请者根据共享邀请码确认当前邀请，并获取当前邀请的共享资源标识，使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-sharing-function confirmInvitation(invitationCode: string, state: State): Promise<Result<string>>--><!--Device-sharing-function confirmInvitation(invitationCode: string, state: State): Promise<Result<string>>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -82,15 +78,15 @@ function confirmInvitation(invitationCode: string, state: State): Promise<Result
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Result&lt;string&gt;&gt; | Promise对象，返回确认共享邀请的结果。 |
+| Promise & lt;Result & lt;string & gt; & gt; | Promise对象，返回确认共享邀请的结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
 **示例**
 
@@ -101,8 +97,7 @@ let shareResource: string | undefined;
 cloudData.sharing.confirmInvitation('sharing_invitation_code_test', cloudData.sharing.State.STATE_ACCEPTED).then((result: cloudData.sharing.Result<string>) => {
   console.info(`confirm invitation succeeded, result: ${result}`);
   shareResource = result.value;
-}).catch((err) => {
+}).catch((err: BusinessError) => {
   console.error(`confirm invitation failed, code is ${err.code},message is ${err.message}`);
-})
+});
 ```
-

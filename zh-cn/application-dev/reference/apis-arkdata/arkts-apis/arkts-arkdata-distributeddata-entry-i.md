@@ -8,14 +8,11 @@
 
 **替代接口：** Entry
 
-<!--Device-distributedData-interface Entry--><!--Device-distributedData-interface Entry-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## 导入模块
 
 ```TypeScript
-import { distributedDataObject } from '@kit.ArkData';
 ```
 
 ## key
@@ -33,8 +30,6 @@ key: string
 **废弃版本：** 9
 
 **替代接口：** key
-
-<!--Device-Entry-key: string--><!--Device-Entry-key: string-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -54,7 +49,4 @@ value: Value
 
 **替代接口：** value
 
-<!--Device-Entry-value: Value--><!--Device-Entry-value: Value-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
-

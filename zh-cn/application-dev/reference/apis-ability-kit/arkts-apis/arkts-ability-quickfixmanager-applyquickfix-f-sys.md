@@ -14,11 +14,9 @@ function applyQuickFix(hapModuleQuickFixFiles: Array<string>, callback: AsyncCal
 
 快速修复的补丁安装接口。使用callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE
-
-<!--Device-quickFixManager-function applyQuickFix(hapModuleQuickFixFiles: Array<string>, callback: AsyncCallback<void>): void--><!--Device-quickFixManager-function applyQuickFix(hapModuleQuickFixFiles: Array<string>, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.QuickFix
 
@@ -28,18 +26,18 @@ function applyQuickFix(hapModuleQuickFixFiles: Array<string>, callback: AsyncCal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hapModuleQuickFixFiles | Array&lt;string&gt; | 是 | 快速修复补丁文件（补丁文件需包含有效的文件路径）。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当快速修复的补丁安装成功，err为undefined，否则为错误对象。 |
+| hapModuleQuickFixFiles | Array & lt;string & gt; | 是 | 快速修复补丁文件（补丁文件需包含有效的文件路径）。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当快速修复的补丁安装成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [18500008](../errorcode-ability.md#18500008-快速修复内部错误) | Internal error. |
-| [18500002](../errorcode-ability.md#18500002-指定的补丁包无效) | Invalid patch package. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [18500002](../errorcode-ability.md#18500002-指定的补丁包无效) | Invalid patch package. |
+| [18500008](../errorcode-ability.md#18500008-快速修复内部错误) | Internal error. |
 
 **示例**
 
@@ -69,11 +67,9 @@ function applyQuickFix(hapModuleQuickFixFiles: Array<string>): Promise<void>
 
 快速修复的补丁安装接口。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE
-
-<!--Device-quickFixManager-function applyQuickFix(hapModuleQuickFixFiles: Array<string>): Promise<void>--><!--Device-quickFixManager-function applyQuickFix(hapModuleQuickFixFiles: Array<string>): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.QuickFix
 
@@ -83,23 +79,23 @@ function applyQuickFix(hapModuleQuickFixFiles: Array<string>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hapModuleQuickFixFiles | Array&lt;string&gt; | 是 | 快速修复补丁文件（补丁文件需包含有效的文件路径）。 |
+| hapModuleQuickFixFiles | Array & lt;string & gt; | 是 | 快速修复补丁文件（补丁文件需包含有效的文件路径）。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [18500008](../errorcode-ability.md#18500008-快速修复内部错误) | Internal error. |
-| [18500002](../errorcode-ability.md#18500002-指定的补丁包无效) | Invalid patch package. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [18500002](../errorcode-ability.md#18500002-指定的补丁包无效) | Invalid patch package. |
+| [18500008](../errorcode-ability.md#18500008-快速修复内部错误) | Internal error. |
 
 **示例**
 
@@ -119,4 +115,3 @@ try {
   console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
 }
 ```
-

@@ -14,9 +14,7 @@ function create(): DisplaySync
 
 创建DisplaySync对象，通过此对象设置UI自绘制内容帧率。
 
-**起始版本：** 23
-
-<!--Device-displaySync-function create(): DisplaySync--><!--Device-displaySync-function create(): DisplaySync-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,6 +27,6 @@ function create(): DisplaySync
 **示例**
 
 ```TypeScript
+// 创建DisplaySync对象
 let backDisplaySync: displaySync.DisplaySync = displaySync.create();
 ```
-

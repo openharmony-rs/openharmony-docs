@@ -1,14 +1,12 @@
 # ValueType
 
 ```TypeScript
-type ValueType = null | long | double | string | boolean | Uint8Array | Asset | Assets
+type ValueType = null | number | number | string | boolean | Uint8Array | Asset | Assets
 ```
 
 用于表示允许的数据字段类型，接口参数具体类型根据其功能而定。。
 
-**起始版本：** 23
-
-<!--Device-commonType-type ValueType = null | long | double | string | boolean | Uint8Array | Asset | Assets--><!--Device-commonType-type ValueType = null | long | double | string | boolean | Uint8Array | Asset | Assets-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CommonType
 
@@ -22,4 +20,3 @@ type ValueType = null | long | double | string | boolean | Uint8Array | Asset | 
 | Uint8Array | 表示值类型为Uint8类型的数组。 |
 | Asset | 表示值类型为附件Asset。 |
 | Assets | 表示值类型为附件数组Assets。 |
-

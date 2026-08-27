@@ -6,9 +6,7 @@ export type FocusDirection = 'up' | 'down' | 'left' | 'right' | 'forward' | 'bac
 
 表示查询下一焦点元素的方向。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export type FocusDirection = 'up' | 'down' | 'left' | 'right' | 'forward' | 'backward'--><!--Device-unnamed-export type FocusDirection = 'up' | 'down' | 'left' | 'right' | 'forward' | 'backward'-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -20,4 +18,3 @@ export type FocusDirection = 'up' | 'down' | 'left' | 'right' | 'forward' | 'bac
 | 'right' | 表示向右查询。 |
 | 'forward' | 表示向前查询。 |
 | 'backward' | 表示向后查询。 |
-

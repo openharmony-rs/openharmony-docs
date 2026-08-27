@@ -9,4 +9,3 @@
 | --- | --- |
 | [AbilityForegroundStateObserver](arkts-ability-abilityforegroundstateobserver-c-sys.md) | 定义应用前后台状态监听。 |
 <!--DelEnd-->
-

@@ -14,9 +14,7 @@ function createFilter(): Filter
 
 创建Filter实例用于给组件添加多种Filter效果。
 
-**起始版本：** 23
-
-<!--Device-uiEffect-function createFilter(): Filter--><!--Device-uiEffect-function createFilter(): Filter-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -29,6 +27,6 @@ function createFilter(): Filter
 **示例**
 
 ```TypeScript
-let filter : uiEffect.Filter = uiEffect.createFilter()
+// 创建Filter实例
+let filter: uiEffect.Filter = uiEffect.createFilter();
 ```
-

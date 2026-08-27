@@ -1,10 +1,16 @@
 # Matrix
 
-矩阵对象，用于图形的坐标变换，支持平移、旋转、缩放和倾斜等变换操作。通过矩阵变换可实现不同坐标系之间的映射。 表示为3×3的矩阵，如下图所示：  矩阵中的元素从左到右，从上到下分别表示水平缩放因子、水平倾斜系数、水平位移系数、垂直倾斜系数、垂直缩放因子、垂直位移系数、x轴透视系数、y轴透视系数、透视缩放因子。 设(x&lt;sub&gt;1&lt;/sub&gt;, y&lt;sub&gt;1&lt;/sub&gt;)为源坐标点，(x&lt;sub&gt;2&lt;/sub&gt;, y&lt;sub&gt;2&lt;/sub&gt;)为源坐标点通过矩阵变换后的坐标点，则两个坐标点的关系如下：  > **说明：** > > - 本Class首批接口从API version 12开始支持。 > > - 本模块使用屏幕物理像素单位px。 > > - 本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
+矩阵对象，用于图形的坐标变换，支持平移、旋转、缩放和倾斜等变换操作。通过矩阵变换可实现不同坐标系之间的映射。表示为3×3的矩阵，如下图所示：矩阵中的元素从左到右，从上到下分别表示水平缩放因子、水平倾斜系数、水平位移系数、垂直倾斜系数、垂直缩放因子、垂直位移系数、x轴透视系数、y轴透视系数、透视缩放因子。设(x&lt;sub&gt;1&lt;/sub&gt;, y&lt;sub&gt;1&lt;/sub&gt;)为源坐标点，(x&lt;sub&gt;2&lt;/sub&gt;, y&lt;sub&gt;2&lt;/sub&gt;)为源坐标点通过矩阵变换后的坐标点，则两个坐标点的关系如下：
 
-**起始版本：** 23
+> **说明：**
+> 
+> - 本Class首批接口从API version 12开始支持。
+> 
+> - 本模块使用屏幕物理像素单位px。
+> 
+> - 本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
 
-<!--Device-drawing-class Matrix--><!--Device-drawing-class Matrix-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -22,11 +28,51 @@ constructor()
 
 构造一个矩阵对象。
 
-**起始版本：** 23
-
-<!--Device-Matrix-constructor()--><!--Device-Matrix-constructor()-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+const brush = new drawing.Brush();
+```
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+```
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let path: drawing.Path = new drawing.Path();
+```
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+const pen = new drawing.Pen();
+```
+
+```TypeScript
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext) {
+    let samplingOptions = new drawing.SamplingOptions();
+  }
+}
+```
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+let typefaceArgument = new drawing.TypefaceArguments();
+```
 
 ## constructor
 
@@ -36,9 +82,7 @@ constructor(matrix: Matrix)
 
 拷贝一个矩阵。
 
-**起始版本：** 23
-
-<!--Device-Matrix-constructor(matrix: Matrix)--><!--Device-Matrix-constructor(matrix: Matrix)-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -47,6 +91,15 @@ constructor(matrix: Matrix)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | matrix | [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) | 是 | 被拷贝的矩阵。 |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+let matrix2 = new drawing.Matrix(matrix);
+```
 
 ## getAll
 
@@ -58,47 +111,32 @@ getAll(): Array<number>
 
 **起始版本：** 12
 
-<!--Device-Matrix-getAll(): Array<number>--><!--Device-Matrix-getAll(): Array<number>-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;number&gt; | 存储矩阵元素值的浮点数组，长度为9。 |
+| Array & lt;number & gt; | 存储矩阵元素值的浮点数组，长度为9。 |
 
-## getAll
+**示例**
 
 ```TypeScript
-getAll(): Array<double> | undefined
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+console.info("matrix "+ matrix.getAll());
 ```
-
-获取矩阵的所有元素值。
-
-**起始版本：** 23
-
-<!--Device-Matrix-getAll(): Array<double> | undefined--><!--Device-Matrix-getAll(): Array<double> | undefined-End-->
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Array&lt;double&gt; | 存储矩阵元素值的浮点数组，长度为9。获取失败时返回undefined。 |
 
 ## getValue
 
 ```TypeScript
-getValue(index: int): double
+getValue(index: number): number
 ```
 
 获取矩阵给定索引位的值。索引范围0-8。
 
-**起始版本：** 23
-
-<!--Device-Matrix-getValue(index: int): double--><!--Device-Matrix-getValue(index: int): double-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -106,19 +144,30 @@ getValue(index: int): double
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | int | 是 | 索引位置，范围0-8，该参数为整数。 |
+| index | number | 是 | 索引位置，范围0-8，该参数为整数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| double | 函数返回矩阵给定索引位对应的值，该返回值为整数。 |
+| number | 函数返回矩阵给定索引位对应的值，该返回值为整数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+for (let i = 0; i < 9; i++) {
+    console.info("matrix "+matrix.getValue(i).toString());
+}
+```
 
 ## invert
 
@@ -128,9 +177,7 @@ invert(matrix: Matrix): boolean
 
 将矩阵matrix设置为当前矩阵的逆矩阵，并返回是否设置成功的结果。
 
-**起始版本：** 23
-
-<!--Device-Matrix-invert(matrix: Matrix): boolean--><!--Device-Matrix-invert(matrix: Matrix): boolean-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -150,7 +197,23 @@ invert(matrix: Matrix): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix1 = new drawing.Matrix();
+matrix1.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
+let matrix2 = new drawing.Matrix();
+matrix2.setMatrix([-2, 1, 3, 1, 0, -1, 3, -1, 2]);
+if (matrix1.invert(matrix2)) {
+  console.info("matrix1 is invertible and matrix2 is set as an inverse matrix of the matrix1.");
+} else {
+  console.info("matrix1 is not invertible and matrix2 is not changed.");
+}
+```
 
 ## isAffine
 
@@ -160,9 +223,7 @@ isAffine(): boolean
 
 判断当前矩阵是否为仿射矩阵。仿射矩阵是一种包括平移、旋转、缩放等变换的矩阵。
 
-**起始版本：** 24
-
-<!--Device-Matrix-isAffine(): boolean--><!--Device-Matrix-isAffine(): boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -172,6 +233,17 @@ isAffine(): boolean
 | --- | --- |
 | boolean | 返回当前矩阵是否为仿射矩阵。true表示是仿射矩阵，false表示不是仿射矩阵。 |
 
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+matrix.setMatrix([1, 0.5, 1, 0.5, 1, 1, 1, 1, 1]);
+let isAffine = matrix.isAffine();
+console.info('isAffine :', isAffine);
+```
+
 ## isEqual
 
 ```TypeScript
@@ -180,9 +252,7 @@ isEqual(matrix: Matrix): boolean
 
 判断两个矩阵是否相等。
 
-**起始版本：** 23
-
-<!--Device-Matrix-isEqual(matrix: Matrix): boolean--><!--Device-Matrix-isEqual(matrix: Matrix): boolean-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -202,7 +272,23 @@ isEqual(matrix: Matrix): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix1 = new drawing.Matrix();
+matrix1.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
+let matrix2 = new drawing.Matrix();
+matrix2.setMatrix([-2, 1, 3, 1, 0, -1, 3, -1, 2]);
+if (matrix1.isEqual(matrix2)) {
+  console.info("matrix1 and matrix2 are equal.");
+} else {
+  console.info("matrix1 and matrix2 are not equal.");
+}
+```
 
 ## isIdentity
 
@@ -212,9 +298,7 @@ isIdentity(): boolean
 
 判断矩阵是否是单位矩阵。
 
-**起始版本：** 23
-
-<!--Device-Matrix-isIdentity(): boolean--><!--Device-Matrix-isIdentity(): boolean-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -223,6 +307,19 @@ isIdentity(): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 返回矩阵是否是单位矩阵。true表示矩阵是单位矩阵，false表示矩阵不是单位矩阵。 |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+if (matrix.isIdentity()) {
+  console.info("matrix is identity.");
+} else {
+  console.info("matrix is not identity.");
+}
+```
 
 ## mapPoints
 
@@ -234,71 +331,50 @@ mapPoints(src: Array<common2D.Point>): Array<common2D.Point>
 
 **起始版本：** 12
 
-<!--Device-Matrix-mapPoints(src: Array<common2D.Point>): Array<common2D.Point>--><!--Device-Matrix-mapPoints(src: Array<common2D.Point>): Array<common2D.Point>-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | Array&lt;common2D.Point&gt; | 是 | 源点数组，作为矩阵变换的输入点。 |
+| src | Array & lt;common2D.Point & gt; | 是 | 源点数组，作为矩阵变换的输入点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;common2D.Point&gt; | 源点数组经矩阵变换后的点数组。 |
+| Array & lt;common2D.Point & gt; | 源点数组经矩阵变换后的点数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types. |
 
-## mapPoints
+**示例**
 
 ```TypeScript
-mapPoints(src: Array<common2D.Point>): Array<common2D.Point> | undefined
+import { drawing, common2D } from "@kit.ArkGraphics2D";
+
+let src: Array<common2D.Point> = [];
+src.push({x: 15, y: 20});
+src.push({x: 20, y: 15});
+src.push({x: 30, y: 10});
+let matrix = new drawing.Matrix();
+let dst: Array<common2D.Point> = matrix.mapPoints(src);
+console.info("matrix= src: "+JSON.stringify(src));
+console.info("matrix= dst: "+JSON.stringify(dst));
 ```
-
-通过矩阵变换将源点数组映射到目标点数组。
-
-**起始版本：** 23
-
-<!--Device-Matrix-mapPoints(src: Array<common2D.Point>): Array<common2D.Point> | undefined--><!--Device-Matrix-mapPoints(src: Array<common2D.Point>): Array<common2D.Point> | undefined-End-->
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| src | Array&lt;common2D.Point&gt; | 是 | 源点数组，作为矩阵变换的输入点。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Array&lt;common2D.Point&gt; | 源点数组经矩阵变换后的点数组。创建对象失败时返回undefined。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 
 ## mapRadius
 
 ```TypeScript
-mapRadius(radius: double): double
+mapRadius(radius: number): number
 ```
 
 返回半径为radius的圆经过当前矩阵映射形成的椭圆的平均半径。平均半径的平方为椭圆长轴长度和短轴长度的乘积。若当前矩阵包含透视变换，则该结果无意义。
 
-**起始版本：** 24
-
-<!--Device-Matrix-mapRadius(radius: double): double--><!--Device-Matrix-mapRadius(radius: double): double-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -306,13 +382,24 @@ mapRadius(radius: double): double
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| radius | double | 是 | 用于计算的圆的半径，浮点数。如果是负数，则按照绝对值进行计算。单位为物理像素px。 |
+| radius | number | 是 | 用于计算的圆的半径，浮点数。如果是负数，则按照绝对值进行计算。单位为物理像素px。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| double | 返回经过变换之后的平均半径。单位为物理像素px。 |
+| number | 返回经过变换之后的平均半径。单位为物理像素px。 |
+
+**示例**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+matrix.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
+let radius = matrix.mapRadius(10);
+console.info('radius', radius);
+```
 
 ## mapRect
 
@@ -320,11 +407,9 @@ mapRadius(radius: double): double
 mapRect(dst: common2D.Rect, src: common2D.Rect): boolean
 ```
 
-将目标矩形设置为源矩形通过矩阵变换后的图形的外接矩形。如下图所示，蓝色矩形为源矩形，假设黄色矩形为源矩形通过矩阵变换形成的图形，此时黄色矩形的边不与坐标轴平行，无法使用矩形对象表示，因此，将目标矩形设置为黄色矩形的外接矩形，即 黑色矩形。 
+将目标矩形设置为源矩形通过矩阵变换后的图形的外接矩形。如下图所示，蓝色矩形为源矩形，假设黄色矩形为源矩形通过矩阵变换形成的图形，此时黄色矩形的边不与坐标轴平行，无法使用矩形对象表示，因此，将目标矩形设置为黄色矩形的外接矩形，即 黑色矩形。
 
-**起始版本：** 23
-
-<!--Device-Matrix-mapRect(dst: common2D.Rect, src: common2D.Rect): boolean--><!--Device-Matrix-mapRect(dst: common2D.Rect, src: common2D.Rect): boolean-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -345,7 +430,20 @@ mapRect(dst: common2D.Rect, src: common2D.Rect): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { drawing, common2D } from "@kit.ArkGraphics2D";
+
+let dst: common2D.Rect = { left: 100, top: 20, right: 130, bottom: 60 };
+let src: common2D.Rect = { left: 100, top: 80, right: 130, bottom: 120 };
+let matrix = new drawing.Matrix();
+if (matrix.mapRect(dst, src)) {
+    console.info("matrix= dst "+JSON.stringify(dst));
+}
+```
 
 ## postConcat
 
@@ -355,9 +453,7 @@ postConcat(matrix: Matrix): void
 
 将一个矩阵乘在当前矩阵的左侧，即新的变换在当前矩阵的变换之后应用。如果需要在当前矩阵的变换之前应用新变换，使用preConcat方法。
 
-**起始版本：** 24
-
-<!--Device-Matrix-postConcat(matrix: Matrix): void--><!--Device-Matrix-postConcat(matrix: Matrix): void-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -367,17 +463,34 @@ postConcat(matrix: Matrix): void
 | --- | --- | --- | --- |
 | matrix | [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) | 是 | 表示用于运算的矩阵，位于乘法表达式左侧。 |
 
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+if (matrix.isIdentity()) {
+  console.info("matrix is identity.");
+} else {
+  console.info("matrix is not identity.");
+}
+
+let matrix1 = new drawing.Matrix();
+matrix1.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
+let matrix2 = new drawing.Matrix();
+matrix2.setMatrix([-2, 1, 3, 1, 0, -1, 3, -1, 2]);
+matrix1.postConcat(matrix2);
+```
+
 ## postRotate
 
 ```TypeScript
-postRotate(degree: double, px: double, py: double): void
+postRotate(degree: number, px: number, py: number): void
 ```
 
 将矩阵设置为矩阵右乘围绕旋转中心点旋转degree角度的单位矩阵后得到的矩阵，即新的旋转变换在当前矩阵的变换之后应用。如果需要在当前矩阵的变换之前应用旋转变换，使用preRotate方法。
 
-**起始版本：** 23
-
-<!--Device-Matrix-postRotate(degree: double, px: double, py: double): void--><!--Device-Matrix-postRotate(degree: double, px: double, py: double): void-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -385,27 +498,38 @@ postRotate(degree: double, px: double, py: double): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| degree | double | 是 | 旋转角度，单位为度。正数表示顺时针旋转，负数表示逆时针旋转，该参数为浮点数。 |
-| px | double | 是 | 旋转中心点的x轴坐标，该参数为浮点数。单位为物理像素px。 |
-| py | double | 是 | 旋转中心点的y轴坐标，该参数为浮点数。单位为物理像素px。 |
+| degree | number | 是 | 旋转角度，单位为度。正数表示顺时针旋转，负数表示逆时针旋转，该参数为浮点数。 |
+| px | number | 是 | 旋转中心点的x轴坐标，该参数为浮点数。单位为物理像素px。 |
+| py | number | 是 | 旋转中心点的y轴坐标，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+let degree: number = 2;
+let px: number = 3;
+let py: number = 4;
+matrix.postRotate(degree, px, py);
+console.info("matrix= "+matrix.getAll().toString());
+```
 
 ## postScale
 
 ```TypeScript
-postScale(sx: double, sy: double, px: double, py: double): void
+postScale(sx: number, sy: number, px: number, py: number): void
 ```
 
 将矩阵设置为矩阵右乘围绕缩放中心点按sx和sy缩放系数缩放后的单位矩阵后得到的矩阵，即新的缩放变换在当前矩阵的变换之后应用。如果需要在当前矩阵的变换之前应用缩放变换，使用preScale方法。
 
-**起始版本：** 23
-
-<!--Device-Matrix-postScale(sx: double, sy: double, px: double, py: double): void--><!--Device-Matrix-postScale(sx: double, sy: double, px: double, py: double): void-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -413,28 +537,40 @@ postScale(sx: double, sy: double, px: double, py: double): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sx | double | 是 | x轴方向缩放因子，负数表示先关于x = px作镜像翻转后再进行缩放，该参数为浮点数。 |
-| sy | double | 是 | y轴方向缩放因子，负数表示先关于y = py作镜像翻转后再进行缩放，该参数为浮点数。 |
-| px | double | 是 | 缩放中心点的x轴坐标，该参数为浮点数。单位为物理像素px。 |
-| py | double | 是 | 缩放中心点的y轴坐标，该参数为浮点数。单位为物理像素px。 |
+| sx | number | 是 | x轴方向缩放因子，负数表示先关于x = px作镜像翻转后再进行缩放，该参数为浮点数。 |
+| sy | number | 是 | y轴方向缩放因子，负数表示先关于y = py作镜像翻转后再进行缩放，该参数为浮点数。 |
+| px | number | 是 | 缩放中心点的x轴坐标，该参数为浮点数。单位为物理像素px。 |
+| py | number | 是 | 缩放中心点的y轴坐标，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+let sx: number = 2;
+let sy: number = 0.5;
+let px: number = 1;
+let py: number = 1;
+matrix.postScale(sx, sy, px, py);
+console.info("matrix= "+matrix.getAll().toString());
+```
 
 ## postSkew
 
 ```TypeScript
-postSkew(kx: double, ky: double, px: double, py: double): void
+postSkew(kx: number, ky: number, px: number, py: number): void
 ```
 
 当前矩阵右乘一个倾斜变换矩阵。
 
-**起始版本：** 24
-
-<!--Device-Matrix-postSkew(kx: double, ky: double, px: double, py: double): void--><!--Device-Matrix-postSkew(kx: double, ky: double, px: double, py: double): void-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -442,22 +578,29 @@ postSkew(kx: double, ky: double, px: double, py: double): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| kx | double | 是 | x轴上的倾斜量，该参数为浮点数。正值会使绘制沿y轴增量方向向右倾斜；负值会使绘制沿y轴增量方向向左倾斜。 |
-| ky | double | 是 | y轴上的倾斜量，该参数为浮点数。正值会使绘制沿x轴增量方向向下倾斜；负值会使绘制沿x轴增量方向向上倾斜。 |
-| px | double | 是 | 倾斜中心点的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。单位为物理像素px。 |
-| py | double | 是 | 倾斜中心点的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。单位为物理像素px。 |
+| kx | number | 是 | x轴上的倾斜量，该参数为浮点数。正值会使绘制沿y轴增量方向向右倾斜；负值会使绘制沿y轴增量方向向左倾斜。 |
+| ky | number | 是 | y轴上的倾斜量，该参数为浮点数。正值会使绘制沿x轴增量方向向下倾斜；负值会使绘制沿x轴增量方向向上倾斜。 |
+| px | number | 是 | 倾斜中心点的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。单位为物理像素px。 |
+| py | number | 是 | 倾斜中心点的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。单位为物理像素px。 |
+
+**示例**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+matrix.postSkew(2.0, 1.0, 2.0, 1.0);
+```
 
 ## postTranslate
 
 ```TypeScript
-postTranslate(dx: double, dy: double): void
+postTranslate(dx: number, dy: number): void
 ```
 
 将矩阵设置为矩阵右乘平移dx和dy距离后的单位矩阵后得到的矩阵，即新的平移变换在当前矩阵的变换之后应用。如果需要在当前矩阵的变换之前应用平移变换，使用preTranslate方法。
 
-**起始版本：** 23
-
-<!--Device-Matrix-postTranslate(dx: double, dy: double): void--><!--Device-Matrix-postTranslate(dx: double, dy: double): void-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -465,14 +608,26 @@ postTranslate(dx: double, dy: double): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| dx | double | 是 | x轴方向平移距离，正数表示往x轴正方向平移，负数表示往x轴负方向平移，该参数为浮点数。单位为物理像素px。 |
-| dy | double | 是 | y轴方向平移距离，正数表示往y轴正方向平移，负数表示往y轴负方向平移，该参数为浮点数。单位为物理像素px。 |
+| dx | number | 是 | x轴方向平移距离，正数表示往x轴正方向平移，负数表示往x轴负方向平移，该参数为浮点数。单位为物理像素px。 |
+| dy | number | 是 | y轴方向平移距离，正数表示往y轴正方向平移，负数表示往y轴负方向平移，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+let dx: number = 3;
+let dy: number = 4;
+matrix.postTranslate(dx, dy);
+console.info("matrix= "+matrix.getAll().toString());
+```
 
 ## preConcat
 
@@ -482,9 +637,7 @@ preConcat(matrix: Matrix): void
 
 将一个矩阵乘在当前矩阵的右侧，即新的变换在当前矩阵的变换之前应用。如果需要在当前矩阵的变换之后应用新变换，使用postConcat方法。
 
-**起始版本：** 23
-
-<!--Device-Matrix-preConcat(matrix: Matrix): void--><!--Device-Matrix-preConcat(matrix: Matrix): void-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -498,19 +651,29 @@ preConcat(matrix: Matrix): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix1 = new drawing.Matrix();
+matrix1.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
+let matrix2 = new drawing.Matrix();
+matrix2.setMatrix([-2, 1, 3, 1, 0, -1, 3, -1, 2]);
+matrix1.preConcat(matrix2);
+```
 
 ## preRotate
 
 ```TypeScript
-preRotate(degree: double, px: double, py: double): void
+preRotate(degree: number, px: number, py: number): void
 ```
 
 将矩阵设置为矩阵左乘围绕旋转中心点旋转degree角度的单位矩阵后得到的矩阵，即新的旋转变换在当前矩阵的变换之前应用。如果需要在当前矩阵的变换之后应用旋转变换，使用postRotate方法。
 
-**起始版本：** 23
-
-<!--Device-Matrix-preRotate(degree: double, px: double, py: double): void--><!--Device-Matrix-preRotate(degree: double, px: double, py: double): void-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -518,27 +681,38 @@ preRotate(degree: double, px: double, py: double): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| degree | double | 是 | 旋转角度，单位为度。正数表示顺时针旋转，负数表示逆时针旋转，该参数为浮点数。 |
-| px | double | 是 | 旋转中心点的x轴坐标，该参数为浮点数。单位为物理像素px。 |
-| py | double | 是 | 旋转中心点的y轴坐标，该参数为浮点数。单位为物理像素px。 |
+| degree | number | 是 | 旋转角度，单位为度。正数表示顺时针旋转，负数表示逆时针旋转，该参数为浮点数。 |
+| px | number | 是 | 旋转中心点的x轴坐标，该参数为浮点数。单位为物理像素px。 |
+| py | number | 是 | 旋转中心点的y轴坐标，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+let degree: number = 2;
+let px: number = 3;
+let py: number = 4;
+matrix.preRotate(degree, px, py);
+console.info("matrix= "+matrix.getAll().toString());
+```
 
 ## preScale
 
 ```TypeScript
-preScale(sx: double, sy: double, px: double, py: double): void
+preScale(sx: number, sy: number, px: number, py: number): void
 ```
 
 将矩阵设置为矩阵左乘围绕缩放中心点按sx和sy缩放系数缩放后的单位矩阵后得到的矩阵，即新的缩放变换在当前矩阵的变换之前应用。如果需要在当前矩阵的变换之后应用缩放变换，使用postScale方法。
 
-**起始版本：** 23
-
-<!--Device-Matrix-preScale(sx: double, sy: double, px: double, py: double): void--><!--Device-Matrix-preScale(sx: double, sy: double, px: double, py: double): void-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -546,28 +720,40 @@ preScale(sx: double, sy: double, px: double, py: double): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sx | double | 是 | x轴方向缩放因子，为负数时可看作是先关于x = px作镜像翻转后再进行缩放，该参数为浮点数。 |
-| sy | double | 是 | y轴方向缩放因子，为负数时可看作是先关于y = py作镜像翻转后再进行缩放，该参数为浮点数。 |
-| px | double | 是 | 缩放中心点的x轴坐标，该参数为浮点数。单位为物理像素px。 |
-| py | double | 是 | 缩放中心点的y轴坐标，该参数为浮点数。单位为物理像素px。 |
+| sx | number | 是 | x轴方向缩放因子，为负数时可看作是先关于x = px作镜像翻转后再进行缩放，该参数为浮点数。 |
+| sy | number | 是 | y轴方向缩放因子，为负数时可看作是先关于y = py作镜像翻转后再进行缩放，该参数为浮点数。 |
+| px | number | 是 | 缩放中心点的x轴坐标，该参数为浮点数。单位为物理像素px。 |
+| py | number | 是 | 缩放中心点的y轴坐标，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+let sx: number = 2;
+let sy: number = 0.5;
+let px: number = 1;
+let py: number = 1;
+matrix.preScale(sx, sy, px, py);
+console.info("matrix"+matrix.getAll().toString());
+```
 
 ## preSkew
 
 ```TypeScript
-preSkew(kx: double, ky: double, px: double, py: double): void
+preSkew(kx: number, ky: number, px: number, py: number): void
 ```
 
 当前矩阵左乘一个倾斜变换矩阵。
 
-**起始版本：** 24
-
-<!--Device-Matrix-preSkew(kx: double, ky: double, px: double, py: double): void--><!--Device-Matrix-preSkew(kx: double, ky: double, px: double, py: double): void-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -575,22 +761,29 @@ preSkew(kx: double, ky: double, px: double, py: double): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| kx | double | 是 | x轴上的倾斜量，该参数为浮点数。正值会使绘制沿y轴增量方向向右倾斜；负值会使绘制沿y轴增量方向向左倾斜。 |
-| ky | double | 是 | y轴上的倾斜量，该参数为浮点数。正值会使绘制沿x轴增量方向向下倾斜；负值会使绘制沿x轴增量方向向上倾斜。 |
-| px | double | 是 | 倾斜中心点的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。单位为物理像素px。 |
-| py | double | 是 | 倾斜中心点的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。单位为物理像素px。 |
+| kx | number | 是 | x轴上的倾斜量，该参数为浮点数。正值会使绘制沿y轴增量方向向右倾斜；负值会使绘制沿y轴增量方向向左倾斜。 |
+| ky | number | 是 | y轴上的倾斜量，该参数为浮点数。正值会使绘制沿x轴增量方向向下倾斜；负值会使绘制沿x轴增量方向向上倾斜。 |
+| px | number | 是 | 倾斜中心点的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。单位为物理像素px。 |
+| py | number | 是 | 倾斜中心点的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。单位为物理像素px。 |
+
+**示例**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+matrix.preSkew(2.0, 1.0, 2.0, 1.0);
+```
 
 ## preTranslate
 
 ```TypeScript
-preTranslate(dx: double, dy: double): void
+preTranslate(dx: number, dy: number): void
 ```
 
 将矩阵设置为矩阵左乘平移dx和dy距离后的单位矩阵后得到的矩阵，即新的平移变换在当前矩阵的变换之前应用。如果需要在当前矩阵的变换之后应用平移变换，使用postTranslate方法。
 
-**起始版本：** 23
-
-<!--Device-Matrix-preTranslate(dx: double, dy: double): void--><!--Device-Matrix-preTranslate(dx: double, dy: double): void-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -598,14 +791,26 @@ preTranslate(dx: double, dy: double): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| dx | double | 是 | x轴方向平移距离，正数表示往x轴正方向平移，负数表示往x轴负方向平移，该参数为浮点数。单位为物理像素px。 |
-| dy | double | 是 | y轴方向平移距离，正数表示往y轴正方向平移，负数表示往y轴负方向平移，该参数为浮点数。单位为物理像素px。 |
+| dx | number | 是 | x轴方向平移距离，正数表示往x轴正方向平移，负数表示往x轴负方向平移，该参数为浮点数。单位为物理像素px。 |
+| dy | number | 是 | y轴方向平移距离，正数表示往y轴正方向平移，负数表示往y轴负方向平移，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+let dx: number = 3;
+let dy: number = 4;
+matrix.preTranslate(dx, dy);
+console.info("matrix"+matrix.getAll().toString());
+```
 
 ## rectStaysRect
 
@@ -615,9 +820,7 @@ rectStaysRect(): boolean
 
 判断经过该矩阵映射后的矩形的形状是否仍为矩形。
 
-**起始版本：** 24
-
-<!--Device-Matrix-rectStaysRect(): boolean--><!--Device-Matrix-rectStaysRect(): boolean-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -627,6 +830,18 @@ rectStaysRect(): boolean
 | --- | --- |
 | boolean | 返回经过该矩阵映射后的矩形的形状是否仍为矩形。true表示仍是矩形，false表示不是矩形。 |
 
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+matrix.setMatrix([1, 0.5, 1, 0.5, 1, 1, 1, 1, 1]);
+let matrix2 = new drawing.Matrix(matrix);
+let isRect = matrix2.rectStaysRect();
+console.info('isRect :', isRect);
+```
+
 ## reset
 
 ```TypeScript
@@ -635,11 +850,43 @@ reset(): void
 
 重置当前矩阵为单位矩阵。
 
-**起始版本：** 23
-
-<!--Device-Matrix-reset(): void--><!--Device-Matrix-reset(): void-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+const brush = new drawing.Brush();
+brush.reset();
+```
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+matrix.postScale(2, 3, 4, 5);
+matrix.reset();
+console.info("matrix= "+matrix.getAll().toString());
+```
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let path = new drawing.Path();
+path.moveTo(10, 10);
+path.cubicTo(10, 10, 10, 10, 15, 15);
+path.reset();
+```
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+const pen = new drawing.Pen();
+pen.reset();
+```
 
 ## setConcat
 
@@ -649,9 +896,7 @@ setConcat(matrixA: Matrix, matrixB: Matrix): void
 
 用两个矩阵的乘积更新当前矩阵，即当前矩阵 = matrixA × matrixB。
 
-**起始版本：** 24
-
-<!--Device-Matrix-setConcat(matrixA: Matrix, matrixB: Matrix): void--><!--Device-Matrix-setConcat(matrixA: Matrix, matrixB: Matrix): void-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -662,17 +907,27 @@ setConcat(matrixA: Matrix, matrixB: Matrix): void
 | matrixA | [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) | 是 | 用于运算的矩阵A，位于乘法表达式左侧。 |
 | matrixB | [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) | 是 | 用于运算的矩阵B，位于乘法表达式右侧。 |
 
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix1 = new drawing.Matrix();
+matrix1.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
+let matrix2 = new drawing.Matrix();
+matrix2.setMatrix([-2, 1, 3, 1, 0, -1, 3, -1, 2]);
+matrix1.setConcat(matrix2, matrix1);
+```
+
 ## setMatrix
 
 ```TypeScript
-setMatrix(values: Array<double>): void
+setMatrix(values: Array<number>): void
 ```
 
 设置矩阵对象的各项参数。
 
-**起始版本：** 23
-
-<!--Device-Matrix-setMatrix(values: Array<double>): void--><!--Device-Matrix-setMatrix(values: Array<double>): void-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -680,25 +935,33 @@ setMatrix(values: Array<double>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| values | Array&lt;double&gt; | 是 | 长度为9的浮点数组，表示矩阵对象的各项参数。数组中的值按下标从小到大分别表示水平缩放因子、水平倾斜系数、水平位移系数（单位为物理像素px）、垂直倾斜系数、垂直 缩放因子、垂直位移系数（单位为物理像素px）、x轴透视系数、y轴透视系数和透视缩放因子。 |
+| values | Array & lt;number & gt; | 是 | 长度为9的浮点数组，表示矩阵对象的各项参数。数组中的值按下标从小到大分别表示水平缩放因子、水平倾斜系数、水平位移系数（单位为物理像素px）、垂直倾斜系数、垂直 缩放因子、垂直位移系数（单位为物理像素px）、x轴透视系数、y轴透视系数和透视缩放因子。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+let value : Array<number> = [2, 2, 2, 2, 2, 2, 2, 2, 2];
+matrix.setMatrix(value);
+```
 
 ## setMatrix
 
 ```TypeScript
-setMatrix(matrix: Array<double> | Matrix): void
+setMatrix(matrix: Array<number> | Matrix): void
 ```
 
 用一个矩阵对当前矩阵进行更新。
 
-**起始版本：** 24
-
-<!--Device-Matrix-setMatrix(matrix: Array<double> | Matrix): void--><!--Device-Matrix-setMatrix(matrix: Array<double> | Matrix): void-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -706,19 +969,28 @@ setMatrix(matrix: Array<double> | Matrix): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| matrix | Array&lt;double&gt; \| [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) | 是 | 用于更新的数组或矩阵。当类型为数组时，长度固定为9。 |
+| matrix | Array & lt;number & gt; \ | [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) | 是 | 用于更新的数组或矩阵。当类型为数组时，长度固定为9。 |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix1 = new drawing.Matrix();
+matrix1.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
+let matrix2 = new drawing.Matrix();
+matrix1.setMatrix(matrix2);
+```
 
 ## setPolyToPoly
 
 ```TypeScript
-setPolyToPoly(src: Array<common2D.Point>, dst: Array<common2D.Point>, count: int): boolean
+setPolyToPoly(src: Array<common2D.Point>, dst: Array<common2D.Point>, count: number): boolean
 ```
 
 将当前矩阵设置为能够将源点数组映射到目标点数组的变换矩阵。源点和目标点的个数必须大于等于0，小于等于4。
 
-**起始版本：** 23
-
-<!--Device-Matrix-setPolyToPoly(src: Array<common2D.Point>, dst: Array<common2D.Point>, count: int): boolean--><!--Device-Matrix-setPolyToPoly(src: Array<common2D.Point>, dst: Array<common2D.Point>, count: int): boolean-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -726,9 +998,9 @@ setPolyToPoly(src: Array<common2D.Point>, dst: Array<common2D.Point>, count: int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | Array&lt;common2D.Point&gt; | 是 | 源点数组，长度必须为count。 |
-| dst | Array&lt;common2D.Point&gt; | 是 | 目标点数组，长度必须为count。 |
-| count | int | 是 | src和dst中点的数量，取值范围为[0, 4]，该参数为整数。 |
+| src | Array & lt;common2D.Point & gt; | 是 | 源点数组，长度必须为count。 |
+| dst | Array & lt;common2D.Point & gt; | 是 | 目标点数组，长度必须为count。 |
+| count | number | 是 | src和dst中点的数量，取值范围为[0, 4]，该参数为整数。 |
 
 **返回值：**
 
@@ -740,7 +1012,20 @@ setPolyToPoly(src: Array<common2D.Point>, dst: Array<common2D.Point>, count: int
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { drawing, common2D } from "@kit.ArkGraphics2D";
+
+let srcPoints: Array<common2D.Point> = [ {x: 10, y: 20}, {x: 200, y: 150} ];
+let dstPoints: Array<common2D.Point> = [{ x:0, y: 10 }, { x:300, y: 600 }];
+let matrix = new drawing.Matrix();
+if (matrix.setPolyToPoly(srcPoints, dstPoints, 2)) {
+    console.info("matrix"+matrix.getAll().toString());
+}
+```
 
 ## setRectToRect
 
@@ -750,9 +1035,7 @@ setRectToRect(src: common2D.Rect, dst: common2D.Rect, scaleToFit: ScaleToFit): b
 
 将当前矩阵设置为能使源矩形映射到目标矩形的变换矩阵。
 
-**起始版本：** 23
-
-<!--Device-Matrix-setRectToRect(src: common2D.Rect, dst: common2D.Rect, scaleToFit: ScaleToFit): boolean--><!--Device-Matrix-setRectToRect(src: common2D.Rect, dst: common2D.Rect, scaleToFit: ScaleToFit): boolean-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -774,19 +1057,31 @@ setRectToRect(src: common2D.Rect, dst: common2D.Rect, scaleToFit: ScaleToFit): b
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { drawing, common2D } from "@kit.ArkGraphics2D";
+
+let src: common2D.Rect = { left: 100, top: 100, right: 300, bottom: 300 };
+let dst: common2D.Rect = { left: 200, top: 200, right: 600, bottom: 600 };
+let scaleToFit: drawing.ScaleToFit = drawing.ScaleToFit.FILL_SCALE_TO_FIT;
+let matrix = new drawing.Matrix();
+if (matrix.setRectToRect(src, dst, scaleToFit)) {
+    console.info("matrix"+matrix.getAll().toString());
+}
+```
 
 ## setRotation
 
 ```TypeScript
-setRotation(degree: double, px: double, py: double): void
+setRotation(degree: number, px: number, py: number): void
 ```
 
 设置矩阵为单位矩阵，并围绕旋转中心点(px, py)进行旋转。
 
-**起始版本：** 23
-
-<!--Device-Matrix-setRotation(degree: double, px: double, py: double): void--><!--Device-Matrix-setRotation(degree: double, px: double, py: double): void-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -794,27 +1089,34 @@ setRotation(degree: double, px: double, py: double): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| degree | double | 是 | 角度，单位为度。正数表示顺时针旋转，负数表示逆时针旋转，该参数为浮点数。 |
-| px | double | 是 | 旋转中心点的x轴坐标，该参数为浮点数。单位为物理像素px。 |
-| py | double | 是 | 旋转中心点的y轴坐标，该参数为浮点数。单位为物理像素px。 |
+| degree | number | 是 | 角度，单位为度。正数表示顺时针旋转，负数表示逆时针旋转，该参数为浮点数。 |
+| px | number | 是 | 旋转中心点的x轴坐标，该参数为浮点数。单位为物理像素px。 |
+| py | number | 是 | 旋转中心点的y轴坐标，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+matrix.setRotation(90, 100, 100);
+```
 
 ## setScale
 
 ```TypeScript
-setScale(sx: double, sy: double, px: double, py: double): void
+setScale(sx: number, sy: number, px: number, py: number): void
 ```
 
 设置矩阵为单位矩阵，并围绕缩放中心点(px, py)按sx和sy进行缩放。
 
-**起始版本：** 23
-
-<!--Device-Matrix-setScale(sx: double, sy: double, px: double, py: double): void--><!--Device-Matrix-setScale(sx: double, sy: double, px: double, py: double): void-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -822,28 +1124,35 @@ setScale(sx: double, sy: double, px: double, py: double): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sx | double | 是 | x轴方向缩放因子，为负数时可看作是先关于x = px作镜像翻转后再进行缩放，该参数为浮点数。 |
-| sy | double | 是 | y轴方向缩放因子，为负数时可看作是先关于y = py作镜像翻转后再进行缩放，该参数为浮点数。 |
-| px | double | 是 | 缩放中心点的x轴坐标，该参数为浮点数。单位为物理像素px。 |
-| py | double | 是 | 缩放中心点的y轴坐标，该参数为浮点数。单位为物理像素px。 |
+| sx | number | 是 | x轴方向缩放因子，为负数时可看作是先关于x = px作镜像翻转后再进行缩放，该参数为浮点数。 |
+| sy | number | 是 | y轴方向缩放因子，为负数时可看作是先关于y = py作镜像翻转后再进行缩放，该参数为浮点数。 |
+| px | number | 是 | 缩放中心点的x轴坐标，该参数为浮点数。单位为物理像素px。 |
+| py | number | 是 | 缩放中心点的y轴坐标，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+matrix.setScale(100, 100, 150, 150);
+```
 
 ## setSinCos
 
 ```TypeScript
-setSinCos(sinValue: double, cosValue: double, px: double, py: double): void
+setSinCos(sinValue: number, cosValue: number, px: number, py: number): void
 ```
 
 设置矩阵为单位矩阵，使其围绕旋转中心点(px, py)以指定的正弦值和余弦值旋转。与[setRotation](#setrotation)功能类似，但setRotation直接传入角度 值，而本方法传入正弦值和余弦值。
 
-**起始版本：** 24
-
-<!--Device-Matrix-setSinCos(sinValue: double, cosValue: double, px: double, py: double): void--><!--Device-Matrix-setSinCos(sinValue: double, cosValue: double, px: double, py: double): void-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -851,22 +1160,30 @@ setSinCos(sinValue: double, cosValue: double, px: double, py: double): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sinValue | double | 是 | 旋转角度的正弦值。仅当正弦值和余弦值的平方和为1时，为旋转变换，否则矩阵可能包含平移缩放等其他变换。 |
-| cosValue | double | 是 | 旋转角度的余弦值。仅当正弦值和余弦值的平方和为1时，为旋转变换，否则矩阵可能包含平移缩放等其他变换。 |
-| px | double | 是 | 旋转中心的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。单位为物理像素px。 |
-| py | double | 是 | 旋转中心的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。单位为物理像素px。 |
+| sinValue | number | 是 | 旋转角度的正弦值。仅当正弦值和余弦值的平方和为1时，为旋转变换，否则矩阵可能包含平移缩放等其他变换。 |
+| cosValue | number | 是 | 旋转角度的余弦值。仅当正弦值和余弦值的平方和为1时，为旋转变换，否则矩阵可能包含平移缩放等其他变换。 |
+| px | number | 是 | 旋转中心的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。单位为物理像素px。 |
+| py | number | 是 | 旋转中心的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。单位为物理像素px。 |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+matrix.setMatrix([1, 0.5, 1, 0.5, 1, 1, 1, 1, 1]);
+matrix.setSinCos(0, 1, 1, 0);
+```
 
 ## setSkew
 
 ```TypeScript
-setSkew(kx: double, ky: double, px: double, py: double): void
+setSkew(kx: number, ky: number, px: number, py: number): void
 ```
 
 设置矩阵为单位矩阵，并围绕倾斜中心点(px, py)按(kx, ky)进行倾斜变换。与[setRotation](#setrotation)、 [setScale](#setscale)、[setTranslation](#settranslation)类似，均为重置矩阵后施加单一变换。
 
-**起始版本：** 24
-
-<!--Device-Matrix-setSkew(kx: double, ky: double, px: double, py: double): void--><!--Device-Matrix-setSkew(kx: double, ky: double, px: double, py: double): void-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -874,22 +1191,30 @@ setSkew(kx: double, ky: double, px: double, py: double): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| kx | double | 是 | x轴上的倾斜量，该参数为浮点数。正值会使绘制沿y轴增量方向向右倾斜；负值会使绘制沿y轴增量方向向左倾斜。 |
-| ky | double | 是 | y轴上的倾斜量，该参数为浮点数。正值会使绘制沿x轴增量方向向下倾斜；负值会使绘制沿x轴增量方向向上倾斜。 |
-| px | double | 是 | 倾斜中心点的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。单位为物理像素px。 |
-| py | double | 是 | 倾斜中心点的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。单位为物理像素px。 |
+| kx | number | 是 | x轴上的倾斜量，该参数为浮点数。正值会使绘制沿y轴增量方向向右倾斜；负值会使绘制沿y轴增量方向向左倾斜。 |
+| ky | number | 是 | y轴上的倾斜量，该参数为浮点数。正值会使绘制沿x轴增量方向向下倾斜；负值会使绘制沿x轴增量方向向上倾斜。 |
+| px | number | 是 | 倾斜中心点的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。单位为物理像素px。 |
+| py | number | 是 | 倾斜中心点的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。单位为物理像素px。 |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+matrix.setMatrix([1, 0.5, 1, 0.5, 1, 1, 1, 1, 1]);
+matrix.setSkew(2, 0.5, 0.5, 2);
+```
 
 ## setTranslation
 
 ```TypeScript
-setTranslation(dx: double, dy: double): void
+setTranslation(dx: number, dy: number): void
 ```
 
 设置矩阵为单位矩阵，并平移(dx, dy)。
 
-**起始版本：** 23
-
-<!--Device-Matrix-setTranslation(dx: double, dy: double): void--><!--Device-Matrix-setTranslation(dx: double, dy: double): void-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -897,12 +1222,20 @@ setTranslation(dx: double, dy: double): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| dx | double | 是 | x轴方向平移距离，正数表示往x轴正方向平移，负数表示往x轴负方向平移，该参数为浮点数。单位为物理像素px。 |
-| dy | double | 是 | y轴方向平移距离，正数表示往y轴正方向平移，负数表示往y轴负方向平移，该参数为浮点数。单位为物理像素px。 |
+| dx | number | 是 | x轴方向平移距离，正数表示往x轴正方向平移，负数表示往x轴负方向平移，该参数为浮点数。单位为物理像素px。 |
+| dy | number | 是 | y轴方向平移距离，正数表示往y轴正方向平移，负数表示往y轴负方向平移，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types. |
 
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+matrix.setTranslation(100, 100);
+```

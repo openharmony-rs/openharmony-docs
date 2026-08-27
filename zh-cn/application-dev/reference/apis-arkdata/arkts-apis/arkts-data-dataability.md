@@ -4,8 +4,6 @@ DataAbility谓词用于构造关系型数据库的谓词，提供用于实现不
 
 **起始版本：** 7
 
-<!--Device-unnamed-declare namespace dataAbility--><!--Device-unnamed-declare namespace dataAbility-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 ## 导入模块
@@ -33,4 +31,3 @@ import { dataAbility } from '@kit.ArkData';
 | 名称 | 说明 |
 | --- | --- |
 | [ValueType](arkts-arkdata-dataability-valuetype-t.md) | 用于表示允许的数据字段类型。 |
-

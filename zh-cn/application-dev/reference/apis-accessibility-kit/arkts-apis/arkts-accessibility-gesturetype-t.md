@@ -19,8 +19,6 @@ type GestureType = 'left' | 'leftThenRight' | 'leftThenUp' | 'leftThenDown' |
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-unnamed-type GestureType = 'left' | 'leftThenRight' | 'leftThenUp' | 'leftThenDown' |  'right' | 'rightThenLeft' | 'rightThenUp' | 'rightThenDown' |  'up' | 'upThenLeft' | 'upThenRight' | 'upThenDown' |  'down' | 'downThenLeft' | 'downThenRight' | 'downThenUp' |  'twoFingerSingleTap' | 'twoFingerDoubleTap' | 'twoFingerDoubleTapAndHold' | 'twoFingerTripleTap' |  'twoFingerTripleTapAndHold' | 'threeFingerSingleTap' | 'threeFingerDoubleTap' | 'threeFingerDoubleTapAndHold' |  'threeFingerTripleTap' | 'threeFingerTripleTapAndHold' | 'fourFingerSingleTap' | 'fourFingerDoubleTap' |  'fourFingerDoubleTapAndHold' | 'fourFingerTripleTap' | 'fourFingerTripleTapAndHold' |  'threeFingerSwipeUp' | 'threeFingerSwipeDown' | 'threeFingerSwipeLeft' | 'threeFingerSwipeRight' |  'fourFingerSwipeUp' | 'fourFingerSwipeDown' | 'fourFingerSwipeLeft' | 'fourFingerSwipeRight' | 'oneFingerDoubleTap'--><!--Device-unnamed-type GestureType = 'left' | 'leftThenRight' | 'leftThenUp' | 'leftThenDown' |  'right' | 'rightThenLeft' | 'rightThenUp' | 'rightThenDown' |  'up' | 'upThenLeft' | 'upThenRight' | 'upThenDown' |  'down' | 'downThenLeft' | 'downThenRight' | 'downThenUp' |  'twoFingerSingleTap' | 'twoFingerDoubleTap' | 'twoFingerDoubleTapAndHold' | 'twoFingerTripleTap' |  'twoFingerTripleTapAndHold' | 'threeFingerSingleTap' | 'threeFingerDoubleTap' | 'threeFingerDoubleTapAndHold' |  'threeFingerTripleTap' | 'threeFingerTripleTapAndHold' | 'fourFingerSingleTap' | 'fourFingerDoubleTap' |  'fourFingerDoubleTapAndHold' | 'fourFingerTripleTap' | 'fourFingerTripleTapAndHold' |  'threeFingerSwipeUp' | 'threeFingerSwipeDown' | 'threeFingerSwipeLeft' | 'threeFingerSwipeRight' |  'fourFingerSwipeUp' | 'fourFingerSwipeDown' | 'fourFingerSwipeLeft' | 'fourFingerSwipeRight' | 'oneFingerDoubleTap'-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 | 类型 | 说明 |
@@ -65,4 +63,3 @@ type GestureType = 'left' | 'leftThenRight' | 'leftThenUp' | 'leftThenDown' |
 | 'fourFingerSwipeLeft' | 表示四指向左滑动的手势。 [since 11] |
 | 'fourFingerSwipeRight' | 表示四指向右滑动的手势。 [since 11] |
 | 'oneFingerDoubleTap' | 表示单指双击的手势。 [since 26.0.0] |
-

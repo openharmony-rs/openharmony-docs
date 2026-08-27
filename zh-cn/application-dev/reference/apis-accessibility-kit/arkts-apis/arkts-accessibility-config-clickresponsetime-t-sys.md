@@ -6,9 +6,7 @@ type ClickResponseTime = 'Short' | 'Medium' | 'Long'
 
 用于不同时间长短的点击持续时间。
 
-**起始版本：** 23
-
-<!--Device-config-type ClickResponseTime = 'Short' | 'Medium' | 'Long'--><!--Device-config-type ClickResponseTime = 'Short' | 'Medium' | 'Long'-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -19,4 +17,3 @@ type ClickResponseTime = 'Short' | 'Medium' | 'Long'
 | 'Short' | 表示短（默认）。 |
 | 'Medium' | 表示中。 |
 | 'Long' | 表示长。 |
-

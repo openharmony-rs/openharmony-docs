@@ -1,14 +1,16 @@
 # CustomizeData
 
-自定义元数据。 > **说明：** > > 从API version 9开始，该模块不再维护，建议使用[Metadata](arkts-ability-metadata-i.md)替代。
+自定义元数据。
+
+> **说明：**
+> 
+> 从API version 9开始，该模块不再维护，建议使用[Metadata](arkts-ability-metadata-i.md)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
 **替代接口：** [Metadata](arkts-ability-metadata-i.md)
-
-<!--Device-unnamed-export interface CustomizeData--><!--Device-unnamed-export interface CustomizeData-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -30,8 +32,6 @@ extra: string
 
 **替代接口：** resource
 
-<!--Device-CustomizeData-extra: string--><!--Device-CustomizeData-extra: string-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 ## name
@@ -51,8 +51,6 @@ name: string
 **废弃版本：** 9
 
 **替代接口：** name
-
-<!--Device-CustomizeData-name: string--><!--Device-CustomizeData-name: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -74,7 +72,4 @@ value: string
 
 **替代接口：** value
 
-<!--Device-CustomizeData-value: string--><!--Device-CustomizeData-value: string-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
-

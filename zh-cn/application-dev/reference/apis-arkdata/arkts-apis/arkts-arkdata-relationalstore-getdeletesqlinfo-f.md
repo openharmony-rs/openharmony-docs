@@ -14,9 +14,7 @@ function getDeleteSqlInfo(predicates: RdbPredicates):SqlInfo
 
 获取用于删除数据的SQL语句，此为同步接口。
 
-**起始版本：** 23
-
-<!--Device-relationalStore-function getDeleteSqlInfo(predicates: RdbPredicates):SqlInfo--><!--Device-relationalStore-function getDeleteSqlInfo(predicates: RdbPredicates):SqlInfo-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -40,21 +38,9 @@ function getDeleteSqlInfo(predicates: RdbPredicates):SqlInfo
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 const predicates = new relationalStore.RdbPredicates("users");
 predicates.equalTo("tableName", "a");
 predicates.notEqualTo("age", 18);
 const sqlInfo: relationalStore.SqlInfo = relationalStore.getDeleteSqlInfo(predicates);
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-const predicates = new relationalStore.RdbPredicates("users");
-predicates.equalTo("tableName", "a");
-predicates.notEqualTo("age", 18 as long);
-const sqlInfo: relationalStore.SqlInfo = relationalStore.getDeleteSqlInfo(predicates);
-```
-

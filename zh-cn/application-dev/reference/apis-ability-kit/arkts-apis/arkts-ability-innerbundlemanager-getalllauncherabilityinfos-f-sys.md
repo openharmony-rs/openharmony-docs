@@ -12,7 +12,13 @@ import { innerBundleManager, BundleStatusCallback } from '@kit.AbilityKit';
 function getAllLauncherAbilityInfos(userId: number, callback: AsyncCallback<Array<LauncherAbilityInfo>>): void
 ```
 
-获取所有的LauncherAbilityInfos，使用callback异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [getAllLauncherAbilityInfo](arkts-ability-launcherbundlemanager-getalllauncherabilityinfo-f-sys.md) > 替代。
+获取所有的LauncherAbilityInfos，使用callback异步回调。
+
+> **说明：**
+> 
+> 从API version 8开始支持，从API version 9开始废弃，建议使用
+> [getAllLauncherAbilityInfo](arkts-ability-launcherbundlemanager-getalllauncherabilityinfo-f-sys.md)
+> 替代。
 
 **起始版本：** 8
 
@@ -21,8 +27,6 @@ function getAllLauncherAbilityInfos(userId: number, callback: AsyncCallback<Arra
 **替代接口：** [getAllLauncherAbilityInfo](arkts-ability-launcherbundlemanager-getalllauncherabilityinfo-f-sys.md)(userId: int, callback: AsyncCallback&lt;Array&lt;LauncherAbilityInfo&gt;&gt;)
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
-
-<!--Device-innerBundleManager-function getAllLauncherAbilityInfos(userId: number, callback: AsyncCallback<Array<LauncherAbilityInfo>>): void--><!--Device-innerBundleManager-function getAllLauncherAbilityInfos(userId: number, callback: AsyncCallback<Array<LauncherAbilityInfo>>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -33,7 +37,7 @@ function getAllLauncherAbilityInfos(userId: number, callback: AsyncCallback<Arra
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | userId | number | 是 | 用户ID。取值范围：大于等于0。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[LauncherAbilityInfo](arkts-ability-launcherabilityinfo-launcherabilityinfo-depr-i-sys.md)&gt;&gt; | 是 | 程序启动作为入参的回调函数，返回程序信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[LauncherAbilityInfo](arkts-ability-launcherabilityinfo-launcherabilityinfo-depr-i-sys.md)&gt;&gt; | 是 | 程序启动作为入参的回调函数，返回程序信息。 |
 
 
 ## getAllLauncherAbilityInfos
@@ -42,7 +46,13 @@ function getAllLauncherAbilityInfos(userId: number, callback: AsyncCallback<Arra
 function getAllLauncherAbilityInfos(userId: number): Promise<Array<LauncherAbilityInfo>>
 ```
 
-获取LauncherAbilityInfos，使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [getAllLauncherAbilityInfo](arkts-ability-launcherbundlemanager-getalllauncherabilityinfo-f-sys.md) > 替代。
+获取LauncherAbilityInfos，使用Promise异步回调。
+
+> **说明：**
+> 
+> 从API version 8开始支持，从API version 9开始废弃，建议使用
+> [getAllLauncherAbilityInfo](arkts-ability-launcherbundlemanager-getalllauncherabilityinfo-f-sys.md)
+> 替代。
 
 **起始版本：** 8
 
@@ -51,8 +61,6 @@ function getAllLauncherAbilityInfos(userId: number): Promise<Array<LauncherAbili
 **替代接口：** [getAllLauncherAbilityInfo](arkts-ability-launcherbundlemanager-getalllauncherabilityinfo-f-sys.md)(userId: int, callback: AsyncCallback&lt;Array&lt;LauncherAbilityInfo&gt;&gt;)
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
-
-<!--Device-innerBundleManager-function getAllLauncherAbilityInfos(userId: number): Promise<Array<LauncherAbilityInfo>>--><!--Device-innerBundleManager-function getAllLauncherAbilityInfos(userId: number): Promise<Array<LauncherAbilityInfo>>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -69,4 +77,3 @@ function getAllLauncherAbilityInfos(userId: number): Promise<Array<LauncherAbili
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;Array&lt;[LauncherAbilityInfo](arkts-ability-launcherabilityinfo-launcherabilityinfo-depr-i-sys.md)&gt;&gt; | Promise形式返回程序信息。 |
-

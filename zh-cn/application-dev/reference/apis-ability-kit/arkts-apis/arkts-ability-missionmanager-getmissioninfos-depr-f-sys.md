@@ -21,8 +21,6 @@ function getMissionInfos(deviceId: string, numMax: number, callback: AsyncCallba
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
-<!--Device-missionManager-function getMissionInfos(deviceId: string, numMax: number, callback: AsyncCallback<Array<MissionInfo>>): void--><!--Device-missionManager-function getMissionInfos(deviceId: string, numMax: number, callback: AsyncCallback<Array<MissionInfo>>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
 **系统接口：** 此接口为系统接口。
@@ -33,7 +31,7 @@ function getMissionInfos(deviceId: string, numMax: number, callback: AsyncCallba
 | --- | --- | --- | --- |
 | deviceId | string | 是 | 设备ID，本机默认为空字符串。 |
 | numMax | number | 是 | 任务信息数量上限。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[MissionInfo](arkts-ability-missioninfo-i-sys.md)&gt;&gt; | 是 | 回调函数，返回任务信息数组。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[MissionInfo](arkts-ability-missioninfo-i-sys.md)&gt;&gt; | 是 | 回调函数，返回任务信息数组。 |
 
 **示例**
 
@@ -67,8 +65,6 @@ function getMissionInfos(deviceId: string, numMax: number): Promise<Array<Missio
 **替代接口：** [getMissionInfos](arkts-ability-missionmanager-getmissioninfos-f-sys.md)
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
-
-<!--Device-missionManager-function getMissionInfos(deviceId: string, numMax: number): Promise<Array<MissionInfo>>--><!--Device-missionManager-function getMissionInfos(deviceId: string, numMax: number): Promise<Array<MissionInfo>>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -104,4 +100,3 @@ try {
   console.error(`getMissionInfos failed. Cause: ${error.message}`);
 }
 ```
-

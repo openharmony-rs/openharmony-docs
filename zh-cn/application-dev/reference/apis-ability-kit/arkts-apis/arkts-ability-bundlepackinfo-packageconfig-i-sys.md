@@ -2,9 +2,7 @@
 
 pack.info的包信息。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface PackageConfig--><!--Device-unnamed-export interface PackageConfig-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
@@ -20,9 +18,7 @@ readonly deliveryWithInstall: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-PackageConfig-readonly deliveryWithInstall: boolean--><!--Device-PackageConfig-readonly deliveryWithInstall: boolean-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
@@ -38,9 +34,7 @@ readonly deviceTypes: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 23
-
-<!--Device-PackageConfig-readonly deviceTypes: Array<string>--><!--Device-PackageConfig-readonly deviceTypes: Array<string>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
@@ -56,9 +50,7 @@ readonly moduleType: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-PackageConfig-readonly moduleType: string--><!--Device-PackageConfig-readonly moduleType: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
@@ -74,11 +66,8 @@ readonly name: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-PackageConfig-readonly name: string--><!--Device-PackageConfig-readonly name: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **系统接口：** 此接口为系统接口。
-

@@ -1,10 +1,12 @@
 # BundleResourceInfo（系统接口）
 
-应用配置的图标和名称信息，可以通过 [getBundleResourceInfo](arkts-ability-bundleresourcemanager-getbundleresourceinfo-f-sys.md) 获取。 > **说明：** > > 本模块为系统接口。
+应用配置的图标和名称信息，可以通过 [getBundleResourceInfo](arkts-ability-bundleresourcemanager-getbundleresourceinfo-f-sys.md) 获取。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 本模块为系统接口。
 
-<!--Device-unnamed-export interface BundleResourceInfo--><!--Device-unnamed-export interface BundleResourceInfo-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
@@ -13,16 +15,14 @@
 ## appIndex
 
 ```TypeScript
-readonly appIndex: int
+readonly appIndex: number
 ```
 
 应用分身Id。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-BundleResourceInfo-readonly appIndex: int--><!--Device-BundleResourceInfo-readonly appIndex: int-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
@@ -38,9 +38,7 @@ readonly bundleName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-BundleResourceInfo-readonly bundleName: string--><!--Device-BundleResourceInfo-readonly bundleName: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
@@ -49,16 +47,14 @@ readonly bundleName: string
 ## drawableDescriptor
 
 ```TypeScript
-readonly drawableDescriptor: DrawableDescriptor | null
+readonly drawableDescriptor: DrawableDescriptor
 ```
 
-Indicates the drawable descriptor of this bundle icon
+应用图标的drawableDescriptor对象。
 
-**类型：** [DrawableDescriptor](../../apis-arkui/arkts-apis/arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md) \| null
+**类型：** [DrawableDescriptor](../../apis-arkui/arkts-apis/arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md)
 
-**起始版本：** 23
-
-<!--Device-BundleResourceInfo-readonly drawableDescriptor: DrawableDescriptor | null--><!--Device-BundleResourceInfo-readonly drawableDescriptor: DrawableDescriptor | null-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
@@ -74,9 +70,7 @@ readonly icon: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-BundleResourceInfo-readonly icon: string--><!--Device-BundleResourceInfo-readonly icon: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
@@ -92,11 +86,8 @@ readonly label: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-BundleResourceInfo-readonly label: string--><!--Device-BundleResourceInfo-readonly label: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
 **系统接口：** 此接口为系统接口。
-

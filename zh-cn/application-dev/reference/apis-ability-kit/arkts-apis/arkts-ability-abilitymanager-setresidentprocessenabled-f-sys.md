@@ -14,9 +14,7 @@ function setResidentProcessEnabled(bundleName: string, enable: boolean): Promise
 
 常驻进程支持按需启停。
 
-**起始版本：** 23
-
-<!--Device-abilityManager-function setResidentProcessEnabled(bundleName: string, enable: boolean): Promise<void>--><!--Device-abilityManager-function setResidentProcessEnabled(bundleName: string, enable: boolean): Promise<void>-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -33,16 +31,16 @@ function setResidentProcessEnabled(bundleName: string, enable: boolean): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1.Non empty package name needs to be provided; 2.The second parameter needs to provide a Boolean type setting value. |
-| [16200006](../errorcode-ability.md#16200006-没有权限设置常驻进程使能状态) | The caller application can only set the resident status of the configured process. |
-| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not a system application. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1.Non empty package name needs to be provided; 2.The second parameter needs to provide a Boolean type setting value. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
+| [16200006](../errorcode-ability.md#16200006-没有权限设置常驻进程使能状态) | The caller application can only set the resident status of the configured process. |
 
 **示例**
 
@@ -58,9 +56,8 @@ try {
     .then(() => {
       console.info('setResidentProcessEnabled success.');
     })
-    .catch((e: Error) => {
-      let err = e as BusinessError;
-      console.error(`setResidentProcessEnabled fail, err: ${err.message}`);
+    .catch((err: BusinessError) => {
+      console.error(`setResidentProcessEnabled fail, err: ${JSON.stringify(err)}`);
     });
 } catch (err) {
   let code = (err as BusinessError).code;
@@ -68,4 +65,3 @@ try {
   console.error(`setResidentProcessEnabled failed, code is ${code}, message is ${message}`);
 }
 ```
-

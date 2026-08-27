@@ -1,10 +1,8 @@
 # GesturePath
 
-GesturePath表示手势路径信息。 本模块用于创建手势路径信息，供辅助功能注入手势使用。
+表示手势路径信息，用于无障碍服务中模拟用户触摸手势（如点击、滑动等）。
 
 **起始版本：** 9
-
-<!--Device-unnamed-export declare class GesturePath--><!--Device-unnamed-export declare class GesturePath-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -17,7 +15,7 @@ import { GesturePath } from '@kit.AccessibilityKit';
 ## constructor
 
 ```TypeScript
-constructor(durationTime: long)
+constructor(durationTime: number)
 ```
 
 通过传入手势总耗时创建手势路径对象。创建GesturePath实例后，还需设置必填属性points。
@@ -26,15 +24,13 @@ constructor(durationTime: long)
 
 **废弃版本：** 12
 
-<!--Device-GesturePath-constructor(durationTime: long)--><!--Device-GesturePath-constructor(durationTime: long)-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| durationTime | long | 是 | 手势总耗时，单位：ms。取值需大于0。 |
+| durationTime | number | 是 | 手势总耗时，单位：ms。取值需大于0。 |
 
 **示例**
 
@@ -50,16 +46,14 @@ gesturePath.points = [startPoint, endPoint];
 ## durationTime
 
 ```TypeScript
-durationTime: long
+durationTime: number
 ```
 
 手势总耗时，单位：ms。取值需大于0。
 
-**类型：** long
+**类型：** number
 
 **起始版本：** 9
-
-<!--Device-GesturePath-durationTime: long--><!--Device-GesturePath-durationTime: long-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -75,7 +69,4 @@ points: Array<GesturePoint>
 
 **起始版本：** 9
 
-<!--Device-GesturePath-points: Array<GesturePoint>--><!--Device-GesturePath-points: Array<GesturePoint>-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
-

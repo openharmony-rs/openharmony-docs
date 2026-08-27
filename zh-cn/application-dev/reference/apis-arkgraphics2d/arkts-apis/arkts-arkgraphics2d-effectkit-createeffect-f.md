@@ -14,13 +14,11 @@ function createEffect(source: image.PixelMap): Filter
 
 通过传入的PixelMap创建Filter实例。后续可通过链式调用添加各种图像效果， 最终通过[getEffectPixelMap](arkts-arkgraphics2d-effectkit-filter-i.md#geteffectpixelmap)获取处理后的图像。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-effectKit-function createEffect(source: image.PixelMap): Filter--><!--Device-effectKit-function createEffect(source: image.PixelMap): Filter-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -39,20 +37,23 @@ function createEffect(source: image.PixelMap): Filter
 **示例**
 
 ```TypeScript
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
 
-const color = new ArrayBuffer(96);
-let opts : image.InitializationOptions = {
+// 创建用于图像效果的buffer
+const colorBuffer = new ArrayBuffer(96);
+// 设置图像初始化选项
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
     height: 4,
     width: 6
   }
-}
-image.createPixelMap(color, opts).then((pixelMap) => {
+};
+// 创建PixelMap实例
+image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
+  // 创建Filter实例
   let headFilter = effectKit.createEffect(pixelMap);
-})
+});
 ```
-

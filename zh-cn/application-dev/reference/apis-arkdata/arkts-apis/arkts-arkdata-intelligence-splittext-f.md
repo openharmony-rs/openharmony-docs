@@ -14,9 +14,7 @@ function splitText(text: string, config: SplitConfig): Promise<Array<string>>
 
 获取文本的分块。使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-intelligence-function splitText(text: string, config: SplitConfig): Promise<Array<string>>--><!--Device-intelligence-function splitText(text: string, config: SplitConfig): Promise<Array<string>>-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
@@ -31,19 +29,17 @@ function splitText(text: string, config: SplitConfig): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回分块结果的数组。 |
+| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回分块结果的数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [31300000](../errorcode-intelligence.md#31300000-服务内部异常) | Inner error. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -62,22 +58,3 @@ intelligence.splitText(textToSplit, splitConfig)
     console.error(`Failed to split Text. Code: ${err.code}, message: ${err.message}`);
   })
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-let splitConfig: intelligence.SplitConfig = {
-  size: 10,
-  overlapRatio: 0.1
-}
-let textToSplit = 'text';
-
-intelligence.splitText(textToSplit, splitConfig)
-  .then((data: Array<string>) => {
-    console.info("Succeeded in splitting Text");
-  })
-  .catch((err) => {
-    console.error(`Failed to split Text. Code: ${err.code}, message: ${err.message}`);
-  })
-```
-

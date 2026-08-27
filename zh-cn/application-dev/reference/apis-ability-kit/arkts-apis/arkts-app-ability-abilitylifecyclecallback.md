@@ -1,5 +1,16 @@
 # @ohos.app.ability.AbilityLifecycleCallback
 
+[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)从创建到销毁过程其生命周期是动态变化的。AbilityLifecycleCallback模块提供监听
+ [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)生命周期变化的能力，可用于统计每个UIAbility的运行时长、执行与UIAbility业务逻辑解耦的数据加载等场景。
+ > **说明**
+ >
+ > 本模块接口只能监听进程内UIAbility生命周期变化。
+ ## 使用说明
+ 1. 应用创建AbilityLifecycleCallback对象，并调用ApplicationContext.on('abilityLifecycle')接口注册UIAbility生命周期变化监听。
+ 2. 当UIAbility生命周期变化时，应用可以通过已注册的AbilityLifecycleCallback对象接收到UIAbility生命周期的变化通知。
+ 3. 当应用不需要监听UIAbility生命周期变化时，需要通过ApplicationContext.off('abilityLifecycle')接口取消监听。
+
+
 ## 导入模块
 
 ```TypeScript
@@ -13,22 +24,3 @@ import { AbilityLifecycleCallback } from '@kit.AbilityKit';
 | 名称 | 说明 |
 | --- | --- |
 | [AbilityLifecycleCallback](arkts-ability-app-ability-abilitylifecyclecallback-abilitylifecyclecallback-c.md) | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)从创建到销毁过程其生命周期是动态变化的。 AbilityLifecycleCallback模块提供监听[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)生命周期变化的能力， 可用于统计每个UIAbility的运行时长、执行与UIAbility业务逻辑解耦的数据加载等场景。 |
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [OnAbilitySaveStateFn](arkts-ability-onabilitysavestatefn-t.md) | 注册监听应用上下文的生命周期后，在UIAbility的onSaveState触发后回调。 |
-| [OnAbilityWillBackgroundFn](arkts-ability-onabilitywillbackgroundfn-t.md) | 注册监听应用上下文的生命周期后，在UIAbility的onBackground触发前回调。 |
-| [OnAbilityWillContinueFn](arkts-ability-onabilitywillcontinuefn-t.md) | 注册监听应用上下文的生命周期后，在Ability迁移前触发回调。 |
-| [OnAbilityWillCreateFn](arkts-ability-onabilitywillcreatefn-t.md) | 注册监听应用上下文的生命周期后，在UIAbility的onCreate触发前回调。 |
-| [OnAbilityWillDestroyFn](arkts-ability-onabilitywilldestroyfn-t.md) | 注册监听应用上下文的生命周期后，在UIAbility的onDestroy触发前回调。 |
-| [OnAbilityWillForegroundFn](arkts-ability-onabilitywillforegroundfn-t.md) | 注册监听应用上下文的生命周期后，在UIAbility的onForeground触发前回调。 |
-| [OnAbilityWillSaveStateFn](arkts-ability-onabilitywillsavestatefn-t.md) | 注册监听应用上下文的生命周期后，在UIAbility的onSaveState触发前回调。 |
-| [OnNewWantFn](arkts-ability-onnewwantfn-t.md) | 注册监听应用上下文的生命周期后，在UIAbility的onNewWant触发后回调。 |
-| [OnWillNewWantFn](arkts-ability-onwillnewwantfn-t.md) | 注册监听应用上下文的生命周期后，在UIAbility的onNewWant触发前回调。 |
-| [OnWindowStageRestoreFn](arkts-ability-onwindowstagerestorefn-t.md) | 注册监听应用上下文的生命周期后，在UIAbility的onWindowStageRestore触发后回调。 |
-| [OnWindowStageWillCreateFn](arkts-ability-onwindowstagewillcreatefn-t.md) | 注册监听应用上下文的生命周期后，在UIAbility的onWindowStageCreate触发前回调。 |
-| [OnWindowStageWillDestroyFn](arkts-ability-onwindowstagewilldestroyfn-t.md) | 注册监听应用上下文的生命周期后，在UIAbility的onWindowStageDestroy触发前回调。 |
-| [OnWindowStageWillRestoreFn](arkts-ability-onwindowstagewillrestorefn-t.md) | 注册监听应用上下文的生命周期后，在UIAbility的onWindowStageRestore触发前回调。 |
-

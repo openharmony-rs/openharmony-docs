@@ -18,9 +18,7 @@ function changePrivilege(
 
 根据指定的共享资源标识更改共享参与者对共享数据的操作权限，使用callback异步回调。
 
-**起始版本：** 23
-
-<!--Device-sharing-function changePrivilege(      sharingResource: string,      participants: Array<Participant>,      callback: AsyncCallback<Result<Array<Result<Participant>>>>    ): void--><!--Device-sharing-function changePrivilege(      sharingResource: string,      participants: Array<Participant>,      callback: AsyncCallback<Result<Array<Result<Participant>>>>    ): void-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -32,15 +30,15 @@ function changePrivilege(
 | --- | --- | --- | --- |
 | sharingResource | string | 是 | 端云共享数据的资源标识。 |
 | participants | Array&lt;[Participant](arkts-arkdata-sharing-participant-i-sys.md)&gt; | 是 | 端云共享的参与者。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Result&lt;Array&lt;Result&lt;[Participant](arkts-arkdata-sharing-participant-i-sys.md)&gt;&gt;&gt;&gt; | 是 | 回调函数。返回更改权限的结果。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Result&lt;Array&lt;Result&lt;[Participant](arkts-arkdata-sharing-participant-i-sys.md)&gt;&gt;&gt;&gt; | 是 | 回调函数。返回更改权限的结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
 **示例**
 
@@ -60,15 +58,15 @@ participants.push({
     shareable: false
   },
   attachInfo: ''
-})
+});
 
-cloudData.sharing.changePrivilege('sharing_resource_test', participants, ((err: BusinessError|null, result) => {
+cloudData.sharing.changePrivilege('sharing_resource_test', participants, (err: BusinessError, result) => {
   if (err) {
     console.error(`change privilege failed, code is ${err.code},message is ${err.message}`);
     return;
   }
   console.info(`change privilege succeeded, result: ${result}`);
-}))
+});
 ```
 
 
@@ -83,9 +81,7 @@ function changePrivilege(
 
 根据指定的共享资源标识更改共享参与者对共享数据的操作权限，使用Promise异步回调。
 
-**起始版本：** 23
-
-<!--Device-sharing-function changePrivilege(      sharingResource: string,      participants: Array<Participant>    ): Promise<Result<Array<Result<Participant>>>>--><!--Device-sharing-function changePrivilege(      sharingResource: string,      participants: Array<Participant>    ): Promise<Result<Array<Result<Participant>>>>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -108,9 +104,9 @@ function changePrivilege(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
 **示例**
 
@@ -130,12 +126,11 @@ participants.push({
     shareable: false
   },
   attachInfo: ''
-})
+});
 
 cloudData.sharing.changePrivilege('sharing_resource_test', participants).then((result) => {
   console.info(`change privilege succeeded, result: ${result}`);
-}).catch((err) => {
+}).catch((err: BusinessError) => {
   console.error(`change privilege failed, code is ${err.code},message is ${err.message}`);
-})
+});
 ```
-

@@ -2,9 +2,7 @@
 
 某个应用或设备的访问记录。
 
-**起始版本：** 23
-
-<!--Device-privacyManager-interface BundleUsedRecord--><!--Device-privacyManager-interface BundleUsedRecord-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -26,9 +24,7 @@ bundleName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-BundleUsedRecord-bundleName: string--><!--Device-BundleUsedRecord-bundleName: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -44,9 +40,7 @@ deviceId: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-BundleUsedRecord-deviceId: string--><!--Device-BundleUsedRecord-deviceId: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -64,8 +58,6 @@ deviceName?: string
 
 **起始版本：** 24
 
-<!--Device-BundleUsedRecord-deviceName?: string--><!--Device-BundleUsedRecord-deviceName?: string-End-->
-
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
@@ -80,9 +72,7 @@ isRemote: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-BundleUsedRecord-isRemote: boolean--><!--Device-BundleUsedRecord-isRemote: boolean-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -98,9 +88,7 @@ permissionRecords: Array<PermissionUsedRecord>
 
 **类型：** Array&lt;[PermissionUsedRecord](arkts-ability-privacymanager-permissionusedrecord-i-sys.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-BundleUsedRecord-permissionRecords: Array<PermissionUsedRecord>--><!--Device-BundleUsedRecord-permissionRecords: Array<PermissionUsedRecord>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -109,18 +97,15 @@ permissionRecords: Array<PermissionUsedRecord>
 ## tokenId
 
 ```TypeScript
-tokenId: int
+tokenId: number
 ```
 
 使用权限的应用身份标识。分布式场景下该字段无效，需结合deviceId和deviceName识别来源设备。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-BundleUsedRecord-tokenId: int--><!--Device-BundleUsedRecord-tokenId: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
-

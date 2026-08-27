@@ -4,7 +4,6 @@
 
 ```TypeScript
 import { dataShare } from '@kit.ArkData';
-import { dataSharePredicates } from '@kit.ArkData';
 ```
 
 ## createDataProxyHandle
@@ -15,11 +14,9 @@ function createDataProxyHandle(): Promise<DataProxyHandle>
 
 创建DataProxyHandle实例。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-dataShare-function createDataProxyHandle(): Promise<DataProxyHandle>--><!--Device-dataShare-function createDataProxyHandle(): Promise<DataProxyHandle>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -51,4 +48,3 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-

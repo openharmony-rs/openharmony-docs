@@ -12,15 +12,13 @@ import { errorManager } from '@kit.AbilityKit';
 function setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver): ResourceUsageObserver
 ```
 
-设置资源占用观察者，应用资源超基线时，支持链式回调，返回上一次注册的资源占用观察者，仅限主线程调用。 如果传入非法参数或在子线程调用，将抛出错误码并返回undefined，因此建议使用try-catch逻辑进行处理。 若接口参数为空，后续注册的观察者将无法与前序已注册的观察者建立关联，从而中断链式调用。
+设置资源占用观察者，应用资源超基线时，支持链式回调，返回上一次注册的资源占用观察者，仅限主线程调用。如果传入非法参数或在子线程调用，将抛出错误码并返回undefined，因此建议使用try-catch逻辑进行处理。若接口参数为空，后续注册的观察者将无法与前序已注册的观察者建立关联，从而中断链式调用。
 
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
-
-<!--Device-errorManager-function setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver): ResourceUsageObserver--><!--Device-errorManager-function setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver): ResourceUsageObserver-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -44,8 +42,6 @@ function setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver
 
 **示例**
 
-ArkTS-Dyn示例:
-
 ```TypeScript
 import { errorManager } from '@kit.AbilityKit';
 import { process } from '@kit.ArkTS';
@@ -64,22 +60,3 @@ const resourceUsageObserver: errorManager.ResourceUsageObserver = (resourceType,
 };
 oldObserver = errorManager.setDefaultResourceUsageObserver(resourceUsageObserver);
 ```
-
-ArkTS-Sta示例:
-
-```TypeScript
-'use static'
-let oldObserver: errorManager.ResourceUsageObserver;
-const resourceUsageObserver: errorManager.ResourceUsageObserver = (resourceType: errorManager.ResourceType,
-  resourceSize: long, detailInfo?: Record<string, long>) => {
-  // 自定义的resourceUsageObserver实现逻辑
-  console.info('[Observer] Resource usage observer.');
-  if (oldObserver) {
-    oldObserver(resourceType, resourceSize, detailInfo);
-  } else {
-    console.error('[Observer] oldObserver is null')
-  }
-};
-oldObserver = errorManager.setDefaultResourceUsageObserver(resourceUsageObserver);
-```
-

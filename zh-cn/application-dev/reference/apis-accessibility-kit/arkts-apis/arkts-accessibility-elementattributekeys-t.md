@@ -8,9 +8,14 @@ export type ElementAttributeKeys = keyof ElementAttributeValues
 
 **起始版本：** 10
 
-<!--Device-unnamed-export type ElementAttributeKeys = keyof ElementAttributeValues--><!--Device-unnamed-export type ElementAttributeKeys = keyof ElementAttributeValues-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **属性类型：** keyof ElementAttributeValues
 
+**示例**
+
+```TypeScript
+import { ElementAttributeKeys } from '@kit.AccessibilityKit';
+
+let elementAttributeKeys: ElementAttributeKeys;
+```

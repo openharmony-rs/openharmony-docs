@@ -2,9 +2,7 @@
 
 矩形区域高度规格枚举。
 
-**起始版本：** 23
-
-<!--Device-text-enum RectHeightStyle--><!--Device-text-enum RectHeightStyle-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -16,11 +14,9 @@ TIGHT = 0
 
 与字形紧贴。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RectHeightStyle-TIGHT = 0--><!--Device-RectHeightStyle-TIGHT = 0-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -32,11 +28,9 @@ MAX = 1
 
 扩展高度，以匹配所有行上最高矩形的位置。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RectHeightStyle-MAX = 1--><!--Device-RectHeightStyle-MAX = 1-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -48,11 +42,9 @@ INCLUDE_LINE_SPACE_MIDDLE = 2
 
 每个矩形的顶部和底部将覆盖行上方和行下方的一半空间。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RectHeightStyle-INCLUDE_LINE_SPACE_MIDDLE = 2--><!--Device-RectHeightStyle-INCLUDE_LINE_SPACE_MIDDLE = 2-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -64,11 +56,9 @@ INCLUDE_LINE_SPACE_TOP = 3
 
 行间距将被添加到矩形的顶部。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RectHeightStyle-INCLUDE_LINE_SPACE_TOP = 3--><!--Device-RectHeightStyle-INCLUDE_LINE_SPACE_TOP = 3-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -80,11 +70,9 @@ INCLUDE_LINE_SPACE_BOTTOM = 4
 
 行间距将被添加到矩形的底部。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RectHeightStyle-INCLUDE_LINE_SPACE_BOTTOM = 4--><!--Device-RectHeightStyle-INCLUDE_LINE_SPACE_BOTTOM = 4-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -96,11 +84,8 @@ STRUT = 5
 
 高度按照文本的样式设置。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-RectHeightStyle-STRUT = 5--><!--Device-RectHeightStyle-STRUT = 5-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
-

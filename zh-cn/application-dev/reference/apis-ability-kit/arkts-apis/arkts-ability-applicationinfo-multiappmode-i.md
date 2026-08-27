@@ -2,25 +2,21 @@
 
 表示[应用多开](../../../quick-start/multiInstance.md)模式。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface MultiAppMode--><!--Device-unnamed-export interface MultiAppMode-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 ## maxCount
 
 ```TypeScript
-readonly maxCount: int
+readonly maxCount: number
 ```
 
 应用多开的最大个数。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-MultiAppMode-readonly maxCount: int--><!--Device-MultiAppMode-readonly maxCount: int-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -34,9 +30,6 @@ readonly multiAppModeType: bundleManager.MultiAppModeType
 
 **类型：** bundleManager.MultiAppModeType
 
-**起始版本：** 23
-
-<!--Device-MultiAppMode-readonly multiAppModeType: bundleManager.MultiAppModeType--><!--Device-MultiAppMode-readonly multiAppModeType: bundleManager.MultiAppModeType-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-

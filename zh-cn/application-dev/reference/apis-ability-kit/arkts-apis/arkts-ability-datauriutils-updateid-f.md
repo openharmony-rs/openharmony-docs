@@ -9,14 +9,12 @@ import { dataUriUtils } from '@kit.AbilityKit';
 ## updateId
 
 ```TypeScript
-function updateId(uri: string, id: double): string
+function updateId(uri: string, id: number): string
 ```
 
 更新指定uri中的ID。
 
-**起始版本：** 23
-
-<!--Device-dataUriUtils-function updateId(uri: string, id: double): string--><!--Device-dataUriUtils-function updateId(uri: string, id: double): string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -25,7 +23,7 @@ function updateId(uri: string, id: double): string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uri | string | 是 | 表示uri对象 |
-| id | double | 是 | 表示要更新的ID |
+| id | number | 是 | 表示要更新的ID |
 
 **返回值：**
 
@@ -53,7 +51,6 @@ try {
   );
   console.info(`update id with the uri is: ${uri}`);
 } catch (err) {
-  console.error(`update id err, code: ${(err as BusinessError).code}, msg: ${(err as BusinessError).message}`);
+  console.error(`update id err, code: ${JSON.stringify((err as BusinessError).code)}, msg: ${JSON.stringify((err as BusinessError).message)}`);
 }
 ```
-

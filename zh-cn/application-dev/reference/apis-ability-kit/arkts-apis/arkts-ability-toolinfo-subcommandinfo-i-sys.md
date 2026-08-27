@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-unnamed-export interface SubCommandInfo--><!--Device-unnamed-export interface SubCommandInfo-End-->
-
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -23,8 +21,6 @@ readonly description: string
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SubCommandInfo-readonly description: string--><!--Device-SubCommandInfo-readonly description: string-End-->
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -44,8 +40,6 @@ readonly eventSchemas?: Record<string, Record<string, Object>>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SubCommandInfo-readonly eventSchemas?: Record<string, Record<string, Object>>--><!--Device-SubCommandInfo-readonly eventSchemas?: Record<string, Record<string, Object>>-End-->
-
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -63,8 +57,6 @@ CLI工具支持的自定义事件类型列表。所有事件类型必须为唯�
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SubCommandInfo-readonly eventTypes?: Array<string>--><!--Device-SubCommandInfo-readonly eventTypes?: Array<string>-End-->
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -84,8 +76,6 @@ readonly inputSchema: Record<string, Object>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SubCommandInfo-readonly inputSchema: Record<string, Object>--><!--Device-SubCommandInfo-readonly inputSchema: Record<string, Object>-End-->
-
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -103,8 +93,6 @@ readonly outputSchema: Record<string, Object>
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SubCommandInfo-readonly outputSchema: Record<string, Object>--><!--Device-SubCommandInfo-readonly outputSchema: Record<string, Object>-End-->
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -124,9 +112,6 @@ readonly requirePermissions?: Array<string>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SubCommandInfo-readonly requirePermissions?: Array<string>--><!--Device-SubCommandInfo-readonly requirePermissions?: Array<string>-End-->
-
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
 **系统接口：** 此接口为系统接口。
-

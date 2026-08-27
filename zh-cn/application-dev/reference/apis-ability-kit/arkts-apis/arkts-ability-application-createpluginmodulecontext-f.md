@@ -14,11 +14,9 @@ export function createPluginModuleContext(context: Context, pluginBundleName: st
 
 根据入参Context、指定的插件包名和插件模块名，创建本应用下插件的Context，用于获取插件的基本信息。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-application-export function createPluginModuleContext(context: Context, pluginBundleName: string, pluginModuleName: string): Promise<Context>--><!--Device-application-export function createPluginModuleContext(context: Context, pluginBundleName: string, pluginModuleName: string): Promise<Context>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -39,7 +37,7 @@ export function createPluginModuleContext(context: Context, pluginBundleName: st
 **示例**
 
 ```TypeScript
-import { AbilityConstant, UIAbility, application, common, Want, Context } from '@kit.AbilityKit';
+import { AbilityConstant, UIAbility, application, common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
@@ -51,7 +49,7 @@ export default class EntryAbility extends UIAbility {
           moduleContext = data;
           console.info('createPluginModuleContext success!');
         })
-        .catch((error: Error) => {
+        .catch((error: BusinessError) => {
           let code: number = (error as BusinessError).code;
           let message: string = (error as BusinessError).message;
           console.error(`createPluginModuleContext failed, error.code: ${code}, error.message: ${message}`);
@@ -64,4 +62,3 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-

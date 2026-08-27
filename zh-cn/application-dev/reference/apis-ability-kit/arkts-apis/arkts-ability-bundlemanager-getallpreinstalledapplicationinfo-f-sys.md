@@ -14,11 +14,9 @@ function getAllPreinstalledApplicationInfo(): Promise<Array<PreinstalledApplicat
 
 获取所有预置应用信息。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
-
-<!--Device-bundleManager-function getAllPreinstalledApplicationInfo(): Promise<Array<PreinstalledApplicationInfo>>--><!--Device-bundleManager-function getAllPreinstalledApplicationInfo(): Promise<Array<PreinstalledApplicationInfo>>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -28,7 +26,7 @@ function getAllPreinstalledApplicationInfo(): Promise<Array<PreinstalledApplicat
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;PreinstalledApplicationInfo&gt;&gt; | Promise对象，返回Array&lt;PreinstalledApplicationInfo&gt;。 |
+| Promise & lt;Array & lt;PreinstalledApplicationInfo & gt; & gt; | Promise对象，返回Array & lt;PreinstalledApplicationInfo & gt;。 |
 
 **错误码：**
 
@@ -38,8 +36,6 @@ function getAllPreinstalledApplicationInfo(): Promise<Array<PreinstalledApplicat
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 
 **示例**
-
-ArkTS-Dyn示例:
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';
@@ -57,25 +53,3 @@ try {
   hilog.error(0x0000, 'testTag', 'getAllPreinstalledApplicationInfo failed: %{public}s', message);
 }
 ```
-
-ArkTS-Sta示例:
-
-```TypeScript
-'use static'
-
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-try {
-  bundleManager.getAllPreinstalledApplicationInfo().then((data: Array<bundleManager.PreinstalledApplicationInfo>)=>{
-    hilog.info(0x0000, 'testTag', 'getAllPreinstalledApplicationInfo success, Data: %{public}s', JSON.stringify(data));
-  }).catch((err: Error) => {
-    hilog.error(0x0000, 'testTag', 'getAllPreinstalledApplicationInfo failed. Cause: %{public}s', (err as BusinessError).message);
-  });
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getAllPreinstalledApplicationInfo failed: %{public}s', message);
-}
-```
-

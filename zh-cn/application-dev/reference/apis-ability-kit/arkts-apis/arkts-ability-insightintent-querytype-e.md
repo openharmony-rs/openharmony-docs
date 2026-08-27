@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-insightIntent-enum QueryType--><!--Device-insightIntent-enum QueryType-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## ALL
@@ -21,8 +19,6 @@ ALL = 'all'
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-QueryType-ALL = 'all'--><!--Device-QueryType-ALL = 'all'-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -40,7 +36,4 @@ BY_PROPERTY = 'byProperty'
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-QueryType-BY_PROPERTY = 'byProperty'--><!--Device-QueryType-BY_PROPERTY = 'byProperty'-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-

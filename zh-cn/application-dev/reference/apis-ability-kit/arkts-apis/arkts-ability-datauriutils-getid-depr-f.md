@@ -19,8 +19,6 @@ function getId(uri: string): number
 
 **替代接口：** [getId](arkts-ability-datauriutils-getid-f.md)
 
-<!--Device-dataUriUtils-function getId(uri: string): number--><!--Device-dataUriUtils-function getId(uri: string): number-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
@@ -42,4 +40,3 @@ import dataUriUtils from '@ohos.ability.dataUriUtils';
 
 let id = dataUriUtils.getId('com.example.dataUriUtils/1221');
 ```
-

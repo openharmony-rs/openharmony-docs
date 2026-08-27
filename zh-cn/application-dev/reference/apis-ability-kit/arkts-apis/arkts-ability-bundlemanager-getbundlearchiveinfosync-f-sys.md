@@ -9,16 +9,14 @@ import { bundleManager } from '@kit.AbilityKit';
 ## getBundleArchiveInfoSync
 
 ```TypeScript
-function getBundleArchiveInfoSync(hapFilePath: string, bundleFlags: int): BundleInfo
+function getBundleArchiveInfoSync(hapFilePath: string, bundleFlags: number): BundleInfo
 ```
 
 以同步方法根据给定的hapFilePath和bundleFlags获取BundleInfo对象。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
-
-<!--Device-bundleManager-function getBundleArchiveInfoSync(hapFilePath: string, bundleFlags: int): BundleInfo--><!--Device-bundleManager-function getBundleArchiveInfoSync(hapFilePath: string, bundleFlags: int): BundleInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -29,7 +27,7 @@ function getBundleArchiveInfoSync(hapFilePath: string, bundleFlags: int): Bundle
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | hapFilePath | string | 是 | 表示存储HAP的路径，路径应该是当前应用程序数据目录的相对路径。 |
-| bundleFlags | int | 是 | 表示用于指定要返回的BundleInfo对象中包含的信息的标志。 |
+| bundleFlags | number | 是 | 表示用于指定要返回的BundleInfo对象中包含的信息的标志。 |
 
 **返回值：**
 
@@ -41,10 +39,10 @@ function getBundleArchiveInfoSync(hapFilePath: string, bundleFlags: int): Bundle
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [17700022](../errorcode-bundle.md#17700022-输入的待解析源文件无效) | The hapFilePath is invalid. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [17700022](../errorcode-bundle.md#17700022-输入的待解析源文件无效) | The hapFilePath is invalid. |
 
 **示例**
 
@@ -64,4 +62,3 @@ try {
   hilog.error(0x0000, 'testTag', 'getBundleArchiveInfoSync failed. Cause: %{public}s', message);
 }
 ```
-

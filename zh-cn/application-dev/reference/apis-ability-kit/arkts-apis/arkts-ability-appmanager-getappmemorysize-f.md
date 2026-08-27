@@ -9,16 +9,14 @@ import { appManager } from '@kit.AbilityKit';
 ## getAppMemorySize
 
 ```TypeScript
-function getAppMemorySize(): Promise<int>
+function getAppMemorySize(): Promise<number>
 ```
 
 获取当前应用程序可以使用的最大内存（RAM）值。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-appManager-function getAppMemorySize(): Promise<int>--><!--Device-appManager-function getAppMemorySize(): Promise<int>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -26,7 +24,7 @@ function getAppMemorySize(): Promise<int>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;int&gt; | 当前应用程序可以使用的最大内存（RAM）值，可根据此值进行错误处理或其他自定义处理，单位是M。使用Promise异步回调。 |
+| Promise & lt;number & gt; | 当前应用程序可以使用的最大内存（RAM）值，可根据此值进行错误处理或其他自定义处理，单位是M。使用Promise异步回调。 |
 
 **错误码：**
 
@@ -41,9 +39,8 @@ import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 appManager.getAppMemorySize().then((data) => {
-  console.info(`The size of app memory is: ${data}`);
-}).catch((err: Error) => {
-  let error = err as BusinessError;
+  console.info(`The size of app memory is: ${JSON.stringify(data)}`);
+}).catch((error: BusinessError) => {
   console.error(`code: ${error.code}, msg:${error.message}`);
 });
 ```
@@ -52,16 +49,14 @@ appManager.getAppMemorySize().then((data) => {
 ## getAppMemorySize
 
 ```TypeScript
-function getAppMemorySize(callback: AsyncCallback<int>): void
+function getAppMemorySize(callback: AsyncCallback<number>): void
 ```
 
 获取当前应用程序可以使用的最大内存（RAM）值。使用callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-appManager-function getAppMemorySize(callback: AsyncCallback<int>): void--><!--Device-appManager-function getAppMemorySize(callback: AsyncCallback<int>): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -69,7 +64,7 @@ function getAppMemorySize(callback: AsyncCallback<int>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | 回调函数。当接口调用成功，err为undefined，data为当前应用程序可以使用的最大内存（RAM）值，单位是M；否则为错误对象。可根据此值进行错误处理或 其他自定义处理。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当接口调用成功，err为undefined，data为当前应用程序可以使用的最大内存（RAM）值，单位是M；否则为错误对象。可根据此值进行错误处理或 其他自定义处理。 |
 
 **错误码：**
 
@@ -89,6 +84,5 @@ appManager.getAppMemorySize((err, data) => {
   } else {
     console.info(`The size of app memory is: ${JSON.stringify(data)}`);
   }
-})
+});
 ```
-

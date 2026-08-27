@@ -2,9 +2,7 @@
 
 appManager模块提供App管理的能力，包括查询当前是否处于稳定性测试场景、查询是否为ram受限设备、获取应用程序的内存大小、获取有关运行进程的信息等。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare namespace appManager--><!--Device-unnamed-declare namespace appManager-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -30,14 +28,10 @@ import { appManager } from '@kit.AbilityKit';
 | [isRunningInStabilityTest](arkts-ability-appmanager-isrunninginstabilitytest-f.md) | 查询当前系统是否处于稳定性测试场景。使用callback异步回调。 |
 | [isRunningInStabilityTest](arkts-ability-appmanager-isrunninginstabilitytest-f.md) | 查询当前系统是否处于稳定性测试场景。使用Promise异步回调。 |
 | [killProcessesByBundleName](arkts-ability-appmanager-killprocessesbybundlename-f.md) | 终止指定应用包名的应用进程。使用Promise异步回调。 |
-| [offApplicationStateChange](arkts-ability-appmanager-offapplicationstatechange-f.md) | 注销应用状态监听器。使用callback异步回调。 |
-| [offApplicationStateChange](arkts-ability-appmanager-offapplicationstatechange-f.md) | 注销应用状态监听器。使用Promise异步回调。 |
-| [off_applicationState](arkts-ability-appmanager-offapplicationstate-f.md#offapplicationstate) | 注销应用状态监听器。使用callback异步回调。 |
-| [off_applicationState](arkts-ability-appmanager-offapplicationstate-f.md#offapplicationstate) | 注销应用状态监听器。使用Promise异步回调。 |
-| [onApplicationStateChange](arkts-ability-appmanager-onapplicationstatechange-f.md) | 注册所有应用程序的状态监听器。 |
-| [onApplicationStateChange](arkts-ability-appmanager-onapplicationstatechange-f.md) | 注册指定应用程序的状态监听器。 |
-| [on_applicationState](arkts-ability-appmanager-onapplicationstate-f.md#onapplicationstate) | 注册所有应用程序的状态监听器。 |
-| [on_applicationState](arkts-ability-appmanager-onapplicationstate-f.md#onapplicationstate) | 注册指定应用程序的状态监听器。 |
+| [off](arkts-ability-appmanager-off-f.md#offapplicationstate) | 注销应用状态监听器。使用callback异步回调。 |
+| [off](arkts-ability-appmanager-off-f.md#offapplicationstate) | 注销应用状态监听器。使用Promise异步回调。 |
+| [on](arkts-ability-appmanager-on-f.md#onapplicationstate) | 注册所有应用程序的状态监听器。 |
+| [on](arkts-ability-appmanager-on-f.md#onapplicationstate) | 注册指定应用程序的状态监听器。 |
 
 <!--Del-->
 ### 函数（系统接口）
@@ -64,22 +58,17 @@ import { appManager } from '@kit.AbilityKit';
 | [isApplicationRunning](arkts-ability-appmanager-isapplicationrunning-f-sys.md) | 查询所有用户下指定包名的应用是否正在运行。使用callback异步回调。 |
 | [isSharedBundleRunning](arkts-ability-appmanager-issharedbundlerunning-f-sys.md) | 检查共享库是否正在使用。使用Promise异步回调。 |
 | [isSharedBundleRunning](arkts-ability-appmanager-issharedbundlerunning-f-sys.md) | 检查共享库是否正在使用。使用callback异步回调。 |
-| [killProcessWithAccount](arkts-ability-appmanager-killprocesswithaccount-f-sys.md) | 终止account进程。使用Promise异步回调。 |
-| [killProcessWithAccount](arkts-ability-appmanager-killprocesswithaccount-f-sys.md) | 终止account进程。使用Promise异步回调。 |
-| [killProcessWithAccount](arkts-ability-appmanager-killprocesswithaccount-f-sys.md) | 终止account进程。使用callback异步回调。 |
 | [killProcessesByBundleName](arkts-ability-appmanager-killprocessesbybundlename-f-sys.md) | 通过Bundle名称终止进程。使用Promise异步回调。 |
 | [killProcessesByBundleName](arkts-ability-appmanager-killprocessesbybundlename-f-sys.md) | 通过Bundle名称终止进程。使用callback异步回调。 |
 | [killProcessesInBatch](arkts-ability-appmanager-killprocessesinbatch-f-sys.md) | 批量终止进程。使用Promise异步回调。 该接口在PC/2in1中可正常调用，在其他设备类型中返回801错误码。 **需要权限**：ohos.permission.KILL_APP_PROCESSES |
-| [offAbilityFirstFrameStateChange](arkts-ability-appmanager-offabilityfirstframestatechange-f-sys.md) | 取消注册监听Ability首帧绘制完成事件观察者对象。 |
-| [offAppForegroundStateChange](arkts-ability-appmanager-offappforegroundstatechange-f-sys.md) | 注销应用启动和退出的监听器。 |
-| [off_abilityFirstFrameState](arkts-ability-appmanager-offabilityfirstframestate-f-sys.md#offabilityfirstframestate) | 取消注册监听Ability首帧绘制完成事件观察者对象。 |
-| [off_appForegroundState](arkts-ability-appmanager-offappforegroundstate-f-sys.md#offappforegroundstate) | 注销应用启动和退出的监听器。 |
-| [onAbilityFirstFrameStateChange](arkts-ability-appmanager-onabilityfirstframestatechange-f-sys.md) | 注册监听Ability首帧绘制完成事件观察者对象，可用于系统应用监听Ability首帧绘制事件。 |
-| [onAppForegroundStateChange](arkts-ability-appmanager-onappforegroundstatechange-f-sys.md) | 注册应用启动和退出的监听器，可用于系统应用监听所有应用的启动和退出。 |
-| [onApplicationStateChange](arkts-ability-appmanager-onapplicationstatechange-f-sys.md) | 注册应用程序的状态监听器，并通过设置过滤条件来筛选所需监听的应用生命周期变化事件。 |
-| [on_abilityFirstFrameState](arkts-ability-appmanager-onabilityfirstframestate-f-sys.md#onabilityfirstframestate) | 注册监听Ability首帧绘制完成事件观察者对象，可用于系统应用监听Ability首帧绘制事件。 |
-| [on_appForegroundState](arkts-ability-appmanager-onappforegroundstate-f-sys.md#onappforegroundstate) | 注册应用启动和退出的监听器，可用于系统应用监听所有应用的启动和退出。 |
-| [on_applicationState](arkts-ability-appmanager-onapplicationstate-f-sys.md#onapplicationstate) | 注册应用程序的状态监听器，并通过设置过滤条件来筛选所需监听的应用生命周期变化事件。 |
+| [killProcessWithAccount](arkts-ability-appmanager-killprocesswithaccount-f-sys.md) | 终止account进程。使用Promise异步回调。 |
+| [killProcessWithAccount](arkts-ability-appmanager-killprocesswithaccount-f-sys.md) | 终止account进程。使用Promise异步回调。 |
+| [killProcessWithAccount](arkts-ability-appmanager-killprocesswithaccount-f-sys.md) | 终止account进程。使用callback异步回调。 |
+| off | 注销应用启动和退出的监听器。 |
+| off | 取消注册监听Ability首帧绘制完成事件观察者对象。 |
+| on | 注册应用程序的状态监听器，并通过设置过滤条件来筛选所需监听的应用生命周期变化事件。 |
+| on | 注册应用启动和退出的监听器，可用于系统应用监听所有应用的启动和退出。 |
+| on | 注册监听Ability首帧绘制完成事件观察者对象，可用于系统应用监听Ability首帧绘制事件。 |
 | [preloadApplication](arkts-ability-appmanager-preloadapplication-f-sys.md) | 预加载应用进程。接口返回成功并不代表预加载成功，具体结果以目标应用进程是否创建成功为准。使用Promise异步回调。 |
 | [setKeepAliveForAppServiceExtension](arkts-ability-appmanager-setkeepaliveforappserviceextension-f-sys.md) | 为AppServiceExtensionAbility设置保活或取消保活。使用Promise异步回调。 该接口在PC/2in1中可正常调用，在其他设备类型中返回801错误码。 |
 | [setKeepAliveForBundle](arkts-ability-appmanager-setkeepaliveforbundle-f-sys.md) | 为指定用户下的应用设置或取消保活。使用Promise异步回调。 从API version 18开始，该接口仅在2in1和Wearable设备上生效。对于API version 18之前版本，该接口仅在2in1设备上生效。其他情况下调用该接口将返回错误码801。 |
@@ -91,7 +80,7 @@ import { appManager } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [AppStateFilter](arkts-ability-appmanager-appstatefilter-i-sys.md) | 应用生命周期变化事件的过滤器，可作为 [on](arkts-ability-appmanager-onapplicationstate-f.md#onapplicationstate)的参数用 于筛选所需监听的应用生命周期变化事件。 |
+| [AppStateFilter](arkts-ability-appmanager-appstatefilter-i-sys.md) | 应用生命周期变化事件的过滤器，可作为 [on](arkts-ability-appmanager-on-f.md#onapplicationstate)的参数用 于筛选所需监听的应用生命周期变化事件。 |
 | [KeepAliveBundleInfo](arkts-ability-appmanager-keepalivebundleinfo-i-sys.md) | 定义应用保活信息，可以通过[getKeepAliveBundles](arkts-ability-appmanager-getkeepalivebundles-f-sys.md)或 [getKeepAliveAppServiceExtensions](arkts-ability-appmanager-getkeepaliveappserviceextensions-f-sys.md)获取。 |
 <!--DelEnd-->
 
@@ -122,8 +111,8 @@ import { appManager } from '@kit.AbilityKit';
 | 名称 | 说明 |
 | --- | --- |
 | [AbilityStateData](arkts-ability-appmanager-abilitystatedata-t.md) | Ability状态信息。 |
-| [AppStateData](arkts-ability-appmanager-appstatedata-t.md) | 应用状态信息。 |
 | [ApplicationStateObserver](arkts-ability-appmanager-applicationstateobserver-t.md) | 应用状态监听器。 |
+| [AppStateData](arkts-ability-appmanager-appstatedata-t.md) | 应用状态信息。 |
 | [ProcessData](arkts-ability-appmanager-processdata-t.md) | 进程数据。 |
 | [ProcessInformation](arkts-ability-appmanager-processinformation-t.md) | 进程信息。 |
 
@@ -137,4 +126,3 @@ import { appManager } from '@kit.AbilityKit';
 | [AppForegroundStateObserver](arkts-ability-appmanager-appforegroundstateobserver-t-sys.md) | 应用启动和退出的状态监听。 |
 | [RunningMultiAppInfo](arkts-ability-appmanager-runningmultiappinfo-t-sys.md) | 应用多开在运行态的结构信息。 |
 <!--DelEnd-->
-

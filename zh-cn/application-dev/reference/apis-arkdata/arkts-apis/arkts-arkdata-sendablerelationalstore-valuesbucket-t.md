@@ -8,9 +8,6 @@ type ValuesBucket = collections.Map<string, ValueType>
 
 **起始版本：** 12
 
-<!--Device-sendableRelationalStore-type ValuesBucket = collections.Map<string, ValueType>--><!--Device-sendableRelationalStore-type ValuesBucket = collections.Map<string, ValueType>-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**属性类型：** collections.Map<string, ValueType>
-
+**属性类型：** collections.Map&lt;string, ValueType&gt;

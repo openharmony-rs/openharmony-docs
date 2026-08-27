@@ -1,10 +1,9 @@
 # AccessibilityExtensionAbility
 
-AccessibilityExtensionAbility基于ExtensionAbility框架，提供辅助功能扩展业务的能力。
+AccessibilityExtensionAbility基于ExtensionAbility框架，提供无障碍扩展业务的能力，包括连接无障碍服务、断开无障碍服务、处理无障碍事件和处理无障碍按键事件等。  
+**生命周期流程：** onAccessibilityConnect（连接回调，用于初始化）→ onAccessibilityEventInfo/onAccessibilityKeyEvent（处理无障碍事件和按键事件）→ onAccessibilityDisconnect（断开回调，用于资源回收）。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare class AccessibilityExtensionAbility--><!--Device-unnamed-declare class AccessibilityExtensionAbility-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -12,7 +11,6 @@ AccessibilityExtensionAbility基于ExtensionAbility框架，提供辅助功能�
 
 ```TypeScript
 import { AccessibilityExtensionAbility, AccessibilityElement, AccessibilityExtensionContext, ElementAttributeKeys, ElementAttributeValues, FocusDirection, FocusType, Rect, WindowType, AccessibilityEvent, AccessibilityEventInfo, Parameter, FocusRule, FocusCondition, FocusMoveResult, AccessibilityVirtualNode, TouchPosition } from '@kit.AccessibilityKit';
-import { AccessibilityExtensionAbility, AccessibilityElement, AccessibilityExtensionContext, FocusDirection, Rect, WindowType, AccessibilityEventInfo, Parameter, FocusRule, FocusCondition, FocusMoveResult, AccessibilityVirtualNode, TouchPosition } from '@kit.AccessibilityKit';
 ```
 
 ## onAccessibilityEvent
@@ -26,8 +24,6 @@ onAccessibilityEvent(event: AccessibilityEvent): void
 **起始版本：** 9
 
 **废弃版本：** 12
-
-<!--Device-AccessibilityExtensionAbility-onAccessibilityEvent(event: AccessibilityEvent): void--><!--Device-AccessibilityExtensionAbility-onAccessibilityEvent(event: AccessibilityEvent): void-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -64,8 +60,6 @@ onConnect(): void
 
 **废弃版本：** 12
 
-<!--Device-AccessibilityExtensionAbility-onConnect(): void--><!--Device-AccessibilityExtensionAbility-onConnect(): void-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **示例**
@@ -91,8 +85,6 @@ onDisconnect(): void
 **起始版本：** 9
 
 **废弃版本：** 12
-
-<!--Device-AccessibilityExtensionAbility-onDisconnect(): void--><!--Device-AccessibilityExtensionAbility-onDisconnect(): void-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -120,8 +112,6 @@ onKeyEvent(keyEvent: KeyEvent): boolean
 
 **废弃版本：** 12
 
-<!--Device-AccessibilityExtensionAbility-onKeyEvent(keyEvent: KeyEvent): boolean--><!--Device-AccessibilityExtensionAbility-onKeyEvent(keyEvent: KeyEvent): boolean-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
@@ -134,7 +124,7 @@ onKeyEvent(keyEvent: KeyEvent): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 返回true表示此事件被消费，不会继续传递。 <br>返回false表示此事件未被消费，会继续传递。 |
+| boolean | 返回true表示此事件被消费，不会继续传递。 |
 
 **示例**
 
@@ -164,9 +154,6 @@ context: AccessibilityExtensionContext
 
 **类型：** [AccessibilityExtensionContext](arkts-accessibility-accessibilityextensioncontext-t.md)
 
-**起始版本：** 23
-
-<!--Device-AccessibilityExtensionAbility-context: AccessibilityExtensionContext--><!--Device-AccessibilityExtensionAbility-context: AccessibilityExtensionContext-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
-

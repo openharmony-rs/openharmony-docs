@@ -2,25 +2,21 @@
 
 描述应用包的身份信息。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface AppCloneIdentity--><!--Device-unnamed-export interface AppCloneIdentity-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 ## appIndex
 
 ```TypeScript
-readonly appIndex: int
+readonly appIndex: number
 ```
 
 应用包的分身索引信息。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AppCloneIdentity-readonly appIndex: int--><!--Device-AppCloneIdentity-readonly appIndex: int-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -34,9 +30,6 @@ readonly bundleName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AppCloneIdentity-readonly bundleName: string--><!--Device-AppCloneIdentity-readonly bundleName: string-End-->
+**起始版本：** 14
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-

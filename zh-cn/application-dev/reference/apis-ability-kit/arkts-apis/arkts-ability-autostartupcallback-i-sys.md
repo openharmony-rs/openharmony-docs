@@ -2,9 +2,7 @@
 
 应用设置为开机自启动时的回调函数。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface AutoStartupCallback--><!--Device-unnamed-export interface AutoStartupCallback-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -18,11 +16,9 @@ onAutoStartupOff(info: AutoStartupInfo): void
 
 取消应用开机自启动时调用。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AutoStartupCallback-onAutoStartupOff(info: AutoStartupInfo): void--><!--Device-AutoStartupCallback-onAutoStartupOff(info: AutoStartupInfo): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -68,11 +64,9 @@ onAutoStartupOn(info: AutoStartupInfo): void
 
 应用设置为开机自启动时调用。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AutoStartupCallback-onAutoStartupOn(info: AutoStartupInfo): void--><!--Device-AutoStartupCallback-onAutoStartupOn(info: AutoStartupInfo): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -109,4 +103,3 @@ try {
   console.error(`autoStartupManager.on failed, err code: ${code}, err msg: ${msg}.`);
 }
 ```
-

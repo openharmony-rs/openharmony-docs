@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-cliManager-enum SessionStatus--><!--Device-cliManager-enum SessionStatus-End-->
-
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -21,8 +19,6 @@ RUNNING = 'running'
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SessionStatus-RUNNING = 'running'--><!--Device-SessionStatus-RUNNING = 'running'-End-->
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -40,8 +36,6 @@ COMPLETED = 'completed'
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SessionStatus-COMPLETED = 'completed'--><!--Device-SessionStatus-COMPLETED = 'completed'-End-->
-
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -58,9 +52,6 @@ FAILED = 'failed'
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SessionStatus-FAILED = 'failed'--><!--Device-SessionStatus-FAILED = 'failed'-End-->
-
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
 **系统接口：** 此接口为系统接口。
-

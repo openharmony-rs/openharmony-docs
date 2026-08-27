@@ -15,13 +15,11 @@ export function createPluginModuleContextForHostBundle(context: Context, pluginB
 
 根据入参Context、插件包名、插件模块名和安装插件的应用包名，创建对应插件的Context，用于获取插件的基本信息。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-application-export function createPluginModuleContextForHostBundle(context: Context, pluginBundleName: string, pluginModuleName: string,    hostBundleName: string): Promise<Context>--><!--Device-application-export function createPluginModuleContextForHostBundle(context: Context, pluginBundleName: string, pluginModuleName: string,    hostBundleName: string): Promise<Context>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -52,23 +50,20 @@ export function createPluginModuleContextForHostBundle(context: Context, pluginB
 **示例**
 
 ```TypeScript
-import { AbilityConstant, UIAbility, application, common, Context, Want } from '@kit.AbilityKit';
+import { AbilityConstant, UIAbility, application, common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     let moduleContext: common.Context;
     try {
-      application.createPluginModuleContextForHostBundle(this.context, 'com.example.pluginBundleName',
-        'pluginModuleName', 'com.example.hostBundleName')
+      application.createPluginModuleContextForHostBundle(this.context, 'com.example.pluginBundleName', 'pluginModuleName', 'com.example.hostBundleName')
         .then((data: common.Context) => {
           moduleContext = data;
           console.info('createPluginModuleContextForHostBundle success!');
         })
-        .catch((error: Error) => {
-          let code: number = (error as BusinessError).code;
-          let message: string = (error as BusinessError).message;
-          console.error(`createPluginModuleContextForHostBundle failed, error.code: ${code}, error.message: ${message}`);
+        .catch((error: BusinessError) => {
+          console.error(`createPluginModuleContextForHostBundle failed, error.code: ${error.code}, error.message: ${error.message}`);
         });
     } catch (error: BusinessError) {
       console.error(`createPluginModuleContextForHostBundle failed, error.code: ${error.code}, error.message: ${error.message}`);
@@ -76,4 +71,3 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-

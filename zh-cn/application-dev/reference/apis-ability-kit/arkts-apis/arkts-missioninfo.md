@@ -9,4 +9,3 @@
 | --- | --- |
 | [MissionInfo](arkts-ability-missioninfo-i-sys.md) | 表示任务的详细信息，可以通过 [getMissionInfo](arkts-ability-missionmanager-getmissioninfo-f-sys.md) 获取。 |
 <!--DelEnd-->
-

@@ -6,8 +6,6 @@
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-unnamed-declare namespace pluginBundleManager--><!--Device-unnamed-declare namespace pluginBundleManager-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 ## 导入模块
@@ -32,4 +30,3 @@ import { pluginBundleManager } from '@kit.AbilityKit';
 | --- | --- |
 | [PluginBundleInfo](arkts-ability-pluginbundlemanager-pluginbundleinfo-t.md) | 插件信息。 |
 | [PluginModuleInfo](arkts-ability-pluginbundlemanager-pluginmoduleinfo-t.md) | 插件的模块信息。 |
-

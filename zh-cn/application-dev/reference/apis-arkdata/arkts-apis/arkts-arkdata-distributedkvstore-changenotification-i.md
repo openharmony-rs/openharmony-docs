@@ -2,9 +2,7 @@
 
 数据变更时通知的对象，包括插入的数据、更新的数据、删除的数据和设备ID。
 
-**起始版本：** 23
-
-<!--Device-distributedKVStore-interface ChangeNotification--><!--Device-distributedKVStore-interface ChangeNotification-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -24,11 +22,9 @@ deleteEntries: Entry[]
 
 **类型：** Entry[]
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ChangeNotification-deleteEntries: Entry[]--><!--Device-ChangeNotification-deleteEntries: Entry[]-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -42,13 +38,28 @@ deviceId: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ChangeNotification-deviceId: string--><!--Device-ChangeNotification-deviceId: string-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    let query: distributedKVStore.Query | null = new distributedKVStore.Query();
+    if (query != null) {
+      query.deviceId('deviceId');
+      console.info(`query is ${query.getSqlLike()}`);
+    }
+} catch (err) {
+    let error = err as BusinessError;
+    console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+}
+```
 
 ## insertEntries
 
@@ -60,11 +71,9 @@ insertEntries: Entry[]
 
 **类型：** Entry[]
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ChangeNotification-insertEntries: Entry[]--><!--Device-ChangeNotification-insertEntries: Entry[]-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -78,11 +87,8 @@ updateEntries: Entry[]
 
 **类型：** Entry[]
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ChangeNotification-updateEntries: Entry[]--><!--Device-ChangeNotification-updateEntries: Entry[]-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
-

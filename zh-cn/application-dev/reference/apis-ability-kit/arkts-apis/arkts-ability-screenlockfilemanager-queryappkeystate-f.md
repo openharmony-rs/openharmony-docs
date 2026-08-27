@@ -14,9 +14,7 @@ function queryAppKeyState(): KeyStatus
 
 以同步方法查询调用方应用锁屏下敏感数据密钥的状态。
 
-**起始版本：** 23
-
-<!--Device-screenLockFileManager-function queryAppKeyState(): KeyStatus--><!--Device-screenLockFileManager-function queryAppKeyState(): KeyStatus-End-->
+**起始版本：** 18
 
 **系统能力：** SystemCapability.Security.ScreenLockFileManager
 
@@ -34,8 +32,6 @@ function queryAppKeyState(): KeyStatus
 | [29300002](../errorcode-screenLockFileManager.md#29300002-系统服务工作异常) | The system ability works abnormally. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 // 查询锁屏下应用敏感数据访问权限
@@ -59,27 +55,3 @@ try {
     hilog.error(0x0000, 'testTag', 'queryAppKeyState failed: %{public}s', message);
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-// 查询锁屏下应用敏感数据访问权限
-import screenLockFileManager from '@ohos.ability.screenLockFileManager';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-try {
-    let keyStatus = screenLockFileManager.queryAppKeyState();
-    if (keyStatus === screenLockFileManager.KeyStatus.KEY_NOT_EXIST) {
-        hilog.info(0x0000, 'testTag', 'Key does not exist.');
-    } else if (keyStatus === screenLockFileManager.KeyStatus.KEY_RELEASED) {
-        hilog.info(0x0000, 'testTag', 'Key has been released.');
-    } else if (keyStatus === screenLockFileManager.KeyStatus.KEY_EXIST) {
-        hilog.info(0x0000, 'testTag', 'Key exists.');
-    }
-} catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'queryAppKeyState failed: %{public}s', message);
-}
-```
-

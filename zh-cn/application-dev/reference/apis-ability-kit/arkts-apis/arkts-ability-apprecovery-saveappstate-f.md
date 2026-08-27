@@ -20,8 +20,6 @@ function saveAppState(): boolean
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-appRecovery-function saveAppState(): boolean--><!--Device-appRecovery-function saveAppState(): boolean-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **返回值：**
@@ -59,13 +57,11 @@ function saveAppState(context?: UIAbilityContext): boolean
 
 主动保存Ability的状态，这个状态将在下次恢复启动时使用。可以配合[errorManager](arkts-app-ability-errormanager.md)相关接口使用。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-appRecovery-function saveAppState(context?: UIAbilityContext): boolean--><!--Device-appRecovery-function saveAppState(context?: UIAbilityContext): boolean-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -90,6 +86,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let observer: errorManager.ErrorObserver = {
   onUnhandledException(errorMsg) {
     console.error('onUnhandledException, errorMsg: ', errorMsg);
+    // context为UIAbility实例的context，需使用箭头函数或在回调外预先保存。
     appRecovery.saveAppState(this.context);
   }
 };
@@ -100,4 +97,3 @@ try {
   console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
 }
 ```
-

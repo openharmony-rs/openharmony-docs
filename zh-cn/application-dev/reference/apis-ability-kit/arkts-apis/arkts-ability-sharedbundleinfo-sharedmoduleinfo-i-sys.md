@@ -2,9 +2,7 @@
 
 共享模块信息。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface SharedModuleInfo--><!--Device-unnamed-export interface SharedModuleInfo-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -20,9 +18,7 @@ readonly description: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SharedModuleInfo-readonly description: string--><!--Device-SharedModuleInfo-readonly description: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -31,16 +27,14 @@ readonly description: string
 ## descriptionId
 
 ```TypeScript
-readonly descriptionId: long
+readonly descriptionId: number
 ```
 
 共享包描述的资源id值。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SharedModuleInfo-readonly descriptionId: long--><!--Device-SharedModuleInfo-readonly descriptionId: long-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -56,9 +50,7 @@ readonly name: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SharedModuleInfo-readonly name: string--><!--Device-SharedModuleInfo-readonly name: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -67,16 +59,14 @@ readonly name: string
 ## versionCode
 
 ```TypeScript
-readonly versionCode: long
+readonly versionCode: number
 ```
 
 共享包的版本号。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-SharedModuleInfo-readonly versionCode: long--><!--Device-SharedModuleInfo-readonly versionCode: long-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -92,11 +82,8 @@ readonly versionName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SharedModuleInfo-readonly versionName: string--><!--Device-SharedModuleInfo-readonly versionName: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
-

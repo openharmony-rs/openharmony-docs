@@ -9,16 +9,14 @@ import { bundleManager } from '@kit.AbilityKit';
 ## getBundleInfo
 
 ```TypeScript
-function getBundleInfo(bundleName: string, bundleFlags: int, callback: AsyncCallback<BundleInfo>): void
+function getBundleInfo(bundleName: string, bundleFlags: number, callback: AsyncCallback<BundleInfo>): void
 ```
 
-根据给定的bundleName和bundleFlags获取BundleInfo。使用callback异步回调。 获取调用方自身的信息时不需要权限。
+根据给定的bundleName和bundleFlags获取BundleInfo。使用callback异步回调。获取调用方自身的信息时不需要权限。
 
-**起始版本：** 23
+**起始版本：** 14
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
-
-<!--Device-bundleManager-function getBundleInfo(bundleName: string, bundleFlags: int, callback: AsyncCallback<BundleInfo>): void--><!--Device-bundleManager-function getBundleInfo(bundleName: string, bundleFlags: int, callback: AsyncCallback<BundleInfo>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -27,17 +25,17 @@ function getBundleInfo(bundleName: string, bundleFlags: int, callback: AsyncCall
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示要查询的应用Bundle名称。 |
-| bundleFlags | int | 是 | 指定返回的BundleInfo所包含的信息。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;BundleInfo&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)，当获取成功时，err为 undefined，data为获取到的BundleInfo；否则为错误对象。 |
+| bundleFlags | number | 是 | 指定返回的BundleInfo所包含的信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;BundleInfo&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为 undefined，data为获取到的BundleInfo；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
+| [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
 
 **示例**
 
@@ -69,16 +67,14 @@ try {
 ## getBundleInfo
 
 ```TypeScript
-function getBundleInfo(bundleName: string, bundleFlags: int, userId: int, callback: AsyncCallback<BundleInfo>): void
+function getBundleInfo(bundleName: string, bundleFlags: number, userId: number, callback: AsyncCallback<BundleInfo>): void
 ```
 
-根据给定的bundleName、bundleFlags和userId获取BundleInfo。使用callback异步回调。 获取调用方自身信息时不需要权限。
+根据给定的bundleName、bundleFlags和userId获取BundleInfo。使用callback异步回调。获取调用方自身信息时不需要权限。
 
-**起始版本：** 23
+**起始版本：** 14
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
-
-<!--Device-bundleManager-function getBundleInfo(bundleName: string, bundleFlags: int, userId: int, callback: AsyncCallback<BundleInfo>): void--><!--Device-bundleManager-function getBundleInfo(bundleName: string, bundleFlags: int, userId: int, callback: AsyncCallback<BundleInfo>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -87,19 +83,19 @@ function getBundleInfo(bundleName: string, bundleFlags: int, userId: int, callba
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示要查询的应用Bundle名称。 |
-| bundleFlags | int | 是 | 指定返回的BundleInfo所包含的信息。 |
-| userId | int | 是 | 表示用户ID，可以通过 [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;BundleInfo&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)，当获取成功时，err为 undefined，data为获取到的bundleInfo；否则为错误对象。 |
+| bundleFlags | number | 是 | 指定返回的BundleInfo所包含的信息。 |
+| userId | number | 是 | 表示用户ID，可以通过 [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;BundleInfo&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为 undefined，data为获取到的bundleInfo；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
+| [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
+| [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
 
 **示例**
 
@@ -157,16 +153,14 @@ try {
 ## getBundleInfo
 
 ```TypeScript
-function getBundleInfo(bundleName: string, bundleFlags: int, userId?: int): Promise<BundleInfo>
+function getBundleInfo(bundleName: string, bundleFlags: number, userId?: number): Promise<BundleInfo>
 ```
 
-根据给定的bundleName、bundleFlags和userId获取BundleInfo。使用Promise异步回调。 获取调用方自身的信息时不需要权限。
+根据给定的bundleName、bundleFlags和userId获取BundleInfo。使用Promise异步回调。获取调用方自身的信息时不需要权限。
 
-**起始版本：** 23
+**起始版本：** 14
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
-
-<!--Device-bundleManager-function getBundleInfo(bundleName: string, bundleFlags: int, userId?: int): Promise<BundleInfo>--><!--Device-bundleManager-function getBundleInfo(bundleName: string, bundleFlags: int, userId?: int): Promise<BundleInfo>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -175,28 +169,26 @@ function getBundleInfo(bundleName: string, bundleFlags: int, userId?: int): Prom
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示要查询的应用Bundle名称。 |
-| bundleFlags | int | 是 | 指定返回的BundleInfo所包含的信息。 |
-| userId | int | 否 | 表示用户ID，可以通过 [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取，默认值：调用方所在用户，取值范围：大于等于0。 |
+| bundleFlags | number | 是 | 指定返回的BundleInfo所包含的信息。 |
+| userId | number | 否 | 表示用户ID，可以通过 [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取，默认值：调用方所在用户，取值范围：大于等于0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;BundleInfo&gt; | Promise对象，返回BundleInfo。 |
+| Promise & lt;BundleInfo & gt; | Promise对象，返回BundleInfo。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
+| [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
+| [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
 
 **示例**
-
-ArkTS-Dyn示例:
 
 ```TypeScript
 // 额外获取ApplicationInfo和SignatureInfo
@@ -240,55 +232,3 @@ try {
   hilog.error(0x0000, 'testTag', 'getBundleInfo failed. Cause: %{public}s', message);
 }
 ```
-
-ArkTS-Sta示例:
-
-```TypeScript
-'use static'
-
-// 额外获取ApplicationInfo和SignatureInfo
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-// 代码中使用的bundleName、useId需为应用实际的包名、用户ID。
-let bundleName = 'com.example.myapplication';
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION |
-bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
-let userId = 100;
-
-try {
-  bundleManager.getBundleInfo(bundleName, bundleFlags, userId).then((data: bundleManager.BundleInfo) => {
-    hilog.info(0x0000, 'testTag', 'getBundleInfo successfully. Data: %{public}s', JSON.stringify(data));
-  }).catch((err: Error) => {
-    hilog.error(0x0000, 'testTag', 'getBundleInfo failed. Cause: %{public}s', (err as BusinessError).message);
-  });
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getBundleInfo failed. Cause: %{public}s', message);
-}
-```
-
-```TypeScript
-'use static'
-
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-// 代码中使用的bundleName需为应用实际的包名。
-let bundleName = 'com.example.myapplication';
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT;
-
-try {
-  bundleManager.getBundleInfo(bundleName, bundleFlags).then((data: bundleManager.BundleInfo) => {
-    hilog.info(0x0000, 'testTag', 'getBundleInfo successfully. Data: %{public}s', JSON.stringify(data));
-  }).catch((err: Error) => {
-    hilog.error(0x0000, 'testTag', 'getBundleInfo failed. Cause: %{public}s', (err as BusinessError).message);
-  });
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getBundleInfo failed. Cause: %{public}s', message);
-}
-```
-

@@ -14,11 +14,9 @@ function getPermissionDefSync(permissionName: string): PermissionDef
 
 以同步方法根据给定的permissionName获取权限定义结构体PermissionDef信息。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
-
-<!--Device-bundleManager-function getPermissionDefSync(permissionName: string): PermissionDef--><!--Device-bundleManager-function getPermissionDefSync(permissionName: string): PermissionDef-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -40,10 +38,10 @@ function getPermissionDefSync(permissionName: string): PermissionDef
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [17700006](../errorcode-bundle.md#17700006-查询的权限不存在) | The specified permission is not found. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [17700006](../errorcode-bundle.md#17700006-查询的权限不存在) | The specified permission is not found. |
 
 **示例**
 
@@ -61,4 +59,3 @@ try {
   hilog.error(0x0000, 'testTag', 'getPermissionDefSync failed. Cause: %{public}s', message);
 }
 ```
-

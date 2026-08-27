@@ -1,5 +1,13 @@
 # BundlePackInfo
 
+The module provides information in the **pack.info** file. The information can be obtained using
+ [freeInstall.getBundlePackInfo](arkts-ability-freeinstall-getbundlepackinfo-f-sys.md)
+ .
+ > **NOTE**
+ >
+ > The APIs provided by this module are system APIs.
+
+
 ## 汇总
 
 <!--Del-->
@@ -19,4 +27,3 @@
 | [PackageSummary](arkts-ability-bundlepackinfo-packagesummary-i-sys.md) | pack.info中的包摘要信息。 |
 | [Version](arkts-ability-bundlepackinfo-version-i-sys.md) | 包的版本。 |
 <!--DelEnd-->
-

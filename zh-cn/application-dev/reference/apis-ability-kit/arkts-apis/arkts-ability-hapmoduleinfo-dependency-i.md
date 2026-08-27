@@ -2,9 +2,7 @@
 
 描述模块所依赖的动态共享库信息。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface Dependency--><!--Device-unnamed-export interface Dependency-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -18,11 +16,9 @@ readonly bundleName: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Dependency-readonly bundleName: string--><!--Device-Dependency-readonly bundleName: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -36,29 +32,24 @@ readonly moduleName: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Dependency-readonly moduleName: string--><!--Device-Dependency-readonly moduleName: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 ## versionCode
 
 ```TypeScript
-readonly versionCode: long
+readonly versionCode: number
 ```
 
 标识当前共享包的版本号。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-Dependency-readonly versionCode: long--><!--Device-Dependency-readonly versionCode: long-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-

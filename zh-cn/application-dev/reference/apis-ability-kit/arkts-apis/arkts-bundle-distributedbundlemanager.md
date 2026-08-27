@@ -1,10 +1,12 @@
 # @ohos.bundle.distributedBundleManager
 
-本模块提供分布式应用的管理能力。 > **说明：** > > 本模块为系统接口。
+本模块提供分布式应用的管理能力。
 
-**起始版本：** 23
+> **说明：**
+> 
+> 本模块为系统接口。
 
-<!--Device-unnamed-declare namespace distributedBundleManager--><!--Device-unnamed-declare namespace distributedBundleManager-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
@@ -41,4 +43,3 @@ import { distributedBundleManager } from '@kit.AbilityKit';
 | --- | --- |
 | [RemoteAbilityInfo](arkts-ability-distributedbundlemanager-remoteabilityinfo-t-sys.md) | 包含远程的ability信息。 |
 <!--DelEnd-->
-

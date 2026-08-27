@@ -1,7 +1,7 @@
 # PreloadedUIExtensionAbilityLoadedFn（系统接口）
 
 ```TypeScript
-export type PreloadedUIExtensionAbilityLoadedFn = (preloadId: int) => void
+export type PreloadedUIExtensionAbilityLoadedFn = (preloadId: number) => void
 ```
 
 预加载[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)被加载时的回调函数类型。
@@ -9,8 +9,6 @@ export type PreloadedUIExtensionAbilityLoadedFn = (preloadId: int) => void
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-abilityManager-export type PreloadedUIExtensionAbilityLoadedFn = (preloadId: int) => void--><!--Device-abilityManager-export type PreloadedUIExtensionAbilityLoadedFn = (preloadId: int) => void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -20,5 +18,4 @@ export type PreloadedUIExtensionAbilityLoadedFn = (preloadId: int) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| preloadId | int | 是 | The preload UIExtensionAbility ID. |
-
+| preloadId | number | 是 | The preload UIExtensionAbility ID. |

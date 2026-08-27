@@ -1,10 +1,8 @@
 # AccessibilityElement
 
-无障碍节点元素，提供查询父/子元素、按内容或焦点方向查找元素、执行无障碍操作等能力，适用于无障碍辅助应用需要与界面节点交互和操作的场景。 调用AccessibilityElement的方法前，先通过 [AccessibilityExtensionContext.getFocusElement()](arkts-accessibility-accessibilityextensioncontext-c.md#getfocuselement) 或 [AccessibilityExtensionContext.getWindowRootElement()](arkts-accessibility-accessibilityextensioncontext-c.md#getwindowrootelement) 获取AccessibilityElement实例。
+无障碍节点元素，提供查询父/子元素、按内容或焦点方向查找元素、执行无障碍操作等能力，适用于无障碍辅助应用需要与界面节点交互和操作的场景。调用AccessibilityElement的方法前，先通过 [AccessibilityExtensionContext.getAccessibilityFocusedElement()](arkts-accessibility-accessibilityextensioncontext-c-sys.md#getaccessibilityfocusedelement) 或[AccessibilityExtensionContext.getRootInActiveWindow()](arkts-accessibility-accessibilityextensioncontext-c-sys.md#getrootinactivewindow) 获取AccessibilityElement实例。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export declare interface AccessibilityElement--><!--Device-unnamed-export declare interface AccessibilityElement-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -20,15 +18,13 @@ actionNames(callback: AsyncCallback<Array<string>>): void
 
 **废弃版本：** 12
 
-<!--Device-AccessibilityElement-actionNames(callback: AsyncCallback<Array<string>>): void--><!--Device-AccessibilityElement-actionNames(callback: AsyncCallback<Array<string>>): void-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;string&gt;&gt; | 是 | 回调函数。当获取操作名称成功，err为undefined，data为节点元素支持的所有操作名称；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;string&gt;&gt; | 是 | 回调函数。当获取操作名称成功，err为undefined，data为节点元素支持的所有操作名称；否则为错误对象。 |
 
 **示例**
 
@@ -57,15 +53,13 @@ actionNames(): Promise<Array<string>>
 
 **废弃版本：** 12
 
-<!--Device-AccessibilityElement-actionNames(): Promise<Array<string>>--><!--Device-AccessibilityElement-actionNames(): Promise<Array<string>>-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回节点元素支持的所有操作名称。 |
+| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回节点元素支持的所有操作名称。 |
 
 **示例**
 
@@ -92,15 +86,13 @@ attributeNames<T extends keyof ElementAttributeValues>(callback: AsyncCallback<A
 
 **废弃版本：** 12
 
-<!--Device-AccessibilityElement-attributeNames<T extends keyof ElementAttributeValues>(callback: AsyncCallback<Array<T>>): void--><!--Device-AccessibilityElement-attributeNames<T extends keyof ElementAttributeValues>(callback: AsyncCallback<Array<T>>): void-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;T&gt;&gt; | 是 | 回调函数。当获取属性名称成功，err为undefined，data为节点元素的所有属性名称；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;T&gt;&gt; | 是 | 回调函数。当获取属性名称成功，err为undefined，data为节点元素的所有属性名称；否则为错误对象。 |
 
 **示例**
 
@@ -130,15 +122,13 @@ attributeNames<T extends keyof ElementAttributeValues>(): Promise<Array<T>>
 
 **废弃版本：** 12
 
-<!--Device-AccessibilityElement-attributeNames<T extends keyof ElementAttributeValues>(): Promise<Array<T>>--><!--Device-AccessibilityElement-attributeNames<T extends keyof ElementAttributeValues>(): Promise<Array<T>>-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;T&gt;&gt; | Promise对象，返回节点元素的所有属性名称。 |
+| Promise & lt;Array & lt;T & gt; & gt; | Promise对象，返回节点元素的所有属性名称。 |
 
 **示例**
 
@@ -169,8 +159,6 @@ attributeValue<T extends keyof ElementAttributeValues>(
 
 **废弃版本：** 12
 
-<!--Device-AccessibilityElement-attributeValue<T extends keyof ElementAttributeValues>(    attributeName: T,    callback: AsyncCallback<ElementAttributeValues[T]>  ): void--><!--Device-AccessibilityElement-attributeValue<T extends keyof ElementAttributeValues>(    attributeName: T,    callback: AsyncCallback<ElementAttributeValues[T]>  ): void-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
@@ -178,7 +166,7 @@ attributeValue<T extends keyof ElementAttributeValues>(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | attributeName | T | 是 | 表示属性的名称。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;ElementAttributeValues[T]&gt; | 是 | 回调函数。当获取属性值成功，err为undefined，data为对应属性的值；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ElementAttributeValues[T]&gt; | 是 | 回调函数。当获取属性值成功，err为undefined，data为对应属性的值；否则为错误对象。 |
 
 **错误码：**
 
@@ -217,8 +205,6 @@ attributeValue<T extends keyof ElementAttributeValues>(attributeName: T): Promis
 
 **废弃版本：** 12
 
-<!--Device-AccessibilityElement-attributeValue<T extends keyof ElementAttributeValues>(attributeName: T): Promise<ElementAttributeValues[T]>--><!--Device-AccessibilityElement-attributeValue<T extends keyof ElementAttributeValues>(attributeName: T): Promise<ElementAttributeValues[T]>-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
@@ -231,7 +217,7 @@ attributeValue<T extends keyof ElementAttributeValues>(attributeName: T): Promis
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;ElementAttributeValues[T]&gt; | Promise对象，返回根据节点属性名称获取的属性值。 |
+| Promise & lt;ElementAttributeValues[T] & gt; | Promise对象，返回根据节点属性名称获取的属性值。 |
 
 **错误码：**
 
@@ -268,8 +254,6 @@ findElement(type: 'content', condition: string, callback: AsyncCallback<Array<Ac
 
 **废弃版本：** 12
 
-<!--Device-AccessibilityElement-findElement(type: 'content', condition: string, callback: AsyncCallback<Array<AccessibilityElement>>): void--><!--Device-AccessibilityElement-findElement(type: 'content', condition: string, callback: AsyncCallback<Array<AccessibilityElement>>): void-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
@@ -278,7 +262,7 @@ findElement(type: 'content', condition: string, callback: AsyncCallback<Array<Ac
 | --- | --- | --- | --- |
 | type | 'content' | 是 | 固定为'content'，表示查找的类型为节点元素内容。 |
 | condition | string | 是 | 表示查找的关键字条件，用于匹配节点元素的文本内容。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)&gt;&gt; | 是 | 回调函数。当查找节点元素成功，err为undefined，data为满足指定查询关键字的所有节点元 素；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)&gt;&gt; | 是 | 回调函数。当查找节点元素成功，err为undefined，data为满足指定查询关键字的所有节点元 素；否则为错误对象。 |
 
 **错误码：**
 
@@ -315,8 +299,6 @@ findElement(type: 'content', condition: string): Promise<Array<AccessibilityElem
 **起始版本：** 9
 
 **废弃版本：** 12
-
-<!--Device-AccessibilityElement-findElement(type: 'content', condition: string): Promise<Array<AccessibilityElement>>--><!--Device-AccessibilityElement-findElement(type: 'content', condition: string): Promise<Array<AccessibilityElement>>-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -367,8 +349,6 @@ findElement(type: 'focusType', condition: FocusType, callback: AsyncCallback<Acc
 
 **废弃版本：** 12
 
-<!--Device-AccessibilityElement-findElement(type: 'focusType', condition: FocusType, callback: AsyncCallback<AccessibilityElement>): void--><!--Device-AccessibilityElement-findElement(type: 'focusType', condition: FocusType, callback: AsyncCallback<AccessibilityElement>): void-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
@@ -377,7 +357,7 @@ findElement(type: 'focusType', condition: FocusType, callback: AsyncCallback<Acc
 | --- | --- | --- | --- |
 | type | 'focusType' | 是 | 固定为'focusType'，表示查询的类型为节点的焦点元素类型。 |
 | condition | [FocusType](arkts-accessibility-focustype-t.md) | 是 | 表示查询焦点元素的类型。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)&gt; | 是 | 回调函数。当查找节点元素成功，err为undefined，data为满足指定查询焦点元素类型的节点元素；否则为错误 对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)&gt; | 是 | 回调函数。当查找节点元素成功，err为undefined，data为满足指定查询焦点元素类型的节点元素；否则为错误 对象。 |
 
 **错误码：**
 
@@ -414,8 +394,6 @@ findElement(type: 'focusType', condition: FocusType): Promise<AccessibilityEleme
 **起始版本：** 9
 
 **废弃版本：** 12
-
-<!--Device-AccessibilityElement-findElement(type: 'focusType', condition: FocusType): Promise<AccessibilityElement>--><!--Device-AccessibilityElement-findElement(type: 'focusType', condition: FocusType): Promise<AccessibilityElement>-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -466,8 +444,6 @@ findElement(type: 'focusDirection', condition: FocusDirection, callback: AsyncCa
 
 **废弃版本：** 12
 
-<!--Device-AccessibilityElement-findElement(type: 'focusDirection', condition: FocusDirection, callback: AsyncCallback<AccessibilityElement>): void--><!--Device-AccessibilityElement-findElement(type: 'focusDirection', condition: FocusDirection, callback: AsyncCallback<AccessibilityElement>): void-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
@@ -476,7 +452,7 @@ findElement(type: 'focusDirection', condition: FocusDirection, callback: AsyncCa
 | --- | --- | --- | --- |
 | type | 'focusDirection' | 是 | 固定为'focusDirection'，表示查询的类型为节点的下一焦点元素方向。 |
 | condition | [FocusDirection](arkts-accessibility-focusdirection-t.md) | 是 | 表示查询下一焦点元素的方向。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)&gt; | 是 | 回调函数。当查找节点元素成功，err为undefined，data为满足指定查询下一焦点元素方向的节点元素；否则为 错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)&gt; | 是 | 回调函数。当查找节点元素成功，err为undefined，data为满足指定查询下一焦点元素方向的节点元素；否则为 错误对象。 |
 
 **错误码：**
 
@@ -513,8 +489,6 @@ findElement(type: 'focusDirection', condition: FocusDirection): Promise<Accessib
 **起始版本：** 9
 
 **废弃版本：** 12
-
-<!--Device-AccessibilityElement-findElement(type: 'focusDirection', condition: FocusDirection): Promise<AccessibilityElement>--><!--Device-AccessibilityElement-findElement(type: 'focusDirection', condition: FocusDirection): Promise<AccessibilityElement>-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -565,8 +539,6 @@ performAction(actionName: string, parameters: object, callback: AsyncCallback<vo
 
 **废弃版本：** 12
 
-<!--Device-AccessibilityElement-performAction(actionName: string, parameters: object, callback: AsyncCallback<void>): void--><!--Device-AccessibilityElement-performAction(actionName: string, parameters: object, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
@@ -575,7 +547,7 @@ performAction(actionName: string, parameters: object, callback: AsyncCallback<vo
 | --- | --- | --- | --- |
 | actionName | string | 是 | 表示操作的名称，取值参考[Action](arkts-accessibility-accessibility-action-t.md)。 |
 | parameters | object | 是 | 表示执行操作时所需要的参数。不同操作类型所需的参数结构不同，具体参数格式参见各Action的说明，如setSelection需传入selectTextBegin、 selectTextEnd、selectTextInForWard参数，setCursorPosition需传入offset参数。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当执行操作成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当执行操作成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -614,8 +586,6 @@ performAction(actionName: string, parameters?: object): Promise<void>
 
 **废弃版本：** 12
 
-<!--Device-AccessibilityElement-performAction(actionName: string, parameters?: object): Promise<void>--><!--Device-AccessibilityElement-performAction(actionName: string, parameters?: object): Promise<void>-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
@@ -629,7 +599,7 @@ performAction(actionName: string, parameters?: object): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -700,8 +670,6 @@ performAction(actionName: string, callback: AsyncCallback<void>): void
 
 **废弃版本：** 12
 
-<!--Device-AccessibilityElement-performAction(actionName: string, callback: AsyncCallback<void>): void--><!--Device-AccessibilityElement-performAction(actionName: string, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
@@ -709,7 +677,7 @@ performAction(actionName: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | actionName | string | 是 | 表示操作的名称，取值参考[Action](arkts-accessibility-accessibility-action-t.md)。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当执行操作成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当执行操作成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -734,4 +702,3 @@ rootElement.performAction(actionName, (err: BusinessError) => {
   console.info(`succeeded in performing action, actionName is ${actionName}`);
 });
 ```
-

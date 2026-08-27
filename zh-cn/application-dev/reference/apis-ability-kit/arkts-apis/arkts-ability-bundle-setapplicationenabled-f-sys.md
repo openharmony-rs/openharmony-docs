@@ -3,22 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { appControl } from '@kit.AbilityKit';
-import { bundleManager } from '@kit.AbilityKit';
-import { bundleMonitor } from '@kit.AbilityKit';
-import { bundleResourceManager } from '@kit.AbilityKit';
 import { bundle } from '@kit.AbilityKit';
-import { defaultAppManager } from '@kit.AbilityKit';
-import { distributedBundleManager } from '@kit.AbilityKit';
-import { freeInstall } from '@kit.AbilityKit';
-import { innerBundleManager, BundleStatusCallback } from '@kit.AbilityKit';
-import { installer } from '@kit.AbilityKit';
-import { launcherBundleManager } from '@kit.AbilityKit';
-import { overlay } from '@kit.AbilityKit';
-import { shortcutManager } from '@kit.AbilityKit';
-import { skillManager } from '@kit.AbilityKit';
-import { appDomainVerify } from '@kit.AbilityKit';
-import { pluginBundleManager } from '@kit.AbilityKit';
 ```
 
 ## setApplicationEnabled
@@ -37,8 +22,6 @@ function setApplicationEnabled(bundleName: string, isEnable: boolean, callback: 
 
 **需要权限：** ohos.permission.CHANGE_ABILITY_ENABLED_STATE
 
-<!--Device-bundle-function setApplicationEnabled(bundleName: string, isEnable: boolean, callback: AsyncCallback<void>): void--><!--Device-bundle-function setApplicationEnabled(bundleName: string, isEnable: boolean, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 **系统接口：** 此接口为系统接口。
@@ -49,7 +32,36 @@ function setApplicationEnabled(bundleName: string, isEnable: boolean, callback: 
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 指示需要启用或禁用的应用Bundle名称。 |
 | isEnable | boolean | 是 | 指定是否启用应用程序。true表示启用，false表示禁用。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
+
+**示例**
+
+```TypeScript
+import bundle from '@ohos.bundle';
+
+let bundleName: string = "com.example.myapplication";
+
+bundle.setApplicationEnabled(bundleName, false, err => {
+  if (err) {
+    console.error('setApplicationEnabled failed.');
+  } else {
+    console.info('setApplicationEnabled successfully.');
+  }
+});
+```
+
+```TypeScript
+import bundle from '@ohos.bundle';
+import { BusinessError } from '@ohos.base';
+
+let bundleName: string = "com.example.myapplication";
+
+bundle.setApplicationEnabled(bundleName, false).then(() => {
+  console.info('setApplicationEnabled successfully.');
+}).catch((error: BusinessError) => {
+  console.error('setApplicationEnabled failed.');
+});
+```
 
 
 ## setApplicationEnabled
@@ -68,8 +80,6 @@ function setApplicationEnabled(bundleName: string, isEnable: boolean): Promise<v
 
 **需要权限：** ohos.permission.CHANGE_ABILITY_ENABLED_STATE
 
-<!--Device-bundle-function setApplicationEnabled(bundleName: string, isEnable: boolean): Promise<void>--><!--Device-bundle-function setApplicationEnabled(bundleName: string, isEnable: boolean): Promise<void>-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 **系统接口：** 此接口为系统接口。
@@ -85,5 +95,8 @@ function setApplicationEnabled(bundleName: string, isEnable: boolean): Promise<v
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果的Promise对象。 |
 
+**示例**
+
+参见 [setApplicationEnabled](#setapplicationenabled)

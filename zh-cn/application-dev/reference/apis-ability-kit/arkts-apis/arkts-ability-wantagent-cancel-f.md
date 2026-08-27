@@ -14,11 +14,9 @@ function cancel(agent: WantAgent, callback: AsyncCallback<void>): void
 
 取消WantAgent实例，使用callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-wantAgent-function cancel(agent: WantAgent, callback: AsyncCallback<void>): void--><!--Device-wantAgent-function cancel(agent: WantAgent, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -27,7 +25,7 @@ function cancel(agent: WantAgent, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | agent | [WantAgent](arkts-ability-wantagent-t.md) | 是 | WantAgent对象。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 取消WantAgent实例的回调方法。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 取消WantAgent实例的回调方法。 |
 
 **错误码：**
 
@@ -38,8 +36,6 @@ function cancel(agent: WantAgent, callback: AsyncCallback<void>): void
 | [16000151](../errorcode-ability.md#16000151-无效wantagent对象) | Invalid wantAgent object. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { wantAgent, Want } from '@kit.AbilityKit';
@@ -112,72 +108,6 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```TypeScript
-'use static'
-import { wantAgent, Want } from '@kit.AbilityKit';
-import type { WantAgent } from '@kit.AbilityKit';
-import { BusinessError, RecordData } from '@kit.BasicServicesKit';
-
-// wantAgent对象
-let wantAgentData: WantAgent;
-// WantAgentInfo对象
-let wantAgentInfo: wantAgent.WantAgentInfo = {
-  wants: [
-    {
-      deviceId: 'deviceId',
-      bundleName: 'com.example.myapplication',
-      abilityName: 'EntryAbility',
-      action: 'action1',
-      entities: ['entity1'],
-      type: 'MIMETYPE',
-      uri: 'key={true,true,false}',
-      parameters: {
-        'mykey0': 2222,
-        'mykey1': [1, 2, 3],
-        'mykey2': '[1, 2, 3]',
-        'mykey3': 'ssssssssssssssssssssssssss',
-        'mykey4': [false, true, false],
-        'mykey5': ['qqqqq', 'wwwwww', 'aaaaaaaaaaaaaaaaa'],
-        'mykey6': true,
-      } as Record<string, RecordData>
-    } as Want
-  ],
-  actionType: wantAgent.OperationType.START_ABILITIES,
-  requestCode: 0,
-};
-
-try {
-  wantAgent.getWantAgent(wantAgentInfo, (err, data) => {
-    if (err) {
-      console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    if (!data) {
-      console.error('getWantAgent failed: data is undefined');
-      return;
-    }
-    wantAgentData = data;
-    try {
-      wantAgent.cancel(wantAgentData, (err, data) => {
-        if (err) {
-          console.error(`cancel failed, err code: ${err.code}, err msg: ${err.message}.`);
-        } else {
-          console.info(`cancel success.`);
-        }
-      });
-    } catch (error) {
-      let err = error as BusinessError;
-      console.error(`cancel failed, err code: ${err.code}, err msg: ${err.message}.`);
-    }
-  });
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`getWantAgent failed! ${err.code} ${err.message}`);
-}
-```
-
 
 ## cancel
 
@@ -187,11 +117,9 @@ function cancel(agent: WantAgent): Promise<void>
 
 取消WantAgent实例。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-wantAgent-function cancel(agent: WantAgent): Promise<void>--><!--Device-wantAgent-function cancel(agent: WantAgent): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -205,7 +133,7 @@ function cancel(agent: WantAgent): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -216,8 +144,6 @@ function cancel(agent: WantAgent): Promise<void>
 | [16000151](../errorcode-ability.md#16000151-无效wantagent对象) | Invalid wantAgent object. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { wantAgent, Want } from '@kit.AbilityKit';
@@ -285,69 +211,3 @@ try {
   console.error(`getWantAgent failed, err code: ${code}, err msg: ${msg}.`);
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-'use static'
-import { wantAgent, Want } from '@kit.AbilityKit';
-import type { WantAgent } from '@kit.AbilityKit';
-import { BusinessError, RecordData } from '@kit.BasicServicesKit';
-
-// wantAgent对象
-let wantAgentData: WantAgent;
-// WantAgentInfo对象
-let wantAgentInfo: wantAgent.WantAgentInfo = {
-  wants: [
-    {
-      deviceId: 'deviceId',
-      bundleName: 'com.example.myapplication',
-      abilityName: 'EntryAbility',
-      action: 'action1',
-      entities: ['entity1'],
-      type: 'MIMETYPE',
-      uri: 'key={true,true,false}',
-      parameters: {
-        'mykey0': 2222,
-        'mykey1': [1, 2, 3],
-        'mykey2': '[1, 2, 3]',
-        'mykey3': 'ssssssssssssssssssssssssss',
-        'mykey4': [false, true, false],
-        'mykey5': ['qqqqq', 'wwwwww', 'aaaaaaaaaaaaaaaaa'],
-        'mykey6': true,
-      } as Record<string, RecordData>
-    } as Want
-  ],
-  actionType: wantAgent.OperationType.START_ABILITIES,
-  requestCode: 0,
-};
-
-try {
-  wantAgent.getWantAgent(wantAgentInfo, (err, data) => {
-    if (err) {
-      console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    if (!data) {
-      console.error('getWantAgent failed: data is undefined');
-      return;
-    }
-    wantAgentData = data;
-    try {
-      wantAgent.cancel(wantAgentData).then((data) => {
-        console.info('cancel success.');
-      }).catch((error) => {
-        let err = error as BusinessError;
-        console.error(`cancel failed, err code: ${err.code}, err msg: ${err.message}.`);
-      });
-    } catch (error) {
-      let err = error as BusinessError;
-      console.error(`cancel failed, err code: ${err.code}, err msg: ${err.message}.`);
-    }
-  });
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`getWantAgent failed! ${err.code} ${err.message}`);
-}
-```
-

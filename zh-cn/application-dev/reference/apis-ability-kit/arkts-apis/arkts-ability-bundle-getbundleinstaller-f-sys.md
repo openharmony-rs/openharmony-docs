@@ -3,22 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { appControl } from '@kit.AbilityKit';
-import { bundleManager } from '@kit.AbilityKit';
-import { bundleMonitor } from '@kit.AbilityKit';
-import { bundleResourceManager } from '@kit.AbilityKit';
 import { bundle } from '@kit.AbilityKit';
-import { defaultAppManager } from '@kit.AbilityKit';
-import { distributedBundleManager } from '@kit.AbilityKit';
-import { freeInstall } from '@kit.AbilityKit';
-import { innerBundleManager, BundleStatusCallback } from '@kit.AbilityKit';
-import { installer } from '@kit.AbilityKit';
-import { launcherBundleManager } from '@kit.AbilityKit';
-import { overlay } from '@kit.AbilityKit';
-import { shortcutManager } from '@kit.AbilityKit';
-import { skillManager } from '@kit.AbilityKit';
-import { appDomainVerify } from '@kit.AbilityKit';
-import { pluginBundleManager } from '@kit.AbilityKit';
 ```
 
 ## getBundleInstaller
@@ -37,8 +22,6 @@ function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE
 
-<!--Device-bundle-function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void--><!--Device-bundle-function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 **系统接口：** 此接口为系统接口。
@@ -47,7 +30,32 @@ function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[BundleInstaller](arkts-ability-bundleinstaller-bundleinstaller-depr-i-sys.md)&gt; | 是 | 回调函数，返回安装接口对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[BundleInstaller](arkts-ability-bundleinstaller-bundleinstaller-depr-i-sys.md)&gt; | 是 | 回调函数，返回安装接口对象。 |
+
+**示例**
+
+```TypeScript
+import bundle from '@ohos.bundle';
+import { BusinessError } from '@ohos.base';
+
+bundle.getBundleInstaller().then((data) => {
+  console.info('getBundleInstaller successfully.');
+}).catch((error: BusinessError) => {
+  console.error('getBundleInstaller failed.');
+});
+```
+
+```TypeScript
+import bundle from '@ohos.bundle';
+
+bundle.getBundleInstaller((err, data) => {
+  if (err.code == 0) {
+    console.error('getBundleInstaller successfully.');
+  } else {
+    console.info('getBundleInstaller failed.');
+  }
+});
+```
 
 
 ## getBundleInstaller
@@ -66,8 +74,6 @@ function getBundleInstaller(): Promise<BundleInstaller>
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE
 
-<!--Device-bundle-function getBundleInstaller(): Promise<BundleInstaller>--><!--Device-bundle-function getBundleInstaller(): Promise<BundleInstaller>-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 **系统接口：** 此接口为系统接口。
@@ -78,3 +84,6 @@ function getBundleInstaller(): Promise<BundleInstaller>
 | --- | --- |
 | Promise&lt;[BundleInstaller](arkts-ability-bundleinstaller-bundleinstaller-depr-i-sys.md)&gt; | Promise对象，返回安装接口对象。 |
 
+**示例**
+
+参见 [getBundleInstaller](#getbundleinstaller)

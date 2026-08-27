@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-relationalStore-interface SyncResult--><!--Device-relationalStore-interface SyncResult-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## 导入模块
@@ -28,8 +26,6 @@ readonly code:SyncResultCode
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SyncResult-readonly code:SyncResultCode--><!--Device-SyncResult-readonly code:SyncResultCode-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## device
@@ -45,8 +41,6 @@ readonly device:string
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SyncResult-readonly device:string--><!--Device-SyncResult-readonly device:string-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -64,7 +58,4 @@ readonly message:string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SyncResult-readonly message:string--><!--Device-SyncResult-readonly message:string-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-

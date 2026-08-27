@@ -2,9 +2,7 @@
 
 本模块用于查询当前设备上安装的应用程序的路由Ability信息。系统通过业务路由提供标准化的业务模板和管理能力，允许开发者依据特定业务类别注册标准业务，构建一个庞大且丰富的业务超市。系统应用可以便捷地从业务路由中选取合适的业务进行使 用。同时业务路由还提供统一的跳转管控规则，确保应用与业务之间合理跳转，防止非法前后台跳转，杜绝三方应用通过跳转变相分发，从而保障系统的安全性与良好的用户体验。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare namespace businessAbilityRouter--><!--Device-unnamed-declare namespace businessAbilityRouter-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -50,4 +48,3 @@ import { businessAbilityRouter } from '@kit.AbilityKit';
 | --- | --- |
 | [BusinessAbilityInfo](arkts-ability-businessabilityrouter-businessabilityinfo-t-sys.md) | 业务路由信息。 |
 <!--DelEnd-->
-

@@ -315,7 +315,6 @@ No matching ability is found.
 1. 确保隐式启动的参数配置正确，匹配规则详见[显式Want与隐式Want匹配规则](../../application-models/explicit-implicit-want-mappings.md)。
 2. 确保对应的HAP包已安装。
 
-<!--Del-->
 ## 16000020 传入的Context对象不是Ability级别Context
 
 **错误信息**
@@ -333,7 +332,6 @@ The context is not ability context.
 **处理步骤**
 
 使用UIAbilityContext或ExtensionContext对象作为入参，或者使用继承了UIAbilityContext或ExtensionContext类的对象作为入参。
-<!--DelEnd-->
 
 ## 16000021 模块名不存在
 
@@ -565,7 +563,7 @@ The API can be called only when the ability is running in the foreground.
 
 在调用接口前，请确保当前Ability已处于前台运行且界面可见状态。
 
-## 16000066  wukong模式，不允许移动Ability到前台/后台
+## 16000066 wukong模式，不允许移动Ability到前台/后台
 
 **错误信息**
 
@@ -1193,7 +1191,7 @@ Current ability is not in foreground.
 
 **错误信息**
 
-A maximum of four UIAbility instances can be started simultaneously.The current parameter exceeds the maximum number or is less than 1.
+A maximum of four UIAbility instances can be started simultaneously. The current parameter exceeds the maximum number or is less than 1.
 
 **错误描述**
 
@@ -1224,6 +1222,7 @@ startUIAbilities只支持启动UIAbility，如果目标组件为非UIAbility，�
 **处理步骤**
 
 检查Want中传入的组件类型，确保其为UIAbility组件。
+<!--DelEnd-->
 
 ## 16000122 待启动的目标组件被系统管控模块拦截
 
@@ -1279,6 +1278,7 @@ Want中的deviceId不为空且非本机的设备ID。
 
 将Want中的deviceId字段设为空，或配置为本机的deviceId。
 
+<!--Del-->
 ## 16000125 不支持启动插件UIAbility
 
 **错误信息**
@@ -1338,7 +1338,7 @@ The UIAbility does not belong to the caller.
 
 **错误信息**
 
-The UIAbility is already exist, can not start again.
+The UIAbility is already exists, can not start again.
 
 **错误描述**
 
@@ -2568,7 +2568,7 @@ Classes decorated with @InsightIntentEntity must implement InsightIntent.IntentE
 
 **处理步骤**
 
-确保类实现InsightIntent.IntentEntity或继承至其他意图实体。
+确保类实现InsightIntent.IntentEntity或继承自其他意图实体。
 
 ## 10110022 @InsightIntentForm装饰器修饰位置错误
 

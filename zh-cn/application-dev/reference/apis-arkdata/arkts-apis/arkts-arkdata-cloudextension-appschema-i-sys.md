@@ -2,9 +2,7 @@
 
 应用数据库模式。
 
-**起始版本：** 23
-
-<!--Device-cloudExtension-export interface AppSchema--><!--Device-cloudExtension-export interface AppSchema-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -26,9 +24,7 @@ bundleName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-AppSchema-bundleName: string--><!--Device-AppSchema-bundleName: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -44,9 +40,7 @@ databases: Array<Database>
 
 **类型：** Array&lt;[Database](arkts-arkdata-cloudextension-database-i-sys.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-AppSchema-databases: Array<Database>--><!--Device-AppSchema-databases: Array<Database>-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -55,18 +49,15 @@ databases: Array<Database>
 ## version
 
 ```TypeScript
-version: int
+version: number
 ```
 
 数据库模式的版本。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-AppSchema-version: int--><!--Device-AppSchema-version: int-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **系统接口：** 此接口为系统接口。
-

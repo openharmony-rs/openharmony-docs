@@ -17,11 +17,9 @@ function unregisterApplicationStateObserver(observerId: number, callback: AsyncC
 
 **废弃版本：** 9
 
-**替代接口：** [off](arkts-ability-appmanager-offapplicationstate-f.md#offapplicationstate)
+**替代接口：** [off](arkts-ability-appmanager-off-f.md#offapplicationstate)
 
 **需要权限：** ohos.permission.RUNNING_STATE_OBSERVER
-
-<!--Device-appManager-function unregisterApplicationStateObserver(observerId: number, callback: AsyncCallback<void>): void--><!--Device-appManager-function unregisterApplicationStateObserver(observerId: number, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -32,7 +30,7 @@ function unregisterApplicationStateObserver(observerId: number, callback: AsyncC
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | observerId | number | 是 | 表示观察者的编号代码。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 表示指定的callback回调方法。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 表示指定的callback回调方法。 |
 
 **示例**
 
@@ -65,11 +63,9 @@ function unregisterApplicationStateObserver(observerId: number): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [off](arkts-ability-appmanager-offapplicationstate-f.md#offapplicationstate)
+**替代接口：** [off](arkts-ability-appmanager-off-f.md#offapplicationstate)
 
 **需要权限：** ohos.permission.RUNNING_STATE_OBSERVER
-
-<!--Device-appManager-function unregisterApplicationStateObserver(observerId: number): Promise<void>--><!--Device-appManager-function unregisterApplicationStateObserver(observerId: number): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -85,7 +81,7 @@ function unregisterApplicationStateObserver(observerId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -103,4 +99,3 @@ appManager.unregisterApplicationStateObserver(observerId)
     console.error(`unregisterApplicationStateObserver failed, err code: ${err.code}, err msg: ${err.message}.`);
 });
 ```
-

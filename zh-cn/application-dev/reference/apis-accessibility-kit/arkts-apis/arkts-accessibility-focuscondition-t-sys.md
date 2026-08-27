@@ -9,8 +9,6 @@ export type FocusCondition = 'forward' | 'backward' |
 
 **起始版本：** 23
 
-<!--Device-unnamed-export type FocusCondition = 'forward' | 'backward' |'findLast' | 'getForwardScrollAncestor' | 'getBackwardScrollAncestor' | 'getScrollableAncestor'--><!--Device-unnamed-export type FocusCondition = 'forward' | 'backward' |'findLast' | 'getForwardScrollAncestor' | 'getBackwardScrollAncestor' | 'getScrollableAncestor'-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
@@ -23,4 +21,3 @@ export type FocusCondition = 'forward' | 'backward' |
 | 'getForwardScrollAncestor' | 表示查找支持前向滚动父组件，值固定为'getForwardScrollAncestor'字符串。 |
 | 'getBackwardScrollAncestor' | 表示查找支持后向滚动父组件，值固定为'getBackwardScrollAncestor'字符串。 |
 | 'getScrollableAncestor' | 表示查找支持任意滚动父组件，值固定为'getScrollableAncestor'字符串。 |
-

@@ -14,11 +14,9 @@ function createKVManager(config: KVManagerConfig): KVManager
 
 创建一个KVManager对象实例，用于管理数据库对象。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-distributedKVStore-function createKVManager(config: KVManagerConfig): KVManager--><!--Device-distributedKVStore-function createKVManager(config: KVManagerConfig): KVManager-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -38,7 +36,7 @@ function createKVManager(config: KVManagerConfig): KVManager
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;  2.Incorrect parameters types;  3.Parameter verification failed. |
 
 **示例**
 
@@ -100,4 +98,3 @@ if (kvManager !== undefined) {
   // ...
 }
 ```
-

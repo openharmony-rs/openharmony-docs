@@ -18,8 +18,6 @@ function disableDynamicIcon(bundleName: string): Promise<void>
 
 **需要权限：** ohos.permission.ACCESS_DYNAMIC_ICON
 
-<!--Device-bundleManager-function disableDynamicIcon(bundleName: string): Promise<void>--><!--Device-bundleManager-function disableDynamicIcon(bundleName: string): Promise<void>-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
@@ -34,15 +32,15 @@ function disableDynamicIcon(bundleName: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700305](../errorcode-bundle.md#17700305-动态图标去使能失败) | Failed to disable the dynamic icon. |
 
@@ -74,13 +72,11 @@ try {
 function disableDynamicIcon(bundleName: string, option?: BundleOptions): Promise<void>
 ```
 
-根据给定的bundleName和option禁用动态图标。使用Promise异步回调。 禁用当前用户下的动态图标信息时需要申请权限ohos.permission.ACCESS_DYNAMIC_ICON。 禁用其他用户下的动态图标信息时需要申请权限ohos.permission.ACCESS_DYNAMIC_ICON 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
+根据给定的bundleName和option禁用动态图标。使用Promise异步回调。禁用当前用户下的动态图标信息时需要申请权限ohos.permission.ACCESS_DYNAMIC_ICON。禁用其他用户下的动态图标信息时需要申请权限ohos.permission.ACCESS_DYNAMIC_ICON 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.ACCESS_DYNAMIC_ICON or (ohos.permission.ACCESS_DYNAMIC_ICON and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
-
-<!--Device-bundleManager-function disableDynamicIcon(bundleName: string, option?: BundleOptions): Promise<void>--><!--Device-bundleManager-function disableDynamicIcon(bundleName: string, option?: BundleOptions): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -97,22 +93,20 @@ function disableDynamicIcon(bundleName: string, option?: BundleOptions): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | AppIndex not in valid range. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
-| [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
+| [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
+| [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | AppIndex not in valid range. |
 | [17700305](../errorcode-bundle.md#17700305-动态图标去使能失败) | Failed to disable the dynamic icon. |
 
 **示例**
-
-ArkTS-Dyn示例:
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';
@@ -133,28 +127,3 @@ try {
   hilog.error(0x0000, 'testTag', 'disableDynamicIcon failed. Cause: %{public}s', message);
 }
 ```
-
-ArkTS-Sta示例:
-
-```TypeScript
-'use static'
-
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-// 开发者需根据实际工程更新bundleName、userId和appIndex。
-let bundleName: string = 'com.ohos.demo';
-let option: bundleManager.BundleOptions = {'userId':100, 'appIndex':0};
-
-try {
-  bundleManager.disableDynamicIcon(bundleName, option).then(() => {
-    hilog.info(0x0000, 'testTag', 'disableDynamicIcon successfully');
-  }).catch((err: Error) => {
-    hilog.error(0x0000, 'testTag', 'disableDynamicIcon failed. Cause: %{public}s', (err as BusinessError).message);
-  });
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'disableDynamicIcon failed. Cause: %{public}s', message);
-}
-```
-

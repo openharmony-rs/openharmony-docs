@@ -4,6 +4,8 @@
 
 提供与多条数据值相关的函数和枚举。
 
+**引用文件：** database/data/oh_data_values.h
+
 **库：** libnative_rdb_ndk.z.so
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core

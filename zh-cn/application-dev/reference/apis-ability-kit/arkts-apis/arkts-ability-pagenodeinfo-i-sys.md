@@ -2,9 +2,7 @@
 
 自动填充的页面节点信息。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export default interface PageNodeInfo--><!--Device-unnamed-export default interface PageNodeInfo-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -20,11 +18,9 @@ autoFillType: AutoFillType
 
 **类型：** [AutoFillType](arkts-ability-autofilltype-e-sys.md)
 
-**起始版本：** 23
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PageNodeInfo-autoFillType: AutoFillType--><!--Device-PageNodeInfo-autoFillType: AutoFillType-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -33,18 +29,16 @@ autoFillType: AutoFillType
 ## depth
 
 ```TypeScript
-depth: int
+depth: number
 ```
 
 页面节点的深度（单位：px）。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PageNodeInfo-depth: int--><!--Device-PageNodeInfo-depth: int-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -60,11 +54,9 @@ enableAutoFill: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PageNodeInfo-enableAutoFill: boolean--><!--Device-PageNodeInfo-enableAutoFill: boolean-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -73,18 +65,16 @@ enableAutoFill: boolean
 ## id
 
 ```TypeScript
-id: int
+id: number
 ```
 
 The id of page node. 取值限定为整数。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PageNodeInfo-id: int--><!--Device-PageNodeInfo-id: int-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -100,11 +90,9 @@ isFocus: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PageNodeInfo-isFocus: boolean--><!--Device-PageNodeInfo-isFocus: boolean-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -120,11 +108,9 @@ metadata?: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PageNodeInfo-metadata?: string--><!--Device-PageNodeInfo-metadata?: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -140,11 +126,9 @@ passwordRules?: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PageNodeInfo-passwordRules?: string--><!--Device-PageNodeInfo-passwordRules?: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -160,11 +144,9 @@ placeholder?: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PageNodeInfo-placeholder?: string--><!--Device-PageNodeInfo-placeholder?: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -180,11 +162,9 @@ rect: AutoFillRect
 
 **类型：** [AutoFillRect](arkts-ability-autofillrect-i-sys.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PageNodeInfo-rect: AutoFillRect--><!--Device-PageNodeInfo-rect: AutoFillRect-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -200,11 +180,9 @@ tag: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PageNodeInfo-tag: string--><!--Device-PageNodeInfo-tag: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -220,13 +198,10 @@ value: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PageNodeInfo-value: string--><!--Device-PageNodeInfo-value: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **系统接口：** 此接口为系统接口。
-

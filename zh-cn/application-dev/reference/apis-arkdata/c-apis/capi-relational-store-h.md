@@ -4,6 +4,8 @@
 
 提供管理关系数据库（RDB）方法的接口，未标注支持向量数据库的接口仅支持关系型数据库。
 
+**引用文件：** database/rdb/relational_store.h
+
 **库：** libnative_rdb_ndk.z.so
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -19,7 +21,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [OH_Rdb_Config](capi-rdb-oh-rdb-config.md) | - | 管理关系型数据库配置。 |
-| [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) | OH_Rdb_Store | 表示数据库类型。 |
+| [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) | OH_Rdb_Store | 表示数据库实例。 |
 | [Rdb_DistributedConfig](capi-rdb-rdb-distributedconfig.md) | Rdb_DistributedConfig | 记录表的分布式配置信息。 |
 | [Rdb_KeyInfo](capi-rdb-rdb-keyinfo.md) | Rdb_KeyInfo | 描述发生变化的行的主键或者行号。 |
 | [Rdb_ChangeInfo](capi-rdb-rdb-changeinfo.md) | Rdb_ChangeInfo | 记录端云同步过程详情。 |
@@ -701,7 +703,7 @@ int OH_Rdb_SetPersistent(OH_Rdb_ConfigV2 *config, bool isPersistent)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | 指向[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)实例的指针。<br>指示与此RDB存储相关的数据库的配置。 |
-| bool isPersistent | 指示数据库是否需要持久性。 |
+| bool isPersistent | 指示数据库是否需要持久化。 |
 
 **返回：**
 
@@ -799,7 +801,7 @@ OH_VObject *OH_Rdb_CreateValueObject()
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_VObject * | 创建成功则返回一个指向[OH_VObject](capi-rdb-oh-vobject.md)结构体实例的指针，否则返回NULL。 |
+| [OH_VObject *](capi-rdb-oh-vobject.md) | 创建成功则返回一个指向[OH_VObject](capi-rdb-oh-vobject.md)结构体实例的指针，否则返回NULL。 |
 
 **参考：**
 
@@ -1055,7 +1057,7 @@ int OH_Rdb_InsertWithConflictResolution(OH_Rdb_Store *store, const char *table, 
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | 指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例的指针。 |
 | const char *table | 表示目标表的名称。 |
 | OH_VBucket *row | 表示要插入到表中的数据。 |
-| [Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution) resolution | 表示发生冲突时的解决策略。 |
+| Rdb_ConflictResolution resolution | 表示发生冲突时的解决策略。 |
 | int64_t *rowId | 表示插入成功后返回的行号。 |
 
 **返回：**
@@ -1081,9 +1083,9 @@ int OH_Rdb_BatchInsert(OH_Rdb_Store *store, const char *table, const OH_Data_VBu
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | 指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例的指针。 |
-| const char *table | 要设置的分布式数据库表表名。 |
+| const char *table | 表示要插入数据的目标表名。 |
 | const OH_Data_VBuckets *rows | 表示要插入到表中的一组数据。 |
-| [Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution) resolution | 表示发生冲突时的解决策略。 |
+| Rdb_ConflictResolution resolution | 表示发生冲突时的解决策略。 |
 | int64_t *changes | 输出参数，表示插入成功的次数。 |
 
 **返回：**
@@ -1142,7 +1144,7 @@ int OH_Rdb_UpdateWithConflictResolution(OH_Rdb_Store *store, OH_VBucket *row, OH
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | 指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例的指针。 |
 | OH_VBucket *row | 表示要更新到表中的数据行。 |
 | OH_Predicates *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针，指定更新条件。 |
-| [Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution) resolution | 表示发生冲突时的解决策略。 |
+| Rdb_ConflictResolution resolution | 表示发生冲突时的解决策略。 |
 | int64_t *changes | 输出参数，表示成功更新的行数。 |
 
 **返回：**
@@ -1206,7 +1208,7 @@ OH_Cursor *OH_Rdb_Query(OH_Rdb_Store *store, OH_Predicates *predicates, const ch
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Cursor *](capi-rdb-oh-cursor.md) | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针，否则返回NULL。 |
+| OH_Cursor * | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针，否则返回NULL。 |
 
 **参考：**
 
@@ -1238,7 +1240,7 @@ OH_Cursor *OH_Rdb_QueryWithoutRowCount(OH_Rdb_Store *store, OH_Predicates *predi
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Cursor *](capi-rdb-oh-cursor.md) | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针。如果获取store失败或结果集为空，则返回nullptr。 |
+| OH_Cursor * | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针。如果获取store失败或结果集为空，则返回nullptr。 |
 
 **参考：**
 
@@ -1269,7 +1271,7 @@ OH_Cursor *OH_Rdb_QuerySqlWithoutRowCount(OH_Rdb_Store *store, const char *sql, 
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Cursor *](capi-rdb-oh-cursor.md) | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针。如果SQL语句无效或内存分配失败，则返回nullptr。 |
+| OH_Cursor * | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针。如果SQL语句无效或内存分配失败，则返回nullptr。 |
 
 **参考：**
 
@@ -1392,7 +1394,7 @@ OH_Cursor *OH_Rdb_ExecuteQuery(OH_Rdb_Store *store, const char *sql)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Cursor *](capi-rdb-oh-cursor.md) | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针，否则返回NULL。 |
+| OH_Cursor * | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针，否则返回NULL。 |
 
 **参考：**
 
@@ -1423,7 +1425,7 @@ OH_Cursor *OH_Rdb_ExecuteQueryV2(OH_Rdb_Store *store, const char *sql, const OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Cursor *](capi-rdb-oh-cursor.md) | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针，使用完成后及时释放[OH_Cursor](capi-rdb-oh-cursor.md)。      <br>如果SQL语句无效或内存分配失败，则返回NULL。 |
+| OH_Cursor * | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针，使用完成后及时释放[OH_Cursor](capi-rdb-oh-cursor.md)。      <br>如果SQL语句无效或内存分配失败，则返回NULL。 |
 
 **参考：**
 
@@ -1780,13 +1782,13 @@ OH_Cursor *OH_Rdb_FindModifyTime(OH_Rdb_Store *store, const char *tableName, con
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | 指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例的指针。 |
 | const char *tableName | 要查找的分布式数据库表表名。 |
 | const char *columnName | 指定要查询的数据库表的列名。 |
-| OH_VObject *values | 指定要查询的行的主键。如果数据库表无主键，参数columnName需传入"rowid"，此时values为要查询的数据库表的行号。 |
+| [OH_VObject](capi-rdb-oh-vobject.md) *values | 指定要查询的行的主键。如果数据库表无主键，参数columnName需传入"rowid"，此时values为要查询的数据库表的行号。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Cursor *](capi-rdb-oh-cursor.md) | 如果操作成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针，否则返回NULL。 |
+| OH_Cursor * | 如果操作成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针，否则返回NULL。 |
 
 **参考：**
 
@@ -2163,7 +2165,7 @@ OH_Cursor *OH_Rdb_QueryLockedRow(OH_Rdb_Store *store, OH_Predicates *predicates,
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Cursor *](capi-rdb-oh-cursor.md) | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针，否则返回NULL。 |
+| OH_Cursor * | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针，否则返回NULL。 |
 
 **参考：**
 
@@ -2417,8 +2419,8 @@ int OH_Rdb_BatchInsertWithReturning(OH_Rdb_Store *store, const char *table, cons
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | 指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例的指针。 |
 | const char *table | 要插入的目标表名。 |
 | const OH_Data_VBuckets *rows | 要插入到表中的行数据。 |
-| [Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution) resolution | 发生冲突时的解决策略Rdb_ConflictResolution，不建议使用RDB_CONFLICT_FAIL，因为失败时会抛异常，<br>无法正常获取实际的变更数据。 |
-| [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) *context | 指向[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)实例的指针。 |
+| Rdb_ConflictResolution resolution | 发生冲突时的解决策略Rdb_ConflictResolution，不建议使用RDB_CONFLICT_FAIL，因为失败时会抛异常，<br>无法正常获取实际的变更数据。 |
+| OH_RDB_ReturningContext *context | 指向[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)实例的指针。 |
 
 **返回：**
 
@@ -2450,8 +2452,8 @@ int OH_Rdb_UpdateWithReturning(OH_Rdb_Store *store, OH_VBucket *row, OH_Predicat
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | 指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例的指针。 |
 | OH_VBucket *row | 要更新到表中的行数据。 |
 | OH_Predicates *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
-| [Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution) resolution | 发生冲突时的解决策略Rdb_ConflictResolution，不建议使用RDB_CONFLICT_FAIL，因为失败时会抛异常，<br>无法正常获取实际的变更数据。 |
-| [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) *context | 指向[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)实例的指针。 |
+| Rdb_ConflictResolution resolution | 发生冲突时的解决策略Rdb_ConflictResolution，不建议使用RDB_CONFLICT_FAIL，因为失败时会抛异常，<br>无法正常获取实际的变更数据。 |
+| OH_RDB_ReturningContext *context | 指向[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)实例的指针。 |
 
 **返回：**
 
@@ -2482,7 +2484,7 @@ int OH_Rdb_DeleteWithReturning(OH_Rdb_Store *store, OH_Predicates *predicates, O
 | -- | -- |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | 指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例的指针。 |
 | OH_Predicates *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
-| [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) *context | 指向[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)实例的指针。 |
+| OH_RDB_ReturningContext *context | 指向[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)实例的指针。 |
 
 **返回：**
 

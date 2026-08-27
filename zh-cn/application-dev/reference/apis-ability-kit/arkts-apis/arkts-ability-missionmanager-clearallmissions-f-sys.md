@@ -14,11 +14,9 @@ function clearAllMissions(callback: AsyncCallback<void>): void
 
 清理所有未锁定的任务。使用callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
-
-<!--Device-missionManager-function clearAllMissions(callback: AsyncCallback<void>): void--><!--Device-missionManager-function clearAllMissions(callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -28,15 +26,15 @@ function clearAllMissions(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;void&gt; | 是 | 执行结果回调函数。 |
+| callback | AsyncCallback & lt;void & gt; | 是 | 执行结果回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -45,9 +43,8 @@ import { missionManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  missionManager.clearAllMissions((error) => {
-    if (error) {
-      let err: BusinessError = error as BusinessError;
+  missionManager.clearAllMissions((err: BusinessError) => {
+    if (err) {
       console.error(`clearAllMissions failed. Code: ${err.code}, message: ${err.message}`);
     } else {
       console.info('clearAllMissions successfully.');
@@ -68,11 +65,9 @@ function clearAllMissions(): Promise<void>
 
 清理所有未锁定的任务。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
-
-<!--Device-missionManager-function clearAllMissions(): Promise<void>--><!--Device-missionManager-function clearAllMissions(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -82,7 +77,7 @@ function clearAllMissions(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -98,10 +93,9 @@ import { missionManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  missionManager.clearAllMissions().then((data) => {
+  missionManager.clearAllMissions().then((data: void) => {
     console.info(`clearAllMissions successfully. Data: ${JSON.stringify(data)}`);
-  }).catch((error: Error) => {
-    let err: BusinessError = error as BusinessError;
+  }).catch((err: BusinessError) => {
     console.error(`clearAllMissions failed. Code: ${err.code}, message: ${err.message}.`);
   });
 } catch (error) {
@@ -109,4 +103,3 @@ try {
   console.error(`clearAllMissions failed. Code: ${err.code}, message: ${err.message}.`);
 }
 ```
-

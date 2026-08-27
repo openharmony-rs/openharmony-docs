@@ -14,11 +14,9 @@ function isApplicationRunning(bundleName: string): Promise<boolean>
 
 查询所有用户下指定包名的应用是否正在运行。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **需要权限：** ohos.permission.GET_RUNNING_INFO
-
-<!--Device-appManager-function isApplicationRunning(bundleName: string): Promise<boolean>--><!--Device-appManager-function isApplicationRunning(bundleName: string): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -34,16 +32,16 @@ function isApplicationRunning(bundleName: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示至少存在一个用户正在运行指定包名的应用，返回false表示所有用户下指定包名的应用都没有运行。 |
+| Promise & lt;boolean & gt; | Promise对象。返回true表示至少存在一个用户正在运行指定包名的应用，返回false表示所有用户下指定包名的应用都没有运行。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**
 
@@ -51,13 +49,12 @@ function isApplicationRunning(bundleName: string): Promise<boolean>
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundleName = "com.example.myapplication";
+let bundleName = 'com.example.myapplication';
 
 appManager.isApplicationRunning(bundleName).then((data) => {
-  console.info(`The application running is: ${data}`);
-}).catch((e: Error) => {
-  let error = e as BusinessError;
-  console.error(`error: ${error.code} ${error.message}`);
+  console.info(`The application running is: ${JSON.stringify(data)}`);
+}).catch((error: BusinessError) => {
+  console.error(`error: ${JSON.stringify(error)}`);
 });
 ```
 
@@ -70,11 +67,9 @@ function isApplicationRunning(bundleName: string, callback: AsyncCallback<boolea
 
 查询所有用户下指定包名的应用是否正在运行。使用callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 11
 
 **需要权限：** ohos.permission.GET_RUNNING_INFO
-
-<!--Device-appManager-function isApplicationRunning(bundleName: string, callback: AsyncCallback<boolean>): void--><!--Device-appManager-function isApplicationRunning(bundleName: string, callback: AsyncCallback<boolean>): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -85,16 +80,16 @@ function isApplicationRunning(bundleName: string, callback: AsyncCallback<boolea
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示要查询的应用的包名。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示至少存在一个用户正在运行指定包名的应用，返回false表示所有用户下指定包名的应用都没有运行。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示至少存在一个用户正在运行指定包名的应用，返回false表示所有用户下指定包名的应用都没有运行。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**
 
@@ -118,4 +113,3 @@ try {
   console.error(`[appManager] error: ${code}, ${message}`);
 }
 ```
-

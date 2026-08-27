@@ -2,9 +2,7 @@
 
 单次访问记录详情。
 
-**起始版本：** 23
-
-<!--Device-privacyManager-interface UsedRecordDetail--><!--Device-privacyManager-interface UsedRecordDetail-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -19,16 +17,14 @@ import { privacyManager } from '@kit.AbilityKit';
 ## accessDuration
 
 ```TypeScript
-accessDuration: long
+accessDuration: number
 ```
 
 访问时长。 单位为：毫秒。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-UsedRecordDetail-accessDuration: long--><!--Device-UsedRecordDetail-accessDuration: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -37,16 +33,14 @@ accessDuration: long
 ## count
 
 ```TypeScript
-count?: int
+count?: number
 ```
 
-访问次数。在accessRecords中表示成功访问次数，在rejectRecords中表示失败或拒绝次数。 默认值：0。
+访问次数。在accessRecords中表示成功访问次数，在rejectRecords中表示失败或拒绝次数。默认值：0。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-UsedRecordDetail-count?: int--><!--Device-UsedRecordDetail-count?: int-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -55,16 +49,17 @@ count?: int
 ## lockScreenStatus
 
 ```TypeScript
-lockScreenStatus?: int
+lockScreenStatus?: number
 ```
 
-访问时的锁屏状态。 - 1，表示非锁屏场景使用权限。 - 2，表示锁屏场景使用权限。 默认值：1。
+访问时的锁屏状态。  
+- 1，表示非锁屏场景使用权限。  
+- 2，表示锁屏场景使用权限。  
+默认值：1。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-UsedRecordDetail-lockScreenStatus?: int--><!--Device-UsedRecordDetail-lockScreenStatus?: int-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -73,16 +68,14 @@ lockScreenStatus?: int
 ## status
 
 ```TypeScript
-status: int
+status: number
 ```
 
 访问状态。0表示停止使用，1表示前台使用，2表示后台使用。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-UsedRecordDetail-status: int--><!--Device-UsedRecordDetail-status: int-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -91,16 +84,14 @@ status: int
 ## timestamp
 
 ```TypeScript
-timestamp: long
+timestamp: number
 ```
 
 访问时的时间戳。 单位为：毫秒。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-UsedRecordDetail-timestamp: long--><!--Device-UsedRecordDetail-timestamp: long-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -112,15 +103,12 @@ timestamp: long
 usedType?: PermissionUsedType
 ```
 
-敏感权限访问方式。 默认值：NORMAL_TYPE。
+敏感权限访问方式。默认值：NORMAL_TYPE。
 
 **类型：** [PermissionUsedType](arkts-ability-privacymanager-permissionusedtype-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-UsedRecordDetail-usedType?: PermissionUsedType--><!--Device-UsedRecordDetail-usedType?: PermissionUsedType-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
-

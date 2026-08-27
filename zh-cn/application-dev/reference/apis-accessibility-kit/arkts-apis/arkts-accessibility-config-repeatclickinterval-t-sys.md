@@ -4,11 +4,9 @@
 type RepeatClickInterval = 'Shortest' | 'Short' | 'Medium' | 'Long' | 'Longest'
 ```
 
-忽略重复点击功能启用时（[ignoreRepeatClick](arkts-accessibility-config-con-sys.md#ignorerepeatclick)设置为true）配置生效；忽略重复点击功能未启用时（ [ignoreRepeatClick](arkts-accessibility-config-con-sys.md#ignorerepeatclick)设置为false）不生效。
+用于不同时间间隔的忽略重复点击。忽略重复点击功能启用时（[ignoreRepeatClick](arkts-accessibility-config-con-sys.md#ignorerepeatclick)设置为true）配置生效；忽略重复点击功能未启用时（ [ignoreRepeatClick](arkts-accessibility-config-con-sys.md#ignorerepeatclick)设置为false）不生效。
 
-**起始版本：** 23
-
-<!--Device-config-type RepeatClickInterval = 'Shortest' | 'Short' | 'Medium' | 'Long' | 'Longest'--><!--Device-config-type RepeatClickInterval = 'Shortest' | 'Short' | 'Medium' | 'Long' | 'Longest'-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -21,4 +19,3 @@ type RepeatClickInterval = 'Shortest' | 'Short' | 'Medium' | 'Long' | 'Longest'
 | 'Medium' | 表示中。 |
 | 'Long' | 表示长。 |
 | 'Longest' | 表示最长。 |
-

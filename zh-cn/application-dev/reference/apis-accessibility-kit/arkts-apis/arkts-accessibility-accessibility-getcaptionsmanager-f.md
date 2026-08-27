@@ -3,11 +3,8 @@
 ## 导入模块
 
 ```TypeScript
-import { config } from '@kit.AccessibilityKit';
 import { accessibility } from '@kit.AccessibilityKit';
 import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, InjectActionType, AccessibilityFocusScene, FocusRuleType, OperateVirtualNodeResult, AccessibilitySourceType } from '@kit.AccessibilityKit';
-import { GesturePath } from '@kit.AccessibilityKit';
-import { GesturePoint } from '@kit.AccessibilityKit';
 ```
 
 ## getCaptionsManager
@@ -21,8 +18,6 @@ function getCaptionsManager(): CaptionsManager
 **起始版本：** 8
 
 **废弃版本：** 12
-
-<!--Device-accessibility-function getCaptionsManager(): CaptionsManager--><!--Device-accessibility-function getCaptionsManager(): CaptionsManager-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -39,4 +34,3 @@ import { accessibility } from '@kit.AccessibilityKit';
 
 let captionsManager = accessibility.getCaptionsManager();
 ```
-

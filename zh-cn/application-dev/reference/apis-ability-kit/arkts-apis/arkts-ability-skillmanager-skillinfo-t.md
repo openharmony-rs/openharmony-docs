@@ -12,9 +12,6 @@ export type SkillInfo = _SkillInfo
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-skillManager-export type SkillInfo = _SkillInfo--><!--Device-skillManager-export type SkillInfo = _SkillInfo-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **属性类型：** _SkillInfo
-

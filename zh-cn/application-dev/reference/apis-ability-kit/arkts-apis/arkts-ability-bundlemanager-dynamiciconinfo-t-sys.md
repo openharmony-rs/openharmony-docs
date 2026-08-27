@@ -1,18 +1,15 @@
 # DynamicIconInfo（系统接口）
 
 ```TypeScript
-export type DynamicIconInfo = _DynamicIconInfo
+export type DynamicIconInfo = _BundleInfo.DynamicIconInfo
 ```
 
 应用的动态图标信息。
 
-**起始版本：** 23
-
-<!--Device-bundleManager-export type DynamicIconInfo = _DynamicIconInfo--><!--Device-bundleManager-export type DynamicIconInfo = _DynamicIconInfo-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** _DynamicIconInfo
-
+**属性类型：** _BundleInfo.DynamicIconInfo

@@ -2,9 +2,7 @@
 
 module包含的ability组件信息。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface ModuleAbilityInfo--><!--Device-unnamed-export interface ModuleAbilityInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
@@ -20,9 +18,7 @@ readonly exported: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-ModuleAbilityInfo-readonly exported: boolean--><!--Device-ModuleAbilityInfo-readonly exported: boolean-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
@@ -38,9 +34,7 @@ readonly forms: Array<AbilityFormInfo>
 
 **类型：** Array&lt;[AbilityFormInfo](arkts-ability-bundlepackinfo-abilityforminfo-i-sys.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-ModuleAbilityInfo-readonly forms: Array<AbilityFormInfo>--><!--Device-ModuleAbilityInfo-readonly forms: Array<AbilityFormInfo>-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
@@ -56,9 +50,7 @@ readonly label: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ModuleAbilityInfo-readonly label: string--><!--Device-ModuleAbilityInfo-readonly label: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
@@ -74,11 +66,8 @@ readonly name: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ModuleAbilityInfo-readonly name: string--><!--Device-ModuleAbilityInfo-readonly name: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **系统接口：** 此接口为系统接口。
-

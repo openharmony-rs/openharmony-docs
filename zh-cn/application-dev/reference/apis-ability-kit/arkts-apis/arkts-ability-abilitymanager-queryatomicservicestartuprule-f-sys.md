@@ -14,11 +14,9 @@ function queryAtomicServiceStartupRule(context: Context, appId: string): Promise
 
 查询嵌入式拉起[EmbeddableUIAbility](arkts-ability-app-ability-embeddableuiability-embeddableuiability-c.md)的规则。使用Promise异步回调。 该接口仅在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
-**起始版本：** 23
+**起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-abilityManager-function queryAtomicServiceStartupRule(context: Context, appId: string): Promise<AtomicServiceStartupRule>--><!--Device-abilityManager-function queryAtomicServiceStartupRule(context: Context, appId: string): Promise<AtomicServiceStartupRule>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -28,7 +26,7 @@ function queryAtomicServiceStartupRule(context: Context, appId: string): Promise
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](arkts-ability-context-c.md) | 是 | 嵌入式拉起EmbeddableUIAbility的调用方Context。<br>**说明：**目前仅支持 [UIAbilityContext](arkts-ability-uiabilitycontext-c.md)。 |
+| context | [Context](arkts-ability-context-c.md) | 是 | 嵌入式拉起EmbeddableUIAbility的调用方Context。   **说明：**目前仅支持 [UIAbilityContext](arkts-ability-uiabilitycontext-c.md)。 |
 | appId | string | 是 | 应用的唯一标识，由云端统一分配。 |
 
 **返回值：**
@@ -56,20 +54,15 @@ export default class EntryAbility extends UIAbility {
     // 应用的唯一标识
     let appId: string = '6918661953712445909';
     try {
-      abilityManager.queryAtomicServiceStartupRule(this.context, appId)
-        .then((data: abilityManager.AtomicServiceStartupRule) => {
-          console.info(`queryAtomicServiceStartupRule data: ${data}`);
-        })
-        .catch((e: Error) => {
-          let err = e as BusinessError;
-          console.error(`queryAtomicServiceStartupRule failed, code is ${err.code}, message is ${err.message}`);
-        });
-    } catch (e) {
+      abilityManager.queryAtomicServiceStartupRule(this.context, appId).then((data: abilityManager.AtomicServiceStartupRule) => {
+        console.info(`queryAtomicServiceStartupRule data: ${JSON.stringify(data)}`);
+      }).catch((err: BusinessError) => {
+        console.error(`queryAtomicServiceStartupRule failed, code is ${err.code}, message is ${err.message}`);
+      });
+    } catch (err) {
       // 处理入参错误异常
-      let err = e as BusinessError;
       console.error(`param is invalid, code is ${err.code}, message is ${err.message}`);
     }
   }
 }
 ```
-

@@ -2,9 +2,7 @@
 
 共享包信息。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface SharedBundleInfo--><!--Device-unnamed-export interface SharedBundleInfo-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -20,9 +18,7 @@ readonly compatiblePolicy: bundleManager.CompatiblePolicy
 
 **类型：** bundleManager.CompatiblePolicy
 
-**起始版本：** 23
-
-<!--Device-SharedBundleInfo-readonly compatiblePolicy: bundleManager.CompatiblePolicy--><!--Device-SharedBundleInfo-readonly compatiblePolicy: bundleManager.CompatiblePolicy-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -38,9 +34,7 @@ readonly name: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-SharedBundleInfo-readonly name: string--><!--Device-SharedBundleInfo-readonly name: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -56,11 +50,8 @@ readonly sharedModuleInfo: Array<SharedModuleInfo>
 
 **类型：** Array&lt;[SharedModuleInfo](arkts-ability-sharedbundleinfo-sharedmoduleinfo-i-sys.md)&gt;
 
-**起始版本：** 23
-
-<!--Device-SharedBundleInfo-readonly sharedModuleInfo: Array<SharedModuleInfo>--><!--Device-SharedBundleInfo-readonly sharedModuleInfo: Array<SharedModuleInfo>-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
-

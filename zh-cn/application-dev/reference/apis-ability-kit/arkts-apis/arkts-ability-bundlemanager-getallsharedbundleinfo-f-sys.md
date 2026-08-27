@@ -14,11 +14,9 @@ function getAllSharedBundleInfo(callback: AsyncCallback<Array<SharedBundleInfo>>
 
 获取所有的共享包信息。使用callback异步回调。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
-
-<!--Device-bundleManager-function getAllSharedBundleInfo(callback: AsyncCallback<Array<SharedBundleInfo>>): void--><!--Device-bundleManager-function getAllSharedBundleInfo(callback: AsyncCallback<Array<SharedBundleInfo>>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -28,7 +26,7 @@ function getAllSharedBundleInfo(callback: AsyncCallback<Array<SharedBundleInfo>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;SharedBundleInfo&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)，当获取成功时 ，err为undefined，data为获所有的共享包信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;SharedBundleInfo&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时 ，err为undefined，data为获所有的共享包信息。 |
 
 **错误码：**
 
@@ -67,11 +65,9 @@ function getAllSharedBundleInfo(): Promise<Array<SharedBundleInfo>>
 
 获取所有的共享包信息。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
-
-<!--Device-bundleManager-function getAllSharedBundleInfo(): Promise<Array<SharedBundleInfo>>--><!--Device-bundleManager-function getAllSharedBundleInfo(): Promise<Array<SharedBundleInfo>>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -81,7 +77,7 @@ function getAllSharedBundleInfo(): Promise<Array<SharedBundleInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;SharedBundleInfo&gt;&gt; | Promise对象，返回所有的共享包信息。 |
+| Promise & lt;Array & lt;SharedBundleInfo & gt; & gt; | Promise对象，返回所有的共享包信息。 |
 
 **错误码：**
 
@@ -91,8 +87,6 @@ function getAllSharedBundleInfo(): Promise<Array<SharedBundleInfo>>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 
 **示例**
-
-ArkTS-Dyn示例:
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';
@@ -110,25 +104,3 @@ try {
   hilog.error(0x0000, 'testTag', 'getAllSharedBundleInfo failed. Cause: %{public}s', message);
 }
 ```
-
-ArkTS-Sta示例:
-
-```TypeScript
-'use static'
-
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-try {
-  bundleManager.getAllSharedBundleInfo().then((data: Array<bundleManager.SharedBundleInfo>) => {
-    hilog.info(0x0000, 'testTag', 'getAllSharedBundleInfo successfully. Data: %{public}s', JSON.stringify(data));
-  }).catch((err: Error) => {
-    hilog.error(0x0000, 'testTag', 'getAllSharedBundleInfo failed. Cause: %{public}s', (err as BusinessError).message);
-  });
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getAllSharedBundleInfo failed. Cause: %{public}s', message);
-}
-```
-

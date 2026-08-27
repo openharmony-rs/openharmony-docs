@@ -6,11 +6,8 @@ type ModifyTime = Map<PRIKeyType, UTCTime>
 
 用于存储数据库表的主键和修改时间的数据类型。
 
-**起始版本：** 23
-
-<!--Device-relationalStore-type ModifyTime = Map<PRIKeyType, UTCTime>--><!--Device-relationalStore-type ModifyTime = Map<PRIKeyType, UTCTime>-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**属性类型：** Map<PRIKeyType, UTCTime>
-
+**属性类型：** Map&lt;[PRIKeyType](arkts-arkdata-relationalstore-prikeytype-t.md), [UTCTime](arkts-arkdata-relationalstore-utctime-t.md)&gt;

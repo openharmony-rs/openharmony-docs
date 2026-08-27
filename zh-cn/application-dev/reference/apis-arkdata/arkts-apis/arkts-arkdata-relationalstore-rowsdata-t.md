@@ -10,9 +10,6 @@ type RowsData = Array<RowData>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-relationalStore-type RowsData = Array<RowData>--><!--Device-relationalStore-type RowsData = Array<RowData>-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**属性类型：** Array<RowData>
-
+**属性类型：** Array&lt;[RowData](arkts-arkdata-relationalstore-rowdata-t.md)&gt;

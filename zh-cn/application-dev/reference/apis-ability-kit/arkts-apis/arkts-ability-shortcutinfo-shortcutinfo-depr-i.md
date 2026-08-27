@@ -1,14 +1,15 @@
 # ShortcutInfo
 
-> **说明：** > > 从API version 7开始支持，从API version 9开始废弃，建议使用[bundleManager-ShortcutInfo](#shortcutinfo)替代。
+
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[bundleManager-ShortcutInfo](#shortcutinfo)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
 **替代接口：** [ShortcutInfo](#shortcutinfo)
-
-<!--Device-unnamed-export interface ShortcutInfo--><!--Device-unnamed-export interface ShortcutInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -28,8 +29,6 @@ readonly bundleName: string
 
 **替代接口：** bundleName
 
-<!--Device-ShortcutInfo-readonly bundleName: string--><!--Device-ShortcutInfo-readonly bundleName: string-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 ## disableMessage
@@ -45,8 +44,6 @@ readonly disableMessage: string
 **起始版本：** 7
 
 **废弃版本：** 9
-
-<!--Device-ShortcutInfo-readonly disableMessage: string--><!--Device-ShortcutInfo-readonly disableMessage: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -66,8 +63,6 @@ readonly hostAbility: string
 
 **替代接口：** hostAbility
 
-<!--Device-ShortcutInfo-readonly hostAbility: string--><!--Device-ShortcutInfo-readonly hostAbility: string-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 ## icon
@@ -85,8 +80,6 @@ readonly icon: string
 **废弃版本：** 9
 
 **替代接口：** icon
-
-<!--Device-ShortcutInfo-readonly icon: string--><!--Device-ShortcutInfo-readonly icon: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -106,8 +99,6 @@ readonly iconId: number
 
 **替代接口：** iconId
 
-<!--Device-ShortcutInfo-readonly iconId: number--><!--Device-ShortcutInfo-readonly iconId: number-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 ## id
@@ -125,8 +116,6 @@ readonly id: string
 **废弃版本：** 9
 
 **替代接口：** id
-
-<!--Device-ShortcutInfo-readonly id: string--><!--Device-ShortcutInfo-readonly id: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -148,8 +137,6 @@ readonly isEnabled?: boolean
 
 **替代接口：** visible
 
-<!--Device-ShortcutInfo-readonly isEnabled?: boolean--><!--Device-ShortcutInfo-readonly isEnabled?: boolean-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 ## isHomeShortcut
@@ -169,8 +156,6 @@ readonly isHomeShortcut?: boolean
 **废弃版本：** 9
 
 **替代接口：** sourceType
-
-<!--Device-ShortcutInfo-readonly isHomeShortcut?: boolean--><!--Device-ShortcutInfo-readonly isHomeShortcut?: boolean-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -192,8 +177,6 @@ readonly isStatic?: boolean
 
 **替代接口：** sourceType
 
-<!--Device-ShortcutInfo-readonly isStatic?: boolean--><!--Device-ShortcutInfo-readonly isStatic?: boolean-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 ## label
@@ -211,8 +194,6 @@ readonly label: string
 **废弃版本：** 9
 
 **替代接口：** label
-
-<!--Device-ShortcutInfo-readonly label: string--><!--Device-ShortcutInfo-readonly label: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -232,8 +213,6 @@ readonly labelId: number
 
 **替代接口：** labelId
 
-<!--Device-ShortcutInfo-readonly labelId: number--><!--Device-ShortcutInfo-readonly labelId: number-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 ## wants
@@ -252,7 +231,4 @@ readonly wants: Array<ShortcutWant>
 
 **替代接口：** wants
 
-<!--Device-ShortcutInfo-readonly wants: Array<ShortcutWant>--><!--Device-ShortcutInfo-readonly wants: Array<ShortcutWant>-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
-

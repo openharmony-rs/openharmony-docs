@@ -4,8 +4,6 @@ CompletionHandlerForAtomicService提供了 [onAtomicServiceRequestSuccess](#onat
 
 **起始版本：** 20
 
-<!--Device-unnamed-declare class CompletionHandlerForAtomicService--><!--Device-unnamed-declare class CompletionHandlerForAtomicService-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## 导入模块
@@ -28,8 +26,6 @@ onAtomicServiceRequestFailure(appId: string, failureCode: FailureCode, failureMe
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-CompletionHandlerForAtomicService-onAtomicServiceRequestFailure(appId: string, failureCode: FailureCode, failureMessage: string): void--><!--Device-CompletionHandlerForAtomicService-onAtomicServiceRequestFailure(appId: string, failureCode: FailureCode, failureMessage: string): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
@@ -42,36 +38,7 @@ onAtomicServiceRequestFailure(appId: string, failureCode: FailureCode, failureMe
 
 **示例**
 
-```TypeScript
-import { AbilityConstant, AtomicServiceOptions, common, UIAbility, Want, CompletionHandlerForAtomicService, FailureCode } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    let completionHandler: CompletionHandlerForAtomicService = {
-      // 定义原子化服务请求成功的回调函数
-      onAtomicServiceRequestSuccess(appId: string) {
-        hilog.info(0x0000, 'testTag', `appId:${appId}`);
-      },
-      // 定义原子化服务请求失败的回调函数
-      onAtomicServiceRequestFailure(appId: string, failureCode: FailureCode, failureMessage: string) {
-        hilog.info(0x0000, 'testTag', `appId:${appId}, failureCode:${failureCode}, failureMessage:${failureMessage}`);
-      }
-    };
-    // 创建原子化服务对象
-    let options: AtomicServiceOptions = {
-      completionHandlerForAtomicService: completionHandler
-    };
-    let appId: string = '5765880207853275489'; // 根据实际appId修改此值
-    this.context.openAtomicService(appId, options).then((result: common.AbilityResult) => {
-      hilog.info(0x0000, 'testTag', `openAtomicService succeed:${JSON.stringify(result)}`);
-    }).catch((err: BusinessError) => {
-      hilog.error(0x0000, 'testTag', `openAtomicService failed:${JSON.stringify(err)}`);
-    });
-  }
-}
-```
+参见CompletionHandlerForAtomicService示例。
 
 ## onAtomicServiceRequestSuccess
 
@@ -87,8 +54,6 @@ onAtomicServiceRequestSuccess(appId: string): void
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-CompletionHandlerForAtomicService-onAtomicServiceRequestSuccess(appId: string): void--><!--Device-CompletionHandlerForAtomicService-onAtomicServiceRequestSuccess(appId: string): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
@@ -99,5 +64,4 @@ onAtomicServiceRequestSuccess(appId: string): void
 
 **示例**
 
-参见[onAtomicServiceRequestFailure](#onatomicservicerequestfailure)接口的示例。
-
+参见CompletionHandlerForAtomicService示例。

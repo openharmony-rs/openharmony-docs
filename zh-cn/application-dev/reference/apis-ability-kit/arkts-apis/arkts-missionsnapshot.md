@@ -9,4 +9,3 @@
 | --- | --- |
 | [MissionSnapshot](arkts-ability-missionsnapshot-i-sys.md) | 一个任务的任务快照对象，可以通过 [missionManager.getMissionSnapShot](arkts-ability-missionmanager-getmissionsnapshot-f-sys.md) 获取。 |
 <!--DelEnd-->
-

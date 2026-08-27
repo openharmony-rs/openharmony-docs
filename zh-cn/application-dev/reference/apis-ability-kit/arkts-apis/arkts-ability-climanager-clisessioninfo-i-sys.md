@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-cliManager-interface CliSessionInfo--><!--Device-cliManager-interface CliSessionInfo-End-->
-
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -30,8 +28,6 @@ result?: ExecResult
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-CliSessionInfo-result?: ExecResult--><!--Device-CliSessionInfo-result?: ExecResult-End-->
-
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -49,8 +45,6 @@ sessionId: string
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-CliSessionInfo-sessionId: string--><!--Device-CliSessionInfo-sessionId: string-End-->
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -70,8 +64,6 @@ status: SessionStatus
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-CliSessionInfo-status: SessionStatus--><!--Device-CliSessionInfo-status: SessionStatus-End-->
-
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -90,9 +82,6 @@ toolName: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-CliSessionInfo-toolName: string--><!--Device-CliSessionInfo-toolName: string-End-->
-
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
 **系统接口：** 此接口为系统接口。
-

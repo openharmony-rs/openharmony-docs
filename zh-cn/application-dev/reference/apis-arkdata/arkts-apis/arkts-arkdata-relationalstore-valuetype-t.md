@@ -1,14 +1,12 @@
 # ValueType
 
 ```TypeScript
-type ValueType = null | long | double | string | boolean | Uint8Array | Asset | Assets | Float32Array | bigint
+type ValueType = null | number | number | string | boolean | Uint8Array | Asset | Assets | Float32Array | bigint
 ```
 
 用于表示允许的数据字段类型，接口参数具体类型根据其功能而定。
 
-**起始版本：** 23
-
-<!--Device-relationalStore-type ValueType = null | long | double | string | boolean | Uint8Array | Asset | Assets | Float32Array | bigint--><!--Device-relationalStore-type ValueType = null | long | double | string | boolean | Uint8Array | Asset | Assets | Float32Array | bigint-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -24,4 +22,3 @@ type ValueType = null | long | double | string | boolean | Uint8Array | Asset | 
 | Assets | 表示值类型为附件数组Assets。[since 10] |
 | Float32Array | 表示值类型为浮点数组。[since 12] |
 | bigint | 表示值类型为任意长度的整数。[since 12] |
-

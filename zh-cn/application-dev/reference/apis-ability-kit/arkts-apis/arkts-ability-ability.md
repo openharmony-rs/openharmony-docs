@@ -2,12 +2,10 @@
 
 Ability模块将二级模块API组织在一起方便开发者进行导出。
 
-**起始版本：** 23
+**起始版本：** 9
 
 **模型约束：** 
 - API版本9-10：此接口仅可在FA模型下使用。
-
-<!--Device-unnamed-declare namespace ability--><!--Device-unnamed-declare namespace ability-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -30,4 +28,3 @@ import { ability } from '@kit.AbilityKit';
 | [DataAbilityResult](arkts-ability-ability-dataabilityresult-t.md) | DataAbilityResult二级模块。 |
 | [PacMap](arkts-ability-ability-pacmap-t.md) | PacMap二级模块。 |
 | [StartAbilityParameter](arkts-ability-ability-startabilityparameter-t.md) | StartAbilityParameter二级模块。 |
-

@@ -2,9 +2,7 @@
 
 记录端云同步过程详情。
 
-**起始版本：** 23
-
-<!--Device-relationalStore-interface ChangeInfo--><!--Device-relationalStore-interface ChangeInfo-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -17,32 +15,28 @@ import { relationalStore } from '@kit.ArkData';
 ## deleted
 
 ```TypeScript
-deleted: Array<string> | Array<long>
+deleted: Array<string> | Array<number>
 ```
 
 记录删除数据的位置，如果该表的主键是string类型，该值是主键的值，否则该值表示删除数据的行号。
 
-**类型：** Array&lt;string&gt; \| Array&lt;long&gt;
+**类型：** Array&lt;string&gt; \| Array&lt;number&gt;
 
-**起始版本：** 23
-
-<!--Device-ChangeInfo-deleted: Array<string> | Array<long>--><!--Device-ChangeInfo-deleted: Array<string> | Array<long>-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## inserted
 
 ```TypeScript
-inserted: Array<string> | Array<long>
+inserted: Array<string> | Array<number>
 ```
 
 记录插入数据的位置，如果该表的主键是string类型，该值是主键的值，否则该值表示插入数据的行号。
 
-**类型：** Array&lt;string&gt; \| Array&lt;long&gt;
+**类型：** Array&lt;string&gt; \| Array&lt;number&gt;
 
-**起始版本：** 23
-
-<!--Device-ChangeInfo-inserted: Array<string> | Array<long>--><!--Device-ChangeInfo-inserted: Array<string> | Array<long>-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -56,9 +50,7 @@ table: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ChangeInfo-table: string--><!--Device-ChangeInfo-table: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -72,25 +64,20 @@ type: ChangeType
 
 **类型：** ChangeType
 
-**起始版本：** 23
-
-<!--Device-ChangeInfo-type: ChangeType--><!--Device-ChangeInfo-type: ChangeType-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## updated
 
 ```TypeScript
-updated: Array<string> | Array<long>
+updated: Array<string> | Array<number>
 ```
 
 记录更新数据的位置，如果该表的主键是string类型，该值是主键的值，否则该值表示更新数据的行号。
 
-**类型：** Array&lt;string&gt; \| Array&lt;long&gt;
+**类型：** Array&lt;string&gt; \| Array&lt;number&gt;
 
-**起始版本：** 23
-
-<!--Device-ChangeInfo-updated: Array<string> | Array<long>--><!--Device-ChangeInfo-updated: Array<string> | Array<long>-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-

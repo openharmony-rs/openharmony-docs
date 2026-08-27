@@ -3,22 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { appControl } from '@kit.AbilityKit';
-import { bundleManager } from '@kit.AbilityKit';
-import { bundleMonitor } from '@kit.AbilityKit';
-import { bundleResourceManager } from '@kit.AbilityKit';
 import { bundle } from '@kit.AbilityKit';
-import { defaultAppManager } from '@kit.AbilityKit';
-import { distributedBundleManager } from '@kit.AbilityKit';
-import { freeInstall } from '@kit.AbilityKit';
-import { innerBundleManager, BundleStatusCallback } from '@kit.AbilityKit';
-import { installer } from '@kit.AbilityKit';
-import { launcherBundleManager } from '@kit.AbilityKit';
-import { overlay } from '@kit.AbilityKit';
-import { shortcutManager } from '@kit.AbilityKit';
-import { skillManager } from '@kit.AbilityKit';
-import { appDomainVerify } from '@kit.AbilityKit';
-import { pluginBundleManager } from '@kit.AbilityKit';
 ```
 
 ## getBundleArchiveInfo
@@ -33,8 +18,6 @@ function getBundleArchiveInfo(hapFilePath: string, bundleFlags: number, callback
 
 **废弃版本：** 9
 
-<!--Device-bundle-function getBundleArchiveInfo(hapFilePath: string, bundleFlags: number, callback: AsyncCallback<BundleInfo>): void--><!--Device-bundle-function getBundleArchiveInfo(hapFilePath: string, bundleFlags: number, callback: AsyncCallback<BundleInfo>): void-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 **参数：**
@@ -43,7 +26,7 @@ function getBundleArchiveInfo(hapFilePath: string, bundleFlags: number, callback
 | --- | --- | --- | --- |
 | hapFilePath | string | 是 | HAP存放路径，支持当前应用程序的绝对路径和数据目录沙箱路径。 |
 | bundleFlags | number | 是 | 用于指定要返回的BundleInfo对象中包含信息的标记。取值范围：参考[BundleFlag说明](arkts-ability-bundle-bundleflag-e.md)中包信息相关 flag。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[BundleInfo](arkts-ability-bundleinfo-bundleinfo-depr-i.md)&gt; | 是 | 程序启动作为入参的回调函数，返回HAP中包含的应用程序包的信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[BundleInfo](arkts-ability-bundleinfo-bundleinfo-depr-i.md)&gt; | 是 | 程序启动作为入参的回调函数，返回HAP中包含的应用程序包的信息。 |
 
 **示例**
 
@@ -74,8 +57,6 @@ function getBundleArchiveInfo(hapFilePath: string, bundleFlags: number): Promise
 **起始版本：** 7
 
 **废弃版本：** 9
-
-<!--Device-bundle-function getBundleArchiveInfo(hapFilePath: string, bundleFlags: number): Promise<BundleInfo>--><!--Device-bundle-function getBundleArchiveInfo(hapFilePath: string, bundleFlags: number): Promise<BundleInfo>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -108,4 +89,3 @@ bundle.getBundleArchiveInfo(hapFilePath, bundleFlags)
     console.error('Operation failed. Cause: ' + JSON.stringify(error));
   })
 ```
-

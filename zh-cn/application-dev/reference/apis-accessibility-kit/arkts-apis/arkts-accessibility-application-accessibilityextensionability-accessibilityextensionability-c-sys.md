@@ -1,10 +1,9 @@
 # AccessibilityExtensionAbility
 
-AccessibilityExtensionAbility基于ExtensionAbility框架，提供辅助功能扩展业务的能力。
+AccessibilityExtensionAbility基于ExtensionAbility框架，提供无障碍扩展业务的能力，包括连接无障碍服务、断开无障碍服务、处理无障碍事件和处理无障碍按键事件等。  
+**生命周期流程：** onAccessibilityConnect（连接回调，用于初始化）→ onAccessibilityEventInfo/onAccessibilityKeyEvent（处理无障碍事件和按键事件）→ onAccessibilityDisconnect（断开回调，用于资源回收）。
 
-**起始版本：** 23
-
-<!--Device-unnamed-declare class AccessibilityExtensionAbility--><!--Device-unnamed-declare class AccessibilityExtensionAbility-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -12,7 +11,6 @@ AccessibilityExtensionAbility基于ExtensionAbility框架，提供辅助功能�
 
 ```TypeScript
 import { AccessibilityExtensionAbility, AccessibilityElement, AccessibilityExtensionContext, ElementAttributeKeys, ElementAttributeValues, FocusDirection, FocusType, Rect, WindowType, AccessibilityEvent, AccessibilityEventInfo, Parameter, FocusRule, FocusCondition, FocusMoveResult, AccessibilityVirtualNode, TouchPosition } from '@kit.AccessibilityKit';
-import { AccessibilityExtensionAbility, AccessibilityElement, AccessibilityExtensionContext, FocusDirection, Rect, WindowType, AccessibilityEventInfo, Parameter, FocusRule, FocusCondition, FocusMoveResult, AccessibilityVirtualNode, TouchPosition } from '@kit.AccessibilityKit';
 ```
 
 ## onAccessibilityConnect
@@ -21,13 +19,11 @@ import { AccessibilityExtensionAbility, AccessibilityElement, AccessibilityExten
 onAccessibilityConnect(): void
 ```
 
-连接无障碍服务成功后的回调函数。 用户启用AccessibilityExtensionAbility时，系统服务完成连接后回调该接口，通知Ability已成功连接。开发者可在该方法中完成初始化业务逻辑操作，该方法可选择性重写。
+连接无障碍服务成功后的回调函数。用户启用AccessibilityExtensionAbility时，系统服务完成连接后回调该接口，通知Ability已成功连接。开发者可在该方法中完成初始化业务逻辑操作，该方法可选择性重写。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
-
-<!--Device-AccessibilityExtensionAbility-onAccessibilityConnect(): void--><!--Device-AccessibilityExtensionAbility-onAccessibilityConnect(): void-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -58,13 +54,11 @@ class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
 onAccessibilityDisconnect(): void
 ```
 
-断开无障碍服务成功后的回调函数。 用户停用AccessibilityExtensionAbility时，系统服务完成断开连接后回调该接口，可在该方法中执行资源回收和退出业务操作。该方法可选择性重写。
+断开无障碍服务成功后的回调函数。用户停用AccessibilityExtensionAbility时，系统服务完成断开连接后回调该接口，可在该方法中执行资源回收和退出业务操作。该方法可选择性重写。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
-
-<!--Device-AccessibilityExtensionAbility-onAccessibilityDisconnect(): void--><!--Device-AccessibilityExtensionAbility-onAccessibilityDisconnect(): void-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -97,11 +91,9 @@ onAccessibilityEventInfo(event: AccessibilityEventInfo): void
 
 当无障碍事件发生时，系统将事件分发至已连接的AccessibilityExtensionAbility并回调该接口，可根据事件信息处理业务逻辑。通常需要重写。事件类型的详细说明请参见 [AccessibilityEventType](arkts-accessibility-accessibility-accessibilityeventtype-e-sys.md)。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
-
-<!--Device-AccessibilityExtensionAbility-onAccessibilityEventInfo(event: AccessibilityEventInfo): void--><!--Device-AccessibilityExtensionAbility-onAccessibilityEventInfo(event: AccessibilityEventInfo): void-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -143,11 +135,9 @@ onAccessibilityKeyEvent(keyEvent: KeyEvent): boolean
 
 在按键按下时回调该接口，可在该方法中根据业务判断是否消费事件。该方法可选择性重写。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
-
-<!--Device-AccessibilityExtensionAbility-onAccessibilityKeyEvent(keyEvent: KeyEvent): boolean--><!--Device-AccessibilityExtensionAbility-onAccessibilityKeyEvent(keyEvent: KeyEvent): boolean-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -163,7 +153,7 @@ onAccessibilityKeyEvent(keyEvent: KeyEvent): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 返回true表示此事件被消费，不会继续传递。 <br>返回false表示此事件未被消费，会继续传递。 |
+| boolean | 返回true表示此事件被消费，不会继续传递。 |
 
 **错误码：**
 
@@ -189,4 +179,3 @@ class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
   }
 }
 ```
-

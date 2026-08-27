@@ -2,9 +2,7 @@
 
 包含基本业务路由信息。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface BusinessAbilityInfo--><!--Device-unnamed-export interface BusinessAbilityInfo-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -20,9 +18,7 @@ readonly applicationInfo: ApplicationInfo
 
 **类型：** [ApplicationInfo](arkts-ability-applicationinfo-i.md)
 
-**起始版本：** 23
-
-<!--Device-BusinessAbilityInfo-readonly applicationInfo: ApplicationInfo--><!--Device-BusinessAbilityInfo-readonly applicationInfo: ApplicationInfo-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -38,9 +34,7 @@ readonly bundleName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-BusinessAbilityInfo-readonly bundleName: string--><!--Device-BusinessAbilityInfo-readonly bundleName: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -56,9 +50,7 @@ readonly businessType: businessAbilityRouter.BusinessType
 
 **类型：** businessAbilityRouter.BusinessType
 
-**起始版本：** 23
-
-<!--Device-BusinessAbilityInfo-readonly businessType: businessAbilityRouter.BusinessType--><!--Device-BusinessAbilityInfo-readonly businessType: businessAbilityRouter.BusinessType-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -67,16 +59,14 @@ readonly businessType: businessAbilityRouter.BusinessType
 ## descriptionId
 
 ```TypeScript
-readonly descriptionId: int
+readonly descriptionId: number
 ```
 
 描述信息的资源id。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-BusinessAbilityInfo-readonly descriptionId: int--><!--Device-BusinessAbilityInfo-readonly descriptionId: int-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -85,16 +75,14 @@ readonly descriptionId: int
 ## iconId
 
 ```TypeScript
-readonly iconId: int
+readonly iconId: number
 ```
 
 描述ability信息的图标id。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-BusinessAbilityInfo-readonly iconId: int--><!--Device-BusinessAbilityInfo-readonly iconId: int-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -103,16 +91,14 @@ readonly iconId: int
 ## labelId
 
 ```TypeScript
-readonly labelId: int
+readonly labelId: number
 ```
 
 模块标签的资源id。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-BusinessAbilityInfo-readonly labelId: int--><!--Device-BusinessAbilityInfo-readonly labelId: int-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -128,9 +114,7 @@ readonly moduleName: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-BusinessAbilityInfo-readonly moduleName: string--><!--Device-BusinessAbilityInfo-readonly moduleName: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -146,11 +130,8 @@ readonly name: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-BusinessAbilityInfo-readonly name: string--><!--Device-BusinessAbilityInfo-readonly name: string-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
-

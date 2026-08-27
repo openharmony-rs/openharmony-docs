@@ -10,14 +10,11 @@
 
 **替代接口：** SingleKVStore
 
-<!--Device-distributedData-interface SingleKVStore--><!--Device-distributedData-interface SingleKVStore-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## 导入模块
 
 ```TypeScript
-import { distributedDataObject } from '@kit.ArkData';
 ```
 
 ## closeResultSet
@@ -34,8 +31,6 @@ closeResultSet(resultSet: KvStoreResultSet, callback: AsyncCallback<void>): void
 
 **替代接口：** closeResultSet
 
-<!--Device-SingleKVStore-closeResultSet(resultSet: KvStoreResultSet, callback: AsyncCallback<void>): void--><!--Device-SingleKVStore-closeResultSet(resultSet: KvStoreResultSet, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **参数：**
@@ -43,13 +38,30 @@ closeResultSet(resultSet: KvStoreResultSet, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resultSet | [KvStoreResultSet](arkts-arkdata-distributeddata-kvstoreresultset-i.md) | 是 | 表示要关闭的KvStoreResultSet对象。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **示例**
 
 ```TypeScript
 let kvStore;
 try {
+    let resultSet = null;
+    kvStore.closeResultSet(resultSet, function (err, data) {
+        if (err == undefined) {
+            console.log('closeResultSet success');
+        } else {
+            console.log('closeResultSet fail');
+        }
+    });
+}catch(e) {
+    console.log('CloseResultSet e ' + e);
+}
+```
+
+```TypeScript
+let kvStore;
+try {
+    console.log('CloseResultSet success');
     let resultSet = null;
     kvStore.closeResultSet(resultSet, function (err, data) {
         if (err == undefined) {
@@ -77,8 +89,6 @@ closeResultSet(resultSet: KvStoreResultSet): Promise<void>
 
 **替代接口：** closeResultSet
 
-<!--Device-SingleKVStore-closeResultSet(resultSet: KvStoreResultSet): Promise<void>--><!--Device-SingleKVStore-closeResultSet(resultSet: KvStoreResultSet): Promise<void>-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **参数：**
@@ -91,13 +101,28 @@ closeResultSet(resultSet: KvStoreResultSet): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
 ```TypeScript
 let kvStore;
 try {
+    let resultSet = null;
+    kvStore.closeResultSet(resultSet).then(() => {
+        console.log('closeResultSet success');
+    }).catch((err) => {
+        console.log('closeResultSet fail ' + JSON.stringify(err));
+    });
+}catch(e) {
+    console.log('CloseResultSet e ' + e);
+}
+```
+
+```TypeScript
+let kvStore;
+try {
+    console.log('CloseResultSet success');
     let resultSet = null;
     kvStore.closeResultSet(resultSet).then(() => {
         console.log('closeResultSet success');
@@ -123,8 +148,6 @@ get(key: string, callback: AsyncCallback<Uint8Array | string | boolean | number>
 
 **替代接口：** get
 
-<!--Device-SingleKVStore-get(key: string, callback: AsyncCallback<Uint8Array | string | boolean | number>): void--><!--Device-SingleKVStore-get(key: string, callback: AsyncCallback<Uint8Array | string | boolean | number>): void-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **参数：**
@@ -132,7 +155,7 @@ get(key: string, callback: AsyncCallback<Uint8Array | string | boolean | number>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | key | string | 是 | 要查询数据的key，不能为空且长度不大于[MAX_KEY_LENGTH](arkts-arkdata-distributeddata-constants-n.md)。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Uint8Array \| string \| boolean \| number&gt; | 是 | 回调函数。返回获取查询的值。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Uint8Array \| string \| boolean \| number & gt; | 是 | 回调函数。返回获取查询的值。 |
 
 **示例**
 
@@ -170,8 +193,6 @@ get(key: string): Promise<Uint8Array | string | boolean | number>
 
 **替代接口：** get
 
-<!--Device-SingleKVStore-get(key: string): Promise<Uint8Array | string | boolean | number>--><!--Device-SingleKVStore-get(key: string): Promise<Uint8Array | string | boolean | number>-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **参数：**
@@ -184,7 +205,7 @@ get(key: string): Promise<Uint8Array | string | boolean | number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Uint8Array \| string \| boolean \| number&gt; | Promise对象。返回获取查询的值。 |
+| Promise & lt;Uint8Array \ | string \| boolean \| number & gt; | Promise对象。返回获取查询的值。 |
 
 **示例**
 
@@ -222,8 +243,6 @@ getEntries(keyPrefix: string, callback: AsyncCallback<Entry[]>): void
 
 **替代接口：** getEntries
 
-<!--Device-SingleKVStore-getEntries(keyPrefix: string, callback: AsyncCallback<Entry[]>): void--><!--Device-SingleKVStore-getEntries(keyPrefix: string, callback: AsyncCallback<Entry[]>): void-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **参数：**
@@ -231,7 +250,7 @@ getEntries(keyPrefix: string, callback: AsyncCallback<Entry[]>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | keyPrefix | string | 是 | 表示要匹配的键前缀。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Entry[]&gt; | 是 | 回调函数。返回匹配指定前缀的键值对列表。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Entry[]&gt; | 是 | 回调函数。返回匹配指定前缀的键值对列表。 |
 
 **示例**
 
@@ -277,8 +296,6 @@ getEntries(keyPrefix: string): Promise<Entry[]>
 
 **替代接口：** getEntries
 
-<!--Device-SingleKVStore-getEntries(keyPrefix: string): Promise<Entry[]>--><!--Device-SingleKVStore-getEntries(keyPrefix: string): Promise<Entry[]>-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **参数：**
@@ -291,7 +308,7 @@ getEntries(keyPrefix: string): Promise<Entry[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Entry[]&gt; | Promise对象。返回匹配指定前缀的键值对列表。 |
+| Promise & lt;Entry[] & gt; | Promise对象。返回匹配指定前缀的键值对列表。 |
 
 **示例**
 
@@ -344,8 +361,6 @@ getEntries(query: Query, callback: AsyncCallback<Entry[]>): void
 
 **替代接口：** getEntries
 
-<!--Device-SingleKVStore-getEntries(query: Query, callback: AsyncCallback<Entry[]>): void--><!--Device-SingleKVStore-getEntries(query: Query, callback: AsyncCallback<Entry[]>): void-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **参数：**
@@ -353,7 +368,7 @@ getEntries(query: Query, callback: AsyncCallback<Entry[]>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | query | Query | 是 | 表示要匹配的键前缀。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Entry[]&gt; | 是 | 回调函数。返回与指定Query对象匹配的键值对列表。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Entry[]&gt; | 是 | 回调函数。返回与指定Query对象匹配的键值对列表。 |
 
 **示例**
 
@@ -390,6 +405,40 @@ try {
 }
 ```
 
+```TypeScript
+let kvStore;
+try {
+    var arr = new Uint8Array([21,31]);
+    let entries = [];
+    for (var i = 0; i < 10; i++) {
+        var key = 'batch_test_bool_key';
+        var entry = {
+            key : key + i,
+            value : {
+                type : distributedData.ValueType.BYTE_ARRAY,
+                value : arr
+            }
+        }
+        entries.push(entry);
+    }
+    console.log('entries: ' + JSON.stringify(entries));
+    kvStore.putBatch(entries, async function (err,data) {
+        console.log('putBatch success');
+        const query = new distributedData.Query();
+        query.prefixKey("batch_test");
+        query.deviceId('localDeviceId');
+        kvStore.getEntries(query, function (err,entries) {
+            console.log('getEntries success');
+            console.log('entries.length: ' + entries.length);
+            console.log('entries[0]: ' + JSON.stringify(entries[0]));
+        });
+    });
+    console.log('GetEntries success');
+}catch(e) {
+    console.log('GetEntries e ' + e);
+}
+```
+
 ## getEntries
 
 ```TypeScript
@@ -404,8 +453,6 @@ getEntries(query: Query): Promise<Entry[]>
 
 **替代接口：** getEntries
 
-<!--Device-SingleKVStore-getEntries(query: Query): Promise<Entry[]>--><!--Device-SingleKVStore-getEntries(query: Query): Promise<Entry[]>-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **参数：**
@@ -418,7 +465,7 @@ getEntries(query: Query): Promise<Entry[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Entry[]&gt; | Promise对象。返回与指定Query对象匹配的键值对列表。 |
+| Promise & lt;Entry[] & gt; | Promise对象。返回与指定Query对象匹配的键值对列表。 |
 
 **示例**
 
@@ -471,8 +518,6 @@ getResultSet(keyPrefix: string, callback: AsyncCallback<KvStoreResultSet>): void
 
 **替代接口：** getResultSet
 
-<!--Device-SingleKVStore-getResultSet(keyPrefix: string, callback: AsyncCallback<KvStoreResultSet>): void--><!--Device-SingleKVStore-getResultSet(keyPrefix: string, callback: AsyncCallback<KvStoreResultSet>): void-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **参数：**
@@ -480,7 +525,7 @@ getResultSet(keyPrefix: string, callback: AsyncCallback<KvStoreResultSet>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | keyPrefix | string | 是 | 表示要匹配的键前缀。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[KvStoreResultSet](arkts-arkdata-distributeddata-kvstoreresultset-i.md)&gt; | 是 | 回调函数。返回具有指定前缀的结果集。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[KvStoreResultSet](arkts-arkdata-distributeddata-kvstoreresultset-i.md)&gt; | 是 | 回调函数。返回具有指定前缀的结果集。 |
 
 **示例**
 
@@ -528,8 +573,6 @@ getResultSet(keyPrefix: string): Promise<KvStoreResultSet>
 **废弃版本：** 9
 
 **替代接口：** getResultSet
-
-<!--Device-SingleKVStore-getResultSet(keyPrefix: string): Promise<KvStoreResultSet>--><!--Device-SingleKVStore-getResultSet(keyPrefix: string): Promise<KvStoreResultSet>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -598,8 +641,6 @@ getResultSet(query: Query, callback: AsyncCallback<KvStoreResultSet>): void
 
 **替代接口：** getResultSet
 
-<!--Device-SingleKVStore-getResultSet(query: Query, callback: AsyncCallback<KvStoreResultSet>): void--><!--Device-SingleKVStore-getResultSet(query: Query, callback: AsyncCallback<KvStoreResultSet>): void-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **参数：**
@@ -607,7 +648,7 @@ getResultSet(query: Query, callback: AsyncCallback<KvStoreResultSet>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | query | Query | 是 | 表示查询对象。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[KvStoreResultSet](arkts-arkdata-distributeddata-kvstoreresultset-i.md)&gt; | 是 | 回调函数，获取与指定Query对象匹配的KvStoreResultSet对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[KvStoreResultSet](arkts-arkdata-distributeddata-kvstoreresultset-i.md)&gt; | 是 | 回调函数，获取与指定Query对象匹配的KvStoreResultSet对象。 |
 
 **示例**
 
@@ -641,6 +682,40 @@ try {
 }
 ```
 
+```TypeScript
+let kvStore;
+try {
+    let resultSet;
+    let entries = [];
+    for (var i = 0; i < 10; i++) {
+        var key = 'batch_test_string_key';
+        var entry = {
+            key : key + i,
+            value : {
+                type : distributedData.ValueType.STRING,
+                value : 'batch_test_string_value'
+            }
+        }
+        entries.push(entry);
+    }
+    kvStore.putBatch(entries, async function (err, data) {
+        console.log('putBatch success');
+        const query = new distributedData.Query();
+        query.prefixKey("batch_test");
+        query.deviceId('localDeviceId');
+        kvStore.getResultSet(query, async function (err, result) {
+            console.log('getResultSet succeed.');
+            resultSet = result;
+            kvStore.closeResultSet(resultSet, function (err, data) {
+                console.log('closeResultSet success');
+            })
+        });
+    });
+} catch(e) {
+    console.log('GetResultSet e ' + e);
+}
+```
+
 ## getResultSet
 
 ```TypeScript
@@ -654,8 +729,6 @@ getResultSet(query: Query): Promise<KvStoreResultSet>
 **废弃版本：** 9
 
 **替代接口：** getResultSet
-
-<!--Device-SingleKVStore-getResultSet(query: Query): Promise<KvStoreResultSet>--><!--Device-SingleKVStore-getResultSet(query: Query): Promise<KvStoreResultSet>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -707,6 +780,47 @@ try {
 }
 ```
 
+```TypeScript
+let kvStore;
+try {
+    let resultSet;
+    let entries = [];
+    for (var i = 0; i < 10; i++) {
+        var key = 'batch_test_string_key';
+        var entry = {
+            key : key + i,
+            value : {
+                type : distributedData.ValueType.STRING,
+                value : 'batch_test_string_value'
+            }
+        }
+        entries.push(entry);
+    }
+    kvStore.putBatch(entries).then(async (err) => {
+        console.log('putBatch success');
+    }).catch((err) => {
+        console.log('putBatch fail ' + err);
+    });
+    const query = new distributedData.Query();
+    query.deviceId('localDeviceId');
+    query.prefixKey("batch_test");
+    console.log("GetResultSet " + query.getSqlLike());
+    kvStore.getResultSet(query).then((result) => {
+        console.log('getResultSet succeed.');
+        resultSet = result;
+    }).catch((err) => {
+        console.log('getResultSet failed: ' + JSON.stringify(err));
+    });
+    kvStore.closeResultSet(resultSet).then((err) => {
+        console.log('closeResultSet success');
+    }).catch((err) => {
+        console.log('closeResultSet fail ' + JSON.stringify(err));
+    });
+}catch(e) {
+    console.log('GetResultSet e ' + e);
+}
+```
+
 ## getResultSize
 
 ```TypeScript
@@ -721,8 +835,6 @@ getResultSize(query: Query, callback: AsyncCallback<number>): void
 
 **替代接口：** getResultSize
 
-<!--Device-SingleKVStore-getResultSize(query: Query, callback: AsyncCallback<number>): void--><!--Device-SingleKVStore-getResultSize(query: Query, callback: AsyncCallback<number>): void-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **参数：**
@@ -730,7 +842,7 @@ getResultSize(query: Query, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | query | Query | 是 | 表示查询对象。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。返回与指定Query对象匹配的结果数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。返回与指定Query对象匹配的结果数。 |
 
 **示例**
 
@@ -762,6 +874,35 @@ try {
 }
 ```
 
+```TypeScript
+let kvStore;
+try {
+    let entries = [];
+    for (var i = 0; i < 10; i++) {
+        var key = 'batch_test_string_key';
+        var entry = {
+            key : key + i,
+            value : {
+                type : distributedData.ValueType.STRING,
+                value : 'batch_test_string_value'
+            }
+        }
+        entries.push(entry);
+    }
+    kvStore.putBatch(entries, async function (err, data) {
+        console.log('putBatch success');
+        const query = new distributedData.Query();
+        query.prefixKey("batch_test");
+        query.deviceId('localDeviceId');
+        kvStore.getResultSize(query, async function (err, resultSize) {
+            console.log('getResultSet succeed.');
+        });
+    });
+} catch(e) {
+    console.log('GetResultSize e ' + e);
+}
+```
+
 ## getResultSize
 
 ```TypeScript
@@ -776,8 +917,6 @@ getResultSize(query: Query): Promise<number>
 
 **替代接口：** getResultSize
 
-<!--Device-SingleKVStore-getResultSize(query: Query): Promise<number>--><!--Device-SingleKVStore-getResultSize(query: Query): Promise<number>-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **参数：**
@@ -790,7 +929,7 @@ getResultSize(query: Query): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象。获取与指定Query对象匹配的结果数。 |
+| Promise & lt;number & gt; | Promise对象。获取与指定Query对象匹配的结果数。 |
 
 **示例**
 
@@ -826,6 +965,39 @@ try {
 }
 ```
 
+```TypeScript
+let kvStore;
+try {
+    let entries = [];
+    for (var i = 0; i < 10; i++) {
+        var key = 'batch_test_string_key';
+        var entry = {
+            key : key + i,
+            value : {
+                type : distributedData.ValueType.STRING,
+                value : 'batch_test_string_value'
+            }
+        }
+        entries.push(entry);
+    }
+    kvStore.putBatch(entries).then(async (err) => {
+        console.log('putBatch success');
+    }).catch((err) => {
+        console.log('putBatch fail ' + JSON.stringify(err));
+    });
+    const query = new distributedData.Query();
+    query.prefixKey("batch_test");
+    query.deviceId('localDeviceId');
+    kvStore.getResultSize(query).then((resultSize) => {
+        console.log('getResultSet succeed.');
+    }).catch((err) => {
+        console.log('getResultSet failed: ' + JSON.stringify(err));
+    });
+}catch(e) {
+    console.log('GetResultSize e ' + e);
+}
+```
+
 ## getSecurityLevel
 
 ```TypeScript
@@ -840,15 +1012,13 @@ getSecurityLevel(callback: AsyncCallback<SecurityLevel>): void
 
 **替代接口：** getSecurityLevel
 
-<!--Device-SingleKVStore-getSecurityLevel(callback: AsyncCallback<SecurityLevel>): void--><!--Device-SingleKVStore-getSecurityLevel(callback: AsyncCallback<SecurityLevel>): void-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;SecurityLevel&gt; | 是 | 回调函数。返回数据库的安全级别。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;SecurityLevel&gt; | 是 | 回调函数。返回数据库的安全级别。 |
 
 **示例**
 
@@ -877,15 +1047,13 @@ getSecurityLevel(): Promise<SecurityLevel>
 
 **替代接口：** getSecurityLevel
 
-<!--Device-SingleKVStore-getSecurityLevel(): Promise<SecurityLevel>--><!--Device-SingleKVStore-getSecurityLevel(): Promise<SecurityLevel>-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;SecurityLevel&gt; | Promise对象。返回数据库的安全级别。 |
+| Promise & lt;SecurityLevel & gt; | Promise对象。返回数据库的安全级别。 |
 
 **示例**
 
@@ -902,7 +1070,7 @@ try {
 }
 ```
 
-## off_dataChange
+## off
 
 ```TypeScript
 off(event: 'dataChange', listener?: Callback<ChangeNotification>): void
@@ -916,8 +1084,6 @@ off(event: 'dataChange', listener?: Callback<ChangeNotification>): void
 
 **替代接口：** off
 
-<!--Device-SingleKVStore-off(event: 'dataChange', listener?: Callback<ChangeNotification>): void--><!--Device-SingleKVStore-off(event: 'dataChange', listener?: Callback<ChangeNotification>): void-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **参数：**
@@ -925,7 +1091,7 @@ off(event: 'dataChange', listener?: Callback<ChangeNotification>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'dataChange' | 是 | 取消订阅的事件名，固定为'dataChange'，表示数据变更事件。 |
-| listener | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;ChangeNotification&gt; | 否 | 取消订阅的函数。如不设置callback，则取消所有订阅的函数。 |
+| listener | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;ChangeNotification&gt; | 否 | 取消订阅的函数。如不设置callback，则取消所有订阅的函数。 |
 
 **示例**
 
@@ -948,7 +1114,7 @@ class KvstoreModel {
 }
 ```
 
-## off_syncComplete
+## off
 
 ```TypeScript
 off(event: 'syncComplete', syncCallback?: Callback<Array<[string, number]>>): void
@@ -962,8 +1128,6 @@ off(event: 'syncComplete', syncCallback?: Callback<Array<[string, number]>>): vo
 
 **替代接口：** off
 
-<!--Device-SingleKVStore-off(event: 'syncComplete', syncCallback?: Callback<Array<[string, number]>>): void--><!--Device-SingleKVStore-off(event: 'syncComplete', syncCallback?: Callback<Array<[string, number]>>): void-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **参数：**
@@ -971,7 +1135,7 @@ off(event: 'syncComplete', syncCallback?: Callback<Array<[string, number]>>): vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'syncComplete' | 是 | 取消订阅的事件名，固定为'syncComplete'，表示同步完成事件。 |
-| syncCallback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;Array&lt;[string, number]&gt;&gt; | 否 | 取消订阅的函数。如不设置callback，则取消所有订阅的函数。 |
+| syncCallback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;[string, number]&gt;&gt; | 否 | 取消订阅的函数。如不设置callback，则取消所有订阅的函数。 |
 
 **示例**
 
@@ -994,7 +1158,7 @@ class KvstoreModel {
 }
 ```
 
-## on_dataChange
+## on
 
 ```TypeScript
 on(event: 'dataChange', type: SubscribeType, listener: Callback<ChangeNotification>): void
@@ -1008,8 +1172,6 @@ on(event: 'dataChange', type: SubscribeType, listener: Callback<ChangeNotificati
 
 **替代接口：** on
 
-<!--Device-SingleKVStore-on(event: 'dataChange', type: SubscribeType, listener: Callback<ChangeNotification>): void--><!--Device-SingleKVStore-on(event: 'dataChange', type: SubscribeType, listener: Callback<ChangeNotification>): void-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **参数：**
@@ -1018,7 +1180,7 @@ on(event: 'dataChange', type: SubscribeType, listener: Callback<ChangeNotificati
 | --- | --- | --- | --- |
 | event | 'dataChange' | 是 | 订阅的事件名，固定为'dataChange'，表示数据变更事件。 |
 | type | SubscribeType | 是 | 表示订阅的类型。 |
-| listener | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;ChangeNotification&gt; | 是 | 回调函数。 |
+| listener | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;ChangeNotification&gt; | 是 | 回调函数。 |
 
 **示例**
 
@@ -1029,7 +1191,7 @@ kvStore.on('dataChange', distributedData.SubscribeType.SUBSCRIBE_TYPE_LOCAL, fun
 });
 ```
 
-## on_syncComplete
+## on
 
 ```TypeScript
 on(event: 'syncComplete', syncCallback: Callback<Array<[string, number]>>): void
@@ -1043,8 +1205,6 @@ on(event: 'syncComplete', syncCallback: Callback<Array<[string, number]>>): void
 
 **替代接口：** on
 
-<!--Device-SingleKVStore-on(event: 'syncComplete', syncCallback: Callback<Array<[string, number]>>): void--><!--Device-SingleKVStore-on(event: 'syncComplete', syncCallback: Callback<Array<[string, number]>>): void-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **参数：**
@@ -1052,7 +1212,7 @@ on(event: 'syncComplete', syncCallback: Callback<Array<[string, number]>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'syncComplete' | 是 | 订阅的事件名，固定为'syncComplete'，表示同步完成事件。 |
-| syncCallback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;Array&lt;[string, number]&gt;&gt; | 是 | 回调函数。用于向调用方发送同步结果的回调。 |
+| syncCallback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;[string, number]&gt;&gt; | 是 | 回调函数。用于向调用方发送同步结果的回调。 |
 
 **示例**
 
@@ -1080,15 +1240,22 @@ try {
 removeDeviceData(deviceId: string, callback: AsyncCallback<void>): void
 ```
 
-删除指定设备的数据，使用callback异步回调。 > **说明：** > > 其中deviceId通过调用<!--RP1--> > [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync) > 方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。 > > deviceId具体获取方式请参考[sync接口示例](#sync)。
+删除指定设备的数据，使用callback异步回调。
+
+> **说明：**
+> 
+> 其中deviceId通过调用<!--RP1--
+> 
+> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync)
+> 方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
+> 
+> deviceId具体获取方式请参考[sync接口示例](#sync)。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
 **替代接口：** removeDeviceData
-
-<!--Device-SingleKVStore-removeDeviceData(deviceId: string, callback: AsyncCallback<void>): void--><!--Device-SingleKVStore-removeDeviceData(deviceId: string, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -1097,7 +1264,7 @@ removeDeviceData(deviceId: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | deviceId | string | 是 | 表示要删除设备的名称。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **示例**
 
@@ -1125,21 +1292,52 @@ try {
 }
 ```
 
+```TypeScript
+let kvStore;
+const KEY_TEST_STRING_ELEMENT = 'key_test_string';
+const VALUE_TEST_STRING_ELEMENT = 'value-string-001';
+try {
+    kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, async function (err,data) {
+        console.log('RemoveDeviceData  put success');
+        const deviceid = 'no_exist_device_id';
+        kvStore.removeDeviceData(deviceid, async function (err,data) {
+            if (err == undefined) {
+                console.log('removeDeviceData success');
+            } else {
+                console.log('removeDeviceData fail');
+                kvStore.get('localDeviceId', KEY_TEST_STRING_ELEMENT, async function (err,data) {
+                    console.log('RemoveDeviceData get success');
+                });
+            }
+        });
+    });
+}catch(e) {
+    console.log('RemoveDeviceData e ' + e);
+}
+```
+
 ## removeDeviceData
 
 ```TypeScript
 removeDeviceData(deviceId: string): Promise<void>
 ```
 
-删除指定设备的数据，使用Promise异步回调。 > **说明：** > > 其中deviceId通过调用<!--RP1--> > [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync) > 方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。 > > deviceId具体获取方式请参考[sync接口示例](#sync)。
+删除指定设备的数据，使用Promise异步回调。
+
+> **说明：**
+> 
+> 其中deviceId通过调用<!--RP1--
+> 
+> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync)
+> 方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
+> 
+> deviceId具体获取方式请参考[sync接口示例](#sync)。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
 **替代接口：** removeDeviceData
-
-<!--Device-SingleKVStore-removeDeviceData(deviceId: string): Promise<void>--><!--Device-SingleKVStore-removeDeviceData(deviceId: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -1153,7 +1351,7 @@ removeDeviceData(deviceId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -1183,6 +1381,32 @@ try {
 }
 ```
 
+```TypeScript
+let kvStore;
+const KEY_TEST_STRING_ELEMENT = 'key_test_string';
+const VALUE_TEST_STRING_ELEMENT = 'value-string-001';
+try {
+    kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT).then((err) => {
+        console.log('RemoveDeviceData put success');
+    }).catch((err) => {
+        console.log('RemoveDeviceData put fail ' + JSON.stringify(err));
+    });
+    const deviceid = 'no_exist_device_id';
+    kvStore.removeDeviceData(deviceid).then((err) => {
+        console.log('removeDeviceData success');
+    }).catch((err) => {
+        console.log('removeDeviceData fail ' + JSON.stringify(err));
+    });
+    kvStore.get('localDeviceId', KEY_TEST_STRING_ELEMENT).then((data) => {
+        console.log('RemoveDeviceData get success data:' + data);
+    }).catch((err) => {
+        console.log('RemoveDeviceData get fail ' + JSON.stringify(err));
+    });
+}catch(e) {
+    console.log('RemoveDeviceData e ' + e);
+}
+```
+
 ## setSyncParam
 
 ```TypeScript
@@ -1197,8 +1421,6 @@ setSyncParam(defaultAllowedDelayMs: number, callback: AsyncCallback<void>): void
 
 **替代接口：** setSyncParam
 
-<!--Device-SingleKVStore-setSyncParam(defaultAllowedDelayMs: number, callback: AsyncCallback<void>): void--><!--Device-SingleKVStore-setSyncParam(defaultAllowedDelayMs: number, callback: AsyncCallback<void>): void-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **参数：**
@@ -1206,7 +1428,7 @@ setSyncParam(defaultAllowedDelayMs: number, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | defaultAllowedDelayMs | number | 是 | 表示数据库同步允许的默认延迟，以毫秒为单位。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **示例**
 
@@ -1236,8 +1458,6 @@ setSyncParam(defaultAllowedDelayMs: number): Promise<void>
 
 **替代接口：** setSyncParam
 
-<!--Device-SingleKVStore-setSyncParam(defaultAllowedDelayMs: number): Promise<void>--><!--Device-SingleKVStore-setSyncParam(defaultAllowedDelayMs: number): Promise<void>-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **参数：**
@@ -1250,7 +1470,7 @@ setSyncParam(defaultAllowedDelayMs: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -1274,7 +1494,14 @@ try {
 sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 ```
 
-在手动同步方式下，触发数据库同步。 > **说明：** > > 其中deviceIds为<!--RP2-->[DeviceInfo](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-deviceinfo-i-sys.md)中的 > networkId, 通过调用 > [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync) > 方法得到。<!--RP2End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
+在手动同步方式下，触发数据库同步。
+
+> **说明：**
+> 
+> 其中deviceIds为<!--RP2-->[DeviceInfo](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-deviceinfo-i-sys.md)中的
+> networkId, 通过调用
+> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync)
+> 方法得到。<!--RP2End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
 
 **起始版本：** 7
 
@@ -1283,8 +1510,6 @@ sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 **替代接口：** sync
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
-
-<!--Device-SingleKVStore-sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void--><!--Device-SingleKVStore-sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -1335,4 +1560,3 @@ deviceManager.createDeviceManager('bundleName', (err, value) => {
   }
 });
 ```
-

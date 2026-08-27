@@ -20,8 +20,6 @@ function execCmd(cmd: string, execCmdOptions?: ExecCmdOptions): Promise<CliSessi
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-cliManager-function execCmd(cmd: string, execCmdOptions?: ExecCmdOptions): Promise<CliSessionInfo>--><!--Device-cliManager-function execCmd(cmd: string, execCmdOptions?: ExecCmdOptions): Promise<CliSessionInfo>-End-->
-
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -43,8 +41,7 @@ function execCmd(cmd: string, execCmdOptions?: ExecCmdOptions): Promise<CliSessi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [35600031](../errorcode-ability.md#35600031-工具并发数已达上限) | Maximum number of processes has been reached. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [35600031](../errorcode-ability.md#35600031-工具并发数已达上限) | Maximum number of processes has been reached. |
 | [35600050](../errorcode-ability.md#35600050-偶发性报错) | System Error. 1. Failed to connect to the system service; 2. The system service failed to communicate with the dependent module. |
-

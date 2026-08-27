@@ -2,9 +2,7 @@
 
 支柱样式，用于控制绘制文本的行间距、基线对齐方式以及其他与行高相关的属性，默认不开启。
 
-**起始版本：** 23
-
-<!--Device-text-interface StrutStyle--><!--Device-text-interface StrutStyle-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -24,11 +22,9 @@ enabled?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-StrutStyle-enabled?: boolean--><!--Device-StrutStyle-enabled?: boolean-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -42,29 +38,25 @@ fontFamilies?: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-StrutStyle-fontFamilies?: Array<string>--><!--Device-StrutStyle-fontFamilies?: Array<string>-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## fontSize
 
 ```TypeScript
-fontSize?: double
+fontSize?: number
 ```
 
 字体大小，浮点数，默认为14.0，单位为物理像素px。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-StrutStyle-fontSize?: double--><!--Device-StrutStyle-fontSize?: double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -78,11 +70,9 @@ fontStyle?: FontStyle
 
 **类型：** FontStyle
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-StrutStyle-fontStyle?: FontStyle--><!--Device-StrutStyle-fontStyle?: FontStyle-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -96,11 +86,9 @@ fontWeight?: FontWeight
 
 **类型：** FontWeight
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-StrutStyle-fontWeight?: FontWeight--><!--Device-StrutStyle-fontWeight?: FontWeight-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -114,11 +102,9 @@ fontWidth?: FontWidth
 
 **类型：** [FontWidth](arkts-arkgraphics2d-text-fontwidth-e.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-StrutStyle-fontWidth?: FontWidth--><!--Device-StrutStyle-fontWidth?: FontWidth-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -132,11 +118,9 @@ forceHeight?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-StrutStyle-forceHeight?: boolean--><!--Device-StrutStyle-forceHeight?: boolean-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -150,29 +134,25 @@ true表示将行间距平分至行的顶部与底部，false则不平分，默�
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-StrutStyle-halfLeading?: boolean--><!--Device-StrutStyle-halfLeading?: boolean-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## height
 
 ```TypeScript
-height?: double
+height?: number
 ```
 
 行高缩放倍数，浮点数，默认为1.0。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-StrutStyle-height?: double--><!--Device-StrutStyle-height?: double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -186,29 +166,24 @@ heightOverride?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-StrutStyle-heightOverride?: boolean--><!--Device-StrutStyle-heightOverride?: boolean-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## leading
 
 ```TypeScript
-leading?: double
+leading?: number
 ```
 
 自定义应用于支柱的行距，浮点数，单位为物理像素px，默认为-1.0。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-StrutStyle-leading?: double--><!--Device-StrutStyle-leading?: double-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
-

@@ -2,9 +2,7 @@
 
 文本样式，用于控制文本的视觉表现属性，包括字体、颜色、字号、间距、装饰线和阴影等。TextStyle通过[ParagraphBuilder](arkts-arkgraphics2d-text-paragraphbuilder-c.md)的 [pushStyle](arkts-arkgraphics2d-text-paragraphbuilder-c.md#pushstyle)方法应用到后续添加的文本内容，与[ParagraphStyle](arkts-arkgraphics2d-text-paragraphstyle-i.md)（控制段落级 别属性）配合使用。同一段落中可通过多次pushStyle实现对不同文本片段应用不同样式。
 
-**起始版本：** 23
-
-<!--Device-text-interface TextStyle--><!--Device-text-interface TextStyle-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -24,11 +22,9 @@ backgroundRect?: RectStyle
 
 **类型：** [RectStyle](arkts-arkgraphics2d-text-rectstyle-i.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextStyle-backgroundRect?: RectStyle--><!--Device-TextStyle-backgroundRect?: RectStyle-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -42,11 +38,9 @@ badgeType?: TextBadgeType
 
 **类型：** [TextBadgeType](arkts-arkgraphics2d-text-textbadgetype-e.md)
 
-**起始版本：** 23
+**起始版本：** 20
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextStyle-badgeType?: TextBadgeType--><!--Device-TextStyle-badgeType?: TextBadgeType-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -60,29 +54,25 @@ baseline?: TextBaseline
 
 **类型：** [TextBaseline](arkts-arkgraphics2d-text-textbaseline-e.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextStyle-baseline?: TextBaseline--><!--Device-TextStyle-baseline?: TextBaseline-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## baselineShift
 
 ```TypeScript
-baselineShift?: double
+baselineShift?: number
 ```
 
 文本基线的垂直偏移距离，浮点数，单位为物理像素px，默认为0.0。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextStyle-baselineShift?: double--><!--Device-TextStyle-baselineShift?: double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -96,11 +86,9 @@ color?: common2D.Color
 
 **类型：** common2D.Color
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextStyle-color?: common2D.Color--><!--Device-TextStyle-color?: common2D.Color-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -114,11 +102,9 @@ decoration?: Decoration
 
 **类型：** [Decoration](arkts-arkgraphics2d-text-decoration-i.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextStyle-decoration?: Decoration--><!--Device-TextStyle-decoration?: Decoration-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -132,11 +118,9 @@ ellipsis?: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextStyle-ellipsis?: string--><!--Device-TextStyle-ellipsis?: string-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -150,11 +134,9 @@ ellipsisMode?: EllipsisMode
 
 **类型：** EllipsisMode
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextStyle-ellipsisMode?: EllipsisMode--><!--Device-TextStyle-ellipsisMode?: EllipsisMode-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -174,8 +156,6 @@ fontEdging?: drawing.FontEdging
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextStyle-fontEdging?: drawing.FontEdging--><!--Device-TextStyle-fontEdging?: drawing.FontEdging-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## fontFamilies
@@ -188,11 +168,9 @@ fontFamilies?: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextStyle-fontFamilies?: Array<string>--><!--Device-TextStyle-fontFamilies?: Array<string>-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -206,29 +184,25 @@ fontFeatures?: Array<FontFeature>
 
 **类型：** Array&lt;FontFeature&gt;
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextStyle-fontFeatures?: Array<FontFeature>--><!--Device-TextStyle-fontFeatures?: Array<FontFeature>-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## fontSize
 
 ```TypeScript
-fontSize?: double
+fontSize?: number
 ```
 
 字体大小，浮点数，默认为14.0，单位为物理像素px。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextStyle-fontSize?: double--><!--Device-TextStyle-fontSize?: double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -242,11 +216,9 @@ fontStyle?: FontStyle
 
 **类型：** FontStyle
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextStyle-fontStyle?: FontStyle--><!--Device-TextStyle-fontStyle?: FontStyle-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -256,7 +228,7 @@ fontStyle?: FontStyle
 fontTypefaces?: Array<drawing.Typeface>
 ```
 
-指定排版字体对象数组，用于优先使用指定的字体对象进行文本塑形，跳过字体匹配流程。当数组中某个字体对象无法塑形部分文字时，未能塑形的文字将使用系统字体进行塑形。默认为空数组，表示不指定字体对象，使用默认字体匹配流程。 当fontTypefaces与[TextStyle](#textstyle).fontFamilies同时设置时，fontTypefaces优先级更高。
+指定排版字体对象数组，用于优先使用指定的字体对象进行文本塑形，跳过字体匹配流程。当数组中某个字体对象无法塑形部分文字时，未能塑形的文字将使用系统字体进行塑形。默认为空数组，表示不指定字体对象，使用默认字体匹配流程。当fontTypefaces与[TextStyle](#textstyle).fontFamilies同时设置时，fontTypefaces优先级更高。
 
 **类型：** Array&lt;drawing.Typeface&gt;
 
@@ -265,8 +237,6 @@ fontTypefaces?: Array<drawing.Typeface>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextStyle-fontTypefaces?: Array<drawing.Typeface>--><!--Device-TextStyle-fontTypefaces?: Array<drawing.Typeface>-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -280,11 +250,9 @@ fontVariations?: Array<FontVariation>
 
 **类型：** Array&lt;FontVariation&gt;
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextStyle-fontVariations?: Array<FontVariation>--><!--Device-TextStyle-fontVariations?: Array<FontVariation>-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -298,11 +266,9 @@ fontWeight?: FontWeight
 
 **类型：** FontWeight
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextStyle-fontWeight?: FontWeight--><!--Device-TextStyle-fontWeight?: FontWeight-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -316,11 +282,9 @@ fontWidth?: FontWidth
 
 **类型：** [FontWidth](arkts-arkgraphics2d-text-fontwidth-e.md)
 
-**起始版本：** 23
+**起始版本：** 21
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextStyle-fontWidth?: FontWidth--><!--Device-TextStyle-fontWidth?: FontWidth-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -334,11 +298,9 @@ true表示将行间距平分至行的顶部与底部，false则不平分，默�
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextStyle-halfLeading?: boolean--><!--Device-TextStyle-halfLeading?: boolean-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -352,83 +314,73 @@ true表示根据字体大小和heightScale设置文本框的高度，false表示
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextStyle-heightOnly?: boolean--><!--Device-TextStyle-heightOnly?: boolean-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## heightScale
 
 ```TypeScript
-heightScale?: double
+heightScale?: number
 ```
 
 行高缩放倍数，浮点数，默认为1.0，heightOnly为true时生效。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextStyle-heightScale?: double--><!--Device-TextStyle-heightScale?: double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## letterSpacing
 
 ```TypeScript
-letterSpacing?: double
+letterSpacing?: number
 ```
 
 字符间距，正数拉开字符距离，如果为负数则拉近字符距离，浮点数，单位为物理像素px，默认为0.0。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextStyle-letterSpacing?: double--><!--Device-TextStyle-letterSpacing?: double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## lineHeightMaximum
 
 ```TypeScript
-lineHeightMaximum?: double
+lineHeightMaximum?: number
 ```
 
 行高上限，单位为物理像素px。若同时应用行高缩放，行高上限在[TextStyle](#textstyle).heightScale大于0时生效。取值为正数浮点数，默认值为Number.MAX_VALUE。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 21
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextStyle-lineHeightMaximum?: double--><!--Device-TextStyle-lineHeightMaximum?: double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## lineHeightMinimum
 
 ```TypeScript
-lineHeightMinimum?: double
+lineHeightMinimum?: number
 ```
 
 行高下限，单位为物理像素px。若同时应用行高缩放，行高下限在[TextStyle](#textstyle).heightScale大于0时生效。取值范围为非负浮点数，默认值为0。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 21
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextStyle-lineHeightMinimum?: double--><!--Device-TextStyle-lineHeightMinimum?: double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -442,11 +394,9 @@ lineHeightStyle?: LineHeightStyle
 
 **类型：** LineHeightStyle
 
-**起始版本：** 23
+**起始版本：** 21
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextStyle-lineHeightStyle?: LineHeightStyle--><!--Device-TextStyle-lineHeightStyle?: LineHeightStyle-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -460,11 +410,9 @@ locale?: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextStyle-locale?: string--><!--Device-TextStyle-locale?: string-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -478,29 +426,24 @@ textShadows?: Array<TextShadow>
 
 **类型：** Array&lt;[TextShadow](arkts-arkgraphics2d-text-textshadow-i.md)&gt;
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-TextStyle-textShadows?: Array<TextShadow>--><!--Device-TextStyle-textShadows?: Array<TextShadow>-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## wordSpacing
 
 ```TypeScript
-wordSpacing?: double
+wordSpacing?: number
 ```
 
 单词间距，浮点数，单位为物理像素px，默认为0.0。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TextStyle-wordSpacing?: double--><!--Device-TextStyle-wordSpacing?: double-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
-

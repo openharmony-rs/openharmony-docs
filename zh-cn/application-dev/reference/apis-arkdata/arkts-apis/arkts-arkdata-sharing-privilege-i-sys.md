@@ -2,9 +2,7 @@
 
 指定的端云共享数据的权限。
 
-**起始版本：** 23
-
-<!--Device-sharing-interface Privilege--><!--Device-sharing-interface Privilege-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -26,9 +24,7 @@ creatable?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-Privilege-creatable?: boolean--><!--Device-Privilege-creatable?: boolean-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -44,9 +40,7 @@ deletable?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-Privilege-deletable?: boolean--><!--Device-Privilege-deletable?: boolean-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -62,9 +56,7 @@ readable?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-Privilege-readable?: boolean--><!--Device-Privilege-readable?: boolean-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -80,9 +72,7 @@ shareable?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-Privilege-shareable?: boolean--><!--Device-Privilege-shareable?: boolean-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -98,11 +88,8 @@ writable?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-Privilege-writable?: boolean--><!--Device-Privilege-writable?: boolean-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **系统接口：** 此接口为系统接口。
-

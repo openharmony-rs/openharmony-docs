@@ -2,9 +2,7 @@
 
 [revokeSave](arkts-arkdata-distributeddataobject-dataobject-i.md#revokesave) 接口回调信息。
 
-**起始版本：** 23
-
-<!--Device-distributedDataObject-interface RevokeSaveSuccessResponse--><!--Device-distributedDataObject-interface RevokeSaveSuccessResponse-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -24,9 +22,6 @@ sessionId: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-RevokeSaveSuccessResponse-sessionId: string--><!--Device-RevokeSaveSuccessResponse-sessionId: string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
-

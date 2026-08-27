@@ -14,11 +14,9 @@ function startShortcut(shortcutInfo: ShortcutInfo, options?: StartOptions): Prom
 
 拉起指定ShortcutInfo中的ability。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 12
 
 **需要权限：** ohos.permission.START_SHORTCUT
-
-<!--Device-launcherBundleManager-function startShortcut(shortcutInfo: ShortcutInfo, options?: StartOptions): Promise<void>--><!--Device-launcherBundleManager-function startShortcut(shortcutInfo: ShortcutInfo, options?: StartOptions): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
@@ -35,16 +33,16 @@ function startShortcut(shortcutInfo: ShortcutInfo, options?: StartOptions): Prom
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not support. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Verify permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not support. |
 | [17700065](../errorcode-bundle.md#17700065-shortcutinfo结构体中指定的want不支持被拉起) | The specified shortcut want in shortcut info is not supported to be started. |
 
 **示例**
@@ -76,4 +74,3 @@ try {
   console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
-

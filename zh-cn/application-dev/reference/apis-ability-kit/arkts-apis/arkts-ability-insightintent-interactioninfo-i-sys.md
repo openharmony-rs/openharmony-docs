@@ -4,8 +4,6 @@
 
 **起始版本：** 26.1.0
 
-<!--Device-insightIntent-interface InteractionInfo--><!--Device-insightIntent-interface InteractionInfo-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -14,8 +12,6 @@
 
 ```TypeScript
 import { insightIntent } from '@kit.AbilityKit';
-import { insightIntentDriver } from '@kit.AbilityKit';
-import { insightIntentProvider } from '@kit.AbilityKit';
 ```
 
 ## interactionUI
@@ -32,9 +28,6 @@ interactionUI?: InteractionUI
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-InteractionInfo-interactionUI?: InteractionUI--><!--Device-InteractionInfo-interactionUI?: InteractionUI-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
-

@@ -9,14 +9,12 @@ import { dataUriUtils } from '@kit.AbilityKit';
 ## attachId
 
 ```TypeScript
-function attachId(uri: string, id: double): string
+function attachId(uri: string, id: number): string
 ```
 
 将ID附加到uri的路径末尾。
 
-**起始版本：** 23
-
-<!--Device-dataUriUtils-function attachId(uri: string, id: double): string--><!--Device-dataUriUtils-function attachId(uri: string, id: double): string-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -25,7 +23,7 @@ function attachId(uri: string, id: double): string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uri | string | 是 | 表示uri对象。 |
-| id | double | 是 | 表示要附加的ID。 |
+| id | number | 是 | 表示要附加的ID。 |
 
 **返回值：**
 
@@ -53,7 +51,6 @@ try {
   );
   console.info(`attachId the uri is: ${uri}`);
 } catch (err) {
-  console.error(`get id err, code: ${(err as BusinessError).code}, msg: ${(err as BusinessError).message}`);
+  console.error(`attachId err, code: ${JSON.stringify((err as BusinessError).code)}, msg: ${JSON.stringify((err as BusinessError).message)}`);
 }
 ```
-

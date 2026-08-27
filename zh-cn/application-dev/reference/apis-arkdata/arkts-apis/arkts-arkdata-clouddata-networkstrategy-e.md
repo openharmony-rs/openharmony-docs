@@ -2,9 +2,7 @@
 
 网络策略参数枚举。
 
-**起始版本：** 23
-
-<!--Device-cloudData-enum NetWorkStrategy--><!--Device-cloudData-enum NetWorkStrategy-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -16,9 +14,7 @@ WIFI = 1
 
 WIFI网络策略。
 
-**起始版本：** 23
-
-<!--Device-NetWorkStrategy-WIFI = 1--><!--Device-NetWorkStrategy-WIFI = 1-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -30,9 +26,6 @@ CELLULAR = 2
 
 蜂窝网络策略。
 
-**起始版本：** 23
-
-<!--Device-NetWorkStrategy-CELLULAR = 2--><!--Device-NetWorkStrategy-CELLULAR = 2-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
-

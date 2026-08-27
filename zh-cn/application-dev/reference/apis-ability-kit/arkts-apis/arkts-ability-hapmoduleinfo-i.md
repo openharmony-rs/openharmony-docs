@@ -2,9 +2,7 @@
 
 HAP信息。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export interface HapModuleInfo--><!--Device-unnamed-export interface HapModuleInfo-End-->
+**起始版本：** 9
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -18,11 +16,9 @@ readonly abilitiesInfo: Array<AbilityInfo>
 
 **类型：** Array&lt;[AbilityInfo](arkts-ability-abilityinfo-i.md)&gt;
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HapModuleInfo-readonly abilitiesInfo: Array<AbilityInfo>--><!--Device-HapModuleInfo-readonly abilitiesInfo: Array<AbilityInfo>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -36,11 +32,9 @@ readonly codePath: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HapModuleInfo-readonly codePath: string--><!--Device-HapModuleInfo-readonly codePath: string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -54,11 +48,9 @@ readonly dependencies: Array<Dependency>
 
 **类型：** Array&lt;[Dependency](arkts-ability-hapmoduleinfo-dependency-i.md)&gt;
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HapModuleInfo-readonly dependencies: Array<Dependency>--><!--Device-HapModuleInfo-readonly dependencies: Array<Dependency>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -72,29 +64,25 @@ readonly description: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HapModuleInfo-readonly description: string--><!--Device-HapModuleInfo-readonly description: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 ## descriptionId
 
 ```TypeScript
-readonly descriptionId: long
+readonly descriptionId: number
 ```
 
 描述信息的资源ID值。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HapModuleInfo-readonly descriptionId: long--><!--Device-HapModuleInfo-readonly descriptionId: long-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -108,11 +96,9 @@ readonly deviceTypes: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HapModuleInfo-readonly deviceTypes: Array<string>--><!--Device-HapModuleInfo-readonly deviceTypes: Array<string>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -126,11 +112,9 @@ readonly extensionAbilitiesInfo: Array<ExtensionAbilityInfo>
 
 **类型：** Array&lt;[ExtensionAbilityInfo](arkts-ability-extensionabilityinfo-i.md)&gt;
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HapModuleInfo-readonly extensionAbilitiesInfo: Array<ExtensionAbilityInfo>--><!--Device-HapModuleInfo-readonly extensionAbilitiesInfo: Array<ExtensionAbilityInfo>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -144,11 +128,9 @@ readonly fileContextMenuConfig: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 11
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HapModuleInfo-readonly fileContextMenuConfig: string--><!--Device-HapModuleInfo-readonly fileContextMenuConfig: string-End-->
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -162,11 +144,9 @@ readonly hashValue: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HapModuleInfo-readonly hashValue: string--><!--Device-HapModuleInfo-readonly hashValue: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -180,29 +160,25 @@ readonly icon: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HapModuleInfo-readonly icon: string--><!--Device-HapModuleInfo-readonly icon: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 ## iconId
 
 ```TypeScript
-readonly iconId: long
+readonly iconId: number
 ```
 
 当前模块入口Ability的图标[资源ID](../../../quick-start/resource-categories-and-access.md#资源目录)值。若未配置入口Ability，则为0。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HapModuleInfo-readonly iconId: long--><!--Device-HapModuleInfo-readonly iconId: long-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -216,11 +192,9 @@ readonly installationFree: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HapModuleInfo-readonly installationFree: boolean--><!--Device-HapModuleInfo-readonly installationFree: boolean-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -234,29 +208,25 @@ readonly label: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HapModuleInfo-readonly label: string--><!--Device-HapModuleInfo-readonly label: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 ## labelId
 
 ```TypeScript
-readonly labelId: long
+readonly labelId: number
 ```
 
 当前模块入口Ability名称的[资源ID](../../../quick-start/resource-categories-and-access.md#资源目录)值。若未配置入口Ability，则为0。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HapModuleInfo-readonly labelId: long--><!--Device-HapModuleInfo-readonly labelId: long-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -270,11 +240,9 @@ readonly mainElementName: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HapModuleInfo-readonly mainElementName: string--><!--Device-HapModuleInfo-readonly mainElementName: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -288,11 +256,9 @@ readonly metadata: Array<Metadata>
 
 **类型：** Array&lt;[Metadata](arkts-ability-metadata-i.md)&gt;
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HapModuleInfo-readonly metadata: Array<Metadata>--><!--Device-HapModuleInfo-readonly metadata: Array<Metadata>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -306,11 +272,9 @@ readonly name: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HapModuleInfo-readonly name: string--><!--Device-HapModuleInfo-readonly name: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -324,9 +288,7 @@ readonly nativeLibraryPath: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-HapModuleInfo-readonly nativeLibraryPath: string--><!--Device-HapModuleInfo-readonly nativeLibraryPath: string-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -340,11 +302,9 @@ readonly preloads: Array<PreloadItem>
 
 **类型：** Array&lt;[PreloadItem](arkts-ability-hapmoduleinfo-preloaditem-i.md)&gt;
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HapModuleInfo-readonly preloads: Array<PreloadItem>--><!--Device-HapModuleInfo-readonly preloads: Array<PreloadItem>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -358,11 +318,9 @@ readonly routerMap: Array<RouterItem>
 
 **类型：** Array&lt;[RouterItem](arkts-ability-hapmoduleinfo-routeritem-i.md)&gt;
 
-**起始版本：** 23
+**起始版本：** 12
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-HapModuleInfo-readonly routerMap: Array<RouterItem>--><!--Device-HapModuleInfo-readonly routerMap: Array<RouterItem>-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -376,11 +334,8 @@ readonly type: bundleManager.ModuleType
 
 **类型：** bundleManager.ModuleType
 
-**起始版本：** 23
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-HapModuleInfo-readonly type: bundleManager.ModuleType--><!--Device-HapModuleInfo-readonly type: bundleManager.ModuleType-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-

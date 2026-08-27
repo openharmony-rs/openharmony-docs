@@ -1,12 +1,14 @@
 # Package
 
-> **说明：** > > 从API version 3开始支持，从API version 9开始废弃。 指示应用包是否已安装。
+
+> **说明：**
+> 
+> 从API version 3开始支持，从API version 9开始废弃。
+指示应用包是否已安装。
 
 **起始版本：** 3
 
 **废弃版本：** 9
-
-<!--Device-unnamed-export default class Package--><!--Device-unnamed-export default class Package-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -30,8 +32,6 @@ static hasInstalled(options: CheckPackageHasInstalledOptions): void
 
 **替代接口：** [canOpenLink](arkts-ability-bundlemanager-canopenlink-f.md)
 
-<!--Device-Package-static hasInstalled(options: CheckPackageHasInstalledOptions): void--><!--Device-Package-static hasInstalled(options: CheckPackageHasInstalledOptions): void-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 **参数：**
@@ -40,3 +40,26 @@ static hasInstalled(options: CheckPackageHasInstalledOptions): void
 | --- | --- | --- | --- |
 | options | [CheckPackageHasInstalledOptions](arkts-ability-system-package-checkpackagehasinstalledoptions-i.md) | 是 | Options |
 
+**示例**
+
+```TypeScript
+import Package from '@system.package';
+
+@Entry
+@Component
+struct MainPage {
+  hasInstalled() {
+    Package.hasInstalled({
+      bundleName: 'com.example.bundlename',
+      success: (data) => {
+        console.info('package has installed: ' + data);
+      },
+      fail: (msg:string, code) => {
+        console.error('query package fail, code: ' + code + ', data: ' + msg);
+      },
+    });
+  }
+  build() {
+  }
+}
+```

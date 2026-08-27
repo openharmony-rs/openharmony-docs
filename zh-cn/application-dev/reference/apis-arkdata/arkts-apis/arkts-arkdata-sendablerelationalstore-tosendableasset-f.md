@@ -16,8 +16,6 @@ function toSendableAsset(asset: NonSendableAsset): Asset
 
 **起始版本：** 12
 
-<!--Device-sendableRelationalStore-function toSendableAsset(asset: NonSendableAsset): Asset--><!--Device-sendableRelationalStore-function toSendableAsset(asset: NonSendableAsset): Asset-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -36,7 +34,7 @@ function toSendableAsset(asset: NonSendableAsset): Asset
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1. Mandatory parameters are left unspecified;  2. Incorrect parameter types;  3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 
 **示例**
@@ -52,4 +50,3 @@ const asset1: sendableRelationalStore.NonSendableAsset = {
 };
 const sendableAsset = sendableRelationalStore.toSendableAsset(asset1);
 ```
-

@@ -14,9 +14,7 @@ function getInsertSqlInfo(table: string, values: ValuesBucket, conflict?: Confli
 
 获取用于插入数据的SQL语句，此为同步接口。
 
-**起始版本：** 23
-
-<!--Device-relationalStore-function getInsertSqlInfo(table: string, values: ValuesBucket, conflict?: ConflictResolution):SqlInfo--><!--Device-relationalStore-function getInsertSqlInfo(table: string, values: ValuesBucket, conflict?: ConflictResolution):SqlInfo-End-->
+**起始版本：** 20
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -42,8 +40,6 @@ function getInsertSqlInfo(table: string, values: ValuesBucket, conflict?: Confli
 
 **示例**
 
-ArkTS-Dyn示例：
-
 ```TypeScript
 const bucket: relationalStore.ValuesBucket = {
   name: "Logitech",
@@ -57,20 +53,3 @@ const sqlInfo: relationalStore.SqlInfo = relationalStore.getInsertSqlInfo(
   relationalStore.ConflictResolution.ON_CONFLICT_NONE
 );
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-const bucket: relationalStore.ValuesBucket = {
-  'name': "Logitech",
-  'age': 18 as long,
-  'sex': "man",
-  'desc': "asserter"
-};
-const sqlInfo: relationalStore.SqlInfo = relationalStore.getInsertSqlInfo(
-  "USER",
-  bucket,
-  relationalStore.ConflictResolution.ON_CONFLICT_NONE
-);
-```
-

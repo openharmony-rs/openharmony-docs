@@ -6,7 +6,7 @@ typedef struct OH_Rdb_Store {...} OH_Rdb_Store
 
 ## 概述
 
-表示数据库类型。
+表示数据库实例。
 
 **起始版本：** 10
 

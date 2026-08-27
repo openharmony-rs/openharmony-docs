@@ -2,9 +2,7 @@
 
 云服务信息
 
-**起始版本：** 23
-
-<!--Device-cloudExtension-export interface ServiceInfo--><!--Device-cloudExtension-export interface ServiceInfo-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -26,9 +24,7 @@ enableCloud: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
-
-<!--Device-ServiceInfo-enableCloud: boolean--><!--Device-ServiceInfo-enableCloud: boolean-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -44,9 +40,7 @@ id: string
 
 **类型：** string
 
-**起始版本：** 23
-
-<!--Device-ServiceInfo-id: string--><!--Device-ServiceInfo-id: string-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -55,16 +49,14 @@ id: string
 ## remainingSpace
 
 ```TypeScript
-remainingSpace: long
+remainingSpace: number
 ```
 
 服务器上账号的可用空间（KB）。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ServiceInfo-remainingSpace: long--><!--Device-ServiceInfo-remainingSpace: long-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -73,16 +65,14 @@ remainingSpace: long
 ## totalSpace
 
 ```TypeScript
-totalSpace: long
+totalSpace: number
 ```
 
 服务器上账号的总空间（KB）。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ServiceInfo-totalSpace: long--><!--Device-ServiceInfo-totalSpace: long-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -91,18 +81,15 @@ totalSpace: long
 ## user
 
 ```TypeScript
-user: int
+user: number
 ```
 
 设备的当前用户ID。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-ServiceInfo-user: int--><!--Device-ServiceInfo-user: int-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **系统接口：** 此接口为系统接口。
-

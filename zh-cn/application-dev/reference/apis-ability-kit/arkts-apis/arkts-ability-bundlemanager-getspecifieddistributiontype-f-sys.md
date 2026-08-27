@@ -12,13 +12,11 @@ import { bundleManager } from '@kit.AbilityKit';
 function getSpecifiedDistributionType(bundleName: string): string
 ```
 
-以同步的方法查询指定bundleName的[HarmonyAppProvision配置文件说明](../../../security/app-provision-structure.md)，该返回值是在调用install接口时传 入的[InstallParam](arkts-ability-installer-installparam-i-sys.md)中的specifiedDistributionType字段。 获取调用方自身的信息时不需要权限。
+以同步的方法查询指定bundleName的[HarmonyAppProvision配置文件说明](../../../security/app-provision-structure.md)，该返回值是在调用install接口时传 入的[InstallParam](arkts-ability-installer-installparam-i-sys.md)中的specifiedDistributionType字段。获取调用方自身的信息时不需要权限。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
-
-<!--Device-bundleManager-function getSpecifiedDistributionType(bundleName: string): string--><!--Device-bundleManager-function getSpecifiedDistributionType(bundleName: string): string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -40,9 +38,9 @@ function getSpecifiedDistributionType(bundleName: string): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
 **示例**
@@ -62,4 +60,3 @@ try {
   hilog.error(0x0000, 'testTag', 'getSpecifiedDistributionType failed. Cause: %{public}s', message);
 }
 ```
-

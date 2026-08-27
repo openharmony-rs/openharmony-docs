@@ -14,9 +14,7 @@ function getBundleInstallerSync(): BundleInstaller
 
 获取并返回BundleInstaller对象。
 
-**起始版本：** 23
-
-<!--Device-installer-function getBundleInstallerSync(): BundleInstaller--><!--Device-installer-function getBundleInstallerSync(): BundleInstaller-End-->
+**起始版本：** 10
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -48,4 +46,3 @@ try {
     console.error('getBundleInstallerSync failed. Cause: ' + message);
 }
 ```
-

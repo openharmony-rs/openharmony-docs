@@ -12,13 +12,11 @@ import { bundleManager } from '@kit.AbilityKit';
 function getSharedBundleInfo(bundleName: string,  moduleName: string, callback: AsyncCallback<Array<SharedBundleInfo>>): void
 ```
 
-获取指定的共享包信息。使用callback异步回调。 获取调用方自身的信息时不需要权限。
+获取指定的共享包信息。使用callback异步回调。获取调用方自身的信息时不需要权限。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
-
-<!--Device-bundleManager-function getSharedBundleInfo(bundleName: string,  moduleName: string, callback: AsyncCallback<Array<SharedBundleInfo>>): void--><!--Device-bundleManager-function getSharedBundleInfo(bundleName: string,  moduleName: string, callback: AsyncCallback<Array<SharedBundleInfo>>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -30,17 +28,17 @@ function getSharedBundleInfo(bundleName: string,  moduleName: string, callback: 
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示应用程序的bundleName。 |
 | moduleName | string | 是 | 表示被查询的module的name。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;SharedBundleInfo&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)，当获取成功时 ，err为undefined，data为获取的指定共享包信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;SharedBundleInfo&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时 ，err为undefined，data为获取的指定共享包信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
-| [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified moduleName is not found. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
+| [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified moduleName is not found. |
 
 **示例**
 
@@ -73,13 +71,11 @@ try {
 function getSharedBundleInfo(bundleName: string, moduleName: string): Promise<Array<SharedBundleInfo>>
 ```
 
-获取指定的共享包信息。使用Promise异步回调。 获取调用方自身的信息时不需要权限。
+获取指定的共享包信息。使用Promise异步回调。获取调用方自身的信息时不需要权限。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
-
-<!--Device-bundleManager-function getSharedBundleInfo(bundleName: string, moduleName: string): Promise<Array<SharedBundleInfo>>--><!--Device-bundleManager-function getSharedBundleInfo(bundleName: string, moduleName: string): Promise<Array<SharedBundleInfo>>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -96,21 +92,19 @@ function getSharedBundleInfo(bundleName: string, moduleName: string): Promise<Ar
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;SharedBundleInfo&gt;&gt; | Promise对象，返回指定的共享包信息。 |
+| Promise & lt;Array & lt;SharedBundleInfo & gt; & gt; | Promise对象，返回指定的共享包信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
-| [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified moduleName is not found. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
+| [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified moduleName is not found. |
 
 **示例**
-
-ArkTS-Dyn示例:
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';
@@ -131,28 +125,3 @@ try {
   hilog.error(0x0000, 'testTag', 'getSharedBundleInfo failed. Cause: %{public}s', message);
 }
 ```
-
-ArkTS-Sta示例:
-
-```TypeScript
-'use static'
-
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-// 开发者需根据实际工程更新bundleName和moduleName。
-let bundleName = 'com.example.myapplication';
-let moduleName = 'library';
-
-try {
-  bundleManager.getSharedBundleInfo(bundleName, moduleName).then((data: Array<bundleManager.SharedBundleInfo>) => {
-    hilog.info(0x0000, 'testTag', 'getSharedBundleInfo successfully. Data: %{public}s', JSON.stringify(data));
-  }).catch((err: Error) => {
-    hilog.error(0x0000, 'testTag', 'getSharedBundleInfo failed. Cause: %{public}s', (err as BusinessError).message);
-  });
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getSharedBundleInfo failed. Cause: %{public}s', message);
-}
-```
-

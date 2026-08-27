@@ -3,22 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { appControl } from '@kit.AbilityKit';
-import { bundleManager } from '@kit.AbilityKit';
-import { bundleMonitor } from '@kit.AbilityKit';
-import { bundleResourceManager } from '@kit.AbilityKit';
 import { bundle } from '@kit.AbilityKit';
-import { defaultAppManager } from '@kit.AbilityKit';
-import { distributedBundleManager } from '@kit.AbilityKit';
-import { freeInstall } from '@kit.AbilityKit';
-import { innerBundleManager, BundleStatusCallback } from '@kit.AbilityKit';
-import { installer } from '@kit.AbilityKit';
-import { launcherBundleManager } from '@kit.AbilityKit';
-import { overlay } from '@kit.AbilityKit';
-import { shortcutManager } from '@kit.AbilityKit';
-import { skillManager } from '@kit.AbilityKit';
-import { appDomainVerify } from '@kit.AbilityKit';
-import { pluginBundleManager } from '@kit.AbilityKit';
 ```
 
 ## getNameForUid
@@ -33,8 +18,6 @@ function getNameForUid(uid: number, callback: AsyncCallback<string>): void
 
 **替代接口：** [getBundleNameByUid](arkts-ability-bundlemanager-getbundlenamebyuid-f.md)
 
-<!--Device-bundle-function getNameForUid(uid: number, callback: AsyncCallback<string>): void--><!--Device-bundle-function getNameForUid(uid: number, callback: AsyncCallback<string>): void-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 **参数：**
@@ -42,7 +25,7 @@ function getNameForUid(uid: number, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uid | number | 是 |  |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 |  |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 |  |
 
 **示例**
 
@@ -75,8 +58,6 @@ function getNameForUid(uid: number): Promise<string>
 
 **替代接口：** null
 
-<!--Device-bundle-function getNameForUid(uid: number): Promise<string>--><!--Device-bundle-function getNameForUid(uid: number): Promise<string>-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 **参数：**
@@ -89,7 +70,7 @@ function getNameForUid(uid: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Returns the bundle name. |
+| Promise & lt;string & gt; | Returns the bundle name. |
 
 **示例**
 
@@ -106,4 +87,3 @@ bundle.getNameForUid(uid)
     console.error('Operation failed. Cause: ' + JSON.stringify(error));
   })
 ```
-

@@ -19,4 +19,3 @@ import { CompletionHandlerForAtomicService, FailureCode } from '@kit.AbilityKit'
 | 名称 | 说明 |
 | --- | --- |
 | [FailureCode](arkts-ability-app-ability-completionhandlerforatomicservice-failurecode-e.md) | 打开原子化服务失败的特定错误码。 |
-

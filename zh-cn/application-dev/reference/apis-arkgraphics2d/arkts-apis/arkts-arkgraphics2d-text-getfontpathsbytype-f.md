@@ -18,8 +18,6 @@ function getFontPathsByType(fontType: SystemFontType): Array<string>
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
-<!--Device-text-function getFontPathsByType(fontType: SystemFontType): Array<string>--><!--Device-text-function getFontPathsByType(fontType: SystemFontType): Array<string>-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
@@ -32,11 +30,9 @@ function getFontPathsByType(fontType: SystemFontType): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;string&gt; | 字体文件路径列表。 |
+| Array & lt;string & gt; | 字体文件路径列表。 |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { text } from '@kit.ArkGraphics2D'
@@ -60,30 +56,3 @@ struct GetFontPathsByTypeTest {
   }
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import {Entry, Component, Column, Button, FlexAlign} from '@ohos.arkui.component'
-import { text } from '@kit.ArkGraphics2D'
-
-@Entry
-@Component
-struct GetFontPathsByTypeTest {
-  build() {
-    Column() {
-      Button("get font path")
-        .onClick(() => {
-          let fontList = text.getFontPathsByType(text.SystemFontType.ALL)
-          console.info("file count: " + fontList.length)
-          for (let index = 0; index < fontList.length; index++) {
-            console.info("file path: " + fontList[index])
-          }
-        })
-    }.width("100%")
-    .height("100%")
-    .justifyContent(FlexAlign.Center)
-  }
-}
-```
-

@@ -2,9 +2,7 @@
 
 标识卸载处置规则。
 
-**起始版本：** 23
-
-<!--Device-appControl-export interface UninstallDisposedRule--><!--Device-appControl-export interface UninstallDisposedRule-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
@@ -19,16 +17,14 @@ import { appControl } from '@kit.AbilityKit';
 ## priority
 
 ```TypeScript
-priority: int
+priority: number
 ```
 
 拦截规则的优先级，用于规则列表查询结果排序。取值为整数，数值越小，优先级越高，排序越靠前。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
-
-<!--Device-UninstallDisposedRule-priority: int--><!--Device-UninstallDisposedRule-priority: int-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
@@ -44,9 +40,7 @@ uninstallComponentType: UninstallComponentType
 
 **类型：** [UninstallComponentType](arkts-ability-appcontrol-uninstallcomponenttype-e-sys.md)
 
-**起始版本：** 23
-
-<!--Device-UninstallDisposedRule-uninstallComponentType: UninstallComponentType--><!--Device-UninstallDisposedRule-uninstallComponentType: UninstallComponentType-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
@@ -62,11 +56,8 @@ want: Want
 
 **类型：** [Want](arkts-ability-app-ability-want-want-c.md)
 
-**起始版本：** 23
-
-<!--Device-UninstallDisposedRule-want: Want--><!--Device-UninstallDisposedRule-want: Want-End-->
+**起始版本：** 15
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
 **系统接口：** 此接口为系统接口。
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-contextConstant-export enum ContextType--><!--Device-contextConstant-export enum ContextType-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## APPLICATION_CONTEXT
@@ -21,8 +19,6 @@ APPLICATION_CONTEXT = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ContextType-APPLICATION_CONTEXT = 0--><!--Device-ContextType-APPLICATION_CONTEXT = 0-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -40,8 +36,6 @@ ABILITY_STAGE_CONTEXT = 1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ContextType-ABILITY_STAGE_CONTEXT = 1--><!--Device-ContextType-ABILITY_STAGE_CONTEXT = 1-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## UIABILITY_CONTEXT
@@ -57,8 +51,6 @@ UI能力上下文类型。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ContextType-UIABILITY_CONTEXT = 2--><!--Device-ContextType-UIABILITY_CONTEXT = 2-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -76,8 +68,6 @@ FORM_EXTENSION_CONTEXT = 3
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ContextType-FORM_EXTENSION_CONTEXT = 3--><!--Device-ContextType-FORM_EXTENSION_CONTEXT = 3-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## APP_SERVICE_EXTENSION_CONTEXT
@@ -94,7 +84,20 @@ App业务扩展上下文类型。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ContextType-APP_SERVICE_EXTENSION_CONTEXT = 4--><!--Device-ContextType-APP_SERVICE_EXTENSION_CONTEXT = 4-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
+**示例**
+
+```TypeScript
+import { UIAbility, contextConstant } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    hilog.info(0x0000, 'testTag', `%{public}s`, 'Ability onCreate');
+    // 判断Context类型是否为UIAbilityContext
+    let result = this.context.isContextOf(contextConstant.ContextType.UIABILITY_CONTEXT);
+    hilog.info(0x0000, 'testTag', `match contextType result is:%{public}s`, JSON.stringify(result));
+  }
+}
+```

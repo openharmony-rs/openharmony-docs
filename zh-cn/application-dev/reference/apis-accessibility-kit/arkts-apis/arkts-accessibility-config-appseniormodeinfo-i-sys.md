@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-<!--Device-config-interface AppSeniorModeInfo--><!--Device-config-interface AppSeniorModeInfo-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
@@ -19,18 +17,16 @@ import { config } from '@kit.AccessibilityKit';
 ## appIndex
 
 ```TypeScript
-appIndex?: int
+appIndex?: number
 ```
 
 应用包的分身索引标识。取值大于等于0的整数，缺省时默认为0。
 
-**类型：** int
+**类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AppSeniorModeInfo-appIndex?: int--><!--Device-AppSeniorModeInfo-appIndex?: int-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -50,8 +46,6 @@ bundleName: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AppSeniorModeInfo-bundleName: string--><!--Device-AppSeniorModeInfo-bundleName: string-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
@@ -70,9 +64,6 @@ seniorModeState: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AppSeniorModeInfo-seniorModeState: boolean--><!--Device-AppSeniorModeInfo-seniorModeState: boolean-End-->
-
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
-

@@ -2,9 +2,7 @@
 
 提供会话组件信息，包括包名、模块名、组件名等信息。
 
-**起始版本：** 23
-
-<!--Device-dialogSession-export interface DialogAbilityInfo--><!--Device-dialogSession-export interface DialogAbilityInfo-End-->
+**起始版本：** 11
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -19,18 +17,16 @@ import { dialogSession } from '@kit.AbilityKit';
 ## abilityIconId
 
 ```TypeScript
-abilityIconId: int
+abilityIconId: number
 ```
 
 表示Ability图标ID。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DialogAbilityInfo-abilityIconId: int--><!--Device-DialogAbilityInfo-abilityIconId: int-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -39,18 +35,16 @@ abilityIconId: int
 ## abilityLabelId
 
 ```TypeScript
-abilityLabelId: int
+abilityLabelId: number
 ```
 
 表示Ability标签ID。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DialogAbilityInfo-abilityLabelId: int--><!--Device-DialogAbilityInfo-abilityLabelId: int-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -66,11 +60,9 @@ abilityName: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DialogAbilityInfo-abilityName: string--><!--Device-DialogAbilityInfo-abilityName: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -79,18 +71,16 @@ abilityName: string
 ## appIndex
 
 ```TypeScript
-appIndex: int
+appIndex: number
 ```
 
 表示应用的分身索引。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DialogAbilityInfo-appIndex: int--><!--Device-DialogAbilityInfo-appIndex: int-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -99,18 +89,16 @@ appIndex: int
 ## bundleIconId
 
 ```TypeScript
-bundleIconId: int
+bundleIconId: number
 ```
 
 表示Bundle图标ID。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DialogAbilityInfo-bundleIconId: int--><!--Device-DialogAbilityInfo-bundleIconId: int-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -119,18 +107,16 @@ bundleIconId: int
 ## bundleLabelId
 
 ```TypeScript
-bundleLabelId: int
+bundleLabelId: number
 ```
 
 表示Bundle标签ID。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DialogAbilityInfo-bundleLabelId: int--><!--Device-DialogAbilityInfo-bundleLabelId: int-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -146,11 +132,9 @@ bundleName: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DialogAbilityInfo-bundleName: string--><!--Device-DialogAbilityInfo-bundleName: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -170,8 +154,6 @@ codePath?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DialogAbilityInfo-codePath?: string--><!--Device-DialogAbilityInfo-codePath?: string-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -182,15 +164,18 @@ codePath?: string
 installSource?: string
 ```
 
-表示应用程序的安装来源，支持的取值如下： - pre-installed：表示首次开机时安装的预置应用。 - ota：表示系统升级时新增的预置应用。 - recovery：表示用户卸载后又手动恢复的预置应用。 - bundleName：表示由此包名对应的应用安装。该bundleName代表变量，以实际值为准。 - unknown：表示应用安装来源未知。
+表示应用程序的安装来源，支持的取值如下：  
+- pre-installed：表示首次开机时安装的预置应用。  
+- ota：表示系统升级时新增的预置应用。  
+- recovery：表示用户卸载后又手动恢复的预置应用。  
+- bundleName：表示由此包名对应的应用安装。该bundleName代表变量，以实际值为准。  
+- unknown：表示应用安装来源未知。
 
 **类型：** string
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DialogAbilityInfo-installSource?: string--><!--Device-DialogAbilityInfo-installSource?: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -206,11 +191,9 @@ moduleName: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DialogAbilityInfo-moduleName: string--><!--Device-DialogAbilityInfo-moduleName: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -226,11 +209,9 @@ multiAppMode: MultiAppMode
 
 **类型：** [MultiAppMode](arkts-ability-applicationinfo-multiappmode-i.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DialogAbilityInfo-multiAppMode: MultiAppMode--><!--Device-DialogAbilityInfo-multiAppMode: MultiAppMode-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -246,13 +227,10 @@ visible: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DialogAbilityInfo-visible: boolean--><!--Device-DialogAbilityInfo-visible: boolean-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
-

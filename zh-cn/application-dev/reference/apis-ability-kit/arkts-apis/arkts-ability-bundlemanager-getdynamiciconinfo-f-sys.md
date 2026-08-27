@@ -14,11 +14,9 @@ function getDynamicIconInfo(bundleName: string): Promise<Array<DynamicIconInfo>>
 
 根据指定的bundleName获取所有用户和所有分身下的动态图标信息。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 20
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
-
-<!--Device-bundleManager-function getDynamicIconInfo(bundleName: string): Promise<Array<DynamicIconInfo>>--><!--Device-bundleManager-function getDynamicIconInfo(bundleName: string): Promise<Array<DynamicIconInfo>>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -34,7 +32,7 @@ function getDynamicIconInfo(bundleName: string): Promise<Array<DynamicIconInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;DynamicIconInfo&gt;&gt; | Promise对象，返回查询到的动态图标信息。 |
+| Promise & lt;Array & lt;DynamicIconInfo & gt; & gt; | Promise对象，返回查询到的动态图标信息。 |
 
 **错误码：**
 
@@ -42,12 +40,10 @@ function getDynamicIconInfo(bundleName: string): Promise<Array<DynamicIconInfo>>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
-| [17700306](../errorcode-bundle.md#17700306-动态图标查询失败) | Failed to obtain the dynamic icon. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
+| [17700306](../errorcode-bundle.md#17700306-动态图标查询失败) | Failed to obtain the dynamic icon. |
 
 **示例**
-
-ArkTS-Dyn示例:
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';
@@ -67,27 +63,3 @@ try {
   hilog.error(0x0000, 'testTag', 'getDynamicIconInfo failed. Cause: %{public}s', message);
 }
 ```
-
-ArkTS-Sta示例:
-
-```TypeScript
-'use static'
-
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-// 开发者需根据实际工程更新bundleName。
-let bundleName: string = 'com.ohos.demo';
-
-try {
-  bundleManager.getDynamicIconInfo(bundleName).then((data: Array<bundleManager.DynamicIconInfo>) => {
-    hilog.info(0x0000, 'testTag', 'getDynamicIconInfo successfully %s', JSON.stringify(data));
-  }).catch((err: Error) => {
-    hilog.error(0x0000, 'testTag', 'getDynamicIconInfo failed. Cause: %{public}s', (err as BusinessError).message);
-  });
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getDynamicIconInfo failed. Cause: %{public}s', message);
-}
-```
-

@@ -14,11 +14,9 @@ export function exitMasterProcessRole(): Promise<void>
 
 放弃当前进程的[主控进程](../../../application-models/ability-terminology.md#masterprocess主控进程)身份。使用Promise异步回调。 该接口仅在2in1、Tablet设备中可正常调用，在其他设备中返回801错误码。
 
-**起始版本：** 23
+**起始版本：** 21
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-application-export function exitMasterProcessRole(): Promise<void>--><!--Device-application-export function exitMasterProcessRole(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -26,7 +24,7 @@ export function exitMasterProcessRole(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise & lt;void & gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -49,8 +47,7 @@ export default class EntryAbility extends UIAbility {
         .then(() => {
           console.info('exitMasterProcessRole succeed');
         })
-        .catch((error: Error) => {
-          let err = error as BusinessError;
+        .catch((err: BusinessError) => {
           console.error(`exitMasterProcessRole failed, code is ${err.code}, message is ${err.message}`);
         });
     } catch (error) {
@@ -61,4 +58,3 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-

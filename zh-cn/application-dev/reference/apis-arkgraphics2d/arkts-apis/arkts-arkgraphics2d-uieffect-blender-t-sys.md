@@ -10,15 +10,12 @@ type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-uiEffect-type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender--><!--Device-uiEffect-type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender-End-->
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **系统接口：** 此接口为系统接口。
 
 | 类型 | 说明 |
 | --- | --- |
-| BrightnessBlender | 提亮混合器 |
-| HdrBrightnessBlender | 支持HDR的提亮混合器 [since 20] |
-| HdrDarkenBlender | 支持HDR的压暗混合器 [since 26.0.0] |
-
+| [BrightnessBlender](arkts-arkgraphics2d-uieffect-brightnessblender-i-sys.md) | 提亮混合器 |
+| [HdrBrightnessBlender](arkts-arkgraphics2d-uieffect-hdrbrightnessblender-i.md) | 支持HDR的提亮混合器 [since 20] |
+| [HdrDarkenBlender](arkts-arkgraphics2d-uieffect-hdrdarkenblender-i-sys.md) | 支持HDR的压暗混合器 [since 26.0.0] |

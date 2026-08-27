@@ -14,11 +14,9 @@ function getSystemFontFullNamesByType(fontType: SystemFontType): Promise<Array<s
 
 根据字体类型返回该类型对应的所有字体的字体名称，使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 14
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
-
-<!--Device-text-function getSystemFontFullNamesByType(fontType: SystemFontType): Promise<Array<string>>--><!--Device-text-function getSystemFontFullNamesByType(fontType: SystemFontType): Promise<Array<string>>-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -32,7 +30,7 @@ function getSystemFontFullNamesByType(fontType: SystemFontType): Promise<Array<s
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回相应字体类型的所有字体的fullName。 |
+| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回相应字体类型的所有字体的fullName。 |
 
 **错误码：**
 
@@ -41,8 +39,6 @@ function getSystemFontFullNamesByType(fontType: SystemFontType): Promise<Array<s
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
-
-ArkTS-Dyn示例：
 
 ```TypeScript
 import { text } from '@kit.ArkGraphics2D'
@@ -78,41 +74,3 @@ struct Index {
   }
 }
 ```
-
-ArkTS-Sta示例：
-
-```TypeScript
-import { Entry, Component, Column, Button, Row, FontWeight} from '@ohos.arkui.component'
-import { text } from "@kit.ArkGraphics2D"
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Row() {
-      Column() {
-        Button("get font list")
-          .fontSize(30)
-          .fontWeight(FontWeight.Bold)
-          .width(300)
-          .height(80)
-          .onClick(() => {
-            let fontType:text.SystemFontType = text.SystemFontType.GENERIC
-            let promise = text.getSystemFontFullNamesByType(fontType)
-            promise.then((data) => {
-              console.info(`then font list size: ${data.length}`)
-              data.forEach((fontItem) => {
-                console.info(fontItem)
-              })
-            }).catch((error: Error) => {
-              console.error(`Failed to get font fullNames by type, error: ${JSON.stringify(error)}`);
-            });
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
-

@@ -21,8 +21,6 @@ function getMissionInfo(deviceId: string, missionId: number, callback: AsyncCall
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
-<!--Device-missionManager-function getMissionInfo(deviceId: string, missionId: number, callback: AsyncCallback<MissionInfo>): void--><!--Device-missionManager-function getMissionInfo(deviceId: string, missionId: number, callback: AsyncCallback<MissionInfo>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
 **系统接口：** 此接口为系统接口。
@@ -33,7 +31,7 @@ function getMissionInfo(deviceId: string, missionId: number, callback: AsyncCall
 | --- | --- | --- | --- |
 | deviceId | string | 是 | 设备ID，本机默认为空字符串。 |
 | missionId | number | 是 | 任务ID。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[MissionInfo](arkts-ability-missioninfo-i-sys.md)&gt; | 是 | 回调函数，返回任务信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[MissionInfo](arkts-ability-missioninfo-i-sys.md)&gt; | 是 | 回调函数，返回任务信息。 |
 
 **示例**
 
@@ -75,8 +73,6 @@ function getMissionInfo(deviceId: string, missionId: number): Promise<MissionInf
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
-<!--Device-missionManager-function getMissionInfo(deviceId: string, missionId: number): Promise<MissionInfo>--><!--Device-missionManager-function getMissionInfo(deviceId: string, missionId: number): Promise<MissionInfo>-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
 **系统接口：** 此接口为系统接口。
@@ -112,4 +108,3 @@ try {
   console.error(`getMissionInfo failed. Cause: ${error.message}`);
 }
 ```
-

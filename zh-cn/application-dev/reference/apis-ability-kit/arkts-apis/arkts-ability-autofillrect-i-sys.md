@@ -2,9 +2,7 @@
 
 用于自动填充的矩形区域。
 
-**起始版本：** 23
-
-<!--Device-unnamed-export default interface AutoFillRect--><!--Device-unnamed-export default interface AutoFillRect-End-->
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -13,18 +11,16 @@
 ## height
 
 ```TypeScript
-height: double
+height: number
 ```
 
 AutoFill表单或页面节点的高度。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AutoFillRect-height: double--><!--Device-AutoFillRect-height: double-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -33,18 +29,16 @@ AutoFill表单或页面节点的高度。
 ## left
 
 ```TypeScript
-left: double
+left: number
 ```
 
 AutoFill表单或页面节点与页面左边界的距离。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AutoFillRect-left: double--><!--Device-AutoFillRect-left: double-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -53,18 +47,16 @@ AutoFill表单或页面节点与页面左边界的距离。
 ## top
 
 ```TypeScript
-top: double
+top: number
 ```
 
 AutoFill表单或页面节点与页面上边界的距离。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AutoFillRect-top: double--><!--Device-AutoFillRect-top: double-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -73,20 +65,17 @@ AutoFill表单或页面节点与页面上边界的距离。
 ## width
 
 ```TypeScript
-width: double
+width: number
 ```
 
 AutoFill表单或页面节点的宽度。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AutoFillRect-width: double--><!--Device-AutoFillRect-width: double-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **系统接口：** 此接口为系统接口。
-

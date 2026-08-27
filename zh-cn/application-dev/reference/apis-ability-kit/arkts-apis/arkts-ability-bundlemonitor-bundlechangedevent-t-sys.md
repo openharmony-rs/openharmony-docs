@@ -8,8 +8,6 @@ type BundleChangedEvent = 'add' | 'update' | 'remove'
 
 **起始版本：** 9
 
-<!--Device-bundleMonitor-type BundleChangedEvent = 'add' | 'update' | 'remove'--><!--Device-bundleMonitor-type BundleChangedEvent = 'add' | 'update' | 'remove'-End-->
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
@@ -19,4 +17,3 @@ type BundleChangedEvent = 'add' | 'update' | 'remove'
 | 'add' |  |
 | 'update' |  |
 | 'remove' |  |
-

@@ -4,8 +4,6 @@
 
 **起始版本：** 26.1.0
 
-<!--Device-abilityToolAccessCtrl-enum Role--><!--Device-abilityToolAccessCtrl-enum Role-End-->
-
 **系统能力：** SystemCapability.Security.Asset
 
 **系统接口：** 此接口为系统接口。
@@ -19,8 +17,6 @@ CONTROLLER = 0x01
 控制器设备。
 
 **起始版本：** 26.1.0
-
-<!--Device-Role-CONTROLLER = 0x01--><!--Device-Role-CONTROLLER = 0x01-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -36,9 +32,6 @@ CONTROLLED = 0x02
 
 **起始版本：** 26.1.0
 
-<!--Device-Role-CONTROLLED = 0x02--><!--Device-Role-CONTROLLED = 0x02-End-->
-
 **系统能力：** SystemCapability.Security.Asset
 
 **系统接口：** 此接口为系统接口。
-

@@ -9,16 +9,14 @@ import { bundleResourceManager } from '@kit.AbilityKit';
 ## getAllUninstalledBundleResourceInfo
 
 ```TypeScript
-function getAllUninstalledBundleResourceInfo(resourceFlags: int): Promise<Array<BundleResourceInfo>>
+function getAllUninstalledBundleResourceInfo(resourceFlags: number): Promise<Array<BundleResourceInfo>>
 ```
 
 根据给定的resourceFlags获取所有已卸载且保留数据的应用的BundleResourceInfo。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 21
 
 **需要权限：** ohos.permission.GET_BUNDLE_RESOURCES
-
-<!--Device-bundleResourceManager-function getAllUninstalledBundleResourceInfo(resourceFlags: int): Promise<Array<BundleResourceInfo>>--><!--Device-bundleResourceManager-function getAllUninstalledBundleResourceInfo(resourceFlags: int): Promise<Array<BundleResourceInfo>>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
@@ -28,13 +26,13 @@ function getAllUninstalledBundleResourceInfo(resourceFlags: int): Promise<Array<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resourceFlags | int | 是 | 指定返回的BundleResourceInfo所包含的信息，取值请参考 [ResourceFlag枚举值](arkts-ability-bundleresourcemanager-resourceflag-e-sys.md)。 |
+| resourceFlags | number | 是 | 指定返回的BundleResourceInfo所包含的信息，取值请参考 [ResourceFlag枚举值](arkts-ability-bundleresourcemanager-resourceflag-e-sys.md)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;BundleResourceInfo&gt;&gt; | Promise对象，返回BundleResourceInfo数组。 |
+| Promise & lt;Array & lt;BundleResourceInfo & gt; & gt; | Promise对象，返回BundleResourceInfo数组。 |
 
 **错误码：**
 
@@ -63,4 +61,3 @@ try {
   hilog.error(0x0000, 'testTag', 'getAllUninstalledBundleResourceInfo failed: %{public}s', message);
 }
 ```
-

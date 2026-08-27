@@ -9,16 +9,14 @@ import { bundleManager } from '@kit.AbilityKit';
 ## getSignatureInfo
 
 ```TypeScript
-function getSignatureInfo(uid: int): SignatureInfo
+function getSignatureInfo(uid: number): SignatureInfo
 ```
 
 根据给定的uid获取对应应用的[签名信息](arkts-ability-bundleinfo-signatureinfo-i.md)。
 
-**起始版本：** 23
+**起始版本：** 18
 
 **需要权限：** ohos.permission.GET_SIGNATURE_INFO
-
-<!--Device-bundleManager-function getSignatureInfo(uid: int): SignatureInfo--><!--Device-bundleManager-function getSignatureInfo(uid: int): SignatureInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -26,7 +24,7 @@ function getSignatureInfo(uid: int): SignatureInfo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uid | int | 是 | 表示应用程序的UID。 |
+| uid | number | 是 | 表示应用程序的UID。 |
 
 **返回值：**
 
@@ -57,4 +55,3 @@ try {
   hilog.error(0x0000, 'testTag', 'getSignatureInfo failed. Cause: %{public}s', message);
 }
 ```
-

@@ -6,8 +6,6 @@
 
 **废弃版本：** 22
 
-<!--Device-unnamed-export interface ContinuationExtraParams--><!--Device-unnamed-export interface ContinuationExtraParams-End-->
-
 **系统能力：** SystemCapability.Ability.DistributedAbilityManager
 
 ## authInfo
@@ -27,8 +25,6 @@ authInfo?: Record<string, Object>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ContinuationExtraParams-authInfo?: Record<string, Object>--><!--Device-ContinuationExtraParams-authInfo?: Record<string, Object>-End-->
 
 **系统能力：** SystemCapability.Ability.DistributedAbilityManager
 
@@ -50,8 +46,6 @@ continuationMode?: continuationManager.ContinuationMode
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ContinuationExtraParams-continuationMode?: continuationManager.ContinuationMode--><!--Device-ContinuationExtraParams-continuationMode?: continuationManager.ContinuationMode-End-->
-
 **系统能力：** SystemCapability.Ability.DistributedAbilityManager
 
 ## description
@@ -71,8 +65,6 @@ description?: string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ContinuationExtraParams-description?: string--><!--Device-ContinuationExtraParams-description?: string-End-->
 
 **系统能力：** SystemCapability.Ability.DistributedAbilityManager
 
@@ -94,8 +86,6 @@ deviceType?: Array<string>
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ContinuationExtraParams-deviceType?: Array<string>--><!--Device-ContinuationExtraParams-deviceType?: Array<string>-End-->
-
 **系统能力：** SystemCapability.Ability.DistributedAbilityManager
 
 ## filter
@@ -115,8 +105,6 @@ filter?: any
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ContinuationExtraParams-filter?: any--><!--Device-ContinuationExtraParams-filter?: any-End-->
 
 **系统能力：** SystemCapability.Ability.DistributedAbilityManager
 
@@ -138,7 +126,4 @@ targetBundle?: string
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ContinuationExtraParams-targetBundle?: string--><!--Device-ContinuationExtraParams-targetBundle?: string-End-->
-
 **系统能力：** SystemCapability.Ability.DistributedAbilityManager
-

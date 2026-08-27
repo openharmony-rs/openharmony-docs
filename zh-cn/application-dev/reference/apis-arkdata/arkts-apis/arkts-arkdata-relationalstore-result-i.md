@@ -4,8 +4,6 @@
 
 **起始版本：** 23
 
-<!--Device-relationalStore-interface Result--><!--Device-relationalStore-interface Result-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## 导入模块
@@ -17,18 +15,16 @@ import { relationalStore } from '@kit.ArkData';
 ## changed
 
 ```TypeScript
-readonly changed: long
+readonly changed: number
 ```
 
 表示受影响的行数量。
 
-**类型：** long
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-Result-readonly changed: long--><!--Device-Result-readonly changed: long-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -46,7 +42,4 @@ readonly resultSet: LiteResultSet
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Result-readonly resultSet: LiteResultSet--><!--Device-Result-readonly resultSet: LiteResultSet-End-->
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-

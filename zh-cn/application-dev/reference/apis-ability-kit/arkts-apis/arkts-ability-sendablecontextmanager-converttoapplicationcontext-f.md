@@ -20,8 +20,6 @@ function convertToApplicationContext(sendableContext: SendableContext): common.A
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-sendableContextManager-function convertToApplicationContext(sendableContext: SendableContext): common.ApplicationContext--><!--Device-sendableContextManager-function convertToApplicationContext(sendableContext: SendableContext): common.ApplicationContext-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
@@ -129,4 +127,3 @@ workerPort.onerror = (e: ErrorEvent) => {
   hilog.info(0x0000, 'testTag', '%{public}s', 'onerror');
 }
 ```
-

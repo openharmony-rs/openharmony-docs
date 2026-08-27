@@ -21,8 +21,6 @@ function equal(agent: WantAgent, otherAgent: WantAgent, callback: AsyncCallback<
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-wantAgent-function equal(agent: WantAgent, otherAgent: WantAgent, callback: AsyncCallback<boolean>): void--><!--Device-wantAgent-function equal(agent: WantAgent, otherAgent: WantAgent, callback: AsyncCallback<boolean>): void-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
@@ -31,7 +29,7 @@ function equal(agent: WantAgent, otherAgent: WantAgent, callback: AsyncCallback<
 | --- | --- | --- | --- |
 | agent | [WantAgent](arkts-ability-wantagent-depr-t.md) | 是 | WantAgent对象。 |
 | otherAgent | [WantAgent](arkts-ability-wantagent-depr-t.md) | 是 | WantAgent对象。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 判断两个WantAgent实例是否相等的回调方法。返回true表示两个WantAgent实例相等；返回false表示不相等。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 判断两个WantAgent实例是否相等的回调方法。返回true表示两个WantAgent实例相等；返回false表示不相等。 |
 
 **示例**
 
@@ -106,8 +104,6 @@ function equal(agent: WantAgent, otherAgent: WantAgent): Promise<boolean>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-wantAgent-function equal(agent: WantAgent, otherAgent: WantAgent): Promise<boolean>--><!--Device-wantAgent-function equal(agent: WantAgent, otherAgent: WantAgent): Promise<boolean>-End-->
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
@@ -121,7 +117,7 @@ function equal(agent: WantAgent, otherAgent: WantAgent): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | 以Promise形式返回获取判断两个WantAgent实例是否相等的结果。返回true表示两个WantAgent实例相等；返回false表示不相等。 |
+| Promise & lt;boolean & gt; | 以Promise形式返回获取判断两个WantAgent实例是否相等的结果。返回true表示两个WantAgent实例相等；返回false表示不相等。 |
 
 **示例**
 
@@ -168,4 +164,3 @@ wantAgent.getWantAgent({
     }
 });
 ```
-

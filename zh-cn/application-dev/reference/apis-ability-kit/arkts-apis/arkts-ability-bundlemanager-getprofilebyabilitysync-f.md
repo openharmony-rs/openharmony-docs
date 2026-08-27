@@ -14,11 +14,9 @@ function getProfileByAbilitySync(moduleName: string, abilityName: string, metada
 
 以同步方法根据给定的moduleName、abilityName和metadataName（module.json5中 [metadata标签](../../../quick-start/module-configuration-file.md#metadata标签)下的name）获取自身相应配置文件的json格式字符串，返回对象为string数 组。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-bundleManager-function getProfileByAbilitySync(moduleName: string, abilityName: string, metadataName?: string): Array<string>--><!--Device-bundleManager-function getProfileByAbilitySync(moduleName: string, abilityName: string, metadataName?: string): Array<string>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -34,17 +32,17 @@ function getProfileByAbilitySync(moduleName: string, abilityName: string, metada
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;string&gt; | 数组对象，返回Array&lt;string&gt;。 |
+| Array & lt;string & gt; | 数组对象，返回Array & lt;string & gt;。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [17700029](../errorcode-bundle.md#17700029-指定的ability被禁用) | The specified ability is disabled. |
-| [17700024](../errorcode-bundle.md#17700024-没有相应的配置文件) | Failed to get the profile because there is no profile in the HAP. |
 | [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified moduleName is not existed. |
 | [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified abilityName is not existed. |
+| [17700024](../errorcode-bundle.md#17700024-没有相应的配置文件) | Failed to get the profile because there is no profile in the HAP. |
+| [17700029](../errorcode-bundle.md#17700029-指定的ability被禁用) | The specified ability is disabled. |
 
 **示例**
 
@@ -84,4 +82,3 @@ try {
   hilog.error(0x0000, 'testTag', 'getProfileByAbilitySync failed. Cause: %{public}s', message);
 }
 ```
-
