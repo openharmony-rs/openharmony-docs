@@ -638,7 +638,7 @@ saveCameraPhoto(): void
 > **说明：**
 >
 > - 非YUV拍摄模式下，照片资源保存的编码格式与[CameraFormat](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat)保持一致。
-> - YUV拍摄模式下，该接口无法指定编码格式，图片资源保存为默认的jpg格式。
+> - YUV拍摄模式下，该接口无法指定编码格式，图片资源保存为默认的jpg格式。从API版本13开始，如需指定编码格式，请使用[saveCameraPhoto](#savecameraphoto13)接口。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
