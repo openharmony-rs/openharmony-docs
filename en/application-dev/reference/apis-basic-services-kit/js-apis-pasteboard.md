@@ -1,12 +1,10 @@
 # @ohos.pasteboard (Pasteboard)
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @yangxiaodong41-->
 <!--Designer: @zhusiyuan2-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=f6b2fdef05ea993cf15e154ceff415f35e69ba1a translatedAt=2026-08-19T10:01:48.935Z pushedAt=2026-08-19T12:01:34.679Z -->
 
 This module provides the capabilities of managing the system pasteboard to support the copy and paste functions. You can use the APIs of this module to operate pasteboard content of the plain text, HTML, URI, Want, pixel map, and other types.
 
@@ -74,7 +72,7 @@ Creates a **PasteData** object of the specified type and creates a **PasteData**
 
 | Name| Type| Mandatory| Description                                                                                                    |
 | -------- | -------- | -------- |--------------------------------------------------------------------------------------------------------|
-| mimeType | string | Yes | MIME type of custom data. The value can be a predefined MIME type listed in [Constants](#constants), including HTML, WANT, plain text, URI, and pixel map, or a custom MIME type. The value of **mimeType** cannot exceed 1024 bytes. |
+| mimeType | string | Yes| MIME type of custom data. The value can be a predefined MIME type listed in [Constants](#constants), including HTML, WANT, plain text, URI, and pixel map, or a custom MIME type. The value of **mimeType** cannot exceed 1024 bytes.|
 | value | [ValueType](#valuetype9) | Yes| Content of custom data. You are advised to select a proper data type based on the actual scenario. Using a large data object will affect the app's copy and paste performance and memory usage. For the **ArrayBuffer** type, you are advised to set a proper data size. For the **PixelMap** type, you are advised to release objects that are no longer used in a timely manner.|
 
 **Return value**
@@ -123,7 +121,7 @@ Creates a **PasteData** object that contains multiple types of data. Multiple MI
 
 | Name| Type| Mandatory| Description |
 | -------- |------------------------------------------------| -------- |-----------|
-| data | [Record](../../quick-start/arkts-language-guide-collection-types.md#recordkv-type)&lt;string, [ValueType](#valuetype9)&gt; | Yes | The key of **Record** can be the MIME type corresponding to the pasteboard data, including HTML, WANT, plain text, URI, and PixelMap defined in [Constants](#constants). Alternatively, the key could be a custom MIME type, whose parameter, the length of **mimeType**, cannot exceed 1024 bytes.<br/>The value of **Record** is the data corresponding to the MIME type specified in the key.<br/>The first MIME type specified by the key-value in **Record** is used as the default MIME type of the first **PasteDataRecord** in the **PasteData** object. Data of non-default types can be read only by using the [getData](#getdata14) API. |
+| data | [Record](../../quick-start/introduction-to-arkts.md#object-literal)&lt;string, [ValueType](#valuetype9)&gt;| Yes| The key of **Record** can be the MIME type corresponding to the pasteboard data, including HTML, WANT, plain text, URI, and PixelMap defined in [Constants](#constants). Alternatively, the key could be a custom MIME type, whose parameter, the length of **mimeType**, cannot exceed 1024 bytes.<br>The value of **Record** is the data corresponding to the MIME type specified in the key.<br>The first MIME type specified by the key-value in **Record** is used as the default MIME type of the first **PasteDataRecord** in the **PasteData** object. Data of non-default types can be read only by using the [getData](#getdata14) API.|
 
 **Return value**
 
@@ -171,7 +169,6 @@ Creates a data record of the specified type and encapsulates the data record int
 **API called in pairs**
 
 - The created record takes effect only after being added to the [PasteData](#pastedata) object using [addRecord](#addrecord7).
-
 - The typical process is as follows: Use [createData](#pasteboardcreatedata9) to create a **PasteData** object, use **createRecord** to create a record, and then use **addRecord** to add the record.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -182,8 +179,8 @@ Creates a data record of the specified type and encapsulates the data record int
 
 | Name| Type| Mandatory| Description               |
 | -------- | -------- | -------- |-------------------|
-| mimeType | string | Yes | MIME type of custom data. The value can be a predefined MIME type listed in [Constants](#constants), including HTML, WANT, plain text, URI, and pixel map, or a custom MIME type. The value of **mimeType** cannot exceed 1024 bytes. |
-| value | [ValueType](#valuetype9) | Yes| Content of the specified type. You are advised to select a proper data type based on the actual scenario. Using a large data object will affect the pasteboard performance and memory usage. For the **ArrayBuffer** type, you are advised to set a proper data size. For the **PixelMap** type, you are advised to release objects that are no longer used in a timely manner.|
+| mimeType | string | Yes| MIME type of custom data. The value can be a predefined MIME type listed in [Constants](#constants), including HTML, WANT, plain text, URI, and pixel map, or a custom MIME type. The value of **mimeType** cannot exceed 1024 bytes.|
+| value | [ValueType](#valuetype9) | Yes| Data content of the specified type. You are advised to select a proper data type based on the actual scenario. Using a large data object will affect the pasteboard performance and memory usage. For the **ArrayBuffer** type, you are advised to set a proper data size. For the **PixelMap** type, you are advised to release objects that are no longer used in a timely manner.|
 
 **Return value**
 
@@ -504,6 +501,7 @@ Creates a **PasteDataRecord** object of the URI type.
 let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability:///com.example.myapplication1/user.txt');
 ```
 
+
 ## PasteDataProperty<sup>7+</sup>
 
 Defines the properties of all data records on the pasteboard, including the timestamp, data type, pasteable range, and additional data. The defined properties can be applied to the pasteboard only with the [setProperty](#setproperty9) method.
@@ -645,11 +643,11 @@ Obtains parameters when an application uses the file copy capability provided by
 
 | Name               | Type                                         | Read-Only| Optional| Description                                                        |
 | ------------------- | -------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| destUri             | string                                        | No | Yes | URI of the destination directory for the file copied. If file processing is not supported, this parameter is not required. If the application involves complex file processing policies or needs to distinguish file multipathing storage, you are advised not to set this parameter but let the application copy files by itself. This parameter is left empty by default. |
+| destUri             | string                                        | No| Yes| URI of the destination directory for the file copied. If file processing is not supported, this parameter is not required. If the application involves complex file processing policies or needs to distinguish file multipathing storage, you are advised not to set this parameter but let the application copy files by itself. This parameter is left empty by default.|
 | fileConflictOptions | [FileConflictOptions](#fileconflictoptions15) | No| Yes| Options used to resolve file copy conflicts. Set this parameter to **OVERWRITE** when the latest file content must be used in the destination URI. Set this parameter to **SKIP** when the original file in the destination URI needs to be retained to prevent accidental overwriting. The default value is **OVERWRITE**.|
 | progressIndicator   | [ProgressIndicator](#progressindicator15)     | No| No| Progress indicator options. You can use the default progress indicator as required. If this parameter is set to **DEFAULT**, the default system progress indicator is used. If this parameter is set to **NONE**, the app progress indicator is used. Only in the second case, the **progressListener** and **progressSignal** parameters are valid.|
 | progressListener    | [ProgressListener](#progresslistener15)       | No| Yes| Listener for progress data changes, which is used to obtain the pasting progress. This parameter is valid only when **progressIndicator** is set to **NONE**. When **progressIndicator** is set to **DEFAULT**, this parameter is invalid. By default, this parameter is left empty (the progress is not listened to).|
-| progressSignal      | [ProgressSignal](#progresssignal15)           | No | Yes | Function for canceling the paste task. This parameter is valid only when [ProgressIndicator](#progressindicator15) is set to **NONE**. This parameter is left empty by default. |
+| progressSignal      | [ProgressSignal](#progresssignal15)           | No| Yes| Function for canceling the paste task. This parameter is valid only when [ProgressIndicator](#progressindicator15) is set to **NONE**. This parameter is left empty by default.|
 
 ## PasteDataRecord<sup>7+</sup>
 
@@ -663,13 +661,13 @@ Provides **PasteDataRecord** APIs. A **PasteDataRecord** is an abstract definiti
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| htmlText| string | No | No | HTML text. The value must comply with the standard HTML format. Modifications to this attribute are invalid. To update the attribute value, use [addEntry](#addentry14). |
-| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | No | No | Want content. Modifications to this attribute are invalid. To update the attribute value, use [addEntry](#addentry14). |
-| mimeType | string | No | No | Default data type. Modifications to this attribute are invalid. |
-| plainText | string | No | No | Plain text content. Modifications to this attribute are invalid. To update the attribute value, use [addEntry](#addentry14).|
-| uri | string | No | No | URI text. The value must comply with the standard URI format. Modifications to this attribute are invalid. To update the attribute value, use [addEntry](#addentry14). |
-| pixelMap<sup>9+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | No | No | Pixel map. Modifications to this attribute are invalid. To update the attribute value, use [addEntry](#addentry14). |
-| data<sup>9+</sup> | Record<string, ArrayBuffer> | No | No | Content of custom data. Modifications to this attribute are invalid. |
+| htmlText| string | No| No| HTML text. The value must comply with the standard HTML format. Modifications to this attribute are invalid. To update the attribute value, use [addEntry](#addentry14).|
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | No| No| Want content. Modifications to this attribute are invalid. To update the attribute value, use [addEntry](#addentry14).|
+| mimeType | string | No| No| Default data type. Modifications to this attribute are invalid.|
+| plainText | string | No| No| Plain text. Modifications to this attribute are invalid. To update the attribute value, use [addEntry](#addentry14).|
+| uri | string | No| No| URI text. The value must comply with the standard URI format. Modifications to this attribute are invalid. To update the attribute value, use [addEntry](#addentry14).|
+| pixelMap<sup>9+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | No| No| Pixel map. Modifications to this attribute are invalid. To update the attribute value, use [addEntry](#addentry14).|
+| data<sup>9+</sup> | Record<string, ArrayBuffer> | No| No| Content of custom data. Modifications to this attribute are invalid.|
 
 ### toPlainText<sup>9+</sup>
 
@@ -707,7 +705,7 @@ Adds custom data of an extra type to **PasteDataRecord**. The MIME type added us
 
 | Name  | Type| Mandatory| Description               |
 |-------| -------- | -------- |-------------------|
-| type  | string | Yes | MIME type of custom data. The value can be a predefined MIME type listed in [Constants](#constants), including HTML, WANT, plain text, URI, and pixel map, or a custom MIME type. The value of **mimeType** cannot exceed 1024 bytes.  |
+| type  | string | Yes| MIME type of custom data. The value can be a predefined MIME type listed in [Constants](#constants), including HTML, WANT, plain text, URI, and pixel map, or a custom MIME type. The value of **mimeType** cannot exceed 1024 bytes. |
 | value | [ValueType](#valuetype9) | Yes| Content of custom data.         |
 
 **Error codes**
@@ -1240,9 +1238,7 @@ prop.additions = { 'TestOne': { 'Test': 123 }, 'TestTwo': { 'Test': 'additions' 
 prop.tag = 'TestTag';
 pasteData.setProperty(prop);
 ```
-
 The **localOnly** and **shareOption** attributes of [PasteDataProperty](#pastedataproperty7) are mutually exclusive. The **shareOption** attribute is prioritized, and its value affects the value of **localOnly**.
-
 ```ts
 (async () => {
     let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
@@ -1472,9 +1468,7 @@ Notifies the pasteboard service to retain the cross-device channel before readin
 **API called in pairs**
 
 - This API must be used with [pasteComplete](#pastecomplete12) in pairs.
-
 - Calling sequence: Call **pasteStart()** to notify the system to reserve the channel. After data processing is complete, call **pasteComplete()** to notify the system that the processing is complete.
-
 - If **pasteComplete()** is not called, the cross-device channel will not be correctly closed, affecting subsequent cross-device pasteboard operations.
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
@@ -1503,13 +1497,9 @@ pasteComplete(): void
 Notifies the pasteboard service that the paste is complete, and resources such as the cross-device channel can be released. This API should be called after **pasteStart()** is called and data processing is complete to prevent resource waste. If this API is not called, the cross-device channel may be occupied for a long time, affecting subsequent cross-device paste operations.
 
 For details about how to use **pasteComplete()** and other APIs, see the following:
-
 1. Obtain the pasteboard data by calling **getData()**.
-
 2. Reserve the cross-device channel by calling **pasteStart()**.
-
 3. Use the pasteboard data.
-
 4. Release the channel by calling **pasteComplete()**.
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
@@ -1751,7 +1741,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
 let isRemove: boolean = pasteData.removeRecordAt(0);
 ```
-
 ### replaceRecordAt<sup>(deprecated)</sup>
 
 replaceRecordAt(index: number, record: PasteDataRecord): boolean
@@ -1805,9 +1794,7 @@ Subscribes to the content change event of the system pasteboard. After this meth
 **API called in pairs**
 
 - Call [off('update')](#offupdate7) to unsubscribe from the content change event of the system pasteboard when it is no longer needed.
-
 - If the event is not unsubscribed from, the callback function will continuously listen for pasteboard changes, which may cause memory leaks or the callback being triggered from multiple times.
-
 - You are advised to unsubscribe from the event when the component or page is destroyed.
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
@@ -1849,9 +1836,7 @@ Unsubscribes from the system pasteboard content change event.
 **API called in pairs**
 
 - This API is used to unsubscribe from the event subscribed to by **on('update')**.
-
 - This API can be called only after an event has been subscribed to.
-
 - If the **callback** parameter is not specified, listening will be disabled for all callbacks registered by the current application.
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
@@ -1963,9 +1948,7 @@ Writes a **PasteData** object to the pasteboard. This API uses an asynchronous c
 **Constraints**
 
 - If another copy or paste operation is in progress, error code 27787277 is returned.
-
 - If the copy operation is prohibited, error code 27787278 is returned.
-
 - The **PasteData** object cannot be empty.
 
 **Use scenarios**: This API can be used to write data to the pasteboard asynchronously, such as when the UI response is required or the main thread should not be blocked. Unlike [setDataSync](#setdatasync11), **setData** does not block the UI thread.
@@ -2063,7 +2046,7 @@ systemPasteboard.setData(pasteData).then((data: void) => {
 
 getData(callback: AsyncCallback&lt;PasteData&gt;): void
 
-Reads data from the system pasteboard and encapsulates the data into a **PasteData** object. This API uses an asynchronous callback to return the result. After this API is called, the system reads the current content from the pasteboard service and returns a **PasteData** object using a callback. After the data is read successfully, the app can obtain the specific data content (such as text, HTML, and URI) using the **PasteData** object. This API can be used to read data from the pasteboard asynchronously, such as when the UI response is required or the main thread should not be blocked. Compared with [getDataSync](#getdatasync11), **getData** does not block the UI thread and is suitable for processing a large amount of data or remote data.
+Obtains data from the system pasteboard and encapsulates the data into a **PasteData** object. This API uses an asynchronous callback to return the result. After this API is called, the system reads the current content from the pasteboard service and returns a **PasteData** object using a callback. After the data is read successfully, the app can obtain the specific data content (such as text, HTML, and URI) using the **PasteData** object. This API can be used to read data from the pasteboard asynchronously, such as when the UI response is required or the main thread should not be blocked. Compared with [getDataSync](#getdatasync11), **getData** does not block the UI thread and is suitable for processing a large amount of data or remote data.
 
 **Required permissions**: ohos.permission.READ_PASTEBOARD. While most applications must [request permissions to access the pasteboard](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md), those using [PasteButton](../../security/AccessToken/pastebutton.md) can access the pasteboard content without permission requests.
 
@@ -2499,7 +2482,6 @@ systemPasteboard.setPasteData(pasteData, (err, data) => {
     console.info('Succeeded in setting PasteData.');
 });
 ```
-
 ### setPasteData<sup>(deprecated)</sup>
 
 setPasteData(data: PasteData): Promise&lt;void&gt;
@@ -2536,7 +2518,6 @@ systemPasteboard.setPasteData(pasteData).then((data: void) => {
     console.error('Failed to set PasteData. Cause: ' + err.message);
 });
 ```
-
 ### isRemoteData<sup>11+</sup>
 
 isRemoteData(): boolean
@@ -3022,9 +3003,7 @@ Sets pasteable range of pasteboard data for applications.
 **API called in pairs**
 
 - This API is used together with **removeAppShareOptions()**.
-
 - To delete the configured sharing scope, call **removeAppShareOptions()**.
-
 - The sharing scope must be deleted from the same place where it was set, ensuring consistency between the setting and deletion of the sharing scope.
 
 **Required permissions**: ohos.permission.MANAGE_PASTEBOARD_APP_SHARE_OPTION
@@ -3070,9 +3049,7 @@ Deletes the global pasteable range of the application.
 **API called in pairs**
 
 - This API must be used together with **setAppShareOptions()**.
-
 - The sharing scope set by **setAppShareOptions()** is deleted.
-
 - This API can be called only after the sharing scope has been set.
 
 **Required permissions**: ohos.permission.MANAGE_PASTEBOARD_APP_SHARE_OPTION
@@ -3100,7 +3077,6 @@ try {
 ```
 
 ### Pattern<sup>13+</sup>
-
 Describes the modes supported by the pasteboard.
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
@@ -3110,8 +3086,8 @@ Describes the modes supported by the pasteboard.
 | URL                              | 0   | URL.                                                             |
 | NUMBER                        | 1   | Number.                                                   |
 | EMAIL_ADDRESS | 2   | Email address.|
-| HTTP_URL<sup>24+</sup> | 3   | HTTP URL.<br> **Model constraint**: This API can be used only in the stage model.|
-| FLIGHT_NUMBER<sup>24+</sup> | 4   | Flight number.<br> **Model constraint**: This API can be used only in the stage model.|
+| HTTP_URL<sup>24+</sup> | 3   | HTTP URL.<br> **Model restriction**: This API can be used only in the stage model.|
+| FLIGHT_NUMBER<sup>24+</sup> | 4   | Flight number.<br> **Model restriction**: This API can be used only in the stage model.|
 
 ### detectPatterns<sup>13+</sup>
 
@@ -3312,7 +3288,6 @@ try {
     console.error(`Failed to get the ChangeCount. Cause: ${err.message}`);
 };
 ```
-
 ### UpdateCallback<sup>22+</sup>
 
 type UpdateCallback = () => void
@@ -3330,9 +3305,7 @@ Subscribes to the content change events of the pasteboard on a remote device. Th
 **API called in pairs**
 
 - Call [offRemoteUpdate](#offremoteupdatecallback-updatecallback22) to unsubscribe from the content change event of the pasteboard when it is no longer needed.
-
 - If the event is not unsubscribed from, the callback function will continuously listen for remote changes, which may cause memory leaks.
-
 - You are advised to unsubscribe from the event when the component or page is destroyed.
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
@@ -3362,9 +3335,7 @@ Unsubscribes from the content change events of the pasteboard on a remote device
 **API called in pairs**
 
 - This API is used to unsubscribe from the event subscribed to by **onRemoteUpdate()**.
-
 - This API can be called only after an event has been subscribed to.
-
 - If the **callback** parameter is not specified, remote listening will be disabled for all callbacks registered by the current application.
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
