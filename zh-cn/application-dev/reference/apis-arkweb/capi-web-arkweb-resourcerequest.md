@@ -18,4 +18,6 @@ ArkWeb_ResourceRequest是被拦截的Scheme请求的详细信息结构体，包�
 
 **相关模块：** [Web](capi-web.md)
 
+**系统能力：** SystemCapability.Web.Webview.Core
+
 **所在头文件：** [arkweb_scheme_handler.h](capi-arkweb-scheme-handler-h.md)
