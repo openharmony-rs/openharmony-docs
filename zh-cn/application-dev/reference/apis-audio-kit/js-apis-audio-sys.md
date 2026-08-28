@@ -26,7 +26,7 @@ import { audio } from '@kit.AudioKit';
 
 ## 常量
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -40,7 +40,7 @@ createTonePlayer(options: AudioRendererInfo, callback: AsyncCallback&lt;TonePlay
 
 创建DTMF播放器。使用callback异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -79,7 +79,7 @@ createTonePlayer(options: AudioRendererInfo): Promise&lt;TonePlayer&gt;
 
 创建DTMF播放器。使用Promise异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -116,7 +116,7 @@ createAsrProcessingController(audioCapturer: AudioCapturer): AsrProcessingContro
 
 获取自动语音识别（ASR）处理控制器。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -181,7 +181,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 枚举，音频流类型。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -197,7 +197,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 枚举，音频中断请求结果类型。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Interrupt
 
@@ -210,7 +210,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 枚举，可获取的设备种类。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -225,7 +225,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 枚举，音效分类。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -238,7 +238,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 音效属性。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -268,7 +268,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 枚举，音频流使用类型。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -287,7 +287,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 枚举，音频中断请求类型。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Interrupt
 
@@ -299,7 +299,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 枚举，音量相关操作。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -311,7 +311,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 枚举，自动语音识别（ASR）的噪音抑制模式。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -326,7 +326,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 枚举，自动语音识别（ASR）的声学回声消除（AEC）模式。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -339,7 +339,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 枚举，自动语音识别（ASR）的耳语检测模式。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -352,7 +352,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 枚举，自动语音识别（ASR）的音频通路模式。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -367,7 +367,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 枚举，自动语音识别（ASR）的静音模式。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -383,7 +383,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 音频中断结果。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Interrupt
 
@@ -396,7 +396,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 音量改变时，应用接收的事件。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -410,7 +410,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 枚举，设备连接类型。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -423,7 +423,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 音量组信息，数组类型，为[VolumeGroupInfo](#volumegroupinfo9)的数组，只读。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -431,7 +431,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 音量组信息。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -447,7 +447,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 枚举，音源类型。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -457,6 +457,22 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 | SOURCE_TYPE_VOICE_CALL<sup>11+</sup>            | 4 | 通话录音的音频源。<br/>**需要权限：** ohos.permission.RECORD_VOICE_CALL |
 | SOURCE_TYPE_VOICE_TRANSCRIPTION<sup>18+</sup>   | 12     | 语音转写音频源。 |
 | SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT<sup>23+</sup>   | 19     | 未处理的语音助手音频源。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+
+## AudioPlaybackCaptureMode
+
+表示内录（录制设备内部应用的声音）模式的枚举。用于指定可录制的目标播放流类型。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
+
+| 名称 | 值 | 说明 |
+| :--- | :--- | :--- |
+| MODE_ONLY_VOIP | 0x4000 | VoIP模式。录制VoIP音频流。<br>如果设置了[AudioCapturerOptions](#audiocaptureroptions8).playbackCaptureUid，则仅录制指定应用的VoIP音频流。<br>AudioCapturerOptions.playbackCaptureUid仅在此模式生效。<br>此模式需要`ohos.permission.CAPTURE_VOICE_DOWNLINK_AUDIO`权限，否则[createAudioCapturer](./arkts-apis-audio-f.md#audiocreateaudiocapturer8)会创建失败。 |
 
 ## AudioCapturerMicInConfig<sup>23+</sup>
 
@@ -475,6 +491,20 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 | capturerInfo                        | [AudioCapturerInfo](arkts-apis-audio-i.md#audiocapturerinfo8)                   | 否 | 否 | 音频采集器信息。         |
 | ecStreamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | 否 | 是 | 回声消除音频流信息。<br>若未设置此属性，采集器将仅录制麦克风输入的音频流。    |
 | preferredInputDevice | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) | 否 | 是 | 当前音频录音器的偏好输入设备。对于该设备有以下要求：<br/>- 此设备必须为输入设备，并且**capturerInfo**中的源类型必须为[SOURCE_TYPE_VOICE_RECOGNITION](arkts-apis-audio-e.md#sourcetype8)、[SOURCE_TYPE_VOICE_TRANSCRIPTION](#sourcetype8)或[SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT](#sourcetype8)，否则此参数将被忽略。<br/>- 如果用户未指定设备，系统会按当前音频路由策略自动选择可用输入设备。<br/>- 当用户指定偏好设备时：<br/>1. 如果偏好设备在线，当前音频录音器使用该设备录音；如果录音过程中该设备离线，系统会按当前音频路由策略自动选择其他可用输入设备。<br/>2. 如果偏好设备离线，系统会按当前音频路由策略自动选择其他可用输入设备；如果录音过程中该设备上线，系统会自动切换到偏好设备。<br/>- 用户可通过[getCurrentAudioCapturerChangeInfo](arkts-apis-audio-AudioCapturer.md#getcurrentaudiocapturerchangeinfo11)查询当前实际使用的设备。<br/>**起始版本：** 26.0.0 |
+
+## AudioSessionBehaviorFlags<sup>24+</sup>
+
+表示音频会话行为的枚举。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+| 名称                   | 值 | 说明      |
+| :--------------------- |:--|:--------|
+| VOIP_CAPTURE_MIX_WITH_OTHERS | 0x20000000 | 允许当前应用的VoIP录制流与其他现有VoIP录制流同时运行。当新的VoIP录制流被启动时，可以中断当前应用的VoIP录制流。<br/>该标志仅在调用[setIndependentAudioSessionStrategy](./arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)使用时生效。<br/>使用该标志时，需校验权限`ohos.permission.VOIP_CAPTURE_CONCURRENCY`<br/>**起始版本：** 26.0.0 |
 
 ## AudioCapturerMicInData<sup>24+</sup>
 
@@ -496,7 +526,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 枚举，音量调节类型。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -551,13 +581,10 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Capturer
-
-| 名称                                | 类型                                                                   | 只读 | 可选 | 说明                                                                                                                                                                                                        |
-| ----------------------------------- |----------------------------------------------------------------------| ---- |---|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| preferredInputDevice<sup>22+</sup> | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) | 否 | 是 | 当前音频采集器的偏好输入设备。<br/>此设备必须为输入设备，并且capturerInfo的source type必须为[SOURCE_TYPE_VOICE_RECOGNITION](arkts-apis-audio-e.md#sourcetype8)或[SOURCE_TYPE_VOICE_TRANSCRIPTION](#sourcetype8)。否则，此参数将会被忽略。<br/>1. 当调用者未指定偏好设备时，系统会自动选择一个设备。<br/>2. 当调用者指定了偏好设备创建语音识别或者语音转写流时：<br/>（1）设备在线，当前audiocapturer会使用偏好设备；如果运行过程中，偏好设备下线，系统会自动选择一个录音设备。<br/>（2）设备不在线，当前audiocapturer会自动选择一个录音设备；如果运行过程中，偏好设备上线，系统会自动切换到偏好设备上。<br/>3. 调用者可以通过[getCurrentAudioCapturerChangeInfo](arkts-apis-audio-AudioCapturer.md#getcurrentaudiocapturerchangeinfo11)查询当前实际使用的录音设备。 |
-
-
+| 名称   | 类型   | 只读 | 可选 | 说明  |
+| ----- |--------| ---- |---|-------------|
+| preferredInputDevice<sup>22+</sup> | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) | 否 | 是 | 当前音频采集器的偏好输入设备。<br/>此设备必须为输入设备，并且capturerInfo的source type必须为[SOURCE_TYPE_VOICE_RECOGNITION](arkts-apis-audio-e.md#sourcetype8)或[SOURCE_TYPE_VOICE_TRANSCRIPTION](#sourcetype8)。否则，此参数将会被忽略。<br/>1. 当调用者未指定偏好设备时，系统会自动选择一个设备。<br/>2. 当调用者指定了偏好设备创建语音识别或者语音转写流时：<br/>（1）设备在线，当前audiocapturer会使用偏好设备；如果运行过程中，偏好设备下线，系统会自动选择一个录音设备。<br/>（2）设备不在线，当前audiocapturer会自动选择一个录音设备；如果运行过程中，偏好设备上线，系统会自动切换到偏好设备上。<br/>3. 调用者可以通过[getCurrentAudioCapturerChangeInfo](arkts-apis-audio-AudioCapturer.md#getcurrentaudiocapturerchangeinfo11)查询当前实际使用的录音设备。<br>**系统能力：** SystemCapability.Multimedia.Audio.Capturer |
+| playbackCaptureUid | number | 否 | 是 | 应用UID，用于音视频通话播放采集。<br>此参数仅在[AudioCapturerOptions](./arkts-apis-audio-i.md#audiocaptureroptions8).playbackCaptureMode设置为[AudioPlaybackCaptureMode](#audioplaybackcapturemode).MODE_ONLY_VOIP时生效。在其他模式下，此参数将被忽略。<br>该值必须为整数类型。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture |
 
 ## AudioManager
 
@@ -571,7 +598,7 @@ setExtraParameters(mainKey: string, kvpairs: Record<string, string\>): Promise&l
 
 **需要权限：** ohos.permission.MODIFY_AUDIO_SETTINGS
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -586,7 +613,7 @@ setExtraParameters(mainKey: string, kvpairs: Record<string, string\>): Promise&l
 
 | 类型                | 说明                            |
 | ------------------- | ------------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -622,7 +649,7 @@ getExtraParameters(mainKey: string, subKeys?: Array\<string>): Promise\<Record\<
 
 获取指定音频参数值。使用Promise异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -668,7 +695,7 @@ setAudioScene\(scene: AudioScene, callback: AsyncCallback<void\>\): void
 
 设置音频场景模式。使用callback异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
 
@@ -699,7 +726,7 @@ setAudioScene\(scene: AudioScene\): Promise<void\>
 
 设置音频场景模式。使用Promise异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
 
@@ -713,7 +740,7 @@ setAudioScene\(scene: AudioScene\): Promise<void\>
 
 | 类型           | 说明                 |
 | :------------- | :------------------- |
-| Promise<void\> | Promise对象。无返回结果的Promise对象。 |
+| Promise<void\> | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -733,7 +760,7 @@ getEffectManager(): AudioEffectManager
 
 获取音效会话管理器。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -769,7 +796,7 @@ disableSafeMediaVolume(): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.MODIFY_AUDIO_SETTINGS
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -777,7 +804,7 @@ disableSafeMediaVolume(): Promise&lt;void&gt;
 
 | 类型                                       | 说明                          |
 |------------------------------------------| ----------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -811,7 +838,7 @@ on(type: 'volumeChange', callback: Callback\<VolumeEvent>): void
 
 目前此订阅接口在单进程多AudioManager实例的使用场景下，仅最后一个实例的订阅生效，其他实例的订阅会被覆盖（即使最后一个实例没有进行订阅），因此推荐使用单一AudioManager实例进行开发。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -841,7 +868,7 @@ on(type: 'ringerModeChange', callback: Callback\<AudioRingMode>): void
 > **说明：**
 > 从 API version 8 开始支持，从 API version 9 开始废弃，建议使用AudioVolumeGroupManager中的[on('ringerModeChange')](arkts-apis-audio-AudioVolumeGroupManager.md#onringermodechange9)替代。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
 
@@ -870,7 +897,7 @@ getVolumeGroupInfos(networkId: string, callback: AsyncCallback<VolumeGroupInfos\
 
 获取音量组信息列表。使用callback异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -900,7 +927,7 @@ getVolumeGroupInfos(networkId: string\): Promise<VolumeGroupInfos\>
 
 获取音量组信息列表。使用Promise异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -931,7 +958,7 @@ getVolumeGroupInfosSync(networkId: string\): VolumeGroupInfos
 
 获取音量组信息列表，同步返回结果。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -976,7 +1003,7 @@ getAppVolumePercentageForUid(uid: number\): Promise<number\>
 
 根据应用ID获取指定应用的音量百分比（范围为0到100）。使用Promise异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -1018,7 +1045,7 @@ setAppVolumePercentageForUid(uid: number, volume: number\): Promise<void\>
 
 根据应用ID设置指定应用的音量百分比（范围为[0, 100]）。使用Promise异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -1033,7 +1060,7 @@ setAppVolumePercentageForUid(uid: number, volume: number\): Promise<void\>
 
 | 类型                | 说明                            |
 | ------------------- | ------------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1254,7 +1281,7 @@ isAppVolumeMutedForUid(uid: number, owned: boolean\): Promise<boolean\>
 >
 > 如果有多个调用者设置了静音状态，那么只有当所有调用者都取消静音状态后，此应用才会真正取消静音。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -1297,7 +1324,7 @@ setAppVolumeMutedForUid(uid: number, muted: boolean\): Promise<void\>
 
 根据应用ID设置应用静音状态。使用Promise异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -1312,7 +1339,7 @@ setAppVolumeMutedForUid(uid: number, muted: boolean\): Promise<void\>
 
 | 类型                | 说明                            |
 | ------------------- | ------------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1335,13 +1362,135 @@ audioVolumeManager.setAppVolumeMutedForUid(uid, true).then(() => {
 });
 ```
 
+### setVoipRendererMuteForUid
+
+setVoipRendererMuteForUid(uid: number, streamId: number, muted: boolean): Promise&lt;void&gt;
+
+根据应用ID和音频流ID设置VoIP播放流静音状态。使用Promise异步回调。
+
+> **说明：**
+>
+> - 若有多个调用方对同一应用ID和音频流ID设置了静音状态，仅当所有调用方取消静音后，VoIP播放流才会取消静音。
+> - 当应用异常退出、应用释放并重启音频流或音频服务异常退出并重启时，该音频流设置的静音状态将自动失效。此类情况下，需重新调用此接口设置静音状态。
+
+**需要权限：** ohos.permission.MUTE_VOIP_PLAYBACK
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**参数：**
+
+| 参数名     | 类型                                      | 必填 | 说明                             |
+| ---------- | ---------------------------------------- | ---- |--------------------------------|
+| uid    | number                                   | 是   | 应用ID。<br>该值应为整数。                         |
+| streamId | number | 是   | VoIP音频流唯一ID。                |
+| muted    | boolean                                   | 是   | 设置VoIP播放流是否为静音状态。true表示设置为静音，false表示解除静音。 |
+
+**返回值：**
+
+| 类型                | 说明                            |
+| ------------------- | ------------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 201 | Permission denied. |
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+| 6800301 | Crash or blocking occurs in system process. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let uid = 20010041; // 应用ID。
+let streamId = 100001; // 音频流ID。
+
+audioVolumeManager.setVoipRendererMuteForUid(uid, streamId, true).then(() => {
+  console.info('Succeeded in setting voip renderer mute state.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set voip renderer mute state. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### setVoipCapturerMuteForUid
+
+setVoipCapturerMuteForUid(uid: number, streamId: number, muted: boolean): Promise&lt;void&gt;
+
+根据应用ID和音频流ID设置VoIP录制流静音状态。使用Promise异步回调。
+
+> **说明：**
+>
+> - 若有多个调用方对同一应用ID和音频流ID设置了静音状态，仅当所有调用方取消静音后，VoIP录制流才会取消静音。
+> - 当应用异常退出、应用释放并重启音频流或音频服务异常退出并重启时，该音频流设置的静音状态将自动失效。此类情况下，需重新调用此接口设置静音状态。
+
+**需要权限：** ohos.permission.MUTE_VOIP_CAPTURE
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**参数：**
+
+| 参数名     | 类型                                      | 必填 | 说明                             |
+| ---------- | ---------------------------------------- | ---- |--------------------------------|
+| uid    | number                                   | 是   | 应用ID。<br>该值应为整数。                         |
+| streamId | number | 是   | VoIP音频流唯一ID。                |
+| muted    | boolean                                   | 是   | 设置VoIP录制流是否为静音状态。true表示设置为静音，false表示解除静音。 |
+
+**返回值：**
+
+| 类型                | 说明                            |
+| ------------------- | ------------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 201 | Permission denied. |
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+| 6800301 | Crash or blocking occurs in system process. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let uid = 20010041; // 应用ID。
+let streamId = 100001; // 音频流ID。
+
+audioVolumeManager.setVoipCapturerMuteForUid(uid, streamId, true).then(() => {
+  console.info('Succeeded in setting voip capturer mute state.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set voip capturer mute state. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ### on('appVolumeChangeForUid')<sup>19+</sup>
 
 on(type: 'appVolumeChangeForUid', uid: number, callback: Callback\<VolumeEvent>): void
 
 监听指定应用应用级音量变化事件（当应用级音量发生变化时触发）。使用callback异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -1381,7 +1530,7 @@ off(type: 'appVolumeChangeForUid', callback?: Callback\<VolumeEvent>): void
 
 取消监听指定应用应用级音量变化事件。使用callback异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -1426,7 +1575,7 @@ on(type: 'activeVolumeTypeChange', callback: Callback\<AudioVolumeType>): void
 
 监听当前活跃流变化事件（当活跃流发生变化时触发）。使用callback异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -1460,7 +1609,7 @@ off(type: 'activeVolumeTypeChange', callback?: Callback\<AudioVolumeType>): void
 
 取消监听当前活跃流变化事件。使用callback异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -1666,7 +1815,7 @@ setVolume(volumeType: AudioVolumeType, volume: number, callback: AsyncCallback&l
 
 仅设置铃声（即volumeType为AudioVolumeType.RINGTONE）在静音和非静音状态切换时需要该权限。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -1702,7 +1851,7 @@ setVolume(volumeType: AudioVolumeType, volume: number): Promise&lt;void&gt;
 
 仅设置铃声（即volumeType为AudioVolumeType.RINGTONE）在静音和非静音状态切换时需要该权限。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -1717,7 +1866,7 @@ setVolume(volumeType: AudioVolumeType, volume: number): Promise&lt;void&gt;
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -1737,7 +1886,7 @@ setVolumeWithFlag(volumeType: AudioVolumeType, volume: number, flags: number): P
 
 仅设置铃声（即volumeType为AudioVolumeType.RINGTONE）在静音和非静音状态切换时需要该权限。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -1753,7 +1902,7 @@ setVolumeWithFlag(volumeType: AudioVolumeType, volume: number, flags: number): P
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1778,7 +1927,7 @@ getActiveVolumeTypeSync(uid: number): AudioVolumeType
 
 查询指定应用活跃的音频音量类型；如果将uid传入为0，则查询的是全局范围内活跃的音频音量类型。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -1822,7 +1971,7 @@ mute(volumeType: AudioVolumeType, mute: boolean, callback: AsyncCallback&lt;void
 
 仅设置铃声（即volumeType为AudioVolumeType.RINGTONE）在静音和非静音状态切换时需要该权限。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -1858,7 +2007,7 @@ mute(volumeType: AudioVolumeType, mute: boolean): Promise&lt;void&gt;
 
 仅设置铃声（即volumeType为AudioVolumeType.RINGTONE）在静音和非静音状态切换时需要该权限。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -1873,7 +2022,7 @@ mute(volumeType: AudioVolumeType, mute: boolean): Promise&lt;void&gt;
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -1893,7 +2042,7 @@ setRingerMode(mode: AudioRingMode, callback: AsyncCallback&lt;void&gt;): void
 
 仅在静音和非静音状态切换时需要该权限。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -1928,7 +2077,7 @@ setRingerMode(mode: AudioRingMode): Promise&lt;void&gt;
 
 仅在静音和非静音状态切换时需要该权限。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -1942,7 +2091,7 @@ setRingerMode(mode: AudioRingMode): Promise&lt;void&gt;
 
 | 类型                | 说明                            |
 | ------------------- | ------------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -1960,7 +2109,7 @@ setMicMute(mute: boolean): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -1974,7 +2123,7 @@ setMicMute(mute: boolean): Promise&lt;void&gt;
 
 | 类型                | 说明                            |
 | ------------------- | ------------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2003,7 +2152,7 @@ setMicMutePersistent(mute: boolean, type: PolicyType): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.MICROPHONE_CONTROL
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -2047,7 +2196,7 @@ isPersistentMicMute(): boolean
 
 **需要权限：** ohos.permission.MICROPHONE_CONTROL
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -2082,7 +2231,7 @@ adjustVolumeByStep(adjustType: VolumeAdjustType, callback: AsyncCallback&lt;void
 
 仅设置铃声（即volumeType为AudioVolumeType.RINGTONE）在静音和非静音状态切换时需要该权限。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -2128,7 +2277,7 @@ adjustVolumeByStep(adjustType: VolumeAdjustType): Promise&lt;void&gt;
 
 仅设置铃声（即volumeType为AudioVolumeType.RINGTONE）在静音和非静音状态切换时需要该权限。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -2142,7 +2291,7 @@ adjustVolumeByStep(adjustType: VolumeAdjustType): Promise&lt;void&gt;
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2177,7 +2326,7 @@ adjustSystemVolumeByStep(volumeType: AudioVolumeType, adjustType: VolumeAdjustTy
 
 仅设置铃声（即volumeType为AudioVolumeType.RINGTONE）在静音和非静音状态切换时需要该权限。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -2223,7 +2372,7 @@ adjustSystemVolumeByStep(volumeType: AudioVolumeType, adjustType: VolumeAdjustTy
 
 仅设置铃声（即volumeType为AudioVolumeType.RINGTONE）在静音和非静音状态切换时需要该权限。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -2238,7 +2387,7 @@ adjustSystemVolumeByStep(volumeType: AudioVolumeType, adjustType: VolumeAdjustTy
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2275,7 +2424,7 @@ getSupportedAudioEffectProperty(): Array\<AudioEffectProperty>
 
 **需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -2318,7 +2467,7 @@ getAudioEffectProperty(): Array\<AudioEffectProperty>
 
 **需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -2360,7 +2509,7 @@ setAudioEffectProperty(propertyArray: Array\<AudioEffectProperty>): void
 
 **需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -2712,7 +2861,7 @@ selectInputDevice(inputAudioDevices: AudioDeviceDescriptors, callback: AsyncCall
 
 选择音频输入设备，当前只能选择一个输入设备。使用callback异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -2760,7 +2909,7 @@ selectInputDevice(inputAudioDevices: AudioDeviceDescriptors): Promise&lt;void&gt
 
 选择音频输入设备，当前只能选择一个输入设备。使用Promise异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -2774,7 +2923,7 @@ selectInputDevice(inputAudioDevices: AudioDeviceDescriptors): Promise&lt;void&gt
 
 | 类型                  | 说明                         |
 | --------------------- | --------------------------- |
-| Promise&lt;void&gt;   | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt;   | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -2812,7 +2961,7 @@ selectOutputDevice(outputAudioDevices: AudioDeviceDescriptors, callback: AsyncCa
 
 选择音频输出设备，当前只能选择一个输出设备。使用callback异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -2859,7 +3008,7 @@ selectOutputDevice(outputAudioDevices: AudioDeviceDescriptors): Promise&lt;void&
 
 选择音频输出设备，当前只能选择一个输出设备。使用Promise异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -2873,7 +3022,7 @@ selectOutputDevice(outputAudioDevices: AudioDeviceDescriptors): Promise&lt;void&
 
 | 类型                  | 说明                         |
 | --------------------- | --------------------------- |
-| Promise&lt;void&gt;   | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt;   | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -2911,7 +3060,7 @@ selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: Audi
 
 根据过滤条件，选择音频输出设备，当前只能选择一个输出设备。使用callback异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -2968,7 +3117,7 @@ selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: Audi
 
 根据过滤条件，选择音频输出设备，当前只能选择一个输出设备。使用Promise异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -2983,7 +3132,7 @@ selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: Audi
 
 | 类型                  | 说明                         |
 | --------------------- | --------------------------- |
-| Promise&lt;void&gt;   | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt;   | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -3100,7 +3249,7 @@ selectInputDeviceByFilter(filter: AudioCapturerFilter, inputAudioDevices: AudioD
 
 根据过滤条件，选择音频输入设备，当前只能选择一个输入设备。使用Promise异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -3115,7 +3264,7 @@ selectInputDeviceByFilter(filter: AudioCapturerFilter, inputAudioDevices: AudioD
 
 | 类型                  | 说明                         |
 | --------------------- | --------------------------- |
-| Promise&lt;void&gt;   | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt;   | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3271,7 +3420,7 @@ getPreferredOutputDeviceByFilter(filter: AudioRendererFilter): AudioDeviceDescri
 
 根据过滤条件，查询音频输出设备。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -3418,7 +3567,7 @@ getPreferredInputDeviceByFilter(filter: AudioCapturerFilter): AudioDeviceDescrip
 
 根据过滤条件，查询音频输入设备，当前只能查询一个输入设备。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -3479,7 +3628,7 @@ excludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Promi
 
 从API version 23开始，使用该功能时不需要申请ohos.permission.MANAGE_AUDIO_CONFIG权限，同时不会抛出错误码201。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -3548,7 +3697,7 @@ unexcludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Pro
 
 从API version 23开始，使用该功能时不需要申请ohos.permission.MANAGE_AUDIO_CONFIG权限，同时不会抛出错误码201。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -3617,7 +3766,7 @@ unexcludeOutputDevices(usage: DeviceUsage): Promise&lt;void&gt;
 
 从API version 23开始，使用该功能时不需要申请ohos.permission.MANAGE_AUDIO_CONFIG权限，同时不会抛出错误码201。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -3668,7 +3817,7 @@ getExcludedDevices(usage: DeviceUsage): AudioDeviceDescriptors
 
 **需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -3917,7 +4066,7 @@ audioRecordingManager.offSystemRecordControllerEnabledChange();
 
 描述音频渲染器更改信息。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -3930,7 +4079,7 @@ audioRecordingManager.offSystemRecordControllerEnabledChange();
 
 描述音频采集器更改信息。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -3943,7 +4092,7 @@ audioRecordingManager.offSystemRecordControllerEnabledChange();
 
 描述音频设备。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称                          | 类型                       | 只读 | 可选 | 说明       |
 | ----------------------------- | -------------------------- | ---- | ---- | ---------- |
@@ -3985,7 +4134,7 @@ let outputAudioRendererFilter: audio.AudioRendererFilter = {
 
 过滤条件类。在调用selectOutputDeviceByFilter接口前，需要先创建AudioCapturerFilter实例。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称          | 类型                                     | 只读 | 可选 | 说明          |
 | -------------| ---------------------------------------- | ---- |---| -------------- |
@@ -4029,7 +4178,7 @@ isSpatializationSupported(): boolean
 
 获取系统是否支持空间音频，同步返回结果。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -4067,7 +4216,7 @@ isSpatializationSupportedForDevice(deviceDescriptor: AudioDeviceDescriptor): boo
 
 获取指定设备是否支持空间音频，同步返回结果。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -4129,7 +4278,7 @@ isHeadTrackingSupported(): boolean
 
 获取系统是否支持头动跟踪，同步返回结果。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -4168,7 +4317,7 @@ isHeadTrackingSupportedForDevice(deviceDescriptor: AudioDeviceDescriptor): boole
 
 获取指定设备是否支持头动跟踪，同步返回结果。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -4235,7 +4384,7 @@ setSpatializationEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): 
 
 **需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -4284,7 +4433,7 @@ setSpatializationEnabled(enable: boolean): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -4298,7 +4447,7 @@ setSpatializationEnabled(enable: boolean): Promise&lt;void&gt;
 
 | 类型                  | 说明                         |
 | --------------------- | --------------------------- |
-| Promise&lt;void&gt;   | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt;   | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -4332,7 +4481,7 @@ setSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boole
 
 **需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -4347,7 +4496,7 @@ setSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boole
 
 | 类型                  | 说明                         |
 | --------------------- | --------------------------- |
-| Promise&lt;void&gt;   | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt;   | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -4399,7 +4548,7 @@ isSpatializationEnabled(): boolean
 > **说明：**
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用[isSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean](#isspatializationenabled12)替代。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -4438,7 +4587,7 @@ isSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean
 
 获取指定设备的空间音频渲染是否开启，同步返回结果。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -4503,7 +4652,7 @@ on(type: 'spatializationEnabledChange', callback: Callback<boolean\>): void
 > **说明：**
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用[on(type: 'spatializationEnabledChangeForAnyDevice', callback: Callback<AudioSpatialEnabledStateForDevice\>): void](#onspatializationenabledchangeforanydevice12)替代。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -4540,7 +4689,7 @@ on(type: 'spatializationEnabledChangeForAnyDevice', callback: Callback<AudioSpat
 
 监听空间音频渲染开关状态变化事件（当空间音频渲染开关状态发生变化时触发）。使用callback异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -4581,7 +4730,7 @@ off(type: 'spatializationEnabledChange', callback?: Callback<boolean\>): void
 > **说明：**
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用[off('spatializationEnabledChangeForAnyDevice')](#offspatializationenabledchangeforanydevice12)替代。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -4624,7 +4773,7 @@ off(type: 'spatializationEnabledChangeForAnyDevice', callback?: Callback<AudioSp
 
 取消监听空间音频渲染开关状态变化事件。使用callback异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -4675,7 +4824,7 @@ setHeadTrackingEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): vo
 
 **需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -4724,7 +4873,7 @@ setHeadTrackingEnabled(enable: boolean): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -4738,7 +4887,7 @@ setHeadTrackingEnabled(enable: boolean): Promise&lt;void&gt;
 
 | 类型                  | 说明                         |
 | --------------------- | --------------------------- |
-| Promise&lt;void&gt;   | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt;   | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -4773,7 +4922,7 @@ setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean
 
 **需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -4788,7 +4937,7 @@ setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean
 
 | 类型                  | 说明                         |
 | --------------------- | --------------------------- |
-| Promise&lt;void&gt;   | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt;   | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -4839,7 +4988,7 @@ isHeadTrackingEnabled(): boolean
 > **说明：**
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用[isHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean](#isheadtrackingenabled12)替代。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -4878,7 +5027,7 @@ isHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean
 
 获取指定设备的头动跟踪是否开启，同步返回结果。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -4943,7 +5092,7 @@ on(type: 'headTrackingEnabledChange', callback: Callback<boolean\>): void
 > **说明：**
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用[on(type: 'headTrackingEnabledChangeForAnyDevice', callback: Callback<AudioSpatialEnabledStateForDevice\>): void](#onheadtrackingenabledchangeforanydevice12)替代。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -4980,7 +5129,7 @@ on(type: 'headTrackingEnabledChangeForAnyDevice', callback: Callback<AudioSpatia
 
 监听头动跟踪开关状态变化事件（当动跟踪开关状态发生变化时触发）。使用callback异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -5021,7 +5170,7 @@ off(type: 'headTrackingEnabledChange', callback?: Callback<boolean\>): void
 > **说明：**
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用[off('headTrackingEnabledChangeForAnyDevice')](#offheadtrackingenabledchangeforanydevice12)替代。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -5066,7 +5215,7 @@ off(type: 'headTrackingEnabledChangeForAnyDevice', callback?: Callback<AudioSpat
 
 取消监听头动跟踪开关状态变化事件。使用callback异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -5446,7 +5595,7 @@ updateSpatialDeviceState(spatialDeviceState: AudioSpatialDeviceState): void
 
 **需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -5497,7 +5646,7 @@ setSpatializationSceneType(spatializationSceneType: AudioSpatializationSceneType
 
 **需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -5539,7 +5688,7 @@ getSpatializationSceneType(): AudioSpatializationSceneType
 
 查询当前空间音频渲染场景类型，同步返回结果。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -5576,7 +5725,7 @@ try {
 
 空间化设备状态。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -5604,7 +5753,7 @@ let spatialDeviceState: audio.AudioSpatialDeviceState = {
 
 枚举，空间化设备类型。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -5621,7 +5770,7 @@ let spatialDeviceState: audio.AudioSpatialDeviceState = {
 
 枚举，空间音频渲染场景类型。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -5855,7 +6004,7 @@ try {
 
 枚举，播放器的音调类型。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -5901,7 +6050,30 @@ try {
 | 名称                               |  值     | 说明                       |
 | ---------------------------------- | ------ | ------------------------- |
 | PLAYBACK                           | 0      | 播放模式（音频渲染器的默认模式）。<br>在此模式下，音频将通过音频渲染器正常播放。 |
-| INJECT_TO_VOICE_COMMUNICATION_CAPTURE | 1 | 注入模式。<br>在此模式下，当录音流的source type为[SOURCE_TYPE_VOICE_COMMUNICATION](arkts-apis-audio-e.md#sourcetype8)，audio scene为[AUDIO_SCENE_VOICE_CHAT](arkts-apis-audio-e.md#audioscene8)时，音频渲染器的输出将被注入到VoIP录音流上。 |
+| INJECT_TO_VOICE_COMMUNICATION_CAPTURE | 1 | 注入模式。<br>在此模式下，当录音流的source type为[SourceType](arkts-apis-audio-e.md#sourcetype8).SOURCE_TYPE_VOICE_COMMUNICATION，audio scene为[AudioScene](arkts-apis-audio-e.md#audioscene8).AUDIO_SCENE_VOICE_CHAT时，音频渲染器的输出将被注入到VoIP录音流上。 |
+
+## AudioRendererTargetParams
+
+设置音频渲染器渲染目标的选项。
+
+> **说明：**
+>
+> - 此参数仅在渲染目标为非[RenderTarget](#rendertarget22).PLAYBACK模式时生效。
+> - 在其他模式时，无需指定该参数，即使指定也不生效。
+> - uid和streamId必须同时指定。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+| 名称               | 类型 | 只读 | 可选 | 说明       |
+| ------------------ | ---- | ---- |---| --------- |
+| uid | number | 否 | 否 | 应用ID。<br>该值应为整数。 |
+| streamId | number | 否 | 否 | 音频流唯一ID。<br>指定应用ID下[SourceType](./arkts-apis-audio-e.md#sourcetype8)为`SOURCE_TYPE_VOICE_COMMUNICATION`的采集流ID，音频渲染流将注入该采集流。 |
 
 ## TonePlayer<sup>9+</sup>
 
@@ -5909,7 +6081,7 @@ try {
 
 在调用TonePlayer的接口前，需要先通过[createTonePlayer](#audiocreatetoneplayer9)创建实例。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 ### load<sup>9+</sup>
 
@@ -5917,7 +6089,7 @@ load(type: ToneType, callback: AsyncCallback&lt;void&gt;): void
 
 加载DTMF音调配置。使用callback异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -5949,7 +6121,7 @@ load(type: ToneType): Promise&lt;void&gt;
 
 加载DTMF音调配置。使用Promise异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -5963,7 +6135,7 @@ load(type: ToneType): Promise&lt;void&gt;
 
 | 类型            | 说明                        |
 | :--------------| :-------------------------- |
-| Promise<void\> | Promise对象。无返回结果的Promise对象。 |
+| Promise<void\> | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -5981,7 +6153,7 @@ start(callback: AsyncCallback&lt;void&gt;): void
 
 启动DTMF音调播放。使用callback异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -6012,7 +6184,7 @@ start(): Promise&lt;void&gt;
 
 启动DTMF音调播放。使用Promise异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -6020,7 +6192,7 @@ start(): Promise&lt;void&gt;
 
 | 类型           | 说明                          |
 | :------------- | :---------------------------- |
-| Promise<void\> | Promise对象。无返回结果的Promise对象。 |
+| Promise<void\> | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -6038,7 +6210,7 @@ stop(callback: AsyncCallback&lt;void&gt;): void
 
 停止当前正在播放的音调。使用callback异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -6069,7 +6241,7 @@ stop(): Promise&lt;void&gt;
 
 停止当前正在播放的音调。使用Promise异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -6077,7 +6249,7 @@ stop(): Promise&lt;void&gt;
 
 | 类型           | 说明                          |
 | :------------- | :---------------------------- |
-| Promise<void\> | Promise对象。无返回结果的Promise对象。 |
+| Promise<void\> | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -6095,7 +6267,7 @@ release(callback: AsyncCallback&lt;void&gt;): void
 
 释放与此TonePlayer对象关联的资源。使用callback异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -6126,7 +6298,7 @@ release(): Promise&lt;void&gt;
 
 释放与此TonePlayer对象关联的资源。使用Promise异步回调。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
@@ -6134,7 +6306,7 @@ release(): Promise&lt;void&gt;
 
 | 类型           | 说明                          |
 | :------------- | :---------------------------- |
-| Promise<void\> | Promise对象。无返回结果的Promise对象。 |
+| Promise<void\> | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -6150,7 +6322,7 @@ tonePlayer.release().then(() => {
 
 自动语音识别（ASR）处理控制器。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -6162,7 +6334,7 @@ setAsrAecMode(mode: AsrAecMode): boolean
 
 设置自动语音识别（ASR）的声学回声消除（AEC）模式，同步返回结果。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -6201,7 +6373,7 @@ getAsrAecMode(): AsrAecMode
 
 获取自动语音识别（ASR）的声学回声消除（AEC）模式，同步返回结果。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -6233,7 +6405,7 @@ setAsrNoiseSuppressionMode(mode: AsrNoiseSuppressionMode): boolean
 
 设置自动语音识别（ASR）的噪音抑制模式，同步返回结果。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -6272,7 +6444,7 @@ getAsrNoiseSuppressionMode(): AsrNoiseSuppressionMode
 
 获取自动语音识别（ASR）的噪音抑制模式，同步返回结果。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -6303,7 +6475,7 @@ isWhispering(): boolean
 
 查询耳语状态。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -6334,7 +6506,7 @@ setAsrWhisperDetectionMode(mode: AsrWhisperDetectionMode): boolean
 
 设置自动语音识别（ASR）的耳语检测模式。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -6374,7 +6546,7 @@ getAsrWhisperDetectionMode(): AsrWhisperDetectionMode
 
 获取自动语音识别（ASR）的耳语检测模式，同步返回结果。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -6406,7 +6578,7 @@ setAsrVoiceControlMode(mode: AsrVoiceControlMode, enable: boolean): boolean
 
 设置在系统通话中上报mode及通话录音的上行通路的自动语音识别（ASR）音频通路选择。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -6446,7 +6618,7 @@ setAsrVoiceMuteMode(mode: AsrVoiceMuteMode, enable: boolean): boolean
 
 在系统通话中，对自动语音识别（ASR）的音频通路进行静音控制。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -6493,17 +6665,13 @@ setTarget(target: RenderTarget): Promise&lt;void&gt;
 > **说明：**
 >
 > - 此方法仅可在音频渲染器未处于运行或释放状态时调用，否则将返回错误。
-> - 将渲染目标更改为非[PLAYBACK](#rendertarget22)的模式后：
+> - 将渲染目标更改为非[RenderTarget](#rendertarget22).PLAYBACK模式后：
 >   - 该音频渲染器的音频路由与中断策略将无法使用[AudioSessionManager](arkts-apis-audio-AudioSessionManager.md)相关接口。
->   - 该音频渲染器的device type为[SYSTEM_PRIVATE](arkts-apis-audio-e.md#devicetype)。
->   - 调用[Start](arkts-apis-audio-AudioRenderer.md#start8)且audio scene不为[AUDIO_SCENE_VOICE_CHAT](arkts-apis-audio-e.md#audioscene8)时，将返回错误码[6800301](errorcode-audio.md#6800301-系统处理异常)。
->   - 调用[getAudioTime](arkts-apis-audio-AudioRenderer.md#getaudiotime8)或[getAudioTimeSync](arkts-apis-audio-AudioRenderer.md#getaudiotimesync10)时，将返回错误码[6800301](errorcode-audio.md#6800301-系统处理异常)。
->   - 调用[getAudioTimestampInfo](arkts-apis-audio-AudioRenderer.md#getaudiotimestampinfo19)或[getAudioTimestampInfoSync](arkts-apis-audio-AudioRenderer.md#getaudiotimestampinfosync19)时，将返回错误码[6800301](errorcode-audio.md#6800301-系统处理异常)。
->   - 调用[setDefaultOutputDevice](arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12)时，将返回错误码[6800301](errorcode-audio.md#6800301-系统处理异常)。
+>   - 该音频渲染器的device type为[DeviceType](arkts-apis-audio-e.md#devicetype).SYSTEM_PRIVATE。
+>   - 调用[Start](arkts-apis-audio-AudioRenderer.md#start8)且audio scene不为[AudioScene](arkts-apis-audio-e.md#audioscene8).AUDIO_SCENE_VOICE_CHAT时，将返回错误码[6800301 系统处理异常](errorcode-audio.md#6800301-系统处理异常)。
+>   - 调用[getAudioTime](arkts-apis-audio-AudioRenderer.md#getaudiotime8)、[getAudioTimeSync](arkts-apis-audio-AudioRenderer.md#getaudiotimesync10)、[getAudioTimestampInfo](arkts-apis-audio-AudioRenderer.md#getaudiotimestampinfo19)、[getAudioTimestampInfoSync](arkts-apis-audio-AudioRenderer.md#getaudiotimestampinfosync19)、[setDefaultOutputDevice](arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12)时，将返回错误码[6800301 系统处理异常](errorcode-audio.md#6800301-系统处理异常)。
 
-**需要权限：** ohos.permission.INJECT_PLAYBACK_TO_AUDIO_CAPTURE
-
-仅设置渲染目标为[INJECT_TO_VOICE_COMMUNICATION_CAPTURE](#rendertarget22)时需要该权限。
+**需要权限：** ohos.permission.INJECT_PLAYBACK_TO_AUDIO_CAPTURE（仅当渲染目标设置为[INJECT_TO_VOICE_COMMUNICATION_CAPTURE](#rendertarget22)时需要申请）
 
 **系统接口：** 此接口为系统接口。
 
@@ -6540,6 +6708,74 @@ setTarget(target: RenderTarget): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRenderer.setTarget(audio.RenderTarget.INJECT_TO_VOICE_COMMUNICATION_CAPTURE).then(() => {
+  console.info('Succeeded in setting target.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set target. code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### setTarget
+
+setTarget(target: RenderTarget, targetParams?: AudioRendererTargetParams): Promise&lt;void&gt;
+
+设置音频渲染器的渲染目标。使用Promise异步回调。
+
+> **说明：**
+>
+> - 此方法仅可在音频渲染器未处于运行或释放状态时调用，否则将返回错误。
+> - 将渲染目标更改为非[RenderTarget](#rendertarget22).PLAYBACK模式后：
+>   - 该音频渲染器的音频路由与中断策略将无法使用[AudioSessionManager](arkts-apis-audio-AudioSessionManager.md)相关接口。
+>   - 该音频渲染器的device type为[DeviceType](arkts-apis-audio-e.md#devicetype).SYSTEM_PRIVATE。
+>   - 调用[Start](arkts-apis-audio-AudioRenderer.md#start8)且audio scene不为[AudioScene](arkts-apis-audio-e.md#audioscene8).AUDIO_SCENE_VOICE_CHAT时，将返回错误码[6800301 系统处理异常](errorcode-audio.md#6800301-系统处理异常)。
+>   - 调用[getAudioTime](arkts-apis-audio-AudioRenderer.md#getaudiotime8)、[getAudioTimeSync](arkts-apis-audio-AudioRenderer.md#getaudiotimesync10)、[getAudioTimestampInfo](arkts-apis-audio-AudioRenderer.md#getaudiotimestampinfo19)、[getAudioTimestampInfoSync](arkts-apis-audio-AudioRenderer.md#getaudiotimestampinfosync19)、[setDefaultOutputDevice](arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12)时，将返回错误码[6800301 系统处理异常](errorcode-audio.md#6800301-系统处理异常)。
+
+**需要权限：** ohos.permission.INJECT_PLAYBACK_TO_AUDIO_CAPTURE（仅当渲染目标设置为非[RenderTarget](#rendertarget22).PLAYBACK模式时需要申请）
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**参数：**
+
+| 参数名                 | 类型                                                         | 必填 | 说明                      |
+| ----------------------| ------------------------------------------------------------ | ---- | ------------------------- |
+| target | [RenderTarget](#rendertarget22) | 是 | 设置音频渲染目标。 |
+| targetParams | [AudioRendererTargetParams](#audiorenderertargetparams) | 否 | 设置音频渲染器渲染目标的选项。<br>此参数仅在渲染目标为非[RenderTarget](#rendertarget22).PLAYBACK模式时生效，若未指定此参数，渲染流将默认注入所有VoIP采集流。 |
+
+**返回值：**
+
+| 类型                  | 说明                         |
+| --------------------- | --------------------------- |
+| Promise&lt;void&gt;   | Promise对象，无返回结果。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 201     | Permission denied. |
+| 202     | Caller is not a system application. |
+| 6800101 | Parameter verification failed. |
+| 6800103 | Operation not permit at running and release state. |
+| 6800104 | Current renderer is not supported to set target. |
+| 6800301 | Audio server process died. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let targetParams: audio.AudioRendererTargetParams = {
+  uid: 20010041, // 应用ID。
+  streamId: 100001 // 音频流ID。
+}
+
+audioRenderer.setTarget(audio.RenderTarget.INJECT_TO_VOICE_COMMUNICATION_CAPTURE, targetParams).then(() => {
   console.info('Succeeded in setting target.');
 }).catch((err: BusinessError) => {
   console.error(`Failed to set target. code: ${err.code}, message: ${err.message}`);
