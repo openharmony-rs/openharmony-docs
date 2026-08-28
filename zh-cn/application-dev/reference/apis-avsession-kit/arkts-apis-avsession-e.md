@@ -195,7 +195,7 @@
 | ------------------ | ---- | -------- |
 | LOOP_MODE_SEQUENCE | 0    | 顺序播放。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
 | LOOP_MODE_SINGLE   | 1    | 单曲循环。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
-| LOOP_MODE_LIST     | 2    | 表单循环。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
+| LOOP_MODE_LIST     | 2    | 列表循环。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
 | LOOP_MODE_SHUFFLE  | 3    | 随机播放。<br>**ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23 |
 | LOOP_MODE_CUSTOM<sup>11+</sup>   | 4    | 自定义播放。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23  |
 

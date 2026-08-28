@@ -45,6 +45,7 @@
 
 * ArkTS侧
 
+  ArkTS-Dyn示例：
   <!-- @[customize_a_webtag_and_send_it_to_the_native_side_of_the_application](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/ets/pages/Index.ets) -->    
   
   ``` TypeScript
@@ -60,6 +61,28 @@
   }
   ```
 
+  ArkTS-Sta示例：
+  <!-- @[customize_a_webtag_and_send_it_to_the_native_side_of_the_application](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/UseFrontendJSApp/entry4/src/main/ets/pages/Index.ets) -->
+
+  ``` TypeScript
+  import { $rawfile, Button, Column, Component, Entry, Row, State, Web } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import * as testNapi from 'libentry4.so';
+
+  @Entry
+  @Component
+  struct Index {
+    // 自定义webTag，在WebviewController创建时作为入参传入，建立controller与webTag的映射关系
+    webTag: string = 'ArkWeb1';
+    controller: webview.WebviewController = new webview.WebviewController(this.webTag);
+    // 在aboutToAppear方法中，通过Node-API接口将webTag传入C++侧，C++侧使用webTag作为ArkWeb组件的唯一标识
+    aboutToAppear() {
+      console.info('aboutToAppear');
+      //初始化web Native Development Kit
+      testNapi.nativeWebInit(this.webTag);
+    }
+  }
+  ```
 * C++侧
 
   <!-- @[parse_and_store_webtags](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/hello.cpp)-->    

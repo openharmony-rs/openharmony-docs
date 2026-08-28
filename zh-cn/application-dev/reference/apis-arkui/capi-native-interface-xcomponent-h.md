@@ -2175,7 +2175,7 @@ void OH_ArkUI_SurfaceCallback_SetSurfaceShowEvent(OH_ArkUI_SurfaceCallback* call
 | 参数项                                    | 描述 |
 |----------------------------------------| -- |
 | [OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)* callback | 表示指向[OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)实例的指针。 |
-| void (*onSurfaceShow)(OH_ArkUI_SurfaceHolder* surfaceHolder) | 表示Surface显示回调函数指针。- surfaceHolder: 表示指向[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例的指针。 |
+| void (\*onSurfaceShow)(OH_ArkUI_SurfaceHolder* surfaceHolder) | 表示Surface显示回调函数指针。- surfaceHolder: 表示指向[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例的指针。 |
 
 ### OH_ArkUI_SurfaceCallback_SetSurfaceHideEvent()
 
@@ -2196,7 +2196,7 @@ void OH_ArkUI_SurfaceCallback_SetSurfaceHideEvent(OH_ArkUI_SurfaceCallback* call
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)* callback | 表示指向[OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)实例的指针。 |
-| void (*onSurfaceHide)(OH_ArkUI_SurfaceHolder* surfaceHolder) | 表示Surface隐藏回调函数指针。- surfaceHolder: 表示指向[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例的指针。 |
+| void (\*onSurfaceHide)(OH_ArkUI_SurfaceHolder* surfaceHolder) | 表示Surface隐藏回调函数指针。- surfaceHolder: 表示指向[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例的指针。 |
 
 ### OH_ArkUI_XComponentSurfaceConfig_Create()
 

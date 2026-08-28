@@ -17,18 +17,6 @@
 
 申请流程可参考[选择申请权限的方式](determine-application-mode.md)。
 
-## ohos.permission.RUNNING_LOCK
-
-允许应用获取运行锁，保证应用在后台的持续运行。
-
-**权限级别**：normal
-
-**授权方式**：系统授权（system_grant）
-
-**是否支持证书授权**：true
-
-**起始版本**：7
-
 ## ohos.permission.SET_WALLPAPER
 
 允许应用设置壁纸。
@@ -343,6 +331,20 @@
 
 **起始版本**：11
 
+## ohos.permission.THEME_SKIN
+
+允许系统应用获取到skin目录下的换肤资源。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：20
+
 ## ohos.permission.READ_ACCESSIBILITY_CONFIG
 
 允许应用读取无障碍配置信息。
@@ -452,6 +454,1798 @@
 **是否支持证书授权**：true
 
 **起始版本**：23
+
+## ohos.permission.vehicle.HVAC_INFO
+
+允许应用订阅、获取空调对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_HVAC
+
+允许应用设置空调对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.FRIDGE_INFO
+
+允许应用订阅、获取冰箱对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_FRIDGE
+
+允许应用设置冰箱对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.SEAT_INFO
+
+允许应用订阅、获取座椅对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_SEAT
+
+允许应用设置座椅对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.DOOR_INFO
+
+允许应用订阅、获取车门对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_DOOR
+
+允许应用设置车门对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.LOCK_INFO
+
+允许应用订阅、获取车锁对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_LOCK
+
+允许应用设置车锁对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.WINDOW_INFO
+
+允许应用订阅、获取车窗对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_WINDOW
+
+允许应用设置车窗对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.SUNROOF_INFO
+
+允许应用订阅、获取天窗对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_SUNROOF
+
+允许应用设置天窗对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_STEERINGWHEEL
+
+允许应用设置方向盘对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.ENERGY_PORT_COVER_INFO
+
+允许应用订阅、获取补能口盖对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_ENERGY_PORT_COVER
+
+允许应用设置补能口盖对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.EXTERIOR_LIGHT_INFO
+
+允许应用订阅、获取车外灯光对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_EXTERIOR_LIGHT
+
+允许应用设置车外灯光对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.INTERIOR_CAMERA_INFO
+
+允许应用订阅、获取车内摄像头对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_INTERIOR_CAMERA
+
+允许应用设置车内摄像头对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.EXTERIOR_CAMERA_INFO
+
+允许应用订阅、获取车外摄像头对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_EXTERIOR_CAMERA
+
+允许应用设置车外摄像头对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.INTERIOR_SPEAKER_INFO
+
+允许应用订阅、获取车内扬声器对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_INTERIOR_SPEAKER
+
+允许应用设置车内扬声器对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.EXTERIOR_SPEAKER_INFO
+
+允许应用订阅、获取车外扬声器对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_EXTERIOR_SPEAKER
+
+允许应用设置车外扬声器对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.WIPER_INFO
+
+允许应用订阅、获取雨刮器对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_WIPER
+
+允许应用设置雨刮器对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.MIRROR_INFO
+
+允许应用订阅、获取后视镜对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_MIRROR
+
+允许应用设置后视镜对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.HORN_INFO
+
+允许应用订阅、获取喇叭对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_HORN
+
+允许应用设置喇叭对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CHB_INFO
+
+允许应用订阅、获取冷暖箱对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_CHB
+
+允许应用设置冷暖箱对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CODEBOX_INFO
+
+允许应用订阅、获取密码箱对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_CODEBOX
+
+允许应用设置密码箱对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.STANDEMBLEM_INFO
+
+允许应用订阅、获取立标对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_STANDEMBLEM
+
+允许应用设置立标对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.GRILLE_INFO
+
+允许应用订阅、获取进气格栅对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_GRILLE
+
+允许应用设置进气格栅对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.WIRELESSCHARGER_INFO
+
+允许应用订阅、获取无线充电对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_WIRELESSCHARGER
+
+允许应用设置无线充电对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.PROJECTORSCREEN_INFO
+
+允许应用订阅、获取投影幕布对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_PROJECTORSCREEN
+
+允许应用设置投影幕布对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_DRIVE_INFORMATION
+
+允许应用设置行车信息模块对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.BODY_SENSOR_INFO
+
+允许应用订阅、获取车身传感器对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_BODY_SENSOR
+
+允许应用设置车身传感器对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.VSC_SYSTEM_INFO
+
+允许应用订阅、获取车身稳定系统对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_VSC_SYSTEM
+
+允许应用设置车身稳定系统对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CHG_DISCHG_INFO
+
+允许应用订阅、获取充放电控制系统对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_CHG_DISCHG
+
+允许应用设置充放电控制系统对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.EPB_INFO
+
+允许应用订阅、获取电子驻车系统对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_EPB
+
+允许应用设置电子驻车系统对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.PBS_INFO
+
+允许应用订阅、获取动力电池系统对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_PBS
+
+允许应用设置动力电池系统对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.TIRE_SYSTEM_INFO
+
+允许应用订阅、获取轮胎系统对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_TIRE_SYSTEM
+
+允许应用设置轮胎系统对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.TOW_SYSTEM_INFO
+
+允许应用订阅、获取拖车系统对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_TOW_SYSTEM
+
+允许应用设置拖车系统对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.SUSPENSION_SYSTEM_INFO
+
+允许应用订阅、获取悬架系统对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_SUSPENSION_SYSTEM
+
+允许应用设置悬架系统对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_ACCELERATOR_PEDAL
+
+允许应用设置加速踏板对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_BRAKE_PEDAL
+
+允许应用设置制动踏板对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CAR_MODE_INFO
+
+允许应用订阅、获取车辆模式对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_CAR_MODE
+
+允许应用设置车辆模式对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.DRIVING_MODE_INFO
+
+允许应用订阅、获取驾驶模式对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_DRIVING_MODE
+
+允许应用设置驾驶模式对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.INTERIOR_HEATING_MODULE_INFO
+
+允许应用订阅、获取内饰加热模块对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_INTERIOR_HEATING_MODULE
+
+允许应用设置内饰加热模块对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.SPECIAL_MOBILITY_MODE_INFO
+
+允许应用订阅、获取特殊机动模式对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_SPECIAL_MOBILITY_MODE
+
+允许应用设置特殊机动模式对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.BUTTON_LEVER_INFO
+
+允许应用订阅、获取物理按键与拨杆对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_BUTTON_LEVER
+
+允许应用设置物理按键与拨杆对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.WHC_INFO
+
+允许应用订阅、获取饮水机对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_WHC
+
+允许应用设置饮水机对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.PRIVACYCURTAIN_INFO
+
+允许应用订阅、获取隐私帘对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_PRIVACYCURTAIN
+
+允许应用设置隐私帘对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.POWER_MANAGEMENT_INFO
+
+允许应用订阅、获取整车电源管理对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_POWER_MANAGEMENT
+
+允许应用设置整车电源管理对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.SMARTKEY_INFO
+
+允许应用订阅、获取智能钥匙对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_SMARTKEY
+
+允许应用设置智能钥匙对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.ETC_INFO
+
+允许应用订阅、获取ETC对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_ETC
+
+允许应用设置ETC对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.HUD_INFO
+
+允许应用订阅、获取HUD对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_HUD
+
+允许应用设置HUD对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.NAVIGATION_INFO
+
+允许应用订阅、获取导航对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_NAVIGATION
+
+允许应用设置导航对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.OXYGEN_CONCENTRATOR_INFO
+
+允许应用订阅、获取制氧机对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_OXYGEN_CONCENTRATOR
+
+允许应用设置制氧机对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.ELECTRIC_SEAT_BELT_INFO
+
+允许应用订阅、获取电动安全带对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_ELECTRIC_SEAT_BELT
+
+允许应用设置电动安全带对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.FRONT_REAR_TRUNK_INFO
+
+允许应用订阅、获取前后备箱对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_FRONT_REAR_TRUNK
+
+允许应用设置前后备箱对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.RANGE_EXTENDER_INFO
+
+允许应用订阅、获取增程器对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_RANGE_EXTENDER
+
+允许应用设置增程器对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.DIFFERENTIAL_LOCK_INFO
+
+允许应用订阅、获取差速锁对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_DIFFERENTIAL_LOCK
+
+允许应用设置差速锁对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.ARMREST_SCREEN_INFO
+
+允许应用订阅、获取扶手屏对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_ARMREST_SCREEN
+
+允许应用设置扶手屏对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.ARMREST_BOX_INFO
+
+允许应用订阅、获取扶手箱对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_ARMREST_BOX
+
+允许应用设置扶手箱对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.ELECTRIC_REAR_SPOILER_INFO
+
+允许应用订阅、获取电动尾翼对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_ELECTRIC_REAR_SPOILER
+
+允许应用设置电动尾翼对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.ELECTRIC_PEDAL_INFO
+
+允许应用订阅、获取电动踏板对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_ELECTRIC_PEDAL
+
+允许应用设置电动踏板对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.ELECTRIC_DRIVE_SYSTEM_INFO
+
+允许应用订阅、获取电驱系统对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_ELECTRIC_DRIVE_SYSTEM
+
+允许应用设置电驱系统对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.SPACE_PARTITIONING_INFO
+
+允许应用订阅、获取空间隔断对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_SPACE_PARTITIONING
+
+允许应用设置空间隔断对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.USB_INFO
+
+允许应用订阅、获取USB对手件状态信息。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_USB
+
+允许应用设置USB对手件状态。
+
+申请此权限前，需要先申请[ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control)。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
 
 ## ohos.permission.ASSIST_DEVICE_UPDATE
 
@@ -607,6 +2401,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：Phone | PC/2in1 | Tablet | Wearable
+
 **起始版本**：12
 
 ## ohos.permission.RECEIVE_ENTERPRISE_POLICY_EVENT
@@ -618,6 +2414,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：14
 
@@ -791,6 +2589,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
 **起始版本**：10
 
 ## ohos.permission.READ_HIVIEW_SYSTEM
@@ -803,6 +2603,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
 **起始版本**：10
 
 ## ohos.permission.READ_DFX_SYSEVENT
@@ -814,6 +2616,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
 
 **起始版本**：8
 
@@ -2178,6 +3982,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：Phone | PC/2in1 | Tablet
+
 **起始版本**：11
 
 ## ohos.permission.PERCEIVE_TRAIL
@@ -2203,6 +4009,20 @@
 **是否支持证书授权**：true
 
 **起始版本**：11
+
+## ohos.permission.EXECUTE_DISTRIBUTED_INTENT
+
+允许系统应用执行分布式意图。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car | Phone | TV | Wearable | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
 
 ## ohos.permission.VERIFY_ACTIVATION_LOCK
 
@@ -2708,9 +4528,11 @@
 
 **起始版本**：11
 
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
 ## ohos.permission.SET_CODE_PROTECT_INFO
 
-允许系统应用设置云侧公钥以及工作秘钥密文，并协商代码保护秘钥信息。
+允许系统应用设置云侧公钥以及工作密钥密文，并协商代码保护密钥信息。
 
 **权限级别**：system_core
 
@@ -3022,6 +4844,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：Phone | Wearable | PC/2in1 | Tablet
+
 **起始版本**：13
 
 ## ohos.permission.MANAGE_SHUTDOWN_FINDNETWORK
@@ -3033,6 +4857,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：Phone | Wearable | PC/2in1 | Tablet
 
 **起始版本**：15
 
@@ -3682,6 +5508,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：Wearable
+
 **起始版本**：12
 
 ## ohos.permission.MANAGE_MOUSE_CURSOR
@@ -3884,6 +5712,8 @@
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
 **是否支持证书授权**：true
 
 **起始版本**：12
@@ -3897,6 +5727,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：Phone | Tablet | Car
 
 **起始版本**：12
 
@@ -4152,6 +5984,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：PC/2in1
+
 **起始版本**：14
 
 ## ohos.permission.UTILIZE_RECOVERY_KEY
@@ -4163,6 +5997,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：PC/2in1
 
 **起始版本**：14
 
@@ -4199,6 +6035,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：PC/2in1
 
 **起始版本**：14
 
@@ -4249,6 +6087,20 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**起始版本**：13
+
+## ohos.permission.ACCESS_CAR_CONTROL
+
+允许应用接入或拉起车辆控制界面。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
 
 **起始版本**：13
 
@@ -4390,7 +6242,7 @@
 
 允许系统应用创建虚拟键盘窗口。
 
-系统应用获取此权限后，才可以成功创建虚拟键盘窗口。当前仅2in1设备系统应用可申请此权限。
+系统应用获取此权限后，才可以成功创建虚拟键盘窗口。当前仅PC/2in1设备系统应用可申请此权限。
 
 **权限级别**：system_basic
 
@@ -4399,6 +6251,8 @@
 **是否支持证书授权**：true
 
 **起始版本**：15
+
+**支持设备**：PC/2in1
 
 ## ohos.permission.GET_FAMILY_INFO
 
@@ -4409,6 +6263,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：PC/2in1 | Phone | Tablet
 
 **起始版本**：18
 
@@ -4434,7 +6290,7 @@
 
 **是否支持证书授权**：true
 
-**起始版本**：18
+**起始版本**：16
 
 ## ohos.permission.GET_PAGE_INFO
 
@@ -4463,8 +6319,6 @@
 ## ohos.permission.ACCESS_STARTUPGUIDE
 
 允许系统应用访问开机向导应用的普通数据、普通公共事件。
-
-仅手机、平板、2in1设备应用可申请此权限。
 
 **权限级别**：system_basic
 
@@ -4642,6 +6496,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：Phone | PC/2in1 | Tablet | Wearable
+
 **起始版本**：18
 
 ## ohos.permission.READ_DHA
@@ -4761,6 +6617,20 @@
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：19
+
+## ohos.permission.MINORS_PROTECTION_UI
+
+允许系统应用调用未成年人模式的ExtensionAbility。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：General
+
+**起始版本**：26.0.0
 
 ## ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
@@ -4893,6 +6763,22 @@
 应用或服务拥有此权限后，可跨进程访问内核接口，针对已加密的代码内容请求解密，可避免非法访问，进一步保护应用代码资产。
 
 **权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：General
+
+**起始版本**：20
+
+## ohos.permission.kernel.READ_PROTECT_RANGE
+
+允许系统应用或系统服务访问加密应用的代码文件。
+
+应用或服务拥有此权限后，可访问代码文件保护范围。
+
+**权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
@@ -5210,6 +7096,20 @@
 
 **起始版本**：20
 
+## ohos.permission.READ_DIAGNOSTIC_LOGS
+
+允许应用读取诊断日志。
+
+应用默认无法获取hilog日志，获取该权限后，工具类应用可以获取hilog实时输出的日志。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：21
+
 ## ohos.permission.ACCESS_ANCO_APP_DATA
 
 允许应用访问兼容应用目录。
@@ -5438,7 +7338,7 @@
 
 **是否支持证书授权**：true
 
-**支持设备**： General
+**支持设备**： Phone | Tablet | TV | Wearable
 
 **起始版本**：23
 
@@ -5656,6 +7556,20 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.CLI_MANAGE_WEB_SANDBOX
+
+允许系统应用管理浏览器沙箱分身应用。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
 ## ohos.permission.EXEMPT_MOTION_SENSORS_RESTRICTION
 
 允许应用豁免传感器管控。
@@ -5672,9 +7586,23 @@
 
 **起始版本**：24
 
-## ohos.permission.ENCRYPT_VOLUME_MANAGER
+ ## ohos.permission.ENABLE_AGENT_PERMISSION_MGR
+ 
+ 允许系统应用开启智能体相关的权限管理特性。
+ 
+ **权限级别**：system_basic
+ 
+ **授权方式**：系统授权（system_grant）
+ 
+ **是否支持证书授权**：true
+ 
+ **支持设备**：Phone | PC/2in1 | Tablet
+ 
+ **起始版本**：26.0.0
 
-允许应用调用storage_manager服务中管理卷加密的接口。
+## ohos.permission.MODIFY_AGENT_CARD
+
+允许系统应用更新和删除AgentCard。
 
 **权限级别**：system_basic
 
@@ -5684,11 +7612,25 @@
 
 **支持设备**：General
 
-**起始版本**：24
+**起始版本**：26.0.0
 
-## ohos.permission.ODD_MANAGER
+## ohos.permission.START_ABILITY_TO_PAGE
 
-允许应用调用storage_manager服务中管理光驱刻录的接口。
+允许系统应用启动其他应用到指定页面栈。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.vehicle.CAR_DETACHABLE_SCREEN_MANAGEMENT
+
+允许应用获取后排控制屏信息和状态，与后排控制屏建立通信通道。
 
 **权限级别**：system_basic
 
@@ -5696,9 +7638,223 @@
 
 **是否支持证书授权**：true
 
-**支持设备**：General
+**支持设备**：Car
 
-**起始版本**：24
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CAR_MODE_MANAGEMENT
+
+允许应用获取和设置车机情景模式。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.vehicle.ACCESS_DFT_LOG
+
+允许系统应用读取车机日志服务、蓝牙、稳定性、升级等日志目录。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.AUTO_UPDATER
+
+允许应用向车机设备发送升级指令。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.vehicle.CAR_LOG_SERVICE
+
+允许系统应用发送指令以获取日志。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.READ_HARDWARE_CONFIG
+
+允许应用读取车辆硬件信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.WRITE_HARDWARE_CONFIG
+
+允许应用写入车辆硬件信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.READ_CAR_CDC_CONFIG
+
+允许应用读取车辆与车机配置。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.WRITE_CAR_CDC_CONFIG
+
+允许应用写入车辆与车机配置。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_PRIVACY_CONSENT
+
+允许应用签署整车隐私相关协议或政策。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_DRIVER_SEAT_PRIVACY
+
+允许应用设置主驾隐私模式的状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_CLEAR_TRACE
+
+允许应用设置车辆的一键除痕和更新除痕状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_SENSORTYPE_STATE
+
+允许应用设置敏感权限的有效期。
+
+获取该权限后，应用可以设置麦克风、车内摄像头、定位服务等涉及用户敏感数据的权限的有效期。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_REMOTELOCATION
+
+允许应用设置远程位置控制的开关状态。
+
+获取该权限后，应用可以开启或关闭远程查看车辆位置的开关。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_ANONYMIZE_VOICE
+
+允许应用使用声纹脱敏的能力。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_SUPER_PRIVACY
+
+允许应用设置车内隐私保护状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
 
 ## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
@@ -5714,8 +7870,364 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.ASSET_CACHE_MANAGER
+
+允许应用通过资产缓存服务管理接口下发、控制、查询任务。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：24
+
+## ohos.permission.DCAS_OTA_PERMISSION
+
+允许应用和服务接入端侧模型部署态管理。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：General
+
+**起始版本**：24
+
+## ohos.permission.ACCESS_SUPPORT_FEEDBACK
+
+允许系统应用拉起问题反馈页面。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.REVOKE_FILE_ACCESS_PERSIST
+
+允许应用撤销指定应用的持久化文件授权。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：General
+
+**起始版本**：26.0.0
+
+## ohos.permission.ACCESS_SHARED_FILE
+
+允许应用获取和访问应用捐献目录。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：General
+
+**起始版本**：26.0.0
+
+## ohos.permission.GET_FILE_ACCESS_PERSIST
+
+允许应用获取指定应用的持久化文件授权记录。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：General
+
+**起始版本**：26.0.0
+
+## ohos.permission.ACCESS_SUPPORT_HELP
+
+允许系统应用拉起智能客服页面。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.ACCESS_DIGITAL_IDENTITY_ABILITY
+
+允许系统应用使用数字凭证服务的统一管理能力。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.MANAGE_VOLUME_ENCRYPTION_POLICY
+
+允许应用配置卷加密策略。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
+## ohos.permission.SUBSCRIBE_OUTDOOR_EXPLORATION_SERVICE
+
+允许应用使用户外模式服务提供海拔订阅能力。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone
+
+**起始版本**：26.0.0
+
+## ohos.permission.ACCESS_INTIMATE_RELATION_INFO
+
+允许获取亲密关系人信息及拉起亲密人页面。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.QUERY_TOOL_PERMISSIONS
+
+允许系统应用查询执行CLI/Skill所需要的权限。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：General
+
+**起始版本**：26.0.0
+
+## ohos.permission.MANAGE_TOOL_RUNTIME_PERMISSIONS
+
+允许系统应用设置和查询指定CLI/Skill运行所需要的权限。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：General
+
+**起始版本**：26.0.0
+
+## ohos.permission.ACCESS_DEVICE_INTERCONNECTIVITY
+
+允许应用使用跨设备互通能力。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV
+
+**起始版本**：24
+
+## ohos.permission.GET_TICKET_INFO
+
+允许系统应用为敏感消息生成完整性保护凭据。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：General
+
+**起始版本**：26.0.0
+
+## ohos.permission.CAMERA_SHARED
+
+允许系统应用与其他应用共享访问一台相机。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.MANAGE_AOD
+
+允许应用触发进入或退出熄屏显示（AOD），并管理AOD状态。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.MANAGE_SKILL_PRIVILEGE
+     
+允许系统应用使用skill的能力。
+
+获取该权限后，应用可以：
+
+- 查询skill包的信息
+- 监听skill包的安装、更新、卸载事件
+- 访问skill包安装的沙箱目录
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.READ_ACCESSIBILITY_CONFIG_VISION
+
+允许系统应用通过CLI命令查询无障碍视觉辅助功能状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.READ_ACCESSIBILITY_CONFIG_HEARING
+
+允许系统应用通过CLI命令查询无障碍听觉辅助功能状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.READ_ACCESSIBILITY_CONFIG_ACTION
+
+允许系统应用通过CLI命令查询无障碍行为辅助功能状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.CONNECT_GAME_ACCELERATION
+
+允许应用调整游戏场景下策略配置。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | Tablet | TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.QUERY_CLI_TOOL
+
+允许系统应用查询CLI工具。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.EXEC_CLI_TOOL
+
+允许系统应用执行CLI工具。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.GET_STORAGE_MANAGER
+
+允许应用通过CLI命令查询存储。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car | LiteWearable
+
+**起始版本**：26.0.0
+
 ## ohos.permission.cli.START_ABILITY
- 
+
 允许智能体应用通过CLI命令启动指定应用。
 
 **权限级别**：system_core
@@ -5742,11 +8254,603 @@
 
 **起始版本**：26.0.0
 
-## ohos.permission.CAMERA_SHARED
+## ohos.permission.ACCESS_FUNCTION
 
-允许系统应用与其他应用共享访问一台相机。
+允许系统应用访问可用的函数。
 
-**权限级别**：system_core
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.ACCESS_MAPDATA_DIR
+
+允许系统应用读写地图数据。
+
+获取该权限后，应用可访问、修改下载到设备的地图离线数据。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone
+
+**起始版本**：20
+
+## ohos.permission.TV_MANAGE_SOURCE
+
+允许系统应用管理和控制智慧屏输入源。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_MANAGE_PICTURE_QUALITY
+
+允许系统应用管理智慧屏图像画质。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_GET_AUDIO_DEVICE_INFO
+
+允许系统应用读取智慧屏声音输出设备信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_SET_AUDIO_DEVICE_INFO
+
+允许系统应用设置智慧屏声音输出设备信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_MANAGE_SOUND_EFFECT
+
+允许系统应用查询与设置智慧屏音效。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_MANAGE_AI_AQ
+
+允许系统应用查询与设置智慧屏计算音频。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_MANAGE_CEC
+
+允许系统应用通过HDMI CEC联动控制CEC设备。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_CAMERA_AI
+
+允许系统应用访问智慧屏Camera AI算法。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_DIAGNOSIS
+
+允许系统应用对智慧屏故障进行智能检测。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_ACCESS_PROJECTION
+
+允许系统应用访问智慧屏投屏。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_MANAGE_LOGSYNC
+
+允许系统应用管理智慧屏日志同步。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.ACCESS_FIDO2_ONLINEAUTH_PRIVILEGE
+
+允许系统应用使用通行密钥服务的管理凭据功能。
+
+获取此权限后，应用可获取、删除通行密钥服务的全量凭据。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：20
+
+## ohos.permission.automotive.SET_ADAS_CMD
+
+允许系统应用设置高级驾驶辅助系统（Advanced Driver Assistance Systems, ADAS）的指令。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.automotive.GET_ADAS_INFO
+
+允许系统应用获取高级驾驶辅助系统（Advanced Driver Assistance Systems, ADAS）的信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.automotive.GET_CLUSTER_INFO
+
+允许系统应用获取车机上的仪表信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.automotive.SET_CLUSTER_CMD
+
+允许系统应用设置车机上的仪表指令。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.automotive.SET_MMS_CMD
+
+允许系统应用设置MMS命令。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.automotive.GET_MMS_INFO
+
+允许系统应用获取感知盒子信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.automotive.GET_XCALL_INFO
+
+允许系统应用获取车机专有通信信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.automotive.SET_XCALL_CMD
+
+允许系统应用设置车机专有通信命令。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.automotive.SET_SECBOX_CMD
+
+允许系统应用设置车机保密箱。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.automotive.GET_SECBOX_INFO
+
+允许系统应用获取车机保密箱信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.automotive.RECV_HUAP_INFO
+
+允许系统应用接收车机代理服务数据。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.automotive.SEND_HUAP_MSG
+
+允许系统应用发送车机代理服务消息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_ACCESSORY_MANAGE
+
+允许系统应用查询与设置智慧屏配件信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.QUERY_SPACE_OPTIMIZATION
+
+允许应用查询空间优化的效果。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.ARKWEBCORE_SYS_CAP
+
+允许系统应用调用ArkWebCore的扩展功能。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.HDC_REPORT_INFO
+
+允许系统应用订阅hdc事件。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.vehicle.VEHICLE_THERMAL
+
+允许应用访问座舱设备温控信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.ENTERPRISE_SPACE_FILE_TRANSFER_DATA_ACCESS
+
+允许系统应用访问文件传输服务文件缓存路径。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
+## ohos.permission.CONTROL_IMAGEVIDEO_ANALYSIS
+
+允许应用触发资产的智慧分析。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car | LiteWearable
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CREATE_SIGN_CONTENT_TRUST
+
+允许应用创建内容证真签名。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.vehicle.APPEND_SIGN_CONTENT_TRUST
+
+允许应用追加内容证真签名。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.vehicle.MANAGE_TBOX_CELLULAR
+
+允许应用设置蜂窝网络相关信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.TBOX_CELLULAR_INFO
+
+允许应用读取蜂窝网络相关信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.MANAGE_TBOX_WIFI
+
+允许应用设置TBox Wi-Fi相关信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.TBOX_WIFI_INFO
+
+允许应用获取TBox Wi-Fi相关信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.PACKET_CAPTURE_INFO
+
+允许应用触发网络抓包。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CCN_SELF_HEALING
+
+允许应用触发网络的自检自愈。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.AUTO_OTA_PROXY
+
+允许系统应用发送OTA相关的车辆控制及域控制命令。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.vehicle.CAMERA_EVS
+
+允许应用使用车载相机。
+
+**权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
@@ -5769,3 +8873,321 @@
 **支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
 
 **起始版本**：26.0.0
+
+## ohos.permission.GET_ENTERPRISE_UNLOCK_CONFIGS
+
+允许应用获取企业账号解锁设备的相关配置。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.1.0
+
+## ohos.permission.MANAGE_ENTERPRISE_UNLOCK_CONFIGS
+
+允许应用配置通过企业账号解锁设备的能力。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.1.0
+
+## ohos.permission.ACCESS_ASSOCIATE_ASSISTANT
+
+允许应用接入互联互通助手服务。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.SAMBA_CLIENT_ACCESS
+
+允许应用连接网络邻居客户端，管理网络邻居文件。
+
+获取权限后，应用可以连接、断开网络邻居，操作网络邻居文件，获取网络邻居连接基本信息等。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.FILE_MANAGER_SERVICE_ACCESS
+
+允许应用调用文件管理服务的接口操作文件。
+
+获取该权限后，应用可以使用回收站、常用文件夹、收藏文件、USB设备查询、快捷方式等文件管理功能。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.FILE_MANAGER_SERVICE_SMART_FILE_ACCESS
+
+允许应用获取和管理文件管理智能文件。
+
+获取权限后，应用可以管理文件的智能分类、生成文件摘要和进行文件推荐等。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.UPDATE_FORM_CROSS_BUNDLE
+
+允许应用更新其他应用的卡片。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.FILE_MANAGER_SERVICE_DATA_ACCESS
+
+允许应用获取和管理文件管理文件。
+
+获取该权限后，应用可以添加文件事件记录、搜索文件、管理最近文件、以及获取音乐文件、重复文件、聚合文件。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.ACCESS_MEDIALIB_SANDBOX
+
+允许应用在appspawn挂载媒体库沙箱。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Wearable | TV | Tablet | Phone | PC/2in1 | Car | LiteWearable | Smartlock | Router
+
+**起始版本**：26.1.0
+
+## ohos.permission.MUTE_VOIP_CAPTURE
+
+允许应用静音其他应用的VoIP录音流。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | Tablet | TV | PC/2in1 | Car | Wearable
+
+**起始版本**：26.0.0
+
+## ohos.permission.MUTE_VOIP_PLAYBACK
+
+允许应用静音其他应用的VoIP播放流。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | Tablet | TV | PC/2in1 | Car | Wearable
+
+**起始版本**：26.0.0
+
+## ohos.permission.VOIP_CAPTURE_CONCURRENCY
+
+允许应用在其他应用进行VoIP录制期间，启用VoIP录制流。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | Tablet | TV | PC/2in1 | Car | Wearable
+
+**起始版本**：26.0.0
+
+## ohos.permission.MULTI_SCREEN_MANAGER
+
+允许系统应用管理多屏亮灭状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.DEVICE_AUTH
+
+允许车辆后排扶手屏应用连接车机，进行设备认证。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.AutoWiredProjection
+
+允许应用使用有线投屏服务，以查询DP设备信息、投屏状态等。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.AUTH_MODEL_DOWNLOAD
+
+允许系统应用将下载模型的授权结果发送给模型管理服务。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.1.0
+
+## ohos.permission.ACCESS_FILE_MONITOR_DIR
+
+允许应用通过沙箱模式获取文件管理数据。
+
+获取权限后，应用可在客户端进程中通过沙箱模式查询数据库，减少查询时间。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1 | Phone | Tablet | TV | Smartlock | Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.VEHICLE_OEMCERTSIGN
+
+允许应用使用OEM证书对数据进行签名。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.CONNECTIVITY_USE_RESTRICTED_NETWORKS
+
+允许应用使用受限网络，如内部网络、特定的车载网络等。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.ACCESS_SOFTBUS_SYS_HAP
+
+允许系统应用与近场设备建立连接并完成数据收发。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1 | Car | Phone | Wearable | Tablet | TV
+
+**起始版本**：26.1.0
+
+## ohos.permission.SET_WORK_SCHEDULER_PROPERTY
+
+允许系统应用修改指定应用的延迟任务参数。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2-in-1 | Car | Phone | Tablet | TV | Wearable
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.FACTORYRESET_WRITE_CONFIG
+
+允许应用将车辆恢复出厂设置。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0

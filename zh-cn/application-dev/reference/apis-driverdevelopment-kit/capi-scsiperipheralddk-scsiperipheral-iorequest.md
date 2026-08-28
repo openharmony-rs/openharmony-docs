@@ -32,6 +32,6 @@ typedef struct ScsiPeripheral_IORequest {...} ScsiPeripheral_IORequest
 | uint8_t byte1 | SCSI命令描述符块（CDB）的第一个字节，通常包含操作码和操作组信息。 |
 | uint8_t byte6 | SCSI命令描述符块（CDB）的第六个字节，根据命令类型包含不同的参数或标志信息。 |
 | [ScsiPeripheral_DeviceMemMap](capi-scsiperipheralddk-scsiperipheral-devicememmap.md)* data | 数据传输的缓冲区。 |
-| uint32_t timeout | 超时时间（单位：毫秒）。 |
+| uint32_t timeout | 超时时间（单位：ms）。 |
 
 

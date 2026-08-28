@@ -1,4 +1,4 @@
-# 自定义组件生命周期
+# 自定义组件生命周期（ArkTS-Dyn）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926; @xin11112-->

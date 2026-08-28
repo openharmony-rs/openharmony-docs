@@ -549,7 +549,7 @@ onExportCertificate(resourceId: string, params?: Array\<huksExternalCrypto.HuksE
 
 ```ts
 import { huksExternalCrypto, CryptoExtensionAbility, HuksCryptoExtensionResult,
-  HuksCryptoExtensionCertInfo } from '@kit.UniversalKeystoreKit';
+  HuksCryptoExtensionCertInfo, HuksCryptoExtensionParam } from '@kit.UniversalKeystoreKit';
 
 export default class CryptoExtension extends CryptoExtensionAbility {
   onExportCertificate(resourceId: string, params?: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {

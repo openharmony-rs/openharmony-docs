@@ -2118,7 +2118,7 @@ ArkTS-Dyn示例：
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
-    responseWeb: webview.WebResourceResponse = new webview.WebResourceResponse();
+    responseWeb: WebResourceResponse = new WebResourceResponse();
     heads: Header[] = new Array();
     webData: string = "<!DOCTYPE html>\n" +
       "<html>\n" +
