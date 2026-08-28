@@ -83,7 +83,7 @@ struct FancyUse {
 ``` TypeScript
 // 正确写法
   @Styles
-  function globalFancy () {
+  function globalFancy() {
     .width(100)
   }
 ```
