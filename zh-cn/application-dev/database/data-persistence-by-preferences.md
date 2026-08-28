@@ -306,7 +306,7 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
    ```
 9. 删除指定文件。
 
-   使用deletePreferences()方法从内存中移除指定文件对应的Preferences实例及其数据。若该Preference存在对应的持久化文件，则一并删除，包括指定文件及其备份文件、损坏文件。
+   使用deletePreferences()方法从内存中移除指定文件对应的Preferences实例及其数据。若该Preferences存在对应的持久化文件，则一并删除，包括指定文件及其备份文件、损坏文件。
 
    > **说明：**
    >
