@@ -274,6 +274,15 @@ let domainRule: netFirewall.NetFirewallRule = {
     },{
       isWildcard: true,
       domain: "*.example.cn"
+    },{
+      isWildcard: true,
+      domain: "*w.example.cn"  // 从API版本26.0.0开始支持
+    },{
+      isWildcard: true,
+      domain: "www.example.*"  // 从API版本26.0.0开始支持
+    },{
+      isWildcard: true,
+      domain: "www.example.c*"  // 从API版本26.0.0开始支持
     }],
   userId: 100,
   interface:"wlan0" // 从API版本26.0.0开始支持
@@ -700,7 +709,14 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 | 名称         | 类型    | 只读 | 可选|说明                                      |
 | ------------ | --------|------|-----|------------------------------------- |
 | isWildcard   | boolean | 否  | 否|是否包含通配符。true表示包含，false表示不包含。                          |
-| domain       | string  | 否  |否 |当isWildcard为false时，需要确定的完整域， 例如"www.example.cn"。 |
+| domain       | string  | 否  |否 |当isWildcard为false时，需要确定的完整域， 例如"www.example.cn"；当isWildcard为true时，支持通配符规则，具体格式见下文说明。 |
+
+当isWildcard为true时，domain支持使用通配符"*"，"*"可出现在域名的首部、尾部或首尾同时出现，表示匹配任意长度（包括零）的任意字符。支持以下通配符格式：
+
+- `"*.xxx.xxx"`：前缀通配，匹配xxx.xxx及其所有子域名。例如"*.example.com"可匹配"example.com"、"www.example.com"、"a.b.example.com"。（从API版本21开始支持）
+- `"*xx.xxx.xxx"`：前缀通配，匹配以"xx.xxx.xxx"结尾的域名。例如"*a.example.com"可匹配"a.example.com"、"www.a.example.com"。（从API版本26.0.0开始支持）
+- `"xxx.xxx.xxx.*"`：后缀通配，匹配以"xxx.xxx.xxx."开头的域名。例如"www.example.*"可匹配"www.example.com"、"www.example.cn"。（从API版本26.0.0开始支持）
+- `"xxx.xxx.xxx.xx*"`：后缀通配，匹配以"xxx.xxx.xxx.xx"开头的域名。例如"www.example.co*"可匹配"www.example.com"、"www.example.com.cn"。（从API版本26.0.0开始支持）
 
 ## NetFirewallDnsParams
 

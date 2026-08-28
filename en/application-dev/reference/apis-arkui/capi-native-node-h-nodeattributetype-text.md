@@ -6,7 +6,7 @@
 <!--Designer: @xiangyuan6; @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=a041db2b81d74e65102cd30ad9b031e923a1cd3e translatedAt=2026-08-04T10:56:02.294Z pushedAt=2026-08-10T08:20:21.700Z -->
+<!-- md-trans-meta sourceCommit=330b06588843f46c9bd90648f10e5c574cf1a509 translatedAt=2026-08-25T02:24:17.918Z pushedAt=2026-08-27T00:49:15.649Z -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -474,7 +474,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .string | Font family. Use commas (,) to separate multiple fonts.|
+| .string | Font family. Use commas (,) to separate multiple fonts. |
 | .value[0].f32 | Text size, in fp. Value range: [0, +∞). |
 | .value[1].i32 | Font weight. The parameter type is [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). Default value: **ARKUI_FONT_WEIGHT_NORMAL**. |
 | .value[2].i32 | Font style. The parameter type is [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle). Default value: **ARKUI_FONT_STYLE_NORMAL**. |
@@ -587,12 +587,14 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name| Description|
 | -- | -- |
 | .value[0].f32 | Line spacing, in fp. Value range: [0, +∞). If a negative value is passed, the setting does not take effect. |
+| ?.object | Pointer to the [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) object, used to set line spacing options. This parameter is optional. It is supported since API version 26.1.0. Use [OH_ArkUI_NativeModule_LineSpacingOptions_Create](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_create) to create the object and [OH_ArkUI_NativeModule_LineSpacingOptions_Destroy](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_destroy) to destroy it. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
 | .value[0].f32 | Line spacing, in fp. |
+| .object | Pointer to the [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) object, used to obtain the line spacing options. This parameter is supported since API version 26.1.0. |
 
 ## NODE_FONT_FEATURE
 
@@ -623,7 +625,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_TEXT_ENABLE_DATA_DETECTOR = 1025
 ```
 
-Whether to enable text recognition. The recognized entity types can be configured through the **NODE_TEXT_ENABLE_DATA_DETECTOR_CONFIG** attribute. This attribute is suitable for recognizing specific entity types in text (such as phone numbers, email addresses, and URLs) to implement features like tap-to-redirection and smart interaction.<br>
+Whether to enable text entity recognition. The recognized entity types can be configured through the **NODE_TEXT_ENABLE_DATA_DETECTOR_CONFIG** attribute. This attribute is suitable for recognizing specific entity types in text (such as phone numbers, email addresses, and URLs) to implement features like tap-to-redirection and smart interaction.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
@@ -632,13 +634,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Whether to enable text recognition. The default value is **0**. The value **1** means to enable text recognition, and **0** means the opposite |
+| .value[0].i32 | Whether to enable text entity recognition. The value **1** means to enable text entity recognition, and **0** means the opposite. The default value is **0**. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Whether text recognition is enabled. The value **1** means that text recognition is enabled, and **0** means the opposite. |
+| .value[0].i32 | Whether text entity recognition is enabled. The value **1** means that text entity recognition is enabled, and **0** means the opposite. |
 
 ## NODE_TEXT_ENABLE_DATA_DETECTOR_CONFIG
 
@@ -1424,7 +1426,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .string? | Font family. Use commas (,) to separate multiple fonts. This parameter is optional.|
+| .string? | Font family. Use commas (,) to separate multiple fonts. This parameter is optional. |
 | .value[0].f32 | Text size, in fp. Value range: [0, +∞). |
 | .value[1]?.i32 | Font weight. This parameter is optional. The value range is [100, 900]. The default value is **400**. A larger value indicates a bolder font.|
 | .value[2]?.i32 | Font style. This parameter is optional. The parameter type is [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle). The default value is **ARKUI_FONT_STYLE_NORMAL**.|
@@ -1434,7 +1436,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .string | Font family. Use commas (,) to separate multiple fonts.|
+| .string | Font family. Use commas (,) to separate multiple fonts. |
 | .value[0].f32 | Text size, in fp. Value range: [0, +∞). |
 | .value[1].i32 | Font weight, without a unit. A larger value indicates a bolder font.|
 | .value[2].i32 | Font style. The parameter type is [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle).|
@@ -1610,3 +1612,5 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .value[0].i32 | Whether the new SVG parsing capability is enabled. The value **1** indicates the new SVG parsing capability is enabled, and **0** indicates the original SVG parsing capability is retained. |
+
+<!--no_check-->

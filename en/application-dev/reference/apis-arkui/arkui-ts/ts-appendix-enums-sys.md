@@ -78,7 +78,7 @@ Enumerates distortion modes.
 
 | Name    | Value| Description             |
 | ------ | --- | --------------- |
-| DISTORTION_AUTO | 0 | When a material of the [IMMERSIVE](../arkts-apis-uimaterial.md#immersive-material) type is set, the distortion effect automatically takes effect based on the device computing power level and the immersive light sensing configuration in system settings. On high-computing-power devices, the effect takes effect when the immersive light sensing configuration is strong or balanced, and does not take effect when it is weak. The effect does not take effect on medium- or low-computing-power devices. |
+| DISTORTION_AUTO | 0 | When a material of the [IMMERSIVE](../arkts-apis-uimaterial.md#immersivematerial) type is set, the distortion effect automatically takes effect based on the device computing power level and the immersive light sensing configuration in system settings. On high-computing-power devices, the effect takes effect when the immersive light sensing configuration is strong or balanced, and does not take effect when it is weak. The effect does not take effect on medium- or low-computing-power devices. |
 | DISTORTION_ENABLED | 1 | The distortion effect is enabled when a system material is applied.|
 | DISTORTION_DISABLED | 2 | The distortion effect is disabled when a system material is applied.|
 

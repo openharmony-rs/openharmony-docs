@@ -294,7 +294,7 @@ struct DatePickerExample {
 
 ```
 
-![date](figures/DatePickerComponent1.gif)
+<!--Del--> <!--DelEnd-->
 
 ### Example 2: Time Picker
 
@@ -378,7 +378,7 @@ struct DateTimePickerExample {
 }
 ```
 
-![datetime](figures/DatePickerComponent3.gif)
+<!--Del--> <!--DelEnd-->
 
 ### Example 4: Disabling Loop Mode
 
@@ -414,4 +414,4 @@ struct NoLoopPickerExample {
 }
 ```
 
-![loop](figures/DatePickerComponent4.gif)
+<!--Del--> <!--DelEnd-->

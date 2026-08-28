@@ -93,8 +93,31 @@ ArkTS Array归约函数类型，被Array类的[reduceRight](arkts-apis-arkts-col
 | 类型   | 说明                          |
 | ------ | --------------------------- |
 | AccType | 归约函数的结果，该结果会作为下一次调用ArrayReduceCallback时的previousValue参数。 |
+## ArrayElementPredicateFn
 
+type ArrayElementPredicateFn\<ElementType> = (value: ElementType) => boolean
 
+ArkTS Array断言函数类型，被Array类的[retainAll](arkts-apis-arkts-collections-Array.md#retainall-2)接口使用，用来判断数组元素是否满足测试条件。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此类型仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名  | 类型   | 必填 | 说明                          |
+| ------- | ------ | ---- | --------------------------- |
+| value | ElementType | 是 | 当前遍历的ArkTS Array元素，用于判断是否满足测试条件。|
+
+**返回值：**
+
+| 类型   | 说明                          |
+| ------ | --------------------------- |
+| boolean | 断言函数的结果。为true时表示当前元素满足条件，为false时表示当前元素不满足条件。 |
 
 ## TypedArrayFromMapFn
 type TypedArrayFromMapFn\<FromElementType, ToElementType> = (value: FromElementType, index: number) => ToElementType

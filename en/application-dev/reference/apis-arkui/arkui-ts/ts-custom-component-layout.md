@@ -88,7 +88,7 @@ Provides layout information of the parent component (a custom component). Inheri
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| borderWidth | [EdgeWidth](ts-types.md#edgewidth10) |No|No| Border width of the parent component.<br>Unit: vp.            |
+| borderWidth | [EdgeWidth](ts-types.md) |No|No| Border width of the parent component.<br>Unit: vp.            |
 | margin      | [Margin](ts-types.md#margin)       | No|No|Margin of the parent component. <br>Unit: vp.       |
 | padding     | [Padding](ts-types.md#padding)   |No|No| Padding of the parent component.<br>Unit: vp. |
 
@@ -179,7 +179,7 @@ Obtains the **borderWidth** information of the child component.
 
 | Type                         | Description                                       |
 |------------------------------------|---------------------------------------------|
-| [DirectionalEdgesT](./ts-types.md#directionaledgest12)&lt;number&gt;  |  Border width object of the child component, containing the border width values in four directions. Unit: vp.  |
+| [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;  |  Border width object of the child component, containing the border width values in four directions. Unit: vp.  |
 
 ## Measurable<sup>10+</sup>
 

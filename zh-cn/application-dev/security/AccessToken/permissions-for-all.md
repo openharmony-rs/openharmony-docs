@@ -822,3 +822,17 @@
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.1.0
+
+## ohos.permission.REQUEST_LOCAL_ACCOUNT_AUTHORIZATION
+
+允许应用获取本地账号授权。
+
+获取该权限后，应用可调用接口请求本地账号授权。用户将通过系统授权弹窗进行本地账号身份认证后授予目标特权，应用可执行目标特权对应的敏感操作（如网络抓包等）。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | Car | TV | Wearable
+
+**起始版本**：26.1.0

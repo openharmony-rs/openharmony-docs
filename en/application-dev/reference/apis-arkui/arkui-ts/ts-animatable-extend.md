@@ -70,7 +70,7 @@ Defines the addition operation rule for this data type. It must be implemented t
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| [AnimatableArithmetic\<T\>](#animatablearctict) | Result of the addition operation, used to calculate the intermediate value between two data values during the animation interpolation process. |
+| [AnimatableArithmetic\<T\>](#animatablearithmetict) | Result of the addition operation, used to calculate the intermediate value between two data values during the animation interpolation process. |
 
 ### subtract
 

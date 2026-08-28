@@ -1,14 +1,16 @@
 # oh_window_pip.h
+
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @betafringe007-->
 <!--Designer: @taoweihua-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=36f4c856d2f5d80b3accd234ca21bbd6de8dfb80 translatedAt=2026-08-25T02:18:51.181Z pushedAt=2026-08-25T03:01:30.494Z -->
 
 ## Overview
 
-The file declares the APIs related to the Picture in Picture (PiP) feature, including creating and deleting a PiP controller, and starting and stopping PiP. PiP is mainly used in video playback, live streaming, video calls, or video meetings. Since <!--RP2-->OpenHarmony 6.0<!--RP2End-->, the PiP feature is supported only on phones, PCs/2-in-1 devices, and tablets. Since OpenHarmony 7.0.0, the PiP feature is supported only on phones, PCs/2-in-1 devices, tablets, and cars.
+Defines the APIs related to the Picture in Picture (PiP) feature, including creating and deleting a PiP controller, and starting and stopping PiP. PiP is mainly used in video playback, live streaming, video calls, or video meetings in a small window. 
 
 **File to include**: <window_manager/oh_window_pip.h>
 
@@ -75,6 +77,7 @@ The file declares the APIs related to the Picture in Picture (PiP) feature, incl
 | [int32_t OH_PictureInPicture_SetPipInitialSurfaceRect(uint32_t controllerId, int32_t positionX, int32_t positionY,uint32_t width, uint32_t height)](#oh_pictureinpicture_setpipinitialsurfacerect) | - | Sets the initial position and size of the PiP surface when the PiP launch animation starts. It can be used to achieve a seamless transition effect.|
 | [int32_t OH_PictureInPicture_UnsetPipInitialSurfaceRect(uint32_t controllerId)](#oh_pictureinpicture_unsetpipinitialsurfacerect) | - | Cancels the previously set initial position and size for the PiP surface.|
 | [int32_t OH_PictureInPicture_SetParentWindowId(uint32_t controllerId, uint32_t windowId)](#oh_pictureinpicture_setparentwindowid) | - | Sets the main window ID for PiP.|
+| [int32_t OH_PictureInPicture_SetAutoStartEnabled(uint32_t controllerId, bool enabled)](#oh_pictureinpicture_setautostartenabled) | - | Sets whether to automatically start the PiP window when the application's main window which can start the PiP window transitions to the background. By default, the PiP window is not automatically started. When automatic start is enabled, if the application's main window is in the [multi-window floating window](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/multi-window-intro#floating-windows) state and is docked to the sidebar, the PiP window is not automatically started even though the application's main window transitions to the background. |
 
 ## Enum Description
 
@@ -188,7 +191,6 @@ Enumerates the PiP lifecycle states.
 | ABOUT_TO_RESTORE = 5 | The original page is about to restore.|
 | ERROR = 6 | An error occurs during the execution of the PiP lifecycle.|
 
-
 ## Function Description
 
 ### WebPipStartPipCallback()
@@ -203,14 +205,13 @@ Defines a callback function for PiP window creation.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer.|
-|  uint8_t requestId | Request ID, which indicates the number of times the PiP window has been requested to be pulled up.|
-|  uint64_t surfaceId | Surface ID of the **XComponent** in PiP. It is used for application rendering.|
+| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer. |
+|  uint8_t requestId | Request ID, which indicates the number of times the PiP window has been requested to be pulled up. |
+|  uint64_t surfaceId | Surface ID of the **XComponent** in PiP. It is used for application rendering. |
 
 ### WebPipLifecycleCallback()
 
@@ -224,12 +225,11 @@ Defines a callback function for PiP window lifecycle changes.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer.|
+| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer. |
 |  PictureInPicture_PipState state | PiP lifecycle state.|
 |  int32_t errcode | Common status codes of PiP APIs. For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
 
@@ -245,12 +245,11 @@ Defines a callback function for the component click event of the PiP window.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer.|
+| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer. |
 |  PictureInPicture_PipControlType controlType | Type of the component displayed on the PiP controller.|
 | [PictureInPicture_PipControlStatus](#pictureinpicture_pipcontrolstatus) status | Status of the component displayed on the PiP controller.|
 
@@ -266,12 +265,11 @@ Defines a callback function for PiP window size changes.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer.|
+| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer. |
 |  uint32_t width | PiP window width, in px. The value is a positive integer and cannot be greater than the screen width.|
 |  uint32_t height | PiP window height, in px. The value is a positive integer and cannot be greater than the screen height.|
 |  double scale | Scale factor of the PiP window, representing the display size relative to the width and height. The value is a floating-point number in the range (0.0, 1.0]. The value **1** means that the PiP window matches the specified width and height.|
@@ -287,7 +285,6 @@ int32_t OH_PictureInPicture_CreatePipConfig(PictureInPicture_PipConfig* pipConfi
 Creates a PiP configuration.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -313,7 +310,6 @@ Destroys a PiP configuration.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Parameter| Description|
@@ -337,7 +333,6 @@ int32_t OH_PictureInPicture_SetPipMainWindowId(PictureInPicture_PipConfig pipCon
 Sets the ID of the main window that launches PiP.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -364,7 +359,6 @@ Sets the PiP template type. The default value is video playback.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Parameter| Description|
@@ -389,7 +383,6 @@ int32_t OH_PictureInPicture_SetPipRect(PictureInPicture_PipConfig pipConfig, uin
 Sets the size of the PiP window for calculating the aspect ratio.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -417,7 +410,6 @@ Sets a PiP component group, which must match the template type.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Parameter| Description|
@@ -444,7 +436,6 @@ Sets the runtime environment for launching PiP.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Parameter| Description|
@@ -470,13 +461,12 @@ Creates a PiP controller.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
 | [PictureInPicture_PipConfig](capi-pictureinpicture-pipconfig.md) pipConfig | PiP configuration.|
-| uint32_t* controllerId | Pointer to the ID of the PiP controller created.|
+| uint32_t* controllerId | Pointer to the ID of the PiP controller created. |
 
 **Return value**
 
@@ -496,12 +486,11 @@ Deletes a PiP controller.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer.|
+| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer. |
 
 **Return value**
 
@@ -521,12 +510,11 @@ Starts PiP.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer.|
+| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer. |
 
 **Return value**
 
@@ -546,12 +534,11 @@ Stops PiP.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer.|
+| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer. |
 
 **Return value**
 
@@ -571,13 +558,13 @@ Updates the media content size when the media content changes.
 
 **Since**: 20
 
-**Device behavior differences**: This API can be properly called on phones, tablets, and PCs/2-in-1 devices, but does not take effect or report errors when being called on other devices.
+**Device behavior differences**: This API can be properly called on phones, tablets, PCs/2-in-1 devices, and TVs, but does not take effect or report errors when being called on other devices.
 
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer.|
+| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer. |
 | uint32_t width | Width of the media content, in px. The value must be a positive integer. It is used to update the aspect ratio of the PiP window.|
 | uint32_t height | Height of the media content, in px. The value must be a positive integer. It is used to update the aspect ratio of the PiP window.|
 
@@ -599,12 +586,11 @@ Updates the PiP component status.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer.|
+| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer. |
 | [PictureInPicture_PipControlType](#pictureinpicture_pipcontroltype) controlType | Type of the component displayed on the PiP controller. Currently, only **VIDEO_PLAY_PAUSE**, **MICROPHONE_SWITCH**, **CAMERA_SWITCH**, and **MUTE_SWITCH** are supported.|
 | [PictureInPicture_PipControlStatus](#pictureinpicture_pipcontrolstatus) status | Status of the component displayed on the PiP controller.|
 
@@ -626,12 +612,11 @@ Sets the PiP component enabled status.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer.|
+| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer. |
 | [PictureInPicture_PipControlType](#pictureinpicture_pipcontroltype) controlType | Type of the component displayed on the PiP controller.|
 | bool enabled | Enabled status of the component displayed on the PiP controller. **true** if enabled, **false** otherwise.|
 
@@ -653,12 +638,11 @@ Registers a callback to listen for the completion of PiP surface creation.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer.|
+| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer. |
 | [WebPipStartPipCallback](#webpipstartpipcallback) callback | Callback function for PiP window creation.|
 
 **Return value**
@@ -679,12 +663,11 @@ Unregisters the callback used to listen for the completion of PiP surface creati
 
 **Since**: 20
 
-
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer.|
+| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer. |
 | [WebPipStartPipCallback](#webpipstartpipcallback) callback | Callback function for PiP window creation.|
 
 **Return value**
@@ -705,12 +688,11 @@ Unregisters all the callbacks used to listen for the completion of PiP surface c
 
 **Since**: 20
 
-
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer.|
+| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer. |
 
 **Return value**
 
@@ -730,12 +712,11 @@ Registers a callback to listen for PiP lifecycle state changes.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer.|
+| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer. |
 | [WebPipLifecycleCallback](#webpiplifecyclecallback) callback | Callback function for PiP window lifecycle changes.|
 
 **Return value**
@@ -756,12 +737,11 @@ Unregisters the callback used to listen for PiP lifecycle state changes.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer.|
+| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer. |
 | [WebPipLifecycleCallback](#webpiplifecyclecallback) callback | Callback function for PiP window lifecycle changes.|
 
 **Return value**
@@ -782,12 +762,11 @@ Unregisters all the callbacks used to listen for PiP lifecycle state changes.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer.|
+| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer. |
 
 **Return value**
 
@@ -807,12 +786,11 @@ Registers a callback to listen for control panel action events in PiP mode.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer.|
+| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer. |
 | [WebPipControlEventCallback](#webpipcontroleventcallback) callback | Callback function for the component click event of the PiP window.|
 
 **Return value**
@@ -833,12 +811,11 @@ Unregisters the callback used to listen for control panel action events in PiP m
 
 **Since**: 20
 
-
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer.|
+| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer. |
 | [WebPipControlEventCallback](#webpipcontroleventcallback) callback | Callback function for the component click event of the PiP window.|
 
 **Return value**
@@ -859,12 +836,11 @@ Unregisters all the callbacks used to listen for control panel action events in 
 
 **Since**: 20
 
-
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer.|
+| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer. |
 
 **Return value**
 
@@ -884,12 +860,11 @@ Registers a callback to listen for PiP window size changes.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer.|
+| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer. |
 | [WebPipResizeCallback](#webpipresizecallback) callback | Callback function for PiP window size changes.|
 
 **Return value**
@@ -910,12 +885,11 @@ Unregisters the callback used to listen for PiP window size changes.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer.|
+| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer. |
 | [WebPipResizeCallback](#webpipresizecallback) callback | Callback function for PiP window size changes.|
 
 **Return value**
@@ -940,7 +914,7 @@ Unregisters all the callbacks used to listen for PiP window size changes.
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer.|
+| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer. |
 
 **Return value**
 
@@ -964,7 +938,7 @@ Sets the initial position and size of the PiP surface when the PiP launch animat
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer.|
+| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer. |
 | int32_t positionX | X coordinate of the PiP window relative to the top-left corner of the screen when the PiP window is started, in px.|
 | int32_t positionY | Y coordinate of the PiP window relative to the top-left corner of the screen when the PiP window is started, in px.|
 | uint32_t width | Width of the PiP window when the PiP window is started. The value is greater than 0, measured in px.|
@@ -992,7 +966,7 @@ Cancels the previously set initial position and size for the PiP surface.
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer.|
+| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer. |
 
 **Return value**
 
@@ -1022,11 +996,38 @@ If the main window of PiP changes (for example, if you launch PiP in one tab of 
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer.|
-| uint32_t windowId | ID of the main window. The value is a non-negative integer.|
+| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer. |
+| uint32_t windowId | ID of the main window of the PiP window. The value is a non-negative integer. |
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
 | int32_t | One of the following result codes:<br>**OK**: The function is successfully called.<br>**WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: A parameter is incorrect.<br>**WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED**: The device does not support PiP.<br>**WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR**: An internal error occurs in PiP.|
+
+### OH_PictureInPicture_SetAutoStartEnabled()
+
+```c
+int32_t OH_PictureInPicture_SetAutoStartEnabled(uint32_t controllerId, bool enabled)
+```
+
+**Description**
+
+Sets whether to automatically start the PiP window when the application's main window which can start the PiP window transitions to the background. By default, the PiP window is not automatically started.
+
+When automatic start is enabled, if the application's main window is in the [multi-window floating window](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/multi-window-intro#floating-windows) state and is docked to the sidebar, the PiP window is not automatically started even though the application's main window transitions to the background.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer. |
+| bool enabled | Whether to automatically start the PiP window when the application's main window transitions to the background. The value **true** means to automatically start the PiP window, and **false** means the opposite. If the PiP feature under **Settings** > **System** > **Multi-window** is disabled, the PiP window will not be automatically started when the application's main window transitions to the background even if this parameter is set to **true**. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| int32_t | Result code. <br>Returns **OK** if the API is successfully called.<br>Returns **WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM** if a parameter error occurs. Possible cause: The PiP controller corresponding to **controllerId** is not found.<br>Returns **WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR** if an internal PiP error occurs. Possible cause: The PiP controller has been destroyed. |

@@ -23,37 +23,36 @@
 
 ### 引用NDK头文件
 初始路径为entry/src/main/cpp/types/napi_init.cpp # C++ 源码目录 NAPI 初始化入口（桥接 ArkTS 与 C++）。
-```cpp
+
+<!-- @[print_native_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "BasicServicesKit/ohprint.h"
 #include "hilog/log.h"
 #include <string>
 #include <fcntl.h>
 #include <unistd.h>
+#include <vector>
 
 #undef LOG_TAG
 #define LOG_TAG "print c/c++"
 #define LOGE(...) OH_LOG_ERROR(LOG_APP, ##__VA_ARGS__)
 #define LOGI(...) OH_LOG_INFO(LOG_APP, ##__VA_ARGS__)
-#define CHECK_ERROR_RETURN(ret) \
-    do { \
-        if ((ret) != PRINT_ERROR_NONE) { \
-            napi_value result = nullptr; \
-            napi_get_boolean(env, false, &result); \
-            return result; \
-        } \
-    } while(0)
 ```
 
 初始路径为entry/src/main/ets/pages/Index.ets # ArkTS 源码目录主页面。
-```ts
+
+<!-- @[print_native_ts_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { testNapi } from 'libentry.so';
+import testNapi from 'libentry.so';
 import { Context } from '@kit.AbilityKit';
 
 class HiLog {
-  static info(...args:string[]): void {
-    hilog.info(0x0, "print c/c++ ", '%{public}s', `${args.join(' ')}`);
+  static info(...args: string[]): void {
+    hilog.info(0x0, 'print c/c++ ', '%{public}s', `${args.join(' ')}`);
   }
 }
 ```
@@ -72,9 +71,10 @@ target_link_libraries(entry PUBLIC
 建议将打印服务初始化和释放与使用系统打印能力的页面的生命周期绑定。
 
 封装C/C++接口。
-```cpp
-// napi_init.cpp
 
+<!-- @[print_native_callback1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 static void PrinterDiscoveryCallback(Print_DiscoveryEvent event, const Print_PrinterInfo *printerInfo)
 {
     // 发现打印设备事件，以设备Id作为唯一标识符
@@ -104,7 +104,11 @@ static void PrinterDiscoveryCallback(Print_DiscoveryEvent event, const Print_Pri
             break;
     }
 }
+```
 
+<!-- @[print_native_callback2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 static void PrinterChangeCallback(Print_PrinterEvent event, const Print_PrinterInfo *printerInfo)
 {
     // 以设备Id作为唯一标识符
@@ -135,7 +139,11 @@ static void PrinterChangeCallback(Print_PrinterEvent event, const Print_PrinterI
             break;
     }
 }
+```
 
+<!-- @[print_native_lifecycle1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 static napi_value NativeInit(napi_env env, napi_callback_info info)
 {
     // 初始化打印服务
@@ -153,7 +161,11 @@ static napi_value NativeInit(napi_env env, napi_callback_info info)
     }
     return n_ret;
 }
+```
 
+<!-- @[print_native_lifecycle2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 static napi_value NativeRelease(napi_env env, napi_callback_info info)
 {
     // 取消订阅已添加设备状态变更事件
@@ -167,7 +179,9 @@ static napi_value NativeRelease(napi_env env, napi_callback_info info)
     napi_get_boolean(env, !ret, &n_ret);
     return n_ret;
 }
+```
 
+``` C++
 // 添加napi接口声明
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -183,30 +197,29 @@ EXTERN_C_END
 ```
 
 应用侧在页面被拉起的生命周期初始化，在页面关掉时释放。
-```ts
-// Index.ets
 
-@Entry
-@Component
-struct Index {
-  // 页面展示到屏幕时，初始化打印服务
-  aboutToAppear(): void {
-    testNapi.nativeInit();
-  }
-  // 页面离开到屏幕时
-  aboutToDisappear(): void {
-    testNapi.nativeRelease();
-  }
+<!-- @[print_native_ts_lifecycle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// 页面展示到屏幕时，初始化打印服务
+aboutToAppear(): void {
+  testNapi.nativeInit();
+}
+// 页面离开屏幕时
+aboutToDisappear(): void {
+  testNapi.nativeRelease();
 }
 ```
 
 ### 通过接口拉起系统打印预览界面下发任务
 封装C/C++接口。
-```cpp
-// napi_init.cpp
 
+<!-- @[print_native_startprint1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 // WriteFile 由开发者实现，示例仅为简单的文件拷贝。根据当前用户修改后的打印参数，若需要更新打印文件可重新写入系统提供的fd中
-static uint32_t WriteFile(uint32_t fd, const Print_PrintAttributes *oldAttrs, const Print_PrintAttributes *newAttrs){
+static uint32_t WriteFile(uint32_t fd, const Print_PrintAttributes *oldAttrs, const Print_PrintAttributes *newAttrs)
+{
     // 沙箱内合法路径
     const char* filePath = "/data/storage/el2/base/files/test.pdf";
     int32_t fileFd = open(filePath, O_RDONLY);
@@ -226,13 +239,17 @@ static uint32_t WriteFile(uint32_t fd, const Print_PrintAttributes *oldAttrs, co
     close(fileFd);
     return 0;
 }
+```
 
+<!-- @[print_native_startprint2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 // 系统打印预览界面回调，首次拉起或用户修改打印参数时的延迟文件写入回调。可以根据新参数适当修改打印文件
 static void OnStartLayoutWriteCb(const char *jobId,
-                                uint32_t fd,
-                                const Print_PrintAttributes *oldAttrs,
-                                const Print_PrintAttributes *newAttrs,
-                                Print_WriteResultCallback writeCallback)
+                                 uint32_t fd,
+                                 const Print_PrintAttributes *oldAttrs,
+                                 const Print_PrintAttributes *newAttrs,
+                                 Print_WriteResultCallback writeCallback)
 {
     // 将数据写入系统提供的fd中，每次回调的fd不一定相同，请不要保存此fd
     uint32_t retCode = WriteFile(fd, oldAttrs, newAttrs);
@@ -241,16 +258,21 @@ static void OnStartLayoutWriteCb(const char *jobId,
     writeCallback(jobId, retCode);
 }
 
-// 打印文件写入完成后，系统打印预览界面会进行预览，此时用户可以点击“开始打印”下发任务
+// 打印文件写入完成后，系统打印预览界面会进行预览，此时用户可以点击"开始打印"下发任务
 // 任务ID对应的打印状态变化的回调函数
 static void OnJobStateChangedCb(const char *jobId, uint32_t state)
 {
     // state取值：0-任务准备中，1-任务排队中， 2-任务打印中， 3-任务异常暂停， 4-任务结束， 100-任务未知异常
     LOGI("do something with OnJobStateChangedCb, jobId: %{public}s, jobState: %{public}u", jobId, state);
 }
+```
 
+<!-- @[print_native_startprint3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 // 拉起系统打印预览界面
-static napi_value NativeStartPrintByNative(napi_env env, napi_callback_info info) {
+static napi_value NativeStartPrintByNative(napi_env env, napi_callback_info info)
+{
     napi_value n_ret = nullptr;
     void *context = nullptr;
     size_t argc = 1;
@@ -266,13 +288,16 @@ static napi_value NativeStartPrintByNative(napi_env env, napi_callback_info info
     napi_get_boolean(env, !ret, &n_ret);
     return n_ret;
 }
+```
 
+``` C++
 // 添加napi接口声明
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
-        { "nativeStartPrintByNative", nullptr, NativeStartPrintByNative, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "nativeStartPrintByNative",
+            nullptr, NativeStartPrintByNative, nullptr, nullptr, nullptr, napi_default, nullptr },
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
@@ -281,38 +306,28 @@ EXTERN_C_END
 ```
 
 主页上新增一个按钮，单击调用C/C++的nativeStartPrintByNative接口拉起打印预览界面。
-```ts
-// Index.ets
 
-@Entry
-@Component
-struct Index {
-  build() {
-    Row() {
-      Column() {
-        Button('OH_Print_StartPrintByNative')
-          .onClick(() => {
-            HiLog.info("OH_Print_StartPrintByNative onClick");
-            let ctx: Context | undefined = this.getUIContext().getHostContext();
-            let ret: boolean = testNapi.nativeStartPrintByNative(ctx);
-            HiLog.info(`nativeStartPrintByNative ret: ${JSON.stringify(ret)}`);
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
+<!-- @[print_native_ts_startprint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+Button('OH_Print_StartPrintByNative')
+  .onClick(() => {
+    HiLog.info("OH_Print_StartPrintByNative onClick");
+    let ctx: Context | undefined = this.getUIContext().getHostContext();
+    let ret: boolean = testNapi.nativeStartPrintByNative(ctx);
+    HiLog.info(`nativeStartPrintByNative ret: ${JSON.stringify(ret)}`);
+  })
 ```
 
 ### 通过打印接口直接下发打印任务
 封装C/C++接口，示例仅演示从已添加打印设备列表获取信息并下发任务。
 
-```cpp
-// napi_init.cpp
+<!-- @[print_native_startjob](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
 // 下发打印任务
-static napi_value NativeStartPrintJob(napi_env env, napi_callback_info info) {
+static napi_value NativeStartPrintJob(napi_env env, napi_callback_info info)
+{
     napi_value n_ret = nullptr;
     napi_get_boolean(env, false, &n_ret);
     Print_ErrorCode ret = PRINT_ERROR_INVALID_PARAMETER;
@@ -320,19 +335,17 @@ static napi_value NativeStartPrintJob(napi_env env, napi_callback_info info) {
     // 获取已添加打印机的列表
     Print_StringList pList = { 0 };
     ret = OH_Print_QueryPrinterList(&pList);
-    LOGI("OH_Print_QueryPrinterList ret = %{public}d", ret);
     if (ret != PRINT_ERROR_NONE) {
         OH_Print_ReleasePrinterList(&pList);
         return n_ret;
     }
-    LOGI("pList->count: %{public}d", pList.count);
     if (pList.count <= 0 || (!pList.list)) {
         OH_Print_ReleasePrinterList(&pList);
         return n_ret;
     }
     // 打印列表中所有的打印机Id
     for (uint32_t index = 0; index < pList.count; index++) {
-        LOGI("pList->list[%{public}d]： %{public}s", index, pList.list[index]);
+        LOGI("pList->list[%{public}d]: %{public}s", index, pList.list[index]);
     }
 
     // 获取列表中第一台打印机属性
@@ -356,22 +369,13 @@ static napi_value NativeStartPrintJob(napi_env env, napi_callback_info info) {
     }
     std::vector<uint32_t> fdList = { static_cast<uint32_t>(fd) };
     // 本例子使用首选项 printerInfo->defaultValue 作为打印任务参数来下发任务
-    Print_PrintJob printJob{ "jobName",
-                             fdList.data(),
-                             static_cast<uint32_t>(fdList.size()),
-                             printerInfo->printerId,
-                             1, // 打印份数
-                             printerInfo->defaultValue.defaultPaperSource,
-                             printerInfo->defaultValue.defaultMediaType,
-                             printerInfo->defaultValue.defaultPageSizeId,
-                             printerInfo->defaultValue.defaultColorMode,
-                             printerInfo->defaultValue.defaultDuplexMode,
-                             printerInfo->defaultValue.defaultResolution,
-                             printerInfo->defaultValue.defaultMargin,
-                             true,
-                             printerInfo->defaultValue.defaultOrientation,
-                             printerInfo->defaultValue.defaultPrintQuality,
-                             DOCUMENT_FORMAT_PDF,
+    Print_PrintJob printJob{ "jobName", fdList.data(), static_cast<uint32_t>(fdList.size()), printerInfo->printerId,
+                             1, printerInfo->defaultValue.defaultPaperSource,
+                             printerInfo->defaultValue.defaultMediaType, printerInfo->defaultValue.defaultPageSizeId,
+                             printerInfo->defaultValue.defaultColorMode, printerInfo->defaultValue.defaultDuplexMode,
+                             printerInfo->defaultValue.defaultResolution, printerInfo->defaultValue.defaultMargin,
+                             true, printerInfo->defaultValue.defaultOrientation,
+                             printerInfo->defaultValue.defaultPrintQuality, DOCUMENT_FORMAT_PDF,
                              printerInfo->defaultValue.otherDefaultValues, };
     ret = OH_Print_StartPrintJob(&printJob);
     close(fd);
@@ -382,7 +386,9 @@ static napi_value NativeStartPrintJob(napi_env env, napi_callback_info info) {
     napi_get_boolean(env, !ret, &n_ret);
     return n_ret;
 }
+```
 
+``` C++
 // 添加napi接口声明
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -397,25 +403,14 @@ EXTERN_C_END
 ```
 
 主页上新增一个按钮，单击调用C/C++的nativeStartPrintJob直接下发任务。
-```ts
-// Index.ets
 
-@Entry
-@Component
-struct Index {
-  build() {
-    Row() {
-      Column() {
-        Button('OH_Print_StartPrintJob')
-          .onClick(() => {
-            HiLog.info("OH_Print_StartPrintJob onClick");
-            let ret: boolean = testNapi.nativeStartPrintJob();
-            HiLog.info(`OH_Print_StartPrintJob ret: ${JSON.stringify(ret)}`);
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
+<!-- @[print_native_ts_startjob](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+Button('OH_Print_StartPrintJob')
+  .onClick(() => {
+    HiLog.info('OH_Print_StartPrintJob onClick');
+    let ret: boolean = testNapi.nativeStartPrintJob();
+    HiLog.info(`OH_Print_StartPrintJob ret: ${JSON.stringify(ret)}`);
+  })
 ```

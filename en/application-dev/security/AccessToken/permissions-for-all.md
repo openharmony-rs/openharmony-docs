@@ -822,3 +822,17 @@ With this permission, the application can use font management APIs to install, u
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 26.1.0
+
+## ohos.permission.REQUEST_LOCAL_ACCOUNT_AUTHORIZATION
+
+Allows an application to obtain authorization from the local account.
+
+With this permission, an application can call APIs to request local account authorization. A system authorization dialog will then prompt the user to complete local identity authentication. Upon successful authentication, the specified privileges will be granted, enabling the application to perform corresponding sensitive operations (such as network packet capture).
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | cars | TVs | wearables
+
+**Since**: 26.1.0

@@ -591,7 +591,7 @@
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力：** SystemCapability.FileManagement.CloudDiskManager
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **订阅者所需权限：** ohos.permission.ACCESS_CLOUD_DISK_INFO（该权限仅系统应用可申请）
 

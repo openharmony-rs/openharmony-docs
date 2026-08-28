@@ -1439,13 +1439,20 @@ createAssetsForApp(bundleName: string, appName: string, tokenId: number, photoCr
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+import { common } from '@kit.AbilityKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+public context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+public phAccessHelper = photoAccessHelper.getPhotoAccessHelper(this.context);
+@State selfTokenId: number = this.context.abilityInfo.applicationInfo.accessTokenId;
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper,
+  tokenId: number) {
   console.info('createAssetsForAppDemo.');
 
   try {
     let bundleName: string = 'testBundleName';
     let appName: string = 'testAppName';
-    let tokenId: number = 537197950;
     let photoCreationConfigs: Array<photoAccessHelper.PhotoCreationConfig> = [
       {
         title: 'test',
@@ -1505,11 +1512,18 @@ grantPhotoUriPermission(tokenId: number, uri: string, photoPermissionType: Photo
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+import { common } from '@kit.AbilityKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+public context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+public phAccessHelper = photoAccessHelper.getPhotoAccessHelper(this.context);
+@State selfTokenId: number = this.context.abilityInfo.applicationInfo.accessTokenId;
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper,
+  tokenId: number) {
   console.info('grantPhotoUriPermissionDemo');
 
   try {
-    let tokenId = 502334412;
     let result = await phAccessHelper.grantPhotoUriPermission(tokenId,
         'file://media/Photo/1/IMG_datetime_0001/displayName.jpg',
         photoAccessHelper.PhotoPermissionType.TEMPORARY_READ_IMAGEVIDEO,
@@ -1565,7 +1579,15 @@ grantPhotoUrisPermission(tokenId: number, uriList: Array&lt;string&gt;, photoPer
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+import { common } from '@kit.AbilityKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+public context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+public phAccessHelper = photoAccessHelper.getPhotoAccessHelper(this.context);
+@State selfTokenId: number = this.context.abilityInfo.applicationInfo.accessTokenId;
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper,
+  tokenId: number) {
   console.info('grantPhotoUrisPermissionDemo');
 
   try {
@@ -1573,7 +1595,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let uris: Array<string> = [
       'file://media/Photo/11/IMG_datetime_0001/displayName1.jpg',
       'file://media/Photo/22/IMG_datetime_0002/displayName2.jpg'];
-    let tokenId = 502334412;
     let result = await phAccessHelper.grantPhotoUrisPermission(tokenId, uris,
         photoAccessHelper.PhotoPermissionType.TEMPORARY_READ_IMAGEVIDEO,
         photoAccessHelper.HideSensitiveType.HIDE_LOCATION_AND_SHOOTING_PARAM);
@@ -1627,11 +1648,18 @@ cancelPhotoUriPermission(tokenId: number, uri: string, photoPermissionType: Phot
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+import { common } from '@kit.AbilityKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+public context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+public phAccessHelper = photoAccessHelper.getPhotoAccessHelper(this.context);
+@State selfTokenId: number = this.context.abilityInfo.applicationInfo.accessTokenId;
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper,
+  tokenId: number) {
   console.info('cancelPhotoUriPermissionDemo');
 
   try {
-    let tokenId = 502334412;
     let result = await phAccessHelper.cancelPhotoUriPermission(tokenId,
         'file://media/Photo/11/IMG_datetime_0001/displayName.jpg',
         photoAccessHelper.PhotoPermissionType.TEMPORARY_READ_IMAGEVIDEO);
@@ -2284,7 +2312,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 createAssetsForAppWithMode(bundleName: string, appName: string, appId: string, tokenId: number, authorizationMode: AuthorizationMode, photoCreationConfigs:Array\<PhotoCreationConfig>): Promise\<Array\<string>>
 
-提供给应用保存短时授权。使用Promise异步回调。
+提供给应用保存短时授权，授权有效期为300秒。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -2325,7 +2353,15 @@ createAssetsForAppWithMode(bundleName: string, appName: string, appId: string, t
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+import { common } from '@kit.AbilityKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+public context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+public phAccessHelper = photoAccessHelper.getPhotoAccessHelper(this.context);
+@State selfTokenId: number = this.context.abilityInfo.applicationInfo.accessTokenId;
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper,
+  tokenId: number) {
   console.info('createAssetsForAppWithModeDemo.');
 
   try {
@@ -2340,7 +2376,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let bundleName: string = 'testBundleName';
     let appName: string = 'testAppName';
     let appId: string = 'testAppId';
-    let tokenId: number = 537197950;
     let authorizationMode: photoAccessHelper.AuthorizationMode = photoAccessHelper.AuthorizationMode.SHORT_TIME_AUTHORIZATION;
     let result: Array<string> = await phAccessHelper.createAssetsForAppWithMode(bundleName, appName, appId, tokenId, authorizationMode, photoCreationConfigs);
     console.info(`result: ${JSON.stringify(result)}`);
@@ -2650,7 +2685,15 @@ createAssetsForAppWithAlbum(source: PhotoCreationSource, albumUri: string, isAut
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+import { common } from '@kit.AbilityKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+public context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+public phAccessHelper = photoAccessHelper.getPhotoAccessHelper(this.context);
+@State selfTokenId: number = this.context.abilityInfo.applicationInfo.accessTokenId;
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, 
+  tokenId: number) {
   console.info('createAssetsForAppWithAlbumDemo.');
 
   try {
@@ -2658,7 +2701,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       bundleName: 'testBundleName',
       appName: 'testAppName',
       appId: 'testAppId',
-      tokenId: 537197950,
+      tokenId: tokenId,
     }
     let albumUri: string = 'file://media/PhotoAlbum/10';
     let isAuthorized: boolean = true;
@@ -7281,7 +7324,7 @@ getReadOnlyFdWithCached(): Promise&lt;number&gt;
 
 以只读方式打开当前文件。若打开的是云图库中的视频文件，则视频将被缓存至图库沙箱。其他类型的资源文件不会被缓存。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **系统接口**：此接口为系统接口。
 
@@ -7301,10 +7344,10 @@ getReadOnlyFdWithCached(): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201    | Permission denied. |
+| 201    | Permission denied. Ensure the permission ohos.permission.READ_IMAGEVIDEO is declared in your module. |
 | 202     | Called by non-system application.         |
-| 23800151     | Scene parameters validate failed, possible causes: The image and video files corresponding to the photoasset do not exist.        |
-| 23800302       | Failed to open the file. Possible causes: 1. Unable to access cloud images due to network connectivity issues; 2. File system malfunction. |
+| 23800151     | Scene parameters validate failed, possible causes: The image and video files corresponding to the photoasset do not exist. Check if the photoasset is valid and the files exist in the gallery.        |
+| 23800302       | Failed to open the file. Possible causes: 1. Unable to access cloud images due to network connectivity issues; 2. File system malfunction. Please check your network connection and try again. |
 
 **示例：**
 
@@ -7385,7 +7428,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | thumbnailReady | boolean | 否 | 否 | 图片资产的缩略图是否准备好。true表示已准备好，false表示未准备好。|
 | lcdSize | string | 否 | 否 | 图片资产的lcd缩略图宽高信息。|
 | thmSize | string | 否 | 否 | 图片资产的thumb缩略图宽高信息。|
-| thumbnailModifiedMs<sup>14+</sup> | number | 否 | 是 | 图片资产的缩略图状态改变后经过时间，单位：毫秒（ms）。|
+| thumbnailModifiedMs<sup>14+</sup> | number | 否 | 是 | 图片资产的缩略图状态改变时间，单位：毫秒（ms）。|
 | thumbnailVisible<sup>14+</sup> | [ThumbnailVisibility](#thumbnailvisibility14) | 否 | 否 | 图片资产的缩略图是否可见。|
 
 ## Album
@@ -8853,7 +8896,7 @@ setAppLinkInfo(appLink: string): void
 
 | 参数名  | 类型             | 必填   | 说明    |
 | ---- | -------------- | ---- | ----- |
-| appLink | string | 是    | 设置文件记忆链接的信息。 |
+| appLink | string | 是    | 设置文件记忆链接的信息。长度限制范围为[1, 512]，单位：字节（Byte）。 |
 
 **错误码：**
 
@@ -10753,7 +10796,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 constructor(album: Album)
 
-构造函数。
+构造函数，创建时刻相册对象。
 
 **系统接口**：此接口为系统接口。
 
@@ -11124,7 +11167,7 @@ async function example(context: Context) {
 
 constructor(album: Album)
 
-构造函数。
+构造函数，创建智慧相册变更请求对象。
 
 **系统接口**：此接口为系统接口。
 
@@ -11138,7 +11181,7 @@ constructor(album: Album)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -11488,7 +11531,7 @@ async function example(context: Context) {
 
 constructor(album: Album)
 
-构造函数。
+构造函数，创建时刻相册变更请求对象。
 
 **系统接口**：此接口为系统接口。
 
@@ -11609,7 +11652,7 @@ async function example(context: Context) {
 
 constructor(album: Album)
 
-构造函数。
+构造函数，创建智慧相册对象。
 
 **系统接口**：此接口为系统接口。
 
@@ -11623,7 +11666,7 @@ constructor(album: Album)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -13674,6 +13717,7 @@ async function example(context: Context) {
 | HIDDEN_TIME | 'hidden_time'  | 文件隐藏时间（隐藏文件时间距1970年1月1日的毫秒数值）。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 | FILE_HIDDEN | 'file_hidden' | 文件的隐藏状态。 <br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 | ATTACHMENT_SIZE | 'attachment_size' | 附件文件的大小。单位为字节（Byte）。<br>默认值为0，表示尚未识别的附件文件大小或附件文件大小为0。 <br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
+| MUSIC_MASTER_MODE | 'music_master_mode' | 音乐大师模式。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 
 
 ## AlbumKeys
@@ -13786,8 +13830,8 @@ async function example(context: Context) {
 | 名称                   | 类型                | 只读 | 可选 | 说明                                              |
 | ---------------------- | ------------------- | ---------------------- | ---- | ------------------------------------------------ |
 | subtype           | [PhotoSubtype](#photosubtype) | 否 | 是 | 图片或者视频的子类型。  |
-| cameraShotKey           | string | 否 | 是 | 锁屏相机拍照或录像的标记字段（仅开放给系统相机，其key值由系统相机定义）。   |
-| userId<sup>19+</sup>           | number | 否 | 是 | 用户id。  |
+| cameraShotKey           | string | 否 | 是 | 锁屏相机拍照或录像的标记字段（仅开放给系统相机，其key值由系统相机定义）。默认值为空字符串。   |
+| userId<sup>19+</sup>           | number | 否 | 是 | 用户ID。默认值为当前用户的ID。  |
 
 ## RequestPhotoOptions<sup>11+</sup>
 
@@ -13799,8 +13843,8 @@ async function example(context: Context) {
 
 | 名称                   | 类型                | 只读 | 可选 | 说明                                              |
 | ---------------------- | ------------------- | ---------------------- | ---- | ------------------------------------------------ |
-| size           | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | 否 | 是 | 获取缩略图的尺寸。  |
-| requestPhotoType    | [RequestPhotoType](#requestphototype11) | 否 | 是 | 获取的操作类型。  |
+| size           | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | 否 | 是 | 获取缩略图的尺寸。默认尺寸为256×256。单位：像素（px）。 |
+| requestPhotoType    | [RequestPhotoType](#requestphototype11) | 否 | 是 | 获取的操作类型。默认按[RequestPhotoType](#requestphototype11).REQUEST_ALL_THUMBNAILS处理。   |
 
 ## PhotoCreationSource<sup>18+</sup>
 
@@ -14137,7 +14181,7 @@ try {
 | ---- | ------- | ---- |  ---- | ----- |
 | types | [AnalysisType](#analysistype11)[]  | 否 | 否 | 智慧分析类型数组，数组大小上限为[AnalysisType](#analysistype11)枚举定义成员数量。 |
 | uris | string[]  | 否 | 否 | 资产URI数组。<br>长度范围：[0, 100]。 |
-| extraInfos | string  | 否 | 是 | JSON字符串格式的扩展信息。<br>长度范围：(0, 500]。|
+| extraInfos | string  | 否 | 是 | JSON字符串格式的扩展信息。<br>长度范围：(0, 500]。<br>默认值为空字符串，表示不携带扩展信息。|
 
 ## AnalysisResult<sup>24+</sup>
 
@@ -14168,7 +14212,7 @@ try {
 | 名称  | 类型                | 只读 | 可选 | 说明                                              |
 | ---- | ------- | ---- |  ---- | ----- |
 | type | [AnalysisToolType](#analysistooltype)  | 否 | 否 | 要调用的分析工具类型。 |
-| param | string  | 否 | 是 | 调用分析工具的参数，以JSON字符串格式表示，总长度不超过16KB。|
+| param | string  | 否 | 是 | 调用分析工具的参数，以JSON字符串格式表示，总长度不超过16KB。默认值为空字符串，表示不携带附加参数。|
 
 ## AnalysisToolResult
 
@@ -14202,7 +14246,7 @@ try {
 | 名称  | 类型                | 只读 | 可选 | 说明                                              |
 | ---- | ------- | ---- |  ---- | ----- |
 | taskId | string  | 否 | 否 | 要取消的任务ID，必须是[invokeAnalysisTool](#invokeanalysistool)返回的有效ID。 |
-| param | string  | 否 | 是 | 用于取消分析工具的参数，以JSON字符串格式提供。总长度不得超过16KB。|
+| param | string  | 否 | 是 | 用于取消分析工具的参数，以JSON字符串格式提供。总长度不得超过16KB。默认值为空字符串，表示不携带附加参数。|
 
 ## HighlightAlbumInfoType<sup>12+</sup>
 

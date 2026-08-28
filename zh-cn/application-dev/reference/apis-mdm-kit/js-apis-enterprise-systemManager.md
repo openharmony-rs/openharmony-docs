@@ -133,7 +133,7 @@ try {
 
 setOtaUpdatePolicy(admin: Want, policy: OtaUpdatePolicy): void
 
-设置升级策略。设置成功后，系统将按照指定的策略类型进行OTA升级处理，不同策略类型对应不同的升级行为。内网升级场景下，需要先调用[systemManager.notifyUpdatePackages](#systemmanagernotifyupdatepackages)接口通知系统更新包，再调用该接口设置升级策略。
+设置升级策略。设置成功后，系统将按照指定的策略类型进行OTA升级处理，不同策略类型对应不同的升级行为。内网升级场景下，需要先调用[systemManager.notifyUpdatePackages](#systemmanagernotifyupdatepackages)接口通知系统更新包，再调用该接口设置升级策略。当升级策略设置为禁止升级时，设备将禁止OTA升级，此时通过[systemManager.setLocalHotaDomain](#systemmanagersetlocalhotadomain)接口设置的本机HOTA域名不生效。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -627,6 +627,151 @@ try {
   console.info(`Succeeded in querying OTA update Nonce enable: ${result}`);
 } catch (err) {
   console.error(`Failed to query OTA update Nonce enable. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## systemManager.setLocalHotaDomain
+
+setLocalHotaDomain(admin: Want, domain: string): void
+
+设置设备本机HOTA（Huawei Over-the-Air）域名。设置成功后，系统将使用指定的HOTA域名进行升级。适用于企业内网升级场景，帮助企业管理员指定设备本机HOTA域名，使设备能够从企业指定的升级服务器获取升级包，避免通过公网升级，提升升级的安全性和可控性。
+
+HOTA域名使用流程：
+1. 企业管理员通过MDM应用调用[systemManager.setLocalHotaDomain](#systemmanagersetlocalhotadomain)接口设置设备本机HOTA域名，指定升级包下载服务器。
+2. 设备执行HOTA升级时，系统根据本机配置的HOTA域名查找并下载升级包，完成升级。
+3. 企业管理员可调用[systemManager.getLocalHotaDomain](#systemmanagergetlocalhotadomain)接口查询设备当前配置的本机HOTA域名，验证配置是否正确。
+4. 如需恢复系统默认升级服务器，可调用本接口并传入空字符串，将域名恢复为默认域名。
+
+适用场景：
+- 内网升级：企业内网环境无法访问公网升级服务器，管理员指定企业内网HOTA升级服务器域名，使设备能够从内网服务器获取升级包。
+- 升级服务器变更：企业升级服务器迁移或更换后，管理员重新设置本机HOTA域名，确保设备从新的服务器获取升级包。
+- 升级服务器故障切换：企业升级服务器发生故障时，管理员可切换至备用升级服务器域名，保障升级业务连续性。
+
+> **说明：**
+> 
+> 当通过[systemManager.setOtaUpdatePolicy](#systemmanagersetotaupdatepolicy)接口将升级策略设置为禁止升级时，设备将禁止OTA升级，此场景下设置的本机HOTA域名无法生效。
+
+传入的domain需符合域名命名规则，校验规则如下：
+1. 长度不能超过64个字符。
+2. 不支持IP地址和localhost。
+3. 域名必须以https\://开头。
+4. 域名必须匹配正则表达式：^(?:\[a-zA-Z0-9\](?:\[a-zA-Z0-9.-\]*\[a-zA-Z0-9\])?\\.)+\[a-zA-Z\]{2,}$。此正则表达式不参与校验https\://部分。
+5. 传入空字符串表示将域名恢复为默认域名，空字符串不受上述校验规则约束。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1企业设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
+
+**参数：**
+
+| 参数名   | 类型                                  | 必填   | 说明      |
+| ----- | ----------------------------------- | ---- | ------- |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| domain | string | 是 | 本机HOTA域名，具体校验规则详见接口说明。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                                      |
+| ------- | ---------------------------------------------------------------------------- |
+| 9200001 | The application is not an administrator application of the device. |
+| 9200002 | The administrator application does not have permission to manage the device. |
+| 9200012 | Parameter verification failed. |
+| 9200018 | This device is not an enterprise device. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// 需根据实际情况进行替换
+let domain: string = "https://www.hotaExample.com";
+try {
+  systemManager.setLocalHotaDomain(wantTemp, domain);
+  console.info('Succeeded in setting local HOTA domain.');
+} catch (err) {
+  console.error(`Failed to set local HOTA domain. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## systemManager.getLocalHotaDomain
+
+getLocalHotaDomain(admin: Want): string
+
+获取设备本机HOTA（Huawei Over-the-Air）域名。适用于需要查询当前设备配置的本机HOTA域名的场景。
+
+适用场景：
+- 配置校验：升级前或升级异常后，通过查询本机HOTA域名确认设备当前升级服务器配置是否正确。
+- 批量管理：企业管理员可通过MDM平台批量查询各设备的本机HOTA域名配置，统一管控设备升级方向。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1企业设备中可正常调用，在其他设备中返回空字符串。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
+
+**参数：**
+
+| 参数名 | 类型                                                    | 必填 | 说明                   |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+
+**返回值：**
+
+| 类型   | 说明                                |
+| ------ | ----------------------------------- |
+| string | 返回本机HOTA域名。当设备不支持该接口时，返回空字符串作为默认值。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200018  | This device is not an enterprise device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+try {
+  let domain: string = systemManager.getLocalHotaDomain(wantTemp);
+  console.info(`Succeeded in getting local HOTA domain: ${domain}`);
+} catch (err) {
+  console.error(`Failed to get local HOTA domain. Code is ${err.code}, message is ${err.message}`);
 }
 ```
 
