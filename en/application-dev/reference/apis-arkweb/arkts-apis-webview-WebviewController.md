@@ -11326,7 +11326,7 @@ Executes `AIPageCommand` asynchronously. This API uses a promise to return the r
 
 | Name    | Type   | Mandatory | Description |
 | ------- | ------ | --------- | ----------- |
-| command | string | Yes       | Command parameters in JSON format. Different commands have different parameter formats. For query commands, see [AIPageCommand](./arkts-apis-webview-AIPageCommand.md). For interaction commands, see [AIPageInteraction](./arkts-apis-webview-AIPageInteraction.md). |
+| command | string | Yes       | Command parameters in JSON format. Different commands have different parameter formats. For query commands, see AIPageCommand. For interaction commands, see AIPageInteraction. |
 
 **Return value**
 
