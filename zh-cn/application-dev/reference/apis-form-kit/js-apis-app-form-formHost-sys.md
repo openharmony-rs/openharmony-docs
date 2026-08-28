@@ -3732,7 +3732,7 @@ try {
 
 ## registerFormHostService
 
-registerFormHostService(service: [formInfo.FormHostServiceInfo](js-apis-app-form-formInfo-sys.md#formhostserviceinfo)): Promise&lt;string&gt;
+registerFormHostService(service: formInfo.FormHostServiceInfo): Promise&lt;string&gt;
 
 注册卡片使用方服务信息。注册成功后，可用于跨设备卡片发布。使用Promise异步回调。
 
