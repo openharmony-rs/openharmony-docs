@@ -58,7 +58,18 @@
      if (err?.code) {
        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
        return;
+   <!-- @[destroy_independent_subWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
+   
+   ``` TypeScript
+   // 4.销毁子窗口。当不再需要子窗口时，可根据具体实现逻辑，使用destroy对其进行销毁。
+   independentWindowClass.destroyWindow((err) => {
+     if (err?.code) {
+       console.error(`Failed to destroy the window. Cause code: ${err.code}, message: ${err.message}`);
+       return;
      }
+     console.info('Succeeded in destroying the window.');
+   });
+   ```
      console.info('Succeeded in loading the content.');
      if (!independentWindowClass) {
        console.error('independent_windowClass is null');
