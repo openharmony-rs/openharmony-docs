@@ -914,6 +914,8 @@ ArkTS-Sta: fontVariations(fontVariations: Array&lt;FontVariation&gt; | undefined
 
 设置可变字体的属性。
 
+**卡片能力（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
