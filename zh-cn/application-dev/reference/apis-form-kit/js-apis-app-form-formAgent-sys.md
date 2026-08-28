@@ -22,7 +22,7 @@ FormAgent模块提供了卡片代理相关接口的能力，目前仅包括请�
 import { formAgent } from '@kit.FormKit';
 ```
 
-## formAgent.formAgent.requestPublishForm
+## formAgent.requestPublishForm
 
 requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 

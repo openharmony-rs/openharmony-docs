@@ -22,7 +22,7 @@ formObserver模块提供了卡片监听方相关接口的能力，包括对同�
 import { formObserver } from '@kit.FormKit';
 ```
 
-## formObserver.formObserver.on('formAdd')
+## formObserver.on('formAdd')
 
  on(type: 'formAdd', observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -780,7 +780,7 @@ try {
 }
 ```
 
-## formObserver.formObserver.on('notifyVisible')
+## formObserver.on('notifyVisible')
 
  on(type: 'notifyVisible', hostBundleName: string, observerCallback: Callback&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;): void
 

@@ -16,13 +16,13 @@ formHost模块提供了卡片使用方相关接口的能力，包括对使用方
 >
 > 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
-## formHost.导入模块
+## 导入模块
 
 ```ts
 import { formHost } from '@kit.FormKit';
 ```
 
-## formHost.formHost.deleteForm
+## formHost.deleteForm
 
 deleteForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -180,7 +180,7 @@ try {
 }
 ```
 
-## formHost.formHost.releaseForm
+## formHost.releaseForm
 
 releaseForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -2396,7 +2396,7 @@ formHost.on('formUninstall', (formId: string) => {
 });
 ```
 
-## formHost.formHost.off('formUninstall')
+## formHost.off('formUninstall')
 
 off(type: 'formUninstall', callback?: Callback&lt;string&gt;): void
 
@@ -2438,7 +2438,7 @@ formHost.off('formUninstall', (formId: string) => {
 });
 ```
 
-## formHost.formHost.notifyFormsVisible
+## formHost.notifyFormsVisible
 
 notifyFormsVisible(formIds: Array&lt;string&gt;, isVisible: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -4411,7 +4411,7 @@ try {
 }
 ```
 
-## formHost.formHost.on('formOverflow')<sup>20+</sup>
+## formHost.on('formOverflow')<sup>20+</sup>
 
 on(type: 'formOverflow', callback: Callback&lt;formInfo.OverflowRequest&gt;): void
 
@@ -4455,7 +4455,7 @@ try {
 }
 ```
 
-## formHost.formHost.onFormOverflow<sup>23+</sup>
+## formHost.onFormOverflow<sup>23+</sup>
 
 onFormOverflow(callback: Callback\<formInfo.OverflowRequest\>): void
 
@@ -4502,7 +4502,7 @@ try {
 }
 ```
 
-## formHost.formHost.off('formOverflow')<sup>20+</sup>
+## formHost.off('formOverflow')<sup>20+</sup>
 
 off(type: 'formOverflow', callback?: Callback&lt;formInfo.OverflowRequest&gt;): void
 
@@ -4546,7 +4546,7 @@ try {
 }   
 ```
 
-## formHost.formHost.offFormOverflow<sup>23+</sup>
+## formHost.offFormOverflow<sup>23+</sup>
 
 offFormOverflow(callback?: Callback\<formInfo.OverflowRequest\>): void
 
@@ -4593,7 +4593,7 @@ try {
 }
 ```
 
-## formHost.formHost.on('changeSceneAnimationState')<sup>20+</sup>
+## formHost.on('changeSceneAnimationState')<sup>20+</sup>
 
 on(type: 'changeSceneAnimationState', callback: Callback&lt;formInfo.ChangeSceneAnimationStateRequest&gt;): void
 
@@ -4637,7 +4637,7 @@ try {
 }
 ```
 
-## formHost.formHost.onChangeSceneAnimationState<sup>23+</sup>
+## formHost.onChangeSceneAnimationState<sup>23+</sup>
 
 onChangeSceneAnimationState(callback: Callback\<formInfo.ChangeSceneAnimationStateRequest\>): void
 
@@ -4686,7 +4686,7 @@ try {
 }
 ```
 
-## formHost.formHost.off('changeSceneAnimationState')<sup>20+</sup>
+## formHost.off('changeSceneAnimationState')<sup>20+</sup>
 
 off(type: 'changeSceneAnimationState', callback?: Callback&lt;formInfo.ChangeSceneAnimationStateRequest&gt;): void
 
@@ -4730,7 +4730,7 @@ try {
 }
 ```
 
-## formHost.formHost.offChangeSceneAnimationState<sup>23+</sup>
+## formHost.offChangeSceneAnimationState<sup>23+</sup>
 
 offChangeSceneAnimationState(callback?: Callback\<formInfo.ChangeSceneAnimationStateRequest\>): void
 
@@ -4777,7 +4777,7 @@ try {
 }
 ```
 
-## formHost.formHost.on('getFormRect')<sup>20+</sup>
+## formHost.on('getFormRect')<sup>20+</sup>
 
 on(type: 'getFormRect', callback: formInfo.GetFormRectInfoCallback): void
 
@@ -4831,7 +4831,7 @@ try {
 }
 ```
 
-## formHost.formHost.onGetFormRect<sup>23+</sup>
+## formHost.onGetFormRect<sup>23+</sup>
 
 onGetFormRect(callback: formInfo.GetFormRectInfoCallback): void
 
@@ -4891,7 +4891,7 @@ try {
 }
 ```
 
-## formHost.formHost.off('getFormRect')<sup>20+</sup>
+## formHost.off('getFormRect')<sup>20+</sup>
 
 off(type: 'getFormRect', callback?: formInfo.GetFormRectInfoCallback): void
 
@@ -4933,7 +4933,7 @@ try {
 }
 ```
 
-## formHost.formHost.offGetFormRect<sup>23+</sup>
+## formHost.offGetFormRect<sup>23+</sup>
 
 offGetFormRect(callback?: formInfo.GetFormRectInfoCallback): void
 
@@ -4989,7 +4989,7 @@ try {
 }
 ```
 
-## formHost.formHost.updateFormSize<sup>20+</sup>
+## formHost.updateFormSize<sup>20+</sup>
 
 updateFormSize(formId: string, newDimension: formInfo.FormDimension, newRect: formInfo.Rect): void
 
@@ -5065,7 +5065,7 @@ try {
 }
 ```
 
-## formHost.formHost.onGetLiveFormStatus<sup>23+</sup>
+## formHost.onGetLiveFormStatus<sup>23+</sup>
 
 onGetLiveFormStatus(callback: formInfo.GetLiveFormStatusCallback): void
 
@@ -5111,7 +5111,7 @@ try {
 }
 ```
 
-## formHost.formHost.offGetLiveFormStatus<sup>23+</sup>
+## formHost.offGetLiveFormStatus<sup>23+</sup>
 
 offGetLiveFormStatus(callback?: formInfo.GetLiveFormStatusCallback): void
 
@@ -5157,7 +5157,7 @@ try {
 }
 ```
 
-## formHost.formHost.onFormUninstall<sup>23+</sup>
+## formHost.onFormUninstall<sup>23+</sup>
 
 onFormUninstall(callback: Callback&lt;string&gt;): void
 
@@ -5206,7 +5206,7 @@ try {
 }
 ```
 
-## formHost.formHost.offFormUninstall<sup>23+</sup>
+## formHost.offFormUninstall<sup>23+</sup>
 
 offFormUninstall(callback?: Callback&lt;string&gt;): void
 
@@ -5328,7 +5328,7 @@ try {
 ```
 
 
-## formHost.formHost.getTemplateFormsInfo<sup>23+</sup>
+## formHost.getTemplateFormsInfo<sup>23+</sup>
 
 getTemplateFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
@@ -5408,7 +5408,7 @@ try {
 }
 ```
 
-## formHost.formHost.onTemplateFormDetailInfoChange<sup>23+</sup>
+## formHost.onTemplateFormDetailInfoChange<sup>23+</sup>
 
 onTemplateFormDetailInfoChange(callback: formInfo.TemplateFormDetailInfoCallback): void
 
@@ -5484,7 +5484,7 @@ try {
 ```
 
 
-## formHost.formHost.offTemplateFormDetailInfoChange<sup>23+</sup>
+## formHost.offTemplateFormDetailInfoChange<sup>23+</sup>
 
 offTemplateFormDetailInfoChange(callback?: formInfo.TemplateFormDetailInfoCallback): void
 
@@ -5549,7 +5549,7 @@ try {
 }
 ```
 
-## formHost.formHost.getFormIdsByFormLocation<sup>24+</sup>
+## formHost.getFormIdsByFormLocation<sup>24+</sup>
 
 getFormIdsByFormLocation(location: formInfo.FormLocation): Promise&lt;Array&lt;string&gt;&gt;
 
@@ -5627,7 +5627,7 @@ try {
 }
 ```
 
-## formHost.formHost.onGetWantParamsCallback
+## formHost.onGetWantParamsCallback
 
 onGetWantParamsCallback(callback: formInfo.GetWantParamsCallback): void
 
@@ -5712,7 +5712,7 @@ try {
 }
 ```
 
-## formHost.formHost.offGetWantParamsCallback
+## formHost.offGetWantParamsCallback
 
 offGetWantParamsCallback(callback?: formInfo.GetWantParamsCallback): void
 
