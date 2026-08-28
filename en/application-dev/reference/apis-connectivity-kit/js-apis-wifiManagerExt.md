@@ -6,8 +6,6 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=8788cc48214c139da8601c2cd957fee98d8eb5be translatedAt=2026-08-27T04:10:31.803Z pushedAt=2026-08-27T12:27:32.076Z -->
-
 This module provides Wi-Fi extension APIs for non-universal products.
 
 > **NOTE**
@@ -124,9 +122,9 @@ Enumerates the power modes.
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
-| SLEEPING | 0 | Sleeping|
-| GENERAL | 1 | General|
-| THROUGH_WALL | 2 | Through_wall|
+| SLEEPING | 0 | Sleeping **System capability**: SystemCapability.Ability.AbilityRuntime.Core|
+| GENERAL | 1 | General **System capability**: SystemCapability.Ability.AbilityRuntime.Core|
+| THROUGH_WALL | 2 | Through_wall **System capability**: SystemCapability.Ability.AbilityRuntime.Core|
 
 
 ## wifiManagerExt.getSupportedPowerMode
@@ -143,7 +141,7 @@ Obtains the supported power models. This API uses an asynchronous callback to re
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | **callback** | AsyncCallback&lt;Array&lt;[PowerMode](#powermode)&gt;&gt; | Yes | Callback function. When the operation is successful, **err** is 0 and **data** indicates the supported power modes. If **err** is not 0, an error occurred while obtaining the supported power modes. |
+  | callback | AsyncCallback&lt;Array&lt;[PowerMode](#powermode)&gt;&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the power modes obtained. If the operation fails, **err** is not **0**.|
 
 **Error codes**
 
@@ -198,16 +196,19 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 **Example**
 
 ```ts
-  import { wifiManagerExt } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
 
+async function getWifiPowerMode() {
   try {
     // 1. Use the await keyword to wait for promise parsing to complete.
-      let model = wifiManagerExt.getPowerMode();
-      console.info("model info:" + model);
-  }catch(error){
+    let model = await wifiManagerExt.getPowerMode();
+    
+    console.info("model info: " + model);
+  } catch (error) {
     // 2. Capture the error when the promise is rejected.
-      console.error("failed: " + JSON.stringify(error));
+    console.error("failed: " + JSON.stringify(error));
   }
+}
 ```
 
 ## wifiManagerExt.getPowerMode
@@ -224,7 +225,7 @@ Obtains the power mode. This API uses an asynchronous callback to return the res
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | **callback** | AsyncCallback&lt;[PowerMode](#powermode)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the power modes obtained. If the operation fails, **err** is not **0**. |
+  | callback | AsyncCallback&lt;[PowerMode](#powermode)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the power mode obtained. If the operation fails, **err** is not **0**.|
 
 **Error codes**
 
@@ -260,7 +261,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 setPowerMode(mode: PowerMode) : void
 
- Sets the power mode.
+Sets the power mode.
 
 > **NOTE**
 > This API is supported since API version 9 and deprecated since API version 10.
