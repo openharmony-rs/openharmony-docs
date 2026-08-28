@@ -1941,6 +1941,23 @@ build() {
   Web({ src: $rawfile("index.html"), controller: this.controller })
 }
 
+// AccessibilityExtAbility.ets
+import { AccessibilityElement } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// axContext是AccessibilityExtensionContext的实例，需通过AccessibilityExtensionAbility子类实例的context属性获取，详见使用说明。
+axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) => {
+    focus.findElementByFocusDirection('up').then((element: AccessibilityElement) => {
+        console.info('findElementByFocusDirection UP componentId: ' + element.componentId);
+    }).catch((err: BusinessError) => {
+        console.error(`Failed to find element by focus direction. Code: ${err.code}, message: ${err.message}`);
+    });
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get accessibility focused element. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+```html
 // index.html
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -1957,21 +1974,6 @@ build() {
 </div>
 </body>
 </html>
-
-// AccessibilityExtAbility.ets
-import { AccessibilityElement } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// axContext是AccessibilityExtensionContext的实例，需通过AccessibilityExtensionAbility子类实例的context属性获取，详见使用说明。
-axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) => {
-    focus.findElementByFocusDirection('up').then((element: AccessibilityElement) => {
-        console.info('findElementByFocusDirection UP componentId: ' + element.componentId);
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to find element by focus direction. Code: ${err.code}, message: ${err.message}`);
-    });
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get accessibility focused element. Code: ${err.code}, message: ${err.message}`);
-});
 ```
 
 ### findElementByFocusDirection
@@ -2036,6 +2038,22 @@ build() {
   Web({ src: $rawfile("index.html"), controller: this.controller })
 }
 
+// AccessibilityExtAbility.ets
+import { AccessibilityElement, FocusRuleType } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) => {
+    focus.findElementByFocusDirection('forward', FocusRuleType.FOCUS_BY_TITLE).then((element: AccessibilityElement) => {
+        console.info(`findElementByFocusDirection forward componentId: ${element.componentId}`);
+    }).catch((err: BusinessError) => {
+        console.error(`Failed to findElementByFocusDirection forward. Code: ${err.code}, message: ${err.message}`);
+    });
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getAccessibilityFocusedElement. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+```html
 // index.html
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -2052,20 +2070,6 @@ build() {
 </div>
 </body>
 </html>
-
-// AccessibilityExtAbility.ets
-import { AccessibilityElement, FocusRuleType } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) => {
-    focus.findElementByFocusDirection('forward', FocusRuleType.FOCUS_BY_TITLE).then((element: AccessibilityElement) => {
-        console.info(`findElementByFocusDirection forward componentId: ${element.componentId}`);
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to findElementByFocusDirection forward. Code: ${err.code}, message: ${err.message}`);
-    });
-}).catch((err: BusinessError) => {
-  console.error(`Failed to getAccessibilityFocusedElement. Code: ${err.code}, message: ${err.message}`);
-});
 ```
 
 ### findElementsByAccessibilityHintText<sup>20+</sup>
