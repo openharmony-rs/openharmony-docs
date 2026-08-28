@@ -59,6 +59,7 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
          brush.setColor({red: 255, blue: 0, green: 0, alpha: 255});
          canvas.attachBrush(brush);
          canvas.drawRect({left: 0, right: 300, top: 0, bottom: 300});
+         canvas.detachBrush();
        }
      }
    }
@@ -113,6 +114,7 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
        brush.setColor({red: 255, blue: 0, green: 0, alpha: 255});
        canvas.attachBrush(brush);
        canvas.drawRect({left: 0, right: 300, top: 0, bottom: 300});
+       canvas.detachBrush();
      }
    }
    ```
@@ -200,6 +202,7 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
          brush.setColor({ alpha: 255, red: 0, green: 0, blue: 255 });
          canvas_.attachBrush(brush);
          canvas_.drawRect({ left: 150, right: 575, top: 0, bottom: 600 });
+         canvas_.detachBrush();
    
          // 5.3 将离屏Canvas的绘制结果交给RenderNode
          canvas.drawImage(this.pixelMap, 0, 0);

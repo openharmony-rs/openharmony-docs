@@ -2460,8 +2460,7 @@ struct TextExample5 {
   }
 }
 ```
-<!--Del-->![] (figures/setTextSelection.gif)
-<!--DelEnd-->
+![](figures/setTextSelection.gif)
 
 ### Example 6: Setting Text Adaptation and Font Scale Factor Limits
 
@@ -3326,7 +3325,7 @@ Since API version 26.0.0, the **punctuationOverflow** API is added.
 struct PunctuationDemo {
   @State compressLeadingPunctuation: boolean = false;
   @State punctuationOverflow: boolean = false;
-  @State text: string = '「0123456789! \n『0123456789: \n(0123456789; \n 0123456789)\n<0123456789]';
+  @State text: string = '「0123456789！\n『0123456789：\n（0123456789；\n《0123456789）\n〈0123456789】';
 
   build() {
     Column() {
@@ -3358,8 +3357,7 @@ struct PunctuationDemo {
   }
 }
 ```
-<!--Del-->![textPunctuation] (figures/textPunctuation.gif)
-<!--DelEnd-->
+![textPunctuation](figures/textPunctuation.gif)
 
 ### Example 24: Setting Adaptive Spacing
 
@@ -3639,8 +3637,7 @@ struct TextExample {
 }
 ```
 
-<!--Del-->![textFontVariations] (figures/FontVariations.gif)
-<!--DelEnd-->
+![textFontVariations](figures/FontVariations.gif)
 
 ### Example 30: Setting an Image Preview Menu
 
@@ -3737,7 +3734,7 @@ struct StyledStringAppend {
 
   aboutToAppear() {
     // Append the initial paragraph content and set the paragraph indentation and line height.
-    let str1: string = '\nFirst paragraph:'
+    let str1: string = '\nFirst paragraph: '
     let str2: string = 'The styled string supports paragraph style caching. Click the button below to append a new paragraph and verify the paragraph caching effect.'
     let paragraph1: StyledString =
       new StyledString(str1 + str2, [{
@@ -3791,8 +3788,8 @@ struct StyledStringAppend {
         .onClick(() => {
           this.index++;
           // Append a new paragraph. Each paragraph has a paragraph indentation style, triggering the backend paragraph cache.
-          let str1: string = '\nParagraph' + this.index + ' : '
-          let str2: string ='is the appended text content, which is used to verify the paragraph cache mechanism.'
+          let str1: string = '\nParagraph ' + this.index + ': '
+          let str2: string ='This is the appended text content, which is used to verify the paragraph cache mechanism.'
           let newParagraph: StyledString = new StyledString(
             str1 + str2,
             [{
@@ -3824,8 +3821,7 @@ struct StyledStringAppend {
 }
 ```
 
-<!--Del-->![incrementalUpdatePolicy] (figures/incrementalUpdatePolicy.png)
-<!--DelEnd-->
+![incrementalUpdatePolicy](figures/incrementalUpdatePolicy.png)
 
 ### Example 32: Setting Text Tail Indentation
 
@@ -3871,8 +3867,7 @@ struct TailIndentsExample {
 }
 ```
 
-<!--Del-->![tailIndents] (figures/tailIndents.png)
-<!--DelEnd-->
+![tailIndents](figures/tailIndents.png)
 
 ### Example 33: Setting an AI Menu for Text Selection
 
@@ -3996,7 +3991,7 @@ struct Utf16GlyphHighlightPage {
     this.drawGradientBackground(uiContext, textBoxes);
     const affinityStr = affinity === text.Affinity.UPSTREAM ? 'UPSTREAM(0)' : 'DOWNSTREAM(1)';
     this.resultInfo =
-      'Coordinates: (${finger.localX.toFixed(1)}, ${finger.localY.toFixed(1)})vp\n` +
+      `Coordinates: (${finger.localX.toFixed(1)}, ${finger.localY.toFixed(1)})vp\n` +
       `UTF16 offset: ${index}, affinity: ${affinityStr}\n` +
       `Input range: [${charStart}, ${charEnd}] -> Actual character range: [${actualRange.start}, ${actualRange.end}]\n` +
       `Number of rectangles: ${textBoxes.length}`;
@@ -4024,7 +4019,6 @@ struct Utf16GlyphHighlightPage {
 
 The display effect may vary depending on the device sizes and is for reference only.
 
-<!--Del-->![textUtf16GlyphHighlight] (figures/textUtf16GlyphHighlight.gif)
-<!--DelEnd-->
+![textUtf16GlyphHighlight](figures/textUtf16GlyphHighlight.gif)
 
 <!--no_check-->

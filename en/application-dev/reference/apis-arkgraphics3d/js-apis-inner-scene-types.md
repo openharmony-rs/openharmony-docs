@@ -1,12 +1,14 @@
 # SceneType
+
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @zzhao0-->
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=700e59b1ae8c27a949329e4115fdb61df06ad438 translatedAt=2026-08-25T13:18:00.797Z pushedAt=2026-08-26T07:06:11.915Z -->
 
-The module provides common data types in 3D graphics.
+This module provides the common data types in ArkGraphics 3D.
 
 > **NOTE**
 >
@@ -15,7 +17,7 @@ The module provides common data types in 3D graphics.
 ## Modules to Import
 
 ```ts
-import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, PrimitiveTopology, CustomGeometry, CubeGeometry, PlaneGeometry, SphereGeometry, CylinderGeometry, Position3, Rotation3, Scale3 } from '@kit.ArkGraphics3D';
+import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, RenderingPipelineType, GeometryType, GeometryDefinition, PrimitiveTopology, ShadowAlgorithmType, CustomGeometry, CubeGeometry, PlaneGeometry, SphereGeometry, CylinderGeometry, Mat4x4, Position3, Rotation3, Scale3 } from '@kit.ArkGraphics3D';
 ```
 
 ## Vec2
@@ -43,7 +45,7 @@ A three-dimensional vector used to represent a point, a direction, or a vector t
 
 ## Vec4
 
-A four-dimensional vector used to represent a point, a direction, or a vector transformation in 4D space. It consists of four components: x, y, z, and w. The fourth component (w) enhances normalization and convenience for various calculations and transformations.
+Four-dimensional vector, which is usually used to represent a point, direction, or vector transformation in 4D space. It consists of four components: x, y, z, and w.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -150,6 +152,20 @@ Enumerates the vertex processing methods.
 | TRIANGLE_LIST | 0 | A set of vertices forming separate triangles without intersecting.|
 | TRIANGLE_STRIP | 1 | Each vertex and the edge of the previous triangle create a new triangle.|
 
+## ShadowAlgorithmType
+
+Enumerates the shadow algorithms.
+
+**Since**: 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+| Name | Value | Description |
+| ---- | ---- | ---- |
+| PCF | 0 | Percentage-closer filtering algorithm. |
+
 ## CustomGeometry<sup>18+</sup>
 
 A custom geometry type that inherits from [GeometryDefinition](#geometrydefinition18).
@@ -218,7 +234,7 @@ For example, with radius=0.5, height=1, and segmentCount=20, the mesh and UV lay
 
 ## Mat4x4<sup>23+</sup>
 
-A camera matrix, which is a mathematical tool for transforming 3D world coordinates into 2D image coordinates.
+A 4x4 matrix type that can be used for coordinate transformation.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 

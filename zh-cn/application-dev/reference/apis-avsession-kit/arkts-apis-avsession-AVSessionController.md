@@ -619,6 +619,8 @@ getLaunchAbility(): Promise\<WantAgent>
 **示例：**
 
 ```ts
+import { WantAgent } from '@kit.AbilityKit';
+
 avcontroller.getLaunchAbility().then((agent: WantAgent) => {
   console.info(`Succeeded in getting launch ability: ${agent}`);
 });
@@ -651,6 +653,8 @@ getLaunchAbility(callback: AsyncCallback\<WantAgent>): void
 **示例：**
 
 ```ts
+import { WantAgent } from '@kit.AbilityKit';
+
 avcontroller.getLaunchAbility((err: BusinessError, agent: WantAgent) => {
   if (err) {
     console.error(`Failed to get launch ability, code: ${err.code}, message: ${err.message}`);
