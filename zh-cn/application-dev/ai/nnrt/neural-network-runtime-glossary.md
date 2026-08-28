@@ -65,7 +65,7 @@ NNRt的功能模块之一，负责展示已对接的AI硬件信息，并提供�
 
 ## L
 
-### Low-level Device Abstraction Later (HDI): 硬件设备抽象层
+### Low-level Device Abstraction Layer (HDI): 硬件设备抽象层
 
 定义硬件设备标准化接口的层，使得上层软件（如NNRt）可以通过统一接口访问不同厂商的AI加速芯片。
 
