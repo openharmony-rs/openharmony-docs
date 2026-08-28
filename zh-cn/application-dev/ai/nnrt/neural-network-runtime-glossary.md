@@ -57,7 +57,7 @@ NNRt的功能模块之一，负责展示已对接的AI硬件信息，并提供�
 
 ### Inference Framework: 推理框架
 
-运行在AI加速芯片之上、提供模型推理能力的软件框架，如Mindspore Lite。推理框架通过调用NNRt接口实现跨芯片推理。
+运行在AI加速芯片之上、提供模型推理能力的软件框架，如MindSpore Lite。推理框架通过调用NNRt接口实现跨芯片推理。
 
 ### In-series Operator Fusion: 算子融合
 
