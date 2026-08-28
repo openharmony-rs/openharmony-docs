@@ -22,7 +22,7 @@
 
 - 当前\@Styles仅支持[通用属性](../../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md)和[通用事件](../../reference/apis-arkui/arkui-ts/ts-component-general-events.md)。
 
-- \@Styles可以定义在组件内或全局，在全局定义时需在方法名前面添加function关键字，组件内定义时则不需要添加function关键字。请参考用例[组件内styles和全局styles的用法](#组件内styles和全局styles的用法)。
+- \@Styles可以定义在组件内或全局，在全局定义时需在方法名前面添加function关键字，组件内定义时则不需要添加function关键字。请参考用例[组件内\@Styles和全局\@Styles的用法](#组件内styles和全局styles的用法)。
 
 - 组件内\@Styles的优先级高于全局\@Styles。框架优先找当前组件内的\@Styles，如果找不到，则会全局查找。
 
@@ -78,12 +78,12 @@ struct FancyUse {
 
 ```
 
-<!-- @[style_not_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/StylesDecorator/StylesDecorator2.ets) -->
+<!-- @[style_not_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/StylesDecorator/StylesDecorator2.ets) --> 
 
 ``` TypeScript
 // 正确写法
   @Styles
-  function globalFancy () {
+  function globalFancy() {
     .width(100)
   }
 ```
