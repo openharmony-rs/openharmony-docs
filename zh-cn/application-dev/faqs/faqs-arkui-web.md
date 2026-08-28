@@ -2,8 +2,8 @@
 
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @weixin_41848015-->
-<!--Designer: @ctqctq99; @yaomingliu; @libing23232323-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloCrease-->
 

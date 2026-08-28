@@ -1,7 +1,7 @@
 # ArkWeb（方舟Web）
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
@@ -49,14 +49,14 @@
   - [自定义页面请求响应](web-resource-interception-request-mgmt.md)
   - [加速Web页面的访问](web-predictor.md)
   - [设置Web组件前进后退缓存](web-set-back-forward-cache.md)
-  - [Web组件在不同窗口间迁移](web-component-migrate.md)
+  - [Web组件在不同的窗口间迁移](web-component-migrate.md)
 - 管理网页文件上传与下载<!--web-manage-upload-download-->
   - [使用Web组件上传文件](web-file-upload.md)
   - [使用Web组件的下载能力](web-download.md)
 - 使用网页多媒体<!--web-use-multimedia-->
   - [在Web中打开摄像头和麦克风](web-rtc.md)
   - [托管网页中的媒体播放](app-takeovers-web-media.md)
-  - [使用Web组件支持画中画](web-picture-in-picture.md)
+  - [Web组件支持画中画](web-picture-in-picture.md)
   - [Web组件支持视频沉浸式全屏播放](web_full_screen.md)
 - 处理网页内容<!--web-process-page-content-->
   - [使用Web组件打印前端页面](web-print.md)
