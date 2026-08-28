@@ -1,4 +1,4 @@
-# 跨设备连接UIAbility开发指南
+# 跨设备连接UIAbility开发指南（仅对系统应用开放）
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
 <!--Owner: @hobbycao-->
@@ -327,9 +327,9 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
   const arrayBuffer  = textEncoder.encodeInto("data send success");
 
   abilityConnectionManager.sendData(this.sessionId, arrayBuffer.buffer).then(() => {
-    hilog.info(0x0000, 'testTag', "sendMessage success");
+    hilog.info(0x0000, 'testTag', "sendData success");
   }).catch(() => {
-    hilog.info(0x0000, 'testTag', "sendMessage failed");
+    hilog.info(0x0000, 'testTag', "sendData failed");
   })
   ```
 
@@ -438,7 +438,7 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 **解决措施**
 
 - 针对原因1，设备A和设备B开启USB调试功能，用USB线连接设备和PC。执行shell命令：
-   
+  
   ```shell
   hdc shell
   hidumper -s 4700 -a "buscenter -l remote_device_info"
