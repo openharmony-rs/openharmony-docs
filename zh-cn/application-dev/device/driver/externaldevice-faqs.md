@@ -48,3 +48,36 @@
 ### 解决措施
 
 根据应用调试中[安装HAP时提示“code:9568347 error: install parse native so failed”错误，或者运行时候提示“TypeError：Cannot read property xxx of undefined”错误](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs-V5/faqs-app-debugging-14-V5)提供的解决方法，在`build-profile.json5`中的`buildOption/externalNativeOptions`内手动配置`abiFilters`的值。
+
+## 使用基于缓冲区发送数据的DDK接口时，未按照指定的offset和bufferLength发送
+
+### 问题现象
+
+以[OH_Usb_SendPipeRequest](../../reference/apis-driverdevelopment-kit/capi-usb-ddk-api-h.md#oh_usb_sendpiperequest)为例，使用此类基于缓冲区发送数据的接口时，对参数[UsbDeviceMemMap](../../reference/apis-driverdevelopment-kit/capi-usbddk-usbdevicememmap.md)的offset、bufferLength字段做了赋值，但是实际传输的数据内容是按照size大小将整个缓冲区的数据发送。
+
+### 解决措施
+
+此类接口的实现是按照size大小将整个缓冲区用于传输。因此在发送特定部分的数据时，需要按需申请相应大小的缓冲区、并填充对应的数据以发起传输。可以参考以下代码块的实现。注：
+- 此类接口计划进行优化改造，后续版本中会提供基于offset和bufferLength传输的能力。
+- 性能开销：创建和销毁缓冲区接口的性能开销很小，通常在0.1毫秒以内、可忽略不计。
+
+```cpp
+/**
+ * 假定此处 data 已经填充了有效数据
+ * 场景预设：需传输 data 中索引从0x10开始的、长度为32的数据
+ */
+uint8_t *data = new uint8_t [128];
+
+/** 创建数据缓冲区 */
+UsbDeviceMemMap *devMmap;
+OH_Usb_CreateDeviceMemMap(devicdId, 32, &devMmap);
+
+/** 只拷贝要传输的部分数据到缓冲区 */
+memcpy_s(devMmap.address, devMmap.size, data + 0x10, 32);
+
+/** 发起数据传输 */
+OH_Usb_SendPipeRequest(pipe, devMmap);
+
+/** 使用完毕后，需销毁数据缓冲区以回收资源 */
+OH_Usb_DestroyDeviceMemMap(devMmap);
+```
