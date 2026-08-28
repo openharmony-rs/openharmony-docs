@@ -50,7 +50,30 @@
      if (err?.code) {
        console.error(`Failed to move the window. Cause code: ${err.code}, message: ${err.message}`);
        return;
+   <!-- @[independent_subWindow_uiContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
+   
+   ``` TypeScript
+   // 3.为子窗口加载对应的目标页面。
+   independentWindowClass.setUIContent('pages/IndependentSubWindow', (err) => {
+     if (err?.code) {
+       console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+       return;
      }
+     console.info('Succeeded in loading the content.');
+     if (!independentWindowClass) {
+       console.error('independent_windowClass is null');
+       return;
+     }
+     // 显示子窗口。
+     independentWindowClass.showWindow((err) => {
+       if (err?.code) {
+         console.error(`Failed to show the window. Cause code: ${err.code}, message: ${err.message}`);
+         return;
+       }
+       console.info('Succeeded in showing the window.');
+     });
+   });
+   ```
      console.info('Succeeded in moving the window.');
      if (!independentWindowClass) {
        console.error('independent_windowClass is null');
