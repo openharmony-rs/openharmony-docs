@@ -62,7 +62,29 @@
    let floatWindowClass: window.Window | undefined = undefined;
    // ...
          // 1.创建全局悬浮窗。
-         let context: common.UIAbilityContext | undefined = AppStorage.get<common.UIAbilityContext>('context');
+   <!-- @[floating_window_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
+   
+   ``` TypeScript
+   // 2.全局悬浮窗窗口创建成功后，设置全局悬浮窗的位置、大小及相关属性等。
+   floatWindowClass.moveWindowTo(100, 100, (err) => {
+     if (err?.code) {
+       console.error(`Failed to move the window. Cause code: ${err.code}, message: ${err.message}`);
+       return;
+     }
+     console.info('Succeeded in moving the window.');
+     if (!floatWindowClass) {
+       console.error('float_windowClass is null');
+       return;
+     }
+     floatWindowClass.resize(600, 900, (err) => {
+       if (err?.code) {
+         console.error(`Failed to change the window size. Cause code: ${err.code}, message: ${err.message}`);
+         return;
+       }
+       console.info('Succeeded in changing the window size.');
+     });
+   });
+   ```
          let config: window.Configuration = {
            name: 'floatWindow', windowType: window.WindowType.TYPE_FLOAT, ctx: context as common.BaseContext
          };
