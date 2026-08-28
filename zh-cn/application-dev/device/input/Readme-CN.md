@@ -16,4 +16,4 @@
 - [全局快捷键开发指导（仅对系统应用开放）](inputconsumer-guidelines-sys.md)
 - [系统预置全局快捷键开发指导（仅对系统应用开放）](shortkey-guidelines-sys.md)<!--DelEnd-->
 - [事件监听开发指导（C/C++）](monitor-guidelines.md)
-- [事件拦截开发指导（C/C++）](interceptor-guidelines.md)
+- [事件拦截开发指导（C/C++）](interceptor-guidelines.md)- [Input Kit术语](input-kit-glossary.md)
