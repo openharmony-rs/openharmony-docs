@@ -79,8 +79,6 @@ ArkTS-Sta示例：
 <!-- @[functions_that_trigger_a_run_on_the_front_end_page_are_registered_in_the_front_end_page](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/UseFrontendJSApp/entry2/src/main/ets/pages/JavaScriptProxy.ets) -->
 
 ``` TypeScript
-'use static'
-
 import { $rawfile, Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -211,8 +209,6 @@ struct WebComponent {
   <!-- @[Register_before_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyOne.ets) -->
 
   ``` TypeScript
-  'use static'
-
   import { $rawfile, Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -344,8 +340,6 @@ struct WebComponent {
    <!-- @[Register_after_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyTwo.ets) -->
 
    ``` TypeScript
-   'use static'
-
    import { $rawfile, Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
    import { webview } from '@kit.ArkWeb';
    import { BusinessError } from '@kit.BasicServicesKit';
