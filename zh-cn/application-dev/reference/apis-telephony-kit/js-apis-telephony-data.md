@@ -181,8 +181,8 @@ getCellularDataState(callback: AsyncCallback\<DataConnectState\>): void
 获取蜂窝数据业务的连接状态，使用callback方式作为异步方法。
 
 **需要权限**：
-- API版本22.0.0之前：N/A
-- API版本22.0.0+：ohos.permission.GET_NETWORK_INFO
+- API版本22之前：N/A
+- API版本22+：ohos.permission.GET_NETWORK_INFO
 
 **系统能力**：SystemCapability.Telephony.CellularData
 
@@ -222,8 +222,8 @@ getCellularDataState(): Promise\<DataConnectState\>
 获取蜂窝数据业务的连接状态，使用Promise方式作为异步方法。
 
 **需要权限**：
-- API版本22.0.0之前：N/A
-- API版本22.0.0+：ohos.permission.GET_NETWORK_INFO
+- API版本22之前：N/A
+- API版本22+：ohos.permission.GET_NETWORK_INFO
 
 **系统能力**：SystemCapability.Telephony.CellularData
 
