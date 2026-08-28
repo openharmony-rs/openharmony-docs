@@ -92,7 +92,7 @@
 | onEvent?(formId:&nbsp;string,&nbsp;message:&nbsp;string):&nbsp;void; | \@ohos.app.form.FormExtensionAbility.d.ts | [onFormEvent(formId:&nbsp;string,&nbsp;message:&nbsp;string):&nbsp;void;](../../../application-dev/reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#onformevent) |
 | onDestroy?(formId:&nbsp;string):&nbsp;void; | \@ohos.app.form.FormExtensionAbility.d.ts | [onRemoveForm(formId:&nbsp;string):&nbsp;void;](../../../application-dev/reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#onremoveform) |
 | onAcquireFormState?(want:&nbsp;Want):&nbsp;formInfo.FormState; | \@ohos.app.form.FormExtensionAbility.d.ts | [onAcquireFormState?(want:&nbsp;Want):&nbsp;formInfo.FormState;](../../../application-dev/reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#onacquireformstate) |
-| onShareForm?(formId:&nbsp;string):&nbsp;{ [key: string]: any }; | \@ohos.app.form.FormExtensionAbility.d.ts | [onShareForm?(formId:&nbsp;string):&nbsp;Record&lt;string,&nbsp;Object&gt;;](../../../application-dev/reference/apis-form-kit/js-apis-app-form-formExtensionAbility-sys.md#formextensionabilityonshareform) |
+| onShareForm?(formId:&nbsp;string):&nbsp;{ [key: string]: any }; | \@ohos.app.form.FormExtensionAbility.d.ts | [onShareForm?(formId:&nbsp;string):&nbsp;Record&lt;string,&nbsp;Object&gt;;](../../../application-dev/reference/apis-form-kit/js-apis-app-form-formExtensionAbility-sys.md#onshareform) |
 
 ## LifecycleApp接口
 | 仅FA可用接口 | Stage模型可替换接口文件 | Stage模型可替换接口 |
