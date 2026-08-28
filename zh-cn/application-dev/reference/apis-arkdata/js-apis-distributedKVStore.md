@@ -6343,7 +6343,7 @@ try {
     if (err) {
       console.error(`Failed to backup. Code: ${err.code}, message: ${err.message} `);
     } else {
-      console.info(`Succeeded in backupping data`);
+      console.info(`Succeeded in backing up data`);
     }
   });
 } catch (err) {
@@ -6363,7 +6363,7 @@ try {
     if (err != null) {
       console.error(`Failed to backup. Code: ${err.code}, message: ${err.message} `);
     } else {
-      console.info(`Succeeded in backupping data`);
+      console.info(`Succeeded in backing up data`);
     }
   });
 } catch (error) {
@@ -6414,7 +6414,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let backupFile = 'BK001';
 try {
   kvStore.backup(backupFile).then(() => {
-    console.info(`Succeeded in backupping data`);
+    console.info(`Succeeded in backing up data`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to backup. Code: ${err.code}, message: ${err.message}`);
   });
@@ -6432,7 +6432,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let backupFile = 'BK001';
 try {
   kvStore!.backup(backupFile).then((): void => {
-    console.info(`Succeeded in backupping data`);
+    console.info(`Succeeded in backing up data`);
   }).catch((err): void => {
     console.error(`Failed to backup. Code: ${err.code}, message: ${err.message}`);
   });
@@ -6487,7 +6487,7 @@ const backupConfig: distributedKVStore.BackupConfig = {
 };
 try {
   kvStore.backupEx(backupConfig).then(() => {
-    console.info(`Succeeded in backupping data`);
+    console.info(`Succeeded in backing up data`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to backup. Code: ${err.code}, message: ${err.message}`);
   });
@@ -6508,7 +6508,7 @@ const backupConfig: distributedKVStore.BackupConfig = {
 };
 try {
   kvStore?.backupEx(backupConfig).then(() => {
-    console.info(`Succeeded in backupping data`);
+    console.info(`Succeeded in backing up data`);
   }).catch((err) => {
     console.error(`Failed to backup. Code: ${err.code}, message: ${err.message}`);
   });
@@ -6579,7 +6579,7 @@ try {
     if (err != null) {
       console.error(`Failed to backup. Code: ${err.code}, message: ${err.message} `);
     } else {
-      console.info(`Succeeded in backupping data`);
+      console.info(`Succeeded in backing up data`);
       kvStore!.restore(backupFile, (err: BusinessError | null): void => {
         if (err != null) {
           console.error(`Failed to restore. Code: ${err.code}, message: ${err.message}`);
@@ -6658,7 +6658,7 @@ try {
     if (err != null) {
       console.error(`Failed to backup. Code: ${err.code}, message: ${err.message} `);
     } else {
-      console.info(`Succeeded in backupping data`);
+      console.info(`Succeeded in backing up data`);
       kvStore!.restore(backupFile).then((): void => {
         console.info(`Succeeded in restoring data`);
       }).catch((err): void => {
@@ -6811,7 +6811,7 @@ try {
       if (err != null) {
         console.error(`Failed to backup. Code: ${err.code}, message: ${err.message} `);
       } else {
-        console.info(`Succeeded in backupping data`);
+        console.info(`Succeeded in backing up data`);
       }
     });
   }
@@ -6893,7 +6893,7 @@ try {
       if (err != null) {
         console.error(`Failed to backup. Code: ${err.code}, message: ${err.message} `);
       } else {
-        console.info(`Succeeded in backupping data`);
+        console.info(`Succeeded in backing up data`);
       }
     });
   }
