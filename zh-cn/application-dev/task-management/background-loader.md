@@ -1,4 +1,4 @@
-# 后台加载任务(ArkTS)
+# 后台加载任务（ArkTS）
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
@@ -7,19 +7,23 @@
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
 
-## 概述
-
-### 功能介绍
+## 能力范围
 
 适用于期望通过后台预先加载应用数据实现优化应用启动体验的场景，系统会根据用户使用习惯、频次以及系统资源（内存、电量）等条件，预先启动应用进程并执行加载回调方法，允许应用在后台执行短时的内容和数据加载。例如：资讯刷新、消息获取、视频缓存等。
 
-### 运行原理
+## 实现原理
 
 1. 需要启用后台加载任务功能的应用，可在前台启动时向系统注册任务。
 2. 任务注册后，系统允许应用查询和删除任务。
 3. 系统的后台加载任务管理模块会根据用户使用应用的习惯及系统状态（包括系统可用内存、电池电量、设备温度等）统一决策应用执行后台加载任务时机。应用无法对任务触发时机进行干预。
 
-### 约束与限制
+## 约束与限制
+
+#### 设备限制
+
+本功能仅支持标准系统设备。
+
+#### 规格限制
 
 - **数量限制：** 一个应用只能注册一个后台加载任务，任务中只能指定唯一的主用UIAbility。
 
@@ -194,7 +198,7 @@
 
    </div>
 
-### 后台加载任务触发功能验证
+### 调测验证
 
 后台加载任务注册成功之后，需要等到条件满足后才可以执行后台加载任务回调，为了快速验证实现的回调功能是否正确，可以通过以下[hidumper命令](../dfx/hidumper.md)手动触发后台加载任务执行回调。
 
@@ -216,4 +220,4 @@ $ hidumper -s 1901 -a 'backgroundLoader com.example.myapplication EntryAbility'
 
 针对后台加载任务的开发，有以下相关示例可供参考：
 
-- [后台加载任务（ArkTS）（API12）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader)
+- [后台加载任务（ArkTS）（API26.1）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader)
