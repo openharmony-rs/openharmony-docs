@@ -674,7 +674,7 @@ Obtains whether the mask is enabled for the dot-style navigation indicator of th
 
 | Type| Description|
 | -- | -- |
-| int32_t | Whether the mask is enabled. The value **1** indicates that the the mask is enabled, and **0** indicates the opposite. |
+| int32_t | Whether the mask is enabled. The value **1** indicates that the mask is enabled, and **0** indicates the opposite. |
 
 ### OH_ArkUI_SwiperIndicator_SetColor()
 
