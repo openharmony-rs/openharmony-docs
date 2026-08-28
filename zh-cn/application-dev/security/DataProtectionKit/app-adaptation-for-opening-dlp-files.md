@@ -176,7 +176,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
     ]
     ```
     
-    2.4 应用内使用文件Picker进行文件加密分享
+    2.4 应用内使用文件Picker进行文件加密分享。
     <!-- @[dlp_callFilePicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
