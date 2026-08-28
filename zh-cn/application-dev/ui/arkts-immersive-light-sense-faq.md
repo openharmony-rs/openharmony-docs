@@ -18,39 +18,56 @@
 
 **可能原因**
 
-沉浸式系统材质的视觉层级位于组件的[backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、[backgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9)等属性之下。如果同时设置了不透明的背景色或背景模糊样式，这些属性会覆盖在材质层之上，导致材质效果被遮挡不可见。
+- 沉浸式系统材质的视觉层级位于组件的[backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、[backgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9)等属性之下。如果同时设置了不透明的背景色或背景模糊样式，这些属性会覆盖在材质层之上，导致材质效果被遮挡不可见。
+- 沉浸式系统材质在组件上生效存在约束。通过[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)为组件设置的沉浸式系统材质仅在Navigation/NavDestination标题栏子树，或横向Tabs中barPosition为BarPosition.End的底部TabBar子树中生效，范围外的普通组件不显示材质效果。Slider、Toggle不受此范围限制；Popup、Tips、Menu、Sheet、AlertDialog、CustomDialog、ActionSheet、CalendarPickerDialog、DatePickerDialog、TextPickerDialog、Toast、Select下拉菜单、AlphabetIndexer气泡弹窗等弹窗类组件不受此范围限制。
 
 **解决措施**
 
-1. 将组件的背景色设置为透明（`Color.Transparent`）或移除背景色设置。
-2. 移除[backgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9)等背景模糊样式，避免模糊效果覆盖材质层。
+1. 将需要沉浸光感效果的组件置于Navigation/NavDestination标题栏子树，或横向Tabs中barPosition为BarPosition.End的底部TabBar子树中。
+2. 若置于上述有效区域后仍未生效，将组件的背景色设置为透明（`Color.Transparent`）或移除背景色设置。
+3. 移除[backgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9)等背景模糊样式，避免模糊效果覆盖材质层。
 
-**代码示例**
+若无法满足生效范围要求，可改用[backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、[backgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9)等通用属性替代材质效果。
+
+**示例**
+
+以下示例展示了在Navigation标题栏子树中设置沉浸式系统材质的正确用法。组件需位于Navigation/NavDestination标题栏子树等生效范围内，同时需将背景色设为透明，避免不透明背景色覆盖在材质层之上导致材质效果不可见。
 
 ```ts
-// 错误写法：不透明背景色会覆盖在材质层之上，导致材质效果不可见
-Column() {
-  Text('沉浸光感')
-}
-.width(328)
-.height(56)
-.borderRadius(28)
-.systemMaterial(new uiMaterial.ImmersiveMaterial({
-  style: uiMaterial.ImmersiveStyle.THIN,
-}))
-.backgroundColor(Color.White)
+import { uiMaterial } from '@kit.ArkUI';
 
-// 推荐写法：将背景色设为透明，确保材质效果可见
-Column() {
-  Text('沉浸光感')
+@Entry
+@Component
+struct MaterialScopeExample {
+  @Builder
+  NavigationTitle() {
+    Column() {
+      Text('Title')
+    }
+    .width(328)
+    .height(56)
+    .borderRadius(28)
+    // 错误写法：设置了不透明背景色，会覆盖在材质层之上，导致材质效果不可见
+    // .systemMaterial(new uiMaterial.ImmersiveMaterial({
+    //   style: uiMaterial.ImmersiveStyle.THIN,
+    // }))
+    // .backgroundColor(Color.White)
+    // 推荐写法：先将背景色设为透明，再设置沉浸式系统材质，确保材质效果可见
+    .backgroundColor(Color.Transparent)
+    .systemMaterial(new uiMaterial.ImmersiveMaterial({
+      style: uiMaterial.ImmersiveStyle.THIN,
+    }))
+  }
+
+  build() {
+    Column() {
+      Navigation() {
+        // 页面内容
+      }
+      .title({ builder: this.NavigationTitle, height: '100%' })
+    }.width('100%').height('100%')
+  }
 }
-.width(328)
-.height(56)
-.borderRadius(28)
-.backgroundColor(Color.Transparent)
-.systemMaterial(new uiMaterial.ImmersiveMaterial({
-  style: uiMaterial.ImmersiveStyle.THIN,
-}))
 ```
 
 ## 设置沉浸式系统材质后组件边框呈现出周围背景的颜色

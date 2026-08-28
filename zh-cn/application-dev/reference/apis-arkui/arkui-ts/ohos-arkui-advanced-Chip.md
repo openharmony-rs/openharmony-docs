@@ -65,8 +65,8 @@ ChipOptions定义Chip的样式及具体样式参数。
 | suffixSymbolOptions<sup>14+</sup> | [ChipSuffixSymbolGlyphOptions](#chipsuffixsymbolglyphoptions14) | 否 | 是 | symbol类型后缀图标的无障碍朗读功能属性及点击事件回调等。<br>默认值：不设置对应属性。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | backgroundColor | [ResourceColor](ts-types.md#resourcecolor)                   | 否  | 是  | Chip背景颜色。<br>默认值：$r('sys.color.ohos_id_color_button_normal')。<br>值为undefined时，按默认值处理。赋值为非法值时，背景颜色透明。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | activatedBackgroundColor<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor)          | 否  | 是  | Chip激活态的背景颜色。<br>默认值：$r('sys.color.ohos_id_color_emphasize')。<br>值为undefined时，按默认值处理。赋值为非法值时，背景颜色透明。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | 否 | 是 | 设置组件系统材质样式。适用于需要实现沉浸式背景效果、半透明磨砂效果等场景。不同材质具有不同的效果，能够影响组件的[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[border](ts-universal-attributes-border.md#border)、[shadow](ts-universal-attributes-image-effect.md#shadow)等视觉属性。<br>默认值：undefined<br>值为undefined时，不应用材质样式。<br>**说明**：当设置backgroundSystemMaterial时，应将backgroundColor设为Color.Transparent，否则会与系统材质冲突；当backgroundSystemMaterial为undefined时，backgroundColor属性生效。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
-| activatedBackgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | 否 | 是 | 设置组件激活状态下的系统材质样式。适用于需要激活状态下保持或切换材质效果的交互场景，如标签选中、状态切换等。不同材质具有不同的效果，能够影响组件的[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[border](ts-universal-attributes-border.md#border)、[shadow](ts-universal-attributes-image-effect.md#shadow)等视觉属性。<br>默认值：undefined<br>值为undefined时，不应用材质样式。<br>**说明**：当设置activatedBackgroundSystemMaterial时，应将activatedBackgroundColor设为Color.Transparent，否则会与系统材质冲突；当activatedBackgroundSystemMaterial为undefined时，activatedBackgroundColor属性生效。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | 否 | 是 | 设置组件系统材质样式。需要将组件放置在Navigation或NavDestination的标题栏子树，或横向Tabs的底部TabBar子树中，材质效果才会生效。适用于需要实现沉浸式背景效果、半透明磨砂效果等场景。不同材质具有不同的效果，能够影响组件的[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[border](ts-universal-attributes-border.md#border)、[shadow](ts-universal-attributes-image-effect.md#shadow)等视觉属性。<br>默认值：undefined<br>值为undefined时，不应用材质样式。<br>**说明**：当设置backgroundSystemMaterial时，应将backgroundColor设为Color.Transparent，否则会与系统材质冲突；当backgroundSystemMaterial为undefined时，backgroundColor属性生效。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| activatedBackgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | 否 | 是 | 设置组件激活状态下的系统材质样式。需要将组件放置在Navigation或NavDestination的标题栏子树，或横向Tabs的底部TabBar子树中，材质效果才会生效。适用于需要激活状态下保持或切换材质效果的交互场景，如标签选中、状态切换等。不同材质具有不同的效果，能够影响组件的[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[border](ts-universal-attributes-border.md#border)、[shadow](ts-universal-attributes-image-effect.md#shadow)等视觉属性。<br>默认值：undefined<br>值为undefined时，不应用材质样式。<br>**说明**：当设置activatedBackgroundSystemMaterial时，应将activatedBackgroundColor设为Color.Transparent，否则会与系统材质冲突；当activatedBackgroundSystemMaterial为undefined时，activatedBackgroundColor属性生效。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | borderRadius    | [Dimension](ts-types.md#dimension10)                         | 否  | 是  | Chip背景圆角半径大小，不支持百分比，传入百分比时按默认值处理。<br>取值范围：[0, +∞) <br>默认值：$r('sys.float.ohos_id_corner_radius_button')。<br>单位：vp<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | allowClose      | boolean                                                      | 否  | 是  | 关闭图标是否显示。<br>默认值：true<br>true：关闭图标显示；false：关闭图标不显示。<br>值为undefined时，按默认值处理。<br>**说明**：当suffixSymbol有传入参数时，allowClose不生效；当suffixSymbol没有传入参数而suffixIcon有传入参数时，allowClose不生效；当suffixSymbol和suffixIcon都没有传入参数时，allowClose决定是否显示关闭图标。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | onClose         | ()=>void                                                     | 否  | 是  | 默认关闭图标点击事件回调，无参数和返回值。当用户点击默认关闭图标时触发该回调。<br>值为undefined时，不触发关闭图标点击事件。<br>**说明**：仅当关闭图标显示时生效，即suffixSymbol和suffixIcon都未传入参数且allowClose为true时。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -970,7 +970,8 @@ struct ChipMaterialExample {
     })
   }
 
-  build() {
+  @Builder
+  NavigationTitle() {
     Column({ space: 50 }) {
       Chip(this.chipOptions)
       Chip(this.chipOptions)
@@ -986,6 +987,15 @@ struct ChipMaterialExample {
     .padding(12)
     .width('100%')
     .height(150)
+  }
+
+  build() {
+    Column() {
+      Navigation() {
+        // 页面内容
+      }
+      .title({ builder: this.NavigationTitle, height: '100%' })
+    }.width('100%').height('100%')
   }
 }
 ```
