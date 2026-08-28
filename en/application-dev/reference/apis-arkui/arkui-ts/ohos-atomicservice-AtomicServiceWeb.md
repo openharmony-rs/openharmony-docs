@@ -6,13 +6,14 @@
 <!--Designer: @autojuan-->
 <!--Tester: @tinygreyy-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=2e643521b83aaac0e3bd301157b4285ededded3a translatedAt=2026-08-28T01:35:28.802Z pushedAt=2026-08-28T07:36:40.312Z -->
 
 **AtomicServiceWeb** is an advanced web component offering customization to meet specific demands. It shields irrelevant APIs from the native **Web** component and extends functionality through JavaScript capabilities.
 
 > **NOTE**
 >
-> - This component is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - This component is supported since API version 12. New APIs added in later versions are marked with a superscript to indicate their earliest version.
+> - The example effects are subject to the actual running on a real device. The current DevEco Studio previewer does not support them.
 
 ## Required Permissions
 
@@ -32,6 +33,10 @@ Not supported
 
 The [universal attributes](ts-component-general-attributes.md) are not supported.
 
+## Events
+
+The [universal events](ts-component-general-events.md) are not supported.
+
 ## AtomicServiceWeb
 
 ```ts
@@ -49,12 +54,12 @@ AtomicServiceWeb({
   onPageBegin?: Callback<OnPageBeginEvent>,
   onPageEnd?: Callback<OnPageEndEvent>,
   onControllerAttached?: Callback<void>,
-  onLoadIntercept?: Callback<OnLoadInterceptEvent, boolean>,
+  onLoadIntercept?: OnLoadInterceptCallback,
   onProgressChange?: Callback<OnProgressChangeEvent>
 })
 ```
 
-**Decorator**: @Component
+**Decorator:** @Component
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -64,21 +69,21 @@ AtomicServiceWeb({
 
 | Name                  | Type                                                                                                              | Mandatory| Decorator      | Description                                                                                                                 |
 |----------------------|------------------------------------------------------------------------------------------------------------------|----|-------------|----------------------------------------------------------------------------------------------------------------------|
-| src                  | [ResourceStr](ts-types.md#resourcestr)                                                                           | Yes | -           | Web page resource address. Accessing network resources requires configuring service domain names in AppGallery Connect, and accessing local resources only supports files within the package (**$rawfile**). Dynamic updating of the address through state variables (for example, @State) is not supported. The loaded web page supports calling system capabilities through the APIs provided by the JS SDK, with the specifics governed by the JS SDK.|
+| src                  | [ResourceStr](ts-types.md#resourcestr)                                                                           | Yes  | -           | Web resource address. To access network resources, configure the service domain name in AppGallery Connect. To access local resources, only files in the package ($rawfile) are supported. Dynamically updating the address through a state variable (for example, **@State**) is not supported. The loaded web page supports calling system capabilities through the APIs provided by the JS SDK. For details, see the JS SDK. |
 | controller           | [AtomicServiceWebController](#atomicservicewebcontroller)                                                        | Yes | @ObjectLink | Controller for controlling the behavior of the **AtomicServiceWeb** component.                                                             |
-| navPathStack         | [NavPathStack](ts-basic-components-navigation.md#navpathstack10)                                                 | No | -           | Information about the navigation stack. When **NavDestination** serves as the root container of the page, **NavPathStack** corresponding to the **NavDestination** container must be passed to handle page routing.                                          |
+| navPathStack         | [NavPathStack](ts-basic-components-navigation.md#navpathstack10)                                                 | No  | -           | Routing stack information. When **NavDestination** is used as the root container of the page, pass the **NavPathStack** corresponding to the **NavDestination** container to process page routing. The default value is empty.                                           |
 | mixedMode            | [MixedMode](../../apis-arkweb/arkts-basic-components-web-e.md#mixedmode)                                          | No | @Prop       | Whether to enable loading of HTTP and HTTPS mixed content. By default, this feature is disabled.                                                   |
 | darkMode             | [WebDarkMode](../../apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9)                                     | No | @Prop       | Web dark mode. By default, web dark mode is disabled.                                                                                                     |
 | forceDarkAccess      | boolean                                                                                                          | No | @Prop       | Whether to enable forcible dark mode for the web page. The value **true** means to enable forcible dark mode for the web page, and **false** means the opposite. Default value: **false**. This API is effective only when web dark mode is enabled.                                                                         |
-| nestedScroll<sup>15+</sup>      | [NestedScrollOptions](../../apis-arkui/arkui-ts/ts-container-scrollable-common.md#nestedscrolloptions10) \| [NestedScrollOptionsExt](../../apis-arkweb/arkts-basic-components-web-i.md#nestedscrolloptionsext14) | No | @Prop       | Nested scrolling options.<br>**Atomic service API**: This API can be used in atomic services since API version 15.                                                                             |
+| nestedScroll<sup>15+</sup>      | [NestedScrollOptions](../../apis-arkui/arkui-ts/ts-container-scrollable-common.md#nestedscrolloptions10) \| [NestedScrollOptionsExt](../../apis-arkweb/arkts-basic-components-web-i.md#nestedscrolloptionsext14) | No  | @Prop       | Nested scrolling options. When **nestedScroll** is of the **NestedScrollOptions** type (forward and backward directions), the default scrolling option of **scrollForward** and **scrollBackward** is **NestedScrollMode.SELF_FIRST**. When **nestedScroll** is of the **NestedScrollOptionsExt** type (up, down, left, and right directions), the default scrolling option of **scrollUp**, **scrollDown**, **scrollLeft**, and **scrollRight** is **NestedScrollMode.SELF_FIRST**.<br>**Atomic service API:** This API can be used in atomic services since API version 15.                                                                              |
 | onMessage            | Callback\<[OnMessageEvent](#onmessageevent)\>                                                                    | No | -           | Callback invoked when the HTML5 page sends a message through the **postMessage()** API of the JS SDK, and the **AtomicServiceWeb** component's corresponding page is returned or destroyed.                                                             |
 | onErrorReceive       | Callback\<[OnErrorReceiveEvent](#onerrorreceiveevent)\>                                                          | No | -           | Callback invoked when an error occurs during web page loading. For performance reasons, simplify the implementation logic in the callback. This callback is invoked when there is no network connection.                                                                |
-| onHttpErrorReceive   | Callback\<[OnHttpErrorReceiveEvent](#onhttperrorreceiveevent)\>                                                  | No | -           | Callback invoked when an HTTP error (the response code is greater than or equal to 400) occurs during web page resource loading.                                                                                    |
+| onHttpErrorReceive   | Callback\<[OnHttpErrorReceiveEvent](#onhttperrorreceiveevent)\>                                                  | No  | -           | Triggered when an HTTP error (response code >= 400) occurs while the web page is loading resources.                                                                                     |
 | onPageBegin          | Callback\<[OnPageBeginEvent](#onpagebeginevent)\>                                                                | No | -           | Callback invoked when the web page starts to be loaded. It is invoked only for the main frame content, and not for the iframe or frameset content.                                                             |
 | onPageEnd            | Callback\<[OnPageEndEvent](#onpageendevent)\>                                                                    | No | -           | Callback invoked when the web page loading is complete. It is invoked only for the main frame content.                                                                                           |
-| onControllerAttached | Callback\<void\>                                                                                                 | No | -           | Callback invoked when a controller is attached to the **AtomicServiceWeb** component.                                                                                        |
+| onControllerAttached | Callback\<void\>                                                                                                 | No  | -           | Callback invoked when the Controller is successfully bound to the Web component. In this callback, APIs related to operating the web page cannot be used.                                                                                         |
 | onLoadIntercept      | [OnLoadInterceptCallback](#onloadinterceptcallback) | No | -  | Callback invoked when the **AtomicServiceWeb** component is about to load the URL. It is used to determine whether to block the loading. By default, the loading is allowed.                                                                             |
-| onProgressChange     | Callback\<[OnProgressChangeEvent](../../apis-arkweb/arkts-basic-components-web-i.md#onprogresschangeevent12)\>        | No | -           | Callback invoked when the web page loading progress changes.                                                                                                     |
+| onProgressChange     | Callback\<[OnProgressChangeEvent](#onprogresschangeevent)\>        | No  | -           | Callback invoked when the web page loading progress changes.                                                                                                      |
 
 ## AtomicServiceWebController
 
@@ -128,7 +133,7 @@ Obtains a custom user agent.
 
 | Type    | Description        |
 |--------|------------|
-| string | Information about the custom user agent. For details about the specifications and usage scenarios, see [Developing User-Agent](../../../web/web-default-userAgent.md).|
+| string | Custom user agent. For the definition and usage scenarios of the default User-Agent, see [Developing User-Agent](../../../web/web-default-userAgent.md). |
 
 **Error codes**
 
@@ -144,11 +149,11 @@ setCustomUserAgent(userAgent: string): void
 
 Sets a custom user agent, which will override the default user agent.
 
-Set the user agent in the **onControllerAttached** callback to ensure that it takes effect. For details about the setting, see the example. Avoid setting the user agent in **onLoadIntercept**. Otherwise, the setting may fail occasionally.
+It is recommended that you set the User-Agent in the **onControllerAttached** callback event. For details about how to set it, see the example. It is not recommended that you set the User-Agent in the **onLoadIntercept** callback event, because the setting may fail in some scenarios.
 
 > **NOTE**
 >
->If a URL is set for the **Web** component **src** and **UserAgent** is not set in the **onControllerAttached** callback, calling **setCustomUserAgent** may cause mismatches between the loaded page and the intended user agent.
+>When a URL is set for the **src** of the **Web** component and the User-Agent is not set in the **onControllerAttached** callback event, calling **setCustomUserAgent** may cause an exception where the loaded page does not match the actually set User-Agent.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -173,7 +178,7 @@ For details about the error codes, see [Webview Error Codes](../../apis-arkweb/e
 
 refresh(): void
 
-Refreshes the web page.
+Notifies the **AtomicServiceWeb** component to refresh the web page.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -191,7 +196,7 @@ For details about the error codes, see [Webview Error Codes](../../apis-arkweb/e
 
 forward(): void
 
-Moves to the next page based on the history stack. This API is generally used together with [accessForward](#accessforward).
+Navigates forward by one page in the history stack. This API can be used together with [accessForward](#accessforward).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -209,7 +214,7 @@ For details about the error codes, see [Webview Error Codes](../../apis-arkweb/e
 
 backward(): void
 
-Moves to the previous page based on the history stack. This API is generally used together with [accessBackward](#accessbackward).
+Navigates backward by one page in the history stack. This API can be used together with [accessBackward](#accessbackward).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -227,7 +232,7 @@ For details about the error codes, see [Webview Error Codes](../../apis-arkweb/e
 
 accessForward(): boolean
 
-Checks whether going to the next page can be performed on this page.
+Determines whether the current page can navigate forward, that is, whether the current page has forward history records. This API can be used together with [forward](#forward). First call this API to check whether forward navigation is possible, and then call **forward** to perform the forward navigation.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -251,7 +256,7 @@ For details about the error codes, see [Webview Error Codes](../../apis-arkweb/e
 
 accessBackward(): boolean
 
-Checks whether going to the previous page can be performed on this page.
+Determines whether the current page can navigate backward, that is, whether the current page has backward history records. This API can be used together with [backward](#backward). First call this API to check whether backward navigation is possible, and then call **backward** to perform the backward navigation.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -316,8 +321,8 @@ Loads a specified URL.
 
 | Name    | Type                             | Mandatory| Description            |
 |---------|---------------------------------|----|:---------------|
-| url     | string \| [Resource](../../apis-arkui/arkui-ts/ts-types.md#resource)               | Yes | URL to load.    |
-| headers | Array\<[WebHeader](#webheader)> | No | Additional HTTP request header of the URL.|
+| url     | string \| [Resource](../../apis-arkui/arkui-ts/ts-types.md#resource)               | Yes  | URL to load, which must be in a valid URL format.     |
+| headers | Array\<[WebHeader](#webheader)> | No  | Additional HTTP request headers for the URL. The default value is an empty array, which means no additional request headers are added. |
 
 **Error codes**
 
@@ -325,7 +330,7 @@ For details about the error codes, see [Webview Error Codes](../../apis-arkweb/e
 
 | ID   | Error Message                                                                                            |
 |----------|--------------------------------------------------------------------------------------------------|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 17100001 | Init error. The AtomicServiceWebController must be associated with a AtomicServiceWeb component. |
 | 17100002 | Invalid url.                                                                                     |
 | 17100003 | Invalid resource path or file type.                                                              |
@@ -345,7 +350,7 @@ Describes the request/response header returned by the **AtomicServiceWeb** compo
 
 ## OnMessageEvent
 
-Represents the callback invoked when the page is navigated back or destroyed.
+Defines the callback triggered when the page is returned or destroyed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -366,11 +371,11 @@ Represents the callback invoked when an error occurs during web page loading.
 | Name     | Type                                                                                   | Read-Only| Optional| Description             |
 |---------|---------------------------------------------------------------------------------------|----|--|-----------------|
 | request | [WebResourceRequest](../../apis-arkweb/arkts-basic-components-web-WebResourceRequest.md) | No| No| Encapsulation of a web page request.     |
-| error   | [WebResourceError](../../apis-arkweb/arkts-basic-components-web-WebResourceError.md)     | No| No| Encapsulation of a web page resource loading error.|
+| error   | [WebResourceError](../../apis-arkweb/arkts-basic-components-web-WebResourceError.md)     | No | No | Encapsulated information about the error that occurs during web page resource loading. |
 
 ## OnHttpErrorReceiveEvent
 
-Represents the callback invoked when an HTTP error occurs during web page resource loading.
+Defines the callback triggered when an HTTP error occurs while loading web page resources.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -383,19 +388,19 @@ Represents the callback invoked when an HTTP error occurs during web page resour
 
 ## OnPageBeginEvent
 
-Represents the callback invoked when the web page loading begins.
+Defines the callback triggered when web page loading starts.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
-  
+
 | Name | Type    | Read-Only| Optional| Description       |
 |-----|--------|----|--|-----------|
 | url | string | No| No| URL of the page.|
 
 ## OnPageEndEvent
 
-Represents the callback invoked when the web page loading ends.
+Defines the callback triggered when web page loading ends.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -407,7 +412,7 @@ Represents the callback invoked when the web page loading ends.
 
 ## OnLoadInterceptEvent
 
-Represents the event triggered when resource loading is intercepted.
+Defines the load interception event triggered before the **Web** component loads a URL.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -427,13 +432,13 @@ Represents the callback invoked when the web page loading progress changes.
 
 | Name            | Type     | Read-Only| Optional | Description                                      |
 | -------------- | ---- | ---- | -- | -------------------------------------- |
-| newProgress | number | No| No| New loading progress. The value is an integer ranging from 0 to 100.                      |
+| newProgress | number | No | No | New loading progress, an integer ranging from 0 to 100. Unit: %. |
 
 ## OnLoadInterceptCallback
 
 type OnLoadInterceptCallback = (event: OnLoadInterceptEvent) => boolean
 
-Represents the callback invoked when resource loading is intercepted.
+Triggered before the **Web** component loads a URL, to determine whether to block this access.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -443,17 +448,13 @@ Represents the callback invoked when resource loading is intercepted.
 
 | Name | Type    | Mandatory| Description                   |
 |------|--------|----|-----------------------|
-| event | OnLoadInterceptEvent | Yes | Event triggered when resource loading is intercepted.|
+| event | [OnLoadInterceptEvent](#onloadinterceptevent) | Yes | Load interception event triggered before the **Web** component loads a URL. |
 
 **Return value**
 
 | Type     | Description       |
 |---------|-----------|
-| boolean | Whether resource loading is intercepted. The value **true** indicates that resource loading is intercepted.|
-
-## Events
-
-The [universal events](ts-component-general-events.md) are not supported.
+| boolean | Whether the resource is intercepted. The value **true** indicates that the resource is intercepted, and **false** indicates that it is not. |
 
 ## Example
 
@@ -472,7 +473,7 @@ struct WebComponent {
   
   build() {
     Column() {
-      AtomicServiceWeb({ src: $rawfile("index.html"), controller: this.controller })
+      AtomicServiceWeb({ src: $rawfile('index.html'), controller: this.controller })
     }
   }
 }
@@ -519,7 +520,7 @@ struct WebComponent {
 
   build() {
     NavDestination() {
-      AtomicServiceWeb({ src: $rawfile("index.html"), controller: this.controller, navPathStack: this.navPathStack })
+      AtomicServiceWeb({ src: $rawfile('index.html'), controller: this.controller, navPathStack: this.navPathStack })
     }
     .onReady((context: NavDestinationContext) => {
       this.navPathStack = context.pathStack;
@@ -544,7 +545,7 @@ struct WebComponent {
   build() {
     Column() {
       AtomicServiceWeb({
-        src: $rawfile("index.html"),
+        src: $rawfile('index.html'),
         controller: this.controller,
         // Called when the user clicks Send Message and then Back on an HTML5 page.
         onMessage: (event: OnMessageEvent) => {
@@ -680,7 +681,7 @@ struct WebComponent {
   @State forceDarkAccess: boolean = true;
   @State mixedMode: MixedMode = MixedMode.None;
   @State controller: AtomicServiceWebController = new AtomicServiceWebController();
-  @State num: number = 1;
+  @State count: number = 1;
 
   build() {
     Column() {
@@ -694,16 +695,20 @@ struct WebComponent {
         console.info(`AtomicServiceWebLog accessStep = ${this.controller.accessStep(1)}`);
       })
       Button('forward').onClick(() => {
-        console.info(`AtomicServiceWebLog forward = ${this.controller.forward()}`);
+        this.controller.forward();
+        console.info(`AtomicServiceWebLog forward`);
       })
       Button('backward').onClick(() => {
-        console.info(`AtomicServiceWebLog backward = ${this.controller.backward()}`);
+        this.controller.backward();
+        console.info(`AtomicServiceWebLog backward`);
       })
       Button('refresh').onClick(() => {
-        console.info(`AtomicServiceWebLog refresh = ${this.controller.refresh()}`);
+        this.controller.refresh();
+        console.info(`AtomicServiceWebLog refresh`);
       })
       Button('loadUrl').onClick(() => {
-        console.info(`AtomicServiceWebLog loadUrl = ${this.controller.loadUrl('https://www.baidu.com/')}`);
+        this.controller.loadUrl('https://www.baidu.com/');
+        console.info(`AtomicServiceWebLog loadUrl`);
       })
       Button('Dark Mode').onClick(() => {
         this.forceDarkAccess = !this.forceDarkAccess;
@@ -714,7 +719,7 @@ struct WebComponent {
       Button('Click').onClick(() => {
         console.info(`AtomicServiceWebLog getUserAgent = ${this.controller.getUserAgent()}`);
         console.info(`AtomicServiceWebLog getCustomUserAgent = ${this.controller.getCustomUserAgent()}`);
-        this.controller.setCustomUserAgent('test' + this.num++);
+        this.controller.setCustomUserAgent('test' + this.count++);
 
         console.info(`AtomicServiceWebLog getUserAgent after set = ${this.controller.getUserAgent()}`);
         console.info(`AtomicServiceWebLog getCustomUserAgent after set = ${this.controller.getCustomUserAgent()}`);
@@ -726,36 +731,36 @@ struct WebComponent {
         forceDarkAccess: this.forceDarkAccess,
         controller: this.controller,
         onControllerAttached: () => {
-          console.info("AtomicServiceWebLog onControllerAttached call back success");
+          console.info('AtomicServiceWebLog onControllerAttached call back success');
         },
         onLoadIntercept: (event: OnLoadInterceptEvent) => {
-          console.info("AtomicServiceWebLog onLoadIntercept call back success " + JSON.stringify({
+          console.info('AtomicServiceWebLog onLoadIntercept call back success ' + JSON.stringify({
             getRequestUrl: event.data.getRequestUrl(),
             getRequestMethod: event.data.getRequestMethod(),
             getRequestHeader: event.data.getRequestHeader(),
             isRequestGesture: event.data.isRequestGesture(),
             isMainFrame: event.data.isMainFrame(),
             isRedirect: event.data.isRedirect(),
-          }))
+          }));
           return false;
         },
         onProgressChange: (event: OnProgressChangeEvent) => {
-          console.info("AtomicServiceWebLog onProgressChange call back success " + JSON.stringify(event));
+          console.info('AtomicServiceWebLog onProgressChange call back success ' + JSON.stringify(event));
         },
         onMessage: (event: OnMessageEvent) => {
-          console.info("onMessage call back success " + JSON.stringify(event));
+          console.info('AtomicServiceWebLog onMessage call back success ' + JSON.stringify(event));
         },
         onPageBegin: (event: OnPageBeginEvent) => {
-          console.info("onPageBegin call back success " + JSON.stringify(event));
+          console.info('AtomicServiceWebLog onPageBegin call back success ' + JSON.stringify(event));
         },
         onPageEnd: (event: OnPageEndEvent) => {
-          console.info("onPageEnd call back success " + JSON.stringify(event));
+          console.info('AtomicServiceWebLog onPageEnd call back success ' + JSON.stringify(event));
         },
         onHttpErrorReceive: (event: OnHttpErrorReceiveEvent) => {
-          console.info("onHttpErrorReceive call back success " + JSON.stringify(event));
+          console.info('AtomicServiceWebLog onHttpErrorReceive call back success ' + JSON.stringify(event));
         },
         onErrorReceive: (event: OnErrorReceiveEvent) => {
-          console.info("onErrorReceive call back success " + JSON.stringify(event));
+          console.info('AtomicServiceWebLog onErrorReceive call back success ' + JSON.stringify(event));
         }
       })
     }
@@ -768,6 +773,7 @@ struct WebComponent {
 This example shows how to set nested scrolling.
 
 ```ts
+// xxx.ets
 import { AtomicServiceWeb, AtomicServiceWebController } from '@kit.ArkUI';
 
 @Entry
@@ -783,9 +789,9 @@ struct AtomicServiceNestedScroll {
   build() {
     Scroll() {
       Column() {
-        Text("Nested AsWeb - Header")
-          .height("15%")
-          .width("100%")
+        Text('Nested AsWeb - Header')
+          .height('15%')
+          .width('100%')
           .fontSize(30)
           .backgroundColor(Color.Yellow)
         Button(this.mode)
@@ -810,9 +816,9 @@ struct AtomicServiceNestedScroll {
           controller: this.controller,
           nestedScroll: this.nestedScroll
         })
-        Text("Nested Web - Footer")
-          .height("15%")
-          .width("100%")
+        Text('Nested AsWeb - Footer')
+          .height('15%')
+          .width('100%')
           .fontSize(30)
           .backgroundColor(Color.Yellow)
       }
