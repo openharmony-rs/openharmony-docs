@@ -5,7 +5,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=794bdfcc42df83dd7fb4cf55998b1aff80916ceb translatedAt=2026-08-27T04:13:16.091Z pushedAt=2026-08-28T10:59:09.268Z -->
+<!-- md-trans-meta sourceCommit=794bdfcc42df83dd7fb4cf55998b1aff80916ceb translatedAt=2026-08-27T04:13:16.091Z pushedAt=2026-08-28T11:11:11.252Z -->
 
 This module provides basic Wi-Fi functionalities (such as wireless access, wireless encryption, and wireless roaming), basic peer-to-peer (P2P) services, and Wi-Fi notification services. It allows applications to interact with other devices through Wi-Fi.
 
@@ -500,14 +500,14 @@ Enumerates the Wi-Fi Error Codestandards.
 
 | Name | Value | Description |
 | -------- | -------- | -------- |
-| WIFI_STANDARD_UNDEFINED | 0 | Invalid Wi-Fi Error Codestandard type. |
-| WIFI_STANDARD_11A | 1 | 802.11a Wi-Fi Error Codestandard type. |
-| WIFI_STANDARD_11B | 2 | 802.11b Wi-Fi Error Codestandard type. |
-| WIFI_STANDARD_11G | 3 | 802.11g Wi-Fi Error Codestandard type. |
-| WIFI_STANDARD_11N | 4 | 802.11n Wi-Fi Error Codestandard type. |
-| WIFI_STANDARD_11AC | 5 | 802.11ac Wi-Fi Error Codestandard type. |
-| WIFI_STANDARD_11AX | 6 | 802.11ax Wi-Fi Error Codestandard type. |
-| WIFI_STANDARD_11AD | 7 | 802.11ad Wi-Fi Error Codestandard type. |
+| WIFI_STANDARD_UNDEFINED | 0 | Invalid Wi-Fi standard type. |
+| WIFI_STANDARD_11A | 1 | 802.11a Wi-Fi standard type. |
+| WIFI_STANDARD_11B | 2 | 802.11b Wi-Fi standard type. |
+| WIFI_STANDARD_11G | 3 | 802.11g Wi-Fi standard type. |
+| WIFI_STANDARD_11N | 4 | 802.11n Wi-Fi standard type. |
+| WIFI_STANDARD_11AC | 5 | 802.11ac Wi-Fi standard type. |
+| WIFI_STANDARD_11AX | 6 | 802.11ax Wi-Fi standard type. |
+| WIFI_STANDARD_11AD | 7 | 802.11ad Wi-Fi standard type. |
 
 ## WifiInfoElem
 
