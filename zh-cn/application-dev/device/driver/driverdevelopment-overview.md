@@ -108,9 +108,9 @@ Driver Development Kit提供的C-API仅支持在DriverExtension进程中使用�
 3.基于DriverExtensionAbility生命周期管理说明
 - ExtensionAbility是基于场景服务的扩展能力的统称，简称为扩展能力（例如用户态扩展驱动、卡片、输入法等）以便满足不同的使用场景。
 - 各类Extension的生命周期由各个SA管理，通过connectAbility启动Extension，并驱动定义的业务接口；业务结束，SA调用disconnectAbility接口断开Extension连接，AMS会根据该Extension是否有SA连接来决定是否销毁该Extension及进程。在用户态扩展驱动开发场景下，管理DriverExtensionAbility生命周期的系统SA为外设扩展服务SA。
-- DriverExtensionAblity的生命周期和外接设备属于“一对多”的关系，不适用于多个驱动Ability对应同一型号外设的场景。具体来说，这种“一对多”的关系表现为：
+- DriverExtensionAbility的生命周期和外接设备不支持“多对多”的映射关系，不适用于多个驱动Ability同时关联同一型号外设的场景。具体来说，生命周期和外设的关系表现为：
   - 接入的外设同时出现在多个DriverExtensionAbility配置的“VID + PID”列表中时，该外设只会影响最先安装的驱动Ability的生命周期。
-  - 当DriverExtensionAblity配置的“VID + PID”设备列表中的多个外设依次接入时，其生命周期受影响的范围从第一个外设的接入持续到最后一个外设的拔出。
+  - 当DriverExtensionAbility配置的“VID + PID”设备列表中的多个外设依次接入时，其生命周期受影响的范围从第一个外设的接入持续到最后一个外设的拔出。
 
 4.在DriverExtensionAbility中API访问安全管控说明
 - 系统支持基于ExtensionAbility构建场景化扩展Ability，DriverExtensionAbility为支持开发用户态扩展驱动的一类Ability。

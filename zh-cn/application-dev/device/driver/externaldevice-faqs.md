@@ -63,17 +63,17 @@
 
 ```cpp
 /**
- * 假定此处 data 已经填充了有效数据
+ * 假定此处 data 已经填充了有效数据；deviceId是对应外设ID；pipe是要传输的管道信息
  * 场景预设：需传输 data 中索引从0x10开始的、长度为32的数据
  */
 uint8_t *data = new uint8_t [128];
 
 /** 创建数据缓冲区 */
 UsbDeviceMemMap *devMmap;
-OH_Usb_CreateDeviceMemMap(devicdId, 32, &devMmap);
+OH_Usb_CreateDeviceMemMap(deviceId, 32, &devMmap);
 
 /** 只拷贝要传输的部分数据到缓冲区 */
-memcpy_s(devMmap.address, devMmap.size, data + 0x10, 32);
+memcpy(devMmap->address, data + 0x10, 32);
 
 /** 发起数据传输 */
 OH_Usb_SendPipeRequest(pipe, devMmap);
@@ -81,3 +81,13 @@ OH_Usb_SendPipeRequest(pipe, devMmap);
 /** 使用完毕后，需销毁数据缓冲区以回收资源 */
 OH_Usb_DestroyDeviceMemMap(devMmap);
 ```
+
+## 多个驱动Ability配置了同一型号外设的情况下，插入该外设只会拉起一个驱动Ability
+
+### 问题现象
+
+在多个驱动Ability的“vids”、“pids”列表中都配置了一个型号的外设，但是接入该外设时，只能绑定并拉起一个驱动Ability。
+
+### 解决措施
+
+驱动Ability的设计初衷是支持厂商为单个或多个型号的外设开发一个驱动应用，规格上不支持为同一外设同时部署多个驱动Ability的场景。若确实存在该诉求（例如：上游需要封装USB功能实现，并分发给下游多个应用），可以使用USB系统服务提供的[@ohos.usbManager (USB管理)](../../reference/apis-basic-services-kit/js-apis-usbManager.md)、libusb三方库等实现封装。
