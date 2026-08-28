@@ -63,67 +63,30 @@
 
 1. 声明ohos.permission.KEEP_BACKGROUND_RUNNING权限，配置方式请参见[声明权限](../security/AccessToken/declare-permissions.md#声明权限)。
 
-2. 在应用主UIAbility的onCreate生命周期中，导入模块并定义ON_START和ON_STOP回调函数，然后通过Callee注册。
+2. 在应用主UIAbility的onCreate生命周期中，通过Callee注册ON_START和ON_STOP回调函数。
 
    <!-- @[backgroundLoader_register_callee](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
+   <div class="same-source-code">
+
    ``` TypeScript
-   import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
-   import { backgroundLoader } from '@kit.BackgroundTasksKit';
-   import { rpc } from '@kit.IPCKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-
-   // 定义ON_START回调，系统调度执行后台加载任务时回调此方法
-   function BackgroundLoaderOnStart(pdata: rpc.MessageSequence): rpc.Parcelable {
-     console.info('Task started [backgroundLoader.ON_START callback]');
-     // TODO: 在此执行应用后台加载的业务逻辑
-
-     // 加载完成后通知系统
-     let taskInfo: backgroundLoader.TaskInfo = {
-       taskId: pdata.readInt(),
-       abilityName: pdata.readString()
-     };
-     backgroundLoader.finishTask(taskInfo);
-     // 返回Parcelable对象
-     return new class implements rpc.Parcelable {
-       marshalling(dataOut: rpc.MessageSequence): boolean { return true; }
-       unmarshalling(dataIn: rpc.MessageSequence): boolean { return true; }
-     }();
-   }
-
-   // 定义ON_STOP回调，后台加载任务异常取消时回调此方法
-   function BackgroundLoaderOnStop(pdata: rpc.MessageSequence): rpc.Parcelable {
-     const taskId: number = pdata.readInt();
-     const abilityName: string = pdata.readString();
-     const stopCode: number = pdata.readInt();
-     const stopMessage: string = pdata.readString();
-     console.info(`onStop: taskId=${taskId}, stopCode=${stopCode}, message=${stopMessage}`);
-     // 返回Parcelable对象
-     return new class implements rpc.Parcelable {
-       marshalling(dataOut: rpc.MessageSequence): boolean { return true; }
-       unmarshalling(dataIn: rpc.MessageSequence): boolean { return true; }
-     }();
-   }
-
-   export default class EntryAbility extends UIAbility {
-     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-       try {
-         // 注册ON_START回调，当后台加载任务启动时触发BackgroundLoaderOnStart
-         this.callee.on(backgroundLoader.ON_START, BackgroundLoaderOnStart);
-         // 注册ON_STOP回调，当后台加载任务停止时触发BackgroundLoaderOnStop
-         this.callee.on(backgroundLoader.ON_STOP, BackgroundLoaderOnStop);
-       } catch (error) {
-         console.error(`Callee.on catch error, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
-       }
-     }
+   try {
+     // 注册ON_START回调，当后台加载任务启动时触发funCallBack
+     this.callee.on(backgroundLoader.ON_START, funCallBack);
+     // 注册ON_STOP回调，当后台加载任务停止时触发onStopCallBack
+     this.callee.on(backgroundLoader.ON_STOP, onStopCallBack);
+   } catch (error) {
+     console.error(`Callee.on catch error, error.code: ${error.code}, error.message: ${error.message}`);
    }
    ```
+
+   <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets?same_code_link_text=backgroundLoader_register_callee" target="_blank" rel="nofollow">EntryAbility.ets</a></p>
+
+   </div>
 
 ### 注册后台加载任务
 
 1. 导入模块。
-
-   <!-- @[backgroundLoader_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
    ``` TypeScript
    import { backgroundLoader } from '@kit.BackgroundTasksKit';
@@ -134,65 +97,102 @@
 
    <!-- @[backgroundLoader_registerTask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
+   <div class="same-source-code">
+
    ``` TypeScript
    const taskInfo: backgroundLoader.TaskInfo = {
-     abilityname: 'EntryAbility',
-     taskId: 1
+     abilityname: abilityname,
+     taskId: taskId
    };
    try {
      backgroundLoader.registerTask(taskInfo);
-     console.info('registerTask success');
+     hilog.info(DOMAIN, 'testTag', 'registerTask successes');
+     return 'Success';
    } catch (err) {
-     console.error(`registerTask failed. code is ${(err as BusinessError).code} message is ${(err as BusinessError).message}`);
+     const errMsg = JSON.stringify(err);
+     hilog.error(DOMAIN, 'testTag', 'registerTask failed: %{public}s', errMsg);
+     return `Failed: ${(err as BusinessError).message ?? errMsg}`;
    }
    ```
+
+   <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets?same_code_link_text=backgroundLoader_registerTask" target="_blank" rel="nofollow">EntryAbility.ets</a></p>
+
+   </div>
 
 3. 取消注册后台加载任务。
 
    <!-- @[backgroundLoader_unregisterTask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
+   <div class="same-source-code">
+
    ``` TypeScript
    const taskInfo: backgroundLoader.TaskInfo = {
-     abilityname: 'EntryAbility',
-     taskId: 1
+     abilityname: abilityname,
+     taskId: taskId
    };
    try {
      backgroundLoader.unregisterTask(taskInfo);
-     console.info('unregisterTask success');
+     hilog.info(DOMAIN, 'testTag', 'unregisterTask successes');
+     return 'Success';
    } catch (err) {
-     console.error(`unregisterTask failed. code is ${(err as BusinessError).code} message is ${(err as BusinessError).message}`);
+     const errMsg = JSON.stringify(err);
+     hilog.error(DOMAIN, 'testTag', 'unregisterTask failed: %{public}s', errMsg);
+     return `Failed: ${(err as BusinessError).message ?? errMsg}`;
    }
    ```
+
+   <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets?same_code_link_text=backgroundLoader_unregisterTask" target="_blank" rel="nofollow">EntryAbility.ets</a></p>
+
+   </div>
 
 4. 查询后台加载任务信息。
 
    <!-- @[backgroundLoader_getTaskInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
+   <div class="same-source-code">
+
    ``` TypeScript
    try {
-     const taskInfoData = backgroundLoader.getTaskInfo(1);
-     console.info(`getTaskInfo result: taskId=${taskInfoData.taskId}, abilityName=${taskInfoData.abilityName}`);
+     const taskInfoData = backgroundLoader.getTaskInfo(taskId);
+     const result = `taskId=${taskInfoData.taskId}, abilityName=${taskInfoData.abilityName}`;
+     hilog.info(DOMAIN, 'testTag', 'getTaskInfo result: %{public}s', result);
+     return result;
    } catch (err) {
-     console.error(`getTaskInfo failed. code is ${(err as BusinessError).code} message is ${(err as BusinessError).message}`);
+     const errMsg = JSON.stringify(err);
+     hilog.error(DOMAIN, 'testTag', 'getTaskInfo failed: %{public}s', errMsg);
+     return `Failed: ${(err as BusinessError).message ?? errMsg}`;
    }
    ```
+
+   <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets?same_code_link_text=backgroundLoader_getTaskInfo" target="_blank" rel="nofollow">EntryAbility.ets</a></p>
+
+   </div>
 
 5. 完成后台加载任务。
 
    <!-- @[backgroundLoader_finishTask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
+   <div class="same-source-code">
+
    ``` TypeScript
    const taskInfo: backgroundLoader.TaskInfo = {
-     abilityname: 'EntryAbility',
-     taskId: 1
+     abilityname: abilityname,
+     taskId: taskId
    };
    try {
      backgroundLoader.finishTask(taskInfo);
-     console.info('finishTask success');
+     hilog.info(DOMAIN, 'testTag', 'finishTask successes');
+     return 'Success';
    } catch (err) {
-     console.error(`finishTask failed. code is ${(err as BusinessError).code} message is ${(err as BusinessError).message}`);
+     const errMsg = JSON.stringify(err);
+     hilog.error(DOMAIN, 'testTag', 'finishTask failed: %{public}s', errMsg);
+     return `Failed: ${(err as BusinessError).message ?? errMsg}`;
    }
    ```
+
+   <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets?same_code_link_text=backgroundLoader_finishTask" target="_blank" rel="nofollow">EntryAbility.ets</a></p>
+
+   </div>
 
 ### 后台加载任务触发功能验证
 
