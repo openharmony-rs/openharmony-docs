@@ -6,7 +6,7 @@
 <!--Tester: @wangbeibei-->
 <!--Adviser: @w_Machine_cc-->
 
-PhotoViewPicker是图库选择器对象，用于拉起系统图库选择界面，支持选择一个或多个图片、视频等媒体文件。用户可以自定义选择媒体类型和数量限制，适用于社交应用上传头像、电商平台上传商品图片、内容创作应用选择媒体素材等需要从图库中选择图片或视频的应用场景。使用前需先创建PhotoViewPicker实例。
+PhotoViewPicker是图片选择器对象，用于拉起系统图库选择界面，支持选择一个或多个图片、视频等媒体文件。用户可以自定义选择媒体类型和数量限制，适用于社交应用上传头像、电商平台上传商品图片、内容创作应用选择媒体素材等需要从图库中选择图片或视频的应用场景。使用前需先创建PhotoViewPicker实例。
 
 > **说明：**
 >
@@ -23,7 +23,9 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 select(option?: PhotoSelectOptions) : Promise&lt;PhotoSelectResult&gt;
 
-通过选择模式拉起图库选择器界面，用户可以选择一个或多个图片/视频。使用Promise异步回调。使用前需先创建PhotoViewPicker实例。传入可选参数PhotoSelectOptions对象，返回PhotoSelectResult对象。
+通过选择模式拉起图片选择器界面，用户可以选择一个或多个图片/视频。使用Promise异步回调。
+
+传入可选参数PhotoSelectOptions对象，返回PhotoSelectResult对象。
 
 > **注意：**
 >
@@ -43,7 +45,7 @@ select(option?: PhotoSelectOptions) : Promise&lt;PhotoSelectResult&gt;
 
 | 类型                            | 说明    |
 | ----------------------------- | :---- |
-| Promise&lt;[PhotoSelectResult](arkts-apis-photoAccessHelper-class.md#photoselectresult)&gt; | Promise对象。返回图库选择器选择后的结果集。 |
+| Promise&lt;[PhotoSelectResult](arkts-apis-photoAccessHelper-class.md#photoselectresult)&gt; | Promise对象。返回图片选择器选择后的结果集。 |
 
 **错误码：**
 
@@ -83,7 +85,7 @@ async function openBindSheet01() {
 
 select(option: PhotoSelectOptions, callback: AsyncCallback&lt;PhotoSelectResult&gt;) : void
 
-通过选择模式拉起图库选择器界面，用户可以选择一个或多个图片/视频。使用callback异步回调。
+通过选择模式拉起图片选择器界面，用户可以选择一个或多个图片/视频。使用callback异步回调。
 
 必须传入参数PhotoSelectOptions对象，通过callback参数返回PhotoSelectResult对象。
 
@@ -100,7 +102,7 @@ select(option: PhotoSelectOptions, callback: AsyncCallback&lt;PhotoSelectResult&
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
 | option | [PhotoSelectOptions](arkts-apis-photoAccessHelper-class.md#photoselectoptions) | 是   | 图片选择器选择选项。 |
-| callback | AsyncCallback&lt;[PhotoSelectResult](arkts-apis-photoAccessHelper-class.md#photoselectresult)&gt;      | 是   | 回调函数。当用户使用图片选择器选择图片/视频成功，err为undefined，data为返回图库选择器选择后的结果集。 |
+| callback | AsyncCallback&lt;[PhotoSelectResult](arkts-apis-photoAccessHelper-class.md#photoselectresult)&gt;      | 是   | 回调函数。当用户使用图片选择器选择图片/视频成功，err为undefined，data为返回图片选择器选择后的结果集。 |
 
 **错误码：**
 
@@ -142,7 +144,7 @@ async function openBindSheet02() {
 
 select(callback: AsyncCallback&lt;PhotoSelectResult&gt;) : void
 
-通过选择模式拉起图库选择器界面，用户可以选择一个或多个图片/视频。使用callback异步回调。
+通过选择模式拉起图片选择器界面，用户可以选择一个或多个图片/视频。使用callback异步回调。
 
 > **注意：**
 >
@@ -156,7 +158,7 @@ select(callback: AsyncCallback&lt;PhotoSelectResult&gt;) : void
 
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
-| callback | AsyncCallback&lt;[PhotoSelectResult](arkts-apis-photoAccessHelper-class.md#photoselectresult)&gt;      | 是   | 回调函数。当用户使用图片选择器选择图片/视频成功，err为undefined，data为返回图库选择器选择后的结果集。 |
+| callback | AsyncCallback&lt;[PhotoSelectResult](arkts-apis-photoAccessHelper-class.md#photoselectresult)&gt;      | 是   | 回调函数。当用户使用图片选择器选择图片/视频成功，err为undefined，data为返回图片选择器选择后的结果集。 |
 
 **错误码：**
 

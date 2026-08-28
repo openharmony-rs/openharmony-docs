@@ -921,9 +921,7 @@ showAssetsCreationDialog(srcFileUris: Array&lt;string&gt;, photoCreationConfigs:
 > **说明：**
 >
 > - 当传入URI为沙箱路径时，可正常保存图片/视频，但无界面预览。
->
 > - 与showAssetsCreationDialogEx的区别：showAssetsCreationDialog使用PhotoCreationConfig配置；showAssetsCreationDialogEx使用CreationSetting配置。
->
 > - 与showSingleAssetCreationDialogEx的区别：showAssetsCreationDialog支持批量保存图片（最多100张），showSingleAssetCreationDialogEx仅支持单个资产保存。批量保存时使用本接口，单个资产保存时如需控制图片显示方式可使用showSingleAssetCreationDialogEx。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。

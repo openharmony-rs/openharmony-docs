@@ -43,7 +43,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 title参数的规格如下：
 
 - 不应包含扩展名。
-- 文件名的字符串长度为1~255个字符。
+- 文件名的字符串长度为1~255个字节。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -141,7 +141,7 @@ async function example() {
 
 | 名称    | 类型                        | 只读 | 可选 | 说明                                                         |
 | ---- | ------- | ---- |  ---- | ----- |
-| title              | string  | 否 | 是 | 图片或者视频的标题。<br>不传入时由系统生成，参数规格如下：<br>- 不应包含扩展名。<br>- 不允许使用的字符包括：. \ / : * ? " ' ` < > \| { } [ ]<br>- 文件名由标题 + 扩展名组成，文件名字符串长度范围为[1, 255]字符。  |
+| title              | string  | 否 | 是 | 图片或者视频的标题。<br>不传入时由系统生成，参数规格如下：<br>- 不应包含扩展名。<br>- 不允许使用的字符包括：. \ / : * ? " ' ` < > \| { } [ ]<br>- 文件名由标题 + 扩展名组成，文件名字符串长度范围为[1, 255]字节。  |
 | fileNameExtension  | string  | 否 | 否 | 文件扩展名。<br>取值原则：<br>- IMAGE类型支持'jpg'、'png'、'gif'等。<br>- VIDEO类型支持'mp4'、'mov'等。<br>**注意：** 扩展名长度会影响title参数的最大可用长度。   |
 | photoType  | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)  | 否 | 否 | 创建的文件类型[PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)，设置为IMAGE时创建图片文件，设置为VIDEO时创建视频文件。 |
 | subtype  | [PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)  | 否 | 是 | 图片或者视频的文件子类型[PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)，不传入时默认为DEFAULT。  |
@@ -158,7 +158,7 @@ async function example() {
 
 | 名称               | 类型    | 只读 | 可选 | 说明                                                         |
 | ------------------ | ------- | ---- | ---- | ----- |
-| title              | string  | 否 | 是 | 图片或者视频的标题。<br>不传入时由系统生成，参数规格如下：<br>- 不应包含扩展名。<br>- 不允许使用的字符包括：. \ / : * ? " ' ` < > \| { } [ ]<br>- 文件名由标题 + 扩展名组成，文件名字符串长度范围为[1, 255]字符。  |
+| title              | string  | 否 | 是 | 图片或者视频的标题。<br>不传入时由系统生成，参数规格如下：<br>- 不应包含扩展名。<br>- 不允许使用的字符包括：. \ / : * ? " ' ` < > \| { } [ ]<br>- 文件名由标题 + 扩展名组成，文件名字符串长度范围为[1, 255]字节。  |
 | fileNameExtension  | string  | 否 | 否 | 文件扩展名。<br>取值原则：<br>- IMAGE类型支持'jpg'、'png'、'gif'等。<br>- VIDEO类型支持'mp4'、'mov'等。<br>**注意：** 扩展名长度会影响title参数的最大可用长度。   |
 | photoType  | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)  | 否 | 否 | 创建的文件类型[PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)，设置为IMAGE时创建图片文件，设置为VIDEO时创建视频文件。 |
 

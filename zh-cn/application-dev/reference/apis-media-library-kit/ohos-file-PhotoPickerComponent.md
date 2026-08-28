@@ -41,8 +41,8 @@ PhotoPickerComponent({ pickerOptions?: PickerOptions, onSelect?: (uri: string) =
 应用可以在布局中嵌入PhotoPickerComponent组件，通过此组件，应用无需申请权限，即可访问公共目录中的图片或视频文件。
 
 > **说明：**
-> 如果当前PhotoPickerComponent组件嵌套在Tabs组件中使用，Tabs组件的左右滑动会与图片选择大图界面的左右滑动切换手势发生冲突。
 >
+> 如果当前PhotoPickerComponent组件嵌套在Tabs组件中使用，Tabs组件的左右滑动会与图片选择大图界面的左右滑动切换手势发生冲突。
 > 可在进退大图的回调中设置Tabs组件是否支持滑动来规避，该问题将在后续版本修复。
 
 **装饰器类型**：@Component
@@ -538,6 +538,7 @@ setPhotoBrowserItem(uri: string, photoBrowserRange?: PhotoBrowserRange): void
 应用可通过该接口,切换图片选择器组件至大图浏览模式浏览图片；当已处于大图浏览模式时，切换浏览的图片。
 
 > **说明：**
+>
 > 当PickerOptions.singleLineConfig配置为单行模式时，本接口调用将无效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -558,6 +559,7 @@ exitPhotoBrowser(): void
 应用可通过该接口，向picker发送退出大图的通知。
 
 > **说明：**
+>
 > 当PickerOptions.singleLineConfig配置为单行模式时，本接口调用将无效。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
@@ -571,6 +573,7 @@ setPhotoBrowserUIElementVisibility(elements: Array&lt;PhotoBrowserUIElement&gt;,
 应用可通过该接口，设置大图页除预览组件外的其他UI元素是否可见。不设置则默认可见。
 
 > **说明：**
+>
 > 当PickerOptions.singleLineConfig配置为单行模式时，本接口调用将无效。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。

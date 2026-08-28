@@ -13,7 +13,7 @@
 
 ## RecommendationOptions<sup>11+</sup>
 
-图片推荐选项，用于在图库选择器界面中根据推荐策略展示相应图片（基于图片数据分析结果，依赖设备适配）。
+图片推荐选项，用于在图片选择器界面中根据推荐策略展示相应图片（基于图片数据分析结果，依赖设备适配）。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -24,7 +24,7 @@
 
 ## BaseSelectOptions
 
-图库选择选项基类，用于配置图库选择器的各项参数，适用于社交分享、媒体管理、头像选择等需要选择图片或视频的场景。
+图库选择选项基类，用于配置图片选择器的各项参数，适用于社交分享、媒体管理、头像选择等需要选择图片或视频的场景。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -47,7 +47,7 @@
 | assetFilter<sup>22+</sup>       | Array\<[OperationItem](#operationitem22)\> | 否   | 是 | 媒体资产过滤器，长度限制为50个，超出取前50个。<br>**注意：**<br> 1. 当使用该过滤器时，其他过滤器会失效。<br>2. 当配置多个条件时，过滤条件前后需要配置英文括号，否则可能和内部过滤项冲突。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
 | autoPlayScenes<sup>23+</sup>      | Array\<[AutoPlayScene](#autoplayscene23)\> | 否   | 是 | 设置动态照片播放模式。长度限制为2个，超出取前2个，多余的会自动忽略。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 | globalMovingPhotoState<sup>23+</sup>       | [MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22) | 否   | 是 | 设置全局动态照片的效果，当前仅支持[MOVING_PHOTO_ENABLED](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22)和[MOVING_PHOTO_DISABLED](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22)。默认为[MOVING_PHOTO_ENABLED](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22)。 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
-| gridPinchMode<sup>23+</sup>       | [GridPinchMode](arkts-apis-photoAccessHelper-i.md#gridpinchmode23) | 否   | 是 | 图库选择器内的宫格捏合模式。若需要自定义宫格捏合行为，则配置此参数；若不配置，则不支持宫格捏合行为。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| gridPinchMode<sup>23+</sup>       | [GridPinchMode](arkts-apis-photoAccessHelper-i.md#gridpinchmode23) | 否   | 是 | 图片选择器内的宫格捏合模式。若需要自定义宫格捏合行为，则配置此参数；若不配置，则不支持宫格捏合行为。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | showDateOnScrollbar<sup>24+</sup>       | boolean | 否   | 是 | 是否在拖动滚动条时展示日期分组信息，true表示展示，false表示不展示，默认为false。 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 | assetCompatibleCapability<sup>24+</sup>       | [AssetCompatibleCapability](arkts-apis-photoAccessHelper-i.md#assetcompatiblecapability24)  | 否   | 是 | 资产兼容性能力配置。 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 | preferredCompatibleMode       | [PreferredCompatibleMode](arkts-apis-photoAccessHelper-e.md#preferredcompatiblemode)  | 否   | 是 | 资产兼容性模式配置。 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**起始版本：** 26.0.0  |
@@ -66,14 +66,14 @@ PhotoSelectOptions extends BaseSelectOptions
 | isOriginalSupported<sup>12+</sup>       | boolean | 否   | 是 | 是否显示选择原图按钮，true表示显示，false表示不显示，默认为false。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
 | subWindowName<sup>12+</sup>       | string | 否   | 是 | 子窗口名称。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
 | completeButtonText<sup>14+</sup>       | [CompleteButtonText](arkts-apis-photoAccessHelper-e.md#completebuttontext14) | 否   | 是 | 完成按钮显示的内容。不配置该参数时，使用系统默认按钮文本。<br>完成按钮指在界面右下方，用户点击表示图片选择已完成的按钮。 <br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。     |
-| contextRecoveryInfo<sup>21+</sup>       | [ContextRecoveryInfo](#contextrecoveryinfo21) | 否   | 是 | 用于恢复上次退出时图库选择器现场的信息。<br>上次完成选择时图库选择器将返回contextRecoveryInfo给应用，应用可使用返回的contextRecoveryInfo，在下次启动时恢复上次使用图库选择器，最后浏览的宫格界面。 <br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。     |
+| contextRecoveryInfo<sup>21+</sup>       | [ContextRecoveryInfo](#contextrecoveryinfo21) | 否   | 是 | 用于恢复上次退出时图片选择器现场的信息。<br>上次完成选择时图片选择器将返回contextRecoveryInfo给应用，应用可使用返回的contextRecoveryInfo，在下次启动时恢复上次使用图片选择器，最后浏览的宫格界面。 <br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。     |
 | isDestroyedWithNavigation<sup>23+</sup>       | boolean | 否   | 是 | 是否支持跟随[Navigation](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigation-1)销毁，true表示支持，false表示不支持，默认为false。<br>**模型约束**： 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。     |
 | maxPhotoSelectNumber<sup>23+</sup> | number  | 否  | 是 |支持设置的图片最大的选择数量，取值范围[1, 500]，默认为500。单位：个。<br>受到最大选择总数[BaseSelectOptions](#baseselectoptions).maxSelectNumber的限制。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。                                     |
 | maxVideoSelectNumber<sup>23+</sup> | number  | 否  | 是 | 支持设置的视频最大的选择数量，取值范围[1, 500]，默认为500。单位：个。<br>受到最大选择总数[BaseSelectOptions](#baseselectoptions).maxSelectNumber的限制。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | isReturnToPhotoBrowserEnabled<sup>23+</sup>       | boolean | 否   | 是 | 在单选模式下，拍完照是否能自动跳转到大图预览模式，true表示支持，false表示不支持，默认为false。<br>**注意：**<br> 该参数设为true，且同时满足以下条件时生效。<br>1. [BaseSelectOptions](#baseselectoptions).SingleSelectionMode为BROWSER_MODE（大图预览模式）或者BROWSER_AND_SELECT_MODE（兼容模式）。<br>2.[BaseSelectOptions](#baseselectoptions).isPreviewForSingleSelectionSupported参数为true。<br>**模型约束**： 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。     |
 | isSelectionNumberVisible        | boolean | 否   | 是 | 是否支持选择序号。true表示支持，false表示不支持，默认值为false。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**起始版本：** 26.0.0     |
 | isSelectionOrderAdjustable       | boolean | 否   | 是 | 是否支持调整选择顺序。true表示支持，false表示不支持，默认值为false。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**起始版本：** 26.0.0     |
-| pickerColorMode        | [PickerColorMode](arkts-apis-photoAccessHelper-e.md#pickercolormode)  | 否   | 是 | 设置图库选择器的颜色模式，实现图库选择器拉起的界面内所有内容的深色/浅色显示效果。<br>默认值为AUTO：颜色跟随系统。<br>**起始版本：** 26.1.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。  |
+| pickerColorMode        | [PickerColorMode](arkts-apis-photoAccessHelper-e.md#pickercolormode)  | 否   | 是 | 设置图片选择器的颜色模式，实现图片选择器拉起的界面内所有内容的深色/浅色显示效果。<br>默认值为AUTO：颜色跟随系统。<br>**起始版本：** 26.1.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。  |
 
 ## PhotoSelectResult
 
@@ -85,7 +85,7 @@ PhotoSelectOptions extends BaseSelectOptions
 | ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
 | photoUris       | Array&lt;string&gt; | 否   | 否 | 返回图库选择后的媒体文件的URI数组。<br>此URI数组只能通过临时授权的方式调用[photoAccessHelper.getAssets](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)接口去使用，具体使用方式请参考[媒体文件URI的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。<br>**注意：**<br>当资源为连拍照片类型时，则返回该连拍组的所有资源，判断是否为连拍图的方式请参考[通过URI判断连拍图资源](../../media/medialibrary/medialibrary-faqs/medialibrary-asset-judgment-faq.md#通过uri判断连拍图资源)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     |
 | isOriginalPhoto       | boolean | 否   | 否 | 返回图库选择后的媒体文件是否为原图。true表示是原图，false表示不是原图，默认值是false。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     |
-| contextRecoveryInfo<sup>21+</sup>         | [ContextRecoveryInfo](#contextrecoveryinfo21)    | 否   | 否 | 当用户完成选择时返回的photoSelectResult将包含退出图库选择器的上下文信息contextRecoveryInfo，支持应用下次启动图库选择器时设置给PhotoSelectOptions用于上次退出时现场的恢复。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
+| contextRecoveryInfo<sup>21+</sup>         | [ContextRecoveryInfo](#contextrecoveryinfo21)    | 否   | 否 | 当用户完成选择时返回的photoSelectResult将包含退出图片选择器的上下文信息contextRecoveryInfo，支持应用下次启动图片选择器时设置给PhotoSelectOptions用于上次退出时现场的恢复。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
 | movingPhotoBadgeStates<sup>22+</sup>         | Array\<[MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22)\>    | 否   | 否 | 返回图库选择的媒体文件动态照片状态数组。<br>当isMovingPhotoBadgeShown为true时，movingPhotoBadgeStates携带动态照片状态，反之为空。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
 ## AutoPlayScene<sup>23+</sup>
@@ -111,7 +111,7 @@ PhotoSelectOptions extends BaseSelectOptions
 
 | 名称                    | 类型                | 只读 | 可选 | 说明                           |
 | ----------------------- | ------------------- | ---- | ---- | ------------------------------ |
-| mimeTypeArray        | Array&lt;string&gt;    | 否   | 否 | 图库选择器可供用户选择媒体文件的过滤类型。数组长度最大为10，因此支持最多十种指定类型。<br>过滤类型参考MIME类型定义，例如：“image/jpeg”、“video/mp4”等。 |
+| mimeTypeArray        | Array&lt;string&gt;    | 否   | 否 | 图片选择器可供用户选择媒体文件的过滤类型。数组长度最大为10，因此支持最多十种指定类型。<br>过滤类型参考MIME类型定义，例如：“image/jpeg”、“video/mp4”等。 |
 
 ## FileSizeFilter<sup>19+</sup>
 
@@ -149,9 +149,9 @@ PhotoSelectOptions extends BaseSelectOptions
 
 | 名称                    | 类型                                                                                     | 只读 | 可选  | 说明   |
 |-------------------------|-----------------------------------------------------------------------------------------|-------|-------|--------|
-| period                  | number                                                                                  | 否    | 是 | 配置最近图片显示的时间范围，单位为秒（s）。配置后，系统将显示距离当前时间点指定时长内的图片。最长可配置时长为1天（86400s）。<br/>当值小于等于0、大于86400或者未配置时，默认按最长时间段（1天）显示最近图片。当配置时间段内无符合的图片或视频时，组件不显示。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。|
-| MIMEType                | [photoAccessHelper.PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes) | 否    | 是 | 最近图片控件显示的文件类型，默认为PhotoViewMIMETypes.IMAGE_VIDEO_TYPE。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。                         |
-| photoSource             | [PhotoSource](arkts-apis-photoAccessHelper-e.md#photosource20)                                                             | 否    | 是 | 配置最近图片视频显示内容的来源，比如拍照、截屏等。默认不限制来源。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。                               |
+| period                  | number                                                                                  | 否    | 是 | 配置最近图片显示的时间范围，单位为秒（s）。配置后，系统将显示距离当前时间点指定时长内的图片。最长可配置时长为1天（86400s）。<br>当值小于等于0、大于86400或者未配置时，默认按最长时间段（1天）显示最近图片。当配置时间段内无符合的图片或视频时，组件不显示。<br>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。|
+| MIMEType                | [photoAccessHelper.PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes) | 否    | 是 | 最近图片控件显示的文件类型，默认为PhotoViewMIMETypes.IMAGE_VIDEO_TYPE。<br>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。                         |
+| photoSource             | [PhotoSource](arkts-apis-photoAccessHelper-e.md#photosource20)                                                             | 否    | 是 | 配置最近图片视频显示内容的来源，比如拍照、截屏等。默认不限制来源。<br>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。                               |
 
 ## RecentPhotoInfo<sup>20+</sup>
 
@@ -161,8 +161,8 @@ PhotoSelectOptions extends BaseSelectOptions
 
 | 名称         | 类型     | 只读 | 可选  | 说明                                                        |
 |------------|--------|-------|-------|-----------------------------------------------------------|
-| dateTaken  | number | 否    | 是 | 最近图片/视频的拍摄时间（距1970年1月1日的毫秒数值），单位为毫秒（ms）。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。                     |
-| identifier | string | 否    | 是 | 最近图片/视频的名称hash值，用于辅助应用区分最新图片组件将要显示的图片/视频与之前曾显示过的图片/视频是否为同一个。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。 |
+| dateTaken  | number | 否    | 是 | 最近图片/视频的拍摄时间（距1970年1月1日的毫秒数值），单位为毫秒（ms）。<br>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。                     |
+| identifier | string | 否    | 是 | 最近图片/视频的名称hash值，用于辅助应用区分最新图片组件将要显示的图片/视频与之前曾显示过的图片/视频是否为同一个。<br>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## PhotoViewMimeTypeFileSizeFilter<sup>20+</sup>
 
@@ -179,17 +179,17 @@ PhotoSelectOptions extends BaseSelectOptions
 
 ## ContextRecoveryInfo<sup>21+</sup>
 
-图库选择器退出界面的上下文信息，可以用于下次使用图库选择器时恢复上次退出时的现场。
+图片选择器退出界面的上下文信息，可以用于下次使用图片选择器时恢复上次退出时的现场。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称                    | 类型                | 只读 | 可选 | 说明                          |
 | ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
-| albumUri    | string | 否   | 否 | 用户选择图片后，退出时的相册信息。<br/>albumUri对应媒体库中相册的URI。<br>- 当上次在所有图片中选择时，albumUri为固定的"allPhotos"字符串。<br/>- 当用户在搜索结果/文本推荐/头像推荐中完成选择退出时，不支持下次恢复现场，此时图库选择器返回的albumUri为空字符串。<br/>默认值为空字符串。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
-| time    | number   | 否   | 否 | 用户上次选择图片的宫格界面，左上角首张图片的时间。<br/>- 按拍摄时间排序的相册，返回拍摄时间。<br/>- 按保存时间排序的相册返回保存时间。默认为0。<br>单位为毫秒（ms）。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
+| albumUri    | string | 否   | 否 | 用户选择图片后，退出时的相册信息。<br>albumUri对应媒体库中相册的URI。<br>- 当上次在所有图片中选择时，albumUri为固定的"allPhotos"字符串。<br>- 当用户在搜索结果/文本推荐/头像推荐中完成选择退出时，不支持下次恢复现场，此时图片选择器返回的albumUri为空字符串。<br>默认值为空字符串。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
+| time    | number   | 否   | 否 | 用户上次选择图片的宫格界面，左上角首张图片的时间。<br>- 按拍摄时间排序的相册，返回拍摄时间。<br>- 按保存时间排序的相册返回保存时间。默认为0。<br>单位为毫秒（ms）。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
 | displayName    | string   | 否   | 否 | 用户上次选择图片的宫格界面，左上角首张图片的文件名。默认为空字符串。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
-| recommendationType    | number   | 否   | 否 | 用户上次选择时设置的推荐内容枚举值，参考[RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)值定义。<br/>上次选择时未设置推荐时，默认为0。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。|
-| selectedRecommendationType    | number   | 否   | 否 | 用户上次选择时选中的推荐内容枚举值，参考[RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)值定义。<br/>当上次选择未选中推荐项，选中"全部"时，默认为0。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。|
+| recommendationType    | number   | 否   | 否 | 用户上次选择时设置的推荐内容枚举值，参考[RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)值定义。<br>上次选择时未设置推荐时，默认为0。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。|
+| selectedRecommendationType    | number   | 否   | 否 | 用户上次选择时选中的推荐内容枚举值，参考[RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)值定义。<br>当上次选择未选中推荐项，选中"全部"时，默认为0。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。|
 | version    | number   | 否   | 否 | 现场数据版本号，用于校验现场信息数据与现场恢复能力的匹配度。<br>版本号必须大于等于1.0。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。|
 | gridLevel<sup>23+</sup>    | [GridLevel](arkts-apis-photoAccessHelper-e.md#gridlevel23)   | 否   | 是 | 用户上次退出宫格时的档位。若需要恢复到上次退出时的宫格档位，则配置此参数；若不配置，则使用默认档位。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 | sortRule<sup>24+</sup>    | string   | 否   | 是 | 用户上次选择图片的宫格界面的排序规则，默认为空字符串。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
