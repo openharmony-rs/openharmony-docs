@@ -55,6 +55,9 @@ uinput -?
 
 # 执行结果
 Usage: uinput <option> <command> <arg>...
+-D <displayId>  --display <displayId>  -inject event to target display (optional, before device option)
+example: uinput -D 0 -M -m 100 200
+
 The option are:
 -K  --keyboard
 commands for keyboard:

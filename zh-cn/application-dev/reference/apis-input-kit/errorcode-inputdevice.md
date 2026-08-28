@@ -81,7 +81,7 @@ The specified display does not exist.
 
 **可能原因**
 
-当前设备上并没有此显示器id。
+当前设备上并没有此显示器ID。
 
 **处理步骤**
 
@@ -105,7 +105,7 @@ Unsupported input device.
 
 **处理步骤**
 
-请重新设置外接的USB或蓝牙外设的id。<!--DelEnd-->
+请重新设置外接的USB或蓝牙外设的ID。<!--DelEnd-->
 
 ## 3800001 多模输入服务内部错误
 
