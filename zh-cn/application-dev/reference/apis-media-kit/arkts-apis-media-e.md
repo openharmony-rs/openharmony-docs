@@ -14,8 +14,6 @@
 
 [Media错误码](errorcode-media.md)类型枚举。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 | 名称                                  | 值      | 说明                                 |
