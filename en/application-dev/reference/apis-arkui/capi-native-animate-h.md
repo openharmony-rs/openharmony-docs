@@ -2178,7 +2178,7 @@ Creates a movement transition effect object for the component. The slide-in and 
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TransitionEdge](capi-native-type-visual-h.md#arkui-transitionedge) edge | Movement transition type, which determines the translation direction when the component appears and disappears. If the edge value is invalid, [ARKUI_TRANSITION_EDGE_START](capi-native-type-visual-h.md#arkui-transitionedge) is used.<br>The value options include: **ARKUI_TRANSITION_EDGE_TOP** (0) indicates sliding in/out from the top, **ARKUI_TRANSITION_EDGE_BOTTOM** (1) indicates sliding in/out from the bottom, **ARKUI_TRANSITION_EDGE_START** (2) indicates sliding in/out from the left, and **ARKUI_TRANSITION_EDGE_END** (3) indicates sliding in/out from the right. |
+| ArkUI_TransitionEdge edge | Movement transition type, which determines the translation direction when the component appears and disappears. If the edge value is invalid, ARKUI_TRANSITION_EDGE_START is used.<br>The value options include: **ARKUI_TRANSITION_EDGE_TOP** (0) indicates sliding in/out from the top, **ARKUI_TRANSITION_EDGE_BOTTOM** (1) indicates sliding in/out from the bottom, **ARKUI_TRANSITION_EDGE_START** (2) indicates sliding in/out from the left, and **ARKUI_TRANSITION_EDGE_END** (3) indicates sliding in/out from the right. |
 
 **Return value**
 
@@ -2267,8 +2267,8 @@ Sets a combination of transition effects.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* firstEffect | Pointer to the preceding transition effect in the chain, which will be combined with **secondEffect** to form a **TransitionEffect** containing multiple transition effects.<br>If **firstEffect** is **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui-error-code) is returned. |
-| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* secondEffect | Pointer to the following transition effect to be combined, which will be chained with **firstEffect** to form a **TransitionEffect** containing multiple transition effects.<br>If **secondEffect** is **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui-error-code) is returned. |
+| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* firstEffect | Pointer to the preceding transition effect in the chain, which will be combined with **secondEffect** to form a **TransitionEffect** containing multiple transition effects.<br>If **firstEffect** is **NULL**, the error code **ARKUI_ERROR_CODE_PARAM_INVALID** is returned. |
+| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* secondEffect | Pointer to the following transition effect to be combined, which will be chained with **firstEffect** to form a **TransitionEffect** containing multiple transition effects.<br>If **secondEffect** is **NULL**, the error code **ARKUI_ERROR_CODE_PARAM_INVALID** is returned. |
 
 **Return value**
 
