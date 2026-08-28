@@ -494,7 +494,7 @@ Represents an enumeration of the Wi-Fi band types.
 
 ## WifiStandard<sup>10+</sup>
 
-Enumerates the Wi-Fi standards..
+Enumerates the Wi-Fi standards.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
