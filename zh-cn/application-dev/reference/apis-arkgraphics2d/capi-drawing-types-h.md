@@ -56,9 +56,9 @@
 | [OH_Drawing_FontFeatures](capi-drawing-oh-drawing-fontfeatures.md) | OH_Drawing_FontFeatures | 用于描述字体特征容器。字体特征是字体内置的排版规则，控制字形显示。例如：连字、替代字形、上下标等。 |
 | [OH_Drawing_MemoryStream](capi-drawing-oh-drawing-memorystream.md) | OH_Drawing_MemoryStream | 用于描述内存流。 |
 | [OH_Drawing_FontArguments](capi-drawing-oh-drawing-fontarguments.md) | OH_Drawing_FontArguments | 用于描述字型参数。 |
-| [OH_Drawing_Typeface](capi-drawing-oh-drawing-typeface.md) | OH_Drawing_Typeface | 用于描述字形。 |
+| [OH_Drawing_Typeface](capi-drawing-oh-drawing-typeface.md) | OH_Drawing_Typeface | 用于描述字体。 |
 | [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md) | OH_Drawing_TextBlob | 定义一个文本对象，表示将多个文本组合到一个不可变的容器中。每个文本行由字形和位置组成。 |
-| [OH_Drawing_Image](capi-drawing-oh-drawing-image.md) | OH_Drawing_Image | 定义一个用于描述绘制二维像素数组的图片。 |
+| [OH_Drawing_Image](capi-drawing-oh-drawing-image.md) | OH_Drawing_Image | 定义一个表示二维像素数组的图片，用于绘制操作。 |
 | [OH_Drawing_ImageFilter](capi-drawing-oh-drawing-imagefilter.md) | OH_Drawing_ImageFilter | 定义图像滤波器，用于对构成图像像素的所有颜色位进行操作。 |
 | [OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md) | OH_Drawing_SamplingOptions | 定义一个采样选项，用于描述图片、位图等图像的采样方法。 |
 | [OH_Drawing_TextBlobBuilder](capi-drawing-oh-drawing-textblobbuilder.md) | OH_Drawing_TextBlobBuilder | 定义文本构建器，用于构建文本。 |

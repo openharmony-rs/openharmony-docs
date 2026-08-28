@@ -115,7 +115,7 @@
 | void OH_Drawing_PenSetAntiAlias(OH_Drawing_Pen\* pen, bool antiAlias) | 用于设置画笔的抗锯齿属性，设置为true则画笔在绘制图形时会对图形的边缘像素进行半透明的模糊处理。 |
 | void OH_Drawing_PenSetCap(OH_Drawing_Pen\* pen, OH_Drawing_PenLineCapStyle capStyle) | 用于设置画笔线帽样式。 |
 | void OH_Drawing_PenSetJoin(OH_Drawing_Pen\* pen, OH_Drawing_PenLineJoinStyle joinStyle) | 用于设置画笔绘制转角的样式。 |
-| void OH_Drawing_CanvasDetachPen(OH_Drawing_Canvas\* canvas) | 用于去除画布中的画笔，执行后画布将不去绘制图形形状的轮廓，恢复到默认的填充效果。 |
+| void OH_Drawing_CanvasDetachPen(OH_Drawing_Canvas\* canvas) | 用于去除画布中的画笔，执行后画布将不去绘制图形形状的轮廓，恢复到默认的描边效果。 |
 | void OH_Drawing_PenDestroy(OH_Drawing_Pen\* pen) | 用于销毁画笔对象并回收该对象占用的内存。 |
 
 
@@ -195,8 +195,8 @@
       | 转角样式 | 说明 | 示意图 |
       | -------- | -------- | -------- |
       | LINE_MITER_JOIN | 转角类型为尖角 | ![LINE-MITER-JOIN](figures/LINE-MITER-JOIN.png) |
-      | LINE_ROUND_JOIN | 转角类型为圆头 | ![LINE-ROUND-JOIN](figures/LINE-ROUND-JOIN.png) |
-      | LINE_BEVEL_JOIN | 转角类型为平头 | ![LINE-BEVEL-JOIN](figures/LINE-BEVEL-JOIN.png) |
+      | LINE_ROUND_JOIN | 转角类型为圆角 | ![LINE-ROUND-JOIN](figures/LINE-ROUND-JOIN.png) |
+      | LINE_BEVEL_JOIN | 转角类型为平角 | ![LINE-BEVEL-JOIN](figures/LINE-BEVEL-JOIN.png) |
 
 3. 使用OH_Drawing_CanvasAttachPen()接口给Canvas画布设置画笔。接口接受两个参数，一个是画布对象Canvas，请确保已创建或获取得到画布Canvas，具体可见[画布的获取与绘制结果的显示（C/C++）](canvas-get-result-draw-c.md)；另一个是要设置的画笔对象。画布将会使用设置的画笔样式和颜色等绘制图形轮廓。
 
