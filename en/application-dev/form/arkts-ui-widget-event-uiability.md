@@ -5,6 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=09db3a327ae2b42f2b846b17e9d7cd60367abbed translatedAt=2026-08-26T04:48:53.533Z pushedAt=2026-08-28T08:45:12.212Z -->
 
 With the router event, a touch on the widget can start the associated application's UIAbility in the foreground and trigger a widget update. With the call event, a touch on the widget can start the associated application's UIAbility in the background and trigger a widget update. On the widget page, the [postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1) API can be used to trigger a router or call event to start a UIAbility, which then updates the widget content. The following is an example of this widget update mode.
 
@@ -15,9 +16,9 @@ With the router event, a touch on the widget can start the associated applicatio
 ## Updating Widget Content Through the router Event
 
 - In the widget page code, register the **onClick** event callback of the button and call the **postCardAction** API in the callback to trigger the router event to start the UIAbility in the foreground.
-  
+
     <!-- @[widget_update_router_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdaterouter/pages/WidgetUpdateRouterCard.ets) --> 
-    
+
     ``` TypeScript
     // entry/src/main/ets/widgetupdaterouter/pages/WidgetUpdateRouterCard.ets
     let storageUpdateRouter = new LocalStorage();
@@ -74,11 +75,11 @@ With the router event, a touch on the widget can start the associated applicatio
       }
     }
     ```
-  
+
 - In the **onCreate** or **onNewWant** lifecycle callback of the UIAbility, use the input parameter **want** to obtain the ID (**formID**) and other information of the widget, and then call the [updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform) API to update the widget.
-  
-    <!-- @[widget_event_router_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetevententryability/WidgetEventRouterEntryAbility.ts) -->
-    
+
+    <!-- @[widget_event_router_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetevententryability/WidgetEventRouterEntryAbility.ts) --> 
+
     ``` TypeScript
     // entry/src/main/ets/widgetevententryability/WidgetEventRouterEntryAbility.ts
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -96,7 +97,7 @@ With the router event, a touch on the widget can start the associated applicatio
       }
     
       handleFormRouterEvent(want: Want, source: string): void {
-        hilog.info(DOMAIN_NUMBER, TAG, `handleFormRouterEvent ${source}, Want: ${JSON.stringify(want)}`);
+        hilog.info(DOMAIN_NUMBER, TAG, `handleFormRouterEvent ${source}, Want: ${want.parameters?.params as string}`);
         if (want.parameters && want.parameters[formInfo.FormParam.IDENTITY_KEY] !== undefined) {
           let curFormId = want.parameters[formInfo.FormParam.IDENTITY_KEY].toString();
           // want.parameters.params corresponds to params in postCardAction().
@@ -106,17 +107,17 @@ With the router event, a touch on the widget can start the associated applicatio
             'routerDetail': message + ' ' + source + ' UIAbility', // It matches the widget layout.
           };
           let formMsg = formBindingData.createFormBindingData(formData);
-          formProvider.updateForm(curFormId, formMsg).then((data) => {
-            hilog.info(DOMAIN_NUMBER, TAG, 'updateForm success.', JSON.stringify(data));
+          formProvider.updateForm(curFormId, formMsg).then(() => {
+            hilog.info(DOMAIN_NUMBER, TAG, 'updateForm success.');
           }).catch((error: BusinessError) => {
-            hilog.info(DOMAIN_NUMBER, TAG, 'updateForm failed.', JSON.stringify(error));
+            hilog.error(DOMAIN_NUMBER, TAG, `updateForm failed, error code: ${error.code}, error message: ${error.message}`);
           });
         }
       }
     
       // If the UIAbility is running in the background, onNewWant is triggered after the router event is received.
       onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        hilog.info(DOMAIN_NUMBER, TAG, 'onNewWant Want:', JSON.stringify(want));
+        hilog.info(DOMAIN_NUMBER, TAG, 'onNewWant Want:', want.parameters?.params as string);
         this.handleFormRouterEvent(want, 'onNewWant');
       }
     
@@ -124,12 +125,12 @@ With the router event, a touch on the widget can start the associated applicatio
     
         hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'Ability onWindowStageCreate');
     
-        windowStage.loadContent('pages/Index', (err, data) => {
+        windowStage.loadContent('pages/Index', (err) => {
           if (err.code) {
-            hilog.error(DOMAIN_NUMBER, TAG, 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+            hilog.error(DOMAIN_NUMBER, TAG, `Failed to load the content. error code: ${err.code}, error message: ${err.message}`);
             return;
           }
-          hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+          hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in loading the content.');
         });
       }
     }
@@ -138,9 +139,9 @@ With the router event, a touch on the widget can start the associated applicatio
 ## Updating Widget Content Through the call Event
 
 - In the widget page code, register the **onClick** event callback of the button and call the **postCardAction** API in the callback to trigger the call event to start the UIAbility in the background.
-  
+
     <!-- @[widget_update_call_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdatecall/pages/WidgetUpdateCallCard.ets) --> 
-    
+
     ``` TypeScript
     // entry/src/main/ets/widgetupdatecall/pages/WidgetUpdateCallCard.ets
     let storageUpdateCall = new LocalStorage();
@@ -198,11 +199,11 @@ With the router event, a touch on the widget can start the associated applicatio
       }
     }
     ```
-  
+
 - Listen for the method required by the call event in the **onCreate** callback of the UIAbility, and then call the [updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform) API in the corresponding method to update the widget.
-  
-    <!-- @[widget_callee_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetcalleeentryability/WidgetCalleeEntryAbility.ts) --> 
-    
+
+    <!-- @[widget_callee_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetcalleeentryability/WidgetCalleeEntryAbility.ts) -->
+
     ``` TypeScript
     // entry/src/main/ets/widgetcalleeentryability/WidgetCalleeEntryAbility.ts
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -251,10 +252,10 @@ With the router event, a touch on the widget can start the associated applicatio
           'calleeDetail': message
         };
         let formMsg: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
-        formProvider.updateForm(curFormId, formMsg).then((data) => {
-          hilog.info(DOMAIN_NUMBER, TAG, `updateForm success. ${JSON.stringify(data)}`);
+        formProvider.updateForm(curFormId, formMsg).then(() => {
+          hilog.info(DOMAIN_NUMBER, TAG, `updateForm success.`);
         }).catch((error: BusinessError) => {
-          hilog.error(DOMAIN_NUMBER, TAG, `updateForm failed: ${JSON.stringify(error)}`);
+          hilog.error(DOMAIN_NUMBER, TAG, `updateForm failed, error code: ${error.code}, error message: ${error.message}`);
         });
       }
       return new MyParcelable(CONST_NUMBER_1, 'aaa');
@@ -266,7 +267,7 @@ With the router event, a touch on the widget can start the associated applicatio
           // Listen for the method required by the call event.
           this.callee.on(MSG_SEND_METHOD, funACall);
         } catch (error) {
-          hilog.error(DOMAIN_NUMBER, TAG, `${MSG_SEND_METHOD} register failed with error ${JSON.stringify(error)}`);
+          hilog.error(DOMAIN_NUMBER, TAG, `${MSG_SEND_METHOD} register failed, error code: ${error.code}, error message: ${error.message}`);
         }
       }
     
@@ -274,12 +275,12 @@ With the router event, a touch on the widget can start the associated applicatio
         // Main window is created, set main page for this ability
         hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'Ability onWindowStageCreate');
     
-        windowStage.loadContent('pages/Index', (err, data) => {
+        windowStage.loadContent('pages/Index', (err) => {
           if (err.code) {
-            hilog.error(DOMAIN_NUMBER, TAG, 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+            hilog.error(DOMAIN_NUMBER, TAG, `Failed to load the content.error code: ${err.code}, error message: ${err.message}`);
             return;
           }
-          hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+          hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in loading the content.');
         });
       }
     }
@@ -287,7 +288,7 @@ With the router event, a touch on the widget can start the associated applicatio
 
   To start the UIAbility in the background, you must configure the `ohos.permission.KEEP_BACKGROUND_RUNNING` permission in the `module.json5` file.
     <!-- @[module_json5_request_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/module.json5) -->
-    
+
     ``` JSON5
     //src/main/module.json5
     "requestPermissions": [
