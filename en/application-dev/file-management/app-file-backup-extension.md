@@ -250,3 +250,5 @@ The following table lists the key APIs of the backup and restore extension capab
 For data backup and restoration, the following sample is available:
 
 - [Accessing Backup and Restore (ArkTS) (Full SDK) (API10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/FileManagement/FileBackupExtension)
+
+<!--no_check-->
