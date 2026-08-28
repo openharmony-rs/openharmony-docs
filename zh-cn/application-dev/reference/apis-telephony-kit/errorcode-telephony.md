@@ -64,7 +64,7 @@ The enterprise permission is not verified.
 
 **处理步骤**
 
-通过[申请接入]((https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/callservice-enterprise-contact-display#申请接入))申请企业来电权限，或通过[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/)提交问题，华为支持人员会及时处理。
+通过[申请接入](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/callservice-enterprise-contact-display#申请接入)申请企业来电权限，或通过[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/)提交问题，华为支持人员会及时处理。
 
 
 
