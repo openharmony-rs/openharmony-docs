@@ -7735,7 +7735,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LinkDecorator/entry/src/main/ets/pages/LinkStateVarInit.ets",
 				"functions":[
 					{
-						"end_line":48,
+						"end_line":42,
 						"name":"LinkStateVarInit",
 						"start_line":18
 					}
