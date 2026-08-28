@@ -5,7 +5,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=794bdfcc42df83dd7fb4cf55998b1aff80916ceb translatedAt=2026-08-27T04:13:16.091Z pushedAt=2026-08-28T11:11:11.252Z -->
+<!-- md-trans-meta sourceCommit=794bdfcc42df83dd7fb4cf55998b1aff80916ceb translatedAt=2026-08-27T04:13:16.091Z pushedAt=2026-08-28T11:32:05.383Z -->
 
 This module provides basic Wi-Fi functionalities (such as wireless access, wireless encryption, and wireless roaming), basic peer-to-peer (P2P) services, and Wi-Fi notification services. It allows applications to interact with other devices through Wi-Fi.
 
@@ -494,7 +494,7 @@ Represents an enumeration of the Wi-Fi band types.
 
 ## WifiStandard<sup>10+</sup>
 
-Enumerates the Wi-Fi Error Codestandards.
+Enumerates the Wi-Fi standards..
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
