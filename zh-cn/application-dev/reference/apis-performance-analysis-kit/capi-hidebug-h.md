@@ -65,7 +65,7 @@
 | [HiDebug_ErrorCode OH_HiDebug_DestroyProfilerOptions(OH_HiDebug_ProfilerOptions *opts)](#oh_hidebug_destroyprofileroptions) | - | 释放通过[OH_HiDebug_CreateProfilerOptions](#oh_hidebug_createprofileroptions)创建的配置对象。 |
 | [HiDebug_ErrorCode OH_HiDebug_SetMaxAsyncNestingDepth(OH_HiDebug_ProfilerOptions *opts, uint32_t depth)](#oh_hidebug_setmaxasyncnestingdepth) | - | 设置异步调用最大嵌套深度（也称为最大嵌套层数）。 |
 | [HiDebug_ErrorCode OH_HiDebug_SetMaxAsyncTaskStackDepth(OH_HiDebug_ProfilerOptions *opts, uint32_t depth)](#oh_hidebug_setmaxasynctaskstackdepth) | - | 设置异步任务函数的最大回栈深度。 |
-| [HiDebug_ErrorCode OH_HiDebug_SetSampleIntervalBytes(OH_HiDebug_ProfilerOptions *opts, uint32_t bytes)](#oh_hidebug_setsampleintervalbytes) | - | 设置采样间隔，单位字节。 |
+| [HiDebug_ErrorCode OH_HiDebug_SetSampleIntervalBytes(OH_HiDebug_ProfilerOptions *opts, uint32_t bytes)](#oh_hidebug_setsampleintervalbytes) | - | 设置采样间隔，单位为Byte。 |
 | [HiDebug_ErrorCode OH_HiDebug_SetStatisticsIntervalSec(OH_HiDebug_ProfilerOptions *opts, uint32_t seconds)](#oh_hidebug_setstatisticsintervalsec) | - | 设置统计间隔，单位为s。 |
 | [HiDebug_ErrorCode OH_HiDebug_SetMaxStackDepth(OH_HiDebug_ProfilerOptions *opts, uint32_t depth)](#oh_hidebug_setmaxstackdepth) | - | 设置最大回栈深度。 |
 | [HiDebug_ErrorCode OH_HiDebug_SetFilterSize(OH_HiDebug_ProfilerOptions *opts, uint32_t size)](#oh_hidebug_setfiltersize) | - | 设置内存分配过滤大小。 |
@@ -623,7 +623,7 @@ HiDebug_ErrorCode OH_HiDebug_StartProfiler(OH_HiDebug_ResourceType type, OH_HiDe
    当系统触发以下任一负载保护条件时，API采集请求将被拒绝，并返回相应错误码：<br>
    - CPU限制：整机系统CPU占用率超过70%；<br>
    - 内存限制：整机系统可用内存低于2GB；<br>
-   - 存储限制：整机系统可用存储空间低于阈值（阈值为系统总存储容量的3%与15GB中的较大值）。<br>
+   - 存储限制：整机系统可用存储空间低于存储阈值，阈值为系统总存储容量的3%与15GB中的较大值。<br>
 3. 并发冲突约束：
    - 当API采集与命令行工具或系统采集任务发生冲突时，API采集请求将被拒绝，并返回相应错误码。<br>
 4. 采集结果保存：<br>
@@ -831,7 +831,7 @@ OH_HiDebug_ProfilerOptions* OH_HiDebug_CreateProfilerOptions(void)
 
 **描述**
 
-创建资源Profiler配置对象。对应的释放函数为：[OH_HiDebug_DestroyProfilerOptions](#oh_hidebug_destroyprofileroptions)。
+创建资源Profiler配置对象，当创建失败时返回NULL。对应的释放函数为：[OH_HiDebug_DestroyProfilerOptions](#oh_hidebug_destroyprofileroptions)。
 
 **起始版本：** 26.1.0
 
@@ -923,7 +923,7 @@ HiDebug_ErrorCode OH_HiDebug_SetSampleIntervalBytes(OH_HiDebug_ProfilerOptions *
 
 **描述**
 
-设置采样间隔，单位字节。
+设置采样间隔，单位为Byte。
 
 **起始版本：** 26.1.0
 
@@ -982,7 +982,7 @@ HiDebug_ErrorCode OH_HiDebug_SetMaxStackDepth(OH_HiDebug_ProfilerOptions *opts, 
 | 参数项 | 描述 |
 | -- | -- |
 | OH_HiDebug_ProfilerOptions* opts | 指向OH_HiDebug_ProfilerOptions结构体的指针，不能为NULL。 |
-| uint32_t depth | 最大回栈深度，取值范围为[1, 256]。 |
+| uint32_t depth | 最大回栈深度，取值范围为[1, 30]。 |
 
 **返回：**
 
