@@ -14,22 +14,41 @@
 
 沉浸式系统材质影响的区域越大，需要处理的像素越多，功耗越高。应避免在单个超大尺寸区域上使用沉浸式系统材质，也应避免在大量小区域上重复使用沉浸式系统材质；推荐在Navigation顶部标题栏和底部Tabs区域中少量使用，优先将沉浸式系统材质限定在需要凸显的局部区域中。
 
+> **说明：**
+>
+> 通过[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)为组件设置的沉浸式系统材质仅在Navigation/NavDestination标题栏子树，或横向Tabs中barPosition为BarPosition.End的底部TabBar子树中生效，范围外的普通组件不会显示材质效果。Slider、Toggle以及弹窗类组件不受此范围限制。
+
 ```ts
-// 正例：仅在需要凸显的局部容器上使用沉浸式系统材质
-Stack() {
-  // ...整页内容
-  Column() {
-    Text('卡片')
+import { uiMaterial } from '@kit.ArkUI';
+
+// 正例：在Navigation标题栏子树中为局部容器设置沉浸式系统材质，材质生效且面积可控
+@Entry
+@Component
+struct MaterialAreaExample {
+  @Builder
+  NavigationTitle() {
+    Column() {
+      Text('卡片')
+    }
+    .width(328)
+    .height(120)
+    .borderRadius(24)
+    .systemMaterial(new uiMaterial.ImmersiveMaterial({
+      style: uiMaterial.ImmersiveStyle.REGULAR,
+    }))
   }
-  .width(328)
-  .height(120)
-  .borderRadius(24)
-  .systemMaterial(new uiMaterial.ImmersiveMaterial({
-    style: uiMaterial.ImmersiveStyle.REGULAR,
-  }))
+
+  build() {
+    Column() {
+      Navigation() {
+        // 页面内容
+      }
+      .title({ builder: this.NavigationTitle, height: '100%' })
+    }.width('100%').height('100%')
+  }
 }
 
-// 反例：整页背景均设置沉浸式系统材质，区域过大
+// 反例：在标题栏生效范围外为整页背景设置沉浸式系统材质，区域过大且材质不生效
 Column() {
   // ...整页内容
 }
