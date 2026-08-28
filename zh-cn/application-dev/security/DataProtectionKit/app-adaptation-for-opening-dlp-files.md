@@ -1,4 +1,4 @@
-# 应用适配打开DLP文件(ArkTS)
+# 应用适配打开DLP文件(ArkTS).
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
