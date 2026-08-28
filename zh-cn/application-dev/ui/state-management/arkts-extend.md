@@ -235,7 +235,7 @@
           Text('this is TextUse')
 
           Button()
-            .ButtonUse()  // 会有编译告警提示: Property 'ButtonUse' does not exist  on type 'ButtonAttribute'.
+            .ButtonUse()  // 会有编译告警提示: Property 'ButtonUse' does not exist on type 'ButtonAttribute'.
             .height(50)
         }
       }
