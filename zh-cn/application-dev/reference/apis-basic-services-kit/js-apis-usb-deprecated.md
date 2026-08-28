@@ -196,7 +196,7 @@ claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): numb
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线号和设备地址。 |
 | iface | [USBInterface](#usbinterface) | 是 | 用于确定需要获取接口的索引。 |
-| force | boolean | 否 | 可选参数，是否强制获取。默认值为false，表示不强制获取；设置为true时，将强制释放内核驱动对该接口的控制权并交由用户空间程序控制。|
+| force | boolean | 否 | 可选参数，是否强制获取。默认值为false，表示不强制获取，如果无内核驱动占用该接口，则获取成功，否则获取失败；设置为true时，将强制释放内核驱动对该接口的控制权并交由用户空间程序控制。|
 
 **返回值：**
 
