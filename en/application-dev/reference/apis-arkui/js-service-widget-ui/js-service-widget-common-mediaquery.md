@@ -2,11 +2,11 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lanshouren-->
-<!--Designer: @lanshouren-->
+<!--Owner: @fenglinbailu-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8277d7ec9ce419d430e3a38530a6357fa719f95c translatedAt=2026-07-31T01:14:56.950Z pushedAt=2026-07-31T12:04:26.611Z -->
+<!-- md-trans-meta sourceCommit=6fe7637a70c7b28e45b74b3b03e42cd79d892719 translatedAt=2026-08-20T09:32:38.365Z pushedAt=2026-08-21T02:05:22.253Z -->
 
 Media queries are widely used on mobile devices. You can use them to modify the application style based on the device type or specific features and device parameters (such as the screen resolution). Specifically, media queries allow you to:
 
@@ -106,6 +106,7 @@ At MediaQuery Level 4, range query is imported so that you can use the operators
 | min-device-height | Minimum height of the device.|
 | max-device-height | Maximum height of the device.|
 | device-width | Width of the device.|
+| device-type | Type of the device.<br/>Available options: **default**, **phone**, **tablet**, **tv**, **car**, **wearable**, and **2in1** |
 | min-device-width | Minimum width of the device.|
 | max-device-width | Maximum width of the device.|
 | round-screen | Screen type. The value **true** means that the screen is round, and **false** means the opposite.|

@@ -9047,6 +9047,20 @@ Allows an application on the rear armrest screen to connect to the head unit for
 
 **Since**: 26.1.0
 
+## ohos.permission.vehicle.AutoWiredProjection
+
+Allows an application to use the wired projection service to query information such as DP device information and projection status.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
 ## ohos.permission.AUTH_MODEL_DOWNLOAD
 
 Allows a system application to send the authorization results for model download requests to the model management service.

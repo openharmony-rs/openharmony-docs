@@ -317,9 +317,11 @@ showToast(options: promptAction.ShowToastOptions): void
 
 **示例：**
 
-该示例通过设置options参数中的systemMaterial属性，实现了Toast的系统材质。
+该示例通过options参数中的systemMaterial属性设置组件的系统材质，实现了Toast的沉浸光感效果。
 
 从API版本26.0.0开始，参数options的类型[promptAction.ShowToastOptions](js-apis-promptAction.md#showtoastoptions)中新增了systemMaterial属性。
+
+组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
 
 ```ts
 import { PromptAction, promptAction, uiMaterial } from '@kit.ArkUI';
@@ -340,7 +342,7 @@ struct Index {
               message: 'Message Info',
               duration: 2000,
               showMode:promptAction.ToastShowMode.DEFAULT,
-              // 设置系统材质
+              // 设置系统材质接口
               systemMaterial: new uiMaterial.ImmersiveMaterial({
                 style: uiMaterial.ImmersiveStyle.THIN
               })
@@ -363,11 +365,11 @@ struct Index {
 
 未设置系统材质时：
 
-![](figures/toastNoMaterial.gif)
+![未设置系统材质时](figures/toastwithoutmaterial.gif)
 
 设置系统材质后：
 
-![](figures/toastMaterial.gif)
+![设置系统材质后](figures/toastwithmaterial.gif)
 
 ## showDialog
 

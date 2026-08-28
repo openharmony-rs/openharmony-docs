@@ -61,7 +61,7 @@ struct Index {
     build() {
         Scroll() {
             Column({ space: 10 }) {
-                Button("打印").width('90%').height(50).onClick(() => {
+                Button('打印').width('90%').height(50).onClick(() => {
                     let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
                     let context = this.getUIContext().getHostContext();
                     print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
@@ -122,7 +122,7 @@ struct Index {
     build() {
         Scroll() {
             Column({ space: 10 }) {
-                Button("打印").width('90%').height(50).onClick(() => {
+                Button('打印').width('90%').height(50).onClick(() => {
                     let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
                     let context = this.getUIContext().getHostContext();
                     print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
@@ -183,7 +183,7 @@ struct Index {
     build() {
         Scroll() {
             Column({ space: 10 }) {
-                Button("打印").width('90%').height(50).onClick(() => {
+                Button('打印').width('90%').height(50).onClick(() => {
                     let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
                     let context = this.getUIContext().getHostContext();
                     print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
@@ -244,7 +244,7 @@ struct Index {
     build() {
         Scroll() {
             Column({ space: 10 }) {
-                Button("打印").width('90%').height(50).onClick(() => {
+                Button('打印').width('90%').height(50).onClick(() => {
                     let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
                     let context = this.getUIContext().getHostContext();
                     print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
@@ -305,7 +305,7 @@ struct Index {
     build() {
         Scroll() {
             Column({ space: 10 }) {
-                Button("打印").width('90%').height(50).onClick(() => {
+                Button('打印').width('90%').height(50).onClick(() => {
                     let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
                     let context = this.getUIContext().getHostContext();
                     print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
@@ -366,7 +366,7 @@ struct Index {
     build() {
         Scroll() {
             Column({ space: 10 }) {
-                Button("打印").width('90%').height(50).onClick(() => {
+                Button('打印').width('90%').height(50).onClick(() => {
                     let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
                     let context = this.getUIContext().getHostContext();
                     print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
@@ -427,7 +427,7 @@ struct Index {
     build() {
         Scroll() {
             Column({ space: 10 }) {
-                Button("打印").width('90%').height(50).onClick(() => {
+                Button('打印').width('90%').height(50).onClick(() => {
                     let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
                     let context = this.getUIContext().getHostContext();
                     print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
@@ -488,7 +488,7 @@ struct Index {
     build() {
         Scroll() {
             Column({ space: 10 }) {
-                Button("打印").width('90%').height(50).onClick(() => {
+                Button('打印').width('90%').height(50).onClick(() => {
                     let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
                     let context = this.getUIContext().getHostContext();
                     print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
@@ -512,7 +512,7 @@ struct Index {
 
 ## PrintDocumentAdapter<sup>11+</sup>
 
-三方应用实现此接口来渲染要打印的文件。
+三方应用实现此接口来渲染要打印的文件。该接口提供文件渲染和打印任务状态监听等回调方法，可通过print.print接口传入PrintDocumentAdapter实例配合使用。
 
 ### onStartLayoutWrite<sup>11+</sup>
 
@@ -531,7 +531,7 @@ onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs: PrintAttr
 | jobId | string | 是 | 表示打印任务ID。 |
 | oldAttrs | [PrintAttributes](#printattributes11) | 是 | 表示旧打印参数。 |
 | newAttrs | [PrintAttributes](#printattributes11) | 是 | 表示新打印参数，应用使用该参数更新待打印文件。 |
-| fd | number | 是 | 表示打印服务传给接口调用方的空PDF文件的文件描述符。 |
+| fd | number | 是 | 表示打印服务传给接口调用方的PDF文件的文件描述符。 |
 | writeResultCallback | (jobId: string, writeResult: [PrintFileCreationState](#printfilecreationstate11)) => void | 是 | 表示三方应用使用新的打印参数更新待打印文件完成后的回调。 |
 
 **错误码：**
@@ -626,7 +626,7 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 
 print(files: Array&lt;string&gt;, callback: AsyncCallback&lt;PrintTask&gt;): void
 
-打印接口，传入文件进行打印，使用callback异步回调。拉起系统打印预览界面，需要使用[print](#printprint11-1)接口，传入context。
+打印接口，传入文件进行打印，使用callback异步回调。如需拉起系统打印预览界面，需要使用[print](#printprint11-1)接口，传入context。
 
 > **说明：**
 >
@@ -640,7 +640,7 @@ print(files: Array&lt;string&gt;, callback: AsyncCallback&lt;PrintTask&gt;): voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| files | Array&lt;string&gt; | 是 | 待打印文件列表，支持图片（.jpg .png .gif .bmp .webp）和.pdf。文件需先保存到应用沙箱，通过fileUri.getUriFromPath获取到沙箱uri，再作为参数传入到本接口。 |
+| files | Array&lt;string&gt; | 是 | 待打印文件列表，支持图片（.jpg .png .gif .bmp .webp）和.pdf。文件需先保存到应用沙箱，通过fileUri.getUriFromPath获取到沙箱URI，再作为参数传入到本接口。 |
 | callback | AsyncCallback&lt;[PrintTask](#printtask)&gt; | 是 | 异步获取打印完成之后的回调。 |
 
 **错误码：**
@@ -677,7 +677,7 @@ print.print([fileUri.getUriFromPath(filePath)], (error: BusinessError, printTask
 
 print(files: Array&lt;string&gt;): Promise&lt;PrintTask&gt;
 
-打印接口，传入文件进行打印，使用Promise异步回调。拉起系统打印预览界面，需要使用[print](#printprint11-1)接口，传入context。
+打印接口，传入文件进行打印，使用Promise异步回调。如需拉起系统打印预览界面，需要使用[print](#printprint11-1)接口，传入context。
 
 > **说明：**
 >
@@ -691,7 +691,7 @@ print(files: Array&lt;string&gt;): Promise&lt;PrintTask&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| files | Array&lt;string&gt; | 是 | 待打印文件列表，支持图片（.jpg .png .gif .bmp .webp）和.pdf。文件需先保存到应用沙箱，通过fileUri.getUriFromPath获取到沙箱uri，再作为参数传入到本接口。 |
+| files | Array&lt;string&gt; | 是 | 待打印文件列表，支持图片（.jpg .png .gif .bmp .webp）和.pdf。文件需先保存到应用沙箱，通过fileUri.getUriFromPath获取到沙箱URI，再作为参数传入到本接口。 |
 
 **返回值：**
 
@@ -741,7 +741,7 @@ print(files: Array&lt;string&gt;, context: Context, callback: AsyncCallback&lt;P
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| files | Array&lt;string&gt; | 是 | 待打印文件列表，当前支持的文件类型：".bm", ".bmp", ".doc", ".docm", ".docx", ".dot", ".dotm", ".dotx", ".gif", ".jfif", ".jpe", ".jpeg", ".jpg", ".pdf", ".pot", ".potm", ".potx", ".pps", ".ppsm", ".ppsx", ".ppt", ".pptm", ".pptx", ".png", ".rtf", ".txt", ".webp", ".wps", ".xls", ".xlsb", ".xlsm", ".xlsx", ".xlt", ".xltx", ".xml"。文件需先保存到应用沙箱，通过fileUri.getUriFromPath获取到沙箱uri，再作为参数传入到本接口。 |
+| files | Array&lt;string&gt; | 是 | 待打印文件列表，当前支持的文件类型：".bm", ".bmp", ".doc", ".docm", ".docx", ".dot", ".dotm", ".dotx", ".gif", ".jfif", ".jpe", ".jpeg", ".jpg", ".pdf", ".pot", ".potm", ".potx", ".pps", ".ppsm", ".ppsx", ".ppt", ".pptm", ".pptx", ".png", ".rtf", ".txt", ".webp", ".wps", ".xls", ".xlsb", ".xlsm", ".xlsx", ".xlt", ".xltx", ".xml"。文件需先保存到应用沙箱，通过fileUri.getUriFromPath获取到沙箱URI，再作为参数传入到本接口。 |
 | context | Context | 是 | 用于拉起系统打印界面的UIAbilityContext。 |
 | callback | AsyncCallback&lt;[PrintTask](#printtask)&gt; | 是 | 异步获取打印完成之后的回调。 |
 
@@ -805,7 +805,7 @@ print(files: Array&lt;string&gt;, context: Context): Promise&lt;PrintTask&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| files | Array&lt;string&gt; | 是 | 待打印文件列表，当前支持的文件类型：".bm", ".bmp", ".doc", ".docm", ".docx", ".dot", ".dotm", ".dotx", ".gif", ".jfif", ".jpe", ".jpeg", ".jpg", ".pdf", ".pot", ".potm", ".potx", ".pps", ".ppsm", ".ppsx", ".ppt", ".pptm", ".pptx", ".png", ".rtf", ".txt", ".webp", ".wps", ".xls", ".xlsb", ".xlsm", ".xlsx", ".xlt", ".xltx", ".xml"。文件需先保存到应用沙箱，通过fileUri.getUriFromPath获取到沙箱uri，再作为参数传入到本接口。 |
+| files | Array&lt;string&gt; | 是 | 待打印文件列表，当前支持的文件类型：".bm", ".bmp", ".doc", ".docm", ".docx", ".dot", ".dotm", ".dotx", ".gif", ".jfif", ".jpe", ".jpeg", ".jpg", ".pdf", ".pot", ".potm", ".potx", ".pps", ".ppsm", ".ppsx", ".ppt", ".pptm", ".pptx", ".png", ".rtf", ".txt", ".webp", ".wps", ".xls", ".xlsb", ".xlsm", ".xlsx", ".xlt", ".xltx", ".xml"。文件需先保存到应用沙箱，通过fileUri.getUriFromPath获取到沙箱URI，再作为参数传入到本接口。 |
 | context | Context | 是 | 用于拉起系统打印界面的UIAbilityContext。 |
 
 **返回值：**
@@ -971,12 +971,12 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| copyNumber | number | 否 | 是 | 表示文件打印份数。取值应为正整数，默认为1。 |
-| pageRange | [PrintPageRange](#printpagerange11) | 否 | 是 | 表示待打印文件的页面范围。 |
-| pageSize | [PrintPageSize](#printpagesize11) \| [PrintPageType](#printpagetype11) | 否 | 是 | 表示待打印文件的纸张尺寸。 |
-| directionMode | [PrintDirectionMode](#printdirectionmode11) | 否 | 是 | 表示待打印文件的方向。 |
-| colorMode | [PrintColorMode](#printcolormode11) | 否 | 是 | 表示待打印文件的色彩模式。 |
-| duplexMode | [PrintDuplexMode](#printduplexmode11) | 否 | 是 | 表示待打印文件的单双面模式。 |
+| copyNumber | number | 否 | 是 | 表示文件打印份数。取值应为正整数。不传入时默认值为0。 |
+| pageRange | [PrintPageRange](#printpagerange11) | 否 | 是 | 表示待打印文件的页面范围。不传入时默认值为空范围对象。 |
+| pageSize | [PrintPageSize](#printpagesize11) \| [PrintPageType](#printpagetype11) | 否 | 是 | 表示待打印文件的纸张尺寸。不传入时默认值为空纸张尺寸对象。 |
+| directionMode | [PrintDirectionMode](#printdirectionmode11) | 否 | 是 | 表示待打印文件的方向。不传入时默认值为0。 |
+| colorMode | [PrintColorMode](#printcolormode11) | 否 | 是 | 表示待打印文件的色彩模式。不传入时默认值为0。 |
+| duplexMode | [PrintDuplexMode](#printduplexmode11) | 否 | 是 | 表示待打印文件的单双面模式。不传入时默认值为0。 |
 
 ## PrintPageRange<sup>11+</sup>
 
@@ -988,8 +988,8 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| startPage | number | 否 | 是 | 表示起始页。默认值为1。 |
-| endPage | number | 否 | 是 | 表示结束页。默认值为待打印文件的最大页数。 |
+| startPage | number | 否 | 是 | 表示起始页。取值应为正整数，默认值为1。 |
+| endPage | number | 否 | 是 | 表示结束页。取值应为正整数，默认值为待打印文件的最大页数。 |
 | pages | Array&lt;number&gt; | 否 | 是 | 表示待打印的页面范围的集合。默认值为空。|
 
 
@@ -1005,7 +1005,7 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 | -------- | -------- | -------- | -------- | -------- |
 | id | string | 否 | 否 | 表示纸张类型ID。 |
 | name | string | 否 | 否 | 表示纸张类型名称。 |
-| height | number | 否 | 否 | 表示页面高度，单位：密尔（千分之一英寸）。 |
+| width | number | 否 | 否 | 表示页面宽度，单位：密尔（千分之一英寸）。 |
 | height | number | 否 | 否 | 表示页面高度，单位：密尔（千分之一英寸）。 |
 
 
@@ -1178,11 +1178,11 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 | E_PRINT_RPC_FAILURE | 13100002 | 表示RPC失败，请检查RPC通信状态并重试。 |
 | E_PRINT_SERVER_FAILURE | 13100003 | 表示打印服务失败，请检查打印服务是否正常运行并重试。 |
 | E_PRINT_INVALID_EXTENSION | 13100004 | 表示打印扩展无效，请检查扩展能力实现是否正确。 |
-| E_PRINT_INVALID_PRINTER | 13100005 | 表示打印机无效，请确认打印机 ID 及打印机信息是否正确后重试 |
+| E_PRINT_INVALID_PRINTER | 13100005 | 表示打印机无效，请确认打印机 ID 及打印机信息是否正确后重试。 |
 | E_PRINT_INVALID_PRINT_JOB | 13100006 | 表示打印任务无效，请检查任务 ID 和状态是否正确。 |
 | E_PRINT_FILE_IO | 13100007 | 表示文件输入/输出错误，请检查文件路径、文件状态和操作是否正确。 |
 | E_PRINT_TOO_MANY_FILES<sup>18+</sup> | 13100010 | 表示文件数量超过上限，当前上限99个。 |
-| E_PRINT_SMB_LOGIN_LOCKOUT<sup>24+</sup> | 13100012 | 表示当前SMB协议共享打印机账号因多次登录失败而被锁定。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> |
+| E_PRINT_SMB_LOGIN_LOCKOUT<sup>24+</sup> | 13100012 | 表示当前SMB协议共享打印机账号因多次登录失败而被锁定。请等待账号解锁后重试，或联系管理员处理。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> |
 | E_PRINT_SMB_CONNECTION_FAILURE<sup>24+</sup> | 13100013 | 表示SMB协议共享打印机连接失败（发生网络错误、主机不可达或端口被阻止）。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> |
 | E_PRINT_SMB_INVALID_CREDENTIALS<sup>24+</sup> | 13100014 | 表示SMB协议共享打印机账号/密码错误。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> |
 
@@ -1236,7 +1236,7 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let printerInformation : print.PrinterInformation = {
-    printerId : 'testPrinterId',
+    printerId : 'testPrinterId', // printerId可通过on('printerChange')回调获取
     printerName : 'testPrinterName',
     printerStatus : 0,
     description : 'testDesc',
@@ -1306,7 +1306,7 @@ let testCapability : print.PrinterCapabilities = {
 };
 
 let printerInformation : print.PrinterInformation = {
-    printerId : 'testPrinterId',
+    printerId : 'testPrinterId', // printerId可通过on('printerChange')回调获取
     printerName : 'testPrinterName',
     printerStatus : 0,
     description : 'testDesc',
@@ -1427,15 +1427,15 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 | printerId | string | 否 | 否 | 表示打印机ID。 |
 | printerName | string | 否 | 否 | 表示打印机名称。 |
 | printerStatus | [PrinterStatus](#printerstatus14) | 否 | 否 | 表示当前打印机状态。 |
-| description | string | 否 | 是 | 表示打印机说明。 |
+| description | string | 否 | 是 | 表示打印机说明。不传入时默认值为空字符串。 |
 | capability | [PrinterCapabilities](#printercapabilities14) | 否 | 是 | 表示打印机能力。 |
-| uri | string | 否 | 是 | 表示打印机URI。 |
-| printerMake | string | 否 | 是 | 表示打印机型号。 |
+| uri | string | 否 | 是 | 表示打印机URI。不传入时默认值为空字符串。 |
+| printerMake | string | 否 | 是 | 表示打印机型号。不传入时默认值为空字符串。 |
 | preferences<sup>18+</sup> | [PrinterPreferences](#printerpreferences18) | 否 | 是 | 表示打印机首选项。 |
-| alias<sup>18+</sup> | string | 否 | 是 | 表示打印机别名。 |
+| alias<sup>18+</sup> | string | 否 | 是 | 表示打印机别名。不传入时默认值为空字符串。 |
 | selectedDriver<sup>24+</sup> | [PpdInfo](#ppdinfo24) | 否 | 是 | 表示添加打印机时选择的驱动的信息。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> |
-| selectedProtocol<sup>24+</sup> | string | 否 | 是 | 表示添加打印机时选择的协议。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> |
-| options | string | 否 | 是 | 表示打印机详细信息。 |
+| selectedProtocol<sup>24+</sup> | string | 否 | 是 | 表示添加打印机时选择的协议。不传入时默认值为空字符串。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> |
+| options | string | 否 | 是 | 表示打印机详细信息。不传入时默认值为空字符串。 |
 
 ## PrinterCapabilities<sup>14+</sup>
 
@@ -1450,12 +1450,12 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 | supportedPageSizes | Array&lt;[PrintPageSize](#printpagesize11)&gt; | 否 | 否 | 表示打印机支持的纸张尺寸列表。 |
 | supportedColorModes | Array&lt;[PrintColorMode](#printcolormode11)&gt; | 否 | 否 | 表示打印机支持的色彩模式列表。 |
 | supportedDuplexModes | Array&lt;[PrintDuplexMode](#printduplexmode11)&gt; | 否 | 否 | 表示打印机支持的单双面模式列表。 |
-| supportedMediaTypes | Array&lt;string&gt; | 否 | 是 | 表示打印机支持的纸张类型列表。 |
-| supportedQualities | Array&lt;[PrintQuality](#printquality14)&gt; | 否 | 是 | 表示打印机支持的打印质量列表。 |
-| supportedOrientations | Array&lt;[PrintOrientationMode](#printorientationmode14)&gt; | 否 | 是 | 表示打印机支持的打印方向列表。 |
-| options | string | 否 | 是 | 表示打印机能力详细信息。 |
-| vendorPrinterPrefAbility | string | 否 | 是 | 表示由打印机驱动厂商提供的打印机首选项设置界面。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0<br> |
-| vendorJobAttrAbility | string | 否 | 是 | 表示由打印机驱动厂商提供的打印任务属性设置界面。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0<br> |
+| supportedMediaTypes | Array&lt;string&gt; | 否 | 是 | 表示打印机支持的纸张类型列表。不传入时默认值为空列表。 |
+| supportedQualities | Array&lt;[PrintQuality](#printquality14)&gt; | 否 | 是 | 表示打印机支持的打印质量列表。不传入时默认值为空列表。 |
+| supportedOrientations | Array&lt;[PrintOrientationMode](#printorientationmode14)&gt; | 否 | 是 | 表示打印机支持的打印方向列表。不传入时默认值为空列表。 |
+| options | string | 否 | 是 | 表示打印机能力详细信息。不传入时默认值为空字符串。 |
+| vendorPrinterPrefAbility | string | 否 | 是 | 表示由打印机驱动厂商提供的打印机首选项设置界面。不传入时默认值为空字符串。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0<br> |
+| vendorJobAttrAbility | string | 否 | 是 | 表示由打印机驱动厂商提供的打印任务属性设置界面。不传入时默认值为空字符串。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0<br> |
 
 ## PrintQuality<sup>14+</sup>
 
@@ -1898,7 +1898,7 @@ connectPrinter(printerId: string): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| printerId | string | 是 | 打印机ID。 |
+| printerId | string | 是 | 表示打印机ID。 |
 
 **返回值：**
 
@@ -1933,7 +1933,7 @@ print.connectPrinter(printerId).then(() => {
 
 startPrint(job: PrintJobData): Promise&lt;void&gt;
 
-打印接口，传入文件或者二进制数据进行打印，使用Promise异步回调。
+打印接口，传入文件或者二进制数据进行打印，使用Promise异步回调。该接口直接通过PrintJobData指定目标打印机ID及打印参数创建打印任务；如需拉起系统打印预览界面，请使用print.print接口。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -2017,7 +2017,7 @@ print.startPrint(printJobData).then(() => {
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| FILE_DESCRIPTOR | 0 | 表示文件数据。 |
+| FILE_DESCRIPTOR | 0 | 表示文件描述符。 |
 | BYTES | 1 | 表示二进制数据。 |
 
 ## PrintJobData<sup>23+</sup>
@@ -2077,8 +2077,8 @@ print.startPrint(printJobData).then(() => {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| startPage | number | 否 | 是 | 表示起始页。默认值为1。 |
-| endPage | number | 否 | 是 | 表示结束页。默认值为待打印文件的最大页数。 |
+| startPage | number | 否 | 是 | 表示起始页。取值应为正整数，默认值为1。 |
+| endPage | number | 否 | 是 | 表示结束页。取值应为正整数，默认值为待打印文件的最大页数。 |
 | pages | Array&lt;number&gt; | 否 | 是 | 表示待打印的页面范围的集合。默认值为空。 |
 
 ## PreviewAttribute<sup>24+</sup>
@@ -2127,7 +2127,7 @@ print.startPrint(printJobData).then(() => {
 
 ## PrinterInfo<sup>24+</sup>
 
-定义打印信息的接口。
+定义打印机信息的接口。
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -2322,7 +2322,7 @@ let testCapability : print.PrinterCapabilities = {
 };
 
 let printerInformation : print.PrinterInformation = {
-    printerId : 'testPrinterId',
+    printerId : 'testPrinterId', // printerId可通过on('printerChange')回调获取
     printerName : 'testPrinterName',
     printerStatus : 0,
     description : 'testDesc',
@@ -2374,7 +2374,7 @@ print.updatePrinterInformation(printerInformation).then(() => {
 
 addPrinter(printerName: string, uri: string, ppdName?: string, options?: string): Promise&lt;boolean&gt;
 
-添加打印机到系统中，使用Promise异步回调。
+添加打印机到系统中，使用Promise异步回调。该接口面向打印驱动、打印管理软件、三方打印管理软件、云打印等需要管理打印机或扫描仪的场景。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB 或 ohos.permission.PRINTER_DRIVER
 
@@ -2388,8 +2388,8 @@ addPrinter(printerName: string, uri: string, ppdName?: string, options?: string)
 | -------- | -------- | -------- | -------- |
 | printerName | string | 是 | 表示打印机名称。 |
 | uri | string | 是 | 表示打印机的URI。 |
-| ppdName | string | 否 | 表示打印机的PPD文件名称。当需要指定特定PPD驱动文件时传入此参数，不传入时系统自动匹配。 |
-| options | string | 否 | JSON对象字符串，表示打印机选项参数。 |
+| ppdName | string | 否 | 表示打印机PPD驱动文件在文件系统中的名称。该名称由设备安装厂商驱动后生成，命名格式为“包名_模块名_文件名”，具体名称需向驱动厂商获取。当需要指定特定PPD驱动文件时传入此参数，不传入时系统自动匹配。 |
+| options | string | 否 | JSON对象字符串，表示打印机选项参数。预留字段，暂未启用。 |
 
 **返回值：**
 
@@ -2511,7 +2511,7 @@ unregisterWatermarkCallback(callback?: WatermarkCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [WatermarkCallback](#printwatermarkcallback24) | 否 | 表示注册监听强制水印处理时使用的回调类型。 |
+| callback | [WatermarkCallback](#printwatermarkcallback24) | 否 | 表示要注销的水印处理回调。不传入时取消调用方所有已注册的回调。 |
 
 **错误码：**
 

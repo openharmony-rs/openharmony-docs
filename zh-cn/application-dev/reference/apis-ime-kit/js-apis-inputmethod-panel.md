@@ -2,7 +2,7 @@
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->
-<!--Designer: @andeszhang-->
+<!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -51,14 +51,6 @@ let candidatePanel = {
   type: PanelType.SOFT_KEYBOARD,
   flag: PanelFlag.FLAG_CANDIDATE
 };
-
-// 4. 在输入法应用中，使用InputMethodAbility创建面板（跨模块组合）
-// let inputMethodAbility = inputMethodEngine.getInputMethodAbility();
-// let panel = inputMethodAbility.createPanel(context, softKeyboardFixed);
-
-// 5. 候选词态面板的显隐需开发者自行控制
-// panel.show();   // 开发者主动显示
-// panel.hide();   // 开发者主动隐藏
 ```
 
 > **说明：**

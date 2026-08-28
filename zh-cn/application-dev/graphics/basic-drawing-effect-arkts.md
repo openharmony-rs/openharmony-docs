@@ -21,7 +21,7 @@
 
 ### 接口说明
 
-使用画刷（Brush）设置绘制效果的常用接口如下表所示，详细的使用和参数请见[drawing.Brush](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Brush.md)。
+使用画刷（Brush）设置绘制效果的常用接口如下表所示，详细的使用和参数请见[drawing.Brush](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Brush.md)和[drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md)。
 
 | 接口 | 描述 |
 | -------- | -------- |
@@ -38,7 +38,7 @@
    <!-- @[arkts_graphics_draw_create_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
    
    ``` TypeScript
-   // 设置画刷
+   // 创建画刷
    const brush = new drawing.Brush();
    ```
 
@@ -90,7 +90,7 @@
 
 ### 接口说明
 
-使用画笔（Pen）设置绘制效果的常用接口如下表所示，详细的使用和参数请见[drawing.Pen](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Pen.md)。
+使用画笔（Pen）设置绘制效果的常用接口如下表所示，详细的使用和参数请见[drawing.Pen](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Pen.md)和[drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md)。
 
 
 | 接口 | 描述 |

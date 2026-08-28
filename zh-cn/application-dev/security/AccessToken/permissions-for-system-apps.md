@@ -4532,7 +4532,7 @@
 
 ## ohos.permission.SET_CODE_PROTECT_INFO
 
-允许系统应用设置云侧公钥以及工作秘钥密文，并协商代码保护秘钥信息。
+允许系统应用设置云侧公钥以及工作密钥密文，并协商代码保护密钥信息。
 
 **权限级别**：system_core
 
@@ -9067,6 +9067,20 @@
 ## ohos.permission.vehicle.DEVICE_AUTH
 
 允许车辆后排扶手屏应用连接车机，进行设备认证。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.AutoWiredProjection
+
+允许应用使用有线投屏服务，以查询DP设备信息、投屏状态等。
 
 **权限级别**：system_basic
 

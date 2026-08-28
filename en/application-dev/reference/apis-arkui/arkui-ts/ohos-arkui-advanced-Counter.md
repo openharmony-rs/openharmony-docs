@@ -16,7 +16,7 @@ The **Counter** component is used for precise numerical value adjustment. It sup
 >
 > - The APIs of this module can be used only in the stage model.
 >
-> - If the **Counter** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) set, the compilation toolchain generates an additional node named __Common__ and attaches the universal attributes or events to __Common__ instead of directly applying them to the **Counter** component. This may cause the universal attributes or events to not take effect or behave unexpectedly. Therefore, setting universal attributes and events for the **Counter** component is not recommended.
+> - If the **Counter** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) set, the compilation toolchain generates an additional node named \_\_Common\_\_ and attaches the universal attributes or events to \_\_Common\_\_ instead of directly applying them to the **Counter** component. This may cause the universal attributes or events to not take effect or behave unexpectedly. Therefore, setting universal attributes and events for the **Counter** component is not recommended.
 
 ## Modules to Import
 
