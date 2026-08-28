@@ -171,7 +171,7 @@
       
       ``` C++
       // 设置画笔线帽样式
-      OH_Drawing_PenSetCap(pen, OH_Drawing_PenLineCapStyle::LINE_ROUND_CAP);
+      OH_Drawing_PenSetCap(pen, LINE_ROUND_CAP);
       ```
 
       OH_Drawing_PenLineCapStyle线帽样式可选分类对应如下：
@@ -188,7 +188,7 @@
       
       ``` C++
       // 设置画笔转角样式
-      OH_Drawing_PenSetJoin(pen, OH_Drawing_PenLineJoinStyle::LINE_BEVEL_JOIN);
+      OH_Drawing_PenSetJoin(pen, LINE_BEVEL_JOIN);
       ```
 
       OH_Drawing_PenLineJoinStyle转角样式可选分类对应如下：
