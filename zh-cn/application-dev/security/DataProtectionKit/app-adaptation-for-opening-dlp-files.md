@@ -178,6 +178,20 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
     
     2.4 应用内使用文件Picker进行文件加密分享
     <!-- @[dlp_callFilePicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    async callFilePicker(): Promise<void> {
+      try {
+        let context = this.getUIContext()?.getHostContext() as common.UIAbilityContext;
+        let documentSelectOptions = new picker.DocumentSelectOptions();
+        documentSelectOptions.isEncryptionSupported = true; // 显示加密分享按钮。
+        let documentPicker = new picker.DocumentViewPicker(context);
+        const documentSelectResult: string[] = await documentPicker.select(documentSelectOptions); // 获取文件URI。
+      } catch (err) {
+        console.error('CallFilePickerSelectFile failed');
+      }
+    }
+    ```
   
 3. 应用内支持对DLP文件权限设置。
 
