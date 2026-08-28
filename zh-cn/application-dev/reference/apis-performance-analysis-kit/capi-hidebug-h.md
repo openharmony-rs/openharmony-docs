@@ -66,10 +66,10 @@
 | [HiDebug_ErrorCode OH_HiDebug_SetMaxAsyncNestingDepth(OH_HiDebug_ProfilerOptions *opts, uint32_t depth)](#oh_hidebug_setmaxasyncnestingdepth) | - | 设置异步调用最大嵌套深度（也称为最大嵌套层数）。 |
 | [HiDebug_ErrorCode OH_HiDebug_SetMaxAsyncTaskStackDepth(OH_HiDebug_ProfilerOptions *opts, uint32_t depth)](#oh_hidebug_setmaxasynctaskstackdepth) | - | 设置异步任务函数的最大回栈深度。 |
 | [HiDebug_ErrorCode OH_HiDebug_SetSampleIntervalBytes(OH_HiDebug_ProfilerOptions *opts, uint32_t bytes)](#oh_hidebug_setsampleintervalbytes) | - | 设置采样间隔，单位字节。 |
-| [HiDebug_ErrorCode OH_HiDebug_SetStatisticsIntervalSec(OH_HiDebug_ProfilerOptions *opts, uint32_t seconds)](#oh_hidebug_setstatisticsintervalsec) | - | 设置统计间隔，单位秒。 |
+| [HiDebug_ErrorCode OH_HiDebug_SetStatisticsIntervalSec(OH_HiDebug_ProfilerOptions *opts, uint32_t seconds)](#oh_hidebug_setstatisticsintervalsec) | - | 设置统计间隔，单位为s。 |
 | [HiDebug_ErrorCode OH_HiDebug_SetMaxStackDepth(OH_HiDebug_ProfilerOptions *opts, uint32_t depth)](#oh_hidebug_setmaxstackdepth) | - | 设置最大回栈深度。 |
 | [HiDebug_ErrorCode OH_HiDebug_SetFilterSize(OH_HiDebug_ProfilerOptions *opts, uint32_t size)](#oh_hidebug_setfiltersize) | - | 设置内存分配过滤大小。 |
-| [HiDebug_ErrorCode OH_HiDebug_SetMaxDurationSec(OH_HiDebug_ProfilerOptions *opts, uint32_t seconds)](#oh_hidebug_setmaxdurationsec) | - | 设置最大采集时长，单位秒。 |
+| [HiDebug_ErrorCode OH_HiDebug_SetMaxDurationSec(OH_HiDebug_ProfilerOptions *opts, uint32_t seconds)](#oh_hidebug_setmaxdurationsec) | - | 设置最大采集时长，单位为s。 |
 | [HiDebug_ErrorCode OH_HiDebug_StartProfilerWithOptions(OH_HiDebug_ResourceType type, OH_HiDebug_ProfilerOptions *opts, OH_HiDebug_ProfilingCallback callback)](#oh_hidebug_startprofilerwithoptions) | - | 按指定资源类型和配置开启资源采集。须与[OH_HiDebug_StopProfiler](#oh_hidebug_stopprofiler)配对使用。 |
 
 ## 函数说明
@@ -882,7 +882,7 @@ HiDebug_ErrorCode OH_HiDebug_SetMaxAsyncNestingDepth(OH_HiDebug_ProfilerOptions 
 | 参数项 | 描述 |
 | -- | -- |
 | OH_HiDebug_ProfilerOptions* opts | 指向OH_HiDebug_ProfilerOptions结构体的指针，不能为NULL。 |
-| uint32_t depth | 允许的最大异步嵌套深度。 |
+| uint32_t depth | 允许的最大异步嵌套深度，取值范围为[1, 16]。 |
 
 **返回：**
 
@@ -907,7 +907,7 @@ HiDebug_ErrorCode OH_HiDebug_SetMaxAsyncTaskStackDepth(OH_HiDebug_ProfilerOption
 | 参数项 | 描述 |
 | -- | -- |
 | OH_HiDebug_ProfilerOptions* opts | 指向OH_HiDebug_ProfilerOptions结构体的指针，不能为NULL。 |
-| uint32_t depth | 最大异步任务回栈深度。 |
+| uint32_t depth | 最大异步任务回栈深度，取值范围为[1, 256]。 |
 
 **返回：**
 
@@ -932,7 +932,7 @@ HiDebug_ErrorCode OH_HiDebug_SetSampleIntervalBytes(OH_HiDebug_ProfilerOptions *
 | 参数项 | 描述 |
 | -- | -- |
 | OH_HiDebug_ProfilerOptions* opts | 指向OH_HiDebug_ProfilerOptions结构体的指针，不能为NULL。 |
-| uint32_t bytes | 采样间隔，单位字节。 |
+| uint32_t bytes | 采样间隔，取值范围为[384, 4294967295]，单位为Byte。 |
 
 **返回：**
 
@@ -948,7 +948,7 @@ HiDebug_ErrorCode OH_HiDebug_SetStatisticsIntervalSec(OH_HiDebug_ProfilerOptions
 
 **描述**
 
-设置统计间隔，单位秒。
+设置统计间隔，单位为s。
 
 **起始版本：** 26.1.0
 
@@ -957,7 +957,7 @@ HiDebug_ErrorCode OH_HiDebug_SetStatisticsIntervalSec(OH_HiDebug_ProfilerOptions
 | 参数项 | 描述 |
 | -- | -- |
 | OH_HiDebug_ProfilerOptions* opts | 指向OH_HiDebug_ProfilerOptions结构体的指针，不能为NULL。 |
-| uint32_t seconds | 统计间隔，单位秒。 |
+| uint32_t seconds | 统计间隔，取值范围为[0, 3600]，单位为s。 |
 
 **返回：**
 
@@ -982,7 +982,7 @@ HiDebug_ErrorCode OH_HiDebug_SetMaxStackDepth(OH_HiDebug_ProfilerOptions *opts, 
 | 参数项 | 描述 |
 | -- | -- |
 | OH_HiDebug_ProfilerOptions* opts | 指向OH_HiDebug_ProfilerOptions结构体的指针，不能为NULL。 |
-| uint32_t depth | 最大回栈深度。 |
+| uint32_t depth | 最大回栈深度，取值范围为[1, 256]。 |
 
 **返回：**
 
@@ -1007,7 +1007,7 @@ HiDebug_ErrorCode OH_HiDebug_SetFilterSize(OH_HiDebug_ProfilerOptions *opts, uin
 | 参数项 | 描述 |
 | -- | -- |
 | OH_HiDebug_ProfilerOptions* opts | 指向OH_HiDebug_ProfilerOptions结构体的指针，不能为NULL。 |
-| uint32_t size | 过滤大小阈值，单位字节。 |
+| uint32_t size | 过滤大小阈值，取值范围为[1, 4294967295]，单位为Byte。 |
 
 **返回：**
 
@@ -1023,7 +1023,7 @@ HiDebug_ErrorCode OH_HiDebug_SetMaxDurationSec(OH_HiDebug_ProfilerOptions *opts,
 
 **描述**
 
-设置最大采集时长，单位秒。
+设置最大采集时长，单位为s。
 
 **起始版本：** 26.1.0
 
@@ -1032,7 +1032,7 @@ HiDebug_ErrorCode OH_HiDebug_SetMaxDurationSec(OH_HiDebug_ProfilerOptions *opts,
 | 参数项 | 描述 |
 | -- | -- |
 | OH_HiDebug_ProfilerOptions* opts | 指向OH_HiDebug_ProfilerOptions结构体的指针，不能为NULL。 |
-| uint32_t seconds | 最大采集时长，单位秒。 |
+| uint32_t seconds | 最大采集时长，取值范围[1, 3600]，单位为s。 |
 
 **返回：**
 
