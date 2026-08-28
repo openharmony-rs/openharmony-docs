@@ -1,12 +1,11 @@
 # oh_window_pip.h
-
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @betafringe007-->
 <!--Designer: @taoweihua-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=36f4c856d2f5d80b3accd234ca21bbd6de8dfb80 translatedAt=2026-08-25T02:18:51.181Z pushedAt=2026-08-25T03:01:30.494Z -->
+<!-- md-trans-meta sourceCommit=5f7a56053daa3c9ad71ed428e2208f2251406c59 translatedAt=2026-08-27T08:50:53.479Z pushedAt=2026-08-28T03:42:43.735Z -->
 
 ## Overview
 
@@ -191,6 +190,7 @@ Enumerates the PiP lifecycle states.
 | ABOUT_TO_RESTORE = 5 | The original page is about to restore.|
 | ERROR = 6 | An error occurs during the execution of the PiP lifecycle.|
 
+
 ## Function Description
 
 ### WebPipStartPipCallback()
@@ -204,6 +204,7 @@ typedef void (*WebPipStartPipCallback)(uint32_t controllerId, uint8_t requestId,
 Defines a callback function for PiP window creation.
 
 **Since**: 20
+
 
 **Parameters**
 
@@ -225,6 +226,7 @@ Defines a callback function for PiP window lifecycle changes.
 
 **Since**: 20
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -245,6 +247,7 @@ Defines a callback function for the component click event of the PiP window.
 
 **Since**: 20
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -264,6 +267,7 @@ typedef void (*WebPipResizeCallback)(uint32_t controllerId, uint32_t width, uint
 Defines a callback function for PiP window size changes.
 
 **Since**: 20
+
 
 **Parameters**
 
@@ -286,11 +290,12 @@ Creates a PiP configuration.
 
 **Since**: 20
 
+
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| [PictureInPicture_PipConfig](capi-pictureinpicture-pipconfig.md)* pipConfig | Pointer to the PiP parameter configuration.|
+| [PictureInPicture_PipConfig](capi-pictureinpicture-pipconfig.md)* pipConfig | Pointer used to receive the created PiP configuration. |
 
 **Return value**
 
@@ -309,6 +314,7 @@ int32_t OH_PictureInPicture_DestroyPipConfig(PictureInPicture_PipConfig* pipConf
 Destroys a PiP configuration.
 
 **Since**: 20
+
 
 **Parameters**
 
@@ -333,6 +339,7 @@ int32_t OH_PictureInPicture_SetPipMainWindowId(PictureInPicture_PipConfig pipCon
 Sets the ID of the main window that launches PiP.
 
 **Since**: 20
+
 
 **Parameters**
 
@@ -359,6 +366,7 @@ Sets the PiP template type. The default value is video playback.
 
 **Since**: 20
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -383,6 +391,7 @@ int32_t OH_PictureInPicture_SetPipRect(PictureInPicture_PipConfig pipConfig, uin
 Sets the size of the PiP window for calculating the aspect ratio.
 
 **Since**: 20
+
 
 **Parameters**
 
@@ -410,6 +419,7 @@ Sets a PiP component group, which must match the template type.
 
 **Since**: 20
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -436,6 +446,7 @@ Sets the runtime environment for launching PiP.
 
 **Since**: 20
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -460,6 +471,7 @@ int32_t OH_PictureInPicture_CreatePip(PictureInPicture_PipConfig pipConfig, uint
 Creates a PiP controller.
 
 **Since**: 20
+
 
 **Parameters**
 
@@ -486,6 +498,7 @@ Deletes a PiP controller.
 
 **Since**: 20
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -510,6 +523,7 @@ Starts PiP.
 
 **Since**: 20
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -533,6 +547,7 @@ int32_t OH_PictureInPicture_StopPip(uint32_t controllerId)
 Stops PiP.
 
 **Since**: 20
+
 
 **Parameters**
 
@@ -586,6 +601,7 @@ Updates the PiP component status.
 
 **Since**: 20
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -611,6 +627,7 @@ int32_t OH_PictureInPicture_SetPipControlEnabled(uint32_t controllerId, PictureI
 Sets the PiP component enabled status.
 
 **Since**: 20
+
 
 **Parameters**
 
@@ -638,6 +655,7 @@ Registers a callback to listen for the completion of PiP surface creation.
 
 **Since**: 20
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -662,6 +680,7 @@ int32_t OH_PictureInPicture_UnregisterStartPipCallback(uint32_t controllerId, We
 Unregisters the callback used to listen for the completion of PiP surface creation.
 
 **Since**: 20
+
 
 **Parameters**
 
@@ -688,6 +707,7 @@ Unregisters all the callbacks used to listen for the completion of PiP surface c
 
 **Since**: 20
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -711,6 +731,7 @@ int32_t OH_PictureInPicture_RegisterLifecycleListener(uint32_t controllerId, Web
 Registers a callback to listen for PiP lifecycle state changes.
 
 **Since**: 20
+
 
 **Parameters**
 
@@ -737,6 +758,7 @@ Unregisters the callback used to listen for PiP lifecycle state changes.
 
 **Since**: 20
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -762,6 +784,7 @@ Unregisters all the callbacks used to listen for PiP lifecycle state changes.
 
 **Since**: 20
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -785,6 +808,7 @@ int32_t OH_PictureInPicture_RegisterControlEventListener(uint32_t controllerId, 
 Registers a callback to listen for control panel action events in PiP mode.
 
 **Since**: 20
+
 
 **Parameters**
 
@@ -811,6 +835,7 @@ Unregisters the callback used to listen for control panel action events in PiP m
 
 **Since**: 20
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -836,6 +861,7 @@ Unregisters all the callbacks used to listen for control panel action events in 
 
 **Since**: 20
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -859,6 +885,7 @@ int32_t OH_PictureInPicture_RegisterResizeListener(uint32_t controllerId, WebPip
 Registers a callback to listen for PiP window size changes.
 
 **Since**: 20
+
 
 **Parameters**
 
@@ -884,6 +911,7 @@ int32_t OH_PictureInPicture_UnregisterResizeListener(uint32_t controllerId, WebP
 Unregisters the callback used to listen for PiP window size changes.
 
 **Since**: 20
+
 
 **Parameters**
 
