@@ -219,9 +219,9 @@ try {
 
 ## getAvailableFormHostServices
 
-getAvailableFormHostServices(): Promise&lt;Array&lt;[formInfo.PeerFormHostServiceInfo](js-apis-app-form-formInfo-sys.md#peerformhostserviceinfo)&gt;&gt;
+getAvailableFormHostServices(): Promise&lt;Array&lt;formInfo.PeerFormHostServiceInfo&gt;&gt;
 
-获取可用的卡片宿主服务信息列表。使用Promise异步回调。
+获取可用的卡片使用方服务信息列表。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -237,7 +237,7 @@ getAvailableFormHostServices(): Promise&lt;Array&lt;[formInfo.PeerFormHostServic
 
 | 类型                                                                                                                          | 说明                          |
 |----------------------------------------------------------------------------------------------------------------------------|-----------------------------|
-| Promise&lt;Array&lt;[formInfo.PeerFormHostServiceInfo](js-apis-app-form-formInfo-sys.md#peerformhostserviceinfo)&gt;&gt; | Promise对象，返回可用的卡片宿主服务信息列表。 |
+| Promise&lt;Array&lt;[formInfo.PeerFormHostServiceInfo](js-apis-app-form-formInfo-sys.md#peerformhostserviceinfo)&gt;&gt; | Promise对象，返回可用的卡片使用方服务信息列表。 |
 
 **错误码：**
 
@@ -268,9 +268,9 @@ try {
 
 ## requestPublishFormCrossDevice
 
-requestPublishFormCrossDevice(peerServiceInfo: [formInfo.PeerFormHostServiceInfo](js-apis-app-form-formInfo-sys.md#peerformhostserviceinfo), want: Want, formBindingData?: [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata)): Promise&lt;[formInfo.PublishFormCrossDeviceResult](js-apis-app-form-formInfo-sys.md#publishformcrossdeviceresult)&gt;
+requestPublishFormCrossDevice(peerServiceInfo: formInfo.PeerFormHostServiceInfo, want: Want, formBindingData?: formBindingData.FormBindingData): Promise&lt;formInfo.PublishFormCrossDeviceResult&gt;
 
-请求将卡片发布到远端设备的卡片宿主服务。使用Promise异步回调。
+请求将卡片发布到远端设备的卡片使用方服务。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -286,7 +286,7 @@ requestPublishFormCrossDevice(peerServiceInfo: [formInfo.PeerFormHostServiceInfo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | -------|
-| peerServiceInfo | [formInfo.PeerFormHostServiceInfo](js-apis-app-form-formInfo-sys.md#peerformhostserviceinfo) | 是 | 远端卡片宿主服务信息。 |
+| peerServiceInfo | [formInfo.PeerFormHostServiceInfo](js-apis-app-form-formInfo-sys.md#peerformhostserviceinfo) | 是 | 远端卡片使用方服务信息。 |
 | want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 发布请求，需包含以下字段。<br>bundleName: 目标卡片所属应用的bundleName。<br>abilityName: 目标卡片所属应用的Ability。<br>parameters:<br>- ohos.extra.param.key.form_dimension: 目标卡片规格。<br>- ohos.extra.param.key.form_name: 目标卡片名。<br>- ohos.extra.param.key.module_name: 目标卡片moduleName。 |
 | formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | 否 | 用于更新的卡片数据。 |
 

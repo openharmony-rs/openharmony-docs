@@ -3734,7 +3734,7 @@ try {
 
 registerFormHostService(service: [formInfo.FormHostServiceInfo](js-apis-app-form-formInfo-sys.md#formhostserviceinfo)): Promise&lt;string&gt;
 
-注册卡片宿主服务信息。注册成功后，可用于跨设备卡片发布。使用Promise异步回调。
+注册卡片使用方服务信息。注册成功后，可用于跨设备卡片发布。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3750,13 +3750,13 @@ registerFormHostService(service: [formInfo.FormHostServiceInfo](js-apis-app-form
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | -------|
-| service | [formInfo.FormHostServiceInfo](js-apis-app-form-formInfo-sys.md#formhostserviceinfo) | 是 | 待注册到卡片管理服务的卡片宿主服务信息。 |
+| service | [formInfo.FormHostServiceInfo](js-apis-app-form-formInfo-sys.md#formhostserviceinfo) | 是 | 待注册到卡片管理服务的卡片使用方服务信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;string&gt; | Promise对象，返回注册成功的卡片宿主服务的服务Id。|
+| Promise&lt;string&gt; | Promise对象，返回注册成功的卡片使用方服务的服务Id。|
 
 **错误码：**
 
@@ -3795,7 +3795,7 @@ try {
 
 unregisterFormHostService(serviceId: string): Promise&lt;void&gt;
 
-注销卡片宿主服务信息。注销后，对应的卡片宿主服务不可用于跨设备卡片发布。使用Promise异步回调。
+注销卡片使用方服务信息。注销后，对应的卡片使用方服务不可用于跨设备卡片发布。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3811,7 +3811,7 @@ unregisterFormHostService(serviceId: string): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | -------|
-| serviceId | string | 是 | 待注销的卡片宿主服务的服务Id。|
+| serviceId | string | 是 | 待注销的卡片使用方服务的服务Id。|
 
 **返回值：**
 
@@ -3837,7 +3837,7 @@ unregisterFormHostService(serviceId: string): Promise&lt;void&gt;
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let serviceId: string = 'serviceId'; // 待注销的卡片宿主服务的服务Id，请替换为实际的服务Id。
+let serviceId: string = 'serviceId'; // 待注销的卡片使用方服务的服务Id，请替换为实际的服务Id。
 try {
   formHost.unregisterFormHostService(serviceId).then(() => {
     console.info('formHost unregisterFormHostService success');

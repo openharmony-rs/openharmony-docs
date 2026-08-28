@@ -545,7 +545,7 @@ let deleteFormsCallback: formInfo.DeleteFormsCallback =
 
 ## FormHostServiceInfo
 
-卡片宿主服务信息。
+卡片使用方服务信息。
 
 **起始版本：** 26.1.0
 
@@ -564,7 +564,7 @@ let deleteFormsCallback: formInfo.DeleteFormsCallback =
 
 ## PeerFormHostServiceInfo
 
-远端卡片宿主服务信息。
+远端卡片使用方服务信息。
 
 **起始版本：** 26.1.0
 
@@ -576,13 +576,13 @@ let deleteFormsCallback: formInfo.DeleteFormsCallback =
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |-----|-----|------|----|------|
-| serviceName | string | 否 | 否 | 远端卡片宿主服务的服务名称。 |
-| serviceDisplayName | string | 否 | 否 | 远端卡片宿主服务的服务显示名称。 |
-| displayId | string | 否 | 否 | 远端卡片宿主服务的显示标识。 |
-| customData | Record&lt;string, string&gt; | 否 | 是 | 远端卡片宿主服务的自定义数据。 |
-| deviceId | string | 否 | 否 | 远端卡片宿主服务的设备标识。 |
-| networkId | string | 否 | 否 | 远端卡片宿主服务的网络标识。 |
-| serviceId | string | 否 | 否 | 远端卡片宿主服务的服务Id。 |
+| serviceName | string | 否 | 否 | 远端卡片使用方服务的服务名称。 |
+| serviceDisplayName | string | 否 | 否 | 远端卡片使用方服务的服务显示名称。 |
+| displayId | string | 否 | 否 | 远端卡片使用方服务的显示标识。 |
+| customData | Record&lt;string, string&gt; | 否 | 是 | 远端卡片使用方服务的自定义数据。 |
+| deviceId | string | 否 | 否 | 远端卡片使用方服务的设备标识。 |
+| networkId | string | 否 | 否 | 远端卡片使用方服务的网络标识。 |
+| serviceId | string | 否 | 否 | 远端卡片使用方服务的服务Id。 |
 
 ## PublishFormCrossDeviceResult
 
@@ -598,4 +598,4 @@ let deleteFormsCallback: formInfo.DeleteFormsCallback =
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |-----|-----|------|----|------|
-| formId | string | 否 | 否 | 添加到远端卡片宿主服务的卡片标识。 |
+| formId | string | 否 | 否 | 添加到远端卡片使用方服务的卡片标识。 |
