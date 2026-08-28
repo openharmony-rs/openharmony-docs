@@ -749,7 +749,7 @@ try {
   console.error(`interact failed, Code: ${err.code}, message: ${err.message}`);
 }
 ```
-**SmartAutoFill 示例**
+**SmartAutoFill 示例**：
 
 当capList为SmartAutoFill时，必须传入options且parameters中"SmartAutoFill"对象需包含autoFillItems数组，否则填充操作将失败并返回错误码34000001。autoFillItems数组中每个元素的字段说明如下：
 
