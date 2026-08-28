@@ -82,6 +82,16 @@ OH_Usb_SendPipeRequest(pipe, devMmap);
 OH_Usb_DestroyDeviceMemMap(devMmap);
 ```
 
+## 在子进程或非驱动Ability中调用DDK的C-API失败
+
+### 问题现象
+
+在驱动Ability创建的子进程或者非驱动Ability进程中调用Driver Development Kit的C-API，返回异常错误。
+
+### 解决措施
+
+Driver Development Kit提供的C-API仅支持在DriverExtension进程中使用，如果在其他进程中需要实现外设的管理和通信，建议使用[@ohos.usbManager (USB管理)](../../reference/apis-basic-services-kit/js-apis-usbManager.md)、libusb三方库等提供的接口。
+
 ## 多个驱动Ability配置了同一型号外设的情况下，插入该外设只会拉起一个驱动Ability
 
 ### 问题现象
