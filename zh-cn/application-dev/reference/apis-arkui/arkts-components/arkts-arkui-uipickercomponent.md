@@ -224,7 +224,7 @@ struct UIPickerComponentSelectedIndexExample {
 }
 ```
 
-从API version 22开始，该示例实现了设置UIPickerComponent容器的选中项指示器。具体包括：在使用背景指示器时，设置[PickerIndicatorStyle](#pickerindicatorstyle对象说明)的backgroundColor、borderRadius；在使用分割线指示器时，设置[PickerIndicatorStyle](#pickerindicatorstyle对象说明)的strokeWidth、dividerColor、startMargin、endMargin。
+从API version 22开始，该示例实现了设置UIPickerComponent容器的选中项指示器。具体包括：在使用背景指示器时，设置PickerIndicatorStyle的backgroundColor、borderRadius；在使用分割线指示器时，设置PickerIndicatorStyle的strokeWidth、dividerColor、startMargin、endMargin。
 
 ```TypeScript
 // xxx.ets
@@ -1235,7 +1235,7 @@ struct TimeUIPickerComponentExample {
 }
 ```
 
-从API版本26.0.0开始，新增[itemHeight](#itemheight)属性。
+从API版本26.0.0开始，新增itemHeight属性。
 
 ```TypeScript
 // xxx.ets

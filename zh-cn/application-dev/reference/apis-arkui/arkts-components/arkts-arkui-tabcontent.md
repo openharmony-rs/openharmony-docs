@@ -419,7 +419,7 @@ struct TabBarStyleExample {
 }
 ```
 
-本示例通过SubTabBarStyle中的[indicator](#indicator10)属性，实现了子页签下划线基本属性的展示。
+本示例通过SubTabBarStyle中的indicator属性，实现了子页签下划线基本属性的展示。
 
 ```TypeScript
 // xxx.ets
@@ -653,7 +653,7 @@ struct TabsAttr {
 }
 ```
 
-本示例通过[heightAdaptivePolicy](#labelstyle10对象说明)实现了子页签文本高度自适应。
+本示例通过heightAdaptivePolicy实现了子页签文本高度自适应。
 
 ```TypeScript
 // xxx.ets
@@ -737,7 +737,7 @@ struct TabsTextOverflow {
 }
 ```
 
-本示例通过[padding](#padding10)、[verticalAlign](#verticalalign10)、[layoutMode](#layoutmode10)、[symmetricExtensible](arkts-arkui-bottomtabbarstyle-c.md#symmetricextensible)实现了底部页签基本属性的展示。
+本示例通过padding、verticalAlign、layoutMode、[symmetricExtensible](arkts-arkui-bottomtabbarstyle-c.md#symmetricextensible)实现了底部页签基本属性的展示。
 
 ```TypeScript
 // xxx.ets
@@ -1157,7 +1157,7 @@ struct Index {
 }
 ```
 
-该示例实现了通过ComponentContent设置TabBar，使用TabsController的[preloadItems](ts-container-tabs.md#preloaditems12)预加载子节点。
+该示例实现了通过ComponentContent设置TabBar，使用TabsController的preloadItems预加载子节点。
 
 ```TypeScript
 // xxx.ets

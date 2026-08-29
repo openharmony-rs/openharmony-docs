@@ -31,7 +31,7 @@ function notifyUpdatePackages(admin: Want, packageInfo: UpdatePackageInfo): Prom
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| packageInfo | [UpdatePackageInfo](arkts-mdm-systemmanager-updatepackageinfo-i.md) | 是 | 系统更新包信息。   **说明：** 传入的UpdatePackageInfo.packages.path必须是“update”开头的zip 压缩包，传入其他形式的文件会报9201004错误码。 |
+| packageInfo | UpdatePackageInfo | 是 | 系统更新包信息。   **说明：** 传入的UpdatePackageInfo.packages.path必须是“update”开头的zip 压缩包，传入其他形式的文件会报9201004错误码。 |
 
 **返回值：**
 

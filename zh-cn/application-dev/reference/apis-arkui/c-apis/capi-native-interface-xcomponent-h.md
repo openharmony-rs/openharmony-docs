@@ -41,7 +41,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [anonymous enum](#anonymous enum) | - | 枚举API执行结果状态。 |
+| anonymous enum | - | 枚举API执行结果状态。 |
 | [ArkUI_XComponent_ImageAnalyzerState](#arkui_xcomponent_imageanalyzerstate) | ArkUI_XComponent_ImageAnalyzerState | XComponent图像AI分析状态码. |
 | [OH_NativeXComponent_TouchEventType](#oh_nativexcomponent_toucheventtype) | OH_NativeXComponent_TouchEventType | 触摸事件类型。 |
 | [OH_NativeXComponent_TouchPointToolType](#oh_nativexcomponent_touchpointtooltype) | OH_NativeXComponent_TouchPointToolType | 触摸点工具类型。 |

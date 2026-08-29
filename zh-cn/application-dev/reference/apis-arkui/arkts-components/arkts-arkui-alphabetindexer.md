@@ -163,7 +163,7 @@ struct AlphabetIndexerSample {
 }
 ```
 
-通过[autoCollapse](#autocollapse11)属性开启自适应折叠模式。
+通过autoCollapse属性开启自适应折叠模式。
 
 ```TypeScript
 // xxx.ets
@@ -301,7 +301,7 @@ struct AlphabetIndexerSample {
 }
 ```
 
-通过[popupBackgroundBlurStyle](#popupbackgroundblurstyle12)属性实现提示弹窗的背景模糊效果。
+通过popupBackgroundBlurStyle属性实现提示弹窗的背景模糊效果。
 
 ```TypeScript
 // xxx.ets

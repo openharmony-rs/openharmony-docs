@@ -61,15 +61,15 @@ Grid(scroller?: Scroller, layoutOptions?: GridLayoutOptions)
 | --- | --- |
 | [ComputedBarAttribute](arkts-arkui-computedbarattribute-i.md) | 滚动条位置和长度对象。 |
 | [GridLayoutOptions](arkts-arkui-gridlayoutoptions-i.md) | Grid布局选项。其中，irregularIndexes和onGetIrregularSizeByIndex可对仅设置rowsTemplate或columnsTemplate的Grid使用，可以指定一个index数组，并为其中的 index对应的GridItem设置其占据的行数与列数，使用方法参见 示例3；onGetRectByIndex可对同时设置 rowsTemplate和columnsTemplate的Grid使用，为指定的index对应的GridItem设置位置和大小，使用方法参见 示例1。为提高Grid在跳转、列数变化等场景的性能，应该尽量使用GridLayoutOptions。即使Grid中没有任何特殊的跨行跨列节点，也可以通过使用'Grid(this.scroller, {regularSize: [1, 1]})'的方式提高跳转性能。参考<!--RP1--> 使用GridLayoutOptions提升Grid性能<!--RP1End-->。 |
-| [StartLineInfo](arkts-arkui-startlineinfo-i-sys.md) | 用于记录Grid页面内起始行的位置信息。 |
+| StartLineInfo | 用于记录Grid页面内起始行的位置信息。 |
 | [UIGridEvent](arkts-arkui-uigridevent-i.md) | frameNode中[getEvent('Grid')](../arkts-apis/arkts-arkui-typenode-getevent-f.md)方法的返 回值，可用于给Grid节点设置滚动事件。UIGridEvent继承于[UIScrollableCommonEvent](arkts-arkui-uiscrollablecommonevent-i.md)。 |
 
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
-| [OnGetStartIndexByIndexCallback](arkts-arkui-ongetstartindexbyindexcallback-t-sys.md) | 根据指定的目标索引，计算Grid滚动到该位置时页面内对应的起始行，用于支持[scrollToIndex](arkts-arkui-scroller-c.md#scrolltoindex)等操作。此回调需与onGetStartIndexByOffset同时设 置才能生效。 |
-| [OnGetStartIndexByOffsetCallback](arkts-arkui-ongetstartindexbyoffsetcallback-t-sys.md) | 根据Grid的总偏移量，计算当前页面起始行的位置，用于快速滑动或反向滑动场景。此回调需与onGetStartIndexByIndex同时设置才能生效。 |
+| OnGetStartIndexByIndexCallback | 根据指定的目标索引，计算Grid滚动到该位置时页面内对应的起始行，用于支持[scrollToIndex](arkts-arkui-scroller-c.md#scrolltoindex)等操作。此回调需与onGetStartIndexByOffset同时设 置才能生效。 |
+| OnGetStartIndexByOffsetCallback | 根据Grid的总偏移量，计算当前页面起始行的位置，用于快速滑动或反向滑动场景。此回调需与onGetStartIndexByIndex同时设置才能生效。 |
 | [OnGridScrollIndexCallback](arkts-arkui-ongridscrollindexcallback-t.md) | Grid组件可见区域item变化事件的回调类型。 |
 
 ### 枚举
@@ -81,7 +81,7 @@ Grid(scroller?: Scroller, layoutOptions?: GridLayoutOptions)
 
 ## 示例
 
-可以使用[GridLayoutOptions](#gridlayoutoptions10对象说明)中的onGetRectByIndex指定GridItem的位置和大小。
+可以使用GridLayoutOptions中的onGetRectByIndex指定GridItem的位置和大小。
 
 ```TypeScript
 // xxx.ets
@@ -161,7 +161,7 @@ struct GridExample {
 }
 ```
 
-GridDataSource实现了LazyForEach数据源接口[IDataSource](ts-rendering-control-lazyforeach.md#idatasource)，用于通过LazyForEach给Grid提供子组件。
+GridDataSource实现了LazyForEach数据源接口IDataSource，用于通过LazyForEach给Grid提供子组件。
 
 ```TypeScript
 // GridDataSource.ets
@@ -304,7 +304,7 @@ struct GridExample {
 }
 ```
 
-GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+GridDataSource说明及完整代码参考示例2（可滚动Grid和滚动事件）。
 
 ```TypeScript
 // xxx.ets
@@ -391,7 +391,7 @@ struct GridExample {
 }
 ```
 
-GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+GridDataSource说明及完整代码参考示例2（可滚动Grid和滚动事件）。
 
 ```TypeScript
 import { GridDataSource } from './GridDataSource';
@@ -567,7 +567,7 @@ struct GridExample {
 }
 ```
 
-GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+GridDataSource说明及完整代码参考示例2（可滚动Grid和滚动事件）。
 
 ```TypeScript
 import { GridDataSource } from './GridDataSource';
@@ -641,7 +641,7 @@ struct GridExample {
 }
 ```
 
-GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+GridDataSource说明及完整代码参考示例2（可滚动Grid和滚动事件）。
 
 ```TypeScript
 import { GridDataSource } from './GridDataSource';
@@ -688,7 +688,7 @@ struct GridExample {
 }
 ```
 
-GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+GridDataSource说明及完整代码参考示例2（可滚动Grid和滚动事件）。
 
 ```TypeScript
 // xxx.ets
@@ -768,7 +768,7 @@ struct GridExample {
 }
 ```
 
-属性[columnsTemplate](#columnstemplate)中auto-fill、auto-fit和auto-stretch的使用示例。
+属性columnsTemplate中auto-fill、auto-fit和auto-stretch的使用示例。
 
 ```TypeScript
 @Entry
@@ -834,7 +834,7 @@ struct GridColumnsTemplate {
 }
 ```
 
-GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+GridDataSource说明及完整代码参考示例2（可滚动Grid和滚动事件）。
 
 ```TypeScript
 import { GridDataSource } from './GridDataSource';
@@ -895,7 +895,7 @@ struct Index {
 }
 ```
 
-GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+GridDataSource说明及完整代码参考示例2（可滚动Grid和滚动事件）。
 
 ```TypeScript
 // xxx.ets
@@ -945,7 +945,7 @@ struct GridExample {
 }
 ```
 
-GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+GridDataSource说明及完整代码参考示例2（可滚动Grid和滚动事件）。
 
 ```TypeScript
 // xxx.ets
@@ -994,7 +994,7 @@ struct GridExample {
 }
 ```
 
-从API version 20开始，该示例通过[focusWrapMode](#focuswrapmode20)接口，实现了Grid组件方向键走焦换行效果。
+从API version 20开始，该示例通过focusWrapMode接口，实现了Grid组件方向键走焦换行效果。
 
 ```TypeScript
 // xxx.ets
@@ -1166,7 +1166,7 @@ struct Index {
 }
 ```
 
-GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+GridDataSource说明及完整代码参考示例2（可滚动Grid和滚动事件）。
 
 ```TypeScript
 import { GridDataSource } from './GridDataSource';
@@ -1222,7 +1222,7 @@ struct GridScrollToIndexSample {
 }
 ```
 
-GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+GridDataSource说明及完整代码参考示例2（可滚动Grid和滚动事件）。
 
 ```TypeScript
 // xxx.ets
@@ -1519,7 +1519,7 @@ struct GridExample {
 }
 ```
 
-该示例通过[gesture](./ts-gesture-settings.md#gesture)接口，实现了GridItem组件自定义拖拽效果。
+该示例通过gesture接口，实现了GridItem组件自定义拖拽效果。
 
 ```TypeScript
 import { curves } from '@kit.ArkUI';
@@ -1785,7 +1785,7 @@ struct GridItemExample {
 }
 ```
 
-GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+GridDataSource说明及完整代码参考示例2（可滚动Grid和滚动事件）。
 
 ```TypeScript
 // xxx.ets
@@ -1899,7 +1899,7 @@ struct GridExample {
 }
 ```
 
-GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+GridDataSource说明及完整代码参考示例2（可滚动Grid和滚动事件）。
 
 ```TypeScript
 import { GridDataSource } from './GridDataSource';
@@ -1979,7 +1979,7 @@ struct GridExample {
 }
 ```
 
-GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+GridDataSource说明及完整代码参考示例2（可滚动Grid和滚动事件）。
 
 ```TypeScript
 // xxx.ets
@@ -2075,7 +2075,7 @@ struct GridExample {
 }
 ```
 
-GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+GridDataSource说明及完整代码参考示例2（可滚动Grid和滚动事件）。
 
 ```TypeScript
 // xxx.ets
@@ -2164,7 +2164,7 @@ struct GridExample {
 }
 ```
 
-从API版本26.0.0开始，该示例展示了Grid使用LazyForEach的[onMove](./ts-universal-attributes-drag-sorting.md#onmove)接口进行拖拽排序的效果，支持拖动到Grid边缘时触发Grid的自动滚动，同时Grid存在跨行跨列节点。
+从API版本26.0.0开始，该示例展示了Grid使用LazyForEach的onMove接口进行拖拽排序的效果，支持拖动到Grid边缘时触发Grid的自动滚动，同时Grid存在跨行跨列节点。
 
 ```TypeScript
 // RectGridDataSource.ets

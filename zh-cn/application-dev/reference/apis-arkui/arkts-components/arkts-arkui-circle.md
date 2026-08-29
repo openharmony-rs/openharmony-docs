@@ -139,7 +139,7 @@ struct CircleModifierDemo {
 }
 ```
 
-从API版本26.0.0开始，新增Circle组件专有的[fill](#fill)和[stroke](#stroke)接口，支持传入ColorMetrics类型以实现HDR提亮效果。
+从API版本26.0.0开始，新增Circle组件专有的fill和stroke接口，支持传入ColorMetrics类型以实现HDR提亮效果。
 
 ```TypeScript
 // xxx.ets

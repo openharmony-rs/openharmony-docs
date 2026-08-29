@@ -1120,7 +1120,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 context: EnterpriseAdminExtensionContext
 ```
 
-EnterpriseAdminExtensionAbility的上下文。继承自[ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)。
+EnterpriseAdminExtensionAbility的上下文。继承自ExtensionContext。
 
 **类型：** [EnterpriseAdminExtensionContext](arkts-mdm-enterpriseadminextensioncontext-c.md)
 

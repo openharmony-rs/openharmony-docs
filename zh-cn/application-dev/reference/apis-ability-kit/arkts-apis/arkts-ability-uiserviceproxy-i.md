@@ -20,7 +20,7 @@ sendData(data: Record<string, Object>): void
 
 > **说明：**
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 14
 

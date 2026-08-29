@@ -53,7 +53,7 @@ LowPowerAudioSink发生错误时调用该方法。
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)\* sink | 指向OH_LowPowerAudioSink实例的指针。 |
-| errorCode | 发生错误时上报的错误码。请参考[OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) |
+| errorCode | 发生错误时上报的错误码。请参考OH_AVErrCode |
 | const char\* errorMsg | 错误描述信息。 |
 | void\* userData | 用户自定义数据。 |
 
@@ -114,8 +114,8 @@ LowPowerAudioSink音频焦点被打断时调用该方法
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)\* sink | 指向OH_LowPowerAudioSink实例的指针。 |
-| [OH_AudioInterrupt_ForceType](../AudioKit/capi-native-audiostream-base-h.md#oh_audiointerrupt_forcetype) type | 音频打断类型，请参考[OH_AudioInterrupt_ForceType](../AudioKit/capi-native-audiostream-base-h.md#oh_audiointerrupt_forcetype) |
-| [OH_AudioInterrupt_Hint](../AudioKit/capi-native-audiostream-base-h.md#oh_audiointerrupt_hint) hint | 音频打断提示类型, 请参考[OH_AudioInterrupt_Hint](../AudioKit/capi-native-audiostream-base-h.md#oh_audiointerrupt_hint) |
+| OH_AudioInterrupt_ForceType type | 音频打断类型，请参考OH_AudioInterrupt_ForceType |
+| OH_AudioInterrupt_Hint hint | 音频打断提示类型, 请参考OH_AudioInterrupt_Hint |
 | void\* userData | 用户自定义数据。 |
 
 ### OH_LowPowerAudioSink_OnDeviceChanged()
@@ -135,7 +135,7 @@ LowPowerAudioSink设备切换时调用该方法。
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)\* sink | 指向OH_LowPowerAudioSink实例的指针。 |
-| [OH_AudioStream_DeviceChangeReason](../AudioKit/capi-native-audiostream-base-h.md#oh_audiostream_devicechangereason) reason | 输出设备发生变化的原因。请参考[OH_AudioStream_DeviceChangeReason](../AudioKit/capi-native-audiostream-base-h.md#oh_audiostream_devicechangereason) |
+| OH_AudioStream_DeviceChangeReason reason | 输出设备发生变化的原因。请参考OH_AudioStream_DeviceChangeReason |
 | void\* userData | 用户自定义数据。 |
 
 ### OH_LowPowerAudioSink_OnEos()

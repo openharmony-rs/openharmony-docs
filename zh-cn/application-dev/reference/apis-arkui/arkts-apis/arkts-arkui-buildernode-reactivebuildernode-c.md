@@ -121,7 +121,7 @@ constructor(uiContext: UIContext, options?: RenderOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uiContext | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | UI上下文，获取方式可参考 [UIContext获取方法](../../../reference/apis-arkui/js-apis-arkui-node.md#uicontext获取方法)。uiContext需要为一个有效的值，即UI上下文正 确，如果传入非法值或者未设置，会导致创建失败。 |
+| uiContext | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | UI上下文，获取方式可参考 UIContext获取方法。uiContext需要为一个有效的值，即UI上下文正 确，如果传入非法值或者未设置，会导致创建失败。 |
 | options | [RenderOptions](arkts-arkui-buildernode-renderoptions-i.md) | 否 | ReactiveBuilderNode的构造可选参数，参数用于构造节点的理想大小和节点的渲染类型。 默认值：undefined |
 
 ## dispose
@@ -1934,7 +1934,7 @@ reuse(param?: Object): void
 updateConfiguration(): void
 ```
 
-传递系统环境变化事件，触发节点的全量更新。可用于通知对象更新，是否触发更新由应用当前的系统环境变化决定。系统环境变化的相关信息请参见 [@ohos.app.ability.Configuration (环境变量)](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-configuration-configuration-i.md)。
+传递系统环境变化事件，触发节点的全量更新。可用于通知对象更新，是否触发更新由应用当前的系统环境变化决定。系统环境变化的相关信息请参见 @ohos.app.ability.Configuration (环境变量)。
 
 **起始版本：** 22
 

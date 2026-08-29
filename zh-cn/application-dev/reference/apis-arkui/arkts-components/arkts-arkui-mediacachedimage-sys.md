@@ -22,7 +22,7 @@ MediaCachedImage(src: PixelMap | ResourceStr | DrawableDescriptor | ASTCResource
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | PixelMap \| [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) \| DrawableDescriptor \| [ASTCResource](arkts-arkui-astcresource-i-sys.md) | 是 |  |
+| src | PixelMap \| [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) \| DrawableDescriptor \| ASTCResource | 是 |  |
 
 ## 汇总
 
@@ -30,4 +30,4 @@ MediaCachedImage(src: PixelMap | ResourceStr | DrawableDescriptor | ASTCResource
 
 | 名称 | 说明 |
 | --- | --- |
-| [ASTCResource](arkts-arkui-astcresource-i-sys.md) | 定义可以使用 ASTC 的资源。@interface ASTCResource |
+| ASTCResource | 定义可以使用 ASTC 的资源。@interface ASTCResource |

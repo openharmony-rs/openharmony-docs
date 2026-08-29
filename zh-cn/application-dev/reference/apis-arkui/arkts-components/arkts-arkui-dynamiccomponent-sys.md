@@ -27,7 +27,7 @@ DynamicComponent(options: DynamicOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [DynamicOptions](arkts-arkui-dynamicoptions-i-sys.md) | 是 | DynamicComponent的构造配置参数，用于配置要加载的Abc页面入口、运行Worker及显示选项。 |
+| options | DynamicOptions | 是 | DynamicComponent的构造配置参数，用于配置要加载的Abc页面入口、运行Worker及显示选项。 |
 
 ## 汇总
 
@@ -35,11 +35,11 @@ DynamicComponent(options: DynamicOptions)
 
 | 名称 | 说明 |
 | --- | --- |
-| [DynamicOptions](arkts-arkui-dynamicoptions-i-sys.md) | 用于在DynamicComponent构造时传递参数。 |
+| DynamicOptions | 用于在DynamicComponent构造时传递参数。 |
 
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
-| [ErrorCallback](arkts-arkui-errorcallback-t-sys.md) | 错误回调类型，用于接收异常信息。 |
-| [Worker](arkts-arkui-worker-t-sys.md) | 用于运行Abc的Worker线程对象。 |
+| ErrorCallback | 错误回调类型，用于接收异常信息。 |
+| Worker | 用于运行Abc的Worker线程对象。 |

@@ -27,7 +27,7 @@ function removeAllowedDistributeAbilityConnBundles(admin: Want, appIdentifiers: 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| appIdentifiers | Array & lt;string & gt; | 是 | 应用[唯一标识符](../../apis-ability-kit/arkts-apis/arkts-ability-bundleinfo-signatureinfo-i.md)的数组，可以通过接口 [bundleManager.getBundleInfo](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getbundleinfo-f.md)获取 bundleInfo.signatureInfo.appIdentifier。允许列表总数不能超过200个。 |
+| appIdentifiers | Array & lt;string & gt; | 是 | 应用唯一标识符的数组，可以通过接口 [bundleManager.getBundleInfo](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getbundleinfo-f.md)获取 bundleInfo.signatureInfo.appIdentifier。允许列表总数不能超过200个。 |
 | serviceType | ServiceType | 是 | 分布式业务类型。 |
 | accountId | number | 是 | 用户ID，取值范围：大于等于0的整数。 accountId可以通过@ohos.account.osAccount中的 [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。 |
 

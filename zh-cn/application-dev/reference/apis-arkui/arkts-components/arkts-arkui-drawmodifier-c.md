@@ -35,7 +35,7 @@ drawBehind Method. Executed before drawing associated Node.
 
 **示例**
 
-请参考[示例1（通过DrawModifier进行自定义绘制）](#示例1通过drawmodifier进行自定义绘制)。
+请参考示例1（通过DrawModifier进行自定义绘制）。
 
 ## drawContent
 
@@ -61,7 +61,7 @@ drawContent Method. Executed when associated Node is drawing, the default drawCo
 
 **示例**
 
-请参考[示例1（通过DrawModifier进行自定义绘制）](#示例1通过drawmodifier进行自定义绘制)。
+请参考示例1（通过DrawModifier进行自定义绘制）。
 
 ## drawForeground
 
@@ -87,7 +87,7 @@ drawForeground(drawContext: DrawContext): void
 
 **示例**
 
-请参考[示例2（通过DrawModifier对容器的前景进行自定义绘制）](#示例2通过drawmodifier对容器的前景进行自定义绘制)。
+请参考示例2（通过DrawModifier对容器的前景进行自定义绘制）。
 
 ## drawFront
 
@@ -113,7 +113,7 @@ drawFront Method. Executed after drawing associated Node.
 
 **示例**
 
-请参考[示例1（通过DrawModifier进行自定义绘制）](#示例1通过drawmodifier进行自定义绘制)。
+请参考示例1（通过DrawModifier进行自定义绘制）。
 
 ## drawOverlay
 
@@ -218,4 +218,4 @@ Invalidate the component, which will cause a re-render of the component.
 
 **示例**
 
-请参考[示例1（通过DrawModifier进行自定义绘制）](#示例1通过drawmodifier进行自定义绘制)。
+请参考示例1（通过DrawModifier进行自定义绘制）。

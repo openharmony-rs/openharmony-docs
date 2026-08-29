@@ -1,6 +1,6 @@
 # C API<!--c-avcodec-kit-->
 
-- 头文件
+- 头文件<!--avcodeckit-headerfile-->
     - [media_types.h](capi-media-types-h.md)
     - [native_audio_channel_layout.h](capi-native-audio-channel-layout-h.md)
     - [native_avformat.h](capi-native-avformat-h.md)
@@ -22,7 +22,7 @@
     - [native_avdemuxer.h](capi-native-avdemuxer-h.md)
     - [native_avcodec_base.h](capi-native-avcodec-base-h.md)
     - [native_avcodec_videodecoder.h](capi-native-avcodec-videodecoder-h.md)
-- 模块
+- 模块<!--avcodeckit-module-->
     - [Core](capi-core.md)
     - [CodecBase](capi-codecbase.md)
     - [AVSource](capi-avsource.md)
@@ -35,7 +35,7 @@
     - [VideoEncoder](capi-videoencoder.md)
     - [AVDemuxer](capi-avdemuxer.md)
     - [VideoDecoder](capi-videodecoder.md)
-- 结构体
+- 结构体<!--avcodeckit-struct-->
     - [OH_AVFormat](capi-core-oh-avformat.md)
     - [OH_CartesianPosition](capi-core-oh-cartesianposition.md)
     - [OH_PolarPosition](capi-core-oh-polarposition.md)

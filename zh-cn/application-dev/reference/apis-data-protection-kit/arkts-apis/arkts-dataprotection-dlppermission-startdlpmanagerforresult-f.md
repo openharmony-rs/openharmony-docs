@@ -12,7 +12,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 function startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise<DLPManagerResult>
 ```
 
-在当前[UIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md)界面以无边框形式打开DLP权限管理应用。使用Promise异步回调。该接口用于拉起DLP权限管理应用配置文件权限，并将用户操作结果返回给调用方。
+在当前UIAbility界面以无边框形式打开DLP权限管理应用。使用Promise异步回调。该接口用于拉起DLP权限管理应用配置文件权限，并将用户操作结果返回给调用方。
 
 > **说明：**
 > 
@@ -28,7 +28,7 @@ function startDLPManagerForResult(context: common.UIAbilityContext, want: Want):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | common.UIAbilityContext | 是 | 当前窗口 [UIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md) 上下文。 |
+| context | common.UIAbilityContext | 是 | 当前窗口 UIAbility 上下文。 |
 | want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 请求对象，必须包含uri和displayName字段。 |
 
 **返回值：**

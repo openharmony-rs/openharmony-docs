@@ -133,7 +133,7 @@ struct TextInputExample {
 }
 ```
 
-从API version 10开始支持，该示例通过[showUnderline](arkts-arkui-textinput-attribute.md#showunderline)、[showError](arkts-arkui-textinput-attribute.md#showerror)、[showUnit](arkts-arkui-textinput-attribute.md#showunit)、[passwordIcon](#passwordicon10)属性展示了下划线在不同场景的效果，同时，可以通过[underlineColor](#underlinecolor12)（从API version 12开始）支持配置下划线颜色。
+从API version 10开始支持，该示例通过[showUnderline](arkts-arkui-textinput-attribute.md#showunderline)、[showError](arkts-arkui-textinput-attribute.md#showerror)、[showUnit](arkts-arkui-textinput-attribute.md#showunit)、passwordIcon属性展示了下划线在不同场景的效果，同时，可以通过underlineColor（从API version 12开始）支持配置下划线颜色。
 
 ```TypeScript
 // xxx.ets
@@ -231,7 +231,7 @@ struct TextInputExample {
 }
 ```
 
-从API version 22开始[customKeyboard](#customkeyboard10)属性新增了入参类型ComponentContent。
+从API version 22开始customKeyboard属性新增了入参类型ComponentContent。
 
 ```TypeScript
 // xxx.ets
@@ -296,7 +296,7 @@ struct TextInputExample {
 }
 ```
 
-该示例通过[cancelButton](#cancelbutton11)属性展示了自定义右侧清除按钮样式的效果。
+该示例通过cancelButton属性展示了自定义右侧清除按钮样式的效果。
 
 ```TypeScript
 // xxx.ets
@@ -328,7 +328,7 @@ struct TextInputExample {
 }
 ```
 
-该示例通过[maxLength](#maxlength)、[showCounter](#showcounter11)（从API version 11开始）、[showUnderline](arkts-arkui-textinput-attribute.md#showunderline)（从API version 10开始）属性实现了计数器的功能。
+该示例通过maxLength、showCounter（从API version 11开始）、[showUnderline](arkts-arkui-textinput-attribute.md#showunderline)（从API version 10开始）属性实现了计数器的功能。
 
 ```TypeScript
 // xxx.ets
@@ -359,7 +359,7 @@ struct TextInputExample {
 }
 ```
 
-该示例通过[onChange](#onchange)回调实现了电话号码格式化为XXX XXXX XXXX的功能。
+该示例通过onChange回调实现了电话号码格式化为XXX XXXX XXXX的功能。
 
 ```TypeScript
 // xxx.ets
@@ -504,7 +504,7 @@ struct TextInputExample {
 }
 ```
 
-从API version 12开始，该示例通过[wordBreak](#wordbreak12)属性实现了TextInput不同断行规则下的效果。
+从API version 12开始，该示例通过wordBreak属性实现了TextInput不同断行规则下的效果。
 
 ```TypeScript
 // xxx.ets
@@ -560,7 +560,7 @@ struct TextInputExample {
 }
 ```
 
-从API version 12开始，该示例通过[lineHeight](#lineheight12)、[letterSpacing](#letterspacing12)、[decoration](#decoration12)属性展示了不同样式的文本效果。
+从API version 12开始，该示例通过lineHeight、letterSpacing、decoration属性展示了不同样式的文本效果。
 
 ```TypeScript
 // xxx.ets
@@ -604,7 +604,7 @@ struct TextInputExample {
 }
 ```
 
-从API version 12开始，该示例通过[fontFeature](#fontfeature12)属性实现了文本在不同文字特性下的展示效果。
+从API version 12开始，该示例通过fontFeature属性实现了文本在不同文字特性下的展示效果。
 
 ```TypeScript
 // xxx.ets
@@ -631,7 +631,7 @@ struct TextInputExample {
 }
 ```
 
-该示例通过[customKeyboard](#customkeyboard10)（从API version 10开始）属性配置[KeyboardOptions](ts-basic-components-richeditor.md#keyboardoptions12)（从API version 12开始）接口实现了自定义键盘避让的效果。
+该示例通过customKeyboard（从API version 10开始）属性配置KeyboardOptions（从API version 12开始）接口实现了自定义键盘避让的效果。
 
 ```TypeScript
 // xxx.ets
@@ -698,7 +698,7 @@ struct TextInputExample {
 }
 ```
 
-从API version 12开始，该示例通过[minFontSize](#minfontsize12)、[maxFontSize](#maxfontsize12)、[heightAdaptivePolicy](#heightadaptivepolicy12)属性实现了文本自适应字号的功能。
+从API version 12开始，该示例通过minFontSize、maxFontSize、heightAdaptivePolicy属性实现了文本自适应字号的功能。
 
 ```TypeScript
 // xxx.ets
@@ -746,7 +746,7 @@ struct TextInputExample {
 }
 ```
 
-从API version 12开始，该示例通过[lineBreakStrategy](#linebreakstrategy12)属性实现了TextInput不同折行规则下的效果。
+从API version 12开始，该示例通过lineBreakStrategy属性实现了TextInput不同折行规则下的效果。
 
 ```TypeScript
 // xxx.ets
@@ -786,7 +786,7 @@ struct TextInputExample {
 }
 ```
 
-从API version 12开始，该示例通过[onWillInsert](#onwillinsert12)、[onDidInsert](#ondidinsert12)、[onWillDelete](#onwilldelete12)、[onDidDelete](#ondiddelete12)接口实现了插入和删除的效果。
+从API version 12开始，该示例通过onWillInsert、onDidInsert、onWillDelete、onDidDelete接口实现了插入和删除的效果。
 
 ```TypeScript
 // xxx.ets
@@ -848,7 +848,7 @@ struct TextInputExample {
 }
 ```
 
-从API version 12开始，该示例通过[editMenuOptions](#editmenuoptions12)接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能，同时，可以在[onPrepareMenu](ts-text-common.md#属性-1)（从API version 20开始）回调中，进行菜单数据的设置。
+从API version 12开始，该示例通过editMenuOptions接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能，同时，可以在onPrepareMenu（从API version 20开始）回调中，进行菜单数据的设置。
 
 ```TypeScript
 // xxx.ets
@@ -930,7 +930,7 @@ struct TextInputExample {
 }
 ```
 
-从API version 18开始，该示例通过[cancelButton](#cancelbutton18)属性展示了自定义右侧symbol类型清除按钮样式的效果。
+从API version 18开始，该示例通过cancelButton属性展示了自定义右侧symbol类型清除按钮样式的效果。
 
 ```TypeScript
 import { SymbolGlyphModifier } from '@kit.ArkUI';
@@ -955,7 +955,7 @@ struct TextInputExample {
 }
 ```
 
-从API version 24开始，[EllipsisMode](ts-appendix-enums.md#ellipsismode11)新增了MULTILINE_START和MULTILINE_CENTER枚举。
+从API version 24开始，EllipsisMode新增了MULTILINE_START和MULTILINE_CENTER枚举。
 
 ```TypeScript
 // xxx.ets
@@ -1011,7 +1011,7 @@ struct EllipsisModeExample {
 }
 ```
 
-从API版本26.0.0开始，新增[onWillCopy](#onwillcopy)、[onWillCut](#onwillcut)接口。
+从API版本26.0.0开始，新增onWillCopy、onWillCut接口。
 
 ```TypeScript
 // xxx.ets
@@ -1126,7 +1126,7 @@ struct TextInputExample {
 }
 ```
 
-从API version 18开始，该示例通过[minFontScale](#minfontscale18)、[maxFontScale](#maxfontscale18)设置字体显示最小与最大范围（该示例使用系统接口，应用类型需调整为系统应用，可参考HarmonyAppProvision的[系统接口说明](../../../reference/development-intro-api.md#系统接口说明)）。
+从API version 18开始，该示例通过minFontScale、maxFontScale设置字体显示最小与最大范围（该示例使用系统接口，应用类型需调整为系统应用，可参考HarmonyAppProvision的系统接口说明）。
 
 ```TypeScript
 // 开启应用缩放跟随系统
@@ -1222,7 +1222,7 @@ struct TextInputExample {
 }
 ```
 
-从API version 10开始，该示例通过[setTextSelection](#settextselection10)方法展示如何设置选中指定区域的文本内容以及菜单的显隐策略。
+从API version 10开始，该示例通过setTextSelection方法展示如何设置选中指定区域的文本内容以及菜单的显隐策略。
 
 ```TypeScript
 // xxx.ets
@@ -1258,7 +1258,7 @@ struct TextInputExample {
 }
 ```
 
-从API版本26.0.0开始，新增[strokeJoinStyle](#strokejoinstyle)接口，支持设置文本描边拐角样式。
+从API版本26.0.0开始，新增strokeJoinStyle接口，支持设置文本描边拐角样式。
 
 ```TypeScript
 // xxx.ets
@@ -1300,7 +1300,7 @@ struct TextInputExample {
 }
 ```
 
-从API version 20开始，该示例通过[enableAutoSpacing](#enableautospacing20)属性设置中西文自动间距。
+从API version 20开始，该示例通过enableAutoSpacing属性设置中西文自动间距。
 
 ```TypeScript
 // xxx.ets
@@ -1323,7 +1323,7 @@ struct TextInputExample {
 }
 ```
 
-从API version 22开始，该示例通过[showCounter](#showcounter11)属性的counterTextColor和counterTextOverflowColor设置字符计数颜色以及超出字符颜色。
+从API version 22开始，该示例通过showCounter属性的counterTextColor和counterTextOverflowColor设置字符计数颜色以及超出字符颜色。
 
 ```TypeScript
 import { ColorMetrics } from '@kit.ArkUI';
@@ -1356,7 +1356,7 @@ struct TextInputExample {
 }
 ```
 
-从API version 22开始，该示例通过[setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22)接口设置placeholder富文本样式。
+从API version 22开始，该示例通过setStyledPlaceholder接口设置placeholder富文本样式。
 
 ```TypeScript
 // xxx.ets
@@ -1419,7 +1419,7 @@ struct TextInputExample  {
 }
 ```
 
-从API version 22开始，该示例通过[IMEClient](ts-text-common.md#imeclient20对象说明)的setExtraConfig设置输入法扩展信息。
+从API version 22开始，该示例通过IMEClient的setExtraConfig设置输入法扩展信息。
 
 ```TypeScript
 // xxx.ets
@@ -1443,7 +1443,7 @@ struct TextInputExample {
 }
 ```
 
-从API version 10开始，该示例通过[barState](#barstate10)接口设置内联输入风格编辑态时滚动条的显示或隐藏状态。
+从API version 10开始，该示例通过barState接口设置内联输入风格编辑态时滚动条的显示或隐藏状态。
 
 ```TypeScript
 @Entry
@@ -1508,7 +1508,7 @@ struct PunctuationDemo {
 }
 ```
 
-从API version 23开始，新增[includeFontPadding](#includefontpadding23)和[fallbackLineSpacing](#fallbacklinespacing23)接口。
+从API version 23开始，新增includeFontPadding和fallbackLineSpacing接口。
 
 ```TypeScript
 // xxx.ets
@@ -1590,7 +1590,7 @@ struct TextInputTest {
 }
 ```
 
-从API version 23开始，新增[deleteBackward](ts-universal-attributes-text-style.md#deletebackward23)接口。
+从API version 23开始，新增deleteBackward接口。
 
 ```TypeScript
 @Entry

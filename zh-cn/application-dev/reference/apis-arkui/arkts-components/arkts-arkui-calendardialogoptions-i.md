@@ -423,7 +423,7 @@ systemMaterial?: SystemUiMaterial
 > borderColor、边框宽度borderWidth、阴影
 > shadow，当设置系统材质时，上述接口不生效。
 
-**类型：** [SystemUiMaterial](arkts-arkui-systemuimaterial-t-sys.md)
+**类型：** SystemUiMaterial
 
 **起始版本：** 26.0.0
 

@@ -41,7 +41,7 @@ attributeModifier(modifier: AttributeModifier<SymbolSpanAttribute>)
 effectStrategy(value: SymbolEffectStrategy)
 ```
 
-设置SymbolSpan动效策略。未通过该接口设置时，默认动效策略为SymbolEffectStrategy.NONE。NONE表示无动效，适用于静态展示场景；SCALE表示整体缩放动效，适用于需要吸引用户注意力的场景，如按钮点击反馈；HIERARCHICAL表示层级动效，适用于需要突出图标层次感的场景。不同动效策略效果可以参考 [示例1（设置渲染和动效策略）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#示例1设置渲染和动效策略)。
+设置SymbolSpan动效策略。未通过该接口设置时，默认动效策略为SymbolEffectStrategy.NONE。NONE表示无动效，适用于静态展示场景；SCALE表示整体缩放动效，适用于需要吸引用户注意力的场景，如按钮点击反馈；HIERARCHICAL表示层级动效，适用于需要突出图标层次感的场景。不同动效策略效果可以参考 示例1（设置渲染和动效策略）。
 
 > **说明：**
 > 

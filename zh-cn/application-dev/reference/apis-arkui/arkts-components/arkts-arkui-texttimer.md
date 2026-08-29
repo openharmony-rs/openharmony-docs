@@ -75,7 +75,7 @@ struct TextTimerExample {
 }
 ```
 
-该示例通过[textShadow](#textshadow11)属性设置计时器的文本阴影样式。
+该示例通过textShadow属性设置计时器的文本阴影样式。
 
 ```TypeScript
 // xxx.ets
@@ -222,7 +222,7 @@ struct TextTimerStart {
 }
 ```
 
-该示例通过[fontColor](#fontcolor)、[fontSize](#fontsize)、[fontStyle](#fontstyle)、[fontWeight](#fontweight)、[fontFamily](#fontfamily)属性展示了不同样式的文本效果。
+该示例通过fontColor、fontSize、fontStyle、fontWeight、fontFamily属性展示了不同样式的文本效果。
 
 ```TypeScript
 // xxx.ets
@@ -271,7 +271,7 @@ struct TextTimerDemo {
 }
 ```
 
-从API版本26.0.0开始，[TextTimerOptions](#texttimeroptions对象说明)新增了startTime属性。
+从API版本26.0.0开始，TextTimerOptions新增了startTime属性。
 
 ```TypeScript
 // xxx.ets

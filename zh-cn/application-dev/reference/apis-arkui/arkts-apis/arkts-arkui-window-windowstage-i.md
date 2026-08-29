@@ -18,7 +18,7 @@ import { window } from '@kit.ArkUI';
 createSubWindow(name: string): Promise<Window>
 ```
 
-创建该WindowStage实例下的子窗口，使用Promise异步回调。子窗口创建后默认是[沉浸式布局](../../../windowmanager/window-terminology.md#沉浸式布局)。
+创建该WindowStage实例下的子窗口，使用Promise异步回调。子窗口创建后默认是沉浸式布局。
 
 **起始版本：** 9
 
@@ -83,7 +83,7 @@ export default class EntryAbility extends UIAbility {
 createSubWindow(name: string, callback: AsyncCallback<Window>): void
 ```
 
-创建该WindowStage实例下的子窗口，使用callback异步回调。子窗口创建后默认是[沉浸式布局](../../../windowmanager/window-terminology.md#沉浸式布局)。
+创建该WindowStage实例下的子窗口，使用callback异步回调。子窗口创建后默认是沉浸式布局。
 
 **起始版本：** 9
 
@@ -151,7 +151,7 @@ export default class EntryAbility extends UIAbility {
 createSubWindowWithOptions(name: string, options: SubWindowOptions): Promise<Window>
 ```
 
-创建该WindowStage实例下的子窗口，使用Promise异步回调。非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../../windowmanager/window-terminology.md#沉浸式布局)。自由窗口状态下，子窗口参数[decorEnabled](arkts-apis-window-i.md#subwindowoptions11)为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。
+创建该WindowStage实例下的子窗口，使用Promise异步回调。非自由窗口状态下，子窗口创建后默认是沉浸式布局。自由窗口状态下，子窗口参数decorEnabled为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。
 
 **起始版本：** 11
 
@@ -242,7 +242,7 @@ export default class EntryAbility extends UIAbility {
 getMainWindow(): Promise<Window>
 ```
 
-获取该WindowStage实例下的主窗口，使用Promise异步回调。调用该接口前，建议先通过[loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法或者setUIContent方法完成页面加载。
+获取该WindowStage实例下的主窗口，使用Promise异步回调。调用该接口前，建议先通过loadContent方法或者setUIContent方法完成页面加载。
 
 **起始版本：** 9
 
@@ -303,7 +303,7 @@ export default class EntryAbility extends UIAbility {
 getMainWindow(callback: AsyncCallback<Window>): void
 ```
 
-获取该WindowStage实例下的主窗口，使用callback异步回调。调用该接口前，建议先通过[loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法或者setUIContent方法完成页面加载。
+获取该WindowStage实例下的主窗口，使用callback异步回调。调用该接口前，建议先通过loadContent方法或者setUIContent方法完成页面加载。
 
 **起始版本：** 9
 
@@ -1681,7 +1681,7 @@ setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowM
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| supportedWindowModes | Array & lt;bundleManager.SupportWindowMode & gt; | 是 | 设置主窗的窗口支持模式。    - FULL_SCREEN：支持全屏模式。   - FLOATING：支持自由悬浮窗口模式。    - SPLIT：支持分屏模式。需要配合FULL_SCREEN或FLOATING一起使用，不支持仅配置SPLIT。     注：数组中SupportWindowMode字段取值不应该与该UIAbility对应的 [module.json5配置文件][module.json5 file](../../../quick-start/module-configuration-file.md)中 [abilities标签](../../../quick-start/module-configuration-file.md#abilities)的supportWindowMode字段取值或者 [StartOptions](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c.md)的 supportWindowModes属性取值冲突。当取值冲突时，最终以该参数设置的窗口支持模式为准。 |
+| supportedWindowModes | Array & lt;bundleManager.SupportWindowMode & gt; | 是 | 设置主窗的窗口支持模式。    - FULL_SCREEN：支持全屏模式。   - FLOATING：支持自由悬浮窗口模式。    - SPLIT：支持分屏模式。需要配合FULL_SCREEN或FLOATING一起使用，不支持仅配置SPLIT。     注：数组中SupportWindowMode字段取值不应该与该UIAbility对应的 [module.json5配置文件][module.json5 file](../../../quick-start/module-configuration-file.md)中 abilities标签的supportWindowMode字段取值或者 StartOptions的 supportWindowModes属性取值冲突。当取值冲突时，最终以该参数设置的窗口支持模式为准。 |
 
 **返回值：**
 
@@ -1775,7 +1775,7 @@ setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowM
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| supportedWindowModes | Array & lt;bundleManager.SupportWindowMode & gt; | 是 | 设置主窗的窗口支持模式。    - FULL_SCREEN：支持全屏模式。   - FLOATING：支持自由悬浮窗口模式。    - SPLIT：支持分屏模式。需要配合FULL_SCREEN或FLOATING一起使用，不支持仅配置SPLIT。     注：数组中SupportWindowMode字段取值不应该与该UIAbility对应的 [module.json5配置文件][module.json5 file](../../../quick-start/module-configuration-file.md)中 [abilities标签](../../../quick-start/module-configuration-file.md#abilities)的supportWindowMode字段取值或者 [StartOptions](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c.md)的 supportWindowModes属性取值冲突。当取值冲突时，最终以该参数设置的窗口支持模式为准。 |
+| supportedWindowModes | Array & lt;bundleManager.SupportWindowMode & gt; | 是 | 设置主窗的窗口支持模式。    - FULL_SCREEN：支持全屏模式。   - FLOATING：支持自由悬浮窗口模式。    - SPLIT：支持分屏模式。需要配合FULL_SCREEN或FLOATING一起使用，不支持仅配置SPLIT。     注：数组中SupportWindowMode字段取值不应该与该UIAbility对应的 [module.json5配置文件][module.json5 file](../../../quick-start/module-configuration-file.md)中 abilities标签的supportWindowMode字段取值或者 StartOptions的 supportWindowModes属性取值冲突。当取值冲突时，最终以该参数设置的窗口支持模式为准。 |
 | grayOutMaximizeButton | boolean | 是 | 是否显示并将主窗口的最大化按钮置灰 true表示显示并将主窗口的最大化按钮置灰，此时最大化按钮不可用；false表示不显示主窗口的最大化按钮。 此参数配置仅在supportedWindowModes不支持FULL_SCREEN时生效。 |
 
 **返回值：**

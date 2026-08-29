@@ -304,7 +304,7 @@ struct SwiperExample {
 }
 ```
 
-从API version 24开始，新增[CachedCountOptions](#cachedcountoptions24对象说明)参数，通过该参数实现缓存的节点个数和displayCount的按组显示数量解耦。
+从API version 24开始，新增CachedCountOptions参数，通过该参数实现缓存的节点个数和displayCount的按组显示数量解耦。
 
 ```TypeScript
 // xxx.ets
@@ -388,7 +388,7 @@ struct SwiperExample {
 }
 ```
 
-该示例通过[customContentTransition](#customcontenttransition12)接口，实现了自定义Swiper页面按组翻页动画效果。
+该示例通过customContentTransition接口，实现了自定义Swiper页面按组翻页动画效果。
 
 ```TypeScript
 // EntryAbility.ets
@@ -612,7 +612,7 @@ struct Index {
 }
 ```
 
-该示例通过[preloadItems](#preloaditems18)接口实现了预加载指定子节点。
+该示例通过preloadItems接口实现了预加载指定子节点。
 
 ```TypeScript
 // xxx.ets
@@ -682,7 +682,7 @@ struct MyComponent {
 }
 ```
 
-该示例通过[onSelected](#onselected18)接口，实现了[Tabs](ts-container-tabs.md)与Swiper联动切换。
+该示例通过onSelected接口，实现了Tabs与Swiper联动切换。
 
 ```TypeScript
 // xxx.ets
@@ -873,7 +873,7 @@ struct SwiperExample {
 }
 ```
 
-该示例通过[bottom](#bottom19)和[space](#space19)接口，实现了圆点导航点与底部间距为0的间距控制以及导航点之间的间距控制。
+该示例通过bottom和space接口，实现了圆点导航点与底部间距为0的间距控制以及导航点之间的间距控制。
 
 ```TypeScript
 import { LengthMetrics } from '@kit.ArkUI';

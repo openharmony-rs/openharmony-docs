@@ -24,7 +24,7 @@ function getFontPathsByType(fontType: SystemFontType): Array<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fontType | [SystemFontType](arkts-arkgraphics2d-text-systemfonttype-e.md) | 是 | 指定的字体类型。 |
+| fontType | SystemFontType | 是 | 指定的字体类型。 |
 
 **返回值：**
 

@@ -42,7 +42,7 @@ localeMatcher?: string
 numeric?: string
 ```
 
-输出消息的格式，表示格式化结果中是否使用数字表示相对日期或时间。取值包括："always", "auto"。默认值：always。不同取值的显示效果请参考[附录表23](../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
+输出消息的格式，表示格式化结果中是否使用数字表示相对日期或时间。取值包括："always", "auto"。默认值：always。不同取值的显示效果请参考附录表23。
 
 **类型：** string
 
@@ -62,7 +62,7 @@ numeric?: string
 style?: string
 ```
 
-国际化消息的长度，取值包括："number", "short", "narrow"。默认值：number。不同取值的显示效果请参考[附录表24](../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
+国际化消息的长度，取值包括："number", "short", "narrow"。默认值：number。不同取值的显示效果请参考附录表24。
 
 **类型：** string
 

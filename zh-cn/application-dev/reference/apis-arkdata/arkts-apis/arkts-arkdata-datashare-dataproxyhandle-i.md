@@ -194,7 +194,7 @@ getValues(uri: string, config: DataProxyConfig): Promise<ValueType[]>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [15700000](../errorcode-datashare.md#15700000-内部错误) | Inner error. Possible causes: The service is not ready or is being restarted abnormally. |
-| [15700011](../errorcode-datashare.md#15700011-uri不存在) | The URI does not exist. |
+| 15700011 | The URI does not exist. |
 | [15700014](../errorcode-datashare.md#15700014-配置共享参数错误) | The parameter format is incorrect or the value range is invalid. |
 | [15700015](../errorcode-datashare.md#15700015-访问uri权限错误) | No permission to access the data specified by the URI. |
 
@@ -449,7 +449,7 @@ putValue(uri: string, key: number, value: ValueType, config: DataProxyConfig): P
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [15700000](../errorcode-datashare.md#15700000-内部错误) | Inner error. Possible causes: The service is not ready or is being restarted abnormally. |
-| [15700011](../errorcode-datashare.md#15700011-uri不存在) | The URI does not exist. |
+| 15700011 | The URI does not exist. |
 | [15700014](../errorcode-datashare.md#15700014-配置共享参数错误) | The parameter format is incorrect or the value range is invalid. |
 | [15700015](../errorcode-datashare.md#15700015-访问uri权限错误) | No permission to access the data specified by the URI. |
 
@@ -517,7 +517,7 @@ removeValue(uri: string, key: number, config: DataProxyConfig): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [15700000](../errorcode-datashare.md#15700000-内部错误) | Inner error. Possible causes: The service is not ready or is being restarted abnormally. |
-| [15700011](../errorcode-datashare.md#15700011-uri不存在) | The URI does not exist. |
+| 15700011 | The URI does not exist. |
 | [15700014](../errorcode-datashare.md#15700014-配置共享参数错误) | The parameter format is incorrect or the value range is invalid. |
 | [15700015](../errorcode-datashare.md#15700015-访问uri权限错误) | No permission to access the data specified by the URI. |
 

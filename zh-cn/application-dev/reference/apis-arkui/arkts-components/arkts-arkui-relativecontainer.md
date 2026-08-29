@@ -264,7 +264,7 @@ struct Index {
 }
 ```
 
-本示例通过[bias](ts-types.md#bias11对象说明)实现了子组件的位置在垂直方向的两个锚点间偏移的效果。
+本示例通过bias实现了子组件的位置在垂直方向的两个锚点间偏移的效果。
 
 ```TypeScript
 @Entry
@@ -395,7 +395,7 @@ struct Index {
 }
 ```
 
-本示例通过[chainMode](ts-universal-attributes-location.md#chainmode12)接口从上至下分别实现了水平方向的[SPREAD](ts-universal-attributes-location.md#chainstyle12)链、[SPREAD_INSIDE](ts-universal-attributes-location.md#chainstyle12)链和[PACKED](ts-universal-attributes-location.md#chainstyle12)链。
+本示例通过chainMode接口从上至下分别实现了水平方向的SPREAD链、SPREAD_INSIDE链和PACKED链。
 
 ```TypeScript
 @Entry
@@ -542,7 +542,7 @@ struct Index {
 }
 ```
 
-本示例通过[chainMode](ts-universal-attributes-location.md#chainmode12)和[bias](ts-types.md#bias11对象说明)接口实现了水平方向的带偏移的[PACKED](ts-universal-attributes-location.md#chainstyle12)链。
+本示例通过chainMode和bias接口实现了水平方向的带偏移的PACKED链。
 
 ```TypeScript
 @Entry
@@ -604,7 +604,7 @@ struct Index {
 }
 ```
 
-本示例展示了在镜像模式（direction声明Direction.Rtl）下以屏障为锚点时使用[LocalizedAlignRuleOptions](ts-universal-attributes-location.md#localizedalignruleoptions12对象说明)和[LocalizedBarrierDirection](#localizedbarrierdirection12枚举说明)设置对齐方式的用法。
+本示例展示了在镜像模式（direction声明Direction.Rtl）下以屏障为锚点时使用LocalizedAlignRuleOptions和LocalizedBarrierDirection设置对齐方式的用法。
 
 ```TypeScript
 @Entry

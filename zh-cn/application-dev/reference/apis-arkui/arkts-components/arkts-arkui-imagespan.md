@@ -44,7 +44,7 @@ ImageSpan(value: ResourceStr | PixelMap)
 
 ## 示例
 
-从API version 10开始，该示例通过[verticalAlign](#verticalalign)、[objectFit](#objectfit)属性展示了ImageSpan组件的对齐方式以及缩放效果。
+从API version 10开始，该示例通过verticalAlign、objectFit属性展示了ImageSpan组件的对齐方式以及缩放效果。
 
 ```TypeScript
 // xxx.ets
@@ -92,7 +92,7 @@ struct SpanExample {
 }
 ```
 
-从API version 11开始，该示例通过[textBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11)属性展示了文本设置背景样式的效果。
+从API version 11开始，该示例通过textBackgroundStyle属性展示了文本设置背景样式的效果。
 
 ```TypeScript
 // xxx.ets
@@ -117,7 +117,7 @@ struct Index {
 }
 ```
 
-从API version 12开始，该示例通过[onComplete](#oncomplete12)、[onError](#onerror12)为图片添加加载成功和加载异常的事件。
+从API version 12开始，该示例通过onComplete、onError为图片添加加载成功和加载异常的事件。
 
 ```TypeScript
 // xxx.ets
@@ -144,7 +144,7 @@ struct Index {
 }
 ```
 
-从API version 14开始，该示例通过[colorFilter](#colorfilter14)属性展示了给ImageSpan图像设置颜色滤镜的效果。
+从API version 14开始，该示例通过colorFilter属性展示了给ImageSpan图像设置颜色滤镜的效果。
 
 ```TypeScript
 // xxx.ets
@@ -254,7 +254,7 @@ struct SpanExample {
 }
 ```
 
-从API version 22开始，该示例通过设置[supportSvg2](#supportsvg222)属性，使[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)的[SVG易用性提升](ts-image-svg2-capabilities.md#svg易用性提升)能力生效。
+从API version 22开始，该示例通过设置supportSvg2属性，使SVG标签解析能力增强功能的SVG易用性提升能力生效。
 
 ```TypeScript
 import { drawing } from '@kit.ArkGraphics2D';

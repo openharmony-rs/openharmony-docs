@@ -721,7 +721,7 @@ systemMaterial?: SystemUiMaterial
 设置组件的系统材质。默认值：undefined，会清除由该接口设置的材质效果。  
 **说明：**: 不同系统材质对应不同的属性影响效果，该接口影响背景色 [backgroundColor](arkts-arkui-commonmethod-c.md#backgroundcolor)、边框 颜色[borderColor](arkts-arkui-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](arkts-arkui-commonmethod-c.md#borderwidth)、阴影 [shadow](arkts-arkui-commonmethod-c.md#shadow)，不建议与上述接口一起使用。使用示例请参考 [示例10（半模态设置系统材质）](arkts-arkui-commonmethod-c.md)。
 
-**类型：** [SystemUiMaterial](arkts-arkui-systemuimaterial-t-sys.md)
+**类型：** SystemUiMaterial
 
 **起始版本：** 26.0.0
 

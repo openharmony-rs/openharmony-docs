@@ -33,8 +33,8 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [typedef void(\* GamePad_ButtonInputMonitorCallback)(const struct GamePad_ButtonEvent* buttonEvent)](# gamepad_buttoninputmonitorcallback) |  GamePad_ButtonInputMonitorCallback | 定义在按键事件注册监听接口中使用的回调函数。当玩家按下按键时，该回调函数将被调用。 |
-| [typedef void(\* GamePad_AxisInputMonitorCallback)(const struct GamePad_AxisEvent* axisEvent)](# gamepad_axisinputmonitorcallback) |  GamePad_AxisInputMonitorCallback | 定义在轴事件注册监听接口中使用的回调函数。当玩家操作摇杆时，该回调函数将被调用。 |
+| typedef void(\* GamePad_ButtonInputMonitorCallback)(const struct GamePad_ButtonEvent* buttonEvent) |  GamePad_ButtonInputMonitorCallback | 定义在按键事件注册监听接口中使用的回调函数。当玩家按下按键时，该回调函数将被调用。 |
+| typedef void(\* GamePad_AxisInputMonitorCallback)(const struct GamePad_AxisEvent* axisEvent) |  GamePad_AxisInputMonitorCallback | 定义在轴事件注册监听接口中使用的回调函数。当玩家操作摇杆时，该回调函数将被调用。 |
 | [GameController_ErrorCode OH_GamePad_ButtonEvent_GetDeviceId(const struct GamePad_ButtonEvent* buttonEvent, char** deviceId)](#oh_gamepad_buttonevent_getdeviceid) | - | 从按键事件中获取设备ID。 |
 | [GameController_ErrorCode OH_GamePad_ButtonEvent_GetButtonAction(const struct GamePad_ButtonEvent* buttonEvent, GamePad_Button_ActionType* actionType)](#oh_gamepad_buttonevent_getbuttonaction) | - | 从按键事件中获取按键动作类型。 |
 | [GameController_ErrorCode OH_GamePad_ButtonEvent_GetButtonCode(const struct GamePad_ButtonEvent* buttonEvent, int32_t* code)](#oh_gamepad_buttonevent_getbuttoncode) | - | 从按键事件中获取按键编码。 |

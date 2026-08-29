@@ -18,7 +18,7 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 mode?: number
 ```
 
-创建文件可写流的[选项](../../../reference/apis-core-file-kit/js-apis-file-fs.md#openmode)，必须指定如下选项中的一个，默认只写方式创建：  
+创建文件可写流的选项，必须指定如下选项中的一个，默认只写方式创建：  
 - OpenMode.READ_ONLY(0o0)：只读。  
 - OpenMode.WRITE_ONLY(0o1)：只写。  
 - OpenMode.READ_WRITE(0o2)：读写。  

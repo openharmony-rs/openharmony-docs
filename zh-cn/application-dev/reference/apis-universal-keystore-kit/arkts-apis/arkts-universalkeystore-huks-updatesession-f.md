@@ -40,9 +40,9 @@ updateSession操作密钥接口。使用callback异步回调。huks.initSession�
 | [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
 | [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
 | [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine or UKey driver |
-| [12000007](../errorcode-huks.md#12000007-密钥访问失败-密钥已失效) | this credential is already invalidated permanently |
-| [12000008](../errorcode-huks.md#12000008-密钥访问失败-密钥认证失败) | verify auth token failed |
-| [12000009](../errorcode-huks.md#12000009-密钥访问失败-密钥访问超时) | auth token is already timeout |
+| 12000007 | this credential is already invalidated permanently |
+| 12000008 | verify auth token failed |
+| 12000009 | auth token is already timeout |
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist |
 | [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
 | [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
@@ -94,9 +94,9 @@ Updates the key operation by segment. This API uses an asynchronous callback to 
 | [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
 | [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
 | [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine |
-| [12000007](../errorcode-huks.md#12000007-密钥访问失败-密钥已失效) | this credential is already invalidated permanently |
-| [12000008](../errorcode-huks.md#12000008-密钥访问失败-密钥认证失败) | verify auth token failed |
-| [12000009](../errorcode-huks.md#12000009-密钥访问失败-密钥访问超时) | auth token is already timeout |
+| 12000007 | this credential is already invalidated permanently |
+| 12000008 | verify auth token failed |
+| 12000009 | auth token is already timeout |
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist |
 | [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
 | [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
@@ -144,9 +144,9 @@ updateSession操作密钥接口。使用Promise异步回调。huks.initSession�
 | [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
 | [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
 | [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine or UKey driver |
-| [12000007](../errorcode-huks.md#12000007-密钥访问失败-密钥已失效) | this credential is already invalidated permanently |
-| [12000008](../errorcode-huks.md#12000008-密钥访问失败-密钥认证失败) | verify auth token failed |
-| [12000009](../errorcode-huks.md#12000009-密钥访问失败-密钥访问超时) | auth token is already timeout |
+| 12000007 | this credential is already invalidated permanently |
+| 12000008 | verify auth token failed |
+| 12000009 | auth token is already timeout |
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist |
 | [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
 | [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |

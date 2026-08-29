@@ -634,7 +634,7 @@ ImmersiveStyle.ULTRA_THICK的 ImmersiveMaterial对象。设置undefined时与默
 - 不同的材质具有不同的效果，该接口影响背景色backgroundColor、背景模糊  
 backgroundBlurStyle 、背景效果backgroundEffect、边框颜色 borderColor、边框宽度borderWidth、阴影 shadow，不建议与上述接口一起使用。
 
-**类型：** [SystemUiMaterial](../arkts-components/arkts-arkui-systemuimaterial-t-sys.md)
+**类型：** SystemUiMaterial
 
 **起始版本：** 26.0.0
 

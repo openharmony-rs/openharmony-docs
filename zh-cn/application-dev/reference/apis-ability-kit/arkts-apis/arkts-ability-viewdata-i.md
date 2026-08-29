@@ -32,7 +32,7 @@ pageNodeInfos: Array<PageNodeInfo>
 
 页面节点信息。
 
-**类型：** Array&lt;[PageNodeInfo](arkts-ability-pagenodeinfo-i-sys.md)&gt;
+**类型：** Array&lt;PageNodeInfo&gt;
 
 **起始版本：** 26.0.0
 
@@ -50,7 +50,7 @@ pageRect: AutoFillRect
 
 该页面记录了信息。
 
-**类型：** [AutoFillRect](arkts-ability-autofillrect-i-sys.md)
+**类型：** AutoFillRect
 
 **起始版本：** 26.0.0
 

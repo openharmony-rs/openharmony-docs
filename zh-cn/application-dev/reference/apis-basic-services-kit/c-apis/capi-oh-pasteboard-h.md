@@ -52,7 +52,7 @@
 | [bool OH_Pasteboard_HasType(OH_Pasteboard* pasteboard, const char* type)](#oh_pasteboard_hastype) | - | 判断剪贴板中是否有指定类型的数据。典型使用场景包括：粘贴前检查剪贴板数据类型是否支持、根据数据类型选择不同的处理方式、验证剪贴板数据格式等。 |
 | [bool OH_Pasteboard_HasData(OH_Pasteboard* pasteboard)](#oh_pasteboard_hasdata) | - | 判断剪贴板中是否有数据。适用于在读取剪贴板数据前，判断是否有数据，避免空数据操作。 |
 | [bool OH_Pasteboard_HasRemoteData(OH_Pasteboard* pasteboard)](#oh_pasteboard_hasremotedata) | - | 判断剪贴板数据是否在远端设备上。由于数据跨设备传输耗时较大，如果剪贴板数据在远端设备上，不建议在UI线程执行检查剪贴板数据中是否包含自定义数据类型，或读取剪贴板数据。 |
-| [OH_UdmfData* OH_Pasteboard_GetData(OH_Pasteboard* pasteboard, int* status)](#oh_pasteboard_getdata) | - | 获取剪贴板中的数据。调用此函数后，系统会读取剪贴板中的内容，返回统一数据对象[OH_UdmfData](../ArkData/capi-udmf-oh-udmfdata.md)实例的指针。开发者可以通过OH_UdmfData相关接口解析数据内容。获取到的数据对象需要开发者手动释放。由于获取剪贴板中数据的时延受数据量大小与网络环境的影响，调用此接口可能耗时较长，建议开发者在非UI线程调用。- 如果剪贴板为空或数据格式不支持，会返回nullptr。- 返回的OH_UdmfData对象需要开发者调用[OH_UdmfData_Destroy](../ArkData/capi-udmf-h.md#oh_udmfdata_destroy)释放。- 粘贴的数据量大时，建议使用[OH_Pasteboard_GetDataWithProgress](capi-oh-pasteboard-h.md#oh_pasteboard_getdatawithprogress)接口以获取进度信息。 |
+| [OH_UdmfData* OH_Pasteboard_GetData(OH_Pasteboard* pasteboard, int* status)](#oh_pasteboard_getdata) | - | 获取剪贴板中的数据。调用此函数后，系统会读取剪贴板中的内容，返回统一数据对象OH_UdmfData实例的指针。开发者可以通过OH_UdmfData相关接口解析数据内容。获取到的数据对象需要开发者手动释放。由于获取剪贴板中数据的时延受数据量大小与网络环境的影响，调用此接口可能耗时较长，建议开发者在非UI线程调用。- 如果剪贴板为空或数据格式不支持，会返回nullptr。- 返回的OH_UdmfData对象需要开发者调用OH_UdmfData_Destroy释放。- 粘贴的数据量大时，建议使用[OH_Pasteboard_GetDataWithProgress](capi-oh-pasteboard-h.md#oh_pasteboard_getdatawithprogress)接口以获取进度信息。 |
 | [int OH_Pasteboard_SetData(OH_Pasteboard* pasteboard, OH_UdmfData* data)](#oh_pasteboard_setdata) | - | 将统一数据对象数据写入剪贴板。写入成功后，其他应用可以使用系统剪贴板提供的数据读取接口访问该数据。统一数据对象的数据大小受系统剪贴板容量限制，在写入系统剪贴板后，数据的生命周期由系统剪贴板进行管理。调用此函数后，合法的数据内容会被写入系统剪贴板，覆盖之前的剪贴板数据内容。写入成功后，会触发所有订阅了剪贴板数据变更事件的观察者的回调函数。其他应用可以通过剪贴板API读取这些数据。- 序列化后的数据大小不能超过系统容量限制（在不同设备上的容量存在差异，通常为128MB）。- 写入操作会清除之前剪贴板中的所有内容。- 对于复制数据的数据量比较大的场景，建议使用延迟复制功能以提升性能。 |
 | [int OH_Pasteboard_ClearData(OH_Pasteboard* pasteboard)](#oh_pasteboard_cleardata) | - | 清空剪贴板中的数据。适用于需要清除剪贴板中的数据时使用，如退出应用时清除敏感数据。 |
 | [char **OH_Pasteboard_GetMimeTypes(OH_Pasteboard *pasteboard, unsigned int *count)](#oh_pasteboard_getmimetypes) | - | 获取剪贴板中的MIME类型。典型使用场景包括：判断剪贴板数据类型以选择合适的处理方式、在粘贴前检查数据类型是否支持等。 |
@@ -66,7 +66,7 @@
 | [int OH_Pasteboard_ProgressInfo_GetProgress(Pasteboard_ProgressInfo* progressInfo)](#oh_pasteboard_progressinfo_getprogress) | - | 从[Pasteboard_ProgressInfo](capi-pasteboard-pasteboard-progressinfo.md)获取粘贴进度。典型使用场景包括：在自定义进度回调中更新UI进度条、监控大文件粘贴进度、根据进度调整业务逻辑等。 |
 | [void OH_Pasteboard_ProgressCancel(Pasteboard_GetDataParams* params)](#oh_pasteboard_progresscancel) | - | 取消正在进行的粘贴操作。该函数用于中断[OH_Pasteboard_GetDataWithProgress](capi-oh-pasteboard-h.md#oh_pasteboard_getdatawithprogress)执行过程中的数据传输。调用后，当前粘贴操作将被终止，已传输的部分数据可能保留或清理，取决于具体操作状态。取消后如需再次获取剪贴板数据，需重新调用[OH_Pasteboard_GetDataWithProgress](capi-oh-pasteboard-h.md#oh_pasteboard_getdatawithprogress)。适用于用户主动取消、错误中断传输，或限制粘贴超时等情形。- 取消操作是异步的，可能不会立即生效。- 取消操作不可逆，一旦取消，如需要获取剪贴板数据，需要重新开始粘贴流程。 |
 | [OH_UdmfData* OH_Pasteboard_GetDataWithProgress(OH_Pasteboard* pasteboard, Pasteboard_GetDataParams* params, int* status)](#oh_pasteboard_getdatawithprogress) | - | 获取剪贴板的数据以及粘贴进度，不支持对文件夹的拷贝。调用此函数后，系统开始从系统剪贴板获取数据。如果剪贴板数据来自远端设备或包含大量文件，会通过[OH_Pasteboard_ProgressListener](capi-oh-pasteboard-h.md#oh_pasteboard_progresslistener)回调函数上报进度。数据传输完成后，返回统一数据对象指针。整个过程可能耗时较长，建议在非UI线程调用。 |
-| [void OH_Pasteboard_SyncDelayedDataAsync(OH_Pasteboard* pasteboard, void (\*callback)(int errorCode))](#oh_pasteboard_syncdelayeddataasync) | - | 通知剪贴板从应用同步所有延迟数据（延迟数据指在延迟复制模式下，先写入数据类型到剪贴板，实际数据内容按需延迟加载的数据传输机制），与延迟复制接口[OH_UdmfRecordProvider_SetData](../ArkData/capi-udmf-h.md#oh_udmfrecordprovider_setdata)搭配使用。当所有延迟数据同步完成时，使用callback异步通知应用。当应用使用延迟复制功能复制时，仅将应用支持的数据类型写入剪贴板。应用应在退出时，重新调用[OH_Pasteboard_SetData](capi-oh-pasteboard-h.md#oh_pasteboard_setdata)接口主动提交所有复制数据或调用此接口通知剪贴板获取全量数据，等待数据同步完成再继续退出，否则可能导致其他应用粘贴获取不到数据。> **注意：> - 调用此接口会延长退出过程，建议应用直接设置数据到剪贴板，而不是调用延迟复制接口[OH_UdmfRecordProvider_SetData](../ArkData/capi-udmf-h.md#oh_udmfrecordprovider_setdata)和此接口。 |
+| [void OH_Pasteboard_SyncDelayedDataAsync(OH_Pasteboard* pasteboard, void (\*callback)(int errorCode))](#oh_pasteboard_syncdelayeddataasync) | - | 通知剪贴板从应用同步所有延迟数据（延迟数据指在延迟复制模式下，先写入数据类型到剪贴板，实际数据内容按需延迟加载的数据传输机制），与延迟复制接口OH_UdmfRecordProvider_SetData搭配使用。当所有延迟数据同步完成时，使用callback异步通知应用。当应用使用延迟复制功能复制时，仅将应用支持的数据类型写入剪贴板。应用应在退出时，重新调用[OH_Pasteboard_SetData](capi-oh-pasteboard-h.md#oh_pasteboard_setdata)接口主动提交所有复制数据或调用此接口通知剪贴板获取全量数据，等待数据同步完成再继续退出，否则可能导致其他应用粘贴获取不到数据。> **注意：> - 调用此接口会延长退出过程，建议应用直接设置数据到剪贴板，而不是调用延迟复制接口OH_UdmfRecordProvider_SetData和此接口。 |
 
 ## 函数说明
 
@@ -473,7 +473,7 @@ OH_UdmfData* OH_Pasteboard_GetData(OH_Pasteboard* pasteboard, int* status)
 
 **描述**
 
-获取剪贴板中的数据。调用此函数后，系统会读取剪贴板中的内容，返回统一数据对象[OH_UdmfData](../ArkData/capi-udmf-oh-udmfdata.md)实例的指针。开发者可以通过OH_UdmfData相关接口解析数据内容。获取到的数据对象需要开发者手动释放。由于获取剪贴板中数据的时延受数据量大小与网络环境的影响，调用此接口可能耗时较长，建议开发者在非UI线程调用。- 如果剪贴板为空或数据格式不支持，会返回nullptr。- 返回的OH_UdmfData对象需要开发者调用[OH_UdmfData_Destroy](../ArkData/capi-udmf-h.md#oh_udmfdata_destroy)释放。- 粘贴的数据量大时，建议使用[OH_Pasteboard_GetDataWithProgress](capi-oh-pasteboard-h.md#oh_pasteboard_getdatawithprogress)接口以获取进度信息。
+获取剪贴板中的数据。调用此函数后，系统会读取剪贴板中的内容，返回统一数据对象OH_UdmfData实例的指针。开发者可以通过OH_UdmfData相关接口解析数据内容。获取到的数据对象需要开发者手动释放。由于获取剪贴板中数据的时延受数据量大小与网络环境的影响，调用此接口可能耗时较长，建议开发者在非UI线程调用。- 如果剪贴板为空或数据格式不支持，会返回nullptr。- 返回的OH_UdmfData对象需要开发者调用OH_UdmfData_Destroy释放。- 粘贴的数据量大时，建议使用[OH_Pasteboard_GetDataWithProgress](capi-oh-pasteboard-h.md#oh_pasteboard_getdatawithprogress)接口以获取进度信息。
 
 **需要权限：** ohos.permission.READ_PASTEBOARD
 
@@ -490,7 +490,7 @@ OH_UdmfData* OH_Pasteboard_GetData(OH_Pasteboard* pasteboard, int* status)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_UdmfData*](../ArkData/capi-udmf-oh-udmfdata.md) | 执行成功时返回统一数据对象[OH_UdmfData](../ArkData/capi-udmf-oh-udmfdata.md)实例的指针。否则返回空指针。 |
+| OH_UdmfData* | 执行成功时返回统一数据对象OH_UdmfData实例的指针。否则返回空指针。 |
 
 **参考：**
 
@@ -514,7 +514,7 @@ int OH_Pasteboard_SetData(OH_Pasteboard* pasteboard, OH_UdmfData* data)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)* pasteboard | 表示指向剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)实例的指针。 |
-| [OH_UdmfData](../ArkData/capi-udmf-oh-udmfdata.md)* data | 表示指向统一数据对象[OH_UdmfData](../ArkData/capi-udmf-oh-udmfdata.md)实例的指针。 |
+| OH_UdmfData* data | 表示指向统一数据对象OH_UdmfData实例的指针。 |
 
 **返回：**
 
@@ -831,7 +831,7 @@ OH_UdmfData* OH_Pasteboard_GetDataWithProgress(OH_Pasteboard* pasteboard, Pasteb
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_UdmfData*](../ArkData/capi-udmf-oh-udmfdata.md) | 执行成功时返回统一数据对象OH_UdmfData实例的指针。否则返回空指针。 |
+| OH_UdmfData* | 执行成功时返回统一数据对象OH_UdmfData实例的指针。否则返回空指针。 |
 
 **参考：**
 
@@ -846,7 +846,7 @@ void OH_Pasteboard_SyncDelayedDataAsync(OH_Pasteboard* pasteboard, void (*callba
 
 **描述**
 
-通知剪贴板从应用同步所有延迟数据（延迟数据指在延迟复制模式下，先写入数据类型到剪贴板，实际数据内容按需延迟加载的数据传输机制），与延迟复制接口[OH_UdmfRecordProvider_SetData](../ArkData/capi-udmf-h.md#oh_udmfrecordprovider_setdata)搭配使用。当所有延迟数据同步完成时，使用callback异步通知应用。当应用使用延迟复制功能复制时，仅将应用支持的数据类型写入剪贴板。应用应在退出时，重新调用[OH_Pasteboard_SetData](capi-oh-pasteboard-h.md#oh_pasteboard_setdata)接口主动提交所有复制数据或调用此接口通知剪贴板获取全量数据，等待数据同步完成再继续退出，否则可能导致其他应用粘贴获取不到数据。> **注意：> - 调用此接口会延长退出过程，建议应用直接设置数据到剪贴板，而不是调用延迟复制接口[OH_UdmfRecordProvider_SetData](../ArkData/capi-udmf-h.md#oh_udmfrecordprovider_setdata)和此接口。
+通知剪贴板从应用同步所有延迟数据（延迟数据指在延迟复制模式下，先写入数据类型到剪贴板，实际数据内容按需延迟加载的数据传输机制），与延迟复制接口OH_UdmfRecordProvider_SetData搭配使用。当所有延迟数据同步完成时，使用callback异步通知应用。当应用使用延迟复制功能复制时，仅将应用支持的数据类型写入剪贴板。应用应在退出时，重新调用[OH_Pasteboard_SetData](capi-oh-pasteboard-h.md#oh_pasteboard_setdata)接口主动提交所有复制数据或调用此接口通知剪贴板获取全量数据，等待数据同步完成再继续退出，否则可能导致其他应用粘贴获取不到数据。> **注意：> - 调用此接口会延长退出过程，建议应用直接设置数据到剪贴板，而不是调用延迟复制接口OH_UdmfRecordProvider_SetData和此接口。
 
 **起始版本：** 21
 

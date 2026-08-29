@@ -38,4 +38,4 @@ import { common } from '@kit.MDMKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [EnterpriseAdminExtensionContext(Enterprise公共模块)](arkts-mdm-common-enterpriseadminextensioncontext-t.md) | EnterpriseAdminExtensionContext是 [EnterpriseAdminExtensionAbility](arkts-mdm-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md) 的上下文环境，继承自[ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)。 |
+| [EnterpriseAdminExtensionContext(Enterprise公共模块)](arkts-mdm-common-enterpriseadminextensioncontext-t.md) | EnterpriseAdminExtensionContext是 [EnterpriseAdminExtensionAbility](arkts-mdm-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md) 的上下文环境，继承自ExtensionContext。 |

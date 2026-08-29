@@ -51,7 +51,7 @@ Select(options: Array<SelectOption>)
 
 ## 示例
 
-该示例通过配置[SelectOption](#selectoption对象说明)实现下拉菜单，并从API version 19开始通过设置[avoidance](arkts-arkui-select-attribute.md#avoidance)属性实现菜单的避让方式。
+该示例通过配置SelectOption实现下拉菜单，并从API version 19开始通过设置[avoidance](arkts-arkui-select-attribute.md#avoidance)属性实现菜单的避让方式。
 
 ```TypeScript
 // xxx.ets
@@ -341,7 +341,7 @@ struct SelectExample {
 }
 ```
 
-从API version 20开始，该示例通过[textModifier](#textmodifier20)和[arrowModifier](arkts-arkui-select-attribute.md#arrowmodifier)属性设置文本以及箭头样式。
+从API version 20开始，该示例通过textModifier和[arrowModifier](arkts-arkui-select-attribute.md#arrowmodifier)属性设置文本以及箭头样式。
 
 ```TypeScript
 import { TextModifier, SymbolGlyphModifier } from "@kit.ArkUI";
@@ -485,7 +485,7 @@ struct SelectExample {
 }
 ```
 
-从API version 19开始，该示例通过配置[DividerStyleOptions](ts-types.md#dividerstyleoptions12)的mode属性设置分割线模式。
+从API version 19开始，该示例通过配置DividerStyleOptions的mode属性设置分割线模式。
 
 ```TypeScript
 import { LengthMetrics } from '@kit.ArkUI'

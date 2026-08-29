@@ -1083,7 +1083,7 @@
 - application<!--arkts-basicserviceskit-application-->
   - [PrintExtensionContext](arkts-printextensioncontext.md)
     - [PrintExtensionContext](arkts-basicservices-printextensioncontext-c.md)
-- commonEvent<!--arkts-basicserviceskit-commonEvent-->
+- commonEvent<!--arkts-basicserviceskit-commonevent-->
   - [commonEventData](arkts-commoneventdata.md)
     - [CommonEventData](arkts-basicservices-commoneventdata-commoneventdata-i.md)
   - [commonEventPublishData](arkts-commoneventpublishdata.md)

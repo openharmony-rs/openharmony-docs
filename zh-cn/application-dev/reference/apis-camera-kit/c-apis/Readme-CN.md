@@ -1,6 +1,6 @@
 # C API<!--c-camera-kit-->
 
-- 头文件
+- 头文件<!--camerakit-headerfile-->
     - [camera.h](capi-camera-h.md)
     - [capture_session.h](capi-capture-session-h.md)
     - [photo_native.h](capi-photo-native-h.md)
@@ -12,9 +12,9 @@
     - [photo_output.h](capi-photo-output-h.md)
     - [camera_device.h](capi-camera-device-h.md)
     - [preview_output.h](capi-preview-output-h.md)
-- 模块
+- 模块<!--camerakit-module-->
     - [OH_Camera](capi-oh-camera.md)
-- 结构体
+- 结构体<!--camerakit-struct-->
     - [Camera_Size](capi-oh-camera-camera-size.md)
     - [Camera_Profile](capi-oh-camera-camera-profile.md)
     - [Camera_FrameRateRange](capi-oh-camera-camera-frameraterange.md)

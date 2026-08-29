@@ -16,7 +16,7 @@ triggerType?: AutoFillTriggerType
 
 The trigger type of autofill service.
 
-**类型：** [AutoFillTriggerType](arkts-ability-autofilltriggertype-e-sys.md)
+**类型：** AutoFillTriggerType
 
 **起始版本：** 26.0.0
 

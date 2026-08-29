@@ -20,8 +20,8 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [AudioChannelSet : uint64_t](#audiochannelset  uint64_t) | 音频声道数集合，将每一个声道数映射为uint64_t的变量。(API11废弃) |
-| [AudioChannelLayout : uint64_t](#audiochannellayout  uint64_t) | 音频声道数类型，将用户申请的解码器输出格式表示为编解码器的声道类型。(API11废弃) |
+| AudioChannelSet : uint64_t | 音频声道数集合，将每一个声道数映射为uint64_t的变量。(API11废弃) |
+| AudioChannelLayout : uint64_t | 音频声道数类型，将用户申请的解码器输出格式表示为编解码器的声道类型。(API11废弃) |
 
 ## 枚举类型说明
 

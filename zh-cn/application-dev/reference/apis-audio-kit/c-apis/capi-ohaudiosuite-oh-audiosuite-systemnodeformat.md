@@ -21,7 +21,7 @@ typedef struct OH_AudioSuite_SystemNodeFormat {...} OH_AudioSuite_SystemNodeForm
 | 名称 | 描述 |
 | -- | -- |
 | [OH_Audio_SampleRate](capi-native-audio-suite-base-h.md#oh_audio_samplerate) samplingRate | 音频采样率。<br>**起始版本：** 26.0.0 |
-| [OH_AudioChannelLayout](../AVCodecKit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout) channelLayout | 声道布局。<br>**起始版本：** 26.0.0 |
+| OH_AudioChannelLayout channelLayout | 声道布局。<br>**起始版本：** 26.0.0 |
 | uint32_t channelCount | 音频通道数。<br>**起始版本：** 26.0.0 |
 | int32_t encoding | 音频编码格式。<br>**起始版本：** 26.0.0 |
 | [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat) sampleFormat | 音频样本格式。<br>**起始版本：** 26.0.0 |

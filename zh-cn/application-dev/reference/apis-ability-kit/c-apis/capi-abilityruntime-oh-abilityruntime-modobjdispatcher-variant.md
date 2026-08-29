@@ -44,7 +44,7 @@ typedef struct OH_AbilityRuntime_ModObjDispatcher_Variant {...} OH_AbilityRuntim
 | [OH_AbilityRuntime_ModObjDispatcher_SetHandle](capi-abilityruntime-oh-abilityruntime-modularobjectdispatcher-set8h.md) psetVal | 集合句柄。<br>**起始版本：** 26.0.0 |
 | [OH_AbilityRuntime_ModObjDispatcher_MapHandle](capi-abilityruntime-oh-abilityruntime-modularobjectdispatcher-map8h.md) pmapVal | 映射句柄。<br>**起始版本：** 26.0.0 |
 | [OH_AbilityRuntime_ModObjDispatcher_StructHandle](capi-abilityruntime-oh-abilityruntime-modularobjectdispatcher-struct8h.md) pstructVal | 结构体句柄。<br>**起始版本：** 26.0.0 |
-| [OHIPCRemoteProxy](../IPCKit/capi-ohipcparcel-ohipcremoteproxy.md) *premoteProxyVal | 远端Proxy对象句柄。<br>**起始版本：** 26.0.0 |
+| OHIPCRemoteProxy *premoteProxyVal | 远端Proxy对象句柄。<br>**起始版本：** 26.0.0 |
 | OHIPCRemoteStub *premoteStubVal; } u | 远端Stub对象句柄。<br>**起始版本：** 26.0.0 |
 
 

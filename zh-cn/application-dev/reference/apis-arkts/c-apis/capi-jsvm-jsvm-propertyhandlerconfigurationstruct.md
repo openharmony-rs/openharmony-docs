@@ -20,8 +20,8 @@ typedef struct JSVM_PropertyHandlerConfigurationStruct {...} JSVM_PropertyHandle
 
 | 名称 | 描述 |
 | -- | -- |
-| [JSVM_Value](capi-jsvm-types-h.md#jsvm_value) namedPropertyData | 命名属性回调使用的数据。 |
-| [JSVM_Value](capi-jsvm-types-h.md#jsvm_value) indexedPropertyData | 索引属性回调使用的数据。 |
+| JSVM_Value namedPropertyData | 命名属性回调使用的数据。 |
+| JSVM_Value indexedPropertyData | 索引属性回调使用的数据。 |
 
 
 ### 成员函数

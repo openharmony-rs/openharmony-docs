@@ -21,7 +21,7 @@ import { InputMethodListDialog, PatternOptions, Pattern } from '@kit.IMEKit';
 controller: CustomDialogController
 ```
 
-输入法切换列表弹窗控制器，用于控制弹窗的打开和关闭。 使用场景：当需要通过代码控制输入法切换列表弹窗的显示与隐藏时，必须提供此参数。 使用后效果：设置后，可通过调用controller的[open()](../../apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#open)方法打开弹窗， [close()](../../apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#close)方法关闭弹窗。 说明：需先创建CustomDialogController实例并关联InputMethodListDialog，再通过controller.open()打开弹窗。
+输入法切换列表弹窗控制器，用于控制弹窗的打开和关闭。 使用场景：当需要通过代码控制输入法切换列表弹窗的显示与隐藏时，必须提供此参数。 使用后效果：设置后，可通过调用controller的open()方法打开弹窗， close()方法关闭弹窗。 说明：需先创建CustomDialogController实例并关联InputMethodListDialog，再通过controller.open()打开弹窗。
 
 **类型：** CustomDialogController
 

@@ -238,7 +238,7 @@ struct NestedScroll {
 }
 ```
 
-该示例使用[nestedScroll](#nestedscroll10)属性实现了内层List组件和外层Scroll组件的嵌套滚动。
+该示例使用nestedScroll属性实现了内层List组件和外层Scroll组件的嵌套滚动。
 
 ```TypeScript
 @Entry
@@ -302,7 +302,7 @@ struct StickyNestedScroll {
 }
 ```
 
-该示例使用[enableScrollInteraction](#enablescrollinteraction10)属性和[onScrollFrameBegin](#onscrollframebegin9)事件实现了父组件向子组件传递滚动。
+该示例使用enableScrollInteraction属性和onScrollFrameBegin事件实现了父组件向子组件传递滚动。
 
 ```TypeScript
 @Entry
@@ -542,7 +542,7 @@ struct ScrollExample {
 }
 ```
 
-该示例通过[edgeEffect](#edgeeffect)接口，实现了Scroll组件设置单边边缘效果。
+该示例通过edgeEffect接口，实现了Scroll组件设置单边边缘效果。
 
 ```TypeScript
 // xxx.ets
@@ -604,7 +604,7 @@ struct EnablePagingExample {
 }
 ```
 
-该示例通过[scrollTo](#scrollto)接口，实现了Scroll组件设置过界停留效果。
+该示例通过scrollTo接口，实现了Scroll组件设置过界停留效果。
 
 ```TypeScript
 // xxx.ets

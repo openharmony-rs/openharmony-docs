@@ -282,7 +282,7 @@ dynamicRangeMode(value: DynamicRangeMode)
 enableAnalyzer(enable: boolean)
 ```
 
-设置组件支持AI分析，当前支持主体识别、文字识别和对象查找等功能。<!--RP3--><!--RP3End-->不能和overlay属性同时使用，两者同时设置时overlay中 [CustomBuilder](arkts-arkui-custombuilder-t.md)属性将失效。该特性依赖设备能力。分析图像要求是静态非矢量图，即svg、gif等图像类型不支持分析，支持传入[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)进行分析，目前仅支持 [RGBA_8888](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmapformat-e.md)类型，使用方式见 [示例5（开启图像AI分析）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#示例5开启图像ai分析)。  
+设置组件支持AI分析，当前支持主体识别、文字识别和对象查找等功能。<!--RP3--><!--RP3End-->不能和overlay属性同时使用，两者同时设置时overlay中 [CustomBuilder](arkts-arkui-custombuilder-t.md)属性将失效。该特性依赖设备能力。分析图像要求是静态非矢量图，即svg、gif等图像类型不支持分析，支持传入[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)进行分析，目前仅支持 [RGBA_8888](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmapformat-e.md)类型，使用方式见 示例5（开启图像AI分析）。  
 [alt](#alt)占位图不支持分析， [objectRepeat](#objectrepeat)属性仅在取值为ImageRepeat.NoRepeat时支持分析，隐私遮罩属性 [obscured](arkts-arkui-commonmethod-c.md#obscured)打开时不支持分析。基于完整原始图像进行分析，设置clip、margin、 borderRadius、 position和[objectFit](#objectfit)属性导致图像显示不完整，或使用 [renderMode](#rendermode)设置蒙层，仍基于完整原始图像进行分析。 [copyOption](#copyoption)属性不影响 AI分析功能。当组件的参数类型为[AnimatedDrawableDescriptor](../arkts-apis/arkts-arkui-arkui-drawabledescriptor-animateddrawabledescriptor-c.md)时设置该属性不生效。
 
 > **说明：**

@@ -884,7 +884,7 @@ offSystemConfigurationUpdated(callback?: systemConfiguration.UpdatedCallback): v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | systemConfiguration.UpdatedCallback | 否 | 回调函数。取值可以为使用 [ApplicationContext.onSystemConfigurationUpdated](../../../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextonsystemconfigurationupdated24) 方法注册的callback回调，也可以为空。   -&nbsp;如果传入已定义的回调，则取消该监听。    -&nbsp;如果未传入参数，则取消所有已注册的监听。 |
+| callback | systemConfiguration.UpdatedCallback | 否 | 回调函数。取值可以为使用 ApplicationContext.onSystemConfigurationUpdated 方法注册的callback回调，也可以为空。   -&nbsp;如果传入已定义的回调，则取消该监听。    -&nbsp;如果未传入参数，则取消所有已注册的监听。 |
 
 **示例**
 

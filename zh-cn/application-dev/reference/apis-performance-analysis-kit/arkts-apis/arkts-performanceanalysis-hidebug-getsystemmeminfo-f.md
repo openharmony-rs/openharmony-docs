@@ -21,7 +21,7 @@ function getSystemMemInfo(): SystemMemInfo
 
 | 类型 | 说明 |
 | --- | --- |
-| [SystemMemInfo](arkts-performanceanalysis-hidebug-systemmeminfo-i.md) | 系统内存信息。 |
+| SystemMemInfo | 系统内存信息。 |
 
 **示例**
 

@@ -118,7 +118,7 @@ Navigation(pathInfos: NavPathStack, homeDestination: HomePathInfo)
 
 ## 示例
 
-该示例主要演示Navigation页面的布局包括标题栏[title](#title)，菜单栏[menus](#menus)，内容区和工具栏[toolbarConfiguration](#toolbarconfiguration10)。
+该示例主要演示Navigation页面的布局包括标题栏title，菜单栏menus，内容区和工具栏toolbarConfiguration。
 
 ```TypeScript
 // xxx.ets
@@ -222,7 +222,7 @@ struct NavigationExample {
 }
 ```
 
-该示例主要演示[NavPathStack](#navpathstack10)中方法的使用及路由拦截。
+该示例主要演示NavPathStack中方法的使用及路由拦截。
 
 ```TypeScript
 // Index.ets
@@ -483,7 +483,7 @@ export struct PageTwo {
 }
 ```
 
-该示例主要演示设置每个[NavDestination](ts-basic-components-navdestination.md)子页面的自定义转场动画及可交互转场动画。
+该示例主要演示设置每个NavDestination子页面的自定义转场动画及可交互转场动画。
 
 ```TypeScript
 // Index.ets
@@ -941,7 +941,7 @@ export class CustomTransition {
 }
 ```
 
-该示例主要演示Navigation通过[NavPathStack](#navpathstack10)提供的接口来实现将设置的参数传给上一级页面。
+该示例主要演示Navigation通过NavPathStack提供的接口来实现将设置的参数传给上一级页面。
 
 ```TypeScript
 // Index.ets
@@ -1206,7 +1206,7 @@ export struct PageTwo {
 }
 ```
 
-该示例主要演示设置Navigation主页的标题栏、工具栏和[NavDestination](ts-basic-components-navdestination.md)页面的标题栏的背景颜色和背景模糊效果。
+该示例主要演示设置Navigation主页的标题栏、工具栏和NavDestination页面的标题栏的背景颜色和背景模糊效果。
 
 ```TypeScript
 // Index
@@ -1498,7 +1498,7 @@ export const EFFECT_OPTION_2: BackgroundEffectOptions = {
 }
 ```
 
-该示例主要演示在嵌套Navigation场景下，如何获取父[NavPathStack](#navpathstack10)。
+该示例主要演示在嵌套Navigation场景下，如何获取父NavPathStack。
 
 ```TypeScript
 @Entry
@@ -1565,7 +1565,7 @@ export function PageOneBuilder(name: string) {
 }
 ```
 
-[NavDestination](ts-basic-components-navdestination.md)通过[onReady](ts-basic-components-navdestination.md#onready11)事件能够拿到对应的[NavPathInfo](arkts-arkui-navpathinfo-c.md)和所属的[NavPathStack](#navpathstack10)。
+NavDestination通过onReady事件能够拿到对应的[NavPathInfo](arkts-arkui-navpathinfo-c.md)和所属的NavPathStack。
 
 ```TypeScript
 class PageParam {
@@ -1670,7 +1670,7 @@ struct NavigationExample2 {
 }
 ```
 
-该示例演示[NavDestination](ts-basic-components-navdestination.md)的[onAppear](ts-universal-events-show-hide.md#onappear)，[onDisAppear](ts-universal-events-show-hide.md#ondisappear)，[onShown](ts-basic-components-navdestination.md#onshown10)，[onHidden](ts-basic-components-navdestination.md#onhidden10)，[onWillAppear](ts-basic-components-navdestination.md#onwillappear12)，[onWillDisappear](ts-basic-components-navdestination.md#onwilldisappear12)，[onWillShow](ts-basic-components-navdestination.md#onwillshow12)，[onWillHide](ts-basic-components-navdestination.md#onwillhide12)接口的生命周期时序。
+该示例演示NavDestination的onAppear，onDisAppear，onShown，onHidden，onWillAppear，onWillDisappear，onWillShow，onWillHide接口的生命周期时序。
 
 ```TypeScript
 @Builder
@@ -1838,7 +1838,7 @@ struct NavigationExample {
 }
 ```
 
-该示例主要演示如何定义[NavPathStack](#navpathstack10)的派生类和派生类在Navigation中的基本用法。
+该示例主要演示如何定义NavPathStack的派生类和派生类在Navigation中的基本用法。
 
 ```TypeScript
 // Index.ets
@@ -1984,7 +1984,7 @@ export class NewParam {
 }
 ```
 
-该示例主要演示Navigation和[NavDestination](ts-basic-components-navdestination.md)如何使用Symbol组件。
+该示例主要演示Navigation和NavDestination如何使用Symbol组件。
 
 ```TypeScript
 // Index.ets
@@ -2131,7 +2131,7 @@ export struct NavigationMenu {
 }
 ```
 
-该示例主要演示Navigation和[NavDestination](ts-basic-components-navdestination.md)如何设置自定义标题栏边距，如何通过TextModifier修改主副标题文本样式。
+该示例主要演示Navigation和NavDestination如何设置自定义标题栏边距，如何通过TextModifier修改主副标题文本样式。
 
 ```TypeScript
 // Index.ets
@@ -3309,7 +3309,7 @@ export struct NavigationMenu {
 }
 ```
 
-从API版本26.0.0开始，[title](#title)接口的参数options，新增了[scrollEffectOptions](#scrolleffectoptions)属性。
+从API版本26.0.0开始，title接口的参数options，新增了scrollEffectOptions属性。
 
 ```TypeScript
 // xxx.ets

@@ -1,6 +1,6 @@
 # WaterFlow属性/事件
 
-除支持[通用属性](arkts-arkui-commonmethod-c.md)和[滚动组件通用属性](arkts-arkui-scrollablecommonmethod-c.md)外，还 支持以下属性：除支持[通用事件](arkts-arkui-commonmethod-c.md)和[滚动组件通用事件](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#事件)外，还 支持以下事件：
+除支持[通用属性](arkts-arkui-commonmethod-c.md)和[滚动组件通用属性](arkts-arkui-scrollablecommonmethod-c.md)外，还 支持以下属性：除支持[通用事件](arkts-arkui-commonmethod-c.md)和滚动组件通用事件外，还 支持以下事件：
 
 **继承/实现关系：** WaterFlowAttribute extends ScrollableCommonMethod<WaterFlowAttribute>
 
@@ -84,7 +84,7 @@ columnsGap(value: Length)
 columnsTemplate(value: string)
 ```
 
-设置当前瀑布流组件布局列的数量，不设置时默认1列。当[layoutDirection](#layoutdirection)设置为横向布局（FlexDirection.Row或 FlexDirection.RowReverse）时，columnsTemplate不生效，由[rowsTemplate](#rowstemplate)控制布局。使用 [sections](arkts-arkui-waterflowoptions-i.md)分组混合布局时，此属性会被忽略。例如，'1fr 1fr 2fr' 是将父组件分3列，将父组件允许的宽分为4等份，第1列占1份，第2列占1份，第3列占2份。可使用columnsTemplate('repeat(auto-fill,track-size)')根据给定的列宽track-size自动计算列数，其中repeat、auto-fill为关键字，track-size为可设置的宽度， 支持的单位包括px、vp、%或有效数字，默认单位为vp，使用方法参见 [示例2](../../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md#示例2自动计算列数)。
+设置当前瀑布流组件布局列的数量，不设置时默认1列。当[layoutDirection](#layoutdirection)设置为横向布局（FlexDirection.Row或 FlexDirection.RowReverse）时，columnsTemplate不生效，由[rowsTemplate](#rowstemplate)控制布局。使用 [sections](arkts-arkui-waterflowoptions-i.md)分组混合布局时，此属性会被忽略。例如，'1fr 1fr 2fr' 是将父组件分3列，将父组件允许的宽分为4等份，第1列占1份，第2列占1份，第3列占2份。可使用columnsTemplate('repeat(auto-fill,track-size)')根据给定的列宽track-size自动计算列数，其中repeat、auto-fill为关键字，track-size为可设置的宽度， 支持的单位包括px、vp、%或有效数字，默认单位为vp，使用方法参见 示例2。
 
 **起始版本：** 9
 
@@ -170,7 +170,7 @@ friction(value: number | Resource)
 itemConstraintSize(value: ConstraintSizeOptions)
 ```
 
-设置约束尺寸，用于在子组件布局时限制其尺寸范围。使用方法参考[示例1](../../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md#示例1使用基本瀑布流)。
+设置约束尺寸，用于在子组件布局时限制其尺寸范围。使用方法参考示例1。
 
 **起始版本：** 9
 
@@ -210,7 +210,7 @@ layoutDirection(value: FlexDirection)
 nestedScroll(value: NestedScrollOptions)
 ```
 
-设置前后两个方向的嵌套滚动模式，实现与父组件的滚动联动。使用方法参考 [嵌套滚动实现方式二](../../../reference/apis-arkui/arkui-ts/ts-container-scroll.md#示例3嵌套滚动实现方式二)。
+设置前后两个方向的嵌套滚动模式，实现与父组件的滚动联动。使用方法参考 嵌套滚动实现方式二。
 
 **起始版本：** 10
 

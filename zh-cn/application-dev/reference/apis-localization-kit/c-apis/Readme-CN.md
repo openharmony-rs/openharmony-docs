@@ -1,6 +1,6 @@
 # C API<!--c-localization-kit-->
 
-- 头文件
+- 头文件<!--localizationkit-headerfile-->
     - [errorcode.h](capi-errorcode-h.md)
     - [timezone.h](capi-timezone-h.md)
     - [raw_file_manager.h](capi-raw-file-manager-h.md)
@@ -8,11 +8,11 @@
     - [raw_file.h](capi-raw-file-h.md)
     - [ohresmgr.h](capi-ohresmgr-h.md)
     - [resmgr_common.h](capi-resmgr-common-h.md)
-- 模块
+- 模块<!--localizationkit-module-->
     - [i18n](capi-i18n.md)
     - [rawfile](capi-rawfile.md)
     - [resourcemanager](capi-resourcemanager.md)
-- 结构体
+- 结构体<!--localizationkit-struct-->
     - [DateTimeRule](capi-i18n-datetimerule.md)
     - [InitialTimeZoneRule](capi-i18n-initialtimezonerule.md)
     - [TimeArrayTimeZoneRule](capi-i18n-timearraytimezonerule.md)

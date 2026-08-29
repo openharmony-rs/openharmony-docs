@@ -1,12 +1,12 @@
 # C API<!--c-asset-store-kit-->
 
-- 头文件
+- 头文件<!--assetstorekit-headerfile-->
     - [asset_api.h](capi-asset-api-h.md)
     - [asset_type.h](capi-asset-type-h.md)
-- 模块
+- 模块<!--assetstorekit-module-->
     - [AssetApi](capi-assetapi.md)
     - [AssetType](capi-assettype.md)
-- 结构体
+- 结构体<!--assetstorekit-struct-->
     - [Asset_Blob](capi-assettype-asset-blob.md)
     - [Asset_Value](capi-assettype-asset-value.md)
     - [Asset_Attr](capi-assettype-asset-attr.md)

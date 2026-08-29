@@ -26,8 +26,8 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [anonymous enum](#anonymous enum) | - | PixelMap透明度类型的枚举。 |
-| [anonymous enum](#anonymous enum) | - | PixelMap编辑类型的枚举。 |
+| anonymous enum | - | PixelMap透明度类型的枚举。 |
+| anonymous enum | - | PixelMap编辑类型的枚举。 |
 | [OH_PixelMap_AntiAliasingLevel](#oh_pixelmap_antialiasinglevel) | OH_PixelMap_AntiAliasingLevel | Pixelmap缩放时采用的缩放算法。 |
 
 ### 函数

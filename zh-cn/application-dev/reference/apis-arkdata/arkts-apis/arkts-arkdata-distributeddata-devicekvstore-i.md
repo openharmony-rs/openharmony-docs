@@ -23,7 +23,7 @@
 closeResultSet(resultSet: KvStoreResultSet, callback: AsyncCallback<void>): void
 ```
 
-关闭由[DeviceKVStore.getResultSet](../../../reference/apis-arkdata/js-apis-distributed-data.md#getresultset8-4)返回的 KvStoreResultSet对象，使用callback异步回调。
+关闭由DeviceKVStore.getResultSet返回的 KvStoreResultSet对象，使用callback异步回调。
 
 **起始版本：** 8
 
@@ -81,7 +81,7 @@ try {
 closeResultSet(resultSet: KvStoreResultSet): Promise<void>
 ```
 
-关闭由[DeviceKVStore.getResultSet](../../../reference/apis-arkdata/js-apis-distributed-data.md#getresultset8-4)返回的 KvStoreResultSet对象，使用Promise异步回调。
+关闭由DeviceKVStore.getResultSet返回的 KvStoreResultSet对象，使用Promise异步回调。
 
 **起始版本：** 8
 
@@ -146,7 +146,7 @@ get(deviceId: string, key: string, callback: AsyncCallback<boolean | string | nu
 > 
 > 其中deviceId通过调用<!--RP1--
 > 
-> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync)
+> deviceManager.getTrustedDeviceListSync
 > 方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
 > 
 > deviceId具体获取方式请参考[sync接口示例](arkts-arkdata-distributeddata-singlekvstore-i.md#sync)。
@@ -197,7 +197,7 @@ get(deviceId: string, key: string): Promise<boolean | string | number | Uint8Arr
 > 
 > 其中deviceId通过调用<!--RP1--
 > 
-> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync)
+> deviceManager.getTrustedDeviceListSync
 > 方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
 > 
 > deviceId具体获取方式请参考[sync接口示例](arkts-arkdata-distributeddata-singlekvstore-i.md#sync)。
@@ -257,7 +257,7 @@ getEntries(deviceId: string, keyPrefix: string, callback: AsyncCallback<Entry[]>
 > 
 > 其中deviceId通过调用<!--RP1--
 > 
-> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync)
+> deviceManager.getTrustedDeviceListSync
 > 方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
 > 
 > deviceId具体获取方式请参考[sync接口示例](arkts-arkdata-distributeddata-singlekvstore-i.md#sync)。
@@ -321,7 +321,7 @@ getEntries(deviceId: string, keyPrefix: string): Promise<Entry[]>
 > 
 > 其中deviceId通过调用<!--RP1--
 > 
-> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync)
+> deviceManager.getTrustedDeviceListSync
 > 方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
 > 
 > deviceId具体获取方式请参考[sync接口示例](arkts-arkdata-distributeddata-singlekvstore-i.md#sync)。
@@ -553,7 +553,7 @@ getEntries(deviceId: string, query: Query, callback: AsyncCallback<Entry[]>): vo
 > 
 > 其中deviceId通过调用<!--RP1--
 > 
-> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync)
+> deviceManager.getTrustedDeviceListSync
 > 方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
 > 
 > deviceId具体获取方式请参考[sync接口示例](arkts-arkdata-distributeddata-singlekvstore-i.md#sync)。
@@ -622,7 +622,7 @@ getEntries(deviceId: string, query: Query): Promise<Entry[]>
 > 
 > 其中deviceId通过调用<!--RP1--
 > 
-> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync)
+> deviceManager.getTrustedDeviceListSync
 > 方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
 > 
 > deviceId具体获取方式请参考[sync接口示例](arkts-arkdata-distributeddata-singlekvstore-i.md#sync)。
@@ -698,7 +698,7 @@ getResultSet(deviceId: string, keyPrefix: string, callback: AsyncCallback<KvStor
 > 
 > 其中deviceId通过调用<!--RP1--
 > 
-> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync)
+> deviceManager.getTrustedDeviceListSync
 > 方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
 > 
 > deviceId具体获取方式请参考[sync接口示例](arkts-arkdata-distributeddata-singlekvstore-i.md#sync)。
@@ -749,7 +749,7 @@ getResultSet(deviceId: string, keyPrefix: string): Promise<KvStoreResultSet>
 > 
 > 其中deviceId通过调用<!--RP1--
 > 
-> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync)
+> deviceManager.getTrustedDeviceListSync
 > 方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
 > 
 > deviceId具体获取方式请参考[sync接口示例](arkts-arkdata-distributeddata-singlekvstore-i.md#sync)。
@@ -1003,7 +1003,7 @@ getResultSet(deviceId: string, query: Query, callback: AsyncCallback<KvStoreResu
 > 
 > 其中deviceId通过调用<!--RP1--
 > 
-> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync)
+> deviceManager.getTrustedDeviceListSync
 > 方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
 > 
 > deviceId具体获取方式请参考[sync接口示例](arkts-arkdata-distributeddata-singlekvstore-i.md#sync)。
@@ -1071,7 +1071,7 @@ getResultSet(deviceId: string, query: Query): Promise<KvStoreResultSet>
 > 
 > 其中deviceId通过调用<!--RP1--
 > 
-> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync)
+> deviceManager.getTrustedDeviceListSync
 > 方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
 > 
 > deviceId具体获取方式请参考[sync接口示例](arkts-arkdata-distributeddata-singlekvstore-i.md#sync)。
@@ -1330,7 +1330,7 @@ getResultSize(deviceId: string, query: Query, callback: AsyncCallback<number>): 
 > 
 > 其中deviceId通过调用<!--RP1--
 > 
-> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync)
+> deviceManager.getTrustedDeviceListSync
 > 方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
 > 
 > deviceId具体获取方式请参考[sync接口示例](arkts-arkdata-distributeddata-singlekvstore-i.md#sync)。
@@ -1393,7 +1393,7 @@ getResultSize(deviceId: string, query: Query): Promise<number>
 > 
 > 其中deviceId通过调用<!--RP1--
 > 
-> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync)
+> deviceManager.getTrustedDeviceListSync
 > 方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
 > 
 > deviceId具体获取方式请参考[sync接口示例](arkts-arkdata-distributeddata-singlekvstore-i.md#sync)。
@@ -1629,7 +1629,7 @@ removeDeviceData(deviceId: string, callback: AsyncCallback<void>): void
 > 
 > 其中deviceId通过调用<!--RP1--
 > 
-> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync)
+> deviceManager.getTrustedDeviceListSync
 > 方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
 > 
 > deviceId具体获取方式请参考[sync接口示例](arkts-arkdata-distributeddata-singlekvstore-i.md#sync)。
@@ -1711,7 +1711,7 @@ removeDeviceData(deviceId: string): Promise<void>
 > 
 > 其中deviceId通过调用<!--RP1--
 > 
-> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync)
+> deviceManager.getTrustedDeviceListSync
 > 方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
 > 
 > deviceId具体获取方式请参考[sync接口示例](arkts-arkdata-distributeddata-singlekvstore-i.md#sync)。
@@ -1800,9 +1800,9 @@ sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 
 > **说明：**
 > 
-> 其中deviceIds为<!--RP2-->[DeviceInfo](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-deviceinfo-i-sys.md)中的
+> 其中deviceIds为<!--RP2-->DeviceInfo中的
 > networkId, 通过调用
-> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync)
+> deviceManager.getTrustedDeviceListSync
 > 方法得到。<!--RP2End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
 
 **起始版本：** 8

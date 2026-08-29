@@ -312,7 +312,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsStartWindowIcon(Abilit
 | 参数项 | 描述 |
 | -- | -- |
 | AbilityRuntime_StartOptions *startOptions | AbilityRuntime_StartOptions对象。 |
-| [OH_PixelmapNative](../ImageKit/capi-image-nativemodule-oh-pixelmapnative.md) *startWindowIcon | 启动Ability时的窗口启动图标。图片数据大小限制为600MB。 |
+| OH_PixelmapNative *startWindowIcon | 启动Ability时的窗口启动图标。图片数据大小限制为600MB。 |
 
 **返回：**
 
@@ -337,7 +337,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsStartWindowIcon(Abilit
 | 参数项 | 描述 |
 | -- | -- |
 | AbilityRuntime_StartOptions *startOptions | AbilityRuntime_StartOptions对象。 |
-| [OH_PixelmapNative](../ImageKit/capi-image-nativemodule-oh-pixelmapnative.md) **startWindowIcon | 用于获取启动Ability时的窗口启动图标。 |
+| OH_PixelmapNative **startWindowIcon | 用于获取启动Ability时的窗口启动图标。 |
 
 **返回：**
 

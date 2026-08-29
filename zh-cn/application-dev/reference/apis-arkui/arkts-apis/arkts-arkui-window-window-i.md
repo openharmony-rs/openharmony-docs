@@ -192,7 +192,7 @@ createSubWindowWithOptions(name: string, options: SubWindowOptions): Promise<Win
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 子窗口的名字。 |
-| options | [SubWindowOptions](arkts-arkui-window-subwindowoptions-i.md) | 是 | 子窗口参数。decorEnabled为true时，子窗口为非 [沉浸式布局](../../../windowmanager/window-terminology.md#沉浸式布局)；decorEnabled为false时，子窗口为沉浸式布局。 |
+| options | [SubWindowOptions](arkts-arkui-window-subwindowoptions-i.md) | 是 | 子窗口参数。decorEnabled为true时，子窗口为非 沉浸式布局；decorEnabled为false时，子窗口为沉浸式布局。 |
 
 **返回值：**
 
@@ -599,7 +599,7 @@ getAvoidArea(type: AvoidAreaType, callback: AsyncCallback<AvoidArea>): void
 ```
 
 获取当前窗口内容规避的区域；如系统栏区域、刘海屏区域、手势区域、软键盘区域等与窗口内容重叠时，需要窗口内容避让的区域。主窗口/子窗口：  
-- [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态的自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）下，  
+- 自由窗口状态的自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）下，  
 仅存在固定态软键盘（[AvoidAreaType](arkts-arkui-window-avoidareatype-e.md)为TYPE_KEYBOARD）类型的避让区域。  
 - 主窗口在非自由窗口状态的自由悬浮窗口模式下，仅存在系统栏（[AvoidAreaType](arkts-arkui-window-avoidareatype-e.md)为TYPE_SYSTEM）类型的避让区域。  
 - 主窗口在其余场景下，仅当在非自由悬浮窗口模式下或设备类型为Phone和Tablet，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。  
@@ -650,7 +650,7 @@ getAvoidArea(type: AvoidAreaType): Promise<AvoidArea>
 ```
 
 获取当前窗口内容规避的区域；如系统栏区域、刘海屏区域、手势区域、软键盘区域等与窗口内容重叠时，需要窗口内容避让的区域。主窗口/子窗口：  
-- [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态的自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）下，  
+- 自由窗口状态的自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）下，  
 仅存在固定态软键盘（[AvoidAreaType](arkts-arkui-window-avoidareatype-e.md)为TYPE_KEYBOARD）类型的避让区域。  
 - 主窗口在非自由窗口状态的自由悬浮窗口模式下，仅存在系统栏（[AvoidAreaType](arkts-arkui-window-avoidareatype-e.md)为TYPE_SYSTEM）类型的避让区域。  
 - 主窗口在其余场景下，仅当在非自由悬浮窗口模式下或设备类型为Phone和Tablet，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。  
@@ -1317,7 +1317,7 @@ getWindowAvoidArea(type: AvoidAreaType): AvoidArea
 ```
 
 获取当前窗口避让区域。主窗口/子窗口：  
-- [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态的自由悬浮窗口模式（即窗口模式为  
+- 自由窗口状态的自由悬浮窗口模式（即窗口模式为  
 [window.WindowStatusType.FLOATING](arkts-arkui-window-windowstatustype-e.md)）下，仅存在固定态软键盘（ [AvoidAreaType](arkts-arkui-window-avoidareatype-e.md)为TYPE_KEYBOARD）类型的避让区域。  
 - 主窗口在非自由窗口状态的自由悬浮窗口模式下，仅存在系统栏（[AvoidAreaType](arkts-arkui-window-avoidareatype-e.md)为TYPE_SYSTEM）类型的避让区域。  
 - 主窗口在其余场景下，仅当在非自由悬浮窗口模式下或设备类型为Phone和Tablet，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。  
@@ -1372,7 +1372,7 @@ getWindowAvoidAreaIgnoringVisibility(type: AvoidAreaType): AvoidArea
 ```
 
 获取当前应用窗口的避让区域，即使避让区域当前处于不可见状态。主窗口/子窗口：  
-- 主窗口在非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态的自由悬浮窗口模式（即窗口模式为  
+- 主窗口在非自由窗口状态的自由悬浮窗口模式（即窗口模式为  
 [window.WindowStatusType.FLOATING](arkts-arkui-window-windowstatustype-e.md)）下，仅存在系统栏（ [AvoidAreaType](arkts-arkui-window-avoidareatype-e.md)为TYPE_SYSTEM）类型的避让区域。  
 - 主窗口在其余场景下，仅当在非自由悬浮窗口模式下或设备类型为Phone和Tablet，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。  
 - 子窗口在非自由窗口状态或非自由悬浮窗口模式下，仅当窗口的位置和大小与主窗口一致时，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。  
@@ -1775,7 +1775,7 @@ getWindowStatus(): WindowStatusType
 
 > **说明：**
 > 
-> 在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，应用的
+> 在自由窗口状态下，应用的
 > [targetAPIVersion](../../../quick-start/app-configuration-file.md#配置文件标签)设置小于14时，在窗口最大化状态（窗口铺满整个屏幕，2in1设备会有
 > dock栏和状态栏，Tablet设备会有状态栏）时返回值对应为WindowStatusType::FULL_SCREEN。应用的
 > [targetAPIVersion](../../../quick-start/app-configuration-file.md#配置文件标签)设置大于等于14时，在窗口最大化状态（窗口铺满整个屏幕，2in1设备会有
@@ -1828,7 +1828,7 @@ getWindowSystemBarProperties(): SystemBarProperties
 
 | 类型 | 说明 |
 | --- | --- |
-| [SystemBarProperties](arkts-arkui-window-systembarproperties-i.md) | 当前<!--Del-->三键导航栏、<!--DelEnd-->状态栏属性。 |
+| SystemBarProperties | 当前<!--Del-->三键导航栏、<!--DelEnd-->状态栏属性。 |
 
 **错误码：**
 
@@ -2161,7 +2161,7 @@ try {
 isInFreeWindowMode(): boolean
 ```
 
-查询当前窗口是否为[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)模式。
+查询当前窗口是否为自由窗口模式。
 
 **起始版本：** 22
 
@@ -3681,7 +3681,7 @@ moveWindowTo(x: number, y: number): Promise<void>
 > - 不建议在除自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过
 > [getWindowStatus()](#getwindowstatus)获取）外的其他窗口模式下使用。
 > 
-> - 在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，窗口相对于屏幕左上顶点移动；在非自由窗口状态下，窗口相对于父窗口左上顶点移动。
+> - 在自由窗口状态下，窗口相对于屏幕左上顶点移动；在非自由窗口状态下，窗口相对于父窗口左上顶点移动。
 > 
 > - 若需在非自由窗口状态下实现相对于屏幕左上顶点的移动，请使用
 > [moveWindowToGlobal()](#movewindowtoglobal)
@@ -3689,7 +3689,7 @@ moveWindowTo(x: number, y: number): Promise<void>
 > 
 > - 该方法对非自由窗口状态下的主窗口无效。
 > 
-> - [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
+> - 自由窗口状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
 
 **起始版本：** 9
 
@@ -3748,7 +3748,7 @@ moveWindowTo(x: number, y: number, callback: AsyncCallback<void>): void
 > - 不建议在除自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过
 > [getWindowStatus()](#getwindowstatus)获取）外的其他窗口模式下使用。
 > 
-> - 在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，窗口相对于屏幕左上顶点移动；在非自由窗口状态下，窗口相对于父窗口左上顶点移动。
+> - 在自由窗口状态下，窗口相对于屏幕左上顶点移动；在非自由窗口状态下，窗口相对于父窗口左上顶点移动。
 > 
 > - 若需在非自由窗口状态下实现相对于屏幕左上顶点的移动，请使用
 > [moveWindowToGlobal()](#movewindowtoglobal)
@@ -3756,7 +3756,7 @@ moveWindowTo(x: number, y: number, callback: AsyncCallback<void>): void
 > 
 > - 该方法对非自由窗口状态下的主窗口无效。
 > 
-> - [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
+> - 自由窗口状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
 
 **起始版本：** 9
 
@@ -3806,11 +3806,11 @@ moveWindowToAsync(x: number, y: number): Promise<void>
 ```
 
 移动窗口位置，使用Promise异步回调。调用生效后返回，回调中可使用[getWindowProperties()](#getwindowproperties)（见示例）立即获取最终生效结 果。该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过 [getWindowStatus()](#getwindowstatus)获取）时调用生效，在其他窗口模式下调用返回错误码1300010错误码。在自由悬浮窗口模式下，不同类型窗口的移动行为如下：  
-| 窗口类型 | [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态 | 非自由窗口状态 | |---------|---------------|-----------------| | 主窗口 | 相对于屏幕移动 | 调用不生效不报错 | | 应用子窗口/模态窗 | 相对于屏幕移动 | 相对于主窗口移动 | | 系统窗口/全局悬浮窗 | 相对于屏幕移动 | 相对于屏幕移动 |
+| 窗口类型 | 自由窗口状态 | 非自由窗口状态 | |---------|---------------|-----------------| | 主窗口 | 相对于屏幕移动 | 调用不生效不报错 | | 应用子窗口/模态窗 | 相对于屏幕移动 | 相对于主窗口移动 | | 系统窗口/全局悬浮窗 | 相对于屏幕移动 | 相对于屏幕移动 |
 
 > **说明：**
 > 
-> - [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
+> - 自由窗口状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
 
 **起始版本：** 12
 
@@ -3867,11 +3867,11 @@ moveWindowToAsync(x: number, y: number, moveConfiguration?: MoveConfiguration): 
 ```
 
 移动窗口位置，支持配置moveConfiguration参数指定窗口移动的目标屏幕ID，使用Promise异步回调。调用生效后返回，回调中可使用 [getWindowProperties()](#getwindowproperties)（见示例）立即获取最终生效结果。该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过 [getWindowStatus()](#getwindowstatus)获取）时调用生效，在其他窗口模式下调用返回错误码1300010错误码。在自由悬浮窗口模式下，不同类型窗口的移动行为如下：  
-| 窗口类型 | [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态 | 非自由窗口状态 | |---------|---------------|-----------------| | 主窗口 | 相对于屏幕移动 | 调用不生效不报错 | | 应用子窗口/模态窗 | 相对于屏幕移动 | 相对于主窗口移动 | | 系统窗口/全局悬浮窗 | 相对于屏幕移动 | 相对于屏幕移动 |
+| 窗口类型 | 自由窗口状态 | 非自由窗口状态 | |---------|---------------|-----------------| | 主窗口 | 相对于屏幕移动 | 调用不生效不报错 | | 应用子窗口/模态窗 | 相对于屏幕移动 | 相对于主窗口移动 | | 系统窗口/全局悬浮窗 | 相对于屏幕移动 | 相对于屏幕移动 |
 
 > **说明：**
 > 
-> - [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
+> - 自由窗口状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
 
 **起始版本：** 15
 
@@ -3936,9 +3936,9 @@ moveWindowToGlobal(x: number, y: number): Promise<void>
 
 > **说明：**
 > 
-> - 主窗处于自由悬浮窗口模式时，在非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下调用不生效不报错。
+> - 主窗处于自由悬浮窗口模式时，在非自由窗口状态下调用不生效不报错。
 > 
-> - [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
+> - 自由窗口状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
 
 **起始版本：** 13
 
@@ -3998,9 +3998,9 @@ moveWindowToGlobal(x: number, y: number, moveConfiguration?: MoveConfiguration):
 
 > **说明：**
 > 
-> - 主窗处于自由悬浮窗口模式时，在非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下调用不生效不报错。
+> - 主窗处于自由悬浮窗口模式时，在非自由窗口状态下调用不生效不报错。
 > 
-> - [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
+> - 自由窗口状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
 
 **起始版本：** 15
 
@@ -4061,15 +4061,15 @@ try {
 moveWindowToGlobalDisplay(x: number, y: number): Promise<void>
 ```
 
-基于[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)移动窗口位置，使用Promise异步回调。该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过 [getWindowStatus()](#getwindowstatus)获取）时调用生效，在其他窗口模式下调用返回错误码1300010错误码。
+基于全局坐标系移动窗口位置，使用Promise异步回调。该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过 [getWindowStatus()](#getwindowstatus)获取）时调用生效，在其他窗口模式下调用返回错误码1300010错误码。
 
 > **说明：**
 > 
-> - 主窗处于自由悬浮窗口模式时，在非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下调用不生效不报错。
+> - 主窗处于自由悬浮窗口模式时，在非自由窗口状态下调用不生效不报错。
 > 
 > - 窗口移动后，如果窗口跨越多个屏幕，窗口将归属于与其重叠面积最大的屏幕。
 > 
-> - [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
+> - 自由窗口状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
 
 **起始版本：** 20
 
@@ -4910,7 +4910,7 @@ off(type: 'windowRectChange', callback?: Callback<RectChangeOptions>): void
 off(type: 'rectChangeInGlobalDisplay', callback?: Callback<RectChangeOptions>): void
 ```
 
-关闭[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)下窗口矩形（窗口位置及窗口大小）变化的监听事件。
+关闭全局坐标系下窗口矩形（窗口位置及窗口大小）变化的监听事件。
 
 **起始版本：** 20
 
@@ -5023,7 +5023,7 @@ on(eventType: 'uiExtensionSecureLimitChange', callback: Callback<boolean>): void
 on(type: 'frameMetricsMeasured', callback: Callback<FrameMetrics>): void
 ```
 
-开启窗口帧率指标变化事件的监听。该接口需要在 [loadContent()](#loadcontent) 或[setUIContent()](#setuicontent)调用生效后使用。应用注册帧率变化监听后，只有当客户端UI内容发生重绘时（如页面切换、和可响应组件交互、设置背景色和透明度等），才会触发注册的回调。但当同时使用该接口和 [postFrameCallback](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#postframecallback)、 [postDelayedFrameCallback](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#postdelayedframecallback) 、 displaySync.on('frame') 中的任意一个时，即使无UI内容重绘，也可能触发回调。
+开启窗口帧率指标变化事件的监听。该接口需要在 [loadContent()](#loadcontent) 或[setUIContent()](#setuicontent)调用生效后使用。应用注册帧率变化监听后，只有当客户端UI内容发生重绘时（如页面切换、和可响应组件交互、设置背景色和透明度等），才会触发注册的回调。但当同时使用该接口和 postFrameCallback、 postDelayedFrameCallback 、 displaySync.on('frame') 中的任意一个时，即使无UI内容重绘，也可能触发回调。
 
 **起始版本：** 22
 
@@ -5137,7 +5137,7 @@ on(type: 'avoidAreaChange', callback: Callback<AvoidAreaOptions>): void
 ```
 
 开启当前应用窗口系统避让区域变化的监听。主窗口/子窗口：  
-- [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态的自由悬浮窗口模式（即窗口模式为  
+- 自由窗口状态的自由悬浮窗口模式（即窗口模式为  
 [window.WindowStatusType.FLOATING](arkts-arkui-window-windowstatustype-e.md)）下触发回调时，仅存在固定态软键盘（ [AvoidAreaType](arkts-arkui-window-avoidareatype-e.md)为TYPE_KEYBOARD）类型的避让区域。  
 - 主窗口在非自由窗口状态的自由悬浮窗口模式下触发回调时，仅存在系统栏（[AvoidAreaType](arkts-arkui-window-avoidareatype-e.md)为TYPE_SYSTEM）类型的避让区域。  
 - 主窗口在其余场景下触发回调时，仅当在非自由悬浮窗口模式下或设备类型为Phone和Tablet，才能返回计算后的避让区域，否则直接返回空的避让区域。  
@@ -5571,7 +5571,7 @@ on(type: 'windowStatusChange', callback: Callback<WindowStatusType>): void
 
 > **说明：**
 > 
-> 在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，应用的
+> 在自由窗口状态下，应用的
 > [targetAPIVersion](../../../quick-start/app-configuration-file.md#配置文件标签)设置小于14时，在窗口最大化状态（窗口铺满整个屏幕，2in1设备会有
 > dock栏和状态栏，Tablet设备会有状态栏）时返回值对应为WindowStatusType::FULL_SCREEN。应用的
 > [targetAPIVersion](../../../quick-start/app-configuration-file.md#配置文件标签)设置大于等于14时，在窗口最大化状态（窗口铺满整个屏幕，2in1设备会有
@@ -5659,7 +5659,7 @@ on(type: 'subWindowClose', callback: Callback<void>): void
 on(type: 'windowWillClose', callback: Callback<void, Promise<boolean>>): void
 ```
 
-开启主窗口或子窗口关闭事件的监听。此监听仅能通过系统提供的窗口标题栏关闭按键触发，其余关闭窗口的方式不触发回调。该接口触发的回调函数是异步执行。子窗口的同步关闭事件监听参考 on('subWindowClose')方法。主窗口的同步关闭事件监听参考 [on('windowStageClose')](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#onwindowstageclose)方法。
+开启主窗口或子窗口关闭事件的监听。此监听仅能通过系统提供的窗口标题栏关闭按键触发，其余关闭窗口的方式不触发回调。该接口触发的回调函数是异步执行。子窗口的同步关闭事件监听参考 on('subWindowClose')方法。主窗口的同步关闭事件监听参考 on('windowStageClose')方法。
 
 **起始版本：** 15
 
@@ -5778,7 +5778,7 @@ on(type: 'windowRectChange', callback: Callback<RectChangeOptions>): void
 on(type: 'rectChangeInGlobalDisplay', callback: Callback<RectChangeOptions>): void
 ```
 
-开启[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)下窗口矩形（窗口位置及窗口大小）变化的监听事件。
+开启全局坐标系下窗口矩形（窗口位置及窗口大小）变化的监听事件。
 
 **起始版本：** 20
 
@@ -6232,7 +6232,7 @@ resize(width: number, height: number): Promise<void>
 
 > **说明：**
 > 
-> - 主窗口处于自由悬浮窗口模式时，在非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下调用不报错不生效。
+> - 主窗口处于自由悬浮窗口模式时，在非自由窗口状态下调用不报错不生效。
 
 **起始版本：** 9
 
@@ -6288,7 +6288,7 @@ resize(width: number, height: number, callback: AsyncCallback<void>): void
 
 > **说明：**
 > 
-> - 主窗口处于自由悬浮窗口模式时，在非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下调用不报错不生效。
+> - 主窗口处于自由悬浮窗口模式时，在非自由窗口状态下调用不报错不生效。
 
 **起始版本：** 9
 
@@ -6342,7 +6342,7 @@ resizeAsync(width: number, height: number): Promise<void>
 
 > **说明：**
 > 
-> - 在非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
+> - 在非自由窗口状态下，主窗口调用不生效。
 
 **起始版本：** 12
 
@@ -6487,7 +6487,7 @@ restoreMainWindow(wantParameters?: Record<string, Object>): Promise<void>
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: 1. The window is not float window. 2. The window is not at foreground or has never been clicked. 3. The window cannot find main window. |
-| [1300007](../errorcode-window.md#1300007-windowextension拉起应用失败) | Restore parent main window failed. Possible cause: 1. The main window is in PAUSED lifecycle state. 2. The main window is in background during recent. |
+| 1300007 | Restore parent main window failed. Possible cause: 1. The main window is in PAUSED lifecycle state. 2. The main window is in background during recent. |
 
 **示例**
 
@@ -9578,7 +9578,7 @@ setSystemBarProperties(systemBarProperties: SystemBarProperties, callback: Async
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| systemBarProperties | [SystemBarProperties](arkts-arkui-window-systembarproperties-i.md) | 是 | <!--Del-->三键导航栏、<!--DelEnd-->状态栏的属性。 |
+| systemBarProperties | SystemBarProperties | 是 | <!--Del-->三键导航栏、<!--DelEnd-->状态栏的属性。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **示例**
@@ -9647,7 +9647,7 @@ setSystemBarProperties(systemBarProperties: SystemBarProperties): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| systemBarProperties | [SystemBarProperties](arkts-arkui-window-systembarproperties-i.md) | 是 | <!--Del-->三键导航栏、<!--DelEnd-->状态栏的属性。 |
+| systemBarProperties | SystemBarProperties | 是 | <!--Del-->三键导航栏、<!--DelEnd-->状态栏的属性。 |
 
 **返回值：**
 
@@ -11060,12 +11060,12 @@ setWindowLimits(windowLimits: WindowLimits): Promise<WindowLimits>
 
 > **说明：**
 > 
-> - [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，处于自由悬浮窗口模式（即窗口模式为
+> - 自由窗口状态下，处于自由悬浮窗口模式（即窗口模式为
 > window.WindowStatusType.FLOATING）的窗口在尺寸变化时受[WindowLimits](arkts-arkui-window-windowlimits-i.md)约束。触发场景包括：应用主动
 > 改变窗口大小（如调用[resize()](#resize)）；系统调节窗
 > 口大小（如分辨率变化、显示大小缩放系数变化）；用户拖拽缩放窗口。
 > 
-> - 非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口尺寸不受
+> - 非自由窗口状态下，主窗口尺寸不受
 > [WindowLimits](arkts-arkui-window-windowlimits-i.md)约束，其他类型窗口仍受
 > [WindowLimits](arkts-arkui-window-windowlimits-i.md)约束。
 
@@ -11129,12 +11129,12 @@ setWindowLimits(windowLimits: WindowLimits, isForcible: boolean): Promise<Window
 
 > **说明：**
 > 
-> - [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，处于自由悬浮窗口模式（即窗口模式为
+> - 自由窗口状态下，处于自由悬浮窗口模式（即窗口模式为
 > window.WindowStatusType.FLOATING）的窗口在尺寸变化时受[WindowLimits](arkts-arkui-window-windowlimits-i.md)约束。触发场景包括：应用主动
 > 改变窗口大小（如调用[resize()](#resize)）；系统调节窗
 > 口大小（如分辨率变化、显示大小缩放系数变化）；用户拖拽缩放窗口。
 > 
-> - 非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口尺寸不受
+> - 非自由窗口状态下，主窗口尺寸不受
 > [WindowLimits](arkts-arkui-window-windowlimits-i.md)约束，其他类型窗口仍受
 > [WindowLimits](arkts-arkui-window-windowlimits-i.md)约束。
 
@@ -11705,7 +11705,7 @@ setWindowSystemBarProperties(systemBarProperties: SystemBarProperties, callback:
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| systemBarProperties | [SystemBarProperties](arkts-arkui-window-systembarproperties-i.md) | 是 | <!--Del-->三键导航栏、<!--DelEnd-->状态栏的属性。 |
+| systemBarProperties | SystemBarProperties | 是 | <!--Del-->三键导航栏、<!--DelEnd-->状态栏的属性。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
@@ -11779,7 +11779,7 @@ setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| systemBarProperties | [SystemBarProperties](arkts-arkui-window-systembarproperties-i.md) | 是 | <!--Del-->三键导航栏、<!--DelEnd-->状态栏的属性。 |
+| systemBarProperties | SystemBarProperties | 是 | <!--Del-->三键导航栏、<!--DelEnd-->状态栏的属性。 |
 
 **返回值：**
 
@@ -12375,7 +12375,7 @@ showWindow(callback: AsyncCallback<void>): void
 
 > **说明：**
 > 
-> 调用该接口前，建议先通过[loadContent](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法或者
+> 调用该接口前，建议先通过loadContent方法或者
 > [setUIContent](#setuicontent)方法完成页面加载。如果应用主窗口没有完成页面加载，直接调用该接口，界面会
 > 一直显示启动界面；如果系统窗口、应用子窗口、模态窗和全局悬浮窗没有完成页面加载，直接调用该接口，窗口会处于前台，但不可见。
 
@@ -12459,7 +12459,7 @@ showWindow(): Promise<void>
 
 > **说明：**
 > 
-> 调用该接口前，建议优先通过[loadContent](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法或者
+> 调用该接口前，建议优先通过loadContent方法或者
 > [setUIContent](#setuicontent)方法完成页面加载。如果应用主窗口没有完成页面加载，直接调用该接口，界面会
 > 一直显示启动界面；如果系统窗口、应用子窗口、模态窗和全局悬浮窗没有完成页面加载，直接调用该接口，窗口会处于前台，但不可见。
 
@@ -12542,7 +12542,7 @@ showWindow(options: ShowWindowOptions): Promise<void>
 
 > **说明：**
 > 
-> 调用该接口前，建议优先通过[loadContent](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法或者
+> 调用该接口前，建议优先通过loadContent方法或者
 > [setUIContent](#setuicontent)方法完成页面加载。如果应用主窗口没有完成页面加载，直接调用该接口，界面会
 > 一直显示启动界面；如果系统窗口、应用子窗口和全局悬浮窗没有完成页面加载，直接调用该接口，窗口会处于前台，但不可见。
 
@@ -12799,7 +12799,7 @@ startMoving(): Promise<void>
 ```
 
 开始移动窗口，使用Promise异步回调。  
-[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，对系统窗口、应用主窗口、应用子窗口、全局悬浮窗和模态窗口生效。非自由窗口状态下，仅对系统窗口、应用子窗 口、全局悬浮窗和模态窗口生效，应用主窗口调用该接口返回801或1300004错误码。仅在[onTouch](../../../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#touchevent对象说明)事件（其中，事件类型必须为 TouchType.Down）的回调方法中调用此接口才会有移动效果，成功调用此接口后，窗口将跟随鼠标或触摸点移动。在点击拖拽场景下，若不期望在按下时触发拖拽事件，则可以在事件类型为[TouchType.Move](arkts-arkui-touchtype-e.md)（需要保证当前行为已经触发 TouchType.Down事件）时调用此接口，触发移动效果。
+自由窗口状态下，对系统窗口、应用主窗口、应用子窗口、全局悬浮窗和模态窗口生效。非自由窗口状态下，仅对系统窗口、应用子窗 口、全局悬浮窗和模态窗口生效，应用主窗口调用该接口返回801或1300004错误码。仅在onTouch事件（其中，事件类型必须为 TouchType.Down）的回调方法中调用此接口才会有移动效果，成功调用此接口后，窗口将跟随鼠标或触摸点移动。在点击拖拽场景下，若不期望在按下时触发拖拽事件，则可以在事件类型为[TouchType.Move](arkts-arkui-touchtype-e.md)（需要保证当前行为已经触发 TouchType.Down事件）时调用此接口，触发移动效果。
 
 **起始版本：** 14
 
@@ -12880,7 +12880,7 @@ struct Index {
 startMoving(offsetX: number, offsetY: number): Promise<void>
 ```
 
-指定鼠标在窗口内的位置并移动窗口，使用Promise异步回调。在同应用内窗口分合后，且鼠标保持按下状态直接移动新窗口，如果此时鼠标快速移动，窗口移动时鼠标可能会在窗口外。可以使用本接口指定窗口移动时鼠标在窗口内的位置，先移动窗口到鼠标位置，再开始移动窗口。仅在[onTouch](../../../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#touchevent对象说明)事件（其中，事件类型必须为 TouchType.Down）的回调方法中调用此接口才会有移动效果，成功调用此接口后，窗口将跟随鼠标移动。在点击拖拽场景下，若不期望在按下时触发拖拽事件，则可以在事件类型为[TouchType.Move](arkts-arkui-touchtype-e.md)（需要保证当前行为已经触发 TouchType.Down事件）时调用此接口，触发移动效果。
+指定鼠标在窗口内的位置并移动窗口，使用Promise异步回调。在同应用内窗口分合后，且鼠标保持按下状态直接移动新窗口，如果此时鼠标快速移动，窗口移动时鼠标可能会在窗口外。可以使用本接口指定窗口移动时鼠标在窗口内的位置，先移动窗口到鼠标位置，再开始移动窗口。仅在onTouch事件（其中，事件类型必须为 TouchType.Down）的回调方法中调用此接口才会有移动效果，成功调用此接口后，窗口将跟随鼠标移动。在点击拖拽场景下，若不期望在按下时触发拖拽事件，则可以在事件类型为[TouchType.Move](arkts-arkui-touchtype-e.md)（需要保证当前行为已经触发 TouchType.Down事件）时调用此接口，触发移动效果。
 
 **起始版本：** 15
 

@@ -1,6 +1,6 @@
 # C API<!--c-arkui-->
 
-- 头文件
+- 头文件<!--arkui-headerfile-->
     - [oh_display_manager.h](capi-oh-display-manager-h.md)
     - [oh_display_capture.h](capi-oh-display-capture-h.md)
     - [oh_display_info.h](capi-oh-display-info-h.md)
@@ -56,7 +56,7 @@
     - [picker.h](capi-picker-h.md)
     - [button.h](capi-button-h.md)
     - [text_area.h](capi-text-area-h.md)
-- 模块
+- 模块<!--arkui-module-->
     - [OH_DisplayManager](capi-oh-displaymanager.md)
     - [WindowManager](capi-windowmanager.md)
     - [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -64,7 +64,7 @@
     - [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)
     - [ArkUI_Accessibility](capi-arkui-accessibility.md)
     - [ArkUI_EventModule](capi-arkui-eventmodule.md)
-- 结构体
+- 结构体<!--arkui-struct-->
     - [NativeDisplayManager_Rect](capi-oh-displaymanager-nativedisplaymanager-rect.md)
     - [NativeDisplayManager_WaterfallDisplayAreaRects](capi-oh-displaymanager-nativedisplaymanager-waterfalldisplayarearects.md)
     - [NativeDisplayManager_CutoutInfo](capi-oh-displaymanager-nativedisplaymanager-cutoutinfo.md)

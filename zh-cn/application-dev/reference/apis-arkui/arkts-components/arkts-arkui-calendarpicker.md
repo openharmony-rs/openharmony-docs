@@ -72,7 +72,7 @@ struct CalendarPickerExample {
 }
 ```
 
-从API version 18开始，[CalendarOptions](#calendaroptions对象说明)中新增了start、end属性。
+从API version 18开始，CalendarOptions中新增了start、end属性。
 
 ```TypeScript
 // xxx.ets
@@ -99,7 +99,7 @@ struct CalendarPickerExample {
 }
 ```
 
-从API version 19开始，新增了[markToday](#marktoday19)接口，[CalendarOptions](#calendaroptions对象说明)中新增了disabledDateRange属性。
+从API version 19开始，新增了markToday接口，CalendarOptions中新增了disabledDateRange属性。
 
 ```TypeScript
 // xxx.ets

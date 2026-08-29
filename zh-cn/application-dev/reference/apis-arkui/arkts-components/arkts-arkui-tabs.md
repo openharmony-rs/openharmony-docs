@@ -80,7 +80,7 @@ Tabs(options?: TabsOptions)
 
 ## 示例
 
-本示例通过[barMode](#barmode)分别实现了页签均分布局和以实际长度布局，且展示了当页签布局长度之和超过了TabBar总长度后可滑动的效果。
+本示例通过barMode分别实现了页签均分布局和以实际长度布局，且展示了当页签布局长度之和超过了TabBar总长度后可滑动的效果。
 
 ```TypeScript
 // xxx.ets
@@ -152,7 +152,7 @@ struct TabsExample {
 }
 ```
 
-本示例实现了[barMode](#barmode10-1)的ScrollableBarModeOptions参数，该参数仅在Scrollable模式下有效。
+本示例实现了barMode的ScrollableBarModeOptions参数，该参数仅在Scrollable模式下有效。
 
 ```TypeScript
 // xxx.ets
@@ -266,7 +266,7 @@ struct TabsExample6 {
 }
 ```
 
-本示例通过[onAnimationStart](#onanimationstart11)、[onChange](#onchange)实现切换时自定义tabBar和TabContent的联动。
+本示例通过onAnimationStart、onChange实现切换时自定义tabBar和TabContent的联动。
 
 ```TypeScript
 // xxx.ets
@@ -339,7 +339,7 @@ struct TabsExample {
 }
 ```
 
-本示例通过[divider](#divider10)实现了分割线各种属性的展示。
+本示例通过divider实现了分割线各种属性的展示。
 
 ```TypeScript
 // xxx.ets
@@ -445,7 +445,7 @@ struct TabsDivider1 {
 }
 ```
 
-本示例通过[fadingEdge](#fadingedge10)实现了切换子页签渐隐和不渐隐。
+本示例通过fadingEdge实现了切换子页签渐隐和不渐隐。
 
 ```TypeScript
 // xxx.ets
@@ -554,7 +554,7 @@ struct TabsOpaque {
 }
 ```
 
-本示例通过[barOverlap](#baroverlap10)实现了TabBar是否背后变模糊并叠加在TabContent之上。
+本示例通过barOverlap实现了TabBar是否背后变模糊并叠加在TabContent之上。
 
 ```TypeScript
 // xxx.ets
@@ -703,7 +703,7 @@ struct TabsExample5 {
 }
 ```
 
-本示例通过[customContentTransition](#customcontenttransition11)实现了自定义Tabs页面的切换动画。
+本示例通过customContentTransition实现了自定义Tabs页面的切换动画。
 
 ```TypeScript
 // xxx.ets
@@ -789,7 +789,7 @@ struct TabsCustomAnimationExample {
 }
 ```
 
-本示例通过[onContentWillChange](#oncontentwillchange12)实现了自定义页面手势滑动切换拦截。
+本示例通过onContentWillChange实现了自定义页面手势滑动切换拦截。
 
 ```TypeScript
 // xxx.ets
@@ -878,7 +878,7 @@ struct TabsExample {
 }
 ```
 
-本示例通过[onChange](#onchange)、[onAnimationStart](#onanimationstart11)、[onAnimationEnd](#onanimationend11)、[onGestureSwipe](#ongestureswipe11)等接口实现了自定义TabBar的切换动画。
+本示例通过onChange、onAnimationStart、onAnimationEnd、onGestureSwipe等接口实现了自定义TabBar的切换动画。
 
 ```TypeScript
 // EntryAbility.ets
@@ -1046,7 +1046,7 @@ struct TabsExample {
 }
 ```
 
-本示例通过[preloadItems](#preloaditems12)接口实现了预加载指定子节点。
+本示例通过preloadItems接口实现了预加载指定子节点。
 
 ```TypeScript
 // xxx.ets
@@ -1169,7 +1169,7 @@ struct TabsExample {
 }
 ```
 
-本示例通过使用自定义[TabBar](ts-container-tabcontent.md#tabbar)与[Swiper](ts-container-swiper.md)配合[LazyForEach](ts-rendering-control-lazyforeach.md)实现页面懒加载和释放。
+本示例通过使用自定义TabBar与Swiper配合LazyForEach实现页面懒加载和释放。
 
 ```TypeScript
 // xxx.ets
@@ -1273,7 +1273,7 @@ struct TabsSwiperExample {
 }
 ```
 
-本示例通过设置[animationMode](#animationmode12)属性，实现了翻页的动效。
+本示例通过设置animationMode属性，实现了翻页的动效。
 
 ```TypeScript
 // xxx.ets
@@ -1718,7 +1718,7 @@ struct TabsExample {
 }
 ```
 
-该示例通过[edgeEffect](#edgeeffect12)实现了不同的边缘回弹效果。
+该示例通过edgeEffect实现了不同的边缘回弹效果。
 
 ```TypeScript
 // xxx.ets

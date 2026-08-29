@@ -22,7 +22,7 @@ Provides ArkUI event definitions on the native side.
 | [ArkUI_CoastingAxisEvent](capi-arkui-eventmodule-arkui-coastingaxisevent.md) | ArkUI_CoastingAxisEvent | 定义惯性滚动轴事件。 |
 | [ArkUI_TouchTestInfo](capi-arkui-eventmodule-arkui-touchtestinfo.md) | ArkUI_TouchTestInfo | 定义触摸测试信息。 |
 | [ArkUI_TouchTestInfoItem](capi-arkui-eventmodule-arkui-touchtestinfoitem.md) | ArkUI_TouchTestInfoItem | 定义触摸测试信息项。触摸测试信息项包含触摸测试中子组件的信息，可以通过{@link OH_ArkUI_TouchTestInfoItem_GetXXX}系列接口获取子组件信息。 |
-| [ArkUI_TouchTestInfoItem*](capi-arkui-eventmodule-arkui-touchtestinfoitem8h.md) | ArkUI_TouchTestInfoItemHandle | 定义触摸测试信息项句柄。 |
+| ArkUI_TouchTestInfoItem* | ArkUI_TouchTestInfoItemHandle | 定义触摸测试信息项句柄。 |
 
 ### 枚举
 
@@ -32,17 +32,17 @@ Provides ArkUI event definitions on the native side.
 | [ArkUI_CrownEvent_Action](#arkui_crownevent_action) | ArkUI_CrownEvent_Action | 定义表冠事件的阶段。 |
 | [ArkUI_CoastingAxisEventPhase](#arkui_coastingaxiseventphase) | ArkUI_CoastingAxisEventPhase | 定义惯性滚动轴事件的阶段。 |
 | [ArkUI_CompetitionStrategy](#arkui_competitionstrategy) | ArkUI_CompetitionStrategy | 事件的注入方和被注入方间手势识别结果是否为竞争场景的策略。该策略决定了事件的注入方如何与被注入方的手势处理逻辑交互，非竞争场景会同时触发手势，竞争场景只触发其中一个。 |
-| [anonymous enum](#anonymous enum) | - | Defines the action types of the input event. |
-| [anonymous enum](#anonymous enum) | - | Defines the tool type of the touch event. |
-| [anonymous enum](#anonymous enum) | - | Defines the source type of the touch event. |
+| anonymous enum | - | Defines the action types of the input event. |
+| anonymous enum | - | Defines the tool type of the touch event. |
+| anonymous enum | - | Defines the source type of the touch event. |
 | [HitTestMode](#hittestmode) | HitTestMode | 定义触摸测试类型的枚举值。 |
-| [anonymous enum](#anonymous enum) | - | Define the action types of the mouse event. |
-| [anonymous enum](#anonymous enum) | - | Define the button type for mouse events. |
+| anonymous enum | - | Define the action types of the mouse event. |
+| anonymous enum | - | Define the button type for mouse events. |
 | [ArkUI_ModifierKeyName](#arkui_modifierkeyname) | ArkUI_ModifierKeyName | 定义modifier按键。 |
-| [anonymous enum](#anonymous enum) | - | Defines an enum for the axis types for focus axis events. |
-| [anonymous enum](#anonymous enum) | - | Enumerates the axis types for axis events. |
+| anonymous enum | - | Defines an enum for the axis types for focus axis events. |
+| anonymous enum | - | Enumerates the axis types for axis events. |
 | [ArkUI_InteractionHand](#arkui_interactionhand) | ArkUI_InteractionHand | 定义触摸事件是左手还是右手。 |
-| [anonymous enum](#anonymous enum) | - | Enumerates the action types for axis events. |
+| anonymous enum | - | Enumerates the action types for axis events. |
 | [ArkUI_TouchTestStrategy](#arkui_touchteststrategy) | ArkUI_TouchTestStrategy | 定义触摸测试策略。 |
 
 ### 函数
@@ -1166,7 +1166,7 @@ float OH_ArkUI_PointerEvent_GetGlobalDisplayXByIndex(const ArkUI_UIInputEvent* e
 | 参数项 | 描述 |
 | -- | -- |
 | [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | 表示指向当前UI输入事件的指针。 |
-| uint32_t pointerIndex | 表示多点触控数据列表中目标触控点的索引。有效值范围[0, [OH_ArkUI_PointerEvent_GetPointerCount()](capi-ui-input-event-h.md#oh_arkui_pointerevent_getpointercount()) - 1] |
+| uint32_t pointerIndex | 表示多点触控数据列表中目标触控点的索引。有效值范围[0, OH_ArkUI_PointerEvent_GetPointerCount()) - 1] |
 
 **返回：**
 
@@ -1215,7 +1215,7 @@ float OH_ArkUI_PointerEvent_GetGlobalDisplayYByIndex(const ArkUI_UIInputEvent* e
 | 参数项 | 描述 |
 | -- | -- |
 | [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | 表示指向当前UI输入事件的指针。 |
-| uint32_t pointerIndex | 表示多点触控数据列表中目标触控点的索引。有效值范围[0, [OH_ArkUI_PointerEvent_GetPointerCount()](capi-ui-input-event-h.md#oh_arkui_pointerevent_getpointercount()) - 1] |
+| uint32_t pointerIndex | 表示多点触控数据列表中目标触控点的索引。有效值范围[0, OH_ArkUI_PointerEvent_GetPointerCount()) - 1] |
 
 **返回：**
 
@@ -1705,7 +1705,7 @@ float OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayX(const ArkUI_UIInputEvent* e
 | 参数项 | 描述 |
 | -- | -- |
 | [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | 表示指向当前UI输入事件的指针。 |
-| uint32_t pointerIndex | 表示多点触控数据列表中目标触控点的索引。有效值范围[0,  [OH_ArkUI_PointerEvent_GetPointerCount()](capi-ui-input-event-h.md#oh_arkui_pointerevent_getpointercount()) - 1] |
+| uint32_t pointerIndex | 表示多点触控数据列表中目标触控点的索引。有效值范围[0,  OH_ArkUI_PointerEvent_GetPointerCount()) - 1] |
 | uint32_t historyIndex | 表示要返回的历史值，必须小于[OH_ArkUI_PointerEvent_GetHistorySize](capi-ui-input-event-h.md#oh_arkui_pointerevent_gethistorysize)。 |
 
 **返回：**
@@ -1731,7 +1731,7 @@ float OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayY(const ArkUI_UIInputEvent* e
 | 参数项 | 描述 |
 | -- | -- |
 | [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | 表示指向当前UI输入事件的指针。 |
-| uint32_t pointerIndex | 表示多点触控数据列表中目标触控点的索引。有效值范围[0, [OH_ArkUI_PointerEvent_GetPointerCount()](capi-ui-input-event-h.md#oh_arkui_pointerevent_getpointercount()) - 1] |
+| uint32_t pointerIndex | 表示多点触控数据列表中目标触控点的索引。有效值范围[0, OH_ArkUI_PointerEvent_GetPointerCount()) - 1] |
 | uint32_t historyIndex | 表示要返回的历史值，必须小于[OH_ArkUI_PointerEvent_GetHistorySize](capi-ui-input-event-h.md#oh_arkui_pointerevent_gethistorysize)。 |
 
 **返回：**

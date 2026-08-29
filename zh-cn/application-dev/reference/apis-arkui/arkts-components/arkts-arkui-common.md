@@ -60,9 +60,9 @@ Common()
 | [CrownEvent](arkts-arkui-crownevent-i.md) | 组件接收表冠事件的数据结构。内容包括时间戳、旋转角速度、旋转角度、表冠动作和阻止事件冒泡。 |
 | [CustomPopupOptions](arkts-arkui-custompopupoptions-i.md) | 弹出自定义气泡的信息。 |
 | [DateRange](arkts-arkui-daterange-i.md) | Defines a range of dates.@interface DateRange |
-| [DepthColorRGB](arkts-arkui-depthcolorrgb-i-sys.md) | 深度空间中的RGB颜色。@interface DepthColorRGB |
-| [DepthVector3](arkts-arkui-depthvector3-i-sys.md) | 深度空间中的三维向量。@interface DepthVector3 |
-| [DepthVector4](arkts-arkui-depthvector4-i-sys.md) | 深度空间中的4D向量。@interface DepthVector4 |
+| DepthColorRGB | 深度空间中的RGB颜色。@interface DepthColorRGB |
+| DepthVector3 | 深度空间中的三维向量。@interface DepthVector3 |
+| DepthVector4 | 深度空间中的4D向量。@interface DepthVector4 |
 | [DismissContentCoverAction](arkts-arkui-dismisscontentcoveraction-i.md) | Component content cover dismiss@interface DismissContentCoverAction |
 | [DismissPopupAction](arkts-arkui-dismisspopupaction-i.md) | 气泡关闭的信息。@interface DismissPopupAction |
 | [DismissSheetAction](arkts-arkui-dismisssheetaction-i.md) | 半模态关闭前的回调。 |
@@ -72,7 +72,7 @@ Common()
 | [DragPreviewOptions](arkts-arkui-dragpreviewoptions-i.md) | 设置拖拽过程中预览图处理模式及数量角标的显示。 |
 | [DropOptions](arkts-arkui-dropoptions-i.md) | 设置落入过程的参数。 |
 | [EdgeEffectOptions](arkts-arkui-edgeeffectoptions-i.md) | edgeEffect属性参数对象。@interface EdgeEffectOptions |
-| [EdgeLightParams](arkts-arkui-edgelightparams-i-sys.md) | 定义边缘流光效果参数。 |
+| EdgeLightParams | 定义边缘流光效果参数。 |
 | [EditModeOptions](arkts-arkui-editmodeoptions-i.md) | List/Grid组件编辑模式选项属性参数对象。@interface EditModeOptions |
 | [EntryOptions](arkts-arkui-entryoptions-i.md) | 页面入口配置选项，用于在\@Entry装饰页面时配置路由名称、状态存储和共享存储等参数。 |
 | [EventTarget](arkts-arkui-eventtarget-i.md) | [BaseEvent](arkts-arkui-baseevent-i.md)中参数target的类型。触发事件的元素对象的显示区域。 |
@@ -85,7 +85,7 @@ Common()
 | [GeometryInfo](arkts-arkui-geometryinfo-i.md) | 父组件（自定义组件）布局信息，继承自[SizeResult](arkts-arkui-sizeresult-i.md)。 |
 | [GeometryTransitionOptions](arkts-arkui-geometrytransitionoptions-i.md) | @interface GeometryTransitionOptions |
 | [GestureModifier](arkts-arkui-gesturemodifier-i.md) | 开发者需要自定义class实现GestureModifier接口。 |
-| [GravityCenterOptions](arkts-arkui-gravitycenteroptions-i-sys.md) | 定义引力中心的参数。 |
+| GravityCenterOptions | 定义引力中心的参数。 |
 | [HistoricalPoint](arkts-arkui-historicalpoint-i.md) | 历史点信息。 |
 | [HorizontalAlignParam](arkts-arkui-horizontalalignparam-i.md) | 定义相对容器的水平对齐规则。@interface HorizontalAlignParam |
 | [HoverEvent](arkts-arkui-hoverevent-i.md) | 继承于[BaseEvent](arkts-arkui-baseevent-i.md)。 |
@@ -105,7 +105,7 @@ Common()
 | [LayoutBorderInfo](arkts-arkui-layoutborderinfo-i.md) | 子组件边框信息@interface LayoutBorderInfo |
 | [LayoutChild](arkts-arkui-layoutchild-i.md) | 布局和测量发生时，框架传递给子组件的信息。@interface LayoutChild |
 | [LayoutInfo](arkts-arkui-layoutinfo-i.md) | 子组件布局位置信息@interface LayoutInfo |
-| [LightSource](arkts-arkui-lightsource-i-sys.md) | 一个组件支持添加1个光源。 |
+| LightSource | 一个组件支持添加1个光源。 |
 | [LinearGradient](arkts-arkui-lineargradient-i.md) | Linear Gradient Interface@interface LinearGradient |
 | [LinearGradientBlurOptions](arkts-arkui-lineargradientbluroptions-i.md) | @interface LinearGradientBlurOptions |
 | [LinearGradientOptions](arkts-arkui-lineargradientoptions-i.md) | 线性渐变的参数。 |
@@ -135,10 +135,10 @@ Common()
 | [OverlayOptions](arkts-arkui-overlayoptions-i.md) | 浮层的定位。 |
 | [PickerDialogButtonStyle](arkts-arkui-pickerdialogbuttonstyle-i.md) | Provide an interface for the button style of picker@interface PickerDialogButtonStyle |
 | [PickerTextStyle](arkts-arkui-pickertextstyle-i.md) | Provide an interface for the text style of picker@interface PickerTextStyle |
-| [PixelMapMock](arkts-arkui-pixelmapmock-i-sys.md) | 带有release函数的像素图对象。@interface PixelMapMock |
+| PixelMapMock | 带有release函数的像素图对象。@interface PixelMapMock |
 | [PixelRoundPolicy](arkts-arkui-pixelroundpolicy-i.md) | 指定组件级像素取整的方向。@interface PixelRoundPolicy |
 | [PixelStretchEffectOptions](arkts-arkui-pixelstretcheffectoptions-i.md) | 像素扩展属性集合，用于描述像素扩展的信息。@interface PixelStretchEffectOptions |
-| [PointLightStyle](arkts-arkui-pointlightstyle-i-sys.md) | 通过设置光源和被照亮的类型实现点光源照亮周围组件的UI效果。 |
+| PointLightStyle | 通过设置光源和被照亮的类型实现点光源照亮周围组件的UI效果。 |
 | [PopupBorderLinearGradient](arkts-arkui-popupborderlineargradient-i.md) | 弹出边框线性渐变色。@interface PopupBorderLinearGradient |
 | [PopupCommonOptions](arkts-arkui-popupcommonoptions-i.md) | 配置弹出气泡的参数。使用[UIContext](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md)中的 [getPromptAction()](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#getpromptaction)方法获取到 [PromptAction](../arkts-apis/arkts-arkui-arkui-uicontext-promptaction-c.md)对象，再通过该对象调用 [openPopup](../arkts-apis/arkts-arkui-arkui-uicontext-promptaction-c.md#openpopup)和 [updatePopup](../arkts-apis/arkts-arkui-arkui-uicontext-promptaction-c.md#updatepopup)时传入的options参数。@interface PopupCommonOptions |
 | [PopupMaskType](arkts-arkui-popupmasktype-i.md) | 设置遮罩层颜色。 |
@@ -165,8 +165,8 @@ Common()
 | [SheetTitleOptions](arkts-arkui-sheettitleoptions-i.md) | 半模态面板的标题。 |
 | [SizeResult](arkts-arkui-sizeresult-i.md) | 组件尺寸信息。 |
 | [SmartGestureShortcutOptions](arkts-arkui-smartgestureshortcutoptions-i.md) | 智慧手势响应行为配置对象。 |
-| [SpatialEffectParams](arkts-arkui-spatialeffectparams-i-sys.md) | 空间效果选项。@interface SpatialEffectParams |
-| [SpatialPosition](arkts-arkui-spatialposition-i-sys.md) | 三维空间中的空间角位置。@interface SpatialPosition |
+| SpatialEffectParams | 空间效果选项。@interface SpatialEffectParams |
+| SpatialPosition | 三维空间中的空间角位置。@interface SpatialPosition |
 | [SpringBackAction](arkts-arkui-springbackaction-i.md) | 控制半模态关闭前的回弹。 |
 | [StateStyles](arkts-arkui-statestyles-i.md) | 组件不同状态下的样式。 |
 | [SweepGradientOptions](arkts-arkui-sweepgradientoptions-i.md) | 角度渐变参数。 |
@@ -194,7 +194,7 @@ Common()
 | [AccessibilityTransparentCallback](arkts-arkui-accessibilitytransparentcallback-t.md) | Defines the callback type used in accessibility hover transparent event. |
 | [AnimationRange](arkts-arkui-animationrange-t.md) | 动画开始和结束时相对预览原图缩放比例。 |
 | [AreaChangeCallback](arkts-arkui-areachangecallback-t.md) | 组件区域变化事件的回调类型。 |
-| [Blender](arkts-arkui-blender-t-sys.md) | [Blender](arkts-arkui-blender-t-sys.md) |
+| Blender | Blender |
 | [BorderRadiusType](arkts-arkui-borderradiustype-t.md) | 圆角类型。 |
 | [BuilderCallback](arkts-arkui-buildercallback-t.md) | `BuilderCallback`是全局`@Builder`函数的类型别名，作为`mutableBuilder`函数的入参类型，用于指定待封装的全局`@Builder`函数。 |
 | [CircleShape](arkts-arkui-circleshape-t.md) | 导入CircleShape类型对象。 |
@@ -246,7 +246,7 @@ Common()
 | [SpringLoadingContext](arkts-arkui-springloadingcontext-t.md) | 定义回调上下文信息的类，用于在悬停检测回调中传递给应用程序，使其能访问拖拽状态。 |
 | [Summary](arkts-arkui-summary-t.md) | 拖拽相关数据的简介。 |
 | [SymbolGlyphModifier](arkts-arkui-symbolglyphmodifier-t.md) | SymbolGlyphModifier类型，用于设置自定义图标小符号。 |
-| [SystemUiMaterial](arkts-arkui-systemuimaterial-t-sys.md) | 系统材质对象基类。 |
+| SystemUiMaterial | 系统材质对象基类。 |
 | [Theme](arkts-arkui-theme-t.md) | 主题对象。 |
 | [TipsMessageType](arkts-arkui-tipsmessagetype-t.md) | 悬浮气泡弹窗信息。 |
 | [TouchTestDoneCallback](arkts-arkui-touchtestdonecallback-t.md) | 动态指定手势识别器是否参与手势处理的回调事件类型，回调内参数的生命周期跟随回调本身，参数内的方法仅支持在回调内同步使用。 |
@@ -277,13 +277,13 @@ Common()
 | [ChainStyle](arkts-arkui-chainstyle-e.md) | 定义链的风格，支持attributeModifier动态设置属性方法。@enum { number } |
 | [ContentClipMode](arkts-arkui-contentclipmode-e.md) | 表示滚动容器的内容裁剪模式。@enum { number } |
 | [DismissReason](arkts-arkui-dismissreason-e.md) | 关闭原因类型。@enum { number } |
-| [DistortionMode](arkts-arkui-distortionmode-e-sys.md) | 非线性形变动画模式的枚举。 |
-| [DragAnimationType](arkts-arkui-draganimationtype-e-sys.md) | 拖拽动画类型。 |
+| DistortionMode | 非线性形变动画模式的枚举。 |
+| DragAnimationType | 拖拽动画类型。 |
 | [DragBehavior](arkts-arkui-dragbehavior-e.md) | 当设置[DragResult](arkts-arkui-dragresult-e.md)为DROP_ENABLED后，可设置DragBehavior为复制（COPY）或剪切（MOVE）。当DragBehavior为复制（COPY）时，拖拽对象的角标会显示加 号；为剪切（MOVE）时，拖拽对象的角标不会显示加号。DragBehavior用来向开发者描述数据的处理方式是复制（COPY）还是剪切（MOVE），但无法最终决定对数据的实际处理方式。DragBehavior会通过onDragEnd带 回给数据拖出方，发起拖拽的一方可通过DragBehavior来区分做出的是复制（COPY）还是剪切（MOVE）数据的不同行为。 |
 | [DraggingSizeChangeEffect](arkts-arkui-draggingsizechangeeffect-e.md) | 当一个节点上同时设置长按浮起预览（参考bindContextMenu）与拖拽时，使用该字段设置长按浮起预览图与拖拽预览图过渡动效方式。 |
 | [DragPreviewMode](arkts-arkui-dragpreviewmode-e.md) | 设置拖拽预览图的显示模式。 |
 | [DragResult](arkts-arkui-dragresult-e.md) | 定义拖拽操作的结果及组件的落入选定状态。 |
-| [EdgeLightMode](arkts-arkui-edgelightmode-e-sys.md) | 边缘光效动画模式枚举。 |
+| EdgeLightMode | 边缘光效动画模式枚举。 |
 | [EffectEdge](arkts-arkui-effectedge-e.md) | 表示当前边缘效果要生效的边缘。@enum { number } |
 | [EffectType](arkts-arkui-effecttype-e.md) | 使用效果模板种类的枚举值。 
 **效果模板：** 
@@ -320,5 +320,5 @@ Common()
 | [ThemeColorMode](arkts-arkui-themecolormode-e.md) | 设置颜色模式。@enum { number } |
 | [TouchTestStrategy](arkts-arkui-touchteststrategy-e.md) | 事件派发策略。 |
 | [TransitionEdge](arkts-arkui-transitionedge-e.md) | 转场边缘类型。 |
-| [TransitionHierarchyStrategy](arkts-arkui-transitionhierarchystrategy-e-sys.md) | 共享元素动画过程中in/out组件层级位置移动策略枚举。 
+| TransitionHierarchyStrategy | 共享元素动画过程中in/out组件层级位置移动策略枚举。 
 | 名称 | 值 | 说明 | | ------ | - | ---- | | NONE | 0 | 无层级提拉，in/out组件保持原来的层级位置，受父组件scale、position影响。 | | ADAPTIVE | 1 | 有层级提拉，in/out组件中相对低层级的组件被提拉至组件树上in/out组件相对高层级的位置上。此模式还会导致被提拉的组件与父组件解绑，不受父组件scale、position影响。例如in组件层级高于out组件，开启层级提拉后会在动画过程中将out组件从自己的父组件处解耦，并提拉至in组件的层级位置处，in组件层级位置不变。| |

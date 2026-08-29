@@ -51,7 +51,7 @@ TimePicker(options?: TimePickerOptions)
 
 ## 示例
 
-该示例通过配置[disappearTextStyle](#disappeartextstyle10)、[textStyle](#textstyle10)和[selectedTextStyle](#selectedtextstyle10)实现文本选择器中的文本样式。
+该示例通过配置disappearTextStyle、textStyle和selectedTextStyle实现文本选择器中的文本样式。
 
 ```TypeScript
 // xxx.ets
@@ -140,7 +140,7 @@ struct TimePickerExample {
 }
 ```
 
-该示例通过配置[loop](#loop11)设置TimePicker是否循环滚动。
+该示例通过配置loop设置TimePicker是否循环滚动。
 
 ```TypeScript
 // xxx.ets

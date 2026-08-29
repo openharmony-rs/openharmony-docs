@@ -185,7 +185,7 @@ off(
 
 > **说明：**
 > 当不传入callback参数时，将批量删除与permissionList相关联的所有回调函数。
-> 该接口通常与[on](arkts-ability-abilityaccessctrl-atmanager-i-sys.md#onpermissionstatechange)配套使用，用于取消通过on创建的监听关系。
+> 该接口通常与on配套使用，用于取消通过on创建的监听关系。
 
 **起始版本：** 18
 
@@ -238,7 +238,7 @@ on(
     ): void
 ```
 
-订阅本应用的指定权限列表的权限授权状态变化事件，使用callback异步回调。可在需要根据权限状态实时更新UI或业务逻辑、监听用户授权行为等场景中使用。不再需要监听时，调用[off](arkts-ability-abilityaccessctrl-atmanager-i-sys.md#offpermissionstatechange)取消订阅。  
+订阅本应用的指定权限列表的权限授权状态变化事件，使用callback异步回调。可在需要根据权限状态实时更新UI或业务逻辑、监听用户授权行为等场景中使用。不再需要监听时，调用off取消订阅。  
 - 多次调用本订阅接口时，如果订阅的权限列表相同，callback不同，允许订阅成功。  
 - 多次调用本订阅接口时，如果订阅的权限列表间有相同的子集，callback相同时，订阅失败。
 
@@ -246,7 +246,7 @@ on(
 > 权限状态由“已授权”变更为“未授权”可能存在两种场景：
 > - 用户主动撤销：系统会终止对应应用进程。
 > - 系统主动回收：应用进程不会终止。典型场景如安全控件的单次授权，在授权周期结束后由系统自动回收。
-> 该接口通常与[off](arkts-ability-abilityaccessctrl-atmanager-i-sys.md#offpermissionstatechange)配套使用，当不再需要监听时应调用off取消订阅。
+> 该接口通常与off配套使用，当不再需要监听时应调用off取消订阅。
 
 **起始版本：** 18
 

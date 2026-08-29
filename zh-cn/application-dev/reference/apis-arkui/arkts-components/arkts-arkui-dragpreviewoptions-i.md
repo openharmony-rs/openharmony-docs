@@ -45,7 +45,7 @@ modifier?: ImageModifier
 4.圆角。
 通过[border](arkts-arkui-commonmethod-c.md#border)或 [borderRadius](arkts-arkui-commonmethod-c.md#borderradius)设置圆角，当同时在 mode和modifier中设置圆角，mode设置的圆角显示优先级低于modifier设置。
 5.材质效果，从API版本26.0.0开始支持。
-通过[systemMaterial](arkts-arkui-commonmethod-c-sys.md#systemmaterial)设置系统材质效果。默认值：空，拖拽背板不设置背板图样式。  
+通过systemMaterial设置系统材质效果。默认值：空，拖拽背板不设置背板图样式。  
 **说明：**
 1.若节点已设置背景模糊或材质效果，直接用作拖拽预览会导致截图包含这些效果，与拖拽modifier属性冲突。建议使用 [dragPreview](arkts-arkui-commonmethod-c.md#dragpreview)自定义不包含背景模糊和材质效果的预览。
 2.ImmersiveMaterial的 colorInvert参数在拖拽中不生效。

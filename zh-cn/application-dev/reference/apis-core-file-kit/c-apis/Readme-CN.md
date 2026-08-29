@@ -1,6 +1,6 @@
 # C API<!--c-core-file-kit-->
 
-- 头文件
+- 头文件<!--corefilekit-headerfile-->
     - [oh_file_share.h](capi-oh-file-share-h.md)
     - [oh_file_uri.h](capi-oh-file-uri-h.md)
     - [oh_archive.h](capi-oh-archive-h.md)
@@ -11,7 +11,7 @@
     - [oh_environment.h](capi-oh-environment-h.md)
     - [swapfs_errcode.h](capi-swapfs-errcode-h.md)
     - [oh_swapfs.h](capi-oh-swapfs-h.md)
-- 模块
+- 模块<!--corefilekit-module-->
     - [fileShare](capi-fileshare.md)
     - [fileUri](capi-fileuri.md)
     - [Archive](capi-archive.md)
@@ -19,7 +19,7 @@
     - [CloudDisk](capi-clouddisk.md)
     - [Environment](capi-environment.md)
     - [Swapfs](capi-swapfs.md)
-- 结构体
+- 结构体<!--corefilekit-struct-->
     - [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md)
     - [FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md)
     - [OH_Archive_StreamInfo](capi-archive-oh-archive-streaminfo.md)

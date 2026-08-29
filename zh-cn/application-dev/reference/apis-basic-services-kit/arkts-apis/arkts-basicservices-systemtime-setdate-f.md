@@ -18,7 +18,7 @@ function setDate(date: Date, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [setDate](arkts-basicservices-systemdatetime-setdate-f-sys.md)
+**替代接口：** setDate
 
 **需要权限：** ohos.permission.SET_TIME
 
@@ -70,7 +70,7 @@ function setDate(date: Date): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [setDate](arkts-basicservices-systemdatetime-setdate-f-sys.md)
+**替代接口：** setDate
 
 **需要权限：** ohos.permission.SET_TIME
 

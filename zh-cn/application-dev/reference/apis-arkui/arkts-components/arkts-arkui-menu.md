@@ -299,7 +299,7 @@ struct Index {
 }
 ```
 
-从API版本26.0.0开始，新增[subMenuBuilder](ts-basic-components-menuitem.md#submenubuilder)属性。
+从API版本26.0.0开始，新增subMenuBuilder属性。
 
 ```TypeScript
 import { LengthMetrics } from '@kit.ArkUI';

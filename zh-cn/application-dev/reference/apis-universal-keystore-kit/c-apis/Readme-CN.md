@@ -1,18 +1,18 @@
 # C API<!--c-universal-keystore-kit-->
 
-- 头文件
+- 头文件<!--universalkeystorekit-headerfile-->
     - [native_huks_api.h](capi-native-huks-api-h.md)
     - [native_huks_external_crypto_type.h](capi-native-huks-external-crypto-type-h.md)
     - [native_huks_type.h](capi-native-huks-type-h.md)
     - [native_huks_param.h](capi-native-huks-param-h.md)
     - [native_huks_external_crypto_api.h](capi-native-huks-external-crypto-api-h.md)
-- 模块
+- 模块<!--universalkeystorekit-module-->
     - [HuksKeyApi](capi-hukskeyapi.md)
     - [HuksExternalCryptoTypeApi](capi-huksexternalcryptotypeapi.md)
     - [HuksTypeApi](capi-hukstypeapi.md)
     - [HuksParamSetApi](capi-huksparamsetapi.md)
     - [HuksExternalCryptoApi](capi-huksexternalcryptoapi.md)
-- 结构体
+- 结构体<!--universalkeystorekit-struct-->
     - [OH_Huks_ExternalCryptoParam](capi-huksexternalcryptotypeapi-oh-huks-externalcryptoparam.md)
     - [OH_Huks_ExternalCryptoParamSet](capi-huksexternalcryptotypeapi-oh-huks-externalcryptoparamset.md)
     - [OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md)

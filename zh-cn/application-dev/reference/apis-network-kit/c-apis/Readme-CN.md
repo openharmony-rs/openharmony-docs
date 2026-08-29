@@ -1,6 +1,6 @@
 # C API<!--c-network-kit-->
 
-- 头文件
+- 头文件<!--networkkit-headerfile-->
     - [net_http_type.h](capi-net-http-type-h.md)
     - [net_http.h](capi-net-http-h.md)
     - [net_websocket.h](capi-net-websocket-h.md)
@@ -15,12 +15,12 @@
     - [net_trafficfilter_type.h](capi-net-trafficfilter-type-h.md)
     - [net_connection_type.h](capi-net-connection-type-h.md)
     - [net_connection.h](capi-net-connection-h.md)
-- 模块
+- 模块<!--networkkit-module-->
     - [netstack](capi-netstack.md)
     - [netmanager_ext](capi-netmanager-ext.md)
     - [TrafficFilter](capi-trafficfilter.md)
     - [NetConnection](capi-netconnection.md)
-- 结构体
+- 结构体<!--networkkit-struct-->
     - [Http_Buffer](capi-netstack-http-buffer.md)
     - [Http_HeaderValue](capi-netstack-http-headervalue.md)
     - [Http_HeaderEntry](capi-netstack-http-headerentry.md)

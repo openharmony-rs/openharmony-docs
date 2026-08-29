@@ -1,13 +1,13 @@
 # C API<!--c-drm-kit-->
 
-- 头文件
+- 头文件<!--drmkit-headerfile-->
     - [native_mediakeysession.h](capi-native-mediakeysession-h.md)
     - [native_mediakeysystem.h](capi-native-mediakeysystem-h.md)
     - [native_drm_err.h](capi-native-drm-err-h.md)
     - [native_drm_common.h](capi-native-drm-common-h.md)
-- 模块
+- 模块<!--drmkit-module-->
     - [Drm](capi-drm.md)
-- 结构体
+- 结构体<!--drmkit-struct-->
     - [MediaKeySession_Callback](capi-drm-mediakeysession-callback.md)
     - [OH_MediaKeySession_Callback](capi-drm-oh-mediakeysession-callback.md)
     - [DRM_MediaKeyRequestInfo](capi-drm-drm-mediakeyrequestinfo.md)

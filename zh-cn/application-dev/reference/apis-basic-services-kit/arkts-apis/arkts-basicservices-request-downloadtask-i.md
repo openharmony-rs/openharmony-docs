@@ -807,7 +807,7 @@ on(type: 'fail', callback: (err: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'fail' | 是 | 订阅的事件类型。   - 取值为'fail'，表示下载失败，任务失败时触发该事件。 |
-| callback | (err: number) = & gt; void | 是 | 下载失败的回调函数。错误原因见 [下载任务的错误码](../../../reference/apis-basic-services-kit/js-apis-request.md#constants)。 |
+| callback | (err: number) = & gt; void | 是 | 下载失败的回调函数。错误原因见 下载任务的错误码。 |
 
 **错误码：**
 

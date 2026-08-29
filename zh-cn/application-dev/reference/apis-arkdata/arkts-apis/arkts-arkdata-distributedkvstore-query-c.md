@@ -136,7 +136,7 @@ deviceId(deviceId: string): Query
 
 > **说明：**
 > 
-> 其中deviceId为[DeviceBasicInfo](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md)中的
+> 其中deviceId为DeviceBasicInfo中的
 > networkId，通过调用
 > [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)
 > 方法得到。
