@@ -9160,3 +9160,17 @@ Allows an application to restore the vehicle system to factory settings.
 **Supported devices**: cars
 
 **Valid since**: 26.1.0
+
+## ohos.permission.ACCESS_SERVICE_NAVIGATION_PRIVATE_DATA
+
+Allows a system application to access sensitive data provided by the navigation information service.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.1.0
