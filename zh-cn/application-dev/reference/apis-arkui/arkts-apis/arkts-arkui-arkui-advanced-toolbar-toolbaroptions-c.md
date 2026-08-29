@@ -2,7 +2,7 @@
 
 继承于 Array&lt;[ToolBarOption](arkts-arkui-arkui-advanced-toolbar-toolbaroption-c.md)&gt;。
 
-**继承/实现关系：** ToolBarOptions extends Array<ToolBarOption>
+**继承/实现关系：** ToolBarOptions extends Array\<ToolBarOption>
 
 **起始版本：** 10
 

@@ -2,7 +2,7 @@
 
 Defines ImageSpan Modifier
 
-**继承/实现关系：** ImageSpanModifier extends [ImageSpanAttribute](../arkts-components/arkts-arkui-imagespan-attribute.md) implements AttributeModifier<ImageSpanAttribute>
+**继承/实现关系：** ImageSpanModifier extends [ImageSpanAttribute](../arkts-components/arkts-arkui-imagespan-attribute.md) implements AttributeModifier\<ImageSpanAttribute>
 
 **起始版本：** 12
 

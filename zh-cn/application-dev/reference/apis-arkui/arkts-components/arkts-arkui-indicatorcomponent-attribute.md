@@ -2,7 +2,7 @@
 
 除支持通用属性外，还支持以下属性。@extends CommonMethod&lt;IndicatorComponentAttribute&gt;
 
-**继承/实现关系：** IndicatorComponentAttribute extends CommonMethod<IndicatorComponentAttribute>
+**继承/实现关系：** IndicatorComponentAttribute extends CommonMethod\<IndicatorComponentAttribute>
 
 **起始版本：** 15
 

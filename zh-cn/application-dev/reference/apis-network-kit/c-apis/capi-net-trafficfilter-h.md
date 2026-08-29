@@ -293,14 +293,14 @@ int32_t OH_TrafficFilter_RegisterPacketCallback(OH_TrafficFilter_PacketControlle
 >**说明：** 
 ><strong>Callback Model:</strong>
  *     <ul>
- *     <li><strong>Single Slot Model:</strong> A single <code>controller</code> instance supports only one active
+ *     <li><strong>Single Slot Model:</strong> A single controller instance supports only one active
  *         callback at a time.</li>
  *     <li><strong>Repeated Registration:</strong> If called again with a non-NULL callback, the new callback
  *         <strong>replaces</strong> the previously registered one. The previous callback is immediately unregistered.
  *         No error is returned for repeated registration.</li>
  *     <li><strong>Unregister/Destroy Semantics:</strong>
  *       <ul>
- *         <li>Calling [OH_TrafficFilter_UnregisterPacketCallback](capi-net-trafficfilter-h.md#oh_trafficfilter_unregisterpacketcallback) or destroying the <code>controller</code>
+ *         <li>Calling [OH_TrafficFilter_UnregisterPacketCallback](capi-net-trafficfilter-h.md#oh_trafficfilter_unregisterpacketcallback) or destroying the controller
  *             immediately stops delivery of new packets to the callback.</li>
  *         <li><strong>No In-Flight Callbacks:</strong> Once unregistered or destroyed, the framework guarantees that
  *             no further callback invocations will occur for that registration, even if packet processing is in
@@ -309,13 +309,13 @@ int32_t OH_TrafficFilter_RegisterPacketCallback(OH_TrafficFilter_PacketControlle
  *     </li>
  *     <li><strong>Callback Execution Constraints:</strong>
  *       <ul>
- *         <li><strong>User Data Lifetime:</strong> The <code>user_data</code> must remain valid from registration until
+ *         <li><strong>User Data Lifetime:</strong> The user_data must remain valid from registration until
  *             after the callback is unregistered and all ongoing callback invocations have returned.</li>
  *         <li><strong>Thread Context:</strong> The callback may be invoked on any thread. Callers must ensure thread
  *             safety for shared resources.</li>
  *         <li><strong>Ordering and Concurrency:</strong> Callbacks are not guaranteed to be serialized or preserve
  *             packet order. Multiple callbacks may be invoked concurrently.</li>
- *         <li><strong>Reentrancy:</strong> The callback must not call any <code>OH_TrafficFilter_*</code> registration,
+ *         <li><strong>Reentrancy:</strong> The callback must not call any OH_TrafficFilter_* registration,
  *             unregistration, or controller destruction functions, as this may cause deadlock or undefined
  *             behavior.</li>
  *     </ul>

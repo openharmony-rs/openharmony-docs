@@ -2,7 +2,7 @@
 
 除支持通用属性外，还支持以下属性：
 
-**继承/实现关系：** MenuItemAttribute extends CommonMethod<MenuItemAttribute>
+**继承/实现关系：** MenuItemAttribute extends CommonMethod\<MenuItemAttribute>
 
 **起始版本：** 9
 

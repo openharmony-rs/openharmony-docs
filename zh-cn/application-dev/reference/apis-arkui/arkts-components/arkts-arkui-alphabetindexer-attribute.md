@@ -3,7 +3,7 @@
 width属性设置"auto"时表示自适应宽度，宽度会随索引项最大宽度变化。  
 padding属性默认为4vp。文本最大的字体缩放倍数maxFontScale和最小的字体缩放倍数minFontScale 皆为1，不跟随系统字体大小调节变化。除支持通用属性外，还支持以下属性：除支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** AlphabetIndexerAttribute extends CommonMethod<AlphabetIndexerAttribute>
+**继承/实现关系：** AlphabetIndexerAttribute extends CommonMethod\<AlphabetIndexerAttribute>
 
 **起始版本：** 7
 

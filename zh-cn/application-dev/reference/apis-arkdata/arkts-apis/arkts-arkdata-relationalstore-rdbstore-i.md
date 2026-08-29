@@ -3893,7 +3893,7 @@ off(
 | --- | --- | --- | --- |
 | event | 'dataChange' | 是 | 取值为'dataChange'，表示数据更改。 |
 | type | SubscribeType | 是 | 订阅类型。 |
-| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; \| [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;ChangeInfo&gt;&gt; | 否 | 回调函数。当type为 SUBSCRIBE_TYPE_REMOTE，observer类型需为Callback &lt;Array<string>&gt;，其中Array &lt;string&gt;为数据库中的数据发生改变的对端设备ID。当type为 SUBSCRIBE_TYPE_CLOUD，observer类型需为Callback &lt;Array<string>&gt;，其中Array &lt;string&gt;为数据库中的数据发生改变的云端账号。当type为 SUBSCRIBE_TYPE_CLOUD_DETAILS，observer类型需为Callback &lt;Array<ChangeInfo>&gt;，其中Array &lt;ChangeInfo&gt;为数据库端云同步过程的详情。 当type为SUBSCRIBE_TYPE_LOCAL_DETAILS，observer类型需为Callback &lt;Array<ChangeInfo>&gt;，其中Array &lt;ChangeInfo&gt;为本地数据库中的数据更 改的详情。 当observer没有传入时，表示取消当前type类型下所有数据变更的事件监听。 |
+| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; \| [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;ChangeInfo&gt;&gt; | 否 | 回调函数。当type为 SUBSCRIBE_TYPE_REMOTE，observer类型需为Callback &lt;Array\<string>&gt;，其中Array &lt;string&gt;为数据库中的数据发生改变的对端设备ID。当type为 SUBSCRIBE_TYPE_CLOUD，observer类型需为Callback &lt;Array\<string>&gt;，其中Array &lt;string&gt;为数据库中的数据发生改变的云端账号。当type为 SUBSCRIBE_TYPE_CLOUD_DETAILS，observer类型需为Callback &lt;Array\<ChangeInfo>&gt;，其中Array &lt;ChangeInfo&gt;为数据库端云同步过程的详情。 当type为SUBSCRIBE_TYPE_LOCAL_DETAILS，observer类型需为Callback &lt;Array\<ChangeInfo>&gt;，其中Array &lt;ChangeInfo&gt;为本地数据库中的数据更 改的详情。 当observer没有传入时，表示取消当前type类型下所有数据变更的事件监听。 |
 
 **错误码：**
 
@@ -4131,7 +4131,7 @@ on(event: 'dataChange', type: SubscribeType, observer: Callback<Array<string>> |
 | --- | --- | --- | --- |
 | event | 'dataChange' | 是 | 取值为'dataChange'，表示数据更改。 |
 | type | SubscribeType | 是 | 订阅类型。 |
-| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; \| [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;ChangeInfo&gt;&gt; | 是 | 回调函数。 当type为SUBSCRIBE_TYPE_REMOTE，observer类型需为Callback &lt;Array<string>&gt;，其中Array &lt;string&gt;为数据库中的数据发生改变的对端设备ID。 当type为SUBSCRIBE_TYPE_CLOUD，observer类型需为Callback &lt;Array<string>&gt;，其中Array &lt;string&gt;为数据库中的数据发生改变的云端账号。 当type为SUBSCRIBE_TYPE_CLOUD_DETAILS，observer类型需为Callback &lt;Array<ChangeInfo>&gt;，其中Array &lt;ChangeInfo&gt;为数据库端云同步过程的 详情。 当type为SUBSCRIBE_TYPE_LOCAL_DETAILS，observer类型需为Callback &lt;Array<ChangeInfo>&gt;，其中Array &lt;ChangeInfo&gt;为本地数据库中的数据更 改的详情。 |
+| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; \| [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;ChangeInfo&gt;&gt; | 是 | 回调函数。 当type为SUBSCRIBE_TYPE_REMOTE，observer类型需为Callback &lt;Array\<string>&gt;，其中Array &lt;string&gt;为数据库中的数据发生改变的对端设备ID。 当type为SUBSCRIBE_TYPE_CLOUD，observer类型需为Callback &lt;Array\<string>&gt;，其中Array &lt;string&gt;为数据库中的数据发生改变的云端账号。 当type为SUBSCRIBE_TYPE_CLOUD_DETAILS，observer类型需为Callback &lt;Array\<ChangeInfo>&gt;，其中Array &lt;ChangeInfo&gt;为数据库端云同步过程的 详情。 当type为SUBSCRIBE_TYPE_LOCAL_DETAILS，observer类型需为Callback &lt;Array\<ChangeInfo>&gt;，其中Array &lt;ChangeInfo&gt;为本地数据库中的数据更 改的详情。 |
 
 **错误码：**
 

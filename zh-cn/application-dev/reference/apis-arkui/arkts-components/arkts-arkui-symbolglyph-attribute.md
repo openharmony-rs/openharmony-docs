@@ -2,7 +2,7 @@
 
 支持[通用属性](arkts-arkui-commonmethod-c.md)，不支持文本通用属性，仅支持以下特有属性。支持[通用事件](arkts-arkui-commonmethod-c.md)。
 
-**继承/实现关系：** SymbolGlyphAttribute extends CommonMethod<SymbolGlyphAttribute>
+**继承/实现关系：** SymbolGlyphAttribute extends CommonMethod\<SymbolGlyphAttribute>
 
 **起始版本：** 11
 

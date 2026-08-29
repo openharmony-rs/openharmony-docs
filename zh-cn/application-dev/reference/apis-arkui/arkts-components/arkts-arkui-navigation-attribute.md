@@ -2,7 +2,7 @@
 
 除支持通用属性外，还支持以下属性：
 
-**继承/实现关系：** NavigationAttribute extends CommonMethod<NavigationAttribute>
+**继承/实现关系：** NavigationAttribute extends CommonMethod\<NavigationAttribute>
 
 **起始版本：** 8
 

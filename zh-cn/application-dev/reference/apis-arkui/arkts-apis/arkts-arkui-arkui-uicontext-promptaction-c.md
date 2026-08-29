@@ -584,7 +584,7 @@ openCustomDialog<T extends Object>(dialogContent: ComponentContent<T>, options?:
 
 **示例**
 
-该示例通过监听[@ohos.app.ability.Configuration (环境变量)](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-configuration-configuration-i.md)（系统语言、深浅色等）的变化，调用ComponentContent<T> 的[update](arkts-arkui-arkui-uicontext-dialogpresenter-c.md#update)和updateConfiguration实现自定义弹窗的数据更新及节点的全量刷新。
+该示例通过监听[@ohos.app.ability.Configuration (环境变量)](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-configuration-configuration-i.md)（系统语言、深浅色等）的变化，调用ComponentContent\<T> 的[update](arkts-arkui-arkui-uicontext-dialogpresenter-c.md#update)和updateConfiguration实现自定义弹窗的数据更新及节点的全量刷新。
 
 ```TypeScript
 import { ComponentContent } from '@kit.ArkUI';

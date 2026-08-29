@@ -2,7 +2,7 @@
 
 除支持通用属性和[滚动组件通用属性](arkts-arkui-scrollablecommonmethod-c.md)外，还 支持以下属性：除支持通用事件和滚动组件通用事件外，还 支持以下事件：
 
-**继承/实现关系：** ScrollAttribute extends ScrollableCommonMethod<ScrollAttribute>
+**继承/实现关系：** ScrollAttribute extends ScrollableCommonMethod\<ScrollAttribute>
 
 **起始版本：** 7
 

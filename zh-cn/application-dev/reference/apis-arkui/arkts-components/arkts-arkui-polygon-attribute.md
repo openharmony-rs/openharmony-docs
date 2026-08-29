@@ -2,7 +2,7 @@
 
 除支持通用属性以及图形绘制通用属性外，还支持以下 属性：
 
-**继承/实现关系：** PolygonAttribute extends CommonShapeMethod<PolygonAttribute>
+**继承/实现关系：** PolygonAttribute extends CommonShapeMethod\<PolygonAttribute>
 
 **起始版本：** 7
 

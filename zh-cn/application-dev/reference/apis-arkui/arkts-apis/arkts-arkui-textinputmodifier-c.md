@@ -2,7 +2,7 @@
 
 Defines TextInput Modifier
 
-**继承/实现关系：** TextInputModifier extends [TextInputAttribute](../arkts-components/arkts-arkui-textinput-attribute.md) implements AttributeModifier<TextInputAttribute>
+**继承/实现关系：** TextInputModifier extends [TextInputAttribute](../arkts-components/arkts-arkui-textinput-attribute.md) implements AttributeModifier\<TextInputAttribute>
 
 **起始版本：** 12
 

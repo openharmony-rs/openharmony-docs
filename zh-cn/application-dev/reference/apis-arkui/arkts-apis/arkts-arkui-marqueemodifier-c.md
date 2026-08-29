@@ -2,7 +2,7 @@
 
 Defines Marquee Modifier
 
-**继承/实现关系：** MarqueeModifier extends [MarqueeAttribute](../arkts-components/arkts-arkui-marquee-attribute.md) implements AttributeModifier<MarqueeAttribute>
+**继承/实现关系：** MarqueeModifier extends [MarqueeAttribute](../arkts-components/arkts-arkui-marquee-attribute.md) implements AttributeModifier\<MarqueeAttribute>
 
 **起始版本：** 12
 

@@ -2,7 +2,7 @@
 
 属性继承自[BaseSpan](arkts-arkui-basespan-c.md)。通用事件支持点击事件onClick、 悬浮事件onHover。@extends CommonMethod&lt;SpanAttribute&gt; [since 7 - 10] @extends BaseSpan&lt;SpanAttribute&gt; [since 11]
 
-**继承/实现关系：** SpanAttribute extends BaseSpan<SpanAttribute>
+**继承/实现关系：** SpanAttribute extends BaseSpan\<SpanAttribute>
 
 **起始版本：** 7
 

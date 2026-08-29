@@ -2,7 +2,7 @@
 
 除支持[通用属性](arkts-arkui-commonmethod-c.md)外，还支持以下属性。除支持[通用事件](arkts-arkui-commonmethod-c.md)外，还支持以下事件。
 
-**继承/实现关系：** TextAreaAttribute extends CommonMethod<TextAreaAttribute>
+**继承/实现关系：** TextAreaAttribute extends CommonMethod\<TextAreaAttribute>
 
 **起始版本：** 7
 

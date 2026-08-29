@@ -2,7 +2,7 @@
 
 支持通用事件。
 
-**继承/实现关系：** UnionEffectContainerAttribute extends CommonMethod<UnionEffectContainerAttribute>
+**继承/实现关系：** UnionEffectContainerAttribute extends CommonMethod\<UnionEffectContainerAttribute>
 
 **起始版本：** 23
 

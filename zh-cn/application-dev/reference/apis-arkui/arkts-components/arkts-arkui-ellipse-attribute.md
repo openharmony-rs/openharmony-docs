@@ -2,7 +2,7 @@
 
 支持通用属性以及图形绘制通用属性。
 
-**继承/实现关系：** EllipseAttribute extends CommonShapeMethod<EllipseAttribute>
+**继承/实现关系：** EllipseAttribute extends CommonShapeMethod\<EllipseAttribute>
 
 **起始版本：** 7
 

@@ -2,7 +2,7 @@
 
 定义XComponentAttribute。除通用属性外，还支持以下属性。从API版本12开始，当type设置为**SURFACE**或**TEXTURE**时，支持通用事件。
 
-**继承/实现关系：** XComponentAttribute extends CommonMethod<XComponentAttribute>
+**继承/实现关系：** XComponentAttribute extends CommonMethod\<XComponentAttribute>
 
 **起始版本：** 8
 

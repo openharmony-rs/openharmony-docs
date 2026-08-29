@@ -2,7 +2,7 @@
 
 定义RichText属性函数。
 
-**继承/实现关系：** RichTextAttribute extends CommonMethod<RichTextAttribute>
+**继承/实现关系：** RichTextAttribute extends CommonMethod\<RichTextAttribute>
 
 **起始版本：** 8
 

@@ -2,7 +2,7 @@
 
 属性继承自[BaseSpan](arkts-arkui-basespan-c.md)，通用属性方法支持尺寸设置、背景设置、边框设置。通用事件仅支持点击控制事件。还支持以下事件：@extends CommonMethod&lt;ImageSpanAttribute&gt; [since 10 - 10] @extends BaseSpan&lt;ImageSpanAttribute&gt; [since 11]
 
-**继承/实现关系：** ImageSpanAttribute extends BaseSpan<ImageSpanAttribute>
+**继承/实现关系：** ImageSpanAttribute extends BaseSpan\<ImageSpanAttribute>
 
 **起始版本：** 10
 

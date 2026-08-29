@@ -26,7 +26,7 @@ Image为图片组件，常用于在应用中显示图片。Image支持加载[Pix
 > 当某帧的时长值大于0时，系统直接使用该原始值，不做最小帧时长限制。&gt;
 除支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** ImageAttribute extends CommonMethod<ImageAttribute>
+**继承/实现关系：** ImageAttribute extends CommonMethod\<ImageAttribute>
 
 **起始版本：** 7
 

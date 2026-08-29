@@ -2,7 +2,7 @@
 
 除支持[通用属性](arkts-arkui-commonmethod-c.md)和[滚动组件通用属性](arkts-arkui-scrollablecommonmethod-c.md)外，还 支持以下属性：除支持通用事件和滚动组件通用事件外，还 支持以下事件：
 
-**继承/实现关系：** GridAttribute extends ScrollableCommonMethod<GridAttribute>
+**继承/实现关系：** GridAttribute extends ScrollableCommonMethod\<GridAttribute>
 
 **起始版本：** 7
 

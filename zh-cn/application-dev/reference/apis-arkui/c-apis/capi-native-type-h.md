@@ -63,14 +63,14 @@ Defines the common types for the native module.
 | [ArkUI_PickerIndicatorType](#arkui_pickerindicatortype) | ArkUI_PickerIndicatorType | Enumerates the selected indicator type of picker. |
 | [ArkUI_Alignment](#arkui_alignment) | ArkUI_Alignment | Enumerates the alignment modes. |
 | [ArkUI_ImageRepeat](#arkui_imagerepeat) | ArkUI_ImageRepeat | Enumerates the image repeat patterns. |
-| [ArkUI_XComponentType](#arkui_xcomponenttype) | ArkUI_XComponentType | Enumerates the types of the <b><XComponent></b> component. |
+| [ArkUI_XComponentType](#arkui_xcomponenttype) | ArkUI_XComponentType | Enumerates the types of the <b>\<XComponent></b> component. |
 | [ArkUI_CopyOptions](#arkui_copyoptions) | ArkUI_CopyOptions | Enumerates the text copy and paste modes. |
 | [ArkUI_ShadowType](#arkui_shadowtype) | ArkUI_ShadowType | Enumerates the shadow types. |
 | [ArkUI_DatePickerMode](#arkui_datepickermode) | ArkUI_DatePickerMode | Enumerates the modes of the date picker. |
 | [ArkUI_TextPickerRangeType](#arkui_textpickerrangetype) | ArkUI_TextPickerRangeType | Enumerates the types of the text picker. |
 | [ArkUI_FocusWrapMode](#arkui_focuswrapmode) | ArkUI_FocusWrapMode | Enumerates the focus wrap mode of components. |
 | [ArkUI_ItemFillPolicy](#arkui_itemfillpolicy) | ArkUI_ItemFillPolicy | Specifies the number of columns for different responsive breakpoint specifications. |
-| [ArkUI_Axis](#arkui_axis) | ArkUI_Axis | Enumerates the scroll directions for the <b><List></b> component. |
+| [ArkUI_Axis](#arkui_axis) | ArkUI_Axis | Enumerates the scroll directions for the <b>\<List></b> component. |
 | [ArkUI_BorderStyle](#arkui_borderstyle) | ArkUI_BorderStyle | Enumerates the border styles. |
 | [ArkUI_ShadowStyle](#arkui_shadowstyle) | ArkUI_ShadowStyle | Enumerates the shadow styles. |
 | [ArkUI_AnimationCurve](#arkui_animationcurve) | ArkUI_AnimationCurve | Enumerates the animation curves. |
@@ -656,7 +656,7 @@ enum ArkUI_XComponentType
 
 **描述**
 
-Enumerates the types of the <b><XComponent></b> component.
+Enumerates the types of the <b>\<XComponent></b> component.
 
 **起始版本：** 12
 
@@ -782,7 +782,7 @@ enum ArkUI_Axis
 
 **描述**
 
-Enumerates the scroll directions for the <b><List></b> component.
+Enumerates the scroll directions for the <b>\<List></b> component.
 
 **起始版本：** 12
 

@@ -2,7 +2,7 @@
 
 支持通用属性。除支持通用事件外，还支持如下事件：
 
-**继承/实现关系：** NavDestinationAttribute extends CommonMethod<NavDestinationAttribute>
+**继承/实现关系：** NavDestinationAttribute extends CommonMethod\<NavDestinationAttribute>
 
 **起始版本：** 9
 

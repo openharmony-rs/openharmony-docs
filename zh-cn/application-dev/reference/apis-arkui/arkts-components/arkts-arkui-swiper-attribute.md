@@ -6,7 +6,7 @@
 
 > Swiper组件通用属性clip的默认值为true。
 
-**继承/实现关系：** SwiperAttribute extends CommonMethod<SwiperAttribute>
+**继承/实现关系：** SwiperAttribute extends CommonMethod\<SwiperAttribute>
 
 **起始版本：** 7
 

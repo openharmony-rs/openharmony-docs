@@ -579,7 +579,7 @@ onExportCertificate用于查询某个resourceId下的证书。可以通过解析
 
 ### 调用onEnumCertificates查询证书列表
 
-onEnumCertificates用于枚举证书列表。当调用成功时，返回值中的resultCode成员需设置为0，返回值中的certs成员包含证书列表（类型为Array<HuksCryptoExtensionCertInfo>）。调用失败时，resultCode携带错误码信息。
+onEnumCertificates用于枚举证书列表。当调用成功时，返回值中的resultCode成员需设置为0，返回值中的certs成员包含证书列表（类型为Array\<HuksCryptoExtensionCertInfo>）。调用失败时，resultCode携带错误码信息。
 
    ```ts
    onEnumCertificates(params?: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
