@@ -1672,6 +1672,63 @@ The specified bundle not found app clone preference.
 
 1. 确认应用是否需要分身偏好。
 2. 使用[bundleManager.setAppClonePreference](js-apis-bundleManager-sys.md#bundlemanagersetappclonepreference)设置分身偏好后重试。
+
+## 17700097 设备不支持双模式
+
+**错误信息**
+
+The device does not support the dual mode.
+
+**错误描述**
+
+设备不支持双模式。
+
+**可能原因**
+
+设备不支持双模式，接口调用失败。
+
+**处理步骤**
+
+请确认设备是否支持双模式，可以在开发者模式下查看设备是否存在系统参数const.sceneboard.mainmode和persist.sceneboard.ispcmode。
+
+## 17700098 入参无效
+
+**错误信息**
+
+The input parameter is invalid. It is either outside the range of valid enum values or does not include the following required enum values: [DeviceModeDistributionPolicy.UNIVERSAL_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.FULL_COMPATIBLE_DIFFERENT_PACKAGE].
+
+**错误描述**
+
+传入的参数有误，超出枚举值范围或者没有包含特定的枚举值数组[DeviceModeDistributionPolicy.UNIVERSAL_DIFFERENT_PACKAGE,DeviceModeDistributionPolicy.PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE,DeviceModeDistributionPolicy.FULL_COMPATIBLE_DIFFERENT_PACKAGE]。
+
+**可能原因**
+
+超出枚举值范围或者没有包含特定的枚举值数组[DeviceModeDistributionPolicy.UNIVERSAL_DIFFERENT_PACKAGE,DeviceModeDistributionPolicy.PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE,DeviceModeDistributionPolicy.FULL_COMPATIBLE_DIFFERENT_PACKAGE]。
+
+**处理步骤**
+
+1. 需要检查传入的枚举值，是否有超过DeviceModeDistributionPolicy枚举值。
+2. 需要检查传入的枚举数组是否包含了[DeviceModeDistributionPolicy.UNIVERSAL_DIFFERENT_PACKAGE,DeviceModeDistributionPolicy.PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE,DeviceModeDistributionPolicy.FULL_COMPATIBLE_DIFFERENT_PACKAGE]，这三个在切换时必须传入。
+
+## 17700099 设备正在安装卸载应用或接口正在处理中
+
+**错误信息**
+
+The device is installing or uninstalling an application, or a previous API call is still being processed. Please try again.
+
+**错误描述**
+
+设备正在安装卸载应用或者已经调用该接口正在处理中，请重试。
+
+**可能原因**
+
+设备正在安装卸载应用或者已经调用该接口正在处理中。
+
+**处理步骤**
+
+1. 检查下设备是否正在安装、卸载应用。
+2. 检查下是否已经调用该接口且接口正在处理中。
+3. 重新调用该接口。
 <!--DelEnd-->
 
 ## 17700101 包管理服务异常
