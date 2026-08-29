@@ -81,7 +81,7 @@ MindSpore Lite推理框架使用的模型图格式，与NNRt内部模型图格�
 
 ### MindSpore Lite
 
-华为自研的AI推理框架，内置支持NNRt,可通过MindIR模型图直接对接NNRt,实现无感知的跨AI硬件推理。
+华为自研的AI推理框架，内置支持NNRt，可通过MindIR模型图直接对接NNRt，实现无感知的跨AI硬件推理。
 
 ### Model Cache; 模型缓存
 
