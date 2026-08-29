@@ -9191,3 +9191,17 @@
 **支持设备**：Car
 
 **起始版本**：26.1.0
+
+## ohos.permission.ACCESS_SERVICE_NAVIGATION_PRIVATE_DATA
+
+允许系统应用获取使用导航信息服务的敏感数据。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
