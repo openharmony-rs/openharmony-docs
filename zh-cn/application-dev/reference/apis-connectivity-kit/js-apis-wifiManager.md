@@ -2503,9 +2503,9 @@ removeGroup(): void
 
 p2pConnect(config: WifiP2PConfig): void
 
-执行P2P连接。使用真实mac，即p2pconfig里deviceAddressType为0时，若设备mac地址是从[wifiManager.on('p2pPeerDeviceChange')](#wifimanageronp2pdevicechange)获取，确保有相关ohos.permission.GET_WIFI_PEERS_MAC权限，详见[wifiManager.on('p2pPeerDeviceChange')](#wifimanageronp2pdevicechange)链接。调用此方法连接后，如需取消可调用[p2pCancelConnect](#wifimanagerp2pcancelconnect)。
-
-OpenHarmony 7.0起，支持通过WifiP2PConfig里传入passphrase和groupName进行连接，使用秘钥连接时，需要将deviceAddress参数改为"00:00:00:00:00:00"。
+执行P2P连接。调用此方法后，如需取消连接可调用p2pCancelConnect (#wifimanagerp2pcancelconnect)。
+当WifiP2PConfig中deviceAddressType为0（真实MAC地址）时，若设备MAC地址通过wifiManager.on('p2pPeerDeviceChange') (#wifimanageronp2pdevicechange)获取，需具备ohos.permission.GET_WIFI_PEERS_MAC权限。
+OpenHarmony 7.0起，支持通过WifiP2PConfig传入passphrase和groupName进行密钥连接，此时需将deviceAddress参数设置为"00:00:00:00:00:00"。
 
 **需要权限：**
 
