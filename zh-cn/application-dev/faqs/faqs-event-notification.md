@@ -206,6 +206,6 @@ Notification、WantAgent
 
 发布通知时，需要在真机端系统设置中，开启对应应用的通知开关，然后才能在通知栏中看到发布的通知。
 
-手动开启步骤：设置 &gt; 通知和状态栏 &gt; 应用名称 &gt; 允许通知。
+手动开启步骤：设置&gt; 通知和状态栏&gt; 应用名称&gt; 允许通知。
 
 也可通过接口notificationManager.requestEnableNotification()来弹窗让用户授权（仅弹一次）。

@@ -37,7 +37,7 @@ packBinaryImageToTiffData(bufferInfo: BinaryBufferInfo, options?: PackingOptions
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ArrayBuffer & gt; | Promise对象，返回编码后的数据。 |
+| Promise &lt;ArrayBuffer&gt; | Promise对象，返回编码后的数据。 |
 
 **错误码：**
 
@@ -109,7 +109,7 @@ packBinaryImageToTiffFile(bufferInfo: BinaryBufferInfo, fd: number, options?: Pa
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -244,7 +244,7 @@ packing(source: ImageSource, option: PackingOption): Promise<ArrayBuffer>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ArrayBuffer & gt; | Promise对象，返回压缩或编码后的数据。 |
+| Promise &lt;ArrayBuffer&gt; | Promise对象，返回压缩或编码后的数据。 |
 
 **示例**
 
@@ -361,7 +361,7 @@ packing(source: PixelMap, option: PackingOption): Promise<ArrayBuffer>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ArrayBuffer & gt; | Promise对象，返回压缩或编码后的数据。 |
+| Promise &lt;ArrayBuffer&gt; | Promise对象，返回压缩或编码后的数据。 |
 
 **示例**
 
@@ -409,7 +409,7 @@ packing(picture: Picture, options: PackingOption): Promise<ArrayBuffer>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ArrayBuffer & gt; | Promise对象，返回压缩或编码后的数据。 |
+| Promise &lt;ArrayBuffer&gt; | Promise对象，返回压缩或编码后的数据。 |
 
 **错误码：**
 
@@ -474,7 +474,7 @@ packToData(source: ImageSource, options: PackingOption): Promise<ArrayBuffer>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ArrayBuffer & gt; | Promise对象，返回压缩或编码后的数据。 |
+| Promise &lt;ArrayBuffer&gt; | Promise对象，返回压缩或编码后的数据。 |
 
 **错误码：**
 
@@ -539,7 +539,7 @@ packToData(source: PixelMap, options: PackingOption): Promise<ArrayBuffer>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ArrayBuffer & gt; | Promise对象，返回压缩或编码后的数据。 |
+| Promise &lt;ArrayBuffer&gt; | Promise对象，返回压缩或编码后的数据。 |
 
 **错误码：**
 
@@ -594,14 +594,14 @@ packToDataFromPixelmapSequence(pixelmapSequence: Array<PixelMap>, options: Packi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pixelmapSequence | Array & lt;PixelMap & gt; | 是 | 待编码的PixelMap序列。 |
+| pixelmapSequence | Array &lt;PixelMap&gt; | 是 | 待编码的PixelMap序列。 |
 | options | [PackingOptionsForSequence](arkts-image-image-packingoptionsforsequence-i.md) | 是 | 动图编码参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ArrayBuffer & gt; | Promise对象，返回编码后的数据。 |
+| Promise &lt;ArrayBuffer&gt; | Promise对象，返回编码后的数据。 |
 
 **错误码：**
 
@@ -721,7 +721,7 @@ packToFile(source: ImageSource, fd: number, options: PackingOption): Promise<voi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -851,7 +851,7 @@ packToFile(source: PixelMap, fd: number, options: PackingOption): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -915,7 +915,7 @@ packToFile(picture: Picture, fd: number, options: PackingOption): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -975,7 +975,7 @@ packToFileFromPixelmapSequence(pixelmapSequence: Array<PixelMap>, fd: number, op
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pixelmapSequence | Array & lt;PixelMap & gt; | 是 | 待编码的PixelMap序列。 |
+| pixelmapSequence | Array &lt;PixelMap&gt; | 是 | 待编码的PixelMap序列。 |
 | fd | number | 是 | 文件描述符。取值范围为[0，65535]。 |
 | options | [PackingOptionsForSequence](arkts-image-image-packingoptionsforsequence-i.md) | 是 | 动图编码参数。 |
 
@@ -983,7 +983,7 @@ packToFileFromPixelmapSequence(pixelmapSequence: Array<PixelMap>, fd: number, op
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1144,7 +1144,7 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
 

@@ -79,7 +79,7 @@ decode(src: Uint8Array | string, options?: Type): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Uint8Array & gt; | 用于返回获取到的 Uint8Array 对象的 promise。 |
+| Promise &lt;Uint8Array&gt; | 用于返回获取到的 Uint8Array 对象的 promise。 |
 
 **示例**
 
@@ -158,7 +158,7 @@ encode(src: Uint8Array, options?: Type): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Uint8Array & gt; | 用于返回获取到的 Uint8Array 对象的 promise。 |
+| Promise &lt;Uint8Array&gt; | 用于返回获取到的 Uint8Array 对象的 promise。 |
 
 **示例**
 
@@ -233,7 +233,7 @@ encodeToString(src: Uint8Array, options?: Type): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | 用于返回获取到的字符串的 promise。 |
+| Promise &lt;string&gt; | 用于返回获取到的字符串的 promise。 |
 
 **示例**
 

@@ -485,7 +485,7 @@ isActive(volumeType: AudioVolumeType): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示流状态为活跃；返回false表示流状态不活跃。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示流状态为活跃；返回false表示流状态不活跃。 |
 
 **示例**
 

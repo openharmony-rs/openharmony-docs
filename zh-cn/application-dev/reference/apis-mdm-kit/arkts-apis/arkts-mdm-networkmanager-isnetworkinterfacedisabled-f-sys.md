@@ -102,7 +102,7 @@ function isNetworkInterfaceDisabled(admin: Want, networkInterface: string): Prom
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise结果，返回指定网络接口是否被禁用，true表示该网络接口被禁用，false表示该网络接口未被禁用。 |
+| Promise &lt;boolean&gt; | Promise结果，返回指定网络接口是否被禁用，true表示该网络接口被禁用，false表示该网络接口未被禁用。 |
 
 **错误码：**
 

@@ -37,7 +37,7 @@ function saveHdrPicture(options?: HdrScreenshotOptions): Promise<Array<image.Pix
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;image.PixelMap & gt; & gt; | Promise used to return an array of PixelMap objects. If the screen contains HDR resources (even if they are partially obscured), the array contains two PixelMaps: the first is an SDR PixelMap, and the second is an HDR PixelMap. If there are no HDR resources, the array contains a single SDR PixelMap. |
+| Promise &lt;Array &lt;image.PixelMap&gt;&gt; | Promise used to return an array of PixelMap objects. If the screen contains HDR resources (even if they are partially obscured), the array contains two PixelMaps: the first is an SDR PixelMap, and the second is an HDR PixelMap. If there are no HDR resources, the array contains a single SDR PixelMap. |
 
 **错误码：**
 

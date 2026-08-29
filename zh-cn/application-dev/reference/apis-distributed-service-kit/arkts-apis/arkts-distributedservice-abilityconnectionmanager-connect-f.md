@@ -30,7 +30,7 @@ function connect(sessionId: number): Promise<ConnectResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ConnectResult & gt; | Promise对象，成功时resolve返回ConnectResult（包含isConnected和errorCode字段）， 失败时reject返回错误对象。 |
+| Promise &lt;ConnectResult&gt; | Promise对象，成功时resolve返回ConnectResult（包含isConnected和errorCode字段）， 失败时reject返回错误对象。 |
 
 **错误码：**
 

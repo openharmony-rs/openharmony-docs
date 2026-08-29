@@ -76,7 +76,7 @@ function getAddressesFromLocationName(request: GeoCodeRequest): Promise<Array<Ge
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;GeoAddress & gt; & gt; | Promise对象，返回地理编码查询结果。 |
+| Promise &lt;Array &lt;GeoAddress&gt;&gt; | Promise对象，返回地理编码查询结果。 |
 
 **错误码：**
 

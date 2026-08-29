@@ -65,7 +65,7 @@ function isDefaultNetMetered(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回当前网络上的数据流量是否被计费。true表示会被计费，false表示不会被计费。 |
+| Promise &lt;boolean&gt; | Promise对象。返回当前网络上的数据流量是否被计费。true表示会被计费，false表示不会被计费。 |
 
 **错误码：**
 

@@ -81,7 +81,7 @@ function answerCall(callId?: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以Promise形式异步返回结果。 |
+| Promise &lt;void&gt; | 以Promise形式异步返回结果。 |
 
 **错误码：**
 
@@ -135,7 +135,7 @@ function answerCall(videoState: VideoStateType, callId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以Promise形式异步返回接听电话结果。 |
+| Promise &lt;void&gt; | 以Promise形式异步返回接听电话结果。 |
 
 **错误码：**
 
@@ -190,7 +190,7 @@ function answerCall(videoState: VideoStateType, callId: number, isRtt: boolean):
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | The promise returned by the answerCall. |
+| Promise &lt;void&gt; | The promise returned by the answerCall. |
 
 **错误码：**
 

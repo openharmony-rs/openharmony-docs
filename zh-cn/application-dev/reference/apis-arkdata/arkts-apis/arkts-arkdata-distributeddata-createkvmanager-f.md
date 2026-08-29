@@ -80,7 +80,7 @@ function createKVManager(config: KVManagerConfig): Promise<KVManager>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;KVManager & gt; | Promise对象。返回创建的KVManager对象实例。 |
+| Promise &lt;KVManager&gt; | Promise对象。返回创建的KVManager对象实例。 |
 
 **示例**
 

@@ -117,7 +117,7 @@ getAll(): Array<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;number & gt; | 存储矩阵元素值的浮点数组，长度为9。 |
+| Array &lt;number&gt; | 存储矩阵元素值的浮点数组，长度为9。 |
 
 **示例**
 
@@ -337,13 +337,13 @@ mapPoints(src: Array<common2D.Point>): Array<common2D.Point>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | Array & lt;common2D.Point & gt; | 是 | 源点数组，作为矩阵变换的输入点。 |
+| src | Array &lt;common2D.Point&gt; | 是 | 源点数组，作为矩阵变换的输入点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;common2D.Point & gt; | 源点数组经矩阵变换后的点数组。 |
+| Array &lt;common2D.Point&gt; | 源点数组经矩阵变换后的点数组。 |
 
 **错误码：**
 
@@ -935,7 +935,7 @@ setMatrix(values: Array<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| values | Array & lt;number & gt; | 是 | 长度为9的浮点数组，表示矩阵对象的各项参数。数组中的值按下标从小到大分别表示水平缩放因子、水平倾斜系数、水平位移系数（单位为物理像素px）、垂直倾斜系数、垂直 缩放因子、垂直位移系数（单位为物理像素px）、x轴透视系数、y轴透视系数和透视缩放因子。 |
+| values | Array &lt;number&gt; | 是 | 长度为9的浮点数组，表示矩阵对象的各项参数。数组中的值按下标从小到大分别表示水平缩放因子、水平倾斜系数、水平位移系数（单位为物理像素px）、垂直倾斜系数、垂直 缩放因子、垂直位移系数（单位为物理像素px）、x轴透视系数、y轴透视系数和透视缩放因子。 |
 
 **错误码：**
 
@@ -969,7 +969,7 @@ setMatrix(matrix: Array<number> | Matrix): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| matrix | Array & lt;number & gt; \ | [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) | 是 | 用于更新的数组或矩阵。当类型为数组时，长度固定为9。 |
+| matrix | Array &lt;number&gt; \ | [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) | 是 | 用于更新的数组或矩阵。当类型为数组时，长度固定为9。 |
 
 **示例**
 
@@ -998,8 +998,8 @@ setPolyToPoly(src: Array<common2D.Point>, dst: Array<common2D.Point>, count: num
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | Array & lt;common2D.Point & gt; | 是 | 源点数组，长度必须为count。 |
-| dst | Array & lt;common2D.Point & gt; | 是 | 目标点数组，长度必须为count。 |
+| src | Array &lt;common2D.Point&gt; | 是 | 源点数组，长度必须为count。 |
+| dst | Array &lt;common2D.Point&gt; | 是 | 目标点数组，长度必须为count。 |
 | count | number | 是 | src和dst中点的数量，取值范围为[0, 4]，该参数为整数。 |
 
 **返回值：**

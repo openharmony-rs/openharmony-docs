@@ -28,7 +28,7 @@ export function certVerification(cert: CertBlob, caCert?: CertBlob): Promise<num
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 以promise形式返回一个数字，表示证书验证的结果。如果证书验证成功，则返回0； 否则验证失败。 |
+| Promise &lt;number&gt; | 以promise形式返回一个数字，表示证书验证的结果。如果证书验证成功，则返回0； 否则验证失败。 |
 
 **错误码：**
 

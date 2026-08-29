@@ -26,7 +26,7 @@ function getAllBundleCacheSize(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回全局缓存大小，以字节为单位。 |
+| Promise &lt;number&gt; | Promise对象。返回全局缓存大小，以字节为单位。 |
 
 **错误码：**
 

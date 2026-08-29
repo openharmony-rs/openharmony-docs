@@ -34,7 +34,7 @@ function getAllowedDistributeAbilityConnBundles(admin: Want | null, serviceType:
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 指定用户下特定分布式业务的允许跨设备应用的[唯一标识符]{ |
+| Array &lt;string&gt; | 指定用户下特定分布式业务的允许跨设备应用的[唯一标识符]{ |
 
 **错误码：**
 

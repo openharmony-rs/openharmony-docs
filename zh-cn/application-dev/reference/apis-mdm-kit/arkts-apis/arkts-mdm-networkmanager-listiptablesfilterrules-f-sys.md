@@ -91,7 +91,7 @@ function listIptablesFilterRules(admin: Want): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回网络包过滤规则。 |
+| Promise &lt;string&gt; | Promise对象，返回网络包过滤规则。 |
 
 **错误码：**
 

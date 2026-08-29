@@ -37,7 +37,7 @@ function notifyUpdatePackages(admin: Want, packageInfo: UpdatePackageInfo): Prom
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。当通知系统更新包失败时会抛出错误对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。当通知系统更新包失败时会抛出错误对象。 |
 
 **错误码：**
 

@@ -95,7 +95,7 @@ function getRemoteAbilityInfo(elementName: ElementName): Promise<RemoteAbilityIn
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;RemoteAbilityInfo & gt; | Promise对象，调用成功返回RemoteAbilityInfo对象；调用失败返回错误对象。 |
+| Promise &lt;RemoteAbilityInfo&gt; | Promise对象，调用成功返回RemoteAbilityInfo对象；调用失败返回错误对象。 |
 
 **错误码：**
 
@@ -231,7 +231,7 @@ function getRemoteAbilityInfo(elementNames: Array<ElementName>): Promise<Array<R
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;RemoteAbilityInfo & gt; & gt; | Promise对象，调用成功返回RemoteAbilityInfo对象；调用失败返回错误对象。 |
+| Promise &lt;Array &lt;RemoteAbilityInfo&gt;&gt; | Promise对象，调用成功返回RemoteAbilityInfo对象；调用失败返回错误对象。 |
 
 **错误码：**
 
@@ -369,7 +369,7 @@ function getRemoteAbilityInfo(elementName: ElementName, locale: string): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;RemoteAbilityInfo & gt; | Promise对象，调用成功返回RemoteAbilityInfo对象；调用失败返回错误对象。 |
+| Promise &lt;RemoteAbilityInfo&gt; | Promise对象，调用成功返回RemoteAbilityInfo对象；调用失败返回错误对象。 |
 
 **错误码：**
 
@@ -507,7 +507,7 @@ function getRemoteAbilityInfo(elementNames: Array<ElementName>, locale: string):
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;RemoteAbilityInfo & gt; & gt; | Promise对象，调用成功返回RemoteAbilityInfo对象；调用失败返回错误对象。 |
+| Promise &lt;Array &lt;RemoteAbilityInfo&gt;&gt; | Promise对象，调用成功返回RemoteAbilityInfo对象；调用失败返回错误对象。 |
 
 **错误码：**
 

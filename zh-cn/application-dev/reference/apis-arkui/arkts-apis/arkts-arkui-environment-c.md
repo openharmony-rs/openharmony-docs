@@ -171,7 +171,7 @@ static Keys(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 返回环境变量的属性key的数组。 |
+| Array &lt;string&gt; | 返回环境变量的属性key的数组。 |
 
 **示例**
 
@@ -206,7 +206,7 @@ static keys(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 返回环境变量的属性key的数组。 |
+| Array &lt;string&gt; | 返回环境变量的属性key的数组。 |
 
 **示例**
 

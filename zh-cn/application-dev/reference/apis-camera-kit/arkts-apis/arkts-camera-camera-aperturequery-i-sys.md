@@ -29,7 +29,7 @@ getSupportedVirtualApertures(): Array<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;number & gt; | 支持的虚拟光圈列表。 |
+| Array &lt;number&gt; | 支持的虚拟光圈列表。 |
 
 **错误码：**
 

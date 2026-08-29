@@ -51,7 +51,7 @@ startAbilityByAdmin(admin: Want, want: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。当启动组件失败时，会抛出错误对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。当启动组件失败时，会抛出错误对象。 |
 
 **错误码：**
 

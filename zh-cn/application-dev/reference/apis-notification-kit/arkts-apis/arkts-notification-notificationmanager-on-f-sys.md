@@ -27,7 +27,7 @@ function on(type: 'checkNotification', callback: (checkInfo: NotificationCheckIn
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'checkNotification' | 是 | 回调函数类型名，固定为'checkNotification'。 |
-| callback | (checkInfo: NotificationCheckInfo) = & gt; NotificationCheckResult | 是 | 消息验证函数指针。 |
+| callback | (checkInfo: NotificationCheckInfo) =&gt; NotificationCheckResult | 是 | 消息验证函数指针。 |
 
 **错误码：**
 

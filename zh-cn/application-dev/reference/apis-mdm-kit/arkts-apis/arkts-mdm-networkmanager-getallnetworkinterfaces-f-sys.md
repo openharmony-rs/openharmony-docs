@@ -99,7 +99,7 @@ function getAllNetworkInterfaces(admin: Want): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise结果，返回所有激活的有线网络接口名称数组。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise结果，返回所有激活的有线网络接口名称数组。 |
 
 **错误码：**
 

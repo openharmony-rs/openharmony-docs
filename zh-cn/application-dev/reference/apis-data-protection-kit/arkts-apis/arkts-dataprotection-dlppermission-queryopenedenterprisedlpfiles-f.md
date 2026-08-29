@@ -39,7 +39,7 @@ function queryOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise<A
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回已打开的目标企业DLP文件的URI列表。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回已打开的目标企业DLP文件的URI列表。 |
 
 **错误码：**
 

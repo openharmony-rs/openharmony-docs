@@ -96,7 +96,7 @@ getOsAccountDistributedInfoByLocalId(localId: number): Promise<DistributedInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;DistributedInfo & gt; | Promise对象，返回分布式账号信息对象。 |
+| Promise &lt;DistributedInfo&gt; | Promise对象，返回分布式账号信息对象。 |
 
 **错误码：**
 
@@ -214,7 +214,7 @@ setOsAccountDistributedInfoByLocalId(localId: number, distributedInfo: Distribut
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

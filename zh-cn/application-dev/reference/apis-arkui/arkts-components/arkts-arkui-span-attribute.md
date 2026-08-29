@@ -192,7 +192,7 @@ fontVariations(fontVariations: Array<FontVariation>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fontVariations | Array & lt;FontVariation & gt; | 是 | 可变字体的属性数组，每个数组元素包含axis（属性轴名称）和value（属性值）两个字段。fontVariations属性的优先级高 于[fontWeight](#fontweight)。 |
+| fontVariations | Array &lt;FontVariation&gt; | 是 | 可变字体的属性数组，每个数组元素包含axis（属性轴名称）和value（属性值）两个字段。fontVariations属性的优先级高 于[fontWeight](#fontweight)。 |
 
 ## fontWeight
 

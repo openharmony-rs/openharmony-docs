@@ -23,7 +23,7 @@ function createCertCRLCollection(certs: Array<X509Cert>, crls?: Array<X509CRL>):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| certs | Array & lt;X509Cert & gt; | 是 | X509Cert数组。 |
+| certs | Array &lt;X509Cert&gt; | 是 | X509Cert数组。 |
 | crls | Array&lt;[X509CRL](arkts-devicecertificate-cert-x509crl-i.md)&gt; | 否 | X509CRL数组。 |
 
 **返回值：**

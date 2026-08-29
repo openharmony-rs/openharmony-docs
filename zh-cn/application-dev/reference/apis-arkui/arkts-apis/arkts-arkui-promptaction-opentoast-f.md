@@ -42,7 +42,7 @@ function openToast(options: ShowToastOptions): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 返回即时反馈的id，可供closeToast使用。 |
+| Promise &lt;number&gt; | 返回即时反馈的id，可供closeToast使用。 |
 
 **错误码：**
 

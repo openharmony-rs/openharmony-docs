@@ -36,7 +36,7 @@ function getRunningFormInfosByFilter(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;formInfo.RunningFormInfo & gt; & gt; | Promise对象。返回已添加的卡片信息列表。 |
+| Promise &lt;Array &lt;formInfo.RunningFormInfo&gt;&gt; | Promise对象。返回已添加的卡片信息列表。 |
 
 **错误码：**
 

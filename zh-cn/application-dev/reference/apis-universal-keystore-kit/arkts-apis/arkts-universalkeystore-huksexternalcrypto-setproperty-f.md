@@ -32,7 +32,7 @@ The set-type operations of the external crypto extension support calling custom 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回调用接口的结果。 |
+| Promise &lt;void&gt; | Promise对象，返回调用接口的结果。 |
 
 **错误码：**
 

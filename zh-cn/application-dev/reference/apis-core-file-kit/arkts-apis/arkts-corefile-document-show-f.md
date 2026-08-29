@@ -30,7 +30,7 @@ declare function show(uri: string, type: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise回调返回void表示成功打开文件（注：当前返回错误码） |
+| Promise &lt;void&gt; | Promise回调返回void表示成功打开文件（注：当前返回错误码） |
 
 **示例**
 

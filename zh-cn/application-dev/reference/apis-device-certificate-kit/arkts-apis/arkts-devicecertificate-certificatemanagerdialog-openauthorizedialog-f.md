@@ -31,7 +31,7 @@ function openAuthorizeDialog(context: common.Context): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象。表示返回授权证书uri的结果，最大长度为256字节。 |
+| Promise &lt;string&gt; | Promise对象。表示返回授权证书uri的结果，最大长度为256字节。 |
 
 **错误码：**
 

@@ -91,7 +91,7 @@ function getBundleArchiveInfo(hapFilePath: string,  bundleFlags: number): Promis
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;BundleInfo & gt; | Promise对象，返回BundleInfo。 |
+| Promise &lt;BundleInfo&gt; | Promise对象，返回BundleInfo。 |
 
 **错误码：**
 

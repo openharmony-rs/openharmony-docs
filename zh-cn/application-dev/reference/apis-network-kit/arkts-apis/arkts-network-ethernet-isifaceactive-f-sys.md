@@ -83,7 +83,7 @@ function isIfaceActive(iface: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 以Promise形式返回获取结果。已激活：1，未激活：0，其他为获取失败错误码。 |
+| Promise &lt;number&gt; | 以Promise形式返回获取结果。已激活：1，未激活：0，其他为获取失败错误码。 |
 
 **错误码：**
 

@@ -86,7 +86,7 @@ Queries specified task details.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;TaskInfo & gt; | the promise returned by the function. |
+| Promise &lt;TaskInfo&gt; | the promise returned by the function. |
 
 **错误码：**
 

@@ -32,7 +32,7 @@ function queryDeviceInfo(deviceId?: number): Array<Readonly<DeviceInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;Readonly & lt;DeviceInfo & gt; & gt; | 扩展外设详细信息列表。 |
+| Array &lt;Readonly &lt;DeviceInfo&gt;&gt; | 扩展外设详细信息列表。 |
 
 **错误码：**
 

@@ -79,7 +79,7 @@ function getSmscAddr(slotId: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | 以Promise形式返回获取短信服务中心地址的结果。 |
+| Promise &lt;string&gt; | 以Promise形式返回获取短信服务中心地址的结果。 |
 
 **错误码：**
 

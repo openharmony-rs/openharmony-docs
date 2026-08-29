@@ -79,7 +79,7 @@ Obtains the alpha identifier of the voice mailbox of the SIM card in a specified
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Returns the voice mailbox alpha identifier; returns an empty string if no voice mailbox alpha identifier is written into the SIM card. |
+| Promise &lt;string&gt; | Returns the voice mailbox alpha identifier; returns an empty string if no voice mailbox alpha identifier is written into the SIM card. |
 
 **错误码：**
 

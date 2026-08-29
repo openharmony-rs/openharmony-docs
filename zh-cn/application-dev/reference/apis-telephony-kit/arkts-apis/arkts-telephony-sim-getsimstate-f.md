@@ -68,7 +68,7 @@ function getSimState(slotId: number): Promise<SimState>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;SimState & gt; | 以Promise形式返回获取指定卡槽的SIM卡状态。 |
+| Promise &lt;SimState&gt; | 以Promise形式返回获取指定卡槽的SIM卡状态。 |
 
 **错误码：**
 

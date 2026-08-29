@@ -75,7 +75,7 @@ function getDispatchInfo(): Promise<DispatchInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;DispatchInfo & gt; | Promise对象，返回[DispatchInfo]{ |
+| Promise &lt;DispatchInfo&gt; | Promise对象，返回[DispatchInfo]{ |
 
 **错误码：**
 

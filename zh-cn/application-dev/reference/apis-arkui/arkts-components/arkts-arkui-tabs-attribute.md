@@ -608,7 +608,7 @@ Tab页签切换后触发的事件。满足以下任一条件，即可触发该�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | Callback & lt;number & gt; | 是 | 当前显示页签的索引值，从0开始计算。<br>**起始版本：** 18 |
+| event | Callback &lt;number&gt; | 是 | 当前显示页签的索引值，从0开始计算。<br>**起始版本：** 18 |
 
 ## onContentDidScroll
 
@@ -708,7 +708,7 @@ onSelected(event: Callback<number>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | Callback & lt;number & gt; | 是 | 当前选中元素的索引。 |
+| event | Callback &lt;number&gt; | 是 | 当前选中元素的索引。 |
 
 ## onTabBarClick
 
@@ -730,7 +730,7 @@ Tab页签点击后触发的事件。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | Callback & lt;number & gt; | 是 | 被点击页签的索引值，从0开始计算。<br>**起始版本：** 18 |
+| event | Callback &lt;number&gt; | 是 | 被点击页签的索引值，从0开始计算。<br>**起始版本：** 18 |
 
 ## onUnselected
 
@@ -760,7 +760,7 @@ onUnselected(event: Callback<number>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | Callback & lt;number & gt; | 是 | 将要隐藏元素的索引。 |
+| event | Callback &lt;number&gt; | 是 | 将要隐藏元素的索引。 |
 
 ## pageFlipMode
 

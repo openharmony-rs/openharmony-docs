@@ -71,7 +71,7 @@ function isBackgroundAllowed(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise 对象。 返回 true 表示后台策略为允许，返回false表示后台策略不允许。 |
+| Promise &lt;boolean&gt; | Promise 对象。 返回 true 表示后台策略为允许，返回false表示后台策略不允许。 |
 
 **错误码：**
 

@@ -33,7 +33,7 @@ function decomposeToPicture(hdrPixelMap : PixelMap, options?: HdrDecomposeOption
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[Picture](arkts-image-image-picture-i.md) \| undefined & gt; | Promise对象。返回包含SDR PixelMap和增益图的Picture对象。 |
+| Promise&lt;[Picture](arkts-image-image-picture-i.md) \| undefined&gt; | Promise对象。返回包含SDR PixelMap和增益图的Picture对象。 |
 
 **错误码：**
 

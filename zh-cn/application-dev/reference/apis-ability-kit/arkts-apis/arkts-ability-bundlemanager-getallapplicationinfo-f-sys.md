@@ -147,7 +147,7 @@ function getAllApplicationInfo(appFlags: number, userId?: number): Promise<Array
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;ApplicationInfo & gt; & gt; | Promise对象，返回Array & lt;ApplicationInfo & gt;。 |
+| Promise &lt;Array &lt;ApplicationInfo&gt;&gt; | Promise对象，返回Array &lt;ApplicationInfo&gt;。 |
 
 **错误码：**
 

@@ -27,7 +27,7 @@ function on(type: 'printerStateChange', callback: (state: PrinterState, info: Pr
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'printerStateChange' | 是 | 表示打印机状态改变。 |
-| callback | (state: PrinterState, info: PrinterInfo) = & gt; void | 是 | 打印机状态改变之后的回调。 |
+| callback | (state: PrinterState, info: PrinterInfo) =&gt; void | 是 | 打印机状态改变之后的回调。 |
 
 **错误码：**
 
@@ -75,7 +75,7 @@ function on(type: 'jobStateChange', callback: (state: PrintJobState, job: PrintJ
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'jobStateChange' | 是 | 表示打印任务状态改变。 |
-| callback | (state: PrintJobState, job: PrintJob) = & gt; void | 是 | 打印任务状态改变之后的回调。 |
+| callback | (state: PrintJobState, job: PrintJob) =&gt; void | 是 | 打印任务状态改变之后的回调。 |
 
 **错误码：**
 
@@ -117,7 +117,7 @@ function on(type: 'extInfoChange', callback: (extensionId: string, info: string)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'extInfoChange' | 是 | 表示打印扩展信息改变。 |
-| callback | (extensionId: string, info: string) = & gt; void | 是 | 打印扩展信息改变之后的回调。 |
+| callback | (extensionId: string, info: string) =&gt; void | 是 | 打印扩展信息改变之后的回调。 |
 
 **错误码：**
 

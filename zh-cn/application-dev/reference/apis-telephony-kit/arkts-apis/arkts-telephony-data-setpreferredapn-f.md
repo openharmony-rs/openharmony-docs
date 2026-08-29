@@ -33,7 +33,7 @@ function setPreferredApn(apnId: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回设置的结果，在未插卡时会返回false。 |
+| Promise &lt;boolean&gt; | Promise对象，返回设置的结果，在未插卡时会返回false。 |
 
 **错误码：**
 

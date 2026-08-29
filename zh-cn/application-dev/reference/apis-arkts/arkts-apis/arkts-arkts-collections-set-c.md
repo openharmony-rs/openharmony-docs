@@ -36,7 +36,7 @@
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;T & gt; | 迭代器对象。 |
+| IterableIterator &lt;T&gt; | 迭代器对象。 |
 
 **错误码：**
 
@@ -68,7 +68,7 @@ add(value: T): Set<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Set & lt;T & gt; | 插入元素后的Set对象本身。 |
+| Set &lt;T&gt; | 插入元素后的Set对象本身。 |
 
 **错误码：**
 
@@ -142,7 +142,7 @@ constructor(iterable: Iterable<T>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| iterable | Iterable & lt;T & gt; | 是 | 用于构造ArkTS Set的可迭代对象。 |
+| iterable | Iterable &lt;T&gt; | 是 | 用于构造ArkTS Set的可迭代对象。 |
 
 **错误码：**
 
@@ -201,7 +201,7 @@ entries(): IterableIterator<[T, T]>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;[T, T] & gt; | 返回一个Set迭代器对象，该对象包含了此Set中每个元素的键值对。 |
+| IterableIterator &lt;[T, T]&gt; | 返回一个Set迭代器对象，该对象包含了此Set中每个元素的键值对。 |
 
 **错误码：**
 
@@ -228,7 +228,7 @@ forEach(callbackFn: (value: T, value2: T, set: Set<T>) => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, value2: T, set: Set & lt;T & gt;) = & gt; void | 是 | 对每个键值对运行的回调函数。 |
+| callbackFn | (value: T, value2: T, set: Set &lt;T&gt;) =&gt; void | 是 | 对每个键值对运行的回调函数。 |
 
 **错误码：**
 
@@ -288,7 +288,7 @@ keys(): IterableIterator<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;T & gt; | 返回一个Set迭代器对象，该对象包含了此Set中每个元素的键。 |
+| IterableIterator &lt;T&gt; | 返回一个Set迭代器对象，该对象包含了此Set中每个元素的键。 |
 
 **错误码：**
 
@@ -315,7 +315,7 @@ values(): IterableIterator<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;T & gt; | 返回一个Set迭代器对象，该对象包含了此Set中每个元素的值。 |
+| IterableIterator &lt;T&gt; | 返回一个Set迭代器对象，该对象包含了此Set中每个元素的值。 |
 
 **错误码：**
 

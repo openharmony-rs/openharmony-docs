@@ -35,7 +35,7 @@ function getSeniorModeStateForApp(bundleName: string, appIndex?: number): Promis
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示应用已启用“长辈模式”；返回false表示应用未启用“长辈模式”。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示应用已启用“长辈模式”；返回false表示应用未启用“长辈模式”。 |
 
 **错误码：**
 

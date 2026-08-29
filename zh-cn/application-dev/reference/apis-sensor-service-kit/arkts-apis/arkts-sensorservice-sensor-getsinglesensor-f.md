@@ -84,7 +84,7 @@ function getSingleSensor(type: SensorId): Promise<Sensor>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Sensor & gt; | 使用异步方式返回传感器信息。 |
+| Promise &lt;Sensor&gt; | 使用异步方式返回传感器信息。 |
 
 **错误码：**
 

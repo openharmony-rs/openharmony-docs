@@ -33,7 +33,7 @@ function uninstallUserCertificate(admin: Want, certUri: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。当卸载用户证书失败时会抛出错误对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。当卸载用户证书失败时会抛出错误对象。 |
 
 **错误码：**
 

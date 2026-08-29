@@ -29,7 +29,7 @@ Stack基于数组的数据结构实现，特点是先进后出，只能在一端
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;T & gt; | 返回一个迭代器，用于按栈的存储顺序依次遍历Stack中的所有元素。 |
+| IterableIterator &lt;T&gt; | 返回一个迭代器，用于按栈的存储顺序依次遍历Stack中的所有元素。 |
 
 **错误码：**
 
@@ -117,7 +117,7 @@ forEach(callbackFn: (value: T, index?: number, stack?: Stack<T>) => void, thisAr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index?: number, stack?: Stack & lt;T & gt;) = & gt; void | 是 | 遍历每个元素时执行的回调函数。 |
+| callbackFn | (value: T, index?: number, stack?: Stack &lt;T&gt;) =&gt; void | 是 | 遍历每个元素时执行的回调函数。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值。不传入时默认值为当前实例对象。 |
 
 **错误码：**

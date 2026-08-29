@@ -24,13 +24,13 @@ function makeUnique(uniqueScreen: Array<number>): Promise<Array<number>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uniqueScreen | Array & lt;number & gt; | 是 | 异源屏幕ID集合。其中ID应为大于0的整数，否则返回401错误码。 |
+| uniqueScreen | Array &lt;number&gt; | 是 | 异源屏幕ID集合。其中ID应为大于0的整数，否则返回401错误码。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;number & gt; & gt; | Promise对象。返回异源屏幕的displayId集合，其中id为大于0的整数。 |
+| Promise &lt;Array &lt;number&gt;&gt; | Promise对象。返回异源屏幕的displayId集合，其中id为大于0的整数。 |
 
 **错误码：**
 

@@ -83,7 +83,7 @@ function startDTMF(callId: number, character: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以Promise形式异步返回。 |
+| Promise &lt;void&gt; | 以Promise形式异步返回。 |
 
 **错误码：**
 

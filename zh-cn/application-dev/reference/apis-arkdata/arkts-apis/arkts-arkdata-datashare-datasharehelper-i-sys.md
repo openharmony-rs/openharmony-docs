@@ -156,7 +156,7 @@ batchInsert(uri: string, values: Array<ValuesBucket>): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回插入的数据记录数。 |
+| Promise &lt;number&gt; | Promise对象。返回插入的数据记录数。 |
 
 **错误码：**
 
@@ -212,13 +212,13 @@ batchUpdate(operations: Record<string, Array<UpdateOperation>>): Promise<Record<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| operations | Record & lt;string, Array & lt;UpdateOperation & gt; & gt; | 是 | 要更新数据的路径、筛选条件和数据集合。 |
+| operations | Record &lt;string, Array &lt;UpdateOperation&gt;&gt; | 是 | 要更新数据的路径、筛选条件和数据集合。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Record & lt;string, Array & lt;number & gt; & gt; & gt; | Promise used to return an array of updated data records. The value **-1** means the update operation fails. The number of updated data records is not returned if the APIs of the database in use (for example, KVDB) do not support this return. |
+| Promise &lt;Record &lt;string, Array &lt;number&gt;&gt;&gt; | Promise used to return an array of updated data records. The value **-1** means the update operation fails. The number of updated data records is not returned if the APIs of the database in use (for example, KVDB) do not support this return. |
 
 **错误码：**
 
@@ -307,7 +307,7 @@ close(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -409,7 +409,7 @@ delete(uri: string, predicates: dataSharePredicates.DataSharePredicates): Promis
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回已删除的数据记录数。 |
+| Promise &lt;number&gt; | Promise对象。返回已删除的数据记录数。 |
 
 **错误码：**
 
@@ -571,7 +571,7 @@ denormalizeUri(uri: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象。如果反规范化成功，则返回反规范化的URI；如果无需执行任何操作，则返回原始URI；若不支持则返回空。 |
+| Promise &lt;string&gt; | Promise对象。如果反规范化成功，则返回反规范化的URI；如果无需执行任何操作，则返回原始URI；若不支持则返回空。 |
 
 **错误码：**
 
@@ -780,7 +780,7 @@ insert(uri: string, value: ValuesBucket): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回插入数据记录的索引。 |
+| Promise &lt;number&gt; | Promise对象。返回插入数据记录的索引。 |
 
 **错误码：**
 
@@ -897,7 +897,7 @@ normalizeUri(uri: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象。如果支持URI规范化，则返回规范化URI，否则返回空。 |
+| Promise &lt;string&gt; | Promise对象。如果支持URI规范化，则返回规范化URI，否则返回空。 |
 
 **错误码：**
 
@@ -990,7 +990,7 @@ notifyChange(uri: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1035,7 +1035,7 @@ notifyChange(data: ChangeInfo): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1182,7 +1182,7 @@ off(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'rdbDataChange' | 是 | 取消订阅的事件类型，支持的事件为'rdbDataChange'，表示rdb数据的变更事件。 |
-| uris | Array & lt;string & gt; | 是 | 要操作的数据的路径。 |
+| uris | Array &lt;string&gt; | 是 | 要操作的数据的路径。 |
 | templateId | [TemplateId](arkts-arkdata-datashare-templateid-i-sys.md) | 是 | 处理回调的templateId。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[RdbDataChangeNode](arkts-arkdata-datashare-rdbdatachangenode-i-sys.md)&gt; | 否 | 回调函数。表示指定取消订阅的callback通知，如果为空、为undefined、null，则取消订阅该uri下所有 的通知事件。 |
 
@@ -1236,7 +1236,7 @@ off(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'publishedDataChange' | 是 | 取消订阅的事件类型，支持的事件为'publishedDataChange'，表示已发布数据的变更事件。 |
-| uris | Array & lt;string & gt; | 是 | 要操作的数据的路径。 |
+| uris | Array &lt;string&gt; | 是 | 要操作的数据的路径。 |
 | subscriberId | string | 是 | 指定处理回调的用户ID。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[PublishedDataChangeNode](arkts-arkdata-datashare-publisheddatachangenode-i-sys.md)&gt; | 否 | 回调函数。表示指定取消订阅的callback通知，如果为空、为undefined、null，则取消订阅该 uri下所有的通知事件。 |
 
@@ -1386,7 +1386,7 @@ on(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'rdbDataChange' | 是 | 订阅的事件类型，支持的事件为'rdbDataChange'，表示rdb数据的变更事件。type是固定值以外时，接口无响应。 |
-| uris | Array & lt;string & gt; | 是 | 要操作的数据的路径。 |
+| uris | Array &lt;string&gt; | 是 | 要操作的数据的路径。 |
 | templateId | [TemplateId](arkts-arkdata-datashare-templateid-i-sys.md) | 是 | 处理回调的templateId。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[RdbDataChangeNode](arkts-arkdata-datashare-rdbdatachangenode-i-sys.md)&gt; | 是 | 回调函数。当触发变更通知时调用，err为undefined，node为订阅数据变更结果；否则不被触发或为错误对象。 |
 
@@ -1455,7 +1455,7 @@ on(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'publishedDataChange' | 是 | 订阅的事件类型，支持的事件为'publishedDataChange'，表示已发布数据的变更事件。 |
-| uris | Array & lt;string & gt; | 是 | 要操作的数据的路径。 |
+| uris | Array &lt;string&gt; | 是 | 要操作的数据的路径。 |
 | subscriberId | string | 是 | 指定处理回调的用户ID。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[PublishedDataChangeNode](arkts-arkdata-datashare-publisheddatachangenode-i-sys.md)&gt; | 是 | 回调函数。当触发变更通知时调用，err为undefined，node为订阅数据变更结果；否则不被触发或为 错误对象。 |
 
@@ -1690,7 +1690,7 @@ query(
 | --- | --- | --- | --- |
 | uri | string | 是 | 要查询的数据的路径。 |
 | predicates | dataSharePredicates.DataSharePredicates | 是 | 筛选条件。query接口所支持的谓词方法取决于服务端所选用的数据库，如KVDB目前仅支 持inKeys和prefixKey。静默场景下谓词内方法为空时，默认全表查询。非静默场景下规格由数据提供方制定。 |
-| columns | Array & lt;string & gt; | 是 | 要查询的列。如果此参数为空，则查询所有列。 |
+| columns | Array &lt;string&gt; | 是 | 要查询的列。如果此参数为空，则查询所有列。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DataShareResultSet](arkts-arkdata-data-datashareresultset-datashareresultset-i-sys.md)&gt; | 是 | 回调函数。当查询数据库中的数据成功，err为undefined，data为获取到的查询到的结果集；否则为错误对象。 |
 
 **错误码：**
@@ -1754,7 +1754,7 @@ query(
 | --- | --- | --- | --- |
 | uri | string | 是 | 要查询的数据的路径。 |
 | predicates | dataSharePredicates.DataSharePredicates | 是 | 筛选条件。query接口所支持的谓词方法取决于服务端所选用的数据库，如KVDB目前仅支 持inKeys和prefixKey。静默场景下谓词内方法为空时，默认全表查询。非静默场景下规格由数据提供方制定。 |
-| columns | Array & lt;string & gt; | 是 | 要查询的列。如果此参数为空，则查询所有列。 |
+| columns | Array &lt;string&gt; | 是 | 要查询的列。如果此参数为空，则查询所有列。 |
 
 **返回值：**
 
@@ -1898,7 +1898,7 @@ update(uri: string, predicates: dataSharePredicates.DataSharePredicates, value: 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回更新的数据记录数。 |
+| Promise &lt;number&gt; | Promise对象。返回更新的数据记录数。 |
 
 **错误码：**
 

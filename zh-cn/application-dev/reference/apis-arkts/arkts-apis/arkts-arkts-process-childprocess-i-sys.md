@@ -46,7 +46,7 @@ getErrorOutput(): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Uint8Array & gt; | 返回子进程的标准错误输出。 |
+| Promise &lt;Uint8Array&gt; | 返回子进程的标准错误输出。 |
 
 ## getOutput
 
@@ -66,7 +66,7 @@ getOutput(): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Uint8Array & gt; | 返回子进程的标准输出。 |
+| Promise &lt;Uint8Array&gt; | 返回子进程的标准输出。 |
 
 ## kill
 
@@ -122,7 +122,7 @@ wait(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 返回目标进程的退出码。 |
+| Promise &lt;number&gt; | 返回目标进程的退出码。 |
 
 ## exitCode
 

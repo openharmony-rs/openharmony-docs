@@ -73,7 +73,7 @@ clear(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -147,7 +147,7 @@ clearData(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -210,13 +210,13 @@ detectPatterns(patterns: Array<Pattern>): Promise<Array<Pattern>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| patterns | Array & lt;Pattern & gt; | 是 | 需要在剪贴板中检测的模式，用于检查剪贴板数据是否符合特定格式。 可选值包括：URL(URL类型)、NUMBER(数字类型)、EMAIL_ADDRESS(邮箱地址类型)等。 取值范围：数组元素数量不限，元素值只能为Pattern枚举值。传入无效值时返回错误码401。 |
+| patterns | Array &lt;Pattern&gt; | 是 | 需要在剪贴板中检测的模式，用于检查剪贴板数据是否符合特定格式。 可选值包括：URL(URL类型)、NUMBER(数字类型)、EMAIL_ADDRESS(邮箱地址类型)等。 取值范围：数组元素数量不限，元素值只能为Pattern枚举值。传入无效值时返回错误码401。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;Pattern & gt; & gt; | Promise对象，返回检测到的模式。 |
+| Promise &lt;Array &lt;Pattern&gt;&gt; | Promise对象，返回检测到的模式。 |
 
 **错误码：**
 
@@ -556,7 +556,7 @@ getMimeTypes(): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回读取到的MIME类型。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回读取到的MIME类型。 |
 
 **示例**
 
@@ -675,7 +675,7 @@ getUnifiedData(): Promise<unifiedDataChannel.UnifiedData>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;unifiedDataChannel.UnifiedData & gt; | Promise对象，返回系统剪贴板数据。 |
+| Promise &lt;unifiedDataChannel.UnifiedData&gt; | Promise对象，返回系统剪贴板数据。 |
 
 **错误码：**
 
@@ -806,7 +806,7 @@ hasData(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 返回true表示系统剪贴板中有内容，返回false表示系统剪贴板中没有内容。 |
+| Promise &lt;boolean&gt; | 返回true表示系统剪贴板中有内容，返回false表示系统剪贴板中没有内容。 |
 
 **示例**
 
@@ -967,7 +967,7 @@ hasPasteData(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 返回true表示系统剪贴板中有内容，返回false表示系统剪贴板中没有内容。 |
+| Promise &lt;boolean&gt; | 返回true表示系统剪贴板中有内容，返回false表示系统剪贴板中没有内容。 |
 
 **示例**
 
@@ -1069,7 +1069,7 @@ off(type: 'update', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'update' | 是 | 取值为'update'，表示系统剪贴板内容变化事件。 |
-| callback | () = & gt; void | 否 | 剪贴板中内容变化时触发的用户程序的回调。如果此参数未填，表明清除本应用的所有监听回调，否则表示清除指定监听回调。 |
+| callback | () =&gt; void | 否 | 剪贴板中内容变化时触发的用户程序的回调。如果此参数未填，表明清除本应用的所有监听回调，否则表示清除指定监听回调。 |
 
 **错误码：**
 
@@ -1141,7 +1141,7 @@ on(type: 'update', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'update' | 是 | 取值为'update'，表示系统剪贴板内容变化事件，其他值无效。 |
-| callback | () = & gt; void | 是 | 剪贴板中内容变化时触发的用户程序的回调。 |
+| callback | () =&gt; void | 是 | 剪贴板中内容变化时触发的用户程序的回调。 |
 
 **错误码：**
 
@@ -1346,7 +1346,7 @@ setData(data: PasteData): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1482,7 +1482,7 @@ setPasteData(data: PasteData): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -1522,7 +1522,7 @@ setUnifiedData(data: unifiedDataChannel.UnifiedData): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

@@ -152,4 +152,4 @@ shaderInputBuffer(buffer: Array<number>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| buffer | Array & lt;number & gt; | 是 | 着色器输入的统一缓冲区 |
+| buffer | Array &lt;number&gt; | 是 | 着色器输入的统一缓冲区 |

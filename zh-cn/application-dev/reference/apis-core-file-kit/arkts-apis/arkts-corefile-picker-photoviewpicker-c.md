@@ -172,7 +172,7 @@ save(option?: PhotoSaveOptions): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象。返回photoPicker保存图片或视频文件后的结果集。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象。返回photoPicker保存图片或视频文件后的结果集。 |
 
 **示例**
 
@@ -360,7 +360,7 @@ select(option?: PhotoSelectOptions): Promise<PhotoSelectResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PhotoSelectResult & gt; | Promise对象。返回photoPicker选择后的结果集。 |
+| Promise &lt;PhotoSelectResult&gt; | Promise对象。返回photoPicker选择后的结果集。 |
 
 **示例**
 

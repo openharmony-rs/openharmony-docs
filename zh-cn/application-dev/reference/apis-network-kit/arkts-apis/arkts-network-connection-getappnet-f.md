@@ -63,7 +63,7 @@ function getAppNet(): Promise<NetHandle>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;NetHandle & gt; | 以Promise形式返回App绑定的网络信息。 |
+| Promise &lt;NetHandle&gt; | 以Promise形式返回App绑定的网络信息。 |
 
 **错误码：**
 

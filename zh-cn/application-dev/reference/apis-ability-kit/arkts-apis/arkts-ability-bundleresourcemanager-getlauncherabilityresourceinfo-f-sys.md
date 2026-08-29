@@ -33,7 +33,7 @@ function getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: numb
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;LauncherAbilityResourceInfo & gt; | 返回指定应用的LauncherAbilityResourceInfo。 |
+| Array &lt;LauncherAbilityResourceInfo&gt; | 返回指定应用的LauncherAbilityResourceInfo。 |
 
 **错误码：**
 
@@ -110,7 +110,7 @@ function getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: numb
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;LauncherAbilityResourceInfo & gt; | 返回指定应用的LauncherAbilityResourceInfo。 |
+| Array &lt;LauncherAbilityResourceInfo&gt; | 返回指定应用的LauncherAbilityResourceInfo。 |
 
 **错误码：**
 

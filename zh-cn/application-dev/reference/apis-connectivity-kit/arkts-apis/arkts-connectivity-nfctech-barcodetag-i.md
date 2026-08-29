@@ -28,7 +28,7 @@ getBarcode(): Promise<ArrayBuffer>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ArrayBuffer & gt; | Promise对象。返回BarCode类型的 tag。 |
+| Promise &lt;ArrayBuffer&gt; | Promise对象。返回BarCode类型的 tag。 |
 
 **错误码：**
 

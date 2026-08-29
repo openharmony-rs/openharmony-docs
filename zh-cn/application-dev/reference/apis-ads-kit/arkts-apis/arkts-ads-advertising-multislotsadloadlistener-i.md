@@ -81,7 +81,7 @@ onAdLoadSuccess(adsMap: Map<string, Array<Advertisement>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| adsMap | Map & lt;string, Array & lt;Advertisement & gt; & gt; | 是 | 广告数据，是以广告位ID为键，存储请求到的广告内容的映射集合。 |
+| adsMap | Map &lt;string, Array &lt;Advertisement&gt;&gt; | 是 | 广告数据，是以广告位ID为键，存储请求到的广告内容的映射集合。 |
 
 **示例**
 

@@ -91,7 +91,7 @@ function getLauncherAbilityInfo(bundleName: string, userId: number) : Promise<Ar
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;LauncherAbilityInfo & gt; & gt; | Promise对象。返回bundle包含的 [LauncherAbilityInfo]{ |
+| Promise &lt;Array &lt;LauncherAbilityInfo&gt;&gt; | Promise对象。返回bundle包含的 [LauncherAbilityInfo]{ |
 
 **错误码：**
 

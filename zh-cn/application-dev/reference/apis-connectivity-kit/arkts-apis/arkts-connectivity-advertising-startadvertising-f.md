@@ -32,7 +32,7 @@ function startAdvertising(advertisingParams: AdvertisingParams): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回本次开启的广播ID。广播ID是随机分配的唯一标识值，范围[0, 255]，与 [advertising.stopAdvertising]{ |
+| Promise &lt;number&gt; | Promise对象，返回本次开启的广播ID。广播ID是随机分配的唯一标识值，范围[0, 255]，与 [advertising.stopAdvertising]{ |
 
 **错误码：**
 

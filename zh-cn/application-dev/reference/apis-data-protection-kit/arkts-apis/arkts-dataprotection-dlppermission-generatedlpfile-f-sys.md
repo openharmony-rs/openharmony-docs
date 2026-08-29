@@ -26,8 +26,8 @@ DLP管理应用调用该接口，将明文文件加密生成DLPFile管理对象�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| plaintextFd | number | 是 | 待加密明文文件的fd。取值范围为[0, 2 & lt;sup & gt;31 & lt;/sup & gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2 & lt;sup & gt;31 & lt;/sup & gt;-1 时，fd的值被截断。 |
-| ciphertextFd | number | 是 | 目标加密文件的fd。取值范围为[0, 2 & lt;sup & gt;31 & lt;/sup & gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2 & lt;sup & gt;31 & lt;/sup & gt;-1 时，fd的值被截断。 |
+| plaintextFd | number | 是 | 待加密明文文件的fd。取值范围为[0, 2 &lt;sup&gt;31 &lt;/sup&gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2 &lt;sup&gt;31 &lt;/sup&gt;-1 时，fd的值被截断。 |
+| ciphertextFd | number | 是 | 目标加密文件的fd。取值范围为[0, 2 &lt;sup&gt;31 &lt;/sup&gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2 &lt;sup&gt;31 &lt;/sup&gt;-1 时，fd的值被截断。 |
 | property | [DLPProperty](arkts-dataprotection-dlppermission-dlpproperty-i.md) | 是 | 授权用户信息：授权用户列表、owner账号、联系人账号。 |
 
 **返回值：**
@@ -110,8 +110,8 @@ DLP管理应用调用该接口，将明文文件加密生成权限受控文件�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| plaintextFd | number | 是 | 待加密明文文件的fd。取值范围为[0, 2 & lt;sup & gt;31 & lt;/sup & gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2 & lt;sup & gt;31 & lt;/sup & gt;-1 时，fd的值被截断。 |
-| ciphertextFd | number | 是 | 目标加密文件的fd。取值范围为[0, 2 & lt;sup & gt;31 & lt;/sup & gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2 & lt;sup & gt;31 & lt;/sup & gt;-1 时，fd的值被截断。 |
+| plaintextFd | number | 是 | 待加密明文文件的fd。取值范围为[0, 2 &lt;sup&gt;31 &lt;/sup&gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2 &lt;sup&gt;31 &lt;/sup&gt;-1 时，fd的值被截断。 |
+| ciphertextFd | number | 是 | 目标加密文件的fd。取值范围为[0, 2 &lt;sup&gt;31 &lt;/sup&gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2 &lt;sup&gt;31 &lt;/sup&gt;-1 时，fd的值被截断。 |
 | property | [DLPProperty](arkts-dataprotection-dlppermission-dlpproperty-i.md) | 是 | 授权用户信息：授权用户列表、owner账号、联系人账号。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DLPFile](arkts-dataprotection-dlppermission-dlpfile-i-sys.md)&gt; | 是 | 回调函数。当生成DLP文件成功，err为undefined，data为获取到的DLP文件信息；否则为错误对象。 |
 

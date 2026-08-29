@@ -29,7 +29,7 @@ function splitText(text: string, config: SplitConfig): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回分块结果的数组。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回分块结果的数组。 |
 
 **错误码：**
 

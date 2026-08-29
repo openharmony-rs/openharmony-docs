@@ -106,7 +106,7 @@ executeAction(action: AccessibilityAction, parameters?: Parameter): Promise<void
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -882,7 +882,7 @@ getCursorPosition(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回当前光标所处位置。 |
+| Promise &lt;number&gt; | Promise对象，返回当前光标所处位置。 |
 
 **示例**
 

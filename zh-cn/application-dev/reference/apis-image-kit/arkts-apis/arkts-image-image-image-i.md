@@ -110,7 +110,7 @@ getComponent(componentType: ComponentType): Promise<Component>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Component & gt; | Promise对象，返回组件缓冲区。 |
+| Promise &lt;Component&gt; | Promise对象，返回组件缓冲区。 |
 
 **示例**
 
@@ -293,7 +293,7 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
 

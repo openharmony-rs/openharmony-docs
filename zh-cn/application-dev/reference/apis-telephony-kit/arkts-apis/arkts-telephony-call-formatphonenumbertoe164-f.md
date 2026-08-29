@@ -73,7 +73,7 @@ function formatPhoneNumberToE164(phoneNumber: string, countryCode: string): Prom
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | 以Promise形式异步返回将电话号码格式化为E.164表示形式的结果。 |
+| Promise &lt;string&gt; | 以Promise形式异步返回将电话号码格式化为E.164表示形式的结果。 |
 
 **错误码：**
 

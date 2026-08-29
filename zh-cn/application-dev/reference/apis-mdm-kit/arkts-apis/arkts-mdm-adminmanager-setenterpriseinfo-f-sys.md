@@ -97,7 +97,7 @@ function setEnterpriseInfo(admin: Want, enterpriseInfo: EnterpriseInfo): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。当设置设备管理应用企业信息失败时，会抛出错误对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。当设置设备管理应用企业信息失败时，会抛出错误对象。 |
 
 **错误码：**
 

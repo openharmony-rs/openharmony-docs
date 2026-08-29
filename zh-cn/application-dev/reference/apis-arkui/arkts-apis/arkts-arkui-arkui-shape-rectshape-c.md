@@ -60,7 +60,7 @@ radius(radius: number | string | Array<number | string>): RectShape
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| radius | number \| string \| Array & lt;number \ | string & gt; | 是 | 矩形形状的圆角半径。仅接受数组的前四个元素，分别为矩形左上、右上、左下、右下的圆角半径。 类型为number时取值范围是[0, +∞)，string时是[Length](arkts-arkui-length-t.md)。 单位：vp 取值为异常值时按照0vp处理。 |
+| radius | number \| string \| Array &lt;number \ | string&gt; | 是 | 矩形形状的圆角半径。仅接受数组的前四个元素，分别为矩形左上、右上、左下、右下的圆角半径。 类型为number时取值范围是[0, +∞)，string时是[Length](arkts-arkui-length-t.md)。 单位：vp 取值为异常值时按照0vp处理。 |
 
 **返回值：**
 

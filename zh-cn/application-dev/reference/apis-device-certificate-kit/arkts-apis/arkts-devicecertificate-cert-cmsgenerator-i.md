@@ -130,7 +130,7 @@ addRecipientInfo(recipientInfo: CmsRecipientInfo): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -371,7 +371,7 @@ doFinal(data: Uint8Array, options?: CmsGeneratorOptions): Promise<Uint8Array | s
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Uint8Array \ | string & gt; | Promise对象，返回CMS消息。 |
+| Promise &lt;Uint8Array \ | string&gt; | Promise对象，返回CMS消息。 |
 
 **错误码：**
 
@@ -633,7 +633,7 @@ getEncryptedContentData(): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Uint8Array & gt; | Promise对象，返回加密的数据内容。 |
+| Promise &lt;Uint8Array&gt; | Promise对象，返回加密的数据内容。 |
 
 **错误码：**
 

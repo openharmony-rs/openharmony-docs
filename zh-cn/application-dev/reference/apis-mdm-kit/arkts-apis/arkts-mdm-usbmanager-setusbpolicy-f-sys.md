@@ -102,7 +102,7 @@ function setUsbPolicy(admin: Want, usbPolicy: UsbPolicy): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。当设置USB策略失败时抛出错误对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。当设置USB策略失败时抛出错误对象。 |
 
 **错误码：**
 

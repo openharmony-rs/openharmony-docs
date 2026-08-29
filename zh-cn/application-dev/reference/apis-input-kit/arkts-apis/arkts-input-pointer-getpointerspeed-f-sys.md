@@ -82,7 +82,7 @@ function getPointerSpeed(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回鼠标移动速度。 |
+| Promise &lt;number&gt; | Promise对象，返回鼠标移动速度。 |
 
 **错误码：**
 

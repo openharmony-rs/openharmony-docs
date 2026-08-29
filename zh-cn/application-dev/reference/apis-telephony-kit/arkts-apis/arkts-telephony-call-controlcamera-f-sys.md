@@ -32,7 +32,7 @@ function controlCamera(callId: number, cameraId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以Promise形式异步返回设置开启，关闭，切换相机结果。 |
+| Promise &lt;void&gt; | 以Promise形式异步返回设置开启，关闭，切换相机结果。 |
 
 **错误码：**
 

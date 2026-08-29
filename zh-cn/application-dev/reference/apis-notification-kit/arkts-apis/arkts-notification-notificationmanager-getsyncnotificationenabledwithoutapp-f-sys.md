@@ -90,7 +90,7 @@ function getSyncNotificationEnabledWithoutApp(userId: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 以Promise形式返回获取同步通知到未安装应用设备的 开关是否开启的结果（true：开启，false：未开启）。 |
+| Promise &lt;boolean&gt; | 以Promise形式返回获取同步通知到未安装应用设备的 开关是否开启的结果（true：开启，false：未开启）。 |
 
 **错误码：**
 

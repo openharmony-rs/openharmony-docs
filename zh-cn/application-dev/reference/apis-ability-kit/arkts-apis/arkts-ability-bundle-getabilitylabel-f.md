@@ -75,7 +75,7 @@ function getAbilityLabel(bundleName: string, abilityName: string): Promise<strin
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise形式返回应用名称信息。 |
+| Promise &lt;string&gt; | Promise形式返回应用名称信息。 |
 
 **示例**
 

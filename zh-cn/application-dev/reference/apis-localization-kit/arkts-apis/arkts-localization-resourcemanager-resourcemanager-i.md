@@ -97,7 +97,7 @@ closeRawFd(path: string, callback: _AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。 |
-| callback | _AsyncCallback & lt;void & gt; | 是 | 回调函数。当关闭rawfile所在HAP的文件描述符（fd）成功，err为undefined，否则为错误对象。 |
+| callback | _AsyncCallback &lt;void&gt; | 是 | 回调函数。当关闭rawfile所在HAP的文件描述符（fd）成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -158,7 +158,7 @@ closeRawFd(path: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -262,7 +262,7 @@ closeRawFileDescriptor(path: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。 |
-| callback | AsyncCallback & lt;void & gt; | 是 | 回调函数。当关闭rawfile文件的文件描述符（fd）成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback &lt;void&gt; | 是 | 回调函数。当关闭rawfile文件的文件描述符（fd）成功，err为undefined，否则为错误对象。 |
 
 **示例**
 
@@ -304,7 +304,7 @@ closeRawFileDescriptor(path: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -548,7 +548,7 @@ getColor(resId: number, callback: _AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | _AsyncCallback & lt;number & gt; | 是 | 回调函数，返回资源ID值对应的颜色值（十进制）。 |
+| callback | _AsyncCallback &lt;number&gt; | 是 | 回调函数，返回资源ID值对应的颜色值（十进制）。 |
 
 **错误码：**
 
@@ -654,7 +654,7 @@ getColor(resId: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回资源ID值对应的颜色值（十进制）。 |
+| Promise &lt;number&gt; | Promise对象，返回资源ID值对应的颜色值（十进制）。 |
 
 **错误码：**
 
@@ -723,7 +723,7 @@ getColor(resource: Resource, callback: _AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resource | Resource | 是 | 资源信息。 |
-| callback | _AsyncCallback & lt;number & gt; | 是 | 回调函数，返回resource对象对应的颜色值（十进制）。 |
+| callback | _AsyncCallback &lt;number&gt; | 是 | 回调函数，返回resource对象对应的颜色值（十进制）。 |
 
 **错误码：**
 
@@ -797,7 +797,7 @@ getColor(resource: Resource): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回resource对象对应的颜色值（十进制）。 |
+| Promise &lt;number&gt; | Promise对象，返回resource对象对应的颜色值（十进制）。 |
 
 **错误码：**
 
@@ -860,7 +860,7 @@ getColorByName(resName: string, callback: _AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| callback | _AsyncCallback & lt;number & gt; | 是 | 回调函数，返回资源名称对应的颜色值（十进制）。 |
+| callback | _AsyncCallback &lt;number&gt; | 是 | 回调函数，返回资源名称对应的颜色值（十进制）。 |
 
 **错误码：**
 
@@ -928,7 +928,7 @@ getColorByName(resName: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回资源名称对应的颜色值（十进制）。 |
+| Promise &lt;number&gt; | Promise对象，返回资源名称对应的颜色值（十进制）。 |
 
 **错误码：**
 
@@ -1203,7 +1203,7 @@ getConfiguration(callback: _AsyncCallback<Configuration>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | _AsyncCallback & lt;Configuration & gt; | 是 | 回调函数，返回设备的Configuration。 |
+| callback | _AsyncCallback &lt;Configuration&gt; | 是 | 回调函数，返回设备的Configuration。 |
 
 **示例**
 
@@ -1248,7 +1248,7 @@ getConfiguration(): Promise<Configuration>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Configuration & gt; | Promise对象，返回设备的Configuration。 |
+| Promise &lt;Configuration&gt; | Promise对象，返回设备的Configuration。 |
 
 **示例**
 
@@ -1464,7 +1464,7 @@ getDoublePluralStringByNameSync(resName: string, num: number, ...args: Array<str
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
 | num | number | 是 | 数量值（浮点数）。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
-| args | Array & lt;string \ | number & gt; | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。    **说明：** - `%%`转义为`%`，如`%%d`格式化后为`%d`。 - `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
+| args | Array &lt;string \ | number&gt; | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。    **说明：** - `%%`转义为`%`，如`%%d`格式化后为`%d`。 - `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
 
 **返回值：**
 
@@ -1553,7 +1553,7 @@ getDoublePluralStringValueSync(resId: number, num: number, ...args: Array<string
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
 | num | number | 是 | 数量值（浮点数）。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
-| args | Array & lt;string \ | number & gt; | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。    **说明：** - `%%`转义为`%`，如`%%d`格式化后为`%d`。 - `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
+| args | Array &lt;string \ | number&gt; | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。    **说明：** - `%%`转义为`%`，如`%%d`格式化后为`%d`。 - `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
 
 **返回值：**
 
@@ -1646,7 +1646,7 @@ getDoublePluralStringValueSync(resource: Resource, num: number, ...args: Array<s
 | --- | --- | --- | --- |
 | resource | Resource | 是 | 资源信息。 |
 | num | number | 是 | 数量值（浮点数）。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
-| args | Array & lt;string \ | number & gt; | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。    **说明：** - `%%`转义为`%`，如`%%d`格式化后为`%d`。 - `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
+| args | Array &lt;string \ | number&gt; | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。    **说明：** - `%%`转义为`%`，如`%%d`格式化后为`%d`。 - `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
 
 **返回值：**
 
@@ -1959,7 +1959,7 @@ getIntPluralStringByNameSync(resName: string, num: number, ...args: Array<string
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
 | num | number | 是 | 数量值（整数）。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
-| args | Array & lt;string \ | number & gt; | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。    **说明：** - `%%`转义为`%`，如`%%d`格式化后为`%d`。 - `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
+| args | Array &lt;string \ | number&gt; | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。    **说明：** - `%%`转义为`%`，如`%%d`格式化后为`%d`。 - `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
 
 **返回值：**
 
@@ -2048,7 +2048,7 @@ getIntPluralStringValueSync(resId: number, num: number,...args: Array<string | n
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
 | num | number | 是 | 数量值（整数）。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
-| args | Array & lt;string \ | number & gt; | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。    **说明：** - `%%`转义为`%`，如`%%d`格式化后为`%d`。 - `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
+| args | Array &lt;string \ | number&gt; | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。    **说明：** - `%%`转义为`%`，如`%%d`格式化后为`%d`。 - `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
 
 **返回值：**
 
@@ -2141,7 +2141,7 @@ getIntPluralStringValueSync(resource: Resource, num: number, ...args: Array<stri
 | --- | --- | --- | --- |
 | resource | Resource | 是 | 资源信息。 |
 | num | number | 是 | 数量值（整数）。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
-| args | Array & lt;string \ | number & gt; | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。    **说明：** - `%%`转义为`%`，如`%%d`格式化后为`%d`。 - `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
+| args | Array &lt;string \ | number&gt; | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。    **说明：** - `%%`转义为`%`，如`%%d`格式化后为`%d`。 - `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
 
 **返回值：**
 
@@ -2228,7 +2228,7 @@ getLocales(includeSystem?: boolean): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 返回获取的语言列表，列表中的字符串由语言、脚本（可选）、地区（可选），按照顺序使用中划线“-”连接组成。 |
+| Array &lt;string&gt; | 返回获取的语言列表，列表中的字符串由语言、脚本（可选）、地区（可选），按照顺序使用中划线“-”连接组成。 |
 
 **错误码：**
 
@@ -2293,7 +2293,7 @@ getMedia(resId: number, callback: AsyncCallback<Uint8Array>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | AsyncCallback & lt;Uint8Array & gt; | 是 | 回调函数，返回资源ID值对应的媒体文件内容。 |
+| callback | AsyncCallback &lt;Uint8Array&gt; | 是 | 回调函数，返回资源ID值对应的媒体文件内容。 |
 
 **示例**
 
@@ -2335,7 +2335,7 @@ getMedia(resId: number): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Uint8Array & gt; | Promise对象，返回资源ID值对应的媒体文件内容。 |
+| Promise &lt;Uint8Array&gt; | Promise对象，返回资源ID值对应的媒体文件内容。 |
 
 **示例**
 
@@ -2372,7 +2372,7 @@ getMediaBase64(resId: number, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | AsyncCallback & lt;string & gt; | 是 | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
+| callback | AsyncCallback &lt;string&gt; | 是 | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
 
 **示例**
 
@@ -2414,7 +2414,7 @@ getMediaBase64(resId: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回资源ID值对应的图片资源Base64编码。 |
+| Promise &lt;string&gt; | Promise对象，返回资源ID值对应的图片资源Base64编码。 |
 
 **示例**
 
@@ -2449,7 +2449,7 @@ getMediaBase64ByName(resName: string, callback: _AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| callback | _AsyncCallback & lt;string & gt; | 是 | 回调函数，返回资源名称的图片资源Base64编码。 |
+| callback | _AsyncCallback &lt;string&gt; | 是 | 回调函数，返回资源名称的图片资源Base64编码。 |
 
 **错误码：**
 
@@ -2505,7 +2505,7 @@ getMediaBase64ByName(resName: string, density: number, callback: _AsyncCallback<
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
 | density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
-| callback | _AsyncCallback & lt;string & gt; | 是 | 回调函数，返回资源名称的图片资源Base64编码。 |
+| callback | _AsyncCallback &lt;string&gt; | 是 | 回调函数，返回资源名称的图片资源Base64编码。 |
 
 **错误码：**
 
@@ -2565,7 +2565,7 @@ getMediaBase64ByName(resName: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回资源名称对应的图片资源Base64编码。 |
+| Promise &lt;string&gt; | Promise对象，返回资源名称对应的图片资源Base64编码。 |
 
 **错误码：**
 
@@ -2624,7 +2624,7 @@ getMediaBase64ByName(resName: string, density: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回资源名称对应的图片资源Base64编码。 |
+| Promise &lt;string&gt; | Promise对象，返回资源名称对应的图片资源Base64编码。 |
 
 **错误码：**
 
@@ -2741,7 +2741,7 @@ getMediaByName(resName: string, callback: _AsyncCallback<Uint8Array>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| callback | _AsyncCallback & lt;Uint8Array & gt; | 是 | 回调函数，返回资源名称对应的媒体文件内容。 |
+| callback | _AsyncCallback &lt;Uint8Array&gt; | 是 | 回调函数，返回资源名称对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -2797,7 +2797,7 @@ getMediaByName(resName: string, density: number, callback: _AsyncCallback<Uint8A
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
 | density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
-| callback | _AsyncCallback & lt;Uint8Array & gt; | 是 | 回调函数，返回资源名称对应的媒体文件内容。 |
+| callback | _AsyncCallback &lt;Uint8Array&gt; | 是 | 回调函数，返回资源名称对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -2857,7 +2857,7 @@ getMediaByName(resName: string): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Uint8Array & gt; | Promise对象，返回资源名称对应的媒体文件内容。 |
+| Promise &lt;Uint8Array&gt; | Promise对象，返回资源名称对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -2916,7 +2916,7 @@ getMediaByName(resName: string, density: number): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Uint8Array & gt; | Promise对象，返回资源名称对应的媒体文件内容。 |
+| Promise &lt;Uint8Array&gt; | Promise对象，返回资源名称对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -3039,7 +3039,7 @@ getMediaContent(resource: Resource, callback: _AsyncCallback<Uint8Array>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resource | Resource | 是 | 资源信息。 |
-| callback | _AsyncCallback & lt;Uint8Array & gt; | 是 | 回调函数，返回resource对象对应的媒体文件内容。 |
+| callback | _AsyncCallback &lt;Uint8Array&gt; | 是 | 回调函数，返回resource对象对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -3101,7 +3101,7 @@ getMediaContent(resource: Resource, density: number, callback: _AsyncCallback<Ui
 | --- | --- | --- | --- |
 | resource | Resource | 是 | 资源信息。 |
 | density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
-| callback | _AsyncCallback & lt;Uint8Array & gt; | 是 | 回调函数，返回resource对象对应的媒体文件内容。 |
+| callback | _AsyncCallback &lt;Uint8Array&gt; | 是 | 回调函数，返回resource对象对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -3167,7 +3167,7 @@ getMediaContent(resource: Resource): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Uint8Array & gt; | Promise对象，返回resource对象对应的媒体文件内容。 |
+| Promise &lt;Uint8Array&gt; | Promise对象，返回resource对象对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -3232,7 +3232,7 @@ getMediaContent(resource: Resource, density: number): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Uint8Array & gt; | Promise对象，返回resource对象对应的媒体文件内容。 |
+| Promise &lt;Uint8Array&gt; | Promise对象，返回resource对象对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -3285,7 +3285,7 @@ getMediaContent(resId: number, callback: _AsyncCallback<Uint8Array>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | _AsyncCallback & lt;Uint8Array & gt; | 是 | 回调函数，返回资源ID对应的媒体文件内容。 |
+| callback | _AsyncCallback &lt;Uint8Array&gt; | 是 | 回调函数，返回资源ID对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -3342,7 +3342,7 @@ getMediaContent(resId: number, density: number, callback: _AsyncCallback<Uint8Ar
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
 | density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
-| callback | _AsyncCallback & lt;Uint8Array & gt; | 是 | 回调函数，返回资源ID对应的媒体文件内容。 |
+| callback | _AsyncCallback &lt;Uint8Array&gt; | 是 | 回调函数，返回资源ID对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -3402,7 +3402,7 @@ getMediaContent(resId: number): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Uint8Array & gt; | Promise对象，返回资源ID值对应的媒体文件内容。 |
+| Promise &lt;Uint8Array&gt; | Promise对象，返回资源ID值对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -3461,7 +3461,7 @@ getMediaContent(resId: number, density: number): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Uint8Array & gt; | Promise对象，返回资源ID值对应的媒体文件内容。 |
+| Promise &lt;Uint8Array&gt; | Promise对象，返回资源ID值对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -3520,7 +3520,7 @@ getMediaContentBase64(resource: Resource, callback: _AsyncCallback<string>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resource | Resource | 是 | 资源信息。 |
-| callback | _AsyncCallback & lt;string & gt; | 是 | 回调函数，返回resource对象对应的图片资源Base64编码。 |
+| callback | _AsyncCallback &lt;string&gt; | 是 | 回调函数，返回resource对象对应的图片资源Base64编码。 |
 
 **错误码：**
 
@@ -3582,7 +3582,7 @@ getMediaContentBase64(resource: Resource, density: number, callback: _AsyncCallb
 | --- | --- | --- | --- |
 | resource | Resource | 是 | 资源信息。 |
 | density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
-| callback | _AsyncCallback & lt;string & gt; | 是 | 回调函数，返回resource对象对应的图片资源Base64编码。 |
+| callback | _AsyncCallback &lt;string&gt; | 是 | 回调函数，返回resource对象对应的图片资源Base64编码。 |
 
 **错误码：**
 
@@ -3648,7 +3648,7 @@ getMediaContentBase64(resource: Resource): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回resource对象对应的图片资源Base64编码。 |
+| Promise &lt;string&gt; | Promise对象，返回resource对象对应的图片资源Base64编码。 |
 
 **错误码：**
 
@@ -3713,7 +3713,7 @@ getMediaContentBase64(resource: Resource, density: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回resource对象对应的图片资源Base64编码。 |
+| Promise &lt;string&gt; | Promise对象，返回resource对象对应的图片资源Base64编码。 |
 
 **错误码：**
 
@@ -3766,7 +3766,7 @@ getMediaContentBase64(resId: number, callback: _AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | _AsyncCallback & lt;string & gt; | 是 | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
+| callback | _AsyncCallback &lt;string&gt; | 是 | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
 
 **错误码：**
 
@@ -3822,7 +3822,7 @@ getMediaContentBase64(resId: number, density: number, callback: _AsyncCallback<s
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
 | density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
-| callback | _AsyncCallback & lt;string & gt; | 是 | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
+| callback | _AsyncCallback &lt;string&gt; | 是 | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
 
 **错误码：**
 
@@ -3882,7 +3882,7 @@ getMediaContentBase64(resId: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回资源ID值对应的图片资源Base64编码。 |
+| Promise &lt;string&gt; | Promise对象，返回资源ID值对应的图片资源Base64编码。 |
 
 **错误码：**
 
@@ -3941,7 +3941,7 @@ getMediaContentBase64(resId: number, density: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回资源ID值对应的图片资源Base64编码。 |
+| Promise &lt;string&gt; | Promise对象，返回资源ID值对应的图片资源Base64编码。 |
 
 **错误码：**
 
@@ -4632,7 +4632,7 @@ getPluralString(resId: number, num: number, callback: AsyncCallback<string>): vo
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
 | num | number | 是 | 数量值。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
-| callback | AsyncCallback & lt;string & gt; | 是 | 回调函数，返回资源ID值对应的指定数量的单复数字符串。 |
+| callback | AsyncCallback &lt;string&gt; | 是 | 回调函数，返回资源ID值对应的指定数量的单复数字符串。 |
 
 **示例**
 
@@ -4682,7 +4682,7 @@ getPluralString(resId: number, num: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回资源ID值对应的指定数量的单复数字符串。 |
+| Promise &lt;string&gt; | Promise对象，返回资源ID值对应的指定数量的单复数字符串。 |
 
 **示例**
 
@@ -4727,7 +4727,7 @@ getPluralStringByName(resName: string, num: number, callback: _AsyncCallback<str
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
 | num | number | 是 | 数量值。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
-| callback | _AsyncCallback & lt;string & gt; | 是 | 回调函数，返回资源名称对应的指定数量的单复数字符串。 |
+| callback | _AsyncCallback &lt;string&gt; | 是 | 回调函数，返回资源名称对应的指定数量的单复数字符串。 |
 
 **错误码：**
 
@@ -4810,7 +4810,7 @@ getPluralStringByName(resName: string, num: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | 根据传入的数量值，获取资源名称对应的字符串资源。 |
+| Promise &lt;string&gt; | 根据传入的数量值，获取资源名称对应的字符串资源。 |
 
 **错误码：**
 
@@ -4974,7 +4974,7 @@ getPluralStringValue(resource: Resource, num: number, callback: _AsyncCallback<s
 | --- | --- | --- | --- |
 | resource | Resource | 是 | 资源信息。 |
 | num | number | 是 | 数量值。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
-| callback | _AsyncCallback & lt;string & gt; | 是 | 回调函数，返回resource对象对应的指定数量的单复数字符串。 |
+| callback | _AsyncCallback &lt;string&gt; | 是 | 回调函数，返回resource对象对应的指定数量的单复数字符串。 |
 
 **错误码：**
 
@@ -5066,7 +5066,7 @@ getPluralStringValue(resource: Resource, num: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回resource对象对应的指定数量的单复数字符串。 |
+| Promise &lt;string&gt; | Promise对象，返回resource对象对应的指定数量的单复数字符串。 |
 
 **错误码：**
 
@@ -5150,7 +5150,7 @@ getPluralStringValue(resId: number, num: number, callback: _AsyncCallback<string
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
 | num | number | 是 | 数量值。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
-| callback | _AsyncCallback & lt;string & gt; | 是 | 回调函数，返回资源ID值对应的指定数量的单复数字符串。 |
+| callback | _AsyncCallback &lt;string&gt; | 是 | 回调函数，返回资源ID值对应的指定数量的单复数字符串。 |
 
 **错误码：**
 
@@ -5234,7 +5234,7 @@ getPluralStringValue(resId: number, num: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回资源ID值对应的指定数量的单复数字符串。 |
+| Promise &lt;string&gt; | Promise对象，返回资源ID值对应的指定数量的单复数字符串。 |
 
 **错误码：**
 
@@ -5484,7 +5484,7 @@ getRawFd(path: string, callback: _AsyncCallback<RawFileDescriptor>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。 |
-| callback | _AsyncCallback & lt;RawFileDescriptor & gt; | 是 | 回调函数，返回的rawfile文件所在HAP的文件描述符（fd）。 |
+| callback | _AsyncCallback &lt;RawFileDescriptor&gt; | 是 | 回调函数，返回的rawfile文件所在HAP的文件描述符（fd）。 |
 
 **错误码：**
 
@@ -5552,7 +5552,7 @@ getRawFd(path: string): Promise<RawFileDescriptor>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;RawFileDescriptor & gt; | Promise对象，返回rawfile文件所在HAP的文件描述符（fd）。 |
+| Promise &lt;RawFileDescriptor&gt; | Promise对象，返回rawfile文件所在HAP的文件描述符（fd）。 |
 
 **错误码：**
 
@@ -5668,7 +5668,7 @@ getRawFile(path: string, callback: AsyncCallback<Uint8Array>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。 |
-| callback | AsyncCallback & lt;Uint8Array & gt; | 是 | 回调函数，返回rawfile文件内容。 |
+| callback | AsyncCallback &lt;Uint8Array&gt; | 是 | 回调函数，返回rawfile文件内容。 |
 
 **示例**
 
@@ -5712,7 +5712,7 @@ getRawFile(path: string): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Uint8Array & gt; | Promise对象，返回rawfile文件内容。 |
+| Promise &lt;Uint8Array&gt; | Promise对象，返回rawfile文件内容。 |
 
 **示例**
 
@@ -5747,7 +5747,7 @@ getRawFileContent(path: string, callback: _AsyncCallback<Uint8Array>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。 |
-| callback | _AsyncCallback & lt;Uint8Array & gt; | 是 | 回调函数，返回获取的rawfile文件内容。 |
+| callback | _AsyncCallback &lt;Uint8Array&gt; | 是 | 回调函数，返回获取的rawfile文件内容。 |
 
 **错误码：**
 
@@ -5806,7 +5806,7 @@ getRawFileContent(path: string): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Uint8Array & gt; | Promise对象，返回获取的rawfile文件内容。 |
+| Promise &lt;Uint8Array&gt; | Promise对象，返回获取的rawfile文件内容。 |
 
 **错误码：**
 
@@ -5913,7 +5913,7 @@ getRawFileDescriptor(path: string, callback: AsyncCallback<RawFileDescriptor>): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。 |
-| callback | AsyncCallback & lt;RawFileDescriptor & gt; | 是 | 回调函数，返回rawfile文件的文件描述符（fd）。 |
+| callback | AsyncCallback &lt;RawFileDescriptor&gt; | 是 | 回调函数，返回rawfile文件的文件描述符（fd）。 |
 
 **示例**
 
@@ -5959,7 +5959,7 @@ getRawFileDescriptor(path: string): Promise<RawFileDescriptor>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;RawFileDescriptor & gt; | Promise对象，返回rawfile文件的文件描述符（fd）。 |
+| Promise &lt;RawFileDescriptor&gt; | Promise对象，返回rawfile文件的文件描述符（fd）。 |
 
 **示例**
 
@@ -6000,7 +6000,7 @@ getRawFileList(path: string, callback: _AsyncCallback<Array<string>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 相对resources/rawfile目录的rawfile子目录路径，如"subdir"，不以"/"开头。 空字符串""表示获取rawfile根目录下的文件夹及文件列表。 |
-| callback | _AsyncCallback & lt;Array & lt;string & gt; & gt; | 是 | 回调函数，返回rawfile子目录下的文件夹及文件列表。 |
+| callback | _AsyncCallback &lt;Array &lt;string&gt;&gt; | 是 | 回调函数，返回rawfile子目录下的文件夹及文件列表。 |
 
 **错误码：**
 
@@ -6059,7 +6059,7 @@ getRawFileList(path: string): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回rawfile子目录下的文件夹及文件列表。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回rawfile子目录下的文件夹及文件列表。 |
 
 **错误码：**
 
@@ -6118,7 +6118,7 @@ getRawFileListSync(path: string): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | rawfile子目录下的文件夹及文件列表。 |
+| Array &lt;string&gt; | rawfile子目录下的文件夹及文件列表。 |
 
 **错误码：**
 
@@ -6239,7 +6239,7 @@ getString(resId: number, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | AsyncCallback & lt;string & gt; | 是 | 回调函数，返回资源ID值对应的字符串。 |
+| callback | AsyncCallback &lt;string&gt; | 是 | 回调函数，返回资源ID值对应的字符串。 |
 
 **示例**
 
@@ -6281,7 +6281,7 @@ getString(resId: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回资源ID值对应的字符串。 |
+| Promise &lt;string&gt; | Promise对象，返回资源ID值对应的字符串。 |
 
 **示例**
 
@@ -6318,7 +6318,7 @@ getStringArray(resId: number, callback: AsyncCallback<Array<string>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | AsyncCallback & lt;Array & lt;string & gt; & gt; | 是 | 回调函数，返回资源ID值对应的字符串数组。 |
+| callback | AsyncCallback &lt;Array &lt;string&gt;&gt; | 是 | 回调函数，返回资源ID值对应的字符串数组。 |
 
 **示例**
 
@@ -6360,7 +6360,7 @@ getStringArray(resId: number): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回资源ID值对应的字符串数组。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回资源ID值对应的字符串数组。 |
 
 **示例**
 
@@ -6395,7 +6395,7 @@ getStringArrayByName(resName: string, callback: _AsyncCallback<Array<string>>): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| callback | _AsyncCallback & lt;Array & lt;string & gt; & gt; | 是 | 回调函数，返回资源名称对应的字符串数组。 |
+| callback | _AsyncCallback &lt;Array &lt;string&gt;&gt; | 是 | 回调函数，返回资源名称对应的字符串数组。 |
 
 **错误码：**
 
@@ -6468,7 +6468,7 @@ getStringArrayByName(resName: string): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回资源名称对应的字符串数组。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回资源名称对应的字符串数组。 |
 
 **错误码：**
 
@@ -6540,7 +6540,7 @@ getStringArrayByNameSync(resName: string): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 对应资源名称的字符串数组。 |
+| Array &lt;string&gt; | 对应资源名称的字符串数组。 |
 
 **错误码：**
 
@@ -6614,7 +6614,7 @@ getStringArrayValue(resource: Resource, callback: _AsyncCallback<Array<string>>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resource | Resource | 是 | 资源信息。 |
-| callback | _AsyncCallback & lt;Array & lt;string & gt; & gt; | 是 | 回调函数，返回resource对象对应的字符串数组。 |
+| callback | _AsyncCallback &lt;Array &lt;string&gt;&gt; | 是 | 回调函数，返回resource对象对应的字符串数组。 |
 
 **错误码：**
 
@@ -6692,7 +6692,7 @@ getStringArrayValue(resource: Resource): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回resource对象对应的字符串数组。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回resource对象对应的字符串数组。 |
 
 **错误码：**
 
@@ -6759,7 +6759,7 @@ getStringArrayValue(resId: number, callback: _AsyncCallback<Array<string>>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | _AsyncCallback & lt;Array & lt;string & gt; & gt; | 是 | 回调函数，返回资源ID值对应的字符串数组。 |
+| callback | _AsyncCallback &lt;Array &lt;string&gt;&gt; | 是 | 回调函数，返回资源ID值对应的字符串数组。 |
 
 **错误码：**
 
@@ -6832,7 +6832,7 @@ getStringArrayValue(resId: number): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回资源ID值对应的字符串数组。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回资源ID值对应的字符串数组。 |
 
 **错误码：**
 
@@ -6904,7 +6904,7 @@ getStringArrayValueSync(resId: number): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 资源ID值对应的字符串数组。 |
+| Array &lt;string&gt; | 资源ID值对应的字符串数组。 |
 
 **错误码：**
 
@@ -6983,7 +6983,7 @@ getStringArrayValueSync(resource: Resource): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | resource对象对应的字符串数组。 |
+| Array &lt;string&gt; | resource对象对应的字符串数组。 |
 
 **错误码：**
 
@@ -7051,7 +7051,7 @@ getStringByName(resName: string, callback: _AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| callback | _AsyncCallback & lt;string & gt; | 是 | 回调函数，返回获取的字符串。 |
+| callback | _AsyncCallback &lt;string&gt; | 是 | 回调函数，返回获取的字符串。 |
 
 **错误码：**
 
@@ -7119,7 +7119,7 @@ getStringByName(resName: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回资源名称对应的字符串。 |
+| Promise &lt;string&gt; | Promise对象，返回资源名称对应的字符串。 |
 
 **错误码：**
 
@@ -7249,7 +7249,7 @@ getStringByNameSync(resName: string, ...args: Array<string | number>): string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| args | Array & lt;string \ | number & gt; | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。    **说明：** - `%%`转义为`%`，如`%%d`格式化后为`%d`。 - `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
+| args | Array &lt;string \ | number&gt; | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。    **说明：** - `%%`转义为`%`，如`%%d`格式化后为`%d`。 - `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
 
 **返回值：**
 
@@ -7389,7 +7389,7 @@ getStringSync(resId: number, ...args: Array<string | number>): string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| args | Array & lt;string \ | number & gt; | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。    **说明：** - `%%`转义为`%`，如`%%d`格式化后为`%d`。 - `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
+| args | Array &lt;string \ | number&gt; | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。    **说明：** - `%%`转义为`%`，如`%%d`格式化后为`%d`。 - `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
 
 **返回值：**
 
@@ -7541,7 +7541,7 @@ getStringSync(resource: Resource, ...args: Array<string | number>): string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resource | Resource | 是 | 资源信息。 |
-| args | Array & lt;string \ | number & gt; | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。    **说明：** - `%%`转义为`%`，如`%%d`格式化后为`%d`。 - `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
+| args | Array &lt;string \ | number&gt; | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。    **说明：** - `%%`转义为`%`，如`%%d`格式化后为`%d`。 - `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
 
 **返回值：**
 
@@ -7618,7 +7618,7 @@ getStringValue(resource: Resource, callback: _AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resource | Resource | 是 | 资源信息。 |
-| callback | _AsyncCallback & lt;string & gt; | 是 | 回调函数，返回resource对象对应的字符串。 |
+| callback | _AsyncCallback &lt;string&gt; | 是 | 回调函数，返回resource对象对应的字符串。 |
 
 **错误码：**
 
@@ -7692,7 +7692,7 @@ getStringValue(resource: Resource): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回resource对象对应的字符串。 |
+| Promise &lt;string&gt; | Promise对象，返回resource对象对应的字符串。 |
 
 **错误码：**
 
@@ -7743,7 +7743,7 @@ getStringValue(resId: number, callback: _AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | _AsyncCallback & lt;string & gt; | 是 | 回调函数，返回获取的字符串。 |
+| callback | _AsyncCallback &lt;string&gt; | 是 | 回调函数，返回获取的字符串。 |
 
 **错误码：**
 
@@ -7828,7 +7828,7 @@ getStringValue(resId: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回资源ID值对应的字符串。 |
+| Promise &lt;string&gt; | Promise对象，返回资源ID值对应的字符串。 |
 
 **错误码：**
 

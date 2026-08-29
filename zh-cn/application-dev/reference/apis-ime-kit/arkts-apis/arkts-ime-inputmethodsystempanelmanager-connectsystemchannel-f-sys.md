@@ -28,7 +28,7 @@ function connectSystemChannel(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 返回的Promise。 |
+| Promise &lt;void&gt; | 返回的Promise。 |
 
 **错误码：**
 

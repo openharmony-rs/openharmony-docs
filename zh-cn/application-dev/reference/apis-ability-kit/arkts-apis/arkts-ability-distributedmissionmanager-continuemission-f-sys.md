@@ -109,7 +109,7 @@ function continueMission(parameter: ContinueDeviceInfo, options: ContinueCallbac
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 返回的Promise对象，操作成功时表示通过任务ID方式迁移任务已完成，失败时返回错误信息。 |
+| Promise &lt;void&gt; | 返回的Promise对象，操作成功时表示通过任务ID方式迁移任务已完成，失败时返回错误信息。 |
 
 **错误码：**
 
@@ -250,7 +250,7 @@ function continueMission(parameter: ContinueMissionInfo): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 返回的Promise对象，操作成功时表示通过包名方式迁移任务已完成，失败时返回错误信息。 |
+| Promise &lt;void&gt; | 返回的Promise对象，操作成功时表示通过包名方式迁移任务已完成，失败时返回错误信息。 |
 
 **错误码：**
 

@@ -33,7 +33,7 @@ function transformCoordinateSystem(inRotationVector: Array<number>, coordinates:
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| inRotationVector | Array & lt;number & gt; | 是 | 表示旋转矩阵。 |
+| inRotationVector | Array &lt;number&gt; | 是 | 表示旋转矩阵。 |
 | coordinates | [CoordinatesOptions](arkts-sensorservice-sensor-coordinatesoptions-i.md) | 是 | 表示坐标系方向。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;number&gt;&gt; | 是 | 异步返回转换后的旋转矩阵。 |
 
@@ -83,14 +83,14 @@ function transformCoordinateSystem(inRotationVector: Array<number>, coordinates:
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| inRotationVector | Array & lt;number & gt; | 是 | 表示旋转矩阵。 |
+| inRotationVector | Array &lt;number&gt; | 是 | 表示旋转矩阵。 |
 | coordinates | [CoordinatesOptions](arkts-sensorservice-sensor-coordinatesoptions-i.md) | 是 | 表示坐标系方向。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;number & gt; & gt; | 使用异步方式返回转换后的旋转矩阵。 |
+| Promise &lt;Array &lt;number&gt;&gt; | 使用异步方式返回转换后的旋转矩阵。 |
 
 **示例**
 

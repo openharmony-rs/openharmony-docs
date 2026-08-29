@@ -28,7 +28,7 @@ function getAllBundleInstallInfo(): Promise<Array<Record<string, Object>>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;Record & lt;string, Object & gt; & gt; & gt; | The install information. |
+| Promise &lt;Array &lt;Record &lt;string, Object&gt;&gt;&gt; | The install information. |
 
 **错误码：**
 

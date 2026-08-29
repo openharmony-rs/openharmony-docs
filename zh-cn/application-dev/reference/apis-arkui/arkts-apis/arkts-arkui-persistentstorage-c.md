@@ -89,7 +89,7 @@ static Keys(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 返回所有持久化属性的属性名的数组。 |
+| Array &lt;string&gt; | 返回所有持久化属性的属性名的数组。 |
 
 **示例**
 
@@ -124,7 +124,7 @@ static keys(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 返回所有持久化属性的属性名的数组。 |
+| Array &lt;string&gt; | 返回所有持久化属性的属性名的数组。 |
 
 **示例**
 

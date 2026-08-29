@@ -42,7 +42,7 @@ HiTraceChain在ArkTS中的使用方法参考以下示例，开发者可参考约
    │       │   │       └── Index.ets
    ```
 
-2. 编辑工程中的“entry &gt; src &gt; main &gt; ets &gt; pages &gt; Index.ets”：
+2. 编辑工程中的“entry&gt; src&gt; main&gt; ets&gt; pages&gt; Index.ets”：
 
    导入所需依赖：
    <!-- @[TestHiTraceChain_Import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_ArkTS/entry/src/main/ets/pages/Index.ets) -->

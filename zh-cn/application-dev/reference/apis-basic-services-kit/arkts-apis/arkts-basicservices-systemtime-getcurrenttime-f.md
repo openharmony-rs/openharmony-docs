@@ -129,7 +129,7 @@ function getCurrentTime(isNano?: boolean): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回自Unix纪元以来经过的时间。 |
+| Promise &lt;number&gt; | Promise对象，返回自Unix纪元以来经过的时间。 |
 
 **错误码：**
 

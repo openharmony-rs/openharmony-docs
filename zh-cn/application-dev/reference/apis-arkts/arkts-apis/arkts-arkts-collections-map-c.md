@@ -37,7 +37,7 @@ K和V类型都需为 [Sendable支持的数据类型](../../../arkts-utils/arkts-
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;[K, V] & gt; | 返回一个迭代器对象，该对象包含键值对。 |
+| IterableIterator &lt;[K, V]&gt; | 返回一个迭代器对象，该对象包含键值对。 |
 
 **错误码：**
 
@@ -110,7 +110,7 @@ constructor(iterable: Iterable<readonly [K, V]>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| iterable | Iterable & lt;readonly [K, V] & gt; | 是 | 用于构造ArkTS Map的可迭代对象。 |
+| iterable | Iterable &lt;readonly [K, V]&gt; | 是 | 用于构造ArkTS Map的可迭代对象。 |
 
 **错误码：**
 
@@ -204,7 +204,7 @@ entries(): IterableIterator<[K, V]>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;[K, V] & gt; | Map迭代器对象。 |
+| IterableIterator &lt;[K, V]&gt; | Map迭代器对象。 |
 
 **错误码：**
 
@@ -231,7 +231,7 @@ forEach(callbackFn: (value: V, key: K, map: Map<K, V>) => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: V, key: K, map: Map & lt;K, V & gt;) = & gt; void | 是 | 对每个键值对运行的回调函数。 |
+| callbackFn | (value: V, key: K, map: Map &lt;K, V&gt;) =&gt; void | 是 | 对每个键值对运行的回调函数。 |
 
 **错误码：**
 
@@ -324,7 +324,7 @@ keys(): IterableIterator<K>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;K & gt; | Map迭代器对象。 |
+| IterableIterator &lt;K&gt; | Map迭代器对象。 |
 
 **错误码：**
 
@@ -394,7 +394,7 @@ putAll(from: Map<K, V>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| from | Map & lt;K, V & gt; | 是 | 提供键值对的ArkTS Map。 |
+| from | Map &lt;K, V&gt; | 是 | 提供键值对的ArkTS Map。 |
 
 **错误码：**
 
@@ -497,7 +497,7 @@ set(key: K, value: V): Map<K, V>
 
 | 类型 | 说明 |
 | --- | --- |
-| Map & lt;K, V & gt; | 添加或更新键值对操作后的Map对象本身。 |
+| Map &lt;K, V&gt; | 添加或更新键值对操作后的Map对象本身。 |
 
 **错误码：**
 
@@ -524,7 +524,7 @@ values(): IterableIterator<V>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;V & gt; | Map迭代器对象。 |
+| IterableIterator &lt;V&gt; | Map迭代器对象。 |
 
 **错误码：**
 

@@ -87,7 +87,7 @@ function getPermissionDef(permissionName: string): Promise<PermissionDef>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PermissionDef & gt; | Promise对象，返回Array & lt;PermissionDef & gt;对象。 |
+| Promise &lt;PermissionDef&gt; | Promise对象，返回Array &lt;PermissionDef&gt;对象。 |
 
 **错误码：**
 

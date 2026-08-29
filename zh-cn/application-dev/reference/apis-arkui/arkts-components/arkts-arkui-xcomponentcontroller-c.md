@@ -359,7 +359,7 @@ startImageAnalyzer(config: ImageAnalyzerConfig): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 用于返回结果的Promise。 |
+| Promise &lt;void&gt; | 用于返回结果的Promise。 |
 
 **错误码：**
 

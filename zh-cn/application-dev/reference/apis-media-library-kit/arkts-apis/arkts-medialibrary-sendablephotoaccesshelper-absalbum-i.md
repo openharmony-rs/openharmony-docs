@@ -38,7 +38,7 @@ getAssets(options: photoAccessHelper.FetchOptions): Promise<FetchResult<PhotoAss
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;FetchResult & lt;PhotoAsset & gt; & gt; | Promise对象，返回图片和视频数据结果集。 |
+| Promise &lt;FetchResult &lt;PhotoAsset&gt;&gt; | Promise对象，返回图片和视频数据结果集。 |
 
 **错误码：**
 

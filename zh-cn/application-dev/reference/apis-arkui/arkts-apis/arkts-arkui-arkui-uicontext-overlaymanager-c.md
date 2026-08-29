@@ -302,14 +302,14 @@ openOrderOverlay(content: ComponentContent, options?: OrderOverlayOptions): Prom
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | [ComponentContent](arkts-arkui-componentcontent-c.md) | 是 | OverlayManager新增节点需要添加的内容。 & lt;p & gt; & lt;strong & gt;注意 & lt;/strong & gt;：。 默认情况下，新节点在页面中居中，并根据其堆叠级别进行堆叠。 & lt;/p & gt; |
+| content | [ComponentContent](arkts-arkui-componentcontent-c.md) | 是 | OverlayManager新增节点需要添加的内容。 &lt;p&gt; &lt;strong&gt;注意 &lt;/strong&gt;：。 默认情况下，新节点在页面中居中，并根据其堆叠级别进行堆叠。 &lt;/p&gt; |
 | options | [OrderOverlayOptions](arkts-arkui-arkui-uicontext-orderoverlayoptions-i.md) | 否 |  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 函数返回的promise。 |
+| Promise &lt;void&gt; | 函数返回的promise。 |
 
 **错误码：**
 

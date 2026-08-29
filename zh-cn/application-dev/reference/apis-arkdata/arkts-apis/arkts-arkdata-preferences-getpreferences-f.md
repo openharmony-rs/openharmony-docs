@@ -185,7 +185,7 @@ function getPreferences(context: Context, name: string): Promise<Preferences>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Preferences & gt; | Promise对象，返回Preferences实例。 |
+| Promise &lt;Preferences&gt; | Promise对象，返回Preferences实例。 |
 
 **错误码：**
 
@@ -263,7 +263,7 @@ function getPreferences(context: Context, options: Options): Promise<Preferences
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Preferences & gt; | Promise对象，返回Preferences实例。 |
+| Promise &lt;Preferences&gt; | Promise对象，返回Preferences实例。 |
 
 **错误码：**
 

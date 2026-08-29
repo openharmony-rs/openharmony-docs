@@ -76,7 +76,7 @@ cleanFileCache(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Return Promise. |
+| Promise &lt;void&gt; | Return Promise. |
 
 **错误码：**
 
@@ -144,7 +144,7 @@ getCachedTotalSize(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Return the total size of cached files. |
+| Promise &lt;number&gt; | Return the total size of cached files. |
 
 **错误码：**
 
@@ -373,7 +373,7 @@ start(uri: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -507,14 +507,14 @@ startBatch(uris: Array<string>, fileType?: DownloadFileType): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uris | Array & lt;string & gt; | 是 | URI列表，一次调用最多支持传入400个URI，超过报错22400004。 |
+| uris | Array &lt;string&gt; | 是 | URI列表，一次调用最多支持传入400个URI，超过报错22400004。 |
 | fileType | [DownloadFileType](arkts-corefile-cloudsync-downloadfiletype-e.md) | 否 | 文件类型，默认值为CONTENT类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回启动的云文件批量缓存任务的ID。 |
+| Promise &lt;number&gt; | Promise对象，返回启动的云文件批量缓存任务的ID。 |
 
 **错误码：**
 
@@ -572,7 +572,7 @@ Stops downloading a file from the Drive Kit to the local device. This API uses a
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -685,7 +685,7 @@ stopBatch(downloadId: number, needClean?: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

@@ -30,7 +30,7 @@ function getOriginalSize(compressedFile: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回压缩文件的原始大小，单位字节。 |
+| Promise &lt;number&gt; | Promise对象，返回压缩文件的原始大小，单位字节。 |
 
 **错误码：**
 

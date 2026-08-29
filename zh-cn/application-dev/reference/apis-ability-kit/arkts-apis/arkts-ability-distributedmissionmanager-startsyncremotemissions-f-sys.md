@@ -93,7 +93,7 @@ function startSyncRemoteMissions(parameter: MissionParameter): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 返回的Promise对象，操作成功时表示远端设备任务列表同步已成功启动，失败时返回错误信息。 |
+| Promise &lt;void&gt; | 返回的Promise对象，操作成功时表示远端设备任务列表同步已成功启动，失败时返回错误信息。 |
 
 **错误码：**
 

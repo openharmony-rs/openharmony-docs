@@ -238,7 +238,7 @@ save(option?: DocumentSaveOptions): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象。返回documentPicker保存后的结果集。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象。返回documentPicker保存后的结果集。 |
 
 **示例**
 
@@ -418,7 +418,7 @@ select(option?: DocumentSelectOptions): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象。返回documentPicker选择后的结果集。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象。返回documentPicker选择后的结果集。 |
 
 **示例**
 

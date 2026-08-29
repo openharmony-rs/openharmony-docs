@@ -351,7 +351,7 @@ Obtains page information by url.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;router.RouterState & gt; | Page routing state. |
+| Array &lt;router.RouterState&gt; | Page routing state. |
 
 **示例**
 
@@ -503,7 +503,7 @@ Navigates to a page using the named route. This API uses a promise to return the
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -674,7 +674,7 @@ Navigates to a page using the named route. This API uses a promise to return the
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -842,7 +842,7 @@ Navigates to a specified page in the application. This API uses a promise to ret
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -1077,7 +1077,7 @@ Navigates to a specified page in the application. This API uses a promise to ret
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -1242,7 +1242,7 @@ Replaces the current page with another one in the application. The current page 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -1405,7 +1405,7 @@ replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1565,7 +1565,7 @@ Replaces the current page with another one in the application. The current page 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -1728,7 +1728,7 @@ Replaces the current page with another one in the application. The current page 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 

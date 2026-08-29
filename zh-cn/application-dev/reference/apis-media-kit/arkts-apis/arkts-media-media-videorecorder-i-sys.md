@@ -93,7 +93,7 @@ getInputSurface(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回输入surface id字符串。 |
+| Promise &lt;string&gt; | Promise对象，返回输入surface id字符串。 |
 
 **错误码：**
 
@@ -276,7 +276,7 @@ pause(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，暂停录制完成时返回。 |
+| Promise &lt;void&gt; | Promise对象，暂停录制完成时返回。 |
 
 **错误码：**
 
@@ -447,7 +447,7 @@ prepare(config: VideoRecorderConfig): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，准备录制完成时返回。 |
+| Promise &lt;void&gt; | Promise对象，准备录制完成时返回。 |
 
 **错误码：**
 
@@ -636,7 +636,7 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，释放资源完成时返回。 |
+| Promise &lt;void&gt; | Promise对象，释放资源完成时返回。 |
 
 **错误码：**
 
@@ -869,7 +869,7 @@ reset(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，重置完成时返回。 |
+| Promise &lt;void&gt; | Promise对象，重置完成时返回。 |
 
 **错误码：**
 
@@ -1001,7 +1001,7 @@ resume(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，恢复录制完成时返回。 |
+| Promise &lt;void&gt; | Promise对象，恢复录制完成时返回。 |
 
 **错误码：**
 
@@ -1125,7 +1125,7 @@ start(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，开始录制完成时返回。 |
+| Promise &lt;void&gt; | Promise对象，开始录制完成时返回。 |
 
 **错误码：**
 
@@ -1277,7 +1277,7 @@ stop(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，停止录制完成时返回。 |
+| Promise &lt;void&gt; | Promise对象，停止录制完成时返回。 |
 
 **错误码：**
 

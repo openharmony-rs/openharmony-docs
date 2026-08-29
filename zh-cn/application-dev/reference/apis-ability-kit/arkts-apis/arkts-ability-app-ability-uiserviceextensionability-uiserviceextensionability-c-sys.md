@@ -107,7 +107,7 @@ onData(proxy: UIServiceHostProxy, data: Record<string, Object>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | proxy | [UIServiceHostProxy](arkts-ability-uiservicehostproxy-i-sys.md) | 是 | 往客户端发送数据的Proxy。 |
-| data | Record & lt;string, Object & gt; | 是 | 表示接收到的数据。 |
+| data | Record &lt;string, Object&gt; | 是 | 表示接收到的数据。 |
 
 **示例**
 

@@ -37,7 +37,7 @@ function startNativeChildProcess(entryPoint: string, args: ChildProcessArgs, opt
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回子进程pid。 |
+| Promise &lt;number&gt; | Promise对象，返回子进程pid。 |
 
 **错误码：**
 

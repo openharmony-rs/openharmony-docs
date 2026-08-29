@@ -74,8 +74,8 @@ setTextSelection(selectionStart: number, selectionEnd: number, options?: Selecti
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| selectionStart | number | 是 | 文本选择区域起始位置，文本框中文字的起始位置为0。当selectionStart & lt;0时，按照0处理；当selectionStart大于文本长度时，按照文本长度处 理。 |
-| selectionEnd | number | 是 | 文本选择区域结束位置。当selectionEnd & lt;0时，按照0处理；当selectionEnd大于文本长度时，按照文本长度处理。 |
+| selectionStart | number | 是 | 文本选择区域起始位置，文本框中文字的起始位置为0。当selectionStart &lt;0时，按照0处理；当selectionStart大于文本长度时，按照文本长度处 理。 |
+| selectionEnd | number | 是 | 文本选择区域结束位置。当selectionEnd &lt;0时，按照0处理；当selectionEnd大于文本长度时，按照文本长度处理。 |
 | options | [SelectionOptions](arkts-arkui-selectionoptions-i.md) | 否 | 选中文字时的配置，用于控制文本选择菜单的显示策略。 配置项包括menuPolicy，用于指定菜单显示方式：MenuPolicy.DEFAULT表示按系统默认行为显示菜单；MenuPolicy.SHOW表示强制显示菜单；MenuPolicy.HIDE表示强制隐藏菜单。 默认值MenuPolicy.DEFAULT 从API version 12开始，该接口中的options参数支持在原子化服务中使用。<br>**起始版本：** 12 |
 
 ## stopEditing

@@ -33,7 +33,7 @@ endPoint(value: Array<any>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Array & lt;any & gt; | 是 | 直线终点坐标点（相对于Line组件绘制区域的左上角原点），单位vp。数组格式为[x坐标, y坐标]，数组长度必须为2，元素应为Length类型。 默认值：[0, 0] 异常值undefined和null按照默认值处理。 |
+| value | Array &lt;any&gt; | 是 | 直线终点坐标点（相对于Line组件绘制区域的左上角原点），单位vp。数组格式为[x坐标, y坐标]，数组长度必须为2，元素应为Length类型。 默认值：[0, 0] 异常值undefined和null按照默认值处理。 |
 
 ## startPoint
 
@@ -55,4 +55,4 @@ startPoint(value: Array<any>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Array & lt;any & gt; | 是 | 直线起点坐标点（相对于Line组件绘制区域的左上角原点），单位vp。数组格式为[x坐标, y坐标]，数组长度必须为2，元素应为Length类型。 默认值：[0, 0] 异常值undefined和null按照默认值处理。 |
+| value | Array &lt;any&gt; | 是 | 直线起点坐标点（相对于Line组件绘制区域的左上角原点），单位vp。数组格式为[x坐标, y坐标]，数组长度必须为2，元素应为Length类型。 默认值：[0, 0] 异常值undefined和null按照默认值处理。 |

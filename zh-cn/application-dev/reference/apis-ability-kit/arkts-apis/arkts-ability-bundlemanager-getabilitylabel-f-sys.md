@@ -99,7 +99,7 @@ function getAbilityLabel(bundleName: string, moduleName: string, abilityName: st
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回指定组件的label值。 |
+| Promise &lt;string&gt; | Promise对象，返回指定组件的label值。 |
 
 **错误码：**
 

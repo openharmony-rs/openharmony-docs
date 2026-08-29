@@ -35,7 +35,7 @@ selectCerts(param: X509CertMatchParameters): Promise<Array<X509Cert>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;X509Cert & gt; & gt; | Promise对象，返回匹配到的证书对象数组。 |
+| Promise &lt;Array &lt;X509Cert&gt;&gt; | Promise对象，返回匹配到的证书对象数组。 |
 
 **错误码：**
 

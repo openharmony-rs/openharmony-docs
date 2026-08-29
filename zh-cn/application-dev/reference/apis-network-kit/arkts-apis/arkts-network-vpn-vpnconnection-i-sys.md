@@ -89,7 +89,7 @@ destroy(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以 Promise 形式返回设定结果，失败返回错误码错误信息。 |
+| Promise &lt;void&gt; | 以 Promise 形式返回设定结果，失败返回错误码错误信息。 |
 
 **错误码：**
 
@@ -228,7 +228,7 @@ protect(socketFd: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以 Promise 形式返回设定结果，失败返回错误码错误信息。 |
+| Promise &lt;void&gt; | 以 Promise 形式返回设定结果，失败返回错误码错误信息。 |
 
 **错误码：**
 
@@ -382,7 +382,7 @@ setUp(config: VpnConfig): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 以 Promise 形式返回获取结果，返回指定虚拟网卡的文件描述符 fd。 |
+| Promise &lt;number&gt; | 以 Promise 形式返回获取结果，返回指定虚拟网卡的文件描述符 fd。 |
 
 **错误码：**
 

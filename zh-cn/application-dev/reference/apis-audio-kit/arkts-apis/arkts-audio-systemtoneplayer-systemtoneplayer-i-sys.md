@@ -107,7 +107,7 @@ getSupportedHapticsFeatures(): Promise<Array<systemSoundManager.ToneHapticsFeatu
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;systemSoundManager.ToneHapticsFeature & gt; & gt; | Promise对象，返回当前支持的振动风格。 |
+| Promise &lt;Array &lt;systemSoundManager.ToneHapticsFeature&gt;&gt; | Promise对象，返回当前支持的振动风格。 |
 
 **错误码：**
 
@@ -144,7 +144,7 @@ getTitle(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回获取的系统提示音标题。 |
+| Promise &lt;string&gt; | Promise对象，返回获取的系统提示音标题。 |
 
 **错误码：**
 
@@ -360,7 +360,7 @@ prepare(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -400,7 +400,7 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -534,7 +534,7 @@ start(toneOptions?: SystemToneOptions): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回streamID。 |
+| Promise &lt;number&gt; | Promise对象，返回streamID。 |
 
 **错误码：**
 
@@ -587,7 +587,7 @@ stop(id: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise回调返回停止播放成功或失败。 |
+| Promise &lt;void&gt; | Promise回调返回停止播放成功或失败。 |
 
 **错误码：**
 

@@ -72,7 +72,7 @@ getMetadata(metadataType: MetadataType): Promise<Metadata>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Metadata & gt; | Promise对象，返回元数据的Promise对象。 |
+| Promise &lt;Metadata&gt; | Promise对象，返回元数据的Promise对象。 |
 
 **错误码：**
 
@@ -162,7 +162,7 @@ readPixelsToBuffer(): Promise<ArrayBuffer>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ArrayBuffer & gt; | Promise对象。返回辅助图像素数据。 |
+| Promise &lt;ArrayBuffer&gt; | Promise对象。返回辅助图像素数据。 |
 
 **示例**
 
@@ -304,7 +304,7 @@ setMetadata(metadataType: MetadataType, metadata: Metadata): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -401,7 +401,7 @@ writePixelsFromBuffer(data: ArrayBuffer): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

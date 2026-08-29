@@ -36,7 +36,7 @@ Apply color space of pixelmap, the pixels will be changed by input color space. 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
+| Promise &lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
 
 **错误码：**
 
@@ -82,7 +82,7 @@ Obtains new pixelmap with alpha information. This method uses a promise to retur
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PixelMap & gt; | A Promise instance used to return the new image pixelmap. If the operation fails, an error message is returned. |
+| Promise &lt;PixelMap&gt; | A Promise instance used to return the new image pixelmap. If the operation fails, an error message is returned. |
 
 **示例**
 
@@ -169,7 +169,7 @@ Crop the image. This method uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
+| Promise &lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
 
 **示例**
 
@@ -257,7 +257,7 @@ Image flipping. This method uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
+| Promise &lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
 
 **示例**
 
@@ -630,7 +630,7 @@ Set the transparent rate of pixelmap. This method uses a promise to return the r
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
+| Promise &lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
 
 **示例**
 
@@ -715,7 +715,7 @@ Reads image pixelmap data in an area. This method uses a promise to return the d
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
+| Promise &lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
 
 **示例**
 
@@ -828,7 +828,7 @@ Reads image pixelmap data and writes the data to an ArrayBuffer. This method use
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
+| Promise &lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
 
 **示例**
 
@@ -907,7 +907,7 @@ Releases this PixelMap object. This method uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | A Promise instance used to return the instance release result. If the operation fails, an error message is returned. |
+| Promise &lt;void&gt; | A Promise instance used to return the instance release result. If the operation fails, an error message is returned. |
 
 **示例**
 
@@ -1001,7 +1001,7 @@ Image rotation. This method uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
+| Promise &lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
 
 **示例**
 
@@ -1087,7 +1087,7 @@ Image zoom in width and height. This method uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
+| Promise &lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
 
 **示例**
 
@@ -1220,7 +1220,7 @@ Image position transformation. This method uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
+| Promise &lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
 
 **示例**
 
@@ -1306,7 +1306,7 @@ Creates a PixelMap object based on MessageSequence parameter.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PixelMap & gt; | A Promise instance used to return the PixelMap object. |
+| Promise &lt;PixelMap&gt; | A Promise instance used to return the PixelMap object. |
 
 **错误码：**
 
@@ -1396,7 +1396,7 @@ Reads image data in an ArrayBuffer and writes the data to a PixelMap object. Thi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
+| Promise &lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
 
 **示例**
 
@@ -1489,7 +1489,7 @@ Writes image pixelmap data to the specified area. This method uses a promise to 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
+| Promise &lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
 
 **示例**
 

@@ -26,13 +26,13 @@ function updateTemplateFormDetailInfo(templateFormInfo: Array<formInfo.TemplateF
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| templateFormInfo | Array & lt;formInfo.TemplateFormDetailInfo & gt; | 是 | 指定的模板卡片静态配置信息。 |
+| templateFormInfo | Array &lt;formInfo.TemplateFormDetailInfo&gt; | 是 | 指定的模板卡片静态配置信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

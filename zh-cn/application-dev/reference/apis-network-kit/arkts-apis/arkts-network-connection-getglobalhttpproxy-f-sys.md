@@ -65,7 +65,7 @@ function getGlobalHttpProxy(): Promise<HttpProxy>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;HttpProxy & gt; | 以Promise形式返回网络的全局代理配置信息。 |
+| Promise &lt;HttpProxy&gt; | 以Promise形式返回网络的全局代理配置信息。 |
 
 **错误码：**
 

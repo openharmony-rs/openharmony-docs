@@ -36,7 +36,7 @@ function addDeviceConfig(config: WifiDeviceConfig): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 返回添加的网络配置ID，如果值为{ |
+| Promise &lt;number&gt; | 返回添加的网络配置ID，如果值为{ |
 
 **示例**
 

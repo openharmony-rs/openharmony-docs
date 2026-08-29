@@ -31,7 +31,7 @@ Releases depth data output resources. This API uses a promise to return the resu
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 

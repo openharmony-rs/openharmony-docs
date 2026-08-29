@@ -89,7 +89,7 @@ Pinch手势识别成功，接收到触摸取消事件触发的回调，不返回
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () = & gt; void | 是 | 手势事件回调函数。 |
+| event | () =&gt; void | 是 | 手势事件回调函数。 |
 
 **返回值：**
 
@@ -143,7 +143,7 @@ Pinch手势识别成功，当抬起最后一根满足手势触发条件的手指
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (event: GestureEvent) = & gt; void | 是 | 手势事件回调函数。 |
+| event | (event: GestureEvent) =&gt; void | 是 | 手势事件回调函数。 |
 
 **返回值：**
 
@@ -169,7 +169,7 @@ Pinch手势识别成功后触发回调。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (event: GestureEvent) = & gt; void | 是 | 手势事件回调函数。 |
+| event | (event: GestureEvent) =&gt; void | 是 | 手势事件回调函数。 |
 
 **返回值：**
 
@@ -195,7 +195,7 @@ Pinch手势移动过程中回调。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (event: GestureEvent) = & gt; void | 是 | 手势事件回调函数。 |
+| event | (event: GestureEvent) =&gt; void | 是 | 手势事件回调函数。 |
 
 **返回值：**
 

@@ -311,7 +311,7 @@ Slider拖动或点击时触发事件回调。Begin和End状态在点击时触发
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (value: number, mode: SliderChangeMode) = & gt; void | 是 |  |
+| callback | (value: number, mode: SliderChangeMode) =&gt; void | 是 |  |
 
 ## prefix
 

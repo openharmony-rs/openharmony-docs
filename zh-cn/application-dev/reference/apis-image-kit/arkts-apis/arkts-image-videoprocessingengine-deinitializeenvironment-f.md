@@ -24,7 +24,7 @@ function deinitializeEnvironment(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，用于返回操作结果。 操作失败时返回错误信息。 |
+| Promise &lt;void&gt; | Promise对象，用于返回操作结果。 操作失败时返回错误信息。 |
 
 **错误码：**
 

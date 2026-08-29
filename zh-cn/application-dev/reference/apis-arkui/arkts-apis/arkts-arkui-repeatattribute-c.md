@@ -43,7 +43,7 @@ each(itemGenerator: (repeatItem: RepeatItem<T>) => void): RepeatAttribute<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| itemGenerator | (repeatItem: RepeatItem & lt;T & gt;) = & gt; void | 是 | 组件生成函数。repeatItem：将item（arr数组中的数据项）和index（数据项索引）组合到一起的状态变量。 |
+| itemGenerator | (repeatItem: RepeatItem &lt;T&gt;) =&gt; void | 是 | 组件生成函数。repeatItem：将item（arr数组中的数据项）和index（数据项索引）组合到一起的状态变量。 |
 
 **返回值：**
 
@@ -85,7 +85,7 @@ key(keyGenerator: (item: T, index: number) => string): RepeatAttribute<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keyGenerator | (item: T, index: number) = & gt; string | 是 | 键值生成函数。 item：`arr`数组中的数据项，可选。缺省时默认忽略该参数，请勿在闭包函数的实现中使用该参数，否则会编译报错。 index：`arr`数组中的数据项索引，可选。缺省时默认忽略该参数，请勿在闭包函数的实现中使用该参数，否则会编译报错。 |
+| keyGenerator | (item: T, index: number) =&gt; string | 是 | 键值生成函数。 item：`arr`数组中的数据项，可选。缺省时默认忽略该参数，请勿在闭包函数的实现中使用该参数，否则会编译报错。 index：`arr`数组中的数据项索引，可选。缺省时默认忽略该参数，请勿在闭包函数的实现中使用该参数，否则会编译报错。 |
 
 **返回值：**
 

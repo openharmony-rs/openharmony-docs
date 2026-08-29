@@ -76,7 +76,7 @@ getDownloadTasks(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 若任务管理器中存在任务，返回任务ID数组；否则返回空数组。 |
+| Array &lt;string&gt; | 若任务管理器中存在任务，返回任务ID数组；否则返回空数组。 |
 
 ## getTaskCacheDirectory
 

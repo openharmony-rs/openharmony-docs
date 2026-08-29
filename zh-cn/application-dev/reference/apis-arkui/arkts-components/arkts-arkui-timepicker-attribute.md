@@ -259,7 +259,7 @@ onChange(callback: (value: TimePickerResult) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (value: TimePickerResult) = & gt; void | 是 | Time in 24-hour format. |
+| callback | (value: TimePickerResult) =&gt; void | 是 | Time in 24-hour format. |
 
 ## onChange
 

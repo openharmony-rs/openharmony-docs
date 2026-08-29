@@ -73,7 +73,7 @@ setBadgeNumber 设置角标个数。
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;NotificationRequest & gt; & gt; | Promise对象，返回当前应用的通知列表。 |
+| Promise &lt;Array &lt;NotificationRequest&gt;&gt; | Promise对象，返回当前应用的通知列表。 |
 
 **错误码：**
 

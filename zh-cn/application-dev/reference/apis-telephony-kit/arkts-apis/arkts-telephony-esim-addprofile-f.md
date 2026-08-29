@@ -29,7 +29,7 @@ function addProfile(profile: DownloadableProfile): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 以Promise形式返回最终用户添加单个配置文件的结果。返回true为成功，false为失败。 |
+| Promise &lt;boolean&gt; | 以Promise形式返回最终用户添加单个配置文件的结果。返回true为成功，false为失败。 |
 
 **错误码：**
 

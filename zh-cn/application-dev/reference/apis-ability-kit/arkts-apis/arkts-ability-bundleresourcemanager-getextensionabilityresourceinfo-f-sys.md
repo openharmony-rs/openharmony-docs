@@ -35,7 +35,7 @@ function getExtensionAbilityResourceInfo(bundleName: string, extensionAbilityTyp
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;LauncherAbilityResourceInfo & gt; | 返回指定应用的扩展组件资源，包含图标和名称等信息。 |
+| Array &lt;LauncherAbilityResourceInfo&gt; | 返回指定应用的扩展组件资源，包含图标和名称等信息。 |
 
 **错误码：**
 

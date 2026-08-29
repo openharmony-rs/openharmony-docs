@@ -108,7 +108,7 @@ closeKVStore(appId: string, storeId: string, kvConfig?: Options): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -255,7 +255,7 @@ deleteKVStore(appId: string, storeId: string, kvConfig?: Options): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -377,7 +377,7 @@ getAllKVStoreId(appId: string): Promise<string[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string[] & gt; | Promise对象。返回所有创建的分布式键值数据库的storeId。 |
+| Promise &lt;string[]&gt; | Promise对象。返回所有创建的分布式键值数据库的storeId。 |
 
 **错误码：**
 
@@ -503,7 +503,7 @@ getKVStore<T>(storeId: string, options: Options): Promise<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;T & gt; | Promise对象。返回创建的分布式键值数据库实例（根据kvStoreType的不同，可以创建SingleKVStore实例和DeviceKVStore实例）。 |
+| Promise &lt;T&gt; | Promise对象。返回创建的分布式键值数据库实例（根据kvStoreType的不同，可以创建SingleKVStore实例和DeviceKVStore实例）。 |
 
 **错误码：**
 

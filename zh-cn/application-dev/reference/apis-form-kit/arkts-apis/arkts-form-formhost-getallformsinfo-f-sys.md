@@ -78,7 +78,7 @@ function getAllFormsInfo(): Promise<Array<formInfo.FormInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;formInfo.FormInfo & gt; & gt; | Promise对象。返回查询到的卡片信息。 |
+| Promise &lt;Array &lt;formInfo.FormInfo&gt;&gt; | Promise对象。返回查询到的卡片信息。 |
 
 **错误码：**
 

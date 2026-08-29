@@ -147,7 +147,7 @@ function isLastWorkTimeOut(workId: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示指定任务的最后一次执行超时，false表示未超时。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示指定任务的最后一次执行超时，false表示未超时。 |
 
 **错误码：**
 

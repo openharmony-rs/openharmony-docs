@@ -96,7 +96,7 @@ function isDistributedEnabledByBundle(bundle: BundleOption): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise方式返回指定应用是否支持分布式通知的结果（true：支持，false：不支持）。 |
+| Promise &lt;boolean&gt; | Promise方式返回指定应用是否支持分布式通知的结果（true：支持，false：不支持）。 |
 
 **错误码：**
 
@@ -155,7 +155,7 @@ function isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string):
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 以Promise形式返回指定应用是否支持跨设备协同的开关是否开启的结果（true：开启，false：未开启）。 |
+| Promise &lt;boolean&gt; | 以Promise形式返回指定应用是否支持跨设备协同的开关是否开启的结果（true：开启，false：未开启）。 |
 
 **错误码：**
 

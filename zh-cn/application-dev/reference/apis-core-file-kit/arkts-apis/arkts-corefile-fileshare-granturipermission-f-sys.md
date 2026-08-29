@@ -99,7 +99,7 @@ function grantUriPermission(uri: string, bundleName: string, flag: wantConstant.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -162,7 +162,7 @@ function grantUriPermission(policies: Array<PolicyInfo>, targetBundleName: strin
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

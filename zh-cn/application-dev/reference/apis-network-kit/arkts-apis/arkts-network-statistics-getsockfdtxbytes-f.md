@@ -80,7 +80,7 @@ function getSockfdTxBytes(sockfd: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回该Socket的上行流量（单位：字节）。 |
+| Promise &lt;number&gt; | Promise对象。返回该Socket的上行流量（单位：字节）。 |
 
 **错误码：**
 

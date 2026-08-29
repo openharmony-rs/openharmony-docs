@@ -39,7 +39,7 @@ decapsulate(priKey: PriKey, wrappedKey: Uint8Array): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Uint8Array & gt; | Promise对象，返回共享密钥。 |
+| Promise &lt;Uint8Array&gt; | Promise对象，返回共享密钥。 |
 
 **错误码：**
 

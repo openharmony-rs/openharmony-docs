@@ -26,7 +26,7 @@ export function getPreferredLanguageList(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 系统偏好语言列表。 |
+| Array &lt;string&gt; | 系统偏好语言列表。 |
 
 **示例**
 

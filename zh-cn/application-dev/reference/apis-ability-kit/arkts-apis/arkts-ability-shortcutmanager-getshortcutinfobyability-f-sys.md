@@ -38,7 +38,7 @@ function getShortcutInfoByAbility(bundleName: string, moduleName: string, abilit
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;ShortcutInfo & gt; | Array形式返回指定用户下指定UIAbility的 [ShortcutInfo]{ |
+| Array &lt;ShortcutInfo&gt; | Array形式返回指定用户下指定UIAbility的 [ShortcutInfo]{ |
 
 **错误码：**
 

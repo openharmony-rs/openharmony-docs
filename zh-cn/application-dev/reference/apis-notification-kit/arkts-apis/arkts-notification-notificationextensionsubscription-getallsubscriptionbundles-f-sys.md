@@ -26,7 +26,7 @@ function getAllSubscriptionBundles(): Promise<BundleOption[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;BundleOption[] & gt; | Promise对象，返回所有具有 ohos.permission.SUBSCRIBE_NOTIFICATION权限并且实现了 NotificationSubscriberExtensionAbility的应用列表。 |
+| Promise &lt;BundleOption[]&gt; | Promise对象，返回所有具有 ohos.permission.SUBSCRIBE_NOTIFICATION权限并且实现了 NotificationSubscriberExtensionAbility的应用列表。 |
 
 **错误码：**
 

@@ -95,7 +95,7 @@ closeKVStore(appId: string, storeId: string, kvStore: KVStore): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -206,7 +206,7 @@ deleteKVStore(appId: string, storeId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -302,7 +302,7 @@ getAllKVStoreId(appId: string): Promise<string[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string[] & gt; | Promise对象。返回所有创建的KvStore数据库的storeId。 |
+| Promise &lt;string[]&gt; | Promise对象。返回所有创建的KvStore数据库的storeId。 |
 
 **示例**
 
@@ -348,7 +348,7 @@ getKVStore<T extends KVStore>(storeId: string, options: Options): Promise<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;T & gt;, & lt;T extends KVStore & gt; | Promise对象。返回创建的KVStore数据库实例。 |
+| Promise &lt;T&gt;, &lt;T extends KVStore&gt; | Promise对象。返回创建的KVStore数据库实例。 |
 
 **示例**
 

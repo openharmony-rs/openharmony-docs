@@ -30,7 +30,7 @@ getAppVolumePercentage(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回应用的音量。 |
+| Promise &lt;number&gt; | Promise对象，返回应用的音量。 |
 
 **示例**
 
@@ -590,7 +590,7 @@ setAppVolumePercentage(volume: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

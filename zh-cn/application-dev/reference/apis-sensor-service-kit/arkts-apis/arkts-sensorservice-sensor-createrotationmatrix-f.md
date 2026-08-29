@@ -31,7 +31,7 @@ function createRotationMatrix(rotationVector: Array<number>, callback: AsyncCall
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rotationVector | Array & lt;number & gt; | 是 | 表示旋转矢量。 |
+| rotationVector | Array &lt;number&gt; | 是 | 表示旋转矢量。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;number&gt;&gt; | 是 | 异步返回旋转矩阵。 |
 
 **示例**
@@ -78,13 +78,13 @@ function createRotationMatrix(rotationVector: Array<number>): Promise<Array<numb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rotationVector | Array & lt;number & gt; | 是 | 表示旋转矢量。 |
+| rotationVector | Array &lt;number&gt; | 是 | 表示旋转矢量。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;number & gt; & gt; | 使用异步方式返回旋转矩阵。 |
+| Promise &lt;Array &lt;number&gt;&gt; | 使用异步方式返回旋转矩阵。 |
 
 **示例**
 
@@ -130,8 +130,8 @@ function createRotationMatrix(gravity: Array<number>, geomagnetic: Array<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| gravity | Array & lt;number & gt; | 是 | 表示重力向量。 |
-| geomagnetic | Array & lt;number & gt; | 是 | 表示地磁矢量。 |
+| gravity | Array &lt;number&gt; | 是 | 表示重力向量。 |
+| geomagnetic | Array &lt;number&gt; | 是 | 表示地磁矢量。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[RotationMatrixResponse](arkts-sensorservice-sensor-rotationmatrixresponse-i.md)&gt; | 是 | 异步返回旋转矩阵。 |
 
 **示例**
@@ -176,8 +176,8 @@ function createRotationMatrix(gravity: Array<number>, geomagnetic: Array<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| gravity | Array & lt;number & gt; | 是 | 表示重力向量。 |
-| geomagnetic | Array & lt;number & gt; | 是 | 表示地磁矢量。 |
+| gravity | Array &lt;number&gt; | 是 | 表示重力向量。 |
+| geomagnetic | Array &lt;number&gt; | 是 | 表示地磁矢量。 |
 
 **返回值：**
 

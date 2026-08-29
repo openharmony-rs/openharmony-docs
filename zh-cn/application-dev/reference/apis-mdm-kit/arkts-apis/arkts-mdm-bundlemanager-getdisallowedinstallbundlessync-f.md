@@ -33,7 +33,7 @@ function getDisallowedInstallBundlesSync(admin: Want, accountId?: number): Array
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 返回当前/指定用户下的应用程序包安装禁止名单。 |
+| Array &lt;string&gt; | 返回当前/指定用户下的应用程序包安装禁止名单。 |
 
 **错误码：**
 
@@ -93,7 +93,7 @@ function getDisallowedInstallBundlesSync(admin: Want | null, accountId?: number)
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 返回当前/指定用户下的应用程序包安装禁止名单。 |
+| Array &lt;string&gt; | 返回当前/指定用户下的应用程序包安装禁止名单。 |
 
 **错误码：**
 

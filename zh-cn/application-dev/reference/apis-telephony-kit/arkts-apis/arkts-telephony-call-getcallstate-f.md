@@ -54,7 +54,7 @@ function getCallState(): Promise<CallState>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;CallState & gt; | 以Promise形式异步返回获取到的通话状态。 |
+| Promise &lt;CallState&gt; | 以Promise形式异步返回获取到的通话状态。 |
 
 **示例**
 

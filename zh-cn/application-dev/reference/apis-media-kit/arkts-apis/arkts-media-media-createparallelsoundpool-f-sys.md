@@ -31,7 +31,7 @@ function createParallelSoundPool(maxStreams: number, audioRenderInfo: audio.Audi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;SoundPool & gt; | Promise对象，返回SoundPool实例，失败时返回null。用于音频池实例的加载播放功能。 |
+| Promise &lt;SoundPool&gt; | Promise对象，返回SoundPool实例，失败时返回null。用于音频池实例的加载播放功能。 |
 
 **错误码：**
 

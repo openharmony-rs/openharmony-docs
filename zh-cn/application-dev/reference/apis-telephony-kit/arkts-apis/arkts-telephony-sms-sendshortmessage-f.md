@@ -96,7 +96,7 @@ function sendShortMessage(options: SendMessageOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以Promise形式返回发送短信的结果。 |
+| Promise &lt;void&gt; | 以Promise形式返回发送短信的结果。 |
 
 **错误码：**
 

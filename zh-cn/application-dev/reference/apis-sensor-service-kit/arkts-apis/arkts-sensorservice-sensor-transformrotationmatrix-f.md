@@ -22,7 +22,7 @@ function transformRotationMatrix(inRotationVector: Array<number>, coordinates: C
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| inRotationVector | Array & lt;number & gt; | 是 | 旋转矩阵。 |
+| inRotationVector | Array &lt;number&gt; | 是 | 旋转矩阵。 |
 | coordinates | [CoordinatesOptions](arkts-sensorservice-sensor-coordinatesoptions-i.md) | 是 | 指定坐标系方向。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;number&gt;&gt; | 是 | 回调函数，异步返回映射后的旋转矩阵。 |
 
@@ -78,14 +78,14 @@ function transformRotationMatrix(inRotationVector: Array<number>, coordinates: C
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| inRotationVector | Array & lt;number & gt; | 是 | 旋转矩阵。 |
+| inRotationVector | Array &lt;number&gt; | 是 | 旋转矩阵。 |
 | coordinates | [CoordinatesOptions](arkts-sensorservice-sensor-coordinatesoptions-i.md) | 是 | 指定坐标系方向。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;number & gt; & gt; | Promise对象，使用异步方式返回转换后的旋转矩阵。 |
+| Promise &lt;Array &lt;number&gt;&gt; | Promise对象，使用异步方式返回转换后的旋转矩阵。 |
 
 **错误码：**
 

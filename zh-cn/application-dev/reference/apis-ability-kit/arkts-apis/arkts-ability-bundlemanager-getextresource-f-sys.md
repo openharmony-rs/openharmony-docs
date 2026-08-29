@@ -32,7 +32,7 @@ function getExtResource(bundleName: string): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回接口运行结果及扩展资源对应的moduleNames。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回接口运行结果及扩展资源对应的moduleNames。 |
 
 **错误码：**
 

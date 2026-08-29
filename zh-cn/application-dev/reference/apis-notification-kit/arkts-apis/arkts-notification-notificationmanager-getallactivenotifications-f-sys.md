@@ -76,7 +76,7 @@ function getAllActiveNotifications(): Promise<Array<NotificationRequest>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;NotificationRequest & gt; & gt; | 以Promise形式返回获取活动通知。 |
+| Promise &lt;Array &lt;NotificationRequest&gt;&gt; | 以Promise形式返回获取活动通知。 |
 
 **错误码：**
 

@@ -26,7 +26,7 @@ function isDLPFeatureProvided(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Pomise对象。返回true表示当前系统提供加密保护特性，返回false表示不提供加密保护特性。 |
+| Promise &lt;boolean&gt; | Pomise对象。返回true表示当前系统提供加密保护特性，返回false表示不提供加密保护特性。 |
 
 **错误码：**
 

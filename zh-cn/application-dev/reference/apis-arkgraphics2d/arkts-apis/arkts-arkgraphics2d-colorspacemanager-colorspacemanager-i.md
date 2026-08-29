@@ -100,7 +100,7 @@ getWhitePoint(): Array<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;number & gt; | 返回色域白点值[x, y]。 |
+| Array &lt;number&gt; | 返回色域白点值[x, y]。 |
 
 **错误码：**
 

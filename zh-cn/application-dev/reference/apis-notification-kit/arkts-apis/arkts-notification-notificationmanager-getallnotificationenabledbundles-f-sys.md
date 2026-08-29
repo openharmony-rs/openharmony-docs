@@ -26,7 +26,7 @@ function getAllNotificationEnabledBundles(): Promise<Array<BundleOption>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;BundleOption & gt; & gt; | 返回允许通知的应用列表。 |
+| Promise &lt;Array &lt;BundleOption&gt;&gt; | 返回允许通知的应用列表。 |
 
 **错误码：**
 
@@ -81,7 +81,7 @@ function getAllNotificationEnabledBundles(userId: number): Promise<Array<BundleO
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;BundleOption & gt; & gt; | 返回允许通知的应用列表。 |
+| Promise &lt;Array &lt;BundleOption&gt;&gt; | 返回允许通知的应用列表。 |
 
 **错误码：**
 

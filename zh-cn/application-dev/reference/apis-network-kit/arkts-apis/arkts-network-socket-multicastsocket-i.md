@@ -100,7 +100,7 @@ addMembership(multicastAddress: NetAddress): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以Promise形式返回MulticastSocket加入多播组的行为结果。 |
+| Promise &lt;void&gt; | 以Promise形式返回MulticastSocket加入多播组的行为结果。 |
 
 **错误码：**
 
@@ -217,7 +217,7 @@ dropMembership(multicastAddress: NetAddress): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以Promise形式返回MulticastSocket加入多播组的执行结果。 |
+| Promise &lt;void&gt; | 以Promise形式返回MulticastSocket加入多播组的执行结果。 |
 
 **错误码：**
 
@@ -321,7 +321,7 @@ getLoopbackMode(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示环回模式开启，返回false表示环回模式关闭。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示环回模式开启，返回false表示环回模式关闭。 |
 
 **错误码：**
 
@@ -423,7 +423,7 @@ getMulticastTTL(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 以Promise形式返回当前TTL数值。 |
+| Promise &lt;number&gt; | 以Promise形式返回当前TTL数值。 |
 
 **错误码：**
 
@@ -474,7 +474,7 @@ getSocketFd(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回Socket的文件描述符。 |
+| Promise &lt;number&gt; | Promise对象，返回Socket的文件描述符。 |
 
 **错误码：**
 
@@ -853,7 +853,7 @@ setLoopbackMode(flag: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以Promise形式返回MulticastSocket设置环回模式的结果。 |
+| Promise &lt;void&gt; | 以Promise形式返回MulticastSocket设置环回模式的结果。 |
 
 **错误码：**
 
@@ -964,7 +964,7 @@ setMulticastTTL(ttl: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以Promise形式返回MulticastSocket设置TTL数值的结果。 |
+| Promise &lt;void&gt; | 以Promise形式返回MulticastSocket设置TTL数值的结果。 |
 
 **错误码：**
 

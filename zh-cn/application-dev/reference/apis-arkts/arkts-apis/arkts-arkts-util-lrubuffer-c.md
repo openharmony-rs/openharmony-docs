@@ -35,7 +35,7 @@ LruBuffer 算法在缓存空间不足时使用新数据替换最不常使用的�
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;[K, V] & gt; | 返回以键值对形式的二维数组。 |
+| IterableIterator &lt;[K, V]&gt; | 返回以键值对形式的二维数组。 |
 
 **示例**
 
@@ -285,7 +285,7 @@ entries(): IterableIterator<[K, V]>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;[K, V] & gt; | 可迭代的数组。 |
+| IterableIterator &lt;[K, V]&gt; | 可迭代的数组。 |
 
 **示例**
 

@@ -26,13 +26,13 @@ function getExtensionRunningInfos(upperLimit: number): Promise<Array<ExtensionRu
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| upperLimit | number | 是 | 获取消息数量的最大限制，最大为2 & lt;sup & gt;31 & lt;/sup & gt;-1。 |
+| upperLimit | number | 是 | 获取消息数量的最大限制，最大为2 &lt;sup&gt;31 &lt;/sup&gt;-1。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;ExtensionRunningInfo & gt; & gt; | Promise对象，返回接口运行结果及运行扩展能力的信息。开发者可在此进行错误处理或其他自定义处理。 |
+| Promise &lt;Array &lt;ExtensionRunningInfo&gt;&gt; | Promise对象，返回接口运行结果及运行扩展能力的信息。开发者可在此进行错误处理或其他自定义处理。 |
 
 **错误码：**
 
@@ -84,7 +84,7 @@ function getExtensionRunningInfos(upperLimit: number, callback: AsyncCallback<Ar
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| upperLimit | number | 是 | 获取消息数量的最大限制，最大为2 & lt;sup & gt;31 & lt;/sup & gt;-1。 |
+| upperLimit | number | 是 | 获取消息数量的最大限制，最大为2 &lt;sup&gt;31 &lt;/sup&gt;-1。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;ExtensionRunningInfo&gt;&gt; | 是 | 回调函数。当获取运行扩展能力的信息成功，err为undefined，data为获取到的运行扩展能力信息；否则为 错误对象。可进行错误处理或其他自定义处理。 |
 
 **错误码：**

@@ -39,7 +39,7 @@ Called when the system acquire the form data.
 | 类型 | 说明 |
 | --- | --- |
 | object | Returns the wantParams object.<br>**适用版本：** 10 |
-| Record & lt;string, Object & gt; | Returns the wantParams object.<br>**适用版本：** 11+ |
+| Record &lt;string, Object&gt; | Returns the wantParams object.<br>**适用版本：** 11+ |
 
 **示例**
 
@@ -85,7 +85,7 @@ Called when the system shares the form.
 | 类型 | 说明 |
 | --- | --- |
 | object | Returns the wantParams object.<br>**适用版本：** 9 - 10 |
-| Record & lt;string, Object & gt; | Returns the wantParams object.<br>**适用版本：** 11+ |
+| Record &lt;string, Object&gt; | Returns the wantParams object.<br>**适用版本：** 11+ |
 
 **示例**
 

@@ -73,7 +73,7 @@ checkMultiOsAccountEnabled(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示支持多系统账号；返回false表示不支持。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示支持多系统账号；返回false表示不支持。 |
 
 **错误码：**
 
@@ -190,7 +190,7 @@ checkOsAccountActivated(localId: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示账号已激活；返回false表示账号未激活。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示账号已激活；返回false表示账号未激活。 |
 
 **错误码：**
 
@@ -318,7 +318,7 @@ checkOsAccountConstraintEnabled(localId: number, constraint: string): Promise<bo
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示已使能指定的约束；返回false表示未使能指定的约束。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示已使能指定的约束；返回false表示未使能指定的约束。 |
 
 **错误码：**
 
@@ -414,7 +414,7 @@ checkOsAccountTestable(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示当前账号为测试账号；返回false表示当前账号非测试账号。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示当前账号为测试账号；返回false表示当前账号非测试账号。 |
 
 **错误码：**
 
@@ -518,7 +518,7 @@ checkOsAccountVerified(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示当前账号已认证解锁；返回false表示当前账号未认证解锁。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示当前账号已认证解锁；返回false表示当前账号未认证解锁。 |
 
 **错误码：**
 
@@ -633,7 +633,7 @@ checkOsAccountVerified(localId: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示当前账号已认证解锁；返回false表示当前账号未认证解锁。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示当前账号已认证解锁；返回false表示当前账号未认证解锁。 |
 
 **错误码：**
 
@@ -729,7 +729,7 @@ getActivatedOsAccountLocalIds(): Promise<Array<number>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;number & gt; & gt; | Promise对象，返回当前处于激活状态的系统账号的ID列表。 |
+| Promise &lt;Array &lt;number&gt;&gt; | Promise对象，返回当前处于激活状态的系统账号的ID列表。 |
 
 **错误码：**
 
@@ -826,7 +826,7 @@ getCreatedOsAccountsCount(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回已创建的系统账号的数量。 |
+| Promise &lt;number&gt; | Promise对象，返回已创建的系统账号的数量。 |
 
 **示例**
 
@@ -1021,7 +1021,7 @@ getDistributedVirtualDeviceId(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回分布式虚拟设备ID。 |
+| Promise &lt;string&gt; | Promise对象，返回分布式虚拟设备ID。 |
 
 **示例**
 
@@ -1052,7 +1052,7 @@ getForegroundOsAccountLocalId(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回前台系统账号的ID。 |
+| Promise &lt;number&gt; | Promise对象，返回前台系统账号的ID。 |
 
 **错误码：**
 
@@ -1154,7 +1154,7 @@ getOsAccountAllConstraints(localId: number): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回指定系统账号的全部 [约束](../../../reference/apis-basic-services-kit/appendix-osAccount-constraints.md)。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回指定系统账号的全部 [约束](../../../reference/apis-basic-services-kit/appendix-osAccount-constraints.md)。 |
 
 **示例**
 
@@ -1264,7 +1264,7 @@ getOsAccountConstraints(localId: number): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回指定系统账号的全部 [约束](../../../reference/apis-basic-services-kit/appendix-osAccount-constraints.md)。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回指定系统账号的全部 [约束](../../../reference/apis-basic-services-kit/appendix-osAccount-constraints.md)。 |
 
 **错误码：**
 
@@ -1364,7 +1364,7 @@ getOsAccountCount(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回已创建的系统账号的数量。 |
+| Promise &lt;number&gt; | Promise对象，返回已创建的系统账号的数量。 |
 
 **错误码：**
 
@@ -1507,7 +1507,7 @@ getOsAccountLocalId(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回当前进程所属的系统账号ID。 |
+| Promise &lt;number&gt; | Promise对象，返回当前进程所属的系统账号ID。 |
 
 **错误码：**
 
@@ -1612,7 +1612,7 @@ getOsAccountLocalIdBySerialNumber(serialNumber: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回与SN码关联的系统账号的账号ID。 |
+| Promise &lt;number&gt; | Promise对象，返回与SN码关联的系统账号的账号ID。 |
 
 **示例**
 
@@ -1706,7 +1706,7 @@ getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回域账号关联的系统账号ID。 |
+| Promise &lt;number&gt; | Promise对象，返回域账号关联的系统账号ID。 |
 
 **错误码：**
 
@@ -1811,7 +1811,7 @@ getOsAccountLocalIdForSerialNumber(serialNumber: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回与SN码关联的系统账号的账号ID。 |
+| Promise &lt;number&gt; | Promise对象，返回与SN码关联的系统账号的账号ID。 |
 
 **错误码：**
 
@@ -1917,7 +1917,7 @@ getOsAccountLocalIdForUid(uid: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回指定uid对应的系统账号ID。 |
+| Promise &lt;number&gt; | Promise对象，返回指定uid对应的系统账号ID。 |
 
 **错误码：**
 
@@ -2080,7 +2080,7 @@ getOsAccountLocalIdFromDomain(domainInfo: DomainAccountInfo): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回域账号关联的系统账号ID。 |
+| Promise &lt;number&gt; | Promise对象，返回域账号关联的系统账号ID。 |
 
 **示例**
 
@@ -2163,7 +2163,7 @@ getOsAccountLocalIdFromProcess(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回当前进程所属的系统账号ID。 |
+| Promise &lt;number&gt; | Promise对象，返回当前进程所属的系统账号ID。 |
 
 **示例**
 
@@ -2256,7 +2256,7 @@ getOsAccountLocalIdFromUid(uid: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回uid对应的系统账号ID。 |
+| Promise &lt;number&gt; | Promise对象，返回uid对应的系统账号ID。 |
 
 **示例**
 
@@ -2294,7 +2294,7 @@ getOsAccountLocalIds(): Promise<number[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number[] & gt; | Promise对象，返回所有非系统级的操作系统账号的本地ID。 |
+| Promise &lt;number[]&gt; | Promise对象，返回所有非系统级的操作系统账号的本地ID。 |
 
 **错误码：**
 
@@ -2337,7 +2337,7 @@ getOsAccountName(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回调用方所属系统账号的名称。 |
+| Promise &lt;string&gt; | Promise对象，返回调用方所属系统账号的名称。 |
 
 **错误码：**
 
@@ -2389,7 +2389,7 @@ getOsAccountNameByLocalId(localId: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回目标系统账号的名称。 |
+| Promise &lt;string&gt; | Promise对象，返回目标系统账号的名称。 |
 
 **错误码：**
 
@@ -2667,7 +2667,7 @@ getSerialNumberByOsAccountLocalId(localId: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回与该系统账号关联的SN码。 |
+| Promise &lt;number&gt; | Promise对象，返回与该系统账号关联的SN码。 |
 
 **示例**
 
@@ -2760,7 +2760,7 @@ getSerialNumberForOsAccountLocalId(localId: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回与该系统账号关联的SN码。 |
+| Promise &lt;number&gt; | Promise对象，返回与该系统账号关联的SN码。 |
 
 **错误码：**
 
@@ -2861,7 +2861,7 @@ isMultiOsAccountEnable(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示支持多系统账号；返回false表示不支持。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示支持多系统账号；返回false表示不支持。 |
 
 **示例**
 
@@ -2952,7 +2952,7 @@ isOsAccountActived(localId: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示账号已激活；返回false表示账号未激活。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示账号已激活；返回false表示账号未激活。 |
 
 **示例**
 
@@ -3050,7 +3050,7 @@ isOsAccountConstraintEnable(localId: number, constraint: string): Promise<boolea
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示已使能指定的约束；返回false表示未使能指定的约束。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示已使能指定的约束；返回false表示未使能指定的约束。 |
 
 **示例**
 
@@ -3092,7 +3092,7 @@ isOsAccountConstraintEnabled(constraint: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示已使能指定的约束；返回false表示未使能指定的约束。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示已使能指定的约束；返回false表示未使能指定的约束。 |
 
 **错误码：**
 
@@ -3138,7 +3138,7 @@ isOsAccountUnlocked(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示当前账号已解锁；返回false表示当前账号未解锁。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示当前账号已解锁；返回false表示当前账号未解锁。 |
 
 **错误码：**
 
@@ -3283,7 +3283,7 @@ isOsAccountVerified(localId?: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示指定账号已验证；返回false表示指定账号未验证。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示指定账号已验证；返回false表示指定账号未验证。 |
 
 **示例**
 
@@ -3366,7 +3366,7 @@ isTestOsAccount(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示当前账号为测试账号；返回false表示当前账号非测试账号。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示当前账号为测试账号；返回false表示当前账号非测试账号。 |
 
 **示例**
 
@@ -3452,7 +3452,7 @@ queryActivatedOsAccountIds(): Promise<Array<number>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;number & gt; & gt; | Promise对象，返回当前处于激活状态的系统账号的ID列表。 |
+| Promise &lt;Array &lt;number&gt;&gt; | Promise对象，返回当前处于激活状态的系统账号的ID列表。 |
 
 **示例**
 
@@ -3613,7 +3613,7 @@ queryDistributedVirtualDeviceId(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回分布式虚拟设备ID。 |
+| Promise &lt;string&gt; | Promise对象，返回分布式虚拟设备ID。 |
 
 **错误码：**
 

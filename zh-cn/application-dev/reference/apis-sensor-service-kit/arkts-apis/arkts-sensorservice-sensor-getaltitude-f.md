@@ -83,7 +83,7 @@ function getAltitude(seaPressure: number, currentPressure: number): Promise<numb
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 使用异步方式返回设备所在的海拔高度，单位：m（米）。 |
+| Promise &lt;number&gt; | 使用异步方式返回设备所在的海拔高度，单位：m（米）。 |
 
 **示例**
 

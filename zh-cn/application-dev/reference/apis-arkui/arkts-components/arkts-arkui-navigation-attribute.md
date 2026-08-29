@@ -70,7 +70,7 @@ backButtonIcon(icon: string | PixelMap | Resource | SymbolGlyphModifier, accessi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | icon | string \| PixelMap \| Resource \| SymbolGlyphModifier | 是 | 标题栏中返回键图标。 |
-| accessibilityText | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | 否 | 返回键无障碍播报内容。 & lt;/br & gt;默认值：系统语言是中文时为“返回”，系统语言是英文时为“back”。 |
+| accessibilityText | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | 否 | 返回键无障碍播报内容。 &lt;/br&gt;默认值：系统语言是中文时为“返回”，系统语言是英文时为“back”。 |
 
 ## configuration
 
@@ -119,7 +119,7 @@ customNavContentTransition(delegate: (from: NavContentInfo, to: NavContentInfo, 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| delegate | (from: NavContentInfo, to: NavContentInfo, operation: NavigationOperation)     = & gt; NavigationAnimatedTransition \ | undefined | 是 | 自定义转场动画回调。from：退场Destination的页面。to：进场Destination的页面。operation：转场类型。 返 回NavigationAnimatedTransition时，表示自定义转场动画协议。undefined: 返回未定义，执行默认转场动效。 |
+| delegate | (from: NavContentInfo, to: NavContentInfo, operation: NavigationOperation)     =&gt; NavigationAnimatedTransition \ | undefined | 是 | 自定义转场动画回调。from：退场Destination的页面。to：进场Destination的页面。operation：转场类型。 返 回NavigationAnimatedTransition时，表示自定义转场动画协议。undefined: 返回未定义，执行默认转场动效。 |
 
 ## divider
 
@@ -566,7 +566,7 @@ navDestination(builder: (name: string, param: unknown) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| builder | (name: string, param: unknown) = & gt; void | 是 | 创建NavDestination组件。name：NavDestination页面名称。param：开发者设置的NavDestination页面详细参数，unknown可以 是用户自定义的类型。 |
+| builder | (name: string, param: unknown) =&gt; void | 是 | 创建NavDestination组件。name：NavDestination页面名称。param：开发者设置的NavDestination页面详细参数，unknown可以 是用户自定义的类型。 |
 
 ## onNavBarStateChange
 
@@ -586,7 +586,7 @@ onNavBarStateChange(callback: (isVisible: boolean) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (isVisible: boolean) = & gt; void | 是 | isVisible为true时表示显示，为false时表示隐藏。<br>**起始版本：** 10 |
+| callback | (isVisible: boolean) =&gt; void | 是 | isVisible为true时表示显示，为false时表示隐藏。<br>**起始版本：** 10 |
 
 ## onNavigationModeChange
 
@@ -608,7 +608,7 @@ onNavigationModeChange(callback: (mode: NavigationMode) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (mode: NavigationMode) = & gt; void | 是 | NavigationMode.Split：当前Navigation显示为双栏;NavigationMode.Stack：当前Navigation显示为单栏。 |
+| callback | (mode: NavigationMode) =&gt; void | 是 | NavigationMode.Split：当前Navigation显示为双栏;NavigationMode.Stack：当前Navigation显示为单栏。 |
 
 ## onTitleModeChange
 
@@ -628,7 +628,7 @@ onTitleModeChange(callback: (titleMode: NavigationTitleMode) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (titleMode: NavigationTitleMode) = & gt; void | 是 | 标题模式。<br>**起始版本：** 10 |
+| callback | (titleMode: NavigationTitleMode) =&gt; void | 是 | 标题模式。<br>**起始版本：** 10 |
 
 ## recoverable
 

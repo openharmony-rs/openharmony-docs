@@ -112,7 +112,7 @@ fetchAlbumCover(): Promise<image.PixelMap>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;image.PixelMap & gt; | Promise对象。异步返回专辑封面。 |
+| Promise &lt;image.PixelMap&gt; | Promise对象。异步返回专辑封面。 |
 
 **错误码：**
 
@@ -165,7 +165,7 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;image.PixelMap & gt; | Promise对象，返回视频缩略图对象。 |
+| Promise &lt;image.PixelMap&gt; | Promise对象，返回视频缩略图对象。 |
 
 **错误码：**
 
@@ -273,7 +273,7 @@ fetchFrameByTimeWithTimeout(timeUs: number, options: AVImageQueryOptions, param:
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;image.PixelMap \ | undefined & gt; | Promise对象，返回视频缩略图对象。 |
+| Promise &lt;image.PixelMap \ | undefined&gt; | Promise对象，返回视频缩略图对象。 |
 
 **错误码：**
 
@@ -528,7 +528,7 @@ fetchMetadata(): Promise<AVMetadata>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;AVMetadata & gt; | Promise对象。异步返回音视频元数据对象（AVMetadata）。 |
+| Promise &lt;AVMetadata&gt; | Promise对象。异步返回音视频元数据对象（AVMetadata）。 |
 
 **错误码：**
 
@@ -579,7 +579,7 @@ fetchMetadataWithTimeout(timeoutMs: number): Promise<AVMetadata | undefined>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;AVMetadata \ | undefined & gt; | Promise对象，异步返回音视频元数据对象（AVMetadata）。 |
+| Promise &lt;AVMetadata \ | undefined&gt; | Promise对象，异步返回音视频元数据对象（AVMetadata）。 |
 
 **错误码：**
 
@@ -747,7 +747,7 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 异步方式释放资源release方法的Promise返回值。 |
+| Promise &lt;void&gt; | 异步方式释放资源release方法的Promise返回值。 |
 
 **错误码：**
 
@@ -895,7 +895,7 @@ setUrlSource(url: string, headers?: Record<string, string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | url | string | 是 | 媒体资源URL。 1. 支持的视频格式包括：mp4、mpeg-ts、mkv。 2. 支持的音频格式包括：m4a、aac、mp3、ogg、wav、flac、amr。    **支持路径示例**： 1. http网络播放：`http://xx`。 2. https网络播放：`https://xx`。   **说明：** 不支持设置HLS/Dash、直播资源。 |
-| headers | Record & lt;string, string & gt; | 否 | 支持访问网络资源HttpHeader自定义。默认为空。 |
+| headers | Record &lt;string, string&gt; | 否 | 支持访问网络资源HttpHeader自定义。默认为空。 |
 
 **示例**
 

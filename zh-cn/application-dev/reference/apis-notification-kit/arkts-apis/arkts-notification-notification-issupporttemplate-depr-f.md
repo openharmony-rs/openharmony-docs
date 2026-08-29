@@ -72,7 +72,7 @@ function isSupportTemplate(templateName: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise方式返回模板是否存在的结果。 |
+| Promise &lt;boolean&gt; | Promise方式返回模板是否存在的结果。 |
 
 **示例**
 

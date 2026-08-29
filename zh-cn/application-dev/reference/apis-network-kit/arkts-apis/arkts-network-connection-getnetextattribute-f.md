@@ -29,7 +29,7 @@ function getNetExtAttribute(netHandle: NetHandle): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回的网络扩展属性。 |
+| Promise &lt;string&gt; | Promise对象，返回的网络扩展属性。 |
 
 **错误码：**
 

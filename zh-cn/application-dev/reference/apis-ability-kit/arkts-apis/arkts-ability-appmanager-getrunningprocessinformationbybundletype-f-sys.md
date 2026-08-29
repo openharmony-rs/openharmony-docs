@@ -33,7 +33,7 @@ function getRunningProcessInformationByBundleType(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;ProcessInformation & gt; & gt; | Promise对象，返回特定包类型的运行进程的信息。 |
+| Promise &lt;Array &lt;ProcessInformation&gt;&gt; | Promise对象，返回特定包类型的运行进程的信息。 |
 
 **错误码：**
 

@@ -87,7 +87,7 @@ function updateRemindPolicy(netType: NetBearType, simId: string, remindType: Rem
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以 Promise 形式返回设定结果。成功返回空，失败返回错误码错误信息。 |
+| Promise &lt;void&gt; | 以 Promise 形式返回设定结果。成功返回空，失败返回错误码错误信息。 |
 
 **错误码：**
 

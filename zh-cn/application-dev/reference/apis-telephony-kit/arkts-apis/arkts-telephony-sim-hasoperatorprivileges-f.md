@@ -68,7 +68,7 @@ function hasOperatorPrivileges(slotId: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 以Promise形式返回检查应用(调用者)是否已被授予运营商权限。 |
+| Promise &lt;boolean&gt; | 以Promise形式返回检查应用(调用者)是否已被授予运营商权限。 |
 
 **错误码：**
 

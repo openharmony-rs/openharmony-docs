@@ -83,7 +83,7 @@ function addNetFirewallRule(rule: NetFirewallRule): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 以Promise形式返回防火墙规则ID，防火墙规则ID由系统自动生成。 |
+| Promise &lt;number&gt; | 以Promise形式返回防火墙规则ID，防火墙规则ID由系统自动生成。 |
 
 **错误码：**
 

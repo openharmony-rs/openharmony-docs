@@ -130,7 +130,7 @@ bind(address: NetAddress): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以Promise形式返回TLSSocket绑定本机的IP地址和端口的结果。失败返回错误码，错误信息。 |
+| Promise &lt;void&gt; | 以Promise形式返回TLSSocket绑定本机的IP地址和端口的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -338,7 +338,7 @@ close(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以Promise形式返回,返回TLSSocket关闭连接的结果。失败返回错误码，错误信息。 |
+| Promise &lt;void&gt; | 以Promise形式返回,返回TLSSocket关闭连接的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -773,7 +773,7 @@ connect(options: TLSConnectOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以Promise形式返回，成功无返回，失败返回错误码，错误信息。 |
+| Promise &lt;void&gt; | 以Promise形式返回，成功无返回，失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -1229,7 +1229,7 @@ getCipherSuite(): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | 以Promise形式返回通信双方支持的加密套件。失败返回错误码，错误信息。 |
+| Promise &lt;Array &lt;string&gt;&gt; | 以Promise形式返回通信双方支持的加密套件。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -1312,7 +1312,7 @@ getLocalAddress(): Promise<NetAddress>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;NetAddress & gt; | 以Promise形式返回获取本地socket地址的结果。 |
+| Promise &lt;NetAddress&gt; | 以Promise形式返回获取本地socket地址的结果。 |
 
 **错误码：**
 
@@ -1584,7 +1584,7 @@ getProtocol(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | 以Promise形式返回通信的协议。失败返回错误码，错误信息。 |
+| Promise &lt;string&gt; | 以Promise形式返回通信的协议。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -1782,7 +1782,7 @@ getRemoteAddress(): Promise<NetAddress>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;NetAddress & gt; | 以Promise形式返回获取对端socket地址的结果。失败返回错误码，错误信息。 |
+| Promise &lt;NetAddress&gt; | 以Promise形式返回获取对端socket地址的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -2151,7 +2151,7 @@ getSignatureAlgorithms(): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | 以Promise形式返回获取到的双方支持的签名算法。 |
+| Promise &lt;Array &lt;string&gt;&gt; | 以Promise形式返回获取到的双方支持的签名算法。 |
 
 **错误码：**
 
@@ -2235,7 +2235,7 @@ getSocketFd(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 以Promise形式返回socket的文件描述符。 |
+| Promise &lt;number&gt; | 以Promise形式返回socket的文件描述符。 |
 
 **示例**
 
@@ -3375,7 +3375,7 @@ send(data: string | ArrayBuffer): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以Promise形式返回,返回TLSSocket发送数据的结果。失败返回错误码，错误信息。 |
+| Promise &lt;void&gt; | 以Promise形式返回,返回TLSSocket发送数据的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -3672,7 +3672,7 @@ setExtraOptions(options: TCPExtraOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

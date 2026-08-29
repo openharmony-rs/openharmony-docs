@@ -37,7 +37,7 @@ function syncContacts(context: Context, mode: ContactSyncMode, progress: Contact
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;number & gt; & gt; | 返回联系人创建结果的数组。有效的联系人ID (可为通过 { |
+| Promise &lt;Array &lt;number&gt;&gt; | 返回联系人创建结果的数组。有效的联系人ID (可为通过 { |
 
 **错误码：**
 

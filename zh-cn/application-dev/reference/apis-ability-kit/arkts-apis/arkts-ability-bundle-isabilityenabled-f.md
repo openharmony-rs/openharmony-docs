@@ -71,7 +71,7 @@ function isAbilityEnabled(info: AbilityInfo): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise形式返回boolean代表是否启用。 |
+| Promise &lt;boolean&gt; | Promise形式返回boolean代表是否启用。 |
 
 **示例**
 

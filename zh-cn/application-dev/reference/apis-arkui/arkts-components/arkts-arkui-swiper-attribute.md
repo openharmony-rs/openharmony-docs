@@ -729,7 +729,7 @@ onChange(event: Callback<number>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | Callback & lt;number & gt; | 是 | 当前显示元素的索引。<br>**起始版本：** 18 |
+| event | Callback &lt;number&gt; | 是 | 当前显示元素的索引。<br>**起始版本：** 18 |
 
 ## onContentDidScroll
 
@@ -848,7 +848,7 @@ onSelected(event: Callback<number>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | Callback & lt;number & gt; | 是 | 当前选中元素的索引。 |
+| event | Callback &lt;number&gt; | 是 | 当前选中元素的索引。 |
 
 ## onUnselected
 
@@ -872,7 +872,7 @@ onUnselected(event: Callback<number>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | Callback & lt;number & gt; | 是 | 将要隐藏元素的索引。 |
+| event | Callback &lt;number&gt; | 是 | 将要隐藏元素的索引。 |
 
 ## pageFlipMode
 

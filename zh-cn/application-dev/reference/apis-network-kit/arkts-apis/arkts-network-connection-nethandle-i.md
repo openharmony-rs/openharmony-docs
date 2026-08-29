@@ -123,7 +123,7 @@ bindSocket(socketParam: TCPSocket | UDPSocket): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -268,7 +268,7 @@ getAddressByName(host: string): Promise<NetAddress>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;NetAddress & gt; | Promise对象，返回获取到的第一个IP地址。 |
+| Promise &lt;NetAddress&gt; | Promise对象，返回获取到的第一个IP地址。 |
 
 **错误码：**
 
@@ -391,7 +391,7 @@ getAddressesByName(host: string): Promise<Array<NetAddress>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;NetAddress & gt; & gt; | Promise对象，返回所有IP地址。 |
+| Promise &lt;Array &lt;NetAddress&gt;&gt; | Promise对象，返回所有IP地址。 |
 
 **错误码：**
 
@@ -455,7 +455,7 @@ getAddressesByNameWithOptions(host: string, option?: QueryOptions): Promise<Arra
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;NetAddress & gt; & gt; | Promise对象，返回查询到的IP地址。返回值中的port字段固定为0，无需关注。 |
+| Promise &lt;Array &lt;NetAddress&gt;&gt; | Promise对象，返回查询到的IP地址。返回值中的port字段固定为0，无需关注。 |
 
 **错误码：**
 

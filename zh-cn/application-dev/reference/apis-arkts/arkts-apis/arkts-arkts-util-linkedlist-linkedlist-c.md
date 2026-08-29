@@ -29,7 +29,7 @@ LinkedList底层通过双向链表实现，每个节点都包含对前一个元�
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;T & gt; | 返回一个迭代器。 |
+| IterableIterator &lt;T&gt; | 返回一个迭代器。 |
 
 **错误码：**
 
@@ -282,7 +282,7 @@ convertToArray(): Array<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;T & gt; | 返回转换后的数组。 |
+| Array &lt;T&gt; | 返回转换后的数组。 |
 
 **错误码：**
 
@@ -320,7 +320,7 @@ forEach(callbackFn: (value: T, index?: number, LinkedList?: LinkedList<T>) => vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index?: number, LinkedList?: LinkedList & lt;T & gt;) = & gt; void | 是 | 回调函数。 |
+| callbackFn | (value: T, index?: number, LinkedList?: LinkedList &lt;T&gt;) =&gt; void | 是 | 回调函数。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为当前实例对象。 |
 
 **错误码：**

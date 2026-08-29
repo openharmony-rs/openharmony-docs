@@ -81,7 +81,7 @@ function showActionMenu(options: ActionMenuOptions): Promise<ActionMenuSuccessRe
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ActionMenuSuccessResponse & gt; | 菜单响应结果。 |
+| Promise &lt;ActionMenuSuccessResponse&gt; | 菜单响应结果。 |
 
 **示例**
 

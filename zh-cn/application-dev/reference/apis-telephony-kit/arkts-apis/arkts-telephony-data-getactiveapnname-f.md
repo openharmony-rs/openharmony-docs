@@ -23,7 +23,7 @@ function getActiveApnName(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回默认移动数据SIM卡对应的处于激活状态的数据业务APN name信息。 |
+| Promise &lt;string&gt; | Promise对象，返回默认移动数据SIM卡对应的处于激活状态的数据业务APN name信息。 |
 
 **错误码：**
 

@@ -33,7 +33,7 @@ function sendData(channelId: number, data: ArrayBuffer): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回值的Promise的对象。 |
+| Promise &lt;void&gt; | 无返回值的Promise的对象。 |
 
 **错误码：**
 

@@ -30,7 +30,7 @@ function createVirtualScreen(config: VirtualScreenConfig): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回创建的虚拟屏幕的ScreenId。 |
+| Promise &lt;number&gt; | Promise对象。返回创建的虚拟屏幕的ScreenId。 |
 
 **错误码：**
 

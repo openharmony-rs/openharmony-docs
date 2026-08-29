@@ -325,7 +325,7 @@ doFinal(data: DataBlob): Promise<DataBlob>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;DataBlob & gt; | Promise对象，返回加密或解密的数据。 |
+| Promise &lt;DataBlob&gt; | Promise对象，返回加密或解密的数据。 |
 
 **错误码：**
 
@@ -387,7 +387,7 @@ doFinal(data: DataBlob | null): Promise<DataBlob>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;DataBlob & gt; | Promise对象，返回剩余数据的加/解密结果DataBlob。 |
+| Promise &lt;DataBlob&gt; | Promise对象，返回剩余数据的加/解密结果DataBlob。 |
 
 **错误码：**
 
@@ -693,7 +693,7 @@ init、update和doFinal必须配合使用，其中init和doFinal是必选的，u
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -735,7 +735,7 @@ init、update、doFinal为三段式接口，需要成组使用。其中init和do
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -943,7 +943,7 @@ update(data: DataBlob): Promise<DataBlob>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;DataBlob & gt; | Promise对象，返回此次更新的加密或解密结果。 |
+| Promise &lt;DataBlob&gt; | Promise对象，返回此次更新的加密或解密结果。 |
 
 **错误码：**
 

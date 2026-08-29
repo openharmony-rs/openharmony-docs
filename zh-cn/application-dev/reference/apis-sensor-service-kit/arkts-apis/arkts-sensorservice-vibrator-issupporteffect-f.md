@@ -97,7 +97,7 @@ function isSupportEffect(effectId: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示设备支持该effectId，可用于 [startVibration]{ |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示设备支持该effectId，可用于 [startVibration]{ |
 
 **错误码：**
 

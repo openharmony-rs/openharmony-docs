@@ -30,7 +30,7 @@ function createAVAdsController(player: AVPlayer): Promise<AVAdsController | unde
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[AVAdsController](arkts-media-media-avadscontroller-i.md) \| undefined & gt; | Promise对象。成功时返回广告播放控制器实例，失败时返回undefined。 |
+| Promise&lt;[AVAdsController](arkts-media-media-avadscontroller-i.md) \| undefined&gt; | Promise对象。成功时返回广告播放控制器实例，失败时返回undefined。 |
 
 **错误码：**
 

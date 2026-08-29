@@ -479,7 +479,7 @@ module.json5配置示例如下：
 > 
 > 自由多窗下的可支持窗口模式可以采用多种方法进行配置，配置优先级为：
 >
-> 通过setSupportedWindowModes接口配置 &gt; 通过StartAbility配置StartOption中的SupportWindowMode &gt; 使用metadata配置 &gt; 配置module.json5中abilities标签下的SupportWindowMode属性。
+> 通过setSupportedWindowModes接口配置&gt; 通过StartAbility配置StartOption中的SupportWindowMode&gt; 使用metadata配置&gt; 配置module.json5中abilities标签下的SupportWindowMode属性。
 
 ## 如何判断当前窗口是否为自由悬浮窗口模式
 

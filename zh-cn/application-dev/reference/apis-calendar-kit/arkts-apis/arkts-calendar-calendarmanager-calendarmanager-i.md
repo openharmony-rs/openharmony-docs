@@ -36,7 +36,7 @@ createCalendar(calendarAccount: CalendarAccount): Promise<Calendar>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Calendar & gt; | Promise对象，返回创建的Calendar对象。 |
+| Promise &lt;Calendar&gt; | Promise对象，返回创建的Calendar对象。 |
 
 **错误码：**
 
@@ -148,7 +148,7 @@ deleteCalendar(calendar: Calendar): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -280,7 +280,7 @@ editEvent(event: Event): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回日程的id，日程id是日程的唯一标识符，是数据库的自增主键。创建失败时没有返回值；当返回值小于0时代表用户取消创建；当返回值大于0时代表日程创建 成功；没有等于0的情况。 |
+| Promise &lt;number&gt; | Promise对象，返回日程的id，日程id是日程的唯一标识符，是数据库的自增主键。创建失败时没有返回值；当返回值小于0时代表用户取消创建；当返回值大于0时代表日程创建 成功；没有等于0的情况。 |
 
 **示例**
 
@@ -319,7 +319,7 @@ getAllCalendars(): Promise<Calendar[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Calendar[] & gt; | Promise对象，返回查询到的Calendar对象数组。 |
+| Promise &lt;Calendar[]&gt; | Promise对象，返回查询到的Calendar对象数组。 |
 
 **错误码：**
 
@@ -427,7 +427,7 @@ getCalendar(calendarAccount?: CalendarAccount): Promise<Calendar>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Calendar & gt; | Promise对象，返回查询到的Calendar对象。 |
+| Promise &lt;Calendar&gt; | Promise对象，返回查询到的Calendar对象。 |
 
 **错误码：**
 

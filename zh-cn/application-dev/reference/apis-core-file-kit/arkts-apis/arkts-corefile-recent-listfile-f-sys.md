@@ -30,7 +30,7 @@ function listFile(): Array<FileInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;FileInfo & gt; | Returns the next level FileInfo Object. |
+| Array &lt;FileInfo&gt; | Returns the next level FileInfo Object. |
 
 **错误码：**
 

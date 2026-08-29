@@ -30,7 +30,7 @@ getStatus(): Promise<VideoProcessorStatus | undefined>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[VideoProcessorStatus](arkts-media-videoprocessing-videoprocessorstatus-i.md) \| undefined & gt; | Promise对象，用于返回VideoProcessorStatus；如果无法获取状态，则返回undefined。 |
+| Promise&lt;[VideoProcessorStatus](arkts-media-videoprocessing-videoprocessorstatus-i.md) \| undefined&gt; | Promise对象，用于返回VideoProcessorStatus；如果无法获取状态，则返回undefined。 |
 
 **错误码：**
 

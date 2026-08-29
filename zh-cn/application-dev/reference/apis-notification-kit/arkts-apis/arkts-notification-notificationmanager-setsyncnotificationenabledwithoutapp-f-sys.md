@@ -93,7 +93,7 @@ function setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean): 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以Promise形式返回设置是否将通知同步到未安装应用的设备的结果。 |
+| Promise &lt;void&gt; | 以Promise形式返回设置是否将通知同步到未安装应用的设备的结果。 |
 
 **错误码：**
 

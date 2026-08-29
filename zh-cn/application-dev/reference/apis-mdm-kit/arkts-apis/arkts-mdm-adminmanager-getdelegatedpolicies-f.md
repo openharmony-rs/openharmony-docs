@@ -33,7 +33,7 @@ function getDelegatedPolicies(admin: Want, bundleName: string): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 委托策略列表。 |
+| Array &lt;string&gt; | 委托策略列表。 |
 
 **错误码：**
 

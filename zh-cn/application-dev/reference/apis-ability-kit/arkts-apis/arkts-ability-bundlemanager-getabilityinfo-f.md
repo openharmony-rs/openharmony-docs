@@ -33,7 +33,7 @@ function getAbilityInfo(uri: string, abilityFlags: number): Promise<Array<Abilit
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;AbilityInfo & gt; & gt; | Promise对象，返回获取到的Ability信息数组。 |
+| Promise &lt;Array &lt;AbilityInfo&gt;&gt; | Promise对象，返回获取到的Ability信息数组。 |
 
 **错误码：**
 

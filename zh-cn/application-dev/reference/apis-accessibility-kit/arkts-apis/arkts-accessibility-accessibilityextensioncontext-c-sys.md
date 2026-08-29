@@ -294,7 +294,7 @@ getDefaultFocusedElementIds(windowId: number): Promise<Array<number>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;number & gt; & gt; | Promise对象，返回当前窗口下的自定义默认焦点列表。 |
+| Promise &lt;Array &lt;number&gt;&gt; | Promise对象，返回当前窗口下的自定义默认焦点列表。 |
 
 **错误码：**
 
@@ -899,7 +899,7 @@ startAbility(want: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

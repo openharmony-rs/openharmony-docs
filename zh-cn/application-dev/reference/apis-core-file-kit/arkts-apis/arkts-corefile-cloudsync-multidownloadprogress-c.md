@@ -84,7 +84,7 @@ getSuccessfulFiles(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 数组类型，返回缓存成功的文件URI列表。 |
+| Array &lt;string&gt; | 数组类型，返回缓存成功的文件URI列表。 |
 
 **错误码：**
 

@@ -70,7 +70,7 @@ slice(start?: number, end?: number): ConcatArray<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| ConcatArray & lt;T & gt; | 包含原始ConcatArray切片的新ConcatArray。 |
+| ConcatArray &lt;T&gt; | 包含原始ConcatArray切片的新ConcatArray。 |
 
 ## [index: number]
 

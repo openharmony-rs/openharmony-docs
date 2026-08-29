@@ -146,7 +146,7 @@ function getAllBundleInfo(bundleFlags: number, userId?: number): Promise<Array<B
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;BundleInfo & gt; & gt; | Promise对象。返回Array & lt;BundleInfo & gt;。 |
+| Promise &lt;Array &lt;BundleInfo&gt;&gt; | Promise对象。返回Array &lt;BundleInfo&gt;。 |
 
 **错误码：**
 

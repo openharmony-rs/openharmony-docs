@@ -24,7 +24,7 @@ function getAddedPrinters(): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回包含所有已添加打印机的打印机ID的列表。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回包含所有已添加打印机的打印机ID的列表。 |
 
 **错误码：**
 

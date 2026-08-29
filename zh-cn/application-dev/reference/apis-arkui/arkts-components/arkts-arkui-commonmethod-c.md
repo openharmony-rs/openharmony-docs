@@ -814,7 +814,7 @@ allowDrop(value: Array<UniformDataType> | null | Array<string>): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Array&lt;[UniformDataType](arkts-arkui-uniformdatatype-t.md)&gt; \| null \| Array & lt;string & gt; | 是 | 设置该组件上允许落入的数据类型。从API version 12开始，允许设置成null使该组件不接受 所有的数据类型。从API version 23开始，支持设置自定义数据类型Array & lt;string & gt;，自定义数据类型为应用自行定义的数据类型字符串，字符串无明确格式要求，但不应与UniformDataType标准类型格式重 复，建议以易记易区分为原则来定义。<br>**起始版本：** 23 |
+| value | Array&lt;[UniformDataType](arkts-arkui-uniformdatatype-t.md)&gt; \| null \| Array &lt;string&gt; | 是 | 设置该组件上允许落入的数据类型。从API version 12开始，允许设置成null使该组件不接受 所有的数据类型。从API version 23开始，支持设置自定义数据类型Array &lt;string&gt;，自定义数据类型为应用自行定义的数据类型字符串，字符串无明确格式要求，但不应与UniformDataType标准类型格式重 复，建议以易记易区分为原则来定义。<br>**起始版本：** 23 |
 
 **返回值：**
 
@@ -1293,7 +1293,7 @@ Background color
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | [Optional](arkts-arkui-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) \| ColorMetrics & gt; | 是 |  |
+| color | [Optional](arkts-arkui-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) \| ColorMetrics&gt; | 是 |  |
 
 **返回值：**
 
@@ -1710,7 +1710,7 @@ bindContextMenuByIsShow(isShow: boolean, content: CustomBuilder | Array<MenuElem
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isShow | boolean | 是 | true表示显示内容，false表示隐藏内容，默认为false。 & lt;p & gt; & lt;strong & gt;注意 & lt;/strong & gt;： 只有在构建了相关页面后，菜单才能正常显示。如果设置了该参数在构建完成之前设置为true，显示问题，如错位、扭曲或无法弹出上，可能会发生。不支持长按拖动。 & lt;/p & gt;. |
+| isShow | boolean | 是 | true表示显示内容，false表示隐藏内容，默认为false。 &lt;p&gt; &lt;strong&gt;注意 &lt;/strong&gt;： 只有在构建了相关页面后，菜单才能正常显示。如果设置了该参数在构建完成之前设置为true，显示问题，如错位、扭曲或无法弹出上，可能会发生。不支持长按拖动。 &lt;/p&gt;. |
 | content | [CustomBuilder](arkts-arkui-custombuilder-t.md) \| Array&lt;[MenuElement](arkts-arkui-menuelement-i.md)&gt; | 是 | 上下文菜单的内容。 |
 | options | [ContextMenuOptions](arkts-arkui-contextmenuoptions-i.md) | 否 | 上下文菜单选项。 |
 
@@ -2450,7 +2450,7 @@ clickEffect(value: ClickEffect | null): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ClickEffect](arkts-arkui-clickeffect-i.md) \| null | 是 | 设置当前组件点击回弹效果。   **说明：**可通过null取消点击回弹效果。不建议在组件大小动态变化的场景中使用该功能。 & lt;br/ & gt;当组件无法触发通用事件时，不支持该属性。回弹触发缩放后可能造成触摸点不在控件上，控件上无法响应手势事件。 |
+| value | [ClickEffect](arkts-arkui-clickeffect-i.md) \| null | 是 | 设置当前组件点击回弹效果。   **说明：**可通过null取消点击回弹效果。不建议在组件大小动态变化的场景中使用该功能。 &lt;br/&gt;当组件无法触发通用事件时，不支持该属性。回弹触发缩放后可能造成触摸点不在控件上，控件上无法响应手势事件。 |
 
 **返回值：**
 
@@ -2478,7 +2478,7 @@ clickEffect(effect: Optional<ClickEffect | null>): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| effect | [Optional](arkts-arkui-optional-t.md)&lt;[ClickEffect](arkts-arkui-clickeffect-i.md) \| null & gt; | 是 | 设置当前组件的点击回弹效果。   **说明：**可通过undefined或者null取消点击回弹效果。不建议 在组件大小动态变化的场景中使用该功能。当组件无法触发通用事件时，不支持该属性。回弹触发缩放后可能造成触摸点不在控件上，控件上无法响应手势事件。 |
+| effect | [Optional](arkts-arkui-optional-t.md)&lt;[ClickEffect](arkts-arkui-clickeffect-i.md) \| null&gt; | 是 | 设置当前组件的点击回弹效果。   **说明：**可通过undefined或者null取消点击回弹效果。不建议 在组件大小动态变化的场景中使用该功能。当组件无法触发通用事件时，不支持该属性。回弹触发缩放后可能造成触摸点不在控件上，控件上无法响应手势事件。 |
 
 **返回值：**
 
@@ -2704,7 +2704,7 @@ colorBlend(color: Optional<Color | string | Resource>): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | [Optional](arkts-arkui-optional-t.md)&lt;Color \| string \| Resource & gt; | 是 | 为当前组件添加颜色叠加效果，入参为叠加的颜色。取值可为string类型，如'0x000000'，'rgba(0,0,0, 1)'。当color的值为undefined时，恢复为无颜色叠加的效果。 |
+| color | [Optional](arkts-arkui-optional-t.md)&lt;Color \| string \| Resource&gt; | 是 | 为当前组件添加颜色叠加效果，入参为叠加的颜色。取值可为string类型，如'0x000000'，'rgba(0,0,0, 1)'。当color的值为undefined时，恢复为无颜色叠加的效果。 |
 
 **返回值：**
 
@@ -4169,7 +4169,7 @@ hueRotate(rotation: Optional<number | string>): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rotation | [Optional](arkts-arkui-optional-t.md)&lt;number \| string & gt; | 是 |  |
+| rotation | [Optional](arkts-arkui-optional-t.md)&lt;number \| string&gt; | 是 |  |
 
 **返回值：**
 
@@ -4378,7 +4378,7 @@ keyboardShortcut(value: string | FunctionKey, keys: Array<ModifierKey>, action?:
 | --- | --- | --- | --- |
 | value | string \| FunctionKey | 是 | 热键的单个字符（可以通过键盘输入的字符）或FunctionKey。空字符串意为取消快捷键绑定。 |
 | keys | Array&lt;[ModifierKey](../arkts-apis/arkts-arkui-modifierkey-e.md)&gt; | 是 | 热键组合。仅当value为FunctionKey的情况下keys的值可以为空。 |
-| action | () = & gt; void | 否 | 组合快捷键触发成功后的自定义事件回调。 |
+| action | () =&gt; void | 否 | 组合快捷键触发成功后的自定义事件回调。 |
 
 **返回值：**
 
@@ -4462,7 +4462,7 @@ lightUpEffect(value: number): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 设置组件图像亮起程度。取值范围：[0,1]。如果value等于0则图像为全黑，如果value等于1则图像为全亮效果。0到1之间数值越大，表示图像亮度越高。 `value &lt; 0` 或者 `value &gt; 1`为异常情况，`value &lt; 0`按0处理，`value &gt; 1`按1处理。 |
+| value | number | 是 | 设置组件图像亮起程度。取值范围：[0,1]。如果value等于0则图像为全黑，如果value等于1则图像为全亮效果。0到1之间数值越大，表示图像亮度越高。 `value &lt; 0` 或者 `value&gt; 1`为异常情况，`value &lt; 0`按0处理，`value&gt; 1`按1处理。 |
 
 **返回值：**
 
@@ -4488,7 +4488,7 @@ lightUpEffect(degree: Optional<number>): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| degree | [Optional](arkts-arkui-optional-t.md)&lt;number&gt; | 是 | 设置组件图像亮起程度。取值范围：[0,1]。如果value等于0则图像为全黑，如果value等于1则图像为全亮效果。0到1之间数值越大， 表示图像亮度越高。`degree &lt; 0` 或者 `degree &gt; 1`为异常情况，`degree &lt; 0`按0处理，`degree &gt; 1`按1处理。当degree的值为undefined时，恢复为亮起为1的 效果。 |
+| degree | [Optional](arkts-arkui-optional-t.md)&lt;number&gt; | 是 | 设置组件图像亮起程度。取值范围：[0,1]。如果value等于0则图像为全黑，如果value等于1则图像为全亮效果。0到1之间数值越大， 表示图像亮度越高。`degree &lt; 0` 或者 `degree&gt; 1`为异常情况，`degree &lt; 0`按0处理，`degree&gt; 1`按1处理。当degree的值为undefined时，恢复为亮起为1的 效果。 |
 
 **返回值：**
 
@@ -5211,7 +5211,7 @@ onAppear(event: () => void): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () = & gt; void | 是 | onAppear事件的回调函数，表示组件已挂载显示。 |
+| event | () =&gt; void | 是 | onAppear事件的回调函数，表示组件已挂载显示。 |
 
 **返回值：**
 
@@ -5243,7 +5243,7 @@ onAreaChange(event: (oldValue: Area, newValue: Area) => void): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (oldValue: Area, newValue: Area) = & gt; void | 是 | 返回目标元素位置信息变化情况，oldValue为目标元素变化之前的宽高以及目标元素相对父元素和页面左上角的坐标位置。newValue为目标元素变化之后的宽高以及目标元素相对父 元素和页面左上角的坐标位置。 |
+| event | (oldValue: Area, newValue: Area) =&gt; void | 是 | 返回目标元素位置信息变化情况，oldValue为目标元素变化之前的宽高以及目标元素相对父元素和页面左上角的坐标位置。newValue为目标元素变化之后的宽高以及目标元素相对父 元素和页面左上角的坐标位置。 |
 
 **返回值：**
 
@@ -5360,7 +5360,7 @@ onBlur(event: () => void): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () = & gt; void | 是 | onBlur的回调函数，表示组件已失焦。 |
+| event | () =&gt; void | 是 | onBlur的回调函数，表示组件已失焦。 |
 
 **返回值：**
 
@@ -5430,7 +5430,7 @@ onClick(event: (event: ClickEvent) => void): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (event: ClickEvent) = & gt; void | 是 | 点击事件的回调函数。 |
+| event | (event: ClickEvent) =&gt; void | 是 | 点击事件的回调函数。 |
 
 **返回值：**
 
@@ -5559,7 +5559,7 @@ onDisAppear(event: () => void): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () = & gt; void | 是 | onDisAppear事件的回调函数，表示组件已卸载消失。 |
+| event | () =&gt; void | 是 | onDisAppear事件的回调函数，表示组件已卸载消失。 |
 
 **返回值：**
 
@@ -5587,7 +5587,7 @@ onDragEnd(event: (event: DragEvent, extraParams?: string) => void): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (event: DragEvent, extraParams?: string) = & gt; void | 是 | 回调函数。   **说明：**event为拖拽事件信息，在onDragEnd调用中不包括拖拽点坐标。extraParams为拖拽事件额外信息，需要 解析为JSON格式。 |
+| event | (event: DragEvent, extraParams?: string) =&gt; void | 是 | 回调函数。   **说明：**event为拖拽事件信息，在onDragEnd调用中不包括拖拽点坐标。extraParams为拖拽事件额外信息，需要 解析为JSON格式。 |
 
 **返回值：**
 
@@ -5613,7 +5613,7 @@ onDragEnter(event: (event: DragEvent, extraParams?: string) => void): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (event: DragEvent, extraParams?: string) = & gt; void | 是 | 回调函数。   **说明：**event为拖拽事件信息，包括拖拽点坐标。extraParams为拖拽事件额外信息，需要解析为JSON格式。 |
+| event | (event: DragEvent, extraParams?: string) =&gt; void | 是 | 回调函数。   **说明：**event为拖拽事件信息，包括拖拽点坐标。extraParams为拖拽事件额外信息，需要解析为JSON格式。 |
 
 **返回值：**
 
@@ -5639,7 +5639,7 @@ onDragLeave(event: (event: DragEvent, extraParams?: string) => void): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (event: DragEvent, extraParams?: string) = & gt; void | 是 | 回调函数。   **说明：**event为拖拽事件信息，包括拖拽点坐标。extraParams为拖拽事件额外信息，需要解析为JSON格式。 |
+| event | (event: DragEvent, extraParams?: string) =&gt; void | 是 | 回调函数。   **说明：**event为拖拽事件信息，包括拖拽点坐标。extraParams为拖拽事件额外信息，需要解析为JSON格式。 |
 
 **返回值：**
 
@@ -5665,7 +5665,7 @@ onDragMove(event: (event: DragEvent, extraParams?: string) => void): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (event: DragEvent, extraParams?: string) = & gt; void | 是 | 回调函数。   **说明：**event为拖拽事件信息，包括拖拽点坐标。extraParams为拖拽事件额外信息，需要解析为JSON格式。 |
+| event | (event: DragEvent, extraParams?: string) =&gt; void | 是 | 回调函数。   **说明：**event为拖拽事件信息，包括拖拽点坐标。extraParams为拖拽事件额外信息，需要解析为JSON格式。 |
 
 **返回值：**
 
@@ -5727,7 +5727,7 @@ onDragStart(event: (event: DragEvent, extraParams?: string) => CustomBuilder | D
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (event: DragEvent, extraParams?: string) = & gt; CustomBuilder \ | [DragItemInfo](arkts-arkui-dragiteminfo-i.md) | 是 | 回调函数。   **说明：**event参数为拖拽事件的信息。extraParams参数为拖拽事件的额外信息，需要解析为JSON格式。 CustomBuilder为拖拽过程中显示的组件信息，不支持全局builder。 |
+| event | (event: DragEvent, extraParams?: string) =&gt; CustomBuilder \ | [DragItemInfo](arkts-arkui-dragiteminfo-i.md) | 是 | 回调函数。   **说明：**event参数为拖拽事件的信息。extraParams参数为拖拽事件的额外信息，需要解析为JSON格式。 CustomBuilder为拖拽过程中显示的组件信息，不支持全局builder。 |
 
 **返回值：**
 
@@ -5753,7 +5753,7 @@ onDrop(event: (event: DragEvent, extraParams?: string) => void): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (event: DragEvent, extraParams?: string) = & gt; void | 是 | 回调函数。   **说明：**event为拖拽事件信息，包括拖拽点坐标。extraParams为拖拽事件额外信息，需要解析为JSON格式。 |
+| event | (event: DragEvent, extraParams?: string) =&gt; void | 是 | 回调函数。   **说明：**event为拖拽事件信息，包括拖拽点坐标。extraParams为拖拽事件额外信息，需要解析为JSON格式。 |
 
 **返回值：**
 
@@ -5808,7 +5808,7 @@ onFocus(event: () => void): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () = & gt; void | 是 | onFocus的回调函数，表示组件已获焦。 |
+| event | () =&gt; void | 是 | onFocus的回调函数，表示组件已获焦。 |
 
 **返回值：**
 
@@ -5896,7 +5896,7 @@ onGestureJudgeBegin(callback: (gestureInfo: GestureInfo, event: BaseGestureEvent
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (gestureInfo: GestureInfo, event: BaseGestureEvent) = & gt; GestureJudgeResult | 是 | A callback instance used when a gesture bound to this component will be accepted. |
+| callback | (gestureInfo: GestureInfo, event: BaseGestureEvent) =&gt; GestureJudgeResult | 是 | A callback instance used when a gesture bound to this component will be accepted. |
 
 **返回值：**
 
@@ -5979,7 +5979,7 @@ onHover(event: (isHover: boolean, event: HoverEvent) => void): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (isHover: boolean, event: HoverEvent) = & gt; void | 是 | 鼠标的状态信息。event表示设置阻塞事件冒泡属性，并获取鼠标或手写笔悬浮的位置坐标，从API version 11开始支持。isHover表示鼠标或 手写笔是否悬浮在组件上，进入时为true， 离开时为false。 |
+| event | (isHover: boolean, event: HoverEvent) =&gt; void | 是 | 鼠标的状态信息。event表示设置阻塞事件冒泡属性，并获取鼠标或手写笔悬浮的位置坐标，从API version 11开始支持。isHover表示鼠标或 手写笔是否悬浮在组件上，进入时为true， 离开时为false。 |
 
 **返回值：**
 
@@ -6033,7 +6033,7 @@ onKeyEvent(event: (event: KeyEvent) => void): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (event: KeyEvent) = & gt; void | 是 | 获得KeyEvent对象。 |
+| event | (event: KeyEvent) =&gt; void | 是 | 获得KeyEvent对象。 |
 
 **返回值：**
 
@@ -6143,7 +6143,7 @@ onMouse(event: (event: MouseEvent) => void): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (event: MouseEvent) = & gt; void | 是 | 返回触发事件时的时间戳、鼠标按键、动作、鼠标位置在整个屏幕上的坐标和相对于当前组件的坐标。 |
+| event | (event: MouseEvent) =&gt; void | 是 | 返回触发事件时的时间戳、鼠标按键、动作、鼠标位置在整个屏幕上的坐标和相对于当前组件的坐标。 |
 
 **返回值：**
 
@@ -6269,7 +6269,7 @@ onTouch(event: (event: TouchEvent) => void): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (event: TouchEvent) = & gt; void | 是 | 获得TouchEvent对象。 |
+| event | (event: TouchEvent) =&gt; void | 是 | 获得TouchEvent对象。 |
 
 **返回值：**
 
@@ -6400,7 +6400,7 @@ onVisibleAreaChange(ratios: Array<number>, event: VisibleAreaChangeCallback): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ratios | Array & lt;number & gt; | 是 | 阈值数组。其中，每个阈值代表组件可见面积（即组件在屏幕显示区的面积，只计算父组件内的面积，超出父组件部分不会计算）与组件自身面积的比值。当组件可见面积与自身面积的 比值接近阈值时，均会触发该回调。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值小于0.0，则实际取值为0.0；如果设置的阈值大于1.0，则实际取值为1.0。   **说明：** 当数值接近边界 0和1时，将会按照误差不超过0.001的规则进行舍入。例如，0.9997会被近似为1。 |
+| ratios | Array &lt;number&gt; | 是 | 阈值数组。其中，每个阈值代表组件可见面积（即组件在屏幕显示区的面积，只计算父组件内的面积，超出父组件部分不会计算）与组件自身面积的比值。当组件可见面积与自身面积的 比值接近阈值时，均会触发该回调。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值小于0.0，则实际取值为0.0；如果设置的阈值大于1.0，则实际取值为1.0。   **说明：** 当数值接近边界 0和1时，将会按照误差不超过0.001的规则进行舍入。例如，0.9997会被近似为1。 |
 | event | [VisibleAreaChangeCallback](arkts-arkui-visibleareachangecallback-t.md) | 是 | 组件可见区域变化事件的回调。<br>**起始版本：** 13 |
 
 **返回值：**
@@ -6429,7 +6429,7 @@ onVisibleAreaChange(ratios: Array<number>, event: VisibleAreaChangeCallback, mea
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ratios | Array & lt;number & gt; | 是 | 阈值数组。其中，每个阈值代表组件可见面积与组件自身面积的比值。当组件可见面积与自身面积的比值接近阈值时，均会触发该回调。每个阈值的取值范围为[0.0, 1.0]， 如果开发者设置的阈值小于0.0，则实际取值为0.0；如果设置的阈值大于1.0，则实际取值为1.0。   **说明：**当数值接近边界0和1时，将会按照误差不超过0.001的规则进行舍入。例如，0.9997会被 近似为1。 |
+| ratios | Array &lt;number&gt; | 是 | 阈值数组。其中，每个阈值代表组件可见面积与组件自身面积的比值。当组件可见面积与自身面积的比值接近阈值时，均会触发该回调。每个阈值的取值范围为[0.0, 1.0]， 如果开发者设置的阈值小于0.0，则实际取值为0.0；如果设置的阈值大于1.0，则实际取值为1.0。   **说明：**当数值接近边界0和1时，将会按照误差不超过0.001的规则进行舍入。例如，0.9997会被 近似为1。 |
 | event | [VisibleAreaChangeCallback](arkts-arkui-visibleareachangecallback-t.md) | 是 | 组件可见区域变化事件的回调。 |
 | measureFromViewport | boolean | 是 | 设置可见区域计算模式。当measureFromViewport设置为true时，系统在计算该组件的可见区域时，会考虑父组件的 [clip](#clip) 属性设置。如果父组件的[clip](#clip)为 false，则认为其内的子组件可以超出其区域进行显示，因此超出父组件的区域也将被视为可见区域纳入计算；如果父组件的[clip](#clip)设置为 true，则组件超出父组件的区域会被裁剪，无法显示，因此会被视为不可见区域进行计算。而当measureFromViewport设置为false时，则不考虑 [clip](#clip)的影响，直接将组件超出父组件的部分视为不可见区域。measureFromViewport设置为true时，祖先节点设置 [scale](#scale)属性，组件可见比例会被正确计算。 |
 
@@ -6489,7 +6489,7 @@ opacity(opacity: Optional<number | Resource>): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| opacity | [Optional](arkts-arkui-optional-t.md)&lt;number \| Resource & gt; | 是 | 元素的不透明度，取值范围为0到1，若设置的值小于0时，则取值为0，若设置的值大于1时，则取值为1，1表示不透明，0表示完全透明，达到 隐藏组件效果，但是在布局中占位。 默认值：1    **说明：** 子组件会继承父组件的透明度，并与自身的透明度属性叠加。如：父组件透明度为0.1，子组件设置透明度为0.8，则子组件实际透明度为 0.1*0.8=0.08。当opacity的值为undefined时，恢复为默认不透明度为1的状态。 |
+| opacity | [Optional](arkts-arkui-optional-t.md)&lt;number \| Resource&gt; | 是 | 元素的不透明度，取值范围为0到1，若设置的值小于0时，则取值为0，若设置的值大于1时，则取值为1，1表示不透明，0表示完全透明，达到 隐藏组件效果，但是在布局中占位。 默认值：1    **说明：** 子组件会继承父组件的透明度，并与自身的透明度属性叠加。如：父组件透明度为0.1，子组件设置透明度为0.8，则子组件实际透明度为 0.1*0.8=0.08。当opacity的值为undefined时，恢复为默认不透明度为1的状态。 |
 
 **返回值：**
 
@@ -6663,7 +6663,7 @@ outlineRadius(radius: Optional<Dimension | OutlineRadiuses>): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| radius | [Optional](arkts-arkui-optional-t.md)&lt;[Dimension](../arkts-apis/arkts-arkui-dimension-t.md) \| OutlineRadiuses & gt; | 是 | 设置元素的外描边圆角半径，不支持百分比。最大生效值：组件width/2 + outlineWidth或组 件height/2 + outlineWidth。当radius的值为undefined时，恢复为外描边圆角半径为0的效果。 |
+| radius | [Optional](arkts-arkui-optional-t.md)&lt;[Dimension](../arkts-apis/arkts-arkui-dimension-t.md) \| OutlineRadiuses&gt; | 是 | 设置元素的外描边圆角半径，不支持百分比。最大生效值：组件width/2 + outlineWidth或组 件height/2 + outlineWidth。当radius的值为undefined时，恢复为外描边圆角半径为0的效果。 |
 
 **返回值：**
 
@@ -6721,7 +6721,7 @@ outlineStyle(style: Optional<OutlineStyle | EdgeOutlineStyles>): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| style | [Optional](arkts-arkui-optional-t.md)&lt;[OutlineStyle](arkts-arkui-outlinestyle-e.md) \| EdgeOutlineStyles & gt; | 是 | 设置元素的外描边样式。当style的值为undefined时，恢复为无外描边样式的效果。 |
+| style | [Optional](arkts-arkui-optional-t.md)&lt;[OutlineStyle](arkts-arkui-outlinestyle-e.md) \| EdgeOutlineStyles&gt; | 是 | 设置元素的外描边样式。当style的值为undefined时，恢复为无外描边样式的效果。 |
 
 **返回值：**
 
@@ -6779,7 +6779,7 @@ outlineWidth(width: Optional<Dimension | EdgeOutlineWidths>): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| width | [Optional](arkts-arkui-optional-t.md)&lt;[Dimension](../arkts-apis/arkts-arkui-dimension-t.md) \| EdgeOutlineWidths & gt; | 是 | 设置元素的外描边宽度，不支持百分比。当width的值为undefined时，恢复为无外描边宽度的效果。 |
+| width | [Optional](arkts-arkui-optional-t.md)&lt;[Dimension](../arkts-apis/arkts-arkui-dimension-t.md) \| EdgeOutlineWidths&gt; | 是 | 设置元素的外描边宽度，不支持百分比。当width的值为undefined时，恢复为无外描边宽度的效果。 |
 
 **返回值：**
 
@@ -6940,7 +6940,7 @@ pixelStretchEffect(options: PixelStretchEffectOptions): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [PixelStretchEffectOptions](arkts-arkui-pixelstretcheffectoptions-i.md) | 是 | 设置组件的图像边缘像素扩展距离。参数`options`包括上下左右四个方向的边缘像素扩展距离。   **说明：**&lt;br/ &gt;1. 如果距离为正值，表示向外扩展，放大原来图像大小。上下左右四个方向分别用边缘像素填充，填充的距离即为设置的边缘扩展的距离。 2. 如果距离为负值，表示内缩，但是最终图像大小不变。 内缩方式：图像根据`options`的设置缩小，缩小大小为四个方向边缘扩展距离的绝对值。图像用边缘像素扩展到原来大小。 3. 对`options`的输入约束： 上下左右四个方向的扩展统一为非正值或者非负值。 即四个边同时向外扩或者内缩，方向一致。所有方向的输入均为百分比或者具体值，不支持百分比和具体值混用。所有异常情况下，显示为{0, 0, 0, 0}效果，即跟原图保持一致。 |
+| options | [PixelStretchEffectOptions](arkts-arkui-pixelstretcheffectoptions-i.md) | 是 | 设置组件的图像边缘像素扩展距离。参数`options`包括上下左右四个方向的边缘像素扩展距离。   **说明：**&lt;br/&gt;1. 如果距离为正值，表示向外扩展，放大原来图像大小。上下左右四个方向分别用边缘像素填充，填充的距离即为设置的边缘扩展的距离。 2. 如果距离为负值，表示内缩，但是最终图像大小不变。 内缩方式：图像根据`options`的设置缩小，缩小大小为四个方向边缘扩展距离的绝对值。图像用边缘像素扩展到原来大小。 3. 对`options`的输入约束： 上下左右四个方向的扩展统一为非正值或者非负值。 即四个边同时向外扩或者内缩，方向一致。所有方向的输入均为百分比或者具体值，不支持百分比和具体值混用。所有异常情况下，显示为{0, 0, 0, 0}效果，即跟原图保持一致。 |
 
 **返回值：**
 
@@ -6966,7 +6966,7 @@ pixelStretchEffect(options: Optional<PixelStretchEffectOptions>): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [Optional](arkts-arkui-optional-t.md)&lt;[PixelStretchEffectOptions](arkts-arkui-pixelstretcheffectoptions-i.md)&gt; | 是 | 设置组件的图像边缘像素扩展距离。参数`options`包括上下左右四个方向的边缘像素扩展距离。   **说明：** 1. 如果距离为正值，表示向外扩展，放大原来图像大小。上下左右四个方向分别用边缘像素填充，填充的距离即为设置的边缘扩展的距离。 2. 如果距离为负值，表示内缩，但是最终图像大小不变。&lt;br/ &gt;内缩方式： 图像根据`options`的设置缩小，缩小大小为四个方向边缘扩展距离的绝对值。图像用边缘像素扩展到原来大小。 3. 对`options`的输入约束： 上下左右四个方向的扩展统 一为非正值或者非负值。即四个边同时向外扩或者内缩，方向一致。所有方向的输入均为百分比或者具体值，不支持百分比和具体值混用。所有异常情况下，显示为{0, 0, 0, 0}效果，即跟原图保持一致。当options的值为undefined时，恢复为无像素扩展效果。 |
+| options | [Optional](arkts-arkui-optional-t.md)&lt;[PixelStretchEffectOptions](arkts-arkui-pixelstretcheffectoptions-i.md)&gt; | 是 | 设置组件的图像边缘像素扩展距离。参数`options`包括上下左右四个方向的边缘像素扩展距离。   **说明：** 1. 如果距离为正值，表示向外扩展，放大原来图像大小。上下左右四个方向分别用边缘像素填充，填充的距离即为设置的边缘扩展的距离。 2. 如果距离为负值，表示内缩，但是最终图像大小不变。&lt;br/&gt;内缩方式： 图像根据`options`的设置缩小，缩小大小为四个方向边缘扩展距离的绝对值。图像用边缘像素扩展到原来大小。 3. 对`options`的输入约束： 上下左右四个方向的扩展统 一为非正值或者非负值。即四个边同时向外扩或者内缩，方向一致。所有方向的输入均为百分比或者具体值，不支持百分比和具体值混用。所有异常情况下，显示为{0, 0, 0, 0}效果，即跟原图保持一致。当options的值为undefined时，恢复为无像素扩展效果。 |
 
 **返回值：**
 
@@ -7862,7 +7862,7 @@ sphericalEffect(value: number): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 设置组件的图像球面化程度。取值范围：[0,1]。   **说明：** 1. 如果value等于0则图像保持原样，如果value等于1则图像为完全球面化效果。 在0和1之间，数值越大，则球面化程度越高。 `value &lt; 0 `或者` value &gt; 1`为异常情况，`value &lt; 0`按0处理，`value &gt; 1`按1处理。 2. 组件阴影和外描边不支持球面 效果。 3. 设置value大于0时，组件冻屏并且把组件内容绘制到透明离屏buffer上，如果要更新组件属性则需要把value设置为0。 |
+| value | number | 是 | 设置组件的图像球面化程度。取值范围：[0,1]。   **说明：** 1. 如果value等于0则图像保持原样，如果value等于1则图像为完全球面化效果。 在0和1之间，数值越大，则球面化程度越高。 `value &lt; 0 `或者` value&gt; 1`为异常情况，`value &lt; 0`按0处理，`value&gt; 1`按1处理。 2. 组件阴影和外描边不支持球面 效果。 3. 设置value大于0时，组件冻屏并且把组件内容绘制到透明离屏buffer上，如果要更新组件属性则需要把value设置为0。 |
 
 **返回值：**
 
@@ -7888,7 +7888,7 @@ sphericalEffect(effect: Optional<number>): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| effect | [Optional](arkts-arkui-optional-t.md)&lt;number&gt; | 是 | 设置组件的图像球面化程度。取值范围：[0,1]。   **说明：** 1. 如果value等于0则图像保持原样，如果value等于1则 图像为完全球面化效果。在0和1之间，数值越大，则球面化程度越高。 `effect &lt; 0 `或者` effect &gt; 1`为异常情况，`effect &lt; 0`按0处理，`effect &gt; 1`按1处理。  2. 组件阴影和外描边不支持球面效果。 3. 设置effect大于0时，组件冻屏并且把组件内容绘制到透明离屏buffer上，如果要更新组件属性则需要把effect设置为0。 当effect的值为undefined时，恢复为图像球面化程度为0的效果。 |
+| effect | [Optional](arkts-arkui-optional-t.md)&lt;number&gt; | 是 | 设置组件的图像球面化程度。取值范围：[0,1]。   **说明：** 1. 如果value等于0则图像保持原样，如果value等于1则 图像为完全球面化效果。在0和1之间，数值越大，则球面化程度越高。 `effect &lt; 0 `或者` effect&gt; 1`为异常情况，`effect &lt; 0`按0处理，`effect&gt; 1`按1处理。  2. 组件阴影和外描边不支持球面效果。 3. 设置effect大于0时，组件冻屏并且把组件内容绘制到透明离屏buffer上，如果要更新组件属性则需要把effect设置为0。 当effect的值为undefined时，恢复为图像球面化程度为0的效果。 |
 
 **返回值：**
 
@@ -8026,7 +8026,7 @@ tabIndex(index: number): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 自定义组件tab键走焦能力。若有配置了tabIndex大于0的组件，则tab键走焦只会在tabIndex大于0的组件内按照tabIndex的值从小到大并循环依次走焦。若没有配置 tabIndex大于0的组件，则tabIndex等于0的组件按照组件预设的走焦规则走焦。   [UiExtension](../arkts-apis/arkts-arkui-uiextension.md)组件未适配 tabIndex，在含有[UiExtension](../arkts-apis/arkts-arkui-uiextension.md)组件的 [层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)使用tabIndex会导致走焦错乱。   - tabIndex &gt;= 0：表示元素是可聚焦的，并 且可以通过tab键走焦来访问到该元素。   - tabIndex &lt; 0（通常是tabIndex = -1）：表示元素是可聚焦的，但是不能通过tab键走焦来访问到该元素。   **说明：**tabIndex与focusScopeId不能混用。 |
+| index | number | 是 | 自定义组件tab键走焦能力。若有配置了tabIndex大于0的组件，则tab键走焦只会在tabIndex大于0的组件内按照tabIndex的值从小到大并循环依次走焦。若没有配置 tabIndex大于0的组件，则tabIndex等于0的组件按照组件预设的走焦规则走焦。   [UiExtension](../arkts-apis/arkts-arkui-uiextension.md)组件未适配 tabIndex，在含有[UiExtension](../arkts-apis/arkts-arkui-uiextension.md)组件的 [层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)使用tabIndex会导致走焦错乱。   - tabIndex&gt;= 0：表示元素是可聚焦的，并 且可以通过tab键走焦来访问到该元素。   - tabIndex &lt; 0（通常是tabIndex = -1）：表示元素是可聚焦的，但是不能通过tab键走焦来访问到该元素。   **说明：**tabIndex与focusScopeId不能混用。 |
 
 **返回值：**
 

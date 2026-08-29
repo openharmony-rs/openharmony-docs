@@ -146,7 +146,7 @@ function getFormsInfo(bundleName: string, moduleName?: string): Promise<Array<fo
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;formInfo.FormInfo & gt; & gt; | Promise对象。返回查询到的卡片信息。 |
+| Promise &lt;Array &lt;formInfo.FormInfo&gt;&gt; | Promise对象。返回查询到的卡片信息。 |
 
 **错误码：**
 
@@ -203,7 +203,7 @@ function getFormsInfo(filter: formInfo.FormInfoFilter): Promise<Array<formInfo.F
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;formInfo.FormInfo & gt; & gt; | Promise对象。返回查询到符合条件的卡片信息。 |
+| Promise &lt;Array &lt;formInfo.FormInfo&gt;&gt; | Promise对象。返回查询到符合条件的卡片信息。 |
 
 **错误码：**
 

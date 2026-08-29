@@ -69,7 +69,7 @@ function isNewCallAllowed(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 以Promise形式异步返回结果。true表示允许拨打，false表示不可拨打。 |
+| Promise &lt;boolean&gt; | 以Promise形式异步返回结果。true表示允许拨打，false表示不可拨打。 |
 
 **错误码：**
 

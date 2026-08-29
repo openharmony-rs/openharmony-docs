@@ -32,7 +32,7 @@ function getUserGrantedEnabledBundles(targetBundle: BundleOption): Promise<Bundl
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;BundleOption[] & gt; | Promise对象，返回指定应用中“已获取的本机通知”通知开关开启的应用列表。 |
+| Promise &lt;BundleOption[]&gt; | Promise对象，返回指定应用中“已获取的本机通知”通知开关开启的应用列表。 |
 
 **错误码：**
 

@@ -28,7 +28,7 @@ function getP2pLinkedInfo(): Promise<WifiP2pLinkedInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;WifiP2pLinkedInfo & gt; | P2P连接信息。 |
+| Promise &lt;WifiP2pLinkedInfo&gt; | P2P连接信息。 |
 
 **示例**
 

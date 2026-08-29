@@ -23,7 +23,7 @@ function getActiveGeoFences(): Promise<Map<number, Geofence>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Map & lt;number, Geofence & gt; & gt; | Promise对象，返回有效的围栏信息。Map中的key值为fenceId，value值为对应围栏的具体信息。 |
+| Promise &lt;Map &lt;number, Geofence&gt;&gt; | Promise对象，返回有效的围栏信息。Map中的key值为fenceId，value值为对应围栏的具体信息。 |
 
 **错误码：**
 

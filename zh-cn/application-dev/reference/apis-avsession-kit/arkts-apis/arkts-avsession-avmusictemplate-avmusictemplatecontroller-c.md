@@ -63,7 +63,7 @@ destroy(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -132,7 +132,7 @@ executeAction(actionType: string, params: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回执行动作的结果。 |
+| Promise &lt;string&gt; | Promise对象，返回执行动作的结果。 |
 
 **错误码：**
 
@@ -926,7 +926,7 @@ playMediaEntity(mediaEntity: MediaEntity): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1026,7 +1026,7 @@ queryCurrentSingle(): Promise<Single>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Single & gt; | Promise对象，返回当前单曲。 |
+| Promise &lt;Single&gt; | Promise对象，返回当前单曲。 |
 
 **错误码：**
 
@@ -1090,7 +1090,7 @@ queryHotWords(): Promise<string[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string[] & gt; | Promise对象，返回热词数组。 |
+| Promise &lt;string[]&gt; | Promise对象，返回热词数组。 |
 
 **错误码：**
 
@@ -1355,7 +1355,7 @@ querySearchHistory(): Promise<string[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string[] & gt; | Promise对象，返回历史搜索词数组。 |
+| Promise &lt;string[]&gt; | Promise对象，返回历史搜索词数组。 |
 
 **错误码：**
 

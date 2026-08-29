@@ -87,7 +87,7 @@ onMessageEvent(callback: (result: WebMessage) => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (result: WebMessage) = & gt; void | 是 | 接收到的消息。 |
+| callback | (result: WebMessage) =&gt; void | 是 | 接收到的消息。 |
 
 **错误码：**
 
@@ -156,7 +156,7 @@ onMessageEventExt(callback: (result: WebMessageExt) => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (result: WebMessageExt) = & gt; void | 是 | 接收到的消息。 |
+| callback | (result: WebMessageExt) =&gt; void | 是 | 接收到的消息。 |
 
 **错误码：**
 

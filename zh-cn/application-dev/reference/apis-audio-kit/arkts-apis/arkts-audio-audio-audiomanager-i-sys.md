@@ -32,7 +32,7 @@ disableSafeMediaVolume(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -141,13 +141,13 @@ getExtraParameters(mainKey: string, subKeys?: Array<string>): Promise<Record<str
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | mainKey | string | 是 | Main key of the audio parameters to get. |
-| subKeys | Array & lt;string & gt; | 否 | Sub keys of the audio parameters to get. |
+| subKeys | Array &lt;string&gt; | 否 | Sub keys of the audio parameters to get. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Record & lt;string, string & gt; & gt; | Promise对象，返回获取的音频参数的值。 |
+| Promise &lt;Record &lt;string, string&gt;&gt; | Promise对象，返回获取的音频参数的值。 |
 
 **错误码：**
 
@@ -312,7 +312,7 @@ reportPlaybackCaptureUserAllowed(streamId: number, allowed: boolean): Promise<vo
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -381,7 +381,7 @@ setAudioScene(scene: AudioScene): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -416,13 +416,13 @@ setExtraParameters(mainKey: string, kvpairs: Record<string, string>): Promise<vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | mainKey | string | 是 | 被设置的音频参数的主键。 |
-| kvpairs | Record & lt;string, string & gt; | 是 | 被设置的音频参数的子键值对。 |
+| kvpairs | Record &lt;string, string&gt; | 是 | 被设置的音频参数的子键值对。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

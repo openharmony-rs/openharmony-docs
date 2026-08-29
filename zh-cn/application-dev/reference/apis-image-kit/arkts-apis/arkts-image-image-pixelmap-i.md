@@ -81,7 +81,7 @@ Performs Color Space Converters (CSC) on the image pixel color based on a given 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -137,7 +137,7 @@ Crops the PixelMap.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | A Promise that resolves when the operation completes. |
+| Promise &lt;void&gt; | A Promise that resolves when the operation completes. |
 
 **错误码：**
 
@@ -266,7 +266,7 @@ Flips the PixelMap in the horizontal and/or vertical directions.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | A Promise that resolves when the operation completes. |
+| Promise &lt;void&gt; | A Promise that resolves when the operation completes. |
 
 **错误码：**
 
@@ -379,7 +379,7 @@ Rotates the PixelMap.Note: YUV format PixelMaps only support rotation angles tha
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | A Promise that resolves when the operation completes. |
+| Promise &lt;void&gt; | A Promise that resolves when the operation completes. |
 
 **错误码：**
 
@@ -491,7 +491,7 @@ Scales the PixelMap in the horizontal and/or vertical dimensions.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | A Promise that resolves when the operation completes. |
+| Promise &lt;void&gt; | A Promise that resolves when the operation completes. |
 
 **错误码：**
 
@@ -606,7 +606,7 @@ Repositions the PixelMap in the horizontal and/or vertical directions.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | A Promise that resolves when the operation completes. |
+| Promise &lt;void&gt; | A Promise that resolves when the operation completes. |
 
 **错误码：**
 
@@ -707,7 +707,7 @@ Copies this PixelMap object. This API uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PixelMap & gt; | Promise used to return the PixelMap object. |
+| Promise &lt;PixelMap&gt; | Promise used to return the PixelMap object. |
 
 **错误码：**
 
@@ -799,7 +799,7 @@ The method is used for the transformation of the image formats. Pixel data will 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
+| Promise &lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
 
 **错误码：**
 
@@ -847,7 +847,7 @@ Creates a PixelMap object that contains only the alpha channel information. This
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PixelMap & gt; | Promise used to return the PixelMap object. |
+| Promise &lt;PixelMap&gt; | Promise used to return the PixelMap object. |
 
 **示例**
 
@@ -973,7 +973,7 @@ Creates an image that has been cropped and resized based on the specified croppi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PixelMap & gt; | Promise used to return the PixelMap object. |
+| Promise &lt;PixelMap&gt; | Promise used to return the PixelMap object. |
 
 **错误码：**
 
@@ -1092,7 +1092,7 @@ Creates an image that has been resized based on the specified anti-aliasing leve
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PixelMap & gt; | Promise used to return the PixelMap object. |
+| Promise &lt;PixelMap&gt; | Promise used to return the PixelMap object. |
 
 **错误码：**
 
@@ -1234,7 +1234,7 @@ Crops a PixelMap based on a given size. This API uses a promise to return the re
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **示例**
 
@@ -1317,7 +1317,7 @@ Extracts the alpha channel from the current PixelMap to create a new ALPHA_U8 fo
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PixelMap & gt; | A Promise of the new ALPHA_U8 format PixelMap. |
+| Promise &lt;PixelMap&gt; | A Promise of the new ALPHA_U8 format PixelMap. |
 
 **错误码：**
 
@@ -1464,7 +1464,7 @@ Flips a PixelMap based on a given angle. This API uses a promise to return the r
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **示例**
 
@@ -2117,7 +2117,7 @@ Sets an opacity rate for this image. It is invalid for YUV images. This API uses
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **示例**
 
@@ -2206,7 +2206,7 @@ Reads all the pixel data from the PixelMap and writes the data to a buffer. The 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | A Promise that resolves when the operation completes. |
+| Promise &lt;void&gt; | A Promise that resolves when the operation completes. |
 
 **错误码：**
 
@@ -2314,7 +2314,7 @@ Reads the pixels in the area specified by [PositionArea](arkts-image-image-posit
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **示例**
 
@@ -2492,7 +2492,7 @@ Reads pixel data from a certain area of the PixelMap to a buffer. The resulting 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | A Promise that resolves when the operation completes. |
+| Promise &lt;void&gt; | A Promise that resolves when the operation completes. |
 
 **错误码：**
 
@@ -2664,7 +2664,7 @@ Reads the pixels of this PixelMap object based on the PixelMap's pixel format an
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **示例**
 
@@ -2906,7 +2906,7 @@ Releases this PixelMap instance. After the release, any attempt to access the in
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **示例**
 
@@ -3049,7 +3049,7 @@ Rotates a PixelMap based on a given angle. This API uses a promise to return the
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **示例**
 
@@ -3179,7 +3179,7 @@ Scales this image based on the scale factors of the width and height. This API u
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **示例**
 
@@ -3225,7 +3225,7 @@ Scales this image based on the specified anti-aliasing level and the scale facto
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -3452,7 +3452,7 @@ Sets the value for the metadata with a given key in this PixelMap. This API uses
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -3515,7 +3515,7 @@ Sets opacity of the PixelMap. Every pixel will be set to the same opacity value.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | A Promise that resolves when the operation completes. |
+| Promise &lt;void&gt; | A Promise that resolves when the operation completes. |
 
 **错误码：**
 
@@ -3687,7 +3687,7 @@ Convert pixelmap to standard dynamic range.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
+| Promise &lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
 
 **错误码：**
 
@@ -3791,7 +3791,7 @@ Translates a PixelMap based on given coordinates. This API uses a promise to ret
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **示例**
 
@@ -3877,7 +3877,7 @@ Unmarshals a MessageSequence object to obtain a PixelMap object. To create a Pix
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PixelMap & gt; | Promise used to return the PixelMap object. |
+| Promise &lt;PixelMap&gt; | Promise used to return the PixelMap object. |
 
 **错误码：**
 
@@ -3970,7 +3970,7 @@ Reads the pixel data from a buffer and writes the data to the PixelMap. The sour
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | A Promise that resolves when the operation completes. |
+| Promise &lt;void&gt; | A Promise that resolves when the operation completes. |
 
 **错误码：**
 
@@ -4096,7 +4096,7 @@ Reads the pixels in the buffer based on the PixelMap's pixel format and writes t
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **示例**
 
@@ -4235,7 +4235,7 @@ Reads the pixels in the [PositionArea](arkts-image-image-positionarea-i.md).regi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **示例**
 
@@ -4376,7 +4376,7 @@ Writes data from a buffer to a certain area of the PixelMap. The source data mus
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | A Promise that resolves when the operation completes. |
+| Promise &lt;void&gt; | A Promise that resolves when the operation completes. |
 
 **错误码：**
 

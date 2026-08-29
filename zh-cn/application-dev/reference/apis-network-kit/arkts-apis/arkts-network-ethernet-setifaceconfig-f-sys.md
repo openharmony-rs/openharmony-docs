@@ -97,7 +97,7 @@ function setIfaceConfig(iface: string, ic: InterfaceConfiguration): Promise<void
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以Promise形式返回执行结果。成功无返回，失败返回对应错误码。 |
+| Promise &lt;void&gt; | 以Promise形式返回执行结果。成功无返回，失败返回对应错误码。 |
 
 **错误码：**
 

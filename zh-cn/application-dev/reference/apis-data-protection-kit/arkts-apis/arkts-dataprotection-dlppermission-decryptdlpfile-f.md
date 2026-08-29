@@ -28,14 +28,14 @@ function decryptDlpFile(dlpFd: number, plaintextFd: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| dlpFd | number | 是 | 待解密DLP文件的fd。取值范围为[0, 2 & lt;sup & gt;31 & lt;/sup & gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2 & lt;sup & gt;31 & lt;/sup & gt;-1时，fd的 值被截断。 |
-| plaintextFd | number | 是 | 目标解密文件的fd。取值范围为[0, 2 & lt;sup & gt;31 & lt;/sup & gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2 & lt;sup & gt;31 & lt;/sup & gt;-1时 ，fd的值被截断。 |
+| dlpFd | number | 是 | 待解密DLP文件的fd。取值范围为[0, 2 &lt;sup&gt;31 &lt;/sup&gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2 &lt;sup&gt;31 &lt;/sup&gt;-1时，fd的 值被截断。 |
+| plaintextFd | number | 是 | 目标解密文件的fd。取值范围为[0, 2 &lt;sup&gt;31 &lt;/sup&gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2 &lt;sup&gt;31 &lt;/sup&gt;-1时 ，fd的值被截断。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

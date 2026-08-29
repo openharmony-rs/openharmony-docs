@@ -26,7 +26,7 @@ function getConnectedVpnAppInfo(): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | The promise returned by the connected VPN App Info. |
+| Promise &lt;Array &lt;string&gt;&gt; | The promise returned by the connected VPN App Info. |
 
 **错误码：**
 

@@ -69,7 +69,7 @@ function getSimSpn(slotId: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | 以Promise形式返回获取指定卡槽SIM卡的SPN。 |
+| Promise &lt;string&gt; | 以Promise形式返回获取指定卡槽SIM卡的SPN。 |
 
 **错误码：**
 

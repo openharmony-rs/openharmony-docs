@@ -32,7 +32,7 @@ function sendRttMessage(callId: number, rttMessage: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | The promise returned by the sendRttMessage. |
+| Promise &lt;void&gt; | The promise returned by the sendRttMessage. |
 
 **错误码：**
 

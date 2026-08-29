@@ -32,7 +32,7 @@ function getShortcutInfoSync(bundleName: string): Array<ShortcutInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;ShortcutInfo & gt; | Array形式返回当前用户下指定应用的[ShortcutInfo]{ |
+| Array &lt;ShortcutInfo&gt; | Array形式返回当前用户下指定应用的[ShortcutInfo]{ |
 
 **错误码：**
 
@@ -89,7 +89,7 @@ function getShortcutInfoSync(bundleName: string, userId: number): Array<Shortcut
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;ShortcutInfo & gt; | Array形式返回指定用户下指定应用的[ShortcutInfo]{ |
+| Array &lt;ShortcutInfo&gt; | Array形式返回指定用户下指定应用的[ShortcutInfo]{ |
 
 **错误码：**
 

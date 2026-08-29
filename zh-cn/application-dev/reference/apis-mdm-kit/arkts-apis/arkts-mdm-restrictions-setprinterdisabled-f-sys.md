@@ -101,7 +101,7 @@ function setPrinterDisabled(admin: Want, disabled: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。当禁止或允许使用打印能力失败时抛出错误对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。当禁止或允许使用打印能力失败时抛出错误对象。 |
 
 **错误码：**
 

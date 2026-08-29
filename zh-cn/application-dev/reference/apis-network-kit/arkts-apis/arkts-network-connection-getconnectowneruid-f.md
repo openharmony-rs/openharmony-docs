@@ -39,7 +39,7 @@ function getConnectOwnerUid(protocol: ProtocolType, local: NetAddress, remote: N
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回应用程序的UID。如果不存在匹配的UID则返回-1。 |
+| Promise &lt;number&gt; | Promise对象，返回应用程序的UID。如果不存在匹配的UID则返回-1。 |
 
 **错误码：**
 

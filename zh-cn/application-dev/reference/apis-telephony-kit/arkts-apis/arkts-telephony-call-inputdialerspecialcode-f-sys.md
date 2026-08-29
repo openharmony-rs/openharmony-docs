@@ -80,7 +80,7 @@ function inputDialerSpecialCode(inputCode: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以Promise形式异步返回结果。 |
+| Promise &lt;void&gt; | 以Promise形式异步返回结果。 |
 
 **错误码：**
 

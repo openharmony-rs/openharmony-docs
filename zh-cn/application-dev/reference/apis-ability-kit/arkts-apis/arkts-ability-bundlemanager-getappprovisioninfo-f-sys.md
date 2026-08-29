@@ -148,7 +148,7 @@ function getAppProvisionInfo(bundleName: string, userId?: number): Promise<AppPr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;AppProvisionInfo & gt; | Promise对象，返回应用的provision配置文件信息。 |
+| Promise &lt;AppProvisionInfo&gt; | Promise对象，返回应用的provision配置文件信息。 |
 
 **错误码：**
 

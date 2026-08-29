@@ -31,8 +31,8 @@ function execute(func: Function, ...args: Object[]): Promise<Object>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;unknown & gt; | <br>**适用版本：** 9 - 11 |
-| Promise & lt;Object & gt; | Promise对象，返回任务函数的执行结果。<br>**适用版本：** 11+ |
+| Promise &lt;unknown&gt; | <br>**适用版本：** 9 - 11 |
+| Promise &lt;Object&gt; | Promise对象，返回任务函数的执行结果。<br>**适用版本：** 11+ |
 
 **错误码：**
 
@@ -75,14 +75,14 @@ function execute<A extends Array<Object>, R>(func: (...args: A) => R | Promise<R
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| func | (...args: A) = & gt; R \ | Promise & lt;R & gt; | 是 | 待执行的函数，必须使用 [@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰，支持的函数返回值类型请参考 序列化支持类型。 |
+| func | (...args: A) =&gt; R \ | Promise &lt;R&gt; | 是 | 待执行的函数，必须使用 [@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰，支持的函数返回值类型请参考 序列化支持类型。 |
 | args | A | 是 | 任务执行函数的入参，支持的参数类型请参考 序列化支持类型。默认值为**undefined**。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;R & gt; | Promise对象，返回任务函数的执行结果。 |
+| Promise &lt;R&gt; | Promise对象，返回任务函数的执行结果。 |
 
 **错误码：**
 
@@ -154,8 +154,8 @@ function execute(task: Task, priority?: Priority): Promise<Object>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;unknown & gt; | <br>**适用版本：** 9 - 17 |
-| Promise & lt;Object & gt; | Promise对象，返回任务函数的执行结果。<br>**适用版本：** 11+ |
+| Promise &lt;unknown&gt; | <br>**适用版本：** 9 - 17 |
+| Promise &lt;Object&gt; | Promise对象，返回任务函数的执行结果。<br>**适用版本：** 11+ |
 
 **错误码：**
 
@@ -250,7 +250,7 @@ function execute<A extends Array<Object>, R>(task: GenericsTask<A, R>, priority?
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;R & gt; | Promise对象，返回任务函数的执行结果。 |
+| Promise &lt;R&gt; | Promise对象，返回任务函数的执行结果。 |
 
 **错误码：**
 
@@ -310,7 +310,7 @@ function execute(group: TaskGroup, priority?: Priority): Promise<Object[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Object[] & gt; | Promise对象数组，返回任务函数的执行结果。 |
+| Promise &lt;Object[]&gt; | Promise对象数组，返回任务函数的执行结果。 |
 
 **错误码：**
 
@@ -398,7 +398,7 @@ function execute(task: Task, configs: Configs): Promise<Object>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Object & gt; | Promise对象，返回任务函数的执行结果。 |
+| Promise &lt;Object&gt; | Promise对象，返回任务函数的执行结果。 |
 
 **错误码：**
 
@@ -486,7 +486,7 @@ function execute<A extends Array<Object>, R>(task: GenericsTask<A, R>, configs: 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;R & gt; | Promise对象，返回任务函数的执行结果。 |
+| Promise &lt;R&gt; | Promise对象，返回任务函数的执行结果。 |
 
 **错误码：**
 
@@ -556,7 +556,7 @@ function execute(group: TaskGroup, configs: Configs): Promise<Object[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Object[] & gt; | Promise对象数组，返回任务函数的执行结果。 |
+| Promise &lt;Object[]&gt; | Promise对象数组，返回任务函数的执行结果。 |
 
 **错误码：**
 

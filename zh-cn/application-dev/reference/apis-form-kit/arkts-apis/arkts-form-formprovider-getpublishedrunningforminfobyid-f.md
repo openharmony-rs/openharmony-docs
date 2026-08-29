@@ -30,7 +30,7 @@ function getPublishedRunningFormInfoById(formId: string): Promise<formInfo.Runni
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;formInfo.RunningFormInfo & gt; | Promise对象。返回符合条件的卡片信息，包括卡片名称、尺寸等。 |
+| Promise &lt;formInfo.RunningFormInfo&gt; | Promise对象。返回符合条件的卡片信息，包括卡片名称、尺寸等。 |
 
 **错误码：**
 

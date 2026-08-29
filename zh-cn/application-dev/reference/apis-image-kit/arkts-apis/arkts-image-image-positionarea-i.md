@@ -72,7 +72,7 @@ region: Region
 stride: number
 ```
 
-跨距，内存中每行像素所占的空间。单位：字节（Byte）。stride &gt;= region.size.width * 4，不满足时数据读取异常。
+跨距，内存中每行像素所占的空间。单位：字节（Byte）。stride&gt;= region.size.width * 4，不满足时数据读取异常。
 
 **类型：** number
 

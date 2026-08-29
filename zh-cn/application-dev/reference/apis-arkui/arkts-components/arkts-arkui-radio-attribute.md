@@ -87,7 +87,7 @@ contentModifier(modifier: ContentModifier<RadioConfiguration>)
 contentModifier(modifier: Optional<ContentModifier<RadioConfiguration>>)
 ```
 
-定制Radio内容区的方法。与 [contentModifier](#contentmodifier)&lt;sup&gt;12+&lt;/sup &gt;相比，modifier参数新增了对undefined类型的支持。
+定制Radio内容区的方法。与 [contentModifier](#contentmodifier)&lt;sup&gt;12+&lt;/sup&gt;相比，modifier参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -123,7 +123,7 @@ onChange(callback: (isChecked: boolean) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (isChecked: boolean) = & gt; void | 是 | 单选框选中状态改变时触发该回调。值为true时，表示从未选中变为选中。值为false时，表示从选中变为未选中。 |
+| callback | (isChecked: boolean) =&gt; void | 是 | 单选框选中状态改变时触发该回调。值为true时，表示从未选中变为选中。值为false时，表示从选中变为未选中。 |
 
 ## onChange
 

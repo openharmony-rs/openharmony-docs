@@ -68,7 +68,7 @@ function getAllNets(): Promise<Array<NetHandle>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;NetHandle & gt; & gt; | Promise对象，返回处于激活状态的网络列表。 |
+| Promise &lt;Array &lt;NetHandle&gt;&gt; | Promise对象，返回处于激活状态的网络列表。 |
 
 **错误码：**
 

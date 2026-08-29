@@ -89,7 +89,7 @@ function isHapModuleRemovable(bundleName: string, moduleName: string): Promise<b
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示可以移除；返回false表示不可移除。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示可以移除；返回false表示不可移除。 |
 
 **错误码：**
 

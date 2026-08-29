@@ -92,7 +92,7 @@ function getSharedBundleInfo(bundleName: string, moduleName: string): Promise<Ar
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;SharedBundleInfo & gt; & gt; | Promise对象，返回指定的共享包信息。 |
+| Promise &lt;Array &lt;SharedBundleInfo&gt;&gt; | Promise对象，返回指定的共享包信息。 |
 
 **错误码：**
 

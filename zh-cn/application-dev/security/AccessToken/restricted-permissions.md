@@ -17,7 +17,7 @@ normal等级的应用需要将自身的APL等级声明为system_basic及以上�
 
 **修改方式：**
 
-HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "apl" 字段。
+HarmonyAppProvision配置文件示例如下所示，修改"bundle-info"&gt; "apl" 字段。
 
 ```json5
 "bundle-info" : {

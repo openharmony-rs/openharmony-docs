@@ -80,7 +80,7 @@ function getValidReminders(): Promise<Array<ReminderRequest>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;ReminderRequest & gt; & gt; | 返回当前应用已设置的所有有效（未过期）的提醒。 |
+| Promise &lt;Array &lt;ReminderRequest&gt;&gt; | 返回当前应用已设置的所有有效（未过期）的提醒。 |
 
 **示例**
 

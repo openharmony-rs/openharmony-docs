@@ -26,14 +26,14 @@ function isNotificationSlotEnabledByBundles(bundles: Array<BundleOption>, type: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundles | Array & lt;BundleOption & gt; | 是 | 应用包信息数组。 最大长度为1000且不能为空。 |
+| bundles | Array &lt;BundleOption&gt; | 是 | 应用包信息数组。 最大长度为1000且不能为空。 |
 | type | SlotType | 是 | 渠道类型。所有应用共享同一个渠道类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Map & lt;BundleOption, boolean & gt; & gt; | 以Promise形式返回批量查询结果，key为应用包信息，value为渠道使能状态 （true：使能，false：禁止）。未创建渠道的应用不会出现在返回结果中。 |
+| Promise &lt;Map &lt;BundleOption, boolean&gt;&gt; | 以Promise形式返回批量查询结果，key为应用包信息，value为渠道使能状态 （true：使能，false：禁止）。未创建渠道的应用不会出现在返回结果中。 |
 
 **错误码：**
 

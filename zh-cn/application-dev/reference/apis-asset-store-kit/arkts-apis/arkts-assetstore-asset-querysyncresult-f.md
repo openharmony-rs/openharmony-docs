@@ -28,7 +28,7 @@ function querySyncResult(query: AssetMap): Promise<SyncResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;SyncResult & gt; | Promise对象，返回同步执行结果。 |
+| Promise &lt;SyncResult&gt; | Promise对象，返回同步执行结果。 |
 
 **错误码：**
 

@@ -185,7 +185,7 @@ function showActionMenu(options: ActionMenuOptions): Promise<ActionMenuSuccessRe
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ActionMenuSuccessResponse & gt; | Promise对象，返回菜单的响应结果。 |
+| Promise &lt;ActionMenuSuccessResponse&gt; | Promise对象，返回菜单的响应结果。 |
 
 **错误码：**
 

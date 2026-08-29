@@ -29,7 +29,7 @@ ArrayList是一种线性数据结构，底层基于数组实现，解决了固�
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;T & gt; | 返回一个迭代器，遍历该迭代器可依次获取ArrayList中的每个元素。 |
+| IterableIterator &lt;T&gt; | 返回一个迭代器，遍历该迭代器可依次获取ArrayList中的每个元素。 |
 
 **错误码：**
 
@@ -238,7 +238,7 @@ convertToArray(): Array<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;T & gt; | 返回由ArrayList中所有元素组成的数组。 |
+| Array &lt;T&gt; | 返回由ArrayList中所有元素组成的数组。 |
 
 **错误码：**
 
@@ -276,7 +276,7 @@ forEach(callbackFn: (value: T, index?: number, arrlist?: ArrayList<T>) => void, 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index?: number, arrlist?: ArrayList & lt;T & gt;) = & gt; void | 是 | 对每个元素执行操作的回调函数。 |
+| callbackFn | (value: T, index?: number, arrlist?: ArrayList &lt;T&gt;) =&gt; void | 是 | 对每个元素执行操作的回调函数。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值。当回调函数需要引用外部对象作为this上下文时传入此参数，不传入时默认值为undefined。 |
 
 **错误码：**
@@ -742,7 +742,7 @@ replaceAllElements(callbackFn: (value: T, index?: number, arrlist?: ArrayList<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index?: number, arrlist?: ArrayList & lt;T & gt;) = & gt; T | 是 | 用于操作元素并返回替换值的回调函数。 |
+| callbackFn | (value: T, index?: number, arrlist?: ArrayList &lt;T&gt;) =&gt; T | 是 | 用于操作元素并返回替换值的回调函数。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值。当回调函数需要引用外部对象作为this上下文时传入此参数，不传入时默认值为undefined。 |
 
 **错误码：**

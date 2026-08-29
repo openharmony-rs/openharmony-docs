@@ -27,7 +27,7 @@ static createAlbumRequest(context: Context, name: string): MediaAlbumChangeReque
 创建相册变更请求。相册名的参数规格为：  
 - 相册名字符串长度为1~255。  
 - 不允许出现的非法英文字符，包括：  
-. .. \ / : * ? " ' ` &lt; &gt; | { } [ ]  
+. .. \ / : * ? " ' ` &lt;&gt; | { } [ ]  
 - 英文字符大小写不敏感。  
 - 相册名不允许重名。
 
@@ -97,13 +97,13 @@ static deleteAlbums(context: Context, albums: Array<Album>): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 传入Ability实例的Context。 |
-| albums | Array & lt;Album & gt; | 是 | 待删除的相册数组。 |
+| albums | Array &lt;Album&gt; | 是 | 待删除的相册数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回void。 |
+| Promise &lt;void&gt; | Promise对象，返回void。 |
 
 **错误码：**
 
@@ -160,13 +160,13 @@ static deleteAlbumsWithUri(context: Context, albumUris: Array<string>): Promise<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 传入Ability实例的Context。 |
-| albumUris | Array & lt;string & gt; | 是 | 待删除相册Uri的数组。 |
+| albumUris | Array &lt;string&gt; | 是 | 待删除相册Uri的数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -213,7 +213,7 @@ deleteAssets(assets: Array<PhotoAsset>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| assets | Array & lt;PhotoAsset & gt; | 是 | 待从回收站中彻底删除的资产数组。 |
+| assets | Array &lt;PhotoAsset&gt; | 是 | 待从回收站中彻底删除的资产数组。 |
 
 **错误码：**
 
@@ -284,7 +284,7 @@ deleteAssetsWithUri(assetUris: Array<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| assetUris | Array & lt;string & gt; | 是 | 待从回收站中彻底删除的资产Uri数组。 |
+| assetUris | Array &lt;string&gt; | 是 | 待从回收站中彻底删除的资产Uri数组。 |
 
 **错误码：**
 
@@ -388,7 +388,7 @@ dismissAssets(assets: Array<PhotoAsset>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| assets | Array & lt;PhotoAsset & gt; | 是 | 需要移除的文件列表。 |
+| assets | Array &lt;PhotoAsset&gt; | 是 | 需要移除的文件列表。 |
 
 **错误码：**
 
@@ -516,7 +516,7 @@ moveAssets(assets: Array<PhotoAsset>, targetAlbum: Album): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| assets | Array & lt;PhotoAsset & gt; | 是 | 待从相册中移出的资产数组。 |
+| assets | Array &lt;PhotoAsset&gt; | 是 | 待从相册中移出的资产数组。 |
 | targetAlbum | Album | 是 | 待移入资产的目标相册。 |
 
 **错误码：**
@@ -581,7 +581,7 @@ moveAssetsWithUri(assetUris: Array<string>, targetAlbum: Album): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| assetUris | Array & lt;string & gt; | 是 | 待从相册中移出的资产Uri数组。 |
+| assetUris | Array &lt;string&gt; | 是 | 待从相册中移出的资产Uri数组。 |
 | targetAlbum | Album | 是 | 待移入资产的目标相册。 |
 
 **错误码：**
@@ -778,7 +778,7 @@ recoverAssets(assets: Array<PhotoAsset>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| assets | Array & lt;PhotoAsset & gt; | 是 | 待从回收站中恢复的资产数组。 |
+| assets | Array &lt;PhotoAsset&gt; | 是 | 待从回收站中恢复的资产数组。 |
 
 **错误码：**
 
@@ -837,7 +837,7 @@ recoverAssetsWithUri(assetUris: Array<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| assetUris | Array & lt;string & gt; | 是 | 待从回收站中恢复的资产Uri数组。 |
+| assetUris | Array &lt;string&gt; | 是 | 待从回收站中恢复的资产Uri数组。 |
 
 **错误码：**
 
@@ -947,7 +947,7 @@ setAlbumNameByFile(name: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | string | 是 | 相册名。 取值范围:1-255 相册名参数规格： 相册名字符串长度为1~255。 不允许出现的非法英文字符，包括： \ / : * ? " ' ` &lt; &gt; \| { } [ ] 不允许仅命名为.或者.. 英文字符大小写不敏感。 相册名不允许重名。 |
+| name | string | 是 | 相册名。 取值范围:1-255 相册名参数规格： 相册名字符串长度为1~255。 不允许出现的非法英文字符，包括： \ / : * ? " ' ` &lt;&gt; \| { } [ ] 不允许仅命名为.或者.. 英文字符大小写不敏感。 相册名不允许重名。 |
 
 **错误码：**
 
@@ -1238,7 +1238,7 @@ static setUploadStatus(context: Context, albums: Album[], allowUpload: boolean):
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

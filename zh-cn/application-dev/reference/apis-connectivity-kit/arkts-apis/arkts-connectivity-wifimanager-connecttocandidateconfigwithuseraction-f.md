@@ -32,7 +32,7 @@ function connectToCandidateConfigWithUserAction(networkId: number): Promise<void
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 返回用于返回操作结果的Promise对象。 如果操作失败，返回错误信息。 |
+| Promise &lt;void&gt; | 返回用于返回操作结果的Promise对象。 如果操作失败，返回错误信息。 |
 
 **错误码：**
 

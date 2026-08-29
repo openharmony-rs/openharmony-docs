@@ -33,7 +33,7 @@ Obtains the supported time-lapse shooting interval range.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;number & gt; | Interval range, in ms. The value depends on the underlying capability. If the operation fails, an error code defined in [CameraErrorCode]{ |
+| Array &lt;number&gt; | Interval range, in ms. The value depends on the underlying capability. If the operation fails, an error code defined in [CameraErrorCode]{ |
 
 **错误码：**
 

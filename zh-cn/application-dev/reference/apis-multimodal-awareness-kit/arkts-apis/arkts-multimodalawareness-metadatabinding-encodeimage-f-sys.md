@@ -31,7 +31,7 @@ function encodeImage(srcImage: image.PixelMap, metadata: string): Promise<image.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;image.PixelMap & gt; | Promise对象。返回嵌入信息的图片。 |
+| Promise &lt;image.PixelMap&gt; | Promise对象。返回嵌入信息的图片。 |
 
 **错误码：**
 

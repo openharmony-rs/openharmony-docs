@@ -33,7 +33,7 @@ function preQueryAsUser(userId: number, query: AssetMap): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Uint8Array & gt; | Promise对象，返回挑战值。 |
+| Promise &lt;Uint8Array&gt; | Promise对象，返回挑战值。 |
 
 **错误码：**
 

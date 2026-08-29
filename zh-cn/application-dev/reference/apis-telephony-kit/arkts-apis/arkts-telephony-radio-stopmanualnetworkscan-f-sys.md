@@ -31,7 +31,7 @@ function stopManualNetworkScan(slotId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 返回停止手动搜网结果 |
+| Promise &lt;void&gt; | 返回停止手动搜网结果 |
 
 **错误码：**
 

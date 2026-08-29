@@ -61,7 +61,7 @@ getAcceptType(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 返回文件过滤类型数组，包含用于限制文件选择器可选文件范围的类型信息。元素为扩展名（如'.png'），对应HTML accept属性。 |
+| Array &lt;string&gt; | 返回文件过滤类型数组，包含用于限制文件选择器可选文件范围的类型信息。元素为扩展名（如'.png'），对应HTML accept属性。 |
 
 ## getDefaultPath
 
@@ -97,7 +97,7 @@ getDescriptions(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 返回文件类型的描述字符串数组，包含各组文件类型的可选描述文本。 |
+| Array &lt;string&gt; | 返回文件类型的描述字符串数组，包含各组文件类型的可选描述文本。 |
 
 ## getMimeTypes
 
@@ -115,7 +115,7 @@ getMimeTypes(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 原样返回HTML input标签的accept属性的值，包含指定允许选择的文件的MIME类型和扩展名信息。 |
+| Array &lt;string&gt; | 原样返回HTML input标签的accept属性的值，包含指定允许选择的文件的MIME类型和扩展名信息。 |
 
 ## getMode
 

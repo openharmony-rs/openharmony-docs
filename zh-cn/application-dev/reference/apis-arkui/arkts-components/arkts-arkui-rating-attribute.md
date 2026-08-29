@@ -75,7 +75,7 @@ onChange(callback: (value: number) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (value: number) = & gt; void | 是 |  |
+| callback | (value: number) =&gt; void | 是 |  |
 
 ## onChange
 

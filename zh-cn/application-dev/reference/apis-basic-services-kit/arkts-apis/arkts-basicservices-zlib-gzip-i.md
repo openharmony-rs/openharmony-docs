@@ -36,7 +36,7 @@ gzbuffer(size: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，成功时，返回0。 |
+| Promise &lt;number&gt; | Promise对象，成功时，返回0。 |
 
 **错误码：**
 
@@ -104,7 +104,7 @@ gzclearerr(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回值。 |
+| Promise &lt;void&gt; | Promise对象，无返回值。 |
 
 **示例**
 
@@ -371,7 +371,7 @@ gzdirect(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，如果直接访问原始未压缩数据，则返回1。 |
+| Promise &lt;number&gt; | Promise对象，如果直接访问原始未压缩数据，则返回1。 |
 
 **示例**
 
@@ -437,7 +437,7 @@ gzdopen(fd: number, mode: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回值。 |
+| Promise &lt;void&gt; | Promise对象，无返回值。 |
 
 **错误码：**
 
@@ -503,7 +503,7 @@ gzeof(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，如果在读取时设置了文件的文件结束指示符，则返回1。 |
+| Promise &lt;number&gt; | Promise对象，如果在读取时设置了文件的文件结束指示符，则返回1。 |
 
 **示例**
 
@@ -729,7 +729,7 @@ gzfread(buf: ArrayBuffer, size: number, nitems: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回读取大小为size的完整数据块的数目。 |
+| Promise &lt;number&gt; | Promise对象，返回读取大小为size的完整数据块的数目。 |
 
 **错误码：**
 
@@ -812,7 +812,7 @@ gzfwrite(buf: ArrayBuffer, size: number, nitems: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回写入大小为size的完整数据块的数目。 |
+| Promise &lt;number&gt; | Promise对象，返回写入大小为size的完整数据块的数目。 |
 
 **错误码：**
 
@@ -883,7 +883,7 @@ gzgetc(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回读取字符的ASCII值。 |
+| Promise &lt;number&gt; | Promise对象，返回读取字符的ASCII值。 |
 
 **错误码：**
 
@@ -957,7 +957,7 @@ gzgets(buf: ArrayBuffer): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回以null结尾的字符串。 |
+| Promise &lt;string&gt; | Promise对象，返回以null结尾的字符串。 |
 
 **错误码：**
 
@@ -1027,7 +1027,7 @@ gzoffset(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回文件的当前压缩（实际）读或写偏移量。 |
+| Promise &lt;number&gt; | Promise对象，返回文件的当前压缩（实际）读或写偏移量。 |
 
 **错误码：**
 
@@ -1099,7 +1099,7 @@ gzopen(path: string, mode: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回值。 |
+| Promise &lt;void&gt; | Promise对象，无返回值。 |
 
 **错误码：**
 
@@ -1165,13 +1165,13 @@ gzprintf(format: string, ...args: Array<string | number>): Promise<number>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | format | string | 是 | 格式化描述符和纯文本。 |
-| args | Array & lt;string \ | number & gt; | 是 | 可变参数列表。传入可变参数，例如gzprintf("name is %s, age is %d", "Tom", 23)，写入内容为“name is Tom, age is 23”。不传可变参数，例如gzprintf("name is %s, age is %d")，写入内容为“name is %s, age is %d”。 |
+| args | Array &lt;string \ | number&gt; | 是 | 可变参数列表。传入可变参数，例如gzprintf("name is %s, age is %d", "Tom", 23)，写入内容为“name is Tom, age is 23”。不传可变参数，例如gzprintf("name is %s, age is %d")，写入内容为“name is %s, age is %d”。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回实际写入的未压缩字节数。 |
+| Promise &lt;number&gt; | Promise对象，返回实际写入的未压缩字节数。 |
 
 **错误码：**
 
@@ -1244,7 +1244,7 @@ gzputc(ch: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回已写入的值。 |
+| Promise &lt;number&gt; | Promise对象，返回已写入的值。 |
 
 **错误码：**
 
@@ -1316,7 +1316,7 @@ gzputs(str: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回写入的字符数。 |
+| Promise &lt;number&gt; | Promise对象，返回写入的字符数。 |
 
 **错误码：**
 
@@ -1388,7 +1388,7 @@ gzread(buf: ArrayBuffer): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回实际读取的未压缩字节数。 |
+| Promise &lt;number&gt; | Promise对象，返回实际读取的未压缩字节数。 |
 
 **错误码：**
 
@@ -1537,7 +1537,7 @@ gzseek(offset: number, whence: OffsetReferencePoint): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回从未压缩流开始以字节为单位测量的结果偏移位置。 |
+| Promise &lt;number&gt; | Promise对象，返回从未压缩流开始以字节为单位测量的结果偏移位置。 |
 
 **错误码：**
 
@@ -1677,7 +1677,7 @@ gztell(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回文件种下一个gzread或gzwrite的起始位置。 |
+| Promise &lt;number&gt; | Promise对象，返回文件种下一个gzread或gzwrite的起始位置。 |
 
 **错误码：**
 
@@ -1748,7 +1748,7 @@ gzungetc(c: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回推送的字符。 |
+| Promise &lt;number&gt; | Promise对象，返回推送的字符。 |
 
 **错误码：**
 
@@ -1824,7 +1824,7 @@ gzwrite(buf: ArrayBuffer, len: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回写入的未压缩字节数。 |
+| Promise &lt;number&gt; | Promise对象，返回写入的未压缩字节数。 |
 
 **错误码：**
 

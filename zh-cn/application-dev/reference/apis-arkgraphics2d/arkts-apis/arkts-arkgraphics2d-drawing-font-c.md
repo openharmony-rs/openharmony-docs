@@ -230,13 +230,13 @@ getBounds(glyphs: Array<number>): Array<common2D.Rect>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| glyphs | Array & lt;number & gt; | 是 | 字形索引数组，可由 [textToGlyphs](#texttoglyphs)生成。 |
+| glyphs | Array &lt;number&gt; | 是 | 字形索引数组，可由 [textToGlyphs](#texttoglyphs)生成。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;common2D.Rect & gt; | 返回字形边界矩形数组。 |
+| Array &lt;common2D.Rect&gt; | 返回字形边界矩形数组。 |
 
 **示例**
 
@@ -584,13 +584,13 @@ getWidths(glyphs: Array<number>): Array<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| glyphs | Array & lt;number & gt; | 是 | 字形索引数组，可由 [textToGlyphs](#texttoglyphs)生成。 |
+| glyphs | Array &lt;number&gt; | 是 | 字形索引数组，可由 [textToGlyphs](#texttoglyphs)生成。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;number & gt; | 返回字形宽度数组，浮点数。单位为物理像素px。 |
+| Array &lt;number&gt; | 返回字形宽度数组，浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -882,7 +882,7 @@ measureSingleCharacterWithFeatures(text: string, features: Array<FontFeature>): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | text | string | 是 | 待测量的单个字符。字符串长度必须为1。 |
-| features | Array & lt;FontFeature & gt; | 是 | 字体特征对象数组。参数为空数组时使用TTF（TrueType Font）文件中预设的字体特征。 |
+| features | Array &lt;FontFeature&gt; | 是 | 字体特征对象数组。参数为空数组时使用TTF（TrueType Font）文件中预设的字体特征。 |
 
 **返回值：**
 
@@ -1367,7 +1367,7 @@ textToGlyphs(text: string, glyphCount?: number): Array<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;number & gt; | 返回转换得到的字形索引数组。 |
+| Array &lt;number&gt; | 返回转换得到的字形索引数组。 |
 
 **错误码：**
 

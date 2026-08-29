@@ -33,7 +33,7 @@ function setUnlockWallpaper(admin: Want, fd: number):  Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。当设置锁屏壁纸失败后会抛出错误对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。当设置锁屏壁纸失败后会抛出错误对象。 |
 
 **错误码：**
 

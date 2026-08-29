@@ -95,7 +95,7 @@ getBypassRules(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 不使用代理的URL列表。 |
+| Array &lt;string&gt; | 不使用代理的URL列表。 |
 
 **示例**
 

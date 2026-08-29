@@ -53,7 +53,7 @@ ListItem元素被鼠标框选的状态改变时触发回调。外层List组件�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (isSelected: boolean) = & gt; void | 是 |  |
+| event | (isSelected: boolean) =&gt; void | 是 |  |
 
 ## selectable
 

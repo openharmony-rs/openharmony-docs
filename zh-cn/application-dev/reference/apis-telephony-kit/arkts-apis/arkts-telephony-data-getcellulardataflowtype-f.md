@@ -67,7 +67,7 @@ function getCellularDataFlowType(): Promise<DataFlowType>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;DataFlowType & gt; | 以Promise形式返回蜂窝网络的数据流类型（对应信号栏旁边的上下行箭头）。 |
+| Promise &lt;DataFlowType&gt; | 以Promise形式返回蜂窝网络的数据流类型（对应信号栏旁边的上下行箭头）。 |
 
 **错误码：**
 

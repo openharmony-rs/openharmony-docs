@@ -59,7 +59,7 @@ actionNames(): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回节点元素支持的所有操作名称。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回节点元素支持的所有操作名称。 |
 
 **示例**
 
@@ -128,7 +128,7 @@ attributeNames<T extends keyof ElementAttributeValues>(): Promise<Array<T>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;T & gt; & gt; | Promise对象，返回节点元素的所有属性名称。 |
+| Promise &lt;Array &lt;T&gt;&gt; | Promise对象，返回节点元素的所有属性名称。 |
 
 **示例**
 
@@ -217,7 +217,7 @@ attributeValue<T extends keyof ElementAttributeValues>(attributeName: T): Promis
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ElementAttributeValues[T] & gt; | Promise对象，返回根据节点属性名称获取的属性值。 |
+| Promise &lt;ElementAttributeValues[T]&gt; | Promise对象，返回根据节点属性名称获取的属性值。 |
 
 **错误码：**
 
@@ -599,7 +599,7 @@ performAction(actionName: string, parameters?: object): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

@@ -96,7 +96,7 @@ function deleteData(options: Options): Promise<Array<UnifiedData>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;UnifiedData & gt; & gt; | Promise对象，返回删除的所有数据。 |
+| Promise &lt;Array &lt;UnifiedData&gt;&gt; | Promise对象，返回删除的所有数据。 |
 
 **错误码：**
 

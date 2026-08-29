@@ -210,7 +210,7 @@ function showDialog(options: ShowDialogOptions): Promise<ShowDialogSuccessRespon
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ShowDialogSuccessResponse & gt; | Promise对象，返回对话框的响应结果。 |
+| Promise &lt;ShowDialogSuccessResponse&gt; | Promise对象，返回对话框的响应结果。 |
 
 **错误码：**
 

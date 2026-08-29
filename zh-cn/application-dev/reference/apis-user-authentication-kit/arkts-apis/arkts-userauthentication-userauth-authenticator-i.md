@@ -86,7 +86,7 @@ execute(type: AuthType, level: SecureLevel): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 返回携带一个number的Promise。number 为认证结果，参见 [AuthenticationResult]{ |
+| Promise &lt;number&gt; | 返回携带一个number的Promise。number 为认证结果，参见 [AuthenticationResult]{ |
 
 **示例**
 

@@ -79,7 +79,7 @@ function setStaticSubscriberState(enable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -124,13 +124,13 @@ function setStaticSubscriberState(enable: boolean, events?: Array<string>): Prom
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | enable | boolean | 是 | 表示静态订阅事件使能状态。true：使能，false：去使能。 |
-| events | Array & lt;string & gt; | 否 | 表示需要设置的公共事件名称列表，默认为空列表，表示设置当前应用所有的 静态订阅公共事件状态。 |
+| events | Array &lt;string&gt; | 否 | 表示需要设置的公共事件名称列表，默认为空列表，表示设置当前应用所有的 静态订阅公共事件状态。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

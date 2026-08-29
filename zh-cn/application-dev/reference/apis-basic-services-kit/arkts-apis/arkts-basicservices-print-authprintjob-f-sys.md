@@ -36,7 +36,7 @@ function authPrintJob(jobId: string, userName: string, password: string): Promis
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | the promise returned by the function. |
+| Promise &lt;boolean&gt; | the promise returned by the function. |
 
 **错误码：**
 

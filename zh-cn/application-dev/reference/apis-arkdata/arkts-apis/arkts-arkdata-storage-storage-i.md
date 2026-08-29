@@ -65,7 +65,7 @@ clear(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise实例，用于异步处理。 |
+| Promise &lt;void&gt; | Promise实例，用于异步处理。 |
 
 **示例**
 
@@ -155,7 +155,7 @@ delete(key: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise实例，用于异步处理。 |
+| Promise &lt;void&gt; | Promise实例，用于异步处理。 |
 
 **示例**
 
@@ -244,7 +244,7 @@ flush(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise实例，用于异步处理。 |
+| Promise &lt;void&gt; | Promise实例，用于异步处理。 |
 
 **示例**
 
@@ -336,7 +336,7 @@ get(key: string, defValue: ValueType): Promise<ValueType>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ValueType & gt; | Promise实例，用于异步获取结果。 |
+| Promise &lt;ValueType&gt; | Promise实例，用于异步获取结果。 |
 
 **示例**
 
@@ -448,7 +448,7 @@ has(key: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise实例，用于异步处理。 |
+| Promise &lt;boolean&gt; | Promise实例，用于异步处理。 |
 
 **示例**
 
@@ -619,7 +619,7 @@ put(key: string, value: ValueType): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise实例，用于异步处理。 |
+| Promise &lt;void&gt; | Promise实例，用于异步处理。 |
 
 **示例**
 

@@ -30,7 +30,7 @@ function getFormRect(formId: string): Promise<formInfo.Rect>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;formInfo.Rect & gt; | Promise对象，返回卡片相对屏幕左上角的位置信息和卡片尺寸信息。 |
+| Promise &lt;formInfo.Rect&gt; | Promise对象，返回卡片相对屏幕左上角的位置信息和卡片尺寸信息。 |
 
 **错误码：**
 

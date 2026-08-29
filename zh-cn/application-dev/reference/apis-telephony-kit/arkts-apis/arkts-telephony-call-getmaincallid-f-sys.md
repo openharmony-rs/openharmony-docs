@@ -76,7 +76,7 @@ function getMainCallId(callId: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 以Promise形式异步返回主呼叫Id。 |
+| Promise &lt;number&gt; | 以Promise形式异步返回主呼叫Id。 |
 
 **错误码：**
 

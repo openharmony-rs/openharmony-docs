@@ -25,10 +25,10 @@ function promiseWrapper(original: (err: Object, value: Object) => void): Object
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| original | (err: Object, value: Object) = & gt; void | 是 | 采用错误优先回调模式的函数，第一个参数err是拒绝原因，第二个参数value是已解决的值。 |
+| original | (err: Object, value: Object) =&gt; void | 是 | 采用错误优先回调模式的函数，第一个参数err是拒绝原因，第二个参数value是已解决的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Object | 错误优先风格（即最后一个参数为 (err, value) = & gt; ... ）的 promise。 |
+| Object | 错误优先风格（即最后一个参数为 (err, value) =&gt; ... ）的 promise。 |

@@ -165,7 +165,7 @@ function getOneCfgFile(relPath: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回优先级最高的配置文件路径。 |
+| Promise &lt;string&gt; | Promise对象，返回优先级最高的配置文件路径。 |
 
 **错误码：**
 
@@ -220,7 +220,7 @@ function getOneCfgFile(relPath: string, followMode: FollowXMode, extra?: string)
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回优先级最高的配置文件路径。 |
+| Promise &lt;string&gt; | Promise对象，返回优先级最高的配置文件路径。 |
 
 **错误码：**
 

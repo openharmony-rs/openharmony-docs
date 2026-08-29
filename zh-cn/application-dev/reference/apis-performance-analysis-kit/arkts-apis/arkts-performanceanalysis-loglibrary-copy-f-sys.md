@@ -33,7 +33,7 @@ function copy(logType: string, logName: string, dest: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise实例，可以在其then()、catch()方法中分别对拷贝成功、拷贝异常的回调进行处理。 |
+| Promise &lt;void&gt; | Promise实例，可以在其then()、catch()方法中分别对拷贝成功、拷贝异常的回调进行处理。 |
 
 **错误码：**
 

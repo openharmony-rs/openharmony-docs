@@ -33,7 +33,7 @@ function getAllowedInstallBundlesSync(admin: Want, accountId?: number): Array<st
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 返回当前/指定用户下的应用程序包安装允许名单。 |
+| Array &lt;string&gt; | 返回当前/指定用户下的应用程序包安装允许名单。 |
 
 **错误码：**
 
@@ -92,7 +92,7 @@ function getAllowedInstallBundlesSync(admin: Want | null, accountId?: number): A
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 返回当前/指定用户下的应用程序包安装允许名单。 |
+| Array &lt;string&gt; | 返回当前/指定用户下的应用程序包安装允许名单。 |
 
 **错误码：**
 

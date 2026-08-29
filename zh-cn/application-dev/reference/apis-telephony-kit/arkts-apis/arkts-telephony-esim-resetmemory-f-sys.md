@@ -32,7 +32,7 @@ function resetMemory(slotId: number, options?:ResetOption): Promise<ResultCode>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ResultCode & gt; | Promise对象，返回重置的结果码。 |
+| Promise &lt;ResultCode&gt; | Promise对象，返回重置的结果码。 |
 
 **错误码：**
 

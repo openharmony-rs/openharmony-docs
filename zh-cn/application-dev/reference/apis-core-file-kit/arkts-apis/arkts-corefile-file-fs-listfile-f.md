@@ -34,7 +34,7 @@ declare function listFile(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string[] & gt; | Promise对象。返回文件名数组，默认以'utf-8'编码。 default. |
+| Promise &lt;string[]&gt; | Promise对象。返回文件名数组，默认以'utf-8'编码。 default. |
 
 **错误码：**
 

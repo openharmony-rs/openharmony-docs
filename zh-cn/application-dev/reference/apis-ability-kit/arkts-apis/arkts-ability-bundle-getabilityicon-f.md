@@ -79,7 +79,7 @@ function getAbilityIcon(bundleName: string, abilityName: string): Promise<image.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;image.PixelMap & gt; | Returns the PixelMap object representing the icon of the specified ability. |
+| Promise &lt;image.PixelMap&gt; | Returns the PixelMap object representing the icon of the specified ability. |
 
 **示例**
 

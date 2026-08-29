@@ -592,7 +592,7 @@ isCommunicationDeviceActive(deviceType: CommunicationDeviceType): Promise<boolea
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示设备已激活；返回false表示设备未激活。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示设备已激活；返回false表示设备未激活。 |
 
 **示例**
 
@@ -667,7 +667,7 @@ isMicBlockDetectionSupported():Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示支持；返回false表示不支持。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示支持；返回false表示不支持。 |
 
 **示例**
 
@@ -1002,7 +1002,7 @@ setCommunicationDevice(deviceType: CommunicationDeviceType, active: boolean): Pr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 

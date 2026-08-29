@@ -30,7 +30,7 @@ function createPkcs12(data: Pkcs12Data, config: Pkcs12CreationConfig): Promise<U
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Uint8Array & gt; | Promise对象，返回创建的P12，DER格式。 |
+| Promise &lt;Uint8Array&gt; | Promise对象，返回创建的P12，DER格式。 |
 
 **错误码：**
 

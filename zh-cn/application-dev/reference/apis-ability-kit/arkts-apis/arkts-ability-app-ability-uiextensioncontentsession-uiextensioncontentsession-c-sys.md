@@ -107,7 +107,7 @@ sendData(data: Record<string, Object>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | Record & lt;string, Object & gt; | 是 | 发送给UIExtensionComponent控件的数据参数。<br>**起始版本：** 11 |
+| data | Record &lt;string, Object&gt; | 是 | 发送给UIExtensionComponent控件的数据参数。<br>**起始版本：** 11 |
 
 **错误码：**
 
@@ -171,7 +171,7 @@ setReceiveDataCallback(callback: (data: Record<string, Object>) => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (data: Record & lt;string, Object & gt;) = & gt; void | 是 | 回调函数，返回接收的数据。 |
+| callback | (data: Record &lt;string, Object&gt;) =&gt; void | 是 | 回调函数，返回接收的数据。 |
 
 **错误码：**
 
@@ -228,7 +228,7 @@ setReceiveDataForResultCallback(callback: (data: Record<string, Object>) => Reco
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (data: Record & lt;string, Object & gt;) = & gt; Record & lt;string, Object & gt; | 是 | 回调函数，返回带返回值的接收的数据。 |
+| callback | (data: Record &lt;string, Object&gt;) =&gt; Record &lt;string, Object&gt; | 是 | 回调函数，返回带返回值的接收的数据。 |
 
 **错误码：**
 
@@ -511,7 +511,7 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -741,7 +741,7 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

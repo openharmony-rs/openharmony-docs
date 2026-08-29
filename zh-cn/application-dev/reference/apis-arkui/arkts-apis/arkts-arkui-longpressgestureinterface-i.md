@@ -89,7 +89,7 @@ onAction(event: (event: GestureEvent) => void): LongPressGestureInterface
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (event: GestureEvent) = & gt; void | 是 | 长按手势识别成功回调函数。 |
+| event | (event: GestureEvent) =&gt; void | 是 | 长按手势识别成功回调函数。 |
 
 **返回值：**
 
@@ -115,7 +115,7 @@ onActionCancel(event: () => void): LongPressGestureInterface
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () = & gt; void | 是 | 长按手势取消回调函数。 |
+| event | () =&gt; void | 是 | 长按手势取消回调函数。 |
 
 **返回值：**
 
@@ -169,7 +169,7 @@ onActionEnd(event: (event: GestureEvent) => void): LongPressGestureInterface
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (event: GestureEvent) = & gt; void | 是 | 长按手势结束回调函数。 |
+| event | (event: GestureEvent) =&gt; void | 是 | 长按手势结束回调函数。 |
 
 **返回值：**
 

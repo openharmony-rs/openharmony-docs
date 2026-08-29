@@ -40,7 +40,7 @@ import { Vector } from '@kit.ArkTS';
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;T & gt; | 返回一个迭代器，用于遍历Vector实例中的元素。 |
+| IterableIterator &lt;T&gt; | 返回一个迭代器，用于遍历Vector实例中的元素。 |
 
 **示例**
 
@@ -208,7 +208,7 @@ convertToArray(): Array<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;T & gt; | 返回包含Vector中所有元素的数组。 |
+| Array &lt;T&gt; | 返回包含Vector中所有元素的数组。 |
 
 **示例**
 
@@ -239,7 +239,7 @@ copyToArray(array: Array<T>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| array | Array & lt;T & gt; | 是 | 接收复制元素的目标数组。 |
+| array | Array &lt;T&gt; | 是 | 接收复制元素的目标数组。 |
 
 ## forEach
 
@@ -259,7 +259,7 @@ forEach(callbackFn: (value: T, index?: number, vector?: Vector<T>) => void, this
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index?: number, vector?: Vector & lt;T & gt;) = & gt; void | 是 | 回调函数，用于遍历Vector中的每个元素。 |
+| callbackFn | (value: T, index?: number, vector?: Vector &lt;T&gt;) =&gt; void | 是 | 回调函数，用于遍历Vector中的每个元素。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为当前实例对象。 |
 
 **示例**
@@ -295,7 +295,7 @@ get(index: number): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 查找的下标值，取值范围：0 ≤ index & lt; length。 |
+| index | number | 是 | 查找的下标值，取值范围：0 ≤ index &lt; length。 |
 
 **返回值：**
 
@@ -829,7 +829,7 @@ replaceAllElements(callbackFn: (value: T, index?: number, vector?: Vector<T>) =>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index?: number, vector?: Vector & lt;T & gt;) = & gt; T | 是 | 回调函数，用于操作Vector中的元素，并用操作后的结果替换原元素。 |
+| callbackFn | (value: T, index?: number, vector?: Vector &lt;T&gt;) =&gt; T | 是 | 回调函数，用于操作Vector中的元素，并用操作后的结果替换原元素。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为当前实例对象。 |
 
 **示例**
@@ -925,7 +925,7 @@ sort(comparator?: (firstValue: T, secondValue: T) => number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| comparator | (firstValue: T, secondValue: T) = & gt; number | 否 | 回调函数，若不传入此参数，则按照默认排序规则对元素进行排序。 |
+| comparator | (firstValue: T, secondValue: T) =&gt; number | 否 | 回调函数，若不传入此参数，则按照默认排序规则对元素进行排序。 |
 
 **示例**
 
@@ -962,7 +962,7 @@ subVector(fromIndex: number, toIndex: number): Vector<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fromIndex | number | 是 | 起始下标，取值范围：0 ≤ fromIndex & lt; length。 |
+| fromIndex | number | 是 | 起始下标，取值范围：0 ≤ fromIndex &lt; length。 |
 | toIndex | number | 是 | 终止下标，取值范围：0 ≤ toIndex ≤ length，且toIndex应大于fromIndex。 |
 
 **返回值：**

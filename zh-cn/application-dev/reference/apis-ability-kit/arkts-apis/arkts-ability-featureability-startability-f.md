@@ -91,7 +91,7 @@ function startAbility(parameter: StartAbilityParameter): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回0表示启动成功，返回其他表示启动失败。 |
+| Promise &lt;number&gt; | Promise对象。返回0表示启动成功，返回其他表示启动失败。 |
 
 **示例**
 

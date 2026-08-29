@@ -159,7 +159,7 @@ function startContinuationDeviceManager(token: number, options?: ContinuationExt
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise形式返回接口调用结果。 |
+| Promise &lt;void&gt; | Promise形式返回接口调用结果。 |
 
 **错误码：**
 

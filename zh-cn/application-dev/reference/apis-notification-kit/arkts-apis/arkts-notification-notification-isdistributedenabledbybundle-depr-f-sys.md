@@ -83,7 +83,7 @@ function isDistributedEnabledByBundle(bundle: BundleOption): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise方式返回指定应用是否支持分布式通知的结果。 |
+| Promise &lt;boolean&gt; | Promise方式返回指定应用是否支持分布式通知的结果。 |
 
 **示例**
 

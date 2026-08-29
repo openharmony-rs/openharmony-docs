@@ -103,7 +103,7 @@ function queryBundleStatsInfoByInterval(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;BundleStatsInfo & gt; & gt; | Promise对象。返回指定时间段间隔内，应用使用时长的统计信息。 |
+| Promise &lt;Array &lt;BundleStatsInfo&gt;&gt; | Promise对象。返回指定时间段间隔内，应用使用时长的统计信息。 |
 
 **错误码：**
 

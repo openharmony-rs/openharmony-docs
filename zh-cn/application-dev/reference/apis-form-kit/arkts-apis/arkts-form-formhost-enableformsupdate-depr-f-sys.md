@@ -29,7 +29,7 @@ function enableFormsUpdate(formIds: Array<string>, callback: AsyncCallback<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| formIds | Array & lt;string & gt; | 是 | 卡片标识列表。 |
+| formIds | Array &lt;string&gt; | 是 | 卡片标识列表。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当向卡片框架发送通知以使指定的卡片可以更新成功，error为undefined，否则为错误对象。 |
 
 **示例**
@@ -70,13 +70,13 @@ function enableFormsUpdate(formIds: Array<string>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| formIds | Array & lt;string & gt; | 是 | 卡片标识列表。 |
+| formIds | Array &lt;string&gt; | 是 | 卡片标识列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 

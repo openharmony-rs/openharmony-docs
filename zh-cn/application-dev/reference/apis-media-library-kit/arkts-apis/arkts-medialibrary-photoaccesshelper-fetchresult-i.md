@@ -95,7 +95,7 @@ contains(object: T): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示指定的文件资产在文件检索结果中；返回false表示指定的文件资产不在文件检索结果中。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示指定的文件资产在文件检索结果中；返回false表示指定的文件资产不在文件检索结果中。 |
 
 **示例**
 
@@ -192,7 +192,7 @@ getAllObjects(): Promise<Array<T>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;T & gt; & gt; | Promise对象，返回所有文件资产的数组。 |
+| Promise &lt;Array &lt;T&gt;&gt; | Promise对象，返回所有文件资产的数组。 |
 
 **错误码：**
 
@@ -338,7 +338,7 @@ getFirstObject(): Promise<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;T & gt; | Promise对象，返回结果集中第一个对象。 |
+| Promise &lt;T&gt; | Promise对象，返回结果集中第一个对象。 |
 
 **错误码：**
 
@@ -393,7 +393,7 @@ getIndex(object: T): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回查询结果。如果对象在文件检索结果中则返回对应的索引，不存在则返回-1。 |
+| Promise &lt;number&gt; | Promise对象，返回查询结果。如果对象在文件检索结果中则返回对应的索引，不存在则返回-1。 |
 
 **示例**
 
@@ -490,7 +490,7 @@ getLastObject(): Promise<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;T & gt; | Promise对象，返回结果集中的最后一个对象。 |
+| Promise &lt;T&gt; | Promise对象，返回结果集中的最后一个对象。 |
 
 **错误码：**
 
@@ -592,7 +592,7 @@ getNextObject(): Promise<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;T & gt; | Promise对象，返回结果集中下一个对象。 |
+| Promise &lt;T&gt; | Promise对象，返回结果集中下一个对象。 |
 
 **错误码：**
 
@@ -701,7 +701,7 @@ getObjectByPosition(index: number): Promise<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;T & gt; | Promise对象，返回结果集中指定索引的一个对象。 |
+| Promise &lt;T&gt; | Promise对象，返回结果集中指定索引的一个对象。 |
 
 **错误码：**
 
@@ -760,7 +760,7 @@ getObjectsByIndexSet(indexSet: number[]): Promise<T[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;T[] & gt; | Promise对象，返回指定索引集合所对应的文件资产数组。 |
+| Promise &lt;T[]&gt; | Promise对象，返回指定索引集合所对应的文件资产数组。 |
 
 **错误码：**
 
@@ -816,7 +816,7 @@ getRangeObjects(index: number, offset: number): Promise<T[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;T[] & gt; | 返回Promise异步回调数组。 |
+| Promise &lt;T[]&gt; | 返回Promise异步回调数组。 |
 
 **错误码：**
 

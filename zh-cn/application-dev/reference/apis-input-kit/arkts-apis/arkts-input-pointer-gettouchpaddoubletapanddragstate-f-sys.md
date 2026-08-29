@@ -82,7 +82,7 @@ function getTouchpadDoubleTapAndDragState(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示触控板双击拖拽功能开启；返回false表示触控板双击拖拽功能关闭。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示触控板双击拖拽功能开启；返回false表示触控板双击拖拽功能关闭。 |
 
 **错误码：**
 

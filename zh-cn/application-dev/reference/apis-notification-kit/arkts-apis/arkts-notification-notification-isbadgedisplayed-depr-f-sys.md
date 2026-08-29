@@ -81,7 +81,7 @@ function isBadgeDisplayed(bundle: BundleOption): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 以Promise形式返回获取指定应用的角标使能状态。 |
+| Promise &lt;boolean&gt; | 以Promise形式返回获取指定应用的角标使能状态。 |
 
 **示例**
 

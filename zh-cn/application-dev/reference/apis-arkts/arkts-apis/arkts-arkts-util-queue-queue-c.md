@@ -29,7 +29,7 @@ Queue遵循先进先出原则：在尾部增加元素，在头部删除元素。
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;T & gt; | 返回一个迭代器，用于遍历Queue中的所有元素。 |
+| IterableIterator &lt;T&gt; | 返回一个迭代器，用于遍历Queue中的所有元素。 |
 
 **错误码：**
 
@@ -167,7 +167,7 @@ forEach(callbackFn: (value: T, index?: number, Queue?: Queue<T>) => void, thisAr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index?: number, Queue?: Queue & lt;T & gt;) = & gt; void | 是 | 对每个元素执行的回调函数。 |
+| callbackFn | (value: T, index?: number, Queue?: Queue &lt;T&gt;) =&gt; void | 是 | 对每个元素执行的回调函数。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为当前实例对象。 |
 
 **错误码：**

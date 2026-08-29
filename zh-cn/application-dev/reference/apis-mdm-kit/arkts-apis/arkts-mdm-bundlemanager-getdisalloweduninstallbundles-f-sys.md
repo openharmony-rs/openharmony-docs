@@ -162,7 +162,7 @@ function getDisallowedUninstallBundles(admin: Want, userId?: number): Promise<Ar
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回当前/指定用户下的应用程序包卸载禁止名单。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回当前/指定用户下的应用程序包卸载禁止名单。 |
 
 **错误码：**
 

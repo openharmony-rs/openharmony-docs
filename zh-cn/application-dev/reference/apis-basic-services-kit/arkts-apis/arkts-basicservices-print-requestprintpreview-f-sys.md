@@ -92,7 +92,7 @@ function requestPrintPreview(jobInfo: PrintJob): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回预览结果。 |
+| Promise &lt;number&gt; | Promise对象，返回预览结果。 |
 
 **错误码：**
 

@@ -31,7 +31,7 @@ function execTool(toolName: string, subCommand: string, args: Record<string, Obj
 | --- | --- | --- | --- |
 | toolName | string | 是 | 目标工具的名称 |
 | subCommand | string | 是 | 此执行操作的子命令 |
-| args | Record & lt;string, Object & gt; | 是 | 工具的输入参数 |
+| args | Record &lt;string, Object&gt; | 是 | 工具的输入参数 |
 | challenge | string | 是 | 从访问令牌管理器获取的唯一标识符 |
 | execOptions | [ExecOptions](arkts-ability-climanager-execoptions-i-sys.md) | 否 | 此操作的选项 |
 

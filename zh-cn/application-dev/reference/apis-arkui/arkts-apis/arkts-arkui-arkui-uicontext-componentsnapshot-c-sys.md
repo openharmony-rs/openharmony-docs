@@ -57,7 +57,7 @@ getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean,
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;image.PixelMap & gt; | Result of the snapshot. |
+| Promise &lt;image.PixelMap&gt; | Result of the snapshot. |
 
 **错误码：**
 

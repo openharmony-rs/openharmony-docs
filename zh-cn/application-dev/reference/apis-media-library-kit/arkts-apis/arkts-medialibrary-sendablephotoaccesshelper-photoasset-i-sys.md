@@ -40,7 +40,7 @@ getAnalysisData(analysisType: photoAccessHelper.AnalysisType): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回指定分析数据结果。 |
+| Promise &lt;string&gt; | Promise对象，返回指定分析数据结果。 |
 
 **错误码：**
 
@@ -101,7 +101,7 @@ requestSource(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回源文件fd。 |
+| Promise &lt;number&gt; | Promise对象，返回源文件fd。 |
 
 **错误码：**
 

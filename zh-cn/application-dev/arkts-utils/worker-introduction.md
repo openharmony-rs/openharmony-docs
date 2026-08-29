@@ -254,7 +254,7 @@ const workerFA3: worker.ThreadWorker = new worker.ThreadWorker('ThreadFile/worke
 
 ## Worker基本用法示例
 
-1. DevEco Studio支持一键生成Worker，在对应的{moduleName}目录下任意位置，单击鼠标右键 &gt; New &gt; Worker，即可自动生成Worker的模板文件及配置信息。本文以创建“worker”为例。
+1. DevEco Studio支持一键生成Worker，在对应的{moduleName}目录下任意位置，单击鼠标右键&gt; New&gt; Worker，即可自动生成Worker的模板文件及配置信息。本文以创建“worker”为例。
 
    支持手动创建Worker文件，具体方式和注意事项请参阅创建Worker的注意事项。
 

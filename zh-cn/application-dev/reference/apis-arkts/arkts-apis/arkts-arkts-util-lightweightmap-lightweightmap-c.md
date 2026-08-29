@@ -29,7 +29,7 @@ LightWeightMap可用于存储具有关联关系的key-value键值对，其中key
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;[K, V] & gt; | 返回一个迭代器。 |
+| IterableIterator &lt;[K, V]&gt; | 返回一个迭代器。 |
 
 **错误码：**
 
@@ -154,7 +154,7 @@ entries(): IterableIterator<[K, V]>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;[K, V] & gt; | 返回包含此映射中所有键值对的迭代器对象。 |
+| IterableIterator &lt;[K, V]&gt; | 返回包含此映射中所有键值对的迭代器对象。 |
 
 **错误码：**
 
@@ -206,7 +206,7 @@ forEach(callbackFn: (value?: V, key?: K, map?: LightWeightMap<K, V>) => void, th
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value?: V, key?: K, map?: LightWeightMap & lt;K, V & gt;) = & gt; void | 是 | 回调函数，用于遍历LightWeightMap实例中的元素及下标。 |
+| callbackFn | (value?: V, key?: K, map?: LightWeightMap &lt;K, V&gt;) =&gt; void | 是 | 回调函数，用于遍历LightWeightMap实例中的元素及下标。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值。当需要回调函数中的this指向非当前实例对象时传入此参数，当不需要改变this指向时可不传入。不传入时，默认值为当前实例对象。 |
 
 **错误码：**
@@ -662,7 +662,7 @@ keys(): IterableIterator<K>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;K & gt; | 返回一个迭代器。 |
+| IterableIterator &lt;K&gt; | 返回一个迭代器。 |
 
 **错误码：**
 
@@ -945,7 +945,7 @@ values(): IterableIterator<V>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;V & gt; | 返回一个迭代器。 |
+| IterableIterator &lt;V&gt; | 返回一个迭代器。 |
 
 **错误码：**
 

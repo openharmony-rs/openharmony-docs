@@ -24,7 +24,7 @@ function getFreeInodes(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回文件系统inode资源剩余量。 |
+| Promise &lt;number&gt; | Promise对象，返回文件系统inode资源剩余量。 |
 
 **错误码：**
 

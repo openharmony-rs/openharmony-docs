@@ -134,7 +134,7 @@ init(pubKey: PubKey): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -206,7 +206,7 @@ recover(signatureData: DataBlob): Promise<DataBlob | null>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;DataBlob \ | null & gt; | Promise对象，返回从签名中恢复的原始数据。 |
+| Promise &lt;DataBlob \ | null&gt; | Promise对象，返回从签名中恢复的原始数据。 |
 
 **错误码：**
 
@@ -593,7 +593,7 @@ update(data: DataBlob): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -750,7 +750,7 @@ verify(data: DataBlob, signatureData: DataBlob): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回验签结果。返回true表示验签成功，返回false表示验签失败。 |
+| Promise &lt;boolean&gt; | Promise对象，返回验签结果。返回true表示验签成功，返回false表示验签失败。 |
 
 **错误码：**
 
@@ -789,7 +789,7 @@ verify(data: DataBlob | null, signatureData: DataBlob): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示验签成功，返回false表示验签失败。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示验签成功，返回false表示验签失败。 |
 
 **错误码：**
 

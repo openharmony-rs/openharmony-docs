@@ -36,7 +36,7 @@ function getSkillInfos(bundleName: string, flags: number, userId?: number): Prom
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;SkillInfo & gt; & gt; | Promise对象，返回指定应用的所有技能信息数组。 |
+| Promise &lt;Array &lt;SkillInfo&gt;&gt; | Promise对象，返回指定应用的所有技能信息数组。 |
 
 **错误码：**
 

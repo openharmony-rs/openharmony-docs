@@ -72,7 +72,7 @@ function getDoNotDisturbDate(): Promise<DoNotDisturbDate>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;DoNotDisturbDate & gt; | 以Promise形式返回查询到的免打扰时间。 |
+| Promise &lt;DoNotDisturbDate&gt; | 以Promise形式返回查询到的免打扰时间。 |
 
 **示例**
 
@@ -163,7 +163,7 @@ function getDoNotDisturbDate(userId: number): Promise<DoNotDisturbDate>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;DoNotDisturbDate & gt; | 以Promise形式返回查询到的免打扰时间。 |
+| Promise &lt;DoNotDisturbDate&gt; | 以Promise形式返回查询到的免打扰时间。 |
 
 **示例**
 

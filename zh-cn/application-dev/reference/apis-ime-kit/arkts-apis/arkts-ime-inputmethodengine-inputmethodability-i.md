@@ -148,7 +148,7 @@ createPanel(ctx: BaseContext, info: PanelInfo): Promise<Panel>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Panel & gt; | Promise对象，返回Panel对象。 |
+| Promise &lt;Panel&gt; | Promise对象，返回Panel对象。 |
 
 **错误码：**
 
@@ -271,7 +271,7 @@ destroyPanel(panel: Panel): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -361,7 +361,7 @@ off(type: 'inputStart', callback?: (kbController: KeyboardController, inputClien
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'inputStart' | 是 | 设置监听类型，固定取值为'inputStart'。 |
-| callback | (kbController: KeyboardController, inputClient: InputClient) = & gt; void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | (kbController: KeyboardController, inputClient: InputClient) =&gt; void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例**
 
@@ -386,7 +386,7 @@ off(type: 'inputStop', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'inputStop' | 是 | 设置监听类型，固定取值为'inputStop'。 |
-| callback | () = & gt; void | 是 | 取消订阅的回调函数。 |
+| callback | () =&gt; void | 是 | 取消订阅的回调函数。 |
 
 **示例**
 
@@ -413,7 +413,7 @@ off(type: 'setCallingWindow', callback: (wid: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'setCallingWindow' | 是 | 设置监听类型，固定取值为'setCallingWindow'。 |
-| callback | (wid: number) = & gt; void | 是 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | (wid: number) =&gt; void | 是 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例**
 
@@ -440,7 +440,7 @@ off(type: 'keyboardShow' | 'keyboardHide', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'keyboardShow' \| 'keyboardHide' | 是 | 设置监听类型。   - 'keyboardShow'表示显示输入法软键盘。   - 'keyboardHide'表示隐 藏输入法软键盘。 |
-| callback | () = & gt; void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | () =&gt; void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例**
 
@@ -470,7 +470,7 @@ off(type: 'keyboardShow' | 'keyboardHide', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'keyboardShow' \| 'keyboardHide' | 是 | 设置监听类型。   - 'keyboardShow'表示显示输入法软键盘。   - 'keyboardHide'表示隐 藏输入法软键盘。 |
-| callback | () = & gt; void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | () =&gt; void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例**
 
@@ -493,7 +493,7 @@ off(type: 'setSubtype', callback?: (inputMethodSubtype: InputMethodSubtype) => v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'setSubtype' | 是 | 设置监听类型，固定取值为'setSubtype'。 |
-| callback | (inputMethodSubtype: InputMethodSubtype) = & gt; void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | (inputMethodSubtype: InputMethodSubtype) =&gt; void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例**
 
@@ -643,7 +643,7 @@ on(type: 'inputStart', callback: (kbController: KeyboardController, inputClient:
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'inputStart' | 是 | 设置监听类型，固定取值为'inputStart'。 |
-| callback | (kbController: KeyboardController, inputClient: InputClient) = & gt; void | 是 | 回调函数，返回输入法操作相关实例。kbController为键盘控制器实例，用于控制键盘显示/隐藏；inputClient为输入客户端实例，用于与编辑框进行文本交 互。 |
+| callback | (kbController: KeyboardController, inputClient: InputClient) =&gt; void | 是 | 回调函数，返回输入法操作相关实例。kbController为键盘控制器实例，用于控制键盘显示/隐藏；inputClient为输入客户端实例，用于与编辑框进行文本交 互。 |
 
 **示例**
 
@@ -672,7 +672,7 @@ on(type: 'inputStop', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'inputStop' | 是 | 设置监听类型，固定取值为'inputStop'。 |
-| callback | () = & gt; void | 是 | 回调函数，无返回参数。 |
+| callback | () =&gt; void | 是 | 回调函数，无返回参数。 |
 
 **示例**
 
@@ -699,7 +699,7 @@ on(type: 'setCallingWindow', callback: (wid: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'setCallingWindow' | 是 | 设置监听类型，固定取值为'setCallingWindow'。 |
-| callback | (wid: number) = & gt; void | 是 | 回调函数，参数为调用方窗口的Id。 |
+| callback | (wid: number) =&gt; void | 是 | 回调函数，参数为调用方窗口的Id。 |
 
 **示例**
 
@@ -726,7 +726,7 @@ on(type: 'keyboardShow' | 'keyboardHide', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'keyboardShow' \| 'keyboardHide' | 是 | 设置监听类型。   - 'keyboardShow'表示显示输入法软键盘。   - 'keyboardHide'表示隐 藏输入法软键盘。 |
-| callback | () = & gt; void | 是 | 回调函数。 |
+| callback | () =&gt; void | 是 | 回调函数。 |
 
 **示例**
 
@@ -756,7 +756,7 @@ on(type: 'keyboardShow' | 'keyboardHide', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'keyboardShow' \| 'keyboardHide' | 是 | 设置监听类型。   - 'keyboardShow'表示显示输入法软键盘。   - 'keyboardHide'表示隐 藏输入法软键盘。 |
-| callback | () = & gt; void | 是 | 回调函数。 |
+| callback | () =&gt; void | 是 | 回调函数。 |
 
 **示例**
 
@@ -779,7 +779,7 @@ on(type: 'setSubtype', callback: (inputMethodSubtype: InputMethodSubtype) => voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'setSubtype' | 是 | 设置监听类型，固定取值为'setSubtype'。 |
-| callback | (inputMethodSubtype: InputMethodSubtype) = & gt; void | 是 | 回调函数，返回设置的输入法子类型（InputMethodSubtype，输入法子类型）。 |
+| callback | (inputMethodSubtype: InputMethodSubtype) =&gt; void | 是 | 回调函数，返回设置的输入法子类型（InputMethodSubtype，输入法子类型）。 |
 
 **示例**
 

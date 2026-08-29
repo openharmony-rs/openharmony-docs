@@ -29,7 +29,7 @@ function queryApnIds(apnInfo: ApnInfo): Promise<Array<number>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;number & gt; & gt; | Promise对象，返回传入的ApnInfo对应的ApnId信息列表。 |
+| Promise &lt;Array &lt;number&gt;&gt; | Promise对象，返回传入的ApnInfo对应的ApnId信息列表。 |
 
 **错误码：**
 

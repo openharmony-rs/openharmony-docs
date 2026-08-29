@@ -97,7 +97,7 @@ defaultPickerItemHeight(height: Optional<number | string>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| height | [Optional](arkts-arkui-optional-t.md)&lt;number \| string & gt; | 是 | 选择项的高度。 取值范围： number类型：[0, +∞)，单位为vp。 string类型：仅支持number类型取值的字符串形式，例如"56"。 默认值：选中项56vp，非选中项36vp。    **说明：** 1. 设置该参数后，选中项与非选中项的高度均为所设置的值。  2. 当height的值为undefined时，维持上次取值。 |
+| height | [Optional](arkts-arkui-optional-t.md)&lt;number \| string&gt; | 是 | 选择项的高度。 取值范围： number类型：[0, +∞)，单位为vp。 string类型：仅支持number类型取值的字符串形式，例如"56"。 默认值：选中项56vp，非选中项36vp。    **说明：** 1. 设置该参数后，选中项与非选中项的高度均为所设置的值。  2. 当height的值为undefined时，维持上次取值。 |
 
 ## defaultTextStyle
 
@@ -275,7 +275,7 @@ divider(textDivider: Optional<DividerOptions | null>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| textDivider | [Optional](arkts-arkui-optional-t.md)&lt;[DividerOptions](arkts-arkui-divideroptions-i.md) \| null & gt; | 是 | 默认值： {strokeWidth: '2px', startMargin: 0, endMargin: 0, color: '#33000000'}  1. 当textDivider的值为undefined时，使用默认值。  2. 当textDivider设置为有效的[DividerOptions](arkts-arkui-divideroptions-i.md)时，按设置的样式显示分割线。  3. 当textDivider设置为null时，不显示分割线。 |
+| textDivider | [Optional](arkts-arkui-optional-t.md)&lt;[DividerOptions](arkts-arkui-divideroptions-i.md) \| null&gt; | 是 | 默认值： {strokeWidth: '2px', startMargin: 0, endMargin: 0, color: '#33000000'}  1. 当textDivider的值为undefined时，使用默认值。  2. 当textDivider设置为有效的[DividerOptions](arkts-arkui-divideroptions-i.md)时，按设置的样式显示分割线。  3. 当textDivider设置为null时，不显示分割线。 |
 
 ## enableHapticFeedback
 
@@ -365,7 +365,7 @@ onAccept(callback: (value: string, index: number) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (value: string, index: number) = & gt; void | 是 |  |
+| callback | (value: string, index: number) =&gt; void | 是 |  |
 
 ## onCancel
 
@@ -389,7 +389,7 @@ onCancel(callback: () => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | () = & gt; void | 是 |  |
+| callback | () =&gt; void | 是 |  |
 
 ## onChange
 
@@ -409,7 +409,7 @@ onChange(callback: (value: string | string[], index: number | number[]) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (value: string \| string[], index: number \| number[]) = & gt; void | 是 |  |
+| callback | (value: string \| string[], index: number \| number[]) =&gt; void | 是 |  |
 
 ## onChange
 
@@ -599,7 +599,7 @@ selectedIndex(index: Optional<number | number[]>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | [Optional](arkts-arkui-optional-t.md)&lt;number \| number[] & gt; | 是 | 选中项在数据选择列表中的索引值，索引从0开始。 默认值：0 当index的值为undefined时，使用[TextPickerOptions](arkts-arkui-textpickeroptions-i.md)中的selected值。 当index的值为负数或者超过数据选择列表的最大索引值时，使用默认值。 |
+| index | [Optional](arkts-arkui-optional-t.md)&lt;number \| number[]&gt; | 是 | 选中项在数据选择列表中的索引值，索引从0开始。 默认值：0 当index的值为undefined时，使用[TextPickerOptions](arkts-arkui-textpickeroptions-i.md)中的selected值。 当index的值为负数或者超过数据选择列表的最大索引值时，使用默认值。 |
 
 ## selectedTextStyle
 

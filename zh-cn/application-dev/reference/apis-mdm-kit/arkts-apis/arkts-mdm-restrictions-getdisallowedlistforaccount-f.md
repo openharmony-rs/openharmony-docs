@@ -34,7 +34,7 @@ function getDisallowedListForAccount(admin: Want, feature: string, accountId: nu
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 用户已添加的禁用某特征的应用名单。 |
+| Array &lt;string&gt; | 用户已添加的禁用某特征的应用名单。 |
 
 **错误码：**
 

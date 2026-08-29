@@ -82,7 +82,7 @@ Obtains the unique device ID of a specified card slot of the device.If the devic
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Returns the unique device ID. Returns an empty string if the unique device ID does not exist. |
+| Promise &lt;string&gt; | Returns the unique device ID. Returns an empty string if the unique device ID does not exist. |
 
 **错误码：**
 

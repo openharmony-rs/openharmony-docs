@@ -108,7 +108,7 @@ Gets the values of the given key in camera metadata.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | The values of the key in camera metadata. |
+| Array &lt;string&gt; | The values of the key in camera metadata. |
 
 **错误码：**
 
@@ -139,7 +139,7 @@ Gets the supported keys in camera metadata.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | The supported keys in camera metadata. |
+| Array &lt;string&gt; | The supported keys in camera metadata. |
 
 **错误码：**
 
@@ -169,7 +169,7 @@ Sets key-value pairs parameters for the session.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| kvpairs | Record & lt;string, string & gt; | 是 | The pairs of tag name and value in camera metadata. |
+| kvpairs | Record &lt;string, string&gt; | 是 | The pairs of tag name and value in camera metadata. |
 
 **错误码：**
 

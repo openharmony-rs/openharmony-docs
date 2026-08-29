@@ -541,7 +541,7 @@ fontFeature(value: string)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string | 是 | 文字特性效果，格式为：normal \|   & lt;feature-tag-value & gt;。 & lt;feature-tag-value & gt;的格式为： & lt;string & gt; [ & lt;integer & gt; \ | on \| off]，多个之间用','隔开。例如："ss01" on。 |
+| value | string | 是 | 文字特性效果，格式为：normal \|   &lt;feature-tag-value&gt;。 &lt;feature-tag-value&gt;的格式为： &lt;string&gt; [ &lt;integer&gt; \ | on \| off]，多个之间用','隔开。例如："ss01" on。 |
 
 ## fontSize
 
@@ -611,7 +611,7 @@ fontVariations(fontVariations: Array<FontVariation>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fontVariations | Array & lt;FontVariation & gt; | 是 | 可变字体的属性数组，数组成员为可变字体的各种属性。fontVariations属性的优先级高于 [fontWeight](#fontweight) 。 |
+| fontVariations | Array &lt;FontVariation&gt; | 是 | 可变字体的属性数组，数组成员为可变字体的各种属性。fontVariations属性的优先级高于 [fontWeight](#fontweight) 。 |
 
 ## fontWeight
 
@@ -1128,7 +1128,7 @@ onCopy(callback: (value: string) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (value: string) = & gt; void | 是 | Callback of the listened event. |
+| callback | (value: string) =&gt; void | 是 | Callback of the listened event. |
 
 ## onMarqueeStateChange
 
@@ -1172,7 +1172,7 @@ onTextSelectionChange(callback: (selectionStart: number, selectionEnd: number) =
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (selectionStart: number, selectionEnd: number) = & gt; void | 是 | Callback of the listened event. |
+| callback | (selectionStart: number, selectionEnd: number) =&gt; void | 是 | Callback of the listened event. |
 
 ## onWillCopy
 
@@ -1204,7 +1204,7 @@ onWillCopy(callback: Callback<string, boolean>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback & lt;string, boolean & gt; | 是 | string为将要被复制的文本内容；boolean表示当前文本是否允许被复制，true：允许文本被复制；false：不允许文本被复制。 |
+| callback | Callback &lt;string, boolean&gt; | 是 | string为将要被复制的文本内容；boolean表示当前文本是否允许被复制，true：允许文本被复制；false：不允许文本被复制。 |
 
 ## optimizeTrailingSpace
 
@@ -1406,7 +1406,7 @@ tailIndents(value: Optional<LengthMetrics | Array<LengthMetrics>>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Optional](arkts-arkui-optional-t.md)&lt;LengthMetrics \| Array & lt;LengthMetrics & gt; & gt; | 是 | 指定文本每一行尾部缩进。当提供一个单独的LengthMetrics值时，所有行共享相同的尾部缩进； 当提供一个数组时，第i个元素指定第i行的尾部缩进；如果文本行数超过数组长度，则数组中的最后一个元素将用于剩余的行。不支持百分比。 取值范围：大于等于0。设置负数时，按默认值处理。 |
+| value | [Optional](arkts-arkui-optional-t.md)&lt;LengthMetrics \| Array &lt;LengthMetrics&gt;&gt; | 是 | 指定文本每一行尾部缩进。当提供一个单独的LengthMetrics值时，所有行共享相同的尾部缩进； 当提供一个数组时，第i个元素指定第i行的尾部缩进；如果文本行数超过数组长度，则数组中的最后一个元素将用于剩余的行。不支持百分比。 取值范围：大于等于0。设置负数时，按默认值处理。 |
 
 ## textAlign
 

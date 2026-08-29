@@ -383,7 +383,7 @@ getColumnNames(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 返回结果集中所有列的名称。支持获取包含重名列的列名。 |
+| Array &lt;string&gt; | 返回结果集中所有列的名称。支持获取包含重名列的列名。 |
 
 **错误码：**
 
@@ -877,7 +877,7 @@ getRows(maxCount: number, position?: number): Promise<Array<ValuesBucket>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;ValuesBucket & gt; & gt; | 返回maxCount条数据，剩余数据不足maxCount条则返回剩余数据，返回空数组时代表已经遍历到结果集的末尾。当结果集中包含重名列时，返回 值会不符合预期，建议使用[getRowsData]{ |
+| Promise &lt;Array &lt;ValuesBucket&gt;&gt; | 返回maxCount条数据，剩余数据不足maxCount条则返回剩余数据，返回空数组时代表已经遍历到结果集的末尾。当结果集中包含重名列时，返回 值会不符合预期，建议使用[getRowsData]{ |
 
 **错误码：**
 

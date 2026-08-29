@@ -79,7 +79,7 @@ static getSystemCollations(): Map<string, string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Map & lt;string, string & gt; | 系统支持的排序方式及名称。其中Map的key为表示排序方式的字符串，value为表示排序方式对应名称的字符串。 支持的范围和系统语言相关。 |
+| Map &lt;string, string&gt; | 系统支持的排序方式及名称。其中Map的key为表示排序方式的字符串，value为表示排序方式对应名称的字符串。 支持的范围和系统语言相关。 |
 
 **错误码：**
 
@@ -119,7 +119,7 @@ static getSystemMeasurements(): Map<string, string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Map & lt;string, string & gt; | 系统支持的度量衡及其名称。其中Map的key表示度量衡的标识，value表示度量衡的名称。支持的度量衡如下： |
+| Map &lt;string, string&gt; | 系统支持的度量衡及其名称。其中Map的key表示度量衡的标识，value表示度量衡的名称。支持的度量衡如下： |
 
 **错误码：**
 
@@ -159,7 +159,7 @@ static getSystemNumberingSystems(): Map<string, string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Map & lt;string, string & gt; | 系统支持的数字系统及示例。其中Map的key为表示数字系统的字符串，value为表示数字系统对应的示例。 支持的范围和系统语言相关。 |
+| Map &lt;string, string&gt; | 系统支持的数字系统及示例。其中Map的key为表示数字系统的字符串，value为表示数字系统对应的示例。 支持的范围和系统语言相关。 |
 
 **错误码：**
 
@@ -199,7 +199,7 @@ static getSystemNumberPatterns(): Map<string, string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Map & lt;string, string & gt; | 系统支持的数字格式及示例。 其中Map的key表示数字格式，是千分符和小数分隔符的unicode编码，value表示数字格式对应的示例。支持的范围和系统语言地区相关。 |
+| Map &lt;string, string&gt; | 系统支持的数字格式及示例。 其中Map的key表示数字格式，是千分符和小数分隔符的unicode编码，value表示数字格式对应的示例。支持的范围和系统语言地区相关。 |
 
 **错误码：**
 
@@ -239,7 +239,7 @@ static getSystemNumericalDatePatterns(): Map<string, string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Map & lt;string, string & gt; | 获取系统支持的数字日期格式及其示例。 其中Map的key表示数字日期格式，形如dd/MM/y；value表示数字日期示例，形如18/07/2025。 |
+| Map &lt;string, string&gt; | 获取系统支持的数字日期格式及其示例。 其中Map的key表示数字日期格式，形如dd/MM/y；value表示数字日期示例，形如18/07/2025。 |
 
 **错误码：**
 

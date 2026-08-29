@@ -32,7 +32,7 @@ function setDeviceDirection(callId: number, deviceDirection: DeviceDirection): P
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以Promise形式异步返回设置视频通话画面方向结果。 |
+| Promise &lt;void&gt; | 以Promise形式异步返回设置视频通话画面方向结果。 |
 
 **错误码：**
 

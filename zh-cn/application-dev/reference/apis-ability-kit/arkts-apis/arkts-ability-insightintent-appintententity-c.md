@@ -40,7 +40,7 @@ abstract onQueryEntity(params: QueryEntityParam): Promise<Array<T>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;T & gt; & gt; | Returns an array of subclasses of the AppIntentEntity class, support promise. |
+| Promise &lt;Array &lt;T&gt;&gt; | Returns an array of subclasses of the AppIntentEntity class, support promise. |
 
 **示例**
 

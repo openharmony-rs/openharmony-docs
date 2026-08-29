@@ -167,7 +167,7 @@ function queryAbilityInfo(want: Want, abilityFlags: number, userId?: number): Pr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;AbilityInfo & gt; & gt; | Promise对象，返回Array & lt;AbilityInfo & gt;。 |
+| Promise &lt;Array &lt;AbilityInfo&gt;&gt; | Promise对象，返回Array &lt;AbilityInfo&gt;。 |
 
 **错误码：**
 
@@ -262,7 +262,7 @@ function queryAbilityInfo(wants: Array<Want>, abilityFlags: number, userId?: num
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;AbilityInfo & gt; & gt; | Promise对象，返回Array & lt;[AbilityInfo]{ |
+| Promise &lt;Array &lt;AbilityInfo&gt;&gt; | Promise对象，返回Array &lt;[AbilityInfo]{ |
 
 **错误码：**
 

@@ -35,7 +35,7 @@ ComponentContent的构造函数。
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uiContext | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需要的UI上下文。 |
-| builder | WrappedBuilder & lt;[] & gt; | 是 | 封装不带参builder函数的WrappedBuilder对象。 |
+| builder | WrappedBuilder &lt;[]&gt; | 是 | 封装不带参builder函数的WrappedBuilder对象。 |
 
 **示例**
 
@@ -179,7 +179,7 @@ ComponentContent的构造函数。
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uiContext | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需要的UI上下文。 |
-| builder | WrappedBuilder & lt;[T] & gt; | 是 | 封装带参builder函数的WrappedBuilder对象。 |
+| builder | WrappedBuilder &lt;[T]&gt; | 是 | 封装带参builder函数的WrappedBuilder对象。 |
 | args | T | 是 | WrappedBuilder对象封装的builder函数的参数，类型T需与`WrappedBuilder&lt;[T]&gt;`中指定的参数类型保持一致，用于将外部数据传递给builder函数以构建UI 内容。 |
 
 **示例**
@@ -207,7 +207,7 @@ ComponentContent的构造函数。
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uiContext | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需要的UI上下文。 |
-| builder | WrappedBuilder & lt;[T] & gt; | 是 | 封装带参builder函数的WrappedBuilder对象。 |
+| builder | WrappedBuilder &lt;[T]&gt; | 是 | 封装带参builder函数的WrappedBuilder对象。 |
 | args | T | 是 | WrappedBuilder对象封装的builder函数的参数，类型T需与`WrappedBuilder&lt;[T]&gt;`中指定的参数类型保持一致，用于将外部数据传递给builder函数以构建UI 内容。 |
 | options | [BuildOptions](arkts-arkui-buildernode-buildoptions-i.md) | 是 | 构建配置参数，用于配置Builder的构建行为，BuildOptions中所有属性都是可选的。 |
 

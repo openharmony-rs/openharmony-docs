@@ -104,7 +104,7 @@ function removeIptablesFilterRule(admin: Want, filterRule: RemoveFilterRule): Pr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。当移除网络包过滤规则失败时抛出错误对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。当移除网络包过滤规则失败时抛出错误对象。 |
 
 **错误码：**
 

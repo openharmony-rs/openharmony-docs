@@ -82,7 +82,7 @@ function showDialog(options: ShowDialogOptions): Promise<ShowDialogSuccessRespon
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ShowDialogSuccessResponse & gt; | 对话框响应结果。 |
+| Promise &lt;ShowDialogSuccessResponse&gt; | 对话框响应结果。 |
 
 **示例**
 

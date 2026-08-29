@@ -164,7 +164,7 @@ save(option?: AudioSaveOptions): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象。返回audioPicker保存音频文件后的结果集。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象。返回audioPicker保存音频文件后的结果集。 |
 
 **示例**
 
@@ -340,7 +340,7 @@ select(option?: AudioSelectOptions): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象。返回audioPicker选择音频后的结果集。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象。返回audioPicker选择音频后的结果集。 |
 
 **示例**
 

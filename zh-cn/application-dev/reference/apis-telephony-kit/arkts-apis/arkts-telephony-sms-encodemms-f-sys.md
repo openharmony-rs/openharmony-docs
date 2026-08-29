@@ -82,7 +82,7 @@ function encodeMms(mms: MmsInformation): Promise<Array<number>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;number & gt; & gt; | 以Promise形式返回彩信编码后的结果。 |
+| Promise &lt;Array &lt;number&gt;&gt; | 以Promise形式返回彩信编码后的结果。 |
 
 **错误码：**
 

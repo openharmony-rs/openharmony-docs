@@ -71,7 +71,7 @@ function getTotalBytes(path: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 返回总字节数 |
+| Promise &lt;number&gt; | 返回总字节数 |
 
 **示例**
 

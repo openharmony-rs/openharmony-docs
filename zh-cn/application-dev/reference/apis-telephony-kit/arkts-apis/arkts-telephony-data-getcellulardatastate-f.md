@@ -67,7 +67,7 @@ function getCellularDataState(): Promise<DataConnectState>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;DataConnectState & gt; | 以Promise形式返回获取PS域的连接状态。 |
+| Promise &lt;DataConnectState&gt; | 以Promise形式返回获取PS域的连接状态。 |
 
 **错误码：**
 

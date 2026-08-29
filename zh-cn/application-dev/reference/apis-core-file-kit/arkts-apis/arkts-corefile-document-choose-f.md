@@ -29,7 +29,7 @@ declare function choose(types?: string[]): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | 异步返回文件URI（注：当前返回错误码） |
+| Promise &lt;string&gt; | 异步返回文件URI（注：当前返回错误码） |
 
 **示例**
 

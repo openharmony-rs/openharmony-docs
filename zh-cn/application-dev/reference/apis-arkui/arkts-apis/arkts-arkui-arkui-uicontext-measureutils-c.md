@@ -50,7 +50,7 @@ getParagraphs(styledString: StyledString, options?: TextLayoutOptions): Array<Pa
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;Paragraph & gt; | 根据文本布局选项转换后得到的[Paragraph]{ |
+| Array &lt;Paragraph&gt; | 根据文本布局选项转换后得到的[Paragraph]{ |
 
 **示例**
 

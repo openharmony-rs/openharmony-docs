@@ -39,7 +39,7 @@ cleanDeviceDirtyData(table: string, cursor?: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -193,7 +193,7 @@ cloudSync(mode: SyncMode, predicates: RdbPredicates, progress: Callback<Progress
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。返回同步结果。 |
+| Promise &lt;void&gt; | Promise对象。返回同步结果。 |
 
 **错误码：**
 
@@ -338,7 +338,7 @@ delete(table: string, predicates: dataSharePredicates.DataSharePredicates): Prom
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回受影响的行数。 |
+| Promise &lt;number&gt; | Promise对象。返回受影响的行数。 |
 
 **错误码：**
 
@@ -392,7 +392,7 @@ lockCloudContainer(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。如果加锁成功，返回锁的有效时长；如果加锁失败，返回0，单位：ms。 |
+| Promise &lt;number&gt; | Promise对象。如果加锁成功，返回锁的有效时长；如果加锁失败，返回0，单位：ms。 |
 
 **错误码：**
 
@@ -583,7 +583,7 @@ query(
 | --- | --- | --- | --- |
 | table | string | 是 | 指定的目标表名，不能为空字符串。 |
 | predicates | dataSharePredicates.DataSharePredicates | 是 | DataSharePredicates的实例对象指定的查询条件。 |
-| columns | Array & lt;string & gt; | 是 | 表示要查询的列。如果值为空，则查询应用于所有列。 |
+| columns | Array &lt;string&gt; | 是 | 表示要查询的列。如果值为空，则查询应用于所有列。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ResultSet&gt; | 是 | 回调函数。返回ResultSet对象。 |
 
 **错误码：**
@@ -626,13 +626,13 @@ query(
 | --- | --- | --- | --- |
 | table | string | 是 | 指定的目标表名，不能为空字符串。 |
 | predicates | dataSharePredicates.DataSharePredicates | 是 | DataSharePredicates的实例对象指定的查询条件。 |
-| columns | Array & lt;string & gt; | 否 | 表示要查询的列。如果值为空，则查询应用于所有列。 |
+| columns | Array &lt;string&gt; | 否 | 表示要查询的列。如果值为空，则查询应用于所有列。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ResultSet & gt; | 返回ResultSet对象。 |
+| Promise &lt;ResultSet&gt; | 返回ResultSet对象。 |
 
 **错误码：**
 
@@ -667,13 +667,13 @@ querySharingResource(predicates: RdbPredicates, columns?: Array<string>): Promis
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | predicates | RdbPredicates | 是 | 表示查询的谓词条件。 |
-| columns | Array & lt;string & gt; | 否 | 表示要查找的列字段名。此参数不填时，返回的结果集中只包含共享资源标识字段。 |
+| columns | Array &lt;string&gt; | 否 | 表示要查找的列字段名。此参数不填时，返回的结果集中只包含共享资源标识字段。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ResultSet & gt; | Promise对象。返回查询的结果集。 |
+| Promise &lt;ResultSet&gt; | Promise对象。返回查询的结果集。 |
 
 **错误码：**
 
@@ -765,7 +765,7 @@ querySharingResource(predicates: RdbPredicates, columns: Array<string>, callback
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | predicates | RdbPredicates | 是 | 表示查询的谓词条件。 |
-| columns | Array & lt;string & gt; | 是 | 表示要查找的列字段名。 |
+| columns | Array &lt;string&gt; | 是 | 表示要查找的列字段名。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ResultSet&gt; | 是 | 回调函数。返回查询的结果集。 |
 
 **错误码：**
@@ -811,7 +811,7 @@ restore(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -895,13 +895,13 @@ retainDeviceData(retainDevices?: Record<string, Array<string>>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| retainDevices | Record & lt;string, Array & lt;string & gt; & gt; | 否 | 指定要保留的分布式数据库表名和对应的设备id，无默认值，不传入则删除当前数据库中所有单版本分布式表中全量同步 数据。 |
+| retainDevices | Record &lt;string, Array &lt;string&gt;&gt; | 否 | 指定要保留的分布式数据库表名和对应的设备id，无默认值，不传入则删除当前数据库中所有单版本分布式表中全量同步 数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -934,7 +934,7 @@ unlockCloudContainer(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1213,7 +1213,7 @@ update(table: string, values: ValuesBucket, predicates: dataSharePredicates.Data
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回受影响的行数。 |
+| Promise &lt;number&gt; | Promise对象。返回受影响的行数。 |
 
 **错误码：**
 
@@ -1278,7 +1278,7 @@ updateDistributedInfo(info: DistributedInfo, predicates: RdbPredicates): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回更新的数据个数。 |
+| Promise &lt;number&gt; | Promise对象。返回更新的数据个数。 |
 
 **错误码：**
 

@@ -34,7 +34,7 @@ function read(portId: number, buffer: Uint8Array, timeout?: number): Promise<num
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 返回实际读取到的数据长度，即成功读取的字节数。 |
+| Promise &lt;number&gt; | 返回实际读取到的数据长度，即成功读取的字节数。 |
 
 **错误码：**
 

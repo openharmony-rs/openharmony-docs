@@ -34,7 +34,7 @@ function getPublishedFormInfoById(formId: string): Promise<formInfo.FormInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;formInfo.FormInfo & gt; | Promise对象。返回查询到符合条件的卡片信息。 |
+| Promise &lt;formInfo.FormInfo&gt; | Promise对象。返回查询到符合条件的卡片信息。 |
 
 **错误码：**
 

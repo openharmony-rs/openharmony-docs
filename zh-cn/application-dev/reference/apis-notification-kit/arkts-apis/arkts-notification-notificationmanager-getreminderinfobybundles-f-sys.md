@@ -26,7 +26,7 @@ function getReminderInfoByBundles(bundles: Array<BundleOption>) : Promise<Array<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundles | Array & lt;BundleOption & gt; | 是 | 待获取应用提醒信息的应用包信息数组。 |
+| bundles | Array &lt;BundleOption&gt; | 是 | 待获取应用提醒信息的应用包信息数组。 |
 
 **返回值：**
 

@@ -69,7 +69,7 @@ function getISOCountryCodeForSim(slotId: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | 以Promise形式返回获取指定卡槽SIM卡的ISO国家码。例如：CN(中国)。 |
+| Promise &lt;string&gt; | 以Promise形式返回获取指定卡槽SIM卡的ISO国家码。例如：CN(中国)。 |
 
 **错误码：**
 

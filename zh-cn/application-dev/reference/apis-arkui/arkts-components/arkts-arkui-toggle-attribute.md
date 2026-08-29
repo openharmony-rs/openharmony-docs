@@ -55,7 +55,7 @@ onChange(callback: (isOn: boolean) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (isOn: boolean) = & gt; void | 是 |  |
+| callback | (isOn: boolean) =&gt; void | 是 |  |
 
 ## selectedColor
 

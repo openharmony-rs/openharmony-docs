@@ -72,7 +72,7 @@ addCircle(x: number, y: number, radius: number, pathDirection?: PathDirection): 
 | --- | --- | --- | --- |
 | x | number | 是 | 表示圆心的x轴坐标，该参数为浮点数。单位为物理像素px。 |
 | y | number | 是 | 表示圆心的y轴坐标，该参数为浮点数。单位为物理像素px。 |
-| radius | number | 是 | 表示圆形的半径，取值范围 & gt;0，该参数为浮点数，小于等于0时不会有任何效果。单位为物理像素px。 |
+| radius | number | 是 | 表示圆形的半径，取值范围&gt;0，该参数为浮点数，小于等于0时不会有任何效果。单位为物理像素px。 |
 | pathDirection | [PathDirection](arkts-arkgraphics2d-drawing-pathdirection-e.md) | 否 | 表示路径方向。不传入时默认为顺时针方向。 |
 
 **错误码：**
@@ -181,7 +181,7 @@ addPolygon(points: Array<common2D.Point>, close: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| points | Array & lt;common2D.Point & gt; | 是 | 多边形各顶点的坐标点数组，按数组顺序依次连接各点形成连续线段。 |
+| points | Array &lt;common2D.Point&gt; | 是 | 多边形各顶点的坐标点数组，按数组顺序依次连接各点形成连续线段。 |
 | close | boolean | 是 | 表示是否将路径闭合，即是否添加路径起始点到终点的连线。true表示将路径闭合，false表示不将路径闭合。 |
 
 **错误码：**
@@ -309,7 +309,7 @@ approximate(acceptableError: number): Array<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;number & gt; | 返回包含近似路径的点的数组，至少包含两个点。每个点由三个值组成： |
+| Array &lt;number&gt; | 返回包含近似路径的点的数组，至少包含两个点。每个点由三个值组成： |
 
 **错误码：**
 
@@ -750,7 +750,7 @@ getConicWeightData(): Array<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;number & gt; | 类型为浮点数，取值范围≥0。取值为0.0时，该控制点完全无效，曲线不经过此点，曲线实际由其余控制点定义。取值为1.0时，该控制点对应的曲线变为标准贝塞尔曲线，此时权重不产生 额外形变效果。取值大于1时，权重值越大，曲线越靠近该控制点；小于1.0但大于0.0时，曲线则相对远离该控制点。 |
+| Array &lt;number&gt; | 类型为浮点数，取值范围≥0。取值为0.0时，该控制点完全无效，曲线不经过此点，曲线实际由其余控制点定义。取值为1.0时，该控制点对应的曲线变为标准贝塞尔曲线，此时权重不产生 额外形变效果。取值大于1时，权重值越大，曲线越靠近该控制点；小于1.0但大于0.0时，曲线则相对远离该控制点。 |
 
 **示例**
 
@@ -953,7 +953,7 @@ getPointData(): Array<common2D.Point>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;common2D.Point & gt; | 返回路径的点数据数组，每个元素为common2D.Point对象，其x、y坐标为浮点数。 理论取值范围为全体实数，但实际受限于渲染坐标系的有效范围（如-2^31到2^31-1或屏幕可见区域）；超出范围可能导致图形不可见或裁剪。 |
+| Array &lt;common2D.Point&gt; | 返回路径的点数据数组，每个元素为common2D.Point对象，其x、y坐标为浮点数。 理论取值范围为全体实数，但实际受限于渲染坐标系的有效范围（如-2^31到2^31-1或屏幕可见区域）；超出范围可能导致图形不可见或裁剪。 |
 
 **示例**
 

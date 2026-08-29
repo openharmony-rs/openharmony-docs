@@ -32,7 +32,7 @@ function stopRtt(callId: number, type: ImsRttMode): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | The promise returned by the stopRtt. |
+| Promise &lt;void&gt; | The promise returned by the stopRtt. |
 
 **错误码：**
 

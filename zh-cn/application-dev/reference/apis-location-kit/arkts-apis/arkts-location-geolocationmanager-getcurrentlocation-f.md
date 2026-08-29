@@ -171,7 +171,7 @@ function getCurrentLocation(request?: CurrentLocationRequest | SingleLocationReq
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Location & gt; | Promise对象，返回当前位置信息。 |
+| Promise &lt;Location&gt; | Promise对象，返回当前位置信息。 |
 
 **错误码：**
 

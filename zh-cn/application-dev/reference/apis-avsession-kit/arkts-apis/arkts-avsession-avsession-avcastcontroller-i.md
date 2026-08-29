@@ -276,7 +276,7 @@ getSupportedHdrCapabilities(): Promise<Array<hdrCapability.HDRFormat>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;hdrCapability.HDRFormat & gt; & gt; | Promise对象。返回远端设备所支持的HDR能力。 |
+| Promise &lt;Array &lt;hdrCapability.HDRFormat&gt;&gt; | Promise对象。返回远端设备所支持的HDR能力。 |
 
 **错误码：**
 
@@ -317,7 +317,7 @@ getSupportedPlaySpeeds(): Promise<Array<number>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;number & gt; & gt; | Promise对象。返回远端设备所支持的倍速播放列表。 |
+| Promise &lt;Array &lt;number&gt;&gt; | Promise对象。返回远端设备所支持的倍速播放列表。 |
 
 **错误码：**
 
@@ -433,7 +433,7 @@ off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'playbackStateChange' | 是 |  |
-| callback | (state: AVPlaybackState) = & gt; void | 否 | 回调函数，参数state是变化后的播放状态。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (state: AVPlaybackState) =&gt; void | 否 | 回调函数，参数state是变化后的播放状态。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -929,8 +929,8 @@ on(type: 'playbackStateChange', filter: Array<keyof AVPlaybackState> | 'all', ca
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'playbackStateChange' | 是 |  |
-| filter | Array & lt;keyof AVPlaybackState & gt; \ | 'all' | 是 | 'all'表示关注播放状态所有字段变化；Array & lt;keyof AVPlaybackState & gt;表示关注 Array中的字段变化。 |
-| callback | (state: AVPlaybackState) = & gt; void | 是 | 回调函数，参数state是变化后的播放状态。 |
+| filter | Array &lt;keyof AVPlaybackState&gt; \ | 'all' | 是 | 'all'表示关注播放状态所有字段变化；Array &lt;keyof AVPlaybackState&gt;表示关注 Array中的字段变化。 |
+| callback | (state: AVPlaybackState) =&gt; void | 是 | 回调函数，参数state是变化后的播放状态。 |
 
 **错误码：**
 
@@ -1147,7 +1147,7 @@ on(type: 'videoSizeChange', callback: (width: number, height: number) => void): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'videoSizeChange' | 是 | 事件回调类型，支持事件`'videoSizeChange'`：当检测到会话的合法命令发生改变时，触发该事件。 |
-| callback | (width: number, height: number) = & gt; void | 是 | 回调函数。 |
+| callback | (width: number, height: number) =&gt; void | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -1553,7 +1553,7 @@ prepare(item: AVQueueItem): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。当命令发送成功，无返回结果，否则返回错误对象。 |
+| Promise &lt;void&gt; | Promise对象。当命令发送成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -1616,7 +1616,7 @@ processMediaKeyResponse(assetId: string, response: Uint8Array): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，当处理许可证响应成功，无返回结果，否则返回错误对象。 |
+| Promise &lt;void&gt; | Promise对象，当处理许可证响应成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -1696,7 +1696,7 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，controller销毁成功，无结果返回，否则返回错误对象。 |
+| Promise &lt;void&gt; | Promise对象，controller销毁成功，无结果返回，否则返回错误对象。 |
 
 **错误码：**
 
@@ -1779,7 +1779,7 @@ sendControlCommand(command: AVCastControlCommand): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。当命令发送成功，无返回结果，否则返回错误对象。 |
+| Promise &lt;void&gt; | Promise对象。当命令发送成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -1819,13 +1819,13 @@ sendCustomData(data: Record<string, Object>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | Record & lt;string, Object & gt; | 是 | 应用程序填充的自定义数据。 |
+| data | Record &lt;string, Object&gt; | 是 | 应用程序填充的自定义数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1979,7 +1979,7 @@ start(item: AVQueueItem): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。当命令发送成功，无返回结果，否则返回错误对象。 |
+| Promise &lt;void&gt; | Promise对象。当命令发送成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -2041,7 +2041,7 @@ update(item: AVQueueItem): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 通过promise回调成功 |
+| Promise &lt;void&gt; | 通过promise回调成功 |
 
 **错误码：**
 

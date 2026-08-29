@@ -158,7 +158,7 @@ createFromBuilder(builder: CustomBuilder, delay?: number,
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;image.PixelMap & gt; | Promise used to return the snapshot object. |
+| Promise &lt;image.PixelMap&gt; | Promise used to return the snapshot object. |
 
 **错误码：**
 
@@ -256,7 +256,7 @@ createFromComponent<T extends Object>(content: ComponentContent<T>, delay?: numb
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;image.PixelMap & gt; | Promise used to return the snapshot object. |
+| Promise &lt;image.PixelMap&gt; | Promise used to return the snapshot object. |
 
 **错误码：**
 
@@ -458,7 +458,7 @@ get(id: string, options?: componentSnapshot.SnapshotOptions): Promise<image.Pixe
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;image.PixelMap & gt; | Promise used to return the snapshot object. |
+| Promise &lt;image.PixelMap&gt; | Promise used to return the snapshot object. |
 
 **错误码：**
 
@@ -796,7 +796,7 @@ getWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOptions): 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;image.PixelMap & gt; | Promise used to return the snapshot object. |
+| Promise &lt;image.PixelMap&gt; | Promise used to return the snapshot object. |
 
 **错误码：**
 

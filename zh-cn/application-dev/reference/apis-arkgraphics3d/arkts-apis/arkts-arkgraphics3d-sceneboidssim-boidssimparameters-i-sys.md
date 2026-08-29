@@ -22,7 +22,7 @@
 alignmentDistance?: number
 ```
 
-对齐规则的感知半径，单位为m。在该距离内（含边界）的邻近个体对对齐力有贡献。取值 &gt;= 0。默认值为0.0。
+对齐规则的感知半径，单位为m。在该距离内（含边界）的邻近个体对对齐力有贡献。取值&gt;= 0。默认值为0.0。
 
 **类型：** number
 
@@ -40,7 +40,7 @@ alignmentDistance?: number
 alignmentWeight?: number
 ```
 
-对齐规则权重。个体在alignmentDistance范围内朝向邻近个体平均航向的强度。取值 &gt;= 0。默认值为0.0。
+对齐规则权重。个体在alignmentDistance范围内朝向邻近个体平均航向的强度。取值&gt;= 0。默认值为0.0。
 
 **类型：** number
 
@@ -58,7 +58,7 @@ alignmentWeight?: number
 boundaryDistance?: number
 ```
 
-边界约束力生效距离，单位为m。个体距边界墙面在该距离内时受到排斥力。取值 &gt;= 0。默认值为0.0。
+边界约束力生效距离，单位为m。个体距边界墙面在该距离内时受到排斥力。取值&gt;= 0。默认值为0.0。
 
 **类型：** number
 
@@ -112,7 +112,7 @@ boundaryMinPos?: Vec3
 boundaryWeight?: number
 ```
 
-边界约束力权重。个体在boundaryDistance范围内被边界墙推回的强度。取值 &gt;= 0。默认值为0.0。
+边界约束力权重。个体在boundaryDistance范围内被边界墙推回的强度。取值&gt;= 0。默认值为0.0。
 
 **类型：** number
 
@@ -130,7 +130,7 @@ boundaryWeight?: number
 cohesionDistance?: number
 ```
 
-凝聚规则的感知半径，单位为m。在该距离内（含边界）的邻近个体对凝聚力有贡献。取值 &gt;= 0。默认值为0.0。
+凝聚规则的感知半径，单位为m。在该距离内（含边界）的邻近个体对凝聚力有贡献。取值&gt;= 0。默认值为0.0。
 
 **类型：** number
 
@@ -148,7 +148,7 @@ cohesionDistance?: number
 cohesionWeight?: number
 ```
 
-凝聚规则权重。个体在cohesionDistance范围内朝向邻近个体平均位置吸引的强度。取值 &gt;= 0。默认值为0.0。
+凝聚规则权重。个体在cohesionDistance范围内朝向邻近个体平均位置吸引的强度。取值&gt;= 0。默认值为0.0。
 
 **类型：** number
 
@@ -166,7 +166,7 @@ cohesionWeight?: number
 gravityWeight?: number
 ```
 
-引力场权重。引力场对该个体的吸引强度。取值 &gt;= 0。默认值为0.0。
+引力场权重。引力场对该个体的吸引强度。取值&gt;= 0。默认值为0.0。
 
 **类型：** number
 
@@ -238,7 +238,7 @@ initialVelocity?: Vec3
 maxAccelerationMag?: number
 ```
 
-个体每模拟帧可达到的最大加速度，单位为m/s²。取值 &gt;= 0。默认值约为39.06。
+个体每模拟帧可达到的最大加速度，单位为m/s²。取值&gt;= 0。默认值约为39.06。
 
 **类型：** number
 
@@ -256,7 +256,7 @@ maxAccelerationMag?: number
 maxTurnRate?: Vec3
 ```
 
-每模拟帧每轴最大转向速率，各分量单位为rad/模拟帧。每个分量取值 &gt;= 0。默认值各分量约为0.0377。
+每模拟帧每轴最大转向速率，各分量单位为rad/模拟帧。每个分量取值&gt;= 0。默认值各分量约为0.0377。
 
 **类型：** [Vec3](arkts-arkgraphics3d-scenetypes-vec3-i.md)
 
@@ -274,7 +274,7 @@ maxTurnRate?: Vec3
 maxVelocityMag?: number
 ```
 
-个体每模拟帧可达到的最大速度，单位为m/s。取值 &gt;= 0。默认值约为0.625。
+个体每模拟帧可达到的最大速度，单位为m/s。取值&gt;= 0。默认值约为0.625。
 
 **类型：** number
 
@@ -292,7 +292,7 @@ maxVelocityMag?: number
 repulsionWeight?: number
 ```
 
-斥力场权重。斥力场对该个体的排斥强度。取值 &gt;= 0。默认值为0.0。
+斥力场权重。斥力场对该个体的排斥强度。取值&gt;= 0。默认值为0.0。
 
 **类型：** number
 
@@ -310,7 +310,7 @@ repulsionWeight?: number
 separationDistance?: number
 ```
 
-分离规则的感知半径，单位为m。仅严格在该距离内的邻近个体对分离力有贡献（边界处力为0）。取值 &gt;= 0。默认值为0.0。
+分离规则的感知半径，单位为m。仅严格在该距离内的邻近个体对分离力有贡献（边界处力为0）。取值&gt;= 0。默认值为0.0。
 
 **类型：** number
 
@@ -328,7 +328,7 @@ separationDistance?: number
 separationWeight?: number
 ```
 
-分离规则权重。个体在separationDistance范围内受邻近个体排斥的强度。取值 &gt;= 0。默认值为0.0。
+分离规则权重。个体在separationDistance范围内受邻近个体排斥的强度。取值&gt;= 0。默认值为0.0。
 
 **类型：** number
 

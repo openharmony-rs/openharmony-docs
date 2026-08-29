@@ -99,7 +99,7 @@ function resetFactory(admin: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。当恢复出厂设置失败时抛出错误对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。当恢复出厂设置失败时抛出错误对象。 |
 
 **错误码：**
 

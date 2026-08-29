@@ -31,7 +31,7 @@ function getDefaultSmdpAddress(slotId: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回SM-DP+地址。 |
+| Promise &lt;string&gt; | Promise对象，返回SM-DP+地址。 |
 
 **错误码：**
 

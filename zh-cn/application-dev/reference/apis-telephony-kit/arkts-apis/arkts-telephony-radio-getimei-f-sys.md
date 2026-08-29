@@ -82,7 +82,7 @@ Obtains the IMEI of a specified card slot of the device.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Returns the IMEI. Returns an empty string if the IMEI does not exist. |
+| Promise &lt;string&gt; | Returns the IMEI. Returns an empty string if the IMEI does not exist. |
 
 **错误码：**
 

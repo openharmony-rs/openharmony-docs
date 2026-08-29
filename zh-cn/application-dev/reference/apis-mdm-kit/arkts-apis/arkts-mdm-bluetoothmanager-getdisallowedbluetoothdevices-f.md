@@ -32,7 +32,7 @@ function getDisallowedBluetoothDevices(admin: Want): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 禁用名单中蓝牙设备MAC地址的数组。 |
+| Array &lt;string&gt; | 禁用名单中蓝牙设备MAC地址的数组。 |
 
 **错误码：**
 
@@ -90,7 +90,7 @@ function getDisallowedBluetoothDevices(admin: Want | null): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 禁用名单中蓝牙设备MAC地址的数组。 |
+| Array &lt;string&gt; | 禁用名单中蓝牙设备MAC地址的数组。 |
 
 **错误码：**
 

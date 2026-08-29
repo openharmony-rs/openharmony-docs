@@ -26,14 +26,14 @@ function setShortcutsEnabled(shortcutsInfo: Array<ShortcutInfo>, isEnabled: bool
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| shortcutsInfo | Array & lt;ShortcutInfo & gt; | 是 | 待启用或禁用的静态快捷方式。   **说明：**本接口不区分主应用和分身应用，且仅对静态快捷方式生效，所以 ShortcutInfo中的appIndex和sourceType设置不生效。 |
+| shortcutsInfo | Array &lt;ShortcutInfo&gt; | 是 | 待启用或禁用的静态快捷方式。   **说明：**本接口不区分主应用和分身应用，且仅对静态快捷方式生效，所以 ShortcutInfo中的appIndex和sourceType设置不生效。 |
 | isEnabled | boolean | 是 | 快捷方式是否启用。true：快捷方式启用；false：快捷方式禁用。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

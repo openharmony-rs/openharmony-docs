@@ -161,7 +161,7 @@ function executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo): 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;{ event: DragEvent, extraParams: string | > } Promise used to return the result.<br>**适用版本：** 10 - 11 |
+| Promise &lt;{ event: DragEvent, extraParams: string | > } Promise used to return the result.<br>**适用版本：** 10 - 11 |
 | Promise&lt;[DragEventParam](arkts-arkui-dragcontroller-drageventparam-i.md)&gt; | A Promise with the drag event information.<br>**适用版本：** 12+ |
 
 **错误码：**

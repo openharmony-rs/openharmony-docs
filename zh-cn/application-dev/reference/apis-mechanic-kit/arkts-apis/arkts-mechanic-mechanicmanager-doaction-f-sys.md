@@ -30,7 +30,7 @@ function doAction(mechId: number, actionType: ActionType): Promise<Result>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Result & gt; | 202 - 非系统应用 |
+| Promise &lt;Result&gt; | 202 - 非系统应用 |
 
 **错误码：**
 

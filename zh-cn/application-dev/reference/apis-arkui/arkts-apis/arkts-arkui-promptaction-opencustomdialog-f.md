@@ -42,7 +42,7 @@ function openCustomDialog(options: CustomDialogOptions): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 返回供closeCustomDialog使用的对话框id。 |
+| Promise &lt;number&gt; | 返回供closeCustomDialog使用的对话框id。 |
 
 **错误码：**
 

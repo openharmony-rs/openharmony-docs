@@ -34,7 +34,7 @@ function addUntrustedConfig(config: WifiDeviceConfig): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 表示操作结果，{ |
+| Promise &lt;boolean&gt; | 表示操作结果，{ |
 
 **示例**
 

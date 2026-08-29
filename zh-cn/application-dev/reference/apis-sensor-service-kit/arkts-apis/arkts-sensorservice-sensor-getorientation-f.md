@@ -21,7 +21,7 @@ function getOrientation(rotationMatrix: Array<number>, callback: AsyncCallback<A
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rotationMatrix | Array & lt;number & gt; | 是 | 旋转矩阵。 |
+| rotationMatrix | Array &lt;number&gt; | 是 | 旋转矩阵。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;number&gt;&gt; | 是 | 回调函数，异步返回围绕z、x、y轴方向的旋转角度，单位：°（度）。 |
 
 **错误码：**
@@ -79,13 +79,13 @@ function getOrientation(rotationMatrix: Array<number>): Promise<Array<number>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rotationMatrix | Array & lt;number & gt; | 是 | 旋转矩阵。 |
+| rotationMatrix | Array &lt;number&gt; | 是 | 旋转矩阵。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;number & gt; & gt; | Promise对象，使用异步方式返回围绕z、x、y轴方向的旋转角度，单位：°（度）。 |
+| Promise &lt;Array &lt;number&gt;&gt; | Promise对象，使用异步方式返回围绕z、x、y轴方向的旋转角度，单位：°（度）。 |
 
 **错误码：**
 

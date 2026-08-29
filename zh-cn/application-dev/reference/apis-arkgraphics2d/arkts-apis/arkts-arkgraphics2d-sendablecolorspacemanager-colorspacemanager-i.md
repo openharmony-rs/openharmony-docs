@@ -92,7 +92,7 @@ getWhitePoint(): collections.Array<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| collections.Array & lt;number & gt; | 返回色域白点值[x, y]。 |
+| collections.Array &lt;number&gt; | 返回色域白点值[x, y]。 |
 
 **错误码：**
 

@@ -316,8 +316,8 @@ setOrderPosition(assets: Array<PhotoAsset>, position: Array<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| assets | Array & lt;PhotoAsset & gt; | 是 | 需要设置顺序位置的相册中资产。 |
-| position | Array & lt;number & gt; | 是 | 相册中资产的顺序位置。 |
+| assets | Array &lt;PhotoAsset&gt; | 是 | 需要设置顺序位置的相册中资产。 |
+| position | Array &lt;number&gt; | 是 | 相册中资产的顺序位置。 |
 
 **错误码：**
 
@@ -398,7 +398,7 @@ setRelationship(relationship: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 

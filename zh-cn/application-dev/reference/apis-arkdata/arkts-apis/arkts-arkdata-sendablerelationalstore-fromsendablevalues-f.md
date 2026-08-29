@@ -22,7 +22,7 @@ function fromSendableValues(values: collections.Array<ValueType>): NonSendableVa
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| values | collections.Array & lt;ValueType & gt; | 是 | 可跨线程传递的数组数据。 |
+| values | collections.Array &lt;ValueType&gt; | 是 | 可跨线程传递的数组数据。 |
 
 **返回值：**
 

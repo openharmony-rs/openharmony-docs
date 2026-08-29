@@ -37,7 +37,7 @@ caretPosition(value: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 从字符串开始到光标所在位置的长度。 & lt;/br & gt;当value & lt;0时，按照0处理。当value & gt;字符串长度时，按照字符串长度处理。 |
+| value | number | 是 | 从字符串开始到光标所在位置的长度。 &lt;/br&gt;当value &lt;0时，按照0处理。当value&gt;字符串长度时，按照字符串长度处理。 |
 
 ## constructor
 

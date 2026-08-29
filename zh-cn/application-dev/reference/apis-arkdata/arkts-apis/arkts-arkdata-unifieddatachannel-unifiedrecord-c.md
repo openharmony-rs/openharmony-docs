@@ -178,7 +178,7 @@ getEntries(): Record<string, ValueType>
 
 | 类型 | 说明 |
 | --- | --- |
-| Record & lt;string, ValueType & gt; | 当前数据记录对应的类型和内容。 |
+| Record &lt;string, ValueType&gt; | 当前数据记录对应的类型和内容。 |
 
 **示例**
 
@@ -375,7 +375,7 @@ getTypes(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | [UniformDataType]{ |
+| Array &lt;string&gt; | [UniformDataType]{ |
 
 **示例**
 

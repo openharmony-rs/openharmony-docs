@@ -30,7 +30,7 @@ function getTopNavDestinationName(windowId: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象。返回获取到的[NavDestination]{ |
+| Promise &lt;string&gt; | Promise对象。返回获取到的[NavDestination]{ |
 
 **错误码：**
 

@@ -93,7 +93,7 @@ Set the current network selection mode.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | The promise returned by the setNetworkSelectionMode. |
+| Promise &lt;void&gt; | The promise returned by the setNetworkSelectionMode. |
 
 **错误码：**
 

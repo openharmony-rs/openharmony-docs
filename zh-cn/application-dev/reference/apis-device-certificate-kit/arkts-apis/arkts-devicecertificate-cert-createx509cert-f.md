@@ -100,7 +100,7 @@ function createX509Cert(inStream: EncodingBlob): Promise<X509Cert>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;X509Cert & gt; | Promise对象，返回创建的X509Cert实例。 |
+| Promise &lt;X509Cert&gt; | Promise对象，返回创建的X509Cert实例。 |
 
 **错误码：**
 

@@ -241,7 +241,7 @@ getName(type: string): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 相对可分辨名称的字符串数组。 |
+| Array &lt;string&gt; | 相对可分辨名称的字符串数组。 |
 
 **错误码：**
 
@@ -303,7 +303,7 @@ getName(type: string, encodingType: EncodingType): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 相对可分辨名称的字符串数组。 |
+| Array &lt;string&gt; | 相对可分辨名称的字符串数组。 |
 
 **错误码：**
 

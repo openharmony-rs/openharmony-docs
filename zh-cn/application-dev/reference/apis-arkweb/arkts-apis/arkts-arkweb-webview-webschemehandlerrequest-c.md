@@ -51,7 +51,7 @@ getHeader(): Array<WebHeader>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;WebHeader & gt; | 返回资源请求头信息。 |
+| Array &lt;WebHeader&gt; | 返回资源请求头信息。 |
 
 **示例**
 

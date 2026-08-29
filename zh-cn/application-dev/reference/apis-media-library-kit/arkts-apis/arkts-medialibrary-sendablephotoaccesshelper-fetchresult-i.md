@@ -73,7 +73,7 @@ getAllObjects(): Promise<Array<T>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;T & gt; & gt; | Promise对象，返回结果集中所有文件资产数组。 |
+| Promise &lt;Array &lt;T&gt;&gt; | Promise对象，返回结果集中所有文件资产数组。 |
 
 **错误码：**
 
@@ -163,7 +163,7 @@ getFirstObject(): Promise<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;T & gt; | Promise对象，返回结果集中第一个对象。 |
+| Promise &lt;T&gt; | Promise对象，返回结果集中第一个对象。 |
 
 **错误码：**
 
@@ -208,7 +208,7 @@ getLastObject(): Promise<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;T & gt; | Promise对象，返回结果集中最后一个对象。 |
+| Promise &lt;T&gt; | Promise对象，返回结果集中最后一个对象。 |
 
 **错误码：**
 
@@ -253,7 +253,7 @@ getNextObject(): Promise<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;T & gt; | Promise对象，返回结果集中下一个对象。 |
+| Promise &lt;T&gt; | Promise对象，返回结果集中下一个对象。 |
 
 **错误码：**
 
@@ -305,7 +305,7 @@ getObjectByPosition(index: number): Promise<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;T & gt; | Promise对象，返回结果集中指定索引的一个对象。 |
+| Promise &lt;T&gt; | Promise对象，返回结果集中指定索引的一个对象。 |
 
 **错误码：**
 

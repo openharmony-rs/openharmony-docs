@@ -30,7 +30,7 @@ function getFontPathsByType(fontType: SystemFontType): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 字体文件路径列表。 |
+| Array &lt;string&gt; | 字体文件路径列表。 |
 
 **示例**
 

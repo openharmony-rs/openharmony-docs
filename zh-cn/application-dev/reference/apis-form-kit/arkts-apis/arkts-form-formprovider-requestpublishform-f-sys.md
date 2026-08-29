@@ -169,7 +169,7 @@ function requestPublishForm(want: Want, formBindingData?: formBindingData.FormBi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象。返回卡片标识。 |
+| Promise &lt;string&gt; | Promise对象。返回卡片标识。 |
 
 **错误码：**
 

@@ -68,7 +68,7 @@ function removeNotificationSlot(slotType: notification.SlotType): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise类型异步回调。 |
+| Promise &lt;void&gt; | Promise类型异步回调。 |
 
 **示例**
 

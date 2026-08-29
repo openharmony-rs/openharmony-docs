@@ -25,7 +25,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [EnabledSilentReminderChangedCallback(Provides methods that will be called back when the subscriber receives a new notification or a notification is canceled)](arkts-notification-enabledsilentreminderchangedcallback-t-sys.md) | 注册应用通知静默提醒使能状态变化的回调函数类型。 type EnabledSilentReminderChangedCallback = (callbackData: EnabledSilentReminderCallbackData) = & gt; void |
+| [EnabledSilentReminderChangedCallback(Provides methods that will be called back when the subscriber receives a new notification or a notification is canceled)](arkts-notification-enabledsilentreminderchangedcallback-t-sys.md) | 注册应用通知静默提醒使能状态变化的回调函数类型。 type EnabledSilentReminderChangedCallback = (callbackData: EnabledSilentReminderCallbackData) =&gt; void |
 | [NotificationSwitchChangedCallback(Provides methods that will be called back when the subscriber receives a new notification or a notification is canceled)](arkts-notification-notificationswitchchangedcallback-t-sys.md) | 注册由[notificationManager.setNotificationSwitch]{@link../@ohos.notificationManager:notificationManager.setNotificationSwitch}接口设置的通知开关状态变化的回调函数类型。 |
-| [SystemUpdateCallback(Provides methods that will be called back when the subscriber receives a new notification or a notification is canceled)](arkts-notification-systemupdatecallback-t-sys.md) | type SystemUpdateCallback = (data: SubscribeCallbackData) = & gt; void 返回携带系统属性值通知信息的回调函数类型。 |
+| [SystemUpdateCallback(Provides methods that will be called back when the subscriber receives a new notification or a notification is canceled)](arkts-notification-systemupdatecallback-t-sys.md) | type SystemUpdateCallback = (data: SubscribeCallbackData) =&gt; void 返回携带系统属性值通知信息的回调函数类型。 |
 <!--DelEnd-->

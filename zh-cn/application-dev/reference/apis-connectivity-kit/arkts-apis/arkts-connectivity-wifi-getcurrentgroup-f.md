@@ -28,7 +28,7 @@ function getCurrentGroup(): Promise<WifiP2pGroupInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;WifiP2pGroupInfo & gt; | 当前群组信息。 |
+| Promise &lt;WifiP2pGroupInfo&gt; | 当前群组信息。 |
 
 **示例**
 

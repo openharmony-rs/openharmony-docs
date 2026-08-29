@@ -33,7 +33,7 @@ function getAllPluginInfo(hostBundleName: string, userId?: number): Promise<Arra
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;PluginBundleInfo & gt; & gt; | Promise对象，返回Array & lt;PluginBundleInfo & gt;。 |
+| Promise &lt;Array &lt;PluginBundleInfo&gt;&gt; | Promise对象，返回Array &lt;PluginBundleInfo&gt;。 |
 
 **错误码：**
 

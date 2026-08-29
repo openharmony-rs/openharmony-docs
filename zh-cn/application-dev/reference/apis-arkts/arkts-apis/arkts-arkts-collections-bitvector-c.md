@@ -34,7 +34,7 @@
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;number & gt; | 一个新的可迭代迭代器对象。 |
+| IterableIterator &lt;number&gt; | 一个新的可迭代迭代器对象。 |
 
 **错误码：**
 
@@ -460,7 +460,7 @@ values(): IterableIterator<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;number & gt; | BitVector 迭代器对象。 |
+| IterableIterator &lt;number&gt; | BitVector 迭代器对象。 |
 
 **错误码：**
 

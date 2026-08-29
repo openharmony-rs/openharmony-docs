@@ -74,9 +74,9 @@ AutoFillExtensionAbility提供了onCreate、onSessionDestroy、onForeground、on
    
 3. 实现自动填充与自动保存。
 
-   1. 在ets目录右键选择“New &gt; Directory”，新建一个目录并命名为autofillability。
+   1. 在ets目录右键选择“New&gt; Directory”，新建一个目录并命名为autofillability。
 
-   2. 在autofillability目录，右键选择“New &gt; File”，新建一个.ets文件并命名为AutoFillAbility.ets。例如：
+   2. 在autofillability目录，右键选择“New&gt; File”，新建一个.ets文件并命名为AutoFillAbility.ets。例如：
 
       ```ts
       import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -124,9 +124,9 @@ AutoFillExtensionAbility提供了onCreate、onSessionDestroy、onForeground、on
 
 4. 构建自动填充处理界面。
 
-   1. 在ets目录右键选择“New &gt; Directory”，新建一个目录并命名为autofillpages。
+   1. 在ets目录右键选择“New&gt; Directory”，新建一个目录并命名为autofillpages。
 
-   2. 在autofillpages目录中，右键选择“New &gt; File”，新建一个.ets文件并命名为AutoFillPassWord.ets。
+   2. 在autofillpages目录中，右键选择“New&gt; File”，新建一个.ets文件并命名为AutoFillPassWord.ets。
 
    3. 当点击界面中账号或密码输入框时，自动填充框架会向自动填充服务发起自动填充请求，触发onFillRequest的生命周期。在onFillRequest生命周期中拉起账号密码备选信息页面(AutoFillPassWord.ets)。
 
@@ -244,7 +244,7 @@ AutoFillExtensionAbility提供了onCreate、onSessionDestroy、onForeground、on
 
 5. 构建自动保存处理界面。
 
-   1. 在autofillpages目录，右键选择“New &gt; File”，新建一个.ets文件并命名为SavePage.ets。
+   1. 在autofillpages目录，右键选择“New&gt; File”，新建一个.ets文件并命名为SavePage.ets。
 
    2. 当TextInput中存在有信息时，页面切换(点击登录按钮)将触发onSaveRequest的生命周期。在onSaveRequest中拉起保存信息处理界面(SavePage.ets)。
 

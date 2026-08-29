@@ -27,7 +27,7 @@ function removeUserNonStopApps(admin: Want, applicationInstances: Array<common.A
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| applicationInstances | Array & lt;common.ApplicationInstance & gt; | 是 | 不可关停应用名单数组。 |
+| applicationInstances | Array &lt;common.ApplicationInstance&gt; | 是 | 不可关停应用名单数组。 |
 
 **错误码：**
 

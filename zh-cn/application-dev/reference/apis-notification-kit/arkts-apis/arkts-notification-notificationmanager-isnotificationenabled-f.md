@@ -76,7 +76,7 @@ function isNotificationEnabled(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true，表示允许发布通知；返回false，表示禁止发布通知。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true，表示允许发布通知；返回false，表示禁止发布通知。 |
 
 **错误码：**
 

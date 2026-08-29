@@ -32,7 +32,7 @@ declare function mkdir(path: string, mode?: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回值。 |
+| Promise &lt;void&gt; | Promise对象。无返回值。 |
 
 **示例**
 

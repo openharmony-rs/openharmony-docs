@@ -96,7 +96,7 @@ function authorizeAdmin(admin: Want, bundleName: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。当授予指定应用管理员权限失败时，抛出错误对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。当授予指定应用管理员权限失败时，抛出错误对象。 |
 
 **错误码：**
 

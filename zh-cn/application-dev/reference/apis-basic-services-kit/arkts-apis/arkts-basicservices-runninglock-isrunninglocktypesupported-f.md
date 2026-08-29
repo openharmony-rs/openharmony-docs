@@ -68,7 +68,7 @@ function isRunningLockTypeSupported(type: RunningLockType): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示支持；返回false表示不支持。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示支持；返回false表示不支持。 |
 
 **示例**
 

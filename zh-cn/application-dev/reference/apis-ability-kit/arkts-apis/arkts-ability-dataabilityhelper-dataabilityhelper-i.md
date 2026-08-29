@@ -25,7 +25,7 @@ batchInsert(uri: string, valuesBuckets: Array<rdb.ValuesBucket>, callback: Async
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uri | string | 是 | 表示要插入数据的uri。 |
-| valuesBuckets | Array & lt;rdb.ValuesBucket & gt; | 是 | 表示要插入的数据记录数组。 |
+| valuesBuckets | Array &lt;rdb.ValuesBucket&gt; | 是 | 表示要插入的数据记录数组。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数，返回插入的数据记录数。 |
 
 **示例**
@@ -69,13 +69,13 @@ batchInsert(uri: string, valuesBuckets: Array<rdb.ValuesBucket>): Promise<number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uri | string | 是 | 表示要插入数据的uri。 |
-| valuesBuckets | Array & lt;rdb.ValuesBucket & gt; | 是 | 表示要插入的数据记录数组。 |
+| valuesBuckets | Array &lt;rdb.ValuesBucket&gt; | 是 | 表示要插入的数据记录数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回插入的数据记录数。 |
+| Promise &lt;number&gt; | Promise对象，返回插入的数据记录数。 |
 
 **示例**
 
@@ -252,7 +252,7 @@ delete(uri: string, predicates?: dataAbility.DataAbilityPredicates): Promise<num
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Returns the number of data records deleted. |
+| Promise &lt;number&gt; | Returns the number of data records deleted. |
 
 **示例**
 
@@ -372,7 +372,7 @@ denormalizeUri(uri: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回反规范化uri对象。 |
+| Promise &lt;string&gt; | Promise对象，返回反规范化uri对象。 |
 
 **示例**
 
@@ -545,7 +545,7 @@ getFileTypes(uri: string, mimeTypeFilter: string): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回匹配的媒体资源类型数组。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回匹配的媒体资源类型数组。 |
 
 **示例**
 
@@ -624,7 +624,7 @@ getType(uri: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回与uri指向数据匹配的媒体资源类型。 |
+| Promise &lt;string&gt; | Promise对象，返回与uri指向数据匹配的媒体资源类型。 |
 
 **示例**
 
@@ -731,7 +731,7 @@ insert(uri: string, valuesBucket: rdb.ValuesBucket): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回插入数据记录的索引。 |
+| Promise &lt;number&gt; | Promise对象，返回插入数据记录的索引。 |
 
 **示例**
 
@@ -800,7 +800,7 @@ normalizeUri(uri: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，如果数据功能支持uri规范化，则返回规范化uri对象；否则返回null。 |
+| Promise &lt;string&gt; | Promise对象，如果数据功能支持uri规范化，则返回规范化uri对象；否则返回null。 |
 
 **示例**
 
@@ -879,7 +879,7 @@ notifyChange(uri: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -1047,7 +1047,7 @@ openFile(uri: string, mode: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回文件说明符。 |
+| Promise &lt;number&gt; | Promise对象，返回文件说明符。 |
 
 **示例**
 
@@ -1088,7 +1088,7 @@ query(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uri | string | 是 | 表示要查询数据的uri。 |
-| columns | Array & lt;string & gt; | 是 | 表示要查询的列。如果此参数为空，则查询所有列。 |
+| columns | Array &lt;string&gt; | 是 | 表示要查询的列。如果此参数为空，则查询所有列。 |
 | predicates | dataAbility.DataAbilityPredicates | 是 | 表示筛选条件。当此参数为null时，自定义查询数据库中数据的处理逻辑。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ResultSet](../../apis-arkdata/arkts-apis/arkts-arkdata-resultset-resultset-depr-i.md)&gt; | 是 | 回调函数，返回查询结果。 |
 
@@ -1171,7 +1171,7 @@ query(uri: string, columns: Array<string>, callback: AsyncCallback<ResultSet>): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uri | string | 是 | 表示要查询数据的uri。 |
-| columns | Array & lt;string & gt; | 是 | 表示要查询的列。如果此参数为空，则查询所有列。 |
+| columns | Array &lt;string&gt; | 是 | 表示要查询的列。如果此参数为空，则查询所有列。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ResultSet](../../apis-arkdata/arkts-apis/arkts-arkdata-resultset-resultset-depr-i.md)&gt; | 是 | 回调函数，返回查询结果。 |
 
 **示例**
@@ -1254,7 +1254,7 @@ query(uri: string, columns?: Array<string>, predicates?: dataAbility.DataAbility
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uri | string | 是 | 表示要查询数据的uri。 |
-| columns | Array & lt;string & gt; | 否 | 表示要查询的列。如果此参数为空，则查询所有列。 |
+| columns | Array &lt;string&gt; | 否 | 表示要查询的列。如果此参数为空，则查询所有列。 |
 | predicates | dataAbility.DataAbilityPredicates | 否 | 表示筛选条件。当此参数为null时，自定义查询数据库中数据的处理逻辑。 |
 
 **返回值：**
@@ -1361,7 +1361,7 @@ update(uri: string, valuesBucket: rdb.ValuesBucket, predicates?: dataAbility.Dat
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Returns the number of data records updated. |
+| Promise &lt;number&gt; | Returns the number of data records updated. |
 
 **示例**
 

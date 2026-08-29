@@ -79,7 +79,7 @@ backup(file: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 [ |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 [ |
 
 **错误码：**
 
@@ -127,7 +127,7 @@ backupEx(backupConfig: BackupConfig): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 [ |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 [ |
 
 **错误码：**
 
@@ -233,7 +233,7 @@ closeResultSet(resultSet: KVStoreResultSet): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 [ |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 [ |
 
 **错误码：**
 
@@ -331,7 +331,7 @@ commit(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -434,7 +434,7 @@ delete(key: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 [ |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 [ |
 
 **错误码：**
 
@@ -485,7 +485,7 @@ deleteBackup(files: Array<string>, callback: AsyncCallback<Array<[string, number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| files | Array & lt;string & gt; | 是 | 删除备份文件所指定的名称，不能为空，无长度限制，不能包含特殊字符'/'。 |
+| files | Array &lt;string&gt; | 是 | 删除备份文件所指定的名称，不能为空，无长度限制，不能包含特殊字符'/'。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[string, number]&gt;&gt; | 是 | 回调函数，返回删除备份的文件名及其处理结果。 [ |
 
 **错误码：**
@@ -532,13 +532,13 @@ deleteBackup(files: Array<string>): Promise<Array<[string, number]>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| files | Array & lt;string & gt; | 是 | 删除备份文件所指定的名称，不能为空，无长度限制，不能包含特殊字符'/'。 |
+| files | Array &lt;string&gt; | 是 | 删除备份文件所指定的名称，不能为空，无长度限制，不能包含特殊字符'/'。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;[string, number] & gt; & gt; | Promise对象，返回删除备份的文件名及其处理结果。 |
+| Promise &lt;Array &lt;[string, number]&gt;&gt; | Promise对象，返回删除备份的文件名及其处理结果。 |
 
 **错误码：**
 
@@ -588,7 +588,7 @@ deleteBackupEx(backupConfig: BackupConfig): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -708,7 +708,7 @@ deleteBatch(keys: string[]): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 [ |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 [ |
 
 **错误码：**
 
@@ -826,7 +826,7 @@ enableSync(enabled: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -868,7 +868,7 @@ get(key: string, callback: AsyncCallback<boolean | string | number | number | Ui
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | key | string | 是 | 要查询数据的Key，不能为空且长度范围为1-[MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md)。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean \| string \| number \| number \| Uint8Array & gt; | 是 | 回调函数。返回获取查询的值，值的类型取决于存储时的数据类型。 [ |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean \| string \| number \| number \| Uint8Array&gt; | 是 | 回调函数。返回获取查询的值，值的类型取决于存储时的数据类型。 [ |
 
 **错误码：**
 
@@ -1059,7 +1059,7 @@ get(key: string): Promise<boolean | string | number | number | Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean \ | string \| number \| number \| Uint8Array & gt; | Promise对象。返回指定键对应的值，值的类型取决于存储时的数据类型。 [ |
+| Promise &lt;boolean \ | string \| number \| number \| Uint8Array&gt; | Promise对象。返回指定键对应的值，值的类型取决于存储时的数据类型。 [ |
 
 **错误码：**
 
@@ -1163,7 +1163,7 @@ getEntries(keyPrefix: string): Promise<Entry[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Entry[] & gt; | Promise对象。返回匹配指定前缀的键值对列表。 [ |
+| Promise &lt;Entry[]&gt; | Promise对象。返回匹配指定前缀的键值对列表。 [ |
 
 **错误码：**
 
@@ -1385,7 +1385,7 @@ getEntries(query: Query): Promise<Entry[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Entry[] & gt; | Promise对象。返回与指定Query对象匹配的键值对列表。 [ |
+| Promise &lt;Entry[]&gt; | Promise对象。返回与指定Query对象匹配的键值对列表。 [ |
 
 **错误码：**
 
@@ -1989,7 +1989,7 @@ getResultSize(query: Query): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。获取与指定Query对象匹配的结果数。 [ |
+| Promise &lt;number&gt; | Promise对象。获取与指定Query对象匹配的结果数。 [ |
 
 **错误码：**
 
@@ -2097,7 +2097,7 @@ getSecurityLevel(): Promise<SecurityLevel>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;SecurityLevel & gt; | Promise对象。返回数据库的安全级别。 |
+| Promise &lt;SecurityLevel&gt; | Promise对象。返回数据库的安全级别。 |
 
 **错误码：**
 
@@ -2426,7 +2426,7 @@ put(key: string, value: Uint8Array | string | number | number | boolean): Promis
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -2538,7 +2538,7 @@ putBatch(entries: Entry[]): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -2609,7 +2609,7 @@ rekey(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2741,7 +2741,7 @@ removeDeviceData(deviceId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 [ |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 [ |
 
 **错误码：**
 
@@ -2846,7 +2846,7 @@ restore(file: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 [ |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 [ |
 
 **错误码：**
 
@@ -2894,7 +2894,7 @@ restoreEx(backupConfig: BackupConfig): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 [ |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 [ |
 
 **错误码：**
 
@@ -2986,7 +2986,7 @@ rollback(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -3094,7 +3094,7 @@ setSyncParam(defaultAllowedDelayMs: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -3194,7 +3194,7 @@ setSyncRange(localLabels: string[], remoteSupportLabels: string[]): Promise<void
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -3316,7 +3316,7 @@ startTransaction(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

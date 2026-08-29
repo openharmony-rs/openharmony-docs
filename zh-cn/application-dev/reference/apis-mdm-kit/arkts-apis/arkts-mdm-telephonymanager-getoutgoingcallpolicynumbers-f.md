@@ -33,7 +33,7 @@ function getOutgoingCallPolicyNumbers(admin: Want, policy: adminManager.Policy):
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 通话呼出禁用或允许名单的号码数组。 |
+| Array &lt;string&gt; | 通话呼出禁用或允许名单的号码数组。 |
 
 **错误码：**
 
@@ -95,7 +95,7 @@ function getOutgoingCallPolicyNumbers(admin: Want | null, policy: adminManager.P
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 通话呼出禁用或允许名单的号码数组。 |
+| Array &lt;string&gt; | 通话呼出禁用或允许名单的号码数组。 |
 
 **错误码：**
 

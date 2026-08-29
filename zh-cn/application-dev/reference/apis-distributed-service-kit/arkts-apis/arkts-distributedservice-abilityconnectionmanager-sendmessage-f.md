@@ -31,7 +31,7 @@ function sendMessage(sessionId: number, msg: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的promise对象。消息发送成功时resolve，发送失败时reject。 |
+| Promise &lt;void&gt; | 无返回结果的promise对象。消息发送成功时resolve，发送失败时reject。 |
 
 **错误码：**
 

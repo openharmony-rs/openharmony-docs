@@ -55,7 +55,7 @@ function getDefaultSmsSlotId(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 以Promise形式返回发送短信的默认SIM卡： |
+| Promise &lt;number&gt; | 以Promise形式返回发送短信的默认SIM卡： |
 
 **示例**
 

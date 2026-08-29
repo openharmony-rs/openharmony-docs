@@ -33,7 +33,7 @@ function getPostProcessingTrack(sportsType: SportsType): Promise<Array<Location>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;Location & gt; & gt; | Promise对象，用于返回后处理运动轨迹。 |
+| Promise &lt;Array &lt;Location&gt;&gt; | Promise对象，用于返回后处理运动轨迹。 |
 
 **错误码：**
 

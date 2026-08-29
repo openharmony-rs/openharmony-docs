@@ -70,7 +70,7 @@ function getNameForUid(uid: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Returns the bundle name. |
+| Promise &lt;string&gt; | Returns the bundle name. |
 
 **示例**
 

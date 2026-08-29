@@ -79,7 +79,7 @@ function getSharableRegexes(type: SharingIfaceType): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | 以 Promise 形式返回正则表达式列表。 |
+| Promise &lt;Array &lt;string&gt;&gt; | 以 Promise 形式返回正则表达式列表。 |
 
 **错误码：**
 

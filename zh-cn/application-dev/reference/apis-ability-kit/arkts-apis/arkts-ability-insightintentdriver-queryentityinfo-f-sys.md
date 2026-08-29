@@ -34,7 +34,7 @@ function queryEntityInfo(param: QueryParam): Promise<Array<Record<string, Object
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;Record & lt;string, Object & gt; & gt; & gt; | Returns the insight intent entity information. |
+| Promise &lt;Array &lt;Record &lt;string, Object&gt;&gt;&gt; | Returns the insight intent entity information. |
 
 **错误码：**
 

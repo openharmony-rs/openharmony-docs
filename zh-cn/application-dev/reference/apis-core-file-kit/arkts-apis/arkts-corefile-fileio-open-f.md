@@ -33,7 +33,7 @@ declare function open(path: string, flags?: number, mode?: number): Promise<numb
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回打开文件的文件描述符。 |
+| Promise &lt;number&gt; | Promise对象。返回打开文件的文件描述符。 |
 
 **示例**
 

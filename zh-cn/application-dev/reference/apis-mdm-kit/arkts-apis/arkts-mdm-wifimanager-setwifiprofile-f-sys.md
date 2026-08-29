@@ -107,7 +107,7 @@ function setWifiProfile(admin: Want, profile: WifiProfile): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。当配置Wi-Fi连接到指定网络失败时会抛出错误对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。当配置Wi-Fi连接到指定网络失败时会抛出错误对象。 |
 
 **错误码：**
 

@@ -82,7 +82,7 @@ Get the version of Baseband.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Returns the baseband version. |
+| Promise &lt;string&gt; | Returns the baseband version. |
 
 **错误码：**
 

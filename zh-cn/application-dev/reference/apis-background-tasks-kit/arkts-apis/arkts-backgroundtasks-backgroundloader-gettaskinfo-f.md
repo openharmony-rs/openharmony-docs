@@ -32,7 +32,7 @@ function getTaskInfo(taskId: number): Promise<TaskInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;TaskInfo & gt; | Promise对象， 返回任务信息。 |
+| Promise &lt;TaskInfo&gt; | Promise对象， 返回任务信息。 |
 
 **错误码：**
 

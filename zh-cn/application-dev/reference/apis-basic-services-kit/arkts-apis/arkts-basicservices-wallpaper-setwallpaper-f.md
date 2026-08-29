@@ -99,7 +99,7 @@ function setWallpaper(source: string | image.PixelMap, wallpaperType: WallpaperT
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | the promise returned by the function. |
+| Promise &lt;void&gt; | the promise returned by the function. |
 
 **示例**
 

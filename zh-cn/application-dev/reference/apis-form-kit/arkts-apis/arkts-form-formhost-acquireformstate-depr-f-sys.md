@@ -89,7 +89,7 @@ function acquireFormState(want: Want): Promise<formInfo.FormStateInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;formInfo.FormStateInfo & gt; | Promise对象。返回卡片状态。 |
+| Promise &lt;formInfo.FormStateInfo&gt; | Promise对象。返回卡片状态。 |
 
 **示例**
 

@@ -29,7 +29,7 @@ arrayBuffer(): Promise<ArrayBuffer>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ArrayBuffer & gt; | Promise对象，resolve返回包含Blob数据的ArrayBuffer，reject返回错误信息。 |
+| Promise &lt;ArrayBuffer&gt; | Promise对象，resolve返回包含Blob数据的ArrayBuffer，reject返回错误信息。 |
 
 **示例**
 
@@ -138,7 +138,7 @@ text(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，resolve返回以utf8解码后的字符串，reject返回错误信息。 |
+| Promise &lt;string&gt; | Promise对象，resolve返回以utf8解码后的字符串，reject返回错误信息。 |
 
 **示例**
 

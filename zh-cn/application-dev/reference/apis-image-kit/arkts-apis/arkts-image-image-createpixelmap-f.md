@@ -73,7 +73,7 @@ Create pixelmap by data buffer.Starting from API 26.0.0, it is recommended to us
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PixelMap & gt; | A Promise instance used to return the PixelMap object. |
+| Promise &lt;PixelMap&gt; | A Promise instance used to return the PixelMap object. |
 
 **示例**
 

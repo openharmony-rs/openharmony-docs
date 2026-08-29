@@ -30,7 +30,7 @@ function getDeviceConfigs(): Array<WifiDeviceConfig>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;WifiDeviceConfig & gt; | 网络配置信息的数组。 |
+| Array &lt;WifiDeviceConfig&gt; | 网络配置信息的数组。 |
 
 **示例**
 

@@ -166,7 +166,7 @@ function createFromBuilder(builder: CustomBuilder, delay?: number,
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;image.PixelMap & gt; | 截图返回的结果。 |
+| Promise &lt;image.PixelMap&gt; | 截图返回的结果。 |
 
 **错误码：**
 

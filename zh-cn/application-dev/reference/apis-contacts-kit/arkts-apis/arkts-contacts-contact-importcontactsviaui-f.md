@@ -33,7 +33,7 @@ function importContactsViaUI(context: Context, contacts: Array<Contact>): Promis
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;number & gt; & gt; | 返回联系人创建结果的数组。返回的联系人id有效（可通过[getId]{ |
+| Promise &lt;Array &lt;number&gt;&gt; | 返回联系人创建结果的数组。返回的联系人id有效（可通过[getId]{ |
 
 **错误码：**
 

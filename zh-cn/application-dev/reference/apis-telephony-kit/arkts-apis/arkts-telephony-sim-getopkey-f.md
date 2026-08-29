@@ -77,7 +77,7 @@ function getOpKey(slotId: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | 以Promise形式返回指定卡槽中SIM卡的opkey。 |
+| Promise &lt;string&gt; | 以Promise形式返回指定卡槽中SIM卡的opkey。 |
 
 **错误码：**
 

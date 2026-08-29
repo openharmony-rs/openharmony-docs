@@ -27,13 +27,13 @@ function queryApn(admin: Want, apnInfo: Record<string, string>): Array<string>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| apnInfo | Record & lt;string, string & gt; | 是 | APN的查询条件。设置后系统将根据这些条件筛选匹配的APN配置，返回符合条件的APN ID列表。   - apnName：APN配置的名称 标识符，可选。   - mcc：3位数字的移动国家代码，可选。   - mnc：2-3位数字的移动网络代码，可选。   - apn：接入点名称，可选。   - type：APN的服务类型，可选。   - user：APN身份验证的用户名，可选。   - proxy：普通数据连接的代理服务器地址，可选。   - mmsproxy：彩信服务的专用代理地址，可选。   - authType：APN的认证协议类型，可 选。 |
+| apnInfo | Record &lt;string, string&gt; | 是 | APN的查询条件。设置后系统将根据这些条件筛选匹配的APN配置，返回符合条件的APN ID列表。   - apnName：APN配置的名称 标识符，可选。   - mcc：3位数字的移动国家代码，可选。   - mnc：2-3位数字的移动网络代码，可选。   - apn：接入点名称，可选。   - type：APN的服务类型，可选。   - user：APN身份验证的用户名，可选。   - proxy：普通数据连接的代理服务器地址，可选。   - mmsproxy：彩信服务的专用代理地址，可选。   - authType：APN的认证协议类型，可 选。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 满足要求的APN ID。 |
+| Array &lt;string&gt; | 满足要求的APN ID。 |
 
 **错误码：**
 
@@ -97,7 +97,7 @@ function queryApn(admin: Want, apnId: string): Record<string, string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Record & lt;string, string & gt; | 指定APN ID的APN参数信息。 |
+| Record &lt;string, string&gt; | 指定APN ID的APN参数信息。 |
 
 **错误码：**
 

@@ -24,7 +24,7 @@ function read(): Promise<number[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number[] & gt; | Promise对象，返回读取有源标签内容的列表。 |
+| Promise &lt;number[]&gt; | Promise对象，返回读取有源标签内容的列表。 |
 
 **错误码：**
 

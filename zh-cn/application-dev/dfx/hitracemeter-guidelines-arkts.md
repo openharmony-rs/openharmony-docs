@@ -93,7 +93,7 @@ HiTraceMeter打点接口分为三类：同步时间片跟踪、异步时间片�
    │       │   │       └── Index.ets
    ```
 
-2. 编辑工程中的“entry &gt; src &gt; main &gt; ets &gt; pages &gt; Index.ets”：
+2. 编辑工程中的“entry&gt; src&gt; main&gt; ets&gt; pages&gt; Index.ets”：
    
    导入所需依赖：
    <!-- @[TestHiTraceMeter_Import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS/entry/src/main/ets/pages/Index.ets) -->

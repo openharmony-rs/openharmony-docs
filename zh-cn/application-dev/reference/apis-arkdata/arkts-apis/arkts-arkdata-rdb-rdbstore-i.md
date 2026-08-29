@@ -36,7 +36,7 @@ batchInsert(table: string, values: Array<ValuesBucket>, callback: AsyncCallback<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | table | string | 是 | 指定的目标表名，不能为空字符串。 |
-| values | Array & lt;ValuesBucket & gt; | 是 | 表示要插入到表中的一组数据。 |
+| values | Array &lt;ValuesBucket&gt; | 是 | 表示要插入到表中的一组数据。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当操作成功，err为undefined，data为插入的数据个数；否则为错误对象。 |
 
 **示例**
@@ -110,13 +110,13 @@ batchInsert(table: string, values: Array<ValuesBucket>): Promise<number>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | table | string | 是 | 指定的目标表名，不能为空字符串。 |
-| values | Array & lt;ValuesBucket & gt; | 是 | 表示要插入到表中的一组数据。 |
+| values | Array &lt;ValuesBucket&gt; | 是 | 表示要插入到表中的一组数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。如果操作成功，返回插入的数据个数，否则返回-1。 |
+| Promise &lt;number&gt; | Promise对象。如果操作成功，返回插入的数据个数，否则返回-1。 |
 
 **示例**
 
@@ -320,7 +320,7 @@ delete(predicates: RdbPredicates): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回受影响的行数。 |
+| Promise &lt;number&gt; | Promise对象。返回受影响的行数。 |
 
 **示例**
 
@@ -356,7 +356,7 @@ executeSql(sql: string, bindArgs: Array<ValueType>, callback: AsyncCallback<void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sql | string | 是 | 指定要执行的SQL语句，不能为空字符串。 |
-| bindArgs | Array & lt;ValueType & gt; | 是 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数需为空数组。 |
+| bindArgs | Array &lt;ValueType&gt; | 是 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数需为空数组。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当操作成功，err为undefined；否则为错误对象。 |
 
 **示例**
@@ -393,13 +393,13 @@ executeSql(sql: string, bindArgs?: Array<ValueType>): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sql | string | 是 | 指定要执行的SQL语句，不能为空字符串。 |
-| bindArgs | Array & lt;ValueType & gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。 |
+| bindArgs | Array &lt;ValueType&gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
 
@@ -493,7 +493,7 @@ insert(table: string, values: ValuesBucket): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。如果操作成功，返回行ID；否则返回-1。 |
+| Promise &lt;number&gt; | Promise对象。如果操作成功，返回行ID；否则返回-1。 |
 
 **示例**
 
@@ -618,7 +618,7 @@ obtainDistributedTableName(device: string, table: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象。如果操作成功，返回远程设备的分布式表名。 |
+| Promise &lt;string&gt; | Promise对象。如果操作成功，返回远程设备的分布式表名。 |
 
 **示例**
 
@@ -667,7 +667,7 @@ off(event: 'dataChange', type: SubscribeType, observer: Callback<Array<string>>)
 | --- | --- | --- | --- |
 | event | 'dataChange' | 是 | 取值为'dataChange'，表示数据更改。 |
 | type | SubscribeType | 是 | 订阅类型。 |
-| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; | 是 | 指已注册的数据更改观察者。Array & lt;string & gt;为数据库中的数据发生改变的对端设备ID。 |
+| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; | 是 | 指已注册的数据更改观察者。Array &lt;string&gt;为数据库中的数据发生改变的对端设备ID。 |
 
 **示例**
 
@@ -707,7 +707,7 @@ on(event: 'dataChange', type: SubscribeType, observer: Callback<Array<string>>):
 | --- | --- | --- | --- |
 | event | 'dataChange' | 是 | 取值为'dataChange'，表示数据更改。 |
 | type | SubscribeType | 是 | 订阅类型。 |
-| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; | 是 | 指分布式数据库中数据更改事件的观察者。Array & lt;string & gt;为数据库中的数据发生改变的对端设备ID。 |
+| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; | 是 | 指分布式数据库中数据更改事件的观察者。Array &lt;string&gt;为数据库中的数据发生改变的对端设备ID。 |
 
 **示例**
 
@@ -746,7 +746,7 @@ query(predicates: RdbPredicates, columns: Array<string>, callback: AsyncCallback
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | predicates | RdbPredicates | 是 | RdbPredicates的实例对象指定的查询条件。 |
-| columns | Array & lt;string & gt; | 是 | 表示要查询的列。如果值为空，则查询应用于所有列。 |
+| columns | Array &lt;string&gt; | 是 | 表示要查询的列。如果值为空，则查询应用于所有列。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ResultSet&gt; | 是 | 回调函数。当操作成功，err为undefined，data为ResultSet对象；否则为错误对象。 |
 
 **示例**
@@ -785,13 +785,13 @@ query(predicates: RdbPredicates, columns?: Array<string>): Promise<ResultSet>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | predicates | RdbPredicates | 是 | RdbPredicates的实例对象指定的查询条件。 |
-| columns | Array & lt;string & gt; | 否 | 表示要查询的列。如果值为空，则查询应用于所有列。 |
+| columns | Array &lt;string&gt; | 否 | 表示要查询的列。如果值为空，则查询应用于所有列。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ResultSet & gt; | Promise对象。如果操作成功，则返回ResultSet对象。 |
+| Promise &lt;ResultSet&gt; | Promise对象。如果操作成功，则返回ResultSet对象。 |
 
 **示例**
 
@@ -828,7 +828,7 @@ querySql(sql: string, bindArgs: Array<ValueType>, callback: AsyncCallback<Result
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sql | string | 是 | 指定要执行的SQL语句，不能为空字符串。 |
-| bindArgs | Array & lt;ValueType & gt; | 是 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数需为空数组。 |
+| bindArgs | Array &lt;ValueType&gt; | 是 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数需为空数组。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ResultSet&gt; | 是 | 回调函数。当操作成功，err为undefined，data为ResultSet对象；否则为错误对象。 |
 
 **示例**
@@ -865,13 +865,13 @@ querySql(sql: string, bindArgs?: Array<ValueType>): Promise<ResultSet>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sql | string | 是 | 指定要执行的SQL语句，不能为空字符串。 |
-| bindArgs | Array & lt;ValueType & gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。 |
+| bindArgs | Array &lt;ValueType&gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ResultSet & gt; | Promise对象。如果操作成功，则返回ResultSet对象。 |
+| Promise &lt;ResultSet&gt; | Promise对象。如果操作成功，则返回ResultSet对象。 |
 
 **示例**
 
@@ -957,7 +957,7 @@ setDistributedTables(tables: Array<string>, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tables | Array & lt;string & gt; | 是 | 要设置的分布式列表表名。 |
+| tables | Array &lt;string&gt; | 是 | 要设置的分布式列表表名。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当操作成功，err为undefined；否则为错误对象。 |
 
 **示例**
@@ -994,13 +994,13 @@ setDistributedTables(tables: Array<string>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tables | Array & lt;string & gt; | 是 | 要设置的分布式列表表名。 |
+| tables | Array &lt;string&gt; | 是 | 要设置的分布式列表表名。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
 
@@ -1101,7 +1101,7 @@ sync(mode: SyncMode, predicates: RdbPredicates): Promise<Array<[string, number]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;[string, number] & gt; & gt; | Promise对象，用于向调用者发送同步结果。string：设备ID；number：每个设备同步状态，0表示成功，其他值表示失败。 |
+| Promise &lt;Array &lt;[string, number]&gt;&gt; | Promise对象，用于向调用者发送同步结果。string：设备ID；number：每个设备同步状态，0表示成功，其他值表示失败。 |
 
 **示例**
 
@@ -1217,7 +1217,7 @@ update(values: ValuesBucket, predicates: RdbPredicates): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 指定的Promise回调方法。返回受影响的行数。 |
+| Promise &lt;number&gt; | 指定的Promise回调方法。返回受影响的行数。 |
 
 **示例**
 

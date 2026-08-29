@@ -149,7 +149,7 @@ getAppVolumePercentageForUid(uid: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回应用的音量百分比，范围为[0, 100]。 |
+| Promise &lt;number&gt; | Promise对象，返回应用的音量百分比，范围为[0, 100]。 |
 
 **错误码：**
 
@@ -668,7 +668,7 @@ isAppVolumeMutedForUid(uid: number, owned: boolean): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示应用为静音状态；返回false表示应用为非静音状态。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示应用为静音状态；返回false表示应用为非静音状态。 |
 
 **错误码：**
 
@@ -1202,7 +1202,7 @@ setAppVolumeMutedForUid(uid: number, muted: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1250,7 +1250,7 @@ setAppVolumePercentageForUid(uid: number, volume: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1300,7 +1300,7 @@ setSystemVolumeByUid(volumeType: AudioVolumeType, volume: number, callingUid: nu
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 承诺用于返回结果。 |
+| Promise &lt;void&gt; | 承诺用于返回结果。 |
 
 **错误码：**
 
@@ -1350,7 +1350,7 @@ setSystemVolumePercentage(volumeType: AudioVolumeType, percentage: number): Prom
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

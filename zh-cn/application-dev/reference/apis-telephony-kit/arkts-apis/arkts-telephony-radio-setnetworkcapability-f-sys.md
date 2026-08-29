@@ -89,7 +89,7 @@ Set the type and state for the specified network capability.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | The promise returned by the setNetworkCapability. |
+| Promise &lt;void&gt; | The promise returned by the setNetworkCapability. |
 
 **错误码：**
 

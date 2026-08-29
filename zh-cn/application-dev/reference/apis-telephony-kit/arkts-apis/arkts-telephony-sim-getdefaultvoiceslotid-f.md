@@ -51,7 +51,7 @@ function getDefaultVoiceSlotId(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 以Promise形式返回默认语音业务的卡槽ID。 |
+| Promise &lt;number&gt; | 以Promise形式返回默认语音业务的卡槽ID。 |
 
 **示例**
 

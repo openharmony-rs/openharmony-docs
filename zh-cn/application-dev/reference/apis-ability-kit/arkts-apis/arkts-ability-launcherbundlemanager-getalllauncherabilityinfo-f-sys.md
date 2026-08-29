@@ -88,7 +88,7 @@ function getAllLauncherAbilityInfo(userId: number) : Promise<Array<LauncherAbili
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;LauncherAbilityInfo & gt; & gt; | Promise对象。返回指定用户下所有应用的 [LauncherAbilityInfo]{ |
+| Promise &lt;Array &lt;LauncherAbilityInfo&gt;&gt; | Promise对象。返回指定用户下所有应用的 [LauncherAbilityInfo]{ |
 
 **错误码：**
 

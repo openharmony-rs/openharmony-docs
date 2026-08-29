@@ -30,7 +30,7 @@ function getStations(): Array<StationInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;StationInfo & gt; | 连接的设备数组。 |
+| Array &lt;StationInfo&gt; | 连接的设备数组。 |
 
 **示例**
 

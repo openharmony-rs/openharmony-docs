@@ -39,7 +39,7 @@ addEvent(event: Event): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回日程的id，id大于0。 |
+| Promise &lt;number&gt; | Promise对象，返回日程的id，id大于0。 |
 
 **错误码：**
 
@@ -168,7 +168,7 @@ addEvents(events: Event[]): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -308,7 +308,7 @@ deleteEvent(id: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
 
@@ -435,7 +435,7 @@ deleteEvents(ids: number[]): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
 
@@ -672,7 +672,7 @@ getEvents(eventFilter?: EventFilter, eventKey?: (keyof Event)[]): Promise<Event[
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Event[] & gt; | Promise对象，返回的是Event对象数组。 |
+| Promise &lt;Event[]&gt; | Promise对象，返回的是Event对象数组。 |
 
 **错误码：**
 
@@ -889,7 +889,7 @@ Opens the event edit page.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -979,7 +979,7 @@ queryEventInstances(start: number, end: number, ids?: number[], eventKey?: (keyo
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Event[] & gt; | Promise对象，返回的是Event对象数组。 |
+| Promise &lt;Event[]&gt; | Promise对象，返回的是Event对象数组。 |
 
 **错误码：**
 
@@ -1050,7 +1050,7 @@ setConfig(config: CalendarConfig): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1167,7 +1167,7 @@ updateEvent(event: Event): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
 

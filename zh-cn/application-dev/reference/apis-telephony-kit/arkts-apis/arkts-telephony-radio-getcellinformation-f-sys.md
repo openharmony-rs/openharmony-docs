@@ -82,7 +82,7 @@ Get the current cell information.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;CellInformation & gt; & gt; | Returns the current cell information. |
+| Promise &lt;Array &lt;CellInformation&gt;&gt; | Returns the current cell information. |
 
 **错误码：**
 

@@ -35,7 +35,7 @@ function getLauncherAbilityResourceInfoList(optionsList: Array<BundleOptions>, r
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;LauncherAbilityResourceInfo & gt; & gt; | Promise对象，返回指定应用列表的LauncherAbilityResourceInfo。 |
+| Promise &lt;Array &lt;LauncherAbilityResourceInfo&gt;&gt; | Promise对象，返回指定应用列表的LauncherAbilityResourceInfo。 |
 
 **错误码：**
 

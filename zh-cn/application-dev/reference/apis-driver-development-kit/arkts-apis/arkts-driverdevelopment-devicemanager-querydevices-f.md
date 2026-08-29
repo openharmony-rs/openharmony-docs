@@ -30,7 +30,7 @@ function queryDevices(busType?: number): Array<Readonly<Device>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;Readonly & lt;Device & gt; & gt; | 设备信息列表。 |
+| Array &lt;Readonly &lt;Device&gt;&gt; | 设备信息列表。 |
 
 **错误码：**
 

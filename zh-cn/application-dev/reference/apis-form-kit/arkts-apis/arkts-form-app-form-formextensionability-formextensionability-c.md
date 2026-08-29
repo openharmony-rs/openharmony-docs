@@ -155,7 +155,7 @@ Called to notify the widget provider that the widget visibility status is being 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| newStatus | Record & lt;string, number & gt; | 是 | ID and visibility status of the widget to be changed.<br>**起始版本：** 11 |
+| newStatus | Record &lt;string, number&gt; | 是 | ID and visibility status of the widget to be changed.<br>**起始版本：** 11 |
 
 **示例**
 
@@ -426,7 +426,7 @@ Called to notify the widget provider that a widget is being updated, with update
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | formId | string | 是 | ID of the widget that requests to be updated. |
-| wantParams | Record & lt;string, Object & gt; | 否 | Parameters used for the update. |
+| wantParams | Record &lt;string, Object&gt; | 否 | Parameters used for the update. |
 
 **示例**
 

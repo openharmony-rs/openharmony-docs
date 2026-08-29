@@ -96,7 +96,7 @@ function insertData(options: Options, data: UnifiedData): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回写入UDMF的数据的唯一标识符key的值。 |
+| Promise &lt;string&gt; | Promise对象，返回写入UDMF的数据的唯一标识符key的值。 |
 
 **错误码：**
 

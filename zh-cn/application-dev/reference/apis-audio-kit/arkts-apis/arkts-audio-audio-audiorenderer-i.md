@@ -60,7 +60,7 @@ drain(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -90,7 +90,7 @@ flush(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -224,7 +224,7 @@ getAudioStreamId(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回音频流id。 |
+| Promise &lt;number&gt; | Promise对象，返回音频流id。 |
 
 **示例**
 
@@ -344,7 +344,7 @@ getAudioTime(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回时间戳。 |
+| Promise &lt;number&gt; | Promise对象，返回时间戳。 |
 
 **示例**
 
@@ -571,7 +571,7 @@ getBufferSize(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回缓冲区大小。 |
+| Promise &lt;number&gt; | Promise对象，返回缓冲区大小。 |
 
 **示例**
 
@@ -894,7 +894,7 @@ getMaxStreamVolume(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回音频流最大音量。 |
+| Promise &lt;number&gt; | Promise对象，返回音频流最大音量。 |
 
 **示例**
 
@@ -988,7 +988,7 @@ getMinStreamVolume(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回音频流最小音量。 |
+| Promise &lt;number&gt; | Promise对象，返回音频流最小音量。 |
 
 **示例**
 
@@ -1551,7 +1551,7 @@ getUnderflowCount(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回音频流的欠载音频帧数量。 |
+| Promise &lt;number&gt; | Promise对象，返回音频流的欠载音频帧数量。 |
 
 **示例**
 
@@ -2012,7 +2012,7 @@ pause(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -2099,7 +2099,7 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -2195,7 +2195,7 @@ setAudioEffectMode(mode: AudioEffectMode): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -2281,7 +2281,7 @@ setDefaultOutputDevice(deviceType: DeviceType): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -2423,7 +2423,7 @@ setInterruptMode(mode: InterruptMode): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -2512,7 +2512,7 @@ setLoudnessGain(loudnessGain: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2646,7 +2646,7 @@ setRenderRate(rate: AudioRendererRate): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -2770,7 +2770,7 @@ setVolume(volume: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -2893,7 +2893,7 @@ start(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，成功表示启动音频渲染器成功。异常将返回error对象： |
+| Promise &lt;void&gt; | Promise对象，成功表示启动音频渲染器成功。异常将返回error对象： |
 
 **示例**
 
@@ -3001,7 +3001,7 @@ stop(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -3140,7 +3140,7 @@ write(buffer: ArrayBuffer): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回写入的字节数。 |
+| Promise &lt;number&gt; | Promise对象，返回写入的字节数。 |
 
 **示例**
 

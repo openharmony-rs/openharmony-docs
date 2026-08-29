@@ -30,7 +30,7 @@ function getSystemFontFullNamesByType(fontType: SystemFontType): Promise<Array<s
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回相应字体类型的所有字体的fullName。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回相应字体类型的所有字体的fullName。 |
 
 **错误码：**
 

@@ -37,7 +37,7 @@ adler32(adler: number, buf: ArrayBuffer): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回计算后的Adler-32校验和。 |
+| Promise &lt;number&gt; | Promise对象。返回计算后的Adler-32校验和。 |
 
 **错误码：**
 
@@ -91,7 +91,7 @@ adler32Combine(adler1: number, adler2: number, len2: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回合并后的Adler-32校验和。 |
+| Promise &lt;number&gt; | Promise对象。返回合并后的Adler-32校验和。 |
 
 **错误码：**
 
@@ -155,7 +155,7 @@ crc32(crc: number, buf: ArrayBuffer): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回更新后的CRC-32校验。 |
+| Promise &lt;number&gt; | Promise对象。返回更新后的CRC-32校验。 |
 
 **错误码：**
 
@@ -211,7 +211,7 @@ crc32Combine(crc1: number, crc2: number, len2: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回合并后的CRC-32校验。 |
+| Promise &lt;number&gt; | Promise对象。返回合并后的CRC-32校验。 |
 
 **错误码：**
 
@@ -275,7 +275,7 @@ crc64(crc: number, buf: ArrayBuffer): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回更新后的CRC-64校验。 |
+| Promise &lt;number&gt; | Promise对象。返回更新后的CRC-64校验。 |
 
 **错误码：**
 
@@ -323,7 +323,7 @@ getCrc64Table(): Promise<Array<number>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;number & gt; & gt; | Promise对象。返回CRC-64校验表。 |
+| Promise &lt;Array &lt;number&gt;&gt; | Promise对象。返回CRC-64校验表。 |
 
 **示例**
 
@@ -357,7 +357,7 @@ getCrcTable(): Promise<Array<number>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;number & gt; & gt; | Promise对象。返回CRC-32校验表。 |
+| Promise &lt;Array &lt;number&gt;&gt; | Promise对象。返回CRC-32校验表。 |
 
 **示例**
 

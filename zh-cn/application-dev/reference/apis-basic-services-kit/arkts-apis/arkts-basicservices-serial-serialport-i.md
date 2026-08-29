@@ -33,7 +33,7 @@ close(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回值。 |
+| Promise &lt;void&gt; | Promise对象，无返回值。 |
 
 **错误码：**
 
@@ -67,7 +67,7 @@ drain(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回值。 |
+| Promise &lt;void&gt; | Promise对象，无返回值。 |
 
 **错误码：**
 
@@ -99,7 +99,7 @@ flush(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回值。 |
+| Promise &lt;void&gt; | Promise对象，无返回值。 |
 
 **错误码：**
 
@@ -132,7 +132,7 @@ getCts(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回CTS信号状态，返回true表示可以发送数据，返回false表示不可以发送数据。 |
+| Promise &lt;boolean&gt; | Promise对象，返回CTS信号状态，返回true表示可以发送数据，返回false表示不可以发送数据。 |
 
 **错误码：**
 
@@ -160,7 +160,7 @@ getDsr(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回DSR信号状态；true表示数据设备就绪；false表示数据设备未就绪。 |
+| Promise &lt;boolean&gt; | Promise对象，返回DSR信号状态；true表示数据设备就绪；false表示数据设备未就绪。 |
 
 **错误码：**
 
@@ -327,7 +327,7 @@ open(config?: SerialConfigs): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回值。 |
+| Promise &lt;void&gt; | Promise对象，无返回值。 |
 
 **错误码：**
 
@@ -357,7 +357,7 @@ sendBrk(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回值。 |
+| Promise &lt;void&gt; | Promise对象，无返回值。 |
 
 **错误码：**
 
@@ -391,7 +391,7 @@ setDtr(enable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回值。 |
+| Promise &lt;void&gt; | Promise对象，无返回值。 |
 
 **错误码：**
 
@@ -429,7 +429,7 @@ setRts(enable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回值。 |
+| Promise &lt;void&gt; | Promise对象，无返回值。 |
 
 **错误码：**
 
@@ -467,7 +467,7 @@ write(data: Uint8Array, timeout?: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回写入数据长度。 |
+| Promise &lt;number&gt; | Promise对象，返回写入数据长度。 |
 
 **错误码：**
 

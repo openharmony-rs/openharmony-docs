@@ -72,7 +72,7 @@ function removeStorageFromCache(path: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise实例，用于异步获取结果。 |
+| Promise &lt;void&gt; | Promise实例，用于异步获取结果。 |
 
 **示例**
 

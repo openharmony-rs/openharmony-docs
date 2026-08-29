@@ -28,7 +28,7 @@ function isPriorityIntelligentEnabled(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回包含优先通知智能服务使能状态的Promise对象。 |
+| Promise &lt;boolean&gt; | Promise对象，返回包含优先通知智能服务使能状态的Promise对象。 |
 
 **错误码：**
 

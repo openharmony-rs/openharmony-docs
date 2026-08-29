@@ -37,7 +37,7 @@ Caller UIAbility向Callee UIAbility发送双方约定好的序列化的数据。
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -132,7 +132,7 @@ Caller UIAbility向Callee UIAbility发送消息，Callee UIAbility处理完成�
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;rpc.MessageSequence & gt; | Promise对象，返回Callee UIAbility的应答数据。 |
+| Promise &lt;rpc.MessageSequence&gt; | Promise对象，返回Callee UIAbility的应答数据。 |
 
 **错误码：**
 

@@ -130,7 +130,7 @@ static getHttpAuthCredentials(host: string, realm: string): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 包含用户名和密码的数组，检索失败返回空数组。 |
+| Array &lt;string&gt; | 包含用户名和密码的数组，检索失败返回空数组。 |
 
 **错误码：**
 

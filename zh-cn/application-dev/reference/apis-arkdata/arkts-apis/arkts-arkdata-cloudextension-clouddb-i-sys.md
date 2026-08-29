@@ -84,7 +84,7 @@ generateId(count: number): Promise<Result<Array<string>>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Result & lt;Array & lt;string & gt; & gt; & gt; | Promise对象，以Result结构将生成的ID以数组形式返回。 |
+| Promise &lt;Result &lt;Array &lt;string&gt;&gt;&gt; | Promise对象，以Result结构将生成的ID以数组形式返回。 |
 
 **示例**
 
@@ -128,7 +128,7 @@ heartbeat(lockId: number): Promise<Result<LockInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Result & lt;LockInfo & gt; & gt; | Promise对象，返回锁的信息，包含加锁时长和锁的ID。 |
+| Promise &lt;Result &lt;LockInfo&gt;&gt; | Promise对象，返回锁的信息，包含加锁时长和锁的ID。 |
 
 **示例**
 
@@ -220,7 +220,7 @@ lock(): Promise<Result<LockInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Result & lt;LockInfo & gt; & gt; | Promise对象，返回加锁的信息，包含加锁时长和锁的ID。 |
+| Promise &lt;Result &lt;LockInfo&gt;&gt; | Promise对象，返回加锁的信息，包含加锁时长和锁的ID。 |
 
 **示例**
 
@@ -265,7 +265,7 @@ query(table: string, fields: Array<string>, queryCount: number, queryCursor: str
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | table | string | 是 | 表名。 |
-| fields | Array & lt;string & gt; | 是 | 表示要查询的字段名数组。 |
+| fields | Array &lt;string&gt; | 是 | 表示要查询的字段名数组。 |
 | queryCount | number | 是 | 表示要查询的数据记录条数。取值范围大于等于1。 |
 | queryCursor | string | 是 | 表示要查询的游标。 |
 
@@ -322,7 +322,7 @@ unlock(lockId: number): Promise<Result<boolean>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Result & lt;boolean & gt; & gt; | Promise对象，返回解锁结果，true表示解锁成功，false表示解锁失败。 |
+| Promise &lt;Result &lt;boolean&gt;&gt; | Promise对象，返回解锁结果，true表示解锁成功，false表示解锁失败。 |
 
 **示例**
 

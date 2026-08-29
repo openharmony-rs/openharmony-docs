@@ -572,7 +572,7 @@ getEnrolledId(authType: AuthType, accountId?: number): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Uint8Array & gt; | Promise对象，返回已注册的凭据ID。 |
+| Promise &lt;Uint8Array&gt; | Promise对象，返回已注册的凭据ID。 |
 
 **错误码：**
 
@@ -807,7 +807,7 @@ openSession(accountId?: number): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Uint8Array & gt; | Promise对象，返回挑战值。 |
+| Promise &lt;Uint8Array&gt; | Promise对象，返回挑战值。 |
 
 **错误码：**
 

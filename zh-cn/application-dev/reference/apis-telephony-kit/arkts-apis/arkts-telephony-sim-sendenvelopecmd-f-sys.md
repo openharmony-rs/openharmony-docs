@@ -81,7 +81,7 @@ Send envelope command to SIM card.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | The promise returned by the sendEnvelopeCmd. |
+| Promise &lt;void&gt; | The promise returned by the sendEnvelopeCmd. |
 
 **错误码：**
 

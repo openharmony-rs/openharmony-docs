@@ -35,7 +35,7 @@ function getAllSkillInfos(flags: number, userId?: number): Promise<Array<SkillIn
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;SkillInfo & gt; & gt; | Promise对象，返回所有应用的技能信息数组。 |
+| Promise &lt;Array &lt;SkillInfo&gt;&gt; | Promise对象，返回所有应用的技能信息数组。 |
 
 **错误码：**
 

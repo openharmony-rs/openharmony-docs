@@ -45,7 +45,7 @@ checkSpecialScenarioAuth(context: Context): Promise<UserAuthResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;UserAuthResult & gt; | Promise对象，返回用户授权结果。 |
+| Promise &lt;UserAuthResult&gt; | Promise对象，返回用户授权结果。 |
 
 **错误码：**
 
@@ -105,7 +105,7 @@ checkSpecialScenarioAuthResult(context: Context): Promise<UserAuthResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;UserAuthResult & gt; | 用户授权结果 |
+| Promise &lt;UserAuthResult&gt; | 用户授权结果 |
 
 **错误码：**
 

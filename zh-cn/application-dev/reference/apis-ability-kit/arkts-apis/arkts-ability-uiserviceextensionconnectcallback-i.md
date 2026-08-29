@@ -34,7 +34,7 @@ onData(data: Record<string, Object>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | Record & lt;string, Object & gt; | 是 | 接收UIServiceExtension连接回调数据。 |
+| data | Record &lt;string, Object&gt; | 是 | 接收UIServiceExtension连接回调数据。 |
 
 **示例**
 

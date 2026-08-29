@@ -107,7 +107,7 @@ Called when the index value changes.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | Callback & lt;number & gt; | 是 |  |
+| event | Callback &lt;number&gt; | 是 |  |
 
 ## style
 

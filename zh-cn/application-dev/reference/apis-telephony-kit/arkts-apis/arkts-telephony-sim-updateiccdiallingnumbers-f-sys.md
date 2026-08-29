@@ -90,7 +90,7 @@ Update dialing number information on SIM card.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | The promise returned by the updateIccDiallingNumbers. |
+| Promise &lt;void&gt; | The promise returned by the updateIccDiallingNumbers. |
 
 **错误码：**
 

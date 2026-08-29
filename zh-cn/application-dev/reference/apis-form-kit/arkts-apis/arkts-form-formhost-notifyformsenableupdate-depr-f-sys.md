@@ -33,7 +33,7 @@ function notifyFormsEnableUpdate(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| formIds | Array & lt;string & gt; | 是 | 卡片标识列表。 |
+| formIds | Array &lt;string&gt; | 是 | 卡片标识列表。 |
 | isEnableUpdate | boolean | 是 | 是否使能更新。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当通知卡片是否启用更新状态成功，error为undefined，否则为错误对象。 |
 
@@ -75,14 +75,14 @@ function notifyFormsEnableUpdate(formIds: Array<string>, isEnableUpdate: boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| formIds | Array & lt;string & gt; | 是 | 卡片标识列表。 |
+| formIds | Array &lt;string&gt; | 是 | 卡片标识列表。 |
 | isEnableUpdate | boolean | 是 | 是否使能更新。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 

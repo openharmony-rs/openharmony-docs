@@ -16,7 +16,7 @@
 
 1. 通过如下两种方式，打开工程创建向导界面。
    - 如果当前未打开任何工程，可以在DevEco Studio的欢迎页，选择**Create Project**开始创建一个新NDK工程。
-   - 如果已经打开了工程，可以在菜单栏选择**File &gt; New &gt; Create Project**来创建一个新NDK工程。
+   - 如果已经打开了工程，可以在菜单栏选择**File&gt; New&gt; Create Project**来创建一个新NDK工程。
 
 2. 根据工程创建向导，选择Native C++工程模板，然后单击**Next**。
 

@@ -55,7 +55,7 @@ onActionCancel(event: Callback<void>): PanGestureHandler
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | Callback & lt;void & gt; | 是 | 滑动手势处理器取消回调。 |
+| event | Callback &lt;void&gt; | 是 | 滑动手势处理器取消回调。 |
 
 **返回值：**
 

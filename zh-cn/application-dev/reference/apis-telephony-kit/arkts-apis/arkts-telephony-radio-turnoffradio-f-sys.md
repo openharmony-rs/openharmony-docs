@@ -82,7 +82,7 @@ Turn off the radio service.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | The promise returned by the turnOffRadio. |
+| Promise &lt;void&gt; | The promise returned by the turnOffRadio. |
 
 **错误码：**
 

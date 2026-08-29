@@ -72,7 +72,7 @@ function getOperatorName(slotId: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | 以Promise形式返回运营商名称。例如：中国移动。 |
+| Promise &lt;string&gt; | 以Promise形式返回运营商名称。例如：中国移动。 |
 
 **错误码：**
 

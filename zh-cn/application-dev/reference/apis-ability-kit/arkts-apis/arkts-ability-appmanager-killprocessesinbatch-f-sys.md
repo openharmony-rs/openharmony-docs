@@ -26,13 +26,13 @@ function killProcessesInBatch(pids: Array<number>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pids | Array & lt;number & gt; | 是 | 要终止的进程ID。 |
+| pids | Array &lt;number&gt; | 是 | 要终止的进程ID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

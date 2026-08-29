@@ -44,7 +44,7 @@ static getRelatedEntity (topic: string, context: ContextMap, option?: Options): 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Entity[] & gt; | 返回推荐标签内容 |
+| Promise &lt;Entity[]&gt; | 返回推荐标签内容 |
 
 **错误码：**
 
@@ -83,7 +83,7 @@ static getSearchResult(query: SearchQuery): Promise<SearchResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;SearchResult & gt; | Promise用于返回包含匹配资产的搜索结果。 |
+| Promise &lt;SearchResult&gt; | Promise用于返回包含匹配资产的搜索结果。 |
 
 **错误码：**
 

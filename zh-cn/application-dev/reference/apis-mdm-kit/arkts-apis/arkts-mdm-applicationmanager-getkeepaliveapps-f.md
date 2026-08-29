@@ -33,7 +33,7 @@ function getKeepAliveApps(admin: Want, accountId: number): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 返回指定用户下保活应用的包名。 |
+| Array &lt;string&gt; | 返回指定用户下保活应用的包名。 |
 
 **错误码：**
 
@@ -92,7 +92,7 @@ function getKeepAliveApps(admin: Want | null, accountId: number): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 返回指定用户下保活应用的包名。 |
+| Array &lt;string&gt; | 返回指定用户下保活应用的包名。 |
 
 **错误码：**
 

@@ -34,7 +34,7 @@ declare function readText(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象。返回读取文件的内容。 |
+| Promise &lt;string&gt; | Promise对象。返回读取文件的内容。 |
 
 **错误码：**
 

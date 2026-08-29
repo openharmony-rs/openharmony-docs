@@ -79,7 +79,7 @@ Get the SIM card number of the specified card slot.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Returns the SIM card number. |
+| Promise &lt;string&gt; | Returns the SIM card number. |
 
 **错误码：**
 

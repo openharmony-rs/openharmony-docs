@@ -80,7 +80,7 @@ function getOverlayModuleInfo(moduleName: string): Promise<OverlayModuleInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;OverlayModuleInfo & gt; | Promise对象，返回 [OverlayModuleInfo]{ |
+| Promise &lt;OverlayModuleInfo&gt; | Promise对象，返回 [OverlayModuleInfo]{ |
 
 **错误码：**
 

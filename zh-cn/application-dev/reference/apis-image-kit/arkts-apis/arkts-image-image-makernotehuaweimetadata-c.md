@@ -113,7 +113,7 @@ getAllProperties(): Promise<Record<string, string | null>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Record & lt;string, string \ | null & gt; & gt; | Promise对象，返回元数据中定义的所有键值对。 |
+| Promise &lt;Record &lt;string, string \ | null&gt;&gt; | Promise对象，返回元数据中定义的所有键值对。 |
 
 **示例**
 
@@ -247,7 +247,7 @@ getBlob(): Promise<ArrayBuffer>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ArrayBuffer & gt; | Promise对象，返回元数据的二进制数据。 |
+| Promise &lt;ArrayBuffer&gt; | Promise对象，返回元数据的二进制数据。 |
 
 **示例**
 
@@ -363,13 +363,13 @@ getProperties(key: Array<string>): Promise<Record<string, string | null>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | Array & lt;string & gt; | 是 | 要获取其值的属性的名称。 |
+| key | Array &lt;string&gt; | 是 | 要获取其值的属性的名称。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Record & lt;string, string \ | null & gt; & gt; | Promise对象，返回元数据要获取的属性的值，如获取失败则返回错误码。 |
+| Promise &lt;Record &lt;string, string \ | null&gt;&gt; | Promise对象，返回元数据要获取的属性的值，如获取失败则返回错误码。 |
 
 **错误码：**
 
@@ -510,7 +510,7 @@ setBlob(blob: ArrayBuffer): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -652,13 +652,13 @@ setProperties(records: Record<string, string | null>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| records | Record & lt;string, string \ | null & gt; | 是 | 包含要修改的MakerNoteHuaweiMetadata对象属性键值对的数组。 |
+| records | Record &lt;string, string \ | null&gt; | 是 | 包含要修改的MakerNoteHuaweiMetadata对象属性键值对的数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

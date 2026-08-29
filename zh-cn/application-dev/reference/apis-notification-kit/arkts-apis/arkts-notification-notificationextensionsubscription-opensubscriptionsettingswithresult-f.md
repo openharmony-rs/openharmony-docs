@@ -32,7 +32,7 @@ function openSubscriptionSettingsWithResult(context: UIAbilityContext): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;UserGrantSetting & gt; | Promise对象，返回用户设置的授权的结果。 |
+| Promise &lt;UserGrantSetting&gt; | Promise对象，返回用户设置的授权的结果。 |
 
 **错误码：**
 

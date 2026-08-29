@@ -34,7 +34,7 @@ declare function listFileExt(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string[] & gt; | Promise used to return the file names listed. |
+| Promise &lt;string[]&gt; | Promise used to return the file names listed. |
 
 **错误码：**
 

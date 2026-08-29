@@ -63,18 +63,18 @@
 
 ![project](figures/project.png)
 
-- **AppScope &gt; app.json5**：应用的全局配置信息，详见app.json5配置文件。
+- **AppScope&gt; app.json5**：应用的全局配置信息，详见app.json5配置文件。
 
 - **entry**：应用/原子化服务模块，编译构建生成一个HAP包。
-  - **src &gt; main &gt; ets**：用于存放ArkTS源码。
+  - **src&gt; main&gt; ets**：用于存放ArkTS源码。
   
-  - **src &gt; main &gt; ets &gt; entryability**：应用/服务的入口。
+  - **src&gt; main&gt; ets&gt; entryability**：应用/服务的入口。
   
-  - **src &gt; main &gt; ets &gt; pages**：应用/服务包含的页面。
+  - **src&gt; main&gt; ets&gt; pages**：应用/服务包含的页面。
   
-  - **src &gt; main &gt; resources**：用于存放应用/服务所用到的资源文件，如图形、多媒体、字符串、布局文件等。关于资源文件，详见资源文件的分类。
+  - **src&gt; main&gt; resources**：用于存放应用/服务所用到的资源文件，如图形、多媒体、字符串、布局文件等。关于资源文件，详见资源文件的分类。
   
-  - **src &gt; main &gt; module.json5**：模块配置文件。主要包含HAP包的配置信息、应用/服务在具体设备上的配置信息以及应用/服务的全局配置信息。具体的配置文件说明，详见module.json5配置文件。
+  - **src&gt; main&gt; module.json5**：模块配置文件。主要包含HAP包的配置信息、应用/服务在具体设备上的配置信息以及应用/服务的全局配置信息。具体的配置文件说明，详见module.json5配置文件。
   
   - **build-profile.json5**：当前的模块信息 、编译信息配置项，包括buildOption、targets配置等。
   
@@ -92,7 +92,7 @@
 
 1. 使用文本组件。
 
-   工程同步完成后，在Project窗口，点击entry &gt; src &gt; main &gt; ets &gt; pages，打开Index.ets文件，可以看到页面由Text组件组成。**Index.ets**文件的示例如下：
+   工程同步完成后，在Project窗口，点击entry&gt; src&gt; main&gt; ets&gt; pages，打开Index.ets文件，可以看到页面由Text组件组成。**Index.ets**文件的示例如下：
    
    ```ts
    // Index.ets
@@ -162,7 +162,7 @@
 
 1. 创建第二个页面。
 
-   - 新建第二个页面文件。在“**Project**”窗口，打开“**entry &gt; src &gt; main &gt; ets**”，右键点击“**pages**”文件夹，选择“**New &gt; ArkTS File**”，命名为“**Second**”，点击**回车键**。可以看到文件目录结构如下：
+   - 新建第二个页面文件。在“**Project**”窗口，打开“**entry&gt; src&gt; main&gt; ets**”，右键点击“**pages**”文件夹，选择“**New&gt; ArkTS File**”，命名为“**Second**”，点击**回车键**。可以看到文件目录结构如下：
 
       ![secondPage](figures/secondPage.png)
 
@@ -170,7 +170,7 @@
       >
       > 开发者也可以在右键点击“**pages**”文件夹时，选择“**New > Page > Empty Page**”，命名为“**Second**”，点击“**Finish**”完成第二个页面的创建。使用此种方式则无需再进行下文中第二个页面路由的手动配置。
 
-   - 配置第二个页面的路由。在“**Project**”窗口，打开“**entry &gt; src &gt; main &gt; resources &gt; base &gt; profile**”，在main_pages.json文件中的“src”下配置第二个页面的路由“pages/Second”。示例如下：
+   - 配置第二个页面的路由。在“**Project**”窗口，打开“**entry&gt; src&gt; main&gt; resources&gt; base&gt; profile**”，在main_pages.json文件中的“src”下配置第二个页面的路由“pages/Second”。示例如下：
      
       ```json
       {
@@ -344,7 +344,7 @@
 
 1. 将搭载OpenHarmony标准系统的开发板与电脑连接。
 
-2. 点击**File** &gt; **Project Structure...** &gt; **Project** &gt; **SigningConfigs**界面勾选“**Automatically generate signature**”，等待自动签名完成即可，点击“**OK**”。如下图所示：
+2. 点击**File**&gt; **Project Structure...**&gt; **Project**&gt; **SigningConfigs**界面勾选“**Automatically generate signature**”，等待自动签名完成即可，点击“**OK**”。如下图所示：
 
    ![signConfig](figures/signConfig.png)
 

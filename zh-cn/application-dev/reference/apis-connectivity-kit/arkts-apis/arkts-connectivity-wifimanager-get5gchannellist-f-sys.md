@@ -26,7 +26,7 @@ function get5GChannelList(): Array<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;number & gt; | 返回5G信道列表。 |
+| Array &lt;number&gt; | 返回5G信道列表。 |
 
 **错误码：**
 

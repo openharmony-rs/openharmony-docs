@@ -80,7 +80,7 @@ function queryAppGroup(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回当前应用优先级分组结果，值越小，优先级越高。 |
+| Promise &lt;number&gt; | Promise对象。返回当前应用优先级分组结果，值越小，优先级越高。 |
 
 **错误码：**
 
@@ -193,7 +193,7 @@ function queryAppGroup(bundleName: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回指定应用的优先级分组结果，值越小，优先级越高。 |
+| Promise &lt;number&gt; | Promise对象。返回指定应用的优先级分组结果，值越小，优先级越高。 |
 
 **错误码：**
 

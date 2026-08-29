@@ -79,7 +79,7 @@ Get the international mobile subscriber ID.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Returns the international mobile subscriber ID. |
+| Promise &lt;string&gt; | Returns the international mobile subscriber ID. |
 
 **错误码：**
 

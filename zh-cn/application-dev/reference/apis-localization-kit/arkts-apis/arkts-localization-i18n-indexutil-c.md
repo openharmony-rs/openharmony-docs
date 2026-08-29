@@ -94,7 +94,7 @@ getIndexList(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 当前区域的索引列表。第一个元素和最后一个元素为“...”。 |
+| Array &lt;string&gt; | 当前区域的索引列表。第一个元素和最后一个元素为“...”。 |
 
 **示例**
 

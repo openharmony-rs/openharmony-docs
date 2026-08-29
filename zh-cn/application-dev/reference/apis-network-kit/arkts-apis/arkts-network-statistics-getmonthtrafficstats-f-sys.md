@@ -33,7 +33,7 @@ function getMonthTrafficStats(simId: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | The statistics of the simId in this month. |
+| Promise &lt;number&gt; | The statistics of the simId in this month. |
 
 **错误码：**
 

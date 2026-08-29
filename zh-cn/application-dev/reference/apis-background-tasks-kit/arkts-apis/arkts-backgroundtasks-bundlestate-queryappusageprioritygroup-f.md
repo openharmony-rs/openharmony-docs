@@ -60,7 +60,7 @@ Queries the usage priority group of the calling application.The priority defined
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | the promise returned by queryAppUsagePriorityGroup. Returns the app group of the calling application. |
+| Promise &lt;number&gt; | the promise returned by queryAppUsagePriorityGroup. Returns the app group of the calling application. |
 
 **示例**
 

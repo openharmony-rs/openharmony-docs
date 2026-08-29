@@ -92,7 +92,7 @@ function getActiveNotificationByFilter(filter: NotificationFilter): Promise<Noti
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;NotificationRequest & gt; | 以Promise形式返回获取的满足条件的普通实况通知信息。 |
+| Promise &lt;NotificationRequest&gt; | 以Promise形式返回获取的满足条件的普通实况通知信息。 |
 
 **错误码：**
 

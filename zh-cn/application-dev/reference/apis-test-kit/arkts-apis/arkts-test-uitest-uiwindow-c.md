@@ -30,7 +30,7 @@ close(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -71,7 +71,7 @@ focus(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回无结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象，返回无结果的Promise对象。 |
 
 **错误码：**
 
@@ -165,7 +165,7 @@ getBundleName(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回窗口归属应用的包名信息。 |
+| Promise &lt;string&gt; | Promise对象，返回窗口归属应用的包名信息。 |
 
 **错误码：**
 
@@ -208,7 +208,7 @@ getDisplayId(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回窗口所属的屏幕ID。 |
+| Promise &lt;number&gt; | Promise对象，返回窗口所属的屏幕ID。 |
 
 **错误码：**
 
@@ -259,7 +259,7 @@ getTitle(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回窗口的标题信息。 |
+| Promise &lt;string&gt; | Promise对象，返回窗口的标题信息。 |
 
 **错误码：**
 
@@ -339,7 +339,7 @@ isActive(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回窗口对象是否为用户正在交互窗口。true：交互窗口。false：非交互窗口。 |
+| Promise &lt;boolean&gt; | Promise对象，返回窗口对象是否为用户正在交互窗口。true：交互窗口。false：非交互窗口。 |
 
 **错误码：**
 
@@ -385,7 +385,7 @@ isActived(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回窗口对象是否为用户正在交互窗口。true表示是交互窗口。false表示非交互窗口。 |
+| Promise &lt;boolean&gt; | Promise对象，返回窗口对象是否为用户正在交互窗口。true表示是交互窗口。false表示非交互窗口。 |
 
 **错误码：**
 
@@ -425,7 +425,7 @@ isFocused(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回窗口对象是否获取获焦状态。true：获焦。false：未获焦。 |
+| Promise &lt;boolean&gt; | Promise对象，返回窗口对象是否获取获焦状态。true：获焦。false：未获焦。 |
 
 **错误码：**
 
@@ -495,7 +495,7 @@ maximize(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回无结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象，返回无结果的Promise对象。 |
 
 **错误码：**
 
@@ -536,7 +536,7 @@ minimize(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回无结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象，返回无结果的Promise对象。 |
 
 **错误码：**
 
@@ -584,7 +584,7 @@ moveTo(x: number, y: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回无结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象，返回无结果的Promise对象。 |
 
 **错误码：**
 
@@ -634,7 +634,7 @@ resize(wide: number, height: number, direction: ResizeDirection): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回无结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象，返回无结果的Promise对象。 |
 
 **错误码：**
 
@@ -663,7 +663,7 @@ resume(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -704,7 +704,7 @@ split(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回无结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象，返回无结果的Promise对象。 |
 
 **错误码：**
 

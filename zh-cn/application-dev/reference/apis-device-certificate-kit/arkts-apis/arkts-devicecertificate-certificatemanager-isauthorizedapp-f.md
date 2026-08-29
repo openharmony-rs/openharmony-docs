@@ -29,7 +29,7 @@ function isAuthorizedApp(keyUri: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回查询应用是否被授权的结果，true为已授权，false为未授权。 |
+| Promise &lt;boolean&gt; | Promise对象，返回查询应用是否被授权的结果，true为已授权，false为未授权。 |
 
 **错误码：**
 

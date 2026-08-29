@@ -77,7 +77,7 @@ function isRadioOn(slotId?: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 以Promise形式返回判断Radio是否打开的结果。 |
+| Promise &lt;boolean&gt; | 以Promise形式返回判断Radio是否打开的结果。 |
 
 **错误码：**
 

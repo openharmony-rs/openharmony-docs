@@ -90,7 +90,7 @@ function createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise<Comm
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;CommonEventSubscriber & gt; | Promise对象，返回创建成功的订阅者对象。 |
+| Promise &lt;CommonEventSubscriber&gt; | Promise对象，返回创建成功的订阅者对象。 |
 
 **错误码：**
 

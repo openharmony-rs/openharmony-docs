@@ -26,7 +26,7 @@ function getLinkedInfo(): Promise<WifiLinkedInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;WifiLinkedInfo & gt; | 返回WLAN连接信息。 |
+| Promise &lt;WifiLinkedInfo&gt; | 返回WLAN连接信息。 |
 
 **错误码：**
 

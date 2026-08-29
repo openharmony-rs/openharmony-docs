@@ -26,13 +26,13 @@ function installLocalPlugin(pluginFilePaths: Array<string>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pluginFilePaths | Array & lt;string & gt; | 是 | 插件文件路径数组，表示要安装的插件文件的路径列表。 |
+| pluginFilePaths | Array &lt;string&gt; | 是 | 插件文件路径数组，表示要安装的插件文件的路径列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

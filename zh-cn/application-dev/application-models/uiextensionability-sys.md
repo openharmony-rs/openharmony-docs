@@ -390,9 +390,9 @@ UIExtensionAbility通过UIExtensionContext和UIExtensionContentSession提供相�
 
 开发者在实现一个UIExtensionAbility提供方时，需要在DevEco Studio工程中手动新建一个UIExtensionAbility，具体步骤如下。
 
-1. 在工程Module对应的ets目录下，右键选择“New &gt; Directory”，新建一个目录并命名为uiextensionability。
+1. 在工程Module对应的ets目录下，右键选择“New&gt; Directory”，新建一个目录并命名为uiextensionability。
 
-2. 在uiextensionability目录，右键选择“New &gt; File”，新建一个.ets文件并命名为UIExtensionAbility.ets。
+2. 在uiextensionability目录，右键选择“New&gt; File”，新建一个.ets文件并命名为UIExtensionAbility.ets。
 
 3. 打开UIExtensionAbility.ets，导入UIExtensionAbility的依赖包，自定义类继承UIExtensionAbility并实现onCreate、onSessionCreate、onSessionDestroy、onForeground、onBackground和onDestroy生命周期回调。
 

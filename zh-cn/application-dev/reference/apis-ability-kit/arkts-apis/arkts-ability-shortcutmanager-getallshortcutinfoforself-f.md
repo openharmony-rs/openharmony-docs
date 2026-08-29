@@ -22,7 +22,7 @@ function getAllShortcutInfoForSelf(): Promise<Array<ShortcutInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;ShortcutInfo & gt; & gt; | Promise对象，返回应用配置文件中定义的所有快捷方式信息。 |
+| Promise &lt;Array &lt;ShortcutInfo&gt;&gt; | Promise对象，返回应用配置文件中定义的所有快捷方式信息。 |
 
 **示例**
 

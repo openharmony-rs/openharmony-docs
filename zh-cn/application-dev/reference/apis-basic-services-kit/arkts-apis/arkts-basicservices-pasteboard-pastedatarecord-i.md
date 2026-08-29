@@ -113,7 +113,7 @@ convertToText(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回强制转换的文本内容。 |
+| Promise &lt;string&gt; | Promise对象，返回强制转换的文本内容。 |
 
 **示例**
 
@@ -150,7 +150,7 @@ getData(type: string): Promise<ValueType>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ValueType & gt; | Promise对象，返回PasteDataRecord中指定MIME类型的自定义数据。 PasteDataRecord中包含多个MIME类型数据时，非PasteDataRecord的默认MIME类型的数据只能通过本接口获取。 |
+| Promise &lt;ValueType&gt; | Promise对象，返回PasteDataRecord中指定MIME类型的自定义数据。 PasteDataRecord中包含多个MIME类型数据时，非PasteDataRecord的默认MIME类型的数据只能通过本接口获取。 |
 
 **错误码：**
 
@@ -197,13 +197,13 @@ getValidTypes(types: Array<string>): Array<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| types | Array & lt;string & gt; | 是 | MIME类型列表，设置后用于与剪贴板中数据的MIME类型进行交集匹配，返回匹配成功的类型列表。 |
+| types | Array &lt;string&gt; | 是 | MIME类型列表，设置后用于与剪贴板中数据的MIME类型进行交集匹配，返回匹配成功的类型列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 传入的MIME类型和剪贴板中数据的MIME类型的交集。 |
+| Array &lt;string&gt; | 传入的MIME类型和剪贴板中数据的MIME类型的交集。 |
 
 **错误码：**
 

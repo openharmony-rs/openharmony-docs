@@ -32,7 +32,7 @@ function getSlotFlagsByBundle(bundle: BundleOption): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 以Promise形式返回获取指定应用的通知渠道标识位。 |
+| Promise &lt;number&gt; | 以Promise形式返回获取指定应用的通知渠道标识位。 |
 
 **错误码：**
 

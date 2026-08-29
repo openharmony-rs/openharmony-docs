@@ -102,7 +102,7 @@ function on(type: 'applicationState', observer: ApplicationStateObserver, bundle
 | --- | --- | --- | --- |
 | type | 'applicationState' | 是 | 调用接口类型，固定填'applicationState'字符串。 |
 | observer | ApplicationStateObserver | 是 | 应用状态监听器，用于监听应用的生命周期变化。 |
-| bundleNameList | Array & lt;string & gt; | 是 | 表示需要注册监听的bundleName数组。最大值128。 |
+| bundleNameList | Array &lt;string&gt; | 是 | 表示需要注册监听的bundleName数组。最大值128。 |
 
 **返回值：**
 

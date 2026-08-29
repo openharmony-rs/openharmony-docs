@@ -101,7 +101,7 @@ Gets the supported bias range for the specified OIS axis.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;number & gt; | The bias range. |
+| Array &lt;number&gt; | The bias range. |
 
 **错误码：**
 

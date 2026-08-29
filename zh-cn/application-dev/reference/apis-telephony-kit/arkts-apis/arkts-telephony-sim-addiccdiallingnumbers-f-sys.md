@@ -89,7 +89,7 @@ Add dialing number information to SIM card.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | The promise returned by the addIccDiallingNumbers. |
+| Promise &lt;void&gt; | The promise returned by the addIccDiallingNumbers. |
 
 **错误码：**
 

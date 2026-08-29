@@ -28,7 +28,7 @@ NearLink disabled.
 
 **处理步骤**
 
-在设备的设置界面打开星闪后重试（通常路径为“设置 &gt; 星闪和蓝牙 &gt; 星闪”，不同产品或系统版本可能为“设置 &gt; 多设备协同 &gt; 星闪”），或请通过[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/)提交问题。
+在设备的设置界面打开星闪后重试（通常路径为“设置&gt; 星闪和蓝牙&gt; 星闪”，不同产品或系统版本可能为“设置&gt; 多设备协同&gt; 星闪”），或请通过[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/)提交问题。
 
 
 ## 36100020 端口重复注册

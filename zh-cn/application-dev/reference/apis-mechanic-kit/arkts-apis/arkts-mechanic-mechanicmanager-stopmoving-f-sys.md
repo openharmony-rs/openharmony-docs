@@ -29,7 +29,7 @@ function stopMoving(mechId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 返回操作结果 |
+| Promise &lt;void&gt; | 返回操作结果 |
 
 **错误码：**
 

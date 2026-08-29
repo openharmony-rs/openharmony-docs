@@ -30,7 +30,7 @@ function requestSerialRight(portId: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回boolean值。true表示请求权限成功，false表示请求权限失败或用户拒绝授权。 |
+| Promise &lt;boolean&gt; | Promise对象，返回boolean值。true表示请求权限成功，false表示请求权限失败或用户拒绝授权。 |
 
 **错误码：**
 

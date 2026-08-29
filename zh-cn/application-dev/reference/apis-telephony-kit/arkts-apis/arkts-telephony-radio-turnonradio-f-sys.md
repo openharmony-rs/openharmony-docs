@@ -82,7 +82,7 @@ Turn on the radio service.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | The promise returned by the turnOnRadio. |
+| Promise &lt;void&gt; | The promise returned by the turnOnRadio. |
 
 **错误码：**
 

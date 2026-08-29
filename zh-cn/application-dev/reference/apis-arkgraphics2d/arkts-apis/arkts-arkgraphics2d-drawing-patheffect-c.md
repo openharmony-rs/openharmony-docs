@@ -77,7 +77,7 @@ static createCornerPathEffect(radius: number): PathEffect
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| radius | number | 是 | 圆角的半径，取值范围 & gt;0，该参数为浮点数。单位为物理像素px。 |
+| radius | number | 是 | 圆角的半径，取值范围&gt;0，该参数为浮点数。单位为物理像素px。 |
 
 **返回值：**
 
@@ -121,7 +121,7 @@ static createDashPathEffect(intervals: Array<number>, phase: number): PathEffect
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| intervals | Array & lt;number & gt; | 是 | 表示虚线的ON（实线部分）和OFF（空白部分）长度的数组，数组元素个数必须是偶数且 & gt;=2，数组元素为正整数。单位为物理像素px。 |
+| intervals | Array &lt;number&gt; | 是 | 表示虚线的ON（实线部分）和OFF（空白部分）长度的数组，数组元素个数必须是偶数且&gt;=2，数组元素为正整数。单位为物理像素px。 |
 | phase | number | 是 | 绘制时的偏移量，用于调整虚线图案沿路径的起始位置，该参数为浮点数，偏移量会相对于intervals定义的虚线模式产生位移效果。单位为物理像素px。 |
 
 **返回值：**
@@ -208,7 +208,7 @@ static createPathDashEffect(path: Path, advance: number, phase: number, style: P
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | Path | 是 | 通过该路径生成一个图形，用来填充每个虚线段。 |
-| advance | number | 是 | 虚线段的步长，取值范围 & gt;0，否则会抛错误码。单位为物理像素px。 |
+| advance | number | 是 | 虚线段的步长，取值范围&gt;0，否则会抛错误码。单位为物理像素px。 |
 | phase | number | 是 | 表示虚线段内图形在虚线步长范围内的偏移量，该参数为浮点数，效果为先对偏移量取绝对值，然后对步长取模。单位为物理像素px。 |
 | style | [PathDashStyle](arkts-arkgraphics2d-drawing-pathdashstyle-e.md) | 是 | 指定虚线效果的样式，决定虚线段图形在路径上的变换方式。 |
 

@@ -20,10 +20,10 @@
 
 | 权限类型 | 授权方式 | 操作路径 |
 | -------- | -------- | -------- |
-| 开放权限（系统授权） | system_grant | 声明权限 &gt; 访问接口 | 
-| 开放权限（用户授权） | user_grant  | 声明权限 &gt; 向用户申请授权 &gt; 访问接口 | 
-| <!--Del-->允许通过ACL申请的系统权限（系统授权）<br><!--DelEnd-->受限开放权限（系统授权） | system_grant | 申请使用受限权限 &gt; 声明权限 &gt; 访问接口 | 
-| <!--Del-->允许通过ACL申请的系统权限（用户授权）<br><!--DelEnd-->受限开放权限（用户授权） | user_grant | 申请使用受限权限 &gt; 声明权限 &gt; 向用户申请授权 &gt; 访问接口 |
+| 开放权限（系统授权） | system_grant | 声明权限&gt; 访问接口 | 
+| 开放权限（用户授权） | user_grant  | 声明权限&gt; 向用户申请授权&gt; 访问接口 | 
+| <!--Del-->允许通过ACL申请的系统权限（系统授权）<br><!--DelEnd-->受限开放权限（系统授权） | system_grant | 申请使用受限权限&gt; 声明权限&gt; 访问接口 | 
+| <!--Del-->允许通过ACL申请的系统权限（用户授权）<br><!--DelEnd-->受限开放权限（用户授权） | user_grant | 申请使用受限权限&gt; 声明权限&gt; 向用户申请授权&gt; 访问接口 |
 
 <!--Del-->
 > **说明：**
@@ -35,10 +35,10 @@
 
 | 权限等级 | 授权方式 | ACL使能 | 操作路径 | 
 | -------- | -------- | -------- | -------- |
-| normal、system_basic | system_grant | - | 声明权限 &gt; 访问接口 | 
-| normal、system_basic | user_grant | - | 声明权限 &gt; 向用户申请授权 &gt; 访问接口 | 
-| system_core | system_grant | true | 申请使用受限权限 &gt; 声明权限 &gt; 访问接口 | 
-| system_core | user_grant | true | 申请使用受限权限 &gt; 声明权限 &gt; 向用户申请授权 &gt; 访问接口 | 
+| normal、system_basic | system_grant | - | 声明权限&gt; 访问接口 | 
+| normal、system_basic | user_grant | - | 声明权限&gt; 向用户申请授权&gt; 访问接口 | 
+| system_core | system_grant | true | 申请使用受限权限&gt; 声明权限&gt; 访问接口 | 
+| system_core | user_grant | true | 申请使用受限权限&gt; 声明权限&gt; 向用户申请授权&gt; 访问接口 | 
 
 如果应用需要将自身的APL等级声明为system_basic及以上，在开发应用安装包时，需要修改应用的HarmonyAppProvision配置文件，即SDK目录下的“`Toolchains / _{Version} _/ lib / UnsgnedReleasedProfileTemplate.json`”文件，并重新进行应用签名。
 

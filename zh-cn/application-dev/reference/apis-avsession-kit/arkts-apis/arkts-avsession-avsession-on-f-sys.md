@@ -25,7 +25,7 @@ function on(type: 'sessionCreate', callback: (session: AVSessionDescriptor) => v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'sessionCreate' | 是 | 事件回调类型，支持的事件是'sessionCreate'：会话创建事件，检测到会话创建时触发。 |
-| callback | (session: AVSessionDescriptor) = & gt; void | 是 | 回调函数。参数为会话相关描述。 |
+| callback | (session: AVSessionDescriptor) =&gt; void | 是 | 回调函数。参数为会话相关描述。 |
 
 **错误码：**
 
@@ -82,7 +82,7 @@ function on(type: 'sessionDestroy', callback: (session: AVSessionDescriptor) => 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'sessionDestroy' | 是 | 事件回调类型，支持的事件是`'sessionDestroy'`：会话销毁事件，检测到会话销毁时触发。 |
-| callback | (session: AVSessionDescriptor) = & gt; void | 是 | 回调函数。参数为会话相关描述。 |
+| callback | (session: AVSessionDescriptor) =&gt; void | 是 | 回调函数。参数为会话相关描述。 |
 
 **错误码：**
 
@@ -137,7 +137,7 @@ function on(type: 'topSessionChange', callback: (session: AVSessionDescriptor) =
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'topSessionChange' | 是 | 事件回调类型，支持的事件是 `'topSessionChange'`：最新播放会话的变化事件，检测到最新的会话改变时触发。 |
-| callback | (session: AVSessionDescriptor) = & gt; void | 是 | 回调函数。参数为会话相关描述。 |
+| callback | (session: AVSessionDescriptor) =&gt; void | 是 | 回调函数。参数为会话相关描述。 |
 
 **错误码：**
 
@@ -194,7 +194,7 @@ function on(type: 'sessionServiceDie', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'sessionServiceDie' | 是 | 事件回调类型，支持事件`'sessionServiceDie'`：会话服务死亡事件，检测到会话的服务死亡时触发。 |
-| callback | () = & gt; void | 是 | 回调函数。当监听事件注册成功，err为undefined，否则返回错误对象。 |
+| callback | () =&gt; void | 是 | 回调函数。当监听事件注册成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -270,7 +270,7 @@ function on(type: 'deviceAvailable', callback: (device: OutputDeviceInfo) => voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'deviceAvailable' | 是 | 事件回调类型，支持事件`'deviceAvailable'`，有设备被发现时触发回调。 |
-| callback | (device: OutputDeviceInfo) = & gt; void | 是 | 回调函数。当监听事件注册成功，err为undefined，否则返回错误对象。 |
+| callback | (device: OutputDeviceInfo) =&gt; void | 是 | 回调函数。当监听事件注册成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -309,7 +309,7 @@ function on(type: 'deviceOffline', callback: (deviceId: string) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'deviceOffline' | 是 | 事件回调类型，支持事件`'deviceOffline'`，有设备下线时触发回调。 |
-| callback | (deviceId: string) = & gt; void | 是 | 回调函数，参数deviceId是设备的ID。当监听事件注册成功，err为undefined，否则返回错误对象。 |
+| callback | (deviceId: string) =&gt; void | 是 | 回调函数，参数deviceId是设备的ID。当监听事件注册成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 

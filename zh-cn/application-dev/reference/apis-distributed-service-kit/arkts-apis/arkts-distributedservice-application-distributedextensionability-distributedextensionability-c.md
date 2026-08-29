@@ -30,7 +30,7 @@ Extension生命周期回调，在多设备限定协同场景下，协同方应�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| wantParam | Record & lt;string, Object & gt; | 是 | 协同回调参数，键值对对象，携带调用方传输的协同相关数据。 开发者可通过"ohos.extra.param.key.supportCollaborateIndex"和"CollaborationValues"等key值获取这些数据， 以决定是否接受协同请求及处理协同逻辑，影响协同流程是否继续。 |
+| wantParam | Record &lt;string, Object&gt; | 是 | 协同回调参数，键值对对象，携带调用方传输的协同相关数据。 开发者可通过"ohos.extra.param.key.supportCollaborateIndex"和"CollaborationValues"等key值获取这些数据， 以决定是否接受协同请求及处理协同逻辑，影响协同流程是否继续。 |
 
 **返回值：**
 

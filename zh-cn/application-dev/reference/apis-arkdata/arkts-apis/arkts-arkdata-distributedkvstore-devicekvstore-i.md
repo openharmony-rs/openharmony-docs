@@ -33,7 +33,7 @@ get(key: string, callback: AsyncCallback<boolean | string | number | number | Ui
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | key | string | 是 | 要查询数据的Key，不能为空且长度范围为1-[MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md)。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean \| string \| number \| number \| Uint8Array & gt; | 是 | 回调函数。返回获取查询的值。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean \| string \| number \| number \| Uint8Array&gt; | 是 | 回调函数。返回获取查询的值。 |
 
 **错误码：**
 
@@ -228,7 +228,7 @@ get(key: string): Promise<boolean | string | number | number | Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean \ | string \| number \| number \| Uint8Array & gt; | Promise对象。返回获取查询的值，值的类型取决于存储时的数据类型。 |
+| Promise &lt;boolean \ | string \| number \| number \| Uint8Array&gt; | Promise对象。返回获取查询的值，值的类型取决于存储时的数据类型。 |
 
 **错误码：**
 
@@ -272,7 +272,7 @@ get(deviceId: string, key: string, callback: AsyncCallback<boolean | string | nu
 | --- | --- | --- | --- |
 | deviceId | string | 是 | 设备的networkId，标识要查询其数据的设备，不能为空。 |
 | key | string | 是 | 要查询数据的键名，不能为空且长度范围为1-[MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md)。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean \| string \| number \| number \| Uint8Array & gt; | 是 | 回调函数。成功时返回匹配给定条件的值（值的类型取决于存储时的 数据类型），失败时返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean \| string \| number \| number \| Uint8Array&gt; | 是 | 回调函数。成功时返回匹配给定条件的值（值的类型取决于存储时的 数据类型），失败时返回错误对象。 |
 
 **错误码：**
 
@@ -321,7 +321,7 @@ get(deviceId: string, key: string): Promise<boolean | string | number | number |
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean \ | string \| number \| number \| Uint8Array & gt; | Promise对象。返回匹配给定条件的值，值的类型取决于存储时的数据类型。 |
+| Promise &lt;boolean \ | string \| number \| number \| Uint8Array&gt; | Promise对象。返回匹配给定条件的值，值的类型取决于存储时的数据类型。 |
 
 **错误码：**
 
@@ -432,7 +432,7 @@ getEntries(keyPrefix: string): Promise<Entry[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Entry[] & gt; | Promise对象。返回匹配指定前缀的键值对列表。 |
+| Promise &lt;Entry[]&gt; | Promise对象。返回匹配指定前缀的键值对列表。 |
 
 **错误码：**
 
@@ -633,7 +633,7 @@ getEntries(deviceId: string, keyPrefix: string): Promise<Entry[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Entry[] & gt; | Promise对象。返回匹配给定条件的所有键值对的列表。 |
+| Promise &lt;Entry[]&gt; | Promise对象。返回匹配给定条件的所有键值对的列表。 |
 
 **错误码：**
 
@@ -827,7 +827,7 @@ getEntries(query: Query): Promise<Entry[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Entry[] & gt; | Promise对象。返回本设备与指定Query对象匹配的键值对列表。 |
+| Promise &lt;Entry[]&gt; | Promise对象。返回本设备与指定Query对象匹配的键值对列表。 |
 
 **错误码：**
 
@@ -999,7 +999,7 @@ getEntries(deviceId: string, query: Query): Promise<Entry[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Entry[] & gt; | Promise对象。返回与指定设备ID和Query对象匹配的键值对列表。 |
+| Promise &lt;Entry[]&gt; | Promise对象。返回与指定设备ID和Query对象匹配的键值对列表。 |
 
 **错误码：**
 
@@ -1956,7 +1956,7 @@ getResultSize(query: Query): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。获取与本设备指定Query对象匹配的结果数。 |
+| Promise &lt;number&gt; | Promise对象。获取与本设备指定Query对象匹配的结果数。 |
 
 **错误码：**
 
@@ -2119,7 +2119,7 @@ getResultSize(deviceId: string, query: Query): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回与指定设备ID和Query对象匹配的结果数。 |
+| Promise &lt;number&gt; | Promise对象。返回与指定设备ID和Query对象匹配的结果数。 |
 
 **错误码：**
 

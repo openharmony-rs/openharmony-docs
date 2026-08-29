@@ -34,7 +34,7 @@ function getTrafficPlanInfo(simId: number, planParam: TrafficPlanParam): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | The value of parameter. |
+| Promise &lt;number&gt; | The value of parameter. |
 
 **错误码：**
 

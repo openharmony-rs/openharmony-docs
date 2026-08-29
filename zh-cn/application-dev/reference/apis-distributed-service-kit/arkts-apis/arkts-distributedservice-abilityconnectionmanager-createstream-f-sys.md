@@ -33,7 +33,7 @@ function createStream(sessionId: number, param: StreamParam): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 返回传输流ID的Promise对象。后续操作传输流的接口（如setSurfaceId、getSurfaceId、 startStream、stopStream、destroyStream等）需要使用此ID。 |
+| Promise &lt;number&gt; | 返回传输流ID的Promise对象。后续操作传输流的接口（如setSurfaceId、getSurfaceId、 startStream、stopStream、destroyStream等）需要使用此ID。 |
 
 **错误码：**
 

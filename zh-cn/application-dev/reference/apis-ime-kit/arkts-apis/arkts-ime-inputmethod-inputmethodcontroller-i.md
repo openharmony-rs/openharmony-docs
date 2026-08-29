@@ -126,7 +126,7 @@ attach(showKeyboard: boolean, textConfig: TextConfig): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -192,7 +192,7 @@ attach(showKeyboard: boolean, textConfig: TextConfig, requestKeyboardReason: Req
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -252,7 +252,7 @@ attachWithUIContext(uiContext: UIContext, textConfig: TextConfig, attachOptions?
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -359,7 +359,7 @@ changeSelection(text: string, start: number, end: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -437,7 +437,7 @@ detach(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -479,7 +479,7 @@ discardTypingText(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -575,7 +575,7 @@ hideSoftKeyboard(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -683,7 +683,7 @@ hideTextInput(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -788,7 +788,7 @@ off(type: 'insertText', callback?: (text: string) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'insertText' | 是 | 设置监听类型，固定取值为'insertText'。 |
-| callback | (text: string) = & gt; void | 否 | 取消订阅的回调函数，需要与on接口传入的保持一致。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | (text: string) =&gt; void | 否 | 取消订阅的回调函数，需要与on接口传入的保持一致。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例**
 
@@ -821,7 +821,7 @@ off(type: 'deleteLeft', callback?: (length: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'deleteLeft' | 是 | 设置监听，固定取值为'deleteLeft'。 |
-| callback | (length: number) = & gt; void | 否 | 取消订阅的回调函数，需要与on接口传入的保持一致。 参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | (length: number) =&gt; void | 否 | 取消订阅的回调函数，需要与on接口传入的保持一致。 参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例**
 
@@ -854,7 +854,7 @@ off(type: 'deleteRight', callback?: (length: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'deleteRight' | 是 | 设置监听类型，固定取值为`deleteRight`。 |
-| callback | (length: number) = & gt; void | 否 | 取消订阅的回调函数，需要与on接口传入的保持一致。 参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | (length: number) =&gt; void | 否 | 取消订阅的回调函数，需要与on接口传入的保持一致。 参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例**
 
@@ -886,7 +886,7 @@ off(type: 'sendKeyboardStatus', callback?: (keyboardStatus: KeyboardStatus) => v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'sendKeyboardStatus' | 是 | 设置监听类型，固定取值为'sendKeyboardStatus'。 |
-| callback | (keyboardStatus: KeyboardStatus) = & gt; void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | (keyboardStatus: KeyboardStatus) =&gt; void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例**
 
@@ -919,7 +919,7 @@ off(type: 'sendFunctionKey', callback?: (functionKey: FunctionKey) => void): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'sendFunctionKey' | 是 | 设置监听类型，固定取值为'sendFunctionKey'。 |
-| callback | (functionKey: FunctionKey) = & gt; void | 否 | 取消订阅的回调函数，需要与on接口传入的保持一致。 参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | (functionKey: FunctionKey) =&gt; void | 否 | 取消订阅的回调函数，需要与on接口传入的保持一致。 参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例**
 
@@ -952,7 +952,7 @@ off(type: 'moveCursor', callback?: (direction: Direction) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'moveCursor' | 是 | 设置监听类型，固定取值为'moveCursor'。 |
-| callback | (direction: Direction) = & gt; void | 否 | 取消订阅的回调函数，需要与on接口传入的保持一致。 参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | (direction: Direction) =&gt; void | 否 | 取消订阅的回调函数，需要与on接口传入的保持一致。 参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例**
 
@@ -985,7 +985,7 @@ off(type: 'handleExtendAction', callback?: (action: ExtendAction) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'handleExtendAction' | 是 | 设置监听类型，固定取值为'handleExtendAction'。 |
-| callback | (action: ExtendAction) = & gt; void | 否 | 取消订阅的回调函数，需要与on接口传入的保持一致。 参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | (action: ExtendAction) =&gt; void | 否 | 取消订阅的回调函数，需要与on接口传入的保持一致。 参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例**
 
@@ -1018,7 +1018,7 @@ off(type: 'getLeftTextOfCursor', callback?: (length: number) => string): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'getLeftTextOfCursor' | 是 | 设置监听类型，固定取值为'getLeftTextOfCursor'。 |
-| callback | (length: number) = & gt; string | 否 | 取消订阅的回调函数，需要与on接口传入的保持一致。 参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | (length: number) =&gt; string | 否 | 取消订阅的回调函数，需要与on接口传入的保持一致。 参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例**
 
@@ -1051,7 +1051,7 @@ off(type: 'getRightTextOfCursor', callback?: (length: number) => string): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'getRightTextOfCursor' | 是 | 设置监听类型，固定取值为'getRightTextOfCursor'。 |
-| callback | (length: number) = & gt; string | 否 | 取消订阅的回调函数，需要与on接口传入的保持一致。 参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | (length: number) =&gt; string | 否 | 取消订阅的回调函数，需要与on接口传入的保持一致。 参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例**
 
@@ -1084,7 +1084,7 @@ off(type: 'getTextIndexAtCursor', callback?: () => number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'getTextIndexAtCursor' | 是 | 设置监听类型，固定取值为'getTextIndexAtCursor'。 |
-| callback | () = & gt; number | 否 | 取消订阅的回调函数，需要与on接口传入的保持一致。 参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | () =&gt; number | 否 | 取消订阅的回调函数，需要与on接口传入的保持一致。 参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例**
 
@@ -1270,7 +1270,7 @@ on(type: 'insertText', callback: (text: string) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'insertText' | 是 | 设置监听类型，固定取值为'insertText'。 |
-| callback | (text: string) = & gt; void | 是 | 回调函数，返回需要插入的文本内容。根据传入的文本，在回调函数中操作编辑框中的内容。 |
+| callback | (text: string) =&gt; void | 是 | 回调函数，返回需要插入的文本内容。根据传入的文本，在回调函数中操作编辑框中的内容。 |
 
 **错误码：**
 
@@ -1317,7 +1317,7 @@ on(type: 'deleteLeft', callback: (length: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'deleteLeft' | 是 | 设置监听类型，固定取值为'deleteLeft'。 |
-| callback | (length: number) = & gt; void | 是 | 回调函数，返回需要向左删除的文本长度。根据传入的删除长度，在回调函数中操作编辑框中的文本。 |
+| callback | (length: number) =&gt; void | 是 | 回调函数，返回需要向左删除的文本长度。根据传入的删除长度，在回调函数中操作编辑框中的文本。 |
 
 **错误码：**
 
@@ -1351,7 +1351,7 @@ on(type: 'deleteRight', callback: (length: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'deleteRight' | 是 | 设置监听类型，固定取值为'deleteRight'。 |
-| callback | (length: number) = & gt; void | 是 | 回调函数，返回需要向右删除的文本长度。根据传入的删除长度，在回调函数中操作编辑框中的文本。 |
+| callback | (length: number) =&gt; void | 是 | 回调函数，返回需要向右删除的文本长度。根据传入的删除长度，在回调函数中操作编辑框中的文本。 |
 
 **错误码：**
 
@@ -1385,7 +1385,7 @@ on(type: 'sendKeyboardStatus', callback: (keyboardStatus: KeyboardStatus) => voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'sendKeyboardStatus' | 是 | 设置监听类型，固定取值为'sendKeyboardStatus'。 |
-| callback | (keyboardStatus: KeyboardStatus) = & gt; void | 是 | 回调函数，返回软键盘状态。根据传入的软键盘状态，在回调函数中做相应操作。 |
+| callback | (keyboardStatus: KeyboardStatus) =&gt; void | 是 | 回调函数，返回软键盘状态。根据传入的软键盘状态，在回调函数中做相应操作。 |
 
 **错误码：**
 
@@ -1419,7 +1419,7 @@ on(type: 'sendFunctionKey', callback: (functionKey: FunctionKey) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'sendFunctionKey' | 是 | 设置监听类型，固定取值为'sendFunctionKey'。 |
-| callback | (functionKey: FunctionKey) = & gt; void | 是 | 回调函数，返回输入法应用发送的功能键信息。根据返回的功能键信息，做相应操作。 |
+| callback | (functionKey: FunctionKey) =&gt; void | 是 | 回调函数，返回输入法应用发送的功能键信息。根据返回的功能键信息，做相应操作。 |
 
 **错误码：**
 
@@ -1453,7 +1453,7 @@ on(type: 'moveCursor', callback: (direction: Direction) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'moveCursor' | 是 | 设置监听类型，固定取值为'moveCursor'。 |
-| callback | (direction: Direction) = & gt; void | 是 | 回调函数，返回光标信息。根据返回的光标移动方向，改变光标位置，如光标向上或向下。 |
+| callback | (direction: Direction) =&gt; void | 是 | 回调函数，返回光标信息。根据返回的光标移动方向，改变光标位置，如光标向上或向下。 |
 
 **错误码：**
 
@@ -1487,7 +1487,7 @@ on(type: 'handleExtendAction', callback: (action: ExtendAction) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'handleExtendAction' | 是 | 设置监听类型，固定取值为'handleExtendAction'。 |
-| callback | (action: ExtendAction) = & gt; void | 是 | 回调函数，返回扩展编辑操作类型。根据传入的扩展编辑操作类型，做相应的操作，如剪切、复制等。 |
+| callback | (action: ExtendAction) =&gt; void | 是 | 回调函数，返回扩展编辑操作类型。根据传入的扩展编辑操作类型，做相应的操作，如剪切、复制等。 |
 
 **错误码：**
 
@@ -1521,7 +1521,7 @@ on(type: 'getLeftTextOfCursor', callback: (length: number) => string): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'getLeftTextOfCursor' | 是 | 设置监听类型，固定取值为'getLeftTextOfCursor'。 |
-| callback | (length: number) = & gt; string | 是 | 回调函数，获取编辑框最新状态下光标左侧指定长度的文本内容并返回。 |
+| callback | (length: number) =&gt; string | 是 | 回调函数，获取编辑框最新状态下光标左侧指定长度的文本内容并返回。 |
 
 **错误码：**
 
@@ -1557,7 +1557,7 @@ on(type: 'getRightTextOfCursor', callback: (length: number) => string): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'getRightTextOfCursor' | 是 | 设置监听类型，固定取值为'getRightTextOfCursor'。 |
-| callback | (length: number) = & gt; string | 是 | 回调函数，获取编辑框最新状态下光标右侧指定长度的文本内容并返回。 |
+| callback | (length: number) =&gt; string | 是 | 回调函数，获取编辑框最新状态下光标右侧指定长度的文本内容并返回。 |
 
 **错误码：**
 
@@ -1593,7 +1593,7 @@ on(type: 'getTextIndexAtCursor', callback: () => number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'getTextIndexAtCursor' | 是 | 设置监听类型，固定取值为'getTextIndexAtCursor'。 |
-| callback | () = & gt; number | 是 | 回调函数，获取编辑框最新状态下光标处文本索引并返回。 |
+| callback | () =&gt; number | 是 | 回调函数，获取编辑框最新状态下光标处文本索引并返回。 |
 
 **错误码：**
 
@@ -1825,7 +1825,7 @@ sendMessage(msgId: string, msgParam?: ArrayBuffer): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1931,7 +1931,7 @@ setCallingWindow(windowId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2029,7 +2029,7 @@ showSoftKeyboard(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2121,7 +2121,7 @@ showTextInput(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2170,7 +2170,7 @@ showTextInput(requestKeyboardReason: RequestKeyboardReason): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2264,7 +2264,7 @@ stopInput(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示会话结束成功；返回false表示会话结束失败。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示会话结束成功；返回false表示会话结束失败。 |
 
 **示例**
 
@@ -2351,7 +2351,7 @@ stopInputSession(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示结束输入会话成功，返回false表示结束输入会话失败。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示结束输入会话成功，返回false表示结束输入会话失败。 |
 
 **错误码：**
 
@@ -2446,7 +2446,7 @@ updateAttribute(attribute: InputAttribute): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2550,7 +2550,7 @@ updateCursor(cursorInfo: CursorInfo): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

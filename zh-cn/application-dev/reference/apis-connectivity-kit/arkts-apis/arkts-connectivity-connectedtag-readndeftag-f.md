@@ -28,7 +28,7 @@ function readNdefTag(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回读取有源标签内容的列表。 |
+| Promise &lt;string&gt; | Promise对象，返回读取有源标签内容的列表。 |
 
 **示例**
 

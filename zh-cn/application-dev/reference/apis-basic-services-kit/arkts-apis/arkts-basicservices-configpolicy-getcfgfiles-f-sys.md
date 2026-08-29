@@ -164,7 +164,7 @@ function getCfgFiles(relPath: string): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回文件列表。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回文件列表。 |
 
 **错误码：**
 
@@ -219,7 +219,7 @@ function getCfgFiles(relPath: string, followMode: FollowXMode, extra?: string): 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回文件列表。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回文件列表。 |
 
 **错误码：**
 

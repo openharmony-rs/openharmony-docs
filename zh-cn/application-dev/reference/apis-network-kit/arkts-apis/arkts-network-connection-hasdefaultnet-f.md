@@ -65,7 +65,7 @@ function hasDefaultNet(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回当前是否有可用网络。true表示当前有可用网络，false表示当前没有可用网络。 |
+| Promise &lt;boolean&gt; | Promise对象。返回当前是否有可用网络。true表示当前有可用网络，false表示当前没有可用网络。 |
 
 **错误码：**
 

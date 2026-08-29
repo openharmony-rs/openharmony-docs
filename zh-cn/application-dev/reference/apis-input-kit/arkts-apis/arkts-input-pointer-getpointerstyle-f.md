@@ -97,7 +97,7 @@ function getPointerStyle(windowId: number): Promise<PointerStyle>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PointerStyle & gt; | Promise对象，返回鼠标样式类型。 |
+| Promise &lt;PointerStyle&gt; | Promise对象，返回鼠标样式类型。 |
 
 **错误码：**
 

@@ -29,7 +29,7 @@ getCertList(): Array<X509Cert>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;X509Cert & gt; | X.509证书数组。 |
+| Array &lt;X509Cert&gt; | X.509证书数组。 |
 
 **错误码：**
 

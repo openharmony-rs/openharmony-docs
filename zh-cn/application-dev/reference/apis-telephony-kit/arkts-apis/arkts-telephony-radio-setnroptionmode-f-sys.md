@@ -85,7 +85,7 @@ Set the NR option mode.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Returns option result. |
+| Promise &lt;void&gt; | Returns option result. |
 
 **错误码：**
 

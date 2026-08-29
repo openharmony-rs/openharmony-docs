@@ -24,7 +24,7 @@ function getAllCapabilityList(): Promise<Capability[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Capability[] & gt; | Promise用于返回所有的能力列表。 |
+| Promise &lt;Capability[]&gt; | Promise用于返回所有的能力列表。 |
 
 **错误码：**
 

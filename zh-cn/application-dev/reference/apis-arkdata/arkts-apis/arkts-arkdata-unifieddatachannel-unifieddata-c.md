@@ -206,7 +206,7 @@ getTypes(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | [UniformDataType]{ |
+| Array &lt;string&gt; | [UniformDataType]{ |
 
 **示例**
 

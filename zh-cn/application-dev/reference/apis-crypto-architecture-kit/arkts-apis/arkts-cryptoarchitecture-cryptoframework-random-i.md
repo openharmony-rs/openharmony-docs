@@ -140,7 +140,7 @@ generateRandom(len: number): Promise<DataBlob>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;DataBlob & gt; | Promise对象，返回生成的随机数。 |
+| Promise &lt;DataBlob&gt; | Promise对象，返回生成的随机数。 |
 
 **错误码：**
 

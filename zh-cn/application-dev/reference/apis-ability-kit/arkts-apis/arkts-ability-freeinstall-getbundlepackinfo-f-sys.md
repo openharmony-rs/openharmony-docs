@@ -89,7 +89,7 @@ function getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag):
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;BundlePackInfo & gt; | Promise对象，返回BundlePackInfo信息。 |
+| Promise &lt;BundlePackInfo&gt; | Promise对象，返回BundlePackInfo信息。 |
 
 **错误码：**
 

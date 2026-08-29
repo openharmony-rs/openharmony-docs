@@ -102,7 +102,7 @@ getAllPathName(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 返回栈中所有NavDestination页面的名称，数组元素按页面在栈中的索引从0开始顺序排列。 |
+| Array &lt;string&gt; | 返回栈中所有NavDestination页面的名称，数组元素按页面在栈中的索引从0开始顺序排列。 |
 
 ## getIndexByName
 
@@ -130,7 +130,7 @@ getIndexByName(name: string): Array<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;number & gt; | 返回全部名为name的NavDestination页面的位置索引。 当路由栈中不存在此name，返回空数组。索引取值范围为[0, 路由栈大小-1] |
+| Array &lt;number&gt; | 返回全部名为name的NavDestination页面的位置索引。 当路由栈中不存在此name，返回空数组。索引取值范围为[0, 路由栈大小-1] |
 
 ## getParamByIndex
 
@@ -186,7 +186,7 @@ getParamByName(name: string): Array<unknown>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;unknown & gt; | 返回全部名为name的NavDestination页面的参数信息数组，数组元素按页面索引从小到大排序，每个元素为对应页面的参数信息，具体内容由开发者自定义。 |
+| Array &lt;unknown&gt; | 返回全部名为name的NavDestination页面的参数信息数组，数组元素按页面索引从小到大排序，每个元素为对应页面的参数信息，具体内容由开发者自定义。 |
 
 ## getParent
 
@@ -514,7 +514,7 @@ pushDestination(info: NavPathInfo, animated?: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 异步返回结果。 |
+| Promise &lt;void&gt; | 异步返回结果。 |
 
 **错误码：**
 
@@ -552,7 +552,7 @@ pushDestination(info: NavPathInfo, options?: NavigationOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 异常返回结果。 |
+| Promise &lt;void&gt; | 异常返回结果。 |
 
 **错误码：**
 
@@ -591,7 +591,7 @@ pushDestinationByName(name: string, param: Object, animated?: boolean): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 异常返回结果。 |
+| Promise &lt;void&gt; | 异常返回结果。 |
 
 **错误码：**
 
@@ -631,7 +631,7 @@ pushDestinationByName(name: string, param: Object, onPop: import('../api/@ohos.b
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 异常返回结果。 |
+| Promise &lt;void&gt; | 异常返回结果。 |
 
 **错误码：**
 
@@ -757,7 +757,7 @@ removeByIndexes(indexes: Array<number>): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| indexes | Array & lt;number & gt; | 是 | 待删除NavDestination页面的索引值数组。索引值从0开始。 |
+| indexes | Array &lt;number&gt; | 是 | 待删除NavDestination页面的索引值数组。索引值从0开始。 |
 
 **返回值：**
 
@@ -848,7 +848,7 @@ replaceDestination(info: NavPathInfo, options?: NavigationOptions): Promise<void
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 异常返回结果。 |
+| Promise &lt;void&gt; | 异常返回结果。 |
 
 **错误码：**
 

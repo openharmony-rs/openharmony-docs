@@ -169,13 +169,13 @@ static deleteHighlightAlbums(context: Context, albums: Array<Album>): Promise<nu
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 传入Ability实例的Context。 |
-| albums | Array & lt;Album & gt; | 是 | 需要删除的时刻相册。 |
+| albums | Array &lt;Album&gt; | 是 | 需要删除的时刻相册。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 是否成功删除相册。成功返回0，失败返回1。 |
+| Promise &lt;number&gt; | 是否成功删除相册。成功返回0，失败返回1。 |
 
 **错误码：**
 
@@ -241,7 +241,7 @@ getHighlightAlbumInfo(type: HighlightAlbumInfoType): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回指定的时刻相册信息。 |
+| Promise &lt;string&gt; | Promise对象，返回指定的时刻相册信息。 |
 
 **错误码：**
 
@@ -307,7 +307,7 @@ getHighlightResource(resourceUri: string): Promise<ArrayBuffer>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ArrayBuffer & gt; | Promise对象，返回资源的ArrayBuffer。 |
+| Promise &lt;ArrayBuffer&gt; | Promise对象，返回资源的ArrayBuffer。 |
 
 **错误码：**
 
@@ -372,7 +372,7 @@ setHighlightUserActionData(type: HighlightUserActionType, actionData: number): P
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -418,7 +418,7 @@ setSubTitle(subTitle: string): Promise<void>
 设置时刻副标题内容。副标题参数规格为：  
 - 副标题字符串长度为0~255。  
 - 不允许出现的非法英文字符，包括：  
-. \ / : * ? " ' ` &lt; &gt; | { } [ ]  
+. \ / : * ? " ' ` &lt;&gt; | { } [ ]  
 - 英文字符大小写不敏感。
 
 **起始版本：** 18
@@ -439,7 +439,7 @@ setSubTitle(subTitle: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Returns void |
+| Promise &lt;void&gt; | Returns void |
 
 **错误码：**
 

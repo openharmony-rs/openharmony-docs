@@ -32,7 +32,7 @@ function getTrafficStatsByUidNetwork(uid: number, networkInfo: NetworkInfo): Pro
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;NetStatsInfoSequence & gt; | 以 Promise 形式返回获取结果。返回应用历史流量统计信息。 |
+| Promise &lt;NetStatsInfoSequence&gt; | 以 Promise 形式返回获取结果。返回应用历史流量统计信息。 |
 
 **错误码：**
 

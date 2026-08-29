@@ -95,7 +95,7 @@ function updateConfiguration(config: Configuration): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。开发者可在此进行错误处理或其他自定义处理。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。开发者可在此进行错误处理或其他自定义处理。 |
 
 **错误码：**
 

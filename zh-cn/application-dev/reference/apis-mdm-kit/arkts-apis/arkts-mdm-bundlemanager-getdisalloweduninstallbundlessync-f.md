@@ -33,7 +33,7 @@ function getDisallowedUninstallBundlesSync(admin: Want, accountId?: number): Arr
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 返回当前/指定用户下的包卸载禁止名单。 |
+| Array &lt;string&gt; | 返回当前/指定用户下的包卸载禁止名单。 |
 
 **错误码：**
 
@@ -93,7 +93,7 @@ function getDisallowedUninstallBundlesSync(admin: Want | null, accountId?: numbe
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 返回当前/指定用户下的包卸载禁止名单。 |
+| Array &lt;string&gt; | 返回当前/指定用户下的包卸载禁止名单。 |
 
 **错误码：**
 

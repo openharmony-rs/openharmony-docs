@@ -71,7 +71,7 @@ function getDeviceIdleTrustlist(): Promise<Array<number>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;number & gt; & gt; | 以 Promise 形式返回设定结果。 |
+| Promise &lt;Array &lt;number&gt;&gt; | 以 Promise 形式返回设定结果。 |
 
 **错误码：**
 

@@ -33,7 +33,7 @@ function getDisallowedBluetoothProtocols(admin: Want, accountId: number): Array<
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;Protocol & gt; | 禁用名单中蓝牙协议的数组。 |
+| Array &lt;Protocol&gt; | 禁用名单中蓝牙协议的数组。 |
 
 **错误码：**
 
@@ -100,7 +100,7 @@ function getDisallowedBluetoothProtocols(admin: Want | null, accountId: number, 
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;Protocol & gt; | 返回禁用名单中的蓝牙协议数组。 |
+| Array &lt;Protocol&gt; | 返回禁用名单中的蓝牙协议数组。 |
 
 **错误码：**
 

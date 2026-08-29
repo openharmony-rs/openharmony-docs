@@ -32,7 +32,7 @@ function openProxyChannel(channelInfo: ChannelInfo): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 打开代理通道成功时resolve，返回代理通道的channelId，取值范围为1~2147483647，channelId的生命周期和代理通道生命周期相同，不关闭代理时，传入相同 入参将返回相同channelId；失败时reject返回错误信息，错误码详见错误码表。 |
+| Promise &lt;number&gt; | 打开代理通道成功时resolve，返回代理通道的channelId，取值范围为1~2147483647，channelId的生命周期和代理通道生命周期相同，不关闭代理时，传入相同 入参将返回相同channelId；失败时reject返回错误信息，错误码详见错误码表。 |
 
 **错误码：**
 

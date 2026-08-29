@@ -20,4 +20,4 @@ export type ResourceUsageObserver = (resourceType: ResourceType, resourceSize: n
 | --- | --- | --- | --- |
 | resourceType | ResourceType | 是 | 表示应用资源超基线的类型。 |
 | resourceSize | number | 是 | 表示应用资源超基线的资源使用量。 |
-| detailInfo | Record & lt;string, number & gt; | 否 | 表示应用资源超基线资源使用量的细分项字典。 **说明**：仅在resourceType为PSS_MEMORY时存在，为其他类型或缺 省时为空； key为小写内存类型，value为对应细分项资源大小； 细分项的key包含arkts、native、ion、gpu、ashmem和other。 第二个值必须大于**0**。单位：KB。 |
+| detailInfo | Record &lt;string, number&gt; | 否 | 表示应用资源超基线资源使用量的细分项字典。 **说明**：仅在resourceType为PSS_MEMORY时存在，为其他类型或缺 省时为空； key为小写内存类型，value为对应细分项资源大小； 细分项的key包含arkts、native、ion、gpu、ashmem和other。 第二个值必须大于**0**。单位：KB。 |

@@ -16,5 +16,5 @@ declare type CustomBuilder = (() => any) | void
 
 | 类型 | 说明 |
 | --- | --- |
-| () = & gt; any) |  |
+| () =&gt; any) |  |
 | void |  |

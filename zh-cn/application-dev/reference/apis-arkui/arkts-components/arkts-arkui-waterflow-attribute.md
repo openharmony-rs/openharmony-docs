@@ -244,7 +244,7 @@ onReachEnd(event: () => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () = & gt; void | 是 | 瀑布流内容到达末尾位置时触发的回调。 |
+| event | () =&gt; void | 是 | 瀑布流内容到达末尾位置时触发的回调。 |
 
 ## onReachStart
 
@@ -264,7 +264,7 @@ onReachStart(event: () => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () = & gt; void | 是 | 瀑布流内容到达起始位置时触发的回调。 |
+| event | () =&gt; void | 是 | 瀑布流内容到达起始位置时触发的回调。 |
 
 ## onScrollFrameBegin
 
@@ -319,7 +319,7 @@ onScrollIndex(event: (first: number, last: number) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (first: number, last: number) = & gt; void | 是 | 回调函数，瀑布流显示的起始位置/终止位置的子组件发生变化时触发。"first"：当前显示的瀑布流起始位置的索引值，"last"：当前显示的瀑布流终止位置的索引值。 |
+| event | (first: number, last: number) =&gt; void | 是 | 回调函数，瀑布流显示的起始位置/终止位置的子组件发生变化时触发。"first"：当前显示的瀑布流起始位置的索引值，"last"：当前显示的瀑布流终止位置的索引值。 |
 
 ## rowsGap
 

@@ -37,7 +37,7 @@ Start medialibrary database backup and wait for returning with backup infomation
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Map & lt;string, string & gt; & gt; | The returning with backup information, which includes FILE_FD, FILE_NAME and FILE_SIZE. |
+| Promise &lt;Map &lt;string, string&gt;&gt; | The returning with backup information, which includes FILE_FD, FILE_NAME and FILE_SIZE. |
 
 **错误码：**
 
@@ -169,7 +169,7 @@ cancelAnalysisTool(config: ToolCancelConfig): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 不会返回任何值的Promise。 |
+| Promise &lt;void&gt; | 不会返回任何值的Promise。 |
 
 **错误码：**
 
@@ -229,7 +229,7 @@ cancelPhotoUriPermission(tokenId: number, uri: string, photoPermissionType: Phot
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，0:取消成功。-1:取消失败。 |
+| Promise &lt;number&gt; | Promise对象，0:取消成功。-1:取消失败。 |
 
 **错误码：**
 
@@ -283,7 +283,7 @@ canPerformDeepOptimizeSpace(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。**true**表示可以调用 [startDeepOptimizeSpace()]{ |
+| Promise &lt;boolean&gt; | Promise对象。**true**表示可以调用 [startDeepOptimizeSpace()]{ |
 
 **错误码：**
 
@@ -338,7 +338,7 @@ cloneAssetsByPath(assets: string[], target: Album, option?: BatchOperationOption
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string[] & gt; | Returns successed assets URI. |
+| Promise &lt;string[]&gt; | Returns successed assets URI. |
 
 **错误码：**
 
@@ -397,7 +397,7 @@ cloneToAlbum(assets: PhotoAsset[], target: Album, option?: BatchOperationOptions
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PhotoAsset[] & gt; | Returns list of successful assets. |
+| Promise &lt;PhotoAsset[]&gt; | Returns list of successful assets. |
 
 **错误码：**
 
@@ -467,7 +467,7 @@ cloneToDir(assets: string[], target: string, option?: BatchOperationOptions): Pr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string[] & gt; | Returns successed assets path. |
+| Promise &lt;string[]&gt; | Returns successed assets path. |
 
 **错误码：**
 
@@ -524,20 +524,20 @@ convertAssetToCompatibleAsset(assets: Array<PhotoAsset>): Promise<Array<PhotoAss
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| assets | Array & lt;PhotoAsset & gt; | 是 | 需要转换。 |
+| assets | Array &lt;PhotoAsset&gt; | 是 | 需要转换。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;PhotoAsset & gt; & gt; | Promise用于返回已转换的资产。 |
+| Promise &lt;Array &lt;PhotoAsset&gt;&gt; | Promise用于返回已转换的资产。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes:  1. Invalid Array & lt;PhotoAsset & gt;. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes:  1. Invalid Array &lt;PhotoAsset&gt;. |
 
 **示例**
 
@@ -591,7 +591,7 @@ convertToAsset(path: string): Promise<PhotoAsset>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PhotoAsset & gt; | Returns successed asset. |
+| Promise &lt;PhotoAsset&gt; | Returns successed asset. |
 
 **错误码：**
 
@@ -627,7 +627,7 @@ createAlbum(name: string, callback: AsyncCallback<Album>): void
 创建相册。使用callback异步回调。待创建的相册名参数规格为：  
 - 相册名字符串长度为1~255。  
 - 不允许出现的非法英文字符，包括：  
-. .. \ / : * ? " ' ` &lt; &gt; | { } [ ]  
+. .. \ / : * ? " ' ` &lt;&gt; | { } [ ]  
 - 相册名不允许重名。
 
 **起始版本：** 10
@@ -687,7 +687,7 @@ createAlbum(name: string): Promise<Album>
 创建相册。使用Promise异步回调。待创建的相册名参数规格为：  
 - 相册名字符串长度为1~255。  
 - 不允许出现的非法英文字符，包括：  
-. .. \ / : * ? " ' ` &lt; &gt; | { } [ ]  
+. .. \ / : * ? " ' ` &lt;&gt; | { } [ ]  
 - 相册名不允许重名。
 
 **起始版本：** 10
@@ -712,7 +712,7 @@ createAlbum(name: string): Promise<Album>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Album & gt; | Promise对象，返回创建的相册实例。 |
+| Promise &lt;Album&gt; | Promise对象，返回创建的相册实例。 |
 
 **错误码：**
 
@@ -753,7 +753,7 @@ createAsset(displayName: string, callback: AsyncCallback<PhotoAsset>): void
 - 应包含有效文件主名和图片或视频扩展名。  
 - 文件名字符串长度为1~255。  
 - 文件主名中不允许出现的非法英文字符。  
-API18开始，非法字符包括： \ / : * ? " &lt; &gt; |API10-17，非法字符包括：. .. \ / : * ? " ' ` &lt; &gt; | { } [ ]
+API18开始，非法字符包括： \ / : * ? " &lt;&gt; |API10-17，非法字符包括：. .. \ / : * ? " ' ` &lt;&gt; | { } [ ]
 
 **起始版本：** 10
 
@@ -810,7 +810,7 @@ createAsset(displayName: string): Promise<PhotoAsset>
 - 应包含有效文件主名和图片或视频扩展名。  
 - 文件名字符串长度为1~255。  
 - 文件主名中不允许出现的非法英文字符。  
-API18开始，非法字符包括： \ / : * ? " &lt; &gt; |API10-17，非法字符包括：. .. \ / : * ? " ' ` &lt; &gt; | { } [ ]
+API18开始，非法字符包括： \ / : * ? " &lt;&gt; |API10-17，非法字符包括：. .. \ / : * ? " ' ` &lt;&gt; | { } [ ]
 
 **起始版本：** 10
 
@@ -830,7 +830,7 @@ API18开始，非法字符包括： \ / : * ? " &lt; &gt; |API10-17，非法字�
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PhotoAsset & gt; | Promise对象，返回创建的图片和视频结果。 |
+| Promise &lt;PhotoAsset&gt; | Promise对象，返回创建的图片和视频结果。 |
 
 **错误码：**
 
@@ -871,7 +871,7 @@ createAsset(displayName: string, options: PhotoCreateOptions): Promise<PhotoAsse
 - 应包含有效文件主名和图片或视频扩展名。  
 - 文件名字符串长度为1~255。  
 - 文件主名中不允许出现的非法英文字符。  
-API18开始，非法字符包括： \ / : * ? " &lt; &gt; |API10-17，非法字符包括：. .. \ / : * ? " ' ` &lt; &gt; | { } [ ]
+API18开始，非法字符包括： \ / : * ? " &lt;&gt; |API10-17，非法字符包括：. .. \ / : * ? " ' ` &lt;&gt; | { } [ ]
 
 **起始版本：** 10
 
@@ -892,7 +892,7 @@ API18开始，非法字符包括： \ / : * ? " &lt; &gt; |API10-17，非法字�
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PhotoAsset & gt; | Promise对象，返回创建的图片和视频结果。 |
+| Promise &lt;PhotoAsset&gt; | Promise对象，返回创建的图片和视频结果。 |
 
 **错误码：**
 
@@ -936,7 +936,7 @@ createAsset(displayName: string, options: PhotoCreateOptions, callback: AsyncCal
 - 应包含有效文件主名和图片或视频扩展名。  
 - 文件名字符串长度为1~255。  
 - 文件主名中不允许出现的非法英文字符。  
-API18开始，非法字符包括： \ / : * ? " &lt; &gt; |API10-17，非法字符包括：. .. \ / : * ? " ' ` &lt; &gt; | { } [ ]
+API18开始，非法字符包括： \ / : * ? " &lt;&gt; |API10-17，非法字符包括：. .. \ / : * ? " ' ` &lt;&gt; | { } [ ]
 
 **起始版本：** 10
 
@@ -1016,7 +1016,7 @@ createAssetsForApp(bundleName: string, appName: string, tokenId: number, photoCr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | 对象，返回给接口调用方的媒体库文件uri列表。Uri已对tokenId对应的应用授权，支持应用写入数据。 如果生成uri异常，则返回批量创建错误码。 |
+| Promise &lt;Array &lt;string&gt;&gt; | 对象，返回给接口调用方的媒体库文件uri列表。Uri已对tokenId对应的应用授权，支持应用写入数据。 如果生成uri异常，则返回批量创建错误码。 |
 
 **错误码：**
 
@@ -1084,7 +1084,7 @@ createAssetsForAppWithAlbum(source: PhotoCreationSource, albumUri: string, isAut
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回接口调用方的媒体库文件uri列表。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回接口调用方的媒体库文件uri列表。 |
 
 **错误码：**
 
@@ -1166,7 +1166,7 @@ createAssetsForAppWithMode(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回给接口调用方的媒体库文件uri列表。Uri已对appId对应的应用授权，支持应用写入数据。如果生成uri异常，则返回批量创建错误码 。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回给接口调用方的媒体库文件uri列表。Uri已对appId对应的应用授权，支持应用写入数据。如果生成uri异常，则返回批量创建错误码 。 |
 
 **错误码：**
 
@@ -1241,7 +1241,7 @@ createAssetsWithAlbum(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string[] & gt; | 返回资产uri，若某一条失败则为null |
+| Promise &lt;string[]&gt; | 返回资产uri，若某一条失败则为null |
 
 **错误码：**
 
@@ -1308,7 +1308,7 @@ deleteAlbums(albums: Array<Album>, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| albums | Array & lt;Album & gt; | 是 | 待删除相册的数组。 |
+| albums | Array &lt;Album&gt; | 是 | 待删除相册的数组。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | callback返回void。 |
 
 **错误码：**
@@ -1374,13 +1374,13 @@ deleteAlbums(albums: Array<Album>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| albums | Array & lt;Album & gt; | 是 | 待删除相册的数组。 |
+| albums | Array &lt;Album&gt; | 是 | 待删除相册的数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回void。 |
+| Promise &lt;void&gt; | Promise对象，返回void。 |
 
 **错误码：**
 
@@ -1444,7 +1444,7 @@ deleteAssets(uriList: Array<string>, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uriList | Array & lt;string & gt; | 是 | 待删除的媒体文件uri数组。 |
+| uriList | Array &lt;string&gt; | 是 | 待删除的媒体文件uri数组。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | callback返回void。 |
 
 **错误码：**
@@ -1516,13 +1516,13 @@ deleteAssets(uriList: Array<string>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uriList | Array & lt;string & gt; | 是 | 待删除的媒体文件uri数组。 |
+| uriList | Array &lt;string&gt; | 是 | 待删除的媒体文件uri数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回void。 |
+| Promise &lt;void&gt; | Promise对象，返回void。 |
 
 **错误码：**
 
@@ -1592,7 +1592,7 @@ getAlbumIdByBundleName(bundleName: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 返回对应bundleName的albumId |
+| Promise &lt;number&gt; | 返回对应bundleName的albumId |
 
 **错误码：**
 
@@ -1643,13 +1643,13 @@ getAlbumsByIds(albumIds: Array<number>): Promise<Map<number, Album>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| albumIds | Array & lt;number & gt; | 是 | 相册id列表。 |
+| albumIds | Array &lt;number&gt; | 是 | 相册id列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Map & lt;number, Album & gt; & gt; | Promise对象。返回相册信息map对象。 |
+| Promise &lt;Map &lt;number, Album&gt;&gt; | Promise对象。返回相册信息map对象。 |
 
 **错误码：**
 
@@ -1753,14 +1753,14 @@ getAssetCompatibleUris(bundleName: string, assets: Array<PhotoAsset>, compatible
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用捆绑包名称 |
-| assets | Array & lt;PhotoAsset & gt; | 是 | 资产的数组 |
+| assets | Array &lt;PhotoAsset&gt; | 是 | 资产的数组 |
 | compatibleFlag | number | 否 | 兼容配置掩码标志 取值范围为全体整数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise用于返回需要转码的媒体库文件uri列表。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise用于返回需要转码的媒体库文件uri列表。 |
 
 **错误码：**
 
@@ -1817,13 +1817,13 @@ getClonedAlbumUris(oldUris: Array<string>): Promise<Map<string, string>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| oldUris | Array & lt;string & gt; | 是 | 克隆前的旧URI数组。 |
+| oldUris | Array &lt;string&gt; | 是 | 克隆前的旧URI数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Map & lt;string, string & gt; & gt; | Promise对象，返回由克隆后的URI组成的Map列表。 |
+| Promise &lt;Map &lt;string, string&gt;&gt; | Promise对象，返回由克隆后的URI组成的Map列表。 |
 
 **错误码：**
 
@@ -1876,13 +1876,13 @@ getClonedAssetUris(oldUris: Array<string>): Promise<Map<string, string>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| oldUris | Array & lt;string & gt; | 是 | 克隆前的旧URI数组。 |
+| oldUris | Array &lt;string&gt; | 是 | 克隆前的旧URI数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Map & lt;string, string & gt; & gt; | Promise对象，返回由克隆后URI组成的Map列表。 |
+| Promise &lt;Map &lt;string, string&gt;&gt; | Promise对象，返回由克隆后URI组成的Map列表。 |
 
 **错误码：**
 
@@ -1941,7 +1941,7 @@ getDataAnalysisProgress(analysisType?: AnalysisType): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回一个json格式的字符串。表示资产分析的进度。 |
+| Promise &lt;string&gt; | Promise对象，返回一个json格式的字符串。表示资产分析的进度。 |
 
 **错误码：**
 
@@ -1996,7 +1996,7 @@ getDeepOptimizeSpace(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回可以深度优化存储空间大小。 |
+| Promise &lt;number&gt; | Promise对象。返回可以深度优化存储空间大小。 |
 
 **错误码：**
 
@@ -2216,7 +2216,7 @@ getHiddenAlbums(mode: HiddenPhotosDisplayMode, options?: FetchOptions): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;FetchResult & lt;Album & gt; & gt; | Promise对象，返回获取相册的结果集。 |
+| Promise &lt;FetchResult &lt;Album&gt;&gt; | Promise对象，返回获取相册的结果集。 |
 
 **错误码：**
 
@@ -2303,7 +2303,7 @@ getIndexConstructProgress(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回一个json格式的字符串。表示已完成智慧分析的图片数量、总数和已经完成智慧分析的视频数量、总数。 |
+| Promise &lt;string&gt; | Promise对象，返回一个json格式的字符串。表示已完成智慧分析的图片数量、总数和已经完成智慧分析的视频数量、总数。 |
 
 **错误码：**
 
@@ -2434,7 +2434,7 @@ getPhotoAlbums(options?: FetchOptions):Promise<FetchResult<Album>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;FetchResult & lt;Album & gt; & gt; | Promise对象，返回获取相册的结果集。 |
+| Promise &lt;FetchResult &lt;Album&gt;&gt; | Promise对象，返回获取相册的结果集。 |
 
 **错误码：**
 
@@ -2499,7 +2499,7 @@ getPhotoAssets(assetsData: ValuesBucket[]): Promise<PhotoAsset[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PhotoAsset[] & gt; | Promise对象，返回PhotoAsset对象的数组（数组可能为空）。 |
+| Promise &lt;PhotoAsset[]&gt; | Promise对象，返回PhotoAsset对象的数组（数组可能为空）。 |
 
 **错误码：**
 
@@ -2641,7 +2641,7 @@ getPhotoIndex(photoUri: string, albumUri: string, options: FetchOptions): Promis
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 返回相册中资源的索引。 |
+| Promise &lt;number&gt; | 返回相册中资源的索引。 |
 
 **错误码：**
 
@@ -2780,7 +2780,7 @@ getSharedPhotoAssets(options: FetchOptions): Array<SharedPhotoAsset>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;SharedPhotoAsset & gt; | 返回共享的照片资产。 |
+| Array &lt;SharedPhotoAsset&gt; | 返回共享的照片资产。 |
 
 **错误码：**
 
@@ -2849,7 +2849,7 @@ grantPhotoUriPermission(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，0:授权成功。 1:已有权限。-1:授权失败。 |
+| Promise &lt;number&gt; | Promise对象，0:授权成功。 1:已有权限。-1:授权失败。 |
 
 **错误码：**
 
@@ -2908,7 +2908,7 @@ grantPhotoUrisPermission(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | tokenId | number | 是 | 应用标识，将访问权限授予给tokenId标识的应用。 |
-| uriList | Array & lt;string & gt; | 是 | 媒体资源的uri列表，uri列表中的资源的访问权限将授予给应用。uri列表最多容纳 1000 条uri。 |
+| uriList | Array &lt;string&gt; | 是 | 媒体资源的uri列表，uri列表中的资源的访问权限将授予给应用。uri列表最多容纳 1000 条uri。 |
 | photoPermissionType | [PhotoPermissionType](arkts-medialibrary-photoaccesshelper-photopermissiontype-e-sys.md) | 是 | 权限类型，将photoPermissionType表示的权限授予给应用。权限的覆盖规则参考枚举类。 |
 | hideSensitiveType | [HideSensitiveType](arkts-medialibrary-photoaccesshelper-hidesensitivetype-e-sys.md) | 是 | 脱敏类型，预留参数，目前可传枚举类中任一值。 |
 
@@ -2916,7 +2916,7 @@ grantPhotoUrisPermission(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，0: 授权成功。 -1:授权失败。 |
+| Promise &lt;number&gt; | Promise对象，0: 授权成功。 -1:授权失败。 |
 
 **错误码：**
 
@@ -2981,7 +2981,7 @@ invokeAnalysisTool(config: ToolInvokeConfig, callback: Callback<AnalysisToolResu
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise用于返回任务ID。 |
+| Promise &lt;string&gt; | Promise用于返回任务ID。 |
 
 **错误码：**
 
@@ -3043,7 +3043,7 @@ isCompatibleDuplicateSupported(bundleName: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 检查是否要为指定应用创建JPEG格式的临时副本。true表示创建，false表示不创建。 |
+| Promise &lt;boolean&gt; | 检查是否要为指定应用创建JPEG格式的临时副本。true表示创建，false表示不创建。 |
 
 **错误码：**
 
@@ -3097,7 +3097,7 @@ isMediaDataReady(mediaDataKey: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示媒体数据准备完成；返回false表示媒体数据未准备完成。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示媒体数据准备完成；返回false表示媒体数据未准备完成。 |
 
 **错误码：**
 
@@ -3161,7 +3161,7 @@ modifyAlbumDefaultCoverOrder(coverOrderInfos: DefaultCoverOrderInfo[],
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回值 |
+| Promise &lt;void&gt; | 无返回值 |
 
 **错误码：**
 
@@ -3231,7 +3231,7 @@ modifyHiddenAlbumDefaultCoverOrder(coverOrderInfos: DefaultCoverOrderInfo[],
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 返回void。 |
+| Promise &lt;void&gt; | 返回void。 |
 
 **错误码：**
 
@@ -3298,7 +3298,7 @@ moveAssetsByPath(assets: string[], target: Album, option?: BatchOperationOptions
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string[] & gt; | 返回成功的资产URI。 |
+| Promise &lt;string[]&gt; | 返回成功的资产URI。 |
 
 **错误码：**
 
@@ -3357,7 +3357,7 @@ moveAssetsToDir(assets: string[], target: string, option?: BatchOperationOptions
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string[] & gt; | 返回资产的路径 |
+| Promise &lt;string[]&gt; | 返回资产的路径 |
 
 **错误码：**
 
@@ -4310,7 +4310,7 @@ query(sql: string): Promise<ResultSet>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ResultSet & gt; | Promise对象，如果操作成功，则返回ResultSet对象。如果操作失败，则抛出异常。 |
+| Promise &lt;ResultSet&gt; | Promise对象，如果操作成功，则返回ResultSet对象。如果操作失败，则抛出异常。 |
 
 **错误码：**
 
@@ -4369,7 +4369,7 @@ Release medialibrary database backup resources incluses closing backup database 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Return void. |
+| Promise &lt;void&gt; | Return void. |
 
 **错误码：**
 
@@ -4463,7 +4463,7 @@ removeFormInfo(info: FormInfo): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回void。 |
+| Promise &lt;void&gt; | Promise对象，返回void。 |
 
 **错误码：**
 
@@ -4523,7 +4523,7 @@ removeGalleryFormInfo(info: GalleryFormInfo): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回void。 |
+| Promise &lt;void&gt; | Promise对象，返回void。 |
 
 **错误码：**
 
@@ -4646,7 +4646,7 @@ saveFormInfo(info: FormInfo): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回void。 |
+| Promise &lt;void&gt; | Promise对象，返回void。 |
 
 **错误码：**
 
@@ -4715,7 +4715,7 @@ saveGalleryFormInfo(info: GalleryFormInfo): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回void。 |
+| Promise &lt;void&gt; | Promise对象，返回void。 |
 
 **错误码：**
 
@@ -4793,7 +4793,7 @@ setAssetCompatibleCapability(bundleName: string, capability: AssetCompatibleCapa
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -4848,7 +4848,7 @@ setPhotoAlbumOrder(orderStyle: number, albumOrders: Array<AlbumOrder>): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -4921,7 +4921,7 @@ setPreferredCompatibleMode(bundleName: string, compatibleMode: PreferredCompatib
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 返回void。 |
+| Promise &lt;void&gt; | 返回void。 |
 
 **错误码：**
 
@@ -4975,13 +4975,13 @@ startAssetAnalysis(type: AnalysisType, assetUris?: Array<string>): Promise<numbe
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | [AnalysisType](arkts-medialibrary-photoaccesshelper-analysistype-e-sys.md) | 是 | 需要启动的智慧分析类型，仅支持ANALYSIS_SEARCH_INDEX。 |
-| assetUris | Array & lt;string & gt; | 否 | 资产uri的数组。    - 填写：仅分析指定资产。    - 不填：全量分析。 |
+| assetUris | Array &lt;string&gt; | 否 | 资产uri的数组。    - 填写：仅分析指定资产。    - 不填：全量分析。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。服务的任务id。 |
+| Promise &lt;number&gt; | Promise对象。服务的任务id。 |
 
 **错误码：**
 
@@ -5040,7 +5040,7 @@ startAssetAnalysisAsync(config: AnalysisConfig, callback: Callback<AnalysisResul
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回服务的任务ID。 |
+| Promise &lt;number&gt; | Promise对象，返回服务的任务ID。 |
 
 **错误码：**
 
@@ -5105,7 +5105,7 @@ startDeepOptimizeSpace(callback?: Callback<DeepOptimizeSpaceProgress>): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -5341,7 +5341,7 @@ stopDeepOptimizeSpace(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -5439,7 +5439,7 @@ updateGalleryFormInfo(info: GalleryFormInfo): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回void。 |
+| Promise &lt;void&gt; | Promise对象，返回void。 |
 
 **错误码：**
 

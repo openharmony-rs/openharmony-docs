@@ -70,7 +70,7 @@ function getSensorList(): Promise<Array<Sensor>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;Sensor & gt; & gt; | Promise对象，使用异步方式返回传感器属性列表。每个Sensor对象包含传感器的类型ID、名称、版本、厂商、最大范围、分辨率、功率等属性信息。 |
+| Promise &lt;Array &lt;Sensor&gt;&gt; | Promise对象，使用异步方式返回传感器属性列表。每个Sensor对象包含传感器的类型ID、名称、版本、厂商、最大范围、分辨率、功率等属性信息。 |
 
 **错误码：**
 
