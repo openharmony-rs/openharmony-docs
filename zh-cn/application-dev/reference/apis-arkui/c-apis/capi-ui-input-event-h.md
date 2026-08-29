@@ -2828,7 +2828,7 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetActionType(const ArkUI_UIInputEvent* eve
 | 参数项 | 描述 |
 | -- | -- |
 | [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
-| int32_t type | 克隆事件的类型，包括触摸事件的[UI_TOUCH_EVENT_ACTION](capi-ui-input-event-h.md#anonymous enum)，鼠标事件的[UI_MOUSE_EVENT_ACTION](capi-ui-input-event-h.md#anonymous enum)，轴事件的[UI_AXIS_EVENT_ACTION](capi-ui-input-event-h.md#anonymous enum)。 |
+| int32_t type | 克隆事件的类型，包括触摸事件的UI_TOUCH_EVENT_ACTION，鼠标事件的UI_MOUSE_EVENT_ACTION，轴事件的UI_AXIS_EVENT_ACTION。 |
 
 **返回：**
 

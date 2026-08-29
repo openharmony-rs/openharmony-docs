@@ -670,7 +670,7 @@ align(value: Alignment): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Alignment](../arkts-apis/arkts-arkui-alignment-e.md) | 是 | 设置当前组件绘制区域内的子组件的对齐方式。只在Stack, FolderStack, Shape, Button, Marquee, StepperItem, Text, TextArea, TextInput, RichEditor, Hyperlink, SymbolGlyph, ListItem, GridItem, Scroll, FlowItem, ImageAnimator, LoadingProgress, PatternLock, Progress, QRCode, TextClock, TextTimer, MenuItem, Toggle, Checkbox, and NodeContainer中生效，其中和文本相关的组件Marquee、Text、TextArea、TextInput、RichEditor、Hyperlink的align结果参考[textAlign](ts-basic- components-text.md#textalign)。不支持textAlign属性的组件则无法设置水平方向的文字对齐。默认值：Alignment.Center   **说明：** 该属性在Stack组件上支持镜像能力，在其他组件上不支持镜像能力。在Stack中该属性与alignContent效果一致，只能设置子组件在当前组件内的对 齐方式。 |
+| value | [Alignment](../arkts-apis/arkts-arkui-alignment-e.md) | 是 | 设置当前组件绘制区域内的子组件的对齐方式。只在Stack, FolderStack, Shape, Button, Marquee, StepperItem, Text, TextArea, TextInput, RichEditor, Hyperlink, SymbolGlyph, ListItem, GridItem, Scroll, FlowItem, ImageAnimator, LoadingProgress, PatternLock, Progress, QRCode, TextClock, TextTimer, MenuItem, Toggle, Checkbox, and NodeContainer中生效，其中和文本相关的组件Marquee、Text、TextArea、TextInput、RichEditor、Hyperlink的align结果参考textAlign。不支持textAlign属性的组件则无法设置水平方向的文字对齐。默认值：Alignment.Center   **说明：** 该属性在Stack组件上支持镜像能力，在其他组件上不支持镜像能力。在Stack中该属性与alignContent效果一致，只能设置子组件在当前组件内的对 齐方式。 |
 
 **返回值：**
 
