@@ -75,7 +75,7 @@ NNRt的功能模块之一，负责展示已对接的AI硬件信息，并提供�
 
 NNRt的功能模块之一，负责在AI硬件驱动上申请共享内存并分配给推理输入输出张量，在张量销毁时释放对应共享内存。
 
-### MindIR; Mindspore中间表示
+### MindIR; MindSpore中间表示
 
 MindSpore Lite推理框架使用的模型图格式，与NNRt内部模型图格式兼容，因此MindSpore Lite无需调用NNRt构图接口即可直接对接。
 
