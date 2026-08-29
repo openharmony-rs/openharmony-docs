@@ -1,4 +1,4 @@
-# Neural Network Runtime术语表
+# Neural Network Runtime Kit术语表
 
 <!--Kit: Neural Network Runtime Kit-->
 <!--Subsystem: AI-->
