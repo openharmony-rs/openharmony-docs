@@ -1,5 +1,7 @@
 # Accessing the Security & Privacy Framework
 
+<!-- md-trans-meta sourceCommit=4f325fc0b1c05e0efa0bfeed5d8729d7ae858c1f translatedAt=2026-08-29T07:08:43.548Z pushedAt=2026-08-29T07:13:26.529Z -->
+
 The Security & Privacy framework allows access via a UIAbility or an ExtensionAbility.
 
 In the Security & Privacy Center, the accessed applications are displayed by **bundleName** in alphabetical order.
@@ -115,9 +117,9 @@ The following example provides only the settings for accessing the Security & Pr
 
 ### Requesting Permissions
 
-The caller must have the [ohos.permission.ACCESS_SECURITY_PRIVACY_CENTER](../AccessToken/permissions-for-system-apps.md#ohospermissionaccess_security_privacy_center) permission.
+The business access party must request the [ohos.permission.ACCESS_SECURITY_PRIVACY_CENTER](../AccessToken/permissions-for-system-apps.md#ohospermissionaccess_security_privacy_center) permission to ensure that the application can access the framework menu.
 
-For details about how to request the permission, see [Workflow for Requesting Permissions](../AccessToken/determine-application-mode.md).
+For details about how to request the permission, see [Access Control Development Guide](../AccessToken/determine-application-mode.md).
 
 ## Accessing the Security & Privacy Framework via a UIAbility
 
@@ -173,14 +175,15 @@ export default class EntryAbility extends ExtensionAbility {
 
 ## Exiting the Security & Privacy Framework (UIAbility)
 
-If the caller (which accessed the Security & Privacy Framework via a UIAbility) needs to exit actively, for example, there is a return button on the page, call **router.back()** or **terminateSelf()** to destroy the page.
+If the framework is accessed through a UIAbility and the access party needs to exit proactively, for example, when the page has a back button and the application page needs to be destroyed, call terminateSelf() to destroy the current page.
 
 Example:
 
 ```typescript
-import router from '@ohos.router';
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-@Entry()
+@Entry
 @Component
 struct Index {
  
@@ -189,7 +192,11 @@ struct Index {
       Column() {
         Button("click to back")
           .onClick(() => {
-            router.back()
+            try {
+              (this.getUIContext().getHostContext() as common.UIAbilityContext).terminateSelf();
+            } catch (err) {
+              hilog.info(0x0000, 'testTag', 'error: %{public}s', JSON.stringify(err));
+            }
           })
       }
       .width('100%')
@@ -208,12 +215,11 @@ Example:
 ```typescript
 import UIExtensionContentSession from '@ohos.app.ability.UIExtensionContentSession'
 
-let storage = LocalStorage.getShared()
-
-@Entry(storage)
+@Entry
 @Component
 struct Index {
-  private session: UIExtensionContentSession = storage.get<UIExtensionContentSession>('session') as UIExtensionContentSession
+  private session = this.getUIContext().getSharedLocalStorage()?.get<UIExtensionContentSession>('session') as UIExtensionContentSession;
+
   build() {
     Row() {
       Column() {
