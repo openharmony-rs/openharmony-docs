@@ -24,11 +24,12 @@
 
 ```ts
 import { uiMaterial } from '@kit.ArkUI';
-import { deviceInfo } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
-struct ComponentLevelCompatibility {
+struct AppLevelCompatibility {
+  private info: uiMaterial.MaterialInfo = uiMaterial.getMaterialInfo();
+
   build() {
     Stack({ alignContent: Alignment.Top }) {
       Column() {}
@@ -69,7 +70,7 @@ struct ComponentLevelCompatibility {
 
 **示例：**
 
-以下以Select组件为例，通过deviceInfo.sdkApiVersion判断系统软件API版本：不低于26.0.0时，为组件设置材质样式为THIN的ImmersiveMaterial；低于26.0.0时，将systemMaterial设置为uiMaterial.Material.empty清空材质效果，组件保持原有样式。
+以下以Select组件为例，通过deviceInfo.sdkApiVersion判断系统软件API版本：不低于26.0.0时，为组件设置材质样式为THIN的ImmersiveMaterial；低于26.0.0时，将systemMaterial设置为undefined，组件恢复原有样式。
 
 ```ts
 import { uiMaterial } from '@kit.ArkUI';
@@ -89,7 +90,7 @@ struct ComponentLevelCompatibility {
       Column() {
         Select([{ value: '选项1' }, { value: '选项2' }])
           .value('选择')
-          // API版本不低于26.0.0时，设置沉浸式系统材质；低于26.0.0时，设置为undefined，显式清空材质效果
+          // API版本不低于26.0.0时，设置沉浸式系统材质；低于26.0.0时，设置为undefined组件恢复原有样式。
           .systemMaterial(deviceInfo.sdkApiVersion >= 26 ?
             new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.THIN }) : undefined)
       }
