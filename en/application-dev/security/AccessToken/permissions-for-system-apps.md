@@ -5660,7 +5660,7 @@ With this permission, the application can call the API to obtain the local accou
 
 **Certificate-based authorization**: true
 
-**Supported devices**: PCs/2-in-1 devices
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars
 
 **Valid since**: 24
 
