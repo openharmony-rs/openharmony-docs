@@ -66131,13 +66131,7 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/module.json5",
-				"functions":[
-					{
-						"end_line":74,
-						"name":"MaterialStateConfig",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			}
 		]
 	},
