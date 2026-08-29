@@ -11,7 +11,7 @@
 
 ### Acceleration Chip; 加速芯片
 
-专门用于加速AI神经网络运行计算任务的硬件芯片，作为Neural Network Runtime的底层计算资源，提供比通用CPU更高效的矩阵计算能力。
+专门用于加速AI神经网络运行计算任务的硬件芯片，作为NNRT的底层计算资源，提供比通用CPU更高效的矩阵计算能力。
 
 ### Asynchronous Inference; 异步推理
 
