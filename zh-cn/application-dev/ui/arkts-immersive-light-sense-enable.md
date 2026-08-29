@@ -13,7 +13,7 @@
 >
 > - 开启后，不同组件的效果详见[组件适配沉浸光感](./arkts-immersive-light-sense-component-adaptation.md)。
 > - 开启沉浸光感，要确保应用的[targetAPIVersion](../quick-start/app-configuration-file.md)不低于26.0.0。如果低版本适配，适配指导请参考[沉浸光感兼容性适配](arkts-immersive-light-sense-compatibility.md)。
-> - 沉浸光感开启后，除了Slider、Toggle以及弹窗类组件，其他组件仅在Navigation/NavDestination标题栏子树，或横向Tabs中barPosition为BarPosition.End的底部TabBar子树中，沉浸光感效果才生效。弹窗类组件包括：Popup、Tips、Menu、Sheet、AlertDialog、CustomDialog、ActionSheet、CalendarPickerDialog、DatePickerDialog、TextPickerDialog、TimePickerDialog、Toast、Select下拉菜单、AlphabetIndexer气泡弹窗。
+> - 沉浸光感开启后，除了Slider、Toggle以及弹窗类组件，其他组件仅在以下子树中生效：Navigation/NavDestination标题栏子树，或横向Tabs中barPosition为BarPosition.End的底部TabBar子树中。弹窗类组件包括：Popup、Tips、Menu、Sheet、AlertDialog、CustomDialog、ActionSheet、CalendarPickerDialog、DatePickerDialog、TextPickerDialog、TimePickerDialog、Toast、Select下拉菜单、AlphabetIndexer气泡弹窗、SelectionMenu文本选择菜单。
 
 不同开启方式对比如下：
 
