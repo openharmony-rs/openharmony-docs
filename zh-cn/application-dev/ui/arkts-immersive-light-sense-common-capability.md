@@ -12,7 +12,7 @@
 >
 > 本文涉及的沉浸光感效果均需在材质生效范围内才会呈现。具体生效范围如下：
 > - 通过[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)为组件设置的沉浸式系统材质仅在Navigation/NavDestination标题栏子树，或横向Tabs中barPosition为BarPosition.End的底部TabBar子树中生效。
-> - Slider、Toggle以及弹窗类组件不受此范围限制。弹窗类组件包括：Popup、Tips、Menu、Sheet、AlertDialog、CustomDialog、ActionSheet、CalendarPickerDialog、DatePickerDialog、TextPickerDialog、TimePickerDialog、Toast、Select下拉菜单、AlphabetIndexer气泡弹窗。
+> - Slider、Toggle以及弹窗类组件不受此范围限制。弹窗类组件包括：Popup、Tips、Menu、BindSheet、AlertDialog、CustomDialog、ActionSheet、CalendarPickerDialog、DatePickerDialog、TextPickerDialog、TimePickerDialog、Toast、Select下拉菜单、AlphabetIndexer气泡弹窗。
 
 ## 设置沉浸式系统材质反色
 
@@ -20,45 +20,67 @@
 
 如开启自动反色后文字颜色没有变化，排查步骤请参见[开启自动反色后文字颜色没有变化](arkts-immersive-light-sense-faq.md#开启自动反色后文字颜色没有变化)。
 
-以下示例为自动反色的效果：材质下方的背景在黑白之间滚动变化，为ULTRA_THIN材质组件设置colorInvert为true后，文字颜色随背景自动反色，使文字清晰可读。
+以下示例为自动反色的效果：材质下方的背景在黑白之间滚动变化，为TabBar组件设置colorInvert为true的ULTRA_THIN材质后，TabBar内的文字和图标颜色随背景自动反色，使文字与图标清晰可读。
 
 ```ts
 import { uiMaterial } from '@kit.ArkUI';
+
+@Component
+struct ContentOne {
+  build() {
+    Scroll() {
+      Column() {
+        // $r('app.media.greyBackground')需要替换为开发者所需的图像资源文件
+        Image($r('app.media.greyBackground'))
+          .width('100%')
+          .height('150%')
+          .objectFit(ImageFit.Fill)
+        // $r('app.media.greyBackground')需要替换为开发者所需的图像资源文件
+        Image($r('app.media.greyBackground'))
+          .width('100%')
+          .height('150%')
+          .objectFit(ImageFit.Fill)
+      }
+      .width('100%')
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
 
 @Entry
 @Component
 struct PageMaterialReverse {
   build() {
     Column() {
-      Stack() {
-        Scroll() {
-          // $r('app.media.greyBackground')需要替换为开发者所需的图像资源文件
-          Image($r('app.media.greyBackground'))
-            .width('100%')
-            .height('300%')
-            .objectFit(ImageFit.Fill)
-        }
-        .height(400)
-        .width('100%')
+      Tabs({ barPosition: BarPosition.End }) {
+        TabContent() {
+          ContentOne()
+        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), "tab1")
+        // BottomTabBarStyle样式支持反色，且设置支持反色的系统颜色资源
+          .labelStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+          .iconStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+        )
 
-        Column() {
-          Text('Hello World')
-            .fontSize(15)
-            .fontColor($r('sys.color.font_primary'))
-        }
-        .width(70)
-        .height(50)
-        .offset({ y: 20 })
-        .justifyContent(FlexAlign.Center)
-        .systemMaterial(new uiMaterial.ImmersiveMaterial({
-          style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
-          colorInvert: true,
-          applyShadow: false,
-        }))
-        .shadow({ radius: 100, color: Color.Brown })
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Green)
+        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), "tab2")
+          .labelStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+          .iconStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+        )
       }
-      .height(150)
-      .alignContent(Alignment.Top)
+      .barFloatingStyle({
+        adaptToHandedness: true,
+        systemMaterial: new uiMaterial.ImmersiveMaterial(
+          {
+            style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+            // 设置tabBar的材质为允许反色，且需配合ULTRA_THIN或THIN的style才能反色
+            colorInvert: true,
+          }
+        )
+      })
+      .barOverlap(true)
+      .height('100%')
     }
     .width('100%')
     .height('100%')
@@ -85,22 +107,42 @@ import { uiMaterial } from '@kit.ArkUI';
 @Component
 struct MaterialColorExample {
   build() {
-    Stack() {
-      // $r('app.media.invert')需要替换为开发者所需的图像资源文件
-      Column() {}
-        .width('100%')
-        .height('100%')
-        .backgroundImage($r('app.media.invert'))
+    Column() {
+      Tabs({ barPosition: BarPosition.End }) {
+        TabContent() {
+          // $r('app.media.invert')需要替换为开发者所需的图像资源文件
+          Image($r('app.media.invert'))
+            .width('100%')
+            .height('100%')
+            .objectFit(ImageFit.Cover)
+        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), "tab1")
+          .labelStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+          .iconStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+        )
 
-      Column()
-        .width(200)
-        .height(100)
-        .borderRadius(16)
-        .systemMaterial(new uiMaterial.ImmersiveMaterial({
-          style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
-          materialColor: 'rgba(255, 255, 255, 0.4)',
-        }))
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Green)
+        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), "tab2")
+          .labelStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+          .iconStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+        )
+      }
+      .barFloatingStyle({
+        adaptToHandedness: true,
+        maskHeight: 0,
+        systemMaterial: new uiMaterial.ImmersiveMaterial(
+          {
+            style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+            // 设置材质赋色颜色
+            materialColor: 'rgba(255, 0, 0, 0.2)',
+          }
+        )
+      })
+      .barOverlap(true)
+      .height('100%')
     }
+    .width('100%')
+    .height('100%')
   }
 }
 ```
@@ -121,25 +163,44 @@ import { uiMaterial } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct InteractiveMaterialExample {
+struct MaterialColorExample {
   build() {
-    Stack() {
-      // $r('app.media.invert')需要替换为开发者所需的图像资源文件
-      Column() {}
-        .width('100%')
-        .height('100%')
-        .backgroundImage($r('app.media.invert'))
+    Column() {
+      Tabs({ barPosition: BarPosition.End }) {
+        TabContent() {
+          // $r('app.media.invert')需要替换为开发者所需的图像资源文件
+          Image($r('app.media.invert'))
+            .width('100%')
+            .height('100%')
+            .objectFit(ImageFit.Cover)
+        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), "tab1")
+          .labelStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+          .iconStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+        )
 
-      Column()
-        .width(200)
-        .height(100)
-        .borderRadius(16)
-        .systemMaterial(new uiMaterial.ImmersiveMaterial({
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Green)
+        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), "tab2")
+          .labelStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+          .iconStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+        )
+      }
+      .barFloatingStyle({
+        adaptToHandedness: true,
+        maskHeight: 0,
+        systemMaterial: new uiMaterial.ImmersiveMaterial({
           style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+          // 开启可交互形变
           interactive: true,
+          // 设置交互点光源效果为默认颜色
           lightEffect: {},
-        }))
+        }),
+      })
+      .barOverlap(true)
+      .height('100%')
     }
+    .width('100%')
+    .height('100%')
   }
 }
 ```
@@ -150,10 +211,6 @@ struct InteractiveMaterialExample {
 
 沉浸式系统材质默认自带阴影效果（[applyShadow](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)为true），优先于[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)通用属性，此时自定义的shadow设置不会生效。如需使用自定义阴影，将applyShadow置为false后再设置shadow，沉浸式系统材质的阴影效果即不生效。
 
-沉浸式系统材质自带阴影效果：
-
-![shadowOriginal](figures/shadowOriginal.jpg)
-
 将applyShadow置为false后设置自定义shadow（如粉色阴影）的效果，示例如下：
 
 ```ts
@@ -162,35 +219,44 @@ import { uiMaterial } from '@kit.ArkUI';
 @Entry
 @Component
 struct CustomShadowExample {
-  build() {
-    Column() {
-      Stack() {
-        // $r('app.media.greyBackground')需要替换为开发者所需的图像资源文件
-        Image($r('app.media.greyBackground'))
-          .width('100%')
-          .height('300%')
-          .objectFit(ImageFit.Fill)
+  @Builder
+  NavigationTitle() {
+    Row() {
+      Text("Title")
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
 
-        Column() {
-          Text('Hello World')
-            .fontSize(15)
-            .fontColor($r('sys.color.font_primary'))
-        }
-        .width(70)
+      Column()
+        .width(50)
         .height(50)
-        .offset({ y: 20 })
+        .borderRadius(25)
         .justifyContent(FlexAlign.Center)
         .systemMaterial(new uiMaterial.ImmersiveMaterial({
           style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
           applyShadow: false,
+          interactive: true,
         }))
-        .shadow({ radius: 100, color: Color.Brown })
-      }
-      .height(150)
-      .alignContent(Alignment.Top)
+        .shadow({ radius: 100, color: Color.Pink })
     }
     .width('100%')
-    .height('100%')
+    .justifyContent(FlexAlign.SpaceBetween)
+    .padding({ left: 50, right: 50, top: 20 })
+  }
+
+  build() {
+    Column() {
+      Navigation() {
+        // 页面内容
+        Image($r('app.media.invert'))
+          .width('100%')
+          .height('100%')
+          .objectFit(ImageFit.Cover)
+      }
+      .title({ builder: this.NavigationTitle, height: '100%' })
+      // $r('app.media.greyBackground')需要替换为开发者所需的图像资源文件
+      .backgroundImage($r('app.media.greyBackground'))
+      .backgroundImageSize({ width: '100%', height: '100%' })
+    }.width('100%').height('100%')
   }
 }
 ```

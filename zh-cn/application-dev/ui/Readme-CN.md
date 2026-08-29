@@ -195,12 +195,13 @@
      - [设置浮层（OverlayManager）](arkts-create-overlaymanager.md)<!--RP9--><!--RP9End-->
   - 沉浸光感<!--arkts-immersive-light-sense-->
     - [沉浸光感简介](arkts-immersive-light-sense-overview.md)
-    - [沉浸光感开发指导](arkts-immersive-light-sense-development.md)
+    - 沉浸光感开发指导<!--arkts-immersive-light-sense-development-->
       - [开启沉浸光感](arkts-immersive-light-sense-enable.md)
       - [组件适配沉浸光感](arkts-immersive-light-sense-component-adaptation.md)
       - [沉浸式系统材质视效](arkts-immersive-light-sense-common-capability.md)
     - [沉浸光感功耗优化](arkts-immersive-light-sense-constraints.md)
     - [沉浸光感兼容性适配](arkts-immersive-light-sense-compatibility.md)
+    - [沉浸光感常见问题](arkts-immersive-light-sense-faq.md)
   - 几何图形绘制<!--arkts-draw-graphics-->
     - [几何图形绘制概述](arkts-shape-overview.md)
     - [绘制几何图形 (Shape)](arkts-geometric-shape-drawing.md)
@@ -422,7 +423,6 @@
     - [动态属性设置常见问题](arkts-attribute-modifier-faq.md)
     - [命令式节点常见问题](arkts-arkui-frameNode-faq.md)
     - [UI并行化常见问题](multi-thread-ui-build-faq.md)<!--RP6--><!--RP6End-->
-    - [沉浸光感常见问题](arkts-immersive-light-sense-faq.md)
     
 - [窗口管理](../windowmanager/Readme-CN.md)<!--window-manager-->
 - [屏幕管理](../displaymanager/Readme-CN.md)<!--display-manager-->
