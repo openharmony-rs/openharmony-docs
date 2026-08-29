@@ -1,6 +1,6 @@
 # Accessing the Security & Privacy Framework
 
-<!-- md-trans-meta sourceCommit=4f325fc0b1c05e0efa0bfeed5d8729d7ae858c1f translatedAt=2026-08-29T07:08:43.548Z pushedAt=2026-08-29T07:13:26.529Z -->
+<!-- md-trans-meta sourceCommit=4f325fc0b1c05e0efa0bfeed5d8729d7ae858c1f translatedAt=2026-08-29T07:08:43.548Z pushedAt=2026-08-29T07:19:27.438Z -->
 
 The Security & Privacy framework allows access via a UIAbility or an ExtensionAbility.
 
@@ -117,7 +117,7 @@ The following example provides only the settings for accessing the Security & Pr
 
 ### Requesting Permissions
 
-The business access party must request the [ohos.permission.ACCESS_SECURITY_PRIVACY_CENTER](../AccessToken/permissions-for-system-apps.md#ohospermissionaccess_security_privacy_center) permission to ensure that the application can access the framework menu.
+The caller must request the [ohos.permission.ACCESS_SECURITY_PRIVACY_CENTER](../AccessToken/permissions-for-system-apps.md#ohospermissionaccess_security_privacy_center) permission to ensure that the application can access the framework menu.
 
 For details about how to request the permission, see [Access Control Development Guide](../AccessToken/determine-application-mode.md).
 
