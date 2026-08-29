@@ -81,7 +81,7 @@ function isSuperAdmin(bundleName: String): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象, 返回true表示指定的超级设备管理应用被激活，返回false表示指定的超级设备管理应用未激活。 |
+| Promise &lt;boolean&gt; | Promise对象, 返回true表示指定的超级设备管理应用被激活，返回false表示指定的超级设备管理应用未激活。 |
 
 **错误码：**
 

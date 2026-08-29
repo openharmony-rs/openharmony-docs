@@ -95,7 +95,7 @@ function remove(bundle: BundleOption, notificationKey: NotificationKey, reason: 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -196,7 +196,7 @@ function remove(hashCode: string, reason: RemoveReason): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 

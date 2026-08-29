@@ -99,7 +99,7 @@ function getDeviceSerial(admin: Want): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回设备序列号。 |
+| Promise &lt;string&gt; | Promise对象，返回设备序列号。 |
 
 **错误码：**
 

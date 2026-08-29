@@ -82,7 +82,7 @@ function getPointerColor(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回鼠标光标颜色。 |
+| Promise &lt;number&gt; | Promise对象，返回鼠标光标颜色。 |
 
 **错误码：**
 

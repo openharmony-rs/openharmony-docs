@@ -76,4 +76,4 @@ function off(type: 'BundleStatusChange'): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise形式返回正确结果或错误信息。 |
+| Promise &lt;string&gt; | Promise形式返回正确结果或错误信息。 |

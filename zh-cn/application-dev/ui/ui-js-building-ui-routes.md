@@ -12,7 +12,7 @@
 页面路由router根据页面的url找到目标页面，从而实现跳转。以最基础的两个页面之间的跳转为例，具体实现步骤如下：
 
 
-1. 在“Project“窗口，打开src &gt; main &gt;js &gt;MainAbility，右键点击pages文件夹，选择NewJS Page，创建一个详情页。
+1. 在“Project“窗口，打开src&gt; main&gt;js&gt;MainAbility，右键点击pages文件夹，选择NewJS Page，创建一个详情页。
 
 2. 调用router.push()路由到详情页。
 

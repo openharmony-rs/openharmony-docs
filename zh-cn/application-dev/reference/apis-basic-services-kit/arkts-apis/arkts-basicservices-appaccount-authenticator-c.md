@@ -105,7 +105,7 @@ auth(name: string, authType: string, options: Record<string, Object>, callback: 
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | authType | string | 是 | 应用账号的鉴权类型。自定义数据，最大长度为1024个字符。 |
-| options | Record & lt;string, Object & gt; | 是 | 鉴权所需要的可选项。 |
+| options | Record &lt;string, Object&gt; | 是 | 鉴权所需要的可选项。 |
 | callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | 是 | 回调对象，用于返回鉴权结果。 |
 
 **示例**
@@ -295,7 +295,7 @@ checkAccountLabels(name: string, labels: Array<string>, callback: AuthCallback):
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
-| labels | Array & lt;string & gt; | 是 | 标签数组。 |
+| labels | Array &lt;string&gt; | 是 | 标签数组。 |
 | callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | 是 | 认证器回调，用于返回检查结果。 |
 
 **示例**

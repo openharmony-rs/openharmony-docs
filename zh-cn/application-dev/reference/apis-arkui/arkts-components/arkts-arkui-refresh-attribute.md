@@ -2,7 +2,7 @@
 
 除支持通用属性外，还支持以下属性：除支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** RefreshAttribute extends CommonMethod<RefreshAttribute>
+**继承/实现关系：** RefreshAttribute extends CommonMethod\<RefreshAttribute>
 
 **起始版本：** 8
 
@@ -81,7 +81,7 @@ onOffsetChange(callback: Callback<number>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback & lt;number & gt; | 是 | 回调函数，用于监听下拉距离的变化。当下拉距离发生变化时触发，回调参数为当前的下拉距离。单位：vp |
+| callback | Callback &lt;number&gt; | 是 | 回调函数，用于监听下拉距离的变化。当下拉距离发生变化时触发，回调参数为当前的下拉距离。单位：vp |
 
 ## onRefreshing
 
@@ -101,7 +101,7 @@ onRefreshing(callback: () => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | () = & gt; void | 是 | 进入刷新状态时触发的回调。 |
+| callback | () =&gt; void | 是 | 进入刷新状态时触发的回调。 |
 
 ## onStateChange
 
@@ -121,7 +121,7 @@ onStateChange(callback: (state: RefreshStatus) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (state: RefreshStatus) = & gt; void | 是 |  |
+| callback | (state: RefreshStatus) =&gt; void | 是 |  |
 
 ## pullDownRatio
 

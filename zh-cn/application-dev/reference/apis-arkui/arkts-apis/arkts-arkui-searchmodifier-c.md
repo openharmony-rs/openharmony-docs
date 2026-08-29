@@ -2,7 +2,7 @@
 
 Defines Search Modifier
 
-**继承/实现关系：** SearchModifier extends [SearchAttribute](../arkts-components/arkts-arkui-search-attribute.md) implements AttributeModifier<SearchAttribute>
+**继承/实现关系：** SearchModifier extends [SearchAttribute](../arkts-components/arkts-arkui-search-attribute.md) implements AttributeModifier\<SearchAttribute>
 
 **起始版本：** 12
 

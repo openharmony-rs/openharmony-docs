@@ -123,13 +123,13 @@ getDownloadList(uris: Array<string>): Promise<Array<DownloadProgress>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uris | Array & lt;string & gt; | 是 | 待查询下载进度的文件URI数组，数组长度取值范围[1,100]。 |
+| uris | Array &lt;string&gt; | 是 | 待查询下载进度的文件URI数组，数组长度取值范围[1,100]。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;DownloadProgress & gt; & gt; | Promise对象，返回文件下载进度列表的结果。 |
+| Promise &lt;Array &lt;DownloadProgress&gt;&gt; | Promise对象，返回文件下载进度列表的结果。 |
 
 **错误码：**
 

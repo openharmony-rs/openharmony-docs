@@ -34,7 +34,7 @@ function getSkillInfoForSelf(moduleName: string, skillName: string, flags: numbe
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;SkillInfo & gt; | Promise对象，返回指定技能的SkillInfo。 |
+| Promise &lt;SkillInfo&gt; | Promise对象，返回指定技能的SkillInfo。 |
 
 **错误码：**
 

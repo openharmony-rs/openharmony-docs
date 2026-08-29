@@ -197,7 +197,7 @@ getMainColor(): Promise<Color>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Color & gt; | Promise对象。返回图像主色对应的颜色值，失败时返回错误信息。 |
+| Promise &lt;Color&gt; | Promise对象。返回图像主色对应的颜色值，失败时返回错误信息。 |
 
 **示例**
 
@@ -315,7 +315,7 @@ getTopProportionColors(colorCount: number): Array<Color | null>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;Color \ | null & gt; | Color数组，即图像占比前`colorCount`的颜色值数组，按占比排序。 |
+| Array &lt;Color \ | null&gt; | Color数组，即图像占比前`colorCount`的颜色值数组，按占比排序。 |
 
 **示例**
 

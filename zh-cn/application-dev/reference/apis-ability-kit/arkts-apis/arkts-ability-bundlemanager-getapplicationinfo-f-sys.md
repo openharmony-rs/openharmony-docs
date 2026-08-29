@@ -155,7 +155,7 @@ function getApplicationInfo(bundleName: string, appFlags: number, userId?: numbe
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ApplicationInfo & gt; | Promise对象。返回ApplicationInfo。 |
+| Promise &lt;ApplicationInfo&gt; | Promise对象。返回ApplicationInfo。 |
 
 **错误码：**
 

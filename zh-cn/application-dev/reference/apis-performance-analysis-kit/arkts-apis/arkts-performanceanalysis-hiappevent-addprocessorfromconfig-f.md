@@ -30,7 +30,7 @@ function addProcessorFromConfig(processorName: string, configName?: string): Pro
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回添加的事件数据处理者的唯一ID，可用于移除该数据处理者。 添加失败返回11105001错误码。 |
+| Promise &lt;number&gt; | Promise对象。返回添加的事件数据处理者的唯一ID，可用于移除该数据处理者。 添加失败返回11105001错误码。 |
 
 **错误码：**
 

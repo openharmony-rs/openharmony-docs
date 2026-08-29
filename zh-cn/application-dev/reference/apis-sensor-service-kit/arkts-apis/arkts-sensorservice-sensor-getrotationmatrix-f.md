@@ -21,7 +21,7 @@ function getRotationMatrix(rotationVector: Array<number>, callback: AsyncCallbac
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rotationVector | Array & lt;number & gt; | 是 | 旋转矢量。 |
+| rotationVector | Array &lt;number&gt; | 是 | 旋转矢量。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;number&gt;&gt; | 是 | 回调函数，异步返回3*3旋转矩阵。 |
 
 **错误码：**
@@ -72,13 +72,13 @@ function getRotationMatrix(rotationVector: Array<number>): Promise<Array<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rotationVector | Array & lt;number & gt; | 是 | 旋转矢量。 |
+| rotationVector | Array &lt;number&gt; | 是 | 旋转矢量。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;number & gt; & gt; | Promise对象，使用异步方式返回旋转矩阵。 |
+| Promise &lt;Array &lt;number&gt;&gt; | Promise对象，使用异步方式返回旋转矩阵。 |
 
 **错误码：**
 
@@ -127,8 +127,8 @@ function getRotationMatrix(gravity: Array<number>, geomagnetic: Array<number>, c
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| gravity | Array & lt;number & gt; | 是 | 重力矢量。 |
-| geomagnetic | Array & lt;number & gt; | 是 | 地磁矢量。 |
+| gravity | Array &lt;number&gt; | 是 | 重力矢量。 |
+| geomagnetic | Array &lt;number&gt; | 是 | 地磁矢量。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[RotationMatrixResponse](arkts-sensorservice-sensor-rotationmatrixresponse-i.md)&gt; | 是 | 回调函数，异步返回旋转矩阵。 |
 
 **错误码：**
@@ -178,8 +178,8 @@ function getRotationMatrix(gravity: Array<number>, geomagnetic: Array<number>): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| gravity | Array & lt;number & gt; | 是 | 重力向量。 |
-| geomagnetic | Array & lt;number & gt; | 是 | 地磁矢量。 |
+| gravity | Array &lt;number&gt; | 是 | 重力向量。 |
+| geomagnetic | Array &lt;number&gt; | 是 | 地磁矢量。 |
 
 **返回值：**
 

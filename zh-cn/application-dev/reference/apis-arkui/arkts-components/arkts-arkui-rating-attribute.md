@@ -1,6 +1,6 @@
 # Rating属性/事件
 
-**继承/实现关系：** RatingAttribute extends CommonMethod<RatingAttribute>
+**继承/实现关系：** RatingAttribute extends CommonMethod\<RatingAttribute>
 
 **起始版本：** 7
 
@@ -75,7 +75,7 @@ onChange(callback: (value: number) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (value: number) = & gt; void | 是 |  |
+| callback | (value: number) =&gt; void | 是 |  |
 
 ## onChange
 

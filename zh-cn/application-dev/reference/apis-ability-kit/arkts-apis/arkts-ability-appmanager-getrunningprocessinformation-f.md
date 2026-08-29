@@ -33,7 +33,7 @@ function getRunningProcessInformation(): Promise<Array<ProcessInformation>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;ProcessInformation & gt; & gt; | Promise对象，返回接口运行结果及有关运行进程的信息，可进行错误处理或其他自定义处理。 |
+| Promise &lt;Array &lt;ProcessInformation&gt;&gt; | Promise对象，返回接口运行结果及有关运行进程的信息，可进行错误处理或其他自定义处理。 |
 
 **错误码：**
 

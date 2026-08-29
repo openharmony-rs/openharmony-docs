@@ -79,7 +79,7 @@ function splitMessage(content: string): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | 以Promise形式返回多个片段的的结果。 |
+| Promise &lt;Array &lt;string&gt;&gt; | 以Promise形式返回多个片段的的结果。 |
 
 **错误码：**
 

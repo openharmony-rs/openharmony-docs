@@ -170,7 +170,7 @@ Release control center session object.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise used to return the result. |
+| Promise &lt;void&gt; | Promise used to return the result. |
 
 **错误码：**
 

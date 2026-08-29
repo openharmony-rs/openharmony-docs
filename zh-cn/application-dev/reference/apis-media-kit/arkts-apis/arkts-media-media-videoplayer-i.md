@@ -213,7 +213,7 @@ on(type: 'bufferingUpdate', callback: (infoType: BufferingInfoType, value: numbe
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'bufferingUpdate' | 是 | 视频缓存事件回调类型，支持的事件：'bufferingUpdate'。 |
-| callback | (infoType: BufferingInfoType, value: number) = & gt; void | 是 | 视频缓存事件回调方法。    [BufferingInfoType](arkts-media-media-bufferinginfotype-e.md)value值固定为0。 |
+| callback | (infoType: BufferingInfoType, value: number) =&gt; void | 是 | 视频缓存事件回调方法。    [BufferingInfoType](arkts-media-media-bufferinginfotype-e.md)value值固定为0。 |
 
 ## on('startRenderFrame')
 
@@ -271,7 +271,7 @@ on(type: 'videoSizeChanged', callback: (width: number, height: number) => void):
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'videoSizeChanged' | 是 | 视频播放宽高变化事件回调类型，支持的事件：'videoSizeChanged'。 |
-| callback | (width: number, height: number) = & gt; void | 是 | 视频播放宽高变化事件回调方法，width表示宽，height表示高。 |
+| callback | (width: number, height: number) =&gt; void | 是 | 视频播放宽高变化事件回调方法，width表示宽，height表示高。 |
 
 ## on('audioInterrupt')
 
@@ -300,7 +300,7 @@ on(type: 'audioInterrupt', callback: (info: audio.InterruptEvent) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'audioInterrupt' | 是 | 音频焦点变化事件回调类型，支持的事件：'audioInterrupt'。 |
-| callback | (info: audio.InterruptEvent) = & gt; void | 是 | 音频焦点变化事件回调方法。 |
+| callback | (info: audio.InterruptEvent) =&gt; void | 是 | 音频焦点变化事件回调方法。 |
 
 ## on('error')
 
@@ -438,7 +438,7 @@ pause(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 暂停播放视频的Promise返回值。 |
+| Promise &lt;void&gt; | 暂停播放视频的Promise返回值。 |
 
 **示例**
 
@@ -585,7 +585,7 @@ play(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 开始播放视频的Promise返回值。 |
+| Promise &lt;void&gt; | 开始播放视频的Promise返回值。 |
 
 **示例**
 
@@ -695,7 +695,7 @@ prepare(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 准备播放视频的Promise返回值。 |
+| Promise &lt;void&gt; | 准备播放视频的Promise返回值。 |
 
 **示例**
 
@@ -871,7 +871,7 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 释放视频资源的Promise返回值。 |
+| Promise &lt;void&gt; | 释放视频资源的Promise返回值。 |
 
 **示例**
 
@@ -1103,7 +1103,7 @@ reset(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -1290,7 +1290,7 @@ seek(timeMs: number, mode?: SeekMode): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 跳转到指定播放位置的Promise返回值，单位ms。 |
+| Promise &lt;number&gt; | 跳转到指定播放位置的Promise返回值，单位ms。 |
 
 **示例**
 
@@ -1400,7 +1400,7 @@ setDisplaySurface(surfaceId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 设置SurfaceId的Promise返回值。 |
+| Promise &lt;void&gt; | 设置SurfaceId的Promise返回值。 |
 
 **示例**
 
@@ -1500,7 +1500,7 @@ setSpeed(speed: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回设置的播放速度，具体见 [PlaybackSpeed]{ |
+| Promise &lt;number&gt; | Promise对象，返回设置的播放速度，具体见 [PlaybackSpeed]{ |
 
 **示例**
 
@@ -1600,7 +1600,7 @@ setVolume(vol: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 设置音量的Promise返回值。 |
+| Promise &lt;void&gt; | 设置音量的Promise返回值。 |
 
 **示例**
 
@@ -1722,7 +1722,7 @@ stop(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 停止播放视频的Promise返回值。 |
+| Promise &lt;void&gt; | 停止播放视频的Promise返回值。 |
 
 **示例**
 

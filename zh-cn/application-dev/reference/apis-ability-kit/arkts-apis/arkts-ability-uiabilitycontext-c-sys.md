@@ -217,7 +217,7 @@ requestModalUIExtension(pickerWant: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -305,7 +305,7 @@ requestModalUIExtensionWithAccount(pickerWant: Want, accountId: number): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 不会返回任何值的Promise。 |
+| Promise &lt;void&gt; | 不会返回任何值的Promise。 |
 
 **错误码：**
 
@@ -452,7 +452,7 @@ setMissionIcon(icon: image.PixelMap): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -698,7 +698,7 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1418,7 +1418,7 @@ startAbilityWithAccount(want: Want, accountId: number, options?: StartOptions): 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1729,7 +1729,7 @@ startRecentAbility(want: Want, options?: StartOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1901,7 +1901,7 @@ startServiceExtensionAbility(want: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2079,7 +2079,7 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2237,7 +2237,7 @@ stopServiceExtensionAbility(want: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2403,7 +2403,7 @@ stopServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise<v
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

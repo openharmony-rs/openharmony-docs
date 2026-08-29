@@ -121,7 +121,7 @@ function register(options?: ContinuationExtraParams): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise形式返回流转管理服务连接后生成的token。 |
+| Promise &lt;number&gt; | Promise形式返回流转管理服务连接后生成的token。 |
 
 **示例**
 

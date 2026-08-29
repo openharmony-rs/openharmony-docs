@@ -32,7 +32,7 @@ function clearUpApplicationData(bundleName: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以Promise方式返回接口运行结果，可进行错误处理或其他自定义处理。 |
+| Promise &lt;void&gt; | 以Promise方式返回接口运行结果，可进行错误处理或其他自定义处理。 |
 
 **错误码：**
 

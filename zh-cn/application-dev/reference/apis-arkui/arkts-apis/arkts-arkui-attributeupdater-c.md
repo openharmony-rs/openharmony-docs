@@ -2,7 +2,7 @@
 
 将属性直接设置给组件，无需标记为状态变量即可直接触发UI更新。适用于需要在不定义状态变量的情况下动态更新组件属性的场景，如动态修改组件构造参数、避免为一次性属性更新定义状态变量等。
 
-**继承/实现关系：** AttributeUpdater implements AttributeModifier<T>
+**继承/实现关系：** AttributeUpdater implements AttributeModifier\<T>
 
 **起始版本：** 12
 

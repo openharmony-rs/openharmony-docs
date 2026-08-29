@@ -36,7 +36,7 @@ getComponent(componentType: image.ComponentType): Promise<image.Component>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;image.Component & gt; | Promise实例，用于异步返回组件缓冲区。 |
+| Promise &lt;image.Component&gt; | Promise实例，用于异步返回组件缓冲区。 |
 
 **示例**
 
@@ -76,7 +76,7 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | promise返回操作结果。 |
+| Promise &lt;void&gt; | promise返回操作结果。 |
 
 **示例**
 

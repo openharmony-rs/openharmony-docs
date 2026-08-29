@@ -133,7 +133,7 @@ function getFormsInfo(filter?: formInfo.FormInfoFilter): Promise<Array<formInfo.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;formInfo.FormInfo & gt; & gt; | Promise对象。返回查询到符合条件的卡片信息。 |
+| Promise &lt;Array &lt;formInfo.FormInfo&gt;&gt; | Promise对象。返回查询到符合条件的卡片信息。 |
 
 **错误码：**
 

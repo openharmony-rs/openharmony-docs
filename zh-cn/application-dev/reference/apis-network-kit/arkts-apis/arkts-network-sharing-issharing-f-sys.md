@@ -70,7 +70,7 @@ function isSharing(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 以 Promise 形式返回网络共享状态结果，返回 true 代表网络共享中。 |
+| Promise &lt;boolean&gt; | 以 Promise 形式返回网络共享状态结果，返回 true 代表网络共享中。 |
 
 **错误码：**
 

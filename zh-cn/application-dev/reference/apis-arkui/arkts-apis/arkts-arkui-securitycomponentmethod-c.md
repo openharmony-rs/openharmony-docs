@@ -921,7 +921,7 @@ maxFontSize(maxSize: number | string | Resource): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| maxSize | number \| string \| Resource | 是 | 文本最大显示字号。 取值应 & gt;0。 未显式指定单位时，单位为fp。    **说明：**设置的值小于或等于0时，自适应字号不生效；设置异常值时该属性不生效。 |
+| maxSize | number \| string \| Resource | 是 | 文本最大显示字号。 取值应&gt;0。 未显式指定单位时，单位为fp。    **说明：**设置的值小于或等于0时，自适应字号不生效；设置异常值时该属性不生效。 |
 
 **返回值：**
 
@@ -1011,7 +1011,7 @@ minFontSize(minSize: number | string | Resource): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| minSize | number \| string \| Resource | 是 | 文本最小显示字号。 取值应 & gt;0。 未显式指定单位时，单位为fp。minFontSize应小于maxFontSize，若设置值大于maxFontSize，将按maxFontSize处理；小于或等于0时，自适应字号不生效。 |
+| minSize | number \| string \| Resource | 是 | 文本最小显示字号。 取值应&gt;0。 未显式指定单位时，单位为fp。minFontSize应小于maxFontSize，若设置值大于maxFontSize，将按maxFontSize处理；小于或等于0时，自适应字号不生效。 |
 
 **返回值：**
 

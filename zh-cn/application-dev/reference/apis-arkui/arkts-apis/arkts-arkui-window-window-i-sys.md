@@ -52,7 +52,7 @@ attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWin
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -138,7 +138,7 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback<void>): Promis
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -311,7 +311,7 @@ bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -467,7 +467,7 @@ detachLayoutToParentWindow(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -648,7 +648,7 @@ hide(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -771,7 +771,7 @@ hideNonSystemFloatingWindows(shouldHide: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -891,7 +891,7 @@ hideWithAnimation(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -933,7 +933,7 @@ isMainWindowFullScreenAcrossDisplays(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示当前窗口的主窗口跨多块屏幕使用全屏模式显示，返回false表示当前窗口的主窗口未跨多块屏幕使用全屏模式显示。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示当前窗口的主窗口跨多块屏幕使用全屏模式显示，返回false表示当前窗口的主窗口未跨多块屏幕使用全屏模式显示。 |
 
 **错误码：**
 
@@ -1193,7 +1193,7 @@ raiseAboveTarget(windowId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1273,7 +1273,7 @@ raiseMainWindowAboveTarget(windowId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1495,7 +1495,7 @@ requestFocus(isFocused: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1931,7 +1931,7 @@ setForbidSplitMove(isForbidSplitMove: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -2001,7 +2001,7 @@ setHandwritingFlag(enable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -2055,7 +2055,7 @@ setMainWindowRaiseByClickEnabled(enable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2219,7 +2219,7 @@ setRotationLocked(locked: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2311,7 +2311,7 @@ setSingleFrameComposerEnabled(enable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -2358,7 +2358,7 @@ setSnapshotSkip(isSkip: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isSkip | boolean | 是 | 截屏、录屏或投屏是否忽略当前窗口，默认为false。true表示忽略当前窗口，false表示不忽略当前窗口。 & lt;/br & gt; |
+| isSkip | boolean | 是 | 截屏、录屏或投屏是否忽略当前窗口，默认为false。true表示忽略当前窗口，false表示不忽略当前窗口。 &lt;/br&gt; |
 
 **错误码：**
 
@@ -2473,7 +2473,7 @@ setTopmost(isTopmost: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -2624,7 +2624,7 @@ setWaterMarkFlag(enable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -2678,7 +2678,7 @@ setWindowMode(mode: WindowMode): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -2817,7 +2817,7 @@ setWindowType(type: WindowType): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -2934,7 +2934,7 @@ showWithAnimation(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

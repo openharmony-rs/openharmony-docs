@@ -39,7 +39,7 @@ enhanceDetail(sourceImage: image.PixelMap, width: number, height: number, level?
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;image.PixelMap & gt; | Promise对象，用于返回处理后的PixelMap对象。 |
+| Promise &lt;image.PixelMap&gt; | Promise对象，用于返回处理后的PixelMap对象。 |
 
 **错误码：**
 
@@ -89,7 +89,7 @@ enhanceDetail(sourceImage: image.PixelMap, scale: number, level?: QualityLevel):
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;image.PixelMap & gt; | Promise对象，用于返回处理后的PixelMap对象。 |
+| Promise &lt;image.PixelMap&gt; | Promise对象，用于返回处理后的PixelMap对象。 |
 
 **错误码：**
 

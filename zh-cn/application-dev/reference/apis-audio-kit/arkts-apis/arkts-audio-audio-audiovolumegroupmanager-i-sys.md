@@ -86,7 +86,7 @@ adjustSystemVolumeByStep(volumeType: AudioVolumeType, adjustType: VolumeAdjustTy
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -182,7 +182,7 @@ adjustVolumeByStep(adjustType: VolumeAdjustType): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -359,7 +359,7 @@ mute(volumeType: AudioVolumeType, mute: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -405,7 +405,7 @@ setMicMute(mute: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -451,7 +451,7 @@ setMicMutePersistent(mute: boolean, type: PolicyType): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -545,7 +545,7 @@ setRingerMode(mode: AudioRingMode): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -642,7 +642,7 @@ setVolume(volumeType: AudioVolumeType, volume: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -690,7 +690,7 @@ setVolumeWithFlag(volumeType: AudioVolumeType, volume: number, flags: number): P
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

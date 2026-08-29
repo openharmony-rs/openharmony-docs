@@ -66,7 +66,7 @@ getReceivingSurfaceId(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回surface id。 |
+| Promise &lt;string&gt; | Promise对象，返回surface id。 |
 
 **示例**
 
@@ -223,7 +223,7 @@ readLatestImage(): Promise<Image>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Image & gt; | Promise对象，返回最新图片。 |
+| Promise &lt;Image&gt; | Promise对象，返回最新图片。 |
 
 **示例**
 
@@ -327,7 +327,7 @@ readNextImage(): Promise<Image>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Image & gt; | Promise对象，返回下一张图片。 |
+| Promise &lt;Image&gt; | Promise对象，返回下一张图片。 |
 
 **示例**
 
@@ -477,7 +477,7 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
 

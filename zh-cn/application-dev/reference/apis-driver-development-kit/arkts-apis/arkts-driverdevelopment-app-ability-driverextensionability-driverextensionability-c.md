@@ -36,7 +36,7 @@ Extension生命周期回调，会在[onCreate](../../apis-ability-kit/arkts-apis
 
 | 类型 | 说明 |
 | --- | --- |
-| rpc.RemoteObject \| Promise & lt;rpc.RemoteObject & gt; | 一个RemoteObject对象，用于客户端和服务端进行通信；或一个Promise对象，返回用于通信的 RemoteObject对象。 |
+| rpc.RemoteObject \| Promise &lt;rpc.RemoteObject&gt; | 一个RemoteObject对象，用于客户端和服务端进行通信；或一个Promise对象，返回用于通信的 RemoteObject对象。 |
 
 **示例**
 
@@ -156,13 +156,13 @@ onDump(params: Array<string>): Array<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | Array & lt;string & gt; | 是 | 表示命令形式的参数。 |
+| params | Array &lt;string&gt; | 是 | 表示命令形式的参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 一个string类型的数组，包含转储的客户端信息。 |
+| Array &lt;string&gt; | 一个string类型的数组，包含转储的客户端信息。 |
 
 **示例**
 

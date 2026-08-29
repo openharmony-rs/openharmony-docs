@@ -36,7 +36,7 @@ function addPrinterToCups(printerUri: string, printerName: string, printerMake: 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回true表示添加打印机到cups成功；返回false表示添加打印机到cups失败。 |
+| Promise &lt;boolean&gt; | Promise对象，返回true表示添加打印机到cups成功；返回false表示添加打印机到cups失败。 |
 
 **错误码：**
 

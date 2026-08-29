@@ -74,7 +74,7 @@ Extension生命周期回调，如果是connectAbility拉起的服务，会在onC
 
 | 类型 | 说明 |
 | --- | --- |
-| rpc.RemoteObject \| Promise & lt;rpc.RemoteObject & gt; | RemoteObject or Promise used to return a RemoteObject, which is used for communication between the client and server. |
+| rpc.RemoteObject \| Promise &lt;rpc.RemoteObject&gt; | RemoteObject or Promise used to return a RemoteObject, which is used for communication between the client and server. |
 
 **示例**
 
@@ -254,13 +254,13 @@ onDump(params: Array<string>): Array<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | Array & lt;string & gt; | 是 | 转储命令的参数列表。 |
+| params | Array &lt;string&gt; | 是 | 转储命令的参数列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 表示转存客户端信息数组。 |
+| Array &lt;string&gt; | 表示转存客户端信息数组。 |
 
 **示例**
 

@@ -28,7 +28,7 @@ subscribe 订阅通知扩展。
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;NotificationExtensionSubscriptionInfo[] & gt; | Promise对象，返回一个 [NotificationExtensionSubscriptionInfo]{ |
+| Promise &lt;NotificationExtensionSubscriptionInfo[]&gt; | Promise对象，返回一个 [NotificationExtensionSubscriptionInfo]{ |
 
 **错误码：**
 

@@ -90,7 +90,7 @@ function getProfileByExtensionAbility(moduleName: string, extensionAbilityName: 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回Array & lt;string & gt;对象。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回Array &lt;string&gt;对象。 |
 
 **错误码：**
 

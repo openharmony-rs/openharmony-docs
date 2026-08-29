@@ -26,8 +26,8 @@ Obtains the angle change between two rotation matrices. This API uses an asynchr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| currentRotationMatrix | Array & lt;number & gt; | 是 | Current rotation matrix. |
-| preRotationMatrix | Array & lt;number & gt; | 是 | The other rotation matrix. |
+| currentRotationMatrix | Array &lt;number&gt; | 是 | Current rotation matrix. |
+| preRotationMatrix | Array &lt;number&gt; | 是 | The other rotation matrix. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;number&gt;&gt; | 是 | Callback used to return the angle change around the z, x, and y axes, in degrees. |
 
 **示例**
@@ -69,14 +69,14 @@ Obtains the angle change between two rotation matrices. This API uses a promise 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| currentRotationMatrix | Array & lt;number & gt; | 是 | Current rotation matrix. |
-| preRotationMatrix | Array & lt;number & gt; | 是 | The other rotation matrix. |
+| currentRotationMatrix | Array &lt;number&gt; | 是 | Current rotation matrix. |
+| preRotationMatrix | Array &lt;number&gt; | 是 | The other rotation matrix. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;number & gt; & gt; | Promise used to return the angle change around the z, x, and y axes, in degrees. |
+| Promise &lt;Array &lt;number&gt;&gt; | Promise used to return the angle change around the z, x, and y axes, in degrees. |
 
 **示例**
 

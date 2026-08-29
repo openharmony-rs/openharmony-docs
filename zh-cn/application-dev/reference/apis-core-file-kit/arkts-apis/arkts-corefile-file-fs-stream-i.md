@@ -30,7 +30,7 @@ close(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回值。 |
+| Promise &lt;void&gt; | Promise对象。无返回值。 |
 
 **错误码：**
 
@@ -155,7 +155,7 @@ flush(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。返回表示异步刷新文件流的结果。 |
+| Promise &lt;void&gt; | Promise对象。返回表示异步刷新文件流的结果。 |
 
 **错误码：**
 
@@ -311,7 +311,7 @@ read(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回读取的结果，单位为Byte。 |
+| Promise &lt;number&gt; | Promise对象。返回读取的结果，单位为Byte。 |
 
 **错误码：**
 
@@ -642,7 +642,7 @@ write(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回实际写入的长度，单位为Byte。 |
+| Promise &lt;number&gt; | Promise对象。返回实际写入的长度，单位为Byte。 |
 
 **错误码：**
 

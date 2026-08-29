@@ -293,7 +293,7 @@ struct ParentComponent {
 
 2. 按“+1”或“-1”按钮时，父组件的\@State装饰的countDownStartValue值会变化，这将触发父组件重新渲染，在父组件重新渲染过程中会刷新使用countDownStartValue状态变量的UI组件，并单向同步更新CountDownComponent子组件中的count值。
 
-3. 更新count状态变量值也会触发CountDownComponent的重新渲染，在重新渲染过程中，评估使用count状态变量的if语句条件（this.count &gt; 0），并执行true分支中的使用count状态变量的UI组件相关描述来更新Text组件的UI显示。
+3. 更新count状态变量值也会触发CountDownComponent的重新渲染，在重新渲染过程中，评估使用count状态变量的if语句条件（this.count&gt; 0），并执行true分支中的使用count状态变量的UI组件相关描述来更新Text组件的UI显示。
 
 4. 当按下子组件CountDownComponent的“Try again”按钮时，其\@Prop装饰的变量count将被更改，但是count值的更改不会影响父组件的countDownStartValue值。
 

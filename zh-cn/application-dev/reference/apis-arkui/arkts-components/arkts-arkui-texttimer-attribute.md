@@ -2,7 +2,7 @@
 
 除支持[通用属性](arkts-arkui-commonmethod-c.md)外，还支持以下属性。除支持[通用事件](arkts-arkui-commonmethod-c.md)外，还支持以下事件。
 
-**继承/实现关系：** TextTimerAttribute extends CommonMethod<TextTimerAttribute>
+**继承/实现关系：** TextTimerAttribute extends CommonMethod\<TextTimerAttribute>
 
 **起始版本：** 8
 
@@ -187,7 +187,7 @@ onTimer(event: (utc: number, elapsedTime: number) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (utc: number, elapsedTime: number) = & gt; void | 是 | utc: Linux timestamp, which is the amount of time that has elapsed since January 1, 197 0, in the minimum unit of the format. elapsedTime: Elapsed time of the timer, in the minimum unit of the format. |
+| event | (utc: number, elapsedTime: number) =&gt; void | 是 | utc: Linux timestamp, which is the amount of time that has elapsed since January 1, 197 0, in the minimum unit of the format. elapsedTime: Elapsed time of the timer, in the minimum unit of the format. |
 
 ## textShadow
 

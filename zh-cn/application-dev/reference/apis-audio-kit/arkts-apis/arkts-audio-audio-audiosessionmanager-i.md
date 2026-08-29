@@ -40,7 +40,7 @@ activateAudioSession(strategy: AudioSessionStrategy): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -83,7 +83,7 @@ clearSelectedMediaInputDevice(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -121,7 +121,7 @@ deactivateAudioSession(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -690,7 +690,7 @@ selectMediaInputDevice(inputAudioDevice: AudioDeviceDescriptor): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -826,7 +826,7 @@ setBluetoothAndNearlinkPreferredRecordCategory(category: BluetoothAndNearlinkPre
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -883,7 +883,7 @@ setCapturerMuteHint(mute: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -935,7 +935,7 @@ setDefaultOutputDevice(deviceType: DeviceType): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1004,7 +1004,7 @@ setMediaOutputDevice(deviceType: DeviceType): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

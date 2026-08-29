@@ -75,13 +75,13 @@ function hangUpCall(callId?: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callId | number | 否 | 呼叫Id。可以通过订阅callDetailsChange事件获得。从API version 9开始为可选参数。 & lt;/br & gt;不填该参数则挂断最近一通正在进行/拨号/连接的通话。 |
+| callId | number | 否 | 呼叫Id。可以通过订阅callDetailsChange事件获得。从API version 9开始为可选参数。 &lt;/br&gt;不填该参数则挂断最近一通正在进行/拨号/连接的通话。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以Promise形式异步返回结果。 |
+| Promise &lt;void&gt; | 以Promise形式异步返回结果。 |
 
 **错误码：**
 

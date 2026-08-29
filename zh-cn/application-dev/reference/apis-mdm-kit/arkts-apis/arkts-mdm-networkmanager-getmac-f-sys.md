@@ -102,7 +102,7 @@ function getMac(admin: Want, networkInterface: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise结果，返回设备MAC地址。 |
+| Promise &lt;string&gt; | Promise结果，返回设备MAC地址。 |
 
 **错误码：**
 

@@ -2,7 +2,7 @@
 
 ## 概述
 
-定义所有预定义的参数名称。开发者可以使用特定预定义的参数名称进行打点或对系统事件进行自定义参数规格设置。示例代码：<pre>ParamList list = OH_HiAppEvent_CreateParamList();OH_HiAppEvent_AddInt32Param(list, PARAM_USER_ID, 123);int res = OH_HiAppEvent_Write("user_domain", EVENT_USER_LOGIN, BEHAVIOR, list);OH_HiAppEvent_DestroyParamList(list);</pre>
+定义所有预定义的参数名称。开发者可以使用特定预定义的参数名称进行打点或对系统事件进行自定义参数规格设置。示例代码：ParamList list = OH_HiAppEvent_CreateParamList();OH_HiAppEvent_AddInt32Param(list, PARAM_USER_ID, 123);int res = OH_HiAppEvent_Write("user_domain", EVENT_USER_LOGIN, BEHAVIOR, list);OH_HiAppEvent_DestroyParamList(list);
 
 **库：** libhiappevent_ndk.z.so
 

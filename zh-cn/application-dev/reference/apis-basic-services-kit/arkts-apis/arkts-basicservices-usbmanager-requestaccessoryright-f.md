@@ -28,7 +28,7 @@ function requestAccessoryRight(accessory: USBAccessory): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回应用访问配件权限的申请结果。返回true表示权限申请成功；返回false表示权限申请失败。 |
+| Promise &lt;boolean&gt; | Promise对象，返回应用访问配件权限的申请结果。返回true表示权限申请成功；返回false表示权限申请失败。 |
 
 **错误码：**
 

@@ -24,7 +24,7 @@ createAsset(displayName: string): Promise<PhotoAsset>
 - 应包含有效文件主名和图片或视频扩展名。  
 - 文件名字符串长度为1~255。  
 - 文件主名中不允许出现的非法英文字符。  
-API18开始，非法字符包括：\ / : * ? " &lt; &gt; |API10-17，非法字符包括：. .. \ / : * ? " ' ` &lt; &gt; | { } [ ]
+API18开始，非法字符包括：\ / : * ? " &lt;&gt; |API10-17，非法字符包括：. .. \ / : * ? " ' ` &lt;&gt; | { } [ ]
 
 **起始版本：** 12
 
@@ -44,7 +44,7 @@ API18开始，非法字符包括：\ / : * ? " &lt; &gt; |API10-17，非法字�
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PhotoAsset & gt; | Promise对象，返回创建的图片和视频结果。 |
+| Promise &lt;PhotoAsset&gt; | Promise对象，返回创建的图片和视频结果。 |
 
 **错误码：**
 
@@ -85,7 +85,7 @@ createAsset(displayName: string, options: photoAccessHelper.PhotoCreateOptions):
 - 应包含有效文件主名和图片或视频扩展名。  
 - 文件名字符串长度为1~255。  
 - 文件主名中不允许出现的非法英文字符。  
-API18开始，非法字符包括： \ / : * ? " &lt; &gt; |API10-17，非法字符包括： . .. \ / : * ? " ' ` &lt; &gt; | { } [ ]
+API18开始，非法字符包括： \ / : * ? " &lt;&gt; |API10-17，非法字符包括： . .. \ / : * ? " ' ` &lt;&gt; | { } [ ]
 
 **起始版本：** 12
 
@@ -106,7 +106,7 @@ API18开始，非法字符包括： \ / : * ? " &lt; &gt; |API10-17，非法字�
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PhotoAsset & gt; | Promise used to return the created asset. |
+| Promise &lt;PhotoAsset&gt; | Promise used to return the created asset. |
 
 **错误码：**
 
@@ -170,7 +170,7 @@ getHiddenAlbums(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;FetchResult & lt;Album & gt; & gt; | Promise对象，返回获取相册的结果集。 |
+| Promise &lt;FetchResult &lt;Album&gt;&gt; | Promise对象，返回获取相册的结果集。 |
 
 **错误码：**
 
@@ -263,7 +263,7 @@ getPhotoAssets(assetsData: photoAccessHelper.ValuesBucket[]): Promise<PhotoAsset
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PhotoAsset[] & gt; | Promise对象，返回PhotoAsset对象的数组（数组可能为空）。 |
+| Promise &lt;PhotoAsset[]&gt; | Promise对象，返回PhotoAsset对象的数组（数组可能为空）。 |
 
 **错误码：**
 
@@ -326,7 +326,7 @@ Fetch shared photo assets.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;SharedPhotoAsset & gt; | Returns the shared photo assets |
+| Array &lt;SharedPhotoAsset&gt; | Returns the shared photo assets |
 
 **错误码：**
 

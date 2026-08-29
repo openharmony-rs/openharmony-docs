@@ -2,7 +2,7 @@
 
 Defines Text Modifier
 
-**继承/实现关系：** TextModifier extends [TextAttribute](../arkts-components/arkts-arkui-text-attribute.md) implements AttributeModifier<TextAttribute>
+**继承/实现关系：** TextModifier extends [TextAttribute](../arkts-components/arkts-arkui-text-attribute.md) implements AttributeModifier\<TextAttribute>
 
 **起始版本：** 12
 

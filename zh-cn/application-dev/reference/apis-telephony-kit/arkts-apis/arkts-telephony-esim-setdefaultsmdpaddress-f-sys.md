@@ -32,7 +32,7 @@ function setDefaultSmdpAddress(slotId: number, address: string): Promise<ResultC
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ResultCode & gt; | Promise对象，返回设置默认SM-DP+地址的结果码。 |
+| Promise &lt;ResultCode&gt; | Promise对象，返回设置默认SM-DP+地址的结果码。 |
 
 **错误码：**
 

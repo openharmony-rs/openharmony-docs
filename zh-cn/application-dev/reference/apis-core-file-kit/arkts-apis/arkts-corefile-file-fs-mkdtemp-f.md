@@ -28,7 +28,7 @@ declare function mkdtemp(prefix: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象。返回生成的唯一目录路径。 |
+| Promise &lt;string&gt; | Promise对象。返回生成的唯一目录路径。 |
 
 **错误码：**
 

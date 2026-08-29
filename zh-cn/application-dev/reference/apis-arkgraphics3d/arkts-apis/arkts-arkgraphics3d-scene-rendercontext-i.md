@@ -62,7 +62,7 @@ loadPlugin(name: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 返回一个Promise对象，解析结果为boolean类型，表示插件加载是否成功。true表示加载成功，false表示加载失败。 |
+| Promise &lt;boolean&gt; | 返回一个Promise对象，解析结果为boolean类型，表示插件加载是否成功。true表示加载成功，false表示加载失败。 |
 
 **示例**
 

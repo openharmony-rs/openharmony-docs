@@ -35,7 +35,7 @@ function getRemoteBundleVersionCode(deviceId: string, bundleName: string): Promi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，调用成功返回版本信息；调用失败返回错误对象。 |
+| Promise &lt;number&gt; | Promise对象，调用成功返回版本信息；调用失败返回错误对象。 |
 
 **错误码：**
 

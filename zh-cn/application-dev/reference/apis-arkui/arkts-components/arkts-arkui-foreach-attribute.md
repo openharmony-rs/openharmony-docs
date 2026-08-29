@@ -2,7 +2,7 @@
 
 支持拖拽排序属性。
 
-**继承/实现关系：** ForEachAttribute extends DynamicNode<ForEachAttribute>
+**继承/实现关系：** ForEachAttribute extends DynamicNode\<ForEachAttribute>
 
 **起始版本：** 12
 

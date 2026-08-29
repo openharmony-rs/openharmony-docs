@@ -35,7 +35,7 @@ Delay close camera.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise used to return the result. |
+| Promise &lt;void&gt; | Promise used to return the result. |
 
 **错误码：**
 
@@ -70,7 +70,7 @@ Control auxiliary.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise used to return the result. |
+| Promise &lt;void&gt; | Promise used to return the result. |
 
 **错误码：**
 

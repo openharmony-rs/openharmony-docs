@@ -91,7 +91,7 @@ function dialCall(phoneNumber: string, options?: DialCallOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以Promise形式异步返回拨号结果。 |
+| Promise &lt;void&gt; | 以Promise形式异步返回拨号结果。 |
 
 **错误码：**
 

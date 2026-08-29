@@ -76,7 +76,7 @@ function getAllActiveIfaces(): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | 以Promise形式返回获取结果。返回值为对应接口名。 |
+| Promise &lt;Array &lt;string&gt;&gt; | 以Promise形式返回获取结果。返回值为对应接口名。 |
 
 **错误码：**
 

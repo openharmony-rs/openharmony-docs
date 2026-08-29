@@ -108,7 +108,7 @@ getSystemFontList(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 系统支持的字体名称列表，返回的名称可用于getFontByName方法查询对应字体的详细信息。 |
+| Array &lt;string&gt; | 系统支持的字体名称列表，返回的名称可用于getFontByName方法查询对应字体的详细信息。 |
 
 **示例**
 

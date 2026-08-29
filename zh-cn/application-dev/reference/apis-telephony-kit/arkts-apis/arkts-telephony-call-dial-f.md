@@ -82,7 +82,7 @@ function dial(phoneNumber: string, options?: DialOptions): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 以Promise形式返回拨打电话的结果，返回true为成功，false为失败。 |
+| Promise &lt;boolean&gt; | 以Promise形式返回拨打电话的结果，返回true为成功，false为失败。 |
 
 **示例**
 

@@ -265,7 +265,7 @@ getCharacterRangeForGlyphRange(glyphRange: Range, encoding: drawing.TextEncoding
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;Range & gt; | 字符范围。如果数组包含一个元素，它表示字符范围。如果包含两个元素，第一个是字符范围，第二个是实际的字形范围。 |
+| Array &lt;Range&gt; | 字符范围。如果数组包含一个元素，它表示字符范围。如果包含两个元素，第一个是字符范围，第二个是实际的字形范围。 |
 
 **错误码：**
 
@@ -368,7 +368,7 @@ getGlyphRangeForCharacterRange(characterRange: Range, encoding: drawing.TextEnco
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;Range & gt; | 字形范围。数组包含两个元素，第一个是字形范围，第二个是实际的字符范围。 |
+| Array &lt;Range&gt; | 字形范围。数组包含两个元素，第一个是字形范围，第二个是实际的字符范围。 |
 
 **错误码：**
 
@@ -539,7 +539,7 @@ getLineMetrics(): Array<LineMetrics>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;LineMetrics & gt; | 文本行的行度量数组。 |
+| Array &lt;LineMetrics&gt; | 文本行的行度量数组。 |
 
 **示例**
 
@@ -886,7 +886,7 @@ getRectsForPlaceholders(): Array<TextBox>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;TextBox & gt; | 矩形区域数组。 |
+| Array &lt;TextBox&gt; | 矩形区域数组。 |
 
 **示例**
 
@@ -920,7 +920,7 @@ getRectsForRange(range: Range, widthStyle: RectWidthStyle, heightStyle: RectHeig
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;TextBox & gt; | 矩形区域数组。 |
+| Array &lt;TextBox&gt; | 矩形区域数组。 |
 
 **示例**
 
@@ -1033,7 +1033,7 @@ getVisibleTextRanges(): Array<Range>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;Range & gt; | 段落可见文本范围数组，范围为UTF-16编码单元索引。 |
+| Array &lt;Range&gt; | 段落可见文本范围数组，范围为UTF-16编码单元索引。 |
 
 **示例**
 
@@ -1097,7 +1097,7 @@ layout(width: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

@@ -67,7 +67,7 @@ function isGeoServiceAvailable(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回true表示地理编码服务可用；返回false表示地理编码服务不可用。 |
+| Promise &lt;boolean&gt; | Promise对象，返回true表示地理编码服务可用；返回false表示地理编码服务不可用。 |
 
 **示例**
 

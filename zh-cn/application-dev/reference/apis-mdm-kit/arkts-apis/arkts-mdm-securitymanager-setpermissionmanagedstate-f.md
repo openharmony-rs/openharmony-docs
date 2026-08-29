@@ -33,7 +33,7 @@ function setPermissionManagedState(
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | applicationInstance | ApplicationInstance | 是 | 指定应用实例。 |
-| permissions | Array & lt;string & gt; | 是 | 需要管理的权限名称列表，仅支持user_grant权限。权限名称列表以 [应用权限组](../../../security/AccessToken/app-permission-group-list.md)为单位。列表中应包含应用在 [module.json5](../../../quick-start/module-configuration-file.md)中声明的同一权限组内的所有权限。例如：应用如果在module.json5中声明需要 ohos.permission.READ_CALENDAR和ohos.permission.WRITE_CALENDAR权限，则传入的权限名称列表必须同时包含ohos.permission.READ_CALENDAR和 ohos.permission.WRITE_CALENDAR两个权限。 |
+| permissions | Array &lt;string&gt; | 是 | 需要管理的权限名称列表，仅支持user_grant权限。权限名称列表以 [应用权限组](../../../security/AccessToken/app-permission-group-list.md)为单位。列表中应包含应用在 [module.json5](../../../quick-start/module-configuration-file.md)中声明的同一权限组内的所有权限。例如：应用如果在module.json5中声明需要 ohos.permission.READ_CALENDAR和ohos.permission.WRITE_CALENDAR权限，则传入的权限名称列表必须同时包含ohos.permission.READ_CALENDAR和 ohos.permission.WRITE_CALENDAR两个权限。 |
 | managedState | [PermissionManagedState](arkts-mdm-securitymanager-permissionmanagedstate-e.md) | 是 | 应用权限的管理策略。 |
 
 **错误码：**

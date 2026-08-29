@@ -31,7 +31,7 @@ function addBeaconFence(fenceRequest: BeaconFenceRequest): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回beacon围栏ID。 |
+| Promise &lt;number&gt; | Promise对象，返回beacon围栏ID。 |
 
 **错误码：**
 

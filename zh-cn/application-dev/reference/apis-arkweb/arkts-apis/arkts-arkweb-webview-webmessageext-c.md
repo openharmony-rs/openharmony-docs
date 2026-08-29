@@ -29,7 +29,7 @@ getArray(): Array<string | number | boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string \ | number \| boolean & gt; | 返回数组类型的数据。 |
+| Array &lt;string \ | number \| boolean&gt; | 返回数组类型的数据。 |
 
 **错误码：**
 
@@ -205,7 +205,7 @@ setArray(message: Array<string | number | boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| message | Array & lt;string \ | number \| boolean & gt; | 是 | 数组类型数据。 |
+| message | Array &lt;string \ | number \| boolean&gt; | 是 | 数组类型数据。 |
 
 **错误码：**
 

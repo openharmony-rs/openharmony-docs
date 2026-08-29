@@ -82,7 +82,7 @@ function getBundleNameByUid(uid: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回bundleName。 |
+| Promise &lt;string&gt; | Promise对象，返回bundleName。 |
 
 **错误码：**
 

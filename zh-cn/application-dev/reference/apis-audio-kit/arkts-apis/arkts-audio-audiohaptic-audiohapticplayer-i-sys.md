@@ -115,7 +115,7 @@ Set haptics intensity for this player. This method uses a promise to return the 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -152,7 +152,7 @@ Set haptics intensity ramp effect for this player. This method uses a promise to
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise used to return the result. |
+| Promise &lt;void&gt; | Promise used to return the result. |
 
 **错误码：**
 

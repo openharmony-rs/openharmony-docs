@@ -33,13 +33,13 @@ onExecuteInServiceExtensionAbility(name: string, param: Record<string, Object>):
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 意图名称。 |
-| param | Record & lt;string, Object & gt; | 是 | 意图参数，表示本次意图执行由系统入口传递给应用的数据。 |
+| param | Record &lt;string, Object&gt; | 是 | 意图参数，表示本次意图执行由系统入口传递给应用的数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| insightIntent.ExecuteResult \| Promise & lt;insightIntent.ExecuteResult & gt; | Intent execution result or a Promise object containing the intent execution result, representing the data returned to the system entry point from this intent execution. |
+| insightIntent.ExecuteResult \| Promise &lt;insightIntent.ExecuteResult&gt; | Intent execution result or a Promise object containing the intent execution result, representing the data returned to the system entry point from this intent execution. |
 
 **示例**
 
@@ -141,13 +141,13 @@ onExecuteInUIAbilityBackgroundMode、[onBackground](arkts-ability-app-ability-ui
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 意图名称。 |
-| param | Record & lt;string, Object & gt; | 是 | 意图参数，表示本次意图执行由系统入口传递给应用的数据。 |
+| param | Record &lt;string, Object&gt; | 是 | 意图参数，表示本次意图执行由系统入口传递给应用的数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| insightIntent.ExecuteResult \| Promise & lt;insightIntent.ExecuteResult & gt; | Intent execution result or a Promise object containing the intent execution result, representing the data returned to the system entry point from this intent execution. |
+| insightIntent.ExecuteResult \| Promise &lt;insightIntent.ExecuteResult&gt; | Intent execution result or a Promise object containing the intent execution result, representing the data returned to the system entry point from this intent execution. |
 
 **示例**
 
@@ -235,14 +235,14 @@ onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>, 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 意图名称。 |
-| param | Record & lt;string, Object & gt; | 是 | 意图参数，表示本次意图执行由系统入口传递给应用的数据。 |
+| param | Record &lt;string, Object&gt; | 是 | 意图参数，表示本次意图执行由系统入口传递给应用的数据。 |
 | pageLoader | window.WindowStage | 是 | 表示windowStage实例对象，和 [onWindowStageCreate](arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagecreate)接口的windowStage实例是同一个，可用于加载意图执行 的页面。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| insightIntent.ExecuteResult \| Promise & lt;insightIntent.ExecuteResult & gt; | Intent execution result or a Promise object containing the intent execution result, representing the data returned to the system entry point from this intent execution. |
+| insightIntent.ExecuteResult \| Promise &lt;insightIntent.ExecuteResult&gt; | Intent execution result or a Promise object containing the intent execution result, representing the data returned to the system entry point from this intent execution. |
 
 **示例**
 
@@ -353,14 +353,14 @@ onExecuteInUIExtensionAbility(name: string, param: Record<string, Object>, pageL
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 意图名称。 |
-| param | Record & lt;string, Object & gt; | 是 | 意图参数，表示本次意图执行由系统入口传递给应用的数据。 |
+| param | Record &lt;string, Object&gt; | 是 | 意图参数，表示本次意图执行由系统入口传递给应用的数据。 |
 | pageLoader | [UIExtensionContentSession](arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c.md) | 是 | 表示UIExtensionContentSession实例对象，和 [onSessionCreate](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#onsessioncreate)接口的 UIExtensionContentSession实例是同一个，可用于加载意图执行的页面。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| insightIntent.ExecuteResult \| Promise & lt;insightIntent.ExecuteResult & gt; | Intent execution result or a Promise object containing the intent execution result, representing the data returned to the system entry point from this intent execution. |
+| insightIntent.ExecuteResult \| Promise &lt;insightIntent.ExecuteResult&gt; | Intent execution result or a Promise object containing the intent execution result, representing the data returned to the system entry point from this intent execution. |
 
 **示例**
 

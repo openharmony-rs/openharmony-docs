@@ -120,7 +120,7 @@ function grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleN
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回0表示有权限，返回-1表示无权限。 |
+| Promise &lt;number&gt; | Promise对象。返回0表示有权限，返回-1表示无权限。 |
 
 **错误码：**
 
@@ -202,7 +202,7 @@ function grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleN
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

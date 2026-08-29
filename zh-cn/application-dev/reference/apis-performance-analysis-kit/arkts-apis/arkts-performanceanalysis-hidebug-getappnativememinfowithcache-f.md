@@ -26,7 +26,7 @@ function getAppNativeMemInfoWithCache(forceRefresh?: boolean): NativeMemInfo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| forceRefresh | boolean | 否 | 是否需要无视缓存有效性，强制更新缓存值。默认值：false。 & lt;/br & gt;true：直接获取当前内存数据并更新缓存值。 & lt;/br & gt;false：缓存有效时，直接返回缓 存值，缓存失效时获取当前内存数据并更新缓存值。 |
+| forceRefresh | boolean | 否 | 是否需要无视缓存有效性，强制更新缓存值。默认值：false。 &lt;/br&gt;true：直接获取当前内存数据并更新缓存值。 &lt;/br&gt;false：缓存有效时，直接返回缓 存值，缓存失效时获取当前内存数据并更新缓存值。 |
 
 **返回值：**
 

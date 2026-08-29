@@ -2,7 +2,7 @@
 
 支持通用属性。支持以下事件：
 
-**继承/实现关系：** DynamicComponentAttribute extends CommonMethod<DynamicComponentAttribute>
+**继承/实现关系：** DynamicComponentAttribute extends CommonMethod\<DynamicComponentAttribute>
 
 **起始版本：** 26.0.0
 

@@ -34,7 +34,7 @@ function isAlwaysOnVpnEnabled(bundleName: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示应用alway on vpn开启状态；返回false表示关闭状态。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示应用alway on vpn开启状态；返回false表示关闭状态。 |
 
 **错误码：**
 

@@ -34,7 +34,7 @@ function setApplicationEnabled(bundleName: string, appIndex: number, isEnabled: 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -99,7 +99,7 @@ function setApplicationEnabled(bundleName: string, appIndex: number, isEnabled: 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回值 |
+| Promise &lt;void&gt; | 无返回值 |
 
 **错误码：**
 
@@ -222,7 +222,7 @@ function setApplicationEnabled(bundleName: string, isEnabled: boolean): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

@@ -431,7 +431,7 @@ getKeyData(itemType: AsyKeyDataItem): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Uint8Array & gt; | Promise对象，返回指定密钥数据项类型的私钥数据。 |
+| Promise &lt;Uint8Array&gt; | Promise对象，返回指定密钥数据项类型的私钥数据。 |
 
 **错误码：**
 

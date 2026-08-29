@@ -64,7 +64,7 @@ function getPrimarySlotId(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 以Promise形式返回获取设备主卡所在卡槽的索引号的结果。 |
+| Promise &lt;number&gt; | 以Promise形式返回获取设备主卡所在卡槽的索引号的结果。 |
 
 **错误码：**
 

@@ -30,7 +30,7 @@ constructor(assets: Array<PhotoAsset>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| assets | Array & lt;PhotoAsset & gt; | 是 | 需要变更的资产数组。 |
+| assets | Array &lt;PhotoAsset&gt; | 是 | 需要变更的资产数组。 |
 
 **错误码：**
 

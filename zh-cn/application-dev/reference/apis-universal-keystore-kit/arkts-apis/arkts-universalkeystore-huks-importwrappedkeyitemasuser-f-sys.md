@@ -39,7 +39,7 @@ Import Wrapped Key As User.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 

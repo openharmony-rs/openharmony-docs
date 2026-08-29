@@ -33,7 +33,7 @@ function getInstalledBundleList(admin: Want, accountId: number): Promise<Array<B
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;BundleInfo & gt; & gt; | Promise对象，返回已安装应用包信息。 |
+| Promise &lt;Array &lt;BundleInfo&gt;&gt; | Promise对象，返回已安装应用包信息。 |
 
 **错误码：**
 
@@ -93,7 +93,7 @@ function getInstalledBundleList(admin: Want, accountId: number, bundleInfoGetFla
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;BundleInfo & gt; & gt; | Promise对象，返回已安装应用包信息。 |
+| Promise &lt;Array &lt;BundleInfo&gt;&gt; | Promise对象，返回已安装应用包信息。 |
 
 **错误码：**
 

@@ -74,7 +74,7 @@ function exit(sharingResource: string): Promise<Result<void>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Result & lt;void & gt; & gt; | Promise对象，返回退出端云共享的结果。 |
+| Promise &lt;Result &lt;void&gt;&gt; | Promise对象，返回退出端云共享的结果。 |
 
 **错误码：**
 

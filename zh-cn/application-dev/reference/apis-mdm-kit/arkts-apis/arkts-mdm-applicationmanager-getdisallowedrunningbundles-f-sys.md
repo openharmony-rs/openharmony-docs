@@ -162,7 +162,7 @@ function getDisallowedRunningBundles(admin: Want, userId?: number): Promise<Arra
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回当前/指定用户下的应用运行禁止名单。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回当前/指定用户下的应用运行禁止名单。 |
 
 **错误码：**
 

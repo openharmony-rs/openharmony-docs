@@ -32,7 +32,7 @@ function setSimLabelIndex(simId: number, simLabelIndex: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | The promise returned by the setSimLabelIndex. |
+| Promise &lt;void&gt; | The promise returned by the setSimLabelIndex. |
 
 **错误码：**
 

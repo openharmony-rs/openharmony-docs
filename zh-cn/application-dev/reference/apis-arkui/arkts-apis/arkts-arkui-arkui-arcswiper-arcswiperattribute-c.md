@@ -2,7 +2,7 @@
 
 除支持通用属性外，还支持以下属性。
 
-**继承/实现关系：** ArcSwiperAttribute extends CommonMethod<ArcSwiperAttribute>
+**继承/实现关系：** ArcSwiperAttribute extends CommonMethod\<ArcSwiperAttribute>
 
 **起始版本：** 18
 
@@ -214,7 +214,7 @@ indicator(style: Optional<ArcDotIndicator | boolean>): ArcSwiperAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| style | Optional&lt;[ArcDotIndicator](arkts-arkui-arkui-arcswiper-arcdotindicator-c.md) \| boolean & gt; | 是 | 弧形圆点指示器样式。    - ArcDotIndicator：弧形圆点指示器属性及功能。    - boolean：是否启用弧形圆点指示器。设置为true启用，false不启用。    默认值：true默认类型：ArcDotIndicator |
+| style | Optional&lt;[ArcDotIndicator](arkts-arkui-arkui-arcswiper-arcdotindicator-c.md) \| boolean&gt; | 是 | 弧形圆点指示器样式。    - ArcDotIndicator：弧形圆点指示器属性及功能。    - boolean：是否启用弧形圆点指示器。设置为true启用，false不启用。    默认值：true默认类型：ArcDotIndicator |
 
 **返回值：**
 

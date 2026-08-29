@@ -100,7 +100,7 @@ function bindDevice(deviceId: number, onDisconnect: AsyncCallback<number>): Prom
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;{deviceId: number; remote: rpc.IRemoteObject; | > } Promise对象，返回一个包含设备ID和IRemoteObject的对象。 |
+| Promise &lt;{deviceId: number; remote: rpc.IRemoteObject; | > } Promise对象，返回一个包含设备ID和IRemoteObject的对象。 |
 
 **错误码：**
 

@@ -39,7 +39,7 @@ off(event: 'progress', callback?: (progress: Progress) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'progress' | 是 | 取消订阅的事件类型。   - 取值为'progress'，表示任务进度。 |
-| callback | (progress: Progress) = & gt; void | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有进度回调函数。 |
+| callback | (progress: Progress) =&gt; void | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有进度回调函数。 |
 
 **错误码：**
 
@@ -71,7 +71,7 @@ off(event: 'completed', callback?: (progress: Progress) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'completed' | 是 | 取消订阅的事件类型。   - 取值为'completed'，表示任务完成。 |
-| callback | (progress: Progress) = & gt; void | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有完成回调函数。 |
+| callback | (progress: Progress) =&gt; void | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有完成回调函数。 |
 
 **错误码：**
 
@@ -103,7 +103,7 @@ off(event: 'failed', callback?: (progress: Progress) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'failed' | 是 | 取消订阅的事件类型。   - 取值为'failed'，表示任务失败。 |
-| callback | (progress: Progress) = & gt; void | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有失败回调函数。 |
+| callback | (progress: Progress) =&gt; void | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有失败回调函数。 |
 
 **错误码：**
 
@@ -133,7 +133,7 @@ off(event: 'pause', callback?: (progress: Progress) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'pause' | 是 | 取消订阅的事件类型。   - 取值为'pause'，表示任务暂停。 |
-| callback | (progress: Progress) = & gt; void | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有暂停回调函数。 |
+| callback | (progress: Progress) =&gt; void | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有暂停回调函数。 |
 
 **错误码：**
 
@@ -162,7 +162,7 @@ off(event: 'resume', callback?: (progress: Progress) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'resume' | 是 | 取消订阅的事件类型。   - 取值为'resume'，表示任务恢复。 |
-| callback | (progress: Progress) = & gt; void | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有恢复回调函数。 |
+| callback | (progress: Progress) =&gt; void | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有恢复回调函数。 |
 
 **错误码：**
 
@@ -191,7 +191,7 @@ off(event: 'remove', callback?: (progress: Progress) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'remove' | 是 | 取消订阅的事件类型。   - 取值为'remove'，表示任务被移除。 |
-| callback | (progress: Progress) = & gt; void | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有移除回调函数。 |
+| callback | (progress: Progress) =&gt; void | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有移除回调函数。 |
 
 **错误码：**
 
@@ -311,7 +311,7 @@ on(event: 'progress', callback: (progress: Progress) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'progress' | 是 | 订阅的事件类型。   - 取值为'progress'，表示任务进度，任务进度有进展时触发该事件。 |
-| callback | (progress: Progress) = & gt; void | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
+| callback | (progress: Progress) =&gt; void | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
 
 **错误码：**
 
@@ -343,7 +343,7 @@ on(event: 'completed', callback: (progress: Progress) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'completed' | 是 | 订阅的事件类型。   - 取值为'completed'，表示任务完成，任务完成时触发该事件。 |
-| callback | (progress: Progress) = & gt; void | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
+| callback | (progress: Progress) =&gt; void | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
 
 **错误码：**
 
@@ -375,7 +375,7 @@ on(event: 'failed', callback: (progress: Progress) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'failed' | 是 | 订阅的事件类型。   - 取值为'failed'，表示任务失败，任务失败时触发该事件。 |
-| callback | (progress: Progress) = & gt; void | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
+| callback | (progress: Progress) =&gt; void | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
 
 **错误码：**
 
@@ -405,7 +405,7 @@ on(event: 'pause', callback: (progress: Progress) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'pause' | 是 | 订阅的事件类型。   - 取值为'pause'，表示任务已暂停，任务暂停时触发该事件。 |
-| callback | (progress: Progress) = & gt; void | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
+| callback | (progress: Progress) =&gt; void | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
 
 **错误码：**
 
@@ -434,7 +434,7 @@ on(event: 'resume', callback: (progress: Progress) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'resume' | 是 | 订阅的事件类型。   - 取值为'resume'，表示任务恢复，任务恢复时触发该事件。 |
-| callback | (progress: Progress) = & gt; void | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
+| callback | (progress: Progress) =&gt; void | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
 
 **错误码：**
 
@@ -463,7 +463,7 @@ on(event: 'remove', callback: (progress: Progress) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'remove' | 是 | 订阅的事件类型。   - 取值为'remove'，表示任务被移除，任务移除时触发该事件。 |
-| callback | (progress: Progress) = & gt; void | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
+| callback | (progress: Progress) =&gt; void | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
 
 **错误码：**
 
@@ -661,7 +661,7 @@ pause(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -837,7 +837,7 @@ resume(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -930,7 +930,7 @@ setMaxSpeed(speed: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1070,7 +1070,7 @@ start(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1216,7 +1216,7 @@ stop(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

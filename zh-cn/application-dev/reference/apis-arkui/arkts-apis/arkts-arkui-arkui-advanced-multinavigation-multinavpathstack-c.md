@@ -104,7 +104,7 @@ getAllPathName(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 返回栈中所有NavDestination页面的名称，数组元素按栈底到栈顶的顺序排列。 |
+| Array &lt;string&gt; | 返回栈中所有NavDestination页面的名称，数组元素按栈底到栈顶的顺序排列。 |
 
 ## getIndexByName
 
@@ -132,7 +132,7 @@ getIndexByName(name: string): Array<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;number & gt; | Indexes of all the matching navigation destination pages. |
+| Array &lt;number&gt; | Indexes of all the matching navigation destination pages. |
 
 ## getParamByIndex
 
@@ -188,7 +188,7 @@ getParamByName(name: string): Array<Object>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;Object & gt; | 返回全部名为name的NavDestination页面的参数信息。 |
+| Array &lt;Object&gt; | 返回全部名为name的NavDestination页面的参数信息。 |
 
 ## keepBottomPage
 
@@ -589,7 +589,7 @@ removeByIndexes(indexes: Array<number>): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| indexes | Array & lt;number & gt; | 是 | 待删除NavDestination页面的索引值数组。number类型的取值范围：[0, +∞)。超出范围时操作不生效。 |
+| indexes | Array &lt;number&gt; | 是 | 待删除NavDestination页面的索引值数组。number类型的取值范围：[0, +∞)。超出范围时操作不生效。 |
 
 **返回值：**
 

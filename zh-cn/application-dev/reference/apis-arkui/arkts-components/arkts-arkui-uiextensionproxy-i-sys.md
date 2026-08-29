@@ -125,7 +125,7 @@ send(data: Record<string, Object>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | Record & lt;string, Object & gt; | 是 | 异步发送给被拉起的UIExtensionAbility的数据。 API version 18之前的版本，data的类型为Object。<br>**起始版本：** 18 |
+| data | Record &lt;string, Object&gt; | 是 | 异步发送给被拉起的UIExtensionAbility的数据。 API version 18之前的版本，data的类型为Object。<br>**起始版本：** 18 |
 
 ## sendSync
 
@@ -147,14 +147,14 @@ sendSync(data: Record<string, Object>): Record<string, Object>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | Record & lt;string, Object & gt; | 是 | 发送给UIExtensionAbility的数据。<br>**起始版本：** 18 |
+| data | Record &lt;string, Object&gt; | 是 | 发送给UIExtensionAbility的数据。<br>**起始版本：** 18 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
 | object | data - 从UIExtensionAbility传输回来的数据<br>**适用版本：** 11 - 17 |
-| Record & lt;string, Object & gt; | data - 从UIExtensionAbility传输回来的数据。<br>**适用版本：** 18+ |
+| Record &lt;string, Object&gt; | data - 从UIExtensionAbility传输回来的数据。<br>**适用版本：** 18+ |
 
 **错误码：**
 

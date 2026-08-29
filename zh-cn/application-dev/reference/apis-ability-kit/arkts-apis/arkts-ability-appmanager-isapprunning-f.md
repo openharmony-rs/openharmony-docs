@@ -35,7 +35,7 @@ function isAppRunning(bundleName: string, appCloneIndex?: number): Promise<boole
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示至少存在一个用户正在运行指定包名和分身应用索引的应用，返回false表示所有用户下指定包名和分身应用索引的应用都没有运行。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示至少存在一个用户正在运行指定包名和分身应用索引的应用，返回false表示所有用户下指定包名和分身应用索引的应用都没有运行。 |
 
 **错误码：**
 

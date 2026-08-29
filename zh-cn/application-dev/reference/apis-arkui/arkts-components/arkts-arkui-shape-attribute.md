@@ -2,7 +2,7 @@
 
 除支持通用属性以及图形绘制通用属性外，还支持以下 属性：
 
-**继承/实现关系：** ShapeAttribute extends CommonMethod<ShapeAttribute>
+**继承/实现关系：** ShapeAttribute extends CommonMethod\<ShapeAttribute>
 
 **起始版本：** 7
 
@@ -105,7 +105,7 @@ mesh(value: Array<any>, column: number, row: number)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Array & lt;any & gt; | 是 | 长度（row + 1）* （column + 1）* 2的数组，记录扭曲后的位图各个顶点位置。坐标系基于Shape组件显示区域，原点(0,0)位于左上角，x轴向右延伸，y 轴向下延伸。 默认单位：vp 设置异常值undefined、null时按照空数组处理。 |
+| value | Array &lt;any&gt; | 是 | 长度（row + 1）* （column + 1）* 2的数组，记录扭曲后的位图各个顶点位置。坐标系基于Shape组件显示区域，原点(0,0)位于左上角，x轴向右延伸，y 轴向下延伸。 默认单位：vp 设置异常值undefined、null时按照空数组处理。 |
 | column | number | 是 | mesh矩阵列数，取值范围≥0。 默认值：0 设置异常值undefined、null、NaN和Infinity时，column参数和row参数按默认值0处理，value参数按空数组处理。 |
 | row | number | 是 | mesh矩阵行数，取值范围≥0。 默认值：0 设置异常值undefined、null、NaN和Infinity时，column参数和row参数按默认值0处理，value参数按空数组处理。 |
 
@@ -151,7 +151,7 @@ strokeDashArray(value: Array<any>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Array & lt;any & gt; | 是 | 定义Shape轮廓的虚线模式的数组，数组元素交替表示线段长度和间隙长度。默认值：[]（空数组）默认单位：vp 异常值undefined和 null按照默认值处理。   **说明：**空数组：实线偶数多元素数组：数组元素按顺序循环，如[a, b, c, d]表示线段长度a- & gt;间隙长度b- & gt;线段长度c- & gt;间隙长度d- & gt;线段长度a- & gt;... 奇数多元素数组：重复一次该数组元素，按偶数多元素数组的规则顺序循环，如[a, b, c]等效于[a, b, c, a, b, c]，表示线段长度a- & gt;间隙长度b- & gt;线段长度c- & gt;间隙长度a- & gt;线段长度b- & gt;间隙长 度c- & gt;线段长度a- & gt;... |
+| value | Array &lt;any&gt; | 是 | 定义Shape轮廓的虚线模式的数组，数组元素交替表示线段长度和间隙长度。默认值：[]（空数组）默认单位：vp 异常值undefined和 null按照默认值处理。   **说明：**空数组：实线偶数多元素数组：数组元素按顺序循环，如[a, b, c, d]表示线段长度a-&gt;间隙长度b-&gt;线段长度c-&gt;间隙长度d-&gt;线段长度a-&gt;... 奇数多元素数组：重复一次该数组元素，按偶数多元素数组的规则顺序循环，如[a, b, c]等效于[a, b, c, a, b, c]，表示线段长度a-&gt;间隙长度b-&gt;线段长度c-&gt;间隙长度a-&gt;线段长度b-&gt;间隙长 度c-&gt;线段长度a-&gt;... |
 
 ## strokeDashOffset
 

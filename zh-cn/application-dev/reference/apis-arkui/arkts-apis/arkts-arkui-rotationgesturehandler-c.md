@@ -2,7 +2,7 @@
 
 旋转手势处理器对象类型。
 
-**继承/实现关系：** RotationGestureHandler extends GestureHandler<RotationGestureHandler>
+**继承/实现关系：** RotationGestureHandler extends GestureHandler\<RotationGestureHandler>
 
 **起始版本：** 12
 
@@ -55,7 +55,7 @@ onActionCancel(event: Callback<void>): RotationGestureHandler
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | Callback & lt;void & gt; | 是 | 旋转手势处理器取消回调。不返回手势事件信息。 |
+| event | Callback &lt;void&gt; | 是 | 旋转手势处理器取消回调。不返回手势事件信息。 |
 
 **返回值：**
 

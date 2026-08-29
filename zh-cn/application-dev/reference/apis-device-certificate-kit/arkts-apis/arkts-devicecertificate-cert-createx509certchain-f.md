@@ -263,7 +263,7 @@ function createX509CertChain(certs: Array<X509Cert>): X509CertChain
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| certs | Array & lt;X509Cert & gt; | 是 | X.509证书对象数组。 |
+| certs | Array &lt;X509Cert&gt; | 是 | X.509证书对象数组。 |
 
 **返回值：**
 

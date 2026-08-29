@@ -35,7 +35,7 @@ TLSSocketServer停止监听并释放通过[listen](arkts-network-socket-tcpsocke
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -442,7 +442,7 @@ getLocalAddress(): Promise<NetAddress>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;NetAddress & gt; | 以Promise形式返回获取本地socket地址的结果。 |
+| Promise &lt;NetAddress&gt; | 以Promise形式返回获取本地socket地址的结果。 |
 
 **错误码：**
 
@@ -723,7 +723,7 @@ getProtocol(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | 以Promise形式返回通信的协议。失败返回错误码，错误信息。 |
+| Promise &lt;string&gt; | 以Promise形式返回通信的协议。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -809,7 +809,7 @@ getSocketFd(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回Socket的文件描述符。 |
+| Promise &lt;number&gt; | Promise对象，返回Socket的文件描述符。 |
 
 **错误码：**
 
@@ -1589,7 +1589,7 @@ listen(options: TLSConnectOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以Promise形式返回，成功返回空，失败返回错误码，错误信息。 |
+| Promise &lt;void&gt; | 以Promise形式返回，成功返回空，失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -2155,7 +2155,7 @@ setExtraOptions(options: TCPExtraOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以Promise形式返回，成功返回空，失败返回错误码，错误信息。 |
+| Promise &lt;void&gt; | 以Promise形式返回，成功返回空，失败返回错误码，错误信息。 |
 
 **错误码：**
 

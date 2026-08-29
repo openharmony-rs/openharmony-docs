@@ -23,7 +23,7 @@ function getGraphicsMemory(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | promise对象，返回应用显存总大小，单位为KB。 |
+| Promise &lt;number&gt; | promise对象，返回应用显存总大小，单位为KB。 |
 
 **错误码：**
 

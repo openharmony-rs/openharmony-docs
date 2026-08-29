@@ -121,7 +121,7 @@ function replaceNamedRoute(options: NamedRouterOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 异常返回结果。 |
+| Promise &lt;void&gt; | 异常返回结果。 |
 
 **错误码：**
 
@@ -276,7 +276,7 @@ function replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 异常返回结果。 |
+| Promise &lt;void&gt; | 异常返回结果。 |
 
 **错误码：**
 

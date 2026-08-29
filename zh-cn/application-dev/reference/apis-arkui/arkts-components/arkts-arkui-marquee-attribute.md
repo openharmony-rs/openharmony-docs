@@ -2,7 +2,7 @@
 
 除支持[通用属性](arkts-arkui-commonmethod-c.md)外，还支持以下属性。除支持[通用事件](arkts-arkui-commonmethod-c.md)外，还支持以下事件。
 
-**继承/实现关系：** MarqueeAttribute extends CommonMethod<MarqueeAttribute>
+**继承/实现关系：** MarqueeAttribute extends CommonMethod\<MarqueeAttribute>
 
 **起始版本：** 8
 
@@ -167,7 +167,7 @@ onBounce(event: () => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () = & gt; void | 是 | 完成一次完整滚动时触发的回调。 |
+| event | () =&gt; void | 是 | 完成一次完整滚动时触发的回调。 |
 
 ## onFinish
 
@@ -189,7 +189,7 @@ onFinish(event: () => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () = & gt; void | 是 | 滚动全部循环次数完成时的回调。 |
+| event | () =&gt; void | 是 | 滚动全部循环次数完成时的回调。 |
 
 ## onStart
 
@@ -211,7 +211,7 @@ onStart(event: () => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () = & gt; void | 是 | 当滚动的文本内容变化或者开始滚动时的回调。 |
+| event | () =&gt; void | 是 | 当滚动的文本内容变化或者开始滚动时的回调。 |
 
 ## onStop
 
@@ -235,4 +235,4 @@ onStop(event: Callback<void> | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | Callback & lt;void & gt; \ | undefined | 是 |  |
+| event | Callback &lt;void&gt; \ | undefined | 是 |  |

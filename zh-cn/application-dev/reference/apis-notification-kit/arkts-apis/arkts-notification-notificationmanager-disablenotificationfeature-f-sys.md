@@ -27,13 +27,13 @@ function disableNotificationFeature(disabled:boolean, bundleList: Array<string>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | disabled | boolean | 是 | 是否启用通知发布权限管控名单（true：开启，false：关闭）。 |
-| bundleList | Array & lt;string & gt; | 是 | 指定通知发布权限管控名单的应用列表，使用包名代表应用。 |
+| bundleList | Array &lt;string&gt; | 是 | 指定通知发布权限管控名单的应用列表，使用包名代表应用。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -87,14 +87,14 @@ function disableNotificationFeature(disabled: boolean, bundleList: Array<string>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | disabled | boolean | 是 | 表示是否启用通知发布权限管控名单。true表示启用，false表示关闭。 |
-| bundleList | Array & lt;string & gt; | 是 | 指定通知发布权限管控名单的应用列表，使用包名表示应用。 |
+| bundleList | Array &lt;string&gt; | 是 | 指定通知发布权限管控名单的应用列表，使用包名表示应用。 |
 | userId | number | 是 | 表示用户ID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

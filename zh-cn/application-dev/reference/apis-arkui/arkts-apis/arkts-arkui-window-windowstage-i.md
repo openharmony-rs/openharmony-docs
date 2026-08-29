@@ -547,7 +547,7 @@ isWindowRectAutoSave(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示当前窗口启用尺寸记忆，返回false表示当前窗口禁用尺寸记忆。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示当前窗口启用尺寸记忆，返回false表示当前窗口禁用尺寸记忆。 |
 
 **错误码：**
 
@@ -689,7 +689,7 @@ loadContent(path: string, storage?: LocalStorage): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1049,7 +1049,7 @@ Loads content by named router
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -1329,7 +1329,7 @@ releaseUIContent(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value, indicating successful completion. Throws exception if window state is abnormal. |
+| Promise &lt;void&gt; | Promise that returns no value, indicating successful completion. Throws exception if window state is abnormal. |
 
 **错误码：**
 
@@ -1397,7 +1397,7 @@ removeImageForRecent(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1455,7 +1455,7 @@ removeStartingWindow(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1681,13 +1681,13 @@ setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowM
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| supportedWindowModes | Array & lt;bundleManager.SupportWindowMode & gt; | 是 | 设置主窗的窗口支持模式。    - FULL_SCREEN：支持全屏模式。   - FLOATING：支持自由悬浮窗口模式。    - SPLIT：支持分屏模式。需要配合FULL_SCREEN或FLOATING一起使用，不支持仅配置SPLIT。     注：数组中SupportWindowMode字段取值不应该与该UIAbility对应的 [module.json5配置文件][module.json5 file](../../../quick-start/module-configuration-file.md)中 abilities标签的supportWindowMode字段取值或者 StartOptions的 supportWindowModes属性取值冲突。当取值冲突时，最终以该参数设置的窗口支持模式为准。 |
+| supportedWindowModes | Array &lt;bundleManager.SupportWindowMode&gt; | 是 | 设置主窗的窗口支持模式。    - FULL_SCREEN：支持全屏模式。   - FLOATING：支持自由悬浮窗口模式。    - SPLIT：支持分屏模式。需要配合FULL_SCREEN或FLOATING一起使用，不支持仅配置SPLIT。     注：数组中SupportWindowMode字段取值不应该与该UIAbility对应的 [module.json5配置文件][module.json5 file](../../../quick-start/module-configuration-file.md)中 abilities标签的supportWindowMode字段取值或者 StartOptions的 supportWindowModes属性取值冲突。当取值冲突时，最终以该参数设置的窗口支持模式为准。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1775,14 +1775,14 @@ setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowM
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| supportedWindowModes | Array & lt;bundleManager.SupportWindowMode & gt; | 是 | 设置主窗的窗口支持模式。    - FULL_SCREEN：支持全屏模式。   - FLOATING：支持自由悬浮窗口模式。    - SPLIT：支持分屏模式。需要配合FULL_SCREEN或FLOATING一起使用，不支持仅配置SPLIT。     注：数组中SupportWindowMode字段取值不应该与该UIAbility对应的 [module.json5配置文件][module.json5 file](../../../quick-start/module-configuration-file.md)中 abilities标签的supportWindowMode字段取值或者 StartOptions的 supportWindowModes属性取值冲突。当取值冲突时，最终以该参数设置的窗口支持模式为准。 |
+| supportedWindowModes | Array &lt;bundleManager.SupportWindowMode&gt; | 是 | 设置主窗的窗口支持模式。    - FULL_SCREEN：支持全屏模式。   - FLOATING：支持自由悬浮窗口模式。    - SPLIT：支持分屏模式。需要配合FULL_SCREEN或FLOATING一起使用，不支持仅配置SPLIT。     注：数组中SupportWindowMode字段取值不应该与该UIAbility对应的 [module.json5配置文件][module.json5 file](../../../quick-start/module-configuration-file.md)中 abilities标签的supportWindowMode字段取值或者 StartOptions的 supportWindowModes属性取值冲突。当取值冲突时，最终以该参数设置的窗口支持模式为准。 |
 | grayOutMaximizeButton | boolean | 是 | 是否显示并将主窗口的最大化按钮置灰 true表示显示并将主窗口的最大化按钮置灰，此时最大化按钮不可用；false表示不显示主窗口的最大化按钮。 此参数配置仅在supportedWindowModes不支持FULL_SCREEN时生效。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1849,7 +1849,7 @@ Set the application modality of the windowStage.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -1913,7 +1913,7 @@ setWindowRectAutoSave(enabled: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1977,7 +1977,7 @@ setWindowRectAutoSave(enabled: boolean, isSaveBySpecifiedFlag: boolean): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 

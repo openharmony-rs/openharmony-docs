@@ -2,7 +2,7 @@
 
 支持拖拽排序属性。
 
-**继承/实现关系：** LazyForEachAttribute extends DynamicNode<LazyForEachAttribute>
+**继承/实现关系：** LazyForEachAttribute extends DynamicNode\<LazyForEachAttribute>
 
 **起始版本：** 12
 

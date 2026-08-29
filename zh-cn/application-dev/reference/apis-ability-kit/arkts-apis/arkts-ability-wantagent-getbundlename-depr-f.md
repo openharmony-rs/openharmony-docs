@@ -113,7 +113,7 @@ function getBundleName(agent: WantAgent): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | 以Promise形式返回获取WantAgent实例的Bundle名称。 |
+| Promise &lt;string&gt; | 以Promise形式返回获取WantAgent实例的Bundle名称。 |
 
 **示例**
 

@@ -98,13 +98,13 @@ function startCastDeviceDiscovery(filter?: number, drmSchemes?: Array<string>): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | filter | number | 否 | 进行设备发现的过滤条件，由ProtocolType组合而成。<br>**起始版本：** 12 |
-| drmSchemes | Array & lt;string & gt; | 否 | 进行支持DRM资源播放的设备发现的过滤条件，由DRM uuid组合而成。 从API version 12开始支持该可选参 数。<br>**起始版本：** 12 |
+| drmSchemes | Array &lt;string&gt; | 否 | 进行支持DRM资源播放的设备发现的过滤条件，由DRM uuid组合而成。 从API version 12开始支持该可选参 数。<br>**起始版本：** 12 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。当命令发送成功并开始搜索，无返回结果，否则返回错误对象。 |
+| Promise &lt;void&gt; | Promise对象。当命令发送成功并开始搜索，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 

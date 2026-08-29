@@ -66,7 +66,7 @@ UIAbility生命周期回调，当UIAbility侧滑返回时触发，根据返回�
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | The value & lt;code & gt;true & lt;/code & gt; means that the UIAbility instance will be moved to the background and will not be destroyed, and & lt;code & gt;false & lt;/code & gt; means that the UIAbility instance will be destroyed. |
+| boolean | The value &lt;code&gt;true &lt;/code&gt; means that the UIAbility instance will be moved to the background and will not be destroyed, and &lt;code&gt;false &lt;/code&gt; means that the UIAbility instance will be destroyed. |
 
 **示例**
 
@@ -112,7 +112,7 @@ UIAbility生命周期回调，在多设备协同场景下，协同方应用在�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| wantParam | Record & lt;string, Object & gt; | 是 | want相关参数，仅支持key值取"ohos.extra.param.key.supportCollaborateIndex"。通过该 key值可以获取到调用方传输的数据并进行相应的处理。 |
+| wantParam | Record &lt;string, Object&gt; | 是 | want相关参数，仅支持key值取"ohos.extra.param.key.supportCollaborateIndex"。通过该 key值可以获取到调用方传输的数据并进行相应的处理。 |
 
 **返回值：**
 
@@ -157,14 +157,14 @@ onContinue(wantParam: Record<string, Object>):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| wantParam | Record & lt;string, Object & gt; | 是 | 开发者通过该参数保存待迁移的数据。<br>**起始版本：** 11 |
+| wantParam | Record &lt;string, Object&gt; | 是 | 开发者通过该参数保存待迁移的数据。<br>**起始版本：** 11 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
 | AbilityConstant.OnContinueResult | Return the result of onContinue.<br>**适用版本：** 9 - 11 |
-| AbilityConstant.OnContinueResult \| Promise & lt;AbilityConstant.OnContinueResult & gt; | 表示是否同意迁移的结果： |
+| AbilityConstant.OnContinueResult \| Promise &lt;AbilityConstant.OnContinueResult&gt; | 表示是否同意迁移的结果： |
 
 **示例**
 
@@ -404,13 +404,13 @@ onDump(params: Array<string>): Array<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | Array & lt;string & gt; | 是 | 表示dump命令参数。 |
+| params | Array &lt;string&gt; | 是 | 表示dump命令参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 返回的dump信息。 |
+| Array &lt;string&gt; | 返回的dump信息。 |
 
 **示例**
 
@@ -594,7 +594,7 @@ onPrepareToTerminateAsync(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise used to return the result. |
+| Promise &lt;boolean&gt; | Promise used to return the result. |
 
 **示例**
 
@@ -638,7 +638,7 @@ onSaveState(reason: AbilityConstant.StateType, wantParam: Record<string, Object>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | reason | AbilityConstant.StateType | 是 | 触发应用保存状态的原因，当前仅支持APP_RECOVERY（即应用故障恢复场景）。 |
-| wantParam | Record & lt;string, Object & gt; | 是 | 用户自定义的应用状态数据，应用再启动时被保存在[onCreate](#oncreate)的 Want.parameters中。<br>**起始版本：** 11 |
+| wantParam | Record &lt;string, Object&gt; | 是 | 用户自定义的应用状态数据，应用再启动时被保存在[onCreate](#oncreate)的 Want.parameters中。<br>**起始版本：** 11 |
 
 **返回值：**
 
@@ -681,13 +681,13 @@ onSaveStateAsync(stateType: AbilityConstant.StateType, wantParam: Record<string,
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | stateType | AbilityConstant.StateType | 是 | 触发应用保存状态的原因，当前仅支持`APP_RECOVERY`（即应用故障恢复场景）。 |
-| wantParam | Record & lt;string, Object & gt; | 是 | 用户自定义的应用状态数据，应用再启动时被保存在[onCreate](#oncreate)的 Want.parameters中。 |
+| wantParam | Record &lt;string, Object&gt; | 是 | 用户自定义的应用状态数据，应用再启动时被保存在[onCreate](#oncreate)的 Want.parameters中。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;AbilityConstant.OnSaveResult & gt; | Promise对象。返回一个数据保存策略的对象（如全部拒绝、全部允许、只允许故障恢复场景等）。 |
+| Promise &lt;AbilityConstant.OnSaveResult&gt; | Promise对象。返回一个数据保存策略的对象（如全部拒绝、全部允许、只允许故障恢复场景等）。 |
 
 **示例**
 
@@ -725,7 +725,7 @@ onShare(wantParam: Record<string, Object>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| wantParam | Record & lt;string, Object & gt; | 是 | 待分享的数据。<br>**起始版本：** 11 |
+| wantParam | Record &lt;string, Object&gt; | 是 | 待分享的数据。<br>**起始版本：** 11 |
 
 **示例**
 

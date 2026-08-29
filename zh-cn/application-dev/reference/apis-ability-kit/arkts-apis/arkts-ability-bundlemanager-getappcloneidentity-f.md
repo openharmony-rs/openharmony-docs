@@ -30,7 +30,7 @@ function getAppCloneIdentity(uid: number): Promise<AppCloneIdentity>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;AppCloneIdentity & gt; | Promise对象，返回 & lt;AppCloneIdentity & gt;。 |
+| Promise &lt;AppCloneIdentity&gt; | Promise对象，返回 &lt;AppCloneIdentity&gt;。 |
 
 **错误码：**
 

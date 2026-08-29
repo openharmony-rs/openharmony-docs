@@ -82,7 +82,7 @@ function switchInputMethod(target: InputMethodProperty): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。resolve时返回true表示切换输入法成功，返回false表示切换输入法失败；reject时返回错误对象，表示切换输入法时发生错误。 |
+| Promise &lt;boolean&gt; | Promise对象。resolve时返回true表示切换输入法成功，返回false表示切换输入法失败；reject时返回错误对象，表示切换输入法时发生错误。 |
 
 **错误码：**
 

@@ -267,7 +267,7 @@ kill(signal: number, pid: number): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| signal | number | 是 | 发送特定的信号给指定进程。取值范围：1 & lt;= signal & lt;= 64。 |
+| signal | number | 是 | 发送特定的信号给指定进程。取值范围：1 &lt;= signal &lt;= 64。 |
 | pid | number | 是 | 进程的id。可通过process.pid获取。 |
 
 **返回值：**

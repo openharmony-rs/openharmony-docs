@@ -2,7 +2,7 @@
 
 除支持通用属性外，还支持以下属性（不支持 [滚动组件通用属性](../arkts-components/arkts-arkui-scrollablecommonmethod-c.md)）：
 
-**继承/实现关系：** ArcListAttribute extends CommonMethod<ArcListAttribute>
+**继承/实现关系：** ArcListAttribute extends CommonMethod\<ArcListAttribute>
 
 **起始版本：** 18
 

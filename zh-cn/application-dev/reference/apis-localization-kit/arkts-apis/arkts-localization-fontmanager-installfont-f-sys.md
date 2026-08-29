@@ -32,7 +32,7 @@ function installFont(path: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回安装结果。 |
+| Promise &lt;number&gt; | Promise对象，返回安装结果。 |
 
 **错误码：**
 

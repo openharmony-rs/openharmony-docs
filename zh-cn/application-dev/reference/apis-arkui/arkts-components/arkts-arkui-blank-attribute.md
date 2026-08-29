@@ -2,7 +2,7 @@
 
 除支持[通用属性](arkts-arkui-commonmethod-c.md)外，还支持以下属性：支持[通用事件](arkts-arkui-commonmethod-c.md)。
 
-**继承/实现关系：** BlankAttribute extends CommonMethod<BlankAttribute>
+**继承/实现关系：** BlankAttribute extends CommonMethod\<BlankAttribute>
 
 **起始版本：** 7
 

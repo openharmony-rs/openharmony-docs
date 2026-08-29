@@ -241,7 +241,7 @@ static createMatrixColorFilter(matrix: Array<number>): ColorFilter
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| matrix | Array & lt;number & gt; | 是 | 长度为20的数组，表示用于颜色变换的4×5矩阵。 |
+| matrix | Array &lt;number&gt; | 是 | 长度为20的数组，表示用于颜色变换的4×5矩阵。 |
 
 **返回值：**
 

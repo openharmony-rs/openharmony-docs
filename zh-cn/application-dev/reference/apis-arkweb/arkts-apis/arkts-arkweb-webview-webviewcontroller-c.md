@@ -210,7 +210,7 @@ static addIntelligentTrackingPreventionBypassingList(hostList: Array<string>): v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hostList | Array & lt;string & gt; | 是 | 绕过智能防跟踪功能的域名列表。 |
+| hostList | Array &lt;string&gt; | 是 | 绕过智能防跟踪功能的域名列表。 |
 
 **错误码：**
 
@@ -443,7 +443,7 @@ static clearBlanklessLoadingCache(keys?: Array<string>) : void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keys | Array & lt;string & gt; | 否 | 清除Blankless优化方案页面的key值列表， key值为[getBlanklessInfoWithKey](#getblanklessinfowithkey)中指定过的。 默认值：所有Blankless优化方案缓存的页面key列表。 合法取值范围：长度不超过2048，key列表长度&lt;=100。key和加载页面时输入给ArkWeb的相同。 非法值设置行为：传入undefined/null会抛出异常错误码401；key长度超过2048时该key不生效；长度超过100时，取前100个；当为空时，使用默认值。 |
+| keys | Array &lt;string&gt; | 否 | 清除Blankless优化方案页面的key值列表， key值为[getBlanklessInfoWithKey](#getblanklessinfowithkey)中指定过的。 默认值：所有Blankless优化方案缓存的页面key列表。 合法取值范围：长度不超过2048，key列表长度&lt;=100。key和加载页面时输入给ArkWeb的相同。 非法值设置行为：传入undefined/null会抛出异常错误码401；key长度超过2048时该key不生效；长度超过100时，取前100个；当为空时，使用默认值。 |
 
 **错误码：**
 
@@ -748,7 +748,7 @@ static clearPrefetchedResource(cacheKeyList: Array<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| cacheKeyList | Array & lt;string & gt; | 是 | 用于后续查询预获取资源缓存的key。仅支持字母和数字，未传入或传入空则取默认值url作为key。 |
+| cacheKeyList | Array &lt;string&gt; | 是 | 用于后续查询预获取资源缓存的key。仅支持字母和数字，未传入或传入空则取默认值url作为key。 |
 
 **示例**
 
@@ -2006,7 +2006,7 @@ executeAIPageCommand(command: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回JSON格式的命令执行结果。不同命令的返回格式不同。命令无法分发或无返回值时，返回空字符串。 |
+| Promise &lt;string&gt; | Promise对象，返回JSON格式的命令执行结果。不同命令的返回格式不同。命令无法分发或无返回值时，返回空字符串。 |
 
 **错误码：**
 
@@ -2297,7 +2297,7 @@ getCertificate(): Promise<Array<cert.X509Cert>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;cert.X509Cert & gt; & gt; | Promise实例，用于获取当前加载的https网站的X509格式证书数组。 |
+| Promise &lt;Array &lt;cert.X509Cert&gt;&gt; | Promise实例，用于获取当前加载的https网站的X509格式证书数组。 |
 
 **错误码：**
 
@@ -4284,7 +4284,7 @@ hasImage(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise实例，返回查找页面是否存在图像。 |
+| Promise &lt;boolean&gt; | Promise实例，返回查找页面是否存在图像。 |
 
 **错误码：**
 
@@ -5323,7 +5323,7 @@ loadUrl(url: string | Resource, headers?: Array<WebHeader>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | url | string \| Resource | 是 | 需要加载的URL。 |
-| headers | Array & lt;WebHeader & gt; | 否 | URL的附加HTTP请求头。 默认值： []。 传入undefined或null会抛出异常错误码401。 |
+| headers | Array &lt;WebHeader&gt; | 否 | URL的附加HTTP请求头。 默认值： []。 传入undefined或null会抛出异常错误码401。 |
 
 **错误码：**
 
@@ -6446,7 +6446,7 @@ precompileJavaScript(url: string, script: string | Uint8Array, cacheOptions: Cac
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 生成字节码缓存的错误码，0表示无错误，-1表示内部错误。 |
+| Promise &lt;number&gt; | 生成字节码缓存的错误码，0表示无错误，-1表示内部错误。 |
 
 **错误码：**
 
@@ -6696,7 +6696,7 @@ prefetchPage(url: string, additionalHeaders?: Array<WebHeader>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | url | string | 是 | 预加载的URL。 |
-| additionalHeaders | Array & lt;WebHeader & gt; | 否 | URL的附加HTTP请求头。 默认值：[] |
+| additionalHeaders | Array &lt;WebHeader&gt; | 否 | URL的附加HTTP请求头。 默认值：[] |
 
 **错误码：**
 
@@ -6763,7 +6763,7 @@ prefetchPage(url: string, additionalHeaders?: Array<WebHeader>, prefetchOptions?
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | url | string | 是 | 预加载的URL。 |
-| additionalHeaders | Array & lt;WebHeader & gt; | 否 | URL的附加HTTP请求头。 默认值：[] |
+| additionalHeaders | Array &lt;WebHeader&gt; | 否 | URL的附加HTTP请求头。 默认值：[] |
 | prefetchOptions | [PrefetchOptions](arkts-arkweb-webview-prefetchoptions-c.md) | 否 | 用来自定义预取行为的相关选项。 两次预取间的最小时间间隔为500ms，默认不忽略响应头中的Cache-Control: no-store。 |
 
 **错误码：**
@@ -6824,7 +6824,7 @@ static prefetchResource(request: RequestInfo, additionalHeaders?: Array<WebHeade
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | request | RequestInfo | 是 | 预获取请求的信息。 |
-| additionalHeaders | Array & lt;WebHeader & gt; | 否 | 预获取请求的附加HTTP请求头。 传入undefined或null会抛出异常错误码401。 |
+| additionalHeaders | Array &lt;WebHeader&gt; | 否 | 预获取请求的附加HTTP请求头。 传入undefined或null会抛出异常错误码401。 |
 | cacheKey | string | 否 | 用于后续查询预获取资源缓存的key。仅支持字母和数字，未传入或传入空则取默认值url作为key。 传入undefined或null会抛出异常错误码401。 |
 | cacheValidTime | number | 否 | 预获取资源缓存的有效期。 取值范围：(0, 2147483647]。 默认值：300s。 单位：s。 传入undefined或null会抛出异常错误码401。 |
 
@@ -7050,8 +7050,8 @@ registerJavaScriptProxy提供了应用与Web组件加载的网页之间强大的
 | --- | --- | --- | --- |
 | jsObject | object | 是 | 参与注册的应用侧JavaScript对象。可以单独声明方法和属性，但无法同时进行注册与使用。对象只包含属性时，H5可以访问对象中的属性。对象只包含方法时，H5可以访问对 象中的方法。  1. 方法的参数和返回类型可以为string，number，boolean。  2. 方法的参数和返回类型支持Dictionary，Array，最多嵌套10层，每层1w个数据。  3. 方法的参数和返回类型支持Object，需要在Object里添加属性methodNameListForJsProxy:[fun1, fun2]，fun1和fun2为可被调用的方法。  4. 方法的参数支持Function，Promise，它们的Callback不能有返回值。  5. 方法的返回类型支持Promise，Promise的Callback不能有返回值。 |
 | name | string | 是 | 注册对象的名称，与window中调用的对象名一致。注册后window对象可以通过此名字访问应用侧JavaScript对象。 |
-| methodList | Array & lt;string & gt; | 是 | 参与注册的应用侧JavaScript对象的同步方法。 |
-| asyncMethodList | Array & lt;string & gt; | 否 | 参与注册的应用侧JavaScript对象的异步方法，默认为空。异步方法无法获取返回值。 传入undefined或null会抛出异常错误码401。<br>**起始版本：** 12 |
+| methodList | Array &lt;string&gt; | 是 | 参与注册的应用侧JavaScript对象的同步方法。 |
+| asyncMethodList | Array &lt;string&gt; | 否 | 参与注册的应用侧JavaScript对象的异步方法，默认为空。异步方法无法获取返回值。 传入undefined或null会抛出异常错误码401。<br>**起始版本：** 12 |
 | permission | string | 否 | JSON字符串，默认为空，通过该字符串配置JSBridge的权限管控，可以定义object和method级别的URL白名单。  1. scheme（协议）和host（域名）参数不可为空，且host不支持通配符，只能填写完整的host。  2. 可以仅配置object级别的白名单，该白名单对所有JSBridge方法生效。  3. 若JSBridge方法A设置了method级别的白名单，那么方法A最终的白名单是object级别白名单与method级别白名单的交集。  传入undefined或null会抛出异常错误码401。<br>**起始版本：** 12 |
 
 **错误码：**
@@ -7335,7 +7335,7 @@ static removeIntelligentTrackingPreventionBypassingList(hostList: Array<string>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hostList | Array & lt;string & gt; | 是 | 绕过智能防跟踪功能的域名列表。 |
+| hostList | Array &lt;string&gt; | 是 | 绕过智能防跟踪功能的域名列表。 |
 
 **错误码：**
 
@@ -7807,7 +7807,7 @@ runJavaScript(script: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise实例，返回脚本执行的结果，执行失败返回null。 |
+| Promise &lt;string&gt; | Promise实例，返回脚本执行的结果，执行失败返回null。 |
 
 **错误码：**
 
@@ -9957,7 +9957,7 @@ setPathAllowingUniversalAccess(pathList: Array<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pathList | Array & lt;string & gt; | 是 | 路径列表 |
+| pathList | Array &lt;string&gt; | 是 | 路径列表 |
 
 **错误码：**
 
@@ -10807,7 +10807,7 @@ static setUserAgentForHosts(userAgent: string, hosts : Array<string>) : void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | userAgent | string | 是 | 用户自定义代理信息。建议先使用 [getDefaultUserAgent](#getdefaultuseragent)获取当前默认用户代理，在此基础上追加自定义用户代理信息。 |
-| hosts | Array & lt;string & gt; | 是 | 用户自定义代理的相关域名列表，每次调用时仅保留最新传入的列表，并限制最大条目数为两万，超出部分自动截断。 |
+| hosts | Array &lt;string&gt; | 是 | 用户自定义代理的相关域名列表，每次调用时仅保留最新传入的列表，并限制最大条目数为两万，超出部分自动截断。 |
 
 **示例**
 
@@ -11531,7 +11531,7 @@ storeWebArchive(baseName: string, autoName: boolean): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise实例，保存成功返回文件路径，保存失败返回null。 |
+| Promise &lt;string&gt; | Promise实例，保存成功返回文件路径，保存失败返回null。 |
 
 **错误码：**
 

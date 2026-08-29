@@ -35,7 +35,7 @@ getModifierKeyState?(keys: Array<string>): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keys | Array & lt;string & gt; | 是 | 功能键列表。 |
+| keys | Array &lt;string&gt; | 是 | 功能键列表。 |
 
 **返回值：**
 

@@ -77,7 +77,7 @@ function isCellularDataRoamingEnabled(slotId: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 以Promise形式返回检查蜂窝数据业务是否启用漫游。 |
+| Promise &lt;boolean&gt; | 以Promise形式返回检查蜂窝数据业务是否启用漫游。 |
 
 **错误码：**
 

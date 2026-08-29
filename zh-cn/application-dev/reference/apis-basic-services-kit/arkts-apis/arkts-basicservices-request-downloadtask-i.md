@@ -101,7 +101,7 @@ delete(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示移除下载任务成功；返回false表示移除下载任务失败。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示移除下载任务成功；返回false表示移除下载任务失败。 |
 
 **错误码：**
 
@@ -220,7 +220,7 @@ getTaskInfo(): Promise<DownloadInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;DownloadInfo & gt; | Promise对象，返回DownloadInfo对象。 |
+| Promise &lt;DownloadInfo&gt; | Promise对象，返回DownloadInfo对象。 |
 
 **错误码：**
 
@@ -332,7 +332,7 @@ getTaskMimeType(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象。返回下载任务的MimeType。 |
+| Promise &lt;string&gt; | Promise对象。返回下载任务的MimeType。 |
 
 **错误码：**
 
@@ -382,7 +382,7 @@ off(type: 'progress', callback?: (receivedSize: number, totalSize: number) => vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'progress' | 是 | 取消订阅的事件类型。   - 取值为'progress'，表示下载的进度信息。 |
-| callback | (receivedSize: number, totalSize: number) = & gt; void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
+| callback | (receivedSize: number, totalSize: number) =&gt; void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码：**
 
@@ -439,7 +439,7 @@ off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'complete' \| 'pause' \| 'remove' | 是 | 取消订阅的事件类型。   - 取值为'complete'，表示下载任务完成。   - 取值为'pause'，表示下载任 务暂停。   - 取值为'remove'，表示下载任务移除。 |
-| callback | () = & gt; void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
+| callback | () =&gt; void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码：**
 
@@ -522,7 +522,7 @@ off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'complete' \| 'pause' \| 'remove' | 是 | 取消订阅的事件类型。   - 取值为'complete'，表示下载任务完成。   - 取值为'pause'，表示下载任 务暂停。   - 取值为'remove'，表示下载任务移除。 |
-| callback | () = & gt; void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
+| callback | () =&gt; void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码：**
 
@@ -551,7 +551,7 @@ off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'complete' \| 'pause' \| 'remove' | 是 | 取消订阅的事件类型。   - 取值为'complete'，表示下载任务完成。   - 取值为'pause'，表示下载任 务暂停。   - 取值为'remove'，表示下载任务移除。 |
-| callback | () = & gt; void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
+| callback | () =&gt; void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码：**
 
@@ -580,7 +580,7 @@ off(type: 'fail', callback?: (err: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'fail' | 是 | 取消订阅的事件类型。   - 取值为'fail'，表示下载失败。 |
-| callback | (err: number) = & gt; void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
+| callback | (err: number) =&gt; void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码：**
 
@@ -641,7 +641,7 @@ on(type: 'progress', callback: (receivedSize: number, totalSize: number) => void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'progress' | 是 | 订阅的事件类型。   - 取值为'progress'，表示下载的进度信息，当任务进度有进展时触发该事件。 |
-| callback | (receivedSize: number, totalSize: number) = & gt; void | 是 | 下载任务进度的回调函数，返回已上传文件大小和上传文件大小总和，单位为字节（B）。在下载过程中，若服务器使用chunk方式传输导致无法从请求头中获取文件总大小时， totalSize为 -1。 |
+| callback | (receivedSize: number, totalSize: number) =&gt; void | 是 | 下载任务进度的回调函数，返回已上传文件大小和上传文件大小总和，单位为字节（B）。在下载过程中，若服务器使用chunk方式传输导致无法从请求头中获取文件总大小时， totalSize为 -1。 |
 
 **错误码：**
 
@@ -690,7 +690,7 @@ on(type: 'complete' | 'pause' | 'remove', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'complete' \| 'pause' \| 'remove' | 是 | 订阅的事件类型。   - 取值为'complete'，表示下载任务完成，任务完成时触发该事件。   - 取值为'pause'，表示下载任务暂停，任务暂停时触发该事件。   - 取值为'remove'，表示下载任务移除，任务移除时触发该事件。 |
-| callback | () = & gt; void | 是 | 下载任务相关的回调函数。 |
+| callback | () =&gt; void | 是 | 下载任务相关的回调函数。 |
 
 **错误码：**
 
@@ -749,7 +749,7 @@ on(type: 'complete' | 'pause' | 'remove', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'complete' \| 'pause' \| 'remove' | 是 | 订阅的事件类型。   - 取值为'complete'，表示下载任务完成，任务完成时触发该事件。   - 取值为'pause'，表示下载任务暂停，任务暂停时触发该事件。   - 取值为'remove'，表示下载任务移除，任务移除时触发该事件。 |
-| callback | () = & gt; void | 是 | 下载任务相关的回调函数。 |
+| callback | () =&gt; void | 是 | 下载任务相关的回调函数。 |
 
 **错误码：**
 
@@ -778,7 +778,7 @@ on(type: 'complete' | 'pause' | 'remove', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'complete' \| 'pause' \| 'remove' | 是 | 订阅的事件类型。   - 取值为'complete'，表示下载任务完成，任务完成时触发该事件。   - 取值为'pause'，表示下载任务暂停，任务暂停时触发该事件。   - 取值为'remove'，表示下载任务移除，任务移除时触发该事件。 |
-| callback | () = & gt; void | 是 | 下载任务相关的回调函数。 |
+| callback | () =&gt; void | 是 | 下载任务相关的回调函数。 |
 
 **错误码：**
 
@@ -807,7 +807,7 @@ on(type: 'fail', callback: (err: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'fail' | 是 | 订阅的事件类型。   - 取值为'fail'，表示下载失败，任务失败时触发该事件。 |
-| callback | (err: number) = & gt; void | 是 | 下载失败的回调函数。错误原因见 下载任务的错误码。 |
+| callback | (err: number) =&gt; void | 是 | 下载失败的回调函数。错误原因见 下载任务的错误码。 |
 
 **错误码：**
 
@@ -959,7 +959,7 @@ pause(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1095,7 +1095,7 @@ query(): Promise<DownloadInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;DownloadInfo & gt; | Promise对象。返回DownloadInfo。 |
+| Promise &lt;DownloadInfo&gt; | Promise对象。返回DownloadInfo。 |
 
 **错误码：**
 
@@ -1186,7 +1186,7 @@ queryMimeType(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象。返回下载任务的MimeType。 |
+| Promise &lt;string&gt; | Promise对象。返回下载任务的MimeType。 |
 
 **错误码：**
 
@@ -1289,7 +1289,7 @@ remove(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示移除下载任务成功；返回false表示移除下载任务失败。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示移除下载任务成功；返回false表示移除下载任务失败。 |
 
 **错误码：**
 
@@ -1394,7 +1394,7 @@ restore(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示重新启动被暂停的下载任务成功；返回false表示重新启动被暂停的下载任务失败。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示重新启动被暂停的下载任务成功；返回false表示重新启动被暂停的下载任务失败。 |
 
 **错误码：**
 
@@ -1552,7 +1552,7 @@ resume(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1699,7 +1699,7 @@ suspend(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示暂停下载正在运行中的任务成功；返回false表示暂停下载正在运行中的任务失败。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示暂停下载正在运行中的任务成功；返回false表示暂停下载正在运行中的任务失败。 |
 
 **错误码：**
 

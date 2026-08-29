@@ -2,7 +2,7 @@
 
 CommonScrollableMethod@extends CommonMethod&lt;T&gt;
 
-**继承/实现关系：** ScrollableCommonMethod extends CommonMethod<T>
+**继承/实现关系：** ScrollableCommonMethod extends CommonMethod\<T>
 
 **起始版本：** 12
 
@@ -529,7 +529,7 @@ onReachEnd(event: () => void): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () = & gt; void | 是 | 滚动组件到达末尾位置时的回调。 |
+| event | () =&gt; void | 是 | 滚动组件到达末尾位置时的回调。 |
 
 **返回值：**
 
@@ -557,7 +557,7 @@ onReachStart(event: () => void): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () = & gt; void | 是 | 滚动组件到达起始位置时的回调。 |
+| event | () =&gt; void | 是 | 滚动组件到达起始位置时的回调。 |
 
 **返回值：**
 
@@ -594,7 +594,7 @@ onScroll(event: (scrollOffset: number, scrollState: ScrollState) => void): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (scrollOffset: number, scrollState: ScrollState) = & gt; void | 是 | 滚动组件滑动时的回调。scrollOffset：相对于上一帧的偏移量，滚动组件的内容向上滚动时偏移量为正，向下滚动时偏移量为负。单位vp。scrollState：当前滑动状态。 |
+| event | (scrollOffset: number, scrollState: ScrollState) =&gt; void | 是 | 滚动组件滑动时的回调。scrollOffset：相对于上一帧的偏移量，滚动组件的内容向上滚动时偏移量为正，向下滚动时偏移量为负。单位vp。scrollState：当前滑动状态。 |
 
 **返回值：**
 
@@ -624,7 +624,7 @@ onScrollStart(event: () => void): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () = & gt; void | 是 | 滚动开始时的回调。 |
+| event | () =&gt; void | 是 | 滚动开始时的回调。 |
 
 **返回值：**
 
@@ -654,7 +654,7 @@ onScrollStop(event: () => void): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () = & gt; void | 是 | 滚动停止时的回调。 |
+| event | () =&gt; void | 是 | 滚动停止时的回调。 |
 
 **返回值：**
 

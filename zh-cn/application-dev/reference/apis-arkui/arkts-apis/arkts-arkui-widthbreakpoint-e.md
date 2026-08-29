@@ -28,7 +28,7 @@ Window width &lt; 320vp type.
 WIDTH_SM = 1
 ```
 
-Window width &gt;= 320vp and &lt; 600vp type.
+Window width&gt;= 320vp and &lt; 600vp type.
 
 **起始版本：** 22
 
@@ -44,7 +44,7 @@ Window width &gt;= 320vp and &lt; 600vp type.
 WIDTH_MD = 2
 ```
 
-Window width &gt;= 600vp and &lt; 840vp type.
+Window width&gt;= 600vp and &lt; 840vp type.
 
 **起始版本：** 22
 
@@ -60,7 +60,7 @@ Window width &gt;= 600vp and &lt; 840vp type.
 WIDTH_LG = 3
 ```
 
-Window width &gt;= 840vp and &lt; 1440vp type.
+Window width&gt;= 840vp and &lt; 1440vp type.
 
 **起始版本：** 22
 
@@ -76,7 +76,7 @@ Window width &gt;= 840vp and &lt; 1440vp type.
 WIDTH_XL = 4
 ```
 
-Window width &gt;= 1440vp type.
+Window width&gt;= 1440vp type.
 
 **起始版本：** 22
 

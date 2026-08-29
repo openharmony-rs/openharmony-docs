@@ -79,7 +79,7 @@ function getDeviceIds(): Promise<Array<number>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;number & gt; & gt; | Promise对象，返回所有输入设备的ID列表。ID是输入设备的唯一标识。 |
+| Promise &lt;Array &lt;number&gt;&gt; | Promise对象，返回所有输入设备的ID列表。ID是输入设备的唯一标识。 |
 
 **示例**
 

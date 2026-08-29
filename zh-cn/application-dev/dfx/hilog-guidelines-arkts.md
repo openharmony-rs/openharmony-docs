@@ -106,7 +106,7 @@ HiLog中定义了DEBUG、INFO、WARN、ERROR、FATAL五种日志级别，并提�
 
 2. 工程配置界面中，**Model**选择“Stage”，若无Model选项，则无需配置，默认为“Stage”模型。
 
-3. 在**Project**窗口单击entry &gt; src &gt; main &gt; ets &gt; pages，打开工程中的Index.ets文件，添加两个按钮，单击按钮打印日志。
+3. 在**Project**窗口单击entry&gt; src&gt; main&gt; ets&gt; pages，打开工程中的Index.ets文件，添加两个按钮，单击按钮打印日志。
 
    示例代码如下：
    <!-- @[HiLog_ArkTS](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hilog/entry/src/main/ets/pages/Index.ets) -->

@@ -91,7 +91,7 @@ function exportVCard(context: Context, predicates: dataSharePredicates.DataShare
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回重置的结果码。 |
+| Promise &lt;string&gt; | Promise对象，返回重置的结果码。 |
 
 **错误码：**
 

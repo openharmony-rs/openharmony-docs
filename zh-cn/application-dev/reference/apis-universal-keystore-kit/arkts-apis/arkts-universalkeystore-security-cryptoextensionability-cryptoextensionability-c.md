@@ -30,7 +30,7 @@ onAuthUkeyPin(handle: string, params: Array<huksExternalCrypto.HuksExternalCrypt
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | handle | string | 是 | 资源句柄。 |
-| params | Array & lt;huksExternalCrypto.HuksExternalCryptoParam & gt; \ | [HuksCryptoExtensionParam](arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensionparam-i.md)[] | 是 | 操作属性。 |
+| params | Array &lt;huksExternalCrypto.HuksExternalCryptoParam&gt; \ | [HuksCryptoExtensionParam](arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensionparam-i.md)[] | 是 | 操作属性。 |
 
 **返回值：**
 
@@ -75,7 +75,7 @@ onClearUkeyPinAuthState(handle: string, params: Array<huksExternalCrypto.HuksExt
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | handle | string | 是 | 资源句柄 |
-| params | Array & lt;huksExternalCrypto.HuksExternalCryptoParam & gt; \ | [HuksCryptoExtensionParam](arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensionparam-i.md)[] | 是 | 操作属性。 |
+| params | Array &lt;huksExternalCrypto.HuksExternalCryptoParam&gt; \ | [HuksCryptoExtensionParam](arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensionparam-i.md)[] | 是 | 操作属性。 |
 
 **返回值：**
 
@@ -118,7 +118,7 @@ onCloseResource(handle: string, params: Array<huksExternalCrypto.HuksExternalCry
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | handle | string | 是 | 会话句柄。 |
-| params | Array & lt;huksExternalCrypto.HuksExternalCryptoParam & gt; \ | [HuksCryptoExtensionParam](arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensionparam-i.md)[] | 是 | 操作属性。 |
+| params | Array &lt;huksExternalCrypto.HuksExternalCryptoParam&gt; \ | [HuksCryptoExtensionParam](arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensionparam-i.md)[] | 是 | 操作属性。 |
 
 **返回值：**
 
@@ -161,7 +161,7 @@ onEnumCertificates(params?: Array<huksExternalCrypto.HuksExternalCryptoParam> | 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | Array & lt;huksExternalCrypto.HuksExternalCryptoParam & gt; \ | [HuksCryptoExtensionParam](arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensionparam-i.md)[] | 否 | 操作属性 |
+| params | Array &lt;huksExternalCrypto.HuksExternalCryptoParam&gt; \ | [HuksCryptoExtensionParam](arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensionparam-i.md)[] | 否 | 操作属性 |
 
 **返回值：**
 
@@ -206,7 +206,7 @@ onExportCertificate(resourceId: string, params?: Array<huksExternalCrypto.HuksEx
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resourceId | string | 是 | 资源ID。 |
-| params | Array & lt;huksExternalCrypto.HuksExternalCryptoParam & gt; \ | [HuksCryptoExtensionParam](arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensionparam-i.md)[] | 否 | 操作属性 |
+| params | Array &lt;huksExternalCrypto.HuksExternalCryptoParam&gt; \ | [HuksCryptoExtensionParam](arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensionparam-i.md)[] | 否 | 操作属性 |
 
 **返回值：**
 
@@ -416,7 +416,7 @@ onGetProperty(handle: string, propertyId: string, params: Array<huksExternalCryp
 | --- | --- | --- | --- |
 | handle | string | 是 | handle表示onOpenResource打开的句柄。 |
 | propertyId | string | 是 | propertyId表示属性函数的名称，GMT 0016-2023中定义。 |
-| params | Array & lt;huksExternalCrypto.HuksExternalCryptoParam & gt; \ | [HuksCryptoExtensionParam](arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensionparam-i.md)[] | 是 | 操作属性。 |
+| params | Array &lt;huksExternalCrypto.HuksExternalCryptoParam&gt; \ | [HuksCryptoExtensionParam](arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensionparam-i.md)[] | 是 | 操作属性。 |
 
 **返回值：**
 
@@ -506,7 +506,7 @@ onGetUkeyPinAuthState(handle: string, params: Array<huksExternalCrypto.HuksExter
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | handle | string | 是 | 资源句柄。 |
-| params | Array & lt;huksExternalCrypto.HuksExternalCryptoParam & gt; \ | [HuksCryptoExtensionParam](arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensionparam-i.md)[] | 是 | 操作属性。 |
+| params | Array &lt;huksExternalCrypto.HuksExternalCryptoParam&gt; \ | [HuksCryptoExtensionParam](arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensionparam-i.md)[] | 是 | 操作属性。 |
 
 **返回值：**
 
@@ -708,7 +708,7 @@ onOpenResource(resourceId: string, params: Array<huksExternalCrypto.HuksExternal
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resourceId | string | 是 | resourceId表示资源ID |
-| params | Array & lt;huksExternalCrypto.HuksExternalCryptoParam & gt; \ | [HuksCryptoExtensionParam](arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensionparam-i.md)[] | 是 | 操作属性。 |
+| params | Array &lt;huksExternalCrypto.HuksExternalCryptoParam&gt; \ | [HuksCryptoExtensionParam](arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensionparam-i.md)[] | 是 | 操作属性。 |
 
 **返回值：**
 

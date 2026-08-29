@@ -90,7 +90,7 @@ constructor(locale: string | Array<string>, options?: NumberOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| locale | string \| Array & lt;string & gt; | 是 | 区域ID或区域ID数组。输入是区域ID数组时，使用第一个有效的区域ID。 |
+| locale | string \| Array &lt;string&gt; | 是 | 区域ID或区域ID数组。输入是区域ID数组时，使用第一个有效的区域ID。 |
 | options | [NumberOptions](arkts-localization-intl-numberoptions-i.md) | 否 | 创建数字格式化对象时可设置的配置项。 默认值：所有属性都取默认值时的配置项。 |
 
 **示例**

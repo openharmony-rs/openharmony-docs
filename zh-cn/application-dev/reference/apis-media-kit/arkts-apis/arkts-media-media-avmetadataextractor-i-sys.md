@@ -40,7 +40,7 @@ getFrameIndexByTime(timeUs: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回视频帧号。 |
+| Promise &lt;number&gt; | Promise对象，返回视频帧号。 |
 
 **错误码：**
 
@@ -87,7 +87,7 @@ getTimeByFrameIndex(index: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回时间戳。单位是微秒。 |
+| Promise &lt;number&gt; | Promise对象，返回时间戳。单位是微秒。 |
 
 **错误码：**
 

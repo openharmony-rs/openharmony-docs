@@ -81,7 +81,7 @@ onAdLoadSuccess(ads: Array<Advertisement>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ads | Array & lt;Advertisement & gt; | 是 | 广告数据。 |
+| ads | Array &lt;Advertisement&gt; | 是 | 广告数据。 |
 
 **示例**
 

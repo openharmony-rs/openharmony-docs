@@ -147,7 +147,7 @@ function getRunningFormInfos(hostBundleName?: string): Promise<Array<formInfo.Ru
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;formInfo.RunningFormInfo & gt; & gt; | Promise对象。返回设备上正在运行的所有非临时卡片信息。 |
+| Promise &lt;Array &lt;formInfo.RunningFormInfo&gt;&gt; | Promise对象。返回设备上正在运行的所有非临时卡片信息。 |
 
 **错误码：**
 
@@ -207,7 +207,7 @@ function getRunningFormInfos(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;formInfo.RunningFormInfo & gt; & gt; | Promise对象。返回设备上正在运行的所有非临时卡片信息。 |
+| Promise &lt;Array &lt;formInfo.RunningFormInfo&gt;&gt; | Promise对象。返回设备上正在运行的所有非临时卡片信息。 |
 
 **错误码：**
 

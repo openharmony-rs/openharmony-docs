@@ -22,7 +22,7 @@ import { policy } from '@kit.NetworkKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getNetAccessPolicy(网络策略管理)](arkts-network-policy-getnetaccesspolicy-f.md) | 查询自身应用的联网策略（是否允许使用蜂窝、Wi-Fi网络上网），可在设备中“设置 & gt; 移动网络 & gt; 流量管理 & gt; 应用联网”中查看。使用Promise异步回调。 |
+| [getNetAccessPolicy(网络策略管理)](arkts-network-policy-getnetaccesspolicy-f.md) | 查询自身应用的联网策略（是否允许使用蜂窝、Wi-Fi网络上网），可在设备中“设置&gt; 移动网络&gt; 流量管理&gt; 应用联网”中查看。使用Promise异步回调。 |
 | [showAppNetPolicySettings(网络策略管理)](arkts-network-policy-showappnetpolicysettings-f.md) | 当需要设置当前应用能否使用Wi-Fi/蜂窝联网时，调用该接口可以打开当前应用的联网设置界面，以设置应用的联网权限。使用Promise异步回调。 |
 
 <!--Del-->

@@ -504,7 +504,7 @@ off(type: 'keySystemRequired', callback?: (eventInfo: EventInfo) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'keySystemRequired' | 是 | 监听事件类型，通过 [createMediaKeySystem](arkts-drm-drm-createmediakeysystem-f.md)成功创建MediaKeySystem实例 后可监听。 |
-| callback | (eventInfo: EventInfo) = & gt; void | 否 | 回调函数，返回事件信息。可选参数，不传时注销该事件类型的所有监听。 |
+| callback | (eventInfo: EventInfo) =&gt; void | 否 | 回调函数，返回事件信息。可选参数，不传时注销该事件类型的所有监听。 |
 
 **错误码：**
 
@@ -532,7 +532,7 @@ on(type: 'keySystemRequired', callback: (eventInfo: EventInfo) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'keySystemRequired' | 是 | 事件类型，通过 [createMediaKeySystem](arkts-drm-drm-createmediakeysystem-f.md)成功创建MediaKeySystem实例 后可监听，需要设备证书时触发该事件。 |
-| callback | (eventInfo: EventInfo) = & gt; void | 是 | 回调函数，返回事件信息。只要有该事件返回就证明需请求设备证书。 |
+| callback | (eventInfo: EventInfo) =&gt; void | 是 | 回调函数，返回事件信息。只要有该事件返回就证明需请求设备证书。 |
 
 **错误码：**
 
@@ -565,7 +565,7 @@ processKeySystemResponse(response: Uint8Array): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

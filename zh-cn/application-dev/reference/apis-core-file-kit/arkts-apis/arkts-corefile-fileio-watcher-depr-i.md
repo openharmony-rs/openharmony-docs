@@ -35,7 +35,7 @@ stop(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | return Promise |
+| Promise &lt;void&gt; | return Promise |
 
 **示例**
 

@@ -82,7 +82,7 @@ function getPointerSize(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回鼠标光标大小，范围为[1, 7]。 |
+| Promise &lt;number&gt; | Promise对象，返回鼠标光标大小，范围为[1, 7]。 |
 
 **错误码：**
 

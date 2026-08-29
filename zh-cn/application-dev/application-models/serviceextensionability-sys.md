@@ -128,9 +128,9 @@ export default class ServiceExtImpl extends IdlServiceExtStub {
 
 在DevEco Studio工程中手动新建一个ServiceExtensionAbility，具体步骤如下：
 
-1. 在工程Module对应的ets目录下，右键选择“New &gt; Directory”，新建一个目录并命名为ServiceExtAbility。
+1. 在工程Module对应的ets目录下，右键选择“New&gt; Directory”，新建一个目录并命名为ServiceExtAbility。
 
-2. 在ServiceExtAbility目录，右键选择“New &gt; ArkTS File”，新建一个文件并命名为ServiceExtAbility.ets。
+2. 在ServiceExtAbility目录，右键选择“New&gt; ArkTS File”，新建一个文件并命名为ServiceExtAbility.ets。
 
     ```txt
     ├── ets

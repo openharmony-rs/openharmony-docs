@@ -163,7 +163,7 @@ close(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以Promise形式返回，成功返回空。失败返回错误码，错误信息。 |
+| Promise &lt;void&gt; | 以Promise形式返回，成功返回空。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -476,7 +476,7 @@ getCipherSuite(): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | 以Promise形式返回通信双方支持的加密套件。失败返回错误码，错误信息。 |
+| Promise &lt;Array &lt;string&gt;&gt; | 以Promise形式返回通信双方支持的加密套件。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -559,7 +559,7 @@ getLocalAddress(): Promise<NetAddress>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;NetAddress & gt; | 以Promise形式返回获取本地socket地址的结果。 |
+| Promise &lt;NetAddress&gt; | 以Promise形式返回获取本地socket地址的结果。 |
 
 **错误码：**
 
@@ -874,7 +874,7 @@ getRemoteAddress(): Promise<NetAddress>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;NetAddress & gt; | 以Promise形式返回获取对端socket地址的结果。失败返回错误码，错误信息。 |
+| Promise &lt;NetAddress&gt; | 以Promise形式返回获取对端socket地址的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -1245,7 +1245,7 @@ getSignatureAlgorithms(): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | 以Promise形式返回获取到的双方支持的签名算法。 |
+| Promise &lt;Array &lt;string&gt;&gt; | 以Promise形式返回获取到的双方支持的签名算法。 |
 
 **错误码：**
 
@@ -1333,7 +1333,7 @@ getSocketFd(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回Socket的文件描述符。 |
+| Promise &lt;number&gt; | Promise对象，返回Socket的文件描述符。 |
 
 **错误码：**
 
@@ -2149,7 +2149,7 @@ send(data: string | ArrayBuffer): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以Promise形式返回，成功返回空，失败返回错误码，错误信息。 |
+| Promise &lt;void&gt; | 以Promise形式返回，成功返回空，失败返回错误码，错误信息。 |
 
 **错误码：**
 

@@ -34,7 +34,7 @@ function triggerAsync(agent: WantAgent, triggerInfo: TriggerInfo, context: Conte
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;CompleteData & gt; | Promise对象，返回主动激发WantAgent获得的数据。 |
+| Promise &lt;CompleteData&gt; | Promise对象，返回主动激发WantAgent获得的数据。 |
 
 **错误码：**
 

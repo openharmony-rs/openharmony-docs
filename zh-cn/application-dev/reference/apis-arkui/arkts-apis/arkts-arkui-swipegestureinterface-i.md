@@ -2,7 +2,7 @@
 
 用于触发快滑手势，滑动速度需大于速度阈值，默认最小速度为100vp/s。
 
-**继承/实现关系：** SwipeGestureInterface extends GestureInterface<SwipeGestureInterface>
+**继承/实现关系：** SwipeGestureInterface extends GestureInterface\<SwipeGestureInterface>
 
 **起始版本：** 8
 
@@ -85,7 +85,7 @@ Swipe手势识别成功时触发回调。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (event: GestureEvent) = & gt; void | 是 | 手势事件回调函数。 |
+| event | (event: GestureEvent) =&gt; void | 是 | 手势事件回调函数。 |
 
 **返回值：**
 

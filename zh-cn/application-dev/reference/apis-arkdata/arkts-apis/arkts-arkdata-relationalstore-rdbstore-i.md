@@ -36,7 +36,7 @@ attach(fullPath: string, attachName: string, waitTime?: number) : Promise<number
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回附加数据库的数量。 |
+| Promise &lt;number&gt; | Promise对象。返回附加数据库的数量。 |
 
 **错误码：**
 
@@ -105,7 +105,7 @@ attach(context: Context, config: StoreConfig, attachName: string, waitTime?: num
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回附加数据库的数量。 |
+| Promise &lt;number&gt; | Promise对象。返回附加数据库的数量。 |
 
 **错误码：**
 
@@ -220,7 +220,7 @@ backup(destName: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -278,7 +278,7 @@ batchInsert(table: string, values: Array<ValuesBucket>, callback: AsyncCallback<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | table | string | 是 | 指定的目标表名，不能为空字符串。 |
-| values | Array & lt;ValuesBucket & gt; | 是 | 表示要插入到表中的一组数据。 |
+| values | Array &lt;ValuesBucket&gt; | 是 | 表示要插入到表中的一组数据。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当批量插入成功，err为undefined，data为插入的数据个数；否则为错误对象。 |
 
 **错误码：**
@@ -370,13 +370,13 @@ batchInsert(table: string, values: Array<ValuesBucket>): Promise<number>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | table | string | 是 | 指定的目标表名，不能为空字符串。 |
-| values | Array & lt;ValuesBucket & gt; | 是 | 表示要插入到表中的一组数据。 |
+| values | Array &lt;ValuesBucket&gt; | 是 | 表示要插入到表中的一组数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回批量插入的数据个数。 |
+| Promise &lt;number&gt; | Promise对象。返回批量插入的数据个数。 |
 
 **错误码：**
 
@@ -530,7 +530,7 @@ batchInsertSync(table: string, values: Array<ValuesBucket>): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | table | string | 是 | 指定的目标表名，不能为空字符串。 |
-| values | Array & lt;ValuesBucket & gt; | 是 | 表示要插入到表中的一组数据。 |
+| values | Array &lt;ValuesBucket&gt; | 是 | 表示要插入到表中的一组数据。 |
 
 **返回值：**
 
@@ -674,14 +674,14 @@ batchInsertWithConflictResolution(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | table | string | 是 | 指定的目标表名，不能为空字符串。 |
-| values | Array & lt;ValuesBucket & gt; | 是 | 表示要插入到表中的一组数据。 |
+| values | Array &lt;ValuesBucket&gt; | 是 | 表示要插入到表中的一组数据。 |
 | conflict | ConflictResolution | 是 | 指定冲突解决模式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回批量插入的数据个数。 |
+| Promise &lt;number&gt; | Promise对象。返回批量插入的数据个数。 |
 
 **错误码：**
 
@@ -821,7 +821,7 @@ batchInsertWithConflictResolutionSync(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | table | string | 是 | 指定的目标表名，不能为空字符串。 |
-| values | Array & lt;ValuesBucket & gt; | 是 | 表示要插入到表中的一组数据。 |
+| values | Array &lt;ValuesBucket&gt; | 是 | 表示要插入到表中的一组数据。 |
 | conflict | ConflictResolution | 是 | 指定冲突解决模式。 |
 
 **返回值：**
@@ -965,7 +965,7 @@ batchInsertWithReturning(table: string, values: Array<ValuesBucket>, config: Ret
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | table | string | 是 | 要插入的目标表名。注意：正确的表名不应包含空格、逗号和星号，不能以点开头和结尾等，否则会抛出参数错误。 |
-| values | Array & lt;ValuesBucket & gt; | 是 | 要插入到表中的一组数据。注意：空数组、含有重复资产数据会抛出参数错误。 |
+| values | Array &lt;ValuesBucket&gt; | 是 | 要插入到表中的一组数据。注意：空数组、含有重复资产数据会抛出参数错误。 |
 | config | [ReturningConfig](arkts-arkdata-relationalstore-returningconfig-i.md) | 是 | 指定返回值的配置信息。 |
 | conflict | ConflictResolution | 否 | 指定冲突解决模式。默认为ON_CONFLICT_NONE。 |
 
@@ -973,7 +973,7 @@ batchInsertWithReturning(table: string, values: Array<ValuesBucket>, config: Ret
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Result & gt; | Promise对象。返回受影响的数据集。 |
+| Promise &lt;Result&gt; | Promise对象。返回受影响的数据集。 |
 
 **错误码：**
 
@@ -1055,7 +1055,7 @@ batchInsertWithReturningSync(table: string, values: Array<ValuesBucket>, config:
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | table | string | 是 | 要插入的目标表名。注意：正确的表名不应包含空格、逗号和星号，不能以点开头和结尾等，否则会抛出参数错误。 |
-| values | Array & lt;ValuesBucket & gt; | 是 | 表示要插入到表中的一组数据。注意：空数组、含有重复资产数据会抛出参数错误。 |
+| values | Array &lt;ValuesBucket&gt; | 是 | 表示要插入到表中的一组数据。注意：空数组、含有重复资产数据会抛出参数错误。 |
 | config | [ReturningConfig](arkts-arkdata-relationalstore-returningconfig-i.md) | 是 | 指定返回值的配置信息。 |
 | conflict | ConflictResolution | 否 | 指定冲突解决模式。默认为ON_CONFLICT_NONE。 |
 
@@ -1141,7 +1141,7 @@ beginTrans(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回事务ID。 |
+| Promise &lt;number&gt; | Promise对象，返回事务ID。 |
 
 **错误码：**
 
@@ -1391,7 +1391,7 @@ cleanDirtyData(table: string, cursor?: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1448,7 +1448,7 @@ close(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1538,7 +1538,7 @@ cloudSync(mode: SyncMode, progress: Callback<ProgressDetails>): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1640,7 +1640,7 @@ cloudSync(mode: SyncMode, tables: string[], progress: Callback<ProgressDetails>)
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1728,7 +1728,7 @@ cloudSyncEx(config: CloudSyncConfig, progress: Callback<ProgressDetails>): Promi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1839,7 +1839,7 @@ commit(txId : number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2030,7 +2030,7 @@ delete(predicates: RdbPredicates): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回受影响的行数量。 |
+| Promise &lt;number&gt; | Promise对象。返回受影响的行数量。 |
 
 **错误码：**
 
@@ -2207,7 +2207,7 @@ deleteWithReturning(predicates: RdbPredicates, config: ReturningConfig): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Result & gt; | Promise对象。返回受影响的数据集。 |
+| Promise &lt;Result&gt; | Promise对象。返回受影响的数据集。 |
 
 **错误码：**
 
@@ -2383,7 +2383,7 @@ detach(attachName: string, waitTime?: number) : Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回分离后剩余附加的数据库的数量。 |
+| Promise &lt;number&gt; | Promise对象。返回分离后剩余附加的数据库的数量。 |
 
 **错误码：**
 
@@ -2476,13 +2476,13 @@ execute(sql: string, args?: Array<ValueType>): Promise<ValueType>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sql | string | 是 | 指定要执行的SQL语句，不能为空字符串。 |
-| args | Array & lt;ValueType & gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
+| args | Array &lt;ValueType&gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ValueType & gt; | Promise对象，返回SQL执行后的结果。 |
+| Promise &lt;ValueType&gt; | Promise对象，返回SQL执行后的结果。 |
 
 **错误码：**
 
@@ -2603,13 +2603,13 @@ execute(sql: string, txId: number, args?: Array<ValueType>): Promise<ValueType>
 | --- | --- | --- | --- |
 | sql | string | 是 | 指定要执行的SQL语句，不能为空字符串。 |
 | txId | number | 是 | 通过[beginTrans](#begintrans)获取的事务ID，如果传0，该语句默认在单独事务内。 |
-| args | Array & lt;ValueType & gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
+| args | Array &lt;ValueType&gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ValueType & gt; | Promise对象，返回SQL执行后的结果。 |
+| Promise &lt;ValueType&gt; | Promise对象，返回SQL执行后的结果。 |
 
 **错误码：**
 
@@ -2738,7 +2738,7 @@ executeSql(sql: string, bindArgs: Array<ValueType>, callback: AsyncCallback<void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sql | string | 是 | 指定要执行的SQL语句，不能为空字符串。 |
-| bindArgs | Array & lt;ValueType & gt; | 是 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
+| bindArgs | Array &lt;ValueType&gt; | 是 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当执行SQL成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -2799,13 +2799,13 @@ executeSql(sql: string, bindArgs?: Array<ValueType>): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sql | string | 是 | 指定要执行的SQL语句，不能为空字符串。 |
-| bindArgs | Array & lt;ValueType & gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
+| bindArgs | Array &lt;ValueType&gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2865,7 +2865,7 @@ executeSync(sql: string, args?: Array<ValueType>): ValueType
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sql | string | 是 | 指定要执行的SQL语句，不能为空字符串。 |
-| args | Array & lt;ValueType & gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。该参数不填，或者填null或undefined，都认为是sql参数语句完整，默认值为空数组。 |
+| args | Array &lt;ValueType&gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。该参数不填，或者填null或undefined，都认为是sql参数语句完整，默认值为空数组。 |
 
 **返回值：**
 
@@ -3284,7 +3284,7 @@ insert(table: string, values: ValuesBucket): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回插入数据的行ID。 |
+| Promise &lt;number&gt; | Promise对象。返回插入数据的行ID。 |
 
 **错误码：**
 
@@ -3374,7 +3374,7 @@ insert(table: string, values: ValuesBucket, conflict: ConflictResolution): Promi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回插入数据的行ID。 |
+| Promise &lt;number&gt; | Promise对象。返回插入数据的行ID。 |
 
 **错误码：**
 
@@ -3625,7 +3625,7 @@ lockRow(predicates: RdbPredicates): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3770,7 +3770,7 @@ obtainDistributedTableName(device: string, table: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象。返回远程设备的分布式表名。 |
+| Promise &lt;string&gt; | Promise对象。返回远程设备的分布式表名。 |
 
 **错误码：**
 
@@ -3831,7 +3831,7 @@ off(event: 'dataChange', type: SubscribeType, observer: Callback<Array<string>>)
 | --- | --- | --- | --- |
 | event | 'dataChange' | 是 | 取值为'dataChange'，表示数据更改。 |
 | type | SubscribeType | 是 | 订阅类型。 |
-| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; | 是 | 指已注册的数据更改观察者。Array & lt;string & gt;为数据库中的数据发生改变的对端设备ID。 |
+| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; | 是 | 指已注册的数据更改观察者。Array &lt;string&gt;为数据库中的数据发生改变的对端设备ID。 |
 
 **错误码：**
 
@@ -3893,7 +3893,7 @@ off(
 | --- | --- | --- | --- |
 | event | 'dataChange' | 是 | 取值为'dataChange'，表示数据更改。 |
 | type | SubscribeType | 是 | 订阅类型。 |
-| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; \| [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;ChangeInfo&gt;&gt; | 否 | 回调函数。当type为 SUBSCRIBE_TYPE_REMOTE，observer类型需为Callback & lt;Array<string> & gt;，其中Array & lt;string & gt;为数据库中的数据发生改变的对端设备ID。当type为 SUBSCRIBE_TYPE_CLOUD，observer类型需为Callback & lt;Array<string> & gt;，其中Array & lt;string & gt;为数据库中的数据发生改变的云端账号。当type为 SUBSCRIBE_TYPE_CLOUD_DETAILS，observer类型需为Callback & lt;Array<ChangeInfo> & gt;，其中Array & lt;ChangeInfo & gt;为数据库端云同步过程的详情。 当type为SUBSCRIBE_TYPE_LOCAL_DETAILS，observer类型需为Callback & lt;Array<ChangeInfo> & gt;，其中Array & lt;ChangeInfo & gt;为本地数据库中的数据更 改的详情。 当observer没有传入时，表示取消当前type类型下所有数据变更的事件监听。 |
+| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; \| [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;ChangeInfo&gt;&gt; | 否 | 回调函数。当type为 SUBSCRIBE_TYPE_REMOTE，observer类型需为Callback &lt;Array\<string>&gt;，其中Array &lt;string&gt;为数据库中的数据发生改变的对端设备ID。当type为 SUBSCRIBE_TYPE_CLOUD，observer类型需为Callback &lt;Array\<string>&gt;，其中Array &lt;string&gt;为数据库中的数据发生改变的云端账号。当type为 SUBSCRIBE_TYPE_CLOUD_DETAILS，observer类型需为Callback &lt;Array\<ChangeInfo>&gt;，其中Array &lt;ChangeInfo&gt;为数据库端云同步过程的详情。 当type为SUBSCRIBE_TYPE_LOCAL_DETAILS，observer类型需为Callback &lt;Array\<ChangeInfo>&gt;，其中Array &lt;ChangeInfo&gt;为本地数据库中的数据更 改的详情。 当observer没有传入时，表示取消当前type类型下所有数据变更的事件监听。 |
 
 **错误码：**
 
@@ -4083,7 +4083,7 @@ on(event: 'dataChange', type: SubscribeType, observer: Callback<Array<string>>):
 | --- | --- | --- | --- |
 | event | 'dataChange' | 是 | 取值为'dataChange'，表示数据更改。 |
 | type | SubscribeType | 是 | 订阅类型。 |
-| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; | 是 | 指分布式数据库中数据更改事件的观察者。Array & lt;string & gt;为数据库中的数据发生改变的对端设备ID。 |
+| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; | 是 | 指分布式数据库中数据更改事件的观察者。Array &lt;string&gt;为数据库中的数据发生改变的对端设备ID。 |
 
 **错误码：**
 
@@ -4131,7 +4131,7 @@ on(event: 'dataChange', type: SubscribeType, observer: Callback<Array<string>> |
 | --- | --- | --- | --- |
 | event | 'dataChange' | 是 | 取值为'dataChange'，表示数据更改。 |
 | type | SubscribeType | 是 | 订阅类型。 |
-| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; \| [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;ChangeInfo&gt;&gt; | 是 | 回调函数。 当type为SUBSCRIBE_TYPE_REMOTE，observer类型需为Callback & lt;Array<string> & gt;，其中Array & lt;string & gt;为数据库中的数据发生改变的对端设备ID。 当type为SUBSCRIBE_TYPE_CLOUD，observer类型需为Callback & lt;Array<string> & gt;，其中Array & lt;string & gt;为数据库中的数据发生改变的云端账号。 当type为SUBSCRIBE_TYPE_CLOUD_DETAILS，observer类型需为Callback & lt;Array<ChangeInfo> & gt;，其中Array & lt;ChangeInfo & gt;为数据库端云同步过程的 详情。 当type为SUBSCRIBE_TYPE_LOCAL_DETAILS，observer类型需为Callback & lt;Array<ChangeInfo> & gt;，其中Array & lt;ChangeInfo & gt;为本地数据库中的数据更 改的详情。 |
+| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; \| [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;ChangeInfo&gt;&gt; | 是 | 回调函数。 当type为SUBSCRIBE_TYPE_REMOTE，observer类型需为Callback &lt;Array\<string>&gt;，其中Array &lt;string&gt;为数据库中的数据发生改变的对端设备ID。 当type为SUBSCRIBE_TYPE_CLOUD，observer类型需为Callback &lt;Array\<string>&gt;，其中Array &lt;string&gt;为数据库中的数据发生改变的云端账号。 当type为SUBSCRIBE_TYPE_CLOUD_DETAILS，observer类型需为Callback &lt;Array\<ChangeInfo>&gt;，其中Array &lt;ChangeInfo&gt;为数据库端云同步过程的 详情。 当type为SUBSCRIBE_TYPE_LOCAL_DETAILS，observer类型需为Callback &lt;Array\<ChangeInfo>&gt;，其中Array &lt;ChangeInfo&gt;为本地数据库中的数据更 改的详情。 |
 
 **错误码：**
 
@@ -4379,7 +4379,7 @@ query(predicates: RdbPredicates, columns: Array<string>, callback: AsyncCallback
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | predicates | RdbPredicates | 是 | RdbPredicates的实例对象指定的查询条件。 |
-| columns | Array & lt;string & gt; | 是 | 表示要查询的列。如果值为空，则查询应用于所有列。 |
+| columns | Array &lt;string&gt; | 是 | 表示要查询的列。如果值为空，则查询应用于所有列。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ResultSet&gt; | 是 | 回调函数。当查询成功，err为undefined，data为ResultSet对象；否则为错误对象。 |
 
 **错误码：**
@@ -4439,13 +4439,13 @@ query(predicates: RdbPredicates, columns?: Array<string>): Promise<ResultSet>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | predicates | RdbPredicates | 是 | RdbPredicates的实例对象指定的查询条件。 |
-| columns | Array & lt;string & gt; | 否 | 表示要查询的列。如果值为空，则查询应用于所有列。 |
+| columns | Array &lt;string&gt; | 否 | 表示要查询的列。如果值为空，则查询应用于所有列。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ResultSet & gt; | Promise对象。返回ResultSet对象。 |
+| Promise &lt;ResultSet&gt; | Promise对象。返回ResultSet对象。 |
 
 **错误码：**
 
@@ -4539,13 +4539,13 @@ queryByStep(sql: string, bindArgs?: Array<ValueType>): Promise<ResultSet>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sql | string | 是 | 指定要执行的SQL语句，不能为空字符串。 必须使用有效的SQL语句。否则在使用ResultSet时可能会抛出错误码。 |
-| bindArgs | Array & lt;ValueType & gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。默认值为空数组。 |
+| bindArgs | Array &lt;ValueType&gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。默认值为空数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ResultSet & gt; | Promise对象。返回ResultSet对象。 |
+| Promise &lt;ResultSet&gt; | Promise对象。返回ResultSet对象。 |
 
 **错误码：**
 
@@ -4601,13 +4601,13 @@ queryByStep(predicates: RdbPredicates, columns?: Array<string>): Promise<ResultS
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | predicates | RdbPredicates | 是 | RdbPredicates的实例对象指定的查询条件。 |
-| columns | Array & lt;string & gt; | 否 | 表示要查询的列。如果值为空，则查询应用于所有列。默认值为空数组。 |
+| columns | Array &lt;string&gt; | 否 | 表示要查询的列。如果值为空，则查询应用于所有列。默认值为空数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ResultSet & gt; | Promise对象。返回ResultSet对象。 |
+| Promise &lt;ResultSet&gt; | Promise对象。返回ResultSet对象。 |
 
 **错误码：**
 
@@ -4663,13 +4663,13 @@ queryLockedRow(predicates: RdbPredicates, columns?: Array<string>): Promise<Resu
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | predicates | RdbPredicates | 是 | RdbPredicates的实例对象指定的查询条件。 |
-| columns | Array & lt;string & gt; | 否 | 表示要查询的列。如果值为空，则查询应用于所有列。 |
+| columns | Array &lt;string&gt; | 否 | 表示要查询的列。如果值为空，则查询应用于所有列。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ResultSet & gt; | Promise对象。返回ResultSet对象。 |
+| Promise &lt;ResultSet&gt; | Promise对象。返回ResultSet对象。 |
 
 **错误码：**
 
@@ -4818,7 +4818,7 @@ querySql(sql: string, bindArgs: Array<ValueType>, callback: AsyncCallback<Result
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sql | string | 是 | 指定要执行的SQL语句，不能为空字符串。 |
-| bindArgs | Array & lt;ValueType & gt; | 是 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
+| bindArgs | Array &lt;ValueType&gt; | 是 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ResultSet&gt; | 是 | 回调函数。当查询成功，err为undefined，data为ResultSet对象；否则为错误对象。 |
 
 **错误码：**
@@ -4876,13 +4876,13 @@ querySql(sql: string, bindArgs?: Array<ValueType>): Promise<ResultSet>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sql | string | 是 | 指定要执行的SQL语句，不能为空字符串。 |
-| bindArgs | Array & lt;ValueType & gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
+| bindArgs | Array &lt;ValueType&gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ResultSet & gt; | Promise对象。返回ResultSet对象。 |
+| Promise &lt;ResultSet&gt; | Promise对象。返回ResultSet对象。 |
 
 **错误码：**
 
@@ -4950,7 +4950,7 @@ querySqlSync(sql: string, bindArgs?: Array<ValueType>): ResultSet
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sql | string | 是 | 指定要执行的SQL语句，不能为空字符串。 |
-| bindArgs | Array & lt;ValueType & gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
+| bindArgs | Array &lt;ValueType&gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
 
 **返回值：**
 
@@ -5013,7 +5013,7 @@ querySqlWithoutRowCount(sql: string, bindArgs?: Array<ValueType>): Promise<LiteR
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sql | string | 是 | 指定要执行的SQL语句，不能为空字符串。 |
-| bindArgs | Array & lt;ValueType & gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
+| bindArgs | Array &lt;ValueType&gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
 
 **返回值：**
 
@@ -5113,7 +5113,7 @@ querySqlWithoutRowCountSync(sql: string, bindArgs?: Array<ValueType>): LiteResul
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sql | string | 是 | 指定要执行的SQL语句，不能为空字符串。 |
-| bindArgs | Array & lt;ValueType & gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
+| bindArgs | Array &lt;ValueType&gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
 
 **返回值：**
 
@@ -5209,7 +5209,7 @@ querySync(predicates: RdbPredicates, columns?: Array<string>): ResultSet
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | predicates | RdbPredicates | 是 | RdbPredicates的实例对象指定的查询条件。 |
-| columns | Array & lt;string & gt; | 否 | 表示要查询的列。如果值为空，则查询应用于所有列。默认值为空。 |
+| columns | Array &lt;string&gt; | 否 | 表示要查询的列。如果值为空，则查询应用于所有列。默认值为空。 |
 
 **返回值：**
 
@@ -5307,7 +5307,7 @@ queryWithoutRowCount(predicates: RdbPredicates, columns?: Array<string>): Promis
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | predicates | RdbPredicates | 是 | RdbPredicates的实例对象指定的查询条件。 |
-| columns | Array & lt;string & gt; | 否 | 表示要查询的列。如果值为空，则查询该表的所有列。默认值为空。 |
+| columns | Array &lt;string&gt; | 否 | 表示要查询的列。如果值为空，则查询该表的所有列。默认值为空。 |
 
 **返回值：**
 
@@ -5410,7 +5410,7 @@ queryWithoutRowCountSync(predicates: RdbPredicates, columns?: Array<string>): Li
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | predicates | RdbPredicates | 是 | RdbPredicates的实例对象指定的查询条件。 |
-| columns | Array & lt;string & gt; | 否 | 表示要查询的列。如果值为空，则查询应用于所有列。默认值为空。 |
+| columns | Array &lt;string&gt; | 否 | 表示要查询的列。如果值为空，则查询应用于所有列。默认值为空。 |
 
 **返回值：**
 
@@ -5514,7 +5514,7 @@ rekey(cryptoParam?: CryptoParam): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -5703,7 +5703,7 @@ rekeyEx(cryptoParam: CryptoParam): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -5752,7 +5752,7 @@ remoteQuery(
 | device | string | 是 | 指定的远程设备ID，不能为空字符串。 |
 | table | string | 是 | 指定的目标表名，不能为空字符串。 |
 | predicates | RdbPredicates | 是 | RdbPredicates的实例对象，指定查询的条件。 |
-| columns | Array & lt;string & gt; | 是 | 表示要查询的列。如果值为空，则查询应用于所有列。 |
+| columns | Array &lt;string&gt; | 是 | 表示要查询的列。如果值为空，则查询应用于所有列。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ResultSet&gt; | 是 | 回调函数。当查询成功，err为undefined，data为ResultSet对象；否则为错误对象。 |
 
 **错误码：**
@@ -5840,13 +5840,13 @@ remoteQuery(device: string, table: string, predicates: RdbPredicates, columns: A
 | device | string | 是 | 指定的远程设备ID，不能为空字符串。 |
 | table | string | 是 | 指定的目标表名，不能为空字符串。 |
 | predicates | RdbPredicates | 是 | RdbPredicates的实例对象，指定查询的条件。 |
-| columns | Array & lt;string & gt; | 是 | 表示要查询的列。如果值为空，则查询应用于所有列。 |
+| columns | Array &lt;string&gt; | 是 | 表示要查询的列。如果值为空，则查询应用于所有列。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ResultSet & gt; | Promise对象。返回ResultSet对象。 |
+| Promise &lt;ResultSet&gt; | Promise对象。返回ResultSet对象。 |
 
 **错误码：**
 
@@ -5985,7 +5985,7 @@ restore(srcName: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -6114,7 +6114,7 @@ rollback(txId : number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -6182,7 +6182,7 @@ setDistributedTables(tables: Array<string>, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tables | Array & lt;string & gt; | 是 | 要设置的分布式数据库的表名。 |
+| tables | Array &lt;string&gt; | 是 | 要设置的分布式数据库的表名。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置分布式列表成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -6226,13 +6226,13 @@ setDistributedTables(tables: Array<string>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tables | Array & lt;string & gt; | 是 | 要设置的分布式数据库的表名。 |
+| tables | Array &lt;string&gt; | 是 | 要设置的分布式数据库的表名。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -6275,7 +6275,7 @@ setDistributedTables(tables: Array<string>, type: DistributedType, callback: Asy
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tables | Array & lt;string & gt; | 是 | 要设置的分布式数据库的表名。 |
+| tables | Array &lt;string&gt; | 是 | 要设置的分布式数据库的表名。 |
 | type | [DistributedType](arkts-arkdata-relationalstore-distributedtype-e.md) | 是 | 表的分布式类型。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置分布式列表成功，err为undefined，否则为错误对象。 |
 
@@ -6326,7 +6326,7 @@ setDistributedTables(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tables | Array & lt;string & gt; | 是 | 要设置的分布式数据库的表名。 |
+| tables | Array &lt;string&gt; | 是 | 要设置的分布式数据库的表名。 |
 | type | [DistributedType](arkts-arkdata-relationalstore-distributedtype-e.md) | 是 | 表的分布式类型。 |
 | config | [DistributedConfig](arkts-arkdata-relationalstore-distributedconfig-i.md) | 是 | 表的分布式配置信息。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置分布式列表成功，err为undefined，否则为错误对象。 |
@@ -6375,7 +6375,7 @@ setDistributedTables(tables: Array<string>, type?: DistributedType, config?: Dis
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tables | Array & lt;string & gt; | 是 | 要设置的分布式数据库的表名。 |
+| tables | Array &lt;string&gt; | 是 | 要设置的分布式数据库的表名。 |
 | type | [DistributedType](arkts-arkdata-relationalstore-distributedtype-e.md) | 否 | 表的分布式类型。默认值是relationalStore.DistributedType.DISTRIBUTED_DEVICE。 |
 | config | [DistributedConfig](arkts-arkdata-relationalstore-distributedconfig-i.md) | 否 | 表的分布式配置信息。不传入时默认autoSync为false，需要调用 [cloudSync](#cloudsync) 接口触发端云同步。 |
 
@@ -6383,7 +6383,7 @@ setDistributedTables(tables: Array<string>, type?: DistributedType, config?: Dis
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -6433,7 +6433,7 @@ setLocale(locale: string) : Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -6483,7 +6483,7 @@ stopCloudSync(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -6599,7 +6599,7 @@ sync(mode: SyncMode, predicates: RdbPredicates): Promise<Array<[string, number]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;[string, number] & gt; & gt; | Promise对象。返回同步结果。string：设备ID；number：每个设备同步状态，0表示成功，1表示失败。 |
+| Promise &lt;Array &lt;[string, number]&gt;&gt; | Promise对象。返回同步结果。string：设备ID；number：每个设备同步状态，0表示成功，1表示失败。 |
 
 **错误码：**
 
@@ -6672,7 +6672,7 @@ syncEx(mode: SyncMode, predicates: RdbPredicates): Promise<Array<SyncResult>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;SyncResult & gt; & gt; | Promise对象。返回SyncResult数组。 |
+| Promise &lt;Array &lt;SyncResult&gt;&gt; | Promise对象。返回SyncResult数组。 |
 
 **错误码：**
 
@@ -6744,7 +6744,7 @@ unlockRow(predicates: RdbPredicates): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -6988,7 +6988,7 @@ update(values: ValuesBucket, predicates: RdbPredicates): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回受影响的行数。 |
+| Promise &lt;number&gt; | Promise对象。返回受影响的行数。 |
 
 **错误码：**
 
@@ -7080,7 +7080,7 @@ update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolu
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回受影响的行数。 |
+| Promise &lt;number&gt; | Promise对象。返回受影响的行数。 |
 
 **错误码：**
 
@@ -7296,7 +7296,7 @@ updateWithReturning(values: ValuesBucket, predicates: RdbPredicates, config: Ret
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Result & gt; | Promise对象。返回受影响的数据集。 |
+| Promise &lt;Result&gt; | Promise对象。返回受影响的数据集。 |
 
 **错误码：**
 

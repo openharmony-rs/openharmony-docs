@@ -41,7 +41,7 @@ function getSystemFontList(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 系统的字体名列表。 |
+| Array &lt;string&gt; | 系统的字体名列表。 |
 
 **示例**
 

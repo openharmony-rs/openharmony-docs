@@ -52,7 +52,7 @@ off(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'inputStart' | 是 | 设置监听类型，固定取值为'inputStart'。 |
-| callback | (kbController: KeyboardController, textInputClient: TextInputClient) = & gt; void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | (kbController: KeyboardController, textInputClient: TextInputClient) =&gt; void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例**
 
@@ -90,7 +90,7 @@ off(type: 'keyboardShow' | 'keyboardHide', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'keyboardShow' \| 'keyboardHide' | 是 | 要取消监听的输入法软键盘事件类型。   -'keyboardShow'表示显示输入法软键盘。   -'keyboardHide'表示隐藏输入法软键盘。 |
-| callback | () = & gt; void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | () =&gt; void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例**
 
@@ -125,7 +125,7 @@ off(type: 'keyboardShow' | 'keyboardHide', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'keyboardShow' \| 'keyboardHide' | 是 | 要取消监听的输入法软键盘事件类型。   -'keyboardShow'表示显示输入法软键盘。   -'keyboardHide'表示隐藏输入法软键盘。 |
-| callback | () = & gt; void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | () =&gt; void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例**
 
@@ -160,7 +160,7 @@ on(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'inputStart' | 是 | 设置监听类型，固定取值为'inputStart'。 |
-| callback | (kbController: KeyboardController, textInputClient: TextInputClient) = & gt; void | 是 | 回调函数，返回订阅输入法的KeyboardController和TextInputClient实例。 |
+| callback | (kbController: KeyboardController, textInputClient: TextInputClient) =&gt; void | 是 | 回调函数，返回订阅输入法的KeyboardController和TextInputClient实例。 |
 
 **示例**
 
@@ -198,7 +198,7 @@ on(type: 'keyboardShow' | 'keyboardHide', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'keyboardShow' \| 'keyboardHide' | 是 | 设置监听类型。   -'keyboardShow'表示显示输入法软键盘。   -'keyboardHide'表示隐藏输 入法软键盘。 |
-| callback | () = & gt; void | 是 | 回调函数。 |
+| callback | () =&gt; void | 是 | 回调函数。 |
 
 **示例**
 
@@ -237,7 +237,7 @@ on(type: 'keyboardShow' | 'keyboardHide', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'keyboardShow' \| 'keyboardHide' | 是 | 设置监听类型。   -'keyboardShow'表示显示输入法软键盘。   -'keyboardHide'表示隐藏输 入法软键盘。 |
-| callback | () = & gt; void | 是 | 回调函数。 |
+| callback | () =&gt; void | 是 | 回调函数。 |
 
 **示例**
 

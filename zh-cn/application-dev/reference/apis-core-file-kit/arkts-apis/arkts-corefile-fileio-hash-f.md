@@ -32,7 +32,7 @@ declare function hash(path: string, algorithm: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象。返回文件的哈希值。表示为十六进制数字串，所有字母均大写。 |
+| Promise &lt;string&gt; | Promise对象。返回文件的哈希值。表示为十六进制数字串，所有字母均大写。 |
 
 **示例**
 

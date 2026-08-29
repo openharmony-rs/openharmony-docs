@@ -31,7 +31,7 @@ function getSupportedPkids(slotId: number) : Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回TLV(Tag-Length-Value)格式的，手机支持的公钥ID信息。 |
+| Promise &lt;string&gt; | Promise对象，返回TLV(Tag-Length-Value)格式的，手机支持的公钥ID信息。 |
 
 **错误码：**
 

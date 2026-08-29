@@ -47,7 +47,7 @@ function getStateByUrl(url: string): Array<RouterState>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;RouterState & gt; | 匹配指定url的页面状态信息数组，每个元素包含页面索引、名称、路径和参数。 |
+| Array &lt;RouterState&gt; | 匹配指定url的页面状态信息数组，每个元素包含页面索引、名称、路径和参数。 |
 
 **示例**
 

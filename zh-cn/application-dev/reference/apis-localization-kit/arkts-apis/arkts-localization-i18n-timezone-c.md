@@ -71,7 +71,7 @@ static getAvailableIDs(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 系统支持的时区ID列表。 |
+| Array &lt;string&gt; | 系统支持的时区ID列表。 |
 
 **示例**
 
@@ -100,7 +100,7 @@ static getAvailableZoneCityIDs(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 系统支持的时区城市ID列表。 |
+| Array &lt;string&gt; | 系统支持的时区城市ID列表。 |
 
 **示例**
 

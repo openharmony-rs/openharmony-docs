@@ -32,7 +32,7 @@ function getUserNonStopApps(admin: Want): Array<common.ApplicationInstance>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;common.ApplicationInstance & gt; | 不可关停应用名单数组。 |
+| Array &lt;common.ApplicationInstance&gt; | 不可关停应用名单数组。 |
 
 **错误码：**
 
@@ -89,7 +89,7 @@ function getUserNonStopApps(admin: Want | null): Array<common.ApplicationInstanc
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;common.ApplicationInstance & gt; | 不可关停应用名单数组。 |
+| Array &lt;common.ApplicationInstance&gt; | 不可关停应用名单数组。 |
 
 **错误码：**
 

@@ -3537,7 +3537,7 @@ moveTo(targetParent: FrameNode, index?: number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | targetParent | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 目标父节点。targetParent节点不可以为声明式创建的节点，即不可修改的FrameNode。若目标父节点不符合规格，则抛出异常信息。 |
-| index | number | 否 | 子节点序列号。当前FrameNode将被添加到目标FrameNode对应序列号的子节点之前，若目标FrameNode有n个节点，index取值范围为[0, n-1]。 & lt;br/ & gt;若参数无效或不指定，则添加到目标FrameNode的最后。默认值：-1 |
+| index | number | 否 | 子节点序列号。当前FrameNode将被添加到目标FrameNode对应序列号的子节点之前，若目标FrameNode有n个节点，index取值范围为[0, n-1]。 &lt;br/&gt;若参数无效或不指定，则添加到目标FrameNode的最后。默认值：-1 |
 
 **错误码：**
 

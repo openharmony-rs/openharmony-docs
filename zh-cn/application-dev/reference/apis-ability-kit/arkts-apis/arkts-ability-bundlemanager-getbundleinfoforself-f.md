@@ -30,7 +30,7 @@ function getBundleInfoForSelf(bundleFlags: number): Promise<BundleInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;BundleInfo & gt; | Promise对象，返回当前应用的BundleInfo。 |
+| Promise &lt;BundleInfo&gt; | Promise对象，返回当前应用的BundleInfo。 |
 
 **错误码：**
 

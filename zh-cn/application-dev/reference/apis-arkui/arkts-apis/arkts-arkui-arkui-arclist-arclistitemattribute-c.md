@@ -2,7 +2,7 @@
 
 除支持通用属性外，还支持以下属性：
 
-**继承/实现关系：** ArcListItemAttribute extends CommonMethod<ArcListItemAttribute>
+**继承/实现关系：** ArcListItemAttribute extends CommonMethod\<ArcListItemAttribute>
 
 **起始版本：** 18
 

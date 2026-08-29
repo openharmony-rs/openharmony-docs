@@ -29,7 +29,7 @@ Obtains the supported ISO range.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;number & gt; | ISO range. The value range is [50, 100, ..., 6400]. The actual value depends on the bottom-layer capability. If the operation fails, an error code defined in [CameraErrorCode]{ |
+| Array &lt;number&gt; | ISO range. The value range is [50, 100, ..., 6400]. The actual value depends on the bottom-layer capability. If the operation fails, an error code defined in [CameraErrorCode]{ |
 
 **错误码：**
 

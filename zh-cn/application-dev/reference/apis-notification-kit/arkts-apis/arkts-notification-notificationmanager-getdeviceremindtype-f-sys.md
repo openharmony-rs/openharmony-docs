@@ -80,7 +80,7 @@ function getDeviceRemindType(): Promise<DeviceRemindType>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;DeviceRemindType & gt; | Promise方式返回获取通知提醒方式的结果。 |
+| Promise &lt;DeviceRemindType&gt; | Promise方式返回获取通知提醒方式的结果。 |
 
 **错误码：**
 

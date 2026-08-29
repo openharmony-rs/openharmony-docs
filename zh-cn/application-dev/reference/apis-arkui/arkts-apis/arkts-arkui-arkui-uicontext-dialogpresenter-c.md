@@ -41,7 +41,7 @@ dismiss(target: number | ComponentContent<Object>): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 不会返回任何值的Promise。 |
+| Promise &lt;void&gt; | 不会返回任何值的Promise。 |
 
 **错误码：**
 
@@ -154,7 +154,7 @@ update(content: ComponentContent<Object>, options?: dialog.DialogBaseOptions): P
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 不会返回任何值的Promise。 |
+| Promise &lt;void&gt; | 不会返回任何值的Promise。 |
 
 **错误码：**
 

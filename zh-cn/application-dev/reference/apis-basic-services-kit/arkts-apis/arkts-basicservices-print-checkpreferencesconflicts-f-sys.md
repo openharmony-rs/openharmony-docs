@@ -36,7 +36,7 @@ function checkPreferencesConflicts(printerId: string, changedType: string, prefe
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string[] & gt; | Promise that resolves with the conflicting field names. |
+| Promise &lt;string[]&gt; | Promise that resolves with the conflicting field names. |
 
 **错误码：**
 

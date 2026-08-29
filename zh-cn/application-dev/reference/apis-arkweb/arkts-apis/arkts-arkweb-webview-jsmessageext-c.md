@@ -29,7 +29,7 @@ getArray(): Array<string | number | boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string \ | number \| boolean & gt; | 返回runJavaScriptExt接口脚本执行后得到的数组类型的数据。 |
+| Array &lt;string \ | number \| boolean&gt; | 返回runJavaScriptExt接口脚本执行后得到的数组类型的数据。 |
 
 **错误码：**
 
@@ -105,7 +105,7 @@ getErrorDescription(): string | null
 
 | 类型 | 说明 |
 | --- | --- |
-| string \| null | 若JavaScript脚本执行过程中发生异常，或返回值为object类型，系统会将异常信息或object对象格式化为"Not support type: & lt;{exception \ | object} & gt;"字符串返回，该字符串长度不超过2048个字符，超长部分将被截断；若object对象中包含callback类型的成员，则序列化时将自动忽略该成员；其余情况，接口均返回null。 |
+| string \| null | 若JavaScript脚本执行过程中发生异常，或返回值为object类型，系统会将异常信息或object对象格式化为"Not support type: &lt;{exception \ | object}&gt;"字符串返回，该字符串长度不超过2048个字符，超长部分将被截断；若object对象中包含callback类型的成员，则序列化时将自动忽略该成员；其余情况，接口均返回null。 |
 
 ## getNumber
 

@@ -101,7 +101,7 @@ execute(task: Task): Promise<Object>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Object & gt; | Promise对象，返回任务执行的结果。 |
+| Promise &lt;Object&gt; | Promise对象，返回任务执行的结果。 |
 
 **错误码：**
 

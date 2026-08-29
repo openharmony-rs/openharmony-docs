@@ -36,7 +36,7 @@ getAdvances(range: Range): Array<common2D.Point>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;common2D.Point & gt; | 返回该排版单元中每个字形相对于水平方向的字形宽度数组。其中， [common2D.Point]{ |
+| Array &lt;common2D.Point&gt; | 返回该排版单元中每个字形相对于水平方向的字形宽度数组。其中， [common2D.Point]{ |
 
 **示例**
 
@@ -121,7 +121,7 @@ getGlyphs(): Array<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;number & gt; | 该排版单元中每个字符对应的字形序号。 |
+| Array &lt;number&gt; | 该排版单元中每个字符对应的字形序号。 |
 
 **示例**
 
@@ -153,7 +153,7 @@ getGlyphs(range: Range): Array<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;number & gt; | 该排版单元中每个字符对应的字形序号。 |
+| Array &lt;number&gt; | 该排版单元中每个字符对应的字形序号。 |
 
 **示例**
 
@@ -241,7 +241,7 @@ getOffsets(): Array<common2D.Point>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;common2D.Point & gt; | 该排版单元中每个字形相对于其索引的偏移量。 |
+| Array &lt;common2D.Point&gt; | 该排版单元中每个字形相对于其索引的偏移量。 |
 
 **示例**
 
@@ -267,7 +267,7 @@ getPositions(): Array<common2D.Point>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;common2D.Point & gt; | 该排版单元中每个字形相对于每行的字形位置。 |
+| Array &lt;common2D.Point&gt; | 该排版单元中每个字形相对于每行的字形位置。 |
 
 **示例**
 
@@ -299,7 +299,7 @@ getPositions(range: Range): Array<common2D.Point>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;common2D.Point & gt; | 该排版单元中每个字形相对于每行的字形位置。 |
+| Array &lt;common2D.Point&gt; | 该排版单元中每个字形相对于每行的字形位置。 |
 
 **示例**
 
@@ -353,7 +353,7 @@ getStringIndices(range?: Range): Array<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;number & gt; | 返回每个字符的索引。 |
+| Array &lt;number&gt; | 返回每个字符的索引。 |
 
 **示例**
 

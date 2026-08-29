@@ -76,7 +76,7 @@ function formatPhoneNumber(phoneNumber: string, options?: NumberFormatOptions): 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | 以Promise形式异步返回格式化电话号码的结果。 |
+| Promise &lt;string&gt; | 以Promise形式异步返回格式化电话号码的结果。 |
 
 **错误码：**
 

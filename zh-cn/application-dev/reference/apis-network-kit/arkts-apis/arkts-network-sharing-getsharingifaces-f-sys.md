@@ -79,7 +79,7 @@ function getSharingIfaces(state: SharingIfaceState): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | 以 Promise 形式返回指定状态网卡名称列表。 |
+| Promise &lt;Array &lt;string&gt;&gt; | 以 Promise 形式返回指定状态网卡名称列表。 |
 
 **错误码：**
 

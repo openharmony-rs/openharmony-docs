@@ -36,7 +36,7 @@ function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: n
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回是否有符合条件的通话记录，true代表有符合条件的，false代表没有。 |
+| Promise &lt;boolean&gt; | Promise对象，返回是否有符合条件的通话记录，true代表有符合条件的，false代表没有。 |
 
 **错误码：**
 
@@ -97,7 +97,7 @@ function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: n
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回是否有符合条件的通话记录，true代表有符合条件的，false代表没有。 |
+| Promise &lt;boolean&gt; | Promise对象，返回是否有符合条件的通话记录，true代表有符合条件的，false代表没有。 |
 
 **错误码：**
 

@@ -110,7 +110,7 @@ onAcceptWantAsync(want: Want): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回一个string作为待启动的UIAbility实例的唯一标识。如果系统中已经有该标识的UIAbility实例存在，则复用已有实例，否则创建新的实例。 |
+| Promise &lt;string&gt; | Promise对象，返回一个string作为待启动的UIAbility实例的唯一标识。如果系统中已经有该标识的UIAbility实例存在，则复用已有实例，否则创建新的实例。 |
 
 **示例**
 
@@ -363,7 +363,7 @@ onNewProcessRequestAsync(want: Want): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回一个由开发者自定义的进程字符串标识。如果该应用已有相同标识的进程存在，则UIAbility<!--Del-->或UIExtensionAbility <!--DelEnd-->在此进程中运行，否则创建新的进程。 |
+| Promise &lt;string&gt; | Promise对象，返回一个由开发者自定义的进程字符串标识。如果该应用已有相同标识的进程存在，则UIAbility<!--Del-->或UIExtensionAbility <!--DelEnd-->在此进程中运行，否则创建新的进程。 |
 
 **示例**
 
@@ -452,7 +452,7 @@ onPrepareTerminationAsync(): Promise<AbilityConstant.PrepareTermination>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;AbilityConstant.PrepareTermination & gt; | Promise used to return the user's choice. |
+| Promise &lt;AbilityConstant.PrepareTermination&gt; | Promise used to return the user's choice. |
 
 **示例**
 

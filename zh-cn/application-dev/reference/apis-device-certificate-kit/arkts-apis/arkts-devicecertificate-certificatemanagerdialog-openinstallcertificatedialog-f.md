@@ -34,7 +34,7 @@ function openInstallCertificateDialog(context: common.Context, certType: Certifi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象。表示返回证书uri的结果，最大长度为256字节。 |
+| Promise &lt;string&gt; | Promise对象。表示返回证书uri的结果，最大长度为256字节。 |
 
 **错误码：**
 

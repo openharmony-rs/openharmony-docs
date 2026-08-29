@@ -37,7 +37,7 @@ clearUpApplicationData(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -86,7 +86,7 @@ clearUpApplicationData(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback & lt;void & gt; | 是 | Callback used to return the result. If the application data is cleared up, & lt;code & gt;error & lt;/code & gt; is & lt;code & gt;undefined & lt;/code & gt;; otherwise, & lt;code & gt;error & lt;/code & gt; is an error object. |
+| callback | AsyncCallback &lt;void&gt; | 是 | Callback used to return the result. If the application data is cleared up, &lt;code&gt;error &lt;/code&gt; is &lt;code&gt;undefined &lt;/code&gt;; otherwise, &lt;code&gt;error &lt;/code&gt; is an error object. |
 
 **错误码：**
 
@@ -133,7 +133,7 @@ getAllRunningInstanceKeys(): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回应用的所有多实例的唯一实例标识。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回应用的所有多实例的唯一实例标识。 |
 
 **错误码：**
 
@@ -185,7 +185,7 @@ getAllWindowStages(): Promise<Array<window.WindowStage>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;window.WindowStage & gt; & gt; | Promise used to return all WindowStage objects in the current application process. |
+| Promise &lt;Array &lt;window.WindowStage&gt;&gt; | Promise used to return all WindowStage objects in the current application process. |
 
 **示例**
 
@@ -334,7 +334,7 @@ getRunningProcessInformation(): Promise<Array<ProcessInformation>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;ProcessInformation & gt; & gt; | Promise对象，返回接口运行结果及有关运行进程的信息，可进行错误处理或其他自定义处理。 |
+| Promise &lt;Array &lt;ProcessInformation&gt;&gt; | Promise对象，返回接口运行结果及有关运行进程的信息，可进行错误处理或其他自定义处理。 |
 
 **错误码：**
 
@@ -384,7 +384,7 @@ getRunningProcessInformation(callback: AsyncCallback<Array<ProcessInformation>>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback & lt;Array & lt;ProcessInformation & gt; & gt; | 是 | 回调函数，返回有关运行进程的信息。 |
+| callback | AsyncCallback &lt;Array &lt;ProcessInformation&gt;&gt; | 是 | 回调函数，返回有关运行进程的信息。 |
 
 **错误码：**
 
@@ -439,7 +439,7 @@ killAllProcesses(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -493,7 +493,7 @@ killAllProcesses(clearPageStack: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -543,7 +543,7 @@ killAllProcesses(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback & lt;void & gt; | 是 | 回调函数。当终止应用所在的进程成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback &lt;void&gt; | 是 | 回调函数。当终止应用所在的进程成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -593,7 +593,7 @@ off(type: 'abilityLifecycle', callbackId: number, callback: AsyncCallback<void>)
 | --- | --- | --- | --- |
 | type | 'abilityLifecycle' | 是 | 此类型表示应用内UIAbility的生命周期，固定为'abilityLifecycle'。 |
 | callbackId | number | 是 | 通过 [ApplicationContext.on('abilityLifecycle')](#onabilitylifecycle) 接口注册监听应用内UIAbility的生命周期时返回的ID。 |
-| callback | AsyncCallback & lt;void & gt; | 是 | 回调方法。当取消监听应用内生命周期成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback &lt;void&gt; | 是 | 回调方法。当取消监听应用内生命周期成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -657,7 +657,7 @@ off(type: 'abilityLifecycle', callbackId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -710,7 +710,7 @@ off(type: 'environment', callbackId: number, callback: AsyncCallback<void>): voi
 | --- | --- | --- | --- |
 | type | 'environment' | 是 | 此类型表示系统环境变化，如系统深浅色发生变化，固定为'environment'。 |
 | callbackId | number | 是 | 通过 [ApplicationContext.on('environment')](#onenvironment) 接口注册监听系统环境变化时返回的ID。 |
-| callback | AsyncCallback & lt;void & gt; | 是 | 回调方法。当取消对系统环境变化的监听成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback &lt;void&gt; | 是 | 回调方法。当取消对系统环境变化的监听成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -773,7 +773,7 @@ off(type: 'environment', callbackId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1654,7 +1654,7 @@ setSupportedProcessCache(isSupported : boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isSupported | boolean | 是 | Whether process cache is supported. The value & lt;code & gt;true & lt;/code & gt; means that process cache is supported, and & lt;code & gt;false & lt;/code & gt; means the opposite. |
+| isSupported | boolean | 是 | Whether process cache is supported. The value &lt;code&gt;true &lt;/code&gt; means that process cache is supported, and &lt;code&gt;false &lt;/code&gt; means the opposite. |
 
 **错误码：**
 

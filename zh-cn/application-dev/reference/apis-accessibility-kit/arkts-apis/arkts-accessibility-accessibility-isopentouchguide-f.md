@@ -65,7 +65,7 @@ function isOpenTouchGuide(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示触摸浏览模式已开启；返回false表示触摸浏览模式未开启。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示触摸浏览模式已开启；返回false表示触摸浏览模式未开启。 |
 
 **示例**
 

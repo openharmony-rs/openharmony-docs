@@ -118,7 +118,7 @@ generateSecret(params: KdfSpec): Promise<DataBlob>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;DataBlob & gt; | Promise对象，返回派生的密钥。 |
+| Promise &lt;DataBlob&gt; | Promise对象，返回派生的密钥。 |
 
 **错误码：**
 

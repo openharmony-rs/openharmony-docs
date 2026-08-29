@@ -75,7 +75,7 @@ function sendCommand(command: LocationCommand): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回true表示命令发送成功；返回false表示命令发送失败。 |
+| Promise &lt;boolean&gt; | Promise对象，返回true表示命令发送成功；返回false表示命令发送失败。 |
 
 **示例**
 

@@ -164,7 +164,7 @@ generateSecret(priKey: PriKey, pubKey: PubKey): Promise<DataBlob>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;DataBlob & gt; | Promise对象，返回密钥协商的共享密钥。 |
+| Promise &lt;DataBlob&gt; | Promise对象，返回密钥协商的共享密钥。 |
 
 **错误码：**
 

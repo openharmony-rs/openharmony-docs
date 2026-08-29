@@ -2,7 +2,7 @@
 
 除支持通用属性外，还支持以下属性：除支持通用事件外，还支持以下事件：@extends CommonMethod [since 8 - 10] @extends CommonMethod&lt;DatePickerAttribute&gt; [since 11]
 
-**继承/实现关系：** DatePickerAttribute extends CommonMethod<DatePickerAttribute>
+**继承/实现关系：** DatePickerAttribute extends CommonMethod\<DatePickerAttribute>
 
 **起始版本：** 8
 
@@ -193,7 +193,7 @@ onChange(callback: (value: DatePickerResult) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (value: DatePickerResult) = & gt; void | 是 | 返回选中的时间，包含年、月、日字段。 |
+| callback | (value: DatePickerResult) =&gt; void | 是 | 返回选中的时间，包含年、月、日字段。 |
 
 ## onDateChange
 
@@ -215,7 +215,7 @@ onDateChange(callback: Callback<Date>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback & lt;Date & gt; | 是 | 返回选中的时间，年、月、日为选中的日期，时、分取决于当前系统时间的时、分，秒恒为00。 适用于需要在用户确认日期选择后获取选中日期、更新界面或执行业务逻辑的场景。<br>**起始版本：** 18 |
+| callback | Callback &lt;Date&gt; | 是 | 返回选中的时间，年、月、日为选中的日期，时、分取决于当前系统时间的时、分，秒恒为00。 适用于需要在用户确认日期选择后获取选中日期、更新界面或执行业务逻辑的场景。<br>**起始版本：** 18 |
 
 ## onDateChange
 

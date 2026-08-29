@@ -74,7 +74,7 @@ setBadgeNumber 设置角标个数。
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回当前应用未删除通知数。 |
+| Promise &lt;number&gt; | Promise对象，返回当前应用未删除通知数。 |
 
 **错误码：**
 

@@ -64,7 +64,7 @@ function isDistributedEnabled(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise方式返回设备是否支持分布式通知的结果。 |
+| Promise &lt;boolean&gt; | Promise方式返回设备是否支持分布式通知的结果。 |
 
 **示例**
 

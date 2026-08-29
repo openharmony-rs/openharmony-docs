@@ -26,7 +26,7 @@ function isPriorityEnabled(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回包含通知优先级总开关使能状态的Promise对象。 |
+| Promise &lt;boolean&gt; | Promise对象，返回包含通知优先级总开关使能状态的Promise对象。 |
 
 **错误码：**
 

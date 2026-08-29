@@ -150,9 +150,9 @@ colorGradient(colors: Array<Color>, positions: Array<common2D.Point>, strengths:
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| colors | Array & lt;Color & gt; | 是 | 颜色数组，用于实现多颜色渐变。 数组长度范围0到12，每个颜色值取值范围需大于等于0。数组长度为0或大于12， 或colors、positions和strengths的数组长度不一致，则无颜色渐变效果。 |
-| positions | Array & lt;common2D.Point & gt; | 是 | 位置数组，颜色对应的位置。 数组长度范围为0到12。数组长度为0或大于12，或colors、positions和strengths的数组长度不一致，则无颜色渐变效果。 |
-| strengths | Array & lt;number & gt; | 是 | 强度数组，表示颜色对应的强度。 数组长度范围为0到12，每一个强度值需大于等于0。数组长度为0或大于12，或colors、positions和strengths的数组长度不一致时，则无颜色渐变效果。 |
+| colors | Array &lt;Color&gt; | 是 | 颜色数组，用于实现多颜色渐变。 数组长度范围0到12，每个颜色值取值范围需大于等于0。数组长度为0或大于12， 或colors、positions和strengths的数组长度不一致，则无颜色渐变效果。 |
+| positions | Array &lt;common2D.Point&gt; | 是 | 位置数组，颜色对应的位置。 数组长度范围为0到12。数组长度为0或大于12，或colors、positions和strengths的数组长度不一致，则无颜色渐变效果。 |
+| strengths | Array &lt;number&gt; | 是 | 强度数组，表示颜色对应的强度。 数组长度范围为0到12，每一个强度值需大于等于0。数组长度为0或大于12，或colors、positions和strengths的数组长度不一致时，则无颜色渐变效果。 |
 | alphaMask | [Mask](arkts-arkgraphics2d-uieffect-mask-c-sys.md) | 否 | 遮罩alpha，颜色对应的alpha遮罩。可通过Mask类的创建方法 （如createRippleMask、createRadialGradientMask等）创建Mask实例。当需要控制颜色渐变效果的 透明度分布（如局部透明或动态透明效果）时传入此参数。不设置时，颜色渐变效果的透明度 完全由colors参数决定。 |
 
 **返回值：**

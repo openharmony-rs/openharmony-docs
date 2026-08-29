@@ -101,7 +101,7 @@ function getProfileByAbility(moduleName: string, abilityName: string, metadataNa
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回Array & lt;string & gt;。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回Array &lt;string&gt;。 |
 
 **错误码：**
 

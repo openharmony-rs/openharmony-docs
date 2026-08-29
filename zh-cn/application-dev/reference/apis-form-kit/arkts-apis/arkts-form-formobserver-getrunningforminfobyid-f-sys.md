@@ -34,7 +34,7 @@ function getRunningFormInfoById(formId: string): Promise<formInfo.RunningFormInf
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;formInfo.RunningFormInfo & gt; | Promise对象。返回已添加的卡片信息。 |
+| Promise &lt;formInfo.RunningFormInfo&gt; | Promise对象。返回已添加的卡片信息。 |
 
 **错误码：**
 
@@ -95,7 +95,7 @@ function getRunningFormInfoById(formId: string, isUnusedIncluded: boolean): Prom
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;formInfo.RunningFormInfo & gt; | Promise对象。返回已添加的卡片信息。 |
+| Promise &lt;formInfo.RunningFormInfo&gt; | Promise对象。返回已添加的卡片信息。 |
 
 **错误码：**
 

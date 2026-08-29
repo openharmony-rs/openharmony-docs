@@ -31,7 +31,7 @@ function cancelCallUpgrade(callId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以Promise形式异步返回升级过程中取消视频升级结果。 |
+| Promise &lt;void&gt; | 以Promise形式异步返回升级过程中取消视频升级结果。 |
 
 **错误码：**
 

@@ -2,7 +2,7 @@
 
 Defines SymbolGlyph Modifier
 
-**继承/实现关系：** SymbolGlyphModifier extends [SymbolGlyphAttribute](../arkts-components/arkts-arkui-symbolglyph-attribute.md) implements AttributeModifier<SymbolGlyphAttribute>
+**继承/实现关系：** SymbolGlyphModifier extends [SymbolGlyphAttribute](../arkts-components/arkts-arkui-symbolglyph-attribute.md) implements AttributeModifier\<SymbolGlyphAttribute>
 
 **起始版本：** 12
 

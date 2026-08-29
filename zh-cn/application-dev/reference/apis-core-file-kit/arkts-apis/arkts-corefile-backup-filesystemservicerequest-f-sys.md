@@ -34,7 +34,7 @@ function fileSystemServiceRequest(config: FileSystemRequestConfig): Promise<numb
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回碎片清理的错误码。 |
+| Promise &lt;number&gt; | Promise对象，返回碎片清理的错误码。 |
 
 **错误码：**
 

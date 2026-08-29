@@ -25,7 +25,7 @@ function isAudioMonoEnabled(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示单声道音频模式已开启；返回false表示单声道音频模式已关闭。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示单声道音频模式已开启；返回false表示单声道音频模式已关闭。 |
 
 **示例**
 

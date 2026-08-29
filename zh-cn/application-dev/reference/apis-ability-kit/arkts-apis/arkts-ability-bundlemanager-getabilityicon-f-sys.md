@@ -119,7 +119,7 @@ function getAbilityIcon(bundleName: string, moduleName: string, abilityName: str
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;image.PixelMap & gt; | Promise used to return PixelMap. |
+| Promise &lt;image.PixelMap&gt; | Promise used to return PixelMap. |
 
 **错误码：**
 

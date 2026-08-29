@@ -26,8 +26,8 @@ function moveMissionsToForeground(missionIds: Array<number>, callback: AsyncCall
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| missionIds | Array & lt;number & gt; | 是 | 任务ID数组。 |
-| callback | AsyncCallback & lt;void & gt; | 是 | 执行结果回调函数。 |
+| missionIds | Array &lt;number&gt; | 是 | 任务ID数组。 |
+| callback | AsyncCallback &lt;void&gt; | 是 | 执行结果回调函数。 |
 
 **错误码：**
 
@@ -97,9 +97,9 @@ function moveMissionsToForeground(missionIds: Array<number>, topMission: number,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| missionIds | Array & lt;number & gt; | 是 | 任务ID数组。 |
+| missionIds | Array &lt;number&gt; | 是 | 任务ID数组。 |
 | topMission | number | 是 | 待移动到最顶层的任务ID |
-| callback | AsyncCallback & lt;void & gt; | 是 | 执行结果回调函数。 |
+| callback | AsyncCallback &lt;void&gt; | 是 | 执行结果回调函数。 |
 
 **错误码：**
 
@@ -169,14 +169,14 @@ function moveMissionsToForeground(missionIds: Array<number>, topMission?: number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| missionIds | Array & lt;number & gt; | 是 | 任务ID数组。 |
+| missionIds | Array &lt;number&gt; | 是 | 任务ID数组。 |
 | topMission | number | 否 | 待移动到最顶层的任务ID。默认值为-1，表示将默认任务移动到最顶层。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

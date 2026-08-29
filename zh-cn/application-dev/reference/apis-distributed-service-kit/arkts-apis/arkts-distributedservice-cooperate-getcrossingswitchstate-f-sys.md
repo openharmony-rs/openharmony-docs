@@ -86,7 +86,7 @@ function getCrossingSwitchState(networkId: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回true表示目标设备键鼠穿越的开关开启，返回false表示开关未开启。 |
+| Promise &lt;boolean&gt; | Promise对象，返回true表示目标设备键鼠穿越的开关开启，返回false表示开关未开启。 |
 
 **错误码：**
 

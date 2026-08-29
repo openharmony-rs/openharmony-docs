@@ -2,7 +2,7 @@
 
 除支持[通用属性](arkts-arkui-commonmethod-c.md)外，还支持以下属性。除支持[通用事件](arkts-arkui-commonmethod-c.md)外，还支持以下事件。
 
-**继承/实现关系：** TextClockAttribute extends CommonMethod<TextClockAttribute>
+**继承/实现关系：** TextClockAttribute extends CommonMethod\<TextClockAttribute>
 
 **起始版本：** 8
 
@@ -125,7 +125,7 @@ fontFeature(value: string)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string | 是 | 文字特性效果，用于设置文字的OpenType特性。格式为：normal \|  & lt;feature-tag-value & gt;，其中 & lt;feature-tag-value & gt;格式为： & lt;string & gt; [ & lt;integer & gt; \ | on \| off ]。可设置多个特性，中间用','隔开。例如，使用等宽时钟数字的格式为：'"ss01" on'。 |
+| value | string | 是 | 文字特性效果，用于设置文字的OpenType特性。格式为：normal \|  &lt;feature-tag-value&gt;，其中 &lt;feature-tag-value&gt;格式为： &lt;string&gt; [ &lt;integer&gt; \ | on \| off ]。可设置多个特性，中间用','隔开。例如，使用等宽时钟数字的格式为：'"ss01" on'。 |
 
 ## fontSize
 
@@ -236,7 +236,7 @@ onDateChange(event: (value: number) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (value: number) = & gt; void | 是 | Unix time stamp, which is the number of seconds that have elapsed since the Unix epoch. |
+| event | (value: number) =&gt; void | 是 | Unix time stamp, which is the number of seconds that have elapsed since the Unix epoch. |
 
 ## textShadow
 

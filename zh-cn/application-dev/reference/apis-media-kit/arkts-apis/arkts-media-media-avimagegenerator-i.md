@@ -109,7 +109,7 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;image.PixelMap & gt; | Promise对象，返回视频缩略图对象。 |
+| Promise &lt;image.PixelMap&gt; | Promise对象，返回视频缩略图对象。 |
 
 **错误码：**
 
@@ -212,7 +212,7 @@ fetchScaledFrameByTime(timeUs: number, queryMode: AVImageQueryOptions, outputSiz
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;image.PixelMap & gt; | Promise对象。返回视频缩略图对象。 |
+| Promise &lt;image.PixelMap&gt; | Promise对象。返回视频缩略图对象。 |
 
 **错误码：**
 
@@ -391,7 +391,7 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 异步方式释放资源release方法的Promise返回值。 |
+| Promise &lt;void&gt; | 异步方式释放资源release方法的Promise返回值。 |
 
 **错误码：**
 

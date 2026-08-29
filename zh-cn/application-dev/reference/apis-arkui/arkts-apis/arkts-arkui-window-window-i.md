@@ -30,7 +30,7 @@ clearWindowMask(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -329,7 +329,7 @@ destroy(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -404,7 +404,7 @@ destroyWindow(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -444,7 +444,7 @@ disableLandscapeMultiWindow(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -500,13 +500,13 @@ enableDrag(enable: boolean): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enable | boolean | 是 | 是否允许拖拽。true表示允许，false表示不允许。 & lt;/br & gt; |
+| enable | boolean | 是 | 是否允许拖拽。true表示允许，false表示不允许。 &lt;/br&gt; |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -552,7 +552,7 @@ enableLandscapeMultiWindow(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -721,7 +721,7 @@ getColorSpace(): Promise<ColorSpace>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ColorSpace & gt; | Promise对象。返回当前色域模式。 |
+| Promise &lt;ColorSpace&gt; | Promise对象。返回当前色域模式。 |
 
 **示例**
 
@@ -1738,7 +1738,7 @@ getWindowStateSnapshot(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise used to return the window state snapshot. |
+| Promise &lt;string&gt; | Promise used to return the window state snapshot. |
 
 **错误码：**
 
@@ -2207,7 +2207,7 @@ isReceiveDragEventEnabled(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 当前窗口是否能接收拖拽事件的状态。 & lt;/br & gt;true表示能接收拖拽事件的状态，false表示不能接收拖拽事件的状态。 |
+| boolean | 当前窗口是否能接收拖拽事件的状态。 &lt;/br&gt;true表示能接收拖拽事件的状态，false表示不能接收拖拽事件的状态。 |
 
 **错误码：**
 
@@ -2248,7 +2248,7 @@ isSeparationTouchEnabled(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 当前窗口是否支持事件分离。 & lt;/br & gt;true表示支持窗口事件分离，false表示不支持窗口事件分离。 |
+| boolean | 当前窗口是否支持事件分离。 &lt;/br&gt;true表示支持窗口事件分离，false表示不支持窗口事件分离。 |
 
 **错误码：**
 
@@ -2336,7 +2336,7 @@ isShowing(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示当前窗口已显示，返回false表示当前窗口未显示。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示当前窗口已显示，返回false表示当前窗口未显示。 |
 
 **示例**
 
@@ -2376,7 +2376,7 @@ isSupportWideGamut(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示当前窗口支持广色域模式，返回false表示当前窗口不支持广色域模式。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示当前窗口支持广色域模式，返回false表示当前窗口不支持广色域模式。 |
 
 **示例**
 
@@ -2606,7 +2606,7 @@ isWindowSupportWideGamut(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示当前窗口支持广色域模式，返回false表示当前窗口不支持广色域模式。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示当前窗口支持广色域模式，返回false表示当前窗口不支持广色域模式。 |
 
 **错误码：**
 
@@ -2813,7 +2813,7 @@ loadContent(path: string, storage: LocalStorage): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -2938,7 +2938,7 @@ loadContent(path: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -3202,7 +3202,7 @@ loadContentByName(name: string, storage?: LocalStorage): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -3307,7 +3307,7 @@ maximize(presentation?: MaximizePresentation): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -3375,7 +3375,7 @@ maximize(presentation?: MaximizePresentation, acrossDisplay?: boolean): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3439,7 +3439,7 @@ maximizeWithOptions(maximizeOptions?: MaximizeOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -3555,7 +3555,7 @@ minimize(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -3609,7 +3609,7 @@ moveTo(x: number, y: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -3708,7 +3708,7 @@ moveWindowTo(x: number, y: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -3829,7 +3829,7 @@ moveWindowToAsync(x: number, y: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -3891,7 +3891,7 @@ moveWindowToAsync(x: number, y: number, moveConfiguration?: MoveConfiguration): 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -3957,7 +3957,7 @@ moveWindowToGlobal(x: number, y: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -4020,7 +4020,7 @@ moveWindowToGlobal(x: number, y: number, moveConfiguration?: MoveConfiguration):
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -4086,7 +4086,7 @@ moveWindowToGlobalDisplay(x: number, y: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -4135,7 +4135,7 @@ off(type: 'rotationChange',
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'rotationChange' | 是 | 监听事件，固定为'rotationChange'，即窗口旋转变化事件。 |
-| callback | [RotationChangeCallback](arkts-arkui-window-rotationchangecallback-t.md)&lt;[RotationChangeInfo](arkts-arkui-window-rotationchangeinfo-i.md), [RotationChangeResult](arkts-arkui-window-rotationchangeresult-i.md) \| void & gt; | 否 | 回调函数。如果传入参数，则关闭该监 听。如果未传入参数，则关闭该窗口的所有监听。 |
+| callback | [RotationChangeCallback](arkts-arkui-window-rotationchangecallback-t.md)&lt;[RotationChangeInfo](arkts-arkui-window-rotationchangeinfo-i.md), [RotationChangeResult](arkts-arkui-window-rotationchangeresult-i.md) \| void&gt; | 否 | 回调函数。如果传入参数，则关闭该监 听。如果未传入参数，则关闭该窗口的所有监听。 |
 
 **错误码：**
 
@@ -4804,7 +4804,7 @@ off(type: 'windowWillClose', callback?: Callback<void, Promise<boolean>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'windowWillClose' | 是 | 监听事件，固定为'windowWillClose'，即窗口关闭事件。 |
-| callback | [Callback](arkts-arkui-window-callback-i.md)&lt;void, Promise&lt;boolean&gt;&gt; | 否 | 回调函数。当点击窗口系统提供的右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑需要有 Promise & lt;boolean & gt;类型的返回值。在返回的Promise函数里，执行resolve(true) 方法表示不关闭当前窗口，执行resolve(false) 方法或者reject方法均表示关闭当前窗口。 |
+| callback | [Callback](arkts-arkui-window-callback-i.md)&lt;void, Promise&lt;boolean&gt;&gt; | 否 | 回调函数。当点击窗口系统提供的右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑需要有 Promise &lt;boolean&gt;类型的返回值。在返回的Promise函数里，执行resolve(true) 方法表示不关闭当前窗口，执行resolve(false) 方法或者reject方法均表示关闭当前窗口。 |
 
 **错误码：**
 
@@ -4978,7 +4978,7 @@ on(type: 'rotationChange', callback: RotationChangeCallback<RotationChangeInfo, 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'rotationChange' | 是 | 监听事件，固定为'rotationChange'，即窗口旋转变化事件。 |
-| callback | [RotationChangeCallback](arkts-arkui-window-rotationchangecallback-t.md)&lt;[RotationChangeInfo](arkts-arkui-window-rotationchangeinfo-i.md), [RotationChangeResult](arkts-arkui-window-rotationchangeresult-i.md) \| void & gt; | 是 | 回调函数。返回窗口旋转信息 [RotationChangeInfo](arkts-arkui-window-rotationchangeinfo-i.md)，应用返回当前窗口变化结果 [RotationChangeResult](arkts-arkui-window-rotationchangeresult-i.md)。 |
+| callback | [RotationChangeCallback](arkts-arkui-window-rotationchangecallback-t.md)&lt;[RotationChangeInfo](arkts-arkui-window-rotationchangeinfo-i.md), [RotationChangeResult](arkts-arkui-window-rotationchangeresult-i.md) \| void&gt; | 是 | 回调函数。返回窗口旋转信息 [RotationChangeInfo](arkts-arkui-window-rotationchangeinfo-i.md)，应用返回当前窗口变化结果 [RotationChangeResult](arkts-arkui-window-rotationchangeresult-i.md)。 |
 
 **错误码：**
 
@@ -5672,7 +5672,7 @@ on(type: 'windowWillClose', callback: Callback<void, Promise<boolean>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'windowWillClose' | 是 | 监听事件，固定为'windowWillClose'，即窗口关闭事件。 |
-| callback | [Callback](arkts-arkui-window-callback-i.md)&lt;void, Promise&lt;boolean&gt;&gt; | 是 | 回调函数。当点击窗口系统提供的右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑需要有 Promise & lt;boolean & gt;类型的返回值。在返回的Promise函数里，执行resolve(true) 方法表示不关闭当前窗口，执行resolve(false) 方法或者reject方法均表示关闭当前窗口。 |
+| callback | [Callback](arkts-arkui-window-callback-i.md)&lt;void, Promise&lt;boolean&gt;&gt; | 是 | 回调函数。当点击窗口系统提供的右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑需要有 Promise &lt;boolean&gt;类型的返回值。在返回的Promise函数里，执行resolve(true) 方法表示不关闭当前窗口，执行resolve(false) 方法或者reject方法均表示关闭当前窗口。 |
 
 **错误码：**
 
@@ -5843,7 +5843,7 @@ raiseToAppTop(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -5902,7 +5902,7 @@ recover(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -5967,7 +5967,7 @@ Restores the main window from full-screen, maximized, or split-screen mode to a 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -6092,7 +6092,7 @@ resetAspectRatio(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -6163,7 +6163,7 @@ resetSize(width: number, height: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -6251,7 +6251,7 @@ resize(width: number, height: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -6361,7 +6361,7 @@ resizeAsync(width: number, height: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -6411,7 +6411,7 @@ restore(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -6471,13 +6471,13 @@ restoreMainWindow(wantParameters?: Record<string, Object>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| wantParameters | Record & lt;string, Object & gt; | 否 | Want parameters. Custom want parameter delivered when restoring the main window. Want parameters are used for UIAbility onNewWant. |
+| wantParameters | Record &lt;string, Object&gt; | 否 | Want parameters. Custom want parameter delivered when restoring the main window. Want parameters are used for UIAbility onNewWant. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -6702,7 +6702,7 @@ setAspectRatio(ratio: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -6775,7 +6775,7 @@ setBackgroundColor(color: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -6866,7 +6866,7 @@ setBrightness(brightness: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -6958,7 +6958,7 @@ setColorSpace(colorSpace: ColorSpace): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -7052,7 +7052,7 @@ setContentAspectRatio(ratio: number, isPersistent?: boolean, needUpdateRect?: bo
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -7170,13 +7170,13 @@ setDialogBackGestureEnabled(enabled: boolean): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | 是否响应手势返回事件。true表示响应手势返回事件，触发onBackPress回调；false表示不响应手势返回事件，不触发onBackPress回调。 & lt;/br & gt; |
+| enabled | boolean | 是 | 是否响应手势返回事件。true表示响应手势返回事件，触发onBackPress回调；false表示不响应手势返回事件，不触发onBackPress回调。 &lt;/br&gt; |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -7313,7 +7313,7 @@ setDimBehind(dimBehindValue: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -7424,7 +7424,7 @@ setExclusivelyHighlighted(exclusivelyHighlighted: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -7474,13 +7474,13 @@ setFloatNavigationAvoidAreaEnabled(enabled: boolean): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | 是否支持获取三键导航类型的避让区域。true表示支持，false表示不支持。 & lt;/br & gt; |
+| enabled | boolean | 是 | 是否支持获取三键导航类型的避让区域。true表示支持，false表示不支持。 &lt;/br&gt; |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -7532,7 +7532,7 @@ setFocusable(isFocusable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -7617,7 +7617,7 @@ setFollowParentMultiScreenPolicy(enabled: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -7674,7 +7674,7 @@ setFollowParentWindowLayoutEnabled(enabled: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -7817,7 +7817,7 @@ setFullScreen(isFullScreen: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -7875,7 +7875,7 @@ setGestureBackEnabled(enabled: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -7943,7 +7943,7 @@ setImmersiveModeEnabledState(enabled: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | 是否开启沉浸式布局。true表示开启，false表示关闭。 & lt;/br & gt; |
+| enabled | boolean | 是 | 是否开启沉浸式布局。true表示开启，false表示关闭。 &lt;/br&gt; |
 
 **错误码：**
 
@@ -7996,7 +7996,7 @@ setKeepScreenOn(isKeepScreenOn: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -8150,7 +8150,7 @@ setLayoutFullScreen(isLayoutFullScreen: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -8214,7 +8214,7 @@ setOutsideTouchable(touchable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -8295,7 +8295,7 @@ setParentWindow(windowId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -8351,7 +8351,7 @@ setPreferredOrientation(orientation: Orientation): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -8564,7 +8564,7 @@ setPrivacyMode(isPrivacyMode: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -8647,7 +8647,7 @@ setRaiseByClickEnabled(enable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -8719,7 +8719,7 @@ setReceiveDragEventEnabled(enabled: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -8777,7 +8777,7 @@ setRelativePositionToParentWindowEnabled(enabled: boolean, anchor?: WindowAnchor
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -8893,7 +8893,7 @@ setResizeByDragEnabled(enable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -8950,7 +8950,7 @@ setSeparationTouchEnabled(enabled: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -9004,7 +9004,7 @@ setSpecificSystemBarEnabled(name: SpecificSystemBar, enable: boolean, enableAnim
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -9075,7 +9075,7 @@ setStatusBarColor(color: ColorMetrics): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -9144,7 +9144,7 @@ setSubWindowModal(isModal: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -9217,7 +9217,7 @@ setSubWindowModal(isModal: boolean, modalityType: ModalityType): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -9289,7 +9289,7 @@ setSubWindowZLevel(zLevel: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -9359,7 +9359,7 @@ setSystemAvoidAreaEnabled(enabled: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -9447,7 +9447,7 @@ setSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncCallbac
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| names | Array & lt;'status' \ | 'navigation' & gt; | 是 | 设置窗口全屏模式时状态栏和<!--RP15-->三键导航栏<!--RP15End-->是否显示。例如，需全部显示，该参 数设置为['status','navigation']；设置为[]，则不显示。 |
+| names | Array &lt;'status' \ | 'navigation'&gt; | 是 | 设置窗口全屏模式时状态栏和<!--RP15-->三键导航栏<!--RP15End-->是否显示。例如，需全部显示，该参 数设置为['status','navigation']；设置为[]，则不显示。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **示例**
@@ -9511,13 +9511,13 @@ setSystemBarEnable(names: Array<'status' | 'navigation'>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| names | Array & lt;'status' \ | 'navigation' & gt; | 是 | 设置窗口全屏模式时状态栏和<!--RP15-->三键导航栏<!--RP15End-->是否显示。例如，需全部显示，该参 数设置为['status','navigation']；设置为[]，则不显示。 |
+| names | Array &lt;'status' \ | 'navigation'&gt; | 是 | 设置窗口全屏模式时状态栏和<!--RP15-->三键导航栏<!--RP15End-->是否显示。例如，需全部显示，该参 数设置为['status','navigation']；设置为[]，则不显示。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -9653,7 +9653,7 @@ setSystemBarProperties(systemBarProperties: SystemBarProperties): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -9711,14 +9711,14 @@ setTitleAndDockHoverShown(isTitleHoverShown?: boolean, isDockHoverShown?: boolea
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isTitleHoverShown | boolean | 否 | 是否显示窗口标题栏。true表示显示窗口标题栏；false表示不显示窗口标题栏。默认值是true。 & lt;/br & gt; |
-| isDockHoverShown | boolean | 否 | 是否显示dock栏。true表示显示dock栏；false表示不显示dock栏。默认值是true。 & lt;/br & gt; |
+| isTitleHoverShown | boolean | 否 | 是否显示窗口标题栏。true表示显示窗口标题栏；false表示不显示窗口标题栏。默认值是true。 &lt;/br&gt; |
+| isDockHoverShown | boolean | 否 | 是否显示dock栏。true表示显示dock栏；false表示不显示dock栏。默认值是true。 &lt;/br&gt; |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -9797,7 +9797,7 @@ setTouchable(isTouchable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -9879,13 +9879,13 @@ setTouchableAreas(rects: Array<Rect>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rects | Array & lt;Rect & gt; | 是 | 窗口可触摸区域。可触摸区域最大个数不能超过10个，且范围不能超出窗口区域。 |
+| rects | Array &lt;Rect&gt; | 是 | 窗口可触摸区域。可触摸区域最大个数不能超过10个，且范围不能超出窗口区域。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value.<br>**适用版本：** 26.0.0+ |
+| Promise &lt;void&gt; | Promise that returns no value.<br>**适用版本：** 26.0.0+ |
 
 **错误码：**
 
@@ -9989,7 +9989,7 @@ setUIContent(path: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -10092,7 +10092,7 @@ setWindowBrightness(brightness: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -10241,7 +10241,7 @@ setWindowColorSpace(colorSpace:ColorSpace): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -10480,7 +10480,7 @@ setWindowCornerRadius(cornerRadius: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -10664,7 +10664,7 @@ setWindowFocusable(isFocusable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -10765,7 +10765,7 @@ setWindowGrayScale(grayScale: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -10827,7 +10827,7 @@ setWindowKeepScreenOn(isKeepScreenOn: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -11004,7 +11004,7 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -11207,13 +11207,13 @@ setWindowMask(windowMask: Array<Array<number>>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| windowMask | Array & lt;Array & lt;number & gt; & gt; | 是 | 异形窗口的掩码，该参数仅支持宽高为窗口宽高、取值为整数0和整数1的二维数组输入，整数0代表所在像素透明，整数1代表所在像素不透明，宽高不符合 的二维数组或二维数组取值不为整数0和整数1的二维数组为非法参数。 |
+| windowMask | Array &lt;Array &lt;number&gt;&gt; | 是 | 异形窗口的掩码，该参数仅支持宽高为窗口宽高、取值为整数0和整数1的二维数组输入，整数0代表所在像素透明，整数1代表所在像素不透明，宽高不符合 的二维数组或二维数组取值不为整数0和整数1的二维数组为非法参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -11276,7 +11276,7 @@ setWindowMaskWithAlpha(windowMask: Uint8Array, maskWidth: number, maskHeight: nu
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 不会返回任何值的Promise。 |
+| Promise &lt;void&gt; | 不会返回任何值的Promise。 |
 
 **错误码：**
 
@@ -11337,7 +11337,7 @@ setWindowPrivacyMode(isPrivacyMode: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -11438,7 +11438,7 @@ setWindowShadowEnabled(enable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -11556,7 +11556,7 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncC
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| names | Array & lt;'status' \ | 'navigation' & gt; | 是 | 设置窗口全屏模式时状态栏和<!--RP15-->三键导航栏<!--RP15End-->是否显示。例如，需全部显示，该参 数设置为['status','navigation']；设置为[]，则不显示。 |
+| names | Array &lt;'status' \ | 'navigation'&gt; | 是 | 设置窗口全屏模式时状态栏和<!--RP15-->三键导航栏<!--RP15End-->是否显示。例如，需全部显示，该参 数设置为['status','navigation']；设置为[]，则不显示。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
@@ -11624,13 +11624,13 @@ setWindowSystemBarEnable(names: Array<'status'|'navigation'>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| names | Array & lt;'status' \ | 'navigation' & gt; | 是 | The set of system bar |
+| names | Array &lt;'status' \ | 'navigation'&gt; | 是 | The set of system bar |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -11785,7 +11785,7 @@ setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -11861,7 +11861,7 @@ setWindowTitle(titleName: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -12032,7 +12032,7 @@ setWindowTopmost(isWindowTopmost: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -12125,7 +12125,7 @@ setWindowTouchable(isTouchable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -12229,7 +12229,7 @@ setWindowTransitionAnimation(transitionType: WindowTransitionType, animation: Tr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -12350,7 +12350,7 @@ show(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -12473,7 +12473,7 @@ showWindow(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -12562,7 +12562,7 @@ showWindow(options: ShowWindowOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -12686,7 +12686,7 @@ snapshot(): Promise<image.PixelMap>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;image.PixelMap & gt; | Promise used to return the window screenshot. |
+| Promise &lt;image.PixelMap&gt; | Promise used to return the window screenshot. |
 
 **错误码：**
 
@@ -12727,7 +12727,7 @@ snapshotIgnorePrivacy(): Promise<image.PixelMap>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;image.PixelMap & gt; | Promise used to return the window screenshot. |
+| Promise &lt;image.PixelMap&gt; | Promise used to return the window screenshot. |
 
 **错误码：**
 
@@ -12811,7 +12811,7 @@ startMoving(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -12899,7 +12899,7 @@ startMoving(offsetX: number, offsetY: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -12977,7 +12977,7 @@ stopMoving(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

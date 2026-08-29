@@ -59,7 +59,7 @@ dumpHeapWaitTimeMs?: number
 exclusionList?: Array<string>
 ```
 
-过滤不想监测的对象类名。作用于Window、CustomComponent和Ability组件，不会影响其他组件类型的过滤。存在混淆问题时无法进行过滤，只在开发态生效。配置项冲突优先级：ID列表 &gt; 白名单。默认为空数组。
+过滤不想监测的对象类名。作用于Window、CustomComponent和Ability组件，不会影响其他组件类型的过滤。存在混淆问题时无法进行过滤，只在开发态生效。配置项冲突优先级：ID列表&gt; 白名单。默认为空数组。
 
 **类型：** Array&lt;string&gt;
 

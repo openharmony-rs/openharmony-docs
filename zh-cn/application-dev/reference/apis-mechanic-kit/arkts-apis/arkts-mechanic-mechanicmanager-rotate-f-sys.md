@@ -31,7 +31,7 @@ function rotate(mechId: number, angles: RotationAngles, duration: number): Promi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Result & gt; | Promise that return the execution result. |
+| Promise &lt;Result&gt; | Promise that return the execution result. |
 
 **错误码：**
 

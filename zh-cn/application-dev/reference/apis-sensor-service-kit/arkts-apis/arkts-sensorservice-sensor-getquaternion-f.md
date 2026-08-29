@@ -21,7 +21,7 @@ function getQuaternion(rotationVector: Array<number>, callback: AsyncCallback<Ar
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rotationVector | Array & lt;number & gt; | 是 | 旋转矢量。 |
+| rotationVector | Array &lt;number&gt; | 是 | 旋转矢量。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;number&gt;&gt; | 是 | 回调函数，异步返回归一化四元数。 |
 
 **错误码：**
@@ -72,13 +72,13 @@ function getQuaternion(rotationVector: Array<number>): Promise<Array<number>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rotationVector | Array & lt;number & gt; | 是 | 旋转矢量。 |
+| rotationVector | Array &lt;number&gt; | 是 | 旋转矢量。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;number & gt; & gt; | Promise对象，使用异步方式返回归一化四元数。 |
+| Promise &lt;Array &lt;number&gt;&gt; | Promise对象，使用异步方式返回归一化四元数。 |
 
 **错误码：**
 

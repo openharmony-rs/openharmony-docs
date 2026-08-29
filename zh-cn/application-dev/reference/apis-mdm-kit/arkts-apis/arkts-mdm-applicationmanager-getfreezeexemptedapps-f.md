@@ -32,7 +32,7 @@ function getFreezeExemptedApps(admin: Want): Array<common.ApplicationInstance>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;common.ApplicationInstance & gt; | 后台防冻结应用名单数组。 |
+| Array &lt;common.ApplicationInstance&gt; | 后台防冻结应用名单数组。 |
 
 **错误码：**
 
@@ -89,7 +89,7 @@ function getFreezeExemptedApps(admin: Want | null): Array<common.ApplicationInst
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;common.ApplicationInstance & gt; | 后台防冻结应用名单数组。 |
+| Array &lt;common.ApplicationInstance&gt; | 后台防冻结应用名单数组。 |
 
 **错误码：**
 

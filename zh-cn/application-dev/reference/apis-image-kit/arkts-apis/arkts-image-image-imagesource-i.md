@@ -202,7 +202,7 @@ createPixelMap(options?: DecodingOptions): Promise<PixelMap>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PixelMap & gt; | Promise对象，返回PixelMap。 |
+| Promise &lt;PixelMap&gt; | Promise对象，返回PixelMap。 |
 
 **示例**
 
@@ -355,7 +355,7 @@ createPixelMapList(options?: DecodingOptions): Promise<Array<PixelMap>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;PixelMap & gt; & gt; | 异步返回PixelMap数组。 |
+| Promise &lt;Array &lt;PixelMap&gt;&gt; | 异步返回PixelMap数组。 |
 
 **错误码：**
 
@@ -617,7 +617,7 @@ createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: Allocato
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PixelMap & gt; | Promise对象，返回PixelMap。 |
+| Promise &lt;PixelMap&gt; | Promise对象，返回PixelMap。 |
 
 **错误码：**
 
@@ -759,7 +759,7 @@ createThumbnail(options?: DecodingOptionsForThumbnail): Promise<PixelMap | undef
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PixelMap \ | undefined & gt; | Promise对象，返回PixelMap。 |
+| Promise &lt;PixelMap \ | undefined&gt; | Promise对象，返回PixelMap。 |
 
 **错误码：**
 
@@ -907,7 +907,7 @@ getDelayTimeList(): Promise<Array<number>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;number & gt; & gt; | Promise对象，返回延迟时间数组。 |
+| Promise &lt;Array &lt;number&gt;&gt; | Promise对象，返回延迟时间数组。 |
 
 **错误码：**
 
@@ -999,7 +999,7 @@ getDisposalTypeList(): Promise<Array<number>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;number & gt; & gt; | Promise对象，返回帧过渡模式数组。 |
+| Promise &lt;Array &lt;number&gt;&gt; | Promise对象，返回帧过渡模式数组。 |
 
 **错误码：**
 
@@ -1040,7 +1040,7 @@ getFrameCount(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回图像帧数。 |
+| Promise &lt;number&gt; | Promise对象，返回图像帧数。 |
 
 **错误码：**
 
@@ -1321,7 +1321,7 @@ getImageProperties(key: Array<PropertyKey>): Promise<Record<PropertyKey, string|
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Record&lt;[PropertyKey](arkts-image-image-propertykey-e.md), string \| null & gt; & gt; | Promise对象，返回图片属性值，如获取失败则返回null。 |
+| Promise&lt;Record&lt;[PropertyKey](arkts-image-image-propertykey-e.md), string \| null&gt;&gt; | Promise对象，返回图片属性值，如获取失败则返回null。 |
 
 **错误码：**
 
@@ -1377,7 +1377,7 @@ getImageProperty(key: PropertyKey, options?: ImagePropertyOptions): Promise<stri
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回图片属性值，如获取失败则返回属性默认值。 |
+| Promise &lt;string&gt; | Promise对象，返回图片属性值，如获取失败则返回属性默认值。 |
 
 **错误码：**
 
@@ -1445,7 +1445,7 @@ getImageProperty(key: string, options?: GetImagePropertyOptions): Promise<string
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回图片属性值，如获取失败则返回属性默认值。 |
+| Promise &lt;string&gt; | Promise对象，返回图片属性值，如获取失败则返回属性默认值。 |
 
 **示例**
 
@@ -1635,13 +1635,13 @@ modifyImageProperties(records: Record<PropertyKey, string|null>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| records | Record&lt;[PropertyKey](arkts-image-image-propertykey-e.md), string \| null & gt; | 是 | 包含图片属性名和属性值的数组。 |
+| records | Record&lt;[PropertyKey](arkts-image-image-propertykey-e.md), string \| null&gt; | 是 | 包含图片属性名和属性值的数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1704,13 +1704,13 @@ modifyImagePropertiesEnhanced(records: Record<string, string | null>): Promise<v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| records | Record & lt;string, string \ | null & gt; | 是 | 包含图片属性名和属性值的键值对集合。 |
+| records | Record &lt;string, string \ | null&gt; | 是 | 包含图片属性名和属性值的键值对集合。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1774,7 +1774,7 @@ modifyImageProperty(key: PropertyKey, value: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1841,7 +1841,7 @@ modifyImageProperty(key: string, value: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
 
@@ -2203,7 +2203,7 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
 
@@ -2305,7 +2305,7 @@ updateData(buf: ArrayBuffer, isFinished: boolean, offset: number, length: number
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
 
@@ -2407,7 +2407,7 @@ writeImageMetadata(imageMetadata: ImageMetadata): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

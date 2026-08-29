@@ -2,7 +2,7 @@
 
 支持通用属性。除支持通用事件外，还支持如下事件：
 
-**继承/实现关系：** NavDestinationAttribute extends CommonMethod<NavDestinationAttribute>
+**继承/实现关系：** NavDestinationAttribute extends CommonMethod\<NavDestinationAttribute>
 
 **起始版本：** 9
 
@@ -499,7 +499,7 @@ onBackPressed(callback: () => boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | () = & gt; boolean | 是 | 当与Navigation绑定的导航控制器中存在内容时，此回调生效。当点击返回键时，触发该回调。返回值为true时， 表示重写返回键逻辑；返回值为false时，表示回退到上一个页面。 |
+| callback | () =&gt; boolean | 是 | 当与Navigation绑定的导航控制器中存在内容时，此回调生效。当点击返回键时，触发该回调。返回值为true时， 表示重写返回键逻辑；返回值为false时，表示回退到上一个页面。 |
 
 ## onHidden
 
@@ -720,7 +720,7 @@ onWillAppear(callback: Callback<void>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback & lt;void & gt; | 是 | 当该NavDestination挂载之前触发此回调。在该回调中允许修改路由栈，当前帧生效。 |
+| callback | Callback &lt;void&gt; | 是 | 当该NavDestination挂载之前触发此回调。在该回调中允许修改路由栈，当前帧生效。 |
 
 ## onWillDisappear
 
@@ -746,7 +746,7 @@ onWillDisappear(callback: Callback<void>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback & lt;void & gt; | 是 | 当该NavDestination卸载之前触发的生命周期(有转场动画时，在转场动画开始之前触发)。 |
+| callback | Callback &lt;void&gt; | 是 | 当该NavDestination卸载之前触发的生命周期(有转场动画时，在转场动画开始之前触发)。 |
 
 ## onWillHide
 
@@ -772,7 +772,7 @@ onWillHide(callback: Callback<void>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback & lt;void & gt; | 是 | 当该NavDestination隐藏之前触发此回调。 |
+| callback | Callback &lt;void&gt; | 是 | 当该NavDestination隐藏之前触发此回调。 |
 
 ## onWillShow
 
@@ -798,7 +798,7 @@ onWillShow(callback: Callback<void>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback & lt;void & gt; | 是 | 当该NavDestination显示之前触发此回调。 |
+| callback | Callback &lt;void&gt; | 是 | 当该NavDestination显示之前触发此回调。 |
 
 ## preferredOrientation
 

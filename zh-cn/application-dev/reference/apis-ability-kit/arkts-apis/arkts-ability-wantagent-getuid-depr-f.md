@@ -113,7 +113,7 @@ function getUid(agent: WantAgent): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 以Promise形式返回获取WantAgent实例的用户ID。 |
+| Promise &lt;number&gt; | 以Promise形式返回获取WantAgent实例的用户ID。 |
 
 **示例**
 

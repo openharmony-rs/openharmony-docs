@@ -92,7 +92,7 @@ function hasKeyItem(keyAlias: string, options: HuksOptions): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。若密钥存在，返回值为true，若密钥不存在，返回值为false。 |
+| Promise &lt;boolean&gt; | Promise对象。若密钥存在，返回值为true，若密钥不存在，返回值为false。 |
 
 **错误码：**
 

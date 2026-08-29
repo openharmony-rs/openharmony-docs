@@ -23,7 +23,7 @@ function getQuerySqlInfo(predicates: RdbPredicates, columns?: Array<string>):Sql
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | predicates | RdbPredicates | 是 | 与指定字段匹配的谓词。 |
-| columns | Array & lt;string & gt; | 否 | 要查询的列；如果不指定此参数，则查询所有列。 |
+| columns | Array &lt;string&gt; | 否 | 要查询的列；如果不指定此参数，则查询所有列。 |
 
 **返回值：**
 

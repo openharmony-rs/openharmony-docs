@@ -81,7 +81,7 @@ Send terminal response command to SIM card.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | The promise returned by the sendTerminalResponseCmd. |
+| Promise &lt;void&gt; | The promise returned by the sendTerminalResponseCmd. |
 
 **错误码：**
 

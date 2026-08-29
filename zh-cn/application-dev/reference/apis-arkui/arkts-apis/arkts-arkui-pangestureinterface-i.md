@@ -2,7 +2,7 @@
 
 滑动手势事件，当滑动的最小距离达到设定的最小值时触发滑动手势事件。
 
-**继承/实现关系：** PanGestureInterface extends GestureInterface<PanGestureInterface>
+**继承/实现关系：** PanGestureInterface extends GestureInterface\<PanGestureInterface>
 
 **起始版本：** 7
 
@@ -85,7 +85,7 @@ onActionCancel(event: () => void): PanGestureInterface
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () = & gt; void | 是 | 滑动手势取消回调。 |
+| event | () =&gt; void | 是 | 滑动手势取消回调。 |
 
 **返回值：**
 
@@ -139,7 +139,7 @@ onActionEnd(event: (event: GestureEvent) => void): PanGestureInterface
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (event: GestureEvent) = & gt; void | 是 | 滑动手势结束回调。 |
+| event | (event: GestureEvent) =&gt; void | 是 | 滑动手势结束回调。 |
 
 **返回值：**
 
@@ -165,7 +165,7 @@ onActionStart(event: (event: GestureEvent) => void): PanGestureInterface
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (event: GestureEvent) = & gt; void | 是 | 滑动手势识别成功回调。 |
+| event | (event: GestureEvent) =&gt; void | 是 | 滑动手势识别成功回调。 |
 
 **返回值：**
 
@@ -191,7 +191,7 @@ onActionUpdate(event: (event: GestureEvent) => void): PanGestureInterface
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (event: GestureEvent) = & gt; void | 是 | 滑动手势更新回调。 |
+| event | (event: GestureEvent) =&gt; void | 是 | 滑动手势更新回调。 |
 
 **返回值：**
 

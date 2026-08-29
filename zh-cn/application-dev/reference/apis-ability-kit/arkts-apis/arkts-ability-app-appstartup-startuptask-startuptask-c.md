@@ -36,7 +36,7 @@ init(context: AbilityStageContext): Promise<Object | void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Object \ | void & gt; | Promise used to return the execution result. |
+| Promise &lt;Object \ | void&gt; | Promise used to return the execution result. |
 
 **示例**
 

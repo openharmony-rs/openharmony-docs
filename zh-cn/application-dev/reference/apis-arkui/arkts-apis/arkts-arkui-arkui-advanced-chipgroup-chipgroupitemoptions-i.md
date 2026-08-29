@@ -200,7 +200,7 @@ suffixSymbol?: ChipSymbolGlyphOptions
 ```
 
 后缀SymbolGlyph图标属性。当需要在Chip后显示SymbolGlyph图标以提供额外操作或状态提示时设置此参数。  
-**说明：**当suffixSymbol有传入参数时，allowClose不生效。suffixSymbol与suffixImageIcon为互斥属性，同一Chip项中只能配置其中一个，若同时配置仅优先级最高的生效（优先级： suffixSymbol &gt; suffixImageIcon）。默认值：不显示后缀SymbolGlyph图标。值为undefined时，按默认值处理。
+**说明：**当suffixSymbol有传入参数时，allowClose不生效。suffixSymbol与suffixImageIcon为互斥属性，同一Chip项中只能配置其中一个，若同时配置仅优先级最高的生效（优先级： suffixSymbol&gt; suffixImageIcon）。默认值：不显示后缀SymbolGlyph图标。值为undefined时，按默认值处理。
 
 **类型：** [ChipSymbolGlyphOptions](arkts-arkui-arkui-advanced-chip-chipsymbolglyphoptions-i.md)
 

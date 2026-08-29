@@ -38,7 +38,7 @@ createPixelMap(options?: image.DecodingOptions): Promise<PixelMap>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PixelMap & gt; | Promise实例，用于异步返回创建结果。 |
+| Promise &lt;PixelMap&gt; | Promise实例，用于异步返回创建结果。 |
 
 **示例**
 
@@ -73,7 +73,7 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise实例，异步返回结果。 |
+| Promise &lt;void&gt; | Promise实例，异步返回结果。 |
 
 **示例**
 

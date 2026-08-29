@@ -83,7 +83,7 @@ function getPixelMap(wallpaperType: WallpaperType): Promise<image.PixelMap>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;image.PixelMap & gt; | 调用成功则返回壁纸图片的像素图对象，调用失败则返回error信息。 |
+| Promise &lt;image.PixelMap&gt; | 调用成功则返回壁纸图片的像素图对象，调用失败则返回error信息。 |
 
 **示例**
 

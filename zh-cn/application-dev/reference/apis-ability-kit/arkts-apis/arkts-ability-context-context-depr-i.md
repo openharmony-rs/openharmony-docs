@@ -146,7 +146,7 @@ getAppType(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回此应用的类型。 |
+| Promise &lt;string&gt; | Promise对象，返回此应用的类型。 |
 
 ## getAppVersionInfo
 
@@ -226,7 +226,7 @@ getBundleName(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回当前ability的Bundle名称。 |
+| Promise &lt;string&gt; | Promise对象，返回当前ability的Bundle名称。 |
 
 ## getCacheDir
 
@@ -266,7 +266,7 @@ getCacheDir(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回该应用程序的内部存储目录。 |
+| Promise &lt;string&gt; | Promise对象，返回该应用程序的内部存储目录。 |
 
 ## getCallingBundle
 
@@ -306,7 +306,7 @@ getCallingBundle(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回ability调用方的Bundle名称。 |
+| Promise &lt;string&gt; | Promise对象，返回ability调用方的Bundle名称。 |
 
 ## getDisplayOrientation
 
@@ -346,7 +346,7 @@ getDisplayOrientation(): Promise<bundle.DisplayOrientation>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;bundle.DisplayOrientation & gt; | Indicates the screen display direction. |
+| Promise &lt;bundle.DisplayOrientation&gt; | Indicates the screen display direction. |
 
 ## getElementName
 
@@ -430,7 +430,7 @@ getExternalCacheDir(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回应用程序的缓存目录的绝对路径。 |
+| Promise &lt;string&gt; | Promise对象，返回应用程序的缓存目录的绝对路径。 |
 
 ## getFilesDir
 
@@ -470,7 +470,7 @@ getFilesDir(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回内部存储器上此应用程序的文件目录。 |
+| Promise &lt;string&gt; | Promise对象，返回内部存储器上此应用程序的文件目录。 |
 
 ## getHapModuleInfo
 
@@ -530,7 +530,7 @@ getOrCreateDistributedDir(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | 回调函数，返回Ability或应用的分布式文件路径。若路径不存在，系统将创建一个路径并返回创建的路径。 |
+| Promise &lt;string&gt; | 回调函数，返回Ability或应用的分布式文件路径。若路径不存在，系统将创建一个路径并返回创建的路径。 |
 
 ## getOrCreateDistributedDir
 
@@ -570,7 +570,7 @@ getOrCreateLocalDir(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回应用程序的本地根目录。 |
+| Promise &lt;string&gt; | Promise对象，返回应用程序的本地根目录。 |
 
 ## getOrCreateLocalDir
 
@@ -670,7 +670,7 @@ getProcessName(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回当前进程的名称。 |
+| Promise &lt;string&gt; | Promise对象，返回当前进程的名称。 |
 
 ## isUpdatingConfigurations
 
@@ -710,7 +710,7 @@ isUpdatingConfigurations(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回true表示该Ability的配置正在更改，否则返回false。 |
+| Promise &lt;boolean&gt; | Promise对象，返回true表示该Ability的配置正在更改，否则返回false。 |
 
 ## printDrawnCompleted
 
@@ -750,7 +750,7 @@ printDrawnCompleted(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象 |
 
 ## requestPermissionsFromUser
 
@@ -774,7 +774,7 @@ requestPermissionsFromUser(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| permissions | Array & lt;string & gt; | 是 | 指示要请求的权限列表。此参数不能为null。 |
+| permissions | Array &lt;string&gt; | 是 | 指示要请求的权限列表。此参数不能为null。 |
 | requestCode | number | 是 | 指示要传递给[PermissionRequestResult](arkts-ability-context-permissionrequestresult-depr-i.md#permissionrequestresult)的请求代码。 |
 | resultCallback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[PermissionRequestResult](arkts-ability-context-permissionrequestresult-depr-i.md)&gt; | 是 | 回调函数，返回授权结果信息。 |
 
@@ -796,7 +796,7 @@ requestPermissionsFromUser(permissions: Array<string>, requestCode: number): Pro
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| permissions | Array & lt;string & gt; | 是 | 指示要请求的权限列表。此参数不能为null。 |
+| permissions | Array &lt;string&gt; | 是 | 指示要请求的权限列表。此参数不能为null。 |
 | requestCode | number | 是 | 指示要传递给[PermissionRequestResult](arkts-ability-context-permissionrequestresult-depr-i.md#permissionrequestresult)的请求代码。 |
 
 **返回值：**
@@ -850,7 +850,7 @@ setDisplayOrientation(orientation: bundle.DisplayOrientation): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 ## setShowOnLockScreen
 
@@ -901,7 +901,7 @@ setShowOnLockScreen(show: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 ## setWakeUpScreen
 
@@ -956,7 +956,7 @@ setWakeUpScreen(wakeUp: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 ## verifyPermission
 
@@ -983,7 +983,7 @@ verifyPermission(permission: string, options?: PermissionOptions): Promise<numbe
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，如果pid和uid具有权限，则使用0进行异步回调；否则使用-1回调。 |
+| Promise &lt;number&gt; | Promise对象，如果pid和uid具有权限，则使用0进行异步回调；否则使用-1回调。 |
 
 ## verifyPermission
 

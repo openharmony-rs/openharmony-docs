@@ -26,7 +26,7 @@ function getFileSyncState(uri: Array<string>): Promise<Array<FileSyncState>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | Array & lt;string & gt; | 是 | 待获取同步状态的uri。 |
+| uri | Array &lt;string&gt; | 是 | 待获取同步状态的uri。 |
 
 **返回值：**
 
@@ -81,7 +81,7 @@ function getFileSyncState(uri: Array<string>, callback: AsyncCallback<Array<File
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | Array & lt;string & gt; | 是 | 待获取同步状态的uri。 |
+| uri | Array &lt;string&gt; | 是 | 待获取同步状态的uri。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[FileSyncState](arkts-corefile-cloudsync-filesyncstate-e-sys.md)&gt;&gt; | 是 | 回调函数。异步获取文件状态。 |
 
 **错误码：**

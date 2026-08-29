@@ -72,7 +72,7 @@ function getSignalInformation(slotId: number): Promise<Array<SignalInformation>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;SignalInformation & gt; & gt; | 以Promise形式返回网络信号强度[SignalInformation]{ |
+| Promise &lt;Array &lt;SignalInformation&gt;&gt; | 以Promise形式返回网络信号强度[SignalInformation]{ |
 
 **错误码：**
 

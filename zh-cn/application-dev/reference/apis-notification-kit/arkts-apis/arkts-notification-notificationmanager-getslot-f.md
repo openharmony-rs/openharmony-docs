@@ -90,7 +90,7 @@ removeAllSlots 删除所有通知渠道。
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;NotificationSlot & gt; | Promise对象，返回通知渠道对象。 |
+| Promise &lt;NotificationSlot&gt; | Promise对象，返回通知渠道对象。 |
 
 **错误码：**
 

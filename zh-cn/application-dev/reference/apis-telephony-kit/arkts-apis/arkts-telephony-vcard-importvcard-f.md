@@ -86,7 +86,7 @@ function importVCard(context: Context, filePath: string, accountId?: number): Pr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回重置的结果码。 |
+| Promise &lt;void&gt; | Promise对象，返回重置的结果码。 |
 
 **错误码：**
 

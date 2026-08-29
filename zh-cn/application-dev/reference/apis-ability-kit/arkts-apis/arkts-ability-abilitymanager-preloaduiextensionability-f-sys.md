@@ -34,7 +34,7 @@ function preloadUIExtensionAbility(want: Want): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回预加载的 [UIExtensionAbility]{ |
+| Promise &lt;number&gt; | Promise对象，返回预加载的 [UIExtensionAbility]{ |
 
 **错误码：**
 

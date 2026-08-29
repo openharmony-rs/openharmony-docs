@@ -68,7 +68,7 @@ function getAllTxBytes(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | The promise returned by the function. |
+| Promise &lt;number&gt; | The promise returned by the function. |
 
 **错误码：**
 

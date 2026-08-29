@@ -82,7 +82,7 @@ function stopSharing(type: SharingIfaceType): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以 Promise 形式返回关闭共享执行结果。 |
+| Promise &lt;void&gt; | 以 Promise 形式返回关闭共享执行结果。 |
 
 **错误码：**
 

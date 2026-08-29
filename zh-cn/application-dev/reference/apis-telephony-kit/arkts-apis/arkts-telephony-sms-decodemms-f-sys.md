@@ -23,7 +23,7 @@ function decodeMms(mmsFilePathName: string | Array<number>, callback: AsyncCallb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mmsFilePathName | string \| Array & lt;number & gt; | 是 | 彩信文件路径。 |
+| mmsFilePathName | string \| Array &lt;number&gt; | 是 | 彩信文件路径。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[MmsInformation](arkts-telephony-sms-mmsinformation-i-sys.md)&gt; | 是 | 获取｛@code MmsInformation｝的回调函数。 |
 
 **错误码：**
@@ -73,7 +73,7 @@ function decodeMms(mmsFilePathName: string | Array<number>): Promise<MmsInformat
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mmsFilePathName | string \| Array & lt;number & gt; | 是 | 彩信文件路径。 |
+| mmsFilePathName | string \| Array &lt;number&gt; | 是 | 彩信文件路径。 |
 
 **返回值：**
 

@@ -34,7 +34,7 @@ function getRunningMultiAppInfo(bundleName: string): Promise<RunningMultiAppInfo
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;RunningMultiAppInfo & gt; | Promise对象。返回特定包名的运行态应用多开信息。 |
+| Promise &lt;RunningMultiAppInfo&gt; | Promise对象。返回特定包名的运行态应用多开信息。 |
 
 **错误码：**
 

@@ -31,7 +31,7 @@ function createPanel(ctx: Context, info: PanelInfo): Promise<Panel>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Panel & gt; | Promise对象，返回当前创建的划词面板对象，可用于面板内容设置、显示、隐藏、移动及事件订阅等管理操作。 |
+| Promise &lt;Panel&gt; | Promise对象，返回当前创建的划词面板对象，可用于面板内容设置、显示、隐藏、移动及事件订阅等管理操作。 |
 
 **错误码：**
 

@@ -32,7 +32,7 @@ get(): Promise<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;T & gt; | Promise对象，返回对应属性值。 |
+| Promise &lt;T&gt; | Promise对象，返回对应属性值。 |
 
 **错误码：**
 
@@ -202,7 +202,7 @@ set(value: T): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

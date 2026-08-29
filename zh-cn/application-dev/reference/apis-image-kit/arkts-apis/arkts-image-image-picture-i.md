@@ -119,7 +119,7 @@ getHdrComposedPixelmap(): Promise<PixelMap>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PixelMap & gt; | Promise对象，返回PixelMap。 |
+| Promise &lt;PixelMap&gt; | Promise对象，返回PixelMap。 |
 
 **错误码：**
 
@@ -176,7 +176,7 @@ getHdrComposedPixelmapWithOptions(options?: HdrComposeOptions): Promise<PixelMap
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PixelMap \ | undefined & gt; | Promise对象，返回PixelMap或undefined。 |
+| Promise &lt;PixelMap \ | undefined&gt; | Promise对象，返回PixelMap或undefined。 |
 
 **错误码：**
 
@@ -280,7 +280,7 @@ getMetadata(metadataType: MetadataType): Promise<Metadata>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Metadata & gt; | Promise对象。返回元数据。 |
+| Promise &lt;Metadata&gt; | Promise对象。返回元数据。 |
 
 **错误码：**
 
@@ -341,7 +341,7 @@ hdrComposeToMainPixelmap(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -660,7 +660,7 @@ setMetadata(metadataType: MetadataType, metadata: Metadata): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

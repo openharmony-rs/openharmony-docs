@@ -385,7 +385,7 @@ query?(
 | --- | --- | --- | --- |
 | uri | string | 是 | 指示要查询的数据的路径。 |
 | predicates | dataSharePredicates.DataSharePredicates | 是 | 指示筛选条件。 |
-| columns | Array & lt;string & gt; | 是 | 指示要查询的列。如果此参数为空，则查询所有列。 |
+| columns | Array &lt;string&gt; | 是 | 指示要查询的列。如果此参数为空，则查询所有列。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Object&gt; | 是 | 回调函数。返回查询到的结果集。 |
 
 **示例**

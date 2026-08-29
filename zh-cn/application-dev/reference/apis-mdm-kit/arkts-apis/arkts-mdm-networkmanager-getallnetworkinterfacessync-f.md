@@ -32,7 +32,7 @@ function getAllNetworkInterfacesSync(admin: Want): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 返回所有激活的有线网络接口名称数组。 |
+| Array &lt;string&gt; | 返回所有激活的有线网络接口名称数组。 |
 
 **错误码：**
 

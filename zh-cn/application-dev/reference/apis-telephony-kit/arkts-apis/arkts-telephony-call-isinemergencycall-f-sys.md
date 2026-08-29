@@ -74,7 +74,7 @@ function isInEmergencyCall(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 以Promise形式异步返回结果。true表示正在处于紧急呼叫，false表示不处于紧急呼叫。 |
+| Promise &lt;boolean&gt; | 以Promise形式异步返回结果。true表示正在处于紧急呼叫，false表示不处于紧急呼叫。 |
 
 **错误码：**
 

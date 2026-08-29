@@ -33,7 +33,7 @@ function createGlobalAudioLoopback(mode: AudioLoopbackMode, isController: boolea
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[AudioLoopback](arkts-audio-audio-audioloopback-i.md) \| null & gt; | Promise 用于返回音频返听实例，或在发生错误时返回 null。 |
+| Promise&lt;[AudioLoopback](arkts-audio-audio-audioloopback-i.md) \| null&gt; | Promise 用于返回音频返听实例，或在发生错误时返回 null。 |
 
 **错误码：**
 

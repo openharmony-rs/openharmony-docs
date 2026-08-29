@@ -33,7 +33,7 @@ function setAdditionalConfig(key: string, value: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回0表示设置成功，返回其他值表示设置失败。 |
+| Promise &lt;number&gt; | Promise对象，返回0表示设置成功，返回其他值表示设置失败。 |
 
 **错误码：**
 

@@ -32,7 +32,7 @@ function reloadAllForms(context: UIAbilityContext): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回请求更新卡片的数量。 |
+| Promise &lt;number&gt; | Promise对象。返回请求更新卡片的数量。 |
 
 **错误码：**
 

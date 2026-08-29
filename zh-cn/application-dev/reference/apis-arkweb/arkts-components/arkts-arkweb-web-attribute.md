@@ -3593,7 +3593,7 @@ Web页面触发window.open(url, name)时，会根据name查找是否存在已绑
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback & lt;void & gt; | 是 | 再次在原页面触发window.open后，在已打开的新页面触发该回调。 |
+| callback | Callback &lt;void&gt; | 是 | 再次在原页面触发window.open后，在已打开的新页面触发该回调。 |
 
 **示例**
 
@@ -4823,7 +4823,7 @@ onControllerAttached(callback: () => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | () = & gt; void | 是 | 当ArkWeb控制器初始化成功时触发的回调。 |
+| callback | () =&gt; void | 是 | 当ArkWeb控制器初始化成功时触发的回调。 |
 
 **示例**
 
@@ -5182,7 +5182,7 @@ onFileSelectorShow(callback: (event?: { callback: Function, fileSelector: object
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (event?: { callback: Function, fileSelector: object }) = & gt; void | 是 | 当触发文件选择器时需要执行的回调。 |
+| callback | (event?: { callback: Function, fileSelector: object }) =&gt; void | 是 | 当触发文件选择器时需要执行的回调。 |
 
 ## onFirstContentfulPaint
 
@@ -5390,7 +5390,7 @@ onFullScreenExit(callback: () => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | () = & gt; void | 是 | 退出全屏模式时的回调函数，无参数。 |
+| callback | () =&gt; void | 是 | 退出全屏模式时的回调函数，无参数。 |
 
 **示例**
 
@@ -5439,7 +5439,7 @@ onGeolocationHide(callback: () => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | () = & gt; void | 是 | 地理位置信息获取请求已被取消的回调函数。 |
+| callback | () =&gt; void | 是 | 地理位置信息获取请求已被取消的回调函数。 |
 
 **示例**
 
@@ -6026,7 +6026,7 @@ onInterceptKeyEvent(callback: (event: KeyEvent) => boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (event: KeyEvent) = & gt; boolean | 是 | 触发的KeyEvent事件。 返回值为boolean类型，true表示将该KeyEvent传入Webview内核，false表示不将该KeyEvent传入Webview内核。 |
+| callback | (event: KeyEvent) =&gt; boolean | 是 | 触发的KeyEvent事件。 返回值为boolean类型，true表示将该KeyEvent传入Webview内核，false表示不将该KeyEvent传入Webview内核。 |
 
 **示例**
 
@@ -6536,7 +6536,7 @@ onNativeEmbedGestureEvent(callback: (event: NativeEmbedTouchInfo) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (event: NativeEmbedTouchInfo) = & gt; void | 是 | 手指触摸到同层标签时触发该回调。 |
+| callback | (event: NativeEmbedTouchInfo) =&gt; void | 是 | 手指触摸到同层标签时触发该回调。 |
 
 **示例**
 
@@ -6709,7 +6709,7 @@ onNativeEmbedLifecycleChange监控生命周期状态（如CREATE/UPDATE/DESTROY/
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (event: NativeEmbedDataInfo) = & gt; void | 是 | 同层标签生命周期变化时触发该回调。 |
+| callback | (event: NativeEmbedDataInfo) =&gt; void | 是 | 同层标签生命周期变化时触发该回调。 |
 
 **示例**
 
@@ -7380,7 +7380,7 @@ onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
 > 
 > - 该功能需通过调用
 > [setErrorPageEnabled](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#seterrorpageenabled)&lt;sup
-&gt; &gt;20+&lt;/sup&gt;启用mainframe错误页功能后才会生效。如需同时启用subframe错误页功能，请调用
+&gt;&gt;20+&lt;/sup&gt;启用mainframe错误页功能后才会生效。如需同时启用subframe错误页功能，请调用
 > [setErrorPageEnabled](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#seterrorpageenabled)
 > 接口并将includeSubframe设置为true。
 > 
@@ -8157,7 +8157,7 @@ onRenderExited(callback: (event?: { detail: object }) => boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (event?: { detail: object }) = & gt; boolean | 是 | 渲染过程退出时触发。 |
+| callback | (event?: { detail: object }) =&gt; boolean | 是 | 渲染过程退出时触发。 |
 
 **示例**
 
@@ -8262,7 +8262,7 @@ onRequestSelected(callback: () => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | () = & gt; void | 是 | 当网页获取焦点时触发的回调。 |
+| callback | () =&gt; void | 是 | 当网页获取焦点时触发的回调。 |
 
 **示例**
 
@@ -9045,7 +9045,7 @@ onSslErrorReceive(callback: (event?: { handler: Function, error: object }) => vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (event?: { handler: Function, error: object }) = & gt; void | 是 | 当网页检测到SSL错误时触发的回调。 |
+| callback | (event?: { handler: Function, error: object }) =&gt; void | 是 | 当网页检测到SSL错误时触发的回调。 |
 
 ## onTextSelectionChange
 
@@ -9217,7 +9217,7 @@ onUrlLoadIntercept(callback: (event?: { data: string | WebResourceRequest }) => 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (event?: { data: string \| WebResourceRequest }) = & gt; boolean | 是 | url的相关信息。 返回值：boolean，true表示阻止此次加载，false表示允许此次加载。 |
+| callback | (event?: { data: string \| WebResourceRequest }) =&gt; boolean | 是 | url的相关信息。 返回值：boolean，true表示阻止此次加载，false表示允许此次加载。 |
 
 **示例**
 
@@ -9437,7 +9437,7 @@ onWindowExit(callback: () => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | () = & gt; void | 是 | 窗口请求关闭的回调函数。 |
+| callback | () =&gt; void | 是 | 窗口请求关闭的回调函数。 |
 
 **示例**
 

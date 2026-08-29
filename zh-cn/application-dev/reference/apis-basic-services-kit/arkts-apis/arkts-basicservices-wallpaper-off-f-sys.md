@@ -28,7 +28,7 @@ function off(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'wallpaperChange' | 是 | 事件回调类型。支持的事件为'wallpaperChange'，完成壁纸切换后触发该事件。 |
-| callback | (wallpaperType: WallpaperType, resourceType: WallpaperResourceType, uri?: string) = & gt; void | 否 | 表示要取消的壁纸变化回调，不填写该参数则取消订阅该type对应的所有回调。   - wallpaperType：壁纸类型。   - resourceType：壁 纸资源类型。   - uri：壁纸资源地址。 |
+| callback | (wallpaperType: WallpaperType, resourceType: WallpaperResourceType, uri?: string) =&gt; void | 否 | 表示要取消的壁纸变化回调，不填写该参数则取消订阅该type对应的所有回调。   - wallpaperType：壁纸类型。   - resourceType：壁 纸资源类型。   - uri：壁纸资源地址。 |
 
 **错误码：**
 

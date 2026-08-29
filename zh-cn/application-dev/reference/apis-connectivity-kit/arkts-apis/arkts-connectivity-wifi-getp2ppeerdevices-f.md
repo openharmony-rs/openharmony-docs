@@ -28,7 +28,7 @@ function getP2pPeerDevices(): Promise<WifiP2pDevice[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;WifiP2pDevice[] & gt; | 发现的设备列表。 |
+| Promise &lt;WifiP2pDevice[]&gt; | 发现的设备列表。 |
 
 **示例**
 

@@ -72,7 +72,7 @@ readMultiplePages(pageIndex: number): Promise<number[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number[] & gt; | Promise对象。以Promise形式返回读取的4页的数据，共16字节。 |
+| Promise &lt;number[]&gt; | Promise对象。以Promise形式返回读取的4页的数据，共16字节。 |
 
 **错误码：**
 
@@ -204,7 +204,7 @@ writeSinglePage(pageIndex: number, data: number[]): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

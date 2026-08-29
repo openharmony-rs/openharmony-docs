@@ -39,7 +39,7 @@ createWideGamutSdrPixelMap(): Promise<PixelMap>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PixelMap & gt; | Promise对象，返回PixelMap。 |
+| Promise &lt;PixelMap&gt; | Promise对象，返回PixelMap。 |
 
 **错误码：**
 
@@ -105,7 +105,7 @@ isJpegProgressive(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示Jpeg图片是渐进式；返回false表示Jpeg图片不是渐进式。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示Jpeg图片是渐进式；返回false表示Jpeg图片不是渐进式。 |
 
 **错误码：**
 
@@ -156,13 +156,13 @@ modifyImageAllProperties(records: Record<string, string|null>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| records | Record & lt;string, string \ | null & gt; | 是 | 包含图片属性名和属性值的键值对集合。 |
+| records | Record &lt;string, string \ | null&gt; | 是 | 包含图片属性名和属性值的键值对集合。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

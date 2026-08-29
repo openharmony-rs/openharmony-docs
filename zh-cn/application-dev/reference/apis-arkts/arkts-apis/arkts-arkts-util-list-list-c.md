@@ -29,7 +29,7 @@ List底层通过单向链表实现，每个节点有一个指向后一个元素�
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;T & gt; | 返回一个迭代器。 |
+| IterableIterator &lt;T&gt; | 返回一个迭代器。 |
 
 **错误码：**
 
@@ -200,7 +200,7 @@ convertToArray(): Array<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;T & gt; | 返回转换后的数组。 |
+| Array &lt;T&gt; | 返回转换后的数组。 |
 
 **错误码：**
 
@@ -285,7 +285,7 @@ forEach(callbackFn: (value: T, index?: number, List?: List<T>) => void, thisArg?
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index?: number, List?: List & lt;T & gt;) = & gt; void | 是 | 回调函数。 callbackFn（必填）接受最多三个参数的函数。 value 当前遍历到的元素。 index 当前遍历到的下标值，默认值为0。 List 当前调用forEach方法的实例对象，默认值为当前实例对象。 |
+| callbackFn | (value: T, index?: number, List?: List &lt;T&gt;) =&gt; void | 是 | 回调函数。 callbackFn（必填）接受最多三个参数的函数。 value 当前遍历到的元素。 index 当前遍历到的下标值，默认值为0。 List 当前调用forEach方法的实例对象，默认值为当前实例对象。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为当前实例对象。 |
 
 **错误码：**
@@ -803,7 +803,7 @@ replaceAllElements(callbackFn: (value: T, index?: number, list?: List<T>) => T, 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index?: number, list?: List & lt;T & gt;) = & gt; T | 是 | 回调函数。 callbackFn（必填）接受最多三个参数的函数。 value 当前遍历到的元素。 index 当前遍历到的下标值，默认值为0。 list 当前调用replaceAllElements方法的实例对象，默认值为当前实例对象。 |
+| callbackFn | (value: T, index?: number, list?: List &lt;T&gt;) =&gt; T | 是 | 回调函数。 callbackFn（必填）接受最多三个参数的函数。 value 当前遍历到的元素。 index 当前遍历到的下标值，默认值为0。 list 当前调用replaceAllElements方法的实例对象，默认值为当前实例对象。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为当前实例对象。 |
 
 **错误码：**

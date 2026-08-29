@@ -28,7 +28,7 @@ function toSendableValues(values: NonSendableValues): collections.Array<ValueTyp
 
 | 类型 | 说明 |
 | --- | --- |
-| collections.Array & lt;ValueType & gt; | 可跨线程传递的数组数据。 |
+| collections.Array &lt;ValueType&gt; | 可跨线程传递的数组数据。 |
 
 **错误码：**
 

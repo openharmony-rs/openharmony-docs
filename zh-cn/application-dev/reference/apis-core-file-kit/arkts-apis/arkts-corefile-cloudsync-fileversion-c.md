@@ -34,7 +34,7 @@ clearFileConflict(uri: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -137,7 +137,7 @@ downloadHistoryVersion(uri: string, versionId: string, callback: Callback<Versio
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回历史版本临时存储文件的URI。 |
+| Promise &lt;string&gt; | Promise对象，返回历史版本临时存储文件的URI。 |
 
 **错误码：**
 
@@ -262,7 +262,7 @@ isFileConflict(uri: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回本地文件和云端文件的冲突标志，true表示冲突，false表示不冲突。 |
+| Promise &lt;boolean&gt; | Promise对象，返回本地文件和云端文件的冲突标志，true表示冲突，false表示不冲突。 |
 
 **错误码：**
 
@@ -317,7 +317,7 @@ replaceFileWithHistoryVersion(originalUri: string, versionUri: string): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

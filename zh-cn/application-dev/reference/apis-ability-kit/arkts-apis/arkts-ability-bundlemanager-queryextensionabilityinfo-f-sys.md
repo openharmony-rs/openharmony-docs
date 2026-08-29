@@ -171,7 +171,7 @@ function queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAb
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;ExtensionAbilityInfo & gt; & gt; | Promise对象，返回Array & lt;ExtensionAbilityInfo & gt;。 |
+| Promise &lt;Array &lt;ExtensionAbilityInfo&gt;&gt; | Promise对象，返回Array &lt;ExtensionAbilityInfo&gt;。 |
 
 **错误码：**
 

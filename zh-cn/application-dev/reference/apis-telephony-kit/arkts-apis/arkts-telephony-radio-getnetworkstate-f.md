@@ -77,7 +77,7 @@ function getNetworkState(slotId?: number): Promise<NetworkState>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;NetworkState & gt; | Promise对象，返回网络状态。 |
+| Promise &lt;NetworkState&gt; | Promise对象，返回网络状态。 |
 
 **错误码：**
 

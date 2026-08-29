@@ -32,7 +32,7 @@ function getCfgFilesSync(relPath: string, followMode?: FollowXMode, extra?: stri
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 返回文件列表。 |
+| Array &lt;string&gt; | 返回文件列表。 |
 
 **错误码：**
 

@@ -30,7 +30,7 @@ function addDeviceConfig(config: WifiDeviceConfig): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 添加配置时返回{ |
+| Promise &lt;number&gt; | 添加配置时返回{ |
 
 **错误码：**
 

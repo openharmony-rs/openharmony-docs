@@ -37,7 +37,7 @@ function getInstalledBundleStorageStats(admin: Want, bundleNames: Array<string>,
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| bundleNames | Array & lt;string & gt; | 是 | 应用包名列表。取值范围：小于等于200个应用包名。 |
+| bundleNames | Array &lt;string&gt; | 是 | 应用包名列表。取值范围：小于等于200个应用包名。 |
 | accountId | number | 是 | 用户ID，取值范围：大于等于0。 accountId可以通过@ohos.account.osAccount中的 [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。*@ohos.account.osAccount** to obtain the user ID. |
 
 **返回值：**

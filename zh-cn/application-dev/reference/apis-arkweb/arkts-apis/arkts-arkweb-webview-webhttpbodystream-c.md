@@ -77,7 +77,7 @@ initialize(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise实例，用于获取WebHttpBodyStream是否初始化成功。 |
+| Promise &lt;void&gt; | Promise实例，用于获取WebHttpBodyStream是否初始化成功。 |
 
 **错误码：**
 
@@ -263,7 +263,7 @@ read(size: number): Promise<ArrayBuffer>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ArrayBuffer & gt; | Promise实例，用于获取WebHttpBodyStream中读取的数据。 |
+| Promise &lt;ArrayBuffer&gt; | Promise实例，用于获取WebHttpBodyStream中读取的数据。 |
 
 **错误码：**
 

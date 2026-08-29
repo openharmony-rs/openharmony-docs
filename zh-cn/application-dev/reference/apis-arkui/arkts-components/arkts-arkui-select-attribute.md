@@ -2,7 +2,7 @@
 
 除支持通用属性外，还支持以下属性：
 
-**继承/实现关系：** SelectAttribute extends CommonMethod<SelectAttribute>
+**继承/实现关系：** SelectAttribute extends CommonMethod\<SelectAttribute>
 
 **起始版本：** 8
 
@@ -599,7 +599,7 @@ onSelect(callback: (index: number, value: string) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (index: number, value: string) = & gt; void | 是 |  |
+| callback | (index: number, value: string) =&gt; void | 是 |  |
 
 ## onSelect
 
@@ -903,7 +903,7 @@ selected(numCount: Optional<number | Resource>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| numCount | [Optional](arkts-arkui-optional-t.md)&lt;number \| Resource & gt; | 是 | 下拉菜单初始选项的索引，索引值从0开始。当numCount的值为undefined或null时，选中第一项。 |
+| numCount | [Optional](arkts-arkui-optional-t.md)&lt;number \| Resource&gt; | 是 | 下拉菜单初始选项的索引，索引值从0开始。当numCount的值为undefined或null时，选中第一项。 |
 
 ## selectedOptionBgColor
 

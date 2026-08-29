@@ -36,7 +36,7 @@ close(connection: WebSocketConnection, options?: webSocket.WebSocketCloseOptions
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | promise对象。返回true表示关闭请求创建成功；返回false表示关闭请求创建失败。 |
+| Promise &lt;boolean&gt; | promise对象。返回true表示关闭请求创建成功；返回false表示关闭请求创建失败。 |
 
 **错误码：**
 
@@ -436,7 +436,7 @@ send(data: string | ArrayBuffer, connection: WebSocketConnection): Promise<boole
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | promise对象。返回true表示发送请求创建成功；返回false表示发送请求创建失败。 |
+| Promise &lt;boolean&gt; | promise对象。返回true表示发送请求创建成功；返回false表示发送请求创建失败。 |
 
 **错误码：**
 
@@ -512,7 +512,7 @@ start(config: WebSocketServerConfig): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | promise对象。返回true表示服务器启动成功；返回false表示服务启动失败。 |
+| Promise &lt;boolean&gt; | promise对象。返回true表示服务器启动成功；返回false表示服务启动失败。 |
 
 **错误码：**
 
@@ -568,7 +568,7 @@ stop(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | promise对象。返回true表示停止服务端service请求创建成功；返回false表示停止服务端service请求创建失败。 |
+| Promise &lt;boolean&gt; | promise对象。返回true表示停止服务端service请求创建成功；返回false表示停止服务端service请求创建失败。 |
 
 **错误码：**
 

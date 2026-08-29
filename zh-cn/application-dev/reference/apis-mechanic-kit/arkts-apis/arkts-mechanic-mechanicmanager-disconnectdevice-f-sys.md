@@ -33,7 +33,7 @@ function disconnectDevice(mechId: number): Promise<Result>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Result & gt; | Promise used to return the execution result. |
+| Promise &lt;Result&gt; | Promise used to return the execution result. |
 
 **错误码：**
 

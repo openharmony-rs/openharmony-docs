@@ -40,7 +40,7 @@ decryptEnvelopedData(config: CmsEnvelopedDecryptionConfig): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Uint8Array & gt; | Promise对象，返回解密结果。 |
+| Promise &lt;Uint8Array&gt; | Promise对象，返回解密结果。 |
 
 **错误码：**
 
@@ -159,7 +159,7 @@ getCerts(type: CmsCertType): Promise<Array<X509Cert>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;X509Cert & gt; & gt; | Promise对象，返回证书集合。 |
+| Promise &lt;Array &lt;X509Cert&gt;&gt; | Promise对象，返回证书集合。 |
 
 **错误码：**
 
@@ -305,7 +305,7 @@ getContentData(): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Uint8Array & gt; | Promise对象，返回CMS内容数据。 |
+| Promise &lt;Uint8Array&gt; | Promise对象，返回CMS内容数据。 |
 
 **错误码：**
 
@@ -603,7 +603,7 @@ setRawData(data: Uint8Array | string, cmsFormat: CmsFormat): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -752,7 +752,7 @@ verifySignedData(config: CmsVerificationConfig): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

@@ -34,7 +34,7 @@ getEmbedding(text: string): Promise<Array<number>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;number & gt; & gt; | Promise对象，返回向量化结果的数组。 |
+| Promise &lt;Array &lt;number&gt;&gt; | Promise对象，返回向量化结果的数组。 |
 
 **错误码：**
 
@@ -81,13 +81,13 @@ getEmbedding(batchTexts: Array<string>): Promise<Array<Array<number>>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| batchTexts | Array & lt;string & gt; | 是 | 嵌入模型的文本输入批次。单个文本长度上限为512个字符。 |
+| batchTexts | Array &lt;string&gt; | 是 | 嵌入模型的文本输入批次。单个文本长度上限为512个字符。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;Array & lt;number & gt; & gt; & gt; | Promise对象，返回批次向量化结果的二维数组。 |
+| Promise &lt;Array &lt;Array &lt;number&gt;&gt;&gt; | Promise对象，返回批次向量化结果的二维数组。 |
 
 **错误码：**
 
@@ -138,7 +138,7 @@ loadModel(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise。 |
+| Promise &lt;void&gt; | 无返回结果的Promise。 |
 
 **错误码：**
 
@@ -191,7 +191,7 @@ releaseModel(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

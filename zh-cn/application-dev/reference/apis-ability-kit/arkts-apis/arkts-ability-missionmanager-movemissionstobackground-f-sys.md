@@ -26,8 +26,8 @@ function moveMissionsToBackground(missionIds: Array<number>, callback: AsyncCall
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| missionIds | Array & lt;number & gt; | 是 | 任务ID数组。 |
-| callback | AsyncCallback & lt;Array & lt;number & gt; & gt; | 是 | 执行结果回调函数。 |
+| missionIds | Array &lt;number&gt; | 是 | 任务ID数组。 |
+| callback | AsyncCallback &lt;Array &lt;number&gt;&gt; | 是 | 执行结果回调函数。 |
 
 **错误码：**
 
@@ -93,13 +93,13 @@ function moveMissionsToBackground(missionIds: Array<number>): Promise<Array<numb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| missionIds | Array & lt;number & gt; | 是 | 任务ID数组。 |
+| missionIds | Array &lt;number&gt; | 是 | 任务ID数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;number & gt; & gt; | Promise对象，返回任务ID。 |
+| Promise &lt;Array &lt;number&gt;&gt; | Promise对象，返回任务ID。 |
 
 **错误码：**
 

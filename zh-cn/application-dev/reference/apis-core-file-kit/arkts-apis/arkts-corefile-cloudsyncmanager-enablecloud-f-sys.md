@@ -27,13 +27,13 @@ function enableCloud(accountId: string, switches: Record<string, boolean>): Prom
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | accountId | string | 是 | 账号Id。 |
-| switches | Record & lt;string, boolean & gt; | 是 | 应用的端云协同特性使能开关，string类型为应用包名，boolean类型为开关状态。true为打开；false为关闭。 |
+| switches | Record &lt;string, boolean&gt; | 是 | 应用的端云协同特性使能开关，string类型为应用包名，boolean类型为开关状态。true为打开；false为关闭。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -86,7 +86,7 @@ function enableCloud(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | accountId | string | 是 | 账号Id。 |
-| switches | Record & lt;string, boolean & gt; | 是 | 应用的端云协同特性使能开关，string类型为应用包名，boolean类型为开关状态。true为打开；false为关闭。 |
+| switches | Record &lt;string, boolean&gt; | 是 | 应用的端云协同特性使能开关，string类型为应用包名，boolean类型为开关状态。true为打开；false为关闭。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。异步使能端云协同能力之后。 |
 
 **错误码：**

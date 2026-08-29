@@ -87,7 +87,7 @@ function supportKeys(deviceId: number, keys: Array<KeyCode>): Promise<Array<bool
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;boolean & gt; & gt; | Promise对象，返回查询结果。true表示支持，false表示不支持。 |
+| Promise &lt;Array &lt;boolean&gt;&gt; | Promise对象，返回查询结果。true表示支持，false表示不支持。 |
 
 **错误码：**
 

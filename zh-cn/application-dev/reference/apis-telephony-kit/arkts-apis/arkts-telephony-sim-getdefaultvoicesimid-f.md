@@ -63,7 +63,7 @@ function getDefaultVoiceSimId(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 以Promise形式返回默认语音业务的SIM卡ID。 |
+| Promise &lt;number&gt; | 以Promise形式返回默认语音业务的SIM卡ID。 |
 
 **错误码：**
 

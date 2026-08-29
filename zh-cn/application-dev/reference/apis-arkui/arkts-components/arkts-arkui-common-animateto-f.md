@@ -50,4 +50,4 @@ declare function animateTo(value: AnimateParam, event: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | [AnimateParam](arkts-arkui-animateparam-i.md) | 是 |  |
-| event | () = & gt; void | 是 |  |
+| event | () =&gt; void | 是 |  |

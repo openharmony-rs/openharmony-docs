@@ -2,7 +2,7 @@
 
 除支持通用属性以及图形绘制通用属性外，还支持以下 属性：
 
-**继承/实现关系：** PathAttribute extends CommonShapeMethod<PathAttribute>
+**继承/实现关系：** PathAttribute extends CommonShapeMethod\<PathAttribute>
 
 **起始版本：** 7
 

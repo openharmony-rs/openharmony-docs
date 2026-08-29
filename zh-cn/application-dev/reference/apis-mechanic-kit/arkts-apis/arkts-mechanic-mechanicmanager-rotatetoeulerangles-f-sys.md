@@ -31,7 +31,7 @@ function rotateToEulerAngles(mechId: number, angles: EulerAngles, duration: numb
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Result & gt; | 返回执行结果 |
+| Promise &lt;Result&gt; | 返回执行结果 |
 
 **错误码：**
 

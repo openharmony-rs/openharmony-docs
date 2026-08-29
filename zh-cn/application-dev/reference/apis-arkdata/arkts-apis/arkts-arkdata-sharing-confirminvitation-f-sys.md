@@ -78,7 +78,7 @@ function confirmInvitation(invitationCode: string, state: State): Promise<Result
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Result & lt;string & gt; & gt; | Promise对象，返回确认共享邀请的结果。 |
+| Promise &lt;Result &lt;string&gt;&gt; | Promise对象，返回确认共享邀请的结果。 |
 
 **错误码：**
 

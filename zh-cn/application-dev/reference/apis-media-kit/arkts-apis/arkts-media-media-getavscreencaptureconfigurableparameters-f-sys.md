@@ -30,7 +30,7 @@ get Configurations which user can changes from AVScreenCapture server
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Returns a configurable configuration item string. |
+| Promise &lt;string&gt; | Returns a configurable configuration item string. |
 
 **错误码：**
 

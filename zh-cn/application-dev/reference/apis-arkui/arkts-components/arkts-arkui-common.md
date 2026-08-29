@@ -26,10 +26,10 @@ Common()
 | --- | --- |
 | [AccessibilityHoverEvent](arkts-arkui-accessibilityhoverevent-i.md) | The accessibility hover action triggers this method invocation.@extends BaseEvent |
 | [AlignRuleOption](arkts-arkui-alignruleoption-i.md) | Defines the align rule options of relative container. |
-| [AnimatableArithmetic](arkts-arkui-animatablearithmetic-i.md) | 该接口定义非number数据类型的动画运算规则。对非number类型的数据（如数组、结构体、颜色等）做动画，需要实现AnimatableArithmetic\ & lt;T\ & gt;接口中加法、减法、乘法和判断相等函数，使得该数据能参与动画的插值运算 和识别该数据是否发生改变。即定义它们为实现了AnimatableArithmetic\ & lt;T\ & gt;接口的类型。 |
+| [AnimatableArithmetic](arkts-arkui-animatablearithmetic-i.md) | 该接口定义非number数据类型的动画运算规则。对非number类型的数据（如数组、结构体、颜色等）做动画，需要实现AnimatableArithmetic\ &lt;T\&gt;接口中加法、减法、乘法和判断相等函数，使得该数据能参与动画的插值运算 和识别该数据是否发生改变。即定义它们为实现了AnimatableArithmetic\ &lt;T\&gt;接口的类型。 |
 | [AnimateParam](arkts-arkui-animateparam-i.md) | 动画效果相关参数。 |
 | [AreaChangeOptions](arkts-arkui-areachangeoptions-i.md) | 区域变化相关的参数。 |
-| [AttributeModifier](arkts-arkui-attributemodifier-i.md) | Defines the attribute modifier.@interface AttributeModifier & lt;T & gt; |
+| [AttributeModifier](arkts-arkui-attributemodifier-i.md) | Defines the attribute modifier.@interface AttributeModifier &lt;T&gt; |
 | [AxisEvent](arkts-arkui-axisevent-i.md) | 轴事件的对象说明，继承于[BaseEvent](arkts-arkui-baseevent-i.md)。 |
 | [BackgroundBlurStyleOptions](arkts-arkui-backgroundblurstyleoptions-i.md) | 继承自[BlurStyleOptions](arkts-arkui-blurstyleoptions-i.md)。 |
 | [BackgroundBrightnessOptions](arkts-arkui-backgroundbrightnessoptions-i.md) | 背景亮度选项。 |
@@ -222,7 +222,7 @@ Common()
 | [NavigationInfo](arkts-arkui-navigationinfo-t.md) | NavigationInfo实例对象。 |
 | [OnDidStopDraggingCallback](arkts-arkui-ondidstopdraggingcallback-t.md) | 滚动组件在结束拖拽时触发的回调。 |
 | [OnDragEventCallback](arkts-arkui-ondrageventcallback-t.md) | 拖拽事件的回调函数。 |
-| [OnGetPreviewBadgeCallback](arkts-arkui-ongetpreviewbadgecallback-t.md) | 即将启动多选长按聚拢动画时，触发用于获取选中数量的回调。返回true表示显示选中数量角标，对应Grid或List显示范围内选中item数量；false表示不显示角标。 返回数字时默认显示角标，该数字表示角标中需要显示的数量。取值范围：[0, 2 & lt;sup & gt;31 & lt;/sup & gt;-1]，超过取值范围时按返回true处理。 返回浮点数时，向下取整。 |
+| [OnGetPreviewBadgeCallback](arkts-arkui-ongetpreviewbadgecallback-t.md) | 即将启动多选长按聚拢动画时，触发用于获取选中数量的回调。返回true表示显示选中数量角标，对应Grid或List显示范围内选中item数量；false表示不显示角标。 返回数字时默认显示角标，该数字表示角标中需要显示的数量。取值范围：[0, 2 &lt;sup&gt;31 &lt;/sup&gt;-1]，超过取值范围时按返回true处理。 返回浮点数时，向下取整。 |
 | [OnItemDragStartCallback](arkts-arkui-onitemdragstartcallback-t.md) | 开始拖拽列表或网格元素时触发的回调。 |
 | [OnMoveHandler](arkts-arkui-onmovehandler-t.md) | 定义数据源拖拽回调。 |
 | [OnNeedSoftkeyboardCallback](arkts-arkui-onneedsoftkeyboardcallback-t.md) | 当绑定该方法的组件判断是否需要键盘时，将触发此回调。前提条件：组件需可获焦，否则本接口不生效。 |

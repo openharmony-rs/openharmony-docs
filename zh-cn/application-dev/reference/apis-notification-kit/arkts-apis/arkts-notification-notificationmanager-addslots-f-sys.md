@@ -26,7 +26,7 @@ function addSlots(slots: Array<NotificationSlot>, callback: AsyncCallback<void>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slots | Array & lt;NotificationSlot & gt; | 是 | 要创建的通知渠道对象数组。数组中的元素个数为0~5。 |
+| slots | Array &lt;NotificationSlot&gt; | 是 | 要创建的通知渠道对象数组。数组中的元素个数为0~5。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 表示被指定通道的回调方法。 |
 
 **错误码：**
@@ -86,13 +86,13 @@ function addSlots(slots: Array<NotificationSlot>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slots | Array & lt;NotificationSlot & gt; | 是 | 要创建的通知渠道对象数组。数组中的元素个数为0~5。 |
+| slots | Array &lt;NotificationSlot&gt; | 是 | 要创建的通知渠道对象数组。数组中的元素个数为0~5。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

@@ -77,7 +77,7 @@ function create(context: BaseContext, config: Config): Promise<Task>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Task & gt; | Promise对象。返回任务配置信息的Promise对象。 |
+| Promise &lt;Task&gt; | Promise对象。返回任务配置信息的Promise对象。 |
 
 **错误码：**
 

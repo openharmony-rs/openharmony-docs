@@ -518,7 +518,7 @@ getTopProportionColorsAndPercentage(colorCount: number): Map<Color | null, numbe
 
 | 类型 | 说明 |
 | --- | --- |
-| Map & lt;Color \ | null, number \| null & gt; | 图像占比前`colorCount`的颜色值与对应比例的字典，比例的取值范围为[0,1]。 |
+| Map &lt;Color \ | null, number \| null&gt; | 图像占比前`colorCount`的颜色值与对应比例的字典，比例的取值范围为[0,1]。 |
 
 **错误码：**
 

@@ -125,7 +125,7 @@ startAbility(want: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise形式返回启动结果。 |
+| Promise &lt;void&gt; | Promise形式返回启动结果。 |
 
 **错误码：**
 

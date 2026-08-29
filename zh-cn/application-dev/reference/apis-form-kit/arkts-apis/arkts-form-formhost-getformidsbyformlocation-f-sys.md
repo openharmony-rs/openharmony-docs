@@ -34,7 +34,7 @@ function getFormIdsByFormLocation(location: formInfo.FormLocation): Promise<Arra
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象。返回查询到的卡片标识列表。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象。返回查询到的卡片标识列表。 |
 
 **错误码：**
 

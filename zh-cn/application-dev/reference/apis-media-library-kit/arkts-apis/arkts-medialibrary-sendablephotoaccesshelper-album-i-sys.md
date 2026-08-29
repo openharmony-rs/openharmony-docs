@@ -34,7 +34,7 @@ getFaceId(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，人像相册返回tag_id，合影相册返回group_tag，未找到返回空字符串。 |
+| Promise &lt;string&gt; | Promise对象，人像相册返回tag_id，合影相册返回group_tag，未找到返回空字符串。 |
 
 **错误码：**
 

@@ -3,7 +3,7 @@
 width属性设置"auto"时表示自适应宽度，宽度会随索引项最大宽度变化。  
 padding属性默认为4vp。文本最大的字体缩放倍数maxFontScale和最小的字体缩放倍数minFontScale 皆为1，不跟随系统字体大小调节变化。除支持通用属性外，还支持以下属性：除支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** AlphabetIndexerAttribute extends CommonMethod<AlphabetIndexerAttribute>
+**继承/实现关系：** AlphabetIndexerAttribute extends CommonMethod\<AlphabetIndexerAttribute>
 
 **起始版本：** 7
 
@@ -41,7 +41,7 @@ alignStyle(value: IndexerAlign, offset?: Length)
 autoCollapse(value: boolean)
 ```
 
-设置是否使用自适应折叠模式。如果索引项第一项为“#”，当除去第一项后剩余索引项数量 &lt;= 9时，选择全显示模式（所有索引项完整显示）；9 &lt; 剩余索引项数量 &lt;= 13时，根据索引条高度自适应选择全显示模式或者短折叠模式； 剩余索引项数量 &gt; 13时，根据索引条高度自适应选择短折叠模式或者长折叠模式。如果索引项第一项不为“#”，当所有索引项数量 &lt;= 9时，选择全显示模式（所有索引项完整显示）；9 < 所有索引项数量 <= 13时，根据索引条高度自适应选择全显示模式或者短折叠模式； 所有索引项数量 > 13时，根据索引条高度自适应选择短折叠模式或者长折叠模式。
+设置是否使用自适应折叠模式。如果索引项第一项为“#”，当除去第一项后剩余索引项数量 &lt;= 9时，选择全显示模式（所有索引项完整显示）；9 &lt; 剩余索引项数量 &lt;= 13时，根据索引条高度自适应选择全显示模式或者短折叠模式； 剩余索引项数量&gt; 13时，根据索引条高度自适应选择短折叠模式或者长折叠模式。如果索引项第一项不为“#”，当所有索引项数量 &lt;= 9时，选择全显示模式（所有索引项完整显示）；9 < 所有索引项数量 <= 13时，根据索引条高度自适应选择全显示模式或者短折叠模式； 所有索引项数量 > 13时，根据索引条高度自适应选择短折叠模式或者长折叠模式。
 
 > **说明：**
 
@@ -121,7 +121,7 @@ font(value: Font)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Font | 是 | 未选中索引项文本样式。默认值：API version 11及以前：{size:'12.0fp',style: FontStyle.Normal,weight:FontWeight.Regular,family:'HarmonyOS Sans'}API version 12及以后： & lt;br/ & gt;{size:'10.0vp',style:FontStyle.Normal,weight:FontWeight.Medium,family:'HarmonyOS Sans' & lt; br/ & gt;} |
+| value | Font | 是 | 未选中索引项文本样式。默认值：API version 11及以前：{size:'12.0fp',style: FontStyle.Normal,weight:FontWeight.Regular,family:'HarmonyOS Sans'}API version 12及以后： &lt;br/&gt;{size:'10.0vp',style:FontStyle.Normal,weight:FontWeight.Medium,family:'HarmonyOS Sans' &lt; br/&gt;} |
 
 ## itemBorderRadius
 
@@ -249,7 +249,7 @@ onSelected(callback: (index: number) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (index: number) = & gt; void | 是 | 当前选中的索引。 |
+| callback | (index: number) =&gt; void | 是 | 当前选中的索引。 |
 
 ## popupBackground
 
@@ -563,7 +563,7 @@ selectedFont(value: Font)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Font | 是 | 选中项文本样式。默认值：API version 11及以前：{size:'12.0fp',style: FontStyle.Normal,weight:FontWeight.Regular,family:'HarmonyOS Sans'}API version 12及以后： & lt;br/ & gt;{size:'10.0vp',style:FontStyle.Normal,weight:FontWeight.Medium,family:'HarmonyOS Sans' & lt; br/ & gt;} |
+| value | Font | 是 | 选中项文本样式。默认值：API version 11及以前：{size:'12.0fp',style: FontStyle.Normal,weight:FontWeight.Regular,family:'HarmonyOS Sans'}API version 12及以后： &lt;br/&gt;{size:'10.0vp',style:FontStyle.Normal,weight:FontWeight.Medium,family:'HarmonyOS Sans' &lt; br/&gt;} |
 
 ## usingPopup
 

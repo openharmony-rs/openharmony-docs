@@ -26,7 +26,7 @@ function getCandidateConfigs(): Array<WifiDeviceConfig>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;WifiDeviceConfig & gt; | 返回您在应用上创建的所有已存在的WLAN配置列表。 |
+| Array &lt;WifiDeviceConfig&gt; | 返回您在应用上创建的所有已存在的WLAN配置列表。 |
 
 **错误码：**
 

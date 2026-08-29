@@ -12,8 +12,8 @@ import { LazyVWaterFlowLayout, LazyVWaterFlowLayoutAttribute, LazyWaterFlowLayou
 
 | 名称 | 说明 |
 | --- | --- |
-| [LazyVWaterFlowLayoutAttribute](arkts-arkui-arkui-components-arklazywaterflowlayout-lazyvwaterflowlayoutattribute-c.md) | 定义懒加载垂直瀑布流布局属性。@extends LazyWaterFlowLayoutAttribute & lt;LazyVWaterFlowLayoutAttribute & gt; |
-| [LazyWaterFlowLayoutAttribute](arkts-arkui-arkui-components-arklazywaterflowlayout-lazywaterflowlayoutattribute-c.md) | 定义懒加载瀑布流布局属性。@extends CommonMethod & lt;T & gt; |
+| [LazyVWaterFlowLayoutAttribute](arkts-arkui-arkui-components-arklazywaterflowlayout-lazyvwaterflowlayoutattribute-c.md) | 定义懒加载垂直瀑布流布局属性。@extends LazyWaterFlowLayoutAttribute &lt;LazyVWaterFlowLayoutAttribute&gt; |
+| [LazyWaterFlowLayoutAttribute](arkts-arkui-arkui-components-arklazywaterflowlayout-lazywaterflowlayoutattribute-c.md) | 定义懒加载瀑布流布局属性。@extends CommonMethod &lt;T&gt; |
 
 ### 接口
 

@@ -29,7 +29,7 @@ declare function getxattr(path: string, key: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象。返回扩展属性的value。 |
+| Promise &lt;string&gt; | Promise对象。返回扩展属性的value。 |
 
 **错误码：**
 

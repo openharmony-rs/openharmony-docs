@@ -26,7 +26,7 @@ function getStations(): Array<StationInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;StationInfo & gt; | 连接到WLAN热点的客户端列表。 |
+| Array &lt;StationInfo&gt; | 连接到WLAN热点的客户端列表。 |
 
 **错误码：**
 

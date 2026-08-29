@@ -162,7 +162,7 @@ function getAllowedInstallBundles(admin: Want, userId?: number): Promise<Array<s
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回当前/指定用户下的应用程序包安装允许名单。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回当前/指定用户下的应用程序包安装允许名单。 |
 
 **错误码：**
 

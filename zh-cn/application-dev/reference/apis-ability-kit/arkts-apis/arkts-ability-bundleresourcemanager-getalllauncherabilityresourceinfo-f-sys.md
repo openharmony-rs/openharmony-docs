@@ -106,7 +106,7 @@ function getAllLauncherAbilityResourceInfo(resourceFlags: number): Promise<Array
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;LauncherAbilityResourceInfo & gt; & gt; | Promise对象，返回LauncherAbilityResourceInfo数组。 |
+| Promise &lt;Array &lt;LauncherAbilityResourceInfo&gt;&gt; | Promise对象，返回LauncherAbilityResourceInfo数组。 |
 
 **错误码：**
 

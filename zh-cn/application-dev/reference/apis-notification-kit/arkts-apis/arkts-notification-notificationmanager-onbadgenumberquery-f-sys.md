@@ -26,7 +26,7 @@ function onBadgeNumberQuery(callback: (bundle: BundleOption) => Promise<number>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (bundle: BundleOption) = & gt; Promise & lt;number & gt; | 是 | 应用角标数量查询函数。 |
+| callback | (bundle: BundleOption) =&gt; Promise &lt;number&gt; | 是 | 应用角标数量查询函数。 |
 
 **错误码：**
 

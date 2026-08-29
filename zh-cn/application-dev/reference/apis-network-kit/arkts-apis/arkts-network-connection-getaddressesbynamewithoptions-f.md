@@ -32,7 +32,7 @@ function getAddressesByNameWithOptions(host: string, option?: QueryOptions): Pro
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;NetAddress & gt; & gt; | Promise对象，返回查询到的IP地址。返回值中的port字段固定为0，无需关注。 |
+| Promise &lt;Array &lt;NetAddress&gt;&gt; | Promise对象，返回查询到的IP地址。返回值中的port字段固定为0，无需关注。 |
 
 **错误码：**
 

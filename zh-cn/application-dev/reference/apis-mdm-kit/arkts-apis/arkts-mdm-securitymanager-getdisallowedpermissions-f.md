@@ -33,7 +33,7 @@ function getDisallowedPermissions(admin: Want | null, accountId: number): Array<
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 返回禁用的权限列表。 |
+| Array &lt;string&gt; | 返回禁用的权限列表。 |
 
 **错误码：**
 

@@ -34,8 +34,8 @@ addLocalInputEventMonitor(eventMask: number, listener: InputEventListener): Inpu
 注册本地输入事件监视器。接口名中的“Local”表示监视器只在当前UIContext内有效。 并且不影响其他UIContext实例。每个UIContext都维护自己独立的监视器列表。
 
 > **说明：**
-> &gt;性能警告：不要在回调中执行耗时操作！
-> &gt;监控对象注释：
+>&gt;性能警告：不要在回调中执行耗时操作！
+>&gt;监控对象注释：
 > 
 > 
 > -返回的Monitor对象是系统创建的唯一标识符。
@@ -48,8 +48,8 @@ addLocalInputEventMonitor(eventMask: number, listener: InputEventListener): Inpu
 > 
 > 
 > -建议使用变量来保存，以免丢失引用。
-> &gt;使用示例：
-> &gt;。
+>&gt;使用示例：
+>&gt;。
 
 **起始版本：** 26.0.0
 
@@ -156,7 +156,7 @@ animateTo(value: AnimateParam, event: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | [AnimateParam](../arkts-components/arkts-arkui-animateparam-i.md) | 是 | 设置动画效果相关参数。 |
-| event | () = & gt; void | 是 | 指定显示动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
+| event | () =&gt; void | 是 | 指定显示动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
 
 **示例**
 
@@ -500,7 +500,7 @@ closeBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1507,7 +1507,7 @@ get the filtered attributes of the component tree.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| filters | Array & lt;string & gt; | 否 | List of component attributes used for filtering. Currently, only the following filter fields are supported:    **"id"**: unique ID of the component.    **"src"**: source of the resource.    **"content"**: information or data contained in the element, component, or object.    **"editable"**: whether the component is editable.    **"scrollable"**: whether the component is scrollable.    **"selectable"**: whether the component is selectable.    **"focusable"**: whether the component is focusable.    **"focused"**: whether the component is currently focused. If **filters** includes one or more fields, unspecified fields will be filtered out from the results. If **filters** is not provided or is an empty array, none of the aforementioned fields will be filtered out. The following filter field is supported since API version 20:    **"isLayoutInspector"**: whether the component tree contains custom components. If **filters** is omitted or does not contain **"isLayoutInspector"**, the returned component tree will not include custom component details. Other filter fields are used only in testing scenarios. |
+| filters | Array &lt;string&gt; | 否 | List of component attributes used for filtering. Currently, only the following filter fields are supported:    **"id"**: unique ID of the component.    **"src"**: source of the resource.    **"content"**: information or data contained in the element, component, or object.    **"editable"**: whether the component is editable.    **"scrollable"**: whether the component is scrollable.    **"selectable"**: whether the component is selectable.    **"focusable"**: whether the component is focusable.    **"focused"**: whether the component is currently focused. If **filters** includes one or more fields, unspecified fields will be filtered out from the results. If **filters** is not provided or is an empty array, none of the aforementioned fields will be filtered out. The following filter field is supported since API version 20:    **"isLayoutInspector"**: whether the component tree contains custom components. If **filters** is omitted or does not contain **"isLayoutInspector"**, the returned component tree will not include custom component details. Other filter fields are used only in testing scenarios. |
 
 **返回值：**
 
@@ -1609,7 +1609,7 @@ get the filtered attributes of the component tree with the specified id and dept
 | --- | --- | --- | --- |
 | id | string | 是 | ID of the target component. |
 | depth | number | 是 | Number of layers of child components. If the value is **0**, the attributes of the specified component and all its child components are obtained. If the value is **1**, only the attributes of the specified component are obtained. If the value is **2**, the attributes of the specified component and its level-1 child components are obtained. The rest can be deduced by analogy. |
-| filters | Array & lt;string & gt; | 否 | List of component attributes used for filtering. Currently, only the following filter fields are supported:    **"id"**: unique ID of the component.    **"src"**: source of the resource.    **"content"**: information or data contained in the element, component, or object.    **"editable"**: whether the component is editable.    **"scrollable"**: whether the component is scrollable.    **"selectable"**: whether the component is selectable.    **"focusable"**: whether the component is focusable.    **"focused"**: whether the component is currently focused. If **filters** includes one or more fields, unspecified fields will be filtered out from the results. If **filters** is not provided or is an empty array, none of the aforementioned fields will be filtered out. Other filter fields are used only in testing scenarios. |
+| filters | Array &lt;string&gt; | 否 | List of component attributes used for filtering. Currently, only the following filter fields are supported:    **"id"**: unique ID of the component.    **"src"**: source of the resource.    **"content"**: information or data contained in the element, component, or object.    **"editable"**: whether the component is editable.    **"scrollable"**: whether the component is scrollable.    **"selectable"**: whether the component is selectable.    **"focusable"**: whether the component is focusable.    **"focused"**: whether the component is currently focused. If **filters** includes one or more fields, unspecified fields will be filtered out from the results. If **filters** is not provided or is an empty array, none of the aforementioned fields will be filtered out. Other filter fields are used only in testing scenarios. |
 
 **返回值：**
 
@@ -3346,7 +3346,7 @@ openBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOpti
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3956,7 +3956,7 @@ runScopedTask(callback: () => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | () = & gt; void | 是 | 需要在当前UIContext对应的UI实例作用域内执行的回调函数。 |
+| callback | () =&gt; void | 是 | 需要在当前UIContext对应的UI实例作用域内执行的回调函数。 |
 
 **示例**
 
@@ -4896,7 +4896,7 @@ updateBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOp
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

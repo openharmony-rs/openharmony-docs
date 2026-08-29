@@ -99,7 +99,7 @@ function getGlobalProxy(admin: Want): Promise<connection.HttpProxy>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;connection.HttpProxy & gt; | Promise对象，返回网络全局Http代理配置信息。 |
+| Promise &lt;connection.HttpProxy&gt; | Promise对象，返回网络全局Http代理配置信息。 |
 
 **错误码：**
 

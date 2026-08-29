@@ -480,7 +480,7 @@ groupBy(fields: Array<string>): RdbPredicates
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fields | Array & lt;string & gt; | 是 | 指定分组依赖的列名，不能为空字符串。 |
+| fields | Array &lt;string&gt; | 是 | 指定分组依赖的列名，不能为空字符串。 |
 
 **返回值：**
 
@@ -516,7 +516,7 @@ in(field: string, value: Array<ValueType>): RdbPredicates
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
-| value | Array & lt;ValueType & gt; | 是 | 以ValueType型数组形式指定的要匹配的值。 |
+| value | Array &lt;ValueType&gt; | 是 | 以ValueType型数组形式指定的要匹配的值。 |
 
 **返回值：**
 
@@ -587,7 +587,7 @@ inDevices(devices: Array<string>): RdbPredicates
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| devices | Array & lt;string & gt; | 是 | 指定的组网内的远程设备ID，不能为空字符串。 |
+| devices | Array &lt;string&gt; | 是 | 指定的组网内的远程设备ID，不能为空字符串。 |
 
 **返回值：**
 
@@ -968,7 +968,7 @@ notIn(field: string, value: Array<ValueType>): RdbPredicates
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
-| value | Array & lt;ValueType & gt; | 是 | 以ValueType数组形式指定的要匹配的值。 |
+| value | Array &lt;ValueType&gt; | 是 | 以ValueType数组形式指定的要匹配的值。 |
 
 **返回值：**
 

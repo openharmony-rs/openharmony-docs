@@ -38,7 +38,7 @@ applyChanges(mediaChangeRequest: MediaChangeRequest): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回void。 |
+| Promise &lt;void&gt; | Promise对象，返回void。 |
 
 **错误码：**
 
@@ -131,7 +131,7 @@ createAsset(photoType: PhotoType, extension: string, options: CreateOptions, cal
 | --- | --- | --- | --- |
 | photoType | PhotoType | 是 | 创建的文件类型，IMAGE或者VIDEO类型。 |
 | extension | string | 是 | 文件名后缀参数，例如：'jpg'。 |
-| options | [CreateOptions](arkts-medialibrary-photoaccesshelper-createoptions-i.md) | 是 | 创建选项，当前仅支持'title'，例如{title: 'testPhoto'}。    **注意：** 传入'subtype'选项，配置不生效，仅支持保存DEFAULT类型图片。 文件名中不允许出现非法英文字符，包括： . .. \ / : * ? " ' ` &lt; &gt; \| { } [ ] |
+| options | [CreateOptions](arkts-medialibrary-photoaccesshelper-createoptions-i.md) | 是 | 创建选项，当前仅支持'title'，例如{title: 'testPhoto'}。    **注意：** 传入'subtype'选项，配置不生效，仅支持保存DEFAULT类型图片。 文件名中不允许出现非法英文字符，包括： . .. \ / : * ? " ' ` &lt;&gt; \| { } [ ] |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | callback返回创建的图片和视频的uri。 |
 
 **错误码：**
@@ -243,13 +243,13 @@ createAsset(photoType: PhotoType, extension: string, options?: CreateOptions): P
 | --- | --- | --- | --- |
 | photoType | PhotoType | 是 | 创建的文件类型，IMAGE或者VIDEO类型。 |
 | extension | string | 是 | 文件名后缀参数，例如：'jpg'。 |
-| options | [CreateOptions](arkts-medialibrary-photoaccesshelper-createoptions-i.md) | 否 | 创建选项，当前仅支持'title'，例如{title: 'testPhoto'}。    **注意：** 传入'subtype'选项，配置不生效，仅支持保存DEFAULT类型图片。 文件名中不允许出现非法英文字符，包括： . .. \ / : * ? " ' ` &lt; &gt; \| { } [ ] |
+| options | [CreateOptions](arkts-medialibrary-photoaccesshelper-createoptions-i.md) | 否 | 创建选项，当前仅支持'title'，例如{title: 'testPhoto'}。    **注意：** 传入'subtype'选项，配置不生效，仅支持保存DEFAULT类型图片。 文件名中不允许出现非法英文字符，包括： . .. \ / : * ? " ' ` &lt;&gt; \| { } [ ] |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回创建的图片和视频的uri。 |
+| Promise &lt;string&gt; | Promise对象，返回创建的图片和视频的uri。 |
 
 **错误码：**
 
@@ -307,7 +307,7 @@ createAssetWithShortTermPermission(photoCreationConfig: PhotoCreationConfig): Pr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回给应用的媒体库文件uri。uri已对应用授权，支持应用写入数据。如果生成uri异常，则返回批量创建错误码。 |
+| Promise &lt;string&gt; | Promise对象，返回给应用的媒体库文件uri。uri已对应用授权，支持应用写入数据。如果生成uri异常，则返回批量创建错误码。 |
 
 **错误码：**
 
@@ -391,7 +391,7 @@ createAssetWithShortTermPermissionEx(creationSetting: CreationSetting): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回给应用的媒体库文件URI。支持应用使用返回的URI写入数据。 |
+| Promise &lt;string&gt; | Promise对象，返回给应用的媒体库文件URI。支持应用使用返回的URI写入数据。 |
 
 **错误码：**
 
@@ -426,7 +426,7 @@ createDeleteRequest(uriList: Array<string>, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uriList | Array & lt;string & gt; | 是 | 待删除的媒体文件uri数组，最大删除数量300。 |
+| uriList | Array &lt;string&gt; | 是 | 待删除的媒体文件uri数组，最大删除数量300。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | callback返回void。 |
 
 **错误码：**
@@ -498,13 +498,13 @@ createDeleteRequest(uriList: Array<string>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uriList | Array & lt;string & gt; | 是 | 待删除的媒体文件uri数组，最大删除数量300。 |
+| uriList | Array &lt;string&gt; | 是 | 待删除的媒体文件uri数组，最大删除数量300。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回void。 |
+| Promise &lt;void&gt; | Promise对象，返回void。 |
 
 **错误码：**
 
@@ -574,14 +574,14 @@ createPhotoAsset(photoType: PhotoType, extension: string, title?: string): Promi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回创建的图片或视频的URL。 |
+| Promise &lt;string&gt; | Promise对象，返回创建的图片或视频的URL。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes:  1. The extension format is unsupported  2. Title contains unsupported character, such as . .. \ / : * ? " ' ` &lt; &gt; \| { } [ ]  3. The title is an empty string  4. The total length of title and extension is more than 255 |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes:  1. The extension format is unsupported  2. Title contains unsupported character, such as . .. \ / : * ? " ' ` &lt;&gt; \| { } [ ]  3. The title is an empty string  4. The total length of title and extension is more than 255 |
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:  1. Database corrupted;  2. The file system is abnormal;  3. The IPC request timed out. |
 
 **示例**
@@ -628,7 +628,7 @@ getAlbumIdByLpath(lpath: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回相册lpath对应的媒体库相册的ID。 |
+| Promise &lt;number&gt; | Promise对象，返回相册lpath对应的媒体库相册的ID。 |
 
 **错误码：**
 
@@ -809,7 +809,7 @@ getAlbums(type: AlbumType, subtype: AlbumSubtype, options?: FetchOptions): Promi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;FetchResult & lt;Album & gt; & gt; | Promise对象，返回获取相册的结果集。 |
+| Promise &lt;FetchResult &lt;Album&gt;&gt; | Promise对象，返回获取相册的结果集。 |
 
 **错误码：**
 
@@ -966,7 +966,7 @@ getAssets(options: FetchOptions): Promise<FetchResult<PhotoAsset>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;FetchResult & lt;PhotoAsset & gt; & gt; | Promise对象，返回图片和视频数据结果集。 |
+| Promise &lt;FetchResult &lt;PhotoAsset&gt;&gt; | Promise对象，返回图片和视频数据结果集。 |
 
 **错误码：**
 
@@ -1060,7 +1060,7 @@ getBurstAssets(burstKey: string, options: FetchOptions): Promise<FetchResult<Pho
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;FetchResult & lt;PhotoAsset & gt; & gt; | Promise对象，返回连拍照片数据结果集。 |
+| Promise &lt;FetchResult &lt;PhotoAsset&gt;&gt; | Promise对象，返回连拍照片数据结果集。 |
 
 **错误码：**
 
@@ -1119,7 +1119,7 @@ getPhotoPickerComponentDefaultAlbumName(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回默认相册的相册名。 |
+| Promise &lt;string&gt; | Promise对象，返回默认相册的相册名。 |
 
 **错误码：**
 
@@ -1216,7 +1216,7 @@ getSupportedPhotoFormats(photoType: PhotoType): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回支持的图片或者视频后缀列表。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回支持的图片或者视频后缀列表。 |
 
 **错误码：**
 
@@ -1926,7 +1926,7 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回void。 |
+| Promise &lt;void&gt; | Promise对象，返回void。 |
 
 **错误码：**
 
@@ -1970,13 +1970,13 @@ requestPhotoUrisReadPermission(srcFileUris: Array<string>): Promise<Array<string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| srcFileUris | Array & lt;string & gt; | 是 | 需进行授权的图片/视频文件对应的 [媒体文件URI](../../../file-management/user-file-uri-intro.md#媒体文件uri)。    **注意：** 仅支持处理图片、视频URI，且最大数量限制为100个。 |
+| srcFileUris | Array &lt;string&gt; | 是 | 需进行授权的图片/视频文件对应的 [媒体文件URI](../../../file-management/user-file-uri-intro.md#媒体文件uri)。    **注意：** 仅支持处理图片、视频URI，且最大数量限制为100个。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回已授权的URI列表。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回已授权的URI列表。 |
 
 **错误码：**
 
@@ -2028,7 +2028,7 @@ requestPhotoUrisReadPermissionEx(srcFileUris: Array<string>): Promise<RequestRea
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| srcFileUris | Array & lt;string & gt; | 是 | 需进行授权的图片/视频文件对应的 [媒体库uri](../../../file-management/user-file-uri-intro.md#媒体文件uri)。    **注意：** 仅支持处理图片、视频uri，且最大数量限制为100个。 |
+| srcFileUris | Array &lt;string&gt; | 是 | 需进行授权的图片/视频文件对应的 [媒体库uri](../../../file-management/user-file-uri-intro.md#媒体文件uri)。    **注意：** 仅支持处理图片、视频uri，且最大数量限制为100个。 |
 
 **返回值：**
 
@@ -2090,7 +2090,7 @@ setAssetCompatibleCapability(capability: AssetCompatibleCapability): Promise<voi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2138,14 +2138,14 @@ showAssetsCreationDialog(srcFileUris: Array<string>, photoCreationConfigs: Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| srcFileUris | Array & lt;string & gt; | 是 | 需保存到媒体库中的图片/视频文件对应的 [媒体文件URI](../../../file-management/user-file-uri-intro.md#媒体文件uri)。    **注意：**    - 一次弹窗最多保存100张图片。    - 仅支持处理图片、视频URI。    - 不支持手动拼接的URI，需调用接口获取，获取方式参考[媒体文件URI获取方式](../../../file-management/user-file-uri-intro.md#媒体文件uri获取方式)。 |
+| srcFileUris | Array &lt;string&gt; | 是 | 需保存到媒体库中的图片/视频文件对应的 [媒体文件URI](../../../file-management/user-file-uri-intro.md#媒体文件uri)。    **注意：**    - 一次弹窗最多保存100张图片。    - 仅支持处理图片、视频URI。    - 不支持手动拼接的URI，需调用接口获取，获取方式参考[媒体文件URI获取方式](../../../file-management/user-file-uri-intro.md#媒体文件uri获取方式)。 |
 | photoCreationConfigs | Array&lt;[PhotoCreationConfig](arkts-medialibrary-photoaccesshelper-photocreationconfig-i.md)&gt; | 是 | 保存图片或视频到媒体库的配置，包括文件名等，与srcFileUris保持一一对应。    **注意：** 传入'subtype'选项，配置项不生效，仅支持保存DEFAULT类型图片。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回给应用的媒体库文件URI列表。URI已对应用授权，支持应用写入数据。如果生成URI异常，则返回批量创建错误码。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回给应用的媒体库文件URI列表。URI已对应用授权，支持应用写入数据。如果生成URI异常，则返回批量创建错误码。 |
 
 **错误码：**
 
@@ -2214,14 +2214,14 @@ showAssetsCreationDialogEx(srcFileUris: Array<string>, creationSettings: Array<C
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| srcFileUris | Array & lt;string & gt; | 是 | 需保存到媒体库中的图片或视频文件对应的 [媒体文件URI](../../../file-management/user-file-uri-intro.md#媒体文件uri)。    **注意：**    - 一次弹窗最多保存100张图片。    - 仅支持处理图片和视频URI。    - 不支持手动拼接URI，需调用接口获取，具体请参考[媒体文件URI获取方式](../../../file-management/user-file-uri-intro.md#媒体文件uri获取方式)。 |
+| srcFileUris | Array &lt;string&gt; | 是 | 需保存到媒体库中的图片或视频文件对应的 [媒体文件URI](../../../file-management/user-file-uri-intro.md#媒体文件uri)。    **注意：**    - 一次弹窗最多保存100张图片。    - 仅支持处理图片和视频URI。    - 不支持手动拼接URI，需调用接口获取，具体请参考[媒体文件URI获取方式](../../../file-management/user-file-uri-intro.md#媒体文件uri获取方式)。 |
 | creationSettings | Array&lt;[CreationSetting](arkts-medialibrary-photoaccesshelper-creationsetting-i.md)&gt; | 是 | 保存图片或视频到媒体库的配置，包括文件名等，与srcFileUris参数中的URI保持一一对应。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回给应用的媒体库文件URI列表。支持应用使用返回的URI写入数据。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回给应用的媒体库文件URI列表。支持应用使用返回的URI写入数据。 |
 
 **错误码：**
 
@@ -2296,7 +2296,7 @@ showSingleAssetCreationDialogEx(srcFileUri: string, creationSetting: CreationSet
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回给应用的媒体库文件URI。URI已对应用授权，支持应用写入数据。如果生成URI异常，则返回批量创建错误码。 |
+| Promise &lt;string&gt; | Promise对象，返回给应用的媒体库文件URI。URI已对应用授权，支持应用写入数据。如果生成URI异常，则返回批量创建错误码。 |
 
 **错误码：**
 

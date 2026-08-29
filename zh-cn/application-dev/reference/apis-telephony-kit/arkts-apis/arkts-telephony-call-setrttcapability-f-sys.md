@@ -32,7 +32,7 @@ function setRttCapability(accountId: number, isEnable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | The promise returned by the setRttCapability. |
+| Promise &lt;void&gt; | The promise returned by the setRttCapability. |
 
 **错误码：**
 

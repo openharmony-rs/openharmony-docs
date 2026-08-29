@@ -34,7 +34,7 @@ Enumerate the XMP tags from specified path and uses a callback to return the res
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (path: string, tag: XMPTag) = & gt; boolean | 是 | Callback used to return the XMP node and the corresponding XMPTag. The callback receives a path argument that follows the XMP namespace:path format. |
+| callback | (path: string, tag: XMPTag) =&gt; boolean | 是 | Callback used to return the XMP node and the corresponding XMPTag. The callback receives a path argument that follows the XMP namespace:path format. |
 | rootPath | string | 否 | Enumerate root path. If this parameter is not specified, the default value is root path. |
 | options | [XMPEnumerateOptions](arkts-image-image-xmpenumerateoptions-i.md) | 否 | XMP enumerate option. |
 
@@ -62,7 +62,7 @@ Obtains the XMP metadata as a blob.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ArrayBuffer & gt; | A Promise instance used to return the ArrayBuffer of blob. |
+| Promise &lt;ArrayBuffer&gt; | A Promise instance used to return the ArrayBuffer of blob. |
 
 **错误码：**
 
@@ -191,7 +191,7 @@ Get a single XMP tag from specified path.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[XMPTag](arkts-image-image-xmptag-i.md) \| null & gt; | Promise used to return the XMP tag. |
+| Promise&lt;[XMPTag](arkts-image-image-xmptag-i.md) \| null&gt; | Promise used to return the XMP tag. |
 
 **错误码：**
 
@@ -256,7 +256,7 @@ Register a new namespace according to the xml namespace and prefix.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
+| Promise &lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
 
 **错误码：**
 
@@ -288,7 +288,7 @@ Remove the XMP tag from specified path.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
+| Promise &lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
 
 **错误码：**
 
@@ -320,7 +320,7 @@ Set a blob into the XMP metadata.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
+| Promise &lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
 
 **错误码：**
 
@@ -470,7 +470,7 @@ Set the XMP type and value of the XMP tag in the specified path.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
+| Promise &lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
 
 **错误码：**
 

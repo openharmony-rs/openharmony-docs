@@ -2,7 +2,7 @@
 
 支持通用属性。支持通用事件。
 
-**继承/实现关系：** FlexAttribute extends CommonMethod<FlexAttribute>
+**继承/实现关系：** FlexAttribute extends CommonMethod\<FlexAttribute>
 
 **起始版本：** 7
 

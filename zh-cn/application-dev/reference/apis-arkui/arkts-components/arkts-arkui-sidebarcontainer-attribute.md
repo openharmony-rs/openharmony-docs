@@ -2,7 +2,7 @@
 
 除支持通用属性外，还支持以下属性：除支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** SideBarContainerAttribute extends CommonMethod<SideBarContainerAttribute>
+**继承/实现关系：** SideBarContainerAttribute extends CommonMethod\<SideBarContainerAttribute>
 
 **起始版本：** 8
 
@@ -202,7 +202,7 @@ onChange(callback: (value: boolean) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (value: boolean) = & gt; void | 是 | true表示显示，false表示隐藏。 |
+| callback | (value: boolean) =&gt; void | 是 | true表示显示，false表示隐藏。 |
 
 ## showControlButton
 

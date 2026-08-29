@@ -73,7 +73,7 @@ function getStorage(path: string): Promise<Storage>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Storage & gt; | Promise实例，用于异步获取结果。 |
+| Promise &lt;Storage&gt; | Promise实例，用于异步获取结果。 |
 
 **示例**
 

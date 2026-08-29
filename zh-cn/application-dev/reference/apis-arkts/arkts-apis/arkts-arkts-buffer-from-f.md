@@ -74,7 +74,7 @@ function from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number,
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[byteOffset/length]" is out of range. It must be & gt;= [left range] and & lt;= [right range]. Received value is: [byteOffset/length] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[byteOffset/length]" is out of range. It must be&gt;= [left range] and &lt;= [right range]. Received value is: [byteOffset/length] |
 
 **示例**
 
@@ -151,7 +151,7 @@ function from(object: Object, offsetOrEncoding: number | string, length: number)
 | --- | --- | --- | --- |
 | object | Object | 是 | 支持Symbol.toPrimitive或valueOf()的对象，valueOf()或Symbol.toPrimitive的返回值支持string和ArrayBuffer等类型。 |
 | offsetOrEncoding | number \| string | 是 | 字节偏移量或编码格式。当object的valueOf()返回值为ArrayBuffer时，作为字节偏移量；其他情况下作为编码格式。 |
-| length | number | 是 | 字节长度（此入参仅在object的valueOf()返回值为ArrayBuffer时生效，取值范围：0 & lt;= length & lt;= ArrayBuffer.byteLength，超出范 围时报错: 10200001）。其他情况下可填任意number类型值，该参数不会对结果产生影响。 |
+| length | number | 是 | 字节长度（此入参仅在object的valueOf()返回值为ArrayBuffer时生效，取值范围：0 &lt;= length &lt;= ArrayBuffer.byteLength，超出范 围时报错: 10200001）。其他情况下可填任意number类型值，该参数不会对结果产生影响。 |
 
 **返回值：**
 

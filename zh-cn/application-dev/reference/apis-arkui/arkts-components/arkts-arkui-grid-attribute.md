@@ -2,7 +2,7 @@
 
 除支持[通用属性](arkts-arkui-commonmethod-c.md)和[滚动组件通用属性](arkts-arkui-scrollablecommonmethod-c.md)外，还 支持以下属性：除支持通用事件和滚动组件通用事件外，还 支持以下事件：
 
-**继承/实现关系：** GridAttribute extends ScrollableCommonMethod<GridAttribute>
+**继承/实现关系：** GridAttribute extends ScrollableCommonMethod\<GridAttribute>
 
 **起始版本：** 7
 
@@ -462,7 +462,7 @@ onEditModeChange(callback: Callback<boolean> | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback & lt;boolean & gt; \ | undefined | 是 | 编辑模式状态变化时触发的回调。回调参数类型为boolean，true表示进入编辑模式，false表示退出编辑模式。 传入undefined时取消回调。 |
+| callback | Callback &lt;boolean&gt; \ | undefined | 是 | 编辑模式状态变化时触发的回调。回调参数类型为boolean，true表示进入编辑模式，false表示退出编辑模式。 传入undefined时取消回调。 |
 
 ## onItemDragEnter
 
@@ -482,7 +482,7 @@ onItemDragEnter(event: (event: ItemDragInfo) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (event: ItemDragInfo) = & gt; void | 是 | 拖拽点的信息。 |
+| event | (event: ItemDragInfo) =&gt; void | 是 | 拖拽点的信息。 |
 
 ## onItemDragLeave
 
@@ -502,7 +502,7 @@ onItemDragLeave(event: (event: ItemDragInfo, itemIndex: number) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (event: ItemDragInfo, itemIndex: number) = & gt; void | 是 |  |
+| event | (event: ItemDragInfo, itemIndex: number) =&gt; void | 是 |  |
 
 ## onItemDragMove
 
@@ -522,7 +522,7 @@ onItemDragMove(event: (event: ItemDragInfo, itemIndex: number, insertIndex: numb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (event: ItemDragInfo, itemIndex: number, insertIndex: number) = & gt; void | 是 |  |
+| event | (event: ItemDragInfo, itemIndex: number, insertIndex: number) =&gt; void | 是 |  |
 
 ## onItemDragStart
 
@@ -542,7 +542,7 @@ onItemDragStart(event: OnItemDragStartCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [OnItemDragStartCallback](arkts-arkui-onitemdragstartcallback-t.md) | 是 | GridItem拖拽开始时触发的回调。 API version 22及之前版本，该参数类型为(event: ItemDragInfo, itemIndex: number) = & gt; (() = & gt; any) \ | void，其中event和itemIndex参 数含义参考[OnItemDragStartCallback](arkts-arkui-onitemdragstartcallback-t.md)。<br>**起始版本：** 23 |
+| event | [OnItemDragStartCallback](arkts-arkui-onitemdragstartcallback-t.md) | 是 | GridItem拖拽开始时触发的回调。 API version 22及之前版本，该参数类型为(event: ItemDragInfo, itemIndex: number) =&gt; (() =&gt; any) \ | void，其中event和itemIndex参 数含义参考[OnItemDragStartCallback](arkts-arkui-onitemdragstartcallback-t.md)。<br>**起始版本：** 23 |
 
 ## onItemDrop
 
@@ -564,7 +564,7 @@ onItemDrop(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (event: ItemDragInfo, itemIndex: number, insertIndex: number, isSuccess: boolean) = & gt; void | 是 |  |
+| event | (event: ItemDragInfo, itemIndex: number, insertIndex: number, isSuccess: boolean) =&gt; void | 是 |  |
 
 ## onReachEnd
 
@@ -586,7 +586,7 @@ onReachEnd(event: () => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () = & gt; void | 是 | 网格到达末尾位置时触发的回调。 |
+| event | () =&gt; void | 是 | 网格到达末尾位置时触发的回调。 |
 
 ## onReachStart
 
@@ -608,7 +608,7 @@ onReachStart(event: () => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () = & gt; void | 是 | 网格到达起始位置时触发的回调。 |
+| event | () =&gt; void | 是 | 网格到达起始位置时触发的回调。 |
 
 ## onScroll
 
@@ -634,7 +634,7 @@ onScroll(event: (scrollOffset: number, scrollState: ScrollState) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (scrollOffset: number, scrollState: ScrollState) = & gt; void | 是 | 网格滚动回调，scrollOffset为每帧滚动偏移量，ScrollState为当前滑动状态。 |
+| event | (scrollOffset: number, scrollState: ScrollState) =&gt; void | 是 | 网格滚动回调，scrollOffset为每帧滚动偏移量，ScrollState为当前滑动状态。 |
 
 ## onScrollBarUpdate
 
@@ -656,7 +656,7 @@ onScrollBarUpdate(event: (index: number, offset: number) => ComputedBarAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (index: number, offset: number) = & gt; ComputedBarAttribute | 是 | 网格滚动回调，index为当前显示的网格起始位置的索引值，offset为当前显示的网格起始位置元素相对网格显示起始位置的偏移（单位vp），返回ComputedBarAttribute更新滚动条位置和高度。 |
+| event | (index: number, offset: number) =&gt; ComputedBarAttribute | 是 | 网格滚动回调，index为当前显示的网格起始位置的索引值，offset为当前显示的网格起始位置元素相对网格显示起始位置的偏移（单位vp），返回ComputedBarAttribute更新滚动条位置和高度。 |
 
 ## onScrollFrameBegin
 
@@ -705,7 +705,7 @@ onScrollIndex(event: (first: number, last: number) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (first: number, last: number) = & gt; void | 是 | 网格滚动回调，first为当前显示的网格起始位置的索引值，last为当前显示的网格终止位置的索引值。 |
+| event | (first: number, last: number) =&gt; void | 是 | 网格滚动回调，first为当前显示的网格起始位置的索引值，last为当前显示的网格终止位置的索引值。 |
 
 ## onScrollStart
 
@@ -727,7 +727,7 @@ onScrollStart(event: () => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () = & gt; void | 是 | 网格滑动开始时触发的回调。 |
+| event | () =&gt; void | 是 | 网格滑动开始时触发的回调。 |
 
 ## onScrollStop
 
@@ -749,7 +749,7 @@ onScrollStop(event: () => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () = & gt; void | 是 | 网格滑动停止时触发的回调。 |
+| event | () =&gt; void | 是 | 网格滑动停止时触发的回调。 |
 
 ## rowsGap
 

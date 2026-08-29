@@ -46,7 +46,7 @@ access(sourceFileUri: string) : Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Returns whether it exists. |
+| Promise &lt;boolean&gt; | Returns whether it exists. |
 
 **错误码：**
 
@@ -472,7 +472,7 @@ copyFile(sourceUri: string, destUri: string, fileName: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | 返回一个复制成功的文件的uri。 |
+| Promise &lt;string&gt; | 返回一个复制成功的文件的uri。 |
 
 **错误码：**
 
@@ -622,7 +622,7 @@ createFile(uri: string, displayName: string) : Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Returns the new file's URI. |
+| Promise &lt;string&gt; | Returns the new file's URI. |
 
 **错误码：**
 
@@ -815,7 +815,7 @@ delete(uri: string) : Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; |  |
+| Promise &lt;number&gt; |  |
 
 **错误码：**
 
@@ -1001,7 +1001,7 @@ getFileInfoFromRelativePath(relativePath: string) : Promise<FileInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;FileInfo & gt; | Returns a FileInfo. |
+| Promise &lt;FileInfo&gt; | Returns a FileInfo. |
 
 **示例**
 
@@ -1106,7 +1106,7 @@ getFileInfoFromUri(uri: string) : Promise<FileInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;FileInfo & gt; | Returns a FileInfo. |
+| Promise &lt;FileInfo&gt; | Returns a FileInfo. |
 
 **示例**
 
@@ -1403,7 +1403,7 @@ mkDir(parentUri: string, displayName: string) : Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Returns the new directory's URI. |
+| Promise &lt;string&gt; | Returns the new directory's URI. |
 
 **错误码：**
 
@@ -1597,7 +1597,7 @@ move(sourceFile: string, destFile: string) : Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | 新路径下的文件(夹)的uri。 |
+| Promise &lt;string&gt; | 新路径下的文件(夹)的uri。 |
 
 **错误码：**
 
@@ -1789,7 +1789,7 @@ moveFile(sourceUri: string, destUri: string, fileName: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | 新路径下的文件uri。 |
+| Promise &lt;string&gt; | 新路径下的文件uri。 |
 
 **错误码：**
 
@@ -2285,7 +2285,7 @@ openFile(uri: string, flags: OPENFLAGS) : Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Returns the file descriptor. |
+| Promise &lt;number&gt; | Returns the file descriptor. |
 
 **错误码：**
 
@@ -2471,7 +2471,7 @@ query(uri: string, metaJson: string) : Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | 返回json字符串，包括查询属性和值。 |
+| Promise &lt;string&gt; | 返回json字符串，包括查询属性和值。 |
 
 **示例**
 
@@ -2615,7 +2615,7 @@ rename(uri: string, displayName: string) : Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Returns a URI representing the new file or directory. |
+| Promise &lt;string&gt; | Returns a URI representing the new file or directory. |
 
 **错误码：**
 

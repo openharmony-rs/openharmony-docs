@@ -33,7 +33,7 @@ function isEmbeddedOpenAllowed(context: Context, appId: string): Promise<boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示允许嵌入式启动；返回false表示不允许嵌入式启动。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示允许嵌入式启动；返回false表示不允许嵌入式启动。 |
 
 **错误码：**
 

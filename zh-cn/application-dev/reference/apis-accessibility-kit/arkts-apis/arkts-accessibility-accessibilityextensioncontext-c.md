@@ -520,7 +520,7 @@ injectGesture(gesturePath: GesturePath): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -608,7 +608,7 @@ setTargetBundleName(targetNames: Array<string>, callback: AsyncCallback<void>): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| targetNames | Array & lt;string & gt; | 是 | 设置关注应用的包名。设置后，服务仅接收关注应用的无障碍事件；未设置时默认接收所有应用的无障碍事件；取消关注应用时传空数组。 |
+| targetNames | Array &lt;string&gt; | 是 | 设置关注应用的包名。设置后，服务仅接收关注应用的无障碍事件；未设置时默认接收所有应用的无障碍事件；取消关注应用时传空数组。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置关注的目标包名成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -655,13 +655,13 @@ setTargetBundleName(targetNames: Array<string>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| targetNames | Array & lt;string & gt; | 是 | 设置关注应用的包名。设置后，服务仅接收关注应用的无障碍事件；未设置时默认接收所有应用的无障碍事件；取消关注应用时传空数组。 |
+| targetNames | Array &lt;string&gt; | 是 | 设置关注应用的包名。设置后，服务仅接收关注应用的无障碍事件；未设置时默认接收所有应用的无障碍事件；取消关注应用时传空数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

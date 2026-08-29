@@ -82,7 +82,7 @@ function getTouchpadPointerSpeed(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回触控板光标移动速度，speed取值范围[1,11]。 |
+| Promise &lt;number&gt; | Promise对象，返回触控板光标移动速度，speed取值范围[1,11]。 |
 
 **错误码：**
 

@@ -70,7 +70,7 @@ function isDefaultApplication(type: string) : Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回当前应用是否是默认应用，true表示是默认应用，false表示不是默认应用。 |
+| Promise &lt;boolean&gt; | Promise对象，返回当前应用是否是默认应用，true表示是默认应用，false表示不是默认应用。 |
 
 **错误码：**
 

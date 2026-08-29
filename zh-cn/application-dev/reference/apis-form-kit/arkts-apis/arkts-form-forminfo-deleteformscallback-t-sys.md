@@ -18,7 +18,7 @@ type DeleteFormsCallback = (formIds: Array<string>) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| formIds | Array & lt;string & gt; | 是 | 被删除的卡片标识列表。 |
+| formIds | Array &lt;string&gt; | 是 | 被删除的卡片标识列表。 |
 
 **示例**
 

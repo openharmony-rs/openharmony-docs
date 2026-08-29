@@ -27,13 +27,13 @@ function enableAbility(name: string, capability: Array<accessibility.Capability>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 辅助扩展应用的名称，格式为：'bundleName/abilityName'。 |
-| capability | Array & lt;accessibility.Capability & gt; | 是 | 辅助扩展应用的能力属性。 |
+| capability | Array &lt;accessibility.Capability&gt; | 是 | 辅助扩展应用的能力属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -87,7 +87,7 @@ function enableAbility(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 辅助扩展应用的名称，格式为：'bundleName/abilityName'。 |
-| capability | Array & lt;accessibility.Capability & gt; | 是 | 辅助扩展应用的能力属性。 |
+| capability | Array &lt;accessibility.Capability&gt; | 是 | 辅助扩展应用的能力属性。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当启用辅助扩展成功，err为undefined，否则为错误对象。 |
 
 **错误码：**

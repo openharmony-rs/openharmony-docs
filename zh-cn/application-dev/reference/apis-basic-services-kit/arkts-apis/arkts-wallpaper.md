@@ -55,7 +55,7 @@ import { wallpaper } from '@kit.BasicServicesKit';
 | [getMinWidthSync(壁纸)](arkts-basicservices-wallpaper-getminwidthsync-f-sys.md) | 获取壁纸的最小宽度值。 |
 | [getPixelMap(壁纸)](arkts-basicservices-wallpaper-getpixelmap-f-sys.md) | 获取壁纸图片的像素图。 |
 | [getPixelMap(壁纸)](arkts-basicservices-wallpaper-getpixelmap-f-sys.md) | 获取壁纸图片的像素图。 |
-| [getWallpaperByState(壁纸)](arkts-basicservices-wallpaper-getwallpaperbystate-f-sys.md) | 获取指定壁纸类型、折展态、横竖屏的壁纸图片的像素图，如果指定的壁纸不存在，会逐步降级匹配，unfolded-land - & gt; unfolded-port - & gt;normal-port。使用promise异步回调。 |
+| [getWallpaperByState(壁纸)](arkts-basicservices-wallpaper-getwallpaperbystate-f-sys.md) | 获取指定壁纸类型、折展态、横竖屏的壁纸图片的像素图，如果指定的壁纸不存在，会逐步降级匹配，unfolded-land -&gt; unfolded-port -&gt;normal-port。使用promise异步回调。 |
 | off(壁纸) | 取消订阅壁纸变化通知事件。不支持多线程并发调用。 |
 | on(壁纸) | 订阅壁纸变化通知事件。不支持多线程并发调用。 |
 | [restore(壁纸)](arkts-basicservices-wallpaper-restore-f-sys.md) | 移除指定类型的壁纸，恢复为默认显示的壁纸。使用callback异步回调。 |

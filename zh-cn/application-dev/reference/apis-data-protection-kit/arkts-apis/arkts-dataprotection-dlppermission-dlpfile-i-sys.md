@@ -40,7 +40,7 @@ addDLPLinkFile(linkFileName: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -178,7 +178,7 @@ closeDLPFile(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -318,7 +318,7 @@ deleteDLPLinkFile(linkFileName: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -454,13 +454,13 @@ recoverDLPFile(plaintextFd: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| plaintextFd | number | 是 | 目标明文文件的fd。取值范围为[0, 2 & lt;sup & gt;31 & lt;/sup & gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2 & lt;sup & gt;31 & lt;/sup & gt;-1时，fd的值被截断。 |
+| plaintextFd | number | 是 | 目标明文文件的fd。取值范围为[0, 2 &lt;sup&gt;31 &lt;/sup&gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2 &lt;sup&gt;31 &lt;/sup&gt;-1时，fd的值被截断。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -535,7 +535,7 @@ recoverDLPFile(plaintextFd: number, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| plaintextFd | number | 是 | 目标明文文件的fd。取值范围为[0, 2 & lt;sup & gt;31 & lt;/sup & gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2 & lt;sup & gt;31 & lt;/sup & gt;-1时，fd的值被截断。 |
+| plaintextFd | number | 是 | 目标明文文件的fd。取值范围为[0, 2 &lt;sup&gt;31 &lt;/sup&gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2 &lt;sup&gt;31 &lt;/sup&gt;-1时，fd的值被截断。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，用于接收恢复明文文件的结果。回调参数包括：err（错误对象，成功时为undefined）。 |
 
 **错误码：**
@@ -619,7 +619,7 @@ replaceDLPLinkFile(linkFileName: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -759,7 +759,7 @@ resumeFuseLink(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -895,7 +895,7 @@ stopFuseLink(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

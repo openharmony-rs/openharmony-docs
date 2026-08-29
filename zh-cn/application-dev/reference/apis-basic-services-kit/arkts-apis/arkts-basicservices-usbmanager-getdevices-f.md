@@ -26,7 +26,7 @@ function getDevices(): Array<Readonly<USBDevice>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;Readonly & lt;USBDevice & gt; & gt; | 设备信息列表。 |
+| Array &lt;Readonly &lt;USBDevice&gt;&gt; | 设备信息列表。 |
 
 **错误码：**
 

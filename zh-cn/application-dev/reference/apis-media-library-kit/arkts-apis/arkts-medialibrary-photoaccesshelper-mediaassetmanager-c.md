@@ -41,7 +41,7 @@ static cancelRequest(context: Context, requestId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回void。 |
+| Promise &lt;void&gt; | Promise对象，返回void。 |
 
 **错误码：**
 
@@ -152,7 +152,7 @@ static quickRequestImage(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回请求id，可用于 [cancelRequest]{ |
+| Promise &lt;string&gt; | Promise对象，返回请求id，可用于 [cancelRequest]{ |
 
 **错误码：**
 
@@ -229,7 +229,7 @@ static requestImage(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回请求id，可用于 [cancelRequest]{ |
+| Promise &lt;string&gt; | Promise对象，返回请求id，可用于 [cancelRequest]{ |
 
 **错误码：**
 
@@ -314,7 +314,7 @@ static requestImageData(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回请求id，可用于 [cancelRequest]{ |
+| Promise &lt;string&gt; | Promise对象，返回请求id，可用于 [cancelRequest]{ |
 
 **错误码：**
 
@@ -398,7 +398,7 @@ static requestMovingPhoto(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回请求id，可用于 [cancelRequest]{ |
+| Promise &lt;string&gt; | Promise对象，返回请求id，可用于 [cancelRequest]{ |
 
 **错误码：**
 
@@ -483,7 +483,7 @@ static requestVideoFile(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回请求id，可用于 [cancelRequest]{ |
+| Promise &lt;string&gt; | Promise对象，返回请求id，可用于 [cancelRequest]{ |
 
 **错误码：**
 

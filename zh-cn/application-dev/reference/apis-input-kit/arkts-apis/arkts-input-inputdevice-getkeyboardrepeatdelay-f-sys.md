@@ -82,7 +82,7 @@ function getKeyboardRepeatDelay(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回键盘按键的重复时延，单位为ms。 |
+| Promise &lt;number&gt; | Promise对象，返回键盘按键的重复时延，单位为ms。 |
 
 **错误码：**
 

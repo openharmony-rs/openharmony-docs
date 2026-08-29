@@ -83,7 +83,7 @@ function getValidReminders(): Promise<Array<ReminderRequest>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;ReminderRequest & gt; & gt; | Promise对象，返回当前应用设置的所有有效（未过期）的代理提醒。 |
+| Promise &lt;Array &lt;ReminderRequest&gt;&gt; | Promise对象，返回当前应用设置的所有有效（未过期）的代理提醒。 |
 
 **错误码：**
 

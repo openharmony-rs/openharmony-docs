@@ -30,7 +30,7 @@ function getSnapshot(windowId: number): Promise<image.PixelMap>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;image.PixelMap & gt; | Promise that returns no value. |
+| Promise &lt;image.PixelMap&gt; | Promise that returns no value. |
 
 **错误码：**
 

@@ -76,7 +76,7 @@ function changeConfirmation(sharingResource: string, state: State): Promise<Resu
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Result & lt;void & gt; & gt; | Promise对象，返回更改共享邀请状态的结果。 |
+| Promise &lt;Result &lt;void&gt;&gt; | Promise对象，返回更改共享邀请状态的结果。 |
 
 **错误码：**
 

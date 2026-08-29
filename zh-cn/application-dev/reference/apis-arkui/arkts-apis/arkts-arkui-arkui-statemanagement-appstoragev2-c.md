@@ -100,7 +100,7 @@ static keys(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 所有AppStorageV2中的key。 |
+| Array &lt;string&gt; | 所有AppStorageV2中的key。 |
 
 **示例**
 

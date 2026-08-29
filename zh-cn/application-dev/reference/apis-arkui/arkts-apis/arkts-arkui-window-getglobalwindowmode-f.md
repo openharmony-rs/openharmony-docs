@@ -30,7 +30,7 @@ function getGlobalWindowMode(displayId?: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回获取到的窗口模式。每一个二进制位代表一种窗口模式，当前支持的窗口模式见 [GlobalWindowMode]{ |
+| Promise &lt;number&gt; | Promise对象。返回获取到的窗口模式。每一个二进制位代表一种窗口模式，当前支持的窗口模式见 [GlobalWindowMode]{ |
 
 **错误码：**
 

@@ -2,7 +2,7 @@
 
 除支持通用属性外，还支持以下属性：除支持通用事件，还支持以下事件：
 
-**继承/实现关系：** CalendarPickerAttribute extends CommonMethod<CalendarPickerAttribute>
+**继承/实现关系：** CalendarPickerAttribute extends CommonMethod\<CalendarPickerAttribute>
 
 **起始版本：** 10
 
@@ -101,7 +101,7 @@ onChange(callback: Callback<Date>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback & lt;Date & gt; | 是 | 日期选择时触发的回调函数。回调参数为Date类型的选中日期值，开发者可在回调函数中获取用户选中的日 期并进行相应处理。<br>**起始版本：** 18 |
+| callback | Callback &lt;Date&gt; | 是 | 日期选择时触发的回调函数。回调参数为Date类型的选中日期值，开发者可在回调函数中获取用户选中的日 期并进行相应处理。<br>**起始版本：** 18 |
 
 ## onChange
 

@@ -227,7 +227,7 @@ function queryKey(id: number, holder?: Holder): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象。返回查询到的联系人对应的key。 |
+| Promise &lt;string&gt; | Promise对象。返回查询到的联系人对应的key。 |
 
 **示例**
 
@@ -271,7 +271,7 @@ function queryKey(context: Context, id: number, holder?: Holder): Promise<string
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象。返回查询到的联系人对应的key。 |
+| Promise &lt;string&gt; | Promise对象。返回查询到的联系人对应的key。 |
 
 **错误码：**
 

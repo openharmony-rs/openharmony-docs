@@ -31,7 +31,7 @@ function addCustomDnsRule(host: string, ip: Array<string>, callback: AsyncCallba
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | host | string | 是 | 需要自定义解析的主机名。 |
-| ip | Array & lt;string & gt; | 是 | 主机名所映射的IP地址列表。 |
+| ip | Array &lt;string&gt; | 是 | 主机名所映射的IP地址列表。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当为当前应用程序添加自定义host和对应的ip地址的映射成功，error为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -86,13 +86,13 @@ function addCustomDnsRule(host: string, ip: Array<string>): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | host | string | 是 | 需要自定义解析的主机名。 |
-| ip | Array & lt;string & gt; | 是 | 主机名所映射的IP地址列表。 |
+| ip | Array &lt;string&gt; | 是 | 主机名所映射的IP地址列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

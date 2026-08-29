@@ -2,7 +2,7 @@
 
 除支持[通用属性](arkts-arkui-commonmethod-c.md)外，还支持以下属性。除支持[通用事件](arkts-arkui-commonmethod-c.md)外，还支持以下事件。
 
-**继承/实现关系：** PatternLockAttribute extends CommonMethod<PatternLockAttribute>
+**继承/实现关系：** PatternLockAttribute extends CommonMethod\<PatternLockAttribute>
 
 **起始版本：** 9
 
@@ -143,7 +143,7 @@ onDotConnect(callback: import('../api/@ohos.base').Callback<number>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | import('../api/@ohos.base').Callback & lt;number & gt; | 是 | 密码输入选中宫格圆点时触发该回调。回调参数为选中宫格圆点的索引值（第一行圆点从左往右依次为0、1 、2，第二行圆点从左往右依次为3、4、5，第三行圆点从左往右依次为6、7、8）。 |
+| callback | import('../api/@ohos.base').Callback &lt;number&gt; | 是 | 密码输入选中宫格圆点时触发该回调。回调参数为选中宫格圆点的索引值（第一行圆点从左往右依次为0、1 、2，第二行圆点从左往右依次为3、4、5，第三行圆点从左往右依次为6、7、8）。 |
 
 ## onPatternComplete
 
@@ -168,7 +168,7 @@ onPatternComplete(callback: (input: Array<number>) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (input: Array & lt;number & gt;) = & gt; void | 是 | Array of digits representing the indices of the selected grid dots, in the order they were connected. Grid dots are indexed row-wise from top to bottom, left to right: The first row contains indices 0, 1, 2; the second row 3, 4, 5; and the third row 6, 7, 8. |
+| callback | (input: Array &lt;number&gt;) =&gt; void | 是 | Array of digits representing the indices of the selected grid dots, in the order they were connected. Grid dots are indexed row-wise from top to bottom, left to right: The first row contains indices 0, 1, 2; the second row 3, 4, 5; and the third row 6, 7, 8. |
 
 ## pathColor
 

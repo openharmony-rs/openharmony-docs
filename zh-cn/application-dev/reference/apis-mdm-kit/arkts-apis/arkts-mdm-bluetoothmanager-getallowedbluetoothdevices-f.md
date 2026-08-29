@@ -32,7 +32,7 @@ function getAllowedBluetoothDevices(admin: Want): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 可用名单中蓝牙设备MAC地址的数组。 |
+| Array &lt;string&gt; | 可用名单中蓝牙设备MAC地址的数组。 |
 
 **错误码：**
 
@@ -91,7 +91,7 @@ function getAllowedBluetoothDevices(admin: Want | null): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 可用名单中蓝牙设备MAC地址的数组。 |
+| Array &lt;string&gt; | 可用名单中蓝牙设备MAC地址的数组。 |
 
 **错误码：**
 

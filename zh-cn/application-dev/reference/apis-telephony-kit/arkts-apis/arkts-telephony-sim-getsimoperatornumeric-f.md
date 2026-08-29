@@ -69,7 +69,7 @@ function getSimOperatorNumeric(slotId: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | 以Promise形式返回获取指定卡槽SIM卡的归属PLMN号。 |
+| Promise &lt;string&gt; | 以Promise形式返回获取指定卡槽SIM卡的归属PLMN号。 |
 
 **错误码：**
 

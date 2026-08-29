@@ -2,7 +2,7 @@
 
 除支持通用属性外，还支持以下属性。@extends CommonMethod&lt;IndicatorComponentAttribute&gt;
 
-**继承/实现关系：** IndicatorComponentAttribute extends CommonMethod<IndicatorComponentAttribute>
+**继承/实现关系：** IndicatorComponentAttribute extends CommonMethod\<IndicatorComponentAttribute>
 
 **起始版本：** 15
 
@@ -107,7 +107,7 @@ Called when the index value changes.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | Callback & lt;number & gt; | 是 |  |
+| event | Callback &lt;number&gt; | 是 |  |
 
 ## style
 

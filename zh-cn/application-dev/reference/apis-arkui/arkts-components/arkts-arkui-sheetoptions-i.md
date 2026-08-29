@@ -567,7 +567,7 @@ preferType?: SheetType
 **说明：**半模态在不同窗口所支持的显示类型：
 1. 宽度 &lt; 600vp：底部、全屏。默认底部样式。
 2. 600vp &lt;= 宽度 &lt; 840vp：底部、居中、跟手、侧边、全屏。默认居中样式。
-3. 宽度 &gt;= 840vp：底部、居中、跟手、侧边、全屏。默认跟手样式。
+3. 宽度&gt;= 840vp：底部、居中、跟手、侧边、全屏。默认跟手样式。
 4. API version 20开始，窗口宽度大于600vp时，preferType支持设置为SheetType.SIDE。
 5. API version 20开始，preferType支持设置为SheetType.CONTENT_COVER，支持设置为全屏模态样式。
 

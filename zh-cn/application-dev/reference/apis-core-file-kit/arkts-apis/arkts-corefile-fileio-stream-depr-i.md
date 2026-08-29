@@ -35,7 +35,7 @@ close(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。返回表示异步关闭文件流的结果。 |
+| Promise &lt;void&gt; | Promise对象。返回表示异步关闭文件流的结果。 |
 
 **示例**
 
@@ -145,7 +145,7 @@ flush(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。返回表示异步刷新文件流的结果。 |
+| Promise &lt;void&gt; | Promise对象。返回表示异步刷新文件流的结果。 |
 
 **示例**
 
@@ -245,7 +245,7 @@ read(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer | 是 | 用于读取文件的缓冲区。 |
-| options | {       position?: number;       offset?: number;       length?: number;     } | 否 | 支持如下选项：   - offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移，单位为Byte。可选，默认为0。   - length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度，单位为Byte。   - position，number类型，表示期望读取文件的位置。 可选，默认从当前位置开始读，单位为Byte。   约束：offset+length & lt;=buffer.size。 |
+| options | {       position?: number;       offset?: number;       length?: number;     } | 否 | 支持如下选项：   - offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移，单位为Byte。可选，默认为0。   - length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度，单位为Byte。   - position，number类型，表示期望读取文件的位置。 可选，默认从当前位置开始读，单位为Byte。   约束：offset+length &lt;=buffer.size。 |
 
 **返回值：**
 
@@ -400,7 +400,7 @@ read(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer | 是 | 用于读取文件的缓冲区。 |
-| options | {       position?: number;       offset?: number;       length?: number;     } | 是 | 支持如下选项：   - offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移，单位为Byte。可选，默认为0。   - length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度减去偏移长度。   - position，number类型，表示期望读取文件的位置，单位为Byte。 可选，默认从当前位置开始读。   约束：offset+length & lt;=buffer.size。 |
+| options | {       position?: number;       offset?: number;       length?: number;     } | 是 | 支持如下选项：   - offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移，单位为Byte。可选，默认为0。   - length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度减去偏移长度。   - position，number类型，表示期望读取文件的位置，单位为Byte。 可选，默认从当前位置开始读。   约束：offset+length &lt;=buffer.size。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ReadOut](arkts-corefile-fileio-readout-depr-i.md)&gt; | 是 | 异步从流文件读取数据之后的回调。 |
 
 **示例**
@@ -457,7 +457,7 @@ readSync(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer | 是 | 用于读取文件的缓冲区。 |
-| options | {       position?: number;       offset?: number;       length?: number;     } | 否 | 支持如下选项：   - offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移，单位为Byte。可选，默认为0。   - length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度，单位为Byte。   - position，number类型，表示期望读取文件的位置，单位为Byte。 可选，默认从当前位置开始读。   约束：offset+length & lt;=buffer.size。 |
+| options | {       position?: number;       offset?: number;       length?: number;     } | 否 | 支持如下选项：   - offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移，单位为Byte。可选，默认为0。   - length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度，单位为Byte。   - position，number类型，表示期望读取文件的位置，单位为Byte。 可选，默认从当前位置开始读。   约束：offset+length &lt;=buffer.size。 |
 
 **返回值：**
 
@@ -512,13 +512,13 @@ write(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer \| string | 是 | 待写入文件的数据，可来自缓冲区或字符串。 |
-| options | {       offset?: number;       length?: number;       position?: number;       encoding?: string;     } | 否 | 支持如下选项：   - offset，number类型，表示期望写入数据的位置相对于数据首地址的偏移，单位为Byte。可选，默认为0。   - length， number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度减去偏移长度。   - position，number类型，表示期望写入文件的位置，单位为Byte。 可选，默认从当前位置开始写。   - encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认 'utf-8'。仅支持 'utf-8'。    约束：offset+length & lt;=buffer.size。 |
+| options | {       offset?: number;       length?: number;       position?: number;       encoding?: string;     } | 否 | 支持如下选项：   - offset，number类型，表示期望写入数据的位置相对于数据首地址的偏移，单位为Byte。可选，默认为0。   - length， number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度减去偏移长度。   - position，number类型，表示期望写入文件的位置，单位为Byte。 可选，默认从当前位置开始写。   - encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认 'utf-8'。仅支持 'utf-8'。    约束：offset+length &lt;=buffer.size。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回实际写入的长度，单位为Byte。 |
+| Promise &lt;number&gt; | Promise对象。返回实际写入的长度，单位为Byte。 |
 
 **示例**
 
@@ -663,7 +663,7 @@ write(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer \| string | 是 | 待写入文件的数据，可来自缓冲区或字符串。 |
-| options | {       offset?: number;       length?: number;       position?: number;       encoding?: string;     } | 是 | 支持如下选项：   - offset，number类型，表示期望写入数据的位置相对于数据首地址的偏移，单位为Byte。可选，默认为0。   - length， number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度减去偏移长度。   - position，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。   - encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认 'utf-8'。仅支持 'utf-8'。   约束：offset+length & lt;=buffer.size。 |
+| options | {       offset?: number;       length?: number;       position?: number;       encoding?: string;     } | 是 | 支持如下选项：   - offset，number类型，表示期望写入数据的位置相对于数据首地址的偏移，单位为Byte。可选，默认为0。   - length， number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度减去偏移长度。   - position，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。   - encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认 'utf-8'。仅支持 'utf-8'。   约束：offset+length &lt;=buffer.size。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 异步写入完成后执行的回调函数，返回实际写入的长度，单位为Byte。 |
 
 **示例**
@@ -719,7 +719,7 @@ writeSync(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer \| string | 是 | 待写入文件的数据，可来自缓冲区或字符串。 |
-| options | {       offset?: number;       length?: number;       position?: number;       encoding?: string;     } | 否 | 支持如下选项：   - offset，number类型，表示期望写入数据的位置相对于数据首地址的偏移，单位为Byte。可选，默认为0。   - length， number类型，表示期望写入数据的长度。可选，默认缓冲区长度减去偏移长度。   - position，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。   - encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认 'utf-8'。仅支持 'utf-8'。   约束：offset+length & lt;=buffer.size。 |
+| options | {       offset?: number;       length?: number;       position?: number;       encoding?: string;     } | 否 | 支持如下选项：   - offset，number类型，表示期望写入数据的位置相对于数据首地址的偏移，单位为Byte。可选，默认为0。   - length， number类型，表示期望写入数据的长度。可选，默认缓冲区长度减去偏移长度。   - position，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。   - encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认 'utf-8'。仅支持 'utf-8'。   约束：offset+length &lt;=buffer.size。 |
 
 **返回值：**
 

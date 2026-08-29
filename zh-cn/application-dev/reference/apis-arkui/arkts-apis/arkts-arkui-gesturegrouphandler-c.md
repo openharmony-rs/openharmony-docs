@@ -2,7 +2,7 @@
 
 手势组处理器对象类型。
 
-**继承/实现关系：** GestureGroupHandler extends GestureHandler<GestureGroupHandler>
+**继承/实现关系：** GestureGroupHandler extends GestureHandler\<GestureGroupHandler>
 
 **起始版本：** 12
 
@@ -55,7 +55,7 @@ onCancel(event: Callback<void>): GestureGroupHandler
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | Callback & lt;void & gt; | 是 | 手势组处理器取消回调。 |
+| event | Callback &lt;void&gt; | 是 | 手势组处理器取消回调。 |
 
 **返回值：**
 

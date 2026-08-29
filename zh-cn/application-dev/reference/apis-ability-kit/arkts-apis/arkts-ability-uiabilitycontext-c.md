@@ -35,7 +35,7 @@ backToCallerAbilityWithResult(abilityResult: AbilityResult, requestCode: string)
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，包含接口执行结果。 |
+| Promise &lt;void&gt; | Promise对象，包含接口执行结果。 |
 
 **错误码：**
 
@@ -373,7 +373,7 @@ disconnectAppServiceExtensionAbility(connection: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -506,7 +506,7 @@ disconnectServiceExtensionAbility(connection: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -580,7 +580,7 @@ disconnectUIServiceExtensionAbility(proxy: UIServiceProxy): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，包含接口执行结果。 |
+| Promise &lt;void&gt; | Promise对象，包含接口执行结果。 |
 
 **错误码：**
 
@@ -667,7 +667,7 @@ hideAbility(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，包含接口执行结果。 |
+| Promise &lt;void&gt; | Promise对象，包含接口执行结果。 |
 
 **错误码：**
 
@@ -812,7 +812,7 @@ moveAbilityToBackground(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，包含接口执行结果。 |
+| Promise &lt;void&gt; | Promise对象，包含接口执行结果。 |
 
 **错误码：**
 
@@ -982,7 +982,7 @@ openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback<Abili
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，包含接口执行结果。 |
+| Promise &lt;void&gt; | Promise对象，包含接口执行结果。 |
 
 **错误码：**
 
@@ -1231,7 +1231,7 @@ requestDialogService(want: Want): Promise<dialogRequest.RequestResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;dialogRequest.RequestResult & gt; | Promise that returns no value. |
+| Promise &lt;dialogRequest.RequestResult&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -1327,7 +1327,7 @@ restartApp(want: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1451,7 +1451,7 @@ setAbilityInstanceInfo(label: string, icon: image.PixelMap): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，包含接口执行结果。 |
+| Promise &lt;void&gt; | Promise对象，包含接口执行结果。 |
 
 **错误码：**
 
@@ -1650,7 +1650,7 @@ setMissionContinueState(state: AbilityConstant.ContinueState): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，包含接口执行结果。 |
+| Promise &lt;void&gt; | Promise对象，包含接口执行结果。 |
 
 **错误码：**
 
@@ -1753,7 +1753,7 @@ setMissionLabel(label: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，包含接口执行结果。 |
+| Promise &lt;void&gt; | Promise对象，包含接口执行结果。 |
 
 **错误码：**
 
@@ -1814,7 +1814,7 @@ setMissionWindowIcon(windowIcon: image.PixelMap): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1891,7 +1891,7 @@ setOnNewWantSkipScenarios(scenarios: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1997,7 +1997,7 @@ showAbility(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，包含接口执行结果。 |
+| Promise &lt;void&gt; | Promise对象，包含接口执行结果。 |
 
 **错误码：**
 
@@ -2307,7 +2307,7 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2603,7 +2603,7 @@ startAbilityByType(type: string, wantParam: Record<string, Object>,
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | string | 是 | 启动的UIExtensionAbility类型，取值详见 [通过startAbilityByType接口拉起垂类面板](../../../application-models/start-intent-panel.md#匹配规则)。 |
-| wantParam | Record & lt;string, Object & gt; | 是 | 表示扩展参数。 |
+| wantParam | Record &lt;string, Object&gt; | 是 | 表示扩展参数。 |
 | abilityStartCallback | [AbilityStartCallback](arkts-ability-abilitystartcallback-i.md) | 是 | 回调函数，返回启动失败后的详细错误信息。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当接口调用成功，err为undefined；否则为错误对象。 |
 
@@ -2671,14 +2671,14 @@ startAbilityByType(type: string, wantParam: Record<string, Object>,
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | string | 是 | 启动的UIExtensionAbility类型，取值详见 [通过startAbilityByType接口拉起垂类面板](../../../application-models/start-intent-panel.md#匹配规则)。 |
-| wantParam | Record & lt;string, Object & gt; | 是 | 表示扩展参数。 |
+| wantParam | Record &lt;string, Object&gt; | 是 | 表示扩展参数。 |
 | abilityStartCallback | [AbilityStartCallback](arkts-ability-abilitystartcallback-i.md) | 是 | 回调函数，返回启动失败后的详细错误信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，包含接口执行结果。 |
+| Promise &lt;void&gt; | Promise对象，包含接口执行结果。 |
 
 **错误码：**
 
@@ -3062,7 +3062,7 @@ startAppServiceExtensionAbility(want: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -3162,7 +3162,7 @@ startSelfUIAbilityInCurrentProcess(want: Want, specifiedFlag: string, options?: 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3244,7 +3244,7 @@ startUIServiceExtensionAbility(want: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，包含接口执行结果。 |
+| Promise &lt;void&gt; | Promise对象，包含接口执行结果。 |
 
 **错误码：**
 
@@ -3335,7 +3335,7 @@ stopAppServiceExtensionAbility(want: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -3497,7 +3497,7 @@ terminateSelf(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3668,7 +3668,7 @@ terminateSelfWithResult(parameter: AbilityResult): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

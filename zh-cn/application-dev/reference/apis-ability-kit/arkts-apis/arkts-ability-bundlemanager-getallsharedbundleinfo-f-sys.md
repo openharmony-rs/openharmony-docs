@@ -77,7 +77,7 @@ function getAllSharedBundleInfo(): Promise<Array<SharedBundleInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;SharedBundleInfo & gt; & gt; | Promise对象，返回所有的共享包信息。 |
+| Promise &lt;Array &lt;SharedBundleInfo&gt;&gt; | Promise对象，返回所有的共享包信息。 |
 
 **错误码：**
 

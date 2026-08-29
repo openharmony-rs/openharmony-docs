@@ -39,7 +39,7 @@ connectAssetLoader(bundleName: string, database: Database): Promise<rpc.RemoteOb
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;rpc.RemoteObject & gt; | Promise对象，返回AssetLoader的RemoteObject对象。 |
+| Promise &lt;rpc.RemoteObject&gt; | Promise对象，返回AssetLoader的RemoteObject对象。 |
 
 **示例**
 
@@ -85,7 +85,7 @@ connectDB(bundleName: string, database: Database): Promise<rpc.RemoteObject>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;rpc.RemoteObject & gt; | Promise对象，返回CloudDB的RemoteObject对象。 |
+| Promise &lt;rpc.RemoteObject&gt; | Promise对象，返回CloudDB的RemoteObject对象。 |
 
 **示例**
 
@@ -131,7 +131,7 @@ connectShareCenter(userId: number, bundleName: string): Promise<rpc.RemoteObject
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;rpc.RemoteObject & gt; | Promise对象，返回ShareCenter的RemoteObject对象。 |
+| Promise &lt;rpc.RemoteObject&gt; | Promise对象，返回ShareCenter的RemoteObject对象。 |
 
 **示例**
 
@@ -316,7 +316,7 @@ subscribe(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Result & lt;SubscribeInfo & gt; & gt; | Promise对象，返回订阅的结果，包含订阅的过期时间和订阅信息。 |
+| Promise &lt;Result &lt;SubscribeInfo&gt;&gt; | Promise对象，返回订阅的结果，包含订阅的过期时间和订阅信息。 |
 
 **示例**
 
@@ -359,13 +359,13 @@ unsubscribe(unsubscribeInfo: Record<string, Array<string>>): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| unsubscribeInfo | Record & lt;string, Array & lt;string & gt; & gt; | 是 | 需要取消订阅的数据信息，由应用包名和数据库名组成的键值对。 |
+| unsubscribeInfo | Record &lt;string, Array &lt;string&gt;&gt; | 是 | 需要取消订阅的数据信息，由应用包名和数据库名组成的键值对。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回取消订阅结果的错误码。 |
+| Promise &lt;number&gt; | Promise对象，返回取消订阅结果的错误码。 |
 
 **示例**
 

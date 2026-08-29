@@ -28,7 +28,7 @@ function getMissionSnapShot(deviceId: string, missionId: number, callback: Async
 | --- | --- | --- | --- |
 | deviceId | string | 是 | 设备ID，本机默认为空字符串。 |
 | missionId | number | 是 | 任务ID。 |
-| callback | AsyncCallback & lt;MissionSnapshot & gt; | 是 | 执行结果回调函数，返回任务快照信息。 |
+| callback | AsyncCallback &lt;MissionSnapshot&gt; | 是 | 执行结果回调函数，返回任务快照信息。 |
 
 **错误码：**
 
@@ -89,7 +89,7 @@ function getMissionSnapShot(deviceId: string, missionId: number): Promise<Missio
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;MissionSnapshot & gt; | Promise对象，返回任务快照信息。 |
+| Promise &lt;MissionSnapshot&gt; | Promise对象，返回任务快照信息。 |
 
 **错误码：**
 

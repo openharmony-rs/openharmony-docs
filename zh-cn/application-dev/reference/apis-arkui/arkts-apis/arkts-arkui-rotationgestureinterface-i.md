@@ -2,7 +2,7 @@
 
 用于触发旋转手势，最少需要2指，最多5指，最小改变度数为1度。该手势不支持通过触控板双指旋转操作触发。
 
-**继承/实现关系：** RotationGestureInterface extends GestureInterface<RotationGestureInterface>
+**继承/实现关系：** RotationGestureInterface extends GestureInterface\<RotationGestureInterface>
 
 **起始版本：** 7
 
@@ -85,7 +85,7 @@ Rotation手势识别成功，接收到触摸取消事件触发的回调。该回
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () = & gt; void | 是 | 手势事件回调函数。 |
+| event | () =&gt; void | 是 | 手势事件回调函数。 |
 
 **返回值：**
 
@@ -139,7 +139,7 @@ Rotation手势识别成功，当抬起最后一根满足手势触发条件的手
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (event: GestureEvent) = & gt; void | 是 | 手势事件回调函数。 |
+| event | (event: GestureEvent) =&gt; void | 是 | 手势事件回调函数。 |
 
 **返回值：**
 
@@ -165,7 +165,7 @@ Rotation手势识别成功后触发的回调。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (event: GestureEvent) = & gt; void | 是 | 手势事件回调函数。 |
+| event | (event: GestureEvent) =&gt; void | 是 | 手势事件回调函数。 |
 
 **返回值：**
 
@@ -191,7 +191,7 @@ Rotation手势移动过程中触发的回调。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (event: GestureEvent) = & gt; void | 是 | 手势事件回调函数。 |
+| event | (event: GestureEvent) =&gt; void | 是 | 手势事件回调函数。 |
 
 **返回值：**
 

@@ -33,7 +33,7 @@ function getAllowedNotificationBundles(admin: Want | null, accountId: number): A
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 返回允许发送通知的应用包名数组。 |
+| Array &lt;string&gt; | 返回允许发送通知的应用包名数组。 |
 
 **错误码：**
 

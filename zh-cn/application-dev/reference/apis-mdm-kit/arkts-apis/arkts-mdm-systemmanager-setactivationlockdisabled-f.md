@@ -34,7 +34,7 @@ function setActivationLockDisabled(admin: Want, isDisabled: boolean, credential?
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。当设置禁用/启用失败时，会抛出错误对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。当设置禁用/启用失败时，会抛出错误对象。 |
 
 **错误码：**
 

@@ -33,7 +33,7 @@ function getAllowedRunningBundles(admin: Want, accountId: number): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 返回指定用户下的应用运行允许名单。 |
+| Array &lt;string&gt; | 返回指定用户下的应用运行允许名单。 |
 
 **错误码：**
 
@@ -91,7 +91,7 @@ function getAllowedRunningBundles(admin: Want | null, accountId: number): Array<
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 返回指定用户下的应用运行允许名单。 |
+| Array &lt;string&gt; | 返回指定用户下的应用运行允许名单。 |
 
 **错误码：**
 

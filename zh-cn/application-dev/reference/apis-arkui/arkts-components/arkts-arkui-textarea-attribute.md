@@ -2,7 +2,7 @@
 
 除支持[通用属性](arkts-arkui-commonmethod-c.md)外，还支持以下属性。除支持[通用事件](arkts-arkui-commonmethod-c.md)外，还支持以下事件。
 
-**继承/实现关系：** TextAreaAttribute extends CommonMethod<TextAreaAttribute>
+**继承/实现关系：** TextAreaAttribute extends CommonMethod\<TextAreaAttribute>
 
 **起始版本：** 7
 
@@ -502,7 +502,7 @@ fontFeature(value: string)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string | 是 | 文字特性效果，用于设置文字的特殊显示效果，如数字等宽等。格式为：normal \|  & lt;feature-tag-value & gt;。 |
+| value | string | 是 | 文字特性效果，用于设置文字的特殊显示效果，如数字等宽等。格式为：normal \|  &lt;feature-tag-value&gt;。 |
 
 ## fontSize
 
@@ -676,7 +676,7 @@ inputFilter(value: ResourceStr, error?: (value: string) => void)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | 是 | 正则表达式。 |
-| error | (value: string) = & gt; void | 否 | 正则匹配失败时，返回被过滤的内容。正则匹配成功时，无返回。不传入时，不处理被过滤的内容。 |
+| error | (value: string) =&gt; void | 否 | 正则匹配失败时，返回被过滤的内容。正则匹配成功时，无返回。不传入时，不处理被过滤的内容。 |
 
 ## keyboardAppearance
 
@@ -831,7 +831,7 @@ maxFontScale(scale: Optional<number|Resource>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scale | [Optional](arkts-arkui-optional-t.md)&lt;number \| Resource & gt; | 是 | 文本最大的字体缩放倍数，支持undefined类型。 取值范围：1, +∞)    **说明：** 设置的值小于1时，按值为1处理。异常值默认不生效。 使用前需在工程中配置configuration.json文件和app.json5文件，具体详见 [示例17（设置最小字体范围与最大字体范围）。 |
+| scale | [Optional](arkts-arkui-optional-t.md)&lt;number \| Resource&gt; | 是 | 文本最大的字体缩放倍数，支持undefined类型。 取值范围：1, +∞)    **说明：** 设置的值小于1时，按值为1处理。异常值默认不生效。 使用前需在工程中配置configuration.json文件和app.json5文件，具体详见 [示例17（设置最小字体范围与最大字体范围）。 |
 
 ## maxFontSize
 
@@ -875,7 +875,7 @@ maxLength(value: number)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 文本的最大输入字符数。 取值范围：[0, UINT32_MAX]。当value & lt;0时，不设限制。 |
+| value | number | 是 | 文本的最大输入字符数。 取值范围：[0, UINT32_MAX]。当value &lt;0时，不设限制。 |
 
 ## maxLines
 
@@ -942,7 +942,7 @@ minFontScale(scale: Optional<number|Resource>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scale | [Optional](arkts-arkui-optional-t.md)&lt;number \| Resource & gt; | 是 | 文本最小的字体缩放倍数，支持undefined类型。 取值范围：[0, 1]    **说明：** 设置的值小于0时，按值为0处理。设置的值大于1，按值为1处理。异常值默认不生效。 使用前需在工程中配置configuration.json文件和app.json5文件，具体详见 示例17（设置最小字体范围与最大字体范围）。 |
+| scale | [Optional](arkts-arkui-optional-t.md)&lt;number \| Resource&gt; | 是 | 文本最小的字体缩放倍数，支持undefined类型。 取值范围：[0, 1]    **说明：** 设置的值小于0时，按值为0处理。设置的值大于1，按值为1处理。异常值默认不生效。 使用前需在工程中配置configuration.json文件和app.json5文件，具体详见 示例17（设置最小字体范围与最大字体范围）。 |
 
 ## minFontSize
 
@@ -1028,7 +1028,7 @@ onContentScroll(callback: (totalOffsetX: number, totalOffsetY: number) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (totalOffsetX: number, totalOffsetY: number) = & gt; void | 是 | callback of the listened event. |
+| callback | (totalOffsetX: number, totalOffsetY: number) =&gt; void | 是 | callback of the listened event. |
 
 ## onCopy
 
@@ -1048,7 +1048,7 @@ onCopy(callback: (value: string) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (value: string) = & gt; void | 是 | Called when using the Clipboard menu. |
+| callback | (value: string) =&gt; void | 是 | Called when using the Clipboard menu. |
 
 ## onCut
 
@@ -1068,7 +1068,7 @@ onCut(callback: (value: string) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (value: string) = & gt; void | 是 | Called when using the Clipboard menu. |
+| callback | (value: string) =&gt; void | 是 | Called when using the Clipboard menu. |
 
 ## onDidDelete
 
@@ -1144,7 +1144,7 @@ onEditChange(callback: (isEditing: boolean) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (isEditing: boolean) = & gt; void | 是 | Triggered when the text area status changes. |
+| callback | (isEditing: boolean) =&gt; void | 是 | Triggered when the text area status changes. |
 
 ## onPaste
 
@@ -1164,7 +1164,7 @@ onPaste(callback: (value: string, event: PasteEvent) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (value: string, event: PasteEvent) = & gt; void | 是 | Called when using the Clipboard menu. |
+| callback | (value: string, event: PasteEvent) =&gt; void | 是 | Called when using the Clipboard menu. |
 
 ## onSubmit
 
@@ -1186,7 +1186,7 @@ onSubmit(callback: (enterKey: EnterKeyType) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (enterKey: EnterKeyType) = & gt; void | 是 | callback of the listened event. |
+| callback | (enterKey: EnterKeyType) =&gt; void | 是 | callback of the listened event. |
 
 ## onSubmit
 
@@ -1230,7 +1230,7 @@ onTextSelectionChange(callback: (selectionStart: number, selectionEnd: number) =
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (selectionStart: number, selectionEnd: number) = & gt; void | 是 | callback of the listened event. |
+| callback | (selectionStart: number, selectionEnd: number) =&gt; void | 是 | callback of the listened event. |
 
 ## onWillAttachIME
 
@@ -1315,7 +1315,7 @@ onWillCopy(callback: Callback<string, boolean>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback & lt;string, boolean & gt; | 是 | 复制操作前的回调。回调参数为将要被复制的文本内容（string类型）。回调返回boolean值：true表示允许文本被复制，false 表示不允许文本被复制。 |
+| callback | Callback &lt;string, boolean&gt; | 是 | 复制操作前的回调。回调参数为将要被复制的文本内容（string类型）。回调返回boolean值：true表示允许文本被复制，false 表示不允许文本被复制。 |
 
 ## onWillCut
 
@@ -1347,7 +1347,7 @@ onWillCut(callback: Callback<string, boolean>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback & lt;string, boolean & gt; | 是 | 剪切操作前的回调。回调参数为将要被剪切的文本内容（string类型）。回调返回boolean值：true表示允许文本被剪切，false 表示不允许文本被剪切。 |
+| callback | Callback &lt;string, boolean&gt; | 是 | 剪切操作前的回调。回调参数为将要被剪切的文本内容（string类型）。回调返回boolean值：true表示允许文本被剪切，false 表示不允许文本被剪切。 |
 
 ## onWillDelete
 

@@ -25,7 +25,7 @@ function preloadCallUI(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 201 - 无权限 |
+| Promise &lt;boolean&gt; | 201 - 无权限 |
 
 **错误码：**
 

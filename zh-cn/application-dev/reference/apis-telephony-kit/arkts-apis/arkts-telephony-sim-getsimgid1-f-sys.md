@@ -79,7 +79,7 @@ Obtains the Group Identifier Level 1 (GID1) of the SIM card in a specified slot.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Returns the GID1; returns an empty string if no SIM card is inserted or no GID1 in the SIM card. |
+| Promise &lt;string&gt; | Returns the GID1; returns an empty string if no SIM card is inserted or no GID1 in the SIM card. |
 
 **错误码：**
 

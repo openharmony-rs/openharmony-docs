@@ -27,7 +27,7 @@ function getSensorListByDeviceSync(deviceId?: number): Array<Sensor>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;Sensor & gt; | 传感器属性列表。 |
+| Array &lt;Sensor&gt; | 传感器属性列表。 |
 
 **示例**
 

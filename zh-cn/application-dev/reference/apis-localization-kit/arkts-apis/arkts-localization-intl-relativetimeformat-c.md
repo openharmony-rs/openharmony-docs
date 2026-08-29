@@ -102,7 +102,7 @@ constructor(locale: string | Array<string>, options?: RelativeTimeFormatInputOpt
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| locale | string \| Array & lt;string & gt; | 是 | 区域ID或区域ID数组。输入是区域ID数组时，使用第一个有效的区域ID。 |
+| locale | string \| Array &lt;string&gt; | 是 | 区域ID或区域ID数组。输入是区域ID数组时，使用第一个有效的区域ID。 |
 | options | [RelativeTimeFormatInputOptions](arkts-localization-intl-relativetimeformatinputoptions-i.md) | 否 | 创建相对时间格式化对象时的配置项。 默认值：所有属性都取默认值时的配置项。 |
 
 **示例**
@@ -189,7 +189,7 @@ formatToParts(value: number, unit: string): Array<object>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;object & gt; | 格式化结果中各个部分的对象数组。 |
+| Array &lt;object&gt; | 格式化结果中各个部分的对象数组。 |
 
 **示例**
 

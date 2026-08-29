@@ -77,7 +77,7 @@ function getRecoverableApplicationInfo(): Promise<Array<RecoverableApplicationIn
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;RecoverableApplicationInfo & gt; & gt; | Promise对象，返回所有可恢复的预置应用信息。 |
+| Promise &lt;Array &lt;RecoverableApplicationInfo&gt;&gt; | Promise对象，返回所有可恢复的预置应用信息。 |
 
 **错误码：**
 

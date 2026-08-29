@@ -2,7 +2,7 @@
 
 Defines Hyperlink Modifier
 
-**继承/实现关系：** HyperlinkModifier extends [HyperlinkAttribute](../arkts-components/arkts-arkui-hyperlink-attribute.md) implements AttributeModifier<HyperlinkAttribute>
+**继承/实现关系：** HyperlinkModifier extends [HyperlinkAttribute](../arkts-components/arkts-arkui-hyperlink-attribute.md) implements AttributeModifier\<HyperlinkAttribute>
 
 **起始版本：** 12
 

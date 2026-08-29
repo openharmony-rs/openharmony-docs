@@ -26,7 +26,7 @@ function deleteInvalidForms(formIds: Array<string>, callback: AsyncCallback<numb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| formIds | Array & lt;string & gt; | 是 | 有效卡片列表。 |
+| formIds | Array &lt;string&gt; | 是 | 有效卡片列表。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当根据列表删除应用程序的无效卡片成功，error为undefined，data为删除的卡片个数；否则为错误对象。 |
 
 **错误码：**
@@ -80,13 +80,13 @@ function deleteInvalidForms(formIds: Array<string>): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| formIds | Array & lt;string & gt; | 是 | 有效卡片标识列表。 |
+| formIds | Array &lt;string&gt; | 是 | 有效卡片标识列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回删除的卡片个数。 |
+| Promise &lt;number&gt; | Promise对象。返回删除的卡片个数。 |
 
 **错误码：**
 

@@ -168,7 +168,7 @@ function isKeyItemExist(keyAlias: string, options: HuksOptions): Promise<boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。密钥存在时，data为true；密钥不存在时，err中的错误码为12000011，并附带对应错误描述。 |
+| Promise &lt;boolean&gt; | Promise对象。密钥存在时，data为true；密钥不存在时，err中的错误码为12000011，并附带对应错误描述。 |
 
 **错误码：**
 

@@ -2,7 +2,7 @@
 
 支持除触摸热区以外的通用属性。除支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** SliderAttribute extends CommonMethod<SliderAttribute>
+**继承/实现关系：** SliderAttribute extends CommonMethod\<SliderAttribute>
 
 **起始版本：** 7
 
@@ -311,7 +311,7 @@ Slider拖动或点击时触发事件回调。Begin和End状态在点击时触发
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (value: number, mode: SliderChangeMode) = & gt; void | 是 |  |
+| callback | (value: number, mode: SliderChangeMode) =&gt; void | 是 |  |
 
 ## prefix
 

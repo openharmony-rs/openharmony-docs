@@ -101,7 +101,7 @@ closeResultSet(resultSet: KvStoreResultSet): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -155,7 +155,7 @@ get(key: string, callback: AsyncCallback<Uint8Array | string | boolean | number>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | key | string | 是 | 要查询数据的key，不能为空且长度不大于[MAX_KEY_LENGTH](arkts-arkdata-distributeddata-constants-n.md)。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Uint8Array \| string \| boolean \| number & gt; | 是 | 回调函数。返回获取查询的值。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Uint8Array \| string \| boolean \| number&gt; | 是 | 回调函数。返回获取查询的值。 |
 
 **示例**
 
@@ -205,7 +205,7 @@ get(key: string): Promise<Uint8Array | string | boolean | number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Uint8Array \ | string \| boolean \| number & gt; | Promise对象。返回获取查询的值。 |
+| Promise &lt;Uint8Array \ | string \| boolean \| number&gt; | Promise对象。返回获取查询的值。 |
 
 **示例**
 
@@ -308,7 +308,7 @@ getEntries(keyPrefix: string): Promise<Entry[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Entry[] & gt; | Promise对象。返回匹配指定前缀的键值对列表。 |
+| Promise &lt;Entry[]&gt; | Promise对象。返回匹配指定前缀的键值对列表。 |
 
 **示例**
 
@@ -465,7 +465,7 @@ getEntries(query: Query): Promise<Entry[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Entry[] & gt; | Promise对象。返回与指定Query对象匹配的键值对列表。 |
+| Promise &lt;Entry[]&gt; | Promise对象。返回与指定Query对象匹配的键值对列表。 |
 
 **示例**
 
@@ -929,7 +929,7 @@ getResultSize(query: Query): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。获取与指定Query对象匹配的结果数。 |
+| Promise &lt;number&gt; | Promise对象。获取与指定Query对象匹配的结果数。 |
 
 **示例**
 
@@ -1053,7 +1053,7 @@ getSecurityLevel(): Promise<SecurityLevel>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;SecurityLevel & gt; | Promise对象。返回数据库的安全级别。 |
+| Promise &lt;SecurityLevel&gt; | Promise对象。返回数据库的安全级别。 |
 
 **示例**
 
@@ -1351,7 +1351,7 @@ removeDeviceData(deviceId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -1470,7 +1470,7 @@ setSyncParam(defaultAllowedDelayMs: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 

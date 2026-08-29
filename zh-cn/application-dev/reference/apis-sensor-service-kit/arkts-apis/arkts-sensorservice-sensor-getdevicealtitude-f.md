@@ -79,7 +79,7 @@ function getDeviceAltitude(seaPressure: number, currentPressure: number): Promis
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，使用异步方式返回指定的气压值对应的海拔高度，单位：m（米）。 |
+| Promise &lt;number&gt; | Promise对象，使用异步方式返回指定的气压值对应的海拔高度，单位：m（米）。 |
 
 **错误码：**
 

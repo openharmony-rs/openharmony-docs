@@ -85,7 +85,7 @@ function setDoNotDisturbDate(date: DoNotDisturbDate): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -188,7 +188,7 @@ function setDoNotDisturbDate(date: DoNotDisturbDate, userId: number): Promise<vo
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 

@@ -23,4 +23,4 @@ type ExecuteActionEvent = (actionType: string, params: string) => Promise<string
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回执行操作的结果字符串。 |
+| Promise &lt;string&gt; | Promise对象，返回执行操作的结果字符串。 |

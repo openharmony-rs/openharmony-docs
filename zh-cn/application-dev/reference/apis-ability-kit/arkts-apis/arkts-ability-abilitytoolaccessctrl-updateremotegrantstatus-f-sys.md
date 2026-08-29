@@ -31,7 +31,7 @@ export function updateRemoteGrantStatus(remoteGrantStatus: RemoteGrantStatus): P
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 不会返回任何值的Promise。 |
+| Promise &lt;void&gt; | 不会返回任何值的Promise。 |
 
 **错误码：**
 

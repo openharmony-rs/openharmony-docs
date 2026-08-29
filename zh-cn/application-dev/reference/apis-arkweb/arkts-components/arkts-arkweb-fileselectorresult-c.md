@@ -43,4 +43,4 @@ handleFileList(fileList: Array<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fileList | Array & lt;string & gt; | 是 | 文件URI字符串数组，用于向Web组件传递用户选择的文件路径。 |
+| fileList | Array &lt;string&gt; | 是 | 文件URI字符串数组，用于向Web组件传递用户选择的文件路径。 |

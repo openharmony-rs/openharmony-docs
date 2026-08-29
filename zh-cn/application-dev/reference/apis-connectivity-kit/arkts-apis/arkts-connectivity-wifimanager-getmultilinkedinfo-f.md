@@ -24,7 +24,7 @@ function getMultiLinkedInfo(): Array<WifiLinkedInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;WifiLinkedInfo & gt; | 返回WLAN多链路信息。 |
+| Array &lt;WifiLinkedInfo&gt; | 返回WLAN多链路信息。 |
 
 **错误码：**
 

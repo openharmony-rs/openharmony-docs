@@ -70,7 +70,7 @@ function isSharingSupported(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 以 Promise 形式返回是否支持共享结果。 |
+| Promise &lt;boolean&gt; | 以 Promise 形式返回是否支持共享结果。 |
 
 **错误码：**
 

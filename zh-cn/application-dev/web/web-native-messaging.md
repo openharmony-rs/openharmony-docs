@@ -195,9 +195,9 @@ function sendMessageToNative() {
 
 ### 实现一个WebNativeMessagingExtensionAbility（应用开发者）
 在DevEco Studio工程中手动新建一个WebNativeMessagingExtensionAbility组件，具体步骤如下：
-1. 在工程Module对应的ets目录下，右键选择“New &gt; Directory”，新建一个目录并命名为MyWebNativeMessageExtAbility。
+1. 在工程Module对应的ets目录下，右键选择“New&gt; Directory”，新建一个目录并命名为MyWebNativeMessageExtAbility。
 
-2. 在MyWebNativeMessageExtAbility目录，右键选择“New &gt; ArkTS File”，新建一个文件并命名为MyWebNativeMessageExtAbility.ets。
+2. 在MyWebNativeMessageExtAbility目录，右键选择“New&gt; ArkTS File”，新建一个文件并命名为MyWebNativeMessageExtAbility.ets。
 
     其目录结构如下所示：
 

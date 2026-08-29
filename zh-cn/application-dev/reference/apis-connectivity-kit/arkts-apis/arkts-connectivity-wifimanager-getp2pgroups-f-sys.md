@@ -26,7 +26,7 @@ function getP2pGroups(): Promise<Array<WifiP2pGroupInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;WifiP2pGroupInfo & gt; & gt; | 返回群组信息。 |
+| Promise &lt;Array &lt;WifiP2pGroupInfo&gt;&gt; | 返回群组信息。 |
 
 **错误码：**
 

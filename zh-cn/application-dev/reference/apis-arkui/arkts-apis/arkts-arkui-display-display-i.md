@@ -30,7 +30,7 @@ getAvailableArea(): Promise<Rect>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Rect & gt; | Promise对象。返回当前屏幕可用矩形区域。 |
+| Promise &lt;Rect&gt; | Promise对象。返回当前屏幕可用矩形区域。 |
 
 **错误码：**
 

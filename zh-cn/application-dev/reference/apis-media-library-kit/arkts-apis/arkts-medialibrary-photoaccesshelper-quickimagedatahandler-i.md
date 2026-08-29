@@ -35,7 +35,7 @@ onDataPrepared(data: T, imageSource: image.ImageSource, map: Map<string, string>
 | --- | --- | --- | --- |
 | data | T | 是 | 已就绪的图片资源数据。 It is of the generic type and supports the [Picture](../../apis-image-kit/arkts-apis/arkts-image-image-picture-i.md) type. |
 | imageSource | image.ImageSource | 是 | 已就绪的图片资源数据。 |
-| map | Map & lt;string, string & gt; | 是 | 用于获取图片资源的额外信息，如图片质量。仅支持'quality'。 |
+| map | Map &lt;string, string&gt; | 是 | 用于获取图片资源的额外信息，如图片质量。仅支持'quality'。 |
 
 **示例**
 

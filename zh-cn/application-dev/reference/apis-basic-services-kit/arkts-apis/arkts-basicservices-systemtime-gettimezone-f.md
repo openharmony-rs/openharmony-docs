@@ -74,7 +74,7 @@ function getTimezone(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回系统时区。具体可见 支持的系统时区 。 |
+| Promise &lt;string&gt; | Promise对象，返回系统时区。具体可见 支持的系统时区 。 |
 
 **错误码：**
 

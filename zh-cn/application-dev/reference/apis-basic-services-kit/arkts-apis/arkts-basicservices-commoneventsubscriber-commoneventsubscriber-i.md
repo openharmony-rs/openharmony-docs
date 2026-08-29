@@ -65,7 +65,7 @@ abortCommonEvent(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -164,7 +164,7 @@ clearAbortCommonEvent(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -256,7 +256,7 @@ finishCommonEvent(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -320,7 +320,7 @@ getAbortCommonEvent(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示当前有序公共事件处于中止状态；返回false表示当前有序公共事件未处于中止状态。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示当前有序公共事件处于中止状态；返回false表示当前有序公共事件未处于中止状态。 |
 
 **示例**
 
@@ -413,7 +413,7 @@ getCode(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回有序公共事件传递的数据。 |
+| Promise &lt;number&gt; | Promise对象。返回有序公共事件传递的数据。 |
 
 **示例**
 
@@ -509,7 +509,7 @@ getData(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象。返回有序公共事件传递的数据。 |
+| Promise &lt;string&gt; | Promise对象。返回有序公共事件传递的数据。 |
 
 **示例**
 
@@ -695,7 +695,7 @@ isOrderedCommonEvent(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示有序公共事件；返回false表示无序公共事件。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示有序公共事件；返回false表示无序公共事件。 |
 
 **示例**
 
@@ -784,7 +784,7 @@ isStickyCommonEvent(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示是粘性公共事件；返回false表示不是粘性公共事件。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示是粘性公共事件；返回false表示不是粘性公共事件。 |
 
 **示例**
 
@@ -884,7 +884,7 @@ setCode(code: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -967,7 +967,7 @@ setCodeAndData(code: number, data: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1123,7 +1123,7 @@ setData(data: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

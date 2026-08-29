@@ -28,9 +28,9 @@
 
 1. 创建新工程，请参考[创建一个新的工程](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-create-new-project)，创建一个OpenHarmony工程。（如果在开发带UI界面基础驱动已经创建，则此处不需要创建。）
 
-2. 在新创建的工程对应的ets目录下，右键选择“New &gt; Directory”，新建一个目录并命名为driverextability。
+2. 在新创建的工程对应的ets目录下，右键选择“New&gt; Directory”，新建一个目录并命名为driverextability。
 
-3. 在driverextability目录，右键选择“New &gt; ArkTS File”，新建一个文件并命名为DriverExtAbility.ets。
+3. 在driverextability目录，右键选择“New&gt; ArkTS File”，新建一个文件并命名为DriverExtAbility.ets。
 
 4. 在文件中导入相关Kit，并定义请求Code。
 

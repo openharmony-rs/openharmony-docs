@@ -2,7 +2,7 @@
 
 除支持通用属性外，还支持以下属性：除支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** ImageAnimatorAttribute extends CommonMethod<ImageAnimatorAttribute>
+**继承/实现关系：** ImageAnimatorAttribute extends CommonMethod\<ImageAnimatorAttribute>
 
 **起始版本：** 7
 
@@ -163,7 +163,7 @@ onCancel(event: () => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () = & gt; void | 是 | 状态回调，动画取消时触发。当state被设置为AnimationStatus.Initial时触发；触发后图片显示回到第一帧（正播）或最后一帧（逆播）。 |
+| event | () =&gt; void | 是 | 状态回调，动画取消时触发。当state被设置为AnimationStatus.Initial时触发；触发后图片显示回到第一帧（正播）或最后一帧（逆播）。 |
 
 ## onFinish
 
@@ -185,7 +185,7 @@ onFinish(event: () => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () = & gt; void | 是 | 状态回调，动画播放完成时（iterations轮次全部播完且动画自然结束）或者停止播放时（state被切换为AnimationStatus.Stopped）触发。 |
+| event | () =&gt; void | 是 | 状态回调，动画播放完成时（iterations轮次全部播完且动画自然结束）或者停止播放时（state被切换为AnimationStatus.Stopped）触发。 |
 
 ## onPause
 
@@ -207,7 +207,7 @@ onPause(event: () => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () = & gt; void | 是 | 状态回调，动画暂停播放时触发。 |
+| event | () =&gt; void | 是 | 状态回调，动画暂停播放时触发。 |
 
 ## onRepeat
 
@@ -227,7 +227,7 @@ onRepeat(event: () => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () = & gt; void | 是 | 状态回调，动画重复播放时触发。 |
+| event | () =&gt; void | 是 | 状态回调，动画重复播放时触发。 |
 
 ## onStart
 
@@ -249,7 +249,7 @@ onStart(event: () => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () = & gt; void | 是 | 状态回调，动画开始播放时触发。 |
+| event | () =&gt; void | 是 | 状态回调，动画开始播放时触发。 |
 
 ## preDecode
 

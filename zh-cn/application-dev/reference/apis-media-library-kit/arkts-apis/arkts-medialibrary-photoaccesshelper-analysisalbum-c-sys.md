@@ -167,13 +167,13 @@ getOrderPosition(assets: Array<PhotoAsset>): Promise<Array<number>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| assets | Array & lt;PhotoAsset & gt; | 是 | 需要获取顺序位置的相册中资产。 |
+| assets | Array &lt;PhotoAsset&gt; | 是 | 需要获取顺序位置的相册中资产。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;number & gt; & gt; | 相册中资产的顺序位置值。 |
+| Promise &lt;Array &lt;number&gt;&gt; | 相册中资产的顺序位置值。 |
 
 **错误码：**
 
@@ -242,7 +242,7 @@ getRelationship(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | 获取的人像相册中的人物关系。 |
+| Promise &lt;string&gt; | 获取的人像相册中的人物关系。 |
 
 **错误码：**
 

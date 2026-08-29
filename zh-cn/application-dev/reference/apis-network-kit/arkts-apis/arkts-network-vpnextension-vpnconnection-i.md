@@ -37,7 +37,7 @@ addRoute(routes: RouteInfo[], vpnId?: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 函数返回的promise。 |
+| Promise &lt;void&gt; | 函数返回的promise。 |
 
 **错误码：**
 
@@ -74,7 +74,7 @@ create(config: VpnConfig): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 以 Promise 形式返回获取结果，返回指定虚拟网卡的文件描述符 fd。 |
+| Promise &lt;number&gt; | 以 Promise 形式返回获取结果，返回指定虚拟网卡的文件描述符 fd。 |
 
 **错误码：**
 
@@ -191,7 +191,7 @@ delRoute(routes: RouteInfo[], vpnId?: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 函数返回的promise。 |
+| Promise &lt;void&gt; | 函数返回的promise。 |
 
 **错误码：**
 
@@ -217,7 +217,7 @@ destroy(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -270,7 +270,7 @@ destroy(vpnId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -320,7 +320,7 @@ generateVpnId(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | 以Promise形式返回获取结果，返回vpnId。 |
+| Promise &lt;string&gt; | 以Promise形式返回获取结果，返回vpnId。 |
 
 **错误码：**
 
@@ -371,7 +371,7 @@ protect(socketFd: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -431,7 +431,7 @@ protectProcessNet(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
 

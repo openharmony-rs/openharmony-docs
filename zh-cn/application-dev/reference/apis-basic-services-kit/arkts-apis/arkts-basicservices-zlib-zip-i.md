@@ -150,7 +150,7 @@ compressBound(sourceLen: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回压缩大小的上限。 |
+| Promise &lt;number&gt; | Promise对象。返回压缩大小的上限。 |
 
 **错误码：**
 
@@ -273,7 +273,7 @@ deflateBound(strm: ZStream, sourceLength: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回压缩大小的上限。 |
+| Promise &lt;number&gt; | Promise对象。返回压缩大小的上限。 |
 
 **错误码：**
 
@@ -1587,7 +1587,7 @@ inflateCodesUsed(strm: ZStream): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回已使用的霍夫曼编码树的数量。 |
+| Promise &lt;number&gt; | Promise对象。返回已使用的霍夫曼编码树的数量。 |
 
 **错误码：**
 
@@ -2013,7 +2013,7 @@ inflateMark(strm: ZStream): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回位置信息。 |
+| Promise &lt;number&gt; | Promise对象。返回位置信息。 |
 
 **错误码：**
 
@@ -2757,7 +2757,7 @@ zlibCompileFlags(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回指示编译时选项的标志。 |
+| Promise &lt;number&gt; | Promise对象。返回指示编译时选项的标志。 |
 
 **示例**
 
@@ -2789,7 +2789,7 @@ zlibVersion(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象。返回当前zlib库的版本信息。 |
+| Promise &lt;string&gt; | Promise对象。返回当前zlib库的版本信息。 |
 
 **示例**
 

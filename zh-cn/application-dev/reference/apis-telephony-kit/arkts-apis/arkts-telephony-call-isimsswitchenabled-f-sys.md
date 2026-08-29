@@ -76,7 +76,7 @@ function isImsSwitchEnabled(slotId: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 以Promise形式异步返回结果。true表示Ims开关启用，false表示未启用。 |
+| Promise &lt;boolean&gt; | 以Promise形式异步返回结果。true表示Ims开关启用，false表示未启用。 |
 
 **错误码：**
 

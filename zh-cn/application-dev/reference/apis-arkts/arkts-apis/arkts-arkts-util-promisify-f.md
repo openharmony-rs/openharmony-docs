@@ -23,7 +23,7 @@ function promisify(original: (err: Object, value: Object) => void): Function
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| original | (err: Object, value: Object) = & gt; void | 是 | 回调函数中第一个参数 **err** 是拒绝原因（如果Promise已解决，则为null），第二个参数 **value** 是已解决的值。 |
+| original | (err: Object, value: Object) =&gt; void | 是 | 回调函数中第一个参数 **err** 是拒绝原因（如果Promise已解决，则为null），第二个参数 **value** 是已解决的值。 |
 
 **返回值：**
 

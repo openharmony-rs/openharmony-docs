@@ -34,7 +34,7 @@ function checkPathPermission(tokenID: number, policies: Array<PathPolicyInfo>, p
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;boolean & gt; & gt; | Promise对象，返回授权状态校验结果数组。返回true表示授权类型匹配policyType的查询类型，否则返回false。 |
+| Promise &lt;Array &lt;boolean&gt;&gt; | Promise对象，返回授权状态校验结果数组。返回true表示授权类型匹配policyType的查询类型，否则返回false。 |
 
 **错误码：**
 

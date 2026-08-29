@@ -32,7 +32,7 @@ function getAllUninstalledBundleResourceInfo(resourceFlags: number): Promise<Arr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;BundleResourceInfo & gt; & gt; | Promise对象，返回BundleResourceInfo数组。 |
+| Promise &lt;Array &lt;BundleResourceInfo&gt;&gt; | Promise对象，返回BundleResourceInfo数组。 |
 
 **错误码：**
 

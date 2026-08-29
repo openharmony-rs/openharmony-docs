@@ -61,7 +61,7 @@ function isCaptured(bundleNameList: Array<string>): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleNameList | Array & lt;string & gt; | 是 | 需要检查的应用包名称列表。数组的最大大小为100。 |
+| bundleNameList | Array &lt;string&gt; | 是 | 需要检查的应用包名称列表。数组的最大大小为100。 |
 
 **返回值：**
 

@@ -88,7 +88,7 @@ load(uri: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回资源的id，有效值大于0。 |
+| Promise &lt;number&gt; | Promise对象，返回资源的id，有效值大于0。 |
 
 **错误码：**
 
@@ -163,7 +163,7 @@ load(fd: number, offset: number, length: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回soundID，有效值大于0。 |
+| Promise &lt;number&gt; | Promise对象，返回soundID，有效值大于0。 |
 
 **错误码：**
 
@@ -437,7 +437,7 @@ play(soundID: number, params?: PlayParameters): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回音频流ID，有效值大于0。 |
+| Promise &lt;number&gt; | Promise对象，返回音频流ID，有效值大于0。 |
 
 **错误码：**
 
@@ -487,7 +487,7 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -566,7 +566,7 @@ setLoop(streamID: number, loop: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -627,7 +627,7 @@ setPriority(streamID: number, priority: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -688,7 +688,7 @@ setRate(streamID: number, rate: audio.AudioRendererRate): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -751,7 +751,7 @@ setVolume(streamID: number, leftVolume: number, rightVolume: number): Promise<vo
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -810,7 +810,7 @@ stop(streamID: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -869,7 +869,7 @@ unload(soundID: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

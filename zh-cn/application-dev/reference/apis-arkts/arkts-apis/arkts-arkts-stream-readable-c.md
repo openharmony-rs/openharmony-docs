@@ -143,7 +143,7 @@ doRead(size: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| size | number | 是 | 读取数据的字节数。取值范围：0 & lt;= size & lt;= Number.MAX_VALUE。 |
+| size | number | 是 | 读取数据的字节数。取值范围：0 &lt;= size &lt;= Number.MAX_VALUE。 |
 
 **示例**
 

@@ -29,7 +29,7 @@ TreeSet基于[TreeMap](arkts-arkts-util-treemap-treemap-c.md)实现，在TreeSet
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;T & gt; | 返回包含TreeSet中所有元素的迭代器。 |
+| IterableIterator &lt;T&gt; | 返回包含TreeSet中所有元素的迭代器。 |
 
 **错误码：**
 
@@ -161,7 +161,7 @@ TreeSet的构造函数，支持通过比较函数对元素进行升序或降序�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| comparator | (firstValue: T, secondValue: T) = & gt; boolean | 否 | 用户自定义的比较函数，可通过比较关系对元素排序。默认值为null，表示不提供比较函数。 取值原则：比较函数返回值决定排序方向，返回firstValue & lt; secondValue为升序排序，返回firstValue & gt; secondValue为降序排序。 firstValue（必填）比较函数中的第一个比较元素，与secondValue比较后决定排序方向。 secondValue（必填）比较函数中的第二个比较元素，与firstValue比较后决定排序方向。 |
+| comparator | (firstValue: T, secondValue: T) =&gt; boolean | 否 | 用户自定义的比较函数，可通过比较关系对元素排序。默认值为null，表示不提供比较函数。 取值原则：比较函数返回值决定排序方向，返回firstValue &lt; secondValue为升序排序，返回firstValue&gt; secondValue为降序排序。 firstValue（必填）比较函数中的第一个比较元素，与secondValue比较后决定排序方向。 secondValue（必填）比较函数中的第二个比较元素，与firstValue比较后决定排序方向。 |
 
 **错误码：**
 
@@ -229,7 +229,7 @@ entries(): IterableIterator<[T, T]>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;[T, T] & gt; | 返回包含TreeSet中所有元素键值对的迭代器对象，每个键值对中键与值相同，均为元素本身。 |
+| IterableIterator &lt;[T, T]&gt; | 返回包含TreeSet中所有元素键值对的迭代器对象，每个键值对中键与值相同，均为元素本身。 |
 
 **错误码：**
 
@@ -284,7 +284,7 @@ forEach(callbackFn: (value?: T, key?: T, set?: TreeSet<T>) => void, thisArg?: Ob
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value?: T, key?: T, set?: TreeSet & lt;T & gt;) = & gt; void | 是 | 遍历实例对象中每个元素时调用的回调函数，开发者可在回调中对元素及其下标进行自定义处理。 |
+| callbackFn | (value?: T, key?: T, set?: TreeSet &lt;T&gt;) =&gt; void | 是 | 遍历实例对象中每个元素时调用的回调函数，开发者可在回调中对元素及其下标进行自定义处理。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值。当需要在回调函数中使用特定的this上下文（如访问外部对象属性）时传入此参数。不传入时默认值为当前实例对象， 回调函数中的this指向TreeSet实例本身。 |
 
 **错误码：**
@@ -689,7 +689,7 @@ values(): IterableIterator<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;T & gt; | 返回包含TreeSet中所有元素的迭代器。 |
+| IterableIterator &lt;T&gt; | 返回包含TreeSet中所有元素的迭代器。 |
 
 **错误码：**
 

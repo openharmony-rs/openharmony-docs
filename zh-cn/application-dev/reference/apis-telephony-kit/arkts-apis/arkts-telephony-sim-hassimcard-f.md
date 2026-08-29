@@ -68,7 +68,7 @@ function hasSimCard(slotId: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 以Promise形式返回指定卡槽是否插卡。 |
+| Promise &lt;boolean&gt; | 以Promise形式返回指定卡槽是否插卡。 |
 
 **错误码：**
 

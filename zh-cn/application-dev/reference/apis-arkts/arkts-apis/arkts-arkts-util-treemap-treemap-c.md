@@ -29,7 +29,7 @@ TreeMap可用于存储具有关联关系的key-value键值对集合，存储元�
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;[K, V] & gt; | 返回包含此映射中所有键值对的迭代器对象。 |
+| IterableIterator &lt;[K, V]&gt; | 返回包含此映射中所有键值对的迭代器对象。 |
 
 **错误码：**
 
@@ -128,7 +128,7 @@ TreeMap的构造函数，支持通过比较函数使元素按照自定义规则�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| comparator | (firstValue: K, secondValue: K) = & gt; boolean | 否 | 用户自定义的比较函数，可通过比较关系对元素进行排序。默认值为null，表示不提供比较函数。当key为自定义类型时，必须提供比较函数，否则可能导致插入或查找异常。 firstValue（必填）参与比较的前一项元素，作为排序判断的第一个比较对象。 secondValue（必填）参与比较的后一项元素，作为排序判断的第二个比较对象。 |
+| comparator | (firstValue: K, secondValue: K) =&gt; boolean | 否 | 用户自定义的比较函数，可通过比较关系对元素进行排序。默认值为null，表示不提供比较函数。当key为自定义类型时，必须提供比较函数，否则可能导致插入或查找异常。 firstValue（必填）参与比较的前一项元素，作为排序判断的第一个比较对象。 secondValue（必填）参与比较的后一项元素，作为排序判断的第二个比较对象。 |
 
 **错误码：**
 
@@ -200,7 +200,7 @@ entries(): IterableIterator<[K, V]>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;[K, V] & gt; | 返回一个迭代器。 |
+| IterableIterator &lt;[K, V]&gt; | 返回一个迭代器。 |
 
 **错误码：**
 
@@ -256,7 +256,7 @@ forEach(callbackFn: (value?: V, key?: K, map?: TreeMap<K, V>) => void, thisArg?:
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value?: V, key?: K, map?: TreeMap & lt;K, V & gt;) = & gt; void | 是 | 回调函数。 callbackFn（必填）接受最多三个参数的函数。 对每个元素调用的函数。 |
+| callbackFn | (value?: V, key?: K, map?: TreeMap &lt;K, V&gt;) =&gt; void | 是 | 回调函数。 callbackFn（必填）接受最多三个参数的函数。 对每个元素调用的函数。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为undefined。 |
 
 **错误码：**
@@ -638,7 +638,7 @@ keys(): IterableIterator<K>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;K & gt; | 返回包含此映射中所有键的迭代器对象。 |
+| IterableIterator &lt;K&gt; | 返回包含此映射中所有键的迭代器对象。 |
 
 **错误码：**
 
@@ -850,7 +850,7 @@ values(): IterableIterator<V>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;V & gt; | 返回包含此映射中所有值的迭代器对象。 |
+| IterableIterator &lt;V&gt; | 返回包含此映射中所有值的迭代器对象。 |
 
 **错误码：**
 

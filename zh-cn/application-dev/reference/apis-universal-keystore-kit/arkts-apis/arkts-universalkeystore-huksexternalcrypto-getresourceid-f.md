@@ -31,7 +31,7 @@ function getResourceId(providerName: string, params: HuksExternalCryptoParam[]):
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回资源ID。 |
+| Promise &lt;string&gt; | Promise对象，返回资源ID。 |
 
 **错误码：**
 

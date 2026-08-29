@@ -32,7 +32,7 @@ function getAllowedKioskApps(admin: Want): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 允许在Kiosk模式下运行的应用[唯一标识符]{ |
+| Array &lt;string&gt; | 允许在Kiosk模式下运行的应用[唯一标识符]{ |
 
 **错误码：**
 
@@ -89,7 +89,7 @@ function getAllowedKioskApps(admin: Want | null): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 允许在Kiosk模式下运行的应用[唯一标识符]{ |
+| Array &lt;string&gt; | 允许在Kiosk模式下运行的应用[唯一标识符]{ |
 
 **错误码：**
 

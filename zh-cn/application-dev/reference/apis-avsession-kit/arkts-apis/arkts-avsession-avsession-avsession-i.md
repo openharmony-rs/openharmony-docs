@@ -73,7 +73,7 @@ activate(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。当会话激活成功，无返回结果，否则返回错误对象。 |
+| Promise &lt;void&gt; | Promise对象。当会话激活成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -147,7 +147,7 @@ deactivate(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。当禁用会话成功，无返回结果，否则返回错误对象。 |
+| Promise &lt;void&gt; | Promise对象。当禁用会话成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -231,7 +231,7 @@ destroy(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。当会话销毁成功，无返回结果，否则返回错误对象。 |
+| Promise &lt;void&gt; | Promise对象。当会话销毁成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -322,7 +322,7 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}): Promise<void
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。当事件设置成功，无返回结果，否则返回错误对象。 |
+| Promise &lt;void&gt; | Promise对象。当事件设置成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -365,7 +365,7 @@ enableDesktopLyric(enable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -762,7 +762,7 @@ isDesktopLyricVisible(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示显示桌面歌词；返回false表示不显示桌面歌词。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示显示桌面歌词；返回false表示不显示桌面歌词。 |
 
 **错误码：**
 
@@ -806,7 +806,7 @@ off(type: 'play', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'play' | 是 | 关闭对应的监听事件，支持的事件是`'play'`。 |
-| callback | () = & gt; void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | () =&gt; void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -835,7 +835,7 @@ off(type: 'pause', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'pause' | 是 | 关闭对应的监听事件，支持的事件是`'pause'`。 |
-| callback | () = & gt; void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | () =&gt; void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -864,7 +864,7 @@ off(type: 'stop', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'stop' | 是 | 关闭对应的监听事件，支持的事件是`'stop'`。 |
-| callback | () = & gt; void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | () =&gt; void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -893,7 +893,7 @@ off(type: 'playNext', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'playNext' | 是 | 关闭对应的监听事件，支持的事件是 `'playNext'`。 |
-| callback | () = & gt; void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | () =&gt; void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -922,7 +922,7 @@ off(type: 'playPrevious', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'playPrevious' | 是 | 关闭对应的监听事件，支持的事件是`'playPrevious'`。 |
-| callback | () = & gt; void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | () =&gt; void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -951,7 +951,7 @@ off(type: 'fastForward', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'fastForward' | 是 | 关闭对应的监听事件，支持的事件是`'fastForward'`。 |
-| callback | () = & gt; void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | () =&gt; void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -980,7 +980,7 @@ off(type: 'rewind', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'rewind' | 是 | 关闭对应的监听事件，支持的事件是`'rewind'`。 |
-| callback | () = & gt; void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | () =&gt; void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1019,7 +1019,7 @@ off(type: 'playFromAssetId', callback?: (assetId: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'playFromAssetId' | 是 | 关闭对应的监听事件，支持的事件是`'playFromAssetId'`。 |
-| callback | (assetId: number) = & gt; void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。参数assetId是媒体ID。 |
+| callback | (assetId: number) =&gt; void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。参数assetId是媒体ID。 |
 
 **错误码：**
 
@@ -1076,7 +1076,7 @@ off(type: 'seek', callback?: (time: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'seek' | 是 | 关闭对应的监听事件，支持关闭事件`'seek'`。 |
-| callback | (time: number) = & gt; void | 否 | 回调函数，参数time是时间节点，单位为毫秒。 当监听事件取消成功，err为undefined，否则返回错误对象。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (time: number) =&gt; void | 否 | 回调函数，参数time是时间节点，单位为毫秒。 当监听事件取消成功，err为undefined，否则返回错误对象。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1105,7 +1105,7 @@ off(type: 'setSpeed', callback?: (speed: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'setSpeed' | 是 | 关闭对应的监听事件，支持关闭事件`'setSpeed'`。 |
-| callback | (speed: number) = & gt; void | 否 | 回调函数，参数speed是播放倍速。 当监听事件取消成功，err为undefined，否则返回错误对象。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (speed: number) =&gt; void | 否 | 回调函数，参数speed是播放倍速。 当监听事件取消成功，err为undefined，否则返回错误对象。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1134,7 +1134,7 @@ off(type: 'setLoopMode', callback?: (mode: LoopMode) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'setLoopMode' | 是 | 关闭对应的监听事件，支持关闭事件`'setLoopMode'`。 |
-| callback | (mode: LoopMode) = & gt; void | 否 | 回调函数，参数mode是循环模式。    - 当监听事件取消成功，err为undefined，否则返回错误对象。    - 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (mode: LoopMode) =&gt; void | 否 | 回调函数，参数mode是循环模式。    - 当监听事件取消成功，err为undefined，否则返回错误对象。    - 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1191,7 +1191,7 @@ off(type: 'toggleFavorite', callback?: (assetId: string) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'toggleFavorite' | 是 | 关闭对应的监听事件，支持关闭事件`'toggleFavorite'`。 |
-| callback | (assetId: string) = & gt; void | 否 | 回调函数，参数assetId是媒体ID。 当监听事件取消成功，err为undefined，否则返回错误对象。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (assetId: string) =&gt; void | 否 | 回调函数，参数assetId是媒体ID。 当监听事件取消成功，err为undefined，否则返回错误对象。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1220,7 +1220,7 @@ off(type: 'handleKeyEvent', callback?: (event: KeyEvent) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'handleKeyEvent' | 是 | 关闭对应的监听事件，支持关闭事件`'handleKeyEvent'`。 |
-| callback | (event: KeyEvent) = & gt; void | 否 | 回调函数，参数event是按键事件。 当监听事件取消成功，err为undefined，否则返回错误对象。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (event: KeyEvent) =&gt; void | 否 | 回调函数，参数event是按键事件。 当监听事件取消成功，err为undefined，否则返回错误对象。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1249,7 +1249,7 @@ off(type: 'outputDeviceChange', callback?: (state: ConnectionState, device: Outp
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'outputDeviceChange' | 是 | 关闭对应的监听事件，支持关闭事件`'outputDeviceChange'`。 |
-| callback | (state: ConnectionState, device: OutputDeviceInfo) = & gt; void | 否 | 回调函数，参数device是设备相关信息。 当监听事件取消成功，err为undefined，否则返回错误对象。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (state: ConnectionState, device: OutputDeviceInfo) =&gt; void | 否 | 回调函数，参数device是设备相关信息。 当监听事件取消成功，err为undefined，否则返回错误对象。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1278,7 +1278,7 @@ off(type: 'commonCommand', callback?: (command: string, args: {[key: string]: Ob
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'commonCommand' | 是 | 取消对应的监听事件，支持事件`'commonCommand'`。 |
-| callback | (command: string, args: {[key: string]: Object}) = & gt; void | 否 | 回调函数，参数command是变化的自定义控制命令名，args为自定义控制命令的参数。 该参数为可选参数，若不填写该参数，则认为取消所有对command事件的监听。 |
+| callback | (command: string, args: {[key: string]: Object}) =&gt; void | 否 | 回调函数，参数command是变化的自定义控制命令名，args为自定义控制命令的参数。 该参数为可选参数，若不填写该参数，则认为取消所有对command事件的监听。 |
 
 **错误码：**
 
@@ -1307,7 +1307,7 @@ off(type: 'skipToQueueItem', callback?: (itemId: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'skipToQueueItem' | 是 | 关闭对应的监听事件，支持关闭事件`'skipToQueueItem'`。 |
-| callback | (itemId: number) = & gt; void | 否 | 回调函数，参数itemId是播放列表单项ID。 当监听事件取消成功，err为undefined，否则返回错误对象。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (itemId: number) =&gt; void | 否 | 回调函数，参数itemId是播放列表单项ID。 当监听事件取消成功，err为undefined，否则返回错误对象。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1713,7 +1713,7 @@ on(type: 'play', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'play' | 是 | 事件回调类型，支持的事件为`'play'`，当播放命令被发送到会话时，触发该事件回调。 |
-| callback | () = & gt; void | 是 | 回调函数。 |
+| callback | () =&gt; void | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -1742,7 +1742,7 @@ on(type: 'pause', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'pause' | 是 | 事件回调类型，支持的事件为`'pause'`，当暂停命令被发送到会话时，触发该事件回调。 |
-| callback | () = & gt; void | 是 | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。 |
+| callback | () =&gt; void | 是 | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1771,7 +1771,7 @@ on(type: 'stop', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'stop' | 是 | 事件回调类型，支持的事件是`'stop'`，当停止命令被发送到会话时，触发该事件回调。 |
-| callback | () = & gt; void | 是 | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。 |
+| callback | () =&gt; void | 是 | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1800,7 +1800,7 @@ on(type: 'playNext', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'playNext' | 是 | 事件回调类型，支持的事件是`'playNext'`，当播放下一首命令被发送到会话时，触发该事件回调。 |
-| callback | () = & gt; void | 是 | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。 |
+| callback | () =&gt; void | 是 | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1829,7 +1829,7 @@ on(type: 'playPrevious', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'playPrevious' | 是 | 事件回调类型，支持的事件是`'playPrevious'`，当播放上一首命令被发送到会话时，触发该事件回调。 |
-| callback | () = & gt; void | 是 | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。 |
+| callback | () =&gt; void | 是 | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1858,7 +1858,7 @@ on(type: 'fastForward', callback: (time ?: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'fastForward' | 是 | 事件回调类型，支持的事件是 `'fastForward'`，当快进命令被发送到会话时，触发该事件回调。 |
-| callback | (time ?: number) = & gt; void | 是 | 回调函数。参数time是时间节点，单位为秒。 |
+| callback | (time ?: number) =&gt; void | 是 | 回调函数。参数time是时间节点，单位为秒。 |
 
 **错误码：**
 
@@ -1887,7 +1887,7 @@ on(type: 'rewind', callback: (time ?: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'rewind' | 是 | 事件回调类型，支持的事件是`'rewind'`，当快退命令被发送到会话时，触发该事件回调。 |
-| callback | (time ?: number) = & gt; void | 是 | 回调函数。参数time是时间节点，单位为秒。 |
+| callback | (time ?: number) =&gt; void | 是 | 回调函数。参数time是时间节点，单位为秒。 |
 
 **错误码：**
 
@@ -1926,7 +1926,7 @@ on(type: 'playFromAssetId', callback: (assetId: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'playFromAssetId' | 是 | 事件回调类型，支持的事件是`'playFromAssetId'`，当媒体ID播放时，触发该事件回调。 |
-| callback | (assetId: number) = & gt; void | 是 | 回调函数。参数assetId是媒体ID。 |
+| callback | (assetId: number) =&gt; void | 是 | 回调函数。参数assetId是媒体ID。 |
 
 **错误码：**
 
@@ -1983,7 +1983,7 @@ on(type: 'seek', callback: (time: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'seek' | 是 | 事件回调类型，支持事件`'seek'`：当跳转节点命令被发送到会话时，触发该事件。 |
-| callback | (time: number) = & gt; void | 是 | 回调函数。参数time是时间节点，单位为毫秒。 |
+| callback | (time: number) =&gt; void | 是 | 回调函数。参数time是时间节点，单位为毫秒。 |
 
 **错误码：**
 
@@ -2012,7 +2012,7 @@ on(type: 'setSpeed', callback: (speed: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'setSpeed' | 是 | 事件回调类型，支持事件`'setSpeed'`：当设置播放速率的命令被发送到会话时，触发该事件。 |
-| callback | (speed: number) = & gt; void | 是 | 回调函数。参数speed是播放倍速。 |
+| callback | (speed: number) =&gt; void | 是 | 回调函数。参数speed是播放倍速。 |
 
 **错误码：**
 
@@ -2041,7 +2041,7 @@ on(type: 'setLoopMode', callback: (mode: LoopMode) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'setLoopMode' | 是 | 事件回调类型，支持事件`'setLoopMode'`：当设置循环模式的命令被发送到会话时，触发该事件。 |
-| callback | (mode: LoopMode) = & gt; void | 是 | 回调函数。参数mode是循环模式。 |
+| callback | (mode: LoopMode) =&gt; void | 是 | 回调函数。参数mode是循环模式。 |
 
 **错误码：**
 
@@ -2098,7 +2098,7 @@ on(type: 'toggleFavorite', callback: (assetId: string) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'toggleFavorite' | 是 | 事件回调类型，支持事件`'toggleFavorite'`：当是否收藏的命令被发送到会话时，触发该事件。 |
-| callback | (assetId: string) = & gt; void | 是 | 回调函数。参数assetId是媒体ID。 |
+| callback | (assetId: string) =&gt; void | 是 | 回调函数。参数assetId是媒体ID。 |
 
 **错误码：**
 
@@ -2127,7 +2127,7 @@ on(type: 'handleKeyEvent', callback: (event: KeyEvent) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'handleKeyEvent' | 是 | 事件回调类型，支持事件`'handleKeyEvent'`：当按键事件被发送到会话时，触发该事件。 |
-| callback | (event: KeyEvent) = & gt; void | 是 | 回调函数。参数event是按键事件。 |
+| callback | (event: KeyEvent) =&gt; void | 是 | 回调函数。参数event是按键事件。 |
 
 **错误码：**
 
@@ -2156,7 +2156,7 @@ on(type: 'outputDeviceChange', callback: (state: ConnectionState, device: Output
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'outputDeviceChange' | 是 | 事件回调类型，支持事件`'outputDeviceChange'`：当播放设备变化时，触发该事件。 |
-| callback | (state: ConnectionState, device: OutputDeviceInfo) = & gt; void | 是 | 回调函数，参数device是设备相关信息。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (state: ConnectionState, device: OutputDeviceInfo) =&gt; void | 是 | 回调函数，参数device是设备相关信息。 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -2185,7 +2185,7 @@ on(type: 'commonCommand', callback: (command: string, args: {[key: string]: Obje
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'commonCommand' | 是 | 事件回调类型，支持事件`'commonCommand'`：当自定义控制命令变化时，触发该事件。 |
-| callback | (command: string, args: {[key: string]: Object}) = & gt; void | 是 | 回调函数，command为变化的自定义控制命令名，args为自定义控制命令的参数，参数内容与 sendCommonCommand)} 方法设置的参数内容完全一致。 |
+| callback | (command: string, args: {[key: string]: Object}) =&gt; void | 是 | 回调函数，command为变化的自定义控制命令名，args为自定义控制命令的参数，参数内容与 sendCommonCommand)} 方法设置的参数内容完全一致。 |
 
 **错误码：**
 
@@ -2214,7 +2214,7 @@ on(type: 'skipToQueueItem', callback: (itemId: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'skipToQueueItem' | 是 | 事件回调类型，支持事件`'skipToQueueItem'`：当播放列表选中单项的命令被发送到会话时，触发该事件。 |
-| callback | (itemId: number) = & gt; void | 是 | 回调函数。参数itemId是选中的播放列表项的ID。 |
+| callback | (itemId: number) =&gt; void | 是 | 回调函数。参数itemId是选中的播放列表项的ID。 |
 
 **错误码：**
 
@@ -2639,13 +2639,13 @@ sendCustomData(data: Record<string, Object>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | Record & lt;string, Object & gt; | 是 | 应用程序填充的自定义数据。服务端仅解析key为'customData'，且Object为string类型的对象。 |
+| data | Record &lt;string, Object&gt; | 是 | 应用程序填充的自定义数据。服务端仅解析key为'customData'，且Object为string类型的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2773,7 +2773,7 @@ setAVCallState(state: AVCallState): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。当通话元数据设置成功，无返回结果，否则返回错误对象。 |
+| Promise &lt;void&gt; | Promise对象。当通话元数据设置成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -2881,7 +2881,7 @@ setAVMetadata(data: AVMetadata): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。当元数据设置成功，无返回结果，否则返回错误对象。 |
+| Promise &lt;void&gt; | Promise对象。当元数据设置成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -2993,7 +2993,7 @@ setAVPlaybackState(state: AVPlaybackState): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。当播放状态设置成功，无返回结果，否则返回错误对象。 |
+| Promise &lt;void&gt; | Promise对象。当播放状态设置成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -3115,7 +3115,7 @@ setAVQueueItems(items: Array<AVQueueItem>): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。当播放列表设置成功，无返回结果，否则返回错误对象。 |
+| Promise &lt;void&gt; | Promise对象。当播放列表设置成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -3231,7 +3231,7 @@ setAVQueueTitle(title: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。当播放列表设置成功，无返回结果，否则返回错误对象。 |
+| Promise &lt;void&gt; | Promise对象。当播放列表设置成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -3274,7 +3274,7 @@ setBackgroundPlayMode(mode: BackgroundPlayMode): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3386,7 +3386,7 @@ setCallMetadata(data: CallMetadata): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。当通话元数据设置成功，无返回结果，否则返回错误对象。 |
+| Promise &lt;void&gt; | Promise对象。当通话元数据设置成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -3464,7 +3464,7 @@ setDesktopLyricState(state: DesktopLyricState): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3517,7 +3517,7 @@ setDesktopLyricVisible(visible: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3605,7 +3605,7 @@ setExtras(extras: {[key: string]: Object}): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果。 |
 
 **错误码：**
 
@@ -3719,7 +3719,7 @@ setLaunchAbility(ability: WantAgent): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。当Ability设置成功，无返回结果，否则返回错误对象。 |
+| Promise &lt;void&gt; | Promise对象。当Ability设置成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 
@@ -3793,7 +3793,7 @@ setMediaCenterControlType(type: Array<AVMediaCenterControlType>): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3845,7 +3845,7 @@ setSupportedLoopModes(loopModes: Array<LoopMode>): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3890,13 +3890,13 @@ setSupportedPlaySpeeds(speeds: Array<number>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| speeds | Array & lt;number & gt; | 是 | 支持的播放倍速列表。 |
+| speeds | Array &lt;number&gt; | 是 | 支持的播放倍速列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3967,7 +3967,7 @@ stopCasting(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。当成功结束投播，无返回结果，否则返回错误对象。 |
+| Promise &lt;void&gt; | Promise对象。当成功结束投播，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 

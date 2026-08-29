@@ -151,7 +151,7 @@ function downloadMms(context: Context, mmsParams: MmsParams): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以Promise形式返回发送彩信的结果。 |
+| Promise &lt;void&gt; | 以Promise形式返回发送彩信的结果。 |
 
 **错误码：**
 

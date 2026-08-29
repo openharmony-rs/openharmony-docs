@@ -111,7 +111,7 @@ respondHeader(uuid: number, header?: Record<string, string>, redirectUrl?: strin
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uuid | number | 是 | 资源句柄的标识。来源是[SourceOpenCallback](arkts-media-media-sourceopencallback-t.md)。 |
-| header | Record & lt;string, string & gt; | 否 | HTTP响应中的头部信息。应用可将头部信息字段与底层支持解析字段取交集传递或直接传入对应的所有头部信息。    - 底层播放需要解析的 字段包括Transfer-Encoding、Location、Content-Type、Content-Range、Content-Encode、Accept-Ranges、content-length。 |
+| header | Record &lt;string, string&gt; | 否 | HTTP响应中的头部信息。应用可将头部信息字段与底层支持解析字段取交集传递或直接传入对应的所有头部信息。    - 底层播放需要解析的 字段包括Transfer-Encoding、Location、Content-Type、Content-Range、Content-Encode、Accept-Ranges、content-length。 |
 | redirectUrl | string | 否 | 如果存在，为HTTP响应中的重定向URL。 |
 
 **示例**

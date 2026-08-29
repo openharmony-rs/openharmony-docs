@@ -25,7 +25,7 @@ function isSeniorModeEnabled(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示系统关怀模式已开启；返回false表示系统关怀模式已关闭。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示系统关怀模式已开启；返回false表示系统关怀模式已关闭。 |
 
 **错误码：**
 

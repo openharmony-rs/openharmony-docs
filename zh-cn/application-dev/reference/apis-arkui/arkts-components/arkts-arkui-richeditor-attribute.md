@@ -2,7 +2,7 @@
 
 除支持通用属性外，还支持以下属性：除支持通用事件外，还支持[OnDidChangeCallback](../arkts-apis/arkts-arkui-ondidchangecallback-t.md)、 [StyledStringChangedListener](../arkts-apis/arkts-arkui-styledstringchangedlistener-i.md)、 [StyledStringChangeValue](../arkts-apis/arkts-arkui-styledstringchangevalue-i.md)和以下事件：
 
-**继承/实现关系：** RichEditorAttribute extends CommonMethod<RichEditorAttribute>
+**继承/实现关系：** RichEditorAttribute extends CommonMethod\<RichEditorAttribute>
 
 **起始版本：** 10
 
@@ -625,7 +625,7 @@ onDeleteComplete(callback: Callback<void>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback & lt;void & gt; | 是 | 订阅输入法完成删除内容的回调。<br>**起始版本：** 12 |
+| callback | Callback &lt;void&gt; | 是 | 订阅输入法完成删除内容的回调。<br>**起始版本：** 12 |
 
 ## onDidChange
 
@@ -699,7 +699,7 @@ onEditingChange(callback: Callback<boolean>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback & lt;boolean & gt; | 是 | 编辑状态变化时触发的回调。 true表示编辑态，false表示非编辑态。 |
+| callback | Callback &lt;boolean&gt; | 是 | 编辑状态变化时触发的回调。 true表示编辑态，false表示非编辑态。 |
 
 ## onIMEInputComplete
 
@@ -765,7 +765,7 @@ onReady(callback: Callback<void>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback & lt;void & gt; | 是 | 订阅富文本组件初始化完成的回调。<br>**起始版本：** 12 |
+| callback | Callback &lt;void&gt; | 是 | 订阅富文本组件初始化完成的回调。<br>**起始版本：** 12 |
 
 ## onSelect
 

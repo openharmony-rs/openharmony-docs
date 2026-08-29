@@ -292,8 +292,8 @@ static getCommonFactor(number1: number, number2: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| number1 | number | 是 | 用于获取最大公约数的第一个整数。取值范围：-Number.MAX_VALUE & lt;= number1 & lt;= Number.MAX_VALUE。 |
-| number2 | number | 是 | 用于获取最大公约数的第二个整数。取值范围：-Number.MAX_VALUE & lt;= number2 & lt;= Number.MAX_VALUE。 |
+| number1 | number | 是 | 用于获取最大公约数的第一个整数。取值范围：-Number.MAX_VALUE &lt;= number1 &lt;= Number.MAX_VALUE。 |
+| number2 | number | 是 | 用于获取最大公约数的第二个整数。取值范围：-Number.MAX_VALUE &lt;= number2 &lt;= Number.MAX_VALUE。 |
 
 **返回值：**
 
@@ -522,8 +522,8 @@ static parseRationalNumber(numerator: number, denominator: number): RationalNumb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| numerator | number | 是 | 分子，为整数。取值范围：-Number.MAX_VALUE & lt;= numerator & lt;= Number.MAX_VALUE。 |
-| denominator | number | 是 | 分母，为整数。取值范围：-Number.MAX_VALUE & lt;= denominator & lt;= Number.MAX_VALUE。 |
+| numerator | number | 是 | 分子，为整数。取值范围：-Number.MAX_VALUE &lt;= numerator &lt;= Number.MAX_VALUE。 |
+| denominator | number | 是 | 分母，为整数。取值范围：-Number.MAX_VALUE &lt;= denominator &lt;= Number.MAX_VALUE。 |
 
 **返回值：**
 

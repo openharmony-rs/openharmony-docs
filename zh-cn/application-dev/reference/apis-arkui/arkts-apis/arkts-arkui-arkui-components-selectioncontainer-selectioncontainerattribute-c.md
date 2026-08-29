@@ -10,7 +10,7 @@
 > 
 > - 不支持拖拽事件。
 
-**继承/实现关系：** SelectionContainerAttribute extends CommonMethod<SelectionContainerAttribute>
+**继承/实现关系：** SelectionContainerAttribute extends CommonMethod\<SelectionContainerAttribute>
 
 **起始版本：** 26.0.0
 

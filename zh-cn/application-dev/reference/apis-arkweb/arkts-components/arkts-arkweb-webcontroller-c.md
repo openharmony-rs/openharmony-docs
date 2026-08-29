@@ -633,7 +633,7 @@ registerJavaScriptProxy(options: { object: object, name: string, methodList: Arr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | { object: object, name: string, methodList: Array & lt;string & gt; } | 是 | The option with the JavaScript object and method list. |
+| options | { object: object, name: string, methodList: Array &lt;string&gt; } | 是 | The option with the JavaScript object and method list. |
 
 **示例**
 
@@ -753,7 +753,7 @@ runJavaScript(options: { script: string, callback?: (result: string) => void })
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | { script: string, callback?: (result: string) = & gt; void } | 是 | The options with a piece of code and a callback. |
+| options | { script: string, callback?: (result: string) =&gt; void } | 是 | The options with a piece of code and a callback. |
 
 **示例**
 

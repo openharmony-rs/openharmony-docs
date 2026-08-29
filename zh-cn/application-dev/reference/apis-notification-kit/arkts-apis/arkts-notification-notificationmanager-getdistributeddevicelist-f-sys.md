@@ -26,7 +26,7 @@ function getDistributedDeviceList(): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | 返回支持跨设备协同通知的设备列表。Promise对象。 |
+| Promise &lt;Array &lt;string&gt;&gt; | 返回支持跨设备协同通知的设备列表。Promise对象。 |
 
 **错误码：**
 

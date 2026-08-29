@@ -64,7 +64,7 @@ function getActiveNotificationCount(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 以Promise形式返回获取当前应用未删除通知数。 |
+| Promise &lt;number&gt; | 以Promise形式返回获取当前应用未删除通知数。 |
 
 **示例**
 

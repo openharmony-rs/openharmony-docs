@@ -28,7 +28,7 @@ Window aspectRatio &lt; 0.8 type.
 HEIGHT_MD = 1
 ```
 
-Window aspectRatio &gt;= 0.8 and &lt; 1.2 type.
+Window aspectRatio&gt;= 0.8 and &lt; 1.2 type.
 
 **起始版本：** 22
 
@@ -44,7 +44,7 @@ Window aspectRatio &gt;= 0.8 and &lt; 1.2 type.
 HEIGHT_LG = 2
 ```
 
-Window aspectRatio &gt;= 1.2 type.
+Window aspectRatio&gt;= 1.2 type.
 
 **起始版本：** 22
 

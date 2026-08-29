@@ -34,7 +34,7 @@ Add a form.You can use this method to create a theme form.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;formInfo.RunningFormInfo & gt; | Return the form info. |
+| Promise &lt;formInfo.RunningFormInfo&gt; | Return the form info. |
 
 **错误码：**
 

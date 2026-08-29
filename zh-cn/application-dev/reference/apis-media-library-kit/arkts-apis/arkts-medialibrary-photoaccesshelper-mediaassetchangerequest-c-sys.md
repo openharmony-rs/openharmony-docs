@@ -141,7 +141,7 @@ static createAssetRequest(context: Context, displayName: string, options?: Photo
 - 应包含有效文件主名和图片或视频扩展名。  
 - 文件名字符串长度为1~255。  
 - 文件主名中不允许出现的非法英文字符。  
-API18开始，非法字符包括： \ / : * ? " &lt; &gt; |API10-17，非法字符包括：. .. \ / : * ? " ' ` &lt; &gt; | { } [ ]
+API18开始，非法字符包括： \ / : * ? " &lt;&gt; |API10-17，非法字符包括：. .. \ / : * ? " ' ` &lt;&gt; | { } [ ]
 
 **起始版本：** 11
 
@@ -228,7 +228,7 @@ static deleteAssetsPermanentlyWithUri(context: Context, assetUris: string[]): Pr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -288,7 +288,7 @@ static deleteCloudAssetsWithUri(context: Context, assetUris: string[]): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -337,13 +337,13 @@ static deleteLocalAssetsPermanently(context: Context, assets: Array<PhotoAsset>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 传入Ability实例的Context。 |
-| assets | Array & lt;PhotoAsset & gt; | 是 | 待彻底删除的图片或者视频数组，数组中元素个数不超过500个。 |
+| assets | Array &lt;PhotoAsset&gt; | 是 | 待彻底删除的图片或者视频数组，数组中元素个数不超过500个。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回void。 |
+| Promise &lt;void&gt; | Promise对象，返回void。 |
 
 **错误码：**
 
@@ -402,13 +402,13 @@ static deleteLocalAssetsPermanentlyWithUri(context: Context, assetUris: Array<st
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 传入Ability实例的Context。 |
-| assetUris | Array & lt;string & gt; | 是 | 待彻底删除的图片或者视频Uri数组，数组中元素个数不超过500个。 |
+| assetUris | Array &lt;string&gt; | 是 | 待彻底删除的图片或者视频Uri数组，数组中元素个数不超过500个。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -484,7 +484,7 @@ static deleteLocalAssetsWithUri(context: Context, assetUris: string[]): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -739,7 +739,7 @@ setCompositeDisplayMode(compositeDisplayMode: CompositeDisplayMode): Promise<voi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1346,7 +1346,7 @@ setTitleByFile(name: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | string | 是 | 资产修改名称。 取值范围:1-255 不应包含扩展名。 文件名字符串长度为1~255。 不允许出现的非法英文字符，包括：. \ / : * ? " ' ` &lt; &gt; \| { } [ ] 不允许仅命名.或者.. 文管目录下不允许重名 |
+| name | string | 是 | 资产修改名称。 取值范围:1-255 不应包含扩展名。 文件名字符串长度为1~255。 不允许出现的非法英文字符，包括：. \ / : * ? " ' ` &lt;&gt; \| { } [ ] 不允许仅命名.或者.. 文管目录下不允许重名 |
 
 **错误码：**
 

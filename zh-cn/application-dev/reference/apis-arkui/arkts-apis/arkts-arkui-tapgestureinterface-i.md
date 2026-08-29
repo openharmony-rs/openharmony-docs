@@ -6,7 +6,7 @@
 > 
 > 当组件同时绑定双击和单击手势且双击手势先绑定时，单击手势会有300ms的延时。
 
-**继承/实现关系：** TapGestureInterface extends GestureInterface<TapGestureInterface>
+**继承/实现关系：** TapGestureInterface extends GestureInterface\<TapGestureInterface>
 
 **起始版本：** 7
 
@@ -61,7 +61,7 @@ onAction(event: (event: GestureEvent) => void): TapGestureInterface
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (event: GestureEvent) = & gt; void | 是 | 手势事件回调函数。 |
+| event | (event: GestureEvent) =&gt; void | 是 | 手势事件回调函数。 |
 
 **返回值：**
 

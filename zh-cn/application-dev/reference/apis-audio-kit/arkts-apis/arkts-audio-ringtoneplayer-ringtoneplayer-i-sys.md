@@ -73,7 +73,7 @@ configure(options: RingtoneOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -149,7 +149,7 @@ getAudioRendererInfo(): Promise<audio.AudioRendererInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;audio.AudioRendererInfo & gt; | Promise对象，返回获取的音频渲染器信息。 |
+| Promise &lt;audio.AudioRendererInfo&gt; | Promise对象，返回获取的音频渲染器信息。 |
 
 **示例**
 
@@ -219,7 +219,7 @@ getTitle(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回获取的系统铃声标题。 |
+| Promise &lt;string&gt; | Promise对象，返回获取的系统铃声标题。 |
 
 **示例**
 
@@ -396,7 +396,7 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -462,7 +462,7 @@ start(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -528,7 +528,7 @@ stop(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 

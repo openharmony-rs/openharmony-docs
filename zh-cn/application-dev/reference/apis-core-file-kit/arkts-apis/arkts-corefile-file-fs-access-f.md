@@ -31,7 +31,7 @@ declare function access(path: string, mode?: AccessModeType): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示文件或目录存在；返回false表示文件或目录不存在。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示文件或目录存在；返回false表示文件或目录不存在。 |
 
 **错误码：**
 
@@ -150,7 +150,7 @@ declare function access(path: string, mode: AccessModeType, flag: AccessFlagType
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示文件或目录在本地且校验权限存在；返回false表示文件或目录不存在或者文件或目录在云端或其他分布式设备上。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示文件或目录在本地且校验权限存在；返回false表示文件或目录不存在或者文件或目录在云端或其他分布式设备上。 |
 
 **错误码：**
 

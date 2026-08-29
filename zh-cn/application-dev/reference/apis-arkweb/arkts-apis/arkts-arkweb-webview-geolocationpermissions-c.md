@@ -201,7 +201,7 @@ static getAccessibleGeolocation(origin: string, incognito?: boolean): Promise<bo
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise实例，用于获取指定源的权限状态。 |
+| Promise &lt;boolean&gt; | Promise实例，用于获取指定源的权限状态。 |
 
 **错误码：**
 
@@ -334,7 +334,7 @@ static getStoredGeolocation(incognito?: boolean): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise实例，用于获取已存储地理位置权限状态的所有源信息。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise实例，用于获取已存储地理位置权限状态的所有源信息。 |
 
 **错误码：**
 

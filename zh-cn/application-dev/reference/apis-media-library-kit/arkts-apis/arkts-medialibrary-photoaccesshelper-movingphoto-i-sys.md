@@ -36,7 +36,7 @@ isVideoReady(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示动态照片视频已生成; 返回false表示动态照片视频未生成完成。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示动态照片视频已生成; 返回false表示动态照片视频未生成完成。 |
 
 **错误码：**
 

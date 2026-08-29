@@ -126,7 +126,7 @@ function isMyCard(id: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示是“我的名片”，返回false代表不是。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示是“我的名片”，返回false代表不是。 |
 
 **示例**
 
@@ -166,7 +166,7 @@ function isMyCard(context: Context, id: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示是“我的名片”，返回false代表不是。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示是“我的名片”，返回false代表不是。 |
 
 **错误码：**
 

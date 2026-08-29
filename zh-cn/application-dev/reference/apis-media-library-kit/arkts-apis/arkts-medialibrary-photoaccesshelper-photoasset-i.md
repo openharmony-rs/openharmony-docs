@@ -30,13 +30,13 @@ clone(title: string): Promise<PhotoAsset>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| title | string | 是 | 克隆后资产的标题。参数规格为：    - 不应包含扩展名。    - 文件名字符串长度的取值范围为[1, 255]（资产文件名为标题+扩展名）。    - 不允许出现的非法英文字符，包括：. \ / : * ? " ' ` &lt; &gt; \| { } [ ] |
+| title | string | 是 | 克隆后资产的标题。参数规格为：    - 不应包含扩展名。    - 文件名字符串长度的取值范围为[1, 255]（资产文件名为标题+扩展名）。    - 不允许出现的非法英文字符，包括：. \ / : * ? " ' ` &lt;&gt; \| { } [ ] |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PhotoAsset & gt; | Promise对象，返回 [PhotoAsset]{ |
+| Promise &lt;PhotoAsset&gt; | Promise对象，返回 [PhotoAsset]{ |
 
 **错误码：**
 
@@ -161,7 +161,7 @@ close(fd: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -315,7 +315,7 @@ commitModify(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -536,7 +536,7 @@ getReadOnlyFd(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回文件描述符。 |
+| Promise &lt;number&gt; | Promise对象，返回文件描述符。 |
 
 **错误码：**
 
@@ -731,7 +731,7 @@ getThumbnail(size?: image.Size): Promise<image.PixelMap>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;image.PixelMap & gt; | Promise对象，返回缩略图的PixelMap。 |
+| Promise &lt;image.PixelMap&gt; | Promise对象，返回缩略图的PixelMap。 |
 
 **错误码：**
 
@@ -787,7 +787,7 @@ set(member: string, value: string): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | member | string | 是 | 成员参数名称例如： [PhotoKeys](arkts-medialibrary-photoaccesshelper-photokeys-e.md).TITLE。字符串长度的取值范围为[1, 255]。 |
-| value | string | 是 | 设置成员参数名称，只能修改 [PhotoKeys](arkts-medialibrary-photoaccesshelper-photokeys-e.md).TITLE的值。title的参数规格为：    - 不应包含扩展名。    - 文件名字符串长度的取值范围为[1, 255]（资产文件名为标题+扩展名）。    - 不允许出现的非法英文字符，包括：. \ / : * ? " ' ` &lt; &gt; \| { } [ ] |
+| value | string | 是 | 设置成员参数名称，只能修改 [PhotoKeys](arkts-medialibrary-photoaccesshelper-photokeys-e.md).TITLE的值。title的参数规格为：    - 不应包含扩展名。    - 文件名字符串长度的取值范围为[1, 255]（资产文件名为标题+扩展名）。    - 不允许出现的非法英文字符，包括：. \ / : * ? " ' ` &lt;&gt; \| { } [ ] |
 
 **错误码：**
 

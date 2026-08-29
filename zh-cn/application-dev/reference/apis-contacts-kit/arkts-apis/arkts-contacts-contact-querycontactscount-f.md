@@ -32,7 +32,7 @@ function queryContactsCount(context: Context): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回查询到的联系人数量。 |
+| Promise &lt;number&gt; | Promise对象。返回查询到的联系人数量。 |
 
 **错误码：**
 

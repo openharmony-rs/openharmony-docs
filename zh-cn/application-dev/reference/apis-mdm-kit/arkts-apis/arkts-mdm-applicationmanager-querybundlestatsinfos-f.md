@@ -35,7 +35,7 @@ function queryBundleStatsInfos(admin: Want, startTime: number, endTime: number, 
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;BundleStatsInfo & gt; | 返回应用包统计信息的数组。 |
+| Array &lt;BundleStatsInfo&gt; | 返回应用包统计信息的数组。 |
 
 **错误码：**
 

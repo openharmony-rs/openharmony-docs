@@ -46,7 +46,7 @@ select(option?: PhotoSelectOptions): Promise<PhotoSelectResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PhotoSelectResult & gt; | Promise对象。返回photoPicker选择后的结果集 |
+| Promise &lt;PhotoSelectResult&gt; | Promise对象。返回photoPicker选择后的结果集 |
 
 **错误码：**
 

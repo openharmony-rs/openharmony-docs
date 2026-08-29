@@ -202,13 +202,13 @@ preloadItems(indices: Optional<Array<number>>): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter invalid. Possible causes:   1. The parameter type is not Array & lt;number & gt;.   2. The parameter is an empty array.   3. The parameter contains an invalid index. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter invalid. Possible causes:   1. The parameter type is not Array &lt;number&gt;.   2. The parameter is an empty array.   3. The parameter contains an invalid index. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Controller not bound to component. |
 
 ## showNext

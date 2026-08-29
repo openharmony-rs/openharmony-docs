@@ -34,7 +34,7 @@ function makeCallWithToken(phoneNumber: string, options?: MakeCallOptions): Prom
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回鉴权校验token。 |
+| Promise &lt;string&gt; | Promise对象，返回鉴权校验token。 |
 
 **错误码：**
 

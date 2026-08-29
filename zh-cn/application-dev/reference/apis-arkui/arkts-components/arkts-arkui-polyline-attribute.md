@@ -2,7 +2,7 @@
 
 除支持通用属性以及图形绘制通用属性外，还支持以下 属性：
 
-**继承/实现关系：** PolylineAttribute extends CommonShapeMethod<PolylineAttribute>
+**继承/实现关系：** PolylineAttribute extends CommonShapeMethod\<PolylineAttribute>
 
 **起始版本：** 7
 
@@ -33,4 +33,4 @@ points(value: Array<any>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Array & lt;any & gt; | 是 | 折线经过坐标点列表。使用时传入一个二维数组，每个子数组表示一个顶点的[x, y]坐标。 默认值：[]（空数组） 默认单位：vp 异常值undefined和null按照默认值处理。 |
+| value | Array &lt;any&gt; | 是 | 折线经过坐标点列表。使用时传入一个二维数组，每个子数组表示一个顶点的[x, y]坐标。 默认值：[]（空数组） 默认单位：vp 异常值undefined和null按照默认值处理。 |

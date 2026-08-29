@@ -24,7 +24,7 @@ function getDataSummary(): Array<Summary>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;Summary & gt; | 所有拖拽对象的数据摘要，包含拖拽对象的类型和数据长度。 |
+| Array &lt;Summary&gt; | 所有拖拽对象的数据摘要，包含拖拽对象的类型和数据长度。 |
 
 **错误码：**
 

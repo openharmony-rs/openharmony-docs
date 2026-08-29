@@ -87,9 +87,9 @@ UIServiceExtension提供了onCreate()、onWindowWillCreate()、onWindowDidCreate
 
 在DevEco Studio工程中手动新建一个UIServiceExtension，具体步骤如下：
 
-1. 在工程Module对应的ets目录下，右键选择“New &gt; Directory”，新建一个目录并命名为“uiserviceext”。
+1. 在工程Module对应的ets目录下，右键选择“New&gt; Directory”，新建一个目录并命名为“uiserviceext”。
 
-2. 在uiserviceext目录，右键选择“New &gt; ArkTS File”，新建一个文件并命名为UIServiceExtAbility.ets。
+2. 在uiserviceext目录，右键选择“New&gt; ArkTS File”，新建一个文件并命名为UIServiceExtAbility.ets。
 
     ``` txt
     ├── ets

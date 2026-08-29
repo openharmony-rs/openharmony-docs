@@ -32,7 +32,7 @@ close(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -258,7 +258,7 @@ getLocalAddress(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | 以Promise形式返回获取本地socket地址的结果。 |
+| Promise &lt;string&gt; | 以Promise形式返回获取本地socket地址的结果。 |
 
 **错误码：**
 
@@ -376,7 +376,7 @@ getSocketFd(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回Socket的文件描述符。 |
+| Promise &lt;number&gt; | Promise对象，返回Socket的文件描述符。 |
 
 **示例**
 
@@ -957,7 +957,7 @@ send(options: LocalSendOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

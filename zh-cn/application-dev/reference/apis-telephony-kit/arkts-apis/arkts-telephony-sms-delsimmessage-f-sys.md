@@ -82,7 +82,7 @@ function delSimMessage(slotId: number, msgIndex: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以Promise形式返回删除的结果。 |
+| Promise &lt;void&gt; | 以Promise形式返回删除的结果。 |
 
 **错误码：**
 

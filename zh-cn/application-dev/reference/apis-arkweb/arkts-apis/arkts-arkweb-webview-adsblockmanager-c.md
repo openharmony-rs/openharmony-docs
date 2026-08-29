@@ -36,7 +36,7 @@ static addAdsBlockAllowedList(domainSuffixes: Array<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| domainSuffixes | Array & lt;string & gt; | 是 | 一组域名列表，例如['example.com', 'abcd.efg.com'] |
+| domainSuffixes | Array &lt;string&gt; | 是 | 一组域名列表，例如['example.com', 'abcd.efg.com'] |
 
 **错误码：**
 
@@ -125,7 +125,7 @@ static addAdsBlockDisallowedList(domainSuffixes: Array<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| domainSuffixes | Array & lt;string & gt; | 是 | 一组域名列表，例如['example.com', 'abcd.efg.com'] |
+| domainSuffixes | Array &lt;string&gt; | 是 | 一组域名列表，例如['example.com', 'abcd.efg.com'] |
 
 **错误码：**
 
@@ -350,7 +350,7 @@ static removeAdsBlockAllowedList(domainSuffixes: Array<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| domainSuffixes | Array & lt;string & gt; | 是 | 一组域名列表，例如['example.com', 'abcd.efg.com'] |
+| domainSuffixes | Array &lt;string&gt; | 是 | 一组域名列表，例如['example.com', 'abcd.efg.com'] |
 
 **错误码：**
 
@@ -432,7 +432,7 @@ static removeAdsBlockDisallowedList(domainSuffixes: Array<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| domainSuffixes | Array & lt;string & gt; | 是 | 一组域名列表，例如['example.com', 'abcd.efg.com'] |
+| domainSuffixes | Array &lt;string&gt; | 是 | 一组域名列表，例如['example.com', 'abcd.efg.com'] |
 
 **错误码：**
 

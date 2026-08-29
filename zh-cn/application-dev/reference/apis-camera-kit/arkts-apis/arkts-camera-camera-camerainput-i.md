@@ -71,7 +71,7 @@ close(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -319,7 +319,7 @@ open(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -368,7 +368,7 @@ open(isSecureEnabled: boolean): Promise<bigint>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;bigint & gt; | Promise对象，返回安全相机的句柄。 |
+| Promise &lt;bigint&gt; | Promise对象，返回安全相机的句柄。 |
 
 **错误码：**
 
@@ -416,7 +416,7 @@ open(type: CameraConcurrentType): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

@@ -35,7 +35,7 @@ function dumpJsRawHeapData(needGC?: boolean): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回生成的快照文件路径（ 应用沙箱内路径）。 |
+| Promise &lt;string&gt; | Promise对象，返回生成的快照文件路径（ 应用沙箱内路径）。 |
 
 **错误码：**
 
@@ -96,7 +96,7 @@ function dumpJsRawHeapData(needGC: boolean, needClean: boolean): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回生成的快照文件路径（ 应用沙箱内路径）。 |
+| Promise &lt;string&gt; | Promise对象，返回生成的快照文件路径（ 应用沙箱内路径）。 |
 
 **错误码：**
 
@@ -159,7 +159,7 @@ function dumpJsRawHeapData(needGC: boolean, needClean: boolean, processDump: boo
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回生成的快照文件路径数组（ 应用沙箱内路径）。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回生成的快照文件路径数组（ 应用沙箱内路径）。 |
 
 **错误码：**
 

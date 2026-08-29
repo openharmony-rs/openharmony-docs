@@ -35,7 +35,7 @@ Creates a PixelMap from existing pixel data. The pixel data will be copied and c
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PixelMap & gt; | A Promise of the new PixelMap created. |
+| Promise &lt;PixelMap&gt; | A Promise of the new PixelMap created. |
 
 **错误码：**
 

@@ -76,7 +76,7 @@ function publishReminder(reminderReq: ReminderRequest): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | reminder id. |
+| Promise &lt;number&gt; | reminder id. |
 
 **示例**
 

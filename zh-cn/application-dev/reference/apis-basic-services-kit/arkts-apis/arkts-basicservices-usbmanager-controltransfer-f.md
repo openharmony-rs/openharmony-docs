@@ -34,7 +34,7 @@ function controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, ti
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下： |
+| Promise &lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下： |
 
 **错误码：**
 

@@ -32,7 +32,7 @@ function setPreviewSurface(callId: number, surfaceId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以Promise形式异步返回设置本端预览画面窗口结果。 |
+| Promise &lt;void&gt; | 以Promise形式异步返回设置本端预览画面窗口结果。 |
 
 **错误码：**
 

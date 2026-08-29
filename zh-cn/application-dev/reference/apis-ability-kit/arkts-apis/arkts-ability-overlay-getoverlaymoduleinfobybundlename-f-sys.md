@@ -154,7 +154,7 @@ function getOverlayModuleInfoByBundleName(bundleName: string, moduleName?: strin
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;OverlayModuleInfo & gt; & gt; | Promise对象，返回 & lt;Array & lt;[OverlayModuleInfo]{ |
+| Promise &lt;Array &lt;OverlayModuleInfo&gt;&gt; | Promise对象，返回 &lt;Array &lt;[OverlayModuleInfo]{ |
 
 **错误码：**
 

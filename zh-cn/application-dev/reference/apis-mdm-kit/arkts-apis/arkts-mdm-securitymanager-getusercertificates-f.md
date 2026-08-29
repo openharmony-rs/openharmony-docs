@@ -33,7 +33,7 @@ function getUserCertificates(admin: Want, accountId: number): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 返回在指定用户ID下安装的所有用户证书。 |
+| Array &lt;string&gt; | 返回在指定用户ID下安装的所有用户证书。 |
 
 **错误码：**
 

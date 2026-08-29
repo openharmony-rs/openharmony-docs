@@ -33,7 +33,7 @@ function addContacts(context: Context, contacts: Array<Contact>): Promise<Array<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;number & gt; & gt; | Promise对象，返回批量添加的联系人id数组。 |
+| Promise &lt;Array &lt;number&gt;&gt; | Promise对象，返回批量添加的联系人id数组。 |
 
 **错误码：**
 

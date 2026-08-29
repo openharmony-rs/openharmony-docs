@@ -98,7 +98,7 @@ function getState(deviceDescriptor: string): Promise<{ state: boolean }>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;{ state: boolean | > } Promise对象，返回键鼠穿越开关状态。true表示键鼠穿越开关打开，false表示键鼠穿越开关关闭。 |
+| Promise &lt;{ state: boolean | > } Promise对象，返回键鼠穿越开关状态。true表示键鼠穿越开关打开，false表示键鼠穿越开关关闭。 |
 
 **错误码：**
 

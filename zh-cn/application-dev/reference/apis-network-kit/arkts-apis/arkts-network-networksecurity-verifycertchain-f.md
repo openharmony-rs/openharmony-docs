@@ -31,7 +31,7 @@ export function verifyCertChain(cert: CertBlob[], caCert?: CertBlob, hostname?: 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;CertBlob[] & gt; | 返回一个 Promise，如果验证成功则解析为排序后的证书链（从叶子到根排序）。 |
+| Promise &lt;CertBlob[]&gt; | 返回一个 Promise，如果验证成功则解析为排序后的证书链（从叶子到根排序）。 |
 
 **错误码：**
 

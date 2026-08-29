@@ -33,7 +33,7 @@ function getWatermarkImageApps(admin: Want, accountId: number): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 返回已设置水印的应用程序包名列表。 |
+| Array &lt;string&gt; | 返回已设置水印的应用程序包名列表。 |
 
 **错误码：**
 

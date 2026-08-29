@@ -71,7 +71,7 @@ function getRemainingDelayTime(requestId: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回本次短时任务的剩余时间，单位：ms。 |
+| Promise &lt;number&gt; | Promise对象，返回本次短时任务的剩余时间，单位：ms。 |
 
 **示例**
 

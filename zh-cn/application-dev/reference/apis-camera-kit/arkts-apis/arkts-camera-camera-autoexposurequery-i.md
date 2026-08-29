@@ -31,7 +31,7 @@ getExposureBiasRange(): Array<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;number & gt; | 获取补偿范围的数组。接口调用失败会返回相应错误码，错误码类型[CameraErrorCode]{ |
+| Array &lt;number&gt; | 获取补偿范围的数组。接口调用失败会返回相应错误码，错误码类型[CameraErrorCode]{ |
 
 **错误码：**
 

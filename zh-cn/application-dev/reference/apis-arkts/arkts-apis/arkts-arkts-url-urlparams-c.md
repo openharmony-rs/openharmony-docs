@@ -29,7 +29,7 @@ URLParams是一个用于解析、构造和操作URL参数的实用类。该类�
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;[string, string] & gt; | 返回一个迭代器，迭代器的每一项为包含name和value的[string, string]数组。 |
+| IterableIterator &lt;[string, string]&gt; | 返回一个迭代器，迭代器的每一项为包含name和value的[string, string]数组。 |
 
 **示例**
 
@@ -112,7 +112,7 @@ ArkTS-Sta: constructor(init?: [string, string][] | Record&lt;string, string&gt; 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| init | string[][] \| Record & lt;string, string & gt; \ | string \| [URLParams](arkts-arkts-url-urlparams-c.md) | 否 | 入参对象。    - string[][]：字符串二维数组。    - Record & lt;string, string & gt;：对象列表。    - string：URL查询参数字符串。    - URLParams：URLParams实例对象。    - 默认值：null。 |
+| init | string[][] \| Record &lt;string, string&gt; \ | string \| [URLParams](arkts-arkts-url-urlparams-c.md) | 否 | 入参对象。    - string[][]：字符串二维数组。    - Record &lt;string, string&gt;：对象列表。    - string：URL查询参数字符串。    - URLParams：URLParams实例对象。    - 默认值：null。 |
 
 **示例**
 
@@ -186,7 +186,7 @@ entries(): IterableIterator<[string, string]>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;[string, string] & gt; | 返回一个ES6的迭代器。 |
+| IterableIterator &lt;[string, string]&gt; | 返回一个ES6的迭代器。 |
 
 **示例**
 
@@ -231,7 +231,7 @@ forEach(callbackFn: (value: string, key: string, searchParams: URLParams) => voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: string, key: string, searchParams: URLParams) = & gt; void | 是 | 遍历键值对时执行的回调函数，对每个键值对调用一次。 |
+| callbackFn | (value: string, key: string, searchParams: URLParams) =&gt; void | 是 | 遍历键值对时执行的回调函数，对每个键值对调用一次。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值，默认值是本对象。 |
 
 **示例**
@@ -392,7 +392,7 @@ keys(): IterableIterator<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;string & gt; | 返回一个包含所有键值对的name的迭代器。 |
+| IterableIterator &lt;string&gt; | 返回一个包含所有键值对的name的迭代器。 |
 
 **示例**
 
@@ -545,7 +545,7 @@ values(): IterableIterator<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;string & gt; | 返回一个包含所有键值对的value的迭代器。 |
+| IterableIterator &lt;string&gt; | 返回一个包含所有键值对的value的迭代器。 |
 
 **示例**
 

@@ -196,7 +196,7 @@ static createAssetRequest(context: Context, photoType: PhotoType, extension: str
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 传入Ability实例的上下文。 |
 | photoType | PhotoType | 是 | 待创建的文件类型，IMAGE或者VIDEO类型。 |
 | extension | string | 是 | 文件扩展名，例如：'jpg'。 |
-| options | [CreateOptions](arkts-medialibrary-photoaccesshelper-createoptions-i.md) | 否 | 创建选项，例如：{title: 'testPhoto'}。 文件名中不允许出现非法英文字符，包括：. .. \ / : * ? " ' ` &lt; &gt; \| { } [ ] |
+| options | [CreateOptions](arkts-medialibrary-photoaccesshelper-createoptions-i.md) | 否 | 创建选项，例如：{title: 'testPhoto'}。 文件名中不允许出现非法英文字符，包括：. .. \ / : * ? " ' ` &lt;&gt; \| { } [ ] |
 
 **返回值：**
 
@@ -361,13 +361,13 @@ static deleteAssets(context: Context, assets: Array<PhotoAsset>): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 传入Ability实例的上下文。 |
-| assets | Array & lt;PhotoAsset & gt; | 是 | 待删除的媒体文件数组，数组中元素个数不超过300 个。<!--Del-->系统应用对此无限制。<!--DelEnd--> |
+| assets | Array &lt;PhotoAsset&gt; | 是 | 待删除的媒体文件数组，数组中元素个数不超过300 个。<!--Del-->系统应用对此无限制。<!--DelEnd--> |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回void。 |
+| Promise &lt;void&gt; | Promise对象，返回void。 |
 
 **错误码：**
 
@@ -421,13 +421,13 @@ static deleteAssets(context: Context, uriList: Array<string>): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 传入Ability实例的上下文。 |
-| uriList | Array & lt;string & gt; | 是 | 待删除的媒体文件uri数组，数组中元素个数不超过300 个。<!--Del-->系统应用对此无限制。<!--DelEnd--> |
+| uriList | Array &lt;string&gt; | 是 | 待删除的媒体文件uri数组，数组中元素个数不超过300 个。<!--Del-->系统应用对此无限制。<!--DelEnd--> |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回void。 |
+| Promise &lt;void&gt; | Promise对象，返回void。 |
 
 **错误码：**
 
@@ -577,7 +577,7 @@ getWriteCacheHandler(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回临时文件写句柄。 |
+| Promise &lt;number&gt; | Promise对象，返回临时文件写句柄。 |
 
 **错误码：**
 

@@ -30,7 +30,7 @@ addListener(callback: (event: MediaQueryEvent) => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (event: MediaQueryEvent) = & gt; void | 是 | 匹配条件发生变化时触发的回调。 |
+| callback | (event: MediaQueryEvent) =&gt; void | 是 | 匹配条件发生变化时触发的回调。 |
 
 **示例**
 
@@ -84,7 +84,7 @@ removeListener(callback: (event: MediaQueryEvent) => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (event: MediaQueryEvent) = & gt; void | 是 | 匹配条件发生变化时触发的回调。 |
+| callback | (event: MediaQueryEvent) =&gt; void | 是 | 匹配条件发生变化时触发的回调。 |
 
 **示例**
 

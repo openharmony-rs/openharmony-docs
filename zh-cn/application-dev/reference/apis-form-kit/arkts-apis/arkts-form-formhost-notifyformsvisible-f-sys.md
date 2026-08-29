@@ -26,7 +26,7 @@ function notifyFormsVisible(formIds: Array<string>, isVisible: boolean, callback
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| formIds | Array & lt;string & gt; | 是 | 卡片标识列表。 |
+| formIds | Array &lt;string&gt; | 是 | 卡片标识列表。 |
 | isVisible | boolean | 是 | 表示卡片是否可见。 true: 表示卡片可见。 false: 表示卡片不可见。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当通知卡片是否可见成功，error为undefined，否则为错误对象。 |
 
@@ -81,14 +81,14 @@ function notifyFormsVisible(formIds: Array<string>, isVisible: boolean): Promise
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| formIds | Array & lt;string & gt; | 是 | 卡片标识列表。 |
+| formIds | Array &lt;string&gt; | 是 | 卡片标识列表。 |
 | isVisible | boolean | 是 | 表示卡片是否可见。 true: 表示卡片可见。 false: 表示卡片不可见。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

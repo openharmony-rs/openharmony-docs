@@ -116,7 +116,7 @@ deleteBackward(length: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示删除光标后固定长度的文本成功；返回false表示删除光标后固定长度的文本失败。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示删除光标后固定长度的文本成功；返回false表示删除光标后固定长度的文本失败。 |
 
 **示例**
 
@@ -245,7 +245,7 @@ deleteForward(length: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。resolve返回true表示删除光标前固定长度的文本成功；resolve返回false表示删除光标前固定长度的文本失败；reject时抛出错误对 象，表示执行过程中发生错误。 |
+| Promise &lt;boolean&gt; | Promise对象。resolve返回true表示删除光标前固定长度的文本成功；resolve返回false表示删除光标前固定长度的文本失败；reject时抛出错误对 象，表示执行过程中发生错误。 |
 
 **示例**
 
@@ -366,7 +366,7 @@ getBackward(length: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回光标后固定长度的文本。 |
+| Promise &lt;string&gt; | Promise对象，返回光标后固定长度的文本。 |
 
 **示例**
 
@@ -574,7 +574,7 @@ getForward(length: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回光标前固定长度的文本。 |
+| Promise &lt;string&gt; | Promise对象，返回光标前固定长度的文本。 |
 
 **示例**
 
@@ -694,7 +694,7 @@ insertText(text: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示插入文本成功；返回false表示插入文本失败。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示插入文本成功；返回false表示插入文本失败。 |
 
 **示例**
 
@@ -822,7 +822,7 @@ sendKeyFunction(action: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示发送功能键成功；返回false表示发送功能键失败。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示发送功能键成功；返回false表示发送功能键失败。 |
 
 **示例**
 

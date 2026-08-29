@@ -233,7 +233,7 @@ static getPreferredLanguageList(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 系统偏好语言列表。 |
+| Array &lt;string&gt; | 系统偏好语言列表。 |
 
 **示例**
 
@@ -323,7 +323,7 @@ static getSystemCountries(language: string): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | language参数指定的语言下，系统支持的国家/地区列表。 |
+| Array &lt;string&gt; | language参数指定的语言下，系统支持的国家/地区列表。 |
 
 **错误码：**
 
@@ -401,7 +401,7 @@ static getSystemLanguages(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 系统支持的语言列表。 |
+| Array &lt;string&gt; | 系统支持的语言列表。 |
 
 **示例**
 

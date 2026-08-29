@@ -114,7 +114,7 @@ requestContent(imageFileUri: string, videoFileUri: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -207,7 +207,7 @@ requestContent(resourceType: ResourceType, fileUri: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -294,7 +294,7 @@ requestContent(resourceType: ResourceType): Promise<ArrayBuffer>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ArrayBuffer & gt; | Promise对象，返回包含所请求文件内容的ArrayBuffer。 |
+| Promise &lt;ArrayBuffer&gt; | Promise对象，返回包含所请求文件内容的ArrayBuffer。 |
 
 **错误码：**
 

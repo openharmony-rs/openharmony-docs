@@ -43,7 +43,7 @@ addPlaybackMediaSource(src: MediaSource, id?: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回对应媒体资源的唯一ID。 |
+| Promise &lt;string&gt; | Promise对象，返回对应媒体资源的唯一ID。 |
 
 **错误码：**
 
@@ -91,7 +91,7 @@ addSubtitleFromFd(fd: number, offset?: number, length?: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -136,7 +136,7 @@ addSubtitleFromUrl(url: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -181,7 +181,7 @@ advanceToMediaSource(id: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -229,7 +229,7 @@ advanceToNextMediaSource() : Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -276,7 +276,7 @@ advanceToPrevMediaSource(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -326,7 +326,7 @@ clearPlaybackList(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -372,7 +372,7 @@ deselectTrack(index: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -517,7 +517,7 @@ getLoadedTimeRanges(): Promise<Array<Range>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;Range & gt; & gt; | Promise对象，返回播放器当前已加载的时间区间段的列表。 |
+| Promise &lt;Array &lt;Range&gt;&gt; | Promise对象，返回播放器当前已加载的时间区间段的列表。 |
 
 **示例**
 
@@ -552,7 +552,7 @@ getMediaKeySystemInfos(): Array<drm.MediaKeySystemInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;drm.MediaKeySystemInfo & gt; | MediaKeySystemInfo数组，MediaKeySystemInfo具有uuid和pssh两个属性。当返回值为undefined时 ，表示mediaKeySystemInfoUpdate事件未触发。 |
+| Array &lt;drm.MediaKeySystemInfo&gt; | MediaKeySystemInfo数组，MediaKeySystemInfo具有uuid和pssh两个属性。当返回值为undefined时 ，表示mediaKeySystemInfoUpdate事件未触发。 |
 
 **示例**
 
@@ -591,7 +591,7 @@ getMediaSources(): Array<MediaSource | undefined>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[MediaSource](arkts-media-media-mediasource-i.md) \| undefined & gt; | 播放列表中的媒体源数组。 |
+| Array&lt;[MediaSource](arkts-media-media-mediasource-i.md) \| undefined&gt; | 播放列表中的媒体源数组。 |
 
 **错误码：**
 
@@ -629,7 +629,7 @@ getPlaybackInfo(): Promise<PlaybackInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PlaybackInfo & gt; | Promise对象，返回播放器信息PlaybackInfo。 |
+| Promise &lt;PlaybackInfo&gt; | Promise对象，返回播放器信息PlaybackInfo。 |
 
 **示例**
 
@@ -716,7 +716,7 @@ getPlaybackRate(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回播放倍速速率。 |
+| Promise &lt;number&gt; | Promise对象，返回播放倍速速率。 |
 
 **示例**
 
@@ -796,7 +796,7 @@ getSeekableTimeRanges(): Promise<Array<Range>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;Range & gt; & gt; | Promise对象，返回播放器当前可跳转的时间区间段的列表。 |
+| Promise &lt;Array &lt;Range&gt;&gt; | Promise对象，返回播放器当前可跳转的时间区间段的列表。 |
 
 **示例**
 
@@ -831,7 +831,7 @@ getSelectedTracks(): Promise<Array<number>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;number & gt; & gt; | Promise对象，返回已选择音视频轨道索引数组。 |
+| Promise &lt;Array &lt;number&gt;&gt; | Promise对象，返回已选择音视频轨道索引数组。 |
 
 **错误码：**
 
@@ -1524,7 +1524,7 @@ off(type: 'seiMessageReceived', payloadTypes?: Array<number>, callback?: OnSeiMe
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'seiMessageReceived' | 是 | 事件回调类型，支持的事件为：'seiMessageReceived'。 |
-| payloadTypes | Array & lt;number & gt; | 否 | SEI信息的订阅负载类型。 |
+| payloadTypes | Array &lt;number&gt; | 否 | SEI信息的订阅负载类型。 |
 | callback | [OnSeiMessageHandle](arkts-media-media-onseimessagehandle-t.md) | 否 | 用于监听SEI信息事件的回调函数，接收订阅的负载类型。如果填写该参数，仅取消注册此回调方法，否则取消注册seiMessageReceived 事件的所有回调方法。 |
 
 ## off('superResolutionChanged')
@@ -2145,7 +2145,7 @@ on(type: 'seiMessageReceived', payloadTypes: Array<number>, callback: OnSeiMessa
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'seiMessageReceived' | 是 | 事件回调类型，支持的事件为：'seiMessageReceived'。 |
-| payloadTypes | Array & lt;number & gt; | 是 | SEI信息的订阅负载类型数组。当前仅支持负载类型为5，即payloadType = 5。 |
+| payloadTypes | Array &lt;number&gt; | 是 | SEI信息的订阅负载类型数组。当前仅支持负载类型为5，即payloadType = 5。 |
 | callback | [OnSeiMessageHandle](arkts-media-media-onseimessagehandle-t.md) | 是 | 用于监听SEI信息事件的回调函数，接收订阅的负载类型。 |
 
 ## on('superResolutionChanged')
@@ -2368,7 +2368,7 @@ pause(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2513,7 +2513,7 @@ play(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2622,7 +2622,7 @@ prepare(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2797,7 +2797,7 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2958,7 +2958,7 @@ removePlaybackMediaSource(id: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3078,7 +3078,7 @@ reset(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3248,7 +3248,7 @@ selectTrack(index: number, mode?: SwitchMode): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3400,7 +3400,7 @@ setLoudnessGain(loudnessGain: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
 
@@ -3444,7 +3444,7 @@ setMediaMuted(mediaType: MediaType, muted: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3496,7 +3496,7 @@ setMediaSource(src: MediaSource, strategy?: PlaybackStrategy): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3550,7 +3550,7 @@ setPlaybackRange(startTimeMs: number, endTimeMs: number, mode?: SeekMode) : Prom
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3639,7 +3639,7 @@ setPlaybackStrategy(strategy: PlaybackStrategy): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果。 |
 
 **错误码：**
 
@@ -3727,7 +3727,7 @@ setSuperResolution(enabled: boolean) : Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3777,7 +3777,7 @@ setTrackSelectionFilter(filter : TrackSelectionFilter): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3840,7 +3840,7 @@ setVideoWindowSize(width: number, height: number) : Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3997,7 +3997,7 @@ stop(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

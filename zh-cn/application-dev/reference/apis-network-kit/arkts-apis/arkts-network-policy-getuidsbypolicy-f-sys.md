@@ -78,7 +78,7 @@ function getUidsByPolicy(policy: NetUidPolicy): Promise<Array<number>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;number & gt; & gt; | 以 Promise 形式返回应用的 uid 数组，失败返回错误码错误信息。 |
+| Promise &lt;Array &lt;number&gt;&gt; | 以 Promise 形式返回应用的 uid 数组，失败返回错误码错误信息。 |
 
 **错误码：**
 

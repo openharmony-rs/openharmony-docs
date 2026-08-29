@@ -95,7 +95,7 @@ onCancel(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象。最后一个拷贝的文件路径。 |
+| Promise &lt;string&gt; | Promise对象。最后一个拷贝的文件路径。 |
 
 **错误码：**
 

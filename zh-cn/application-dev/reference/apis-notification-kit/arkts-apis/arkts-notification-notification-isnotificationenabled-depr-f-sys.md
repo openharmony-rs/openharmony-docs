@@ -81,7 +81,7 @@ function isNotificationEnabled(bundle: BundleOption): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 以Promise形式返回获取指定应用的通知使能状态的结果。 |
+| Promise &lt;boolean&gt; | 以Promise形式返回获取指定应用的通知使能状态的结果。 |
 
 **示例**
 
@@ -166,7 +166,7 @@ function isNotificationEnabled(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 以Promise形式返回获取通知使能状态的结果。 |
+| Promise &lt;boolean&gt; | 以Promise形式返回获取通知使能状态的结果。 |
 
 **示例**
 
@@ -294,7 +294,7 @@ function isNotificationEnabled(userId: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 以Promise形式返回获取通知使能状态的结果（true：使能，false：禁止）。 |
+| Promise &lt;boolean&gt; | 以Promise形式返回获取通知使能状态的结果（true：使能，false：禁止）。 |
 
 **示例**
 

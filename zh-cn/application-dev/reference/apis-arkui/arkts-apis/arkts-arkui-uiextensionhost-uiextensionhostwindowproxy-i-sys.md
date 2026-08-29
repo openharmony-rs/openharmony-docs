@@ -41,7 +41,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;window.Window & gt; | Promise used to return the subwindow created. |
+| Promise &lt;window.Window&gt; | Promise used to return the subwindow created. |
 
 **错误码：**
 
@@ -128,7 +128,7 @@ createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOption
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;window.Window & gt; | Promise used to return the subwindow. |
+| Promise &lt;window.Window&gt; | Promise used to return the subwindow. |
 
 **错误码：**
 
@@ -277,7 +277,7 @@ hideNonSecureWindows(shouldHide: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。、 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。、 |
 
 **错误码：**
 
@@ -350,7 +350,7 @@ hidePrivacyContentForHost(shouldHide: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -594,7 +594,7 @@ setWaterMarkFlag(enable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

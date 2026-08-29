@@ -94,7 +94,7 @@ function isRequestPublishFormSupported(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回是否可以发布卡片到卡片使用方的结果。 |
+| Promise &lt;boolean&gt; | Promise对象。返回是否可以发布卡片到卡片使用方的结果。 |
 
 **错误码：**
 

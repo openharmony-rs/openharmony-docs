@@ -71,7 +71,7 @@ clear(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -178,7 +178,7 @@ delete(key: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -306,7 +306,7 @@ flush(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -425,7 +425,7 @@ get(key: string, defValue: ValueType): Promise<ValueType>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ValueType & gt; | Promise对象，返回键对应的值。 |
+| Promise &lt;ValueType&gt; | Promise对象，返回键对应的值。 |
 
 **错误码：**
 
@@ -515,7 +515,7 @@ getAll(): Promise<Object>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Object & gt; | Promise对象，返回所有包含的键值数据。 |
+| Promise &lt;Object&gt; | Promise对象，返回所有包含的键值数据。 |
 
 **错误码：**
 
@@ -697,7 +697,7 @@ has(key: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回Preferences实例是否包含给定Key的存储键值对，true表示存在，false表示不存在。 |
+| Promise &lt;boolean&gt; | Promise对象。返回Preferences实例是否包含给定Key的存储键值对，true表示存在，false表示不存在。 |
 
 **错误码：**
 
@@ -882,7 +882,7 @@ off(type: 'dataChange', keys: Array<string>, callback?: Callback<Record<string, 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'dataChange' | 是 | 事件类型，固定值'dataChange'，表示精确的数据变更。 |
-| keys | Array & lt;string & gt; | 是 | 需要取消订阅的Key集合，当Keys为空数组时，表示取消订阅全部Key；当Keys为非空数组时，表示只取消订阅Key集合中的Key。 |
+| keys | Array &lt;string&gt; | 是 | 需要取消订阅的Key集合，当Keys为空数组时，表示取消订阅全部Key；当Keys为非空数组时，表示只取消订阅Key集合中的Key。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Record&lt;string, ValueType&gt;&gt; | 否 | 需要取消的回调函数，若不填写，表示取消所有已注册的回调函数；若填写，表示只取消指定的回调函数。 |
 
 **错误码：**
@@ -1062,7 +1062,7 @@ on(type: 'dataChange', keys: Array<string>, callback: Callback<Record<string, Va
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'dataChange' | 是 | 事件类型，固定值'dataChange'，表示精确的数据变更。 |
-| keys | Array & lt;string & gt; | 是 | 需要订阅的Key集合。 |
+| keys | Array &lt;string&gt; | 是 | 需要订阅的Key集合。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Record&lt;string, ValueType&gt;&gt; | 是 | 回调函数。回调支持返回多个键值对，其中键为发生变更的订阅Key，类型为string；值为变更后的数据，类型为 [ValueType](arkts-arkdata-preferences-valuetype-t.md)。 |
 
 **错误码：**
@@ -1176,7 +1176,7 @@ put(key: string, value: ValueType): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

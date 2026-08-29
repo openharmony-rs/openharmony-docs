@@ -128,7 +128,7 @@ function getRdbStore(context: Context, config: StoreConfig): Promise<RdbStore>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;RdbStore & gt; | Promise对象。返回RdbStore对象。 |
+| Promise &lt;RdbStore&gt; | Promise对象。返回RdbStore对象。 |
 
 **错误码：**
 

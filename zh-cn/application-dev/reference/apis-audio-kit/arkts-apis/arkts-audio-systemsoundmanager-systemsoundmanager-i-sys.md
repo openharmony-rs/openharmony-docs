@@ -42,7 +42,7 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, externalUri: string
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回铃音在铃音库中的uri。 |
+| Promise &lt;string&gt; | Promise对象，返回铃音在铃音库中的uri。 |
 
 **错误码：**
 
@@ -115,7 +115,7 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: number, offset?
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回铃音在铃音库中的uri。 |
+| Promise &lt;string&gt; | Promise对象，返回铃音在铃音库中的uri。 |
 
 **错误码：**
 
@@ -183,7 +183,7 @@ close(fd: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -286,7 +286,7 @@ getAlarmToneUri(context: BaseContext): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回系统当前闹铃uri。 |
+| Promise &lt;string&gt; | Promise对象，返回系统当前闹铃uri。 |
 
 **错误码：**
 
@@ -609,7 +609,7 @@ getMockHapticRingtonePlayer(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;RingtonePlayer \ | null & gt; | Promise对象，成功返回模拟触觉铃声播放器实例，发生错误时返回null。 |
+| Promise &lt;RingtonePlayer \ | null&gt; | Promise对象，成功返回模拟触觉铃声播放器实例，发生错误时返回null。 |
 
 **错误码：**
 
@@ -676,7 +676,7 @@ getMockHapticRingtonePlayer(context: BaseContext, hapticUri: string): Promise<Ri
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;RingtonePlayer \ | null & gt; | Promise对象，成功返回模拟触觉铃声播放器实例，发生错误时返回null。 |
+| Promise &lt;RingtonePlayer \ | null&gt; | Promise对象，成功返回模拟触觉铃声播放器实例，发生错误时返回null。 |
 
 **错误码：**
 
@@ -786,7 +786,7 @@ getRingtonePlayer(context: BaseContext, type: RingtoneType): Promise<RingtonePla
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;RingtonePlayer & gt; | Promise对象，返回获取的系统铃声播放器。 |
+| Promise &lt;RingtonePlayer&gt; | Promise对象，返回获取的系统铃声播放器。 |
 
 **错误码：**
 
@@ -840,7 +840,7 @@ getRingtoneUri(context: BaseContext, type: RingtoneType): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回获取的系统铃声uri。 |
+| Promise &lt;string&gt; | Promise对象，返回获取的系统铃声uri。 |
 
 **错误码：**
 
@@ -945,7 +945,7 @@ getSystemRingtonePlayer(context: Context, type: RingtoneType): Promise<RingtoneP
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;RingtonePlayer & gt; | Promise对象，返回获取的系统铃声播放器。 |
+| Promise &lt;RingtonePlayer&gt; | Promise对象，返回获取的系统铃声播放器。 |
 
 **示例**
 
@@ -1042,7 +1042,7 @@ getSystemRingtoneUri(context: Context, type: RingtoneType): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回获取的系统铃声uri。 |
+| Promise &lt;string&gt; | Promise对象，返回获取的系统铃声uri。 |
 
 **示例**
 
@@ -1140,7 +1140,7 @@ getSystemTonePlayer(context: BaseContext, type: SystemToneType): Promise<SystemT
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;SystemTonePlayer & gt; | Promise对象，返回获取的系统提示音播放器。 |
+| Promise &lt;SystemTonePlayer&gt; | Promise对象，返回获取的系统提示音播放器。 |
 
 **错误码：**
 
@@ -1194,7 +1194,7 @@ getSystemToneUri(context: BaseContext, type: SystemToneType): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回获取的系统提示音uri。 |
+| Promise &lt;string&gt; | Promise对象，返回获取的系统提示音uri。 |
 
 **错误码：**
 
@@ -1354,7 +1354,7 @@ openAlarmTone(context: BaseContext, uri: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回fd。 |
+| Promise &lt;number&gt; | Promise对象，返回fd。 |
 
 **错误码：**
 
@@ -1408,7 +1408,7 @@ openToneHaptics(context: BaseContext, hapticsUri: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回fd。 |
+| Promise &lt;number&gt; | Promise对象，返回fd。 |
 
 **错误码：**
 
@@ -1456,13 +1456,13 @@ openToneList(uriList: Array<string>): Promise<Array<[string, number, SystemSound
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uriList | Array & lt;string & gt; | 是 | 要打开的uri列表，不能超过1024个。 |
+| uriList | Array &lt;string&gt; | 是 | 要打开的uri列表，不能超过1024个。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;[string, number, SystemSoundError] & gt; & gt; | Promise对象，Promise用于返回此操作的结果，返回Array内第一个参数uri，第二个参数 fd，第三个参数为此uri打开的结果。 |
+| Promise &lt;Array &lt;[string, number, SystemSoundError]&gt;&gt; | Promise对象，Promise用于返回此操作的结果，返回Array内第一个参数uri，第二个参数 fd，第三个参数为此uri打开的结果。 |
 
 **错误码：**
 
@@ -1518,7 +1518,7 @@ removeCustomizedTone(context: BaseContext, uri:string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1568,13 +1568,13 @@ removeCustomizedToneList(uriList: Array<string>): Promise<Array<[string, SystemS
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uriList | Array & lt;string & gt; | 是 | 要删除的uri列表，不能超过1024个。 |
+| uriList | Array &lt;string&gt; | 是 | 要删除的uri列表，不能超过1024个。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;[string, SystemSoundError] & gt; & gt; | Promise对象，Promise用于返回此操作的结果，返回Array内第一个参数uri，第二个参数为此uri删除 结果。 |
+| Promise &lt;Array &lt;[string, SystemSoundError]&gt;&gt; | Promise对象，Promise用于返回此操作的结果，返回Array内第一个参数uri，第二个参数为此uri删除 结果。 |
 
 **错误码：**
 
@@ -1629,7 +1629,7 @@ setAlarmToneUri(context: BaseContext, uri: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1684,7 +1684,7 @@ setRingtoneUri(context: BaseContext, uri: string, type: RingtoneType): Promise<v
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1791,7 +1791,7 @@ setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -1838,7 +1838,7 @@ setSystemToneUri(context: BaseContext, uri: string, type: SystemToneType): Promi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1893,7 +1893,7 @@ setToneHapticsSettings(context: BaseContext, type: ToneHapticsType, settings: To
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

@@ -33,7 +33,7 @@ LocalSocketServer停止监听并释放通过[listen](#listen)方法绑定的监�
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -345,7 +345,7 @@ getLocalAddress(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | 以Promise形式返回获取本地socket地址的结果。 |
+| Promise &lt;string&gt; | 以Promise形式返回获取本地socket地址的结果。 |
 
 **错误码：**
 
@@ -463,7 +463,7 @@ getSocketFd(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回Socket的文件描述符。 |
+| Promise &lt;number&gt; | Promise对象，返回Socket的文件描述符。 |
 
 **示例**
 
@@ -987,7 +987,7 @@ listen(address: LocalAddress): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以Promise形式返回执行结果， 成功返回空，失败返回错误码错误信息。 |
+| Promise &lt;void&gt; | 以Promise形式返回执行结果， 成功返回空，失败返回错误码错误信息。 |
 
 **错误码：**
 
@@ -1210,7 +1210,7 @@ setExtraOptions(options: ExtraOptionsBase): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

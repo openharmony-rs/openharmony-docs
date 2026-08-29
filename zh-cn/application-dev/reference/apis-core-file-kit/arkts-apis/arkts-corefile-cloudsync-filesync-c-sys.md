@@ -71,7 +71,7 @@ getUploadList(uris: Array<string>): Promise<Array<UploadProgress>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uris | Array & lt;string & gt; | 是 | 待查询上传进度的文件URI数组，数组长度取值范围[1,100]。 |
+| uris | Array &lt;string&gt; | 是 | 待查询上传进度的文件URI数组，数组长度取值范围[1,100]。 |
 
 **返回值：**
 

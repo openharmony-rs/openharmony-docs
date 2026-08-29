@@ -43,7 +43,7 @@ function createMicInAudioCapturer(config: AudioCapturerMicInConfig): Promise<Aud
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[AudioCapturer](arkts-audio-audio-audiocapturer-i.md) \| null & gt; | Promise对象，成功将返回音频采集器对象，失败时将返回包含错误信息的error对象。 |
+| Promise&lt;[AudioCapturer](arkts-audio-audio-audiocapturer-i.md) \| null&gt; | Promise对象，成功将返回音频采集器对象，失败时将返回包含错误信息的error对象。 |
 
 **错误码：**
 

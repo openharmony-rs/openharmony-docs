@@ -28,7 +28,7 @@ getReceivingSurfaceId(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | 异步返回Surface ID。 |
+| Promise &lt;string&gt; | 异步返回Surface ID。 |
 
 **示例**
 
@@ -109,7 +109,7 @@ readLatestImage(): Promise<Image>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Image & gt; | 异步返回最新图片。 |
+| Promise &lt;Image&gt; | 异步返回最新图片。 |
 
 **示例**
 
@@ -153,7 +153,7 @@ readNextImage(): Promise<Image>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Image & gt; | 异步返回下一张图片。 |
+| Promise &lt;Image&gt; | 异步返回下一张图片。 |
 
 **示例**
 
@@ -192,7 +192,7 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 异步返回操作结果。 |
+| Promise &lt;void&gt; | 异步返回操作结果。 |
 
 **示例**
 

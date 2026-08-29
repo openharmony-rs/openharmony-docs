@@ -64,7 +64,7 @@ getAudioStreamId(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回音频流id。 |
+| Promise &lt;number&gt; | Promise对象，返回音频流id。 |
 
 **示例**
 
@@ -184,7 +184,7 @@ getAudioTime(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回时间戳（从1970年1月1日开始）。 |
+| Promise &lt;number&gt; | Promise对象，返回时间戳（从1970年1月1日开始）。 |
 
 **示例**
 
@@ -411,7 +411,7 @@ getBufferSize(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回缓冲区大小。 |
+| Promise &lt;number&gt; | Promise对象，返回缓冲区大小。 |
 
 **示例**
 
@@ -704,7 +704,7 @@ getOverflowCount(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回音频流的过载音频帧数量。 |
+| Promise &lt;number&gt; | Promise对象，返回音频流的过载音频帧数量。 |
 
 **示例**
 
@@ -1350,7 +1350,7 @@ read(size: number, isBlockingRead: boolean): Promise<ArrayBuffer>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ArrayBuffer & gt; | Promise对象，返回读取的缓冲区数据。 |
+| Promise &lt;ArrayBuffer&gt; | Promise对象，返回读取的缓冲区数据。 |
 
 **示例**
 
@@ -1442,7 +1442,7 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -1593,7 +1593,7 @@ setMuteHint(mute: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1692,7 +1692,7 @@ setWillMuteWhenInterrupted(muteWhenInterrupted: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1785,7 +1785,7 @@ start(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，成功表示启动音频采集器成功。异常将返回error对象： |
+| Promise &lt;void&gt; | Promise对象，成功表示启动音频采集器成功。异常将返回error对象： |
 
 **示例**
 
@@ -1893,7 +1893,7 @@ stop(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 

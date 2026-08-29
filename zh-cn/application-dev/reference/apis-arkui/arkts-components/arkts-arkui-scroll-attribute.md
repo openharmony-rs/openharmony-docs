@@ -2,7 +2,7 @@
 
 除支持通用属性和[滚动组件通用属性](arkts-arkui-scrollablecommonmethod-c.md)外，还 支持以下属性：除支持通用事件和滚动组件通用事件外，还 支持以下事件：
 
-**继承/实现关系：** ScrollAttribute extends ScrollableCommonMethod<ScrollAttribute>
+**继承/实现关系：** ScrollAttribute extends ScrollableCommonMethod\<ScrollAttribute>
 
 **起始版本：** 7
 
@@ -282,7 +282,7 @@ onScroll(event: (xOffset: number, yOffset: number) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (xOffset: number, yOffset: number) = & gt; void | 是 | callback when scroll, xOffset: 相对于上一帧水平方向的偏移量，Scroll中的内容向左滚动时偏移量为正，向右滚动时偏移量为负。单位vp。 yOffset: 相对于上一帧竖直方向的偏移量，Scroll中的内容向上滚动时偏移量为正，向下滚动时偏移量为负。单位vp。 |
+| event | (xOffset: number, yOffset: number) =&gt; void | 是 | callback when scroll, xOffset: 相对于上一帧水平方向的偏移量，Scroll中的内容向左滚动时偏移量为正，向右滚动时偏移量为负。单位vp。 yOffset: 相对于上一帧竖直方向的偏移量，Scroll中的内容向上滚动时偏移量为正，向下滚动时偏移量为负。单位vp。 |
 
 ## onScrollEdge
 
@@ -329,7 +329,7 @@ onScrollEnd(event: () => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () = & gt; void | 是 |  |
+| event | () =&gt; void | 是 |  |
 
 ## onScrollFrameBegin
 

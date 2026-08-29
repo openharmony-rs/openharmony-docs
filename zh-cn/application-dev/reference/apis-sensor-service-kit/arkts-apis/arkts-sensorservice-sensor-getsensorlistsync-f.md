@@ -21,7 +21,7 @@ function getSensorListSync(): Array<Sensor>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;Sensor & gt; | 使用同步方式返回传感器属性列表。 |
+| Array &lt;Sensor&gt; | 使用同步方式返回传感器属性列表。 |
 
 **错误码：**
 

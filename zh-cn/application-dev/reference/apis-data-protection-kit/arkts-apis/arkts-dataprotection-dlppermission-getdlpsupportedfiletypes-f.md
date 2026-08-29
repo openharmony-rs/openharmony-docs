@@ -22,7 +22,7 @@ function getDLPSupportedFileTypes(): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象。返回当前可支持权限设置和校验的文件扩展名类型列表。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象。返回当前可支持权限设置和校验的文件扩展名类型列表。 |
 
 **错误码：**
 

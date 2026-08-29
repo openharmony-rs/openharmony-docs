@@ -25,7 +25,7 @@ function getServiceDump(serviceid : number, fd : number, args : Array<string>) :
 | --- | --- | --- | --- |
 | serviceid | number | 是 | 系统服务ID，用于标识要获取信息的系统服务。取值由系统定义，取值范围[0, 255]。传入无效值时返回错误码401。 |
 | fd | number | 是 | 文件描述符，接口会向该fd写入数据。传入无效文件描述符时返回错误码401。 |
-| args | Array & lt;string & gt; | 是 | 系统服务的dump接口参数列表。string长度的最大值为254，超出部分将会被截断。 |
+| args | Array &lt;string&gt; | 是 | 系统服务的dump接口参数列表。string长度的最大值为254，超出部分将会被截断。 |
 
 **错误码：**
 

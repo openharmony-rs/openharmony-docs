@@ -264,7 +264,7 @@ clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions): Pr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。成功时resolve无返回结果，失败时reject返回错误信息。 |
+| Promise &lt;void&gt; | Promise对象。成功时resolve无返回结果，失败时reject返回错误信息。 |
 
 **错误码：**
 
@@ -438,7 +438,7 @@ download(versionDigestInfo: VersionDigestInfo, downloadOptions: DownloadOptions)
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。成功时resolve无返回结果，表示下载任务启动成功；失败时reject返回错误信息。 |
+| Promise &lt;void&gt; | Promise对象。成功时resolve无返回结果，表示下载任务启动成功；失败时reject返回错误信息。 |
 
 **错误码：**
 
@@ -1165,7 +1165,7 @@ getTaskInfo(): Promise<TaskInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;TaskInfo & gt; | Promise对象。成功时resolve返回升级任务信息对象，用于查询和监控升级任务状态；失败时reject返回错误信息。 |
+| Promise &lt;TaskInfo&gt; | Promise对象。成功时resolve返回升级任务信息对象，用于查询和监控升级任务状态；失败时reject返回错误信息。 |
 
 **错误码：**
 
@@ -1345,7 +1345,7 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | eventClassifyInfo | [EventClassifyInfo](arkts-basicservices-update-eventclassifyinfo-i-sys.md) | 是 | 事件信息对象(EventClassifyInfo)，用于指定要取消监听的升级事件类型。前置条件:必须先通过on方法注册监听，注册 后系统维护事件监听列表并持续接收对应类型的本地升级事件通知。使用此参数取消监听后，系统从事件监听列表中移除对应监听记录，释放监听占用的内存和IPC通道资源，应用不再接收该类型的事件通知。 |
-| taskCallback | [UpgradeTaskCallback](arkts-basicservices-update-upgradetaskcallback-t-sys.md) | 否 | 事件回调。用于处理升级任务事件。回调签名：(eventInfo: EventInfo) = & gt; void，其中eventInfo为事件信 息对象，包含eventId（事件ID）和taskBody（任务数据）字段。当需要取消特定回调监听时传入此参数，不传入时取消该事件类型的所有监听。 |
+| taskCallback | [UpgradeTaskCallback](arkts-basicservices-update-upgradetaskcallback-t-sys.md) | 否 | 事件回调。用于处理升级任务事件。回调签名：(eventInfo: EventInfo) =&gt; void，其中eventInfo为事件信 息对象，包含eventId（事件ID）和taskBody（任务数据）字段。当需要取消特定回调监听时传入此参数，不传入时取消该事件类型的所有监听。 |
 
 **错误码：**
 
@@ -1429,7 +1429,7 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | eventClassifyInfo | [EventClassifyInfo](arkts-basicservices-update-eventclassifyinfo-i-sys.md) | 是 | 事件信息对象(EventClassifyInfo)，用于指定要注册监听的升级事件类型。系统根据eventClassifyInfo 参数注册对应类型的升级事件监听，事件发生时通过taskCallback回调函数传递事件信息。 |
-| taskCallback | [UpgradeTaskCallback](arkts-basicservices-update-upgradetaskcallback-t-sys.md) | 是 | 事件回调（UpgradeTaskCallback），用于处理升级任务事件。回调签名：(eventInfo: EventInfo) = & gt; void，其中eventInfo为事件信息对象，包含eventId（事件ID）和taskBody（任务数据）字段。 |
+| taskCallback | [UpgradeTaskCallback](arkts-basicservices-update-upgradetaskcallback-t-sys.md) | 是 | 事件回调（UpgradeTaskCallback），用于处理升级任务事件。回调签名：(eventInfo: EventInfo) =&gt; void，其中eventInfo为事件信息对象，包含eventId（事件ID）和taskBody（任务数据）字段。 |
 
 **错误码：**
 
@@ -1602,7 +1602,7 @@ pauseDownload(versionDigestInfo: VersionDigestInfo, pauseDownloadOptions: PauseD
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。成功时resolve无返回结果，失败时reject返回错误信息。 |
+| Promise &lt;void&gt; | Promise对象。成功时resolve无返回结果，失败时reject返回错误信息。 |
 
 **错误码：**
 
@@ -1763,7 +1763,7 @@ resumeDownload(versionDigestInfo: VersionDigestInfo, resumeDownloadOptions: Resu
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。成功时resolve无返回结果，失败时reject返回错误信息。 |
+| Promise &lt;void&gt; | Promise对象。成功时resolve无返回结果，失败时reject返回错误信息。 |
 
 **错误码：**
 
@@ -1904,7 +1904,7 @@ setUpgradePolicy(policy: UpgradePolicy): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。成功时resolve无返回结果，表示升级策略设置成功；失败时reject返回错误信息。 |
+| Promise &lt;void&gt; | Promise对象。成功时resolve无返回结果，表示升级策略设置成功；失败时reject返回错误信息。 |
 
 **错误码：**
 
@@ -2044,7 +2044,7 @@ terminateUpgrade(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。成功时resolve无返回结果，失败时reject返回错误信息。 |
+| Promise &lt;void&gt; | Promise对象。成功时resolve无返回结果，失败时reject返回错误信息。 |
 
 **错误码：**
 
@@ -2196,7 +2196,7 @@ upgrade(versionDigestInfo: VersionDigestInfo, upgradeOptions: UpgradeOptions): P
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。成功时resolve无返回结果，失败时reject返回错误信息。 |
+| Promise &lt;void&gt; | Promise对象。成功时resolve无返回结果，失败时reject返回错误信息。 |
 
 **错误码：**
 

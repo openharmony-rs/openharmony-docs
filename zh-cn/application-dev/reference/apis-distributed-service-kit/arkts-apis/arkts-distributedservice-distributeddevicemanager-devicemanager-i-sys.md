@@ -106,7 +106,7 @@ getDeviceNetworkIdList(filterOptions: NetworkIdQueryFilter): Promise<Array<strin
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise实例，返回设备网络ID的列表。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise实例，返回设备网络ID的列表。 |
 
 **错误码：**
 
@@ -221,7 +221,7 @@ getIdentificationByDeviceIds(deviceIds: Array<string>): Array<DeviceIdentificati
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceIds | Array & lt;string & gt; | 是 | 应用程序可以获取的设备ID列表。 |
+| deviceIds | Array &lt;string&gt; | 是 | 应用程序可以获取的设备ID列表。 |
 
 **返回值：**
 
@@ -497,7 +497,7 @@ putDeviceProfileInfoList(deviceProfileInfoList: Array<DeviceProfileInfo>): Promi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 操作结果，0表示本次调用成功。 |
+| Promise &lt;number&gt; | 操作结果，0表示本次调用成功。 |
 
 **错误码：**
 
@@ -742,7 +742,7 @@ setLocalDeviceName(deviceName: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 操作结果，0表示本次调用成功。 |
+| Promise &lt;number&gt; | 操作结果，0表示本次调用成功。 |
 
 **错误码：**
 
@@ -803,7 +803,7 @@ setRemoteDeviceName(deviceId: string, deviceName: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 操作结果，0表示本次调用成功。 |
+| Promise &lt;number&gt; | 操作结果，0表示本次调用成功。 |
 
 **错误码：**
 

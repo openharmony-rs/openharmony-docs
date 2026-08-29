@@ -42,7 +42,7 @@ appendBundles(remoteCapabilitiesFd: number, bundlesToBackup: string[], infos?: s
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -508,7 +508,7 @@ cleanBundleTempDir(bundleName: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 清理结果，true表示成功，false表示失败。 |
+| Promise &lt;boolean&gt; | 清理结果，true表示成功，false表示失败。 |
 
 **错误码：**
 
@@ -1013,7 +1013,7 @@ getCompatibilityInfo(bundleName: string, extInfo: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回应用的兼容性信息。 |
+| Promise &lt;string&gt; | Promise对象，返回应用的兼容性信息。 |
 
 **错误码：**
 
@@ -1239,7 +1239,7 @@ getFileHandle(fileMeta: FileMeta): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1431,7 +1431,7 @@ getFileHandles(fileMeta: FileMeta): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1958,7 +1958,7 @@ migrateFile(pathInfo: PathInfo, fileMeta: FileMeta): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2072,7 +2072,7 @@ publishFile(fileMeta: FileMeta): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2285,7 +2285,7 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

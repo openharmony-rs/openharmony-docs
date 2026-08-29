@@ -53,7 +53,7 @@ function queryTrafficStats(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;statistics.NetStatsInfo & gt; | Promise对象，返回获取的历史流量信息对象。 |
+| Promise &lt;statistics.NetStatsInfo&gt; | Promise对象，返回获取的历史流量信息对象。 |
 
 **错误码：**
 

@@ -91,7 +91,7 @@ function isNotificationSlotEnabled(bundle: BundleOption, type: SlotType): Promis
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 以Promise形式返回指定类型的渠道使能状态（true：使能，false：禁止）。 |
+| Promise &lt;boolean&gt; | 以Promise形式返回指定类型的渠道使能状态（true：使能，false：禁止）。 |
 
 **错误码：**
 

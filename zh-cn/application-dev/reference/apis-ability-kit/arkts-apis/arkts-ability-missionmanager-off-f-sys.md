@@ -28,7 +28,7 @@ function off(type: 'mission', listenerId: number, callback: AsyncCallback<void>)
 | --- | --- | --- | --- |
 | type | 'mission' | 是 | 取消监听的任务名称。固定值：'mission'，表示系统任务状态监听器。 |
 | listenerId | number | 是 | 系统任务状态监器法的index值，和监听器一一对应，由on方法返回。 |
-| callback | AsyncCallback & lt;void & gt; | 是 | 执行结果回调函数。 |
+| callback | AsyncCallback &lt;void&gt; | 是 | 执行结果回调函数。 |
 
 **错误码：**
 
@@ -154,7 +154,7 @@ function off(type: 'mission', listenerId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

@@ -32,7 +32,7 @@ HashMap底层采用数组、链表和红黑树实现，支持高效查询、插�
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;[K, V] & gt; | 返回包含此HashMap中所有键值对的迭代器。 |
+| IterableIterator &lt;[K, V]&gt; | 返回包含此HashMap中所有键值对的迭代器。 |
 
 **错误码：**
 
@@ -161,7 +161,7 @@ entries(): IterableIterator<[K, V]>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;[K, V] & gt; | 返回包含此HashMap中所有键值对的迭代器。 |
+| IterableIterator &lt;[K, V]&gt; | 返回包含此HashMap中所有键值对的迭代器。 |
 
 **错误码：**
 
@@ -217,7 +217,7 @@ forEach(callbackFn: (value?: V, key?: K, map?: HashMap<K, V>) => void, thisArg?:
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value?: V, key?: K, map?: HashMap & lt;K, V & gt;) = & gt; void | 是 | 回调函数，在遍历每个元素时被调用，用于对元素执行自定义操作。 |
+| callbackFn | (value?: V, key?: K, map?: HashMap &lt;K, V&gt;) =&gt; void | 是 | 回调函数，在遍历每个元素时被调用，用于对元素执行自定义操作。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值。当需要在回调函数中访问其他对象的属性或方法时，可传入自定义thisArg。不传入时默认值为当前实例对象。 |
 
 **错误码：**
@@ -430,7 +430,7 @@ keys(): IterableIterator<K>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;K & gt; | 返回包含此HashMap中所有key的迭代器。 |
+| IterableIterator &lt;K&gt; | 返回包含此HashMap中所有key的迭代器。 |
 
 **错误码：**
 
@@ -637,7 +637,7 @@ values(): IterableIterator<V>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;V & gt; | 返回包含此HashMap中所有value的迭代器。 |
+| IterableIterator &lt;V&gt; | 返回包含此HashMap中所有value的迭代器。 |
 
 **错误码：**
 

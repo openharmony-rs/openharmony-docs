@@ -88,7 +88,7 @@ function unbindDevice(deviceId: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回解除绑定的设备ID。 |
+| Promise &lt;number&gt; | Promise对象，返回解除绑定的设备ID。 |
 
 **错误码：**
 

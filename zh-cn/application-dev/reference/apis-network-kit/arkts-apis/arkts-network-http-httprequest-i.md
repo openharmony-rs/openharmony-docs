@@ -766,7 +766,7 @@ request(url: string, options?: HttpRequestOptions): Promise<HttpResponse>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;HttpResponse & gt; | Promise对象，返回请求的响应结果。 |
+| Promise &lt;HttpResponse&gt; | Promise对象，返回请求的响应结果。 |
 
 **错误码：**
 
@@ -1046,7 +1046,7 @@ requestInStream(url: string, options?: HttpRequestOptions): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 以Promise形式返回发起请求的结果，具体含义见[ResponseCode]{ |
+| Promise &lt;number&gt; | 以Promise形式返回发起请求的结果，具体含义见[ResponseCode]{ |
 
 **错误码：**
 

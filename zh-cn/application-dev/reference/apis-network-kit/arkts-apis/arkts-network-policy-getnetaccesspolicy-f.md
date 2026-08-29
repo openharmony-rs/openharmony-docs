@@ -12,7 +12,7 @@ import { policy } from '@kit.NetworkKit';
 function getNetAccessPolicy(): Promise<NetAccessPolicy>
 ```
 
-查询自身应用的联网策略（是否允许使用蜂窝、Wi-Fi网络上网），可在设备中“设置 &gt; 移动网络 &gt; 流量管理 &gt; 应用联网”中查看。使用Promise异步回调。
+查询自身应用的联网策略（是否允许使用蜂窝、Wi-Fi网络上网），可在设备中“设置&gt; 移动网络&gt; 流量管理&gt; 应用联网”中查看。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 

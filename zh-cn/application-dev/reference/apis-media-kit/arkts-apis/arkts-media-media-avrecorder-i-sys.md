@@ -41,7 +41,7 @@ getInputMetaSurface(type: MetaSourceType): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回输入surface id字符串。 |
+| Promise &lt;string&gt; | Promise对象，返回输入surface id字符串。 |
 
 **错误码：**
 
@@ -71,7 +71,7 @@ isWatermarkSupported(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回查询结果。true表示设备支持硬件数字水印，false表示不支持。 |
+| Promise &lt;boolean&gt; | Promise对象，返回查询结果。true表示设备支持硬件数字水印，false表示不支持。 |
 
 **示例**
 
@@ -110,7 +110,7 @@ setWatermark(watermark: image.PixelMap, config: WatermarkConfig): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

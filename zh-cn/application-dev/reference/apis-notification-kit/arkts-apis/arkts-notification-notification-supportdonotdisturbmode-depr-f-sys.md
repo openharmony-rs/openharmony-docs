@@ -72,7 +72,7 @@ function supportDoNotDisturbMode(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 以Promise形式返回获取是否支持免打扰功能的结果。 |
+| Promise &lt;boolean&gt; | 以Promise形式返回获取是否支持免打扰功能的结果。 |
 
 **示例**
 

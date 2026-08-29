@@ -38,7 +38,7 @@ getBackupCompatibilityInfo(extInfo: string) : Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回备份过程中应用自定义的兼容性信息。 |
+| Promise &lt;string&gt; | Promise对象，返回备份过程中应用自定义的兼容性信息。 |
 
 **示例**
 
@@ -129,7 +129,7 @@ getRestoreCompatibilityInfo(extInfo: string) : Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回恢复过程中应用自定义的兼容性信息。 |
+| Promise &lt;string&gt; | Promise对象，返回恢复过程中应用自定义的兼容性信息。 |
 
 **示例**
 

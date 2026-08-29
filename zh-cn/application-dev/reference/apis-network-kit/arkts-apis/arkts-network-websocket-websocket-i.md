@@ -134,7 +134,7 @@ close(options?: WebSocketCloseOptions): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 以Promise形式返回关闭连接的结果。true:关闭请求创建成功；false:关闭请求创建失败。 |
+| Promise &lt;boolean&gt; | 以Promise形式返回关闭连接的结果。true:关闭请求创建成功；false:关闭请求创建失败。 |
 
 **错误码：**
 
@@ -345,7 +345,7 @@ connect(url: string, options?: WebSocketRequestOptions): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 回调函数。true:连接请求创建成功；false:连接请求创建失败。 |
+| Promise &lt;boolean&gt; | 回调函数。true:连接请求创建成功；false:连接请求创建失败。 |
 
 **错误码：**
 
@@ -487,7 +487,7 @@ off(type: 'message', callback?: AsyncCallback<string | ArrayBuffer>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'message' | 是 | 取消订阅的事件类型。'message'：WebSocket的接收到服务器消息事件。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string \| ArrayBuffer & gt; | 否 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string \| ArrayBuffer&gt; | 否 | 回调函数。 |
 
 **示例**
 
@@ -690,7 +690,7 @@ on(type: 'message', callback: AsyncCallback<string | ArrayBuffer>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'message' | 是 | 订阅的事件类型。'message'：WebSocket的接收服务器消息事件。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string \| ArrayBuffer & gt; | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string \| ArrayBuffer&gt; | 是 | 回调函数。 |
 
 **示例**
 
@@ -954,7 +954,7 @@ send(data: string | ArrayBuffer): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 以Promise形式返回发送数据的结果。true:发送请求创建成功；false:发送请求创建失败。 |
+| Promise &lt;boolean&gt; | 以Promise形式返回发送数据的结果。true:发送请求创建成功；false:发送请求创建失败。 |
 
 **错误码：**
 

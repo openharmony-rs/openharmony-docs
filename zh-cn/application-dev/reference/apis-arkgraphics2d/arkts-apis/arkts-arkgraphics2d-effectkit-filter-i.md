@@ -323,7 +323,7 @@ getEffectPixelMap(): Promise<image.PixelMap>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;image.PixelMap & gt; | Promise对象。返回已添加链表效果的源图像的image.PixelMap。 |
+| Promise &lt;image.PixelMap&gt; | Promise对象。返回已添加链表效果的源图像的image.PixelMap。 |
 
 **示例**
 
@@ -381,7 +381,7 @@ getEffectPixelMap(useCpuRender : boolean): Promise<image.PixelMap>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;image.PixelMap & gt; | Promise对象。返回已添加链表效果的源图像的image.PixelMap。 |
+| Promise &lt;image.PixelMap&gt; | Promise对象。返回已添加链表效果的源图像的image.PixelMap。 |
 
 **示例**
 
@@ -640,7 +640,7 @@ setColorMatrix(colorMatrix: Array<number>): Filter
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| colorMatrix | Array & lt;number & gt; | 是 | 自定义颜色矩阵。用于创建效果滤镜的4x5大小的矩阵，数组长度必须为20， 前4列对应R、G、B、A通道的变换系数，第5列为常量偏移值。建议元素取值为[-1, 1]，超出此范围可能导致颜色值溢出或产生非预期效果。数组长度不为20时返回null。 |
+| colorMatrix | Array &lt;number&gt; | 是 | 自定义颜色矩阵。用于创建效果滤镜的4x5大小的矩阵，数组长度必须为20， 前4列对应R、G、B、A通道的变换系数，第5列为常量偏移值。建议元素取值为[-1, 1]，超出此范围可能导致颜色值溢出或产生非预期效果。数组长度不为20时返回null。 |
 
 **返回值：**
 

@@ -24,7 +24,7 @@ function getSerialPortList(): Promise<SerialPort[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;SerialPort[] & gt; | Promise对象，返回串口设备列表。 |
+| Promise &lt;SerialPort[]&gt; | Promise对象，返回串口设备列表。 |
 
 **错误码：**
 

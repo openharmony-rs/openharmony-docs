@@ -44,7 +44,7 @@ click(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -97,7 +97,7 @@ doubleClick(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -147,7 +147,7 @@ getId(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回控件的id值。 |
+| Promise &lt;number&gt; | Promise对象，返回控件的id值。 |
 
 **示例**
 
@@ -186,7 +186,7 @@ getKey(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回控件的key值。 |
+| Promise &lt;string&gt; | Promise对象，返回控件的key值。 |
 
 **示例**
 
@@ -225,7 +225,7 @@ getText(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回控件的文本信息。 |
+| Promise &lt;string&gt; | Promise对象，返回控件的文本信息。 |
 
 **示例**
 
@@ -275,7 +275,7 @@ getType(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回控件的类型。 |
+| Promise &lt;string&gt; | Promise对象，返回控件的类型。 |
 
 **示例**
 
@@ -331,7 +331,7 @@ inputText(text: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -384,7 +384,7 @@ isClickable(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回控件对象可点击状态。true：可点击。false：不可点击。 |
+| Promise &lt;boolean&gt; | Promise对象，返回控件对象可点击状态。true：可点击。false：不可点击。 |
 
 **示例**
 
@@ -442,7 +442,7 @@ isEnabled(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回控件使能状态。true：使能。false：未使能。 |
+| Promise &lt;boolean&gt; | Promise对象，返回控件使能状态。true：使能。false：未使能。 |
 
 **示例**
 
@@ -500,7 +500,7 @@ isFocused(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回控件对象是否获焦。true：获焦。false：未获焦。 |
+| Promise &lt;boolean&gt; | Promise对象，返回控件对象是否获焦。true：获焦。false：未获焦。 |
 
 **示例**
 
@@ -569,7 +569,7 @@ isScrollable(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回控件对象可滑动状态。true：可滑动。false：不可滑动。 |
+| Promise &lt;boolean&gt; | Promise对象，返回控件对象可滑动状态。true：可滑动。false：不可滑动。 |
 
 **示例**
 
@@ -627,7 +627,7 @@ isSelected(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回控件对象被选中的状态。true：被选中。false：未被选中。 |
+| Promise &lt;boolean&gt; | Promise对象，返回控件对象被选中的状态。true：被选中。false：未被选中。 |
 
 **示例**
 
@@ -685,7 +685,7 @@ longClick(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 

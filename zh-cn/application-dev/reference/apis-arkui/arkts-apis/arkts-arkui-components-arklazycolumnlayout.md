@@ -12,7 +12,7 @@ import { LazyColumnLayout, LazyColumnLayoutAttribute } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [LazyColumnLayoutAttribute](arkts-arkui-arkui-components-arklazycolumnlayout-lazycolumnlayoutattribute-c.md) | 定义懒加载列布局属性。@extends CommonMethod & lt;LazyColumnLayoutAttribute & gt; |
+| [LazyColumnLayoutAttribute](arkts-arkui-arkui-components-arklazycolumnlayout-lazycolumnlayoutattribute-c.md) | 定义懒加载列布局属性。@extends CommonMethod &lt;LazyColumnLayoutAttribute&gt; |
 
 ### 接口
 

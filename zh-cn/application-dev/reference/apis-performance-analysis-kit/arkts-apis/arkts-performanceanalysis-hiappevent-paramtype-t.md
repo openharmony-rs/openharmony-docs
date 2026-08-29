@@ -19,4 +19,4 @@ type ParamType = number | number | number | string | boolean | Array<string>
 | double | 表示值类型为双浮点数。 |
 | string | 表示值类型为字符串。 |
 | boolean | 表示值类型为布尔值。 |
-| Array & lt;string & gt; | 表示值类型为字符串类型的数组。 |
+| Array &lt;string&gt; | 表示值类型为字符串类型的数组。 |

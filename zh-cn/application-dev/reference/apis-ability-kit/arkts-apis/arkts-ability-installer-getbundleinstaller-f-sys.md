@@ -72,7 +72,7 @@ function getBundleInstaller(): Promise<BundleInstaller>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;BundleInstaller & gt; | BundleInstaller object. |
+| Promise &lt;BundleInstaller&gt; | BundleInstaller object. |
 
 **错误码：**
 

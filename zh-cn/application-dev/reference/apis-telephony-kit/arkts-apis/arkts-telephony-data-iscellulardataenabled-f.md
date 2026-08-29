@@ -70,7 +70,7 @@ function isCellularDataEnabled(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 以Promise形式返回检查蜂窝数据业务是否启用。 |
+| Promise &lt;boolean&gt; | 以Promise形式返回检查蜂窝数据业务是否启用。 |
 
 **错误码：**
 

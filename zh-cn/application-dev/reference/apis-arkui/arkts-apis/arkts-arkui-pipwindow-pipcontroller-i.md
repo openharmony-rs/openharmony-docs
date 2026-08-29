@@ -30,7 +30,7 @@ getPiPSettingSwitch(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回当前自动启动画中画开关状态，true表示开启，false表示关闭。 |
+| Promise &lt;boolean&gt; | Promise对象，返回当前自动启动画中画开关状态，true表示开启，false表示关闭。 |
 
 **错误码：**
 
@@ -122,7 +122,7 @@ isPiPActive(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回当前画中画的隐藏状态。true表示前台可见，false表示前台不可见（收入侧边栏）。画中画生命周期不为 [STARTED]{ |
+| Promise &lt;boolean&gt; | Promise对象，返回当前画中画的隐藏状态。true表示前台可见，false表示前台不可见（收入侧边栏）。画中画生命周期不为 [STARTED]{ |
 
 **错误码：**
 
@@ -334,7 +334,7 @@ on(type: 'stateChange', callback: (state: PiPState, reason: string) => void): vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'stateChange' | 是 | 事件类型，固定为'stateChange'，即画中画生命周期状态变化事件。 |
-| callback | (state: PiPState, reason: string) = & gt; void | 是 | 回调生命周期状态变化事件以及原因。state：[PiPState](arkts-arkui-pipwindow-pipstate-e.md)，表示当前画中画生命周期状态。 reason：string，表示当前生命周期的切换原因。 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，reason始终为“0”，无需关注。 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，reason为当前生命周期的切换原因： "requestStart"：应用调用startPip接口； "autoStart"：应用退后台触发画中画自动启动； "requestDelete"：应用调用stopPip接口； "panelActionDelete"：用户点击画中画窗口的关闭按钮； "dragDelete"：用户将画中画窗口拖入垃圾桶； "panelActionRestore"：用户点击画中画窗口的还原按钮（无还原按钮时可点击画中画窗口）触发还原； "other"：其他原因，如新的画中画窗口拉起导致当前窗口被关闭、应用主窗口被关闭等场景。 |
+| callback | (state: PiPState, reason: string) =&gt; void | 是 | 回调生命周期状态变化事件以及原因。state：[PiPState](arkts-arkui-pipwindow-pipstate-e.md)，表示当前画中画生命周期状态。 reason：string，表示当前生命周期的切换原因。 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，reason始终为“0”，无需关注。 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，reason为当前生命周期的切换原因： "requestStart"：应用调用startPip接口； "autoStart"：应用退后台触发画中画自动启动； "requestDelete"：应用调用stopPip接口； "panelActionDelete"：用户点击画中画窗口的关闭按钮； "dragDelete"：用户将画中画窗口拖入垃圾桶； "panelActionRestore"：用户点击画中画窗口的还原按钮（无还原按钮时可点击画中画窗口）触发还原； "other"：其他原因，如新的画中画窗口拉起导致当前窗口被关闭、应用主窗口被关闭等场景。 |
 
 **示例**
 
@@ -620,7 +620,7 @@ startPiP(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -662,7 +662,7 @@ stopPiP(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -707,7 +707,7 @@ updateContentNode(contentNode: typeNode.XComponent): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

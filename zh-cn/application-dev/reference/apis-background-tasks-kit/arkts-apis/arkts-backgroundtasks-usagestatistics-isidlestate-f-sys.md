@@ -85,7 +85,7 @@ function isIdleState(bundleName: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。 若应用为常用应用，返回true；若指定应用不是常用应用或bundleName无效，则返回false。 |
+| Promise &lt;boolean&gt; | Promise对象。 若应用为常用应用，返回true；若指定应用不是常用应用或bundleName无效，则返回false。 |
 
 **错误码：**
 

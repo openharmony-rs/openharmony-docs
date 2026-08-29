@@ -36,7 +36,7 @@ getProcessRunningInformation(): Promise<Array<ProcessInformation>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;ProcessInformation & gt; & gt; | Promise对象，返回接口运行结果及有关运行进程的信息，可进行错误处理或其他自定义处理。 |
+| Promise &lt;Array &lt;ProcessInformation&gt;&gt; | Promise对象，返回接口运行结果及有关运行进程的信息，可进行错误处理或其他自定义处理。 |
 
 **错误码：**
 
@@ -88,7 +88,7 @@ getProcessRunningInformation(callback: AsyncCallback<Array<ProcessInformation>>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback & lt;Array & lt;ProcessInformation & gt; & gt; | 是 | 回调函数，返回有关运行进程的信息。 |
+| callback | AsyncCallback &lt;Array &lt;ProcessInformation&gt;&gt; | 是 | 回调函数，返回有关运行进程的信息。 |
 
 **错误码：**
 
@@ -145,7 +145,7 @@ preloadUIExtensionAbility(want: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -381,7 +381,7 @@ unregisterAbilityLifecycleCallback(callbackId: number, callback: AsyncCallback<v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callbackId | number | 是 | 通过 [ApplicationContext.registerAbilityLifecycleCallback](#registerabilitylifecyclecallback) 接口注册监听应用内UIAbility的生命周期时返回的ID。 |
-| callback | AsyncCallback & lt;void & gt; | 是 | 回调方法。当取消监听应用内生命周期成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback &lt;void&gt; | 是 | 回调方法。当取消监听应用内生命周期成功，err为undefined，否则为错误对象。 |
 
 **示例**
 
@@ -441,7 +441,7 @@ unregisterAbilityLifecycleCallback(callbackId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -496,7 +496,7 @@ unregisterEnvironmentCallback(callbackId: number, envcallback: AsyncCallback<voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callbackId | number | 是 | 通过 [ApplicationContext.registerEnvironmentCallback](#registerenvironmentcallback) 接口注册监听系统环境变化时返回的ID。 |
-| envcallback | AsyncCallback & lt;void & gt; | 是 | 回调方法。当取消对系统环境变化的监听成功，err为undefined，否则为错误对象。 |
+| envcallback | AsyncCallback &lt;void&gt; | 是 | 回调方法。当取消对系统环境变化的监听成功，err为undefined，否则为错误对象。 |
 
 **示例**
 
@@ -555,7 +555,7 @@ unregisterEnvironmentCallback(callbackId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

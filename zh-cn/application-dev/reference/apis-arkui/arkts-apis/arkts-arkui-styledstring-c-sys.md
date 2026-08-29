@@ -89,7 +89,7 @@ static unmarshalling(buffer: ArrayBuffer, callback: StyledStringUnmarshallCallba
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer | 是 | 属性字符串序列化后的数据。 |
-| callback | [StyledStringUnmarshallCallback](arkts-arkui-styledstringunmarshallcallback-t-sys.md) | 是 | 用于反序列化ArrayBuffer的回调函数。回调函数签名：(buf: ArrayBuffer) = & gt; StyledStringMarshallingValue，其中 buf为序列化后的数据，返回值为反序列化得到的StyledStringMarshallingValue对象。 |
+| callback | [StyledStringUnmarshallCallback](arkts-arkui-styledstringunmarshallcallback-t-sys.md) | 是 | 用于反序列化ArrayBuffer的回调函数。回调函数签名：(buf: ArrayBuffer) =&gt; StyledStringMarshallingValue，其中 buf为序列化后的数据，返回值为反序列化得到的StyledStringMarshallingValue对象。 |
 
 **返回值：**
 

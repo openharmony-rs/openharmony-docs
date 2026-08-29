@@ -79,7 +79,7 @@ Obtains the ICCID of the SIM card in a specified slot.<p>The ICCID is a unique i
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Returns the ICCID; returns an empty string if no SIM card is inserted. |
+| Promise &lt;string&gt; | Returns the ICCID; returns an empty string if no SIM card is inserted. |
 
 **错误码：**
 

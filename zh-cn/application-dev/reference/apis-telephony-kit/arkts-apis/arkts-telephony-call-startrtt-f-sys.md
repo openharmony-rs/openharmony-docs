@@ -32,7 +32,7 @@ function startRtt(callId: number, type: ImsRttMode): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | The promise returned by the startRtt. |
+| Promise &lt;void&gt; | The promise returned by the startRtt. |
 
 **错误码：**
 

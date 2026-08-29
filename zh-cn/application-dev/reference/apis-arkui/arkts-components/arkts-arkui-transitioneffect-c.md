@@ -33,7 +33,7 @@ animation(value: AnimateParam): TransitionEffect
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [AnimateParam](arkts-arkui-animateparam-i.md) | 是 | 动画参数。 & lt;/br & gt;该参数只用来指定动画参数，其入参AnimateParam的onFinish回调不生效。 & lt;/br & gt;如果通过combine进行 TransitionEffect的组合，前一TransitionEffect的动画参数也可用于后一TransitionEffect。 |
+| value | [AnimateParam](arkts-arkui-animateparam-i.md) | 是 | 动画参数。 &lt;/br&gt;该参数只用来指定动画参数，其入参AnimateParam的onFinish回调不生效。 &lt;/br&gt;如果通过combine进行 TransitionEffect的组合，前一TransitionEffect的动画参数也可用于后一TransitionEffect。 |
 
 **返回值：**
 

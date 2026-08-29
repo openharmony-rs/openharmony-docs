@@ -5,7 +5,7 @@
 > **说明：**
 > 
 > - 在<!--RP2-->OpenHarmony 6.0<!--RP2End-->之前，支持在Phone、Tablet设备使用画中画功能，其他设备不可用；从<!--RP2-->OpenHarmony 6.0&lt;!--RP2End--
-&gt; &gt;开始，支持在Phone、PC/2in1、Tablet设备使用画中画功能，其他设备不可用。
+&gt;&gt;开始，支持在Phone、PC/2in1、Tablet设备使用画中画功能，其他设备不可用。
 > 
 > - 针对系统能力SystemCapability.Window.SessionManager，请先使用
 > [canIUse()](arkts-arkui-global-caniuse-f.md)接口判断当前设备是否支持此syscap及对应接口。

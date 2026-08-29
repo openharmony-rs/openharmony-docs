@@ -65,7 +65,7 @@ function getCfgDirList(): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象，返回配置层级目录列表。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象，返回配置层级目录列表。 |
 
 **示例**
 

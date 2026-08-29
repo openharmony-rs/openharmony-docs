@@ -26,7 +26,7 @@ function getKioskStatus(): Promise<KioskStatus>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;KioskStatus & gt; | Promise对象，返回当前Kiosk状态信息。 |
+| Promise &lt;KioskStatus&gt; | Promise对象，返回当前Kiosk状态信息。 |
 
 **错误码：**
 

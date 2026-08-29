@@ -88,8 +88,8 @@ function getRadioTech(slotId: number): Promise<NetworkRadioTech>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;{psRadioTech: RadioTechnology, csRadioTech: RadioTechnology | > } 以Promise形式返回当前接入的CS域和PS域技术。CS域为电 路交换域，PS为分组交换域。<br>**适用版本：** 6 - 10 |
-| Promise&lt;[NetworkRadioTech](arkts-telephony-radio-networkradiotech-i.md)&gt; | Returns the RAT of PS domain and CS domain of registered network. The values of RAT are as follows: & lt;ul & gt; & lt;li & gt;{ |
+| Promise &lt;{psRadioTech: RadioTechnology, csRadioTech: RadioTechnology | > } 以Promise形式返回当前接入的CS域和PS域技术。CS域为电 路交换域，PS为分组交换域。<br>**适用版本：** 6 - 10 |
+| Promise&lt;[NetworkRadioTech](arkts-telephony-radio-networkradiotech-i.md)&gt; | Returns the RAT of PS domain and CS domain of registered network. The values of RAT are as follows: &lt;ul&gt; &lt;li&gt;{ |
 
 **错误码：**
 

@@ -34,7 +34,7 @@ onRequestStart(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (request: WebSchemeHandlerRequest, handler: WebResourceHandler) = & gt; boolean | 是 | 拦截对应scheme请求开始时触发的回调。request为请求，handler用于提供自定义的返回头以及返回体给Web组件，返回值true表示拦截此请求，false 表示不拦截此请求，handler失效。 |
+| callback | (request: WebSchemeHandlerRequest, handler: WebResourceHandler) =&gt; boolean | 是 | 拦截对应scheme请求开始时触发的回调。request为请求，handler用于提供自定义的返回头以及返回体给Web组件，返回值true表示拦截此请求，false 表示不拦截此请求，handler失效。 |
 
 **错误码：**
 

@@ -131,7 +131,7 @@ Set the background color of the bar.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | [Nullable](arkts-arkui-nullable-t.md)&lt;Color \| number \| string & gt; | 是 | the color to set, undefined indicates using default. |
+| color | [Nullable](arkts-arkui-nullable-t.md)&lt;Color \| number \| string&gt; | 是 | the color to set, undefined indicates using default. |
 
 **示例**
 
@@ -182,7 +182,7 @@ Set the color of the icon on the bar.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | [Nullable](arkts-arkui-nullable-t.md)&lt;Color \| number \| string & gt; | 是 | the color to set to icon, undefined indicates using default. |
+| color | [Nullable](arkts-arkui-nullable-t.md)&lt;Color \| number \| string&gt; | 是 | the color to set to icon, undefined indicates using default. |
 
 **示例**
 

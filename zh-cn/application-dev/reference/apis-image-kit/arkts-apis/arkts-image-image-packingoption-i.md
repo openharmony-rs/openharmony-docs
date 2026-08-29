@@ -152,9 +152,9 @@ sizeLimit?: PackingSizeLimit
 
 用于指定编码输出图像的最大尺寸限制。当原图宽度或高度超过最大尺寸maxSize的限制时，保持宽高比不变进行等比例缩小，确保输出图像尺寸不超过指定边界。缩放过程由level参数控制采用的缩放算法。若未指定此参数，或根据最大尺寸计算的输出图宽/高为0，则按原图尺寸编码。单位：像素（px）。参数规则：  
 - maxSize = {0, 0}：不限制最大编码尺寸，按原图尺寸编码  
-- maxSize.width &gt; 0而maxSize.height &lt;= 0：限制最大宽度，高度不限（使用原图高度）  
+- maxSize.width&gt; 0而maxSize.height &lt;= 0：限制最大宽度，高度不限（使用原图高度）  
 - maxSize.width <= 0而maxSize.height > 0：限制最大高度，宽度不限（使用原图宽度）  
-- maxSize.width &gt; 0且maxSize.height &gt; 0：宽高同时限制，选择较小的缩放比例  
+- maxSize.width&gt; 0且maxSize.height&gt; 0：宽高同时限制，选择较小的缩放比例  
 默认值：{maxSize: {width: 0, height: 0}, level: AntiAliasingLevel.NONE}
 
 **类型：** [PackingSizeLimit](arkts-image-image-packingsizelimit-i.md)

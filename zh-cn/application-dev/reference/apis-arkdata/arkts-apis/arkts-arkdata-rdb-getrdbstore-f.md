@@ -98,7 +98,7 @@ function getRdbStore(context: Context, config: StoreConfig, version: number): Pr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;RdbStore & gt; | Promise对象。返回RdbStore对象。 |
+| Promise &lt;RdbStore&gt; | Promise对象。返回RdbStore对象。 |
 
 **示例**
 

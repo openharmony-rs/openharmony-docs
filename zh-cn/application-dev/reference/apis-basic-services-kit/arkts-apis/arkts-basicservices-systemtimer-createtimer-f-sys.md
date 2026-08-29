@@ -92,7 +92,7 @@ function createTimer(options: TimerOptions): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回定时器的ID。 |
+| Promise &lt;number&gt; | Promise对象，返回定时器的ID。 |
 
 **错误码：**
 

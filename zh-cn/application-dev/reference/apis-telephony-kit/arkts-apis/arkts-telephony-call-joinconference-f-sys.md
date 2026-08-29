@@ -24,7 +24,7 @@ function joinConference(mainCallId: number, callNumberList: Array<string>, callb
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | mainCallId | number | 是 | 主通话Id。 |
-| callNumberList | Array & lt;string & gt; | 是 | 呼叫号码列表。 |
+| callNumberList | Array &lt;string&gt; | 是 | 呼叫号码列表。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 以回调函数的方式返回加入会议的结果。 |
 
 **错误码：**
@@ -75,13 +75,13 @@ function joinConference(mainCallId: number, callNumberList: Array<string>): Prom
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | mainCallId | number | 是 | 主通话Id。 |
-| callNumberList | Array & lt;string & gt; | 是 | 呼叫号码列表。 |
+| callNumberList | Array &lt;string&gt; | 是 | 呼叫号码列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 以Promise形式异步返回结果。 |
+| Promise &lt;void&gt; | 以Promise形式异步返回结果。 |
 
 **错误码：**
 

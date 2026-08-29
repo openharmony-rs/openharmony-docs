@@ -31,7 +31,7 @@ getColorTintRange(): Array<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;number & gt; | 用于获取色调调节值的可调范围。若接口调用失败，返回undefined。 |
+| Array &lt;number&gt; | 用于获取色调调节值的可调范围。若接口调用失败，返回undefined。 |
 
 **错误码：**
 
@@ -74,7 +74,7 @@ getWhiteBalanceRange(): Array<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;number & gt; | 用于获取手动白平衡值的可调范围，如[2800，10000]，单位为K（Kelvin，温度单位），实际情况根据底层能力返回为准。若接口调用失败，返回undefined。 |
+| Array &lt;number&gt; | 用于获取手动白平衡值的可调范围，如[2800，10000]，单位为K（Kelvin，温度单位），实际情况根据底层能力返回为准。若接口调用失败，返回undefined。 |
 
 **错误码：**
 

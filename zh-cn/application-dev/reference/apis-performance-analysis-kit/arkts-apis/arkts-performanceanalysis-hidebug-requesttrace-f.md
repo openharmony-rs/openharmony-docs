@@ -31,7 +31,7 @@ function requestTrace(config: RequestTraceConfig): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回以.sys作为后缀的trace文件的应用沙箱路径。 |
+| Promise &lt;string&gt; | Promise对象，返回以.sys作为后缀的trace文件的应用沙箱路径。 |
 
 **错误码：**
 

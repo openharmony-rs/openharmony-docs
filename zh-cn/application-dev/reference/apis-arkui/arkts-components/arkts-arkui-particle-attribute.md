@@ -2,7 +2,7 @@
 
 除支持通用属性外还支持以下属性：
 
-**继承/实现关系：** ParticleAttribute extends CommonMethod<ParticleAttribute>
+**继承/实现关系：** ParticleAttribute extends CommonMethod\<ParticleAttribute>
 
 **起始版本：** 10
 

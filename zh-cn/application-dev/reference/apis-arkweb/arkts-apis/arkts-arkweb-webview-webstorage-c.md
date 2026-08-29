@@ -247,7 +247,7 @@ static getOriginQuota(origin: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise实例，用于获取指定源的存储配额。 |
+| Promise &lt;number&gt; | Promise实例，用于获取指定源的存储配额。 |
 
 **错误码：**
 
@@ -528,7 +528,7 @@ static getOriginUsage(origin: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise实例，用于获取指定源的存储量。 |
+| Promise &lt;number&gt; | Promise实例，用于获取指定源的存储量。 |
 
 **错误码：**
 

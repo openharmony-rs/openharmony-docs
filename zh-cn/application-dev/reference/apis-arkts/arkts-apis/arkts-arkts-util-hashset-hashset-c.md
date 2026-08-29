@@ -32,7 +32,7 @@ HashSet是一种非线性容器，用于存储不重复的元素集合，支持�
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;T & gt; | 返回包含此HashSet中所有元素的迭代器对象。 |
+| IterableIterator &lt;T&gt; | 返回包含此HashSet中所有元素的迭代器对象。 |
 
 **错误码：**
 
@@ -198,7 +198,7 @@ entries(): IterableIterator<[T, T]>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;[T, T] & gt; | 返回包含此HashSet中所有元素的迭代器对象。 |
+| IterableIterator &lt;[T, T]&gt; | 返回包含此HashSet中所有元素的迭代器对象。 |
 
 **错误码：**
 
@@ -255,7 +255,7 @@ forEach(callbackFn: (value?: T, key?: T, set?: HashSet<T>) => void, thisArg?: Ob
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value?: T, key?: T, set?: HashSet & lt;T & gt;) = & gt; void | 是 | 回调函数，在遍历过程中对每个元素调用一次。回调参数包括value、key和set，详见callbackFn的参数说明。 |
+| callbackFn | (value?: T, key?: T, set?: HashSet &lt;T&gt;) =&gt; void | 是 | 回调函数，在遍历过程中对每个元素调用一次。回调参数包括value、key和set，详见callbackFn的参数说明。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值。当需要改变回调函数内this指向时传入此参数，不传入时默认值为当前实例对象。 |
 
 **错误码：**
@@ -430,7 +430,7 @@ values(): IterableIterator<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;T & gt; | 返回包含此HashSet中所有值的迭代器对象。 |
+| IterableIterator &lt;T&gt; | 返回包含此HashSet中所有值的迭代器对象。 |
 
 **错误码：**
 

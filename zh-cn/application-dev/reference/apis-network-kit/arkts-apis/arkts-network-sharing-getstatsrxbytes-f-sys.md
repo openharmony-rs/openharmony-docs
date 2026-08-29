@@ -70,7 +70,7 @@ function getStatsRxBytes(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 以 Promise 形式返回共享网络接收数据量，单位：KB。 |
+| Promise &lt;number&gt; | 以 Promise 形式返回共享网络接收数据量，单位：KB。 |
 
 **错误码：**
 

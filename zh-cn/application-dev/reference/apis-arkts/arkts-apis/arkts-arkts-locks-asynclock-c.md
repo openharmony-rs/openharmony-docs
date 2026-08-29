@@ -50,7 +50,7 @@ lockAsync<T>(callback: AsyncLockCallback<T>): Promise<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;T & gt; | 回调执行后将解决的Promise。 |
+| Promise &lt;T&gt; | 回调执行后将解决的Promise。 |
 
 **错误码：**
 
@@ -83,7 +83,7 @@ lockAsync<T>(callback: AsyncLockCallback<T>, mode: AsyncLockMode): Promise<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;T & gt; | 回调执行后将解决的Promise。 |
+| Promise &lt;T&gt; | 回调执行后将解决的Promise。 |
 
 **错误码：**
 
@@ -118,7 +118,7 @@ lockAsync<T, U>(callback: AsyncLockCallback<T>, mode: AsyncLockMode,
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;T \ | U & gt; | 回调执行后解决的Promise，或者在超时情况下被拒绝。 |
+| Promise &lt;T \ | U&gt; | 回调执行后解决的Promise，或者在超时情况下被拒绝。 |
 
 **错误码：**
 

@@ -118,7 +118,7 @@ function execute(param: ExecuteParam): Promise<insightIntent.ExecuteResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;insightIntent.ExecuteResult & gt; | Promise used to return the intent call execution result. |
+| Promise &lt;insightIntent.ExecuteResult&gt; | Promise used to return the intent call execution result. |
 
 **错误码：**
 

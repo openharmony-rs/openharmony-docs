@@ -89,7 +89,7 @@ setDisplaySurface(surfaceId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。返回设置结果。 |
+| Promise &lt;void&gt; | Promise对象。返回设置结果。 |
 
 **错误码：**
 

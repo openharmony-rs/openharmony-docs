@@ -2,7 +2,7 @@
 
 定义AbilityComponent的属性函数。@extends CommonMethod&lt;AbilityComponentAttribute&gt;
 
-**继承/实现关系：** AbilityComponentAttribute extends CommonMethod<AbilityComponentAttribute>
+**继承/实现关系：** AbilityComponentAttribute extends CommonMethod\<AbilityComponentAttribute>
 
 **起始版本：** 9
 

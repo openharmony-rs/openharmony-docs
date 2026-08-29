@@ -33,7 +33,7 @@ static clearAllCookies(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise实例，用于获取清除所有cookie是否成功。 |
+| Promise &lt;void&gt; | Promise实例，用于获取清除所有cookie是否成功。 |
 
 **错误码：**
 
@@ -190,7 +190,7 @@ static clearSessionCookie(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise实例，用于获取清除所有会话cookie是否成功。 |
+| Promise &lt;void&gt; | Promise实例，用于获取清除所有会话cookie是否成功。 |
 
 **错误码：**
 
@@ -369,7 +369,7 @@ static configCookie(url: string, value: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise实例，用于获取指定url设置单个cookie值是否成功。 |
+| Promise &lt;void&gt; | Promise实例，用于获取指定url设置单个cookie值是否成功。 |
 
 **错误码：**
 
@@ -453,7 +453,7 @@ static configCookie(url: string, value: string, incognito: boolean, includeHttpO
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise实例，用于获取指定url设置单个cookie值是否成功。 |
+| Promise &lt;void&gt; | Promise实例，用于获取指定url设置单个cookie值是否成功。 |
 
 **错误码：**
 
@@ -942,7 +942,7 @@ static fetchCookie(url: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise实例，用于获取指定url对应的cookie值。 |
+| Promise &lt;string&gt; | Promise实例，用于获取指定url对应的cookie值。 |
 
 **错误码：**
 
@@ -1008,7 +1008,7 @@ static fetchCookie(url: string, incognito: boolean): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise实例，用于获取指定url对应的cookie值。 |
+| Promise &lt;string&gt; | Promise实例，用于获取指定url对应的cookie值。 |
 
 **错误码：**
 
@@ -1078,7 +1078,7 @@ static fetchCookie(url: string, incognito: boolean, includePartitionedCookies: b
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，用于获取指定url对应的cookies。 |
+| Promise &lt;string&gt; | Promise对象，用于获取指定url对应的cookies。 |
 
 **错误码：**
 
@@ -1609,7 +1609,7 @@ static saveCookieAsync(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise实例，用于获取cookie是否成功保存。 |
+| Promise &lt;void&gt; | Promise实例，用于获取cookie是否成功保存。 |
 
 **错误码：**
 

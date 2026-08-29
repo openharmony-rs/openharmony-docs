@@ -31,7 +31,7 @@ function getGeomagneticDip(inclinationMatrix: Array<number>, callback: AsyncCall
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| inclinationMatrix | Array & lt;number & gt; | 是 | 表示倾斜矩阵。 |
+| inclinationMatrix | Array &lt;number&gt; | 是 | 表示倾斜矩阵。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 异步返回地磁倾斜角，单位：rad（弧度）。 |
 
 **示例**
@@ -75,13 +75,13 @@ function getGeomagneticDip(inclinationMatrix: Array<number>): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| inclinationMatrix | Array & lt;number & gt; | 是 | 表示倾斜矩阵。 |
+| inclinationMatrix | Array &lt;number&gt; | 是 | 表示倾斜矩阵。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 使用异步方式返回地磁倾斜角，单位：rad（弧度）。 |
+| Promise &lt;number&gt; | 使用异步方式返回地磁倾斜角，单位：rad（弧度）。 |
 
 **示例**
 

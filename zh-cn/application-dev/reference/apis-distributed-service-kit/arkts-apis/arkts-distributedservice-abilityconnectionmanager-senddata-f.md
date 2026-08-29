@@ -31,7 +31,7 @@ function sendData(sessionId: number, data: ArrayBuffer): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的promise对象。 |
 
 **错误码：**
 

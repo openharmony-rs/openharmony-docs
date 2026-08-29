@@ -96,7 +96,7 @@ function getAddressesByName(host: string): Promise<Array<NetAddress>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;NetAddress & gt; & gt; | Promise对象。返回所有IP地址。 |
+| Promise &lt;Array &lt;NetAddress&gt;&gt; | Promise对象。返回所有IP地址。 |
 
 **错误码：**
 

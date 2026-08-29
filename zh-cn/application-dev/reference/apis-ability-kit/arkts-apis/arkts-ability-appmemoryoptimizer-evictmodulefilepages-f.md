@@ -24,13 +24,13 @@ function evictModuleFilePages(moduleNames: Array<string>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| moduleNames | Array & lt;string & gt; | 是 | 需要释放文件页缓存的模块名数组。 |
+| moduleNames | Array &lt;string&gt; | 是 | 需要释放文件页缓存的模块名数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

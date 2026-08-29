@@ -96,7 +96,7 @@ setExpectedFrameRateRange(rateRange: ExpectedFrameRateRange) : void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rateRange | ExpectedFrameRateRange | 是 | 设置DisplaySync期望的帧率范围，包含expected、min和max三个字段，单位为帧/秒（fps）， 字段需为非负整数，取值范围为[0, 设备最大帧率]，且满足min & lt;= expected & lt;= max。超出有效范围时会抛出401错误码。 |
+| rateRange | ExpectedFrameRateRange | 是 | 设置DisplaySync期望的帧率范围，包含expected、min和max三个字段，单位为帧/秒（fps）， 字段需为非负整数，取值范围为[0, 设备最大帧率]，且满足min &lt;= expected &lt;= max。超出有效范围时会抛出401错误码。 |
 
 **错误码：**
 

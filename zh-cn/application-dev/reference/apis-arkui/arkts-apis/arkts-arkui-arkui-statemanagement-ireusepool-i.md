@@ -144,7 +144,7 @@ preRender(builder: WrappedBuilder<[]>, times: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 当空闲任务成功完成时兑现的Promise。Promise对象无返回结果。当预渲染任务执行失败时，Promise会被拒绝。 |
+| Promise &lt;void&gt; | 当空闲任务成功完成时兑现的Promise。Promise对象无返回结果。当预渲染任务执行失败时，Promise会被拒绝。 |
 
 **示例**
 

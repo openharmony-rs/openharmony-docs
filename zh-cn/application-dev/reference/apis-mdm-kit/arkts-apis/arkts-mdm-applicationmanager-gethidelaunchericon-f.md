@@ -32,7 +32,7 @@ function getHideLauncherIcon(admin: Want | null): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 返回当前用户下的隐藏桌面应用图标名单。 |
+| Array &lt;string&gt; | 返回当前用户下的隐藏桌面应用图标名单。 |
 
 **错误码：**
 

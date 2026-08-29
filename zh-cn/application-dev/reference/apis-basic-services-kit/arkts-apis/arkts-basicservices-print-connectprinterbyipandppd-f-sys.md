@@ -36,7 +36,7 @@ function connectPrinterByIpAndPpd(printerIp: string, protocol: string, ppdName: 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | the promise returned by the function. |
+| Promise &lt;void&gt; | the promise returned by the function. |
 
 **错误码：**
 

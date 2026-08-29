@@ -2,7 +2,7 @@
 
 长按手势处理器对象类型。
 
-**继承/实现关系：** LongPressGestureHandler extends GestureHandler<LongPressGestureHandler>
+**继承/实现关系：** LongPressGestureHandler extends GestureHandler\<LongPressGestureHandler>
 
 **起始版本：** 12
 
@@ -83,7 +83,7 @@ onActionCancel(event: Callback<void>): LongPressGestureHandler
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | Callback & lt;void & gt; | 是 | 长按手势处理器取消回调。 |
+| event | Callback &lt;void&gt; | 是 | 长按手势处理器取消回调。 |
 
 **返回值：**
 

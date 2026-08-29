@@ -125,7 +125,7 @@ readDescriptor(descriptor: PropertyDescriptor): Promise<PropertyDescriptor>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PropertyDescriptor & gt; | Promise对象，返回从服务端读取到的属性描述符对象。 |
+| Promise &lt;PropertyDescriptor&gt; | Promise对象，返回从服务端读取到的属性描述符对象。 |
 
 **错误码：**
 
@@ -167,7 +167,7 @@ setPropertyIndication(property: Property, enable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -215,7 +215,7 @@ writeDescriptor(descriptor: PropertyDescriptor): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

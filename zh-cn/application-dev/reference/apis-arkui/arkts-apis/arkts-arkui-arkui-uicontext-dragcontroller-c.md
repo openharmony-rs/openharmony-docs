@@ -426,8 +426,8 @@ executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: dragController.DragI
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;{ event: DragEvent, extraParams: string | > } Callback used to return the result. |
-| Promise & lt;dragController.DragEventParam & gt; | A Promise with the drag event information.<br>**适用版本：** 12+ |
+| Promise &lt;{ event: DragEvent, extraParams: string | > } Callback used to return the result. |
+| Promise &lt;dragController.DragEventParam&gt; | A Promise with the drag event information.<br>**适用版本：** 12+ |
 
 **错误码：**
 

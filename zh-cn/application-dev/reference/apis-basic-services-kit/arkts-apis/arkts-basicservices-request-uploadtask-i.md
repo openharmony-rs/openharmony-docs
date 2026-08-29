@@ -101,7 +101,7 @@ delete(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示移除上传任务成功；返回false表示移除上传任务失败。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示移除上传任务成功；返回false表示移除上传任务失败。 |
 
 **错误码：**
 
@@ -158,7 +158,7 @@ off(type: 'progress', callback?: (uploadedSize: number, totalSize: number) => vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'progress' | 是 | 取消订阅的事件类型。   - 取值为'progress'，表示上传的进度信息。 |
-| callback | (uploadedSize: number, totalSize: number) = & gt; void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
+| callback | (uploadedSize: number, totalSize: number) =&gt; void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码：**
 
@@ -200,7 +200,7 @@ off(type: 'headerReceive', callback?: (header: object) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'headerReceive' | 是 | 取消订阅的事件类型。   - 取值为'headerReceive'，表示HTTP请求接收到响应。 |
-| callback | (header: object) = & gt; void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
+| callback | (header: object) =&gt; void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码：**
 
@@ -342,7 +342,7 @@ on(type: 'progress', callback: (uploadedSize: number, totalSize: number) => void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'progress' | 是 | 订阅的事件类型。取值为'progress'，表示上传的进度信息，任务进度有进展时触发该事件。 |
-| callback | (uploadedSize: number, totalSize: number) = & gt; void | 是 | 上传任务进度的回调函数，返回已上传文件大小和上传文件总大小，单位为字节（B）。 |
+| callback | (uploadedSize: number, totalSize: number) =&gt; void | 是 | 上传任务进度的回调函数，返回已上传文件大小和上传文件总大小，单位为字节（B）。 |
 
 **错误码：**
 
@@ -376,7 +376,7 @@ on(type: 'headerReceive', callback: (header: object) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'headerReceive' | 是 | 订阅的事件类型。   - 取值为'headerReceive'，HTTP请求接收到响应时触发该事件。 |
-| callback | (header: object) = & gt; void | 是 | HTTP Response事件的回调函数，返回响应请求内容。 |
+| callback | (header: object) =&gt; void | 是 | HTTP Response事件的回调函数，返回响应请求内容。 |
 
 **错误码：**
 
@@ -550,7 +550,7 @@ remove(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 使用Promise方式异步回调，返回true表示移除上传任务成功；返回false表示移除上传任务失败。 |
+| Promise &lt;boolean&gt; | 使用Promise方式异步回调，返回true表示移除上传任务成功；返回false表示移除上传任务失败。 |
 
 **错误码：**
 

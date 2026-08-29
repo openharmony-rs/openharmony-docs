@@ -215,7 +215,7 @@ startElement(elementName: string, namespaceURI: string | undefined, qName: strin
 | elementName | string | 是 | 解析器回传的元素名称（不包含命名空间前缀）。例如，对于`&lt;ns2:child&gt;`，elementName为"child"。 |
 | namespaceURI | string \| undefined | 是 | 解析器回传的命名空间URI。例如，对于`xmlns:ns2="http://example.com/ns2"`， namespaceURI为`"http://example.com/ns2"`。如果元素没有命名空间则为undefined。 |
 | qName | string \| undefined | 是 | 解析器回传的元素限定名（包含命名空间前缀）。例如，对于`&lt;ns2:child&gt;`，qName为"ns2:child"。 如果元素没有命名空间则qName为undefined。 |
-| attributes | Map & lt;string, string & gt; | 是 | 解析器回传的元素的属性映射表，键为属性名（可能包含命名空间前缀，如"ns2:attrA"），值为属性值。 |
+| attributes | Map &lt;string, string&gt; | 是 | 解析器回传的元素的属性映射表，键为属性名（可能包含命名空间前缀，如"ns2:attrA"），值为属性值。 |
 
 **示例**
 

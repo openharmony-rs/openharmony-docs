@@ -2,7 +2,7 @@
 
 除支持[通用属性](arkts-arkui-commonmethod-c.md)外，还支持以下属性。除支持[通用事件](arkts-arkui-commonmethod-c.md)外，还支持以下事件。
 
-**继承/实现关系：** SearchAttribute extends CommonMethod<SearchAttribute>
+**继承/实现关系：** SearchAttribute extends CommonMethod\<SearchAttribute>
 
 **起始版本：** 8
 
@@ -513,7 +513,7 @@ inputFilter(value: ResourceStr, error?: Callback<string>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | 是 | 输入过滤器的正则表达式。匹配该表达式的输入允许显示，不匹配的输入将被过滤。 |
-| error | Callback & lt;string & gt; | 否 | 正则匹配失败时，返回被过滤的内容。不传入时不触发该回调。 |
+| error | Callback &lt;string&gt; | 否 | 正则匹配失败时，返回被过滤的内容。不传入时不触发该回调。 |
 
 ## keyboardAppearance
 
@@ -605,7 +605,7 @@ maxFontScale(scale: Optional<number|Resource>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scale | [Optional](arkts-arkui-optional-t.md)&lt;number \| Resource & gt; | 是 | 文本最大的字体缩放倍数，支持undefined类型。 取值范围：[1, +∞)    **说明：** 设置的值小于1时，按值为1处理。设置undefined时维持原值，异常值默认不生效。 设置maxFontScale属性后，search组件内容最多放大到2倍。 使用前需在工程中配置[configuration.json](../../../quick-start/app-configuration-file.md#configuration标签)文件和 [app.json5](../../../quick-start/app-configuration-file.md)文件，具体详见 示例19（设置最小字体范围与最大字体范围）。 |
+| scale | [Optional](arkts-arkui-optional-t.md)&lt;number \| Resource&gt; | 是 | 文本最大的字体缩放倍数，支持undefined类型。 取值范围：[1, +∞)    **说明：** 设置的值小于1时，按值为1处理。设置undefined时维持原值，异常值默认不生效。 设置maxFontScale属性后，search组件内容最多放大到2倍。 使用前需在工程中配置[configuration.json](../../../quick-start/app-configuration-file.md#configuration标签)文件和 [app.json5](../../../quick-start/app-configuration-file.md)文件，具体详见 示例19（设置最小字体范围与最大字体范围）。 |
 
 ## maxFontSize
 
@@ -649,7 +649,7 @@ maxLength(value: number)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 文本的最大输入字符数。取值范围：[0, +∞)。当value & lt;0时，按照默认值处理，不设限制。 |
+| value | number | 是 | 文本的最大输入字符数。取值范围：[0, +∞)。当value &lt;0时，按照默认值处理，不设限制。 |
 
 ## minFontScale
 
@@ -671,7 +671,7 @@ minFontScale(scale: Optional<number|Resource>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scale | [Optional](arkts-arkui-optional-t.md)&lt;number \| Resource & gt; | 是 | 文本最小的字体缩放倍数，支持undefined类型。 取值范围：[0, 1]    **说明：** 设置的值小于0时，按值为0处理。设置的值大于1，按值为1处理。设置undefined时维持原值，异常值默认不生效。 使用前需在工程中配置[configuration.json](../../../quick-start/app-configuration-file.md#configuration标签)文件和 [app.json5](../../../quick-start/app-configuration-file.md)文件，具体详见 示例19（设置最小字体范围与最大字体范围）。 |
+| scale | [Optional](arkts-arkui-optional-t.md)&lt;number \| Resource&gt; | 是 | 文本最小的字体缩放倍数，支持undefined类型。 取值范围：[0, 1]    **说明：** 设置的值小于0时，按值为0处理。设置的值大于1，按值为1处理。设置undefined时维持原值，异常值默认不生效。 使用前需在工程中配置[configuration.json](../../../quick-start/app-configuration-file.md#configuration标签)文件和 [app.json5](../../../quick-start/app-configuration-file.md)文件，具体详见 示例19（设置最小字体范围与最大字体范围）。 |
 
 ## minFontSize
 
@@ -761,7 +761,7 @@ onCopy(callback: Callback<string>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback & lt;string & gt; | 是 | 复制回调，其返回值为复制的文本内容。<br>**起始版本：** 18 |
+| callback | Callback &lt;string&gt; | 是 | 复制回调，其返回值为复制的文本内容。<br>**起始版本：** 18 |
 
 ## onCut
 
@@ -785,7 +785,7 @@ onCut(callback: Callback<string>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback & lt;string & gt; | 是 | 剪切回调，其返回值为剪切的文本内容。<br>**起始版本：** 18 |
+| callback | Callback &lt;string&gt; | 是 | 剪切回调，其返回值为剪切的文本内容。<br>**起始版本：** 18 |
 
 ## onDidDelete
 
@@ -855,7 +855,7 @@ onEditChange(callback: Callback<boolean>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback & lt;boolean & gt; | 是 | 编辑状态改变回调，其返回值为true表示正在输入，false表示无焦点，无法输入文字。 |
+| callback | Callback &lt;boolean&gt; | 是 | 编辑状态改变回调，其返回值为true表示正在输入，false表示无焦点，无法输入文字。 |
 
 ## onPaste
 
@@ -897,7 +897,7 @@ onSubmit(callback: Callback<string>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback & lt;string & gt; | 是 | 搜索提交回调，其返回值为当前搜索框中输入的文本内容。<br>**起始版本：** 18 |
+| callback | Callback &lt;string&gt; | 是 | 搜索提交回调，其返回值为当前搜索框中输入的文本内容。<br>**起始版本：** 18 |
 
 ## onSubmit
 
@@ -1017,7 +1017,7 @@ onWillCopy(callback: Callback<string, boolean>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback & lt;string, boolean & gt; | 是 | 复制操作前的回调。回调参数类型为string时，表示将要被复制的文本内容。回调参数类型为boolean时，表示当前选中文本是否允许被复 制，true：允许文本被复制；false：不允许文本被复制。 |
+| callback | Callback &lt;string, boolean&gt; | 是 | 复制操作前的回调。回调参数类型为string时，表示将要被复制的文本内容。回调参数类型为boolean时，表示当前选中文本是否允许被复 制，true：允许文本被复制；false：不允许文本被复制。 |
 
 ## onWillCut
 
@@ -1043,7 +1043,7 @@ onWillCut(callback: Callback<string, boolean>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback & lt;string, boolean & gt; | 是 | 剪切操作前的回调。回调参数类型为string时，表示将要被剪切的文本内容。回调参数类型为boolean时，表示当前选中文本是否允许被剪 切，true：允许文本被剪切；false：不允许文本被剪切。 |
+| callback | Callback &lt;string, boolean&gt; | 是 | 剪切操作前的回调。回调参数类型为string时，表示将要被剪切的文本内容。回调参数类型为boolean时，表示当前选中文本是否允许被剪 切，true：允许文本被剪切；false：不允许文本被剪切。 |
 
 ## onWillDelete
 

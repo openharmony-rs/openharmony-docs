@@ -101,7 +101,7 @@ closeResultSet(resultSet: KvStoreResultSet): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 
@@ -165,7 +165,7 @@ get(deviceId: string, key: string, callback: AsyncCallback<boolean | string | nu
 | --- | --- | --- | --- |
 | deviceId | string | 是 | 标识要查询其数据的设备。 |
 | key | string | 是 | 表示要查询key值的键。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean \| string \| number \| Uint8Array & gt; | 是 | 回调函数，返回匹配给定条件的字符串值。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean \| string \| number \| Uint8Array&gt; | 是 | 回调函数，返回匹配给定条件的字符串值。 |
 
 **示例**
 
@@ -221,7 +221,7 @@ get(deviceId: string, key: string): Promise<boolean | string | number | Uint8Arr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean \ | string \| number \| Uint8Array & gt; | Promise对象。返回匹配给定条件的字符串值。 |
+| Promise &lt;boolean \ | string \| number \| Uint8Array&gt; | Promise对象。返回匹配给定条件的字符串值。 |
 
 **示例**
 
@@ -345,7 +345,7 @@ getEntries(deviceId: string, keyPrefix: string): Promise<Entry[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Entry[] & gt; | Promise对象。返回匹配给定条件的所有键值对的列表。 |
+| Promise &lt;Entry[]&gt; | Promise对象。返回匹配给定条件的所有键值对的列表。 |
 
 **示例**
 
@@ -502,7 +502,7 @@ getEntries(query: Query): Promise<Entry[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Entry[] & gt; | Promise对象。返回与指定Query对象匹配的键值对列表。 |
+| Promise &lt;Entry[]&gt; | Promise对象。返回与指定Query对象匹配的键值对列表。 |
 
 **示例**
 
@@ -646,7 +646,7 @@ getEntries(deviceId: string, query: Query): Promise<Entry[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Entry[] & gt; | Promise对象。返回与指定设备ID和Query对象匹配的键值对列表。 |
+| Promise &lt;Entry[]&gt; | Promise对象。返回与指定设备ID和Query对象匹配的键值对列表。 |
 
 **示例**
 
@@ -1249,7 +1249,7 @@ getResultSize(query: Query): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回与指定Query对象匹配的结果数。 |
+| Promise &lt;number&gt; | Promise对象。返回与指定Query对象匹配的结果数。 |
 
 **示例**
 
@@ -1417,7 +1417,7 @@ getResultSize(deviceId: string, query: Query): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回与指定设备ID和Query对象匹配的结果数。 |
+| Promise &lt;number&gt; | Promise对象。返回与指定设备ID和Query对象匹配的结果数。 |
 
 **示例**
 
@@ -1734,7 +1734,7 @@ removeDeviceData(deviceId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 无返回结果的Promise对象。 |
+| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
 

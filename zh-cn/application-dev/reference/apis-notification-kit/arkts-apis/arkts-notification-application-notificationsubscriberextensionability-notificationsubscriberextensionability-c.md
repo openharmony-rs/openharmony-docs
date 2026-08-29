@@ -30,7 +30,7 @@ onCancelMessages(hashCodes: Array<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hashCodes | Array & lt;string & gt; | 是 | 要取消的通知的哈希码列表。通过onReceiveMessage获取。 |
+| hashCodes | Array &lt;string&gt; | 是 | 要取消的通知的哈希码列表。通过onReceiveMessage获取。 |
 
 **示例**
 

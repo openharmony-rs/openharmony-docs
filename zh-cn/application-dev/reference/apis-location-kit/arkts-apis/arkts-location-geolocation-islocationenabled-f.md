@@ -67,7 +67,7 @@ function isLocationEnabled(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回true表示位置服务已经开启；返回false表示位置服务已经关闭。 |
+| Promise &lt;boolean&gt; | Promise对象，返回true表示位置服务已经开启；返回false表示位置服务已经关闭。 |
 
 **示例**
 

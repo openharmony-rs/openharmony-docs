@@ -55,7 +55,7 @@ function getDefaultCellularDataSlotId(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 以Promise形式返回获取默认移动数据的SIM卡。 |
+| Promise &lt;number&gt; | 以Promise形式返回获取默认移动数据的SIM卡。 |
 
 **示例**
 

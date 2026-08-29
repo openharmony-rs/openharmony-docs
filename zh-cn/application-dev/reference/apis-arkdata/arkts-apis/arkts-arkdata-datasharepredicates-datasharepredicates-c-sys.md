@@ -205,7 +205,7 @@ groupBy(fields: Array<string>): DataSharePredicates
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fields | Array & lt;string & gt; | 是 | 指定分组依赖的列名。 |
+| fields | Array &lt;string&gt; | 是 | 指定分组依赖的列名。 |
 
 **返回值：**
 
@@ -275,7 +275,7 @@ inKeys(keys: Array<string>): DataSharePredicates
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keys | Array & lt;string & gt; | 是 | 指定范围的键数组。 |
+| keys | Array &lt;string&gt; | 是 | 指定范围的键数组。 |
 
 **返回值：**
 

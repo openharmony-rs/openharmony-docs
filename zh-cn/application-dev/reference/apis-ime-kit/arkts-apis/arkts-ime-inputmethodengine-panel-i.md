@@ -235,7 +235,7 @@ getDisplayId(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回窗口的displayId。 |
+| Promise &lt;number&gt; | Promise对象。返回窗口的displayId。 |
 
 **错误码：**
 
@@ -400,7 +400,7 @@ hide(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
 
@@ -488,7 +488,7 @@ moveTo(x: number, y: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -526,7 +526,7 @@ off(type: 'show', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'show' | 是 | 取消监听当前面板的状态类型，固定取值为'show'。 |
-| callback | () = & gt; void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | () =&gt; void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **错误码：**
 
@@ -557,7 +557,7 @@ off(type: 'hide', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'hide' | 是 | 要取消监听的当前面板状态类型，固定取值为'hide'。 |
-| callback | () = & gt; void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | () =&gt; void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **错误码：**
 
@@ -636,7 +636,7 @@ on(type: 'show', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'show' | 是 | 监听当前面板的状态类型，固定取值为'show'。 |
-| callback | () = & gt; void | 是 | 回调函数。 |
+| callback | () =&gt; void | 是 | 回调函数。 |
 
 **示例**
 
@@ -663,7 +663,7 @@ on(type: 'hide', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'hide' | 是 | 监听当前面板的状态类型，固定取值为'hide'。 |
-| callback | () = & gt; void | 是 | 回调函数。 |
+| callback | () =&gt; void | 是 | 回调函数。 |
 
 **示例**
 
@@ -810,7 +810,7 @@ resize(width: number, height: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -940,7 +940,7 @@ setKeepScreenOn(isKeepScreenOn: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1017,7 +1017,7 @@ setSystemPanelButtonColor(fillColor: string | undefined, backgroundColor: string
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象。无返回结果。 |
+| Promise &lt;void&gt; | Promise对象。无返回结果。 |
 
 **示例**
 
@@ -1102,7 +1102,7 @@ setUiContent(path: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1188,7 +1188,7 @@ setUiContent(path: string, storage: LocalStorage): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1259,7 +1259,7 @@ show(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
 
@@ -1338,7 +1338,7 @@ updatePanelRect(flag: PanelFlag, rect: PanelRect): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1423,7 +1423,7 @@ updatePanelRect(flag: PanelFlag, rect: EnhancedPanelRect): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1659,7 +1659,7 @@ updateRegion(inputRegion: Array<window.Rect>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| inputRegion | Array & lt;window.Rect & gt; | 是 | 面板内接收输入事件的区域。   - 数组大小限制为[1, 4]。   - 传入的热区位置是相对于输入法面板窗口左顶点的位置。 |
+| inputRegion | Array &lt;window.Rect&gt; | 是 | 面板内接收输入事件的区域。   - 数组大小限制为[1, 4]。   - 传入的热区位置是相对于输入法面板窗口左顶点的位置。 |
 
 **错误码：**
 

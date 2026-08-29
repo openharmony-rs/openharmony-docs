@@ -184,7 +184,7 @@ on(type: 'bufferingUpdate', callback: (infoType: BufferingInfoType, value: numbe
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'bufferingUpdate' | 是 | 音频缓存事件回调类型，支持的事件：'bufferingUpdate'。 |
-| callback | (infoType: BufferingInfoType, value: number) = & gt; void | 是 | 音频缓存事件回调方法。    [BufferingInfoType](arkts-media-media-bufferinginfotype-e.md)value值固定为0。 |
+| callback | (infoType: BufferingInfoType, value: number) =&gt; void | 是 | 音频缓存事件回调方法。    [BufferingInfoType](arkts-media-media-bufferinginfotype-e.md)value值固定为0。 |
 
 ## on('play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeChange')
 
@@ -213,7 +213,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。   - 'play'：完成 [play()](#play)调用，音频开始播放，触发该事件。   - 'pause'：完成 [pause()](#pause)调用，音频暂停播放，触发该事件。   - 'stop'：完成[stop()](#stop) 调用，音频停止播放，触发该事件。   - 'reset'：完成[reset()](#reset)调用，播放器重置，触发该事件。   - 'dataLoad'：完成音频数 据加载后触发该事件，即src属性设置完成后触发该事件。   - 'finish'：完成音频播放后触发该事件。   - 'volumeChange'：完成 [setVolume()](#setvolume)调用，播放音量改变后触发该事件。 |
-| callback | () = & gt; void | 是 | 播放事件回调方法。 |
+| callback | () =&gt; void | 是 | 播放事件回调方法。 |
 
 ## on('play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeChange')
 
@@ -242,7 +242,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。   - 'play'：完成 [play()](#play)调用，音频开始播放，触发该事件。   - 'pause'：完成 [pause()](#pause)调用，音频暂停播放，触发该事件。   - 'stop'：完成[stop()](#stop) 调用，音频停止播放，触发该事件。   - 'reset'：完成[reset()](#reset)调用，播放器重置，触发该事件。   - 'dataLoad'：完成音频数 据加载后触发该事件，即src属性设置完成后触发该事件。   - 'finish'：完成音频播放后触发该事件。   - 'volumeChange'：完成 [setVolume()](#setvolume)调用，播放音量改变后触发该事件。 |
-| callback | () = & gt; void | 是 | 播放事件回调方法。 |
+| callback | () =&gt; void | 是 | 播放事件回调方法。 |
 
 ## on('play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeChange')
 
@@ -271,7 +271,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。   - 'play'：完成 [play()](#play)调用，音频开始播放，触发该事件。   - 'pause'：完成 [pause()](#pause)调用，音频暂停播放，触发该事件。   - 'stop'：完成[stop()](#stop) 调用，音频停止播放，触发该事件。   - 'reset'：完成[reset()](#reset)调用，播放器重置，触发该事件。   - 'dataLoad'：完成音频数 据加载后触发该事件，即src属性设置完成后触发该事件。   - 'finish'：完成音频播放后触发该事件。   - 'volumeChange'：完成 [setVolume()](#setvolume)调用，播放音量改变后触发该事件。 |
-| callback | () = & gt; void | 是 | 播放事件回调方法。 |
+| callback | () =&gt; void | 是 | 播放事件回调方法。 |
 
 ## on('play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeChange')
 
@@ -300,7 +300,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。   - 'play'：完成 [play()](#play)调用，音频开始播放，触发该事件。   - 'pause'：完成 [pause()](#pause)调用，音频暂停播放，触发该事件。   - 'stop'：完成[stop()](#stop) 调用，音频停止播放，触发该事件。   - 'reset'：完成[reset()](#reset)调用，播放器重置，触发该事件。   - 'dataLoad'：完成音频数 据加载后触发该事件，即src属性设置完成后触发该事件。   - 'finish'：完成音频播放后触发该事件。   - 'volumeChange'：完成 [setVolume()](#setvolume)调用，播放音量改变后触发该事件。 |
-| callback | () = & gt; void | 是 | 播放事件回调方法。 |
+| callback | () =&gt; void | 是 | 播放事件回调方法。 |
 
 ## on('play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeChange')
 
@@ -329,7 +329,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。   - 'play'：完成 [play()](#play)调用，音频开始播放，触发该事件。   - 'pause'：完成 [pause()](#pause)调用，音频暂停播放，触发该事件。   - 'stop'：完成[stop()](#stop) 调用，音频停止播放，触发该事件。   - 'reset'：完成[reset()](#reset)调用，播放器重置，触发该事件。   - 'dataLoad'：完成音频数 据加载后触发该事件，即src属性设置完成后触发该事件。   - 'finish'：完成音频播放后触发该事件。   - 'volumeChange'：完成 [setVolume()](#setvolume)调用，播放音量改变后触发该事件。 |
-| callback | () = & gt; void | 是 | 播放事件回调方法。 |
+| callback | () =&gt; void | 是 | 播放事件回调方法。 |
 
 ## on('play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeChange')
 
@@ -358,7 +358,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。   - 'play'：完成 [play()](#play)调用，音频开始播放，触发该事件。   - 'pause'：完成 [pause()](#pause)调用，音频暂停播放，触发该事件。   - 'stop'：完成[stop()](#stop) 调用，音频停止播放，触发该事件。   - 'reset'：完成[reset()](#reset)调用，播放器重置，触发该事件。   - 'dataLoad'：完成音频数 据加载后触发该事件，即src属性设置完成后触发该事件。   - 'finish'：完成音频播放后触发该事件。   - 'volumeChange'：完成 [setVolume()](#setvolume)调用，播放音量改变后触发该事件。 |
-| callback | () = & gt; void | 是 | 播放事件回调方法。 |
+| callback | () =&gt; void | 是 | 播放事件回调方法。 |
 
 ## on('play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeChange')
 
@@ -387,7 +387,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。   - 'play'：完成 [play()](#play)调用，音频开始播放，触发该事件。   - 'pause'：完成 [pause()](#pause)调用，音频暂停播放，触发该事件。   - 'stop'：完成[stop()](#stop) 调用，音频停止播放，触发该事件。   - 'reset'：完成[reset()](#reset)调用，播放器重置，触发该事件。   - 'dataLoad'：完成音频数 据加载后触发该事件，即src属性设置完成后触发该事件。   - 'finish'：完成音频播放后触发该事件。   - 'volumeChange'：完成 [setVolume()](#setvolume)调用，播放音量改变后触发该事件。 |
-| callback | () = & gt; void | 是 | 播放事件回调方法。 |
+| callback | () =&gt; void | 是 | 播放事件回调方法。 |
 
 ## on('timeUpdate')
 
@@ -445,7 +445,7 @@ on(type: 'audioInterrupt', callback: (info: audio.InterruptEvent) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'audioInterrupt' | 是 | 音频焦点变化事件回调类型，支持的事件：'audioInterrupt'。 |
-| callback | (info: audio.InterruptEvent) = & gt; void | 是 | 音频焦点变化事件回调方法。 |
+| callback | (info: audio.InterruptEvent) =&gt; void | 是 | 音频焦点变化事件回调方法。 |
 
 ## on('error')
 

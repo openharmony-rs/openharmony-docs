@@ -32,7 +32,7 @@ function getUpdateAuthData(admin: Want): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回系统更新的鉴权数据。 |
+| Promise &lt;string&gt; | Promise对象，返回系统更新的鉴权数据。 |
 
 **错误码：**
 

@@ -2,7 +2,7 @@
 
 除支持通用属性外，还支持以下属性：
 
-**继承/实现关系：** NavRouterAttribute extends CommonMethod<NavRouterAttribute>
+**继承/实现关系：** NavRouterAttribute extends CommonMethod\<NavRouterAttribute>
 
 **起始版本：** 9
 
@@ -65,4 +65,4 @@ onStateChange(callback: (isActivated: boolean) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (isActivated: boolean) = & gt; void | 是 | isActivated为true时表示激活，为false时表示未激活。 |
+| callback | (isActivated: boolean) =&gt; void | 是 | isActivated为true时表示激活，为false时表示未激活。 |

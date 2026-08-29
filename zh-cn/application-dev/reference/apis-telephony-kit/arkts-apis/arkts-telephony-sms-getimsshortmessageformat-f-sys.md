@@ -66,7 +66,7 @@ function getImsShortMessageFormat(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | 以Promise形式返回SMS格式。 |
+| Promise &lt;string&gt; | 以Promise形式返回SMS格式。 |
 
 **错误码：**
 

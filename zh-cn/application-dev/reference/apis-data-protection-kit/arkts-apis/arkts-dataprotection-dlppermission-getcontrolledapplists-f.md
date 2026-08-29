@@ -32,7 +32,7 @@ function getControlledAppLists(): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise that returns the appIdentifiers of controlled application for the current user. |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise that returns the appIdentifiers of controlled application for the current user. |
 
 **错误码：**
 

@@ -28,7 +28,7 @@ function getPorts(): Array<USBPort>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;USBPort & gt; | USB端口描述信息列表。 |
+| Array &lt;USBPort&gt; | USB端口描述信息列表。 |
 
 **示例**
 

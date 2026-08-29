@@ -24,7 +24,7 @@ function allocUninitialized(size: number): FastBuffer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| size | number | 是 | 指定的FastBuffer对象长度，单位：字节。取值范围：0 & lt;= size & lt;= UINT32_MAX。 |
+| size | number | 是 | 指定的FastBuffer对象长度，单位：字节。取值范围：0 &lt;= size &lt;= UINT32_MAX。 |
 
 **返回值：**
 

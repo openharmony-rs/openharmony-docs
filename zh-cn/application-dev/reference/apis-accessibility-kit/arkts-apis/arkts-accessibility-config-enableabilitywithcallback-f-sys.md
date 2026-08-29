@@ -29,14 +29,14 @@ function enableAbilityWithCallback(name: string, capability: Array<accessibility
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 辅助扩展应用的名称，格式为：'bundleName/abilityName'。 |
-| capability | Array & lt;accessibility.Capability & gt; | 是 | 辅助扩展应用的能力属性。 |
+| capability | Array &lt;accessibility.Capability&gt; | 是 | 辅助扩展应用的能力属性。 |
 | connectCallback | [ConnectCallback](arkts-accessibility-config-connectcallback-i-sys.md) | 是 | 辅助扩展应用连接断开时调用的回调函数，用于监听辅助扩展的断开连接事件。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

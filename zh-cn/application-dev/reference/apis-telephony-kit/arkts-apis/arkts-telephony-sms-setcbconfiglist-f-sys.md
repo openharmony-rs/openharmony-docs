@@ -31,7 +31,7 @@ function setCBConfigList(configs: CBConfigListConfigs): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | The promise returned by the setCBConfigList. |
+| Promise &lt;void&gt; | The promise returned by the setCBConfigList. |
 
 **错误码：**
 

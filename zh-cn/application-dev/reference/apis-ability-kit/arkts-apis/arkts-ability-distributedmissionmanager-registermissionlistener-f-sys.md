@@ -108,7 +108,7 @@ function registerMissionListener(parameter: MissionDeviceInfo, options: MissionC
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | 返回的Promise对象，操作成功时表示任务状态监听已成功注册，失败时返回错误信息。 |
+| Promise &lt;void&gt; | 返回的Promise对象，操作成功时表示任务状态监听已成功注册，失败时返回错误信息。 |
 
 **错误码：**
 

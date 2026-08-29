@@ -2,7 +2,7 @@
 
 定义LazyDynamicLayout组件。@extends CommonMethod&lt;LazyDynamicLayoutAttribute&gt;
 
-**继承/实现关系：** LazyDynamicLayoutAttribute extends CommonMethod<LazyDynamicLayoutAttribute>
+**继承/实现关系：** LazyDynamicLayoutAttribute extends CommonMethod\<LazyDynamicLayoutAttribute>
 
 **起始版本：** 26.0.0
 
@@ -34,7 +34,7 @@ onVisibleIndexesChange(callback: Callback<number[]> | undefined): LazyDynamicLay
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback & lt;number[] & gt; \ | undefined | 是 | 可见索引变化时回调的回调函数。 传递undefined将取消注册回调。 |
+| callback | Callback &lt;number[]&gt; \ | undefined | 是 | 可见索引变化时回调的回调函数。 传递undefined将取消注册回调。 |
 
 **返回值：**
 

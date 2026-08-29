@@ -2,7 +2,7 @@
 
 除支持通用属性外，还支持以下属性：
 
-**继承/实现关系：** MenuItemAttribute extends CommonMethod<MenuItemAttribute>
+**继承/实现关系：** MenuItemAttribute extends CommonMethod\<MenuItemAttribute>
 
 **起始版本：** 9
 
@@ -119,7 +119,7 @@ onChange(callback: (selected: boolean) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (selected: boolean) = & gt; void | 是 | 当前菜单项是否被选中。true：当前菜单项已选中；false：当前菜单项未选中。 |
+| callback | (selected: boolean) =&gt; void | 是 | 当前菜单项是否被选中。true：当前菜单项已选中；false：当前菜单项未选中。 |
 
 ## selected
 

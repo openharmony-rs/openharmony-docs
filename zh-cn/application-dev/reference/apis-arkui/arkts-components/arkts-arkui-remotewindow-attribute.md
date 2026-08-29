@@ -2,7 +2,7 @@
 
 支持通用属性。支持通用事件。
 
-**继承/实现关系：** RemoteWindowAttribute extends CommonMethod<RemoteWindowAttribute>
+**继承/实现关系：** RemoteWindowAttribute extends CommonMethod\<RemoteWindowAttribute>
 
 **起始版本：** 9
 

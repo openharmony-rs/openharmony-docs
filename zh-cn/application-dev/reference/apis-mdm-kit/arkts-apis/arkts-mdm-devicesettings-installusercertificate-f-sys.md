@@ -113,7 +113,7 @@ function installUserCertificate(admin: Want, certificate: CertBlob): Promise<str
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回当前证书安装后的uri，用于卸载证书。 |
+| Promise &lt;string&gt; | Promise对象，返回当前证书安装后的uri，用于卸载证书。 |
 
 **错误码：**
 

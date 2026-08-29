@@ -23,7 +23,7 @@ function getAllNetsSync(): Array<NetHandle>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;NetHandle & gt; | 返回所有处于连接状态的网络列表。 |
+| Array &lt;NetHandle&gt; | 返回所有处于连接状态的网络列表。 |
 
 **错误码：**
 

@@ -32,7 +32,7 @@ function getDeveloperIds(appDistributionType?: number): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;string & gt; | 同步返回Array & lt;string & gt;。 |
+| Array &lt;string&gt; | 同步返回Array &lt;string&gt;。 |
 
 **错误码：**
 

@@ -211,7 +211,7 @@ setCollaborativeRecordingEnabledForDevices(enable: boolean, devices: AudioDevice
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise 对象，返回 void。 |
+| Promise &lt;void&gt; | Promise 对象，返回 void。 |
 
 **错误码：**
 

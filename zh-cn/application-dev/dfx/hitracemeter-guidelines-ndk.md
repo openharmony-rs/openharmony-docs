@@ -107,7 +107,7 @@ HiTraceMeter打点接口主要分为三类：同步时间片跟踪接口、异�
    │       │   │       └── Index.ets
    ```
 
-2. 在“entry &gt; src &gt; main &gt; cpp &gt; CMakeLists.txt”文件中新增libhitrace_ndk.z.so和libhilog_ndk.z.so动态链接库，完整的文件内容如下。
+2. 在“entry&gt; src&gt; main&gt; cpp&gt; CMakeLists.txt”文件中新增libhitrace_ndk.z.so和libhilog_ndk.z.so动态链接库，完整的文件内容如下。
     <!-- @[hitracemeter_ndk_cmake_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_NDK/entry/src/main/cpp/CMakeLists.txt) -->
     
     ``` cmake
@@ -128,7 +128,7 @@ HiTraceMeter打点接口主要分为三类：同步时间片跟踪接口、异�
     target_link_libraries(entry PUBLIC libace_napi.z.so libhitrace_ndk.z.so libhilog_ndk.z.so)
     ```
 
-3. 编辑“entry &gt; src &gt; main &gt; cpp &gt; napi_init.cpp”文件，在Add函数中调用HiTraceMeter NDK_C接口进行性能打点跟踪，完整的示例代码如下。
+3. 编辑“entry&gt; src&gt; main&gt; cpp&gt; napi_init.cpp”文件，在Add函数中调用HiTraceMeter NDK_C接口进行性能打点跟踪，完整的示例代码如下。
 
    <!-- @[hitracemeter_ndk_native_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_NDK/entry/src/main/cpp/napi_init.cpp) -->
    

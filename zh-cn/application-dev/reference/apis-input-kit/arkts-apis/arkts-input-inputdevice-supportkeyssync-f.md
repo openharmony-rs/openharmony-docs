@@ -28,7 +28,7 @@ function supportKeysSync(deviceId: number, keys: Array<KeyCode>): Array<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array & lt;boolean & gt; | 返回查询结果。true表示支持，false表示不支持。 |
+| Array &lt;boolean&gt; | 返回查询结果。true表示支持，false表示不支持。 |
 
 **错误码：**
 

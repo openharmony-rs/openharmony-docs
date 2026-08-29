@@ -89,7 +89,7 @@ function getSlotNumByBundle(bundle: BundleOption): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 以Promise形式返回获取指定应用的通知渠道数量。 |
+| Promise &lt;number&gt; | 以Promise形式返回获取指定应用的通知渠道数量。 |
 
 **错误码：**
 

@@ -75,7 +75,7 @@ function getAddressesFromLocation(request: ReverseGeoCodeRequest): Promise<Array
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;GeoAddress & gt; & gt; | Promise对象，返回地理描述信息。 |
+| Promise &lt;Array &lt;GeoAddress&gt;&gt; | Promise对象，返回地理描述信息。 |
 
 **示例**
 

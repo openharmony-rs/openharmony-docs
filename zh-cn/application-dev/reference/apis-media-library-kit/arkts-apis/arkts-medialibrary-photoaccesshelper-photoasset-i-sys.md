@@ -185,7 +185,7 @@ commitEditedAsset(editData: string, uri: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回void。 |
+| Promise &lt;void&gt; | Promise对象，返回void。 |
 
 **错误码：**
 
@@ -250,7 +250,7 @@ convertImageFormat(title: string, imageFormat: SupportedImageFormat): Promise<Ph
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;PhotoAsset & gt; | Promise对象，返回转码后文件的PhotoAsset。 |
+| Promise &lt;PhotoAsset&gt; | Promise对象，返回转码后文件的PhotoAsset。 |
 
 **错误码：**
 
@@ -305,7 +305,7 @@ createTemporaryCompatibleDuplicate(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -365,7 +365,7 @@ getAnalysisData(analysisType: AnalysisType): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Returns analysis info into a json string |
+| Promise &lt;string&gt; | Returns analysis info into a json string |
 
 **错误码：**
 
@@ -561,7 +561,7 @@ getExif(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | 返回Exif标签组成的json格式的字符串。 |
+| Promise &lt;string&gt; | 返回Exif标签组成的json格式的字符串。 |
 
 **错误码：**
 
@@ -628,7 +628,7 @@ getKeyFrameThumbnail(beginFrameTimeMs: number, type: ThumbnailType): Promise<ima
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;image.PixelMap & gt; | Promise对象，返回缩略图的PixelMap。若获取不到，默认返回封面帧 |
+| Promise &lt;image.PixelMap&gt; | Promise对象，返回缩略图的PixelMap。若获取不到，默认返回封面帧 |
 
 **错误码：**
 
@@ -688,7 +688,7 @@ getReadOnlyFdWithCached(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | 返回打开文件的Fd。 |
+| Promise &lt;number&gt; | 返回打开文件的Fd。 |
 
 **错误码：**
 
@@ -760,7 +760,7 @@ getThumbnailData(type: ThumbnailType): Promise<ArrayBuffer>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ArrayBuffer & gt; | Promise对象，返回缩略图的ArrayBuffer。 |
+| Promise &lt;ArrayBuffer&gt; | Promise对象，返回缩略图的ArrayBuffer。 |
 
 **错误码：**
 
@@ -880,7 +880,7 @@ isEdited(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象，返回图片或视频资源是否被编辑过。 true为被编辑过，false为没有被编辑过，默认是false。 |
+| Promise &lt;boolean&gt; | Promise对象，返回图片或视频资源是否被编辑过。 true为被编辑过，false为没有被编辑过，默认是false。 |
 
 **错误码：**
 
@@ -1015,7 +1015,7 @@ open(mode: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回文件描述符。 |
+| Promise &lt;number&gt; | Promise对象，返回文件描述符。 |
 
 **错误码：**
 
@@ -1131,7 +1131,7 @@ requestEditData(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，返回图片或视频资源的编辑数据。 |
+| Promise &lt;string&gt; | Promise对象，返回图片或视频资源的编辑数据。 |
 
 **错误码：**
 
@@ -1391,7 +1391,7 @@ requestSource(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象，返回源文件fd。 |
+| Promise &lt;number&gt; | Promise对象，返回源文件fd。 |
 
 **错误码：**
 
@@ -1516,7 +1516,7 @@ revertToOriginal(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回void。 |
+| Promise &lt;void&gt; | Promise对象，返回void。 |
 
 **错误码：**
 
@@ -1649,7 +1649,7 @@ setFavorite(favoriteState: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回void。 |
+| Promise &lt;void&gt; | Promise对象，返回void。 |
 
 **错误码：**
 
@@ -1783,7 +1783,7 @@ setHidden(hiddenState: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | callback返回void。 |
+| Promise &lt;void&gt; | callback返回void。 |
 
 **错误码：**
 
@@ -1918,7 +1918,7 @@ setPending(pendingState: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回void。 |
+| Promise &lt;void&gt; | Promise对象，返回void。 |
 
 **错误码：**
 
@@ -2046,7 +2046,7 @@ setUserComment(userComment: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回void。 |
+| Promise &lt;void&gt; | Promise对象，返回void。 |
 
 **错误码：**
 

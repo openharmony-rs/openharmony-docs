@@ -34,13 +34,13 @@ batchInsert(table: string, values: Array<ValuesBucket>): Promise<number>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | table | string | 是 | 指定的目标表名，不能为空字符串。 |
-| values | Array & lt;ValuesBucket & gt; | 是 | 表示要插入到表中的一组数据。 |
+| values | Array &lt;ValuesBucket&gt; | 是 | 表示要插入到表中的一组数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回批量插入的数据个数。 |
+| Promise &lt;number&gt; | Promise对象。返回批量插入的数据个数。 |
 
 **错误码：**
 
@@ -189,7 +189,7 @@ batchInsertSync(table: string, values: Array<ValuesBucket>): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | table | string | 是 | 指定的目标表名，不能为空字符串。 |
-| values | Array & lt;ValuesBucket & gt; | 是 | 表示要插入到表中的一组数据。 |
+| values | Array &lt;ValuesBucket&gt; | 是 | 表示要插入到表中的一组数据。 |
 
 **返回值：**
 
@@ -328,14 +328,14 @@ batchInsertWithConflictResolution(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | table | string | 是 | 指定的目标表名，不能为空字符串。 |
-| values | Array & lt;ValuesBucket & gt; | 是 | 表示要插入到表中的一组数据。 |
+| values | Array &lt;ValuesBucket&gt; | 是 | 表示要插入到表中的一组数据。 |
 | conflict | ConflictResolution | 是 | 指定冲突解决模式。如果是ON_CONFLICT_ROLLBACK模式，当发生冲突时会回滚整个事务。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回批量插入的数据个数。 |
+| Promise &lt;number&gt; | Promise对象。返回批量插入的数据个数。 |
 
 **错误码：**
 
@@ -470,7 +470,7 @@ batchInsertWithConflictResolutionSync(table: string, values: Array<ValuesBucket>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | table | string | 是 | 指定的目标表名，不能为空字符串。 |
-| values | Array & lt;ValuesBucket & gt; | 是 | 表示要插入到表中的一组数据。 |
+| values | Array &lt;ValuesBucket&gt; | 是 | 表示要插入到表中的一组数据。 |
 | conflict | ConflictResolution | 是 | 指定冲突解决模式。如果是ON_CONFLICT_ROLLBACK模式，当发生冲突时会回滚整个事务。 |
 
 **返回值：**
@@ -612,7 +612,7 @@ batchInsertWithReturning(table: string, values: Array<ValuesBucket>, config: Ret
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | table | string | 是 | 要插入的目标表名。注意：正确的表名不应包含空格、逗号和星号，不能以点开头和结尾等，否则会抛出参数错误。 |
-| values | Array & lt;ValuesBucket & gt; | 是 | 表示要插入到表中的一组数据。注意：空数组、含有重复资产数据会抛出参数错误。 |
+| values | Array &lt;ValuesBucket&gt; | 是 | 表示要插入到表中的一组数据。注意：空数组、含有重复资产数据会抛出参数错误。 |
 | config | [ReturningConfig](arkts-arkdata-relationalstore-returningconfig-i.md) | 是 | 指定返回值的配置信息。 |
 | conflict | ConflictResolution | 否 | 指定冲突解决模式。默认为ON_CONFLICT_NONE。 |
 
@@ -620,7 +620,7 @@ batchInsertWithReturning(table: string, values: Array<ValuesBucket>, config: Ret
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Result & gt; | Promise对象。返回受影响的数据集。 |
+| Promise &lt;Result&gt; | Promise对象。返回受影响的数据集。 |
 
 **错误码：**
 
@@ -701,7 +701,7 @@ batchInsertWithReturningSync(table: string, values: Array<ValuesBucket>, config:
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | table | string | 是 | 要插入的目标表名。注意：正确的表名不应包含空格、逗号和星号，不能以点开头和结尾等，否则会抛出参数错误。 |
-| values | Array & lt;ValuesBucket & gt; | 是 | 表示要插入到表中的一组数据。注意：空数组、含有重复资产数据会抛出参数错误。 |
+| values | Array &lt;ValuesBucket&gt; | 是 | 表示要插入到表中的一组数据。注意：空数组、含有重复资产数据会抛出参数错误。 |
 | config | [ReturningConfig](arkts-arkdata-relationalstore-returningconfig-i.md) | 是 | 指定返回值的配置信息。 |
 | conflict | ConflictResolution | 否 | 指定冲突解决模式。默认为ON_CONFLICT_NONE。 |
 
@@ -786,7 +786,7 @@ commit(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -845,7 +845,7 @@ delete(predicates: RdbPredicates): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回受影响的行数。 |
+| Promise &lt;number&gt; | Promise对象。返回受影响的行数。 |
 
 **错误码：**
 
@@ -1012,7 +1012,7 @@ deleteWithReturning(predicates: RdbPredicates, config: ReturningConfig): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Result & gt; | Promise对象。返回受影响的数据集。 |
+| Promise &lt;Result&gt; | Promise对象。返回受影响的数据集。 |
 
 **错误码：**
 
@@ -1180,13 +1180,13 @@ execute(sql: string, args?: Array<ValueType>): Promise<ValueType>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sql | string | 是 | 指定要执行的SQL语句，不能为空字符串。 |
-| args | Array & lt;ValueType & gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。<br>**起始版本：** 20 |
+| args | Array &lt;ValueType&gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。<br>**起始版本：** 20 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ValueType & gt; | Promise对象，返回sql执行后的结果。 |
+| Promise &lt;ValueType&gt; | Promise对象，返回sql执行后的结果。 |
 
 **错误码：**
 
@@ -1301,7 +1301,7 @@ executeSync(sql: string, args?: Array<ValueType>): ValueType
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sql | string | 是 | 指定要执行的SQL语句，不能为空字符串。 |
-| args | Array & lt;ValueType & gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。该参数不填，或者填null或undefined，都认为是sql参数语句完整。默认值为空。 |
+| args | Array &lt;ValueType&gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。该参数不填，或者填null或undefined，都认为是sql参数语句完整。默认值为空。 |
 
 **返回值：**
 
@@ -1413,7 +1413,7 @@ insert(table: string, values: ValuesBucket, conflict?: ConflictResolution): Prom
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回插入数据的行ID。 |
+| Promise &lt;number&gt; | Promise对象。返回插入数据的行ID。 |
 
 **错误码：**
 
@@ -1564,13 +1564,13 @@ query(predicates: RdbPredicates, columns?: Array<string>): Promise<ResultSet>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | predicates | RdbPredicates | 是 | RdbPredicates的实例对象指定的查询条件。 |
-| columns | Array & lt;string & gt; | 否 | 表示要查询的列。如果值为空，则查询应用于所有列。 |
+| columns | Array &lt;string&gt; | 否 | 表示要查询的列。如果值为空，则查询应用于所有列。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ResultSet & gt; | Promise对象。返回ResultSet对象。 |
+| Promise &lt;ResultSet&gt; | Promise对象。返回ResultSet对象。 |
 
 **错误码：**
 
@@ -1668,13 +1668,13 @@ querySql(sql: string, args?: Array<ValueType>): Promise<ResultSet>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sql | string | 是 | 指定要执行的SQL语句，不能为空字符串。 |
-| args | Array & lt;ValueType & gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空。 |
+| args | Array &lt;ValueType&gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;ResultSet & gt; | Promise对象。返回ResultSet对象。 |
+| Promise &lt;ResultSet&gt; | Promise对象。返回ResultSet对象。 |
 
 **错误码：**
 
@@ -1741,7 +1741,7 @@ querySqlSync(sql: string, args?: Array<ValueType>): ResultSet
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sql | string | 是 | 指定要执行的SQL语句，不能为空字符串。 |
-| args | Array & lt;ValueType & gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空。 |
+| args | Array &lt;ValueType&gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空。 |
 
 **返回值：**
 
@@ -1816,7 +1816,7 @@ querySqlWithoutRowCount(sql: string, bindArgs?: Array<ValueType>): Promise<LiteR
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sql | string | 是 | 指定要执行的SQL语句，不能为空字符串。 |
-| bindArgs | Array & lt;ValueType & gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空。 |
+| bindArgs | Array &lt;ValueType&gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空。 |
 
 **返回值：**
 
@@ -1916,7 +1916,7 @@ querySqlWithoutRowCountSync(sql: string, bindArgs?: Array<ValueType>): LiteResul
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sql | string | 是 | 指定要执行的SQL语句，不能为空字符串。 |
-| bindArgs | Array & lt;ValueType & gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空。 |
+| bindArgs | Array &lt;ValueType&gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空。 |
 
 **返回值：**
 
@@ -2012,7 +2012,7 @@ querySync(predicates: RdbPredicates, columns?: Array<string>): ResultSet
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | predicates | RdbPredicates | 是 | RdbPredicates的实例对象指定的查询条件。 |
-| columns | Array & lt;string & gt; | 否 | 表示要查询的列。如果值为空，则查询应用于所有列。默认值为空。 |
+| columns | Array &lt;string&gt; | 否 | 表示要查询的列。如果值为空，则查询应用于所有列。默认值为空。 |
 
 **返回值：**
 
@@ -2117,7 +2117,7 @@ queryWithoutRowCount(predicates: RdbPredicates, columns?: Array<string>): Promis
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | predicates | RdbPredicates | 是 | RdbPredicates的实例对象指定的查询条件。 |
-| columns | Array & lt;string & gt; | 否 | 表示要查询的列。如果值为空，则查询应用于所有列。默认值为空。 |
+| columns | Array &lt;string&gt; | 否 | 表示要查询的列。如果值为空，则查询应用于所有列。默认值为空。 |
 
 **返回值：**
 
@@ -2220,7 +2220,7 @@ queryWithoutRowCountSync(predicates: RdbPredicates, columns?: Array<string>): Li
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | predicates | RdbPredicates | 是 | RdbPredicates的实例对象指定的查询条件。 |
-| columns | Array & lt;string & gt; | 否 | 表示要查询的列。如果值为空，则查询应用于所有列。默认值为空。 |
+| columns | Array &lt;string&gt; | 否 | 表示要查询的列。如果值为空，则查询应用于所有列。默认值为空。 |
 
 **返回值：**
 
@@ -2318,7 +2318,7 @@ rollback(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2379,7 +2379,7 @@ update(values: ValuesBucket, predicates: RdbPredicates, conflict?: ConflictResol
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回受影响的行数。 |
+| Promise &lt;number&gt; | Promise对象。返回受影响的行数。 |
 
 **错误码：**
 
@@ -2575,7 +2575,7 @@ updateWithReturning(values: ValuesBucket, predicates: RdbPredicates, config: Ret
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Result & gt; | Promise对象。返回受影响的数据集。 |
+| Promise &lt;Result&gt; | Promise对象。返回受影响的数据集。 |
 
 **错误码：**
 

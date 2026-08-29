@@ -31,7 +31,7 @@ export function verifyControlledDevicePackage(ticketInfo: RemoteAuthPackage[]): 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean[] & gt; | Promise用于返回\\${boolean[]}。 |
+| Promise &lt;boolean[]&gt; | Promise用于返回\\${boolean[]}。 |
 
 **错误码：**
 

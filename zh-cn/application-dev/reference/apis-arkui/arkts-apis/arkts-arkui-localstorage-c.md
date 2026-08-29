@@ -302,7 +302,7 @@ keys(): IterableIterator<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator & lt;string & gt; | LocalStorage中所有的属性名。 |
+| IterableIterator &lt;string&gt; | LocalStorage中所有的属性名。 |
 
 **示例**
 
@@ -343,7 +343,7 @@ link<T>(propName: string): SubscribedAbstractProperty<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;T&gt; | [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md) & lt;T & gt;的实例，与LocalStorage中propName对应属性的双向绑定的数据，如果 LocalStorage中不存在对应的propName，则返回undefined。 |
+| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;T&gt; | [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md) &lt;T&gt;的实例，与LocalStorage中propName对应属性的双向绑定的数据，如果 LocalStorage中不存在对应的propName，则返回undefined。 |
 
 **示例**
 
@@ -388,7 +388,7 @@ prop<S>(propName: string): SubscribedAbstractProperty<S>
 
 | 类型 | 说明 |
 | --- | --- |
-| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;S&gt; | [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md) & lt;S & gt;的实例，为LocalStorage中propName对应属性的单向绑定的数据。如果 LocalStorage中不存在对应的propName，则返回undefined。 |
+| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;S&gt; | [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md) &lt;S&gt;的实例，为LocalStorage中propName对应属性的单向绑定的数据。如果 LocalStorage中不存在对应的propName，则返回undefined。 |
 
 **示例**
 
@@ -514,7 +514,7 @@ setAndLink<T>(propName: string, defaultValue: T): SubscribedAbstractProperty<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;T&gt; | [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md) & lt;T & gt;的实例，与LocalStorage中propName对应属性的双向绑定的数据。 |
+| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;T&gt; | [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md) &lt;T&gt;的实例，与LocalStorage中propName对应属性的双向绑定的数据。 |
 
 **示例**
 
@@ -558,7 +558,7 @@ setAndProp<S>(propName: string, defaultValue: S): SubscribedAbstractProperty<S>
 
 | 类型 | 说明 |
 | --- | --- |
-| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;S&gt; | [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md) & lt;S & gt;的实例，为LocalStorage中propName对应属性的单向绑定的数据。 |
+| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;S&gt; | [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md) &lt;S&gt;的实例，为LocalStorage中propName对应属性的单向绑定的数据。 |
 
 **示例**
 
@@ -593,7 +593,7 @@ public setAndRef<T>(propName: string, defaultValue: T): AbstractProperty<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| [AbstractProperty](arkts-arkui-abstractproperty-i.md)&lt;T&gt; | [AbstractProperty](arkts-arkui-abstractproperty-i.md) & lt;T & gt;的实例，为LocalStorage中propName对应属性的引用。 |
+| [AbstractProperty](arkts-arkui-abstractproperty-i.md)&lt;T&gt; | [AbstractProperty](arkts-arkui-abstractproperty-i.md) &lt;T&gt;的实例，为LocalStorage中propName对应属性的引用。 |
 
 **示例**
 

@@ -31,7 +31,7 @@ function isManualNetworkScanning(slotId: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 承诺返回 ManualNetworkScanState。 |
+| Promise &lt;boolean&gt; | 承诺返回 ManualNetworkScanState。 |
 
 **错误码：**
 

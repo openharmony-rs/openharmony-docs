@@ -34,7 +34,7 @@ addAssets(assets: Array<PhotoAsset>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| assets | Array & lt;PhotoAsset & gt; | 是 | 待添加到相册中的资产数组。 |
+| assets | Array &lt;PhotoAsset&gt; | 是 | 待添加到相册中的资产数组。 |
 
 **错误码：**
 
@@ -274,7 +274,7 @@ removeAssets(assets: Array<PhotoAsset>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| assets | Array & lt;PhotoAsset & gt; | 是 | 待从相册中移除的资产数组。 |
+| assets | Array &lt;PhotoAsset&gt; | 是 | 待从相册中移除的资产数组。 |
 
 **错误码：**
 
@@ -323,7 +323,7 @@ setAlbumName(name: string): void
 设置相册名称。相册名参数规格：  
 - 相册名字符串长度为1~255。  
 - 不允许出现的非法英文字符，包括：  
-. \ / : * ? " ' ` &lt; &gt; | { } [ ]  
+. \ / : * ? " ' ` &lt;&gt; | { } [ ]  
 - 英文字符大小写不敏感。  
 - 相册名不允许重名。
 

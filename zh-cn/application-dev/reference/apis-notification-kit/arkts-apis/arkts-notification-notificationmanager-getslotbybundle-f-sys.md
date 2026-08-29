@@ -33,7 +33,7 @@ function getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise<Noti
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;NotificationSlot & gt; | 以Promise形式返回获取指定应用指定类型的通知渠道。 |
+| Promise &lt;NotificationSlot&gt; | 以Promise形式返回获取指定应用指定类型的通知渠道。 |
 
 **错误码：**
 

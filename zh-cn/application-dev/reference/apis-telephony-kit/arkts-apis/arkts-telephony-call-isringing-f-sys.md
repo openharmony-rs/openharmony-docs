@@ -74,7 +74,7 @@ function isRinging(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 以Promise形式异步返回结果。true表示正在响铃，false表示没有响铃。 |
+| Promise &lt;boolean&gt; | 以Promise形式异步返回结果。true表示正在响铃，false表示没有响铃。 |
 
 **错误码：**
 

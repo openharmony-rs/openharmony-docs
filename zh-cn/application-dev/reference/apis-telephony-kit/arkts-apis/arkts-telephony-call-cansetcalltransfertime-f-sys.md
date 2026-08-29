@@ -82,7 +82,7 @@ function canSetCallTransferTime(slotId: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | 以Promise形式异步返回是否可以设置呼叫转移时间。返回true表示可以设置，返回false表示不可以设置。 |
+| Promise &lt;boolean&gt; | 以Promise形式异步返回是否可以设置呼叫转移时间。返回true表示可以设置，返回false表示不可以设置。 |
 
 **错误码：**
 

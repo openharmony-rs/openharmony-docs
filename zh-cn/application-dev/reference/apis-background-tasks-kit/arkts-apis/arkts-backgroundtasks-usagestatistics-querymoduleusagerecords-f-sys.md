@@ -90,7 +90,7 @@ function queryModuleUsageRecords(maxNum: number): Promise<Array<HapModuleInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;HapModuleInfo & gt; & gt; | Promise对象，返回不超过maxNum条，FA模型下各应用不用Hap包的使用记录。 |
+| Promise &lt;Array &lt;HapModuleInfo&gt;&gt; | Promise对象，返回不超过maxNum条，FA模型下各应用不用Hap包的使用记录。 |
 
 **错误码：**
 
@@ -202,7 +202,7 @@ function queryModuleUsageRecords(): Promise<Array<HapModuleInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;HapModuleInfo & gt; & gt; | Promise对象。返回FA模型下各应用不用Hap包的使用记录（不超过1000条）。 |
+| Promise &lt;Array &lt;HapModuleInfo&gt;&gt; | Promise对象。返回FA模型下各应用不用Hap包的使用记录（不超过1000条）。 |
 
 **错误码：**
 

@@ -79,7 +79,7 @@ Activate the SIM card in the specified slot.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | The promise returned by the activateSim. |
+| Promise &lt;void&gt; | The promise returned by the activateSim. |
 
 **错误码：**
 

@@ -79,7 +79,7 @@ hasImmersiveWindow(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;boolean & gt; | Promise对象。返回true表示当前屏幕包含沉浸式窗口，false表示不包含。 |
+| Promise &lt;boolean&gt; | Promise对象。返回true表示当前屏幕包含沉浸式窗口，false表示不包含。 |
 
 **错误码：**
 

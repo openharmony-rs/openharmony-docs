@@ -38,7 +38,7 @@ function executeDelayed(delayTime: number, task: Task, priority?: Priority): Pro
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Object & gt; | Promise对象，返回任务函数的执行结果。 |
+| Promise &lt;Object&gt; | Promise对象，返回任务函数的执行结果。 |
 
 **错误码：**
 
@@ -98,7 +98,7 @@ function executeDelayed<A extends Array<Object>, R>(delayTime: number, task: Gen
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;R & gt; | Promise对象，返回任务函数的执行结果。 |
+| Promise &lt;R&gt; | Promise对象，返回任务函数的执行结果。 |
 
 **错误码：**
 

@@ -318,13 +318,13 @@ restoreMainWindow(wantParameters?: Record<string, Object>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| wantParameters | Record & lt;string, Object & gt; | 否 | 恢复标准悬浮窗的主窗口时会给主窗口传递的自定义参数，主窗口会在触发 onNewWant 回调时收到。默认值为空，代表不向主窗传入任何自定义参数。 |
+| wantParameters | Record &lt;string, Object&gt; | 否 | 恢复标准悬浮窗的主窗口时会给主窗口传递的自定义参数，主窗口会在触发 onNewWant 回调时收到。默认值为空，代表不向主窗传入任何自定义参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -382,7 +382,7 @@ setFloatViewVisibilityInApp(isVisible: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -434,7 +434,7 @@ setUIContext(path: string, storage?: LocalStorage): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -487,7 +487,7 @@ setUIContextByName(name: string, storage?: LocalStorage): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -568,7 +568,7 @@ setWindowSize(size: window.Size): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -621,7 +621,7 @@ start(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -671,7 +671,7 @@ stop(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -724,7 +724,7 @@ switchTemplate(templateProperty: TemplateProperty): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

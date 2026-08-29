@@ -42,7 +42,7 @@ deleteAssets(assets: Array<PhotoAsset>, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| assets | Array & lt;PhotoAsset & gt; | 是 | 回收站中待彻底删除图片或者视频数组。 |
+| assets | Array &lt;PhotoAsset&gt; | 是 | 回收站中待彻底删除图片或者视频数组。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | callback返回void。 |
 
 **错误码：**
@@ -115,13 +115,13 @@ deleteAssets(assets: Array<PhotoAsset>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| assets | Array & lt;PhotoAsset & gt; | 是 | 回收站中待彻底删除图片或者视频数组。 |
+| assets | Array &lt;PhotoAsset&gt; | 是 | 回收站中待彻底删除图片或者视频数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回void。 |
+| Promise &lt;void&gt; | Promise对象，返回void。 |
 
 **错误码：**
 
@@ -263,7 +263,7 @@ getFaceId(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | Promise对象，人像相册返回tag_id，合影相册返回group_tag，未找到返回空字符串。 |
+| Promise &lt;string&gt; | Promise对象，人像相册返回tag_id，合影相册返回group_tag，未找到返回空字符串。 |
 
 **错误码：**
 
@@ -371,7 +371,7 @@ getSelectedAssets(optionCheck: FetchOptions, filter?: string): Promise<FetchResu
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;FetchResult & lt;PhotoAsset & gt; & gt; | Promise对象，返回获取的图片结果。 |
+| Promise &lt;FetchResult &lt;PhotoAsset&gt;&gt; | Promise对象，返回获取的图片结果。 |
 
 **错误码：**
 
@@ -464,7 +464,7 @@ recoverAssets(assets: Array<PhotoAsset>, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| assets | Array & lt;PhotoAsset & gt; | 是 | 回收站中待恢复图片或者视频数组。 |
+| assets | Array &lt;PhotoAsset&gt; | 是 | 回收站中待恢复图片或者视频数组。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | callback返回void。 |
 
 **错误码：**
@@ -533,13 +533,13 @@ recoverAssets(assets: Array<PhotoAsset>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| assets | Array & lt;PhotoAsset & gt; | 是 | 回收站中待恢复图片或者视频数组。 |
+| assets | Array &lt;PhotoAsset&gt; | 是 | 回收站中待恢复图片或者视频数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回void。 |
+| Promise &lt;void&gt; | Promise对象，返回void。 |
 
 **错误码：**
 
@@ -681,7 +681,7 @@ setCoverUri(uri: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，返回void。 |
+| Promise &lt;void&gt; | Promise对象，返回void。 |
 
 **错误码：**
 

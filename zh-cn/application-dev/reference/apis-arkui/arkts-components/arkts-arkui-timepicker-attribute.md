@@ -2,7 +2,7 @@
 
 除支持通用属性外，还支持以下属性：除支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** TimePickerAttribute extends CommonMethod<TimePickerAttribute>
+**继承/实现关系：** TimePickerAttribute extends CommonMethod\<TimePickerAttribute>
 
 **起始版本：** 8
 
@@ -259,7 +259,7 @@ onChange(callback: (value: TimePickerResult) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (value: TimePickerResult) = & gt; void | 是 | Time in 24-hour format. |
+| callback | (value: TimePickerResult) =&gt; void | 是 | Time in 24-hour format. |
 
 ## onChange
 

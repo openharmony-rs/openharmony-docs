@@ -24,7 +24,7 @@ function compressFiles(inFiles: Array<string>, outFile: string, options: Options
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| inFiles | Array & lt;string & gt; | 是 | 指定压缩的文件夹路径或者文件路径，路径必须为沙箱路径，沙箱路径可以通过context获取，可参考FA模型， Stage模型。待压缩的文件夹不可为空，否则使用 [decompressFile](arkts-basicservices-zlib-decompressfile-f.md)对压缩后的文件解压时会报错。 |
+| inFiles | Array &lt;string&gt; | 是 | 指定压缩的文件夹路径或者文件路径，路径必须为沙箱路径，沙箱路径可以通过context获取，可参考FA模型， Stage模型。待压缩的文件夹不可为空，否则使用 [decompressFile](arkts-basicservices-zlib-decompressfile-f.md)对压缩后的文件解压时会报错。 |
 | outFile | string | 是 | 指定的压缩结果的文件路径。多个线程同时压缩文件时，outFile不能相同。 |
 | options | Options | 是 | 压缩的配置参数。 |
 
@@ -32,7 +32,7 @@ function compressFiles(inFiles: Array<string>, outFile: string, options: Options
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回值。 |
+| Promise &lt;void&gt; | Promise对象，无返回值。 |
 
 **错误码：**
 

@@ -2,7 +2,7 @@
 
 支持通用属性。与屏幕坐标相关的事件信息，根据**EmbeddedComponent**的位置、宽高进行转换后，传递给EmbeddedUIExtensionAbility处理。不支持点击事件等通用事件。仅支持以下事件。
 
-**继承/实现关系：** EmbeddedComponentAttribute extends CommonMethod<EmbeddedComponentAttribute>
+**继承/实现关系：** EmbeddedComponentAttribute extends CommonMethod\<EmbeddedComponentAttribute>
 
 **起始版本：** 12
 

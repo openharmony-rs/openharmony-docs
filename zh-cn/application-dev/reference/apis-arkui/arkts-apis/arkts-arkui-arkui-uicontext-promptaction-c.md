@@ -49,7 +49,7 @@ closeCustomDialog<T extends Object>(dialogContent: ComponentContent<T>): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -237,7 +237,7 @@ closeMenu<T extends Object>(content: ComponentContent<T>): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -329,7 +329,7 @@ closePopup<T extends Object>(content: ComponentContent<T>): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -572,7 +572,7 @@ openCustomDialog<T extends Object>(dialogContent: ComponentContent<T>, options?:
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -584,7 +584,7 @@ openCustomDialog<T extends Object>(dialogContent: ComponentContent<T>, options?:
 
 **示例**
 
-该示例通过监听[@ohos.app.ability.Configuration (环境变量)](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-configuration-configuration-i.md)（系统语言、深浅色等）的变化，调用ComponentContent<T> 的[update](arkts-arkui-arkui-uicontext-dialogpresenter-c.md#update)和updateConfiguration实现自定义弹窗的数据更新及节点的全量刷新。
+该示例通过监听[@ohos.app.ability.Configuration (环境变量)](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-configuration-configuration-i.md)（系统语言、深浅色等）的变化，调用ComponentContent\<T> 的[update](arkts-arkui-arkui-uicontext-dialogpresenter-c.md#update)和updateConfiguration实现自定义弹窗的数据更新及节点的全量刷新。
 
 ```TypeScript
 import { ComponentContent } from '@kit.ArkUI';
@@ -707,7 +707,7 @@ openCustomDialog(options: promptAction.CustomDialogOptions): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回对话框id，可供closeCustomDialog使用。 |
+| Promise &lt;number&gt; | Promise对象。返回对话框id，可供closeCustomDialog使用。 |
 
 **错误码：**
 
@@ -820,7 +820,7 @@ openCustomDialogWithController<T extends Object>(dialogContent: ComponentContent
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -934,7 +934,7 @@ openMenu<T extends Object>(content: ComponentContent<T>, target: TargetInfo, opt
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1035,7 +1035,7 @@ openPopup<T extends Object>(content: ComponentContent<T>, target: TargetInfo, op
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1159,7 +1159,7 @@ openToast(options: promptAction.ShowToastOptions): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回即时反馈的id，可供closeToast使用。 |
+| Promise &lt;number&gt; | Promise对象。返回即时反馈的id，可供closeToast使用。 |
 
 **错误码：**
 
@@ -1244,7 +1244,7 @@ presentCustomDialog(builder: CustomBuilder | CustomBuilderWithId, controller?: p
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;number & gt; | Promise对象。返回自定义弹窗ID。 |
+| Promise &lt;number&gt; | Promise对象。返回自定义弹窗ID。 |
 
 **错误码：**
 
@@ -1547,7 +1547,7 @@ showActionMenu(options: promptAction.ActionMenuOptions): Promise<promptAction.Ac
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;promptAction.ActionMenuSuccessResponse & gt; | callback - Promise对象，返回菜单的响应结果。 |
+| Promise &lt;promptAction.ActionMenuSuccessResponse&gt; | callback - Promise对象，返回菜单的响应结果。 |
 
 **错误码：**
 
@@ -1703,7 +1703,7 @@ showDialog(options: promptAction.ShowDialogOptions): Promise<promptAction.ShowDi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;promptAction.ShowDialogSuccessResponse & gt; | Promise对象，返回对话框的响应结果。 |
+| Promise &lt;promptAction.ShowDialogSuccessResponse&gt; | Promise对象，返回对话框的响应结果。 |
 
 **错误码：**
 
@@ -1855,7 +1855,7 @@ updateCustomDialog<T extends Object>(dialogContent: ComponentContent<T>, options
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1966,7 +1966,7 @@ updateMenu<T extends Object>(content: ComponentContent<T>, options: MenuOptions,
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2066,7 +2066,7 @@ updatePopup<T extends Object>(content: ComponentContent<T>, options: PopupCommon
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise对象，无返回结果。 |
+| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

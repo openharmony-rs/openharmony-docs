@@ -24,7 +24,7 @@ function getP2pLocalDevice(): Promise<WifiP2pDevice>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;WifiP2pDevice & gt; | 返回本设备的信息。 |
+| Promise &lt;WifiP2pDevice&gt; | 返回本设备的信息。 |
 
 **错误码：**
 

@@ -69,7 +69,7 @@ function getCardType(slotId: number): Promise<CardType>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;CardType & gt; | 以Promise形式返回指定卡槽SIM卡的卡类型。 |
+| Promise &lt;CardType&gt; | 以Promise形式返回指定卡槽SIM卡的卡类型。 |
 
 **错误码：**
 

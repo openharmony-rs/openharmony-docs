@@ -81,7 +81,7 @@ function getForegroundApplications(): Promise<Array<AppStateData>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;AppStateData & gt; & gt; | 返回前台进程应用程序的数组。 |
+| Promise &lt;Array &lt;AppStateData&gt;&gt; | 返回前台进程应用程序的数组。 |
 
 **错误码：**
 

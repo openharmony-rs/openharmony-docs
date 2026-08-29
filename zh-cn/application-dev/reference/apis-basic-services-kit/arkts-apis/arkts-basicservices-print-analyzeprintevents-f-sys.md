@@ -35,7 +35,7 @@ function analyzePrintEvents(printerId: string, eventType: string): Promise<strin
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;string & gt; | the promise returned by the function. |
+| Promise &lt;string&gt; | the promise returned by the function. |
 
 **错误码：**
 

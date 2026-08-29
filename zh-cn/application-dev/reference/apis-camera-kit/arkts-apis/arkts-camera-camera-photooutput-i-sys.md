@@ -37,7 +37,7 @@ Starts the burst mode, in which users can capture a series of photos in quick su
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;void & gt; | Promise that returns no value. |
+| Promise &lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 

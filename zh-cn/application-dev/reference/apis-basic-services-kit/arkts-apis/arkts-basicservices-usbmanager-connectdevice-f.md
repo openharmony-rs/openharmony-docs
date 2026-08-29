@@ -30,7 +30,7 @@ function connectDevice(device: USBDevice): Readonly<USBDevicePipe>
 
 | 类型 | 说明 |
 | --- | --- |
-| Readonly & lt;USBDevicePipe & gt; | USB设备连接通道对象，用于后续的数据传输和设备控制操作。 |
+| Readonly &lt;USBDevicePipe&gt; | USB设备连接通道对象，用于后续的数据传输和设备控制操作。 |
 
 **错误码：**
 

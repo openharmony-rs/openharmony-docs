@@ -81,7 +81,7 @@ function search(filter?: Filter): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | Promise对象。返回满足条件任务id的Promise对象。 |
+| Promise &lt;Array &lt;string&gt;&gt; | Promise对象。返回满足条件任务id的Promise对象。 |
 
 **错误码：**
 

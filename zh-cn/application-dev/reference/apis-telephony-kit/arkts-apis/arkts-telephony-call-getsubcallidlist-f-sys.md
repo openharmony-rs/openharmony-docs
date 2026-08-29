@@ -76,7 +76,7 @@ function getSubCallIdList(callId: number): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;string & gt; & gt; | 以Promise形式异步返回子呼叫Id列表。 |
+| Promise &lt;Array &lt;string&gt;&gt; | 以Promise形式异步返回子呼叫Id列表。 |
 
 **错误码：**
 

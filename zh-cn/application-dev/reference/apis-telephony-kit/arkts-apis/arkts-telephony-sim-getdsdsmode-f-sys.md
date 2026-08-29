@@ -23,7 +23,7 @@ function getDsdsMode(callback: AsyncCallback<DsdsMode>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DsdsMode](arkts-telephony-sim-dsdsmode-e-sys.md)&gt; | 是 | Indicates the callback for getting one of the following dsds mode states: & lt;ul & gt; & lt;li & gt;{@code DsdsMode#DSDS_MODE_V2} & lt;li & gt;{@code DsdsMode#DSDS_MODE_V3} & lt;li & gt;{@code DsdsMode#DSDS_MODE_V5_TDM} & lt;li & gt;{@code DsdsMode#DSDS_MODE_V5_DSDA} & lt;/ul & gt; |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DsdsMode](arkts-telephony-sim-dsdsmode-e-sys.md)&gt; | 是 | Indicates the callback for getting one of the following dsds mode states: &lt;ul&gt; &lt;li&gt;{@code DsdsMode#DSDS_MODE_V2} &lt;li&gt;{@code DsdsMode#DSDS_MODE_V3} &lt;li&gt;{@code DsdsMode#DSDS_MODE_V5_TDM} &lt;li&gt;{@code DsdsMode#DSDS_MODE_V5_DSDA} &lt;/ul&gt; |
 
 **错误码：**
 
@@ -70,7 +70,7 @@ function getDsdsMode(): Promise<DsdsMode>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[DsdsMode](arkts-telephony-sim-dsdsmode-e-sys.md)&gt; | Returns one of the following dsds mode states: & lt;ul & gt; & lt;li & gt;{ |
+| Promise&lt;[DsdsMode](arkts-telephony-sim-dsdsmode-e-sys.md)&gt; | Returns one of the following dsds mode states: &lt;ul&gt; &lt;li&gt;{ |
 
 **错误码：**
 

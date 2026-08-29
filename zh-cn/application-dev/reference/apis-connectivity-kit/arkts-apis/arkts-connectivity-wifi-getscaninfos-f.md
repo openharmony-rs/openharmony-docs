@@ -28,7 +28,7 @@ function getScanInfos(): Promise<Array<WifiScanInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise & lt;Array & lt;WifiScanInfo & gt; & gt; | 返回扫描到的热点列表。 |
+| Promise &lt;Array &lt;WifiScanInfo&gt;&gt; | 返回扫描到的热点列表。 |
 
 **示例**
 
