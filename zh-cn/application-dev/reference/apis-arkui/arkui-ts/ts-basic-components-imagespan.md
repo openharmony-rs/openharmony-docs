@@ -108,7 +108,7 @@ ArkTS-Sta: alt(value:&nbsp;PixelMap | undefined)
 
 | 参数名 | 类型                                                     | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)<br>ArkTS-Sta: [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| undefined | 是   | 设置图片加载过程中显示的占位图，支持[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型。<br>设置undefined时按默认值处理。 |
+| value  | ArkTS-Dyn: [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)<br>ArkTS-Sta: [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| undefined | 是   | 图片加载过程中显示的占位图，支持[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型。<br>设置undefined时按默认值处理。 |
 
 ### attributeModifier<sup>23+</sup>
 
@@ -174,7 +174,7 @@ ImageSpan组件创建后，不支持动态修改该属性的值。
 
 | 参数名 | 类型                                                     | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| enable  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br>ArkTS-Sta: boolean \| undefined | 是   | 控制是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>设置undefined时按默认值处理。|
+| enable  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br>ArkTS-Sta: boolean \| undefined | 是   | 是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>设置undefined时按默认值处理。|
 
 ## 事件
 
