@@ -288,7 +288,7 @@ OH_Drawing_Typeface* OH_Drawing_FontMgrMatchFamilyStyleCharacter(OH_Drawing_Font
 | [OH_Drawing_FontMgr](capi-drawing-oh-drawing-fontmgr.md)* drawingFontMgr | 指向字体管理对象[OH_Drawing_FontMgr](capi-drawing-oh-drawing-fontmgr.md)的指针，由[OH_Drawing_FontMgrCreate](capi-drawing-font-mgr-h.md#oh_drawing_fontmgrcreate)获取。 |
 | const char* familyName | 指定的字体家族名称。 |
 | [OH_Drawing_FontStyleStruct](capi-drawing-oh-drawing-fontstylestruct.md) fontStyle | 字体样式对象，包括字体字重、字体宽度和字体斜度信息。 |
-| const char* bcp47 |  用来指示character语言编码数组，是ISO 639、15924和3166-1语言编码的组合。 |
+| const char* bcp47[] |  用来指示character语言编码数组，是ISO 639、15924和3166-1语言编码的组合。 |
 | int bcp47Count | 参数bcp47数组大小，需与bcp47数组的实际元素个数一致。 |
 | int32_t character | 待匹配的UTF-8字符值。 |
 
