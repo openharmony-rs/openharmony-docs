@@ -16,7 +16,7 @@
 
 1. 人机交互获得焦点，例如：单击、双击、长按输入框。
 
-2. 通过代码设置焦点，例如：使用[requestFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#requestfocus9)方法或[defaultFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)属性，将焦点转移到输入框。
+2. 通过代码设置焦点，例如：使用[requestFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#requestfocus12)方法或[defaultFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)属性，将焦点转移到输入框。
 
 3. 使用外接键盘的按键走焦，例如：Tab键、Shift+Tab键、方向键，按下后可以转移焦点。外接键盘时输入框获焦，不会弹出系统软键盘，会显示物理键盘悬浮栏。
 
@@ -30,7 +30,7 @@
 
 ### 通过代码请求焦点
 
-可以通过代码控制将焦点转移到输入框，包括使用[defaultFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)属性和[requestFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#requestfocus9)方法。更多细节请参见[支持焦点处理](./arkts-common-events-focus-event.md)。
+可以通过代码控制将焦点转移到输入框，包括使用[defaultFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)属性和[requestFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#requestfocus12)方法。更多细节请参见[支持焦点处理](./arkts-common-events-focus-event.md)。
 
 以下示例展示了点击按钮时，焦点转移到输入框并弹出软键盘的方法。
 
@@ -300,7 +300,7 @@ struct textInputControllerCloseKeyboard {
 
 焦点转移到不需要软键盘的组件时，软键盘会自动收起。
 
-代码控制焦点转移的方法，包括[requestFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#requestfocus9)、[clearFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#clearfocus12)。更多细节请参见[支持焦点处理](./arkts-common-events-focus-event.md)。
+代码控制焦点转移的方法，包括[requestFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#requestfocus12)、[clearFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#clearfocus12)。更多细节请参见[支持焦点处理](./arkts-common-events-focus-event.md)。
 
 与通过输入框的controller退出编辑态方法相比，焦点转移到不需要软键盘的组件方法的优势在于，页面包含多个输入框时，开发者无需为每个输入框设置controller、再通过controller收起软键盘。
 
