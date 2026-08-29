@@ -28,7 +28,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [ArkUI_TextAreaType](#arkui_textareatype) | ArkUI_TextAreaType | 定义多行文本输入类型枚举值。不同的枚举值用于指定TextArea组件的输入类型，用于影响输入内容的验证规则。 |
+| [ArkUI_TextAreaType](#arkui_textareatype) | ArkUI_TextAreaType | 定义多行文本输入类型枚举值。不同的枚举值用于指定TextArea组件的输入类型，会影响输入内容的验证规则。 |
 
 ## 枚举类型说明
 
