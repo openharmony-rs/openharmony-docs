@@ -38,7 +38,7 @@ ArkTS-Sta: onAccessibilityFocus(callback: AccessibilityFocusCallback | undefined
 
 | 参数名   | 类型    | 必填 | 说明                                                         |
 | -------- | ------- | ---- | ------------------------------------------------------------ |
-| callback | ArkTS-Dyn: [AccessibilityFocusCallback](ts-universal-accessibility-event.md#accessibilityfocuscallback) <br>ArkTS-Sta: [AccessibilityFocusCallback](ts-universal-accessibility-event.md#accessibilityfocuscallback) \| undefined| 是   | 在无障碍模式下，当组件获焦、失焦状态发生变化时，向注册方通知当前状态。入参设置undefined时取消回调注册。 |
+| callback | ArkTS-Dyn: [AccessibilityFocusCallback](ts-universal-accessibility-event.md#accessibilityfocuscallback) <br>ArkTS-Sta: [AccessibilityFocusCallback](ts-universal-accessibility-event.md#accessibilityfocuscallback) \| undefined| 是   | 在无障碍模式下，当组件获焦、失焦状态发生变化时，向注册方通知当前状态。入参设置为undefined时，取消回调注册。 |
 
 **返回值：**
 
@@ -169,7 +169,7 @@ type AccessibilityActionInterceptCallback = (action: AccessibilityAction) => Acc
 
 ### 示例1（设置onAccessibilityActionIntercept拦截点击事件）
 
-该示例演示在无障碍模式下，通过onAccessibilityActionIntercept事件在Toggle组件点击事件触发前进行拦截，并由开发者确认是否放行该点击事件。
+该示例演示在无障碍模式下，通过onAccessibilityActionIntercept事件在Toggle组件点击事件触发前进行拦截，并弹出确认对话框由用户确认是否放行该点击事件。
 
 ```ts
 // xxx.ets
@@ -235,9 +235,9 @@ struct OnAccessibilityFocusExample {
       Column() {
         Text("onAccessibilityFocus doesn't take effect")
         Text('onAccessibilityFocus takes effect')
-        .onAccessibilityFocus((isFocus: boolean) => {
-          console.info(`[testingTag] isFocus current is ${isFocus}`);
-        })
+          .onAccessibilityFocus((isFocus: boolean) => {
+            console.info(`[testingTag] isFocus current is ${isFocus}`);
+          })
       }
       .padding(24)
       .width('100%')

@@ -45,7 +45,7 @@ XComponentNode的构造函数。
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | uiContext   | [UIContext](./arkts-apis-uicontext-uicontext.md)                      | 是   | UI上下文，获取方式可参考[UIContext获取方法](./js-apis-arkui-node.md#uicontext获取方法)。 |
 | options     | [RenderOptions](./js-apis-arkui-builderNode.md#renderoptions) | 是   | XComponentNode的渲染配置选项，用于设置节点渲染相关参数，如理想尺寸（selfIdealSize）等。 |
-| id          | string                                                       | 是   | XComponent的唯一标识，最大支持字符串长度128，超出长度时接口创建失败。详见[XComponent](arkui-ts/ts-basic-components-xcomponent.md)组件。 |
+| id          | string                                                       | 是   | XComponent的唯一标识，最大支持字符串长度128，超出长度时无效。详见[XComponent](arkui-ts/ts-basic-components-xcomponent.md)组件。 |
 | type        | [XComponentType](arkui-ts/ts-appendix-enums.md#xcomponenttype10) | 是   | 用于指定XComponent组件类型，取值为[XComponentType](arkui-ts/ts-appendix-enums.md#xcomponenttype10)枚举定义的值。详见[XComponent](arkui-ts/ts-basic-components-xcomponent.md)组件。 |
 | libraryName | string                                                       | 否   | Native层编译输出动态库名称。不传该参数时，默认不加载Native动态库。详见[XComponent](arkui-ts/ts-basic-components-xcomponent.md)组件。 |
 
@@ -69,7 +69,7 @@ XComponentNode加载完成时触发该回调。
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| event  | Object | 否   | XComponent实例对象的事件参数，用于获取XComponent实例的context。context上挂载的方法由开发者在C++层定义，开发者可通过该context调用Native层注册的方法。 |
+| event  | Object | 否   | XComponent实例对象的事件参数，用于获取XComponent实例的context。context上挂载的方法由开发者在Native层定义，开发者可通过该context调用Native层注册的方法。 |
 
 ### onDestroy<sup>(deprecated)</sup>
 
@@ -87,7 +87,7 @@ XComponentNode销毁时触发该回调。
 
 changeRenderType(type: NodeRenderType): boolean
 
-动态修改XComponentNode的渲染类型。可在运行时动态切换渲染策略，适用于根据内容渲染需求选择不同渲染类型的场景。例如，当需要在组件上进行EGL/OpenGL ES直接绘制时可使用DISPLAY类型；当需要将渲染内容作为纹理参与合成（如实现半透明叠加效果或离屏渲染）时可切换为TEXTURE类型。
+动态修改XComponentNode的渲染类型。可在运行时动态切换渲染策略，适用于根据内容渲染需求选择不同渲染类型的场景。例如，当需要在组件上进行EGL/OpenGL ES直接绘制时可使用RENDER_TYPE_DISPLAY类型；当需要将渲染内容作为纹理参与合成（如实现半透明叠加效果或离屏渲染）时可切换为RENDER_TYPE_TEXTURE类型。
 
 > **说明：**
 >

@@ -26,7 +26,7 @@ UIExtensionComponent用于支持在本页面内嵌入其他应用提供的UI。�
 
 必须显式设置组件宽高为非0有效值。
 
-不支持滚动到边界后，传递至上层继续滚动的场景。当UIExtensionComponent组件使用方和扩展Ability都支持内容滚动时，通过手势滚动会导致UIExtensionComponent内外同时响应，包括但不限于[Scroll](ts-container-scroll.md)、[Swiper](ts-container-swiper.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)等滚动容器。内外手势同时滚动场景的规避方法可参考[示例2](#示例2-uec内外部同时响应滚动时隔离处理)。
+不支持滚动到边界后，传递至上层继续滚动的场景。当UIExtensionComponent组件使用方和扩展Ability都支持内容滚动时，通过手势滚动会导致UIExtensionComponent内外同时响应，包括但不限于[Scroll](ts-container-scroll.md)、[Swiper](ts-container-swiper.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)等滚动容器。内外手势同时滚动场景的规避方法可参考[示例2](#示例2-uiextensioncomponent内外部同时响应滚动时隔离处理)。
 
 
 ## 子组件
@@ -90,7 +90,7 @@ onReceive(callback: ReceiveCallback)
 
 | 参数名                       | 类型   | 必填 | 说明                                                         |
 | ---------------------------- | ------ | ------ | ------------------------------------------------------- |
-| callback | [ReceiveCallback](#receivecallback18) | 是 | 回调函数，返回收到的来自被拉起的Ability的数据。 |
+| callback | [ReceiveCallback](#receivecallback18) | 是 | 回调函数，返回收到的来自被拉起的Ability的数据。API version 18之前的版本，callback的类型为[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record\<string, Object\>\>。 |
 
 ### onResult<sup>(deprecated)</sup>
 
@@ -119,9 +119,9 @@ onRelease(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#cal
 
 用于处理被拉起的Ability销毁时的回调。
 
-被拉起的Ability扩展调用terminateSelfWithResult或者terminateSelf时会触发本回调，此时releaseCode为0，即正常销毁。
+被拉起的Ability扩展调用terminateSelfWithResult或者terminateSelf时会触发本回调，此时code为0，即正常销毁。
 
-被拉起的Ability扩展意外Crash或被kill时，触发本回调，此时releaseCode为1。
+被拉起的Ability扩展意外Crash或被kill时，触发本回调，此时code为1。
 
 > **说明：**
 > 从API version 10开始支持，从API version 12开始废弃。建议使用[onTerminated](#onterminated12)、[onError](#onerror)替代。
@@ -171,7 +171,7 @@ onTerminated(callback: Callback&lt;TerminationInfo&gt;)
 > **说明：**
 >
 > - 若UIExtensionAbility通过调用`terminateSelfWithResult`退出，其携带的信息会传给回调函数的入参。
-> - 若UIExtensionAbility通过调用`terminateSelf`退出，上述回调函数的入参中，"code"取默认值"0"，"want"为"undefined"。
+> - 若UIExtensionAbility通过调用`terminateSelf`退出，上述回调函数的入参中，code取默认值0，want为undefined。
 
 ### onDrawReady<sup>18+</sup>
 
@@ -199,7 +199,7 @@ onDrawReady(callback: Callback\<void>)
 
 |  名称 | 类型   | 只读 |可选 | 说明                                                 |
 | ------- | ------ | ------ | ------ |---------------------------------------------------  |
-| code    | number | 否 | 否 | 被拉起的UIExtensionAbility退出时返回的结果码，返回的结果码由`terminateSelfWithResult`或者`terminateSelf`被调用时传入的数据决定。 |
+| code    | number | 否 | 否 | 被拉起的UIExtensionAbility退出时返回的结果码。调用`terminateSelfWithResult`退出时，结果码由传入的resultCode决定；调用`terminateSelf`退出时，结果码为默认值0。 |
 | want    | [Want](../../apis-ability-kit/js-apis-app-ability-want.md)   | 否 | 是 | 被拉起的UIExtensionAbility退出时返回的数据。默认值为undefined。   |
 
 ## ReceiveCallback<sup>18+</sup>
@@ -365,7 +365,7 @@ off(type: 'asyncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): voi
 | 参数名  | 类型 | 必填 | 说明 |
 | ------ | -------- | ----- | ------- |
 | type   | string | 是 | 事件类型，取值为'asyncReceiverRegister'，表示取消订阅扩展Ability发生异步注册回调。 |
-| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](#uiextensionproxy)> | 否 | 回调函数。为空代表取消订阅所有扩展Ability异步注册后触发回调。<br> 非空代表取消订阅对应的异步注册回调。 |
+| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](#uiextensionproxy)> | 否 | 回调函数。为空代表取消订阅所有扩展Ability异步注册后触发的回调。<br> 非空代表取消订阅对应的异步注册回调。 |
 
 ### off('syncReceiverRegister')<sup>11+</sup>
 
@@ -382,7 +382,7 @@ off(type: 'syncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 | 参数名  | 类型 | 必填 | 说明 |
 | ------ | -------- | ----- | ------- |
 | type   | string | 是 | 事件类型，取值为'syncReceiverRegister'，表示取消订阅扩展Ability发生同步注册回调。 |
-| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](#uiextensionproxy)> | 否 | 回调函数。为空代表取消订阅所有扩展Ability同步注册后触发回调。<br> 非空代表取消订阅对应的同步注册回调。 |
+| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](#uiextensionproxy)> | 否 | 回调函数。为空代表取消订阅所有扩展Ability同步注册后触发的回调。<br> 非空代表取消订阅对应的同步注册回调。 |
 
 ## 示例
 
@@ -423,8 +423,8 @@ struct Second {
   @State hei: number = 300;
   @State windowStrategy: WindowModeFollowStrategy = WindowModeFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE;
   private proxy: UIExtensionProxy | null = null;
-  private initPlaceholder = new ComponentContent(this.getUIContext(), wrapBuilder(LoadingBuilder), new Params);
-  private areaChangePlaceholder = new ComponentContent(this.getUIContext(), wrapBuilder(AreaChangePlaceholderBuilder), new Params);
+  private initPlaceholder = new ComponentContent(this.getUIContext(), wrapBuilder(LoadingBuilder), new Params());
+  private areaChangePlaceholder = new ComponentContent(this.getUIContext(), wrapBuilder(AreaChangePlaceholderBuilder), new Params());
 
   aboutToDisappear(): void {
     console.info('start do proxy off!');
@@ -455,7 +455,7 @@ struct Second {
           .height(this.hei)
           .border({width: 5, color: Color.Blue})
           .onReceive((data) => {
-            console.info('Lee onReceive, for test');
+            console.info('onReceive, for test');
             this.message3 = JSON.stringify(data['data']);
           })
           .onError((info) => {
@@ -664,7 +664,7 @@ function onReceiveDataForResult(data: Record<string, Object>): Record<string, Ob
 }
 ```
 
-### 示例2 (UEC内外部同时响应滚动时隔离处理)
+### 示例2 (UIExtensionComponent内外部同时响应滚动时隔离处理)
 
 本示例展示了当UIExtensionComponent组件使用方和扩展的Ability同时使用[Scroll](ts-container-scroll.md)容器的场景，通过对UIExtensionComponent设置手势拦截处理，实现当UIExtensionComponent内部滚动时，外部组件不响应滚动。
 
@@ -678,7 +678,7 @@ function onReceiveDataForResult(data: Record<string, Object>): Record<string, Ob
 
 提供方扩展入口文件UIExtensionProvider.ets与[示例1](#示例1-加载uiextension)扩展入口文件UIExtensionProvider.ets代码一致。
 
-提供方扩展Ability、module配置文件与[示例1](#示例1-加载uiextension)扩展module配置文件module.json5代码一致。
+提供方扩展Ability的module配置文件与[示例1](#示例1-加载uiextension)扩展module配置文件module.json5代码一致。
 
 - 使用方组件使用示例：
 ```ts
@@ -713,13 +713,13 @@ struct Second {
               })
               .width(this.wid)
               .height(this.hei)
-               // 设置手势拦截，UEC外部组件不响应滚动
+              // 设置手势拦截，UIExtensionComponent外部组件不响应滚动
               .gesture(PanGesture().onActionStart(() => {
                 console.info('UIExtensionComponent PanGesture onAction');
               }))
               .border({ width: 5, color: Color.Blue })
               .onReceive((data) => {
-                console.info('Lee onReceive, for test');
+                console.info('onReceive, for test');
                 this.message3 = JSON.stringify(data['data']);
               })
               .onTerminated((info) => {
