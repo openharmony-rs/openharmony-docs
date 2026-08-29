@@ -248,6 +248,7 @@ getAvailableFormHostServices(): Promise&lt;Array&lt;formInfo.PeerFormHostService
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
 | 16500050 | IPC connection error. |
+| 16501000 | An internal functional error occurred. |
 
 **示例：**
 
@@ -311,6 +312,8 @@ requestPublishFormCrossDevice(peerServiceInfo: formInfo.PeerFormHostServiceInfo,
 | 16501002 | The number of forms exceeds the maximum allowed. |
 | 16501017 | There is no space to publish the form. |
 | 16501018 | This form does not support publishing. |
+| 16501000 | An internal functional error occurred. |
+| 16501008 | Waiting for the form addition to the desktop timed out. |
 
 **示例：**
 
