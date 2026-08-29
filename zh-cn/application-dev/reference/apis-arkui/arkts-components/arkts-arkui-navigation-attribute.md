@@ -648,7 +648,7 @@ recoverable(recoverable: Optional<boolean>)
 > 
 > 4. 当应用退到后台，因系统资源不足等原因被系统终止后，如果某页面已配置为可恢复，当应用再次被唤醒至前台时，系统将自动恢复该页面。详细说明请参考
 > [UIAbility备份恢复](../../../application-models/ability-recover-guideline.md)，详细使用请参考
-> [示例18](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#示例18设置navigation可恢复)。
+> 示例18。
 
 **起始版本：** 14
 

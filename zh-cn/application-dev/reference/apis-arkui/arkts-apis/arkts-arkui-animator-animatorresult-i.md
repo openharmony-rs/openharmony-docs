@@ -18,7 +18,7 @@ import { Animator, AnimatorOptions, AnimatorResult, SimpleAnimatorOptions } from
 cancel(): void
 ```
 
-取消动画，会触发[onCancel](../../../reference/apis-arkui/js-apis-animator.md#属性)回调。此接口和 [finish](#finish)接口功能上没有区别，仅触发的回调不同，建议使用finish接口结束动画。
+取消动画，会触发onCancel回调。此接口和 [finish](#finish)接口功能上没有区别，仅触发的回调不同，建议使用finish接口结束动画。
 
 **起始版本：** 6
 
@@ -41,7 +41,7 @@ animator.cancel();
 finish(): void
 ```
 
-结束动画，会触发[onFinish](../../../reference/apis-arkui/js-apis-animator.md#属性)回调。
+结束动画，会触发onFinish回调。
 
 **起始版本：** 6
 

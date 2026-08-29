@@ -1,13 +1,13 @@
 # C API<!--c-content-embed-kit-->
 
-- 头文件
+- 头文件<!--contentembedkit-headerfile-->
     - [content_embed_proxy.h](capi-content-embed-proxy-h.md)
     - [content_embed_common.h](capi-content-embed-common-h.md)
     - [content_embed_extension.h](capi-content-embed-extension-h.md)
     - [content_embed_document.h](capi-content-embed-document-h.md)
-- 模块
+- 模块<!--contentembedkit-module-->
     - [ContentEmbed](capi-contentembed.md)
-- 结构体
+- 结构体<!--contentembedkit-struct-->
     - [ContentEmbed_Info](capi-contentembed-contentembed-info.md)
     - [ContentEmbed_Format](capi-contentembed-contentembed-format.md)
     - [ContentEmbed_ExtensionProxy](capi-contentembed-contentembed-extensionproxy.md)

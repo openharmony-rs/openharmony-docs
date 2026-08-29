@@ -1,6 +1,6 @@
 # C API<!--c-driver-development-kit-->
 
-- 头文件
+- 头文件<!--driverdevelopmentkit-headerfile-->
     - [ddk_api.h](capi-ddk-api-h.md)
     - [ddk_types.h](capi-ddk-types-h.md)
     - [hid_ddk_types.h](capi-hid-ddk-types-h.md)
@@ -11,13 +11,13 @@
     - [usb_serial_types.h](capi-usb-serial-types-h.md)
     - [scsi_peripheral_api.h](capi-scsi-peripheral-api-h.md)
     - [scsi_peripheral_types.h](capi-scsi-peripheral-types-h.md)
-- 模块
+- 模块<!--driverdevelopmentkit-module-->
     - [Ddk](capi-ddk.md)
     - [HidDdk](capi-hidddk.md)
     - [UsbDdk](capi-usbddk.md)
     - [USBSerialDDK](capi-usbserialddk.md)
     - [ScsiPeripheralDDK](capi-scsiperipheralddk.md)
-- 结构体
+- 结构体<!--driverdevelopmentkit-struct-->
     - [DDK_Ashmem](capi-ddk-ddk-ashmem.md)
     - [Hid_EmitItem](capi-hidddk-hid-emititem.md)
     - [Hid_Device](capi-hidddk-hid-device.md)

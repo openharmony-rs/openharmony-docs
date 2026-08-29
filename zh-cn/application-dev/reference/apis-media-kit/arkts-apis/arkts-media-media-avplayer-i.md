@@ -1711,7 +1711,7 @@ on(type: 'volumeChange', callback: Callback<number>): void
 on(type: 'endOfStream', callback: Callback<void>): void
 ```
 
-监听资源播放至结尾的事件；如果用户设置[loop](../../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md)=true，播放会跳转至开头重播；如果用 户没有设置loop，会通过[stateChange](#onstatechange)上报 completed状态。
+监听资源播放至结尾的事件；如果用户设置loop=true，播放会跳转至开头重播；如果用 户没有设置loop，会通过[stateChange](#onstatechange)上报 completed状态。
 
 **起始版本：** 9
 
@@ -3158,7 +3158,7 @@ seek(timeMs: number, mode?: SeekMode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| timeMs | number | 是 | 指定的跳转时间节点，单位毫秒（ms），取值范围为 [0, [duration](../../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md)]。当模式为 [SEEK_CONTINUOUS](arkts-media-media-seekmode-e.md)时，可以取值-1，表示SEEK_CONTINUOUS模式结束。该值必须为整数。 |
+| timeMs | number | 是 | 指定的跳转时间节点，单位毫秒（ms），取值范围为 [0, duration]。当模式为 [SEEK_CONTINUOUS](arkts-media-media-seekmode-e.md)时，可以取值-1，表示SEEK_CONTINUOUS模式结束。该值必须为整数。 |
 | mode | SeekMode | 否 | 基于视频I帧的跳转模式，默认为SEEK_PREV_SYNC模式，**仅在视频资源播放时设置**。 |
 
 **示例**
@@ -3344,7 +3344,7 @@ setDecryptionConfig(mediaKeySession: drm.MediaKeySession, secureVideoPath: boole
 
 **示例**
 
-关于drm模块的示例具体可见[@ohos.multimedia.drm](../apis-drm-kit/arkts-apis-drm.md)。
+关于drm模块的示例具体可见@ohos.multimedia.drm。
 
 ```TypeScript
 import { drm } from '@kit.DrmKit';

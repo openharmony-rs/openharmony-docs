@@ -1,6 +1,6 @@
 # C API<!--c-avsession-kit-->
 
-- 头文件
+- 头文件<!--avsessionkit-headerfile-->
     - [native_avmetadata.h](capi-native-avmetadata-h.md)
     - [native_avsession_errors.h](capi-native-avsession-errors-h.md)
     - [native_avcastcontroller.h](capi-native-avcastcontroller-h.md)
@@ -9,9 +9,9 @@
     - [native_deviceinfo.h](capi-native-deviceinfo-h.md)
     - [native_avsession_base.h](capi-native-avsession-base-h.md)
     - [native_avqueueitem.h](capi-native-avqueueitem-h.md)
-- 模块
+- 模块<!--avsessionkit-module-->
     - [OHAVSession](capi-ohavsession.md)
-- 结构体
+- 结构体<!--avsessionkit-struct-->
     - [OH_AVMetadataBuilderStruct](capi-ohavsession-oh-avmetadatabuilderstruct.md)
     - [OH_AVMetadataStruct](capi-ohavsession-oh-avmetadatastruct.md)
     - [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)

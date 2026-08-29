@@ -48,7 +48,7 @@ SOURCE_TYPE_VOICE_RECOGNITION = 1
 SOURCE_TYPE_PLAYBACK_CAPTURE = 2
 ```
 
-播放音频流（内录）录制音频源。SystemCapability.Multimedia.Audio.PlaybackCapture从API version 10开始支持，从API version 12开始废弃，建议使用[录屏接口AVScreenCapture](../apis-media-kit/capi-avscreencapture.md)替代。
+播放音频流（内录）录制音频源。SystemCapability.Multimedia.Audio.PlaybackCapture从API version 10开始支持，从API version 12开始废弃，建议使用录屏接口AVScreenCapture替代。
 
 **起始版本：** 10
 

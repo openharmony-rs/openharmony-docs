@@ -12,7 +12,7 @@ Declare the error codes of file management module.
 
 **起始版本：** 12
 
-**相关模块：** [FileIO](capi-fileio.md)
+**相关模块：** FileIO
 
 ## 汇总
 

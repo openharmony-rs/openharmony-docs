@@ -33,7 +33,7 @@ gridColOffset(value: number | GridColColumnOption)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number \| [GridColColumnOption](arkts-arkui-gridcolcolumnoption-i.md) | 是 | 相对于原本位置偏移的列数。gridColOffset为0表示不偏移。 取值为非负整数，默认值为0。 非法值：按默认值处理。    **说明：** 该属性具有断点继承性，详见 [GridColOptions对象说明](../../../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcoloptions对象说明)。 |
+| value | number \| [GridColColumnOption](arkts-arkui-gridcolcolumnoption-i.md) | 是 | 相对于原本位置偏移的列数。gridColOffset为0表示不偏移。 取值为非负整数，默认值为0。 非法值：按默认值处理。    **说明：** 该属性具有断点继承性，详见 GridColOptions对象说明。 |
 
 ## order
 
@@ -55,7 +55,7 @@ order(value: number | GridColColumnOption)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number \| [GridColColumnOption](arkts-arkui-gridcolcolumnoption-i.md) | 是 | 元素序号，根据栅格子组件的序号从小到大排序。 取值为非负整数，默认值为0。 非法值：按默认值处理。    **说明：** 该属性具有断点继承性，详见 [GridColOptions对象说明](../../../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcoloptions对象说明)。 |
+| value | number \| [GridColColumnOption](arkts-arkui-gridcolcolumnoption-i.md) | 是 | 元素序号，根据栅格子组件的序号从小到大排序。 取值为非负整数，默认值为0。 非法值：按默认值处理。    **说明：** 该属性具有断点继承性，详见 GridColOptions对象说明。 |
 
 ## span
 
@@ -77,4 +77,4 @@ span(value: number | GridColColumnOption)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number \| [GridColColumnOption](arkts-arkui-gridcolcolumnoption-i.md) | 是 | 占用列数。span为0表示该元素不参与布局计算，即不会被渲染。 取值为非负整数，默认值为1。 非法值：按默认值处理。    **说明：** 该属性具有断点继承性，详见 [GridColOptions对象说明](../../../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcoloptions对象说明)。API version 20之后，默认值继承规则有变化，详见[GridColColumnOption](arkts-arkui-gridcolcolumnoption-i.md)。 |
+| value | number \| [GridColColumnOption](arkts-arkui-gridcolcolumnoption-i.md) | 是 | 占用列数。span为0表示该元素不参与布局计算，即不会被渲染。 取值为非负整数，默认值为1。 非法值：按默认值处理。    **说明：** 该属性具有断点继承性，详见 GridColOptions对象说明。API version 20之后，默认值继承规则有变化，详见[GridColColumnOption](arkts-arkui-gridcolcolumnoption-i.md)。 |

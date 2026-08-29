@@ -56,7 +56,7 @@ ListItemGroup(options?: ListItemGroupOptions)
 
 ## 示例
 
-ListDataSource实现了LazyForEach数据源接口[IDataSource](ts-rendering-control-lazyforeach.md#idatasource)，用于通过LazyForEach给List和ListItemGroup提供子组件。
+ListDataSource实现了LazyForEach数据源接口IDataSource，用于通过LazyForEach给List和ListItemGroup提供子组件。
 
 ```TypeScript
 // ListDataSource.ets
@@ -264,7 +264,7 @@ interface ArrObject {
 }
 ```
 
-ListDataSource说明及完整代码参考[示例1（设置吸顶/吸底）](#示例1设置吸顶吸底)。
+ListDataSource说明及完整代码参考示例1（设置吸顶/吸底）。
 
 ```TypeScript
 // xxx.ets
@@ -396,7 +396,7 @@ struct ListItemGroupExample {
 }
 ```
 
-ListDataSource说明及完整代码参考[示例1（设置吸顶/吸底）](#示例1设置吸顶吸底)。
+ListDataSource说明及完整代码参考示例1（设置吸顶/吸底）。
 
 ```TypeScript
 // xxx.ets
@@ -554,7 +554,7 @@ struct ListItemGroupExample {
 }
 ```
 
-该示例通过将ListItemGroup的[headerStyle](#listitemgroupoptions对象说明)设置为[ListItemGroupHeaderFooterStyle.FLOATING](arkts-arkui-listitemgroupheaderfooterstyle-e.md)，实现分组头部在滚动时悬浮显示的效果。
+该示例通过将ListItemGroup的headerStyle设置为[ListItemGroupHeaderFooterStyle.FLOATING](arkts-arkui-listitemgroupheaderfooterstyle-e.md)，实现分组头部在滚动时悬浮显示的效果。
 
 ```TypeScript
 // xxx.ets

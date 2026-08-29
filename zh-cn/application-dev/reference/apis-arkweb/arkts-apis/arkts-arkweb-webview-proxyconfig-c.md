@@ -27,7 +27,7 @@ bypassHostnamesWithoutPeriod(): void
 
 **示例**
 
-完整示例代码参考[removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride)。
+完整示例代码参考removeProxyOverride。
 
 ## clearImplicitRules
 
@@ -45,7 +45,7 @@ clearImplicitRules(): void
 
 **示例**
 
-完整示例代码参考[removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride)。
+完整示例代码参考removeProxyOverride。
 
 ## enableReverseBypass
 
@@ -75,7 +75,7 @@ enableReverseBypass(reverse: boolean): void
 
 **示例**
 
-完整示例代码参考[removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride)。
+完整示例代码参考removeProxyOverride。
 
 ## getBypassRules
 
@@ -99,7 +99,7 @@ getBypassRules(): Array<string>
 
 **示例**
 
-完整示例代码参考[removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride)。
+完整示例代码参考removeProxyOverride。
 
 ## getProxyRules
 
@@ -123,7 +123,7 @@ getProxyRules(): Array<ProxyRule>
 
 **示例**
 
-完整示例代码参考[removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride)。
+完整示例代码参考removeProxyOverride。
 
 ## insertBypassRule
 
@@ -153,7 +153,7 @@ insertBypassRule(bypassRule: string): void
 
 **示例**
 
-完整示例代码参考[removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride)。
+完整示例代码参考removeProxyOverride。
 
 ## insertDirectRule
 
@@ -190,7 +190,7 @@ insertDirectRule(schemeFilter?: ProxySchemeFilter): void
 
 **示例**
 
-完整示例代码参考[removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride)。
+完整示例代码参考removeProxyOverride。
 
 ## insertProxyRule
 
@@ -228,7 +228,7 @@ insertProxyRule(proxyRule: string, schemeFilter?: ProxySchemeFilter): void
 
 **示例**
 
-完整示例代码参考[removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride)。
+完整示例代码参考removeProxyOverride。
 
 ## isReverseBypassEnabled
 
@@ -252,4 +252,4 @@ isReverseBypassEnabled(): boolean
 
 **示例**
 
-完整示例代码参考[removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride)。
+完整示例代码参考removeProxyOverride。

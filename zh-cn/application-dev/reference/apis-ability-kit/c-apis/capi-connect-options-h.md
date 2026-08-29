@@ -53,7 +53,7 @@ typedef void (*OH_AbilityRuntime_ConnectOptions_OnConnectCallback)(OH_AbilityRun
 | -- | -- |
 | [OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md) \*connectOptions | 表示指向[OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md)实例的指针。 |
 | [AbilityBase_Element](capi-abilitybase-abilitybase-element.md) \*element | 表示模块对象扩展功能的元素名称。 |
-| [OHIPCRemoteProxy](../IPCKit/capi-ohipcparcel-ohipcremoteproxy.md) \*proxy | 表示远程对象实例。 |
+| OHIPCRemoteProxy \*proxy | 表示远程对象实例。 |
 
 ### OH_AbilityRuntime_ConnectOptions_OnDisconnectCallback()
 

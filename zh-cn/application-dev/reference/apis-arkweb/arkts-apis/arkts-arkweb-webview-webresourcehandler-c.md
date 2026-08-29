@@ -40,7 +40,7 @@ didFail(code: WebNetErrorList): void
 
 **示例**
 
-示例请参考[OnRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart)。
+示例请参考OnRequestStart。
 
 ## didFail
 
@@ -170,7 +170,7 @@ didFail(code: WebNetErrorList, completeIfNoResponse: boolean, customErrorCode: n
 
 **示例**
 
-示例请参考[OnRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart)。
+示例请参考OnRequestStart。
 
 ```TypeScript
 // xxx.ets
@@ -266,7 +266,7 @@ didFinish(): void
 
 **示例**
 
-示例请参考[OnRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart)。
+示例请参考OnRequestStart。
 
 ## didReceiveResponse
 
@@ -297,7 +297,7 @@ didReceiveResponse(response: WebSchemeHandlerResponse): void
 
 **示例**
 
-示例请参考[OnRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart)。
+示例请参考OnRequestStart。
 
 ## didReceiveResponseBody
 
@@ -328,4 +328,4 @@ didReceiveResponseBody(data: ArrayBuffer): void
 
 **示例**
 
-示例请参考[OnRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart)。
+示例请参考OnRequestStart。

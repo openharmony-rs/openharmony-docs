@@ -1,6 +1,6 @@
 # C API<!--c-crypto-architecture-kit-->
 
-- 头文件
+- 头文件<!--cryptoarchitecturekit-headerfile-->
     - [crypto_sym_key.h](capi-crypto-sym-key-h.md)
     - [crypto_asym_key.h](capi-crypto-asym-key-h.md)
     - [crypto_kdf.h](capi-crypto-kdf-h.md)
@@ -13,7 +13,7 @@
     - [crypto_common.h](capi-crypto-common-h.md)
     - [crypto_signature.h](capi-crypto-signature-h.md)
     - [crypto_mac.h](capi-crypto-mac-h.md)
-- 模块
+- 模块<!--cryptoarchitecturekit-module-->
     - [CryptoSymKeyApi](capi-cryptosymkeyapi.md)
     - [CryptoAsymKeyApi](capi-cryptoasymkeyapi.md)
     - [CryptoKdfApi](capi-cryptokdfapi.md)
@@ -26,7 +26,7 @@
     - [CryptoCommonApi](capi-cryptocommonapi.md)
     - [CryptoSignatureApi](capi-cryptosignatureapi.md)
     - [CryptoMacApi](capi-cryptomacapi.md)
-- 结构体
+- 结构体<!--cryptoarchitecturekit-struct-->
     - [OH_CryptoSymKey](capi-cryptosymkeyapi-oh-cryptosymkey.md)
     - [OH_CryptoSymKeyGenerator](capi-cryptosymkeyapi-oh-cryptosymkeygenerator.md)
     - [OH_CryptoKeyPair](capi-cryptoasymkeyapi-oh-cryptokeypair.md)

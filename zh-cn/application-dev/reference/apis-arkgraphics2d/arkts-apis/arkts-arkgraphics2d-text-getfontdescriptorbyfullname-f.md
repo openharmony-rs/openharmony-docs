@@ -25,7 +25,7 @@ function getFontDescriptorByFullName(fullName: string, fontType: SystemFontType)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | fullName | string | 是 | 指定的字体名称。可以使用[getSystemFontFullNamesByType](arkts-arkgraphics2d-text-getsystemfontfullnamesbytype-f.md)获取。 |
-| fontType | [SystemFontType](arkts-arkgraphics2d-text-systemfonttype-e.md) | 是 | 指定的字体类型。 |
+| fontType | SystemFontType | 是 | 指定的字体类型。 |
 
 **返回值：**
 

@@ -159,7 +159,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_CreateMainServiceIns
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OHIPCRemoteProxy](../IPCKit/capi-ohipcparcel-ohipcremoteproxy.md)* remoteProxy | 远端Proxy对象句柄，通过连接ModularObjectExtensionAbility获取。 |
+| OHIPCRemoteProxy* remoteProxy | 远端Proxy对象句柄，通过连接ModularObjectExtensionAbility获取。 |
 | [OH_AbilityRuntime_ModObjDispatcherHandle](capi-abilityruntime-oh-abilityruntime-modularobjectdispatcher8h.md)* ppModObjDispatcher | 指向接收ModularObject分发器句柄的指针，不能为NULL，且*ppModObjDispatcher必须为NULL。 |
 
 **返回：**
@@ -185,7 +185,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_CreateSubInstance(OH
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AbilityRuntime_ModObjDispatcherHandle](capi-abilityruntime-oh-abilityruntime-modularobjectdispatcher8h.md) mainServiceDispatcher | 主服务分发器句柄。 |
-| [OHIPCRemoteProxy](../IPCKit/capi-ohipcparcel-ohipcremoteproxy.md)* subProxy | 非主服务接口的远端Proxy对象句柄。 |
+| OHIPCRemoteProxy* subProxy | 非主服务接口的远端Proxy对象句柄。 |
 | [OH_AbilityRuntime_ModObjDispatcherHandle](capi-abilityruntime-oh-abilityruntime-modularobjectdispatcher8h.md)* ppModObjDispatcher | 指向接收创建的子实例分发器句柄的指针，不能为NULL，且*ppModObjDispatcher必须为NULL。 |
 
 **返回：**

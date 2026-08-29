@@ -5,11 +5,11 @@ Shape组件通过定义视口、填充、边框等属性，支持矢量图形的
 Shape组件的两种使用方式：
 1、绘制组件使用Shape作为父组件，实现类似SVG的矢量图形的组合绘制。
 2、绘制组件单独使用，用于在页面上绘制指定的图形。
-> **说明：** > > 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。 > > 该组件从API version 20开始支持使用AttributeUpdater类的 > [updateConstructorParams](../../../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#属性)接口更新构造参数。
+> **说明：** > > 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。 > > 该组件从API version 20开始支持使用AttributeUpdater类的 > updateConstructorParams接口更新构造参数。
 
 ## 子组件
 
-包含Rect、Path、Circle、[Ellipse](../arkts-apis/arkts-arkui-canvaspath-c.md#ellipse)、Polyline、 [Polygon](../../apis-location-kit/arkts-apis/arkts-location-geolocationmanager-gnssfence-i-sys.md#polygon)、Image、Text、[Column](arkts-arkui-astcresource-i-sys.md#column)、Row和Shape子组件。
+包含Rect、Path、Circle、[Ellipse](../arkts-apis/arkts-arkui-canvaspath-c.md#ellipse)、Polyline、 Polygon、Image、Text、Column、Row和Shape子组件。
 
 ## Shape
 

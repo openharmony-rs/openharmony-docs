@@ -256,7 +256,7 @@ struct LazyVGridLayoutStickyDemo {
 }
 ```
 
-从API version 19开始，新增[columnsTemplate](#columnstemplate)接口。
+从API version 19开始，新增columnsTemplate接口。
 
 ```TypeScript
 import { LazyColumnLayout, LazyColumnLayoutAttribute, LengthMetrics } from '@kit.ArkUI';

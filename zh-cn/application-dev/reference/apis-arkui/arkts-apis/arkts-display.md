@@ -40,17 +40,17 @@ import { display } from '@kit.ArkUI';
 | [isCaptured](arkts-arkui-display-iscaptured-f.md) | 检查该设备是否被bundle名称列表中的任何应用抓拍、投影或录制。 |
 | [isFoldable](arkts-arkui-display-isfoldable-f.md) | 判断设备是否可折叠。 |
 | [makeUnique](arkts-arkui-display-makeunique-f.md) | 将屏幕设置为异源模式，使用Promise异步回调。 |
-| [off](arkts-arkui-display-off-f.md#offadd-remove-change) | 关闭显示设备变化的监听。 |
-| [off](arkts-arkui-display-off-f.md#offadd-remove-change) | 关闭显示设备变化的监听。 |
-| [off](arkts-arkui-display-off-f.md#offadd-remove-change) | 关闭显示设备变化的监听。 |
+| off | 关闭显示设备变化的监听。 |
+| off | 关闭显示设备变化的监听。 |
+| off | 关闭显示设备变化的监听。 |
 | [off](arkts-arkui-display-off-f.md#offfoldstatuschange) | 关闭折叠设备折叠状态变化的监听。 |
 | [off](arkts-arkui-display-off-f.md#offfoldanglechange) | 关闭折叠设备折叠角度变化的监听。 |
 | [off](arkts-arkui-display-off-f.md#offcapturestatuschange) | 关闭设备的屏幕显示信息是否被获取的监听。 |
 | [off](arkts-arkui-display-off-f.md#offfolddisplaymodechange) | 关闭折叠设备屏幕显示模式变化的监听。 |
 | [off](arkts-arkui-display-off-f.md#offbrightnessinfochange) | 关闭所有屏幕亮度信息状态变化的监听。 |
-| [on](arkts-arkui-display-on-f.md#onadd-remove-change) | 开启显示设备变化的监听。 |
-| [on](arkts-arkui-display-on-f.md#onadd-remove-change) | 开启显示设备变化的监听。 |
-| [on](arkts-arkui-display-on-f.md#onadd-remove-change) | 开启显示设备变化的监听。 |
+| on | 开启显示设备变化的监听。 |
+| on | 开启显示设备变化的监听。 |
+| on | 开启显示设备变化的监听。 |
 | [on](arkts-arkui-display-on-f.md#onfoldstatuschange) | 开启折叠设备折叠状态变化的监听。本接口监听设备物理折叠状态的变化，如果要监听屏幕显示模式的变化，需要使用 display.on('foldDisplayModeChange') 接口。两者存在差异，时序上物理折叠状态变化在前，底层会根据物理折叠状态匹配屏幕显示模式状态。若需监听当前显示内容是显示在折叠设备的内屏还是外屏，请使用 display.on('foldDisplayModeChange') 。 |
 | [on](arkts-arkui-display-on-f.md#onfoldanglechange) | 开启折叠设备折叠角度变化的监听。如果是双折轴设备，则有两个角度值；在充电口朝下的状态下，从右到左分别是折轴一和折轴二。 |
 | [on](arkts-arkui-display-on-f.md#oncapturestatuschange) | 开启设备的屏幕显示信息是否被获取的监听。 |

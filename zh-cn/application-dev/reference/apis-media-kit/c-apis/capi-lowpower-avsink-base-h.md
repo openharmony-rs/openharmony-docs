@@ -50,13 +50,13 @@ OH_AVErrCode OH_AVSamplesBuffer_AppendOneBuffer(OH_AVSamplesBuffer *samplesBuffe
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVSamplesBuffer](capi-avsinkbase-oh-avsamplesbuffer.md) *samplesBuffer | 指向OH_AVSamplesBuffer实例的指针。 |
-| [OH_AVBuffer](../AVCodecKit/capi-core-oh-avbuffer.md) *avBuffer | 指向OH_AVBuffer实例的指针。 |
+| OH_AVBuffer *avBuffer | 指向OH_AVBuffer实例的指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。  AV_ERR_NO_MEMORY：OH_AVSamplesBuffer没有足够的剩余容量来追加一个OH_AVBuffer。  AV_ERR_UNKNOWN：未知错误。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。  AV_ERR_NO_MEMORY：OH_AVSamplesBuffer没有足够的剩余容量来追加一个OH_AVBuffer。  AV_ERR_UNKNOWN：未知错误。 |
 
 ### OH_AVSamplesBuffer_GetRemainedCapacity()
 

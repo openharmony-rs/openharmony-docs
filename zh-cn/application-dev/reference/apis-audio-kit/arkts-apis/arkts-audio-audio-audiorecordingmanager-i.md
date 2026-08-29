@@ -1,6 +1,6 @@
 # AudioRecordingManager
 
-录音策略管理，提供协同录音和录音控制能力。 在使用AudioRecordingManager的接口之前，需先通过 [getRecordingManager](arkts-audio-audio-audiomanager-i-sys.md#getrecordingmanager)获取AudioRecordingManager实例 。
+录音策略管理，提供协同录音和录音控制能力。 在使用AudioRecordingManager的接口之前，需先通过 getRecordingManager获取AudioRecordingManager实例 。
 
 > **说明：**
 > 
@@ -45,7 +45,7 @@ enableSystemRecordController(show: boolean, config: SystemRecordControllerConfig
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | show | boolean | 是 | 启用或禁用系统录音控制面板。true表示启用，false表示禁用。 |
-| config | [SystemRecordControllerConfig](arkts-audio-audio-systemrecordcontrollerconfig-i.md) | 是 | 系统录音控制面板的配置信息。 |
+| config | SystemRecordControllerConfig | 是 | 系统录音控制面板的配置信息。 |
 
 **返回值：**
 

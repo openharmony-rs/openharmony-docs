@@ -1,6 +1,6 @@
 # C API<!--c-image-kit-->
 
-- 头文件
+- 头文件<!--imagekit-headerfile-->
     - [image_processing_types.h](capi-image-processing-types-h.md)
     - [image_processing.h](capi-image-processing-h.md)
     - [image_pixel_map_napi.h](capi-image-pixel-map-napi-h.md)
@@ -20,12 +20,12 @@
     - [image_effect_filter.h](capi-image-effect-filter-h.md)
     - [image_effect.h](capi-image-effect-h.md)
     - [image_effect_errors.h](capi-image-effect-errors-h.md)
-- 模块
+- 模块<!--imagekit-module-->
     - [ImageProcessing](capi-imageprocessing.md)
     - [Image](capi-image.md)
     - [Image_NativeModule](capi-image-nativemodule.md)
     - [ImageEffect](capi-imageeffect.md)
-- 结构体
+- 结构体<!--imagekit-struct-->
     - [ImageProcessing_ColorSpaceInfo](capi-imageprocessing-imageprocessing-colorspaceinfo.md)
     - [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)
     - [OH_PixelmapNative](capi-imageprocessing-oh-pixelmapnative.md)

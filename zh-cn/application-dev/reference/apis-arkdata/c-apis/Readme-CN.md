@@ -1,6 +1,6 @@
 # C API<!--c-arkdata-->
 
-- 头文件
+- 头文件<!--arkdata-headerfile-->
     - [udmf_meta.h](capi-udmf-meta-h.md)
     - [udmf_err_code.h](capi-udmf-err-code-h.md)
     - [udmf.h](capi-udmf-h.md)
@@ -23,11 +23,11 @@
     - [oh_predicates.h](capi-oh-predicates-h.md)
     - [oh_rdb_transaction.h](capi-oh-rdb-transaction-h.md)
     - [oh_data_values_buckets.h](capi-oh-data-values-buckets-h.md)
-- 模块
+- 模块<!--arkdata-module-->
     - [UDMF](capi-udmf.md)
     - [Preferences](capi-preferences.md)
     - [RDB](capi-rdb.md)
-- 结构体
+- 结构体<!--arkdata-struct-->
     - [OH_UdmfData](capi-udmf-oh-udmfdata.md)
     - [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)
     - [OH_UdmfRecordProvider](capi-udmf-oh-udmfrecordprovider.md)

@@ -51,7 +51,7 @@ Gauge(options: GaugeOptions)
 
 ## 示例
 
-该示例通过[colors](#colors)接口，实现了多色量规图效果。
+该示例通过colors接口，实现了多色量规图效果。
 
 ```TypeScript
 @Entry
@@ -116,7 +116,7 @@ struct Gauge1 {
 }
 ```
 
-该示例通过[colors](#colors)接口，实现了单色量规图效果。
+该示例通过colors接口，实现了单色量规图效果。
 
 ```TypeScript
 @Entry
@@ -156,7 +156,7 @@ struct Gauge2 {
 }
 ```
 
-该示例通过[description](#description11)接口，实现了说明区的设置功能。
+该示例通过description接口，实现了说明区的设置功能。
 
 ```TypeScript
 @Entry
@@ -265,7 +265,7 @@ struct Gauge4 {
 }
 ```
 
-该示例通过设置[GaugeOptions](#gaugeoptions18对象说明)的min、max属性，实现了量规图的最大最小值设置的功能。
+该示例通过设置GaugeOptions的min、max属性，实现了量规图的最大最小值设置的功能。
 
 ```TypeScript
 @Entry
@@ -303,7 +303,7 @@ struct Gauge5 {
 }
 ```
 
-该示例通过[indicator](#indicator11)接口，实现了设置量规图的指针的功能。
+该示例通过indicator接口，实现了设置量规图的指针的功能。
 
 ```TypeScript
 @Entry
@@ -347,7 +347,7 @@ struct Gauge6 {
 }
 ```
 
-该示例通过[startAngle](#startangle)和[endAngle](#endangle)接口，实现了量规图起止角度设置的功能。
+该示例通过startAngle和endAngle接口，实现了量规图起止角度设置的功能。
 
 ```TypeScript
 @Entry
@@ -383,7 +383,7 @@ struct Gauge7 {
 }
 ```
 
-该示例通过[contentModifier](#contentmodifier12)接口，实现了定制量规图内容区的功能。
+该示例通过contentModifier接口，实现了定制量规图内容区的功能。
 
 ```TypeScript
 // xxx.ets
@@ -462,7 +462,7 @@ struct RefreshExample {
 }
 ```
 
-该示例展示了[privacySensitive](#privacysensitive12)接口的调用方式。实际隐私隐藏效果需要卡片框架支持。
+该示例展示了privacySensitive接口的调用方式。实际隐私隐藏效果需要卡片框架支持。
 
 ```TypeScript
 @Entry
@@ -489,7 +489,7 @@ struct GaugeExample {
 }
 ```
 
-该示例通过[indicator](#indicator11)接口，实现了自定义指针功能，开发者导入svg类型的图片以替换默认指针。
+该示例通过indicator接口，实现了自定义指针功能，开发者导入svg类型的图片以替换默认指针。
 
 ```TypeScript
 @Entry

@@ -46,7 +46,7 @@ getFocusElement(isAccessibilityFocus: boolean, callback: AsyncCallback<Accessibi
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
+| 9300003 | No accessibility permission to perform the operation. |
 
 **示例**
 
@@ -99,7 +99,7 @@ getFocusElement(isAccessibilityFocus?: boolean): Promise<AccessibilityElement>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
+| 9300003 | No accessibility permission to perform the operation. |
 
 **示例**
 
@@ -143,7 +143,7 @@ getFocusElement(callback: AsyncCallback<AccessibilityElement>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
+| 9300003 | No accessibility permission to perform the operation. |
 
 **示例**
 
@@ -190,7 +190,7 @@ getWindowRootElement(windowId: number, callback: AsyncCallback<AccessibilityElem
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
+| 9300003 | No accessibility permission to perform the operation. |
 
 **示例**
 
@@ -243,7 +243,7 @@ getWindowRootElement(windowId?: number): Promise<AccessibilityElement>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
+| 9300003 | No accessibility permission to perform the operation. |
 
 **示例**
 
@@ -287,7 +287,7 @@ getWindowRootElement(callback: AsyncCallback<AccessibilityElement>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
+| 9300003 | No accessibility permission to perform the operation. |
 
 **示例**
 
@@ -334,7 +334,7 @@ getWindows(displayId: number, callback: AsyncCallback<Array<AccessibilityElement
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
+| 9300003 | No accessibility permission to perform the operation. |
 
 **示例**
 
@@ -384,7 +384,7 @@ getWindows(displayId?: number): Promise<Array<AccessibilityElement>>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
+| 9300003 | No accessibility permission to perform the operation. |
 
 **示例**
 
@@ -425,7 +425,7 @@ getWindows(callback: AsyncCallback<Array<AccessibilityElement>>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
+| 9300003 | No accessibility permission to perform the operation. |
 
 **示例**
 
@@ -471,7 +471,7 @@ injectGesture(gesturePath: GesturePath, callback: AsyncCallback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
+| 9300003 | No accessibility permission to perform the operation. |
 
 **示例**
 
@@ -527,7 +527,7 @@ injectGesture(gesturePath: GesturePath): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
+| 9300003 | No accessibility permission to perform the operation. |
 
 **示例**
 
@@ -574,7 +574,7 @@ injectGestureSync(gesturePath: GesturePath): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
+| 9300003 | No accessibility permission to perform the operation. |
 
 **示例**
 

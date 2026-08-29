@@ -24,9 +24,9 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [anonymous enum](#anonymous enum) | 函数方法返回值的错误码的枚举。(API10废弃) |
-| [anonymous enum](#anonymous enum) | 像素格式的枚举。(API10废弃) |
-| [anonymous enum](#anonymous enum) | PixelMap缩放类型的枚举。 |
+| anonymous enum | 函数方法返回值的错误码的枚举。(API10废弃) |
+| anonymous enum | 像素格式的枚举。(API10废弃) |
+| anonymous enum | PixelMap缩放类型的枚举。 |
 
 ### 函数
 

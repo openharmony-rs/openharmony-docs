@@ -1,11 +1,11 @@
 # C API<!--c-arkts-->
 
-- 头文件
+- 头文件<!--arkts-headerfile-->
     - [jsvm.h](capi-jsvm-h.md)
     - [jsvm_types.h](capi-jsvm-types-h.md)
-- 模块
+- 模块<!--arkts-module-->
     - [JSVM](capi-jsvm.md)
-- 结构体
+- 结构体<!--arkts-struct-->
     - [JSVM_CallbackStruct](capi-jsvm-jsvm-callbackstruct.md)
     - [JSVM_HeapStatistics](capi-jsvm-jsvm-heapstatistics.md)
     - [JSVM_InitOptions](capi-jsvm-jsvm-initoptions.md)

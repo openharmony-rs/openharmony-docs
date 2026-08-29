@@ -22,7 +22,7 @@ Specify the construction options for the UnionEffectContainer to create the Unio
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [UnionEffectContainerOptions](arkts-arkui-unioneffectcontaineroptions-i-sys.md) | 否 | UnionEffectContainer constructor options. |
+| options | UnionEffectContainerOptions | 否 | UnionEffectContainer constructor options. |
 
 ## 汇总
 
@@ -30,10 +30,10 @@ Specify the construction options for the UnionEffectContainer to create the Unio
 
 | 名称 | 说明 |
 | --- | --- |
-| [UnionEffectContainerOptions](arkts-arkui-unioneffectcontaineroptions-i-sys.md) | 设置UnionEffectContainer构造参数。 |
+| UnionEffectContainerOptions | 设置UnionEffectContainer构造参数。 |
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [UnionMode](arkts-arkui-unionmode-e-sys.md) | 融合效果枚举。 |
+| UnionMode | 融合效果枚举。 |

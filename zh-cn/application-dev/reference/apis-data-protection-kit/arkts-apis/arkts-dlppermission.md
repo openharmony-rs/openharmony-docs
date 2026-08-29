@@ -58,7 +58,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 | [setRetentionState(数据防泄漏)](arkts-dataprotection-dlppermission-setretentionstate-f.md) | 设置DLP沙箱的保留状态。默认情况下，打开DLP文件时系统会自动创建沙箱环境，关闭文件后自动销毁沙箱。设置保留状态后，即使关闭DLP文件，沙箱环境也会保留，便于快速重新打开相同DLP文件。适用于需要频繁操作同一DLP文件的场景 ，可提升文件打开效率。仅支持在DLP沙箱应用中调用。使用Promise异步回调。 |
 | [setRetentionState(数据防泄漏)](arkts-dataprotection-dlppermission-setretentionstate-f.md) | 设置DLP沙箱的保留状态。默认情况下，打开DLP文件时系统会自动创建沙箱环境，关闭文件后自动销毁沙箱。设置保留状态后，即使关闭DLP文件，沙箱环境也会保留，便于快速重新打开相同DLP文件。适用于需要频繁操作同一DLP文件的场景 ，可提升文件打开效率。仅支持在DLP沙箱应用中调用。使用callback异步回调。 |
 | [setSandboxAppConfig(数据防泄漏)](arkts-dataprotection-dlppermission-setsandboxappconfig-f.md) | 设置沙箱应用配置信息，配置信息为JSON字符串格式，具体内容由应用自行设置。调用成功后，沙箱应用将按照配置信息运行。使用Promise异步回调。仅支持在非DLP沙箱应用中调用。该接口用于设置沙箱应用的配置信息，以便应用按需传递自定义参数。 |
-| [startDLPManagerForResult(数据防泄漏)](arkts-dataprotection-dlppermission-startdlpmanagerforresult-f.md) | 在当前[UIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md)界面以无边框形式打开DLP权限管理应用。使用Promise异步回调。该接口用于拉起DLP权限管理应用配置文件权限，并将用户操作结果返回给调用方。 |
+| [startDLPManagerForResult(数据防泄漏)](arkts-dataprotection-dlppermission-startdlpmanagerforresult-f.md) | 在当前UIAbility界面以无边框形式打开DLP权限管理应用。使用Promise异步回调。该接口用于拉起DLP权限管理应用配置文件权限，并将用户操作结果返回给调用方。 |
 
 <!--Del-->
 ### 函数（系统接口）

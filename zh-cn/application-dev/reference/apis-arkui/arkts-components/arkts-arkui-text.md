@@ -56,7 +56,7 @@ Text(content?: string | Resource, value?: TextOptions)
 
 ## 示例
 
-该示例通过[textAlign](#textalign)、[lineHeight](#lineheight)、[baselineOffset](#baselineoffset)、[halfLeading](#halfleading12)（从API version 12开始）属性展示了文本布局的效果。
+该示例通过textAlign、lineHeight、baselineOffset、halfLeading（从API version 12开始）属性展示了文本布局的效果。
 
 ```TypeScript
 // xxx.ets
@@ -134,7 +134,7 @@ struct TextExample1 {
 }
 ```
 
-该示例通过[decoration](#decoration)、[letterSpacing](#letterspacing)、[textCase](#textcase)、[fontFamily](#fontfamily)、[textShadow](#textshadow10)（从API version 10开始）、[fontStyle](#fontstyle)、[textIndent](#textindent10)（从API version 10开始）、[fontWeight](#fontweight12)（从API version 12开始，支持设置字重无极调节配置项）属性展示了不同样式的文本效果。
+该示例通过decoration、letterSpacing、textCase、fontFamily、textShadow（从API version 10开始）、fontStyle、textIndent（从API version 10开始）、fontWeight（从API version 12开始，支持设置字重无极调节配置项）属性展示了不同样式的文本效果。
 
 ```TypeScript
 // xxx.ets
@@ -250,7 +250,7 @@ struct TextExample2 {
 }
 ```
 
-从API version 24开始，[EllipsisMode](ts-appendix-enums.md#ellipsismode11)新增了MULTILINE_START和MULTILINE_CENTER枚举。
+从API version 24开始，EllipsisMode新增了MULTILINE_START和MULTILINE_CENTER枚举。
 
 ```TypeScript
 // xxx.ets
@@ -350,7 +350,7 @@ struct TextExample3 {
 }
 ```
 
-该示例通过[wordBreak](#wordbreak11)（从API version 11开始）、[lineBreakStrategy](#linebreakstrategy12)（从API version 12开始）、[clip](ts-universal-attributes-sharp-clipping.md#clip12)属性展示了文本在不同断行、折行规则下的效果以及文本超长时是否截断。
+该示例通过wordBreak（从API version 11开始）、lineBreakStrategy（从API version 12开始）、clip属性展示了文本在不同断行、折行规则下的效果以及文本超长时是否截断。
 
 ```TypeScript
 // xxx.ets
@@ -431,7 +431,7 @@ struct TextExample4 {
 }
 ```
 
-从API版本26.0.0开始，新增[onWillCopy](#onwillcopy)接口。
+从API版本26.0.0开始，新增onWillCopy接口。
 
 ```TypeScript
 // xxx.ets
@@ -479,7 +479,7 @@ struct TextExample5 {
 }
 ```
 
-该示例通过[heightAdaptivePolicy](#heightadaptivepolicy10)（从API version 10开始）属性展示文本自适应效果以及通过[minFontScale](#minfontscale12)（从API version 12开始）、[maxFontScale](#maxfontscale12)（从API version 12开始）展示设置字体缩放倍数限制范围。
+该示例通过heightAdaptivePolicy（从API version 10开始）属性展示文本自适应效果以及通过minFontScale（从API version 12开始）、maxFontScale（从API version 12开始）展示设置字体缩放倍数限制范围。
 
 ```TypeScript
 // xxx.ets
@@ -520,7 +520,7 @@ struct TextExample6 {
 }
 ```
 
-从API version 11开始，该示例通过[enableDataDetector](#enabledatadetector11)、[dataDetectorConfig](#datadetectorconfig11)接口实现了文本识别的功能。当[enableDataDetector](#enabledatadetector11)设为true且不设置[dataDetectorConfig](#datadetectorconfig11)时，系统会识别所有实体类型，并将识别实体的字体颜色改为蓝色、添加蓝色下划线。
+从API version 11开始，该示例通过enableDataDetector、dataDetectorConfig接口实现了文本识别的功能。当enableDataDetector设为true且不设置dataDetectorConfig时，系统会识别所有实体类型，并将识别实体的字体颜色改为蓝色、添加蓝色下划线。
 
 ```TypeScript
 // xxx.ets
@@ -569,7 +569,7 @@ struct TextExample7 {
 }
 ```
 
-从API version 11开始，该示例通过[bindSelectionMenu](#bindselectionmenu11)、[onTextSelectionChange](#ontextselectionchange11)、[closeSelectionMenu](#closeselectionmenu11)接口实现了文本绑定自定义菜单的功能。
+从API version 11开始，该示例通过bindSelectionMenu、onTextSelectionChange、closeSelectionMenu接口实现了文本绑定自定义菜单的功能。
 
 ```TypeScript
 // xxx.ets
@@ -687,7 +687,7 @@ function MenuStyles() {
 }
 ```
 
-从API version 12开始，该示例通过[fontFeature](#fontfeature12)、[lineSpacing](#linespacing12)接口展示了设置文本特性与行间距的效果，同时，配置[LineSpacingOptions](ts-text-common.md#linespacingoptions20对象说明)中的onlyBetweenLines（从API version 20开始）属性，可以设置文本的行间距，是否仅在行与行之间生效。
+从API version 12开始，该示例通过fontFeature、lineSpacing接口展示了设置文本特性与行间距的效果，同时，配置LineSpacingOptions中的onlyBetweenLines（从API version 20开始）属性，可以设置文本的行间距，是否仅在行与行之间生效。
 
 ```TypeScript
 // xxx.ets
@@ -742,7 +742,7 @@ struct TextExample9 {
 }
 ```
 
-从API version 12开始，该示例通过[getLayoutManager](#getlayoutmanager12)接口调用文本的布局管理对象获取文本信息，同时，[LayoutManager](ts-text-common.md#layoutmanager12)中的[getRectsForRange](./ts-text-common.md#getrectsforrange14)（从API version 14开始）接口可以获取指定矩形宽度和高度下，文本中任意区间范围内字符或占位符的绘制区域信息。
+从API version 12开始，该示例通过getLayoutManager接口调用文本的布局管理对象获取文本信息，同时，LayoutManager中的getRectsForRange（从API version 14开始）接口可以获取指定矩形宽度和高度下，文本中任意区间范围内字符或占位符的绘制区域信息。
 
 ```TypeScript
 // xxx.ets
@@ -863,7 +863,7 @@ struct TextExample11 {
 }
 ```
 
-从API version 12开始，该示例通过[editMenuOptions](#editmenuoptions12)接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能，同时，可以在[onPrepareMenu](ts-text-common.md#属性-1)（从API version 20开始）回调中，进行菜单数据的设置。
+从API version 12开始，该示例通过editMenuOptions接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能，同时，可以在onPrepareMenu（从API version 20开始）回调中，进行菜单数据的设置。
 
 ```TypeScript
 // xxx.ets
@@ -948,7 +948,7 @@ struct TextExample12 {
 }
 ```
 
-从API version 12开始，该示例通过[privacySensitive](#privacysensitive12)属性展示了文本如何配置隐私隐藏的效果，实际显示需要卡片框架支持。
+从API version 12开始，该示例通过privacySensitive属性展示了文本如何配置隐私隐藏的效果，实际显示需要卡片框架支持。
 
 ```TypeScript
 // xxx.ets
@@ -967,7 +967,7 @@ struct TextExample13 {
 }
 ```
 
-从API version 20开始，该示例通过[enableAutoSpacing](#enableautospacing20)属性设置中西文自动间距。
+从API version 20开始，该示例通过enableAutoSpacing属性设置中西文自动间距。
 
 ```TypeScript
 // xxx.ets
@@ -990,7 +990,7 @@ struct TextExample {
 }
 ```
 
-从API version 20开始，该示例通过[shaderStyle](#shaderstyle20)接口实现了对Text组件显示为渐变色和纯色的功能。
+从API version 20开始，该示例通过shaderStyle接口实现了对Text组件显示为渐变色和纯色的功能。
 
 ```TypeScript
 @Entry
@@ -1081,7 +1081,7 @@ struct TextExample16 {
 }
 ```
 
-从API version 20开始，该示例通过[textVerticalAlign](#textverticalalign20)属性展示了文本如何设置文本垂直对齐效果。
+从API version 20开始，该示例通过textVerticalAlign属性展示了文本如何设置文本垂直对齐效果。
 
 ```TypeScript
 // xxx.ets
@@ -1108,7 +1108,7 @@ struct TextExample14 {
 }
 ```
 
-从API version 20开始，该示例通过[contentTransition](#contenttransition20)属性展示了数字翻牌效果。
+从API version 20开始，该示例通过contentTransition属性展示了数字翻牌效果。
 
 ```TypeScript
 // xxx.ets
@@ -1138,7 +1138,7 @@ struct TextNumberTransition {
 }
 ```
 
-从API version 21开始，该示例通过[textContentAlign](#textcontentalign21)属性展示了当文本内容区高度大于组件高度时文本内容区的垂直对齐。
+从API version 21开始，该示例通过textContentAlign属性展示了当文本内容区高度大于组件高度时文本内容区的垂直对齐。
 
 ```TypeScript
 @Entry
@@ -1160,7 +1160,7 @@ struct TextContentAlignExample {
 }
 ```
 
-从API version 22开始，该示例通过[lineHeightMultiple](#lineheightmultiple22)属性展示了使用倍数模式设置行高，同时通过[minLineHeight](arkts-arkui-text-attribute.md#minlineheight)和[maxLineHeight](arkts-arkui-text-attribute.md#maxlineheight)来设置最小和最大行高值。
+从API version 22开始，该示例通过lineHeightMultiple属性展示了使用倍数模式设置行高，同时通过[minLineHeight](arkts-arkui-text-attribute.md#minlineheight)和[maxLineHeight](arkts-arkui-text-attribute.md#maxlineheight)来设置最小和最大行高值。
 
 ```TypeScript
 import { LengthUnit } from '@kit.ArkUI';
@@ -1200,7 +1200,7 @@ struct Index {
 }
 ```
 
-从API version 22开始，该示例使用[minLines](#minlines22)属性设置文本显示的最小行数。
+从API version 22开始，该示例使用minLines属性设置文本显示的最小行数。
 
 ```TypeScript
 @Entry
@@ -1228,7 +1228,7 @@ struct TextExample1 {
 }
 ```
 
-从API version 23开始，该示例使用[TextController](arkts-arkui-textcontroller-c.md)中的[setTextSelection](#settextselection23)设置文本选择区域并高亮显示。
+从API version 23开始，该示例使用[TextController](arkts-arkui-textcontroller-c.md)中的setTextSelection设置文本选择区域并高亮显示。
 
 ```TypeScript
 @Entry
@@ -1297,7 +1297,7 @@ struct PunctuationDemo {
 }
 ```
 
-从API version 23开始，新增[includeFontPadding](#includefontpadding23)和[fallbackLineSpacing](#fallbacklinespacing23)接口。
+从API version 23开始，新增includeFontPadding和fallbackLineSpacing接口。
 
 ```TypeScript
 // xxx.ets
@@ -1412,7 +1412,7 @@ struct TextExample {
 }
 ```
 
-从API version 24开始，支持[getCharacterPositionAtCoordinate](ts-text-common.md#getcharacterpositionatcoordinate24)，[getGlyphRangeForCharacterRange](ts-text-common.md#getglyphrangeforcharacterrange24)，[getCharacterRangeForGlyphRange](ts-text-common.md#getcharacterrangeforglyphrange24)接口。该示例通过[getLayoutManager](#getlayoutmanager12)接口调用文本的布局管理对象获取文本信息，通过[LayoutManager](ts-text-common.md#layoutmanager12)中的[getCharacterPositionAtCoordinate](ts-text-common.md#getcharacterpositionatcoordinate24)获取坐标字符的位置信息，通过[getGlyphRangeForCharacterRange](ts-text-common.md#getglyphrangeforcharacterrange24)根据字符索引范围获取字形索引范围和实际的字符索引范围，通过[getCharacterRangeForGlyphRange](ts-text-common.md#getcharacterrangeforglyphrange24)根据字形索引范围获取字符索引范围和实际的字形索引范围。
+从API version 24开始，支持getCharacterPositionAtCoordinate，getGlyphRangeForCharacterRange，getCharacterRangeForGlyphRange接口。该示例通过getLayoutManager接口调用文本的布局管理对象获取文本信息，通过LayoutManager中的getCharacterPositionAtCoordinate获取坐标字符的位置信息，通过getGlyphRangeForCharacterRange根据字符索引范围获取字形索引范围和实际的字符索引范围，通过getCharacterRangeForGlyphRange根据字形索引范围获取字符索引范围和实际的字形索引范围。
 
 ```TypeScript
 // xxx.ets
@@ -1518,7 +1518,7 @@ struct TextExample {
 }
 ```
 
-从API版本26.0.0开始，新增[fontVariations](#fontvariations)接口。
+从API版本26.0.0开始，新增fontVariations接口。
 
 ```TypeScript
 // xxx.ets

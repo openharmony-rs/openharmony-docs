@@ -1,13 +1,13 @@
 # C API<!--c-input-kit-->
 
-- 头文件
+- 头文件<!--inputkit-headerfile-->
     - [oh_pointer_style.h](capi-oh-pointer-style-h.md)
     - [oh_key_code.h](capi-oh-key-code-h.md)
     - [oh_input_manager.h](capi-oh-input-manager-h.md)
     - [oh_axis_type.h](capi-oh-axis-type-h.md)
-- 模块
+- 模块<!--inputkit-module-->
     - [input](capi-input.md)
-- 结构体
+- 结构体<!--inputkit-struct-->
     - [Input_InterceptorEventCallback](capi-input-input-interceptoreventcallback.md)
     - [Input_DeviceListener](capi-input-input-devicelistener.md)
     - [Input_KeyState](capi-input-input-keystate.md)

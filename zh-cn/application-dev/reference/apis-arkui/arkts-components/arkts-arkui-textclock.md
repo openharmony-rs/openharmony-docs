@@ -40,7 +40,7 @@ TextClock(options?: TextClockOptions)
 
 ## 示例
 
-示例中的组件通过设置[onDateChange](#ondatechange)回调函数，在文本时钟更新时，持续修改accumulateTime的内容。
+示例中的组件通过设置onDateChange回调函数，在文本时钟更新时，持续修改accumulateTime的内容。
 
 ```TypeScript
 @Entry
@@ -80,7 +80,7 @@ struct Second {
 }
 ```
 
-该示例通过[textShadow](#textshadow11)属性设置时钟文本的阴影样式。
+该示例通过textShadow属性设置时钟文本的阴影样式。
 
 ```TypeScript
 @Entry
@@ -204,7 +204,7 @@ struct TextClockExample {
 }
 ```
 
-该示例演示了[dateTimeOptions](#datetimeoptions12)属性为小时字段增加或去除前导0的功能。24小时制的小时字段默认带有前导0，可通过[dateTimeOptions](#datetimeoptions12)属性去除前导0，12小时制的小时字段默认不带有前导0，可通过[dateTimeOptions](#datetimeoptions12)属性增加前导0。
+该示例演示了dateTimeOptions属性为小时字段增加或去除前导0的功能。24小时制的小时字段默认带有前导0，可通过dateTimeOptions属性去除前导0，12小时制的小时字段默认不带有前导0，可通过dateTimeOptions属性增加前导0。
 
 ```TypeScript
 @Entry
@@ -235,7 +235,7 @@ struct TextClockExample {
 }
 ```
 
-该示例演示了使用[fontFeature](#fontfeature11)、[fontColor](#fontcolor)、[fontStyle](#fontstyle)、[fontWeight](#fontweight)、[fontFamily](#fontfamily)属性设置时钟文字显示样式的功能。
+该示例演示了使用fontFeature、fontColor、fontStyle、fontWeight、fontFamily属性设置时钟文字显示样式的功能。
 
 ```TypeScript
 @Entry

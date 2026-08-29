@@ -24,7 +24,7 @@ function onChangeWithAttribute(displayAttributeOption: Array<string>, callback: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| displayAttributeOption | Array & lt;string & gt; | 是 | 指定需要监听的屏幕属性名称，且仅限于 [display属性](../../../reference/apis-arkui/js-apis-display.md#属性)中包含的属性。 |
+| displayAttributeOption | Array & lt;string & gt; | 是 | 指定需要监听的屏幕属性名称，且仅限于 display属性中包含的属性。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | 回调函数。返回监听到的屏幕ID，该参数为整数。 |
 
 **错误码：**

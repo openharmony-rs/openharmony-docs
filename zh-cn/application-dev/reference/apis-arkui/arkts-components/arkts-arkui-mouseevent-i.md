@@ -164,7 +164,7 @@ eventHandleId?: number
 globalDisplayX?: number
 ```
 
-鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。单位：vp取值范围：[0, +∞)
+鼠标位置在全局坐标系中的X坐标。单位：vp取值范围：[0, +∞)
 
 **类型：** number
 
@@ -182,7 +182,7 @@ globalDisplayX?: number
 globalDisplayY?: number
 ```
 
-鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。单位：vp取值范围：[0, +∞)
+鼠标位置在全局坐标系中的Y坐标。单位：vp取值范围：[0, +∞)
 
 **类型：** number
 

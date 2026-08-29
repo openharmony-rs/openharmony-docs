@@ -1,6 +1,6 @@
 # C API<!--c-media-kit-->
 
-- 头文件
+- 头文件<!--mediakit-headerfile-->
     - [video_processing.h](capi-video-processing-h.md)
     - [video_processing_types.h](capi-video-processing-types-h.md)
     - [avmedia_source.h](capi-avmedia-source-h.md)
@@ -24,7 +24,7 @@
     - [native_avscreen_capture_errors.h](capi-native-avscreen-capture-errors-h.md)
     - [avmetadata_extractor.h](capi-avmetadata-extractor-h.md)
     - [avtranscoder.h](capi-avtranscoder-h.md)
-- 模块
+- 模块<!--mediakit-module-->
     - [VideoProcessing](capi-videoprocessing.md)
     - [AVMediaSource](capi-avmediasource.md)
     - [AVScreenCapture](capi-avscreencapture.md)
@@ -37,7 +37,7 @@
     - [AVTranscoder](capi-avtranscoder.md)
     - [AVMediaBase](capi-avmediabase.md)
     - [AVSinkBase](capi-avsinkbase.md)
-- 结构体
+- 结构体<!--mediakit-struct-->
     - [VideoProcessing_ColorSpaceInfo](capi-videoprocessing-videoprocessing-colorspaceinfo.md)
     - [OH_VideoProcessing](capi-videoprocessing-oh-videoprocessing.md)
     - [NativeWindow](capi-videoprocessing-nativewindow.md)

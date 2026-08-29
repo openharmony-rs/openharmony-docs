@@ -110,7 +110,7 @@ onSelectAll?: (event?: EditorEventInfo) => void
 backgroundSystemMaterial?: uiMaterial.Material
 ```
 
-菜单背景板使用的系统材质，用于实现菜单背景的视觉效果（如模糊、透明度等）。不同系统材质包含不同的属性，影响最终的显示效果。具体材质类型及属性请参考 [uiMaterial.Material](../../../reference/apis-arkui/arkts-apis-uimaterial.md#material)。默认值：undefined，无材质效果。
+菜单背景板使用的系统材质，用于实现菜单背景的视觉效果（如模糊、透明度等）。不同系统材质包含不同的属性，影响最终的显示效果。具体材质类型及属性请参考 uiMaterial.Material。默认值：undefined，无材质效果。
 
 **类型：** uiMaterial.Material
 

@@ -57,7 +57,7 @@ static create(options: AnimatorOptions): AnimatorResult
 
 **示例**
 
-推荐通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的createAnimator接口明确UI上下文。
+推荐通过使用UIContext中的createAnimator接口明确UI上下文。
 
 ```TypeScript
 import { Animator as animator, AnimatorOptions } from '@kit.ArkUI';
@@ -111,7 +111,7 @@ static create(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult
 
 **示例**
 
-推荐通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的createAnimator接口明确UI上下文。
+推荐通过使用UIContext中的createAnimator接口明确UI上下文。
 
 ```TypeScript
 import { Animator as animator, SimpleAnimatorOptions } from '@kit.ArkUI';

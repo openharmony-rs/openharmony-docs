@@ -32,7 +32,7 @@ import { batteryInfo } from '@kit.BasicServicesKit';
 | [BatteryChargeState](arkts-basicservices-batteryinfo-batterychargestate-e.md) | 表示电池充电状态的枚举。 |
 | [BatteryHealthState](arkts-basicservices-batteryinfo-batteryhealthstate-e.md) | 表示电池健康状态的枚举。 |
 | [BatteryPluggedType](arkts-basicservices-batteryinfo-batterypluggedtype-e.md) | 表示连接的充电器类型的枚举。 |
-| [CommonEventBatteryChangedKey](arkts-basicservices-batteryinfo-commoneventbatterychangedkey-e.md) | 表示COMMON_EVENT_BATTERY_CHANGED通用事件附加信息的查询键。 开发者需先订阅[COMMON_EVENT_BATTERY_CHANGED公共事件](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_battery_changed)， 在事件回调中通过这些查询键从事件附加数据中提取对应的电池状态信息。 详细使用方法请参见[@ohos.commonEventManager (公共事件模块)](../../../reference/api-basic-services/js-apis-commonEventManager.md)。 |
+| [CommonEventBatteryChangedKey](arkts-basicservices-batteryinfo-commoneventbatterychangedkey-e.md) | 表示COMMON_EVENT_BATTERY_CHANGED通用事件附加信息的查询键。 开发者需先订阅COMMON_EVENT_BATTERY_CHANGED公共事件， 在事件回调中通过这些查询键从事件附加数据中提取对应的电池状态信息。 详细使用方法请参见@ohos.commonEventManager (公共事件模块)。 |
 
 ### 常量
 

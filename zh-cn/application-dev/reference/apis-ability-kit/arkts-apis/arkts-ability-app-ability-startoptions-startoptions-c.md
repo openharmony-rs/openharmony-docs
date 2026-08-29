@@ -78,7 +78,7 @@ maxWindowHeight?: number
 ```
 
 窗口最大的高度，单位为vp，可以通过getWindowLimitsVP获得当前窗口的尺寸限制。  
-**约束：**该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+**约束：**该功能仅在自由窗口状态下生效。
 
 **类型：** number
 
@@ -95,7 +95,7 @@ maxWindowWidth?: number
 ```
 
 窗口最大的宽度，单位为vp，可以通过getWindowLimitsVP获得当前窗口的尺寸限制。  
-**约束：**该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+**约束：**该功能仅在自由窗口状态下生效。
 
 **类型：** number
 
@@ -112,7 +112,7 @@ minWindowHeight?: number
 ```
 
 窗口最小的高度，单位为vp，可以通过getWindowLimitsVP获得当前窗口的尺寸限制。  
-**约束：**该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+**约束：**该功能仅在自由窗口状态下生效。
 
 **类型：** number
 
@@ -129,7 +129,7 @@ minWindowWidth?: number
 ```
 
 窗口最小的宽度，单位为vp，可以通过getWindowLimitsVP获得当前窗口的尺寸限制。  
-**约束：**该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+**约束：**该功能仅在自由窗口状态下生效。
 
 **类型：** number
 
@@ -246,7 +246,7 @@ supportWindowModes?: Array<bundleManager.SupportWindowMode>
 - FULL_SCREEN：支持全屏模式。  
 - FLOATING：支持悬浮窗模式。  
 - SPLIT：支持分屏模式。通常需要配合FULL_SCREEN或FLOATING一起使用，不建议只配置SPLIT。当仅配置SPLIT时，2in1设备上的窗口默认为悬浮窗模式，支持进入分屏模式；Tablet设备上的窗口默认为全屏模  
-式，支持进入分屏模式。在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下同时配置FULL_SCREEN和SPLIT时，如果应用的 [targetAPIVersion](../../../quick-start/app-configuration-file.md#配置文件标签)小于15，窗口将以悬浮窗模式启动；如果应用的 [targetAPIVersion](../../../quick-start/app-configuration-file.md#配置文件标签)大于等于15，窗口将以全屏模式启动。  
+式，支持进入分屏模式。在自由窗口状态下同时配置FULL_SCREEN和SPLIT时，如果应用的 [targetAPIVersion](../../../quick-start/app-configuration-file.md#配置文件标签)小于15，窗口将以悬浮窗模式启动；如果应用的 [targetAPIVersion](../../../quick-start/app-configuration-file.md#配置文件标签)大于等于15，窗口将以全屏模式启动。  
 **约束：**<!--RP1-->该功能仅在2in1和Tablet设备上生效。<!--RP1End-->
 
 **类型：** Array&lt;bundleManager.SupportWindowMode&gt;
@@ -280,7 +280,7 @@ windowHeight?: number
 ```
 
 窗口的高度，单位为px。取值范围为[minWindowHeight, maxWindowHeight]，取值范围单位为vp，可参考[vp2px](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#vp2px)换算为对应的px值 。  
-**约束：**该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+**约束：**该功能仅在自由窗口状态下生效。
 
 **类型：** number
 
@@ -297,7 +297,7 @@ windowLeft?: number
 ```
 
 以指定displayId的屏幕的左顶点为原点，窗口在x轴方向偏移量，单位为px，值为正表示在原点右侧，值为负表示在原点左侧。该参数为整数，非整数将向下取整。当窗口左顶点超出指定displayId的屏幕区域时，限制窗口在指定 displayId的屏幕范围内可见。配置该字段时，建议同时配置windowTop。  
-**约束：**该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+**约束：**该功能仅在自由窗口状态下生效。
 
 **类型：** number
 
@@ -330,7 +330,7 @@ windowTop?: number
 ```
 
 以指定displayId的屏幕的左顶点为原点，窗口在y轴方向偏移量，单位为px，值为正表示在原点下方，值为负表示在原点上方。该参数为整数，非整数将向下取整。当窗口顶部超出指定displayId的屏幕区域时，限制窗口在指定 displayId的屏幕范围内可见。配置该字段时，建议同时配置windowLeft。  
-**约束：**该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+**约束：**该功能仅在自由窗口状态下生效。
 
 **类型：** number
 
@@ -347,7 +347,7 @@ windowWidth?: number
 ```
 
 窗口的宽度，单位为px。取值范围为[minWindowWidth, maxWindowWidth]，取值范围单位为vp，可参考[vp2px](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#vp2px)换算为对应的px值。  
-**约束：**该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+**约束：**该功能仅在自由窗口状态下生效。
 
 **类型：** number
 
@@ -363,7 +363,7 @@ windowWidth?: number
 withAnimation?: boolean
 ```
 
-启动UIAbility时是否具有动画效果。传入true时，跟随系统默认动画效果。传入false时，表示关闭启动UIAbility动画效果，仅在[自由窗口状态](../../../windowmanager/window-terminology.md#自由窗口)的情况下 生效。此参数不填时，默认为undefined，跟随系统默认动画效果。从<!--RP2-->OpenHarmony 6.1<!--RP2End-->开始支持。
+启动UIAbility时是否具有动画效果。传入true时，跟随系统默认动画效果。传入false时，表示关闭启动UIAbility动画效果，仅在自由窗口状态的情况下 生效。此参数不填时，默认为undefined，跟随系统默认动画效果。从<!--RP2-->OpenHarmony 6.1<!--RP2End-->开始支持。
 
 **类型：** boolean
 

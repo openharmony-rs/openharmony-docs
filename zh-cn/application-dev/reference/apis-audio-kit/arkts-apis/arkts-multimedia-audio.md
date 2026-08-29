@@ -58,7 +58,7 @@ import { audio } from '@kit.AudioKit';
 | [AudioLoopback](arkts-audio-audio-audioloopback-i.md) | 提供音频返听的相关接口。 在使用AudioLoopback的接口之前，需先通过 [audio.createAudioLoopback](arkts-audio-audio-createaudioloopback-f.md)获取 AudioLoopback实例。 当启用音频返听时，系统会创建低时延渲染器与低时延采集器，实现低时延耳返功能。采集的音频直接通过内部路由返回到渲染器。对于渲染器，其音频焦点策略与 [STREAM_USAGE_MUSIC](arkts-audio-audio-streamusage-e.md)相匹配。对于采集器，其音频焦点策略与 [SOURCE_TYPE_MIC](arkts-audio-audio-sourcetype-e.md)相匹配。 输入/输出设备由系统自动选择。如果当前输入/输出不支持低时延，则音频返听无法启用。在运行过程中，如果音频焦点被另一个音频流抢占，输入/输出设备切换到不支持低时延的设备，系统会自动禁用音频返听。 |
 | [AudioManager](arkts-audio-audio-audiomanager-i.md) | 管理音频音量和音频设备。在调用AudioManager的接口前，需要先通过[getAudioManager](arkts-audio-audio-getaudiomanager-f.md)创建实例。 |
 | [AudioPlaybackCaptureConfig](arkts-audio-audio-audioplaybackcaptureconfig-i.md) | 音频内录的配置信息。 |
-| [AudioRecordingManager](arkts-audio-audio-audiorecordingmanager-i.md) | 录音策略管理，提供协同录音和录音控制能力。 在使用AudioRecordingManager的接口之前，需先通过 [getRecordingManager](arkts-audio-audio-audiomanager-i-sys.md#getrecordingmanager)获取AudioRecordingManager实例 。 |
+| [AudioRecordingManager](arkts-audio-audio-audiorecordingmanager-i.md) | 录音策略管理，提供协同录音和录音控制能力。 在使用AudioRecordingManager的接口之前，需先通过 getRecordingManager获取AudioRecordingManager实例 。 |
 | [AudioRenderer](arkts-audio-audio-audiorenderer-i.md) | 音频渲染。在使用AudioRenderer的接口之前，需先通过 [audio.createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md) 获取AudioRenderer实例。 |
 | [AudioRendererChangeInfo](arkts-audio-audio-audiorendererchangeinfo-i.md) | 描述音频渲染器更改信息。 |
 | [AudioRendererInfo](arkts-audio-audio-audiorendererinfo-i.md) | 音频渲染器信息。 |
@@ -109,7 +109,7 @@ import { audio } from '@kit.AudioKit';
 | [AudioHRTFAnonymousDescriptor](arkts-audio-audio-audiohrtfanonymousdescriptor-i-sys.md) | 用于跨进程传输的匿名个性化HRTF文件描述符。 |
 | [AudioManager](arkts-audio-audio-audiomanager-i-sys.md) | 管理音频音量和音频设备。在调用AudioManager的接口前，需要先通过[getAudioManager](arkts-audio-audio-getaudiomanager-f.md)创建实例。 |
 | [AudioPersonalizedSpatialEnabledChangeForAnyDevice](arkts-audio-audio-audiopersonalizedspatialenabledchangeforanydevice-i-sys.md) | 此接口用于通知监听器任何设备个性化空间化启用状态的变化。 |
-| [AudioRecordingManager](arkts-audio-audio-audiorecordingmanager-i-sys.md) | 录音策略管理，提供协同录音和录音控制能力。 在使用AudioRecordingManager的接口之前，需先通过 [getRecordingManager](arkts-audio-audio-audiomanager-i-sys.md#getrecordingmanager)获取AudioRecordingManager实例 。 |
+| [AudioRecordingManager](arkts-audio-audio-audiorecordingmanager-i-sys.md) | 录音策略管理，提供协同录音和录音控制能力。 在使用AudioRecordingManager的接口之前，需先通过 getRecordingManager获取AudioRecordingManager实例 。 |
 | [AudioRenderer](arkts-audio-audio-audiorenderer-i-sys.md) | 音频渲染。在使用AudioRenderer的接口之前，需先通过 [audio.createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md) 获取AudioRenderer实例。 |
 | [AudioRendererChangeInfo](arkts-audio-audio-audiorendererchangeinfo-i-sys.md) | 描述音频渲染器更改信息。 |
 | [AudioRendererFilter](arkts-audio-audio-audiorendererfilter-i-sys.md) | 音频渲染器过滤条件。 |
@@ -242,8 +242,8 @@ import { audio } from '@kit.AudioKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [DEFAULT_INTERRUPT_GROUP_ID](arkts-audio-audio-con.md#default_interrupt_group_id) | 默认焦点组ID。 |
-| [DEFAULT_VOLUME_GROUP_ID](arkts-audio-audio-con.md#default_volume_group_id) | 默认音量组ID。 |
+| DEFAULT_INTERRUPT_GROUP_ID | 默认焦点组ID。 |
+| DEFAULT_VOLUME_GROUP_ID | 默认音量组ID。 |
 
 <!--Del-->
 ### 常量（系统接口）

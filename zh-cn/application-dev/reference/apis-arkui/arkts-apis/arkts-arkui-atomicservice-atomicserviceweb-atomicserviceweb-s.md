@@ -56,7 +56,7 @@ darkMode?: WebDarkMode
 
 设置Web深色模式，默认关闭。
 
-**类型：** [WebDarkMode](../../apis-arkweb/arkts-components/arkts-arkweb-webdarkmode-e.md)
+**类型：** WebDarkMode
 
 **起始版本：** 12
 
@@ -88,7 +88,7 @@ mixedMode?: MixedMode
 
 设置是否允许加载超文本传输协议（HTTP）和超文本传输安全协议（HTTPS）混合内容，默认不允许加载HTTP和HTTPS混合内容。
 
-**类型：** [MixedMode](../../apis-arkweb/arkts-components/arkts-arkweb-mixedmode-e.md)
+**类型：** MixedMode
 
 **起始版本：** 12
 
@@ -120,7 +120,7 @@ nestedScroll?: NestedScrollOptions | NestedScrollOptionsExt
 
 设置嵌套滚动选项。nestedScroll为NestedScrollOptions（向前、向后两个方向）类型时， scrollForward、scrollBackward默认滚动选项为NestedScrollMode.SELF_FIRST。 nestedScroll为NestedScrollOptionsExt（上下左右四个方向）类型时， scrollUp、scrollDown、scrollLeft、scrollRight默认滚动选项为NestedScrollMode.SELF_FIRST。
 
-**类型：** [NestedScrollOptions](../arkts-components/arkts-arkui-nestedscrolloptions-i.md) \| [NestedScrollOptionsExt](../../apis-arkweb/arkts-components/arkts-arkweb-nestedscrolloptionsext-i.md)
+**类型：** [NestedScrollOptions](../arkts-components/arkts-arkui-nestedscrolloptions-i.md) \| NestedScrollOptionsExt
 
 **起始版本：** 15
 

@@ -4,7 +4,7 @@
 export declare type MonitorCallback = (monitorValue: IMonitor) => void
 ```
 
-参数为[IMonitor](../arkts-components/arkts-arkui-imonitor-i.md)类型的监听回调函数。
+参数为IMonitor类型的监听回调函数。
 
 **起始版本：** 20
 
@@ -18,4 +18,4 @@ export declare type MonitorCallback = (monitorValue: IMonitor) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| monitorValue | [IMonitor](../arkts-components/arkts-arkui-imonitor-i.md) | 是 | 回调函数传入的变化信息，包含状态变量变化的路径（dirty）、变化前后的值（通过value方法获取）等详细信息。具体属性和方法详见IMonitor。 |
+| monitorValue | IMonitor | 是 | 回调函数传入的变化信息，包含状态变量变化的路径（dirty）、变化前后的值（通过value方法获取）等详细信息。具体属性和方法详见IMonitor。 |

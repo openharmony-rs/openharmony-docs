@@ -19,7 +19,7 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 | 名称 | 说明 |
 | --- | --- |
 | [clearUkeyPinAuthState(External Key Management)](arkts-universalkeystore-huksexternalcrypto-clearukeypinauthstate-f.md) | 清除指定资源ID的PIN码认证状态。使用Promise异步回调。 |
-| [closeResource(External Key Management)](arkts-universalkeystore-huksexternalcrypto-closeresource-f.md) | 关闭指定资源ID的资源。使用Promise异步回调。该接口会回调 [onClearUkeyPinAuthState](../../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#cryptoextensionabilityonclearukeypinauthstate) 清理该资源关联的PIN认证状态，以及会回调 [onFinishSession](../../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#cryptoextensionabilityonfinishsession) 清理该资源关联的会话handle。 |
+| [closeResource(External Key Management)](arkts-universalkeystore-huksexternalcrypto-closeresource-f.md) | 关闭指定资源ID的资源。使用Promise异步回调。该接口会回调 onClearUkeyPinAuthState 清理该资源关联的PIN认证状态，以及会回调 onFinishSession 清理该资源关联的会话handle。 |
 | [getErrorInfo(External Key Management)](arkts-universalkeystore-huksexternalcrypto-geterrorinfo-f.md) | 查询上次接口调用产生的详细错误信息。 |
 | [getProperty(External Key Management)](arkts-universalkeystore-huksexternalcrypto-getproperty-f.md) | 调用此接口获取属性值并返回结果。使用Promise异步回调。propertyId表示查询属性的ID信息，当前仅支持GMT 0016-2023中定义的SKF接口名作为属性ID，支持的ID包括如下：  - SKF_EnumDev  - SKF_GetDevInfo  - SKF_EnumApplication  - SKF_EnumContainer |
 | [getResourceId(External Key Management)](arkts-universalkeystore-huksexternalcrypto-getresourceid-f.md) | 获取密钥扩展能力的资源ID。使用Promise异步回调。 |

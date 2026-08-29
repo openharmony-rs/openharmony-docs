@@ -45,7 +45,7 @@ SymbolGlyph(value?: Resource)
 
 ## 示例
 
-从API version 11开始，该示例通过[renderingStrategy](#renderingstrategy)、[effectStrategy](#effectstrategy)属性展示了不同的渲染和动效策略。
+从API version 11开始，该示例通过renderingStrategy、effectStrategy属性展示了不同的渲染和动效策略。
 
 ```TypeScript
 // xxx.ets
@@ -130,7 +130,7 @@ struct Index {
 }
 ```
 
-从API version 12开始，该示例通过[symbolEffect](#symboleffect12)属性展示了各种动效的效果以及结合[symbolShadow](arkts-arkui-symbolglyph-attribute.md#symbolshadow)（从API version 20开始）的阴影效果。其中禁用动效和快速替换动效需要API version 20及以上版本支持。
+从API version 12开始，该示例通过symbolEffect属性展示了各种动效的效果以及结合[symbolShadow](arkts-arkui-symbolglyph-attribute.md#symbolshadow)（从API version 20开始）的阴影效果。其中禁用动效和快速替换动效需要API version 20及以上版本支持。
 
 ```TypeScript
 // xxx.ets
@@ -230,7 +230,7 @@ struct Index {
 }
 ```
 
-从API version 20开始，该示例通过[shaderStyle](#shaderstyle20)接口实现了SymbolGlyph组件显示为渐变色的功能。
+从API version 20开始，该示例通过shaderStyle接口实现了SymbolGlyph组件显示为渐变色的功能。
 
 ```TypeScript
 @Entry
@@ -366,7 +366,7 @@ struct Index {
 }
 ```
 
-从API版本26.0.0开始，新增支持[fontColor](#fontcolor-1)。
+从API版本26.0.0开始，新增支持fontColor。
 
 ```TypeScript
 // xxx.ets
@@ -411,7 +411,7 @@ struct Index {
 }
 ```
 
-从API版本26.0.0开始，新增[fontWeight](#fontweight-1)属性。
+从API版本26.0.0开始，新增fontWeight属性。
 
 ```TypeScript
 // xxx.ets

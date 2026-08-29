@@ -39,7 +39,7 @@ Marquee(options: MarqueeOptions)
 
 ## 示例
 
-从API version 23开始，[MarqueeOptions](#marqueeoptions18对象说明)新增spacing、delay属性。
+从API version 23开始，MarqueeOptions新增spacing、delay属性。
 
 ```TypeScript
 import { LengthMetrics } from '@kit.ArkUI';
@@ -119,7 +119,7 @@ struct MarqueeExample {
 }
 ```
 
-从API版本26.0.0开始，新增[onStop](#onstop)接口。
+从API版本26.0.0开始，新增onStop接口。
 
 ```TypeScript
 // xxx.ets

@@ -2,7 +2,7 @@
 
 本模块提供组件效果的一些基础能力，包括模糊、提亮等。效果被分为Filter和VisualEffect大类，同类效果可以级联在一个效果大类的实例下。 使用该模块可以快速实现复杂的视觉效果，无需开发者掌握底层的图像处理算法，降低了开发复杂度，提升了用户体验。 在实际开发中，模糊可用于背景虚化，提亮可用于亮屏显示等。  
 - [Filter](arkts-arkgraphics2d-uieffect-filter-i.md)：用于添加指定Filter效果到组件上。  
-- [VisualEffect](arkts-arkgraphics2d-uieffect-visualeffect-i-sys.md)：用于添加指定VisualEffect效果到组件上。
+- VisualEffect：用于添加指定VisualEffect效果到组件上。
 
 **起始版本：** 12
 
@@ -54,7 +54,7 @@ import { uiEffect } from '@kit.ArkGraphics2D';
 | 名称 | 说明 |
 | --- | --- |
 | [Filter](arkts-arkgraphics2d-uieffect-filter-i-sys.md) | Filter效果类，用于将模糊、边缘像素扩展、水波纹等效果添加到组件上。在调用Filter的方法前， 需要先通过[createFilter](arkts-arkgraphics2d-uieffect-createfilter-f.md)创建一个Filter实例。 |
-| [VisualEffect](arkts-arkgraphics2d-uieffect-visualeffect-i-sys.md) | VisualEffect效果类，用于将背景颜色混合、边框光照、颜色渐变等效果添加到组件上。 在调用VisualEffect的方法前，需要先通过[createEffect](arkts-arkgraphics2d-uieffect-createeffect-f.md)创建一个VisualEffect实例。 |
+| VisualEffect | VisualEffect效果类，用于将背景颜色混合、边框光照、颜色渐变等效果添加到组件上。 在调用VisualEffect的方法前，需要先通过[createEffect](arkts-arkgraphics2d-uieffect-createeffect-f.md)创建一个VisualEffect实例。 |
 | [BrightnessParam](arkts-arkgraphics2d-uieffect-brightnessparam-i-sys.md) | 材质提亮参数的详细说明。 |
 | [HeatDistortionEffectParam](arkts-arkgraphics2d-uieffect-heatdistortioneffectparam-i-sys.md) | 热浪扭曲效果的参数。 |
 | [BlurBubblesRiseEffectParam](arkts-arkgraphics2d-uieffect-blurbubblesriseeffectparam-i-sys.md) | 模糊气泡上升效果的参数。 |

@@ -5,7 +5,7 @@ The **LiveFormExtensionAbility** module, inherited from
  including creating and destroying interactive widgets.
  > **NOTE**
  > Exceptions may occur if some APIs are called. For details about the API list, see
- > [Appendix](../../../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md#appendix).
+ > Appendix.
 
 
 ## 导入模块

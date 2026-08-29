@@ -34,7 +34,7 @@ readonly accessTokenId: number
 readonly appDistributionType: string
 ```
 
-应用程序签名证书的分发类型，详细信息请参考[ApplicationInfo](../../apis-ability-kit/arkts-apis/arkts-ability-applicationinfo-i.md)的appProvisionType字段。
+应用程序签名证书的分发类型，详细信息请参考ApplicationInfo的appProvisionType字段。
 
 **类型：** string
 

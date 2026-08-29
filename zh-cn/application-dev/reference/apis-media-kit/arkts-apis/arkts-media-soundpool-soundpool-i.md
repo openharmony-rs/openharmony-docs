@@ -120,7 +120,7 @@ load(fd: number, offset: number, length: number, callback: AsyncCallback<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fd | number | 是 | 资源句柄，通过 [resourceManager.getRawFd](../../../reference/apis-localization-kit/js-apis-resource-manager.md) 获取。 |
+| fd | number | 是 | 资源句柄，通过 resourceManager.getRawFd 获取。 |
 | offset | number | 是 | 资源偏移量，需要基于预置资源的信息输入，非法值会造成音视频资源解析错误。 |
 | length | number | 是 | 资源长度，需要基于预置资源的信息输入，非法值会造成音视频资源解析错误。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 获取回调的soundID，有效值大于0。 |
@@ -155,7 +155,7 @@ load(fd: number, offset: number, length: number): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fd | number | 是 | 资源句柄，通过 [resourceManager.getRawFd](../../../reference/apis-localization-kit/js-apis-resource-manager.md) 获取。 |
+| fd | number | 是 | 资源句柄，通过 resourceManager.getRawFd 获取。 |
 | offset | number | 是 | 资源偏移量，需要基于预置资源的信息输入，非法值会造成音视频资源解析错误。 |
 | length | number | 是 | 资源长度，需要基于预置资源的信息输入，非法值会造成音视频资源解析错误。 |
 
@@ -308,7 +308,7 @@ on(type: 'playFinished', callback: Callback<void>): void
 on(type: 'error', callback: ErrorCallback): void
 ```
 
-监听[SoundPool](../../../reference/apis-media-kit/js-apis-inner-multimedia-soundPool.md#soundpool)的错误事件，该事件仅用于错误提示。使 用callback异步回调。
+监听SoundPool的错误事件，该事件仅用于错误提示。使 用callback异步回调。
 
 **起始版本：** 10
 
@@ -346,7 +346,7 @@ on(type: 'playFinishedWithStreamId', callback: Callback<number>): void
 on(type: 'errorOccurred', callback: Callback<ErrorInfo>): void
 ```
 
-监听[SoundPool](../../../reference/apis-media-kit/js-apis-inner-multimedia-soundPool.md#soundpool)的错误事件，并返回包含错误码、错误发 生阶段、资源ID和音频流ID的[ErrorInfo](arkts-media-soundpool-errorinfo-i.md)。使用callback异步回调。
+监听SoundPool的错误事件，并返回包含错误码、错误发 生阶段、资源ID和音频流ID的[ErrorInfo](arkts-media-soundpool-errorinfo-i.md)。使用callback异步回调。
 
 **起始版本：** 20
 
@@ -501,7 +501,7 @@ release(): Promise<void>
 setInterruptMode(interruptMode: media.SoundInterruptMode): void
 ```
 
-设置同一ID音频在播放时的打断模式。创建soundPool之后，该接口仅在首次调用soundPool的Play函数之前设置有效，期间可多次设置，否则将默认使用 [SAME_SOUND_INTERRUPT](../../../reference/apis-media-kit/arkts-media-media-soundinterruptmode-e.md)，即对同一ID的音频，如果前者尚未播放完成，后者在播放前会先打断前 者的播放。
+设置同一ID音频在播放时的打断模式。创建soundPool之后，该接口仅在首次调用soundPool的Play函数之前设置有效，期间可多次设置，否则将默认使用 SAME_SOUND_INTERRUPT，即对同一ID的音频，如果前者尚未播放完成，后者在播放前会先打断前 者的播放。
 
 **起始版本：** 23
 

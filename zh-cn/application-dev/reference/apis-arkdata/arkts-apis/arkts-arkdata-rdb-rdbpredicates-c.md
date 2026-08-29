@@ -572,7 +572,7 @@ inDevices(devices: Array<string>): RdbPredicates
 > 
 > 其中devices通过调用<!--RP2--
 > 
-> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync)
+> deviceManager.getTrustedDeviceListSync
 > 方法得到。<!--RP2End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
 
 **起始版本：** 8

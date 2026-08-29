@@ -1174,7 +1174,7 @@ getUrl(): string
 
 **示例**
 
-完整示例代码参考[removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride)。
+完整示例代码参考removeProxyOverride。
 
 ```TypeScript
 // xxx.ets
@@ -1276,7 +1276,7 @@ pause(): void
 
 **示例**
 
-完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer)。
+完整示例代码参考onCreateNativeMediaPlayer。
 
 ```TypeScript
 // xxx.ets

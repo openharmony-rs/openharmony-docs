@@ -460,7 +460,7 @@ context: FormExtensionContext
 
 Context of the FormExtensionAbility. This context is inherited from [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md).This API can be used in atomic services since API version 11.
 
-**类型：** [FormExtensionContext](arkts-form-formextensioncontext-c-sys.md)
+**类型：** FormExtensionContext
 
 **起始版本：** 9
 

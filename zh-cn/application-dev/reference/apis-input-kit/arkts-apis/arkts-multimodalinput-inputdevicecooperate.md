@@ -6,7 +6,7 @@
 
 **废弃版本：** 23
 
-**替代接口：** [cooperate/cooperate](../../apis-distributed-service-kit/arkts-apis/arkts-cooperate.md)
+**替代接口：** cooperate/cooperate
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Cooperator
 

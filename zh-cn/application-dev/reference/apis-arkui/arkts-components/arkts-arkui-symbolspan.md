@@ -35,7 +35,7 @@ SymbolSpan(value: Resource)
 
 ## 示例
 
-从API version 11开始，该示例通过[renderingStrategy](#renderingstrategy)、[effectStrategy](#effectstrategy)属性展示了不同的渲染和动效策略。
+从API version 11开始，该示例通过renderingStrategy、effectStrategy属性展示了不同的渲染和动效策略。
 
 ```TypeScript
 // xxx.ets
@@ -138,7 +138,7 @@ struct Index {
 }
 ```
 
-从API version 12开始，该示例通过[attributeModifier](#attributemodifier12)属性创建指定样式图标。
+从API version 12开始，该示例通过attributeModifier属性创建指定样式图标。
 
 ```TypeScript
 import { SymbolSpanModifier } from '@kit.ArkUI';
@@ -168,7 +168,7 @@ struct Index {
 }
 ```
 
-从API版本26.0.0开始，新增[fontWeight](#fontweight-1)属性。
+从API版本26.0.0开始，新增fontWeight属性。
 
 ```TypeScript
 // xxx.ets

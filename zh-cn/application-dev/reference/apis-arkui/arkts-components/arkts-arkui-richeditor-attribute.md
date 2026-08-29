@@ -839,7 +839,7 @@ onSubmit(callback: SubmitCallback)
 onWillAttachIME(callback: Callback<IMEClient> | undefined)
 ```
 
-在组件绑定输入法前，触发回调。适用于需要定制输入法行为的场景，如设置输入法扩展配置以实现特定输入模式、自定义输入法功能等。调用[IMEClient](../arkts-apis/arkts-arkui-imeclient-i.md)的[setExtraConfig](../arkts-apis/arkts-arkui-imeclient-i.md#setextraconfig)方法设置输入法扩展信息。在绑定输入法成功后，输入法会收到扩展信息，输入法 可以依据此信息实现自定义功能。<!--Del-->从API版本26.0.0开始，在输入框将要绑定输入法前，可以通过`UIContext`的系统接口 [setKeyboardAppearanceConfig](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c-sys.md#setkeyboardappearanceconfig)设置键盘的样式。&lt;!--DelEnd- -&gt;
+在组件绑定输入法前，触发回调。适用于需要定制输入法行为的场景，如设置输入法扩展配置以实现特定输入模式、自定义输入法功能等。调用[IMEClient](../arkts-apis/arkts-arkui-imeclient-i.md)的[setExtraConfig](../arkts-apis/arkts-arkui-imeclient-i.md#setextraconfig)方法设置输入法扩展信息。在绑定输入法成功后，输入法会收到扩展信息，输入法 可以依据此信息实现自定义功能。<!--Del-->从API版本26.0.0开始，在输入框将要绑定输入法前，可以通过`UIContext`的系统接口 setKeyboardAppearanceConfig设置键盘的样式。&lt;!--DelEnd- -&gt;
 
 **起始版本：** 22
 

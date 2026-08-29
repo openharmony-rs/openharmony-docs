@@ -12,7 +12,7 @@ import { application } from '@kit.AbilityKit';
 export function createModuleContext(context: Context, moduleName: string): Promise<Context>
 ```
 
-创建指定模块的上下文。创建出的模块上下文中[resourceManager.Configuration](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-configuration-c.md)资源继承 自入参上下文，便于开发者获取[跨HAP/HSP包资源](../../../quick-start/resource-categories-and-access.md#跨haphsp包应用资源)。使用Promise异步回调。
+创建指定模块的上下文。创建出的模块上下文中[resourceManager.Configuration](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-configuration-c.md)资源继承 自入参上下文，便于开发者获取跨HAP/HSP包资源。使用Promise异步回调。
 
 > **说明：**
 > 

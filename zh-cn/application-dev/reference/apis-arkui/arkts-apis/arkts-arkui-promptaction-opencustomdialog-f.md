@@ -124,7 +124,7 @@ struct Index {
 }
 ```
 
-直接使用openCustomDialog可能导致实例不明确的问题，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getPromptAction](arkts-arkui-arkui-uicontext-uicontext-c.md#getpromptaction)获取[PromptAction](arkts-apis-uicontext-promptaction.md)对象，再通过此对象调用替代方法openCustomDialog。
+直接使用openCustomDialog可能导致实例不明确的问题，建议使用UIContext中的[getPromptAction](arkts-arkui-arkui-uicontext-uicontext-c.md#getpromptaction)获取PromptAction对象，再通过此对象调用替代方法openCustomDialog。
 
 ```TypeScript
 import { LevelMode, ImmersiveMode } from '@kit.ArkUI';
@@ -201,7 +201,7 @@ struct Index {
 }
 ```
 
-直接使用openCustomDialog可能导致实例不明确的问题，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getPromptAction](arkts-arkui-arkui-uicontext-uicontext-c.md#getpromptaction)获取[PromptAction](arkts-apis-uicontext-promptaction.md)对象，再通过此对象调用替代方法openCustomDialog。
+直接使用openCustomDialog可能导致实例不明确的问题，建议使用UIContext中的[getPromptAction](arkts-arkui-arkui-uicontext-uicontext-c.md#getpromptaction)获取PromptAction对象，再通过此对象调用替代方法openCustomDialog。
 
 ```TypeScript
 // Index.ets

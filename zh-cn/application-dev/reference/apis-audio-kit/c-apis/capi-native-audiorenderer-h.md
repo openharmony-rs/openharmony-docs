@@ -678,7 +678,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetChannelLayout(OH_AudioRenderer* render
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | 指向{@link OH_AudioStreamBuilder_GenerateRenderer}创建的音频流实例。 |
-| [OH_AudioChannelLayout](../AVCodecKit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)* channelLayout | 指向一个用来接收音频流声道布局的变量的指针。 |
+| OH_AudioChannelLayout* channelLayout | 指向一个用来接收音频流声道布局的变量的指针。 |
 
 **返回：**
 

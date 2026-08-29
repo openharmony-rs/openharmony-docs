@@ -784,7 +784,7 @@ systemMaterial?: SystemUiMaterial
 > **说明：**
 > 
 > - 默认值为ImmersiveOptions的style为ImmersiveStyle.ULTRA_THICK的ImmersiveMaterial对象，设置undefined时与默认值保持一致。
-> 不同的材质具有不同的效果。关于ImmersiveMaterial的详细说明，请参考[SystemUiMaterial](arkts-arkui-systemuimaterial-t-sys.md)类型定义。
+> 不同的材质具有不同的效果。关于ImmersiveMaterial的详细说明，请参考SystemUiMaterial类型定义。
 > - 该接口影响背景色backgroundColor、背景模糊
 > backgroundBlurStyle
 > 、背景模糊效果[backgroundBlurStyleOptions](arkts-arkui-backgroundblurstyleoptions-i.md)、背景效果
@@ -792,7 +792,7 @@ systemMaterial?: SystemUiMaterial
 > borderColor、边框宽度borderWidth、阴影
 > shadow，当设置系统材质时，上述接口不生效。
 
-**类型：** [SystemUiMaterial](arkts-arkui-systemuimaterial-t-sys.md)
+**类型：** SystemUiMaterial
 
 **起始版本：** 26.0.0
 

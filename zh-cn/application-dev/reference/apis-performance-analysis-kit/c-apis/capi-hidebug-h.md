@@ -738,7 +738,7 @@ Profiler辅助接口，将AsyncContext压入运行上下文栈表。
 
 | 参数项 | 描述 |
 | -- | -- |
-| uint64_t ctx | 由[OH_HiDebug_AcquireAsyncContext()](capi-hidebug-h.md#oh_hidebug_acquireasynccontext())获取的异步线程上下文。 |
+| uint64_t ctx | 由OH_HiDebug_AcquireAsyncContext())获取的异步线程上下文。 |
 
 ### OH_HiDebug_PopAsyncContext()
 
@@ -756,7 +756,7 @@ Profiler辅助接口，将AsyncContext从运行上下文栈表中弹出。
 
 | 参数项 | 描述 |
 | -- | -- |
-| uint64_t ctx | 由[OH_HiDebug_AcquireAsyncContext()](capi-hidebug-h.md#oh_hidebug_acquireasynccontext())获取的异步线程上下文。 |
+| uint64_t ctx | 由OH_HiDebug_AcquireAsyncContext())获取的异步线程上下文。 |
 
 ### OH_HiDebug_ReleaseAsyncContext()
 
@@ -774,7 +774,7 @@ Profiler辅助接口，将AsyncContext释放给系统。
 
 | 参数项 | 描述 |
 | -- | -- |
-| uint64_t ctx | 由[OH_HiDebug_AcquireAsyncContext()](capi-hidebug-h.md#oh_hidebug_acquireasynccontext())获取的异步线程上下文。 |
+| uint64_t ctx | 由OH_HiDebug_AcquireAsyncContext())获取的异步线程上下文。 |
 
 ### OH_HiDebug_CreateProfilerOptions()
 

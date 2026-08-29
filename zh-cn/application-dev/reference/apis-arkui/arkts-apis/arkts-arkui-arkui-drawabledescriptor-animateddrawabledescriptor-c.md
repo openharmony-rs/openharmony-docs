@@ -178,7 +178,7 @@ getAnimationController(id?: string): AnimationController | undefined
 
 **示例**
 
-[Image](../arkui-ts/ts-basic-components-image.md)组件与AnimatedDrawableDescriptor保持1比1持有关系，示例代码如下。
+Image组件与AnimatedDrawableDescriptor保持1比1持有关系，示例代码如下。
 
 ```TypeScript
 import { AnimationOptions, AnimatedDrawableDescriptor, AnimationController } from '@kit.ArkUI';
@@ -212,7 +212,7 @@ struct Example {
 }
 ```
 
-[Image](../arkui-ts/ts-basic-components-image.md)组件与AnimatedDrawableDescriptor保持1比N持有关系，示例代码如下。
+Image组件与AnimatedDrawableDescriptor保持1比N持有关系，示例代码如下。
 
 ```TypeScript
 import { AnimationOptions, AnimatedDrawableDescriptor, AnimationController } from '@kit.ArkUI';

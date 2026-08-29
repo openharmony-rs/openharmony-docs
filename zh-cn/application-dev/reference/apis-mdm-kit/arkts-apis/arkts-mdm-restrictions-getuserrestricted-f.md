@@ -30,7 +30,7 @@ function getUserRestricted(admin: Want, settingsItem: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin | Want | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | settingsItem | string | 是 | 指定设置项。   - setEthernetIp：修改以太网IP地址，当前仅支持PC/2in1设备使用。   - setDeviceName：修改设备名称， 当前仅支持PC/2in1设备、手机、平板使用。PC/2in1设备设置中关于本机、蓝牙、多设备协同- & gt;星闪中的设备名称。手机、平板设备设置中关于本机、蓝牙、个人热点的设备名称。   - setBiometricsAndScreenLock：修改锁屏密码，当前仅支持PC/2in1设备、手机、平板使用。 |
 
 **返回值：**
@@ -89,7 +89,7 @@ function getUserRestricted(admin: Want | null, settingsItem: SettingsForDevice):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) \| null | 是 | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the. EnterpriseAdminExtensionAbility and the bundle name of the application.If the device has multiple MDM applications, you can pass **admin** to query the corresponding policies. If **null** is passed, the policies that actually take effect on the device are returned. |
+| admin | Want \| null | 是 | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the. EnterpriseAdminExtensionAbility and the bundle name of the application.If the device has multiple MDM applications, you can pass **admin** to query the corresponding policies. If **null** is passed, the policies that actually take effect on the device are returned. |
 | settingsItem | [SettingsForDevice](arkts-mdm-restrictions-settingsfordevice-e.md) | 是 | 指定设置项。 |
 
 **返回值：**

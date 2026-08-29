@@ -52,7 +52,7 @@ TextPicker(options?: TextPickerOptions)
 
 ## 示例
 
-从API version 18开始，新增了[TextPickerOptions](#textpickeroptions对象说明)的columnWidths属性。
+从API version 18开始，新增了TextPickerOptions的columnWidths属性。
 
 ```TypeScript
 // xxx.ets
@@ -138,7 +138,7 @@ struct TextPickerExample {
 }
 ```
 
-该示例使用[disappearTextStyle](#disappeartextstyle10)、[textStyle](#textstyle10)、[selectedTextStyle](#selectedtextstyle10)设置文本选择器中的文本样式。
+该示例使用disappearTextStyle、textStyle、selectedTextStyle设置文本选择器中的文本样式。
 
 ```TypeScript
 // xxx.ets
@@ -172,7 +172,7 @@ struct TextPickerExample {
 }
 ```
 
-该示例通过配置[divider](#divider12)为null实现无分割线样式的文本选择器。
+该示例通过配置divider为null实现无分割线样式的文本选择器。
 
 ```TypeScript
 // xxx.ets
@@ -233,7 +233,7 @@ struct TextPickerExample {
 }
 ```
 
-该示例通过配置[gradientHeight](#gradientheight12)设置文本选择器的渐隐效果高度。
+该示例通过配置gradientHeight设置文本选择器的渐隐效果高度。
 
 ```TypeScript
 // xxx.ets
@@ -261,7 +261,7 @@ struct TextPickerExample {
 }
 ```
 
-该示例通过配置[defaultPickerItemHeight](#defaultpickeritemheight)设置选择项的高度。
+该示例通过配置defaultPickerItemHeight设置选择项的高度。
 
 ```TypeScript
 // xxx.ets
@@ -286,7 +286,7 @@ struct TextPickerExample {
 }
 ```
 
-该示例通过配置[canLoop](#canloop10)设置文本选择器是否循环滚动。
+该示例通过配置canLoop设置文本选择器是否循环滚动。
 
 ```TypeScript
 // xxx.ets
@@ -322,7 +322,7 @@ struct TextPickerExample {
 }
 ```
 
-该示例通过配置[selectedIndex](#selectedindex10)设置默认选中项的索引值。
+该示例通过配置selectedIndex设置默认选中项的索引值。
 
 ```TypeScript
 // xxx.ets
@@ -377,7 +377,7 @@ struct TextPickerExample {
 }
 ```
 
-该示例通过配置[selectedBackgroundStyle](#selectedbackgroundstyle20)实现文本选择器选中项的背景样式。
+该示例通过配置selectedBackgroundStyle实现文本选择器选中项的背景样式。
 
 ```TypeScript
 import { LengthUnit } from '@kit.ArkUI';

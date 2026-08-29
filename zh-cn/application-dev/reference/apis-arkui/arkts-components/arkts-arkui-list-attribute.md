@@ -1,6 +1,6 @@
 # List属性/事件
 
-除支持通用属性和[滚动组件通用属性](arkts-arkui-scrollablecommonmethod-c.md)外，还 支持以下属性：除支持通用事件和[滚动组件通用事件](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#事件)外，还 支持以下事件：
+除支持通用属性和[滚动组件通用属性](arkts-arkui-scrollablecommonmethod-c.md)外，还 支持以下属性：除支持通用事件和滚动组件通用事件外，还 支持以下事件：
 
 **继承/实现关系：** ListAttribute extends ScrollableCommonMethod<ListAttribute>
 
@@ -358,7 +358,7 @@ editMode(value: boolean)
 > **说明：**
 > 
 > 从API version 7开始支持，从API version 9开始废弃。此接口已完全移除，无替代接口。如需实现编辑状态切换和删除列表项，可通过自定义状态变量控制删除按钮的显示与隐藏，并在删除按钮的点击事件中更新数据源，具体
-> 实现方式请参考[示例3](../../../reference/apis-arkui/arkui-ts/ts-container-list.md#示例3自定义编辑和删除模式)。
+> 实现方式请参考示例3。
 
 **起始版本：** 7
 
@@ -657,7 +657,7 @@ onItemDelete(event: (index: number) => boolean)
 > **说明：**
 > 
 > 从API version 7开始支持，从API version 9开始废弃。此接口已完全移除，无替代接口。如需实现删除列表项，可在自定义删除按钮的点击事件中更新数据源，具体实现方式请参考
-> [示例3](../../../reference/apis-arkui/arkui-ts/ts-container-list.md#示例3自定义编辑和删除模式)。
+> 示例3。
 
 **起始版本：** 7
 
@@ -737,7 +737,7 @@ onItemDragMove(event: (event: ItemDragInfo, itemIndex: number, insertIndex: numb
 onItemDragStart(event: OnItemDragStartCallback)
 ```
 
-开始拖拽List的子组件ListItem时触发。不支持拖动到List边缘时触发List的自动滚动，可以使用ForEach、LazyForEach、Repeat的 [onMove](arkts-arkui-dynamicnode-c.md#onmove)接口实现该效果，参考 [示例12（使用onMove进行拖拽）](../../../reference/apis-arkui/arkui-ts/ts-container-list.md#示例12使用onmove进行拖拽)。但需注意 [onMove](arkts-arkui-dynamicnode-c.md#onmove)接口不支持跨ListItemGroup 拖拽。
+开始拖拽List的子组件ListItem时触发。不支持拖动到List边缘时触发List的自动滚动，可以使用ForEach、LazyForEach、Repeat的 [onMove](arkts-arkui-dynamicnode-c.md#onmove)接口实现该效果，参考 示例12（使用onMove进行拖拽）。但需注意 [onMove](arkts-arkui-dynamicnode-c.md#onmove)接口不支持跨ListItemGroup 拖拽。
 
 > **说明：**
 > 

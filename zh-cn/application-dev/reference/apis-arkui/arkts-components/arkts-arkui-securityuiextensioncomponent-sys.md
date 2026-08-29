@@ -31,7 +31,7 @@ SecurityUIExtensionComponent(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | want | import('../api/@ohos.app.ability.Want').default | 是 | 要加载的Ability信息。 通过bundleName和abilityName共同确定被拉起的UIExtensionAbility， 同时需要在parameters中配置ability.want.params.uiExtensionType字段指定UIExtensionAbility的类型， 当前仅支持'sysPicker/photoPicker'。 |
-| options | [SecurityUIExtensionOptions](arkts-arkui-securityuiextensionoptions-i-sys.md) | 否 | 用于构造**SecurityUIExtensionComponent**的参数。不填时各字段使用默认值。 |
+| options | SecurityUIExtensionOptions | 否 | 用于构造**SecurityUIExtensionComponent**的参数。不填时各字段使用默认值。 |
 
 ## 汇总
 
@@ -39,12 +39,12 @@ SecurityUIExtensionComponent(
 
 | 名称 | 说明 |
 | --- | --- |
-| [SecurityUIExtensionOptions](arkts-arkui-securityuiextensionoptions-i-sys.md) | 用于构造SecurityUIExtensionComponent时传递参数。 |
-| [SecurityUIExtensionProxy](arkts-arkui-securityuiextensionproxy-i-sys.md) | 用于在双方建立连接成功后，向被拉起的Ability发送数据，以及订阅和取消订阅事件回调。 |
-| [TerminationInfo](arkts-arkui-terminationinfo-i-sys.md) | 用于表示被拉起的UIExtensionAbility正常退出时的返回结果。 |
+| SecurityUIExtensionOptions | 用于构造SecurityUIExtensionComponent时传递参数。 |
+| SecurityUIExtensionProxy | 用于在双方建立连接成功后，向被拉起的Ability发送数据，以及订阅和取消订阅事件回调。 |
+| TerminationInfo | 用于表示被拉起的UIExtensionAbility正常退出时的返回结果。 |
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [SecurityDpiFollowStrategy](arkts-arkui-securitydpifollowstrategy-e-sys.md) | 定义SecurityUIExtensionComponent内容分辨率跟随策略的枚举。 |
+| SecurityDpiFollowStrategy | 定义SecurityUIExtensionComponent内容分辨率跟随策略的枚举。 |

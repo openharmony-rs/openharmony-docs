@@ -42,7 +42,7 @@ changeIndex(index: number, useAnimation?: boolean)
 changeIndex(index: number, animationMode?: SwiperAnimationMode | boolean)
 ```
 
-翻页至指定页面。翻页带动效切换过程，时长通过Swiper的[duration](#duration)属性设置。
+翻页至指定页面。翻页带动效切换过程，时长通过Swiper的duration属性设置。
 
 > **说明：**
 

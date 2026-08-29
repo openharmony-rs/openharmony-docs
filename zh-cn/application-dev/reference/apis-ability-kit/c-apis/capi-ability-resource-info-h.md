@@ -246,7 +246,7 @@ BundleManager_ErrorCode OH_NativeBundle_GetDrawableDescriptor(OH_NativeBundle_Ab
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)* abilityResourceInfo | 指定组件资源信息。 |
-| [ArkUI_DrawableDescriptor](../ArkUI/capi-arkui-nativemodule-arkui-drawabledescriptor.md)** drawableIcon | 组件图标资源对应的{@link DrawableDescriptor}对象。 |
+| ArkUI_DrawableDescriptor** drawableIcon | 组件图标资源对应的{@link DrawableDescriptor}对象。 |
 
 **返回：**
 

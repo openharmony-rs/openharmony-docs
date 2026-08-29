@@ -32,7 +32,7 @@ function getOtaUpdatePolicy(admin: Want): OtaUpdatePolicy
 
 | 类型 | 说明 |
 | --- | --- |
-| [OtaUpdatePolicy](arkts-mdm-systemmanager-otaupdatepolicy-i.md) | OtaUpdatePolicy对象，返回升级策略。 |
+| OtaUpdatePolicy | OtaUpdatePolicy对象，返回升级策略。 |
 
 **错误码：**
 

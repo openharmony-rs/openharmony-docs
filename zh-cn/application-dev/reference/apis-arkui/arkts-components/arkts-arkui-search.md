@@ -100,7 +100,7 @@ struct SearchExample {
 }
 ```
 
-该示例通过[searchButton](#searchbutton)（从API version 8开始）、[searchIcon](#searchicon10)（从API version 10开始）、[cancelButton](#cancelbutton10)（从API version 10开始）属性展示了设置搜索和删除图标的效果。
+该示例通过searchButton（从API version 8开始）、searchIcon（从API version 10开始）、cancelButton（从API version 10开始）属性展示了设置搜索和删除图标的效果。
 
 ```TypeScript
 // xxx.ets
@@ -143,7 +143,7 @@ struct SearchExample {
 }
 ```
 
-从API version 22开始[customKeyboard](#customkeyboard10)属性新增了入参类型ComponentContent。
+从API version 22开始customKeyboard属性新增了入参类型ComponentContent。
 
 ```TypeScript
 // xxx.ets
@@ -213,7 +213,7 @@ struct SearchExample {
 }
 ```
 
-该示例通过[enterKeyType](#enterkeytype12)（从API version 12开始）属性实现了动态切换输入法回车键的效果。
+该示例通过enterKeyType（从API version 12开始）属性实现了动态切换输入法回车键的效果。
 
 ```TypeScript
 // xxx.ets
@@ -243,7 +243,7 @@ struct SearchExample {
 }
 ```
 
-从API version 12开始，该示例通过[lineHeight](#lineheight12)、[letterSpacing](#letterspacing12)、[decoration](#decoration12)属性展示了不同样式的文本效果。
+从API version 12开始，该示例通过lineHeight、letterSpacing、decoration属性展示了不同样式的文本效果。
 
 ```TypeScript
 // xxx.ets
@@ -287,7 +287,7 @@ struct SearchExample {
 }
 ```
 
-该示例通过[fontFeature](#fontfeature12)（从API version 12开始）属性实现了文本在不同文字特性下的展示效果。
+该示例通过fontFeature（从API version 12开始）属性实现了文本在不同文字特性下的展示效果。
 
 ```TypeScript
 // xxx.ets
@@ -312,7 +312,7 @@ struct SearchExample {
 }
 ```
 
-该示例通过[customKeyboard](#customkeyboard10)（从API version 10开始）属性配置[KeyboardOptions](ts-basic-components-richeditor.md#keyboardoptions12)（从API version 12开始）接口实现了自定义键盘避让的效果。
+该示例通过customKeyboard（从API version 10开始）属性配置KeyboardOptions（从API version 12开始）接口实现了自定义键盘避让的效果。
 
 ```TypeScript
 // xxx.ets
@@ -382,7 +382,7 @@ struct SearchExample {
 }
 ```
 
-从API version 12开始，该示例通过[minFontSize](#minfontsize12)、[maxFontSize](#maxfontsize12)属性展示了文本自适应字号的效果。
+从API version 12开始，该示例通过minFontSize、maxFontSize属性展示了文本自适应字号的效果。
 
 ```TypeScript
 // xxx.ets
@@ -408,7 +408,7 @@ struct SearchExample {
 }
 ```
 
-从API version 12开始，该示例通过[onWillInsert](#onwillinsert12)、[onDidInsert](#ondidinsert12)、[onWillDelete](#onwilldelete12)、[onDidDelete](#ondiddelete12)接口实现了插入和删除的效果。从API version 15开始，通过[onWillChange](#onwillchange15)接口展示了文本内容将要发生变化时的具体信息。
+从API version 12开始，该示例通过onWillInsert、onDidInsert、onWillDelete、onDidDelete接口实现了插入和删除的效果。从API version 15开始，通过onWillChange接口展示了文本内容将要发生变化时的具体信息。
 
 ```TypeScript
 // xxx.ets
@@ -521,7 +521,7 @@ struct SearchExample {
 }
 ```
 
-从API version 12开始，该示例通过[editMenuOptions](#editmenuoptions12)接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能，同时，可以在[onPrepareMenu](ts-text-common.md#属性-1)（从API version 20开始）回调中，进行菜单数据的设置。
+从API version 12开始，该示例通过editMenuOptions接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能，同时，可以在onPrepareMenu（从API version 20开始）回调中，进行菜单数据的设置。
 
 ```TypeScript
 // xxx.ets
@@ -613,7 +613,7 @@ struct SearchExample {
 }
 ```
 
-从API version 10开始，该示例通过[searchIcon](#searchicon10)、[cancelButton](#cancelbutton10)属性展示了自定义右侧symbol类型清除按钮样式的效果。
+从API version 10开始，该示例通过searchIcon、cancelButton属性展示了自定义右侧symbol类型清除按钮样式的效果。
 
 ```TypeScript
 // xxx.ets
@@ -649,7 +649,7 @@ struct SearchExample {
 }
 ```
 
-从API版本26.0.0开始，新增[onWillCopy](#onwillcopy)、[onWillCut](#onwillcut)接口。
+从API版本26.0.0开始，新增onWillCopy、onWillCut接口。
 
 ```TypeScript
 // xxx.ets
@@ -712,7 +712,7 @@ struct SearchExample {
 }
 ```
 
-该示例通过[textAlign](#textalign9)（从API version 9开始）、[caretStyle](#caretstyle10)（从API version 10开始）、[selectedBackgroundColor](#selectedbackgroundcolor12)（从API version 12开始）属性展示如何设置文本的水平对齐、光标样式和选中背景色。
+该示例通过textAlign（从API version 9开始）、caretStyle（从API version 10开始）、selectedBackgroundColor（从API version 12开始）属性展示如何设置文本的水平对齐、光标样式和选中背景色。
 
 ```TypeScript
 // xxx.ets
@@ -738,7 +738,7 @@ struct SearchExample {
 }
 ```
 
-该示例通过[defaultFocus](ts-universal-attributes-focus.md#defaultfocus9)（从API version 9开始）、[enableKeyboardOnFocus](#enablekeyboardonfocus10)（从API version 10开始）属性展示如何设置默认获焦并拉起软键盘。
+该示例通过defaultFocus（从API version 9开始）、enableKeyboardOnFocus（从API version 10开始）属性展示如何设置默认获焦并拉起软键盘。
 
 ```TypeScript
 // xxx.ets
@@ -769,7 +769,7 @@ struct SearchExample {
 }
 ```
 
-该示例通过[selectionMenuHidden](#selectionmenuhidden10)（从API version 10开始）属性展示如何关闭系统文本选择菜单。
+该示例通过selectionMenuHidden（从API version 10开始）属性展示如何关闭系统文本选择菜单。
 
 ```TypeScript
 // xxx.ets
@@ -793,7 +793,7 @@ struct SearchExample {
 }
 ```
 
-从API version 12开始，该示例通过[inputFilter](#inputfilter12)属性展示如何对输入的文本进行内容的过滤，以限制输入内容。
+从API version 12开始，该示例通过inputFilter属性展示如何对输入的文本进行内容的过滤，以限制输入内容。
 
 ```TypeScript
 // xxx.ets
@@ -822,7 +822,7 @@ struct SearchExample {
 }
 ```
 
-该示例通过[setTextSelection](#settextselection12)（从API version 12开始）方法展示如何设置选中指定区域的文本内容以及菜单的显隐策略。
+该示例通过setTextSelection（从API version 12开始）方法展示如何设置选中指定区域的文本内容以及菜单的显隐策略。
 
 ```TypeScript
 // xxx.ets
@@ -859,7 +859,7 @@ struct SearchExample {
 }
 ```
 
-从API version 10开始，该示例通过[onContentScroll](#oncontentscroll10)事件展示如何设置文本滚动事件的回调。
+从API version 10开始，该示例通过onContentScroll事件展示如何设置文本滚动事件的回调。
 
 ```TypeScript
 // xxx.ets
@@ -888,7 +888,7 @@ struct SearchExample {
 }
 ```
 
-从API version 18开始，该示例通过[minFontScale](#minfontscale18)、[maxFontScale](#maxfontscale18)设置字体显示最小与最大范围。调整系统字体大小后，文本字体大小不会超过[minFontScale](#minfontscale18)、[maxFontScale](#maxfontscale18)设置的范围。如下示例展示了Search组件在不同的字体大小限制条件下，调整系统字体后的放大缩小效果。
+从API version 18开始，该示例通过minFontScale、maxFontScale设置字体显示最小与最大范围。调整系统字体大小后，文本字体大小不会超过minFontScale、maxFontScale设置的范围。如下示例展示了Search组件在不同的字体大小限制条件下，调整系统字体后的放大缩小效果。
 
 ```TypeScript
 // 开启应用缩放跟随系统
@@ -956,7 +956,7 @@ struct SearchExample {
 }
 ```
 
-从API版本26.0.0开始，新增[strokeJoinStyle](#strokejoinstyle)接口，支持设置文本描边拐角样式。
+从API版本26.0.0开始，新增strokeJoinStyle接口，支持设置文本描边拐角样式。
 
 ```TypeScript
 // xxx.ets
@@ -1001,7 +1001,7 @@ struct SearchExample {
 }
 ```
 
-从API version 20开始，该示例通过[enableAutoSpacing](#enableautospacing20)属性设置中西文自动间距。
+从API version 20开始，该示例通过enableAutoSpacing属性设置中西文自动间距。
 
 ```TypeScript
 // xxx.ets
@@ -1024,7 +1024,7 @@ struct SearchExample {
 }
 ```
 
-从API version 22开始，该示例通过[setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22)接口设置placeholder富文本样式。
+从API version 22开始，该示例通过setStyledPlaceholder接口设置placeholder富文本样式。
 
 ```TypeScript
 // xxx.ets
@@ -1089,7 +1089,7 @@ struct SearchExample {
 }
 ```
 
-从API version 22开始，该示例通过[IMEClient](ts-text-common.md#imeclient20对象说明)的setExtraConfig设置输入法扩展信息。
+从API version 22开始，该示例通过IMEClient的setExtraConfig设置输入法扩展信息。
 
 ```TypeScript
 // xxx.ets
@@ -1113,7 +1113,7 @@ struct SearchExample {
 }
 ```
 
-从API version 23开始，该示例通过[dividerColor](#dividercolor23)接口设置输入框分割线颜色。
+从API version 23开始，该示例通过dividerColor接口设置输入框分割线颜色。
 
 ```TypeScript
 // xxx.ets
@@ -1173,7 +1173,7 @@ struct Index {
 }
 ```
 
-从API version 23开始，新增[includeFontPadding](#includefontpadding23)和[fallbackLineSpacing](#fallbacklinespacing23)接口。
+从API version 23开始，新增includeFontPadding和fallbackLineSpacing接口。
 
 ```TypeScript
 // xxx.ets
@@ -1255,7 +1255,7 @@ struct SearchTest {
 }
 ```
 
-从API version 23开始，新增[deleteBackward](ts-universal-attributes-text-style.md#deletebackward23)接口。
+从API version 23开始，新增deleteBackward接口。
 
 ```TypeScript
 @Entry

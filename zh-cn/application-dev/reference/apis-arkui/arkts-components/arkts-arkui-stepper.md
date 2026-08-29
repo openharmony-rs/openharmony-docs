@@ -136,7 +136,7 @@ struct StepperExample {
 }
 ```
 
-该示例主要演示如何使用[Swiper](ts-container-swiper.md)组件实现Stepper组件的功能，示例效果图同示例1。
+该示例主要演示如何使用Swiper组件实现Stepper组件的功能，示例效果图同示例1。
 
 ```TypeScript
 @Styles

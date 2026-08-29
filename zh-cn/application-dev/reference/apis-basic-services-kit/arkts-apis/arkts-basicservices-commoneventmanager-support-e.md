@@ -634,7 +634,7 @@ COMMON_EVENT_USER_FOREGROUND = 'usual.event.USER_FOREGROUND'
 COMMON_EVENT_USER_SWITCHED = 'usual.event.USER_SWITCHED'
 ```
 
-表示用户切换完成的公共事件的动作。切换系统账号将会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。与这个公共事件相关的接口：activateOsAccount, 为系统API，具体参看[@ohos.account.osAccount](../../../reference/js-apis-osAccount.md)。要订阅此事件，在API version 21之前，需要申请ohos.permission.MANAGE_LOCAL_ACCOUNTS权限；从API version 21开始，需要申请 ohos.permission.MANAGE_LOCAL_ACCOUNTS或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS权限
+表示用户切换完成的公共事件的动作。切换系统账号将会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。与这个公共事件相关的接口：activateOsAccount, 为系统API，具体参看@ohos.account.osAccount。要订阅此事件，在API version 21之前，需要申请ohos.permission.MANAGE_LOCAL_ACCOUNTS权限；从API version 21开始，需要申请 ohos.permission.MANAGE_LOCAL_ACCOUNTS或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS权限
 
 **起始版本：** 9
 
@@ -694,7 +694,7 @@ COMMON_EVENT_USER_STOPPED = 'usual.event.USER_STOPPED'
 COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGIN = 'common.event.DISTRIBUTED_ACCOUNT_LOGIN'
 ```
 
-表示分布式账号登录成功的动作。分布式账号登录成功时会触发事件通知服务发布该系统公共事件，事件携带系统账号ID和子身份ID。与这个公共事件相关的接口：setOsAccountDistributedInfo、updateOsAccountDistributedInfo(已废弃)，这些为公共API， setOsAccountDistributedInfoByLocalId为系统API，具体参看[分布式账号接口文档](../../../reference/js-apis-distributed-account.md)。
+表示分布式账号登录成功的动作。分布式账号登录成功时会触发事件通知服务发布该系统公共事件，事件携带系统账号ID和子身份ID。与这个公共事件相关的接口：setOsAccountDistributedInfo、updateOsAccountDistributedInfo(已废弃)，这些为公共API， setOsAccountDistributedInfoByLocalId为系统API，具体参看分布式账号接口文档。
 
 **起始版本：** 9
 
@@ -708,7 +708,7 @@ COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGIN = 'common.event.DISTRIBUTED_ACCOUNT_LOGIN
 COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOUT = 'common.event.DISTRIBUTED_ACCOUNT_LOGOUT'
 ```
 
-表示分布式账号登出成功的动作。分布式账号登出时会触发事件通知服务发布该系统公共事件，事件携带系统账号ID和子身份ID。与这个公共事件相关的接口：setOsAccountDistributedInfo、updateOsAccountDistributedInfo(已废弃)，这些为公共API， setOsAccountDistributedInfoByLocalId为系统API，具体参看[分布式账号接口文档](../../../reference/js-apis-distributed-account.md)。
+表示分布式账号登出成功的动作。分布式账号登出时会触发事件通知服务发布该系统公共事件，事件携带系统账号ID和子身份ID。与这个公共事件相关的接口：setOsAccountDistributedInfo、updateOsAccountDistributedInfo(已废弃)，这些为公共API， setOsAccountDistributedInfoByLocalId为系统API，具体参看分布式账号接口文档。
 
 **起始版本：** 9
 
@@ -722,7 +722,7 @@ COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOUT = 'common.event.DISTRIBUTED_ACCOUNT_LOGO
 COMMON_EVENT_DISTRIBUTED_ACCOUNT_TOKEN_INVALID = 'common.event.DISTRIBUTED_ACCOUNT_TOKEN_INVALID'
 ```
 
-表示分布式账号token令牌无效的动作。分布式账号的token令牌无效时会触发事件通知服务发布该系统公共事件，事件携带系统账号ID和子身份ID。与这个公共事件相关的接口：setOsAccountDistributedInfo、updateOsAccountDistributedInfo(已废弃)，这些为公共API， setOsAccountDistributedInfoByLocalId为系统API，具体参看[分布式账号接口文档](../../../reference/js-apis-distributed-account.md)。
+表示分布式账号token令牌无效的动作。分布式账号的token令牌无效时会触发事件通知服务发布该系统公共事件，事件携带系统账号ID和子身份ID。与这个公共事件相关的接口：setOsAccountDistributedInfo、updateOsAccountDistributedInfo(已废弃)，这些为公共API， setOsAccountDistributedInfoByLocalId为系统API，具体参看分布式账号接口文档。
 
 **起始版本：** 9
 
@@ -736,7 +736,7 @@ COMMON_EVENT_DISTRIBUTED_ACCOUNT_TOKEN_INVALID = 'common.event.DISTRIBUTED_ACCOU
 COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOFF = 'common.event.DISTRIBUTED_ACCOUNT_LOGOFF'
 ```
 
-表示分布式账号注销的动作。分布式账号注销成功会触发事件通知服务发布该系统公共事件，事件携带系统账号ID和子身份ID。与这个公共事件相关的接口：setOsAccountDistributedInfo、updateOsAccountDistributedInfo(已废弃)，这些为公共API， setOsAccountDistributedInfoByLocalId为系统API，具体参看[分布式账号接口文档](../../../reference/js-apis-distributed-account.md)。
+表示分布式账号注销的动作。分布式账号注销成功会触发事件通知服务发布该系统公共事件，事件携带系统账号ID和子身份ID。与这个公共事件相关的接口：setOsAccountDistributedInfo、updateOsAccountDistributedInfo(已废弃)，这些为公共API， setOsAccountDistributedInfoByLocalId为系统API，具体参看分布式账号接口文档。
 
 **起始版本：** 9
 
@@ -1595,7 +1595,7 @@ COMMON_EVENT_POWER_SAVE_MODE_CHANGED = 'usual.event.POWER_SAVE_MODE_CHANGED'
 COMMON_EVENT_USER_ADDED = 'usual.event.USER_ADDED'
 ```
 
-表示用户已添加到系统中的公共事件的动作。创建系统账号将会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。与这个公共事件相关的接口：createOsAccount、createOsAccountForDomain, 这些为系统API，具体参看 [@ohos.account.osAccount](../../../reference/js-apis-osAccount.md)。要订阅此事件，您的应用必须具备ohos.permission.MANAGE_LOCAL_ACCOUNTS权限（该权限仅系统应用可申请）
+表示用户已添加到系统中的公共事件的动作。创建系统账号将会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。与这个公共事件相关的接口：createOsAccount、createOsAccountForDomain, 这些为系统API，具体参看 @ohos.account.osAccount。要订阅此事件，您的应用必须具备ohos.permission.MANAGE_LOCAL_ACCOUNTS权限（该权限仅系统应用可申请）
 
 **起始版本：** 9
 
@@ -1607,7 +1607,7 @@ COMMON_EVENT_USER_ADDED = 'usual.event.USER_ADDED'
 COMMON_EVENT_USER_REMOVED = 'usual.event.USER_REMOVED'
 ```
 
-表示用户已从系统中删除的公共事件的动作。删除系统账号将会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。与这个公共事件相关的接口：removeOsAccount, 为系统API，具体参看[@ohos.account.osAccount](../../../reference/js-apis-osAccount.md)。要订阅此事件，您的应用必须具备ohos.permission.MANAGE_LOCAL_ACCOUNTS权限（该权限仅系统应用可申请）
+表示用户已从系统中删除的公共事件的动作。删除系统账号将会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。与这个公共事件相关的接口：removeOsAccount, 为系统API，具体参看@ohos.account.osAccount。要订阅此事件，您的应用必须具备ohos.permission.MANAGE_LOCAL_ACCOUNTS权限（该权限仅系统应用可申请）
 
 **起始版本：** 9
 
@@ -2117,7 +2117,7 @@ COMMON_EVENT_QUICK_FIX_REVOKE_RESULT = 'usual.event.QUICK_FIX_REVOKE_RESULT'
 COMMON_EVENT_USER_INFO_UPDATED = 'usual.event.USER_INFO_UPDATED'
 ```
 
-表示用户信息已更新。分布式账号信息变更、系统账号头像信息变更、系统账号名称变更将会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。与这个公共事件相关的接口：setOsAccountName、setOsAccountProfilePhoto, 这些为系统API，setOsAccountDistributedInfo为公共API，具体参看 [系统账号接口文档](../../../reference/js-apis-osAccount.md)、 [分布式账号接口文档](../../../reference/js-apis-distributed-account.md)。
+表示用户信息已更新。分布式账号信息变更、系统账号头像信息变更、系统账号名称变更将会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。与这个公共事件相关的接口：setOsAccountName、setOsAccountProfilePhoto, 这些为系统API，setOsAccountDistributedInfo为公共API，具体参看 系统账号接口文档、 分布式账号接口文档。
 
 **起始版本：** 9
 

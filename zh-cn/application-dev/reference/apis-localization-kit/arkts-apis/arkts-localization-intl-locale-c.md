@@ -337,7 +337,7 @@ collation: string
 hourCycle: string
 ```
 
-区域的时制信息，取值包括："h11"、"h12"、"h23"、"h24"。不同取值的显示效果可参考[附录表5](../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
+区域的时制信息，取值包括："h11"、"h12"、"h23"、"h24"。不同取值的显示效果可参考附录表5。
 
 **类型：** string
 

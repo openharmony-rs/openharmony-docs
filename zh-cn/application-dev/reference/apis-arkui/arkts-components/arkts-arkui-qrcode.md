@@ -33,7 +33,7 @@ QRCode(value: ResourceStr)
 
 ## 示例
 
-该示例展示了QRCode组件的基本使用方法，通过[color](#color)属性设置二维码颜色、[backgroundColor](#backgroundcolor)属性设置二维码背景颜色、[contentOpacity](arkts-arkui-qrcode-attribute.md#contentopacity)属性设置二维码不透明度。
+该示例展示了QRCode组件的基本使用方法，通过color属性设置二维码颜色、backgroundColor属性设置二维码背景颜色、[contentOpacity](arkts-arkui-qrcode-attribute.md#contentopacity)属性设置二维码不透明度。
 
 ```TypeScript
 // xxx.ets
@@ -63,7 +63,7 @@ struct QRCodeExample {
 }
 ```
 
-该示例通过[backgroundColor](#backgroundcolor)属性设置二维码背景颜色为透明，从而实现二维码内容与背景融合。
+该示例通过backgroundColor属性设置二维码背景颜色为透明，从而实现二维码内容与背景融合。
 
 ```TypeScript
 // xxx.ets

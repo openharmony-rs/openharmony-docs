@@ -19,7 +19,7 @@ begin: number
 ```
 
 动画插值起点。  
-**说明:** 会影响[onFrame](../../../reference/apis-arkui/js-apis-animator.md#属性)回调的入参值。默认值：0
+**说明:** 会影响onFrame回调的入参值。默认值：0
 
 **类型：** number
 
@@ -192,7 +192,7 @@ end: number
 ```
 
 动画插值终点。  
-**说明:** 会影响[onFrame](../../../reference/apis-arkui/js-apis-animator.md#属性)回调的入参值。默认值：1
+**说明:** 会影响onFrame回调的入参值。默认值：1
 
 **类型：** number
 

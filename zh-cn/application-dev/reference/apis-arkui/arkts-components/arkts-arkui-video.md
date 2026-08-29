@@ -53,7 +53,7 @@ Video(value: VideoOptions)
 
 ## 示例
 
-基础用法包括：控制栏、预览图、自动播放、播放速度、响应快捷键（从API version 15开始，支持通过[enableShortcutKey](arkts-arkui-video-attribute.md#enableshortcutkey)设置组件开启快捷键响应）、控制器（开始播放、暂停播放、停止播放、重置视频播放器、跳转等）、首帧送显（从API version 18开始，支持通过[posterOptions](#posteroptions18对象说明)设置视频播放的首帧送显选项。从API version 21开始，posterOptions支持通过[PosterOptions](#posteroptions18对象说明)的contentTransitionEffect参数来设置当前视频的预览图内容变化时的转场动效。）以及一些状态回调方法。
+基础用法包括：控制栏、预览图、自动播放、播放速度、响应快捷键（从API version 15开始，支持通过[enableShortcutKey](arkts-arkui-video-attribute.md#enableshortcutkey)设置组件开启快捷键响应）、控制器（开始播放、暂停播放、停止播放、重置视频播放器、跳转等）、首帧送显（从API version 18开始，支持通过posterOptions设置视频播放的首帧送显选项。从API version 21开始，posterOptions支持通过PosterOptions的contentTransitionEffect参数来设置当前视频的预览图内容变化时的转场动效。）以及一些状态回调方法。
 
 ```TypeScript
 // xxx.ets
@@ -337,7 +337,7 @@ struct VideoObject {
 }
 ```
 
-从API version 20开始，支持通过[onError](#onerror)获取错误信息，该示例以传入不存在的视频资源路径为例。
+从API version 20开始，支持通过onError获取错误信息，该示例以传入不存在的视频资源路径为例。
 
 ```TypeScript
 // xxx.ets
@@ -494,7 +494,7 @@ interface FullscreenObject {
 }
 ```
 
-从API版本26.0.0开始，新增VideoControllerAsync控制器及[start](#start-1)、[pause](#pause-1)、[stop](#stop-1)、[reset](#reset)接口。
+从API版本26.0.0开始，新增VideoControllerAsync控制器及start、pause、stop、reset接口。
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

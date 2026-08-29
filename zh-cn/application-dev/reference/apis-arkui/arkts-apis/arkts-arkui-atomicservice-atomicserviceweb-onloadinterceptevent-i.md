@@ -20,7 +20,7 @@ data: WebResourceRequest
 
 网页请求的封装信息。
 
-**类型：** [WebResourceRequest](../../apis-arkweb/arkts-components/arkts-arkweb-webresourcerequest-c.md)
+**类型：** WebResourceRequest
 
 **起始版本：** 12
 

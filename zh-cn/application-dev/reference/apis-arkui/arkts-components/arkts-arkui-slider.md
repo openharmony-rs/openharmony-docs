@@ -762,7 +762,7 @@ struct SliderExample {
 }
 ```
 
-从API version 11开始，将[SliderOptions](#slideroptions对象说明)的value属性设置为[$$](../../../ui/state-management/arkts-two-way-sync.md)绑定的变量，实现数据同步。
+从API version 11开始，将SliderOptions的value属性设置为[$$](../../../ui/state-management/arkts-two-way-sync.md)绑定的变量，实现数据同步。
 
 ```TypeScript
 // xxx.ets

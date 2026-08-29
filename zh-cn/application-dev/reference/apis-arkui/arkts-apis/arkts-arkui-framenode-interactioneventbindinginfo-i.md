@@ -48,7 +48,7 @@ builtInEventRegistered: boolean
 nativeEventRegistered: boolean
 ```
 
-是否以注册节点事件（ [registerNodeEvent](../../../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent) ）的方式绑定事件。true表示以注册节点事件的方式绑定事件，false表示没有以注册节点事件的方式绑定事件。
+是否以注册节点事件（ registerNodeEvent ）的方式绑定事件。true表示以注册节点事件的方式绑定事件，false表示没有以注册节点事件的方式绑定事件。
 
 **类型：** boolean
 
@@ -66,7 +66,7 @@ nativeEventRegistered: boolean
 nodeEventRegistered: boolean
 ```
 
-是否以自定义组件节点的方式绑定事件，请参考[基础事件示例](../../../reference/apis-arkui/js-apis-arkui-frameNode.md#基础事件示例)。true表示以自定义组件节点的方式绑定事件，false表示没有以自定义组件节点的方式绑定事件。
+是否以自定义组件节点的方式绑定事件，请参考基础事件示例。true表示以自定义组件节点的方式绑定事件，false表示没有以自定义组件节点的方式绑定事件。
 
 **类型：** boolean
 

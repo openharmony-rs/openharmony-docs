@@ -69,7 +69,7 @@ List(options?: ListOptions)
 
 | 名称 | 说明 |
 | --- | --- |
-| [ChainAnimationOptions](arkts-arkui-chainanimationoptions-i-sys.md) | 链式联动动效属性集合，用于设置List最大间距、最小间距、动效强度、传导系数、边缘效果、刚度和阻尼。当列表需要精细控制链式联动弹性效果时，可通过调整本对象中的参数实现不同动效手感。 |
+| ChainAnimationOptions | 链式联动动效属性集合，用于设置List最大间距、最小间距、动效强度、传导系数、边缘效果、刚度和阻尼。当列表需要精细控制链式联动弹性效果时，可通过调整本对象中的参数实现不同动效手感。 |
 | [CloseSwipeActionOptions](arkts-arkui-closeswipeactionoptions-i.md) | 收起[EXPANDED](arkts-arkui-swipeactionstate-e.md)状态ListItem回调事件集合，用于设置收起动画完成后回调事件。 |
 | [ListBackPressBehavior](arkts-arkui-listbackpressbehavior-i.md) | 定义List组件的系统返回键行为。 |
 | [ListDividerOptions](arkts-arkui-listdivideroptions-i.md) | 用于设置List或ListItemGroup组件的分割线样式。 |
@@ -88,7 +88,7 @@ List(options?: ListOptions)
 
 | 名称 | 说明 |
 | --- | --- |
-| [ChainEdgeEffect](arkts-arkui-chainedgeeffect-e-sys.md) | 设置链式动效的边缘效果，用于决定列表滚动到边缘后继续拖动时列表项间距的变化方式。 |
+| ChainEdgeEffect | 设置链式动效的边缘效果，用于决定列表滚动到边缘后继续拖动时列表项间距的变化方式。 |
 | [ListItemAlign](arkts-arkui-listitemalign-e.md) | 设置子组件在List交叉轴方向的对齐方式。 |
 | [ListItemGroupArea](arkts-arkui-listitemgrouparea-e.md) | 枚举了ListItemGroup各个区域。 |
 | [ScrollSnapAlign](arkts-arkui-scrollsnapalign-e.md) | 设置列表项滚动结束对齐效果。 |
@@ -98,7 +98,7 @@ List(options?: ListOptions)
 
 ## 示例
 
-ListDataSource实现了LazyForEach数据源接口[IDataSource](ts-rendering-control-lazyforeach.md#idatasource)，用于通过LazyForEach给List提供子组件。
+ListDataSource实现了LazyForEach数据源接口IDataSource，用于通过LazyForEach给List提供子组件。
 
 ```TypeScript
 // ListDataSource.ets
@@ -221,7 +221,7 @@ struct ListExample {
 }
 ```
 
-ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考示例1（添加滚动事件）。
 
 ```TypeScript
 // xxx.ets
@@ -271,7 +271,7 @@ struct ListLanesExample {
 }
 ```
 
-ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考示例1（添加滚动事件）。
 
 ```TypeScript
 // xxx.ets
@@ -329,7 +329,7 @@ struct ListExample {
 }
 ```
 
-ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考示例1（添加滚动事件）。
 
 ```TypeScript
 // xxx.ets
@@ -382,7 +382,7 @@ struct ListExample {
 }
 ```
 
-ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考示例1（添加滚动事件）。
 
 ```TypeScript
 // xxx.ets
@@ -611,7 +611,7 @@ interface TimeTable {
 }
 ```
 
-ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考示例1（添加滚动事件）。
 
 ```TypeScript
 import { LengthMetrics } from '@kit.ArkUI'
@@ -644,7 +644,7 @@ struct ListExample {
 }
 ```
 
-ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考示例1（添加滚动事件）。
 
 ```TypeScript
 // xxx.ets
@@ -677,7 +677,7 @@ struct ListExample {
 }
 ```
 
-从API version 20开始，该示例通过[focusWrapMode](#focuswrapmode20)接口，实现了List组件方向键走焦换行效果。
+从API version 20开始，该示例通过focusWrapMode接口，实现了List组件方向键走焦换行效果。
 
 ```TypeScript
 @Entry
@@ -720,7 +720,7 @@ struct ListExample {
 }
 ```
 
-ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考示例1（添加滚动事件）。
 
 ```TypeScript
 import { ListDataSource } from './ListDataSource';
@@ -760,7 +760,7 @@ struct ListExample {
 }
 ```
 
-从API version 20开始，该示例展示了通过[scrollBarMargin](./ts-container-scrollable-common.md#scrollbarmargin20)属性设置滚动条边距并避让[contentStartOffset](#contentstartoffset11)、[contentEndOffset](#contentendoffset11)区域的效果。
+从API version 20开始，该示例展示了通过scrollBarMargin属性设置滚动条边距并避让contentStartOffset、contentEndOffset区域的效果。
 
 ```TypeScript
 // xxx.ets
@@ -800,7 +800,7 @@ struct ListScrollBarMarginExample {
 }
 ```
 
-从API version 12开始，该示例展示了使用ForEach的[onMove](./ts-universal-attributes-drag-sorting.md#onmove)接口进行拖拽排序的效果，支持拖动到List边缘时触发List的自动滚动。
+从API version 12开始，该示例展示了使用ForEach的onMove接口进行拖拽排序的效果，支持拖动到List边缘时触发List的自动滚动。
 
 ```TypeScript
 @Entry
@@ -840,7 +840,7 @@ struct ForEachSort {
 }
 ```
 
-ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考示例1（添加滚动事件）。
 
 ```TypeScript
 // xxx.ets
@@ -1048,7 +1048,7 @@ struct Index {
 }
 ```
 
-该示例使用[scrollToItemInGroup](arkts-arkui-listscroller-c.md#scrolltoitemingroup)接口，实现了点击[ListItemGroup](./ts-container-listitemgroup.md)中的[ListItem](./ts-container-listitem.md)时将其居中的效果。
+该示例使用[scrollToItemInGroup](arkts-arkui-listscroller-c.md#scrolltoitemingroup)接口，实现了点击ListItemGroup中的ListItem时将其居中的效果。
 
 ```TypeScript
 import { util } from '@kit.ArkTS';
@@ -1148,7 +1148,7 @@ struct ContactsList {
 }
 ```
 
-ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考示例1（添加滚动事件）。
 
 ```TypeScript
 // xxx.ets
@@ -1239,7 +1239,7 @@ struct ListExample {
 }
 ```
 
-ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考示例1（添加滚动事件）。
 
 ```TypeScript
 // xxx.ets

@@ -46,8 +46,8 @@
 | [JSVM_CallbackInfo__*](capi-jsvm-jsvm-callbackinfo--8h.md) | JSVM_CallbackInfo | 表示传递给回调函数的不透明数据类型。可用于获取调用该函数的上下文的附加信息。 |
 | [JSVM_Deferred__*](capi-jsvm-jsvm-deferred--8h.md) | JSVM_Deferred | 表示Promise延迟对象。 |
 | [JSVM_DeserializeResult__*](capi-jsvm-jsvm-deserializeresult--8h.md) | JSVM_DeserializeResult | 与JSVM_COMPILE_BACKGROUND_DESERIALIZE_RESULT一起传递的后台反序列化结果。 |
-| [JSVM_CallbackStruct*](capi-jsvm-jsvm-callbackstruct8h.md) | JSVM_Callback | 用户提供的native函数的函数指针类型，这些函数通过JSVM-API接口暴露给JavaScript。 |
-| [JSVM_PropertyHandlerConfigurationStruct*](capi-jsvm-jsvm-propertyhandlerconfigurationstruct8h.md) | JSVM_PropertyHandlerCfg | 包含属性监听回调的结构的指针类型。 |
+| JSVM_CallbackStruct* | JSVM_Callback | 用户提供的native函数的函数指针类型，这些函数通过JSVM-API接口暴露给JavaScript。 |
+| JSVM_PropertyHandlerConfigurationStruct* | JSVM_PropertyHandlerCfg | 包含属性监听回调的结构的指针类型。 |
 
 ### 枚举
 

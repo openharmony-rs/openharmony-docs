@@ -8,7 +8,7 @@
 
 **废弃版本：** 10
 
-**替代接口：** [UIExtensionComponentAttribute](arkts-arkui-uiextensioncomponent-attribute.md#uiextensioncomponentattribute系统接口)
+**替代接口：** UIExtensionComponentAttribute
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

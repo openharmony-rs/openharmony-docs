@@ -209,7 +209,7 @@ extraInfo?: { [key: string]: any }
 ```
 
 扩展参数。为应用提供定制服务。默认为空。以下Key由系统赋值，开发者手动修改也不会生效，系统在数据传递时会自动修改为实际值。  
-- 'ohos.notificationManager.wantUri'：用户点击通知时传递给应用的[Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) 中的uri字段，使用  
+- 'ohos.notificationManager.wantUri'：用户点击通知时传递给应用的Want 中的uri字段，使用  
 [getActiveNotifications](arkts-notification-notification-getactivenotifications-depr-f.md#getactivenotifications) 接口获取该信息。
 
 **类型：** { [key: string]: any }
@@ -438,7 +438,7 @@ priorityNotificationType?: notificationManager.PriorityNotificationType
 removalWantAgent?: WantAgent
 ```
 
-封装了应用的行为意图，移除通知时触发该行为，默认为空。当前不支持跳转UIAbility，只支持发布公共事件（即[WantAgentInfo](../../apis-ability-kit/arkts-apis/arkts-ability-wantagentinfo-wantagentinfo-i.md)的actionType字段取值为4）。
+封装了应用的行为意图，移除通知时触发该行为，默认为空。当前不支持跳转UIAbility，只支持发布公共事件（即WantAgentInfo的actionType字段取值为4）。
 
 **类型：** [WantAgent](../../apis-ability-kit/arkts-apis/arkts-ability-wantagent-depr-t.md)
 

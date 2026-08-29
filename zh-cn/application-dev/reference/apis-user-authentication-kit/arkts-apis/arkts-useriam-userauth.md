@@ -128,5 +128,5 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [MAX_ALLOWABLE_REUSE_DURATION(用户认证)](arkts-userauthentication-userauth-con.md#max_allowable_reuse_duration) | 复用解锁认证结果最大有效时长，值为300000毫秒（5分钟）。用于限制认证结果复用的最大时长，防止长时间复用过期的认证结果带来的安全风险。该常量可作为 [ReuseUnlockResult](arkts-userauthentication-userauth-reuseunlockresult-i.md)中reuseDuration参数的最大值。 |
-| [PERMANENT_LOCKOUT_DURATION(用户认证)](arkts-userauthentication-userauth-con.md#permanent_lockout_duration) | 永久冻结时间，值为0x7fffffff毫秒。当认证不通过次数达到上限后，认证器将进入永久冻结状态，此时需要通过PIN认证才能解锁。该值用于标识认证器的永久冻结状态，可通过 [AuthLockState](arkts-userauthentication-userauth-authlockstate-i.md)的lockoutDuration字段返回。 |
+| MAX_ALLOWABLE_REUSE_DURATION(用户认证) | 复用解锁认证结果最大有效时长，值为300000毫秒（5分钟）。用于限制认证结果复用的最大时长，防止长时间复用过期的认证结果带来的安全风险。该常量可作为 [ReuseUnlockResult](arkts-userauthentication-userauth-reuseunlockresult-i.md)中reuseDuration参数的最大值。 |
+| PERMANENT_LOCKOUT_DURATION(用户认证) | 永久冻结时间，值为0x7fffffff毫秒。当认证不通过次数达到上限后，认证器将进入永久冻结状态，此时需要通过PIN认证才能解锁。该值用于标识认证器的永久冻结状态，可通过 [AuthLockState](arkts-userauthentication-userauth-authlockstate-i.md)的lockoutDuration字段返回。 |

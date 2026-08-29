@@ -27,7 +27,7 @@ function setOtaUpdatePolicy(admin: Want, policy: OtaUpdatePolicy): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| policy | [OtaUpdatePolicy](arkts-mdm-systemmanager-otaupdatepolicy-i.md) | 是 | 升级策略。 |
+| policy | OtaUpdatePolicy | 是 | 升级策略。 |
 
 **错误码：**
 

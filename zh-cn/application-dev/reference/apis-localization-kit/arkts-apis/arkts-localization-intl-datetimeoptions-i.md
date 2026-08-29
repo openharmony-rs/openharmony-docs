@@ -22,7 +22,7 @@ import { intl } from '@kit.LocalizationKit';
 dateStyle?: string
 ```
 
-日期显示格式，取值包括："number", "short", "medium", "full", "auto"。不同取值的显示效果请参考[附录表1](../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
+日期显示格式，取值包括："number", "short", "medium", "full", "auto"。不同取值的显示效果请参考附录表1。
 
 **类型：** string
 
@@ -66,7 +66,7 @@ day?: string
 dayPeriod?: string
 ```
 
-时段的显示格式，取值包括："number", "short", "narrow", "auto"。不同取值的显示效果请参考[附录表10](../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
+时段的显示格式，取值包括："number", "short", "narrow", "auto"。不同取值的显示效果请参考附录表10。
 
 **类型：** string
 
@@ -88,7 +88,7 @@ dayPeriod?: string
 era?: string
 ```
 
-纪元的显示格式，取值包括："number", "short", "narrow", "auto"。不同取值的显示效果请参考[附录表9](../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
+纪元的显示格式，取值包括："number", "short", "narrow", "auto"。不同取值的显示效果请参考附录表9。
 
 **类型：** string
 
@@ -176,7 +176,7 @@ true表示使用12小时制，false表示使用24小时制。同时设置hour12�
 hourCycle?: string
 ```
 
-时制格式，取值包括："h11", "h12", "h23", "h24"。不设置dateStyle或timeStyle参数时的显示效果请参考[附录表5](../../../reference/apis-localization-kit/js-apis-intl.md#附录)。设置dateStyle或timeStyle参数时的显示效果请参考[附录表6](../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
+时制格式，取值包括："h11", "h12", "h23", "h24"。不设置dateStyle或timeStyle参数时的显示效果请参考附录表5。设置dateStyle或timeStyle参数时的显示效果请参考附录表6。
 
 **类型：** string
 
@@ -262,7 +262,7 @@ minute?: string
 month?: string
 ```
 
-月份的显示格式，取值包括："numeric", "2-digit", "number", "short", "narrow", "auto"。不同取值的显示效果请参考[附录表7](../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
+月份的显示格式，取值包括："numeric", "2-digit", "number", "short", "narrow", "auto"。不同取值的显示效果请参考附录表7。
 
 **类型：** string
 
@@ -328,7 +328,7 @@ second?: string
 timeStyle?: string
 ```
 
-时间显示格式，取值包括："number", "short", "medium", "full", "auto"。不同取值的显示效果请参考[附录表2](../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
+时间显示格式，取值包括："number", "short", "medium", "full", "auto"。不同取值的显示效果请参考附录表2。
 
 **类型：** string
 
@@ -372,7 +372,7 @@ timeZone?: string
 timeZoneName?: string
 ```
 
-时区名称的本地化表示，取值包括："number", "short", "auto"。不同取值的显示效果请参考[附录表8](../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
+时区名称的本地化表示，取值包括："number", "short", "auto"。不同取值的显示效果请参考附录表8。
 
 **类型：** string
 
@@ -394,7 +394,7 @@ timeZoneName?: string
 weekday?: string
 ```
 
-星期的显示格式，取值包括："number", "short", "narrow", "auto"。不同取值的显示效果请参考[附录表4](../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
+星期的显示格式，取值包括："number", "short", "narrow", "auto"。不同取值的显示效果请参考附录表4。
 
 **类型：** string
 
@@ -416,7 +416,7 @@ weekday?: string
 year?: string
 ```
 
-年份的显示格式，取值包括："numeric", "2-digit"。不同取值的显示效果请参考[附录表3](../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
+年份的显示格式，取值包括："numeric", "2-digit"。不同取值的显示效果请参考附录表3。
 
 **类型：** string
 

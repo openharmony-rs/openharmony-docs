@@ -78,7 +78,7 @@ WaterFlow(options?: WaterFlowOptions)
 
 ## 示例
 
-当[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)数据中影响FlowItem宽高的字段发生变化时，需要在修改数据后通知[DataChangeListener](ts-rendering-control-lazyforeach.md#datachangelistener)，例如调用[onDataChange](ts-rendering-control-lazyforeach.md#ondatachange8)或[onDataReloaded](ts-rendering-control-lazyforeach.md#ondatareloaded)。只修改数据内容但不触发数据变化通知时，LazyForEach可能不会刷新对应FlowItem。
+当[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)数据中影响FlowItem宽高的字段发生变化时，需要在修改数据后通知DataChangeListener，例如调用onDataChange或onDataReloaded。只修改数据内容但不触发数据变化通知时，LazyForEach可能不会刷新对应FlowItem。
 
 ```TypeScript
 // WaterFlowDataSource.ets
@@ -365,7 +365,7 @@ struct WaterFlowDemo {
 }
 ```
 
-WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
+WaterFlowDataSource说明及完整代码参考示例1（使用基本瀑布流）。
 
 ```TypeScript
 // Index.ets
@@ -431,7 +431,7 @@ struct WaterFlowDemo {
 }
 ```
 
-WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
+WaterFlowDataSource说明及完整代码参考示例1（使用基本瀑布流）。
 
 ```TypeScript
 // Index.ets
@@ -680,7 +680,7 @@ struct WaterFlowDemo {
 }
 ```
 
-WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
+WaterFlowDataSource说明及完整代码参考示例1（使用基本瀑布流）。
 
 ```TypeScript
 // Index.ets
@@ -876,7 +876,7 @@ struct WaterFlowDemo {
 }
 ```
 
-WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
+WaterFlowDataSource说明及完整代码参考示例1（使用基本瀑布流）。
 
 ```TypeScript
 // Index.ets
@@ -943,7 +943,7 @@ struct WaterFlowDemo {
 }
 ```
 
-WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
+WaterFlowDataSource说明及完整代码参考示例1（使用基本瀑布流）。
 
 ```TypeScript
 // Index.ets
@@ -1010,7 +1010,7 @@ struct WaterFlowDemo {
 }
 ```
 
-WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
+WaterFlowDataSource说明及完整代码参考示例1（使用基本瀑布流）。
 
 ```TypeScript
 // Index.ets
@@ -1115,7 +1115,7 @@ struct Index {
 }
 ```
 
-WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
+WaterFlowDataSource说明及完整代码参考示例1（使用基本瀑布流）。
 
 ```TypeScript
 // Index.ets
@@ -1266,7 +1266,7 @@ struct WaterFlowDemo {
 }
 ```
 
-WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
+WaterFlowDataSource说明及完整代码参考示例1（使用基本瀑布流）。
 
 ```TypeScript
 // Index.ets

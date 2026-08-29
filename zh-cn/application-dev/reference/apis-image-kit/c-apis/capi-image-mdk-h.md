@@ -26,8 +26,8 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [anonymous enum](#anonymous enum) | 图像格式枚举值。 |
-| [anonymous enum](#anonymous enum) | 图像颜色通道类型枚举值。 |
+| anonymous enum | 图像格式枚举值。 |
+| anonymous enum | 图像颜色通道类型枚举值。 |
 
 ### 函数
 

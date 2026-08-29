@@ -442,7 +442,7 @@ PartnerAgentExtensionAbility：基于蓝牙通信技术，提供设备发现与�
 AGENT = 37
 ```
 
-[AgentExtensionAbility](../../../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)：提供智能体扩展能 力，包括智能体服务的创建、销毁、连接、断开的生命周期回调接口，以及接收客户端所发送数据和安全认证的回调接口。  
+AgentExtensionAbility：提供智能体扩展能 力，包括智能体服务的创建、销毁、连接、断开的生命周期回调接口，以及接收客户端所发送数据和安全认证的回调接口。  
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **起始版本：** 24
@@ -457,7 +457,7 @@ AGENT = 37
 AGENT_UI = 38
 ```
 
-[AgentUIExtensionAbility](../../../reference/apis-ability-kit/js-apis-agent-agentUIExtensionAbility.md)：为开发者提供接入 端侧Agent UI界面显示能力。  
+AgentUIExtensionAbility：为开发者提供接入 端侧Agent UI界面显示能力。  
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **起始版本：** 24

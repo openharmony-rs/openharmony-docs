@@ -1,6 +1,6 @@
 # C API<!--c-basic-services-kit-->
 
-- 头文件
+- 头文件<!--basicserviceskit-headerfile-->
     - [oh_pasteboard_err_code.h](capi-oh-pasteboard-err-code-h.md)
     - [oh_pasteboard.h](capi-oh-pasteboard-h.md)
     - [syscap_ndk.h](capi-syscap-ndk-h.md)
@@ -13,7 +13,7 @@
     - [ohprint.h](capi-ohprint-h.md)
     - [oh_commonevent.h](capi-oh-commonevent-h.md)
     - [oh_commonevent_support.h](capi-oh-commonevent-support-h.md)
-- 模块
+- 模块<!--basicserviceskit-module-->
     - [Pasteboard](capi-pasteboard.md)
     - [SyscapNdk](capi-syscapndk.md)
     - [DeviceInfo](capi-deviceinfo.md)
@@ -23,7 +23,7 @@
     - [OH_BatteryInfo](capi-oh-batteryinfo.md)
     - [Print](capi-print.md)
     - [OH_CommonEvent](capi-oh-commonevent.md)
-- 结构体
+- 结构体<!--basicserviceskit-struct-->
     - [Pasteboard_ProgressInfo](capi-pasteboard-pasteboard-progressinfo.md)
     - [Pasteboard_GetDataParams](capi-pasteboard-pasteboard-getdataparams.md)
     - [OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)

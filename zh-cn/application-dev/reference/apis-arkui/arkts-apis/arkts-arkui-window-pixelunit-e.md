@@ -1,6 +1,6 @@
 # PixelUnit
 
-像素单位枚举。物理像素单位和虚拟像素单位换算可使用[px2vp](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#px2vp12)和 [vp2px](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#vp2px12)。
+像素单位枚举。物理像素单位和虚拟像素单位换算可使用px2vp和 vp2px。
 
 **起始版本：** 22
 

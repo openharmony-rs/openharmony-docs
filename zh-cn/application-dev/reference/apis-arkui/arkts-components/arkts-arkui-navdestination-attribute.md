@@ -76,7 +76,7 @@ backButtonIcon(icon: ResourceStr | PixelMap | SymbolGlyphModifier, accessibility
 bindToNestedScrollable(scrollInfos: Array<NestedScrollInfo>)
 ```
 
-绑定NavDestination组件和嵌套的可滚动容器组件（支持List、Scroll、Grid、 WaterFlow），当滑动父组件或子组件时，会触发所有与其绑定的NavDestination组件的标题栏和工具栏的显示和隐藏动效，上滑隐藏，下滑显示。一个NavDestination可与多 个嵌套的可滚动容器组件绑定，嵌套的可滚动容器组件也可与多个NavDestination绑定。使用示例参见 [示例1](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#示例1标题栏工具栏与可滚动类组件联动)。
+绑定NavDestination组件和嵌套的可滚动容器组件（支持List、Scroll、Grid、 WaterFlow），当滑动父组件或子组件时，会触发所有与其绑定的NavDestination组件的标题栏和工具栏的显示和隐藏动效，上滑隐藏，下滑显示。一个NavDestination可与多 个嵌套的可滚动容器组件绑定，嵌套的可滚动容器组件也可与多个NavDestination绑定。使用示例参见 示例1。
 
 > **说明：**
 
@@ -107,7 +107,7 @@ bindToNestedScrollable(scrollInfos: Array<NestedScrollInfo>)
 bindToScrollable(scrollers: Array<Scroller>)
 ```
 
-绑定NavDestination组件和可滚动容器组件（支持List、Scroll、Grid、 WaterFlow），当滑动可滚动容器组件时，会触发所有与其绑定的NavDestination组件的标题栏和工具栏的显示和隐藏动效，上滑隐藏，下滑显示。一个NavDestination可与多 个可滚动容器组件绑定，一个可滚动容器组件也可与多个NavDestination绑定。使用示例参见 [示例1](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#示例1标题栏工具栏与可滚动类组件联动)。
+绑定NavDestination组件和可滚动容器组件（支持List、Scroll、Grid、 WaterFlow），当滑动可滚动容器组件时，会触发所有与其绑定的NavDestination组件的标题栏和工具栏的显示和隐藏动效，上滑隐藏，下滑显示。一个NavDestination可与多 个可滚动容器组件绑定，一个可滚动容器组件也可与多个NavDestination绑定。使用示例参见 示例1。
 
 > **说明：**
 
@@ -459,7 +459,7 @@ mode(value: NavDestinationMode)
 onActive(callback: Optional<Callback<NavDestinationActiveReason>>)
 ```
 
-NavDestination处于激活态（处于栈顶可操作，且上层无特殊组件遮挡）时，触发该回调。使用示例参见 [示例5](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#示例5navdestination的onactive与oninactive生命周期)。
+NavDestination处于激活态（处于栈顶可操作，且上层无特殊组件遮挡）时，触发该回调。使用示例参见 示例5。
 
 > **说明：**
 
@@ -529,7 +529,7 @@ onHidden(callback: Callback<VisibilityChangeReason>)
 onInactive(callback: Optional<Callback<NavDestinationActiveReason>>)
 ```
 
-NavDestination处于非激活态（处于非栈顶不可操作，或处于栈顶时上层有特殊组件遮挡）时，触发该回调。使用示例参见 [示例5](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#示例5navdestination的onactive与oninactive生命周期)。
+NavDestination处于非激活态（处于非栈顶不可操作，或处于栈顶时上层有特殊组件遮挡）时，触发该回调。使用示例参见 示例5。
 
 > **说明：**
 

@@ -46,7 +46,7 @@ let photoPicker = new picker.PhotoViewPicker(); // 不推荐使用无参构造�
 constructor(context: Context)
 ```
 
-创建DocumentViewPicker对象，推荐使用该构造函数，获取context参考 [getHostContext](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext)。
+创建DocumentViewPicker对象，推荐使用该构造函数，获取context参考 getHostContext。
 
 **起始版本：** 12
 

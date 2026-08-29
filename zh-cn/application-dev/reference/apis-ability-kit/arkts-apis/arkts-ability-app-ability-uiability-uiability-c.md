@@ -575,7 +575,7 @@ onPrepareToTerminateAsync(): Promise<boolean>
 > dock栏或系统托盘处右键点击关闭，本回调函数将不执行。
 > 
 > - 如果应用本身或者所使用的三方框架注册了
-> [window.WindowStage.on('windowStageClose')](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#onwindowstageclose)
+> window.WindowStage.on('windowStageClose')
 > 监听，本回调函数将不执行。
 > 
 > - 若异步回调内发生crash，按超时处理，执行等待超过10秒未响应，UIAbility将被强制关闭。

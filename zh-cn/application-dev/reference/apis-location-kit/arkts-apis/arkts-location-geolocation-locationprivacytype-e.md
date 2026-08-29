@@ -6,7 +6,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [LocationPrivacyType](arkts-location-geolocationmanager-locationprivacytype-e-sys.md)
+**替代接口：** LocationPrivacyType
 
 **需要权限：** ohos.permission.LOCATION
 
@@ -24,7 +24,7 @@ OTHERS = 0
 
 **废弃版本：** 9
 
-**替代接口：** [OTHERS](arkts-location-geolocationmanager-locationprivacytype-e-sys.md#others)
+**替代接口：** OTHERS
 
 **系统能力：** SystemCapability.Location.Location.Core
 
@@ -40,7 +40,7 @@ STARTUP
 
 **废弃版本：** 9
 
-**替代接口：** [STARTUP](arkts-location-geolocationmanager-locationprivacytype-e-sys.md#startup)
+**替代接口：** STARTUP
 
 **系统能力：** SystemCapability.Location.Location.Core
 
@@ -56,6 +56,6 @@ CORE_LOCATION
 
 **废弃版本：** 9
 
-**替代接口：** [CORE_LOCATION](arkts-location-geolocationmanager-locationprivacytype-e-sys.md#core_location)
+**替代接口：** CORE_LOCATION
 
 **系统能力：** SystemCapability.Location.Location.Core

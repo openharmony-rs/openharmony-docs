@@ -483,7 +483,7 @@ avRecorder.getCurrentAudioCapturerInfo().then((capturerInfo: audio.AudioCapturer
 getInputSurface(callback: AsyncCallback<string>): void
 ```
 
-获得录制需要的surface。适用于纯视频或音视频录制时需要获取surface传递视频数据的场景。 相机视频录制功能需配合相机模块使用，详情请参考[相机管理](../apis-camera-kit/arkts-apis-camera.md)。使用callback异步回调。开发者从此surface中获取surfaceBuffer，填入待录制的视频数据。填入视频数据时需携带时间戳（单位ns）和buffer size。时间戳的起始时间以系统启动时间为基准。必须在[prepare](#prepare)和 [start](#start)之间调用。
+获得录制需要的surface。适用于纯视频或音视频录制时需要获取surface传递视频数据的场景。 相机视频录制功能需配合相机模块使用，详情请参考相机管理。使用callback异步回调。开发者从此surface中获取surfaceBuffer，填入待录制的视频数据。填入视频数据时需携带时间戳（单位ns）和buffer size。时间戳的起始时间以系统启动时间为基准。必须在[prepare](#prepare)和 [start](#start)之间调用。
 
 **起始版本：** 9
 
@@ -541,7 +541,7 @@ avRecorder.getInputSurface((err: BusinessError, surfaceId: string) => {
 getInputSurface(): Promise<string>
 ```
 
-获得录制需要的surface。适用于纯视频或音视频录制时需要获取surface传递视频数据的场景。 相机视频录制功能需配合相机模块使用，详情请参考[相机管理](../apis-camera-kit/arkts-apis-camera.md)。使用callback异步回调。开发者从此surface中获取surfaceBuffer，填入待录制的视频数据。填入视频数据时需携带时间戳（单位ns）和buffer size。时间戳的起始时间以系统启动时间为基准。必须在[prepare](#prepare)和 [start](#start)之间调用。
+获得录制需要的surface。适用于纯视频或音视频录制时需要获取surface传递视频数据的场景。 相机视频录制功能需配合相机模块使用，详情请参考相机管理。使用callback异步回调。开发者从此surface中获取surfaceBuffer，填入待录制的视频数据。填入视频数据时需携带时间戳（单位ns）和buffer size。时间戳的起始时间以系统启动时间为基准。必须在[prepare](#prepare)和 [start](#start)之间调用。
 
 **起始版本：** 9
 

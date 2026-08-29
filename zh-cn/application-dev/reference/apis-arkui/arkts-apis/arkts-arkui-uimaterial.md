@@ -66,5 +66,5 @@ import { uiMaterial } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [MaterialType](arkts-arkui-uimaterial-materialtype-e-sys.md) | 系统材质类型枚举。@enum { number } [since 23 - 24] |
+| MaterialType | 系统材质类型枚举。@enum { number } [since 23 - 24] |
 <!--DelEnd-->

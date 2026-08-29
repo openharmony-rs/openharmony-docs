@@ -1,6 +1,6 @@
 # C API<!--c-abilitykit-->
 
-- 头文件
+- 头文件<!--abilitykit-headerfile-->
     - [ability_access_control.h](capi-ability-access-control-h.md)
     - [want.h](capi-want-h.md)
     - [ability_base_common.h](capi-ability-base-common-h.md)
@@ -20,13 +20,13 @@
     - [native_interface_bundle.h](capi-native-interface-bundle-h.md)
     - [bundle_manager_common.h](capi-bundle-manager-common-h.md)
     - [native_child_process.h](capi-native-child-process-h.md)
-- 模块
+- 模块<!--abilitykit-module-->
     - [AbilityAccessControl](capi-abilityaccesscontrol.md)
     - [AbilityBase](capi-abilitybase.md)
     - [AbilityRuntime](capi-abilityruntime.md)
     - [Native_Bundle](capi-native-bundle.md)
     - [ChildProcess](capi-childprocess.md)
-- 结构体
+- 结构体<!--abilitykit-struct-->
     - [AbilityBase_Element](capi-abilitybase-abilitybase-element.md)
     - [AbilityBase_Want](capi-abilitybase-abilitybase-want.md)
     - [AbilityRuntime_Context](capi-abilityruntime-abilityruntime-context.md)

@@ -3,7 +3,7 @@
 ###### 约束限制
  <br>
  <br>为保障系统安全性和稳定性，防止InputMethodExtensionAbility滥用系统资源，系统对其能力进行管控，不支持部分模块的引用，详情请参考
- [附录](../../../reference/apis-ime-kit/js-apis-inputmethod-extension-ability.md#附录)。
+ 附录。
  <br>
  <br>另外输入法应用区分基础模式和完整体验模式，关于基础模式和完整体验模式说明如下：
  <br>

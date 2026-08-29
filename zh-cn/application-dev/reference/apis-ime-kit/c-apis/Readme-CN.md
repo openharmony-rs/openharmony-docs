@@ -1,6 +1,6 @@
 # C API<!--c-imekit-->
 
-- 头文件
+- 头文件<!--imekit-headerfile-->
     - [inputmethod_cursor_info_capi.h](capi-inputmethod-cursor-info-capi-h.md)
     - [inputmethod_attach_options_capi.h](capi-inputmethod-attach-options-capi-h.md)
     - [inputmethod_controller_capi.h](capi-inputmethod-controller-capi-h.md)
@@ -10,9 +10,9 @@
     - [inputmethod_private_command_capi.h](capi-inputmethod-private-command-capi-h.md)
     - [inputmethod_inputmethod_proxy_capi.h](capi-inputmethod-inputmethod-proxy-capi-h.md)
     - [inputmethod_text_avoid_info_capi.h](capi-inputmethod-text-avoid-info-capi-h.md)
-- 模块
+- 模块<!--imekit-module-->
     - [InputMethod](capi-inputmethod.md)
-- 结构体
+- 结构体<!--imekit-struct-->
     - [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md)
     - [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md)
     - [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md)

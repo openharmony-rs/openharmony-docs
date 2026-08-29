@@ -1,6 +1,6 @@
 # C API<!--c-audio-kit-->
 
-- 头文件
+- 头文件<!--audiokit-headerfile-->
     - [native_midi.h](capi-native-midi-h.md)
     - [native_midi_base.h](capi-native-midi-base-h.md)
     - [native_audio_suite_base.h](capi-native-audio-suite-base-h.md)
@@ -25,7 +25,7 @@
     - [native_audio_debugging_manager.h](capi-native-audio-debugging-manager-h.md)
     - [native_audio_device_enhance_manager.h](capi-native-audio-device-enhance-manager-h.md)
     - [native_audio_routing_manager.h](capi-native-audio-routing-manager-h.md)
-- 模块
+- 模块<!--audiokit-module-->
     - [OHMIDI](capi-ohmidi.md)
     - [OHAudioSuite](capi-ohaudiosuite.md)
     - [AudioSuite](capi-audiosuite.md)
@@ -33,7 +33,7 @@
     - [AudioRenderer](capi-audiorenderer.md)
     - [OHAudio](capi-ohaudio.md)
     - [AudioCapturer](capi-audiocapturer.md)
-- 结构体
+- 结构体<!--audiokit-struct-->
     - [OH_MIDIEvent](capi-ohmidi-oh-midievent.md)
     - [OH_MIDIDeviceInformation](capi-ohmidi-oh-midideviceinformation.md)
     - [OH_MIDIPortInformation](capi-ohmidi-oh-midiportinformation.md)

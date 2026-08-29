@@ -1,6 +1,6 @@
 # C API<!--c-arkgraphics2d-->
 
-- 头文件
+- 头文件<!--arkgraphics2d-headerfile-->
     - [graphic_error_code.h](capi-graphic-error-code-h.md)
     - [buffer_handle.h](capi-buffer-handle-h.md)
     - [external_window.h](capi-external-window-h.md)
@@ -56,7 +56,7 @@
     - [drawing_region.h](capi-drawing-region-h.md)
     - [effect_types.h](capi-effect-types-h.md)
     - [effect_filter.h](capi-effect-filter-h.md)
-- 模块
+- 模块<!--arkgraphics2d-module-->
     - [NativeWindow](capi-nativewindow.md)
     - [NativeColorSpaceManager](capi-nativecolorspacemanager.md)
     - [OH_NativeBuffer](capi-oh-nativebuffer.md)
@@ -66,7 +66,7 @@
     - [NativeDisplaySoloist](capi-nativedisplaysoloist.md)
     - [Drawing](capi-drawing.md)
     - [effectKit](capi-effectkit.md)
-- 结构体
+- 结构体<!--arkgraphics2d-struct-->
     - [BufferHandle](capi-nativewindow-bufferhandle.md)
     - [Region](capi-nativewindow-region.md)
     - [OHHDRMetaData](capi-nativewindow-ohhdrmetadata.md)

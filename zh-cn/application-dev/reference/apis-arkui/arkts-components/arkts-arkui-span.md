@@ -208,7 +208,7 @@ struct SpanExample {
 }
 ```
 
-从API version 11开始，该示例通过[textShadow](#textshadow11)属性展示了文本设置阴影的效果。
+从API version 11开始，该示例通过textShadow属性展示了文本设置阴影的效果。
 
 ```TypeScript
 // xxx.ets
@@ -258,7 +258,7 @@ struct SpanExample {
 }
 ```
 
-从API version 11开始，该示例通过[textBackgroundStyle](#textbackgroundstyle11)属性展示了文本设置背景样式的效果。
+从API version 11开始，该示例通过textBackgroundStyle属性展示了文本设置背景样式的效果。
 
 ```TypeScript
 // xxx.ets
@@ -278,7 +278,7 @@ struct SpanExample {
 }
 ```
 
-从API version 12开始，该示例通过[baselineOffset](#baselineoffset12)属性展示了文本设置不同基线偏移量的效果。
+从API version 12开始，该示例通过baselineOffset属性展示了文本设置不同基线偏移量的效果。
 
 ```TypeScript
 // xxx.ets
@@ -311,7 +311,7 @@ struct SpanExample {
 }
 ```
 
-从API版本26.0.0开始，新增[fontVariations](#fontvariations)接口。
+从API版本26.0.0开始，新增fontVariations接口。
 
 ```TypeScript
 // xxx.ets

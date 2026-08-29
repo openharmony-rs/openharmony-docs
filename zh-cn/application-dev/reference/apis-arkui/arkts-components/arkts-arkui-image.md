@@ -171,7 +171,7 @@ Image(src: PixelMap | ResourceStr | DrawableDescriptor,
 | [ImageErrorCallback](arkts-arkui-imageerrorcallback-t.md) | 图片加载异常时触发此回调。当组件的参数类型为[AnimatedDrawableDescriptor](../arkts-apis/arkts-arkui-arkui-drawabledescriptor-animateddrawabledescriptor-c.md)时该事件不触发。 |
 | [ImageMatrix](arkts-arkui-imagematrix-t.md) | 当前的矩阵对象。 |
 | [RequestDownloadInfo](arkts-arkui-requestdownloadinfo-t.md) | 用于描述网络图片加载失败或异常时的下载信息。该对象包含本次下载任务的资源信息、网络信息以及性能统计信息，可用于定位加载异常的具体原因。 |
-| [ResolutionQuality](arkts-arkui-resolutionquality-t-sys.md) | 分辨率质量等级类型。 |
+| ResolutionQuality | 分辨率质量等级类型。 |
 
 ### 枚举
 
@@ -185,7 +185,7 @@ Image(src: PixelMap | ResourceStr | DrawableDescriptor,
 
 ## 示例
 
-该示例通过传入[Resource](ts-types.md#resource)资源，加载png、gif、svg和jpg等基本类型的图片。
+该示例通过传入Resource资源，加载png、gif、svg和jpg等基本类型的图片。
 
 ```TypeScript
 @Entry
@@ -321,7 +321,7 @@ struct Index {
 }
 ```
 
-该示例为图片添加[onClick](ts-universal-events-click.md#onclick)和[onFinish](#onfinish)事件。
+该示例为图片添加onClick和onFinish事件。
 
 ```TypeScript
 @Entry
@@ -358,7 +358,7 @@ struct ImageExample3 {
 }
 ```
 
-该示例使用[enableAnalyzer](#enableanalyzer11)接口开启图像AI分析。
+该示例使用enableAnalyzer接口开启图像AI分析。
 
 ```TypeScript
 import { image } from '@kit.ImageKit';
@@ -405,7 +405,7 @@ struct ImageExample4 {
 }
 ```
 
-该示例通过[resizable](#resizable11)属性的slice选项，调整不同方向对图片进行拉伸。
+该示例通过resizable属性的slice选项，调整不同方向对图片进行拉伸。
 
 ```TypeScript
 @Entry
@@ -470,7 +470,7 @@ struct Index {
 }
 ```
 
-该示例使用[resizable](#resizable11)属性的lattice选项，使用矩形网格对象对图片进行拉伸。
+该示例使用resizable属性的lattice选项，使用矩形网格对象对图片进行拉伸。
 
 ```TypeScript
 import { drawing } from '@kit.ArkGraphics2D';
@@ -588,7 +588,7 @@ struct ImageExample {
 }
 ```
 
-该示例通过[colorFilter](#colorfilter9)属性实现了给图像设置颜色滤镜效果。
+该示例通过colorFilter属性实现了给图像设置颜色滤镜效果。
 
 ```TypeScript
 import { drawing, common2D } from '@kit.ArkGraphics2D';
@@ -652,7 +652,7 @@ struct ImageExample3 {
 }
 ```
 
-该示例通过[objectFit](#objectfit)属性为图像设置填充效果。
+该示例通过objectFit属性为图像设置填充效果。
 
 ```TypeScript
 @Entry
@@ -699,7 +699,7 @@ struct ImageExample{
 }
 ```
 
-该示例展示了[ResourceStr](ts-types.md#resourcestr)类型与[ImageContent](arkts-arkui-imagecontent-e.md)类型作为数据源的显示图片效果。
+该示例展示了ResourceStr类型与[ImageContent](arkts-arkui-imagecontent-e.md)类型作为数据源的显示图片效果。
 
 ```TypeScript
 @Entry
@@ -725,7 +725,7 @@ struct ImageContentExample {
 }
 ```
 
-该示例通过[privacySensitive](#privacysensitive12)属性展示了如何配置隐私隐藏，效果展示需要卡片框架支持。
+该示例通过privacySensitive属性展示了如何配置隐私隐藏，效果展示需要卡片框架支持。
 
 ```TypeScript
 @Entry
@@ -746,7 +746,7 @@ struct ImageExample {
 }
 ```
 
-该示例通过[linearGradient](./ts-basic-components-datapanel.md#lineargradient10)接口和[animateTo()](../arkts-apis-uicontext-uicontext.md#animateto)接口实现了给图片设置扫光效果。
+该示例通过linearGradient接口和animateTo()接口实现了给图片设置扫光效果。
 
 ```TypeScript
 import { curves } from '@kit.ArkUI';
@@ -894,7 +894,7 @@ struct Test {
 }
 ```
 
-该示例通过[sourceSize](#sourcesize)接口自定义图片的解码尺寸。
+该示例通过sourceSize接口自定义图片的解码尺寸。
 
 ```TypeScript
 @Entry
@@ -923,7 +923,7 @@ struct Index {
 }
 ```
 
-该示例通过[renderMode](#rendermode)接口设置图片渲染模式为黑白模式。
+该示例通过renderMode接口设置图片渲染模式为黑白模式。
 
 ```TypeScript
 @Entry
@@ -967,7 +967,7 @@ struct Index {
 }
 ```
 
-该示例通过[fillColor](#fillcolor15)属性为SVG图片设置不同颜色的填充效果。
+该示例通过fillColor属性为SVG图片设置不同颜色的填充效果。
 
 ```TypeScript
 @Entry
@@ -1096,7 +1096,7 @@ struct Index {
 }
 ```
 
-该示例通过[orientation](#orientation14)属性，设置图像内容的显示方向。
+该示例通过orientation属性，设置图像内容的显示方向。
 
 ```TypeScript
 @Entry
@@ -1186,7 +1186,7 @@ struct OrientationExample {
 }
 ```
 
-该示例通过[getImageProperty](../../apis-image-kit/arkts-apis-image-ImageSource.md#getimageproperty)接口，获取图片的exif信息，再根据获取到的exif信息，通过[orientation](#orientation14)属性设置图像内容显示为正确方向。
+该示例通过getImageProperty接口，获取图片的exif信息，再根据获取到的exif信息，通过orientation属性设置图像内容显示为正确方向。
 
 ```TypeScript
 import { image } from '@kit.ImageKit';
@@ -1438,7 +1438,7 @@ struct Index {
 }
 ```
 
-从API version 21开始，该示例演示了在点击图片切换图源时，通过[contentTransition](#contenttransition21)属性实现淡入淡出效果，完成图片的平滑过渡。
+从API version 21开始，该示例演示了在点击图片切换图源时，通过contentTransition属性实现淡入淡出效果，完成图片的平滑过渡。
 
 ```TypeScript
 @Entry
@@ -1467,7 +1467,7 @@ struct ImageExample {
 }
 ```
 
-该示例演示了在图片加载过程中和加载失败时，通过设置[alt](#alt22)属性实现图片加载过程中和图片加载失败时显示指定图片
+该示例演示了在图片加载过程中和加载失败时，通过设置alt属性实现图片加载过程中和图片加载失败时显示指定图片
 
 ```TypeScript
 @Entry

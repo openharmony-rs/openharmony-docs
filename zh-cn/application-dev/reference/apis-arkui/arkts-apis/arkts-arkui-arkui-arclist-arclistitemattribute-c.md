@@ -32,7 +32,7 @@ autoScale(enable: Optional<boolean>): ArcListItemAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enable | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;boolean&gt; | 是 | ArcListItem是否支持自动缩放显示，true表示支持，false表示不支持。 默认值：true，支持自动缩放显示。 |
+| enable | Optional&lt;boolean&gt; | 是 | ArcListItem是否支持自动缩放显示，true表示支持，false表示不支持。 默认值：true，支持自动缩放显示。 |
 
 **返回值：**
 
@@ -58,7 +58,7 @@ swipeAction(options: Optional<SwipeActionOptions>): ArcListItemAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;[SwipeActionOptions](../arkts-components/arkts-arkui-swipeactionoptions-i.md)&gt; | 是 | ArcListItem划出操作的配置选项，具体配置请参考SwipeActionOptions。未设置时，不配置划出操作。 |
+| options | Optional&lt;[SwipeActionOptions](../arkts-components/arkts-arkui-swipeactionoptions-i.md)&gt; | 是 | ArcListItem划出操作的配置选项，具体配置请参考SwipeActionOptions。未设置时，不配置划出操作。 |
 
 **返回值：**
 
