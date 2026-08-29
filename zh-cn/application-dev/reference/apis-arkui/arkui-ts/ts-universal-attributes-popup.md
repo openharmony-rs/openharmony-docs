@@ -778,9 +778,11 @@ struct PopupExample {
 
 ![](figures/popup_07.gif)
 
-### 示例9（设置Popup的系统材质视觉效果）
+### 示例9（设置Popup的沉浸光感视觉效果）
 
-该示例通过设置[PopupOptions](#popupoptions类型说明)中的systemMaterial属性，实现了Popup的系统材质视效。
+该示例通过[PopupOptions](#popupoptions类型说明)中的systemMaterial属性设置组件的系统材质，实现了Popup的沉浸光感视效。
+
+组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
 
 从API版本26.0.0开始，在PopupOptions中新增了systemMaterial属性。
 
@@ -809,7 +811,7 @@ struct PopupExample {
         .bindPopup(this.handlePopup!!, {
           message: 'This is a popup with PopupOptions',
           placement: Placement.Top,
-          // 控制是否设置系统材质
+          // 控制是否设置系统材质接口
           systemMaterial: new uiMaterial.ImmersiveMaterial({
             style: uiMaterial.ImmersiveStyle.THIN
           })
@@ -824,11 +826,11 @@ struct PopupExample {
 ```
 未设置系统材质时：
 
-![](figures/popupWithoutNewMaterial.png)
+![](figures/popupWithoutNewMaterial.gif)
 
 设置系统材质后：
 
-![](figures/popupNewMaterial.png)
+![](figures/popupNewMaterial.gif)
 
 ### 示例10（自定义气泡背景效果参数）
 
