@@ -6,11 +6,11 @@
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=425e79ed59a841b19860caacc0b050f68405d43e translatedAt=2026-08-11T01:56:06.517Z pushedAt=2026-08-12T03:23:36.445Z -->
+<!-- md-trans-meta sourceCommit=597f548e3301ae6f375b37ce4cb51b3aa12ee211 translatedAt=2026-08-22T02:11:09.464Z pushedAt=2026-08-22T06:49:22.820Z -->
 
 Starting from API version 20, NDK (C/C++) APIs are provided for video transcoding.
 
-You can use the [AVTranscoder](media-kit-intro.md#avtranscoder) to implement video transcoding. <!--RP1--><!--RP1End--> You can call [canIUse](../../reference/common/init.md#caniuse) to check whether the device supports AVTranscoder and continue the operations described in this topic only when the return value of **canIUse("SystemCapability.Multimedia.Media.AVTranscoder")** is **true**.
+You can use the [AVTranscoder](media-kit-intro.md#avtranscoder) to implement video transcoding<!--RP1--><!--RP1End-->. You can call [canIUse](../../reference/common/syscap__ndk_8h.md#caniuse) to check whether the device supports AVTranscoder. When the return value of `canIUse("SystemCapability.Multimedia.Media.AVTranscoder")` is `true`, the transcoding capability is available.
 
 This topic describes how to use the AVTranscoder to implement video transcoding, covering the process of starting, pausing, resuming, and exiting transcoding.
 

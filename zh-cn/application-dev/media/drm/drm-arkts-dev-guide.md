@@ -2,10 +2,10 @@
 
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @qin_wei_jie-->
 
 开发者可以调用DRM Kit的ArkTS接口实现DRM证书管理、DRM许可证管理、DRM节目授权、DRM节目解密等数字版权保护功能。
 
@@ -191,7 +191,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
     });
       ```
 
-13. （可选）调用[restoreOfflineMediaKey](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#restoreofflinemediakeys)，恢复离线媒体密钥。
+13. （可选）调用[restoreOfflineMediaKeys](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#restoreofflinemediakeys)，恢复离线媒体密钥。
 
     ```ts
     mediaKeySession.restoreOfflineMediaKeys(offlineMediaKeyId).then(() => {

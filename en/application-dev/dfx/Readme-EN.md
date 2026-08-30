@@ -20,7 +20,7 @@
 
     - [C++ Crash (Process Crash) Detection](cppcrash-guidelines.md)
 
-  - [Address Sanitizer detection](address-sanitizer-guidelines.md)
+  - [Address Sanitizer Detection](address-sanitizer-guidelines.md)
 
   - [Application Freeze Detection](appfreeze-guidelines.md)<!--RP1--><!--RP1End-->
 
@@ -186,4 +186,4 @@
 
   <!--DelEnd-->
 
-- [Performance Analysis Kit Terminology](performance-analysis-kit-terminology.md)<!--RP5--><!--RP5End-->
+- [Glossary](performance-analysis-kit-terminology.md)<!--RP5--><!--RP5End-->

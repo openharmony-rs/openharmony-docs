@@ -6,7 +6,7 @@
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=740dcdea7b2e0f63c4b99baa0eb4f2e92e763430 translatedAt=2026-08-03T11:15:03.127Z pushedAt=2026-08-04T02:17:12.059Z -->
+<!-- md-trans-meta sourceCommit=7fa9bdd4667c105b22f0d6acf550a50bf15bd338 translatedAt=2026-08-22T01:31:29.881Z pushedAt=2026-08-22T03:28:12.166Z -->
 
 ## Overview
 
@@ -18,13 +18,13 @@ In C/C++, you can obtain a canvas in either of the following ways: obtaining a c
 
 ## Available APIs
 
-The following table lists the APIs for creating a canvas. For details, see [drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md).
+The following table lists the commonly used APIs for creating a canvas. For details about their usage and parameters, see [drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md) and [drawing_surface.h](../reference/apis-arkgraphics2d/capi-drawing-surface-h.md).
 
 | API| Description|
 | -------- | -------- |
-| OH_Drawing_Canvas\* OH_Drawing_CanvasCreate (void) | Creates a canvas object.|
-| void OH_Drawing_CanvasBind (OH_Drawing_Canvas\*, OH_Drawing_Bitmap\*) | Binds a bitmap to a canvas so that the content drawn on the canvas is output to the bitmap.|
-| OH_Drawing_Canvas\* OH_Drawing_SurfaceGetCanvas (OH_Drawing_Surface \*) | Obtains a canvas from a surface object.|
+| OH_Drawing_Canvas\* OH_Drawing_CanvasCreate(void) | Creates a canvas object. |
+| void OH_Drawing_CanvasBind(OH_Drawing_Canvas\* canvas, OH_Drawing_Bitmap\* bitmap) | Binds a bitmap to a canvas so that the content drawn on the canvas is output to the bitmap. |
+| OH_Drawing_Canvas\* OH_Drawing_SurfaceGetCanvas(OH_Drawing_Surface\* surface) | Obtains a canvas from a surface object. |
 
 ## Obtaining a Canvas That Can Be Directly Displayed
 

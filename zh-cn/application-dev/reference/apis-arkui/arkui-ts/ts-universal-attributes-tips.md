@@ -144,9 +144,11 @@ struct TipsExample {
 
 ![](figures/tips02.gif)
 
-### 示例3（设置悬浮气泡的系统材质视效）
+### 示例3（设置悬浮气泡的沉浸光感视效）
 
-该示例通过设置[TipsOptions](#tipsoptions类型说明)中的systemMaterial属性，实现了bindTips的系统材质视效。
+该示例通过[TipsOptions](#tipsoptions类型说明)中的systemMaterial属性设置组件的系统材质，实现了bindTips的沉浸光感视效。
+
+组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
 
 从API版本26.0.0开始，在TipsOptions中新增了systemMaterial属性。
 
@@ -161,7 +163,7 @@ struct TipsExample {
     Flex({ direction: FlexDirection.Column }) {
       Button('Hover Tips')
         .bindTips("悬浮气泡测试", {
-          // 控制是否设置系统材质
+          // 控制是否设置系统材质接口
           systemMaterial: new uiMaterial.ImmersiveMaterial({
             style: uiMaterial.ImmersiveStyle.THIN
           })

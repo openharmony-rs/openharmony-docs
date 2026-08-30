@@ -23,7 +23,7 @@
 
 表示用户已完成引导并加载系统。
 
-在设备上指定用户已完成引导并加载系统，将会触发事件通知服务发布该系统公共事件。
+在设备上指定用户已完成引导并加载系统，将会触发事件通知服务发布该[系统公共事件](../../../basic-services/common-event/common-event-glossary.md#system-common-event系统公共事件)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -156,7 +156,7 @@
 
 表示待机状态下解除资源使用限制的豁免名单出现变化，触发公共事件发布动作。
 
-待机状态下后台应用程序CPU和网络访问被限制，系统应用可以申请解除资源使用限制，将会触发公共事件服务发布该系统公共事件。
+待机状态下后台应用程序CPU和网络访问被限制，系统应用可以申请解除资源使用限制，将会触发[公共事件服务](../../../basic-services/common-event/common-event-glossary.md#common-event-service-ces公共事件服务)发布该[系统公共事件](../../../basic-services/common-event/common-event-glossary.md#system-common-event系统公共事件)。
 
 资源包括应用网络访问、Timer使用、WorkScheduler任务使用等。
 
@@ -207,7 +207,7 @@
 
 表示系统充电类型改变的公共事件的动作。
 
-当系统充电类型改变时，将会触发事件通知服务发布该系统公共事件。
+当系统充电类型改变时，将会触发事件通知服务发布该[系统公共事件](../../../basic-services/common-event/common-event-glossary.md#system-common-event系统公共事件)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -237,7 +237,7 @@
 
 表示用户已添加到系统中的公共事件的动作。
 
-创建系统账号将会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。
+创建系统账号将会触发事件通知服务发布该[系统公共事件](../../../basic-services/common-event/common-event-glossary.md#system-common-event系统公共事件)，事件携带系统账号ID。
 
 与这个公共事件相关的接口：createOsAccount、createOsAccountForDomain, 这些为系统API，具体参看[@ohos.account.osAccount](../js-apis-osAccount.md)。
 
@@ -267,7 +267,7 @@
 **取值：** "usual.event.USER_REMOVED"
 
 
-### COMMON_EVENT_DOMAIN_ACCOUNT_STATUS_CHANGED
+### COMMON_EVENT_DOMAIN_ACCOUNT_STATUS_CHANGED<sup>10+</sup>
 
 表示域账号状态发生变化。
 
@@ -301,7 +301,7 @@
 **取值：** "usual.event.USER_SWITCHED"
 
 
-### COMMON_EVENT_USER_LOCKING
+### COMMON_EVENT_USER_LOCKING<sup>20+</sup>
 
 表示用户即将被锁定的公共事件的动作。
 
@@ -314,7 +314,7 @@
 **取值：** "usual.event.USER_LOCKING"
 
 
-### COMMON_EVENT_USER_LOCKED
+### COMMON_EVENT_USER_LOCKED<sup>20+</sup>
 
 表示用户锁定完成的公共事件的动作。
 
@@ -331,7 +331,7 @@
 
 表示创建系统账号子身份。
 
-系统账号子身份创建成功时，会触发公共事件服务发布该事件，携带系统账号ID和子身份ID。
+系统账号子身份创建成功时，会触发[公共事件服务](../../../basic-services/common-event/common-event-glossary.md#common-event-service-ces公共事件服务)发布该事件，携带系统账号ID和子身份ID。
 
 **起始版本：** 26.0.0
 
@@ -437,7 +437,7 @@
 
 ## Core File Kit
 
-文件管理子系统面向应用发布如下系统公共事件，应用如需订阅系统公共事件，请参考公共事件[@ohos.commonEventManager](../js-apis-commonEventManager.md)。
+文件管理子系统面向应用发布如下[系统公共事件](../../../basic-services/common-event/common-event-glossary.md#system-common-event系统公共事件)，应用如需订阅系统公共事件，请参考公共事件[@ohos.commonEventManager](../js-apis-commonEventManager.md)。
 
 ### COMMON_EVENT_VOLUME_REMOVED
 
@@ -560,7 +560,7 @@
 
 ## Media Kit
 
-### COMMON_EVENT_SCREEN_SHARE
+### COMMON_EVENT_SCREEN_SHARE<sup>20+</sup>
 
 表示系统中发生了屏幕共享事件。
 
@@ -597,7 +597,7 @@
 
 提示短信接收完成。
 
-在设备接收到短信时，将会触发事件通知服务发布该系统公共事件。
+在设备接收到短信时，将会触发事件通知服务发布该[系统公共事件](../../../basic-services/common-event/common-event-glossary.md#system-common-event系统公共事件)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -665,7 +665,7 @@
 
 **订阅者所需权限：** 无
 
-**取值：** "usual.event.DEFAULT_SMS_SUBSCRIPTION_CHANGED"
+**取值：** "usual.event.SIM.DEFAULT_SMS_SUBSCRIPTION_CHANGED"
 
 
 ### COMMON_EVENT_SIM_CARD_DEFAULT_DATA_SUBSCRIPTION_CHANGED<sup>10+</sup>
@@ -680,7 +680,7 @@
 
 **订阅者所需权限：** 无
 
-**取值：** "usual.event.DEFAULT_DATA_SUBSCRIPTION_CHANGED"
+**取值：** "usual.event.SIM.DEFAULT_DATA_SUBSCRIPTION_CHANGED"
 
 
 ### COMMON_EVENT_SIM_CARD_DEFAULT_MAIN_SUBSCRIPTION_CHANGED<sup>10+</sup>
@@ -740,7 +740,7 @@
 
 **订阅者所需权限：** 无
 
-**取值：** "usual.event.DEFAULT_VOICE_SUBSCRIPTION_CHANGED"
+**取值：** "usual.event.SIM.DEFAULT_VOICE_SUBSCRIPTION_CHANGED"
 
 
 ### COMMON_EVENT_CELLULAR_DATA_STATE_CHANGED<sup>10+</sup>
@@ -800,7 +800,7 @@
 
 **订阅者所需权限：** 无
 
-**取值：** "usual.event.DIALER_SPECIAL_CODE"
+**取值：** "common.event.SPECIAL_CODE"
 
 
 ### COMMON_EVENT_AUDIO_QUALITY_CHANGE<sup>10+</sup>
@@ -826,7 +826,7 @@
 
 （预留事件，暂未支持）提示STK命令。
 
-在发送STK命令时，将会触发事件通知服务发布该系统公共事件。
+在发送STK命令时，将会触发事件通知服务发布该[系统公共事件](../../../basic-services/common-event/common-event-glossary.md#system-common-event系统公共事件)。
 
 **系统接口：** 此接口为系统接口。
 

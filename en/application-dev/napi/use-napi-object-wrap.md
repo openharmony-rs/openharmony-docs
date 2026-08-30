@@ -6,7 +6,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-08-12T06:43:42.491Z pushedAt=2026-08-12T11:16:45.525Z -->
+<!-- md-trans-meta sourceCommit=ce54139d1685b975f701d518f7149cf8c16360b0 translatedAt=2026-08-22T02:13:55.776Z pushedAt=2026-08-22T06:57:21.135Z -->
 
 ## When to Use
 
@@ -182,7 +182,7 @@ You can use **napi_wrap** to wrap a C++ object in an ArkTS object, and use **nap
             MyObject* obj = new MyObject(value);
 
             obj->env_ = env;
-            // Bind the ArkTS object (jsThis) to the C++ object (obj) through napi_wrap.
+            // Bind the ArkTS object jsThis with the C++ object obj through napi_wrap.
             status = napi_wrap(env,
                                jsThis,
                                reinterpret_cast<void*>(obj),

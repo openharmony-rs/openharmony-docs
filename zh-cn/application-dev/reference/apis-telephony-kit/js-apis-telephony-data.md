@@ -120,7 +120,7 @@ getCellularDataFlowType(callback: AsyncCallback\<DataFlowType\>): void
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
-| 201      | Permission denied.                           |
+| 201      | Permission denied. <br>适用版本：22+                          |
 
 **示例：**
 
@@ -159,7 +159,7 @@ getCellularDataFlowType(): Promise\<DataFlowType\>
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
-| 201      | Permission denied.                           |
+| 201      | Permission denied. <br>适用版本：22+                           |
 
 **示例：**
 
@@ -180,7 +180,9 @@ getCellularDataState(callback: AsyncCallback\<DataConnectState\>): void
 
 获取蜂窝数据业务的连接状态，使用callback方式作为异步方法。
 
-**需要权限**：ohos.permission.GET_NETWORK_INFO
+**需要权限**：
+- API版本22之前：N/A
+- API版本22+：ohos.permission.GET_NETWORK_INFO
 
 **系统能力**：SystemCapability.Telephony.CellularData
 
@@ -196,7 +198,7 @@ getCellularDataState(callback: AsyncCallback\<DataConnectState\>): void
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
-| 201      | Permission denied.                           |
+| 201      | Permission denied. <br>适用版本：22+                           |
 
 **示例：**
 
@@ -219,7 +221,9 @@ getCellularDataState(): Promise\<DataConnectState\>
 
 获取蜂窝数据业务的连接状态，使用Promise方式作为异步方法。
 
-**需要权限**：ohos.permission.GET_NETWORK_INFO
+**需要权限**：
+- API版本22之前：N/A
+- API版本22+：ohos.permission.GET_NETWORK_INFO
 
 **系统能力**：SystemCapability.Telephony.CellularData
 
@@ -235,7 +239,7 @@ getCellularDataState(): Promise\<DataConnectState\>
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
-| 201      | Permission denied.                           |
+| 201      | Permission denied. <br>适用版本：22+                           |
 
 **示例：**
 
@@ -277,7 +281,7 @@ isCellularDataEnabled(callback: AsyncCallback\<boolean\>): void
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
-| 8300999  | Internal error.                               |
+| 8300999  | Unknown error.                               |
 
 **示例：**
 
@@ -319,7 +323,7 @@ isCellularDataEnabled(): Promise\<boolean\>
 | 201      | Permission denied.                           |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
-| 8300999  | Internal error.                               |
+| 8300999  | Unknown error.                              |
 
 **示例：**
 
@@ -359,7 +363,7 @@ isCellularDataEnabledSync(): boolean
 | 201      | Permission denied.                           |
 | 8300002  | Operation failed. Cannot connect to service. |
 | 8300003  | System internal error.                       |
-| 8300999  | Internal error.                          |
+| 8300999  | Unknown error code.                          |
 
 **示例：**
 
@@ -404,7 +408,7 @@ isCellularDataRoamingEnabled(slotId: number, callback: AsyncCallback\<boolean\>)
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
-| 8300999  | Internal error.                               |
+| 8300999  | Unknown error.                               |
 
 **示例：**
 
@@ -454,7 +458,7 @@ isCellularDataRoamingEnabled(slotId: number): Promise\<boolean\>
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
-| 8300999  | Internal error.                               |
+| 8300999  | Unknown error.                               |
 
 **示例：**
 
@@ -498,11 +502,11 @@ isCellularDataRoamingEnabledSync(slotId: number): boolean
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 8300001  | Invalid parameter value.                                     |
 | 8300002  | Operation failed. Cannot connect to service.                 |
 | 8300003  | System internal error.                                       |
-| 8300999  | Internal error.                                          |
+| 8300999  | Unknown error code.                                          |
 
 **示例：**
 

@@ -72,7 +72,7 @@ Credential task time out.
 
 **错误描述**
 
-DLP（数据防泄漏，Data Loss Prevention）文件加解密操作在规定时间内未完成，导致操作超时失败。
+DLP（数据防泄露，Data Loss Prevention）文件加解密操作在规定时间内未完成，导致操作超时失败。
 
 **可能原因**
 
@@ -376,7 +376,7 @@ The application is not authorized.
 
 **处理步骤**
 
-请申请加入授信应用名单。<!--RP1--><!--RP1End-->
+后续不支持新增配置支持的授信应用。
 
 <!--Del-->
 ## 19100019 DLP文件已过期

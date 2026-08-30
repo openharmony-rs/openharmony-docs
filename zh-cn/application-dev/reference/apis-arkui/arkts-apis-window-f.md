@@ -28,7 +28,9 @@ createWindow(config: Configuration, callback: AsyncCallback&lt;Window&gt;): void
 
 自由窗口状态下，子窗口参数[decorEnabled](arkts-apis-window-i.md#configuration9)为false时，创建后为沉浸式布局；参数decorEnabled为true，创建后为非沉浸式布局。
 
-**需要权限：** ohos.permission.SYSTEM_FLOAT_WINDOW（仅当创建窗口类型为window.WindowType.TYPE_FLOAT时需要申请）
+**需要权限：**
+- API版本12+：ohos.permission.SYSTEM_FLOAT_WINDOW（仅当创建窗口类型为window.WindowType.TYPE_FLOAT时需要申请）
+- API版本9-11：NA
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -100,7 +102,9 @@ createWindow(config: Configuration): Promise&lt;Window&gt;
 
 自由窗口状态下，子窗口参数[decorEnabled](arkts-apis-window-i.md#configuration9)为false时，创建后为沉浸式布局；参数decorEnabled为true，创建后为非沉浸式布局。
 
-**需要权限：** ohos.permission.SYSTEM_FLOAT_WINDOW（仅当创建窗口类型为window.WindowType.TYPE_FLOAT时需要申请）
+**需要权限：**
+- API版本12+：ohos.permission.SYSTEM_FLOAT_WINDOW（仅当创建窗口类型为window.WindowType.TYPE_FLOAT时需要申请）
+- API版本9-11：NA
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -364,7 +368,7 @@ export default class EntryAbility extends UIAbility {
 ## window.shiftAppWindowFocus<sup>11+</sup>
 shiftAppWindowFocus(sourceWindowId: number, targetWindowId: number): Promise&lt;void&gt;
 
-在同应用内将窗口焦点从源窗口转移到目标窗口，仅支持应用主窗、子窗范围内的焦点转移。使用Promise异步回调。
+在同应用内将窗口焦点从源窗口转移到目标窗口，仅支持应用主窗口、子窗口范围内的焦点转移。使用Promise异步回调。
 
 目标窗口需确保具有获得焦点的能力（可通过[setWindowFocusable()](arkts-apis-window-Window.md#setwindowfocusable9)设置），并确保调用[showWindow()](arkts-apis-window-Window.md#showwindow9)成功且执行完毕。
 
@@ -383,8 +387,8 @@ shiftAppWindowFocus(sourceWindowId: number, targetWindowId: number): Promise&lt;
 
 | 参数名          | 类型   | 必填  | 说明                    |
 | -------------- | ------ | ----- | ----------------------- |
-| sourceWindowId | number | 是    | 源窗口id，必须是获焦状态。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
-| targetWindowId | number | 是    | 目标窗口id。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
+| sourceWindowId | number | 是    | 源窗口ID，必须是获焦状态。该参数应为大于0的整数。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口ID属性。|
+| targetWindowId | number | 是    | 目标窗口ID。该参数应为大于0的整数。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口ID属性。|
 
 **返回值：**
 
@@ -561,8 +565,8 @@ shiftAppWindowTouchEvent(sourceWindowId: number, targetWindowId: number, fingerI
 
 | 参数名          | 类型   | 必填  | 说明                    |
 | -------------- | ------ | ----- | ----------------------- |
-| sourceWindowId | number | 是    | 源窗口id。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。该参数应为大于0的整数，小于等于0时会返回错误码1300016。            |
-| targetWindowId | number | 是    | 目标窗口id。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。该参数应为大于0的整数，小于等于0时会返回错误码1300016。             |
+| sourceWindowId | number | 是    | 源窗口ID。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口ID属性。该参数应为大于0的整数，小于等于0时会返回错误码1300016。            |
+| targetWindowId | number | 是    | 目标窗口ID。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口ID属性。该参数应为大于0的整数，小于等于0时会返回错误码1300016。             |
 | fingerId | number | 是    | 触屏事件的手指唯一标识符。推荐使用[TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent对象说明)对象中touches属性获取id。该参数应为大于等于0的整数，小于0时会返回错误码1300016。             |
 
 **返回值：**
@@ -1009,7 +1013,7 @@ setStartWindowBackgroundColor(moduleName: string, abilityName: string, color: Co
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 801     | Capability not supported.function setStartWindowBackgroundColor can not to work correctly due to limited device capabilities. |
+| 801     | Capability not supported.function setStartWindowBackgroundColor can not work correctly due to limited device capabilities. |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 | 1300016 | Parameter error. Possible cause: Parameter exceeds the allowed length. |
 

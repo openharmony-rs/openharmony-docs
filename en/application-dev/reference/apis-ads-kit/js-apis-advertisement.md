@@ -1,4 +1,4 @@
-# Advertisement
+# Advertisement (Content of the Requested Ad)
 
 <!--Kit: Ads Kit-->
 <!--Subsystem: Advertising-->

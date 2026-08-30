@@ -6,24 +6,138 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-本文提供沉浸光感开发过程中的常见问题及解决措施。沉浸光感的完整能力介绍及开发指导，请参见[沉浸光感](arkts-immersive-light-sense.md)。
+本文提供沉浸光感开发过程中的常见问题及解决措施。沉浸光感的完整能力介绍及开发指导，请参见[沉浸光感简介](arkts-immersive-light-sense-overview.md)。
 
 <!--RP1--><!--RP1End-->
 
 ## 为组件设置了沉浸式系统材质但看不到材质效果
 
+### 组件不在沉浸光感生效范围
+
 **问题现象**
 
-为组件调用了[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)接口设置沉浸式系统材质后，组件的视觉效果没有发生变化，仍然呈现纯色背景或无任何材质表现。
+- 为组件调用了[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)接口开启沉浸光感后，组件没有呈现沉浸光感效果。
+- 日志中存在打印：Material inactive: out of scope. Use component in navigation title bar or Tabbar.
 
 **可能原因**
 
-沉浸式系统材质的视觉层级位于组件的[backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、[backgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9)等属性之下。如果同时设置了不透明的背景色或背景模糊样式，这些属性会覆盖在材质层之上，导致材质效果被遮挡不可见。
+沉浸光感在组件上生效存在约束。通过[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)为组件开启的沉浸光感仅在Navigation或NavDestination标题栏，或Tabs的底部TabBar中生效，范围外的普通组件不显示材质效果。Slider、Toggle不受此范围限制；Popup、Tips、Menu、bindSheet、AlertDialog、CustomDialog、ActionSheet、CalendarPickerDialog、DatePickerDialog、TextPickerDialog、Toast、Select下拉菜单、AlphabetIndexer气泡弹窗等弹窗类组件不受此范围限制。
 
 **解决措施**
 
-1. 将组件的背景色设置为透明（`Color.Transparent`）或移除背景色设置。
-2. 移除[backgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9)等背景模糊样式，避免模糊效果覆盖材质层。
+将需要沉浸光感效果的组件置于Navigation/NavDestination标题栏子树，或横向Tabs中barPosition为BarPosition.End的底部TabBar子树中。
+
+若无法满足生效范围要求，可改用[backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)等通用属性替代材质效果。
+
+**示例**
+
+以下示例展示了分别在Navigation标题栏中和Navigation内容区，开启沉浸光感的显示效果。位于Navigation标题栏中的Column开启沉浸光感正常生效；位于Navigation内容区中的Column组件，因其不处于Navigation标题栏或底部TabBar中，不生效沉浸光感效果。
+ 
+```ts
+import { CircleShape, TitleBarType, uiMaterial } from '@kit.ArkUI';
+ 
+@Entry
+@Component
+struct MaterialScopeAdaptExample {
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+ 
+  @Builder
+  NavigationTitle() {
+    Row() {
+      Text('标题栏')
+        .fontColor('#182431')
+        .fontSize(30)
+        .lineHeight(41)
+        .fontWeight(700)
+      Blank()
+      Column() {
+        SymbolGlyph($r('sys.symbol.a_3d_square_fill'))
+      }
+      .width(50)
+      .height(50)
+      .clipShape(new CircleShape({
+        width: 50,
+        height: 50
+      }))
+      .justifyContent(FlexAlign.Center)
+      .backgroundColor(Color.Transparent)
+      // 在Navigation标题栏中开启沉浸光感，处于生效范围内，沉浸光感效果生效
+      .systemMaterial(new uiMaterial.ImmersiveMaterial({
+        style: uiMaterial.ImmersiveStyle.THIN,
+      }))
+    }
+    .alignItems(VerticalAlign.Center)
+    .width('100%')
+    .padding(16)
+  }
+ 
+  build() {
+    Column() {
+      Navigation() {
+        Column() {
+          Row() {
+            Text('内容区')
+ 
+            Blank()
+ 
+            Column() {
+              SymbolGlyph($r('sys.symbol.a_3d_square_fill'))
+            }
+            .width(50)
+            .height(50)
+            .clipShape(new CircleShape({
+              width: 50,
+              height: 50
+            }))
+            .justifyContent(FlexAlign.Center)
+            .backgroundColor(Color.Transparent)
+            // 在Navigation内容中开启沉浸光感，处于生效范围外，不生效沉浸光感效果
+            .systemMaterial(new uiMaterial.ImmersiveMaterial({
+              style: uiMaterial.ImmersiveStyle.THIN,
+            }))
+          }
+          .width('100%')
+          .padding(16)
+          .borderRadius(16)
+        }
+        .width('100%')
+        .height('100%')
+        .padding(16)
+        .backgroundColor('#FFFFFF')
+        .linearGradient({
+          angle: 0,
+          colors: [
+            ['#004AAF', 0.0],
+            ['#2787D9', 0.5],
+            ['#F0FAFF', 1.0]
+          ]
+        })
+        .justifyContent(FlexAlign.Center)
+        .alignItems(HorizontalAlign.Center)
+      }
+      .title(this.NavigationTitle, { barStyle: BarStyle.STACK })
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+}
+ 
+```
+
+![material_example](./figures/material_example.JPG)
+
+### 背景色或背景模糊遮挡材质效果
+
+**问题现象**
+
+为组件调用了[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)接口开启沉浸光感后，组件的视觉效果没有发生变化，仍然呈现纯色背景或无任何材质表现。
+
+**可能原因**
+
+沉浸光感的视觉层级位于组件的[backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、[backgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9)等属性之下。如果同时设置了不透明的背景色或背景模糊样式，这些属性会覆盖在材质层之上，导致材质效果被遮挡不可见。
+
+**解决措施**
+
+- 将组件的背景色设置为透明（`Color.Transparent`）或移除背景色设置。
+- 移除[backgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9)等背景模糊样式，避免模糊效果覆盖材质层。
 
 **代码示例**
 
@@ -39,7 +153,6 @@ Column() {
   style: uiMaterial.ImmersiveStyle.THIN,
 }))
 .backgroundColor(Color.White)
-
 // 推荐写法：将背景色设为透明，确保材质效果可见
 Column() {
   Text('沉浸光感')
@@ -68,7 +181,7 @@ Column() {
 - 使用较厚的材质样式（如REGULAR、THICK或ULTRA_THICK），降低材质透明度以减少折射效果。
 - 为材质层添加[materialColor](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)赋色，通过叠加一层半透明颜色降低折射的可见程度。
 
-## materialColor使用透明度为0的纯色后材质效果消失
+## materialColor传入不透明颜色后材质效果消失
 
 **问题现象**
 
@@ -126,8 +239,9 @@ new uiMaterial.ImmersiveMaterial({
 
 自动反色功能的生效需要同时满足以下条件。
 
+- 设备算力档位需为高算力或中算力，低算力设备上自动反色不产生视觉效果差异。
 - 材质样式需要为THIN或ULTRA_THIN，在REGULAR、THICK、ULTRA_THICK样式下不生效。
-- 系统沉浸光感的强弱配置影响反色触发阈值，材质越薄、系统沉浸光感设置越强，越容易触发自动反色。
+- 系统沉浸光感的强弱配置影响反色触发阈值，沉浸式系统材质越薄、系统沉浸光感设置越强，越容易触发自动反色。
 - 自动反色仅对通过资源接口设置的颜色值生效，包括[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)组件的[fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontcolor)、[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)组件的[fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#fontcolor)、[SymbolGlyph](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md)组件的[fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#fontcolor)、[Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)组件的[fillColor](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#fillcolor)、TextInput、TextArea、Chip、ChipGroup、SegmentButton、Swiper等组件的颜色属性，完整生效属性清单请参见[colorInvert](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)参数说明。使用代码中硬编码的颜色值（如`Color.White`、`'#FFFFFFFF'`）不会触发自动反色。
 
 **解决措施**
@@ -140,7 +254,7 @@ new uiMaterial.ImmersiveMaterial({
 
 **问题现象**
 
-为组件同时设置了通用属性[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)和沉浸式系统材质后，阴影效果呈现为材质自带的阴影样式，开发者自定义的shadow参数不生效。
+为组件同时设置了通用属性[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)和沉浸式系统材质后，阴影效果呈现为沉浸式系统材质自带的阴影样式，开发者自定义的shadow参数不生效。
 
 **可能原因**
 
@@ -148,7 +262,7 @@ new uiMaterial.ImmersiveMaterial({
 
 **解决措施**
 
-- 如需使用材质自带的阴影效果，无需额外设置shadow属性。
+- 如需使用沉浸式系统材质自带的阴影效果，无需额外设置shadow属性。
 - 如需使用自定义的shadow通用属性，将[applyShadow](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)设置为false。
 
 **代码示例**
@@ -161,7 +275,7 @@ new uiMaterial.ImmersiveMaterial({
 })
 ```
 
-## 通过通用属性systemMaterial设置材质后组件样式显示异常
+## 通过通用属性systemMaterial设置沉浸式系统材质后组件样式显示异常
 
 **问题现象**
 
@@ -169,11 +283,11 @@ new uiMaterial.ImmersiveMaterial({
 
 **可能原因**
 
-通过通用属性设置材质时，如果[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)放在其他样式属性之前，可能导致材质效果优先级与预期不符。
+通过通用属性设置沉浸式系统材质时，如果[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)放在其他样式属性之前，可能导致材质效果优先级与预期不符。
 
 **解决措施**
 
-将[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)放在其他样式属性（如背景色、边框、阴影等）之后设置。通过组件options参数（如Toast的[ShowToastOptions](../reference/apis-arkui/js-apis-promptAction.md#showtoastoptions)、Popup的[PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)等）设置材质时则无需关注设置顺序。
+将[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)放在其他样式属性（如背景色、边框、阴影等）之后设置。通过组件options参数（如Toast的[ShowToastOptions](../reference/apis-arkui/js-apis-promptAction.md#showtoastoptions)、Popup的[PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)等）设置沉浸式系统材质时则无需关注设置顺序。
 
 **代码示例**
 
@@ -203,9 +317,9 @@ Column() {
 
 **解决措施**
 
-- 移除与材质冲突的属性设置（如backgroundColor、backgroundBlurStyle、shadow），让材质效果默认开启。
-- 在ENABLE模式下，沉浸式系统材质样式的优先级高于组件本身设置的背景色、模糊、阴影和边框样式，且更多组件会默认开启材质。
-- 如需在保留现有属性的同时使用材质，通过[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)属性主动设置。
+- 移除与沉浸式系统材质冲突的属性设置（如backgroundColor、backgroundBlurStyle、shadow），让材质效果默认开启。
+- 在ENABLE模式下，沉浸式系统材质样式的优先级高于组件本身设置的背景色、模糊、阴影和边框样式，且更多组件会默认开启沉浸式系统材质。
+- 如需在保留现有属性的同时使用沉浸式系统材质，通过[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)属性主动设置。
 
 
 ## 材质渲染区域与组件可视区域不一致
@@ -224,7 +338,7 @@ Column() {
 
 **可能原因**
 
-材质渲染区域由组件布局区域决定，而组件可视区域为实际呈现内容，可能不等于布局区域，导致两者不一致。
+材质渲染区域由组件布局区域决定，而组件可视区域为实际呈现内容的区域，可能不等于布局区域，导致两者不一致。
 
 **解决措施**
 

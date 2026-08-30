@@ -6,7 +6,7 @@
 <!--Designer: @Maplestory91-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=deda4f19015dd8c61f2e0d855c3c53292d681c7b translatedAt=2026-07-31T01:35:29.798Z pushedAt=2026-07-31T08:25:40.850Z -->
+<!-- md-trans-meta sourceCommit=946ced8610d4a456a6fd95b0b91c3eb5f8a70593 translatedAt=2026-08-22T01:24:15.713Z pushedAt=2026-08-22T02:28:36.683Z -->
 
 ## Overview
 
@@ -26,7 +26,7 @@ ArkCompiler runtime captures process exceptions. The fault log generation proces
 
 ## Constraints
 
-Throwing an exception in an asynchronous function modified by **async** does not cause a JS crash that leads to an app crash. You can observe the exception through [errorManager.on('error')](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror). For sample code, see [Exception Handling in Async Functions](../arkts-utils/arkts-runtime-faq.md#exception-handling-in-async-functions). Starting from **API version 26.0.0**, when the app has registered ErrorManager to observe exceptions, exceptions other than non-catchable types (currently only OutOfMemoryError) will not generate HiAppEvent events for reporting.
+Actively throwing an exception in an async function does not cause a JS crash. You can observe the exception through [errorManager.on('error')](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror). For sample code, see [Exception Handling in Async Functions](../arkts-utils/arkts-runtime-faq.md#exception-handling-in-async-functions).
 
 ## Obtaining Logs
 
@@ -81,7 +81,8 @@ The fault log file name format is **jscrash-Process name-Process UID-Millisecond
 | SubmitterStacktrace | Submitter thread stack.| 20 | No| By default, the asynchronous thread stack tracing functionality is enabled only in the ARM 64-bit system.<br>For versions earlier than API version 22, the functionality of submitting asynchronous tasks by third-party and system applications through [libuv](../reference/native-lib/libuv.md) and [ffrt](../reference/apis-ffrt-kit/capi-ffrt.md) is enabled only in the debug version by default.<br>Since API version 22, the functionality of submitting asynchronous tasks by third-party applications through **libuv** is enabled by default in both debug and release versions. The functionality of submitting asynchronous tasks by third-party and system applications through **ffrt** is enabled by default only in the debug version.|
 | HiLog | HiLog logs printed before the fault occurs. A maximum of 1000 lines can be printed.| 20 | Yes| - |
 | AsyncStack | Promise stack.| 23 | No| In ARM64, if the promise stack is enabled, this field is contained.|
-| ModuleImportStack | Module loading chain. | 26.0.0 | No | On ARM 64-bit systems, this field is included if the [module loading chain debug switch](../arkts-utils/arkts-module-debug.md) is enabled. |
+| ModuleImportStack | Module loading chain. | 26.0.0 | No | On ARM 64-bit systems, this field is included if the module loading chain debug switch is enabled. |
+| NativeModuleErrorInfo | .so load failure information, up to 20 load failure records | 26.0.0 | Yes | - |
 
 Example of the JS crash log specifications:
 
@@ -362,6 +363,25 @@ HiLog:
 ...
 ```
 
+### NativeModuleErrorInfo
+
+The NativeModuleErrorInfo in the JS crash log can record up to 20 earliest .so loading failure entries. If the total exceeds 20, search for the keyword `Load native module failed` in hilog to check whether any .so loading failures occurred. The format of NativeModuleErrorInfo is as follows:
+
+```text
+...
+Stacktrace:
+...
+HybridStack:
+...
+NativeModuleErrorInfo:
+There are a total of 2 SO loading failure messages, and 2 of them are displayed here.
+#1 ModuleName:module1 Reason:dlopen failed: load module default/module1 failed.
+#2 ModuleName:module2 Reason:dlopen failed: load module default/module2 failed.
+...
+HiLog:
+...
+```
+
 ## JsCrash Clustering
 
 JsCrash clustering information starts with the `Stacktrace:` field and includes the call stack of `HybridStack:` on ARM 64-bit systems.
@@ -389,5 +409,3 @@ HybridStack:
 ```
 
 The clustering method is the same as that for Cpp Crash. For details, see [CppCrash Clustering](cppcrash-guidelines.md#cppcrash-clustering).
-
-<!--no_check-->

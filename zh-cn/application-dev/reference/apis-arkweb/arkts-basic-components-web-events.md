@@ -14,7 +14,7 @@ Web组件事件模块是ArkWeb框架中Web组件的事件回调接口集合，�
 
 > **说明：**
 >
-> - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 示例效果请以真机运行为准。
 
@@ -1250,7 +1250,7 @@ onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceRespon
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
-    responseWeb: webview.WebResourceResponse = new webview.WebResourceResponse();
+    responseWeb: WebResourceResponse = new WebResourceResponse();
     heads: Header[] = new Array();
     webData: string = "<!DOCTYPE html>\n" +
       "<html>\n" +

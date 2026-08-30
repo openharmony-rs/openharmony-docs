@@ -13,7 +13,7 @@ ArkUI provides the WaterFlow container component for building a waterfall layout
 
 > **NOTE**
 >
-> This topic presents key code excerpts. For complete executable code, see the [WaterFlow example](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md#example).
+> This topic presents key code excerpts. For complete executable code, see the [WaterFlow example](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md#examples).
 
 ## Layout and Constraints
 

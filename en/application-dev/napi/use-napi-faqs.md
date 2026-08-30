@@ -1,4 +1,4 @@
-# Node-API FAQs
+# FAQs
 
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

@@ -254,7 +254,7 @@ Chrome浏览器比重图（Heavy）的时间并不是实际时间，而是通过
 
     图14 **JavaScript Profile视图布局**
 
-   ![JavaScript Profile视图布局](figures/javascript-profiler-view.png)
+   ![JavaScript Profiler视图布局](figures/javascript-profiler-view.png)
 
 ### hdc shell命令采集
 
@@ -357,7 +357,7 @@ Chrome浏览器比重图（Heavy）的时间并不是实际时间，而是通过
     // code block
     // ...
     // code block
-    hidebug.stopJsCpuProfiling("filename");
+    hidebug.stopJsCpuProfiling();
     ```
 
 2. 启动并操作应用，复现待分析场景，确保插桩代码行能执行到。
@@ -372,7 +372,7 @@ Chrome浏览器比重图（Heavy）的时间并不是实际时间，而是通过
     hdc file recv /data/app/el2/0/base/com.ohos.example/files/filename.json ./filename.cpuprofile
     ```
 
-4. 将 `filename.cpuprofile` 文件导入**Chrome浏览器 > JavaScript Profiler**进行分析，具体可见 [Chrome浏览器javascript-profiler工具视图](#chrome浏览器javascript-profiler工具视图)。
+4. 将 `filename.cpuprofile` 文件导入**Chrome浏览器 > JavaScript Profiler**进行分析，具体可见 [Chrome浏览器JavaScript Profiler工具视图](#chrome浏览器javascript-profiler工具视图)。
 
     图16 **加载cpuprofile文件**
 

@@ -16,7 +16,7 @@ This component is implemented based on [state management V2](../../../ui/state-m
 >
 > - This component can only be used in the stage model.
 >
-> - If [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) are set for **ComposeListItemV2**, the compilation toolchain will generate an additional node __Common__ and mount the universal attributes or universal events on __Common__, rather than directly applying them to **ComposeListItemV2** itself. This may cause the set universal attributes or universal events to not take effect or behave unexpectedly. Therefore, it is not recommended to set universal attributes and universal events on **ComposeListItemV2**.
+> - If [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) are set for **ComposeListItemV2**, the compilation toolchain will generate an additional node \_\_Common\_\_ and mount the universal attributes or universal events on \_\_Common\_\_, rather than directly applying them to **ComposeListItemV2** itself. This may cause the set universal attributes or universal events to not take effect or behave unexpectedly. Therefore, it is not recommended to set universal attributes and universal events on **ComposeListItemV2**.
 
 **Since:** 26.0.0
 
@@ -516,7 +516,7 @@ struct ComposeListItemV2Example {
 }
 ```
 
-![Example 1 - ComposeListItemV2 left and right elements + text](figures/image-composelistitemv2-demo-01.jpg)
+<!--Del--> <!--DelEnd-->
 
 ### Example 2: Setting Custom Announcements for Different Right Elements of the List Item
 
@@ -608,7 +608,7 @@ struct ComposeListItemV2Example {
 }
 ```
 
-![Example 2 - ComposeListItemV2: Setting custom announcement for right elements of a list item](figures/image-composelistitemv2-demo-02.png)
+<!--Del--> <!--DelEnd-->
 
 ### Example 3: Setting Symbol Icons
 
@@ -691,5 +691,4 @@ struct ComposeListItemV2Example {
 }
 ```
 
-![Example 3 - ComposeListItemV2 with Symbol type icon](figures/image-composelistitemv2-demo-03.png)
-<!--no_check-->
+<!--Del--> <!--DelEnd-->

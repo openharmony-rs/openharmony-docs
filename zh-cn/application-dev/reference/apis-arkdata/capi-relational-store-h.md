@@ -1733,8 +1733,8 @@ typedef void (*Rdb_BriefObserver)(void *context, const char *values[], uint32_t 
 | 参数项 | 描述 |
 | -- | -- |
 | void *context | 表示数据观察者的上下文。 |
-| const char *values[] |  表示更改的端云帐户。 |
-| uint32_t count | 表示更改的端云帐户数量。 |
+| const char *values[] |  表示更改的端云账户。 |
+| uint32_t count | 表示更改的端云账户数量。 |
 
 ### Rdb_DetailsObserver()
 
@@ -2039,7 +2039,7 @@ OH_Cursor *OH_Rdb_QueryLockedRow(OH_Rdb_Store *store, OH_Predicates *predicates,
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Cursor](capi-rdb-oh-cursor.md) | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针，否则返回NULL。 |
+| [OH_Cursor](capi-rdb-oh-cursor.md) * | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针，否则返回NULL。 |
 
 ### OH_Rdb_CreateTransaction()
 

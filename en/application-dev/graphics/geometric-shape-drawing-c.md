@@ -6,7 +6,7 @@
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=45d007888500c3db30c8747107b925a4f589723f translatedAt=2026-08-03T11:19:39.612Z pushedAt=2026-08-04T06:42:36.674Z -->
+<!-- md-trans-meta sourceCommit=7fa9bdd4667c105b22f0d6acf550a50bf15bd338 translatedAt=2026-08-22T01:33:57.129Z pushedAt=2026-08-22T03:30:07.612Z -->
 
 ## Overview
 
@@ -30,22 +30,22 @@ Most geometric shapes can be drawn using a pen or brush. Points can only be draw
 
 ## Available APIs
 
-The following table lists the APIs for drawing geometric shapes. For details, see [drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md).
+The following table lists the commonly used APIs for drawing geometric shapes. For details about usage and parameters, see [drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md), [drawing_point.h](../reference/apis-arkgraphics2d/capi-drawing-point-h.md), [drawing_rect.h](../reference/apis-arkgraphics2d/capi-drawing-rect-h.md), [drawing_path.h](../reference/apis-arkgraphics2d/capi-drawing-path-h.md), [drawing_region.h](../reference/apis-arkgraphics2d/capi-drawing-region-h.md), and [drawing_round_rect.h](../reference/apis-arkgraphics2d/capi-drawing-round-rect-h.md).
 
 | API| Description|
 | -------- | -------- |
-| OH_Drawing_Point\* OH_Drawing_PointCreate (float x, float y) | Creates a coordinate point object.|
-| OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPoint (OH_Drawing_Canvas \*canvas, const OH_Drawing_Point2D \*point) | Draws a point.|
-| OH_Drawing_Rect\* OH_Drawing_RectCreate (float left, float top, float right, float bottom) | Creates a rectangle object.|
-| void OH_Drawing_CanvasDrawArc (OH_Drawing_Canvas\*, const OH_Drawing_Rect\*, float startAngle, float sweepAngle) | Draws an arc.|
-| void OH_Drawing_CanvasDrawCircle (OH_Drawing_Canvas\*, const OH_Drawing_Point\*, float radius) | Draws a circle.|
-| OH_Drawing_Path\* OH_Drawing_PathCreate (void) | Creates a path object.|
-| void OH_Drawing_CanvasDrawPath (OH_Drawing_Canvas\*, const OH_Drawing_Path\*) | Draws a path.|
-| OH_Drawing_Region\* OH_Drawing_RegionCreate (void) | Creates a region object.|
-| void OH_Drawing_CanvasDrawRegion (OH_Drawing_Canvas\*, const OH_Drawing_Region\*) | Draws a region.|
-| void OH_Drawing_CanvasDrawRect (OH_Drawing_Canvas\*, const OH_Drawing_Rect\*) | Draws a rectangle.|
-| OH_Drawing_RoundRect\* OH_Drawing_RoundRectCreate (const OH_Drawing_Rect\*, float xRad, float yRad) | Creates a rounded rectangle object.|
-| void OH_Drawing_CanvasDrawRoundRect (OH_Drawing_Canvas\*, const OH_Drawing_RoundRect\*) | Draws a rounded rectangle.|
+| OH_Drawing_Point\* OH_Drawing_PointCreate(float x, float y) | Creates an **OH_Drawing_Point** object. |
+| OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPoint(OH_Drawing_Canvas \*canvas, const OH_Drawing_Point2D \*point) | Draws a point. |
+| OH_Drawing_Rect\* OH_Drawing_RectCreate(float left, float top, float right, float bottom) | Creates a rectangle object. |
+| void OH_Drawing_CanvasDrawArc(OH_Drawing_Canvas \*canvas, const OH_Drawing_Rect \*rect, float startAngle, float sweepAngle) | Draws an arc. |
+| void OH_Drawing_CanvasDrawCircle(OH_Drawing_Canvas \*canvas, const OH_Drawing_Point \*point, float radius) | Draws a circle. |
+| OH_Drawing_Path\* OH_Drawing_PathCreate(void) | Creates a path object. |
+| void OH_Drawing_CanvasDrawPath(OH_Drawing_Canvas \*canvas, const OH_Drawing_Path \*path) | Draws a path. |
+| OH_Drawing_Region\* OH_Drawing_RegionCreate(void) | Creates a region object. |
+| void OH_Drawing_CanvasDrawRegion(OH_Drawing_Canvas \*canvas, const OH_Drawing_Region \*region) | Draws a region. |
+| void OH_Drawing_CanvasDrawRect(OH_Drawing_Canvas \*canvas, const OH_Drawing_Rect \*rect) | Draws a rectangle. |
+| OH_Drawing_RoundRect\* OH_Drawing_RoundRectCreate(const OH_Drawing_Rect \*rect, float xRad, float yRad) | Creates a rounded rectangle object. |
+| void OH_Drawing_CanvasDrawRoundRect(OH_Drawing_Canvas \*canvas, const OH_Drawing_RoundRect \*roundRect) | Draws a rounded rectangle. |
 
 ## Drawing Points
 

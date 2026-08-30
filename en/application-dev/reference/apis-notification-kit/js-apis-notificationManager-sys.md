@@ -2502,7 +2502,7 @@ Sets whether to enable distributed notification for a specified application. Thi
 
 **Deprecated since**: 26.0.0
 
-**Substitutes**: [setDistributedEnabledByBundle] (#notificationmanagersetdistributedenabledbybundle12)
+**Substitutes**: [setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2567,7 +2567,7 @@ Sets whether to enable distributed notification for a specified application. Thi
 
 **Deprecated since**: 26.0.0
 
-**Substitutes**: [setDistributedEnabledByBundle] (#notificationmanagersetdistributedenabledbybundle12)
+**Substitutes**: [setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2632,7 +2632,7 @@ Checks whether distributed notification is enabled for a specified application. 
 
 **Deprecated since**: 26.0.0
 
-**Substitutes**: [isDistributedEnabledByBundle] (#notificationmanagerisdistributedenabledbybundle12)
+**Substitutes**: [isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2693,7 +2693,7 @@ Checks whether distributed notification is enabled for a specified application. 
 
 **Deprecated since**: 26.0.0
 
-**Substitutes**: [isDistributedEnabledByBundle] (#notificationmanagerisdistributedenabledbybundle12)
+**Substitutes**: [isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)
 
 **System capability**: SystemCapability.Notification.Notification
 

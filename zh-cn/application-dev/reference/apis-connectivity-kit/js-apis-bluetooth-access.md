@@ -202,6 +202,9 @@ getState(): BluetoothState
 
 获取蓝牙开关状态。
 
+**需要权限**：
+- API版本10-12：ohos.permission.ACCESS_BLUETOOTH
+
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
@@ -240,6 +243,9 @@ try {
 on(type: 'stateChange', callback: Callback&lt;BluetoothState&gt;): void
 
 订阅本端蓝牙开关状态变化事件。使用Callback异步回调。从API18开始不再校验ohos.permission.ACCESS_BLUETOOTH权限。
+
+**需要权限**：
+- API版本10-17：ohos.permission.ACCESS_BLUETOOTH
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -283,6 +289,9 @@ try {
 off(type: 'stateChange', callback?: Callback&lt;BluetoothState&gt;): void
 
 取消订阅本端蓝牙开关状态变化事件。从API18开始不再校验ohos.permission.ACCESS_BLUETOOTH权限。
+
+**需要权限**：
+- API版本10-17：ohos.permission.ACCESS_BLUETOOTH
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 

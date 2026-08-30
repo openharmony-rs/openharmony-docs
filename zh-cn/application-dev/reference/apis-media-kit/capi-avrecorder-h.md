@@ -65,7 +65,7 @@ OH_AVRecorder *OH_AVRecorder_Create(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVRecorder](capi-avrecorder-oh-avrecorder.md) | 成功时返回指向OH_AVRecorder实例的指针，用于后续的录制操作（如Prepare、Start、Pause等）；失败时返回nullptr。 |
+| [OH_AVRecorder](capi-avrecorder-oh-avrecorder.md) * | 成功时返回指向OH_AVRecorder实例的指针，用于后续的录制操作（如Prepare、Start、Pause等）；失败时返回nullptr。 |
 
 ### OH_AVRecorder_Prepare()
 

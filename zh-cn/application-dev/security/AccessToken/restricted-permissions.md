@@ -13,7 +13,7 @@
 
 以下权限的开放范围为普通应用，但需要通过[访问控制列表（ACL）](app-permission-mgmt-overview.md#权限机制中的基本概念)的方式跨级别申请。
 
-normal等级的应用需要将自身的APL等级声明为system_basic及以上，在开发应用安装包时，需要修改应用的HarmonyAppProvision配置文件即SDK目录下的“`Toolchains / _{Version} _/ lib / UnsignedReleasedProfileTemplate.json`”文件，并重新进行应用签名。
+normal等级的应用需要将自身的APL等级声明为system_basic及以上，在开发应用安装包时，需要修改应用的HarmonyAppProvision配置文件即SDK目录下的“`Toolchains / _{Version} _/ lib / UnsgnedReleasedProfileTemplate.json`”文件，并重新进行应用签名。
 
 **修改方式：**
 
@@ -569,7 +569,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **起始版本**：13
 
-**变更信息**：API 13，该权限仅面向MDM应用开放；从API 14开始，开放范围从MDM应用变为更为企业普通应用；从API 16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放。
+**变更信息**：API 13，该权限仅面向MDM应用开放；从API 14开始，开放范围从MDM应用变更为企业普通应用；从API 16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放。
 
 ## ohos.permission.kernel.DISABLE_GOTPLT_RO_PROTECTION
 
@@ -813,20 +813,6 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 **支持设备**:  Phone | PC/2in1 | Tablet
 
 **起始版本**: 20
-
-<!--Del-->
-## ohos.permission.atomicService.MANAGE_STORAGE
-
-允许原子化服务申请差异化的存储空间大小。
-
-**权限级别**：system_basic
-
-**授权方式**: 系统授权（system_grant）
-
-**支持设备**: Phone | PC/2in1 | Tablet
-
-**起始版本**: 20
-<!--DelEnd-->
 
 ## ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM
 
@@ -1108,7 +1094,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 ## ohos.permission.SET_WINDOW_ALPHA
 
-允许应用设置主窗容器透明。
+允许应用设置主窗口容器透明。
 
 获取该权限后，应用可以设置主窗口容器背景色。
 
@@ -1124,7 +1110,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 ## ohos.permission.MANAGE_CALL_FOR_DEVICES
 
-允许应用管理通话状态。如获取来电号码、接听、拒接、挂断等.
+允许应用管理通话状态。如获取来电号码、接听、拒接、挂断等。
 
 <!--RP64--><!--RP64End-->
 
@@ -1311,7 +1297,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 **起始版本**：26.0.0
 
 ## ohos.permission.MANAGE_SKILL
-    
+
 允许应用使用skill的能力。
 
 获取该权限后，应用可以：
@@ -1348,7 +1334,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 允许应用访问游戏伴随服务。
 
-获取该权限后，应用可使用游戏伴随服务提供的接口，比如获取正在运行的游戏应用截图、通过麦克风获取用户语音数据等。
+获取该权限后，应用可使用游戏伴随服务提供的接口，比如获取正在运行的游戏应用截图、获取游戏应用前后台状态等。
 
 <!--RP93--><!--RP93End-->
 

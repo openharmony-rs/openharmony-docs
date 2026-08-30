@@ -5,8 +5,8 @@
 <!--Owner: @chenkun613227-->
 <!--Designer: @yxc2-->
 <!--Tester: @zengxi_3007-->
-<!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=2c4efd24da9b5c0e73791677e0324b0efa690b44 translatedAt=2026-08-11T01:56:13.659Z pushedAt=2026-08-12T03:31:42.069Z -->
+<!--Adviser: @zzs911-->
+<!-- md-trans-meta sourceCommit=9debe03e456cd9546017cca228787eecf595247b translatedAt=2026-08-22T02:11:25.393Z pushedAt=2026-08-22T06:49:25.737Z -->
 
 ## Basic Concepts
 

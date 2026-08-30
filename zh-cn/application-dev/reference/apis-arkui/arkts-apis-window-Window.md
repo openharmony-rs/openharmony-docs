@@ -389,7 +389,7 @@ moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. The main windows in non-freeform window mode are not supported.              |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -453,7 +453,7 @@ moveWindowTo(x: number, y: number): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. The main windows in non-freeform window mode are not supported.              |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -833,7 +833,7 @@ clientToGlobalDisplay(winX: number, winY: number): Position
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300010 | The operation in the current window status is invalid. |
 | 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. |
 
@@ -879,7 +879,7 @@ globalDisplayToClient(globalDisplayX: number, globalDisplayY: number): Position
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300010 | The operation in the current window status is invalid. |
 | 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. |
 
@@ -1704,7 +1704,9 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 
 在OpenHarmony 5.0.2之前，该接口在所有设备中可正常调用。
 
-从OpenHarmony 5.0.2开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态时生效；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
+从OpenHarmony 5.0.2开始至OpenHarmony 5.1.1之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于自由窗口状态的设备及不支持自由窗口状态的设备上可正常调用。
+
+从OpenHarmony 5.1.1开始，该接口在PC/2in1设备、其他设备的[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)调用不生效也不报错；在其他设备和其他模式中可正常调用。
 
 **参数：**
 
@@ -1778,7 +1780,9 @@ setImmersiveModeEnabledState(enabled: boolean): void
 
 在OpenHarmony 5.0.2之前，该接口在所有设备中可正常调用。
 
-从OpenHarmony 5.0.2开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
+从OpenHarmony 5.0.2开始至OpenHarmony 5.1.1之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于自由窗口状态的设备及不支持自由窗口状态的设备上可正常调用。
+
+从OpenHarmony 5.1.1开始，该接口在PC/2in1设备、其他设备的[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)调用不生效也不报错；在其他设备和其他模式中可正常调用。
 
 **参数：**
 
@@ -2039,7 +2043,7 @@ setDragKeyFramePolicy(keyFramePolicy: KeyFramePolicy): Promise&lt;KeyFramePolicy
 | 错误码ID | 错误信息                                      |
 | ------- | --------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.               |
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation.                       |
 | 1300016 | Parameter error. Possible cause: 1. Invalid parameter range; 2. The parameter format is incorrect.|
@@ -2297,7 +2301,7 @@ export default class EntryAbility extends UIAbility {
       let systemBarProperties: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
-        // 以下两个属性从API Version8开始支持
+        // 以下两个属性从API version 8开始支持
         statusBarContentColor: '#ffffff',
         navigationBarContentColor: '#00ffff'
       };
@@ -3549,7 +3553,7 @@ try {
 
 on(type: 'keyboardHeightChange', callback: Callback&lt;number&gt;): void
 
-开启固定态软键盘高度变化的监听。当软键盘从本窗口唤出且与窗口有重叠区域时，通知键盘高度变化。从API version 10开始，有关将软键盘设置为固定态或悬浮态的方法，请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+开启固定态软键盘高度变化的监听。当软键盘从本窗口唤出且与窗口有重叠区域时，通知键盘高度变化。从API version 10开始，将软键盘设置为固定态或悬浮态的方法，请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3588,7 +3592,7 @@ try {
 
 off(type: 'keyboardHeightChange', callback?: Callback&lt;number&gt;): void
 
-关闭固定态软键盘高度变化的监听，使应用程序不再接收键盘高度变化的通知。从API version 10开始，有关将软键盘设置为固定态或悬浮态的方法，请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+关闭固定态软键盘高度变化的监听，使应用不再接收键盘高度变化的通知。从API version 10开始，将软键盘设置为固定态或悬浮态的方法，请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3634,7 +3638,7 @@ on(type: 'keyboardWillShow', callback: Callback&lt;KeyboardInfo&gt;): void
 
 开启固定态软键盘即将开始显示的监听。此监听在固定态软键盘即将开始显示或软键盘由悬浮态切换为固定态时触发，仅对当前拉起或隐藏固定态软键盘的应用窗口生效。对于虚拟屏上应用拉起输入法键盘到主屏上，输入法键盘显隐通知只会给主屏上获焦窗口，而不是虚拟屏上应用窗口。
 
-改变软键盘为固定态或者悬浮态方法详细介绍请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+将软键盘设置为固定态或悬浮态的方法请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3678,13 +3682,13 @@ try {
 
 off(type: 'keyboardWillShow', callback?: Callback&lt;KeyboardInfo&gt;): void
 
-关闭固定态软键盘即将开始显示的监听。改变输入法窗口为固定态或者悬浮态方法详细介绍请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+关闭固定态软键盘即将开始显示的监听。将软键盘设置为固定态或悬浮态的方法请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在Phone设备、Tablet设备和PC/2in1设备上可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在Phone设备、Tablet设备和PC/2in1设备上可正常调用，在其他设备中不报错不生效。
 
 **参数：**
 
@@ -3727,7 +3731,7 @@ on(type: 'keyboardWillHide', callback: Callback&lt;KeyboardInfo&gt;): void
 
 开启固定态软键盘即将开始隐藏的监听。此监听在固定态软键盘即将开始隐藏或软键盘由固定态切换为悬浮态时触发，仅对当前拉起或隐藏固定态软键盘的应用窗口生效。对于虚拟屏上应用拉起输入法键盘到主屏上，输入法键盘显隐通知只会给主屏上获焦窗口，而不是虚拟屏上应用窗口。
 
-改变软键盘为固定态或者悬浮态方法详细介绍请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+将软键盘设置为固定态或悬浮态的方法请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3777,7 +3781,7 @@ off(type: 'keyboardWillHide', callback?: Callback&lt;KeyboardInfo&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在Phone设备、Tablet设备和PC/2in1设备上可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在Phone设备、Tablet设备和PC/2in1设备上可正常调用，在其他设备中不报错不生效。
 
 **参数：**
 
@@ -3820,7 +3824,7 @@ on(type: 'keyboardDidShow', callback: Callback&lt;KeyboardInfo&gt;): void
 
 开启固定态软键盘显示动画完成的监听。此监听在固定态软键盘显示动画完成或软键盘由悬浮态切换至固定态时触发，仅对当前拉起或隐藏固定态软键盘的应用窗口生效。对于虚拟屏上应用拉起输入法键盘到主屏上，输入法键盘显隐通知只会给主屏上获焦窗口，而不是虚拟屏上应用窗口。
 
-改变软键盘为固定态或者悬浮态方法详细介绍请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+将软键盘设置为固定态或悬浮态的方法请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -3862,7 +3866,7 @@ try {
 
 off(type: 'keyboardDidShow', callback?: Callback&lt;KeyboardInfo&gt;): void
 
-关闭固定态软键盘显示动画完成的监听。改变输入法窗口为固定态或者悬浮态方法详细介绍请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+关闭固定态软键盘显示动画完成的监听。将软键盘设置为固定态或悬浮态的方法请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -3910,7 +3914,7 @@ on(type: 'keyboardDidHide', callback: Callback&lt;KeyboardInfo&gt;): void
 
 开启固定态软键盘隐藏动画完成的监听。此监听在固定态软键盘隐藏动画完成或软键盘由固定态切换至悬浮态时触发，仅对当前拉起或隐藏固定态软键盘的应用窗口生效。对于虚拟屏上应用拉起输入法键盘到主屏上，输入法键盘显隐通知只会给主屏上获焦窗口，而不是虚拟屏上应用窗口。
 
-改变软键盘为固定态或者悬浮态方法详细介绍请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+将软键盘设置为固定态或悬浮态的方法请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -3952,7 +3956,7 @@ try {
 
 off(type: 'keyboardDidHide', callback?: Callback&lt;KeyboardInfo&gt;): void
 
-关闭固定态软键盘隐藏动画完成的监听。改变输入法窗口为固定态切换至悬浮态方法详细介绍请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+关闭固定态软键盘隐藏动画完成的监听。将软键盘设置为固定态或悬浮态的方法请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -4208,7 +4212,7 @@ off(type: 'screenshotAppEvent', callback?: Callback&lt;ScreenshotEventType&gt;):
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -4450,7 +4454,7 @@ off(type: 'displayIdChange', callback?: Callback&lt;number&gt;): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 
 **示例：**
 
@@ -4539,7 +4543,7 @@ off(type: 'windowVisibilityChange', callback?: Callback&lt;boolean&gt;): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -4624,7 +4628,7 @@ off(type: 'occlusionStateChanged', callback?: Callback&lt;OcclusionState&gt;): v
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -4706,7 +4710,7 @@ off(type: 'frameMetricsMeasured', callback?: Callback&lt;FrameMetrics&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 
 **示例：**
 
@@ -4798,7 +4802,7 @@ off(type: 'systemDensityChange', callback?: Callback&lt;number&gt;): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 
 **示例：**
 
@@ -4884,7 +4888,7 @@ off(type: 'noInteractionDetected', callback?: Callback&lt;void&gt;): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -5011,7 +5015,7 @@ on(type: 'windowStatusDidChange', callback: Callback&lt;WindowStatusType&gt;): v
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -5047,7 +5051,7 @@ off(type: 'windowStatusDidChange', callback?: Callback&lt;WindowStatusType&gt;):
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 
 **示例：**
 
@@ -5191,7 +5195,7 @@ off(type: 'windowTitleButtonRectChange', callback?: Callback&lt;TitleButtonRect&
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created. |
 
 **示例：**
 
@@ -5238,7 +5242,7 @@ on(type:  'windowRectChange', callback: Callback&lt;RectChangeOptions&gt;): void
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -5278,7 +5282,7 @@ off(type: 'windowRectChange', callback?: Callback&lt;RectChangeOptions&gt;): voi
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -5320,7 +5324,7 @@ on(type: 'rectChangeInGlobalDisplay', callback: Callback&lt;RectChangeOptions&gt
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -5359,7 +5363,7 @@ off(type: 'rectChangeInGlobalDisplay', callback?: Callback&lt;RectChangeOptions&
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -5455,7 +5459,7 @@ off(type: 'subWindowClose', callback?: Callback&lt;void&gt;): void
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only subwindows are supported. |
 
 **示例：**
@@ -5571,7 +5575,7 @@ off(type: 'windowWillClose', callback?: Callback&lt;void, Promise&lt;boolean&gt;
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Not called from mainWindow or subWindow. |
 
 **示例：**
@@ -5631,7 +5635,7 @@ on(type: 'windowHighlightChange', callback: Callback&lt;boolean&gt;): void
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -5671,7 +5675,7 @@ off(type: 'windowHighlightChange', callback?: Callback&lt;boolean&gt;): void
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -5719,7 +5723,7 @@ on(type: 'rotationChange', callback: RotationChangeCallback&lt;RotationChangeInf
 | 参数名   | 类型                           | 必填 | 说明                                                     |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
 | type     | string                         | 是   | 监听事件，固定为'rotationChange'，即窗口旋转变化事件。 |
-| callback | RotationChangeCallback&lt;[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19), [RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| void&gt; | 是 | 回调函数。返回窗口旋转信息[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)，应用返回当前窗口变化结果[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)。   |
+| callback | [RotationChangeCallback](arkts-apis-window-t.md#rotationchangecallback19)&lt;[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19), [RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| void&gt; | 是 | 回调函数。返回窗口旋转信息[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)，应用返回当前窗口变化结果[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)。 |
 
 **错误码：**
 
@@ -5837,7 +5841,7 @@ off(type: 'rotationChange', callback?: RotationChangeCallback&lt;RotationChangeI
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -5919,7 +5923,7 @@ off(eventType: 'uiExtensionSecureLimitChange', callback?: Callback&lt;boolean&gt
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Function off('uiExtensionSecureLimitChange') cannot work correctly due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -6285,18 +6289,18 @@ setWindowBrightness(brightness: number, callback: AsyncCallback&lt;void&gt;): vo
 
 设置主窗口亮度只会影响当前设备内置屏的屏幕亮度，无法修改外接屏、[虚拟屏](../../displaymanager/display-terminology.md#虚拟屏)（如投屏所在的屏幕）的屏幕亮度（内置屏和外接屏具体请见[实体屏](../../displaymanager/display-terminology.md#实体屏)）。
 
-当接口入参为-1时，窗口亮度恢复为系统屏幕亮度（可以通过控制中心或快捷键调整）。
-
-当窗口退至后台时，窗口亮度失效，可以通过控制中心或快捷键调整。不建议连续调用或窗口退至后台时调用此接口，否则可能产生时序问题。
+不建议连续调用或窗口退至后台时调用此接口，否则可能产生时序问题。
 
 **设备行为差异：**
 - 针对TV设备：当前接口不生效也不报错。
 - 针对非2in1设备（不包含TV设备）：
+  - 当接口入参为-1时，窗口亮度恢复为系统屏幕亮度（可以通过控制中心或快捷键调整）。
+  - 当窗口退至后台时，窗口亮度失效，可以通过控制中心或快捷键调整。
   - 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，当前窗口的窗口亮度生效时，控制中心调整系统屏幕亮度不生效。
   - 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，当前窗口的窗口亮度生效时，控制中心可以调整系统屏幕亮度，同时会将当前窗口恢复为系统屏幕亮度。
 - 针对2in1设备：
   - 在OpenHarmony 5.0.2之前，窗口设置屏幕亮度生效时，控制中心或快捷键调整系统屏幕亮度不生效。
-  - 从OpenHarmony 5.0.2开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度。
+  - 从OpenHarmony 5.0.2开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度，但不支持通过本接口设置为-1来恢复系统屏幕亮度，传入-1时不生效也不报错，并且已设置的系统屏幕亮度在当前窗口退后台后也依然生效，不会恢复成设置前的屏幕亮度。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -6371,18 +6375,18 @@ setWindowBrightness(brightness: number): Promise&lt;void&gt;
 
 设置主窗口亮度只会影响当前设备内置屏的屏幕亮度，无法修改外接屏、[虚拟屏](../../displaymanager/display-terminology.md#虚拟屏)（如投屏所在的屏幕）的屏幕亮度（内置屏和外接屏具体请见[实体屏](../../displaymanager/display-terminology.md#实体屏)）。
 
-当接口入参为-1时，窗口亮度恢复为系统屏幕亮度（可以通过控制中心或快捷键调整）。
-
-当窗口退至后台时，窗口亮度失效，可以通过控制中心或快捷键调整。不建议连续调用或窗口退至后台时调用此接口，否则可能产生时序问题。
+不建议连续调用或窗口退至后台时调用此接口，否则可能产生时序问题。
 
 **设备行为差异：**
 - 针对TV设备：当前接口不生效也不报错。
 - 针对非2in1设备（不包含TV设备）：
+  - 当接口入参为-1时，窗口亮度恢复为系统屏幕亮度（可以通过控制中心或快捷键调整）。
+  - 当窗口退至后台时，窗口亮度失效，可以通过控制中心或快捷键调整。
   - 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，当前窗口的窗口亮度生效时，控制中心调整系统屏幕亮度不生效。
   - 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，当前窗口的窗口亮度生效时，控制中心可以调整系统屏幕亮度，同时会将当前窗口恢复为系统屏幕亮度。
 - 针对2in1设备：
   - 在OpenHarmony 5.0.2之前，窗口设置屏幕亮度生效时，控制中心或快捷键调整系统屏幕亮度不生效。
-  - 从OpenHarmony 5.0.2开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度。
+  - 从OpenHarmony 5.0.2开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度，但不支持通过本接口设置为-1来恢复系统屏幕亮度，传入-1时不生效也不报错，并且已设置的系统屏幕亮度在当前窗口退后台后也依然生效，不会恢复成设置前的屏幕亮度。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -6469,7 +6473,7 @@ setWindowFocusable(isFocusable: boolean, callback: AsyncCallback&lt;void&gt;): v
 | 参数名 | 类型 | 必填 | 说明 |
 | ----------- | ------------------------- | -- | ------------------------------------------------------- |
 | isFocusable | boolean                   | 是 | 窗口是否可获焦。true表示支持；false表示不支持。设置为false时，该窗口不支持绑定输入法和接收键盘事件，如需处理输入逻辑，建议参考[不可获焦窗口中输入框与输入法交互指南](../../inputmethod/use-inputmethod-in-not-focusable-window.md)。|
-| callback    | AsyncCallback&lt;void&gt; | 是 | 回调函数。                                               |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当设置窗口可获焦属性成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -7064,7 +7068,7 @@ setAspectRatio(ratio: number): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: Invalid parameter range. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.              |
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 
 **示例：**
@@ -7131,7 +7135,7 @@ setAspectRatio(ratio: number, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: Invalid parameter range. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.              |
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 
 **示例：**
@@ -7208,7 +7212,7 @@ setContentAspectRatio(ratio: number, isPersistent?: boolean, needUpdateRect?: bo
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 | 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. 2. Invalid parameter length. |
@@ -7264,8 +7268,8 @@ resetAspectRatio(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 1300002 | This window state is abnormal.               |
-| 1300004 | Unauthorized operation.                      |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.              |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported.                   |
 
 **示例：**
 <!--code_no_check-->
@@ -7322,8 +7326,8 @@ resetAspectRatio(callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 1300002 | This window state is abnormal.               |
-| 1300004 | Unauthorized operation.                      |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.              |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported.                     |
 
 **示例：**
 <!--code_no_check-->
@@ -7688,7 +7692,7 @@ setResizeByDragEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): vo
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Invalid window type. Only main windows and child windows with decorations are supported.               |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -7741,7 +7745,7 @@ setResizeByDragEnabled(enable: boolean): Promise&lt;void&gt;
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Invalid window type. Only main windows and child windows with decorations are supported.               |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -8119,7 +8123,7 @@ getWindowLimits(): WindowLimits
 | 错误码ID | 错误信息                       |
 | :------- | :----------------------------- |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -8154,7 +8158,7 @@ getWindowLimitsVP(): WindowLimits
 | 错误码ID | 错误信息                       |
 | :------- | :----------------------------- |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -8206,7 +8210,7 @@ setWindowLimits(windowLimits: WindowLimits): Promise&lt;WindowLimits&gt;
 | :------- | :-------------------------------------------- |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal.                |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed.               |
 | 1300003  | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation.                |
 
@@ -8281,7 +8285,7 @@ setWindowLimits(windowLimits: WindowLimits, isForcible: boolean): Promise&lt;Win
 | :------- | :-------------------------------------------- |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal.                |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed.               |
 | 1300003  | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation.                |
 
@@ -10071,9 +10075,9 @@ enableDrag(enable: boolean): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.               |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                       |
+| 1300004 | Unauthorized operation. Possible cause: 1.Invalid window type. Only system windows, application child windows, global floating windows and modal windows are supported.                     |
 
 **示例：**
 
@@ -10216,9 +10220,9 @@ startMoving(offsetX: number, offsetY: number): Promise&lt;void&gt;
 | 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300001 | Repeated operation. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error.              |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                       |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type.                      |
 
 **示例：**
 
@@ -10292,7 +10296,7 @@ stopMoving(): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error.      |
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation.                       |
 
@@ -10939,9 +10943,9 @@ setFollowParentMultiScreenPolicy(enabled: boolean): Promise&lt;void&gt;
 | -------- | ------------------------------------------------------------------------------------------------------------ |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported.Function setFollowParentMultiScreenPolicy can not work correctly due to limited device capabilities.|
-| 1300002  | This window state is abnormal.                                                                               |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed.                        |
 | 1300003  | This window manager service works abnormally.                                                                |
-| 1300004  | Unauthorized operation.                                                                                |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only subwindows are supported.                   |
 
 **示例：**
 
@@ -11509,7 +11513,7 @@ off(type: 'freeWindowModeChange', callback?: Callback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created. |
 | 1300003  | This window manager service works abnormally.        |
 
 **示例：**
@@ -11783,7 +11787,7 @@ export default class EntryAbility extends UIAbility {
       let systemBarProperties: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
-        // 以下两个属性从API Version8开始支持
+        // 以下两个属性从API version 8开始支持
         statusBarContentColor: '#ffffff',
         navigationBarContentColor: '#00ffff'
       };
@@ -11898,7 +11902,9 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&l
 
 在OpenHarmony 5.0.2之前，该接口在所有设备中可正常调用。
 
-从OpenHarmony 5.0.2开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
+从OpenHarmony 5.0.2开始至OpenHarmony 5.1.1之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于自由窗口状态的设备及不支持自由窗口状态的设备上可正常调用。
+
+从OpenHarmony 5.1.1开始，该接口在PC/2in1设备、其他设备的[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)调用不生效也不报错；在其他设备和其他模式中可正常调用。
 
 **参数：**
 
@@ -12801,7 +12807,7 @@ export default class EntryAbility extends UIAbility {
       let systemBarProperties: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
-        // 以下两个属性从API Version8开始支持
+        // 以下两个属性从API version 8开始支持
         statusBarContentColor: '#ffffff',
         navigationBarContentColor: '#00ffff'
       };
@@ -12867,7 +12873,7 @@ export default class EntryAbility extends UIAbility {
       let systemBarProperties: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
-        // 以下两个属性从API Version8开始支持
+        // 以下两个属性从API version 8开始支持
         statusBarContentColor: '#ffffff',
         navigationBarContentColor: '#00ffff'
       };

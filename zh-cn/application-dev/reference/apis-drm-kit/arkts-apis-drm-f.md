@@ -1,13 +1,15 @@
 # Functions
+
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @qin_wei_jie-->
+
 > **说明：**
 >
-> 本模块首批接口从API版本11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -44,9 +46,9 @@ createMediaKeySystem(name: string): MediaKeySystem
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.               |
-| 24700101                |  All unknown errors                  |
-| 24700103                |  Meet max MediaKeySystem num limit                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                  |
+| 24700103                |  Meet max MediaKeySystem num limit.                  |
+| 24700201                |  Fatal service error, for example, service died.                  |
 
 **示例：**
 
@@ -87,8 +89,8 @@ isMediaKeySystemSupported(name: string): boolean
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed, the param name's length is zero or too big(exceeds 4096 Bytes).               |
-| 24700101                |  All unknown errors                  | 
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                  | 
+| 24700201                |  Fatal service error, for example, service died.                  |
 
 **示例：**
 
@@ -129,8 +131,8 @@ isMediaKeySystemSupported(name: string, mimeType: string): boolean
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.                |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                  |
+| 24700201                |  Fatal service error, for example, service died.                  |
 
 **示例：**
 
@@ -172,8 +174,8 @@ isMediaKeySystemSupported(name: string, mimeType: string, level: ContentProtecti
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.               |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                  |
+| 24700201                |  Fatal service error, for example, service died.                  |
 
 **示例：**
 
@@ -212,9 +214,9 @@ getMediaKeySystemUuid(name: string): string
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.                |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 401                |  The parameter check failed.Possibly because: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.                |
+| 24700101                |  All unknown errors.                  |
+| 24700201                |  Fatal service error, for example, service died.                  |
 
 **示例：**
 
@@ -247,8 +249,8 @@ getMediaKeySystems(): MediaKeySystemDescription[]
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                  |
+| 24700201                |  Fatal service error, for example, service died.                  |
 
 **示例：**
 

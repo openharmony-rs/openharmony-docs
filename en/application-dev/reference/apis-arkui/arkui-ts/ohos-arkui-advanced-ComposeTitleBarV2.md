@@ -16,7 +16,7 @@ This component is implemented based on [state management V2](../../../ui/state-m
 >
 > - This component can only be used in the stage model.
 >
-> - If [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) are set for **ComposeTitleBarV2**, the compilation toolchain will generate an additional node **__Common__** and attach the universal attributes or universal events to **__Common__**, rather than directly applying them to **ComposeTitleBarV2** itself. This may cause the configured universal attributes or universal events to fail to take effect or behave unexpectedly. Therefore, it is not recommended to set universal attributes and universal events for **ComposeTitleBarV2**.
+> - If [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) are set for **ComposeTitleBarV2**, the compilation toolchain will generate an additional node \_\_Common\_\_ and attach the universal attributes or universal events to \_\_Common\_\_, rather than directly applying them to **ComposeTitleBarV2** itself. This may cause the configured universal attributes or universal events to fail to take effect or behave unexpectedly. Therefore, it is not recommended to set universal attributes and universal events for **ComposeTitleBarV2**.
 
 **Since:** 26.0.0
 
@@ -240,7 +240,7 @@ struct Index {
 }
 ```
 
-![Example 1](figures/image-composetitlebarv2-example-01.png)
+<!--Del--> <!--DelEnd-->
 
 ### Example 2: Setting a Right-side Custom Button Announcement
 
@@ -341,7 +341,7 @@ struct Index {
 }
 ```
 
-![Example 2](figures/image-composetitlebarv2-example-02.png)
+<!--Del--> <!--DelEnd-->
 
 ### Example 3: Setting a Symbol Icon
 
@@ -429,5 +429,4 @@ struct Index {
 }
 ```
 
-![Example 3](figures/image-composetitlebarv2-example-03.png)
-<!--no_check-->
+<!--Del--> <!--DelEnd-->

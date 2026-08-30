@@ -6,7 +6,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=2bba9ab01794224a7129c09e8cfdf2d8c563593f translatedAt=2026-08-10T09:22:53.561Z pushedAt=2026-08-10T14:22:17.928Z -->
+<!-- md-trans-meta sourceCommit=08d1bc8f2e52f49727e1e6dda30898d23d9a1b22 translatedAt=2026-08-22T02:07:16.483Z pushedAt=2026-08-22T06:48:06.117Z -->
 
 - [About This Kit](camera-overview.md)
 
@@ -129,3 +129,7 @@
   - [Camera Preview Rotation Issues](camera-rotation-faq.md)
 
   - [White Balance Issues](camera-whitebalance-faq.md)
+
+  - [Color Space Configuration Issues](camera-colorspace-faq.md)
+
+- [Glossary](camera-glossary.md)
