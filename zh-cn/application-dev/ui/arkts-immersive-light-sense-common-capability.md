@@ -56,7 +56,7 @@ struct PageMaterialReverse {
       Tabs({ barPosition: BarPosition.End }) {
         TabContent() {
           ContentOne()
-        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), "tab1")
+        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), 'tab1')
         // BottomTabBarStyle样式支持反色，且设置支持反色的系统颜色资源
           .labelStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
           .iconStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
@@ -64,7 +64,7 @@ struct PageMaterialReverse {
 
         TabContent() {
           Column().width('100%').height('100%').backgroundColor(Color.Green)
-        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), "tab2")
+        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), 'tab2')
           .labelStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
           .iconStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
         )
@@ -115,14 +115,14 @@ struct MaterialColorExample {
             .width('100%')
             .height('100%')
             .objectFit(ImageFit.Cover)
-        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), "tab1")
+        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), 'tab1')
           .labelStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
           .iconStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
         )
 
         TabContent() {
           Column().width('100%').height('100%').backgroundColor(Color.Green)
-        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), "tab2")
+        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), 'tab2')
           .labelStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
           .iconStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
         )
@@ -173,14 +173,14 @@ struct MaterialColorExample {
             .width('100%')
             .height('100%')
             .objectFit(ImageFit.Cover)
-        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), "tab1")
+        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), 'tab1')
           .labelStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
           .iconStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
         )
 
         TabContent() {
           Column().width('100%').height('100%').backgroundColor(Color.Green)
-        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), "tab2")
+        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), 'tab2')
           .labelStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
           .iconStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
         )
@@ -222,7 +222,7 @@ struct CustomShadowExample {
   @Builder
   NavigationTitle() {
     Row() {
-      Text("Title")
+      Text('Title')
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
 
