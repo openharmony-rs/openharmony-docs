@@ -5,7 +5,7 @@
 <!--Owner: @fanzexuan-->
 <!--Designer: @z7o-->
 <!--Tester: @A_qqq-->
-<!--Adviser: @wwwyyyhhhh-->
+<!--Adviser: @w_Machine_cc-->
 
 AccessibilityExtensionContext是AccessibilityExtensionAbility上下文环境，继承自ExtensionContext。
 
@@ -1859,12 +1859,12 @@ findElementByContent(condition: string): Promise\<Array\<AccessibilityElement>>
 
 ```ts
 // Page.ets
-  build() {
-    Text('Connect')
-        .id('connect')
-        .fontSize($r('app.float.page_text_font_size'))
-        .fontWeight(FontWeight.Bold)
-// ...
+build() {
+  Text('Connect')
+      .id('connect')
+      .fontSize($r('app.float.page_text_font_size'))
+      .fontWeight(FontWeight.Bold)
+}
 
 // AccessibilityExtAbility.ets
 import { AccessibilityElement } from '@kit.AccessibilityKit';
@@ -1890,7 +1890,7 @@ findElementByFocusDirection(condition: FocusDirection): Promise\<AccessibilityEl
 
 根据焦点方向查找元素。使用Promise异步回调。
 
-与[findElementsByCondition](#findelementsbycondition23)相比，本方法主要用于查找Web组件；findElementsByCondition主要用于查找UI组件。
+与[findElementsByCondition](#findelementsbycondition23)（从API版本23开始支持）相比，本方法用于查找Web组件；findElementsByCondition用于查找非Web组件。可通过组件的supportedActionNames属性是否包含'nextHtmlItem'或'previousHtmlItem'来判断组件是否为Web组件。
 
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
@@ -1924,17 +1924,22 @@ findElementByFocusDirection(condition: FocusDirection): Promise\<AccessibilityEl
 
 ```ts
 // Page.ets
-// 点击TextInput使其成为无障碍焦点元素，向上方向的下一个焦点元素是Text#connect。
-  build() {
-    Text('Connect')
-        .id('connect')
-        .fontSize($r('app.float.page_text_font_size'))
-        .fontWeight(FontWeight.Bold)
+import { webview } from '@kit.ArkWeb';
+controller: webview.WebviewController = new webview.WebviewController();
 
-    TextInput({ placeholder: 'please input...' })
-        .id('text_input')
-        .fontSize($r('app.float.page_text_font_size'))
-// ...
+// 点击“Link1”使其成为无障碍焦点元素，向上方向的下一个焦点元素是“Title1”。
+build() {
+  Text('Connect')
+      .id('connect')
+      .fontSize($r('app.float.page_text_font_size'))
+      .fontWeight(FontWeight.Bold)
+
+  TextInput({ placeholder: 'please input...' })
+      .id('text_input')
+      .fontSize($r('app.float.page_text_font_size'))
+
+  Web({ src: $rawfile("index.html"), controller: this.controller })
+}
 
 // AccessibilityExtAbility.ets
 import { AccessibilityElement } from '@kit.AccessibilityKit';
@@ -1952,11 +1957,32 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 });
 ```
 
+```html
+// index.html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+<body>
+<h3>Title1</h3>
+<div class="base-elements">
+    <a href="#link1">Link1</a>
+    <h4>Title2</h4> <a href="#link2">Link2</a>
+    <p>说明文本text3</p>
+</div>
+</body>
+</html>
+```
+
 ### findElementByFocusDirection
 
 findElementByFocusDirection(condition: FocusDirection, type: FocusRuleType): Promise\<AccessibilityElement>
 
 根据焦点方向和聚焦类型查找元素。使用Promise异步回调。
+
+与[findElementsByCondition](#findelementsbycondition)相比，本方法用于查找Web组件；findElementsByCondition用于查找非Web组件。可通过组件的supportedActionNames属性是否包含'nextHtmlItem'或'previousHtmlItem'来判断组件是否为Web组件。
 
 **起始版本：** 26.0.0
 
@@ -1995,39 +2021,22 @@ findElementByFocusDirection(condition: FocusDirection, type: FocusRuleType): Pro
 
 ```ts
 // Page.ets
-// 点击“二级标题1”，使其成为无障碍焦点元素。下一个聚焦类型为标题焦点元素，是“二级标题2”。
-  build() {
-    Text('Connect')
-        .id('connect')
-        .fontSize($r('app.float.page_text_font_size'))
-        .fontWeight(FontWeight.Bold)
-        
-    SubHeader({
-      secondaryTitle: '二级标题1',
-      operationType: OperationType.BUTTON,
-      operationItem: [{
-        value: '操作',
-        action: () => {
-          Prompt.showToast({ message: 'demo' });
-        }
-      }]
-    })
+import { webview } from '@kit.ArkWeb';
+controller: webview.WebviewController = new webview.WebviewController();
 
-    TextInput({ placeholder: 'please input...' })
-        .id('text_input')
-        .fontSize($r('app.float.page_text_font_size'))
+// 点击“Title1”，使其成为无障碍焦点元素。下一个聚焦类型为标题的焦点元素是“Title2”。
+build() {
+  Text('Connect')
+      .id('connect')
+      .fontSize($r('app.float.page_text_font_size'))
+      .fontWeight(FontWeight.Bold)
 
-    SubHeader({
-      secondaryTitle: '二级标题2',
-      operationType: OperationType.BUTTON,
-      operationItem: [{
-        value: '操作',
-        action: () => {
-          Prompt.showToast({ message: 'demo' });
-        }
-      }]
-    })
-  }
+  TextInput({ placeholder: 'please input...' })
+      .id('text_input')
+      .fontSize($r('app.float.page_text_font_size'))
+
+  Web({ src: $rawfile("index.html"), controller: this.controller })
+}
 
 // AccessibilityExtAbility.ets
 import { AccessibilityElement, FocusRuleType } from '@kit.AccessibilityKit';
@@ -2042,6 +2051,25 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 }).catch((err: BusinessError) => {
   console.error(`Failed to getAccessibilityFocusedElement. Code: ${err.code}, message: ${err.message}`);
 });
+```
+
+```html
+// index.html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+<body>
+<h3>Title1</h3>
+<div class="base-elements">
+    <a href="#link1">Link1</a>
+    <h4>Title2</h4> <a href="#link2">Link2</a>
+    <p>说明文本text3</p>
+</div>
+</body>
+</html>
 ```
 
 ### findElementsByAccessibilityHintText<sup>20+</sup>
@@ -2082,17 +2110,17 @@ findElementsByAccessibilityHintText(condition: string): Promise\<Array\<Accessib
 
 ```ts
 // Page.ets
-  build() {
-    Text('Connect')
-        .id('connect')
-        .fontSize($r('app.float.page_text_font_size'))
-        .fontWeight(FontWeight.Bold)
+build() {
+  Text('Connect')
+      .id('connect')
+      .fontSize($r('app.float.page_text_font_size'))
+      .fontWeight(FontWeight.Bold)
 
-    TextInput({ placeholder: 'please input...' })
-        .id('text_input')
-        .fontSize($r('app.float.page_text_font_size'))
-        .accessibilityTextHint('location')
-// ...
+  TextInput({ placeholder: 'please input...' })
+      .id('text_input')
+      .fontSize($r('app.float.page_text_font_size'))
+      .accessibilityTextHint('location')
+}
 
 // AccessibilityExtAbility.ets
 import { AccessibilityElement } from '@kit.AccessibilityKit';
@@ -2153,16 +2181,16 @@ findElementById(condition: number): Promise\<AccessibilityElement>
 ```ts
 // Page.ets
 // 点击TextInput使其成为无障碍焦点元素。
-  build() {
-    Text('Connect')
-        .id('connect')
-        .fontSize($r('app.float.page_text_font_size'))
-        .fontWeight(FontWeight.Bold)
+build() {
+  Text('Connect')
+      .id('connect')
+      .fontSize($r('app.float.page_text_font_size'))
+      .fontWeight(FontWeight.Bold)
 
-    TextInput({ placeholder: 'please input...' })
-        .id('text_input')
-        .fontSize($r('app.float.page_text_font_size'))
-// ...
+  TextInput({ placeholder: 'please input...' })
+      .id('text_input')
+      .fontSize($r('app.float.page_text_font_size'))
+}
 
 // AccessibilityExtAbility.ets
 import { AccessibilityElement } from '@kit.AccessibilityKit';
@@ -2186,7 +2214,7 @@ findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise\<Fo
 
 查询满足条件的可聚焦节点。使用Promise异步回调。
 
-与[findElementByFocusDirection](#findelementbyfocusdirection20)相比，本方法主要用于查找UI组件；findElementByFocusDirection主要用于查找Web组件。
+与[findElementByFocusDirection](#findelementbyfocusdirection20)（从API版本20开始支持）相比，本方法用于查找非Web组件；findElementByFocusDirection用于查找Web组件。可通过组件的supportedActionNames属性是否包含'nextHtmlItem'或'previousHtmlItem'来判断组件是否为Web组件。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2219,6 +2247,17 @@ findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise\<Fo
 **示例：**
 
 ```ts
+// 点击“Text#connect”使其成为无障碍焦点元素，下一个焦点元素是“TextInput”。
+build() {
+  Text('Connect')
+      .id('connect')
+      .fontSize($r('app.float.page_text_font_size'))
+      .fontWeight(FontWeight.Bold)
+
+  TextInput({ placeholder: 'please input...' })
+      .id('text_input')
+      .fontSize($r('app.float.page_text_font_size'))
+}
 
 import { AccessibilityElement, FocusMoveResult } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2240,6 +2279,8 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 findElementsByCondition(rule: FocusRule, condition: FocusCondition, type: FocusRuleType): Promise\<FocusMoveResult>
 
 根据规则和查询条件查找目标类型的可聚焦节点。使用Promise异步回调。
+
+与[findElementByFocusDirection](#findelementbyfocusdirection)相比，本方法用于查找非Web组件；findElementByFocusDirection用于查找Web组件。可通过组件的supportedActionNames属性是否包含'nextHtmlItem'或'previousHtmlItem'来判断组件是否为Web组件。
 
 **起始版本：** 26.0.0
 
@@ -2278,38 +2319,39 @@ findElementsByCondition(rule: FocusRule, condition: FocusCondition, type: FocusR
 
 ```ts
 // Page.ets
-  build() {
-    Text('Connect')
-        .id('connect')
-        .fontSize($r('app.float.page_text_font_size'))
-        .fontWeight(FontWeight.Bold)
-        
-    SubHeader({
-      secondaryTitle: '二级标题1',
-      operationType: OperationType.BUTTON,
-      operationItem: [{
-        value: '操作',
-        action: () => {
-          Prompt.showToast({ message: 'demo' });
-        }
-      }]
-    })
+// 点击“二级标题1”，使其成为无障碍焦点元素。下一个聚焦类型为标题的焦点元素是“二级标题2”。
+build() {
+  Text('Connect')
+      .id('connect')
+      .fontSize($r('app.float.page_text_font_size'))
+      .fontWeight(FontWeight.Bold)
+      
+  SubHeader({
+    secondaryTitle: '二级标题1',
+    operationType: OperationType.BUTTON,
+    operationItem: [{
+      value: '操作',
+      action: () => {
+        Prompt.showToast({ message: 'demo' });
+      }
+    }]
+  })
 
-    TextInput({ placeholder: 'please input...' })
-        .id('text_input')
-        .fontSize($r('app.float.page_text_font_size'))
+  TextInput({ placeholder: 'please input...' })
+      .id('text_input')
+      .fontSize($r('app.float.page_text_font_size'))
 
-    SubHeader({
-      secondaryTitle: '二级标题2',
-      operationType: OperationType.BUTTON,
-      operationItem: [{
-        value: '操作',
-        action: () => {
-          Prompt.showToast({ message: 'demo' });
-        }
-      }]
-    })
-  }
+  SubHeader({
+    secondaryTitle: '二级标题2',
+    operationType: OperationType.BUTTON,
+    operationItem: [{
+      value: '操作',
+      action: () => {
+        Prompt.showToast({ message: 'demo' });
+      }
+    }]
+  })
+}
 
 // AccessibilityExtAbility.ets
 
