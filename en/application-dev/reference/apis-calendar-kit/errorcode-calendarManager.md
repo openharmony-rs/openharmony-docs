@@ -1,11 +1,12 @@
-# Calendar Kit Error Codes
+# Calendar Error Codes
 
 <!--Kit: Calendar Kit-->
 <!--Subsystem: Applications-->
 <!--Owner: @qq_42718467-->
-<!--Designer: @windsky6-->
+<!--Designer: @qq_42718467-->
 <!--Tester: @z30055209-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=5432ef9eea35ba6f696c7f28eca76819b820c786 translatedAt=2026-08-31T01:10:07.489Z pushedAt=2026-08-31T08:10:08.316Z -->
 
 > **NOTE**
 >
@@ -63,7 +64,7 @@ Use the created account instead of a non-created one.
 
 **Error Message**
 
-Internal program error.
+Internal program errors.
 
 **Description**
 
