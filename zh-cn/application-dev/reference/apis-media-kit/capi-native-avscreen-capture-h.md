@@ -1289,7 +1289,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCaptureAreaHighlight(struct OH
 
 > **说明：**
 >
-> 此功能只在窗口录屏模式下生效。
+> 此功能只在录屏录制指定窗口时生效。
 
 **起始版本：** 22
 
