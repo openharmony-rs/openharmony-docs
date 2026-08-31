@@ -217,7 +217,7 @@ try {
 }
 ```
 
-## getAvailableFormHostServices
+## formAgent.getAvailableFormHostServices
 
 getAvailableFormHostServices(): Promise&lt;Array&lt;formInfo.PeerFormHostServiceInfo&gt;&gt;
 
@@ -267,7 +267,7 @@ try {
 }
 ```
 
-## requestPublishFormCrossDevice
+## formAgent.requestPublishFormCrossDevice
 
 requestPublishFormCrossDevice(peerServiceInfo: formInfo.PeerFormHostServiceInfo, want: Want, formBindingData?: formBindingData.FormBindingData): Promise&lt;formInfo.PublishFormCrossDeviceResult&gt;
 
