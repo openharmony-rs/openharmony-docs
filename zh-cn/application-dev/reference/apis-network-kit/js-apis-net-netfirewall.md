@@ -709,7 +709,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 | 名称         | 类型    | 只读 | 可选|说明                                      |
 | ------------ | --------|------|-----|------------------------------------- |
 | isWildcard   | boolean | 否  | 否|是否包含通配符。true表示包含，false表示不包含。                          |
-| domain       | string  | 否  |否 |当isWildcard为false时，需要确定的完整域， 例如"www.example.cn"；当isWildcard为true时，支持通配符规则，具体格式见下文说明。 |
+| domain       | string  | 否  |否 |当isWildcard为false时，需要确定的完整域，例如"www.example.com"；当isWildcard为true时，支持通配符规则，具体格式见下文说明。 |
 
 当isWildcard为true时，domain支持使用通配符"*"，"*"可出现在域名的首部、尾部或首尾同时出现，表示匹配任意长度（包括零）的任意字符。支持以下通配符格式：
 
