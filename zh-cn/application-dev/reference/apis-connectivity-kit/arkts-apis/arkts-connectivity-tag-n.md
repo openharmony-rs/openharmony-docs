@@ -4,7 +4,7 @@
 
 > **说明：**
 > 
-> 2. 从API版本26.0.0开始请使用[canIUse("SystemCapability.Communication.NFC.Tag")](../../../reference/common/init.md#caniuse)
+> 2. 从API版本26.0.0开始请使用canIUse("SystemCapability.Communication.NFC.Tag")
 > && [nfcController.isNfcSupported](arkts-connectivity-nfccontroller-isnfcsupported-f.md)共同判断设备是否支持NFC能力更加准确，否则可能导
 > 致应用运行稳定性问题，参考[nfc-tag开发指南](../../../connectivity/nfc/nfc-tag-access-guide.md)。
 > 

@@ -67,7 +67,7 @@ create a particle array.Anonymous Object Rectification.
 | 名称 | 说明 |
 | --- | --- |
 | [ParticleTuple](arkts-arkui-particletuple-t.md) | 粒子元组，表示定义一些动画参数的类型。 |
-| [PositionT](arkts-arkui-positiont-t.md) | Defines the PositionT type. |
+| [PositionT](arkts-arkui-positiont-comp-t.md) | Defines the PositionT type. |
 | [SizeT](arkts-arkui-sizet-t.md) | Defines the SizeT type. |
 | [Vector2T](arkts-arkui-vector2t-t.md) | 定义Vector2T类型。其中Vector2T类型包含x和y两个属性值。 |
 

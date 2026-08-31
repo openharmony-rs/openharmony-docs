@@ -73,7 +73,7 @@ position?: PositionT<number>
 
 发射器位置的数组，只支持number类型。未传入时保持其当前的发射器位置。需传入两个有效参数，若其中一个为异常值，则position不生效。x、y的取值范围：(-∞, +∞)。
 
-**类型：** [PositionT](arkts-arkui-positiont-t.md)&lt;number&gt;
+**类型：** [PositionT](arkts-arkui-positiont-comp-t.md)&lt;number&gt;
 
 **起始版本：** 12
 

@@ -248,7 +248,7 @@
       - [色彩](arkts-color-effect.md)
       - 模糊<!--arkts-blur-->
         - [动态模糊](arkts-blur-effect.md)<!--RP13--><!--RP13End-->
-    - [帧动画（ohos.animator）](arkts-animator.md)<!--RP10--><!--RP10End-->
+    - [帧动画（ohos.animator）](arkts-guide-animator.md)<!--RP10--><!--RP10End-->
   - 使用自定义能力<!--arkts-user-defined-capabilities-->
     - [自定义能力概述](arkts-user-defined.md)
     - [自定义组合](arkts-user-defined-composition.md)

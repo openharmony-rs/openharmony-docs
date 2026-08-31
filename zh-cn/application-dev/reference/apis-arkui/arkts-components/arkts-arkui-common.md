@@ -199,7 +199,7 @@ Common()
 | [BuilderCallback](arkts-arkui-buildercallback-t.md) | `BuilderCallback`是全局`@Builder`函数的类型别名，作为`mutableBuilder`函数的入参类型，用于指定待封装的全局`@Builder`函数。 |
 | [CircleShape](arkts-arkui-circleshape-t.md) | 导入CircleShape类型对象。 |
 | [ComponentContent](arkts-arkui-componentcontent-t.md) | 组件内容的实体封装。 |
-| [Context](arkts-arkui-context-t.md) | Get context. |
+| [Context](arkts-arkui-context-comp-t.md) | Get context. |
 | [CustomBuilder](arkts-arkui-custombuilder-t.md) | 定义CustomBuilder类型。 |
 | [CustomBuilderT](arkts-arkui-custombuildert-t.md) | 定义带参数的CustomBuilder类型 |
 | [DataLoadParams](arkts-arkui-dataloadparams-t.md) | 落入操作时使用的数据加载参数。 |
@@ -233,7 +233,7 @@ Common()
 | [Optional](arkts-arkui-optional-t.md) | 定义可选类型，其值可以是undefined。 |
 | [PathShape](arkts-arkui-pathshape-t.md) | 导入PathShape类型对象。 |
 | [PixelMap](arkts-arkui-pixelmap-t.md) | Defines the PixelMap type object for ui component. |
-| [PointerStyle](arkts-arkui-pointerstyle-t.md) | 光标样式。 |
+| [PointerStyle](arkts-arkui-pointerstyle-comp-t.md) | 光标样式。 |
 | [PopupStateChangeCallback](arkts-arkui-popupstatechangecallback-t.md) | 气泡状态变化事件回调。 |
 | [PromptActionDialogController](arkts-arkui-promptactiondialogcontroller-t.md) | 从promptAction导入弹出框控制器类型 |
 | [RectShape](arkts-arkui-rectshape-t.md) | 导入RectShape类型对象。 |
