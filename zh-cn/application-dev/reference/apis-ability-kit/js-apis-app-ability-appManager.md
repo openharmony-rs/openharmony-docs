@@ -313,7 +313,7 @@ appManager.getAppMemorySize((err, data) => {
 
 getRunningProcessInformation(): Promise\<Array\<ProcessInformation>>
 
-若拥有ohos.permission.GET_RUNNING_INFO权限（该权限仅系统应用可申请），则查询结果为全量应用的进程信息；否则，查询结果为调用方自身的进程信息。使用Promise异步回调。
+若拥有ohos.permission.GET_RUNNING_INFO权限（该权限仅系统应用可申请），则可获取全量应用的进程信息；否则仅可获取当前应用运行进程的相关信息。使用Promise异步回调。
 
 > **说明：**
 >
@@ -362,7 +362,7 @@ appManager.getRunningProcessInformation().then((data) => {
 
 getRunningProcessInformation(callback: AsyncCallback\<Array\<ProcessInformation>>): void
 
-若拥有ohos.permission.GET_RUNNING_INFO权限（该权限仅系统应用可申请），则查询结果为全量应用的进程信息；否则，查询结果为调用方自身的进程信息。使用callback异步回调。
+若拥有ohos.permission.GET_RUNNING_INFO权限（该权限仅系统应用可申请），则可获取全量应用的进程信息；否则仅可获取当前应用运行进程的相关信息。使用callback异步回调。
 
 > **说明：**
 >
