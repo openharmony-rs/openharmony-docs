@@ -3,9 +3,11 @@
 <!--Kit: Contacts Kit-->
 <!--Subsystem: Applications-->
 <!--Owner: @librahCode-->
-<!--Designer: @yanghaoqian-->
+<!--Designer: @jiayanhong-hw-->
 <!--Tester: @shangzhijie-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=4c038a1d5da345aacbf8335a571bab67edf916cc translatedAt=2026-08-31T01:10:07.664Z pushedAt=2026-08-31T04:53:46.621Z -->
+
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -14,7 +16,7 @@
 
 **Error Message**
 
-general error.
+General error.
 
 **Symptom**
 
@@ -51,6 +53,46 @@ Parameter verification failed.
 **Solution**
 
 Please review the parameter specification constraints and perform troubleshooting based on the possible causes.
+
+
+
+## 16700003 Background Service Calling Prohibited
+
+**Error Message**
+
+Background usage is prohibited.
+
+**Description**
+
+Background service calling is prohibited.
+
+**Possible Causes**
+
+The service is called in the background.
+
+**Solution**
+
+Ensure that the caller is running in the foreground.
+
+
+
+## 16700004 Number of Contacts Exceeds the Limit
+
+**Error Message**
+
+The number of contacts exceeds the limit.
+
+**Description**
+
+The number of contacts exceeds the limit.
+
+**Possible Causes**
+
+The number of contacts passed in exceeds the upper limit.
+
+**Solution**
+
+Check the number of contacts.
 
 
 
@@ -98,7 +140,7 @@ Database access has failed. Try again later.
 
 **Error Message**
 
-User canceled.
+User cancel.
 
 **Symptom**
 
@@ -111,3 +153,117 @@ The user cancels the operation.
 **Solution**
 
 The user cancels the operation. Try again later.
+
+
+
+## 401 Failed to Open the Contact Portrait File
+
+**Error Message**
+
+Failed to open contact portrait file.
+
+**Description**
+
+The contact portrait file fails to be opened.
+
+**Possible Causes**
+
+The portrait file path is incorrect, the file does not exist, or the disk is damaged.
+
+**Solution**
+
+Check whether the file exists.
+
+
+
+## 401 Internal System Error
+
+### Invalid Internal Associated Contact ID
+
+**Error Message**
+
+Internal error. Invalid contact id. Failed to generate contact profile.
+
+**Description**
+
+The ID of the internal associated contact is invalid.
+
+**Possible Causes**
+
+The internal system processing is abnormal.
+
+**Solution**
+
+A system error has occurred. Try again later.
+
+### Failed to Save the Contact Portrait
+
+**Error Message**
+
+Internal error. Failed to save contact portrait.
+
+**Description**
+
+The contact portrait fails to be saved.
+
+**Possible Causes**
+
+The portrait file is abnormal, or the internal system processing is abnormal.
+
+**Solution**
+
+Check the file.
+
+### Database Query Result Set is a Null Pointer
+
+**Error Message**
+
+Internal error. The query resultSet is nullptr.
+
+**Description**
+
+The database query result set is a null pointer.
+
+**Possible Causes**
+
+The internal system processing is abnormal.
+
+**Solution**
+
+A system error has occurred. Try again later.
+
+### Database Query Result Set Exists But Contains No Data
+
+**Error Message**
+
+Internal error. The query resultSet is empty.
+
+**Description**
+
+The database query result set exists but contains no data.
+
+**Possible Causes**
+
+The internal system processing is abnormal.
+
+**Solution**
+
+A system error has occurred. Try again later.
+
+### Invalid Internal Associated Contact rawId
+
+**Error Message**
+
+Internal error. Invalid contact rawId.
+
+**Description**
+
+The **rawId** value of the internal associated contact is invalid.
+
+**Possible Causes**
+
+The internal system processing is abnormal.
+
+**Solution**
+
+A system error has occurred. Try again later.
