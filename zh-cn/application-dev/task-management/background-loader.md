@@ -1,4 +1,4 @@
-# 后台加载任务（ArkTS）
+# 后台加载任务(ArkTS)
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
@@ -36,7 +36,7 @@
 
 **表1** 后台加载任务主要接口
 
-以下是后台加载任务开发使用的相关接口，更多接口及使用方式请见[后台加载任务管理](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md)文档。
+以下是后台加载任务开发使用的相关接口，更多接口及使用方式请见[后台加载任务](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md)文档。
 | 接口名 | 接口描述 |
 | -------- | -------- |
 | [registerTask(taskInfo: TaskInfo): void](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#backgroundloaderregistertask) | 注册后台加载任务。 |
@@ -46,11 +46,11 @@
 
 **表2** 后台加载任务需要应用实现的回调接口
 
-以下是后台加载任务回调开发使用的相关接口，更多接口及使用方式请见[后台加载任务管理](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md)文档。
+以下是后台加载任务回调开发使用的相关接口，更多接口及使用方式请见[后台加载任务](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md)文档。
 | 接口名 | 接口描述 |
 | -------- | -------- |
-| [ON_START](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#backgroundloaderon_start) | 需要实现的执行后台加载任务的方法名，系统通过StartAbilityByCall方法启动应用后，会回调此方法。方法的入参为[backgroundLoader.TaskInfo](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#taskinfo)。 |
-| [ON_STOP](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#backgroundloaderon_stop) | 待应用实现的回调方法名。系统在后台加载任务异常取消时，会回调onStop方法。方法的入参为[backgroundLoader.TaskStopInfo](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#taskstopinfo)。 |
+| [ON_START](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#backgroundloader常量) | 需要实现的执行后台加载任务的方法名，系统通过StartAbilityByCall方法启动应用后，会回调此方法。方法的入参为[backgroundLoader.TaskInfo](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#taskinfo)。 |
+| [ON_STOP](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#backgroundloader常量) | 待应用实现的回调方法名。系统在后台加载任务异常取消时，会回调onStop方法。方法的入参为[backgroundLoader.TaskStopInfo](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#taskstopinfo)。 |
 
 
 ## 开发步骤
@@ -59,13 +59,13 @@
 
 1. **实现后台加载任务回调能力：** 定义ON_START和ON_STOP回调函数，并注册到应用主UIAbility的Callee中。
 
-2. **注册后台加载任务：** 调用registerTask接口，将任务注册到后台加载任务管理服务。
+2. **注册后台加载任务：** 调用registerTask接口，将任务注册到后台加载任务服务。
 
 3. **完成后台加载任务：** 在ON_START回调中执行加载逻辑后，调用finishTask接口通知系统任务完成。
 
 ### 实现后台加载任务回调能力
 
-1. 声明ohos.permission.KEEP_BACKGROUND_RUNNING权限，配置方式请参见[声明权限](../security/AccessToken/declare-permissions.md#声明权限)。
+1. 声明ohos.permission.KEEP_BACKGROUND_RUNNING权限，配置方式请参见[声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
 2. 在应用主UIAbility的onCreate生命周期中，通过Callee注册ON_START和ON_STOP回调函数。
 
