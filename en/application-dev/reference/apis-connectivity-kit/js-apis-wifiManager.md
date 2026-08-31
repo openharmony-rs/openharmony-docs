@@ -2761,7 +2761,7 @@ Represents the P2P group information.
 
 on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 
-Subscribes to Wi-Fi state changes. When the service exits, call **off(type: 'wifiStateChange', callback?: Callback<number>)** to unregister the callback registered. This API uses an asynchronous callback to return the result.
+Subscribes to Wi-Fi state changes. When the service exits, call **off(type: 'wifiStateChange', callback?: Callback\<number>)** to unregister the callback registered. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
