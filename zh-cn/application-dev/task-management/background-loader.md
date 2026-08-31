@@ -19,11 +19,11 @@
 
 ## 约束与限制
 
-#### 设备限制
+### 设备限制
 
 本功能仅支持标准系统设备。
 
-#### 规格限制
+### 规格限制
 
 - **数量限制：** 一个应用只能注册一个后台加载任务，任务中只能指定唯一的主用UIAbility。
 
@@ -39,8 +39,8 @@
 以下是后台加载任务开发使用的相关接口，更多接口及使用方式请见[后台加载任务管理](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md)文档。
 | 接口名 | 接口描述 |
 | -------- | -------- |
-| [registerTask(taskInfo: TaskInfo): void](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#backgroundloaderregisgertask) | 注册后台加载任务。 |
-| [unregisterTask(taskInfo: TaskInfo): void](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#backgroundloaderunregisgertask) | 取消注册后台加载任务。 |
+| [registerTask(taskInfo: TaskInfo): void](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#backgroundloaderregistertask) | 注册后台加载任务。 |
+| [unregisterTask(taskInfo: TaskInfo): void](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#backgroundloaderunregistertask) | 取消注册后台加载任务。 |
 | [getTaskInfo(taskId: number): Promise&lt;TaskInfo&gt;](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#backgroundloadergettaskinfo) | 查询注册后台加载任务信息（Promise形式）。 |
 | [finishTask(taskInfo: TaskInfo): void](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#backgroundloaderfinishtask) | 通知系统加载任务执行完成。 |
 
@@ -71,8 +71,6 @@
 
    <!-- @[backgroundLoader_register_callee](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-   <div class="same-source-code">
-
    ``` TypeScript
    try {
      // 注册ON_START回调，当后台加载任务启动时触发funCallBack
@@ -83,10 +81,6 @@
      console.error(`Callee.on catch error, error.code: ${error.code}, error.message: ${error.message}`);
    }
    ```
-
-   <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets?same_code_link_text=backgroundLoader_register_callee" target="_blank" rel="nofollow">EntryAbility.ets</a></p>
-
-   </div>
 
 ### 注册后台加载任务
 
@@ -100,8 +94,6 @@
 2. 注册后台加载任务。
 
    <!-- @[backgroundLoader_registerTask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
-   <div class="same-source-code">
 
    ``` TypeScript
    const taskInfo: backgroundLoader.TaskInfo = {
@@ -119,15 +111,9 @@
    }
    ```
 
-   <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets?same_code_link_text=backgroundLoader_registerTask" target="_blank" rel="nofollow">EntryAbility.ets</a></p>
-
-   </div>
-
 3. 取消注册后台加载任务。
 
    <!-- @[backgroundLoader_unregisterTask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
-   <div class="same-source-code">
 
    ``` TypeScript
    const taskInfo: backgroundLoader.TaskInfo = {
@@ -145,15 +131,9 @@
    }
    ```
 
-   <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets?same_code_link_text=backgroundLoader_unregisterTask" target="_blank" rel="nofollow">EntryAbility.ets</a></p>
-
-   </div>
-
 4. 查询后台加载任务信息。
 
    <!-- @[backgroundLoader_getTaskInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
-   <div class="same-source-code">
 
    ``` TypeScript
    try {
@@ -168,15 +148,9 @@
    }
    ```
 
-   <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets?same_code_link_text=backgroundLoader_getTaskInfo" target="_blank" rel="nofollow">EntryAbility.ets</a></p>
-
-   </div>
-
 5. 完成后台加载任务。
 
    <!-- @[backgroundLoader_finishTask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
-   <div class="same-source-code">
 
    ``` TypeScript
    const taskInfo: backgroundLoader.TaskInfo = {
@@ -193,10 +167,6 @@
      return `Failed: ${(err as BusinessError).message ?? errMsg}`;
    }
    ```
-
-   <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets?same_code_link_text=backgroundLoader_finishTask" target="_blank" rel="nofollow">EntryAbility.ets</a></p>
-
-   </div>
 
 ### 调测验证
 
