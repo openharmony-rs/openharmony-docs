@@ -1848,7 +1848,7 @@ struct Index {
 
 ### createRadialGradientMask<sup>20+</sup>
 
-static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY: number, values: Array<[number, number]>): Mask
+static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY: number, gradients: Array<[number, number]>): Mask
 
 Creates an ellipse mask effect [Mask](#mask20) instance by specifying the center position, semi-major and semi-minor axes, and shape parameters of the ellipse.
 
@@ -1863,7 +1863,7 @@ Creates an ellipse mask effect [Mask](#mask20) instance by specifying the center
 | center | [common2D.Point](js-apis-graphics-common2D.md#point12) | Yes | Center point of the ellipse. [0, 0] represents the upper left corner of the component, and [1, 1] represents the lower right corner.<br>Value range: [-10, 10]. Floating-point numbers are allowed. Values outside the range are automatically truncated during implementation. |
 | radiusX | number | Yes | Radius of the ellipse in the X direction. A radius of 1 equals the height of the component.<br>Value range: [0, 10]. Floating-point numbers are allowed. Values outside the range are automatically truncated during implementation. |
 | radiusY | number | Yes | Radius of the ellipse in the Y direction. A radius of 1 equals the height of the component.<br>Value range: [0, 10]. Floating-point numbers are allowed. Values outside the range are automatically truncated during implementation. |
-| values | Array<[number, number]> | Yes | Each two-element array in the array represents a gradient: [RGBA color, position]. All four channels of the RGBA color use the same value, which can be regarded as a grayscale value. The position indicates the distribution position of the RGBA color along the radial direction outward. The value range of both the RGBA color and the position is [0, 1]. Floating-point numbers are allowed. Values less than 0 are converted to 0, and values greater than 1 are converted to 1.<br>The position values must be strictly increasing. The array must contain at least two two-element arrays, and no element in a two-element array can be empty. Otherwise, the ellipse distribution effect does not take effect. |
+| gradients | Array<[number, number]> | Yes | Each two-element array in the array represents a gradient: [RGBA color, position]. All four channels of the RGBA color use the same value, which can be regarded as a grayscale value. The position indicates the distribution position of the RGBA color along the radial direction outward. The value range of both the RGBA color and the position is [0, 1]. Floating-point numbers are allowed. Values less than 0 are converted to 0, and values greater than 1 are converted to 1.<br>The position values must be strictly increasing. The array must contain at least two two-element arrays, and no element in a two-element array can be empty. Otherwise, the ellipse distribution effect does not take effect. |
 
 **Return value**
 
