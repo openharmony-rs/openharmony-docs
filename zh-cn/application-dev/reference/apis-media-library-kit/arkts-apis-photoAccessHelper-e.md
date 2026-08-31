@@ -42,8 +42,6 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | DEFAULT |  0 |  默认照片文件类型。 |
 | MOVING_PHOTO |  3 |  动态照片文件类型。 |
 | BURST |  4 |  连拍照片文件类型。 |
-| CINEMATIC_VIDEO |  5 |  电影风格视频文件类型。<br>**起始版本：** 26.1.0 |
-| CINEMATIC_VIDEO_V2 |  8 |  新版电影风格视频文件类型，与电影风格视频相比新增了希区柯克等更多的特效。<br>**起始版本：** 26.1.0 |
 
 ## DynamicRangeType<sup>12+</sup>
 
