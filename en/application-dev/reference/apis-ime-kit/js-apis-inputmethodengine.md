@@ -1333,7 +1333,7 @@ inputMethodEngine.getKeyboardDelegate().on('keyEvent', (keyEvent: KeyEvent) => {
 
 off(type: 'keyEvent', callback?: (event: InputKeyEvent) => boolean): void
 
-Ubsubscribes from physical keyboard events. This API uses an asynchronous callback to return the result.
+Unsubscribes from physical keyboard events. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
