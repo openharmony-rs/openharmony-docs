@@ -10,7 +10,7 @@
 
 ## 开发步骤
 
-详细的API说明请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/arkts-apis-camera.md)。
+详细的API说明请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/js-apis-camera-sys.md)。
 
 1. 导入camera接口，接口中提供了相机相关的属性和方法，导入方法如下。
      
@@ -19,7 +19,7 @@
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-2. 通过[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的depthProfiles属性获取当前设备支持的深度能力，返回depthProfilesArray数组。通过[createDepthDataOutput](../../reference/apis-camera-kit/js-apis-camera-sys.md#createdepthdataoutput13)方法创建深度流。
+2. 通过[CameraOutputCapability](../../reference/apis-camera-kit/js-apis-camera-sys.md#cameraoutputcapability)中的depthProfiles属性获取当前设备支持的深度能力，返回depthProfilesArray数组。通过[createDepthDataOutput](../../reference/apis-camera-kit/js-apis-camera-sys.md#createdepthdataoutput13)方法创建深度流。
 
    ```ts
    function getDepthDataOutput(cameraManager: camera.CameraManager,
@@ -70,11 +70,11 @@
     
   ```ts
   function onDepthDataAvailable(depthDataOutput: camera.DepthDataOutput): void {
-    depthDataOutput.on('depthDataAvailable', (err: BusinessError) => {
+    depthDataOutput.on('depthDataAvailable', (err: BusinessError, depthData: camera.DepthData) => {
       if (err !== undefined && err.code !== 0) {
         return;
       }
-      console.info('Depth data available');
+      console.info(`Depth data available: ${depthData}`);
     });
   }
   ```

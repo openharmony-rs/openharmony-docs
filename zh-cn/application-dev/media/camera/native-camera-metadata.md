@@ -27,7 +27,6 @@ Metadata主要是通过一个TAG（Key），去找对应的Data（Value），用
    #include <cstdio>
    #include <fcntl.h>
    #include <map>
-   #include <string>
    #include <vector>
    #include <native_buffer/native_buffer.h>
    #include "iostream"
@@ -187,7 +186,7 @@ Metadata主要是通过一个TAG（Key），去找对应的Data（Value），用
   ``` C++
   void OnMetadataOutputError(Camera_MetadataOutput *metadataOutput, Camera_ErrorCode errorCode)
   {
-      OH_LOG_INFO(LOG_APP, "OnMetadataOutput errorCode = %{public}d", errorCode);
+      OH_LOG_ERROR(LOG_APP, "OnMetadataOutput errorCode = %{public}d", errorCode);
   }
   ```
 

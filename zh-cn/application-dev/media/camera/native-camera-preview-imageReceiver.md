@@ -142,7 +142,7 @@
    {
        OH_LOG_INFO(LOG_APP, "ImageReceiverNativeCTest %{public}s IN", __func__);
        uint64_t xComponentSurfaceId = std::stoull(g_xComponentSurfaceIdSlave);
-       OH_LOG_ERROR(LOG_APP, "ImageReceiverNativeCTest %{public}s XComponentId is : %{public}lu.", __func__,
+       OH_LOG_INFO(LOG_APP, "ImageReceiverNativeCTest %{public}s XComponentId is : %{public}lu.", __func__,
            xComponentSurfaceId);
        OHNativeWindow *nativeWindow = nullptr;
        int32_t res = OH_NativeWindow_CreateNativeWindowFromSurfaceId(xComponentSurfaceId, &nativeWindow);
