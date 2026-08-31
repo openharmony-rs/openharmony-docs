@@ -190,4 +190,4 @@ $ hidumper -s 1901 -a 'backgroundLoader com.example.myapplication EntryAbility'
 
 针对后台加载任务的开发，有以下相关示例可供参考：
 
-- [后台加载任务（ArkTS）（API26.1）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader)
+- [后台加载任务（ArkTS）（API版本26.1.0）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader)
