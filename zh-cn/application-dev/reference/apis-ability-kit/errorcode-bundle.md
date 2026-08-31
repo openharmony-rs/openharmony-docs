@@ -1710,7 +1710,7 @@ The input parameter is invalid. It is either outside the range of valid enum val
 1. 需要检查传入的枚举值，是否有超过DeviceModeDistributionPolicy枚举值。
 2. 需要检查传入的枚举数组是否包含了[DeviceModeDistributionPolicy.UNIVERSAL_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.FULL_COMPATIBLE_DIFFERENT_PACKAGE]，这三个在切换时必须传入。
 
-## 17700099 设备正在安装卸载应用或接口正在处理中
+## 17700099 设备正在安装卸载应用或双模切换正在处理中
 
 **错误信息**
 
@@ -1718,17 +1718,17 @@ The device is installing or uninstalling an application, or a previous API call 
 
 **错误描述**
 
-设备正在安装卸载应用或者已经调用该接口正在处理中，请重试。
+设备正在安装或卸载应用，或者上一次双模切换调用正在处理中，请重试。
 
 **可能原因**
 
-设备正在安装卸载应用或者已经调用该接口正在处理中。
+设备正在安装或卸载应用，或者上一次双模切换调用正在处理中。
 
 **处理步骤**
 
 1. 检查下设备是否正在安装、卸载应用。
-2. 检查下是否已经调用该接口且接口正在处理中。
-3. 重新调用该接口。
+2. 检查下是否已经调用该接口且双模切换正在处理中。
+3. 等待上述操作完成后重新调用该接口。
 <!--DelEnd-->
 
 ## 17700101 包管理服务异常

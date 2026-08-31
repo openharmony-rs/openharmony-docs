@@ -6462,10 +6462,6 @@ filterBundleListByDeviceModeDistributionPolicies(policies: Array\<DeviceModeDist
 
 支持按设备模式分发策略过滤应用列表。使用Promise异步回调。
 
-> **说明：**
->
-> 入参不能为空。所有值必须在DeviceModeDistributionPolicy的枚举值范围内，且必须包含所有不同包体的策略（UNIVERSAL_DIFFERENT_PACKAGE、PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE和FULL_COMPATIBLE_DIFFERENT_PACKAGE）。
-
 **起始版本：** 26.1.0
 
 **系统接口：** 此接口为系统接口。
@@ -6480,7 +6476,7 @@ filterBundleListByDeviceModeDistributionPolicies(policies: Array\<DeviceModeDist
 
 | 参数名     | 类型   | 必填 | 说明                       |
 | ---------- | ------ | ---- | ---------------------------|
-| policies | Array\<[DeviceModeDistributionPolicy](#devicemodedistributionpolicy)> | 是 | DeviceModeDistributionPolicy值的数组。 |
+| policies | Array\<[DeviceModeDistributionPolicy](#devicemodedistributionpolicy)> | 是 | DeviceModeDistributionPolicy值的数组。入参不能为空，所有值必须在DeviceModeDistributionPolicy的枚举值范围内，且必须包含所有不同包体的策略（UNIVERSAL_DIFFERENT_PACKAGE、PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE和FULL_COMPATIBLE_DIFFERENT_PACKAGE）。 |
 
 **返回值：**
 
