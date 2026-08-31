@@ -121,7 +121,7 @@ Text(content?: string \| Resource , value?: TextOptions)
 | caretColor<sup>14+</sup> | 设置文本组件选中区域手柄颜色。 |
 | copyOption<sup>9+</sup> | 设置组件是否支持文本可复制粘贴。 |
 | draggable<sup>9+</sup> | 设置选中文本拖拽效果。 |
-| selectedBackgroundColor<sup>14+</sup> | 设置文本选中底板颜色。 |
+| selectedBackgroundColor<sup>14+</sup> | 设置文本选中高亮颜色。 |
 | selection<sup>11+</sup> | 设置选中区域。 |
 | textSelectable<sup>12+</sup> | 设置是否支持文本可选择、可获焦。 |
 
@@ -1346,7 +1346,7 @@ punctuationOverflow(enabled: Optional\<boolean>)
 
 selectedBackgroundColor(color: ResourceColor)
 
-设置文本选中底板颜色。如果未设置不透明度，默认不透明度为20%。未通过该接口设置时，默认文本选中底板颜色为'#007DFF'（蓝色）。
+设置文本选中高亮颜色。如果未设置不透明度或设置为完全不透明，默认使用20%不透明度。未通过该接口设置时，默认文本选中高亮颜色为'#007DFF'（蓝色）。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -1358,7 +1358,7 @@ selectedBackgroundColor(color: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                       |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------ |
-| color  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 文本选中底板颜色。 |
+| color  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 文本选中高亮颜色。 |
 
 ### selection<sup>11+</sup>
 
