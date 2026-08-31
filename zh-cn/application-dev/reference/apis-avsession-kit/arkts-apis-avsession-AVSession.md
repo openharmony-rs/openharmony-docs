@@ -1481,7 +1481,7 @@ sendCustomData(data: Record\<string, Object>): Promise\<void>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
-| 6600102 | The session does not exist. |
+| 6600102  | The session does not exist. |
 
 **示例：**
 
@@ -2158,8 +2158,8 @@ ArkTS-Sta: getAVCastController(): Promise<AVCastController | undefined>
 
 | 错误码ID | 错误信息 |
 | -------- | --------------------------------------- |
-| 6600102| The session does not exist.           |
-| 6600109| The remote connection is not established. |
+| 6600102  | The session does not exist. |
+| 6600109  | The remote connection is not established. |
 
 **示例：**
 
@@ -2199,8 +2199,8 @@ ArkTS-Sta: getAVCastController(callback: AsyncCallback<AVCastController | undefi
 
 | 错误码ID | 错误信息                                  |
 | -------- |---------------------------------------|
-| 6600102| The session does not exist.           |
-| 6600109| The remote connection is not established. |
+| 6600102  | The session does not exist. |
+| 6600109  | The remote connection is not established. |
 
 **示例：**
 
@@ -4846,8 +4846,8 @@ off(type: 'toggleFavorite', callback?: (assetId: string) => void): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101 | Session service exception. |
-| 6600102 | The session does not exist. |
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
 
 **示例：**
 
@@ -5909,8 +5909,8 @@ getOutputDeviceSync(): OutputDeviceInfo
 
 | 错误码ID   | 错误信息 |
 |---------| --------------------------------------- |
-| 6600101 | Session service exception. |
-| 6600102 | The session does not exist. |
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
 
 **示例：**
 
@@ -5944,8 +5944,8 @@ getAllCastDisplays(): Promise<Array\<CastDisplayInfo>>
 
 | 错误码ID   | 错误信息 |
 |---------| --------------------------------------- |
-| 6600101 | Session service exception. |
-| 6600102 | The session does not exist. |
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
 
 **示例：**
 
@@ -6110,7 +6110,7 @@ onCustomDataChange(callback: Callback\<Record\<string, Object>>): void
 | 错误码ID | 错误信息 |
 | -------- | ----------------                       |
 | 6600101  | Session service exception. |
-| 6600102 | The session does not exist. |
+| 6600102  | The session does not exist. |
 
 **示例：**
 
@@ -6186,7 +6186,7 @@ offCustomDataChange(callback?: Callback\<Record\<string, Object>>): void
 | 错误码ID | 错误信息 |
 | -------- | ----------------                       |
 | 6600101  | Session service exception. |
-| 6600102 | The session does not exist. |
+| 6600102  | The session does not exist. |
 
 **示例：**
 
