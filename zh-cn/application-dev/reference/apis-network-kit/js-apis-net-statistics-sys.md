@@ -547,7 +547,7 @@ setCalibrationTraffic(simId: number, remainTraffic: number, totalTraffic?: numbe
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-import { connection, statistics } from '@kit.NetworkKit';
+import { statistics } from '@kit.NetworkKit';
 
 let simId:number = 1;
 let remainData:number = 600*1024*1024;   // 当前剩余流量为600MB。
