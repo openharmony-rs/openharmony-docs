@@ -6,7 +6,7 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=505cdcc08414815d97fac7e5929d482f30ac5700 translatedAt=2026-07-25T02:02:18.397Z pushedAt=2026-07-25T09:59:14.552Z -->
+<!-- md-trans-meta sourceCommit=200e4a8caa4aacea6efeb32eed7479a8e49b0f0b translatedAt=2026-08-24T09:01:30.604Z pushedAt=2026-08-31T09:27:48.440Z -->
 
 ## Overview
 
@@ -30,8 +30,8 @@ Provides APIs related to typography lines, such as obtaining the number of chara
 | -- | -- |
 | [OH_Drawing_LineTypography* OH_Drawing_CreateLineTypography(OH_Drawing_TypographyCreate* handler)](#oh_drawing_createlinetypography) | Creates a pointer to a typography line object [OH_Drawing_LineTypography](capi-drawing-oh-drawing-linetypography.md), which serves as a carrier for storing text content and styles and can be used to calculate single-line typography information. |
 | [void OH_Drawing_DestroyLineTypography(OH_Drawing_LineTypography* lineTypography)](#oh_drawing_destroylinetypography) | Releases the memory occupied by an [OH_Drawing_LineTypography](capi-drawing-oh-drawing-linetypography.md) object.|
-| [size_t OH_Drawing_LineTypographyGetLineBreak(OH_Drawing_LineTypography* lineTypography,size_t startIndex, double width)](#oh_drawing_linetypographygetlinebreak) | Obtains the number of characters that can fit in the layout from the specified position within a limited layout width.|
-| [OH_Drawing_TextLine* OH_Drawing_LineTypographyCreateLine(OH_Drawing_LineTypography* lineTypography,size_t startIndex, size_t count)](#oh_drawing_linetypographycreateline) | Creates a pointer to an [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) object based on the text content in a specified range.|
+| [size_t OH_Drawing_LineTypographyGetLineBreak(OH_Drawing_LineTypography* lineTypography, size_t startIndex, double width)](#oh_drawing_linetypographygetlinebreak) | Obtains the number of characters that can fit in the layout from the specified position within a limited layout width. |
+| [OH_Drawing_TextLine* OH_Drawing_LineTypographyCreateLine(OH_Drawing_LineTypography* lineTypography, size_t startIndex, size_t count)](#oh_drawing_linetypographycreateline) | Creates a pointer to an [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) object based on the text content in a specified range. |
 
 ## Function Description
 
@@ -84,7 +84,7 @@ Releases the memory occupied by an [OH_Drawing_LineTypography](capi-drawing-oh-d
 ### OH_Drawing_LineTypographyGetLineBreak()
 
 ```
-size_t OH_Drawing_LineTypographyGetLineBreak(OH_Drawing_LineTypography* lineTypography,size_t startIndex, double width)
+size_t OH_Drawing_LineTypographyGetLineBreak(OH_Drawing_LineTypography* lineTypography, size_t startIndex, double width)
 ```
 
 **Description**
@@ -112,7 +112,7 @@ Obtains the number of characters that can fit in the layout from the specified p
 ### OH_Drawing_LineTypographyCreateLine()
 
 ```
-OH_Drawing_TextLine* OH_Drawing_LineTypographyCreateLine(OH_Drawing_LineTypography* lineTypography,size_t startIndex, size_t count)
+OH_Drawing_TextLine* OH_Drawing_LineTypographyCreateLine(OH_Drawing_LineTypography* lineTypography, size_t startIndex, size_t count)
 ```
 
 **Description**

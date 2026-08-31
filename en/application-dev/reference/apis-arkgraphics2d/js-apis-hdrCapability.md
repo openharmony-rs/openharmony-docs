@@ -3,11 +3,12 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @xiaojianfeng_jeffery-->
-<!--Designer: @dizuo1-->
+<!--Designer: @njuptkid-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=9a673d444fec536578066af1baf013d52353a6c3 translatedAt=2026-08-24T09:23:47.992Z pushedAt=2026-08-31T12:05:04.201Z -->
 
-The hdrCapability module provides enums related to the High Dynamic Range (HDR) capability. The HDR technology significantly expands the dynamic range and color expressiveness of images. It is applicable to scenarios such as video playback and image display. It addresses the issues of overexposure in bright areas and loss of details in dark areas in traditional SDR in high-contrast scenarios, delivering a more authentic and richer visual experience.
+This module provides the enums related to HDR (High Dynamic Range) capabilities. HDR technology can significantly expand the dynamic range and color expressiveness of images. It is applicable to scenarios such as video playback and image display, and can solve the problems of overexposed highlights and lost shadow details in high-contrast scenes with traditional SDR, delivering a more realistic and richer visual experience.
 
 > **NOTE**
 >
