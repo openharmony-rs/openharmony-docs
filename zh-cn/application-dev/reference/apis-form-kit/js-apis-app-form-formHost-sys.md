@@ -3766,7 +3766,6 @@ registerFormHostService(service: formInfo.FormHostServiceInfo): Promise&lt;strin
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error. |
 | 16501000 | An internal functional error occurred. |
 
@@ -3828,7 +3827,6 @@ unregisterFormHostService(serviceId: string): Promise&lt;void&gt;
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error. |
 | 16501019 | A form service not owned by you cannot be unregistered. |
 | 16501000 | An internal functional error occurred. |

@@ -287,7 +287,7 @@ requestPublishFormCrossDevice(peerServiceInfo: formInfo.PeerFormHostServiceInfo,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | -------|
-| peerServiceInfo | [formInfo.PeerFormHostServiceInfo](js-apis-app-form-formInfo-sys.md#peerformhostserviceinfo) | 是 | 远端卡片使用方服务信息。 |
+| peerServiceInfo | [formInfo.PeerFormHostServiceInfo](js-apis-app-form-formInfo-sys.md#peerformhostserviceinfo) | 是 | 远端设备的卡片使用方服务信息。 |
 | want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 发布请求，需包含以下字段。<br>bundleName: 目标卡片所属应用的bundleName。<br>abilityName: 目标卡片所属应用的Ability。<br>parameters:<br>- ohos.extra.param.key.form_dimension: 目标卡片规格。<br>- ohos.extra.param.key.form_name: 目标卡片名。<br>- ohos.extra.param.key.module_name: 目标卡片moduleName。 |
 | formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | 否 | 用于更新的卡片数据。 |
 
@@ -305,7 +305,6 @@ requestPublishFormCrossDevice(peerServiceInfo: formInfo.PeerFormHostServiceInfo,
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error. |
 | 16501020 | Remote form service is unavailable. |
 | 16501021 | The peer form application is not installed or the version is too old. |
