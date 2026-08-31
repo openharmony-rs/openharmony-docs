@@ -3730,7 +3730,7 @@ try {
 }
 ```
 
-## registerFormHostService
+## formHost.registerFormHostService
 
 registerFormHostService(service: formInfo.FormHostServiceInfo): Promise&lt;string&gt;
 
@@ -3791,7 +3791,7 @@ try {
 }
 ```
 
-## unregisterFormHostService
+## formHost.unregisterFormHostService
 
 unregisterFormHostService(serviceId: string): Promise&lt;void&gt;
 
