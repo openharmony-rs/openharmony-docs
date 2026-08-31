@@ -455,7 +455,7 @@ Enumerates the certificate revocation check parameters.
 | crls | Array\<[X509CRL](#x509crl11)> | No  | Yes  | CRLs. Maximum number: 100.|
 | allowDownloadCrl | boolean | No  | Yes  | Whether to allow downloading CRLs. The default value is **false**. **true**: CRLs are downloaded using the CDP extension of the certificate. **false**: CRLs are not downloaded.|
 | ocspResponses | Array\<Uint8Array> | No  | Yes  | OCSP response data. Preset OCSP response data. Maximum number: 100.|
-| allowOcspCheckOnline | boolean | No  | Yes  | Whether to allow online OCSP check. The default value is **false**.<br>**true**: Perform online OCSP check. That is, obtain the OCSP URL from the certificate AIA extension and send a request to obtain a response.<br>**false**: Do not perforom online OCSP check.|
+| allowOcspCheckOnline | boolean | No  | Yes  | Whether to allow online OCSP check. The default value is **false**.<br>**true**: Perform online OCSP check. That is, obtain the OCSP URL from the certificate AIA extension and send a request to obtain a response.<br>**false**: Do not perform online OCSP check.|
 | ocspDigest | [OcspDigest](#ocspdigest) | No  | Yes  | Digest algorithm used for OCSP requests. The default value is **SHA256**.|
 
 ## CertValidationParams
