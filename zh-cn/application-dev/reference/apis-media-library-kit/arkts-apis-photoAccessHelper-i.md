@@ -269,8 +269,8 @@ picker内宫格的捏合模式。配置后支持通过捏合手势调整宫格�
     
 | 名称                   | 类型                | 只读 | 可选 | 说明           |
 | ---- | ---- | ---- | ---- | ---- |
-| supportedHighResolution | boolean  | 否 | 否 | 表示应用是否支持获取高分辨率的媒体资源。true表示支持高分辨率资源请求，false表示仅支持标准分辨率资源。<br>**原子化服务API:** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| supportedMimeType | Array&lt;string&gt;  | 否 | 是 | 支持的MIME类型，格式为'type/subtype'的标准MIME类型字符串，如'image/jpeg'、'image/png'、'image/heic'等。<br>- 配置image/heic表示应用支持heif格式。<br>- 配置image/jpeg表示应用仅支持jpeg格式不支持heif格式。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。       |
+| supportedHighResolution | boolean  | 否 | 否 | 表示应用是否支持获取高分辨率的媒体资源。true表示支持高分辨率资源请求，false表示仅支持标准分辨率资源。<br>**原子化服务API（仅ArkTS-Dyn）:** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| supportedMimeType | Array&lt;string&gt;  | 否 | 是 | 支持的MIME类型，格式为'type/subtype'的标准MIME类型字符串，如'image/jpeg'、'image/png'、'image/heic'等。<br>- 配置image/heic表示应用支持heif格式。<br>- 配置image/jpeg表示应用仅支持jpeg格式不支持heif格式。<br>**起始版本：** 26.0.0<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。       |
 
 ## MediaLibraryAvailability
 
