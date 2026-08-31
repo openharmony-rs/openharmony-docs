@@ -80,7 +80,7 @@
    
    ``` TypeScript
    import { stationary } from '@kit.MultimodalAwarenessKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { BusinessError, Callback } from '@kit.BasicServicesKit';
    ```
 
 2. 订阅绝对静止的进入事件，1秒上报一次。
@@ -90,9 +90,7 @@
    ``` TypeScript
    let reportLatencyNs = 1000000000; // 单位：纳秒
    try {
-     stationary.on('still', stationary.ActivityEvent.ENTER, reportLatencyNs, (data) => {
-       console.info('data=' + JSON.stringify(data));
-     })
+     stationary.on('still', stationary.ActivityEvent.ENTER, reportLatencyNs, this.callback)
      // ...
    } catch (error) {
      let message = (error as BusinessError).message;
@@ -122,9 +120,7 @@
    
    ``` TypeScript
    try {
-     stationary.off('still', stationary.ActivityEvent.ENTER, (data) => {
-       console.info('data=' + JSON.stringify(data));
-     })
+     stationary.off('still', stationary.ActivityEvent.ENTER, this.callback)
      // ...
    } catch (error) {
      let message = (error as BusinessError).message;
