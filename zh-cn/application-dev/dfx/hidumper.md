@@ -46,7 +46,7 @@ HiDumper命令行工具使用常见问题汇总在[常见问题](#常见问题)�
 | [--cpuusage [pid]](#查询进程cpu使用率) | 获取CPU使用率，取值范围(0, CPU核数]，按进程和类别分类；如果指定pid，则获取指定pid的CPU使用率。 |
 | [--cpufreq](#查询cpu频率) | 获取CPU每个核的真实频率，单位：kHz。 |
 | [--mem [--prune]](#查询整机内存) | 获取总内存使用情况。如果指定--prune，只导出精简的内存使用情况。<br />**说明**：从API version 20开始，支持--prune参数。 |
-| <!--RP11-->[--mem pid [--show-ashmem] [--show-dmabuf]](#查询进程内存) | 获取指定pid的进程内存使用情况。<br />指定--show-ashmem，则补充打印该进程的ashmem使用详细信息。<br />指定--show-dmabuf，则补充打印DMA内存使用详情信息。<br />**说明**：<br />从API version 20开始，支持--show-ashmem、应用进程的--show-dmabuf参数。<br/>从API version 23开始，支持系统服务进程的--show-dmabuf参数。<!--RP11End--> |
+| <!--RP11-->[--mem pid [--show-ashmem] [--show-dmabuf] [--show-arktsheap]](#查询进程内存) | 获取指定pid的进程内存使用情况。<br />指定--show-ashmem，则补充打印该进程的ashmem使用详细信息。<br />指定--show-dmabuf，则补充打印DMA内存使用详情信息。<br />指定--show-arktsheap，则补充打印PID中主线程的arkts heap使用情况。<br />**说明**：<br />从API version 20开始，支持--show-ashmem、应用进程的--show-dmabuf参数。<br/>从API version 23开始，支持系统服务进程的--show-dmabuf参数。<br/>从API版本26.1.0开始，支持系统服务进程的--show-arktsheap参数。<!--RP11End--> |
 | [--zip](#导出信息压缩存储) | 保存命令输出到 /data/log/hidumper 下的压缩文件，压缩格式为 ZIP。 |
 | [--ipc [pid]/-a --start-stat/stat/--stop-stat](#获取进程间通信信息) | 统计一段时间进程IPC信息。如果使用-a，则统计所有进程IPC数据。使用--start-stat开始统计，使用--stat获取统计数据，使用--stop-stat结束统计。 |
 | [--mem-smaps pid [-v]](#查询进程内存) | 获取pid内存统计信息，数据来源于/proc/pid/smaps，使用-v指定更多详细信息。（仅支持导出[debug版本应用](performance-analysis-kit-terminology.md#debug版本应用)）<br />**说明**：从API version 20开始，支持该参数。 |
@@ -313,6 +313,57 @@ Total Ashmem:144 kB
 
 <!--RP12-->
 <!--RP12End-->
+
+使用hidumper --mem pid --show-arktsheap命令可获取指定PID中主线程的arkts heap使用情况。
+
+使用样例：
+
+```shell
+$ hidumper --mem 1436 --show-arktsheap
+
+-------------------------------[memory]-------------------------------
+
+                             Pss         Shared         Shared        Private        Private           Swap        SwapPss           Heap           Heap           Heap
+                           Total          Clean          Dirty          Clean          Dirty          Total          Total           Size          Alloc           Free
+                          ( kB )         ( kB )         ( kB )         ( kB )         ( kB )         ( kB )         ( kB )         ( kB )         ( kB )         ( kB )
+                 ------------------------------------------------------------------------------------------------------------------------------------------------------
+               GL              0              0              0              0              0              0              0              0              0              0
+            Graph          11300              0              0              0          11300              0              0              0              0              0
+      ark ts heap          14978              0           7460              0          13916              0              0              0              0              0
+            guard              0              0              0              0              0              0              0              0              0              0
+      native heap          28362              0          23380              0          25168              0              0              0              0              0
+   AnonPage other           1242              4           3852              0            808              0              0              0              0              0
+            stack            880              0              0              0            880              0              0              0              0              0
+              .so          20661          94220          13996           1480           1368              0              0              0              0              0
+              dev           5988              0            252             32           5956              0              0              0              0              0
+             .ttf            188            468              0             24              0              0              0              0              0              0
+   FilePage other           2533           1776              4           2020              4              0              0              0              0              0
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            Total          86163          96468          49172           3556          59400              0              0              0              0              0
+
+native heap:
+           heap:           686              0            184              0            660              0              0              0              0              0
+       brk heap:         25533              0          20980              0          22676              0              0              0              0              0
+      mmap heap:          2143              0           2216              0           1832              0              0              0              0              0
+
+Purgeable:
+        PurgSum:0 kB
+        PurgPin:0 kB
+
+DMA:
+            Dma:11300 kB
+
+arkts heap:
+tid               thread name                   arkts_heap(KB)
+1436              m.ohos.systemui               14848
+```
+字段说明：
+
+| 字段 | 说明 |
+| -------- | -------- |
+| tid | 指定PID中主线程ID。 |
+| thread name | 指定PID中主线程的名称。 |
+| arkts_heap(KB) | 指定PID中主线程的arkts heap大小。 |
 
 可使用hidumper --mem-smaps pid命令获取指定进程的详细内存使用情况，该命令会累加相同内存段的内存值。
 
