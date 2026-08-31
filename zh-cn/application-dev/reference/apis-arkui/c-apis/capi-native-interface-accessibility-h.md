@@ -33,7 +33,7 @@
 | [ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md) | ArkUI_AccessibilityEventInfo | 无障碍事件信息。当无障碍服务或辅助应用要求控件执行操作后，需要发送执行成功事件。控件自身交互需求要同步状态给无障碍服务或辅助应用时，也需要主动发送事件。 |
 | [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) | ArkUI_AccessibilityProvider | 该结构体为无障碍第三方操作提供者，用于承载回调函数的实现。 |
 | [ArkUI_AccessibilityActionArguments](capi-arkui-accessibility-arkui-accessibilityactionarguments.md) | ArkUI_AccessibilityActionArguments | 用于设置无障碍操作的具体参数。 |
-| [ArkUI_Node*](capi-arkui-accessibility-arkui-node8h.md) | ArkUI_NodeHandle | 定义ArkUI native组件实例对象指针。 |
+| [ArkUI_Node*](capi-arkui-nativemodule-arkui-node8h.md) | ArkUI_NodeHandle | 定义ArkUI native组件实例对象指针。 |
 | [ArkUI_AccessibilityElementInfoList](capi-arkui-accessibility-arkui-accessibilityelementinfolist.md) | ArkUI_AccessibilityElementInfoList | 提供封装的{@link ArkUI_AccessibilityElementInfo}的List实例。 |
 
 ### 枚举
@@ -106,7 +106,7 @@
 | [int32_t OH_ArkUI_AccessibilityEventSetRequestFocusId(ArkUI_AccessibilityEventInfo* eventInfo, int32_t requestFocusId)](#oh_arkui_accessibilityeventsetrequestfocusid) | 为[ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md)设置请求焦点id。 |
 | [int32_t OH_ArkUI_AccessibilityEventSetElementInfo(ArkUI_AccessibilityEventInfo* eventInfo, ArkUI_AccessibilityElementInfo* elementInfo)](#oh_arkui_accessibilityeventsetelementinfo) | 为[ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md)设置elementInfo。 |
 | [int32_t OH_ArkUI_FindAccessibilityActionArgumentByKey(ArkUI_AccessibilityActionArguments* arguments, const char* key, char** value)](#oh_arkui_findaccessibilityactionargumentbykey) | 获取[ArkUI_AccessibilityActionArguments](capi-arkui-accessibility-arkui-accessibilityactionarguments.md)中指定key的value值。 |
-| [int32_t OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(ArkUI_NodeHandle* node, ArkUI_AccessibilityProvider** provider)](#oh_arkui_nativemodule_getnativeaccessibilityprovider) | 获取指向[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)对象指针的二级指针变量。<br> 其中[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)对象与传入的[ArkUI_NodeHandle](capi-arkui-accessibility-arkui-node8h.md)的实例一一对应。<br> 三方框架将自身UI组件映射为{@link ARKUI_NODE_CUSTOM}类型的RenderNode并得到[ArkUI_NodeHandle](capi-arkui-accessibility-arkui-node8h.md)。<br> 再调用OH_ArkUI_NativeModule_GetNativeAccessibilityProvider接口获取[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)指针并注册无障碍回调。<br> 最终实现ArkUI无障碍服务对三方框架UI的识别与事件触发。<br> 仅当三方框架将自身UI组件映射为{@link ARKUI_NODE_CUSTOM}的RenderNode，该接口才会生效，否则会报错误码。<br> 本接口通过RenderNode实现三方框架的接入，仅支持ARKUI_NODE_CUSTOM接入无障碍服务，可以实现无障碍控件树获取能力。<br> 不支持多线程并发，由三方框架保证调用时的线程安全。<br> |
+| [int32_t OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(ArkUI_NodeHandle* node, ArkUI_AccessibilityProvider** provider)](#oh_arkui_nativemodule_getnativeaccessibilityprovider) | 获取指向[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)对象指针的二级指针变量。<br> 其中[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)对象与传入的[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)的实例一一对应。<br> 三方框架将自身UI组件映射为{@link ARKUI_NODE_CUSTOM}类型的RenderNode并得到[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)。<br> 再调用OH_ArkUI_NativeModule_GetNativeAccessibilityProvider接口获取[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)指针并注册无障碍回调。<br> 最终实现ArkUI无障碍服务对三方框架UI的识别与事件触发。<br> 仅当三方框架将自身UI组件映射为{@link ARKUI_NODE_CUSTOM}的RenderNode，该接口才会生效，否则会报错误码。<br> 本接口通过RenderNode实现三方框架的接入，仅支持ARKUI_NODE_CUSTOM接入无障碍服务，可以实现无障碍控件树获取能力。<br> 不支持多线程并发，由三方框架保证调用时的线程安全。<br> |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetComponentIdentifier(ArkUI_AccessibilityElementInfo *elementInfo, const char *identifier)](#oh_arkui_accessibilityelementinfosetcomponentidentifier) | 为无障碍节点信息[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)设置组件标识，可用于自动化测试识别特定组件。 |
 
 ## 枚举类型说明
@@ -1729,7 +1729,7 @@ int32_t OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(ArkUI_NodeHandle* n
 
 **描述**
 
-获取指向[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)对象指针的二级指针变量。<br> 其中[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)对象与传入的[ArkUI_NodeHandle](capi-arkui-accessibility-arkui-node8h.md)的实例一一对应。<br> 三方框架将自身UI组件映射为{@link ARKUI_NODE_CUSTOM}类型的RenderNode并得到[ArkUI_NodeHandle](capi-arkui-accessibility-arkui-node8h.md)。<br> 再调用OH_ArkUI_NativeModule_GetNativeAccessibilityProvider接口获取[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)指针并注册无障碍回调。<br> 最终实现ArkUI无障碍服务对三方框架UI的识别与事件触发。<br> 仅当三方框架将自身UI组件映射为{@link ARKUI_NODE_CUSTOM}的RenderNode，该接口才会生效，否则会报错误码。<br> 本接口通过RenderNode实现三方框架的接入，仅支持ARKUI_NODE_CUSTOM接入无障碍服务，可以实现无障碍控件树获取能力。<br> 不支持多线程并发，由三方框架保证调用时的线程安全。<br>
+获取指向[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)对象指针的二级指针变量。<br> 其中[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)对象与传入的[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)的实例一一对应。<br> 三方框架将自身UI组件映射为{@link ARKUI_NODE_CUSTOM}类型的RenderNode并得到[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)。<br> 再调用OH_ArkUI_NativeModule_GetNativeAccessibilityProvider接口获取[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)指针并注册无障碍回调。<br> 最终实现ArkUI无障碍服务对三方框架UI的识别与事件触发。<br> 仅当三方框架将自身UI组件映射为{@link ARKUI_NODE_CUSTOM}的RenderNode，该接口才会生效，否则会报错误码。<br> 本接口通过RenderNode实现三方框架的接入，仅支持ARKUI_NODE_CUSTOM接入无障碍服务，可以实现无障碍控件树获取能力。<br> 不支持多线程并发，由三方框架保证调用时的线程安全。<br>
 
 **起始版本：** 23
 
@@ -1737,7 +1737,7 @@ int32_t OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(ArkUI_NodeHandle* n
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-accessibility-arkui-node8h.md)* node | 指向一个[ArkUI_NodeHandle](capi-arkui-accessibility-arkui-node8h.md)对象的指针。 |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)* node | 指向一个[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)对象的指针。 |
 | [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)** provider | 指向一个[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)类型对象的指针。provider用于注册无障碍回调函数。 |
 
 **返回：**

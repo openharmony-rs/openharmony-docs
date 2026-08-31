@@ -21,7 +21,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [DrmSubsample](capi-multimedia-drm-drmsubsample.md) | DrmSubsample | Subsample结构类型定义。 |
-| [OH_AVBuffer](capi-multimedia-drm-oh-avbuffer.md) | OH_AVBuffer | AVBuffer结构。 |
+| [OH_AVBuffer](capi-core-oh-avbuffer.md) | OH_AVBuffer | AVBuffer结构。 |
 | [OH_AVCencInfo](capi-multimedia-drm-oh-avcencinfo.md) | OH_AVCencInfo | AVCencInfo结构。 |
 
 ### 枚举
@@ -274,7 +274,7 @@ OH_AVErrCode OH_AVCencInfo_SetAVBuffer(OH_AVCencInfo *cencInfo, OH_AVBuffer *buf
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCencInfo](capi-multimedia-drm-oh-avcencinfo.md) *cencInfo | 指向OH_AVCencInfo实例的指针。 |
-| [OH_AVBuffer](capi-multimedia-drm-oh-avbuffer.md) *buffer | 携带数据的帧buffer。 |
+| [OH_AVBuffer](capi-core-oh-avbuffer.md) *buffer | 携带数据的帧buffer。 |
 
 **返回：**
 

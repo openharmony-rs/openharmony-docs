@@ -18,7 +18,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_NativeColorSpaceManager](capi-drawing-oh-nativecolorspacemanager.md) | OH_NativeColorSpaceManager | 声明色域管理对象，提供获取色域基础属性的能力。 |
+| [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md) | OH_NativeColorSpaceManager | 声明色域管理对象，提供获取色域基础属性的能力。 |
 
 ### 枚举
 
@@ -40,7 +40,7 @@
 | [void OH_Drawing_PenSetColor(OH_Drawing_Pen* pen, uint32_t color)](#oh_drawing_pensetcolor) | 用于设置画笔的颜色属性，颜色属性描述了画笔绘制图形轮廓时使用的颜色，用一个32位（ARGB）的变量表示。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>pen为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [uint8_t OH_Drawing_PenGetAlpha(const OH_Drawing_Pen* pen)](#oh_drawing_pengetalpha) | 获取画笔的透明度值。画笔在勾勒图形时透明通道会使用该值。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>pen为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [void OH_Drawing_PenSetAlpha(OH_Drawing_Pen* pen, uint8_t alpha)](#oh_drawing_pensetalpha) | 设置画笔透明度。画笔在勾勒图形时透明通道会使用该值。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>pen为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
-| [OH_Drawing_ErrorCode OH_Drawing_PenSetColor4f(OH_Drawing_Pen* pen, float a, float r, float g, float b, OH_NativeColorSpaceManager* colorSpaceManager)](#oh_drawing_pensetcolor4f) | 用于设置画笔的颜色属性，颜色属性描述了画笔绘制图形轮廓时使用的颜色。<br>颜色采用浮点数表示的ARGB格式，色彩空间由[OH_NativeColorSpaceManager](capi-drawing-oh-nativecolorspacemanager.md)指定。<br>如果colorSpaceManager为NULL，使用SRGB（基于IEC 61966-2.1:1999的标准红绿蓝色彩空间）色彩空间作为默认值。 |
+| [OH_Drawing_ErrorCode OH_Drawing_PenSetColor4f(OH_Drawing_Pen* pen, float a, float r, float g, float b, OH_NativeColorSpaceManager* colorSpaceManager)](#oh_drawing_pensetcolor4f) | 用于设置画笔的颜色属性，颜色属性描述了画笔绘制图形轮廓时使用的颜色。<br>颜色采用浮点数表示的ARGB格式，色彩空间由[OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)指定。<br>如果colorSpaceManager为NULL，使用SRGB（基于IEC 61966-2.1:1999的标准红绿蓝色彩空间）色彩空间作为默认值。 |
 | [OH_Drawing_ErrorCode OH_Drawing_PenGetAlphaFloat(OH_Drawing_Pen* pen, float* a)](#oh_drawing_pengetalphafloat) | 获取画笔颜色的透明度值。 |
 | [OH_Drawing_ErrorCode OH_Drawing_PenGetRedFloat(OH_Drawing_Pen* pen, float* r)](#oh_drawing_pengetredfloat) | 获取画笔颜色的红色分量。 |
 | [OH_Drawing_ErrorCode OH_Drawing_PenGetGreenFloat(OH_Drawing_Pen* pen, float* g)](#oh_drawing_pengetgreenfloat) | 获取画笔颜色的绿色分量。 |
@@ -300,7 +300,7 @@ OH_Drawing_ErrorCode OH_Drawing_PenSetColor4f(OH_Drawing_Pen* pen, float a, floa
 
 **描述**
 
-用于设置画笔的颜色属性，颜色属性描述了画笔绘制图形轮廓时使用的颜色。<br>颜色采用浮点数表示的ARGB格式，色彩空间由[OH_NativeColorSpaceManager](capi-drawing-oh-nativecolorspacemanager.md)指定。<br>如果colorSpaceManager为NULL，使用SRGB（基于IEC 61966-2.1:1999的标准红绿蓝色彩空间）色彩空间作为默认值。
+用于设置画笔的颜色属性，颜色属性描述了画笔绘制图形轮廓时使用的颜色。<br>颜色采用浮点数表示的ARGB格式，色彩空间由[OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)指定。<br>如果colorSpaceManager为NULL，使用SRGB（基于IEC 61966-2.1:1999的标准红绿蓝色彩空间）色彩空间作为默认值。
 
 **起始版本：** 20
 
@@ -313,7 +313,7 @@ OH_Drawing_ErrorCode OH_Drawing_PenSetColor4f(OH_Drawing_Pen* pen, float a, floa
 | float r | 表示颜色中的红色分量，用0.0 ~ 1.0之间的浮点数表示，大于1.0时，取1.0，小于0.0时，取0.0。 |
 | float g | 表示颜色中的绿色分量，用0.0 ~ 1.0之间的浮点数表示，大于1.0时，取1.0，小于0.0时，取0.0。 |
 | float b | 表示颜色中的蓝色分量，用0.0 ~ 1.0之间的浮点数表示，大于1.0时，取1.0，小于0.0时，取0.0。 |
-| [OH_NativeColorSpaceManager](capi-drawing-oh-nativecolorspacemanager.md)* colorSpaceManager | 表示指向OH_NativeColorSpaceManager对象的指针。 |
+| [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)* colorSpaceManager | 表示指向OH_NativeColorSpaceManager对象的指针。 |
 
 **返回：**
 

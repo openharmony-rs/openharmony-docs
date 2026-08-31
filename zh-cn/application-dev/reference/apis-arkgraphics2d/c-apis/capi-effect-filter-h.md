@@ -46,7 +46,7 @@ EffectErrorCode OH_Filter_CreateEffect(OH_PixelmapNative* pixelmap, OH_Filter** 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_PixelmapNative](capi-effectkit-oh-pixelmapnative.md)* pixelmap | [in] 作为滤镜效果处理源图像的位图对象。不能为NULL。 |
+| [OH_PixelmapNative](capi-drawing-oh-pixelmapnative.md)* pixelmap | [in] 作为滤镜效果处理源图像的位图对象。不能为NULL。 |
 | [OH_Filter](capi-effectkit-oh-filter.md)** filter | [out] 用来接收滤镜的二级指针。不能为NULL。 |
 
 **返回：**
@@ -245,7 +245,7 @@ EffectErrorCode OH_Filter_GetEffectPixelMap(OH_Filter* filter, OH_PixelmapNative
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Filter](capi-effectkit-oh-filter.md)* filter | [in] 用来创建位图的滤镜指针，需要通过OH_Filter_CreateEffect创建并添加滤镜效果。不能为NULL。 |
-| [OH_PixelmapNative](capi-effectkit-oh-pixelmapnative.md)** pixelmap | [out] 用来接收位图的二级指针。不能为NULL。 |
+| [OH_PixelmapNative](capi-drawing-oh-pixelmapnative.md)** pixelmap | [out] 用来接收位图的二级指针。不能为NULL。 |
 
 **返回：**
 

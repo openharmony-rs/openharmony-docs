@@ -21,7 +21,7 @@
 | [OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md) | OH_NativeBuffer_Config | OH_NativeBuffer的属性配置，用于申请新的OH_NativeBuffer实例或查询现有实例的相关属性。 |
 | [OH_NativeBuffer_Plane](capi-oh-nativebuffer-oh-nativebuffer-plane.md) | OH_NativeBuffer_Plane | 单个图像平面格式信息。 |
 | [OH_NativeBuffer_Planes](capi-oh-nativebuffer-oh-nativebuffer-planes.md) | OH_NativeBuffer_Planes | OH_NativeBuffer的图像平面格式信息。 |
-| [OHIPCParcel](capi-oh-nativebuffer-ohipcparcel.md) | OHIPCParcel | 提供OHIPCParcel结构体声明，用于进程间通信。 |
+| [OHIPCParcel](capi-nativewindow-ohipcparcel.md) | OHIPCParcel | 提供OHIPCParcel结构体声明，用于进程间通信。 |
 
 ### 枚举
 
@@ -507,7 +507,7 @@ int32_t OH_NativeBuffer_WriteToParcel(OH_NativeBuffer* buffer, OHIPCParcel* parc
 | 参数项 | 描述 |
 | -- | -- |
 | OH_NativeBuffer* buffer | 一个指向OH_NativeBuffer实例的指针。 |
-| [OHIPCParcel](capi-oh-nativebuffer-ohipcparcel.md)* parcel | 一个指向OHIPCParcel结构体实例的指针，作为出参使用。 |
+| [OHIPCParcel](capi-nativewindow-ohipcparcel.md)* parcel | 一个指向OHIPCParcel结构体实例的指针，作为出参使用。 |
 
 **返回：**
 
@@ -533,7 +533,7 @@ int32_t OH_NativeBuffer_ReadFromParcel(OHIPCParcel* parcel, OH_NativeBuffer** bu
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OHIPCParcel](capi-oh-nativebuffer-ohipcparcel.md)* parcel | 一个指向OHIPCParcel的结构体实例的指针。 |
+| [OHIPCParcel](capi-nativewindow-ohipcparcel.md)* parcel | 一个指向OHIPCParcel的结构体实例的指针。 |
 | OH_NativeBuffer** buffer | 一个指向OH_NativeBuffer结构体实例的二级指针，作为出参使用。 |
 
 **返回：**

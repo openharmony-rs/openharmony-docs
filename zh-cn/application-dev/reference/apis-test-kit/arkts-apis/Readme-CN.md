@@ -54,5 +54,4 @@
   - [UiDirection](arkts-test-uitest-uidirection-e.md)
   - [WindowChangeType](arkts-test-uitest-windowchangetype-e.md)
   - [WindowMode](arkts-test-uitest-windowmode-e.md)
-  - [BY](arkts-test-ohosuitest-p.md)
-  - [ON](arkts-test-ohosuitest-p.md)
+  - [属性](arkts-test-ohosuitest-p.md)

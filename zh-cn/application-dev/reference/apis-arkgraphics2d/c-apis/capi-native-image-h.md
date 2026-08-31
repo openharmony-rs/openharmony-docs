@@ -19,7 +19,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [OH_OnFrameAvailableListener](capi-oh-nativeimage-oh-onframeavailablelistener.md) | OH_OnFrameAvailableListener | 一个OH_NativeImage的监听者，通过OH_NativeImage_SetOnFrameAvailableListener接口注册该监听结构体，当有buffer可获取时，将触发回调给用户。 |
-| [NativeWindowBuffer](capi-oh-nativeimage-nativewindowbuffer.md) | OHNativeWindowBuffer | 定义结构体NativeWindowBuffer的新类型名OHNativeWindowBuffer。 |
+| [NativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md) | OHNativeWindowBuffer | 定义结构体NativeWindowBuffer的新类型名OHNativeWindowBuffer。 |
 
 ### 函数
 
@@ -437,7 +437,7 @@ int32_t OH_NativeImage_AcquireNativeWindowBuffer(OH_NativeImage* image, OHNative
 | 参数项 | 描述 |
 | -- | -- |
 | OH_NativeImage* image | 指向OH_NativeImage实例的指针。 |
-| [OHNativeWindowBuffer](capi-oh-nativeimage-nativewindowbuffer.md)** nativeWindowBuffer | 指向OHNativeWindowBuffer指针的指针。 |
+| [OHNativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md)** nativeWindowBuffer | 指向OHNativeWindowBuffer指针的指针。 |
 | int* fenceFd | 指向文件描述符句柄的指针。 |
 
 **返回：**
@@ -465,7 +465,7 @@ int32_t OH_NativeImage_ReleaseNativeWindowBuffer(OH_NativeImage* image, OHNative
 | 参数项 | 描述 |
 | -- | -- |
 | OH_NativeImage* image | 指向OH_NativeImage实例的指针。 |
-| [OHNativeWindowBuffer](capi-oh-nativeimage-nativewindowbuffer.md)* nativeWindowBuffer | 指向OHNativeWindowBuffer实例的指针。 |
+| [OHNativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md)* nativeWindowBuffer | 指向OHNativeWindowBuffer实例的指针。 |
 | int fenceFd | 指向文件描述符句柄，用于并发同步控制。 |
 
 **返回：**
@@ -702,7 +702,7 @@ int32_t OH_NativeImage_AcquireLatestNativeWindowBuffer(OH_NativeImage* image, OH
 | 参数项 | 描述 |
 | -- | -- |
 | OH_NativeImage* image | 指向OH_NativeImage实例的指针。 |
-| [OHNativeWindowBuffer](capi-oh-nativeimage-nativewindowbuffer.md)** nativeWindowBuffer | 指向OHNativeWindowBuffer的二级指针。 |
+| [OHNativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md)** nativeWindowBuffer | 指向OHNativeWindowBuffer的二级指针。 |
 | int* fenceFd | 指向文件描述符句柄的指针。 |
 
 **返回：**

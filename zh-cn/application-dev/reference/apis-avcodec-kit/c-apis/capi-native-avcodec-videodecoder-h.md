@@ -22,7 +22,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [MediaKeySession](capi-videodecoder-mediakeysession.md) | MediaKeySession | 为MediaKeySession定义native层对象。 |
+| [MediaKeySession](capi-audiocodec-mediakeysession.md) | MediaKeySession | 为MediaKeySession定义native层对象。 |
 
 ### 函数
 
@@ -695,7 +695,7 @@ OH_AVErrCode OH_VideoDecoder_SetDecryptionConfig(OH_AVCodec *codec, MediaKeySess
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频解码实例的指针。 |
-| [MediaKeySession](capi-videodecoder-mediakeysession.md) *mediaKeySession | 指向带有解密功能的DRM会话实例的指针。 |
+| [MediaKeySession](capi-audiocodec-mediakeysession.md) *mediaKeySession | 指向带有解密功能的DRM会话实例的指针。 |
 | bool secureVideoPath | 安全视频通路。指定安全视频通路为true，非安全视频通路为false。在Surface模式下，既支持安全视频通路，也支持非安全视频通路。在Buffer模式下，仅支持非安全视频通路。 |
 
 **返回：**
