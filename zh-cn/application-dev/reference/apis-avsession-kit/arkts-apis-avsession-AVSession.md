@@ -1050,7 +1050,7 @@ sendCustomData(data: Record\<string, Object>): Promise\<void>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
-| 6600102 | The session does not exist. |
+| 6600102  | The session does not exist. |
 
 
 **示例：**
@@ -1686,8 +1686,8 @@ getAVCastController(): Promise\<AVCastController>
 
 | 错误码ID | 错误信息 |
 | -------- | --------------------------------------- |
-| 6600102| The session does not exist.           |
-| 6600109| The remote connection is not established. |
+| 6600102  | The session does not exist. |
+| 6600109  | The remote connection is not established. |
 
 **示例：**
 
@@ -1719,8 +1719,8 @@ getAVCastController(callback: AsyncCallback\<AVCastController>): void
 
 | 错误码ID | 错误信息                                  |
 | -------- |---------------------------------------|
-| 6600102| The session does not exist.           |
-| 6600109| The remote connection is not established. |
+| 6600102  | The session does not exist. |
+| 6600109  | The remote connection is not established. |
 
 **示例：**
 
