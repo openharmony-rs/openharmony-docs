@@ -543,3 +543,13 @@ async function ModifyImageAllProperties(imageSource: image.ImageSource) {
   }
 }
 ```
+
+## PackingOption
+
+表示图片编码选项。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
+| 名称         | 类型 | 只读 | 可选 | 说明                                                         |
+| ------------ | ---- | ---- | ---- | ------------------------------------------------------------ |
+| c2paDataSize | number  | 否   | 是   | 编码时按照C2PA 2.4嵌入规范预留C2PA数据空间。<br>单位为字节（Byte），取值范围为[0, 4194304]，默认值为0，表示不添加预留空间。<br>该参数仅对JPEG和HEIF生效。其中JPEG遵循ISO/IEC 18477-3（JPEG XT）及ISO/IEC 19566-5:2023，使用以`JP`和`c2pa`标识的连续APP11段预留并以0填充；HEIF遵循ISO/IEC 14496-12（ISO BMFF），使用Extended UUID为`D8FEC3D6-1B0E-483C-9297-5828877EC481`的顶层`uuid` box预留并以0填充。<br>当设置非零值但无法完成预留时，编码失败。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。 |
