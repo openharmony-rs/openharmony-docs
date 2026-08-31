@@ -20,7 +20,7 @@
 | -- | -- | -- |
 | [ImageProcessing_ColorSpaceInfo](capi-imageprocessing-imageprocessing-colorspaceinfo.md) | ImageProcessing_ColorSpaceInfo | 色彩空间信息，用于色彩空间转换能力查询。 |
 | [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md) | OH_ImageProcessing | 提供OH_ImageProcessing结构体声明。<br>定义一个初始化为空的OH_ImageProcessing指针，并调用{@link OH_ImageProcessing_Create}来创建图片处理实例。调用该接口前，应确保传入的指针为空。用户可根据不同的图片处理类型，分别创建多个图片处理实例。 |
-| [OH_PixelmapNative](capi-imageprocessing-oh-pixelmapnative.md) | OH_PixelmapNative | OH_PixelmapNative是Native层封装的图像解码后无压缩的位图格式结构体，支持像素数据读写、不透明度设置、缩放、平移、旋转、翻转、裁剪等操作，适用于需要在Native层对Pixelmap进行像素级处理与变换的场景。<br>创建OH_PixelmapNative需要使用{@link OH_PixelmapNative_CreatePixelmap}系列函数，该函数在未指定源像素格式时，会默认按BGRA_8888格式解析源像素数据。使用完毕后，必须调用{@link OH_PixelmapNative_Release}函数释放资源，两者需配对使用，否则会导致内存泄漏。<br>OH_PixelmapNative结构体的部分相关函数和操作方式如下： |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) | OH_PixelmapNative | OH_PixelmapNative是Native层封装的图像解码后无压缩的位图格式结构体，支持像素数据读写、不透明度设置、缩放、平移、旋转、翻转、裁剪等操作，适用于需要在Native层对Pixelmap进行像素级处理与变换的场景。<br>创建OH_PixelmapNative需要使用{@link OH_PixelmapNative_CreatePixelmap}系列函数，该函数在未指定源像素格式时，会默认按BGRA_8888格式解析源像素数据。使用完毕后，必须调用{@link OH_PixelmapNative_Release}函数释放资源，两者需配对使用，否则会导致内存泄漏。<br>OH_PixelmapNative结构体的部分相关函数和操作方式如下： |
 | [OH_AVFormat](capi-imageprocessing-oh-avformat.md) | OH_AVFormat | 为OH_AVFormat接口定义native层对象。 |
 
 ### 枚举

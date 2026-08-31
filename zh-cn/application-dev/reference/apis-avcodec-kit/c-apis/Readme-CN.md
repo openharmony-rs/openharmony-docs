@@ -51,7 +51,6 @@
     - [OH_AVCapability](capi-avcapability-oh-avcapability.md)
     - [OH_AVMuxer](capi-avmuxer-oh-avmuxer.md)
     - [DrmSubsample](capi-multimedia-drm-drmsubsample.md)
-    - [OH_AVBuffer](capi-multimedia-drm-oh-avbuffer.md)
     - [OH_AVCencInfo](capi-multimedia-drm-oh-avcencinfo.md)
     - [OH_AVDemuxer](capi-avdemuxer-oh-avdemuxer.md)
     - [DRM_MediaKeySystemInfo](capi-avdemuxer-drm-mediakeysysteminfo.md)
@@ -61,4 +60,3 @@
     - [OH_AVDataSourceExt](capi-codecbase-oh-avdatasourceext.md)
     - [NativeWindow](capi-codecbase-nativewindow.md)
     - [OH_AVCodec](capi-codecbase-oh-avcodec.md)
-    - [MediaKeySession](capi-videodecoder-mediakeysession.md)

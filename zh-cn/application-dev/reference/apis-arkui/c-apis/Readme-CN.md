@@ -206,7 +206,6 @@
     - [ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md)
     - [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)
     - [ArkUI_AccessibilityActionArguments](capi-arkui-accessibility-arkui-accessibilityactionarguments.md)
-    - [ArkUI_Node*](capi-arkui-accessibility-arkui-node8h.md)
     - [ArkUI_AccessibilityElementInfoList](capi-arkui-accessibility-arkui-accessibilityelementinfolist.md)
     - [ArkUI_ContextCallback](capi-arkui-nativemodule-arkui-contextcallback.md)
     - [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)

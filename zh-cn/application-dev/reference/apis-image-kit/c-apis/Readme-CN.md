@@ -28,7 +28,6 @@
 - 结构体<!--imagekit-struct-->
     - [ImageProcessing_ColorSpaceInfo](capi-imageprocessing-imageprocessing-colorspaceinfo.md)
     - [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)
-    - [OH_PixelmapNative](capi-imageprocessing-oh-pixelmapnative.md)
     - [OH_AVFormat](capi-imageprocessing-oh-avformat.md)
     - [OhosPixelMapInfo](capi-image-ohospixelmapinfo.md)
     - [ImagePacker_Opts_](capi-image-imagepacker-opts-.md)
