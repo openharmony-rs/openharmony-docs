@@ -13753,6 +13753,7 @@ async function example(context: Context) {
 | EXTRA_INFO_ATTR | 'extra_info' | 相册扩展信息操作属性。 |
 | IS_REMOVED_ATTR | 'is_removed' | 相册是否已删除。<br>- 现支持人像相册。<br>- 值为1表示该相册已删除。<br>- 值为0表示该相册未删除或已恢复。 |
 | FRIEND_ID_ATTR | 'friend_id' | 相册亲友圈信息操作属性。<br>**起始版本：** 26.1.0 |
+| CONTACT_INFO_ATTR | 'contact_info' | 相册联系人信息操作属性。<br>**起始版本：** 26.1.0 |
 
 ## AlbumOperationType
 
