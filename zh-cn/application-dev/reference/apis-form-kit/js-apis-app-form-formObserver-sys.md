@@ -289,8 +289,8 @@ offFormAdd(hostBundleName?: string, observerCallback?: Callback\<formInfo.Runnin
 
 > **说明：**
 >
-> - [onFormAdd](#onformadd23)与[offFormAdd](#offformadd23)相对应。
-> - [onFormAdd](#onformadd23-1)与[offFormAdd](#offformadd23)相对应。
+> - [onFormAdd](#formobserveronformadd23)与[offFormAdd](#formobserveroffformadd23)相对应。
+> - [onFormAdd](#formobserveronformadd23-1)与[offFormAdd](#formobserveroffformadd23)相对应。
 > - 订阅（onFormAdd）只能由自己对应的取消订阅接口（offFormAdd）取消。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
@@ -614,8 +614,8 @@ offFormRemove(hostBundleName?: string, observerCallback?: Callback\<formInfo.Run
 
 > **说明：**
 >
-> - [onFormRemove](#onformremove23)与[offFormRemove](#offformremove23)相对应。
-> - [onFormRemove](#onformremove23-1)与[offFormRemove](#offformremove23)相对应。
+> - [onFormRemove](#formobserveronformremove23)与[offFormRemove](#formobserveroffformremove23)相对应。
+> - [onFormRemove](#formobserveronformremove23-1)与[offFormRemove](#formobserveroffformremove23)相对应。
 > - 订阅（onFormRemove）只能由自己对应的取消订阅接口（offFormRemove）取消。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
@@ -725,7 +725,7 @@ onNotifyVisible(observerCallback: Callback\<Array\<formInfo.RunningFormInfo\>\>)
 
 订阅通知卡片可见的事件。使用callback异步回调。
 
-触发通知卡片可见场景为：调用[notifyVisibleForms](js-apis-app-form-formHost-sys.md#notifyvisibleforms)接口通知对应卡片可见性变更为可见状态。
+触发通知卡片可见场景为：调用[notifyVisibleForms](js-apis-app-form-formHost-sys.md#formhostnotifyvisibleforms)接口通知对应卡片可见性变更为可见状态。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
 
@@ -836,7 +836,7 @@ onNotifyVisible(hostBundleName: string, observerCallback: Callback\<Array\<formI
 
 订阅通知卡片可见的事件。使用callback异步回调。
 
-触发通知卡片可见场景为：调用[notifyVisibleForms](js-apis-app-form-formHost-sys.md#notifyvisibleforms)接口通知对应卡片可见性变更为可见状态。
+触发通知卡片可见场景为：调用[notifyVisibleForms](js-apis-app-form-formHost-sys.md#formhostnotifyvisibleforms)接口通知对应卡片可见性变更为可见状态。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
 
@@ -955,8 +955,8 @@ offNotifyVisible(hostBundleName?: string, observerCallback?: Callback\<Array\<fo
 
 > **说明：**
 >
-> - [onNotifyVisible](#onnotifyvisible23)与[offNotifyVisible](#offnotifyvisible23)相对应。
-> - [onNotifyVisible](#onnotifyvisible23-1)与[offNotifyVisible](#offnotifyvisible23)相对应。
+> - [onNotifyVisible](#formobserveronnotifyvisible23)与[offNotifyVisible](#formobserveroffnotifyvisible23)相对应。
+> - [onNotifyVisible](#formobserveronnotifyvisible23-1)与[offNotifyVisible](#formobserveroffnotifyvisible23)相对应。
 > - 订阅（onNotifyVisible）只能由自己对应的取消订阅接口（offNotifyVisible）取消。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
@@ -1065,7 +1065,7 @@ formObserver.on('notifyInvisible', callback);
 
 订阅通知卡片不可见的事件。使用callback异步回调。
 
-触发通知卡片不可见场景为：调用[notifyInvisibleForms](js-apis-app-form-formHost-sys.md#notifyinvisibleforms)接口通知对应卡片可见性变更为不可见状态。
+触发通知卡片不可见场景为：调用[notifyInvisibleForms](js-apis-app-form-formHost-sys.md#formhostnotifyinvisibleforms)接口通知对应卡片可见性变更为不可见状态。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
 
@@ -1176,7 +1176,7 @@ onNotifyInvisible(hostBundleName: string, observerCallback: Callback\<Array\<for
 
 订阅通知卡片不可见的事件。使用callback异步回调。
 
-触发通知卡片不可见场景为：调用[notifyInvisibleForms](js-apis-app-form-formHost-sys.md#notifyinvisibleforms)接口通知对应卡片可见性变更为不可见状态。
+触发通知卡片不可见场景为：调用[notifyInvisibleForms](js-apis-app-form-formHost-sys.md#formhostnotifyinvisibleforms)接口通知对应卡片可见性变更为不可见状态。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
 
@@ -1295,8 +1295,8 @@ offNotifyInvisible(hostBundleName?: string, observerCallback?: Callback\<Array\<
 
 > **说明：**
 >
-> - [onNotifyInvisible](#onnotifyinvisible23)与[offNotifyInvisible](#offnotifyinvisible23)相对应。
-> - [onNotifyInvisible](#onnotifyinvisible23-1)与[offNotifyInvisible](#offnotifyinvisible23)相对应。
+> - [onNotifyInvisible](#formobserveronnotifyinvisible23)与[offNotifyInvisible](#formobserveroffnotifyinvisible23)相对应。
+> - [onNotifyInvisible](#formobserveronnotifyinvisible23-1)与[offNotifyInvisible](#formobserveroffnotifyinvisible23)相对应。
 > - 订阅（onNotifyInvisible）只能由自己对应的取消订阅接口（offNotifyInvisible）取消。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
@@ -2470,8 +2470,8 @@ offRouter(hostBundleName?: string, observerCallback?: Callback\<formInfo.Running
 
 > **说明：**
 >
-> - [onRouter](#onrouter23)与[offRouter](#offrouter23)相对应。
-> - [onRouter](#onrouter23-1)与[offRouter](#offrouter23)相对应。
+> - [onRouter](#formobserveronrouter23)与[offRouter](#formobserveroffrouter23)相对应。
+> - [onRouter](#formobserveronrouter23-1)与[offRouter](#formobserveroffrouter23)相对应。
 > - 订阅（onRouter）只能由自己对应的取消订阅接口（offRouter）取消。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
@@ -2787,8 +2787,8 @@ offMessage(hostBundleName?: string, observerCallback?: Callback<formInfo.Running
 
 > **说明：**
 >
-> - [onMessage](#onmessage23)与[offMessage](#offmessage23)相对应。
-> - [onMessage](#onmessage23-1)与[offMessage](#offmessage23)相对应。
+> - [onMessage](#formobserveronmessage23)与[offMessage](#formobserveroffmessage23)相对应。
+> - [onMessage](#formobserveronmessage23-1)与[offMessage](#formobserveroffmessage23)相对应。
 > - 订阅（onMessage）只能由自己对应的取消订阅接口（offMessage）取消。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
@@ -3098,8 +3098,8 @@ offCall(hostBundleName?: string, observerCallback?: Callback\<formInfo.RunningFo
 
 > **说明：**
 >
-> - [onCall](#oncall23)与[offCall](#offcall23)相对应。
-> - [onCall](#oncall23-1)与[offCall](#offcall23)相对应。
+> - [onCall](#formobserveroncall23)与[offCall](#formobserveroffcall23)相对应。
+> - [onCall](#formobserveroncall23-1)与[offCall](#formobserveroffcall23)相对应。
 > - 订阅（onCall）只能由自己对应的取消订阅接口（offCall）取消。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
