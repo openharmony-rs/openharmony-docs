@@ -296,7 +296,7 @@ SSAP客户端连接功能，完整的API说明以及实例代码请参考：[@oh
     }
     ```
 
-9. 读取指定服务的属性值。property为待读取的属性，可从[getServices()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#getservices)返回的服务列表中获得。读取结果保存在result中，读取失败时result为null。服务与属性UUID必须为自定义UUID，且与服务端声明的UUID一致，参见[星闪常见问题 > 标准 UUID 与自定义 UUID 有什么区别](nearlink-faq-guide.md#标准-uuid-与自定义-uuid-有什么区别)。
+9. 读取指定服务的属性值。property为待读取的属性，可从[getServices()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#getservices)返回的服务列表中获得。服务与属性UUID必须为自定义UUID，且与服务端声明的UUID一致，参见[星闪常见问题 > 标准 UUID 与自定义 UUID 有什么区别](nearlink-faq-guide.md#标准-uuid-与自定义-uuid-有什么区别)。
 
     <!-- @[ssap_client_read_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapClientPage.ets) -->
 
