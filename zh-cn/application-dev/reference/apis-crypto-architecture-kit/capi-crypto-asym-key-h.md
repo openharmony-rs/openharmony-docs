@@ -410,7 +410,7 @@ OH_Crypto_ErrCode OH_CryptoPubKey_Encode(OH_CryptoPubKey *key, Crypto_EncodingTy
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | CRYPTO_SUCCESS：操作成功。<br>CRYPTO_INVALID_PARAMS：key、out或encodingStandard为NULL，type不是   有效的Crypto_EncodingType，或编码标准与密钥类型不兼容。<br>CRYPTO_NOT_SUPPORTED：不支持的编码格式。<br>CRYPTO_MEMORY_ERROR：内存分配失败。<br>CRYPTO_OPERTION_ERROR：编码失败。 |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | CRYPTO_SUCCESS：操作成功。<br>CRYPTO_INVALID_PARAMS：key、out或encodingStandard为NULL，type不是有效的Crypto_EncodingType，或编码标准与密钥类型不兼容。<br>CRYPTO_NOT_SUPPORTED：不支持的编码格式。<br>CRYPTO_MEMORY_ERROR：内存分配失败。<br>CRYPTO_OPERTION_ERROR：编码失败。 |
 
 ### OH_CryptoPubKey_GetParam()
 
@@ -901,7 +901,7 @@ OH_Crypto_ErrCode OH_CryptoEcPoint_GetCoordinate(OH_CryptoEcPoint *point, Crypto
 
 获取椭圆曲线点的x和y坐标。
 
-注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放x和y内存
+注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放x和y内存。
 
 **起始版本：** 20
 
