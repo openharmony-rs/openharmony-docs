@@ -3,7 +3,7 @@
 <!--Kit: Common-->
 <!--Subsystem: Security-->
 <!--Owner: @feibuzhide-->
-<!--Designer: @gcw_AzEdve8G; @liuchibin-->
+<!--Designer: @gcw_AzEdve8G-->
 <!--Tester: @weixin_48873925-->
 <!--Adviser: @zengyawen-->
 
