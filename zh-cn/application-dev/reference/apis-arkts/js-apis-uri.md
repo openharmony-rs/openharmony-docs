@@ -658,7 +658,7 @@ console.info(uriInstance.getSegment().toString()); // path,to,image.jpg
 
 ### createFromParts<sup>12+</sup>
 
-createFromParts(scheme: string, ssp: string, fragment: string): URI
+static createFromParts(scheme: string, ssp: string, fragment: string): URI
 
 根据提供的方案（scheme）、方案特定部分（ssp）以及片段（fragment）创建一个新的URI对象。
 
