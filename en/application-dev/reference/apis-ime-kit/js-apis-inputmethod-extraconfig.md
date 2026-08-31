@@ -6,7 +6,7 @@
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy1984-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=95b635b2657acaf53c78b86c96c7e9bdaf7f7668 translatedAt=2026-08-25T01:24:52.296Z pushedAt=2026-08-26T09:18:16.867Z -->
+<!-- md-trans-meta sourceCommit=95b635b2657acaf53c78b86c96c7e9bdaf7f7668 translatedAt=2026-08-25T01:24:52.296Z pushedAt=2026-08-27T03:59:41.300Z -->
 
 The **@ohos.inputMethod.ExtraConfig** module provides data definitions for input method extension information. It enables the ArkUI edit box to pass custom configuration information to the input method app when the input method is launched.
 
@@ -86,7 +86,7 @@ Represents input method extension information. It is used by the edit box app to
 
 - Usage scenarios: Used when an edit box app needs to pass additional personalized configuration information to the input method app to customize input behaviors. Examples include a chat app that expects the input method to display the emoji panel by default, a search app that expects the input method to use a specific input mode, and a note app that is expected to configure the shortcut key behavior of the input method.
 
-- Use effect after use: The configured extension information is loaded and delivered to the input method app when the input method app attaches to the edit box app. The input method app can adjust input behaviors accordingly to deliver a personalized user experience. If no extension information is set, the input method app uses the default configuration.
+- Use effect: The configured extension information is loaded and delivered to the input method app when the input method app attaches to the edit box app. The input method app can adjust input behaviors accordingly to deliver a personalized user experience. If no extension information is set, the input method app uses the default configuration.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
