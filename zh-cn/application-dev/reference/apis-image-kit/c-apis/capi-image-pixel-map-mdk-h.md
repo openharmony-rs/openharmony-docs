@@ -2,7 +2,7 @@
 
 ## 概述
 
-声明可以锁定并访问pixelmap数据的方法，声明解锁的方法。推荐使用[pixelmap_native.h](./image/pixelmap_native.h)。
+声明可以锁定并访问pixelmap数据的方法，声明解锁的方法。推荐使用pixelmap_native.h。
 
 **库：** libpixelmap_ndk.z.so
 
