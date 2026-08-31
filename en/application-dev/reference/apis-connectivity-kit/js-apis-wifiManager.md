@@ -3627,3 +3627,238 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | ID | Error message |
 | -------- | -------- |
 | 2401000  | Operation failed. |
+
+## P2pServiceProtocolType
+
+Enumerates P2P service protocol types.
+
+**System capability**: SystemCapability.Communication.WiFi.P2P
+
+**Since**: 26.0.1
+
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name | Value | Description |
+| -------- | -------- | -------- |
+| SERVICE_TYPE_ALL | 0 | All service protocol types. |
+| SERVICE_TYPE_BONJOUR | 1 | Bonjour (DNS-SD) service discovery protocol. |
+| SERVICE_TYPE_UP_NP | 2 | UPnP service discovery protocol. |
+| SERVICE_TYPE_WS_DISCOVERY | 3 | WS-Discovery service discovery protocol. |
+| SERVICE_TYPE_VENDOR_SPECIFIC | 255 | Vendor-specific protocol. |
+
+## WifiP2pServiceInfo
+
+Represents P2P service information.
+
+**System capability**: SystemCapability.Communication.WiFi.P2P
+
+**Since**: 26.0.1
+
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name | Type | Read-only | Optional | Description |
+| -------- | -------- | -------- | -------- | -------- |
+| serviceName | string | No | No | Service name. |
+| protocolType | [P2pServiceProtocolType](#p2pserviceprotocoltype) | No | No | Service protocol type. |
+| queryList | Array&lt;string&gt; | No | No | Query string list consumed by wpa_supplicant. The maximum size of a single data record is 1024. |
+
+## wifiManager.addDnsSdLocalP2pService
+
+addDnsSdLocalP2pService(instanceName: string, serviceType: string, txtRecord: Map&lt;string, string&gt;, serviceName: string): void
+
+Adds and registers a DNS-SD (Bonjour) local P2P service description.
+
+**Required permissions**: ohos.permission.GET_WIFI_INFO_INTERNAL
+
+**System capability**: SystemCapability.Communication.WiFi.P2P
+
+**Since**: 26.0.1
+
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| instanceName | string | Yes | Instance name used for peer service discovery. The maximum length is 63. |
+| serviceType | string | Yes | Service type used for peer service discovery. The maximum length is 63. This parameter cannot be left blank. The value can be customized. The recommended format is "_&lt;ServiceName&gt;._&lt;Protocol&gt;", for example, "_http._tcp". |
+| txtRecord | Map&lt;string, string&gt; | Yes | TXT record containing key-value pairs. The key cannot contain an equal sign (=), and the length of a single record (key.length + value.length) must be less than 255. It is recommended that the total size of all keys and values after serialization be kept within 200–400 bytes. Exceeding the limit of a single mDNS packet will cause the data to fail to be properly broadcast or to be ignored by the peer. There is no limit to the number of key-value pairs. For the definition format, see: http://files.dns-sd.org/draft-cheshire-dnsext-dns-sd.txt |
+| serviceName | string | Yes | Service name used to identify the local service object. The maximum length is 63. |
+
+**Error codes**
+
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 202 | System API is not allowed called by Non-system application. |
+| 801 | Capability not supported. |
+| 2801000 | Operation failed. |
+| 2801001 | Wi-Fi STA disabled. |
+
+**Example**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+
+try {
+  let txtRecord: Map<string, string> = new Map();
+  txtRecord.set("name", "xxx");
+  wifiManager.addDnsSdLocalP2pService("instanceName", "_http._tcp", txtRecord, "serviceName");
+} catch (error) {
+  console.error("failed: " + JSON.stringify(error));
+}
+```
+
+## wifiManager.addUpnpLocalP2pService
+
+addUpnpLocalP2pService(uuid: string, device: string, services: Array&lt;string&gt;, serviceName: string): void
+
+Adds and registers a UPnP local P2P service description.
+
+**Required permissions**: ohos.permission.GET_WIFI_INFO_INTERNAL
+
+**System capability**: SystemCapability.Communication.WiFi.P2P
+
+**Since**: 26.0.1
+
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| uuid | string | Yes | String representation of the UUID. For the format, see [RFC 4122](http://www.ietf.org/rfc/rfc4122.txt). The standard fixed length is 36 characters, and spaces are not allowed. For example, "6859dede-8574-59ab-9332-123456789012". |
+| device | string | Yes | UPnP device type in string form. For the format, see [UPnP Device Architecture 1.1](http://www.upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.1.pdf). The length depends on the standard definition, and spaces are not allowed. It is usually tens of characters, and it is recommended to keep it within 255 bytes. For example, "urn:schemas-upnp-org:device:MediaServer:1". |
+| services | Array&lt;string&gt; | Yes | UPnP service type list in string form. For the format, see [UPnP Device Architecture 1.1](http://www.upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.1.pdf). The length of each service must not exceed 512 bytes. It is recommended that the Array not contain too many elements. For example, "urn:schemas-upnp-org:service:ContentDirectory:1". |
+| serviceName | string | Yes | Service name used to identify the local service object. The maximum length is 63. |
+
+**Error codes**
+
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 202 | System API is not allowed called by Non-system application. |
+| 801 | Capability not supported. |
+| 2801000 | Operation failed. |
+| 2801001 | Wi-Fi STA disabled. |
+
+**Example**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+
+try {
+  let uuid = "6859dede-8574-59ab-9332-123456789012";
+  let device = "urn:schemas-upnp-org:device:MediaServer:1";
+  let services = ["urn:schemas-upnp-org:service:ContentDirectory:1"];
+  wifiManager.addUpnpLocalP2pService(uuid, device, services, "serviceName");
+} catch (error) {
+  console.error("failed: " + JSON.stringify(error));
+}
+```
+
+## wifiManager.removeLocalP2pService
+
+removeLocalP2pService(srvInfo: WifiP2pServiceInfo): void
+
+Removes a registered local service added with [addDnsSdLocalP2pService](#wifiManager.addDnsSdLocalP2pService) or [addUpnpLocalP2pService](#wifiManager.addUpnpLocalP2pService).
+
+**Required permissions**: ohos.permission.GET_WIFI_INFO_INTERNAL
+
+**System capability**: SystemCapability.Communication.WiFi.P2P
+
+**Since**: 26.0.1
+
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| srvInfo | [WifiP2pServiceInfo](#wifip2pserviceinfo) | Yes | Service description consistent with the registered one. |
+
+**Error codes**
+
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 202 | System API is not allowed called by Non-system application. |
+| 801 | Capability not supported. |
+| 2801000 | Operation failed. |
+| 2801001 | Wi-Fi STA disabled. |
+
+**Example**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+  wifiManager.getLocalP2pServices().then((data: wifiManager.WifiP2pServiceInfo[]) => {
+    data.forEach((item: wifiManager.WifiP2pServiceInfo) => {
+      if (item.serviceName === "serviceName") {
+        wifiManager.removeLocalP2pService(item);
+      }
+    });
+  }).catch((error: BusinessError) => {
+    console.error("failed: " + JSON.stringify(error));
+  });
+```
+
+## wifiManager.getLocalP2pServices
+
+getLocalP2pServices(): Promise&lt;Array&lt;WifiP2pServiceInfo&gt;&gt;
+
+Queries the local P2P services. This API uses a Promise to return the result.
+
+**Required permissions**: ohos.permission.GET_WIFI_INFO_INTERNAL
+
+**System capability**: SystemCapability.Communication.WiFi.P2P
+
+**Since**: 26.0.1
+
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| Promise&lt;Array&lt;[WifiP2pServiceInfo](#wifip2pserviceinfo)&gt;&gt; | Promise used to return the registered local P2P service list. |
+
+**Error codes**
+
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 202 | System API is not allowed called by Non-system application. |
+| 801 | Capability not supported. |
+| 2801000 | Operation failed. |
+| 2801001 | Wi-Fi STA disabled. |
+
+**Example**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+wifiManager.getLocalP2pServices().then((data: wifiManager.WifiP2pServiceInfo[]) => {
+  console.info("get local P2P services: " + JSON.stringify(data));
+}).catch((error: BusinessError) => {
+  console.error("failed: " + JSON.stringify(error));
+});
+```
