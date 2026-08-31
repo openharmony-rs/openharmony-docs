@@ -473,7 +473,7 @@ struct AbilityContextTest {
 
 **解决措施**
 
-在应用内通过Native（C/C++）代码，使用fork+execvp方式调用ohos-aa。
+应用需要申请弱沙箱权限，在应用内通过Native（C/C++）代码，使用fork+execvp方式调用ohos-aa。
 
 **实现步骤**
 
