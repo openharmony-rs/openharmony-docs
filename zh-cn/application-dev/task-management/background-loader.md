@@ -49,8 +49,8 @@
 以下是后台加载任务回调开发使用的相关接口，更多接口及使用方式请见[后台加载任务](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md)文档。
 | 接口名 | 接口描述 |
 | -------- | -------- |
-| [ON_START](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#backgroundloader常量) | 需要实现的执行后台加载任务的方法名，系统通过StartAbilityByCall方法启动应用后，会回调此方法。方法的入参为[backgroundLoader.TaskInfo](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#taskinfo)。 |
-| [ON_STOP](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#backgroundloader常量) | 待应用实现的回调方法名。系统在后台加载任务异常取消时，会回调onStop方法。方法的入参为[backgroundLoader.TaskStopInfo](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#taskstopinfo)。 |
+| [ON_START](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#常量) | 需要实现的执行后台加载任务的方法名，系统通过StartAbilityByCall方法启动应用后，会回调此方法。方法的入参为[backgroundLoader.TaskInfo](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#taskinfo)。 |
+| [ON_STOP](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#常量) | 待应用实现的回调方法名。系统在后台加载任务异常取消时，会回调onStop方法。方法的入参为[backgroundLoader.TaskStopInfo](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#taskstopinfo)。 |
 
 
 ## 开发步骤
