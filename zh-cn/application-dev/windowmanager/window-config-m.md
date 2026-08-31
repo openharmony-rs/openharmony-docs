@@ -45,7 +45,7 @@
 
    非自由多窗模式下只能通过配置module.json5中abilities标签下的SupportWindowMode属性配置窗口支持模式，其他配置方式均不生效。
 
-5. 使用metadata配置性能自适应的[简易启动页](launch-page-config.md#配置简易启动页)图标开关。在应用启动时，如果当前机型性能强，则不会显示简易启动页图标，如果当前机型性能弱，则会显示简易启动页图标，避免长时间白屏。配置项为：name取值enable.optional.starting.window，value取值true或false。true表示启用，false表示不启用。未配置时，默认为false。<!--Del-->
+5. 针对搭载OpenHarmony 7.0.0及以上版本的设备，新增支持使用metadata配置性能自适应的[简易启动页](launch-page-config.md#配置简易启动页)图标显示开关。在应用启动时，如果当前设备性能强，则不会显示简易启动页图标，如果当前设备性能弱，则会显示简易启动页图标，避免长时间白屏。配置项为：name取值"enable.optional.starting.window"，value取值"true"或"false"。"true"表示启用，"false"表示不启用。未配置时，默认为"false"。<!--Del-->
 
 6. 使用metadata标签配置主窗口边角以直角显示。配置项为：name为ohos.ability.window.isRightAngle，value取值为true或false，取值为true表示窗口边角以直角显示、取值为false则使用系统默认圆角，未配置时默认为false。主窗口直角配置仅在PC/2in1设备上生效，且仅支持系统应用。<!--DelEnd-->
 
