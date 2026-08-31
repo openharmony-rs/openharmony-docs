@@ -42,10 +42,10 @@ TextInput(value?: TextInputOptions)
 
 | 名称 | 说明 |
 | --- | --- |
-| [OnContentScrollCallback](arkts-arkui-oncontentscrollcallback-t.md) | 文本内容滚动回调。 |
-| [OnPasteCallback](arkts-arkui-onpastecallback-t.md) | 粘贴回调。 |
+| [OnContentScrollCallback](arkts-arkui-oncontentscrollcallback-comp-t.md) | 文本内容滚动回调。 |
+| [OnPasteCallback](arkts-arkui-onpastecallback-comp-t.md) | 粘贴回调。 |
 | [OnSubmitCallback](arkts-arkui-onsubmitcallback-t.md) | 提交回调。 |
-| [OnTextSelectionChangeCallback](arkts-arkui-ontextselectionchangecallback-t.md) | 文本选择变化回调或光标位置变化回调。 |
+| [OnTextSelectionChangeCallback](arkts-arkui-ontextselectionchangecallback-comp-t.md) | 文本选择变化回调或光标位置变化回调。 |
 
 ### 枚举
 

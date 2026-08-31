@@ -25,4 +25,4 @@ function setCursor(value: PointerStyle): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [PointerStyle](arkts-arkui-pointerstyle-t.md) | 是 | 设置的鼠标样式。 |
+| value | [PointerStyle](arkts-arkui-pointerstyle-comp-t.md) | 是 | 设置的鼠标样式。 |

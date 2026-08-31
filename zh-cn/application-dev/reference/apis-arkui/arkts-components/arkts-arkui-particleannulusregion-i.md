@@ -29,7 +29,7 @@ center?: PositionT<LengthMetrics>
 
 The coordinates of the center of the annulus
 
-**类型：** [PositionT](arkts-arkui-positiont-t.md)&lt;LengthMetrics&gt;
+**类型：** [PositionT](arkts-arkui-positiont-comp-t.md)&lt;LengthMetrics&gt;
 
 **默认值：** {x:LengthMetrics.percent(0.5),y:LengthMetrics.percent(0.5)}
 
