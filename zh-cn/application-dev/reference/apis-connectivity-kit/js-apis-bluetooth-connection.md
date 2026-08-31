@@ -2024,7 +2024,7 @@ try {
 disconnectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 
 断开对端设备支持的Profile。
-- 非系统应用调用该接口需要与接口[connection.connectAllowedProfiles](#connectionconnectallowedprofiles16)配合使用，直接调用该接口会抛出错误码2900099。非系统应用调用该接口仅允许断开A2DP和HFP两类Profile，其他Profile涉及系统应用功能，仅限系统应用操作。系统应用调用该接口可断开当前连接的全部Profile，包括A2DP，HFP，HID，PAN等。
+- 非系统应用调用该接口需要与接口[connection.connectAllowedProfiles](#connectionconnectallowedprofiles16)配合使用，直接调用该接口会抛出错误码2900099。非系统应用调用该接口仅允许断开A2DP和HFP两类Profile，其他Profile涉及系统应用功能，仅限系统应用操作。
 - 系统应用可直接调用该接口，断开当前连接的全部Profile，包括A2DP，HFP，HID，PAN等。
 
 **起始版本**：26.0.0
