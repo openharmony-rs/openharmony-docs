@@ -506,8 +506,6 @@ setCalibrationTraffic(simId: number, remainTraffic: number, totalTraffic?: numbe
 
 **起始版本：** 26.0.0
 
-**起始版本：** 26.0.0
-
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
@@ -540,7 +538,6 @@ setCalibrationTraffic(simId: number, remainTraffic: number, totalTraffic?: numbe
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Nonsystem applications use system APIs.    |
-| 401       | Parameter error.                             |
 | 801       | Capability not supported.                             |
 | 2100001   | Invalid parameter value, such as simId error.                     |
 | 2100002   | Failed to connect to the service.            |
