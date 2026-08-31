@@ -1681,15 +1681,16 @@ The device does not support the dual mode.
 
 **错误描述**
 
-设备不支持双模式。
+当前设备不支持双模式（即设备不支持在主模式和副模式之间切换）。
 
 **可能原因**
 
-设备不支持双模式，接口调用失败。
+当前设备为非双模设备，系统参数const.sceneboard.mainmode或persist.sceneboard.ispcmode缺失或值非法。
 
 **处理步骤**
 
-请确认设备是否支持双模式，可以在开发者模式下查看设备是否存在系统参数const.sceneboard.mainmode和persist.sceneboard.ispcmode。
+1. 确认设备是否为双模设备，可以在开发者模式下查看设备是否存在系统参数const.sceneboard.mainmode和persist.sceneboard.ispcmode。
+2. 若设备不支持双模式，该接口不适用，无需调用。
 
 ## 17700098 入参无效
 
@@ -1699,11 +1700,12 @@ The input parameter is invalid. It is either outside the range of valid enum val
 
 **错误描述**
 
-传入的参数有误，超出枚举值范围或者没有包含特定的枚举值数组[DeviceModeDistributionPolicy.UNIVERSAL_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.FULL_COMPATIBLE_DIFFERENT_PACKAGE]。
+调用filterBundleListByDeviceModeDistributionPolicies接口时，传入的参数无效。
 
 **可能原因**
 
-超出枚举值范围或者没有包含特定的枚举值数组[DeviceModeDistributionPolicy.UNIVERSAL_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.FULL_COMPATIBLE_DIFFERENT_PACKAGE]。
+1. 传入的枚举值超出DeviceModeDistributionPolicy枚举值范围。
+2. 传入的枚举数组未包含所有不同包体的策略（UNIVERSAL_DIFFERENT_PACKAGE、PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE和FULL_COMPATIBLE_DIFFERENT_PACKAGE）。
 
 **处理步骤**
 
