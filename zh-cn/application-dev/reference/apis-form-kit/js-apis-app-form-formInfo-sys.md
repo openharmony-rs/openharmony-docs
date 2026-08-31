@@ -167,6 +167,7 @@ import { formInfo } from '@kit.FormKit';
 | PARAM_ERROR    | 2    | 表示参数检查失败。               |
 | INTERNAL_ERROR | 3    | 表示卡片处理过程中出现内部错误。 |
 | NOT_SUPPORT    | 4    | 表示卡片不支持发布。<br/>**起始版本：** 26.1.0 |
+| HOST_FORM_LIMIT | 5   | 表示添加到使用方的卡片数量超过上限。<br/>**起始版本：** 26.1.0 |
 
 ## RenderingMode<sup>18+</sup>
 
@@ -541,3 +542,60 @@ let deleteFormsCallback: formInfo.DeleteFormsCallback =
     console.info('delete forms callback, form count: ' + formIds.length);
   };
 ```
+
+## FormHostServiceInfo
+
+卡片使用方服务信息。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+|-----|-----|------|----|------|
+| serviceName | string | 否 | 否 | 服务名称。 |
+| serviceDisplayName | string | 否 | 否 | 服务显示名称。 |
+| displayId | string | 否 | 否 | 显示标识。 |
+| customData | Record&lt;string, string&gt; | 否 | 是 | 自定义数据。 |
+
+## PeerFormHostServiceInfo
+
+远端卡片使用方服务信息。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+|-----|-----|------|----|------|
+| serviceName | string | 否 | 否 | 远端卡片使用方服务的服务名称。 |
+| serviceDisplayName | string | 否 | 否 | 远端卡片使用方服务的服务显示名称。 |
+| displayId | string | 否 | 否 | 远端卡片使用方服务的显示标识。 |
+| customData | Record&lt;string, string&gt; | 否 | 是 | 远端卡片使用方服务的自定义数据。 |
+| deviceId | string | 否 | 否 | 远端卡片使用方服务的设备标识。 |
+| networkId | string | 否 | 否 | 远端卡片使用方服务的网络标识。 |
+| serviceId | string | 否 | 否 | 远端卡片使用方服务的服务Id。 |
+
+## PublishFormCrossDeviceResult
+
+跨设备发布卡片的结果。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+|-----|-----|------|----|------|
+| formId | string | 否 | 否 | 添加到远端卡片使用方服务的卡片标识。 |
