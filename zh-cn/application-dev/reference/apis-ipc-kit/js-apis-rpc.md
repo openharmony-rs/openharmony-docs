@@ -8604,7 +8604,7 @@ ArkTS-Dyn: sendMessageRequest(code: number, data: MessageSequence, reply: Messag
 
 ArkTS-Sta: sendMessageRequest(code: int, data: MessageSequence, reply: MessageSequence, options: MessageOption, callback: AsyncCallback&lt;RequestResult&gt;): void
 
-以同步或异步方式向对端进程发送MessageSequence消息。如果为选项设置了异步模式，则立即收到回调，reply报文里没有内容，具体回复需要在业务侧的回调中获取。如果为选项设置了同步模式，则将在sendRequest返回时收到回调，回复内容在reply报文里。
+以同步或异步方式向对端进程发送MessageSequence消息。如果为选项设置了异步模式，则立即收到回调，reply报文里没有内容，具体回复需要在业务侧的回调中获取。如果为选项设置了同步模式，则将在sendMessageRequest返回时收到回调，回复内容在reply报文里。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -12365,7 +12365,7 @@ let testRemoteObject = new TestRemoteObject("testObject");
 
 提供与匿名共享内存对象相关的方法，包括创建、关闭、映射和取消映射Ashmem、从Ashmem读取数据和写入数据、获取Ashmem大小、设置Ashmem保护。
 
-共享内存只适用与本设备内跨进程通信。
+共享内存只适用于本设备内跨进程通信。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
