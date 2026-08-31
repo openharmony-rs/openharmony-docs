@@ -2,7 +2,7 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui; @zourongchun-->
-<!--Designer: @yaomingliu; @zhufenghao-->
+<!--Designer: @xuefuzhang; @zhufenghao-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
