@@ -45,9 +45,11 @@ getMacAddress(): Promise\<Array\<MacAddressInfo>>
 
 | 类型                                                    | 说明                               |
 |-------------------------------------------------------| ---------------------------------- |
-| Promise\<Array[\<MacAddressInfo>](#macaddressinfo14)> | 以Promise形式返回接口信息。        |
+| Promise\<Array\<[MacAddressInfo](#macaddressinfo14)\>\> | Promise对象，返回所有以太网网卡名称及对应网卡的MAC地址信息。        |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[以太网连接错误码](errorcode-net-ethernet.md)。
 
 | 错误码ID | 错误信息                                 |
 | ------- | ----------------------------------------|
