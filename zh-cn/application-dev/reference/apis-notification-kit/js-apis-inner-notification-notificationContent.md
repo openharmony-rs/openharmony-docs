@@ -100,7 +100,7 @@ NotificationContent中定义通知的内容结构，提供多种通知类型的�
 | 名称           | 类型                                          | 只读 | 可选 | 说明                               |
 | -------------- | -------------------------------------------- | ---- | --- |------------------------------------|
 | expandedTitle  | string                                       |  否  | 否  | 通知展开时的标题。<br>不可为空字符串，大小不超过1024字节，超出部分会被截断。    |
-| picture        | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) |  否  | 否  | 通知展开后显示的图片内容。<br>图标像素的总字节数不能超过2MB（图标像素的总字节数通过[getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)获取）。|
+| picture        | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) |  否  | 否  | 通知展开后显示的右侧图标。<br>图标像素的总字节数不能超过2MB（图标像素的总字节数通过[getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)获取）。|
 | briefText      | string                                       |  否  | 否  | 通知概要内容，是对[通知内容](../../notification/notification-glossary.md#notification-content通知内容)的总结，不在通知中心中显示。<br>不可为空字符串，大小不超过1024字节，超出部分会被截断。 |
 
 
