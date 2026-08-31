@@ -6,7 +6,7 @@
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=681375fe8e2ad6298fc081a819f69633a55a7ca2 translatedAt=2026-08-15T06:26:05.044Z pushedAt=2026-08-18T12:25:43.912Z -->
+<!-- md-trans-meta sourceCommit=48114fc7693d377b589453b7291c3e2c895729fd translatedAt=2026-08-26T12:14:31.650Z pushedAt=2026-08-31T08:17:27.859Z -->
 
 The **@ohos.inputMethodEngine** module is a server-side API module for input method apps (including system input methods and third-party input methods). It provides interaction capabilities between input method apps and the system input method framework.
 
@@ -28,7 +28,7 @@ The core open capabilities of this module are implemented by the following key i
 | KeyboardDelegate | Keyboard delegate object. Supports listening for physical keyboard key events, cursor position changes, text selection region changes, text content changes, and edit box attribute changes. The instance can be obtained via **getKeyboardDelegate()**. |
 | InputClient | Input client object. Provides capabilities to perform text operations on edit boxes, including inserting text, deleting text backward/forward, obtaining text before or after the cursor, moving the cursor, selecting text, sending function keys, and performing extended editing actions, setting preview text, transmitting private data, and exchanging custom messages. The instance can be obtained inside the callback for the subscribed **inputStart** event. |
 | KeyboardController | Keyboard controller object. Provides capabilities such as hiding the keyboard and exiting the current input type. The instance can be obtained inside the callback for the subscribed **inputStart** event. |
-| Panel | Input method panel object. Supports panel page content loading, size adjustment, position movement, panel showing/hiding, panel state switching, privacy mode configuration, immersive mode and effect configurations, preset panel rectangular area, and hot region update. The instance can be obtained via **createPanel()**. |
+| Panel | Input method panel object, which provides capabilities such as panel page content loading, resizing, repositioning, showing/hiding, panel state switching, privacy mode setting, immersive mode and effect setting, panel rectangle area presetting, and hot zone updating. Obtain the instance through **createPanel()**. |
 | MessageHandler | Custom communication object. Receives custom communication data sent by edit box apps and provides the termination notification callback. It is registered via **InputClient.recvMessage()**. |
 
 The typical usage workflow within an input method app involves combined calls of multiple APIs. The core workflow is as follows:<br>1. Obtain an **InputMethodAbility** instance.<br>2. Subscribe to the **inputStart** event.<br>3. Obtain **KeyboardController** and **InputClient** within the callback<br>4. Create a panel.<br>5. Load panel page content.<br>6. Perform operations on the text of the edit box via **InputClient**<br>7. Control keyboard visibility via **KeyboardController**.
@@ -41,9 +41,15 @@ let inputMethodAbility = inputMethodEngine.getInputMethodAbility();
 
 // 2. Obtain the keyboard delegate object to listen for physical keyboard and edit box change events.
 let keyboardDelegate = inputMethodEngine.getKeyboardDelegate();
-keyboardDelegate.on('keyDown', (event) => { return true; });
-keyboardDelegate.on('cursorContextChange', (x, y, height) => {});
-keyboardDelegate.on('selectionChange', (oldBegin, oldEnd, newBegin, newEnd) => {});
+keyboardDelegate.on('keyDown', (event) => {
+  return true;
+});
+keyboardDelegate.on('cursorContextChange', (x, y, height) => {
+  // do something
+});
+keyboardDelegate.on('selectionChange', (oldBegin, oldEnd, newBegin, newEnd) => {
+  // do something
+});
 
 // 3. Subscribe to the input method attachment event to obtain **KeyboardController** and **InputClient**.
 inputMethodAbility.on('inputStart', (kbController, inputClient) => {
@@ -139,7 +145,7 @@ The following constants are divided into three categories by function:
 
 getInputMethodAbility(): InputMethodAbility
 
-Obtains an [InputMethodAbility](#inputmethodability) instance (input method capability object) for the input method app. This API can only be called by input method apps.<br>After this instance is obtained, the input method app can subscribe to soft keyboard show/hide request events, and create or destroy input method panels.
+Obtains an [InputMethodAbility](#inputmethodability) instance. This API can be called only by an input method app.<br/>After obtaining the instance, the input method app can subscribe to soft keyboard showing/hiding request events, create/destroy the input method panel, and perform other related operations.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -147,13 +153,13 @@ Obtains an [InputMethodAbility](#inputmethodability) instance (input method capa
 
 | Type                                     | Description              |
 | ----------------------------------------- | ------------------ |
-| [InputMethodAbility](#inputmethodability) | Input method app client.|
+| [InputMethodAbility](#inputmethodability) | Input method ability object. |
 
 **Example**
 
 ```ts
 // Obtain the input method app client instance.
-let InputMethodAbility: inputMethodEngine.InputMethodAbility = inputMethodEngine.getInputMethodAbility();
+let inputMethodAbility: inputMethodEngine.InputMethodAbility = inputMethodEngine.getInputMethodAbility();
 ```
 
 ## inputMethodEngine.getKeyboardDelegate<sup>9+</sup>
@@ -174,7 +180,7 @@ Obtains a [KeyboardDelegate](#keyboarddelegate) instance (keyboard delegate obje
 
 ```ts
 // Obtain the delegate instance for listening to client edit events.
-let KeyboardDelegate: inputMethodEngine.KeyboardDelegate = inputMethodEngine.getKeyboardDelegate();
+let keyboardDelegate: inputMethodEngine.KeyboardDelegate = inputMethodEngine.getKeyboardDelegate();
 ```
 
 ## inputMethodEngine.getInputMethodEngine<sup>(deprecated)</sup>
@@ -367,7 +373,7 @@ Disables listening for a keyboard visibility event. This API uses an asynchronou
 
 | Name  | Type  | Mandatory| Description                                                        |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| type     | string | Yes  | Event type.<br>- The value **'keyboardShow'** indicates the keyboard display event.<br>- The value **'keyboardHide'** indicates the keyboard hiding event.|
+| type     | string | Yes  | Event type.<br>- The value **'keyboardShow'** indicates the keyboard showing event.<br>- The value **'keyboardHide'** indicates the keyboard hiding event.|
 | callback | () => void   | No  | Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified type.|
 
 **Example**
@@ -406,6 +412,8 @@ Typical calling sequence:
 5. Call **destroyPanel()** in the **onDestroy** lifecycle callback of **InputMethodExtensionAbility** to release resources, and unsubscribe from all events.
 
 In the following API examples, you must first use [getInputMethodAbility](#inputmethodenginegetinputmethodability9) to obtain an **InputMethodAbility** instance, and then call the APIs using the obtained instance.
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ### on('inputStart')<sup>9+</sup>
 
@@ -497,7 +505,7 @@ Disables listening for the input method stop event. This API uses an asynchronou
 | Name  | Type  | Mandatory| Description                                                        |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | type     | string | Yes  | Event type, which is **'inputStop'**.|
-| callback | () => void | Yes | Callback used to unsubscribe from the keyboard show/hide event. Passing this parameter cancels the subscription for the specified callback. If no callback is provided, all callbacks corresponding to **type** will be unsubscribed. |
+| callback | () => void   | Yes   | Callback used to unsubscribe. |
 
 **Example**
 
@@ -573,7 +581,7 @@ Use effect: When a request to show the soft keyboard is triggered, the **'keyboa
 
 | Name  | Type  | Mandatory| Description                                                        |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| type     | string | Yes  | Event type.<br>- The value **'keyboardShow'** indicates the keyboard display event.<br>- The value **'keyboardHide'** indicates the keyboard hiding event.|
+| type     | string | Yes  | Event type.<br>- The value **'keyboardShow'** indicates the keyboard showing event.<br>- The value **'keyboardHide'** indicates the keyboard hiding event.|
 | callback | () => void   | Yes  | Callback used to return the result.                                                  |
 
 **Example**
@@ -858,7 +866,7 @@ inputMethodEngine.getInputMethodAbility().off('callingDisplayDidChange', (displa
 
 on(type: 'discardTypingText', callback: Callback&lt;void&gt; ): void
 
-Subscribes to the event in which the edit box app sends a request to discard candidate words to the input method. This API uses an asynchronous callback to return the result.
+Subscribes to the event that the edit box app sends to the input method to discard candidate words. This API uses an asynchronous callback to return the result.
 
 Usage scenarios: This API is used when the edit box app needs to notify the input method to discard the current candidate word list (such as when the user switches edit boxes or after form submission).
 
@@ -885,7 +893,7 @@ inputMethodEngine.getInputMethodAbility().on('discardTypingText', () => {
 
 off(type: 'discardTypingText', callback?: Callback&lt;void&gt; ): void
 
-Unsubscribes from the event that the edit box app sends "clear candidate words" to the input method. This API uses an asynchronous callback to return the result.
+Unsubscribes from the event that the edit box app sends to the input method to discard candidate words. This API uses an asynchronous callback to return the result.
 
 Usage scenario: Used when the edit box app needs to notify the input method to clear the current candidate word list (for example, when the user switches input boxes or submits a form).
 
@@ -897,7 +905,7 @@ Effect after use: When the edit box app sends a request to clear candidate words
 
 | Name  | Type                                       | Mandatory| Description                                                        |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                      | Yes  | Event type, which is **'discardTypingText'**.<br> - **'discardTypingText'**: indicates unsubscribing from the event of discarding candidate words and sending the event to the input method.|
+| type     | string                                      | Yes  | Event type, which is **'discardTypingText'**.<br> - **'discardTypingText'**: unsubscribes from the event that the editing box app sends to the input method to discard candidate words.|
 | callback | Callback&lt;void&gt;   | No   | Callback used to unsubscribe. If this parameter is not specified, this API unregisters all callbacks for the specified type. |
 
 **Example**
@@ -912,7 +920,7 @@ inputMethodEngine.getInputMethodAbility().off('discardTypingText', () => {
 
 getSecurityMode(): SecurityMode
 
-Obtains the current security mode of the input method.
+Obtains the current security mode of the input method app.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -934,7 +942,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 ```ts
 let security: inputMethodEngine.SecurityMode = inputMethodEngine.getInputMethodAbility().getSecurityMode();
-console.error(`getSecurityMode, securityMode is : ${security}`);
+console.info(`getSecurityMode, securityMode is : ${security}`);
 ```
 
 ### createPanel<sup>10+</sup>
@@ -962,9 +970,9 @@ Paired calls:
 
 | Name  | Type       | Mandatory| Description                    |
 | ------- | ----------- | ---- | ------------------------ |
-| ctx     | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes  | Current context of the input method.|
+| ctx     | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes  | Context of the input method.|
 | info    | [PanelInfo](#panelinfo10)   | Yes  | Information about the input method panel.|
-| callback | AsyncCallback\<[Panel](#panel10)> | Yes  | Callback used to return the result. If the operation is successful, the created input method panel is returned. |
+| callback | AsyncCallback\<[Panel](#panel10)> | Yes | Callback used to return the result. If the input method panel is created successfully, **err** is **undefined** and **data** is the obtained **Panel** object; otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -1031,7 +1039,7 @@ Creates an input method panel. This API can be called only by an input method ap
 
 | Type  | Description                                                                |
 | ------- | ------------------------------------------------------------------ |
-| Promise&lt;[Panel](#panel10)&gt; | Promise used to return the result. When the input method panel is created successfully, the input method panel object is returned. |
+| Promise&lt;[Panel](#panel10)&gt; | Promise used to return the **Panel** object. |
 
 **Error codes**
 
@@ -1112,36 +1120,33 @@ let panelInfo: inputMethodEngine.PanelInfo = {
   flag: inputMethodEngine.PanelFlag.FLG_FIXED
 }
 
+// Used in the InputMethodExtensionAbility class.
 let inputPanel: inputMethodEngine.Panel | undefined = undefined;
-// context is the context object provided by the InputMethodExtensionAbility class and does not need to be obtained separately.
-if (this.context) {
-  inputMethodEngine.getInputMethodAbility()
-    .createPanel(this.context, panelInfo, (err: BusinessError, panel: inputMethodEngine.Panel) => {
+inputMethodEngine.getInputMethodAbility().createPanel(this.context, panelInfo, (err: BusinessError, panel: inputMethodEngine.Panel) => {
+  if (err) {
+    console.error(`Failed to create panel. Code is ${err.code}, message is ${err.message}`);
+    return;
+  }
+  inputPanel = panel;
+  console.info('Succeed in creating panel.');
+  // Destroy the instance after it is created successfully.
+  if (inputPanel) {
+    inputMethodEngine.getInputMethodAbility().destroyPanel(inputPanel, (err: BusinessError) => {
       if (err) {
-        console.error(`Failed to create panel. Code is ${err.code}, message is ${err.message}`);
+        console.error(`Failed to destroy panel. Code is ${err.code}, message is ${err.message}`);
         return;
       }
-      inputPanel = panel;
-      console.info('Succeed in creating panel.');
-    })
-}
-
-if (inputPanel) {
-  inputMethodEngine.getInputMethodAbility().destroyPanel(inputPanel, (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to destroy panel. Code is ${err.code}, message is ${err.message}`);
-      return;
-    }
-    console.info('Succeed in destroying panel.');
-  })
-}
+      console.info('Succeed in destroying panel.');
+    });
+  }
+});
 ```
 
 ### destroyPanel<sup>10+</sup>
 
 destroyPanel(panel: Panel): Promise&lt;void&gt; 
 
-Destroys the specified input method panel. This API uses a promise to return the result.
+Destroys the input method panel. This API uses a promise to return the result.
 
 Paired calls:
 
@@ -1227,11 +1232,13 @@ Usage scenarios:
 
 In the following API examples, you must first use [getKeyboardDelegate](#inputmethodenginegetkeyboarddelegate9) to obtain a **KeyboardDelegate** instance, and then call the APIs using the obtained instance.
 
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
+
 ### on('keyDown'|'keyUp')
 
 on(type: 'keyDown'|'keyUp', callback: (event: KeyEvent) => boolean): void
 
-Enables listening for a physical keyboard event. This API uses an asynchronous callback to return the result.
+Enables listening for a keyup or keydown event from a physical keyboard. This API uses an asynchronous callback to return the result.
 
 Usage scenarios: Implement shortcut functions, intercept special keys, and handle function keys (such as Backspace and Enter), among others.
 
@@ -1265,7 +1272,7 @@ inputMethodEngine.getKeyboardDelegate().on('keyDown', (keyEvent: inputMethodEngi
 
 off(type: 'keyDown'|'keyUp', callback?: (event: KeyEvent) => boolean): void
 
-Unsubscribes from key press and release events on the hard keyboard (that is, the physical keyboard).
+Disables listening for a keyup or keydown event from a physical keyboard.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -1293,7 +1300,7 @@ inputMethodEngine.getKeyboardDelegate().off('keyDown', (keyEvent: inputMethodEng
 
 on(type: 'keyEvent', callback: (event: InputKeyEvent) => boolean): void
 
-Subscribes to hard keyboard (physical keyboard) events. This API uses an asynchronous callback to return the result. Compared with **on('keyDown'|'keyUp')**, **on('keyEvent')** provides more comprehensive key event information, including modifier key states for Ctrl/Shift/Alt and **unicodeChar** information. It applies to scenarios requiring processing of key combinations or access to detailed key event data.
+Subscribes to physical keyboard events. This API uses an asynchronous callback to return the result. Compared with **on('keyDown'|'keyUp')**, **on('keyEvent')** provides more comprehensive key event information, including modifier key states for Ctrl/Shift/Alt and **unicodeChar** information. It applies to scenarios requiring processing of key combinations or access to detailed key event data.
 
 Usage scenarios: Require handling key combinations (such as Ctrl+C and Shift+Enter) or obtaining more comprehensive key information (such as **unicodeChar** and **ctrlKey**).
 
@@ -1326,7 +1333,7 @@ inputMethodEngine.getKeyboardDelegate().on('keyEvent', (keyEvent: KeyEvent) => {
 
 off(type: 'keyEvent', callback?: (event: InputKeyEvent) => boolean): void
 
-Disables listening for a keyboard event. This API uses an asynchronous callback to return the result.
+Ubsubscribes from physical keyboard events. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -1583,6 +1590,8 @@ Panel lifecycle:
 
 In the following API examples, you must first use [createPanel](#createpanel10) to obtain a **Panel** instance, and then call the APIs using the obtained instance.
 
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
+
 ### setUiContent<sup>10+</sup>
 
 setUiContent(path: string, callback: AsyncCallback&lt;void&gt; ): void
@@ -1722,7 +1731,7 @@ Loads content from a page associated with LocalStorage to this panel. This API u
 
 | Type  | Description                            |
 | ------- | ------------------------------ |
-| Promise&lt;void&gt;  | Promise used to return the result. No value is returned. |
+| Promise&lt;void&gt;  | Promise that returns no value. |
 
 **Error codes**
 
@@ -1755,7 +1764,7 @@ Resizes this input method panel. This API uses an asynchronous callback to retur
 
 > **NOTE**
 >
-> The panel width cannot exceed the screen width, and the panel height cannot be 0.7 times higher than the screen height.
+> The panel width cannot exceed the screen width, and the panel height cannot exceed 0.7 times the screen height.
 >
 > When the **PanelFlag** of a smartphone is **FLG_FLOATING** and the panel width is between 0 and 288 vp, the function buttons at the bottom of the panel will dynamically adjust their size according to the panel width. To ensure the optimal user experience, it is recommended that the panel width be no less than 90 vp.
 
@@ -1800,7 +1809,7 @@ Resizes this input method panel. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> The panel width cannot exceed the screen width, and the panel height cannot be 0.7 times higher than the screen height.
+> The panel width cannot exceed the screen width, and the panel height cannot exceed 0.7 times the screen height.
 >
 > When the **PanelFlag** of a smartphone is **FLG_FLOATING** and the panel width is between 0 and 288 vp, the function buttons at the bottom of the panel will dynamically adjust their size according to the panel width. To ensure the optimal user experience, it is recommended that the panel width be no less than 90 vp.
 
@@ -1898,7 +1907,7 @@ Moves this input method panel to the specified position. This API uses a promise
 
 | Type  | Description                            |
 | ------- | ------------------------------ |
-| Promise&lt;void&gt;  | Promise used to return the result. No value is returned. |
+| Promise&lt;void&gt;  | Promise that returns no value. |
 
 **Error codes**
 
@@ -1935,7 +1944,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID| Error Message                                               |
 | -------- | ------------------------------------------------------- |
-| 801 | capability not supported. [since 18] |
+| 801 | capability not supported. Applicable version: 18+ |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800013 | window manager service error. |
 | 12800017 | invalid panel type or panel flag. |
@@ -2606,7 +2615,7 @@ Enables listening for the panel size change. This API uses an asynchronous callb
 
 > **NOTE**
 >
-> This API applies only to the panels of the **SOFT_KEYBOARD** type in the **FLG_FIXED** or **FLG_FLOATING** state. When you call **adjustPanelRect** to adjust the panel size, the system calculates the final value based on certain rules (for example, whether the panel size exceeds the screen). This callback can be used to obtain the actual panel size to refresh the panel layout.
+> This API applies only to the panels of the **SOFT_KEYBOARD** type in the **FLG_FIXED** or **FLG_FLOATING** state. When the input method calls APIs like **adjustPanelRect** to adjust the panel size, the system calculates the final value based on certain rules (for example, whether the panel size exceeds the screen). This callback can be used to obtain the actual panel size to refresh the panel layout.
 >
 >-  This API is supported from API version 12 to 14. The callback function of this API contains only mandatory parameters of the [window.Size](../apis-arkui/arkts-apis-window-i.md#size7) type.
 >-  Since API version 15, after the [adjustPanelRect](#adjustpanelrect15) API is called, an optional parameter of the [KeyboardArea](#keyboardarea15) type is added to the callback function of this API.
@@ -2862,6 +2871,8 @@ Sets the immersive effect of the input method application.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
+**Device behavior difference**: This API can be called normally only on phone and tablet devices. On other devices, error code 801 is returned.
+
 **Parameters**
 
 | Name  | Type                  | Mandatory| Description    |
@@ -2978,15 +2989,19 @@ let panelConfig: inputMethodEngine.PanelInfo = {
 }
 // The following logic needs to be executed in InputMethodExtensionAbility. this.context is the context of InputMethodExtensionAbility.
 // Create the input method panel.
-inputMethodAbility.createPanel(this.context, panelConfig).then( (panel: inputMethodEngine.Panel) =>{
+inputMethodAbility.createPanel(this.context, panelConfig).then((panel: inputMethodEngine.Panel) => {
   panel.getDisplayId().then((displayId: number) => {
     panel.getSystemPanelCurrentInsets(displayId).then((insets: inputMethodEngine.SystemPanelInsets) => {
       console.info(`getSystemPanelCurrentInsets success, insets is { left: ${insets.left}, right: ${insets.right}, bottom: ${insets.bottom} }`);
     }).catch((error: BusinessError) => {
       console.error(`getSystemPanelCurrentInsets failed, code: ${error.code}, message: ${error.message}`);
-    })
+    });
+  }).catch((error: BusinessError) => {
+    console.error(`getDisplayId failed, code: ${error.code}, message: ${error.message}`);
   });
-})
+}).catch((error: BusinessError) => {
+  console.error(`createPanel failed, code: ${error.code}, message: ${error.message}`);
+});
 ```
 
 ### setSystemPanelButtonColor<sup>22+</sup>
@@ -3033,6 +3048,8 @@ try {
 ## KeyboardController
 
 You must first use [on('inputStart')](#oninputstart9) to obtain a **KeyboardController** instance, and then use this instance to call the following APIs.
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ### hide<sup>9+</sup>
 
@@ -3308,11 +3325,13 @@ Represents a custom communication object.
 >
 > If this object is unregistered, its [onTerminated](#onterminated15) callback will be triggered.
 
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
+
 ### onMessage<sup>15+</sup>
 
 onMessage(msgId: string, msgParam?: ArrayBuffer): void
 
-Receives the custom data callback sent by the edit box application attached to the input method application.
+Callback triggered for receiving custom data sent by the edit box application attached to the current input method application.
 
 > **NOTE**
 >
@@ -3351,7 +3370,7 @@ inputMethodEngine.getInputMethodAbility()
 
 onTerminated(): void
 
-Listens for MessageHandler termination.
+Callback triggered for **MessageHandler** termination.
 
 > **NOTE**
 >
@@ -3375,13 +3394,13 @@ inputMethodEngine.getInputMethodAbility()
           console.info(`recv message, msgId is ${msgId}, msgParam is ${JSON.stringify(msgParam)}`);
         }
       }
-      client.recvMessage(messageHandler);
+      inputClient.recvMessage(messageHandler);
     });
 ```
 
 ## InputClient<sup>9+</sup>
 
-Represents the input method client object for the edit box currently bound to the input method app. An **InputClient** instance is obtained through the [on('inputStart')](#getforward9) event callback of **InputMethodAbility**. Each binding event corresponds to one **InputClient** instance which the input method app uses to interact with the edit box for text operations.
+Represents the input method client object for the edit box client attached to the input method app. An **InputClient** instance is obtained through the [on('inputStart')](#oninputstart9) event callback of **InputMethodAbility**. Each attachment event corresponds to one **InputClient** instance which the input method app uses to interact with the edit box for text operations.
 
 Core capability overview:
 
@@ -3406,6 +3425,8 @@ Core capability overview:
 - APIs suffixed with **Sync** are synchronous. They may block the main thread and impair UI interaction. Use them with caution.
 
 You must first use [on('inputStart')](#oninputstart9) to obtain an **InputClient** instance, and then use this instance to call the following APIs.
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ### sendKeyFunction<sup>9+</sup>
 
@@ -4223,7 +4244,7 @@ Obtains edit box attribute information.
 
 | Type                               | Description          |
 | ----------------------------------- | -------------- |
-| [EditorAttribute](#editorattribute) | Attribute information.|
+| [EditorAttribute](#editorattribute) | Edit box attribute information.|
 
 **Error codes**
 
@@ -4704,6 +4725,8 @@ sendExtendAction(action: ExtendAction, callback: AsyncCallback&lt;void&gt;): voi
 
 Sends an extended edit action. This API uses an asynchronous callback to return the result.
 
+Usage scenarios: An input method app needs to trigger extended editing features of the edit box. Examples include sending the cut action when the user taps the cut button on the keyboard, sending the copy action for the copy button, sending the paste action for the paste button, sending the select‑all action for the select‑all button, and integrating editing shortcuts within a custom toolbar.
+
 > **NOTE**
 >
 > The input method applications call this API to send extended edit actions to the edit box. The edit box listens for the corresponding event using [on('handleExtendAction')](./js-apis-inputmethod.md#onhandleextendaction10) for further processing.
@@ -4799,9 +4822,9 @@ Sends private data to the system component that needs to communicate with the in
 
 >**NOTE**
 >
-> - The private data channel allows communication between the system preset input method application and specific system components (such as a text box or a home screen application). It is usually used to implement custom input on a specific device.
+> - The private data channel allows communication between the system preset input method application and specific system components (such as a text box or a home screen application). Device vendors typically leverage this channel to implement custom input method features for a given device.
 > - The total size of the private data is 32 KB, and the maximum number of private data records is 5.
-> - Private data is sent to the text box by default. To send it to a desktop application, add a data entry `{'sys_cmd':1}` to the private data.
+> - Private data is sent to the text box by default. To send it to a home screen application, add a data entry `{'sys_cmd':1}` to the private data.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -4836,10 +4859,11 @@ inputMethodEngine.getInputMethodAbility().on('inputStart', (kbController, textIn
   let record: Record<string, inputMethodEngine.CommandDataType> = {
     "valueString1": "abcdefg",
     "valueString2": true,
-    "valueString3": 500,
+    "valueString3": 500
   }
-  textInputClient.sendPrivateCommand(record).then(() => {
-  }).catch((err: BusinessError) => {
+textInputClient.sendPrivateCommand(record).then(() => {
+  // do something
+}).catch((err: BusinessError) => {
     if (err) {
       console.error(`sendPrivateCommand catch error: ${err.code}, message: ${err.message}`);
     }
@@ -4898,7 +4922,7 @@ Sets the preview text. This API uses a promise to return the result.
 
 **Parameters**
 
-<!--Table: auto; auto; 10%; 60%-->
+
 
 | Name| Type             | Mandatory| Description                                                        |
 | ------ | ----------------- | ---- | ------------------------------------------------------------ |
@@ -4949,7 +4973,7 @@ Sets the preview text.
 
 **Parameters**
 
-<!--Table: auto; auto; 10%; 60%-->
+
 
 | Name | Type             | Mandatory| Description                                                        |
 | ------ | ----------------- | ---- | ------------------------------------------------------------ |
@@ -5050,7 +5074,7 @@ Sends the custom communication to the edit box application attached to the input
 
 > **NOTE**
 >
-> This API can be called only when the edit box is attached to the input method and enter the edit mode, and the input method application is in full experience mode.
+> This API can be called only when the edit box is attached to the input method and enters the edit mode, and the input method application is in full experience mode.
 >
 > The maximum length of **msgId** is 256 B, and the maximum length of **msgParam** is 128 KB.
 
@@ -5100,13 +5124,13 @@ inputClient.sendMessage(msgId, msgParam).then(() => {
 
 recvMessage(msgHandler?: MessageHandler): void;
 
-Registers or unregisters MessageHandler.
+Registers or unregisters a **MessageHandler**.
 
 > **NOTE**
 >
 > The [MessageHandler](#messagehandler15) object is globally unique. After multiple registrations, only the last registered object is valid and retained, and the [onTerminated](#onterminated15) callback of the penultimate registered object is triggered.
 >
-> If no parameter is set, unregister [MessageHandler](#messagehandler15). Its [onTerminated](#onterminated15) callback will be triggered.
+> If no parameter is set, the globally registered [MessageHandler](#messagehandler15) object is unregistered. Its [onTerminated](#onterminated15) callback will be triggered.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -5114,7 +5138,7 @@ Registers or unregisters MessageHandler.
 
 | Name    | Type                               | Mandatory| Description                                                        |
 | ---------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| msgHandler | [MessageHandler](#messagehandler15) | No  | This object receives custom communication data from the edit box application attached to the input method application through [onMessage](#onmessage15) and receives a message for terminating the subscription to this object through [onTerminated](#onterminated15).<br>If no parameter is set, unregister [MessageHandler](#messagehandler15). Its [onTerminated](#onterminated15) callback will be triggered.|
+| msgHandler | [MessageHandler](#messagehandler15) | No  | This object receives custom communication data from the edit box application attached to the input method application through [onMessage](#onmessage15) and receives a message for terminating the subscription to this object through [onTerminated](#onterminated15).<br>If no parameter is set, the globally registered [MessageHandler](#messagehandler15) object is unregistered. Its [onTerminated](#onterminated15) callback will be triggered.|
 
 **Error codes**
 
@@ -5164,7 +5188,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message                                       |
 | -------- | ---------------------------------------------- |
-| 801 | Capability not supported. [since 19 - 19] |
+| 801 | Capability not supported.<br>Applicable versions: 19-19 |
 
 > **NOTE**
 >
@@ -5198,7 +5222,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message                                       |
 | -------- | ---------------------------------------------- |
-| 801 | Capability not supported. [since 19 - 19]. |
+| 801 | Capability not supported. Supported versions: 19-19. |
 
 > **NOTE**
 >
@@ -5252,7 +5276,7 @@ console.info(`attachOptionsDidChange unsubscribed from attachOptionsDidChange`);
 
 ## CapitalizeMode<sup>20+</sup>
 
-Enumerates the modes of capitalizing the first letter of a text.
+Enumerates capitalization modes for the first letter of a text.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -5272,16 +5296,16 @@ Represents the attributes of the edit box.
 | Name        | Type| Read-Only| Optional| Description              |
 | ------------ | -------- | ---- | ---- | ------------------ |
 | enterKeyType | number   | Yes  | No  | Function attributes of the edit box. For details, see [function key definitions in constants](#constants).|
-| inputPattern | number   | Yes  | No  | Text attributes of the edit box. For details, see [edit box definitions in constants](#immersivemode15).|
+| inputPattern | number   | Yes  | No  | Text attributes of the edit box. For details, see [edit box definitions in constants](#constants).|
 | isTextPreviewSupported<sup>12+</sup> | boolean | No| No| Whether text preview is supported.<br>- **true**: Supported.<br>- **false**: Unsupported.|
 | bundleName<sup>14+</sup> | string | Yes| Yes| Name of the bundle to which the edit box belongs. The value may be **""**. Handle this scenario when using the attribute.|
-| immersiveMode<sup>15+</sup> | [ImmersiveMode](#capitalizemode20) | Yes  | Yes  | Immersive mode of the input method.|
+| immersiveMode<sup>15+</sup> | [ImmersiveMode](#immersivemode15) | Yes  | Yes  | Immersive mode of the input method.|
 | windowId<sup>18+</sup> | number | Yes| Yes| ID of the window where the edit box is located.|
 | displayId<sup>18+</sup> | number | Yes  | Yes  | Screen ID of the window corresponding to the edit box. If the window ID is not set, the screen ID of the focused window is used.|
 | placeholder<sup>20+</sup> | string | Yes| Yes| Placeholder information set for the edit box.|
 | abilityName<sup>20+</sup> | string | Yes| Yes| Ability name set for the edit box.|
-| capitalizeMode<sup>20+</sup> | [CapitalizeMode](#gradientmode20) | Yes| Yes| Whether to capitalize the first letter in the edit box. If it is not set or is set to an invalid value, the first letter is not capitalized by default.|
-| gradientMode<sup>20+</sup> | [GradientMode](#paneltype10) | Yes| Yes| Gradient mode. If this attribute is not specified or is set to an invalid value, the gradient mode is not used by default.|
+| capitalizeMode<sup>20+</sup> | [CapitalizeMode](#capitalizemode20) | Yes| Yes| Capitalization mode for the text in the edit box. If it is not set or is set to an invalid value, the first letter is not capitalized by default.|
+| gradientMode<sup>20+</sup> | [GradientMode](#gradientmode20) | Yes| Yes| Gradient mode. If this attribute is not specified or is set to an invalid value, the gradient mode is not used by default.|
 | extraConfig<sup>22+</sup> | [InputMethodExtraConfig](./js-apis-inputmethod-extraconfig.md#inputmethodextraconfig) | Yes| Yes| Extra information about the input method.|
 | consumeKeyEvents      | boolean   | Yes   | Yes   | Whether the edit box has the full capability to handle keys such as letters, characters, and function keys.<br/>- The value **true** indicates that it has this capability.<br/>- The value **false** indicates that it does not have this capability.<br/>**Since:** 26.0.0<br/>**Model restriction:** This parameter can be used only in the stage model. |
 
@@ -5368,7 +5392,7 @@ Represents the keyboard area on the panel.
 | top    | number | No | No  | Distance between the upper boundary of the keyboard area and the upper boundary of the panel area, in pixels. The value is an integer.|
 | bottom | number | No  | No  | Distance between the lower boundary of the keyboard area and the lower boundary of the panel area, in pixels. The value is an integer.|
 | left   | number | No  | No  | Distance between the left boundary of the keyboard area and the left boundary of the panel area, in pixels. The value is an integer.|
-| right  | number | No  | No  | Distance between the right border of the keyboard area and the right border of the panel area, in pixels. The value is an integer.|
+| right  | number | No  | No  | Distance between the right boundary of the keyboard area and the right border of the panel area, in pixels. The value is an integer.|
 
 ## AttachOptions<sup>19+</sup>
 
@@ -5378,7 +5402,7 @@ Defines additional options for binding an input method.
 
 | Name  | Type  | Read-Only| Optional| Description                                                        |
 | ------ | ------ | ---- | ---- | ---------------------------------------------------------- |
-| requestKeyboardReason    | [RequestKeyboardReason](#requestkeyboardreason19) | No  | Yes  | Reason for requesting the keyboard. This attribute is set by the edit box application. If this attribute is not set or is set to an invalid value, the keyboard will not be triggered by default.|
+| requestKeyboardReason    | [RequestKeyboardReason](#requestkeyboardreason19) | No  | Yes  | Reason for requesting the keyboard. This attribute is set by the edit box application. If this attribute is not set or is set to an invalid value, the keyboard is triggered for no reason.|
 | isSimpleKeyboardEnabled<sup>20+</sup>    | boolean | No  | Yes  | Whether to enable the simple keyboard. This attribute is set by the edit box application. The value **true** means that the simple keyboard is enabled, and the value **false** means the opposite.<br> If this attribute is not set or is set to an invalid value, the simple keyboard is disabled by default.|
 
 ## WindowInfo<sup>12+</sup>
@@ -5459,6 +5483,8 @@ In the following API examples, you must first use [on('inputStart')](#oninputsta
 > **NOTE**
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [InputClient](#inputclient9) instead.
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ### getForward<sup>(deprecated)</sup>
 
@@ -5600,7 +5626,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let length: number = 1;
 textInputClient.getBackward(length).then((text: string) => {
-  console.info(`'Succeeded in getting backward: ${text}`);
+  console.info(`Succeeded in getting backward: ${text}`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to getBackward. Code is ${err.code}, message is ${err.message}`);
 });
@@ -5656,7 +5682,7 @@ Deletes the fixed-length text before the cursor. This API uses a promise to retu
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [inputMethodEngine.InputClient.deleteBackward](#deletebackward9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [inputMethodEngine.InputClient.deleteForward](#deleteforward9) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -5695,7 +5721,7 @@ deleteBackward(length:number, callback: AsyncCallback&lt;boolean&gt;): void
 
 Deletes the fixed-length text after the cursor. This API uses an asynchronous callback to return the result.
 
-Usage scenarios: Implement the Backspace key function, delete input character by character, delete incorrect input, and implement custom deletion logic, among others.
+Usage scenarios: Implement the Backspace key function, delete characters after the cursor, delete incorrect input, and implement custom deletion logic, among others.
 
 Use effect: When the operation is successful, the fixed-length text after the cursor is deleted.
 
