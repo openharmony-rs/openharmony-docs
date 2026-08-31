@@ -2,11 +2,11 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @wangrunsen-->
-<!--Designer: @YanSanzo-->
-<!--Tester: @ybhou1993-->
+<!--Owner: @rongShao-Z; @wind_-->
+<!--Designer: @yangcan18-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=5b2459a0f5dab332a77eeb8a1ae596067198b6bc translatedAt=2026-07-23T02:30:51.108Z pushedAt=2026-07-24T01:55:58.481Z -->
+<!-- md-trans-meta sourceCommit=33a389a0fc34d0c1a1567d26d02e828fcea05659 translatedAt=2026-08-28T01:31:52.196Z pushedAt=2026-08-28T09:09:08.968Z -->
 
 The **ComposeListItemV2** component is used to display a series of list items with the same width, suitable for presenting continuous, multi-row combinations of similar data (such as images and text).
 
@@ -50,8 +50,8 @@ Defines the left element, middle element, and right display content of the list 
 
 | Name | Type | Mandatory | Decorator Type | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| contentItemV2 | [ContentItemV2](#contentitemv2) | No | \@Param | Left and middle elements of the list item. |
-| operateItemV2 | [OperateItemV2](#operateitemv2) | No | \@Param | Right element of the list item. |
+| contentItemV2 | [ContentItemV2](#contentitemv2) | No | \@Param | Left and middle elements of the list item.<br/>If not set or set to undefined, the left and middle elements are not displayed. |
+| operateItemV2 | [OperateItemV2](#operateitemv2) | No | \@Param | Right element of the list item.<br/>If not set or set to **undefined**, the right element is not displayed. |
 
 ## ContentItemV2
 
@@ -71,8 +71,8 @@ Defines the left icon, icon size, and middle element text content displayed in t
 
 | Name | Type | Read-only | Optional | Description |
 | -------- | -------- |---|----|-------------|
-| iconStyle | [IconTypeV2](#icontypev2) | No | Yes | Icon style of the left element.<br/>This attribute is not set or set to **undefined** by default, meaning the icon resource is not displayed.<br>**Decorator:** @Trace |
-| icon | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Icon resource of the left element.<br/>This attribute is not set or set to **undefined** by default, meaning the icon resource is not displayed.<br>**Decorator:** @Trace |
+| iconStyle | [IconTypeV2](#icontypev2) | No | Yes | Icon type of the left element.<br/>This attribute is not set or set to **undefined** by default, meaning the icon resource is not displayed.<br>**Decorator:** @Trace       |
+| icon | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Icon resource of the left element.<br/>This attribute is not set or set to **undefined** by default, meaning the icon resource is not displayed.<br/>When **symbolStyle** is also set, only the Symbol icon is displayed.<br>**Decorator:** @Trace        |
 | symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No | Yes | Symbol icon resource of the left element, which takes precedence over **icon**. If both **icon** and **symbolStyle** are set, only the symbol icon is displayed.<br/>This attribute is not set or set to **undefined** by default, meaning the symbol icon is not displayed.<br>**Decorator:** @Trace |
 | primaryText | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Title content of the middle element.<br/>This attribute is not set or set to **undefined** by default, meaning the title is not displayed.<br/>**Text processing rule:** Text is displayed with unlimited line wrap when it overflows.<br>**Decorator:** @Trace |
 | secondaryText | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Subtitle content of the middle element.<br/>This attribute is not set or set to **undefined** by default, meaning the subtitle is not displayed.<br/>**Text processing rule:** Text is displayed with unlimited line wrap when it overflows.<br>**Decorator:** @Trace |
@@ -98,7 +98,7 @@ A constructor used to create a **ContentItemV2** object.
 
 | Name | Type | Mandatory | Description |
 | ------ | ---- | ---- | ---- |
-| options | [ContentItemV2Options](#contentitemv2options) | No | Configuration of the left element of the list item. |
+| options | [ContentItemV2Options](#contentitemv2options) | No | Configuration of the left element of the list item.<br/>If not set or set to **undefined**, an object is created based on the default effect of each attribute. |
 
 ## ContentItemV2Options
 
@@ -116,12 +116,12 @@ Defines the options for the **ContentItemV2** constructor.
 
 | Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| iconStyle | [IconTypeV2](#icontypev2) | No | Yes | Icon style of the left element. |
-| icon | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Icon resource of the left element. |
-| symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No | Yes | Symbol icon resource of the left element. |
-| primaryText | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Title content of the middle element. |
-| secondaryText | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Subtitle content of the middle element. |
-| description | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Description content of the middle element. |
+| iconStyle | [IconTypeV2](#icontypev2) | No | Yes | Icon type of the left element.<br/>Not set by default or set to **undefined**, the leading icon resource is not displayed. |
+| icon | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Icon resource of the left element.<br/>Not set by default or set to **undefined**, the icon resource is not displayed.<br/>When **symbolStyle** is also set, only the Symbol icon is displayed. |
+| symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No | Yes | Symbol icon resource of the left element, which takes priority over **icon**. When both are set, only the Symbol icon is displayed.<br/>Not set by default or set to **undefined**, the Symbol icon is not displayed. |
+| primaryText | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Title content of the middle element.<br/>Not set by default or set to **undefined**, the title content is not displayed.<br/>The text is displayed with unlimited line wrapping when it overflows. |
+| secondaryText | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Subtitle content of the middle element.<br/>Not set by default or set to **undefined**, the subtitle content is not displayed.<br/>The text is displayed with unlimited line wrapping when it overflows. |
+| description | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Description content of the middle element.<br/>Not set by default or set to **undefined**, the description content is not displayed.<br/>The text is displayed with unlimited line wrapping when it overflows. |
 
 ## IconTypeV2
 
@@ -173,8 +173,8 @@ Defines the element types for the right element of list items.
 | toggle | [OperateCheckV2](#operatecheckv2) | No | Yes | Toggle.<br/>By default, this attribute is not set or set to **undefined**, and the toggle is not displayed.<br>**Decorator:** @Trace |
 | checkbox | [OperateCheckV2](#operatecheckv2) | No | Yes | Checkbox, sized 24 × 24 vp.<br/>By default, this attribute is not set or set to **undefined**, and the checkbox is not displayed.<br>**Decorator:** @Trace |
 | radio | [OperateCheckV2](#operatecheckv2) | No | Yes | Radio button, sized 24 × 24 vp.<br/>By default, this attribute is not set or set to **undefined**, and the radio button is not displayed.<br>**Decorator:** @Trace |
-| image | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Image, sized 48 × 48 vp.<br/>By default, this attribute is not set or set to **undefined**, and the image is not displayed.<br>**Decorator:** @Trace |
-| symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No | Yes | Symbol icon resource, sized 48 × 48 vp.<br/>By default, this attribute is not set or set to **undefined**, and the symbol icon is not displayed.<br>**Decorator:** @Trace |
+| image | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Image resource, sized 48 × 48 vp.<br/>By default, this attribute is not set or set to **undefined**, and the image is not displayed.<br/>If symbolStyle is also set, only the symbol icon is displayed.<br>**Decorator:** @Trace    |
+| symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No | Yes | Symbol icon resource, sized 48 × 48 vp. It has a higher priority than image, and only the symbol icon is displayed when both are set.<br/>By default, this attribute is not set or set to **undefined**, and the symbol icon is not displayed.<br>**Decorator:** @Trace  |
 | text | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Text.<br/>By default, this attribute is not set or set to **undefined**, and the text is not displayed.<br>**Decorator:** @Trace |
 
 ### constructor
@@ -197,7 +197,7 @@ A constructor used to create an **OperateItemV2** object.
 
 | Name | Type | Mandatory | Description |
 | ------ | ---- | ---- | ---- |
-| options | [OperateItemV2Options](#operateitemv2options) | No | Configuration of the right element of the list item. |
+| options | [OperateItemV2Options](#operateitemv2options) | No | Configuration of the right element of the list item.<br/>If not set or set to undefined, an object is created based on the default effect of each attribute. |
 
 ## OperateItemV2Options
 
@@ -215,16 +215,16 @@ Defines the options for the **OperateItemV2** constructor.
 
 | Name | Type | Read Only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| arrow | [OperateIconV2](#operateiconv2) | No | Yes | The right element of the list item is an arrow. |
-| icon | [OperateIconV2](#operateiconv2) | No | Yes | First icon of the right element of the list item. |
-| subIcon | [OperateIconV2](#operateiconv2) | No | Yes | Second icon of the right element of the list item. |
-| button | [OperateButtonV2](#operatebuttonv2) | No | Yes | The right element of the list item is a button. |
-| toggle | [OperateCheckV2](#operatecheckv2) | No | Yes | The right element of the list item is a toggle. |
-| checkbox | [OperateCheckV2](#operatecheckv2) | No | Yes | The right element of the list item is a checkbox. |
-| radio | [OperateCheckV2](#operatecheckv2) | No | Yes | The right element of the list item is a radio button. |
-| image | [ResourceStr](ts-types.md#resourcestr) | No | Yes | The right element of the list item is an image. |
-| symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No | Yes | The right element of the list item is a Symbol icon resource. |
-| text | [ResourceStr](ts-types.md#resourcestr) | No | Yes | The right element of the list item is text. |
+| arrow | [OperateIconV2](#operateiconv2) | No | Yes | Right element of the list item is an arrow.<br/>Not set by default or set to **undefined**, the arrow is not displayed. |
+| icon | [OperateIconV2](#operateiconv2) | No | Yes | First icon of the right element of the list item.<br/>Not set by default or set to **undefined**, the icon is not displayed. |
+| subIcon | [OperateIconV2](#operateiconv2) | No | Yes | Second icon of the right element of the list item.<br/>Not set by default or set to **undefined**, the second icon is not displayed. |
+| button | [OperateButtonV2](#operatebuttonv2) | No | Yes | Right element of the list item is a button.<br/>Not set by default or set to **undefined**, the button is not displayed. |
+| toggle | [OperateCheckV2](#operatecheckv2) | No | Yes | Right element of the list item is a toggle.<br/>Not set by default or set to **undefined**, the toggle is not displayed. |
+| checkbox | [OperateCheckV2](#operatecheckv2) | No | Yes | Right element of the list item is a checkbox.<br/>Not set by default or set to **undefined**, the checkbox is not displayed. |
+| radio | [OperateCheckV2](#operatecheckv2) | No | Yes | Right element of the list item is a radio button.<br/>Not set by default or set to **undefined**, the radio button is not displayed. |
+| image | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Right element of the list item is an image.<br/>Not set by default or set to **undefined**, the image is not displayed.<br/>When **symbolStyle** is also set, only the symbol icon is displayed. |
+| symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No | Yes | Right element of the list item is a symbol icon resource, which takes priority over **image**. When both are set, only the symbol icon is displayed.<br/>Not set by default or set to **undefined**, the symbol icon is not displayed. |
+| text | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Right element of the list item is text.<br/>Not set by default or set to **undefined**, the text is not displayed. |
 
 ## OperateIconV2
 
@@ -244,12 +244,12 @@ Defines the type of the right icon element of the list item.
 
 | Name | Type | Read-only | Optional | Description |
 | -------- | -------- |---|---|------------------|
-| value | [ResourceStr](ts-types.md#resourcestr) | No | No | Icon or arrow resource.<br>**Decorator:** @Trace |
+| value | [ResourceStr](ts-types.md#resourcestr) | No | No | Icon or arrow resource of the right element of the list item.<br/>If **symbolStyle** is also set, only the Symbol icon is displayed.<br>**Decorator:** @Trace    |
 | symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No | Yes | Symbol icon or arrow resource, which takes precedence over **value**.<br/>By default, this attribute is not set or is set to **undefined**, and the symbol icon is not displayed.<br>**Decorator:** @Trace |
-| action | [OnActionCallback](#onactioncallback) | No | Yes | Tap event of the icon or arrow.<br>**Decorator:** @Trace |
+| action | [OnActionCallback](#onactioncallback) | No | Yes | Callback invoked when the icon or arrow of the right element of the list item is tapped.<br/>If this parameter is not set or is set to **undefined**, tapping the icon or arrow does not trigger the callback.<br>**Decorator:** @Trace       |
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility text of the icon or arrow. When a component does not contain a text attribute, the screen reader does not announce it upon selection, leaving users unaware of which component is currently selected. To address this issue, you can set accessibility text for components that do not contain text information. When the screen reader selects such a component, it announces the content of the accessibility text, helping users clearly identify the selected component.<br/>Default value: **""**<br>**Decorator:** @Trace |
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility description of the icon or arrow. This description is used to explain the current component to users in detail. You should provide a relatively detailed text description for this attribute to help users understand the action to be performed and its possible consequences, especially when such consequences cannot be directly inferred from the component's attributes and accessibility text. If a component that is selected has both a text attribute and an accessibility description attribute, the system first announces the text attribute and then the content of the accessibility description attribute.<br/>Default value: **"Double-tap with one finger to execute."**<br>**Decorator:** @Trace |
-| accessibilityLevel | string | No | Yes | Accessibility level of the icon or arrow. This attribute controls whether the current item can be recognized by accessibility services.<br/>Supported values:<br/>**"auto"**: The attribute value of the current component is converted to **"no"**.<br/>**"yes"**: The current component can be recognized by accessibility services.<br/>**"no"**: The current component cannot be recognized by accessibility services.<br/>**"no-hide-descendants"**: The current component and all its child components cannot be recognized by accessibility services.<br/>Default value: **"auto"**<br>**Decorator:** @Trace |
+| accessibilityLevel | string | No | Yes | Accessibility level of the icon or arrow of the right element of the list item. This attribute controls whether the current item can be recognized by accessibility services.<br/>Supported values:<br/>**"auto"**: Whether the current component can be recognized by accessibility services is determined by the accessibility service and ArkUI together.<br/>**"yes"**: The current component can be recognized by accessibility services.<br/>**"no"**: The current component cannot be recognized by accessibility services.<br/>**"no-hide-descendants"**: The current component and all its child components cannot be recognized by accessibility services.<br/>Default value: **"auto"**<br>**Decorator:** @Trace  |
 
 ### constructor
 
@@ -271,7 +271,7 @@ A constructor used to create an **OperateIconV2** object.
 
 | Name | Type | Mandatory | Description |
 | ------ | ---- | ---- | ---- |
-| options | [OperateIconV2Options](#operateiconv2options) | No | Configuration of the right icon element of the list item. |
+| options | [OperateIconV2Options](#operateiconv2options) | No | Configuration of the right icon of the list item.<br/>If this parameter is not set or is set to **undefined**, an object is created based on the default effect of each attribute. |
 
 ## OperateIconV2Options
 
@@ -289,12 +289,12 @@ Defines options for the **OperateIconV2** constructor.
 
 | Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| value | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Icon or arrow resource. |
-| symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No | Yes | Symbol icon or arrow resource. |
-| action | [OnActionCallback](#onactioncallback) | No | Yes | Tap event of the icon or arrow. |
+| value | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Icon or arrow resource of the right element of the list item.<br/>Default value: **""**, which means no icon or arrow resource is displayed.<br/>When **symbolStyle** is also set, only the Symbol icon is displayed. |
+| symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No | Yes | Symbol icon or arrow resource of the right element of the list item. It has a higher priority than **value**. When both are set, only the Symbol icon is displayed.<br/>By default, or when it is set to **undefined**, no Symbol icon is displayed. |
+| action | [OnActionCallback](#onactioncallback) | No | Yes | Callback invoked when the icon or arrow of the right element of the list item is tapped.<br/>By default, or when it is set to **undefined**, tapping the icon or arrow does not trigger the callback. |
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility text of the icon or arrow. When a component does not contain a text attribute, the screen reader does not announce it upon selection, leaving users unaware of which component is currently selected. To address this scenario, developers can set accessibility text for components that do not contain text information. When the screen reader selects such a component, it announces the content of the accessibility text, helping screen reader users clearly identify the selected component.<br/>Default value: **""** |
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility description of the icon or arrow. This description is used to explain the current component to users in detail. You should provide a relatively detailed text description for this attribute to help users understand the action to be performed and its possible consequences, especially when such consequences cannot be directly inferred from the component's attributes and accessibility text. If a component that is selected has both a text attribute and an accessibility description attribute, the system first announces the text attribute and then the content of the accessibility description attribute.<br/>Default value: **"Double-tap with one finger to execute."** |
-| accessibilityLevel | string | No | Yes | Accessibility level of the icon or arrow. This attribute controls whether the current item can be recognized by accessibility services.<br/>Supported values:<br/>**"auto"**: The attribute value of the current component is converted to **"no"**.<br/>**"yes"**: The current component can be recognized by accessibility services.<br/>**"no"**: The current component cannot be recognized by accessibility services.<br/>**"no-hide-descendants"**: The current component and all its child components cannot be recognized by accessibility services.<br/>Default value: **"auto"** |
+| accessibilityLevel | string | No | Yes | Accessibility level of the icon or arrow of the right element of the list item. This attribute controls whether the current item can be recognized by accessibility services.<br/>Supported values:<br/>**"auto"**: Whether the current component can be recognized by accessibility services is determined by the accessibility service and ArkUI.<br/>**"yes"**: The current component can be recognized by accessibility services.<br/>**"no"**: The current component cannot be recognized by accessibility services.<br/>**"no-hide-descendants"**: The current component and all its child components cannot be recognized by accessibility services.<br/>Default value: **"auto"** |
 
 ## OperateButtonV2
 
@@ -317,7 +317,7 @@ Defines the type of the right button element of the list item.
 | text | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Button text.<br/>Default value: **""**<br>**Decorator:** @Trace |
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility text of the button. When a component does not contain a text attribute, the screen reader does not announce it upon selection, leaving users unaware of which component is currently selected. To address this issue, you can set accessibility text for components that do not contain text information. When the screen reader selects such a component, it announces the content of the accessibility text, helping screen reader users clearly identify the selected component.<br/>Default value: **""**<br>**Decorator:** @Trace |
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility description of the button. This description is used to explain the current component to users in detail. You should provide a relatively detailed text description for this attribute to help users understand the action to be performed and its possible consequences, especially when such consequences cannot be directly inferred from the component's attributes and accessibility text. If a component that is selected has both a text attribute and an accessibility description attribute, the system first announces the text attribute and then the content of the accessibility description attribute.<br/>Default value: **"Double-tap with one finger to execute."**<br>**Decorator:** @Trace |
-| accessibilityLevel | string | No | Yes | Accessibility level of the button. This attribute controls whether the current item can be recognized by accessibility services.<br/>Supported values:<br/>**"auto"**: The attribute value of the current component is converted to **"no"**.<br/>**"yes"**: The current component can be recognized by accessibility services.<br/>**"no"**: The current component cannot be recognized by accessibility services.<br/>**"no-hide-descendants"**: The current component and all its child components cannot be recognized by accessibility services.<br/>Default value: **"auto"**<br>**Decorator:** @Trace |
+| accessibilityLevel | string | No | Yes | Accessibility level of the button. This attribute controls whether the current item can be recognized by accessibility services.<br/>Supported values:<br/>**"auto"**: Whether the current component can be recognized by accessibility services is determined by the accessibility service and ArkUI.<br/>**"yes"**: The current component can be recognized by accessibility services.<br/>**"no"**: The current component cannot be recognized by accessibility services.<br/>**"no-hide-descendants"**: The current component and all its child components cannot be recognized by accessibility services.<br/>Default value: **"auto"**<br>**Decorator:** @Trace  |
 
 ### constructor
 
@@ -339,7 +339,7 @@ A constructor used to create a **OperateButtonV2** object.
 
 | Name | Type | Mandatory | Description |
 | ------ | ---- | ---- | ---- |
-| options | [OperateButtonV2Options](#operatebuttonv2options) | No | Configuration of the right button element of the list item. |
+| options | [OperateButtonV2Options](#operatebuttonv2options) | No | Configuration of the right icon of the list item.<br/>If not set or set to **undefined**, an object is created based on the default effect of each attribute. |
 
 ## OperateButtonV2Options
 
@@ -357,10 +357,10 @@ Defines options for the **OperateButtonV2** constructor.
 
 | Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| text | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Button text. |
+| text | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Text of the right button of the list item.<br/>If this parameter is not set or is set to **undefined**, the button text is not displayed. |
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility text of the button. When a component does not contain a text attribute, the screen reader does not announce it upon selection, leaving users unaware of which component is currently selected. To address this scenario, developers can set accessibility text for components that do not contain text information. When the screen reader selects such a component, it announces the content of the accessibility text, helping screen reader users clearly identify the selected component.<br/>Default value: **""** |
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility description of the button. This description is used to explain the current component to users in detail. Developers should provide a relatively detailed text description for this attribute to help users understand the action to be performed and its possible consequences, especially when such consequences cannot be directly inferred from the component's attributes and accessibility text alone. If a component has both a text attribute and an accessibility description attribute, the system first announces the text attribute and then the content of the accessibility description attribute when the component is selected.<br/>Default value: **"Double-tap with one finger to execute."** |
-| accessibilityLevel | string | No | Yes | Accessibility importance of the button. This attribute controls whether the current item can be recognized by accessibility services.<br/>Supported values:<br/>**"auto"**: The current component is converted to **"no"**.<br/>**"yes"**: The current component can be recognized by accessibility services.<br/>**"no"**: The current component cannot be recognized by accessibility services.<br/>**"no-hide-descendants"**: The current component and all its child components cannot be recognized by accessibility services.<br/>Default value: **"auto"** |
+| accessibilityLevel | string | No | Yes | Accessibility level of the right button of the list item. This attribute controls whether the current item can be recognized by accessibility services.<br/>Supported values:<br/>**"auto"**: Whether the current component can be recognized by accessibility services is determined by the accessibility service and ArkUI together.<br/>**"yes"**: The current component can be recognized by accessibility services.<br/>**"no"**: The current component cannot be recognized by accessibility services.<br/>**"no-hide-descendants"**: The current component and all its child components cannot be recognized by accessibility services.<br/>Default value: **"auto"** |
 
 ## OperateCheckV2
 
@@ -381,10 +381,10 @@ Defines the **Switch**, **CheckBox**, and **Radio** types for the right element 
 | Name | Type | Read-only | Optional | Description              |
 | -------- | -------- |---|----|--------------|
 | isCheck | boolean | No | Yes | Whether the right element Switch, CheckBox, or Radio of the list item is selected.<br> The default value of **isCheck** is **false**.<br> The value **true** indicates selected.<br> The value **false** indicates not selected.<br>**Decorator:** @Trace   |
-| onChange | [OnChangeCallback](#onchangecallback) | No | Yes | Callback triggered when the selection state of the right element Switch, CheckBox, or Radio of the list item changes.<br> The value **true** indicates that the state changes from not selected to selected.<br> The value **false** indicates that the state changes from selected to not selected.<br>**Decorator:** @Trace   |
+| onChange | [OnChangeCallback](#onchangecallback) | No | Yes  | Callback triggered when the selection state of the right element Switch, CheckBox, or Radio of the list item changes.<br/>The value **true** indicates that the state changes from not selected to selected.<br/>The value **false** indicates that the state changes from selected to not selected.<br/>If this attribute is not set or is set to **undefined**, the callback is not triggered when the state changes.<br>**Decorator:** @Trace   |
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility text of the right element Switch, CheckBox, or Radio of the list item. When a component does not contain a text attribute, the screen reader does not announce it upon selection, leaving users unaware of which component is currently selected. To address this, you can set accessibility text for components without text information. When the screen reader selects such a component, it announces the accessibility text, helping screen reader users clearly identify the selected component.<br/>Default value: **""**<br>**Decorator:** @Trace   |
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility description of the right element Switch, CheckBox, or Radio of the list item. This description is used to explain the current component to users in detail. You should provide a relatively detailed text description for this attribute to help users understand the operation to be performed and its possible consequences, especially when such consequences cannot be directly inferred from the component's attributes and accessibility text. If a component that is selected has both a text attribute and an accessibility description attribute, the system first announces the text attribute, followed by the accessibility description.<br/>By default, the announcement rules of the base components **Switch**, **CheckBox**, and **Radio** are followed.<br>**Decorator:** @Trace |
-| accessibilityLevel | string | No | Yes | Accessibility level of the right element Switch, CheckBox, or Radio of the list item. This attribute controls whether the current item can be recognized by accessibility services.<br/>Supported values:<br/>**"auto"**: The attribute value of the component is converted to **"no"**.<br/>**"yes"**: The component can be recognized by accessibility services.<br/>**"no"**: The component cannot be recognized by accessibility services.<br/>**"no-hide-descendants"**: The component and all its child components cannot be recognized by accessibility services.<br/>Default value: **"auto"**<br>**Decorator:** @Trace |
+| accessibilityLevel | string | No | Yes  | Accessibility level of the right element Switch, CheckBox, or Radio of the list item. This attribute controls whether the current item can be recognized by accessibility services.<br/>Supported values:<br/>**"auto"**: Whether the component can be recognized by accessibility services is determined by the accessibility service and ArkUI.<br/>**"yes"**: The component can be recognized by accessibility services.<br/>**"no"**: The component cannot be recognized by accessibility services.<br/>**"no-hide-descendants"**: The component and all its child components cannot be recognized by accessibility services.<br/>Default value: **"auto"**<br>**Decorator:** @Trace |
 
 ### constructor
 
@@ -406,7 +406,7 @@ A constructor used to create an **OperateCheckV2** object.
 
 | Name | Type | Mandatory | Description |
 | ------ | ---- | ---- | ---- |
-| options | [OperateCheckV2Options](#operatecheckv2options) | No | Configuration of the right element **Switch**, **CheckBox**, or **Radio** of the list item. |
+| options | [OperateCheckV2Options](#operatecheckv2options) | No | Attribute configuration for the right element of the list item, which can be Switch, CheckBox, or Radio.<br/>If this parameter is not set or is set to **undefined**, an object is created based on the default effect of each attribute. |
 
 ## OperateCheckV2Options
 
@@ -424,11 +424,11 @@ Defines options for the **OperateCheckV2** constructor.
 
 | Name | Type | Readonly | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| isCheck | boolean | No | Yes | Whether the right element **Switch**, **CheckBox**, or **Radio** of the list item is selected. |
-| onChange | [OnChangeCallback](#onchangecallback) | No | Yes | Callback triggered when the selection state of the right element **Switch**, **CheckBox**, or **Radio** of the list item changes. |
+| isCheck | boolean | No | Yes | Selected state of the right element **Switch**, **CheckBox**, or **Radio** of the list item.<br/>The value **true** indicates selected, and **false** indicates unselected. |
+| onChange | [OnChangeCallback](#onchangecallback) | No | Yes | Callback triggered when the selected state of the right element **Switch**, **CheckBox**, or **Radio** of the list item changes.<br/>By default or when set to **undefined**, the callback is not triggered when the state changes. |
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility text of the right element **Switch**, **CheckBox**, or **Radio** of the list item. When a component does not contain a text attribute, the screen reader does not announce it upon selection, leaving users unaware of which component is currently selected. To address this, you can set accessibility text for components without text information. When the screen reader selects such a component, it announces the accessibility text, helping screen reader users clearly understand which component they have selected.<br/>Default value: **""** |
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility description of the right element **Switch**, **CheckBox**, or **Radio** of the list item. This description is used to explain the current component to users in detail. You should provide a relatively detailed text description for this attribute to help users understand the operation to be performed and its possible consequences, especially when such consequences cannot be directly inferred from the component's attributes and accessibility text. If a component that is selected has both a text attribute and an accessibility description attribute, the system first announces the text attribute, followed by the accessibility description.<br/>By default, the announcement rules of the base components **Switch**, **CheckBox**, and **Radio** are followed. |
-| accessibilityLevel | string | No | Yes | Accessibility level of the right element **Switch**, **CheckBox**, or **Radio** of the list item. This attribute controls whether the current component can be recognized by accessibility services.<br/>Supported values:<br/>**"auto"**: The attribute value of the component is converted to **"no"**.<br/>**"yes"**: The component can be recognized by accessibility services.<br/>**"no"**: The component cannot be recognized by accessibility services.<br/>**"no-hide-descendants"**: The component and all its child components cannot be recognized by accessibility services.<br/>Default value: **"auto"** |
+| accessibilityLevel | string | No | Yes | Accessibility level of the right element **Switch**, **CheckBox**, or **Radio** of the list item. This attribute controls whether the current component can be recognized by accessibility services.<br/>Supported values:<br/>**"auto"**: Whether the component can be recognized by accessibility services is determined by the accessibility service and ArkUI.<br/>**"yes"**: The component can be recognized by accessibility services.<br/>**"no"**: The component cannot be recognized by accessibility services.<br/>**"no-hide-descendants"**: The component and all its child components cannot be recognized by accessibility services.<br/>Default value: **"auto"** |
 
 ## OnActionCallback
 
@@ -516,7 +516,7 @@ struct ComposeListItemV2Example {
 }
 ```
 
-![Example 1 - ComposeListItemV2 left and right elements + text](figures/image-composelistitemv2-demo-01.jpg)
+<!--Del--> <!--DelEnd-->
 
 ### Example 2: Setting Custom Announcements for Different Right Elements of the List Item
 
@@ -608,7 +608,7 @@ struct ComposeListItemV2Example {
 }
 ```
 
-![Example 2 - ComposeListItemV2: Setting custom announcement for right elements of a list item](figures/image-composelistitemv2-demo-02.png)
+<!--Del--> <!--DelEnd-->
 
 ### Example 3: Setting Symbol Icons
 
@@ -691,5 +691,4 @@ struct ComposeListItemV2Example {
 }
 ```
 
-![Example 3 - ComposeListItemV2 with Symbol type icon](figures/image-composelistitemv2-demo-03.png)
-<!--no_check-->
+<!--Del--> <!--DelEnd-->

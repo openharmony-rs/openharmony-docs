@@ -1,10 +1,12 @@
 # Enums (System API)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=e10e7def4863f4f964c4d0cb425b7650081cb83e translatedAt=2026-08-28T01:36:52.810Z pushedAt=2026-08-28T08:22:51.134Z -->
 
 >**NOTE**
 >
@@ -13,6 +15,8 @@
 > - The APIs of this module can be used only in the stage model.
 
 ## IlluminatedType
+
+Defines the illumination types, which specify whether a component can be illuminated by a light source and the type of illumination.
 
 **System API**: This is a system API.
 
@@ -35,7 +39,7 @@ Enumerates color space types for specifying color rendering modes.
 
 | Name   |  Value  | Description                  |
 | ------  | ---- | -------------------- |
-| BT2020<sup>24+</sup> | 2 | BT2020 color space with a wider gamut, applicable to high-end display devices.<br>**Model restriction:** This API can be used only in the stage model.<br>**System API**: This is a system API.|
+| BT2020 | 2 | BT2020 color space, which has a wider color gamut and is suitable for high-end display devices. <br/>**Model restriction:** This API can be used only in the stage model. <br/>**System API:** This is a system API. <br/>**Since:** 26.0.0. |
 
 ## EdgeLightPosition
 
@@ -74,10 +78,9 @@ Enumerates distortion modes.
 
 | Name    | Value| Description             |
 | ------ | --- | --------------- |
-| DISTORTION_AUTO | 0 | When a material of the [IMMERSIVE](../arkts-apis-uimaterial.md#immersivematerial) type is applied, the distortion effect activates automatically according to the device's computing power tier. This feature is enabled for devices with high and mid-tier computing performance and remains inactive on low-performance hardware.|
+| DISTORTION_AUTO | 0 | When a material of the [IMMERSIVE](../arkts-apis-uimaterial.md#immersivematerial) type is set, the distortion effect automatically takes effect based on the device computing power level and the immersive light sensing configuration in system settings. On high-computing-power devices, the effect takes effect when the immersive light sensing configuration is strong or balanced, and does not take effect when it is weak. The effect does not take effect on medium- or low-computing-power devices. |
 | DISTORTION_ENABLED | 1 | The distortion effect is enabled when a system material is applied.|
 | DISTORTION_DISABLED | 2 | The distortion effect is disabled when a system material is applied.|
-
 
 ## EdgeLightMode
 
@@ -93,6 +96,6 @@ Enumerates edge light modes.
 
 | Name    | Value| Description             |
 | ------ | --- | --------------- |
-| EDGELIGHT_AUTO | 0 | When a material of the [IMMERSIVE](../arkts-apis-uimaterial.md#immersivematerial) type is applied, the edge light effect activates automatically according to the device's computing power tier. This feature is enabled for devices with high and mid-tier computing performance and remains inactive on low-performance hardware.|
+| EDGELIGHT_AUTO | 0 | When the material of the [IMMERSIVE](../arkts-apis-uimaterial.md#immersivematerial) type is set, the automatic activation rules of the edge light effect vary with the component type. For components without special instructions at their APIs, the edge light effect is automatically activated based on the device computing power tier and the immersive light sensing configuration in system settings: on high-computing-power devices, the edge light animation is activated when the immersive light sensing configuration is strong or balanced, and is not activated when it is weak; on medium-computing-power devices, the edge light animation is activated when the immersive light sensing configuration is strong, and is not activated when it is balanced or weak; on low-computing-power devices, the edge light effect is not activated. |
 | EDGELIGHT_ENABLED | 1 | The edge light effect is enabled when a system material is applied.|
 | EDGELIGHT_DISABLED | 2 | The edge light effect is disabled when a system material is applied.|
