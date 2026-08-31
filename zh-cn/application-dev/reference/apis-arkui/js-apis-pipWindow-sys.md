@@ -54,8 +54,6 @@ isPiPSupported(): boolean
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 18
-
 **返回值：**
 
 | 类型      | 说明                                  |

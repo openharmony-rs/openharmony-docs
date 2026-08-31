@@ -30,7 +30,9 @@ createWindow(config: Configuration, callback: AsyncCallback&lt;Window&gt;): void
 
 全局悬浮窗口、模态窗口或系统窗口创建后默认是非沉浸式布局。
 
-**需要权限：** ohos.permission.SYSTEM_FLOAT_WINDOW（仅当创建窗口类型为window.WindowType.TYPE_FLOAT时需要申请）
+**需要权限：**
+- API版本12+：ohos.permission.SYSTEM_FLOAT_WINDOW（仅当创建窗口类型为window.WindowType.TYPE_FLOAT时需要申请）
+- API版本9-11：NA
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -104,7 +106,9 @@ createWindow(config: Configuration): Promise&lt;Window&gt;
 
 全局悬浮窗口、模态窗口或系统窗口创建后默认是非沉浸式布局。
 
-**需要权限：** ohos.permission.SYSTEM_FLOAT_WINDOW（仅当创建窗口类型为window.WindowType.TYPE_FLOAT时需要申请）
+**需要权限：**
+- API版本12+：ohos.permission.SYSTEM_FLOAT_WINDOW（仅当创建窗口类型为window.WindowType.TYPE_FLOAT时需要申请）
+- API版本9-11：NA
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

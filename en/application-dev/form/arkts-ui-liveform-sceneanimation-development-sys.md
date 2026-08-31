@@ -5,10 +5,12 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=b5b6b01d9a6d838f0233eb9681dbc03ce52a038e translatedAt=2026-08-26T04:42:50.844Z pushedAt=2026-08-28T08:05:26.716Z -->
+
 For details about the development guidelines of scene-based widgets, see [Developing a Scene-based Widget](arkts-ui-liveform-sceneanimation-development.md). For system applications, scene-based widgets provide two extended capabilities: gesture suspension configuration and long-term widget activation.
 
 ## Gesture Suspension Configuration
-For [scene-based widgets](arkts-ui-liveform-sceneanimation-overview.md), operations such as long-pressing and dragging on the home screen will interrupt the current animation, causing the widget to revert to the inactive state. However, system applications can cancel this limitation by configuring [disabledDesktopBehaviors](arkts-ui-widget-configuration.md#sceneanimationparams-field) in the **form_config.json** file, ensuring smooth animations within the interactive target of the activated widget. If no configuration is performed, the system does not intercept any valid gesture operations on the home screen by default. Once gestures are intercepted, the corresponding gesture events are handled by the LiveFormExtensionAbility.
+For [scene-based interactive cards](arkts-ui-liveform-sceneanimation-development.md), operations such as long-pressing and dragging on the home screen will interrupt the current animation, causing the card to revert to the inactive state. However, system applications can cancel this limitation by configuring [disabledDesktopBehaviors](arkts-ui-widget-configuration.md#sceneanimationparams-field) in the **form_config.json** file, ensuring smooth animations within the interactive target of the activated card. If no configuration is performed, the system does not intercept any valid gesture operations on the home screen by default. Once gestures are intercepted, the corresponding gesture events are handled by the LiveFormExtensionAbility.
 
 ```ts
 // entry/src/main/resources/base/profile/form_config.json
@@ -54,7 +56,7 @@ When the system updates the key state information of a widget, it sends the widg
 
 ### Constraints
 
-In addition to [animation request constraints](arkts-ui-liveform-sceneanimation-overview.md#animation-request), the following limitations apply once an interactive widget enters the long-term activated state:
+In addition to [animation request constraints](arkts-ui-liveform-sceneanimation-development.md#parameter-request), the following limitations apply once an interactive widget enters the long-term activated state:
 1. The system allows a maximum of five widgets in active state at a time. If more than five widgets are in active state, the widget that first switched to the active state will be deactivated.
 2. After an interactive widget successfully requests an animation, the current widget's animation will be interrupted and the widget will switch to the inactive state if any of the following conditions are met:
    - The [cancelOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidercanceloverflow20) API is called to cancel the animation.
@@ -82,7 +84,7 @@ The following table lists the key APIs for a scene-based widget.
 1. Create an interactive widget.
 
     Create an interactive widget through [LiveFormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md) and load the widget page.
-    
+
     ```ts
     // entry/src/main/ets/mysystemliveformextensionability/MySystemLiveFormExtensionAbility.ets
     import { formInfo, LiveFormInfo, LiveFormExtensionAbility } from '@kit.FormKit';
@@ -96,7 +98,7 @@ The following table lists the key APIs for a scene-based widget.
         let storage: LocalStorage = new LocalStorage();
         storage.setOrCreate(Constants.SESSION, session);
     
-        // Obtain the widget ID and the rendering area in the active state.
+        // Obtain the card ID and the active-state rendering area.
         let formId: string = liveFormInfo.formId as string;
         storage.setOrCreate(Constants.FORM_ID, formId);
         let rect: formInfo.Rect = liveFormInfo.rect as formInfo.Rect
@@ -322,7 +324,7 @@ The following table lists the key APIs for a scene-based widget.
 3. Configure LiveFormExtensionAbility for interactive widgets.
 
     Configure LiveFormExtensionAbility in [extensionAbilities](../quick-start/module-configuration-file.md#extensionabilities) of the **module.json5** file.
-    
+
     ```ts
     // entry/src/main/module.json5
         ...
@@ -336,9 +338,9 @@ The following table lists the key APIs for a scene-based widget.
         ]
         ...
     ```
-    
+
     Declare the interactive widget page in the **main_pages.json** file.
-    
+
     ```ts
     // entry/src/main/resources/base/profile/main_pages.json
     {
@@ -354,7 +356,7 @@ The following table lists the key APIs for a scene-based widget.
 1. Implement a widget page in the inactive state.
 
     The development process for inactive widget pages is identical to that for regular widgets, and is implemented in **SystemWidgetCard.ets**. which is automatically generated when a widget is created. For details about the widget creation process, see [Creating an ArkTS Widget](arkts-ui-widget-creation.md). On the inactive widget page, request the widget animation when the widget is tapped.
-    
+
     ```ts
     // entry/src/main/ets/systemwidget/pages/SystemWidgetCard.ets
     @Entry
@@ -412,7 +414,7 @@ The following table lists the key APIs for a scene-based widget.
 2. Configure the **form_config.json** file.
 
     Add the **sceneAnimationParams** configuration item to the **form_config.json** file.
-    
+
     ```ts
     // entry/src/main/resources/base/profile/form_config.json
     {

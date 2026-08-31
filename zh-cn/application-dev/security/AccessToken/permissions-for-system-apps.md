@@ -4532,7 +4532,7 @@
 
 ## ohos.permission.SET_CODE_PROTECT_INFO
 
-允许系统应用设置云侧公钥以及工作秘钥密文，并协商代码保护秘钥信息。
+允许系统应用设置云侧公钥以及工作密钥密文，并协商代码保护密钥信息。
 
 **权限级别**：system_core
 
@@ -7468,7 +7468,7 @@
 
 **是否支持证书授权**：true
 
-**支持设备**：PC/2in1
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
 
 **起始版本**：24
 
@@ -9181,6 +9181,20 @@
 ## ohos.permission.vehicle.FACTORYRESET_WRITE_CONFIG
 
 允许应用将车辆恢复出厂设置。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.ACCESS_SERVICE_NAVIGATION_PRIVATE_DATA
+
+允许系统应用获取使用导航信息服务的敏感数据。
 
 **权限级别**：system_basic
 

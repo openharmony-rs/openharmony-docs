@@ -14,7 +14,7 @@
 > 
 > - 该模块不支持在[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)的文件声明处使用，即不能在UIAbility的生命周期中调用，需要在创建组件实例后使用。
 >
-> - 如需更多测算文本参数，建议使用图形对应测算接口[Paragraph](../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph)接口。
+> - 如需更多测算文本参数，建议使用图形对应[Paragraph](../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph)下的测算接口。
 >
 > - 调用文本计算接口时，不建议同时使用[ApplicationContext.setFontSizeScale](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetfontsizescale13)设置应用字体大小缩放比例。为了确保时序的一致性，建议开发者自行监听字体缩放变化，以保证测算结果的准确性。
 >
@@ -158,7 +158,7 @@ struct Index {
 | 名称           | 类型             | 只读 | 可选 | 说明                      |
 | -------------- | ------------------------- | ---- | ---- | ----------------------------- |
 | textContent | string&nbsp;\|&nbsp;[Resource](arkui-ts/ts-types.md#resource)                                                                                             | 否   | 否 | 设置被计算文本内容。                                  |
-| constraintWidth<sup>10+</sup> | number \| string \| [Resource](arkui-ts/ts-types.md#resource)   | 否 | 是  | 设置被计算文本布局宽度。取值范围：[0, +∞)。<br>**说明：** <br>默认单位为vp，不支持设置百分比字符串。若不设置，则文本宽度为单行布局的最大宽度。若设置则为设置值，同时会影响文本的换行方式和高度计算结果。<br>**模型约束：** 此接口仅可在Stage模型下使用。                             |
+| constraintWidth<sup>10+</sup> | number \| string \| [Resource](arkui-ts/ts-types.md#resource) | 否 | 是 | 设置被计算文本布局宽度。取值范围：[0, +∞)。<br>**说明：** <br>默认单位为vp，不支持设置百分比字符串。此参数仅在measureTextSize接口中生效，若不设置，则文本宽度为单行布局的最大宽度。若设置则为设置值，同时会影响文本的换行方式和高度计算结果。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | fontSize       | number \| string \| [Resource](arkui-ts/ts-types.md#resource)               | 否 | 是   | 设置被计算文本字体大小。取值范围：[0, +∞)，超出取值范围会导致计算结果异常。<br>默认值：16<br>**说明：** <br>不支持设置百分比字符串。<br>fontSize为number类型时，从API version 12开始，使用fp单位，在API version 12之前使用vp单位。    |
 | fontStyle      | number&nbsp;\|&nbsp;[FontStyle](arkui-ts/ts-appendix-enums.md#fontstyle)                        | 否 | 是   | 设置被计算文本字体样式。<br>默认值：FontStyle.Normal<br>number类型取值范围为[0,1]，取值间隔为1，依次对应FontStyle中的枚举值。超出范围时使用默认值FontStyle.Normal。            |
 | fontWeight     | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[FontWeight](arkui-ts/ts-appendix-enums.md#fontweight)  | 否 | 是   | 设置被计算文本的字体粗细，number类型取值[100, 900]，取值间隔为100，默认为400，取值越大，字体越粗。超出范围或不在间隔值上时使用默认值400。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br>默认值：FontWeight.Normal|

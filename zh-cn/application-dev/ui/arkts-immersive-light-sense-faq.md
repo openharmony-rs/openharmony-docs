@@ -12,18 +12,132 @@
 
 ## 为组件设置了沉浸式系统材质但看不到材质效果
 
+### 组件不在沉浸光感生效范围
+
 **问题现象**
 
-为组件调用了[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)接口设置沉浸式系统材质后，组件的视觉效果没有发生变化，仍然呈现纯色背景或无任何材质表现。
+- 为组件调用了[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)接口开启沉浸光感后，组件没有呈现沉浸光感效果。
+- 日志中存在打印：Material inactive: out of scope. Use component in navigation title bar or Tabbar.
 
 **可能原因**
 
-沉浸式系统材质的视觉层级位于组件的[backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、[backgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9)等属性之下。如果同时设置了不透明的背景色或背景模糊样式，这些属性会覆盖在材质层之上，导致材质效果被遮挡不可见。
+沉浸光感在组件上生效存在约束。通过[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)为组件开启的沉浸光感仅在Navigation或NavDestination标题栏，或Tabs的底部TabBar中生效，范围外的普通组件不显示材质效果。Slider、Toggle不受此范围限制；Popup、Tips、Menu、bindSheet、AlertDialog、CustomDialog、ActionSheet、CalendarPickerDialog、DatePickerDialog、TextPickerDialog、Toast、Select下拉菜单、AlphabetIndexer气泡弹窗等弹窗类组件不受此范围限制。
 
 **解决措施**
 
-1. 将组件的背景色设置为透明（`Color.Transparent`）或移除背景色设置。
-2. 移除[backgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9)等背景模糊样式，避免模糊效果覆盖材质层。
+将需要沉浸光感效果的组件置于Navigation/NavDestination标题栏子树，或横向Tabs中barPosition为BarPosition.End的底部TabBar子树中。
+
+若无法满足生效范围要求，可改用[backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)等通用属性替代材质效果。
+
+**示例**
+
+以下示例展示了分别在Navigation标题栏中和Navigation内容区，开启沉浸光感的显示效果。位于Navigation标题栏中的Column开启沉浸光感正常生效；位于Navigation内容区中的Column组件，因其不处于Navigation标题栏或底部TabBar中，不生效沉浸光感效果。
+ 
+```ts
+import { CircleShape, TitleBarType, uiMaterial } from '@kit.ArkUI';
+ 
+@Entry
+@Component
+struct MaterialScopeAdaptExample {
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+ 
+  @Builder
+  NavigationTitle() {
+    Row() {
+      Text('标题栏')
+        .fontColor('#182431')
+        .fontSize(30)
+        .lineHeight(41)
+        .fontWeight(700)
+      Blank()
+      Column() {
+        SymbolGlyph($r('sys.symbol.a_3d_square_fill'))
+      }
+      .width(50)
+      .height(50)
+      .clipShape(new CircleShape({
+        width: 50,
+        height: 50
+      }))
+      .justifyContent(FlexAlign.Center)
+      .backgroundColor(Color.Transparent)
+      // 在Navigation标题栏中开启沉浸光感，处于生效范围内，沉浸光感效果生效
+      .systemMaterial(new uiMaterial.ImmersiveMaterial({
+        style: uiMaterial.ImmersiveStyle.THIN,
+      }))
+    }
+    .alignItems(VerticalAlign.Center)
+    .width('100%')
+    .padding(16)
+  }
+ 
+  build() {
+    Column() {
+      Navigation() {
+        Column() {
+          Row() {
+            Text('内容区')
+ 
+            Blank()
+ 
+            Column() {
+              SymbolGlyph($r('sys.symbol.a_3d_square_fill'))
+            }
+            .width(50)
+            .height(50)
+            .clipShape(new CircleShape({
+              width: 50,
+              height: 50
+            }))
+            .justifyContent(FlexAlign.Center)
+            .backgroundColor(Color.Transparent)
+            // 在Navigation内容中开启沉浸光感，处于生效范围外，不生效沉浸光感效果
+            .systemMaterial(new uiMaterial.ImmersiveMaterial({
+              style: uiMaterial.ImmersiveStyle.THIN,
+            }))
+          }
+          .width('100%')
+          .padding(16)
+          .borderRadius(16)
+        }
+        .width('100%')
+        .height('100%')
+        .padding(16)
+        .backgroundColor('#FFFFFF')
+        .linearGradient({
+          angle: 0,
+          colors: [
+            ['#004AAF', 0.0],
+            ['#2787D9', 0.5],
+            ['#F0FAFF', 1.0]
+          ]
+        })
+        .justifyContent(FlexAlign.Center)
+        .alignItems(HorizontalAlign.Center)
+      }
+      .title(this.NavigationTitle, { barStyle: BarStyle.STACK })
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+}
+ 
+```
+
+![material_example](./figures/material_example.JPG)
+
+### 背景色或背景模糊遮挡材质效果
+
+**问题现象**
+
+为组件调用了[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)接口开启沉浸光感后，组件的视觉效果没有发生变化，仍然呈现纯色背景或无任何材质表现。
+
+**可能原因**
+
+沉浸光感的视觉层级位于组件的[backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、[backgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9)等属性之下。如果同时设置了不透明的背景色或背景模糊样式，这些属性会覆盖在材质层之上，导致材质效果被遮挡不可见。
+
+**解决措施**
+
+- 将组件的背景色设置为透明（`Color.Transparent`）或移除背景色设置。
+- 移除[backgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9)等背景模糊样式，避免模糊效果覆盖材质层。
 
 **代码示例**
 
@@ -39,7 +153,6 @@ Column() {
   style: uiMaterial.ImmersiveStyle.THIN,
 }))
 .backgroundColor(Color.White)
-
 // 推荐写法：将背景色设为透明，确保材质效果可见
 Column() {
   Text('沉浸光感')
@@ -145,7 +258,7 @@ new uiMaterial.ImmersiveMaterial({
 
 **可能原因**
 
-当沉浸式系统材质的[applyShadow](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)参数为true（默认值）时，沉浸式系统材质中的阴影效果固定生效，优先于[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)通用属性，此时自定义的shadow设置不会生效；当该参数为false时，[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)通用属性生效，沉浸式系统材质的阴影效果不生效。
+当沉浸式系统材质的[applyShadow](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)参数为true（默认值）时，材质中的阴影效果固定生效，优先于[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)通用属性，此时自定义的shadow设置不会生效；当该参数为false时，[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)通用属性生效，材质的阴影效果不生效。
 
 **解决措施**
 

@@ -6,7 +6,7 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=505cdcc08414815d97fac7e5929d482f30ac5700 translatedAt=2026-07-25T01:59:38.232Z pushedAt=2026-07-25T02:25:47.435Z -->
+<!-- md-trans-meta sourceCommit=8b7b1366d6f03a3e02a38c8e9340a907bd3600a3 translatedAt=2026-08-24T08:26:56.830Z pushedAt=2026-08-25T06:56:23.836Z -->
 
 ## Overview
 
@@ -51,6 +51,10 @@ Creates an [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
+
+**Deprecated since:** 26.1.0
+
+**Substitute API:** [OH_Drawing_CreateSharedFontCollection()](#oh_drawing_createsharedfontcollection)
 
 **Return value**
 

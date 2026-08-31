@@ -1,12 +1,11 @@
 # rich_editor.h
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Zhang-Dong-hui-->
+<!--Owner: @carnivore233-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=2c5ecf1461774eee81076a9dfbe0054fd9d94ff3 translatedAt=2026-08-10T03:34:22.570Z pushedAt=2026-08-11T01:05:19.178Z -->
+<!-- md-trans-meta sourceCommit=e3097dd8d5c27545917cb656309e39044a9203bd translatedAt=2026-08-27T08:52:04.368Z pushedAt=2026-08-28T06:58:38.015Z -->
 
 ## Overview
 
@@ -40,7 +39,7 @@ Defines structs, enumerations, and APIs related to **RichEditor**. **RichEditor*
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [OH_ArkUI_HapticFeedbackMode](#oh_arkui_hapticfeedbackmode) | OH_ArkUI_HapticFeedbackMode | Enumerates haptic feedback modes.|
+| [OH_ArkUI_HapticFeedbackMode](#oh_arkui_hapticfeedbackmode) | OH_ArkUI_HapticFeedbackMode | Enumerates haptic feedback modes. |
 | [OH_ArkUI_TextEditorSpanType](#oh_arkui_texteditorspantype) | OH_ArkUI_TextEditorSpanType | Enumerates the span types of a custom text selection menu.|
 | [OH_ArkUI_TextEditorResponseType](#oh_arkui_texteditorresponsetype) | OH_ArkUI_TextEditorResponseType | Enumerates the response types of a custom text selection menu.|
 | [OH_ArkUI_TextMenuType](#oh_arkui_textmenutype) | OH_ArkUI_TextMenuType | Enumerates text menu types.|
@@ -76,9 +75,9 @@ Enumerates haptic feedback modes, which are used to control the haptic feedback 
 
 | Value| Description|
 | -- | -- |
-| OH_ARKUI_HAPTIC_FEEDBACK_MODE_DISABLED = 0 | Disables haptic feedback.|
-| OH_ARKUI_HAPTIC_FEEDBACK_MODE_ENABLED = 1 | Enables haptic feedback.|
-| OH_ARKUI_HAPTIC_FEEDBACK_MODE_AUTO = 2 | Follows the haptic feedback of the system.|
+| OH_ARKUI_HAPTIC_FEEDBACK_MODE_DISABLED = 0 | Disables haptic feedback. |
+| OH_ARKUI_HAPTIC_FEEDBACK_MODE_ENABLED = 1 | Enables haptic feedback. |
+| OH_ARKUI_HAPTIC_FEEDBACK_MODE_AUTO = 2 | Follows the haptic feedback of the system. |
 
 ### OH_ArkUI_TextEditorSpanType
 
@@ -88,7 +87,7 @@ enum OH_ArkUI_TextEditorSpanType
 
 **Description**
 
-Enumerates the span types of a custom text selection menu, which are used to identify the span type of the text selection menu in the text editor. Different span types correspond to different content structures, affecting the display and interaction behavior of the custom menu. For example, the **TEXT** type is used when the user selects only text content, the **MIXED** type is used when the selection contains mixed content such as text and images, and the **BUILDER** type is used when a custom menu item layout is required.
+Enumerates the span types of a custom text selection menu, which are used to identify the span type of the text selection menu in the text editor. Different span types correspond to different content structures, affecting the display and interaction behavior of the custom menu. For example, the **OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_TEXT** type is used when the user selects only text content, the **OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_MIXED** type is used when the selection contains mixed content such as text and images, and the **OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_BUILDER** type is used when a custom menu item layout is required.
 
 **Since:** 24
 
@@ -135,6 +134,7 @@ Enumerates text menu types, which are used to distinguish different types of pop
 | -- | -- |
 | OH_ARKUI_TEXT_EDITOR_SELECTION_MENU = 0 | Text selection menu.|
 | OH_ARKUI_TEXT_EDITOR_PREVIEW_MENU = 1 | Preview menu.|
+
 
 ## Function Description
 
@@ -317,3 +317,5 @@ Destroys the text selection menu option object of the text editor.
 | Name| Description|
 | -- | -- |
 | [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)* options | Pointer to the [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md) object.|
+
+

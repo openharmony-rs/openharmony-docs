@@ -23,8 +23,8 @@
         - [\@ReusableV2装饰器：V2组件复用](state-management/arkts-new-reusableV2.md) 
         - [全局复用：集中化的组件回收与复用](state-management/arkts-global-reuse-pool.md)<!--RP7--><!--RP7End-->
       - 自定义组件冻结<!--arkts-component-freeze-->
-        - [自定义组件冻结功能（V1）](state-management/arkts-custom-components-freeze.md)
-        - [自定义组件冻结功能（V2）](state-management/arkts-custom-components-freezeV2.md)<!--RP8--><!--RP8End-->
+        - [自定义组件冻结（V1）](state-management/arkts-custom-components-freeze.md)
+        - [自定义组件冻结（V2）](state-management/arkts-custom-components-freezeV2.md)<!--RP8--><!--RP8End-->
     - 组件扩展<!--arkts-extend-components-->
       - [组件扩展概述](state-management/arkts-extend-components-overview.md)
       - [\@Builder装饰器：自定义构建函数](state-management/arkts-builder.md)
@@ -62,8 +62,8 @@
     - 状态管理（V2）<!--arkts-state-management-v2-->
       - 管理组件拥有的状态<!--arkts-v2-manage-component-state-->
         - [\@Local装饰器：组件内部状态](state-management/arkts-new-local.md)
-        - [\@Param：组件外部输入](state-management/arkts-new-param.md)
-        - [\@Once：初始化同步一次](state-management/arkts-new-once.md)
+        - [\@Param装饰器：组件外部输入](state-management/arkts-new-param.md)
+        - [\@Once装饰器：初始化同步一次](state-management/arkts-new-once.md)
         - [\@Event装饰器：规范组件输出](state-management/arkts-new-event.md)
         - [\@Provider装饰器和\@Consumer装饰器：跨组件层级双向同步](state-management/arkts-new-provider-and-consumer.md)
       - 管理数据对象的状态<!--arkts-v2-manage-data-object-state-->
@@ -195,11 +195,14 @@
      - [设置浮层（OverlayManager）](arkts-create-overlaymanager.md)<!--RP9--><!--RP9End-->
   - 沉浸光感<!--arkts-immersive-light-sense-->
     - [沉浸光感简介](arkts-immersive-light-sense-overview.md)
-    - [沉浸光感开发指导](arkts-immersive-light-sense-development.md)
+    - 沉浸光感开发指导<!--arkts-immersive-light-sense-development-->
       - [开启沉浸光感](arkts-immersive-light-sense-enable.md)
-      - [定制沉浸式系统材质效果](arkts-immersive-light-sense-common-capability.md)
+      - [组件适配沉浸光感](arkts-immersive-light-sense-component-adaptation.md)
+      - [沉浸式系统材质视效](arkts-immersive-light-sense-common-capability.md)
     - [沉浸光感功耗优化](arkts-immersive-light-sense-constraints.md)
     - [沉浸光感兼容性适配](arkts-immersive-light-sense-compatibility.md)
+    - [沉浸光感常见问题](arkts-immersive-light-sense-faq.md)
+    - [沉浸光感典型场景](arkts-immersive-light-sample.md)
   - 几何图形绘制<!--arkts-draw-graphics-->
     - [几何图形绘制概述](arkts-shape-overview.md)
     - [绘制几何图形 (Shape)](arkts-geometric-shape-drawing.md)
@@ -421,7 +424,6 @@
     - [动态属性设置常见问题](arkts-attribute-modifier-faq.md)
     - [命令式节点常见问题](arkts-arkui-frameNode-faq.md)
     - [UI并行化常见问题](multi-thread-ui-build-faq.md)<!--RP6--><!--RP6End-->
-    - [沉浸光感常见问题](arkts-immersive-light-sense-faq.md)
     
 - [窗口管理](../windowmanager/Readme-CN.md)<!--window-manager-->
 - [屏幕管理](../displaymanager/Readme-CN.md)<!--display-manager-->

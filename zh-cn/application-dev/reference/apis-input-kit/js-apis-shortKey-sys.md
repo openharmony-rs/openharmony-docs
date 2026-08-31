@@ -19,7 +19,7 @@
 ##  导入模块
 
 ```js
-import { shortKey } from '@kit.InputKit';
+import { shortKey, FingerprintEvent } from '@kit.InputKit';
 ```
 
 ##  shortKey.setKeyDownDuration

@@ -5,6 +5,7 @@
 <!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=627d1390f6c7c70d53a7521026113714483cc0e8 translatedAt=2026-08-26T04:33:20.177Z pushedAt=2026-08-28T06:47:31.286Z -->
 
 Because external storage devices are pluggable, OpenHarmony provides functions for listening for the device insertion/removal events and mounting/unmounting an external storage device.
 
@@ -21,13 +22,12 @@ External storage devices are managed by the StorageManager and StorageDaemon ser
   - If the check fails, the volume state changes to **UNMOUNTED**.
 
 - For a volume in the **MOUNTED** state:
-  - If the user chooses **Eject device**, the volume state changes to **EJECTING** and COMMON_EVENT_VOLUME_EJECT is broadcast. After StorageDaemon unmounts the volume, the volume state changes to **UNMOUNTED** and COMMON_EVENT_VOLUME_UNMOUNTED is broadcast.
-    <br>For a volume in the **UNMOUNTED** state, removing the device will delete the volume information and broadcast COMMON_EVENT_VOLUME_REMOVED.
+  - If the user chooses to eject, the volume device state changes to **EJECTING**, and the COMMON_EVENT_VOLUME_EJECT broadcast is sent. After the StorageDaemon process successfully unmounts the volume device, the volume state changes to **UNMOUNTED**, and the COMMON_EVENT_VOLUME_UNMOUNTED broadcast is sent.<br>When the volume device is in the unmounted state, removing the volume device will delete the related volume information and send the COMMON_EVENT_VOLUME_REMOVED broadcast.
   - If the user removes the device, the volume state changes to **EJECTING** and then to **UNMOUNTED**, and the broadcasts of the corresponding states are sent. After the device is removed, the volume information is deleted and the COMMON_EVENT_VOLUME_BAD_REMOVAL broadcast is sent.
 
 ## Available APIs
 
-For details about APIs related to external storage device management, see [Volume Management](../reference/apis-core-file-kit/js-apis-file-volumemanager-sys.md).
+For details about APIs related to external storage device management, see [@ohos.file.volumeManager (Volume Management)](../reference/apis-core-file-kit/js-apis-file-volumemanager-sys.md).
 
 The following table describes the broadcast related parameters.
 
@@ -83,7 +83,7 @@ You can subscribe to broadcast events to observe the insertion and removal of ex
 
    ```ts
    let subscriber: commonEventManager.CommonEventSubscriber|undefined;
-   // Note that the subscriber value is obtained from await commonEventManager.createSubscriber (subscribeInfo) in step 2.
+   // Note: The subscriber parameter is obtained from await commonEventManager.createSubscriber(subscribeInfo) in step 2 (subscribing to broadcast events).
    if (subscriber !== undefined) {
     commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
       if (data.event === 'usual.event.data.VOLUME_MOUNTED' && data.parameters !== undefined) {

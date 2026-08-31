@@ -1514,7 +1514,7 @@ testNapi.testNapiWrapEnhance();
 
 ### 使用示例
 
-**napi_create_strong_reference、napi_delete_strong_reference、napi_get_value_strong_reference**
+**napi_create_strong_reference、napi_delete_strong_reference、napi_get_strong_reference_value**
 
 [使用扩展的Node-API接口创建、销毁和使用强引用对象](use-napi-about-strong-reference.md)
 

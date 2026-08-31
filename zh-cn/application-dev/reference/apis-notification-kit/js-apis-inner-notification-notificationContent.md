@@ -93,7 +93,7 @@ NotificationContent中定义通知的内容结构，提供多种通知类型的�
 >
 > - 用户点击成组展示的通知，查看各个通知详情时，该通知的展示效果变化为展开态。
 >
-> - 实际显示效果依赖于设备能力和[通知中心](../../notification/notification-glossary.md#notification-center通知中心)UI样式。
+> - 实际显示效果依赖于设备能力和[通知中心](../../notification/notification-glossary.md#notification-center通知中心)UI样式<!--RP1--><!--RP1End-->。
 
 **系统能力**：SystemCapability.Notification.Notification
 
