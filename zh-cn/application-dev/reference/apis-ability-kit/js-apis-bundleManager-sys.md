@@ -144,14 +144,14 @@ import { bundleManager } from '@kit.AbilityKit';
 | 名称 | 值 | 说明 |
 | --------------- | --- | --- |
 | UNSPECIFIED | 0 | 未指定设备模式分发策略。 |
-| MAIN_ONLY | 1 | 该应用程序仅在主模式下可用。 |
-| SUB_ONLY | 2 | 该应用程序仅在副模式下可用。 |
+| MAIN_ONLY | 1 | 应用程序仅在主模式下可用。 |
+| SUB_ONLY | 2 | 应用程序仅在副模式下可用。 |
 | UNIVERSAL_IDENTICAL_PACKAGE | 3 | 应用程序在两种模式下都可用，具有相同的包体。 |
 | UNIVERSAL_DIFFERENT_PACKAGE | 4 | 应用程序在两种模式下都可用，具有不同的包体。 |
-| PARTIAL_COMPATIBLE_IDENTICAL_PACKAGE | 5 | 该应用程序在不同模式之间以相同包体方式部分兼容。 |
-| PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE | 6 | 应用程序在不同模式之间以不同包体部分兼容。 |
-| FULL_COMPATIBLE_IDENTICAL_PACKAGE | 7 | 应用程序在不同模式之间以相同包体完全兼容。 |
-| FULL_COMPATIBLE_DIFFERENT_PACKAGE | 8 | 应用程序在不同模式之间以不同的包体方式完全兼容。 |
+| PARTIAL_COMPATIBLE_IDENTICAL_PACKAGE | 5 | 应用程序在不同模式之间部分兼容，具有相同的包体。 |
+| PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE | 6 | 应用程序在不同模式之间部分兼容，具有不同的包体。 |
+| FULL_COMPATIBLE_IDENTICAL_PACKAGE | 7 | 应用程序在不同模式之间完全兼容，具有相同的包体。 |
+| FULL_COMPATIBLE_DIFFERENT_PACKAGE | 8 | 应用程序在不同模式之间完全兼容，具有不同的包体。 |
 
 ## bundleManager.getApplicationInfo
 
@@ -6495,7 +6495,7 @@ filterBundleListByDeviceModeDistributionPolicies(policies: Array\<DeviceModeDist
 | 错误码ID | 错误信息                            |
 | -------- | --------------------------------------|
 | 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission denied. Non-system APP calling system API. |
 | 17700097 | The device does not support the dual mode. |
 | 17700098 | The input parameter is invalid. It is either outside the range of valid enum values or does not include the following required enum values: [DeviceModeDistributionPolicy.UNIVERSAL_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.FULL_COMPATIBLE_DIFFERENT_PACKAGE]. |
 | 17700099 | The device is installing or uninstalling an application, or a previous API call is still being processed. Please try again. |
