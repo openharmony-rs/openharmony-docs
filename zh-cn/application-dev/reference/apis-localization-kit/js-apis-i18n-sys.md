@@ -1320,20 +1320,16 @@ static getTimeZoneCityItemArray(): Array&lt;TimeZoneCityItem&gt;
 
 **系统能力**：SystemCapability.Global.I18n
 
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称            | 类型             |  只读   |  可选   |  说明                                   |
 | --------------- | --------------- | ------  | ------  | --------------------------------------- |
-| zoneId          | string          |   否    |   否    | 时区ID，例如Asia/Shanghai。              |
-| cityId          | string          |   否    |   否    | 城市ID，例如Shanghai。                   |
-| cityDisplayName | string          |   否    |   否    | 城市ID在系统区域下显示的名称。           |
-| offset          | ArkTS-Dyn:number<br> ArkTS-Sta:int          |   否    |   否    | 时区ID的偏移量，单位为毫秒（ms）。       |
-| zoneDisplayName | string          |   否    |   否    | 时区ID在系统区域下显示的名称。           |
+| zoneId          | string          |   否    |   否    | 时区ID，例如Asia/Shanghai。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：23              |
+| cityId          | string          |   否    |   否    | 城市ID，例如Shanghai。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：23                   |
+| cityDisplayName | string          |   否    |   否    | 城市ID在系统区域下显示的名称。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：23           |
+| offset          | ArkTS-Dyn:number<br> ArkTS-Sta:int          |   否    |   否    | 时区ID的偏移量，单位为毫秒（ms）。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：23       |
+| zoneDisplayName | string          |   否    |   否    | 时区ID在系统区域下显示的名称。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：23           |
 | latitude        | ArkTS-Dyn:number<br> ArkTS-Sta:double          |   否    |   否    | 城市纬度坐标，单位为度（°）。<br>**ArkTS-Dyn起始版本**：26.1.0<br>**ArkTS-Sta起始版本**：26.1.0<br>**模型约束**：此接口仅可在Stage模型下使用。        |
 | longitude       | ArkTS-Dyn:number<br> ArkTS-Sta:double          |   否    |   否    | 城市经度坐标，单位为度（°）。<br>**ArkTS-Dyn起始版本**：26.1.0<br>**ArkTS-Sta起始版本**：26.1.0<br>**模型约束**：此接口仅可在Stage模型下使用。        |
-| rawOffset       | ArkTS-Dyn:number<br> ArkTS-Sta:int          |   否    |   是    | 时区ID的固定偏移量，单位为毫秒（ms）。   |
+| rawOffset       | ArkTS-Dyn:number<br> ArkTS-Sta:int          |   否    |   是    | 时区ID的固定偏移量，单位为毫秒（ms）。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：23   |
 
 
 ## SuggestionType<sup>10+</sup>
