@@ -12,7 +12,7 @@
   - [write](arkts-connectivity-connectedtag-write-f.md)
   - [writeNdefTag](arkts-connectivity-connectedtag-writendeftag-f.md)
   - [NfcRfType](arkts-connectivity-connectedtag-nfcrftype-e.md)
-- [@ohos.nearlink.advertising](arkts-nearlink-advertising.md)
+- [@ohos.nearlink.advertising](arkts-nearlink-advertising-depr.md)
   - [offAdvertisingStateChange](arkts-connectivity-advertising-offadvertisingstatechange-f.md)
   - [onAdvertisingStateChange](arkts-connectivity-advertising-onadvertisingstatechange-f.md)
   - [startAdvertising](arkts-connectivity-advertising-startadvertising-f.md)
@@ -25,20 +25,20 @@
   - [ServiceData](arkts-connectivity-advertising-servicedata-i.md)
   - [AdvertisingState](arkts-connectivity-advertising-advertisingstate-e.md)
   - [TxPowerMode](arkts-connectivity-advertising-txpowermode-e.md)
-- [@ohos.nearlink.cdsm](arkts-nearlink-cdsm.md)
+- [@ohos.nearlink.cdsm](arkts-nearlink-cdsm-depr.md)
   - [createCdsmClient](arkts-connectivity-cdsm-createcdsmclient-f.md)
   - [CdsmClient](arkts-connectivity-cdsm-cdsmclient-i.md)
   - [CdsmInfo](arkts-connectivity-cdsm-cdsminfo-i.md)
   - [CdsmMemberInfo](arkts-connectivity-cdsm-cdsmmemberinfo-i.md)
   - [CdsmConnectionState](arkts-connectivity-cdsm-cdsmconnectionstate-e.md)
-- [@ohos.nearlink.constant](arkts-nearlink-constant.md)
+- [@ohos.nearlink.constant](arkts-nearlink-constant-depr.md)
   - [AcbState](arkts-connectivity-nearlinkconstant-acbstate-e.md)
   <!--Del-->
   - [ConnectionInterval(系统接口)](arkts-connectivity-nearlinkconstant-connectioninterval-e-sys.md)<!--DelEnd-->
   - [ConnectionState](arkts-connectivity-nearlinkconstant-connectionstate-e.md)
   - [DeviceClass](arkts-connectivity-nearlinkconstant-deviceclass-e.md)
   - [PairingState](arkts-connectivity-nearlinkconstant-pairingstate-e.md)
-- [@ohos.nearlink.dataTransfer](arkts-nearlink-datatransfer.md)
+- [@ohos.nearlink.dataTransfer](arkts-nearlink-datatransfer-depr.md)
   - [connect](arkts-connectivity-datatransfer-connect-f.md)
   - [createPort](arkts-connectivity-datatransfer-createport-f.md)
   - [destroyPort](arkts-connectivity-datatransfer-destroyport-f.md)
@@ -55,7 +55,7 @@
   - [DataParams](arkts-connectivity-datatransfer-dataparams-i.md)
   - [ConnectionState](arkts-connectivity-datatransfer-connectionstate-t.md)
   - [TransferMode](arkts-connectivity-datatransfer-transfermode-e.md)
-- [@ohos.nearlink.manager](arkts-nearlink-manager.md)
+- [@ohos.nearlink.manager](arkts-nearlink-manager-depr.md)
   <!--Del-->
   - [disable(系统接口)](arkts-connectivity-manager-disable-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -75,7 +75,7 @@
   <!--Del-->
   - [ConnectionMode(系统接口)](arkts-connectivity-manager-connectionmode-e-sys.md)<!--DelEnd-->
   - [NearlinkState](arkts-connectivity-manager-nearlinkstate-e.md)
-- [@ohos.nearlink.remoteDevice](arkts-nearlink-remotedevice.md)
+- [@ohos.nearlink.remoteDevice](arkts-nearlink-remotedevice-depr.md)
   - [createRemoteDevice](arkts-connectivity-remotedevice-createremotedevice-f.md)
   - [offAcbStateChange](arkts-connectivity-remotedevice-offacbstatechange-f.md)
   - [offConnectionStateChange](arkts-connectivity-remotedevice-offconnectionstatechange-f.md)
@@ -106,7 +106,7 @@
   - [ConnectionReason](arkts-connectivity-remotedevice-connectionreason-e.md)
   - [PairingReason](arkts-connectivity-remotedevice-pairingreason-e.md)
   - [PairingType](arkts-connectivity-remotedevice-pairingtype-e.md)
-- [@ohos.nearlink.scan](arkts-nearlink-scan.md)
+- [@ohos.nearlink.scan](arkts-nearlink-scan-depr.md)
   - [offDeviceFound](arkts-connectivity-scan-offdevicefound-f.md)
   - [onDeviceFound](arkts-connectivity-scan-ondevicefound-f.md)
   - [startScan](arkts-connectivity-scan-startscan-f.md)
@@ -117,7 +117,7 @@
   - [ScanMode](arkts-connectivity-scan-scanmode-e.md)
   <!--Del-->
   - [ScanMode(系统接口)](arkts-connectivity-scan-scanmode-e-sys.md)<!--DelEnd-->
-- [@ohos.nearlink.ssap](arkts-nearlink-ssap.md)
+- [@ohos.nearlink.ssap](arkts-nearlink-ssap-depr.md)
   - [createClient](arkts-connectivity-ssap-createclient-f.md)
   - [createServer](arkts-connectivity-ssap-createserver-f.md)
   - [Client](arkts-connectivity-ssap-client-i.md)

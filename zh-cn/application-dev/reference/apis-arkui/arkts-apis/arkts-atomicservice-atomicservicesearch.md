@@ -31,5 +31,5 @@ import { AtomicServiceSearch, InputFilterParams, SearchButtonParams, MenuAlignPa
 | --- | --- |
 | [OnContentScrollCallback(This section describes the interfaces used by AtomicServiceSearch)](arkts-arkui-oncontentscrollcallback-t.md) | 文本内容滚动时，触发该回调。 |
 | [OnPasteCallback(This section describes the interfaces used by AtomicServiceSearch)](arkts-arkui-onpastecallback-t.md) | 进行粘贴操作时，触发该回调。 |
-| [OnSelectCallback(This section describes the interfaces used by AtomicServiceSearch)](arkts-arkui-onselectcallback-t.md) | 下拉菜单选中某一项的回调。 |
+| [OnSelectCallback(This section describes the interfaces used by AtomicServiceSearch)](arkts-arkui-arc-onselectcallback-t.md) | 下拉菜单选中某一项的回调。 |
 | [OnTextSelectionChangeCallback(This section describes the interfaces used by AtomicServiceSearch)](arkts-arkui-ontextselectionchangecallback-t.md) | 文本选择的位置发生变化或编辑状态下光标位置发生变化时，触发该回调。 |

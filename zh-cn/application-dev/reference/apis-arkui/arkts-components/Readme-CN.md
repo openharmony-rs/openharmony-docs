@@ -1050,7 +1050,7 @@
   - [ArrowPosition](arkts-arkui-arrowposition-e.md)
   - [AvoidanceMode](arkts-arkui-avoidancemode-e.md)
   - [MenuAlignType](arkts-arkui-menualigntype-e.md)
-- [Shape](arkts-arkui-shape.md)
+- [Shape](arkts-arkui-shape-comp.md)
   - [Shape属性/事件](arkts-arkui-shape-attribute.md)
   - [ViewportRect](arkts-arkui-viewportrect-i.md)
 - [SideBarContainer](arkts-arkui-sidebarcontainer.md)
