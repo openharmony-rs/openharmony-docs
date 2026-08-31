@@ -6,7 +6,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e3759c69d65e24a59d611c9befe1266734e11881 translatedAt=2026-07-27T11:06:24.154Z pushedAt=2026-07-28T06:53:26.456Z -->
+<!-- md-trans-meta sourceCommit=bb8be30ac20777cbedde0933e1c8687834bf89bb translatedAt=2026-08-28T01:33:31.604Z pushedAt=2026-08-28T09:09:14.987Z -->
 
 The **DatePickerComponent** is used to select dates (year, month, and day) and times (hour, minute, and second).
 
@@ -294,7 +294,7 @@ struct DatePickerExample {
 
 ```
 
-![date](figures/DatePickerComponent1.gif)
+<!--Del--> <!--DelEnd-->
 
 ### Example 2: Time Picker
 
@@ -378,7 +378,7 @@ struct DateTimePickerExample {
 }
 ```
 
-![datetime](figures/DatePickerComponent3.gif)
+<!--Del--> <!--DelEnd-->
 
 ### Example 4: Disabling Loop Mode
 
@@ -414,5 +414,4 @@ struct NoLoopPickerExample {
 }
 ```
 
-![loop](figures/DatePickerComponent4.gif)
-<!--no_check-->
+<!--Del--> <!--DelEnd-->

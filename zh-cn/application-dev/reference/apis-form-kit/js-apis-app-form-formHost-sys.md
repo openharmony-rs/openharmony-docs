@@ -19,7 +19,7 @@ formHost模块提供了卡片使用方相关接口的能力，包括对使用方
 import { formHost } from '@kit.FormKit';
 ```
 
-## deleteForm
+## formHost.deleteForm
 
 deleteForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -71,7 +71,7 @@ try {
 }
 ```
 
-## deleteForm
+## formHost.deleteForm
 
 deleteForm(formId: string): Promise&lt;void&gt;
 
@@ -126,7 +126,7 @@ try {
 }
 ```
 
-## releaseForm
+## formHost.releaseForm
 
 releaseForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -176,7 +176,7 @@ try {
 }
 ```
 
-## releaseForm
+## formHost.releaseForm
 
 releaseForm(formId: string, isReleaseCache: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -227,7 +227,7 @@ try {
 }
 ```
 
-## releaseForm
+## formHost.releaseForm
 
 releaseForm(formId: string, isReleaseCache?: boolean): Promise&lt;void&gt;
 
@@ -283,7 +283,7 @@ try {
 }
 ```
 
-## requestForm
+## formHost.requestForm
 
 requestForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -333,7 +333,7 @@ try {
 }
 ```
 
-## requestForm
+## formHost.requestForm
 
 requestForm(formId: string): Promise&lt;void&gt;
 
@@ -388,7 +388,7 @@ try {
 }
 ```
 
-## requestFormWithParams<sup>12+</sup>
+## formHost.requestFormWithParams<sup>12+</sup>
 
 requestFormWithParams(formId: string, wantParams?: Record<string, Object>): Promise&lt;void&gt;
 
@@ -447,7 +447,7 @@ try {
 }
 ```
 
-## castToNormalForm
+## formHost.castToNormalForm
 
 castToNormalForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -497,7 +497,7 @@ try {
 }
 ```
 
-## castToNormalForm
+## formHost.castToNormalForm
 
 castToNormalForm(formId: string): Promise&lt;void&gt;
 
@@ -552,7 +552,7 @@ try {
 }
 ```
 
-## notifyVisibleForms
+## formHost.notifyVisibleForms
 
 notifyVisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -600,7 +600,7 @@ try {
 }
 ```
 
-## notifyVisibleForms
+## formHost.notifyVisibleForms
 
 notifyVisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -653,7 +653,7 @@ try {
 }
 ```
 
-## notifyInvisibleForms
+## formHost.notifyInvisibleForms
 
 notifyInvisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -701,7 +701,7 @@ try {
 }
 ```
 
-## notifyInvisibleForms
+## formHost.notifyInvisibleForms
 
 notifyInvisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -754,7 +754,7 @@ try {
 }
 ```
 
-## enableFormsUpdate
+## formHost.enableFormsUpdate
 
 enableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -803,7 +803,7 @@ try {
 }
 ```
 
-## enableFormsUpdate
+## formHost.enableFormsUpdate
 
 enableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -857,7 +857,7 @@ try {
 }
 ```
 
-## disableFormsUpdate
+## formHost.disableFormsUpdate
 
 disableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -907,7 +907,7 @@ try {
 }
 ```
 
-## disableFormsUpdate
+## formHost.disableFormsUpdate
 
 disableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -962,7 +962,7 @@ try {
 }
 ```
 
-## isSystemReady
+## formHost.isSystemReady
 
 isSystemReady(callback: AsyncCallback&lt;void&gt;): void
 
@@ -1002,7 +1002,7 @@ try {
 }
 ```
 
-## isSystemReady
+## formHost.isSystemReady
 
 isSystemReady(): Promise&lt;void&gt;
 
@@ -1041,7 +1041,7 @@ try {
 }
 ```
 
-## getAllFormsInfo
+## formHost.getAllFormsInfo
 
 getAllFormsInfo(callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
@@ -1088,7 +1088,7 @@ try {
 }
 ```
 
-## getAllFormsInfo
+## formHost.getAllFormsInfo
 
 getAllFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
@@ -1132,7 +1132,7 @@ try {
 }
 ```
 
-## getFormsInfo
+## formHost.getFormsInfo
 
 getFormsInfo(bundleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
@@ -1181,7 +1181,7 @@ try {
 }
 ```
 
-## getFormsInfo
+## formHost.getFormsInfo
 
 getFormsInfo(bundleName: string, moduleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
@@ -1231,7 +1231,7 @@ try {
 }
 ```
 
-## getFormsInfo
+## formHost.getFormsInfo
 
 getFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
@@ -1284,7 +1284,7 @@ try {
 }
 ```
 
-## getFormsInfo<sup>12+</sup>
+## formHost.getFormsInfo<sup>12+</sup>
 
 getFormsInfo(filter: formInfo.FormInfoFilter): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
@@ -1341,7 +1341,7 @@ try {
 }
 ```
 
-## deleteInvalidForms
+## formHost.deleteInvalidForms
 
 deleteInvalidForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;number&gt;): void
 
@@ -1390,7 +1390,7 @@ try {
 }
 ```
 
-## deleteInvalidForms
+## formHost.deleteInvalidForms
 
 deleteInvalidForms(formIds: Array&lt;string&gt;): Promise&lt;number&gt;
 
@@ -1442,7 +1442,7 @@ try {
 }
 ```
 
-## acquireFormState
+## formHost.acquireFormState
 
 acquireFormState(want: Want, callback: AsyncCallback&lt;formInfo.FormStateInfo&gt;): void
 
@@ -1503,7 +1503,7 @@ try {
 }
 ```
 
-## acquireFormState
+## formHost.acquireFormState
 
 acquireFormState(want: Want): Promise&lt;formInfo.FormStateInfo&gt;
 
@@ -1567,7 +1567,7 @@ try {
 }
 ```
 
-## on('formUninstall')
+## formHost.on('formUninstall')
 
 on(type: 'formUninstall', callback: Callback&lt;string&gt;): void
 
@@ -1605,7 +1605,7 @@ formHost.on('formUninstall', (formId: string) => {
 });
 ```
 
-## off('formUninstall')
+## formHost.off('formUninstall')
 
 off(type: 'formUninstall', callback?: Callback&lt;string&gt;): void
 
@@ -1643,7 +1643,7 @@ formHost.off('formUninstall', (formId: string) => {
 });
 ```
 
-## notifyFormsVisible
+## formHost.notifyFormsVisible
 
 notifyFormsVisible(formIds: Array&lt;string&gt;, isVisible: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -1693,7 +1693,7 @@ try {
 }
 ```
 
-## notifyFormsVisible
+## formHost.notifyFormsVisible
 
 notifyFormsVisible(formIds: Array&lt;string&gt;, isVisible: boolean): Promise&lt;void&gt;
 
@@ -1748,7 +1748,7 @@ try {
 }
 ```
 
-## notifyFormsEnableUpdate
+## formHost.notifyFormsEnableUpdate
 
 notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -1798,7 +1798,7 @@ try {
 }
 ```
 
-## notifyFormsEnableUpdate
+## formHost.notifyFormsEnableUpdate
 
 notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean): Promise&lt;void&gt;
 
@@ -1852,7 +1852,7 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
-## shareForm
+## formHost.shareForm
 
 shareForm(formId: string, deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -1903,7 +1903,7 @@ try {
 }
 ```
 
-## shareForm
+## formHost.shareForm
 
 shareForm(formId: string, deviceId: string): Promise&lt;void&gt;
 
@@ -1959,7 +1959,7 @@ try {
 }
 ```
 
-## notifyFormsPrivacyProtected
+## formHost.notifyFormsPrivacyProtected
 
 notifyFormsPrivacyProtected(formIds: Array\<string>, isProtected: boolean, callback: AsyncCallback\<void>): void
 
@@ -2008,7 +2008,7 @@ try {
 }
 ```
 
-## notifyFormsPrivacyProtected
+## formHost.notifyFormsPrivacyProtected
 
 notifyFormsPrivacyProtected(formIds: Array\<string\>, isProtected: boolean): Promise\<void\>
 
@@ -2060,7 +2060,7 @@ try {
 }
 ```
 
-## acquireFormData<sup>10+</sup>
+## formHost.acquireFormData<sup>10+</sup>
 
 acquireFormData(formId: string, callback: AsyncCallback\<Record\<string, Object>>): void
 
@@ -2112,7 +2112,7 @@ try {
 }
 ```
 
-## acquireFormData<sup>10+</sup>
+## formHost.acquireFormData<sup>10+</sup>
 
 acquireFormData(formId: string): Promise\<Record\<string, Object>>
 
@@ -2168,7 +2168,7 @@ try {
 }
 ```
 
-## setRouterProxy<sup>11+</sup>
+## formHost.setRouterProxy<sup>11+</sup>
 
 setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -2263,7 +2263,7 @@ struct CardExample {
 }
 ```
 
-## setRouterProxy<sup>11+</sup>
+## formHost.setRouterProxy<sup>11+</sup>
 
 setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;): Promise&lt;void&gt;
 
@@ -2364,7 +2364,7 @@ struct CardExample {
 }
 ```
 
-## clearRouterProxy<sup>11+</sup>
+## formHost.clearRouterProxy<sup>11+</sup>
 
 clearRouterProxy(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -2413,7 +2413,7 @@ try {
 }
 ```
 
-## clearRouterProxy<sup>11+</sup>
+## formHost.clearRouterProxy<sup>11+</sup>
 
 clearRouterProxy(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -2466,7 +2466,7 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
-## setFormsRecyclable<sup>11+</sup>
+## formHost.setFormsRecyclable<sup>11+</sup>
 
 setFormsRecyclable(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -2516,7 +2516,7 @@ try {
 }
 ```
 
-## setFormsRecyclable<sup>11+</sup>
+## formHost.setFormsRecyclable<sup>11+</sup>
 
 setFormsRecyclable(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -2570,7 +2570,7 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
-## recoverForms<sup>11+</sup>
+## formHost.recoverForms<sup>11+</sup>
 
 recoverForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -2619,7 +2619,7 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
-## recoverForms<sup>11+</sup>
+## formHost.recoverForms<sup>11+</sup>
 
 recoverForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -2674,7 +2674,7 @@ try {
   console.error(`catch error, code: ${e.code}, message: ${e.message}`);
 }
 ```
-## recycleForms<sup>12+</sup>
+## formHost.recycleForms<sup>12+</sup>
 
 recycleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -2730,7 +2730,7 @@ try {
 }
 ```
 
-## updateFormLocation<sup>12+</sup>
+## formHost.updateFormLocation<sup>12+</sup>
 updateFormLocation(formId: string, location: formInfo.FormLocation): void;
 
 更新卡片位置。
@@ -2777,7 +2777,7 @@ try {
 }
 ```
 
-## setPublishFormResult<sup>12+</sup>
+## formHost.setPublishFormResult<sup>12+</sup>
 
 setPublishFormResult(formId: string, result: formInfo.PublishFormResult): void;
 
@@ -2825,7 +2825,7 @@ try {
 }
 ```
 
-## updateFormLockedState<sup>22+</sup>
+## formHost.updateFormLockedState<sup>22+</sup>
 
 updateFormLockedState(formId: string, isLocked: boolean): Promise&lt;void&gt;
 
@@ -3182,7 +3182,7 @@ try {
 }
 ```
 
-## getAllTemplateFormsInfo<sup>23+</sup>
+## formHost.getAllTemplateFormsInfo<sup>23+</sup>
 
 getAllTemplateFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
@@ -3230,7 +3230,7 @@ try {
 ```
 
 
-## getTemplateFormsInfo<sup>23+</sup>
+## formHost.getTemplateFormsInfo<sup>23+</sup>
 
 getTemplateFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
@@ -3725,6 +3725,125 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   formHost.offDeleteFormsCallback();
   console.info(`offDeleteFormsCallback success`);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formHost.registerFormHostService
+
+registerFormHostService(service: formInfo.FormHostServiceInfo): Promise&lt;string&gt;
+
+注册卡片使用方服务信息。注册成功后，可用于跨设备卡片发布。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | -------|
+| service | [formInfo.FormHostServiceInfo](js-apis-app-form-formInfo-sys.md#formhostserviceinfo) | 是 | 待注册到卡片管理服务的卡片使用方服务信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;string&gt; | Promise对象，返回注册成功的卡片使用方服务的服务Id。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 16500050 | IPC connection error. |
+| 16501000 | An internal functional error occurred. |
+
+**示例：**
+
+```ts
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let service: formInfo.FormHostServiceInfo = {
+  serviceName: 'serviceName',
+  serviceDisplayName: 'serviceDisplayName',
+  displayId: '0'
+};
+try {
+  formHost.registerFormHostService(service).then((data: string) => {
+    console.info(`formHost registerFormHostService success, service ID is: ${data}`);
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formHost.unregisterFormHostService
+
+unregisterFormHostService(serviceId: string): Promise&lt;void&gt;
+
+注销卡片使用方服务信息。注销后，对应的卡片使用方服务不可用于跨设备卡片发布。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | -------|
+| serviceId | string | 是 | 待注销的卡片使用方服务的服务Id。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 16500050 | IPC connection error. |
+| 16501019 | A form service not owned by you cannot be unregistered. |
+| 16501000 | An internal functional error occurred. |
+
+**示例：**
+
+```ts
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let serviceId: string = 'serviceId'; // 待注销的卡片使用方服务的服务Id，请替换为实际的服务Id。
+try {
+  formHost.unregisterFormHostService(serviceId).then(() => {
+    console.info('formHost unregisterFormHostService success');
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
+  });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
