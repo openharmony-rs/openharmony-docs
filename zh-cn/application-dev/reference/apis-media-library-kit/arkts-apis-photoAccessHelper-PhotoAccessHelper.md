@@ -1647,7 +1647,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 getPhotoPickerComponentDefaultAlbumName(): Promise&lt;string&gt;
 
-应用使用PhotoPickerComponent组件选择照片时，支持调用API获取组件默认显示相册的相册名字符串。根据当前系统语言设置，返回对应语言的相册名。使用Promise异步回调。
+应用使用图片选择器组件选择照片时，支持调用API获取组件默认显示相册的相册名字符串。根据当前系统语言设置，返回对应语言的相册名。使用Promise异步回调。
 
 **原子化服务API**： 从API version 20开始，该接口支持在原子化服务中使用。
 

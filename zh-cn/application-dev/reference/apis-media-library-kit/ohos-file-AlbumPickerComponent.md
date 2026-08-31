@@ -6,11 +6,11 @@
 <!--Tester: @wangbeibei-->
 <!--Adviser: @w_Machine_cc-->
 
-AlbumPickerComponent适用于需要在应用内展示相册列表让用户选择相册浏览图片或视频的场景，例如社交媒体应用中让用户选择相册进行照片上传。通过此组件，应用无需申请相册访问权限即可访问公共目录中的相册列表，做到了简化权限申请流程、降低开发成本，从而提升了用户体验。
+AlbumPickerComponent是相册选择组件，相册选择组件适用于需要在应用内展示相册列表让用户选择相册浏览图片或视频的场景，例如社交媒体应用中让用户选择相册进行照片上传。通过此组件，应用无需申请相册访问权限即可访问公共目录中的相册列表，做到了简化权限申请流程、降低开发成本，从而提升了用户体验。
 
-AlbumPickerComponent需配合PhotoPickerComponent一起使用。当用户选择相册后，系统触发onAlbumClick回调并将AlbumInfo（包含相册URI和名称）传递给应用。应用需通过PickerController将URI传递给PhotoPickerComponent以刷新显示对应相册的图片和视频。详细协作机制请参见文档[@ohos.file.PhotoPickerComponent (PhotoPicker组件)](ohos-file-PhotoPickerComponent.md)。
+相册选择组件需配合图片选择器组件一起使用。当用户选择相册后，系统触发onAlbumClick回调并将AlbumInfo（包含相册URI和名称）传递给应用。应用需通过PickerController将URI传递给图片选择器组件以刷新显示对应相册的图片和视频。详细协作机制请参见文档[@ohos.file.PhotoPickerComponent (PhotoPicker组件)](ohos-file-PhotoPickerComponent.md)。
 
-AlbumPickerComponent不支持嵌套，且不应在该组件上覆盖设置overlay属性或更高层级组件，以免导致手势事件失效。
+相册选择组件不支持嵌套，且不应在该组件上覆盖设置overlay属性或更高层级组件，以免导致手势事件失效。
 
 > **说明：**
 >
@@ -31,7 +31,7 @@ import { AlbumPickerComponent, AlbumPickerOptions, AlbumInfo, PickerColorMode, p
 
 AlbumPickerComponent({albumPickerOptions?: AlbumPickerOptions, onAlbumClick?: (albumInfo: AlbumInfo) => boolean, onEmptyAreaClick?: EmptyAreaClickCallback, albumPickerController?: AlbumPickerController })
 
-应用可以在布局中嵌入AlbumPickerComponent组件，通过此组件，应用无需申请权限，即可访问公共目录中的相册列表。
+应用可以在布局中嵌入相册选择组件组件，通过此组件，应用无需申请权限，即可访问公共目录中的相册列表。
 
 **装饰器类型：** @Component
 
@@ -42,7 +42,7 @@ AlbumPickerComponent({albumPickerOptions?: AlbumPickerOptions, onAlbumClick?: (a
 | 名称                 | 类型                                                  | 必填  | 说明                              |
 |--------------------|-----------------------------------------------------|-----|---------------------------------|
 | albumPickerOptions | [AlbumPickerOptions](#albumpickeroptions)           | 否   | AlbumPicker的配置信息。若不传入此参数，则使用默认配置。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。              |
-| onAlbumClick       | (albumInfo: [AlbumInfo](#albuminfo)) => boolean     | 否   | 用户选择某个相册时产生的回调事件，将相册信息（AlbumInfo，包含URI和albumName）作为参数传递给应用，应用可通过此回调通知PhotoPickerComponent刷新。若不传入此参数，则不监听相册选择事件。返回值无实际作用，可返回true或false。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。    |
+| onAlbumClick       | (albumInfo: [AlbumInfo](#albuminfo)) => boolean     | 否   | 用户选择某个相册时产生的回调事件，将相册信息（AlbumInfo，包含URI和albumName）作为参数传递给应用，应用可通过此回调通知图片选择器组件刷新。若不传入此参数，则不监听相册选择事件。返回值无实际作用，可返回true或false。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。    |
 | onEmptyAreaClick<sup>13+</sup>   | [EmptyAreaClickCallback](#emptyareaclickcallback13) | 否   | 点击相册组件空白区域时产生的回调事件，并将该次点击通知给应用。若不传入此参数，则不监听空白区域点击事件。<br> **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | albumPickerController<sup>20+</sup>   | [AlbumPickerController](#albumpickercontroller20) | 否   | 应用可通过AlbumPickerController向组件发送数据。若不传入此参数，则无法通过控制器控制组件。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
@@ -93,7 +93,7 @@ type EmptyAreaClickCallback = () => void
 
 setFontSize(fontSize: number | string): void
 
-应用可通过该接口设置相册列表的字体大小。需要在创建AlbumPickerComponent时传入albumPickerController参数。
+应用可通过该接口设置相册列表的字体大小。需要在创建相册选择组件时传入albumPickerController参数。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
