@@ -1,5 +1,12 @@
 # 接入安全隐私框架
 
+<!--Kit: Common-->
+<!--Subsystem: Security-->
+<!--Owner: @feibuzhide-->
+<!--Designer: @gcw_AzEdve8G; @liuchibin-->
+<!--Tester: @weixin_48873925-->
+<!--Adviser: @zengyawen-->
+
 安全隐私接入框架允许两种接入方式：ExtensionAbility和UIAbility方式接入。
 
 应用接入后，将按照bundleName的字母顺序在隐私中心展示。
