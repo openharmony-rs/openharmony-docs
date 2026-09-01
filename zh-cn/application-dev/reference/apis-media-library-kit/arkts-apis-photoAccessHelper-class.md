@@ -19,7 +19,7 @@
 
 | 名称                    | 类型                | 只读 | 可选 | 说明                          |
 | ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
-| recommendationType | [RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)   | 否   | 是 | 如果需要根据枚举值推荐相应的图片，则配置此参数；若不配置，则不会根据枚举值进行推荐。<br>**注意：**<br> 如果同时配置了[textContextInfo](arkts-apis-photoAccessHelper-i.md#textcontextinfo12) ，则此参数不生效。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| recommendationType | [RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)   | 否   | 是 | 如果需要根据枚举值推荐相应的图片，则配置此参数；若不配置，则不会根据枚举值进行推荐。<br>**注意：**<br> 如果同时配置了[textContextInfo](arkts-apis-photoAccessHelper-i.md#textcontextinfo12)，则此参数不生效。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | textContextInfo<sup>12+</sup> | [TextContextInfo](arkts-apis-photoAccessHelper-i.md#textcontextinfo12)   | 否   | 是 | 如果需要根据文本信息推荐相应的图片，则配置此参数。如果同时配置了textContextInfo和[RecommendationOptions](#recommendationoptions11).recommendationType，仅textContextInfo生效。如果不配置textContextInfo，则不会根据文本信息进行推荐。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## BaseSelectOptions
