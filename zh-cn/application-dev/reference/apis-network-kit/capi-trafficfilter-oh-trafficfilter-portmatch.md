@@ -28,7 +28,7 @@ typedef struct OH_TrafficFilter_PortMatch {...} OH_TrafficFilter_PortMatch
 | 名称 | 描述 |
 | -- | -- |
 | [OH_TrafficFilter_PortMatchType](capi-net-trafficfilter-type-h.md#oh_trafficfilter_portmatchtype) type | 匹配类型。|
-| bool invert | 是否反转匹配结果。 |
+| bool invert | 是否反转匹配结果。true表示反转匹配结果，false表示不反转匹配结果。 |
 | union value| 匹配规则。 （uint16_t single、[OH_TrafficFilter_PortRange](capi-trafficfilter-oh-trafficfilter-portrange.md) range、[OH_TrafficFilter_PortMulti](capi-trafficfilter-oh-trafficfilter-portmulti.md) multi）|
 
 
