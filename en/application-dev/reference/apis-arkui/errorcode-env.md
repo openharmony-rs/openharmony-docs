@@ -28,3 +28,5 @@ A key not supported by **@Env** is used. **@Env** accepts only the predefined [S
 **Solution**
 
 Ensure that the type of the parameter supported by **@Env** is [SystemProperties](./arkui-ts/ts-env-system-property.md#systemproperties) \| [SystemEnvKey\<T\>](./arkui-ts/ts-env-system-property.md#systemenvkeyt). For details, see [@Env: Environment Variable](../../ui/arkts-env-system-property.md).
+
+<!--no_check-->

@@ -623,3 +623,5 @@ struct SnapshotExample {
 ```
 
 ![en-us_image_getWithRange](figures/image-getWithRange.gif)
+
+<!--no_check-->

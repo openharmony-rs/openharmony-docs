@@ -5,7 +5,7 @@
 <!--Designer: @sunbees-->
 <!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e81239e2f38865e1e733a04fa60a7878bf413bbf translatedAt=2026-08-29T09:31:11.056Z pushedAt=2026-08-31T09:02:53.308Z -->
+<!-- md-trans-meta sourceCommit=e81239e2f38865e1e733a04fa60a7878bf413bbf translatedAt=2026-08-29T09:31:11.056Z pushedAt=2026-09-01T03:55:48.759Z -->
 
 **FrameNode** represents an entity node in the component tree, supporting capabilities such as node tree operations, custom drawing and layout, position query, and animation. It can be used by a [NodeController](./js-apis-arkui-nodeController.md) to mount a [BuilderNode](./js-apis-arkui-builderNode.md) (that holds the FrameNode) to a [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) or mount a [RenderNode](./js-apis-arkui-renderNode.md) to another FrameNode. It is suitable for scenarios where component node trees need to be dynamically created and managed through code, enabling flexible UI composition and custom rendering requirements that cannot be directly met by declarative components.
 
@@ -7344,7 +7344,7 @@ Represents a FrameNode of the **Badge** type.
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;BadgeInterface, BadgeAttribute&gt; | FrameNode of the **Badge** type.<br> **BadgeInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Badge** component.<br> **BadgeAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Badge** component.<br> **BadgeInterface** indicates the [API](./arkui-ts/ts-container-badge.md#apis) of the **Badge** component, and **BadgeAttribute** indicates the [attribute](./arkui-ts/ts-container-badge.md#attributes) of the **Badge** component.|
+| TypedFrameNode&lt;BadgeInterface, BadgeAttribute&gt; | FrameNode of the **Badge** type.<br> **BadgeInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Badge** component.<br> **BadgeAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Badge** component.<br> **BadgeInterface** indicates the [API](./arkui-ts/ts-container-badge.md#interfaces) of the **Badge** component, and **BadgeAttribute** indicates the [attribute](./arkui-ts/ts-container-badge.md#attributes) of the **Badge** component.|
 
 ### createNode('Badge')<sup>14+</sup>
 

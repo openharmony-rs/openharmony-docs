@@ -5,7 +5,7 @@
 <!--Designer: @s10021109-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=524a652d7ab7fb267fa8caaf4db75f5acc5401b5 translatedAt=2026-08-29T09:25:52.303Z pushedAt=2026-08-31T07:12:38.167Z -->
+<!-- md-trans-meta sourceCommit=524a652d7ab7fb267fa8caaf4db75f5acc5401b5 translatedAt=2026-08-29T09:25:52.303Z pushedAt=2026-09-01T03:58:21.500Z -->
 
 > **NOTE**
 >
@@ -119,7 +119,7 @@ When **connect** of **AppStorageV2** or **connect** and **globalConnect** of **P
 
 **Solution**
 
-Ensure that the **type** parameter passed by **connect** or **globalConnect** is of the **TypeConstructorWithArgs<T>** type. For details about the supported types, see the [PersistenceV2 usage constraints](../../ui/state-management/arkts-new-persistencev2.md#constraints) and [AppStorageV2 usage constraints](../../ui/state-management/arkts-new-appstoragev2.md#constraints).
+Ensure that the **type** parameter passed by **connect** or **globalConnect** is of the **TypeConstructorWithArgs\<T\>** type. For details about the supported types, see the [PersistenceV2 usage constraints](../../ui/state-management/arkts-new-persistencev2.md#constraints) and [AppStorageV2 usage constraints](../../ui/state-management/arkts-new-appstoragev2.md#constraints).
 
 ## 140104 AppStorageV2 and PersistenceV2 Use the Invalid Default Value to Create a Function
 
@@ -195,7 +195,7 @@ This error code is reported when [connect](./js-apis-stateManagement.md#connect)
 - Ensure that the type of the **type** parameter is consistent with the return type of **defaultCreator**.
 - Ensure that the data type remains unchanged before and after data persistence. If the type needs to be changed, you need to manually uninstall the application, clear the persistent data of the current application, and install the application again.
 
-## 140108 @Type Decorator Is Missing in PersistenceV2 
+## 140108 @Type Decorator Is Missing in PersistenceV2
 
 **Error Message**
 
