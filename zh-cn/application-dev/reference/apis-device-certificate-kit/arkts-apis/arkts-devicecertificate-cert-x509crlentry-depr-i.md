@@ -1,4 +1,4 @@
-# X509CrlEntry
+# X509CrlEntry(depr)
 
 证书吊销条目。
 

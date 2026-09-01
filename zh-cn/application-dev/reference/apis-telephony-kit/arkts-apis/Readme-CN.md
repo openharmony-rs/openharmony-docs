@@ -406,8 +406,6 @@
   - [getNetworkState](arkts-telephony-radio-getnetworkstate-f.md)
   <!--Del-->
   - [getNrOptionMode(系统接口)](arkts-telephony-radio-getnroptionmode-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [getNROptionMode(系统接口)](arkts-telephony-radio-getnroptionmode-f-sys.md)<!--DelEnd-->
   - [getOperatorName](arkts-telephony-radio-getoperatorname-f.md)
   - [getOperatorNameSync](arkts-telephony-radio-getoperatornamesync-f.md)
   <!--Del-->
