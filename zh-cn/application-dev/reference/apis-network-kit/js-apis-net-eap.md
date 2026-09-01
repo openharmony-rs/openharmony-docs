@@ -275,7 +275,7 @@ try{
 
 EAP信息。
 
-​**系统能力​：**SystemCapability.Communication.NetManager.Eap
+​**系统能力​**：SystemCapability.Communication.NetManager.Eap
 
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
@@ -287,7 +287,7 @@ EAP信息。
 
 表示EAP认证处理结果的枚举。
 
-​**系统能力​：**SystemCapability.Communication.NetManager.Eap
+​**系统能力​**：SystemCapability.Communication.NetManager.Eap
 
 | **名称** | **值** | **说明** |
 | -------- | -------- | -------- |
@@ -299,7 +299,7 @@ EAP信息。
 
 表示EAP认证方式的枚举。
 
-**系统能力：** SystemCapability.Communication.NetManager.Eap
+**系统能力**：SystemCapability.Communication.NetManager.Eap
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -317,7 +317,7 @@ EAP信息。
 
 表示第二阶段认证方式的枚举。
 
-**系统能力：** SystemCapability.Communication.NetManager.Eap
+**系统能力**：SystemCapability.Communication.NetManager.Eap
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
