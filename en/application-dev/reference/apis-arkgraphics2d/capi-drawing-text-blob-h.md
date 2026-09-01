@@ -6,7 +6,7 @@
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=8ed03ffe90bb2522b0df0e44ac852e6dea1907ea translatedAt=2026-08-24T08:59:49.809Z pushedAt=2026-08-31T09:24:01.180Z -->
+<!-- md-trans-meta sourceCommit=8ed03ffe90bb2522b0df0e44ac852e6dea1907ea translatedAt=2026-08-24T08:59:49.809Z pushedAt=2026-09-01T06:29:25.354Z -->
 
 ## Overview
 
@@ -193,7 +193,7 @@ Obtains the unique identifier of a text blob. The identifier is a non-zero value
 
 | Name| Description|
 | -- | -- |
-| const [OH_Drawing_TextBlob](capi-drawing-oh-drawing-text-blob-h.md)* textBlob | Pointer to the text object OH_Drawing_TextBlob. |
+| const [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md)* textBlob | Pointer to the text object OH_Drawing_TextBlob. |
 
 **Returns**
 
