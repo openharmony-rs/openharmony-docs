@@ -3686,7 +3686,7 @@ addDnsSdLocalP2pService(instanceName: string, serviceType: string, txtRecord: Ma
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | instanceName | string | 是 | 实例名，用于对端服务发现，最大长度为63。 |
-| serviceType | string | 是 | 服务类型，用于对端服务发现，最大长度为63.不能留空，可自定义，推荐格式为"_&lt;ServiceName&gt;._&lt;Protocol&gt;"，例如"_http._tcp"。 |
+| serviceType | string | 是 | 服务类型，用于对端服务发现，最大长度为63。不能留空，可自定义，推荐格式为"_&lt;ServiceName&gt;._&lt;Protocol&gt;"，例如"_http._tcp"。 |
 | txtRecord | Map&lt;string, string&gt; | 是 | 包含键值对的TXT记录。键不能包含等号（=），单条记录长度（key.length + value.length）必须小于 255。建议所有键和值序列化后的总大小保持在 200–400 字节以内，超出单个mDNS数据包的限制会导致数据无法正确广播或被对端忽略。键值对数量无限制。定义格式见：http://files.dns-sd.org/draft-cheshire-dnsext-dns-sd.txt |
 | serviceName | string | 是 | 用于标识本地服务对象的服务名称，最大长度为63。 |
 
