@@ -44803,5 +44803,25 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/DataProtectionKit/sensitive-file-identification.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":25,
+						"name":"dlp_include_identifySensitiveContent",
+						"start_line":23
+					},
+					{
+						"end_line":706,
+						"name":"dlp_scanSensitiveInfo",
+						"start_line":682
+					}
+				]
+			}
+		]
 	}
 ]
