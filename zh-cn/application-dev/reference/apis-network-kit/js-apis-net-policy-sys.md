@@ -11,8 +11,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从 API version 10 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 本模块为系统接口。
+> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.net.policy (网络策略管理)](js-apis-net-policy.md)。
 
 ## 导入模块
 
@@ -24,7 +24,7 @@ import { policy } from '@kit.NetworkKit';
 
 setBackgroundAllowed(isAllowed: boolean, callback: AsyncCallback\<void>): void
 
-设置是否允许后台应用访问网络，使用 callback 异步回调。
+设置是否允许后台应用访问网络。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -37,11 +37,13 @@ setBackgroundAllowed(isAllowed: boolean, callback: AsyncCallback\<void>): void
 | 参数名    | 类型                 | 必填 | 说明                                                         |
 | --------- | -------------------- | ---- | ------------------------------------------------------------ |
 | isAllowed | boolean              | 是   | 是否允许应用后台使用数据。true：允许应用后台使用数据；false：不允许应用后台使用数据。                                     |
-| callback  | AsyncCallback\<void> | 是   | 回调函数，成功时，err 为 undefined，失败返回错误码错误信息。 |
+| callback  | AsyncCallback\<void\> | 是   | 回调函数。成功时，err为undefined，失败时返回错误码和错误信息。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -64,7 +66,7 @@ policy.setBackgroundAllowed(true, (error: BusinessError) => {
 
 setBackgroundAllowed(isAllowed: boolean): Promise\<void>
 
-设置是否允许后台应用访问网络，使用 Promise 异步回调。
+设置是否允许后台应用访问网络。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -82,11 +84,13 @@ setBackgroundAllowed(isAllowed: boolean): Promise\<void>
 
 | 类型           | 说明                                                              |
 | -------------- | ----------------------------------------------------------------- |
-| Promise\<void> | 以 Promise 形式返回设定结果。成功返回空，失败返回错误码错误信息。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -111,7 +115,7 @@ policy.setBackgroundAllowed(true).then(() => {
 
 isBackgroundAllowed(callback: AsyncCallback\<boolean>): void
 
-获取当前应用是否允许后台访问网络，使用 callback 异步回调。
+获取当前应用是否允许后台访问网络。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -123,11 +127,13 @@ isBackgroundAllowed(callback: AsyncCallback\<boolean>): void
 
 | 参数名   | 类型                    | 必填 | 说明                                                             |
 | -------- | ----------------------- | ---- | ---------------------------------------------------------------- |
-| callback | AsyncCallback\<boolean> | 是   | 回调函数。返回 true 代表后台策略为允许，失败返回错误码错误信息。 |
+| callback | AsyncCallback\<boolean> | 是   | 回调函数。返回true表示后台策略为允许，失败时返回错误码和错误信息。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -151,7 +157,7 @@ policy.isBackgroundAllowed((error: BusinessError, data: boolean) => {
 
 isBackgroundAllowed(): Promise\<boolean>
 
-获取当前应用是否允许后台访问网络，使用 Promise 异步回调。
+获取当前应用是否允许后台访问网络。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -163,11 +169,13 @@ isBackgroundAllowed(): Promise\<boolean>
 
 | 类型              | 说明                                                                                 |
 | ----------------- | ------------------------------------------------------------------------------------ |
-| Promise\<boolean> |  Promise 对象。 返回 true 表示后台策略为允许，返回false表示后台策略不允许。 |
+| Promise\<boolean> | Promise对象。返回true表示后台策略为允许；返回false表示后台策略不允许。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -195,7 +203,7 @@ policy
 
 setPolicyByUid(uid: number, policy: NetUidPolicy, callback: AsyncCallback\<void>): void
 
-设置对应 uid 应用是否能够访问计量网络的策略，使用 callback 异步回调。
+设置对应uid应用是否能够访问计量网络的策略。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -207,13 +215,15 @@ setPolicyByUid(uid: number, policy: NetUidPolicy, callback: AsyncCallback\<void>
 
 | 参数名   | 类型                            | 必填 | 说明                                           |
 | -------- | ------------------------------- | ---- | ---------------------------------------------- |
-| uid      | number                          | 是   | app 唯一标识符，取值范围为int32_t范围内的正整数。                                |
-| policy   | [NetUidPolicy](#netuidpolicy) | 是   | 应用对应的策略。                                 |
-| callback | AsyncCallback\<void>            | 是   | 回调函数，成功返回空，失败返回错误码错误信息。 |
+| uid      | number                          | 是   | app唯一标识符，取值范围为int32_t范围内的正整数。                                |
+| policy | [NetUidPolicy](#netuidpolicy) | 是   | 应用对应的策略。                                 |
+| callback | AsyncCallback\<void>            | 是   | 回调函数。成功返回空，失败时返回错误码和错误信息。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -236,7 +246,7 @@ policy.setPolicyByUid(11111, policy.NetUidPolicy.NET_POLICY_NONE, (error: Busine
 
 setPolicyByUid(uid: number, policy: NetUidPolicy): Promise\<void>
 
-设置对应 uid 应用是否能够访问计量网络的策略，使用 Promise 异步回调。
+设置对应uid应用是否能够访问计量网络的策略。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -248,18 +258,20 @@ setPolicyByUid(uid: number, policy: NetUidPolicy): Promise\<void>
 
 | 参数名 | 类型                            | 必填 | 说明           |
 | ------ | ------------------------------- | ---- | -------------- |
-| uid    | number                          | 是   | app 唯一标识符，取值范围为int32_t范围内的正整数。 |
-| policy | [NetUidPolicy](#netuidpolicy) | 是   | 应用对应的策略。 |
+| uid    | number                          | 是   | app唯一标识符，取值范围为int32_t范围内的正整数。 |
+| policy| [NetUidPolicy](#netuidpolicy) | 是   | 应用对应的策略。 |
 
 **返回值：**
 
 | 类型           | 说明                                                              |
 | -------------- | ----------------------------------------------------------------- |
-| Promise\<void> | 以 Promise 形式返回设定结果。成功返回空，失败返回错误码错误信息。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -287,7 +299,7 @@ policy
 
 getPolicyByUid(uid: number, callback: AsyncCallback\<NetUidPolicy>): void
 
-通过应用 uid 获取对应访问网络策略，使用 callback 异步回调。
+通过应用uid获取对应访问网络策略。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -299,12 +311,14 @@ getPolicyByUid(uid: number, callback: AsyncCallback\<NetUidPolicy>): void
 
 | 参数名   | 类型                                            | 必填 | 说明                                                     |
 | -------- | ----------------------------------------------- | ---- | -------------------------------------------------------- |
-| uid      | number                                          | 是   | app 唯一标识符，取值范围为int32_t范围内的正整数。                                           |
-| callback | AsyncCallback\<[NetUidPolicy](#netuidpolicy)> | 是   | 回调函数。成功返回获取策略结果，失败返回错误码错误信息。 |
+| uid      | number                                          | 是   | app唯一标识符，取值范围为int32_t范围内的正整数。                                           |
+| callback | AsyncCallback\<[NetUidPolicy](#netuidpolicy)> | 是   | 回调函数。成功返回获取策略结果，失败时返回错误码和错误信息。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -328,7 +342,7 @@ policy.getPolicyByUid(11111, (error: BusinessError, data: policy.NetUidPolicy) =
 
 getPolicyByUid(uid: number): Promise\<NetUidPolicy>
 
-通过应用 uid 获取对应访问网络策略，使用 Promise 异步回调。
+通过应用uid获取对应访问网络策略。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -340,17 +354,19 @@ getPolicyByUid(uid: number): Promise\<NetUidPolicy>
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| uid    | number | 是   | app 唯一标识符，取值范围为int32_t范围内的正整数。 |
+|uid   | number | 是   | app唯一标识符，取值范围为int32_t范围内的正整数。 |
 
 **返回值：**
 
 | 类型                                      | 说明                                                      |
 | ----------------------------------------- | --------------------------------------------------------- |
-| Promise\<[NetUidPolicy](#netuidpolicy)> | 以 Promise 形式返回获取策略结果。失败返回错误码错误信息。 |
+| Promise\<[NetUidPolicy](#netuidpolicy)> | Promise对象，返回获取策略结果。失败时返回错误码和错误信息。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -378,7 +394,7 @@ policy
 
 getUidsByPolicy(policy: NetUidPolicy, callback: AsyncCallback\<Array\<number>>): void
 
-通过策略获取跟策略匹配的所有 uid，使用 callback 异步回调。
+通过策略获取跟策略匹配的所有uid。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -390,12 +406,14 @@ getUidsByPolicy(policy: NetUidPolicy, callback: AsyncCallback\<Array\<number>>):
 
 | 参数名   | 类型                            | 必填 | 说明                                                        |
 | -------- | ------------------------------- | ---- | ----------------------------------------------------------- |
-| policy   | [NetUidPolicy](#netuidpolicy) | 是   | 应用对应的计量网络下的策略。                                  |
-| callback | AsyncCallback\<Array\<number>>  | 是   | 回调函数。成功返回应用的 uid 数组，失败返回错误码错误信息。 |
+| policy | [NetUidPolicy](#netuidpolicy) | 是   | 应用对应的计量网络下的策略。                                  |
+| callback | AsyncCallback\<Array\<number>>  | 是   | 回调函数。成功返回应用的uid数组，失败时返回错误码和错误信息。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -419,7 +437,7 @@ policy.getUidsByPolicy(11111, (error: BusinessError, data: number[]) => {
 
 getUidsByPolicy(policy: NetUidPolicy): Promise\<Array\<number>>
 
-通过策略获取跟策略匹配的所有 uid，使用 Promise 异步回调。
+通过策略获取跟策略匹配的所有uid。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -431,17 +449,19 @@ getUidsByPolicy(policy: NetUidPolicy): Promise\<Array\<number>>
 
 | 参数名 | 类型                            | 必填 | 说明                       |
 | ------ | ------------------------------- | ---- | -------------------------- |
-| policy | [NetUidPolicy](#netuidpolicy) | 是   | app 对应的计量网络下的策略。 |
+| policy | [NetUidPolicy](#netuidpolicy) | 是   | app对应的计量网络下的策略。 |
 
 **返回值：**
 
 | 类型                     | 说明                                                         |
 | ------------------------ | ------------------------------------------------------------ |
-| Promise\<Array\<number>> | 以 Promise 形式返回应用的 uid 数组，失败返回错误码错误信息。 |
+| Promise\<Array\<number>> | Promise对象，返回应用的uid数组，失败时返回错误码和错误信息。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -469,7 +489,7 @@ policy
 
 getNetQuotaPolicies(callback: AsyncCallback\<Array\<NetQuotaPolicy>>): void
 
-获取计量网络策略，使用 callback 异步回调。
+获取计量网络策略。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -485,7 +505,9 @@ getNetQuotaPolicies(callback: AsyncCallback\<Array\<NetQuotaPolicy>>): void
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -509,7 +531,7 @@ policy.getNetQuotaPolicies((error: BusinessError, data: policy.NetQuotaPolicy[])
 
 getNetQuotaPolicies(): Promise\<Array\<NetQuotaPolicy>>
 
-获取计量网络策略，使用 Promise 异步回调。
+获取计量网络策略。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -521,11 +543,13 @@ getNetQuotaPolicies(): Promise\<Array\<NetQuotaPolicy>>
 
 | 类型                                                  | 说明                          |
 | ----------------------------------------------------- | ----------------------------- |
-| Promise\<Array\<[NetQuotaPolicy](#netquotapolicy)>> | 以 Promise 形式返回设定结果。 |
+| Promise\<Array\<[NetQuotaPolicy](#netquotapolicy)>> | Promise对象，返回设定结果。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -552,7 +576,7 @@ policy
 
 setNetQuotaPolicies(quotaPolicies: Array\<NetQuotaPolicy>, callback: AsyncCallback\<void>): void
 
-设置计量网络策略，使用 callback 异步回调。
+设置计量网络策略。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -565,11 +589,13 @@ setNetQuotaPolicies(quotaPolicies: Array\<NetQuotaPolicy>, callback: AsyncCallba
 | 参数名        | 类型                                        | 必填 | 说明                                           |
 | ------------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | quotaPolicies | Array\<[NetQuotaPolicy](#netquotapolicy)> | 是   | 计量网络策略。                                   |
-| callback      | AsyncCallback\<void>                        | 是   | 回调函数。成功返回空，失败返回错误码错误信息。 |
+| callback      | AsyncCallback\<void>                        | 是   | 回调函数。成功返回空，失败时返回错误码和错误信息。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -610,7 +636,7 @@ policy.setNetQuotaPolicies(netQuotaPolicyList, (error: BusinessError) => {
 
 setNetQuotaPolicies(quotaPolicies: Array\<NetQuotaPolicy>): Promise\<void>
 
-设置计量网络策略，使用 Promise 异步回调。
+设置计量网络策略。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -628,11 +654,13 @@ setNetQuotaPolicies(quotaPolicies: Array\<NetQuotaPolicy>): Promise\<void>
 
 | 类型           | 说明                                                              |
 | -------------- | ----------------------------------------------------------------- |
-| Promise\<void> | 以 Promise 形式返回设定结果。成功返回空，失败返回错误码错误信息。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -678,7 +706,7 @@ policy
 
 isUidNetAllowed(uid: number, isMetered: boolean, callback: AsyncCallback\<boolean>): void
 
-判断对应 uid 能否访问计量或非计量网络，使用 callback 异步回调。
+判断对应uid能否访问计量或非计量网络。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -690,13 +718,15 @@ isUidNetAllowed(uid: number, isMetered: boolean, callback: AsyncCallback\<boolea
 
 | 参数名    | 类型                    | 必填 | 说明                                                      |
 | --------- | ----------------------- | ---- | --------------------------------------------------------- |
-| uid       | number                  | 是   | app 唯一标识符，取值范围为int32_t范围内的正整数。                                           |
+|uid      | number                  | 是   | app唯一标识符，取值范围为int32_t范围内的正整数。                                           |
 | isMetered | boolean                 | 是   | 是否为计量网络。true：是计量网络；false：不是计量网络。                                            |
-| callback  | AsyncCallback\<boolean> | 是   | 回调函数。返回 true 表示这个 uid 可以访问对应的计量网络。 |
+| callback  | AsyncCallback\<boolean> | 是   | 回调函数。返回 true 表示这个uid可以访问对应的计量网络。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -720,7 +750,7 @@ policy.isUidNetAllowed(11111, true, (error: BusinessError, data: boolean) => {
 
 isUidNetAllowed(uid: number, isMetered: boolean): Promise\<boolean>
 
-判断对应 uid 能否访问计量或非计量网络，使用 Promise 异步回调。
+判断对应uid能否访问计量或非计量网络。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -732,18 +762,20 @@ isUidNetAllowed(uid: number, isMetered: boolean): Promise\<boolean>
 
 | 参数名    | 类型    | 必填 | 说明           |
 | --------- | ------- | ---- | -------------- |
-| uid       | number  | 是   | app 唯一标识符，取值范围为int32_t范围内的正整数。 |
+|uid      | number  | 是   | app唯一标识符，取值范围为int32_t范围内的正整数。 |
 | isMetered | boolean | 是   | 是否为计量网络。true：是计量网络；false：不是计量网络。 |
 
 **返回值：**
 
 | 类型              | 说明                          |
 | ----------------- | ----------------------------- |
-| Promise\<boolean> | Promise 对象。 返回 true 表示这个uid可以访问计量或非计量网络，返回false表示这个uid不可以访问计量或非计量网络。 |
+| Promise\<boolean> | Promise对象。返回true表示这个uid可以访问计量或非计量网络；返回false表示这个uid不可以访问计量或非计量网络。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -771,7 +803,7 @@ policy
 
 isUidNetAllowed(uid: number, iface: string, callback: AsyncCallback\<boolean>): void
 
-获取对应 uid 能否访问指定的 iface 的网络，使用 callback 异步回调。
+获取对应uid能否访问指定的iface的网络。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -783,13 +815,15 @@ isUidNetAllowed(uid: number, iface: string, callback: AsyncCallback\<boolean>): 
 
 | 参数名   | 类型                    | 必填 | 说明                                                         |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
-| uid      | number                  | 是   | app 唯一标识符，取值范围为int32_t范围内的正整数。                                               |
-| iface    | string                  | 是   | 网络对应的名称。                                              |
-| callback | AsyncCallback\<boolean> | 是   | 回调函数。返回 true 表示这个 uid 可以访问对应 iface 的网络。 |
+|uid     | number                  | 是   | app唯一标识符，取值范围为int32_t范围内的正整数。                                               |
+|iface   | string                  | 是   | 网络对应的名称。                                              |
+| callback | AsyncCallback\<boolean> | 是   | 回调函数。返回 true 表示这个uid可以访问对应iface的网络。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -813,7 +847,7 @@ policy.isUidNetAllowed(11111, 'wlan0', (error: BusinessError, data: boolean) => 
 
 isUidNetAllowed(uid: number, iface: string): Promise\<boolean>
 
-获取对应 uid 能否访问指定的 iface 的网络，使用 Promise 异步回调。
+获取对应uid能否访问指定的iface的网络。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -825,18 +859,20 @@ isUidNetAllowed(uid: number, iface: string): Promise\<boolean>
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| uid    | number | 是   | app 唯一标识符，取值范围为int32_t范围内的正整数。 |
+| uid    | number | 是   | app唯一标识符，取值范围为int32_t范围内的正整数。 |
 | iface  | string | 是   | 网络对应的名称。 |
 
 **返回值：**
 
 | 类型              | 说明                                                    |
 | ----------------- | ------------------------------------------------------- |
-| Promise\<boolean> | Promise 对象。 返回 true 表示对应 uid 能访问指定的 iface 的网络，返回false则表示不能访问。 |
+| Promise\<boolean> | Promise对象。返回true表示对应uid能访问指定的iface的网络；返回false则表示不能访问。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -864,7 +900,7 @@ policy
 
 setDeviceIdleTrustlist(uids: Array\<number>, isAllowed: boolean, callback: AsyncCallback\<void>): void
 
-设置多个 uid 是否在休眠防火墙的白名单，使用 callback 异步回调。
+设置多个uid是否在休眠防火墙的白名单。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -876,13 +912,15 @@ setDeviceIdleTrustlist(uids: Array\<number>, isAllowed: boolean, callback: Async
 
 | 参数名    | 类型                           | 必填 | 说明                                           |
 | --------- | ------------------------------ | ---- | ---------------------------------------------- |
-| uids      | Array\<number>                 | 是   | app 唯一标识符。                                 |
+| uids      | Array\<number\>                 | 是   | app唯一标识符。                                 |
 | isAllowed | boolean                        | 是   | 是否加入白名单。true：加入白名单；false：没有加入白名单。                                 |
-| callback  | AsyncCallback\<void> | 是   | 回调函数。成功返回空，失败返回错误码错误信息。 |
+| callback  | AsyncCallback\<void\> | 是   | 回调函数。成功返回空，失败时返回错误码和错误信息。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -905,7 +943,7 @@ policy.setDeviceIdleTrustlist([11111, 22222], true, (error: BusinessError) => {
 
 setDeviceIdleTrustlist(uids: Array\<number>, isAllowed: boolean): Promise\<void>
 
-设置多个 uid 是否在休眠防火墙的白名单，使用 Promise 异步回调。
+设置多个uid是否在休眠防火墙的白名单。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -917,18 +955,20 @@ setDeviceIdleTrustlist(uids: Array\<number>, isAllowed: boolean): Promise\<void>
 
 | 参数名    | 类型           | 必填 | 说明           |
 | --------- | -------------- | ---- | -------------- |
-| uids      | Array\<number> | 是   | app 唯一标识符。 |
+| uids      | Array\<number> | 是   | app唯一标识符。 |
 | isAllowed | boolean        | 是   | 是否加入白名单。true：加入白名单；false：没有加入白名单。 |
 
 **返回值：**
 
 | 类型           | 说明                                                              |
 | -------------- | ----------------------------------------------------------------- |
-| Promise\<void> | 以 Promise 形式返回设定结果。成功返回空，失败返回错误码错误信息。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -942,9 +982,7 @@ setDeviceIdleTrustlist(uids: Array\<number>, isAllowed: boolean): Promise\<void>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-policy
-  .setDeviceIdleTrustlist([11111, 22222], true)
-  .then(() => {
+policy.setDeviceIdleTrustlist([11111, 22222], true).then(() => {
     console.info('setDeviceIdleTrustlist success');
   })
   .catch((error: BusinessError) => {
@@ -956,7 +994,7 @@ policy
 
 getDeviceIdleTrustlist(callback: AsyncCallback\<Array\<number>>): void
 
-获取休眠模式白名单所包含的 uid，使用 callback 异步回调。
+获取休眠模式白名单所包含的 uid。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -972,7 +1010,9 @@ getDeviceIdleTrustlist(callback: AsyncCallback\<Array\<number>>): void
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -996,7 +1036,7 @@ policy.getDeviceIdleTrustlist((error: BusinessError, data: number[]) => {
 
 getDeviceIdleTrustlist(): Promise\<Array\<number>>
 
-获取休眠模式白名单所包含的 uid，使用 Promise 异步回调。
+获取休眠模式白名单所包含的 uid。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1008,11 +1048,13 @@ getDeviceIdleTrustlist(): Promise\<Array\<number>>
 
 | 类型                     | 说明                          |
 | ------------------------ | ----------------------------- |
-| Promise\<Array\<number>> | 以 Promise 形式返回设定结果。 |
+| Promise\<Array\<number>> | Promise对象，返回设定结果。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1025,21 +1067,18 @@ getDeviceIdleTrustlist(): Promise\<Array\<number>>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-policy
-  .getDeviceIdleTrustlist()
-  .then((data: number[]) => {
-    console.info(JSON.stringify(data));
-  })
-  .catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
-  });
+policy.getDeviceIdleTrustlist().then((data: number[]) => {
+  console.info(JSON.stringify(data));
+}).catch((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
 ```
 
 ## policy.getBackgroundPolicyByUid
 
 getBackgroundPolicyByUid(uid: number, callback: AsyncCallback\<NetBackgroundPolicy>): void
 
-获取指定 uid 是否能访问后台网络，使用 callback 异步回调。
+获取指定uid是否能访问后台网络。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1051,12 +1090,14 @@ getBackgroundPolicyByUid(uid: number, callback: AsyncCallback\<NetBackgroundPoli
 
 | 参数名   | 类型                                                          | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------- | ---- | ------------------------ |
-| uid      | number                                                        | 是   | app 唯一标识符，取值范围为int32_t范围内的正整数。           |
+| uid      | number                                                        | 是   | app唯一标识符，取值范围为int32_t范围内的正整数。           |
 | callback | AsyncCallback\<[NetBackgroundPolicy](#netbackgroundpolicy)> | 是   | 回调函数。返回获取结果。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1080,7 +1121,7 @@ policy.getBackgroundPolicyByUid(11111, (error: BusinessError, data: policy.NetBa
 
 getBackgroundPolicyByUid(uid: number): Promise\<NetBackgroundPolicy>
 
-获取指定 uid 能否访问后台网络，使用 Promise 异步回调。
+获取指定uid能否访问后台网络。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1092,17 +1133,19 @@ getBackgroundPolicyByUid(uid: number): Promise\<NetBackgroundPolicy>
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| uid    | number | 是   | app 唯一标识符，取值范围为int32_t范围内的正整数。 |
+| uid    | number | 是   | app唯一标识符，取值范围为int32_t范围内的正整数。 |
 
 **返回值：**
 
 | 类型                                                    | 说明                          |
 | ------------------------------------------------------- | ----------------------------- |
-| Promise\<[NetBackgroundPolicy](#netbackgroundpolicy)> | 以 Promise 形式返回设定结果。 |
+| Promise\<[NetBackgroundPolicy](#netbackgroundpolicy)> | Promise对象，返回设定结果。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1130,7 +1173,7 @@ policy
 
 resetPolicies(simId: string, callback: AsyncCallback\<void>): void
 
-重置对应 sim 卡 id 的蜂窝网络、后台网络策略、防火墙策略、应用对应的策略，使用 callback 异步回调。
+重置对应SIM卡ID的蜂窝网络、后台网络策略、防火墙策略、应用对应的策略。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1142,12 +1185,14 @@ resetPolicies(simId: string, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明                                           |
 | -------- | -------------------- | ---- | ---------------------------------------------- |
-| simId    | string               | 是   | SIM 卡 ID。                                      |
-| callback | AsyncCallback\<void> | 是   | 回调函数。成功返回空，失败返回错误码错误信息。 |
+| simId    | string               | 是   | SIM卡ID。                                      |
+| callback | AsyncCallback\<void\> | 是   | 回调函数。成功返回空，失败时返回错误码和错误信息。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1170,7 +1215,7 @@ policy.resetPolicies('1', (error: BusinessError) => {
 
 resetPolicies(simId: string): Promise\<void>
 
-重置对应 sim 卡 id 的蜂窝网络、后台网络策略、防火墙策略、应用对应的策略，使用 Promise 异步回调。
+重置对应SIM卡ID的蜂窝网络、后台网络策略、防火墙策略、应用对应的策略。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1182,17 +1227,19 @@ resetPolicies(simId: string): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明      |
 | ------ | ------ | ---- | --------- |
-| simId  | string | 是   | SIM 卡 ID。 |
+| simId  | string | 是   | SIM卡ID。 |
 
 **返回值：**
 
 | 类型           | 说明                                                              |
 | -------------- | ----------------------------------------------------------------- |
-| Promise\<void> | 以 Promise 形式返回设定结果。成功返回空，失败返回错误码错误信息。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1220,7 +1267,7 @@ policy
 
 updateRemindPolicy(netType: NetBearType, simId: string, remindType: RemindType, callback: AsyncCallback\<void>): void
 
-更新提醒策略，使用 callback 异步回调。
+更新提醒策略。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1233,13 +1280,15 @@ updateRemindPolicy(netType: NetBearType, simId: string, remindType: RemindType, 
 | 参数名     | 类型                                                 | 必填 | 说明                                           |
 | ---------- | ---------------------------------------------------- | ---- | ---------------------------------------------- |
 | netType    | [NetBearType](js-apis-net-connection.md#netbeartype) | 是   | 网络类型。                                       |
-| simId      | string                                               | 是   | SIM 卡 ID。                                      |
+| simId      | string                                               | 是   | SIM卡ID。                                      |
 | remindType | [RemindType](#remindtype)                          | 是   | 提醒类型。                                       |
-| callback   | AsyncCallback\<void>                                 | 是   | 回调函数。成功返回空，失败返回错误码错误信息。 |
+| callback   | AsyncCallback\<void>                                 | 是   | 回调函数。成功返回空，失败时返回错误码和错误信息。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1268,7 +1317,7 @@ policy.updateRemindPolicy(
 
 updateRemindPolicy(netType: NetBearType, simId: string, remindType: RemindType): Promise\<void>
 
-更新提醒策略，使用 Promise 异步回调。
+更新提醒策略。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1281,18 +1330,20 @@ updateRemindPolicy(netType: NetBearType, simId: string, remindType: RemindType):
 | 参数名     | 类型                                                 | 必填 | 说明      |
 | ---------- | ---------------------------------------------------- | ---- | --------- |
 | netType    | [NetBearType](js-apis-net-connection.md#netbeartype) | 是   | 网络类型。  |
-| simId      | string                                               | 是   | SIM 卡 ID。 |
+| simId      | string                                               | 是   | SIM卡ID。 |
 | remindType | [RemindType](#remindtype)                          | 是   | 提醒类型。  |
 
 **返回值：**
 
 | 类型           | 说明                                                              |
 | -------------- | ----------------------------------------------------------------- |
-| Promise\<void> | 以 Promise 形式返回设定结果。成功返回空，失败返回错误码错误信息。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1325,7 +1376,7 @@ policy
 
 setPowerSaveTrustlist(uids: Array\<number>, isAllowed: boolean, callback: AsyncCallback\<void>): void
 
-设置指定 uid 应用是否在省电防火墙的白名单，使用 callback 异步回调。
+设置指定uid应用是否在省电防火墙的白名单。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1337,13 +1388,15 @@ setPowerSaveTrustlist(uids: Array\<number>, isAllowed: boolean, callback: AsyncC
 
 | 参数名    | 类型                           | 必填 | 说明                                           |
 | --------- | ------------------------------ | ---- | ---------------------------------------------- |
-| uids      | Array\<number>                 | 是   | app 唯一标识符。                                |
+| uids      | Array\<number\>                 | 是   | app唯一标识符。                                |
 | isAllowed | boolean                        | 是   | 是否加入白名单。true：加入白名单；false：没有加入白名单。                                 |
-| callback  | AsyncCallback\<void> | 是   | 回调函数。成功返回空，失败返回错误码错误信息。 |
+| callback  | AsyncCallback\<void\> | 是   | 回调函数。成功返回空，失败时返回错误码和错误信息。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1366,7 +1419,7 @@ policy.setPowerSaveTrustlist([11111, 22222], true, (error: BusinessError) => {
 
 setPowerSaveTrustlist(uids: Array\<number>, isAllowed: boolean): Promise\<void>
 
-设置指定 uid 应用是否在省电防火墙的白名单，使用 Promise 异步回调。
+设置指定uid应用是否在省电防火墙的白名单。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1378,18 +1431,20 @@ setPowerSaveTrustlist(uids: Array\<number>, isAllowed: boolean): Promise\<void>
 
 | 参数名    | 类型           | 必填 | 说明           |
 | --------- | -------------- | ---- | -------------- |
-| uids      | Array\<number> | 是   | app 唯一标识符。 |
+| uids      | Array\<number> | 是   | app唯一标识符。 |
 | isAllowed | boolean        | 是   | 是否加入白名单。true：加入白名单；false：没有加入白名单。 |
 
 **返回值：**
 
 | 类型           | 说明                                                              |
 | -------------- | ----------------------------------------------------------------- |
-| Promise\<void> | 以 Promise 形式返回设定结果。成功返回空，失败返回错误码错误信息。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1417,7 +1472,7 @@ policy
 
 getPowerSaveTrustlist(callback: AsyncCallback\<Array\<number>>): void
 
-获取省电模式白名单所包含的 uid 数组，使用 callback 异步回调。
+获取省电模式白名单所包含的uid数组。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1433,7 +1488,9 @@ getPowerSaveTrustlist(callback: AsyncCallback\<Array\<number>>): void
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1457,7 +1514,7 @@ policy.getPowerSaveTrustlist((error: BusinessError, data: number[]) => {
 
 getPowerSaveTrustlist(): Promise\<Array\<number>>
 
-获取休眠模式白名单所包含的 uid 数组，使用 Promise 异步回调。
+获取休眠模式白名单所包含的uid数组。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1469,11 +1526,13 @@ getPowerSaveTrustlist(): Promise\<Array\<number>>
 
 | 类型                     | 说明                          |
 | ------------------------ | ----------------------------- |
-| Promise\<Array\<number>> | 以 Promise 形式返回设定结果。 |
+| Promise\<Array\<number>> | Promise对象，返回设定结果。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1500,7 +1559,7 @@ policy
 
 setNetworkAccessPolicy(uid: number, policy: NetworkAccessPolicy, isReconfirmed?: boolean): Promise\<void>
 
-设置指定uid应用能否访问网络的策略，使用Promise异步回调。
+设置指定uid应用能否访问网络的策略。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1512,7 +1571,7 @@ setNetworkAccessPolicy(uid: number, policy: NetworkAccessPolicy, isReconfirmed?:
 
 | 参数名         | 类型                                           | 必填 | 说明                                                                          |
 | ------------- | ---------------------------------------------- | ---- | ---------------------------------------------------------------------------- |
-| uid           | number                                         | 是   | app 唯一标识符，取值范围为int32_t范围内的正整数。                                                                |
+| uid           | number                                         | 是   | app唯一标识符，取值范围为int32_t范围内的正整数。                                                                |
 | policy        | [NetworkAccessPolicy](#networkaccesspolicy12)  | 是   | 网络策略。                                                                      |
 | isReconfirmed | boolean                                        | 否   | 默认false；false 表示需要重确认，应用访问网络会弹框; true 表示不需要重确认，无弹框。 |
 
@@ -1520,11 +1579,13 @@ setNetworkAccessPolicy(uid: number, policy: NetworkAccessPolicy, isReconfirmed?:
 
 | 类型           | 说明                                                          |
 | -------------- | ------------------------------------------------------------ |
-| Promise\<void> | 以 Promise 形式返回设定结果。成功返回空，失败返回错误码错误信息。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1556,7 +1617,7 @@ policy
 
 getNetworkAccessPolicy(uid: number): Promise\<NetworkAccessPolicy>
 
-获取指定 uid 能否访问网络策略，使用 Promise 异步回调。
+获取指定uid能否访问网络策略。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1568,17 +1629,19 @@ getNetworkAccessPolicy(uid: number): Promise\<NetworkAccessPolicy>
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| uid    | number | 是   | app 唯一标识符，取值范围为int32_t范围内的正整数。 |
+| uid    | number | 是   | app唯一标识符，取值范围为int32_t范围内的正整数。 |
 
 **返回值：**
 
 | 类型                                                    | 说明                          |
 | ------------------------------------------------------- | ----------------------------- |
-| Promise\<[NetworkAccessPolicy](#networkaccesspolicy12)> | 以 Promise 形式返回设定结果。 |
+| Promise\<[NetworkAccessPolicy](#networkaccesspolicy12)> | Promise对象，返回设定结果。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1606,7 +1669,7 @@ policy
 
 getNetworkAccessPolicy(): Promise\<UidNetworkAccessPolicy>
 
-获取当前用户下所有应用 app 能否访问网络策略信息，使用 Promise 异步回调。
+获取当前用户下所有应用能否访问网络策略信息。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1618,11 +1681,13 @@ getNetworkAccessPolicy(): Promise\<UidNetworkAccessPolicy>
 
 | 类型                                                          | 说明                        |
 | ------------------------------------------------------------- | --------------------------- |
-| Promise\<[UidNetworkAccessPolicy](#uidnetworkaccesspolicy12)> | 以 Promise 形式返回设定结果。 |
+| Promise\<[UidNetworkAccessPolicy](#uidnetworkaccesspolicy12)> | Promise对象，返回设定结果。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1667,9 +1732,9 @@ policy
 
 ### on('netUidPolicyChange')
 
-on(type: "netUidPolicyChange", callback: Callback\<NetUidPolicyInfo\>): void
+on(type: 'netUidPolicyChange', callback: Callback\<NetUidPolicyInfo\>): void
 
-注册 policy 发生改变时的回调，使用 callback 异步回调。
+注册网络策略发生改变时的回调。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1682,11 +1747,13 @@ on(type: "netUidPolicyChange", callback: Callback\<NetUidPolicyInfo\>): void
 | 参数名   | 类型                                                                | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------------- | ---- | -------------------------------------- |
 | type     | string                                                              | 是   | 订阅的事件类型。'netUidPolicyChange'：注册policy发生改变事件。                  |
-| callback | Callback\<[NetUidPolicyInfo](#netuidpolicyinfo11)> | 是   | 回调函数。注册 policy 发生改变时调用。 |
+| callback | Callback\<[NetUidPolicyInfo](#netuidpolicyinfo11)> | 是   | 回调函数。注册网络策略发生改变时调用。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1716,9 +1783,9 @@ try {
 
 ### off('netUidPolicyChange')
 
-off(type: "netUidPolicyChange", callback?: Callback\<NetUidPolicyInfo\>): void
+off(type: 'netUidPolicyChange', callback?: Callback\<NetUidPolicyInfo\>): void
 
-注销 policy 发生改变时的回调，使用 callback 异步回调。
+注销网络策略发生改变时的回调。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1731,11 +1798,13 @@ off(type: "netUidPolicyChange", callback?: Callback\<NetUidPolicyInfo\>): void
 | 参数名   | 类型                                                                | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------------- | ---- | -------------------------------------- |
 | type     | string                                                              | 是   | 注销的事件类型。'netUidPolicyChange'：注销policy发生改变事件。               |
-| callback | Callback\<[NetUidPolicyInfo](#netuidpolicyinfo11)> | 否   | 回调函数。注销 policy 发生改变时调用。 |
+| callback | Callback\<[NetUidPolicyInfo](#netuidpolicyinfo11)> | 否   | 回调函数。注销网络策略发生改变时调用。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1773,9 +1842,9 @@ try {
 
 ### on('netUidRuleChange')
 
-on(type: "netUidRuleChange", callback: Callback\<NetUidRuleInfo\>): void
+on(type: 'netUidRuleChange', callback: Callback\<NetUidRuleInfo\>): void
 
-注册 rule 发生改变时的回调，使用 callback 异步回调。
+注册rule发生改变时的回调。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1788,11 +1857,13 @@ on(type: "netUidRuleChange", callback: Callback\<NetUidRuleInfo\>): void
 | 参数名   | 类型                                                          | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------- | ---- | -------------------------------------- |
 | type     | string                                                        | 是   | 订阅的事件类型。'netUidRuleChange'：注册rule发生改变事件。                    |
-| callback | Callback\<[NetUidRuleInfo](#netuidruleinfo11)> | 是   | 回调函数。注册 rule 发生改变时的调用。 |
+| callback | Callback\<[NetUidRuleInfo](#netuidruleinfo11)> | 是   | 回调函数。注册rule发生改变时的调用。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1822,9 +1893,9 @@ try {
 
 ### off('netUidRuleChange')
 
-off(type: "netUidRuleChange", callback?: Callback\<NetUidRuleInfo\>): void
+off(type: 'netUidRuleChange', callback?: Callback\<NetUidRuleInfo\>): void
 
-注销 rule 发生改变时的回调，使用 callback 异步回调。
+注销rule发生改变时的回调。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1837,11 +1908,13 @@ off(type: "netUidRuleChange", callback?: Callback\<NetUidRuleInfo\>): void
 | 参数名   | 类型                                                          | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------- | ---- | -------------------------------------- |
 | type     | string                                                        | 是   | 注销的事件类型。'netUidRuleChange'：注销rule发生改变事件。                    |
-| callback | Callback\<[NetUidRuleInfo](#netuidruleinfo11)> | 否   | 回调函数。注销 rule 发生改变时的调用。 |
+| callback | Callback\<[NetUidRuleInfo](#netuidruleinfo11)> | 否   | 回调函数。注销rule发生改变时的调用。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1879,9 +1952,9 @@ try {
 
 ### on('netMeteredIfacesChange')
 
-on(type: "netMeteredIfacesChange", callback: Callback\<Array\<string>>): void
+on(type: 'netMeteredIfacesChange', callback: Callback\<Array\<string>>): void
 
-注册计量 iface 发生改变时的回调，使用 callback 异步回调。
+注册计量iface发生改变时的回调。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1894,11 +1967,13 @@ on(type: "netMeteredIfacesChange", callback: Callback\<Array\<string>>): void
 | 参数名   | 类型                      | 必填 | 说明                                      |
 | -------- | ------------------------- | ---- | ----------------------------------------- |
 | type     | string                    | 是   | 订阅的事件类型。'netMeteredIfacesChange'：注册计量iface发生改变事件。                 |
-| callback | Callback\<Array\<string>> | 是   | 回调函数。注册计量 iface 发生改变时调用。 |
+| callback | Callback\<Array\<string>> | 是   | 回调函数。注册计量iface发生改变时调用。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1923,9 +1998,9 @@ try {
 
 ### off('netMeteredIfacesChange')
 
-off(type: "netMeteredIfacesChange", callback?: Callback\<Array\<string>>): void
+off(type: 'netMeteredIfacesChange', callback?: Callback\<Array\<string>>): void
 
-注销计量 iface 发生改变时的回调，使用 callback 异步回调。
+注销计量iface发生改变时的回调。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1938,11 +2013,13 @@ off(type: "netMeteredIfacesChange", callback?: Callback\<Array\<string>>): void
 | 参数名   | 类型                      | 必填 | 说明                                      |
 | -------- | ------------------------- | ---- | ----------------------------------------- |
 | type     | string                    | 是   | 注销的事件类型。'netMeteredIfacesChange'：注销计量iface发生改变事件。                 |
-| callback | Callback\<Array\<string>> | 否   | 回调函数。注册计量 iface 发生改变时调用。 |
+| callback | Callback\<Array\<string>> | 否   | 回调函数。注册计量iface发生改变时调用。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1975,9 +2052,9 @@ try {
 
 ### on('netQuotaPolicyChange')
 
-on(type: "netQuotaPolicyChange", callback: Callback\<Array\<NetQuotaPolicy>>): void
+on(type: 'netQuotaPolicyChange', callback: Callback\<Array\<NetQuotaPolicy>>): void
 
-注册计量网络策略发生改变时的回调，使用 callback 异步回调。
+注册计量网络策略发生改变时的回调。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1994,7 +2071,9 @@ on(type: "netQuotaPolicyChange", callback: Callback\<Array\<NetQuotaPolicy>>): v
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -2024,9 +2103,9 @@ try {
 
 ### off('netQuotaPolicyChange')
 
-off(type: "netQuotaPolicyChange", callback?: Callback\<Array\<NetQuotaPolicy>>): void
+off(type: 'netQuotaPolicyChange', callback?: Callback\<Array\<NetQuotaPolicy>>): void
 
-注销计量网络策略发生改变时的回调，使用 callback 异步回调。
+注销计量网络策略发生改变时的回调。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -2043,7 +2122,9 @@ off(type: "netQuotaPolicyChange", callback?: Callback\<Array\<NetQuotaPolicy>>):
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -2076,9 +2157,9 @@ try {
 
 ### on('netBackgroundPolicyChange')
 
-on(type: "netBackgroundPolicyChange", callback: Callback\<boolean>): void
+on(type: 'netBackgroundPolicyChange', callback: Callback\<boolean>): void
 
-注册后台网络策略发生改变时的回调，使用 callback 异步回调。
+注册后台网络策略发生改变时的回调。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -2095,7 +2176,9 @@ on(type: "netBackgroundPolicyChange", callback: Callback\<boolean>): void
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -2120,9 +2203,9 @@ try {
 
 ### off('netBackgroundPolicyChange')
 
-off(type: "netBackgroundPolicyChange", callback?: Callback\<boolean>): void
+off(type: 'netBackgroundPolicyChange', callback?: Callback\<boolean>): void
 
-注销后台网络策略发生改变时的回调，使用 callback 异步回调。
+注销后台网络策略发生改变时的回调。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -2139,7 +2222,9 @@ off(type: "netBackgroundPolicyChange", callback?: Callback\<boolean>): void
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -2209,8 +2294,8 @@ try {
 | 名称     | 类型                                                 | 只读 |可选| 说明                                                                         |
 | -------- | ---------------------------------------------------- | ---- | ------|---------------------------------------------------------------------- |
 | netType  | [NetBearType](js-apis-net-connection.md#netbeartype) | 否   |否 |网络类型。                                                                   |
-| simId    | string                                               | 否    |否 |计量蜂窝网络的SIM卡的标识值。<br>以太网和wifi网络不会用到。                     |
-| identity | string                                               | 否   |否 |计量蜂窝网络中配合simId联合使用。<br>以太网和wifi网络单独使用。<br>用于标记类型。 |
+| simId    | string                                               | 否    |否 |计量蜂窝网络的SIM卡的标识值。<br>以太网和Wi-Fi网络不会用到。                     |
+| identity | string                                               | 否   |否 |计量蜂窝网络中配合simId联合使用。<br>以太网和Wi-Fi网络单独使用。<br>用于标记类型。 |
 
 ## QuotaPolicy
 
@@ -2285,7 +2370,7 @@ try {
 | 名称              | 类型                            | 只读 |可选| 说明                                    |
 | ----------------- | ------------------------------- | ---- | ----|---------------------------------- |
 | uid               | number                          | 否   |否 |流量警告的阈值，默认：DATA_USAGE_UNKNOWN。 |
-| policy            | [NetUidPolicy](#netuidpolicy) | 否   | 否|UID指定了在后台模式下网络访问的策略。    |
+| policy          | [NetUidPolicy](#netuidpolicy) | 否   | 否|UID指定了在后台模式下网络访问的策略。    |
 
 ## RemindType
 
@@ -2324,9 +2409,9 @@ try {
 
 | 名称              | 类型       | 只读 | 可选|说明                          |
 | ----------------- | --------- | ---- | ------|----------------------- |
-| allowWiFi         | boolean   | 否   |是 |是否允许应用访问wifi网络。true表示允许，false表示不允许。 |
+| allowWiFi         | boolean   | 否   |是 |是否允许应用访问Wi-Fi网络。true表示允许，false表示不允许。 |
 | allowCellular     | boolean   | 否  |是 |是否允许应用访问蜂窝网络。true表示允许，false表示不允许。 |
-| alwaysAllowWiFi<sup>18+</sup>    | boolean   | 否  |是 |是否允许应用一直访问wifi网络。true表示允许，false表示不允许。 |
+| alwaysAllowWiFi<sup>18+</sup>    | boolean   | 否  |是 |是否允许应用一直访问Wi-Fi网络。true表示允许，false表示不允许。 |
 | alwaysAllowCellular<sup>18+</sup>  | boolean   | 否  |是 |是否允许应用一直访问蜂窝网络。true表示允许，false表示不允许。 |
 
 ## UidNetworkAccessPolicy<sup>12+</sup>

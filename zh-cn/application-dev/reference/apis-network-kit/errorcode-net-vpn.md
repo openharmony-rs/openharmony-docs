@@ -33,7 +33,7 @@ Invalid parameter value.
 
 **错误信息**
 
-Failed to connect to the service.
+Operation failed. Cannot connect to service.
 
 **错误描述**
 

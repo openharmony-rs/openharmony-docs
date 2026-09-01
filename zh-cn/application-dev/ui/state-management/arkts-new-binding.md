@@ -133,7 +133,7 @@
 
 ### 系统组件参数双向绑定
 
-!!运算符为系统组件提供TS变量的引用，使得TS变量和系统组件的内部状态保持同步。添加方式是在变量名后添加，例如isShow!!。
+!!运算符为系统组件提供TS变量的引用，使得TS变量和系统组件的内部状态保持同步。添加方式是在变量名后添加!!，例如isShow!!。
 
 内部状态的含义由组件或属性决定。例如：[bindMenu](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu11)属性的isShow参数。
 
