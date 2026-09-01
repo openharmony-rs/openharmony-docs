@@ -256,7 +256,7 @@ If **doFinal** fails, the tag verification fails because the input value of **ta
 
 Ensure that the **key**, **iv**, and **aad** parameters for encryption and decryption are the same, and the **ciphertext** and **tag** input during decryption are correct.
 
-### Failed‧to‧Call‧doFinal‧During‧Decryption‧Using‧SM4-ECB/CBC
+### Failed to Call doFinal During Decryption Using SM4-ECB/CBC
 
 **Symptom**
 
