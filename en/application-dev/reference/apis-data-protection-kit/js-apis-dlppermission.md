@@ -5,7 +5,7 @@
 <!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=213f49839bb0df5a68c6a506716431423e2e8a3e translatedAt=2026-08-31T01:16:23.286Z pushedAt=2026-09-01T01:47:50.957Z -->
+<!-- md-trans-meta sourceCommit=213f49839bb0df5a68c6a506716431423e2e8a3e translatedAt=2026-08-31T01:16:23.286Z pushedAt=2026-09-01T02:23:48.517Z -->
 
 Data loss prevention (DLP) is a system solution provided to prevent data disclosure. This module provides APIs for cross-device file access management, encrypted storage, and access authorization. DLP protects sensitive files through encryption and generates encrypted files in .dlp format. When opening a DLP file, the system automatically creates an isolated DLP sandbox environment to ensure that the file content is not leaked to unauthorized environments. Fine-grained permission control is supported for enterprise DLP files, including management of permissions to view, edit, copy, print, and screen-record files.
 
@@ -473,7 +473,7 @@ dlpPermission.isInSandbox((err, isInSandbox) => {
   if (err) {
     console.error(`Failed to check sandbox status. Code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info('isInSandbox：', JSON.stringify(isInSandbox));
+    console.info('isInSandbox:', JSON.stringify(isInSandbox));
   }
 }); // Check whether the application is running in a sandbox.
 ```
