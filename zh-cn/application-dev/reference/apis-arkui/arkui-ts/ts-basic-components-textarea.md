@@ -1449,7 +1449,7 @@ ArkTS-Sta: strokeWidth(width: LengthMetrics | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| width  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)><br>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 文本描边的宽度。如果LengthMetrics的unit值是PERCENT，当前设置不生效，按默认值处理。<br>若设置值小于0，显示实心字；若大于0，显示空心字。<br>取值为undefined时，按默认值处理。 |
+| width  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)><br>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 文本描边的宽度。当LengthMetrics对象的unit属性为LengthUnit.PERCENT时，当前设置不生效，按默认值处理。<br>若设置值小于0，显示实心字；若大于0，显示空心字。<br>取值为undefined时，按默认值处理。 |
 
 ### strokeColor<sup>20+</sup>
 
@@ -2680,28 +2680,28 @@ struct TextAreaExample {
 struct TextAreaExample {
   build() {
     Column() {
-      Text('属性WordBreakType为NORMAL的样式：').fontSize(16).fontColor(0xFF0000)
+      Text('wordBreak属性为NORMAL的样式：').fontSize(16).fontColor(0xFF0000)
       TextArea({
         text: 'This is set wordBreak to WordBreak text Taumatawhakatangihangakoauauotamateaturipukakapikimaungahoronukupokaiwhenuakitanatahu.'
       })
         .fontSize(16)
         .border({ width: 1 })
         .wordBreak(WordBreak.NORMAL)
-      Text('英文文本，属性WordBreakType为BREAK_ALL的样式：').fontSize(16).fontColor(0xFF0000)
+      Text('英文文本，wordBreak属性为BREAK_ALL的样式：').fontSize(16).fontColor(0xFF0000)
       TextArea({
         text: 'This is set wordBreak to WordBreak text Taumatawhakatangihangakoauauotamateaturipukakapikimaungahoronukupokaiwhenuakitanatahu.'
       })
         .fontSize(16)
         .border({ width: 1 })
         .wordBreak(WordBreak.BREAK_ALL)
-      Text('中文文本，属性WordBreakType为BREAK_ALL的样式：').fontSize(16).fontColor(0xFF0000)
+      Text('中文文本，wordBreak属性为BREAK_ALL的样式：').fontSize(16).fontColor(0xFF0000)
       TextArea({
         text: '多行文本输入框组件，当输入的文本内容超过组件宽度时会自动换行显示。\n高度未设置时，组件无默认高度，自适应内容高度。宽度未设置时，默认撑满最大宽度。'
       })
         .fontSize(16)
         .border({ width: 1 })
         .wordBreak(WordBreak.BREAK_ALL)
-      Text('属性WordBreakType为BREAK_WORD的样式：').fontSize(16).fontColor(0xFF0000)
+      Text('wordBreak属性为BREAK_WORD的样式：').fontSize(16).fontColor(0xFF0000)
       TextArea({
         text: 'This is set wordBreak to WordBreak text Taumatawhakatangihangakoauauotamateaturipukakapikimaungahoronukupokaiwhenuakitanatahu.'
       })
@@ -3392,11 +3392,10 @@ struct TextAreaExample {
   // 设置字体大小
   async setFontScale(scale: number): Promise<void> {
     let configInit: Configuration = {
-      language: 'zh-Ch',
-      fontSizeScale: scale,
+      fontSizeScale: scale
     };
     // 更新配置-字体大小，调用系统接口更新字体配置
-    // 需在工程的module.json5文件的requestPermissions字段配置权限：ohos.permission.UPDATE_CONFIGURATION。该权限为系统权限，仅系统应用可申请，普通应用无法获取。可参考[系统接口说明](../../../reference/development-intro-api.md#系统接口说明)了解系统应用配置方法。
+    // 需在工程的module.json5文件的requestPermissions字段配置权限：ohos.permission.UPDATE_CONFIGURATION
     abilityManager.updateConfiguration(configInit, (err: BusinessError) => {
       if (err) {
         console.error(`Failed to updateConfiguration. Code: ${err.code}, message: ${err.message}`);
@@ -3418,7 +3417,7 @@ struct TextAreaExample {
           .minFontScale(this.minFontScale)// 设置最小字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
           .maxFontScale(this.maxFontScale) // 设置最大字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
       }.width('100%')
-
+      // 以下按钮只用做字体大小倍数调整，不在示例图中呈现
       Column() {
         Row() {
           Button('1倍').onClick(() => {

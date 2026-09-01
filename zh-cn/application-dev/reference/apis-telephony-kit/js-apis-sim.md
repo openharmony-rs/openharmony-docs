@@ -1568,7 +1568,7 @@ ArkTS-Sta: getSimLabel(slotId: int, callback: AsyncCallback\<SimLabel\>): void
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
 | 8300001 | Invalid parameter value.                 |
-| 8300002  | Service connection failed.    |
+| 8300002  |Operation failed. Cannot connect to service.    |
 | 8300003 | System internal error.                               |
 | 8300999  |Unknown error code.|
 
@@ -1622,7 +1622,7 @@ ArkTS-Sta: getSimLabel(slotId: int): Promise\<SimLabel\>
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
 | 8300001 | Invalid parameter value.                 |
-| 8300002  | Service connection failed.                      |
+| 8300002  | Operation failed. Cannot connect to service. |
 | 8300003 | System internal error.                               |
 | 8300999  |Unknown error code.|
 

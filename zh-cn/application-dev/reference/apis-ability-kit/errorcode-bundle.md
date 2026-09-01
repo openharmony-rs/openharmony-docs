@@ -172,7 +172,8 @@ Failed to install the HAP because the HAP fails to be parsed.
 
 **错误描述**
 
-<!--Del-->调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，<!--DelEnd-->传入的HAP或APP解析失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
+<!--Del-->
+调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，<!--DelEnd-->传入的HAP或APP解析失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
 
 **可能原因**
 
@@ -204,7 +205,8 @@ Failed to install the HAP because the HAP signature fails to be verified.
 
 **错误描述**
 
-<!--Del-->调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，<!--DelEnd-->签名校验失败导致应用安装失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
+<!--Del-->
+调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，<!--DelEnd-->签名校验失败导致应用安装失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
 
 **可能原因**
 
@@ -229,7 +231,8 @@ Failed to install the HAP because the HAP path is invalid or the HAP is too larg
 
 **错误描述**
 
-<!--Del-->调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，<!--DelEnd-->安装包路径无效或者文件过大导致应用安装失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
+<!--Del-->
+调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，<!--DelEnd-->安装包路径无效或者文件过大导致应用安装失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
 
 **可能原因**
 
@@ -251,7 +254,8 @@ Failed to install the HAPs because they have different configuration information
 
 **错误描述**
 
-<!--Del-->调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，<!--DelEnd-->多个HAP配置信息不同导致应用安装失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
+<!--Del-->
+调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，<!--DelEnd-->多个HAP配置信息不同导致应用安装失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
 
 **可能原因**
 
@@ -269,7 +273,8 @@ Failed to install the HAP because of insufficient system disk space.
 
 **错误描述**
 
-<!--Del-->调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，<!--DelEnd-->系统磁盘空间不足导致应用安装失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
+<!--Del-->
+调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，<!--DelEnd-->系统磁盘空间不足导致应用安装失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
 
 **可能原因**
 
@@ -287,7 +292,8 @@ Failed to install the HAP since the version of the HAP to install is too early.
 
 **错误描述**
 
-<!--Del-->调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，<!--DelEnd-->新安装的应用版本号低于已安装的版本号导致应用安装失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
+<!--Del-->
+调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，<!--DelEnd-->新安装的应用版本号低于已安装的版本号导致应用安装失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
 
 **可能原因**
 
@@ -1668,6 +1674,65 @@ The specified bundle not found app clone preference.
 
 1. 确认应用是否需要分身偏好。
 2. 使用[bundleManager.setAppClonePreference](js-apis-bundleManager-sys.md#bundlemanagersetappclonepreference)设置分身偏好后重试。
+
+## 17700097 设备不支持双模式
+
+**错误信息**
+
+The device does not support the dual mode.
+
+**错误描述**
+
+当前设备不支持双模式（即设备不支持在主模式和副模式之间切换）。
+
+**可能原因**
+
+当前设备为非双模设备，系统参数const.sceneboard.mainmode或persist.sceneboard.ispcmode缺失或值非法。
+
+**处理步骤**
+
+1. 确认设备是否为双模设备，可以在开发者模式下查看设备是否存在系统参数const.sceneboard.mainmode和persist.sceneboard.ispcmode。
+2. 若设备不支持双模式，该接口不适用，无需调用。
+
+## 17700098 入参无效
+
+**错误信息**
+
+The input parameter is invalid. It is either outside the range of valid enum values or does not include the following required enum values: [DeviceModeDistributionPolicy.UNIVERSAL_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.FULL_COMPATIBLE_DIFFERENT_PACKAGE].
+
+**错误描述**
+
+调用filterBundleListByDeviceModeDistributionPolicies接口时，传入的参数无效。
+
+**可能原因**
+
+1. 传入的枚举值超出DeviceModeDistributionPolicy枚举值范围。
+2. 传入的枚举数组未包含所有不同包体的策略（UNIVERSAL_DIFFERENT_PACKAGE、PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE和FULL_COMPATIBLE_DIFFERENT_PACKAGE）。
+
+**处理步骤**
+
+1. 需要检查传入的枚举值，是否有超过DeviceModeDistributionPolicy枚举值。
+2. 需要检查传入的枚举数组是否包含了[DeviceModeDistributionPolicy.UNIVERSAL_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.FULL_COMPATIBLE_DIFFERENT_PACKAGE]，这三个在切换时必须传入。
+
+## 17700099 设备正在安装卸载应用或双模切换正在处理中
+
+**错误信息**
+
+The device is installing or uninstalling an application, or a previous API call is still being processed. Please try again.
+
+**错误描述**
+
+设备正在安装或卸载应用，或者上一次双模切换调用正在处理中，请重试。
+
+**可能原因**
+
+设备正在安装或卸载应用，或者上一次双模切换调用正在处理中。
+
+**处理步骤**
+
+1. 检查下设备是否正在安装、卸载应用。
+2. 检查下是否已经调用该接口且双模切换正在处理中。
+3. 等待上述操作完成后重新调用该接口。
 <!--DelEnd-->
 
 ## 17700101 包管理服务异常

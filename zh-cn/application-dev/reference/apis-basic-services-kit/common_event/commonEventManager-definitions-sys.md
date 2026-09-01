@@ -696,7 +696,7 @@
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力：** SystemCapability.FileManagement.CloudDiskManager
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：21
 

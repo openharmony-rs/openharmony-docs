@@ -422,7 +422,7 @@ struct MyStateSample {
     let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
     try {
       let result: pasteboard.PasteData = systemPasteboard.getDataSync(); // 获取通过同步接口获取剪切板数据，不推荐
-    } catch (err: BusinessError) {
+    } catch (err) {
       console.error('Failed to get PasteData, Cause:' + err.message);
     }
     Column() {

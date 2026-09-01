@@ -1353,7 +1353,7 @@ on(type: 'sessionServiceDie', callback: () => void): void
 | 参数名   | 类型                 | 必填 | 说明                                                         |
 | -------- | -------------------- | ---- | ------------------------------------------------------------ |
 | type     | string               | 是   | 事件回调类型，支持事件'sessionServiceDie'：会话服务死亡事件，检测到会话的服务死亡时触发。 |
-| callback | callback: () => void | 是   | 回调函数<br>，当会话服务死亡时触发回调。 |
+| callback | callback: () => void | 是   | 回调函数，当会话服务死亡时触发回调。 |
 
 **错误码：**
 
@@ -2162,7 +2162,7 @@ on(type: 'deviceAvailable', callback: (device: OutputDeviceInfo) => void): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件'deviceAvailable'，有设备被发现时触发回调。 |
-| callback | (device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void | 是   | 回调函数<br>ArkTS-Dyn：，参数device是可用设备信息。<br>ArkTS-Sta：当监听事件注册成功，err为null，否则返回错误对象。 |
+| callback | (device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void | 是   | 回调函数。<br>ArkTS-Dyn：参数device是可用设备信息。<br>ArkTS-Sta：当监听事件注册成功，err为null，否则返回错误对象。 |
 
 **错误码：**
 
@@ -2476,8 +2476,8 @@ getAVCastController(sessionId: string, callback: AsyncCallback\<AVCastController
 | 201 | permission denied. |
 | 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception |
-| 6600102  | session does not exist |
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
 
 **示例：**
 
@@ -2513,6 +2513,62 @@ struct Index {
     .height('100%')
   }
 }
+```
+
+## avSession.startCasting<sup>10+</sup>
+
+startCasting(session: SessionToken, device: OutputDeviceInfo, callback: AsyncCallback\<void>): void
+
+启动投播。使用callback异步回调。
+
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                  | 必填 | 说明                                  |
+| -------- | ------------------------------------- | ---- | ------------------------------------- |
+| session      | [SessionToken](#sessiontoken) | 是   | 会话令牌。SessionToken表示单个token。 |
+| device | [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)                        | 是   | 设备相关信息。 |
+| callback | AsyncCallback\<void>                  | 是   | 回调函数。<br>ArkTS-Dyn：当命令发送成功并启动投播，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当命令发送成功并启动投播，err为null，否则返回错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | permission denied. |
+| 202 | Not System App. |
+| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| 6600101  | Session service exception. |
+| 6600108 | Device connecting failed.       |
+
+**示例：**
+
+```ts
+
+let sessionId = 'xxx'; // sessionId需要通过avSession.createAVSession创建会话后获取。
+let myToken: avSession.SessionToken = {
+  sessionId: sessionId,
+}
+let castDevice: avSession.OutputDeviceInfo | undefined = undefined;
+avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
+  castDevice = device;
+  console.info(`on deviceAvailable  : ${device} `);
+  if (castDevice !== undefined) {
+    avSession.startCasting(myToken, castDevice, () => {
+        console.info('Succeeded in starting casting.');
+    });
+  }
+});
 ```
 
 ## avSession.startCasting<sup>10+</sup>
@@ -2553,7 +2609,7 @@ startCasting(session: SessionToken, device: OutputDeviceInfo): Promise\<void>
 | 201 | permission denied. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | 6600101  | Session service exception. |
-| 6600108 | Device connection failed.       |
+| 6600108 | Device connecting failed.       |
 
 **示例：**
 

@@ -687,6 +687,8 @@ getLaunchAbility(): Promise\<WantAgent>
 **示例：**
 
 ```ts
+import { WantAgent } from '@kit.AbilityKit';
+
 avcontroller.getLaunchAbility().then((agent: WantAgent) => {
   console.info(`Succeeded in getting launch ability: ${agent}`);
 });
@@ -723,6 +725,8 @@ getLaunchAbility(callback: AsyncCallback\<WantAgent>): void
 **示例：**
 
 ```ts
+import { WantAgent } from '@kit.AbilityKit';
+
 avcontroller.getLaunchAbility((err: BusinessError, agent: WantAgent) => {
   if (err) {
     console.error(`Failed to get launch ability, code: ${err.code}, message: ${err.message}`);
@@ -1092,10 +1096,10 @@ sendControlCommand(command: AVControlCommand, callback: AsyncCallback\<void>): v
 | -------- | ------------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | 6600101  | Session service exception. |
-| 6600102  | The session does not exist.     |
-| 6600103  | The session controller does not exist.   |
+| 6600102  | The session does not exist. |
+| 6600103  | The session controller does not exist. |
 | 6600105  | Invalid session command. |
-| 6600106  | The session is not activated.                |
+| 6600106  | The session is not activated. |
 | 6600107  | Too many commands or events. |
 
 **示例：**
@@ -1203,8 +1207,8 @@ ArkTS-Sta: sendCommonCommand(command: string, args: Record\<string, Object>, cal
 | -------- | ------------------------------- |
 | 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。 |
 | 6600101  | Session service exception. |
-| 6600102  | The session does not exist.     |
-| 6600103  | The session controller does not exist.   |
+| 6600102  | The session does not exist. |
+| 6600103  | The session controller does not exist. |
 | 6600105  | Invalid session command. |
 | 6600106  | The session is not activated. |
 | 6600107  | Too many commands or events. |

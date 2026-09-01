@@ -95,6 +95,8 @@ on(type: 'globalErrorOccurred', observer: GlobalObserver): void
 
 在进程中的任意线程中注册 `errorManager.on` 接口，监听整个进程中任意线程的异常。观测器捕获到该异常时应用不退出，建议在回调函数执行完后，增加同步退出操作。
 
+开发者需要自行维护自定义异常处理回调函数的生命周期，保证异常回调时，自定义异常处理回调函数没有被释放。
+
 配对调用：与[errorManager.off('globalErrorOccurred')](#errormanageroffglobalerroroccurred18)方法配合使用，使用完成后可调用off方法注销监听器。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 18开始，该接口支持在原子化服务中使用。
@@ -152,6 +154,8 @@ off(type: 'globalErrorOccurred', observer?: GlobalObserver): void
 
 如果传入的回调不在通过on方法注册的回调队列中，将抛出16300004错误码，因此建议使用try-catch逻辑进行处理。
 
+建议开发者在进程回收时，调用注销错误观测器，如果其他线程发送异常回调时，可能因找不到自定义异常处理回调函数而发生崩溃。
+
 配对调用：与[errorManager.on('globalErrorOccurred')](#errormanageronglobalerroroccurred18)方法配合使用。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 18开始，该接口支持在原子化服务中使用。
@@ -167,7 +171,7 @@ off(type: 'globalErrorOccurred', observer?: GlobalObserver): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'globalErrorOccurred'，表示错误观测器。 |
-| observer | [GlobalObserver](#globalobserver18) | 否 | 由on方法注册的callback。建议使用该参数。若不传该参数，则清除所有通过on方法注册的observer；若传该参数，则仅删除指定的observer。 |
+| observer | [GlobalObserver](#globalobserver18) | 否 | 由on方法注册的自定义异常处理回调函数。建议使用该参数。若不传该参数，则清除所有通过on方法注册的observer；若传该参数，则仅删除指定的observer。 |
 
 **错误码**：
 
@@ -386,6 +390,8 @@ on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void
 
 在进程中任意线程注册被拒绝Promise监听器，注册后可以捕获到当前进程中未被捕获到的Promise rejection。
 
+开发者需要自行维护自定义异常处理回调函数的生命周期，保证异常回调时，自定义异常处理回调函数没有被释放。
+
 配对调用：与[errorManager.off('globalUnhandledRejectionDetected')](#errormanageroffglobalunhandledrejectiondetected18)方法配合使用，使用完成后可调用off方法注销监听器。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 18开始，该接口支持在原子化服务中使用。
@@ -442,7 +448,7 @@ on(type: 'unhandledRejection', observer: UnhandledRejectionObserver): void
 
 注册被拒绝Promise监听器。注册后可以捕获到当前线程中未被捕获到的Promise rejection。
 
-仅在主线程中使用。使用线程出错时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
+接口入参不符合要求时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
 
 配对调用：与[errorManager.off('unhandledRejection')](#errormanageroffunhandledrejection12)方法配合使用，使用完成后可调用off方法注销监听器释放资源。
 
@@ -470,7 +476,6 @@ on(type: 'unhandledRejection', observer: UnhandledRejectionObserver): void
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 16200001 | If the caller is invalid. |
 
 **示例**：
     
@@ -607,6 +612,8 @@ off(type: 'globalUnhandledRejectionDetected', observer?: GlobalObserver): void
 
 注销错误观测器，注销之前注册在同一线程的回调全局监听，注销后无法监听进程中的Promise异常。
 
+建议开发者在进程回收时，调用注销错误观测器，如果其他线程发送异常回调时，可能因找不到自定义异常处理回调函数而发生崩溃。
+
 如果传入的回调不在通过on方法注册的回调队列中，将抛出16300004错误码，因此建议使用try-catch逻辑进行处理。
 
 配对调用：与[errorManager.on('globalUnhandledRejectionDetected')](#errormanageronglobalunhandledrejectiondetected18)方法配合使用。
@@ -666,7 +673,7 @@ off(type: 'unhandledRejection', observer?: UnhandledRejectionObserver): void
 
 注销被拒绝Promise监听器。
 
-仅在主线程中使用。使用线程出错时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
+接口入参不符合要求时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
 
 配对调用：与[errorManager.on('unhandledRejection')](#errormanageronunhandledrejection12)方法配合使用。
 
@@ -693,7 +700,6 @@ off(type: 'unhandledRejection', observer?: UnhandledRejectionObserver): void
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 16200001 | If the caller is invalid. |
 | 16300004 | If the observer does not exist. |
 
 **示例**：

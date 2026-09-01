@@ -24,19 +24,26 @@ native侧自行创建线程时，线程默认不具备可用的ANI调用上下�
 void StartWorker(ani_env *env)
 {
     ani_vm *vm = nullptr;
-    env->GetVM(&vm);
+    ani_status status = env->GetVM(&vm);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
 
     std::thread([vm]() {
         ani_env *threadEnv = nullptr;
         ani_options args {0, nullptr};
-        if (vm->AttachCurrentThread(&args, ANI_VERSION_1, &threadEnv) != ANI_OK) {
-            return;
+        ani_status status = vm->AttachCurrentThread(&args, ANI_VERSION_1, &threadEnv);
+        if (status != ANI_OK) {
+            // handle error and return
         }
 
         // 在该线程中只能使用threadEnv调用ANI接口。
         // 不要使用创建线程时所在调用栈中的env。
 
-        vm->DetachCurrentThread();
+        status = vm->DetachCurrentThread();
+        if (status != ANI_OK) {
+            // handle error and return
+        }
     }).detach();
 }
 ```

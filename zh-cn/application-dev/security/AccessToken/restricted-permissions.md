@@ -13,7 +13,7 @@
 
 以下权限的开放范围为普通应用，但需要通过[访问控制列表（ACL）](app-permission-mgmt-overview.md#权限机制中的基本概念)的方式跨级别申请。
 
-normal等级的应用需要将自身的APL等级声明为system_basic及以上，在开发应用安装包时，需要修改应用的HarmonyAppProvision配置文件即SDK目录下的“`Toolchains / _{Version} _/ lib / UnsignedReleasedProfileTemplate.json`”文件，并重新进行应用签名。
+normal等级的应用需要将自身的APL等级声明为system_basic及以上，在开发应用安装包时，需要修改应用的HarmonyAppProvision配置文件即SDK目录下的“`Toolchains / _{Version} _/ lib / UnsgnedReleasedProfileTemplate.json`”文件，并重新进行应用签名。
 
 **修改方式：**
 
@@ -94,7 +94,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 ## ohos.permission.READ_IMAGEVIDEO
 
-允许读取用户公共目录的图片或视频文件。
+允许读取用户本地公共目录的图片或视频文件。
 
 <!--RP27--><!--RP27End-->
 
@@ -103,6 +103,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **授权方式**：用户授权（user_grant）
 
 **起始版本**：9
+
+**变更信息**：在API版本9-24，申请该权限可访问云上和本地图片或视频文件；从API版本26.0.0开始，申请该权限仅能读取用户本地公共目录的图片或视频文件。
 
 ## ohos.permission.WRITE_IMAGEVIDEO
 
@@ -197,6 +199,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **权限级别**：system_basic
 
 **授权方式**：用户授权（user_grant）
+
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
 
 **起始版本**：11
 
@@ -377,6 +381,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
 **起始版本**：14
 
 ## ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION
@@ -413,7 +419,11 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：PC/2in1 | Tablet
+
 **起始版本**：15
+
+**变更信息**：从API版本26.0.0开始，增加支持在平板上申请。
 
 ## ohos.permission.SET_PAC_URL
 
@@ -439,6 +449,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone | PC/2in1 | Tablet
+
 **起始版本**：15
 
 ## ohos.permission.START_PROVISIONING_MESSAGE
@@ -450,6 +462,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：15
 
@@ -555,7 +569,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **起始版本**：13
 
-**变更信息**：API 13，该权限仅面向MDM应用开放；从API 14开始，开放范围从MDM应用变为更为企业普通应用；从API 16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放。
+**变更信息**：API 13，该权限仅面向MDM应用开放；从API 14开始，开放范围从MDM应用变更为企业普通应用；从API 16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放。
 
 ## ohos.permission.kernel.DISABLE_GOTPLT_RO_PROTECTION
 
@@ -664,6 +678,20 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **起始版本**：18
 
+## ohos.permission.atomicService.MANAGE_STORAGE
+
+允许原子化服务小游戏进行存储空间大小的管理。
+
+<!--RP96--><!--RP96End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：20
+
 ## ohos.permission.MANAGE_SCREEN_TIME_GUARD
 
 允许应用调用屏幕时间守护相关接口，进行屏幕使用限制、应用访问控制、管控使用时间等操作。
@@ -673,6 +701,8 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone |  Tablet
 
 **起始版本**：20
 
@@ -784,20 +814,6 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **起始版本**: 20
 
-<!--Del-->
-## ohos.permission.atomicService.MANAGE_STORAGE
-
-允许原子化服务申请差异化的存储空间大小。
-
-**权限级别**：system_basic
-
-**授权方式**: 系统授权（system_grant）
-
-**支持设备**: Phone | PC/2in1 | Tablet
-
-**起始版本**: 20
-<!--DelEnd-->
-
 ## ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM
 
 允许应用申请特殊类型长时任务，如在手机上申请计算任务类型的长时任务。
@@ -870,6 +886,116 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **变更信息**：在API 9-19，该权限面向系统应用开放；从API 20开始，面向普通应用开放。
 
+## ohos.permission.vehicle.CAR_CONTROL
+
+允许应用通过车机查询、设置、订阅对手件状态信息。
+
+<!--RP102--><!--RP102End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.STEERINGWHEEL_INFO
+
+允许应用订阅、获取方向盘对手件状态信息。
+
+申请此权限前，需要先申请ohos.permission.vehicle.CAR_CONTROL。
+
+<!--RP102--><!--RP102End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.INTERIOR_LIGHT_INFO
+
+允许应用订阅、获取车内灯光对手件状态信息。
+
+申请此权限前，需要先申请ohos.permission.vehicle.CAR_CONTROL。
+
+<!--RP102--><!--RP102End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_INTERIOR_LIGHT
+
+允许应用设置车内灯光对手件状态。
+
+申请此权限前，需要先申请ohos.permission.vehicle.CAR_CONTROL。
+
+<!--RP102--><!--RP102End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.DRIVE_INFORMATION_INFO
+
+允许应用订阅、获取行车信息模块对手件状态信息。
+
+申请此权限前，需要先申请ohos.permission.vehicle.CAR_CONTROL。
+
+<!--RP102--><!--RP102End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.ACCELERATOR_PEDAL_INFO
+
+允许应用订阅、获取加速踏板对手件状态信息。
+
+申请此权限前，需要先申请ohos.permission.vehicle.CAR_CONTROL。
+
+<!--RP102--><!--RP102End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.BRAKE_PEDAL_INFO
+
+允许应用订阅、获取制动踏板对手件状态信息。
+
+申请此权限前，需要先申请ohos.permission.vehicle.CAR_CONTROL。
+
+<!--RP102--><!--RP102End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
 ## ohos.permission.SET_SYSTEMSHARE_APPLAUNCHTRUSTLIST
 
 允许应用配置系统分享的目标应用名单。
@@ -882,7 +1008,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **授权方式**：系统授权（system_grant）
 
-**支持设备**：Phone | PC/2in1 | Tablet
+**支持设备**：Phone | PC/2in1 | Tablet | TV
 
 **起始版本**：21
 
@@ -946,9 +1072,11 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **授权方式**：手动设置授权（manual_settings）
 
-**支持设备**：PC/2in1
+**支持设备**：PC/2in1 | TV
 
 **起始版本**：22
+
+**变更信息**：从API版本26.0.0开始，增加支持在TV上申请。
 
 ## ohos.permission.ALLOW_EXTERNAL_NATIVE_CODE
 
@@ -1038,11 +1166,11 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **授权方式**: 系统授权（system_grant）
 
-**支持设备**: PC/2in1 | Tablet
+**支持设备**: PC/2in1 | Tablet | Phone
 
 **起始版本**: 22
 
-**变更信息：** 从API 24开始，增加支持在平板上申请。
+**变更信息：** 从API版本24开始，增加支持在平板上申请；从API版本26.0.0开始，增加支持在手机上申请。
 
 ## ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC
 
@@ -1058,9 +1186,41 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **起始版本**: 23
 
+## ohos.permission.MANAGE_RECENT_SNAPSHOT
+
+允许应用设置在多任务中和Dock栏悬停显示的预览图。
+
+多任务和鼠标悬停在Dock栏应用图标，将展示应用实时预览图，获取该权限后，应用可自定义此预览图。
+
+<!--RP72--><!--RP72End-->
+
+**权限级别**: system_basic
+
+**授权方式**: 系统授权（system_grant）
+
+**支持设备**: PC/2in1
+
+**起始版本**: 26.0.0
+
+## ohos.permission.SET_WINDOW_ALPHA
+
+允许应用设置主窗口容器透明。
+
+获取该权限后，应用可以设置主窗口容器背景色。
+
+<!--RP73--><!--RP73End-->
+
+**权限级别**: system_basic
+
+**授权方式**: 系统授权（system_grant）
+
+**支持设备**: PC/2in1
+
+**起始版本**: 26.0.0
+
 ## ohos.permission.MANAGE_CALL_FOR_DEVICES
 
-允许应用管理通话状态。如获取来电号码、接听、拒接、挂断等.
+允许应用管理通话状态。如获取来电号码、接听、拒接、挂断等。
 
 <!--RP64--><!--RP64End-->
 
@@ -1071,6 +1231,20 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 **支持设备**: Phone | PC/2in1 | Tablet
 
 **起始版本**: 23
+
+## ohos.permission.SET_WINDOW_TOUCH_AREAS
+
+允许应用设置窗口事件热区，非热区事件将被透传。
+
+<!--RP75--><!--RP75End-->
+
+**权限级别**: system_basic
+
+**授权方式**: 系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**: 26.0.0
 
 ## ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME
 
@@ -1176,6 +1350,20 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **起始版本**：26.0.0
 
+## ohos.permission.CONTROL_DEVICE
+
+允许应用注入输入事件以控制本设备。
+
+<!--RP79--><!--RP79End-->
+
+**权限级别**：system_basic
+
+**授权方式**：手动设置授权（manual_settings）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
 ## ohos.permission.KEEP_BACKGROUND_RUNNING_SPECIAL_SCENARIO
 
 允许应用申请特殊类型长时任务。
@@ -1190,6 +1378,184 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **起始版本**：24
 
+## ohos.permission.FLOAT_VIEW
+
+允许应用使用闪控窗。
+
+<!--RP78--><!--RP78End-->
+
+**权限级别**：system_basic
+
+**授权方式**：用户授权（user_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.GET_CALL_TRANSFER_INFO
+
+允许应用查询呼叫转移状态。
+
+<!--RP80--><!--RP80End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.MANAGE_SKILL
+
+允许应用使用skill的能力。
+
+获取该权限后，应用可以：
+
+- 查询skill包的信息
+- 监听skill包的安装、更新、卸载事件
+- 访问skill包安装的沙箱目录
+
+<!--RP87--><!--RP87End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
+## ohos.permission.kernel.AS_LDK_DRIVER
+
+允许应用安装PCIe驱动。
+
+<!--RP77--><!--RP77End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
+## ohos.permission.ACCESS_GAME_BUDDY_SERVICE
+
+允许应用访问游戏伴随服务。
+
+获取该权限后，应用可使用游戏伴随服务提供的接口，比如获取正在运行的游戏应用截图、获取游戏应用前后台状态等。
+
+<!--RP93--><!--RP93End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone
+
+**起始版本**：26.0.0
+
+## ohos.permission.KNOCK_COLLABORATION
+
+允许应用通过碰一碰的形式连接指定设备并实现信息交互和应用互动。
+
+<!--RP88--><!--RP88End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone
+
+**起始版本**：26.0.0
+
+## ohos.permission.PRINTER_DRIVER
+
+允许应用管理打印系统。
+
+<!--RP89--><!--RP89End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Phone | Tablet
+
+**起始版本**：24
+
+## ohos.permission.kernel.SUPPORT_LOCAL_PLUGIN
+
+允许应用安装与加载自分发插件。
+
+<!--RP90--><!--RP90End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
+## ohos.permission.MANAGE_AUDIO_ACCESSORY
+
+允许应用注册音频配件到系统。
+
+<!--RP99--><!--RP99End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | TV | PC/2in1 | Tablet | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.ALLOW_USE_BM
+
+允许应用在开发者模式下调用BM工具。
+
+<!--RP94--><!--RP94End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
+## ohos.permission.ACCESS_DIGITAL_IDENTITY
+
+允许应用使用数字身份服务导入数字凭证。
+
+获取该权限后，应用可以将用户的数字身份凭证导入设备，进行安全存储以及后续便捷出示。
+
+<!--RP91--><!--RP91End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.CAPTURE_PLAYBACK_DOWNLINK
+
+允许应用录制蜂窝通话下行数据。
+
+<!--RP95--><!--RP95End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | Tablet
+
+**起始版本**：26.0.0
+
 ## ohos.permission.MANAGE_SANDBOX_BUNDLE
 
 允许应用管理沙箱应用。
@@ -1203,3 +1569,87 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 **支持设备**：PC/2in1
 
 **起始版本**：26.0.0
+
+## ohos.permission.DETECT_DEVICE
+
+允许应用调用智能检测服务获取数据。
+
+<!--RP98--><!--RP98End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.ACCESS_SE_KEY
+
+允许应用生成、使用、删除安全芯片密钥。
+
+<!--RP100--><!--RP100End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | Wearable | TV | PC/2in1 | Tablet | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.DEFAULT_WEB_BROWSER
+
+允许应用被设置为用户的默认浏览器。
+
+<!--RP103--><!--RP103End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | Wearable | TV | PC/2in1 | Tablet | Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.MMA_ENERGYREFILL
+
+允许车上应用获取当前车辆的补能状态。
+
+<!--RP104--><!--RP104End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.MMA_WEATHER
+
+允许车上应用获取车辆所处环境的实时天气。
+
+<!--RP105--><!--RP105End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.MMA_SPATIALACTION
+
+允许车内后排屏上应用调用空间手势接口，完成乘客与屏幕隔空交互。
+
+<!--RP106--><!--RP106End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
