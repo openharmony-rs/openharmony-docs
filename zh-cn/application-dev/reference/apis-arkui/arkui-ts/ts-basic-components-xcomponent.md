@@ -158,12 +158,12 @@ XComponent(params: XComponentParameters | XComponentOptions | NativeXComponentPa
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | type | [XComponentType](ts-appendix-enums.md#xcomponenttype10)         | 否 | 否   | 用于指定XComponent组件类型。 |
-| controller | [XComponentController](#xcomponentcontroller) | 否 | 否 | 给组件绑定一个控制器，通过控制器调用组件方法，仅类型为SURFACE或TEXTURE时有效。未设置时不绑定控制器。 |
+| controller | [XComponentController](#xcomponentcontroller) | 否 | 否 | 给组件绑定一个控制器，通过控制器调用组件方法，仅类型为SURFACE或TEXTURE时有效。 |
 | imageAIOptions | [ImageAIOptions](ts-image-common.md#imageaioptions12) | 否 | 是 | 给组件设置一个AI分析选项，通过此项可配置分析类型或绑定一个分析控制器，仅类型为SURFACE或TEXTURE时有效。未设置时不配置AI分析选项，可通过enableAnalyzer属性单独启用AI分析。 |
 
 ## NativeXComponentParameters<sup>19+</sup>
 
-定义XComponent的具体配置参数。通过这种构造参数创建的XComponent，可以将其对应的[FrameNode](../js-apis-arkui-frameNode.md)对象传递至Native侧，使用NDK接口进行Surface生命周期的相关设置和[添加事件监听](../../../ui/ndk-add-component-events.md)。
+定义XComponent在Native侧使用的具体配置参数。通过这种构造参数创建的XComponent，可以将其对应的[FrameNode](../js-apis-arkui-frameNode.md)对象传递至Native侧，使用NDK接口进行Surface生命周期的相关设置和[添加事件监听](../../../ui/ndk-add-component-events.md)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -484,7 +484,7 @@ XComponent的Native加载完成后回调事件，用于向开发者传递XCompon
 
 | 参数名   | 类型   | 必填   | 说明                                       |
 | ----- | ------ | ---- | ---------------------------------------- |
-| event | object | 否    | 获取XComponent实例对象的context，context上挂载的方法由开发者在Native层定义。不传该参数时无法获取context。当需要在回调中使用Native层定义的方法时传入此参数；不传入时，回调中无法获取context对象。 |
+| event | object | 否    | 获取XComponent实例对象的context，context上挂载的方法由开发者在Native层定义。当需要在回调中使用Native层定义的方法时传入此参数；不传入时，回调中无法获取context对象。 |
 
 ## XComponentController
 
@@ -879,7 +879,7 @@ lockCanvas(): DrawingCanvas | null
 **返回值：**
 | 类型                                 | 说明                                  |
 | ------------------------------------ | ------------------------------------- |
-| [DrawingCanvas](ts-drawingrenderingcontext.md#drawingcanvas12对象说明) \| null | 可用于向XComponent区域绘制的画布对象或者空对象null。 |
+| [DrawingCanvas](ts-drawingrenderingcontext.md#drawingcanvas对象说明) \| null | 可用于向XComponent区域绘制的画布对象或者空对象null。 |
 
 > **说明：**
 >
@@ -914,7 +914,7 @@ unlockCanvasAndPost(canvas: DrawingCanvas): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| canvas | [DrawingCanvas](ts-drawingrenderingcontext.md#drawingcanvas12对象说明) | 是 | 之前调用lockCanvas方法返回的画布对象。 |
+| canvas | [DrawingCanvas](ts-drawingrenderingcontext.md#drawingcanvas对象说明) | 是 | 之前调用lockCanvas方法返回的画布对象。 |
 
 > **说明：**
 >

@@ -191,7 +191,7 @@ enum OH_NativeXComponent_KeyCode
 | KEY_NUMPAD_RIGHT_PAREN = 2122 | 小键盘按键')'。 |
 | KEY_VIRTUAL_MULTITASK = 2210 | 虚拟多任务键。 |
 | KEY_SLEEP = 2600 | 睡眠键。 |
-| KEY_ZENKAKU_HANKAKU = 2601 | 日文全宽/半宽键。 |
+| KEY_ZENKAKU_HANKAKU = 2601 | 日文全角/半角键。 |
 | KEY_102ND = 2602 | 非美式键盘布局（102键）上的额外按键，通常位于左Shift键右侧（对应'<'、'>'或'\|'、'\'字符）。 |
 | KEY_RO = 2603 | 日文Ro键。 |
 | KEY_KATAKANA = 2604 | 日文片假名键。 |
@@ -248,7 +248,7 @@ enum OH_NativeXComponent_KeyCode
 | KEY_DOCUMENTS = 2656 | 文档键。 |
 | KEY_VIDEO_NEXT = 2657 | 下一个视频键。 |
 | KEY_VIDEO_PREV = 2658 | 上一个视频键。 |
-| KEY_BRIGHTNESS_CYCLE = 2659 | 背光渐变键。 |
+| KEY_BRIGHTNESS_CYCLE = 2659 | 亮度循环切换键。 |
 | KEY_BRIGHTNESS_ZERO = 2660 | 亮度调节为0键。 |
 | KEY_DISPLAY_OFF = 2661 | 显示关闭键。 |
 | KEY_BTN_MISC = 2662 | 游戏手柄上的各种按键。 |
@@ -297,8 +297,8 @@ enum OH_NativeXComponent_KeyCode
 | KEY_PRESENTATION = 2705 | 演示文稿键。 |
 | KEY_DATABASE = 2706 | 数据库键。 |
 | KEY_NEWS = 2707 | 新闻键。 |
-| KEY_VOICEMAIL = 2708 | 语音信箱。 |
-| KEY_ADDRESSBOOK = 2709 | 通讯簿。 |
+| KEY_VOICEMAIL = 2708 | 语音信箱键。 |
+| KEY_ADDRESSBOOK = 2709 | 通讯簿键。 |
 | KEY_MESSENGER = 2710 | 通信键。 |
 | KEY_BRIGHTNESS_TOGGLE = 2711 | 亮度切换键。 |
 | KEY_SPELLCHECK = 2712 | 拼写检查键。 |
@@ -306,7 +306,7 @@ enum OH_NativeXComponent_KeyCode
 | KEY_MEDIA_REPEAT = 2714 | 媒体循环键。 |
 | KEY_IMAGES = 2715 | 图像键。 |
 | KEY_BUTTONCONFIG = 2716 | 按键配置键。 |
-| KEY_TASKMANAGER = 2717 | 任务管理器。 |
+| KEY_TASKMANAGER = 2717 | 任务管理器键。 |
 | KEY_JOURNAL = 2718 | 日志按键。 |
 | KEY_CONTROLPANEL = 2719 | 控制面板键。 |
 | KEY_APPSELECT = 2720 | 应用程序选择键。 |
@@ -363,8 +363,8 @@ enum OH_NativeXComponent_KeyCode
 | KEY_SWITCHVIDEOMODE = 2841 | 在可用视频之间循环输出（监视器/LCD/TV输出等）。 |
 | KEY_BATTERY = 2842 | 电池按键。 |
 | KEY_BLUETOOTH = 2843 | 蓝牙按键。 |
-| KEY_WLAN = 2844 | 无线局域网。 |
-| KEY_UWB = 2845 | 超宽带（UWB）。 |
+| KEY_WLAN = 2844 | 无线局域网按键。 |
+| KEY_UWB = 2845 | 超宽带（UWB）按键。 |
 | KEY_WWAN_WIMAX = 2846 | WWAN WiMAX按键。 |
 | KEY_RFKILL = 2847 | 射频关闭键。 |
 | KEY_CHANNEL = 3001 | 频道键。 |

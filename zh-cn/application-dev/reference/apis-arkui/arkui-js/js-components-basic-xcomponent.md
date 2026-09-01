@@ -39,8 +39,8 @@
 
 | 名称                               | 功能描述                                     |
 | -------------------------------- | ---------------------------------------- |
-| onLoad(context?: object) => void | 插件（通过libraryname属性加载的Native动态库）加载完成时回调事件。<br/>context：开发者扩展的xcomponent方法的实例对象，context对象的接口由开发者自定义。 |
-| onDestroy() => void              | 插件销毁完成时回调事件。                             |
+| onLoad(context?: object) => void | xcomponent组件加载完成时触发该回调；若设置了libraryname属性，则在插件（通过libraryname属性加载的Native动态库）加载完成时触发。<br/>context：开发者扩展的xcomponent方法的实例对象，context对象的接口由开发者自定义。 |
+| onDestroy() => void              | xcomponent组件销毁时触发该回调；若设置了libraryname属性，则在插件销毁完成时触发。 |
 
 ## 方法
 
