@@ -1289,7 +1289,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCaptureAreaHighlight(struct OH
 
 > **说明：**
 >
-> 此功能只在使用[录制指定窗口模式](capi-native-avscreen-capture-base-h.md#oh_capturemode)或Picker选择窗口录制时生效。
+> 此功能只在[OH_CaptureMode](capi-native-avscreen-capture-base-h.md#oh_capturemode)设置为OH_CAPTURE_SPECIFIED_WINDOW指定窗口进行录制，或使用Picker选择窗口进行录制时生效。
 
 **起始版本：** 22
 
