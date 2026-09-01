@@ -1,12 +1,10 @@
 # @ohos.file.photoAccessHelper (Album Management) (System API)
-
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=064bb08ccf99717a1b68e90ff57938ff22079494 translatedAt=2026-08-17T10:28:44.070Z pushedAt=2026-08-19T05:51:59.876Z -->
 
 The module provides APIs for album management, including creating an album and accessing and modifying media data in an album.
 
@@ -20,7 +18,6 @@ The module provides APIs for album management, including creating an album and a
 ```ts
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 ```
-
 ## photoAccessHelper.getPhotoAccessHelper<sup>19+</sup>
 
 getPhotoAccessHelper(context: Context, userId: number): PhotoAccessHelper
@@ -78,9 +75,7 @@ struct Index {
   }
 }
 ```
-
 ​
-
 ## PhotoAccessHelper
 
 ### createAsset
@@ -90,11 +85,8 @@ createAsset(displayName: string, callback: AsyncCallback&lt;PhotoAsset&gt;): voi
 Creates an image or video asset with the specified file name. This API uses an asynchronous callback to return the result.
 
 The file name must meet the following requirements:
-
 - A valid file name must include a base name and a supported image or video extension.
-
 - The total length of the file name must be between 1 and 255 characters.
-
 - The base name must not contain any invalid characters.<br>Starting from API version 18, the following characters are considered invalid: \ / : * ? " < > | <br>For API versions 10 to 17, the following characters are considered invalid: . .. \ / : * ? " ' ` < > | { } [ ]
 
 **System API**: This is a system API.
@@ -153,11 +145,8 @@ createAsset(displayName: string): Promise&lt;PhotoAsset&gt;
 Creates an image or video asset with the specified file name. This API uses a promise to return the result.
 
 The file name must meet the following requirements:
-
 - A valid file name must include a base name and a supported image or video extension.
-
 - The total length of the file name must be between 1 and 255 characters.
-
 - The base name must not contain any invalid characters.<br>Starting from API version 18, the following characters are considered invalid: \ / : * ? " < > | <br>For API versions 10 to 17, the following characters are considered invalid: . .. \ / : * ? " ' ` < > | { } [ ]
 
 **System API**: This is a system API.
@@ -220,11 +209,8 @@ createAsset(displayName: string, options: PhotoCreateOptions, callback: AsyncCal
 Creates an image or video asset with the specified file name and options. This API uses an asynchronous callback to return the result.
 
 The file name must meet the following requirements:
-
 - A valid file name must include a base name and a supported image or video extension.
-
 - The total length of the file name must be between 1 and 255 characters.
-
 - The base name must not contain any invalid characters.<br>Starting from API version 18, the following characters are considered invalid: \ / : * ? " < > | <br>For API versions 10 to 17, the following characters are considered invalid: . .. \ / : * ? " ' ` < > | { } [ ]
 
 **System API**: This is a system API.
@@ -287,11 +273,8 @@ createAsset(displayName: string, options: PhotoCreateOptions): Promise&lt;PhotoA
 Creates an image or video asset with the specified file name and options. This API uses a promise to return the result.
 
 The file name must meet the following requirements:
-
 - A valid file name must include a base name and a supported image or video extension.
-
 - The total length of the file name must be between 1 and 255 characters.
-
 - The base name must not contain any invalid characters.<br>Starting from API version 18, the following characters are considered invalid: \ / : * ? " < > | <br>For API versions 10 to 17, the following characters are considered invalid: . .. \ / : * ? " ' ` < > | { } [ ]
 
 **System API**: This is a system API.
@@ -358,11 +341,8 @@ createAlbum(name: string, callback: AsyncCallback&lt;Album&gt;): void
 Creates an album. This API uses an asynchronous callback to return the result.
 
 The album name must meet the following requirements:
-
 - The total length of the album name must be between 1 and 255 characters.
-
 - It must not contain any invalid characters, which are:<br> . .. \ / : * ? " ' ` < > | { } [ ]
-
 - Duplicate album names are not allowed.
 
 > **NOTE**
@@ -422,11 +402,8 @@ createAlbum(name: string): Promise&lt;Album&gt;
 Creates an album. This API uses a promise to return the result.
 
 The album name must meet the following requirements:
-
 - The total length of the album name must be between 1 and 255 characters.
-
 - It must not contain any invalid characters, which are:<br> . .. \ / : * ? " ' ` < > | { } [ ]
-
 - Duplicate album names are not allowed.
 
 > **NOTE**
@@ -669,7 +646,7 @@ async function getHiddenAlbumsView(phAccessHelper: photoAccessHelper.PhotoAccess
   };
   phAccessHelper.getHiddenAlbums(photoAccessHelper.HiddenPhotosDisplayMode.ALBUMS_MODE, fetchOptions,
     async (err, fetchResult) => {
-      if (err !== undefined) {
+      if (err) {
         console.error(`getHiddenAlbumsViewCallback failed with error: ${err.code}, ${err.message}`);
         return;
       }
@@ -933,7 +910,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       return;
     }
     phAccessHelper.deleteAssets([asset.uri], (err) => {
-      if (err === undefined) {
+      if (!err) {
         console.info('deleteAssets successfully');
       } else {
         console.error(`deleteAssets failed with error: ${err.code}, ${err.message}`);
@@ -1082,7 +1059,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let photoAsset: photoAccessHelper.PhotoAsset = await photoFetchResult.getObjectByPosition(expectIndex);
 
     phAccessHelper.getPhotoIndex(photoAsset.uri, album.albumUri, fetchOptions, (err, index) => {
-      if (err === undefined) {
+      if (!err) {
         console.info(`getPhotoIndex successfully and index is : ${index}`);
       } else {
         console.error(`getPhotoIndex failed; error: ${err.code}, ${err.message}`);
@@ -1204,6 +1181,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
 | 14000011       | System inner fail.         |
 
+
 **Example**
 
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
@@ -1229,7 +1207,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 
   phAccessHelper.saveFormInfo(info, async (err: BusinessError) => {
-    if (err == undefined) {
+    if (!err) {
       console.info('saveFormInfo success');
     } else {
       console.error(`saveFormInfo fail with error: ${err.code}, ${err.message}`);
@@ -1351,7 +1329,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 
   phAccessHelper.removeFormInfo(info, async (err: BusinessError) => {
-    if (err == undefined) {
+    if (!err) {
       console.info('removeFormInfo success');
     } else {
       console.error(`removeFormInfo fail with error: ${err.code}, ${err.message}`);
@@ -1461,13 +1439,20 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+import { common } from '@kit.AbilityKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+public context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+public phAccessHelper = photoAccessHelper.getPhotoAccessHelper(this.context);
+@State selfTokenId: number = this.context.abilityInfo.applicationInfo.accessTokenId;
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper,
+  tokenId: number) {
   console.info('createAssetsForAppDemo.');
 
   try {
     let bundleName: string = 'testBundleName';
     let appName: string = 'testAppName';
-    let tokenId: number = 537197950;
     let photoCreationConfigs: Array<photoAccessHelper.PhotoCreationConfig> = [
       {
         title: 'test',
@@ -1509,7 +1494,7 @@ Grants an application the permission to access a URI. This API uses a promise to
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise&lt;number&gt; | Promise used to return the result. The value **0** means that the permission is granted to the application. The value **1** means that the application already has the permission. The value **-1** means that the permission fails to be granted.|
+| Promise&lt;number&gt; | Promise used to return the authorization result. **0**: The authorization is successful. **1**: The permission has been granted. **-1**: The authorization fails.|
 
 **Error codes**
 
@@ -1527,11 +1512,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+import { common } from '@kit.AbilityKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+public context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+public phAccessHelper = photoAccessHelper.getPhotoAccessHelper(this.context);
+@State selfTokenId: number = this.context.abilityInfo.applicationInfo.accessTokenId;
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper,
+  tokenId: number) {
   console.info('grantPhotoUriPermissionDemo');
 
   try {
-    let tokenId = 502334412;
     let result = await phAccessHelper.grantPhotoUriPermission(tokenId,
         'file://media/Photo/1/IMG_datetime_0001/displayName.jpg',
         photoAccessHelper.PhotoPermissionType.TEMPORARY_READ_IMAGEVIDEO,
@@ -1539,7 +1531,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
     console.info('grantPhotoUriPermission success, result=' + result);
   } catch (err) {
-    console.error('grantPhotoUriPermission failed, error=' + err);
+    console.error(`grantPhotoUriPermission failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1569,7 +1561,7 @@ Grants an application the permission to access multiple URIs. This API uses a pr
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise&lt;number&gt; | Promise used to return the result. The value **0** means that the permission is granted to the application. The value **-1** means that the permission fails to be granted.|
+| Promise&lt;number&gt; | Promise used to return the authorization result. **0**: The authorization is successful. **-1**: The authorization fails. |
 
 **Error codes**
 
@@ -1587,7 +1579,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+import { common } from '@kit.AbilityKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+public context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+public phAccessHelper = photoAccessHelper.getPhotoAccessHelper(this.context);
+@State selfTokenId: number = this.context.abilityInfo.applicationInfo.accessTokenId;
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper,
+  tokenId: number) {
   console.info('grantPhotoUrisPermissionDemo');
 
   try {
@@ -1595,14 +1595,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let uris: Array<string> = [
       'file://media/Photo/11/IMG_datetime_0001/displayName1.jpg',
       'file://media/Photo/22/IMG_datetime_0002/displayName2.jpg'];
-    let tokenId = 502334412;
     let result = await phAccessHelper.grantPhotoUrisPermission(tokenId, uris,
         photoAccessHelper.PhotoPermissionType.TEMPORARY_READ_IMAGEVIDEO,
         photoAccessHelper.HideSensitiveType.HIDE_LOCATION_AND_SHOOTING_PARAM);
 
     console.info('grantPhotoUrisPermission success, result=' + result);
   } catch (err) {
-    console.error('grantPhotoUrisPermission failed, error=' + err);
+    console.error(`grantPhotoUrisPermission failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1631,7 +1630,7 @@ Cancels the permission for accessing a URI from an application. This API uses a 
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise&lt;number&gt; | Promise used to return the result. The value **0** means the operation is successful, and the value **-1** means the opposite.|
+| Promise&lt;number&gt; | Promise used to return the cancellation result. **0**: The cancellation is successful. **-1**: The cancellation fails.|
 
 **Error codes**
 
@@ -1649,18 +1648,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+import { common } from '@kit.AbilityKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+public context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+public phAccessHelper = photoAccessHelper.getPhotoAccessHelper(this.context);
+@State selfTokenId: number = this.context.abilityInfo.applicationInfo.accessTokenId;
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper,
+  tokenId: number) {
   console.info('cancelPhotoUriPermissionDemo');
 
   try {
-    let tokenId = 502334412;
     let result = await phAccessHelper.cancelPhotoUriPermission(tokenId,
         'file://media/Photo/11/IMG_datetime_0001/displayName.jpg',
         photoAccessHelper.PhotoPermissionType.TEMPORARY_READ_IMAGEVIDEO);
 
     console.info('cancelPhotoUriPermission success, result=' + result);
   } catch (err) {
-    console.error('cancelPhotoUriPermission failed, error=' + err);
+    console.error(`cancelPhotoUriPermission failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1681,14 +1687,14 @@ Generates a thumbnail based on the specified rule.
 
 | Name     | Type                                   | Mandatory| Description            |
 | ---------  | --------------------------------------- | ---- | --------------- |
-| predicates | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | Rule for generating the thumbnail. |
+| predicate  | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | Rule for generating the thumbnail. |
 | callback   | AsyncCallback&lt;void&gt;               | Yes  | Callback used to return the result. If the operation is successful, the notification task ends, and **err** is undefined. If the task fails, **err** is an error object.|
 
 **Return value**
 
 | Type                 | Description                 |
 | --------------------- | -------------------- |
-| Promise&lt;number&gt; | Promise used to return the ID of the thumbnail generation task.|
+| number                | ID of the thumbnail generation task.|
 
 **Error codes**
 
@@ -1706,7 +1712,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
+import { dataSharePredicates } from '@kit.ArkData';
 
 function testCallBack() {
 
@@ -1766,7 +1772,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
+import { dataSharePredicates } from '@kit.ArkData';
 
 function testCallBack() {
   console.info(`startThumbnailCreationTask: First callback`);
@@ -1828,6 +1834,7 @@ For details about how to create a phAccessHelper instance, see the example provi
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
     console.info('stopThumbnailCreationTask test start');
+    // taskId is the return value of startThumbnailCreationTask(). The value here is only an example.
     let taskId: number = 75983;
     phAccessHelper.stopThumbnailCreationTask(taskId);
   } catch (err) {
@@ -1848,6 +1855,7 @@ Obtains the index construction progress. This API uses a promise to return the r
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
+
 **Return value**
 
 | Type                       | Description          |
@@ -1857,6 +1865,7 @@ Obtains the index construction progress. This API uses a promise to return the r
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
+
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1871,7 +1880,7 @@ For details about how to create a phAccessHelper instance, see the example provi
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
-  class indexProgress {
+  class IndexProgress {
     finishedImageCount: number = 0;
     totalImageCount: number = 0;
     finishedVideoCount: number = 0;
@@ -1883,7 +1892,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let result: string = await phAccessHelper.getIndexConstructProgress();
     console.info('getIndexProgress:' + result);
 
-    let jsonObj: indexProgress = JSON.parse(result);
+    let jsonObj: IndexProgress = JSON.parse(result);
     //...Use the obtained index construction progress data.
   } catch (err) {
     console.error(`getIndexConstructProgress failed, error: ${err.code}, ${err.message}`);
@@ -2178,7 +2187,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 createAssetsForAppWithMode(bundleName: string, appName: string, appId: string, tokenId: number, authorizationMode: AuthorizationMode, photoCreationConfigs:Array\<PhotoCreationConfig>): Promise\<Array\<string>>
 
-Creates assets with a temporary permission. This API uses a promise to return the result.
+Creates assets with a temporary permission. The permission is valid for 300 seconds. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -2195,13 +2204,13 @@ Creates assets with a temporary permission. This API uses a promise to return th
 | appId| string | Yes| ID of the target application.|
 | tokenId| number| Yes| Unique identifier for the temporary authorization.|
 | authorizationMode| [AuthorizationMode](#authorizationmode12)| Yes| Authorization mode. No confirmation dialog box is displayed when the application with the temporary permission saves media assets in the give period of time.|
-| PhotoCreationConfig| Array\<[PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)> | Yes| Configuration for creating (saving) the media assets in the media library.|
+| photoCreationConfigs | Array\<[PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)\> | Yes| Configuration for creating (saving) the media assets in the media library.|
 
 **Return value**
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise\<Array\<string>> | Promise used to return the URIs of the media asset files in the media library. The target application (identified by **appid**) can write the media assets based on the URIs without requesting the write permission. If the URIs fail to be generated, a batch creation error code will be returned.<br>The error code **-3006** means that there are invalid characters; **-2004** means that the image type does not match the file name extension; **-203** means that the file operation is abnormal.|
+| Promise\<Array\<string>> | Promise used to return the URIs of the media asset files in the media library. The target application (identified by **appId**) can write the media assets based on the URIs without requesting the write permission. If the URIs fail to be generated, a batch creation error code will be returned.<br>The error code **-3006** means that there are invalid characters; **-2004** means that the image type does not match the file name extension; **-203** means that the file operation is abnormal.|
 
 **Error codes**
 
@@ -2219,7 +2228,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+import { common } from '@kit.AbilityKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+public context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+public phAccessHelper = photoAccessHelper.getPhotoAccessHelper(this.context);
+@State selfTokenId: number = this.context.abilityInfo.applicationInfo.accessTokenId;
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper,
+  tokenId: number) {
   console.info('createAssetsForAppWithModeDemo.');
 
   try {
@@ -2234,7 +2251,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let bundleName: string = 'testBundleName';
     let appName: string = 'testAppName';
     let appId: string = 'testAppId';
-    let tokenId: number = 537197950;
     let authorizationMode: photoAccessHelper.AuthorizationMode = photoAccessHelper.AuthorizationMode.SHORT_TIME_AUTHORIZATION;
     let result: Array<string> = await phAccessHelper.createAssetsForAppWithMode(bundleName, appName, appId, tokenId, authorizationMode, photoCreationConfigs);
     console.info(`result: ${JSON.stringify(result)}`);
@@ -2444,6 +2460,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+
 ### getAlbumsByIds<sup>18+</sup>
 
 getAlbumsByIds(albumIds: Array&lt;number&gt;): Promise&lt;Map&lt;number, Album&gt;&gt;
@@ -2519,7 +2536,7 @@ Creates assets for the current application or other applications in the specifie
 | source  | [PhotoCreationSource](#photocreationsource18)         | Yes  | Application information provided to create assets on behalf of the application.                                    |
 | albumUri  | string             | Yes  | URI of the album.                                    |
 | isAuthorized  |  boolean              | Yes  | Whether to authorize other applications. **true** to authorize, **false** otherwise.                                    |
-| PhotoCreationConfigs| Array\<[PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)> | Yes| Configuration for creating (saving) the media assets in the media library.|
+| photoCreationConfigs | Array\<[PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)\> | Yes| Configuration for creating (saving) the media assets in the media library.|
 
 **Return value**
 
@@ -2543,7 +2560,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+import { common } from '@kit.AbilityKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+public context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+public phAccessHelper = photoAccessHelper.getPhotoAccessHelper(this.context);
+@State selfTokenId: number = this.context.abilityInfo.applicationInfo.accessTokenId;
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, 
+  tokenId: number) {
   console.info('createAssetsForAppWithAlbumDemo.');
 
   try {
@@ -2551,7 +2576,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       bundleName: 'testBundleName',
       appName: 'testAppName',
       appId: 'testAppId',
-      tokenId: 537197950,
+      tokenId: tokenId,
     }
     let albumUri: string = 'file://media/PhotoAlbum/10';
     let isAuthorized: boolean = true;
@@ -2571,7 +2596,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-### on('hiddenPhotoChange')<sup>20+</sup>
+### on('hiddenPhotoChange')<sup>20+</sup> 
 
 on(type: 'hiddenPhotoChange', callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
@@ -2606,7 +2631,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -2631,7 +2655,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper){
 }
 ```
 
-### off('hiddenPhotoChange')<sup>20+</sup>
+### off('hiddenPhotoChange')<sup>20+</sup> 
 
 off(type: 'hiddenPhotoChange', callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
@@ -2666,7 +2690,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -2694,7 +2717,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper){
 }
 ```
 
-### on('trashedPhotoChange')<sup>20+</sup>
+### on('trashedPhotoChange')<sup>20+</sup> 
 
 on(type: 'trashedPhotoChange', callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
@@ -2729,7 +2752,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
@@ -2754,7 +2776,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-### off('trashedPhotoChange')<sup>20+</sup>
+### off('trashedPhotoChange')<sup>20+</sup> 
 
 off(type: 'trashedPhotoChange', callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
@@ -2789,7 +2811,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
@@ -2817,11 +2838,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-### onAnalysisPhotoChange<sup>23+</sup>
+### onAnalysisPhotoChange<sup>23+</sup> 
 
 onAnalysisPhotoChange(callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
-Listens for the changes of media assets associated with the smart analysis album. The change carries the smart analysis album change information. The asset change notification is sent only when the asset change involves the smart analysis album information change. The asset change result is returned through the callback. Multiple callbacks can be registered. This API uses an asynchronous callback to return the result.
+Listens for media asset changes related to the smart analysis album. When an asset change involves information change of the smart analysis album, the asset change result is returned through a callback. Multiple callbacks can be registered. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -2843,7 +2864,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 201 | Permission denied. |
 | 202 | Called by non-system application. |
-| 23800151  | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'trashedPhotoChange'; 2. The same callback is registered repeatedly. |
+| 23800151  | The scenario parameter verification fails.<br>Possible causes: The same callback is registered repeatedly.  |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **Example**
@@ -2851,7 +2872,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
@@ -2876,7 +2896,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-### offAnalysisPhotoChange<sup>23+</sup>
+### offAnalysisPhotoChange<sup>23+</sup> 
 
 offAnalysisPhotoChange(callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
@@ -2902,7 +2922,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 201 | Permission denied. |
 | 202 | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'trashedPhotoChange'; 2. The same callback is unregistered repeatedly. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: The same callback is unregistered repeatedly. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **Example**
@@ -2910,7 +2930,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
@@ -2926,9 +2945,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
   try {
     // Register onCallback1.
-    phAccessHelper.offAnalysisPhotoChange(onCallback1);
+    phAccessHelper.onAnalysisPhotoChange(onCallback1);
     // Register onCallback2.
-    phAccessHelper.offAnalysisPhotoChange(onCallback2);
+    phAccessHelper.onAnalysisPhotoChange(onCallback2);
 
     // Unregister the listening of onCallback1.
     phAccessHelper.offAnalysisPhotoChange(onCallback1);
@@ -2938,7 +2957,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-### on('hiddenAlbumChange')<sup>20+</sup>
+### on('hiddenAlbumChange')<sup>20+</sup> 
 
 on(type: 'hiddenAlbumChange', callback: Callback&lt;AlbumChangeInfos&gt;): void
 
@@ -2973,7 +2992,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -2998,7 +3016,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper){
 }
 ```
 
-### off('hiddenAlbumChange')<sup>20+</sup>
+### off('hiddenAlbumChange')<sup>20+</sup> 
 
 off(type: 'hiddenAlbumChange', callback?: Callback&lt;AlbumChangeInfos&gt;): void
 
@@ -3033,7 +3051,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -3061,7 +3078,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper){
 }
 ```
 
-### on('trashedAlbumChange')<sup>20+</sup>
+### on('trashedAlbumChange')<sup>20+</sup> 
 
 on(type: 'trashedAlbumChange', callback: Callback&lt;AlbumChangeInfos&gt;): void
 
@@ -3096,7 +3113,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -3121,7 +3137,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-### off('trashedAlbumChange')<sup>20+</sup>
+### off('trashedAlbumChange')<sup>20+</sup> 
 
 off(type: 'trashedAlbumChange', callback?: Callback&lt;AlbumChangeInfos&gt;): void
 
@@ -3156,7 +3172,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -3184,7 +3199,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-### onAnalysisAlbumChange<sup>23+</sup>
+### onAnalysisAlbumChange<sup>23+</sup> 
 
 onAnalysisAlbumChange(callback: Callback&lt;AlbumChangeInfos&gt;): void
 
@@ -3210,7 +3225,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 201 | Permission denied. |
 | 202 | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'hiddenAlbumChange'; 2. The same callback is registered repeatedly. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: The same callback is registered repeatedly.                                                  |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **Example**
@@ -3218,7 +3233,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -3243,7 +3257,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper){
 }
 ```
 
-### offAnalysisAlbumChange<sup>23+</sup>
+### offAnalysisAlbumChange<sup>23+</sup> 
 
 offAnalysisAlbumChange(callback?: Callback&lt;AlbumChangeInfos&gt;): void
 
@@ -3269,7 +3283,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 201 | Permission denied. |
 | 202 | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'hiddenAlbumChange'; 2. The same callback is unregistered repeatedly. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: The same callback is unregistered repeatedly. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **Example**
@@ -3277,7 +3291,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -3309,7 +3322,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper){
 
 isCompatibleDuplicateSupported(bundleName: string): Promise&lt;boolean&gt;
 
-Checks whether a temporary JPEG copy should be created for an application. This API uses a promise to return the result.
+Check result for whether a temporary JPEG copy should be created for the application. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -3355,7 +3368,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-### getPhotoAlbums<sup>20+</sup>
+### getPhotoAlbums<sup>20+</sup> 
 
 getPhotoAlbums(options?: FetchOptions): Promise&lt;FetchResult&lt;Album&gt;&gt;
 
@@ -3391,6 +3404,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202      | Called by non-system application.                            |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
+
 **Example**
 
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
@@ -3420,7 +3434,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-### getPhotoAlbumOrder<sup>20+</sup>
+### getPhotoAlbumOrder<sup>20+</sup> 
 
 getPhotoAlbumOrder(orderStyle: number, options?: FetchOptions): Promise&lt;FetchResult&lt;AlbumOrder&gt;&gt;
 
@@ -3486,7 +3500,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-### setPhotoAlbumOrder<sup>20+</sup>
+### setPhotoAlbumOrder<sup>20+</sup> 
 
 setPhotoAlbumOrder(orderStyle: number, albumOrders: Array&lt;AlbumOrder&gt;): Promise&lt;void&gt;
 
@@ -3509,7 +3523,7 @@ Sets the sorting order for system, user, and source albums. This API uses a prom
 
 | Type                 | Description                       |
 | --------------------- | --------------------------- |
-| Promise&amp;lt;void&amp;gt;| Promise that returns no value.|
+| Promise&lt;void&gt;        | Promise that returns no value.|
 
 **Error codes**
 
@@ -3616,10 +3630,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 ```
 
 ### getClonedAssetUris<sup>22+</sup>
-
+ 
 getClonedAssetUris(oldUris: Array&lt;string&gt;): Promise&lt;Map&lt;string, string&gt;&gt;
 
-Obtains the current URIs of cloned assets. This API uses a promise to return the result.
+Obtains the current URIs of cloned albums based on old URIs before cloning. This API uses a promise to return the result.
 
 To control the size of the database table space, the system automatically deletes the previously stored clone data during each clone operation. As a result, this API only keeps the mapping between the user's new and old device URIs from the latest clone operation.
 
@@ -3633,7 +3647,7 @@ To control the size of the database table space, the system automatically delete
 
 | Name| Type| Mandatory| Description|
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| oldUris | Array&lt;string&gt; | Yes| Array of old URIs before cloning.|
+| oldUris | Array&lt;string&gt; | Yes| Array of old URIs before cloning. The array size should be within the range of [1, 100].|
 
 **Return value**
 
@@ -3653,7 +3667,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
-
+ 
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
@@ -3675,10 +3689,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 ```
 
 ### getClonedAlbumUris<sup>22+</sup>
-
+ 
 getClonedAlbumUris(oldUris: Array&lt;string&gt;): Promise&lt;Map&lt;string, string&gt;&gt;
 
-Obtains the current URIs of cloned albums. This API uses a promise to return the result.
+Obtains the current URIs of cloned albums based on old URIs before cloning. This API uses a promise to return the result.
 
 To control the size of the database table space, the system automatically deletes the previously stored clone data during each clone operation. As a result, this API only keeps the mapping between the user's new and old device URIs from the latest clone operation.
 
@@ -3692,7 +3706,7 @@ To control the size of the database table space, the system automatically delete
 
 | Name| Type| Mandatory| Description|
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| oldUris | Array&lt;string&gt; | Yes| Array of old URIs before cloning.|
+| oldUris | Array&lt;string&gt; | Yes| Array of old URIs before cloning. The array size should be within the range of [1, 100].|
 
 **Return value**
 
@@ -3825,7 +3839,6 @@ async function example(context: Context) {
 ```
 
 ### addResourceForPicker<sup>22+</sup>
-
 addResourceForPicker(type: ResourceType, fileUri: string): void
 
 Adds a resource using [fileUri](../apis-core-file-kit/js-apis-file-fileuri.md).
@@ -3882,7 +3895,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 ```
 
 ### isMediaDataReady<sup>24+</sup>
-
 isMediaDataReady(mediaDataKey: string): Promise&lt;boolean&gt;
 
 Checks whether the specified media data is ready.
@@ -4123,7 +4135,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 }
 ```
-
 ### convertToAsset
 
 convertToAsset(path: string): Promise&lt;PhotoAsset&gt;
@@ -4769,7 +4780,7 @@ Moves assets in file management to the target album. This API uses a promise to 
 | ---- | ---- | ---- | ---- |
 | assets | string[] | Yes| Array of paths to the assets to be moved. Example: ["/Docs/Download/test.jpg"]|
 | target | [Album](#album) | Yes| Target album.|
-| option | [BatchOperationOptions](#batchoperationoptions) | No| Options for moving assets in batches. If this parameter is not specified, automatic renaming is supported by default, and no progress information is returned.|
+| option | [BatchOperationOptions](#batchoperationoptions) | No| Option for moving assets in batches. If this parameter is not specified, automatic renaming is supported by default, and no progress information is returned.|
 
 **Return value**
 
@@ -4826,7 +4837,7 @@ Creates assets in batches. You can also specify whether to specify an album and 
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| creationSettings | [CreationSetting](arkts-apis-photoAccessHelper-i.md#creationsetting23)[] | Yes| List of settings for creating an asset.|
+| creationSettings | [CreationSetting](arkts-apis-photoAccessHelper-i.md#creationsetting23)[] | Yes| List of settings for creating an asset. The array can contain a maximum of 500 elements.|
 | isRealTimeThumb | boolean | Yes| Whether to generate a thumbnail in real time when an asset is created. The value **true** means to generate a thumbnail in real time when an asset is created, and **false** means the opposite.|
 | albumUri | string | No| URI of the target album specified when an asset is created. If this parameter is not specified, the default value is an empty string.|
 
@@ -4932,7 +4943,7 @@ getDeepOptimizeSpace(): Promise&lt;number&gt;
 
 Obtains the size of storage space available for deep optimization, in bytes. This API uses a promise to return the result.
 
-> - This API is time-consuming. You are advised to call [canPerformDeepOptimizeSpace](#canperformdeepoptimizespace) first to check whether the current system status allows the operation.
+> - This API execution may take a long time. The execution time depends on the amount of data to be processed. You are advised to call [canPerformDeepOptimizeSpace](#canperformdeepoptimizespace) first to check whether the current system status allows the operation.
 > - This API can be called only when **true** is returned.
 
 **Since**: 26.0.0
@@ -5097,6 +5108,7 @@ Obtains the album ID in the media library based on the bundle name. This API use
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 
 **Parameters**
 
@@ -5291,7 +5303,7 @@ Favorites or unfavorites this file asset. This API uses an asynchronous callback
 
 | Name       | Type                       | Mandatory  | Description                                |
 | ---------- | ------------------------- | ---- | ---------------------------------- |
-| favoriteState | boolean                   | Yes    | Whether to set the file as a favorite. The value **true** means to set it as a favorite, and **false** means to cancel the favorite. |
+| favoriteState | boolean                   | Yes   | Whether to favorite the file asset. **true** to favorite, **false** otherwise.|
 | callback   | AsyncCallback&lt;void&gt; | Yes   | Callback that returns no value.                             |
 
 **Error codes**
@@ -5354,7 +5366,7 @@ Favorites or unfavorites this file asset. This API uses a promise to return the 
 
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
-| favoriteState | boolean | Yes | Whether to set the file as a favorite. The value **true** indicates to set the file as a favorite, and **false** indicates to cancel the favorite. |
+| favoriteState | boolean | Yes   | Whether to favorite the file asset. **true** to favorite, **false** otherwise.|
 
 **Return value**
 
@@ -5909,7 +5921,7 @@ The pending state can be removed only through **setPending(false)**. You can use
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-|Promise&lt;boolean&gt; | Promise that returns no value.|
+|Promise&lt;void&gt;    | Promise that returns no value.|
 
 **Error codes**
 
@@ -5934,7 +5946,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let photoAsset = await phAccessHelper.createAsset(testFileName);
     await photoAsset.setPending(true);
     // add asset resource.
-    photoAsset.setPending(false);
+    await photoAsset.setPending(false);
   } catch (err) {
     console.error(`setPendingPromiseDemo failed with error: ${err.code}, ${err.message}`);
   }
@@ -6021,6 +6033,7 @@ Checks whether this image or video asset is edited. This API uses a promise to r
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
 |Promise&lt;boolean&gt; | Promise used to return the result indicating whether the image or video asset is edited. **true** if edited, **false** otherwise. The default value is **false**.|
+
 
 **Error codes**
 
@@ -6142,6 +6155,7 @@ If the asset has never been edited, an empty string is returned.
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
 |Promise&lt;string&gt; | Promise used to return the edit data obtained.|
+
 
 **Error codes**
 
@@ -6403,7 +6417,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### commitEditedAsset<sup>11+</sup>
 
-commitEditedAsset(editData: string, uri: string, callback: AsyncCallback&lt;void&gt;)
+commitEditedAsset(editData: string, uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 Commits the edited image or video asset. This API uses an asynchronous callback to return the result.
 
@@ -6545,7 +6559,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### revertToOriginal<sup>11+</sup>
 
-revertToOriginal(callback: AsyncCallback&lt;void&gt;)
+revertToOriginal(callback: AsyncCallback&lt;void&gt;): void
 
 Reverts to the state of the file before being edited. This API uses an asynchronous callback to return the result.
 
@@ -6626,7 +6640,7 @@ Reverts to the state of the file before being edited. This API uses a promise to
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-|Promise&lt;string&gt; | Promise that returns no value.|
+|Promise&lt;void&gt;   | Promise that returns no value.|
 
 **Error codes**
 
@@ -6657,10 +6671,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     if (photoAsset === undefined) {
-      console.error('getHiddenAlbumsViewCallback albums is undefined');
+      console.error('revertToOriginal photoAsset is undefined');
       return;
     }
-    photoAsset.revertToOriginal();
+    await photoAsset.revertToOriginal();
     console.info('revertToOriginal is successful');
   } catch (err) {
     console.error(`revertToOriginalPromiseDemo failed with error: ${err.code}, ${err.message}`);
@@ -6986,7 +7000,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let asset = await fetchResult.getFirstObject();
   console.info('asset displayName = ', asset.displayName);
   asset.getThumbnailData(photoAccessHelper.ThumbnailType.LCD).then((buffer: ArrayBuffer) => {
-    console.info('getThumbnailData successful, buffer byteLength = ${buffer.byteLength}');
+    console.info(`getThumbnailData successful, buffer byteLength = ${buffer.byteLength}`);
   }).catch((err: BusinessError) => {
     console.error(`getThumbnailData fail with error: ${err.code}, ${err.message}`);
   });
@@ -7034,7 +7048,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { common }  from '@kit.AbilityKit';
 import { dataSharePredicates } from '@kit.ArkData';
 import { image } from '@kit.ImageKit';
 
@@ -7087,6 +7100,7 @@ Duplicates an image within the same album (either user-created or application-sp
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
+
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 201 | Permission denied.  | 
@@ -7111,7 +7125,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let photoAsset = await fetchResult.getFirstObject();
   try {
     let newPhotoAsset = await photoAsset.convertImageFormat('test', photoAccessHelper.SupportedImageFormat.AVFILE_FORMAT_JPG);
-    console.error(`convertImageFormat success.`);
+    console.info(`convertImageFormat success.`);
   } catch (err) {
     console.error(`convertImageFormat failed. error: ${err.code}, ${err.message}`);
   }
@@ -7130,40 +7144,40 @@ Describes the information about a shared media asset.
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | --- | ---- | ---- | --- |
-| fileId | number | No| No| ID of the media asset.<br>**System API**: This is a system API.|
-| uri | string | No| No| URI of the media asset.<br>**System API**: This is a system API.|
-| data | string | No| No| Path data of the media asset.<br>**System API**: This is a system API.|
-| mediaType | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | No| No| Media type of the media asset.<br>**System API**: This is a system API.|
-| displayName | string | No| No| Display name of the media asset.<br>**System API**: This is a system API.|
-| size | number  | No| No| Size of the media asset file, in bytes.<br>**System API**: This is a system API.|
-| dataAdded | number | No| No| Data of the added media asset, in seconds.<br>**System API**: This is a system API.|
-| dataModified | number | No| No| Data of the modified media asset, in seconds.<br>**System API**: This is a system API.|
-| duration | number | No| No| Duration of the video-type media asset, in milliseconds.<br>**System API**: This is a system API.|
-| width | number | No| No| Width of the media asset, in pixels.<br>**System API**: This is a system API.|
-| height | number | No| No| Height of the media asset, in pixels.<br>**System API**: This is a system API.|
-| dataTaken | number | No| No| Time when the media asset is saved to the local host after being taken, in seconds.<br>**System API**: This is a system API.|
-| orientation | number | No| No| Rotation angle of the media asset, in degrees.<br>**System API**: This is a system API.|
-| isFavorite | boolean | No| No| Whether the media asset is marked as a favorite. **true** if marked, **false** otherwise.<br>**System API**: This is a system API.|
-| title | string | No| No| Title of the media asset.<br>**System API**: This is a system API.|
-| position | [PositionType](arkts-apis-photoAccessHelper-e.md#positiontype16) | No| No| Location of the media asset.<br>**System API**: This is a system API.|
-| dataTrashed | number | No| No| Whether the media asset is moved to the trash.<br>**System API**: This is a system API.|
-| hidden | boolean | No| No| Whether the media asset is hidden. **true** if hidden, **false** otherwise.<br>**System API**: This is a system API.|
-| userComment | string | No| No| User comments on the media asset.<br>**System API**: This is a system API.|
-| cameraShotKey | string | No| No| Camera shot information of the media asset.<br>**System API**: This is a system API.|
-| dateYear | string | No| No| Year when the media asset was created.<br>**System API**: This is a system API.|
-| dateMonth | string | No| No| Month when the media asset was created.<br>**System API**: This is a system API.|
-| dateDay | string | No| No| Time when the media asset was created.<br>**System API**: This is a system API.|
-| pending | boolean | No| No| Whether the media asset is in a pending state. **true** if pending, **false** otherwise.<br>**System API**: This is a system API.|
-| dateAddedMs | number | No| No| Time elapsed after the media asset was added, in milliseconds.<br>**System API**: This is a system API.|
-| dateTrashedMs | number | No| No| Time elapsed after the media asset was moved to the recycle bin, in milliseconds.<br>**System API**: This is a system API.|
-| subtype | [PhotoSubtype](#photosubtype) | No| No| Subtype of the media asset.<br>**System API**: This is a system API.|
-| movingPhotoEffectMode | [MovingPhotoEffectMode](#movingphotoeffectmode12) | No| No| Effect of the moving photo.<br>**System API**: This is a system API.|
-| dynamicRangeType | [DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12) | No| No| Dynamic range type of the media asset.<br>**System API**: This is a system API.|
-| thumbnailReady | boolean | No| No| Whether the thumbnail of the media asset is ready. **true** if ready, **false** otherwise.<br>**System API**: This is a system API.|
-| lcdSize | string | No| No| Width and height of the LCD thumbnail of the media asset.<br>**System API**: This is a system API.|
-| thmSize | string | No| No| Width and height of the thumb thumbnail of the media asset.<br>**System API**: This is a system API.|
-| thumbnailModifiedMs<sup>14+</sup> | number | No| Yes| Time elapsed since the thumbnail status of the media asset changed, in milliseconds.<br>**System API**: This is a system API.|
-| thumbnailVisible<sup>14+</sup> | [ThumbnailVisibility](#thumbnailvisibility14) | No| No| Whether the thumbnail of the media asset is visible.<br>**System API**: This is a system API.|
+| fileId | number | No| No| ID of the media asset.|
+| uri | string | No| No| URI of the media asset.|
+| data | string | No| No| Path data of the media asset.|
+| mediaType | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | No| No| Media type of the media asset.|
+| displayName | string | No| No| Display name of the media asset.|
+| size | number  | No| No| Size of the media asset file, in bytes.|
+| dateAdded | number | No| No| Data of the added media asset, in seconds.|
+| dateModified | number | No| No| Data of the modified media asset, in seconds.|
+| duration | number | No| No| Duration of the video-type media asset, in milliseconds.|
+| width | number | No| No| Width of the media asset, in pixels.|
+| height | number | No| No| Width of the media asset, in pixels.|
+| dateTaken | number | No| No| Time when the media asset was taken, in seconds.   |
+| orientation | number | No| No| Rotation angle of the media asset, in degrees.|
+| isFavorite | boolean | No| No| Whether the media asset is marked as a favorite. **true** if marked, **false** otherwise.|
+| title | string | No| No| Title of the media asset.|
+| position | [PositionType](arkts-apis-photoAccessHelper-e.md#positiontype16) | No| No| Location of the media asset.|
+| dateTrashed | number | No| No| Time when the media asset was moved to the recycle bin, in seconds.|
+| hidden | boolean | No| No| Whether the media asset is hidden. **true** if hidden, **false** otherwise.|
+| userComment | string | No| No| User comments on the media asset.|
+| cameraShotKey | string | No| No| Camera shot information of the media asset.|
+| dateYear | string | No| No| Year when the media asset was created.|
+| dateMonth | string | No| No| Month when the media asset was created.|
+| dateDay | string | No| No| Time when the media asset was created.|
+| pending | boolean | No| No| Whether the media asset is in a pending state. **true** if pending, **false** otherwise.|
+| dateAddedMs | number | No| No| Time elapsed after the media asset was added, in milliseconds.|
+| dateTrashedMs | number | No| No| Time elapsed after the media asset was moved to the recycle bin, in milliseconds.|
+| subtype | [PhotoSubtype](#photosubtype) | No| No| Subtype of the media asset.|
+| movingPhotoEffectMode | [MovingPhotoEffectMode](#movingphotoeffectmode12) | No| No| Effect of the moving photo.|
+| dynamicRangeType | [DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12) | No| No| Dynamic range type of the media asset.|
+| thumbnailReady | boolean | No| No| Whether the thumbnail of the media asset is ready. **true** if ready, **false** otherwise.|
+| lcdSize | string | No| No| Width and height of the LCD thumbnail of the media asset.|
+| thmSize | string | No| No| Width and height of the thumb thumbnail of the media asset.|
+| thumbnailModifiedMs<sup>14+</sup> | number | No| Yes| Time elapsed since the thumbnail status of the media asset changed, in milliseconds.|
+| thumbnailVisible<sup>14+</sup> | [ThumbnailVisibility](#thumbnailvisibility14) | No| No| Whether the thumbnail of the media asset is visible.|
 
 ## Album
 
@@ -7579,7 +7593,6 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
-
 **Example**
 
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
@@ -7679,7 +7692,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 }
 ```
-
 ### getSelectedAssets<sup>22+</sup>
 
 getSelectedAssets(optionCheck: FetchOptions, filter?: string): Promise\<FetchResult\<PhotoAsset>>
@@ -7773,7 +7785,6 @@ async function example1(phAccessHelper: photoAccessHelper.PhotoAccessHelper) : P
   }
 }
 ```
-
 ### getAttribute
 
 getAttribute(attrs: AlbumAttribute[]): Promise<Record<AlbumAttribute, AlbumAttributeInfo>>
@@ -7841,7 +7852,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       return;
     }
     // Define the list of attributes to be obtained.
-    let attrs: [photoAccessHelper.AlbumAttribute] = [
+    let attrs: photoAccessHelper.AlbumAttribute[] = [
       photoAccessHelper.AlbumAttribute.EXTRA_INFO_ATTR
     ];
     // Obtain the album attributes.
@@ -7852,7 +7863,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 }
 ```
-
 ## MediaAssetEditData<sup>11+</sup>
 
 Represents the edited media asset data.
@@ -7915,11 +7925,8 @@ static createAssetRequest(context: Context, displayName: string, options?: Photo
 Creates an asset change request with the specified file name.
 
 The file name must meet the following requirements:
-
 - A valid file name must include a base name and a supported image or video extension.
-
 - The total length of the file name must be between 1 and 255 characters.
-
 - The base name must not contain any invalid characters.<br>Starting from API version 18, the following characters are considered invalid: \ / : * ? " < > | <br>For API versions 10 to 17, the following characters are considered invalid: . .. \ / : * ? " ' ` < > | { } [ ]
 
 **System API**: This is a system API.
@@ -7932,7 +7939,7 @@ The file name must meet the following requirements:
 | ------- | ------- | ---- | -------------------------- |
 | context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Context of the ability instance.|
 | displayName  | string        | Yes  | File name of the image or video to create.             |
-| options  | [PhotoCreateOptions](#photocreateoptions)        | No  | Options for creating an image or video asset.             |
+| options  | [PhotoCreateOptions](#photocreateoptions)        | No  | Options for creating an image or video asset. If this parameter is not specified, the default creation options are used.|
 
 **Return value**
 
@@ -8210,8 +8217,8 @@ Sets location information.
 
 | Name | Type         | Mandatory| Description   |
 | ------- |-------------| ---- |-------|
-| longitude | number      | Yes  | Longitude.|
-| latitude | number | Yes  | Latitude.  |
+| longitude | number      | Yes  | Longitude. The value range is [-180,180]. Unit: degree|
+| latitude | number | Yes  | Latitude. The value range is [-90,90]. Unit: degree|
 
 **Error codes**
 
@@ -8440,7 +8447,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
   console.info('deleteAssetsPermanentlyDemo');
@@ -8461,9 +8467,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 ### setHasAppLink<sup>21+</sup>
 
-setHasAppLink(hasAppLink: int): void
+setHasAppLink(hasAppLink: number): void
 
 Sets the status of the app link association.
+
 
 **System API**: This is a system API.
 
@@ -8473,7 +8480,7 @@ Sets the status of the app link association.
 
 | Name | Type            | Mandatory  | Description   |
 | ---- | -------------- | ---- | ----- |
-| hasAppLink | int | Yes   | Whether to enable or disable the app link association.|
+| hasAppLink | number | Yes   | Whether to enable or disable the app link association. The value **0** indicates that the file is not decoded, the value **1** indicates that there is no link, and the value **2** indicates that there is a link.|
 
 **Error codes**
 
@@ -8490,13 +8497,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
-enum linkType {
+enum LinkType {
   NOT_DECODED = 0,
   LINK_NOT_EXIST = 1,
   LINK_EXIST = 2
 }
 
-async function example(asset: photoAccessHelper.PhotoAsset, hasAppLink: linkType, context: Context) {
+async function example(asset: photoAccessHelper.PhotoAsset, hasAppLink: LinkType, context: Context) {
     try {
       let phAccessHelper: photoAccessHelper.PhotoAccessHelper =
         photoAccessHelper.getPhotoAccessHelper(context);
@@ -8565,6 +8572,7 @@ setAppLinkInfo(appLink: string): void
 
 Sets the information about the app link association.
 
+
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -8573,7 +8581,7 @@ Sets the information about the app link association.
 
 | Name | Type            | Mandatory  | Description   |
 | ---- | -------------- | ---- | ----- |
-| appLink | string | Yes   | Information about the app link association.|
+| appLink | string | Yes   | Information about the app link association. The length should be within the range of [1, 512], in bytes.|
 
 **Error codes**
 
@@ -8612,6 +8620,7 @@ setCompositeDisplayMode(compositeDisplayMode: CompositeDisplayMode): Promise\<vo
 
 Sets the display mode of the composite image. This API uses a promise to return the result.
 
+
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -8642,6 +8651,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
+import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.info('setCompositeDisplayModeDemo');
@@ -9019,7 +9029,7 @@ setMovingPhotoVersion(version: number): void
 
 Saves the version number of a moving photo.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
 **System API**: This is a system API.
 
@@ -9029,7 +9039,7 @@ Saves the version number of a moving photo.
 
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
-| version | number | Yes   | Version number of the moving photo.|
+| version | number | Yes   | Version number of the moving photo. Currently, only the value **9** is supported.|
 
 **Error codes**
 
@@ -9256,13 +9266,9 @@ static createAlbumRequest(context: Context, name: string): MediaAlbumChangeReque
 Creates a MediaAlbumChangeRequest instance.
 
 The album name must meet the following requirements:
-
 - The total length of the album name must be between 1 and 255 characters.
-
 - It must not contain any invalid characters, which are:<br> . .. \ / : * ? " ' ` < > | { } [ ]
-
 - The characters are case insensitive.
-
 - Duplicate album names are not allowed.
 
 **System API**: This is a system API.
@@ -9516,7 +9522,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
     let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC);
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
-    if (albums === undefined) {
+    if (album === undefined) {
       console.error('getHiddenAlbumsViewCallback albums is undefined');
       return;
     }
@@ -9786,7 +9792,7 @@ Moves assets to another album.
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
 | assets | Array&lt;[PhotoAsset](#photoasset)&gt; | Yes  | Assets to move.|
-| targetAlbum | Album | Yes  | Album to which the assets are to be moved.|
+| targetAlbum | [Album](#album) | Yes  | Album to which the assets are to be moved.|
 
 **Error codes**
 
@@ -9833,7 +9839,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 }
 ```
-
 ### moveAssetsWithUri<sup>19+</sup>
 
 moveAssetsWithUri(assetUris: Array&lt;String&gt;, targetAlbum: Album): void
@@ -9899,6 +9904,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 }
 ```
+
 
 ### recoverAssets<sup>11+</sup>
 
@@ -10158,7 +10164,7 @@ Sets the display level of the portrait album.
 
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
-| displayLevel | number | Yes   | Display level to set. The options are as follows:<br>**0**: unfavorite the portrait album.<br>**1**: set the portrait album as the first to display.<br>**2**: do not display the portrait album as the first one.<br>**3**: favorite the portrait album.|
+| displayLevel | number | Yes   | Sets the display level of the portrait album.<br>**0**: unfavorite the portrait album.<br>**1**: set the portrait album as the first to display.<br>**2**: do not display the portrait album as the first one.<br>**3**: favorite the portrait album.|
 
 **Error codes**
 
@@ -10258,7 +10264,7 @@ Removes assets from this portrait album or group photo album.
 
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
-| assets | Array&lt;PhotoAsset&gt; | Yes   | Assets to remove.|
+| assets | Array&lt;[PhotoAsset](#photoasset)&gt; | Yes   | Assets to remove.|
 
 **Error codes**
 
@@ -10360,7 +10366,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
     let changeRequest: photoAccessHelper.MediaAlbumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
     changeRequest.mergeAlbum(target);
-    changeRequest.setAlbumName("testName");
+    changeRequest.setAlbumName('testName');
     await phAccessHelper.applyChanges(changeRequest);
   } catch (err) {
     console.error(`mergeAlbum failed with error: ${err.code}, ${err.message}`);
@@ -10370,7 +10376,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### placeBefore<sup>11+</sup>
 
-placeBefore(album: Album): void;
+placeBefore(album: Album): void
 
 Places this album before an album.
 
@@ -10444,7 +10450,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('dismissDemo');
@@ -10464,7 +10469,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ## HighlightAlbum<sup>12+</sup>
 
-Provides APIs for managing the **Highlights** album, which is an automatically generated collection of memorable photos or videos.
+Provides APIs for managing the **Highlights** album.
 
 **System API**: This is a system API.
 
@@ -10474,7 +10479,7 @@ Provides APIs for managing the **Highlights** album, which is an automatically g
 
 constructor(album: Album)
 
-Constructor.
+Defines a constructor that creates a **HighlightAlbum** object.
 
 **System API**: This is a system API.
 
@@ -10533,6 +10538,7 @@ Obtains specific information about the **Highlights** album.
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
 | type       | [HighlightAlbumInfoType](#highlightalbuminfotype12) | Yes   | Type of the album information to obtain.|
+
 
 **Return value**
 
@@ -10695,7 +10701,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
     if (album != undefined) {
       let highlightAlbum: photoAccessHelper.HighlightAlbum = new photoAccessHelper.HighlightAlbum(album);
-      highlightAlbum.setHighlightUserActionData(photoAccessHelper.HighlightUserActionType.INSERTED_PIC_COUNT, 1);
+      await highlightAlbum.setHighlightUserActionData(photoAccessHelper.HighlightUserActionType.INSERTED_PIC_COUNT, 1);
     }
     albumFetchResult.close();
   } catch (err) {
@@ -10704,7 +10710,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-### setSubTitle<sup>18+</sup>
+### setSubTitle<sup>18+</sup> 
 
 setSubTitle(title: string): void
 
@@ -10713,9 +10719,7 @@ Sets the subtitle for this **Highlights** album instance.
 The subtitle must meet the following requirements:
 
 - The total length of the subtitle must be between 0 and 255 characters.
-
 - It must not contain any invalid characters, which are:<br> . \ / : * ? " ' ` < > | { } [ ]
-
 - The characters are case insensitive.
 
 **System API**: This is a system API.
@@ -10763,7 +10767,7 @@ async function example(context: Context) {
     let highlightAlbum: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
     albumFetchResult.close();
     let changeHighlightAlbumRequest: photoAccessHelper.HighlightAlbum = new photoAccessHelper.HighlightAlbum(highlightAlbum);
-    changeHighlightAlbumRequest.setSubTitle("testName");
+    changeHighlightAlbumRequest.setSubTitle('testName');
     console.info('setSubTitle success');
   } catch (err) {
     console.error(`setSubTitle with error: ${err}`);
@@ -10836,17 +10840,17 @@ async function example(context: Context) {
 }
 ```
 
-## MediaAnalysisAlbumChangeRequest<sup>18+</sup>
+## MediaAnalysisAlbumChangeRequest<sup>18+</sup> 
 
 Provides APIs for managing the analysis album change request.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-### constructor<sup>18+</sup>
+### constructor<sup>18+</sup> 
 
 constructor(album: Album)
 
-Constructor.
+Defines a constructor that creates a **MediaAnalysisAlbumChangeRequest** object.
 
 **System API**: This is a system API.
 
@@ -10860,7 +10864,7 @@ Constructor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -10892,7 +10896,7 @@ async function example(context: Context) {
 }
 ```
 
-### setOrderPosition<sup>18+</sup>
+### setOrderPosition<sup>18+</sup> 
 
 setOrderPosition(assets: Array&lt;PhotoAsset&gt;, position: Array&lt;number&gt;): void
 
@@ -10966,7 +10970,7 @@ async function example(context: Context) {
 }
 ```
 
-### setRelationship<sup>21+</sup>
+### setRelationship<sup>21+</sup> 
 
 setRelationship(relationship: string): Promise&lt;void&gt;
 
@@ -11013,6 +11017,7 @@ The supported relationship names include:
 | relative | Relative|
 | other | Other|
 
+
 **Return value**
 
 | Type                       | Description          |
@@ -11022,6 +11027,7 @@ The supported relationship names include:
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
 
 | ID   | Error Message                             |
 | :------- | :-------------------------------- |
@@ -11035,7 +11041,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 
-async function SetRelationshipExample(context: Context, relationship: string) {
+async function setRelationshipExample(context: Context, relationship: string) {
   try {
     console.info('setRelationship');
     let helper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
@@ -11198,17 +11204,17 @@ async function example(context: Context) {
 }
 ```
 
-## MediaHighlightAlbumChangeRequest<sup>21+</sup>
+## MediaHighlightAlbumChangeRequest<sup>21+</sup> 
 
 Provides APIs for managing the media album change request. It inherits from [MediaAnalysisAlbumChangeRequest](#mediaanalysisalbumchangerequest18).
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-### constructor<sup>21+</sup>
+### constructor<sup>21+</sup> 
 
 constructor(album: Album)
 
-Constructor.
+Defines a constructor that creates a **MediaHighlightAlbumChangeRequest** object.
 
 **System API**: This is a system API.
 
@@ -11254,7 +11260,7 @@ async function example(context: Context) {
 }
 ```
 
-### setHighlightAttribute<sup>21+</sup>
+### setHighlightAttribute<sup>21+</sup> 
 
 setHighlightAttribute(attribute: HighlightAlbumChangeAttribute, value: string): void
 
@@ -11307,7 +11313,7 @@ async function example(context: Context) {
     albumFetchResult.close();
     let highlightAlbumChangeAttribute: photoAccessHelper.HighlightAlbumChangeAttribute =
       photoAccessHelper.HighlightAlbumChangeAttribute.IS_VIEWED;
-    let value: string = "1";
+    let value: string = '1';
     let changeRequest: photoAccessHelper.MediaHighlightAlbumChangeRequest =
       new photoAccessHelper.MediaHighlightAlbumChangeRequest(highlightAlbum);
     changeRequest.setHighlightAttribute(highlightAlbumChangeAttribute, value);
@@ -11319,17 +11325,17 @@ async function example(context: Context) {
 }
 ```
 
-## AnalysisAlbum<sup>18+</sup>
+## AnalysisAlbum<sup>18+</sup> 
 
 Implements an **Analysis** album.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-### constructor<sup>18+</sup>
+### constructor<sup>18+</sup> 
 
 constructor(album: Album)
 
-Constructor.
+Defines a constructor that creates an **AnalysisAlbum** object.
 
 **System API**: This is a system API.
 
@@ -11343,7 +11349,7 @@ Constructor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -11374,7 +11380,7 @@ async function example(context: Context) {
 }
 ```
 
-### getOrderPosition<sup>18+</sup>
+### getOrderPosition<sup>18+</sup> 
 
 getOrderPosition(assets: Array&lt;PhotoAsset&gt;): Promise&lt;Array&lt;number&gt;&gt;
 
@@ -11447,7 +11453,7 @@ async function example(context: Context) {
 }
 ```
 
-### getRelationship<sup>21+</sup>
+### getRelationship<sup>21+</sup> 
 
 getRelationship(): Promise&lt;string&gt;
 
@@ -11480,7 +11486,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 
-async function GetRelationshipExample(context: Context) {
+async function getRelationshipExample(context: Context) {
   try {
     console.info('getRelationship');
     let helper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
@@ -11587,7 +11593,7 @@ Submits cloud enhancement tasks. This API uses a promise to return the result.
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
 | photoAssets | Array<[PhotoAsset](#photoasset)> | Yes  | [PhotoAsset](#photoasset) to enhance.|
-| hasCloudWatermark | boolean | Yes  | Whether to add a cloud enhancement watermark to the enhanced images.|
+| hasCloudWatermark | boolean | Yes  | Whether to add a cloud enhancement watermark to the enhanced images. **true**: yes; **false**: no.|
 
 **Return value**
 
@@ -11860,7 +11866,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(context: Context) {
   console.info('cancelAllCloudEnhancementTasksDemo');
@@ -11996,7 +12001,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(context: Context) {
   console.info('syncCloudEnhancementTaskStatusDemo');
@@ -12433,7 +12437,7 @@ Starts a batch download for the specified cloud media assets. This API uses a pr
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| assetUris | string[] | Yes  | Array of URIs pointing to the original-quality images and videos to be downloaded.|
+| assetUris | string[] | Yes  | Array of URIs pointing to the original-quality images and videos to be downloaded. The array cannot be empty and can contain a maximum of 500 elements.|
 
 **Return value**
 
@@ -12486,7 +12490,7 @@ Pauses a batch download for the specified cloud media assets. This API uses a pr
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| assetUris | string[]  \| null | Yes  | Array of URIs pointing to the original-quality images and videos to be paused.<br>If null, undefined, or an empty list is passed, it represents all existing individual download items.|
+| assetUris | string[]  \| null | Yes  | Array of URIs pointing to the original-quality images and videos to be paused.<br>If null, undefined, or an empty list is passed, it represents all existing individual download items. The array can contain a maximum of 500 elements.|
 
 **Return value**
 
@@ -12538,7 +12542,7 @@ Resumes a batch download for the specified cloud media assets. This API uses a p
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| assetUris | string[]  \| null | Yes  | Array of URIs pointing to the original-quality images and videos to be resumed.<br>If null, undefined, or an empty list is passed, it represents all existing individual download items.|
+| assetUris | string[]  \| null | Yes  | Array of URIs pointing to the original-quality images and videos to be resumed.<br>If null, undefined, or an empty list is passed, it represents all existing individual download items. The array can contain a maximum of 500 elements.|
 
 **Return value**
 
@@ -12590,7 +12594,7 @@ Cancels a batch download for the specified cloud media assets. This API uses a p
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| assetUris | string[]  \| null | Yes  | Array of URIs pointing to the original-quality images and videos to be canceled.<br>If null, undefined, or an empty list is passed, it represents all existing individual download items.|
+| assetUris | string[]  \| null | Yes  | Array of URIs pointing to the original-quality images and videos to be canceled.<br>If null, undefined, or an empty list is passed, it represents all existing individual download items. The array can contain a maximum of 500 elements.|
 
 **Return value**
 
@@ -12663,7 +12667,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
+import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(context: Context) {
   console.info('QueryDownloadSpecificCloudMediaDetailsDemo');
@@ -12671,7 +12675,7 @@ async function example(context: Context) {
     let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
       = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
     let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-    predicates.orderByAsc("file_id");
+    predicates.orderByAsc('file_id');
     let taskListStatus : photoAccessHelper.CloudAssetDownloadStatus =
        await cloudMediaAssetManagerInstance.queryDownloadSpecificCloudMediaDetails(predicates);
   } catch (err) {
@@ -12717,7 +12721,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
+import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(context: Context) {
   console.info('QueryDownloadSpecificCloudMediaTaskCountDemo');
@@ -12725,7 +12729,7 @@ async function example(context: Context) {
     let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
       = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
     let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-    predicates.orderByAsc("file_id");
+    predicates.orderByAsc('file_id');
     let count : number =
        await cloudMediaAssetManagerInstance.queryDownloadSpecificCloudMediaTaskCount(predicates);
   } catch (err) {
@@ -12751,6 +12755,7 @@ Registers a callback to monitor changes in the progress of a batch download for 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
 | callback | Callback\<[CloudAssetDownloadProgressInfo](#cloudassetdownloadprogressinfo21)\> | Yes  | Callback to register. The callback returns progress information of the batch download.|
+
 
 **Error codes**
 
@@ -12787,6 +12792,7 @@ offDownloadProgressChange(callback?: Callback\<CloudAssetDownloadProgressInfo\>)
 
 Unregisters a callback to monitor changes in the progress of a batch download for cloud media assets.
 
+
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -12798,6 +12804,7 @@ Unregisters a callback to monitor changes in the progress of a batch download fo
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
 | callback | Callback\<[CloudAssetDownloadProgressInfo](#cloudassetdownloadprogressinfo21)\> | No  | Callback to unregister, which is registered by [onDownloadProgressChange](#ondownloadprogresschange21). If this parameter is left empty, all progress-related callbacks are unregistered.|
+
 
 **Error codes**
 
@@ -12905,8 +12912,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 Provides APIs for custom user behavior recording for Gallery.
 
-**System API**: This is a system API.
-
 ### getCustomRecordManagerInstance<sup>20+</sup>
 
 static getCustomRecordManagerInstance(context: Context): PhotoAssetCustomRecordManager
@@ -12941,8 +12946,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function example(context: Context) {
   console.info('getCustomRecordManagerInstance');
@@ -13056,7 +13059,7 @@ async function example(context: Context) {
     let record = await fetchResult.getFirstObject();
     console.info('record file id is ' + record.fileId);
   }).catch((err: BusinessError) => {
-    console.error('getCustomRecords fail with error: ${err.code}, ${err.message}');
+    console.error(`getCustomRecords fail with error: ${err.code}, ${err.message}`);
   });
 }
 ```
@@ -13101,14 +13104,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 async function example(context: Context) {
   console.info('setCustomRecords');
   let crManager = photoAccessHelper.PhotoAssetCustomRecordManager.getCustomRecordManagerInstance(context);
-  let UpdateArray: Array<photoAccessHelper.PhotoAssetCustomRecord> = [
+  let updateArray: Array<photoAccessHelper.PhotoAssetCustomRecord> = [
     {fileId:1,shareCount:2,lcdJumpCount:3},
     {fileId:2,shareCount:2,lcdJumpCount:3}
   ];
-  crManager.setCustomRecords(UpdateArray).then((failIds) => {
+  crManager.setCustomRecords(updateArray).then((failIds) => {
     console.info('setCustomRecords successful');
   }).catch((err: BusinessError) => {
-    console.error('setCustomRecords file with err: ${err.code}, ${err.message}');
+    console.error(`setCustomRecords file with err: ${err.code}, ${err.message}`);
   });
 }
 ```
@@ -13210,7 +13213,7 @@ async function example(context: Context) {
   crManager.addShareCount(ids).then((failIds) => {
     console.info('addShareCount successful');
   }).catch((err: BusinessError) => {
-    console.error('addShareCount fail with error: ${err.code}, ${err.message}');
+    console.error(`addShareCount fail with error: ${err.code}, ${err.message}`);
   });
 }
 ```
@@ -13257,7 +13260,7 @@ async function example(context: Context) {
   crManager.addLcdJumpCount(ids).then((failIds) => {
     console.info('addLcdJumpCount successful');
   }).catch((err: BusinessError) => {
-    console.error('addLcdJumpCount fail with error: ${err.code}, ${err.message}');
+    console.error(`addLcdJumpCount fail with error: ${err.code}, ${err.message}`);
   });
 }
 ```
@@ -13398,6 +13401,7 @@ Defines the key information about an image or video file.
 | FILE_HIDDEN | 'file_hidden' | Whether the file is hidden.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
 | ATTACHMENT_SIZE | 'attachment_size' | Size of the attachment file. The unit is bytes.<br>The default value is **0**, indicating that the attachment file size is not identified or the attachment file size is 0.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
 
+
 ## AlbumKeys
 
 Enumerates the album keys.
@@ -13421,13 +13425,15 @@ Enumerates the attribute types of albums.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name| Value| Description|
 | --- | --- | --- |
-| NICK_NAME_ATTR | 'nickname' | Nickname of the album.<br>**System API**: This is a system API.|
-| EXTRA_INFO_ATTR | 'extra_info' | Extended information operation attribute of the album.<br>**System API**: This is a system API.|
-| IS_REMOVED_ATTR | 'is_removed' | Whether the album has been removed.<br>- Currently, portrait albums are supported.<br>- **1**: The album has been removed.<br>- **0**: The album has not been removed or has been restored.<br>**System API**: This is a system API.|
+| NICK_NAME_ATTR | 'nickname' | Nickname of the album.|
+| EXTRA_INFO_ATTR | 'extra_info' | Extended information operation attribute of the album.|
+| IS_REMOVED_ATTR | 'is_removed' | Whether the album has been removed.<br>- Currently, portrait albums are supported.<br>- **1**: The album has been removed.<br>- **0**: The album has not been removed or has been restored.|
 
 ## AlbumOperationType
 
@@ -13437,13 +13443,15 @@ Enumerates the operation types for setting album attributes.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name| Value| Description|
 | --- | --- | --- |
-| ADD | 'add' | Adding an album attribute.<br>**System API**: This is a system API.|
-| REMOVE | 'remove' | Removing an album attribute.<br>**System API**: This is a system API.|
-| UPDATE | 'update' | Updating an album attribute.<br>**System API**: This is a system API.|
+| ADD | 'add' | Adding an album attribute.|
+| REMOVE | 'remove' | Removing an album attribute.|
+| UPDATE | 'update' | Updating an album attribute.|
 
 ## AlbumOperation
 
@@ -13453,13 +13461,15 @@ Describes the album operation information.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name| Type| Read-Only| Optional| Description|
 | --- | --- | --- | --- | --- |
-| attr | [AlbumAttribute](#albumattribute) | No| No| Album attribute type.<br>**System API**: This is a system API.|
-| type | [AlbumOperationType](#albumoperationtype) | No| No| Operation type for setting album attributes.<br>**System API**: This is a system API.|
-| values | string[] | No| No| String parameter for setting album attributes. The maximum length of the array is 20. Each string in the array can contain up to 500 characters.<br>**System API**: This is a system API.|
+| attr | [AlbumAttribute](#albumattribute) | No| No| Album attribute type.|
+| type | [AlbumOperationType](#albumoperationtype) | No| No| Operation type for setting album attributes.|
+| values | string[] | No| No| String parameter for setting album attributes. The maximum length of the array is 20. Each string in the array can contain up to 500 characters.|
 
 ## AlbumAttributeInfo
 
@@ -13469,11 +13479,13 @@ Defines the album attribute information.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name| Type| Read-Only| Optional| Description|
 | --- | --- | --- | --- | --- |
-| attrValue | string | No| Yes| Album attribute value.<br>**System API**: This is a system API.|
+| attrValue | string | No| Yes| Album attribute value.|
 
 ## HiddenPhotosDisplayMode<sup>11+</sup>
 
@@ -13499,8 +13511,8 @@ Defines the options for creating an image or video asset.
 | Name                  | Type               | Read-Only| Optional| Description                                             |
 | ---------------------- | ------------------- | ---------------------- | ---- | ------------------------------------------------ |
 | subtype           | [PhotoSubtype](#photosubtype) | No| Yes| Subtype of the image or video. |
-| cameraShotKey           | string | No| Yes| Key for the Ultra Snapshot feature, which allows the camera to take photos or record videos with the screen off. (This parameter is available only for the system camera, and the key value is defined by the system camera.)  |
-| userId<sup>19+</sup>           | number | No| Yes| User ID. |
+| cameraShotKey           | string | No| Yes| Key for the Ultra Snapshot feature, which allows the camera to take photos or record videos with the screen off. (This parameter is available only for the system camera, and the key value is defined by the system camera.) The default value is an empty string.  |
+| userId<sup>19+</sup>           | number | No| Yes| User ID. The default value is the ID of the current user. |
 
 ## RequestPhotoOptions<sup>11+</sup>
 
@@ -13512,8 +13524,8 @@ Defines the options for obtaining the thumbnail of an image or video.
 
 | Name                  | Type               | Read-Only| Optional| Description                                             |
 | ---------------------- | ------------------- | ---------------------- | ---- | ------------------------------------------------ |
-| size           | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | No| Yes| Size of the thumbnail to obtain. |
-| requestPhotoType    | [RequestPhotoType](#requestphototype11) | No| Yes| Operation to perform. |
+| size           | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | No| Yes| Size of the thumbnail to obtain. The default size is 256 × 256, in pixels.|
+| requestPhotoType    | [RequestPhotoType](#requestphototype11) | No| Yes| Operation to perform. By default, [RequestPhotoType](#requestphototype11).REQUEST_ALL_THUMBNAILS is used.  |
 
 ## PhotoCreationSource<sup>18+</sup>
 
@@ -13682,7 +13694,7 @@ Defines the batch clone operation options.
 | countProgressListener | [ProgressListener](#progresslistener) | No| Yes| Listener for the quantity progress of the clone operation.|
 | taskSignal | [TaskSignal](#tasksignal) | No| Yes| Interruption signal of the clone operation.|
 | resultListener | [ResultListener](#resultlistener) | No| Yes| Listener for the result of the clone operation.|
-| mode | number | No| Yes| Automatic renaming mode for the clone operation.|
+| mode | number | No| Yes| Automatic renaming mode for the clone operation.<br>The value can be **0** or **1**. The value **0** indicates that the automatic renaming mode is supported, and the value **1** indicates the opposite.|
 
 ## PhotoProxy<sup>11+</sup>
 
@@ -13762,7 +13774,6 @@ Enumerates the types of the file to read.
 | ----- |  ---- |  ---- |
 | ORIGINAL_MODE |  0 |  Original file.|
 | EDITED_MODE |  1 |  Edited file.|
-
 ## AuthorizationMode<sup>12+</sup>
 
 Enumerates the authorization modes.
@@ -13821,7 +13832,7 @@ Defines the asset analysis configuration.
 | ---- | ------- | ---- |  ---- | ----- |
 | types | [AnalysisType](#analysistype11)[]  | No| No| Array of intelligent analysis types. The maximum size of the array is the number of members defined by the [AnalysisType](#analysistype11) enum.|
 | uris | string[]  | No| No| Asset URI array.<br>Length range: [0, 100].|
-| extraInfos | string  | No| Yes| Extended information in JSON string format.<br>Length range: (0, 500].|
+| extraInfos | string  | No| Yes| Extended information in JSON string format.<br>Length range: (0, 500].<br>The default value is an empty string, indicating that no extended information is carried.|
 
 ## AnalysisResult<sup>24+</sup>
 
@@ -14153,6 +14164,7 @@ Defines the image recommendation options. The image recommendation feature depen
 | ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
 | recommendationTypeList<sup>23+</sup> | Array\<[RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)>   | No  | Yes| List of recommendation types. If images of multiple categories need to be recommended based on the enumerated value, set this parameter.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
 | defaultRecommendationType<sup>24+</sup> | [RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)   | No  | Yes| Recommended tag displayed when the picker is opened. This configuration takes effect only after **recommendationTypeList** is set.<br>If the tag exists, the tag page is displayed by default.<br>If the tag does not exist, the All tag page is displayed by default.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
+
 
 ## ThumbnailChangeStatus<sup>20+</sup>
 
