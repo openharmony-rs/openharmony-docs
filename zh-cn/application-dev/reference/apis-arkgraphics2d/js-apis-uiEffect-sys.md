@@ -1088,9 +1088,9 @@ struct BlurBubblesRiseExample {
 
 ### haloBloom
 
-haloBloom(tintColor: Color, bloomFactor: number, glowExposure: number): Filter;
+haloBloom(tintColor: Color, bloomFactor: number, glowExposure: number): Filter
 
-为组件添加光晕泛光效果。该效果通过多级降采样和高斯模糊实现泛光（Bloom），并支持与遮罩混合以控制泛光区域。典型应用场景包括UI元素的高光泛光、按钮发光效果和HDR场景的光晕渲染等。
+对图像应用柔和光晕泛光效果，在明亮区域周围产生柔和的光晕。建议作为前景滤镜使用。
 
 **起始版本：** 26.1.0
 
@@ -1104,15 +1104,15 @@ haloBloom(tintColor: Color, bloomFactor: number, glowExposure: number): Filter;
 
 | 参数名        | 类型                  | 必填 | 说明                                                                                                                                                   |
 | ------------- | --------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| tintColor     | [Color](#color20)     | 是   | 指定应用于光晕泛光的颜色色调。该值无限制，推荐范围为 [0, 1)。Alpha 通道无效，小于 0 或大于等于 1 的值无实际效果。当红、绿、蓝三个分量均设为 0 时，不应用色调，光晕泛光保留原始颜色。                                        |
-| bloomFactor   | number                | 是   | 控制光晕泛光的亮度。该值无限制，推荐范围为 [0, 10]。 设为 0 时，光晕泛光无可见效果。                                                       |
-| glowExposure  | number                | 是   | 控制光晕泛光的扩散范围。该值无限制，推荐范围为 [0, 10]。设为 0 时，光晕泛光无可见效果。                                        |
+| tintColor     | [Color](#color20)     | 是   | 指定应用于光晕泛光的颜色色调。该值无限制，推荐范围为[0, 1)。Alpha 通道无效，小于0或大于等于1的值无实际效果。当红、绿、蓝三个分量均设为0时，不应用色调，光晕泛光保留原始颜色。                                        |
+| bloomFactor   | number                | 是   | 控制光晕泛光的亮度。该值无限制，推荐范围为[0, 10]。设为0时，光晕泛光无可见效果。                                                       |
+| glowExposure  | number                | 是   | 控制光晕泛光的扩散范围。该值无限制，推荐范围为[0, 10]。设为0时，光晕泛光无可见效果。                                        |
 
 **返回值：**
 
 | 类型              | 说明                               |
 | ----------------- | ---------------------------------- |
-| [Filter](#filter) | 返回挂载了光晕泛光效果的Filter。 |
+| [Filter](#filter) | 返回附加了光晕泛光效果的Filter。 |
 
 
 **示例：**
@@ -1146,9 +1146,9 @@ struct example {
 
 ### spinBlur
 
-spinBlur(center: common2D.Point, angle: number, samples: number): Filter;
+spinBlur(center: common2D.Point, angle: number, samples: number): Filter
 
-为组件添加旋转模糊效果。该效果以指定中心点为轴进行旋转模糊，模拟高速旋转物体的运动模糊。典型应用场景包括转盘旋转动画、加载指示器动态模糊和漩涡特效等。
+对图像应用旋转模糊效果，在指定中心点周围产生旋转运动拖影。建议作为前景滤镜使用。
 
 **起始版本：** 26.1.0
 
@@ -1162,15 +1162,15 @@ spinBlur(center: common2D.Point, angle: number, samples: number): Filter;
 
 | 参数名     | 类型                                          | 必填 | 说明                                                                                                                                                   |
 | ---------- | --------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| center     | [common2D.Point](js-apis-graphics-common2D.md#point12) | 是   | 旋转模糊的中心点，[0, 0]为组件左上角，[1, 1]为组件的右下角。使用归一化坐标系。取值范围为[-10, 10]，超出边界会在实现时自动截断。                                 |
-| angle      | number                                        | 是   | 旋转模糊的角度，单位为弧度。值越大旋转模糊程度越明显。取值范围为[0, +∞)，建议取值范围为[0, 2π]。设置为0时无旋转模糊效果。                          |
-| samples    | number                                        | 是   | 旋转模糊的采样次数，决定模糊的平滑程度。取值范围为[1, 128]，必须为正整数。值越大模糊效果越平滑，但性能开销也越大。值小于1时按1处理，大于128时按128处理。             |
+| center     | [common2D.Point](js-apis-graphics-common2D.md#point12) | 是   |  以归一化坐标指定模糊中心点。[0, 0] 表示左上角，[0.5, 0.5] 表示中心，[1, 1] 表示右下角。                                 |
+| angle      | number                                        | 是   | 以弧度指定旋转模糊的角度范围。该值无限制，推荐范围为 [-2π, 2π]。正值表示顺时针旋转，负值表示逆时针旋转。                          |
+| samples    | number                                        | 是   | 定旋转模糊的采样数量。该值会被截断到[0, 128] 范围内。值越大效果越平滑，但处理开销也越大，通常32即可满足需求。             |
 
 **返回值：**
 
 | 类型              | 说明                               |
 | ----------------- | ---------------------------------- |
-| [Filter](#filter) | 返回挂载了旋转模糊效果的Filter。 |
+| [Filter](#filter) | 返回附加了旋转模糊效果的Filter。 |
 
 **示例：**
 
@@ -2383,21 +2383,7 @@ import { uiEffect } from '@kit.ArkGraphics2D';
 @Component
 struct Index {
   private getPixelMap(): image.PixelMap | undefined {
-    const context: Context | undefined = this.getUIContext().getHostContext();
-    try {
-      const drawableDescriptor: DrawableDescriptor | undefined = context.resourceManager.getDrawableDescriptor($r('app.media.mask').id);
-      if (!drawableDescriptor) {
-        return undefined;
-      }
-      const pixelMap: image.PixelMap | undefined = drawableDescriptor.getPixelMap();
-      if (!pixelMap) {
-        return undefined;
-      }
-      return pixelMap;
-    } catch (error) {
-      console.error(`[getPixelMap] error: ${error}`);
-      return undefined;
-    }
+    return this.getUIContext().getHostContext()?.resourceManager.getDrawableDescriptor($r('app.media.mask').id)?.getPixelMap();
   }
 
   private myFilter: uiEffect.Filter = uiEffect.createFilter()
@@ -2405,12 +2391,17 @@ struct Index {
 
   build() {
     Stack() {
+      Image($r('app.media.BG_00000'))
+      Stack() {
+
+      }
+      .width('100%')
+      .height('100%')
+      .backgroundFilter(this.myFilter)
     }
-    .width('100%')
-    .height('100%')
-    .backgroundFilter(this.myFilter)
   }
 }
+
 ```
 
 ### createBinocularMask
@@ -2446,30 +2437,11 @@ static createBinocularMask(radiusX: number, radiusY: number, gap: number, softne
 **示例：**
 
 ```ts
-import { image } from '@kit.ImageKit';
 import { uiEffect } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
 struct Index {
-  private getPixelMap(): image.PixelMap | undefined {
-    const context: Context | undefined = this.getUIContext().getHostContext();
-    try {
-      const drawableDescriptor: DrawableDescriptor | undefined = context.resourceManager.getDrawableDescriptor($r('app.media.mask').id);
-      if (!drawableDescriptor) {
-        return undefined;
-      }
-      const pixelMap: image.PixelMap | undefined = drawableDescriptor.getPixelMap();
-      if (!pixelMap) {
-        return undefined;
-      }
-      return pixelMap;
-    } catch (error) {
-      console.error(`[getPixelMap] error: ${error}`);
-      return undefined;
-    }
-  }
-
   private myFilter: uiEffect.Filter = uiEffect.createFilter()
     .maskDispersion(uiEffect.Mask.createBinocularMask(0.28, 0.48, 0.52, 0.20), 1.0, [0.026, 0.0],
       [0.0, 0.0],
@@ -2477,12 +2449,17 @@ struct Index {
 
   build() {
     Stack() {
+      Image($r('app.media.BG_00001'))
+      Stack() {
+
+      }
+      .width('100%')
+      .height('100%')
+      .backgroundFilter(this.myFilter)
     }
-    .width('100%')
-    .height('100%')
-    .backgroundFilter(this.myFilter)
   }
 }
+
 ```
 
 ## BrightnessBlenderParam
