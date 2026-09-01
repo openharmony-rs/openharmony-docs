@@ -409,7 +409,7 @@
   - [DrawModifier](arkts-arkui-drawmodifier-c.md)
   - [DynamicNode](arkts-arkui-dynamicnode-c.md)
   - [LayoutPolicy](arkts-arkui-layoutpolicy-c.md)
-  - [MutableBuilder](arkts-arkui-mutablebuilder-c.md)
+  - [Class MutableBuilder](arkts-arkui-mutablebuilder-c.md)
   - [ProgressMask](arkts-arkui-progressmask-c.md)
   - [RawInputEventWrapper](arkts-arkui-rawinputeventwrapper-c.md)
   - [ReadonlyEnvKey](arkts-arkui-readonlyenvkey-c.md)
