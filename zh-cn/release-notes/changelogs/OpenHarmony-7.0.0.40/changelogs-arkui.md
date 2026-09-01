@@ -8,7 +8,7 @@
 
 **变更原因**
 
-沉浸光感效果由材质滤镜、折射、高光、阴影等多层效果叠加而成，渲染时需要消耗GPU资源。为降低性能与功耗的影响，沉浸光感对部分组件新增生效范围的约束：仅在Navigation或NavDestination标题栏，或Tabs的底部TabBar中沉浸光感效果生效。
+为统一用户视觉体验，规范沉浸光感组件使用，沉浸光感对部分组件新增生效范围的约束：仅在Navigation或NavDestination标题栏，或Tabs的底部TabBar中沉浸光感效果生效。
 
 **变更影响**
 
@@ -16,11 +16,7 @@
 
 - 变更前：针对支持开启沉浸光感的所有组件，沉浸光感开启后，沉浸光感效果生效。
 
-- 变更后：
-  
-  沉浸光感开启后，除了弹窗类组件或方法、Slider、Toggle，其他组件仅在以下区域中生效：Navigation/NavDestination标题栏，或横向Tabs中barPosition为BarPosition.End的底部TabBar中。
-
-  弹窗类组件或方法包括：Popup、Tips、Menu、BindSheet、showActionMenu、AlertDialog、CustomDialog、ActionSheet、CalendarPickerDialog、DatePickerDialog、TextPickerDialog、TimePickerDialog、Toast、Select、AlphabetIndexer气泡弹窗、Text设置copyOption后长按或双击触发的文本菜单、SelectionMenu（结合bindSelectionMenu一起使用）沉浸光感生效。
+- 变更后：支持通过[systemMaterial](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)设置沉浸光感的组件（Toggle和Slider组件除外）、[Chip](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)、[ChipGroup](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipGroup.md)、[ChipGroupV2](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipGroupV2.md)、[ChipV2](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipV2.md)、[SegmentButton](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md)、[SegmentButtonV2](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md)、[SelectionMenu](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SelectionMenu.md)组件，仅在以下区域中生效沉浸光感效果：Navigation/NavDestination标题栏，或横向Tabs中barPosition为BarPosition.End的底部TabBar中。
 
 以下示例展示了通过systemMaterial开启Column组件的沉浸光感，在变更前后的效果变化：
 
@@ -57,8 +53,6 @@ struct MaterialScopeExample {
         .systemMaterial(new uiMaterial.ImmersiveMaterial({
           style: uiMaterial.ImmersiveStyle.THIN,
         }))
-        // 变更前：显示沉浸式材质效果
-        // 变更后：不在标题栏/底部TabBar子树中，不显示材质效果
       }
     }
   }
