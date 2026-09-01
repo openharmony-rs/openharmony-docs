@@ -384,7 +384,7 @@ ArkTS-Dyn: selectedBackgroundColor(value: ResourceColor)
 
 ArkTS-Sta: selectedBackgroundColor(value: ResourceColor | undefined)
 
-设置文本选中的底板颜色。如果未设置不透明度，默认为20%不透明度。
+设置文本选中高亮颜色。如果未设置不透明度或设置为完全不透明，默认使用20%不透明度。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -398,7 +398,7 @@ ArkTS-Sta: selectedBackgroundColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                                       |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------ |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 文本选中的底板颜色。<br>取值为undefined时，按照默认值处理。<br>默认为20%不透明度。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 文本选中高亮颜色。<br>取值为undefined时，按照默认值处理。<br>默认为20%不透明度。 |
 
 ### editMenuOptions<sup>12+</sup>
 
@@ -5340,8 +5340,8 @@ struct TextExample7 {
   }
 }
 ```
-### 示例12（设置光标、手柄和底板颜色）
-通过[caretColor](#caretcolor12)属性设置输入框光标、手柄颜色，通过[selectedBackgroundColor](#selectedbackgroundcolor12)属性设置文本选中底板颜色。
+### 示例12（设置光标、手柄和高亮颜色）
+通过[caretColor](#caretcolor12)属性设置输入框光标、手柄颜色，通过[selectedBackgroundColor](#selectedbackgroundcolor12)属性设置文本选中高亮颜色。
 
 ``` ts
 @Entry
