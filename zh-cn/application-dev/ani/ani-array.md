@@ -35,23 +35,30 @@ ani_status Array_Pop(ani_env *env, ani_array array, ani_ref *result);
 **示例：**
 
 ```cpp
-ani_array CreateArray(ani_env *env, const std::vector<ani_double> &numbers)
-{
-    // Create Array<T>
-    ani_ref undefinedRef;
-    env->GetUndefined(&undefinedRef);
-    ani_array array;
-    env->Array_New(numbers.size(), undefinedRef, &array);
+// 创建长度为3的数组，元素初始化为undefined。
+ani_size length = 3;
+ani_ref undefinedRef;
+ani_status status = env->GetUndefined(&undefinedRef);
+if (status != ANI_OK) {
+    // handle error and return
+}
+ani_array array;
+status = env->Array_New(length, undefinedRef, &array);
+if (status != ANI_OK) {
+    // handle error and return
+}
 
-    // Populate array
-    ani_size index = 0;
-    for (auto num : numbers) {
-        ani_object boxedNumber;
-        env->Primitive_Box_Double(num, &boxedNumber);
-        env->Array_Set(array, index, boxedNumber);
-        index++;
-    }
-    return array;
+// 设置下标0的元素。注意泛型被擦除，元素以ani_ref传入，基本类型需要装箱。
+ani_size index = 0;
+ani_double value = 1.0;
+ani_object boxedDouble;
+status = env->Primitive_Box_Double(value, &boxedDouble);
+if (status != ANI_OK) {
+    // handle error and return
+}
+status = env->Array_Set(array, index, boxedDouble);
+if (status != ANI_OK) {
+    // handle error and return
 }
 ```
 

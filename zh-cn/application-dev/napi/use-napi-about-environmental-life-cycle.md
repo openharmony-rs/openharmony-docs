@@ -141,7 +141,7 @@ ArkTS侧示例代码
 let data = 5;
 testNapi.setInstanceData(data);
 let value = testNapi.getInstanceData();
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_set_instance_data:%{public}d', value);
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_instance_data:%{public}d', value);
 ```
 
 以上代码如果要在native cpp中打印日志，需在CMakeLists.txt文件中添加以下配置信息（并添加头文件：#include "hilog/log.h"）：

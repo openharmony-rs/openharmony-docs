@@ -1,4 +1,4 @@
-# 自定义组件生命周期
+# 自定义组件生命周期（ArkTS-Sta）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @seaside_wu1; @xin11112-->

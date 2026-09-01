@@ -95,6 +95,8 @@
     > **说明：**
     >
     > 从API version 23开始，添加对\@Link数据源错误的校验，运行时错误变为编译期报错。详情参见[UI相关应用崩溃常见问题](../arkts-stability-crash-issues.md)。
+    >
+    > 从API版本26.0.0开始，\@Link的数据源如果不是状态变量，会抛出错误码[140123](../../reference/apis-arkui/errorcode-stateManagement.md#140123-link装饰变量的数据源不是状态变量)。
 
     【反例】
   
@@ -411,7 +413,7 @@ struct ArrayTypes {
 >
 > 从API version 11开始，\@Link支持Map类型。
 
-在下面的示例中，value类型为Map\<number, string\>，点击Button改变message的值，视图会随之刷新。
+在下面的示例中，value类型为Map\<number, string\>，点击Button改变value的值，视图会随之刷新。
 
 <!-- @[link_map_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/DecoratingVariablesMapType.ets) -->  
 
@@ -694,7 +696,7 @@ struct ChangeVariablesChild {
 
 ![arkts-link-watch](figures/arkts-link-watch.gif)
 
-### Link支持联合类型实例
+### \@Link支持联合类型实例
 
 `@Link`支持联合类型、`undefined`和`null`。在以下示例中，`name`类型为`string | undefined`。点击父组件`UnionTypes`中的按钮可以改变`name`的属性或类型，`UnionChild`组件也会相应刷新。
 

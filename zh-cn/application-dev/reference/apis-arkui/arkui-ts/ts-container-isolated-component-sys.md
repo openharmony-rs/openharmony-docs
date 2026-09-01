@@ -32,7 +32,7 @@ IsolatedComponent用于支持在本页面内嵌入显示独立Abc（方舟字节
 
 **体验约束**
 
-1、创建IsolatedComponent组件时，受限worker线程加载Abc布局渲染存在一定耗时，在此等待期间显示IsolatedComponent组件的背景色。
+1、创建IsolatedComponent组件时，受限worker线程加载Abc布局渲染存在耗时（具体耗时取决于Abc的复杂度），在此等待期间显示IsolatedComponent组件的背景色。
 
 2、主线程与受限worker线程之间布局渲染是异步处理，布局变化、旋转等导致的页面变化存在不同步现象。
 
@@ -52,7 +52,7 @@ IsolatedComponent用于支持在本页面内嵌入显示独立Abc（方舟字节
 
 IsolatedComponent(options: IsolatedOptions)
 
-创建IsolatedComponent组件，用于显示受限worker运行的Abc。
+创建IsolatedComponent组件，用于显示在受限worker线程中运行的Abc提供的UI。
 
 > **说明：**
 >
@@ -78,8 +78,8 @@ IsolatedComponent(options: IsolatedOptions)
 
 | 名称  | 类型       | 只读 | 可选 | 说明 |
 | ---- | ------------ | ---- | ---- | --------------- |
-| want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | 否 | 否 | 要加载的Abc信息。Want对象的parameters中需包含以下字段：resourcePath（资源路径，需为.hap文件路径）、abcPath（经[verifyAbc](../../apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagerverifyabc11)校验后的Abc文件路径，需以'/abcs'开头）、entryPoint（Abc入口，格式为'bundleName/页面路径'）。 |
-| worker | [RestrictedWorker](../../apis-arkts/js-apis-worker-sys.md#restrictedworker11) | 否 | 否 | 运行Abc的受限worker。 |
+| want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | 否 | 否 | 要加载的Abc信息，Abc将在worker参数指定的受限worker中运行。Want对象的parameters中需包含以下字段：resourcePath（资源路径，需为.hap文件路径）、abcPath（经[verifyAbc](../../apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagerverifyabc11)校验后的Abc文件路径，需以'/abcs'开头）、entryPoint（Abc入口，格式为'bundleName/页面路径'）。 |
+| worker | [RestrictedWorker](../../apis-arkts/js-apis-worker-sys.md#restrictedworker11) | 否 | 否 | 运行Abc的受限worker。需注意主线程与受限worker线程之间的布局渲染和事件传递均为异步处理。 |
 
 ## 属性
 仅支持[width](ts-universal-attributes-size.md#width)、[height](ts-universal-attributes-size.md#height)、[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)通用属性。
@@ -113,7 +113,7 @@ IsolatedComponent加载的Abc（以[Ability](../../apis-ability-kit/js-apis-app-
 本示例展示IsolatedComponent组件的基础使用方式，示例应用的bundleName为"com.example.isolateddemo"，并使用本应用的Abc文件和extension页面作为嵌入展示的内容。构建应用项目后，具体测试步骤如下：
 1. 在DevEco Studio上编译构建生成HAP包，并安装到设备上；
 2. 将本应用构建生成的modules.abc和modules.hap文件通过DevEco Studio或[hdc工具](../../../dfx/hdc.md)上传至应用沙箱路径`/data/app/el2/100/base/com.example.isolateddemo/haps/entry/files`下；
-3. 打开应用页面，点击"verifyAbc"按钮进行校验，校验成功后输出"VerifyAbc successfully"日志；
+3. 打开应用页面，点击"verifyAbc"按钮进行校验，校验成功后输出"VerifyAbc successfully."日志；
 4. 点击"showIsolatedComponent"按钮后，页面显示IsolatedComponent组件，内容为"Hello World"。
 
 - 受限worker脚本ets/workers/OhCardWorker.ets的内容如下：
@@ -216,7 +216,7 @@ IsolatedComponent加载的Abc（以[Ability](../../apis-ability-kit/js-apis-app-
   }
   ```
 
-- 在受限worker线程中运行的入口页面文件ets/pages/extension.ets，需要在`resources/base/profile/main_pages.json`文件中配置该页面路径，其中内容如下：
+- 在受限worker线程中运行的入口页面文件ets/pages/extension.ets（需在`resources/base/profile/main_pages.json`文件中配置该页面路径），该页面文件的内容如下：
   ```ts
   @Entry
   @Component

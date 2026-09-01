@@ -37,9 +37,9 @@ ArkTS-Sta: ignoreHiddenItem(enabled: boolean | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -51,7 +51,7 @@ ArkTS-Sta: ignoreHiddenItem(enabled: boolean | undefined)
 
 该示例通过设置[ignoreHiddenItem](#ignorehiddenitem)接口，展示了Swiper组件如何在子节点设置不可见时，使其不占位显示。
 
-从API版本26.1.0开始，新增[ignoreHiddenItem](#ignorehiddenitem)接口。
+从API版本26.0.0开始，新增[ignoreHiddenItem](#ignorehiddenitem)接口。
 
 ArkTS-Dyn示例：
 

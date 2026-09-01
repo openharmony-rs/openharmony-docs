@@ -601,40 +601,6 @@ struct MenuExample {
 }
 ```
 
-ArkTS-Sta示例：
-```ts
-'use static'
-
-import { Entry, Component, Column, Text, Margin } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
-
-@Entry
-@Component
-struct MenuExample {
-  build() {
-    Column() {
-      Text('click for Menu')
-        .bindMenu([
-          {
-            value: 'Menu1',
-            action: () => {
-              console.info('handle Menu1 select');
-            }
-          },
-          {
-            value: 'Menu2',
-            action: () => {
-              console.info('handle Menu2 select');
-            }
-          },
-        ])
-    }
-    .width('100%')
-    .margin({ top: 5 } as Margin)
-  }
-}
-```
-
 ![menu](figures/menu.gif)
 
 ### 示例2（弹出自定义菜单）

@@ -30,7 +30,7 @@ Sendable协议定义了ArkTS的可共享对象体系及其规格约束。符合S
 
 ### ISendable
 
-在ArkTS语言基础库[@arkts.lang](../reference/apis-arkts/js-apis-arkts-lang.md)中引入了interface ISendable，没有任何方法或属性。ISendable是所有Sendable类型（除了null和undefined）的父类型。ISendable主要用于开发者自定义Sendable数据结构的场景中。类装饰器[@Sendable装饰器](#sendable装饰器)是implement ISendable的语法糖。
+在ArkTS语言基础库[@arkts.lang](../reference/apis-arkts/js-apis-arkts-lang.md)中引入了interface ISendable，没有任何方法或属性。ISendable是所有Sendable类型（除了null和undefined）的父类型。ISendable主要用于开发者自定义Sendable数据结构的场景中。类装饰器[@Sendable装饰器](#sendable装饰器)是implements ISendable的语法糖。
 
 ### Sendable class
 
@@ -228,7 +228,7 @@ type SendableFuncType = () => void;
 class TopLevelSendableClass {
   num: number = 1;
 
-  PrintNum() {
+  printNum() {
     console.info('Top level sendable class');
   }
 }
@@ -241,7 +241,7 @@ function topLevelSendableFunction() {
 @Sendable
 function sendableTestFunction() {
   const topClass = new TopLevelSendableClass(); // 顶层sendable class
-  topClass.PrintNum();
+  topClass.printNum();
   topLevelSendableFunction(); // 顶层sendable function
   console.info('Sendable test function');
 }
@@ -254,7 +254,7 @@ class SendableTestClass {
 
   callback: SendableFuncType; // 顶层sendable function
 
-  CallSendableFunc() {
+  callSendableFunc() {
     sendableTestFunction(); // 顶层sendable function
   }
 }

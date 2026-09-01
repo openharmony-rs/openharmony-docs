@@ -30,4 +30,4 @@ typedef struct {...} OH_AudioSuite_SpaceRenderRotationParams
 | float y | 空间中的Y坐标。取值范围为[-5.0, 5.0]，单位为米。 |
 | float z | 空间中的Z坐标。取值范围为[-5.0, 5.0]，单位为米。 |
 | int32_t surroundTime | 单周环绕时间。取值范围为[2, 40]，单位为秒。 |
-| [OH_AudioSuite_SurroundDirection](capi-native-audio-suite-base-h.md#oh_audiosuite_surrounddirection) surroundDirection | 单周环绕方向。取值范围为[0, 1]。 |
+| [OH_AudioSuite_SurroundDirection](capi-native-audio-suite-base-h.md#oh_audiosuite_surrounddirection) surroundDirection | 环绕方向。0表示逆时针旋转，1表示顺时针旋转。 |

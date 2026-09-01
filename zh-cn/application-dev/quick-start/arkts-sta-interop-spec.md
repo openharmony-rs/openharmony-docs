@@ -1170,6 +1170,67 @@ async function modifyAll(): Promise<void> {
 }
 ```
 
+### 非线程安全容器的并发访问
+
+ArkTS-Sta标准库中的容器类并非是线程安全的，在多线程环境下，多个Worker线程可能通过共享引用同时访问同一个容器对象，导致数据竞争甚至运行时崩溃。本小节描述哪些容器存在此问题，以及开发者应如何正确处理。
+
+**非线程安全容器**
+
+以下ArkTS-Sta标准库容器在并发访问时存在数据竞争风险：
+
+| 容器类型 | 风险原因 |
+|---------|---------|
+| `std.core.Array` | 扩容时内部缓冲区被替换，并发读写可能导致悬空指针访问（SIGSEGV）或数据损坏。 |
+| `std.core.Map` | 扩容和清空时内部存储结构被替换，并发读写可能导致悬空指针或数据损坏。 |
+| `std.core.Set` | 扩容和清空时内部存储结构被替换，并发读写可能导致悬空指针或数据损坏。 |
+
+> **说明：**
+>
+> 上述容器在并发场景下的典型风险表现为：当线程A正在读取容器内部缓冲区时，线程B触发了扩容操作替换了内部缓冲区，线程A继续通过旧缓冲区指针进行读写，导致访问已释放内存（SIGSEGV）或写入错误位置（数据损坏）。
+
+**Interop场景下的并发访问风险**
+
+| 场景 | 是否需要加锁 | 说明 |
+|------|-------------|------|
+| ArkTS-Dyn跨上下文使用ArkTS-Sta对象 | **需要** | 多个Dyn Worker通过共享引用访问同一Sta对象，Sta对象在共享堆上，Worker间对象通过引用共享。 |
+| ArkTS-Sta跨上下文使用ArkTS-Dyn对象 | **不需要** | Dyn对象在各自隔离的JS引擎中，Worker间对象通过拷贝传递，不存在共享引用。 |
+
+**开发者加锁指南**
+
+对于非线程安全容器，开发者应在多线程访问时确保外部同步。推荐做法如下：
+
+1. **使用`AsyncLock`进行外部同步**：在跨上下文场景中，按照[跨上下文共享修改](#跨上下文共享修改)章节的指导，在持有共享资源的一侧编写加锁逻辑，另一侧通过跨上下文函数调用来间接触发。
+2. **避免在临界区内进行跨上下文调用**：锁内的临界区代码应保持轻量，严禁在临界区内反向同步等待另一侧的信号，以防触发跨运行时死锁。
+
+示例：在ArkTS-Dyn侧通过TaskPool多线程安全访问ArkTS-Sta的`Array`。
+
+```ts
+// ArkTS-Sta
+const staLock = AsyncLock.request('sta_array_lock');
+export let sharedArray: Array<number> = [1, 2, 3, 4, 5];
+
+export async function safeSplice(start: int, deleteCount?: int, ...items: number[]): Promise<Array<number>> {
+    return await staLock.lockAsync(() => {
+        if (deleteCount !== undefined) {
+            return sharedArray.splice(start, deleteCount, ...items);
+        }
+        return sharedArray.splice(start);
+    });
+}
+
+// ArkTS-Dyn
+import { safeSplice } from "./static";
+import { taskpool } from '@kit.ArkTS';
+
+@Concurrent
+async function workerTask(): Promise<void> {
+    await safeSplice(1, 1, 10);
+}
+
+taskpool.execute(workerTask);
+taskpool.execute(workerTask);
+```
+
 ## 附录 
 
 ### ArkTS-Sta重写约束

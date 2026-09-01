@@ -450,7 +450,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 
 在API version 23以前，持久化的顶层数据类型必须是用户自定义的`class`对象，不支持容器类型（如`Array`、`Set`、`Map`，`Date`）。在API version 23开始，持久化的顶层数据类型可以是用户自定义的`class`，也可以是容器类型。非顶层数据类型，是指定义在用户自定义`class`属性的类型。
 
-如下示例中，`Array<ClassA>`是顶层持久化数据类型, 可作为`globalConnect`的直接返回值类型，`collections.Map`是`CollectionMapClass`类中属性的类型，属于非顶层持久化的数据类型。
+如下示例中，`Array<ClassA>`是顶层持久化数据类型，可作为`globalConnect`的直接返回值类型，`collections.Map`是`CollectionMapClass`类中属性的类型，属于非顶层持久化的数据类型。
 
 ```typescript
 class ClassA {
@@ -470,7 +470,7 @@ struct Page1 {
     type: Array<ClassA>,
     defaultCreator: () => UIUtils.makeObserved(new Array<ClassA>()),
     // 添加defaultSubCreator，通知状态管理框架如何创建数组项
-    // 另外持久化后的数据需要加上makeObserved，否则会持久化失败
+    // 另外持久化的数据需要加上makeObserved，否则会持久化失败
     defaultSubCreator: () => UIUtils.makeObserved(new ClassA())
   })!;
   
@@ -1234,7 +1234,7 @@ struct Index {
 
       // save接口
       // 未被@Trace装饰的变量需要借助状态变量refresh才能刷新
-      Text('save key connect3: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
+      Text('save key connectSample: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
         .onClick(() => {
           // 未被@Trace保存的对象无法自动存储，需要调用save存储
           this.p.father.groupId += 1;

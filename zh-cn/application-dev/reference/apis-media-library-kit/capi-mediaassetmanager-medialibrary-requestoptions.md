@@ -14,7 +14,7 @@ typedef struct MediaLibrary_RequestOptions {...} MediaLibrary_RequestOptions
 
 请求策略模式配置项。
 
-此结构体为媒体资源请求策略模式配置项。
+用于配置媒体资源的请求策略模式。
 
 **起始版本：** 12
 
@@ -28,6 +28,6 @@ typedef struct MediaLibrary_RequestOptions {...} MediaLibrary_RequestOptions
 
 | 名称 | 描述 |
 | -- | -- |
-| [MediaLibrary_DeliveryMode](capi-media-asset-base-capi-h.md#medialibrary_deliverymode) deliveryMode | 请求资源分发模式，可以指定对于该资源的请求策略。 |
+| [MediaLibrary_DeliveryMode](capi-media-asset-base-capi-h.md#medialibrary_deliverymode) deliveryMode | 请求资源分发模式，用于指定媒体资源的请求策略。  |
 
 

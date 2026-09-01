@@ -103,7 +103,7 @@ resetAllEfficiencyResources(): void
 | ---- | --------------------- |
 | 201 | Permission denied. |
 | 202 | Not System App. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. |
+| 401 | Parameter error. Possible causes: 1. Parameter verification failed. |
 | 9800001 | Memory operation failed. |
 | 9800002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9800003 | Internal transaction failed. |
@@ -550,7 +550,7 @@ try {
 | GPS                     | 32   | GPS资源，申请后应用进程被挂起后，GPS相关事件可以唤醒应用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
 | AUDIO                   | 64   | 音频资源，有音频播放时对应的应用进程不被挂起。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
 | RUNNING_LOCK<sup>10+</sup> | 128 | RUNNING_LOCK资源，申请后挂起状态不会代理RUNNING_BACKGROUND锁。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23  |
-| SENSOR<sup>10+</sup> | 256 | 申请后不拦截Sensor回调。 <br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23 |
+| SENSOR<sup>10+</sup> | 256 | 申请后不拦截SENSOR回调。 <br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## EfficiencyResourcesInfo<sup>20+</sup>
 

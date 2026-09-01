@@ -7,7 +7,7 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
-该组件用于实现支持懒加载的网格布局。
+该组件用于实现支持懒加载的网格布局，适用于在滚动容器中按需渲染大量网格项的场景，可减少首帧渲染时间和内存开销。
 
 API版本26.0.0之前，其父组件支持[WaterFlow](ts-container-waterflow.md)和[FlowItem](ts-container-flowitem.md)组件，并支持使用自定义组件或[NodeContainer](ts-basic-components-nodecontainer.md)组件封装后应用在WaterFlow或FlowItem中。
 
@@ -39,6 +39,8 @@ LazyVGridLayout()
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 19
@@ -57,7 +59,7 @@ ArkTS-Sta: columnsTemplate(value: string | undefined)
 
 设置当前网格布局列的数量、固定列宽或最小列宽值，不设置时默认1列。
 
-例如，'1fr&nbsp;1fr&nbsp;2fr'&nbsp;是将父组件分3列，将父组件允许的宽分为4等份，第一列占1份，第二列占1份，第三列占2份。
+例如，'1fr&nbsp;1fr&nbsp;2fr'&nbsp;表示将父组件分为3列，将父组件允许的宽度分为4等份，第一列占1份，第二列占1份，第三列占2份。
 
 columnsTemplate('repeat(auto-fit, track-size)')是设置最小列宽值为track-size，自动计算列数和实际列宽。
 
@@ -73,6 +75,8 @@ auto-fit模式和auto-stretch模式只支持track-size为一个有效列宽值�
 设置为'0fr'时，该列的列宽为0，不显示子组件。设置为其他非法值时，子组件显示为固定1列。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -110,9 +114,11 @@ ArkTS-Dyn: columnsGap(value: LengthMetrics)
 
 ArkTS-Sta: columnsGap(value: LengthMetrics | undefined)
 
-设置列与列的间距。默认值为0vp，设置为小于0的值时，按默认值显示。
+设置列与列的间距。默认值为0vp，设置为小于0的值时，按默认值显示。当[columnsTemplate](#columnstemplate)设置为auto-stretch模式时，columnsGap作为最小列间距，实际列间距由系统自动计算。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -135,6 +141,8 @@ ArkTS-Sta: rowsGap(value: LengthMetrics | undefined)
 设置行与行的间距。默认值为0vp，设置为小于0的值时，按默认值显示。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -176,6 +184,12 @@ header(builder: CustomBuilder | undefined): T
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | builder | [CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 头部组件构造函数。<br/>方法入参为undefined时，当前LazyVGridLayout不设置头部组件，如果已有头部组件，也会被移除。 |
 
+**返回值：**
+
+| 类型 | 说明           |
+| --- | -------------- |
+| T | 返回当前LazyVGridLayout组件自身，用于支持链式调用。 |
+
 ### footer
 
 footer(builder: CustomBuilder | undefined): T
@@ -204,6 +218,12 @@ footer(builder: CustomBuilder | undefined): T
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | builder | [CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 尾部组件构造函数。<br/>方法入参为undefined时，当前LazyVGridLayout不设置尾部组件，如果已有尾部组件，也会被移除。 |
 
+**返回值：**
+
+| 类型 | 说明           |
+| --- | -------------- |
+| T | 返回当前LazyVGridLayout组件自身，用于支持链式调用。 |
+
 ### sticky
 
 sticky(sticky: StickyStyle | undefined): T
@@ -214,7 +234,7 @@ sticky(sticky: StickyStyle | undefined): T
 
 > **说明：**
 >
-> 由于浮点数计算精度，设置sticky后，在滚动过程中小概率产生缝隙，可以通过[pixelRound](ts-universal-attributes-pixelRoundForComponent.md#pixelround)指定当前组件向下像素取整解决该问题。
+> 由于浮点数计算精度问题，设置sticky后，在滚动过程中可能产生缝隙，可以通过[pixelRound](ts-universal-attributes-pixelRoundForComponent.md#pixelround)指定当前组件向下像素取整解决该问题。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -232,6 +252,12 @@ sticky(sticky: StickyStyle | undefined): T
 | ------ | ----------------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | sticky | [StickyStyle](ts-container-list.md#stickystyle9枚举说明) \| undefined | 是   | 头部组件和尾部组件的吸附模式。sticky属性可以设置为StickyStyle.Header或StickyStyle.Footer，也可以设置为StickyStyle.BOTH，以同时支持头部组件吸顶和尾部组件吸底。<br/>方法入参为undefined时，恢复为默认值StickyStyle.None。<br/>未通过该接口设置时，默认头部组件不吸顶、尾部组件不吸底。 |
 
+**返回值：**
+
+| 类型 | 说明           |
+| --- | -------------- |
+| T | 返回当前LazyVGridLayout组件自身，用于支持链式调用。 |
+
 ## 事件
 
 除支持[通用事件](ts-component-general-events.md)外，还支持以下事件：
@@ -247,6 +273,8 @@ onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined): T
 > 当父组件设置主轴方向尺寸时，LazyVGridLayout按照父组件可视区域进行懒加载。此时onVisibleIndexesChange回调中start返回当前可视区域起始位置子组件的索引值，end返回当前可视区域结束位置子组件的索引值。
 >
 > 当父组件未设置主轴方向尺寸时，LazyVGridLayout会被内容撑开，导致所有子组件都会被加载布局。此时onVisibleIndexesChange回调中start返回0，end返回数据源最后一个子组件的索引值。
+>
+> 当该组件懒加载功能因上述父组件配置条件失效时，所有子组件都会被加载布局。此时onVisibleIndexesChange回调中start返回0，end返回数据源最后一个子组件的索引值。
 >
 > 此处的父组件指最靠近当前组件的上层滚动组件，其他文档下的具体含义请参考对应内容。
 
@@ -266,11 +294,17 @@ onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined): T
 | ------ | ------ | ---- | -------------------------- |
 | callback  | [OnVisibleIndexesChangeCallback](./ts-container-scrollable-common.md#onvisibleindexeschangecallback)&nbsp;\|&nbsp;undefined | 是  | onVisibleIndexesChange事件的回调函数。方法入参为undefined时，取消监听。 |
 
+**返回值：**
+
+| 类型 | 说明           |
+| --- | -------------- |
+| T | 返回当前LazyVGridLayout组件自身，用于支持链式调用。 |
+
 ## 示例
 
 ### 示例1（实现懒加载网格布局）
 
-该示例通过[WaterFlow](ts-container-waterflow.md)和[LazyVGridLayout](ts-container-lazyvgridlayout.md)实现懒加载网格布局，并通过[onVisibleIndexesChange](#onvisibleindexeschange)在可视区域发生变化时回调索引。
+该示例通过[WaterFlow](ts-container-waterflow.md)和LazyVGridLayout实现懒加载网格布局，并通过[onVisibleIndexesChange](#onvisibleindexeschange)在可视区域发生变化时触发回调，返回当前可视区域内子组件的起始索引值和结束索引值。
 
 MyDataSource实现了[LazyForEach](ts-rendering-control-lazyforeach.md)数据源接口[IDataSource](ts-rendering-control-lazyforeach.md#idatasource)，用于通过LazyForEach给LazyVGridLayout提供子组件。
 

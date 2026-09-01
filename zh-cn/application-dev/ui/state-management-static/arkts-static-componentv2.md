@@ -1,4 +1,4 @@
-# \@ComponentV2装饰器：自定义组件
+# \@ComponentV2装饰器：自定义组件（ArkTS-Sta）
 
 为了在自定义组件中使用V2版本状态变量装饰器的能力，开发者可以使用\@ComponentV2装饰器装饰自定义组件。
 
@@ -6,7 +6,7 @@
 
 >**说明：**
 >
->从API版本26.0.0开始，\@ComponentV2装饰的自定义组件支持跨[Ability](../../reference/apis-ability-kit/js-apis-app-ability-ability.md)迁移。因为自定义组件提供的是UI能力，所以这里的Ability也特指[UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)。具体示例参考[自定义组件支持跨Ability迁移](#自定义组件支持跨ability迁移)。\@Component装饰的自定义组件同样支持该能力，详见[\@Component装饰器：自定义组件](./arkts-static-create-component.md#自定义组件支持跨ability迁移)。
+>从API版本26.0.0开始，\@ComponentV2装饰的自定义组件支持跨[Ability](../../reference/apis-ability-kit/js-apis-app-ability-ability.md)迁移。因为自定义组件提供的是UI能力，所以这里的Ability也特指[UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)。具体示例参考[自定义组件支持跨Ability迁移](#自定义组件支持跨ability迁移)。\@Component装饰的自定义组件同样支持该能力，详见[自定义组件支持跨ability迁移](./arkts-static-create-component.md#自定义组件支持跨ability迁移)。
 
 ## 概述
 
@@ -45,8 +45,8 @@
 
 ## 支持自定义组件扩展
 
-从API version 23开始，开发者可以在自定义组件中重写通用属性的方法，并使用[`super`](../../quick-start/introduction-to-arkts.md)关键字调用基类的通用属性的方法。当使用“.”链式调用自定义组件方法时，需注意以下事项：
-1. 实现链式调用的关键是：每个方法必须返回[`this`](../../quick-start/introduction-to-arkts.md#this)，以允许连续调用。如果某个方法未返回`this`，则无法作为链式调用的中间步骤，导致后续调用无法解析，从而引发编译错误。
+从API version 23开始，开发者可以在自定义组件中重写通用属性的方法，并使用[`super`](../../quick-start/arkts-language-guide-inheritance.md#super关键字的用途与概念)关键字调用基类的通用属性的方法。当使用“.”链式调用自定义组件方法时，需注意以下事项：
+1. 实现链式调用的关键是：每个方法必须返回[`this`](../../quick-start/arkts-language-guide-classes.md#this类型)，以允许连续调用。如果某个方法未返回`this`，则无法作为链式调用的中间步骤，导致后续调用无法解析，从而引发编译错误。
 2. 通过链式调用的方法，其调用时机是在创建自定义组件时，所以在方法内，不能改变关联其他组件或方法的状态变量，否则会有运行时报错。
 
 示例如下。

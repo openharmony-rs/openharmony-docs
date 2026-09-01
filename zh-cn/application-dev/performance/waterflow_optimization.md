@@ -110,7 +110,7 @@
 
 虽然在onReachEnd()触发时新增数据可以实现无限加载，但在滑动到底部时，会有明显的停顿加载新数据的过程。
 
-想要流畅的进行无限滑动，还需要调整下增加新数据的时机。比如可以在LazyForEach还剩若干个数据就迭代到结束的情况下提前增加一些新数据。
+想要流畅地进行无限滑动，还需要调整下增加新数据的时机。比如可以在LazyForEach还剩若干个数据就迭代到结束的情况下提前增加一些新数据。
 
 ```ts
   build() {
@@ -119,7 +119,7 @@
         LazyForEach(this.dataSource, (item: number) => {
           FlowItem() {
             Column() {
-              Text("N" + item).fontSize(12).height('16')
+              Text("N" + item).fontSize(12).height(16)
               Image('res/waterFlowTest (' + item % 5 + ').jpg')
                 .objectFit(ImageFit.Fill)
                 .width('100%')

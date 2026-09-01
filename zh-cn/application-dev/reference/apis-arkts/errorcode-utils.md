@@ -978,6 +978,24 @@ Incorrect encoding format, only support utf-8.
 
 修改编码格式为utf-8。
 
+## 10200067 transfer传入不支持的类型
+
+**错误信息**
+
+Transfer Error. The input name is not supported!
+
+**错误描述**
+
+transfer转换失败，传入不支持的类型。
+
+**可能原因**
+
+传入的类型为不支持的类型。
+
+**处理步骤**
+
+调用时，确保传入的类型是可用的。无法保证时，需要捕获异常。
+
 ## 10200068 引用已释放或分离的ArrayBuffer
 
 **错误信息**

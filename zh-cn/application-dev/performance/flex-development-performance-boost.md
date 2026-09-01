@@ -24,10 +24,11 @@ Flex为采用弹性布局的容器。容器内部的所有子元素，会自动�
 
 - 第一次布局子组件主轴尺寸长度总和小于容器主轴尺寸长度，且包含设置有效的[flexGrow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexgrow)属性的子组件，设置有效的flexGrow属性的子组件会触发二次布局，拉伸布局填满容器。
 
-  ![layout-performace-2](figures/layout-performance-2.gif)
+  ![layout-performance-2](figures/layout-performance-2.gif)
 
 - 第一次布局子组件主轴尺寸长度总和大于容器主轴尺寸长度，且包含设置有效的flexShrink属性（flex子组件默认值为1，为有效值）的子组件，设置有效的flexShrink属性的子组件会触发二次布局，压缩布局填满容器。
-  ![layout-performace-3](figures/layout-performance-3.gif)
+
+  ![layout-performance-3](figures/layout-performance-3.gif)
 
 
 ## 场景二
@@ -39,10 +40,12 @@ Flex为采用弹性布局的容器。容器内部的所有子元素，会自动�
 
 
 - 第一次布局子组件主轴尺寸长度总和等于容器主轴尺寸长度，不需要二次布局。
+
   ![layout-performance-4](figures/layout-performance-4.png)
 
 - 第一次布局子组件主轴尺寸长度总和小于容器主轴尺寸长度，且包含设置有效的flexGrow属性的子组件，设置有效的flexGrow属性的子组件会触发二次布局，拉伸布局填满容器。
-  ![layout-performace-5](figures/layout-performance-5.gif)
+
+  ![layout-performance-5](figures/layout-performance-5.gif)
 
 
 ## 场景三
@@ -56,7 +59,8 @@ Flex为采用弹性布局的容器。容器内部的所有子元素，会自动�
 
 
 - 两次遍历都只布局一次组件，不会触发二次布局。
-  ![layout-performace-6](figures/layout-performance-6.gif)
+
+  ![layout-performance-6](figures/layout-performance-6.gif)
 
 
 ## 如何优化Flex的布局性能

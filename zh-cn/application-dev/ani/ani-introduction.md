@@ -1,4 +1,4 @@
-# ANI简介
+# ANI入门与开发调试
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @wanzixuan330-->
@@ -8,9 +8,9 @@
 
 ## 什么是ANI？
 
-**ANI**（ArkTS Native Interface）是ArkTS虚拟机（ArkRuntime）的核心组成部分，它为ArkTS 1.2代码与native代码（如C, C++）之间的双向交互提供了一套标准的接口规范。
+**ANI**（ArkTS Native Interface）是ArkTS虚拟机（ArkRuntime）的核心组成部分，它为ArkTS-Sta代码与native代码（如C, C++）之间的双向交互提供了一套标准的接口规范。
 
-与ArkTS 1.0（基于JavaScript）所使用的NAPI（Node-API）不同，ANI是为静态类型的ArkTS 1.2全新设计的。强调在编译期确定类型信息，提供更高效，类型更安全的互操作能力。
+与ArkTS-Dyn（基于JavaScript）所使用的NAPI（Node-API）不同，ANI是为静态类型的ArkTS-Sta全新设计的。强调在编译期确定类型信息，提供更高效，类型更安全的互操作能力。
 
 ## 开发调试：VerifyANI
 

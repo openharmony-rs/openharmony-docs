@@ -28,7 +28,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | ---- | ------------- | ---- |
-| [OH_IPC_MessageOption](capi-ohipcremoteobject-oh-ipc-messageoption.md) | - | IPC消息选项定义。 |
+| [OH_IPC_MessageOption](capi-ohipcremoteobject-oh-ipc-messageoption.md) | OH_IPC_MessageOption | IPC消息选项定义。 |
 | [OHIPCDeathRecipient](capi-ohipcremoteobject-ohipcdeathrecipient.md) | OHIPCDeathRecipient | 死亡通知对象。 |
 
 ### 枚举

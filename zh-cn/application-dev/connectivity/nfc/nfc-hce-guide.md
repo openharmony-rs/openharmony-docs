@@ -2,7 +2,7 @@
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @amunra03-->
+<!--Owner: @yh1719-->
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
@@ -314,7 +314,7 @@ export default class HceUIAbility extends UIAbility {
 
   onDestroy() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
-    // 退出应用程序，取消订阅接受HCE刷卡数据
+    // 退出应用程序，取消订阅接收HCE刷卡数据
     hceService.off('hceCmd', hceCommandCb);
   }
 }

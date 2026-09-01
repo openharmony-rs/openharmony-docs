@@ -76,7 +76,7 @@ ArkTS-Sta: onHoverMove(event: Callback&lt;HoverEvent&gt; | undefined): this
 
 ## HoverEvent<sup>10+</sup>对象说明
 
-继承于[BaseEvent](ts-gesture-customize-judge.md#baseevent8)。
+继承于[BaseEvent](ts-universal-events-click.md#baseevent8)。
 
 ### 属性
 

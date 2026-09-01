@@ -6,7 +6,7 @@
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
-FormAgent模块提供了卡片代理相关接口的能力，目前仅包括请求发布卡片。
+FormAgent模块提供了卡片代理相关接口的能力，目前仅包括请求发布卡片。适用于系统应用需要将卡片发布到使用方（如桌面）的场景，能够帮助系统应用便捷地请求发布卡片，简化卡片发布流程。
 
 > **说明：**
 >
@@ -22,11 +22,11 @@ FormAgent模块提供了卡片代理相关接口的能力，目前仅包括请�
 import { formAgent } from '@kit.FormKit';
 ```
 
-## requestPublishForm
+## formAgent.requestPublishForm
 
 requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 
-请求发布一张卡片到使用方，使用callback异步回调。使用方通常为桌面。
+请求发布一张卡片到使用方，使用callback异步回调。使用方通常为桌面。适用于系统应用需要主动将卡片添加到桌面的场景。
 
 **需要权限：** ohos.permission.AGENT_REQUIRE_FORM
 
@@ -42,8 +42,8 @@ requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 
 | 参数名   | 类型                                | 必填 | 说明                                                         |
 | -------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 发布请求，需包含以下字段。<br>bundleName: 目标卡片所属应用的bundleName<br>abilityName: 目标卡片所属应用的Ability<br>parameters:<br>- ohos.extra.param.key.form_dimension: 目标卡片规格<br>- ohos.extra.param.key.form_name: 目标卡片名<br>- ohos.extra.param.key.module_name: 目标卡片moduleName|
-| callback | AsyncCallback&lt;string&gt;         | 是   |  回调函数，返回卡片标识。 |
+| want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 发布请求，需包含以下字段。<br>bundleName: 目标卡片所属应用的bundleName<br>abilityName: 目标卡片所属应用的Ability<br>parameters:<br>- ohos.extra.param.key.form_dimension: 目标卡片规格，取值原则：1-2x2、2-2x4、3-4x4等，具体规格见卡片配置<br>- ohos.extra.param.key.form_name: 目标卡片名<br>- ohos.extra.param.key.module_name: 目标卡片moduleName|
+| callback | AsyncCallback&lt;string&gt;         | 是 | 回调函数，用于异步返回卡片标识。回调参数：error为错误对象（成功时为null），data为卡片标识（string类型）。 |
 
 **错误码：**
 
@@ -56,7 +56,10 @@ requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
-| 16501008 | Waiting for the form addition to the desktop timed out. <br/>适用版本：12+|
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>**起始版本：** 26.1.0 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>适用版本：12+ |
+| 16501017 | There is no space to publish form. <br/>**起始版本：** 26.1.0 |
+| 16501018 | This form does not support publishing. <br/>**起始版本：** 26.1.0 |
 
 **示例：**
 
@@ -127,11 +130,11 @@ try {
 }
 ```
 
-## requestPublishForm
+## formAgent.requestPublishForm
 
 requestPublishForm(want: Want): Promise&lt;string&gt;
 
-请求发布一张卡片到使用方，使用Promise异步回调。使用方通常为桌面。
+请求发布一张卡片到使用方，使用Promise异步回调。使用方通常为桌面。适用于系统应用需要主动将卡片添加到桌面的场景。
 
 **需要权限：** ohos.permission.AGENT_REQUIRE_FORM
 
@@ -166,7 +169,10 @@ requestPublishForm(want: Want): Promise&lt;string&gt;
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
-| 16501008 | Waiting for the form addition to the desktop timed out. <br/>适用版本：12+|
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>**起始版本：** 26.1.0 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>适用版本：12+ |
+| 16501017 | There is no space to publish form. <br/>**起始版本：** 26.1.0 |
+| 16501018 | This form does not support publishing. <br/>**起始版本：** 26.1.0 |
 
 **示例：**
 
@@ -234,7 +240,7 @@ try {
 }
 ```
 
-## updateFormCrossBundle
+## formAgent.updateFormCrossBundle
 
 updateFormCrossBundle(formId: string, formBindingData: formBindingData.FormBindingData): Promise&lt;void&gt;
 

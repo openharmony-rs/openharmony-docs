@@ -38,7 +38,7 @@ The session does not exist.
 
 **错误描述**
 
-会话对象不存在时，向该会话设置参数或者发送命令。
+会话对象不存在时，向该会话设置属性或者发送命令。
 
 **可能原因**
 
@@ -122,7 +122,9 @@ The session is not activated.
 
 **处理步骤**
 
-停止发送该命令或事件，监听会话的激活状态，会话激活后恢复发送该命令或事件。
+1. 停止发送该命令或事件。
+2. 监听会话的激活状态。
+3. 会话激活后恢复发送该命令或事件。
 
 ## 6600107 命令&消息过载
 
@@ -147,7 +149,7 @@ Too many commands or events.
 
 **错误信息**
 
-Device connection failed.
+Device connecting failed.
 
 **错误描述**
 
@@ -192,7 +194,7 @@ The desktop lyrics feature of this application is not enabled.
 
 **可能原因**
 
-应用程序的桌面歌词功能未开启。
+未先调用enableDesktopLyric接口就启用该功能。
 
 **处理步骤**
 
@@ -214,7 +216,7 @@ The desktop lyrics feature is not supported.
 
 **处理步骤**
 
-建议使用[isDesktopLyricSupported](./arkts-apis-avsession-f.md#avsessionisdesktoplyricsupported23)接口查询当前设备是否支持桌面歌词功能。
+使用[isDesktopLyricSupported](./arkts-apis-avsession-f.md#avsessionisdesktoplyricsupported23)接口查询当前设备是否支持桌面歌词功能。
 
 ## 6611000 投播控制器出现未知错误
 
@@ -470,7 +472,7 @@ Operation is not allowed.
 
 **可能原因**
 
-不允许当前操作。
+当前设备状态不允许执行此操作。
 
 **处理步骤**
 
@@ -759,7 +761,7 @@ The number of times this content has been used as requested has reached the maxi
 
 **可能原因**
 
-请求使用此内容的次数已达到允许使用的最大次数。
+内容使用次数达到授权上限。
 
 **处理步骤**
 
@@ -809,7 +811,7 @@ Parsing error associated with media container format bit streams.
 
 **错误描述**
 
-非法类型。
+与媒体容器格式比特流相关的解析错误。
 
 **可能原因**
 
@@ -953,7 +955,7 @@ The format of the content to decode exceeds the capabilities of the device.
 
 **错误描述**
 
-所需解码的内容格式超出设备能力而导致失败。
+所需解码的内容格式超出设备能力导致失败。
 
 **可能原因**
 
@@ -1197,7 +1199,7 @@ DRM许可证已过期。
 
 当前远端设备的DRM出现异常，更新DRM组件之后重新发起会话。
 
-## 6616100 DRM进程秘钥响应错误
+## 6616100 DRM进程密钥响应错误
 
 **错误信息**
 
@@ -1205,11 +1207,11 @@ An error occurs when the DRM processes the key response.
 
 **错误描述**
 
-DRM进程秘钥响应错误。
+DRM进程密钥响应错误。
 
 **可能原因**
 
-DRM秘钥响应的处理过程出现了问题。
+DRM密钥响应的处理过程出现了问题。
 
 **处理步骤**
 

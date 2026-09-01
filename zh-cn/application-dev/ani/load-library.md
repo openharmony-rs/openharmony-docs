@@ -1,4 +1,4 @@
-# `loadLibrary`的使用
+# 使用loadLibrary加载native库
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @wanzixuan330-->
@@ -115,7 +115,10 @@ std::array methods = {
         reinterpret_cast<void*>(getRecordCount)
     },
 };
-env->Class_BindNativeMethods(cls, methods.data(), methods.size());
+ani_status status = env->Class_BindNativeMethods(cls, methods.data(), methods.size());
+if (status != ANI_OK) {
+    // handle error and return
+}
 
 // 静态方法绑定
 std::array staticMethods = {
@@ -125,7 +128,10 @@ std::array staticMethods = {
         reinterpret_cast<void*>(getRecordCountStatic)
     },
 };
-env->Class_BindStaticNativeMethods(cls, staticMethods.data(), staticMethods.size());
+status = env->Class_BindStaticNativeMethods(cls, staticMethods.data(), staticMethods.size());
+if (status != ANI_OK) {
+    // handle error and return
+}
 ```
 
 > 使用`reinterpret_cast<void*>`消除C++函数的类型。
@@ -156,7 +162,10 @@ std::array functions = {
         reinterpret_cast<void*>(getRecordCount)
     },
 };
-env->Namespace_BindNativeFunctions(ns, functions.data(), functions.size());
+ani_status status = env->Namespace_BindNativeFunctions(ns, functions.data(), functions.size());
+if (status != ANI_OK) {
+    // handle error and return
+}
 ```
 > **重要提示**：namespace和modules中声明的native function，对应的C++实现只需要一个额外的`ani_env*`, 不要添加额外的`ani_object`或者`ani_class`。
 
@@ -182,7 +191,10 @@ static void processEnumInt(ani_env* env, ani_enum_item enumItem);
 **绑定代码**：
 ```cpp
 ani_module module;
-env->FindModule("example", &module);
+ani_status status = env->FindModule("example", &module);
+if (status != ANI_OK) {
+    // handle error and return
+}
 
 std::array functions = {
     ani_native_function {
@@ -191,7 +203,10 @@ std::array functions = {
         reinterpret_cast<void*>(processEnumInt)
     },
 };
-env->Module_BindNativeFunctions(module, functions.data(), functions.size());
+status = env->Module_BindNativeFunctions(module, functions.data(), functions.size());
+if (status != ANI_OK) {
+    // handle error and return
+}
 ```
 
 > **重要提示**：通过`FindModule`只能找到对应的module，必须使用`Module_BindNativeFunctions`绑定模块函数。
@@ -270,7 +285,7 @@ at std.core.LinkerUnresolvedClassError.<ctor> (<unknown>:36)
 ---
 ### `loadLibrary`用法
 
-ArkTS 1.2使用模块和类的延迟初始化。在实践中，这意味着静态块和top级语句仅在第一次访问作为类或模块一部分定义的实体之前执行。考虑以下示例：
+ArkTS-Sta使用模块和类的延迟初始化。在实践中，这意味着静态块和top级语句仅在第一次访问作为类或模块一部分定义的实体之前执行。考虑以下示例：
 
 ```ts
 loadLibrary("libraryName")

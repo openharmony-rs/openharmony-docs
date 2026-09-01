@@ -1279,7 +1279,7 @@ function foo4() {
 }
 
 let obj = { value: 'abc' };
-foo.apply(obj);
+foo4.apply(obj);
 ```
 
 **建议改法1**
@@ -1771,7 +1771,7 @@ entries.forEach((value, key) => {
 
 ``` TypeScript
 interface I {
-  name:string
+  name: string;
 }
 
 class A {}
@@ -1791,7 +1791,7 @@ class Test {
 
 ``` TypeScript
 interface I {
-  name:string
+  name: string;
 }
 
 class A {}

@@ -65,7 +65,7 @@ NavDestination组件状态。
 
 ## RouterPageState
 
-routerPage生命周期触发时对应的状态。RouterPageState用于[RouterPageInfo](#routerpageinfo)中，作为[routerPageUpdate](#uiobserveronrouterpageupdate11)无感监听的返回值。
+routerPage生命周期触发时对应的状态。RouterPageState用于[RouterPageInfo](#routerpageinfo)中，作为[routerPageUpdate](#uiobserveronrouterpageupdate)无感监听的返回值。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -809,7 +809,7 @@ struct Index {
 }
 ```
 
-## uiObserver.on('routerPageUpdate')<sup>11+</sup>
+## uiObserver.on('routerPageUpdate')
 
 on(type: 'routerPageUpdate', context: UIAbilityContext | UIContext, callback: Callback\<RouterPageInfo\>): void
 
@@ -843,7 +843,7 @@ onRouterPageUpdate(context: UIAbilityContext | UIContext, callback: Callback\<Ro
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[uiObserver.on('routerPageUpdate')](#uiobserveronrouterpageupdate11)。
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[uiObserver.on('routerPageUpdate')](#uiobserveronrouterpageupdate)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -890,7 +890,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## uiObserver.off('routerPageUpdate')<sup>11+</sup>
+## uiObserver.off('routerPageUpdate')
 
 off(type: 'routerPageUpdate', context: UIAbilityContext | UIContext, callback?: Callback\<RouterPageInfo\>): void
 
@@ -916,7 +916,7 @@ off(type: 'routerPageUpdate', context: UIAbilityContext | UIContext, callback?: 
 
 **示例：**
 
-参考[uiObserver.on('routerPageUpdate')](#uiobserveronrouterpageupdate11)示例。
+参考[uiObserver.on('routerPageUpdate')](#uiobserveronrouterpageupdate)示例。
 
 ## uiObserver.offRouterPageUpdate<sup>23+</sup>
 
@@ -928,7 +928,7 @@ offRouterPageUpdate(context: UIAbilityContext | UIContext, callback?: Callback\<
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[uiObserver.off('routerPageUpdate')](#uiobserveroffrouterpageupdate11)。
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[uiObserver.off('routerPageUpdate')](#uiobserveroffrouterpageupdate)。
 
 **ArkTS-Sta起始版本：** 23
 

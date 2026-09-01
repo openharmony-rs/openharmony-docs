@@ -7,7 +7,7 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
-可滚动的容器组件，当子组件的布局尺寸超过父组件的尺寸时，内容可以滚动。
+可滚动的容器组件，当子组件的布局尺寸超过父组件的尺寸时，内容可以滚动。支持设置滚动方向、滚动条、边缘效果、嵌套滚动以及自由滚动缩放等能力，适用于内容超出显示区域或需要复杂滚动交互的场景。
 
 >  **说明：**
 >
@@ -15,7 +15,7 @@
 >
 > - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 该组件嵌套List子组件滚动时，若List不设置宽高，则默认全部加载，在对性能有要求的场景下建议指定List的宽高，最佳实践请参考[懒加载优化性能-Scroll嵌套List导致按需加载失效](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-lazyforeach-optimization#section6296154115367)。
+>  - 该组件嵌套List子组件滚动时，若List不设置宽高，则默认全部加载。在对性能有要求的场景下，开发者应指定List的宽高，以避免默认全部加载影响性能。最佳实践请参考[懒加载优化性能——Scroll嵌套List导致按需加载失效](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-lazyforeach-optimization#section6296154115367)。
 >
 > - 该组件滚动的前提是主轴方向大小小于内容大小。
 >
@@ -52,7 +52,7 @@ Scroll(scroller?: Scroller)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| scroller | [Scroller](#scroller) | 否 | 可滚动组件的控制器。用于与可滚动组件进行绑定。<br/>**说明：** <br/>不允许和其他滚动类组件，如：[ArcList](ts-container-arclist.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)绑定同一个滚动控制对象。 |
+| scroller | [Scroller](#scroller) | 否 | 可滚动组件的控制器。用于与可滚动组件进行绑定，并通过控制器接口控制滚动；不传入时，无法通过控制器接口控制该Scroll组件。<br/>**说明：** <br/>不允许和其他滚动类组件，如：[ArcList](ts-container-arclist.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)绑定同一个滚动控制对象。 |
 
 ## 属性
 
@@ -64,7 +64,7 @@ ArkTS-Dyn: scrollable(value: ScrollDirection)
 
 ArkTS-Sta: scrollable(value: ScrollDirection | undefined)
 
-设置滚动方向。该值被修改后会重置滚动偏移量。
+设置滚动方向。该值被修改后会重置滚动偏移量。可根据布局选择竖直滚动、水平滚动或自由滚动。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -88,7 +88,7 @@ ArkTS-Dyn: scrollBar(barState: BarState)
 
 ArkTS-Sta: scrollBar(barState: BarState | undefined)
 
-设置滚动条状态。如果容器组件无法滚动，则滚动条不显示。如果容器组件的子组件大小为无穷大，则滚动条不支持拖动和伴随滚动。
+设置滚动条状态。如果容器组件无法滚动，则滚动条不显示。如果容器组件的子组件大小为无穷大，则滚动条不支持拖动和伴随滚动。可用于控制滚动条是否常驻显示、自动显示或隐藏。
 
 从API version 10开始，当滚动组件存在圆角时，为避免滚动条被圆角截断，滚动条会自动计算距顶部和底部的避让距离。
 
@@ -124,7 +124,7 @@ scrollBarColor(color: Color | number | string)
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| color  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string | 是   | 滚动条的颜色。<br/>默认值：'\#66182431'<br/>number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。<br/>string为rgb或者argb格式颜色，示例：'#ffffff'。   |
+| color  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string | 是   | 滚动条的颜色。<br/>默认值：'\#66182431'<br/>number为HEX格式颜色，支持rgb或者argb，取值范围：[0x00000000, 0xFFFFFFFF]，示例：0xffffff。<br/>string为rgb或者argb格式颜色，示例：'#ffffff'。   |
 
 ### scrollBarColor<sup>22+</sup>
 
@@ -148,7 +148,7 @@ ArkTS-Sta: scrollBarColor(color: Color | int | string | Resource | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| color  | ArkTS-Dyn: [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;int&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;undefined | 是   | 滚动条的颜色。<br/>默认值：'\#66182431'<br/>number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。<br/>取值为undefined时，滚动条的颜色为默认颜色。   |
+| color | ArkTS-Dyn: [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;int&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;undefined | 是 | 滚动条的颜色。<br/>默认值：'\#66182431'<br/>number为HEX格式颜色，支持rgb或者argb，取值范围：[0x00000000, 0xFFFFFFFF]，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。<br/>取值为undefined时，按默认值处理。 |
 
 ### scrollBarWidth
 
@@ -156,7 +156,7 @@ ArkTS-Dyn: scrollBarWidth(value: number | string)
 
 ArkTS-Sta: scrollBarWidth(value: double | string | undefined)
 
-设置滚动条的宽度，不支持百分比设置。宽度设置后，滚动条正常状态和按压状态宽度均为滚动条的宽度值。如果滚动条的宽度超过Scroll组件主轴方向的高度，则滚动条的宽度会变为默认值。
+设置滚动条的宽度，不支持百分比设置。宽度设置后，滚动条正常状态和按压状态宽度均为滚动条的宽度值。如果滚动条的宽度超过Scroll组件主轴方向的可视尺寸，则按默认值4vp处理。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -170,7 +170,7 @@ ArkTS-Sta: scrollBarWidth(value: double | string | undefined)
 
 | 参数名 | 类型                       | 必填 | 说明                                      |
 | ------ | -------------------------- | ---- | ----------------------------------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string<br/>ArkTS-Sta: double \| string \| undefined | 是   | 滚动条的宽度。<br/>默认值：4<br/>单位：vp<br/>取值范围：设置为小于0的值时，按默认值处理。设置为0时，不显示滚动条。<br/>取值为undefined时，按默认值处理。|
+| value | ArkTS-Dyn: number&nbsp;\|&nbsp;string<br/>ArkTS-Sta: double \| string \| undefined | 是 | 滚动条的宽度。<br/>默认值：4<br/>单位：vp <br/>取值范围：设置为小于0的值时，按默认值4vp处理。设置为0时，不显示滚动条。<br/>取值为undefined时，按默认值处理。 |
 
 ### scrollBarWidth
 
@@ -178,9 +178,9 @@ ArkTS-Dyn: scrollBarWidth(value: number | string | Resource)
 
 ArkTS-Sta: scrollBarWidth(value: Resource | undefined)
 
-设置滚动条的宽度，不支持百分比设置。宽度设置后，滚动条正常状态和按压状态宽度均为滚动条的宽度值。如果滚动条的宽度超过Scroll组件主轴方向的高度，则滚动条的宽度会变为4vp，支持Resource资源类型。
+设置滚动条的宽度，不支持百分比设置。宽度设置后，滚动条正常状态和按压状态宽度均为滚动条的宽度值。如果滚动条的宽度超过Scroll组件主轴方向的可视尺寸，则按默认值4vp处理，支持Resource资源类型。
 
-未通过该接口设置时，设置滚动条的宽度为4vp。
+未通过该接口设置时，滚动条宽度为默认值4vp。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -196,7 +196,7 @@ ArkTS-Sta: scrollBarWidth(value: Resource | undefined)
 
 | 参数名 | 类型                       | 必填 | 说明                                      |
 | ------ | -------------------------- | ---- | ----------------------------------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string \|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: [Resource](ts-types.md#resource)&nbsp;\|&nbsp;undefined | 是   | 滚动条的宽度。<br/>单位：vp <br/>取值范围：[0, +∞)。设置为小于0的值时，按4vp处理。设置为0时，不显示滚动条。<br/>取值为undefined时，按4vp处理。|
+| value | ArkTS-Dyn: number&nbsp;\|&nbsp;string \|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: [Resource](ts-types.md#resource)&nbsp;\|&nbsp;undefined | 是 | 滚动条的宽度。<br/>默认值：4<br/>单位：vp <br/>取值范围：[0, +∞)。设置为小于0的值时，按默认值4vp处理。设置为0时，不显示滚动条。<br/>取值为undefined时，按默认值处理。 |
 
 
 ### scrollSnap<sup>10+</sup>
@@ -205,7 +205,7 @@ ArkTS-Dyn: scrollSnap(value: ScrollSnapOptions)
 
 ArkTS-Sta: scrollSnap(value: ScrollSnapOptions | undefined)
 
-设置Scroll组件的限位滚动模式。
+设置Scroll组件的限位滚动模式，用于实现分页滚动、卡片对齐等需要滚动结束后定位到指定位置的场景。
 
 限位动画期间[onWillScroll](#onwillscroll12)事件上报的滚动操作来源类型为ScrollSource.FLING。
 
@@ -223,7 +223,7 @@ ArkTS-Sta: scrollSnap(value: ScrollSnapOptions | undefined)
 
 | 参数名 | 类型                                      | 必填 | 说明                       |
 | ------ | ----------------------------------------- | ---- | -------------------------- |
-| value  | ArkTS-Dyn: [ScrollSnapOptions](#scrollsnapoptions10对象说明)<br/>ArkTS-Sta: [ScrollSnapOptions](#scrollsnapoptions10对象说明) \| undefined | 是   | Scroll组件的限位滚动模式。<br/>取值为undefined时，按默认值处理。 |
+| value | ArkTS-Dyn: [ScrollSnapOptions](#scrollsnapoptions10对象说明)<br/>ArkTS-Sta: [ScrollSnapOptions](#scrollsnapoptions10对象说明) \| undefined | 是 | Scroll组件的限位滚动模式。该对象包含snapAlign（对齐方式）、snapPagination（分页点）、enableSnapToStart（是否在开头限位）和enableSnapToEnd（是否在末尾限位）等属性。<br/>取值为undefined时，按默认值处理。 |
 
 ### edgeEffect
 
@@ -246,7 +246,7 @@ ArkTS-Sta: edgeEffect(edgeEffect: EdgeEffect | undefined, options?: EdgeEffectOp
 | 参数名                | 类型                                              | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | edgeEffect            | ArkTS-Dyn: [EdgeEffect](ts-appendix-enums.md#edgeeffect)<br/>ArkTS-Sta: [EdgeEffect](ts-appendix-enums.md#edgeeffect) \| undefined     | 是   | Scroll组件的边缘滑动效果，支持弹簧效果和阴影效果。<br/>默认值：EdgeEffect.None<br/>取值为undefined时，按默认值处理。 |
-| options<sup>11+</sup> | ArkTS-Dyn: [EdgeEffectOptions](ts-container-scrollable-common.md#edgeeffectoptions11对象说明)<br/>ArkTS-Sta: [EdgeEffectOptions](ts-container-scrollable-common.md#edgeeffectoptions11对象说明) \| undefined | 否   | 组件内容大小小于组件自身时，是否开启滑动效果。设置为{ alwaysEnabled: true }会开启滑动效果，{ alwaysEnabled: false }不开启。<br/>默认值：{ alwaysEnabled: true }<br/>取值为undefined时，按默认值处理。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| options<sup>11+</sup> | ArkTS-Dyn: [EdgeEffectOptions](ts-container-scrollable-common.md#edgeeffectoptions11对象说明)<br/>ArkTS-Sta: [EdgeEffectOptions](ts-container-scrollable-common.md#edgeeffectoptions11对象说明) \| undefined | 否 | 组件内容大小小于组件自身时，是否开启滑动效果。设置为{ alwaysEnabled: true }会开启滑动效果，{ alwaysEnabled: false }不开启；不传入时使用默认值。<br/>默认值：{ alwaysEnabled: true }<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>取值为undefined时，按默认值处理。 |
 
 ### enableScrollInteraction<sup>10+</sup>
 
@@ -254,7 +254,7 @@ ArkTS-Dyn: enableScrollInteraction(value: boolean)
 
 ArkTS-Sta: enableScrollInteraction(value: boolean | undefined)
 
-设置是否支持滚动手势。
+设置是否支持滚动手势。可用于在自定义拖动、自定义滚动等业务需要接管滑动手势的场景中，临时禁用滚动组件的用户手势滚动。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -282,7 +282,7 @@ ArkTS-Dyn: nestedScroll(value: NestedScrollOptions)
 
 ArkTS-Sta: nestedScroll(value: NestedScrollOptions | undefined)
 
-设置前后两个方向的嵌套滚动模式，实现与父组件的滚动联动。
+设置前后两个方向的嵌套滚动模式，实现与父组件的滚动联动。适用于页面内列表与外层滚动区域联动等嵌套滚动场景。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -298,7 +298,7 @@ ArkTS-Sta: nestedScroll(value: NestedScrollOptions | undefined)
 
 | 参数名 | 类型                                                  | 必填 | 说明           |
 | ------ | ----------------------------------------------------- | ---- | -------------- |
-| value  | ArkTS-Dyn: [NestedScrollOptions](ts-container-scrollable-common.md#nestedscrolloptions10对象说明)<br/>ArkTS-Sta: [NestedScrollOptions](ts-container-scrollable-common.md#nestedscrolloptions10对象说明) \| undefined | 是   | 嵌套滚动选项。<br/>默认值：{ scrollForward: NestedScrollMode.SELF_ONLY, scrollBackward: NestedScrollMode.SELF_ONLY }<br/>Scroll设置[enablePaging](#enablepaging11)或者[scrollSnap](#scrollsnap10)，并同时设置父组件优先的嵌套滚动时，嵌套滚动不生效。<br/>取值为undefined时，按默认值处理。|
+| value | ArkTS-Dyn: [NestedScrollOptions](ts-container-scrollable-common.md#nestedscrolloptions10对象说明)<br/>ArkTS-Sta: [NestedScrollOptions](ts-container-scrollable-common.md#nestedscrolloptions10对象说明) \| undefined | 是 | 嵌套滚动选项，用于配置前后两个方向的嵌套滚动模式，包含scrollForward（向前滚动模式）和scrollBackward（向后滚动模式）字段。NestedScrollMode.SELF_ONLY表示仅自身滚动，NestedScrollMode.SELF_FIRST表示自身优先滚动，NestedScrollMode.PARENT_FIRST表示父组件优先滚动，NestedScrollMode.PARALLEL表示自身和父组件同时滚动。<br/>默认值：{ scrollForward: NestedScrollMode.SELF_ONLY, scrollBackward: NestedScrollMode.SELF_ONLY }<br/>Scroll设置[enablePaging](#enablepaging11)或者[scrollSnap](#scrollsnap10)，并同时设置父组件优先的嵌套滚动时，嵌套滚动不生效。<br/>取值为undefined时，按默认值处理。 |
 
 ### friction<sup>10+</sup>
 
@@ -322,7 +322,7 @@ ArkTS-Sta: friction(value: double | Resource | undefined)
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                      |
 | ------ | ---------------------------------------------------- | ---- | --------------------------------------------------------- |
-| value  | ArkTS-Dyn: number \| [Resource](ts-types.md#resource)<br/>ArkTS-Sta: double \| [Resource](ts-types.md#resource) \| undefined | 是   | 摩擦系数。<br/>默认值：非可穿戴设备为0.6，可穿戴设备为0.9。<br/>从API version 11开始，非可穿戴设备默认值为0.7。<br/>从API version 12开始，非可穿戴设备默认值为0.75。<br/>取值范围：(0, +∞)，设置为小于等于0的值时，按默认值处理。<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: number \| [Resource](ts-types.md#resource)<br/>ArkTS-Sta: double \| [Resource](ts-types.md#resource) \| undefined | 是   | 摩擦系数。<br/>默认值：非Wearable设备为0.6，Wearable设备为0.9。<br/>从API version 11开始，非Wearable设备默认值为0.7。<br/>从API version 12开始，非Wearable设备默认值为0.75。<br/>取值范围：(0, +∞)，设置为小于等于0的值时，按默认值处理。<br/>取值为undefined时，按默认值处理。 |
 
 ### enablePaging<sup>11+</sup>
 
@@ -330,7 +330,7 @@ ArkTS-Dyn: enablePaging(value: boolean)
 
 ArkTS-Sta: enablePaging(value: boolean | undefined)
 
-设置是否支持滑动翻页。如果同时设置了滑动翻页enablePaging和限位滚动scrollSnap，则scrollSnap优先生效，enablePaging不生效。
+设置是否支持划动翻页。如果同时设置了划动翻页enablePaging和限位滚动scrollSnap，则scrollSnap优先生效，enablePaging不生效。可用于书籍翻页、卡片分页浏览等场景。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -354,7 +354,7 @@ ArkTS-Dyn: initialOffset(value: OffsetOptions)
 
 ArkTS-Sta: initialOffset(value: OffsetOptions | undefined)
 
-设置初始滚动偏移量。只在首次布局时生效，后续动态修改该属性值不生效。
+设置初始滚动偏移量。只在首次布局时生效，后续动态修改该属性值不生效。可用于页面首次显示时定位到指定滚动位置。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -412,7 +412,7 @@ ArkTS-Sta: maxZoomScale(scale: double | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                                  |
 | ------ | ------- | ---- | ------------------------------------- |
-| scale  | ArkTS-Dyn: number<br/>ArkTS-Sta: double&nbsp;\|&nbsp;undefined  | 是   |Scroll组件内容的最大手势缩放比例。<br>默认值：1<br>取值范围：(0, +∞)，小于或等于0时按默认值1处理。|
+| scale  | ArkTS-Dyn: number<br/>ArkTS-Sta: double&nbsp;\|&nbsp;undefined  | 是   |Scroll组件内容的最大手势缩放比例。<br>默认值：1<br>取值范围：(0, +∞)，小于或等于0时按默认值1处理。<br>取值为undefined时，按默认值1处理。|
 
 ### minZoomScale<sup>20+</sup>
 
@@ -472,7 +472,7 @@ ArkTS-Dyn: enableBouncesZoom(enable: boolean)
 
 ArkTS-Sta: enableBouncesZoom(enable: boolean | undefined)
 
-启用过缩放回弹效果。未通过该接口设置时，默认启用该效果。
+设置是否启用过缩放回弹效果。未通过该接口设置时，默认启用该效果。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -488,7 +488,7 @@ ArkTS-Sta: enableBouncesZoom(enable: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                                  |
 | ------ | ------- | ---- | ------------------------------------- |
-| enable  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined  | 是   |启用过缩放回弹效果。设置为true表示启用该效果，设置为false表示禁用该效果。<br>默认值：true<br>取值为undefined时，启用该效果。 |
+| enable | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是 | 是否启用过缩放回弹效果。当用户缩放超出最大或最小缩放比例时，释放手势后内容会回弹到最大或最小缩放比例。设置为true表示启用该效果，设置为false表示禁用该效果。<br>默认值：true<br/>取值为undefined时，按默认值处理。 |
 
 ## ScrollDirection枚举说明
 
@@ -500,7 +500,7 @@ ArkTS-Sta: enableBouncesZoom(enable: boolean | undefined)
 | ---------- | -- | ------------------------ |
 | Vertical   | 0  | 仅支持竖直方向滚动。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
 | Horizontal | 1  | 仅支持水平方向滚动。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
-| Free<sup>(deprecated) </sup> | 2 | 支持竖直或水平方向滚动。<br/> **说明：** 从API version 7开始支持，从API version 9开始废弃，建议使用FREE替代。FREE枚举值从API version 20开始支持。|
+| Free<sup>(deprecated)</sup> | 2 | 支持竖直或水平方向滚动。<br/> **说明：** 从API version 7开始支持，从API version 9开始废弃，建议使用FREE替代。FREE枚举值从API version 20开始支持。|
 | None       | ArkTS-Dyn: 3<br/>ArkTS-Sta: 2 | 不可滚动。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
 | FREE<sup>20+</sup>   | 4 | 自由滚动。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 24 |
 
@@ -519,7 +519,7 @@ FREE（自由滚动）模式下支持的能力：
 | [initialOffset](#initialoffset12) | - | - |
 | [scrollable](#scrollable) | - | - |
 
->  **说明:**
+>  **说明：**
 >  - `edgeEffect`属性仅支持`Spring`和`None`边缘滑动效果。
 >  - `onWillScroll`回调仅支持在跟手滑动阶段重载偏移量。
 >  - `onScrollEdge`回调只在到达边缘时触发一次，回弹后不会重复触发。
@@ -589,7 +589,7 @@ ArkTS-Sta: onScrollFrameBegin(event: OnScrollFrameBeginCallback | undefined)
 
 | 参数名 | 类型                              | 必填 | 说明               |
 | ------ | --------------------------------- | ---- | ------------------ |
-| event   | ArkTS-Dyn: [OnScrollFrameBeginCallback](#onscrollframebegincallback18)<br/>ArkTS-Sta: [OnScrollFrameBeginCallback](#onscrollframebegincallback18) \| undefined | 是   | 每帧滚动开始回调函数。<br/>取值为undefined时，不使用回调函数。 |
+| event | ArkTS-Dyn: [OnScrollFrameBeginCallback](#onscrollframebegincallback18)<br/>ArkTS-Sta: [OnScrollFrameBeginCallback](#onscrollframebegincallback18) \| undefined | 是 | 每帧滚动开始回调函数。<br/>取值为undefined时，按默认值处理。 |
 
 ### onScroll<sup>(deprecated)</sup>
 
@@ -599,11 +599,11 @@ onScroll(event: (xOffset: number, yOffset: number) => void)
 
 触发该事件的条件：
 
-1、滚动组件触发滚动时触发，支持键鼠操作等其他触发滚动的输入设置。
+1. 滚动组件触发滚动时触发，支持键鼠操作等其他触发滚动的输入设置。
 
-2、通过滚动控制器API接口调用。
+2. 通过滚动控制器API接口调用。
 
-3、越界回弹。
+3. 越界回弹。
 
 > **说明：**
 >
@@ -636,11 +636,11 @@ ArkTS-Sta: onWillScroll(handler: ScrollOnWillScrollCallback | undefined)
 
 触发该事件的条件：
 
-1、滚动组件触发滚动时触发，支持键鼠操作等其他触发滚动的输入设置。
+1. 滚动组件触发滚动时触发，支持键鼠操作等其他触发滚动的输入设置。
 
-2、通过滚动控制器API接口调用。
+2. 通过滚动控制器API接口调用。
 
-3、越界回弹。 
+3. 越界回弹。
 
 >  **说明：**
 >
@@ -660,7 +660,7 @@ ArkTS-Sta: onWillScroll(handler: ScrollOnWillScrollCallback | undefined)
 
 | 参数名  | 类型                                                      | 必填 | 说明                   |
 | ------- | --------------------------------------------------------- | ---- | ---------------------- |
-| handler | ArkTS-Dyn: [ScrollOnWillScrollCallback](#scrollonwillscrollcallback12)<br/>ArkTS-Sta: [ScrollOnWillScrollCallback](#scrollonwillscrollcallback12) \| undefined | 是   | Scroll滚动前触发的回调。<br/>取值为undefined时，不使用回调函数。 |
+| handler | ArkTS-Dyn: [ScrollOnWillScrollCallback](#scrollonwillscrollcallback12)<br/>ArkTS-Sta: [ScrollOnWillScrollCallback](#scrollonwillscrollcallback12) \| undefined | 是 | Scroll滚动前触发的回调。<br/>取值为undefined时，按默认值处理。 |
 
 ### onDidScroll<sup>12+</sup>
 
@@ -674,11 +674,11 @@ ArkTS-Sta: onDidScroll(handler: ScrollOnScrollCallback | undefined)
 
 触发该事件的条件：
 
-1、滚动组件触发滚动时触发，支持键鼠操作等其他触发滚动的输入设置。
+1. 滚动组件触发滚动时触发，支持键鼠操作等其他触发滚动的输入设置。
 
-2、通过滚动控制器API接口调用。
+2. 通过滚动控制器API接口调用。
 
-3、越界回弹。 
+3. 越界回弹。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -694,7 +694,7 @@ ArkTS-Sta: onDidScroll(handler: ScrollOnScrollCallback | undefined)
 
 | 参数名  | 类型                                                      | 必填 | 说明                   |
 | ------- | --------------------------------------------------------- | ---- | ---------------------- |
-| handler | ArkTS-Dyn: [ScrollOnScrollCallback](#scrollonscrollcallback12)<br/>ArkTS-Sta: [ScrollOnScrollCallback](#scrollonscrollcallback12) \| undefined | 是   | Scroll滚动时触发的回调。<br/>取值为undefined时，不使用回调函数。 |
+| handler | ArkTS-Dyn: [ScrollOnScrollCallback](#scrollonscrollcallback12)<br/>ArkTS-Sta: [ScrollOnScrollCallback](#scrollonscrollcallback12) \| undefined | 是 | Scroll滚动时触发的回调。<br/>取值为undefined时，按默认值处理。 |
 
 ### onScrollEdge
 
@@ -706,7 +706,7 @@ ArkTS-Sta: onScrollEdge(event: OnScrollEdgeCallback | undefined)
 
 触发该事件的条件：
 
-1、滚动组件滚动到边缘时触发，支持键鼠操作等其他触发滚动的输入设置。<br/>2、通过滚动控制器API接口调用。<br/>3、越界回弹。
+1. 滚动组件滚动到边缘时触发，支持键鼠操作等其他触发滚动的输入设置。<br/>2. 通过滚动控制器API接口调用。<br/>3. 越界回弹。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -730,7 +730,7 @@ onScrollEnd(event: () => void)
 
 触发该事件的条件：
 
-1、滚动组件触发滚动后停止，支持键鼠操作等其他触发滚动的输入设置。<br/>2、通过滚动控制器API接口调用后停止，带过渡动效。
+1. 滚动组件触发滚动后停止，支持键鼠操作等其他触发滚动的输入设置。<br/>2. 通过滚动控制器API接口调用后停止，带过渡动效。
 
 > **说明：**
 >
@@ -756,7 +756,7 @@ ArkTS-Sta: onScrollStart(event: VoidCallback | undefined)
 
 触发该事件的条件：
 
-1、滚动组件开始滚动时触发，支持键鼠操作等其他触发滚动的输入设置。<br/>2、通过滚动控制器API接口调用后开始，带过渡动效。
+1. 滚动组件开始滚动时触发，支持键鼠操作等其他触发滚动的输入设置。<br/>2. 通过滚动控制器API接口调用后开始，带过渡动效。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -778,11 +778,11 @@ ArkTS-Dyn: onScrollStop(event: VoidCallback)
 
 ArkTS-Sta: onScrollStop(event: VoidCallback | undefined)
 
-滚动停止时触发。手拖动Scroll或拖动Scroll的滚动条触发的滚动，手离开屏幕后滚动停止时会触发该事件。使用[Scroller](#scroller)滚动控制器触发的带动画的滚动，动画停止时会触发该事件。
+滚动停止时触发。手指拖动Scroll或拖动Scroll的滚动条触发的滚动，手离开屏幕后滚动停止时会触发该事件。使用[Scroller](#scroller)滚动控制器触发的带动画的滚动，动画停止时会触发该事件。
 
 触发该事件的条件：
 
-1、滚动组件触发滚动后停止，支持键鼠操作等其他触发滚动的输入设置。<br/>2、通过滚动控制器API接口调用后停止，带过渡动效。
+1. 滚动组件触发滚动后停止，支持键鼠操作等其他触发滚动的输入设置。<br/>2. 通过滚动控制器API接口调用后开始，带过渡动效。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -894,7 +894,7 @@ Scroll滚动时触发的回调。
 | ----------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | xOffset     | ArkTS-Dyn: number<br/> ArkTS-Sta: double                                                  | 是   | 相对于上一帧水平方向的偏移量，Scroll中的内容向左滚动时偏移量为正，向右滚动时偏移量为负。<br/>单位vp。 |
 | yOffset     | ArkTS-Dyn: number<br/> ArkTS-Sta: double                                                  | 是   | 相对于上一帧竖直方向的偏移量，Scroll中的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
-| scrollState | [ScrollState](ts-container-list.md#scrollstate枚举说明) | 是  | 当前滚动状态。                                               |
+| scrollState | [ScrollState](ts-container-list.md#scrollstate枚举说明) | 是 | 当前滚动状态。Idle表示空闲状态，Scroll表示滚动状态，Fling表示惯性滚动状态。 |
 
 >  **说明：**
 >
@@ -924,8 +924,8 @@ Scroll滚动前触发的回调。
 | ----------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | xOffset     | ArkTS-Dyn: number<br/> ArkTS-Sta: double                                                  | 是   | 相对于上一帧水平方向的偏移量，Scroll中的内容向左滚动时偏移量为正，向右滚动时偏移量为负。<br/>单位vp。 |
 | yOffset     | ArkTS-Dyn: number<br/> ArkTS-Sta: double                                                  | 是   | 相对于上一帧竖直方向的偏移量，Scroll中的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
-| scrollState | [ScrollState](ts-container-list.md#scrollstate枚举说明) | 是  | 当前滚动状态。                                               |
-| scrollSource | [ScrollSource](ts-appendix-enums.md#scrollsource12) | 是 | 当前滚动操作的来源。 |
+| scrollState | [ScrollState](ts-container-list.md#scrollstate枚举说明) | 是 | 当前滚动状态。Idle表示空闲状态，Scroll表示滚动状态，Fling表示惯性滚动状态。 |
+| scrollSource | [ScrollSource](ts-appendix-enums.md#scrollsource12) | 是 | 当前滚动操作的来源，如DRAG表示拖拽触发，FLING表示惯性滑动触发，SCROLLER表示Scroller不带动效方法触发，SCROLLER_ANIMATION表示Scroller带动效方法触发。 |
 
 **返回值：** 
 
@@ -953,7 +953,7 @@ type OnScrollEdgeCallback = (side: Edge) => void
 
 | 参数名  | 类型   | 必填 | 说明    |
 | ------- | ----- | ---- | ------ |
-| side    | [Edge](ts-appendix-enums.md#edge)  | 是   | 滚动到的边缘位置。 |
+| side    | [Edge](ts-appendix-enums.md#edge)  | 是   | 滚动到的边缘位置。竖直方向滚动时，Edge.Top和Edge.Start表示起始边缘，Edge.Bottom和Edge.End表示末尾边缘。水平方向滚动时，Edge.Center表示水平方向起始位置，Edge.Baseline表示水平方向末尾位置。 |
 
 ## OnScrollFrameBeginCallback<sup>18+</sup>
 
@@ -978,13 +978,13 @@ Scroll每帧滚动前触发的回调。
 | 参数名 | 类型                                                    | 必填 | 说明                       |
 | ------ | ------------------------------------------------------- | ---- | -------------------------- |
 | offset | ArkTS-Dyn: number <br/>ArkTS-Sta: double                                                  | 是   | 即将发生的滑动量，单位vp。 |
-| state  | [ScrollState](ts-container-list.md#scrollstate枚举说明) | 是   | 当前滑动状态。             |
+| state | [ScrollState](ts-container-list.md#scrollstate枚举说明) | 是 | 当前滑动状态。Idle表示空闲状态，Scroll表示滚动状态，Fling表示惯性滚动状态。 |
 
 **返回值：** 
 
 | 类型                     | 说明                 |
 | ------------------------ | -------------------- |
-| [OnScrollFrameBeginHandlerResult](#onscrollframebeginhandlerresult18对象说明) | 返回实际滑动量。 |
+| [OnScrollFrameBeginHandlerResult](#onscrollframebeginhandlerresult18对象说明) | 返回实际滑动量，Scroll将按照返回值中的offsetRemain进行滚动。 |
 
 ## OnScrollFrameBeginHandlerResult<sup>18+</sup>对象说明
 
@@ -1035,10 +1035,10 @@ Scroll每帧缩放完成时触发的回调。
 
 >**说明：**
 >
->1、Scroller控制器与滚动容器组件的绑定发生在组件创建阶段。<br/>
->2、Scroller控制器与滚动容器组件绑定后才可以正常调用Scroller方法，否则根据调用接口不同会不生效或者抛异常。<br/>
->3、以[aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear)为例，aboutToAppear在创建自定义组件的新实例后，在执行其build()方法之前执行。因此如果滚动组件在自定义组件build内，在该自定义组件aboutToAppear执行时，内部滚动组件还没有创建，是不能正常调用上述Scroller方法的。<br/>
->4、以[onAppear](ts-universal-events-show-hide.md#onappear)为例，组件挂载显示后触发此回调。因此在滚动组件的onAppear回调执行时，滚动组件已经创建并已经和Scroller绑定成功，是可以正常调用Scroller方法的。
+>1. Scroller控制器与滚动容器组件的绑定发生在组件创建阶段。<br/>
+>2. Scroller控制器与滚动容器组件绑定后才可以正常调用Scroller方法，否则根据调用接口不同会不生效或者抛异常。<br/>
+>3. 以[aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear)为例，aboutToAppear在创建自定义组件的新实例后，在执行其build()方法之前执行。因此如果滚动组件在自定义组件build内，在该自定义组件aboutToAppear执行时，内部滚动组件还没有创建，是不能正常调用上述Scroller方法的。<br/>
+>4. 以[onAppear](ts-universal-events-show-hide.md#onappear)为例，组件挂载显示后触发此回调。因此在滚动组件的onAppear回调执行时，滚动组件已经创建并已经和Scroller绑定成功，是可以正常调用Scroller方法的。
 
 ### 导入对象
 
@@ -1066,7 +1066,7 @@ ArkTS-Dyn: scrollTo(options: ScrollOptions)
 
 ArkTS-Sta: scrollTo(options: ScrollOptions): void
 
-滑动到指定位置。
+滑动到指定位置，可用于目录跳转、返回顶部、搜索结果定位等场景。
 
 >  **说明：**
 >
@@ -1092,7 +1092,7 @@ ArkTS-Sta: scrollTo(options: ScrollOptions): void
 
 | 参数名   | 类型 | 必填   | 说明      |
 | ----- | ---- | ---- | --------- |
-| options | [ScrollOptions](#scrolloptions18对象说明) | 是    | 滑动到指定位置的参数。 |
+| options | [ScrollOptions](#scrolloptions18对象说明) | 是    | 滑动到指定位置的参数，包含xOffset、yOffset、animation、canOverScroll等字段，用于指定滚动目标位置和滚动行为。 |
 
 ### scrollEdge
 
@@ -1100,7 +1100,7 @@ ArkTS-Dyn: scrollEdge(value: Edge, options?: ScrollEdgeOptions)
 
 ArkTS-Sta: scrollEdge(value: Edge, options?: ScrollEdgeOptions): void
 
-滚动到容器边缘，不区分滚动轴方向，Edge.Top和Edge.Start表现相同，Edge.Bottom和Edge.End表现相同。
+滚动到容器边缘，不区分滚动轴方向，Edge.Top和Edge.Start表现相同，Edge.Bottom和Edge.End表现相同。可用于返回顶部、跳转到内容末尾等场景。
 
 Scroll组件默认有动画，Grid、List、WaterFlow组件默认无动画。
 
@@ -1117,7 +1117,7 @@ Scroll组件默认有动画，Grid、List、WaterFlow组件默认无动画。
 | 参数名   | 类型 | 必填   | 说明      |
 | ----- | ---- | ---- | --------- |
 | value | [Edge](ts-appendix-enums.md#edge) | 是    | 滚动到的边缘位置。|
-| options<sup>12+</sup>&nbsp; | [ScrollEdgeOptions](#scrolledgeoptions12对象说明) | 否    | 设置滚动到边缘位置的模式。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| options<sup>12+</sup>&nbsp; | [ScrollEdgeOptions](#scrolledgeoptions12对象说明) | 否    | 设置滚动到边缘位置的模式，可通过velocity字段设置固定滚动速度。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### fling<sup>12+</sup>
 
@@ -1125,7 +1125,7 @@ ArkTS-Dyn: fling(velocity: number): void
 
 ArkTS-Sta: fling(velocity: double): void
 
-滚动类组件根据传入的初始速度进行惯性滚动。
+滚动类组件根据传入的初始速度进行惯性滚动，可用于模拟抛滑效果。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1141,7 +1141,7 @@ ArkTS-Sta: fling(velocity: double): void
 
 | 参数名   | 类型 | 必填 | 说明                                                     |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| velocity | ArkTS-Dyn: number<br/> ArkTS-Sta: double   | 是   | 惯性滚动的初始速度值。单位：vp/s<br/>**说明：**<br/>velocity值设置为0，视为异常值，本次滚动不生效。如果值为正数，则向顶部滚动；如果值为负数，则向底部滚动。<br/>取值范围：(-∞, +∞) |
+| velocity | ArkTS-Dyn: number<br/> ArkTS-Sta: double | 是 | 惯性滚动的初始速度值。单位：vp/s<br/>**说明：**<br/>velocity值设置为0时，本次滚动不生效且不会产生滚动动画。如果值为正数，则向顶部滚动；如果值为负数，则向底部滚动。 |
 
 **错误码**：
 
@@ -1172,7 +1172,7 @@ ArkTS-Sta: scrollPage(value: ScrollPageOptions): void
 
 | 参数名 | 类型                                           | 必填 | 说明       |
 | ------ | -------------------------------------------------- | ---- | -------------- |
-| value  | [ScrollPageOptions](#scrollpageoptions14对象说明) | 是   | 设置翻页模式。 |
+| value  | [ScrollPageOptions](#scrollpageoptions14对象说明) | 是   | 设置翻页模式。包含next（是否向下翻页）和animation（是否开启翻页动画）字段，用于指定翻页行为。 |
 
 ### scrollPage<sup>(deprecated)</sup>
 
@@ -1205,7 +1205,7 @@ ArkTS-Sta: currentOffset() : OffsetResult | undefined
 
 > **说明：**
 > 
-> 1. 当Scroller没有和组件绑定时，该接口会返回undefined，但是接口中没有声明，推荐使用[offset](#offset23)函数。
+> 1. 当Scroller没有和组件绑定时，该接口会返回undefined，但是接口中没有声明。推荐使用[offset](#offset23)函数，其返回类型显式包含undefined。
 >
 > 2. Grid、List、WaterFlow组件有懒加载机制，组件内容没有加载并布局完成时，内容总偏移量通过估算得到，估算结果可能会有误差。其中List组件可以通过[childrenMainSize](./ts-container-list.md#childrenmainsize12)属性解决估算不准确的问题，Grid与WaterFlow估算不准暂无解决方案。
 
@@ -1222,6 +1222,7 @@ ArkTS-Sta: currentOffset() : OffsetResult | undefined
 | 类型  | 说明 |
 | -------- | -------- |
 |  ArkTS-Dyn: [OffsetResult<sup>11+</sup>](#offsetresult11对象说明)<br/>ArkTS-Sta: [OffsetResult<sup>11+</sup>](#offsetresult11对象说明) \| undefined | 返回当前的滚动总偏移量。<br/>**说明：**<br/>当scroller控制器未绑定容器组件或者容器组件被异常释放时，currentOffset的返回值为空。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+|  [OffsetResult<sup>11+</sup>](#offsetresult11对象说明) | 返回当前的滚动总偏移量。xOffset表示水平滚动总偏移量，yOffset表示竖直滚动总偏移量。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ### offset<sup>23+</sup>
 
@@ -1243,7 +1244,7 @@ offset(): OffsetResult | undefined
 
 | 类型  | 说明 |
 | -------- | -------- |
-|  [OffsetResult](#offsetresult11对象说明) \| undefined | 返回当前的滚动总偏移量。当Scroller没有和组件绑定时，该接口会返回undefined。|
+|  [OffsetResult](#offsetresult11对象说明) \| undefined | 返回当前的滚动总偏移量。xOffset表示水平滚动总偏移量，yOffset表示竖直滚动总偏移量。当Scroller没有和组件绑定时，该接口会返回undefined。|
 
 ### scrollToIndex
 
@@ -1253,16 +1254,16 @@ ArkTS-Sta: scrollToIndex(value: int, smooth?: boolean, align?: ScrollAlign, opti
 
 滑动到指定Index，支持设置滑动额外偏移量。
 
-开启smooth动效时，会对经过的所有item进行加载和布局计算，当大量加载item时会导致性能问题，建议先调用scrollToIndex不带动画跳转到目标附近位置，再调用scrollToIndex带动画滚动到目标位置。
+开启smooth动画时，会对经过的所有item进行加载和布局计算。当大量加载item时会导致性能问题，开发者应先调用scrollToIndex不带动画跳转到目标附近位置，再调用scrollToIndex带动画滚动到目标位置，以优化性能。
 
 
 >  **说明：**
 >
-> 1.仅支持ArcList、Grid、List、WaterFlow组件。
+> 1. 仅支持ArcList、Grid、List、WaterFlow组件。
 >
-> 2.在[LazyForEach](ts-rendering-control-lazyforeach.md)、[ForEach](ts-rendering-control-foreach.md)、[Repeat](ts-rendering-control-repeat.md)刷新数据源时，需确保在数据刷新完成之后再调用此接口。
+> 2. 在[LazyForEach](ts-rendering-control-lazyforeach.md)、[ForEach](ts-rendering-control-foreach.md)、[Repeat](ts-rendering-control-repeat.md)刷新数据源时，需确保在数据刷新完成之后再调用此接口。
 >
-> 3.从API version 11开始，在List中支持[contentStartOffset](ts-container-list.md#contentstartoffset11)和[contentEndOffset](ts-container-list.md#contentendoffset11)。从API version 22开始，在Grid和Waterflow组件中支持设置[contentStartOffset](ts-container-scrollable-common.md#contentstartoffset22)和[contentEndOffset](ts-container-scrollable-common.md#contentendoffset22)。
+> 3. 从API version 11开始，在List中支持[contentStartOffset](ts-container-list.md#contentstartoffset11)和[contentEndOffset](ts-container-list.md#contentendoffset11)。从API version 22开始，在Grid和WaterFlow组件中支持设置[contentStartOffset](ts-container-scrollable-common.md#contentstartoffset22)和[contentEndOffset](ts-container-scrollable-common.md#contentendoffset22)。
 >
 > - 当滚动容器组件设置contentStartOffset时，如果ScrollAlign设置为START，滚动结束时，指定item首部会与滚动容器组件contentStartOffset处对齐。
 > 
@@ -1280,9 +1281,9 @@ ArkTS-Sta: scrollToIndex(value: int, smooth?: boolean, align?: ScrollAlign, opti
 | 参数名                | 类型 | 必填 | 说明                                                     |
 | --------------------- | -------- | ---- | ------------------------------------------------------------ |
 | value | ArkTS-Dyn: number<br/> ArkTS-Sta: int   | 是   | 要滑动到的目标元素在当前容器中的索引值。      <br/>**说明：** <br/>value值设置成负值或者大于当前容器子组件的最大索引值，视为异常值，本次跳转不生效。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23                     |
-| smooth | boolean  | 否   | 设置滑动到列表项在列表中的索引值时是否有动效，true表示有动效，false表示没有动效。<br/>默认值：false。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23|
-| align | [ScrollAlign](#scrollalign10枚举说明)  | 否   | 指定滑动到的元素与当前容器的对齐方式。<br/>List中的默认值为：ScrollAlign.START。Grid中默认值为：ScrollAlign.AUTO。WaterFlow中的默认值为：ScrollAlign.START。<br/>**说明：** <br/>仅List、Grid、WaterFlow组件支持该参数。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
-| options<sup>12+</sup> | [ScrollToIndexOptions](#scrolltoindexoptions12对象说明)  | 否   | 设置滑动到指定Index的选项，如额外偏移量。<br/>默认值：0，单位：vp。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+| smooth | boolean | 否 | 设置滑动到列表项在列表中的索引值时是否有动画，true表示有动画，false表示没有动画。不传入时默认无动画。<br/>默认值：false。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| align | [ScrollAlign](#scrollalign10枚举说明) | 否 | 指定滑动到的元素与当前容器的对齐方式，可根据期望item首部、尾部或居中显示选择对应对齐方式。<br/>默认值：List为ScrollAlign.START，Grid为ScrollAlign.AUTO，WaterFlow为ScrollAlign.START。<br/>**说明：** <br/>仅List、Grid、WaterFlow组件支持该参数。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| options<sup>12+</sup> | [ScrollToIndexOptions](#scrolltoindexoptions12对象说明) | 否 | 设置滑动到指定Index的选项，包含extraOffset字段，用于指定滚动后的额外偏移量。<br/>不传入时无额外偏移量。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ### scrollBy<sup>9+</sup>
 
@@ -1423,13 +1424,14 @@ ArkTS-Sta: getItemIndex(x: double, y: double): int
 
 > **说明：**
 >
-> 非法值返回的索引为-1。
+> 坐标未命中子组件时，返回-1。
 
 **返回值：**
 
 | 类型       | 说明       |
 | -------------------  | -------- |
 | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 返回子组件的索引。 |
+| number | 返回坐标命中的子组件索引。坐标未命中子组件时，返回-1。 |
 
 **错误码**：
 
@@ -1450,7 +1452,7 @@ contentSize(): SizeResult
 >
 > - Grid、List、WaterFlow和Scroll组件主轴方向内容大小为所有子组件布局后的总大小，交叉轴方向内容大小为组件自身交叉轴方向大小减去padding和border后的大小。
 >
-> - Grid、List、WaterFlow组件有懒加载机制，该接口依赖已布局的子节点进行估算。如果组件内容没有布局完成且子组件高度不一致，估算结果可能会有误差，需要开发者去适配，比如List组件可以通过childrenMainSize属性解决估算不准问题。
+> - Grid、List、WaterFlow组件有懒加载机制，该接口依赖已布局的子节点进行估算。如果组件内容没有布局完成且子组件高度不一致，估算结果可能会有误差，开发者需要适配。例如，List组件可以通过childrenMainSize属性解决估算不准问题。
 >
 > - 如果应用动态增删子节点，则需要应用动态获取内容总大小，来保证接口获取结果的即时性。
 >
@@ -1474,7 +1476,7 @@ contentSize(): SizeResult
 
 | 类型                                                     | 说明                                               |
 | -------------------------------------------------------- | -------------------------------------------------- |
-| [SizeResult](ts-custom-component-layout.md#sizeresult10) | 滚动组件内容总大小，包括内容宽度和高度。<br/>单位：vp |
+| [SizeResult](ts-custom-component-layout.md#sizeresult10) | 滚动组件内容总大小。主轴方向内容大小为所有子组件布局后的总大小，交叉轴方向内容大小为组件自身交叉轴方向大小减去padding和border后的大小。<br/>单位：vp |
 
 **错误码**：
 
@@ -1520,8 +1522,8 @@ getFrameNode(): FrameNode | undefined
 
 | 名称     | 类型   | 只读 | 可选 | 说明                             |
 | ------- |------- | ---- | ---- | -------------------------------- |
-| xOffset | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  否  |  否  | 水平滑动偏移。<br/>返回值单位为vp。 |
-| yOffset | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  否  |  否  | 竖直滑动偏移。<br/>返回值单位为vp。 |
+| xOffset | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 水平滑动偏移。<br/>单位：vp。 |
+| yOffset | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 竖直滑动偏移。<br/>单位：vp。 |
 
 ## ScrollAnimationOptions<sup>12+</sup>对象说明
 
@@ -1541,7 +1543,7 @@ getFrameNode(): FrameNode | undefined
 | ----- | ------ | ------ | -- | ----------------- |
 | duration | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 设置滚动时长。<br/>默认值：1000<br/>单位：毫秒<br/>**说明：** <br/>设置为小于0的值时，按默认值显示。 |
 | curve | [Curve](ts-appendix-enums.md#curve) \| [ICurve](../js-apis-curve.md#icurve9) | 否 | 是 | 设置滚动曲线。<br/>默认值：Curve.Ease |
-| canOverScroll | boolean | 否 | 是 | 设置滚动动画滚动到边界后，是否转换成越界回弹动画。<br/>默认值：false<br/>**说明：** <br/> 仅在设置为true，且组件的edgeEffect设置为[EdgeEffect.Spring](ts-appendix-enums.md#edgeeffect)时，使用动画滚动到边界会转换为越界回弹动画，设置为false时，滚动到边界会直接停止动画，不会转换为越界回弹动画。 <br>从API version 20开始，如果[ScrollOptions](#scrolloptions18对象说明)中的canOverScroll设置为true，表示滚动可以停留在过界位置，滚动动画过界后不会转换为回弹动画。|
+| canOverScroll | boolean | 否 | 是 | 设置滚动动画滚动到边界后，是否转换成越界回弹动画。<br/>默认值：false<br/>**说明：** <br/> 仅在设置为true，且组件的edgeEffect设置为[EdgeEffect.Spring](ts-appendix-enums.md#edgeeffect)时，使用动画滚动到边界会转换为越界回弹动画，设置为false时，滚动到边界会直接停止动画，不会转换为越界回弹动画。 <br>从API version 20开始，如果[ScrollOptions](#scrolloptions18对象说明)中的canOverScroll设置为true，表示滚动可以停留在越界位置，滚动动画越界后不会转换为回弹动画。|
 
 ## ScrollAlign<sup>10+</sup>枚举说明
 
@@ -1617,8 +1619,8 @@ getFrameNode(): FrameNode | undefined
 
 | 名称   | 类型  | 只读 | 可选 | 说明              |
 | ----- | ------| ------- | -- | ----------------- |
-| xOffset | [Dimension](ts-types.md#dimension10) | 否 | 是 |水平滚动偏移。<br/>默认值：0 |
-| yOffset | [Dimension](ts-types.md#dimension10) | 否 | 是 |竖直滚动偏移。<br/>默认值：0|
+| xOffset | [Dimension](ts-types.md#dimension10) | 否 | 是 | 水平滚动偏移。<br/>默认值：0<br/>参数类型为number时单位为vp。 |
+| yOffset | [Dimension](ts-types.md#dimension10) | 否 | 是 | 垂直滚动偏移。<br/>默认值：0<br/>参数类型为number时单位为vp。 |
 
 ## ScrollEdgeOptions<sup>12+</sup>对象说明
 
@@ -1636,7 +1638,7 @@ getFrameNode(): FrameNode | undefined
 
 | 名称    | 类型 | 只读 | 可选 | 说明                                                   |
 | --------- | -------- | ---- | -- | ------------------------------------------------------------ |
-| velocity      | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 否   | 是 | 设置滚动到容器边缘的固定速度。如果设置小于等于0的值，参数不生效。<br/>默认值：0<br/>  单位： vp/s          |
+| velocity | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 设置滚动到容器边缘的固定速度。未设置或设置小于等于0的值时，固定速度设置不生效。<br/>默认值：0<br/>单位：vp/s |
 
 ## ScrollOptions<sup>18+</sup>对象说明
 
@@ -1654,10 +1656,10 @@ getFrameNode(): FrameNode | undefined
 
 | 名称    | 类型                                                     | 只读 | 可选 | 说明                                                     |
 | --------- | ------------------------------------------------------------ | ---- | -- | ------------------------------------------------------------ |
-| xOffset<sup>10+</sup>   | ArkTS-Dyn: number&nbsp;\|&nbsp;string<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string                                   | 否   | 否 | 水平滚动总偏移量。<br/>**说明：** <br/>该参数值不支持设置百分比。<br/>仅滚动轴为x轴时生效。<br/>取值范围：当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止，可通过设置animation参数，使滚动在越界时启动回弹动画。<br/>参数类型为number时单位为vp。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23|
-| yOffset<sup>10+</sup>   | ArkTS-Dyn: number&nbsp;\|&nbsp;string<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string                                   | 否   | 否 | 竖直滚动总偏移量。<br/>**说明：** <br/>该参数值不支持设置百分比。<br/>仅滚动轴为y轴时生效。<br/>取值范围：当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止，可通过设置animation参数，使滚动在越界时启动回弹动画。<br/>参数类型为number时单位为vp。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23|
-| animation<sup>10+</sup> | [ScrollAnimationOptions](#scrollanimationoptions12对象说明)&nbsp;\|&nbsp;boolean | 否   | 是 | 动画配置。<br/>- ScrollAnimationOptions:&nbsp; 自定义滚动动效。 <br/>- boolean:&nbsp;使能默认弹簧动效。<br/>默认值：<br/>ScrollAnimationOptions: { duration: 1000, curve: Curve.Ease, canOverScroll: false } <br/>boolean:&nbsp;false<br/>**说明：** <br/>当前List、Scroll、Grid、WaterFlow均支持boolean类型和ICurve曲线。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
-| canOverScroll<sup>20+</sup>   | boolean                                   | 否   | 是 | 滚动目标位置是否可以超出边界停留。仅当组件的edgeEffect设置为EdgeEffect.Spring时，滚动能够越界停留。<br/>设置为true时滚动可以在过界后停留，设置为false时滚动无法在过界后停留。<br/>默认值：false <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 24|
+| xOffset<sup>10+</sup>   | ArkTS-Dyn: number&nbsp;\|&nbsp;string<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string                                   | 否   | 否 | 水平滚动总偏移量。<br/>**说明：** <br/>不支持设置百分比。<br/>仅滚动轴为x轴时生效。<br/>取值范围：当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止，可通过设置animation参数，使滚动在越界时启动回弹动画。<br/>参数类型为number时单位为vp。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| yOffset<sup>10+</sup>   | ArkTS-Dyn: number&nbsp;\|&nbsp;string<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string                                   | 否   | 否 | 垂直滚动总偏移量。<br/>**说明：** <br/>不支持设置百分比。<br/>仅滚动轴为y轴时生效。<br/>取值范围：当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止，可通过设置animation参数，使滚动在越界时启动回弹动画。<br/>参数类型为number时单位为vp。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| animation<sup>10+</sup> | [ScrollAnimationOptions](#scrollanimationoptions12对象说明)&nbsp;\|&nbsp;boolean | 否   | 是 | 动画配置。<br/>- ScrollAnimationOptions：自定义滚动动效。<br/>- boolean：使能默认弹簧动效。<br/>默认值：<br/>ScrollAnimationOptions：{ duration: 1000, curve: Curve.Ease, canOverScroll: false }<br/>boolean：false<br/>**说明：** <br/>当前List、Scroll、Grid、WaterFlow均支持boolean类型和ICurve曲线。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| canOverScroll<sup>20+</sup>   | boolean                                   | 否   | 是 | 滚动目标位置是否可以超出边界停留。仅当组件的edgeEffect设置为EdgeEffect.Spring时，滚动能够越界停留。<br/>设置为true时滚动可以在越界后停留，设置为false时滚动无法在越界后停留。<br/>默认值：false <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 24|
 
 ## UIScrollEvent<sup>19+</sup>
 typeNode中[getEvent('Scroll')](../js-apis-arkui-typeNode.md#geteventscroll19)方法的返回值，可用于给Scroll节点设置滚动事件。
@@ -1668,7 +1670,7 @@ UIScrollEvent继承于[UIScrollableCommonEvent](./ts-container-scrollable-common
 
 setOnWillScroll(callback:  ScrollOnWillScrollCallback | undefined): void
 
-设置[onWillScroll](#onwillscroll12)事件的回调。
+[onWillScroll](#onwillscroll12)事件的回调。
 
 方法入参为undefined时，会重置事件回调。
 
@@ -1692,7 +1694,7 @@ setOnWillScroll(callback:  ScrollOnWillScrollCallback | undefined): void
 
 setOnDidScroll(callback: ScrollOnScrollCallback | undefined): void
 
-设置[onDidScroll](#ondidscroll12)事件的回调。
+[onDidScroll](#ondidscroll12)事件的回调。
 
 方法入参为undefined时，会重置事件回调。
 
@@ -1719,6 +1721,7 @@ setOnDidScroll(callback: ScrollOnScrollCallback | undefined): void
 ```ts
 // xxx.ets
 import { curves } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1749,7 +1752,7 @@ struct ScrollExample {
       .friction(0.6)
       .edgeEffect(EdgeEffect.None)
       .onWillScroll((xOffset: number, yOffset: number, scrollState: ScrollState) => {
-        console.info(xOffset + ' ' + yOffset);
+        console.info(`onWillScroll xOffset = ${xOffset}, yOffset = ${yOffset}, scrollState = ${scrollState}`);
       })
       .onScrollEdge((side: Edge) => {
         console.info('To the edge');
@@ -1760,7 +1763,7 @@ struct ScrollExample {
 
       Button('scroll 150')
         .height('5%')
-        .onClick(() => { // 点击后下滑指定距离150.0vp
+        .onClick(() => { // 下滑150.0vp
           this.scroller.scrollBy(0, 150);
         })
         .margin({ top: 10, left: 20 })
@@ -1788,7 +1791,7 @@ struct ScrollExample {
       Button('next page')
         .height('5%')
         .onClick(() => { // 点击后滑到下一页
-          this.scroller.scrollPage({ next: true ,animation: true });
+          this.scroller.scrollPage({ next: true, animation: true });
         })
         .margin({ top: 210, left: 20 })
       Button('fling -3000')
@@ -1797,7 +1800,8 @@ struct ScrollExample {
           try {
             this.scroller.fling(-3000);
           } catch (error) {
-            console.error('Failed to execute fling scroll:', error);
+            let err: BusinessError = error as BusinessError;
+            console.error(`Failed to execute fling scroll. Code: ${err.code}, message: ${err.message}`);
           }
         })
         .margin({ top: 260, left: 20 })
@@ -1852,7 +1856,7 @@ struct NestedScroll {
                   .textAlign(TextAlign.Center)
                   .backgroundColor(Color.White)
               }.width('100%').height(100)
-            }, (item: string) => item)
+            }, (item: number) => item.toString())
           }
           .width('100%')
           .height('50%')
@@ -2082,24 +2086,28 @@ struct Index {
 
 ```ts
 // xxx.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct ListExample {
   private arr: number[] = [];
   private scroller: ListScroller = new ListScroller();
   @State listSpace: number = 10;
-  @State listChildrenSize: ChildrenMainSize = new ChildrenMainSize(100);
+  @State listChildrenSize: ChildrenMainSize = new ChildrenMainSize(120);
   @State listIndex: number = -1;
-  @State itemBackgroundColorArr: boolean[] = [false];
+  @State itemBackgroundColorArr: boolean[] = [];
   aboutToAppear(){
     // 初始化数据源。
     for (let i = 0; i < 10; i++) {
       this.arr.push(i);
+      this.itemBackgroundColorArr.push(false);
     }
     try {
       this.listChildrenSize.splice(0, 5, [100, 100, 100, 100, 100]);
     } catch (error) {
-      console.info('Failed to splice childrenMainSize for first 5 items:', error);
+      let err: BusinessError = error as BusinessError;
+      console.error(`Failed to splice childrenMainSize for first 5 items. Code: ${err.code}, message: ${err.message}`);
     }
   }
   build() {
@@ -2129,9 +2137,12 @@ struct ListExample {
               try {
                 this.listIndex = this.scroller.getItemIndex(event.fingerList[0].localX, event.fingerList[0].localY);
               } catch (error) {
-                console.error('Failed to get item index from scroller:', error);
+                let err: BusinessError = error as BusinessError;
+                console.error(`Failed to get item index from scroller. Code: ${err.code}, message: ${err.message}`);
               }
+              if (this.listIndex >= 0 && this.listIndex < this.itemBackgroundColorArr.length) {
               this.itemBackgroundColorArr[this.listIndex] = true;
+              }
             }
           })
       )
@@ -2139,7 +2150,7 @@ struct ListExample {
         TapGesture({ count: 1 })
           .onAction((event: GestureEvent) => {
             if (event) {
-              this.itemBackgroundColorArr.splice(0,this.itemBackgroundColorArr.length);
+              this.itemBackgroundColorArr = this.arr.map(() => false);
             }
           })
       )
@@ -2179,7 +2190,7 @@ struct ScrollExample {
               .fontSize(16)
               .textAlign(TextAlign.Center)
               .margin({ top: 10 })
-          }, (item: string) => item)
+          }, (item: number) => item.toString())
         }.width('100%')
       }
       .fadingEdge(true,{fadingEdgeLength:LengthMetrics.vp(80)})
@@ -2218,7 +2229,7 @@ struct ScrollExample {
               .fontSize(16)
               .textAlign(TextAlign.Center)
               .margin({ top: 10 })
-          }, (item: string) => item)
+          }, (item: number) => item.toString())
         }.width('100%')
       }
       .edgeEffect(EdgeEffect.Spring,{alwaysEnabled:true,effectEdge:EffectEdge.START})
@@ -2263,9 +2274,9 @@ struct EnablePagingExample {
 
 ![enablePaging](figures/enablePaging.gif)
 
-### 示例10（设置过界停留）
+### 示例10（设置越界停留）
 
-该示例通过[scrollTo](#scrollto)接口，实现了Scroll组件设置过界停留效果。
+该示例通过[scrollTo](#scrollto)接口，实现了Scroll组件设置越界停留效果。
 
 ```ts
 // xxx.ets
@@ -2397,7 +2408,7 @@ struct ScrollExample1 {
               this.contentHeight = this.scroller.contentSize().height;
             } catch (error) {
               let err: BusinessError = error as BusinessError;
-              console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
+              console.error(`Failed to get contentSize. Code: ${err.code}, message: ${err.message}`);
             }
           })
         // 将获取到的内容尺寸信息通过文本进行呈现

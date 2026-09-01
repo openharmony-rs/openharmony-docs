@@ -154,7 +154,7 @@ Canvas通过drawTextBlob()来绘制字块。函数接受三个参数：TextBlob�
    let pen = new drawing.Pen();
    // 设置抗锯齿
    brush.setAntiAlias(true);
-   // 设置描边颜色
+   // 设置填充颜色
    brush.setColor(0xFF, 0xFF, 0xFF, 0xFF);
 
    pen.setAntiAlias(true);

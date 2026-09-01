@@ -142,7 +142,7 @@ export default class EntryAbility extends UIAbility {
 
    在调用`showWindow`之前，建议设置子窗口的大小和位置。
 
-   如果没有设置子窗口的大小，调用`showWindow`后:
+   如果没有设置子窗口的大小，调用`showWindow`后：
     + [自由窗口](./window-terminology.md#freeform-window自由窗口)状态下，默认子窗口大小为当前物理屏幕的大小。<!--RP3--><!--RP3End-->
     + 非自由窗口状态下，默认子窗口大小为主窗口大小。
 
@@ -217,7 +217,7 @@ export default class EntryAbility extends UIAbility {
             hilog.error(DOMAIN, TAG, `sub_windowClass is null`);
             return;
           }
-          // 3.显示子窗口。
+          // 4.显示子窗口。
           sub_windowClass.showWindow((err: BusinessError) => {
             let errCode: number = err.code;
             if (errCode) {
@@ -236,7 +236,7 @@ export default class EntryAbility extends UIAbility {
       hilog.error(DOMAIN, TAG, `sub_windowClass is null`);
       return;
     }
-    // 4.销毁子窗口。当不再需要子窗口时，可根据具体实现逻辑，使用destroy对其进行销毁。
+    // 5.销毁子窗口。当不再需要子窗口时，可根据具体实现逻辑，使用destroy对其进行销毁。
     sub_windowClass.destroyWindow((err: BusinessError) => {
       let errCode: number = err.code;
       if (errCode) {

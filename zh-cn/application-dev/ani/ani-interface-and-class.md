@@ -26,8 +26,14 @@ class Point implements PointI {
 ani_class clsPointI; ani_method ctorPointI; // 假设已初始化
 ani_class clsPoint; ani_method ctorPoint;   // 假设已初始化
 ani_object objPointI; ani_object objPoint;
-env->Object_New(clsPointI, ctorPointI, &objPointI); // 失败
-env->Object_New(clsPoint, ctorPoint, &objPoint);    // 成功
+
+// 接口对象创建失败，返回非ANI_OK状态码
+ani_status status = env->Object_New(clsPointI, ctorPointI, &objPointI);
+std::cerr << "Object_New PointI status: " << status << std::endl;
+
+// 类对象创建成功，返回ANI_OK
+status = env->Object_New(clsPoint, ctorPoint, &objPoint);
+std::cerr << "Object_New Point status: " << status << std::endl;
 ```
 
 - 创建接口对象会失败
@@ -98,16 +104,31 @@ void ModifyPersonImpl(ani_env *env, ani_object person)
 {
     static constexpr std::string_view name = "Goose";
     ani_string nameValue {};
-    env->String_NewUTF8(name.data(), name.size(), &nameValue);
+    ani_status status = env->String_NewUTF8(name.data(), name.size(), &nameValue);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
     ani_int ageValue = 42;
 
-    env->Object_SetPropertyByName_Int(person, "age", ageValue);
-    env->Object_SetPropertyByName_Ref(person, "name", nameValue);
+    status = env->Object_SetPropertyByName_Int(person, "age", ageValue);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
+    status = env->Object_SetPropertyByName_Ref(person, "name", nameValue);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
 
     ani_int ageValueRet = 0;
     ani_ref nameValueRet {};
-    env->Object_GetPropertyByName_Int(person, "age", &ageValueRet);
-    env->Object_GetPropertyByName_Ref(person, "name", &nameValueRet);
+    status = env->Object_GetPropertyByName_Int(person, "age", &ageValueRet);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
+    status = env->Object_GetPropertyByName_Ref(person, "name", &nameValueRet);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
 }
 ```
 
@@ -135,16 +156,31 @@ void ModifyPersonImpl(ani_env *env, ani_object person)
 {
     static constexpr std::string_view name = "Goose";
     ani_string nameValue {};
-    env->String_NewUTF8(name.data(), name.size(), &nameValue);
+    ani_status status = env->String_NewUTF8(name.data(), name.size(), &nameValue);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
     ani_int ageValue = 42;
 
-    env->Object_SetFieldByName_Int(person, "age", ageValue);
-    env->Object_SetFieldByName_Ref(person, "name", nameValue);
+    status = env->Object_SetFieldByName_Int(person, "age", ageValue);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
+    status = env->Object_SetFieldByName_Ref(person, "name", nameValue);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
 
     ani_int ageValueRet = 0;
     ani_ref nameStringRet {};
-    env->Object_GetFieldByName_Int(person, "age", &ageValueRet);
-    env->Object_GetFieldByName_Ref(person, "name", &nameStringRet);
+    status = env->Object_GetFieldByName_Int(person, "age", &ageValueRet);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
+    status = env->Object_GetFieldByName_Ref(person, "name", &nameStringRet);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
 }
 ```
 
@@ -177,21 +213,24 @@ static void NativeFuncImpl(ani_env *env, ani_object obj) {
 
     static constexpr const char *className = "example.Foo";
     ani_class cls {};
-    if (ANI_OK != env->FindClass(className, &cls)) {
-        std::cerr << "Not found '" << className << "'" << std::endl;
-        return;
+    ani_status status = env->FindClass(className, &cls);
+    if (status != ANI_OK) {
+        // handle error and return
     }
-    if (ANI_OK != env->Class_FindMethod(cls, "managedFunc", ":", &managedFunc)) {
-        std::cerr << "Class_FindMethod Failed" << std::endl;
-        return;
+    status = env->Class_FindMethod(cls, "managedFunc", ":", &managedFunc);
+    if (status != ANI_OK) {
+        // handle error and return
     }
     std::cout << "Print in Native Func" << std::endl;
-    env->Object_CallMethod_Void(obj, managedFunc);
+    status = env->Object_CallMethod_Void(obj, managedFunc);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
 }
 ```
 ## 可选方法作为可选参数
 
-ArkTS 1.2不直接支持可选方法，可使用可选函数参数代替。
+ArkTS-Sta不直接支持可选方法，可使用可选函数参数代替。
 
 **示例：**
 ```ts
@@ -210,15 +249,24 @@ console.info(callOptionalFn(opt, 1.0, 2.0));
 ani_double CallOptionalFnImpl(ani_env *env, ani_object opt, ani_double val1, ani_double val2)
 {
     ani_ref fnRef {};
-    env->Object_GetFieldByName_Ref(opt, "fn", &fnRef);
+    ani_status status = env->Object_GetFieldByName_Ref(opt, "fn", &fnRef);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
 
     // Note: functional objects always accept and return boxed primitives
     std::array<ani_ref, 2> args = {createDouble(env, val1), createDouble(env, val2)};
     ani_ref fnReturnVal {};
-    env->FunctionalObject_Call(static_cast<ani_fn_object>(fnRef), args.size(), args.data(), &fnReturnVal);
+    status = env->FunctionalObject_Call(static_cast<ani_fn_object>(fnRef), args.size(), args.data(), &fnReturnVal);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
 
     ani_double result {};
-    env->Object_CallMethodByName_Double(static_cast<ani_object>(fnReturnVal), "toDouble", ":d", &result);
+    status = env->Object_CallMethodByName_Double(static_cast<ani_object>(fnReturnVal), "toDouble", ":d", &result);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
     return result;
 }
 ```
@@ -229,5 +277,152 @@ ani_double CallOptionalFnImpl(ani_env *env, ani_object opt, ani_double val1, ani
 
 这种方式常用于把C++对象生命周期挂到ArkTS对象上。需要注意，`long`字段只保存指针值，本身不会自动释放native资源；应配合`FinalizationRegistry`或显式释放接口，在ArkTS对象不再使用时清理C++对象。
 
-示例：[ani_wrap_native_ptr.ets](https://gitcode.com/LeechyLiang/ani_cookbook/blob/master/ani_wrap_native_ptr/ani_wrap_native_ptr.ets)
+示例：
+
+```ts
+interface Cleaner {
+    ptr: long;
+    clean(): void
+}
+
+class contextCleaner implements Cleaner {
+    ptr: long = 0;
+    native static cleanContext(ptr: long): void;
+    clean(): void {
+        contextCleaner.cleanContext(this.ptr)
+    }
+}
+
+function callback(cleaner: Cleaner): void {
+    cleaner.clean()
+}
+
+let destroyRegister = new FinalizationRegistry<Cleaner>(callback)
+
+class Contex {
+    private nativeContext: long = 0;
+    private cleaner: Cleaner = new contextCleaner();
+
+    constructor(context: long) {
+        if(this.nativeContext == 0) {
+             this.nativeContext = context;
+        }
+
+        if(this.cleaner.ptr == 0) {
+            this.cleaner.ptr = this.nativeContext;
+        }
+        this.registerCleaner(this.cleaner)
+    }
+
+    // 注册到FinalizationRegistry，ArkTS对象被GC回收后，
+    // 回调中调用cleaner.clean()释放C++侧资源。token传this，支持按需注销。
+    registerCleaner(myCleaner: Cleaner): void {
+        destroyRegister.register(this, this.cleaner, this);
+    }
+    unregisterCleaner(): void {
+        destroyRegister.unregister(this);
+    }
+
+    native static create(): Contex;
+    native startAbilitySync(): void;
+    native getTempDirSync(): string;
+}
+
+function main()
+{
+    let ctx: Contex | null = null
+    ctx = Contex.create();
+
+    ctx.startAbilitySync();
+    let str = ctx.getTempDirSync();
+    console.info("getTempDirSync: " + str + " .");
+
+    // unregister按需使用
+    // ctx.unregisterCleaner()
+
+    ctx = null
+    // 执行GC后，监听协程调度callback，触发Cleaner.clean()释放native资源
+    GC.waitForFinishGC(GC.startGC(GC.Cause.FULL, GC.IN_PLACE_MODE));
+    Coroutine.Schedule()
+
+    console.info("end")
+}
+```
+
+native侧实现：
+
+```cpp
+// 与ArkTS侧Contex类对应的C++对象。
+class Context {
+public:
+    std::string getTempDir(){
+        return std::string("/usr/tmp");
+    }
+    void startAbility(){
+        std::cout << "start ability" << std::endl;
+    }
+    ~Context(){
+        std::cout << "~Context destroyed" << std::endl;
+    }
+};
+
+// 读取nativeContext字段，还原为C++指针。
+static Context *unwrap(ani_env *env, ani_object object) {
+    ani_long context;
+    if (ANI_OK != env->Object_GetFieldByName_Long(object, "nativeContext", &context)) {
+        return nullptr;
+    }
+    return reinterpret_cast<Context *>(context);
+}
+
+// static native create(): Contex —— 创建C++对象，并将指针包装进ArkTS对象。
+static ani_object create(ani_env *env, [[maybe_unused]] ani_class clazz){
+    auto nativeContext = new Context();
+
+    static const char *className = "ani_wrap_native_ptr.Contex";
+    ani_class cls;
+    ani_status status = env->FindClass(className, &cls);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
+
+    // 构造函数Contex(context: long)会将指针写入nativeContext字段。
+    ani_method ctor;
+    status = env->Class_FindMethod(cls, "<ctor>", "l:", &ctor);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
+
+    ani_object contextObject;
+    status = env->Object_New(cls, ctor, &contextObject, reinterpret_cast<ani_long>(nativeContext));
+    if (status != ANI_OK) {
+        // handle error and return
+    }
+    return contextObject;
+}
+
+// 实例方法：读回指针，调用C++对象的方法。
+static void startAbilitySync([[maybe_unused]] ani_env *env, ani_object object) {
+    auto context = unwrap(env, object);
+    if (context != nullptr) {
+        context->startAbility();
+    }
+}
+
+static ani_string getTempDirSync([[maybe_unused]] ani_env *env, ani_object object) {
+    auto context = unwrap(env, object);
+    auto dir = context->getTempDir();
+    ani_string ret;
+    ani_status status = env->String_NewUTF8(dir.c_str(), dir.size(), &ret);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
+    return ret;
+}
+
+// contextCleaner的静态native方法：由FinalizationRegistry回调触发，释放C++对象。
+static void cleanContext([[maybe_unused]] ani_env *env, [[maybe_unused]] ani_object object, ani_long ptr) {
+    delete reinterpret_cast<Context *>(ptr);
+}
+```
 

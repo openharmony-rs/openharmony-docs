@@ -71,6 +71,8 @@ import { screenshot } from '@kit.ArkUI';
 
 **ArkTS-Sta起始版本：** 26.0.0
 
+**系统接口：** 此接口为系统接口。
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | CANONICAL | 0 | 表示指定截图以标准HDR显示属性进行渲染，以优化截图在不同HDR显示器上的显示效果。|
@@ -90,8 +92,8 @@ import { screenshot } from '@kit.ArkUI';
 
 | 名称                 | 类型          |  只读 |  可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| width  | ArkTs-Dyn: number <br> ArkTs-Sta: long | 否   | 否   | 表示截取图像的宽度，单位为px，该参数应为整数。 |
-| height | ArkTs-Dyn: number <br> ArkTs-Sta: long | 否   | 否   | 表示截取图像的高度，单位为px，该参数应为整数。 |
+| width  | ArkTs-Dyn: number <br> ArkTs-Sta: long | 否   | 否   | 表示截取图像的宽度，单位为px，该参数应为正整数。 |
+| height | ArkTs-Dyn: number <br> ArkTs-Sta: long | 否   | 否   | 表示截取图像的高度，单位为px，该参数应为正整数。 |
 
 ## screenshot.save
 
@@ -110,8 +112,8 @@ save(options: ScreenshotOptions, callback: AsyncCallback&lt;image.PixelMap&gt;):
 **ArkTS-Sta起始版本：** 23
 
 **需要权限：**
-- API版本26.1.0+：ohos.permission.CUSTOM_SCREEN_CAPTURE 或 ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
-- API版本22-26.0.0：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
+- API版本26.0.0+：ohos.permission.CUSTOM_SCREEN_CAPTURE 或 ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
+- API版本22-24：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
 - API版本7-21：ohos.permission.CAPTURE_SCREEN。
 
 **参数：**
@@ -212,8 +214,8 @@ save(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 **ArkTS-Sta起始版本：** 23
 
 **需要权限：**
-- API版本26.1.0+：ohos.permission.CUSTOM_SCREEN_CAPTURE 或 ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
-- API版本22-26.0.0：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
+- API版本26.0.0+：ohos.permission.CUSTOM_SCREEN_CAPTURE 或 ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
+- API版本22-24：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
 - API版本7-21：ohos.permission.CAPTURE_SCREEN。
 
 **参数：**
@@ -287,8 +289,8 @@ save(options?: ScreenshotOptions): Promise&lt;image.PixelMap&gt;
 **ArkTS-Sta起始版本：** 23
 
 **需要权限：**
-- API版本26.1.0+：ohos.permission.CUSTOM_SCREEN_CAPTURE 或 ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
-- API版本22-26.0.0：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
+- API版本26.0.0+：ohos.permission.CUSTOM_SCREEN_CAPTURE 或 ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
+- API版本22-24：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
 - API版本7-21：ohos.permission.CAPTURE_SCREEN。
 
 **参数：**
@@ -427,7 +429,7 @@ saveHdrPicture(options?: HdrScreenshotOptions): Promise&lt;Array&lt;image.PixelM
 | ------- | -------------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801     | Capability not supported. |
 | 1400001  | Invalid display or screen. |
 | 1400003  | This display manager service works abnormally. |
 | 1400004  | Parameter error. Possible cause: 1. Invalid parameter range. |
@@ -451,7 +453,7 @@ try {
   promise.then((pixelMapArray: Array<image.PixelMap>) => {
     for (let i = 0; i < pixelMapArray.length; i++) {
       const pixelMap = pixelMapArray[i];
-      console.info(`succeeded in saving screenshot ${i}. Pixel bytes number: ${pixelMap.getPixelBytesNumber()}`);
+      console.info(`Succeeded in saving screenshot ${i}. Pixel bytes number: ${pixelMap.getPixelBytesNumber()}`);
       pixelMap.release();
     }
   }).catch((err: BusinessError) => {

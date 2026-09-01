@@ -77,7 +77,7 @@ sharedArrayBufferUsage(isAtomics: boolean) {
   taskpool.execute(taskGroup).then(() => {
     // 将结果打印在Text上
     this.result = this.result + "\n" + int32Array;
-    // 如果Scroll不在最低端，则滑动到最低端
+    // 如果Scroll不在最底端，则滑动到最底端
     if (!this.scroller.isAtEnd()) {
       this.scroller.scrollEdge(Edge.Bottom);
     }

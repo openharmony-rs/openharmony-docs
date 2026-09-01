@@ -21,9 +21,9 @@ import serial from '@ohos.busManager.serial';
 
 ## serial.getSerialPortList
 
-getSerialPortList(): Promise&lt;[SerialPort](#serialport)[]&gt;
+getSerialPortList(): Promise&lt;SerialPort[]&gt;
 
-查询串口设备列表，返回[SerialPort](#serialport)对象数组。使用Promise异步回调。用于需要识别可用串口设备的场景，如工业设备连接、物联网设备管理、嵌入式系统调试等应用。
+查询串口设备列表，返回[SerialPort](#serialport)对象数组。使用Promise异步回调。用于需要识别可用串口设备的场景，如工业设备连接、物联网设备管理、嵌入式系统调试等场景。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -51,7 +51,6 @@ getSerialPortList(): Promise&lt;[SerialPort](#serialport)[]&gt;
 **示例：**
 
 ```ts
-// BusinessError需从@kit.BasicServicesKit导入
 // 获取串口设备列表
 serial.getSerialPortList().then((portList: serial.SerialPort[]) => {
   console.info(`getSerialPortList success, length: ${portList.length}`);
@@ -59,7 +58,7 @@ serial.getSerialPortList().then((portList: serial.SerialPort[]) => {
     let portInfo: serial.SerialPortInfo = portList[0].portInfo;
     console.info(`portName: ${portInfo.portName}`);
   }
-}).catch((error: BusinessError) => {
+}).catch((error) => {
   console.error(`Failed to get serial port list. Code: ${error.code}, message: ${error.message}`);
 });
 ```
@@ -84,7 +83,7 @@ serial.getSerialPortList().then((portList: serial.SerialPort[]) => {
 
 ### open
 
-open(config?: [SerialConfigs](#serialconfigs)): Promise&lt;void&gt;
+open(config?: SerialConfigs): Promise&lt;void&gt;
 
 打开串口设备。使用Promise异步回调。用于建立与串口设备的通信连接，如传感器数据采集、设备控制命令发送、串口打印机等场景。
 
@@ -127,7 +126,6 @@ open(config?: [SerialConfigs](#serialconfigs)): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-// BusinessError需从@kit.BasicServicesKit导入
 // 获取串口列表并打开第一个串口
 serial.getSerialPortList().then(async (portList: serial.SerialPort[]) => {
   if (portList.length === 0) {
@@ -143,7 +141,9 @@ serial.getSerialPortList().then(async (portList: serial.SerialPort[]) => {
   };
   await port.open(config);
   console.info('open success');
-}).catch((error: BusinessError) => {
+  // 串口使用完毕后需调用port.close()释放资源
+  await port.close();
+}).catch((error) => {
   console.error(`Failed to open serial port. Code: ${error.code}, message: ${error.message}`);
 });
 ```
@@ -185,12 +185,11 @@ close(): Promise&lt;void&gt;
 
 <!--code_no_check-->
 ```ts
-// BusinessError需从@kit.BasicServicesKit导入
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 关闭串口
 port.close().then(() => {
   console.info('close success');
-}).catch((error: BusinessError) => {
+}).catch((error) => {
   console.error(`Failed to close serial port. Code: ${error.code}, message: ${error.message}`);
 });
 ```
@@ -220,7 +219,7 @@ ArkTS-Sta: write(data: Uint8Array, timeout?: int): Promise&lt;int&gt;
 | 参数名   | 类型         | 必填 | 说明                                                                                                     |
 | -------- | ------------ | ---- | -------------------------------------------------------------------------------------------------------- |
 | data     | Uint8Array   | 是   | 待发送的数据。长度范围：(0, 4096]。发送超过4096字节的数据时，建议分多次调用write方法发送。                                                                        |
-| timeout  | ArkTS-Dyn: number<br> ArkTS-Sta: int       | 否   | 超时时间，取值范围：[0, 300000]，整数，单位为毫秒。默认值0表示当数据无法写入端口时，不等待直接返回写入长度0。传入负数、非整数或大于300000时返回错误码35700002。 |
+| timeout  | ArkTS-Dyn: number<br> ArkTS-Sta: int       | 否   | 超时时间，取值范围：[0, 300000]，整数，单位为毫秒。默认值0表示当数据无法写入串口时，不等待直接返回写入长度0。传入负数、非整数或大于300000时返回错误码35700002。 |
 
 **返回值：**
 
@@ -244,14 +243,13 @@ ArkTS-Sta: write(data: Uint8Array, timeout?: int): Promise&lt;int&gt;
 
 <!--code_no_check-->
 ```ts
-// BusinessError需从@kit.BasicServicesKit导入
 // buffer需从@kit.ArkTS导入
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 向串口写入数据
 let writeData: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer);
 port.write(writeData, 2000).then((size: int) => {
   console.info('write success, size: ' + size);
-}).catch((error: BusinessError) => {
+}).catch((error) => {
   console.error(`Failed to write to serial port. Code: ${error.code}, message: ${error.message}`);
 });
 ```
@@ -309,7 +307,7 @@ port.onDataRead((data: Uint8Array) => {
 
 offDataRead(callback?: Callback&lt;Uint8Array&gt;): void
 
-取消监听串口接收数据事件。使用callback异步回调。用于不再需要监听串口数据接收时释放监听资源，如应用切换到其他功能、主动断开连接后清理监听等场景。
+取消监听串口接收数据事件。用于不再需要监听串口数据接收时释放监听资源，如应用切换到其他功能、主动断开连接后清理监听等场景。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -327,7 +325,7 @@ offDataRead(callback?: Callback&lt;Uint8Array&gt;): void
 
 | 参数名   | 类型                       | 必填 | 说明                                                   |
 | -------- | -------------------------- | ---- | ------------------------------------------------------ |
-| callback | Callback&lt;Uint8Array&gt; | 否   | 回调函数。不传入callback时，清除所有串口数据接收监听。 |
+| callback | Callback&lt;Uint8Array&gt; | 否   | 回调函数。传入callback时，取消指定的串口数据接收监听；不传入callback时，清除所有串口数据接收监听。 |
 
 **错误码：**
 
@@ -393,12 +391,11 @@ flush(): Promise&lt;void&gt;
 
 <!--code_no_check-->
 ```ts
-// BusinessError需从@kit.BasicServicesKit导入
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 刷新串口缓冲区
 port.flush().then(() => {
   console.info('flush success');
-}).catch((error: BusinessError) => {
+}).catch((error) => {
   console.error(`Failed to flush serial port. Code: ${error.code}, message: ${error.message}`);
 });
 ```
@@ -408,6 +405,15 @@ port.flush().then(() => {
 drain(): Promise&lt;void&gt;
 
 等待所有写请求完成。使用Promise异步回调。需在串口打开后调用。用于确保所有数据写入完成后再进行后续操作，如数据传输完成后关闭串口、发送数据后等待硬件响应等场景。
+
+**调用顺序：**
+- 必须先调用open()打开串口，才能调用drain()
+- 应在write()之后调用drain()，确保写入数据完全发送
+- 建议在close()之前调用drain()，确保所有数据完整传输后再关闭串口
+- 未调用open()就调用drain()会抛出错误码35700005（Port not open）
+
+**与flush的区别：** 
+- drain等待写缓冲区中的数据正常发送完成，适用于需要确保数据完整传输的场景；flush直接丢弃缓冲区中的所有数据，适用于需要快速清空缓冲区或丢弃无效数据的场景。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -437,12 +443,11 @@ drain(): Promise&lt;void&gt;
 
 <!--code_no_check-->
 ```ts
-// BusinessError需从@kit.BasicServicesKit导入
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 等待所有写请求完成
 port.drain().then(() => {
   console.info('drain success');
-}).catch((error: BusinessError) => {
+}).catch((error) => {
   console.error(`Failed to drain serial port. Code: ${error.code}, message: ${error.message}`);
 });
 ```
@@ -457,7 +462,12 @@ setRts(enable: boolean): Promise&lt;void&gt;
 
 **ArkTS-Sta起始版本：** 26.0.0
 
-**与setDtr的区别：** setRts和setDtr分别控制RTS/CTS和DTR/DSR两种硬件信号。RTS/CTS主要用于数据流控制，可通过SerialConfigs.rtscts启用自动流控；DTR/DSR主要用于设备状态控制和检测，用于特殊协议或设备状态管理。
+**调用顺序：**
+- 必须先调用open()打开串口，才能调用setRts()设置RTS信号
+- 未调用open()就调用setRts()会抛出错误码35700005（Port not open）
+
+**与setDtr的区别：** 
+- setRts和setDtr分别控制RTS/CTS和DTR/DSR两种硬件信号。RTS/CTS主要用于数据流控制，可通过SerialConfigs.rtscts启用自动流控；DTR/DSR主要用于设备状态控制和检测，用于特殊协议或设备状态管理。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -489,12 +499,11 @@ setRts(enable: boolean): Promise&lt;void&gt;
 
 <!--code_no_check-->
 ```ts
-// BusinessError需从@kit.BasicServicesKit导入
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 设置RTS信号
 port.setRts(true).then(() => {
   console.info('setRts success');
-}).catch((error: BusinessError) => {
+}).catch((error) => {
   console.error(`Failed to set RTS. Code: ${error.code}, message: ${error.message}`);
 });
 ```
@@ -505,6 +514,13 @@ getCts(): Promise&lt;boolean&gt;
 
 获取CTS（清除发送）信号状态。使用Promise异步回调。需在串口打开后调用。用于查询硬件流控的清除发送信号状态，判断是否可以发送数据，如启用RTS/CTS硬件流控时检查发送权、与支持硬件流控的设备通信前检查状态等场景。
 
+**调用顺序：**
+- 必须先调用open()打开串口，才能调用getCts()获取CTS信号
+- 未调用open()就调用getCts()会抛出错误码35700005（Port not open）
+
+**与getDsr的区别：** 
+- getCts查询CTS信号（清除发送），属于RTS/CTS硬件流控信号，用于判断是否可以发送数据；getDsr查询DSR信号（数据设备就绪），属于DTR/DSR设备状态信号，用于判断通信设备是否准备就绪。
+  
 **ArkTS-Dyn起始版本：** 26.0.0
 
 **ArkTS-Sta起始版本：** 26.0.0
@@ -533,12 +549,11 @@ getCts(): Promise&lt;boolean&gt;
 
 <!--code_no_check-->
 ```ts
-// BusinessError需从@kit.BasicServicesKit导入
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 获取CTS信号状态
 port.getCts().then((cts: boolean) => {
   console.info('getCts success, cts: ' + cts);
-}).catch((error: BusinessError) => {
+}).catch((error) => {
   console.error(`Failed to get CTS. Code: ${error.code}, message: ${error.message}`);
 });
 ```
@@ -577,12 +592,11 @@ sendBrk(): Promise&lt;void&gt;
 
 <!--code_no_check-->
 ```ts
-// BusinessError需从@kit.BasicServicesKit导入
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 发送BRK信号
 port.sendBrk().then(() => {
   console.info('sendBrk success');
-}).catch((error: BusinessError) => {
+}).catch((error) => {
   console.error(`Failed to send BRK. Code: ${error.code}, message: ${error.message}`);
 });
 ```
@@ -627,12 +641,11 @@ setDtr(enable: boolean): Promise&lt;void&gt;
 
 <!--code_no_check-->
 ```ts
-// BusinessError需从@kit.BasicServicesKit导入
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 设置DTR信号
 port.setDtr(true).then(() => {
   console.info('setDtr success');
-}).catch((error: BusinessError) => {
+}).catch((error) => {
   console.error(`Failed to set DTR. Code: ${error.code}, message: ${error.message}`);
 });
 ```
@@ -671,12 +684,11 @@ getDsr(): Promise&lt;boolean&gt;
 
 <!--code_no_check-->
 ```ts
-// BusinessError需从@kit.BasicServicesKit导入
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 获取DSR信号状态
 port.getDsr().then((dsr: boolean) => {
   console.info('getDsr success, dsr: ' + dsr);
-}).catch((error: BusinessError) => {
+}).catch((error) => {
   console.error(`Failed to get DSR. Code: ${error.code}, message: ${error.message}`);
 });
 ```
@@ -733,7 +745,11 @@ port.onDisconnect(() => {
 
 offDisconnect(callback?: Callback&lt;void&gt;): void
 
-取消监听串口断开事件。用于不再需要监听串口断开事件时释放监听资源，如应用切换到其他功能、主动断开连接后清理监听等场景。
+取消监听串口断开事件。需在串口打开后调用。用于不再需要监听串口断开事件时释放监听资源，如应用切换到其他功能、主动断开连接后清理监听等场景。
+
+**调用顺序：**
+- 必须先调用open()打开串口，才能调用offDisconnect()取消监听
+- 未调用open()就调用offDisconnect()会抛出错误码35700005（Port not open）
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -751,7 +767,7 @@ offDisconnect(callback?: Callback&lt;void&gt;): void
 
 | 参数名   | 类型                  | 必填 | 说明                                                   |
 | -------- | --------------------- | ---- | ------------------------------------------------------ |
-| callback | Callback&lt;void&gt;  | 否   | 回调函数。不传入callback时，清除所有串口断开事件监听。 |
+| callback | Callback&lt;void&gt;  | 否   | 回调函数，需先通过onDisconnect()注册回调后才能取消。传入callback时，取消指定的串口断开事件监听；不传入callback时，清除所有串口断开事件监听。 |
 
 **错误码：**
 
@@ -872,5 +888,5 @@ port.offDisconnect(disconnectedCallback);
 | parity | [Parity](#parity) | 否 | 是   | 校验位。默认值：NONE（无校验）。EVEN/ODD用于数据准确性要求高的场景；MARK/SPACE用于特殊通信协议。                                                 |
 | rtscts   | boolean                  | 否   | 是   | 是否启用RTS/CTS硬件自动流控。RTS/CTS硬件流控是一种通过硬件信号实现的自动数据流控制机制，RTS和CTS信号线协同工作以防止缓冲区溢出。启用后，系统会自动控制RTS和CTS信号来管理数据流量。默认值：false。true表示启用，false表示未启用。                                   |
 | xon      | boolean                  | 否   | 是   | 是否启用XON（Xmitter On，传输继续控制字符）控制发送流。XON是软件流控协议中的一个控制字符（ASCII值为17），当接收端缓冲区有空间时发送XON字符通知发送端恢复发送数据。默认值：false。true表示启用，false表示未启用。                                  |
-| xoff     | boolean                  | 否   | 是   | 是否启用XOFF（Xmitter Off，传输停止控制字符）控制接收流。XOFF是软件流控协议中的一个控制字符（ASCII值为19），当接收端缓冲区即将溢出时发送XOFF字符通知发送端暂停发送数据。默认值：false。true表示启用，false表示未启用。                                 |
-| xany     | boolean                  | 否   | 是   | 是否启用XANY（Any Character Resume，任意字符恢复模式）控制流。XANY是软件流控协议中的一种扩展模式，当启用XANY时，任何字符都可以作为恢复发送的信号，而不仅仅是XON字符。默认值：false。true表示启用，false表示未启用。                                     |
+| xoff     | boolean                  | 否   | 是   | 是否启用XOFF（Xmitter Off，传输停止控制字符）控制发送流。XOFF是软件流控协议中的一个控制字符（ASCII值为19），当接收端缓冲区即将溢出时发送XOFF字符通知发送端暂停发送数据。默认值：false。true表示启用，false表示未启用。                                 |
+| xany     | boolean                  | 否   | 是   | 是否启用XANY（Any Character Resume，任意字符恢复模式）控制流。XANY是软件流控协议中的一种扩展模式，需在xon或xoff启用时才能生效。当启用XANY时，任何字符都可以作为恢复发送的信号，而不仅仅是XON字符；若未启用软件流控（xon/xoff），xany设置无效。默认值：false。true表示启用，false表示未启用。                                     |

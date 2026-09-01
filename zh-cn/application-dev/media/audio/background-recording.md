@@ -58,7 +58,7 @@
 
    当录音需要退至后台持续运行时，应用需要申请`AUDIO_RECORDING`类型长时任务，使系统识别该后台任务与录音业务匹配。
 
-   <!-- @[background_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioVoIPCallSampleC/entry/src/main/ets/pages/AudioPlayer.ets) --> 
+   <!-- @[background_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioVoIPCallSampleC/entry/src/main/ets/pages/AudioPlayer.ets) -->
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -89,7 +89,7 @@
          // 通过wantAgent模块下getWantAgent方法获取WantAgent对象。
          wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
            try {
-             let list: string[] = ['audioPlayback'];
+             let list: string[] = ['audioPlayback', 'audioRecording'];
              backgroundTaskManager.startBackgroundRunning(context, list, wantAgentObj)
                .then(() => {
                  console.info('Operate startBackgroundRunning succeeded');

@@ -34,7 +34,7 @@ V2的提出不仅解决了V1对嵌套类观测的不足，还增强了部分装�
 * 组件间不存在变量传递时，V2自定义组件可以使用V1的自定义组件，包括import第三方\@Component装饰的自定义组件。
 
 * 组件间存在变量传递时，V2的变量传递给V1的自定义组件，有以下限制：
-  - V2中未被装饰器装饰的变量（后称普通变量）：若V1使用装饰器装饰接收的数据，只能通过\@State、\@Prop、[\@Provide](../../reference/apis-arkui/arkui-ts/ts-state-management-provide.md)。
+  - V2中未被装饰器装饰的变量（后称普通变量）：若V1使用装饰器装饰接收的数据，只能通过\@State、\@Prop、[@Provide](../../reference/apis-arkui/arkui-ts/ts-state-management-provide.md)。
   - V2中被装饰器装饰的变量（后称状态变量）：若V1使用装饰器装饰接收的数据，不支持内置类型数据：Array、Set、Map、Date。
 
 ## 状态管理装饰器总览
@@ -43,15 +43,15 @@ V2的提出不仅解决了V1对嵌套类观测的不足，还增强了部分装�
 
 |  装饰器类别  |                            装饰器                            |
 | :----------: | :----------------------------------------------------------: |
-| 组件内装饰器 | [\@State](../../reference/apis-arkui/arkui-ts/ts-state-management-state.md)、[\@Prop](../../reference/apis-arkui/arkui-ts/ts-state-management-prop.md)、[\@Link](../../reference/apis-arkui/arkui-ts/ts-state-management-link.md)、[\@ObjectLink](../../reference/apis-arkui/arkui-ts/ts-state-management-objectlink.md)、[\@Provide](../../reference/apis-arkui/arkui-ts/ts-state-management-provide.md)、[\@Consume](../../reference/apis-arkui/arkui-ts/ts-state-management-consume.md)、[\@StorageProp](../../reference/apis-arkui/arkui-ts/ts-state-management-storageprop.md)、[\@StorageLink](../../reference/apis-arkui/arkui-ts/ts-state-management-storagelink.md)、[\@LocalStorageProp](../../reference/apis-arkui/arkui-ts/ts-state-management-localstorageprop.md)、[\@LocalStorageLink](../../reference/apis-arkui/arkui-ts/ts-state-management-localstoragelink.md)、[\@Watch](../../reference/apis-arkui/arkui-ts/ts-state-management-watch.md) |
-| 类相关装饰器 |                     [\@Observed](../../reference/apis-arkui/arkui-ts/ts-state-management-observed.md)、[\@Track](../../reference/apis-arkui/arkui-ts/ts-state-management-track.md)                      |
+| 组件内装饰器 | [@State](../../reference/apis-arkui/arkui-ts/ts-state-management-state.md)、[@Prop](../../reference/apis-arkui/arkui-ts/ts-state-management-prop.md)、[@Link](../../reference/apis-arkui/arkui-ts/ts-state-management-link.md)、[@ObjectLink](../../reference/apis-arkui/arkui-ts/ts-state-management-objectlink.md)、[@Provide](../../reference/apis-arkui/arkui-ts/ts-state-management-provide.md)、[@Consume](../../reference/apis-arkui/arkui-ts/ts-state-management-consume.md)、[@StorageProp](../../reference/apis-arkui/arkui-ts/ts-state-management-storageprop.md)、[@StorageLink](../../reference/apis-arkui/arkui-ts/ts-state-management-storagelink.md)、[@LocalStorageProp](../../reference/apis-arkui/arkui-ts/ts-state-management-localstorageprop.md)、[@LocalStorageLink](../../reference/apis-arkui/arkui-ts/ts-state-management-localstoragelink.md)、[@Watch](../../reference/apis-arkui/arkui-ts/ts-state-management-watch.md) |
+| 类相关装饰器 |                     [@Observed](../../reference/apis-arkui/arkui-ts/ts-state-management-observed.md)、[@Track](../../reference/apis-arkui/arkui-ts/ts-state-management-track.md)                      |
 
 ### 状态管理V2的装饰器
 
 |  装饰器类别  |                            装饰器                            |
 | :----------: | :----------------------------------------------------------: |
-| 组件内装饰器 | [\@Local](../../reference/apis-arkui/arkui-ts/ts-state-management-local.md)、[\@Param](../../reference/apis-arkui/arkui-ts/ts-state-management-param.md)、[\@Provider](../../reference/apis-arkui/arkui-ts/ts-state-management-provider.md)、[\@Consumer](../../reference/apis-arkui/arkui-ts/ts-state-management-consumer.md)、[\@Once](../../reference/apis-arkui/arkui-ts/ts-state-management-once.md)、[\@Event](../../reference/apis-arkui/arkui-ts/ts-state-management-event.md)、[\@Monitor](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor.md)、[\@Computed](../../reference/apis-arkui/arkui-ts/ts-state-management-computed.md) |
-| 类相关装饰器 |                [\@ObservedV2](../../reference/apis-arkui/arkui-ts/ts-state-management-observedv2.md)、[\@Trace](../../reference/apis-arkui/arkui-ts/ts-state-management-trace.md)、[\@Type](../../reference/apis-arkui/arkui-ts/ts-state-management-type.md)                 |
+| 组件内装饰器 | [@Local](../../reference/apis-arkui/arkui-ts/ts-state-management-local.md)、[@Param](../../reference/apis-arkui/arkui-ts/ts-state-management-param.md)、[@Provider](../../reference/apis-arkui/arkui-ts/ts-state-management-provider.md)、[@Consumer](../../reference/apis-arkui/arkui-ts/ts-state-management-consumer.md)、[@Once](../../reference/apis-arkui/arkui-ts/ts-state-management-once.md)、[@Event](../../reference/apis-arkui/arkui-ts/ts-state-management-event.md)、[@Monitor](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor.md)、[@Computed](../../reference/apis-arkui/arkui-ts/ts-state-management-computed.md) |
+| 类相关装饰器 |                [@ObservedV2](../../reference/apis-arkui/arkui-ts/ts-state-management-observedv2.md)、[@Trace](../../reference/apis-arkui/arkui-ts/ts-state-management-trace.md)、[@Type](../../reference/apis-arkui/arkui-ts/ts-state-management-type.md)                 |
 
 ### 状态管理装饰器支持的数据类型总览
 
@@ -59,10 +59,10 @@ V2的提出不仅解决了V1对嵌套类观测的不足，还增强了部分装�
 
 | 数据类型     | 关键字                                             |
 | ------------ | -------------------------------------------------- |
-| 简单类型数据 | [boolean](../../quick-start/introduction-to-arkts.md#类型)、[number](../../quick-start/introduction-to-arkts.md#类型)、[enum](../../quick-start/introduction-to-arkts.md#类型)、[string](../../quick-start/introduction-to-arkts.md#类型)、null、undefined     |
-| function类型 | function(仅V2的[\@Event](../../reference/apis-arkui/arkui-ts/ts-state-management-event.md)、[\@Monitor](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor.md)、[\@Computed](../../reference/apis-arkui/arkui-ts/ts-state-management-computed.md)支持) |
-| Object类型   | [Object](../../quick-start/introduction-to-arkts.md#类型)                                             |
-| Class类型    | [Class](../../quick-start/introduction-to-arkts.md)                                              |
+| 简单类型数据 | [boolean](../../quick-start/arkts-language-guide-basics.md#类型)、[number](../../quick-start/arkts-language-guide-basics.md#类型)、[enum](../../quick-start/arkts-language-guide-basics.md#类型)、[string](../../quick-start/arkts-language-guide-basics.md#类型)、null、undefined     |
+| function类型 | function(仅V2的[@Event](../../reference/apis-arkui/arkui-ts/ts-state-management-event.md)、[@Monitor](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor.md)、[@Computed](../../reference/apis-arkui/arkui-ts/ts-state-management-computed.md)支持) |
+| Object类型   | [Object](../../quick-start/arkts-language-guide-basics.md#类型)                                             |
+| Class类型    | [Class](../../quick-start/arkts-language-guide-classes.md)                                              |
 | 内置类型     | Array、Map、Set、Date                              |
 
 

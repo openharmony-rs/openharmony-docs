@@ -12,7 +12,7 @@ enum ArkUI_NodeAttributeType
 
 ## 概述
 
-定义ArkUI在Native侧可以设置或获取的XComponent组件相关属性集合。
+定义ArkUI在Native侧可以设置或获取的XComponent组件相关属性集合，包括组件ID、组件类型、Surface宽高、Surface显示区域以及是否支持图像分析等属性，适用于需要在Native侧对XComponent组件的渲染区域和行为进行自定义配置与获取的场景。
 
 **起始版本：** 12
 
@@ -60,7 +60,7 @@ XComponent组件的类型需要在组件创建时通过[ArkUI_NodeType](capi-nat
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | XComponent组件的类型，参数类型为[ArkUI_XComponentType](capi-native-type-h.md#arkui_xcomponenttype)，具体枚举值及其与数字的对应关系请参见该枚举定义。 |
+| .value[0].i32 | XComponent组件的类型，取值类型为[ArkUI_XComponentType](capi-native-type-h.md#arkui_xcomponenttype)，具体枚举值及其与数字的对应关系请参见该枚举定义。 |
 
 ## NODE_XCOMPONENT_SURFACE_SIZE
 
@@ -87,7 +87,7 @@ XComponent组件所持有的Surface的宽高，仅支持属性获取接口。<br
 NODE_XCOMPONENT_SURFACE_RECT = 12003
 ```
 
-XComponent组件所持有的Surface显示区域，支持属性设置和属性获取接口。<br>
+XComponent组件所持有的Surface显示区域，支持属性设置和属性获取接口。适用于需要在XComponent组件内指定局部区域进行渲染的场景，例如视频画面裁剪显示、画中画局部渲染等。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 18
@@ -107,8 +107,8 @@ XComponent组件所持有的Surface显示区域，支持属性设置和属性获
 | -- | -- |
 | .value[0].i32 | Surface显示区域相对于XComponent组件左上角的x轴坐标，单位为px。 |
 | .value[1].i32 | Surface显示区域相对于XComponent组件左上角的y轴坐标，单位为px。 |
-| .value[2].i32 | Surface显示区域的宽度，单位为px，取值应为非负整数。 |
-| .value[3].i32 | Surface显示区域的高度，单位为px。 |
+| .value[2].i32 | Surface显示区域的宽度，单位为px，取值应为正整数。 |
+| .value[3].i32 | Surface显示区域的高度，单位为px，取值应为正整数。 |
 
 ## NODE_XCOMPONENT_ENABLE_ANALYZER
 
@@ -116,7 +116,7 @@ XComponent组件所持有的Surface显示区域，支持属性设置和属性获
 NODE_XCOMPONENT_ENABLE_ANALYZER = 12004
 ```
 
-XComponent组件是否支持图像分析的属性，支持属性设置和属性获取接口。<br>
+XComponent组件是否支持图像分析的属性，支持属性设置和属性获取接口。开启后可对组件中显示的图像进行内容识别分析，适用于相机预览实时识别、图像内容理解等场景。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 18

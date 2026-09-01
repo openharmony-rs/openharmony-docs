@@ -311,7 +311,7 @@ predicates.equalTo("NAME", "Lisa")
 
 or(): RdbPredicates
 
-将或条件添加到谓词中。
+将OR条件添加到谓词中。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -323,7 +323,7 @@ or(): RdbPredicates
 
 | 类型                                 | 说明                      |
 | ------------------------------------ | ------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 返回带有或条件的谓词。 |
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 返回带有OR条件的谓词。 |
 
 **示例：**
 
@@ -339,7 +339,7 @@ predicates.equalTo("NAME", "Lisa")
 
 and(): RdbPredicates
 
-向谓词添加和条件。
+向谓词添加AND条件。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -351,7 +351,7 @@ and(): RdbPredicates
 
 | 类型                                 | 说明                      |
 | ------------------------------------ | ------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 返回带有和条件的谓词。 |
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 返回带有AND条件的谓词。 |
 
 **示例：**
 

@@ -48,7 +48,7 @@ ArkTS-Sta: onTouch(event: ((event: TouchEvent) => void) | undefined): this
 
 ## TouchEvent对象说明
 
-继承于[BaseEvent](ts-gesture-customize-judge.md#baseevent8)。在非事件注入场景下，changedTouches是按屏幕刷新率重采样的点，而touches是按器件刷新率上报的点，因此changedTouches与touches的数据可能不同。
+继承于[BaseEvent](ts-universal-events-click.md#baseevent8)。在非事件注入场景下，changedTouches是按屏幕刷新率重采样的点，而touches是按器件刷新率上报的点，因此changedTouches与touches的数据可能不同。
 
 ### 属性
 
@@ -235,6 +235,7 @@ struct TouchExample {
             if (event.touches) {
               this.text = 'TouchType:' + this.eventType
                 + '\nDistance between touch point and touch element:'
+                + '\n  id: ' + event.touches[0].id
                 + '\n  x: ' + event.touches[0].x + '\n  y: ' + event.touches[0].y
                 + '\n  width: ' + event.touches[0].width + '\n  height: ' + event.touches[0].height
                 + '\n  pressedTime: ' + event.touches[0].pressedTime
@@ -266,6 +267,7 @@ struct TouchExample {
             if (event.touches) {
               this.text = 'TouchType:' + this.eventType
                 + '\nDistance between touch point and touch element:'
+                + '\n  id: ' + event.touches[0].id
                 + '\n  x: ' + event.touches[0].x + '\n  y: ' + event.touches[0].y
                 + '\n  width: ' + event.touches[0].width + '\n  height: ' + event.touches[0].height
                 + '\n  pressedTime: ' + event.touches[0].pressedTime

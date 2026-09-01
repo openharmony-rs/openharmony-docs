@@ -34,7 +34,7 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
     | 名称   | 说明  |                       
     | ----   | -------------------------------- |
     | [domStorageAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#domstorageaccess) | 设置是否开启文档对象模型存储接口（DOM Storage API）权限。若不开启，无法使用localStorage存储数据，任何调用localStorage的代码都将失效，依赖本地存储的功能会异常。 |
-    | [fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess) | 设置是否开启应用中文件系统的访问。‌若不开启，文件读写功能完全被阻断，依赖文件的模块会崩溃。 | 
+    | [fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess) | 设置是否开启应用中文件系统的访问。‌若不开启，文件读写功能完全被阻断，依赖文件读写的模块会遇到访问被拒绝的错误。 | 
     | [imageAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#imageaccess) | 设置是否允许自动加载图片资源。 | 
     | [onlineImageAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#onlineimageaccess) | 设置是否允许从网络加载图片资源（通过HTTP和HTTPS访问的资源）。 |
     | [javaScriptAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptaccess) | 设置是否允许执行JavaScript脚本。 | 
@@ -535,12 +535,14 @@ Web组件提供了自适应页面布局的能力，详情见[ Web组件大小自
 兼容性问题处理不当也会导致页面白屏。
 * 特殊协议拦截。
 * 若H5页面调用tel:、mailto:等协议导致白屏，需通过onInterceptRequest拦截并调用系统拨号能力：
-   ```c
+   ```ts
    .onInterceptRequest((event) => {
-       if (event.request.url.startsWith('tel:')) {
+       if (event.request.getRequestUrl().startsWith('tel:')) {
            // 调用系统拨号能力
-           call.makeCall({ phoneNumber: '123456' });
-           return { responseCode: 404 }; // 阻止默认行为
+           call.makeCall('123456');
+           let response = new WebResourceResponse();
+           response.setResponseCode(404);
+           return response; // 阻止默认行为
        }
        return null;  
    })

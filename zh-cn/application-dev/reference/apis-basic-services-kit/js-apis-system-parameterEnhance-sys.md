@@ -2,7 +2,7 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Startup-->
 <!--Owner: @chenjinxiang3-->
-<!--Designer: @liveery-->
+<!--Designer: @chenjinxiang3-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
 
@@ -12,7 +12,7 @@
 >
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块接口为系统接口。
-> - 由于系统参数都是各个系统服务的内部信息和控制参数，每个系统参数都有各自不同的DAC（Discretionary Access Control，自主访问控制）和MAC（Mandatory Access Control，强制访问控制）访问控制权限，三方应用不能使用此类接口。
+> - 由于系统参数都是各个系统服务的内部信息和控制参数，每个系统参数都有各自不同的DAC和MAC访问控制权限，三方应用不能使用此类接口。
 
 ## 导入模块
 
@@ -24,7 +24,7 @@ import { systemParameterEnhance } from '@kit.BasicServicesKit';
 
 getSync(key: string, def?: string): string
 
-获取系统参数Key对应的值。
+获取系统参数key对应的值。
 
 > **说明：**
 >
@@ -40,8 +40,8 @@ getSync(key: string, def?: string): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| key | string | 是 | 待查询的系统参数Key。最大长度128字节，只允许字母数字加"."，"-"，"@"，":"或"_"，不允许".."。|
-| def | string | 否 | def为所要获取的系统参数的默认值； <br> def为可选参数，仅当系统参数不存在时生效； <br> def可以传undefined或自定义的任意值。 |
+| key | string | 是 | 待查询的系统参数key。最大长度128字节，只允许字母数字加"."，"-"，"@"，":"或"_"，不允许".."。 |
+| def | string | 否 | def为所要获取的系统参数的默认值； <br> def为可选参数，仅当系统参数不存在时生效； <br> def可以传undefined或任意字符串值。 |
 
 **返回值：**
 
@@ -63,11 +63,13 @@ getSync(key: string, def?: string): string
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   let info: string = systemParameterEnhance.getSync('const.ohos.apiversion');
-  console.info(JSON.stringify(info));
+  console.info('getSync result: ' + info);
 } catch (e) {
-  console.error('getSync unexpected error: ' + e);
+  console.error(`getSync failed. Code: ${(e as BusinessError).code}, message: ${(e as BusinessError).message}`);
 }
 ```
 
@@ -75,7 +77,7 @@ try {
 
 get(key: string, callback: AsyncCallback&lt;string&gt;): void
 
-获取系统参数Key对应的值，使用callback异步回调。
+获取系统参数key对应的值，使用callback异步回调。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -83,7 +85,7 @@ get(key: string, callback: AsyncCallback&lt;string&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| key | string | 是 | 待查询的系统参数Key。最大长度128字节，只允许字母数字加"."，"-"，"@"，":"或"_"，不允许".."。|
+| key | string | 是 | 待查询的系统参数key。最大长度128字节，只允许字母数字加"."，"-"，"@"，":"或"_"，不允许".."。|
 | callback | AsyncCallback&lt;string&gt; | 是 | 回调函数，异步获取系统参数值。成功时err为undefined，data为系统参数值；失败时err为错误对象，data为undefined。 |
 
 **错误码**：
@@ -119,7 +121,7 @@ try {
 
 get(key: string, def: string, callback: AsyncCallback&lt;string&gt;): void
 
-获取系统参数Key对应的值，使用callback异步回调。
+获取系统参数key对应的值，使用callback异步回调。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -127,8 +129,8 @@ get(key: string, def: string, callback: AsyncCallback&lt;string&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| key | string | 是 | 待查询的系统参数Key。最大长度128字节，只允许字母数字加"."，"-"，"@"，":"或"_"，不允许".."。|
-| def | string | 是 | 默认值。 |
+| key | string | 是 | 待查询的系统参数key。最大长度128字节，只允许字母数字加"."，"-"，"@"，":"或"_"，不允许".."。 |
+| def | string | 是 | def为所要获取的系统参数的默认值，仅当系统参数不存在时生效； <br> def可以传任意字符串值。 |
 | callback | AsyncCallback&lt;string&gt; | 是 | 回调函数，异步获取系统参数值。成功时err为undefined，data为系统参数值；失败时err为错误对象，data为undefined。 |
 
 **错误码**：
@@ -164,7 +166,7 @@ try {
 
 get(key: string, def?: string): Promise&lt;string&gt;
 
-获取系统参数Key对应的值，使用Promise异步回调。
+获取系统参数key对应的值，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -172,14 +174,14 @@ get(key: string, def?: string): Promise&lt;string&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| key | string | 是 | 待查询的系统参数Key。最大长度128字节，只允许字母数字加"."，"-"，"@"，":"或"_"，不允许".."。|
-| def | string | 否 | def为所要获取的系统参数的默认值； <br> def为可选参数，仅当系统参数不存在时生效； <br> def可以传undefined或自定义的任意值。 |
+| key | string | 是 | 待查询的系统参数key。最大长度128字节，只允许字母数字加"."，"-"，"@"，":"或"_"，不允许".."。 |
+| def | string | 否 | def为所要获取的系统参数的默认值； <br> def为可选参数，仅当系统参数不存在时生效； <br> def可以传undefined或任意字符串值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;string&gt; | Promise实例，用于异步获取结果，返回系统参数值。 |
+| Promise&lt;string&gt; | Promise对象，用于异步获取结果，返回系统参数值。 |
 
 **错误码**：
 
@@ -213,7 +215,7 @@ try {
 
 setSync(key: string, value: string): void
 
-设置系统参数Key对应的值。
+设置系统参数key对应的值。
 
 > **说明：**
 >
@@ -229,7 +231,7 @@ setSync(key: string, value: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| key | string | 是 | 待设置的系统参数Key。最大长度128字节，只允许字母数字加"."，"-"，"@"，":"或"_"，不允许".."。|
+| key | string | 是 | 待设置的系统参数key。最大长度128字节，只允许字母数字加"."，"-"，"@"，":"或"_"，不允许".."。 |
 | value | string | 是 | 待设置的系统参数值。最大长度96字节（包括结束符）。 |
 
 **错误码**：
@@ -260,7 +262,7 @@ try {
 
 set(key: string, value: string, callback: AsyncCallback&lt;void&gt;): void
 
-设置系统参数Key对应的值，使用callback异步回调。
+设置系统参数key对应的值，使用callback异步回调。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -268,7 +270,7 @@ set(key: string, value: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| key | string | 是 | 待设置的系统参数Key。最大长度128字节，只允许字母数字加"."，"-"，"@"，":"或"_"，不允许".."。 |
+| key | string | 是 | 待设置的系统参数key。最大长度128字节，只允许字母数字加"."，"-"，"@"，":"或"_"，不允许".."。 |
 | value | string | 是 | 待设置的系统参数值。最大长度96字节（包括结束符）。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，异步设置系统参数。成功时err为undefined；失败时err为错误对象。 |
 
@@ -293,7 +295,7 @@ try {
     if (err) {
       console.error(`Failed to set test.parameter.key value. Code: ${err.code}, message: ${err.message}`);
     } else {
-      console.info(`set test.parameter.key value success: ${data}`);
+      console.info('set test.parameter.key value success');
     }
   });
 } catch (e) {
@@ -305,7 +307,7 @@ try {
 
 set(key: string, value: string): Promise&lt;void&gt;
 
-设置系统参数Key对应的值，使用Promise异步回调。
+设置系统参数key对应的值，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -313,8 +315,8 @@ set(key: string, value: string): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| key | string | 是 | 待设置的系统参数Key。最大长度128字节，只允许字母数字加"."，"-"，"@"，":"或"_"，不允许".."。 |
-| value | string | 是 | 待设置的系统参数值。最大长度96字节（包括结束符）。 |
+| key | string | 是 | 待设置的系统参数key。最大长度128字节，只允许字母数字加"."，"-"，"@"，":"或"_"，不允许".."。 |
+| value | string | 是 | 待设置的系统参数值。最大长度96字节（包括结束符）。|
 
 **返回值：**
 

@@ -714,7 +714,7 @@ fileSync.getLastSyncTime((err: BusinessError<void> | null, timeStamp: long | und
 
 **ArkTS-Sta起始版本**：23
 
-### construct<sup>11+</sup>
+### constructor<sup>11+</sup>
 
 constructor()
 
@@ -2279,7 +2279,7 @@ cloudSync.unregisterChange(uri);
 
 **ArkTS-Sta起始版本**：23
 
-### construct<sup>20+</sup>
+### constructor<sup>20+</sup>
 
 constructor()
 

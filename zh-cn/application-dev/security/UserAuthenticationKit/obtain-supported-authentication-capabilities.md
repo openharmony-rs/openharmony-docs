@@ -28,7 +28,7 @@
 以查询设备是否支持认证可信等级≥ATL3的人脸认证功能为例：
 
 ArkTS-Dyn示例：
-<!-- @[obtain_supported_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[obtain_supported_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 obtainingSupported() {
@@ -46,7 +46,7 @@ obtainingSupported() {
 ```
 
 ArkTS-Sta示例：
-<!-- @[obtain_supported_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @[obtain_supported_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 obtainingSupported() {
@@ -56,7 +56,7 @@ obtainingSupported() {
     Logger.info('current auth trust level is supported.');
     return true;
   } catch (error) {
-      Logger.error(`current auth trust level is not supported, code is ${error.code}, message is ${error.message}`);
+    Logger.error(`current auth trust level is not supported, code is ${error.code}, message is ${error.message}`);
     return false;
   }
 }
@@ -64,5 +64,5 @@ obtainingSupported() {
 
 ## 示例代码
 
-  - [查询支持的认证能力(ArkTS-Dyn)](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
-  - [查询支持的认证能力(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta)
+  - [查询支持的认证能力(ArkTS-Dyn)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)
+  - [查询支持的认证能力(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta)

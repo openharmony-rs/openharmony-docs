@@ -17,6 +17,12 @@ PageNodeInfo用于描述自动填充场景下的页面节点信息，包含节�
 >
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[PageNodeInfo](js-apis-inner-application-pageNodeInfo.md)。
 
+## 导入模块
+
+```ts
+import { autoFillManager } from '@kit.AbilityKit';
+```
+
 ## PageNodeInfo
 
 **系统接口**：此接口为系统接口。

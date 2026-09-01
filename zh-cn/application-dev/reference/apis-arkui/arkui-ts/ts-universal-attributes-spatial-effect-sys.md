@@ -158,7 +158,7 @@ ArkTS-Sta: spatialEffect(params: SpatialEffectParams | undefined): this
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| x | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | X分量。无单位，其值表示3D空间中的坐标。 |
+| x | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | X分量。无单位，其值表示3D空间中的坐标。默认值：0 |
 | y | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | Y分量。无单位，其值表示3D空间中的坐标。 |
 | z | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | Z分量。无单位，其值表示3D空间中的坐标。 |
 | w | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | W分量。无单位，其值表示3D空间中的坐标。 |

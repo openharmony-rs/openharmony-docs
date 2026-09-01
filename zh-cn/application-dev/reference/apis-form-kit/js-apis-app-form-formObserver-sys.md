@@ -22,7 +22,7 @@ formObserver模块提供了卡片监听方相关接口的能力，包括对同�
 import { formObserver } from '@kit.FormKit';
 ```
 
-## on('formAdd')
+## formObserver.on('formAdd')
 
  on(type: 'formAdd', observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -64,7 +64,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('formAdd', callback);
 ```
 
-## onFormAdd<sup>23+</sup>
+## formObserver.onFormAdd<sup>23+</sup>
 
  onFormAdd(observerCallback: Callback\<formInfo.RunningFormInfo\>): void
 
@@ -124,7 +124,7 @@ try {
 }
 ```
 
-## on('formAdd')
+## formObserver.on('formAdd')
 
  on(type: 'formAdd', hostBundleName: string, observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -169,7 +169,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('formAdd', bundleName, callback);
 ```
 
-## onFormAdd<sup>23+</sup>
+## formObserver.onFormAdd<sup>23+</sup>
 
 onFormAdd(hostBundleName: string, observerCallback: Callback\<formInfo.RunningFormInfo\>): void
 
@@ -230,7 +230,7 @@ try {
 }
 ```
 
-## off('formAdd')
+## formObserver.off('formAdd')
 
 off(type: 'formAdd', hostBundleName?: string, observerCallback?: Callback<formInfo.RunningFormInfo>): void;
 
@@ -281,7 +281,7 @@ formObserver.off('formAdd', bundleName, callback);
 > on('formAdd', bundleName, callback)与off('formAdd', bundleName, callback)相对应；
 > 订阅（on）只能由自己对应的取消订阅接口（off）取消。
 
-## offFormAdd<sup>23+</sup>
+## formObserver.offFormAdd<sup>23+</sup>
 
 offFormAdd(hostBundleName?: string, observerCallback?: Callback\<formInfo.RunningFormInfo\>): void
 
@@ -289,8 +289,8 @@ offFormAdd(hostBundleName?: string, observerCallback?: Callback\<formInfo.Runnin
 
 > **说明：**
 >
-> - [onFormAdd](#onformadd23)与[offFormAdd](#offformadd23)相对应。
-> - [onFormAdd](#onformadd23-1)与[offFormAdd](#offformadd23)相对应。
+> - [onFormAdd](#formobserveronformadd23)与[offFormAdd](#formobserveroffformadd23)相对应。
+> - [onFormAdd](#formobserveronformadd23-1)与[offFormAdd](#formobserveroffformadd23)相对应。
 > - 订阅（onFormAdd）只能由自己对应的取消订阅接口（offFormAdd）取消。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
@@ -348,7 +348,7 @@ try {
 }
 ```
 
-## on('formRemove')
+## formObserver.on('formRemove')
 
  on(type: 'formRemove', observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -390,7 +390,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('formRemove', callback);
 ```
 
-## onFormRemove<sup>23+</sup>
+## formObserver.onFormRemove<sup>23+</sup>
 
 onFormRemove(observerCallback: Callback\<formInfo.RunningFormInfo\>): void
 
@@ -450,7 +450,7 @@ try {
 }
 ```
 
-## on('formRemove')
+## formObserver.on('formRemove')
 
  on(type: 'formRemove', hostBundleName: string, observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -495,7 +495,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('formRemove', bundleName, callback);
 ```
 
-## onFormRemove<sup>23+</sup>
+## formObserver.onFormRemove<sup>23+</sup>
 
 onFormRemove(hostBundleName: string, observerCallback: Callback\<formInfo.RunningFormInfo\>): void
 
@@ -556,7 +556,7 @@ try {
 }
 ```
 
-## off('formRemove')
+## formObserver.off('formRemove')
 
 off(type: 'formRemove', hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -606,7 +606,7 @@ formObserver.off('formRemove', bundleName, callback);
 > on('formRemove', bundleName, callback)与off('formRemove', bundleName, callback)相对应；
 > 订阅（on）只能由自己对应的取消订阅接口（off）取消。
 
-## offFormRemove<sup>23+</sup>
+## formObserver.offFormRemove<sup>23+</sup>
 
 offFormRemove(hostBundleName?: string, observerCallback?: Callback\<formInfo.RunningFormInfo\>): void
 
@@ -614,8 +614,8 @@ offFormRemove(hostBundleName?: string, observerCallback?: Callback\<formInfo.Run
 
 > **说明：**
 >
-> - [onFormRemove](#onformremove23)与[offFormRemove](#offformremove23)相对应。
-> - [onFormRemove](#onformremove23-1)与[offFormRemove](#offformremove23)相对应。
+> - [onFormRemove](#formobserveronformremove23)与[offFormRemove](#formobserveroffformremove23)相对应。
+> - [onFormRemove](#formobserveronformremove23-1)与[offFormRemove](#formobserveroffformremove23)相对应。
 > - 订阅（onFormRemove）只能由自己对应的取消订阅接口（offFormRemove）取消。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
@@ -674,13 +674,13 @@ try {
 ```
 
 
-## on('notifyVisible')
+## formObserver.on('notifyVisible')
 
  on(type: 'notifyVisible', observerCallback: Callback&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;): void
 
 订阅通知卡片可见的事件。使用callback异步回调。
 
-​触发通知卡片可见场景为：调用[notifyVisibleForms](js-apis-app-form-formHost-sys.md#notifyvisibleforms)接口通知对应卡片可见性变更为可见状态。
+​触发通知卡片可见场景为：调用[notifyVisibleForms](js-apis-app-form-formHost-sys.md#formhostnotifyvisibleforms)接口通知对应卡片可见性变更为可见状态。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
 
@@ -719,13 +719,13 @@ let callback = (data: formInfo.RunningFormInfo[]) => {
 
 formObserver.on('notifyVisible', callback);
 ```
-## onNotifyVisible<sup>23+</sup>
+## formObserver.onNotifyVisible<sup>23+</sup>
 
 onNotifyVisible(observerCallback: Callback\<Array\<formInfo.RunningFormInfo\>\>): void
 
 订阅通知卡片可见的事件。使用callback异步回调。
 
-触发通知卡片可见场景为：调用[notifyVisibleForms](js-apis-app-form-formHost-sys.md#notifyvisibleforms)接口通知对应卡片可见性变更为可见状态。
+触发通知卡片可见场景为：调用[notifyVisibleForms](js-apis-app-form-formHost-sys.md#formhostnotifyvisibleforms)接口通知对应卡片可见性变更为可见状态。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
 
@@ -780,13 +780,13 @@ try {
 }
 ```
 
-## on('notifyVisible')
+## formObserver.on('notifyVisible')
 
  on(type: 'notifyVisible', hostBundleName: string, observerCallback: Callback&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;): void
 
 订阅通知卡片可见的事件。使用callback异步回调。
 
-​触发通知卡片可见场景为：调用[notifyVisibleForms](js-apis-app-form-formHost-sys.md#notifyvisibleforms)接口通知对应卡片可见性变更为可见状态。
+​触发通知卡片可见场景为：调用[notifyVisibleForms](js-apis-app-form-formHost-sys.md#formhostnotifyvisibleforms)接口通知对应卡片可见性变更为可见状态。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
 
@@ -830,13 +830,13 @@ let callback = (data: formInfo.RunningFormInfo[]) => {
 formObserver.on('notifyVisible', bundleName, callback);
 ```
 
-## onNotifyVisible<sup>23+</sup>
+## formObserver.onNotifyVisible<sup>23+</sup>
 
 onNotifyVisible(hostBundleName: string, observerCallback: Callback\<Array\<formInfo.RunningFormInfo\>\>): void
 
 订阅通知卡片可见的事件。使用callback异步回调。
 
-触发通知卡片可见场景为：调用[notifyVisibleForms](js-apis-app-form-formHost-sys.md#notifyvisibleforms)接口通知对应卡片可见性变更为可见状态。
+触发通知卡片可见场景为：调用[notifyVisibleForms](js-apis-app-form-formHost-sys.md#formhostnotifyvisibleforms)接口通知对应卡片可见性变更为可见状态。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
 
@@ -894,7 +894,7 @@ try {
 }
 ```
 
-## off('notifyVisible')
+## formObserver.off('notifyVisible')
 
  off(type: 'notifyVisible', hostBundleName?: string, observerCallback?: Callback&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;): void
 
@@ -947,7 +947,7 @@ formObserver.off('notifyVisible', bundleName, callback);
 > on('notifyVisible', bundleName, callback)与off('notifyVisible', bundleName, callback)相对应；
 > 订阅（on）只能由自己对应的取消订阅接口（off）取消。
 
-## offNotifyVisible<sup>23+</sup>
+## formObserver.offNotifyVisible<sup>23+</sup>
 
 offNotifyVisible(hostBundleName?: string, observerCallback?: Callback\<Array\<formInfo.RunningFormInfo\>\>): void
 
@@ -955,8 +955,8 @@ offNotifyVisible(hostBundleName?: string, observerCallback?: Callback\<Array\<fo
 
 > **说明：**
 >
-> - [onNotifyVisible](#onnotifyvisible23)与[offNotifyVisible](#offnotifyvisible23)相对应。
-> - [onNotifyVisible](#onnotifyvisible23-1)与[offNotifyVisible](#offnotifyvisible23)相对应。
+> - [onNotifyVisible](#formobserveronnotifyvisible23)与[offNotifyVisible](#formobserveroffnotifyvisible23)相对应。
+> - [onNotifyVisible](#formobserveronnotifyvisible23-1)与[offNotifyVisible](#formobserveroffnotifyvisible23)相对应。
 > - 订阅（onNotifyVisible）只能由自己对应的取消订阅接口（offNotifyVisible）取消。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
@@ -1012,13 +1012,13 @@ try {
 }
 ```
 
-## on('notifyInvisible')
+## formObserver.on('notifyInvisible')
 
  on(type: 'notifyInvisible', observerCallback: Callback&lt;Array&lt;formInfo.RunningFormInfo&gt;>): void
 
 订阅通知卡片不可见的事件。使用callback异步回调。
 
-​触发通知卡片不可见场景为：调用[notifyInvisibleForms](js-apis-app-form-formHost-sys.md#notifyinvisibleforms)接口通知对应卡片可见性变更为不可见状态。
+​触发通知卡片不可见场景为：调用[notifyInvisibleForms](js-apis-app-form-formHost-sys.md#formhostnotifyinvisibleforms)接口通知对应卡片可见性变更为不可见状态。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
 
@@ -1059,13 +1059,13 @@ formObserver.on('notifyInvisible', callback);
 ```
 
 
-## onNotifyInvisible<sup>23+</sup>
+## formObserver.onNotifyInvisible<sup>23+</sup>
 
  onNotifyInvisible(observerCallback: Callback\<Array\<formInfo.RunningFormInfo\>\>): void
 
 订阅通知卡片不可见的事件。使用callback异步回调。
 
-触发通知卡片不可见场景为：调用[notifyInvisibleForms](js-apis-app-form-formHost-sys.md#notifyinvisibleforms)接口通知对应卡片可见性变更为不可见状态。
+触发通知卡片不可见场景为：调用[notifyInvisibleForms](js-apis-app-form-formHost-sys.md#formhostnotifyinvisibleforms)接口通知对应卡片可见性变更为不可见状态。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
 
@@ -1121,13 +1121,13 @@ try {
 }
 ```
 
-## on('notifyInvisible')
+## formObserver.on('notifyInvisible')
 
  on(type: 'notifyInvisible', hostBundleName: string, observerCallback: Callback&lt;Array&lt;formInfo.RunningFormInfo&gt;>): void
 
 订阅通知卡片不可见的事件。使用callback异步回调。
 
-​触发通知卡片不可见场景为：调用[notifyInvisibleForms](js-apis-app-form-formHost-sys.md#notifyinvisibleforms)接口通知对应卡片可见性变更为不可见状态。
+​触发通知卡片不可见场景为：调用[notifyInvisibleForms](js-apis-app-form-formHost-sys.md#formhostnotifyinvisibleforms)接口通知对应卡片可见性变更为不可见状态。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
 
@@ -1170,13 +1170,13 @@ let callback = (data: formInfo.RunningFormInfo[]) => {
 formObserver.on('notifyInvisible', bundleName, callback);
 ```
 
-## onNotifyInvisible<sup>23+</sup>
+## formObserver.onNotifyInvisible<sup>23+</sup>
 
 onNotifyInvisible(hostBundleName: string, observerCallback: Callback\<Array\<formInfo.RunningFormInfo\>\>): void
 
 订阅通知卡片不可见的事件。使用callback异步回调。
 
-触发通知卡片不可见场景为：调用[notifyInvisibleForms](js-apis-app-form-formHost-sys.md#notifyinvisibleforms)接口通知对应卡片可见性变更为不可见状态。
+触发通知卡片不可见场景为：调用[notifyInvisibleForms](js-apis-app-form-formHost-sys.md#formhostnotifyinvisibleforms)接口通知对应卡片可见性变更为不可见状态。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
 
@@ -1233,7 +1233,7 @@ try {
 }
 ```
 
-## off('notifyInvisible')
+## formObserver.off('notifyInvisible')
 
  off(type: 'notifyInvisible', hostBundleName?: string, observerCallback?: Callback&lt;Array&lt;formInfo.RunningFormInfo>&gt;): void
 
@@ -1287,7 +1287,7 @@ formObserver.off('notifyInvisible', bundleName, callback);
 > 订阅（on）只能由自己对应的取消订阅接口（off）取消。
 
 
-## offNotifyInvisible<sup>23+</sup>
+## formObserver.offNotifyInvisible<sup>23+</sup>
 
 offNotifyInvisible(hostBundleName?: string, observerCallback?: Callback\<Array\<formInfo.RunningFormInfo\>\>): void
 
@@ -1295,8 +1295,8 @@ offNotifyInvisible(hostBundleName?: string, observerCallback?: Callback\<Array\<
 
 > **说明：**
 >
-> - [onNotifyInvisible](#onnotifyinvisible23)与[offNotifyInvisible](#offnotifyinvisible23)相对应。
-> - [onNotifyInvisible](#onnotifyinvisible23-1)与[offNotifyInvisible](#offnotifyinvisible23)相对应。
+> - [onNotifyInvisible](#formobserveronnotifyinvisible23)与[offNotifyInvisible](#formobserveroffnotifyinvisible23)相对应。
+> - [onNotifyInvisible](#formobserveronnotifyinvisible23-1)与[offNotifyInvisible](#formobserveroffnotifyinvisible23)相对应。
 > - 订阅（onNotifyInvisible）只能由自己对应的取消订阅接口（offNotifyInvisible）取消。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
@@ -1354,7 +1354,7 @@ try {
 }
 ```
 
-## getRunningFormInfos
+## formObserver.getRunningFormInfos
 
 getRunningFormInfos(callback: AsyncCallback&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;, hostBundleName?: string): void
 
@@ -1437,7 +1437,7 @@ try {
 }
 ```
 
-## getRunningFormInfos<sup>11+</sup>
+## formObserver.getRunningFormInfos<sup>11+</sup>
 
 getRunningFormInfos(callback: AsyncCallback&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;, isUnusedIncluded: boolean, hostBundleName?: string): void
 
@@ -1519,7 +1519,7 @@ try {
 }
 ```
 
-## getRunningFormInfos
+## formObserver.getRunningFormInfos
 
 getRunningFormInfos(hostBundleName?: string):  Promise&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;
 
@@ -1597,7 +1597,7 @@ try {
 }
 ```
 
-## getRunningFormInfos<sup>11+</sup>
+## formObserver.getRunningFormInfos<sup>11+</sup>
 
 getRunningFormInfos(isUnusedIncluded: boolean, hostBundleName?: string):  Promise&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;
 
@@ -1676,7 +1676,7 @@ try {
 }
 ```
 
-## getRunningFormInfosByFilter
+## formObserver.getRunningFormInfosByFilter
 
 getRunningFormInfosByFilter(formProviderFilter: formInfo.FormProviderFilter): Promise&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;
 
@@ -1774,7 +1774,7 @@ try {
 }
 ```
 
-## getRunningFormInfosByFilter
+## formObserver.getRunningFormInfosByFilter
 
 getRunningFormInfosByFilter(formProviderFilter: formInfo.FormProviderFilter, callback: AsyncCallback&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;): void
 
@@ -1872,7 +1872,7 @@ try {
 }
 ```
 
-## getRunningFormInfoById
+## formObserver.getRunningFormInfoById
 
 getRunningFormInfoById(formId: string): Promise&lt;formInfo.RunningFormInfo&gt;
 
@@ -1953,7 +1953,7 @@ try {
 }
 ```
 
-## getRunningFormInfoById<sup>11+</sup>
+## formObserver.getRunningFormInfoById<sup>11+</sup>
 
 getRunningFormInfoById(formId: string, isUnusedIncluded: boolean): Promise&lt;formInfo.RunningFormInfo&gt;
 
@@ -2039,7 +2039,7 @@ try {
 }
 ```
 
-## getRunningFormInfoById
+## formObserver.getRunningFormInfoById
 
 getRunningFormInfoById(formId: string, callback: AsyncCallback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -2126,7 +2126,7 @@ try {
 }
 ```
 
-## getRunningFormInfoById<sup>11+</sup>
+## formObserver.getRunningFormInfoById<sup>11+</sup>
 
 getRunningFormInfoById(formId: string, isUnusedIncluded: boolean, callback: AsyncCallback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -2214,7 +2214,7 @@ try {
 }
 ```
 
-## on('router')<sup>11+</sup>
+## formObserver.on('router')<sup>11+</sup>
 
  on(type: 'router', observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -2255,7 +2255,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('router', callback);
 ```
 
-## onRouter<sup>23+</sup>
+## formObserver.onRouter<sup>23+</sup>
 
 onRouter(observerCallback: Callback\<formInfo.RunningFormInfo\>): void
 
@@ -2315,7 +2315,7 @@ try {
 }
 ```
 
-## on('router')<sup>11+</sup>
+## formObserver.on('router')<sup>11+</sup>
 
  on(type: 'router', hostBundleName: string, observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -2358,7 +2358,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('router', hostBundleName, callback);
 ```
 
-## onRouter<sup>23+</sup>
+## formObserver.onRouter<sup>23+</sup>
 
 onRouter(hostBundleName: string, observerCallback: Callback\<formInfo.RunningFormInfo\>): void
 
@@ -2419,7 +2419,7 @@ try {
 }
 ```
 
-## off('router')<sup>11+</sup>
+## formObserver.off('router')<sup>11+</sup>
 
  off(type: 'router', hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -2462,7 +2462,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.off('router', hostBundleName, callback);
 ```
 
-## offRouter<sup>23+</sup>
+## formObserver.offRouter<sup>23+</sup>
 
 offRouter(hostBundleName?: string, observerCallback?: Callback\<formInfo.RunningFormInfo\>): void
 
@@ -2470,8 +2470,8 @@ offRouter(hostBundleName?: string, observerCallback?: Callback\<formInfo.Running
 
 > **说明：**
 >
-> - [onRouter](#onrouter23)与[offRouter](#offrouter23)相对应。
-> - [onRouter](#onrouter23-1)与[offRouter](#offrouter23)相对应。
+> - [onRouter](#formobserveronrouter23)与[offRouter](#formobserveroffrouter23)相对应。
+> - [onRouter](#formobserveronrouter23-1)与[offRouter](#formobserveroffrouter23)相对应。
 > - 订阅（onRouter）只能由自己对应的取消订阅接口（offRouter）取消。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
@@ -2529,7 +2529,7 @@ try {
 }
 ```
 
-## on('message')<sup>11+</sup>
+## formObserver.on('message')<sup>11+</sup>
 
  on(type: 'message', observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -2572,7 +2572,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('message', callback);
 ```
 
-## onMessage<sup>23+</sup>
+## formObserver.onMessage<sup>23+</sup>
 
 onMessage(observerCallback: Callback\<formInfo.RunningFormInfo\>): void
 
@@ -2632,7 +2632,7 @@ try {
 }
 ```
 
-## on('message')<sup>11+</sup>
+## formObserver.on('message')<sup>11+</sup>
 
  on(type: 'message', hostBundleName: string, observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -2675,7 +2675,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('message', hostBundleName, callback);
 ```
 
-## onMessage<sup>23+</sup>
+## formObserver.onMessage<sup>23+</sup>
 
 onMessage(hostBundleName: string, observerCallback: Callback\<formInfo.RunningFormInfo\>): void
 
@@ -2736,7 +2736,7 @@ try {
 }
 ```
 
-## off('message')<sup>11+</sup>
+## formObserver.off('message')<sup>11+</sup>
 
  off(type: 'message', hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -2779,7 +2779,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.off('message', hostBundleName, callback);
 ```
 
-## offMessage<sup>23+</sup>
+## formObserver.offMessage<sup>23+</sup>
 
 offMessage(hostBundleName?: string, observerCallback?: Callback<formInfo.RunningFormInfo>): void
 
@@ -2787,8 +2787,8 @@ offMessage(hostBundleName?: string, observerCallback?: Callback<formInfo.Running
 
 > **说明：**
 >
-> - [onMessage](#onmessage23)与[offMessage](#offmessage23)相对应。
-> - [onMessage](#onmessage23-1)与[offMessage](#offmessage23)相对应。
+> - [onMessage](#formobserveronmessage23)与[offMessage](#formobserveroffmessage23)相对应。
+> - [onMessage](#formobserveronmessage23-1)与[offMessage](#formobserveroffmessage23)相对应。
 > - 订阅（onMessage）只能由自己对应的取消订阅接口（offMessage）取消。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
@@ -2846,7 +2846,7 @@ try {
 }
 ```
 
-## on('call')<sup>11+</sup>
+## formObserver.on('call')<sup>11+</sup>
 
  on(type: 'call', observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -2887,7 +2887,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('call', callback);
 ```
 
-## onCall<sup>23+</sup>
+## formObserver.onCall<sup>23+</sup>
 
 onCall(observerCallback: Callback\<formInfo.RunningFormInfo\>): void
 
@@ -2945,7 +2945,7 @@ try {
 }
 ```
 
-## on('call')<sup>11+</sup>
+## formObserver.on('call')<sup>11+</sup>
 
  on(type: 'call', hostBundleName: string, observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -2988,7 +2988,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('call', hostBundleName, callback);
 ```
 
-## onCall<sup>23+</sup>
+## formObserver.onCall<sup>23+</sup>
 
 onCall(hostBundleName: string, observerCallback: Callback\<formInfo.RunningFormInfo\>): void
 
@@ -3047,7 +3047,7 @@ try {
 }
 ```
 
-## off('call')<sup>11+</sup>
+## formObserver.off('call')<sup>11+</sup>
 
  off(type: 'call', hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -3090,7 +3090,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.off('call', hostBundleName, callback);
 ```
 
-## offCall<sup>23+</sup>
+## formObserver.offCall<sup>23+</sup>
 
 offCall(hostBundleName?: string, observerCallback?: Callback\<formInfo.RunningFormInfo\>): void
 
@@ -3098,8 +3098,8 @@ offCall(hostBundleName?: string, observerCallback?: Callback\<formInfo.RunningFo
 
 > **说明：**
 >
-> - [onCall](#oncall23)与[offCall](#offcall23)相对应。
-> - [onCall](#oncall23-1)与[offCall](#offcall23)相对应。
+> - [onCall](#formobserveroncall23)与[offCall](#formobserveroffcall23)相对应。
+> - [onCall](#formobserveroncall23-1)与[offCall](#formobserveroffcall23)相对应。
 > - 订阅（onCall）只能由自己对应的取消订阅接口（offCall）取消。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING

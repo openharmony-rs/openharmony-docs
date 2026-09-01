@@ -50,7 +50,7 @@ startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -176,7 +176,7 @@ startAbilityByType(type: string, wantParam: Record&lt;string, Object&gt;, abilit
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -229,7 +229,7 @@ struct SubIndex {
               'email': [encodeURI('xxx@example.com'),
                 encodeURI('xxx@example.com')], // 收件人邮箱地址，多值以逗号分隔，对数组内容使用encodeURI()方法进行url编码
               'cc': [encodeURI('xxx@example.com'),
-                encodeURI('xxx@example.com')], // 抄收人邮箱地址，多值以逗号分隔，对数组内容使用encodeURI()方法进行url编码
+                encodeURI('xxx@example.com')], // 抄送人邮箱地址，多值以逗号分隔，对数组内容使用encodeURI()方法进行url编码
               'bcc': [encodeURI('xxx@example.com'),
                 encodeURI('xxx@example.com')], // 密送人邮箱地址，多值以逗号分隔，对数组内容使用encodeURI()方法进行url编码
               'subject': encodeURI('邮件主题'), // 邮件主题，对内容使用encodeURI()方法进行url编码
@@ -277,7 +277,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 

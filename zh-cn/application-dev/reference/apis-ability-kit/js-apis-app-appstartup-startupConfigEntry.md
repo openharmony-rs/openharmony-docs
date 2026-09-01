@@ -63,14 +63,14 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
       } else {
         hilog.info(0x0000, 'testTag', `onCompletedCallback: success.`);
       }
-    }
+    };
     let startupListener: StartupListener = {
       'onCompleted': onCompletedCallback
-    }
+    };
     let config: StartupConfig = {
       'timeoutMs': 10000,
       'startupListener': startupListener
-    }
+    };
     return config;
   }
 }
@@ -80,7 +80,7 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
 
 onRequestCustomMatchRule(want: Want): string
 
-若该AbilityStage对应的HAP中启动框架配置文件中[定义了启动框架配置](../../application-models/app-startup.md#定义启动参数配置)，则该回调在[AbilityStage.onCreate](js-apis-app-ability-abilityStage.md#oncreate)前、[StartupConfigEntry.onConfig](#onconfig)之后触发。
+若该AbilityStage对应HAP的启动框架配置文件中[定义了启动框架配置](../../application-models/app-startup.md#定义启动参数配置)，则该回调在[AbilityStage.onCreate](js-apis-app-ability-abilityStage.md#oncreate)前、[StartupConfigEntry.onConfig](#onconfig)之后触发。
 
 开发者可以在该回调中，根据调用方传入启动[UIAbility](js-apis-app-ability-uiAbility.md)的Want中的不同参数返回不同的自定义匹配规则。启动框架会将其与启动任务配置的matchRules中customization字段匹配。若匹配成功，任务将在自动模式执行。详细匹配规则请参考[添加任务匹配规则](../../application-models/app-startup.md#添加任务匹配规则)章节。
 

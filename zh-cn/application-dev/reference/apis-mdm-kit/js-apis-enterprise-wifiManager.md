@@ -14,7 +14,7 @@
 - 管理企业设备的Wi-Fi开关，统一网络策略
 
 **功能收益**：
-- 提高企业网络管理效率，减少IT运维成本
+- 提高企业网络管理效率，减少IT（Information Technology，信息技术）运维成本
 - 确保设备仅连接安全的Wi-Fi网络，降低安全风险
 - 实现网络策略统一管控，满足企业合规要求
 
@@ -78,7 +78,7 @@ import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -131,7 +131,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 let profile: wifiManager.WifiProfile = {
@@ -157,7 +157,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 let profile: wifiManager.WifiProfile = {
@@ -184,7 +184,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 let profile: wifiManager.WifiProfile = {
@@ -211,7 +211,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 let profile: wifiManager.WifiProfile = {
@@ -237,7 +237,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 let profile: wifiManager.WifiProfile = {
@@ -263,7 +263,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // EAP-PEAP 配置示例
@@ -279,7 +279,7 @@ let profile: wifiManager.WifiProfile = {
     password: 'passwd',
     anonymousIdentity: '',
     caPath: '/system/etc/security/caCerts/company-ca.pem',
-    caCertAliases:  '',
+    caCertAliases: '',
     clientCertAliases: '',
     certEntry: new Uint8Array(),
     certPassword: '',
@@ -306,7 +306,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // EAP-TLS 配置示例
@@ -349,7 +349,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // EAP-TTLS 配置示例
@@ -392,7 +392,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // EAP-SIM 配置示例
@@ -408,7 +408,7 @@ let profile: wifiManager.WifiProfile = {
     password:'',
     anonymousIdentity: '',
     caPath: '',
-    caCertAliases:  'carrier-root-ca',
+    caCertAliases: 'carrier-root-ca',
     clientCertAliases: '',
     certEntry: new Uint8Array(),
     certPassword: '',
@@ -436,7 +436,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 let profile: wifiManager.WifiProfile = {
@@ -580,9 +580,11 @@ try {
 
 ## wifiManager.getAllowedWifiList<sup>19+</sup>
 
-getAllowedWifiList(admin: Want | null): Array&lt;WifiAccessInfo&gt;
+getAllowedWifiList(admin: Want): Array&lt;WifiAccessInfo&gt;
 
 获取Wi-Fi允许名单。
+
+本接口通过传入Want查询对应企业设备管理应用设置的策略，如需查询实际生效的策略，请使用[wifiManager.getAllowedWifiList](#wifimanagergetallowedwifilist)接口。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_WIFI
 
@@ -595,7 +597,7 @@ getAllowedWifiList(admin: Want | null): Array&lt;WifiAccessInfo&gt;
 
 | 参数名 | 类型                                                    | 必填 | 说明                                   |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。|
 
 **返回值：**
 
@@ -632,6 +634,56 @@ try {
 }
 ```
 
+
+## wifiManager.getAllowedWifiList
+
+getAllowedWifiList(admin: Want | null): Array&lt;WifiAccessInfo&gt;
+
+获取Wi-Fi允许名单。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_WIFI
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                                    | 必填 | 说明                                   |
+| ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，传入Want时查询对应企业设备管理应用设置的策略，传入null时查询实际生效的策略。|
+
+**返回值：**
+
+| 类型                               | 说明                      |
+| ---------------------------------- | ------------------------- |
+| Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt; | Wi-Fi允许名单数组。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { wifiManager } from '@kit.MDMKit';
+
+try {
+  // 参数需根据实际情况进行替换
+  let result: Array<wifiManager.WifiAccessInfo> = wifiManager.getAllowedWifiList(null);
+  console.info(`Succeeded in getting allowed Wi-Fi list. Result: ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get allowed Wi-Fi list. Code: ${err.code}, message: ${err.message}`);
+}
+```
 ## wifiManager.addDisallowedWifiList<sup>19+</sup>
 
 addDisallowedWifiList(admin: Want, list: Array&lt;WifiAccessInfo&gt;): void
@@ -750,9 +802,11 @@ try {
 
 ## wifiManager.getDisallowedWifiList<sup>19+</sup>
 
-getDisallowedWifiList(admin: Want | null): Array&lt;WifiAccessInfo&gt;
+getDisallowedWifiList(admin: Want): Array&lt;WifiAccessInfo&gt;
 
 获取Wi-Fi禁用名单。
+
+本接口通过传入Want查询对应企业设备管理应用设置的策略，如需查询实际生效的策略，请使用[wifiManager.getDisallowedWifiList](#wifimanagergetdisallowedwifilist)接口。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_WIFI
 
@@ -765,7 +819,7 @@ getDisallowedWifiList(admin: Want | null): Array&lt;WifiAccessInfo&gt;
 
 | 参数名 | 类型                                                    | 必填 | 说明                                   |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。|
 
 **返回值：**
 
@@ -802,6 +856,56 @@ try {
 }
 ```
 
+
+## wifiManager.getDisallowedWifiList
+
+getDisallowedWifiList(admin: Want | null): Array&lt;WifiAccessInfo&gt;
+
+获取Wi-Fi禁用名单。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_WIFI
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                                    | 必填 | 说明                                   |
+| ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，传入Want时查询对应企业设备管理应用设置的策略，传入null时查询实际生效的策略。|
+
+**返回值：**
+
+| 类型                               | 说明                      |
+| ---------------------------------- | ------------------------- |
+| Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt; | Wi-Fi禁用名单数组。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { wifiManager } from '@kit.MDMKit';
+
+try {
+  // 参数需根据实际情况进行替换
+  let result: Array<wifiManager.WifiAccessInfo> = wifiManager.getDisallowedWifiList(null);
+  console.info(`Succeeded in getting disallowed Wi-Fi list. Result: ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get disallowed Wi-Fi list. Code: ${err.code}, message: ${err.message}`);
+}
+```
 ## wifiManager.turnOnWifi<sup>20+</sup>
 
 turnOnWifi(admin: Want, isForce: boolean): void
@@ -917,7 +1021,11 @@ try {
 
 Wi-Fi的SSID和BSSID信息。
 
+设置允许名单时，SSID和BSSID需要同时满足，才可以连接该Wi-Fi；设置禁用名单时，SSID和BSSID满足其中一个，就不能连接该Wi-Fi。
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Table: 10%; 10%; 10%; 10%; 60%-->
 | 名称          | 类型                             | 只读 | 可选 | 说明                                                        |
@@ -931,7 +1039,7 @@ Wi-Fi配置信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称          | 类型                              | 只读 | 可选 | 说明                                                        |
 | ------------- | ----------------------------------| ---- | ----| ------------------------------------------------------- |
@@ -955,7 +1063,7 @@ Wi-Fi配置信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称                      | 值   | 说明                                                         |
 | ------------------------- | ---- | ------------------------------------------------------------ |
@@ -976,6 +1084,8 @@ Wi-Fi配置信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 
 
 | 名称    | 值   | 说明           |
@@ -989,6 +1099,8 @@ Wi-Fi配置信息。
 IP配置信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 
 
@@ -1005,6 +1117,8 @@ IP配置信息。
 可扩展身份验证协议配置信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 
 
@@ -1036,6 +1150,8 @@ IP配置信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 
 
 | 名称           | 值   | 说明             |
@@ -1055,6 +1171,8 @@ IP配置信息。
 表示第二阶段认证方式的枚举。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 
 

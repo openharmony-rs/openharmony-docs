@@ -35,20 +35,26 @@
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_GetPipelineState(OH_AudioSuitePipeline* audioSuitePipeline, OH_AudioSuite_PipelineState* pipelineState)](#oh_audiosuiteengine_getpipelinestate) | - | 获取当前管线的状态。 |
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_RenderFrame(OH_AudioSuitePipeline* audioSuitePipeline, void* audioData, int32_t requestFrameSize, int32_t* responseSize, bool* finishedFlag)](#oh_audiosuiteengine_renderframe) | - | 应用调用此接口获取管线处理后的音频数据（针对单输出效果节点）。 |
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_MultiRenderFrame(OH_AudioSuitePipeline* audioSuitePipeline, OH_AudioDataArray* audioDataArray, int32_t* responseSize, bool* finishedFlag)](#oh_audiosuiteengine_multirenderframe) | - | 渲染该管线，获取管线处理后的音频数据。针对多输出效果节点，比如包含音源分离节点的管线，audioDataArray的大小需与效果节点的输出数量一一对应（例如：音源分离节点需两个：第1个为人声，第2个为背景声）。 |
+|<!--DelRow--> [int32_t OH_AudioSuiteEngine_MetaRenderFrame(OH_AudioSuitePipeline* audioSuitePipeline, OH_AudioSuite_MetaFrame* metaFrame, int32_t* responseAudioSize, int32_t* responseMetaSize, bool* finishedFlag)](#oh_audiosuiteengine_metarenderframe) | - | 应用程序使用此接口进行音频数据和元数据处理。应用需在metaFrame结构体中指定audioData和metaData指针及其对应的大小（AudioDataSize和metaDataSize）。<br> 处理完成后，实际输出的数据大小将通过responseAudioSize和responseMetaSize返回。 |
 | [OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_Create(OH_AudioNodeBuilder** builder)](#oh_audiosuitenodebuilder_create) | - | 获取一个音频编创节点构造器，用于配置并创建音频节点。构建器可复用，但若新节点属性与之前不同，必须使用[OH_AudioSuiteNodeBuilder_Reset](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_reset)重置。 |
 | [OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_Destroy(OH_AudioNodeBuilder* builder)](#oh_audiosuitenodebuilder_destroy) | - | 销毁一个音频编创节点构造器。使用完构造器后必须调用此函数进行销毁。 |
 | [OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_Reset(OH_AudioNodeBuilder* builder)](#oh_audiosuitenodebuilder_reset) | - | 重置一个音频编创节点构造器，同时将之前使用接口设置参数重置。若需复用构建器创建属性不同的新节点，必须调用此接口清除所有属性（如节点类型等）。 |
 | [OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_SetNodeType(OH_AudioNodeBuilder* builder, OH_AudioNode_Type type)](#oh_audiosuitenodebuilder_setnodetype) | - | 设置当前节点构造器需要构造的节点类型。创建节点时会根据类型验证其他参数，所有节点类型的创建均需设置此属性。 |
+|<!--DelRow--> [int32_t OH_AudioSuiteNodeBuilderSystem_SetNodeType(OH_AudioNodeBuilder* builder, OH_AudioSuite_SystemNodeType type)](#oh_audiosuitenodebuildersystem_setnodetype) | - | 设置要由构建器创建的音频节点类型。 |
 | [OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_SetFormat(OH_AudioNodeBuilder* builder, OH_AudioFormat audioFormat)](#oh_audiosuitenodebuilder_setformat) | - | 配置输入/输出节点的音频格式。其余节点不配置，且只能在创建节点之前使用。对于输入节点，此函数可使应用指定写入数据的音频格式；<br> 对于输出节点，此函数可使应用指定其期望获取数据的音频格式；<br> 对于其他类型的节点则不支持调用此函数进行音频格式设置。 |
+|<!--DelRow--> [int32_t OH_AudioSuiteNodeBuilderSystem_SetFormat(OH_AudioNodeBuilder* builder, OH_AudioSuite_SystemNodeFormat audioFormat)](#oh_audiosuitenodebuildersystem_setformat) | - | 设置节点支持的音频格式。 |
 | [typedef int32_t (\*OH_InputNode_RequestDataCallback)(OH_AudioNode* audioNode, void* userData, void* audioData, int32_t audioDataSize, bool* finished)](#oh_inputnode_requestdatacallback) | OH_InputNode_RequestDataCallback | 定义输入节点请求数据的回调函数。 |
 | [OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_SetRequestDataCallback(OH_AudioNodeBuilder* builder, OH_InputNode_RequestDataCallback callback, void* userData)](#oh_audiosuitenodebuilder_setrequestdatacallback) | - | 配置当前输入节点构造器的写入音频数据回调函数。 |
+|<!--DelRow--> [typedef int32_t (\*OH_InputNode_RequestMetaDataCallback)(OH_AudioNode* audioNode, void* userData, OH_AudioSuite_MetaFrame* metaFrame, int32_t* responseMetaDataSize, bool* finished)](#oh_inputnode_requestmetadatacallback) | OH_InputNode_RequestMetaDataCallback | 请求元数据的回调函数，仅[INPUT_NODE_TYPE_DEFAULT](capi-native-audio-suite-base-h.md#oh_audionode_type)支持此设置。每当应用程序或用户调用[OH_AudioSuiteEngine_MetaRenderFrame](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_metarenderframe)时，则会触发一次回调。 |
+|<!--DelRow--> [int32_t OH_AudioSuiteNodeBuilder_SetRequestMetaDataCallback(OH_AudioNodeBuilder* builder, OH_InputNode_RequestMetaDataCallback callback, void* userData)](#oh_audiosuitenodebuilder_setrequestmetadatacallback) | - | 配置当前输入节点构造器的写入音频数据和元数据回调函数。只有[INPUT_NODE_TYPE_DEFAULT](capi-native-audio-suite-base-h.md#oh_audionode_type)支持该设置。 |
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_CreateNode(OH_AudioSuitePipeline* audioSuitePipeline, OH_AudioNodeBuilder* builder, OH_AudioNode** audioNode)](#oh_audiosuiteengine_createnode) | - | 根据音频编创构造器在音频管线中构造一个音频节点。当执行此函数，系统会基于builder中设置的节点类型校验参数的合法性。<br> 应用可以通过返回值确定错误发生的原因。 |
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_DestroyNode(OH_AudioNode* audioNode)](#oh_audiosuiteengine_destroynode) | - | 销毁一个音频编创节点。节点是否可以被销毁取决于它所属管线的状态，如果管线不处于[OH_AudioSuite_PipelineState](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelinestate).AUDIOSUITE_PIPELINE_STOPPED停止状态，而节点处于管线处理路径中，将销毁失败。 |
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_GetNodeBypassStatus(OH_AudioNode* audioNode, bool* bypassStatus)](#oh_audiosuiteengine_getnodebypassstatus) | - | 获取当前节点的效果使能状态。仅效果节点支持获取。<br> 若对输入或输出节点调用此接口，将返回AUDIOSUITE_ERROR_INVALID_PARAM错误码。 |
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_BypassEffectNode(OH_AudioNode* audioNode, bool bypass)](#oh_audiosuiteengine_bypasseffectnode) | - | 设置当前节点的效果使能状态（仅效果节点支持）。当bypass为true时，效果节点仅透传数据，不进行任何效果处理。<br> 当bypass为false时，效果节点进行对应的效果处理。 |
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_SetAudioFormat(OH_AudioNode* audioNode, OH_AudioFormat *audioFormat)](#oh_audiosuiteengine_setaudioformat) | - | 配置输入/输出节点的音频格式，在创建节点之后使用，只有输入和输出节点能够设置。输入节点指定音源格式，输出节点指定目标格式。 |
-| [OH_AudioSuite_Result OH_AudioSuiteEngine_ConnectNodes(OH_AudioNode* sourceAudioNode, OH_AudioNode* destAudioNode)](#oh_audiosuiteengine_connectnodes) | - | 连接两个节点，数据流走向从sourceAudioNode到destAudioNode。连接节点将改变管道拓扑，可能导致部分数据丢失，建议在引擎停止状态下执行此操作。<br> 节点连接顺序：输入节点 -> 效果节点 -> 输出节点。 |
-| [OH_AudioSuite_Result OH_AudioSuiteEngine_DisconnectNodes(OH_AudioNode* sourceAudioNode, OH_AudioNode* destAudioNode)](#oh_audiosuiteengine_disconnectnodes) | - | 断开两个节点的连接。此操作将改变管道拓扑并可能导致数据丢失，建议在引擎停止状态下执行。 |
+|<!--DelRow--> [int32_t OH_AudioSuiteEngineSystem_SetAudioFormat(OH_AudioNode* audioNode, OH_AudioSuite_SystemNodeFormat* audioFormat)](#oh_audiosuiteenginesystem_setaudioformat) | - | 设置输入输出节点的音频格式，指定音频源的音频格式输入节点，或为输出节点指定目标音频格式。 |
+| [OH_AudioSuite_Result OH_AudioSuiteEngine_ConnectNodes(OH_AudioNode* sourceAudioNode, OH_AudioNode* destAudioNode)](#oh_audiosuiteengine_connectnodes) | - | 连接两个节点，数据流走向从sourceAudioNode到destAudioNode。连接节点将改变管线拓扑，可能导致部分数据丢失，建议在引擎停止状态下执行此操作。<br> 节点连接顺序：输入节点 -> 效果节点 -> 输出节点。 |
+| [OH_AudioSuite_Result OH_AudioSuiteEngine_DisconnectNodes(OH_AudioNode* sourceAudioNode, OH_AudioNode* destAudioNode)](#oh_audiosuiteengine_disconnectnodes) | - | 断开两个节点的连接。此操作将改变管线拓扑并可能导致数据丢失，建议在引擎停止状态下执行。 |
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_SetEqualizerFrequencyBandGains(OH_AudioNode* audioNode, OH_EqualizerFrequencyBandGains frequencyBandGains)](#oh_audiosuiteengine_setequalizerfrequencybandgains) | - | 设置当前均衡器节点的频段增益效果。 |
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_GetEqualizerFrequencyBandGains(OH_AudioNode* audioNode, OH_EqualizerFrequencyBandGains* frequencyBandGains)](#oh_audiosuiteengine_getequalizerfrequencybandgains) | - | 获取当前均衡器节点的频段增益效果。 |
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_SetSoundFieldType(OH_AudioNode* audioNode, OH_SoundFieldType soundFieldType)](#oh_audiosuiteengine_setsoundfieldtype) | - | 设置声场效果节点的配置参数。 |
@@ -71,6 +77,9 @@
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_SetGeneralVoiceChangeType(OH_AudioNode* audioNode, OH_AudioSuite_GeneralVoiceChangeType type)](#oh_audiosuiteengine_setgeneralvoicechangetype) | - | 设置通用变声节点的配置参数。 |
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_GetGeneralVoiceChangeType(OH_AudioNode* audioNode, OH_AudioSuite_GeneralVoiceChangeType* type)](#oh_audiosuiteengine_getgeneralvoicechangetype) | - | 获取通用变声节点的配置参数。 |
 | [OH_AudioSuite_Result OH_AudioSuite_PrintInfo(OH_AudioSuiteEngine* audioSuiteEngine, OH_AudioSuitePipeline* audioSuitePipeline, int fd)](#oh_audiosuite_printinfo) | - | 打印AudioSuite运行时快照。 |
+|<!--DelRow--> [int32_t OH_AudioSuiteEngineSystem_SetNodeParam(OH_AudioNode* audioNode, uint8_t* param, uint32_t paramSize)](#oh_audiosuiteenginesystem_setnodeparam) | - | 设置系统节点的参数。 |
+|<!--DelRow--> [int32_t OH_AudioSuiteEngineSystem_GetNodeParam(OH_AudioNode* audioNode, uint8_t* param, uint32_t paramSize)](#oh_audiosuiteenginesystem_getnodeparam) | - | 获取系统节点的参数。 |
+|<!--DelRow--> [int32_t OH_AudioSuiteEngineSystem_GetNodeInOutSize(OH_AudioNode* audioNode, uint32_t* inSize, uint32_t* outSize)](#oh_audiosuiteenginesystem_getnodeinoutsize) | - | 获取系统节点的输入和输出帧大小。 |
 
 ## 函数说明
 
@@ -123,7 +132,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_Destroy(OH_AudioSuiteEngine* audioSuite
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>         AUDIOSUITE_ERROR_INVALID_PARAM：参数audioSuiteEngine为空指针。<br>         AUDIOSUITE_ERROR_INVALID_STATE：引擎已被去初始化、引擎未创建或未初始化引擎。<br>         AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>         AUDIOSUITE_ERROR_INVALID_PARAM：参数audioSuiteEngine为空指针。<br>         AUDIOSUITE_ERROR_INVALID_STATE：引擎已被去初始化、引擎未创建或引擎未初始化。<br>         AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_CreatePipeline()
 
@@ -143,7 +152,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_CreatePipeline(OH_AudioSuiteEngine* aud
 | -- | -- |
 | [OH_AudioSuiteEngine](capi-ohaudiosuite-oh-audiosuiteenginestruct.md)* audioSuiteEngine | 音频编创引擎句柄。通过[OH_AudioSuiteEngine_Create](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_create)获取句柄。 |
 | [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)** audioSuitePipeline | 音频编创管线句柄。 |
-| [OH_AudioSuite_PipelineWorkMode](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelineworkmode) workMode | 管线工作模式。<br> 1. AUDIOSUITE_PIPELINE_EDIT_MODE: 支持所有效果节点；<br> 2. AUDIOSUITE_PIPELINE_REALTIME_MODE：支持均衡器等节点。 |
+| [OH_AudioSuite_PipelineWorkMode](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelineworkmode) workMode | 管线工作模式。 |
 
 **返回：**
 
@@ -200,7 +209,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_StartPipeline(OH_AudioSuitePipeline* au
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>         AUDIOSUITE_ERROR_INVALID_PARAM：参数audioSuitePipeline为空指针。<br>         AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST：管线不存在或已经被销毁。<br>         AUDIOSUITE_ERROR_INVALID_STATE：管线已在运行或节点连接异常。<br>         可能的原因如下：<br>         1. 管线已经在运行状态；<br>         2. 当前管线中不存在输出类型节点；<br>         3. 起始节点不是输入类型节点。<br>         4. HOA输入节点未连接HOA空间渲染节点，或HOA空间渲染节点的前置节点不是HOA输入节点。<br>         AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>         AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>         AUDIOSUITE_ERROR_INVALID_PARAM：参数audioSuitePipeline为空指针。<br>         AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST：管线不存在或已经被销毁。<br>         AUDIOSUITE_ERROR_INVALID_STATE：管线已在运行或节点连接异常。<br>         可能的原因如下：<br>         1. 管线已经在运行状态；<br>         2. 当前管线中不存在输出类型节点；<br>         3. 起始节点不是输入类型节点。<br>         4. HOA（High-Order Ambisonics）音频格式的输入节点未连接HOA空间渲染节点，或HOA空间渲染节点的前置节点不是HOA格式的输入节点。<br>         AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>         AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_StopPipeline()
 
@@ -307,7 +316,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_MultiRenderFrame(OH_AudioSuitePipeline*
 | -- | -- |
 | [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | 音频编创管线句柄。通过[OH_AudioSuiteEngine_CreatePipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createpipeline)获取句柄。 |
 | [OH_AudioDataArray](capi-ohaudiosuite-oh-audiodataarray.md)* audioDataArray | 用户读取音频数据时所使用的数组指针，每个一维数组大小需一致。 |
-| int32_t* responseSize | 管线写入audioData的音频数据大小。系统会确保每个一维数组被填充的数据大小一致，单位为字节。 |
+| int32_t* responseSize | 管线写入audioDataArray的音频数据大小。系统会确保每个一维数组被填充的数据大小一致，单位为字节（Byte）。 |
 | bool* finishedFlag | 标记当前管线是否渲染完成。 |
 
 **返回：**
@@ -315,6 +324,37 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_MultiRenderFrame(OH_AudioSuitePipeline*
 | 类型 | 说明 |
 | -- | -- |
 | [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>         AUDIOSUITE_ERROR_INVALID_PARAM：参数为空指针或无效值。<br>         可能的原因如下：<br>         1. 参数audioSuitePipeline为空指针；<br>         2. 参数audioDataArray为空指针；<br>         3. 参数audioDataArray中的某个成员为空指针；<br>         4. 参数audioDataArray中的requestFrameSize小于等于0；<br>         5. 参数responseSize为空指针；<br>         6. 参数finishedFlag为空指针。<br>         AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST：管线不存在或已经被销毁。<br>         AUDIOSUITE_ERROR_INVALID_STATE：管线不在运行状态。<br>         AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：管线渲染已完成（之前调用该接口时finishedFlag已写入为true）。<br>         AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>         AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+<!--Del-->
+### OH_AudioSuiteEngine_MetaRenderFrame()
+
+```c
+int32_t OH_AudioSuiteEngine_MetaRenderFrame(OH_AudioSuitePipeline* audioSuitePipeline, OH_AudioSuite_MetaFrame* metaFrame, int32_t* responseAudioSize, int32_t* responseMetaSize, bool* finishedFlag)
+```
+
+**描述**
+
+应用程序使用此接口进行音频数据和元数据处理。应用需在metaFrame结构体中指定audioData和metaData指针及其对应的大小（AudioDataSize和metaDataSize）。<br> 处理完成后，实际输出的数据大小将通过responseAudioSize和responseMetaSize返回。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | 音频编创管线句柄。通过[OH_AudioSuiteEngine_CreatePipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createpipeline)获取。 |
+| [OH_AudioSuite_MetaFrame](capi-ohaudiosuite-oh-audiosuite-metaframe-sys.md)* metaFrame | 音频元数据帧结构体指针。 |
+| int32_t* responseAudioSize | 接口实际写入的音频数据的大小，单位是字节。 |
+| int32_t* responseMetaSize | 接口实际写入的元数据的大小，单位是字节。 |
+| bool* finishedFlag | 该标志用于向用户指示是否已完成所有数据处理。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | [AUDIOSUITE_SUCCESS](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：函数执行成功。<br>         202：非系统应用调用了此系统API。<br>         [AUDIOSUITE_ERROR_INVALID_PARAM](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：参数为空指针或其他非法值。<br>         [AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：管线不存在或已被销毁。<br>         [AUDIOSUITE_ERROR_INVALID_STATE](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：管线不在运行状态。<br>         [AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：管线渲染已完成（之前调用该接口时finishedFlag已写入为true）。<br>         [AUDIOSUITE_ERROR_TIMEOUT](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：操作处理超时。<br>         [AUDIOSUITE_ERROR_SYSTEM](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：系统发生其他异常。 |
+<!--DelEnd-->
 
 ### OH_AudioSuiteNodeBuilder_Create()
 
@@ -412,6 +452,34 @@ OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_SetNodeType(OH_AudioNodeBuilder* b
 | 类型 | 说明 |
 | -- | -- |
 | [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：配置节点类型成功。<br>         AUDIOSUITE_ERROR_INVALID_PARAM：参数无效，例如，builder为空指针。<br>         AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+<!--Del-->
+### OH_AudioSuiteNodeBuilderSystem_SetNodeType()
+
+```c
+int32_t OH_AudioSuiteNodeBuilderSystem_SetNodeType(OH_AudioNodeBuilder* builder, OH_AudioSuite_SystemNodeType type)
+```
+
+**描述**
+
+设置要由构建器创建的音频节点类型。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilderstruct.md)* builder | 音频编创节点构造器句柄。通过[OH_AudioSuiteNodeBuilder_Create](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_create)获取。 |
+| [OH_AudioSuite_SystemNodeType](capi-native-audio-suite-base-h.md#oh_audiosuite_systemnodetype) type | [OH_AudioSuite_SystemNodeType](capi-native-audio-suite-base-h.md#oh_audiosuite_systemnodetype)音频系统节点类型。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | [AUDIOSUITE_SUCCESS](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：配置节点类型成功。<br>         202：非系统应用调用了此系统API。<br>         [AUDIOSUITE_ERROR_INVALID_PARAM](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：参数无效，例如，builder为空指针。 |
+<!--DelEnd-->
 
 ### OH_AudioSuiteNodeBuilder_SetFormat()
 
@@ -421,7 +489,7 @@ OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_SetFormat(OH_AudioNodeBuilder* bui
 
 **描述**
 
-配置输入/输出节点的音频格式。其余节点不配置，且只能在创建节点之前使用。对于输入节点，此函数可使应用指定写入数据的音频格式；<br> 对于输出节点，此函数可使应用指定其期望获取数据的音频格式；<br> 对于其他类型的节点则不支持调用此函数进行音频格式设置。
+配置输入/输出节点的音频格式。只能在创建节点之前使用。对于输入节点，此函数可使应用指定写入数据的音频格式；<br> 对于输出节点，此函数可使应用指定其期望获取数据的音频格式；<br> 对于其他类型的节点则不支持调用此函数进行音频格式设置。
 
 **起始版本：** 22
 
@@ -437,6 +505,34 @@ OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_SetFormat(OH_AudioNodeBuilder* bui
 | 类型 | 说明 |
 | -- | -- |
 | [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>         AUDIOSUITE_ERROR_INVALID_PARAM：参数无效，例如，builder为空指针。<br>         AUDIOSUITE_ERROR_UNSUPPORTED_FORMAT：audioFormat中的channelCount不支持。<br>         AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+<!--Del-->
+### OH_AudioSuiteNodeBuilderSystem_SetFormat()
+
+```c
+int32_t OH_AudioSuiteNodeBuilderSystem_SetFormat(OH_AudioNodeBuilder* builder, OH_AudioSuite_SystemNodeFormat audioFormat)
+```
+
+**描述**
+
+设置节点支持的音频格式。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilderstruct.md)* builder | 音频编创节点构造器句柄。通过[OH_AudioSuiteNodeBuilder_Create](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_create)获取。 |
+| [OH_AudioSuite_SystemNodeFormat](capi-ohaudiosuite-oh-audiosuite-systemnodeformat-sys.md) audioFormat | 音频节点格式。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | [AUDIOSUITE_SUCCESS](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：函数执行成功。<br>         202：非系统应用调用了此系统API。<br>         [AUDIOSUITE_ERROR_INVALID_PARAM](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：参数无效，例如，builder为空指针。<br>         [AUDIOSUITE_ERROR_UNSUPPORTED_FORMAT](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：audioFormat中的某种音频格式不支持。 |
+<!--DelEnd-->
 
 ### OH_InputNode_RequestDataCallback()
 
@@ -464,7 +560,7 @@ typedef int32_t (*OH_InputNode_RequestDataCallback)(OH_AudioNode* audioNode, voi
 | OH_AudioNode* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
 | void* userData | 用户使用的数据指针。系统调用此回调函数时，将使用[OH_AudioSuiteNodeBuilder_SetRequestDataCallback](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_setrequestdatacallback)接口传入的userData。 |
 | void* audioData | 系统提供的内存地址，用于将需要处理的音频数据流写入（需由用户填充）。 |
-| int32_t audioDataSize | audioData内存地址的字节大小。 |
+| int32_t audioDataSize | audioData内存地址指向的音频数据大小，单位为字节（Byte）。 |
 | bool* finished | 标记audioNode节点需要处理的音频数据流是否已经写入完成。true表示已完成，false表示未完成。 |
 
 **返回：**
@@ -491,13 +587,72 @@ OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_SetRequestDataCallback(OH_AudioNod
 | -- | -- |
 | [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilderstruct.md)* builder | 音频编创节点构造器句柄。通过[OH_AudioSuiteNodeBuilder_Create](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_create)获取句柄。 |
 | [OH_InputNode_RequestDataCallback](capi-native-audio-suite-engine-h.md#oh_inputnode_requestdatacallback) callback | 写入当前节点音频数据的回调接口。 |
-| void* userData | 用户自定义数据，会在callback函数中将地址传入给用户，如果不使用，可以传入空指针。 |
+| void* userData | 用户自定义数据，在回调函数callback中传入给用户。不使用时可传空指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
 | [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>         AUDIOSUITE_ERROR_INVALID_PARAM：<br>         可能的原因如下：<br>         1. 参数builder为空指针；<br>         2. 参数callback为空指针。<br>         AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>         AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+<!--Del-->
+### OH_InputNode_RequestMetaDataCallback()
+
+```c
+typedef int32_t (*OH_InputNode_RequestMetaDataCallback)(OH_AudioNode* audioNode, void* userData, OH_AudioSuite_MetaFrame* metaFrame, int32_t* responseMetaDataSize, bool* finished)
+```
+
+**描述**
+
+请求元数据的回调函数，仅[INPUT_NODE_TYPE_DEFAULT](capi-native-audio-suite-base-h.md#oh_audionode_type)支持此设置。每当应用程序或用户调用[OH_AudioSuiteEngine_MetaRenderFrame](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_metarenderframe)时，则会触发一次回调。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| OH_AudioNode\* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取。 |
+| void\* userData | 由用户传递的用户数据指针。 |
+| [OH_AudioSuite_MetaFrame](capi-ohaudiosuite-oh-audiosuite-metaframe-sys.md)\* metaFrame | 音频元数据帧结构体指针。 |
+| int32_t\* responseMetaDataSize | 应用程序实际写入的元数据的大小，单位是字节。 |
+| bool\* finished | 此布尔值表示是否已成功写入所有音频数据。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 写入audio data缓冲区的有效音频数据长度，单位为字节。<br> 返回值范围为[0, metaFrame->AudioDataSize]。 |
+
+### OH_AudioSuiteNodeBuilder_SetRequestMetaDataCallback()
+
+```c
+int32_t OH_AudioSuiteNodeBuilder_SetRequestMetaDataCallback(OH_AudioNodeBuilder* builder, OH_InputNode_RequestMetaDataCallback callback, void* userData)
+```
+
+**描述**
+
+配置当前输入节点构造器的写入音频数据和元数据回调函数。只有[INPUT_NODE_TYPE_DEFAULT](capi-native-audio-suite-base-h.md#oh_audionode_type)支持该设置。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilderstruct.md)* builder | 音频编创节点构造器句柄。通过[OH_AudioSuiteNodeBuilder_Create](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_create)获取。 |
+| [OH_InputNode_RequestMetaDataCallback](capi-native-audio-suite-engine-h.md#oh_inputnode_requestmetadatacallback) callback | 用户自定义数据，会在callback函数中将地址传入给用户，如果不使用，可以传入空指针。 |
+| void* userData | 指向将传递给回调函数的应用程序数据结构的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | [AUDIOSUITE_SUCCESS](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：函数执行成功。<br>         202：非系统应用调用了此系统API。<br>         [AUDIOSUITE_ERROR_INVALID_PARAM](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：参数非法，例如，参数builder为空指针。<br>         [AUDIOSUITE_ERROR_TIMEOUT](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：操作处理超时。<br>         [AUDIOSUITE_ERROR_SYSTEM](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：系统发生其他异常。 |
+<!--DelEnd-->
 
 ### OH_AudioSuiteEngine_CreateNode()
 
@@ -517,7 +672,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_CreateNode(OH_AudioSuitePipeline* audio
 | -- | -- |
 | [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | 音频编创管线句柄。通过[OH_AudioSuiteEngine_CreatePipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createpipeline)获取句柄。 |
 | [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilderstruct.md)* builder | 音频编创节点构造器句柄。通过[OH_AudioSuiteNodeBuilder_Create](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_create)获取句柄。 |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)** audioNode | 音频编创节点句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)** audioNode | 输出参数，用于返回创建的音频编创节点句柄的指针。 |
 
 **返回：**
 
@@ -602,7 +757,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_BypassEffectNode(OH_AudioNode* audioNod
 ### OH_AudioSuiteEngine_SetAudioFormat()
 
 ```c
-OH_AudioSuite_Result OH_AudioSuiteEngine_SetAudioFormat(OH_AudioNode* audioNode, OH_AudioFormat *audioFormat)
+OH_AudioSuite_Result OH_AudioSuiteEngine_SetAudioFormat(OH_AudioNode* audioNode, OH_AudioFormat* audioFormat)
 ```
 
 **描述**
@@ -616,13 +771,41 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetAudioFormat(OH_AudioNode* audioNode,
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
-| [OH_AudioFormat](capi-ohaudiosuite-oh-audioformat.md) *audioFormat | 音频流格式。 |
+| [OH_AudioFormat](capi-ohaudiosuite-oh-audioformat.md)* audioFormat | 指向音频流格式的指针，用于设置音频格式信息。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
 | [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>         AUDIOSUITE_ERROR_INVALID_PARAM：参数audioNode或audioFormat为空指针。<br>         AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>         AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode是效果节点。<br>         AUDIOSUITE_ERROR_UNSUPPORTED_FORMAT：（API版本26.0.0新增）参数audioFormat为不支持的格式。<br>         AUDIOSUITE_ERROR_INVALID_STATE：管线不在停止状态。<br>         AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>         AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+<!--Del-->
+### OH_AudioSuiteEngineSystem_SetAudioFormat()
+
+```c
+int32_t OH_AudioSuiteEngineSystem_SetAudioFormat(OH_AudioNode* audioNode, OH_AudioSuite_SystemNodeFormat* audioFormat)
+```
+
+**描述**
+
+设置输入输出节点的音频格式，指定音频源的音频格式输入节点，或为输出节点指定目标音频格式。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取。 |
+| [OH_AudioSuite_SystemNodeFormat](capi-ohaudiosuite-oh-audiosuite-systemnodeformat-sys.md)* audioFormat | 音频格式。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | [AUDIOSUITE_SUCCESS](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：函数执行成功。<br>         202：非系统应用调用了此系统API。<br>         [AUDIOSUITE_ERROR_INVALID_PARAM](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：参数为空指针或其他非法值。<br>         [AUDIOSUITE_ERROR_NODE_NOT_EXIST](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：节点不存在或已被销毁。<br>         [AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：节点是效果节点。<br>         [AUDIOSUITE_ERROR_INVALID_STATE](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：管线不在停止状态。<br>         [AUDIOSUITE_ERROR_TIMEOUT](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：操作处理超时。<br>         [AUDIOSUITE_ERROR_SYSTEM](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：系统发生其他异常。 |
+<!--DelEnd-->
 
 ### OH_AudioSuiteEngine_ConnectNodes()
 
@@ -632,7 +815,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_ConnectNodes(OH_AudioNode* sourceAudioN
 
 **描述**
 
-连接两个节点，数据流走向从sourceAudioNode到destAudioNode。连接节点将改变管道拓扑，可能导致部分数据丢失，建议在引擎停止状态下执行此操作。<br> 节点连接顺序：输入节点 -> 效果节点 -> 输出节点。
+连接两个节点，数据流走向从sourceAudioNode到destAudioNode。连接节点将改变管线拓扑，可能导致部分数据丢失，建议在引擎停止状态下执行此操作。<br> 节点连接顺序：输入节点 -> 效果节点 -> 输出节点。
 
 **起始版本：** 22
 
@@ -657,7 +840,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_DisconnectNodes(OH_AudioNode* sourceAud
 
 **描述**
 
-断开两个节点的连接。此操作将改变管道拓扑并可能导致数据丢失，建议在引擎停止状态下执行。
+断开两个节点的连接。此操作将改变管线拓扑并可能导致数据丢失，建议在引擎停止状态下执行。
 
 **起始版本：** 22
 
@@ -672,7 +855,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_DisconnectNodes(OH_AudioNode* sourceAud
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>         AUDIOSUITE_ERROR_INVALID_PARAM：参数sourceAudioNode或destAudioNode为空指针。<br>         AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>         AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：不支持操作。<br>         可能的原因如下：<br>         1. 参数sourceAudioNode类型为输出类型节点；<br>         2. 参数destAudioNode为类型为输入类型节点；<br>         3. 参数sourceAudioNode和destAudioNode为同一个节点；<br>         4. 参数sourceAudioNode和destAudioNode不为同一个管线中的节点；<br>         5. 管线状态为运行状态，但是destAudioNode不为mix类型节点；<br>         6. 管线状态为运行状态，destAudioNode为mix类型节点，但是mix节点当前只连接了sourceAudioNode一个输入。<br>         AUDIOSUITE_ERROR_INVALID_STATE：管线为无效状态。例如，无法找到输出节点。<br>         AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>         AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>         AUDIOSUITE_ERROR_INVALID_PARAM：参数sourceAudioNode或destAudioNode为空指针。<br>         AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>         AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：不支持操作。<br>         可能的原因如下：<br>         1. 参数sourceAudioNode类型为输出类型节点；<br>         2. 参数destAudioNode类型为输入类型节点；<br>         3. 参数sourceAudioNode和destAudioNode为同一个节点；<br>         4. 参数sourceAudioNode和destAudioNode不为同一个管线中的节点；<br>         5. 管线状态为运行状态，但是destAudioNode不为mix类型节点；<br>         6. 管线状态为运行状态，destAudioNode为mix类型节点，但是mix节点当前只连接了sourceAudioNode一个输入。<br>         AUDIOSUITE_ERROR_INVALID_STATE：管线为无效状态。例如，无法找到输出节点。<br>         AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>         AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_SetEqualizerFrequencyBandGains()
 
@@ -697,7 +880,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetEqualizerFrequencyBandGains(OH_Audio
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>         AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>         AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非均衡器节点。<br>         AUDIOSUITE_ERROR_INVALID_PARAM：<br>         可能的原因如下：<br>         1. 参数audioNode为空指针；<br>         2. 参数frequencyBandGains每个成员的值范围不在[-10, 10]。<br>         AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>         AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>         AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>         AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非均衡器节点。<br>         AUDIOSUITE_ERROR_INVALID_PARAM：<br>         可能的原因如下：<br>         1. 参数audioNode为空指针；<br>         2. 参数frequencyBandGains每个成员的值不在[-10, 10]范围内。<br>         AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>         AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_GetEqualizerFrequencyBandGains()
 
@@ -1218,7 +1401,7 @@ OH_AudioSuite_Result OH_AudioSuite_PrintInfo(OH_AudioSuiteEngine* audioSuiteEngi
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioSuiteEngine](capi-ohaudiosuite-oh-audiosuiteenginestruct.md)* audioSuiteEngine | 指向需要显示运行时快照的AudioSuiteEngine的指针。 |
-| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | 指向需要显示运行时快照的AudioSuitePipeline的指针。<br>                           如果audioSuitePipeline为空，输出所有管道（引擎下的所有管道/节点）。否则，仅输出此管道和节点的快照。 |
+| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | 指向需要显示运行时快照的AudioSuitePipeline的指针。<br>                           如果audioSuitePipeline为空，输出所有管线（引擎下的所有管线/节点）。否则，仅输出此管线和节点的快照。 |
 | int fd | 文件句柄，表示快照信息存储的位置。<br>           如果fd小于0，快照信息存储在日志中。否则，快照将以追加模式存储在由fd句柄指向的文件中。 |
 
 **返回：**
@@ -1227,4 +1410,89 @@ OH_AudioSuite_Result OH_AudioSuite_PrintInfo(OH_AudioSuiteEngine* audioSuiteEngi
 | -- | -- |
 | [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>         AUDIOSUITE_ERROR_INVALID_PARAM：参数为nullptr或无效值。<br>         AUDIOSUITE_ERROR_SYSTEM：系统存在其他异常。 |
 
+<!--Del-->
+### OH_AudioSuiteEngineSystem_SetNodeParam()
+
+```c
+int32_t OH_AudioSuiteEngineSystem_SetNodeParam(OH_AudioNode* audioNode, uint8_t* param, uint32_t paramSize)
+```
+
+**描述**
+
+设置系统节点的参数。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取。 |
+| uint8_t* param | 参数缓冲区。 |
+| uint32_t paramSize | 参数缓冲区大小。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | [AUDIOSUITE_SUCCESS](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：函数执行成功。<br>         202：非系统应用调用了此系统API。<br>         [AUDIOSUITE_ERROR_NODE_NOT_EXIST](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：节点不存在或已被销毁。<br>         [AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：节点为非系统类型节点。<br>         [AUDIOSUITE_ERROR_INVALID_PARAM](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：参数为空指针或其他非法值。<br>         [AUDIOSUITE_ERROR_TIMEOUT](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：操作处理超时。<br>         [AUDIOSUITE_ERROR_SYSTEM](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：系统发生其他异常。 |
+
+### OH_AudioSuiteEngineSystem_GetNodeParam()
+
+```c
+int32_t OH_AudioSuiteEngineSystem_GetNodeParam(OH_AudioNode* audioNode, uint8_t* param, uint32_t paramSize)
+```
+
+**描述**
+
+获取系统节点的参数。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取。 |
+| uint8_t* param | 参数缓冲区。 |
+| uint32_t paramSize | 参数缓冲区大小。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | [AUDIOSUITE_SUCCESS](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：函数执行成功。<br>         202：非系统应用调用了此系统API。<br>         [AUDIOSUITE_ERROR_NODE_NOT_EXIST](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：音频节点不存在或已被销毁。<br>         [AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：节点为非系统类型节点。<br>         [AUDIOSUITE_ERROR_INVALID_PARAM](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：参数为空指针或其他非法值。<br>         [AUDIOSUITE_ERROR_TIMEOUT](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：操作处理超时。<br>         [AUDIOSUITE_ERROR_SYSTEM](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：系统发生其他异常。 |
+
+### OH_AudioSuiteEngineSystem_GetNodeInOutSize()
+
+```c
+int32_t OH_AudioSuiteEngineSystem_GetNodeInOutSize(OH_AudioNode* audioNode, uint32_t* inSize, uint32_t* outSize)
+```
+
+**描述**
+
+获取系统节点的输入和输出帧大小。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取。 |
+| uint32_t* inSize | 输入帧大小，单位为字节。 |
+| uint32_t* outSize | 输出帧大小，单位为字节。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | [AUDIOSUITE_SUCCESS](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：函数执行成功。<br>         202：非系统应用调用了此系统API。<br>         [AUDIOSUITE_ERROR_NODE_NOT_EXIST](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：音频节点不存在或已被销毁。<br>         [AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：节点为非系统类型节点。<br>         [AUDIOSUITE_ERROR_INVALID_PARAM](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：参数为空指针或其他非法值。<br>         [AUDIOSUITE_ERROR_TIMEOUT](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：操作处理超时。<br>         [AUDIOSUITE_ERROR_SYSTEM](capi-native-audio-suite-base-h.md#oh_audiosuite_result)：系统发生其他异常。 |
+<!--DelEnd-->
 

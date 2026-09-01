@@ -52,23 +52,29 @@
 
 当前支持使用认证控件的认证类型包括：
 
-- 锁屏口令认证
+- 锁屏口令认证。
 
-- 人脸认证
+- 人脸认证。
 
-- 指纹认证
+- 指纹认证。
 
-- 人脸+锁屏口令认证
+- 人脸+锁屏口令认证。
 
-- 指纹+锁屏口令认证
+- 指纹+锁屏口令认证。
 
-- 人脸+指纹+锁屏口令认证
+- 人脸+指纹+锁屏口令认证。
 
-- 人脸+自定义导航按键
+- 人脸+自定义导航按键。
 
-- 指纹+自定义导航按键
+- 指纹+自定义导航按键。
 
-- 人脸+指纹+自定义导航按键<sup>18+</sup>
+- 从API版本18开始，支持人脸+指纹+自定义导航按键的认证类型。
+
+<!--RP3--><!--RP3End-->
+
+> **说明：**
+>
+> 从API版本26.1.0开始，在企业账号场景下，如果用户开通了企业账号认证解锁但没有注册锁屏口令时，应用发起的锁屏口令认证将会自动切换为企业账号密码认证。
 
 ## 开发步骤
 
@@ -85,7 +91,7 @@
  发起用户认证，采用认证可信等级≥ATL3的人脸+指纹+锁屏口令认证，获取认证结果。
 
 ArkTS-Dyn示例：
-<!-- @[authentication_example1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[authentication_example1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 initiatingUserAuthentication1() {
@@ -132,7 +138,7 @@ initiatingUserAuthentication1() {
 ```
 
 ArkTS-Sta示例：
-<!-- @[authentication_example1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @[authentication_example1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 initiatingUserAuthentication1() {
@@ -179,12 +185,13 @@ initiatingUserAuthentication1() {
 }
 ```
 
+
 **示例2：**
 
 发起用户认证，采用认证可信等级≥ATL3的人脸+认证类型相关+复用设备解锁最大有效时长认证，获取认证结果。
 
 ArkTS-Dyn示例：
-<!-- @[authentication_example2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[authentication_example2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 initiatingUserAuthentication2() {
@@ -236,7 +243,7 @@ initiatingUserAuthentication2() {
 ```
 
 ArkTS-Sta示例：
-<!-- @[authentication_example2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @[authentication_example2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 initiatingUserAuthentication2() {
@@ -293,7 +300,7 @@ initiatingUserAuthentication2() {
 发起用户认证，采用认证可信等级≥ATL3的人脸+任意应用认证类型相关+复用任意应用最大有效时长认证，获取认证结果。
 
 ArkTS-Dyn示例：
-<!-- @[authentication_example3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[authentication_example3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 initiatingUserAuthentication3() {
@@ -345,7 +352,7 @@ initiatingUserAuthentication3() {
 ```
 
 ArkTS-Sta示例：
-<!-- @[authentication_example3](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @[authentication_example3](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 initiatingUserAuthentication3() {
@@ -405,7 +412,7 @@ initiatingUserAuthentication3() {
 > 在PC/2in1设备上，应用如果使用模应用弹窗方式发起认证（即配置用户界面参数[widgetParam](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#widgetparam10)时传入了有效的uiContext），收到认证结果后，若需弹出其他窗口，应先获取控件弹窗释放的标志消息，通过[on('authTip')](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#onauthtip20)接口订阅控件释放消息（authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED）。
 
 ArkTS-Dyn示例：
-<!-- @[authentication_example4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[authentication_example4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 initiatingUserAuthentication4() {
@@ -453,7 +460,7 @@ initiatingUserAuthentication4() {
 ```
 
 ArkTS-Sta示例：
-<!-- @[authentication_example4](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @[authentication_example4](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 initiatingUserAuthentication4() {
@@ -503,5 +510,5 @@ initiatingUserAuthentication4() {
 
 ## 示例代码
 
-  - [发起认证(ArkTS-Dyn)](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
-  - [发起认证(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication_Sta)
+  - [发起认证(ArkTS-Dyn)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)
+  - [发起认证(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta)

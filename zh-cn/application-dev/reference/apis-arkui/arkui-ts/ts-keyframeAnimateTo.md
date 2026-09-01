@@ -18,6 +18,8 @@
 >
 > - 该接口为[UIContext](../arkts-apis-uicontext-uicontext.md)类的成员函数，需要通过UIContext实例对象调用。
 
+## keyframeAnimateTo
+
 keyframeAnimateTo(param: KeyframeAnimateParam, keyframes: Array&lt;KeyframeState&gt;): void
 
 设置关键帧动画。

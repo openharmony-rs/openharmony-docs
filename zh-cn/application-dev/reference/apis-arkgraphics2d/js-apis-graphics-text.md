@@ -1248,6 +1248,8 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 可变字体属性。
 
+**卡片能力（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 | 名称      | 类型                                                 | 只读 | 可选 | 说明                                       |
@@ -1679,8 +1681,8 @@ struct RenderTest {
   async loadFontPromise() {
     fontCollection.loadFont('testName', 'file:///system/fonts/a.ttf').then((data) => {
       console.info(`Succeeded in doing loadFont ${JSON.stringify(data)} `);
-    }).catch((error: Error) => {
-      console.error(`Failed to do loadFont, error: ${JSON.stringify(error)} message: ${error.message}`);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to do loadFont, error: ${error.code} message: ${error.message}`);
     });
   }
 
@@ -1791,8 +1793,9 @@ struct Index {
           fc.loadFontSyncWithCheck(this.fontFamily, 'file:///system/fonts/NotoSansCJK-Regular.ttc', 1);
           try {
             fc.loadFontSyncWithCheck(this.fontFamily, '/system/fonts/NotoSansCJK-Regular.ttc', 1);
-          } catch (e) {
-            console.error(`Failed to do loadFontWithCheck, error: ${JSON.stringify(e)} message: ${e.message}`);
+          } catch (error) {
+            let err: BusinessError = error as BusinessError;
+            console.error(`Failed to do loadFontWithCheck, error: ${err.code} message: ${err.message}`);
           }
         })
     }
@@ -1917,13 +1920,13 @@ struct Index {
         .onClick(() => {
           fc.loadFontWithCheck(this.fontFamily, 'file:///system/fonts/NotoSansCJK-Regular.ttc', 1).then((data) => {
             console.info(`Succeeded in doing loadFontWithCheck ${JSON.stringify(data)} `);
-          }).catch((error: Error) => {
-            console.error(`Failed to do loadFontWithCheck, error: ${JSON.stringify(error)} message: ${error.message}`);
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to do loadFontWithCheck, error: ${error.code} message: ${error.message}`);
           });
           fc.loadFontWithCheck(this.fontFamily, '/system/fonts/NotoSansCJK-Regular.ttc', 1).then((data) => {
             console.info(`Succeeded in doing loadFontWithCheck ${JSON.stringify(data)} `);
-          }).catch((error: Error) => {
-            console.error(`Failed to do loadFontWithCheck, error: ${JSON.stringify(error)} message: ${error.message}`);
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to do loadFontWithCheck, error: ${error.code} message: ${error.message}`);
           });
         })
     }
@@ -2559,8 +2562,8 @@ struct Index {
       await paragraph.layout(200);
       console.info('Succeeded in doing layout');
     } catch (error) {
-      let e: Error = error as Error;
-      console.error(`Failed to do layout, error: ${JSON.stringify(e)} message: ${e.message}`);
+      let err: BusinessError = error as BusinessError;
+      console.error(`Failed to do layout, error: ${err.code} message: ${err.message}`);
     }
   }
 
@@ -5750,6 +5753,7 @@ ArkTS-Sta: getStringIndexForPosition(point: common2D.Point): int
 **示例：**
 
 ```ts
+import { common2D } from '@kit.ArkGraphics2D'
 let point : common2D.Point = { x: 15.0, y: 2.0 };
 let index = lines[0].getStringIndexForPosition(point);
 ```

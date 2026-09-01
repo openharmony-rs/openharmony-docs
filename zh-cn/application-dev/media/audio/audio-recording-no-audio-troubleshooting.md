@@ -29,7 +29,7 @@
 
 **3. 录音参数与业务场景不匹配**
 
-   `SourceType`会影响录音通路、算法处理、并发打断策略以及输入设备选择。错误的`SourceType`可能导致“有数据但近似无声”的现象，或者录到的数据和业务预期完全不一致。比如普通麦克风录音误用了`SOURCE_TYPE_VOICE_COMMUNICATION`，或者原始采集场景没有按业务选对音源类型。相关说明可参考[使用合适的音频流类型](using-right-streamusage-and-sourcetype.md)。
+   `SourceType`会影响录音通路、算法处理、并发打断策略以及输入设备选择。错误的`SourceType`可能导致“有数据但近似无声”的现象，或者录到的数据和业务预期完全不一致。比如普通麦克风录音误用了`SOURCE_TYPE_VOICE_COMMUNICATION`，或者原始采集场景没有按业务选对音源类型。相关说明可参考[选择合适的录制流类型](using-right-sourcetype-for-recording.md)。
 
 **4. 运行状态和回调未按预期变化**
 
@@ -203,7 +203,7 @@
 
    检查项如下：
 
-   - `SourceType`：确认`SourceType`与业务场景匹配。普通录音通常使用`SOURCE_TYPE_MIC`，VoIP通话场景使用`SOURCE_TYPE_VOICE_COMMUNICATION`，直播场景使用`SOURCE_TYPE_LIVE`，原始数据采集场景使用`SOURCE_TYPE_UNPROCESSED`。更多说明可参考[使用合适的音频流类型](using-right-streamusage-and-sourcetype.md)。
+   - `SourceType`：确认`SourceType`与业务场景匹配。普通录音通常使用`SOURCE_TYPE_MIC`，VoIP通话场景使用`SOURCE_TYPE_VOICE_COMMUNICATION`，直播场景使用`SOURCE_TYPE_LIVE`，原始数据采集场景使用`SOURCE_TYPE_UNPROCESSED`。更多说明可参考[选择合适的录制流类型](using-right-sourcetype-for-recording.md)。
    - 静音打断策略：确认应用是否调用了`setWillMuteWhenInterrupted`。
    - 音频会话策略：确认是否配置了音频会话策略并将行为设置为`MUTE_WHEN_INTERRUPTED`。
    - 并发时间点：确认无声开始时间点是否与来电、VoIP、语音播报或其他录音任务启动重合；如果怀疑录音流被静音或被并发策略影响，可通过录音流变化信息确认当前录音流和输入设备。
@@ -255,6 +255,6 @@
 
 ## 相关文档参考
 
-- 如果问题与普通录音、VoIP、直播或原始数据采集场景有关，优先参考[使用合适的音频流类型](using-right-streamusage-and-sourcetype.md)。
+- 如果问题与普通录音、VoIP、直播或原始数据采集场景有关，优先参考[选择合适的录制流类型](using-right-sourcetype-for-recording.md)。
 - 如果问题与其他录音任务、通话或音频会话策略并发有关，优先参考[录音并发策略说明](audio-recording-concurrency.md)和[查询和监听其他应用录制状态](audio-recording-stream-management.md)。
 - 如果问题与蓝牙耳机、有线耳机、USB声卡等输入设备切换有关，优先参考[查询和监听音频输入设备](audio-input-device-management.md)和[实现音频输入设备路由切换](audio-input-device-switcher.md)。

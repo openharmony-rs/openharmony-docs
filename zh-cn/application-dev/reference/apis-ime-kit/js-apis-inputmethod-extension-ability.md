@@ -2,11 +2,11 @@
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->
-<!--Designer: @andeszhang-->
+<!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
-@ohos.InputMethodExtensionAbility模块提供输入法ExtensionAbility的基础类定义，是开发输入法应用的入口和生命周期管理框架。
+@ohos.InputMethodExtensionAbility模块提供输入法ExtensionAbility（扩展能力基类）的基础类定义，是开发输入法应用的入口和生命周期管理框架。
 
 本模块是输入法ExtensionAbility的核心类模块，定义了`InputMethodExtensionAbility`类，作为输入法应用的Extension基类。开发者需继承该类并实现`onCreate`和`onDestroy`生命周期回调，系统在拉起和销毁输入法Extension时自动调用这些回调。
 
@@ -16,46 +16,15 @@
 
 > **说明：**
 >
-> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - 本模块接口仅可在Stage模型下使用。
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
 > `InputMethodExtensionAbility`仅定义了基础的`onCreate`和`onDestroy`两个生命周期回调。输入法的核心交互能力（如面板创建/销毁、键盘事件监听、客户端绑定等）需在`onCreate`回调中通过`@ohos.inputMethodEngine`模块获取`InputMethodAbility`对象来实现。`onCreate`是所有关键对象获取和面板创建的唯一入口，必须在该回调中完成初始化。
+>
+> `InputMethodExtensionAbility`的`context`属性类型为`InputMethodExtensionContext`（来自`@ohos.InputMethodExtensionContext`模块），属于关联关系——`InputMethodExtensionAbility`拥有`InputMethodExtensionContext`的上下文能力。
 
 | Class | 说明 |
 |---|---|
 | InputMethodExtensionAbility | 输入法ExtensionAbility基类，提供输入法应用的生命周期管理框架。关键成员包括：`context`属性（`InputMethodExtensionContext`上下文对象）、`onCreate(want)`方法（初始化回调）、`onDestroy()`方法（销毁回调）。开发者需继承此类并重写生命周期方法。 |
-
-> **说明：**
->
-> `InputMethodExtensionAbility`的`context`属性类型为`InputMethodExtensionContext`（来自`@ohos.InputMethodExtensionContext`模块），属于关联关系——`InputMethodExtensionAbility`拥有`InputMethodExtensionContext`的上下文能力。
-
-本模块的`InputMethodExtensionAbility`是输入法应用开发的起点，其生命周期回调与多个IME Kit模块的API组合使用，形成完整的输入法应用初始化流程。
-
-```javascript
-// 以下为阐述调用逻辑的伪代码
-
-// 1. 继承InputMethodExtensionAbility创建输入法Extension类
-class InputMethodExt extends InputMethodExtensionAbility {
-
-  // 2. 在onCreate中初始化输入法应用
-  onCreate(want) {
-    // 获取上下文对象
-    let context = this.context;
-
-    // 获取输入法核心能力对象（@ohos.inputMethodEngine模块）
-    // let ability = inputMethodEngine.getInputMethodAbility();
-
-    // 创建输入法面板（@ohos.inputMethodEngine模块）
-    // let panelInfo = { type: PanelType.SOFT_KEYBOARD, flag: PanelFlag.FLAG_FIXED };
-    // let panel = ability.createPanel(context, panelInfo);
-  }
-
-  // 3. 在onDestroy中清理资源
-  onDestroy() {
-    // 销毁面板、释放资源
-  }
-}
-```
 
 ## 约束限制
 
@@ -66,7 +35,7 @@ class InputMethodExt extends InputMethodExtensionAbility {
 **基础模式介绍：**
 基础模式下，输入法扩展（InputMethodExtensionAbility）进程无法拉起其他UIAbility或ExtensionAbility。
 
-基础模式下，输入法扩展会受到系统管控，不能使用涉及访问或泄露用户个人数据的各种接口，同时无法将数据传递出进程。管控功能包括但不限于：网络、短信、电话、麦克风、定位、相机、蓝牙、壁纸、支付、日历、游戏、扬声器、Wi-Fi、剪切板、多媒体、联系人、公共事件、系统账号、健康数据、地图服务、推送服务、融合搜索、共享内存、分布式特性、广告设备标识、振动等。
+基础模式下，输入法扩展会受到系统管控，不能使用涉及访问或泄露用户个人数据的各种接口，同时无法将数据传递出进程。管控功能包括但不限于：网络、短信、电话、麦克风、定位、相机、蓝牙、壁纸、支付、日历、游戏、扬声器、Wi-Fi、剪贴板、多媒体、联系人、公共事件、系统账号、健康数据、地图服务、推送服务、融合搜索、共享内存、分布式特性、广告设备标识、振动等。
 
 基础模式下，输入法扩展可以使用基础输入功能必要的系统能力，例如，IME Kit、ArkUI、窗口、图形、屏幕管理等。
 
@@ -166,7 +135,7 @@ want参数使用建议：
 **示例：**
 
 ```ts
-import { InputMethodExtensionAbility, InputMethodAbility, KeyboardDelegate, PanelInfo, PanelType, PanelFlag, inputMethodEngine } from '@kit.IMEKit';
+import { InputMethodExtensionAbility, inputMethodEngine } from '@kit.IMEKit';
 import { Want } from '@kit.AbilityKit';
 
 class InputMethodExt extends InputMethodExtensionAbility {
@@ -174,15 +143,15 @@ class InputMethodExt extends InputMethodExtensionAbility {
     console.info(`onCreate, want: ${want.abilityName}`);
 
     // 获取输入法能力对象
-    let ability: InputMethodAbility = inputMethodEngine.getInputMethodAbility();
+    let ability: inputMethodEngine.InputMethodAbility = inputMethodEngine.getInputMethodAbility();
 
     // 获取键盘代理对象
-    let keyboardDelegate: KeyboardDelegate = inputMethodEngine.getKeyboardDelegate();
+    let keyboardDelegate: inputMethodEngine.KeyboardDelegate = inputMethodEngine.getKeyboardDelegate();
 
     // 创建面板
-    let panelInfo: PanelInfo = {
-      type: PanelType.SOFT_KEYBOARD,
-      flag: PanelFlag.FLG_FIXED
+    let panelInfo: inputMethodEngine.PanelInfo = {
+      type: inputMethodEngine.PanelType.SOFT_KEYBOARD,
+      flag: inputMethodEngine.PanelFlag.FLG_FIXED
     };
     ability.createPanel(this.context, panelInfo, (err, panel) => {
       if (err) {
@@ -207,7 +176,7 @@ onDestroy(): void
 生命周期回调，在销毁输入法应用时调用，用于资源清理。
 
 - 含义/功能：系统销毁输入法ExtensionAbility时触发的清理回调。开发者在该回调中释放面板、取消事件订阅等资源清理工作。
-- 使用场景：当系统主动销毁输入法ExtensionAbility（如系统回收资源、用户切换到其他输入法）或开发者主动调用`context.destroy()`触发销毁时自动触发。
+-  使用场景：当系统主动销毁输入法ExtensionAbility（如系统回收资源、用户切换到其他输入法）或开发者主动调用`context.destroy()`触发销毁时自动触发。注意：`onDestroy`回调执行后，`context`将不可用，不应在回调中或回调后继续使用`context`对象。
 - 使用后效果：回调执行完成后，输入法ExtensionAbility进程终止，所有资源应已释放。调用后再进行其他操作将不起效。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -253,4 +222,4 @@ InputMethodExtensionAbility不支持以下模块的引用。
 | Basic Services Kit | [@ohos.account.osAccount (系统账号管理)](../apis-basic-services-kit/js-apis-osAccount.md)</br>[@ohos.account.distributedAccount (分布式账号管理)](../apis-basic-services-kit/js-apis-distributed-account.md)</br>[@ohos.wallpaper (壁纸)](../apis-basic-services-kit/js-apis-wallpaper.md) |
 | Connectivity Kit |  [@ohos.bluetooth (蓝牙)](../apis-connectivity-kit/js-apis-bluetooth.md)</br>[@ohos.bluetoothManager (蓝牙)](../apis-connectivity-kit/js-apis-bluetoothManager.md)</br>[nfctech (标准NFC-Tag Nfc 技术)](../apis-connectivity-kit/js-apis-nfctech.md)</br>[@ohos.nfc.controller (标准NFC)](../apis-connectivity-kit/js-apis-nfcController.md)</br>[@ohos.nfc.cardEmulation (标准NFC-cardEmulation)](../apis-connectivity-kit/js-apis-cardEmulation.md)</br>[@ohos.connectedTag (有源标签)](../apis-connectivity-kit/js-apis-connectedTag.md)</br>[@ohos.wifiext (WLAN扩展接口)](../apis-connectivity-kit/js-apis-wifiext.md)</br>[@ohos.wifiManager (WLAN)](../apis-connectivity-kit/js-apis-wifiManager.md)</br>[@ohos.wifiManagerExt (WLAN扩展接口)](../apis-connectivity-kit/js-apis-wifiManagerExt.md)</br>[tagSession (标准NFC-Tag TagSession)](../apis-connectivity-kit/js-apis-tagSession.md)</br> |
 | Location Kit | [@ohos.geolocation (位置服务)](../apis-location-kit/js-apis-geolocation.md)</br>[@ohos.geoLocationManager (位置服务)](../apis-location-kit/js-apis-geoLocationManager.md) |
-| Telephony Kit | [@ohos.telephony.call (拨打电话)](../apis-telephony-kit/js-apis-call.md)</br>[@ohos.telephony.data (蜂窝数据)](../apis-telephony-kit/js-apis-telephony-data.md)</br>[@ohos.telephony.observer (observer)](../apis-telephony-kit/js-apis-observer.md)</br>[@ohos.telephony.radio (网络搜索)](../apis-telephony-kit/js-apis-radio.md)</br>[@ohos.telephony.sms (短信服务)](../apis-telephony-kit/js-apis-sms.md)</br>[@ohos.telephony.sim (SIM卡管理)](../apis-telephony-kit/js-apis-sim.md) |
+| Telephony Kit | [@ohos.telephony.call (拨打电话)](../apis-telephony-kit/js-apis-call.md)</br>[@ohos.telephony.data (蜂窝数据)](../apis-telephony-kit/js-apis-telephony-data.md)</br>[@ohos.telephony.observer (电话服务状态监听)](../apis-telephony-kit/js-apis-observer.md)</br>[@ohos.telephony.radio (网络搜索)](../apis-telephony-kit/js-apis-radio.md)</br>[@ohos.telephony.sms (短信服务)](../apis-telephony-kit/js-apis-sms.md)</br>[@ohos.telephony.sim (SIM卡管理)](../apis-telephony-kit/js-apis-sim.md) |

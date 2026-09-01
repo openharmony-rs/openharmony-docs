@@ -414,7 +414,7 @@ setEnabled(isEnabled: boolean): void
 
 | 参数名     | 类型                           | 必填   | 说明  |
 | ------- | ---------------------------------- | ---- | ----- |
-| isEnabled   | boolean         | 是    | 手势识别器的使能状态。true表示当前手势识别器能够回调应用事件，false表示当前手势识别器不回调应用事件。 |
+| isEnabled   | boolean         | 是    | 手势识别器的使能状态。true表示当前手势识别器能够回调应用事件，false表示当前手势识别器不回调应用事件。<br>当前仅支持[PanRecognizer](#panrecognizer12)设置生效。 |
 
 ### isEnabled<sup>12+</sup> 
 
@@ -923,7 +923,7 @@ ArkTS-Sta: getDistanceMap(): Map\<SourceTool, double\>
 
 ## GestureEvent对象说明
 
-定义手势的事件信息。继承自[BaseEvent](ts-gesture-customize-judge.md#baseevent8)。
+定义手势的事件信息。继承自[BaseEvent](ts-universal-events-click.md#baseevent8)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1113,7 +1113,7 @@ type GestureType = Gesture | GestureGroup
 
 ## BaseGestureEvent<sup>11+</sup>对象说明
 
-基础手势事件类型。继承自[BaseEvent](./ts-gesture-customize-judge.md#baseevent8)。
+基础手势事件类型。继承自[BaseEvent](./ts-universal-events-click.md#baseevent8)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -6,7 +6,7 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-管理音频组音量。
+AudioVolumeGroupManager是音频系统中的音频组音量管理模块。本模块提供音频组音量管理能力，包括获取和设置不同音量类型的音量等级、静音状态管理、铃声模式监听和获取、麦克风状态管理和监听、固定音量模式控制、音量增益分贝值查询、输入/输出设备电平值获取等。当需要精细化控制音量时，使用本模块接口完成相关操作，适用于多媒体播放、音视频通话、游戏、音频录制等场景。
 
 在使用AudioVolumeGroupManager的接口之前，需先通过[getVolumeGroupManager](arkts-apis-audio-AudioVolumeManager.md#getvolumegroupmanager9)获取AudioVolumeGroupManager实例。
 
@@ -32,6 +32,7 @@ ArkTS-Sta: getVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;int
 获取指定流的音量等级。使用callback异步回调。
 
 > **说明：**
+>
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[getVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumebystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -50,12 +51,14 @@ ArkTS-Sta: getVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;int
 **示例：**
 
 ```ts
-audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA, (err, value) => {
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, volume) => {
   if (err) {
-    console.error(`Failed to get volume. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to obtain the volume. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info(`Succeeded in getting volume. Volume: ${value}.`);
+  console.info(`Succeeded in obtaining the volume, volume: ${volume}.`);
 });
 ```
 
@@ -68,6 +71,7 @@ ArkTS-Sta: getVolume(volumeType: AudioVolumeType): Promise&lt;int&gt;
 获取指定流的音量等级。使用Promise异步回调。
 
 > **说明：**
+>
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[getVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumebystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -86,13 +90,17 @@ ArkTS-Sta: getVolume(volumeType: AudioVolumeType): Promise&lt;int&gt;
 
 | 类型                  | 说明                      |
 | --------------------- | ------------------------- |
-| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回指定流的音量等级。指定流的音量等级范围可通过[getMinVolume](#getminvolumedeprecated)和[getMaxVolume](#getmaxvolumedeprecated)获取。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回指定流的音量等级。音量等级范围可通过[getMinVolume](#getminvolumedeprecated)和[getMaxVolume](#getmaxvolumedeprecated)获取。 |
 
 **示例：**
 
 ```ts
-audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA).then((value) => {
-  console.info(`Succeeded in getting volume. Volume: ${value}.`);
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA).then((volume) => {
+  console.info(`Succeeded in obtaining the volume, volume: ${volume}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to obtain the volume. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -105,6 +113,7 @@ ArkTS-Sta: getVolumeSync(volumeType: AudioVolumeType): int
 获取指定流的音量等级。同步返回结果。
 
 > **说明：**
+>
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[getVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumebystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -140,11 +149,11 @@ ArkTS-Sta: getVolumeSync(volumeType: AudioVolumeType): int
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let value = audioVolumeGroupManager.getVolumeSync(audio.AudioVolumeType.MEDIA);
-  console.info(`Succeeded in getting volume. Volume: ${value}.`);
+  let volume = audioVolumeGroupManager.getVolumeSync(audio.AudioVolumeType.MEDIA);
+  console.info(`Succeeded in obtaining the volume, volume: ${volume}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to get volume. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to obtain the volume. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -157,6 +166,7 @@ ArkTS-Sta: getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;
 获取指定流的最小音量等级。使用callback异步回调。
 
 > **说明：**
+>
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[getMinVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getminvolumebystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -175,12 +185,14 @@ ArkTS-Sta: getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;
 **示例：**
 
 ```ts
-audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType.MEDIA, (err, value) => {
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, minVolume) => {
   if (err) {
-    console.error(`Failed to get minVolume. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to obtain the minimum volume. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info(`Succeeded in getting minVolume. Volume: ${value}.`);
+  console.info(`Succeeded in obtaining the minimum volume, minVolume: ${minVolume}.`);
 });
 ```
 
@@ -216,8 +228,12 @@ ArkTS-Sta: getMinVolume(volumeType: AudioVolumeType): Promise&lt;int&gt;
 **示例：**
 
 ```ts
-audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType.MEDIA).then((value) => {
-  console.info(`Succeeded in getting minVolume. Volume: ${value}.`);
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType.MEDIA).then((minVolume) => {
+  console.info(`Succeeded in obtaining the minimum volume, minVolume: ${minVolume}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to obtain the minimum volume. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -230,6 +246,7 @@ ArkTS-Sta: getMinVolumeSync(volumeType: AudioVolumeType): int
 获取指定流的最小音量等级。同步返回结果。
 
 > **说明：**
+>
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[getMinVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getminvolumebystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -265,11 +282,11 @@ ArkTS-Sta: getMinVolumeSync(volumeType: AudioVolumeType): int
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let value = audioVolumeGroupManager.getMinVolumeSync(audio.AudioVolumeType.MEDIA);
-  console.info(`Succeeded in getting minVolume. Volume: ${value}.`);
+  let minVolume = audioVolumeGroupManager.getMinVolumeSync(audio.AudioVolumeType.MEDIA);
+  console.info(`Succeeded in obtaining the minimum volume, minVolume: ${minVolume}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to get minVolume. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to obtain the minimum volume. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -295,17 +312,19 @@ ArkTS-Sta: getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;
 | 参数名     | 类型                                | 必填 | 说明                   |
 | ---------- | ----------------------------------- | ---- | ---------------------- |
 | volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音频音量类型。           |
-| callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt;         | 是   | 回调函数。<br>ArkTS-Dyn：当获取指定流的最大音量成功，err为undefined，data为获取到的指定流的最大音量等级；否则为错误对象。<br>ArkTS-Sta：当获取指定流的最大音量成功，err为null，data为获取到的指定流的最大音量等级；否则为错误对象。 |
+| callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt;         | 是   | 回调函数。<br>ArkTS-Dyn：当获取指定流的最大音量成功，err为undefined，data为指定流的最大音量等级；否则为错误对象。<br>ArkTS-Sta：当获取指定流的最大音量成功，err为null，data为指定流的最大音量等级；否则为错误对象。 |
 
 **示例：**
 
 ```ts
-audioVolumeGroupManager.getMaxVolume(audio.AudioVolumeType.MEDIA, (err, value) => {
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.getMaxVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, maxVolume) => {
   if (err) {
-    console.error(`Failed to get maxVolume. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to obtain the maximum volume. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info(`Succeeded in getting maxVolume. Volume: ${value}.`);
+  console.info(`Succeeded in obtaining the maximum volume, maxVolume: ${maxVolume}.`);
 });
 ```
 
@@ -318,6 +337,7 @@ ArkTS-Sta: getMaxVolume(volumeType: AudioVolumeType): Promise&lt;int&gt;
 获取指定流的最大音量等级。使用Promise异步回调。
 
 > **说明：**
+>
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[getMaxVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getmaxvolumebystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -341,8 +361,12 @@ ArkTS-Sta: getMaxVolume(volumeType: AudioVolumeType): Promise&lt;int&gt;
 **示例：**
 
 ```ts
-audioVolumeGroupManager.getMaxVolume(audio.AudioVolumeType.MEDIA).then((value) => {
-  console.info(`Succeeded in getting maxVolume. Volume: ${value}.`);
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.getMaxVolume(audio.AudioVolumeType.MEDIA).then((maxVolume) => {
+  console.info(`Succeeded in obtaining the maximum volume, maxVolume: ${maxVolume}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to obtain the maximum volume. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -390,11 +414,11 @@ ArkTS-Sta: getMaxVolumeSync(volumeType: AudioVolumeType): int
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let value = audioVolumeGroupManager.getMaxVolumeSync(audio.AudioVolumeType.MEDIA);
-  console.info(`Succeeded in getting maxVolume. Volume: ${value}.`);
+  let maxVolume = audioVolumeGroupManager.getMaxVolumeSync(audio.AudioVolumeType.MEDIA);
+  console.info(`Succeeded in obtaining the maximum volume, maxVolume: ${maxVolume}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to get maxVolume. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to obtain the maximum volume. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -402,9 +426,10 @@ try {
 
 isMute(volumeType: AudioVolumeType, callback: AsyncCallback&lt;boolean&gt;): void
 
-获取指定音量流静音状态。使用callback异步回调。
+获取指定音量类型静音状态。使用callback异步回调。
 
 > **说明：**
+>
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[isSystemMutedForStream](arkts-apis-audio-AudioVolumeManager.md#issystemmutedforstream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -418,19 +443,19 @@ isMute(volumeType: AudioVolumeType, callback: AsyncCallback&lt;boolean&gt;): voi
 | 参数名     | 类型                                | 必填 | 说明                                            |
 | ---------- | ----------------------------------- | ---- | ----------------------------------------------- |
 | volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音频音量类型。                                    |
-| callback   | AsyncCallback&lt;boolean&gt;        | 是   | 回调函数。<br>ArkTS-Dyn：当获取指定音量流静音状态成功，err为undefined，data为true表示静音，false表示非静音；否则为错误对象。<br>ArkTS-Sta：当获取指定音量流静音状态成功，err为null，data为true表示静音，false表示非静音；否则为错误对象。 |
+| callback   | AsyncCallback&lt;boolean&gt;        | 是   | 回调函数。<br>ArkTS-Dyn：当获取音量静音状态成功，err为undefined，data为true表示静音，false表示非静音；否则为错误对象。<br>ArkTS-Sta：当获取音量静音状态成功，err为null，data为true表示静音，false表示非静音；否则为错误对象。 |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioVolumeGroupManager.isMute(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: boolean) => {
+audioVolumeGroupManager.isMute(audio.AudioVolumeType.MEDIA, (err: BusinessError, isMute: boolean) => {
   if (err) {
-    console.error(`Failed to use isMute function. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to check whether the stream is muted. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info(`Succeeded in using isMute function. MuteState: ${value}.`);
+  console.info(`Succeeded in checking whether the stream is muted, isMuted: ${isMute}.`);
 });
 ```
 
@@ -438,9 +463,10 @@ audioVolumeGroupManager.isMute(audio.AudioVolumeType.MEDIA, (err: BusinessError,
 
 isMute(volumeType: AudioVolumeType): Promise&lt;boolean&gt;
 
-获取指定音量流是否被静音。使用Promise异步回调。
+获取指定音量类型静音状态。使用Promise异步回调。
 
 > **说明：**
+>
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[isSystemMutedForStream](arkts-apis-audio-AudioVolumeManager.md#issystemmutedforstream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -464,8 +490,12 @@ isMute(volumeType: AudioVolumeType): Promise&lt;boolean&gt;
 **示例：**
 
 ```ts
-audioVolumeGroupManager.isMute(audio.AudioVolumeType.MEDIA).then((value: boolean) => {
-  console.info(`Succeeded in using isMute function. MuteState: ${value}.`);
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.isMute(audio.AudioVolumeType.MEDIA).then((isMute: boolean) => {
+  console.info(`Succeeded in checking whether the stream is muted, isMuted: ${isMute}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to check whether the stream is muted. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -473,9 +503,10 @@ audioVolumeGroupManager.isMute(audio.AudioVolumeType.MEDIA).then((value: boolean
 
 isMuteSync(volumeType: AudioVolumeType): boolean
 
-获取指定音量流是否被静音。同步返回结果。
+获取指定音量类型静音状态。同步返回结果。
 
 > **说明：**
+>
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[isSystemMutedForStream](arkts-apis-audio-AudioVolumeManager.md#issystemmutedforstream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -494,7 +525,7 @@ isMuteSync(volumeType: AudioVolumeType): boolean
 
 | 类型                   | 说明                                                   |
 | ---------------------- | ------------------------------------------------------ |
-| boolean | 流静音状态。返回true表示静音，返回false表示非静音。 |
+| boolean | 音量是否为静音状态。返回true表示静音，返回false表示非静音。 |
 
 **错误码：**
 
@@ -511,11 +542,11 @@ isMuteSync(volumeType: AudioVolumeType): boolean
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let value: boolean = audioVolumeGroupManager.isMuteSync(audio.AudioVolumeType.MEDIA);
-  console.info(`Succeeded in using isMuteSync function. MuteState: ${value}.`);
+  let isMute: boolean = audioVolumeGroupManager.isMuteSync(audio.AudioVolumeType.MEDIA);
+  console.info(`Succeeded in checking whether the stream is muted, isMuted: ${isMute}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to use isMuteSync function. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to check whether the stream is muted. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -542,12 +573,12 @@ getRingerMode(callback: AsyncCallback&lt;AudioRingMode&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioVolumeGroupManager.getRingerMode((err: BusinessError, value: audio.AudioRingMode) => {
+audioVolumeGroupManager.getRingerMode((err: BusinessError, ringerMode: audio.AudioRingMode) => {
   if (err) {
-    console.error(`Failed to get ringerMode. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to obtain the ringer mode. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info(`Succeeded in getting ringerMode. AudioRingMode: ${value}.`);
+  console.info(`Succeeded in obtaining the ringer mode, ringerMode: ${ringerMode}.`);
 });
 ```
 
@@ -574,10 +605,10 @@ getRingerMode(): Promise&lt;AudioRingMode&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioVolumeGroupManager.getRingerMode().then((value: audio.AudioRingMode) => {
-  console.info(`Succeeded in getting ringerMode. AudioRingMode: ${value}.`);
+audioVolumeGroupManager.getRingerMode().then((ringerMode: audio.AudioRingMode) => {
+  console.info(`Succeeded in obtaining the ringer mode, ringerMode: ${ringerMode}.`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to get ringerMode. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to obtain the ringer mode. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -605,11 +636,11 @@ getRingerModeSync(): AudioRingMode
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let value: audio.AudioRingMode = audioVolumeGroupManager.getRingerModeSync();
-  console.info(`Succeeded in getting ringerMode. AudioRingMode: ${value}.`);
+  let ringerMode: audio.AudioRingMode = audioVolumeGroupManager.getRingerModeSync();
+  console.info(`Succeeded in obtaining the ringer mode, ringerMode: ${ringerMode}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to get ringerMode. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to obtain the ringer mode. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -647,7 +678,7 @@ on(type: 'ringerModeChange', callback: Callback\<AudioRingMode>): void
 
 ```ts
 audioVolumeGroupManager.on('ringerModeChange', (ringerMode: audio.AudioRingMode) => {
-  console.info(`Succeeded in using on function. AudioRingMode: ${ringerMode}.`);
+  console.info(`Ringer mode changed, ringerMode: ${ringerMode}.`);
 });
 ```
 
@@ -683,7 +714,7 @@ onRingerModeChange(callback: Callback\<AudioRingMode>): void
 
 ```ts
 audioVolumeGroupManager.onRingerModeChange((ringerMode: audio.AudioRingMode) => {
-  console.info(`Succeeded in using on function. AudioRingMode: ${ringerMode}.`);
+  console.info(`Ringer mode changed, ringerMode: ${ringerMode}.`);
 });
 ```
 
@@ -691,7 +722,7 @@ audioVolumeGroupManager.onRingerModeChange((ringerMode: audio.AudioRingMode) => 
 
 off(type: 'ringerModeChange', callback?: Callback&lt;AudioRingMode&gt;): void
 
-取消监听铃声模式变化事件。使用callback异步回调。
+取消监听铃声模式变化事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -705,8 +736,8 @@ off(type: 'ringerModeChange', callback?: Callback&lt;AudioRingMode&gt;): void
 
 | 参数名   | 类型                                   | 必填 | 说明                                                         |
 | -------- | -------------------------------------- |----| ------------------------------------------------------------ |
-| type     | string                                 | 是  | 事件回调类型，支持的事件为'ringerModeChange'，当取消监听铃声模式变化事件时，触发该事件。 |
-| callback |Callback&lt;[AudioRingMode](arkts-apis-audio-e.md#audioringmode)&gt; | 否  | 回调函数，返回变化后的铃音模式。 |
+| type     | string                                 | 是  | 事件回调类型，支持的事件为'ringerModeChange'。 |
+| callback |Callback&lt;[AudioRingMode](arkts-apis-audio-e.md#audioringmode)&gt; | 否  | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[on('ringerModeChange')](#onringermodechange9)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
 
 **错误码：**
 
@@ -724,7 +755,7 @@ audioVolumeGroupManager.off('ringerModeChange');
 
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let ringerModeChangeCallback = (ringerMode: audio.AudioRingMode) => {
-  console.info(`Succeeded in using on or off function. AudioRingMode: ${ringerMode}.`);
+  console.info(`Ringer mode changed, ringerMode: ${ringerMode}.`);
 };
 
 audioVolumeGroupManager.on('ringerModeChange', ringerModeChangeCallback);
@@ -736,7 +767,7 @@ audioVolumeGroupManager.off('ringerModeChange', ringerModeChangeCallback);
 
 offRingerModeChange(callback?: Callback&lt;AudioRingMode&gt;): void
 
-取消监听铃声模式变化事件。使用callback异步回调。
+取消监听铃声模式变化事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -750,7 +781,7 @@ offRingerModeChange(callback?: Callback&lt;AudioRingMode&gt;): void
 
 | 参数名   | 类型                                   | 必填 | 说明                                                         |
 | -------- | -------------------------------------- |----| ------------------------------------------------------------ |
-| callback |Callback&lt;[AudioRingMode](arkts-apis-audio-e.md#audioringmode)&gt; | 否  | 回调函数，返回变化后的铃音模式。 |
+| callback |Callback&lt;[AudioRingMode](arkts-apis-audio-e.md#audioringmode)&gt; | 否  | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[onringerModeChange](#onringermodechange23)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
 
 **错误码：**
 
@@ -768,7 +799,7 @@ audioVolumeGroupManager.offRingerModeChange();
 
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let ringerModeChangeCallback = (ringerMode: audio.AudioRingMode) => {
-  console.info(`Succeeded in using on or off function. AudioRingMode: ${ringerMode}.`);
+  console.info(`Ringer mode changed, ringerMode: ${ringerMode}.`);
 };
 
 audioVolumeGroupManager.onRingerModeChange(ringerModeChangeCallback);
@@ -799,12 +830,12 @@ isMicrophoneMute(callback: AsyncCallback&lt;boolean&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioVolumeGroupManager.isMicrophoneMute((err: BusinessError, value: boolean) => {
+audioVolumeGroupManager.isMicrophoneMute((err: BusinessError, isMute: boolean) => {
   if (err) {
-    console.error(`Failed to use isMicrophoneMute function. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to check whether the microphone is muted. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info(`Succeeded in using isMicrophoneMute function. MuteState: ${value}.`);
+  console.info(`Succeeded in checking whether the microphone is muted, isMuted: ${isMute}.`);
 });
 ```
 
@@ -831,10 +862,10 @@ isMicrophoneMute(): Promise&lt;boolean&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioVolumeGroupManager.isMicrophoneMute().then((value: boolean) => {
-  console.info(`Succeeded in using isMicrophoneMute function. MuteState: ${value}.`);
+audioVolumeGroupManager.isMicrophoneMute().then((isMute: boolean) => {
+  console.info(`Succeeded in checking whether the microphone is muted, isMuted: ${isMute}.`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to use isMicrophoneMute function. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to check whether the microphone is muted. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -862,11 +893,11 @@ isMicrophoneMuteSync(): boolean
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let value: boolean = audioVolumeGroupManager.isMicrophoneMuteSync();
-  console.info(`Succeeded in using isMicrophoneMuteSync function. MuteState: ${value}.`);
+  let isMute: boolean = audioVolumeGroupManager.isMicrophoneMuteSync();
+  console.info(`Succeeded in checking whether the microphone is muted, isMuted: ${isMute}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to use isMicrophoneMuteSync function. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to check whether the microphone is muted. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -906,7 +937,7 @@ on(type: 'micStateChange', callback: Callback&lt;MicStateChangeEvent&gt;): void
 
 ```ts
 audioVolumeGroupManager.on('micStateChange', (micStateChange: audio.MicStateChangeEvent) => {
-  console.info(`Succeeded in using on function. MicStateChangeEvent: ${JSON.stringify(micStateChange)}.`);
+  console.info(`Mic state changed, micStateChangeEvent: ${JSON.stringify(micStateChange)}.`);
 });
 ```
 
@@ -942,7 +973,7 @@ onMicStateChange(callback: Callback&lt;MicStateChangeEvent&gt;): void
 
 ```ts
 audioVolumeGroupManager.onMicStateChange((micStateChange: audio.MicStateChangeEvent) => {
-  console.info(`Succeeded in using onMicStateChange function. MicStateChangeEvent: ${JSON.stringify(micStateChange)}.`);
+  console.info(`Mic state changed, micStateChangeEvent: ${JSON.stringify(micStateChange)}.`);
 });
 ```
 
@@ -950,7 +981,7 @@ audioVolumeGroupManager.onMicStateChange((micStateChange: audio.MicStateChangeEv
 
 off(type: 'micStateChange', callback?: Callback&lt;MicStateChangeEvent&gt;): void
 
-取消监听系统麦克风状态更改事件。使用callback异步回调。
+取消监听系统麦克风状态更改事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -964,8 +995,8 @@ off(type: 'micStateChange', callback?: Callback&lt;MicStateChangeEvent&gt;): voi
 
 | 参数名   | 类型                                   | 必填 | 说明                                                         |
 | -------- | -------------------------------------- |----| ------------------------------------------------------------ |
-| type     | string                                 | 是  | 事件回调类型，支持的事件为'micStateChange'，当取消监听系统麦克风状态更改事件时，触发该事件。 |
-| callback | Callback<[MicStateChangeEvent](arkts-apis-audio-i.md#micstatechangeevent9)> | 否  | 回调函数，返回变更后的麦克风状态。 |
+| type     | string                                 | 是  | 事件回调类型，支持的事件为'micStateChange'。 |
+| callback | Callback<[MicStateChangeEvent](arkts-apis-audio-i.md#micstatechangeevent9)> | 否  | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[on('micStateChange')](#onmicstatechange9)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
 
 **错误码：**
 
@@ -984,7 +1015,7 @@ audioVolumeGroupManager.off('micStateChange');
 
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let micStateChangeCallback = (micStateChange: audio.MicStateChangeEvent) => {
-  console.info(`Succeeded in using on or off function. MicStateChangeEvent: ${JSON.stringify(micStateChange)}.`);
+  console.info(`Mic state changed, micStateChangeEvent: ${JSON.stringify(micStateChange)}.`);
 };
 
 audioVolumeGroupManager.on('micStateChange', micStateChangeCallback);
@@ -1010,7 +1041,7 @@ offMicStateChange(callback?: Callback&lt;MicStateChangeEvent&gt;): void
 
 | 参数名   | 类型                                   | 必填 | 说明                                                         |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback<[MicStateChangeEvent](arkts-apis-audio-i.md#micstatechangeevent9)> | 否  | 回调函数，返回变更后的麦克风状态。 |
+| callback | Callback<[MicStateChangeEvent](arkts-apis-audio-i.md#micstatechangeevent9)> | 否  | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[onmicStateChange](#onmicstatechange23)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
 
 **错误码：**
 
@@ -1028,7 +1059,7 @@ audioVolumeGroupManager.offMicStateChange();
 
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let micStateChangeCallback = (micStateChange: audio.MicStateChangeEvent) => {
-  console.info(`Succeeded in using onMicStateChange function. MicStateChangeEvent: ${JSON.stringify(micStateChange)}.`);
+  console.info(`Mic state changed, micStateChangeEvent: ${JSON.stringify(micStateChange)}.`);
 };
 
 audioVolumeGroupManager.onMicStateChange(micStateChangeCallback);
@@ -1057,8 +1088,8 @@ isVolumeUnadjustable(): boolean
 **示例：**
 
 ```ts
-let volumeAdjustSwitch: boolean = audioVolumeGroupManager.isVolumeUnadjustable();
-console.info(`Succeeded in using isVolumeUnadjustable function. VolumeUnadjustable: ${volumeAdjustSwitch}.`);
+let isVolumeUnadjustable: boolean = audioVolumeGroupManager.isVolumeUnadjustable();
+console.info(`Succeeded in checking whether the volume is unadjustable, isVolumeUnadjustable: ${isVolumeUnadjustable}.`);
 ```
 
 ## getSystemVolumeInDb<sup>(deprecated)</sup>
@@ -1070,6 +1101,7 @@ ArkTS-Sta: getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: int, de
 获取音量增益dB值。使用callback异步回调。
 
 > **说明：**
+>
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[getVolumeInUnitOfDbByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumeinunitofdbbystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -1100,12 +1132,14 @@ ArkTS-Sta: getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: int, de
 **示例：**
 
 ```ts
-audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, audio.DeviceType.SPEAKER, (err, value) => {
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, audio.DeviceType.SPEAKER, (err: BusinessError, volumeDb) => {
   if (err) {
-    console.error(`Failed to get system volume in db. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`Succeeded in getting system volume in db. DB: ${value}.`);
+    console.error(`Failed to obtain the system volume in dB. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info(`Succeeded in obtaining the system volume in dB, volumeDb: ${volumeDb}.`);
 });
 ```
 
@@ -1118,6 +1152,7 @@ ArkTS-Sta: getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: int, de
 获取音量增益dB值。使用Promise异步回调。
 
 > **说明：**
+>
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[getVolumeInUnitOfDbByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumeinunitofdbbystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -1155,10 +1190,10 @@ ArkTS-Sta: getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: int, de
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, audio.DeviceType.SPEAKER).then((value) => {
-  console.info(`Succeeded in getting system volume in db. DB: ${value}.`);
+audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, audio.DeviceType.SPEAKER).then((volumeDb) => {
+  console.info(`Succeeded in obtaining the system volume in dB, volumeDb: ${volumeDb}.`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to get system volume in db. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to obtain the system volume in dB. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1171,6 +1206,7 @@ ArkTS-Sta: getSystemVolumeInDbSync(volumeType: AudioVolumeType, volumeLevel: int
 获取音量增益dB值。同步返回结果。
 
 > **说明：**
+>
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[getVolumeInUnitOfDbByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumeinunitofdbbystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -1208,11 +1244,11 @@ ArkTS-Sta: getSystemVolumeInDbSync(volumeType: AudioVolumeType, volumeLevel: int
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let value = audioVolumeGroupManager.getSystemVolumeInDbSync(audio.AudioVolumeType.MEDIA, 3, audio.DeviceType.SPEAKER);
-  console.info(`Succeeded in getting system volume in db. DB: ${value}.`);
+  let volumeDb = audioVolumeGroupManager.getSystemVolumeInDbSync(audio.AudioVolumeType.MEDIA, 3, audio.DeviceType.SPEAKER);
+  console.info(`Succeeded in obtaining the system volume in dB, volumeDb: ${volumeDb}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to get system volume in db. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to obtain the system volume in dB. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1263,14 +1299,14 @@ let capturerInfo: audio.AudioCapturerInfo = {
 };
 
 audio.getAudioManager().getRoutingManager().getPreferredInputDeviceForCapturerInfo(capturerInfo).then((data) => {
-  audioVolumeGroupManager.getMaxAmplitudeForInputDevice(data[0]).then((value) => {
-    console.info(`Succeeded in getting maxAmplitude for input device. Amplitude: ${value}.`);
+  audioVolumeGroupManager.getMaxAmplitudeForInputDevice(data[0]).then((maxAmplitude) => {
+    console.info(`Succeeded in obtaining the maximum amplitude for input device, maxAmplitude: ${maxAmplitude}.`);
   }).catch((err: BusinessError) => {
-    console.error(`Failed to get maxAmplitude for input device. Code: ${err.code}, message: ${err.message}`);
-  })
+    console.error(`Failed to obtain the maximum amplitude for input device. Code: ${err.code}, message: ${err.message}`);
+  });
 }).catch((err: BusinessError) => {
-  console.error(`Failed to get preferred input device for capturer info. Code: ${err.code}, message: ${err.message}`);
-})
+  console.error(`Failed to obtain the preferred input device for capturer info. Code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ## getMaxAmplitudeForOutputDevice<sup>12+</sup>
@@ -1320,14 +1356,14 @@ let rendererInfo: audio.AudioRendererInfo = {
 };
 
 audio.getAudioManager().getRoutingManager().getPreferOutputDeviceForRendererInfo(rendererInfo).then((data) => {
-  audioVolumeGroupManager.getMaxAmplitudeForOutputDevice(data[0]).then((value) => {
-    console.info(`Succeeded in getting maxAmplitude for output device. Amplitude: ${value}.`);
+  audioVolumeGroupManager.getMaxAmplitudeForOutputDevice(data[0]).then((maxAmplitude) => {
+    console.info(`Succeeded in obtaining the maximum amplitude for output device, maxAmplitude: ${maxAmplitude}.`);
   }).catch((err: BusinessError) => {
-    console.error(`Failed to get maxAmplitude for output device. Code: ${err.code}, message: ${err.message}`);
-  })
+    console.error(`Failed to obtain the maximum amplitude for output device. Code: ${err.code}, message: ${err.message}`);
+  });
 }).catch((err: BusinessError) => {
-  console.error(`Failed to get prefer output device for renderer info. Code: ${err.code}, message: ${err.message}`);
-})
+  console.error(`Failed to obtain the preferred output device for renderer info. Code: ${err.code}, message: ${err.message}`);
+});
 ```
 ## setMicrophoneMute<sup>(deprecated)</sup>
 
@@ -1361,10 +1397,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioVolumeGroupManager.setMicrophoneMute(true, (err: BusinessError) => {
   if (err) {
-    console.error(`Failed to set microphone mute. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to mute the microphone. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info('Succeeded in setting microphone mute.');
+  console.info('Succeeded in muting the microphone.');
 });
 ```
 
@@ -1396,12 +1432,16 @@ setMicrophoneMute(mute: boolean): Promise&lt;void&gt;
 
 | 类型                | 说明                            |
 | ------------------- | ------------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 audioVolumeGroupManager.setMicrophoneMute(true).then(() => {
-  console.info('Succeeded in setting microphone mute.');
+  console.info('Succeeded in muting the microphone.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to mute the microphone. Code: ${err.code}, message: ${err.message}`);
 });
 ```

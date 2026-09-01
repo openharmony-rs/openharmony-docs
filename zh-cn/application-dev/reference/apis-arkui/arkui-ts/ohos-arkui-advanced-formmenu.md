@@ -22,6 +22,8 @@
 >
 > 该组件不支持在Wearable设备上使用。
 >
+> 从API version 18开始，建议使用[formProvider.openFormManager](../../apis-form-kit/js-apis-app-form-formProvider.md#formprovideropenformmanager18)接口。
+>
 > 卡片具体开发指导请参考[卡片开发指南](../../../form/formkit-overview.md)。
 >
 > 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
@@ -48,13 +50,7 @@ import { AddFormMenuItem } from '@ohos.arkui.advanced.FormMenu';
 
 ## AddFormMenuItem 
 
-```ts
-AddFormMenuItem(
-  want: Want,
-  componentId: string,
-  options?: AddFormOptions
-): void
-```
+AddFormMenuItem(want: Want, componentId: string, options?: AddFormOptions): void
 
 **装饰器类型：**@Builder
 
@@ -158,11 +154,11 @@ struct Index {
             }
           },
           style: {
-            // options: {
-            //   startIcon: $r("app.media.icon"), // 菜单图标,可以自己提供。系统默认采用"sys.media.ic_public_add"
-            //   content: "添加到桌面",  // 菜单内容，可以自己提供。默认使用"sys.string.ohos_add_form_to_desktop"
-            //   endIcon: $r("app.media.icon") // 菜单图标，可以自己提供
-            // }
+            options: {
+              startIcon: $r("app.media.icon"), // 菜单图标，可以自己提供。系统默认采用"sys.media.ic_public_add"
+              content: "添加到桌面",  // 菜单内容，可以自己提供。默认使用"sys.string.ohos_add_form_to_desktop"
+              endIcon: $r("app.media.icon") // 菜单图标，可以自己提供
+            }
           }
         }
       )
@@ -329,6 +325,6 @@ struct WidgetCard {
 
 **调用高级自定义控件桌面加桌结果**
 
-左侧是formbindingdata为空加桌结果，右侧是formbindingdata为{ data: 'share' }的加桌结果。
+左侧是formBindingData为空加桌结果，右侧是formBindingData为{ data: 'share' }的加桌结果。
 
 ![zh-cn_image_0000001616959836](figures/add-form-to-desktop-result.jpeg)

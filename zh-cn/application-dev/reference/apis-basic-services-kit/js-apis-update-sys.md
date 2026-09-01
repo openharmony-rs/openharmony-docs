@@ -3326,10 +3326,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 | EVENT_DOWNLOAD_RESUME  | 0x01000007 | 恢复下载。   |
 | EVENT_DOWNLOAD_SUCCESS | 0x01000008 | 下载成功。   |
 | EVENT_DOWNLOAD_FAIL    | 0x01000009 | 下载失败。   |
-| EVENT_UPGRADE_WAIT     | 0x0100000A | 待升级。    |
-| EVENT_UPGRADE_START    | 0x0100000B | 开始升级。   |
-| EVENT_UPGRADE_UPDATE   | 0x0100000C | 升级中。    |
-| EVENT_APPLY_WAIT       | 0x0100000D | 待生效。    |
-| EVENT_APPLY_START      | 0x0100000E | 开始生效。   |
-| EVENT_UPGRADE_SUCCESS  | 0x0100000F | 更新成功。   |
+| EVENT_UPGRADE_WAIT     | 0x0100000a | 待升级。    |
+| EVENT_UPGRADE_START    | 0x0100000b | 开始升级。   |
+| EVENT_UPGRADE_UPDATE   | 0x0100000c | 升级中。    |
+| EVENT_APPLY_WAIT       | 0x0100000d | 待生效。    |
+| EVENT_APPLY_START      | 0x0100000e | 开始生效。   |
+| EVENT_UPGRADE_SUCCESS  | 0x0100000f | 更新成功。   |
 | EVENT_UPGRADE_FAIL     | 0x01000010 | 更新失败。   |

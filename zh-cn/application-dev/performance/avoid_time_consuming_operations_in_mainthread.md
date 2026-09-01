@@ -160,7 +160,7 @@ async function mockRequestData(index: number, context: Context): Promise<ModelDe
 
 ![](./figures//trace_taskpool_callback.png) 
 
-从图中可以看到，主线程阻塞耗时明显减少，同时在右上角出现了新的trace，__H:Deserialize__，这个trace表示在反序列化taskpool线程返回的数据。依然存在一定耗时(17ms) 容易出现丢帧等问题。针对跨线程的序列化耗时问题，系统提供了[@Sendable装饰器](../arkts-utils/arkts-sendable.md#sendable装饰器)来实现内存共享。可以在返回的类对象ModelDetailVO上使用@Sendable装饰器，继续优化性能。
+从图中可以看到，主线程阻塞耗时明显减少，同时在右上角出现了新的trace，__H:Deserialize__，这个trace表示在反序列化taskpool线程返回的数据。依然存在一定耗时(17ms)，容易出现丢帧等问题。针对跨线程的序列化耗时问题，系统提供了[@Sendable装饰器](../arkts-utils/arkts-sendable.md#sendable装饰器)来实现内存共享。可以在返回的类对象ModelDetailVO上使用@Sendable装饰器，继续优化性能。
 
 ### 优化思路：可以使用@Sendable装饰器提升数据传输和同步效率
 
@@ -262,4 +262,4 @@ struct ViewB {
 
 ## 总结
 
-通过上面的示例代码和优化过程，可以看到在主线程的回调函数中处理耗时操作会直接阻塞主线程，用户能感知到明显的卡顿，用子线程配合@Sendable可以有效的优化该场景的性能。
+通过上面的示例代码和优化过程，可以看到在主线程的回调函数中处理耗时操作会直接阻塞主线程，用户能感知到明显的卡顿，用子线程配合@Sendable可以有效地优化该场景的性能。

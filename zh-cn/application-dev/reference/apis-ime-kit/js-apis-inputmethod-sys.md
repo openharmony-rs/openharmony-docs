@@ -2,7 +2,7 @@
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->
-<!--Designer: @andeszhang-->
+<!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -63,7 +63,7 @@ import { InputMethodSubtype } from '@kit.IMEKit';
 
 async function switchInputMethodWithSubtype() {
   // 1. 获取当前输入法
-  const currentIme: inputMethod.InputMethodProperty | undefined = inputMethod.getCurrentInputMethod();
+  const currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod();
   if (!currentIme) {
     console.error("Failed to get current input method");
     return;
@@ -76,7 +76,7 @@ async function switchInputMethodWithSubtype() {
     console.error(`Failed to switchInputMethod. Code: ${err.code}, message: ${err.message}`);
   }
   // 3. 获取当前输入法子类型
-  const currentSubtype: InputMethodSubtype | undefined = inputMethod.getCurrentInputMethodSubtype();
+  const currentSubtype: InputMethodSubtype = inputMethod.getCurrentInputMethodSubtype();
   if (!currentSubtype) {
     console.error("Failed to get current input subtype");
     return;
@@ -871,11 +871,14 @@ ArkTS-Sta: getDefaultInputMethod(userId?: int): InputMethodProperty
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   let defaultIme: inputMethod.InputMethodProperty = inputMethod.getDefaultInputMethod(100);
   console.info('Succeeded in getting default input method, name: ' + defaultIme.name + ', id: ' + defaultIme.id);
 } catch (err) {
-  console.error(`Failed to getDefaultInputMethod. Code: ${err.code}, message: ${err.message}`);
+  let error = err as BusinessError;
+  console.error(`Failed to getDefaultInputMethod. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -925,12 +928,14 @@ ArkTS-Sta: getSystemInputMethodConfigAbility(userId?: int): ElementName
 
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let inputMethodConfig: bundleManager.ElementName = inputMethod.getSystemInputMethodConfigAbility(100);
   console.info('Succeeded in getting system input method config ability, bundleName: ' + inputMethodConfig.bundleName);
 } catch (err) {
-  console.error(`Failed to getSystemInputMethodConfigAbility. Code: ${err.code}, message: ${err.message}`);
+  let error = err as BusinessError;
+  console.error(`Failed to getSystemInputMethodConfigAbility. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1053,11 +1058,14 @@ ArkTS-Sta: getCurrentInputMethod(userId?: int): InputMethodProperty
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod(100);
   console.info('Succeeded in getting current input method, name: ' + currentIme.name + ', id: ' + currentIme.id);
 } catch (err) {
-  console.error(`Failed to getCurrentInputMethod. Code: ${err.code}, message: ${err.message}`);
+  let error = err as BusinessError;
+  console.error(`Failed to getCurrentInputMethod. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1107,12 +1115,14 @@ ArkTS-Sta: getCurrentInputMethodSubtype(userId?: int): InputMethodSubtype
 
 ```ts
 import { InputMethodSubtype } from '@kit.IMEKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let currentImeSubType: InputMethodSubtype = inputMethod.getCurrentInputMethodSubtype(100);
   console.info('Succeeded in getting current input method subtype, id: ' + currentImeSubType.id);
 } catch (err) {
-  console.error(`Failed to getCurrentInputMethodSubtype. Code: ${err.code}, message: ${err.message}`);
+  let error = err as BusinessError;
+  console.error(`Failed to getCurrentInputMethodSubtype. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1238,11 +1248,14 @@ ArkTS-Sta: getAllInputMethodsSync(userId?: int): Array&lt;InputMethodProperty&gt
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   let imeProperty: Array<inputMethod.InputMethodProperty> = inputMethod.getSetting().getAllInputMethodsSync(100);
   console.info('Succeeded in getting all input methods, count: ' + imeProperty.length);
 } catch (err) {
-  console.error(`Failed to getAllInputMethodsSync. Code: ${err.code}, message: ${err.message}`);
+  let error = err as BusinessError;
+  console.error(`Failed to getAllInputMethodsSync. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1294,13 +1307,15 @@ ArkTS-Sta: getInputMethodSubtypes(bundleName: string, userId?: int): Array&lt;In
 
 ```ts
 import { InputMethodSubtype } from '@kit.IMEKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
 try {
   let subtypes: Array<InputMethodSubtype> = inputMethodSetting.getInputMethodSubtypes('com.example.keyboard', 100);
   console.info('Succeeded in getting input method subtypes, count: ' + subtypes.length);
 } catch (err) {
-  console.error(`Failed to getInputMethodSubtypes. Code: ${err.code}, message: ${err.message}`);
+  let error = err as BusinessError;
+  console.error(`Failed to getInputMethodSubtypes. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1357,39 +1372,16 @@ ArkTS-Sta: getInputMethodsSync(enable: boolean, userId?: int): Array&lt;InputMet
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   let imeProperty: Array<inputMethod.InputMethodProperty> = inputMethod.getSetting().getInputMethodsSync(true, 100);
   console.info('Succeeded in getting enabled input methods, count: ' + imeProperty.length);
 } catch (err) {
-  console.error(`Failed to getInputMethodsSync. Code: ${err.code}, message: ${err.message}`);
+  let error = err as BusinessError;
+  console.error(`Failed to getInputMethodsSync. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-## ImeChangeWithUserIdCallback
-
-ArkTS-Dyn: type ImeChangeWithUserIdCallback = (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype, userId: number) => void
-
-ArkTS-Sta: type ImeChangeWithUserIdCallback = (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype, userId: int) => void
-
-输入法变更事件回调，携带发生输入法变更的用户ID。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**系统接口：** 此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
-**参数：**
-
-| 参数名                    | 类型                                                         | 必填 | 说明             |
-| ------------------------- | ------------------------------------------------------------ | ---- | ---------------- |
-| inputMethodProperty | [InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8) | 是   | 当前输入法的属性。 |
-| inputMethodSubtype | [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype) | 是   | 当前输入法的子类型。 |
-| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 输入法发生变化的用户ID。 |
 
 ### onImeChangeWithUserId
 
@@ -1486,6 +1478,32 @@ offImeChangeWithUserId(callback?: ImeChangeWithUserIdCallback): void
 ```ts
 inputMethod.getSetting().offImeChangeWithUserId();
 ```
+
+## ImeChangeWithUserIdCallback
+
+ArkTS-Dyn: type ImeChangeWithUserIdCallback = (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype, userId: number) => void
+
+ArkTS-Sta: type ImeChangeWithUserIdCallback = (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype, userId: int) => void
+
+输入法变更事件回调，携带发生输入法变更的用户ID。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名                    | 类型                                                         | 必填 | 说明             |
+| ------------------------- | ------------------------------------------------------------ | ---- | ---------------- |
+| inputMethodProperty | [InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8) | 是   | 当前输入法的属性。 |
+| inputMethodSubtype | [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype) | 是   | 当前输入法的子类型。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 输入法发生变化的用户ID。 |
 
 ## InputWindowInfo
 
