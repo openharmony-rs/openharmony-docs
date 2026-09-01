@@ -76,7 +76,7 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
    
    ``` TypeScript
    // create a new camera.
-   this.cam = await rf.createCamera({ 'name': 'Camera' });
+   this.cam = await rf.createCamera({ name: 'Camera' });
    // set the camera.
    this.cam.enabled = true;
    this.cam.position.z = 5;
