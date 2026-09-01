@@ -1504,7 +1504,7 @@
     - [CompleteData](arkts-ability-wantagent-completedata-depr-i.md)
     - [OperationType](arkts-ability-wantagent-operationtype-depr-e.md)
     - [WantAgentFlags](arkts-ability-wantagent-wantagentflags-depr-e.md)
-  - [WantAgent](arkts-ability-wantagent-depr-t.md)
+  - [Type WantAgent](arkts-ability-wantagent-depr-t.md)
 - [@system.package](arkts-system-package.md)
   - [Package](arkts-ability-system-package-package-c.md)
   - [CheckPackageHasInstalledOptions](arkts-ability-system-package-checkpackagehasinstalledoptions-i.md)
