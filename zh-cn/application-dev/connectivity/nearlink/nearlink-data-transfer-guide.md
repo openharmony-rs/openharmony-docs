@@ -21,7 +21,7 @@
 
 ## 接口说明
 
-使用星闪传输数据，完整的API说明以及实例代码请参考：[@ohos.nearlink.dataTransfer (星闪数传能力)](../../reference/apis-connectivity-kit/js-apis-nearlink-data-transfer-api.md)。
+使用星闪传输数据，完整的API说明以及示例代码请参考：[@ohos.nearlink.dataTransfer (星闪数传能力)](../../reference/apis-connectivity-kit/js-apis-nearlink-data-transfer-api.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |

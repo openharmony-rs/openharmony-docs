@@ -18,7 +18,7 @@ SSAP服务端是服务的承载方：创建服务并声明属性，接收和响�
 
 ### 接口说明
 
-SSAP服务端管理功能，完整的API说明以及实例代码请参考：[@ohos.nearlink.ssap (星闪SSAP连接能力)](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md)。
+SSAP服务端管理功能，完整的API说明以及示例代码请参考：[@ohos.nearlink.ssap (星闪SSAP连接能力)](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
@@ -180,7 +180,7 @@ SSAP客户端是服务的使用方：通过扫描发现服务端设备并发起�
 
 ### 接口说明
 
-SSAP客户端连接功能，完整的API说明以及实例代码请参考：[@ohos.nearlink.ssap (星闪SSAP连接能力)](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md)。
+SSAP客户端连接功能，完整的API说明以及示例代码请参考：[@ohos.nearlink.ssap (星闪SSAP连接能力)](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |

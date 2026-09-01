@@ -14,7 +14,7 @@
 
 ## 接口说明
 
-提供获取合作设备集合信息的方式，主动查询和订阅信息变化，完整的API说明以及实例代码请参考：[@ohos.nearlink.cdsm (星闪合作设备集合管理能力)](../../reference/apis-connectivity-kit/js-apis-nearlink-cdsm.md)。
+提供获取合作设备集合信息的方式，主动查询和订阅信息变化，完整的API说明以及示例代码请参考：[@ohos.nearlink.cdsm (星闪合作设备集合管理能力)](../../reference/apis-connectivity-kit/js-apis-nearlink-cdsm.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |

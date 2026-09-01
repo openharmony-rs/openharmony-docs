@@ -14,7 +14,7 @@
 
 ### 接口说明
 
-发送星闪广播，完整的API说明以及实例代码请参考：[@ohos.nearlink.advertising (星闪广播能力)](../../reference/apis-connectivity-kit/js-apis-nearlink-advertising.md)。
+发送星闪广播，完整的API说明以及示例代码请参考：[@ohos.nearlink.advertising (星闪广播能力)](../../reference/apis-connectivity-kit/js-apis-nearlink-advertising.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
@@ -141,7 +141,7 @@
 
 ### 接口说明
 
-发起星闪扫描，完整的API说明以及实例代码请参考：[@ohos.nearlink.scan (星闪扫描能力)](../../reference/apis-connectivity-kit/js-apis-nearlink-scan.md)。
+发起星闪扫描，完整的API说明以及示例代码请参考：[@ohos.nearlink.scan (星闪扫描能力)](../../reference/apis-connectivity-kit/js-apis-nearlink-scan.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |

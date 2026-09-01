@@ -33,7 +33,7 @@
 
 ### 接口说明
 
-查询设备是否支持星闪，完整的API说明以及实例代码请参考：[@ohos.nearlink.manager (星闪基础管理能力)](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md)。
+查询设备是否支持星闪，完整的API说明以及示例代码请参考：[@ohos.nearlink.manager (星闪基础管理能力)](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
@@ -71,7 +71,7 @@
 
 ### 接口说明
 
-提供主动查询和订阅通知两种获取星闪开关状态的方式，完整的API说明以及实例代码请参考：[@ohos.nearlink.manager (星闪基础管理能力)](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md)。
+提供主动查询和订阅通知两种获取星闪开关状态的方式，完整的API说明以及示例代码请参考：[@ohos.nearlink.manager (星闪基础管理能力)](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
