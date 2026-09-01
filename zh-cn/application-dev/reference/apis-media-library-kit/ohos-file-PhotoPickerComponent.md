@@ -786,7 +786,7 @@ completed(): Promise\<CompletedResult>
 
 | 名称     | 类型    | 只读 | 可选  | 说明           |
 |----------|--------|-----|-----|--------------|
-| duration | number  | 否  | 是 | 动效时长，单位为毫秒（ms）,取值范围[0, +∞)。 |
+| duration | number  | 否  | 是 | 动效时长，单位为毫秒（ms），取值范围[0, +∞)。 |
 | curve      | [Curve](../apis-arkui/js-apis-curve.md#curve) &verbar; [ICurve](../apis-arkui/js-apis-curve.md#icurve9) &verbar; string | 否   | 是 | 动效曲线。        |
 
 ## MaxSelected
