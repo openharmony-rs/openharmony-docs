@@ -70,7 +70,7 @@
               capsule: {
                 title: "testTitle",
                 icon: imagePixelMap,
-                backgroundColor: "testColor",
+                backgroundColor: "testColor", // 需要替换为合法的颜色值，如'#FF0000'。
               },
               // 进度，更新进度时，只需修改progress，重复publish即可
               progress: {

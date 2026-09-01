@@ -117,7 +117,7 @@ try {
 try {
   // 需根据实际情况进行替换
   let currentInputMethod: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod();
-  deviceSettings.setValue(wantTemp, 'defaultInputMethod', currentInputMethod.packageName);
+  deviceSettings.setValue(wantTemp, 'defaultInputMethod', currentInputMethod.name);
   console.info(`Succeeded in setting default input method.`);
 } catch (err) {
   console.error(`Failed to set default input method. Code: ${err.code}, message: ${err.message}`);

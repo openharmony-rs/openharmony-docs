@@ -1790,9 +1790,11 @@ struct Alone {
 
 ![targetSpaceMenu](figures/targetSpaceMenu.png)
 
-### 示例24（设置菜单的系统材质）
+### 示例24（设置菜单的沉浸光感）
 
-该示例通过设置[ContextMenuOptions](#contextmenuoptions10)中的systemMaterial属性，实现了菜单的系统材质视效。
+该示例通过[ContextMenuOptions](#contextmenuoptions10)中的systemMaterial属性设置组件的系统材质，实现了菜单的沉浸光感视效。
+
+组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
 
 从API版本26.0.0开始，在ContextMenuOptions中新增了systemMaterial属性。
 
@@ -1822,17 +1824,18 @@ struct Index {
     }
     .height('100%')
     .width('100%')
-    .backgroundColor(Color.Gray)
+    // 请开发者替换为实际资源文件
+    .backgroundImage($r("app.media.img"))
   }
 }
 ```
 未设置系统材质时：
 
-![menuWithoutNewMaterial](figures/menuWithoutNewMaterial.PNG)
+![未设置系统材质时](figures/menuWithoutNewMaterial.gif)
 
 设置系统材质后：
 
-![menuNewMaterial](figures/menuNewMaterial.PNG)
+![设置系统材质后](figures/menuNewMaterial.gif)
 
 ### 示例25（使用gridStyle设置栅格菜单）
 

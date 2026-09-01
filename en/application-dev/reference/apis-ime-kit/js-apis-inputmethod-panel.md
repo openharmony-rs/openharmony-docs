@@ -6,12 +6,11 @@
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=c9f68a28229d3fb5da602baa0bfb8e542d407a50 translatedAt=2026-08-25T01:24:57.620Z pushedAt=2026-08-26T09:18:14.732Z -->
+<!-- md-trans-meta sourceCommit=c9f68a28229d3fb5da602baa0bfb8e542d407a50 translatedAt=2026-08-25T01:24:57.620Z pushedAt=2026-08-27T03:59:43.203Z -->
 
 The **@ohos.inputMethod.Panel** module provides data definitions for input method panel attributes, supporting configuration of the panel type and display state. It is applicable to scenarios that require fine-grained control over the display behavior of the input method panel.
 
 This module serves as a data module for input method panel attributes. It defines the **PanelInfo** interface and two enum types, **PanelType** and **PanelFlag**, to specify the input method panel type (soft keyboard or status bar) and display state (fixed, floating, or candidate).
-
 
 This module offers capabilities to configure input method panel attributes. An input method app can specify the panel type and state via **PanelInfo** to implement panels in different forms: fixed soft keyboard (default, anchored at the bottom of the screen), floating soft keyboard (freely draggable), and candidate panel (displays candidate words in an independent window, with visibility controlled by you).
 
@@ -91,7 +90,7 @@ Suggestions for the **PanelInfo** parameter:
 
   - Default value: **SOFT_KEYBOARD** (**0**). A soft keyboard panel is created by default if this parameter is not specified.
 
-  - Usage with related APIs: The **flag** property is currently used only to describe the state of a **SOFT_KEYBOARD** panel. Setting **flag** takes no effect when **type** is set to **STATUS_BAR**.
+  - Usage with related parameters: The **flag** property is currently used only to describe the state of a **SOFT_KEYBOARD** panel. Setting **flag** takes no effect when **type** is set to **STATUS_BAR**.
 
 - **flag** parameter:
 

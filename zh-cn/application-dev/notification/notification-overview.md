@@ -50,6 +50,8 @@ Notification Kit中常用的通知样式如下：
 | [通知角标](./notification-badge.md)      | ![notification_badge](figures/notification_badge.png)   | 以数字的形式展示在右上角。 |
 | [进度条](./progress-bar-notification.md) | ![progress_notification](figures/progress_notification.png)    | 进度类通知。 |
 
+<!--RP5--><!--RP5End-->
+
 ## 约束限制
 - 单个应用已发布的通知在[通知中心](notification-glossary.md#notification-center通知中心)等系统入口的留存数量有限（当前规格最多24条）。
 - 通知的长度不能超过200KB（跨进程序列化大小限制）。
