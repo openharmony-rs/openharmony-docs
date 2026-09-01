@@ -4899,7 +4899,6 @@ getLocalP2pServices(): Promise&lt;Array&lt;WifiP2pServiceInfo&gt;&gt;
 | 202 | System API is not allowed called by Non-system application. |
 | 801 | Capability not supported. |
 | 2801000 | Operation failed. |
-| 2801001 | Wi-Fi STA disabled. |
 
 **示例：**
 ```ts
