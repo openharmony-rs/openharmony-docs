@@ -7,29 +7,31 @@
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
 
-## 能力范围
+## 概述
 
 适用于期望通过后台预先加载应用数据实现优化应用启动体验的场景，系统会根据用户使用习惯、频次以及系统资源（内存、电量）等条件，预先启动应用进程并执行加载回调方法，允许应用在后台执行短时的内容和数据加载。例如：资讯刷新、消息获取、视频缓存等。
+
+后台加载任务相关接口从API版本26.1.0开始支持。
 
 ## 实现原理
 
 1. 需要启用后台加载任务功能的应用，可在前台启动时向系统注册任务。
-2. 任务注册后，系统允许应用查询和删除任务。
+2. 任务注册后，系统允许应用查询和取消注册任务。
 3. 系统的后台加载任务管理模块会根据用户使用应用的习惯及系统状态（包括系统可用内存、电池电量、设备温度等）统一决策应用执行后台加载任务时机。应用无法对任务触发时机进行干预。
 
 ## 约束与限制
 
-### 设备限制
+**设备限制**
 
 本功能仅支持标准系统设备。
 
-### 规格限制
+**规格限制**
 
-- **数量限制：** 一个应用只能注册一个后台加载任务，任务中只能指定唯一的主用UIAbility。
+- 数量限制：一个应用只能注册一个后台加载任务，任务中只能指定唯一的主UIAbility。
 
-- **超时：** 系统回调加载任务开始执行时最长运行30秒。如果应用多次超时，系统会禁用该应用，取消后续的任务调度（即使重新注册任务仍然不会再调度了）。
+- 超时：系统回调后台加载任务开始执行后，任务最长运行30秒。如果应用多次超时，系统将禁用该应用的后台加载任务调度，即使重新注册任务也不会再被调度。
 
-- **禁止执行可感知操作：** 在UIAbility创建阶段和加载任务执行阶段，禁止应用执行音频播放、音频录制、定位、操作闪光灯等可感知行为。如果系统检测到应用存在此类操作，系统会禁用该应用，取消后续的任务调度。
+- 禁止执行可感知操作：在UIAbility创建阶段和加载任务执行阶段，禁止应用执行音频播放、音频录制、定位、操作闪光灯等可感知行为。如果系统检测到应用存在此类操作，系统将禁用该应用的后台加载任务调度，取消后续的任务调度。
 
 
 ## 接口说明
@@ -46,28 +48,35 @@
 
 **表2** 后台加载任务需要应用实现的回调接口
 
-以下是后台加载任务回调开发使用的相关接口，更多接口及使用方式请见[后台加载任务](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md)文档。
+应用需要实现的回调方法如下：
 | 接口名 | 接口描述 |
 | -------- | -------- |
-| [ON_START](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#常量) | 需要实现的执行后台加载任务的方法名，系统通过StartAbilityByCall方法启动应用后，会回调此方法。方法的入参为[backgroundLoader.TaskInfo](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#taskinfo)。 |
-| [ON_STOP](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#常量) | 待应用实现的回调方法名。系统在后台加载任务异常取消时，会回调onStop方法。方法的入参为[backgroundLoader.TaskStopInfo](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#taskstopinfo)。 |
+| [ON_START](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#常量) | 需要应用实现的回调方法名，系统通过StartAbilityByCall方法启动应用后，会回调此方法。方法的入参为[backgroundLoader.TaskInfo](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#taskinfo)。 |
+| [ON_STOP](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#常量) | 需要应用实现的回调方法名，系统在后台加载任务异常取消时，会回调此方法。方法的入参为[backgroundLoader.TaskStopInfo](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#taskstopinfo)。 |
 
 
 ## 开发步骤
 
 后台加载任务的开发步骤分为三步：
 
-1. **实现后台加载任务回调能力：** 定义ON_START和ON_STOP回调函数，并注册到应用主UIAbility的Callee中。
+1. **实现后台加载任务回调能力：** 定义ON_START和ON_STOP回调函数，并注册到应用主UIAbility的[Callee](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)中。
 
-2. **注册后台加载任务：** 调用registerTask接口，将任务注册到后台加载任务服务。
+2. **注册、取消注册及查询后台加载任务：** 调用[registerTask](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#backgroundloaderregistertask)接口注册任务，可通过[unregisterTask](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#backgroundloaderunregistertask)取消注册，通过[getTaskInfo](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#backgroundloadergettaskinfo)查询任务信息。
 
-3. **完成后台加载任务：** 在ON_START回调中执行加载逻辑后，调用finishTask接口通知系统任务完成。
+3. **完成后台加载任务：** 在ON_START回调中执行加载逻辑后，调用[finishTask](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#backgroundloaderfinishtask)接口通知系统任务完成。
 
 ### 实现后台加载任务回调能力
 
 1. 声明ohos.permission.KEEP_BACKGROUND_RUNNING权限，配置方式请参见[声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
-2. 在应用主UIAbility的onCreate生命周期中，通过Callee注册ON_START和ON_STOP回调函数。
+2. 导入模块。
+
+   ``` TypeScript
+   import { backgroundLoader } from '@kit.BackgroundTasksKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   ```
+
+3. 在应用主UIAbility的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)生命周期中，通过[Callee](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)注册ON_START和ON_STOP回调函数。Callee回调注册随主UIAbility生命周期存在，随其销毁自动释放，无需手动注销。
 
    <!-- @[backgroundLoader_register_callee](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
@@ -84,20 +93,15 @@
 
 ### 注册后台加载任务
 
-1. 导入模块。
+若未声明ohos.permission.KEEP_BACKGROUND_RUNNING权限，调用将抛出201错误；系统服务异常时抛出9700003错误；taskInfo参数不合法时抛出9700004错误。错误码详情请参见[workScheduler错误码](../reference/apis-backgroundtasks-kit/errorcode-workScheduler.md)。
 
-   ``` TypeScript
-   import { backgroundLoader } from '@kit.BackgroundTasksKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   ```
-
-2. 注册后台加载任务。
+1. 注册后台加载任务。
 
    <!-- @[backgroundLoader_registerTask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
    ``` TypeScript
    const taskInfo: backgroundLoader.TaskInfo = {
-     abilityname: abilityname,
+     abilityName: abilityName,
      taskId: taskId
    };
    try {
@@ -111,13 +115,13 @@
    }
    ```
 
-3. 取消注册后台加载任务。
+2. 取消注册后台加载任务。
 
    <!-- @[backgroundLoader_unregisterTask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
    ``` TypeScript
    const taskInfo: backgroundLoader.TaskInfo = {
-     abilityname: abilityname,
+     abilityName: abilityName,
      taskId: taskId
    };
    try {
@@ -131,30 +135,31 @@
    }
    ```
 
-4. 查询后台加载任务信息。
+3. 查询后台加载任务信息。
 
    <!-- @[backgroundLoader_getTaskInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
    ``` TypeScript
-   try {
-     const taskInfoData = backgroundLoader.getTaskInfo(taskId);
+   backgroundLoader.getTaskInfo(taskId).then((taskInfoData: backgroundLoader.TaskInfo) => {
      const result = `taskId=${taskInfoData.taskId}, abilityName=${taskInfoData.abilityName}`;
      hilog.info(DOMAIN, 'testTag', 'getTaskInfo result: %{public}s', result);
      return result;
-   } catch (err) {
+   }).catch((err: BusinessError) => {
      const errMsg = JSON.stringify(err);
      hilog.error(DOMAIN, 'testTag', 'getTaskInfo failed: %{public}s', errMsg);
      return `Failed: ${(err as BusinessError).message ?? errMsg}`;
-   }
+   });
    ```
 
-5. 完成后台加载任务。
+### 完成后台加载任务
+
+1. 完成后台加载任务。
 
    <!-- @[backgroundLoader_finishTask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
    ``` TypeScript
    const taskInfo: backgroundLoader.TaskInfo = {
-     abilityname: abilityname,
+     abilityName: abilityName,
      taskId: taskId
    };
    try {
@@ -170,14 +175,16 @@
 
 ### 调测验证
 
-后台加载任务注册成功之后，需要等到条件满足后才可以执行后台加载任务回调，为了快速验证实现的回调功能是否正确，可以通过以下[hidumper命令](../dfx/hidumper.md)手动触发后台加载任务执行回调。
+后台加载任务注册成功后，需等待系统决策（依据使用习惯、内存、电量、温度等条件，见实现原理）满足才会执行回调。为快速验证回调功能是否正确，可通过以下[hidumper命令](../dfx/hidumper.md)手动触发回调执行。
+
+执行命令后，系统将拉起应用并触发ON_START回调，可在hilog中过滤testTag查看回调触发与finishTask成功日志，确认回调执行与任务完成通知成功。
 
 > **说明：**
 >
 > - `-s 1901`：指向ResourceSchedule系统服务发送命令（1901为该服务ID）。
 > - `-a`：携带附加参数，需用引号包裹，格式为`backgroundLoader 包名 Ability名`，示例中的`com.example.myapplication`和`EntryAbility`需替换为实际值。
 
-```ts
+```shell
 $ hidumper -s 1901 -a 'backgroundLoader com.example.myapplication EntryAbility'
 
 -------------------------------[ability]-------------------------------
