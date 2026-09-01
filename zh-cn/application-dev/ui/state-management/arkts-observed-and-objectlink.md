@@ -567,7 +567,7 @@ struct Parent {
         .onClick(() => {
           this.arrA[Math.floor(this.arrA.length / 2)].info = 10;
         })
-      Button('ViewParent: item property in middle')
+      Button('ViewParent: replace item in middle')
         .width(320)
         .margin(10)
         .onClick(() => {
@@ -1959,6 +1959,10 @@ struct Index {
 
   aboutToAppear() {
     this.dataDownloader.startIntervalUpdate(); // @Observed装饰的类构建后再修改属性可以触发更新UI
+  }
+
+  aboutToDisappear() {
+    this.dataDownloader.stopIntervalUpdate();
   }
 
   build() {

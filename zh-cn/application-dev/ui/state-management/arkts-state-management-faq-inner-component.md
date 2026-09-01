@@ -97,8 +97,6 @@ struct Index {
 <!-- @[state_problem_unregister_state_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemUnregisterStateCallback.ets) -->     
 
 ``` TypeScript
-import { common } from '@kit.AbilityKit';
-
 class Model {
   private callback: (() => void) | undefined = () => {
   };
@@ -133,8 +131,7 @@ struct Test {
 
   build() {
     Column() {
-      // 请在resources\base\element\string.json文件中配置name为'state_countvalue_text1' ，value为非空字符串的资源
-      Text(resource.resourceToString($r('app.string.state_countvalue_text1')) + `${this.count}`)
+      Text(`count: ${this.count}`)
       Button('change')
         .onClick(() => {
           model.call();

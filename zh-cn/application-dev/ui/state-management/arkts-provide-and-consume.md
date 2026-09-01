@@ -857,7 +857,7 @@ struct MyComponent {
 ``` TypeScript
 @Component
 struct GrandSon {
-  // @Consume装饰的变量通过相同的属性名绑定其祖先内的@Provide装饰的变量
+  // @Consume装饰的变量通过相同的别名绑定其祖先内的@Provide装饰的变量
   @Consume('reviewVotes') reviewVotes: number;
 
   build() {
@@ -1315,8 +1315,8 @@ struct HomePage {
             this.name = 'ddd';
           }
           })
-          .width(300)
-          .margin(10)
+        .width(300)
+        .margin(10)
       // 修正点2：CustomWidget不再声明@Provide，仅作为容器传递builder
       CustomWidget() {
         CustomWidgetChild({ builder: this.builder2 })

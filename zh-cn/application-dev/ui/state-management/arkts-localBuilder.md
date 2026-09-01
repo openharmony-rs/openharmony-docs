@@ -195,7 +195,7 @@ struct Parent {
         .fontSize(20)
         .margin(10)
     }
-  };
+  }
 
   build() {
     Column() {
@@ -351,7 +351,7 @@ struct Child {
 
   @Builder
   customBuilder() {
-  };
+  }
 
   @BuilderParam contentBuilder: ((data: Data) => void) = this.customBuilder;
   @BuilderParam contentLocalBuilder: ((data: Data) => void) = this.customBuilder;
