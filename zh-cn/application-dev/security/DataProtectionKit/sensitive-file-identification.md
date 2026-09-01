@@ -18,7 +18,7 @@ Data Protection Kit为应用提供了识别文件中是否存在敏感内容的�
 ## 开发步骤
  
 1. 导入模块。 
-    <!-- @[dlp_include_identifySensitiveContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_include_identifySensitiveContent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     import { identifySensitiveContent } from '@kit.DataProtectionKit';
@@ -32,7 +32,7 @@ Data Protection Kit为应用提供了识别文件中是否存在敏感内容的�
  
     2.3 调用[identifySensitiveContent.scanFile](../../reference/apis-data-protection-kit/js-apis-identifySensitiveContent.md#identifysensitivecontentscanfile)，根据设置的策略，识别指定文件中的敏感内容，返回识别的结果数组，包含匹配的敏感标签、匹配内容及匹配数量。
  
-    <!-- @[dlp_scanSensitiveInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_scanSensitiveInfo](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     scanSensitiveInfo() {
