@@ -103,7 +103,7 @@
     - [OH_AudioCapturerStruct](capi-ohaudio-oh-audiocapturerstruct.md)
     - [OH_AudioFormat](capi-ohaudiosuite-oh-audioformat.md)
     <!--Del-->
-    - [OH_AudioSuite_SystemNodeFormat (System Interface)](capi-ohaudiosuite-oh-audiosuite-systemnodeformat-sys.md)
+    - [OH_AudioSuite_SystemNodeFormat (System API)](capi-ohaudiosuite-oh-audiosuite-systemnodeformat-sys.md)
     <!--DelEnd-->
     - [OH_AudioDataArray](capi-ohaudiosuite-oh-audiodataarray.md)
     <!--Del-->
