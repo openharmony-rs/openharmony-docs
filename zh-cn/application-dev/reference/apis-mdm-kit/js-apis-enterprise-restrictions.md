@@ -85,7 +85,7 @@ setDisallowedPolicy(admin: Want, feature: string, disallow: boolean): void
 |tethering<sup>14+</sup>|网络共享能力（设备已有网络共享给其他设备的能力，即共享热点能力）。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
 |inactiveUserFreeze<sup>14+</sup>|非活跃用户运行能力。禁用后，非UIAbility进程一般不会被冻结，UIAbility申请短时任务、长时任务、延迟任务或能效资源等后台运行任务也不会被冻结。当前仅支持PC/2in1设备使用。企业空间场景下，系统切换到企业空间用户，个人空间用户属于非活跃用户。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |camera<sup>14+</sup>|设备相机能力。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
-|mtpClient<sup>18+</sup>|MTP客户端能力（包含读取和写入），当前仅支持PC/2in1设备使用。MTP（Media Transfer Protocol，媒体传输协议），该协议允许用户在移动设备上线性访问媒体文件。当已经通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated)设置了某用户禁用MTP客户端写入能力时，再通过本接口禁用MTP客户端能力，会报策略冲突。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|mtpClient<sup>18+</sup>|MTP客户端能力（包含读取和写入），当前仅支持PC/2in1设备使用。<!--RP7--><!--RP7End-->MTP（Media Transfer Protocol，媒体传输协议），该协议允许用户在移动设备上线性访问媒体文件。当已经通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated)设置了某用户禁用MTP客户端写入能力时，再通过本接口禁用MTP客户端能力，会报策略冲突。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |mtpServer<sup>18+</sup>|MTP服务端能力，当前仅支持手机、平板设备使用。|API版本26.0.0之前：ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS，API版本26.0.0开始：ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
 |sambaClient<sup>20+</sup>|samba客户端能力，当前仅支持PC/2in1设备使用。samba是在Linux和UNIX系统上实现SMB协议的一个免费软件，由服务器及客户端程序构成。SMB（Server Message Block，信息服务块）是一种在局域网上共享文件和打印机的一种通信协议，它为局域网内的不同计算机之间提供文件及打印机等资源的共享服务。SMB协议是客户机/服务器型协议，客户机通过该协议可以访问服务器上的共享文件系统、打印机及其他资源。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |sambaServer<sup>20+</sup>|samba服务端能力，当前仅支持PC/2in1设备使用。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
@@ -744,7 +744,7 @@ getUserRestrictedForAccount(admin: Want | null, settingsItem: string, accountId:
 | 参数名  | 类型                                                    | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                   |
-| settingsItem | string                                             | 是   | 指定设置项。<br/>- modifyWallpaper：修改壁纸，包含锁屏壁纸和桌面壁纸。<!--RP7--><!--RP7End-->|
+| settingsItem | string                                             | 是   | 指定设置项。<br/>- modifyWallpaper：修改壁纸，包含锁屏壁纸和桌面壁纸。|
 | accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。                       |
 
 
@@ -1274,7 +1274,7 @@ try {
 | TETHERING   | 17   | 网络共享能力（设备已有网络共享给其他设备的能力，即共享热点能力）。<br>**起始版本：** 26.0.0 |
 | INACTIVE_USER_FREEZE   | 18   | 非活跃用户运行能力。禁用后，非UIAbility进程一般不会被冻结，UIAbility申请短时任务、长时任务、延迟任务或能效资源等后台运行任务也不会被冻结。当前仅支持PC/2in1设备使用。企业空间场景下，系统切换到企业空间用户，个人空间用户属于非活跃用户。<br>**起始版本：** 26.0.0 |
 | CAMERA   | 19   | 设备相机能力。<br>**起始版本：** 26.0.0 |
-| MTP_CLIENT   | 20   | MTP客户端能力（包含读取和写入），当前仅支持PC/2in1设备使用。MTP（Media Transfer Protocol，媒体传输协议），该协议允许用户在移动设备上线性访问媒体文件。当已经通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount)设置了某用户禁用MTP客户端写入能力时，再禁用MTP客户端能力，会报策略冲突。<br>**起始版本：** 26.0.0 |
+| MTP_CLIENT   | 20   | MTP客户端能力（包含读取和写入），当前仅支持PC/2in1设备使用。<!--RP7--><!--RP7End-->MTP（Media Transfer Protocol，媒体传输协议），该协议允许用户在移动设备上线性访问媒体文件。当已经通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount)设置了某用户禁用MTP客户端写入能力时，再禁用MTP客户端能力，会报策略冲突。<br>**起始版本：** 26.0.0 |
 | MTP_SERVER   | 21   | MTP服务端能力，当前仅支持手机、平板设备使用。<br>**起始版本：** 26.0.0 |
 | SAMBA_CLIENT   | 22   | samba客户端能力，当前仅支持PC/2in1设备使用。samba是在Linux和UNIX系统上实现SMB协议的一个免费软件，由服务器及客户端程序构成。SMB（Server Message Block，信息服务块）是一种在局域网上共享文件和打印机的一种通信协议，它为局域网内的不同计算机之间提供文件及打印机等资源的共享服务。SMB协议是客户机/服务器型协议，客户机通过该协议可以访问服务器上的共享文件系统、打印机及其他资源。<br>**起始版本：** 26.0.0 |
 | SAMBA_SERVER   | 23   | samba服务端能力，当前仅支持PC/2in1设备使用。<br>**起始版本：** 26.0.0 |
@@ -1360,4 +1360,4 @@ try {
 
 | 名称 | 值 | 说明 |
 |------|-----|------|
-| MODIFY_WALLPAPER | 0 | 修改壁纸，包含锁屏壁纸和桌面壁纸。 |
+| MODIFY_WALLPAPER | 0 | 修改壁纸，包含锁屏壁纸和桌面壁纸。<!--RP7--><!--RP7End--> |
