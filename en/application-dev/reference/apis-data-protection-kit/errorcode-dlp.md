@@ -1,12 +1,11 @@
 # DLP Service Error Codes
-
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
 <!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=907dbe833940a2647e3ff7ec970329a62449fd1c translatedAt=2026-06-23T11:53:09.209Z pushedAt=2026-06-24T02:59:01.572Z -->
+<!-- md-trans-meta sourceCommit=513fd869e44ef24f3af162d41b806a737d47d470 translatedAt=2026-08-31T01:12:22.293Z pushedAt=2026-08-31T11:14:14.807Z -->
 
 > **NOTE**
 > 
@@ -24,7 +23,7 @@ Invalid parameters are specified.
 
 **Possible Causes**
 
-1. The account is empty or exceeds 1024 characters.
+1. The account is empty or contains more than 1024 characters.
 
 2. The account type is incorrect.
 
@@ -74,7 +73,7 @@ Credential task time out.
 
 **Description**
 
-The encryption and decryption operation for a Data Loss Prevention (DLP) file is not completed within the specified time, causing the operation to time out and fail.
+The encryption or decryption operation on a data loss prevention (DLP) file is not completed within the specified time. As a result, the operation times out and fails.
 
 **Possible Causes**
 
@@ -205,7 +204,6 @@ The operation on the DLP file fails.
 2. Wait for a while or restart the device and try again. Ensure that the number of DLP files opened simultaneously does not exceed 1000.
 
 <!--Del-->
-
 ## 19100010 Read-Only DLP File
 
 **Error Message**
@@ -308,7 +306,6 @@ You have not logged in with the account of the corresponding type.
 Log in using your account.
 
 <!--Del-->
-
 ## 19100015 Upgrade Required
 
 **Error Message**
@@ -340,7 +337,7 @@ The **URI** field is missing in the **Want** parameter when the API is called.
 
 **Possible Causes**
 
-The **URI** field is not included in the **Want** parameter when the API for DLP file operations is called. The **Want** parameter is used to specify the operation target and parameter configuration, and the **URI** field is mandatory.
+When an API related to the DLP file is called, the **want** parameter does not contain the **uri** parameter. The **want** parameter is used to specify the operation target and parameter configuration. The **uri** parameter is mandatory.
 
 **Solution**
 
@@ -380,10 +377,9 @@ The application is not in the authorized application list.
 
 **Solution**
 
-Request to include the application in the authorized application list.<!--RP1--><!--RP1End-->
+New authorized applications cannot be added.
 
 <!--Del-->
-
 ## 19100019 DLP File Has Expired
 
 **Error Message**
@@ -404,7 +400,6 @@ Contact the file owner to authorize the file.
 <!--DelEnd-->
 
 <!--Del-->
-
 ## 19100020 Network Disconnected
 
 **Error Message**
@@ -461,9 +456,7 @@ The parameter is invalid.
 **Solution**
 
 Check the following parameters:
-
 1. Ensure that the policy format is correct.
-
 2. Ensure that the parameter value is within the valid range.
 
 ## 19110002 File Sensitive Content Identification Timed Out
@@ -505,11 +498,8 @@ The passed-in file is not supported by the current operation. The path, type, or
 **Solution**
 
 Check the following:
-
 1. Ensure that the file path exists and is accessible.
-
 2. Ensure that the file type is supported.
-
 3. Ensure that the file permissions meet the requirements.
 
 ## 19110004 System Function Abnormal
@@ -535,3 +525,39 @@ The internal function module of the system is running abnormally, causing the op
 **Solution**
 
 Try again later or restart the device when the internal system service is abnormal.
+
+## 19100023 Specified User ID Inconsistent with the Current User ID
+
+**Error Message**
+
+The specified userId is inconsistent with the current userId.
+
+**Description**
+
+The specified user ID is inconsistent with the current user ID.
+
+**Possible Causes**
+
+The specified user ID is inconsistent with the current user ID.
+
+**Solution**
+
+Ensure that the passed user ID is the same as the current user ID. You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of **@ohos.account.osAccount** to obtain the current user ID.
+
+## 19100024 Personal Space Users Cannot Set Controlled Apps
+
+**Error Message**
+
+The specified userId belongs to a personal space user and cannot be managed.
+
+**Description**
+
+The user with the specified ID is a personal space user and cannot set controlled apps.
+
+**Possible Causes**
+
+The user with the specified ID is a personal space user and cannot set controlled apps.
+
+**Solution**
+
+Ensure that the passed user ID does not belong to a personal space user.
