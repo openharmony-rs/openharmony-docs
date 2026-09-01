@@ -3771,7 +3771,7 @@ try {
 
 removeLocalP2pService(srvInfo: WifiP2pServiceInfo): void
 
-Removes a registered local service added with [addDnsSdLocalP2pService](#wifiManager.addDnsSdLocalP2pService) or [addUpnpLocalP2pService](#wifiManager.addUpnpLocalP2pService).
+Removes a registered local service added with [addDnsSdLocalP2pService](#wifimanageradddnssdlocalp2pservice) or [addUpnpLocalP2pService](wifimanageraddupnplocalp2pservice).
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO_INTERNAL
 
@@ -3849,7 +3849,6 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 | 202 | System API is not allowed called by Non-system application. |
 | 801 | Capability not supported. |
 | 2801000 | Operation failed. |
-| 2801001 | Wi-Fi STA disabled. |
 
 **Example**
 ```ts

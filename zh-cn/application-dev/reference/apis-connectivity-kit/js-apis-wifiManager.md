@@ -3770,7 +3770,7 @@ try {
 
 removeLocalP2pService(srvInfo: WifiP2pServiceInfo): void
 
-移除通过[addDnsSdLocalP2pService](#wifiManager.addDnsSdLocalP2pService)或[addUpnpLocalP2pService](#wifiManager.addUpnpLocalP2pService)添加的已注册本地服务。
+移除通过[addDnsSdLocalP2pService](#wifimanageradddnssdlocalp2pservice)或[addUpnpLocalP2pService](#wifimanageraddupnplocalp2pservice)添加的已注册本地服务。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
 
@@ -3848,7 +3848,6 @@ getLocalP2pServices(): Promise&lt;Array&lt;WifiP2pServiceInfo&gt;&gt;
 | 202 | System API is not allowed called by Non-system application. |
 | 801 | Capability not supported. |
 | 2801000 | Operation failed. |
-| 2801001 | Wi-Fi STA disabled. |
 
 **示例：**
 ```ts
