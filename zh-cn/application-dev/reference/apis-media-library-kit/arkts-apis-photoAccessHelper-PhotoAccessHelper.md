@@ -1140,7 +1140,7 @@ createAssetWithShortTermPermission(photoCreationConfig: PhotoCreationConfig): Pr
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;string&gt; | Promise对象，返回给应用的媒体库文件URI。URI已对应用授权，支持应用写入数据。如果生成uri异常，则返回批量创建错误码。<br>返回-3006表示不允许出现非法字符；返回-2004表示图片类型和后缀不符；返回-203表示文件操作异常。 |
+| Promise&lt;string&gt; | Promise对象，返回给应用的媒体库文件URI。URI已对应用授权，支持应用写入数据。如果生成URI异常，则返回批量创建错误码。<br>返回-3006表示不允许出现非法字符；返回-2004表示图片类型和后缀不符；返回-203表示文件操作异常。 |
 
 **错误码：**
 
@@ -1313,7 +1313,7 @@ requestPhotoUrisReadPermissionEx(srcFileUris: Array&lt;string&gt;): Promise&lt;R
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;RequestReadPermissionResult&gt; | Promise对象，返回已授权的uri列表和无效的uri列表。 |
+| Promise&lt;RequestReadPermissionResult&gt; | Promise对象，返回已授权的URI列表和无效的URI列表。 |
 
 **错误码：**
 
