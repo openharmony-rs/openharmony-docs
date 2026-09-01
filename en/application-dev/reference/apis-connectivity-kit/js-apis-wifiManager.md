@@ -3634,7 +3634,7 @@ Enumerates P2P service protocol types.
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
-**Since**: 26.0.1
+**Since**: 26.1.0
 
 **System API**: This is a system API.
 
@@ -3654,7 +3654,7 @@ Represents P2P service information.
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
-**Since**: 26.0.1
+**Since**: 26.1.0
 
 **System API**: This is a system API.
 
@@ -3676,7 +3676,7 @@ Adds and registers a DNS-SD (Bonjour) local P2P service description.
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
-**Since**: 26.0.1
+**Since**: 26.1.0
 
 **System API**: This is a system API.
 
@@ -3726,7 +3726,7 @@ Adds and registers a UPnP local P2P service description.
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
-**Since**: 26.0.1
+**Since**: 26.1.0
 
 **System API**: This is a system API.
 
@@ -3777,7 +3777,7 @@ Removes a registered local service added with [addDnsSdLocalP2pService](#wifiMan
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
-**Since**: 26.0.1
+**Since**: 26.1.0
 
 **System API**: This is a system API.
 
@@ -3827,7 +3827,7 @@ Queries the local P2P services. This API uses a Promise to return the result.
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
-**Since**: 26.0.1
+**Since**: 26.1.0
 
 **System API**: This is a system API.
 

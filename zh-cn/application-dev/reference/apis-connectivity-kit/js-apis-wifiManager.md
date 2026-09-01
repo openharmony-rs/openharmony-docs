@@ -3633,7 +3633,7 @@ isWlanSupported(): boolean
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -3653,7 +3653,7 @@ isWlanSupported(): boolean
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -3675,7 +3675,7 @@ addDnsSdLocalP2pService(instanceName: string, serviceType: string, txtRecord: Ma
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -3725,7 +3725,7 @@ addUpnpLocalP2pService(uuid: string, device: string, services: Array&lt;string&g
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -3776,7 +3776,7 @@ removeLocalP2pService(srvInfo: WifiP2pServiceInfo): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -3826,7 +3826,7 @@ getLocalP2pServices(): Promise&lt;Array&lt;WifiP2pServiceInfo&gt;&gt;
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **系统接口：** 此接口为系统接口。
 
