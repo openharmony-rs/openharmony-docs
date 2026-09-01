@@ -1911,7 +1911,7 @@ try {
 
 connectAllowedProfiles(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
-连接对端设备支持的Profile（只包括A2DP、HFP和HID）。使用Callback异步回调。
+连接对端设备所支持的Profile（包括A2DP、HFP、HID和PAN），蓝牙子系统会识别对端设备支持的Profile类型。使用Callback异步回调。
 - API版本26.0.0之前，需先调用[connection.pairDevice](#connectionpairdevice)发起配对，且仅允许在每次发起配对后30秒内调用此接口一次。
 - 从API版本26.0.0开始，针对A2DP和HFP，调用接口无时间限制，可以在调用[connection.pairDevice](#connectionpairdevice)发起配对后任意时间内进行调用。针对HID，仍需在每次发起配对后30秒内调用此接口。
 - 当配对成功后，建议先调用[getRemoteProfileUuids](#connectiongetremoteprofileuuids12)主动查询目标设备支持的Profile能力。若存在应用需要的能力，才调用此接口。
@@ -1966,7 +1966,7 @@ try {
 
 connectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 
-连接对端设备支持的Profile（只包括A2DP、HFP和HID）。使用Promise异步回调。
+连接对端设备所支持的Profile（包括A2DP、HFP、HID和PAN），蓝牙子系统会识别对端设备支持的Profile类型。使用Promise异步回调。
 - API版本26.0.0之前，需先调用[connection.pairDevice](#connectionpairdevice)发起配对，且仅允许在每次发起配对后30秒内调用此接口一次。
 - 从API版本26.0.0开始，针对A2DP和HFP，调用接口无时间限制，可以在调用[connection.pairDevice](#connectionpairdevice)发起配对后任意时间内进行调用。针对HID，仍需在每次发起配对后30秒内调用此接口。
 - 当配对成功后，建议先调用[getRemoteProfileUuids](#connectiongetremoteprofileuuids12)主动查询目标设备支持的Profile能力。若存在应用需要的能力，才调用此接口。
@@ -2023,8 +2023,9 @@ try {
 
 disconnectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 
-断开对端设备支持的Profile（只包括A2DP和HFP）。
-- 需要与接口[connection.connectAllowedProfiles](#connectionconnectallowedprofiles16)配合使用。
+断开对端设备支持的Profile。使用Promise异步回调。
+- 非系统应用调用该接口需要与接口[connection.connectAllowedProfiles](#connectionconnectallowedprofiles16)配合使用，直接调用该接口会抛出错误码2900099。非系统应用调用该接口仅允许断开A2DP和HFP两类Profile，其他Profile涉及系统应用功能，仅限系统应用操作。
+- 系统应用可直接调用该接口，断开当前连接的全部Profile，包括A2DP，HFP，HID，PAN等。
 
 **起始版本**：26.0.0
 
