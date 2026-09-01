@@ -18,6 +18,8 @@ AgentExtensionAbility继承自[ExtensionAbility](js-apis-app-ability-extensionAb
 > 本模块接口仅可在Stage模型下使用。
 >
 > 本模块接口不支持在[har](../../quick-start/har-package.md)包中使用。
+>
+> 本模块接口不支持在分身应用中实现和使用。
 
 ## 导入模块
 

@@ -659,7 +659,8 @@ connectServiceExtensionAbility(context: AgentExtensionContext, want: Want, callb
 
 > **说明：**
 >
-> 该接口不支持在多线程和子进程中调用。在多线程中调用将引发CppCrash；在子进程中调用将返回16000050错误码。
+> - 该接口不支持在多线程和子进程中调用。在多线程中调用将引发CppCrash；在子进程中调用将返回16000050错误码。
+> - 该接口不支持连接分身应用的ServiceExtensionAbility。
 
 **起始版本**：26.0.0
 
