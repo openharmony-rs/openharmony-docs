@@ -3019,12 +3019,18 @@ export default class EntryAbility extends UIAbility {
       };
       let imagePixelMap: image.PixelMap = await image.createPixelMap(color, opts);
       // 设置UIAbility实例的图标和标签信息
-      this.context.setAbilityInstanceInfo(newLabel, imagePixelMap)
-        .then(() => {
-          console.info('setAbilityInstanceInfo success');
-        }).catch((err: BusinessError) => {
-        console.error(`setAbilityInstanceInfo failed, code is ${err.code}, message is ${err.message}`);
-      });
+      try {
+        this.context.setAbilityInstanceInfo(newLabel, imagePixelMap)
+          .then(() => {
+            console.info('setAbilityInstanceInfo success');
+          }).catch((err: BusinessError) => {
+            console.error(`setAbilityInstanceInfo failed, code is ${err.code}, message is ${err.message}`);
+          });
+      } catch (paramError) {
+        let code = (paramError as BusinessError).code;
+        let message = (paramError as BusinessError).message;
+        console.error(`setAbilityInstanceInfo failed, code is ${code}, message is ${message}`);
+      }
     });
   }
 }
