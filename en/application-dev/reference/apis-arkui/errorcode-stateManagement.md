@@ -93,7 +93,7 @@ The function is not allowed to be called in @Monitor.
 
 **Description**
 
-This error code is reported when the **flushUpdates** or **flushUIUpdates** API is called in [\@Monitor](../../ui/state-management/arkts-new-monitor.md) callback method.
+This error code is reported when the **flushUpdates** or **flushUIUpdates** API is called in the [\@Monitor](../../ui/state-management/arkts-new-monitor.md) callback method.
 
 **Possible Causes**
 
