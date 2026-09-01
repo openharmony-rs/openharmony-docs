@@ -162,7 +162,6 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 | .ttf | number | 字体文件占用内存大小，单位：KB。 |
 | anon_page_other | number | 其他匿名页占用内存大小，单位：KB。 |
 | ark ts heap | number | ArkTS堆占用内存大小，单位：KB。 |
-| arkts-static heap | number | ArkTS静态堆占用内存大小，单位：KB。 |
 | arkweb-js heap | number | ArkWeb JS堆占用内存大小，单位：KB。 |
 | arkweb-pa heap | number | ArkWeb PA堆占用内存大小，单位：KB。 |
 | dart heap | number | Dart堆占用内存大小，单位：KB。 |
