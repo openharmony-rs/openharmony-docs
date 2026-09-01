@@ -181,3 +181,4 @@ Due to the restrictions of HarmonyOS security mechanisms such as code signing an
 ## Sample Code
 
 -   [Application Security Sample Code](https://gitcode.com/HarmonyOS_Samples/BestPracticeSnippets/tree/master/Privacy)
+<!--no_check-->

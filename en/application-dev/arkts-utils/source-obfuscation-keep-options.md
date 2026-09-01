@@ -6,7 +6,7 @@
 <!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=76413f655ee0ef537da838554c380a0edb4adb50 translatedAt=2026-08-31T12:42:27.755Z pushedAt=2026-08-31T15:15:40.467Z -->
+<!-- md-trans-meta sourceCommit=76413f655ee0ef537da838554c380a0edb4adb50 translatedAt=2026-08-31T12:42:27.755Z pushedAt=2026-09-01T01:28:20.704Z -->
 
 Starting from API version 10, after obfuscation is enabled, methods, properties, or paths in the code will be obfuscated. However, at runtime, accessing obfuscated methods, properties, or paths by their original names before obfuscation may cause functionality to fail. Therefore, you need to configure the corresponding keep options based on different scenarios.
 
@@ -22,7 +22,7 @@ When troubleshooting scenarios and configuring fields, it is recommended to use 
 | Specified keep comment | [`-keep-comments`](#-keep-comments) | 12 |
 | Specified keep all names in the declaration file | [`-keep-dts`](#-keep-dts) | 12 |
 | Specified keep all names in the source code file | [`-keep`](#-keep) | 12 |
-| Name and path keep options support wildcards | [`Wildcards Supported by Keep Options`](#keep-options-support-wildcards)  | 12 |
+| Name and path keep options support wildcards | [`Wildcards Supported by Keep Options`](#wildcards-supported-by-keep-options)  | 12 |
 | Exclude files at the specified path during code compaction | [`-keep-uncompact`](#-keep-uncompact) | 26.0.0 |
 
 ## -keep-property-name
@@ -460,6 +460,7 @@ Keeps all names (such as variable names, class names, and property names) in the
 
 The directory structures of module-level `oh_modules` and project-level `oh_modules` in `DevEco Studio` are shown in the following figure:
 
+![oh_modules](./figures/oh-modules.png)
 
 **Note the following when using this option:**
 
