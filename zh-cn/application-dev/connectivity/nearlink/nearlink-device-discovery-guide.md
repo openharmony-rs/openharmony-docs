@@ -8,6 +8,8 @@
 
 星闪设备发现包括广播与扫描两个环节：外围设备通过发送星闪广播宣告自身，中心设备通过发起星闪扫描发现正在广播的外围设备。广播与扫描可独立使用，也可配合实现设备间的发现与连接。
 
+开发前需按[开发准备](nearlink-preparations-guide.md)完成权限声明与运行时申请，并确保设备已开启星闪（参见[开发准备 > 查询星闪开关状态](nearlink-preparations-guide.md#查询星闪开关状态)）。
+
 ## 发起星闪广播
 
 发送星闪广播，广播数据可以被支持星闪能力的中心设备扫描到。
@@ -29,7 +31,7 @@
 
     <!-- @[advertising_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/AdvertisingPage.ets) -->
 
-    ``` TypeScript
+    ```ts
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     import { advertising } from '@kit.ConnectivityKit';
@@ -39,7 +41,7 @@
 
     <!-- @[advertising_on_state_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/AdvertisingPage.ets) -->
 
-    ``` TypeScript
+    ```ts
     try {
       advertising.onAdvertisingStateChange((data: advertising.AdvertisingStateChangeInfo) => {
         hilog.info(0x0000, 'testTag',
@@ -52,11 +54,11 @@
     }
     ```
 
-3. 构造用户需要的广播参数及数据。广播中携带的服务UUID必须为自定义UUID，参见[星闪常见问题 > 标准 UUID 与自定义 UUID 有什么区别](nearlink-faq-guide.md#标准-uuid-与自定义-uuid-有什么区别)。
+3. 构造用户需要的广播参数及数据。广播中携带的服务UUID必须为自定义UUID，参见[星闪常见问题 > 标准UUID与自定义UUID有什么区别](nearlink-faq-guide.md#标准uuid与自定义uuid有什么区别)。
 
     <!-- @[advertising_build_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/AdvertisingPage.ets) -->
 
-    ``` TypeScript
+    ```ts
     let manufacturerData = new Uint8Array([0x01, 0x02, 0x03, 0x04]);
 
     let serviceValueBuffer = new Uint8Array(4);
@@ -98,7 +100,7 @@
 
     <!-- @[advertising_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/AdvertisingPage.ets) -->
 
-    ``` TypeScript
+    ```ts
     try {
       let advId: number = await advertising.startAdvertising(advertisingParams);
       // ...
@@ -112,7 +114,7 @@
 
     <!-- @[advertising_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/AdvertisingPage.ets) -->
 
-    ``` TypeScript
+    ```ts
     try {
       await advertising.stopAdvertising(advId);
       // ...
@@ -126,7 +128,7 @@
 
     <!-- @[advertising_off_state_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/AdvertisingPage.ets) -->
 
-    ``` TypeScript
+    ```ts
     try {
       advertising.offAdvertisingStateChange();
     } catch (err) {
@@ -156,18 +158,18 @@
 
     <!-- @[scan_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ScanConfigPage.ets) -->
 
-    ``` TypeScript
+    ```ts
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     import { scan } from '@kit.ConnectivityKit';
     import { util } from '@kit.ArkTS';
     ```
 
-2. 订阅扫描结果。
+2. 订阅扫描结果。为避免重复订阅，先调用[offDeviceFound()](../../reference/apis-connectivity-kit/js-apis-nearlink-scan.md#scanoffdevicefound)取消已有订阅，再调用[onDeviceFound()](../../reference/apis-connectivity-kit/js-apis-nearlink-scan.md#scanondevicefound)订阅扫描结果，当扫描到设备时将触发回调。回调中调用的parseScanResult解析方法在步骤3中定义。
 
     <!-- @[scan_on_device_found](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ScanConfigPage.ets) -->
 
-    ``` TypeScript
+    ```ts
     try {
       scan.offDeviceFound();
       scan.onDeviceFound((data: scan.ScanResults[]) => {
@@ -188,25 +190,25 @@
 
     <!-- @[scan_parse_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ScanConfigPage.ets) -->
 
-    ``` TypeScript
-    const ADV_DATA_TYPE_DISCOVERY_LEVEL = 0x01; // Discovery level
-    const ADV_DATA_TYPE_SERVICE_DATA_16_BIT_UUID = 0x03; // Standard service data (16-bit UUID)
-    const ADV_DATA_TYPE_SERVICE_DATA_128_BIT_UUID = 0x04; // Custom service data (128-bit UUID)
-    const ADV_DATA_TYPE_COMPLETE_LIST_16_BIT_SERVICE_UUIDS = 0x05; // Complete standard service UUID list
-    const ADV_DATA_TYPE_COMPLETE_LIST_128_BIT_SERVICE_UUIDS = 0x06; // Complete custom service UUID list
-    const ADV_DATA_TYPE_INCOMPLETE_LIST_16_BIT_SERVICE_UUIDS = 0x07; // Incomplete standard service UUID list
-    const ADV_DATA_TYPE_INCOMPLETE_LIST_128_BIT_SERVICE_UUIDS = 0x08; // Incomplete custom service UUID list
-    const ADV_DATA_TYPE_SHORTENED_LOCAL_NAME = 0x0A; // Shortened local name
-    const ADV_DATA_TYPE_COMPLETE_LOCAL_NAME = 0x0B; // Complete local name
-    const ADV_DATA_TYPE_MANUFACTURER_SPECIFIC_DATA = 0xFF; // Manufacturer specific data
+    ```ts
+    const ADV_DATA_TYPE_DISCOVERY_LEVEL = 0x01; // 发现等级
+    const ADV_DATA_TYPE_SERVICE_DATA_16_BIT_UUID = 0x03; // 标准服务数据（16比特UUID）
+    const ADV_DATA_TYPE_SERVICE_DATA_128_BIT_UUID = 0x04; // 自定义服务数据（128比特UUID）
+    const ADV_DATA_TYPE_COMPLETE_LIST_16_BIT_SERVICE_UUIDS = 0x05; // 完整的标准服务UUID列表
+    const ADV_DATA_TYPE_COMPLETE_LIST_128_BIT_SERVICE_UUIDS = 0x06; // 完整的自定义服务UUID列表
+    const ADV_DATA_TYPE_INCOMPLETE_LIST_16_BIT_SERVICE_UUIDS = 0x07; // 不完整的标准服务UUID列表
+    const ADV_DATA_TYPE_INCOMPLETE_LIST_128_BIT_SERVICE_UUIDS = 0x08; // 不完整的自定义服务UUID列表
+    const ADV_DATA_TYPE_SHORTENED_LOCAL_NAME = 0x0A; // 缩短的本地名称
+    const ADV_DATA_TYPE_COMPLETE_LOCAL_NAME = 0x0B; // 完整的本地名称
+    const ADV_DATA_TYPE_MANUFACTURER_SPECIFIC_DATA = 0xFF; // 厂商自定义数据
 
     const NEARLINK_UUID_16_BIT_LENGTH = 2;
     const NEARLINK_UUID_128_BIT_LENGTH = 16;
     const NEARLINK_MANUFACTURER_ID_LENGTH = 2;
-    // Base prefix (112 bits) of the 128-bit UUID form for standard 16-bit UUIDs
+    // 标准16比特UUID对应的128比特UUID形式的基础标识（前112比特）
     const STANDARD_UUID_BASE_PREFIX = '37BEA880-FC70-11EA-B720-00000000';
 
-    // Parsed result of the advertising packet data
+    // 广播报文数据的解析结果
     interface ScanResultData {
       discoveryLevel: number;
       serviceData: Record<string, Uint8Array>;
@@ -219,7 +221,7 @@
 
     <!-- @[scan_parse_result_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ScanConfigPage.ets) -->
 
-    ``` TypeScript
+    ```ts
     parseScanResult(data: ArrayBuffer): ScanResultData {
       let advData = new Uint8Array(data);
       let result: ScanResultData = {
@@ -236,11 +238,11 @@
       }
       let curPos = 0;
       while (curPos < advData.byteLength) {
-        // Each item is composed of a 1-byte type, a 1-byte length, and the value bytes
+        // 每个条目由1字节类型、1字节长度和值组成
         let dataType = advData[curPos++];
         let dataLength = advData[curPos++];
         if (dataLength === 0) {
-          break; // A zero length indicates the end of valid items
+          break; // 长度为零表示有效条目结束
         }
         switch (dataType) {
           case ADV_DATA_TYPE_DISCOVERY_LEVEL:
@@ -273,7 +275,7 @@
           default:
             break;
         }
-        curPos += dataLength; // Move to the next item
+        curPos += dataLength; // 移动到下一个条目
       }
       hilog.info(0x0000, 'testTag',
         `discoveryLevel: ${result.discoveryLevel}, serviceData: ${JSON.stringify(result.serviceData)}, ` +
@@ -328,7 +330,7 @@
 
     <!-- @[scan_config_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ScanConfigPage.ets) -->
 
-    ``` TypeScript
+    ```ts
     let deviceNameFilter: string = 'deviceName1';
     let addressFilter: string = '11:22:33:44:AA:BB';
 
@@ -345,7 +347,7 @@
 
     <!-- @[scan_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ScanConfigPage.ets) -->
 
-    ``` TypeScript
+    ```ts
     try {
       let scanOptions: scan.ScanOptions = {
         scanMode: scan.ScanMode.SCAN_MODE_LOW_POWER
@@ -362,7 +364,7 @@
 
     <!-- @[scan_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ScanConfigPage.ets) -->
 
-    ``` TypeScript
+    ```ts
     try {
       await scan.stopScan();
       // ...
@@ -376,7 +378,7 @@
 
     <!-- @[scan_off_device_found](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ScanConfigPage.ets) -->
 
-    ``` TypeScript
+    ```ts
     try {
       scan.offDeviceFound();
     } catch (err) {

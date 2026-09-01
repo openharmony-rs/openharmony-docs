@@ -29,7 +29,7 @@
 
     <!-- @[cdsm_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/CdsmPage.ets) -->
 
-    ``` TypeScript
+    ```ts
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     import { cdsm } from '@kit.ConnectivityKit';
@@ -39,7 +39,7 @@
 
     <!-- @[cdsm_declare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/CdsmPage.ets) -->
 
-    ``` TypeScript
+    ```ts
     let cdsmClient: cdsm.CdsmClient;
     let deviceAddress: string;
     ```
@@ -48,7 +48,7 @@
 
     <!-- @[cdsm_create_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/CdsmPage.ets) -->
 
-    ``` TypeScript
+    ```ts
     try {
       cdsmClient = cdsm.createCdsmClient(deviceAddress);
       // ...
@@ -63,7 +63,7 @@
 
     <!-- @[cdsm_get_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/CdsmPage.ets) -->
 
-    ``` TypeScript
+    ```ts
     try {
       let cdsmInfo: cdsm.CdsmInfo = cdsmClient.getCdsmInfo();
       // ...
@@ -78,7 +78,7 @@
 
     <!-- @[cdsm_on_info_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/CdsmPage.ets) -->
 
-    ``` TypeScript
+    ```ts
     try {
       cdsmClient.onCdsmInfoChange((data: cdsm.CdsmInfo) => {
         hilog.info(0x0000, 'testTag', `CDSM info changed: ${JSON.stringify(data)}`);
@@ -95,7 +95,7 @@
 
     <!-- @[cdsm_off_info_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/CdsmPage.ets) -->
 
-    ``` TypeScript
+    ```ts
     try {
       cdsmClient.offCdsmInfoChange();
     } catch (err) {
