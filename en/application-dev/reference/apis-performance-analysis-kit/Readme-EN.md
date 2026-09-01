@@ -20,7 +20,7 @@
   - [@ohos.hiviewdfx.jsLeakWatcher (JS Leak Watcher)](js-apis-jsleakwatcher.md)
   <!--Del-->
   - [@ohos.hiSysEvent (HiSysEvent)(System API)](js-apis-hisysevent-sys.md)
-  - [@ohos.logLibrary (Log Library)(System API)](js-apis-loglibrary-sys.md)
+  - [@ohos.logLibrary (Log Library) (System API)](js-apis-loglibrary-sys.md)
   <!--DelEnd-->
   - APIs No Longer Maintained<!--performance-analysis-arkts-dep-->
     - [@ohos.bytrace (ByTrace)](js-apis-bytrace.md)
