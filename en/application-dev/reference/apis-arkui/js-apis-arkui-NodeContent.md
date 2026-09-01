@@ -1,12 +1,11 @@
 # NodeContent
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=3cd7a88aa48788902d0133e2f69247ba0fd6a00d translatedAt=2026-07-29T09:27:28.733Z pushedAt=2026-08-03T07:03:48.395Z -->
+<!-- md-trans-meta sourceCommit=033859cddd4818ba4c62bad26b6ee850b2b31a63 translatedAt=2026-08-29T09:35:37.491Z pushedAt=2026-08-31T11:36:14.710Z -->
 
 **NodeContent** is a manager for [ContentSlot](./arkui-ts/ts-components-contentSlot.md) provided by ArkUI. It manages the FrameNode node content mounted on **ContentSlot**, and supports dynamic addition and removal of FrameNodes. It is applicable to scenarios where FrameNode node content needs to be dynamically managed through **ContentSlot**, for example, dynamically adding or removing custom FrameNodes such as text and images based on user interactions.
 
@@ -70,7 +69,7 @@ struct Parent {
 
 For details about the implementation of the .so file in the preceding code, see <!--RP1-->[Native XComponent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeXComponent)<!--RP1End-->.
 
-### addFrameNode<sup>12+</sup>
+### addFrameNode
 
 addFrameNode(node: FrameNode): void
 
@@ -94,7 +93,7 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 | -------- | -------------------------------- |
 | 100025 | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: it cannot be adopted." <br>Applicable versions: 22+|
 
-### removeFrameNode<sup>12+</sup>
+### removeFrameNode
 
 removeFrameNode(node: FrameNode): void
 
