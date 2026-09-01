@@ -3432,7 +3432,7 @@ APP包签名不正确或没有签名。
 
 **处理步骤**
 
-方法一. 使用[自动签名](hhttps://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-auto)。在连接设备后，重新为应用进行签名。
+方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-auto)。在连接设备后，重新为应用进行签名。
 
 方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-manual)。
 
