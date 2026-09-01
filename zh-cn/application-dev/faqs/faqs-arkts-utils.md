@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kir175; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 
 ## TaskPool、Worker和各个ArkTS引擎实例之间是否内存隔离
