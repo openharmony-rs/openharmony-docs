@@ -7154,7 +7154,7 @@ Describes the information about a shared media asset.
 | dateModified | number | No| No| Data of the modified media asset, in seconds.|
 | duration | number | No| No| Duration of the video-type media asset, in milliseconds.|
 | width | number | No| No| Width of the media asset, in pixels.|
-| height | number | No| No| Width of the media asset, in pixels.|
+| height | number | No| No| Height of the media asset, in pixels.|
 | dateTaken | number | No| No| Time when the media asset was taken, in seconds.   |
 | orientation | number | No| No| Rotation angle of the media asset, in degrees.|
 | isFavorite | boolean | No| No| Whether the media asset is marked as a favorite. **true** if marked, **false** otherwise.|
