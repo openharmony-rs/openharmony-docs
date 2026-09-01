@@ -3771,7 +3771,7 @@ try {
 
 removeLocalP2pService(srvInfo: WifiP2pServiceInfo): void
 
-Removes a registered local service added with [addDnsSdLocalP2pService](#wifimanageradddnssdlocalp2pservice) or [addUpnpLocalP2pService](wifimanageraddupnplocalp2pservice).
+Removes a registered local service added with [addDnsSdLocalP2pService](#wifimanageradddnssdlocalp2pservice) or [addUpnpLocalP2pService](#wifimanageraddupnplocalp2pservice).
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO_INTERNAL
 
