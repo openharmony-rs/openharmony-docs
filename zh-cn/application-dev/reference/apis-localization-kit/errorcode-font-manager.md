@@ -234,7 +234,7 @@ The scope font is not found.
 
 **错误信息**
 
-Font observer already registered.
+The font observer is already registered.
 
 **错误描述**
 
@@ -252,7 +252,7 @@ Font observer already registered.
 
 **错误信息**
 
-Exceeded maximum number of font observers.
+The maximum number of font observers has been reached.
 
 **错误描述**
 
@@ -270,7 +270,7 @@ Exceeded maximum number of font observers.
 
 **错误信息**
 
-Font observer not registered.
+The font observer is not registered.
 
 **错误描述**
 

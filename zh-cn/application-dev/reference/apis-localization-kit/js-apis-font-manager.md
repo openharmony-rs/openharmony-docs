@@ -35,8 +35,8 @@ import { fontManager } from '@kit.LocalizationKit';
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| app | 0 | 应用级字体。随应用注册生命周期管理，应用退出、字体服务退出、账号退出或设备重启时自动清理。适用于应用私有字体，需先调用[onFontObserver](#onfontobserver)注册监听后才能安装。 |
-| session | 1 | 会话级字体。不随应用退出而清理，仅在账号退出或设备重启时清理。适用于需要跨应用共享的会话内字体，生命周期独立于安装应用。 |
+| APP | 0 | 应用级字体。随应用注册生命周期管理，应用退出、字体服务退出、账号退出或设备重启时自动清理。适用于应用私有字体，需先调用[onFontObserver](#onfontobserver)注册监听后才能安装。 |
+| SESSION | 1 | 会话级字体。不随应用退出而清理，仅在账号退出或设备重启时清理。适用于需要跨应用共享的会话内字体，生命周期独立于安装应用。 |
 
 ## FontClientObserver
 
@@ -68,7 +68,7 @@ const observer: fontManager.FontClientObserver = {
 
 ## installScopeFont
 
-installScopeFont(url: string, scope: FontScope): Promise&lt;number&gt;
+installScopeFont(url: string, scope: FontScope): Promise&lt;void&gt;
 
 安装指定路径下的字体文件为应用级或会话级字体。使用Promise异步回调。
 
@@ -91,7 +91,7 @@ installScopeFont(url: string, scope: FontScope): Promise&lt;number&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise对象，返回安装结果。<br>- 返回0：安装成功，字体已添加到字体库。<br>- 返回其他值：安装失败，请根据错误码排查原因。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。调用成功时resolve，失败时reject并抛出BusinessError。 |
 
 **错误码：**
 
@@ -101,12 +101,13 @@ installScopeFont(url: string, scope: FontScope): Promise&lt;number&gt;
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 31100101 | The font does not exist. |
 | 31100102 | The font is not supported. |
 | 31100103 | Failed to copy the font file. |
 | 31100104 | The font file is installed. |
 | 31100105 | Exceeded the maximum number of installed files. |
 | 31100110 | Call failed due to system error. |
-| 31100115 | Font observer not registered. |
+| 31100115 | The font observer is not registered. |
 
 **示例：**
 
@@ -115,8 +116,8 @@ import { fontManager } from '@kit.LocalizationKit';
 
 async function installScopeFont() {
   try {
-    let res = await fontManager.installScopeFont('fontPath', fontManager.FontScope.app);
-    console.info('installScopeFont suc. res is ' + res);
+    await fontManager.installScopeFont('fontPath', fontManager.FontScope.APP);
+    console.info('installScopeFont suc');
   } catch (error) {
     console.error('installScopeFont err.' + error.code);
   }
@@ -125,7 +126,7 @@ async function installScopeFont() {
 
 ## uninstallScopeFont
 
-uninstallScopeFont(url: string): Promise&lt;number&gt;
+uninstallScopeFont(url: string): Promise&lt;void&gt;
 
 根据字体路径卸载已安装的应用级或会话级字体。使用Promise异步回调。
 
@@ -145,7 +146,7 @@ uninstallScopeFont(url: string): Promise&lt;number&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise对象，返回卸载结果。<br>- 返回0：卸载成功，字体已从字体库中移除。<br>- 返回其他值：卸载失败，请根据错误码排查原因。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。调用成功时resolve，失败时reject并抛出BusinessError。 |
 
 **错误码：**
 
@@ -166,8 +167,8 @@ import { fontManager } from '@kit.LocalizationKit';
 
 async function uninstallScopeFont() {
   try {
-    let res = await fontManager.uninstallScopeFont('fontPath');
-    console.info('uninstallScopeFont suc. res is ' + res);
+    await fontManager.uninstallScopeFont('fontPath');
+    console.info('uninstallScopeFont suc');
   } catch (error) {
     console.error('uninstallScopeFont err.' + error.code);
   }
@@ -251,8 +252,8 @@ onFontObserver(observer: FontClientObserver): void
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 31100113 | Font observer already registered. |
-| 31100114 | Exceeded maximum number of font observers. |
+| 31100113 | The font observer is already registered. |
+| 31100114 | The maximum number of font observers has been reached. |
 
 **示例：**
 
@@ -299,7 +300,7 @@ offFontObserver(observer: FontClientObserver): void
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 31100115 | Font observer not registered. |
+| 31100115 | The font observer is not registered. |
 
 **示例：**
 
