@@ -740,7 +740,7 @@
     <!--Del-->
     - [OperationType(系统接口)](arkts-ability-wantagent-operationtype-e-sys.md)<!--DelEnd-->
     - [WantAgentFlags](arkts-ability-wantagent-wantagentflags-e.md)
-  - [WantAgent](arkts-ability-wantagent-t.md)
+  - [Type WantAgent](arkts-ability-wantagent-t.md)
 - [@ohos.app.ability.wantConstant](arkts-app-ability-wantconstant.md)
   - [Flags](arkts-ability-wantconstant-flags-e.md)
   - [Params](arkts-ability-wantconstant-params-e.md)

@@ -1,4 +1,4 @@
-# WantAgent
+# Type WantAgent
 
 ```TypeScript
 export type WantAgent = object
