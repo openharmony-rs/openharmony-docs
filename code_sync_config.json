@@ -21711,7 +21711,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ChangePropertyInConstructor.ets",
 				"functions":[
 					{
-						"end_line":51,
+						"end_line":55,
 						"name":"Change_Property_In_Constructor",
 						"start_line":15
 					}
@@ -25761,7 +25761,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateTrack/entry/src/main/ets/pages/stateTrack/StateTrackClass2.ets",
 				"functions":[
 					{
-						"end_line":90,
+						"end_line":89,
 						"name":"AddLog_start",
 						"start_line":15
 					}
@@ -31639,9 +31639,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemUnregisterStateCallback.ets",
 				"functions":[
 					{
-						"end_line":67,
+						"end_line":63,
 						"name":"state_problem_unregister_state_callback",
-						"start_line":17
+						"start_line":16
 					}
 				]
 			},
@@ -64178,7 +64178,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/ComponentActivePreRender.ets",
 				"functions":[
 					{
-						"end_line":82,
+						"end_line":81,
 						"name":"ComponentActivePreRender",
 						"start_line":16
 					}
@@ -64583,7 +64583,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/reusablemigration/ReusableRepeatScene.ets",
 				"functions":[
 					{
-						"end_line":87,
+						"end_line":86,
 						"name":"reusable_repeat_scene",
 						"start_line":15
 					}
@@ -64623,7 +64623,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/reusablemigration/ReusableWaterFlowScene.ets",
 				"functions":[
 					{
-						"end_line":111,
+						"end_line":109,
 						"name":"reusable_waterflow_scene",
 						"start_line":15
 					}
