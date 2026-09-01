@@ -216,7 +216,7 @@ setPolicyByUid(uid: number, policy: NetUidPolicy, callback: AsyncCallback\<void>
 | 参数名   | 类型                            | 必填 | 说明                                           |
 | -------- | ------------------------------- | ---- | ---------------------------------------------- |
 | uid      | number                          | 是   | app唯一标识符，取值范围为int32_t范围内的正整数。                                |
-|  | [NetUidPolicy](#netuidpolicy) | 是   | 应用对应的策略。                                 |
+| policy | [NetUidPolicy](#netuidpolicy) | 是   | 应用对应的策略。                                 |
 | callback | AsyncCallback\<void>            | 是   | 回调函数。成功返回空，失败时返回错误码和错误信息。 |
 
 **错误码：**
@@ -259,7 +259,7 @@ setPolicyByUid(uid: number, policy: NetUidPolicy): Promise\<void>
 | 参数名 | 类型                            | 必填 | 说明           |
 | ------ | ------------------------------- | ---- | -------------- |
 | uid    | number                          | 是   | app唯一标识符，取值范围为int32_t范围内的正整数。 |
-|| [NetUidPolicy](#netuidpolicy) | 是   | 应用对应的策略。 |
+| policy| [NetUidPolicy](#netuidpolicy) | 是   | 应用对应的策略。 |
 
 **返回值：**
 
@@ -394,7 +394,7 @@ policy
 
 getUidsByPolicy(policy: NetUidPolicy, callback: AsyncCallback\<Array\<number>>): void
 
-通过策略获取跟策略匹配的所有 uid。使用callback异步回调。
+通过策略获取跟策略匹配的所有uid。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -406,7 +406,7 @@ getUidsByPolicy(policy: NetUidPolicy, callback: AsyncCallback\<Array\<number>>):
 
 | 参数名   | 类型                            | 必填 | 说明                                                        |
 | -------- | ------------------------------- | ---- | ----------------------------------------------------------- |
-|  | [NetUidPolicy](#netuidpolicy) | 是   | 应用对应的计量网络下的策略。                                  |
+| policy | [NetUidPolicy](#netuidpolicy) | 是   | 应用对应的计量网络下的策略。                                  |
 | callback | AsyncCallback\<Array\<number>>  | 是   | 回调函数。成功返回应用的uid数组，失败时返回错误码和错误信息。 |
 
 **错误码：**
@@ -437,7 +437,7 @@ policy.getUidsByPolicy(11111, (error: BusinessError, data: number[]) => {
 
 getUidsByPolicy(policy: NetUidPolicy): Promise\<Array\<number>>
 
-通过策略获取跟策略匹配的所有 uid。使用Promise异步回调。
+通过策略获取跟策略匹配的所有uid。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1173,7 +1173,7 @@ policy
 
 resetPolicies(simId: string, callback: AsyncCallback\<void>): void
 
-重置对应SIM卡 id 的蜂窝网络、后台网络策略、防火墙策略、应用对应的策略。使用callback异步回调。
+重置对应SIM卡ID的蜂窝网络、后台网络策略、防火墙策略、应用对应的策略。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1690,7 +1690,7 @@ getNetworkAccessPolicy(): Promise\<UidNetworkAccessPolicy>
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
-| 202       | Non-systemlications use system APIs.     |
+| 202       | Non-system applications use system APIs.     |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error.                       |
 
@@ -1756,7 +1756,7 @@ on(type: 'netUidPolicyChange', callback: Callback\<NetUidPolicyInfo\>): void
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
-| 202       | Non-systemlications use system APIs.     |
+| 202       | Non-system applications use system APIs.     |
 | 401       | Parameter error.                             |
 | 2100001   | Invalid parameter value.                     |
 | 2100002   | Failed to connect to the service.            |
@@ -1807,7 +1807,7 @@ off(type: 'netUidPolicyChange', callback?: Callback\<NetUidPolicyInfo\>): void
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
-| 202       | Non-systemlications use system APIs.     |
+| 202       | Non-system applications use system APIs.     |
 | 401       | Parameter error.                             |
 | 2100001   | Invalid parameter value.                     |
 | 2100002   | Failed to connect to the service.            |
@@ -1866,7 +1866,7 @@ on(type: 'netUidRuleChange', callback: Callback\<NetUidRuleInfo\>): void
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
-| 202       | Non-systemlications use system APIs.     |
+| 202       | Non-system applications use system APIs.     |
 | 401       | Parameter error.                             |
 | 2100001   | Invalid parameter value.                     |
 | 2100002   | Failed to connect to the service.            |
@@ -1917,7 +1917,7 @@ off(type: 'netUidRuleChange', callback?: Callback\<NetUidRuleInfo\>): void
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
-| 202       | Non-systemlications use system APIs.     |
+| 202       | Non-system applications use system APIs.     |
 | 401       | Parameter error.                             |
 | 2100001   | Invalid parameter value.                     |
 | 2100002   | Failed to connect to the service.            |
@@ -1976,7 +1976,7 @@ on(type: 'netMeteredIfacesChange', callback: Callback\<Array\<string>>): void
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
-| 202       | Non-systemlications use system APIs.     |
+| 202       | Non-system applications use system APIs.     |
 | 401       | Parameter error.                             |
 | 2100001   | Invalid parameter value.                     |
 | 2100002   | Failed to connect to the service.            |
@@ -2357,7 +2357,7 @@ try {
 | 名称              | 类型                           | 只读 |可选| 说明                                      |
 | ----------------- | ----------------------------- | ---- | ------|----------------------------------- |
 | uid               | number                        | 否   |否 |流量警告的阈值，默认：DATA_USAGE_UNKNOWN。 |
-| rule             | [NetUidRule](#netuidrule)   | 否  |否 |规定一个UID访问计量网络还是非计量网络。     |
+| rule              | [NetUidRule](#netuidrule)   | 否  |否 |规定一个UID访问计量网络还是非计量网络。     |
 
 ## NetUidPolicyInfo<sup>11+</sup>
 
@@ -2370,7 +2370,7 @@ try {
 | 名称              | 类型                            | 只读 |可选| 说明                                    |
 | ----------------- | ------------------------------- | ---- | ----|---------------------------------- |
 | uid               | number                          | 否   |否 |流量警告的阈值，默认：DATA_USAGE_UNKNOWN。 |
-|           | [NetUidPolicy](#netuidpolicy) | 否   | 否|UID指定了在后台模式下网络访问的策略。    |
+| policy          | [NetUidPolicy](#netuidpolicy) | 否   | 否|UID指定了在后台模式下网络访问的策略。    |
 
 ## RemindType
 
