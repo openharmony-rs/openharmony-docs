@@ -1704,8 +1704,8 @@ getAVCastController(sessionId: string, callback: AsyncCallback\<AVCastController
 | 201 | permission denied. |
 | 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception |
-| 6600102  | session does not exist |
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
 
 **示例：**
 
@@ -1778,8 +1778,8 @@ getAVCastController(sessionId: string): Promise\<AVCastController>
 | 201 | permission denied. |
 | 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | server exception |
-| 6600102  | The session does not exist |
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
 
 **示例：**
 
