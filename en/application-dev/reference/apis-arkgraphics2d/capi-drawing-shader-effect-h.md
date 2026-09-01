@@ -1,14 +1,16 @@
 # drawing_shader_effect.h
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=357665bbb6caa6d8123e7eb4a2cbf8a969d1a249 translatedAt=2026-08-24T08:57:36.539Z pushedAt=2026-08-31T09:22:38.818Z -->
 
 ## Overview
 
-This file declares the functions related to the shader effect in the drawing module.
+Declares the functions related to shader objects in the drawing module.<br>This module adopts a single-thread model, and callers must manage thread safety and context state switching on their own.
 
 **File to include**: <native_drawing/drawing_shader_effect.h>
 
@@ -66,7 +68,6 @@ Defines an enum for the tile modes of the shader effect.
 | MIRROR | Repeats the shader effect's image in both horizontal and vertical directions, alternating mirror images.|
 | DECAL | Renders the shader effect's image only within the original boundary, and returns transparent black elsewhere.|
 
-
 ## Function Description
 
 ### OH_Drawing_ShaderEffectCreatePixelMapShader()
@@ -82,7 +83,6 @@ Creates a PixelMap shader object.
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -114,7 +114,6 @@ Creates an **OH_Drawing_ShaderEffect** object with a single color.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -141,7 +140,6 @@ Creates a **ShaderEffect** object that generates a linear gradient between two p
 
 **Since**: 11
 
-
 **Parameters**
 
 | Name| Description|
@@ -150,7 +148,7 @@ Creates a **ShaderEffect** object that generates a linear gradient between two p
 | const [OH_Drawing_Point](capi-drawing-oh-drawing-point.md)* endPt | End point.|
 | const uint32_t* colors | Colors to distribute between the two points.|
 | const float* pos | Relative position of each color in the color array. The array length must be the same as that of **colors**. If **pos** is NULL, colors are evenly distributed between the start point and end point.|
-| uint32_t size | Number of colors and positions (if **pos** is not NULL).|
+| uint32_t size | Length of the color array (that is, the number of elements). The value ranges from 0 to 256. The value 0 means no gradient effect. |
 | [OH_Drawing_TileMode](#oh_drawing_tilemode) tileMode | Tile mode of the shader effect. For details about the available options, see [OH_Drawing_TileMode](capi-drawing-shader-effect-h.md#oh_drawing_tilemode).|
 
 **Returns**
@@ -173,7 +171,6 @@ Creates a **ShaderEffect** object that generates a linear gradient between two p
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -182,7 +179,7 @@ Creates a **ShaderEffect** object that generates a linear gradient between two p
 | const [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md)* endPt | End point.|
 | const uint32_t* colors | Colors to distribute between the two points.|
 | const float* pos | Relative position of each color in the color array. The array length must be the same as that of **colors**. If **pos** is NULL, colors are evenly distributed between the start point and end point.|
-| uint32_t size | Number of colors and positions (if **pos** is not NULL).|
+| uint32_t size | Length of the color array (that is, the number of elements). The value ranges from 0 to 256. A value of 0 indicates no gradient effect. |
 | [OH_Drawing_TileMode](#oh_drawing_tilemode) tileMode | Tile mode of the shader effect. For details about the available options, see [OH_Drawing_TileMode](capi-drawing-shader-effect-h.md#oh_drawing_tilemode).|
 | const [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | Matrix applied on the shader effect. If **matrix** is NULL, an identity matrix is applied by default.|
 
@@ -206,7 +203,6 @@ Creates an **OH_Drawing_ShaderEffect** object that generates a radial gradient b
 
 **Since**: 11
 
-
 **Parameters**
 
 | Name| Description|
@@ -215,7 +211,7 @@ Creates an **OH_Drawing_ShaderEffect** object that generates a radial gradient b
 | float radius | Radius of the gradient. The value should be a non-negative number.|
 | const uint32_t* colors | Colors to distribute in the radial direction.|
 | const float* pos | Relative position of each color in the color array. The array length must be the same as that of **colors**. If **pos** is NULL, colors are evenly distributed in the radial direction.|
-| uint32_t size | Number of colors and positions (if **pos** is not NULL).|
+| uint32_t size | Indicates the length of the color array (that is, the number of elements), in the range [0, 256]. When the length is 0, no gradient effect is applied. |
 | [OH_Drawing_TileMode](#oh_drawing_tilemode) tileMode | Tile mode of the shader effect. For details about the available options, see [OH_Drawing_TileMode](capi-drawing-shader-effect-h.md#oh_drawing_tilemode).|
 
 **Returns**
@@ -238,7 +234,6 @@ Creates an **OH_Drawing_ShaderEffect** object that generates a radial gradient b
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -247,7 +242,7 @@ Creates an **OH_Drawing_ShaderEffect** object that generates a radial gradient b
 | float radius | Radius of the gradient.|
 | const uint32_t* colors | Colors to distribute in the radial direction.|
 | const float* pos | Relative position of each color in the color array. The array length must be the same as that of **colors**. If **pos** is NULL, colors are evenly distributed in the radial direction.|
-| uint32_t size | Number of colors and positions (if **pos** is not NULL).|
+| uint32_t size | Length of the color array (that is, the number of elements). The value ranges from 0 to 256. A value of 0 indicates no gradient effect. |
 | [OH_Drawing_TileMode](#oh_drawing_tilemode) tileMode | Tile mode of the shader effect. For details about the available options, see [OH_Drawing_TileMode](capi-drawing-shader-effect-h.md#oh_drawing_tilemode).|
 | const [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | Matrix applied on the shader effect. If **matrix** is NULL, an identity matrix is applied by default.|
 
@@ -271,7 +266,6 @@ Creates an **OH_Drawing_ShaderEffect** object that generates a sweep gradient ba
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -279,7 +273,7 @@ Creates an **OH_Drawing_ShaderEffect** object that generates a sweep gradient ba
 | const [OH_Drawing_Point](capi-drawing-oh-drawing-point.md)* centerPt | Center of the circle.|
 | const uint32_t* colors | Colors to distribute between the two points.|
 | const float* pos | Relative position of each color in the color array. The array length must be the same as that of **colors**. If **pos** is NULL, colors are evenly distributed between the start angle (0°) and end angle (360°).|
-| uint32_t size | Number of colors and positions (if **pos** is not NULL).|
+| uint32_t size | Length of the color array (that is, the number of elements). The value ranges from 0 to 256. A length of 0 indicates no gradient effect. |
 | [OH_Drawing_TileMode](#oh_drawing_tilemode) tileMode | Tile mode of the shader effect. For details about the available options, see [OH_Drawing_TileMode](capi-drawing-shader-effect-h.md#oh_drawing_tilemode).|
 | const [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | Matrix applied on the shader effect. If **matrix** is NULL, an identity matrix is applied by default.|
 
@@ -303,7 +297,6 @@ Creates an **OH_Drawing_ShaderEffect** object that generates a sweep gradient ba
 
 **Since**: 11
 
-
 **Parameters**
 
 | Name| Description|
@@ -311,7 +304,7 @@ Creates an **OH_Drawing_ShaderEffect** object that generates a sweep gradient ba
 | const [OH_Drawing_Point](capi-drawing-oh-drawing-point.md)* centerPt | Center of the circle.|
 | const uint32_t* colors | Colors to distribute between the two points.|
 | const float* pos | Relative position of each color in the color array. The array length must be the same as that of **colors**. If **pos** is NULL, colors are evenly distributed between the start angle (0°) and end angle (360°).|
-| uint32_t size | Number of colors and positions (if **pos** is not NULL).|
+| uint32_t size | Length of the color array (that is, the number of elements), in the range [0, 256]. A length of 0 indicates no gradient effect. |
 | [OH_Drawing_TileMode](#oh_drawing_tilemode) tileMode | Tile mode of the shader effect. For details about the available options, see [OH_Drawing_TileMode](capi-drawing-shader-effect-h.md#oh_drawing_tilemode).|
 
 **Returns**
@@ -333,7 +326,6 @@ Creates an **OH_Drawing_ShaderEffect** object for an image shader. You are advis
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -365,7 +357,6 @@ Creates an **OH_Drawing_ShaderEffect** object that generates a gradient between 
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -376,7 +367,7 @@ Creates an **OH_Drawing_ShaderEffect** object that generates a gradient between 
 | float endRadius | End radius of the gradient. The value should be a non-negative number.|
 | const uint32_t* colors | Colors to distribute between the two circles.|
 | const float* pos | Relative position of each color in the color array. The array length must be the same as that of **colors**. If **pos** is NULL, colors are evenly distributed between the two circles.|
-| uint32_t size | Number of colors and positions (if **pos** is not NULL).|
+| uint32_t size | Indicates the length of the color array (that is, the number of elements), in the range [0, 256]. When the length is 0, no gradient effect is applied. |
 | [OH_Drawing_TileMode](#oh_drawing_tilemode) tileMode | Tile mode of the shader effect. For details about the available options, see [OH_Drawing_TileMode](capi-drawing-shader-effect-h.md#oh_drawing_tilemode).|
 | const [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | Matrix applied on the shader effect. If **matrix** is NULL, an identity matrix is applied by default.|
 
@@ -399,7 +390,6 @@ Creates a shader by blending two existing shaders in a certain way.
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -428,7 +418,6 @@ Destroys an **OH_Drawing_ShaderEffect** object and reclaims the memory occupied 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
-
 
 **Parameters**
 

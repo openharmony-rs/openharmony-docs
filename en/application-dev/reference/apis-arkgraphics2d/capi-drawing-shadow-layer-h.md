@@ -1,14 +1,16 @@
 # drawing_shadow_layer.h
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=357665bbb6caa6d8123e7eb4a2cbf8a969d1a249 translatedAt=2026-08-24T08:57:06.247Z pushedAt=2026-08-31T09:22:48.354Z -->
 
 ## Overview
 
-This file declares the functions related to the shadow in the drawing module.
+Declares functions related to shadow layer objects in the drawing module.<br>This module uses a single-thread model, and callers must manage thread safety and context state switching on their own.
 
 **File to include**: <native_drawing/drawing_shadow_layer.h>
 
@@ -45,7 +47,6 @@ Creates an **OH_Drawing_ShadowLayer** object.<br>This API may return an error co
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -74,7 +75,6 @@ Destroys an **OH_Drawing_ShadowLayer** object and reclaims the memory occupied b
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
-
 
 **Parameters**
 
