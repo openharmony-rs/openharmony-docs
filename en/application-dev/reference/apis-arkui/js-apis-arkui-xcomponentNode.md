@@ -1,5 +1,4 @@
 # XComponentNode
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @pengzhiwen3-->
@@ -7,9 +6,9 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 <!--deprecated_code_no_check-->
-<!-- md-trans-meta sourceCommit=a43a39724add5b6cef35696c173409794d8d8c1b translatedAt=2026-07-29T09:29:09.815Z pushedAt=2026-08-03T10:54:04.731Z -->
+<!-- md-trans-meta sourceCommit=e2e8608c64e606248f00eb66f3b2d4805fae44da translatedAt=2026-08-29T09:40:43.921Z pushedAt=2026-09-01T02:56:11.817Z -->
 
-The XComponentNode module provides APIs for the XComponentNode, which represents an [XComponent](arkui-ts/ts-basic-components-xcomponent.md) in the component tree. You can write [EGL](../native-lib/egl.md)/[OpenGL ES](../native-lib/opengles.md) and media data and display it on the **XComponent**, whose rendering type can be dynamically modified. It is suitable for scenarios where native self-rendering content needs to be embedded in the ArkUI component tree.
+The XComponentNode module provides APIs for the XComponentNode, which represents an [XComponent](arkui-ts/ts-basic-components-xcomponent.md) in the component tree. You can write [EGL](../native-lib/egl.md)/[OpenGL ES](../native-lib/opengles.md) and media data and display it on the **XComponent**, whose render type can be dynamically modified. It is suitable for scenarios where native self-rendering content needs to be embedded in the ArkUI component tree.
 
 > **NOTE**
 >
@@ -89,7 +88,7 @@ Called when the XComponentNode is destroyed.
 
 changeRenderType(type: NodeRenderType): boolean
 
-Dynamically changes the render type of the XComponentNode. For example, the **DISPLAY** type can be used when direct EGL/OpenGL ES drawing on the component is required; the **TEXTURE** type can be used when the rendered content needs to participate in composition as a texture (such as implementing semi-transparent overlay effects or off-screen rendering).
+Dynamically changes the render type of the **XComponentNode**. The render policy can be switched dynamically at runtime, which is suitable for scenarios where different render types are selected based on content rendering requirements. For example, the **DISPLAY** type can be used when direct EGL/OpenGL ES drawing on the component is required; the **TEXTURE** type can be used when the rendered content needs to participate in composition as a texture (such as implementing semi-transparent overlay effects or off-screen rendering).
 
 > **NOTE**
 >
@@ -165,9 +164,7 @@ struct Index {
 ![XComponentNodeSample](figures/xcomponent_node.jpg)
 
 <!--Del-->
-
 > **NOTE**
 >
 > The native layer compilation output in this example references the [OpenGL Triangular Pyramid](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkOpenGL) (API version 10) dynamic library. To build the complete example, download that project and copy all files from its **cpp** directory to your current project's **cpp** directory.
-
 <!--DelEnd-->
