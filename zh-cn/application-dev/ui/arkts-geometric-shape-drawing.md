@@ -580,7 +580,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
   ![2023032405917](figures/2023032405917.jpg)
 
-- 通过[antiAlias](../reference/apis-arkui/arkui-ts/ts-drawing-components-circle.md#antialias)设置是否开启抗锯齿，默认值为true（开启抗锯齿）。
+- 通过[antiAlias](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md#antialias)设置是否开启抗锯齿，默认值为true（开启抗锯齿）。
 
   ArkTS-Dyn示例：
 
