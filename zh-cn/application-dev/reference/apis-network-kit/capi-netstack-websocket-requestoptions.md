@@ -27,4 +27,4 @@ WebSocket客户端和服务端建立连接的参数。
 
 | 名称 | 描述 |
 | -- | -- |
-| struct WebSocket_Header *headers | header头信息。 |
+| struct [WebSocket_Header](capi-netstack-websocket-header.md) *headers | header头信息。 |

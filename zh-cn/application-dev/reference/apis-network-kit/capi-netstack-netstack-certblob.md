@@ -27,6 +27,6 @@ struct NetStack_CertBlob {...}
 
 | 名称                                                                        | 描述 |
 |---------------------------------------------------------------------------| -- |
-| enum [NetStack_CertType](capi-net-ssl-c-type-h.md#netstack_certtype) type | 证书类型。 |
+| [NetStack_CertType](capi-net-ssl-c-type-h.md#netstack_certtype) type | 证书类型。 |
 | uint32_t size                                                             | 证书内容长度。 |
 | uint8_t *data                                                             | 证书内容。 |
