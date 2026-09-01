@@ -460,7 +460,6 @@ Keeps all names (such as variable names, class names, and property names) in the
 
 The directory structures of module-level `oh_modules` and project-level `oh_modules` in `DevEco Studio` are shown in the following figure:
 
-![oh_modules](./figures/oh-modules.png)
 
 **Note the following when using this option:**
 
