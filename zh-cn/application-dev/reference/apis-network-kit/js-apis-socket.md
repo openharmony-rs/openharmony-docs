@@ -2393,7 +2393,7 @@ getRemoteAddress(): Promise\<NetAddress\>
 
 | 类型                                        | 说明                                        |
 | ------------------------------------------ | ------------------------------------------ |
-| Promise\<[NetAddress](#netaddress8)\> | Promise对象，返回获取对端socket地址的结果。 |
+| Promise\<[NetAddress](#netaddress)\> | Promise对象，返回获取对端socket地址的结果。 |
 
 **错误码：**
 
