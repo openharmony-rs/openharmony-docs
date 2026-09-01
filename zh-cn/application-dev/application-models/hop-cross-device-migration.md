@@ -58,7 +58,7 @@
      "module": {
        "abilities": [
          {
-           "continuable": true,
+           "continuable": true
          }
        ]
      }
@@ -383,7 +383,7 @@ export default class MigrationAbility extends UIAbility {
        "abilities": [
          {
            "name": "Ability-deviceA",
-           "continueType": ['continueType1'],
+           "continueType": ["continueType1"]
          }
        ]
      }
@@ -396,7 +396,7 @@ export default class MigrationAbility extends UIAbility {
        "abilities": [
          {
            "name": "Ability-deviceB",
-           "continueType": ['continueType1'],
+           "continueType": ["continueType1"]
          }
        ]
      }
@@ -425,7 +425,7 @@ export default class MigrationAbility extends UIAbility {
       {
         "name": "EntryAbility",
         "continueType": ["continueType"],
-        "continueBundleName": ["com.demo.example2"],
+        "continueBundleName": ["com.demo.example2"]
        
       }
     ]
@@ -441,7 +441,7 @@ export default class MigrationAbility extends UIAbility {
       {
         "name": "EntryAbility",
         "continueType": ["continueType"],
-        "continueBundleName": ["com.demo.example1"],
+        "continueBundleName": ["com.demo.example1"]
        
       }
     ]
@@ -460,7 +460,7 @@ export default class MigrationAbility extends UIAbility {
        "abilities": [
          {
            "name": "EntryAbility",
-           "continueType": ['EntryAbility_ContinueQuickStart'],
+           "continueType": ["EntryAbility_ContinueQuickStart"]
          }
        ]
      }
