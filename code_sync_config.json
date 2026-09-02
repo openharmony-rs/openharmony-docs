@@ -44823,5 +44823,30 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-navigation-faq.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/navDestination/template5/Index.ets",
+				"functions":[
+					{
+						"end_line":56,
+						"name":"ExamplePage",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/navDestination/template3/Index.ets",
+				"functions":[
+					{
+						"end_line":53,
+						"name":"NavDestinationSystemTransition",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
