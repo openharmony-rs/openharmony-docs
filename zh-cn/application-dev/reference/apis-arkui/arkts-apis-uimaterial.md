@@ -606,13 +606,6 @@ struct Index {
 // xxx.ets
 import { uiMaterial } from '@kit.ArkUI';
 
-@Component
-struct TestComponent {
-  build() {
-    Image($r('app.media.invert'))
-  }
-}
-
 @Styles
 function systemMaterialStyle() {
   .margin(5)
@@ -662,6 +655,7 @@ struct NavigationTitleMaterialDemo {
 
   build() {
     Stack() {
+      // $r('app.media.invert')需要替换为开发者所需的图像资源文件
       Image($r('app.media.invert'))
       Navigation() {
         // 页面内容
@@ -760,6 +754,7 @@ struct NavigationTitleMaterialDemo {
 
   build() {
     Stack() {
+      // $r('app.media.invert')需要替换为开发者所需的图像资源文件
       Image($r('app.media.invert'))
 
       Navigation() {
