@@ -1372,10 +1372,8 @@ struct ChildComponent {
         .color('#ff11acb8')
       Text(`subcomponent: ${this.desc}`)
         .fontSize(30)
-        .fontWeight(30)
       Text(`${this.sum}`)
         .fontSize(30)
-        .fontWeight(30)
     }
   }
 }
