@@ -205,7 +205,7 @@
     const NEARLINK_UUID_16_BIT_LENGTH = 2;
     const NEARLINK_UUID_128_BIT_LENGTH = 16;
     const NEARLINK_MANUFACTURER_ID_LENGTH = 2;
-    // 标准16比特UUID对应的128比特UUID形式的基础标识（前112比特）
+    // 标准UUID的基础标识前缀（112比特）
     const STANDARD_UUID_BASE_PREFIX = '37BEA880-FC70-11EA-B720-00000000';
 
     // 广播报文数据的解析结果
