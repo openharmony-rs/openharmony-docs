@@ -66,6 +66,46 @@ libnet_trafficfilter.so
    使用 [OH_TrafficFilter_AddRedirectRule](../reference/apis-network-kit/capi-net-trafficfilter-h.md) 接口向重定向器添加规则。`OH_TrafficFilter_RedirectRule` 中 `protocol` 固定为 TCP，`hookPoint`（Netfilter 钩子点）仅支持 `PREROUTING` 和 `OUTPUT`，`proxy_ip` 与 `proxy_port` 指定代理服务器地址。
 
    <!-- @[add_redirect_rule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Redirect_case/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   static napi_value AddRedirectRuleNapi(napi_env env, napi_callback_info info)
+   {
+       size_t argc = 1;
+       napi_value args[1] = {nullptr};
+   
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+   
+       if (argc <= 0) {
+           char msg[] = "ERROR: ruleJson parameter required";
+           napi_value result;
+           napi_create_string_utf8(env, msg, strlen(msg), &result);
+           return result;
+       }
+   
+       size_t jsonLen = 0;
+       napi_get_value_string_utf8(env, args[0], nullptr, 0, &jsonLen);
+       char* jsonStr = new char[jsonLen + 1];
+       napi_get_value_string_utf8(env, args[0], jsonStr, jsonLen + 1, &jsonLen);
+       std::string json(jsonStr);
+       delete[] jsonStr;
+   
+       OH_TrafficFilter_RedirectRule rule;
+       int32_t parseRet = BuildRedirectRuleFromJson(json, rule);
+       if (parseRet != OH_TRAFFICFILTER_OK) {
+           char msg[BUFFER_SIZE];
+           napi_value result;
+           napi_create_string_utf8(env, msg, strlen(msg), &result);
+           return result;
+       }
+   
+       int32_t ret = OH_TrafficFilter_AddRedirectRule(g_redirector, &rule);
+   
+       char msg[BUFFER_SIZE * 2];
+       napi_value result;
+       napi_create_string_utf8(env, msg, strlen(msg), &result);
+       return result;
+   }
+   ```
 
 3. 清除规则并销毁重定向器。
 
