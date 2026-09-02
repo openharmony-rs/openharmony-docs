@@ -22,71 +22,8 @@
 
 以下示例为自动反色的效果：材质下方的背景在黑白之间滚动变化，为TabBar组件设置colorInvert为true的ULTRA_THIN材质后，TabBar内的文字和图标颜色随背景自动反色，使文字与图标清晰可读。
 
-```ts
-import { uiMaterial } from '@kit.ArkUI';
+<!-- @[material_color_invert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialColorInvertExample.ets) -->
 
-@Component
-struct ContentOne {
-  build() {
-    Scroll() {
-      Column() {
-        // $r('app.media.greyBackground')需要替换为开发者所需的图像资源文件
-        Image($r('app.media.greyBackground'))
-          .width('100%')
-          .height('150%')
-          .objectFit(ImageFit.Fill)
-        // $r('app.media.greyBackground')需要替换为开发者所需的图像资源文件
-        Image($r('app.media.greyBackground'))
-          .width('100%')
-          .height('150%')
-          .objectFit(ImageFit.Fill)
-      }
-      .width('100%')
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-
-@Entry
-@Component
-struct PageMaterialReverse {
-  build() {
-    Column() {
-      Tabs({ barPosition: BarPosition.End }) {
-        TabContent() {
-          ContentOne()
-        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), 'tab1')
-        // BottomTabBarStyle样式支持反色，且设置支持反色的系统颜色资源
-          .labelStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
-          .iconStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
-        )
-
-        TabContent() {
-          Column().width('100%').height('100%').backgroundColor(Color.Green)
-        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), 'tab2')
-          .labelStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
-          .iconStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
-        )
-      }
-      .barFloatingStyle({
-        adaptToHandedness: true,
-        systemMaterial: new uiMaterial.ImmersiveMaterial(
-          {
-            style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
-            // 设置tabBar的材质为允许反色，且需配合ULTRA_THIN或THIN的style才能反色
-            colorInvert: true,
-          }
-        )
-      })
-      .barOverlap(true)
-      .height('100%')
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
 
 ![colorInvert](figures/colorInvert.gif)
 
@@ -100,52 +37,8 @@ struct PageMaterialReverse {
 
 以下示例为材质赋色的效果：为ULTRA_THIN材质组件设置半透明的materialColor后，材质在透出背景内容的同时呈现对应的色调。
 
-```ts
-import { uiMaterial } from '@kit.ArkUI';
+<!-- @[material_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialColorExample.ets) -->
 
-@Entry
-@Component
-struct MaterialColorExample {
-  build() {
-    Column() {
-      Tabs({ barPosition: BarPosition.End }) {
-        TabContent() {
-          // $r('app.media.invert')需要替换为开发者所需的图像资源文件
-          Image($r('app.media.invert'))
-            .width('100%')
-            .height('100%')
-            .objectFit(ImageFit.Cover)
-        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), 'tab1')
-          .labelStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
-          .iconStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
-        )
-
-        TabContent() {
-          Column().width('100%').height('100%').backgroundColor(Color.Green)
-        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), 'tab2')
-          .labelStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
-          .iconStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
-        )
-      }
-      .barFloatingStyle({
-        adaptToHandedness: true,
-        maskHeight: 0,
-        systemMaterial: new uiMaterial.ImmersiveMaterial(
-          {
-            style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
-            // 设置材质赋色颜色
-            materialColor: 'rgba(255, 0, 0, 0.2)',
-          }
-        )
-      })
-      .barOverlap(true)
-      .height('100%')
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
 
 ![materialColor](figures/material-color.jpg)
 
@@ -158,52 +51,8 @@ struct MaterialColorExample {
 
 以下示例为交互形变与点光源的效果：设置interactive为true并传入lightEffect对象后，按压组件时产生弹性形变，手指触摸时产生流光跟随效果。
 
-```ts
-import { uiMaterial } from '@kit.ArkUI';
+<!-- @[material_interactive_light](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialInteractiveLightExample.ets) -->
 
-@Entry
-@Component
-struct MaterialColorExample {
-  build() {
-    Column() {
-      Tabs({ barPosition: BarPosition.End }) {
-        TabContent() {
-          // $r('app.media.invert')需要替换为开发者所需的图像资源文件
-          Image($r('app.media.invert'))
-            .width('100%')
-            .height('100%')
-            .objectFit(ImageFit.Cover)
-        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), 'tab1')
-          .labelStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
-          .iconStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
-        )
-
-        TabContent() {
-          Column().width('100%').height('100%').backgroundColor(Color.Green)
-        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), 'tab2')
-          .labelStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
-          .iconStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
-        )
-      }
-      .barFloatingStyle({
-        adaptToHandedness: true,
-        maskHeight: 0,
-        systemMaterial: new uiMaterial.ImmersiveMaterial({
-          style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
-          // 开启可交互形变
-          interactive: true,
-          // 设置交互点光源效果为默认颜色
-          lightEffect: {},
-        }),
-      })
-      .barOverlap(true)
-      .height('100%')
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
 
 ![interactiveLight](figures/interactive-light.gif)
 
@@ -213,48 +62,7 @@ struct MaterialColorExample {
 
 将applyShadow置为false后设置自定义shadow（如粉色阴影）的效果，示例如下：
 
-```ts
-import { uiMaterial } from '@kit.ArkUI';
+<!-- @[custom_shadow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/CustomShadowExample.ets) -->
 
-@Entry
-@Component
-struct CustomShadowExample {
-  @Builder
-  NavigationTitle() {
-    Row() {
-      Text('Title')
-        .fontSize(20)
-        .fontWeight(FontWeight.Bold)
-
-      Column()
-        .width(50)
-        .height(50)
-        .borderRadius(25)
-        .justifyContent(FlexAlign.Center)
-        .systemMaterial(new uiMaterial.ImmersiveMaterial({
-          style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
-          applyShadow: false,
-          interactive: true,
-        }))
-        .shadow({ radius: 100, color: Color.Pink })
-    }
-    .width('100%')
-    .justifyContent(FlexAlign.SpaceBetween)
-    .padding({ left: 50, right: 50, top: 20 })
-  }
-
-  build() {
-    Column() {
-      Navigation() {
-        // 页面内容
-      }
-      .title({ builder: this.NavigationTitle, height: '100%' })
-      // $r('app.media.greyBackground')需要替换为开发者所需的图像资源文件
-      .backgroundImage($r('app.media.greyBackground'))
-      .backgroundImageSize({ width: '100%', height: '100%' })
-    }.width('100%').height('100%')
-  }
-}
-```
 
 ![shadowPink](figures/shadowPink.jpg)
