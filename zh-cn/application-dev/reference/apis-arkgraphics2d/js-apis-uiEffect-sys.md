@@ -2297,7 +2297,7 @@ struct example {
 
 static createFractalGlassMask(glassNum: number, glassStrength: number, glassSoftness: number, isSymmetric: boolean, refractMask?: image.PixelMap): Mask
 
-创建一个分形玻璃蒙版。它通过分形条纹对输入纹理进行周期性水平位移采样，产生类似玻璃折射的扭曲效果。扭曲效果关于图像垂直轴对称。配合[displacementDistort](#displacementdistort20)使用，可产生光栅折射的视觉效果。
+创建一个分形玻璃蒙版。通过分形条纹对输入纹理进行周期性水平位移采样，产生类似玻璃折射的扭曲效果。扭曲效果关于图像垂直轴对称。可以配合[displacementDistort](#displacementdistort20)使用，产生光栅折射的视觉效果。
 
 **起始版本：** 26.1.0
 
@@ -2314,7 +2314,7 @@ static createFractalGlassMask(glassNum: number, glassStrength: number, glassSoft
 | glassNum      | number                                                       | 是   | 分形玻璃条纹的数量，单位为条。取值范围为[0, 100]，值为0时表示无分形玻璃条纹。超出该区间的值将被自动截断至最近边界值。              |
 | glassStrength | number                                                       | 是   | 分形玻璃的扭曲强度。取值范围为[0.0, 10.0]，值为0.0时表示无扭曲。超出该区间的值将被自动截断至最近边界值。 |
 | glassSoftness | number                                                       | 是   |  分形玻璃条纹的边缘柔和度。取值范围为[0.0, 0.01]，超出该区间的值将被自动截断至最近边界值。 |
-| isSymmetric   | boolean                                                      | 是   | 是否启用对称扭曲，对称轴为图像的中心垂直轴。true表示启用对称扭曲，false表示不启用对称扭曲。                                          |
+| isSymmetric   | boolean                                                      | 是   | 产生类似玻璃折射的扭曲效果。true表示启用对称模式，扭曲效果关于图像垂直轴对称。false表示不启用对称模式，效果为不对称的自然扭曲。                                          |
 | refractMask   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 玻璃纹理贴图，用于生成条纹位移的源图像，控制分形效果的有效区域。此参数不填时，使用内置分形条纹生成位移。当传入此参数时，glassNum不再表示条纹数量，glassNum和glassStrength共同决定折射强度。                          |
 
 **返回值：**
@@ -2521,7 +2521,7 @@ BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包
 | 名称          | 类型                                          | 只读 | 可选 | 说明                                                                                                                               |
 | ------------- | --------------------------------------------- | ---- | ---- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | shapeType     | [PrismShapeType](#prismshapetype)           | 否   | 是   | 棱镜的形状类型。默认值为ROUNDED_RECT。                                                                                             |
-| cornerRadius  | number                                        | 否   | 是   | 棱镜的归一化圆角半径，仅在shapeType为ROUNDED_RECT时生效。取值范围为[0.0, 1.0]，超出该区间的值将被自动截断至最近边界值。值为1.0时，表示棱镜的归一化圆角半径等于组件高度。 |
+| cornerRadius  | number                                        | 否   | 是   | 棱镜的归一化圆角半径，仅在shapeType为ROUNDED_RECT时生效。取值范围为[0.0, 1.0]，默认值为0.16，超出该区间的值将被自动截断至最近边界值。值为1.0时，表示棱镜的归一化圆角半径等于组件高度。 |
 | prismWidth    | number                                        | 否   | 是   | 棱镜的归一化宽度。取值范围为[0.01, 2.0]，默认值为1.0，超出该区间的值将被自动截断至最近边界值。值为1.0时，表示棱镜的归一化宽度等于组件宽度。                   |
 | prismHeight   | number                                        | 否   | 是   | 棱镜的归一化高度。取值范围为[0.01, 2.0]，默认值为1.0，超出该区间的值将被自动截断至最近边界值。值为1.0时，表示棱镜的归一化高度等于组件高度。                   |
 | sweepCenterX  | number                                        | 否   | 是   | 扫光中心的归一化X坐标。取值范围为[0.0, 1.0]，默认值为0.0，超出该区间的值将被自动截断至最近边界值。0.0表示左边缘。1.0表示右边缘。 |
