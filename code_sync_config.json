@@ -26577,7 +26577,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentMixing1.ets",
 				"functions":[
 					{
-						"end_line":175,
+						"end_line":173,
 						"name":"arkts_custom_components_freeze10",
 						"start_line":15
 					}
