@@ -198,7 +198,7 @@ Wifi_ResultCode OH_Wifi_IsWifiEnabled(bool *enabled)
 
 **描述**
 
-查询WIFI开关是否开启。
+查询Wi-Fi开关是否开启。
 
 **起始版本：** 13
 
@@ -206,13 +206,13 @@ Wifi_ResultCode OH_Wifi_IsWifiEnabled(bool *enabled)
 
 | 参数项 | 描述 |
 | -- | -- |
-| bool *enabled | - bool类型的指针，用于接收WIFI开关状态值。<br> 等于true表示WIFI开关开启，false表示WIFI开关关闭。<br> 需要传入非空指针，否则会返回错误。 |
+| bool *enabled | - bool类型的指针，用于接收Wi-Fi开关状态值。<br> 等于true表示Wi-Fi开关开启，false表示Wi-Fi开关关闭。<br> 需要传入非空指针，否则会返回错误。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode) | 返回操作结果，详细定义参见[Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode)。<br>     [WIFI_SUCCESS](capi-oh-wifi-h.md#wifi_resultcode) 查询WIFI开关状态成功。<br>     [WIFI_INVALID_PARAM](capi-oh-wifi-h.md#wifi_resultcode) 入参为空指针。<br>     [WIFI_OPERATION_FAILED](capi-oh-wifi-h.md#wifi_resultcode) 服务内部执行错误。 |
+| [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode) | 返回操作结果，详细定义参见[Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode)。<br>     [WIFI_SUCCESS](capi-oh-wifi-h.md#wifi_resultcode) 查询Wi-Fi开关状态成功。<br>     [WIFI_INVALID_PARAM](capi-oh-wifi-h.md#wifi_resultcode) 入参为空指针。<br>     [WIFI_OPERATION_FAILED](capi-oh-wifi-h.md#wifi_resultcode) 服务内部执行错误。 |
 
 ### OH_Wifi_GetDeviceMacAddress()
 
@@ -239,7 +239,7 @@ Wifi_ResultCode OH_Wifi_GetDeviceMacAddress(char *macAddr, unsigned int *macAddr
 
 | 类型 | 说明 |
 | -- | -- |
-| [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode) | 返回操作结果，详细定义参见[Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode)。<br>     [WIFI_SUCCESS](capi-oh-wifi-h.md#wifi_resultcode) 成功获取设备MAC地址。<br>     [WIFI_PERMISSION_DENIED](capi-oh-wifi-h.md#wifi_resultcode) 权限拒绝。<br>     [WIFI_NOT_SUPPORTED](capi-oh-wifi-h.md#wifi_resultcode) 不支持该能力。<br>     [WIFI_INVALID_PARAM](capi-oh-wifi-h.md#wifi_resultcode) 输入参数macAddr是空指针。<br>     [WIFI_OPERATION_FAILED](capi-oh-wifi-h.md#wifi_resultcode) 内部执行失败。<br>     [WIFI_STA_DISABLED](capi-oh-wifi-h.md#wifi_resultcode) WIFI STA模式未启用。 |
+| [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode) | 返回操作结果，详细定义参见[Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode)。<br> [WIFI_SUCCESS](capi-oh-wifi-h.md#wifi_resultcode) 成功获取设备MAC地址。<br> [WIFI_PERMISSION_DENIED](capi-oh-wifi-h.md#wifi_resultcode) 权限拒绝。<br> [WIFI_NOT_SUPPORTED](capi-oh-wifi-h.md#wifi_resultcode) 不支持该能力。<br> [WIFI_INVALID_PARAM](capi-oh-wifi-h.md#wifi_resultcode) 输入参数macAddr是空指针。<br> [WIFI_OPERATION_FAILED](capi-oh-wifi-h.md#wifi_resultcode) 内部执行失败。<br> [WIFI_STA_DISABLED](capi-oh-wifi-h.md#wifi_resultcode) WIFI STA模式未启用。 |
 
 ### OH_Wifi_GetLinkedInfo()
 
@@ -249,7 +249,7 @@ Wifi_ResultCode OH_Wifi_GetLinkedInfo(OH_WifiLinkedInfo *info)
 
 **描述**
 
-该接口用于获取WIFI连接信息。
+该接口用于获取Wi-Fi连接信息。
 
 > **说明：**
 > - 当macType是1（设备MAC地址），获取macAddress还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（API version 8-15仅面向系统应用开放。从API version 16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放），无该权限时，macAddress返回为空。
@@ -263,12 +263,12 @@ Wifi_ResultCode OH_Wifi_GetLinkedInfo(OH_WifiLinkedInfo *info)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_WifiLinkedInfo](capi-wifi-oh-wifilinkedinfo.md) *info | WIFI连接信息结构体。 |
+| [OH_WifiLinkedInfo](capi-wifi-oh-wifilinkedinfo.md) *info | Wi-Fi连接信息结构体。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode) | 返回操作结果，详细定义参见[Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode)。<br>     [WIFI_SUCCESS](capi-oh-wifi-h.md#wifi_resultcode) 成功获取WIFI连接信息。<br>     [WIFI_PERMISSION_DENIED](capi-oh-wifi-h.md#wifi_resultcode) 权限拒绝。<br>     [WIFI_NOT_SUPPORTED](capi-oh-wifi-h.md#wifi_resultcode) 不支持该能力。<br>     [WIFI_INVALID_PARAM](capi-oh-wifi-h.md#wifi_resultcode) 输入参数info是空指针。<br>     [WIFI_OPERATION_FAILED](capi-oh-wifi-h.md#wifi_resultcode) 内部执行失败。<br>     [WIFI_STA_DISABLED](capi-oh-wifi-h.md#wifi_resultcode) WIFI STA模式未启用。 |
+| [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode) | 返回操作结果，详细定义参见[Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode)。<br> [WIFI_SUCCESS](capi-oh-wifi-h.md#wifi_resultcode) 成功获取WIFI连接信息。<br> [WIFI_PERMISSION_DENIED](capi-oh-wifi-h.md#wifi_resultcode) 权限拒绝。<br> [WIFI_NOT_SUPPORTED](capi-oh-wifi-h.md#wifi_resultcode) 不支持该能力。<br> [WIFI_INVALID_PARAM](capi-oh-wifi-h.md#wifi_resultcode) 输入参数info是空指针。<br> [WIFI_OPERATION_FAILED](capi-oh-wifi-h.md#wifi_resultcode) 内部执行失败。<br> [WIFI_STA_DISABLED](capi-oh-wifi-h.md#wifi_resultcode) Wi-Fi STA模式未启用。 |
 
 
