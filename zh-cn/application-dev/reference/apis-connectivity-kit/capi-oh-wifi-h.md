@@ -44,7 +44,7 @@
 | 名称 | 描述 |
 | -- | -- |
 | WIFI_MAX_SSID_LEN 33 | [OH_WifiLinkedInfo](capi-wifi-oh-wifilinkedinfo.md)表示ssid的最大长度，有效字符32，最后一位保留并设置为'\0'。<br>**起始版本：** 24 |
-| WIFI_MAC_LEN 18 | [OH_WifiLinkedInfo](capi-wifi-oh-wifilinkedinfo.md)表示Mac地址或bssid的最大长度，有效字符长度17，最后一位为'\0'。<br>**起始版本：** 24 |
+| WIFI_MAC_LEN 18 | [OH_WifiLinkedInfo](capi-wifi-oh-wifilinkedinfo.md)表示MAC地址或bssid的最大长度，有效字符长度17，最后一位为'\0'。<br>**起始版本：** 24 |
 
 ### 函数
 
