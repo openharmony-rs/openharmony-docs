@@ -57,24 +57,6 @@ libnet_trafficfilter.so
 
 <!-- @[header_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp) -->
 
-<div class="same-source-code">
-``` C++
-#include "napi/native_api.h"
-#include <cstdint>
-#include <cstring>
-#include <string>
-#include <vector>
-#include <map>
-#include <algorithm>
-#include <arpa/inet.h>
-#include "hilog/log.h"
-#include "network/netmanager_ext/net_trafficfilter.h"
-```
-
-<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp?same_code_link_text=header_file" target="_blank" rel="nofollow">napi_init.cpp</a></p>
-
-</div>
-
 
 在 C++ 源文件中引入以下头文件：
 
@@ -89,125 +71,6 @@ libnet_trafficfilter.so
    使用 [OH_TrafficFilter_CreatePacketController](../reference/apis-network-kit/capi-net-trafficfilter-h.md) 接口创建报文控制器。其中 `group_id` 用于标识控制器的分组，`priority` 控制规则优先级，`packetCopyMode` 与 `packetCopyLen` 用于配置 NFQueue（Netfilter Queue，内核与用户态交互报文拷贝的队列机制）报文拷贝模式与长度，`nfqueueMaxlen` 与 `nfqueueFlags` 用于设置队列长度与标志位。
 
    <!-- @[create_packet_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp) -->
-
-   <div class="same-source-code">
-   ``` C++
-   constexpr int BUFFER_SIZE = 128;
-   constexpr int GLOBAL_NETSTACK = 0xFF00;
-   constexpr int IP_ADDR_BUF_LEN = 16;
-   constexpr int IPV4_ADDR_LEN = 4;
-   constexpr int MAX_STR_ARRAY_LEN = 46;
-   constexpr uint32_t DEFAULT_GROUP_ID = 1001;
-   constexpr uint32_t DEFAULT_PRIORITY = 100;
-   constexpr uint32_t DEFAULT_PACKET_COPY_LEN = 0xFFFF;
-   constexpr uint32_t DEFAULT_NFQUEUE_MAXLEN = 1024;
-   constexpr uint32_t DEFAULT_NFQUEUE_FLAGS = 1;
-   constexpr uint32_t DEFAULT_PACKET_COPY_MODE = 2;
-   constexpr int PORT_MIN_VALUE = 0;
-   constexpr int PORT_MAX_VALUE = 65535;
-   constexpr int MAX_PORT_MULTI_COUNT = 16;
-   constexpr int MAX_IP_MULTI_COUNT = 8;
-   constexpr int32_t ERR_CONTROLLER_NOT_FOUND = 29410101;
-   constexpr int DUMMY_CALLBACK_ARG = 23;
-   
-   // Argument indices for CreatePacketControllerNapi
-   constexpr int PACKET_CTRL_ARG_IDX_GROUP_ID = 0;
-   constexpr int PACKET_CTRL_ARG_IDX_PRIORITY = 1;
-   constexpr int PACKET_CTRL_ARG_IDX_PACKET_COPY_LEN = 2;
-   constexpr int PACKET_CTRL_ARG_IDX_NFQUEUE_MAXLEN = 3;
-   constexpr int PACKET_CTRL_ARG_IDX_NFQUEUE_FLAGS = 4;
-   constexpr int PACKET_CTRL_ARG_IDX_PACKET_COPY_MODE = 5;
-   
-   constexpr int HOOK_INPUT_VALUE = 0;
-   constexpr int HOOK_OUTPUT_VALUE = 1;
-   constexpr int HOOK_FORWARD_VALUE = 2;
-   constexpr int HOOK_PREROUTING_VALUE = 3;
-   constexpr int HOOK_POSTROUTING_VALUE = 4;
-   
-   constexpr int ARG_IDX_JS_CALLBACK = 2;
-   constexpr int ARG_IDX_RULE_CONFIG = 2;
-   
-   constexpr size_t MAX_PORT_STRING_LEN = 1024;
-   
-   map<int, OH_TrafficFilter_PacketController*> g_controllerMap;
-   int g_controllerId = 1;
-   
-   static const char *TAG = "[packet]";
-   
-   napi_threadsafe_function tsFn;
-   static int g_value = 0;
-   
-   struct PacketCallbackCtx {
-       napi_env env;
-       napi_ref jsCallbackRef;
-       const OH_TrafficFilter_PacketDesc* packet;
-   };
-   
-   auto g_asyncContext = new PacketCallbackCtx();
-   
-   static napi_value CreatePacketControllerNapi(napi_env env, napi_callback_info info)
-   {
-       size_t argc = PACKET_CTRL_ARG_IDX_PACKET_COPY_MODE + 1;
-       napi_value args[PACKET_CTRL_ARG_IDX_PACKET_COPY_MODE + 1] = {nullptr};
-   
-       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-   
-       uint32_t groupId = DEFAULT_GROUP_ID;
-       uint32_t priority = DEFAULT_PRIORITY;
-       uint32_t packetCopyLen = DEFAULT_PACKET_COPY_LEN;
-       uint32_t nfqueueMaxlen = DEFAULT_NFQUEUE_MAXLEN;
-       uint32_t nfqueueFlags = DEFAULT_NFQUEUE_FLAGS;
-       uint32_t packetCopyMode = DEFAULT_PACKET_COPY_MODE;
-   
-       if (argc > PACKET_CTRL_ARG_IDX_GROUP_ID) {
-           napi_get_value_uint32(env, args[PACKET_CTRL_ARG_IDX_GROUP_ID], &groupId);
-       }
-       if (argc > PACKET_CTRL_ARG_IDX_PRIORITY) {
-           napi_get_value_uint32(env, args[PACKET_CTRL_ARG_IDX_PRIORITY], &priority);
-       }
-       if (argc > PACKET_CTRL_ARG_IDX_PACKET_COPY_LEN) {
-           napi_get_value_uint32(env, args[PACKET_CTRL_ARG_IDX_PACKET_COPY_LEN], &packetCopyLen);
-       }
-       if (argc > PACKET_CTRL_ARG_IDX_NFQUEUE_MAXLEN) {
-           napi_get_value_uint32(env, args[PACKET_CTRL_ARG_IDX_NFQUEUE_MAXLEN], &nfqueueMaxlen);
-       }
-       if (argc > PACKET_CTRL_ARG_IDX_PACKET_COPY_MODE) {
-           napi_get_value_uint32(env, args[PACKET_CTRL_ARG_IDX_PACKET_COPY_MODE], &packetCopyMode);
-       }
-   
-       OH_TrafficFilter_Config config;
-       config.size = sizeof(OH_TrafficFilter_Config);
-       config.packetCopyLen = packetCopyLen;
-       config.nfqueueMaxlen = nfqueueMaxlen;
-       config.nfqueueFlags = nfqueueFlags;
-       config.packetCopyMode = packetCopyMode;
-   
-       OH_TrafficFilter_PacketController* controller = nullptr;
-       int32_t ret = OH_TrafficFilter_CreatePacketController(groupId, priority, &config, &controller);
-   // ...
-   
-       g_controllerMap[g_controllerId] = controller;
-   
-       napi_value resultObj;
-       napi_create_object(env, &resultObj);
-   
-       napi_value retValue;
-       napi_create_int32(env, ret, &retValue);
-       napi_set_named_property(env, resultObj, "ret", retValue);
-   
-       napi_value id;
-       napi_create_int32(env, g_controllerId, &id);
-       napi_set_named_property(env, resultObj, "id", id);
-   
-       g_controllerId++;
-   
-       return resultObj;
-   }
-   ```
-
-   <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp?same_code_link_text=create_packet_controller" target="_blank" rel="nofollow">napi_init.cpp</a></p>
-
-   </div>
 
 
    简要说明：`CreatePacketControllerNapi` 接收分组 ID、优先级以及 NFQueue 拷贝模式等配置，创建报文控制器并返回控制器 ID 与错误码。
@@ -229,54 +92,6 @@ libnet_trafficfilter.so
 
    <!-- @[add_packet_rule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp) -->
 
-   <div class="same-source-code">
-   ``` C++
-   static napi_value AddPacketRuleNapi(napi_env env, napi_callback_info info)
-   {
-       size_t argc = ARG_IDX_RULE_CONFIG;
-       napi_value args[ARG_IDX_RULE_CONFIG] = {nullptr};
-       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-   
-       uint32_t id = -1;
-       napi_get_value_uint32(env, args[0], &id);
-       OH_TrafficFilter_PacketController* controller = g_controllerMap[id];
-       if (controller == nullptr) {
-           napi_value result;
-           napi_create_int32(env, -1, &result);
-           return result;
-       }
-   
-       napi_value configObj = args[1];
-   
-       uint32_t priority = DEFAULT_PRIORITY;
-       bool hasProp = false;
-       napi_value propVal;
-       if (napi_has_named_property(env, configObj, "priority", &hasProp) == napi_ok && hasProp) {
-           napi_get_named_property(env, configObj, "priority", &propVal);
-           napi_get_value_uint32(env, propVal, &priority);
-       }
-   
-       OH_TrafficFilter_HookPoint hookPoint = ParseHookPointFromConfig(env, configObj);
-       uint32_t protocol = ParseProtocolFromConfig(env, configObj);
-       OH_TrafficFilter_FilterRule rule = BuildFilterRuleFromConfig(env, configObj, priority, hookPoint, protocol);
-   
-       OH_LOG_Print(LOG_APP, LOG_INFO, GLOBAL_NETSTACK, TAG,
-                    "AddPacketRuleNapi srcMac: %{public}s", rule.macMatch.srcMac);
-   
-       int ret = OH_TrafficFilter_AddPacketRule(controller, &rule);
-       OH_LOG_Print(LOG_APP, LOG_INFO, GLOBAL_NETSTACK, TAG,
-                    "AddPacketRuleNapi ret: %{public}d", ret);
-   
-       napi_value result;
-       napi_create_int32(env, ret, &result);
-       return result;
-   }
-   ```
-
-   <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp?same_code_link_text=add_packet_rule" target="_blank" rel="nofollow">napi_init.cpp</a></p>
-
-   </div>
-
 
    简要说明：`OH_TrafficFilter_FilterRule` 内部各条件为逻辑与关系，同一控制器内多个规则为逻辑或关系。
 
@@ -285,59 +100,6 @@ libnet_trafficfilter.so
    使用 [OH_TrafficFilter_RegisterPacketCallback](../reference/apis-network-kit/capi-net-trafficfilter-h.md) 接口注册回调函数。回调运行在非 JS 线程，如需将报文信息展示到 ArkTS 层，需通过 `napi_threadsafe_function` 创建线程安全函数，在回调中调用 `napi_call_threadsafe_function` 将数据转发到 ArkTS 线程。
 
    <!-- @[register_packet_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp) -->
-
-   <div class="same-source-code">
-   ``` C++
-   OH_TrafficFilter_PacketDecision MyPacketHandler(
-       const OH_TrafficFilter_PacketDesc* packet,
-       void* userData)
-   {
-       napi_acquire_threadsafe_function(tsFn);
-       g_asyncContext->packet = packet;
-       napi_call_threadsafe_function(tsFn, g_asyncContext, napi_tsfn_nonblocking);
-       napi_release_threadsafe_function(tsFn, napi_tsfn_release);
-   
-       return OH_TRAFFICFILTER_DECISION_DROP;
-   }
-   
-   static napi_value RegisterPacketCallbackNapi(napi_env env, napi_callback_info info)
-   {
-       size_t argc = ARG_IDX_JS_CALLBACK + 1;
-       napi_value args[ARG_IDX_JS_CALLBACK + 1] = {nullptr};
-       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-   
-       uint32_t id = -1;
-       napi_get_value_uint32(env, args[0], &id);
-       OH_TrafficFilter_PacketController* controller = g_controllerMap[id];
-       if (controller == nullptr) {
-           napi_value result;
-           napi_create_int32(env, ERR_CONTROLLER_NOT_FOUND, &result);
-           return result;
-       }
-   
-       size_t copyLen = 0;
-       char buf[BUFFER_SIZE] = {0};
-       napi_get_value_string_utf8(env, args[1], buf, BUFFER_SIZE, &copyLen);
-       void* userData = reinterpret_cast<void*>(buf);
-   
-       napi_value workName;
-       napi_create_string_utf8(env, "ThreadSafeCase", NAPI_AUTO_LENGTH, &workName);
-       napi_create_threadsafe_function(env, nullptr, nullptr, workName, 0, 1, nullptr, nullptr,
-                                       nullptr, ThreadSafeCallJs, &tsFn);
-   
-       g_asyncContext->env = env;
-       napi_create_reference(env, args[ARG_IDX_JS_CALLBACK], 1, &g_asyncContext->jsCallbackRef);
-   
-       int ret = OH_TrafficFilter_RegisterPacketCallback(controller, MyPacketHandler, userData);
-       napi_value result;
-       napi_create_int32(env, 0, &result);
-       return result;
-   }
-   ```
-
-   <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp?same_code_link_text=register_packet_callback" target="_blank" rel="nofollow">napi_init.cpp</a></p>
-
-   </div>
 
 
 4. 注销回调、清除规则并销毁报文控制器。
@@ -349,109 +111,15 @@ libnet_trafficfilter.so
 
    <!-- @[unregister_packet_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp) -->
 
-   <div class="same-source-code">
-   ``` C++
-   static napi_value UnregisterPacketCallbackNapi(napi_env env, napi_callback_info info)
-   {
-       size_t argc = 1;
-       napi_value args[1] = {nullptr};
-       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-   
-       int ret = -1;
-       if (argc >= 1) {
-           uint32_t id;
-           napi_get_value_uint32(env, args[0], &id);
-           OH_TrafficFilter_PacketController* controller = g_controllerMap[id];
-           if (controller != nullptr) {
-               ret = OH_TrafficFilter_UnregisterPacketCallback(controller);
-           }
-       }
-   
-       napi_value result;
-       napi_create_int32(env, ret, &result);
-       return result;
-   }
-   ```
-
-   <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp?same_code_link_text=unregister_packet_callback" target="_blank" rel="nofollow">napi_init.cpp</a></p>
-
-   </div>
-
-
 
    简要说明：`controllerMap_[id]` 为空时返回 `-1`；注销回调前无需额外处理线程安全函数，但应确保不再主动触发新的匹配流量。
 
    <!-- @[clear_packet_rule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp) -->
 
-   <div class="same-source-code">
-   ``` C++
-   static napi_value ClearPacketRuleNapi(napi_env env, napi_callback_info info)
-   {
-       size_t argc = 1;
-       napi_value args[1] = {nullptr};
-       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-   
-       uint32_t id;
-       if (argc >= 1) {
-           napi_get_value_uint32(env, args[0], &id);
-       }
-   
-       int ret = -1;
-       OH_TrafficFilter_PacketController* controller = g_controllerMap[id];
-       if (controller != nullptr) {
-           ret = OH_TrafficFilter_ClearPacketRule(controller);
-       }
-   
-       napi_value result;
-       napi_create_int32(env, ret, &result);
-       return result;
-   }
-   ```
-
-   <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp?same_code_link_text=clear_packet_rule" target="_blank" rel="nofollow">napi_init.cpp</a></p>
-
-   </div>
-
 
    简要说明：清除规则后，已注册的回调仍可能因后续新增规则而被触发；如需完全停止回调，请在清除规则前先注销回调。
 
    <!-- @[destroy_packet_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp) -->
-
-   <div class="same-source-code">
-   ``` C++
-   static napi_value DestroyPacketControllerNapi(napi_env env, napi_callback_info info)
-   {
-       size_t argc = 1;
-       napi_value args[1] = {nullptr};
-   
-       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-   
-       uint32_t id;
-       if (argc >= 1) {
-           napi_get_value_uint32(env, args[0], &id);
-       }
-   
-       int ret = -1;
-       OH_LOG_Print(LOG_APP, LOG_INFO, GLOBAL_NETSTACK, TAG,
-                    "DestroyPacketControllerNapi id: %{public}d", id);
-   
-       OH_TrafficFilter_PacketController* controller = g_controllerMap[id];
-       if (controller != nullptr) {
-           OH_LOG_Print(LOG_APP, LOG_INFO, GLOBAL_NETSTACK, TAG,
-                        "DestroyPacketControllerNapi id111: %{public}d", id);
-           ret = OH_TrafficFilter_DestroyPacketController(controller);
-           g_controllerMap[id] = nullptr;
-       }
-   
-       napi_value result;
-       napi_create_int32(env, ret, &result);
-       return result;
-   }
-   ```
-
-   <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp?same_code_link_text=destroy_packet_controller" target="_blank" rel="nofollow">napi_init.cpp</a></p>
-
-   </div>
 
 
    简要说明：销毁控制器后会自动释放其占用的系统资源（包括规则），销毁后请将句柄置空，避免重复释放。
@@ -459,58 +127,6 @@ libnet_trafficfilter.so
 5. 初始化并导出通过 N-API 封装的 `napi_value` 类型对象。
 
    <!-- @[init_exports](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp) -->
-
-   <div class="same-source-code">
-   ``` C++
-   <!-- @[register_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp) -->
-
-   <div class="same-source-code">
-   ``` C++
-   static napi_module demoModule = {
-       .nm_version = 1,
-       .nm_flags = 0,
-       .nm_filename = nullptr,
-       .nm_register_func = Init,
-       .nm_modname = "entry",
-       .nm_priv = nullptr,
-       .reserved = { 0 },
-   };
-   
-   extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
-   {
-       napi_module_register(&demoModule);
-   }
-   ```
-
-   <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp?same_code_link_text=register_module" target="_blank" rel="nofollow">napi_init.cpp</a></p>
-
-   </div>
-
-   {
-       napi_property_descriptor desc[] = {
-           { "createPacketController", nullptr, CreatePacketControllerNapi, nullptr, nullptr,
-             nullptr, napi_default, nullptr },
-           { "destroyPacketController", nullptr, DestroyPacketControllerNapi, nullptr, nullptr,
-             nullptr, napi_default, nullptr },
-           { "addPacketRule", nullptr, AddPacketRuleNapi, nullptr, nullptr,
-             nullptr, napi_default, nullptr },
-           { "clearPacketRule", nullptr, ClearPacketRuleNapi, nullptr, nullptr,
-             nullptr, napi_default, nullptr },
-           { "registerPacketCallback", nullptr, RegisterPacketCallbackNapi, nullptr, nullptr,
-             nullptr, napi_default, nullptr },
-           { "unregisterPacketCallback", nullptr, UnregisterPacketCallbackNapi, nullptr, nullptr,
-             nullptr, napi_default, nullptr }
-       };
-       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-       return exports;
-   }
-   EXTERN_C_END
-   ```
-
-   <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp?same_code_link_text=init_exports" target="_blank" rel="nofollow">napi_init.cpp</a></p>
-
-   </div>
-
 
 6. 将初始化成功的对象通过 `RegisterEntryModule` 函数，使用 `napi_module_register` 函数将模块注册到 Node.js 中。
 
