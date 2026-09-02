@@ -5,7 +5,7 @@
 <!--Designer: @chenjinxiang3-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=454dfe4281e84492b6b293a96c820eee9e3d0c18 translatedAt=2026-09-01T08:20:04.743Z pushedAt=2026-09-01T10:24:29.686Z -->
+<!-- md-trans-meta sourceCommit=454dfe4281e84492b6b293a96c820eee9e3d0c18 translatedAt=2026-09-01T08:20:04.743Z pushedAt=2026-09-02T05:47:27.155Z -->
 
 This module provides information about the current device. It reads system configurations to obtain basic information such as the device brand, model, manufacturer, and screen parameters, which can be used for device adaptation and function determination.
 
@@ -191,5 +191,5 @@ Defines the device profile information.
 | screenShape<sup>4+</sup> | string | Screen shape. The options are as follows:<br>-&nbsp;**rect**: rectangular screen<br>-&nbsp;**circle**: round screen |
 | apiVersion<sup>4+</sup> | number | API version. |
 | deviceType<sup>4+</sup> | string | Device type. The options are as follows: **phone**, **tablet**, **tv**, and **wearable**. |
-| sdkMinorApiVersion | number  | SDK minor API version. Since API version 26.0.0 , the API version is in the format of **apiVersion.sdkMinorApiVersion.sdkPatchApiVersion**. If the value fails to be obtained, **-1** is returned, which does not affect the overall return status of the **getInfo** API.<br/>**Model constraint:** This API can be used only in the FA model.<br/>**Since version**: 26.0.0<br/>Example: 0 |
-| sdkPatchApiVersion  | number  | SDK patch API version. Since API version 26.0.0 , the API version is in the format of **apiVersion.sdkMinorApiVersion.sdkPatchApiVersion**. If the value fails to be obtained, **-1** is returned, which does not affect the overall return status of the **getInfo** API.<br/>**Model constraint:** This API can be used only in the FA model.<br/>**Since version**: 26.0.0<br/>Example: 0 |
+| sdkMinorApiVersion | number  | SDK minor API version. Since API version 26.0.0, the API version is in the format of **apiVersion.sdkMinorApiVersion.sdkPatchApiVersion**. If the value fails to be obtained, **-1** is returned, which does not affect the overall return status of the **getInfo** API.<br/>**Model constraint:** This API can be used only in the FA model.<br/>**Since version**: 26.0.0<br/>Example: 0 |
+| sdkPatchApiVersion  | number  | SDK patch API version. Since API version 26.0.0, the API version is in the format of **apiVersion.sdkMinorApiVersion.sdkPatchApiVersion**. If the value fails to be obtained, **-1** is returned, which does not affect the overall return status of the **getInfo** API.<br/>**Model constraint:** This API can be used only in the FA model.<br/>**Since version**: 26.0.0<br/>Example: 0 |

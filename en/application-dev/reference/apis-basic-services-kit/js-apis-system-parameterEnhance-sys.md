@@ -1,11 +1,11 @@
-# @ohos.systemParameterEnhance (System Parameter)(System API)
+# @ohos.systemParameterEnhance (System Parameter) (System API)
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Startup-->
 <!--Owner: @chenjinxiang3-->
 <!--Designer: @chenjinxiang3-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=b73959e1d9c45b3baa93846c25ec959748b34662 translatedAt=2026-09-01T08:21:27.951Z pushedAt=2026-09-01T11:40:37.219Z -->
+<!-- md-trans-meta sourceCommit=b73959e1d9c45b3baa93846c25ec959748b34662 translatedAt=2026-09-01T08:21:27.951Z pushedAt=2026-09-02T05:46:15.125Z -->
 
 System Parameter is a simple and easy-to-use key-value pair access interface provided for system services. Each system service can define system parameters to describe its status information, or change the behavior of the system service through system parameters. Its basic operation primitives are get and set. You can query the value of a system parameter through get, and modify the value of a system parameter through set. For details about the design principles and definitions of system parameters, see [System Parameter](../../../device-dev/subsystems/subsys-boot-init-sysparam.md).
 
