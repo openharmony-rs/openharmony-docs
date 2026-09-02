@@ -242,5 +242,59 @@ struct MaterialInteractiveLightExample {
 
 <!-- @[custom_shadow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/CustomShadowExample.ets) -->
 
+<div class="same-source-code">
+``` TypeScript
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct CustomShadowExample {
+  @Builder
+  NavigationTitle() {
+    Row() {
+      Text('Title')
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+
+      Column()
+        .width(50)
+        .height(50)
+        .borderRadius(25)
+        .justifyContent(FlexAlign.Center)
+        .systemMaterial(new uiMaterial.ImmersiveMaterial({
+          style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+          applyShadow: false,
+          interactive: true,
+        }))
+        .shadow({ radius: 100, color: Color.Pink })
+    }
+    .width('100%')
+    .justifyContent(FlexAlign.SpaceBetween)
+    .padding({ left: 50, right: 50, top: 20 })
+  }
+
+  build() {
+    Column() {
+      Navigation() {
+        // 页面内容
+        Image($r('app.media.invert'))
+          .width('100%')
+          .height('100%')
+          .objectFit(ImageFit.Cover)
+      }
+      .title({ builder: this.NavigationTitle, height: '100%' })
+      // $r('app.media.greyBackground')需要替换为开发者所需的图像资源文件
+      .backgroundImage($r('app.media.greyBackground'))
+      .backgroundImageSize({ width: '100%', height: '100%' })
+    }.width('100%').height('100%')
+  }
+}
+```
+
+<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/CustomShadowExample.ets?same_code_link_text=custom_shadow" target="_blank" rel="nofollow">CustomShadowExample.ets</a></p>
+
+</div>
+
+
 
 ![shadowPink](figures/shadowPink.jpg)
