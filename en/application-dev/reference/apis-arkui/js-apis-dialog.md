@@ -367,3 +367,5 @@ Enumerates the states of a dialog box.
 | APPEARED      | 3     | Appeared.              |
 | DISAPPEARING  | 4     | Disappearing.          |
 | DISAPPEARED   | 5     | Disappeared.           |
+
+<!--no_check-->

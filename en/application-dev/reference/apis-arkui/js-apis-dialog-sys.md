@@ -34,3 +34,4 @@ Provides basic options shared by all dialog boxes, defining common attributes su
 | distortionMode | [DistortionMode](./arkui-ts/ts-appendix-enums-sys.md#distortionmode) | No   | Yes   | Nonlinear animation mode of the dialog box under the system material.<br/>Default value: **DistortionMode.DISTORTION_AUTO**<br/>**System API:** This is a system API. |
 | edgeLightMode  | [EdgeLightMode](./arkui-ts/ts-appendix-enums-sys.md#edgelightmode) | No   | Yes   | Edge light animation mode of the dialog box under the system material.<br/>Default value: **EdgeLightMode.EDGELIGHT_AUTO**<br/>**System API:** This is a system API. |
 
+<!--no_check-->
