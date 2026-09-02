@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-本文按导航类、弹窗类、按钮与选择类三大组件分类，系统介绍各组件如何通过应用级开关与组件级配置开启沉浸光感，涵盖沉浸光感的视觉效果、设置方法及适配要点，帮助开发者快速完成沉浸光感的组件适配。
+本文按导航类、弹窗类、按钮与选择类、基础组件四大场景分类，系统介绍各组件如何通过应用级开关与组件级配置开启沉浸光感，涵盖沉浸光感的视觉效果、设置方法及适配要点，帮助开发者快速完成沉浸光感的组件适配。
 
 ## 导航类组件
 
@@ -189,3 +189,17 @@ Popup和Tips支持通过应用级开启、组件级开启方式开启沉浸光�
 - 设置自动反色时，即colorInvert为true，如果SegmentButton中的fontColor、selectedFontColor，或SegmentButtonV2中的itemFontColor、itemSelectedFontColor、itemIconFillColor、itemSelectedIconFillColor等使用支持反色的系统资源，颜色自动适配到材质背景色的反色。
  
 组件开启沉浸光感的效果请参见[示例8（设置背景板材质）](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md#示例8设置背景板材质)和[示例6（设置背景板材质）](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md#示例6设置背景板材质)。
+
+## 基础组件
+
+基础组件指未归入前述导航类、弹窗类、按钮与选择类的其余通用组件，涵盖布局容器、滚动容器、文本与输入、图片与视频、信息展示等类别。这类组件没有专属的沉浸式系统材质接口，统一通过通用属性[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)设置沉浸式系统材质，跟随通用属性的生效规则呈现材质效果。生效区域为Navigation/NavDestination标题栏，或横向Tab中barPosition为BarPosition.End的底部TabBar。其余开启后的常见问题请参考[沉浸光感常见问题](arkts-immersive-light-sense-faq.md)。
+
+以下基础组件均支持通用属性systemMaterial设置沉浸式系统材质：
+
+- 布局容器：[Flex](../reference/apis-arkui/arkui-ts/ts-container-flex.md)、[Column](../reference/apis-arkui/arkui-ts/ts-container-column.md)、[Row](../reference/apis-arkui/arkui-ts/ts-container-row.md)、[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)、[RelativeContainer](../reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md)、[GridRow](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md)、[GridCol](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md)、[ColumnSplit](../reference/apis-arkui/arkui-ts/ts-container-columnsplit.md)、[RowSplit](../reference/apis-arkui/arkui-ts/ts-container-rowsplit.md)、[SideBarContainer](../reference/apis-arkui/arkui-ts/ts-container-sidebarcontainer.md)等。
+- 滚动容器：[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)、[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)、[Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md)、[WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)、[Refresh](../reference/apis-arkui/arkui-ts/ts-container-refresh.md)等。
+- 文本与输入：[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)、[Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md)、[TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)、[TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md)、[Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md)、[RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)、[Hyperlink](../reference/apis-arkui/arkui-ts/ts-container-hyperlink.md)等。
+- 按钮与选择：[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)、[Checkbox](../reference/apis-arkui/arkui-ts/ts-basic-components-checkbox.md)、[Radio](../reference/apis-arkui/arkui-ts/ts-basic-components-radio.md)、[Rating](../reference/apis-arkui/arkui-ts/ts-basic-components-rating.md)、[CalendarPicker](../reference/apis-arkui/arkui-ts/ts-basic-components-calendarpicker.md)、[DatePicker](../reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md)、[TextPicker](../reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md)、[TimePicker](../reference/apis-arkui/arkui-ts/ts-basic-components-timepicker.md)等。
+- 图片与视频：[Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)、[ImageAnimator](../reference/apis-arkui/arkui-ts/ts-basic-components-imageanimator.md)、[Video](../reference/apis-arkui/arkui-ts/ts-media-components-video.md)等。
+- 信息展示：[Badge](../reference/apis-arkui/arkui-ts/ts-container-badge.md)、[Counter](../reference/apis-arkui/arkui-ts/ts-container-counter.md)、[DataPanel](../reference/apis-arkui/arkui-ts/ts-basic-components-datapanel.md)、[Gauge](../reference/apis-arkui/arkui-ts/ts-basic-components-gauge.md)、[LoadingProgress](../reference/apis-arkui/arkui-ts/ts-basic-components-loadingprogress.md)、[Marquee](../reference/apis-arkui/arkui-ts/ts-basic-components-marquee.md)、[Progress](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md)、[QRCode](../reference/apis-arkui/arkui-ts/ts-basic-components-qrcode.md)、[TextClock](../reference/apis-arkui/arkui-ts/ts-basic-components-textclock.md)、[TextTimer](../reference/apis-arkui/arkui-ts/ts-basic-components-texttimer.md)、[PatternLock](../reference/apis-arkui/arkui-ts/ts-basic-components-patternlock.md)等。
+- 空白与分隔：[Blank](../reference/apis-arkui/arkui-ts/ts-basic-components-blank.md)、[Divider](../reference/apis-arkui/arkui-ts/ts-basic-components-divider.md)。
