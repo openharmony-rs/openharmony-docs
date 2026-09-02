@@ -2225,66 +2225,7 @@ struct SweepRefractionExample {
 }
 ```
 
-## SweepRefractionParam
-
-扫光折射遮罩的必选参数，包括遮罩半径、边缘厚度、折射强度、波纹宽度、扫光偏移和色散偏移量。
-
-**起始版本：** 26.1.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
-**系统接口：** 此接口为系统接口。
-
-| 名称          | 类型   | 只读 | 可选 | 说明                                                                                              |
-| ------------- | ------ | ---- | ---- | ------------------------------------------------------------------------------------------------- |
-| maskRadius    | number | 否   | 否   | 设置棱镜遮罩的归一化半径。取值范围为[0.0, 10.0]，超出范围的值在实现时会被截断。当maskRadius等于1.0时，等于组件宽度。 |
-| edgeThickness | number | 否   | 否   | 设置棱镜的归一化边缘厚度。取值范围为[1.0, 1000.0]，超出范围的值在实现时会被截断。 |
-| refractAmount | number | 否   | 否   | 设置棱镜的折射强度。取值范围为[0.0, 1.0]，超出范围的值在实现时会被截断。 |
-| rippleWidth   | number | 否   | 否   | 设置扫光波纹的宽度。取值范围为[0.01, 1.0]，超出范围的值在实现时会被截断。 |
-| sweepOffset   | number | 否   | 否   | 设置扫光的位置偏移。取值范围为[-2.0, 2.0]，超出范围的值在实现时会被截断。 |
-| chromaDelta   | number | 否   | 否   | 设置色散偏移量。取值范围为[0.0, 0.5]，超出范围的值在实现时会被截断。 |
-
-## PrismShapeType
-
-棱镜形状类型枚举，用于指定扫光折射遮罩中棱镜的几何形状。
-
-**起始版本：** 26.1.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
-**系统接口：** 此接口为系统接口。
-
-| 名称           | 值 | 说明                 |
-| -------------- | - | -------------------- |
-| ROUNDED_RECT   | 0 | 圆角矩形棱镜形状。   |
-| ELLIPSE        | 1 | 椭圆棱镜形状。       |
-
-## SweepRefractionMaskOptions
-
-创建扫光折射遮罩的可选参数，用于配置棱镜的形状、尺寸和扫光中心位置。
-
-**起始版本：** 26.1.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
-**系统接口：** 此接口为系统接口。
-
-| 名称          | 类型                                          | 只读 | 可选 | 说明                                                                                                                               |
-| ------------- | --------------------------------------------- | ---- | ---- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| shapeType     | [PrismShapeType](#prismshapetype26)           | 否   | 是   | 棱镜的形状类型。默认值为ROUNDED_RECT。                                                                                             |
-| cornerRadius  | number                                        | 否   | 是   | 棱镜形状的归一化圆角半径，仅在shapeType为ROUNDED_RECT时生效。取值范围为[0.0, 1.0]，超出范围的值将在实现时被截断。当cornerRadius为1.0时，等于组件高度。 |
-| prismWidth    | number                                        | 否   | 是   | 棱镜的归一化宽度。取值范围为[0.01, 2.0]，超出范围的值将在实现时被截断。当prismWidth为1.0时，等于组件宽度。                   |
-| prismHeight   | number                                        | 否   | 是   | 棱镜的归一化高度。取值范围为[0.01, 2.0]，超出范围的值将在实现时被截断。当prismHeight为1.0时，等于组件高度。                   |
-| sweepCenterX  | number                                        | 否   | 是   | 扫光中心的归一化X坐标。取值范围为[0.0, 1.0]，超出范围的值将在实现时被截断。0.0表示左边缘。1.0表示右边缘，默认值为0.0。 |
-| sweepCenterY  | number                                        | 否   | 是   | 扫光中心的归一化Y坐标。取值范围为[0.0, 1.0]，超出范围的值将在实现时被截断。0.0表示上边缘，1.0表示下边缘，默认值为0.0。                                    |
-
-## createWarpedRingMask
+### createWarpedRingMask
 
 static createWarpedRingMask(ringParam: RingParam): Mask
 
@@ -2351,7 +2292,7 @@ struct example {
 }
 ```
 
-## createFractalGlassMask
+### createFractalGlassMask
 
 static createFractalGlassMask(glassNum: number, glassStrength: number, glassSoftness: number, isSymmetric: boolean, refractMask?: image.PixelMap): Mask
 
@@ -2412,7 +2353,7 @@ struct Index {
 
 ```
 
-## createBinocularMask
+### createBinocularMask
 
 static createBinocularMask(radiusX: number, radiusY: number, gap: number, softness: number): Mask
 
@@ -2525,3 +2466,62 @@ BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包
 | mixStrength | number | 否 | 否 | 原图与模糊图的混合强度。<br>取值范围为[0, 1]，超出边界会在实现时自动截断。<br>0对应原图，1对应模糊后的图像。 |
 | progress | number | 否 | 否 | 模糊气泡上升效果的动画进度。<br>取值范围为[0, 1]，超出边界会在实现时自动截断。<br>0对应动画开始，1对应动画结束。 |
 | maskImage | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 否 | 否 | 模糊气泡上升效果的遮罩图像，控制模糊气泡区域。<br>被遮罩的区域有模糊效果，未遮罩的区域无模糊效果。 |
+
+## SweepRefractionParam
+
+扫光折射遮罩的必选参数，包括遮罩半径、边缘厚度、折射强度、波纹宽度、扫光偏移和色散偏移量。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+| 名称          | 类型   | 只读 | 可选 | 说明                                                                                              |
+| ------------- | ------ | ---- | ---- | ------------------------------------------------------------------------------------------------- |
+| maskRadius    | number | 否   | 否   | 设置棱镜遮罩的归一化半径。取值范围为[0.0, 10.0]，超出范围的值在实现时会被截断。当maskRadius等于1.0时，等于组件宽度。 |
+| edgeThickness | number | 否   | 否   | 设置棱镜的归一化边缘厚度。取值范围为[1.0, 1000.0]，超出范围的值在实现时会被截断。 |
+| refractAmount | number | 否   | 否   | 设置棱镜的折射强度。取值范围为[0.0, 1.0]，超出范围的值在实现时会被截断。 |
+| rippleWidth   | number | 否   | 否   | 设置扫光波纹的宽度。取值范围为[0.01, 1.0]，超出范围的值在实现时会被截断。 |
+| sweepOffset   | number | 否   | 否   | 设置扫光的位置偏移。取值范围为[-2.0, 2.0]，超出范围的值在实现时会被截断。 |
+| chromaDelta   | number | 否   | 否   | 设置色散偏移量。取值范围为[0.0, 0.5]，超出范围的值在实现时会被截断。 |
+
+## PrismShapeType
+
+棱镜形状类型枚举，用于指定扫光折射遮罩中棱镜的几何形状。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+| 名称           | 值 | 说明                 |
+| -------------- | - | -------------------- |
+| ROUNDED_RECT   | 0 | 圆角矩形棱镜形状。   |
+| ELLIPSE        | 1 | 椭圆棱镜形状。       |
+
+## SweepRefractionMaskOptions
+
+创建扫光折射遮罩的可选参数，用于配置棱镜的形状、尺寸和扫光中心位置。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+| 名称          | 类型                                          | 只读 | 可选 | 说明                                                                                                                               |
+| ------------- | --------------------------------------------- | ---- | ---- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| shapeType     | [PrismShapeType](#prismshapetype26)           | 否   | 是   | 棱镜的形状类型。默认值为ROUNDED_RECT。                                                                                             |
+| cornerRadius  | number                                        | 否   | 是   | 棱镜形状的归一化圆角半径，仅在shapeType为ROUNDED_RECT时生效。取值范围为[0.0, 1.0]，超出范围的值将在实现时被截断。当cornerRadius为1.0时，等于组件高度。 |
+| prismWidth    | number                                        | 否   | 是   | 棱镜的归一化宽度。取值范围为[0.01, 2.0]，超出范围的值将在实现时被截断。当prismWidth为1.0时，等于组件宽度。                   |
+| prismHeight   | number                                        | 否   | 是   | 棱镜的归一化高度。取值范围为[0.01, 2.0]，超出范围的值将在实现时被截断。当prismHeight为1.0时，等于组件高度。                   |
+| sweepCenterX  | number                                        | 否   | 是   | 扫光中心的归一化X坐标。取值范围为[0.0, 1.0]，超出范围的值将在实现时被截断。0.0表示左边缘。1.0表示右边缘，默认值为0.0。 |
+| sweepCenterY  | number                                        | 否   | 是   | 扫光中心的归一化Y坐标。取值范围为[0.0, 1.0]，超出范围的值将在实现时被截断。0.0表示上边缘，1.0表示下边缘，默认值为0.0。                                    |
