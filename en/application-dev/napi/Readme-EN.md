@@ -104,7 +104,7 @@
       - [Using JSVM-API to Obtain Heap Snapshots and Monitor Heap Memory Thresholds](use-jsvm-threshold-callback.md)
       - [Setting the private Property Using JSVM-API](use-jsvm-about-private.md)
       - [Working with Latin1/UTF16 Strings Using JSVM-API](use-jsvm-about-external-string.md)
-      - [Using Proxy APIs Provided by JSVM-API](use-jsvm-about-proxy.md)
+      - [Working with Proxies Using JSVM-API](use-jsvm-about-proxy.md)
       - [Working with Well-Known Symbols Using JSVM-API](use-jsvm-about-well-known-symbols.md)
       - [Working with Wrapper Objects Using JSVM-API](use-jsvm-about-wrapper-object.md)
       - [Creating and Obtaining Values Using JSVM-API](use-jsvm-basic-data-types.md)

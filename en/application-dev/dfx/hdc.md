@@ -603,7 +603,7 @@ hdc shell [-b bundlename] [command]
 
 > **NOTE**
 >
-> If the **[-b bundlename]** parameter is specified, the installed application corresponding to the bundle name must be signed using the debug certificate and started on the device. For details about how to request and use the debug certificate, see [Requesting a Debug Certificate](https://developer.huawei.com/consumer/cn/doc/app/agc-help-add-debugcert-0000001914263178).
+> If the **[-b bundlename]** parameter is specified, the installed application corresponding to the bundle name must be signed using the debug certificate and started on the device. For details about how to request and use the debug certificate, see [Requesting a Debug Certificate](https://developer.huawei.com/consumer/en/doc/app/agc-help-add-debugcert-0000001914263178).
 >
 > If both the device system version and the hdc version are earlier than API version 26.0.0, the default working directory of the interactive shell session entered without the command parameter is still the system root directory. You are advised to upgrade the device system version and check version compatibility by referring to [hdc Version Mappings](#hdc-version-mappings). You can run the **hdc shell hdcd -v** command to query the device system version.
 
@@ -673,8 +673,8 @@ hdc install [-cwd path|-r|-s|-w waitingTime|-u userId|-p|-g|-h] src
 | -w | Optional parameter. Specifies the waiting time of the bm tool when installing a HAP. The minimum waiting time is 180s, the maximum waiting time is 600s, and the default value is 180s. |
 | -u | Optional parameter. Specifies the [user](../tools/bm-tool.md#userid). By default, the application is installed under the current active user. |
 | -p | Optional parameter. Specifies the path of the HAP/HSP to be installed. For a multi-HAP/HSP application, you can specify the folder path where multiple HAPs/HSPs are located. Since API version 22, you can specify the path of the APP to be installed, or the path of a folder that contains only one APP. |
-| -g | Optional parameter. When installing a debug package, supports [user authorization](../security/AccessToken/app-permission-mgmt-overview.md#user-grant) and [manual authorization](../security/AccessToken/app-permission-mgmt-overview.md#manual-settings).<br>This parameter takes effect only for [debug applications](performance-analysis-kit-terminology.md#debug-application). When a debug application is updated to a release application, the granted user authorization and manual authorization are revoked.<br>**Note:** This parameter is supported since API version 24. |
-| -h | Optional parameter. Displays the help information of the bm module [install command](../tools/bm-tool.md#install-command). |
+| -g | Optional parameter. When installing a debug package, supports [user authorization](../security/AccessToken/app-permission-mgmt-overview.md#user_grant-user-authorization) and [manual authorization](../security/AccessToken/app-permission-mgmt-overview.md#manual_settings-manual-authorization).<br>This parameter takes effect only for [debug applications](performance-analysis-kit-terminology.md#applications-of-the-debug-version). When a debug application is updated to a release application, the granted user authorization and manual authorization are revoked.<br>**Note:** This parameter is supported since API version 24. |
+| -h | Optional parameter. Displays the help information of the bm module [install command](../tools/bm-tool.md#install). |
 
 **Return value**
 

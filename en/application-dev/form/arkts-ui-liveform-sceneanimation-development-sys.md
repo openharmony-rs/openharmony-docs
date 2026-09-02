@@ -540,3 +540,5 @@ The following table lists the key APIs for a scene-based widget.
 The following is a demo developed based on the code example in this document.
 
 ![live-form-system-demo.gif](figures/live-form-system-demo.gif)
+
+<!--no_check-->
