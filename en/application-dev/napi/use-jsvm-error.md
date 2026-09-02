@@ -1,12 +1,11 @@
 # Error Handling Using JSVM-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=fa3fc214ef4b265f033bc3f0d0a2df54f511a497 translatedAt=2026-08-12T06:36:15.686Z pushedAt=2026-08-12T11:02:32.207Z -->
+<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-09-01T02:44:04.889Z pushedAt=2026-09-02T06:49:22.175Z -->
 
 ## Introduction
 
@@ -17,13 +16,9 @@ JSVM-API provides APIs for handling errors occurred in JS code using exceptions.
 Exceptions and errors are common concepts in JS programming. An exception indicates the presence of an unexpected condition, and an error indicates that the application cannot perform certain operations correctly. JSVM-API provides a set of APIs for handling errors occurred in JS code using exceptions. Read on the following to learn basic concepts related to exception handling:
 
 - Exception: indicates an unexpected condition that may occur during the execution of an application. It can be a syntax error, runtime error, or logic error. For example, the division of a non-zero value with zero and an operation on undefined variables are exceptions.
-
 - Error: indicates that the application cannot perform some operations. Errors can be defined by the underlying system, API, or developer.
-
 - **TypeError**: indicates that the type of an operation or value does not meet the expectation. Generally, this error is caused by an incorrect data type.
-
 - **RangeError**: indicates that a value is not in the expected range. For example, an index beyond the array length is accessed.
-
 - **SyntaxError**: indicates a mistake in the syntax of a piece of code.
 
 These concepts are important in exception and error handling. Properly using methods to capture, handle, or report exceptions and errors help improve application stability. JSVM-API provides APIs for handling errors in JS code using exceptions.
@@ -57,7 +52,7 @@ CPP code:
 <!-- @[oh_jsvm_create_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmError/createerror/src/main/cpp/hello.cpp) -->
 
 ``` C++
-// Catch, clear, and print the error. This function serves as a common utility and is not redeclared or redefined in subsequent examples of this document.
+// Catches, clears, and prints errors. As a common function, it is not redeclared or redefined in subsequent samples in this document.
 static void GetLastErrorAndClean(JSVM_Env env)
 {
     // Call OH_JSVM_GetAndClearLastException to obtain and clear the last unhandled exception. This API can be called even when a JavaScript exception is pending.
@@ -107,9 +102,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 // Sample test JS.
 const char *SRC_CALL_NATIVE = R"JS(jsVmCreateThrowError();)JS";
 ```
-
 Expected result:
-
 ```ts
 JSVM error message: HasError, error code: -1
 ```
@@ -160,7 +153,6 @@ const char *SRC_CALL_NATIVE = R"JS(jsVmThrowError();jsVmThrowError("self defined
 ```
 
 Expected result:
-
 ```ts
 JSVM error message: has Error, error code: -1
 JSVM error message: self defined error message, error code: self defined error code
@@ -212,7 +204,6 @@ const char *SRC_CALL_NATIVE = R"JS(jsVmThrowTypeError();jsVmThrowTypeError("self
 ```
 
 Expected result:
-
 ```ts
 JSVM error message: throwing type error, error code: -1
 JSVM error message: self defined error message, error code: self defined error code
@@ -258,8 +249,8 @@ static JSVM_PropertyDescriptor descriptor[] = {
 const char *SRC_CALL_NATIVE = R"JS(jsVmThrowRangeError(1);)JS";
 ```
 
-Expected result:
 
+Expected result:
 ```ts
 JSVM error message: Expected two numbers as arguments, error code: OH_JSVM_ThrowRangeError
 ```
@@ -310,7 +301,6 @@ const char *SRC_CALL_NATIVE = R"JS(jsVmThrowSyntaxError();)JS";
 ```
 
 Expected result:
-
 ```ts
 JSVM error message: throw syntax error, error code: JsVmThrowSyntaxError
 ```
@@ -358,7 +348,6 @@ const char *SRC_CALL_NATIVE = R"JS(jsVmIsError(Error()))JS";
 ```
 
 Expected result:
-
 ```ts
 JSVM API call OH_JSVM_IsError success, result is 1
 ```
@@ -404,7 +393,6 @@ const char *SRC_CALL_NATIVE = R"JS(jsVmCreateTypeError();)JS";
 ```
 
 Expected result:
-
 ```ts
 JSVM API Create TypeError SUCCESS
 ```
@@ -450,11 +438,9 @@ const char *SRC_CALL_NATIVE = R"JS(jsVmCreateRangeError();)JS";
 ```
 
 Expected result:
-
 ```ts
 JSVM API CreateRangeError SUCCESS
 ```
-
 ### OH_JSVM_CreateSyntaxError
 
 Call **OH_JSVM_CreateSyntaxError** to create and throw a JS **SyntaxError** object with text information.
@@ -496,7 +482,6 @@ const char *SRC_CALL_NATIVE = R"JS(jsVmCreateSyntaxError();)JS";
 ```
 
 Expected result:
-
 ```ts
 JSVM API CreateSyntaxError SUCCESS
 ```
@@ -539,7 +524,6 @@ const char *SRC_CALL_NATIVE = R"JS(jsVmGetAndClearLastException();)JS";
 ```
 
 Expected result:
-
 ```ts
 JSVM API OH_JSVM_GetAndClearLastException SUCCESS
 ```
@@ -594,7 +578,6 @@ const char *SRC_CALL_NATIVE = R"JS(jsVmIsExceptionPending();)JS";
 ```
 
 Expected result:
-
 ```ts
 JSVM API OH_JSVM_IsExceptionPending: SUCCESS
 ```
@@ -649,7 +632,6 @@ const char *SRC_CALL_NATIVE = R"JS(jsVmGetLastErrorInfo();)JS";
 ```
 
 Expected result:
-
 ```ts
 JSVM API OH_JSVM_GetLastErrorInfo: SUCCESS, error message is A number was expected, error code is 6
 ```

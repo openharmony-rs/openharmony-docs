@@ -1,12 +1,11 @@
 # Accelerating Web Page Access
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=94e8de625b9b692da1ef9525932ead28a9e282fe translatedAt=2026-08-14T09:49:34.304Z pushedAt=2026-08-14T09:52:31.921Z -->
+<!-- md-trans-meta sourceCommit=5191f5de3eca0919d8d5e44823dbef1bf6b74270 translatedAt=2026-09-01T02:54:58.698Z pushedAt=2026-09-02T07:30:30.970Z -->
 
 When a web page loads slowly, you can use the preconnect, prefetch, and POST request prefetching capabilities to accelerate web page access.
 
@@ -427,7 +426,6 @@ You are advised to use this function together with dynamic components, use offli
 If you want to update the local generated compiled bytecode, edit the value of **E-Tag** or **Last-Modified** in the **responseHeaders** parameter of **cacheOptions**, and call the API again.
 
 ## Injecting Offline Resources Without Interception
-
 You can use [injectOfflineResources()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#injectofflineresources12) to inject images, style sheets, or script resources to the memory cache of applications before page loading.
 
 You are advised to use this function together with dynamic components, use offline **Web** components to inject resources into the memory cache of the kernel, and load the service **Web** component at the appropriate time to use these resources. The example code is as follows:
@@ -627,7 +625,6 @@ You are advised to use this function together with dynamic components, use offli
    ```
 
 6. Use the components on the page.
-
    <!-- @[dynamic_webview_component_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/Index.ets) -->    
 
    ``` TypeScript

@@ -1,12 +1,11 @@
 # Using HTTP for Network Access
-
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wmyao_mm-->
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=246ebc97dd477d19ad4ede4dd145918c1ebd7d59 translatedAt=2026-08-15T01:58:21.508Z pushedAt=2026-08-15T09:14:36.017Z -->
+<!-- md-trans-meta sourceCommit=82a7305b46136f5fdb7ecb5c4405d9f3cd5d86c4 translatedAt=2026-09-01T02:48:03.617Z pushedAt=2026-09-02T07:16:35.417Z -->
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
@@ -94,6 +93,7 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
     hilog.info(0x0000, 'testTag', `header: ${JSON.stringify(header)}`);
    });
    ```
+
 
 4. Initiate an HTTP request, and parse the server response event.
 
@@ -184,6 +184,7 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
    );
    ```
 
+
 5. Unsubscribe from HTTP response header events.
 
     Call the corresponding [off()](../reference/apis-network-kit/js-apis-http.md#offheadersreceive8) method of the object to unsubscribe from HTTP response header events.
@@ -192,7 +193,6 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
     // Unsubscribe from HTTP response header events when the callback information is no longer needed. For details about how to use the API, see the sample code in step 4.
     httpRequest.off('headersReceive');
     ```
-
 6. Call **destroy()** to destroy the **httpRequest** object when it is no longer needed.
 
     When the request is no longer needed, call [destroy()](../reference/apis-network-kit/js-apis-http.md#destroy) to destroy it.
@@ -201,7 +201,6 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
     // Call destroy to destroy the httpRequest when it is no longer needed. For details about how to use the API, see the sample code in step 4.
     httpRequest.destroy();
     ```
-
 ## Initiating an HTTP Streaming Request
 
 HTTP streaming refers to the process where, when handling an HTTP response, only a small chunk of the response content is processed at a time, rather than loading the entire response into memory all at once. This is particularly useful for scenarios such as processing large files and real-time data streams, among others.
@@ -304,6 +303,7 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
      })
    ```
 
+
 5. Unsubscribe from the HTTP streaming response events subscribed in step 3, and call **destroy()** to destroy the **httpRequest** object.
 
     Call the corresponding [off()](../reference/apis-network-kit/js-apis-http.md#offdatareceive10) method of the object to unsubscribe from the events in step 3, and when the request is no longer needed, call [destroy()](../reference/apis-network-kit/js-apis-http.md#destroy) to destroy it. For the timing of calling this method, see the sample code in step 4.
@@ -324,7 +324,6 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
      httpRequest.destroy();
    }
    ```
-
 ## Initiating a WebDAV Request Using HTTP
 
 In API version 23 and later versions, HTTP requests support WebDAV-based file access. WebDAV is an extension of HTTP and supports operations such as creating, reading, updating, deleting, moving, and copying (MKCOL, GET, PUT, DELETE, MOVE and COPY) files on remote servers.
@@ -621,7 +620,6 @@ struct Index {
   }
 }
 ```
-
 ## Configuring Certificate Verification
 
 Certificate-related configurations are required for using the HTTPS protocol. The applications that provide services for Internet users only need to trust the system's prebuilt CA certificates. Currently, the HTTP module trusts the CA certificates preset in the system by default. No special setting is required. If an application needs to trust only the certificates specified by developers, or skip certificate verification, you can configure certificate pinning.
@@ -639,64 +637,45 @@ Certificate-related configurations are required for using the HTTPS protocol. Th
    After receiving the certificate chain, the client performs three-level verification:
 
 1. Verify the integrity of the certificate chain.
-
    - Starting from the server certificate, verify the digital signature level by level to ensure that each level of the certificate is validly issued by the previous level, thereby forming a complete trust chain.
 
 2. Verify the trustworthiness of the root certificate.
-
    - Check whether the root certificate exists in the certificate repository.
-
    - The repository sources are as follows:
-
      - Preset certificate.
-
      - Application trust certificate.
-
      - CA certificate specified by the request.
-
    - You can specify the application-level and request-level trust certificates using related APIs (for details, see the following **Configuration Reference**).
 
 3. Verify the validity of the certificate content.
-
    - Certificate validity period check.
-
    - Domain name matching verification: The subject alternative name (SAN) and common name (CN) are the same as the access domain name.
-
    - Certificate revocation status check: Certificate Revocation List (CRL) and Online Certificate Status Protocol (OCSP).
 
  Verification Result
 
    - Verification succeeds: The TLS handshake continues and a secure connection is established.
-
    - Verification fails: The connection is terminated and an error message is displayed.
 
 This process ensures that only the server that holds a valid and trusted certificate can establish a secure connection.
 
  **Configuration Reference**
 
-1. Configuring the application trust certificate: [Network Connection Security Configuration](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-network-ca-security#section5454123841911).
-
+1. Configure the application to trust certificates. For details about the configuration method, see [Network Connection Security Configuration](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/network-connection-security-configuration#network-connection-security-configuration-1).
 2. Configuring the request-level CA certificate:
-
    - Configuring the HTTPS request CA certificate through the caPath and caData fields of [httprequestoptions](../reference/apis-network-kit/js-apis-http.md#httprequestoptions).
-
    - Configuring the WebSocket request CA certificate through the caPath field of [websocketrequestoptions](../reference/apis-network-kit/js-apis-webSocket.md#websocketrequestoptions).
-
    - Specifying the TLS request CA certificate through the ca field of [tlssecureoptions](../reference/apis-network-kit/js-apis-socket.md#tlssecureoptions9).
-
 3. Configuring certificate verification skipping:
-
    - HTTPS: configure through [remoteValidation](../reference/apis-network-kit/js-apis-http.md#remotevalidation18) = 'skip'.
-
    - WebSocket: configure through skipServerCertVerification = true of [websocketrequestoptions](../reference/apis-network-kit/js-apis-webSocket.md#websocketrequestoptions).
-
    - TLSSocket: configure through skipRemoteValidation = true of [tlsconnectoptions](../reference/apis-network-kit/js-apis-socket.md#tlsconnectoptions9).
 
  **Debugging Reference**
 
    - Check whether the specified certificate is trusted through the API. For details, see [networkSecurity.certVerification](../reference/apis-network-kit/js-apis-networkSecurity.md#networksecuritycertverification).
-
    - Use the OpenSSL command to verify whether the domain name server certificate chain is trusted by the system: `hdc shell openssl s_client -connect host:port -CApath /etc/security/certificates -brief`. If `Verification: OK` appears, the certificate chain is trusted. Replace `-brief` with `-trace -showcerts` to print detailed TLS handshake information.
+
 
 ### Certificate Pinning
 
@@ -714,9 +693,7 @@ openssl s_client -servername www.example.com -connect www.example.com:443 \
 If you are using a Windows environment, you need to:
 
 * Replace `/dev/null` with `NUL`.
-
 * Press **Enter** to exit. This is different from OpenSSL of Linux, which may exit until the user enters a value.
-
 * If the **sed** command is not present, copy the content between `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----` (with these two lines included) in the command output and save it.
 
 **Prebuilding Application-level Certificate**
@@ -744,7 +721,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 
 **Example JSON Configuration File**
 
-The following is an example of prebuilt application-level certificates. For details about the configuration path, see [Network Connection Security Configuration](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-network-ca-security#section5454123841911).
+The following is an example of configuring a preinstalled application-level certificate. For details about the configuration path, see [Network Connection Security Configuration](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/network-connection-security-configuration#network-connection-security-configuration-1):
 
 ```json
 {
@@ -852,7 +829,7 @@ The following is an example configuration of the certificate pin:
 
 ### Configuring Untrusted User-Installed CA Certificates
 
-By default, the system trusts the prebuilt CA certificates and user-installed CA certificates. To further improve security, you can configure untrusted user-installed CA certificates in **src/main/resources/base/profile/network_config.json**. For more network connection security configurations, see [Network Connection Security Configuration](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-network-ca-security#section5454123841911).
+By default, the system trusts both the CA certificates preinstalled in the system and the CA certificates installed by users. You can configure the system not to trust user-installed CA certificates to improve security. This configuration can be made in `src/main/resources/base/profile/network_config.json`. For more network connection security-related configurations, see [Network Connection Security Configuration](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/network-connection-security-configuration#network-connection-security-configuration-1).
 
 ```json5
 {
@@ -863,13 +840,13 @@ By default, the system trusts the prebuilt CA certificates and user-installed CA
   "trust-current-user-ca" : false // Set whether to trust the certificate installed by the current user. The default value is true.
 }
 ```
-
 ### Configuring Plaintext HTTP Access Permissions
 
-This configuration item is used to control whether HTTP requests can be transmitted in plaintext. The following is an example of configuring plaintext HTTP access permissions (including application, component, and domain name configurations) and the description of each field. For more network connection security configurations, see [Network Connection Security Configuration](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-network-ca-security#section5454123841911).
+This configuration controls whether HTTP requests are allowed to be transmitted in plaintext. The following shows configuration examples for plaintext HTTP access permissions (including application-, component-, and domain-level configurations) and the detailed meaning of each field. For more network connection security-related configurations, see [Network Connection Security Configuration](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/network-connection-security-configuration#network-connection-security-configuration-1).
 > **NOTE**
 >
-> The configuration priority rules are as follows: **component-config** > **domain-config** > **base-config**. The configuration with a higher priority overrides the configuration with a lower priority.
+> Configuration priority rule: component configuration (`component-config`) > domain configuration (`domain-config`) > base configuration (`base-config`). A configuration with a higher priority overrides the rules of a lower priority.
+
 
 ``` json5
 // src/main/resources/base/profile/network_config.json
@@ -1122,7 +1099,6 @@ From API version 22, the HTTP Interceptor module provides a powerful and customi
     ```
 
 ## 
-
 ## Samples
 
 The following sample is provided to help you better understand how to develop the HTTP data request feature:

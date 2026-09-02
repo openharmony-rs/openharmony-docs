@@ -1,12 +1,11 @@
 # Working with Latin1/UTF16 Strings Using JSVM-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=f34ddda28f1bcebae0ddfbd293a9ffe8cb2789f9 translatedAt=2026-08-12T06:32:04.061Z pushedAt=2026-08-12T10:56:07.970Z -->
+<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-09-01T02:39:49.173Z pushedAt=2026-09-02T06:19:24.740Z -->
 
 ## Introduction
 
@@ -82,7 +81,6 @@ const char *srcCallNative = R"JS(testExternalString();)JS";
 ```
 
 ## Expected Result
-
 ```txt
 created latin1 string is : hello
 create external string failed: 0

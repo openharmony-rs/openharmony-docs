@@ -1,12 +1,11 @@
 # Working with Primitives Using JSVM-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=fa3fc214ef4b265f033bc3f0d0a2df54f511a497 translatedAt=2026-08-12T06:32:05.799Z pushedAt=2026-08-12T10:56:55.059Z -->
+<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-09-01T02:41:17.011Z pushedAt=2026-09-02T06:34:43.483Z -->
 
 ## Introduction
 
@@ -16,7 +15,7 @@ JSVM-API provides APIs for converting data between C/C++ and JavaScript (JS) dat
 
 Before using JSVM to operate JS objects, you need to understand the following basic concepts:
 
-- Conversion between JS and C/C primitives: You can use JSVM-API to convert JS values to C/C++ data types, for example, convert a JS value into a C/C++ integer and convert a JS string into a C/C++ string array. You can also convert C/C++ data into a JS value and return the JS value to JS.
+- Converting JavaScript values to C/C++ types: You can use JSVM-API to convert JS values to C/C++ data types, for example, convert a JS value into a C/C++ integer and convert a JS string into a C/C++ character array. You can also convert C/C++ data into a JS value and return the JS value to JS.
 
 ## Available APIs
 
@@ -81,7 +80,6 @@ const char *SRC_CALL_NATIVE = R"JS(coerceToBool("123"))JS";
 ```
 
 Expected result:
-
 ```txt
 JSVM OH_JSVM_CoerceToBool success:1
 ```
@@ -131,7 +129,6 @@ const char *SRC_CALL_NATIVE = R"JS(coerceToNumber(true))JS";
 ```
 
 Expected result:
-
 ```txt
 JSVM OH_JSVM_CoerceToNumber success:1
 ```
@@ -180,7 +177,6 @@ const char *SRC_CALL_NATIVE = R"JS(coerceToObject(123))JS";
 ```
 
 Expected result:
-
 ```txt
 JSVM OH_JSVM_CoerceToObject success
 ```
@@ -229,7 +225,6 @@ const char *SRC_CALL_NATIVE = R"JS(coerceToString(22222))JS";
 ```
 
 Expected result:
-
 ```txt
 JSVM OH_JSVM_CoerceToString success
 ```
@@ -291,7 +286,6 @@ const char *SRC_CALL_NATIVE = R"JS(getBoolean(1, 2);
 ```
 
 Expected result:
-
 ```txt
 JSVM OH_JSVM_GetBoolean success:0
 JSVM resultType equal
@@ -347,7 +341,6 @@ const char *SRC_CALL_NATIVE = R"JS(getValueBool("abc");
 ```
 
 Expected result:
-
 ```txt
 JSVM OH_JSVM_GetValueBool fail:7
 JSVM OH_JSVM_GetValueBool success:1
@@ -398,7 +391,6 @@ const char *SRC_CALL_NATIVE = R"JS(getGlobal())JS";
 ```
 
 Expected result:
-
 ```txt
 JSVM OH_JSVM_GetGlobal success
 ```
@@ -443,7 +435,6 @@ const char *SRC_CALL_NATIVE = R"JS(getNull())JS";
 ```
 
 Expected Result:
-
 ```txt
 JSVM OH_JSVM_GetNull success
 ```
@@ -493,7 +484,6 @@ const char *SRC_CALL_NATIVE = R"JS(getUndefined())JS";
 ```
 
 Expected Result:
-
 ```txt
 JSVM OH_JSVM_GetUndefined success
 ```

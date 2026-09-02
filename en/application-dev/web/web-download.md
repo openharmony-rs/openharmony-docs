@@ -1,12 +1,11 @@
 # Downloading Files
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=df43b8cd7284167bf41a7a5f049ab6572e368164 translatedAt=2026-08-14T03:45:16.043Z pushedAt=2026-08-14T08:05:27.403Z -->
+<!-- md-trans-meta sourceCommit=5191f5de3eca0919d8d5e44823dbef1bf6b74270 translatedAt=2026-09-01T02:52:31.314Z pushedAt=2026-09-02T07:29:37.189Z -->
 
 To download files on the web page, you can use the following method to invoke the web APIs.
 
@@ -73,7 +72,6 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
-
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -156,7 +154,6 @@ struct WebComponent {
 ```
 
 Use [DocumentViewPicker()](../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker) to obtain the default download directory and set it as the download directory.
-
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -245,7 +242,6 @@ function getDownloadPathFromPicker(): Promise<string> {
 >If you do not want to download the file to the temporary directory before **WebDownloadItem.start**, you can also use **WebDownloadItem.cancel** to interrupt the download. In addition, the interrupted download can be resumed using [WebDownloadManager.resumeDownload](../reference/apis-arkweb/arkts-apis-webview-WebDownloadManager.md#resumedownload11).
 
 ## Resuming Unfinished Download Tasks Due to Process Exit
-
 When the **Web** component is started, you can resume the unfinished download task through the [resumeDownload()](../reference/apis-arkweb/arkts-apis-webview-WebDownloadManager.md#resumedownload11) API.
 
 In the following example, the **record** button is used to save the current download task to a persistent file. After the application is restarted, the **recovery** button can be used to resume the persistent download task. If multiple download tasks need to be saved, the application can adjust the persistence time and mode as required.
@@ -346,7 +342,6 @@ struct WebComponent {
 ```
 
 Download the task information persistence utility file.
-
 <!-- @[task_info_persistence_util](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/downloadUtil.ets) -->    
 
 ``` TypeScript

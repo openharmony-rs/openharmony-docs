@@ -1,12 +1,11 @@
 # Setting the Backward-Forward Cache
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d20d6855ac78addb0cb6074894aeba9f67de158d translatedAt=2026-08-14T03:51:33.447Z pushedAt=2026-08-14T09:45:23.125Z -->
+<!-- md-trans-meta sourceCommit=5191f5de3eca0919d8d5e44823dbef1bf6b74270 translatedAt=2026-09-01T02:55:31.820Z pushedAt=2026-09-02T07:30:46.905Z -->
 
 The **Web** component provides the function of enabling and configuring the back-forward cache (BFCache), which can significantly improve the speed of returning to the previous web page, especially for users with poor network conditions.
 
