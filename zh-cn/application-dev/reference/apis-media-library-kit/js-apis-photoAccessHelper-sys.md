@@ -13612,8 +13612,10 @@ async function example(context: Context) {
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
 | SCREENSHOT |  1 |  截屏录屏文件类型。<br>**系统接口**：此接口为系统接口。 |
+| CINEMATIC_VIDEO |  5 |  电影风格视频文件类型。<br>**起始版本：** 26.1.0<br>**系统接口**：此接口为系统接口。 |
 | SLOW_MOTION_VIDEO<sup>22+</sup> |  6 |  慢动作视频文件类型。<br>**系统接口**：此接口为系统接口。 |
 | SPATIAL_3DGS<sup>22+</sup> |  7 |  3DGS（3D高斯点渲染）视频文件类型。<br>**系统接口**：此接口为系统接口。 |
+| CINEMATIC_VIDEO_V2 |  8 |  新版电影风格视频文件类型，与CINEMATIC_VIDEO相比新增了希区柯克等更多的特效。<br>**起始版本：** 26.1.0<br>**系统接口**：此接口为系统接口。 |
 
 ## NotifyChangeType<sup>20+</sup>
 
