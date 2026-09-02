@@ -349,6 +349,35 @@ libnet_trafficfilter.so
 
    <!-- @[unregister_packet_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp) -->
 
+   <div class="same-source-code">
+   ``` C++
+   static napi_value UnregisterPacketCallbackNapi(napi_env env, napi_callback_info info)
+   {
+       size_t argc = 1;
+       napi_value args[1] = {nullptr};
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+   
+       int ret = -1;
+       if (argc >= 1) {
+           uint32_t id;
+           napi_get_value_uint32(env, args[0], &id);
+           OH_TrafficFilter_PacketController* controller = g_controllerMap[id];
+           if (controller != nullptr) {
+               ret = OH_TrafficFilter_UnregisterPacketCallback(controller);
+           }
+       }
+   
+       napi_value result;
+       napi_create_int32(env, ret, &result);
+       return result;
+   }
+   ```
+
+   <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp?same_code_link_text=unregister_packet_callback" target="_blank" rel="nofollow">napi_init.cpp</a></p>
+
+   </div>
+
+
 
    简要说明：`controllerMap_[id]` 为空时返回 `-1`；注销回调前无需额外处理线程安全函数，但应确保不再主动触发新的匹配流量。
 
