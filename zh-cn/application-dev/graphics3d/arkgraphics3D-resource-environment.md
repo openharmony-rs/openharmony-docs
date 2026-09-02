@@ -186,7 +186,10 @@ ArkGraphics 3D支持用户创建环境资源，定义3D场景的背景。
        envEntity.indirectDiffuseFactor.z = 1;
        return envEntity;
      } catch (error) {
-       throw new Error('Failed to create environment:' + error);
+       if (error instanceof Error) {
+         throw error;
+       }
+       throw new Error('Failed to create environment: ${String(error)}')
      }
    }
    ```

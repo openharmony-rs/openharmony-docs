@@ -100,7 +100,7 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
        // ...
        this.animationCallbackInvoked = 'animation on finish';
      });
-     // ...
+     console.info('ready to create a new animation.');
    } else {
      console.error('No animation found in scene.');
    }
