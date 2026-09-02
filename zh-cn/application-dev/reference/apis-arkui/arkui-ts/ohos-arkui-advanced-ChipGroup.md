@@ -13,6 +13,8 @@ ChipGroup组件提供操作块群组能力，支持单选或多选模式，可�
 > - 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本模块接口仅可在Stage模型下使用。
+>
+> - 如果ChipGroup设置[通用属性](ts-component-general-attributes.md)或[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ChipGroup本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ChipGroup设置通用属性和通用事件。
 
 ## 导入模块
 
