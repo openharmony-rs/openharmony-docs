@@ -3556,7 +3556,8 @@ for (let value of arrayValue) {
 }
 ```
 
-## ScopeComparable<sup>8+</sup>
+## ScopeComparable<sup>7+</sup>
+## ScopeComparable<sup>7+</sup>
 
 ScopeComparable类型的值需要实现compareTo方法，确保传入的数据具有可比性。
 
@@ -3578,7 +3579,7 @@ compareTo(other: ScopeComparable): boolean
 
 | 参数名 | 类型 | 必填 | 说明           |
 | ------ | ---- | ---- | -------------- |
-| other  | [ScopeComparable](#scopecomparable8) | 是  | 表示要比较的值。 |
+| other  | [ScopeComparable](#scopecomparable7) | 是  | 表示要比较的值。 |
 
 **返回值：**
 
@@ -3683,7 +3684,7 @@ type ScopeType = ScopeComparable | number
 | 类型 | 说明 |
 | -------- | -------- |
 | number | 表示值的类型为数字。 |
-| [ScopeComparable](#scopecomparable8) | 表示值的类型为ScopeComparable。|
+| [ScopeComparable](#scopecomparable7) | 表示值的类型为ScopeComparable。|
 
 ## ScopeType&lt;T&gt;<sup>23+</sup>
 
