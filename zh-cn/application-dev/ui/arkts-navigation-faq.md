@@ -161,14 +161,14 @@ NavDestination的共享元素转场需要配合[geometryTransition](../reference
 
 <!-- @[ExamplePage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/navDestination/template5/Index.ets) -->
 
-```typescript
+``` TypeScript
 @Entry
 @Component
 struct ExamplePage {
   private stack: NavPathStack = new NavPathStack();
 
   @Builder
-  PageMap(name: string) {
+  pageMap(name: string) {
     if (name === 'PageA') {
       NavDestination()
         .backgroundColor(Color.Red)
@@ -198,7 +198,7 @@ struct ExamplePage {
         this.stack.pushPathByName("PageC", null)
       })
     }
-    .navDestination(this.PageMap)
+    .navDestination(this.pageMap)
   }
 }
 ```
@@ -251,10 +251,11 @@ Navigation构建NavDestination的机制：
 
 <!-- @[NavDestinationSystemTransition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/navDestination/template3/Index.ets) -->
 
-```typescript
+``` TypeScript
 @Entry
 @Component
 struct NavDestinationSystemTransition {
+  // ...
 
   @Builder
   pageMap(name: string) {
@@ -277,6 +278,7 @@ struct NavDestinationSystemTransition {
 
   build() {
     Navigation(this.stack) {
+      // ...
     }
     .navDestination(this.pageMap)
     .hideNavBar(true)
