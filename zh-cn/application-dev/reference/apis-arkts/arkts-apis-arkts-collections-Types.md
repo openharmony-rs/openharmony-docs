@@ -93,6 +93,7 @@ ArkTS Array归约函数类型，被Array类的[reduceRight](arkts-apis-arkts-col
 | 类型   | 说明                          |
 | ------ | --------------------------- |
 | AccType | 归约函数的结果，该结果会作为下一次调用ArrayReduceCallback时的previousValue参数。 |
+
 ## ArrayElementPredicateFn
 
 type ArrayElementPredicateFn\<ElementType> = (value: ElementType) => boolean
