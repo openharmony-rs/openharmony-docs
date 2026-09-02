@@ -1,21 +1,18 @@
 # Switching Call Devices Using Components
-
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=c9dcc12ca328989783da9ca7a900edb5d9480648 translatedAt=2026-08-10T03:50:53.667Z pushedAt=2026-08-10T08:55:26.815Z -->
+<!-- md-trans-meta sourceCommit=37990a0e79a11e81d8d443f1722cab9e09a52db4 translatedAt=2026-09-01T02:35:27.140Z pushedAt=2026-09-02T03:34:47.816Z -->
 
 ## Switching Call Output Devices
 
 This topic describes how to integrate the **AVCastPicker** component to implement call device switching. For details about related parameters, see [@ohos.multimedia.avCastPicker (AVCastPicker)](../../reference/apis-avsession-kit/ohos-multimedia-avcastpicker.md) and [@ohos.multimedia.avCastPickerParam (AVCastPicker Parameters)](../../reference/apis-avsession-kit/js-apis-avCastPickerParam.md). If you want to implement audio output device routing switching, see [Switching Audio Output Devices](../audio/audio-output-device-switcher.md).
 
 Currently, the system provides the default style and custom style for the **AVCastPicker** component.
-
 - If the application chooses to display the default style, when the device switches, the system displays the default component style based on the currently selected device.
-
 - If the application opts for a custom style, it needs to refresh its defined style in response to device changes.
 
 ### Implementing the Default Style
@@ -360,9 +357,7 @@ The system no longer provides APIs for audio input device switching. To switch a
 This topic describes how to integrate the **AVInputCastPicker** component to implement the switching of call input devices.
 
 Currently, the system provides the default style and custom style for the **AVCastPicker** component.
-
 - If the application chooses to display the default style, when the device switches, the system displays the default component style based on the currently selected device.
-
 - If the application opts for a custom style, it needs to refresh its defined style in response to device changes.
 
 ### Default Style Implementation

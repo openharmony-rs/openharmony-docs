@@ -6,7 +6,7 @@
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=7fa9bdd4667c105b22f0d6acf550a50bf15bd338 translatedAt=2026-08-22T01:30:49.157Z pushedAt=2026-08-22T03:24:18.062Z -->
+<!-- md-trans-meta sourceCommit=39a9e003216daede3f45c712299412a7891e82ae translatedAt=2026-09-01T02:25:18.849Z pushedAt=2026-09-01T13:43:37.827Z -->
 
 ## Overview
 
@@ -14,9 +14,11 @@ You can set some basic effects, such as the fill color, anti-aliasing, stroke, a
 
 You can set the basic fill effect using a brush and set the basic stroke effect using a pen.
 
+
 ## Fill Effect
 
 You can set the basic fill color using a brush and use the brush to implement more complex drawing effects, such as the blend mode, shader effect, and filter effect. For details, see [Complex Drawing Effects](complex-drawing-effect-arkts.md).
+
 
 ### Available APIs
 
@@ -29,6 +31,7 @@ The following table describes the commonly used APIs for setting drawing effects
 | setAntiAlias(aa: boolean) : void | Enables or disables anti-aliasing for a brush. Anti-aliasing makes the pixels around the shape edges semi-transparent, delivering a smoother effect.|
 | detachBrush(): void | Removes the brush from the canvas. After the execution, the canvas does not use the previously set brush and is restored to the default fill effect.|
 
+
 ### How to Develop
 
 1. Create a brush object.
@@ -36,7 +39,7 @@ The following table describes the commonly used APIs for setting drawing effects
    <!-- @[arkts_graphics_draw_create_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
    ``` TypeScript
-   // Set the brush.
+   // Create a brush.
    const brush = new drawing.Brush();
    ```
 
@@ -80,13 +83,16 @@ The following table describes the commonly used APIs for setting drawing effects
    canvas.detachBrush();
    ```
 
+
 ## Stroke Effect
 
 You can set the basic stroke color using a pen and use the pen to implement more complex drawing effects, such as the blend mode, path effect, shader effect, and filter effect. For details, see [Complex Drawing Effects](complex-drawing-effect-arkts.md).
 
+
 ### Available APIs
 
 The following table describes the commonly used APIs for setting drawing effects with a pen. For details about the usage and parameters, see [drawing.Pen](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Pen.md) and [drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md).
+
 
 | API| Description|
 | -------- | -------- |
@@ -96,7 +102,8 @@ The following table describes the commonly used APIs for setting drawing effects
 | setAntiAlias(aa: boolean) : void | Enables or disables anti-aliasing for a pen. Anti-aliasing makes the pixels around the shape edges semi-transparent.|
 | setCapStyle(style: CapStyle): void | Sets the line cap style for a pen.|
 | setJoinStyle(style: JoinStyle): void | Sets the line join style for a pen.|
-| detachPen(): void | Removes the pen from the canvas. After the execution, the canvas does not draw the outline of the shape and restores to the default fill effect.|
+| detachPen(): void | Removes the pen from the canvas. After execution, the canvas will not draw the outline of the shape, and the default stroke effect is restored. |
+
 
 ### How to Develop
 
@@ -120,7 +127,7 @@ The following table describes the commonly used APIs for setting drawing effects
       pen.setColor(0xFF, 0xFF, 0x00, 0x00);
       ```
 
-   - You can call **setStrokeWidth()** to set the pen width.
+   - You can call **setStrokeWidth()** to set the stroke width.
 
       <!-- @[arkts_graphics_draw_pen_set_stroke_width](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
@@ -138,12 +145,12 @@ The following table describes the commonly used APIs for setting drawing effects
       pen.setAntiAlias(true);
       ```
 
-   - You can call **setCapStyle()** to set the pen cap style.
+   - You can call **setCapStyle()** to set the line cap style.
 
       <!-- @[arkts_graphics_draw_pen_set_cap_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
       ``` TypeScript
-      // Set the pen cap style.
+      // Set the line cap style.
       pen.setCapStyle(drawing.CapStyle.SQUARE_CAP);
       ```
 
@@ -166,11 +173,11 @@ The following table describes the commonly used APIs for setting drawing effects
 
       The options of **JoinStyle** are as follows.
 
-      | Join Style| Description| Effect|
+      | Line Join Style | Description | Schematic Diagram |
       | -------- | -------- | -------- |
-      | MITER_JOIN | Miter | ![MITER-JOIN](figures/MITER-JOIN.png) |
-      | ROUND_JOIN | Round | ![ROUND-JOIN](figures/ROUND-JOIN.png) |
-      | BEVEL_JOIN | Bevel | ![BEVEL-JOIN](figures/BEVEL-JOIN.png) |
+      | MITER_JOIN | The line join style is a sharp corner. | ![MITER-JOIN](figures/MITER-JOIN.png) |
+      | ROUND_JOIN | The line join style is a round corner. | ![ROUND-JOIN](figures/ROUND-JOIN.png) |
+      | BEVEL_JOIN | The line join style is a flat corner. | ![BEVEL-JOIN](figures/BEVEL-JOIN.png) |
 
 3. Use the **attachPen()** API to set the pen for the canvas. The canvas will use the configured pen style and color to draw shape outlines.
 
@@ -193,11 +200,9 @@ The following table describes the commonly used APIs for setting drawing effects
    ```
 
 <!--RP1-->
-
 ## Samples
 
 The following samples are provided to help you better understand how to use the **Drawing** APIs (ArkTS) for development:
 
 - [ArkTSGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw)
-
 <!--RP1End-->

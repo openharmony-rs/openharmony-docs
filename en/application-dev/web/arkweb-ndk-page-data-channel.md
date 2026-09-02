@@ -1,12 +1,11 @@
 # Establishing a Data Channel Between the Application and the Frontend Page (C/C++)
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=ef16f1fbed2b878b5ab3c16c802540e18c54cbe1 translatedAt=2026-08-14T03:41:08.033Z pushedAt=2026-08-14T07:08:37.994Z -->
+<!-- md-trans-meta sourceCommit=5191f5de3eca0919d8d5e44823dbef1bf6b74270 translatedAt=2026-09-01T02:50:08.953Z pushedAt=2026-09-02T07:22:57.341Z -->
 
 The native **PostWebMessage** is provided to implement communication between the frontend page and the application, which reduces unnecessary switching to the ArkTS environment and allows messages and callbacks to be reported in non-UI threads to avoid UI blocking. Currently, only the string and buffer can be sent.
 
@@ -62,7 +61,7 @@ To invoke the native APIs, obtain the API structs on the ArkWeb native side firs
 
 ### Sample Code
 
-Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums) to check whether the function struct has the corresponding pointer before calling an API to avoid crash caused by mismatch between the SDK and the device ROM. [createWebMessagePorts](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#createwebmessageports), [postWebMessage](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#postwebmessage) and [close](../reference/apis-arkweb/capi-web-arkweb-webmessageportapi.md#close) must run in the UI thread.
+Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums) to check whether the function struct has the corresponding pointer before calling an API to avoid crashes caused by mismatch between the SDK and the device ROM. [createWebMessagePorts](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#createwebmessageports), [postWebMessage](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#postwebmessage) and [close](../reference/apis-arkweb/capi-web-arkweb-webmessageportapi.md#close) must run in the UI thread.
 
 * Frontend page code:
 
@@ -72,7 +71,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
   <!DOCTYPE html>
   <html lang="en-gb">
   <body>
-  <h1>etsRunJavaScriptExt test demo</h1>;
+  <h1>etsRunJavaScriptExt test demo</h1>
   <h1 id="h1"></h1>
   <h3 id="msg">Receive string:</h3>
   <h3 id="msg2">Receive arraybuffer:</h3>

@@ -1,27 +1,27 @@
 # Thread Safety Development Using Node-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-08-12T06:42:53.205Z pushedAt=2026-08-12T11:16:54.642Z -->
+<!-- md-trans-meta sourceCommit=91bde58d6c780494fae7f2754471f66b0a70a3f3 translatedAt=2026-09-01T02:46:50.597Z pushedAt=2026-09-02T07:06:19.477Z -->
+
 
 ## When to Use
 
 [napi_create_threadsafe_function](../reference/native-lib/napi.md#napi_create_threadsafe_function) is a Node-API used to create a thread-safe JS function, which can be called from multiple threads without race conditions or deadlocks. The following scenarios are involved:
 
+
 - Asynchronous computing: If a time-consuming computing or I/O operation needs to be performed, you can create a thread-safe function to have the computing or I/O operation executed in a dedicated thread. This ensures normal running of the main thread and improves the response speed of your application.
 
 - Data sharing: When multiple threads need to access the same data, using a thread-safe function can prevent race conditions or deadlocks during data read and write operations.
 
-- Multithread programming: In the case of multithread programming, a thread-safe function can ensure communication and synchronization between multiple threads.
+- Multithreaded programming: In the case of multithread programming, a thread-safe function can ensure communication and synchronization between multiple threads.
+
 
 ## Example
-
 1. Configure the **CMakeLists.txt** file.
-
    ``` txt
    # the minimum version of CMake.
    cmake_minimum_required(VERSION 3.5.0)
@@ -161,7 +161,6 @@
    ```
 
 3. Module registration.
-
    ```c++
    EXTERN_C_START
    static napi_value Init(napi_env env, napi_value exports)
@@ -196,7 +195,6 @@
    ```
 
    Import the header files.
-
    ``` ts
    import nativeModule from 'libentry1.so';
    ```
@@ -222,7 +220,6 @@
 ### C++ and ArkTS Child Thread Interaction Based on [Worker](../../application-dev/arkts-utils/worker-introduction.md)
 
 1. Configure the **CMakeLists.txt** file.
-
    ``` txt
    # the minimum version of CMake.
    cmake_minimum_required(VERSION 3.5.0)
@@ -268,7 +265,7 @@
    void NativeThread(void* arg)
    {
        auto* data = static_cast<ThreadData*>(arg);
-       OH_LOG_INFO(LOG_APP, "[C++ SubThread] Received from Worker: %{public}s\n", data->inputStr.c_str());
+       OH_LOG_INFO(LOG_APP, "[C++ SubThread] Received from %{public}s\n", data->inputStr.c_str());
        std::string str = "Hello from C++!";
        std::string msg = "Echo of " + str;
        char* cstr = strdup(msg.c_str());
@@ -379,7 +376,6 @@
      },
    }
    ```
-
 5. Sample code of the worker thread.
 
    <!-- @[napi_call_threadsafe_function_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/workers/Worker.ets) -->
@@ -394,7 +390,7 @@
    
    port.onmessage = (e: MessageEvents) => {
      console.info('Worker thread received:' + e.data);
-     nativeModule.startWithCallback('Hello', (result: string) => {
+     nativeModule.startWithCallback('Worker', (result: string) => {
        console.info('[Worker] Got from native:', result);
        port.postMessage(result);
      });
@@ -410,7 +406,6 @@
    ```
 
 7. Call APIs from ArkTS.
-
    ``` ts
    import nativeModule from 'libentry1.so';
    import { worker } from '@kit.ArkTS';
@@ -431,9 +426,9 @@
    ``` txt
    Execution result:
    Worker thread received:Start
-   [C++ SubThread] Received from Worker: Hello
+   [C++ SubThread] Received from Worker
    [Worker] Got from native: Echo of Hello from C++!
-   [Main] Received: Echo of Hello from C++
+   [Main] Received: Echo of Hello from C++!
    ```
 
 ### C++ and ArkTS Child Thread Interaction Based on [Taskpool](../../application-dev/arkts-utils/taskpool-introduction.md)
@@ -449,7 +444,7 @@
    @Concurrent
    function nativeCall(input : string): void {
      console.info('Taskpool thread received:%s', input);
-     nativeModule.startWithCallback('Hello', (result: string) => {
+     nativeModule.startWithCallback('Taskpool', (result: string) => {
        console.info('[Taskpool] Got from native:', result);
      });
    }
@@ -474,6 +469,6 @@
    ``` txt
    Execution result:
    Taskpool thread received:Start
-   [C++ SubThread] Received from Worker: Hello
+   [C++ SubThread] Received from Taskpool
    [Taskpool] Got from native: Echo of Hello from C++!
    ```

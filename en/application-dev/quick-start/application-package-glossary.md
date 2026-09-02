@@ -12,13 +12,13 @@
 
 ### APP
 
-When an app is released to an app marketplace, it must be packaged into a file with the .app file extension for release. This .app file is called an App Pack (Application Package), which contains all HAP and HSP files of the app as well as the pack.info description file, and serves as the basic unit for release.
+When an app is released to the AppGallery, it must be packaged into a file with the .app file extension for release. This .app file is called an App Pack (Application Package), which contains all HAP and HSP files of the app as well as the pack.info description file, and serves as the basic unit for release.
 
 ## B
 
 ### Bundle
 
-The collection of all HAP and HSP files in an app. Its bundleName is the unique identifier of the app. A Bundle is packaged into an App Pack before being released to an app marketplace.
+The collection of all HAP and HSP files in an app. Its bundleName is the unique identifier of the app. A Bundle is packaged into an App Pack before being released to the AppGallery.
 
 ### Bundle Manager (bm)
 
