@@ -159,7 +159,7 @@ stopVpnExtensionAbility(want: Want): Promise\<void>
 
 以下错误码的详细介绍请参见[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)和[通用错误码](../errorcode-universal.md)。
 
-| 错误码 ID | 错误信息                               |
+| 错误码ID | 错误信息                               |
 | --------- | -------------------------------------- |
 | 401       | If the input parameter is not valid parameter.|
 | 16000001  | The specified ability does not exist.  |
@@ -268,7 +268,7 @@ onAuthorizationResult(callback: Callback\<boolean\>): void
 
 | 参数名    | 类型                | 必填 | 说明                                                         |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| callback  | Callback\<boolean\> |是   | 回调函数，用于返回用户授权结果。true表示用户同意授权，false表示用户拒绝授权。 |
+| callback  | Callback\<boolean\> | 是   | 回调函数。返回true表示用户同意授权；返回false表示用户拒绝授权。 |
 
 **示例：**
 
@@ -403,7 +403,7 @@ create(config: VpnConfig): Promise\<number\>
 
 | 类型              | 说明                                                           |
 | ----------------- | -------------------------------------------------------------- |
-| Promise\<number\> | 以 Promise 形式返回获取结果，返回指定虚拟网卡的文件描述符 fd。 |
+| Promise\<number\> | Promise对象，返回指定虚拟网卡的文件描述符 fd。 |
 
 **错误码：**
 
@@ -420,7 +420,7 @@ create(config: VpnConfig): Promise\<number\>
 
 **示例：**
 
-```js
+```ts
 import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
 import { common, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -501,7 +501,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
 
 protect(socketFd: number): Promise\<void\>
 
-保护套接字不受VPN连接影响，通过该套接字发送的数据将直接基于物理网络收发，因此其流量不会通过VPN转发。使用Promise方式作为异步方法。
+保护套接字不受VPN连接影响，通过该套接字发送的数据将直接基于物理网络收发，因此其流量不会通过VPN转发。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Vpn
 
@@ -531,7 +531,7 @@ protect(socketFd: number): Promise\<void\>
 
 **示例：**
 
-```js
+```ts
 import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
 import { common, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -587,7 +587,7 @@ destroy(): Promise\<void\>
 
 **示例：**
 
-```js
+```ts
 import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -674,7 +674,7 @@ generateVpnId(): Promise\<string\>
 
 | 类型            | 说明                                                  |
 | --------------- | ----------------------------------------------------- |
-| Promise\<string\> | 以Promise形式返回获取结果，返回vpnId。 |
+| Promise\<string\> | Promise对象，返回vpnId。 |
 
 **错误码：**
 
@@ -720,7 +720,7 @@ protectProcessNet(): Promise\<void\>
 
 **示例：**
 
-```js
+```ts
 import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -771,7 +771,7 @@ export default class MyVpnExtAbility  extends VpnExtensionAbility {
 
 **示例：**
 
-```js
+```ts
 import { vpnExtension} from '@kit.NetworkKit';
 
 let vpnConfig: vpnExtension.VpnConfig = {

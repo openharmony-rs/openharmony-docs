@@ -16,7 +16,7 @@ The **SplitLayout** component provides common page layout styles, mainly used to
 >
 > - This component can only be used in the stage model.
 >
-> - **SplitLayout** does not support setting [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md). If set, the build toolchain will generate an additional __Common__ node and attach the universal attributes or universal events to __Common__ instead of directly applying them to **SplitLayout** itself, causing the configured attributes or events to not take effect.
+> - **SplitLayout** does not support setting [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md). If set, the build toolchain will generate an additional \_\_Common\_\_ node and attach the universal attributes or universal events to \_\_Common\_\_ instead of directly applying them to **SplitLayout** itself, causing the configured attributes or events to not take effect.
 
 ## Modules to Import
 

@@ -6,7 +6,7 @@
 <!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=33a389a0fc34d0c1a1567d26d02e828fcea05659 translatedAt=2026-08-04T11:12:41.287Z pushedAt=2026-08-06T10:26:06.349Z -->
+<!-- md-trans-meta sourceCommit=b3ef211d02a2c13129a5cbd33233dd8741ae847e translatedAt=2026-08-25T02:22:06.533Z pushedAt=2026-08-26T10:58:04.581Z -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -131,7 +131,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].i32 | Effect used at the edges of the component when the boundary of the scrollable content is reached. The parameter type is [ArkUI_EdgeEffect](capi-scroll-h.md#arkui_edgeeffect). The default value is [ARKUI_EDGE_EFFECT_NONE](capi-scroll-h.md#arkui_edgeeffect) for the **Grid**, **Scroll**, and **WaterFlow** components, and [ARKUI_EDGE_EFFECT_SPRING](capi-scroll-h.md#arkui_edgeeffect) for the **List** component.|
 | .value[1]?.i32 | Whether to enable the scroll effect when the component content size is smaller than the component itself. This parameter is optional. The value **1** means to enable the scroll effect, and **0** means the opposite. The default value is **0** for **List**, **Grid**, and **WaterFlow**, and **1** for **Scroll**.|
-| .value[2]?.i32 | Direction where the edge effect takes effect. The parameter type is [ArkUI_EffectEdge](capi-scroll-h.md#arkui_effectedge). The default value is [ARKUI_EFFECT_EDGE_START](capi-scroll-h.md#arkui_effectedge)  \| [ARKUI_EFFECT_EDGE_END](capi-scroll-h.md#arkui_effectedge).<br> This parameter is supported since API version 18.|
+| .value[2]?.i32 | Direction where the edge effect takes effect. The parameter type is [ArkUI_EffectEdge](capi-scroll-h.md#arkui_effectedge). The default value is [ARKUI_EFFECT_EDGE_START](capi-scroll-h.md#arkui_effectedge) \| [ARKUI_EFFECT_EDGE_END](capi-scroll-h.md#arkui_effectedge).<br> This parameter is supported since API version 16. |
 
 **Returns**
 
@@ -139,7 +139,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].i32 | Effect used at the edges of the component when the boundary of the scrollable content is reached. The parameter type is [ArkUI_EdgeEffect](capi-scroll-h.md#arkui_edgeeffect).|
 | .value[1].i32 | Whether the scroll effect is enabled when the component content size is smaller than the component itself. The value **1** indicates that the scroll effect is enabled, and **0** indicates the opposite.|
-| .value[2].i32 | Direction where the edge effect takes effect. The parameter type is [ArkUI_EffectEdge](capi-scroll-h.md#arkui_effectedge). This parameter is supported since API version 18.|
+| .value[2].i32 | Direction where the edge effect takes effect. The parameter type is [ArkUI_EffectEdge](capi-scroll-h.md#arkui_effectedge). This parameter is supported since API version 16. |
 
 ## NODE_SCROLL_ENABLE_SCROLL_INTERACTION
 
@@ -170,7 +170,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_SCROLL_FRICTION = 1002006
 ```
 
-Friction coefficient. It applies only to gestures in the scrolling area, and it affects only indirectly the scroll chaining during the inertial scrolling process.<br>The **List**, **Scroll**, and **WaterFlow** components support this attribute since API version 12, and the **Grid** component supports this attribute since API version 22.<br>
+Friction coefficient. It applies only to gestures in the scrolling area, and it only indirectly affects the scroll chaining during the inertial scrolling process.<br>The **List**, **Scroll**, and **WaterFlow** components support this attribute since API version 12, and the **Grid** component supports this attribute since API version 22.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
@@ -256,9 +256,9 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Horizontal scrolling offset, in vp. Value range: If the value is less than 0, the offset will be 0 for non-animated scrolling. A value greater than 0 indicates scrolling with animation. By default, the scrolling stops when it reaches the start position. You can set the **animation** parameter in **ScrollOptions** to enable a bounce effect when the scroll exceeds the content bounds.|
-| .value[1].f32 | Vertical scrolling offset, in vp. Value range: If the value is less than 0, the offset will be 0 for non-animated scrolling. A value greater than 0 indicates scrolling with animation. By default, the scrolling stops when it reaches the start position. You can set the **animation** parameter to enable a bounce effect when the scroll exceeds the content bounds.|
-| .value[2]?.i32 | Scrolling duration, in milliseconds. The default value is **1000**. This parameter is optional.|
+| .value[0].f32 | Horizontal scrolling offset, in vp. Value range: [0, +∞). Values less than 0 are treated as **0**. If the value is **0**, the component scrolls to the start position. If the value is greater than 0, the component scrolls to the specified offset position.|
+| .value[1].f32 | Vertical scrolling offset, in vp. Value range: [0, +∞). Values less than 0 are treated as **0**. If the value is **0**, the component scrolls to the start position. If the value is greater than 0, the component scrolls to the specified offset position.|
+| .value[2]?.i32 | Scrolling duration, in milliseconds. The default value is **1000**. This parameter is optional. The scrolling animation effect is enabled when the scrolling duration is greater than 0 or the default spring animation is enabled.|
 | .value[3]?.i32 | Scrolling curve. The parameter type is [ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve). This parameter is optional. The default value is [ARKUI_CURVE_EASE](capi-native-type-visual-h.md#arkui_animationcurve).|
 | .value[4]?.i32 | Whether to enable the default spring animation. This parameter is optional. The default value is **0**, indicating not to enable the default spring animation.|
 | .value[5]?.i32 | Whether to convert the scroll animation to an overshoot animation when the boundary is reached. The default value is **0**, meaning not to convert the scroll animation to an overshoot animation when the boundary is reached. This parameter is optional.|
@@ -2746,7 +2746,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .object | [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md) object.<br>This parameter defines the swipe-out component information of **ArcListItem**. You can use [OH_ArkUI_ListItemSwipeActionOption_Create](capi-native-type-h.md#oh_arkui_listitemswipeactionoption_create) to create the object, and use [OH_ArkUI_ListItemSwipeActionOption_SetStart](capi-native-type-h.md#oh_arkui_listitemswipeactionoption_setstart) to set the content on the left (in the vertical layout) or above (in the horizontal layout) of **ListItemSwipeActionItem**. |
+| .object | [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md) object.<br>This parameter defines the swipe-out component information of **ArcListItem**. You can use [OH_ArkUI_ListItemSwipeActionOption_Create](capi-list-item-h.md#oh_arkui_listitemswipeactionoption_create) to create the object, and use [OH_ArkUI_ListItemSwipeActionOption_SetStart](capi-list-item-h.md#oh_arkui_listitemswipeactionoption_setstart) to set the content on the left (in the vertical layout) or above (in the horizontal layout) of **ListItemSwipeActionItem**. |
 
 ## NODE_ARC_SCROLL_BAR_BIND_SCROLLABLE
 

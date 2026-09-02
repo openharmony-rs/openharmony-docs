@@ -24,6 +24,7 @@ Node-API提供了一组功能，使开发人员能够在Node-API模块中创建�
 - **引用管理**：Node-API提供函数来创建、删除和管理对象的引用，以延长对象的生命周期，避免出现对象use-after-free的问题。同时也通过引用管理去避免发生内存泄漏的问题。
 - **可逃逸的作用域**：允许在创建的作用域中声明的对象返回到父作用域，通过napi_open_escapable_handle_scope和napi_close_escapable_handle_scope进行管理。
 - **垃圾回收回调**：允许注册回调函数，以便在ArkTS对象被垃圾回收时执行特定的清理操作。
+- **Global Handle数量监控**：获取当前虚拟机环境中global handle数量，可用于根据global handle的实际数量来进一步处理业务，比如打印当前堆快照，分析当前的内存占用情况。注意：由于需要遍历，此接口可能耗时较长，在us级别。
 
 这些基本概念使开发人员能够在Node-API模块中安全且有效地操作ArkTS对象，并确保正确管理对象的生命周期。
 
@@ -39,6 +40,7 @@ Node-API提供了一组功能，使开发人员能够在Node-API模块中创建�
 | napi_reference_ref、napi_reference_unref | 主要用于管理ArkTS对象引用的引用计数，以确保在多个地方共享引用时引用计数能够正确地增加和减少。 |
 | napi_get_reference_value | 主要用于在Node-API模块代码中获取与引用相关联的ArkTS对象，以便在Node-API模块中对其进行操作。 |
 | napi_add_finalizer | 在需要在ArkTS对象被垃圾回收前执行一些清理或释放资源的情况下，确保资源的正确释放和管理。 |
+| napi_get_global_handle_count | 获取当前虚拟机环境中global handle数量，可用于根据global handle的实际数量来进一步处理业务，比如打印当前堆快照，分析当前的内存占用情况。注意：由于需要遍历，此接口可能耗时较长，在us级别。 |
 
 ## 使用示例
 
@@ -625,6 +627,64 @@ try {
   hilog.error(0x0000, 'testTag',
     'Test Node-API ReferenceTest errorCode: %{public}s, errorMessage: %{public}s', error.code,
     error.message);
+  // ...
+}
+```
+
+### napi_get_global_handle_count
+
+获取当前虚拟机环境中global handle数量，可用于根据global handle的实际数量来进一步处理业务，比如打印当前堆快照，分析当前的内存占用情况。注意：由于需要遍历，此接口可能耗时较长，在us级别。
+
+> **说明**
+>
+> 该接口仅统计强引用（global handle）的数量，不包含弱引用（WeakRef）和Sendable引用（SendableRef）的数量。弱引用存储在独立的弱引用链表中，Sendable引用存储在独立的Sendable全局存储中，均不在本接口的遍历范围内。返回值受强引用创建/删除操作的影响，例如 napi_create_strong_reference、napi_delete_strong_reference 等接口会相应增减计数，napi_create_strong_sendable_reference、napi_delete_strong_sendable_reference等接口不会影响计数结果。
+>
+> 性能参考：在4144个global handle的场景下，调用该接口1000次，累计耗时约11726us（单次平均约11.7us），耗时与handle数量线性相关，请避免在性能敏感的热点路径上频繁调用。
+
+cpp部分代码
+
+<!-- @[napi_get_global_handle_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+// napi_get_global_handle_count
+static napi_value GetGlobalHandleCount(napi_env env, napi_callback_info info)
+{
+    size_t count = 0;
+    napi_status status = napi_get_global_handle_count(env, &count);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to get global handle count");
+        return nullptr;
+    }
+    OH_LOG_INFO(LOG_APP, "Test Node-API napi_get_global_handle_count, count = %{public}zu.", count);
+    // 将handle数量转换为ArkTS number返回
+    napi_value result = nullptr;
+    napi_create_double(env, static_cast<double>(count), &result);
+    return result;
+}
+```
+
+接口声明
+
+// index.d.ts
+<!-- @[napi_get_global_handle_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const getGlobalHandleCount: () => number;
+```
+
+ArkTS侧示例代码
+
+<!-- @[napi_get_global_handle_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+try {
+  hilog.info(0x0000, 'testTag', 'Test Node-API getGlobalHandleCount: %{public}s',
+    testNapi.getGlobalHandleCount().toString());
+  // ...
+} catch (error) {
+  hilog.error(0x0000, 'testTag',
+    'Test Node-API getGlobalHandleCount errorCode: %{public}s, errorMessage: %{public}s',
+    error.code, error.message);
   // ...
 }
 ```

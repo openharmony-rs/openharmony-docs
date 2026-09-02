@@ -55,6 +55,7 @@ setDisallowedPolicy(admin: Want, feature: string, disallow: boolean): void
 **替代接口：** [restrictions.setDisallowedPolicy](#restrictionssetdisallowedpolicy24)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS 或者 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS<sup>15+</sup> 或者 ohos.permission.ENTERPRISE_MANAGE_NETWORK（设置不同特性所需权限不同，具体请参考表1）
+<br/>- 从API version 20开始，支持申请ohos.permission.ENTERPRISE_MANAGE_NETWORK权限。<br/>- 从API version 15开始，支持申请ohos.permission.PERSONAL_MANAGE_RESTRICTIONS权限。<br/>- API version 14及之前的版本，需要申请ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS权限。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -84,7 +85,7 @@ setDisallowedPolicy(admin: Want, feature: string, disallow: boolean): void
 |tethering<sup>14+</sup>|网络共享能力（设备已有网络共享给其他设备的能力，即共享热点能力）。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
 |inactiveUserFreeze<sup>14+</sup>|非活跃用户运行能力。禁用后，非UIAbility进程一般不会被冻结，UIAbility申请短时任务、长时任务、延迟任务或能效资源等后台运行任务也不会被冻结。当前仅支持PC/2in1设备使用。企业空间场景下，系统切换到企业空间用户，个人空间用户属于非活跃用户。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |camera<sup>14+</sup>|设备相机能力。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
-|mtpClient<sup>18+</sup>|MTP客户端能力（包含读取和写入），当前仅支持PC/2in1设备使用。MTP（Media Transfer Protocol，媒体传输协议），该协议允许用户在移动设备上线性访问媒体文件。当已经通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated)设置了某用户禁用MTP客户端写入能力时，再通过本接口禁用MTP客户端能力，会报策略冲突。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|mtpClient<sup>18+</sup>|MTP客户端能力（包含读取和写入），当前仅支持PC/2in1设备使用。<!--RP7--><!--RP7End-->MTP（Media Transfer Protocol，媒体传输协议），该协议允许用户在移动设备上线性访问媒体文件。当已经通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated)设置了某用户禁用MTP客户端写入能力时，再通过本接口禁用MTP客户端能力，会报策略冲突。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |mtpServer<sup>18+</sup>|MTP服务端能力，当前仅支持手机、平板设备使用。|API版本26.0.0之前：ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS，API版本26.0.0开始：ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
 |sambaClient<sup>20+</sup>|samba客户端能力，当前仅支持PC/2in1设备使用。samba是在Linux和UNIX系统上实现SMB协议的一个免费软件，由服务器及客户端程序构成。SMB（Server Message Block，信息服务块）是一种在局域网上共享文件和打印机的一种通信协议，它为局域网内的不同计算机之间提供文件及打印机等资源的共享服务。SMB协议是客户机/服务器型协议，客户机通过该协议可以访问服务器上的共享文件系统、打印机及其他资源。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |sambaServer<sup>20+</sup>|samba服务端能力，当前仅支持PC/2in1设备使用。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
@@ -153,6 +154,7 @@ getDisallowedPolicy(admin: Want \| null, feature: string): boolean
 **替代接口：** [restrictions.getDisallowedPolicy](#restrictionsgetdisallowedpolicy24)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS 或者 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS<sup>15+</sup> 或者 ohos.permission.ENTERPRISE_MANAGE_NETWORK（查询不同特性所需权限不同，具体请参考表2）
+<br/>- 从API version 20开始，支持申请ohos.permission.ENTERPRISE_MANAGE_NETWORK权限。<br/>- 从API version 15开始，支持申请ohos.permission.PERSONAL_MANAGE_RESTRICTIONS权限。<br/>- API version 14及之前的版本，需要申请ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS权限。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -162,7 +164,7 @@ getDisallowedPolicy(admin: Want \| null, feature: string): boolean
 
 | 参数名  | 类型                                                    | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
+| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。API version 20之前，调用本接口查询某特性是否被禁用。当设备存在多个MDM应用时，传入admin查询对应admin设置的策略。从API version 20开始，admin新增支持传入null，传入null时查询整机实际生效的策略。                                       |
 | feature | string                                                  | 是   | 支持查询的特性清单参考下表2。 <br/> **说明：** 从API version 15开始，应用申请权限ohos.permission.PERSONAL_MANAGE_RESTRICTIONS并通过[startAdminProvision](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)激活为[BDA](../../mdm/mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)，可以使用此接口获取以下特性状态：bluetooth、hdc、microphone、usb、wifi、tethering、camera<!--RP4--><!--RP4End-->，从API版本26.0.0开始，新增支持使用此接口获取mtpServer特性状态。|
 
 **表2 支持查询的特性清单：**
@@ -325,7 +327,7 @@ getDisallowedPolicyForAccount(admin: Want | null, feature: string, accountId: nu
 <!--Table: 10%; 20%; 10%; 60%-->
 | 参数名  | 类型                                                    | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                   |
+| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。API version 20之前，调用本接口获取指定用户的某特性状态。当设备存在多个MDM应用时，传入admin查询对应admin设置的策略。从API version 20开始，admin新增支持传入null，传入null时查询整机实际生效的策略。                                   |
 | feature | string                                                  | 是   | feature名称。<br/>- fingerprint：设备指纹认证能力，当前仅支持PC/2in1设备使用。使用此参数时有以下规则：当已经通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated)接口设置禁用/启用指定用户的设备指纹认证能力后，再通过[setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated)接口禁用设备指纹认证能力时，后者会覆盖前者的策略。即此时调用本接口结果为false。<br/>- mtpClient<sup>20+</sup>：MTP客户端能力（仅包含写入），当前仅支持PC/2in1设备使用。MTP（Media Transfer Protocol，媒体传输协议），该协议允许用户在移动设备上线性访问媒体文件。<br/>- usbStorageDeviceWrite<sup>20+</sup>：USB存储设备写入能力，当前仅支持PC/2in1企业设备使用。<br/>- diskRecoveryKey<sup>20+</sup>：恢复[密钥导出](../../security/UniversalKeystoreKit/huks-export-key-arkts.md)能力，当前仅支持PC/2in1设备使用。<br/>- sudo<sup>20+</sup>：superuser do，表示以超级用户执行，当前仅支持PC/2in1设备使用。禁用后企业空间或个人空间不能以超级用户执行。<br/>- distributedTransmissionOutgoing<sup>20+</sup>：设备间单向传输数据的能力（仅包含向其他设备传输数据）。<br/>- print<sup>20+</sup>：设备打印能力，在API version 23之前仅支持PC/2in1设备使用，从API version 23开始支持PC/2in1、Phone、Tablet设备。如果使用[setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated)接口禁用了设备打印能力，再通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated)接口启用某用户下的设备打印能力，通过本接口查询结果是该用户已启用打印能力，但实际打印能力已被禁用。<br/>- openFileBoost<sup>23+</sup>：<!--RP6-->文件打开加速能力<!--RP6End-->，为应用提供文件打开加速状态感知能力。应用可以通过接入对应API，感知文件的加速状态，进而应用可以实现对已加速文件给出独特的UI（user interface）标识等功能，优化用户文件打开体验，当前仅支持PC/2in1设备使用。 |
 | accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
@@ -742,7 +744,7 @@ getUserRestrictedForAccount(admin: Want | null, settingsItem: string, accountId:
 | 参数名  | 类型                                                    | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                   |
-| settingsItem | string                                             | 是   | 指定设置项。<br/>- modifyWallpaper：修改壁纸，包含锁屏壁纸和桌面壁纸。<!--RP7--><!--RP7End-->|
+| settingsItem | string                                             | 是   | 指定设置项。<br/>- modifyWallpaper：修改壁纸，包含锁屏壁纸和桌面壁纸。|
 | accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。                       |
 
 
@@ -973,7 +975,7 @@ getDisallowedPolicyForAccount(admin: Want | null, feature: FeatureForAccount, ac
 
 | 参数名    | 类型                                                         | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。当设备存在多个MDM应用时，传入admin查询对应admin设置的策略。传入null时查询整机实际生效的策略。 |
 | feature   | [FeatureForAccount](#featureforaccount)                      | 是   | 指定要查询的用户特性。 |
 | accountId | number                                                       | 是   | 用户ID，取值范围：大于等于0。<br>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
@@ -1009,7 +1011,8 @@ let wantTemp: Want = {
 
 try {
   // 参数需根据实际情况进行替换
-  let result: boolean = restrictions.getDisallowedPolicyForAccount(wantTemp, restrictions.FeatureForAccount.SUPER_HUB, 100);
+  let result: boolean = restrictions.getDisallowedPolicyForAccount(wantTemp,
+    restrictions.FeatureForAccount.SUPER_HUB, 100);
   console.info(`Succeeded in querying whether the super hub is disabled: ${result}`);
 } catch (err) {
   console.error(`Failed to get whether super hub is disabled. Code is ${err.code}, message is ${err.message}`);
@@ -1271,7 +1274,7 @@ try {
 | TETHERING   | 17   | 网络共享能力（设备已有网络共享给其他设备的能力，即共享热点能力）。<br>**起始版本：** 26.0.0 |
 | INACTIVE_USER_FREEZE   | 18   | 非活跃用户运行能力。禁用后，非UIAbility进程一般不会被冻结，UIAbility申请短时任务、长时任务、延迟任务或能效资源等后台运行任务也不会被冻结。当前仅支持PC/2in1设备使用。企业空间场景下，系统切换到企业空间用户，个人空间用户属于非活跃用户。<br>**起始版本：** 26.0.0 |
 | CAMERA   | 19   | 设备相机能力。<br>**起始版本：** 26.0.0 |
-| MTP_CLIENT   | 20   | MTP客户端能力（包含读取和写入），当前仅支持PC/2in1设备使用。MTP（Media Transfer Protocol，媒体传输协议），该协议允许用户在移动设备上线性访问媒体文件。当已经通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount)设置了某用户禁用MTP客户端写入能力时，再禁用MTP客户端能力，会报策略冲突。<br>**起始版本：** 26.0.0 |
+| MTP_CLIENT   | 20   | MTP客户端能力（包含读取和写入），当前仅支持PC/2in1设备使用。<!--RP7--><!--RP7End-->MTP（Media Transfer Protocol，媒体传输协议），该协议允许用户在移动设备上线性访问媒体文件。当已经通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount)设置了某用户禁用MTP客户端写入能力时，再禁用MTP客户端能力，会报策略冲突。<br>**起始版本：** 26.0.0 |
 | MTP_SERVER   | 21   | MTP服务端能力，当前仅支持手机、平板设备使用。<br>**起始版本：** 26.0.0 |
 | SAMBA_CLIENT   | 22   | samba客户端能力，当前仅支持PC/2in1设备使用。samba是在Linux和UNIX系统上实现SMB协议的一个免费软件，由服务器及客户端程序构成。SMB（Server Message Block，信息服务块）是一种在局域网上共享文件和打印机的一种通信协议，它为局域网内的不同计算机之间提供文件及打印机等资源的共享服务。SMB协议是客户机/服务器型协议，客户机通过该协议可以访问服务器上的共享文件系统、打印机及其他资源。<br>**起始版本：** 26.0.0 |
 | SAMBA_SERVER   | 23   | samba服务端能力，当前仅支持PC/2in1设备使用。<br>**起始版本：** 26.0.0 |
@@ -1357,4 +1360,4 @@ try {
 
 | 名称 | 值 | 说明 |
 |------|-----|------|
-| MODIFY_WALLPAPER | 0 | 修改壁纸，包含锁屏壁纸和桌面壁纸。 |
+| MODIFY_WALLPAPER | 0 | 修改壁纸，包含锁屏壁纸和桌面壁纸。<!--RP7--><!--RP7End--> |

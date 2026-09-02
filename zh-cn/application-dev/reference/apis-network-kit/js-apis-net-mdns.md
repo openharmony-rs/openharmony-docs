@@ -22,7 +22,7 @@ import { mdns } from '@kit.NetworkKit';
 
 addLocalService(context: Context, serviceInfo: LocalServiceInfo, callback: AsyncCallback\<LocalServiceInfo>): void
 
-添加一个MDNS服务，使用callback方式作为异步方法。
+添加一个MDNS服务，使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -33,8 +33,8 @@ addLocalService(context: Context, serviceInfo: LocalServiceInfo, callback: Async
 | 参数名        | 类型                             | 必填 | 说明                                     |
 |-------------|----------------------------------|-----------|-------------------------------------------------|
 | context     | Context                          | 是       | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| serviceInfo | [LocalServiceInfo](#localserviceinfo)                 | 是        |   mDNS服务的信息。      |
-| callback | AsyncCallback\<[LocalServiceInfo](#localserviceinfo)> | 是        |   回调函数。成功添加时error为undefined，data为添加到本地的MDNS服务信息。      |
+| serviceInfo | [LocalServiceInfo](#localserviceinfo)                 | 是        |   MDNS服务的信息。      |
+| callback | AsyncCallback\<[LocalServiceInfo](#localserviceinfo)> | 是        |   回调函数。成功添加时error为undefined，data为添加到本地的MDNS服务信息；否则为错误对象。      |
 
 **错误码：**
 
@@ -51,7 +51,7 @@ addLocalService(context: Context, serviceInfo: LocalServiceInfo, callback: Async
 
 **示例：**
 
->**说明：** 
+> **说明：** 
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -86,7 +86,7 @@ mdns.addLocalService(context, localServiceInfo, (error:BusinessError, data:mdns.
 
 addLocalService(context: Context, serviceInfo: LocalServiceInfo): Promise\<LocalServiceInfo>
 
-添加一个MDNS服务，使用Promise方式作为异步方法。
+添加一个MDNS服务，使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -103,7 +103,7 @@ addLocalService(context: Context, serviceInfo: LocalServiceInfo): Promise\<Local
 
 | 类型                              | 说明                                  |
 | --------------------------------- | ------------------------------------- |
-| Promise\<[LocalServiceInfo](#localserviceinfo)> | 以Promise形式返回添加的MDNS服务信息。 |
+| Promise\<[LocalServiceInfo](#localserviceinfo)> | Promise对象，返回添加的MDNS服务信息。 |
 
 **错误码：**
 
@@ -121,7 +121,7 @@ addLocalService(context: Context, serviceInfo: LocalServiceInfo): Promise\<Local
 
 **示例：**
 
->**说明：** 
+> **说明：** 
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -155,19 +155,19 @@ mdns.addLocalService(context, localServiceInfo).then((data: mdns.LocalServiceInf
 
 removeLocalService(context: Context, serviceInfo: LocalServiceInfo, callback: AsyncCallback\<LocalServiceInfo>): void
 
-移除一个MDNS服务，使用callback方式作为异步方法。
+移除一个MDNS服务，使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**： SystemCapability.Communication.NetManager.MDNS
+**系统能力**：SystemCapability.Communication.NetManager.MDNS
 
-**参数**
+**参数：**
 
 | 参数名        | 类型                             | 必填 | 说明                                     |
 |-------------|----------------------------------|-----------|-------------------------------------------------|
 | context     | Context                          | 是       | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | serviceInfo | [LocalServiceInfo](#localserviceinfo)                 | 是        |   MDNS服务的信息。      |
-| callback | AsyncCallback\<[LocalServiceInfo](#localserviceinfo)> | 是        |   回调函数。成功移除error为undefined，data为移除本地的MDNS服务信息。      |
+| callback | AsyncCallback\<[LocalServiceInfo](#localserviceinfo)> | 是        |   回调函数。成功移除error为undefined，data为移除本地的MDNS服务信息；否则为错误对象。      |
 
 **错误码：**
 
@@ -185,7 +185,7 @@ removeLocalService(context: Context, serviceInfo: LocalServiceInfo, callback: As
 
 **示例：**
 
->**说明：** 
+> **说明：** 
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -220,13 +220,13 @@ mdns.removeLocalService(context, localServiceInfo, (error: BusinessError, data: 
 
 removeLocalService(context: Context, serviceInfo: LocalServiceInfo): Promise\<LocalServiceInfo>
 
-移除一个MDNS服务，使用Promise方式作为异步方法。
+移除一个MDNS服务，使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**： SystemCapability.Communication.NetManager.MDNS
+**系统能力**：SystemCapability.Communication.NetManager.MDNS
 
-**参数**
+**参数：**
 
 | 参数名        | 类型                             | 必填 | 说明                                     |
 |-------------|----------------------------------|-----------|-------------------------------------------------|
@@ -237,7 +237,7 @@ removeLocalService(context: Context, serviceInfo: LocalServiceInfo): Promise\<Lo
 
 | 类型                              | 说明                                  |
 | --------------------------------- | ------------------------------------- |
-| Promise\<[LocalServiceInfo](#localserviceinfo)> | 以Promise形式返回移除的MDNS服务信息。 |
+| Promise\<[LocalServiceInfo](#localserviceinfo)> | Promise对象，返回移除的MDNS服务信息。 |
 
 **错误码：**
 
@@ -254,7 +254,7 @@ removeLocalService(context: Context, serviceInfo: LocalServiceInfo): Promise\<Lo
 
 **示例：**
 
->**说明：** 
+> **说明：** 
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -304,7 +304,7 @@ createDiscoveryService(context: Context, serviceType: string): DiscoveryService
 
 | 类型                         | 说明                     |
 | ----------------------------- |---------------------------------|
-| DiscoveryService | 基于指定服务类型（serviceType）和Context的发现服务对象。 |
+| [DiscoveryService](#discoveryservice) | 基于指定服务类型（serviceType）和Context的发现服务对象。 |
 
 **错误码：**
 
@@ -316,7 +316,7 @@ createDiscoveryService(context: Context, serviceType: string): DiscoveryService
 
 **示例：**
 
->**说明：** 
+> **说明：** 
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -339,11 +339,11 @@ let discoveryService : Object = mdns.createDiscoveryService(context, serviceType
 
 resolveLocalService(context: Context, serviceInfo: LocalServiceInfo, callback: AsyncCallback\<LocalServiceInfo>): void
 
-解析一个MDNS服务，使用callback方式作为异步方法。
+解析一个MDNS服务，使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**： SystemCapability.Communication.NetManager.MDNS
+**系统能力**：SystemCapability.Communication.NetManager.MDNS
 
 **参数：**
 
@@ -351,7 +351,7 @@ resolveLocalService(context: Context, serviceInfo: LocalServiceInfo, callback: A
 |-------------|----------------------------------|-----------|-------------------------------------------------------------|
 | context     | Context                          | 是       | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | serviceInfo | [LocalServiceInfo](#localserviceinfo)                 | 是        |   MDNS服务的信息。      |
-| callback | AsyncCallback\<[LocalServiceInfo](#localserviceinfo)> | 是        |   回调函数。成功移除error为undefined，data为解析的MDNS服务信息。      |
+| callback | AsyncCallback\<[LocalServiceInfo](#localserviceinfo)> | 是        |   回调函数。成功移除error为undefined，data为解析的MDNS服务信息；否则为错误对象。      |
 
 **错误码：**
 
@@ -369,7 +369,7 @@ resolveLocalService(context: Context, serviceInfo: LocalServiceInfo, callback: A
 
 **示例：**
 
->**说明：** 
+> **说明：** 
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -404,11 +404,11 @@ mdns.resolveLocalService(context, localServiceInfo, (error: BusinessError, data:
 
 resolveLocalService(context: Context, serviceInfo: LocalServiceInfo): Promise\<LocalServiceInfo>
 
-解析一个MDNS服务，使用Promise方式作为异步方法。
+解析一个MDNS服务，使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**： SystemCapability.Communication.NetManager.MDNS
+**系统能力**：SystemCapability.Communication.NetManager.MDNS
 
 **参数：**
 
@@ -421,7 +421,7 @@ resolveLocalService(context: Context, serviceInfo: LocalServiceInfo): Promise\<L
 
 | 类型                              | 说明                                  |
 |----------------------------| ------------------------------------- |
-| Promise\<[LocalServiceInfo](#localserviceinfo)> | 以Promise形式返回解析的MDNS服务信息。|
+| Promise\<[LocalServiceInfo](#localserviceinfo)> | Promise对象，返回解析的MDNS服务信息。|
 
 **错误码：**
 
@@ -438,7 +438,7 @@ resolveLocalService(context: Context, serviceInfo: LocalServiceInfo): Promise\<L
 
 **示例：**
 
->**说明：** 
+> **说明：** 
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -483,7 +483,7 @@ startSearchingMDNS(): void
 
 **示例：**
 
->**说明：** 
+> **说明：** 
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -514,7 +514,7 @@ stopSearchingMDNS(): void
 
 **示例：**
 
->**说明：** 
+> **说明：** 
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -537,7 +537,7 @@ discoveryService.stopSearchingMDNS();
 
 on(type: 'discoveryStart', callback: Callback\<DiscoveryEventInfo\>): void
 
-订阅开启监听mDNS服务的通知。
+订阅开启监听MDNS服务的通知。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -552,7 +552,7 @@ on(type: 'discoveryStart', callback: Callback\<DiscoveryEventInfo\>): void
 
 **示例：**
 
->**说明：** 
+> **说明：** 
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -594,7 +594,7 @@ off(type: 'discoveryStart', callback?: Callback\<DiscoveryEventInfo\>): void
 
 **示例：**
 
->**说明：** 
+> **说明：** 
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -640,7 +640,7 @@ on(type: 'discoveryStop', callback: Callback\<DiscoveryEventInfo\>): void
 
 **示例：**
 
->**说明：** 
+> **说明：** 
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -677,12 +677,12 @@ off(type: 'discoveryStop', callback?: Callback\<[DiscoveryEventInfo](#discoverye
 
 | 参数名        | 类型                             | 必填 | 说明                                     |
 |-------------|--------------|-----------|-----------------------------------------------------|
-| type     | string                          | 是       |取消订阅的事件'discoveryStop'。<br>discoveryStop：停止搜索局域网内的MDNS服务事件。 |
+| type     | string                          | 是       |取消订阅的事件，固定为'discoveryStop'。<br>discoveryStop：停止搜索局域网内的MDNS服务事件。 |
 | callback | Callback\<[DiscoveryEventInfo](#discoveryeventinfo11)\>  | 否       |MDNS服务的信息和事件错误信息。可以指定传入on中的callback取消对应的订阅，也可以不指定callback清空所有订阅。      |
 
 **示例：**
 
->**说明：** 
+> **说明：** 
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -728,7 +728,7 @@ on(type: 'serviceFound', callback: Callback\<LocalServiceInfo>): void
 
 **示例：**
 
->**说明：** 
+> **说明：** 
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -773,7 +773,7 @@ off(type: 'serviceFound', callback?: Callback\<LocalServiceInfo>): void
 
 **示例：**
 
->**说明：** 
+> **说明：** 
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -822,7 +822,7 @@ on(type: 'serviceLost', callback: Callback\<LocalServiceInfo>): void
 
 **示例：**
 
->**说明：** 
+> **说明：** 
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -864,7 +864,7 @@ off(type: 'serviceLost', callback?: Callback\<LocalServiceInfo>): void
 
 **示例：**
 
->**说明：** 
+> **说明：** 
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -930,8 +930,8 @@ MDNS服务属性信息。
 
 | 名称   | 类型                                           | 只读 | 可选 |说明                    |
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
-| serviceInfo | LocalServiceInfo                    |  否   | 否 |  MDNS服务信息。        |
-| errorCode   | MdnsError                           |  否   | 是 |  MDNS错误信息。        |
+| serviceInfo | [LocalServiceInfo](#localserviceinfo)         |  否   | 否 |  MDNS服务信息。        |
+| errorCode   | [MdnsError](#mdnserror)                       |  否   | 是 |  MDNS错误信息。        |
 
 ## MdnsError
 

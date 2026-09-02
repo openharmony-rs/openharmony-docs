@@ -1,4 +1,4 @@
-# ArkUI_RectShapeOption
+# ArkUI_RectShape
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->

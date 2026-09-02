@@ -12,7 +12,7 @@ typedef struct OH_ArkUI_SurfaceCallback OH_ArkUI_SurfaceCallback
 
 ## 概述
 
-定义Surface生命周期回调结构体。当XComponent的Surface创建、销毁或尺寸发生变化时，会触发对应的回调。开发者可在回调中获取Surface指针并执行自定义渲染（如OpenGL ES渲染、Vulkan渲染或视频解码渲染等场景）。
+定义Surface生命周期回调结构体。当XComponent的Surface创建、销毁、尺寸发生变化时，会触发对应的回调；当应用窗口前后台切换导致Surface显示、隐藏时，会触发对应的回调（该显示、隐藏回调能力自API version 20起支持）。开发者可在回调中获取Surface指针并执行自定义渲染（如OpenGL ES渲染、Vulkan渲染或视频解码渲染等场景）。
 
 **起始版本：** 19
 

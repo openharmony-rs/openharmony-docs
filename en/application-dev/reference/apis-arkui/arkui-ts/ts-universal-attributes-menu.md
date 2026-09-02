@@ -1,12 +1,12 @@
 # Menu Control
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Armstrong15-->
+<!--Owner: @H-xinwei-->
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-A context menu – a vertical list of items – can be bound to a component and displayed by long-pressing, clicking, or right-clicking the component.
+A context menu – a vertical list of items – can be bound to a component and displayed by long-pressing, clicking, or right-clicking the component. Menu control is applicable to scenarios where shortcut operations, setting options, or context-related operations are required. It provides users with convenient operation entries and improves the interaction experience of applications. The menu content and style can be customized to flexibly adapt to different service requirements.
 
 >  **NOTE**
 >
@@ -71,6 +71,8 @@ Binds a menu to a component. **isShow** specifies whether to display a menu. The
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -125,13 +127,15 @@ Binds a menu to a component. **isShown** specifies whether to display a menu.
 
 When **isShown** is **true**, the menu is displayed. When **isShown** is **false**, the menu is hidden. Menu items can be customized.
 
-The menu display position is determined only by the **placement** setting, regardless of the click position.
+The position where the menu is displayed is determined only by the [placement](ts-appendix-enums.md#placement8) parameter, and is irrelevant to the position where the menu is clicked.
 
 >  **NOTE**
 >
 >  - **bindContextMenu** (implemented in subwindows by default) is not supported in input method windows. For details, see the constraints in [createPanel](../../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1) of the input method framework documentation.
 >
 >  - This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -173,8 +177,113 @@ Binds a menu to a component. The display or hiding of the menu is triggered via 
 
 | Name      | Type                                              | Mandatory| Description                            |
 | ------------ | -------------------------------------------------- | ---- | -------------------------------- |
-| content      | [CustomBuilderT](ts-types.md#custombuildertt23)[\<ResponseType>](ts-appendix-enums.md#responsetype8)&nbsp;\|&nbsp; undefined  | Yes  | Builder of the custom menu content. The input parameter is the menu triggering mode, which can be used to implement differentiated content. If this parameter is set to **undefined**, no menu is displayed.          |
+| content      | [CustomBuilderT](ts-types.md#custombuildertt23)\<[ResponseType](ts-appendix-enums.md#responsetype8)>&nbsp;\|&nbsp; undefined  | Yes  | Builder of the custom menu content. The input parameter is the menu triggering mode, which can be used to implement differentiated content. If this parameter is set to **undefined**, no menu is displayed.          |
 | options      | [ContextMenuOptions](#contextmenuoptions10)        | No  | Parameters of the context menu.            |
+
+**Return value**
+
+|Type|Description|
+|---|---|
+|T|Current component.|
+
+## bindContextMenuByResponseType
+
+bindContextMenuByResponseType(content: CustomBuilder | Array<MenuElement&gt;, responseType: ResponseType, options?: ContextMenuOptions): T
+
+Binds a menu to the component. The menu is displayed or hidden when the user presses and holds or right-clicks the component. Menu items in custom or fixed styles are supported.
+
+> **NOTE**
+>
+> - The **bindContextMenuByResponseType** method (implemented by the default subwindow) cannot be used in the input method window. For details, see the restrictions of the input method framework [createPanel](../../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1).
+>
+> - This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name      | Type                                              | Mandatory| Description                            |
+| ------------ | -------------------------------------------------- | ---- | -------------------------------- |
+| content      | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\| Array<[MenuElement](#menuelement)&gt;&nbsp;  | Yes  | Custom menu content builder, or a menu with a fixed style. If this parameter is set to **undefined**, no menu is displayed.          |
+| responseType | [ResponseType](ts-appendix-enums.md#responsetype8) | Yes  | How the context menu is triggered, which can be long-press or right-click. Long pressing with a mouse device is not supported.|
+| options      | [ContextMenuOptions](#contextmenuoptions10)        | No  | Parameters of the context menu.            |
+
+**Return value**
+
+|Type|Description|
+|---|---|
+|T|Current component.|
+
+## bindContextMenuWithResponse
+
+bindContextMenuWithResponse(content: CustomBuilderT\<ResponseType> | Array<MenuElement&gt; | undefined, options?: ContextMenuOptions): T
+
+Binds a menu to the component. The menu is displayed or hidden by pressing and holding or right-clicking. The menu items can be customized or have a fixed style. When the menu items are customized, you can implement differentiated content based on the triggering mode.
+
+> **NOTE**
+>
+> - **bindContextMenuWithResponse** (implemented in subwindows by default) is not supported in input method windows. For details, see the constraints in [createPanel](../../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1) of the input method framework documentation.
+>
+> - This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name      | Type                                              | Mandatory| Description                            |
+| ------------ | -------------------------------------------------- | ---- | -------------------------------- |
+| content      | [CustomBuilderT](ts-types.md#custombuildertt23)\<[ResponseType](ts-appendix-enums.md#responsetype8)>&nbsp;\|&nbsp; Array<[MenuElement](#menuelement)&gt; \|&nbsp;undefined  | Yes  | Builder of the custom menu content. The input parameter is the menu triggering mode, which can be used to implement differentiated content. Alternatively, use a fixed-style menu. If this parameter is set to **undefined**, no menu is displayed.          |
+| options      | [ContextMenuOptions](#contextmenuoptions10)        | No  | Parameters of the context menu.            |
+
+**Return value**
+
+|Type|Description|
+|---|---|
+|T|Current component.|
+
+## bindContextMenuByIsShow
+
+bindContextMenuByIsShow(isShow: boolean, content: CustomBuilder | Array<MenuElement&gt;, options?: ContextMenuOptions): T
+
+Binds a menu to a component. **isShow** specifies whether to display a menu.
+
+The menu items support custom and fixed style arrays.
+
+The position where the menu is displayed is determined only by the [placement](ts-appendix-enums.md#placement8) parameter, and is irrelevant to the position where the menu is tapped.
+
+> **NOTE**
+>
+> - The **bindContextMenuByIsShow** method (implemented by the default subwindow) cannot be used in the input method window. For details, see the restrictions of the input method framework [createPanel](../../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1).
+>
+> - This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name      | Type                                              | Mandatory| Description                                        |
+| ------------ | -------------------------------------------------- | ---- | -------------------------------------------- |
+| isShow | boolean | Yes  | Allows you to control the display and hiding of the menu through status variables. The menu can be displayed properly only when the related page has been constructed. If this parameter is set to **true** before the construction is complete, display issues, such as misplacement, distortion, or failure to pop up, may occur. To trigger dragging by long presses is not supported. This parameter supports two-way binding through the [!! syntax](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).<br>**true**: Display the menu. **false**: Close the menu.<br>Default value: **false**|
+| content      | [CustomBuilder](ts-types.md#custombuilder8) \| Array<[MenuElement](#menuelement)&gt;       | Yes  | Custom menu content builder or menu with a fixed style.|
+| options      | [ContextMenuOptions](#contextmenuoptions10)                      | No  | Parameters of the context menu.                        |
 
 **Return value**
 
@@ -191,34 +300,39 @@ Configures icon, text, and interaction information of a menu item.
 | Name                    | Type                                                        | Read-Only| Optional| Description                                                        |
 | ------------------------ | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | value                    | [ResourceStr](ts-types.md#resourcestr)                       | No  | No  | Menu item text.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| icon<sup>10+</sup>       | [ResourceStr](ts-types.md#resourcestr)                       | No  | Yes  | Menu item icon.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| enabled<sup>11+</sup>    | boolean                                                      | No  | Yes  | Whether to enable interactions with the menu item.<br>**true**: yes; **false**: no<br>Default value: **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| icon<sup>10+</sup>       | [ResourceStr](ts-types.md#resourcestr)                       | No  | Yes  | Menu item icon.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Model restriction**: This API can be used only in the stage model.|
+| enabled<sup>11+</sup>    | boolean                                                      | No  | Yes  | Whether the menu item can be interacted with.<br>**true**: The menu item can be interacted with. **false**: The menu item cannot be interacted with.<br>Default value: **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model restriction**: This API can be used only in the stage model.|
 | action                   | ()&nbsp;=&gt;&nbsp;void                                      | No  | No  | Action triggered when a menu item is clicked.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| symbolIcon<sup>12+</sup> | [SymbolGlyphModifier](ts-universal-attributes-text-style.md#symbolglyphmodifier12) | No  | Yes  | Icon of a menu item. You can configure the menu item icon using **Modifier**. If both **symbolIcon** and **icon** are configured, the icon is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| symbolIcon<sup>12+</sup> | [SymbolGlyphModifier](ts-universal-attributes-text-style.md#symbolglyphmodifier12) | No  | Yes  | Icon of a menu item. You can configure the menu item icon using **Modifier**. If both **symbolIcon** and **icon** are configured, the icon is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## MenuOptions<sup>10+</sup>
 
-Configues menu item information, which is inherited from [ContextMenuOptions](#contextmenuoptions10).
+Sets the parameters of the pop-up menu, which are inherited from [ContextMenuOptions](#contextmenuoptions10).
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name                         | Type                                  | Read-Only| Optional| Description                                                        |
 | ----------------------------- | -------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | title                         | [ResourceStr](ts-types.md#resourcestr) | No  | Yes  | Menu title.<br>**NOTE**<br>This parameter is effective only when **content** is set to Array<[MenuElement](#menuelement)&gt;.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| showInSubWindow<sup>11+</sup> | boolean                                | No  | Yes  | Whether to show the menu in a subwindow.<br>**true**: yes; **false**: no<br>Default value: **true** for 2-in-1 devices and **false** for other devices<br>**NOTE**<br>This parameter takes effect only for 2-in-1 devices.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| showInSubWindow<sup>11+</sup> | boolean                                | No  | Yes  | Whether to show the menu in a subwindow.<br>**true**: The menu is displayed in a subwindow. **false**: The menu is not displayed in a subwindow.<br>Default value: **true** for PCs and 2-in-1 devices, and **false** for other devices.<br>**NOTE**<br>This parameter can be set to **false** only on devices whose default value is **true**. On devices whose default value is **false**, setting this parameter to **true** does not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ## ContextMenuOptions<sup>10+</sup>
 
 Configures menu item information.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 23%; 23%; 7%; 7%; 40%-->
 | Name                 | Type                                                        | Read-Only| Optional| Description                                                        |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| offset                | [Position](ts-types.md#position)                            | No  | Yes | Offset for showing the context menu, which should not cause the menu to extend beyond the screen.<br>Default value: **{ x: 0, y: 0 }**. Percentage values are not supported.<br>**NOTE**<br>When the menu is displayed relative to the parent component area, the width or height of the area is automatically counted into the offset based on the **placement** attribute of the menu.<br>Table 1 describes the relationship between the final **offset** value and the **placement** value.<br>If this parameter is not set, or set to an abnormal value or **undefined**, the default value **{ x: 0, y: 0 }** is used. If the offset exceeds the screen range, it will be constrained to the nearest point within the screen range.<br>If the display position of the menu is adjusted (different from the main direction of the initial **placement** value), the offset value is invalid.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| offset                | [Position](ts-types.md#position)                            | No  | Yes | Offset for showing the context menu, which should not cause the menu to extend beyond the screen.<br>Default value: **{ x: 0, y: 0 }**, in vp. The percentage cannot be set.<br>**NOTE**<br>When the menu is displayed relative to the parent component area, the width or height of the area is automatically counted into the offset based on the **placement** attribute of the menu.<br>Table 1 describes the relationship between the final **offset** value and the **placement** value.<br>If this parameter is not set, or set to an abnormal value or **undefined**, the default value **{ x: 0, y: 0 }** is used. If the offset exceeds the screen range, it will be constrained to the nearest point within the screen range.<br>If the display position of the menu is adjusted (different from the main direction of the initial **placement** value), the offset value is invalid.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | placement             | [Placement](ts-appendix-enums.md#placement8)                 | No  | Yes | Preferred position of the context menu. If the set position is insufficient for holding the component, it will be automatically adjusted.<br>**NOTE**<br>1. When this parameter is used as the input parameter of [bindMenu](#bindmenu11), its default value is **Placement.BottomLeft**.<br>2. When this parameter is used as the input parameter of [bindContextMenu<sup>8+</sup>](#bindcontextmenu8) or [bindContextMenuWithResponse<sup>23+</sup>](#bindcontextmenuwithresponse23), the menu is displayed at the click position.<br>3. When this parameter is used as the input parameter of [bindContextMenu<sup>12+</sup>](#bindcontextmenu12), its default value is **Placement.BottomLeft**.<br>4. If the value of **placement** is **undefined**, **null**, or empty, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| enableArrow           | boolean                                                      | No  | Yes | Whether to display an arrow. If the size and position of the context menu are insufficient for holding an arrow, no arrow is displayed.<br>Default value: **false**, indicating that no arrow is displayed.<br>**NOTE**<br>When **enableArrow** is set to **true** and **placement** is not set or set to an invalid value, the arrow is displayed above the target object by default. (For details about the relationship between the default menu position and the API, see Table 3.) Otherwise, the arrow is displayed based on the position specified by **placement**. If the position is insufficient for holding the arrow, it is automatically adjusted. When **enableArrow** is **undefined**, no arrow is displayed. This API is supported in **bindContextMenu** since API version 10 and **bindMenu** since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| enableHoverMode<sup>18+</sup>      | boolean                                                      | No  | Yes | Whether to respond when the device is in hover mode (semi-folded state), that is, whether it triggers avoidance of the crease area in hover mode.<br>Default value: **false** (**true** for 2-in-1 devices by default) If this parameter is not set or set to an invalid value, the default value is used.<br>**NOTE**<br>1. If the menu display position is within the crease area in hover mode, it will not respond in hover mode.<br>2. This parameter is supported on 2-in-1 devices since API version 20.<br>3. This parameter only takes effect in window waterfall mode for 2-in-1 devices.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| enableArrow           | boolean                                                      | No  | Yes | Whether to display an arrow. If the size and position of the context menu are insufficient for holding an arrow, no arrow is displayed.<br>Default value: **false**, indicating that no arrow is displayed.<br>**NOTE**<br>When **enableArrow** is set to **true** and **placement** is not set or set to an invalid value, the arrow is displayed above the target object by default. (For details about the relationship between the default menu position and the API, see Table 3.) Otherwise, the arrow is displayed based on the position specified by **placement**. If the position is insufficient for holding the arrow, it is automatically adjusted. When **enableArrow** is **undefined**, no arrow is displayed. If **preview** is set to **MenuPreviewMode.IMAGE** or **CustomBuilder**, no arrow will be displayed even when **enableArrow** is **true**. This API is supported in **bindContextMenu** since API version 10 and **bindMenu** since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| enableHoverMode<sup>18+</sup>      | boolean                                                      | No  | Yes | Whether to respond when the device is in hover mode (semi-folded state), that is, whether it triggers avoidance of the crease area in hover mode.<br>Default value: **false**. For PC and 2-in-1 devices, the default value is **true**. If this parameter is not set or set to an invalid value, the default value is used.<br>**NOTE**<br>1. If the menu display position is within the crease area in hover mode, it will not respond in hover mode.<br>2. This parameter is supported on PCs and 2-in-1 devices as of API version 20.<br>3. This parameter is supported only on PCs and 2-in-1 devices in waterfall layout mode.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | arrowOffset           | [Length](ts-types.md#length)                                 | No  | Yes | Offset of the arrow relative to the context menu. The offset settings take effect only when the value is valid, can be converted to a number greater than 0, and does not cause the arrow to extend beyond the safe area of the context menu.<br>Default value: **0**<br>Unit: vp<br>**NOTE**<br>The safe distance of the arrow from the four sides of the menu is the sum of the menu's corner radius and half the width of the arrow.<br>The value of **placement** determines whether the offset is horizontal or vertical.<br>When the arrow is in the horizontal direction of the menu, the offset is the distance from the arrow to the leftmost arrow's safe distance. When the arrow is in the vertical direction of the menu, the offset is the distance from the arrow to the topmost arrow's safe distance.<br>The default position where the arrow is displayed varies with the value of **placement**:<br>Table 2 describes the relationship between the final position of the arrow and the value of **placement** in cases where the menu does not trigger repositioning.<br>  This API is supported in **bindContextMenu** since API version 10 and **bindMenu** since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | preview<sup>11+</sup> | [MenuPreviewMode](#menupreviewmode11)&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | No  | Yes | Preview displayed when the context menu is triggered by a long-press or by calling [bindContextMenu<sup>12+</sup>](#bindcontextmenu12). It can be a screenshot of the target component or custom content.<br>Default value: **MenuPreviewMode.NONE**, indicating no preview.<br>**NOTE**<br>- This parameter has no effect when **responseType** is set to **ResponseType.RightClick**.<br>- If **preview** is set to **MenuPreviewMode.NONE** or is not set, the **enableArrow** parameter is effective.<br>- If **preview** is set to **MenuPreviewMode.IMAGE** or **CustomBuilder**, no arrow will be displayed even when **enableArrow** is **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | previewAnimationOptions<sup>11+</sup> | [ContextMenuAnimationOptions](#contextmenuanimationoptions11) | No   | Yes  | Display effect of the long-press preview.<br>Default value: **{ scale: [0.95, 1.1], transition: undefined, hoverScale: undefined }**<br>**NOTE**<br>If the value is less than or equal to **0**, this parameter does not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -232,22 +346,28 @@ Configures menu item information.
 | aboutToDisappear<sup>11+</sup> | ()&nbsp;=&gt;&nbsp;void                                      | No  | Yes | Callback triggered when the menu is about to disappear.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                      |
 | backgroundColor<sup>11+</sup> | [ResourceColor](ts-types.md#resourcecolor)  | No| Yes| Background color of the menu.<br>Default value: **Color.Transparent**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | backgroundBlurStyle<sup>11+</sup> | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | No| Yes| Background blur style of the menu.<br>Default value: **BlurStyle.COMPONENT_ULTRA_THICK**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| transition<sup>12+</sup> | [TransitionEffect](ts-transition-animation-component.md#transitioneffect10)| No  | Yes | Transition effect for the entrance and exit of the menu.<br>**NOTE**<br>During the exit animation of the menu, if there is a switch between landscape and portrait modes, the menu will make way. Level-2 menus do not inherit custom animations. The level-2 menu can be clicked during the pop-up process, but not during the execution of the exit animation.<br>For details, see [TransitionEffect](ts-transition-animation-component.md#transitioneffect10).<br>The menu animation uses a spring curve. Due to the rebound and oscillation of the spring curve during the exit of the animation, there is a prolonged tail effect, which prevents the menu from responding to other events after it disappears.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| borderRadius<sup>12+</sup>  | [Length](ts-types.md#length)&nbsp;\|&nbsp;[BorderRadiuses](ts-types.md#borderradiuses9)&nbsp;\|&nbsp;[LocalizedBorderRadiuses](ts-types.md#localizedborderradiuses12) | No  | Yes | Border radius of the menu.<br>Default value: **8vp** for 2-in-1 devices and **20vp** for other devices<br>**NOTE**<br> The value can be in percentage.<br>If the sum of the two maximum corner radii in the horizontal direction exceeds the menu's width, or if the sum of the two maximum corner radii in the vertical direction exceeds the menu's height, the default corner radius of the menu will be used.<br>When the Length type is used: Invalid input values will trigger a fallback to the default corner radius.<br>When the BorderRadiuses or LocalizedBorderRadiuses type is used: Invalid input values will result in the menu having no rounded corners by default.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| transition<sup>12+</sup> | [TransitionEffect](ts-transition-animation-component.md#transitioneffect10)| No  | Yes | Transition effect for the entrance and exit of the menu.<br>**NOTE**<br>During the exit animation of the menu, if there is a switch between landscape and portrait modes, the menu will make way. Level-2 menus do not inherit custom animations. The level-2 menu can be clicked during the pop-up process, but not during the execution of the exit animation.<br>For details, see [TransitionEffect](ts-transition-animation-component.md#transitioneffect10).<br>The menu animation uses a spring curve. Due to the rebound and oscillation of the spring curve during the exit of the animation, there is a prolonged tail effect, which prevents the menu from responding to other events after it disappears.<br> When the custom **transition** animation is set, the default display and exit animations of the menu do not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| borderRadius<sup>12+</sup>  | [Length](ts-types.md#length)&nbsp;\|&nbsp;[BorderRadiuses](ts-types.md#borderradiuses9)&nbsp;\|&nbsp;[LocalizedBorderRadiuses](ts-types.md#localizedborderradiuses12) | No  | Yes | Border radius of the menu.<br>Default value: 8 vp on PCs and 2-in-1 devices, and 20 vp on other devices.<br>**NOTE**<br> The value can be in percentage.<br>If the sum of the two maximum corner radii in the horizontal direction exceeds the menu's width, or if the sum of the two maximum corner radii in the vertical direction exceeds the menu's height, the default corner radius of the menu will be used.<br>When the Length type is used: Invalid input values will trigger a fallback to the default corner radius.<br>When the BorderRadiuses or LocalizedBorderRadiuses type is used: Invalid input values will result in the menu having no rounded corners by default.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | backgroundBlurStyleOptions<sup>18+</sup> | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10)| No| Yes| Background blur style.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | backgroundEffect<sup>18+</sup> | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | No| Yes| Background effect.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | hapticFeedbackMode<sup>18+</sup> | [HapticFeedbackMode](#hapticfeedbackmode18) | No| Yes| Haptic feedback mode when the menu is displayed.<br>Default value: **HapticFeedbackMode.DISABLED**, indicating no vibration when the menu is displayed.<br>**NOTE**<br>The haptic feedback mode is only configurable for level-1 menus.<br>This parameter takes effect only when the user enables the haptic feedback function and the **ohos.permission.VIBRATE** permission is added to the **requestPermissions** field in the [module.json5](../../../quick-start/module-configuration-file.md) file. The configuration is as follows:<br>![menuEnableHapticFeedback](figures/menuEnableHapticFeedback.png)<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| outlineWidth<sup>20+</sup> | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](ts-types.md#edgeoutlinewidths11) | No| Yes| Outline width of the menu border.<br>Default value: **0vp**<br>**NOTE**<br>Percentage values are not supported. **outlineWidth** is mandatory for customizing an outline effect.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| outlineWidth<sup>20+</sup> | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](ts-types.md#edgeoutlinewidths11)| No| Yes| Outline width of the menu border.<br>Default value: **0vp**<br>**NOTE**<br>Percentage values are not supported. **outlineWidth** is mandatory for customizing an outline effect.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | outlineColor<sup>20+</sup> | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](ts-types.md#edgecolors9) | No| Yes| Outline color of the menu border.<br>**NOTE**<br>Default value: **'#19ffffff'**<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| mask<sup>20+</sup> | boolean&nbsp;\|&nbsp;[MenuMaskType](#menumasktype20) | No| Yes| Sets whether a menu has a mask and the mask style.<br>**true**: yes; **false**: no; **MenuMaskType**: custom mask style<br>Default value: If a preview image is displayed for a menu, a mask is displayed by default. Otherwise, no mask is displayed.<br>**NOTE**<br>This API does not take effect when the device is configured not to display the menu mask. For example, this API does not take effect on 2-in-1 devices.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| mask<sup>20+</sup> | boolean&nbsp;\|&nbsp;[MenuMaskType](#menumasktype20)| No| Yes| Sets whether a menu has a mask and the mask style.<br>**true**: yes; **false**: no; **MenuMaskType**: custom mask style<br>Default value: If a preview image is displayed for a menu, a mask is displayed by default. Otherwise, no mask is displayed.<br>**NOTE**<br>This API takes effect only when **$r('sys.string.ohos_id_menu_has_filter') **is set to **true**. If it is set to **false**, this API does not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | modalMode<sup>20+</sup> | [ModalMode](#modalmode20) | No| Yes| Modal mode of a menu.<br>**NOTE**<br>Default value: **ModalMode.AUTO**<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| anchorPosition<sup>20+</sup> | [Position](ts-types.md#position) | No  | Yes | Display position of the menu relative to the upper left corner of the bound component by setting the horizontal and vertical offsets. Unlike using the **offset** API alone, this allows the menu to overlay the bound component.<br>Default value: **{ x: undefined, y: undefined }**. Percentage values are not supported.<br>**NOTE**<br>1. Offsets do not apply during menu preview state.<br>2. The preset value of **placement** does not take effect.<br>3. The **offset** parameter is added to determine the exact display position of the menu.<br>4. When both horizontal and vertical offsets are set to negative values, the menu is reset to **Placement.BottomLeft** for display.<br>5. If the horizontal or vertical offset is **undefined** or **null**, the effect is the same as that of not setting **anchorPosition**. In this case, the preset value of **placement** can take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| onWillAppear<sup>20+</sup> | [Callback&lt;void&gt;](ts-types.md#callback12) | No| Yes| Callback triggered when the menu is about to appear.<br>**NOTE**<br>1. The normal sequence is **aboutToAppear** > **onWillAppear** > **onAppear** > **onDidAppear** > **aboutToDisappear** > **onWillDisappear** > **onDisappear** > **onDidDisappear**.<br>2. **aboutToAppear** is invoked during initialization; **onWillAppear** is invoked before the animation starts but after **aboutToAppear**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| onDidAppear<sup>20+</sup> | [Callback&lt;void&gt;](ts-types.md#callback12) | No| Yes| Callback invoked after the menu appears.<br>**NOTE**<br>1. The normal sequence is **aboutToAppear** > **onWillAppear** > **onAppear** > **onDidAppear** > **aboutToDisappear** > **onWillDisappear** > **onDisappear** > **onDidDisappear**.<br>2. If rapid clicks are triggered to display and then dismiss the menu, there may be cases where **onWillDisappear** is invoked before **onDidAppear**.<br>3. If the menu is closed before the menu entrance animation is complete, this callback is not triggered.<br>4. **onAppear** and **onDidAppear** are invoked at the same time, but **onDidAppear** takes effect after **onAppear**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| onWillDisappear<sup>20+</sup> | [Callback&lt;void&gt;](ts-types.md#callback12) | No| Yes| Callback triggered when the menu is about to disappear.<br>**NOTE**<br>1. The normal sequence is **aboutToAppear** > **onWillAppear** > **onAppear** > **onDidAppear** > **aboutToDisappear** > **onWillDisappear** > **onDisappear** > **onDidDisappear**.<br>2. If rapid clicks are triggered to display and then dismiss the menu, there may be cases where **onWillDisappear** is invoked before **onDidAppear**.<br>3. **aboutToDisappear** and **onWillDisappear** are invoked at the same time, but **onWillDisappear** takes effect after **aboutToDisappear**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| onDidDisappear<sup>20+</sup> | [Callback&lt;void&gt;](ts-types.md#callback12) | No| Yes| Callback invoked after the menu disappears.<br>**NOTE**<br>1. The normal sequence is **aboutToAppear** > **onWillAppear** > **onAppear** > **onDidAppear** > **aboutToDisappear** > **onWillDisappear** > **onDisappear** > **onDidDisappear**.<br>2. **onDisappear** and **onDidDisappear** are triggered at the same time, but **onDidDisappear** takes effect after **onDisappear**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| anchorPosition<sup>20+</sup> | [Position](ts-types.md#position) | No  | Yes | Display position of the menu relative to the upper left corner of the bound component by setting the horizontal and vertical offsets. Unlike using the **offset** API alone, this allows the menu to overlay the bound component.<br>Default value: **{ x: undefined, y: undefined }**, in vp. Percentages are not supported.<br>**NOTE**<br>1. Offsets do not apply during menu preview state.<br>2. The preset value of **placement** does not take effect.<br>3. The **offset** parameter is added to determine the exact display position of the menu.<br>4. When both horizontal and vertical offsets are set to negative values, the menu is reset to **Placement.BottomLeft** for display.<br>5. If the horizontal or vertical offset is **undefined** or **null**, the effect is the same as that of not setting **anchorPosition**. In this case, the preset value of **placement** can take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| onWillAppear<sup>20+</sup> | [Callback](ts-types.md#callback12)&lt;void&gt; | No| Yes| Callback triggered when the menu is about to appear.<br>**NOTE**<br>1. The normal sequence is **aboutToAppear** > **onWillAppear** > **onAppear** > **onDidAppear** > **aboutToDisappear** > **onWillDisappear** > **onDisappear** > **onDidDisappear**.<br>2. **aboutToAppear** is invoked during initialization; **onWillAppear** is invoked before the animation starts but after **aboutToAppear**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| onDidAppear<sup>20+</sup> | [Callback](ts-types.md#callback12)&lt;void&gt; | No| Yes| Callback invoked after the menu appears.<br>**NOTE**<br>1. The normal sequence is **aboutToAppear** > **onWillAppear** > **onAppear** > **onDidAppear** > **aboutToDisappear** > **onWillDisappear** > **onDisappear** > **onDidDisappear**.<br>2. If rapid clicks are triggered to display and then dismiss the menu, there may be cases where **onWillDisappear** is invoked before **onDidAppear**.<br>3. If the menu is closed before the menu entrance animation is complete, this callback is not triggered.<br>4. **onAppear** and **onDidAppear** are invoked at the same time. **onDidAppear** takes effect after **onAppear**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| onWillDisappear<sup>20+</sup> | [Callback](ts-types.md#callback12)&lt;void&gt; | No| Yes| Callback triggered when the menu is about to disappear.<br>**NOTE**<br>1. The normal sequence is **aboutToAppear** > **onWillAppear** > **onAppear** > **onDidAppear** > **aboutToDisappear** > **onWillDisappear** > **onDisappear** > **onDidDisappear**.<br>2. If rapid clicks are triggered to display and then dismiss the menu, there may be cases where **onWillDisappear** is invoked before **onDidAppear**.<br>3. **aboutToDisappear** and **onWillDisappear** are invoked at the same time, but **onWillDisappear** takes effect after **aboutToDisappear**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| onDidDisappear<sup>20+</sup> | [Callback](ts-types.md#callback12)&lt;void&gt; | No| Yes| Callback invoked after the menu disappears.<br>**NOTE**<br>1. The normal sequence is **aboutToAppear** > **onWillAppear** > **onAppear** > **onDidAppear** > **aboutToDisappear** > **onWillDisappear** > **onDisappear** > **onDidDisappear**.<br>2. **onDisappear** and **onDidDisappear** are triggered at the same time, but **onDidDisappear** takes effect after **onDisappear**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | keyboardAvoidMode<sup>23+</sup> | [MenuKeyboardAvoidMode](#menukeyboardavoidmode23)| No| Yes| Whether the menu avoids the soft keyboard.<br> **NOTE**<br>If this parameter is not set or is set to **undefined**, the value **MenuKeyboardAvoidMode.NONE** will be used.<br>**Atomic service API**: This API can be used in atomic services since API version 23.<br>**Model restriction**: This API can be used only in the stage model.|
 | minKeyboardAvoidDistance<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No| Yes| Minimum distance for the menu to avoid the soft keyboard.<br> **NOTE**<br>If this parameter is not set, or set to a negative value or **undefined**, the value will be treated as 8 vp. This API is valid only when **keyboardAvoidMode** is set to avoid the soft keyboard.<br>**Atomic service API**: This API can be used in atomic services since API version 23.<br>**Model restriction**: This API can be used only in the stage model.|
+| scrollBar | [BarState](ts-appendix-enums.md#barstate) | No| Yes| Scrollbar status of the menu.<br>Default value: **BarState.Auto**<br>If this parameter is not set or is set to **undefined**, the value is processed as **BarState.Auto**.<br>**Since:** 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>**Model restriction**: This API can be used only in the stage model.|
+| maxHeight | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No| Yes| Maximum height of the menu.<br> **Note**: The default maximum height is 80% of the available height.<br>If this parameter is set to **0** or a negative number, or is set to **undefined**, the default maximum height is used. The maximum height of the menu cannot exceed 100% of the available height.<br>This capability is not supported in the preview image scenario. The menu is displayed with the default maximum height.<br>If the total height of all menu options is less than the specified height, the menu is displayed with the actual height.<br>**Since:** 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>**Model restriction**: This API can be used only in the stage model.|
+| colorMode | [AnchoredColorMode](ts-universal-attributes-popup.md#anchoredcolormode) | No| Yes| Dark/light color mode of the menu. By default, the dark/light color mode of the bound component is used.<br>Default value: **AnchoredColorMode.FOLLOW_TARGET**<br>**NOTE**<br>1. This parameter takes effect only when the bound component uses the [WithTheme](ts-container-with-theme.md#apis) tag.<br>2. This attribute affects only the default style of the component and the attributes related to the dark/light color resource set by the developer.<br>3. If this parameter is set to **AnchoredColorMode.FOLLOW_SYSTEM**, the blurred material can follow the dark/light color mode, and the text color and attributes that involve dark/light color resources still follow the dark/light color configuration of the bound component.<br>**Since:** 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>**Model restriction**: This API can be used only in the stage model.|
+| targetSpace | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No| Yes| Spacing between the menu and the target component.<br> **NOTE**<br>- When both **targetSpace** and **offset** are used, they take effect together. You are advised to use the **targetSpace** attribute to set the spacing between the menu and the target, and use the **offset** attribute to set the offset of the menu pop-up position.<br>- The level-2 menu will avoid the **targetSpace** range.<br>- If this attribute is set to a negative value or **undefined**, the spacing between the menu and the target component is 8 vp by default, and the submenu does not avoid the **targetSpace** range.<br>- The **targetSpace** attribute takes effect directly when there is a default placement. If there is no default placement, the targetSpace attribute takes effect only when used together with the placement attribute.<br>- The priority of **anchorPosition** is higher than that of **targetSpace**.<br>- This attribute cannot be set in percentage.<br>**Since:** 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>**Model restriction**: This API can be used only in the stage model.|
+| systemMaterial | [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | No| Yes| System material of the menu. Different system materials correspond to different attribute effects. This API affects the background color [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), border color [borderColor](ts-universal-attributes-border.md#bordercolor), border width [borderWidth](ts-universal-attributes-border.md#borderwidth), and shadow [shadow](ts-universal-attributes-image-effect.md#shadow). When the system material is set, the preceding APIs do not take effect. If the material is set to an invalid value or **undefined**, no system material is set.<br>Default value: **undefined**<br>**Since:** 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>**Model restriction**: This API can be used only in the stage model.|
+| gridStyle | [MenuGridStyleOptions](#menugridstyleoptions) | No| Yes| Grid style of the menu. Only the fixed style menu takes effect. For example, [MenuElement](#menuelement) is used in [bindMenu](#bindmenu), [bindContextMenu](#bindcontextmenu8), [bindContextMenuByResponseType](#bindcontextmenubyresponsetype), [bindContextMenuByIsShow](#bindcontextmenubyisshow) or [bindContextMenuWithResponse](#bindcontextmenuwithresponse), or MenuItemOptions is used in [MenuItem](ts-basic-components-menuitem.md).<br>**Since:** 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>**Model restriction**: This API can be used only in the stage model.|
 
 **Table 1: Menu offset when both offset and placement are set**
 
@@ -283,6 +403,8 @@ Defines the preview style of a menu.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name | Value| Description                                  |
@@ -294,20 +416,25 @@ Defines the preview style of a menu.
 
 Defines the style for displaying a long-press preview.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 25%; 8%; 8%; 39%-->
 | Name | Type                                      | Read-Only| Optional| Description                                |
 | ----- | ------------------------------------------ | ---- | ------------------------------------ | ------------------------------------ |
 | scale | [AnimationRange](#animationrange11)\<number> | No  | Yes | Relative scale ratio at the start and end of the animation compared to the original preview image.<br>Default value: **[0.95, 1.1]**<br>**NOTE**<br>The scale ratio must be set based on the specific use case. It is recommended that it be less than the width of the preview image or the maximum constraint of the layout.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| transition<sup>12+</sup> | [TransitionEffect](ts-transition-animation-component.md#transitioneffect10)| No  | Yes | Transition effect for the entrance and exit of the menu.<br>**NOTE**<br>If the screen orientation is switched during the exit animation of a menu, the menu will avoid obstacles. Level-2 menus do not inherit custom animations. The level-2 menu can be clicked during the display process, but not during the execution of the exit animation.<br>For details, see [TransitionEffect](ts-transition-animation-component.md#transitioneffect10).<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| transition<sup>12+</sup> | [TransitionEffect](ts-transition-animation-component.md#transitioneffect10)| No  | Yes | Transition effect for the entrance and exit of the menu.<br>**NOTE**<br>If the screen orientation is switched during the exit animation of a menu, the menu will avoid obstacles. Level-2 menus do not inherit custom animations. The level-2 menu can be clicked during the display process, but not during the execution of the exit animation.<br>For details, see [TransitionEffect](ts-transition-animation-component.md#transitioneffect10).<br>When the **transition** is set, **hoverScale** and **hoverScaleInterruption** do not take effect.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | hoverScale<sup>12+</sup> | [AnimationRange](#animationrange11)\<number> | No  | Yes | In the custom preview (**preview** is of the CustomBuilder type) and menu displayed in long-press (**responseType** is set to **LongPress**) scenarios, **hoverScale** is used to set two parameters for the screenshot floating animation of the bound component: the start and end scale ratios relative to the original preview image. After **hoverScale** is set, the floating animation and preview image are switched with a transition effect.<br>**NOTE**<br> If the value is less than or equal to **0**, this parameter does not take effect.<br>This API does not take effect in [bindContextMenu<sup>12+</sup>](#bindcontextmenu12) scenarios.<br> This API does not take effect when **transition** is set.<br> If this API and the **scale** API are used at the same time, the start value of the **scale** API does not take effect.<br> To ensure the optimal experience, it is not recommended that the final preview image size be smaller than the size of the original component snapshot. The width and height of the preview animation are affected by the component snapshot and the custom preview size. Verify the display effect based on the actual use case.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| hoverScaleInterruption<sup>20+</sup> | boolean | No  | Yes | Whether lifting the finger before triggering the drag effect allows preview menu pop-up cancellation in scenarios where **preview** is of the CustomBuilder type (custom preview image), **responseType** is set to **LongPress** (display is triggered by a long-press action), and **hoverScaleInterruption** is set to **true**. The options are **true** (yes) and **false** (no).<br>Default value: **false**<br>**NOTE**<br>If the **hoverScale** API is not set or the **transition** API is set, this parameter does not take effect. If the finger is lifted before the long-press duration is sufficient to trigger the drag effect, the **hoverScale** effect of the preview menu will revert, the preview menu will not pop up, and gesture events such as click bound to the original component can still be triggered. If the finger is lifted after the long-press duration is sufficient to trigger the drag effect, the preview menu will pop up properly, and gesture events such as click bound to the original component will no longer be triggered.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| hoverScaleInterruption<sup>20+</sup> | boolean | No  | Yes | Whether lifting the finger before triggering the drag effect allows preview menu pop-up cancellation in scenarios where **preview** is of the CustomBuilder type (custom preview image), **responseType** is set to **LongPress** (display is triggered by a long-press action), and **hoverScaleInterruption** is set to **true**. The options are **true** (yes) and **false** (no).<br>Default value: **false**<br>**NOTE**<br>If the **hoverScale** API is not set or the **transition** API is set, this parameter does not  take effect. If the finger is lifted before the long-press duration is sufficient to trigger the drag effect, the **hoverScale** effect of the preview menu will revert, the preview menu will not pop up, and gesture events such as click bound to the original component can still be triggered. If the finger is lifted after the long-press duration is sufficient to trigger the drag effect, the preview menu will pop up properly, and gesture events such as click bound to the original component will no longer be triggered.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## AnimationRange<sup>11+</sup>
 
 type AnimationRange\<T>=[from: T, to: T]
 
 Sets the relative scale ratio at the start and end of the animation compared to the original preview image.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -322,6 +449,8 @@ Sets the relative scale ratio at the start and end of the animation compared to 
 Enumerates the haptic feedback modes used when the menu is displayed.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -339,6 +468,8 @@ Enumerates the border corner radius types.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                  |Description                                              |
@@ -353,6 +484,8 @@ Sets the mask type.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name     | Type                                      | Read-Only| Optional| Description                                                        |
@@ -365,6 +498,8 @@ Sets the mask type.
 Enumerates modal modes of the sub-window menu.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -380,6 +515,8 @@ Enumerates the scale modes of the preview image.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name | Value| Description                                  |
@@ -393,6 +530,8 @@ Enumerates the scale modes of the preview image.
 Enumerates the reference sizes of the available layout area when the preview image width and height are set to percentages.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -414,6 +553,41 @@ Enumerates the modes in which the menu avoids the soft keyboard.
 | ----- | -  | --------------------------------------|
 | NONE  | 0  | The menu does not avoid the soft keyboard.|
 | TRANSLATE_AND_RESIZE | 1 | The menu avoids the soft keyboard. If the space is insufficient, the menu will be translated or resized to avoid the soft keyboard.|
+
+## MenuGridPosition
+
+Enumerates the positions of a column menu in the menu.
+
+**Since:** 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name | Value| Description                                  |
+| ----- | -  | --------------------------------------|
+| TOP  | 0  | The grid is on the top.|
+| BOTTOM | 1 | The grid is at the bottom.|
+
+## MenuGridStyleOptions
+
+Defines the menu grid style options.
+
+**Since:** 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name| Type| Read-Only| Optional| Description|
+| ----- | ---- | ---- | ---- | ---- |
+| count | number | No| Yes| Number of elements in a grid.<br>Default value: **3**<br>Range:<br>When the grid style is top image and bottom text, the number of elements ranges from 0 to 6.<br>When the grid style is icon-only, the number of elements ranges from 0 to 4.<br>If this parameter is not set or an invalid value is passed, the default value will be used.|
+| horizontalSize | number | No| Yes| Horizontal dimensions of elements in a grid, indicating the number of elements that can be displayed in each row of the grid.<br>Default value: **3**<br>**NOTE**<br>When the grid style is top image and bottom text, the horizontal dimensions range from 1 to 3, that is, the number of grid rows ranges from 1 to 2.<br>For a grid style that contains only icons, the horizontal dimensions range from 1 to 4, meaning that the number of rows in the grid is 1.<br>If this parameter is not set or an invalid value is passed, the default value will be used.|
+| position | [MenuGridPosition](#menugridposition) | No| Yes| Position of the grid in the menu.<br>Default value: **MenuGridPosition.TOP**|
 
 ## Example
 
@@ -449,7 +623,7 @@ struct MenuExample {
 }
 ```
 
-![menuControl1](figures/menuControl1.gif)
+![menu](figures/menu.gif)
 
 ### Example 2: Displaying a Custom Menu
 
@@ -500,7 +674,7 @@ struct MenuExample {
 }
 ```
 
-![menuControl2](figures/menuControl2.gif)
+![menu3](figures/menu3.gif)
 
 ### Example 3: Displaying a Menu on Long Press
 
@@ -888,6 +1062,8 @@ struct Index {
 }
 ```
 
+![preview-builder](figures/hoverScale.gif)
+
 ### Example 11: Customizing the Background Blur Effect
 
 This example demonstrates how to customize the blur background effect of a menu by setting the **backgroundBlurStyleOptions** property in [ContextMenuOptions](#contextmenuoptions10) for **bindMenu**.
@@ -1099,7 +1275,7 @@ struct Index {
 
 ### Sample 15: Configuring Lifecycle Callbacks for bindMenu
 
-This example shows how to configure the lifecycle callback for **bindMenu**.
+This sample shows how to configure lifecycle callbacks for **bindMenu**<sup>11+</sup>.
 
 From API version 20, the **onWillAppear**, **onDidAppear**, **onWillDisappear**, and **onDidDisappear** properties are added to [ContextMenuOptions](#contextmenuoptions10).
 
@@ -1171,6 +1347,7 @@ struct Index {
 }
 ```
 
+<!--Del--> <!--DelEnd-->
 
 ### Example 16: Setting the Menu Mask
 
@@ -1192,7 +1369,7 @@ struct Index {
     Menu() {
       MenuItem({
         symbolStartIcon: this.startIconModifier,
-        content: "Create folder",
+        content: "New folder",
       })
       MenuItem({
         symbolStartIcon: this.startIconModifier,
@@ -1332,7 +1509,7 @@ struct Index {
   @Builder
   MenuBuilderWithParam(type: ResponseType) {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-      Text('Current ResponseType = ' + (type === 0 ? 'RIGHT_CLICK' : 'LONG_PRESS'))
+      Text('Current ResponseType = ' + (type === ResponseType.RightClick ? 'RIGHT_CLICK' : 'LONG_PRESS'))
       Divider().height(10)
       if (type === ResponseType.LongPress) {
         Text('Item: ' + this.longPress)
@@ -1432,6 +1609,7 @@ struct Index {
 }
 ```
 
+<!--Del--> <!--DelEnd-->
 
 ### Example 21: Setting the Position of the Menu to Display Relative to the Upper Left Corner of the Bound Component
 
@@ -1504,4 +1682,207 @@ struct Index {
 }
 ```
 
+![anchorPositionMenu](figures/anchorPositionMenu.gif)
 
+### Sample 22: Setting the Maximum Height of a Menu
+
+This sample shows how to use the **maxHeight** attribute in [ContextMenuOptions](#contextmenuoptions10) to set the maximum height of a menu.
+
+If the **maxHeight** attribute is not set, the maximum height of the menu is 80% of the available height by default, and all list items can be displayed. If the maxHeight attribute is set to 50% of the available height, only eight list items can be displayed.
+
+The maxHeight attribute is added to **ContextMenuOptions** as of API version 26.0.0.
+
+```ts
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  // Replace $r('app.media.startIcon') with the image resource file you use.
+  private iconStr: ResourceStr = $r('app.media.startIcon');
+
+  @Builder
+  MyMenu() {
+    Menu() {
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem1' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem2' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem3' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem4' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem5' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem6' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem7' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem8' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem9' })
+    }
+  }
+
+  build() {
+    Column({ space: 50 }) {
+      Column() {
+        Column() {
+          Text('LongPress-image')
+            .width(200)
+            .height(100)
+            .textAlign(TextAlign.Center)
+            .margin(100)
+            .fontSize(30)
+            .bindContextMenu(this.MyMenu, ResponseType.LongPress,
+              {
+                maxHeight: LengthMetrics.percent(50)
+              })
+            .backgroundColor('#ff7fcdff')
+        }
+      }.width('100%')
+    }
+  }
+}
+```
+
+![maxHeight-menu](figures/menuMaxHeight.png)
+
+### Example 23: Setting the Spacing Between the Menu and Target Component
+
+This example describes how to increase the spacing between the menu and the target component by setting the **targetSpace** attribute in [ContextMenuOptions](#contextmenuoptions10).
+
+The **targetSpace** attribute is added to **ContextMenuOptions** as of API version 26.0.0.
+
+```ts
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Alone {
+  @Builder
+  MyMenu() {
+    Menu() {
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: 'Menu item 1' })
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: 'Menu item 2' })
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: 'menu option 3' })
+    }
+  }
+
+  build() {
+    Column() {
+      Stack() {
+        Column()
+          .width(120 + 40 * 2)
+          .height(120 + 40 * 2)
+          .borderWidth(2)
+          .borderColor(Color.Orange)
+          .borderStyle(BorderStyle.Dotted)
+
+        Image($r('app.media.startIcon'))
+          .width(120)
+          .height(120)
+          .bindMenu(this.MyMenu,
+            {
+              targetSpace: LengthMetrics.vp(40)
+            })
+      }.height('75%')
+      .width('100%')
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+```
+
+<!--Del--> <!--DelEnd-->
+
+### Example 24: Setting the System Material of a Menu
+
+This example sets the system material of a menu by setting the **systemMaterial** attribute in [ContextMenuOptions](#contextmenuoptions10).
+
+The **systemMaterial** attribute is added to **ContextMenuOptions** as of API version 26.0.0.
+
+```ts
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @Builder
+  MyMenu() {
+    Menu() {
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: 'Menu item' })
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: 'Menu item' })
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: 'Menu item' })
+    }
+  }
+
+  build() {
+    Stack() {
+      Button('bindMenu with THICK material')
+        .bindMenu(this.MyMenu, {
+          systemMaterial: new uiMaterial.ImmersiveMaterial({
+            style: uiMaterial.ImmersiveStyle.THICK
+          })
+        })
+    }
+    .height('100%')
+    .width('100%')
+    .backgroundColor(Color.Gray)
+  }
+}
+```
+Menu without system material
+
+![menuWithoutNewMaterial](figures/menuWithoutNewMaterial.PNG)
+
+Menu with system material
+
+![menuNewMaterial](figures/menuNewMaterial.PNG)
+
+### Example 25: Setting a Grid Menu Using gridStyle
+
+This example shows how to use **gridStyle** to set the grid menu style in [bindContextMenuByIsShow](#bindcontextmenubyisshow). You can customize the grid layout of the menu by setting the **count**, **horizontalSize**, and **position** attributes.
+
+In API version 26.0.0 and later, the [bindContextMenuByIsShow](#bindcontextmenubyisshow) API is added, and the **gridStyle** attribute is added to [ContextMenuOptions](#contextmenuoptions10).
+
+ ```ts
+ @Entry
+ @Component
+ struct ContextMenuGridStyleExample {
+   @State isShown: boolean = false;
+
+   @Builder
+   MyMenu() {
+    Menu() {
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: 'Copy')
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: 'Paste' })
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: 'Cut' })
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: 'Delete' })
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: 'Share' })
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: 'Select All' })
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: 'Translate' })
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: 'Favorite' })
+    }
+    .width(150)
+   }
+ 
+   build() {
+     Column({ space: 20 }) {
+       Text('bindContextMenuByIsShow grid menu')
+         .fontSize(20)
+         .bindContextMenuByIsShow(this.isShown, this.MyMenu, {
+           gridStyle: {
+             count: 4,
+             horizontalSize: 3,
+             position: MenuGridPosition.BOTTOM
+           },
+           onWillDisappear: () => {
+             this.isShown = false;
+           },
+         })
+         .onClick(() => {
+           this.isShown = true;
+         })
+     }
+     .width('100%')
+     .margin({ top: 50 })
+   }
+ }
+ ```
+
+ <!--Del--> <!--DelEnd-->

@@ -97,7 +97,7 @@ struct CanvasExample2 {
   >
   >在画布组件中，通过CanvasRenderingContext2D对象和OffscreenCanvasRenderingContext2D对象在Canvas组件上进行绘制时调用的接口相同，另外，接口参数如无特别说明，单位均为vp。
 
-- 在Canvas上加载Lottie动画时，需要先按照如下方式下载Lottie。
+- 在Canvas上加载Lottie动画时，需要先下载安装[lottie](https://gitcode.com/CPF-ApplicationTPC/lottieArkTS)依赖包，再使用如下方式导入模块。
 
 
 <!-- @[lottie_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/OffScreenDrawing.ets) -->
@@ -105,9 +105,6 @@ struct CanvasExample2 {
 ``` TypeScript
 import lottie from '@ohos/lottie'
 ```
-
-
-  具体接口请参考[lottie](https://gitcode.com/CPF-ApplicationTPC/lottieArkTS)。
 
 
 ## 初始化画布组件

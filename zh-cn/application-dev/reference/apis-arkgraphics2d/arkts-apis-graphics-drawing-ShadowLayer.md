@@ -37,7 +37,7 @@ static create(blurRadius: number, x: number, y: number, color: common2D.Color): 
 
 | 参数名     | 类型      | 必填 | 说明                                 |
 | ---------- | -------- | ---- | ----------------------------------- |
-| blurRadius  | number   | 是   | 阴影的半径，必须为大于0的浮点数。单位为物理像素px。     |
+| blurRadius  | number   | 是   | 阴影的模糊半径，必须为大于0的浮点数。单位为物理像素px。     |
 | x           | number   | 是   | x轴上的偏移量，该参数为浮点数。单位为物理像素px。        |
 | y           | number   | 是   | y轴上的偏移量，该参数为浮点数。单位为物理像素px。        |
 | color       | [common2D.Color](js-apis-graphics-common2D.md#color) | 是   | ARGB格式的颜色。每个颜色通道的值是[0, 255]的整数。 |
@@ -82,7 +82,7 @@ static create(blurRadius: number, x: number, y: number, color: common2D.Color \|
 
 | 参数名     | 类型      | 必填 | 说明                                 |
 | ---------- | -------- | ---- | ----------------------------------- |
-| blurRadius  | number   | 是   | 阴影的半径，必须为大于0的浮点数。单位为物理像素px。     |
+| blurRadius  | number   | 是   | 阴影的模糊半径，必须为大于0的浮点数。单位为物理像素px。     |
 | x           | number   | 是   | x轴上的偏移量，该参数为浮点数。单位为物理像素px。        |
 | y           | number   | 是   | y轴上的偏移量，该参数为浮点数。单位为物理像素px。        |
 | color       | [common2D.Color](js-apis-graphics-common2D.md#color) \| number   | 是   | 颜色。为common2D.Color类型时，每个颜色通道的值是[0, 255]的整数；为number类型时，必须是16进制ARGB格式的无符号整数，取值范围为[0, 0xFFFFFFFF]。  |

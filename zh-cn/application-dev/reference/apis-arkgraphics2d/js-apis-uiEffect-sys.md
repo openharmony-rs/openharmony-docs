@@ -168,6 +168,73 @@ struct Example {
 }
 ```
 
+## uiEffect.createColorfulBrightnessBlender
+
+createColorfulBrightnessBlender(brightnessBlenderParam: BrightnessBlenderParam, options?: ColorfulBrightnessBlenderOptions): ColorfulBrightnessBlender
+
+创建[ColorfulBrightnessBlender](#colorfulbrightnessblender)实例，用于给组件添加基于保持色相的提亮压暗效果。该效果在对前景提亮或压暗时通过逐通道重建保持色相、并可增强饱和度，避免普通提亮压暗的去色问题。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名  | 类型                                              | 必填 | 说明                        |
+| ------ | ------------------------------------------------- | ---- | --------------------------- |
+| brightnessBlenderParam  | [BrightnessBlenderParam](#brightnessblenderparam) | 是   | 提亮压暗的常规参数，用于配置亮度映射、饱和度曲线等基础属性。|
+| options  | [ColorfulBrightnessBlenderOptions](#colorfulbrightnessblenderoptions) | 否   |  提亮压暗的增强参数，用于控制提亮压暗方向、色彩增强强度、可读性阈值及HDR开关。 |
+
+**返回值：**
+
+| 类型                                     | 说明                     |
+| ---------------------------------------- | ----------------------- |
+| [ColorfulBrightnessBlender](#colorfulbrightnessblender)  | 返回基于保持色相的提亮压暗混合器。 |
+
+**示例：**
+
+```ts
+import { uiEffect } from "@kit.ArkGraphics2D"
+
+let blender : uiEffect.ColorfulBrightnessBlender =
+  uiEffect.createColorfulBrightnessBlender({
+    cubicRate:1.0,
+    quadraticRate:1.0,
+    linearRate:1.0,
+    degree:1.0,
+    saturation:1.0,
+    positiveCoefficient:[2.3, 4.5, 2.0],
+    negativeCoefficient:[0.5, 2.0, 0.5],
+    fraction:0.0}, {
+    darkenWeight: 0.6,
+    vibrancyStrength: 0.5,
+    lumaDiff: 0.4,
+    hdrEnabled: true})
+
+@Entry
+@Component
+struct example {
+  build() {
+    RelativeContainer() {
+      Image($r("app.media.backgroundImage"))
+        .width("100%")
+        .height("100%")
+      
+      Text("Hello world")
+        .fontSize(100)
+        .fontColor(Color.Red)
+        .fontWeight(900)
+        .position({x: 50, y: 200})
+        .advancedBlendMode(blender)
+    }
+  }
+}
+```
+
 ## Filter
 
 Filter效果类，用于将模糊、边缘像素扩展、水波纹等效果添加到组件上。在调用Filter的方法前，需要先通过[createFilter](js-apis-uiEffect.md#uieffectcreatefilter)创建一个Filter实例。
@@ -1404,7 +1471,7 @@ distortionCollapse(distortionParam: DistortionParam): VisualEffect
 > - 形变效果允许在组件边界之外绘制，但渲染结果仍会受到父级组件裁剪属性的影响。
 > - 调用此接口会创建一个与形变后区域大小相同的离屏渲染画布。为避免显示异常或性能开销过大，不建议将组件形变至超出屏幕尺寸。
 > - 此接口包含前景Filter，当与[backgroundEffect](../apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundeffect19)、[brightness](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#brightness)、[blur](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#blur19)、[backgroundColorBlender](#backgroundcolorblender)等依赖背景截图的接口组合使用时，必须嵌套在[EffectComponent](../apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md)中，否则可能导致部分视觉效果失效或表现异常。
-> - 当子节点调用[systemMaterial](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect-sys.md#systemmaterial23)接口时，调用此接口的节点必须嵌套在[EffectComponent](../apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md)中，否则会导致系统材质丢失。但应注意的是，该调用方式会额外增加系统材质的背景扭曲。
+> - 当子节点调用[systemMaterial](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)接口时，调用此接口的节点必须嵌套在[EffectComponent](../apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md)中，否则会导致系统材质丢失。但应注意的是，该调用方式会额外增加系统材质的背景扭曲。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1455,7 +1522,7 @@ struct Index {
 
 ## Blender<sup>13+</sup>
 
-type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender
+type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender | ColorfulBrightnessBlender
 
 混合器类型，用于描述混合效果。
 
@@ -1468,6 +1535,7 @@ type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender
 | [BrightnessBlender](#brightnessblender) | 具有提亮效果的混合器。 |
 | [HdrBrightnessBlender](#hdrbrightnessblender20)<sup>20+</sup> | 具有提亮效果的混合器（支持HDR）。 |
 | [HdrDarkenBlender](#hdrdarkenblender) | 具有压暗效果的混合器（支持HDR）。<br> **起始版本：** 26.0.0 |
+| [ColorfulBrightnessBlender](#colorfulbrightnessblender) | 具有提亮压暗效果的混合器（保持色相）。<br> **起始版本：** 26.1.0 |
 
 ## BrightnessBlender
 提亮混合器，用于将提亮效果添加到指定的组件上。在调用BrightnessBlender前，需要先通过[createBrightnessBlender](#uieffectcreatebrightnessblender)创建一个BrightnessBlender实例。
@@ -1512,6 +1580,23 @@ type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender
 | ----- | ------ | ---- | ---- | ---------------------------------------- |
 | hdrBrightnessRatio   | number | 否   | 否   | HDR的提亮倍数。<br>取值范围为[1.0, 设备当前支持最大提亮倍数]。<br>设置小于1.0的值时，按值为1.0处理；<br>当值等于1.0时，为组件原本亮度；<br>设置大于设备当前支持最大提亮倍数的值时，按值为设备当前支持最大提亮倍数处理，支持最大提亮倍数 = 设备最大亮度 / 设备默认亮度。<br>设备最大亮度通过hdc命令获取：hdc shell param get const.display.brightness.max <br>设备默认亮度通过hdc命令获取：hdc shell param get const.display.brightness.default |
 | grayscaleFactor | [number, number, number] | 否   | 是   | 将RGB颜色转换为灰度值。灰度转换公式的权重可随当前色域自动调整，不同色域下使用不同的权重计算方式；适用于sRGB等标准色域场景。当需要根据特定色域或视觉效果自定义灰度转换权重时传入此参数。三个分量均无边界限制。默认值为标准灰度权重[0.299, 0.587, 0.114]。 |
+
+## ColorfulBrightnessBlender
+
+基于保持色相的提亮压暗混合器，用于将该提亮压暗效果添加到指定的组件上。该效果在对前景提亮或压暗时通过逐通道重建保持色相、并可增强饱和度，避免普通提亮压暗的去色问题；同时依据亮度差阈值保证前景与背景的对比度（可读性）。在调用ColorfulBrightnessBlender前，需要先通过[createColorfulBrightnessBlender](#uieffectcreatecolorfulbrightnessblender)创建一个ColorfulBrightnessBlender实例。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+| 名称  | 类型   | 只读 | 可选 | 说明                                     |
+| ----- | ------ | ---- | ---- | ---------------------------------------- |
+| brightnessBlenderParam   | [BrightnessBlenderParam](#brightnessblenderparam) | 否   | 否   | 提亮压暗的常规参数，用于配置亮度映射、饱和度曲线等基础属性。 |
+| options | [ColorfulBrightnessBlenderOptions](#colorfulbrightnessblenderoptions) | 否   | 是   | 提亮压暗的增强参数，用于控制提亮压暗方向、色彩增强强度、可读性阈值及HDR开关。 |
 
 
 ## Color<sup>20+</sup>
@@ -2006,6 +2091,25 @@ BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包
 | positiveCoefficient | [number, number, number]   | 否   | 否   | 基于基准饱和度的RGB正向调整参数。<br>每个number的取值范围为[-20, 20]，超出边界会在实现时自动截断。 |
 | negativeCoefficient | [number, number, number]   | 否   | 否   | 基于基准饱和度的RGB负向调整参数。<br>每个number的取值范围为[-20, 20]，超出边界会在实现时自动截断。 |
 | fraction            | number                     | 否   | 否   | 提亮效果的混合比例。<br>取值范围为[0, 1]，超出边界会在实现时自动截断。  |
+
+## ColorfulBrightnessBlenderOptions
+
+基于保持色相的提亮压暗混合器的可选增强配置项，作为[createColorfulBrightnessBlender](#uieffectcreatecolorfulbrightnessblender)的options参数传入。它在常规参数[BrightnessBlenderParam](#brightnessblenderparam)之外，进一步控制提亮或压暗方向、色彩增强强度、与背景的对比度（可读性）以及HDR开关；当需要对前景的明暗方向、色彩鲜艳度、可读性对比或HDR行为做精细调整时使用，不传时各项采用默认值。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+| 名称                | 类型                        | 只读 | 可选 | 说明                                                              |
+| ------------------- | -------------------------- | ---- | ---- | ---------------------------------------------------------------- |
+| darkenWeight        | number                     | 否   | 是   | 前景压暗权重，控制提亮压暗的方向与强度。取0时提亮前景（前景倾向亮于背景以保证可读性）；取1时压暗前景（前景倾向暗于背景）；0到1之间为提亮与压暗的过渡。<br>默认值为1。取值范围为[0, 1]，超出边界会在实现时自动截断。 |
+| vibrancyStrength    | number                     | 否   | 是   | 色彩增强强度，控制对前景饱和度的增强程度。取0时不额外增强饱和度，前景保持原始饱和度；值越大饱和度增强越明显，取1时增强到最大、色彩最鲜艳。<br>默认值为0。取值范围为[0, 1]，超出边界会在实现时自动截断。 |
+| lumaDiff            | number                     | 否   | 是   | 保证可读性的亮度差阈值，用于约束前景与背景之间的亮度差以保持足够对比度。取0时不强制额外亮度差（可读性约束最弱）；值越大强制的亮度差越大、对比度越强；取1时强制最大亮度差。<br>默认值为0。取值范围为[0, 1]，超出边界会在实现时自动截断。 |
+| hdrEnabled          | boolean                    | 否   | 是   | 是否主动开启HDR。取true时主动开启HDR，结果亮度可超出SDR范围（大于1.0），在HDR设备上呈现更高亮度，适合HDR内容；取false时不主动开启HDR，结果限制在SDR范围（≤1.0），但当前景或背景本身为HDR时仍可能被动触发HDR。<br>默认值为true。 |
 
 ## HeatDistortionEffectParam
 

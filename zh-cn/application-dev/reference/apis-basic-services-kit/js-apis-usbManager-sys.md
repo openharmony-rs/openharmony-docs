@@ -338,7 +338,7 @@ addDeviceAccessRight(tokenId: string, deviceName: string): boolean
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：18+ |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
 | 801      | Capability not supported.  <br>适用版本：18+ |
 
@@ -408,7 +408,7 @@ getFunctionsFromString(funcs: string): number
 | 错误码ID | 错误信息                                                                        |
 | -------- | ------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：18+ |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
 | 801      | Capability not supported.  <br>适用版本：18+ |
 
@@ -456,7 +456,7 @@ getStringFromFunctions(funcs: FunctionType): string
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：18+ |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
 | 801      | Capability not supported.  <br>适用版本：18+ |
 
@@ -504,7 +504,7 @@ setDeviceFunctions(funcs: FunctionType): Promise\<void\>
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：18+ |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
 | 801      | Capability not supported.  <br>适用版本：18+ |
 | 14400002 | Permission denied. The HDC is disabled by the system. |
@@ -552,7 +552,7 @@ getDeviceFunctions(): FunctionType
 
 | 错误码ID | 错误信息                                                                        |
 | -------- | ------------------------------------------------------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：18+ |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
 | 801      | Capability not supported.  <br>适用版本：18+ |
 

@@ -9,7 +9,6 @@
 
 文本选择菜单，适用于[RichEditor](ts-basic-components-richeditor.md)组件通过[bindSelectionMenu](ts-basic-components-richeditor.md#bindselectionmenu)或[Text](ts-basic-components-text.md)组件通过[bindSelectionMenu](ts-basic-components-text.md#bindselectionmenu11)绑定自定义文本选择菜单，支持编辑菜单和扩展下拉菜单两种类型，可通过配置实现复制、粘贴、剪切、全选等内置功能，也可通过自定义菜单项和事件回调实现扩展功能。建议绑定鼠标右键或鼠标选中方式弹出，不支持作为普通组件单独使用。适用于富文本编辑场景，可为用户提供便捷的文本操作入口，提升文本编辑效率。
 
-
 > **说明：**
 >
 > - 该组件从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -60,12 +59,12 @@ SelectionMenuOptions定义SelectionMenu的可选菜单类型项及其配置参�
 | -------- | -------- | -------- | -------- | -------- |
 | editorMenuOptions | Array&lt;[EditorMenuOptions](#editormenuoptions)&gt; | 否 | 是 | 编辑菜单。<br>editorMenuOptions未配置时，不显示编辑菜单。<br>同时配置EditorMenuOptions中action和builder时，点击图标会同时响应。<br>点击编辑菜单图标默认不关闭整个菜单，应用可以通过action接口配置RichEditorController的closeSelectionMenu主动关闭菜单。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | expandedMenuOptions | Array&lt;[ExpandedMenuOptions](#expandedmenuoptions)&gt; | 否 | 是 | 扩展下拉菜单。<br>expandedMenuOptions参数为空时无更多按钮，不显示扩展下拉菜单。<br>expandedMenuOptions参数不为空时显示更多按钮，配置菜单项收起在更多按钮中，点击更多按钮展示。<br>controller为空时不显示更多按钮，expandedMenuOptions参数不为空则在下拉菜单中显示。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| controller | [RichEditorController](ts-basic-components-richeditor.md#richeditorcontroller) | 否 | 是 | 富文本控制器不为空时显示默认系统菜单（包含剪切复制粘贴等部分）且默认菜单功能内置。<br>controller为空时不显示更多按钮，expandedMenuOptions参数不为空则在下拉菜单中显示。<br>系统默认只支持复制粘贴富文本内容，图文混排需要应用自定义onCopy、onPaste接口。应用自行配置onCopy \| onPaste接口时，系统菜单默认复制粘贴失效，调用应用自定义函数。 <br>**说明：**<br> 点击自定义文本选择菜单内置复制功能选项后，自定义菜单消失选中文本高亮保留。<br> 点击自定义文本选择菜单内置全选功能选项后，自定义菜单消失文本全选高亮。<br> 点击自定义文本选择菜单内置粘贴功能选项后，空白处粘贴或者选中文本替换粘贴均是保留被复制文本的样式。<br> 当富文本组件[RichEditor](ts-basic-components-richeditor.md)的copyOptions属性设置为`CopyOptions.None`时，内置的复制剪切功能不会被限制。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| controller | [RichEditorController](ts-basic-components-richeditor.md#richeditorcontroller) | 否 | 是 | 富文本控制器不为空时显示默认系统菜单（包含剪切复制粘贴等部分）且默认菜单功能内置。<br>controller为空时不显示更多按钮，expandedMenuOptions参数不为空则在下拉菜单中显示。<br>系统默认只支持复制粘贴富文本内容，图文混排需要应用自定义onCopy、onPaste接口。应用自行配置onCopy \| onPaste接口时，系统菜单默认复制粘贴失效，调用应用自定义函数。 <br>**说明：**<br> 点击自定义文本选择菜单内置复制功能选项后，自定义菜单消失选中文本高亮保留。<br> 点击自定义文本选择菜单内置全选功能选项后，自定义菜单消失文本全选高亮。<br> 点击自定义文本选择菜单内置粘贴功能选项后，空白处粘贴或者选中文本替换粘贴均是保留被复制文本的样式。<br> 当富文本组件[RichEditor](ts-basic-components-richeditor.md)的copyOptions属性设置为`CopyOptions.None`时，内置的复制剪切功能会被限制。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | onCopy | (event?: [EditorEventInfo](#editoreventinfo))&nbsp;=&gt;&nbsp;void | 否 | 是 | 替代内置系统菜单复制项的事件回调。<br>生效前提是一定要有controller参数，有系统默认菜单才能替换内置复制功能。<br>**说明：**<br> event为返回信息。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | onPaste | (event?: [EditorEventInfo](#editoreventinfo))&nbsp;=&gt;&nbsp;void | 否 | 是 | 替代内置系统菜单粘贴项的事件回调。<br>生效前提是一定要有controller参数，有系统默认菜单才能替换内置粘贴功能。<br>**说明：**<br> event为返回信息。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | onCut | (event?: [EditorEventInfo](#editoreventinfo))&nbsp;=&gt;&nbsp;void | 否 | 是 | 替代内置系统菜单剪切项的事件回调。<br>生效前提是一定要有controller参数，有系统默认菜单才能替换内置剪切功能。<br>**说明：**<br>event为返回信息。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | onSelectAll | (event?: [EditorEventInfo](#editoreventinfo))&nbsp;=&gt;&nbsp;void | 否 | 是 | 替代内置系统菜单全选项的事件回调。<br>生效前提是一定要有controller参数，有系统默认菜单才能替换内置全选功能。<br>**说明：**<br>event为返回信息。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | 否 | 是 | 菜单背景板使用的系统材质，用于实现菜单背景的视觉效果（如模糊、透明度等）。不同系统材质包含不同的属性，影响最终的显示效果。具体材质类型及属性请参考[uiMaterial.Material](../arkts-apis-uimaterial.md#material)。默认值：undefined，无材质效果。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | 否 | 是 | 菜单背景板使用的系统材质，用于bindSelectMenu，或放置在Navigation或NavDestination的标题栏子树、或横向Tabs的底部TabBar子树中，菜单背景板的沉浸光感效果才会生效。用于实现菜单背景的视觉效果（如模糊、透明度等）。不同系统材质包含不同的属性，影响最终的显示效果。具体材质类型及属性请参考[uiMaterial.Material](../arkts-apis-uimaterial.md#material)。默认值：undefined，无材质效果。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## EditorMenuOptions
 
@@ -80,7 +79,7 @@ SelectionMenuOptions定义SelectionMenu的可选菜单类型项及其配置参�
 | icon | [ResourceStr](ts-types.md#resourcestr) | 否 | 否 | 编辑菜单项的图标资源。若同时设置symbolStyle，则本属性不生效。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | builder | ()&nbsp;=&gt;&nbsp;void | 否 | 是 | 点击时显示用户自定义组件，自定义组件在构造时结合@Builder使用。不设置时不显示自定义组件。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | action | ()&nbsp;=&gt;&nbsp;void | 否 | 是 | 点击菜单项的事件回调。同时配置builder和action时，点击图标会同时响应。不设置时点击无响应。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-text-style.md#symbolglyphmodifier12) | 否 | 是 | Symbol图标资源。当需要使用系统Symbol图标（支持动态颜色、多色等高级特性）时传入此参数，不传入时使用icon属性指定的图标资源。优先级大于icon，同时设置时优先使用symbolStyle。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-text-style.md#symbolglyphmodifier12) | 否 | 是 | Symbol图标资源。当需要使用系统Symbol图标（支持动态颜色、多色等高级特性）时传入此参数，不传入时使用icon属性指定的图标资源。优先级高于icon，同时设置时优先使用symbolStyle。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 
 ## ExpandedMenuOptions
@@ -121,7 +120,7 @@ SelectionMenuOptions定义SelectionMenu的可选菜单类型项及其配置参�
 不支持[通用事件](ts-component-general-events.md)。
 
 ## 示例
-### 示例1（绑定不同触发方式的自定义文本选择菜单）
+### 示例1（RichEditor绑定不同触发方式的自定义文本选择菜单）
 
 该示例展示了文本绑定不同触发方式的自定义文本选择菜单的效果。
 
@@ -461,7 +460,7 @@ struct Index {
 
 ### 示例2（设置Symbol类型图标）
 
-从API version 18开始，该示例通过设置[EditorMenuOptions](#editormenuoptions)的属性symbolStyle，展示了自定义Symbol类型图标。
+从API version 18开始，该示例通过设置[EditorMenuOptions](#editormenuoptions)的属性symbolStyle，展示了使用系统Symbol图标的方法。
 
 ```ts
 import {

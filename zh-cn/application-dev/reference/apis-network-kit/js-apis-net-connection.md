@@ -153,7 +153,7 @@ getDefaultNet(): Promise\<NetHandle>
 
 | 类型                              | 说明                                  |
 | --------------------------------- | ------------------------------------- |
-| Promise\<[NetHandle](#nethandle)> | 以Promise形式返回默认网络的网络句柄。 |
+| Promise\<[NetHandle](#nethandle)> | Promise对象，返回默认网络的网络句柄。 |
 
 **错误码：**
 
@@ -343,7 +343,7 @@ getDefaultHttpProxy(): Promise\<HttpProxy>
 
 | 类型                             | 说明                                      |
 | -------------------------------- | ----------------------------------------- |
-| Promise<[HttpProxy](#httpproxy10)> | 以Promise形式返回网络默认的代理配置信息。 |
+| Promise<[HttpProxy](#httpproxy10)> | Promise对象，返回网络默认的代理配置信息。 |
 
 **错误码：**
 
@@ -418,7 +418,7 @@ getAppNet(): Promise\<NetHandle>
 
 | 类型                              | 说明                                  |
 | --------------------------------- | ------------------------------------- |
-| Promise\<[NetHandle](#nethandle)> | 以Promise形式返回App绑定的网络信息。 |
+| Promise\<[NetHandle](#nethandle)> | Promise对象，返回App绑定的网络信息。 |
 
 **错误码：**
 
@@ -2008,7 +2008,7 @@ setPacFileUrl(pacFileUrl: string): void
 
 **示例：**
 
-```typescript
+```ts
 import { connection } from '@kit.NetworkKit';
 
 let pacFileUrl = "http://example.com/proxy.pac";
@@ -2038,7 +2038,7 @@ getPacFileUrl(): string
 
 **示例：**
 
-```typescript
+```ts
 import { connection } from '@kit.NetworkKit';
 
 let pacFileUrl = connection.getPacFileUrl();
@@ -2074,7 +2074,7 @@ findProxyForUrl(url: string): string
 
 **示例：**
 
-```typescript
+```ts
 import { connection } from '@kit.NetworkKit';
 
 let proxyInfo = connection.findProxyForUrl("http://example.com");
@@ -2393,9 +2393,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getIpNeighTable().then((data: connection.NetIpMacInfo[]) => {
   if (data.length !== 0) {
-    console.info(`Succeeded to get ipAddress: ${JSON.stringify(data.ipAddress)}`);
-    console.info(`Succeeded to get iface: ${JSON.stringify(data.iface)}`);
-    console.info(`Succeeded to get macAddress: ${JSON.stringify(data.macAddress)}`);
+    console.info(`Succeeded to get ipAddress: ${JSON.stringify(data[0].ipAddress)}`);
+    console.info(`Succeeded to get iface: ${JSON.stringify(data[0].iface)}`);
+    console.info(`Succeeded to get macAddress: ${JSON.stringify(data[0].macAddress)}`);
   }
 }).catch((error: BusinessError) => {
   console.error(`Failed to get ip neigh table. Code:${error.code}, message:${error.message}`);
@@ -2562,7 +2562,7 @@ getDnsAscii(host: string, flag?: ConversionProcess): string
 
 **示例：**
 
-```typescript
+```ts
 import { connection } from '@kit.NetworkKit';
 
 let result = connection.getDnsAscii("www.示例.com", connection.ConversionProcess.NO_CONFIGURATION);
@@ -2604,7 +2604,7 @@ getDnsUnicode(host: string, flag?: ConversionProcess): string
 
 **示例：**
 
-```typescript
+```ts
 import { connection } from '@kit.NetworkKit';
 
 let result = connection.getDnsUnicode("www.xn--fsq092h.com", connection.ConversionProcess.NO_CONFIGURATION);
@@ -2689,7 +2689,7 @@ queryTraceRoute(destination: string, option?: TraceRouteOptions): Promise\<Trace
 
 **起始版本**：26.0.0
 
-**需要权限**：ohos.permission.INTERNET、ohos.permission.ACCESS_NET_TRACE_INFO、ohos.permission.LOCATION和ohos.permission.APPROXIMATELY_LOCATION
+**需要权限**：ohos.permission.INTERNET 和 ohos.permission.ACCESS_NET_TRACE_INFO 和 ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -2750,7 +2750,7 @@ queryProbeResult(destination: string, duration: number): Promise\<ProbeResultInf
 
 **起始版本**：26.0.0
 
-**需要权限**：ohos.permission.INTERNET。
+**需要权限**：ohos.permission.INTERNET
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -3250,7 +3250,7 @@ interface Data {
   if (socketType == "TCPSocket") {
     tcp.bind({address:"192.168.xxx.xxx",
               port:8080,
-              family:1} as socket.NetAddress, (error: Error) => {
+              family:1} as socket.NetAddress, (error: BusinessError) => {
       if (error) {
         console.error(`Failed to bind. Code:${error.code}, message:${error.message}`);
         return;
@@ -3344,7 +3344,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   if (socketType == "TCPSocket") {
     tcp.bind({address:"192.168.xxx.xxx",
               port:8080,
-              family:1} as socket.NetAddress, (error: Error) => {
+              family:1} as socket.NetAddress, (error: BusinessError) => {
       if (error) {
         console.error('Failed to bind');
         return;
@@ -3702,10 +3702,10 @@ TCP状态。
 | TCP_SYN_SENT    | 2  | 客户端发送SYN，等待服务端ACK+SYN（三次握手的第一步）。 |
 | TCP_SYN_RECV    | 3  | 服务端接收SYN并发送ACK+SYN，等待客户端ACK（三次握手的第二步）。 |
 | TCP_FIN_WAIT1   | 4  | 主动端发送FIN，等待对方ACK。 |
-| TCP_FIN_WAIT2   | 5  | 主动端接收FIN的ACK，等待对方ACK。 |
+| TCP_FIN_WAIT2   | 5  | 主动端接收自身FIN的ACK，等待对方发送FIN。 |
 | TCP_TIME_WAIT   | 6  | 主动端接收对方FIN并回复ACK，等待2倍最大报文段生存时间后彻底释放。 |
 | TCP_CLOSE       | 7  | 初始/关闭状态，无连接。 |
-| TCP_CLOSE_WAIT  | 8  | 被动端接收FIN并发送ACK，等待对方FIN。 |
+| TCP_CLOSE_WAIT  | 8  | 被动端接收对方FIN并发送ACK，等待本地应用程序关闭连接。 |
 | TCP_LAST_ACK    | 9  | 被动端发送FIN后，等待对方ACK。 |
 | TCP_LISTEN      | 10 | 服务端监听，等待客户端连接。 |
 | TCP_CLOSING     | 11 | 双方同时发送FIN，互相等待ACK。   |

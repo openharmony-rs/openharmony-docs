@@ -60,7 +60,7 @@ XComponent组件的类型需要在组件创建时通过[ArkUI_NodeType](capi-nat
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | XComponent组件的类型，参数类型为[ArkUI_XComponentType](capi-xcomponent-h.md#arkui_xcomponenttype)，具体枚举值及其与数字的对应关系请参见该枚举定义。 |
+| .value[0].i32 | XComponent组件的类型，取值类型为[ArkUI_XComponentType](capi-xcomponent-h.md#arkui_xcomponenttype)，具体枚举值及其与数字的对应关系请参见该枚举定义。 |
 
 ## NODE_XCOMPONENT_SURFACE_SIZE
 
@@ -107,8 +107,8 @@ XComponent组件所持有的Surface显示区域，支持属性设置和属性获
 | -- | -- |
 | .value[0].i32 | Surface显示区域相对于XComponent组件左上角的x轴坐标，单位为px。 |
 | .value[1].i32 | Surface显示区域相对于XComponent组件左上角的y轴坐标，单位为px。 |
-| .value[2].i32 | Surface显示区域的宽度，单位为px，取值应为非负整数。 |
-| .value[3].i32 | Surface显示区域的高度，单位为px。 |
+| .value[2].i32 | Surface显示区域的宽度，单位为px，取值应为正整数。 |
+| .value[3].i32 | Surface显示区域的高度，单位为px，取值应为正整数。 |
 
 ## NODE_XCOMPONENT_ENABLE_ANALYZER
 

@@ -2,14 +2,15 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Flix-fangyang; @BruceXu; @ding-panyun-->
+<!--Owner: @Felix-fangyang-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=26b21a705296379723aa254155137de053c73208 translatedAt=2026-08-24T08:20:43.489Z pushedAt=2026-08-31T03:15:55.687Z -->
 
 ## Overview
 
-This file declares the common types used in the **NativeBuffer** module.
+This module provides the common type definitions of the NativeBuffer module, including enums for color space, metadata type, pixel format, and conversion type, which are used for buffer configuration and management in graphics processing. It supports multiple color space standards (such as BT601, BT709, BT2020, and P3) and pixel formats (such as RGB, YUV, and RGBA), and applies to graphics scenarios that require flexible configuration of buffer attributes, such as video encoding and decoding, image processing, and camera preview, helping developers implement compatible conversion and efficient processing between different formats.
 
 **File to include**: <native_buffer/buffer_common.h>
 
@@ -28,7 +29,7 @@ This file declares the common types used in the **NativeBuffer** module.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [OH_NativeBuffer_ColorXY](capi-oh-nativebuffer-oh-nativebuffer-colorxy.md) | OH_NativeBuffer_ColorXY | Describes the X and Y coordinates of the primary color.|
-| [OH_NativeBuffer_Smpte2086](capi-oh-nativebuffer-oh-nativebuffer-smpte2086.md) | OH_NativeBuffer_Smpte2086 | Describes the SMPTE ST 2086 static metadata.|
+| [OH_NativeBuffer_Smpte2086](capi-oh-nativebuffer-oh-nativebuffer-smpte2086.md) | OH_NativeBuffer_Smpte2086 | Indicates the SMPTE 2086 static metadata. |
 | [OH_NativeBuffer_Cta861](capi-oh-nativebuffer-oh-nativebuffer-cta861.md) | OH_NativeBuffer_Cta861 | Describes the CTA-861.3 static metadata.|
 | [OH_NativeBuffer_StaticMetadata](capi-oh-nativebuffer-oh-nativebuffer-staticmetadata.md) | OH_NativeBuffer_StaticMetadata | Describes the HDR static metadata.|
 
@@ -38,9 +39,11 @@ This file declares the common types used in the **NativeBuffer** module.
 | -- | -- | -- |
 | [OH_NativeBuffer_ColorSpace](#oh_nativebuffer_colorspace) | OH_NativeBuffer_ColorSpace | Defines an enum for the color spaces of an **OH_NativeBuffer** instance.|
 | [OH_NativeBuffer_MetadataType](#oh_nativebuffer_metadatatype) | OH_NativeBuffer_MetadataType | Defines an enum for the **OH_NativeBuffer** image standards.|
-| [OH_NativeBuffer_MetadataKey](#oh_nativebuffer_metadatakey) | OH_NativeBuffer_MetadataKey | Defines an enum for the key values of **OH_NativeBuffer** description information, such as HDR metadata and ROI metadata.|
+| [OH_NativeBuffer_MetadataKey](#oh_nativebuffer_metadatakey) | OH_NativeBuffer_MetadataKey | Enumerates the keys of the description information of OH_NativeBuffer, such as HDR metadata and ROI metadata. |
 | [OH_NativeBuffer_Format](#oh_nativebuffer_format) | OH_NativeBuffer_Format | Defines an enum for the **OH_NativeBuffer** formats.|
 | [OH_NativeBuffer_TransformType](#oh_nativebuffer_transformtype) | OH_NativeBuffer_TransformType | Defines an enum for the conversion types of **OH_NativeBuffer**.|
+| [OH_NativeBuffer_VideoDimensionType](#oh_nativebuffer_videodimensiontype) | OH_NativeBuffer_VideoDimensionType | Enumerates the video dimension types. |
+| [OH_NativeBuffer_3D_MetadataKey](#oh_nativebuffer_3d_metadatakey) | OH_NativeBuffer_3D_MetadataKey | Enumerates the 3D metadata attributes of NativeBuffer. |
 
 ## Enum Description
 
@@ -96,6 +99,8 @@ Before API version 12, use this enum only if **native_buffer.h** is referenced. 
 | OH_COLORSPACE_DISPLAY_BT2020_SRGB | The color gamut is BT2020, the transfer function is SRGB, the conversion matrix is BT2020, and the data range is RANGE_FULL.|
 | OH_COLORSPACE_DISPLAY_BT2020_HLG | It is equivalent to **OH_COLORSPACE_BT2020_HLG_FULL**.|
 | OH_COLORSPACE_DISPLAY_BT2020_PQ | It is equivalent to **OH_COLORSPACE_BT2020_PQ_FULL**.|
+| OH_COLORSPACE_BT2020_LOG_FULL | The color gamut range is BT2020, the transfer function is PRIV_LOG, the conversion matrix is BT2020, and the data range is RANGE_FULL. <br/>**Since:** 26.0.0|
+| OH_COLORSPACE_BT2020_LOG_LIMIT | The color gamut range is BT2020, the transfer function is PRIV_LOG, the conversion matrix is BT2020, and the data range is RANGE_LIMITED. <br/>**Since:** 26.0.0|
 
 ### OH_NativeBuffer_MetadataType
 
@@ -141,7 +146,7 @@ Defines an enum for the key values of **OH_NativeBuffer** description informatio
 | OH_HDR_METADATA_TYPE | Metadata type. For details about the available options, see [OH_NativeBuffer_MetadataType](capi-buffer-common-h.md#oh_nativebuffer_metadatatype). **size** indicates the size of **OH_NativeBuffer_MetadataType**.|
 | OH_HDR_STATIC_METADATA | Static metadata. For details about the available options, see [OH_NativeBuffer_StaticMetadata](capi-oh-nativebuffer-oh-nativebuffer-staticmetadata.md). **size** indicates the size of **OH_NativeBuffer_StaticMetadata**.|
 | OH_HDR_DYNAMIC_METADATA | Dynamic metadata. For details about the available options, see the SEI byte stream in the video stream. The value range of **size** is 1-3000.|
-| OH_REGION_OF_INTEREST_METADATA | ROI metadata of video encoding and decoding. The configuration format is as follows: Top1,Left1-Bottom1,Right1=QpOffset1;Top2,Left2-Bottom2,Right2=QpOffset2;<br>Each ROI box consists of the position information (**Top,Left-Bottom,Right**) and encoding quality offset information (**QpOffset**), and ends with a semicolon (;).<br>The encoding quality offset information of the ROI box can be defaulted. The default value is **-3**. The configuration example when the default value is used is as follows: **Top1,Left1-Bottom1,Right1;Top2,Left2-Bottom2,Right2;**<br>A maximum of six ROIs can be configured for each group of ROI metadata, and the total area of the ROIs cannot exceed 1/5 of the image.<br>This enumerated value can be called only through the [OH_NativeBuffer_SetMetadataValue()](capi-native-buffer-h.md#oh_nativebuffer_setmetadatavalue) API.<br>**Since**: 22|
+| OH_REGION_OF_INTEREST_METADATA | Region of interest (ROI) metadata, used to configure the ROI feature of video encoding, and also contains the ROI information recognized by the camera system obtained from the camera preview. The value type is a string, in the format "Top1,Left1-Bottom1,Right1[=Params1];Top2,Left2-Bottom2,Right2[=Params2];".<br>Each "Top,Left-Bottom,Right" represents the coordinate information of one ROI.<br>"[=Params]" is optional. The format of "[=Params]" varies with the version:<br>- Before API version 26.0.0: only a single int32_t value representing the quantization parameter offset is supported (for example, "=QpOffset").<br>- Since API version 26.0.0: the key-value format is additionally supported and recommended.<br>Parameters use comma-separated key-value pairs (for example, "=dqp:-6,slb:1"). Supported keys include:<br>- "dqp": quantization parameter offset.<br>- "slb": semantic label. This value must correspond to [OH_VideoMetadataRoiSemanticLabel](../apis-avcodec-kit/capi-native-avcodec-videobase-h.md#oh_videometadataroisemanticlabel).<br>If "=Params" is completely omitted, for example, "Top1,Left1-Bottom1,Right1;Top2,Left2-Bottom2,Right2=dqp:-6;", the encoder encodes the first ROI with default parameters and the second ROI with the specified parameters.<br>Note that the number of ROIs that can be applied simultaneously must not exceed 6, and the total area must not exceed 1/5 of the image area. For details, see [parameter requirements](../../media/avcodec/video-encoding-ROI.md#parameter-requirements) for ROI video encoding.<br>**Since:** 22<br> **Note:** Since API version 26.0.0, it is recommended to use [OH_VideoMetadata_AppendRoiString](../apis-avcodec-kit/capi-native-avcodec-videobase-h.md#oh_videometadata_appendroistring) to safely convert and append ROI configurations instead of manually concatenating strings. |
 
 ### OH_NativeBuffer_Format
 
@@ -240,3 +245,42 @@ Before API version 22, use this enum only if **native_buffer.h** is referenced. 
 | NATIVEBUFFER_FLIP_V_ROT180 | Flips vertically and rotates by 180 degrees.|
 | NATIVEBUFFER_FLIP_H_ROT270 | Flips horizontally and rotates by 270 degrees.|
 | NATIVEBUFFER_FLIP_V_ROT270 | Flips vertically and rotates by 270 degrees.|
+
+### OH_NativeBuffer_VideoDimensionType
+
+```c
+enum OH_NativeBuffer_VideoDimensionType
+```
+
+**Description**
+
+Enumerates the video dimension types.
+
+**System capability:** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
+**Since**: 26.0.0
+
+| Value | Description |
+| -- | -- |
+| OH_VIDEO_DIM_TYPE_2D = 0 | 2D video. |
+| OH_VIDEO_DIM_TYPE_3D_SBS | 3D video in side-by-side format. |
+| OH_VIDEO_DIM_TYPE_3D_TAB | 3D video in top-and-bottom format. |
+| OH_VIDEO_DIM_TYPE_BUTT | Invalid video dimension type. |
+
+### OH_NativeBuffer_3D_MetadataKey
+
+```c
+enum OH_NativeBuffer_3D_MetadataKey
+```
+
+**Description**
+
+Enumerates the 3D metadata attributes of NativeBuffer.
+
+**System capability:** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
+**Since**: 26.0.0
+
+| Value | Description |
+| -- | -- |
+| OH_VIDEO_DIM_TYPE | Video dimension type of NativeBuffer. For the value range, see [OH_NativeBuffer_VideoDimensionType](capi-buffer-common-h.md#oh_nativebuffer_videodimensiontype). |

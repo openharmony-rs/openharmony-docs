@@ -121,7 +121,7 @@ Text(content?: string \| Resource , value?: TextOptions)
 | caretColor<sup>14+</sup> | 设置文本组件选中区域手柄颜色。 |
 | copyOption<sup>9+</sup> | 设置组件是否支持文本可复制粘贴。 |
 | draggable<sup>9+</sup> | 设置选中文本拖拽效果。 |
-| selectedBackgroundColor<sup>14+</sup> | 设置文本选中底板颜色。 |
+| selectedBackgroundColor<sup>14+</sup> | 设置文本选中高亮颜色。 |
 | selection<sup>11+</sup> | 设置选中区域。 |
 | textSelectable<sup>12+</sup> | 设置是否支持文本可选择、可获焦。 |
 
@@ -735,6 +735,8 @@ fontVariations(fontVariations: Array&lt;FontVariation&gt;)
 
 **起始版本：** 26.0.0
 
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1344,7 +1346,7 @@ punctuationOverflow(enabled: Optional\<boolean>)
 
 selectedBackgroundColor(color: ResourceColor)
 
-设置文本选中底板颜色。如果未设置不透明度，默认不透明度为20%。未通过该接口设置时，默认文本选中底板颜色为'#007DFF'（蓝色）。
+设置文本选中高亮颜色。如果未设置不透明度或设置为完全不透明，默认使用20%不透明度。未通过该接口设置时，默认文本选中高亮颜色为'#007DFF'（蓝色）。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -1356,7 +1358,7 @@ selectedBackgroundColor(color: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                       |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------ |
-| color  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 文本选中底板颜色。 |
+| color  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 文本选中高亮颜色。 |
 
 ### selection<sup>11+</sup>
 
@@ -1823,7 +1825,7 @@ onMarqueeStateChange(callback: Callback\<MarqueeState\>)
 
 | 参数名    | 类型                                             | 必填  | 说明                       |
 |--------|---------------------------------------------------|-----|--------------------------|
-| callback  | Callback\<[MarqueeState](#marqueestate18枚举说明)\> | 是   | 通过callback参数指定触发回调的状态，状态由MarqueeState枚举定义，例如开始滚动、完成一次滚动、滚动完成。 |
+| callback  | Callback\<[MarqueeState](#marqueestate18枚举说明)\> | 是   | 通过callback参数指定触发回调的状态，状态由MarqueeState枚举定义，例如开始滚动、完成一次滚动、滚动完成或停止滚动。 |
 
 ## TextOptions<sup>11+</sup>
 
@@ -1912,7 +1914,7 @@ getLayoutManager(): LayoutManager
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| [LayoutManager](ts-text-common.md#layoutmanager12) | 布局管理器对象，用于获取文本布局信息，包括行数、字形位置、行信息、字符绘制区域等。 |
+| [LayoutManager](ts-text-common.md#layoutmanager12) | 布局管理器对象，用于获取文本布局信息，包括行数、字形位置、行信息、字符绘制区域等。<br>**说明：**<br>当TextController还未绑定Text组件，或绑定的Text组件已被销毁/卸载时，会返回undefined。 |
 
 ### setTextSelection<sup>23+</sup>
 
@@ -1960,7 +1962,7 @@ Marquee初始化参数。
 |--------------------|-------------------------------------------------|----|----|-------------------------------------------------------------------------------------|
 | start              | boolean                                         | 否  | 否 | 控制跑马灯进入播放状态。<br>true表示播放，false表示不播放。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | step               | number                                          | 否  | 是 | 滚动动画文本滚动步长。<br>单位：vp<br>取值范围：(0, 文本宽度]。设置小于等于0的值时按默认值处理。<br>默认值：4.0vp <br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                         |
-| spacing<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  | 是 | 两轮跑马灯之间的间距。单位：vp。如果LengthMetrics的unit值是PERCENT，当前设置不生效，按默认值处理。<br>默认值：48.0vp <br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| spacing<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  | 是 | 两轮跑马灯之间的间距。单位：vp。当LengthMetrics对象的unit属性为LengthUnit.PERCENT时，当前设置不生效，按默认值处理。<br>默认值：48.0vp <br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | loop               | number                                          | 否  | 是 | 设置重复滚动的次数，小于等于零时无限循环。<br>默认值：-1  <br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                          |
 | fromStart          | boolean                                         | 否  | 是 | 设置文本从头开始滚动或反向滚动。<br>true表示从头开始滚动，false表示反向滚动。<br>默认值：true <br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | delay              | number                                          | 否  | 是 | 设置每次滚动的时间间隔。<br>取值范围：[0, +∞)。设置负数时按默认值处理。<br>默认值：0 <br>单位：毫秒  <br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。   |
@@ -2012,7 +2014,7 @@ Marquee状态回调的返回值。
 |--------|----|-------------------------------|
 | START  | 0  | 跑马灯滚动开始。                     |
 | BOUNCE | 1  | 完成一次跑马灯滚动，如果循环次数不是1，将会多次返回。 |
-| FINISH | 2  | 跑马灯全部循环次数完成。              |
+| FINISH | 2  | 跑马灯全部循环次数完成或跑马灯停止滚动（例如[TextMarqueeOptions](#textmarqueeoptions18对象说明)中start被设置为false）。              |
 
 ## 示例
 
@@ -2743,7 +2745,7 @@ struct TextExample9 {
 
 ### 示例10（获取文本信息）
 
-从API version 12开始，该示例通过[getLayoutManager](#getlayoutmanager12)接口调用文本的布局管理对象获取文本信息，同时，[LayoutManager](ts-text-common.md#layoutmanager12)中的[getRectsForRange](./ts-text-common.md#getrectsforrange14)（从API version 14开始）接口可以获取指定矩形宽度和高度下，文本中任意区间范围内字符或占位符的绘制区域信息。
+从API version 12开始，该示例通过[getLayoutManager](#getlayoutmanager12)接口调用文本的布局管理对象获取文本信息，同时，[LayoutManager](ts-text-common.md#layoutmanager12)中的[getRectsForRange](./ts-text-common.md#getrectsforrange14)（从API version 14开始）接口可以获取指定矩形宽度样式和高度样式下，文本中任意区间范围内字符或占位符的绘制区域信息。
 
 ```ts
 // xxx.ets
@@ -2772,7 +2774,11 @@ struct TextExample10 {
           .fontSize(25)
           .borderWidth(1)
           .onAreaChange(() => {
+            // getLayoutManager在TextController未绑定Text或Text被销毁时会返回undefined，使用时需做判空处理
             let layoutManager: LayoutManager = this.controller.getLayoutManager();
+            if (!layoutManager) {
+              return;
+            }
             this.lineCount = 'LineCount: ' + layoutManager.getLineCount();
           })
 
@@ -2783,6 +2789,9 @@ struct TextExample10 {
         Button("相对组件坐标[150,50]字形信息")
           .onClick(() => {
             let layoutManager: LayoutManager = this.controller.getLayoutManager();
+            if (!layoutManager) {
+              return;
+            }
             let position: PositionWithAffinity = layoutManager.getGlyphPositionAtCoordinate(150, 50);
             this.glyphPositionAtCoordinate =
               '相对组件坐标[150,50] glyphPositionAtCoordinate position: ' + position.position + ' affinity: ' +
@@ -2795,6 +2804,9 @@ struct TextExample10 {
         Button('首行行信息、文本样式信息、以及字体属性信息')
           .onClick(() => {
             let layoutManager: LayoutManager = this.controller.getLayoutManager();
+            if (!layoutManager) {
+              return;
+            }
             let lineMetrics: LineMetrics = layoutManager.getLineMetrics(0);
             this.lineMetrics = 'lineMetrics is ' + JSON.stringify(lineMetrics) + '\n\n';
             let runMetrics = lineMetrics.runMetrics;
@@ -2806,9 +2818,12 @@ struct TextExample10 {
         Text(this.lineMetrics)
 
         Text('getRectsForRange').fontSize(15).fontColor(0xCCCCCC).width('90%').padding(10)
-        Button('获取指定矩形宽度和高度下，文本中任意区间范围内字符或占位符的绘制区域信息')
+        Button('获取指定矩形宽度样式和高度样式下，文本中任意区间范围内字符或占位符的绘制区域信息')
           .onClick(() => {
             let layoutManager: LayoutManager = this.controller.getLayoutManager();
+            if (!layoutManager) {
+              return;
+            }
             let range: TextRange = { start: 0, end: 1 };
             let rectsForRangeInfo: text.TextBox[] =
               layoutManager.getRectsForRange(range, text.RectWidthStyle.TIGHT, text.RectHeightStyle.TIGHT);
@@ -3524,7 +3539,11 @@ struct TextExample10 {
 
       Button('相对组件坐标[150,50]字形信息')
         .onClick(() => {
+          // getLayoutManager在TextController未绑定Text或Text被销毁时会返回undefined，使用时需做判空处理
           let layoutManager: LayoutManager = this.textController.getLayoutManager();
+          if (!layoutManager) {
+            return;
+          }
           let position1: PositionWithAffinity = layoutManager.getGlyphPositionAtCoordinate(150, 50);
           this.str1 = '相对组件坐标[150,50] glyphPosition position: ' + position1.position +
             ' affinity: ' +

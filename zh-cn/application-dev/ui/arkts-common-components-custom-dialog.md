@@ -742,7 +742,7 @@ export struct DialogAvoidSoftKeyboard {
 
 以下示例通过[getDialogController](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getdialogcontroller18)和[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)两种方法，实现了获取弹出框当前状态的功能。
 
-<!-- @[get_dialog_status](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/GetDialogStatus.ets) -->
+<!-- @[get_dialog_status](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/GetDialogStatus.ets) -->  
 
 ``` TypeScript
 // xxx.ets
@@ -766,8 +766,8 @@ struct CustomDialogExample {
         .onClick(() => {
           hilog.info(DOMAIN, 'testTag', 'state:' + this.controller?.getState());
         }).margin(20)
-      // 请将$r('app.string.close_widows')替换为实际资源文件，在本示例中该资源文件的value值为"点我关闭弹窗"
-      Button($r('app.string.close_widows'))
+      // 请将$r('app.string.close_windows')替换为实际资源文件，在本示例中该资源文件的value值为"点我关闭弹窗"
+      Button($r('app.string.close_windows'))
         .onClick(() => {
           if (this.getDialogController() !== undefined) {
             this.getDialogController().close()

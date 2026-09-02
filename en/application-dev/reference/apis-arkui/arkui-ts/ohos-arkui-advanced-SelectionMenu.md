@@ -6,7 +6,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=92567145241181b97abe57e944e177355e50f4eb translatedAt=2026-07-30T02:30:18.161Z pushedAt=2026-08-01T06:46:03.747Z -->
+<!-- md-trans-meta sourceCommit=976793f1477a1ea1d1147f29cf593c7a491f596e translatedAt=2026-08-24T06:50:45.518Z pushedAt=2026-08-25T07:34:38.266Z -->
 
 The text selection menu is used for the [RichEditor](ts-basic-components-richeditor.md) component through [bindSelectionMenu](ts-basic-components-richeditor.md#bindselectionmenu) or the [Text](ts-basic-components-text.md) component through [bindSelectionMenu](ts-basic-components-text.md#bindselectionmenu11) to bind a custom text selection menu. It supports two types: edit menu and extended dropdown menu. Built-in functions such as copy, paste, cut, and select all can be implemented through configuration, and extended functions can be implemented through custom menu items and event callbacks. It is recommended to trigger the menu by right-clicking or selecting text with the mouse. It cannot be used as a standalone component. It is suitable for rich text editing scenarios, providing users with convenient text operation access and improving text editing efficiency.
 
@@ -459,7 +459,7 @@ struct Index {
 >
 > The sample image shows the custom menu pop-up effect triggered by mouse operations.
 
-![selectionmenu](figures/selectionmenu.gif)
+<!--Del--> <!--DelEnd-->
 
 ### Example 2: Setting the Symbol Icon
 
@@ -488,6 +488,7 @@ struct Index {
   private editorMenuOptions: Array<EditorMenuOptions> =
     [
       {
+        // $r('sys.media.wifi_router_fill') needs to be replaced with the image resource file required by the developer.
         icon: $r('sys.media.wifi_router_fill'),
         symbolStyle: new SymbolGlyphModifier($r('sys.symbol.save')),
         action: () => {
@@ -518,6 +519,7 @@ struct Index {
         }
       },
       {
+        // $r('sys.media.save_button_picture') needs to be replaced with the image resource file required by the developer.
         icon: $r('sys.media.save_button_picture'),
         symbolStyle: new SymbolGlyphModifier($r('sys.symbol.camera')),
         action: () => {
@@ -548,6 +550,7 @@ struct Index {
         }
       },
       {
+        // $r('sys.media.waveform_folder_fill') needs to be replaced with the image resource file required by the developer.
         icon: $r('sys.media.waveform_folder_fill'),
         symbolStyle: new SymbolGlyphModifier($r('sys.symbol.car')),
         action: () => {
@@ -587,6 +590,7 @@ struct Index {
       }, builder: (): void => this.sliderPanel()
       },
       {
+        // $r('sys.media.thermometer_fill') needs to be replaced with the image resource file required by the developer.
         icon: $r('sys.media.thermometer_fill'), action: () => {
         if (this.controller) {
           let selection = this.controller.getSelection();
@@ -906,5 +910,4 @@ struct Index {
 }
 ```
 
-![selectionmenu03](figures/selectionmenu03.jpg)
-<!--no_check-->
+<!--Del--> <!--DelEnd-->

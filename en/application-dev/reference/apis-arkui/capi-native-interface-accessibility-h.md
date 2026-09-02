@@ -6,7 +6,7 @@
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e2e8608c64e606248f00eb66f3b2d4805fae44da translatedAt=2026-08-04T11:04:45.186Z pushedAt=2026-08-06T09:30:11.733Z -->
+<!-- md-trans-meta sourceCommit=b7479db6de085f0941251c421a48b8115ce3990d translatedAt=2026-08-21T12:08:14.476Z pushedAt=2026-08-24T07:18:52.394Z -->
 
 ## Overview
 
@@ -170,7 +170,7 @@ Enumerates accessibility event types.
 | ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_TEXT_UPDATE = 0x00000010 | Text update event, sent when text is updated.|
 | ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_PAGE_STATE_UPDATE = 0x00000020 | Page state update event, sent on page navigation, switching, resizing, or movement.|
 | ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_PAGE_CONTENT_UPDATE = 0x00000800 | Page content update event, sent when the page content changes.|
-| ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_SCROLLED = 0x00001000 | Event about content being scrolled, sent when scrolling occurs on scrollable components. |
+| ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_SCROLLED = 0x000001000 | Event about content being scrolled, sent when scrolling occurs on scrollable components. |
 | ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ACCESSIBILITY_FOCUSED = 0x00008000 | Accessibility focus event, sent after the UI component receives focus.|
 | ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ACCESSIBILITY_FOCUS_CLEARED = 0x00010000 | Accessibility focus cleared event, sent after the UI component loses focus.|
 | ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_REQUEST_ACCESSIBILITY_FOCUS = 0x02000000 | Event to actively request focus for the specified node.|
@@ -978,7 +978,7 @@ Sets whether the component is in the enabled state for [ArkUI_AccessibilityEleme
 > **NOTE**
 > 
 > - When **isEnabled** is set to **false**, accessibility applications will announce "disabled" or "unavailable," indicating that the component is not currently interactive.
-> - For disabled component (such as a dimmed button), you need to set **isEnabled** to **false** and set **clickable** to **true** through [OH_ArkUI_AccessibilityElementInfoSetClickable](#oh_arkui_accessibilityelementinfosetclickable). In this way, accessibility applications will prompt users that the component exists but is currently unavailable.
+> - For disabled components (such as a dimmed button), you need to set **isEnabled** to **false** and set **clickable** to **true** through [OH_ArkUI_AccessibilityElementInfoSetClickable](#oh_arkui_accessibilityelementinfosetclickable). In this way, accessibility applications will prompt users that the component exists but is currently unavailable.
 > - If both **isEnabled** and **clickable** are set to **false**, accessibility applications may skip the component completely.
 > - **isEnabled** must be explicitly set to **true** for all components with which users need to interact.
 

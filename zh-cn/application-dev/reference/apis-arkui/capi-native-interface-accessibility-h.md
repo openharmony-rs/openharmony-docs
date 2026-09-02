@@ -8,7 +8,7 @@
 
 ## 概述
 
-声明用于访问Native Accessibility的API，提供无障碍相关能力。支持第三方框架将自身UI组件接入ArkUI无障碍服务体系，包括注册无障碍回调、设置和查询无障碍节点信息、主动上报无障碍事件以及适配多实例场景等，使系统无障碍服务能够识别并操作三方框架的UI组件，适用于第三方UI框架需要与系统无障碍能力进行交互的场景。
+声明用于访问Native Accessibility的API，提供无障碍相关能力。支持第三方平台将自身UI组件接入ArkUI无障碍服务体系，包括注册无障碍回调、设置和查询无障碍节点信息、主动上报无障碍事件以及适配多实例场景等，使系统无障碍服务能够识别并操作第三方平台的UI组件，适用于第三方UI框架需要与系统无障碍能力进行交互的场景。
 
 **引用文件：** <arkui/native_interface_accessibility.h>
 
@@ -40,7 +40,7 @@
 | [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) | [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) | 该结构体为无障碍第三方操作提供者，用于承载回调函数的实现。开发者可通过该结构体注册和管理无障碍操作相关的回调，实现自定义的无障碍交互逻辑，适用于需要扩展或定制ArkUI无障碍能力的场景。 |
 | [ArkUI_AccessibilityActionArguments](capi-arkui-accessibility-arkui-accessibilityactionarguments.md) | [ArkUI_AccessibilityActionArguments](capi-arkui-accessibility-arkui-accessibilityactionarguments.md) | 用于设置无障碍操作的具体参数。在进行无障碍操作时，通过该结构体向无障碍服务传递操作所需的附加上下文信息。适用于开发者需要向无障碍服务精确描述无障碍操作细节的场景，例如自定义控件的无障碍读屏播报、辅助功能服务中的操作参数传递、语音助手触发的无障碍交互等应用功能。 |
 | [ArkUI_AccessibilityElementInfoList](capi-arkui-accessibility-arkui-accessibilityelementinfolist.md) | [ArkUI_AccessibilityElementInfoList](capi-arkui-accessibility-arkui-accessibilityelementinfolist.md) | 提供封装[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)的List实例，用于批量存储和管理无障碍元素信息，适用于需要一次获取多个无障碍元素信息的场景。 |
-| [ArkUI_Node*](capi-arkui-nativemodule-arkui-node8h.md) | ArkUI_NodeHandle | 定义 ArkUI Native 组件实例对象指针，用于在 ArkUI Native 接口中标识和传递组件实例，例如创建、挂载、移除或销毁组件节点。<br>**起始版本：** 23  |
+| [ArkUI_Node*](capi-arkui-nativemodule-arkui-node8h.md) | ArkUI_NodeHandle | 定义ArkUI Native组件实例对象指针，用于在ArkUI Native接口中标识和传递组件实例，例如创建、挂载、移除或销毁组件节点。<br>**起始版本：** 12  |
 
 ### 枚举
 
@@ -68,7 +68,7 @@
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetHintText(ArkUI_AccessibilityElementInfo* elementInfo, const char* hintText)](#oh_arkui_accessibilityelementinfosethinttext) | 为[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)设置提示文本。 |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityText(ArkUI_AccessibilityElementInfo* elementInfo, const char* accessibilityText)](#oh_arkui_accessibilityelementinfosetaccessibilitytext) | 为[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)设置无障碍专用的替代文本。 |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityDescription(ArkUI_AccessibilityElementInfo* elementInfo, const char* accessibilityDescription)](#oh_arkui_accessibilityelementinfosetaccessibilitydescription) | 为[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)设置无障碍描述信息。 |
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetChildNodeIds(ArkUI_AccessibilityElementInfo* elementInfo, int32_t childCount, int64_t* childNodeIds)](#oh_arkui_accessibilityelementinfosetchildnodeids) | 为[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)设置孩子节点数量和孩子节点ID集合。 |
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetChildNodeIds(ArkUI_AccessibilityElementInfo* elementInfo, int32_t childCount, int64_t* childNodeIds)](#oh_arkui_accessibilityelementinfosetchildnodeids) | 为[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)设置子节点数量和子节点ID集合。 |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetOperationActions(ArkUI_AccessibilityElementInfo* elementInfo,int32_t operationCount, ArkUI_AccessibleAction* operationActions)](#oh_arkui_accessibilityelementinfosetoperationactions) | 为[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)设置组件支持的无障碍操作列表。<br>**说明：** operationActions用于设置组件支持的无障碍操作集合，每次调用本接口将替换之前设置的所有操作动作（覆盖式更新，非追加）；operationCount必须大于0，且operationActions数组中至少包含operationCount个有效元素。建议根据组件的交互属性注册对应的action类型：可点击组件应包含ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLICK，可长按组件应包含ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_LONG_CLICK。 |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetScreenRect(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleRect* screenRect)](#oh_arkui_accessibilityelementinfosetscreenrect) | 为[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)设置组件在屏幕上的矩形区域。 |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetCheckable(ArkUI_AccessibilityElementInfo* elementInfo, bool checkable)](#oh_arkui_accessibilityelementinfosetcheckable) | 为ArkUI_AccessibilityElementInfo设置是否可勾选。 |
@@ -102,7 +102,7 @@
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundColor(ArkUI_AccessibilityElementInfo* elementInfo, const char* backgroundColor)](#oh_arkui_accessibilityelementinfosetbackgroundcolor) | 为[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)设置背景色。 |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundImage(ArkUI_AccessibilityElementInfo* elementInfo, const char* backgroundImage)](#oh_arkui_accessibilityelementinfosetbackgroundimage) | 为ArkUI_AccessibilityElementInfo设置背景图片。 |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetBlur(ArkUI_AccessibilityElementInfo* elementInfo, const char* blur)](#oh_arkui_accessibilityelementinfosetblur) | 为[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)设置模糊效果。 |
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetHitTestBehavior(ArkUI_AccessibilityElementInfo* elementInfo, const char* hitTestBehavior)](#oh_arkui_accessibilityelementinfosethittestbehavior) | 为[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)设置触摸测试的响应逻辑及节点阻塞规则。取值为“Default”（默认不阻断）、“Block”（阻断自身及子组件）、“Transparent”（自身不响应但子组件可响应）、“None”（自身和子组件都不响应），不能为空指针。 |
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetHitTestBehavior(ArkUI_AccessibilityElementInfo* elementInfo, const char* hitTestBehavior)](#oh_arkui_accessibilityelementinfosethittestbehavior) | 为[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)设置触摸测试的响应逻辑及节点阻塞规则。取值为“Default”（默认行为，自身及子节点响应触摸测试，但阻塞兄弟节点的触摸测试，不影响祖先节点的触摸测试）、“Block”（自身响应触摸测试，阻塞子节点、兄弟节点和祖先节点的触摸测试）、“Transparent”（自身和子节点均响应触摸测试，不阻塞兄弟节点和祖先节点的触摸测试）、“None”（自身不响应触摸测试，不阻塞子节点、兄弟节点和祖先节点的触摸测试），不能为空指针。 |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetComponentIdentifier(ArkUI_AccessibilityElementInfo* elementInfo, const char* identifier)](#oh_arkui_accessibilityelementinfosetcomponentidentifier) | 为无障碍节点信息[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)设置组件标识，可用于自动化测试识别特定组件。|
 | [ArkUI_AccessibilityElementInfo* OH_ArkUI_CreateAccessibilityElementInfo(void)](#oh_arkui_createaccessibilityelementinfo) | 创建一个[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)对象，创建后需要调用[OH_ArkUI_DestoryAccessibilityElementInfo](#oh_arkui_destoryaccessibilityelementinfo)释放。 |
 | [void OH_ArkUI_DestoryAccessibilityElementInfo(ArkUI_AccessibilityElementInfo* elementInfo)](#oh_arkui_destoryaccessibilityelementinfo) | 销毁一个[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)对象。 |
@@ -113,7 +113,7 @@
 | [int32_t OH_ArkUI_AccessibilityEventSetRequestFocusId(ArkUI_AccessibilityEventInfo* eventInfo,  int32_t requestFocusId)](#oh_arkui_accessibilityeventsetrequestfocusid) | 为[ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md)设置请求聚焦的无障碍节点elementId。在发送无障碍事件（如[ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_REQUEST_ACCESSIBILITY_FOCUS](#arkui_accessibilityeventtype)）时，可通过此接口指定需要获焦的节点ID，使无障碍服务在处理事件时将辅助焦点移动到指定节点。适用于需要主动引导用户关注特定元素的场景，如页面跳转后引导焦点到新页面的首个可交互元素。 |
 | [int32_t OH_ArkUI_AccessibilityEventSetElementInfo(ArkUI_AccessibilityEventInfo* eventInfo,  ArkUI_AccessibilityElementInfo* elementInfo)](#oh_arkui_accessibilityeventsetelementinfo) | 为[ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md)设置关联的无障碍节点信息（elementInfo），用于指定事件对应的无障碍节点。 |
 | [int32_t OH_ArkUI_FindAccessibilityActionArgumentByKey(ArkUI_AccessibilityActionArguments* arguments, const char* key, char** value)](#oh_arkui_findaccessibilityactionargumentbykey) | 获取[ArkUI_AccessibilityActionArguments](capi-arkui-accessibility-arkui-accessibilityactionarguments.md)中指定key的value值。 |
-| [int32_t OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(ArkUI_NodeHandle* node, ArkUI_AccessibilityProvider** provider)](#oh_arkui_nativemodule_getnativeaccessibilityprovider) |获取指向[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)对象指针的二级指针变量。<br>其中[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)对象与传入的[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)的实例一一对应。<br>三方框架将自身UI组件映射为[ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype)类型的[RenderNode](js-apis-arkui-renderNode.md)并得到[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)。<br>再调用OH_ArkUI_NativeModule_GetNativeAccessibilityProvider接口获取[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)指针，并通过[OH_ArkUI_AccessibilityProviderRegisterCallback](#oh_arkui_accessibilityproviderregistercallback)或[OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](#oh_arkui_accessibilityproviderregistercallbackwithinstance)注册无障碍回调。<br>最终实现ArkUI无障碍服务对三方框架UI的识别与事件触发。<br>仅当三方框架将自身UI组件映射为[ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype)的[RenderNode](js-apis-arkui-renderNode.md)，该接口才会生效，否则会报错误码。<br>本接口通过[RenderNode](js-apis-arkui-renderNode.md)实现三方框架的接入，仅支持[ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype)接入无障碍服务，可以实现无障碍控件树获取能力。<br>不支持多线程并发，由三方框架保证调用时的线程安全。|
+| [int32_t OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(ArkUI_NodeHandle* node, ArkUI_AccessibilityProvider** provider)](#oh_arkui_nativemodule_getnativeaccessibilityprovider) |获取指向[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)对象指针的二级指针变量。<br>其中[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)对象与传入的[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)的实例一一对应。<br>第三方平台将自身UI组件映射为[ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype)类型的[RenderNode](js-apis-arkui-renderNode.md)并得到[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)。<br>再调用OH_ArkUI_NativeModule_GetNativeAccessibilityProvider接口获取[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)指针，并通过[OH_ArkUI_AccessibilityProviderRegisterCallback](#oh_arkui_accessibilityproviderregistercallback)或[OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](#oh_arkui_accessibilityproviderregistercallbackwithinstance)注册无障碍回调。<br>最终实现ArkUI无障碍服务对第三方平台UI的识别与事件触发。<br>仅当第三方平台将自身UI组件映射为[ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype)的[RenderNode](js-apis-arkui-renderNode.md)，该接口才会生效，否则会报错误码。<br>本接口通过[RenderNode](js-apis-arkui-renderNode.md)实现第三方平台的接入，仅支持[ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype)接入无障碍服务，可以实现无障碍控件树获取能力。<br>不支持多线程并发，由第三方平台保证调用时的线程安全。|
 
 ## 枚举类型说明
 
@@ -138,7 +138,7 @@ Accessibility操作类型的枚举。
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_GAIN_ACCESSIBILITY_FOCUS = 0x00000040 | 表示获取辅助功能焦点的操作，执行后对应组件将获得无障碍焦点。                                                                                                            |
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLEAR_ACCESSIBILITY_FOCUS = 0x00000080 | 表示清除辅助功能焦点的操作。                                                                                                                    |
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SCROLL_FORWARD = 0x00000100 | 滚动组件响应向前滚动动作。                                                                                                                     |
-| ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SCROLL_BACKWARD = 0x00000200 | 滚动组件响应反向滚动操作。                                                                                                                     |
+| ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SCROLL_BACKWARD = 0x00000200 | 滚动组件响应向后滚动操作。                                                                                                                     |
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_COPY = 0x00000400 | 复制文本组件的选定内容。                                                                                                                      |
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_PASTE = 0x00000800 | 粘贴文本组件的选定内容。                                                                                                                      |
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CUT = 0x00001000 | 剪切文本组件的选定内容。                                                                                                                      |
@@ -196,8 +196,8 @@ Accessibility错误代码状态的枚举。
 | -- | -- |
 | ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL = 0 | 成功。 |
 | ARKUI_ACCESSIBILITY_NATIVE_RESULT_FAILED = -1 | 操作失败，请检查接口调用流程。可能原因：接口执行过程中出现内部错误。解决措施：请检查调用流程是否正确，若问题持续存在请排查系统状态。 |
-| ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER = -2 | 无效参数，请检查传入的参数是否正确。可能原因:传入的参数为空指针或不符合接口要求。解决措施:请检查传入参数是否合法,确保指针不为空且参数值在有效范围内。 |
-| ARKUI_ACCESSIBILITY_NATIVE_RESULT_OUT_OF_MEMORY = -3 | 内存不足，请检查系统内存使用情况。可能原因:系统内存资源不足,无法完成操作。解决措施:请释放不必要的资源后重试。 |
+| ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER = -2 | 无效参数，请检查传入的参数是否正确。可能原因：传入的参数为空指针或不符合接口要求。解决措施：请检查传入参数是否合法，确保指针不为空且参数值在有效范围内。 |
+| ARKUI_ACCESSIBILITY_NATIVE_RESULT_OUT_OF_MEMORY = -3 | 内存不足，请检查系统内存使用情况。可能原因：系统内存资源不足，无法完成操作。解决措施：请释放不必要的资源后重试。 |
 
 ### ArkUI_AccessibilitySearchMode
 
@@ -217,8 +217,8 @@ Accessibility搜索类型的枚举。
 | ARKUI_ACCESSIBILITY_NATIVE_SEARCH_MODE_PREFETCH_CURRENT = 0 | 查询当前节点。 |
 | ARKUI_ACCESSIBILITY_NATIVE_SEARCH_MODE_PREFETCH_PREDECESSORS = 1 << 0 | 查询父节点。 |
 | ARKUI_ACCESSIBILITY_NATIVE_SEARCH_MODE_PREFETCH_SIBLINGS = 1 << 1 | 查询兄弟节点。 |
-| ARKUI_ACCESSIBILITY_NATIVE_SEARCH_MODE_PREFETCH_CHILDREN = 1 << 2 | 查询下一层孩子节点。 |
-| ARKUI_ACCESSIBILITY_NATIVE_SEARCH_MODE_PREFETCH_RECURSIVE_CHILDREN = 1 << 3 | 查询所有孩子节点。 |
+| ARKUI_ACCESSIBILITY_NATIVE_SEARCH_MODE_PREFETCH_CHILDREN = 1 << 2 | 查询下一层子节点。 |
+| ARKUI_ACCESSIBILITY_NATIVE_SEARCH_MODE_PREFETCH_RECURSIVE_CHILDREN = 1 << 3 | 查询所有子节点。 |
 
 ### ArkUI_AccessibilityFocusType
 
@@ -391,8 +391,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetElementId(ArkUI_AccessibilityElement
 > **说明**
 > 
 > - elementId是无障碍组件树中节点的唯一标识，用于无障碍服务定位和引用特定节点。无障碍服务查找节点信息、执行操作和移动焦点时均依赖此标识。
-> - 三方框架需保证同一组件树中各节点的elementId全局唯一，否则可能导致无障碍服务无法正确查找节点。
-> - elementId的值由三方框架自行分配和维护，建议使用递增整数或稳定的组件标识。
+> - 第三方平台需保证同一组件树中各节点的elementId全局唯一，否则可能导致无障碍服务无法正确查找节点。
+> - elementId的值由第三方平台自行分配和维护，建议使用递增整数或稳定的组件标识。
 
 **起始版本：** 13
 
@@ -455,8 +455,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetComponentType(ArkUI_AccessibilityEle
 > **说明**
 > 
 > - componentType用于标识无障碍节点的组件类型，如Button、Text、Image、List。
-> - 无障碍服务（如无障碍辅助应用）根据组件类型决定如何向用户描述和交互该节点。例如，Button类型会被朗读为按钮，Text类型会被朗读为文本。三方框架可使用自身组件类型名称，建议使用与ArkUI组件名称一致的字符串以便获得最佳朗读效果。
-> - 建议使用的组件类型名称包括：[Button](arkui-ts/ts-basic-components-button.md)、[Text](arkui-ts/ts-basic-components-text.md)、[Image](arkui-ts/ts-basic-components-image.md)、[List](arkui-ts/ts-container-list.md)、[TextInput](arkui-ts/ts-basic-components-textinput.md)、[Slider](arkui-ts/ts-basic-components-slider.md)、[Rating](arkui-ts/ts-basic-components-rating.md)、[Progress](arkui-ts/ts-basic-components-progress.md)、[CheckBox](arkui-ts/ts-basic-components-checkbox.md)、[Toggle](arkui-ts/ts-basic-components-toggle.md)、[Grid](arkui-ts/ts-container-grid.md)、[Swiper](arkui-ts/ts-container-swiper.md)、[Select](arkui-ts/ts-basic-components-select.md)、[Tab](arkui-ts/ts-container-tabs.md)。
+> - 无障碍服务（如无障碍辅助应用）根据组件类型决定如何向用户描述和交互该节点。例如，Button类型会被朗读为按钮，Text类型会被朗读为文本。第三方平台可使用自身组件类型名称，建议使用与ArkUI组件名称一致的字符串以便获得最佳朗读效果。
+> - 建议使用的组件类型名称包括：[Button](arkui-ts/ts-basic-components-button.md)、[Text](arkui-ts/ts-basic-components-text.md)、[Image](arkui-ts/ts-basic-components-image.md)、[List](arkui-ts/ts-container-list.md)、[TextInput](arkui-ts/ts-basic-components-textinput.md)、[Slider](arkui-ts/ts-basic-components-slider.md)、[Rating](arkui-ts/ts-basic-components-rating.md)、[Progress](arkui-ts/ts-basic-components-progress.md)、[Checkbox](arkui-ts/ts-basic-components-checkbox.md)、[Toggle](arkui-ts/ts-basic-components-toggle.md)、[Grid](arkui-ts/ts-container-grid.md)、[Swiper](arkui-ts/ts-container-swiper.md)、[Select](arkui-ts/ts-basic-components-select.md)、[Tabs](arkui-ts/ts-container-tabs.md)。
 
 **起始版本：** 13
 
@@ -489,7 +489,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetContents(ArkUI_AccessibilityElementI
 > - contents是组件的主要文本内容，无障碍辅助应用会将其作为主要播报内容朗读给用户。
 > - 对于文本类组件（如[Text](arkui-ts/ts-basic-components-text.md)、[TextInput](arkui-ts/ts-basic-components-textinput.md)），contents通常设置为组件显示的文本。
 > - 对于非文本类组件（如[Button](arkui-ts/ts-basic-components-button.md)、[Image](arkui-ts/ts-basic-components-image.md)），若设置了accessibilityText，则无障碍辅助应用优先使用accessibilityText。
-> - 通过[OH_ArkUI_AccessibilityElementInfoSetAccessibilityText](#oh_arkui_accessibilityelementinfosetaccessibilitytext)设置accessibilityText，否则使用contents作为朗读内容。
+> - 若未通过[OH_ArkUI_AccessibilityElementInfoSetAccessibilityText](#oh_arkui_accessibilityelementinfosetaccessibilitytext)设置accessibilityText，则使用contents作为朗读内容。
 > - 当组件同时设置了contents和accessibilityText时，无障碍辅助应用优先使用accessibilityText。
 > - contents不支持传入空指针，传入空指针将返回[ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。
 
@@ -633,8 +633,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetChildNodeIds(ArkUI_AccessibilityElem
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)的指针。 |
-| int32_t childCount | 表示孩子节点数量，必须大于0。 |
-| int64_t* childNodeIds | 表示孩子节点id集合，每个ID应指向已存在的子节点elementId，不能为空指针。 |
+| int32_t childCount | 表示子节点数量，必须大于0。 |
+| int64_t* childNodeIds | 表示子节点id集合，每个ID应指向已存在的子节点elementId，不能为空指针。 |
 
 **返回：**
 
@@ -721,9 +721,9 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetCheckable(ArkUI_AccessibilityElement
 
 > **说明**
 > 
-> - 适用于具备可勾选语义的组件（例如ArkUI的[CheckBox](arkui-ts/ts-basic-components-checkbox.md)、[Toggle](arkui-ts/ts-basic-components-toggle.md)、[Radio](arkui-ts/ts-basic-components-radio.md)）。
+> - 适用于具备可勾选语义的组件（例如ArkUI的[Checkbox](arkui-ts/ts-basic-components-checkbox.md)、[Toggle](arkui-ts/ts-basic-components-toggle.md)、[Radio](arkui-ts/ts-basic-components-radio.md)）。
 > - 无障碍辅助应用会根据checkable状态向用户播报“可勾选”提示，并告知用户可以通过操作来切换勾选状态。
-> - 设置checkable为true时，应同时通过[OH_ArkUI_AccessibilityElementInfoSetChecked](#oh_arkui_accessibilityelementinfosetchecked)来设置checked来表示当前勾选状态。
+> - 设置checkable为true时，应同时通过[OH_ArkUI_AccessibilityElementInfoSetChecked](#oh_arkui_accessibilityelementinfosetchecked)设置checked，以表示当前勾选状态。
 
 **起始版本：** 13
 
@@ -886,7 +886,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityFocused(ArkUI_Accessibi
 > 
 > - 当用户通过辅助应用的焦点移动操作浏览界面时，被聚焦的节点accessibilityFocused应为true。
 > - 无障碍辅助应用会对accessibilityFocused为true的节点播报其内容，并在屏幕上绘制焦点高亮框。
-> - 无障碍服务在执行[ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_GAIN_ACCESSIBILITY_FOCUS](#arkui_accessibility_actiontype)和[ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLEAR_ACCESSIBILITY_FOCUS](#arkui_accessibility_actiontype)操作时，三方框架应相应更新此状态，并通过发送[ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ACCESSIBILITY_FOCUSED](#arkui_accessibilityeventtype)或[ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ACCESSIBILITY_FOCUS_CLEARED](#arkui_accessibilityeventtype)事件通知系统。
+> - 无障碍服务在执行[ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_GAIN_ACCESSIBILITY_FOCUS](#arkui_accessibility_actiontype)和[ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLEAR_ACCESSIBILITY_FOCUS](#arkui_accessibility_actiontype)操作时，第三方平台应相应更新此状态，并通过发送[ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ACCESSIBILITY_FOCUSED](#arkui_accessibilityeventtype)或[ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ACCESSIBILITY_FOCUS_CLEARED](#arkui_accessibilityeventtype)事件通知系统。
 > - accessibilityFocused与isFocused不同：前者是无障碍辅助焦点，后者是输入焦点（键盘焦点）。
 
 **起始版本：** 13
@@ -918,8 +918,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetSelected(ArkUI_AccessibilityElementI
 
 > **说明**
 > 
-> - 适用于具备选中语义的组件（例如ArkUI的[Tab](arkui-ts/ts-container-tabs.md)、[ListItem](arkui-ts/ts-container-listitem.md)）。
-> - 无障碍辅助应用会根据selected状态播报“已选中”或“未选中”。在[Tab](arkui-ts/ts-container-tabs.md)页签场景中，selected为true的Tab页签会被朗读为当前活动页签。
+> - 适用于具备选中语义的组件（例如ArkUI的[Tabs](arkui-ts/ts-container-tabs.md)、[ListItem](arkui-ts/ts-container-listitem.md)）。
+> - 无障碍辅助应用会根据selected状态播报“已选中”或“未选中”。在[Tabs](arkui-ts/ts-container-tabs.md)页签场景中，selected为true的Tabs页签会被朗读为当前活动页签。
 > - 在列表场景中，selected可与accessibilityGroup（通过[OH_ArkUI_AccessibilityElementInfoSetAccessibilityGroup](#oh_arkui_accessibilityelementinfosetaccessibilitygroup)设置）配合使用，标记当前激活的列表项。
 
 **起始版本：** 13
@@ -951,7 +951,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetClickable(ArkUI_AccessibilityElement
 
 > **说明**
 > 
-> - 无障碍辅助应用会向用户提示该组件可点击，用户可通过辅助应用执行点击操作时，系统会通过[ArkUI_AccessibilityProviderCallbacks](capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md)中的executeAccessibilityAction回调通知三方框架。
+> - 无障碍辅助应用会向用户提示该组件可点击，当用户通过辅助应用执行点击操作时，系统会通过[ArkUI_AccessibilityProviderCallbacks](capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md)中的executeAccessibilityAction回调通知第三方平台。
 > - 设置clickable为true时，通常需要通过[OH_ArkUI_AccessibilityElementInfoSetOperationActions](#oh_arkui_accessibilityelementinfosetoperationactions)在operationActions中添加[ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLICK](#arkui_accessibility_actiontype)，否则用户无法通过辅助应用对该组件执行点击操作。
 > - clickable与enabled（通过[OH_ArkUI_AccessibilityElementInfoSetEnabled](#oh_arkui_accessibilityelementinfosetenabled)设置）应配合使用：当clickable为true但enabled为false时，无障碍辅助应用会播报“已禁用”，提示用户该组件虽可点击但当前不可用。
 
@@ -984,7 +984,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetLongClickable(ArkUI_AccessibilityEle
 
 > **说明**
 > 
-> - 无障碍辅助应用会向用户提示该组件支持长按，用户可通过辅助应用执行长按操作时，系统会通过[ArkUI_AccessibilityProviderCallbacks](capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md)中的executeAccessibilityAction回调通知三方框架。
+> - 无障碍辅助应用会向用户提示该组件支持长按，当用户通过辅助应用执行长按操作时，系统会通过[ArkUI_AccessibilityProviderCallbacks](capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md)中的executeAccessibilityAction回调通知第三方平台。
 > - 设置longClickable为true时，通常需要通过[OH_ArkUI_AccessibilityElementInfoSetOperationActions](#oh_arkui_accessibilityelementinfosetoperationactions)在operationActions中添加[ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_LONG_CLICK](#arkui_accessibility_actiontype)。
 > - 否则用户无法通过辅助应用对该组件执行长按操作。
 
@@ -1290,8 +1290,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextStart(ArkUI_Accessibilit
 >
 > - selectedTextStart用于文本类可编辑组件，标记当前选中文本的起始字符索引位置（从0开始计数）。
 > - 无障碍辅助应用等辅助应用会根据selectedTextStart和selectedTextEnd播报当前选中的文本范围。
-> - 当用户通过辅助应用执行[ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SELECT_TEXT](#arkui_accessibility_actiontype)操作时，三方框架应获取起始位置。
-> - 通过[ArkUI_AccessibilityActionArguments](capi-arkui-accessibility-arkui-accessibilityactionarguments.md)中的selectTextBegin参数获取起始位置。
+> - 当用户通过辅助应用执行[ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SELECT_TEXT](#arkui_accessibility_actiontype)操作时，第三方平台应通过[ArkUI_AccessibilityActionArguments](capi-arkui-accessibility-arkui-accessibilityactionarguments.md)中的selectTextBegin参数获取起始位置。
 > - selectedTextStart应与selectedTextEnd（通过[OH_ArkUI_AccessibilityElementInfoSetSelectedTextEnd](#oh_arkui_accessibilityelementinfosetselectedtextend)设置）配合使用，且selectedTextStart不应大于selectedTextEnd。
 
 **起始版本：** 13
@@ -1357,7 +1356,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetCurrentItemIndex(ArkUI_Accessibility
 
 > **说明**
 > 
-> - currentItemIndex用于[List](arkui-ts/ts-container-list.md)、[Select](arkui-ts/ts-basic-components-select.md)、[Swiper](arkui-ts/ts-container-swiper.md)、[Tab](arkui-ts/ts-container-tabs.md)等容器类组件，表示当前获得焦点或处于激活状态的子项在容器中的位置索引（从0开始计数）。
+> - currentItemIndex用于[List](arkui-ts/ts-container-list.md)、[Select](arkui-ts/ts-basic-components-select.md)、[Swiper](arkui-ts/ts-container-swiper.md)、[Tabs](arkui-ts/ts-container-tabs.md)等容器类组件，表示当前获得焦点或处于激活状态的子项在容器中的位置索引（从0开始计数）。
 > - 无障碍辅助应用会播报当前项的位置信息，如“第3项，共10项”。
 > - currentItemIndex应与itemCount（通过[OH_ArkUI_AccessibilityElementInfoSetItemCount](#oh_arkui_accessibilityelementinfosetitemcount)设置）配合使用，以便辅助应用播报“第X项，共Y项”的完整信息。
 > - currentItemIndex的值应在0到itemCount-1的范围内。
@@ -1370,7 +1369,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetCurrentItemIndex(ArkUI_Accessibility
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)的指针。 |
-| int32_t currentItemIndex | 当前获焦控件的位置索引（从0开始），取值范围为[0, itemCount-1]。应与itemCount配合使用。适用于[List](arkui-ts/ts-container-list.md)、[Select](arkui-ts/ts-basic-components-select.md)、[Swiper](arkui-ts/ts-container-swiper.md)、[Tab](arkui-ts/ts-container-tabs.md)等容器组件。 |
+| int32_t currentItemIndex | 当前获焦控件的位置索引（从0开始），取值范围为[0, itemCount-1]。应与itemCount配合使用。适用于[List](arkui-ts/ts-container-list.md)、[Select](arkui-ts/ts-basic-components-select.md)、[Swiper](arkui-ts/ts-container-swiper.md)、[Tabs](arkui-ts/ts-container-tabs.md)等容器组件。 |
 
 **返回：**
 
@@ -1391,7 +1390,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetStartItemIndex(ArkUI_AccessibilityEl
 
 > **说明**
 > 
-> - startItemIndex用于[List](arkui-ts/ts-container-list.md)、[Select](arkui-ts/ts-basic-components-select.md)、[Swiper](arkui-ts/ts-container-swiper.md)、[Tab](arkui-ts/ts-container-tabs.md)等可滚动容器组件，表示当前屏幕可见区域中第一个子项的位置索引（从0开始计数）。
+> - startItemIndex用于[List](arkui-ts/ts-container-list.md)、[Select](arkui-ts/ts-basic-components-select.md)、[Swiper](arkui-ts/ts-container-swiper.md)、[Tabs](arkui-ts/ts-container-tabs.md)等可滚动容器组件，表示当前屏幕可见区域中第一个子项的位置索引（从0开始计数）。
 > - 无障碍辅助应用等辅助应用根据startItemIndex和endItemIndex（通过[OH_ArkUI_AccessibilityElementInfoSetEndItemIndex](#oh_arkui_accessibilityelementinfosetenditemindex)设置）判断可见区域范围，用于优化焦点移动和播报。
 > - startItemIndex应小于等于endItemIndex，且两者均应在0到itemCount-1的范围内。
 
@@ -1403,7 +1402,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetStartItemIndex(ArkUI_AccessibilityEl
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)的指针。 |
-| int32_t startItemIndex | 当前屏幕可见区域中第一个元素的位置索引（从0开始）。List、Select、Swiper、[Tab](arkui-ts/ts-container-tabs.md)等容器组件使用。 |
+| int32_t startItemIndex | 当前屏幕可见区域中第一个元素的位置索引（从0开始）。List、Select、Swiper、[Tabs](arkui-ts/ts-container-tabs.md)等容器组件使用。 |
 
 **返回：**
 
@@ -1424,7 +1423,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetEndItemIndex(ArkUI_AccessibilityElem
 
 > **说明**
 > 
-> - endItemIndex用于[List](arkui-ts/ts-container-list.md)、[Select](arkui-ts/ts-basic-components-select.md)、[Swiper](arkui-ts/ts-container-swiper.md)、[Tab](arkui-ts/ts-container-tabs.md)等可滚动容器组件，表示当前屏幕可见区域中最后一个子项的位置索引（从0开始计数）。
+> - endItemIndex用于[List](arkui-ts/ts-container-list.md)、[Select](arkui-ts/ts-basic-components-select.md)、[Swiper](arkui-ts/ts-container-swiper.md)、[Tabs](arkui-ts/ts-container-tabs.md)等可滚动容器组件，表示当前屏幕可见区域中最后一个子项的位置索引（从0开始计数）。
 > - 无障碍辅助应用等辅助应用根据startItemIndex（通过[OH_ArkUI_AccessibilityElementInfoSetStartItemIndex](#oh_arkui_accessibilityelementinfosetstartitemindex)设置）和endItemIndex判断可见区域范围，当用户执行滚动操作时，辅助应用可据此播报滚动进度。
 > - endItemIndex应大于等于startItemIndex，且两者均应在0到itemCount-1的范围内。
 
@@ -1436,7 +1435,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetEndItemIndex(ArkUI_AccessibilityElem
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)的指针。 |
-| int32_t endItemIndex | 当前屏幕可见区域中最后一个元素的位置索引（从0开始），取值范围为[0, itemCount-1]，且应大于等于startItemIndex。List、Select、Swiper、[Tab](arkui-ts/ts-container-tabs.md)等容器组件使用。 |
+| int32_t endItemIndex | 当前屏幕可见区域中最后一个元素的位置索引（从0开始），取值范围为[0, itemCount-1]，且应大于等于startItemIndex。List、Select、Swiper、[Tabs](arkui-ts/ts-container-tabs.md)等容器组件使用。 |
 
 **返回：**
 
@@ -1457,7 +1456,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetItemCount(ArkUI_AccessibilityElement
 
 > **说明**
 > 
-> - itemCount用于[List](arkui-ts/ts-container-list.md)、[Select](arkui-ts/ts-basic-components-select.md)、[Swiper](arkui-ts/ts-container-swiper.md)、[Tab](arkui-ts/ts-container-tabs.md)等容器类组件，表示容器中子项的总数量。
+> - itemCount用于[List](arkui-ts/ts-container-list.md)、[Select](arkui-ts/ts-basic-components-select.md)、[Swiper](arkui-ts/ts-container-swiper.md)、[Tabs](arkui-ts/ts-container-tabs.md)等容器类组件，表示容器中子项的总数量。
 > - 无障碍辅助应用等辅助应用结合currentItemIndex（通过[OH_ArkUI_AccessibilityElementInfoSetCurrentItemIndex](#oh_arkui_accessibilityelementinfosetcurrentitemindex)设置）和itemCount播报位置信息，如“第3项，共10项”。
 > - itemCount的值应为容器中所有子项的总数（包括可见和不可见的），而不仅是当前屏幕可见区域的子项数。
 > - itemCount应为非负整数，设置为0表示容器为空。
@@ -1470,7 +1469,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetItemCount(ArkUI_AccessibilityElement
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)的指针。 |
-| int32_t itemCount | 表示容器中子项的总数（包括可见和不可见的），应为非负整数，0表示容器为空。用于辅助应用播报“第X项，共Y项”。如[List](arkui-ts/ts-container-list.md)、[Select](arkui-ts/ts-basic-components-select.md)、[Swiper](arkui-ts/ts-container-swiper.md)、[Tab](arkui-ts/ts-container-tabs.md)等容器组件使用。 |
+| int32_t itemCount | 表示容器中子项的总数（包括可见和不可见的），应为非负整数，0表示容器为空。用于辅助应用播报“第X项，共Y项”。如[List](arkui-ts/ts-container-list.md)、[Select](arkui-ts/ts-basic-components-select.md)、[Swiper](arkui-ts/ts-container-swiper.md)、[Tabs](arkui-ts/ts-container-tabs.md)等容器组件使用。 |
 
 **返回：**
 
@@ -1493,7 +1492,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOffset(ArkUI_Accessibil
 > 
 > - offset用于可滚动类容器组件（如[List](arkui-ts/ts-container-list.md)、[Grid](arkui-ts/ts-container-grid.md)、[Scroll](arkui-ts/ts-container-scroll.md)），表示内容区相对于元素顶部坐标的滚动像素偏移量。
 > - 无障碍服务使用offset来判断滚动位置，辅助应用可据此播报滚动进度。
-> - 当用户执行[ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SCROLL_FORWARD](#arkui_accessibility_actiontype)或[ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SCROLL_BACKWARD](#arkui_accessibility_actiontype)操作后，三方框架应在更新后的节点信息中同步更新offset值。
+> - 当用户执行[ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SCROLL_FORWARD](#arkui_accessibility_actiontype)或[ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SCROLL_BACKWARD](#arkui_accessibility_actiontype)操作后，第三方平台应在更新后的节点信息中同步更新offset值。
 > - offset为0表示内容区未滚动（处于初始位置），正值表示向下/向右滚动的像素距离。
 
 **起始版本：** 13
@@ -1641,7 +1640,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOpacity(ArkUI_Accessibi
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)的指针。 |
-| float opacity | 表示透明度。取值范围[0, 1]，包含0和1，其中1表示完全不透明，0表示完全透明。超出范围时按边界值截断处理。[UiTest](../apis-test-kit/js-apis-uitest.md)需要使用。|
+| float opacity | 表示透明度。取值范围[0, 1]，包含0和1，其中1表示完全不透明，0表示完全透明。超出0到1范围的值不会被自动修正，建议始终传入0到1之间的有效值。[UiTest](../apis-test-kit/js-apis-uitest.md)需要使用。|
 
 **返回：**
 
@@ -1761,10 +1760,10 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetHitTestBehavior(ArkUI_AccessibilityE
 > 
 > - hitTestBehavior用于控制组件在触摸测试过程中的响应行为，决定触摸事件是否可以穿透该组件。
 > - 此属性主要供UiTest自动化测试框架使用。取值范围参考HitTestMode，包括：
-> - “Default”：默认行为，不阻断触摸事件。
-> - “Block”：阻断自身及子组件的触摸事件。
-> - “Transparent”：自身不响应触摸事件，但子组件可以响应。
-> - “None”：自身和子组件都不响应触摸事件。
+> - “Default”：默认触摸测试效果，自身及子节点响应触摸测试，但阻塞兄弟节点的触摸测试，不影响祖先节点的触摸测试。
+> - “Block”：自身响应触摸测试，阻塞子节点、兄弟节点和祖先节点的触摸测试。
+> - “Transparent”：自身和子节点均响应触摸测试，不会阻塞兄弟节点和祖先节点的触摸测试。
+> - “None”：自身不响应触摸测试，不会阻塞子节点、兄弟节点和祖先节点的触摸测试。
 > - hitTestBehavior不支持传入空指针，传入空指针将返回[ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。
 
 **起始版本：** 13
@@ -1775,7 +1774,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetHitTestBehavior(ArkUI_AccessibilityE
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)的指针。 |
-| const char* hitTestBehavior | 表示触摸测试响应模式，取值为“Default”（默认行为，不阻断触摸事件）、“Block”（阻断自身及子组件的触摸事件）、“Transparent”（自身不响应但子组件可响应）、“None”（自身和子组件都不响应），不能为空指针。 |
+| const char* hitTestBehavior | 表示触摸测试响应模式，取值如下，不能为空指针：<br>- “Default”：默认行为，自身及子节点响应触摸测试，但阻塞兄弟节点的触摸测试，不影响祖先节点的触摸测试。<br>- “Block”：自身响应触摸测试，阻塞子节点、兄弟节点和祖先节点的触摸测试。<br>- “Transparent”：自身和子节点均响应触摸测试，不阻塞兄弟节点和祖先节点的触摸测试。<br>- “None”：自身不响应触摸测试，不阻塞子节点、兄弟节点和祖先节点的触摸测试。 |
 
 **返回：**
 
@@ -2036,17 +2035,17 @@ int32_t OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(ArkUI_NodeHandle* n
 
 其中[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)对象与传入的[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)的实例一一对应。
 
-三方框架将自身UI组件映射为[ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype)类型的[RenderNode](js-apis-arkui-renderNode.md)并得到[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)。
+第三方平台将自身UI组件映射为[ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype)类型的[RenderNode](js-apis-arkui-renderNode.md)并得到[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)。
 
 再调用OH_ArkUI_NativeModule_GetNativeAccessibilityProvider接口获取[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)指针并注册无障碍回调。
 
-最终实现ArkUI无障碍服务对三方框架UI的识别与事件触发。
+最终实现ArkUI无障碍服务对第三方平台UI的识别与事件触发。
 
-仅当三方框架将自身UI组件映射为[ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype)的[RenderNode](js-apis-arkui-renderNode.md)，该接口才会生效，否则会报错误码。
+仅当第三方平台将自身UI组件映射为[ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype)的[RenderNode](js-apis-arkui-renderNode.md)，该接口才会生效，否则会报错误码。
 
-本接口通过[RenderNode](js-apis-arkui-renderNode.md)实现三方框架的接入，仅支持[ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype)接入无障碍服务，可以实现无障碍控件树获取能力。
+本接口通过[RenderNode](js-apis-arkui-renderNode.md)实现第三方平台的接入，仅支持[ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype)接入无障碍服务，可以实现无障碍控件树获取能力。
 
-不支持多线程并发，由三方框架保证调用时的线程安全。
+不支持多线程并发，由第三方平台保证调用时的线程安全。
 
 **起始版本：** 23
 

@@ -6,7 +6,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-StartOptions作为启动UIAbility接口（例如[startAbility()](js-apis-inner-application-uiAbilityContext.md#startability-1)）的入参，用于指定目标UIAbility启动时的选项，包括但不局限于窗口模式、目标UIAbility启动时所在的屏幕等。
+StartOptions作为启动UIAbility接口（例如[startAbility()](js-apis-inner-application-uiAbilityContext.md#startability-1)）的入参，用于指定目标UIAbility启动时的选项，包括但不限于窗口模式、目标UIAbility启动时所在的屏幕等。
 
 > **说明：**
 >

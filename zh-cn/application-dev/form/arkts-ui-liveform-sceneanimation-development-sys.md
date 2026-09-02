@@ -32,12 +32,12 @@
 
 ## 卡片长时间保持激活态
 
-系统应用支持通过接口控制卡片状态切换，卡片可长时间保持激活态（后文简称为长时激活态，处于该状态的卡片简称为长时激活卡片）。卡片状态切换由[formProvider.activateSceneAnimation](../reference/apis-form-kit/js-apis-app-form-formProvider-sys.md#activatesceneanimation20)和[formProvider.deactivateSceneAnimation](../reference/apis-form-kit/js-apis-app-form-formProvider-sys.md#deactivatesceneanimation20)接口控制。此时卡片动效渲染区域和卡片自身等大，无破框效果。
+系统应用支持通过接口控制卡片状态切换，卡片可长时间保持激活态（后文简称为长时激活态，处于该状态的卡片简称为长时激活卡片）。卡片状态切换由[formProvider.activateSceneAnimation](../reference/apis-form-kit/js-apis-app-form-formProvider-sys.md#formprovideractivatesceneanimation20)和[formProvider.deactivateSceneAnimation](../reference/apis-form-kit/js-apis-app-form-formProvider-sys.md#formproviderdeactivatesceneanimation20)接口控制。此时卡片动效渲染区域和卡片自身等大，无破框效果。
 
 ### 长时激活卡片动效
 
 长时激活卡片支持调用[formProvider.requestOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderrequestoverflow20)接口发起互动卡片动效请求。
-- 如果接口中传入的动效持续时长overflowInfo.duration大于等于60秒，动效请求申请成功且一直保持。当调用[cancelOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidercanceloverflow20)接口取消动效、[formProvider.deactivateSceneAnimation](../reference/apis-form-kit/js-apis-app-form-formProvider-sys.md#deactivatesceneanimation20)接口切换为非激活态或其他卡片申请动效成功，当前卡片才会退出动效并切换为非激活态。
+- 如果接口中传入的动效持续时长overflowInfo.duration大于等于60秒，动效请求申请成功且一直保持。当调用[cancelOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidercanceloverflow20)接口取消动效、[formProvider.deactivateSceneAnimation](../reference/apis-form-kit/js-apis-app-form-formProvider-sys.md#formproviderdeactivatesceneanimation20)接口切换为非激活态或其他卡片申请动效成功，当前卡片才会退出动效并切换为非激活态。
 - 如果接口中传入的动效持续时长overflowInfo.duration小于60秒，发起动效请求失败。
 
 ### 长时激活卡片状态信息同步
@@ -58,7 +58,7 @@
 1. 系统限制长时间保持激活态卡片不超过5个，超过5个时将淘汰最早切换为激活态的卡片。
 2. 互动卡片申请动效成功后，满足以下任一条件时会打断当前卡片动效并切换至非激活态：
    - 调用[cancelOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidercanceloverflow20)接口取消动效。
-   - 调用[formProvider.deactivateSceneAnimation](../reference/apis-form-kit/js-apis-app-form-formProvider-sys.md#deactivatesceneanimation20)接口切换为非激活态。
+   - 调用[formProvider.deactivateSceneAnimation](../reference/apis-form-kit/js-apis-app-form-formProvider-sys.md#formproviderdeactivatesceneanimation20)接口切换为非激活态。
    - 用户点击其他互动卡片申请动效成功。
    - 申请动效60s内，其他卡片的非用户点击触发的动效请求均会申请失败。申请动效60s后，非用户点击导致的其他互动卡片动效请求申请成功，会打断当前动效。
 
@@ -70,8 +70,8 @@
 
 | 接口名                                                                                                                                                                       | 描述                                                                                                                  |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|
-| [formProvider.activateSceneAnimation(formId: string): Promise&lt;void&gt;](../reference/apis-form-kit/js-apis-app-form-formProvider-sys.md#activatesceneanimation20)     | 互动卡片请求状态切换到激活态。 |
-| [formProvider.deactivateSceneAnimation(formId: string): Promise&lt;void&gt;](../reference/apis-form-kit/js-apis-app-form-formProvider-sys.md#deactivatesceneanimation20) | 互动卡片请求切换到非激活态。 |
+| [formProvider.activateSceneAnimation(formId: string): Promise&lt;void&gt;](../reference/apis-form-kit/js-apis-app-form-formProvider-sys.md#formprovideractivatesceneanimation20)     | 互动卡片请求状态切换到激活态。 |
+| [formProvider.deactivateSceneAnimation(formId: string): Promise&lt;void&gt;](../reference/apis-form-kit/js-apis-app-form-formProvider-sys.md#formproviderdeactivatesceneanimation20) | 互动卡片请求切换到非激活态。 |
 | [formProvider.requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt;void&gt;](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderrequestoverflow20) | 卡片提供方发起互动卡片动效请求。   |
 | [formProvider.cancelOverflow(formId: string): Promise&lt;void&gt;](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidercanceloverflow20)                                        | 卡片提供方发起取消互动卡片动效请求。 |
 

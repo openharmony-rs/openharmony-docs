@@ -1683,6 +1683,244 @@ let array = new collections.Array<number>(1, 2, 3, 4, 5);
 let removeArray = array.splice(2, 2, 6, 7, 8); // array内容变为[1, 2, 6, 7, 8, 5]，返回[3, 4]
 ```
 
+## containsAll
+
+containsAll(elements: Array\<T>): boolean
+
+检查指定ArkTS Array中的所有元素是否均包含在此ArkTS Array中。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                            |
+| ------ | ---- | ---- | ------------------------------- |
+| elements  | Array\<T>  | 是   | 要检查的ArkTS Array。 |
+
+**返回值：**
+
+| 类型   | 说明               |
+| ------ | ------------------ |
+| boolean | 如果指定ArkTS Array中的所有元素都包含在此ArkTS Array中，则返回true；否则返回false。当elements为空集合时，返回true。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ---------------------------------- |
+| 10200011 | The containsAll method cannot be bound. |
+| 10200201 | Concurrent modification exception      |
+
+**示例：**
+
+```ts
+let arr = new collections.Array<number>(1, 2, 3);
+let sElements = new collections.Array<number>(1, 2, 3, 4);
+console.info("arr.containsAll(sElements) = " + arr.containsAll(sElements)); // false
+
+arr.push(4);
+console.info("arr.containsAll(sElements) = " + arr.containsAll(sElements)); // true
+```
+
+## containsAll
+
+containsAll(elements: BuiltinArray\<T>): boolean
+
+检查指定内建Array中的所有元素是否均包含在此ArkTS Array中。
+
+> **说明：**
+>
+> BuiltinArray即JavaScript内建Array，并非ArkTS Array（collections.Array）。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                            |
+| ------ | ---- | ---- | ------------------------------- |
+| elements  | BuiltinArray\<T>  | 是   | 要检查的内建Array。 |
+
+**返回值：**
+
+| 类型   | 说明               |
+| ------ | ------------------ |
+| boolean | 如果指定内建Array中的所有元素都包含在此ArkTS Array中，则返回true；否则返回false。当elements为空集合时，返回true。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ---------------------------------- |
+| 10200011 | The containsAll method cannot be bound. |
+| 10200201 | Concurrent modification exception      |
+
+**示例：**
+
+```ts
+let arr = new collections.Array<number>(1, 2, 3);
+let nElements: Array<number> = [1, 2, 3, 4];
+console.info("arr.containsAll(nElements) = " + arr.containsAll(nElements)); // false
+
+arr.push(4);
+console.info("arr.containsAll(nElements) = " + arr.containsAll(nElements)); // true
+```
+
+## retainAll
+
+retainAll(elements: Array\<T>): boolean
+
+仅保留此ArkTS Array中同时存在于指定ArkTS Array中的元素。如果指定集合为空，则会清空当前ArkTS Array。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                            |
+| ------ | ---- | ---- | ------------------------------- |
+| elements  | Array\<T>  | 是   | 允许保留元素的ArkTS Array。如果集合为空，则会清空当前ArkTS Array。 |
+
+**返回值：**
+
+| 类型   | 说明               |
+| ------ | ------------------ |
+| boolean | 如果从ArkTS Array中移除了任何元素，则返回true；如果ArkTS Array未被修改，则返回false。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ---------------------------------- |
+| 10200011 | The retainAll method cannot be bound. |
+| 10200201 | Concurrent modification exception      |
+
+**示例：**
+
+```ts
+let arr: collections.Array<string> = new collections.Array<string>('a', 'b', 'c');
+
+let c1: collections.Array<string> = new collections.Array<string>('a', 'b', 'c');
+console.info("arr.retainAll(c1) = " + arr.retainAll(c1)); // false，未移除任何元素
+console.info("arr = " + arr.toString()); // a, b, c
+
+let c2: collections.Array<string> = new collections.Array<string>('a', 'd', 'e', 'f');
+console.info("arr.retainAll(c2) = " + arr.retainAll(c2)); // true，移除了b和c
+console.info("arr = " + arr.toString()); // a
+```
+
+## retainAll
+
+retainAll(elements: BuiltinArray\<T>): boolean
+
+仅保留此ArkTS Array中同时存在于指定内建Array中的元素。如果指定集合为空，则会清空当前ArkTS Array。
+
+> **说明：**
+>
+> BuiltinArray即JavaScript内建Array，并非ArkTS Array（collections.Array）。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                            |
+| ------ | ---- | ---- | ------------------------------- |
+| elements  | BuiltinArray\<T>  | 是   | 允许保留元素的内建Array。如果集合为空，则会清空当前ArkTS Array。 |
+
+**返回值：**
+
+| 类型   | 说明               |
+| ------ | ------------------ |
+| boolean | 如果从ArkTS Array中移除了任何元素，则返回true；如果ArkTS Array未被修改，则返回false。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ---------------------------------- |
+| 10200011 | The retainAll method cannot be bound. |
+| 10200201 | Concurrent modification exception      |
+
+**示例：**
+
+```ts
+let arr: collections.Array<string> = new collections.Array<string>('a', 'b', 'c');
+
+let nElements: Array<string> = ['a', 'd', 'e', 'f'];
+console.info("arr.retainAll(nElements) = " + arr.retainAll(nElements)); // true，移除了b和c
+console.info("arr = " + arr.toString()); // a
+```
+
+## retainAll
+
+retainAll(predicate: [ArrayElementPredicateFn](arkts-apis-arkts-collections-Types.md#arrayelementpredicatefn)\<T>): boolean
+
+仅保留此ArkTS Array中使指定断言函数返回true的元素。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                            |
+| ------ | ---- | ---- | ------------------------------- |
+| predicate  | [ArrayElementPredicateFn](arkts-apis-arkts-collections-Types.md#arrayelementpredicatefn)\<T>  | 是   | 断言函数。返回true表示保留当前元素，返回false表示移除当前元素。 |
+
+**返回值：**
+
+| 类型   | 说明               |
+| ------ | ------------------ |
+| boolean | 如果从ArkTS Array中移除了任何元素，则返回true；如果ArkTS Array未被修改，则返回false。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ---------------------------------- |
+| 10200011 | The retainAll method cannot be bound. |
+| 10200201 | Concurrent modification exception      |
+
+**示例：**
+
+```ts
+let predicateArr: collections.Array<string> = new collections.Array<string>("foo", "bar", "bar");
+let changed = predicateArr.retainAll((e: string) => { return e === "bar" });
+console.info("changed = " + changed); // true
+console.info("predicateArr = " + predicateArr.toString()); // bar, bar
+```
+
 ## [Symbol.iterator]
 
 [Symbol.iterator]\(): IterableIterator&lt;T&gt;

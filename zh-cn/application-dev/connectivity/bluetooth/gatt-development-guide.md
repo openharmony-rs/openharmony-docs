@@ -279,7 +279,7 @@ try {
   gattClient.disconnect();
 
   // 如果应用不再使用此gattClient，则需要close，gattClient实例将不能再使用
-  gattClient.close() 
+  gattClient.close();
 } catch (err) {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -334,7 +334,7 @@ let gattService: ble.GattService = {
 };
 
 try {
-  let gattServer: ble.GattServer = ble.createGattServer(); 
+  let gattServer: ble.GattServer = ble.createGattServer();
   gattServer.addService(gattService);
 } catch (err) {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -351,7 +351,7 @@ function ServerConnectStateChanged(state: ble.BLEConnectionChangeState) {
 }
 
 try {
-  let gattServer: ble.GattServer = ble.createGattServer(); 
+  let gattServer: ble.GattServer = ble.createGattServer();
   gattServer.on('connectionStateChange', ServerConnectStateChanged);
 } catch (err) {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -834,7 +834,7 @@ export class GattClientManager {
     this.logCharacteristic(this.myCharacteristic);
   }
 
-  // 9. 使能或禁用接收服务端端特征值内容变更通知的能力时调用，一般通知或者指示，二选一
+  // 9. 使能或禁用接收服务端特征值内容变更通知的能力时调用，一般通知或者指示，二选一
   public Notify(enable: boolean) {
     if (!this.gattClient || this.connectState != constant.ProfileConnectionState.STATE_CONNECTED) {
       console.error(TAG, 'gattClient does not exist or state not connected');
@@ -863,7 +863,7 @@ export class GattClientManager {
     }
   }
 
-  // 10. 使能或禁用接收服务端端特征值内容变更指示的能力时调用，一般通知或者指示，二选一
+  // 10. 使能或禁用接收服务端特征值内容变更指示的能力时调用，一般通知或者指示，二选一
   public Indicate(enable: boolean) {
     if (!this.gattClient || this.connectState != constant.ProfileConnectionState.STATE_CONNECTED) {
       console.error(TAG, 'gattClient does not exist or state not connected');

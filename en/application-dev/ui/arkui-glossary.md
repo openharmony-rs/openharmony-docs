@@ -28,6 +28,12 @@ A general event triggered by pointer input devices such as a mouse wheel or touc
 
 ## C
 
+### Component Coordinate System
+
+A coordinate system that takes the top‑left corner of the component as the origin, where the positive x‑axis points to the right and the positive y‑axis points downward. If the coordinate system is a three-dimensional coordinate system, the positive z‑axis points outward from the screen.
+
+![coordinates](../reference/apis-arkui/arkui-ts/figures/coordinates.png)
+
 ### Concurrent Recognition
 
 A recognition mode for combined gestures, where all gestures within the group recognize independently and simultaneously without affecting each other until all recognitions are complete. Used to allow multiple gestures to respond in parallel during the same period (such as scaling and rotating simultaneously).
@@ -189,11 +195,3 @@ A page construction method that creates UI components and sets attributes throug
 ### UI Thread
 
 The thread that runs the ArkUI interface and processes UI events, typically the app's main thread. It is used to execute ArkUI interfaces that require binding to a UI context. Interfaces related to UI processing, including UI context environment initialization, destruction notifications, and frame callback registration, must be called on this thread; otherwise, the program will actively abort.
-
-## Z
-
-### Component Coordinate System
-
-A coordinate system that takes the top‑left corner of the component as the origin, where the positive x‑axis points to the right and the positive y‑axis points downward. If the coordinate system is a three-dimensional coordinate system, the positive z‑axis points outward from the screen.
-
-![coordinates](../reference/apis-arkui/arkui-ts/figures/coordinates.png)

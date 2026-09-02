@@ -701,3 +701,6 @@
 | napi_get_strong_sendable_reference_value | 根据Sendable强引用获取其关联的ArkTS对象值。 | napi_invalid_arg | 入参result为nullptr | 确保入参正确 |
 | napi_get_strong_sendable_reference_value | 根据Sendable强引用获取其关联的ArkTS对象值。 | napi_invalid_arg | 入参env不是main context | 确保入参正确 | 
 | napi_get_strong_sendable_reference_value | 根据Sendable强引用获取其关联的ArkTS对象值。 | napi_generic_failure | 从napi_sendable_ref中获取的napi_value不是sendable的 | 确保入参正确 |
+| napi_get_global_handle_count | 遍历并获取global handle数量。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
+| napi_get_global_handle_count | 遍历并获取global handle数量。 | napi_invalid_arg | 入参count为nullptr | 确保入参正确 |
+| napi_get_global_handle_count | 遍历并获取global handle数量。 | napi_pending_exception | 调用该接口前或调用过程中出现未捕获的ArkTS Error | 根据异常信息（hilog/crash栈）处理异常 |

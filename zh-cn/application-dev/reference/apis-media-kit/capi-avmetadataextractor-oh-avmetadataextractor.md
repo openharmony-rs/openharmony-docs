@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct OH_AVMetadataExtractor OH_AVMetadataExtractor
+typedef struct OH_AVMetadataExtractor OH_AVMetadataExtractor;
 ```
 
 ## 概述

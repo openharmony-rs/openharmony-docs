@@ -8,7 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 ## 概述
 
-定义查询WIFI开关状态的接口。
+定义查询WIFI开关状态、获取设备MAC地址和获取WIFI连接信息的接口。
 
 **引用文件：** <ConnectivityKit/wifi/oh_wifi.h>
 

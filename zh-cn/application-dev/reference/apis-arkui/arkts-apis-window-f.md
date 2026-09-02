@@ -30,7 +30,9 @@ createWindow(config: Configuration, callback: AsyncCallback&lt;Window&gt;): void
 
 全局悬浮窗口、模态窗口或系统窗口创建后默认是非沉浸式布局。
 
-**需要权限：** ohos.permission.SYSTEM_FLOAT_WINDOW（仅当创建窗口类型为window.WindowType.TYPE_FLOAT时需要申请）
+**需要权限：**
+- API版本12+：ohos.permission.SYSTEM_FLOAT_WINDOW（仅当创建窗口类型为window.WindowType.TYPE_FLOAT时需要申请）
+- API版本9-11：NA
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -104,7 +106,9 @@ createWindow(config: Configuration): Promise&lt;Window&gt;
 
 全局悬浮窗口、模态窗口或系统窗口创建后默认是非沉浸式布局。
 
-**需要权限：** ohos.permission.SYSTEM_FLOAT_WINDOW（仅当创建窗口类型为window.WindowType.TYPE_FLOAT时需要申请）
+**需要权限：**
+- API版本12+：ohos.permission.SYSTEM_FLOAT_WINDOW（仅当创建窗口类型为window.WindowType.TYPE_FLOAT时需要申请）
+- API版本9-11：NA
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -197,7 +201,7 @@ findWindow(name: string): Window
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. |
 
 **示例：**
 
@@ -238,7 +242,7 @@ getLastWindow(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal. Possible cause: 1. Top window or main window is null or destroyed; 2. This window context is abnormal.  |
+| 1300002 | This window state is abnormal. Possible cause: 1. Top window or main window is not created or destroyed; 2. Stage mode without context. |
 | 1300006 | This window context is abnormal. |
 
 **示例：**
@@ -319,7 +323,7 @@ getLastWindow(ctx: BaseContext): Promise&lt;Window&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal. Possible cause: 1. Top window or main window is null or destroyed; 2. This window context is abnormal.   |
+| 1300002 | This window state is abnormal. Possible cause: 1. Top window or main window is not created or destroyed; 2. Stage mode without context.  |
 | 1300006 | This window context is abnormal. |
 
 **示例：**
@@ -1013,7 +1017,7 @@ setStartWindowBackgroundColor(moduleName: string, abilityName: string, color: Co
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 801     | Capability not supported.function setStartWindowBackgroundColor can not to work correctly due to limited device capabilities. |
+| 801     | Capability not supported.function setStartWindowBackgroundColor can not work correctly due to limited device capabilities. |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 | 1300016 | Parameter error. Possible cause: Parameter exceeds the allowed length. |
 

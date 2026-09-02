@@ -140,6 +140,8 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
     |UiTree|获取页面内JSON树信息。<br> **起始版本：** 26.0.0|
     |InjectEvent|注入事件。<br> **起始版本：** 26.0.0|
     |CollectStrategy|获取屏幕采集策略。<br> **起始版本：** 26.0.0|
+    |SmartAutoFill|页面输入框内容智能填充。<br> **起始版本：** 26.0.0|
+    |SmartAutoFillSwitch|订阅或取消订阅页面内容智能填充开关状态。<br> **使用规格**：仅允许智能填充应用（com.huawei.hms.textautofill）调用，非白名单应用调用将返回错误码34000002。<br> **起始版本：** 26.0.0|
 
   * groupId支持能力列表<br>
     按业务场景预设的一组能力集合。可统一订阅业务场景，如下：
@@ -151,6 +153,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
     |SmartEdge|Todo|获取待办场景的感知信息。|
     |SmartEdge|Activity|获取基础服务的感知信息。|
     |CeliaMemory|Article|获取阅读场景的感知信息。|
+    |SmartBar|SmartAutoFill|页面输入框内容智能填充。|
 
 ## OnscreenAwarenessOptions<sup>23+</sup>
 
@@ -668,6 +671,7 @@ interact接口支持的capList能力列表，如下：
 | ---- | ------ |
 |JumpContext|高亮跳转到指定上下文。|
 |InjectEvent|注入事件。当capList能力列表为InjectEvent时，options字段为必填项，且其内容必须符合InjectEvent选项的规范（详见示例）。若options不符合规范，注入操作将失败，并返回错误码34000001。<br> **起始版本：** 26.0.0|
+|SmartAutoFill|页面输入框内容智能填充。当capList能力列表为SmartAutoFill时，options必须包含autoFillItems数组（详见示例），否则填充操作将失败，并返回错误码34000001。<br> **起始版本：** 26.0.0|
 
 **返回值：**
 
@@ -745,7 +749,87 @@ try {
   console.error(`interact failed, Code: ${err.code}, message: ${err.message}`);
 }
 ```
+**SmartAutoFill 示例**：
 
+当capList为SmartAutoFill时，必须传入options且parameters中"SmartAutoFill"对象需包含autoFillItems数组，否则填充操作将失败并返回错误码34000001。autoFillItems数组中每个元素的字段说明如下：
+
+| 字段名 | 类型 | 必填 | 说明 |
+| ---- | ------ | ---- | ---- |
+| frameworkType | number | 否 | UI框架类型。0：ARKUI（默认值）；1：ARKWEB。|
+| id | string | 是 | 输入框组件ID。当frameworkType为0（ARKUI）时，id为数字字符串形式的组件ID；当frameworkType为1（ARKWEB）时，id为Web组件ID。|
+| xpath | string | 否 | XPath路径。当frameworkType为1（ARKWEB）时必填，用于定位Web页面中的输入框元素。|
+| contentType | string | 否 | 输入框内容类型。|
+| clickPoints | object[] | 否 | 点击坐标列表，用于指定输入框的点击位置。|
+| existingValue | string | 否 | 输入框中已存在的内容。|
+| fillValue | string | 否 | 要填充的内容。不传时填充内容为空字符串。|
+| mode | number | 否 | 填充模式。0：覆盖已有内容（OVERWRITE，默认值）；1：插入内容（INSERT）。|
+
+clickPoints数组中每个元素的字段说明如下：
+
+| 字段名 | 类型 | 必填 | 说明 |
+| ---- | ------ | ---- | ---- |
+| displayX | number | 否 | 点击位置X坐标（屏幕绝对坐标）。|
+| displayY | number | 否 | 点击位置Y坐标（屏幕绝对坐标）。|
+
+autoFillItems数组最大支持50个元素。
+
+SmartAutoFill对象中还可包含以下可选字段，用于指定填充目标窗口信息：
+
+| 字段名 | 类型 | 必填 | 说明 |
+| ---- | ------ | ---- | ---- |
+| pageInfo | object | 否 | 页面信息，用于指定填充目标窗口。|
+
+pageInfo对象中的字段说明如下：
+
+| 字段名 | 类型 | 必填 | 说明 |
+| ---- | ------ | ---- | ---- |
+| bundleName | string | 否 | 应用包名。|
+| displayId | number | 否 | 显示设备ID。|
+| windowId | number | 否 | 窗口ID，指定填充内容的目标窗口。不传或传入无效值（≤0）时，系统将自动获取当前前台应用主窗口ID。|
+
+```ts
+import onScreen from "@ohos.multimodalAwareness.onScreen";
+
+let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
+  capList: [
+    'SmartAutoFill',
+  ]
+};
+
+let onscreenAwarenessOptions: onScreen.OnscreenAwarenessOptions = {
+  parameters: {
+    "SmartAutoFill": {
+      autoFillItems: [
+        {
+          frameworkType: 0,
+          id: "123",
+          contentType: "EMAIL_ADDRESS",
+          fillValue: "user@example.com",
+          mode: 0
+        },
+        {
+          frameworkType: 1,
+          id: "456",
+          xpath: "/html/body/div/form/input[1]",
+          contentType: "PHONE_NUMBER",
+          fillValue: "13800138000",
+          mode: 0
+        }
+      ],
+      pageInfo: {
+        windowId: 10
+      }
+    }
+  }
+};
+
+try {
+  let info: onScreen.OnscreenAwarenessInfo[] = await onScreen.interact(onscreenAwarenessCap, onscreenAwarenessOptions);
+  console.info(`interact resultCode: ${info[0].resultCode}`);
+} catch (err) {
+  console.error(`interact failed, Code: ${err.code}, message: ${err.message}`);
+}
+```
 ## onScreen.apperceive<sup>23+</sup>
 
 apperceive(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo[]&gt;

@@ -198,3 +198,7 @@ static napi_value RemoveEventInterceptor(napi_env env, napi_callback_info info)
     // ...
 }
 ```
+
+## Samples
+
+- [NDKInputEventInterceptor (C/C++)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/InputKit/NDKInputEventInterceptor)

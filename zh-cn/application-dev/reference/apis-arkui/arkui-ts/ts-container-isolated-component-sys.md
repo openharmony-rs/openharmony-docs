@@ -52,7 +52,7 @@ IsolatedComponent用于支持在本页面内嵌入显示独立Abc（方舟字节
 
 IsolatedComponent(options: IsolatedOptions)
 
-创建IsolatedComponent组件，用于显示受限worker运行的Abc。
+创建IsolatedComponent组件，用于显示在受限worker线程中运行的Abc提供的UI。
 
 > **说明：**
 >
@@ -113,7 +113,7 @@ IsolatedComponent加载的Abc（以Ability扩展形式运行）在运行过程�
 本示例展示IsolatedComponent组件的基础使用方式，示例应用的bundleName为"com.example.isolateddemo"，并使用本应用的Abc文件和extension页面作为嵌入展示的内容。构建应用项目后，具体测试步骤如下：
 1. 在DevEco Studio上编译构建生成HAP包，并安装到设备上；
 2. 将本应用构建生成的modules.abc和modules.hap文件通过DevEco Studio或[hdc工具](../../../dfx/hdc.md)上传至应用沙箱路径`/data/app/el2/100/base/com.example.isolateddemo/haps/entry/files`下；
-3. 打开应用页面，点击"verifyAbc"按钮进行校验，校验成功后输出"VerifyAbc successfully"日志；
+3. 打开应用页面，点击"verifyAbc"按钮进行校验，校验成功后输出"VerifyAbc successfully."日志；
 4. 点击"showIsolatedComponent"按钮后，页面显示IsolatedComponent组件，内容为"Hello World"。
 
 - 受限worker脚本ets/workers/OhCardWorker.ets的内容如下：
@@ -216,7 +216,7 @@ IsolatedComponent加载的Abc（以Ability扩展形式运行）在运行过程�
   }
   ```
 
-- 在受限worker线程中运行的入口页面文件ets/pages/extension.ets，需要在`resources/base/profile/main_pages.json`文件中配置该页面路径，其中内容如下：
+- 在受限worker线程中运行的入口页面文件ets/pages/extension.ets（需在`resources/base/profile/main_pages.json`文件中配置该页面路径），该页面文件的内容如下：
   ```ts
   @Entry
   @Component

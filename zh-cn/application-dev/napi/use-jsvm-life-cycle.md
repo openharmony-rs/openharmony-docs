@@ -110,7 +110,7 @@ JSVM HandleScopeFor: success
 
 通过接口 OH_JSVM_OpenEscapableHandleScope 创建出一个可逃逸的 handle scope，可将 1 个范围内声明的值返回到父作用域。创建的 scope 需使用 OH_JSVM_CloseEscapableHandleScope 进行关闭。OH_JSVM_EscapeHandle 将传入的 JavaScript 对象的生命周期提升到其父作用域。
 
-通过上述接口可以更灵活的使用管理传入的 JavaScript 对象，特别是在处理跨作用域的值传递时非常有用。
+通过上述接口可以更灵活地使用管理传入的 JavaScript 对象，特别是在处理跨作用域的值传递时非常有用。
 
 cpp 部分代码：
 

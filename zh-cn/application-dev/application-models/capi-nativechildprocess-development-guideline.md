@@ -17,7 +17,7 @@
 
 ## 子进程创建方式选择
 
-| 对比项 | [创建支持IPC通信的Native子进程](#创建支持ipc通信的native子进程) | [创建支持参数传递的Native子进程](#创建支持参数传递的native子进程) |
+| 对比项 | 创建支持IPC通信的Native子进程 | 创建支持参数传递的Native子进程 |
 | --- | --- | --- |
 | 涉及接口 | [OH_Ability_CreateNativeChildProcessWithConfigs](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_createnativechildprocesswithconfigs)<sup>20+</sup> | [OH_Ability_StartNativeChildProcessWithConfigs](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocesswithconfigs)<sup>20+</sup> |
 | 适用场景 | 适用于父子进程需要建立IPC通道通信的场景，如将高风险操作或独立业务逻辑隔离到子进程并通过IPC交互。 | 适用于需要向子进程传递参数（字符串、文件描述符）并由子进程执行计算任务的场景，如音视频编解码、数据处理等。 |
@@ -254,6 +254,9 @@
     
     ``` C++
     #include <AbilityKit/native_child_process.h>
+    #include <hilog/log.h>
+    #include "loghelper.h"
+
     extern "C" {
     /**
      * 子进程的入口函数，实现子进程的业务逻辑
@@ -262,6 +265,7 @@
      */
     void Main(NativeChildProcess_Args args)
     {
+        OH_LOG_INFO(LOG_APP, "Main started");
         // 获取传入的entryParams
         char *entryParams = args.entryParams;
         // 获取传入的fd列表

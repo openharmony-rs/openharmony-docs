@@ -17,7 +17,7 @@
   - [@ohos.i18n (国际化-I18n)(系统接口)](js-apis-i18n-sys.md)
   <!--DelEnd-->
   - global<!--localization-global-arkts-->
-    - [RawFileDescriptor](js-apis-rawFileDescriptor.md) 
+    - [RawFileDescriptor](js-apis-rawFileDescriptor.md)
     - [Resource](js-apis-resource.md)
     - [SendableResource](js-apis-sendableResource.md)
 - C API<!--localization-c-->
@@ -53,3 +53,5 @@
   <!--Del-->
   - [字体管理错误码](errorcode-font-manager.md)
   <!--DelEnd-->
+- 附录<!--localization-appendixe-->
+  - [Intl格式化选项效果示例](appendixes-intl-formatting-options.md)

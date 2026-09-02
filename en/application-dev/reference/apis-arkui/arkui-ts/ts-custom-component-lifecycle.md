@@ -1,17 +1,19 @@
 # Custom Component Lifecycle
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @seaside_wu1; @huyisuo-->
+<!--Owner: @seaside_wu1; @xin11112-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=ca610c3b31eac2a84ffac21a107ce522b473feb1 translatedAt=2026-08-28T01:24:39.152Z pushedAt=2026-08-28T09:08:50.403Z -->
 
-The lifecycle callbacks of a custom component are used to notify users of the lifecycle of the component. These callbacks are private and are invoked by the development framework at a specified time at runtime. They cannot be manually invoked from applications. Do not reuse the same custom component node across multiple windows, as otherwise its lifecycle may become disrupted.
+The lifecycle callbacks of a custom component are used to notify users of the lifecycle of the component. These callbacks are private and are invoked by the development framework at a specified time during runtime. They cannot be actively called from an app. Through these callbacks, developers can initialize data and state variables when a component is created, release resources when the component is destroyed, update the page state, refresh data, or pause and resume tasks when the page is shown or hidden, and pass parameters and update the state when the component is reused, thereby implementing fine-grained management of the component. Do not reuse the same custom component node across multiple windows, as its lifecycle may become disordered.
 
->**NOTE**
+> **NOTE**
 >
->- The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
->- Promise and asynchronous callback functions can be used in lifecycle functions, for example, for obtaining network resources and setting timers.
+> - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - Promise and asynchronous callback functions are allowed in lifecycle functions, for example, for network resource acquisition and timer setting.
 
 ## build
 
@@ -29,7 +31,7 @@ The **build()** function is used to define the declarative UI description of a c
 
 aboutToAppear?(): void
 
-Invoked after a new instance of the custom component is created and before its **build()** function is executed. You can change [state variables](../../../ui/state-management/arkts-state-management-glossary.md#state-variables) in the **aboutToAppear** function. The change will take effect during the subsequent execution of the **build()** function. The **aboutToAppear** lifecycle callback of a custom component with a [custom layout](./ts-custom-component-layout.md) is invoked during the layout process. For details, see [Custom Component Lifecycle](../../../ui/state-management/arkts-page-custom-components-lifecycle.md).
+Invoked after a new instance of the custom component is created and before its **build()** function is executed. You can change [state variables](../../../ui/state-management/arkts-state-management-glossary.md#state-variable) in the **aboutToAppear** function, and the changes will take effect in the subsequent execution of the **build()** function. The **aboutToAppear** lifecycle of a custom component that implements [custom layout](./ts-custom-component-layout.md) is triggered during the layout process. For details about how to use it, see [Custom Component Lifecycle](../../../ui/state-management/arkts-page-custom-components-lifecycle.md).
 
 > **NOTE**
 >
@@ -50,13 +52,15 @@ Invoked after the **build()** function of the custom component is executed. You 
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ## aboutToDisappear
 
 aboutToDisappear?(): void
 
-Invoked when this component is about to disappear. Do not change state variables in the **aboutToDisappear** function as doing this can cause unexpected errors. For example, the modification of the **@Link** decorated variable may cause unstable application running. For details, see [Custom Component Lifecycle](../../../ui/state-management/arkts-page-custom-components-lifecycle.md). It is not recommended to trigger logic such as [the creation a custom dialog box](./ts-methods-custom-dialog-box.md#open) after the **aboutToDisappear** function is called. Otherwise, the application behavior may be abnormal due to component tree information loss. For example, [@Consume](../../../ui/state-management/arkts-provide-and-consume.md) may be unable to find the corresponding [@Provide](../../../ui/state-management/arkts-provide-and-consume.md), or a blank dialog box where components are not displayed may occur.
+Executed when the custom component is destructed and destroyed. Do not change state variables in the **aboutToDisappear** function. In particular, modifying the \@Link variable may cause unstable app behavior. For details about how to use it, see [Custom Component Lifecycle](../../../ui/state-management/arkts-page-custom-components-lifecycle.md). It is not recommended to trigger logic such as [creating a custom dialog box](./ts-methods-custom-dialog-box.md#open) after the **aboutToDisappear** function is called, because this may cause abnormal app behavior due to the loss of component tree information, for example, [\@Consume](../../../ui/state-management/arkts-provide-and-consume.md) cannot find the corresponding [\@Provide](../../../ui/state-management/arkts-provide-and-consume.md), or the dialog box displays a blank screen without components.
 
 > **NOTE**
 >
@@ -72,7 +76,7 @@ Invoked when this component is about to disappear. Do not change state variables
 
 onPageShow?(): void
 
-Invoked each time a router-managed page (a custom component decorated with [\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry)) is displayed, including scenarios such as route navigation and the application returning to the foreground.
+Invoked each time a router-managed page (a custom component decorated with [\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry)) is displayed, including scenarios such as route redirection and the app entering the foreground. It is recommended that you avoid performing time-consuming operations that block the main thread in this callback function, so as not to affect page display performance.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -96,7 +100,7 @@ Invoked each time a router-managed page (a custom component decorated with [\@En
 
 onBackPress?(): void | boolean
 
-Invoked when a user clicks the back button on a router-managed page (a custom component decorated with [\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry)). The value **true** means that the page executes its own return logic, and **false** (default) means that the default return logic is used.
+Takes effect on a router-managed page (a custom component decorated with [\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry)) and is triggered when the user clicks the back button. The value **true** indicates that the page handles the back logic by itself and does not perform page routing; the value **false** indicates that the default routing back logic is used. If no return value is set, it is processed as **false**. Typical use cases include: blocking the back action to prompt the user to save when the page has unsaved edits, and popping up a custom confirmation dialog box to replace the default system back behavior.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -106,9 +110,9 @@ Invoked when a user clicks the back button on a router-managed page (a custom co
 
 | Type               | Description       |
 | ------------------- | --------- |
-| void \| boolean | Action of the back button. The value **true** means that the page executes its own return logic, and **false** (default) means that the default return logic is used.|
+| void \| boolean | Action of the back button. The value **true** indicates that the page handles the back logic by itself without page routing, and **false** indicates that the default routing back logic is used. If no value is returned, **false** is used. |
 
-```ts
+``` TypeScript
 // xxx.ets
 @Entry
 @Component
@@ -116,16 +120,19 @@ struct IndexComponent {
   @State textColor: Color = Color.Black;
 
   onPageShow() {
+    // Set textColor to Blue when onPageShow is triggered.
     this.textColor = Color.Blue;
     console.info('IndexComponent onPageShow');
   }
 
   onPageHide() {
+    // Set textColor to Transparent when onPageHide is triggered.
     this.textColor = Color.Transparent;
     console.info('IndexComponent onPageHide');
   }
 
   onBackPress() {
+    // Set textColor to Red when onBackPress is triggered by pressing the back key.
     this.textColor = Color.Red;
     console.info('IndexComponent onBackPress');
   }
@@ -140,6 +147,7 @@ struct IndexComponent {
   }
 }
 ```
+
 ![en-us_image_lifecycle](figures/image-lifecycle.gif)
 
 ## onNewParam<sup>19+</sup>
@@ -150,19 +158,21 @@ Invoked when a page in the routing stack is moved to the top of the stack in the
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type    | Mandatory    |             Description        |
 |-------|----------|----------|---------------------------|
-| param | ESObject |Yes| Data passed to the target page during redirection.|
+| param | ESObject | Yes | Data passed to the target page during routing. It is consistent with the data passed by the **params** field in **router.pushUrl()**, and its structure is defined by the developer. |
 
-```ts
+``` TypeScript
 // pages/Index.ets
 import { router } from '@kit.ArkUI';
 
-export class routerParam {
+export class RouterParam {
   msg: string = '__NA__';
 
   constructor(msg: string) {
@@ -188,16 +198,17 @@ struct Index {
         .onClick(() => {
           this.getUIContext().getRouter().pushUrl({
             url: 'pages/PageOne',
-            params: new routerParam('push pageOne Standard')
+            params: new RouterParam('push pageOne Standard')
           }, router.RouterMode.Standard);
         })
+      // In Single mode, if PageOne is already in the stack, it is reused and PageOne.onNewParam is triggered.
       Button('push pageOne Single')
         .margin(10)
         .onClick(() => {
           this.getUIContext().getRouter().pushUrl({
             url: 'pages/PageOne',
-            params: new routerParam('push pageOne Single')
-          }, router.RouterMode.Single)
+            params: new RouterParam('push pageOne Single')
+          }, router.RouterMode.Single);
         })
     }
     .width('100%')
@@ -205,11 +216,13 @@ struct Index {
   }
 }
 ```
+
 <!--code_no_check-->
-```ts
+
+``` TypeScript
 // pages/PageOne.ets
 import { router } from '@kit.ArkUI';
-import { routerParam } from './Index';
+import { RouterParam } from './Index';
 
 @Entry
 @Component
@@ -229,16 +242,17 @@ struct PageOne {
         .onClick(() => {
           this.getUIContext().getRouter().pushUrl({
             url: 'pages/Index',
-            params: new routerParam('push Index Standard')
+            params: new RouterParam('push Index Standard')
           }, router.RouterMode.Standard);
         })
+      // In Single mode, if Index is already in the stack, it is reused and Index.onNewParam is triggered.
       Button('push Index Single')
         .margin(10)
         .onClick(() => {
           this.getUIContext().getRouter().pushUrl({
             url: 'pages/Index',
-            params: new routerParam('push Index Single')
-          }, router.RouterMode.Single)
+            params: new RouterParam('push Index Single')
+          }, router.RouterMode.Single);
         })
     }
     .width('100%')
@@ -251,14 +265,16 @@ struct PageOne {
 
 aboutToReuse?(params: Record\<string, Object | undefined | null>): void
 
-Invoked when a reusable custom component is re-added to the node tree from the reuse cache to receive construction parameters of the component.
+When a reusable custom component is re-added to the node tree from the reuse cache, the **aboutToReuse** lifecycle callback is triggered, and the construction parameters of the component are passed to this callback.
 
 > **NOTE**
 >
-> * [Avoid repeatedly updating state variables that are automatically updated, such as @Link, @ObjectLink, and @Prop decorated variables, within aboutToReuse().](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-component-reuse#section7441712174414).
-> * In scrolling scenarios where component reuse is implemented, this callback is typically required to update the component's state variables. As such, avoid performing time-consuming operations within this callback to prevent frame drops and UI stuttering during scrolling animations. For best practices, see [Optimizing Time-Consuming Operations in the Main Thread: Component Reuse Callback](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-time-optimization-of-the-main-thread#section20815336174316).
+> * Avoid repeatedly assigning values to state variables that are automatically updated, such as **@Link**/**@ObjectLink**/**@Prop**, in **aboutToReuse()**.
+> * In sliding scenarios, component reuse usually requires this callback function to update the state variables of the component. Therefore, avoid time-consuming operations in this callback function, otherwise frame loss and lag may occur. For best practices, see [Optimizing Time-Consuming Operations in the Main Thread - Component Reuse Callback](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-time-optimization-of-the-main-thread#section20815336174316).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -266,36 +282,37 @@ Invoked when a reusable custom component is re-added to the node tree from the r
 
 | Name | Type                                     | Mandatory| Description               |
 |--------|-------------------------------------------|-----|---------------------|
-| params | Record\<string, Object \| undefined \| null> |   Yes  | Construction parameters of the custom component.|
+| params | Record\<string, Object \| undefined \| null> | Mandatory | Construction parameters of the custom component. The key is the name of the component member variable passed in from outside during reuse, and the value is the corresponding parameter value passed in from outside during reuse. |
 
-```ts
+``` TypeScript
 // xxx.ets
 export class Message {
   value: string | undefined;
 
   constructor(value: string) {
-    this.value = value
+    this.value = value;
   }
 }
 
 @Entry
 @Component
 struct Index {
-  @State switch: boolean = true
+  @State isShown: boolean = true;
 
   build() {
     Column() {
+      // Click Button to toggle isShown, controlling Child being removed from or re-added to the component tree.
       Button('Hello World')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
-          this.switch = !this.switch
+          this.isShown = !this.isShown;
         })
-      if (this.switch) {
+      if (this.isShown) {
         Child({ message: new Message('Child') })
       }
     }
-    .height("100%")
+    .height('100%')
     .width('100%')
   }
 }
@@ -306,8 +323,8 @@ struct Child {
   @State message: Message = new Message('AboutToReuse');
 
   aboutToReuse(params: Record<string, ESObject>) {
-    console.info("Recycle Child")
-    this.message = params.message as Message
+    console.info('Reuse Child');
+    this.message = params.message as Message;
   }
 
   build() {
@@ -325,22 +342,24 @@ struct Child {
 
 aboutToReuse?(): void
 
-Invoked when a reusable custom component managed by state management V2 is taken from the reuse pool and reinserted into the node tree.
+When a reusable custom component of state management V2 is re-added to the node tree from the reuse cache, the **aboutToReuse** lifecycle callback is triggered. In frequently invoked scenarios, avoid performing time-consuming operations in it, otherwise frame loss and lag may occur.
 
 For details, see [\@ReusableV2](../../../ui/state-management/arkts-new-reusableV2.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-```ts
+``` TypeScript
 @Entry
 @ComponentV2
 struct Index {
   @Local condition: boolean = true;
   build() {
     Column() {
-      Button('Recycle/Reuse').onClick(()=>{this.condition=!this.condition;}) // Click to toggle the recycle/reuse state.
+      Button('Recycle/Reuse').onClick(() => { this.condition = !this.condition; }) // Tap to toggle the recycle/reuse state.
       if (this.condition) {
         ReusableV2Component()
       }
@@ -362,18 +381,19 @@ struct ReusableV2Component {
 }
 ```
 
-
 ## aboutToRecycle<sup>10+</sup>
 
 aboutToRecycle?(): void
 
-Invoked when this reusable component is about to be added from the component tree to the reuse cache.
+Invoked before a reusable component is added to the reuse cache from the node tree. When the component is subsequently reused from the reuse cache, the [aboutToReuse](#abouttoreuse10) lifecycle callback is triggered. In frequently invoked scenarios, avoid performing time-consuming operations in it, otherwise frame loss and lag may occur.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-```ts
+``` TypeScript
 // xxx.ets
 export class Message {
   value: string | undefined;
@@ -386,7 +406,7 @@ export class Message {
 @Entry
 @Component
 struct Index {
-  @State switch: boolean = true;
+  @State isShown: boolean = true;
 
   build() {
     Column() {
@@ -394,13 +414,13 @@ struct Index {
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
-          this.switch = !this.switch;
+          this.isShown = !this.isShown;
         })
-      if (this.switch) {
+      if (this.isShown) {
         Child({ message: new Message('Child') })
       }
     }
-    .height("100%")
+    .height('100%')
     .width('100%')
   }
 }
@@ -411,13 +431,13 @@ struct Child {
   @State message: Message = new Message('AboutToReuse');
 
   aboutToReuse(params: Record<string, ESObject>) {
-    console.info("Reuse Child");
+    console.info('Reuse Child');
     this.message = params.message as Message;
   }
 
   aboutToRecycle() {
     // This is where you can release memory-intensive content or other non-essential resource references to avoid continuous memory usage that could lead to memory leaks.
-    console.info("The child enters the recycle pool.");
+    console.info('Recycle Child, child enters the reuse pool');
   }
 
   build() {
@@ -435,7 +455,7 @@ struct Child {
 
 onWillApplyTheme?(theme: Theme): void
 
-Invoked before the **build()** function of a new instance of the custom component is executed, to obtain the **Theme** object of the component context. You can change state variables in **onWillApplyTheme**. The change will take effect when you execute the **build()** function next time.
+Obtains the **Theme** object of the current component context. It is executed after a new instance of the custom component is created and before its **build()** function is executed. Unlike **aboutToAppear**, **onWillApplyTheme** is used to initialize state variables based on the **Theme** object, while **aboutToAppear** is used for general initialization logic. You can change state variables in the **onWillApplyTheme** function, and the changes will take effect in the subsequent execution of the **build()** function.
 
 > **NOTE**
 >
@@ -443,29 +463,35 @@ Invoked before the **build()** function of a new instance of the custom componen
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name   | Type                                      | Mandatory   | Description        |
 |--------|------------------------------------------|------------|-------------------------|
-| theme | [Theme](#theme12) | Yes    | Current theme object of the custom component.|
+| theme | [Theme](#theme12) | Yes | **Theme** object currently in effect for the custom component. In the callback, you can use this object to obtain resources such as theme colors to update the style variables of the component. |
 
 ## Theme<sup>12+</sup>
 
-type Theme = Theme
+type Theme = import('../api/@ohos.arkui.theme').Theme
+
+Defines the **Theme** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                                                     | Description                   |
 | --------------------------------------------------------- | ----------------------- |
-| [Theme](../js-apis-arkui-theme.md#theme) | Current theme object of the custom component.|
+| import('../api/@ohos.arkui.theme').[Theme](../js-apis-arkui-theme.md#theme) | The **Theme** object currently in effect for the custom component. |
 
 V1:
 
-```ts
+``` TypeScript
 // xxx.ets
 import { CustomTheme, CustomColors, Theme, ThemeControl } from '@kit.ArkUI';
 
@@ -482,9 +508,9 @@ class PageCustomTheme implements CustomTheme {
     this.colors = colors;
   }
 }
-const BlueColorsTheme = new PageCustomTheme(new BlueColors());
+const blueColorsTheme = new PageCustomTheme(new BlueColors());
 // setDefaultTheme should be called on the application entry page or in an ability.
-ThemeControl.setDefaultTheme(BlueColorsTheme);
+ThemeControl.setDefaultTheme(blueColorsTheme);
 
 @Entry
 @Component
@@ -492,7 +518,7 @@ struct IndexComponent {
   @State textColor: ResourceColor = $r('sys.color.font_primary');
   @State columnBgColor: ResourceColor = $r('sys.color.background_primary');
 
-  // Obtain the Theme object of the current component context. Set textColor and columnBgColor in onWillApplyTheme to the color (BlueColorsTheme) of the Theme object in use.
+  // In onWillApplyTheme, the Theme object of the current component context can be obtained. Here, in onWillApplyTheme, assign the state variables textColor and columnBgColor to the colors in the currently used Theme object (blueColorsTheme).
   onWillApplyTheme(theme: Theme) {
     this.textColor = theme.colors.fontPrimary;
     this.columnBgColor = theme.colors.backgroundPrimary;
@@ -533,11 +559,12 @@ struct IndexComponent {
   }
 }
 ```
+
 ![onWillApplyThemePage](figures/onWillApplyTheme.png)
 
 V2:
 
-```ts
+``` TypeScript
 import { CustomTheme, CustomColors, Theme, ThemeControl } from '@kit.ArkUI';
 
 class BlueColors implements CustomColors {
@@ -554,9 +581,9 @@ class PageCustomTheme implements CustomTheme {
   }
 }
 
-const BlueColorsTheme = new PageCustomTheme(new BlueColors());
+const blueColorsTheme = new PageCustomTheme(new BlueColors());
 // setDefaultTheme should be called on the application entry page or in an ability.
-ThemeControl.setDefaultTheme(BlueColorsTheme);
+ThemeControl.setDefaultTheme(blueColorsTheme);
 
 @Entry
 @ComponentV2
@@ -564,7 +591,7 @@ struct IndexComponent {
   @Local textColor: ResourceColor = $r('sys.color.font_primary');
   @Local columnBgColor: ResourceColor = $r('sys.color.background_primary');
 
-  // Obtain the Theme object of the current component context. Set textColor and columnBgColor in onWillApplyTheme to the color (BlueColorsTheme) of the Theme object in use.
+  // In onWillApplyTheme, you can obtain the Theme object of the current component context. Here, the state variables textColor and columnBgColor are assigned the colors from the currently used Theme object (blueColorsTheme).
   onWillApplyTheme(theme: Theme) {
     this.textColor = theme.colors.fontPrimary;
     this.columnBgColor = theme.colors.backgroundPrimary;
@@ -612,7 +639,7 @@ struct IndexComponent {
 
 pageTransition?(): void
 
-Defines the transition animation to play when the user accesses this page or is redirected from this page to another page.
+Defines the transition animations for page entry and page exit.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -628,6 +655,8 @@ Invoked when the widget is recycled. The widget provider can return the data to 
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
@@ -637,7 +666,8 @@ Invoked when the widget is recycled. The widget provider can return the data to 
 | string | Data that the widget provider requests the widget manager to save.|
 
 **Example**
-```ts
+
+``` TypeScript
 @Entry
 @Component
 struct WidgetCard {
@@ -649,13 +679,14 @@ struct WidgetCard {
   readonly fullHeightPercent: string = '100%';
 
   onFormRecycle(): string {
-    let formId: string = "1859635745"
-    console.info("card is recycled, formID: " + formId);
+    let formId: string = '1859635745';
+    // Trigger the callback when the widget is recycled.
+    console.info('card is recycled, formID: ' + formId);
     return formId;
   }
 
   onFormRecover(statusData: string): void {
-    console.info("card has been restored, formID: " + statusData);
+    console.info('card has been restored, formID: ' + statusData);
   }
 
   build() {
@@ -693,6 +724,8 @@ Invoked when the widget is recovered. The widget provider can obtain the data sa
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -702,7 +735,8 @@ Invoked when the widget is recovered. The widget provider can obtain the data sa
 | statusData | string | Yes    | Data saved by the widget manager during widget recycling.|
 
 **Example**
-```ts
+
+``` TypeScript
 @Entry
 @Component
 struct WidgetCard {
@@ -714,13 +748,14 @@ struct WidgetCard {
   readonly fullHeightPercent: string = '100%';
 
   onFormRecycle(): string {
-    let formId: string = "1859635745"
-    console.info("card is recycled, formID: " + formId);
+    let formId: string = '1859635745';
+    console.info('card is recycled, formID: ' + formId);
     return formId;
   }
 
   onFormRecover(statusData: string): void {
-    console.info("card has been restored, formID: " + statusData);
+    // Trigger the callback when the widget is restored.
+    console.info('card has been restored, formID: ' + statusData);
   }
 
   build() {

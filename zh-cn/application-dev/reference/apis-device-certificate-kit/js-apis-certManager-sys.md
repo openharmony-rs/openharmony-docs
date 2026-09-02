@@ -35,7 +35,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 getAllAppPrivateCertificates(callback: AsyncCallback\<CMResult>): void
 
-表示获取所有私有凭据列表，使用Callback回调异步返回结果。
+表示获取所有私有凭据列表。使用Callback异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
@@ -906,7 +906,8 @@ let keystore: Uint8Array = new Uint8Array([
 ]);
 let keystorePwd: string = "123456";
 try {
-  certificateManager.installSystemAppCertificate(keystore, keystorePwd).then((cmResult: certificateManager.CMResult) => {
+  certificateManager.installSystemAppCertificate(keystore, keystorePwd)
+    .then((cmResult: certificateManager.CMResult) => {
     let uri: string = (cmResult?.uri == undefined) ? '' : cmResult.uri;
     console.info('Succeeded in installing system app certificate.');
   }).catch((error: Error) => {

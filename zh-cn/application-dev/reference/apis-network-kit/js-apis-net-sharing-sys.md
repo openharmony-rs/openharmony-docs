@@ -24,7 +24,7 @@ import { sharing } from '@kit.NetworkKit';
 
 isSharingSupported(callback: AsyncCallback\<boolean>): void
 
-判断是否支持网络共享，使用 callback 异步回调。
+判断是否支持网络共享。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -40,7 +40,9 @@ isSharingSupported(callback: AsyncCallback\<boolean>): void
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[网络共享错误码](errorcode-net-sharing.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -80,7 +82,9 @@ isSharingSupported(): Promise\<boolean>
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[网络共享错误码](errorcode-net-sharing.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -108,7 +112,7 @@ sharing
 
 isSharing(callback: AsyncCallback\<boolean>): void
 
-获取当前网络共享状态，使用 callback 异步回调。
+获取当前网络共享状态。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -124,7 +128,9 @@ isSharing(callback: AsyncCallback\<boolean>): void
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[网络共享错误码](errorcode-net-sharing.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -164,7 +170,9 @@ isSharing(): Promise\<boolean>
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[网络共享错误码](errorcode-net-sharing.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -192,7 +200,7 @@ sharing
 
 startSharing(type: SharingIfaceType, callback: AsyncCallback\<void>): void
 
-开启指定类型共享，使用 callback 异步回调。
+开启指定类型共享。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -209,7 +217,9 @@ startSharing(type: SharingIfaceType, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[网络共享错误码](errorcode-net-sharing.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -261,10 +271,12 @@ startSharing(type: SharingIfaceType): Promise\<void>
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[网络共享错误码](errorcode-net-sharing.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
-| 202       | Non-system applications use system APIs.     |
 | 201       | Permission denied.                           |
+| 202       | Non-system applications use system APIs.     |
 | 401       | Parameter error.                             |
 | 2200001   | Invalid parameter value.                     |
 | 2200002   | Failed to connect to the service.            |
@@ -296,7 +308,7 @@ sharing
 
 stopSharing(type: SharingIfaceType, callback: AsyncCallback\<void>): void
 
-关闭指定类型共享，使用 callback 异步回调。
+关闭指定类型共享。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -313,7 +325,9 @@ stopSharing(type: SharingIfaceType, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[网络共享错误码](errorcode-net-sharing.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -364,7 +378,9 @@ stopSharing(type: SharingIfaceType): Promise\<void>
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[网络共享错误码](errorcode-net-sharing.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -398,7 +414,7 @@ sharing
 
 getStatsRxBytes(callback: AsyncCallback\<number>): void
 
-获取共享网络接收数据量，使用 callback 异步回调。
+获取共享网络接收数据量。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -414,7 +430,9 @@ getStatsRxBytes(callback: AsyncCallback\<number>): void
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[网络共享错误码](errorcode-net-sharing.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -450,11 +468,13 @@ getStatsRxBytes(): Promise\<number>
 
 | 类型             | 说明                                              |
 | ---------------- | ------------------------------------------------- |
-| Promise\<number> | 以 Promise 形式返回共享网络接收数据量，单位：KB。 |
+| Promise\<number> | Promise对象，返回共享网络接收数据量，单位：KB。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[网络共享错误码](errorcode-net-sharing.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -482,7 +502,7 @@ sharing
 
 getStatsTxBytes(callback: AsyncCallback\<number>): void
 
-获取共享网络发送数据量，使用 callback 异步回调。
+获取共享网络发送数据量。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -498,7 +518,9 @@ getStatsTxBytes(callback: AsyncCallback\<number>): void
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[网络共享错误码](errorcode-net-sharing.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -534,11 +556,13 @@ getStatsTxBytes(): Promise\<number>
 
 | 类型             | 说明                                              |
 | ---------------- | ------------------------------------------------- |
-| Promise\<number> | 以 Promise 形式返回共享网络发送数据量，单位：KB。 |
+| Promise\<number> | Promise对象，返回共享网络发送数据量，单位：KB。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[网络共享错误码](errorcode-net-sharing.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -566,7 +590,7 @@ sharing
 
 getStatsTotalBytes(callback: AsyncCallback\<number>): void
 
-获取共享网络总数据量，使用 callback 异步回调。
+获取共享网络总数据量。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -582,7 +606,9 @@ getStatsTotalBytes(callback: AsyncCallback\<number>): void
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[网络共享错误码](errorcode-net-sharing.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -618,11 +644,13 @@ getStatsTotalBytes(): Promise\<number>
 
 | 类型             | 说明                                            |
 | ---------------- | ----------------------------------------------- |
-| Promise\<number> | 以 Promise 形式返回共享网络总数据量，单位：KB。 |
+| Promise\<number> | Promise对象，返回共享网络总数据量，单位：KB。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[网络共享错误码](errorcode-net-sharing.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -650,7 +678,7 @@ sharing
 
 getSharingIfaces(state: SharingIfaceState, callback: AsyncCallback\<Array\<string>>): void
 
-获取指定状态的网卡名称列表，使用 callback 异步回调。
+获取指定状态的网卡名称列表。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -667,7 +695,9 @@ getSharingIfaces(state: SharingIfaceState, callback: AsyncCallback\<Array\<strin
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[网络共享错误码](errorcode-net-sharing.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -711,11 +741,13 @@ getSharingIfaces(state: SharingIfaceState): Promise\<Array\<string>>
 
 | 类型                     | 说明                                      |
 | ------------------------ | ----------------------------------------- |
-| Promise\<Array\<string>> | 以 Promise 形式返回指定状态网卡名称列表。 |
+| Promise\<Array\<string>> | Promise对象，返回指定状态网卡名称列表。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[网络共享错误码](errorcode-net-sharing.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -745,7 +777,7 @@ sharing
 
 getSharingState(type: SharingIfaceType, callback: AsyncCallback\<SharingIfaceState\>): void
 
-获取指定类型网络共享状态，使用 callback 异步回调。
+获取指定类型网络共享状态。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -762,7 +794,9 @@ getSharingState(type: SharingIfaceType, callback: AsyncCallback\<SharingIfaceSta
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[网络共享错误码](errorcode-net-sharing.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -804,7 +838,9 @@ getSharingState(type: SharingIfaceType): Promise\<SharingIfaceState\>
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[网络共享错误码](errorcode-net-sharing.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -817,7 +853,7 @@ getSharingState(type: SharingIfaceType): Promise\<SharingIfaceState\>
 
 | 类型                                              | 说明                                      |
 | ------------------------------------------------- | ----------------------------------------- |
-| Promise\<[SharingIfaceState](#sharingifacestate)> | 以Promise形式返回指定类型网络共享状态。 |
+| Promise\<[SharingIfaceState](#sharingifacestate)> | Promise对象，返回指定类型网络共享状态。 |
 
 **示例：**
 
@@ -840,7 +876,7 @@ sharing
 
 getSharableRegexes(type: SharingIfaceType, callback: AsyncCallback\<Array\<string\>\>): void
 
-获取指定类型网卡名称正则表达式列表，使用 callback 异步回调。
+获取指定类型网卡名称正则表达式列表。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -857,7 +893,9 @@ getSharableRegexes(type: SharingIfaceType, callback: AsyncCallback\<Array\<strin
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[网络共享错误码](errorcode-net-sharing.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -901,11 +939,13 @@ getSharableRegexes(type: SharingIfaceType): Promise\<Array\<string>>
 
 | 类型                     | 说明                                |
 | ------------------------ | ----------------------------------- |
-| Promise\<Array\<string>> | 以 Promise 形式返回正则表达式列表。 |
+| Promise\<Array\<string>> | Promise对象，返回正则表达式列表。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                     |
+以下错误码的详细介绍请参见[网络共享错误码](errorcode-net-sharing.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -935,7 +975,7 @@ sharing
 
 on(type: 'sharingStateChange', callback: Callback\<boolean>): void
 
-注册网络共享状态变化事件，使用 callback 异步回调。
+注册网络共享状态变化事件。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -948,11 +988,13 @@ on(type: 'sharingStateChange', callback: Callback\<boolean>): void
 | 参数名   | 类型                    | 必填 | 说明                         |
 | -------- | ----------------------- | ---- | ---------------------------- |
 | type     | string                  | 是   | 订阅的事件类型。'sharingStateChange'：注册网络共享状态变化事件。                   |
-| callback | AsyncCallback\<boolean> | 是   | 回调函数，返回网络共享状态。 |
+| callback | Callback\<boolean> | 是   | 回调函数，返回网络共享状态。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                 |
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                 |
 | --------- | ---------------------------------------- |
 | 201       | Permission denied.                       |
 | 202       | Non-system applications use system APIs. |
@@ -972,7 +1014,7 @@ sharing.on('sharingStateChange', (data: boolean) => {
 
 off(type: 'sharingStateChange', callback?: Callback\<boolean>): void
 
-注销网络共享状态变化事件，使用 callback 异步回调。
+注销网络共享状态变化事件。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -985,11 +1027,13 @@ off(type: 'sharingStateChange', callback?: Callback\<boolean>): void
 | 参数名   | 类型                    | 必填 | 说明                         |
 | -------- | ----------------------- | ---- | ---------------------------- |
 | type     | string                  | 是   | 注销的事件类型。'sharingStateChange'：注销网络共享状态变化事件。                   |
-| callback | AsyncCallback\<boolean> | 否   | 回调函数，返回网络共享状态。 |
+| callback | Callback\<boolean> | 否   | 回调函数，返回网络共享状态。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                 |
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                 |
 | --------- | ---------------------------------------- |
 | 201       | Permission denied.                       |
 | 202       | Non-system applications use system APIs. |
@@ -1009,7 +1053,7 @@ sharing.off('sharingStateChange', (data: boolean) => {
 
 on(type: 'interfaceSharingStateChange', callback: Callback\<InterfaceSharingStateInfo\>): void
 
-注册网卡网络共享状态变化事件，使用 callback 异步回调。
+注册网卡网络共享状态变化事件。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1022,11 +1066,13 @@ on(type: 'interfaceSharingStateChange', callback: Callback\<InterfaceSharingStat
 | 参数名   | 类型                                                                   | 必填 | 说明                                  |
 | -------- | -------------------------------------------------------------------- | ---- | ------------------------------------- |
 | type     | string                                                                | 是   | 订阅的事件类型。'interfaceSharingStateChange'：注册网卡网络共享状态变化事件。                            |
-| callback | AsyncCallback\<[InterfaceSharingStateInfo](#interfacesharingstateinfo11)> | 是   | 回调函数。指定网卡共享状态变化时调用。 |
+| callback | Callback\<[InterfaceSharingStateInfo](#interfacesharingstateinfo11)> | 是   | 回调函数。指定网卡共享状态变化时调用。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                 |
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                 |
 | --------- | ---------------------------------------- |
 | 201       | Permission denied.                       |
 | 202       | Non-system applications use system APIs. |
@@ -1046,7 +1092,7 @@ sharing.on('interfaceSharingStateChange', (data: object) => {
 
 off(type: 'interfaceSharingStateChange', callback?: Callback\<InterfaceSharingStateInfo\>): void
 
-注销网卡网络共享状态变化事件，使用 callback 异步回调。
+注销网卡网络共享状态变化事件。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1059,11 +1105,13 @@ off(type: 'interfaceSharingStateChange', callback?: Callback\<InterfaceSharingSt
 | 参数名   | 类型                                                                        | 必填 | 说明                                     |
 | -------- | --------------------------------------------------------------------------- | ---- | ---------------------------------------- |
 | type     | string                                                                     | 是   | 注销的事件类型。'interfaceSharingStateChange'：注销网卡网络共享状态变化事件。                               |
-| callback | AsyncCallback\<[InterfaceSharingStateInfo](#interfacesharingstateinfo11)> | 否   | 回调函数，注销指定网卡共享状态变化通知。 |
+| callback | Callback\<[InterfaceSharingStateInfo](#interfacesharingstateinfo11)> | 否   | 回调函数，注销指定网卡共享状态变化通知。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                 |
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                 |
 | --------- | ---------------------------------------- |
 | 201       | Permission denied.                       |
 | 202       | Non-system applications use system APIs. |
@@ -1083,7 +1131,7 @@ sharing.off('interfaceSharingStateChange', (data: object) => {
 
 on(type: 'sharingUpstreamChange', callback: Callback\<NetHandle>): void
 
-注册上行网络变化事件，使用 callback 异步回调。
+注册上行网络变化事件。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1096,11 +1144,13 @@ on(type: 'sharingUpstreamChange', callback: Callback\<NetHandle>): void
 | 参数名   | 类型                      | 必填 | 说明                           |
 | -------- | ------------------------- | ---- | ------------------------------ |
 | type     | string                    | 是   | 订阅的事件类型。'sharingUpstreamChange'：注册上行网络变化事件。                     |
-| callback | AsyncCallback\<NetHandle> | 是   | 回调函数，上行网络变化时调用。 |
+| callback | Callback\<NetHandle> | 是   | 回调函数，上行网络变化时调用。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                 |
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                 |
 | --------- | ---------------------------------------- |
 | 201       | Permission denied.                       |
 | 202       | Non-system applications use system APIs. |
@@ -1120,7 +1170,7 @@ sharing.on('sharingUpstreamChange', (data: object) => {
 
 off(type: 'sharingUpstreamChange', callback?: Callback\<NetHandle>): void
 
-注销上行网络变化事件，使用 callback 异步回调。
+注销上行网络变化事件。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1133,11 +1183,13 @@ off(type: 'sharingUpstreamChange', callback?: Callback\<NetHandle>): void
 | 参数名   | 类型                      | 必填 | 说明                             |
 | -------- | ------------------------- | ---- | -------------------------------- |
 | type     | string                    | 是   | 注销的事件类型。'sharingUpstreamChange'：注销上行网络变化事件。                       |
-| callback | AsyncCallback\<NetHandle> | 否   | 回调函数，注销上行网络变化事件。 |
+| callback | Callback\<NetHandle> | 否   | 回调函数，注销上行网络变化事件。 |
 
 **错误码：**
 
-| 错误码 ID | 错误信息                                 |
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                 |
 | --------- | ---------------------------------------- |
 | 201       | Permission denied.                       |
 | 202       | Non-system applications use system APIs. |

@@ -6,7 +6,7 @@
 <!--Designer: @woodenarow; @xuelei3-->
 <!--Tester: @chenwan188; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=884f2bc20aae49403f7da1e2ced69bc1867b3253 translatedAt=2026-07-28T06:46:10.692Z pushedAt=2026-07-28T08:26:51.862Z -->
+<!-- md-trans-meta sourceCommit=ae2ed455b894c8b152459324388420bed24b2da8 translatedAt=2026-08-20T06:23:58.609Z pushedAt=2026-08-20T12:07:04.830Z -->
 
 ## When to Use
 
@@ -53,11 +53,11 @@ The **DatamgrService** can serve as a proxy to access the following data:
 
     Currently, cloned applications are supported only in silent access mode.
 
-  The value of **user** must be an integer. It is the user ID of the data provider. For details about the definition of **user** and how to obtain it, see [getActivatedOsAccountLocalIds](../reference/apis-basic-services-kit/js-apis-osAccount.md#getactivatedosaccountlocalids9). If **user** is not set, the user ID of the data accessor is used. Currently, cross-user access supports the add, delete, modify, and query operations, and does not support subscription notification.
+  - The value of **user** must be an integer. It is the user ID of the data provider. For details about the definition of **user** and how to obtain it, see [getActivatedOsAccountLocalIds](../reference/apis-basic-services-kit/js-apis-osAccount.md#getactivatedosaccountlocalids9). If **user** is not set, the user ID of the data accessor is used. Currently, cross-user access supports the add, delete, modify, and query operations, and does not support subscription notification.
 
     Currently, only the main space and privacy space support cross-user access, and the data consumer must have the ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission.
 
-  The value of **accountId** must be an integer. It is the sub-profile identifier of the system account. For details about the definition of **accountId** and how to obtain it, see [getOsAccountForegroundSubProfileId](../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#getosaccountforegroundsubprofileid). If **accountId** is not set, the foreground sub-profile identifier of the system account to which the caller belongs is used. For example, when the data accessor needs to access data under a specific sub-profile in the data provider, it can specify **accountId** in the URI in the following format: `datashareproxy://{bundleName}/{dataPath}?accountId={accountId}`.<br>This parameter can be configured and used on devices running OpenHarmony 7.0.0 or later. Only Car devices are supported.<br>On devices running earlier versions, this parameter configuration does not take effect.
+  - The value of **accountId** must be an integer. It is the sub-profile identifier of the system account. For details about the definition of **accountId** and how to obtain it, see [getOsAccountForegroundSubProfileId](../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#getosaccountforegroundsubprofileid). If **accountId** is not set, the foreground sub-profile identifier of the system account to which the caller belongs is used. For example, when the data accessor needs to access data under a specific sub-profile in the data provider, it can specify **accountId** in the URI in the following format: `datashareproxy://{bundleName}/{dataPath}?accountId={accountId}`.<br>This parameter can be configured and used on devices running OpenHarmony 7.0.0 or later. Only Car devices are supported.<br>On devices running earlier versions, this parameter configuration does not take effect.
 
 ## Constraints
 
@@ -307,7 +307,7 @@ In the **module.json5** file, set the data to be hosted in **proxyData**. For de
 | ----------------------- | ----------------------------- | ---- |
 | uri                     | URI of the data proxy, which is the unique identifier for cross-application data access.      | Yes   |
 | requiredReadPermission  | Permission required for reading data from the data proxy. If this parameter is not set, other applications are not allowed to access data. For details about the permissions, see [Application Permissions](../security/AccessToken/app-permissions.md).<br>Note: The permission constraints for silent access are different from that for [DataShareExtensionAbility](share-data-by-datashareextensionability-sys.md). It is important to understand the difference and prevent confusion. For details, see [DataShareExtensionAbility](share-data-by-datashareextensionability-sys.md).| No   |
-| requiredWritePermission | Permission required for writing data to the data proxy. If this parameter is not set, other applications are not allowed to write data to the data proxy. For details about the permissions, see [Application Permissions](../security/AccessToken/app-permissions.md).<br>Note: The permission constraints for silent access are different from that for [DataShareExtensionAbility](share-data-by-datashareextensionability-sys.md). It is important to understand the difference and prevent confusion. For details, see [DataShareExtensionAbility](share-data-by-datashareextensionability-sys.md).| No   |
+| requiredWritePermission | Permission required for writing data to the data proxy. If this parameter is not set, other apps are not allowed to write data to the data proxy. For details about the permissions, see [Application Permissions](../security/AccessToken/app-permissions.md).<br>Note: The permission constraints for silent access are different from that for [DataShareExtensionAbility](share-data-by-datashareextensionability-sys.md). It is important to understand the difference and prevent confusion. For details, see [DataShareExtensionAbility](share-data-by-datashareextensionability-sys.md). | No    |
 
 **module.json5 example**
 

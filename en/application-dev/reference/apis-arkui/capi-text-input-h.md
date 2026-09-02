@@ -1,12 +1,11 @@
 # text_input.h
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Zhang-Dong-hui-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8a65b118b29a0c9d1936c3b96f0e90c33fab49ab translatedAt=2026-08-10T03:38:32.822Z pushedAt=2026-08-11T03:34:49.925Z -->
+<!-- md-trans-meta sourceCommit=b5ca6cc7369ee8af1740e3aa6db559b91a21474f translatedAt=2026-08-27T08:56:05.420Z pushedAt=2026-08-28T08:44:47.629Z -->
 
 ## Overview
 
@@ -54,14 +53,14 @@ Enumerates the input types of single-line text.
 | ARKUI_TEXTINPUT_TYPE_NORMAL = 0 | Normal input type with no special restrictions. |
 | ARKUI_TEXTINPUT_TYPE_NUMBER = 2 | Numeric input type. |
 | ARKUI_TEXTINPUT_TYPE_PHONE_NUMBER = 3 | Phone number input type.<br>It supports input of digits, spaces, +, -, *, #, (, ), with no length limit. |
-| ARKUI_TEXTINPUT_TYPE_EMAIL = 5 | Email address input type.<br>It supports digits, letters, underscores, decimal points, !, #, $, %, &, ', *, +, -, /, =, ?, ^, `, {, |, }, ~, and @ (only one @ character allowed). The email address format must follow the basic specification: the part before the @ character is the username, and the part after the @ character is the domain name. |
+| ARKUI_TEXTINPUT_TYPE_EMAIL = 5 | Email address input type.<br>It supports digits, letters, underscores, decimal points, !, #, $, %, &, ', *, +, -, /, =, ?, ^, `, \{, \|, \}, ~, and @ (only one @ character allowed). The email address format must follow the basic specification: the part before the @ character is the username, and the part after the @ character is the domain name. |
 | ARKUI_TEXTINPUT_TYPE_PASSWORD = 7 | Password input type.<br>By default, the input text is briefly displayed and then changed to dots. Since API version 12, on PCs/2-in-1 devices, the input text is directly displayed as dots.<br>On TV devices, the eye icon is hidden by default at the end of the input box. On other devices, the eye icon is shown by default at the end of the input box. |
 | ARKUI_TEXTINPUT_TYPE_NUMBER_PASSWORD = 8 | Numeric password input type.<br>By default, the input text is briefly displayed and then changed to dots. Since API version 12, on PCs/2-in-1 devices, the input text is directly displayed as dots.<br>On TV devices, the eye icon is hidden by default at the end of the input box. On other devices, the eye icon is shown by default at the end of the input box. |
 | ARKUI_TEXTINPUT_TYPE_SCREEN_LOCK_PASSWORD = 9 | Lock screen password input type.<br>It supports input of digits, letters, underscores, spaces, and special characters. The eye icon is shown at the end of the input box and the input text changes to dots by default. Since API version 12, on wearables, the input text is directly displayed as dots. The password input type does not support the underline style. |
 | ARKUI_TEXTINPUT_TYPE_USER_NAME = 10 | Username input type with no special restrictions.<br>When Password Vault is enabled, usernames can be auto-saved and auto-filled. |
 | ARKUI_TEXTINPUT_TYPE_NEW_PASSWORD = 11 | New password input type.<br>By default, the input text is briefly displayed and then changed to dots. Since API version 12, on PCs/2-in-1 devices, the input text is directly displayed as dots.<br>On TV devices, the eye icon is hidden by default at the end of the input box. On other devices, the eye icon is shown by default at the end of the input box. |
 | ARKUI_TEXTINPUT_TYPE_NUMBER_DECIMAL = 12 | Number input type with a decimal point.<br>It supports digits and a decimal point (only one decimal point allowed), and does not support negative numbers (including negative integers and negative decimals). |
-| ARKUI_TEXTINPUT_TYPE_ONE_TIME_CODE = 14 | Verification code input type with no special restrictions.<br>**Since:** 20 |
+| ARKUI_TEXTINPUT_TYPE_ONE_TIME_CODE = 14 | Verification code input type with no special restrictions. In this type, the system input method is shown by default when the component gains focus.<br>**Since:** 20 |
 
 ### ArkUI_CancelButtonStyle
 
@@ -131,7 +130,7 @@ Enumerates autofill types.
 | ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_FILE_NUMBER = 29 | Driver's license file number. Currently not supported for automatic saving and auto-filling.<br>**Since:** 18|
 | ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_PLATE = 30 | License plate number. The scenario-based autofill feature, when enabled, can automatically save and fill in license plate numbers.<br>**Since:** 18|
 | ARKUI_TEXTINPUT_CONTENT_TYPE_ENGINE_NUMBER = 31 | Vehicle registration engine number. Currently not supported for automatic saving and auto-filling.<br>**Since:** 18|
-| ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_CHASSIS_NUMBER = 32 | **Chassis number.** Auto-save and auto-fill are not yet supported.<br>**Since:** 18 |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_CHASSIS_NUMBER = 32 | Chassis number. Auto-save and auto-fill are not yet supported.<br>**Since:** 18 |
 
 ### ArkUI_TextInputStyle
 
@@ -149,3 +148,5 @@ Enumerates text input styles.
 | -- | -- |
 | ARKUI_TEXTINPUT_STYLE_DEFAULT = 0 | Default style. The caret width is 1.5 vp, and the selection background height is related to the font size. This style is suitable for most input box scenarios. |
 | ARKUI_TEXTINPUT_STYLE_INLINE = 1 | Inline style. The text selection background height is the same as the input box height. This style is suitable for scenarios where the input box height is fixed and the text selection background height needs to be consistent with the input box height, such as input boxes in compact layouts or inline editing. |
+
+

@@ -64,7 +64,7 @@ ForEach(this.nums,(item) => {
 
 **问题现象**
 
-数组内存储对象示例，需要对对象的属性变化进行监听。
+数组内存储对象实例，需要对对象的属性变化进行监听。
 
 **解决措施**
 
@@ -116,7 +116,7 @@ ForEach(this.nums,(item) => {
 
 **解决措施**
 
-子组件使用\@Link接受父组件的值时，需要使用'\$'建立变量之间的引用关系，才能实现同步。
+子组件使用\@Link接收父组件的值时，需要使用'\$'建立变量之间的引用关系，才能实现同步。
 
 **代码示例**
 
@@ -144,7 +144,7 @@ ForEach(this.nums,(item) => {
    
    ```
 
-2. 在子组件使用\@Link接受数据。
+2. 在子组件使用\@Link接收数据。
 
    ```ts
    @Component
@@ -178,12 +178,12 @@ ForEach(this.nums,(item) => {
 
 **代码示例一**
 
-1. 父组件中使用子组件，通过Provide提供reviewVote参数，供跨级传递给孙子组件。
+1. 父组件中使用子组件，通过\@Provide提供reviewVote参数，供跨级传递给孙子组件。
 
    ```ts
    @Entry
    @Component
-   struct Father{
+   struct Father {
      @Provide("reviewVote") reviewVotes: number = 0;
    
      build() {
@@ -200,7 +200,7 @@ ForEach(this.nums,(item) => {
 
    ```ts
    @Component
-   struct Son{
+   struct Son {
      build() {
        Column() {
          GrandSon()
@@ -209,11 +209,11 @@ ForEach(this.nums,(item) => {
    }
    ```
 
-3. 孙子组件中使用Consume来接受reviewVote的参数。
+3. 孙子组件中使用\@Consume来接收reviewVote的参数。
 
    ```ts
    @Component
-   struct GrandSon{
+   struct GrandSon {
      @Consume("reviewVote") reviewVotes: number
    
      build() {
@@ -237,7 +237,7 @@ ForEach(this.nums,(item) => {
    
      build() {
        Column() {
-         Son({reviewVotes:$reviewVotes})
+         Son({ reviewVotes: this.reviewVotes })
          Button(`Father: ${this.reviewVotes}`)
            ...
        }
@@ -245,26 +245,26 @@ ForEach(this.nums,(item) => {
    }
    ```
 
-2. 子组件Son中使用\@Link接受由父组件Father传递的参数reviewVote。
+2. 子组件Son中使用\@Link接收由父组件Father传递的参数reviewVote。
 
    ```ts
    @Component
-   struct Son{
+   struct Son {
      @Link reviewVotes: number;
      build() {
        Column() {
-         Grandson({reviewVotes:$reviewVotes})
+         Grandson({ reviewVotes: this.reviewVotes })
        }
      }
    }
    
    ```
 
-3. 孙子组件GrandSon使用\@Link接受由Son组件传递的参数reviewVote。
+3. 孙子组件GrandSon使用\@Link接收由Son组件传递的参数reviewVote。
 
    ```ts
    @Component
-   struct Grandson{
+   struct Grandson {
      @Link reviewVotes: number;
    
      build() {
@@ -333,7 +333,7 @@ const obj = {
 
 **解决措施**
 
-在声明周期函数aboutToAppear中使用异步接口获取页面数据，数据变量使用\@State修饰，数据获取完成后根据变量自动刷新页面。
+在生命周期函数aboutToAppear中使用异步接口获取页面数据，数据变量使用\@State修饰，数据获取完成后根据变量自动刷新页面。
 
 **代码示例**
 
@@ -343,11 +343,11 @@ const obj = {
 struct Test6Page {
   // 数据获取成功，会自动刷新页面
   @State message: string = 'loading.....'
-  aboutToAppear(){
+  aboutToAppear() {
     // 模拟异步接口获取数据
-    setTimeout(()=>{
+    setTimeout(() => {
       this.message = 'new msg'
-    },3000)
+    }, 3000)
   }
   build() {
     Row() {
@@ -822,7 +822,8 @@ module.json5添加"metadata"配置项：
       {
         "name": "ArkTSPartialUpdate",
         "value": "true"
-      } ]
+      }
+    ]
   }
 }
 ```

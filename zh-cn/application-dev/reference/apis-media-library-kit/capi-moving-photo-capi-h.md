@@ -28,10 +28,10 @@
 | 名称 | 描述 |
 | -- | -- |
 | [MediaLibrary_ErrorCode OH_MovingPhoto_GetUri(OH_MovingPhoto* movingPhoto, const char** uri)](#oh_movingphoto_geturi) | 获取动态照片的uri。 |
-| [MediaLibrary_ErrorCode OH_MovingPhoto_RequestContentWithUris(OH_MovingPhoto* movingPhoto, char* imageUri, char* videoUri)](#oh_movingphoto_requestcontentwithuris) | 同时请求动态照片的图片内容和视频内容，并写入参数指定的对应的uri中。 |
+| [MediaLibrary_ErrorCode OH_MovingPhoto_RequestContentWithUris(OH_MovingPhoto* movingPhoto, char* imageUri, char* videoUri)](#oh_movingphoto_requestcontentwithuris) | 同时请求动态照片的图片内容和视频内容，并写入参数指定的URI中。    |
 | [MediaLibrary_ErrorCode OH_MovingPhoto_RequestContentWithUri(OH_MovingPhoto* movingPhoto, MediaLibrary_ResourceType resourceType, char* uri)](#oh_movingphoto_requestcontentwithuri) | 请求指定资源类型的动态照片内容，并写入参数指定的uri中。 |
 | [MediaLibrary_ErrorCode OH_MovingPhoto_RequestContentWithBuffer(OH_MovingPhoto* movingPhoto, MediaLibrary_ResourceType resourceType, const uint8_t** buffer, uint32_t* size)](#oh_movingphoto_requestcontentwithbuffer) | 请求指定资源类型的动态照片内容，以ArrayBuffer的形式返回。 |
-| [MediaLibrary_ErrorCode OH_MovingPhoto_Release(OH_MovingPhoto* movingPhoto)](#oh_movingphoto_release) | Release [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md)实例。 |
+| [MediaLibrary_ErrorCode OH_MovingPhoto_Release(OH_MovingPhoto* movingPhoto)](#oh_movingphoto_release) | 释放[OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md)实例。       |
 
 ## 函数说明
 
@@ -53,7 +53,7 @@ MediaLibrary_ErrorCode OH_MovingPhoto_GetUri(OH_MovingPhoto* movingPhoto, const 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md)* movingPhoto | [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md)实例。 |
-| const char** uri | 动态照片的uri。 |
+| const char** uri | 指向动态照片对象标识URI的指针。 |
 
 **返回：**
 
@@ -69,7 +69,7 @@ MediaLibrary_ErrorCode OH_MovingPhoto_RequestContentWithUris(OH_MovingPhoto* mov
 
 **描述**
 
-同时请求动态照片的图片内容和视频内容，并写入参数指定的对应的uri中。
+同时请求动态照片的图片内容和视频内容，并写入参数指定的URI中。
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
@@ -81,8 +81,8 @@ MediaLibrary_ErrorCode OH_MovingPhoto_RequestContentWithUris(OH_MovingPhoto* mov
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md)* movingPhoto | [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md)实例。 |
-| char* imageUri | 用于保存图像数据的目标文件uri。 |
-| char* videoUri | 用于保存视频数据的目标文件uri。 |
+| char* imageUri | 保存图像数据的目标文件URI。 |
+| char* videoUri | 保存视频数据的目标文件URI。 |
 
 **返回：**
 
@@ -98,7 +98,7 @@ MediaLibrary_ErrorCode OH_MovingPhoto_RequestContentWithUri(OH_MovingPhoto* movi
 
 **描述**
 
-请求指定资源类型的动态照片内容，并写入参数指定的uri中。
+请求指定资源类型的动态照片内容，并将内容写入指定URI。
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
@@ -140,8 +140,8 @@ MediaLibrary_ErrorCode OH_MovingPhoto_RequestContentWithBuffer(OH_MovingPhoto* m
 | -- | -- |
 | [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md)* movingPhoto | [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md)实例。 |
 | [MediaLibrary_ResourceType](capi-media-asset-base-capi-h.md#medialibrary_resourcetype) resourceType | 指定的资源类型[MediaLibrary_ResourceType](capi-media-asset-base-capi-h.md#medialibrary_resourcetype)。 |
-| const uint8_t** buffer | 保存目标文件数据的缓冲区。 |
-| uint32_t* size | 缓冲区的大小。 |
+| const uint8_t** buffer | 指向保存目标文件数据缓冲区的指针，用于接收请求的资源内容数据。 |
+| uint32_t* size | 输出参数，返回缓冲区数据的大小，单位：字节（Byte）。 |
 
 **返回：**
 
@@ -157,7 +157,7 @@ MediaLibrary_ErrorCode OH_MovingPhoto_Release(OH_MovingPhoto* movingPhoto)
 
 **描述**
 
-Release [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md)实例。
+释放[OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md)实例。
 
 **起始版本：** 13
 
