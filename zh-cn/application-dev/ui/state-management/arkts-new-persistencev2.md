@@ -20,7 +20,7 @@ PersistenceV2提供状态变量持久化能力，开发者可以通过connect或
 >
 >globalConnect从API version 18开始支持，行为和connect保持一致，唯一的区别为connect的底层存储路径为module级别的路径，而globalConnect的底层存储路径为应用级别，详细区别见使用场景[在不同的module中使用connect和globalConnect](#在不同的module中使用connect和globalconnect)。
 >
->globalConnect从API version 23开始支持[集合类型](#globalconnect支持集合的类型)（Array、Map、Set、Date、collections.Array、collections.Map、collections.Set）的持久化，支持在UI线程持久化@Sendable类型的数据持久化，支持持久化循环引用的对象，支持持久化单个key超过8k的数据。目前建议开发者使用API version 23的新增的globalConnect接口。
+>globalConnect从API version 23开始支持[集合类型](#globalconnect支持的集合类型)（Array、Map、Set、collections.Array、collections.Map、collections.Set）和Date类型的持久化，支持在UI线程持久化@Sendable类型的数据，支持持久化循环引用的对象，支持持久化单个key超过8k的数据。目前建议开发者使用API version 23新增的globalConnect接口。
 
 ## 概述
 
@@ -140,7 +140,7 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
           // 点击'array.sort', 对数组项升序排列，重启应用，Repeat组件展示升序数组
           Button('array.sort')
             .onClick(() => {
-              this.array.sort((a, b) => a -b);
+              this.array.sort((a, b) => a - b);
             })
             .width(300)
             .margin(10)
@@ -159,7 +159,7 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 
      ![persistencev2-sync-0](./figures/persistencev2-sync-0.gif)
 
-- globalConnect在持久化多个相同[集合类型](#globalconnect支持集合的类型)时，需要提供不同的`key`来区分持久化数据。
+- globalConnect在持久化多个相同[集合类型](#globalconnect支持的集合类型)时，需要提供不同的`key`来区分持久化数据。
 
    如下展示开发者持久化相同的`Array<number>`类型的部分示例代码片段：
 
@@ -187,11 +187,11 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 
 4、在API version 23以前，单个key支持数据大小约8k，过大会导致持久化失败。
 
-- 在API version 23开始，解除单个key只能持久化8K数据的限制，读取和写入持久化存储的数据会在UI线程中同步进行，但开发者需要注意，不建议开发者在UI线程存储大量的持久化数据，会导致界面卡顿。
+- 从API version 23开始，解除单个key只能持久化8K数据的限制，读取和写入持久化存储的数据会在UI线程中同步进行，但开发者需要注意，不建议开发者在UI线程存储大量的持久化数据，会导致界面卡顿。
 
 5、在API version 23以前，持久化的数据必须是class对象，不支持容器类型（如Array、Set、Map），不支持built-in的构造对象（如String、Number），不支持持久化基本类型（如string、number、boolean）。如果需要持久化非class对象，建议使用[Preferences](../../database/preferences-guidelines.md)进行数据持久化。
 
-- 在API version 23开始，支持持久化Class类型和容器类型（Array、Set、Map，Date）。支持built-in的构造对象类型（如String、Number）及基本类型（如string、number、boolean）作为class属性的持久化（String、Number是不可变的数据对象，没法直接作为[顶层数据类型](#globalconnect顶层持久化数据类型及非顶层数据类型)进行持久化）。对于不支持的类型，会抛出运行时报错，从API version 23开始，将返回错误码[140103](../../reference/apis-arkui/errorcode-stateManagement.md#140103-appstoragev2和persistencev2使用不支持的数据类型)。
+- 从API version 23开始，支持持久化Class类型、容器类型（Array、Set、Map）和Date类型。支持built-in的构造对象类型（如String、Number）及基本类型（如string、number、boolean）作为class属性的持久化（String、Number是不可变的数据对象，没法直接作为[顶层数据类型](#globalconnect顶层持久化数据类型及非顶层数据类型)进行持久化）。对于不支持的类型，会抛出运行时报错，从API version 23开始，将返回错误码[140103](../../reference/apis-arkui/errorcode-stateManagement.md#140103-appstoragev2和persistencev2使用不支持的数据类型)。
 
    如下为新增globalConnect支持`Array<ClassA>`类型的持久化示例：
 
@@ -440,7 +440,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 12、globalConnect仅支持设置EL1-EL5加密级别，否则会抛出运行时异常，从API version 23开始，将返回错误码[140106](../../reference/apis-arkui/errorcode-stateManagement.md#140106-使用persistencev2存储数据到不支持的加密级别)，示例见[使用globalConnect存储数据](#使用globalconnect存储数据)。
 
 13、当存储数据的结构与当前数据的结构不一致时，可能会导致反序列化失败。在API版本26.0.0以前，开发者无法获取旧的序列化数据，进而无法判断自己的数据结构有哪些改变。
-- 从API版本26.0.0开始，[PersistenceErrorCallback](../../reference/apis-arkui/js-apis-stateManagement.md#persistenceerrorcallback)支持传入oldValue参数，开发者可通过该参数获取存于磁盘的旧的序列化数据，具体用例可见[通过notifyonerror获取旧的序列化数据](#通过notifyonerror获取旧的序列化数据)。
+- 从API版本26.0.0开始，[PersistenceErrorCallback](../../reference/apis-arkui/js-apis-stateManagement.md#persistenceerrorcallback)支持传入oldValue参数，开发者可通过该参数获取存于磁盘的旧的序列化数据，具体用例可见[通过notifyOnError获取旧的序列化数据](#通过notifyonerror获取旧的序列化数据)。
 
 14、不支持在使用connect或globalConnect的类中使用[\@Computed](./arkts-new-computed.md)。\@Computed为只读属性，不支持赋值操作，因此会导致反序列化失败。
 
@@ -448,7 +448,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 
 ### globalConnect顶层持久化数据类型及非顶层数据类型
 
-在API version 23以前，持久化的顶层数据类型必须是用户自定义的`class`对象，不支持容器类型（如`Array`、`Set`、`Map`，`Date`）。在API version 23开始，持久化的顶层数据类型可以是用户自定义的`class`，也可以是容器类型。非顶层数据类型，是指定义在用户自定义`class`属性的类型。
+在API version 23以前，持久化的顶层数据类型必须是用户自定义的`class`对象，不支持容器类型（如`Array`、`Set`、`Map`）和Date类型。在API version 23开始，持久化的顶层数据类型可以是用户自定义的`class`，可以是容器类型，也可以是Date类型。非顶层数据类型，是指定义在用户自定义`class`属性的类型。
 
 如下示例中，`Array<ClassA>`是顶层持久化数据类型，可作为`globalConnect`的直接返回值类型，`collections.Map`是`CollectionMapClass`类中属性的类型，属于非顶层持久化的数据类型。
 
@@ -515,7 +515,7 @@ class PersistClass {
 }
 ```
 
-### globalConnect支持集合的类型
+### globalConnect支持的集合类型
 
 集合类型是指`Array<V>`、`Map<K, V>`、`Set<V>`、`collections.Array<V>`、`collections.Map<K, V>`、`collections.Set<V>`。
 
