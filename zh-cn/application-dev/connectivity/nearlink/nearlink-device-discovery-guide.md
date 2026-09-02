@@ -192,15 +192,15 @@
 
     ```ts
     const ADV_DATA_TYPE_DISCOVERY_LEVEL = 0x01; // 发现等级
-    const ADV_DATA_TYPE_SERVICE_DATA_16_BIT_UUID = 0x03; // 标准服务数据（16比特UUID）
-    const ADV_DATA_TYPE_SERVICE_DATA_128_BIT_UUID = 0x04; // 自定义服务数据（128比特UUID）
-    const ADV_DATA_TYPE_COMPLETE_LIST_16_BIT_SERVICE_UUIDS = 0x05; // 完整的标准服务UUID列表
-    const ADV_DATA_TYPE_COMPLETE_LIST_128_BIT_SERVICE_UUIDS = 0x06; // 完整的自定义服务UUID列表
-    const ADV_DATA_TYPE_INCOMPLETE_LIST_16_BIT_SERVICE_UUIDS = 0x07; // 不完整的标准服务UUID列表
-    const ADV_DATA_TYPE_INCOMPLETE_LIST_128_BIT_SERVICE_UUIDS = 0x08; // 不完整的自定义服务UUID列表
-    const ADV_DATA_TYPE_SHORTENED_LOCAL_NAME = 0x0A; // 缩短的本地名称
-    const ADV_DATA_TYPE_COMPLETE_LOCAL_NAME = 0x0B; // 完整的本地名称
-    const ADV_DATA_TYPE_MANUFACTURER_SPECIFIC_DATA = 0xFF; // 厂商自定义数据
+    const ADV_DATA_TYPE_SERVICE_DATA_16_BIT_UUID = 0x03; // 标准服务数据信息
+    const ADV_DATA_TYPE_SERVICE_DATA_128_BIT_UUID = 0x04; // 自定义服务数据信息
+    const ADV_DATA_TYPE_COMPLETE_LIST_16_BIT_SERVICE_UUIDS = 0x05; // 完整标准服务标识列表
+    const ADV_DATA_TYPE_COMPLETE_LIST_128_BIT_SERVICE_UUIDS = 0x06; // 完整自定义服务标识列表
+    const ADV_DATA_TYPE_INCOMPLETE_LIST_16_BIT_SERVICE_UUIDS = 0x07; // 部分标准服务标识列表
+    const ADV_DATA_TYPE_INCOMPLETE_LIST_128_BIT_SERVICE_UUIDS = 0x08; // 部分自定义服务标识列表
+    const ADV_DATA_TYPE_SHORTENED_LOCAL_NAME = 0x0A; // 设备缩写本地名称
+    const ADV_DATA_TYPE_COMPLETE_LOCAL_NAME = 0x0B; // 设备完整本地名称
+    const ADV_DATA_TYPE_MANUFACTURER_SPECIFIC_DATA = 0xFF; // 厂商自定义信息
 
     const NEARLINK_UUID_16_BIT_LENGTH = 2;
     const NEARLINK_UUID_128_BIT_LENGTH = 16;
@@ -238,11 +238,11 @@
       }
       let curPos = 0;
       while (curPos < advData.byteLength) {
-        // 每个条目由1字节类型、1字节长度和值组成
+        // 每条数据由1字节类型、1字节长度和数据内容组成
         let dataType = advData[curPos++];
         let dataLength = advData[curPos++];
         if (dataLength === 0) {
-          break; // 长度为零表示有效条目结束
+          break; // 长度为0表示数据结束
         }
         switch (dataType) {
           case ADV_DATA_TYPE_DISCOVERY_LEVEL:
@@ -275,7 +275,7 @@
           default:
             break;
         }
-        curPos += dataLength; // 移动到下一个条目
+        curPos += dataLength; // 移动到下一条数据
       }
       hilog.info(0x0000, 'testTag',
         `discoveryLevel: ${result.discoveryLevel}, serviceData: ${JSON.stringify(result.serviceData)}, ` +
