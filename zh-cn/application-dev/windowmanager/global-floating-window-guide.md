@@ -137,7 +137,7 @@
    <!-- @[destroy_floating_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
    
    ``` TypeScript
-   // 4.销毁全局悬浮窗。当不再需要全局悬浮窗时，可根据具体实现逻辑，使用destroy对其进行销毁。
+   // 4.销毁全局悬浮窗。当不再需要全局悬浮窗时，可根据具体实现逻辑，使用destroyWindow对其进行销毁。
    floatWindowClass.destroyWindow((err) => {
      if (err?.code) {
        console.error(`Failed to destroy the window. Cause code: ${err.code}, message: ${err.message}`);

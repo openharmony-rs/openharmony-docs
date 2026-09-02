@@ -98,7 +98,7 @@
    <!-- @[destroy_dialog_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/DialogWindow.ets) -->  
    
    ``` TypeScript
-   // 4.销毁模态窗口。当不再需要模态窗口时，可根据具体实现逻辑，使用destroy对其进行销毁。
+   // 4.销毁模态窗口。当不再需要模态窗口时，可根据具体实现逻辑，使用destroyWindow对其进行销毁。
    dialogWindowClass.destroyWindow((err: BusinessError) => {
      let errCode: number = err.code;
      if (errCode) {
