@@ -34693,14 +34693,14 @@
 						"start_line":35
 					},
 					{
-						"end_line":171,
+						"end_line":172,
 						"name":"sensor_capi_get_sensors_info_example",
-						"start_line":84
+						"start_line":83
 					},
 					{
-						"end_line":232,
+						"end_line":270,
 						"name":"sensor_capi_subscriber_example",
-						"start_line":173
+						"start_line":174
 					},
 					{
 						"end_line":246,
