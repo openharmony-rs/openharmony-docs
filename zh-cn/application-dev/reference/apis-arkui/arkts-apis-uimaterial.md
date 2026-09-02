@@ -315,107 +315,153 @@ import { uiMaterial } from '@kit.ArkUI';
 @Entry
 @Component
 struct SystemMaterialPage {
-
-  @Builder
-  NavigationTitle() {
-    Column() {
-      Stack() {
-        Image($r('app.media.bg1')) // $r('app.media.bg1')需要替换为开发者所需的图像资源文件
-          .width('100%')
-          .height('100%')
-
-        Column({ space: 30 }) {
-          Column() {
-            Text('ULTRA_THIN')
-          }
-          .width(328)
-          .height(56)
-          .borderRadius(28)
-          .justifyContent(FlexAlign.Center)
-          .alignItems(HorizontalAlign.Center)
-          .systemMaterial(new uiMaterial.ImmersiveMaterial({
-            style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
-          }))
-
-          Column() {
-            Text('THIN')
-          }
-          .width(328)
-          .height(56)
-          .borderRadius(28)
-          .justifyContent(FlexAlign.Center)
-          .alignItems(HorizontalAlign.Center)
-          .systemMaterial(new uiMaterial.ImmersiveMaterial({
-            style: uiMaterial.ImmersiveStyle.THIN,
-          }))
-
-          Column() {
-            Text('REGULAR')
-          }
-          .width(328)
-          .height(56)
-          .borderRadius(28)
-          .justifyContent(FlexAlign.Center)
-          .alignItems(HorizontalAlign.Center)
-          .systemMaterial(new uiMaterial.ImmersiveMaterial({
-            style: uiMaterial.ImmersiveStyle.REGULAR,
-          }))
-
-          Column() {
-            Text('THICK')
-          }
-          .width(328)
-          .height(56)
-          .borderRadius(28)
-          .justifyContent(FlexAlign.Center)
-          .alignItems(HorizontalAlign.Center)
-          .systemMaterial(new uiMaterial.ImmersiveMaterial({
-            style: uiMaterial.ImmersiveStyle.THICK,
-          }))
-
-          Column() {
-            Text('ULTRA_THICK')
-          }
-          .width(328)
-          .height(56)
-          .borderRadius(28)
-          .justifyContent(FlexAlign.Center)
-          .alignItems(HorizontalAlign.Center)
-          .systemMaterial(new uiMaterial.ImmersiveMaterial({
-            style: uiMaterial.ImmersiveStyle.ULTRA_THICK,
-          }))
-        }
-      }
-      .height('90%')
-      .width('90%')
-    }
-    .width('100%')
-    .alignItems(HorizontalAlign.Center)
-    .justifyContent(FlexAlign.Center)
-  }
+  @State currentStyle: uiMaterial.ImmersiveStyle = uiMaterial.ImmersiveStyle.ULTRA_THIN;
+  private styles: uiMaterial.ImmersiveStyle[] = [
+    uiMaterial.ImmersiveStyle.ULTRA_THIN,
+    uiMaterial.ImmersiveStyle.THIN,
+    uiMaterial.ImmersiveStyle.REGULAR,
+    uiMaterial.ImmersiveStyle.THICK,
+    uiMaterial.ImmersiveStyle.ULTRA_THICK,
+  ];
 
   build() {
     Column() {
-      Navigation() {
-        // 页面内容
+      Tabs({ barPosition: BarPosition.End }) {
+        TabContent() {
+          // $r('app.media.invert')需要替换为开发者所需的图像资源文件
+          Image($r('app.media.invert'))
+            .width('100%')
+            .height('100%')
+            .objectFit(ImageFit.Cover)
+        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), 'ULTRA_THIN')
+          .labelStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+          .iconStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+        )
+
+        TabContent() {
+          Image($r('app.media.invert'))
+            .width('100%')
+            .height('100%')
+            .objectFit(ImageFit.Cover)
+        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), 'THIN')
+          .labelStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+          .iconStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+        )
+
+        TabContent() {
+          Image($r('app.media.invert'))
+            .width('100%')
+            .height('100%')
+            .objectFit(ImageFit.Cover)
+        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), 'REGULAR')
+          .labelStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+          .iconStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+        )
+
+        TabContent() {
+          Image($r('app.media.invert'))
+            .width('100%')
+            .height('100%')
+            .objectFit(ImageFit.Cover)
+        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), 'THICK')
+          .labelStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+          .iconStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+        )
+
+        TabContent() {
+          Image($r('app.media.invert'))
+            .width('100%')
+            .height('100%')
+            .objectFit(ImageFit.Cover)
+        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), 'ULTRA_THICK')
+          .labelStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+          .iconStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+        )
       }
-      .title({ builder: this.NavigationTitle, height: '100%' })
-    }.width('100%').height('100%')
+      .barFloatingStyle({
+        systemMaterial: new uiMaterial.ImmersiveMaterial({
+          style: this.currentStyle,
+        }),
+        maskColor: Color.Transparent,
+      })
+      .barOverlap(true)
+      .onChange((index: number) => {
+        this.currentStyle = this.styles[index];
+      })
+      .barWidth(500)
+      .height('100%')
+    }
+    .width('100%')
+    .height('100%')
   }
 }
 ```
 
 在支持沉浸式材质的低算力设备上表现：
 
-![systemMaterial](figures/immersiveMaterialSmooth.jpg)
+ULTRA_THIN样式：
+
+![systemMaterial](figures/immersiveMaterialSmooth-0.jpg)
+
+THIN样式：
+
+![systemMaterial](figures/immersiveMaterialSmooth-1.jpg)
+
+REGULAR样式：
+
+![systemMaterial](figures/immersiveMaterialSmooth-2.jpg)
+
+THICK样式：
+
+![systemMaterial](figures/immersiveMaterialSmooth-3.jpg)
+
+ULTRA_THICK样式：
+
+![systemMaterial](figures/immersiveMaterialSmooth-4.jpg)
 
 在支持沉浸式材质的中算力设备上表现：
 
-![systemMaterial](figures/immersiveMaterialGentle.jpg)
+ULTRA_THIN样式：
+
+![systemMaterial](figures/immersiveMaterialGentle-0.jpg)
+
+THIN样式：
+
+![systemMaterial](figures/immersiveMaterialGentle-1.jpg)
+
+REGULAR样式：
+
+![systemMaterial](figures/immersiveMaterialGentle-2.jpg)
+
+THICK样式：
+
+![systemMaterial](figures/immersiveMaterialGentle-3.jpg)
+
+ULTRA_THICK样式：
+
+![systemMaterial](figures/immersiveMaterialGentle-4.jpg)
 
 在支持沉浸式材质的高算力设备上表现：
 
-![systemMaterial](figures/immersiveMaterialExquisite.jpg)
+ULTRA_THIN样式：
+
+![systemMaterial](figures/immersiveMaterialExquisite-0.jpg)
+
+THIN样式：
+
+![systemMaterial](figures/immersiveMaterialExquisite-1.jpg)
+
+REGULAR样式：
+
+![systemMaterial](figures/immersiveMaterialExquisite-2.jpg)
+
+THICK样式：
+
+![systemMaterial](figures/immersiveMaterialExquisite-3.jpg)
+
+ULTRA_THICK样式：
+
+![systemMaterial](figures/immersiveMaterialExquisite-4.jpg)
 
 ### 示例2（获取材质配置信息并使用空材质关闭沉浸式系统材质）
 
@@ -447,51 +493,38 @@ import { uiMaterial } from '@kit.ArkUI';
 struct MaterialInfoPage {
   // 获取材质配置信息
   private info: uiMaterial.MaterialInfo = uiMaterial.getMaterialInfo();
-  @Builder
-  NavigationTitle() {
-    Column() {
-      Text(`MaterialState: ${this.info.state}`)
-        .fontSize(16)
-        .margin({ bottom: 10 })
-      Text(`MaterialType: ${this.info.type}`)
-        .fontSize(16)
-        .margin({ bottom: 20 })
-
-      // 根据状态决定组件行为
-      if (this.info.state === uiMaterial.MaterialState.ENABLE) {
-        // 主动使用沉浸式材质
-        Button('Enable UiMaterial')
-          .backgroundColor(Color.Transparent)
-          .systemMaterial(new uiMaterial.ImmersiveMaterial({
-            style: uiMaterial.ImmersiveStyle.ULTRA_THIN
-          }))
-          .fontColor(Color.Blue)
-          .margin({ bottom: 10 })
-        // Select组件默认开启沉浸式系统材质
-        Select([
-          {value: 'select item'}
-        ]).value('select item')
-        .margin({ bottom: 10 })
-        // 单独关闭Select组件的沉浸式系统材质
-        Select([
-          {value: 'select item'}
-        ]).value('select item')
-        .systemMaterial(uiMaterial.Material.empty)
-      }
-    }
-    .width('100%')
-    .justifyContent(FlexAlign.Center)
-    // $r('app.media.img')需要替换为开发者所需的图像资源文件
-    .backgroundImage($r('app.media.img'))
-    .backgroundImageSize(ImageSize.FILL)
-  }
 
   build() {
     Column() {
-      Navigation() {
-        // 页面内容
+      Column({ space: 20 }) {
+        Column() {
+          Text(`MaterialState: ${this.info.state}`)
+            .fontSize(16)
+          Text(`MaterialType: ${this.info.type}`)
+            .fontSize(16)
+        }
+        .backgroundColor(Color.White)
+        .padding(15)
+
+        // 根据状态决定组件行为
+        if (this.info.state === uiMaterial.MaterialState.ENABLE) {
+          // Toggle组件默认开启沉浸式系统材质
+          Toggle({ type: ToggleType.Switch })
+            .width(100)
+            .height(50)
+          // 单独关闭Toggle组件的沉浸式系统材质
+          Toggle({ type: ToggleType.Switch })
+            .width(100)
+            .height(50)
+            .systemMaterial(uiMaterial.Material.empty)
+        }
       }
-      .title({ builder: this.NavigationTitle, height: '100%' })
+      .width('100%')
+      .height('100%')
+      .justifyContent(FlexAlign.Center)
+      // $r('app.media.img')需要替换为开发者所需的图像资源文件
+      .backgroundImage($r('app.media.img'))
+
     }.width('100%').height('100%')
   }
 }
@@ -521,44 +554,47 @@ import { uiMaterial } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
-  @Builder
-  NavigationTitle() {
-    Stack() {
-      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
-      Image($r('app.media.startIcon'))
-      Column() {
-        Column() {
-          Text('Context')
-        }
-        .margin({ bottom: 100 })
-        .width(248)
-        .height(56)
-        .borderRadius(28)
-        .justifyContent(FlexAlign.Center)
-        .alignItems(HorizontalAlign.Center)
-        .systemMaterial(new uiMaterial.ImmersiveMaterial({
-          style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
-          interactive: true,
-        }))
-      }
-      .height('100%')
-      .width('100%')
-      .justifyContent(FlexAlign.Center)
-    }
-  }
-
   build() {
     Column() {
-      Navigation() {
-        // 页面内容
+      Tabs({ barPosition: BarPosition.End }) {
+        TabContent() {
+          // $r('app.media.invert')需要替换为开发者所需的图像资源文件。
+          Image($r('app.media.invert'))
+            .width('100%')
+            .height('100%')
+        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), 'tab1')
+          .labelStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+          .iconStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+        )
       }
-      .title({ builder: this.NavigationTitle, height: '100%' })
-    }.width('100%').height('100%')
+      .barFloatingStyle({
+        systemMaterial: new uiMaterial.ImmersiveMaterial({
+          style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+          // 开启交互形变效果
+          interactive: true,
+        }),
+        maskColor: Color.Transparent,
+      })
+      .barOverlap(true)
+      .height('100%')
+    }
+    .width('100%')
+    .height('100%')
   }
 }
 ```
 
-![zh-cn_sheet](figures/material-interactive.gif)
+在支持沉浸式材质的高算力设备上表现：
+
+![zh-cn_sheet](figures/material-interactiveExquisite.gif)
+
+在支持沉浸式材质的中算力设备上表现：
+
+![zh-cn_sheet](figures/material-interactiveGentle.gif)
+
+在支持沉浸式材质的低算力设备上表现：
+
+![zh-cn_sheet](figures/material-interactiveSmooth.gif)
 
 ### 示例4（设置组件材质的光感交互反馈效果）
 
@@ -567,54 +603,82 @@ struct Index {
 从API版本26.0.0开始，新增lightEffect接口。
 
 ``` ts
+// xxx.ets
 import { uiMaterial } from '@kit.ArkUI';
+
+@Styles
+function systemMaterialStyle() {
+  .margin(5)
+  .width(70)
+  .height(70)
+  .borderRadius(50)
+}
 
 @Entry
 @Component
-struct LightEffect {
-  @State itemsKey: number[] = [0, 1, 2];
-  @State circleRadius: number = 40;
-  @State spaceValue: number = 10;
-  // 创建沉浸式材质对象，启用交互形变和光感交互反馈效果（lightEffect.color为undefined时使用默认白色光感颜色）
-  @State myMaterial: uiMaterial.Material = new uiMaterial.ImmersiveMaterial({
+struct NavigationTitleMaterialDemo {
+  @State myMaterial: uiMaterial.ImmersiveMaterial = new uiMaterial.ImmersiveMaterial({
     style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
     interactive: true,
-    lightEffect: { color: undefined },
+    lightEffect: {},
   });
+
   @Builder
-  NavigationTitle() {
-    Column() {
+  CustomMenuBuilder() {
+    Stack() {
       Row() {
-        Row({ space: this.spaceValue }) {
-          ForEach(this.itemsKey, (_: number, __: number) => {
-            Row()
-              .width(this.circleRadius * 2)
-              .height(this.circleRadius * 2)
-              .borderRadius(this.circleRadius)
-              .systemMaterial(this.myMaterial)
-          })
+        Text('Title')
+          .fontSize(30)
+          .fontColor(Color.White)
+          .margin({ right: 50 })
+
+        Column() {
         }
+        .systemMaterialStyle()
+        .systemMaterial(this.myMaterial)
+
+        Column() {
+        }
+        .systemMaterialStyle()
+        .systemMaterial(this.myMaterial)
+
+        Column() {
+        }
+        .systemMaterialStyle()
+        .systemMaterial(this.myMaterial)
       }
       .justifyContent(FlexAlign.End)
-      .backgroundColor(Color.Black)
-      .width('100%')
-      .padding(20)
     }
     .width('100%')
+    .height(100)
   }
 
   build() {
-    Column() {
+    Stack() {
+      // $r('app.media.invert')需要替换为开发者所需的图像资源文件
+      Image($r('app.media.invert'))
       Navigation() {
         // 页面内容
       }
-      .title({ builder: this.NavigationTitle, height: '100%' })
-    }.width('100%').height('100%')
+      .title(this.CustomMenuBuilder())
+    }
+    .width('100%')
+    .height('100%')
   }
 }
 ```
 
-![zh-cn_sheet](figures/materialLightEffect.gif)
+在支持沉浸式材质的高算力设备上表现：
+
+![zh-cn_sheet](figures/materialLightEffectExquisite.gif)
+
+在支持沉浸式材质的中算力设备上表现：
+
+![zh-cn_sheet](figures/materialLightEffectGentle.gif)
+
+在支持沉浸式材质的低算力设备上表现：
+
+![zh-cn_sheet](figures/materialLightEffectSmooth.gif)
 
 ### 示例5（查询材质等级与是否支持沉浸式材质）
 
@@ -623,78 +687,92 @@ struct LightEffect {
 从API版本26.0.0开始，新增getGlobalMaterialLevel和isImmersiveMaterialSupported方法。
 
 ``` ts
+// xxx.ets
 import { uiMaterial } from '@kit.ArkUI';
+
+@Styles
+function systemMaterialStyle() {
+  .margin(5)
+  .width(70)
+  .height(70)
+  .borderRadius(50)
+}
 
 @Entry
 @Component
-struct MaterialLevelPage {
+struct NavigationTitleMaterialDemo {
   private materialLevel: uiMaterial.MaterialLevel = uiMaterial.getGlobalMaterialLevel(); // 材质档位由设备决定，应用运行后不会改变
   private isSupported: boolean = uiMaterial.isImmersiveMaterialSupported(); // 是否支持沉浸式材质由设备决定，应用运行后不会改变
 
   @Builder
-  NavigationTitle() {
-    Column({ space: 20 }) {
-      Text(`MaterialLevel: ${this.materialLevel}`)
-        .fontSize(16)
+  CustomMenuBuilder() {
+    Stack() {
+      Row() {
+        Text('Title')
+          .fontSize(30)
+          .fontColor(Color.White)
+          .margin({ right: 50 })
 
-      Text(`IsImmersiveMaterialSupported: ${this.isSupported}`)
-        .fontSize(16)
+        Column() {
+        }
+        .systemMaterialStyle()
+        .backgroundColor(this.isSupported ? Color.Transparent :
+          '#f2f1f3f5') // 背景色写到systemMaterial之前，在支持沉浸式材质的低算力设备上，沉浸式材质中包含的背景色效果最终生效
+        // 在支持沉浸式材质的设备上，设置透明的背景色和沉浸式材质，沉浸式材质后设置生效；在不支持沉浸式材质的设备上，设置'#f2f1f3f5'的背景色和undefined的无材质效果，'#f2f1f3f5'的背景色属性生效
+        .systemMaterial(this.isSupported ? new uiMaterial.ImmersiveMaterial({
+          style: uiMaterial.ImmersiveStyle.REGULAR,
+        }) : undefined)
 
-      Column({ space: 20 }) {
-        // 适配方式1，判断设备是否支持材质，根据支持情况设不同的属性，写法更直观，能适用的属性范围更广
-        Column()
-          .width(328)
-          .height(56)
-          .borderRadius(28)
-          .backgroundColor(this.isSupported ? Color.Transparent :
-            '#f2f1f3f5') // 背景色写到systemMaterial之前，在支持沉浸式材质的低算力设备上，沉浸式材质中包含的背景色效果最终生效
-          // 在支持沉浸式材质的设备上，设置透明的背景色和沉浸式材质，沉浸式材质后设置生效；在不支持沉浸式材质的设备上，设置'#f2f1f3f5'的背景色和undefined的无材质效果，'#f2f1f3f5'的背景色属性生效
-          .systemMaterial(this.isSupported ? new uiMaterial.ImmersiveMaterial({
-            style: uiMaterial.ImmersiveStyle.REGULAR,
-          }) : undefined)
+        Column() {
+        }
+        .systemMaterialStyle()
+        .backgroundColor(this.isSupported ? Color.Transparent :
+          $r('sys.color.comp_background_emphasize')) // 背景色写到systemMaterial之前，在支持沉浸式材质的低算力设备上，沉浸式材质中包含的背景色效果最终生效
+        // 在支持沉浸式材质的设备上，设置透明的背景色和带赋色的沉浸式材质，带赋色的沉浸式材质后设置生效；在不支持沉浸式材质的设备上，设置资源值的背景色和undefined的无材质效果，资源值的背景色属性生效
+        .systemMaterial(this.isSupported ? new uiMaterial.ImmersiveMaterial({
+          style: uiMaterial.ImmersiveStyle.REGULAR,
+          materialColor: $r('sys.color.comp_background_emphasize'),
+        }) : undefined)
 
-        Column()
-          .width(328)
-          .height(56)
-          .borderRadius(28)
-          .backgroundColor(this.isSupported ? Color.Transparent :
-            $r('sys.color.comp_background_emphasize')) // 背景色写到systemMaterial之前，在支持沉浸式材质的低算力设备上，沉浸式材质中包含的背景色效果最终生效
-          // 在支持沉浸式材质的设备上，设置透明的背景色和带赋色的沉浸式材质，带赋色的沉浸式材质后设置生效；在不支持沉浸式材质的设备上，设置资源值的背景色和undefined的无材质效果，资源值的背景色属性生效
-          .systemMaterial(this.isSupported ? new uiMaterial.ImmersiveMaterial({
-            style: uiMaterial.ImmersiveStyle.REGULAR,
-            materialColor: $r('sys.color.comp_background_emphasize'),
-          }) : undefined)
-
-        // 适配方式2，后设置systemMaterial属性，利用systemMaterial能覆盖与材质冲突的属性的特性
-        Column()
-          .width(328)
-          .height(56)
-          .borderRadius(28)
-          .backgroundColor($r('sys.color.comp_background_emphasize')) // 背景色写到systemMaterial之前，在支持沉浸式材质的低算力设备上，沉浸式材质中包含的背景色效果最终生效
-          // 在支持沉浸式材质的设备上，如果是高算力或中算力设备，后设置的沉浸式材质会清除背景色效果为透明色，使用材质效果；如果是低算力设备，后设置的沉浸式材质中包含的背景色效果覆盖了backgroundColor属性的效果，使用材质颜色
-          // 在不支持沉浸式材质的设备上，设置systemMaterial无作用，资源值的背景色属性生效
-          .systemMaterial(new uiMaterial.ImmersiveMaterial({
-            style: uiMaterial.ImmersiveStyle.REGULAR,
-            materialColor: $r('sys.color.comp_background_emphasize')
-          }))
+        Column() {
+        }
+        .systemMaterialStyle()
+        .backgroundColor($r('sys.color.comp_background_emphasize')) // 背景色写到systemMaterial之前，在支持沉浸式材质的低算力设备上，沉浸式材质中包含的背景色效果最终生效
+        // 在支持沉浸式材质的设备上，如果是高算力或中算力设备，后设置的沉浸式材质会清除背景色效果为透明色，使用材质效果；如果是低算力设备，后设置的沉浸式材质中包含的背景色效果覆盖了backgroundColor属性的效果，使用材质颜色
+        // 在不支持沉浸式材质的设备上，设置systemMaterial无作用，资源值的背景色属性生效
+        .systemMaterial(new uiMaterial.ImmersiveMaterial({
+          style: uiMaterial.ImmersiveStyle.REGULAR,
+          materialColor: $r('sys.color.comp_background_emphasize')
+        }))
       }
-      .backgroundImage($r('app.media.bg1')) // $r("app.media.bg1")需要替换为开发者所需的图像资源文件
-      .backgroundImageSize({ width: '100%', height: '100%' })
-      .width('90%')
-      .height(300)
-      .justifyContent(FlexAlign.Center)
+      .justifyContent(FlexAlign.End)
     }
+    .backgroundColor('#99000000')
     .width('100%')
-    .justifyContent(FlexAlign.Center)
+    .height(100)
   }
 
   build() {
-    Column() {
+    Stack() {
+      // $r('app.media.invert')需要替换为开发者所需的图像资源文件
+      Image($r('app.media.invert'))
+
       Navigation() {
-        // 页面内容
+        Column() {
+          Text(`MaterialLevel: ${this.materialLevel}`)
+            .fontSize(16)
+
+          Text(`IsImmersiveMaterialSupported: ${this.isSupported}`)
+            .fontSize(16)
+        }
+        .backgroundColor(Color.White)
+        .margin({ top: 100 })
+        .padding(15)
       }
-      .title({ builder: this.NavigationTitle, height: '100%' })
-    }.width('100%').height('100%')
+      .title(this.CustomMenuBuilder())
+    }
+    .width('100%')
+    .height('100%')
   }
 }
 ```
