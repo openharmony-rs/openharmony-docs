@@ -2297,7 +2297,7 @@ struct example {
 
 static createFractalGlassMask(glassNum: number, glassStrength: number, glassSoftness: number, isSymmetric: boolean, refractMask?: image.PixelMap): Mask
 
-创建一个分形玻璃蒙版。通过分形条纹对输入纹理进行周期性水平位移采样，产生类似玻璃折射的扭曲效果。扭曲效果关于图像垂直轴对称。可以配合[displacementDistort](#displacementdistort20)使用，产生光栅折射的视觉效果。
+创建一个分形玻璃蒙版。通过分形条纹对输入纹理进行周期性水平位移采样，产生类似玻璃折射的扭曲效果。当启用对称模式时，扭曲效果关于图像垂直轴对称。可以配合[displacementDistort](#displacementdistort20)使用，产生光栅折射的视觉效果。
 
 **起始版本：** 26.1.0
 
@@ -2314,7 +2314,7 @@ static createFractalGlassMask(glassNum: number, glassStrength: number, glassSoft
 | glassNum      | number                                                       | 是   | 分形玻璃条纹的数量，单位为条。取值范围为[0, 100]，值为0时表示无分形玻璃条纹。超出该区间的值将被自动截断至最近边界值。              |
 | glassStrength | number                                                       | 是   | 分形玻璃的扭曲强度。取值范围为[0.0, 10.0]，值为0.0时表示无扭曲。超出该区间的值将被自动截断至最近边界值。 |
 | glassSoftness | number                                                       | 是   |  分形玻璃条纹的边缘柔和度。取值范围为[0.0, 0.01]，超出该区间的值将被自动截断至最近边界值。 |
-| isSymmetric   | boolean                                                      | 是   | 产生类似玻璃折射的扭曲效果。true表示启用对称模式，扭曲效果关于图像垂直轴对称。false表示不启用对称模式，效果为不对称的自然扭曲。                                          |
+| isSymmetric   | boolean                                                      | 是   | 表示是否启用对称模式。true表示启用对称模式，扭曲效果关于图像垂直轴对称。false表示不启用对称模式，效果为不对称的自然扭曲。                                          |
 | refractMask   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 玻璃纹理贴图，用于生成条纹位移的源图像，控制分形效果的有效区域。此参数不填时，使用内置分形条纹生成位移。当传入此参数时，glassNum不再表示条纹数量，glassNum和glassStrength共同决定折射强度。                          |
 
 **返回值：**
