@@ -5783,15 +5783,17 @@ registerFormHostService(service: formInfo.FormHostServiceInfo): Promise&lt;strin
 
 注册卡片使用方服务信息。注册成功后，可用于跨设备卡片发布。使用Promise异步回调。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
 
-**起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **参数：**
 
@@ -5818,6 +5820,8 @@ registerFormHostService(service: formInfo.FormHostServiceInfo): Promise&lt;strin
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5838,21 +5842,46 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formHost, formInfo } from '@kit.FormKit';
+
+let service: formInfo.FormHostServiceInfo = {
+  serviceName: 'serviceName',
+  serviceDisplayName: 'serviceDisplayName',
+  displayId: '0'
+};
+try {
+  formHost.registerFormHostService(service).then((data: string) => {
+    console.info(`formHost registerFormHostService success, service ID is: ${data}`);
+  }).catch((error) => {
+    console.error(`testTag promise error, code: ${error?.code}, message: ${error?.message}`);
+  });
+} catch (error) {
+  console.error(`testTag catch error, code: ${error?.code}, message: ${error?.message}`);
+}
+```
+
 ## formHost.unregisterFormHostService
 
 unregisterFormHostService(serviceId: string): Promise&lt;void&gt;
 
 注销卡片使用方服务信息。注销后，对应的卡片使用方服务不可用于跨设备卡片发布。使用Promise异步回调。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
 
-**起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **参数：**
 
@@ -5880,6 +5909,8 @@ unregisterFormHostService(serviceId: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5893,5 +5924,24 @@ try {
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formHost } from '@kit.FormKit';
+
+let serviceId: string = 'serviceId'; // 待注销的卡片使用方服务的服务Id，请替换为实际的服务Id。
+try {
+  formHost.unregisterFormHostService(serviceId).then(() => {
+    console.info('formHost unregisterFormHostService success');
+  }).catch((error) => {
+    console.error(`testTag promise error, code: ${error?.code}, message: ${error?.message}`);
+  });
+} catch (error) {
+  console.error(`testTag catch error, code: ${error?.code}, message: ${error?.message}`);
 }
 ```
