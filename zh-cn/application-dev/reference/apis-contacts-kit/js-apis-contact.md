@@ -3561,7 +3561,7 @@ queryGroups(callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;): void
       console.error(`Failed to query Groups. Code: ${err.code}, message: ${err.message}`);
       return;
     }
-    console.info(`Succeeded in querying Groups.. data->${JSON.stringify(data)}`);
+    console.info(`Succeeded in querying Groups. data->${JSON.stringify(data)}`);
   });
   ```
 
@@ -4651,7 +4651,7 @@ for (let batch: number = 1; batch <= totalBatches; batch++) {
 
 queryContactSyncInfo(context: Context): Promise&lt;Array&lt;ContactSyncInfo&gt;&gt;
 
-查询当前应用的联系人信息同步状态。返回空值表示应用未发起同步或同步已完成。使用Promise异步回调。
+查询当前应用的联系人信息同步状态。如果返回的联系人同步信息为空，则调用方不进行联系人同步或联系人同步已完成。使用Promise异步回调。
 
 **起始版本**：26.0.0
 
