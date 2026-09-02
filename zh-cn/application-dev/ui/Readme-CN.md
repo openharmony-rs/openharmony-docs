@@ -522,7 +522,7 @@
     - [UI并行化创建组件树（ArkTS-Sta）](ui-parallel-components.md)
     - [BuilderNode并行化构建和更新节点树（ArkTS-Sta）](ui-parallel-buildernode.md)
   - UI开发常见问题<!--ui-development-faq-->
-    - [Navigation动画常见问题](arkts-navigation-animation-faq.md)
+    - [Navigation常见问题](arkts-navigation-faq.md)
     - [自定义节点常见问题](arkts-user-defined-node-faq.md)
     - [按钮与选择组件常见问题](arkts-select-component-faq.md)
     - [弹窗组件常见问题](arkts-popup-component-faq.md)
