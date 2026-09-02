@@ -22,35 +22,8 @@
 
 以下示例以支持应用级开启的Select组件为例，该组件在ENABLE模式下默认开启沉浸式系统材质。通过uiMaterial.getMaterialInfo()获取材质配置信息后，当状态为ENABLE（即沉浸式系统材质已开启）时，将backgroundColor置为undefined，避免白色背景遮挡材质效果；否则保持Color.White白色背景，保证材质未开启时的显示效果。
 
-```ts
-import { uiMaterial } from '@kit.ArkUI';
+<!-- @[app_level_compatibility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/AppLevelCompatibilityExample.ets) -->
 
-@Entry
-@Component
-struct AppLevelCompatibility {
-  private info: uiMaterial.MaterialInfo = uiMaterial.getMaterialInfo();
-
-  build() {
-    Stack({ alignContent: Alignment.Top }) {
-      Column() {}
-        .width('100%')
-        .height('100%')
-        // $r('app.media.invert')需要替换为开发者所需的图像资源文件
-        .backgroundImage($r('app.media.invert'))
-
-      Column() {
-        Select([{ value: '选项1' }, { value: '选项2' }])
-          .value('选择')
-          // 应用级沉浸式系统材质开启时，将backgroundColor置为undefined，避免遮挡材质效果
-          .backgroundColor(this.info.state === uiMaterial.MaterialState.ENABLE ? undefined :  Color.White)
-      }
-      .width(100)
-      .height(100)
-      .justifyContent(FlexAlign.Center)
-    }
-  }
-}
-```
 
 应用级ENABLE模式下，Select呈现沉浸式系统材质样式：
 
@@ -72,35 +45,8 @@ struct AppLevelCompatibility {
 
 以下以Select组件为例，通过deviceInfo.sdkApiVersion判断系统软件API版本：不低于26.0.0时，为组件设置材质样式为THIN的ImmersiveMaterial；低于26.0.0时，将systemMaterial设置为undefined，组件恢复原有样式。
 
-```ts
-import { uiMaterial } from '@kit.ArkUI';
-import { deviceInfo } from '@kit.BasicServicesKit';
+<!-- @[component_level_compatibility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/ComponentLevelCompatibilityExample.ets) -->
 
-@Entry
-@Component
-struct ComponentLevelCompatibility {
-  build() {
-    Stack({ alignContent: Alignment.Top }) {
-      // $r('app.media.invert')需要替换为开发者所需的图像资源文件
-      Column() {}
-        .width('100%')
-        .height('100%')
-        .backgroundImage($r('app.media.invert'))
-
-      Column() {
-        Select([{ value: '选项1' }, { value: '选项2' }])
-          .value('选择')
-          // API版本不低于26.0.0时，设置沉浸式系统材质；低于26.0.0时，设置为undefined组件恢复原有样式。
-          .systemMaterial(deviceInfo.sdkApiVersion >= 26 ?
-            new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.THIN }) : undefined)
-      }
-      .width(100)
-      .height(100)
-      .justifyContent(FlexAlign.Center)
-    }
-  }
-}
-```
 
 系统软件API版本低于26.0.0时，组件保持原有样式：
 

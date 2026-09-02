@@ -25,20 +25,8 @@
 
 以下示例展示如何在[module.json5](../quick-start/module-configuration-file.md)中配置enable模式：
 
-```json5
-{
-  "module": {
-    "name": "entry",
-    "type": "entry",
-    // ...
-    "metadata": [{
-      "name": "ohos.arkui.UIMaterial.state",
-      "value": "enable"
-    }],
-    // ...
-  }
-}
-```
+<!-- @[enable_module_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/module.json5) -->
+
 
 开发者可以通过[uiMaterial.getMaterialInfo()](../reference/apis-arkui/arkts-apis-uimaterial.md#uimaterialgetmaterialinfo)获取当前应用的沉浸式系统材质配置状态[MaterialState](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)，MaterialState中的[DEFAULT](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)、[ENABLE](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)和[DISABLE](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)，分别对应module.json5配置文件中default、enable和disable三个value值。
 
