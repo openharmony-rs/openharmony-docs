@@ -3659,13 +3659,13 @@ isWlanSupported(): boolean
 | -------- | -------- | -------- | -------- | -------- |
 | serviceName | string | 否 | 否 | 服务名称。 |
 | protocolType | [P2pServiceProtocolType](#p2pserviceprotocoltype) | 否 | 否 | 服务协议类型。 |
-| queryList | Array&lt;string&gt; | 否 | 否 | wpa_supplicant使用的查询字符串列表，单条数据记录的最大大小为1024字节。 |
+| queryList | Array&lt;string&gt; | 否 | 否 | wifi协议栈进程（wpa_supplicant）使用的查询字符串列表，单条数据记录的最大大小为1024字节。 |
 
 ## wifiManager.addDnsSdLocalP2pService
 
 addDnsSdLocalP2pService(instanceName: string, serviceType: string, txtRecord: Map&lt;string, string&gt;, serviceName: string): void
 
-添加并注册一个DNS-SD（DNS Service Discovery，基于DNS的服务发现）本地P2P服务描述。
+添加并注册一个DNS-SD（DNS Service Discovery，基于DNS的服务发现）本地P2P服务描述，供对端进行服务发现。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
 
@@ -3712,7 +3712,7 @@ try {
 
 addUpnpLocalP2pService(uuid: string, device: string, services: Array&lt;string&gt;, serviceName: string): void
 
-添加并注册一个UPnP本地P2P服务描述。
+添加并注册一个UPnP（Universal Plug and Play，通用即插即用）本地P2P服务描述，供对端进行服务发现。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
 

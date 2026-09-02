@@ -3628,7 +3628,6 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | -------- | -------- |
 | 2401000  | Operation failed. |
 
-## P2pServiceProtocolType
 
 Enumerates, P2P service protocol types.
 
@@ -3646,7 +3645,6 @@ Enumerates, P2P service protocol types.
 | SERVICE_TYPE_WS_DISCOVERY | 3 | WS-Discovery service discovery protocol. |
 | SERVICE_TYPE_VENDOR_SPECIFIC | 255 | Vendor-specific protocol. |
 
-## WifiP2pServiceInfo
 
 Represents P2P service information.
 
@@ -3662,7 +3660,6 @@ Represents P2P service information.
 | protocolType | [P2pServiceProtocolType](#p2pserviceprotocoltype) | No | No | Service protocol type. |
 | queryList | Array&lt;string&gt; | No | No | Query string list consumed by wpa_supplicant. The maximum size of a single data record is 1024 bytes. |
 
-## wifiManager.addDnsSdLocalP2pService
 
 addDnsSdLocalP2pService(instanceName: string, serviceType: string, txtRecord: Map&lt;string, string&gt;, serviceName: string): void
 
@@ -3709,7 +3706,6 @@ try {
 }
 ```
 
-## wifiManager.addUpnpLocalP2pService
 
 addUpnpLocalP2pService(uuid: string, device: string, services: Array&lt;string&gt;, serviceName: string): void
 
@@ -3755,93 +3751,4 @@ try {
 } catch (error) {
   console.error("failed: " + JSON.stringify(error));
 }
-```
-
-## wifiManager.removeLocalP2pService
-
-removeLocalP2pService(srvInfo: WifiP2pServiceInfo): void
-
-Removes a registered local service added with [addDnsSdLocalP2pService](#wifimanageradddnssdlocalp2pservice) or [addUpnpLocalP2pService](#wifimanageraddupnplocalp2pservice).
-
-**Required permissions**: ohos.permission.GET_WIFI_INFO_INTERNAL
-
-**System capability**: SystemCapability.Communication.WiFi.P2P
-
-**Since**: 26.1.0
-
-**Model restriction**: This API can be used only in the stage model.
-
-**Parameters**
-
-| Name | Type | Mandatory | Description |
-| -------- | -------- | -------- | -------- |
-| srvInfo | [WifiP2pServiceInfo](#wifip2pserviceinfo) | Yes | Service description consistent with the registered one. |
-
-**Error codes**
-
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID | Error Message |
-| -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported. |
-| 2801000 | Operation failed. |
-| 2801001 | Wi-Fi STA disabled. |
-
-**Example**
-```ts
-import { wifiManager } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-  wifiManager.getLocalP2pServices().then((data: wifiManager.WifiP2pServiceInfo[]) => {
-    data.forEach((item: wifiManager.WifiP2pServiceInfo) => {
-      if (item.serviceName === "serviceName") {
-        wifiManager.removeLocalP2pService(item);
-      }
-    });
-  }).catch((error: BusinessError) => {
-    console.error("failed: " + JSON.stringify(error));
-  });
-```
-
-## wifiManager.getLocalP2pServices
-
-getLocalP2pServices(): Promise&lt;Array&lt;WifiP2pServiceInfo&gt;&gt;
-
-Queries the local P2P services. This API uses a Promise to return the result.
-
-**Required permissions**: ohos.permission.GET_WIFI_INFO_INTERNAL
-
-**System capability**: SystemCapability.Communication.WiFi.P2P
-
-**Since**: 26.1.0
-
-**Model restriction**: This API can be used only in the stage model.
-
-**Return value**
-
-| Type | Description |
-| -------- | -------- |
-| Promise&lt;Array&lt;[WifiP2pServiceInfo](#wifip2pserviceinfo)&gt;&gt; | Promise used to return the registered local P2P service list. |
-
-**Error codes**
-
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID | Error Message |
-| -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported. |
-| 2801000 | Operation failed. |
-
-**Example**
-```ts
-import { wifiManager } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-wifiManager.getLocalP2pServices().then((data: wifiManager.WifiP2pServiceInfo[]) => {
-  console.info("get local P2P services: " + JSON.stringify(data));
-}).catch((error: BusinessError) => {
-  console.error("failed: " + JSON.stringify(error));
-});
 ```
