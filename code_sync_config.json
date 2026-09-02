@@ -47590,7 +47590,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/selectionextability/SelectionExtAbility.ets",
 				"functions":[
 					{
-						"end_line":118,
+						"end_line":117,
 						"name":"SelectionExtAbility",
 						"start_line":16
 					}
@@ -47600,7 +47600,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MenuPanel.ets",
 				"functions":[
 					{
-						"end_line":108,
+						"end_line":109,
 						"name":"MenuPanel",
 						"start_line":16
 					}
