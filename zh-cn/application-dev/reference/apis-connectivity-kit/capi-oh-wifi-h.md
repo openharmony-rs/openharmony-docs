@@ -96,7 +96,7 @@ enum OH_WifiLinkType
 | OH_WIFI_LINK_WIFI7_SINGLE_LINK = 1 | WIFI7单链路。<br>**起始版本：** 24 |
 | OH_WIFI_LINK_WIFI7_MLSR = 2 | WIFI7 MLSR（Multi-Link Single Radio 多链路单射频）。<br>**起始版本：** 24 |
 | OH_WIFI_LINK_WIFI7_EMLSR = 3 | WIFI7 EMLSR（Enhanced Multi-Link Single Radio 增强型多链路单射频）。<br>**起始版本：** 24 |
-| OH_WIFI_LINK_WIFI7_STR = 4 | WIFI7 STR（Simultaneous transmit and Receive 同时发送与接收）。<br>**起始版本：** 24 |
+| OH_WIFI_LINK_WIFI7_STR = 4 | WIFI7 STR（Simultaneous Transmit and Receive 同时发送与接收）。<br>**起始版本：** 24 |
 | OH_WIFI_LINK_WIFI7_LEGACY = 5 | WIFI7传统模式。<br>**起始版本：** 24 |
 
 ### OH_WifiConnState
