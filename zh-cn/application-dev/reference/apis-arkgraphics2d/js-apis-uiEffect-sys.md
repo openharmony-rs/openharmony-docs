@@ -1108,9 +1108,9 @@ haloBloom(tintColor: Color, bloomFactor: number, glowExposure: number): Filter
 
 | 参数名        | 类型                  | 必填 | 说明                                                                                                                                                   |
 | ------------- | --------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| tintColor     | [Color](#color20)     | 是   | 指定应用于光晕泛光的颜色色调。该值无限制，推荐范围为[0.0, 1.0)。Alpha 通道无效，小于0.0或大于等于1.0的值无实际效果。当红、绿、蓝三个分量均设为0.0时，不应用色调，光晕泛光保留原始颜色。                                        |
-| bloomFactor   | number                | 是   | 控制光晕泛光的亮度。该值无限制，推荐范围为[0.0, 10.0]。设为0.0时，光晕泛光无可见效果。                                                       |
-| glowExposure  | number                | 是   | 控制光晕泛光的扩散范围。该值无限制，推荐范围为[0.0, 10.0]。设为0.0时，光晕泛光无可见效果。                                        |
+| tintColor     | [Color](#color20)     | 是   | 指定应用于光晕泛光的颜色色调。该值无限制，各颜色分量取值推荐范围为[0.0, 1.0)。其中A分量无效，并无实际效果。当R、G、B三个分量均设置为0.0时，不应用色调，光晕泛光保留原始颜色。                                        |
+| bloomFactor   | number                | 是   | 控制光晕泛光的亮度。该值无限制，推荐范围为[0.0, 10.0]。设置为0.0时，光晕泛光无可见效果。                                                       |
+| glowExposure  | number                | 是   | 控制光晕泛光的扩散范围。该值无限制，推荐范围为[0.0, 10.0]。设置为0.0时，光晕泛光无可见效果。                                        |
 
 **返回值：**
 
@@ -1684,7 +1684,6 @@ RGBA格式的颜色描述。
 | posRgb        | [number, number, number] | 否   | 否   | 基于基准饱和度的正向调整系数。取值范围为[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大饱和度越高。 |
 | negRgb        | [number, number, number] | 否   | 否   | 基于基准饱和度的负向调整系数。取值范围为[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大饱和度越低。 |
 | fraction      | number                   | 否   | 否   | 提亮效果混合比例。取值范围为[0, 1]，小于0时取值为0，大于1时取值为1，值越大，提亮效果越弱。 |
-                                           |
 
 ## WarpedRingParam
 
@@ -2227,7 +2226,7 @@ struct SweepRefractionExample {
 
 ### createWarpedRingMask
 
-static createWarpedRingMask(ringParam: RingParam): Mask
+static createWarpedRingMask(ringParam: WarpedRingParam): Mask
 
 创建一个表示扭曲光环的[Mask](#mask20)实例。
 
@@ -2243,7 +2242,7 @@ static createWarpedRingMask(ringParam: RingParam): Mask
 
 | 参数名     | 类型                          | 必填 | 说明                                                                                                     |
 | ---------- | ----------------------------- | ---- | -------------------------------------------------------------------------------------------------------- |
-| ringParam  | [RingParam](#ringparam)     | 是   |  配置扭曲光环的形状，包含环半径、宽度、宽度变化比例和旋转速度等配置项，用于控制环形的几何形态和动态行为。                 |
+| ringParam  | [WarpedRingParam](#warpedringparam)     | 是   |  配置扭曲光环的形状，包含环半径、宽度、宽度变化比例和旋转速度等配置项，用于控制环形的几何形态和动态行为。                 |
 
 **返回值：**
 
@@ -2314,7 +2313,7 @@ static createFractalGlassMask(glassNum: number, glassStrength: number, glassSoft
 | glassStrength | number                                                       | 是   | 分形玻璃的扭曲强度。取值范围为[0.0, 10.0]；超出范围的值将在内部被截断。 |
 | glassSoftness | number                                                       | 是   |  分形玻璃条纹的边缘柔和度。取值范围为[0.0, 0.01]；超出范围的值将在内部被截断。 |
 | isSymmetric   | boolean                                                      | 是   | 是否启用对称扭曲，对称指关于图像的垂直轴进行对称。true表示启用对称，false表示不启用对称。                                          |
-| refractMask   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 玻璃纹理贴图，用于生成条纹位移的源图像。不设置时使用内置分形条纹生成位移。由[image](../apis-image-kit/arkts-apis-image-PixelMap.md)模块创建的[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)实例。可选参数，用于控制分形效果的有效区域。如果提供该参数，glassNum不再表示条纹数量；glassNum和glassStrength共同决定折射强度。                          |
+| refractMask   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 玻璃纹理贴图，用于生成条纹位移的源图像。不设置时使用内置分形条纹生成位移。由image模块创建的[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)实例。可选参数，用于控制分形效果的有效区域。如果提供该参数，glassNum不再表示条纹数量；glassNum和glassStrength共同决定折射强度。                          |
 
 **返回值：**
 
@@ -2519,7 +2518,7 @@ BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包
 
 | 名称          | 类型                                          | 只读 | 可选 | 说明                                                                                                                               |
 | ------------- | --------------------------------------------- | ---- | ---- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| shapeType     | [PrismShapeType](#prismshapetype26)           | 否   | 是   | 棱镜的形状类型。默认值为ROUNDED_RECT。                                                                                             |
+| shapeType     | [PrismShapeType](#prismshapetype)           | 否   | 是   | 棱镜的形状类型。默认值为ROUNDED_RECT。                                                                                             |
 | cornerRadius  | number                                        | 否   | 是   | 棱镜形状的归一化圆角半径，仅在shapeType为ROUNDED_RECT时生效。取值范围为[0.0, 1.0]，超出范围的值将在实现时被截断。当cornerRadius为1.0时，等于组件高度。 |
 | prismWidth    | number                                        | 否   | 是   | 棱镜的归一化宽度。取值范围为[0.01, 2.0]，超出范围的值将在实现时被截断。当prismWidth为1.0时，等于组件宽度。                   |
 | prismHeight   | number                                        | 否   | 是   | 棱镜的归一化高度。取值范围为[0.01, 2.0]，超出范围的值将在实现时被截断。当prismHeight为1.0时，等于组件高度。                   |
