@@ -4642,7 +4642,7 @@ for (let batch: number = 1; batch <= totalBatches; batch++) {
   }
   catch (err) {
     const e = err as BusinessError;
-    console.error(`Failed to syncContacts Code: ${e.code}, message: ${e.message}`);
+    console.error(`Failed to syncContacts. Code: ${e.code}, message: ${e.message}`);
   }
 }
 ```
