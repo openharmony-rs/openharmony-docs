@@ -5,7 +5,7 @@
 <!--Designer: @lingminghw-->
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=c68ee3b9aca136aa0cab50a5bff69a240c48dbd0 translatedAt=2026-09-01T08:40:06.076Z pushedAt=2026-09-02T03:24:09.939Z -->
+<!-- md-trans-meta sourceCommit=c68ee3b9aca136aa0cab50a5bff69a240c48dbd0 translatedAt=2026-09-01T08:40:06.076Z pushedAt=2026-09-02T04:43:05.401Z -->
 
 - ArkTS API<!--basic-services-arkts-->
   - Account Management<!--account-management-arkts-->
@@ -19,8 +19,8 @@
     - [OS Account Constraints](appendix-osAccount-constraints.md)
   - Device Management<!--device-management-arkts-->
     - [@ohos.batteryInfo (battery information)](js-apis-battery-info.md)
-    - [@ohos.busManager.serial (serial port communication management)](js-apis-busmanager-serial.md)
-    - [@ohos.deviceInfo (device information)](js-apis-device-info.md)
+    - [@ohos.busManager.serial (Serial Port Management)](js-apis-busmanager-serial.md)
+    - [@ohos.deviceInfo (Device Information)](js-apis-device-info.md)
     - [@ohos.power (Power Management)](js-apis-power.md)
     - [@ohos.runningLock (RunningLock)](js-apis-runninglock.md)
     - [@ohos.thermal (thermal management)](js-apis-thermal.md)
@@ -30,7 +30,7 @@
     - [@ohos.batteryInfo (battery information)(system interface)](js-apis-battery-info-sys.md)
     - [@ohos.batteryStatistics (power consumption statistics)(system interface)](js-apis-batteryStatistics-sys.md)
     - [@ohos.brightness (screen brightness)(system interface)](js-apis-brightness-sys.md)
-    - [@ohos.busManager.serial (serial communication management)(system interface)](js-apis-busmanager-serial-sys.md)
+    - [@ohos.busManager.serial (Serial Port Management) (System API)](js-apis-busmanager-serial-sys.md)
     - [@ohos.charger (charging type)(system interface)](js-apis-charger-sys.md)
     - [@ohos.deviceAttest (device attestation)(system interface)](js-apis-deviceAttest-sys.md)
     - [@ohos.power (system power management)(system interface)](js-apis-power-sys.md)
@@ -38,7 +38,7 @@
     - [@ohos.systemParameterEnhance (System Parameter) (System API)](js-apis-system-parameterEnhance-sys.md)
     - [@ohos.screenLock (screen lock management)(system interface)](js-apis-screen-lock-sys.md)
     - [@ohos.usbManager (USB Manager) (System API)](js-apis-usbManager-sys.md)
-    - [@ohos.usbManager.serial (Serial Port Management) (system API)](js-apis-serialManager-sys.md)
+    - [@ohos.usbManager.serial (Serial Port Management) (System API)](js-apis-serialManager-sys.md)
     - [@ohos.update (Update)(System Interface)](js-apis-update-sys.md)
     <!--DelEnd-->
   - Data File Processing<!--data-file-processing-arkts-->
@@ -81,7 +81,7 @@
     <!--Del-->
     - [@ohos.ai.intelligentVoice (Intelligent Voice) (System Interface)](js-apis-intelligentVoice-sys.md)
     <!--DelEnd-->
-    - [@ohos.base (Common Callback Information)](js-apis-base.md)
+    - [@ohos.base (Public Callback Information)](js-apis-base.md)
     - [@ohos.annotation (Annotation)](js-apis-annotation.md)
     - [@ohos.customization.customConfig (Custom Configuration)](js-apis-customization-customConfig.md)
     - [@ohos.settings (Setting Data Item Names)](js-apis-settings.md)
@@ -111,7 +111,7 @@
     <!--Del-->
     - [@ohos.commonEvent (Common Event) (System API)](js-apis-commonEvent-sys.md)
     - [@ohos.usb (USB Management) (System Interface)](js-apis-usb-deprecated-sys.md)
-    - [@ohos.systemParameter (System Property) (System Interface)](js-apis-system-parameter-sys.md)
+    - [@ohos.systemParameter (System Parameter) (System API)](js-apis-system-parameter-sys.md)
     <!--DelEnd-->
     - [@ohos.systemTime (system time, time zone)](js-apis-system-time.md)
 - C API<!--basic-services-c-->
