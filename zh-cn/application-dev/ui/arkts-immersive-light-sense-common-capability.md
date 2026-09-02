@@ -24,6 +24,78 @@
 
 <!-- @[material_color_invert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialColorInvertExample.ets) -->
 
+<div class="same-source-code">
+``` TypeScript
+import { uiMaterial } from '@kit.ArkUI';
+
+@Component
+struct ContentOne {
+  build() {
+    Scroll() {
+      Column() {
+        // $r('app.media.greyBackground')需要替换为开发者所需的图像资源文件
+        Image($r('app.media.greyBackground'))
+          .width('100%')
+          .height('150%')
+          .objectFit(ImageFit.Fill)
+        // $r('app.media.greyBackground')需要替换为开发者所需的图像资源文件
+        Image($r('app.media.greyBackground'))
+          .width('100%')
+          .height('150%')
+          .objectFit(ImageFit.Fill)
+      }
+      .width('100%')
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+@Entry
+@Component
+struct PageMaterialReverse {
+  build() {
+    Column() {
+      Tabs({ barPosition: BarPosition.End }) {
+        TabContent() {
+          ContentOne()
+        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), 'tab1')
+        // BottomTabBarStyle样式支持反色，且设置支持反色的系统颜色资源
+          .labelStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+          .iconStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+        )
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Green)
+        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), 'tab2')
+          .labelStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+          .iconStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+        )
+      }
+      .barFloatingStyle({
+        adaptToHandedness: true,
+        systemMaterial: new uiMaterial.ImmersiveMaterial(
+          {
+            style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+            // 设置tabBar的材质为允许反色，且需配合ULTRA_THIN或THIN的style才能反色
+            colorInvert: true,
+          }
+        )
+      })
+      .barOverlap(true)
+      .height('100%')
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialColorInvertExample.ets?same_code_link_text=material_color_invert" target="_blank" rel="nofollow">MaterialColorInvertExample.ets</a></p>
+
+</div>
+
+
 
 ![colorInvert](figures/colorInvert.gif)
 
