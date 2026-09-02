@@ -2284,7 +2284,7 @@ struct SweepRefractionExample {
 | sweepCenterX  | number                                        | 否   | 是   | 扫光中心的归一化X坐标。取值范围为[0.0, 1.0]，超出范围的值将在实现时被截断。0.0表示左边缘。1.0表示右边缘，默认值为0.0。 |
 | sweepCenterY  | number                                        | 否   | 是   | 扫光中心的归一化Y坐标。取值范围为[0.0, 1.0]，超出范围的值将在实现时被截断。0.0表示上边缘，1.0表示下边缘，默认值为0.0。                                    |
 
-### createWarpedRingMask
+## createWarpedRingMask
 
 static createWarpedRingMask(ringParam: RingParam): Mask
 
@@ -2351,7 +2351,7 @@ struct example {
 }
 ```
 
-### createFractalGlassMask
+## createFractalGlassMask
 
 static createFractalGlassMask(glassNum: number, glassStrength: number, glassSoftness: number, isSymmetric: boolean, refractMask?: image.PixelMap): Mask
 
@@ -2412,7 +2412,7 @@ struct Index {
 
 ```
 
-### createBinocularMask
+## createBinocularMask
 
 static createBinocularMask(radiusX: number, radiusY: number, gap: number, softness: number): Mask
 
