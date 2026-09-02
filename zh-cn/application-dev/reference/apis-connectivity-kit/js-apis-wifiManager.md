@@ -4711,7 +4711,7 @@ isWlanSupported(): boolean
 | -------- | -------- | -------- | -------- | -------- |
 | serviceName | string | 否 | 否 | 服务名称。 |
 | protocolType | [P2pServiceProtocolType](#p2pserviceprotocoltype) | 否 | 否 | 服务协议类型。 |
-| queryList | Array&lt;string&gt; | 否 | 否 | wifi协议栈进程（wpa_supplicant）使用的查询字符串列表，单条数据记录的最大大小为1024字节。 |
+| queryList | Array&lt;string&gt; | 否 | 否 | Wi-Fi协议栈进程（wpa_supplicant）使用的查询字符串列表，单条数据记录的最大大小为1024字节。 |
 
 ## wifiManager.addDnsSdLocalP2pService
 
