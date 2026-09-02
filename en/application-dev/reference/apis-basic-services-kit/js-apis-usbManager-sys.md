@@ -57,7 +57,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-// Define the the USB function list in the string format.
+// Define the USB function list in the string format.
 let funcs: string = 'acm';
 // Convert the string to a numeric mask.
 let ret: number = usbManager.usbFunctionsFromString(funcs);
@@ -415,7 +415,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-// Define the the USB function list in the string format.
+// Define the USB function list in the string format.
 let funcs: string = 'acm';
 // Convert the string to a numeric mask.
 let ret: number = usbManager.getFunctionsFromString(funcs);
