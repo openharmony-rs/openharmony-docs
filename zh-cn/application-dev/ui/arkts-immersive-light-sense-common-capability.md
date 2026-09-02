@@ -111,6 +111,59 @@ struct PageMaterialReverse {
 
 <!-- @[material_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialColorExample.ets) -->
 
+<div class="same-source-code">
+``` TypeScript
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MaterialColorExample {
+  build() {
+    Column() {
+      Tabs({ barPosition: BarPosition.End }) {
+        TabContent() {
+          // $r('app.media.invert')需要替换为开发者所需的图像资源文件
+          Image($r('app.media.invert'))
+            .width('100%')
+            .height('100%')
+            .objectFit(ImageFit.Cover)
+        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), 'tab1')
+          .labelStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+          .iconStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+        )
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Green)
+        }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_icon_mask_svg'), 'tab2')
+          .labelStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+          .iconStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
+        )
+      }
+      .barFloatingStyle({
+        adaptToHandedness: true,
+        maskHeight: 0,
+        systemMaterial: new uiMaterial.ImmersiveMaterial(
+          {
+            style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+            // 设置材质赋色颜色
+            materialColor: 'rgba(255, 0, 0, 0.2)',
+          }
+        )
+      })
+      .barOverlap(true)
+      .height('100%')
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialColorExample.ets?same_code_link_text=material_color" target="_blank" rel="nofollow">MaterialColorExample.ets</a></p>
+
+</div>
+
+
 
 ![materialColor](figures/material-color.jpg)
 
