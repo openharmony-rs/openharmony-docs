@@ -38,7 +38,7 @@
 | STREAM_USAGE_VOICE_COMMUNICATION | 2 | VoIP语音通话。 |
 | STREAM_USAGE_VIDEO_COMMUNICATION | 17 | VoIP视频通话。 |
 
-支持的设备类型:
+支持的设备类型：
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
