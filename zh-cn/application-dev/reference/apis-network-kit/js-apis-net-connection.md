@@ -2924,6 +2924,7 @@ unregister(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                          |
 | ------- | --------------------------------- |
+| 201     | Permission denied.                 |
 | 401     | Parameter error.                  |
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.            |
