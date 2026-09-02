@@ -124,6 +124,16 @@
 
 **取值：** "usual.event.PACKAGE_ADDED"
 
+**订阅事件数据（Want）携带的字段：**
+
+| 字段 | 类型 | 说明 |
+| ------ | ------ | ------ |
+| bundleName | string | 安装的应用包名。 |
+| uid | int | 安装的应用UID。 |
+| userId | int | 安装应用所在的用户ID。 |
+| appIndex | int | 分身应用的索引值，非分身应用为0。 |
+| enable | boolean | 安装后应用的可用状态。true表示启用，false表示禁用。从API version 26.1.0开始支持。 |
+
 
 ### COMMON_EVENT_PACKAGE_REMOVED
 
