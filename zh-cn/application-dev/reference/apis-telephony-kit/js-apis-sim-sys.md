@@ -3616,6 +3616,7 @@ sim.setSimLabelIndex(1, 1).then(() => {
 | --------------- | ---- | ---------- |
 | GENERAL_CONTACT | 1    | 通用联系人。 |
 | FIXED_DIALING   | 2    | 固定拨号。   |
+| SDN_DIALING<sup>24+</sup>     | 3    | 拨号功能。  |
 
 ## OperatorConfigKey<sup>9+</sup>
 
