@@ -2084,4 +2084,5 @@ import { wifiManager } from '@kit.ConnectivityKit';
 
 let result = wifiManager.getWifiCapability(wifiManager.WifiCapability.WIFI_AUTO_ENABLE);
 console.info("result:" + result);
+
 ```
