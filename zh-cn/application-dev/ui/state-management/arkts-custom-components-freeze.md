@@ -1233,7 +1233,7 @@ struct PageTwoStack {
 
 ![freeze](figures/freeze_tabcontent_update.png)
 
-切换到DelayUpdate标签，点击`Incr state`，日志中查询Appmonitor，存在2个打印。DelayUpdate中状态变量不会刷新与Update标签中相关的状态变量。
+切换到DelayUpdate页签后，点击`Incr state`，Update页签下的自定义组件将变为非激活状态，其状态变量不会刷新。在日志中查询Appmonitor，可查看到2条打印。
 
 ![freeze](figures/freeze_tabcontent_delayupdate.png)
 
@@ -1372,10 +1372,10 @@ struct ChildComponent {
         .color('#ff11acb8')
       Text(`subcomponent: ${this.desc}`)
         .fontSize(30)
-        .fontWeight(30)
+        .fontWeight(FontWeight.Bold)
       Text(`${this.sum}`)
         .fontSize(30)
-        .fontWeight(30)
+        .fontWeight(FontWeight.Bold)
     }
   }
 }

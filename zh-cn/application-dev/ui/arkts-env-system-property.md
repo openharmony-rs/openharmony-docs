@@ -88,7 +88,7 @@
   }
   ```
 
-- \@Env当前支持[SystemProperties的枚举值](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)。若使用不支持的参数，将触发编译时报错。
+- \@Env当前支持[SystemProperties的枚举值](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)和[SystemEnvKey\<T\>类型](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemenvkeyt)。若使用不支持的参数，将触发编译时报错。
     ```ts
     import { uiObserver } from '@kit.ArkUI';
 
