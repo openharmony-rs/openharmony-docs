@@ -12,8 +12,10 @@
 >  **说明：**
 >
 > - 该组件从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 
+>
 > - 该组件从API版本26.0.0开始支持[WithTheme](./ts-container-with-theme.md)。
+>
+> - [startAngle](#startangle)和[endAngle](#endangle)仅决定圆弧路径范围，不影响组件大小。角度差值越小，圆弧在组件内占比越小，`min`/`max`标记与圆弧间留白越大。
 
 
 ## 子组件
