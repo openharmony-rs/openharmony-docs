@@ -3626,3 +3626,221 @@ isWlanSupported(): boolean
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 2401000  | Operation failed. |
+
+## P2pServiceProtocolType
+
+枚举P2P服务协议类型。
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| SERVICE_TYPE_ALL | 0 | 所有服务协议类型。 |
+| SERVICE_TYPE_BONJOUR | 1 | Bonjour（DNS-SD）服务发现协议。 |
+| SERVICE_TYPE_UP_NP | 2 | UPnP服务发现协议。 |
+| SERVICE_TYPE_WS_DISCOVERY | 3 | WS-Discovery服务发现协议。 |
+| SERVICE_TYPE_VENDOR_SPECIFIC | 255 | 厂商自定义协议。 |
+
+## WifiP2pServiceInfo
+
+表示P2P服务信息。
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| serviceName | string | 否 | 否 | 服务名称。 |
+| protocolType | [P2pServiceProtocolType](#p2pserviceprotocoltype) | 否 | 否 | 服务协议类型。 |
+| queryList | Array&lt;string&gt; | 否 | 否 | wpa_supplicant使用的查询字符串列表，单条数据记录的最大大小为1024。 |
+
+## wifiManager.addDnsSdLocalP2pService
+
+addDnsSdLocalP2pService(instanceName: string, serviceType: string, txtRecord: Map&lt;string, string&gt;, serviceName: string): void
+
+添加并注册一个DNS-SD（DNS Service Discovery，基于DNS的服务发现）本地P2P服务描述。
+
+**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| instanceName | string | 是 | 实例名，用于对端服务发现，最大长度为63。 |
+| serviceType | string | 是 | 服务类型，用于对端服务发现，最大长度为63。不能留空，可自定义，推荐格式为"_&lt;ServiceName&gt;._&lt;Protocol&gt;"，例如"_http._tcp"。 |
+| txtRecord | Map&lt;string, string&gt; | 是 | 包含键值对的TXT记录。键不能包含等号（=），单条记录长度（key.length + value.length）必须小于 255。建议所有键和值序列化后的总大小保持在 200–400 字节以内，超出单个mDNS数据包的限制会导致数据无法正确广播或被对端忽略。键值对数量无限制。定义格式见[draft-cheshire-dnsext-dns-sd-11.txt](http://files.dns-sd.org/draft-cheshire-dnsext-dns-sd.txt) |
+| serviceName | string | 是 | 用于标识本地服务对象的服务名称，最大长度为63。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
+| 2801000 | Operation failed. |
+| 2801001 | Wi-Fi STA disabled. |
+
+**示例：**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+
+try {
+  let txtRecord: Map<string, string> = new Map();
+  txtRecord.set("name", "xxx");
+  wifiManager.addDnsSdLocalP2pService("instanceName", "_http._tcp", txtRecord, "serviceName");
+} catch (error) {
+  console.error("failed: " + JSON.stringify(error));
+}
+```
+
+## wifiManager.addUpnpLocalP2pService
+
+addUpnpLocalP2pService(uuid: string, device: string, services: Array&lt;string&gt;, serviceName: string): void
+
+添加并注册一个UPnP本地P2P服务描述。
+
+**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| uuid | string | 是 | 该UUID的字符串表示形式，格式参见[RFC 4122](http://www.ietf.org/rfc/rfc4122.txt)。标准固定长度为36个字符，不允许包含空格，例如"6859dede-8574-59ab-9332-123456789012"。 |
+| device | string | 是 | UPnP设备类型，字符串表示形式，格式参见[UPnP Device Architecture 1.1](http://www.upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.1.pdf)。长度取决于标准定义，不允许包含空格，通常为几十个字符，建议保持在255字节以内，例如"urn:schemas-upnp-org:device:MediaServer:1"。 |
+| services | Array&lt;string&gt; | 是 | UPnP服务类型列表，字符串表示形式，格式参见[UPnP Device Architecture 1.1](http://www.upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.1.pdf)。每个服务的长度不得超过512字节，建议Array中的元素数量不宜过多，例如"urn:schemas-upnp-org:service:ContentDirectory:1"。 |
+| serviceName | string | 是 | 用于标识本地服务对象的服务名称，最大长度为63。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
+| 2801000 | Operation failed. |
+| 2801001 | Wi-Fi STA disabled. |
+
+**示例：**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+
+try {
+  let uuid = "6859dede-8574-59ab-9332-123456789012";
+  let device = "urn:schemas-upnp-org:device:MediaServer:1";
+  let services = ["urn:schemas-upnp-org:service:ContentDirectory:1"];
+  wifiManager.addUpnpLocalP2pService(uuid, device, services, "serviceName");
+} catch (error) {
+  console.error("failed: " + JSON.stringify(error));
+}
+```
+
+## wifiManager.removeLocalP2pService
+
+removeLocalP2pService(srvInfo: WifiP2pServiceInfo): void
+
+移除通过[addDnsSdLocalP2pService](#wifimanageradddnssdlocalp2pservice)或[addUpnpLocalP2pService](#wifimanageraddupnplocalp2pservice)添加的已注册本地服务。
+
+**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| srvInfo | [WifiP2pServiceInfo](#wifip2pserviceinfo) | 是 | 与已注册服务一致的服务描述。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
+| 2801000 | Operation failed. |
+| 2801001 | Wi-Fi STA disabled. |
+
+**示例：**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+  wifiManager.getLocalP2pServices().then((data: wifiManager.WifiP2pServiceInfo[]) => {
+    data.forEach((item: wifiManager.WifiP2pServiceInfo) => {
+      if (item.serviceName === "serviceName") {
+        wifiManager.removeLocalP2pService(item);
+      }
+    });
+  }).catch((error: BusinessError) => {
+    console.error("failed: " + JSON.stringify(error));
+  });
+```
+
+## wifiManager.getLocalP2pServices
+
+getLocalP2pServices(): Promise&lt;Array&lt;WifiP2pServiceInfo&gt;&gt;
+
+查询本地P2P服务，使用Promise异步回调。
+
+**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;Array&lt;[WifiP2pServiceInfo](#wifip2pserviceinfo)&gt;&gt; | Promise对象。用于返回已注册的本地P2P服务列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
+| 2801000 | Operation failed. |
+
+**示例：**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+wifiManager.getLocalP2pServices().then((data: wifiManager.WifiP2pServiceInfo[]) => {
+  console.info("get local P2P services: " + JSON.stringify(data));
+}).catch((error: BusinessError) => {
+  console.error("failed: " + JSON.stringify(error));
+});
+```
