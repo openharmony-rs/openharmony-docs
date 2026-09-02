@@ -207,7 +207,7 @@ Writes data to a serial port device. The value range of the data length is (0, 4
 
 | Name  | Type        | Mandatory| Description                                                                                                    |
 | -------- | ------------ | ---- | -------------------------------------------------------------------------------------------------------- |
-| data     | Uint8Array   | Yes  | Data to be written. Length range: (0, 4096]. If the data to be sent exceeds 4096 bytes, you are advised to call the **write** method for multiple times.                                                                       |
+| data     | Uint8Array   | Yes  | Data to be written. Length range: (0, 4096]. If the data to be sent exceeds 4096 bytes, you are advised to call the **write** method multiple times.                                                                       |
 | timeout  | number       | No  | Timeout interval, in milliseconds. The value must be an integer within the range of [0, 300000]. The default value **0** is returned when data cannot be written into the target port. If a negative number, a non-integer, or a number greater than 300000 is passed, error code 35700002 is returned.|
 
 **Return value**

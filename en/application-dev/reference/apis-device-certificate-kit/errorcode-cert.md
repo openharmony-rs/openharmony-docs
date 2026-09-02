@@ -422,7 +422,7 @@ The CRL issuer certificate is not found.
 
 This error may occur during partial certificate chain verification. You are advised to verify only the revocation status of the end entity certificate in this scenario. If you want to verify the revocation status of all certificates, do not to set partial certificate chain verification.
 
-## 19030020 Failed to OCSP Response
+## 19030020 Failed to Obtain the OCSP Response
 
 **Error Message**
 
