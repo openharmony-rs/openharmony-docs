@@ -229,6 +229,55 @@ libnet_trafficfilter.so
 
    <!-- @[add_packet_rule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp) -->
 
+   <div class="same-source-code">
+   ``` C++
+   static napi_value AddPacketRuleNapi(napi_env env, napi_callback_info info)
+   {
+       size_t argc = ARG_IDX_RULE_CONFIG;
+       napi_value args[ARG_IDX_RULE_CONFIG] = {nullptr};
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+   
+       uint32_t id = -1;
+       napi_get_value_uint32(env, args[0], &id);
+       OH_TrafficFilter_PacketController* controller = g_controllerMap[id];
+       if (controller == nullptr) {
+           napi_value result;
+           napi_create_int32(env, -1, &result);
+           return result;
+       }
+   
+       napi_value configObj = args[1];
+   
+       uint32_t priority = DEFAULT_PRIORITY;
+       bool hasProp = false;
+       napi_value propVal;
+       if (napi_has_named_property(env, configObj, "priority", &hasProp) == napi_ok && hasProp) {
+           napi_get_named_property(env, configObj, "priority", &propVal);
+           napi_get_value_uint32(env, propVal, &priority);
+       }
+   
+       OH_TrafficFilter_HookPoint hookPoint = ParseHookPointFromConfig(env, configObj);
+       uint32_t protocol = ParseProtocolFromConfig(env, configObj);
+       OH_TrafficFilter_FilterRule rule = BuildFilterRuleFromConfig(env, configObj, priority, hookPoint, protocol);
+   
+       OH_LOG_Print(LOG_APP, LOG_INFO, GLOBAL_NETSTACK, TAG,
+                    "AddPacketRuleNapi srcMac: %{public}s", rule.macMatch.srcMac);
+   
+       int ret = OH_TrafficFilter_AddPacketRule(controller, &rule);
+       OH_LOG_Print(LOG_APP, LOG_INFO, GLOBAL_NETSTACK, TAG,
+                    "AddPacketRuleNapi ret: %{public}d", ret);
+   
+       napi_value result;
+       napi_create_int32(env, ret, &result);
+       return result;
+   }
+   ```
+
+   <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp?same_code_link_text=add_packet_rule" target="_blank" rel="nofollow">napi_init.cpp</a></p>
+
+   </div>
+
+
    简要说明：`OH_TrafficFilter_FilterRule` 内部各条件为逻辑与关系，同一控制器内多个规则为逻辑或关系。
 
 3. 注册报文回调，在回调中根据报文信息返回放行或丢弃决策。
