@@ -86,6 +86,45 @@ struct AppLevelCompatibility {
 
 <!-- @[component_level_compatibility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/ComponentLevelCompatibilityExample.ets) -->
 
+<div class="same-source-code">
+``` TypeScript
+import { uiMaterial } from '@kit.ArkUI';
+import { deviceInfo } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct ComponentLevelCompatibility {
+  build() {
+    Stack({ alignContent: Alignment.Top }) {
+      // $r('app.media.invert')需要替换为开发者所需的图像资源文件
+      Column() {}
+        .width('100%')
+        .height('100%')
+        .backgroundImage($r('app.media.invert'))
+
+      Column() {
+        // 请将$r('app.string.select_option_1')替换为实际资源文件，在本示例中该资源文件的value值为"选项1"
+        // 请将$r('app.string.select_option_2')替换为实际资源文件，在本示例中该资源文件的value值为"选项2"
+        Select([{ value: $r('app.string.select_option_1') }, { value: $r('app.string.select_option_2') }])
+          // 请将$r('app.string.select_placeholder')替换为实际资源文件，在本示例中该资源文件的value值为"选择"
+          .value($r('app.string.select_placeholder'))
+          // API版本不低于26.0.0时，设置沉浸式系统材质；低于26.0.0时，设置为undefined组件恢复原有样式。
+          .systemMaterial(deviceInfo.sdkApiVersion >= 26 ?
+            new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.THIN }) : undefined)
+      }
+      .width(100)
+      .height(100)
+      .justifyContent(FlexAlign.Center)
+    }
+  }
+}
+```
+
+<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/ComponentLevelCompatibilityExample.ets?same_code_link_text=component_level_compatibility" target="_blank" rel="nofollow">ComponentLevelCompatibilityExample.ets</a></p>
+
+</div>
+
+
 
 系统软件API版本低于26.0.0时，组件保持原有样式：
 
