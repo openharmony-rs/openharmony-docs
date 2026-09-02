@@ -509,8 +509,8 @@
 | animationParams             | [StartAnimationParams](arkts-apis-window-i.md#startanimationparams20)                 | 否   | 是   | 启动动画参数配置。默认值为undefined，若不配置将保持系统默认动效。 |
 | needAnimation<sup>23+</sup> | boolean | 否 | 是 | 是否启用窗口创建动效。<br>传入true时，跟随系统默认动效。传入false时，表示关闭窗口创建动效，仅在[自由窗口状态](../../windowmanager/window-terminology.md#freeform-window自由窗口)的情况下生效。<br>此参数不填时，默认为undefined，跟随系统默认动效。<br> **模型约束：** 此接口仅可在Stage模型下使用。 |
 | minimizeOnStart| boolean | 否 | 是 | 窗口是否以最小化状态启动。<br>传入true时，则当前窗口以最小化状态启动。传入false时，表示窗口正常启动。此参数不填写时，默认值为false，窗口正常启动。<br> **起始版本：** 26.1.0 <br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **注意**：1. 该参数在PC/2in1设备上生效，tablet、phone设备仅在PC模式支持；2. 仅在同应用间传递参数生效。|
-| excludeFromDock| boolean | 否 | 是 | 是否屏蔽Dock栏图标及预览窗。<br>传入true时，则当前窗口不显示Dock栏图标及预览窗。传入false时，表示窗口正常启动。此参数不填写时，默认值为false，窗口正常启动。<br> **起始版本：** 26.1.0 <br> **模型约束：** 此接口仅可在Stage模型下使用。 <br> **注意**：1. 该参数在PC/2in1设备上生效，tablet、phone设备仅在PC模式支持；2. 仅在同应用间传递参数生效；3. 该参数需要绑定托盘图标。|
-| excludeFromRecent| boolean | 否 | 是 | 是否屏蔽多任务视图。<br>传入true时，则当前窗口不显示在多任务视图中。传入false时，表示窗口正常启动。此参数不填写时，默认值为false，窗口正常启动。<br> **起始版本：** 26.1.0 <br> **模型约束：** 此接口仅可在Stage模型下使用。 <br> **注意**：1. 该参数在PC/2in1设备上生效，tablet、phone设备仅在PC模式支持；2. 仅在同应用间传递参数生效；3. 该参数需要绑定托盘图标。|
+| excludeFromDock| boolean | 否 | 是 | 是否屏蔽Dock栏图标及预览窗。<br>传入true时，则当前窗口屏蔽Dock栏图标及预览窗。传入false时，表示窗口正常启动。此参数不填写时，默认值为false，窗口正常启动。<br> **起始版本：** 26.1.0 <br> **模型约束：** 此接口仅可在Stage模型下使用。 <br> **注意**：1. 该参数在PC/2in1设备上生效，tablet、phone设备仅在PC模式支持；2. 仅在同应用间传递参数生效；3. 该参数需要绑定托盘图标。|
+| excludeFromRecent| boolean | 否 | 是 | 是否屏蔽多任务视图。<br>传入true时，则当前窗口屏蔽多任务视图。传入false时，表示窗口正常启动。此参数不填写时，默认值为false，窗口正常启动。<br> **起始版本：** 26.1.0 <br> **模型约束：** 此接口仅可在Stage模型下使用。 <br> **注意**：1. 该参数在PC/2in1设备上生效，tablet、phone设备仅在PC模式支持；2. 仅在同应用间传递参数生效；3. 该参数需要绑定托盘图标。|
 
 ## Callback<sup>15+</sup>
 
