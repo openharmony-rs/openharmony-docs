@@ -24,6 +24,45 @@
 
 <!-- @[app_level_compatibility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/AppLevelCompatibilityExample.ets) -->
 
+<div class="same-source-code">
+``` TypeScript
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct AppLevelCompatibility {
+  private info: uiMaterial.MaterialInfo = uiMaterial.getMaterialInfo();
+
+  build() {
+    Stack({ alignContent: Alignment.Top }) {
+      Column() {}
+        .width('100%')
+        .height('100%')
+        // $r('app.media.invert')需要替换为开发者所需的图像资源文件
+        .backgroundImage($r('app.media.invert'))
+
+      Column() {
+        // 请将$r('app.string.select_option_1')替换为实际资源文件，在本示例中该资源文件的value值为"选项1"
+        // 请将$r('app.string.select_option_2')替换为实际资源文件，在本示例中该资源文件的value值为"选项2"
+        Select([{ value: $r('app.string.select_option_1') }, { value: $r('app.string.select_option_2') }])
+          // 请将$r('app.string.select_placeholder')替换为实际资源文件，在本示例中该资源文件的value值为"选择"
+          .value($r('app.string.select_placeholder'))
+          // 应用级沉浸式系统材质开启时，将backgroundColor置为undefined，避免遮挡材质效果
+          .backgroundColor(this.info.state === uiMaterial.MaterialState.ENABLE ? undefined :  Color.White)
+      }
+      .width(100)
+      .height(100)
+      .justifyContent(FlexAlign.Center)
+    }
+  }
+}
+```
+
+<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/AppLevelCompatibilityExample.ets?same_code_link_text=app_level_compatibility" target="_blank" rel="nofollow">AppLevelCompatibilityExample.ets</a></p>
+
+</div>
+
+
 
 应用级ENABLE模式下，Select呈现沉浸式系统材质样式：
 
