@@ -14291,9 +14291,9 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EnvDecorator/entry/src/main/ets/pages/EnvLambdaClosure.ets",
 				"functions":[
 					{
-						"end_line":278,
+						"end_line":279,
 						"name":"env_lambda_closure",
-						"start_line":19
+						"start_line":244
 					}
 				]
 			}
