@@ -78,6 +78,25 @@ libnet_trafficfilter.so
    简要说明：`redirector` 为空时直接返回 `-1`。
 
    <!-- @[destroy_redirect_rule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Redirect_case/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   static napi_value DestroyRedirectorNapi(napi_env env, napi_callback_info info)
+   {
+       if (g_redirector != nullptr) {
+           OH_TrafficFilter_DestroyRedirector(g_redirector);
+           g_redirector = nullptr;
+   
+           char msg[] = "SUCCESS: Redirector destroyed";
+           napi_value result;
+           napi_create_string_utf8(env, msg, strlen(msg), &result);
+           return result;
+       }
+       char msg[] = "WARNING: No redirector to destroy";
+       napi_value result;
+       napi_create_string_utf8(env, msg, strlen(msg), &result);
+       return result;
+   }
+   ```
 
    简要说明：销毁重定向器后会自动释放其占用的系统资源（包括规则），销毁后请将句柄置空，避免重复释放。
 
