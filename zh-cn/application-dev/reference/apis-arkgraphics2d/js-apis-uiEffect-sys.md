@@ -2373,13 +2373,13 @@ static createFractalGlassMask(glassNum: number, glassStrength: number, glassSoft
 | glassStrength | number                                                       | 是   | 分形玻璃的扭曲强度。取值范围为[0.0, 10.0]；超出范围的值将在内部被截断。 |
 | glassSoftness | number                                                       | 是   |  分形玻璃条纹的边缘柔和度。取值范围为[0.0, 0.01]；超出范围的值将在内部被截断。 |
 | isSymmetric   | boolean                                                      | 是   | 是否启用对称扭曲，对称指关于图像的垂直轴进行对称。true表示启用对称，false表示不启用对称。                                          |
-| refractMask   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 玻璃纹理贴图，用于生成条纹位移的源图像。不设置时使用内置分形条纹生成位移。 由[image](../apis-image-kit/arkts-apis-image-PixelMap.md)模块创建的[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) 实例。可选参数，用于控制分形效果的有效区域。如果提供该参数，glassNum 不再表示条纹数量；glassNum 和 glassStrength 共同决定折射强度。                          |
+| refractMask   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 玻璃纹理贴图，用于生成条纹位移的源图像。不设置时使用内置分形条纹生成位移。由[image](../apis-image-kit/arkts-apis-image-PixelMap.md)模块创建的[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)实例。可选参数，用于控制分形效果的有效区域。如果提供该参数，glassNum不再表示条纹数量；glassNum和glassStrength共同决定折射强度。                          |
 
 **返回值：**
 
 | 类型            | 说明                                   |
 | --------------- | -------------------------------------- |
-| [Mask](#mask20) | 返回具有光栅玻璃遮罩效果的Mask实例。 |
+| [Mask](#mask20) | 返回带有分形玻璃蒙版效果的Mask实例。 |
 
 **示例：**
 
@@ -2439,7 +2439,7 @@ static createBinocularMask(radiusX: number, radiusY: number, gap: number, softne
 
 | 类型            | 说明                                   |
 | --------------- | -------------------------------------- |
-| [Mask](#mask20) | 返回具有双目蒙版效果的Mask实例。       |
+| [Mask](#mask20) | 返回带有双目蒙版效果的Mask实例。       |
 
 
 **示例：**
