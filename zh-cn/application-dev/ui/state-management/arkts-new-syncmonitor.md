@@ -28,7 +28,7 @@
 
 - 单个\@SyncMonitor装饰器能够同时监听多个属性的变化，当这些属性在一次事件中共同变化时，只会触发一次\@SyncMonitor的回调方法。 当\@SyncMonitor监听整个数组时，更改数组的某一项不会被监听到。
 
-- 在继承类场景中，可以在父子类中对同一个属性分别定义\@SyncMonitor进行监听，当属性变化时，父子组件中定义的\@SyncMonitor回调均会被调用。
+- 在继承类场景中，可以在父子类中对同一个属性分别定义\@SyncMonitor进行监听，当属性变化时，父子类中定义的\@SyncMonitor回调均会被调用。
 
 - \@SyncMonitor装饰器具有深度监听的能力，能够监听嵌套类、多维数组、对象数组中指定项的变化。对于嵌套类、对象数组中成员属性变化的监听要求该类被\@ObservedV2装饰且该属性被\@Trace装饰。
 
@@ -1804,7 +1804,7 @@ struct Index {
     Column() {
       Button('change age')
         .onClick(() => {
-          this.info.age = 25; // 状态变量age改变
+          this.info.age = 25; // age改变
         })
     }
   }

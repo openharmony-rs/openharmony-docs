@@ -254,7 +254,7 @@ static globalConnect\<T extends CollectionType<S\>, S extends object\>( </br >
   &nbsp;&nbsp;&nbsp;&nbsp;type: ConnectOptionsCollections\<T, S\> | ConnectOptions\<T\> </br >
 ): T | undefined
 
-将键值对数据存储在应用磁盘中。支持集合类型[`Array`，`Map`，`Set`，`collections.Array`，`collections.Map`，`collections.Set`类型的持久化](../../ui/state-management/arkts-new-persistencev2.md#globalconnect支持集合的类型)。注意在持久化`Array<ClassA>`类型的数据时，需要调用[`makeObserved`](#makeobserved)使返回的对象被观察到。不支持多个嵌套集合，例如不支持`Array<Array<ClassA>>`的持久化。
+将键值对数据存储在应用磁盘中。支持[集合类型](../../ui/state-management/arkts-new-persistencev2.md#globalconnect支持的集合类型)（Array、Map、Set、collections.Array、collections.Map、collections.Set）和Date类型的持久化。注意在持久化`Array<ClassA>`类型的数据时，需要调用[`makeObserved`](#makeobserved)使返回的对象被观察到。不支持多个嵌套集合，例如不支持`Array<Array<ClassA>>`的持久化。
 
 > **说明：**
 >
@@ -1276,7 +1276,7 @@ class ObservedClass {
 
   constructor() {
     // 给当前ObservedClass的实例this添加对属性age的监听回调this.onChange
-    UIUtils.addMonitor(this, 'age', this.onChange);
+    UIUtils.addMonitor(this, 'age', this.onChange, { isSynchronous: true });
   }
 }
 
@@ -1718,7 +1718,6 @@ new(...args: any): T
 import { PersistenceV2 } from '@kit.ArkUI';
 
 @ObservedV2
-  // TypeConstructorWithArgs 指的是 SampleClass
 class SampleClass {
   @Trace id: number = 0;
   count: number = 1;
@@ -1730,6 +1729,7 @@ class FatherSampleClass {
 }
 
 // 将key为SampleClass、value为new SampleClass()对象的键值对持久化，并赋值给source
+// TypeConstructorWithArgs指的是FatherSampleClass
 const source: FatherSampleClass | undefined = PersistenceV2.connect(FatherSampleClass, () => new FatherSampleClass());
 
 @Entry
