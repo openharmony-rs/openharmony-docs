@@ -1,4 +1,4 @@
-# 消息认证码计算介绍及算法规格
+# 消息认证码计算
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
