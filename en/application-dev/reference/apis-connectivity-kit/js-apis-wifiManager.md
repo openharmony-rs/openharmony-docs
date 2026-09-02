@@ -3630,7 +3630,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 ## P2pServiceProtocolType
 
-Enumerates P2P service protocol types.
+Enumerates, P2P service protocol types.
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
@@ -3660,7 +3660,7 @@ Represents P2P service information.
 | -------- | -------- | -------- | -------- | -------- |
 | serviceName | string | No | No | Service name. |
 | protocolType | [P2pServiceProtocolType](#p2pserviceprotocoltype) | No | No | Service protocol type. |
-| queryList | Array&lt;string&gt; | No | No | Query string list consumed by wpa_supplicant. The maximum size of a single data record is 1024. |
+| queryList | Array&lt;string&gt; | No | No | Query string list consumed by wpa_supplicant. The maximum size of a single data record is 1024 bytes. |
 
 ## wifiManager.addDnsSdLocalP2pService
 
@@ -3680,10 +3680,10 @@ Adds and registers a DNS-SD (DNS Service Discovery, DNS-based service discovery)
 
 | Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| instanceName | string | Yes | Instance name used for peer service discovery. The maximum length is 63. |
-| serviceType | string | Yes | Service type used for peer service discovery. The maximum length is 63. This parameter cannot be left blank. The value can be customized. The recommended format is "_&lt;ServiceName&gt;._&lt;Protocol&gt;", for example, "_http._tcp". |
-| txtRecord | Map&lt;string, string&gt; | Yes | TXT record containing key-value pairs. The key cannot contain an equal sign (=), and the length of a single record (key.length + value.length) must be less than 255. It is recommended that the total size of all keys and values after serialization be kept within 200–400 bytes. Exceeding the limit of a single mDNS packet will cause the data to fail to be properly broadcast or to be ignored by the peer. There is no limit to the number of key-value pairs. For the definition format, see [draft-cheshire-dnsext-dns-sd-11.txt](http://files.dns-sd.org/draft-cheshire-dnsext-dns-sd.txt) |
-| serviceName | string | Yes | Service name used to identify the local service object. The maximum length is 63. |
+| instanceName | string | Yes | Instance name used for peer service discovery. The maximum length is 63 characters. |
+| serviceType | string | Yes | Service type used for peer service discovery. The maximum length is 63 characters. This parameter cannot be left blank. The value can be customized. The recommended format is "_&lt;ServiceName&gt;._&lt;Protocol&gt;", for example, "_http._tcp". |
+| txtRecord | Map&lt;string, string&gt; | Yes | TXT record containing key-value pairs. The key cannot contain an equal sign (=), and the length of a single record (key.length + value.length) must be less than 255 bytes. It is recommended that the total size of all keys and values after serialization be kept within 200–400 bytes. Exceeding the limit of a single mDNS packet will cause the data to fail to be properly broadcast or to be ignored by the peer. There is no limit to the number of key-value pairs. For the definition format, see [draft-cheshire-dnsext-dns-sd-11.txt](http://files.dns-sd.org/draft-cheshire-dnsext-dns-sd.txt). |
+| serviceName | string | Yes | Service name used to identify the local service object. The maximum length is 63 characters. |
 
 **Error codes**
 
@@ -3730,7 +3730,7 @@ Adds and registers a UPnP local P2P service description.
 | uuid | string | Yes | String representation of the UUID. For the format, see [RFC 4122](http://www.ietf.org/rfc/rfc4122.txt). The standard fixed length is 36 characters, and spaces are not allowed. For example, "6859dede-8574-59ab-9332-123456789012". |
 | device | string | Yes | UPnP device type in string form. For the format, see [UPnP Device Architecture 1.1](http://www.upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.1.pdf). The length depends on the standard definition, and spaces are not allowed. It is usually tens of characters, and it is recommended to keep it within 255 bytes. For example, "urn:schemas-upnp-org:device:MediaServer:1". |
 | services | Array&lt;string&gt; | Yes | UPnP service type list in string form. For the format, see [UPnP Device Architecture 1.1](http://www.upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.1.pdf). The length of each service must not exceed 512 bytes. It is recommended that the Array not contain too many elements. For example, "urn:schemas-upnp-org:service:ContentDirectory:1". |
-| serviceName | string | Yes | Service name used to identify the local service object. The maximum length is 63. |
+| serviceName | string | Yes | Service name used to identify the local service object. The maximum length is 63 characters. |
 
 **Error codes**
 

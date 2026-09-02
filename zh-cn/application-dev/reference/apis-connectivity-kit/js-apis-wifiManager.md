@@ -3629,7 +3629,7 @@ isWlanSupported(): boolean
 
 ## P2pServiceProtocolType
 
-枚举P2P服务协议类型。
+枚举，P2P服务协议类型。
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -3659,7 +3659,7 @@ isWlanSupported(): boolean
 | -------- | -------- | -------- | -------- | -------- |
 | serviceName | string | 否 | 否 | 服务名称。 |
 | protocolType | [P2pServiceProtocolType](#p2pserviceprotocoltype) | 否 | 否 | 服务协议类型。 |
-| queryList | Array&lt;string&gt; | 否 | 否 | wpa_supplicant使用的查询字符串列表，单条数据记录的最大大小为1024。 |
+| queryList | Array&lt;string&gt; | 否 | 否 | wpa_supplicant使用的查询字符串列表，单条数据记录的最大大小为1024字节。 |
 
 ## wifiManager.addDnsSdLocalP2pService
 
@@ -3679,10 +3679,10 @@ addDnsSdLocalP2pService(instanceName: string, serviceType: string, txtRecord: Ma
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| instanceName | string | 是 | 实例名，用于对端服务发现，最大长度为63。 |
-| serviceType | string | 是 | 服务类型，用于对端服务发现，最大长度为63。不能留空，可自定义，推荐格式为"_&lt;ServiceName&gt;._&lt;Protocol&gt;"，例如"_http._tcp"。 |
-| txtRecord | Map&lt;string, string&gt; | 是 | 包含键值对的TXT记录。键不能包含等号（=），单条记录长度（key.length + value.length）必须小于 255。建议所有键和值序列化后的总大小保持在200–400字节以内，超出单个mDNS数据包的限制会导致数据无法正确广播或被对端忽略。键值对数量无限制。定义格式见[draft-cheshire-dnsext-dns-sd-11.txt](http://files.dns-sd.org/draft-cheshire-dnsext-dns-sd.txt) |
-| serviceName | string | 是 | 用于标识本地服务对象的服务名称，最大长度为63。 |
+| instanceName | string | 是 | 实例名，用于对端服务发现，最大长度为63字符。 |
+| serviceType | string | 是 | 服务类型，用于对端服务发现，最大长度为63字符。不能留空，可自定义，推荐格式为"_&lt;ServiceName&gt;._&lt;Protocol&gt;"，例如"_http._tcp"。 |
+| txtRecord | Map&lt;string, string&gt; | 是 | 包含键值对的TXT记录。键不能包含等号（=），单条记录长度（key.length + value.length）必须小于255字节。建议所有键和值序列化后的总大小保持在200–400字节以内，超出单个mDNS数据包的限制会导致数据无法正确广播或被对端忽略。键值对数量无限制。定义格式见[draft-cheshire-dnsext-dns-sd-11.txt](http://files.dns-sd.org/draft-cheshire-dnsext-dns-sd.txt)。 |
+| serviceName | string | 是 | 用于标识本地服务对象的服务名称，最大长度为63字符。 |
 
 **错误码：**
 
@@ -3729,7 +3729,7 @@ addUpnpLocalP2pService(uuid: string, device: string, services: Array&lt;string&g
 | uuid | string | 是 | 该UUID的字符串表示形式，格式参见[RFC 4122](http://www.ietf.org/rfc/rfc4122.txt)。标准固定长度为36个字符，不允许包含空格，例如"6859dede-8574-59ab-9332-123456789012"。 |
 | device | string | 是 | UPnP设备类型，字符串表示形式，格式参见[UPnP Device Architecture 1.1](http://www.upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.1.pdf)。长度取决于标准定义，不允许包含空格，通常为几十个字符，建议保持在255字节以内，例如"urn:schemas-upnp-org:device:MediaServer:1"。 |
 | services | Array&lt;string&gt; | 是 | UPnP服务类型列表，字符串表示形式，格式参见[UPnP Device Architecture 1.1](http://www.upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.1.pdf)。每个服务的长度不得超过512字节，建议Array中的元素数量不宜过多，例如"urn:schemas-upnp-org:service:ContentDirectory:1"。 |
-| serviceName | string | 是 | 用于标识本地服务对象的服务名称，最大长度为63。 |
+| serviceName | string | 是 | 用于标识本地服务对象的服务名称，最大长度为63字符。 |
 
 **错误码：**
 
