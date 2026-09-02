@@ -318,7 +318,7 @@ setWebDebuggingAccess()接口开启Web组件前端页面调试能力，利用Dev
 **解决措施**
 
 1. WebView支持WebRTC的P-P功能以及音视频流功能。
-2. 非WebView场景，系统不直接提供WebRTC，但会提供技术支持，比如支持三方gn+ninja交叉编译方式适配WebRTC（RR-30030985），包含以下两点：
+2. 非WebView场景，系统不直接提供WebRTC，但会提供技术支持，比如支持三方gn+ninja交叉编译方式适配WebRTC，包含以下两点：
    * sdk支持gn+ninja交叉编译方式
    * 提供编译样例指导
 
