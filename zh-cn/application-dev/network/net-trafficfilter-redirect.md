@@ -60,6 +60,81 @@ libnet_trafficfilter.so
    使用 [OH_TrafficFilter_CreateRedirector](../reference/apis-network-kit/capi-net-trafficfilter-h.md) 接口创建流量重定向实例。`group_id` 用于标识重定向器分组，`priority` 控制规则优先级。
 
    <!-- @[create_redirector](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Redirect_case/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   constexpr int BUFFER_SIZE = 128;
+   constexpr size_t IP_ADDR_BUF_LEN = 16;
+   constexpr size_t IPV4_ADDR_LEN = 4;
+   constexpr uint32_t DEFAULT_GROUP_ID = 1001;
+   constexpr uint32_t DEFAULT_PRIORITY = 100;
+   constexpr uint32_t DEFAULT_PACKET_COPY_LEN = 0xFFFF;
+   constexpr uint32_t DEFAULT_NFQUEUE_MAXLEN = 1024;
+   constexpr uint32_t DEFAULT_NFQUEUE_FLAGS = 1;
+   constexpr uint32_t PROTOCOL_TCP = OH_TRAFFICFILTER_PROTO_TCP;
+   constexpr uint16_t DEFAULT_HTTP_PORT = 80;
+   constexpr uint16_t DEFAULT_PROXY_PORT = 8080;
+   constexpr uint16_t HTTPS_PORT = 443;
+   constexpr uint16_t PORT_MIN_VALUE = 0;
+   constexpr uint16_t PORT_MAX_VALUE = 65535;
+   constexpr uint32_t UID_ANY = 4294967295u;
+   constexpr size_t INTERFACE_NAME_MAX_LEN = 31;
+   constexpr uint8_t IPV4_DEFAULT_PREFIX = 24;
+   constexpr uint8_t IPV6_DEFAULT_PREFIX = 64;
+   constexpr uint8_t IPV4_PREFIX_MAX = 32;
+   constexpr uint8_t IPV6_PREFIX_MAX = 128;
+   constexpr uint32_t LOG_DOMAIN_DEFAULT = 0x0000;
+   constexpr size_t ARRAY_BRACKET_PAIR_LEN = 2;
+   constexpr size_t ARRAY_CONTENT_START_OFFSET = 1;
+   
+   constexpr int ARG_IDX_GROUP_ID = 0;
+   constexpr int ARG_IDX_PRIORITY = 1;
+   constexpr int ARG_IDX_PACKET_COPY_LEN = 2;
+   constexpr int ARG_IDX_NFQUEUE_MAXLEN = 3;
+   constexpr int ARG_IDX_NFQUEUE_FLAGS = 4;
+   constexpr int REQUIRED_ARG_COUNT = 5;
+   
+   OH_TrafficFilter_Redirector* g_redirector = nullptr;
+   
+   static napi_value CreateRedirectorNapi(napi_env env, napi_callback_info info)
+   {
+       size_t argc = ARG_IDX_NFQUEUE_FLAGS + 1;
+       napi_value args[ARG_IDX_NFQUEUE_FLAGS + 1] = {nullptr};
+   
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+   
+       uint32_t groupId = DEFAULT_GROUP_ID;
+       uint32_t priority = DEFAULT_PRIORITY;
+       uint32_t packetCopyLen = DEFAULT_PACKET_COPY_LEN;
+       uint32_t nfqueueMaxlen = DEFAULT_NFQUEUE_MAXLEN;
+       uint32_t nfqueueFlags = DEFAULT_NFQUEUE_FLAGS;
+   
+       if (argc > ARG_IDX_GROUP_ID) {
+           napi_get_value_uint32(env, args[ARG_IDX_GROUP_ID], &groupId);
+       }
+       if (argc > ARG_IDX_PRIORITY) {
+           napi_get_value_uint32(env, args[ARG_IDX_PRIORITY], &priority);
+       }
+       if (argc > ARG_IDX_PACKET_COPY_LEN) {
+           napi_get_value_uint32(env, args[ARG_IDX_PACKET_COPY_LEN], &packetCopyLen);
+       }
+       if (argc > ARG_IDX_NFQUEUE_MAXLEN) {
+           napi_get_value_uint32(env, args[ARG_IDX_NFQUEUE_MAXLEN], &nfqueueMaxlen);
+       }
+       if (argc > ARG_IDX_NFQUEUE_FLAGS) {
+           napi_get_value_uint32(env, args[ARG_IDX_NFQUEUE_FLAGS], &nfqueueFlags);
+       }
+   
+   // ...
+   
+       int32_t ret = OH_TrafficFilter_CreateRedirector(groupId, priority, &g_redirector);
+   
+       char msg[BUFFER_SIZE * 2];
+   
+       napi_value result;
+       napi_create_string_utf8(env, msg, strlen(msg), &result);
+       return result;
+   }
+   ```
 
 2. 添加重定向规则。规则中可配置源/目的 IP、端口、接口、UID 范围以及代理服务器地址。
 
