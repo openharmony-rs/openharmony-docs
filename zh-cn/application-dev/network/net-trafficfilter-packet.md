@@ -417,6 +417,43 @@ libnet_trafficfilter.so
 
    <!-- @[destroy_packet_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp) -->
 
+   <div class="same-source-code">
+   ``` C++
+   static napi_value DestroyPacketControllerNapi(napi_env env, napi_callback_info info)
+   {
+       size_t argc = 1;
+       napi_value args[1] = {nullptr};
+   
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+   
+       uint32_t id;
+       if (argc >= 1) {
+           napi_get_value_uint32(env, args[0], &id);
+       }
+   
+       int ret = -1;
+       OH_LOG_Print(LOG_APP, LOG_INFO, GLOBAL_NETSTACK, TAG,
+                    "DestroyPacketControllerNapi id: %{public}d", id);
+   
+       OH_TrafficFilter_PacketController* controller = g_controllerMap[id];
+       if (controller != nullptr) {
+           OH_LOG_Print(LOG_APP, LOG_INFO, GLOBAL_NETSTACK, TAG,
+                        "DestroyPacketControllerNapi id111: %{public}d", id);
+           ret = OH_TrafficFilter_DestroyPacketController(controller);
+           g_controllerMap[id] = nullptr;
+       }
+   
+       napi_value result;
+       napi_create_int32(env, ret, &result);
+       return result;
+   }
+   ```
+
+   <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp?same_code_link_text=destroy_packet_controller" target="_blank" rel="nofollow">napi_init.cpp</a></p>
+
+   </div>
+
+
    简要说明：销毁控制器后会自动释放其占用的系统资源（包括规则），销毁后请将句柄置空，避免重复释放。
 
 5. 初始化并导出通过 N-API 封装的 `napi_value` 类型对象。
