@@ -1552,6 +1552,7 @@ RichEditorSymbolSpanStyle和RichEditorSymbolSpanStyleResult中fontWeight的转�
 | verticalAlign | [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10) | 否 | 否    | 图片垂直对齐方式。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10  <br/>**ArkTS-Sta起始版本：** 23|
 | objectFit     | [ImageFit](ts-appendix-enums.md#imagefit) | 否 | 否    | 图片缩放类型。   <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10  <br/>**ArkTS-Sta起始版本：** 23|
 | layoutStyle<sup>12+</sup> | [RichEditorLayoutStyle](#richeditorlayoutstyle11)     | 否 | 是   | 图片布局样式。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 23 |
+| resizable | [ResizableOptions](ts-basic-components-image.md#resizableoptions11)     | 否 | 是   | 图片拉伸选项。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.1.0|
 
 ## RichEditorLayoutStyle<sup>11+</sup> 
 
@@ -2678,6 +2679,7 @@ SymbolSpan样式选项。
 | verticalAlign             | [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10)| 否| 是    | 图片垂直对齐方式。<br/>默认值:ImageSpanAlignment.BOTTOM <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10  <br/>**ArkTS-Sta起始版本：** 23|
 | objectFit                 | [ImageFit](ts-appendix-enums.md#imagefit) | 否| 是    | 图片缩放类型。<br/> 默认值:ImageFit.Cover。  <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。       <br/>**ArkTS-Dyn起始版本：** 10  <br/>**ArkTS-Sta起始版本：** 23|
 | layoutStyle<sup>11+</sup> | [RichEditorLayoutStyle](#richeditorlayoutstyle11) | 否| 是    | 图片布局样式。默认值：{"borderRadius":"","margin":""}<br>   <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。                          <br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 23|
+| resizable | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) | 否| 是    | 图片拉伸选项。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.1.0 |
 
 ## RichEditorSymbolSpanOptions<sup>11+</sup>
 
@@ -8590,3 +8592,73 @@ struct ScrollToVisibleDemo {
 ```
 
 ![RichEditorScrollToVisible](figures/richEditorScrollToVisible.gif)
+
+### 示例44（设置图片拉伸）
+
+该示例通过设置[RichEditorImageSpanStyle](#richeditorimagespanstyle)的resizable属性，对图片不同方向进行拉伸。
+
+从API版本26.1.0开始，RichEditorImageSpanStyle新增resizable属性。
+
+```ts
+@Entry
+@Component
+struct RichEditorResizablePage {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+ 
+  build() {
+    Column({ space: 20 }) {
+      Text('RichEditor resizable Demo')
+        .fontSize(28)
+        .fontWeight(FontWeight.Bold)
+ 
+      RichEditor(this.options)
+        .onReady(() => {
+          this.controller.addTextSpan('原图\n', {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 28
+            }
+          });
+          this.controller.addImageSpan($r('app.media.landscape'), {
+            imageStyle: {
+              size: [260, 260],
+            }
+          });
+          this.controller.addTextSpan('\nRichEditor 中 ImageSpan resizable 拉伸效果\n', {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 28
+            }
+          });
+          this.controller.addImageSpan($r('app.media.landscape'), {
+            imageStyle: {
+              size: [260, 260],
+              resizable: {
+                slice: {
+                  left: '200px',
+                  top: '200px',
+                  right: '20px',
+                  bottom: '20px'
+                }
+              }
+            }
+          });
+ 
+        })
+        .width('90%')
+        .borderWidth(1)
+        .borderColor('#cccccc')
+        .borderRadius(8)
+        .padding(10)
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+
+```
+
+![richEditorResizable](figures/richeditor-resizable.png)
