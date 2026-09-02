@@ -1,4 +1,4 @@
-# Navigation动画常见问题
+# Navigation常见问题
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @huangxiaolinabc-->
@@ -152,3 +152,136 @@ NavDestination的共享元素转场需要配合[geometryTransition](../reference
 [zIndex](../reference/apis-arkui/arkui-ts/ts-universal-attributes-z-order.md#zindex)用于修改组件显示层级，给NavDestination设置该属性会覆盖系统设置的层级，导致动画被打乱。因此不建议给NavDestination设置zIndex。
 
 此外也不建议设置如：[transition](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transition)、[geometryTransition](../reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition.md)、[sharedTransition](../reference/apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md#sharedtransition)、[animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md)等特殊属性，可能与系统默认动画产生冲突。如果有业务需要设置这些属性，建议将这些属性设置在NavDestination的内容节点上，也可以达到相同效果。
+
+## NavDestination的builder中使用多个if语句时页面空白
+
+**问题现象**
+
+在Navigation的navDestination属性指定的builder中使用多个独立的if语句分别构建NavDestination页面，跳转到部分页面时页面空白。例如以下用法，当name为PageC时页面空白：
+
+<!-- @[ExamplePage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/navDestination/template5/Index.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct ExamplePage {
+  private stack: NavPathStack = new NavPathStack();
+
+  @Builder
+  pageMap(name: string) {
+    if (name === 'PageA') {
+      NavDestination()
+        .backgroundColor(Color.Red)
+        .title('PageA')
+    }
+    if (name === 'PageB') {
+      NavDestination()
+        .backgroundColor(Color.Green)
+        .title('PageB')
+    }
+    if (name === 'PageC') {
+      NavDestination()
+        .backgroundColor(Color.Blue)
+        .title('PageC')
+    }
+  }
+
+  build() {
+    Navigation(this.stack) {
+      Button("push PageA").onClick((event: ClickEvent) => {
+        this.stack.pushPathByName("PageA", null)
+      })
+      Button("push PageB").onClick((event: ClickEvent) => {
+        this.stack.pushPathByName("PageB", null)
+      })
+      Button("push PageC").onClick((event: ClickEvent) => {
+        this.stack.pushPathByName("PageC", null)
+      })
+    }
+    .navDestination(this.pageMap)
+  }
+}
+```
+
+**原因分析**
+
+Navigation构建NavDestination的机制：
+
+1. builder执行后，第一个节点作为根节点，其余节点按照代码顺序依次挂载到该根节点下（与第一个节点并列的节点会当成子节点挂载）。
+2. Navigation查找NavDestination节点时，从根节点沿第一个子节点逐层向下遍历，直到找到NavDestination为止。如果某一层的第一个子节点无子节点，遍历就会终止，无法继续查找后续兄弟节点。
+
+每个独立的if语句会产生一个IfElseNode，第二、三个IfElseNode作为第一个IfElseNode的子节点并列挂载，NavDestination则挂载在对应条件为true的IfElseNode下。
+
+- 当name === 'PageA'时，IfElseNode1为true，IfElseNode2和IfElseNode3为false，产生的组件树：
+
+  ```text
+  IfElseNode1                    ← 根节点
+   ├── NavDestination(PageA)    ← IfElseNode1为true，NavDestination作为IfElseNode1的第一个子节点
+   ├── IfElseNode2               ← IfElseNode2为false，无子节点
+   └── IfElseNode3               ← IfElseNode3为false，无子节点
+  ```
+
+  Navigation组件从IfElseNode1沿第一个子节点遍历，找到NavDestination(PageA)，页面正常。
+
+- 当name === 'PageB'时，IfElseNode2为true，IfElseNode1和IfElseNode3为false，产生的组件树：
+
+  ```text
+  IfElseNode1                    ← 根节点
+   ├── IfElseNode2               ← IfElseNode2为true
+   │    └── NavDestination(PageB)
+   └── IfElseNode3               ← IfElseNode3为false，无子节点
+  ```
+
+  Navigation组件从IfElseNode1沿第一个子节点遍历：IfElseNode1 → IfElseNode2 → NavDestination(PageB)，页面正常。
+
+- 当name === 'PageC'时，IfElseNode3为true，IfElseNode1和IfElseNode2为false，产生的组件树：
+
+  ```text
+  IfElseNode1                    ← 根节点
+   ├── IfElseNode2               ← IfElseNode2为false，无子节点（第一个子节点！）
+   └── IfElseNode3               ← IfElseNode3为true
+        └── NavDestination(PageC)
+  ```
+
+  Navigation组件IfElseNode1沿第一个子节点遍历：IfElseNode1 → IfElseNode2（无子节点，遍历终止），无法找到NavDestination(PageC)，页面空白。
+
+**解决措施**
+
+将builder中的多个独立if语句改为if-else if-else判断，只产生一个IfElseNode作为根节点，确保Navigation能够遍历找到NavDestination：
+
+<!-- @[NavDestinationSystemTransition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/navDestination/template3/Index.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct NavDestinationSystemTransition {
+  // ...
+
+  @Builder
+  pageMap(name: string) {
+    if (name === 'Fade') {
+      Fade();
+    } else if (name === 'Explode') {
+      Explode();
+    } else if (name === 'SlideRight') {
+      SlideRight();
+    } else if (name === 'SlideBottom') {
+      SlideBottom();
+    } else {
+      Dest();
+    }
+  }
+
+  aboutToAppear(): void {
+    this.stack.pushPath({name: 'Dest'});
+  }
+
+  build() {
+    Navigation(this.stack) {
+      // ...
+    }
+    .navDestination(this.pageMap)
+    .hideNavBar(true)
+  }
+}
+```
