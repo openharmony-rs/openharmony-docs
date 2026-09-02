@@ -382,7 +382,7 @@ ChipGroup：12
 
 **变更的接口/组件**
 
-Button、Button模式的Toggle、Chip、ChipGroup和Select组件。
+Button小按钮、Button模式的Toggle、Chip、ChipGroup和Select组件。
 
 **适配指导**
 
@@ -393,6 +393,7 @@ Button、Button模式的Toggle、Chip、ChipGroup和Select组件。
 struct ButtonExample {
   build() {
     Button('xxxxx')
+      .controlSize(ControlSize.SMALL)
       .responseRegion(undefined)
   }
 }
