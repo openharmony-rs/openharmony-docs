@@ -1,16 +1,15 @@
 # InputMethod
-
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=8e856b06a34a819612cae112a81452d688b21bcf translatedAt=2026-08-24T07:40:30.606Z pushedAt=2026-08-26T09:18:27.241Z -->
+<!-- md-trans-meta sourceCommit=c9f68a28229d3fb5da602baa0bfb8e542d407a50 translatedAt=2026-09-02T02:25:53.556Z pushedAt=2026-09-02T07:01:48.213Z -->
 
 ## Overview
 
-The **InputMethod** module provides C APIs for using and developing input methods. Using input methods targets the app side, while developing input methods targets input method app developers.
+The **InputMethod** module provides C APIs for input method usage. These APIs are designed for invocation on the app side.
 
 Function positioning: This module provides app developers with a complete set of C APIs for interactions between self‑drawn edit boxes and the input method service. Core capabilities include attaching to or detaching from the input method service, sending requests and notifications to the input method, receiving callback notifications from the input method, configuring edit box attributes, managing cursor and text avoidance information, and even more.
 
@@ -21,9 +20,7 @@ Use effect: After attaching to the input method, the app can receive callback no
 Lifecycle management: This module enforces strict pairing rules for create‑destroy and attach‑detach operations:
 
 - Attach-detach pairing: **OH_InputMethodController_Attach** must be called in pair with **OH_InputMethodController_Detach**. Failing to detach results in input method resource leaks.
-
 - Create-destroy pairing: All objects created by Create‑prefixed functions must be destroyed by their corresponding Destroy functions; otherwise, memory leaks will occur.
-
 - Calling sequence: Create dependent objects (**TextEditorProxy** and **AttachOptions**) first, and then call the **Attach** API to perform attachment. Use **InputMethodProxy** for interactions after successful attachment. Finally, call **Detach** and destroy all created objects.
 
 Thread safety: The APIs in this module are not thread-safe. It is recommended that you call them on the main thread. The execution thread for **TextEditorProxy** callbacks can be configured via **OH_TextEditorProxy_SetCallbackInMainThread**.
@@ -39,27 +36,17 @@ Thread safety: The APIs in this module are not thread-safe. It is recommended th
 This module consists of nine header files which are divided into four layers by responsibility:
 
 - Control layer: **inputmethod_controller_capi.h**. The core entry of the module. It provides capabilities to attach to and detach from the input method service, serving as the start and end point for all interactions.
-
 - Interaction layer: **inputmethod_text_editor_proxy_capi.h** and **inputmethod_inputmethod_proxy_capi.h**. Bidirectional interaction channels. **TextEditorProxy** is the callback registration channel for traffic from the input method to the app, through which the app receives notifications such as text insertion and deletion from the input method. **InputMethodProxy** is the request sending channel for traffic from the app to the input method, through which the app sends notifications such as cursor updates and selection changes to the input method.
-
 - Configuration layer: **inputmethod_attach_options_capi.h**, **inputmethod_text_config_capi.h**, **inputmethod_cursor_info_capi.h**, and **inputmethod_text_avoid_info_capi.h**. Carrier objects for various configurations and information. They manage attachment options, edit box configurations, cursor position information, and text avoidance information respectively.
-
 - Data layer: **inputmethod_private_command_capi.h** and **inputmethod_types_capi.h**. Definitions for private command data and common types (such as enums and error codes).
 
 Typical calling process:
-
 1. Create a **TextEditorProxy** and register callbacks via **inputmethod_text_editor_proxy_capi.h**.
-
 2. Create **AttachOptions** to configure attachment options via **inputmethod_attach_options_capi.h**.
-
 3. Call **Attach** via **inputmethod_controller_capi.h** to attach to the input method service and obtain an **InputMethodProxy**.
-
 4. Use **InputMethodProxy** to interact with the input method via **inputmethod_inputmethod_proxy_capi.h**.
-
 5. Manage configuration information via **inputmethod_text_config_capi.h**, **inputmethod_cursor_info_capi.h**, and other related header files.
-
 6. Call **Detach** to detach from the input method via **inputmethod_controller_capi.h** .
-
 7. Destroy all created objects.
 
 ## Files

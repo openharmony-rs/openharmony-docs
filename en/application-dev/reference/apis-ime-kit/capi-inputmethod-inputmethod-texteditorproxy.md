@@ -1,12 +1,11 @@
 # InputMethod_TextEditorProxy
-
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=4c244f2ed12456a4c6059eccff764e442d7872b9 translatedAt=2026-08-19T01:22:44.775Z pushedAt=2026-08-24T07:06:19.341Z -->
+<!-- md-trans-meta sourceCommit=c9f68a28229d3fb5da602baa0bfb8e542d407a50 translatedAt=2026-09-02T02:25:48.982Z pushedAt=2026-09-02T07:01:30.714Z -->
 
 ```c
 typedef struct InputMethod_TextEditorProxy InputMethod_TextEditorProxy
@@ -29,11 +28,8 @@ Represents a proxy object for the interaction between the text editor and the in
 ## Lifecycle Management
 
 - Creation: Create a new **InputMethod_TextEditorProxy** instance pointer by calling the [OH_TextEditorProxy_Create](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_create) function. If creation fails, **NULL** is returned, possibly due to insufficient memory.
-
-- Destruction: Destroy an instance by calling the [OH_TextEditorProxy_Destroy](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_destroy) function with the pointer of the instance to be destroyed. After destruction, the pointer cannot be used again. It is recommended that you set the pointer to **NULL** to avoid misuse.
-
+- Destruction: Destroy an instance by calling the [OH_TextEditorProxy_Destroy](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_destroy) function with the pointer to the instance to be destroyed. After destruction, the pointer cannot be used again. It is recommended that you set the pointer to **NULL** to avoid misuse.
 - Paired calls: **OH_TextEditorProxy_Create** and **OH_TextEditorProxy_Destroy** must be used in pairs. Objects created shall eventually be released via the destroy function; otherwise, memory leaks will occur. The same **TextEditorProxy** instance can be destroyed only once and cannot be destroyed repeatedly.
-
 - Usage timing: After creating a **TextEditorProxy**, register callback functions using **Set*Func** APIs first, and then complete attachment registration via [OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach). Modifying callback function settings after attachment is not recommended.
 
 ## Callback Mechanism
@@ -41,23 +37,16 @@ Represents a proxy object for the interaction between the text editor and the in
 **TextEditorProxy** uses a callback function mechanism to implement bidirectional communication between the input method app and the editor:
 
 - Callback registration process: Create **TextEditorProxy** → Register each callback function via **Set*Func** APIs → Complete registration via the attach function.
-
 - Callback trigger timing: When the input method app sends a request or notification to the editor, the system automatically calls the corresponding callback function registered in **TextEditorProxy**.
-
 - Temporary pointers in callback functions: The pointer parameters (such as **text** and **privateCommand**) received in a callback function are valid only during callback execution. After the callback returns, the memory is released and must not be accessed again. You should complete the necessary data copying or processing inside the callback and must not continue to use these pointers outside the callback.
-
 - **GetTextConfigFunc** is not affected by **SetCallbackInMainThread**: The execution thread of [OH_TextEditorProxy_GetTextConfigFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_gettextconfigfunc) is determined by the thread from which [OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach) is called, and is not affected by [OH_TextEditorProxy_SetCallbackInMainThread](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setcallbackinmainthread). If **GetTextConfigFunc** needs to run on the main thread, ensure that the attach function is called on the main thread.
 
 ## Usage Notes
 
 - All **Set*Func** APIs must be called before the attach function is called. Callback functions set after attachment will not be called by the input method.
-
 - Pointer parameters in callback functions are temporary. They cannot be accessed after the callback returns, and data processing must be completed within the callback.
-
 - It is recommended that you register at least the two core callbacks, **GetTextConfigFunc** and **InsertTextFunc**. Otherwise, the input method may not work properly.
-
 - This object is not thread-safe. It is not recommended that you operate the same **TextEditorProxy** object concurrently in a multi-threaded environment. You can switch callbacks to the main thread via [OH_TextEditorProxy_SetCallbackInMainThread](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setcallbackinmainthread) to avoid multi-thread concurrency issues.
-
 - This object is an opaque type. You cannot access its internal members or perform memory operations on it.
 
 Related functions:
@@ -118,5 +107,4 @@ Thread configuration functions
 Association relationships:
 
 - Relationship with **InputMethodProxy**: [InputMethod_InputMethodProxy](capi-inputmethod-inputmethod-inputmethodproxy.md) is responsible for sending requests and notifications to the input method service, while **InputMethod_TextEditorProxy** is responsible for receiving requests and notifications from the input method app. The two are associated at the same time when the attach API is called, forming a bidirectional communication channel.
-
 - Relationship with **TextConfig**: [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) is used in the **GetTextConfigFunc** callback to pass the configuration information of the edit box to the input method. When the **GetTextConfigFunc** callback is triggered, you need to assign a value to the **config** parameter within the callback to fill in the configuration information.
