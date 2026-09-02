@@ -462,7 +462,30 @@ libnet_trafficfilter.so
 
    <div class="same-source-code">
    ``` C++
-   static napi_value Init(napi_env env, napi_value exports)
+   <!-- @[register_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp) -->
+
+   <div class="same-source-code">
+   ``` C++
+   static napi_module demoModule = {
+       .nm_version = 1,
+       .nm_flags = 0,
+       .nm_filename = nullptr,
+       .nm_register_func = Init,
+       .nm_modname = "entry",
+       .nm_priv = nullptr,
+       .reserved = { 0 },
+   };
+   
+   extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
+   {
+       napi_module_register(&demoModule);
+   }
+   ```
+
+   <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp?same_code_link_text=register_module" target="_blank" rel="nofollow">napi_init.cpp</a></p>
+
+   </div>
+
    {
        napi_property_descriptor desc[] = {
            { "createPacketController", nullptr, CreatePacketControllerNapi, nullptr, nullptr,
