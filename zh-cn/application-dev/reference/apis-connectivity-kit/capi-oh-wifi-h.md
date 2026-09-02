@@ -263,7 +263,7 @@ Wifi_ResultCode OH_Wifi_GetLinkedInfo(OH_WifiLinkedInfo *info)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_WifiLinkedInfo](capi-wifi-oh-wifilinkedinfo.md) *info | - WIFI连接信息结构体。 |
+| [OH_WifiLinkedInfo](capi-wifi-oh-wifilinkedinfo.md) *info | WIFI连接信息结构体。 |
 
 **返回：**
 
