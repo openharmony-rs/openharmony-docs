@@ -5,7 +5,7 @@
 <!--Designer: @stupidb-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=4e5be674e287f8213e38343ff22d0403ff7ef1a3 translatedAt=2026-09-01T03:38:33.055Z pushedAt=2026-09-02T07:13:34.543Z -->
+<!-- md-trans-meta sourceCommit=4e5be674e287f8213e38343ff22d0403ff7ef1a3 translatedAt=2026-09-01T03:38:33.055Z pushedAt=2026-09-02T07:21:53.508Z -->
 
 Intended only for the **UIExtensionComponent** that has process isolation requirements, the **uiExtensionHost** module provides APIs for obtaining the host application window information and information about the component itself.
 
@@ -572,7 +572,7 @@ Sets whether to enable privacy protection for the UIExtension component during n
 
 > **NOTE**
 >
-> After privacy protection for screenshot content is enabled, neither the window screenshot API [window.snapshot](arkts-apis-window-Window.md#snapshot9) or the component screenshot API [UIContext.getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) will capture the content of the current component (excluding subwindows created under this component).
+> After privacy protection for screenshot content is enabled, neither the window screenshot API [window.snapshot](arkts-apis-window-Window.md#snapshot9) nor the component screenshot API [UIContext.getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) will capture the content of the current component (excluding subwindows created under this component).
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
