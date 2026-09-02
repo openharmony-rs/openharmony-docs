@@ -78,7 +78,7 @@
     <!--DelEnd-->
     - [@ohos.font (Custom Font Registration)](js-apis-font.md)
     - [@ohos.matrix4 (Matrix Transformation)](js-apis-matrix4.md)
-    - [@ohos.measure (Text Calculation)](js-apis-measure.md)
+    - [@ohos.measure (Text Measurement)](js-apis-measure.md)
     - [@ohos.mediaquery (Media Query)](js-apis-mediaquery.md)
     - [@ohos.pluginComponent (PluginComponentManager)](js-apis-plugincomponent.md)
     - [@ohos.promptAction (Prompt)](js-apis-promptAction.md)
@@ -102,7 +102,7 @@
     - [@ohos.promptAction (Prompt) (System API)](js-apis-promptAction-sys.md)
     - [@ohos.arkui.uiMaterial (System Material) (System API)](arkts-apis-uimaterial-sys.md)
     <!--DelEnd-->
-    - arkui<!--ui-interface-arkui-->
+    - ArkUI<!--ui-interface-arkui-->
       - [BuilderNode](js-apis-arkui-builderNode.md)
       - [ComponentContent](js-apis-arkui-ComponentContent.md)
       - [FrameNode](js-apis-arkui-frameNode.md)
@@ -118,7 +118,7 @@
       <!--Del-->
       - [Graphics (System API)](js-apis-arkui-graphics-sys.md)
       <!--DelEnd-->
-  - Window Management<!--window-manager-api-->
+  - Window Manager<!--window-manager-api-->
     - [@ohos.window.floatView (Float View)](js-apis-floatView.md)
     - [@ohos.PiPWindow (PiP Window)](js-apis-pipWindow.md)
     <!--Del-->
@@ -137,7 +137,7 @@
     - [@ohos.animation.windowAnimationManager (Window Animation Management) (System API)](js-apis-windowAnimationManager-sys.md)
     - [@ohos.window (Window) (System API)](js-apis-window-sys.md)
     <!--DelEnd-->
-  - Screen Management<!--display-manager-api-->
+  - Display Management<!--display-manager-api-->
     - [@ohos.display (Display)](js-apis-display.md)
     - [@ohos.screenshot (Screenshot)](js-apis-screenshot.md)
     <!--Del-->
@@ -176,7 +176,7 @@
       - [Hover Event](arkui-ts/ts-universal-events-hover.md)
       - [Component Keyboard Shortcut Event](arkui-ts/ts-universal-events-keyboardshortcut.md)
       - [Keyboard Determination Event](arkui-ts/ts-universal-events-onneedsoftkeyboard.md)
-    - Interactive Event Distribution Control<!--event-dispatch-control-->
+    - Interactive Event Dispatch Control<!--event-dispatch-control-->
       - [Custom Event Interception](arkui-ts/ts-universal-attributes-on-touch-intercept.md)
       - [Custom Event Dispatch](arkui-ts/ts-universal-attributes-on-child-touch-test.md)
       - [Global Basic Input Event Listening](arkui-ts/ts-inputeventmonitor.md)
@@ -204,7 +204,7 @@
       - [Layout Constraints](arkui-ts/ts-universal-attributes-layout-constraints.md)
       - [Flex Layout](arkui-ts/ts-universal-attributes-flex-layout.md)
       - [Safe Area](arkui-ts/ts-universal-attributes-expand-safe-area.md)
-      - [Component-level Pixel Rounding](arkui-ts/ts-universal-attributes-pixelRoundForComponent.md)
+      - [Component-Level Pixel Rounding](arkui-ts/ts-universal-attributes-pixelRoundForComponent.md)
       - [Page-Level Pixel Rounding](arkui-ts/ts-universal-attributes-pixelRoundForPage.md)
       - [Border Styling](arkui-ts/ts-universal-attributes-border.md)
       - [Border Image](arkui-ts/ts-universal-attributes-border-image.md)
@@ -229,7 +229,7 @@
       - [Image Effect (System API)](arkui-ts/ts-universal-attributes-image-effect-sys.md)
       - [Union Effect (System API)](arkui-ts/ts-universal-attributes-use-union-effect-sys.md)
       <!--DelEnd-->
-    - Interaction Attributes<!--interaction-property-->
+    - Interaction Properties<!--interaction-property-->
       - [Enable/Disable Control](arkui-ts/ts-universal-attributes-enable.md)
       - [Focus Control](arkui-ts/ts-universal-attributes-focus.md)
       - [Drag and Drop Control](arkui-ts/ts-universal-attributes-drag-drop.md)
@@ -257,7 +257,7 @@
       <!--Del-->
       - [Sheet Transition (System API)](arkui-ts/ts-universal-attributes-sheet-transition-sys.md)
       <!--DelEnd-->
-    - Dynamic Attributes and Customization<!--attribute-modifier-property-->
+    - Modifiers and Custom Properties<!--attribute-modifier-property-->
       - [Attribute Modifier](arkui-ts/ts-universal-attributes-attribute-modifier.md)
       - [Gesture Modifier](arkui-ts/ts-universal-attributes-gesture-modifier.md)
       - [Drawing Modifier](arkui-ts/ts-universal-attributes-draw-modifier.md)
@@ -287,7 +287,7 @@
       - [Custom Gesture Judgment](arkui-ts/ts-gesture-customize-judge.md)
       - [Gesture Blocking Enhancement](arkui-ts/ts-gesture-blocking-enhancement.md)
     - [Gesture Common APIs](arkui-ts/ts-gesture-common.md)
-  - Row, Column, and Stack<!--rows-columns-and-stacking-->
+  - Rows, Columns, and Stacking<!--rows-columns-and-stacking-->
     - [Flex](arkui-ts/ts-container-flex.md)
     - [Column](arkui-ts/ts-container-column.md)
     - [Row](arkui-ts/ts-container-row.md)
@@ -301,7 +301,7 @@
     - [Row (System API)](arkui-ts/ts-container-row-sys.md)
     - [Stack (System API)](arkui-ts/ts-container-stack-sys.md)
     <!--DelEnd-->
-  - Grid and Split<!--grid-and-column-layout-->
+  - Grid and Column Layout<!--grid-and-column-layout-->
     - [GridRow](arkui-ts/ts-container-gridrow.md)
     - [GridCol](arkui-ts/ts-container-gridcol.md)
     - [ColumnSplit](arkui-ts/ts-container-columnsplit.md)
@@ -341,7 +341,7 @@
     - [Tabs](arkui-ts/ts-container-tabs.md)
     - [TabContent](arkui-ts/ts-container-tabcontent.md)
     - [ToolBarItem](arkui-ts/ts-basic-components-toolbaritem.md)
-  - Buttons and Selection<!--buttons-and-selections-->
+  - Buttons and Selections<!--buttons-and-selections-->
     - [Button](arkui-ts/ts-basic-components-button.md)
     - [Toggle](arkui-ts/ts-basic-components-toggle.md)
     - [Checkbox](arkui-ts/ts-basic-components-checkbox.md)
@@ -449,7 +449,7 @@
     <!--Del-->
     - [DepthComponent (System API)](arkui-ts/ts-basic-components-depthcomponent-sys.md)
     <!--DelEnd-->
-  - Menu<!--menus-->
+  - Menus<!--menus-->
     - [Menu](arkui-ts/ts-basic-components-menu.md)
     - [MenuItem](arkui-ts/ts-basic-components-menuitem.md)
     - [MenuItemGroup](arkui-ts/ts-basic-components-menuitemgroup.md)
@@ -498,7 +498,7 @@
     - [Text Picker Dialog Box (TextPickerDialog) (System API)](arkui-ts/ts-methods-textpicker-dialog-sys.md)
     <!--DelEnd-->
     - [Dialog Box (Dialog)](arkui-ts/ohos-arkui-advanced-Dialog.md)
-  - Widgets<!--service-widgets-->
+  - Service Widgets<!--service-widgets-->
     - [FormLink](arkui-ts/ts-container-formlink.md)
     <!--Del-->
     - [FormComponent (System API)](arkui-ts/ts-basic-components-formcomponent-sys.md)
@@ -511,7 +511,7 @@
     - [SaveButton (System API)](arkui-ts/ts-security-components-savebutton-sys.md)
     - [Security Component Universal Attributes (System API)](arkui-ts/ts-securitycomponent-attributes-sys.md)
     <!--DelEnd-->
-  - Theme<!--themes-->
+  - Themes<!--themes-->
     - [WithTheme](arkui-ts/ts-container-with-theme.md)
   - AtomicService<!--atomic-services-->
     - [AtomicServiceNavigation](arkui-ts/ohos-atomicservice-AtomicServiceNavigation.md)
@@ -758,7 +758,7 @@
   - Structs<!--arkui-struct-->
     - [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)
     - [ArkUI_Context](capi-arkui-nativemodule-arkui-context.md)
-    - [ArkUI_Context*](capi-arkui-nativemodule-arkui-context8h.md)
+    - [ArkUI_Context\*](capi-arkui-nativemodule-arkui-context8h.md)
     - [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md)
     - [ArkUI_DragPreviewOption](capi-arkui-nativemodule-arkui-dragpreviewoption.md)
     - [ArkUI_DragAction](capi-arkui-nativemodule-arkui-dragaction.md)
@@ -773,7 +773,7 @@
     - [ArkUI_NativeAnimateAPI_1](capi-arkui-nativemodule-arkui-nativeanimateapi-1.md)
     - [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)
     - [ArkUI_Curve](capi-arkui-nativemodule-arkui-curve.md)
-    - [ArkUI_Curve*](capi-arkui-nativemodule-arkui-curve8h.md)
+    - [ArkUI_Curve\*](capi-arkui-nativemodule-arkui-curve8h.md)
     - [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)
     - [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)
     - [ArkUI_Animator*](capi-arkui-nativemodule-arkui-animator8h.md)
@@ -930,11 +930,11 @@
     - [NativeDisplayManager_DisplayInfo](capi-nativedisplaymanager-displayinfo.md)
     - [NativeDisplayManager_DisplaysInfo](capi-nativedisplaymanager-displaysinfo.md)
     - [ArkUI_CircleShape](capi-arkui-nativemodule-arkui-circleshapeoption.md)
-    - [ArkUI_ColorAnimatableProperty*](capi-arkui-nativemodule-arkui-coloranimatablepropertyhandle.md)
-    - [ArkUI_ColorProperty*](capi-arkui-nativemodule-arkui-colorpropertyhandle.md)
+    - [ArkUI_ColorAnimatableProperty](capi-arkui-nativemodule-arkui-coloranimatablepropertyhandle.md)
+    - [ArkUI_ColorProperty](capi-arkui-nativemodule-arkui-colorpropertyhandle.md)
     - [ArkUI_CommandPath](capi-arkui-nativemodule-arkui-commandpathoption.md)
-    - [ArkUI_FloatAnimatableProperty*](capi-arkui-nativemodule-arkui-floatanimatablepropertyhandle.md)
-    - [ArkUI_FloatProperty*](capi-arkui-nativemodule-arkui-floatpropertyhandle.md)
+    - [ArkUI_FloatAnimatableProperty](capi-arkui-nativemodule-arkui-floatanimatablepropertyhandle.md)
+    - [ArkUI_FloatProperty](capi-arkui-nativemodule-arkui-floatpropertyhandle.md)
     - [ArkUI_ImmersiveMaterial](./capi-arkui-nativemodule-arkui-immersivematerial.md)
     - [ArkUI_ImmersiveMaterial*](./capi-arkui-nativemodule-arkui-immersivematerialhandle.md)
     - [ArkUI_LightEffectOptions](./capi-arkui-nativemodule-arkui-lighteffectoptions.md)
@@ -944,14 +944,14 @@
     - [ArkUI_NodeBorderStyle](capi-arkui-nativemodule-arkui-nodeborderstyleoption.md)
     - [ArkUI_NodeBorderWidth](capi-arkui-nativemodule-arkui-nodeborderwidthoption.md)
     - [ArkUI_RectShape](capi-arkui-nativemodule-arkui-rectshapeoption.md)
-    - [ArkUI_RenderContentModifier*](capi-arkui-nativemodule-arkui-rendercontentmodifierhandle.md)
+    - [ArkUI_RenderContentModifier](capi-arkui-nativemodule-arkui-rendercontentmodifierhandle.md)
     - [ArkUI_RenderNodeClipOption](capi-arkui-nativemodule-arkui-rendernodeclipoption.md)
-    - [ArkUI_RenderNode*](capi-arkui-nativemodule-arkui-rendernodehandle.md)
+    - [ArkUI_RenderNode](capi-arkui-nativemodule-arkui-rendernodehandle.md)
     - [ArkUI_RenderNodeMaskOption](capi-arkui-nativemodule-arkui-rendernodemaskoption.md)
     - [ArkUI_RenderBlurStyleOption](capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)
     - [ArkUI_RoundRectShape](capi-arkui-nativemodule-arkui-roundrectshapeoption.md)
-    - [ArkUI_Vector2AnimatableProperty*](capi-arkui-nativemodule-arkui-vector2animatablepropertyhandle.md)
-    - [ArkUI_Vector2Property*](capi-arkui-nativemodule-arkui-vector2propertyhandle.md)
+    - [ArkUI_Vector2AnimatableProperty](capi-arkui-nativemodule-arkui-vector2animatablepropertyhandle.md)
+    - [ArkUI_Vector2Property](capi-arkui-nativemodule-arkui-vector2propertyhandle.md)
     - [ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md)
     - [ArkUI_CoastingAxisEvent](capi-arkui-nativemodule-arkui-coastingaxisevent.md)
     - [ArkUI_GridItemRect](capi-arkui-nativemodule-arkui-griditemrect.md)
@@ -959,8 +959,8 @@
     - [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)
     - [ArkUI_TouchTestInfo](capi-arkui-nativemodule-arkui-touchtestinfo.md)
     - [ArkUI_TouchTestInfoItem](capi-arkui-nativemodule-arkui-touchtestinfoitem.md)
-    - [ArkUI_TouchTestInfoItem*](capi-arkui-nativemodule-arkui-touchtestinfoitemhandle.md)
-    - [ArkUI_TouchTestInfoItemHandle*](capi-arkui-nativemodule-arkui-touchtestinfoitemhandlearray.md)
+    - [ArkUI_TouchTestInfoItem\*](capi-arkui-nativemodule-arkui-touchtestinfoitemhandle.md)
+    - [ArkUI_TouchTestInfoItemHandle](capi-arkui-nativemodule-arkui-touchtestinfoitemhandlearray.md)
     - [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)
     - [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)
     - [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md)
