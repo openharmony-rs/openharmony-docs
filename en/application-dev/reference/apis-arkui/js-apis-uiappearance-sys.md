@@ -1,12 +1,11 @@
 # @ohos.uiAppearance (UI Appearance) (System API)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @fangzhiyuan1-->
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=77dbe37290f6691d2779cf62e1218d62529d67d2 translatedAt=2026-07-29T09:30:28.341Z pushedAt=2026-08-04T03:56:14.114Z -->
+<!-- md-trans-meta sourceCommit=5a4264c9dc0635cb9b4fb88fb3431f8701ad9d40 translatedAt=2026-09-01T03:35:47.768Z pushedAt=2026-09-02T07:05:18.596Z -->
 
 This module provides basic capabilities for managing system appearance configurations, including color mode (dark/light) settings, font size scale factors, and font weight scale factors. It is suitable for scenarios such as unified management of dark/light theme switching and adaptation to user font preferences to improve the reading experience. It addresses issues such as scattered system appearance configurations and the inability to uniformly respond to personalized user requirements.
 
@@ -14,15 +13,15 @@ This module provides basic capabilities for managing system appearance configura
 >
 > - The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
->
-> - This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.uiAppearance (UI Appearance)](js-apis-uiappearance.md).
+> - This topic describes only the system APIs provided by this module. For details about its public APIs, see [@ohos.uiAppearance (UI Appearance)](js-apis-uiappearance.md).
+
 
 ## Modules to Import
 
 ```ts
 import { uiAppearance } from '@kit.ArkUI';
 ```
+
 
 ## uiAppearance.setDarkMode
 
@@ -72,6 +71,7 @@ try {
   console.error(`Set dark-mode failed. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
 
 ## uiAppearance.setDarkMode
 
@@ -124,6 +124,7 @@ try {
   console.error(`Set dark-mode failed. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
 
 ## uiAppearance.setFontScale<sup>12+</sup>
 
@@ -184,6 +185,7 @@ try {
 }
 ```
 
+
 ## uiAppearance.setFontWeightScale<sup>12+</sup>
 
 setFontWeightScale(fontWeightScale: number): Promise\<void>
@@ -200,7 +202,7 @@ Sets the system font weight scale factor for modifying the system-level font wei
 
 | Name| Type| Mandatory| Description|
 | -- | -- | -- | -- |
-| fontWeightScale | number | Yes | Font weight scale factor.<br/>Value range: (0, 5.0]. If the value is out of range, exception 401 is thrown.<br/>Value principles: **1.0** is the base value, indicating normal font weight. A value greater than **1.0** makes the font bolder, and a value less than **1.0** makes the font thinner. |
+| fontWeightScale | number | Yes | Font weight scale factor.<br/> Value range: (0, 5.0].<br/> Value principles: **1.0** is the baseline value indicating normal font weight. A value greater than 1.0 makes the font bolder. A value less than 1.0 makes the font thinner. |
 
 **Return value**
 
@@ -220,7 +222,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -- | -- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed.  |
 | 500001 | Internal error. |
 
 **Example**

@@ -1,10 +1,11 @@
 # @system.mediaquery (Media Query)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zju_ljz-->
-<!--Designer: @lanshouren-->
+<!--Owner: @song-song-song-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=75a7d62c0702c21a06ca0119552a942305a023cc translatedAt=2026-09-01T03:31:32.770Z pushedAt=2026-09-02T03:54:14.267Z -->
 
 The **mediaquery** module provides different styles for different media types.
 

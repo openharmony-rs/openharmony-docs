@@ -5,16 +5,17 @@
 <!--Designer: @stupidb-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=4e5be674e287f8213e38343ff22d0403ff7ef1a3 translatedAt=2026-09-01T03:38:33.055Z pushedAt=2026-09-02T07:21:53.508Z -->
 
 Intended only for the **UIExtensionComponent** that has process isolation requirements, the **uiExtensionHost** module provides APIs for obtaining the host application window information and information about the component itself.
 
 > **NOTE**
 >
-> - No new function will be added to this module. Related functions will be provided in the [uiExtension](js-apis-arkui-uiExtension.md) interface.
+> - No new feature will be added to this module. Related features will be provided in [uiExtension](js-apis-arkui-uiExtension.md).
 >
 > - The initial APIs of this module are supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs provided by this module are system APIs.
+> - The APIs of this module are system APIs.
 
 ## Modules to Import
 
@@ -34,7 +35,7 @@ import { uiExtensionHost } from '@kit.ArkUI';
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| properties          | [UIExtensionHostWindowProxyProperties](#uiextensionhostwindowproxyproperties) |  No |  No | Information about the host application window and the **UIExtensionComponent**.<br>Note: Due to architecture restrictions, avoid obtaining the value in [onSessionCreate](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessioncreate). Instead, when possible, obtain the value after receiving the [on('windowSizeChange')](../apis-arkui/js-apis-uiExtensionHost-sys.md#onwindowsizechange) callback.|
+| properties          | [UIExtensionHostWindowProxyProperties](#uiextensionhostwindowproxyproperties) |  No  |  No  | Information about the **UIExtensionComponent** and the host application window.<br>**Note:** Due to architecture restrictions, avoid obtaining the value in [onSessionCreate](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessioncreate). Instead, when possible, obtain the value after receiving the [on('windowSizeChange')](#onwindowsizechange) callback. |
 
 ### getWindowAvoidArea
 
@@ -52,7 +53,7 @@ Obtains the area where the host application window cannot be displayed, for exam
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | Yes| Type of the avoidance area.|
+| type | [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | Yes| Type of the avoid area.|
 
 **Return value**
 
@@ -101,7 +102,7 @@ Subscribes to the event of changes to the area where the host application window
 | Name  | Type  | Mandatory| Description                  |
 | -------- | ------ | ---- | ---------------------- |
 | type     | string | Yes  | Event type. The value is fixed at **'avoidAreaChange'**, indicating the event of changes to the area where the window cannot be displayed.|
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<{ type: [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7), area: [window.AvoidArea](arkts-apis-window-i.md#avoidarea7) }> | Yes| Callback function that receives the information about the current avoidance area. The **type** parameter indicates the type of the avoidance area, and the **area** parameter indicates the avoidance area for the content of the window.|
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<{ type: [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7), area: [window.AvoidArea](arkts-apis-window-i.md#avoidarea7) }> | Yes| Callback function that receives the information about the current avoid area. The **type** parameter indicates the type of the avoid area, and the **area** parameter indicates the avoid area for the content of the window.|
 
 **Error codes**
 
@@ -146,7 +147,7 @@ Unsubscribes from the event of changes to the area where the host application wi
 | Name  | Type  | Mandatory| Description                  |
 | -------- | ------ | ---- | ---------------------- |
 | type     | string | Yes  | Event type. The value is fixed at **'avoidAreaChange'**, indicating the event of changes to the area where the window cannot be displayed.|
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<{ type: [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7), area: [window.AvoidArea](arkts-apis-window-i.md#avoidarea7) }> | No| Callback used for unsubscription. If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled.|
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<{ type: [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7), area: [window.AvoidArea](arkts-apis-window-i.md#avoidarea7) }> | No | Callback used for unsubscription. If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled. |
 
 **Error codes**
 
@@ -234,7 +235,7 @@ Unsubscribes from size change events of the component (**EmbeddedComponent** or 
 | Name  | Type                 | Mandatory| Description                  |
 | -------- | --------------------- | ---- | ---------------------- |
 | type     | string                | Yes  | Event type. The value is fixed at **'windowSizeChange'**, indicating the component (**EmbeddedComponent** or **UIExtensionComponent**) size change events.|
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | No  | Callback used to return the size of the current component (**EmbeddedComponent** or **UIExtensionComponent**). If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled.|
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | No | Callback used for unsubscription. If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled. |
 
 **Error codes**
 
@@ -267,9 +268,9 @@ hideNonSecureWindows(shouldHide: boolean): Promise&lt;void&gt;
 Sets whether to hide non-secure windows. This API uses a promise to return the result.
 > **NOTE**
 >
-> - A non-secure window refers to any window that may obstruct the [EmbeddedComponent](arkui-ts/ts-container-embedded-component.md) or [UIExtensionComponent](arkui-ts/ts-container-ui-extension-component-sys.md), such as global floating windows, host subwindows, and dialog box windows created by the host application (excluding windows of these types created by system applications).
-> - When using the **EmbeddedComponent** or **UIExtensionComponent** to display sensitive information, call this API to hide non-secure windows and prevent information obstruction. Hidden non-secure windows will reappear when the **EmbeddedComponent** or **UIExtensionComponent** is hidden or destroyed.
-> - On PCs/2-in-1 devices, global floating windows within non-secure windows remain visible when **hideNonSecureWindows(true)** is called.
+> - A non-secure window refers to any window that may obstruct the [EmbeddedComponent](arkui-ts/ts-container-embedded-component.md) or [UIExtensionComponent](arkui-ts/ts-container-ui-extension-component-sys.md) component, such as global floating windows, host subwindows, and dialog box windows created by the host window (excluding windows of these types created by system applications).
+> - When using the **EmbeddedComponent** (or **UIExtensionComponent**) component to display sensitive operation prompts, you can choose to hide non-secure windows to protect the prompts from being obscured. When the **EmbeddedComponent** (or **UIExtensionComponent**) component is not displayed or is destroyed, the non-secure windows will be displayed again.
+> - For PCs/2-in-1 devices, when **hideNonSecureWindows(true)** is called, global floating windows within the non-secure windows are not hidden.
 
 **Required permissions**: ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS
 
@@ -289,16 +290,16 @@ Sets whether to hide non-secure windows. This API uses a promise to return the r
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 202      | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
+| 202      | Permission verification failed. A non-system application calls a system API.<br>Applicable Versions: 12+ |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
-| 1300002  | Abnormal state. Possible causes: <br> 1. Permission denied. Interface caller does not have permission "ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS". <br> 2. The UIExtension window proxy is abnormal.<br>Applicable versions: 12+|
-| 1300003  | This window manager service works abnormally.<br>Applicable versions: 12+|
+| 1300002  | Abnormal state. Possible causes: <br> 1. Permission denied. Interface caller does not have permission "ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS". <br> 2. The UIExtension window proxy is abnormal.<br>Applicable Versions: 12+ |
+| 1300003  | This window manager service works abnormally.<br>Applicable Versions: 12+ |
 
 **Example**
 
@@ -311,21 +312,21 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class EntryAbility extends UIExtensionAbility {
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
-    // Hide insecure windows.
-    extensionHostWindow.hideNonSecureWindows(true).then(()=> {
+    // Hide non-secure windows.
+    extensionHostWindow.hideNonSecureWindows(true).then(() => {
       console.info(`Succeeded in hiding the non-secure windows.`);
-    }).catch((err: BusinessError)=> {
-      console.error(`Failed to hide the non-secure windows. Cause:${JSON.stringify(err)}`);
-    })
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to hide the non-secure windows. Code: ${err.code}, message: ${err.message}`);
+    });
   }
   onSessionDestroy(session: UIExtensionContentSession) {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
-    // Unhide insecure windows.
-    extensionHostWindow.hideNonSecureWindows(false).then(()=> {
+    // Unhide non-secure windows.
+    extensionHostWindow.hideNonSecureWindows(false).then(() => {
       console.info(`Succeeded in showing the non-secure windows.`);
-    }).catch((err: BusinessError)=> {
-      console.error(`Failed to show the non-secure windows. Cause:${JSON.stringify(err)}`);
-    })
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to show the non-secure windows. Code: ${err.code}, message: ${err.message}`);
+    });
   }
 }
 ```
@@ -348,7 +349,7 @@ Creates a subwindow for this **UIExtensionHostWindowProxy** instance. This API u
 
 | Name| Type  | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| name   | string | Yes  | Name of the subwindow.|
+| name   | string | Yes   | Name of the subwindow, used to uniquely identify the subwindow. It is globally unique within the current process. |
 | subWindowOptions | [window.SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) | Yes| Parameters used for creating the subwindow.|
 
 **Return value**
@@ -365,7 +366,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 | ------- | ------------------------------ |
 | 401 | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and can not be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
+| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and cannot be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
 | 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 **Example**
@@ -386,31 +387,31 @@ export default class EntryAbility extends UIExtensionAbility {
     // Create a subwindow.
     extensionHostWindow.createSubWindowWithOptions('subWindowForHost', subWindowOpts)
       .then((subWindow: window.Window) => {
-        subWindow.setUIContent('pages/Index', (err, data) =>{
-          if (err && err.code != 0) {
+        subWindow.setUIContent('pages/Index', (err, data) => {
+          if (err && err.code) {
             return;
           }
-          subWindow?.resize(300, 300, (err, data)=>{
-            if (err && err.code != 0) {
+          subWindow?.resize(300, 300, (err, data) => {
+            if (err && err.code) {
               return;
             }
-            subWindow?.moveWindowTo(100, 100, (err, data)=>{
-              if (err && err.code != 0) {
+            subWindow?.moveWindowTo(100, 100, (err, data) => {
+              if (err && err.code) {
                 return;
               }
               subWindow?.showWindow((err, data) => {
-                if (err && err.code == 0) {
-                  console.info(`The subwindow has been shown!`);
+                if (err && err.code) {
+                  console.error(`Failed to show the subwindow. Code: ${err.code}, message: ${err.message}`);
                 } else {
-                  console.error(`Failed to show the subwindow!`);
+                  console.info(`The subwindow has been shown!`);
                 }
               });
             });
           });
         });
       }).catch((error: BusinessError) => {
-        console.error(`Create subwindow failed: ${JSON.stringify(error)}`);
-      })
+        console.error(`Create subwindow failed. Code: ${error.code}, message: ${error.message}`);
+      });
   }
 }
 ```
@@ -419,7 +420,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOptions, followCreatorLifecycle: boolean): Promise&lt;window.Window&gt;
 
-Creates a subwindow under this **UIExtensionHostWindowProxy** instance. By setting **followCreatorLifecycle**, you can control whether the subwindow follows the lifecycle of its creator component (**EmbeddedComponent** or **UIExtensionComponent**). This API uses a promise to return the result.
+Creates a subwindow under this **UIExtensionHostWindowProxy** instance. You can set **followCreatorLifecycle** to determine whether the subwindow follows the lifecycle of the component (**EmbeddedComponent** or **UIExtensionComponent**). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -427,15 +428,15 @@ Creates a subwindow under this **UIExtensionHostWindowProxy** instance. By setti
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Device behavior differences**: When **isModal** in [subWindowOptions](arkts-apis-window-i.md#subwindowoptions11) is set to **true** and [modalityType](arkts-apis-window-e.md#modalitytype14) is set to **APPLICATION_MODALITY**, this API can be called properly on devices that support [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and are in the freeform window state, and error code 801 is returned when this API is called on devices that support freeform windows but are not in the freeform window state or on devices that do not support freeform windows.
+**Device behavior differences**: When **isModal** in **subWindowConfig** is set to **true** and [modalityType](arkts-apis-window-e.md#modalitytype14) is set to **APPLICATION_MODALITY**, this API can be called properly on devices that support [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and in the freeform window state, and error code 801 is returned when this API is called on devices that support freeform windows but are not in the freeform window state or on devices that do not support freeform windows.
 
 **Parameters**
 
 | Name| Type  | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| name   | string | Yes  | Name of the subwindow.|
+| name   | string | Yes   | Name of the subwindow, used to uniquely identify the subwindow. It is globally unique within the current process. |
 | subWindowConfig | [window.SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) | Yes| Parameters used for creating the subwindow.|
-| followCreatorLifecycle | boolean | Yes  | Whether the subwindow follows the lifecycle of its creator component (**EmbeddedComponent** or **UIExtensionComponent**). **true**: The subwindow is hidden when the component is hidden, and is displayed when the component is displayed. **false**: The visibility of the subwindow does not change with the component.|
+| followCreatorLifecycle | boolean | Yes   | Whether the lifecycle of the subwindow stays synchronized with the component (**EmbeddedComponent** or **UIExtensionComponent**). The value **true** means that the subwindow is hidden when the component is hidden and shown when the component is shown; the value **false** means that the visibility of the subwindow does not follow the component.|
 
 **Return value**
 
@@ -450,7 +451,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 | ID| Error Message|
 | ------- | ------------------------------ |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and can not be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
+| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and cannot be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
 | 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 **Example**
@@ -471,31 +472,31 @@ export default class EntryAbility extends UIExtensionAbility {
     // Create a subwindow.
     extensionHostWindow.createSubWindowWithOptions('subWindowForHost', subWindowConfig, true)
       .then((subWindow: window.Window) => {
-        subWindow.setUIContent('pages/Index', (err, data) =>{
-          if (err && err.code != 0) {
+        subWindow.setUIContent('pages/Index', (err, data) => {
+          if (err && err.code) {
             return;
           }
-          subWindow?.resize(300, 300, (err, data)=>{
-            if (err && err.code != 0) {
+          subWindow?.resize(300, 300, (err, data) => {
+            if (err && err.code) {
               return;
             }
-            subWindow?.moveWindowTo(100, 100, (err, data)=>{
-              if (err && err.code != 0) {
+            subWindow?.moveWindowTo(100, 100, (err, data) => {
+              if (err && err.code) {
                 return;
               }
               subWindow?.showWindow((err, data) => {
-                if (err && err.code == 0) {
-                  console.info(`The subwindow has been shown!`);
+                if (err && err.code) {
+                  console.error(`Failed to show the subwindow. Code: ${err.code}, message: ${err.message}`);
                 } else {
-                  console.error(`Failed to show the subwindow!`);
+                  console.info(`The subwindow has been shown!`);
                 }
               });
             });
           });
         });
       }).catch((error: BusinessError) => {
-        console.error(`Create subwindow failed: ${JSON.stringify(error)}`);
-      })
+        console.error(`Create subwindow failed. Code: ${error.code}, message: ${error.message}`);
+      });
   }
 }
 ```
@@ -525,7 +526,7 @@ Adds or deletes the watermark flag for this window. This API uses a promise to r
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -549,8 +550,8 @@ export default class EntryAbility extends UIExtensionAbility {
     extensionHostWindow.setWaterMarkFlag(true).then(() => {
       console.info(`Succeeded in setting water mark flag of window.`);
     }).catch((err: BusinessError) => {
-      console.error(`Failed to setting water mark flag of window. Cause:${JSON.stringify(err)}`);
-    })
+      console.error(`Failed to set water mark flag of window. Code: ${err.code}, message: ${err.message}`);
+    });
   }
   onSessionDestroy(session: UIExtensionContentSession) {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
@@ -558,8 +559,8 @@ export default class EntryAbility extends UIExtensionAbility {
     extensionHostWindow.setWaterMarkFlag(false).then(() => {
       console.info(`Succeeded in deleting water mark flag of window.`);
     }).catch((err: BusinessError) => {
-      console.error(`Failed to deleting water mark flag of window. Cause:${JSON.stringify(err)}`);
-    })
+      console.error(`Failed to delete water mark flag of window. Code: ${err.code}, message: ${err.message}`);
+    });
   }
 }
 ```
@@ -571,8 +572,7 @@ Sets whether to enable privacy protection for the UIExtension component during n
 
 > **NOTE**
 >
-> When privacy protection is enabled, neither [window.snapshot](arkts-apis-window-Window.md#snapshot9) nor [UIContext.getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) will capture the content of the current component (excluding subwindows created under this component).
- 
+> After privacy protection for screenshot content is enabled, neither the window screenshot API [window.snapshot](arkts-apis-window-Window.md#snapshot9) nor the component screenshot API [UIContext.getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) will capture the content of the current component (excluding subwindows created under this component).
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -584,13 +584,13 @@ Sets whether to enable privacy protection for the UIExtension component during n
 
 | Name| Type    | Mandatory| Description                                           |
 | ------ | ------- | --- | ------------------------------------------------ |
-| shouldHide | boolean | Yes  | Whether to enable privacy protection for screenshots. The value **true** means to enable privacy protection for screenshots, and **false** means the opposite.|
+| shouldHide | boolean | Yes | Whether to enable privacy protection for screenshot content. The value **true** means to enable, and **false** means to disable. |
 
 **Return value**
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -614,10 +614,10 @@ export default class EntryAbility extends UIExtensionAbility {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
     // Enable privacy protection for screenshots.
     extensionHostWindow.hidePrivacyContentForHost(true).then(() => {
-      console.info(`Successfully enabled privacy protection for non-system screenshots.`);
+      console.info(`Succeeded in enabling privacy protection for non-system screenshots.`);
     }).catch((err: BusinessError) => {
-      console.error(`Failed enabled privacy protection for non-system screenshots. Cause:${JSON.stringify(err)}`);
-    })
+      console.error(`Failed to enable privacy protection for non-system screenshots. Code: ${err.code}, message: ${err.message}`);
+    });
   }
 }
 ```
@@ -634,7 +634,7 @@ Defines information about the host application window and **UIExtensionComponent
 
 | Name                        | Type       | Read-Only | Optional   | Description                            |
 | ------------------------------ | ----------- | --------------- | ----------------- | -------------------------------- |
-| uiExtensionHostWindowProxyRect | [window.Rect](arkts-apis-window-i.md#rect7) | Yes| No|Position, width, and height of the **UIExtensionComponent**.|
+| uiExtensionHostWindowProxyRect | [window.Rect](arkts-apis-window-i.md#rect7) | No | No | Position and size of the **UIExtensionComponent**. |
 
 ## Example
 
@@ -651,10 +651,10 @@ This example shows how to use all the available APIs in the UIExtensionAbility. 
   struct Index {
     @State message: string = 'Message: ';
     private want: Want = {
-      bundleName: "com.example.uiextensiondemo",
-      abilityName: "ExampleUIExtensionAbility",
+      bundleName: 'com.example.uiextensiondemo',
+      abilityName: 'ExampleUIExtensionAbility',
       parameters: {
-        "ability.want.params.uiExtensionType": "sys/commonUI"
+        'ability.want.params.uiExtensionType': 'sys/commonUI'
       }
     }
 
@@ -730,28 +730,26 @@ This example shows how to use all the available APIs in the UIExtensionAbility. 
       this.extensionHostWindow?.on('avoidAreaChange', (info) => {
           console.info(`type = ${JSON.stringify(info.type)}, area = ${JSON.stringify(info.area)}`);
       });
-      let promise = this.extensionHostWindow?.hideNonSecureWindows(true);
-      promise?.then(()=> {
+      this.extensionHostWindow?.hideNonSecureWindows(true)?.then(() => {
         console.info(`Succeeded in hiding the non-secure windows.`);
-      }).catch((err: BusinessError)=> {
-        console.error(`Failed to hide the non-secure windows. Cause:${JSON.stringify(err)}`);
-      })
-      this.extensionHostWindow?.hidePrivacyContentForHost(true)?.then(() => {
-        console.info(`Successfully enabled privacy protection for non-system screenshots.`);
       }).catch((err: BusinessError) => {
-        console.error(`Failed enabled privacy protection for non-system screenshots. Cause:${JSON.stringify(err)}`);
-      })
+        console.error(`Failed to hide the non-secure windows. Code: ${err.code}, message: ${err.message}`);
+      });
+      this.extensionHostWindow?.hidePrivacyContentForHost(true)?.then(() => {
+        console.info(`Succeeded in enabling privacy protection for non-system screenshots.`);
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to enable privacy protection for non-system screenshots. Code: ${err.code}, message: ${err.message}`);
+      });
     }
 
     aboutToDisappear(): void {
       this.extensionHostWindow?.off('windowSizeChange');
       this.extensionHostWindow?.off('avoidAreaChange');
-      let promise = this.extensionHostWindow?.hideNonSecureWindows(false);
-      promise?.then(()=> {
+      this.extensionHostWindow?.hideNonSecureWindows(false)?.then(() => {
         console.info(`Succeeded in showing the non-secure windows.`);
-      }).catch((err: BusinessError)=> {
-        console.error(`Failed to show the non-secure windows. Cause:${JSON.stringify(err)}`);
-      })
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to show the non-secure windows. Code: ${err.code}, message: ${err.message}`);
+      });
     }
 
     build() {
@@ -759,47 +757,47 @@ This example shows how to use all the available APIs in the UIExtensionAbility. 
         Text(this.message)
           .fontSize(20)
           .fontWeight(FontWeight.Bold)
-        Button("Obtain Component Size").width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
+        Button('Obtain Component Size').width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
           let rect = this.extensionHostWindow?.properties.uiExtensionHostWindowProxyRect;
-          console.info(`Width, height, and position of the UIExtensionComponent: ${JSON.stringify(rect)}`);
+          console.info(`EmbeddedComponent position and size info: ${JSON.stringify(rect)}`);
         })
-        Button("Obtain Avoid Area Info").width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
+        Button('Obtain System Avoid Area Info').width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
           let avoidArea: window.AvoidArea | undefined = this.extensionHostWindow?.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
-          console.info(`Avoid area: ${JSON.stringify(avoidArea)}`);
+          console.info(`System avoid area: ${JSON.stringify(avoidArea)}`);
         })
-        Button("Create Subwindow").width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
+        Button('Create Subwindow').width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
           let subWindowOpts: window.SubWindowOptions = {
-            'title': 'This is a subwindow',
+            title: 'This is a subwindow',
             decorEnabled: true
           };
           this.extensionHostWindow?.createSubWindowWithOptions('subWindowForHost', subWindowOpts)
             .then((subWindow: window.Window) => {
               this.subWindow = subWindow;
-              this.subWindow.loadContent('pages/Index', this.storage, (err, data) =>{
-                if (err && err.code != 0) {
+              this.subWindow.loadContent('pages/Index', this.storage, (err, data) => {
+                if (err && err.code) {
                   return;
                 }
-                this.subWindow?.resize(300, 300, (err, data)=>{
-                  if (err && err.code != 0) {
+                this.subWindow?.resize(300, 300, (err, data) => {
+                  if (err && err.code) {
                     return;
                   }
-                  this.subWindow?.moveWindowTo(100, 100, (err, data)=>{
-                    if (err && err.code != 0) {
+                  this.subWindow?.moveWindowTo(100, 100, (err, data) => {
+                    if (err && err.code) {
                       return;
                     }
                     this.subWindow?.showWindow((err, data) => {
-                      if (err && err.code == 0) {
-                        console.info(`The subwindow has been shown!`);
+                      if (err && err.code) {
+                        console.error(`Failed to show the subwindow. Code: ${err.code}, message: ${err.message}`);
                       } else {
-                        console.error(`Failed to show the subwindow!`);
+                        console.info(`The subwindow has been shown!`);
                       }
                     });
                   });
                 });
               });
             }).catch((error: BusinessError) => {
-              console.error(`Create subwindow failed: ${JSON.stringify(error)}`);
-            })
+              console.error(`Create subwindow failed. Code: ${error.code}, message: ${error.message}`);
+            });
         })
       }.width('100%').height('100%')
     }
@@ -811,6 +809,6 @@ This example shows how to use all the available APIs in the UIExtensionAbility. 
   {
     "name": "ExampleUIExtensionAbility",
     "srcEntry": "./ets/extensionAbility/ExampleUIExtensionAbility.ets",
-    "type": "sys/commonUI",
+    "type": "sys/commonUI"
   }
   ```
