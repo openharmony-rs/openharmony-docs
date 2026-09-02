@@ -1278,7 +1278,6 @@ Want中的deviceId不为空且非本机的设备ID。
 
 将Want中的deviceId字段设为空，或配置为本机的deviceId。
 
-<!--Del-->
 ## 16000125 不支持启动插件UIAbility
 
 **错误信息**
@@ -1297,6 +1296,7 @@ Want中的parameters指定了启动插件UIAbility。
 
 检查Want中的parameters参数，不要将ohos.params.pluginAbility设置为true。
 
+<!--Del-->
 ## 16000126 不支持启动DLP文件
 
 **错误信息**
