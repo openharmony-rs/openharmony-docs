@@ -100,7 +100,7 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
        // ...
        this.animationCallbackInvoked = 'animation on finish';
      });
-     // ...
+     console.info('ready to create a new animation.');
    } else {
      console.error('No animation found in scene.');
    }
@@ -115,7 +115,7 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
    
    ``` TypeScript
    // create a new camera.
-   this.cam = await rf.createCamera({ 'name': 'Camera' });
+   this.cam = await rf.createCamera({ name: 'Camera' });
    // set the camera.
    this.cam.enabled = true;
    this.cam.position.z = 5;
@@ -127,7 +127,7 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
 
    ``` TypeScript
    // 创建相机
-   this.cam = await rf.createCamera({ 'name': 'Camera' });
+   this.cam = await rf.createCamera({ name: 'Camera' });
    // 设置相机属性
    this.cam!.enabled = true;
    this.cam!.position.z = 5;
