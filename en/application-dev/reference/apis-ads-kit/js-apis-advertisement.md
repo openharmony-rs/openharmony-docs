@@ -1,11 +1,11 @@
-# Advertisement (Requested Advertisement Content)
+# Advertisement (Content of the Requested Ad)
 <!--Kit: Ads Kit-->
 <!--Subsystem: Advertising-->
 <!--Owner: @ctssss-->
 <!--Designer: @zhansf1988-->
 <!--Tester: @hongmei_may-->
 <!--Adviser: @RayShih-->
-<!-- md-trans-meta sourceCommit=3af2c2640a0dfa1285ceb6197505adab556ff3bb translatedAt=2026-09-02T02:13:38.204Z pushedAt=2026-09-03T02:12:07.548Z -->
+<!-- md-trans-meta sourceCommit=3af2c2640a0dfa1285ceb6197505adab556ff3bb translatedAt=2026-09-02T02:13:38.204Z pushedAt=2026-09-03T07:24:13.603Z -->
 
 
 This module provides the requested advertisement content.
