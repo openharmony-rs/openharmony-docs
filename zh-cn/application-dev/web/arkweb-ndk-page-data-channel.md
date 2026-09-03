@@ -193,6 +193,7 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
   ```
 
 * ArkTS侧代码
+
   ArkTS-Dyn示例：
   <!-- @[webview_and_native_modules_are_used_to_implement_complex_message_interaction_between_applications_and_h5_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsBridge/entry/src/main/ets/pages/Index.ets) -->
   
