@@ -1,11 +1,11 @@
 # @ohos.advertising.AutoAdComponent (Carousel Ad Component)
-
 <!--Kit: Ads Kit-->
 <!--Subsystem: Advertising-->
-<!--Owner: @SukiEvas-->
+<!--Owner: @ctssss-->
 <!--Designer: @zhansf1988-->
 <!--Tester: @hongmei_may-->
 <!--Adviser: @RayShih-->
+<!-- md-trans-meta sourceCommit=3af2c2640a0dfa1285ceb6197505adab556ff3bb translatedAt=2026-09-02T02:14:38.664Z pushedAt=2026-09-03T04:04:29.433Z -->
 
 
 The AutoAdComponent module provides the capability of displaying carousel ads.
@@ -43,12 +43,12 @@ Component used to display carousel ads.
 
 **Parameters**
 
-| **Name**| **Type**| Mandatory| **Decorator**| Description| 
+| **Name** | **Type** | Mandatory | **Decorator** | Description | 
 | -------- | -------- | -------- | -------- | -------- |
-| adParam | advertising.[AdRequestParams](js-apis-advertising.md#adrequestparams) | Yes| - | Ad request parameters.| 
-| adOptions | advertising.[AdOptions](js-apis-advertising.md#adoptions) | Yes| - | Ad configuration options.| 
-| displayOptions | advertising.[AdDisplayOptions](js-apis-advertising.md#addisplayoptions) | Yes| - | Ad display parameters.| 
-| interactionListener | advertising.[AdInteractionListener](js-apis-advertising.md#adinteractionlistener) | Yes| - | Ad status change callback.| 
+| adParam | advertising.[AdRequestParams](js-apis-advertising.md#adrequestparams) | Yes | - | Ad request parameters. | 
+| adOptions | advertising.[AdOptions](js-apis-advertising.md#adoptions) | Yes | - | Ad configuration parameters. | 
+| displayOptions | advertising.[AdDisplayOptions](js-apis-advertising.md#addisplayoptions) | Yes | - | Ad display parameters. | 
+| interactionListener | advertising.[AdInteractionListener](js-apis-advertising.md#adinteractionlistener) | Yes | - | Callback for ad status changes. | 
 
 **Example:**
 
