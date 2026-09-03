@@ -5700,6 +5700,92 @@ try {
 }
 ```
 
+## on('windowFocusStateChange')<sup>26+</sup>
+
+on(type: 'windowFocusStateChange', callback: Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate26)&gt;): void
+
+开启窗口焦点状态变化事件的监听。当窗口焦点状态发生变化时，会触发回调，返回窗口的焦点状态变化信息。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名 | 类型                                                                                     | 必填 | 说明                                                                                                                                          |
+| -------- | -------------------------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| type     | string                                                                                  | 是   | 监听事件，固定为'windowFocusStateChange'，即窗口焦点状态变化事件。|
+| callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate26)&gt; | 是   | 回调函数。返回窗口的焦点状态变化信息，包括窗口是否获焦、变化原因，以及同进程内相邻获焦窗口的ID。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+try {
+  windowClass.on('windowFocusStateChange', (data: window.WindowFocusState) => {
+    console.info(`Window focus state changed. focused: ${data.focused}, focusChangeReason: ${data.focusChangeReason}`);
+  });
+} catch (exception) {
+  console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## off('windowFocusStateChange')<sup>26+</sup>
+
+off(type: 'windowFocusStateChange', callback?: Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate26)&gt;): void
+
+关闭窗口焦点状态变化事件的监听。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名 | 类型                                                                                     | 必填 | 说明                                                                                                                          |
+| -------- | -------------------------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------ |
+| type     | string                                                                                  | 是   | 监听事件，固定为'windowFocusStateChange'，即窗口焦点状态变化事件。     |
+| callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate26)&gt; | 否   | 回调函数。返回窗口的焦点状态变化信息。若传入参数，则关闭该监听。若未传入参数，则关闭所有窗口焦点状态变化的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+const callback = (data: window.WindowFocusState) => {
+  // ...
+}
+try {
+  // 通过on接口开启监听
+  windowClass.on('windowFocusStateChange', callback);
+  // 关闭指定callback的监听
+  windowClass.off('windowFocusStateChange', callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  windowClass.off('windowFocusStateChange');
+} catch (exception) {
+  console.error(`Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## on('rotationChange')<sup>19+</sup>
 
 on(type: 'rotationChange', callback: RotationChangeCallback&lt;RotationChangeInfo, RotationChangeResult | void&gt;): void

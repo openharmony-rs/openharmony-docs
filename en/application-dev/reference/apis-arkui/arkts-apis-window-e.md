@@ -88,6 +88,17 @@ Enumerates the reasons for window rectangle (position and size) changes.
 | DRAG_START  | 5    | The window starts zooming in or out.|
 | DRAG_END  | 6    | The window finishes zooming in or out.|
 
+## FocusChangeReason<sup>26+</sup>
+
+Enumerates the reasons for the window focus state change.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+| Name    | Value| Description                                             |
+| -------- | ---- | ------------------------------------------------------- |
+| DEFAULT  | 0    | The focus state changes due to a default reason other than a user click.|
+| CLICK    | 1    | The focus state changes because the user clicks the window.|
+
 ## ColorSpace<sup>8+</sup>
 
 Enumerates the color spaces.

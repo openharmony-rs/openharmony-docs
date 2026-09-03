@@ -5610,6 +5610,92 @@ try {
 }
 ```
 
+## on('windowFocusStateChange')<sup>26+</sup>
+
+on(type: 'windowFocusStateChange', callback: Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate26)&gt;): void
+
+Subscribes to the focus state change event of the window. When the focus state of the window changes, the callback is triggered to return the focus state change information of the window.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name  | Type                                                                                     | Mandatory| Description                                                                                                   |
+| -------- | -------------------------------------------------------------------------------------- | ---- | --------------------------------------------------------------------------------------------------------- |
+| type     | string                                                                                  | Yes  | Event type. The value is fixed at **'windowFocusStateChange'**, indicating the window focus state change event.|
+| callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate26)&gt; | Yes  | Callback used to return the focus state change information of the window, including whether the window gains focus, the reason for the change, and the IDs of the adjacent focused windows in the same process.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | -------------------------------------------- |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**Example**
+
+```ts
+try {
+  windowClass.on('windowFocusStateChange', (data: window.WindowFocusState) => {
+    console.info(`Window focus state changed. focused: ${data.focused}, focusChangeReason: ${data.focusChangeReason}`);
+  });
+} catch (exception) {
+  console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## off('windowFocusStateChange')<sup>26+</sup>
+
+off(type: 'windowFocusStateChange', callback?: Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate26)&gt;): void
+
+Unsubscribes from the focus state change event of the window.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name  | Type                                                                                     | Mandatory| Description                                                                        |
+| -------- | -------------------------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------- |
+| type     | string                                                                                  | Yes  | Event type. The value is fixed at **'windowFocusStateChange'**, indicating the window focus state change event.    |
+| callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate26)&gt; | No  | Callback used to return the focus state change information of the window. If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | -------------------------------------------- |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**Example**
+
+```ts
+const callback = (data: window.WindowFocusState) => {
+  // ...
+}
+try {
+  // Enable listening through the on API.
+  windowClass.on('windowFocusStateChange', callback);
+  // Disable the listening of a specified callback.
+  windowClass.off('windowFocusStateChange', callback);
+  // Unregister all the callbacks that have been registered through on().
+  windowClass.off('windowFocusStateChange');
+} catch (exception) {
+  console.error(`Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## on('rotationChange')<sup>19+</sup>
 
 on(type: 'rotationChange', callback: RotationChangeCallback&lt;RotationChangeInfo, RotationChangeResult | void&gt;): void

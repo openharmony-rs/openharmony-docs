@@ -120,6 +120,17 @@
 | DRAG_START  | 5    | 窗口开始拖拽缩放。 |
 | DRAG_END  | 6    | 窗口结束拖拽缩放。 |
 
+## FocusChangeReason<sup>26+</sup>
+
+窗口焦点状态变化的原因。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称    | 值  | 说明                              |
+| -------- | ---- | --------------------------------- |
+| DEFAULT  | 0    | 焦点状态因用户点击之外的其他默认原因发生变化。|
+| CLICK    | 1    | 焦点状态因用户点击窗口而发生变化。|
+
 ## ColorSpace<sup>8+</sup>
 
 色域模式。
