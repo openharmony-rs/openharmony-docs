@@ -49,6 +49,7 @@ libnet_trafficfilter.so
 
 <!-- @[header_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Redirect_case/entry/src/main/cpp/napi_init.cpp) -->
 
+<div class="same-source-code">
 ``` C++
 #include <cstdint>
 #include <cstring>
@@ -62,6 +63,11 @@ libnet_trafficfilter.so
 #include "hilog/log.h"
 #include "network/netmanager_ext/net_trafficfilter.h"
 ```
+
+<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Redirect_case/entry/src/main/cpp/napi_init.cpp?same_code_link_text=header_file" target="_blank" rel="nofollow">napi_init.cpp</a></p>
+
+</div>
+
 
 ### 实现流量重定向
 
