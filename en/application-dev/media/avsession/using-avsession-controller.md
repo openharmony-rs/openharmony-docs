@@ -5,7 +5,7 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=c6f5bb15059ca0a3b735d5853df39b8ab6efc0cf translatedAt=2026-09-02T08:40:03.664Z pushedAt=2026-09-03T03:47:28.584Z -->
+<!-- md-trans-meta sourceCommit=c6f5bb15059ca0a3b735d5853df39b8ab6efc0cf translatedAt=2026-09-02T08:40:03.664Z pushedAt=2026-09-03T08:18:48.155Z -->
 
 Starting from API version 23, apps can use AVSession Kit to obtain playback information of AVSessions and control playback actions such as play and pause, enabling unified playback control over audio and video apps in the system. This document describes the API capabilities and basic development process of the AVSession controller, including obtaining metadata and playback state information from AVSession providers, as well as sending commands and events to AVSession providers to control their playback, pause, and other actions.
 
@@ -13,7 +13,7 @@ Starting from API version 23, apps can use AVSession Kit to obtain playback info
 
 - [AVSession provider](using-avsession-developer.md): When implementing audio and video features, an audio/video app must connect to the AVSession as an AVSession provider and respond to playback control commands sent by the AVSession controller.
 
-- AVSession descriptor (AVSessionDescriptor): Session information, including the session ID, session type (audio/video), custom session name (**sessionTag**), information about the corresponding application (**elementName**), and whether the session is pined on top (isTopSession).
+- AVSession descriptor (AVSessionDescriptor): Session information, including the session ID, session type (audio/video), custom session name (**sessionTag**), information about the corresponding application (**elementName**), and whether the session is pinned on top (isTopSession).
 
 - AVSession controller (AVSessionController): A session controller that can be used to view session IDs, send commands and events to sessions, and obtain session metadata and playback state information.
 
