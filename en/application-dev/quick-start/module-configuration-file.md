@@ -1,12 +1,11 @@
 # module.json5 Configuration File
-
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=2f4b89223ea807a0581c60a9a81b8de70ba28fa9 translatedAt=2026-08-22T02:24:07.568Z pushedAt=2026-08-22T07:18:53.278Z -->
+<!-- md-trans-meta sourceCommit=f2901656406b0d6ce4e050dbd02ddfe192f66cb7 translatedAt=2026-09-01T02:49:32.992Z pushedAt=2026-09-02T07:19:53.877Z -->
 
 A module-level configuration file provides the basic configuration of the module, information about the **UIAbility** and **ExtensionAbility** components, and permissions required during application running for the compilation tool, OS, and AppGallery. Each module must contain a **module.json5** configuration file, which is stored in the ***project or module name*/src/main/module.json5** directory, for example, **entry/src/main/module.json5**.
 
@@ -21,7 +20,6 @@ A module-level configuration file provides the basic configuration of the module
 ## Configuration File Example
 
 This topic gives an overview of the **module.json5** configuration file. To start with, let's go through an example of what this file contains.
-
 <!-- @[module_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
 ``` JSON5
@@ -124,6 +122,7 @@ This topic gives an overview of the **module.json5** configuration file. To star
 
 As shown above, the **module.json5** file contains several tags.
 
+
   **Table 1** Tags in the module.json5 file
 
 | Attribute Name | Description | Data Type | Whether It Can Be Omitted |
@@ -172,15 +171,12 @@ As shown above, the **module.json5** file contains several tags.
 | [executableBinaryPaths](#executablebinarypaths) | Identifies the path information of executable binary files in the app.<br/>**Note:** <br/>1. This tag is supported since API version 24.<br/>2. It takes effect only on PC/2in1 devices. | object array | This tag can be omitted. The default value is empty. |
 | uiSyntax<sup>(deprecated)</sup> | Identifies the syntax type of the JS&nbsp;Component defined by the current Module&nbsp;syntax.<br/>-&nbsp;hml: indicates that the JS&nbsp;Component is developed using hml/css/js.<br/>-&nbsp;ets: indicates that the JS&nbsp;Component is developed using the ArkTS declarative syntax.<br/>**Note:**<br/>This tag is deprecated since API version 9. | string | This tag can be omitted. The default value is hml. |
 | srcEntrance<sup>(deprecated)</sup> | Identifies the code path corresponding to the current module. The value is a string of no more than 127 bytes.<br/>**Note:**<br/>This tag is deprecated since API version 9. Use the srcEntry field instead. | string | This tag can be omitted. The default value is empty. |
-
 <!--RP6--><!--RP6End-->
 
 ## deviceTypes
 
   **Table 2** deviceTypes
-
 <!--RP2-->
-
 | Device Type| Value| Description|
 | -------- | -------- | -------- |
 | Tablet| tablet | - |
@@ -189,7 +185,6 @@ As shown above, the **module.json5** file contains several tags.
 | Head unit| car | - |
 | PC/2-in-1 device| 2in1 | PC, mainly used for multi-window and multi-task interactions, and keyboard and mouse operations. It fully showcases the device productivity. In the OpenHarmony topics, "2-in-1" indicates PC/2-in-1 device.|
 | Default device| default | Default device type. For details, see [Standard-System Development Boards](../../device-dev/dev-board-on-the-master.md#standard-system-development-boards).|
-
 <!--RP2End-->
 
 Example of the **deviceTypes** structure:
@@ -235,6 +230,7 @@ Define the **main_pages.json** file under **resources/base/profile** in the deve
 | src | Route information about all pages in the module, including the page path and page name. The page path is relative to the **src/main/ets** directory of the current module. The value is a string array, each element of which represents a page.| String array| No|
 | window | Window-related configuration.| Object| Yes (initial value: left empty)|
 
+
   **Table 4** window
 
 | Name| Description| Data Type| Initial Value Allowed|
@@ -253,6 +249,7 @@ Define the **main_pages.json** file under **resources/base/profile** in the deve
   }
 }
 ```
+
 
 ## metadata
 
@@ -292,7 +289,6 @@ The **abilities** tag represents the **UIAbility** configuration of the module, 
   **Table 6** abilities
 
 <!--Table: 15%; 60%; 10%; 15%-->
-
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | name | Name of the **UIAbility**, which must be unique in the entire application. The value is a string with a maximum of 127 bytes. It must start with a letter and can contain letters, digits, underscores (_), and periods (.).| String| No|
@@ -407,7 +403,6 @@ For example, when downloading a PDF file in a browser, you can configure the **s
   **Table 7** skills
 
 <!--Table: 15%; 60%; 10%; 15%-->
-
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | actions | Actions of wants that can be received, which can be predefined or customized.<br>You are advised not to configure multiple **actions** for a **skill**. Otherwise, the expected scenario may not be matched. For details, see [Common action and entities Values](../application-models/actions-entities.md).| String array| Yes (initial value: left empty)|
@@ -416,6 +411,7 @@ For example, when downloading a PDF file in a browser, you can configure the **s
 | permissions | Permissions required for another application to access the **UIAbility** or **ExtensionAbility** component.<br>Each array element is a permission name with a maximum of 255 bytes. For details about the value, see [Application Permissions](../security/AccessToken/app-permissions.md).| String array| Yes (initial value: left empty)|
 | domainVerify | Whether to enable <!--RP7-->[domain name verification](../application-models/app-linking-startup.md#working-principles)<!--RP7End-->.<br>- **true**: Domain name verification is enabled.<br>- **false**: Domain name verification is disabled.| Boolean| Yes (initial value: **false**)|
 
+
   **Table 8** uris
 
 > **NOTE**
@@ -423,7 +419,6 @@ For example, when downloading a PDF file in a browser, you can configure the **s
 > The following tags of the string type cannot be configured using resource indexes (**$string**).
 
 <!--Table: 15%; 60%; 10%; 15%-->
-
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | scheme | Scheme of the URI, such as HTTP, HTTPS, file, and FTP.<br>**NOTE**<br>This tag is case-insensitive when it is used for implicit Want matching since API version 18.| String| Yes when only **type** is set in **uris** (initial value: left empty)|
@@ -488,7 +483,6 @@ The **extensionAbilities** tag represents the configuration of **ExtensionAbilit
   **Table 9** extensionAbilities
 
 <!--Table: 15%; 60%; 10%; 15%-->
-
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | name | Name of the **ExtensionAbility**. This name must be unique in the entire application. The value is a string with a maximum of 127 bytes.| String| No|
@@ -551,15 +545,13 @@ Example of the **extensionAbilities** structure:
     // ...
 }
 ```
-
 ### type
 
 Indicates the type of the current ExtensionAbility component. The supported values are as follows:
 
 <!--Table: 30%; 70%; -->
-
 | Tag Value | Description |
-| --- | -------- | 
+| --- | -------- |
 |form|The ExtensionAbility of a widget.|
 |workScheduler|The ExtensionAbility of a deferred task.|
 |inputMethod|The ExtensionAbility of an input method.|
@@ -576,8 +568,8 @@ Indicates the type of the current ExtensionAbility component. The supported valu
 |backup|The ExtensionAbility for data backup.|
 |enterpriseAdmin|The ExtensionAbility for [enterprise device management](../mdm/mdm-kit-admin.md). An enterprise device management app must have an ExtensionAbility of this type.|
 |window|This ExtensionAbility creates a window during startup to provide UI development for developers. The UI developed by developers is combined into the windows of other apps through the UIExtensionComponent control. The configuration does not take effect for third-party applications, and it is valid only in system applications.|
-|thumbnail|The ExtensionAbility for obtaining file thumbnails. Developers can provide thumbnails for files of custom file types.|
-|preview|This ExtensionAbility parses a file and displays it in a window. Developers can combine this window into the windows of other apps.|
+|thumbnail|An ExtensionAbility that obtains file thumbnails. You can provide thumbnails for files of custom file types. Reserved field. Not supported yet.|
+|preview|This ExtensionAbility parses a file and displays it in a window. You can combine this window into other application windows. Reserved field. Not supported yet.|
 |print|The ExtensionAbility of the print framework.|
 |push|The ExtensionAbility for push.|
 |driver|The ExtensionAbility of the driver framework. An app with an ExtensionAbility of the driver type configured is regarded as a driver app. A driver app does not distinguish users during installation, uninstallation, and restoration, and existing driver apps on the device are also installed when a new user is created. For example, when a child user is created, the existing driver apps of the primary user are installed by default. When a driver app is uninstalled on a child user, the corresponding driver app on the primary user is also uninstalled.|
@@ -632,7 +624,6 @@ Indicates the type of the current ExtensionAbility component. The supported valu
 |awc/webpage|The ExtensionAbility for general web page browsing.|
 |awc/newsfeed|The ExtensionAbility of the news feed service.|
 |assetCache<sup>24+</sup>|The ExtensionAbility that provides general app data caching capabilities. The configuration does not take effect for third-party applications, and it is valid only in system applications.|
-
 <!--RP9--><!--RP9End-->
 
 ## shortcuts
@@ -650,7 +641,6 @@ The **shortcut** information is specified in **metadata**, where:
 **Table 10** Shortcuts
 
 <!--Table: 15%; 60%; 10%; 15%-->
-
 | Name| Description| Data Type | Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | shortcutId | ID of the shortcut. The value is a string with a maximum of 63 bytes. **This tag cannot be configured using the resource index ($string).**| String| No|
@@ -658,6 +648,7 @@ The **shortcut** information is specified in **metadata**, where:
 | icon | Icon of the shortcut. The value is the index of the icon resource file.<br>**NOTE**<br>Icons are classified into single-layer icons and layered icons. A single-layer icon contains only one image, and a layered icon contains a foreground image and a background image. The following configurations are recommended:<br>1. Foreground image: a transparent layer whose icon size is 450 × 450 px and resource size is 1024 × 1024 px.<br>2. Background image: The size is 1024 × 1024 px.<br>| String| Yes (initial value: left empty)|
 | visible | Whether the shortcut is visible. The value **true** indicates that the shortcut is visible; **false** indicates the opposite.<br>**NOTE**<br>This tag is supported since API version 20.<br>| Boolean| Yes (initial value: **true**)|
 | [wants](#wants) | Wants to which the shortcut points. If the **startShortcut** API of **launcherBundleManager** is called, the first target component in the wants is started. As such, you are advised to configure only one element for **wants**.| Object| Yes (initial value: left empty)|
+
 
 1. Configure the **shortcuts_config.json** file in **/resources/base/profile/**.
 
@@ -778,6 +769,7 @@ The **distributionFilter** tag defines the rules for distributing HAP files base
   }
   ```
 
+
   <!-- @[module_distributionFilter_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile02/entry2/src/main/module.json5) -->
 
   ``` JSON5
@@ -795,17 +787,17 @@ The **distributionFilter** tag defines the rules for distributing HAP files base
   }
   ```
 
+
 - **Configuration rule**: This tag consists of four attributes, including [screenShape](#screenshape), [screenWindow](#screenwindow), [screenDensity](#screendensity), and [countryCode](#countrycode). For details, see the following table.
 
   During distribution, a unique HAP is determined based on the mapping between **deviceTypes** and the preceding attributes.
 
   * When configuring this tag, include at least one of the attributes.
-
   * If any one or more attributes are set for one entry-type module, the same attributes must be set for all other entry-type modules.
-
   * The **screenShape** and **screenWindow** attributes are available only for lite wearables.
 
 - **Configuration**: This tag must be configured in the **/resources/base/profile** directory and be referenced in the **resource** tag of **metadata**.
+
 
 **Table 12** distributionFilter
 
@@ -839,7 +831,6 @@ The **distributionFilter** tag defines the rules for distributing HAP files base
 **Table 15** screenDensity
 
 <!--Table: 15%; 60%; 10%; 15%-->
-
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | policy | Rule for the sub-attribute value.<br>- **exclude**: Exclude the matches of the sub-attribute value.<br>- **include**: Include the matches of the sub-attribute value.| String| No|
@@ -854,10 +845,10 @@ The **distributionFilter** tag defines the rules for distributing HAP files base
 | policy | Rule for the sub-attribute value.<br>- **exclude**: Exclude the matches of the sub-attribute value.<br>- **include**: Include the matches of the sub-attribute value.| String| No|
 | value | Code of the country or region to which the application is to be distributed.| String array| No|
 
+
 Example:
 
 1. Configure the **distributionFilter_config.json** file (this file name is customizable) in **resources/base/profile** under the development view.
-
    ```json
    {
      "distributionFilter": {
@@ -891,6 +882,7 @@ Example:
      }
    }
    ```
+
 
 2. Configure **metadata** in the **module** tag in the **module.json5** file.
 
@@ -946,17 +938,18 @@ The **atomicService** tag represents the atomic service configuration. It takes 
 **Table 18** atomicService
 
 <!--Table: 15%; 60%; 10%; 15%-->
-
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | preloads | List of modules to preload.| Object array| Yes (initial value: left empty)|
 | resizeable | Whether an atomic service supports adaptive window. If this tag is set to **true**, the width and height of the window automatically adapt to the screen when the tablet is switched from landscape mode to portrait mode or the foldable screen is folded.<br>**NOTE**<br>1. This tag is supported since API version 20.<br>2. If the window has adapted to the tablet (landscape) and foldable screen (unfolded), you are advised to set this tag to **true**.<br>- **true**: The atomic service supports adaptive window.<br>- **false**: The atomic service does not support adaptive window.| Boolean| Yes (initial value: **false**)|
+
 
 **Table 19** preloads
 
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | moduleName | Name of the module to be preloaded when the current module is loaded in the atomic service. The value must match an existing module other than the current one. It contains a maximum of 31 bytes.| String| No|
+
 
 Example of the **atomicService** structure:
 
@@ -978,6 +971,7 @@ Example of the **atomicService** structure:
   }
 }
 ```
+
 
 ## dependencies
 
@@ -1016,7 +1010,6 @@ Example of the **dependencies** structure:
 The **proxyDatas** tag provides the list of data proxies provided by the module. It can be configured only for entry and feature modules.
 
 **Table 21** proxyData
-
 | Name   | Description                          | Data Type| Initial Value Allowed|
 | ----------- | ------------------------------ | -------- | ---------- |
 | uri | URI of the data proxy. The URIs configured for different data proxies must be unique and must be in the *datashareproxy://Current application bundle name/xxx* format. The value is a string with a maximum of 255 bytes.| String  | No|
@@ -1203,6 +1196,7 @@ The **hnpPackages** tag provides information about the native software package c
 
 Example of the **hnpPackages** structure:
 
+
 <!-- @[module_hnpPackages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->
 
 ``` JSON5
@@ -1262,7 +1256,6 @@ The root node of the file is **fileContextMenu**, which is an object array and i
 | fileNotSupportType | Types of files not supported. The context menu is not displayed when the selected file list contains files of these types.<br>This tag is read only when **menuKind** is set to **1** and **fileSupportType** is set to **["*"]**.| String array| Yes (initial value: left empty)|
 
 Example of the **menu.json** file in the **resources/base/profile** directory:
-
 ```json
 {
   "fileContextMenu": [
@@ -1314,7 +1307,6 @@ After a context menu is registered, the **More** option of the menu, when clicke
 This tag points to a profile resource and is used to define the configuration file **start_window.json** of the **UIAbility** startup page in **resources/base/profile**. If this tag is set, the **startWindowIcon** and **startWindowBackground** tags do not take effect.
 
 <!--RP4-->
-
 > **NOTE**
 >
 > Since API version 20, this tag can be used to configure an enhanced starting window.<!--RP4End-->
@@ -1330,13 +1322,10 @@ This tag points to a profile resource and is used to define the configuration fi
 | startWindowBackgroundColor | Index to the background color resource file of the **UIAbility** startup page. The value is a string with a maximum of 255 bytes.<br><!--RP12-->This tag is supported since API version 20.<!--RP12End--> | String| No|
 | startWindowBackgroundImage | Index to the background image file of the **UIAbility** startup page. The value is a string with a maximum of 255 bytes.<br><!--RP12-->This tag is supported since API version 20.<!--RP12End--> | String| Yes (initial value: left empty)|
 | startWindowBackgroundImageFit | Background image adaptation mode of the **UIAbility** startup page. The options are as follows:<br>- **Contain**: Proportionally scaled based on the aspect ratio, the image is fully contained within the display area.<br>- **Cover**: Proportionally scaled based on the aspect ratio, both width and height of the image are greater than or equal to that of the display area.<br>- **Auto**: adaptive display.<br>- **Fill**: The image fills the display area without any aspect ratio scaling applied.<br>- **ScaleDown**: The image is displayed in accordance with its aspect ratio, either scaled down or kept unchanged.<br>- **None**: The image is displayed in its original size.<br><!--RP12-->This tag is supported since API version 20.<!--RP12End--> | String| Yes (initial value: **Cover**)|
-
 <!--RP13--><!--RP13End-->
 
 Example of the **start_window.json** file in the **resources/base/profile** directory:
-
 <!--RP14-->
-
 ```json
 {
   "startWindowType": "REQUIRED_SHOW",
@@ -1348,7 +1337,6 @@ Example of the **start_window.json** file in the **resources/base/profile** dire
   "startWindowBackgroundImageFit": "Cover"
 }
 ```
-
 <!--RP14End-->
 
 ## systemTheme
@@ -1372,12 +1360,12 @@ Define the **theme_config.json** configuration file in **resources/base/profile*
 
   **Table 29** theme_config.json
 
+
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | systemTheme | System theme used by the current application. The value is an enum of the system theme name. The options are as follows:<br>- **$ohos:theme:ohos_theme**: default system theme| String| No|
 
 Example of the **theme_config.json** file in the **resources/base/profile** directory:
-
 ```json
 {
   "systemTheme": "$ohos:theme:ohos_theme"
@@ -1387,7 +1375,6 @@ Example of the **theme_config.json** file in the **resources/base/profile** dire
 <!--RP5--><!--RP5End-->
 
 <!--Del-->
-
 ## definePermissions
 
 The **definePermissions** tag represents a set of permissions defined for the system resource HAP, which cannot be custom permissions. For details about how to define permissions, see the [config.json](https://gitcode.com/openharmony/utils_system_resources/blob/master/systemres/main/config.json) file.
@@ -1395,7 +1382,6 @@ The **definePermissions** tag represents a set of permissions defined for the sy
 **Table 30** definePermissions
 
 <!--Table: 15%; 60%; 10%; 15%-->
-
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | name | Name of the permission. The value can contain a maximum of 255 bytes.| String| No|
@@ -1428,7 +1414,6 @@ Example of the **definePermissions** structure:
   },
 }
 ```
-
 <!--DelEnd-->
 
 ## executableBinaryPaths
@@ -1440,6 +1425,7 @@ Identifies the path information of executable binary files in the application an
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | path | Path of the executable file. This path is a relative path and must start with the `libs/{abi}/` prefix, where `{abi}` indicates the device CPU architecture type, such as **arm64-v8a**, **x86_64**, or **armeabi-v7a**. Executable binary files must be placed in the `libs/{abi}/` directory.| String| No|
+
 
 Example of the **executableBinaryPaths** structure:
 
@@ -1466,7 +1452,6 @@ Starting from API version 26.0.0, the **skillProfiles** tag is added. This tag i
 **Table 32** skillProfiles
 
 <!--Table: 15%; 60%; 10%; 15%-->
-
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | name | Identifies the name of the skill. Ensure that the name is unique within the current module. The naming rules are as follows:<br/>-&nbsp;Only lowercase letters, digits, and hyphens (-) are allowed.<br/>-&nbsp;It must start with a lowercase letter or digit.<br/>-&nbsp;It must end with a lowercase letter or digit.<br/>-&nbsp;It cannot start or end with a hyphen, and consecutive hyphens are not allowed.<br/>-&nbsp;The maximum length is 64 bytes. | string | This tag cannot be omitted. |
@@ -1477,7 +1462,6 @@ Starting from API version 26.0.0, the **skillProfiles** tag is added. This tag i
 | visibility | Identifies the visibility of the skill, which controls the visibility scope of the skill. The supported values are as follows:<br/>-&nbsp;"private": private, visible only to the current app.<br/>-&nbsp;"system": system-level, visible to system apps and the current app.<br/>-&nbsp;"public": public, visible to all apps.<br/>**Note:**<br/>The default value of this tag is "system". | string | This tag can be omitted. The default value is "system". |
 
 Example:
-
 <!-- @[module_skillProfiles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
 ``` JSON5

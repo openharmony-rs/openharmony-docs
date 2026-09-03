@@ -1,12 +1,11 @@
 # Publishing a Live View Notification (for System Applications Only)
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=b0e965054b682272b6c9e3890a6020b1129a6551 translatedAt=2026-08-22T02:14:18.639Z pushedAt=2026-08-22T07:02:54.543Z -->
+<!-- md-trans-meta sourceCommit=ec449b4fe5ef265eace4d39527adbd9cd013cca4 translatedAt=2026-09-01T02:48:14.869Z pushedAt=2026-09-02T07:18:13.689Z -->
 
 The live view notification provides real-time progress of long-duration tasks, including voice recording, screen recording, audio and video playback, timing, and phone call. Such type of notification is not stored persistently, and its lifecycle is consistent with that of the notification publisher.
 
@@ -25,6 +24,7 @@ The following table describes the APIs for publishing notifications. The details
 | [publish](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerpublish)(request:&nbsp;NotificationRequest,&nbsp;callback:&nbsp;AsyncCallback&lt;void&gt;):&nbsp;void | Publishes a notification.                |
 | [cancel](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagercancel)(id:&nbsp;number,&nbsp;label:&nbsp;string,&nbsp;callback:&nbsp;AsyncCallback&lt;void&gt;):&nbsp;void | Cancels a notification.     |
 
+
 ## How to Develop
 
 1. Import the related modules.
@@ -41,7 +41,7 @@ The following table describes the APIs for publishing notifications. The details
 
 2. Publish a notification.
 
-In addition to the parameters in the normal text notification, the [system live view](notification-glossary.md#system-live-view) notification provides the **typeCode**, **capsule**, **button**, **time**, and **progress** parameters. For details, see [NotificationSystemLiveViewContent](../reference/apis-notification-kit/js-apis-inner-notification-notificationContent.md#notificationsystemliveviewcontent).
+   In addition to the parameters in the normal text notification, the [system live view](notification-glossary.md#system-live-view) notification provides the **typeCode**, **capsule**, **button**, **time**, and **progress** parameters. For details, see [NotificationSystemLiveViewContent](../reference/apis-notification-kit/js-apis-inner-notification-notificationContent.md#notificationsystemliveviewcontent).
 
       ```ts
       let imagePixelMap: image.PixelMap | undefined = undefined; // Obtain the image pixel map information.
@@ -71,7 +71,7 @@ In addition to the parameters in the normal text notification, the [system live 
               capsule: {
                 title: "testTitle",
                 icon: imagePixelMap,
-                backgroundColor: "testColor",
+                backgroundColor: "testColor", // Replace with a valid color value, such as '#FF0000'.
               },
               // Progress. To update the progress, you only need to modify the progress value and publish the notification again.
               progress: {

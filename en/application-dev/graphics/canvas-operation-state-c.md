@@ -6,7 +6,7 @@
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=7fa9bdd4667c105b22f0d6acf550a50bf15bd338 translatedAt=2026-08-22T01:32:21.264Z pushedAt=2026-08-22T03:28:35.673Z -->
+<!-- md-trans-meta sourceCommit=0edaaef5de1186c959319c99afaf3d467527fe8c translatedAt=2026-09-01T02:28:15.055Z pushedAt=2026-09-02T01:29:48.687Z -->
 
 ## Overview
 
@@ -19,6 +19,7 @@ Common canvas operations are as follows:
 - Matrix transformation, such as translation, scaling, and rotation
 
 - State saving and restoration
+
 
 ## Clipping
 
@@ -34,6 +35,7 @@ The following clipping operations are supported:
 
 - Clipping a region
 
+
 ### Available APIs
 
 The following table lists the APIs for clipping. For details, see [drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md).
@@ -45,12 +47,12 @@ The following table lists the APIs for clipping. For details, see [drawing_canva
 | void OH_Drawing_CanvasClipPath(OH_Drawing_Canvas \*canvas, const OH_Drawing_Path \*path, OH_Drawing_CanvasClipOp clipOp, bool doAntiAlias) | Clips a custom path. |
 | OH_Drawing_ErrorCode OH_Drawing_CanvasClipRegion(OH_Drawing_Canvas \*canvas, const OH_Drawing_Region \*region, OH_Drawing_CanvasClipOp clipOp) | Clips a region. |
 
+
 ### How to Develop
 
 The following uses the rectangle clipping on the canvas as an example. The logic of other clipping operations is similar. You only need to call the corresponding API and ensure that the data type to be clipped is correct. For details about the usage and parameters, see [drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md).
 
 Use the **OH_Drawing_CanvasClipRect** API to clip a rectangle. There are four input parameters:
-
 - The first parameter is the canvas, on which the clipping operation is performed. Ensure that the canvas has been created or obtained. For details, see [Obtaining a Canvas and Displaying Drawing Results (C/C++)](canvas-get-result-draw-c.md).
 
 - The second parameter is the rectangle region to be clipped.
@@ -58,6 +60,7 @@ Use the **OH_Drawing_CanvasClipRect** API to clip a rectangle. There are four in
 - The third parameter is the clipping operation type, which can be **INTERSECT** or **DIFFERENCE**.
 
 - The fourth parameter is whether anti-aliasing is required.
+
 
 <!-- @[ndk_graphics_draw_canvas_clip](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
@@ -70,7 +73,7 @@ OH_Drawing_BrushSetColor(brush, 0xff0000ff);
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value400_, value400_, value1200_, value1200_);
 // Clip the rectangle region.
-OH_Drawing_CanvasClipRect(canvas, rect, OH_Drawing_CanvasClipOp::INTERSECT, true);
+OH_Drawing_CanvasClipRect(canvas, rect, INTERSECT, true);
 OH_Drawing_Point *point = OH_Drawing_PointCreate(value600_, value600_);
 // Draw a circle.
 OH_Drawing_CanvasDrawCircle(canvas, point, value600_);
@@ -78,11 +81,14 @@ OH_Drawing_CanvasDrawCircle(canvas, point, value600_);
 OH_Drawing_CanvasDetachBrush(canvas);
 // Destroy the brush object and reclaim the memory occupied by the object.
 OH_Drawing_BrushDestroy(brush);
+OH_Drawing_PointDestroy(point);
+OH_Drawing_RectDestroy(rect);
 ```
 
 | Original Image| Clipped Image|
 | -------- | -------- |
 | ![Screenshot_20250120154655737](figures/Screenshot_20250120154655737.jpg) | ![Screenshot_20250118152812670](figures/Screenshot_20250118152812670.jpg) |
+
 
 ## Matrix Transformation
 
@@ -96,6 +102,7 @@ The following matrix transformation operations are supported:
 
 - Rotation
 
+
 ### Available APIs
 
 The following table lists the common APIs for matrix transformation operations. For detailed usage and parameter descriptions, see [drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md).
@@ -106,6 +113,7 @@ The following table lists the common APIs for matrix transformation operations. 
 | void OH_Drawing_CanvasScale(OH_Drawing_Canvas \*canvas, float sx, float sy) | Scales the canvas. |
 | void OH_Drawing_CanvasRotate(OH_Drawing_Canvas \*canvas, float degrees, float px, float py) | Rotates the canvas by a specified angle. A positive value indicates clockwise rotation, and a negative value indicates counterclockwise rotation. |
 | void OH_Drawing_CanvasSkew(OH_Drawing_Canvas \*canvas, float sx, float sy) | Applies a skew transformation to the canvas. This is equivalent to premultiplying the current canvas matrix by the skew transformation matrix and applying it to the canvas. The skew transformation matrix is: \|1 sx 0\| \|sy 1 0\| \|0 0 1\|. |
+
 
 ### Translation
 
@@ -133,11 +141,13 @@ OH_Drawing_CanvasDrawRect(canvas, rect);
 OH_Drawing_CanvasDetachBrush(canvas);
 OH_Drawing_RectDestroy(rect);
 OH_Drawing_MatrixDestroy(matrix);
+OH_Drawing_BrushDestroy(brush);
 ```
 
 | Original Image| Translated Image|
 | -------- | -------- |
 | ![Original-Image3](figures/Original-Image3.png) | ![Translated-Image](figures/Translated-Image.png) |
+
 
 ### Rotation
 
@@ -165,11 +175,13 @@ OH_Drawing_CanvasDrawRect(canvas, rect);
 OH_Drawing_CanvasDetachBrush(canvas);
 OH_Drawing_RectDestroy(rect);
 OH_Drawing_MatrixDestroy(matrix);
+OH_Drawing_BrushDestroy(brush);
 ```
 
 | Original Image| Rotated Image|
 | -------- | -------- |
 | ![Original Image 1](figures/Original-Image1.png) | ![Rotated Image](figures/Rotated-Image.png) |
+
 
 ### Scaling
 
@@ -196,15 +208,19 @@ OH_Drawing_CanvasDrawRect(canvas, rect);
 // Remove the brush from the canvas.
 OH_Drawing_CanvasDetachBrush(canvas);
 OH_Drawing_RectDestroy(rect);
+OH_Drawing_MatrixDestroy(matrix);
+OH_Drawing_BrushDestroy(brush);
 ```
 
 | Original Image| Scaled Image|
 | -------- | -------- |
 | ![Original-Image2](figures/Original-Image2.png) | ![Scaled-up-Image](figures/Scaled-up-Image.png) |
 
+
 ## Saving and Restoring the Canvas State
 
 The save operation saves the current canvas state to the top of a stack, and the restore operation restores the canvas state saved at the top of the stack. Once the restore operation is executed, all translation, scaling, and clip operations performed between the save and restore operations are cleared.
+
 
 ### Available APIs
 
@@ -215,6 +231,7 @@ The following table lists the APIs used for saving and restoring the canvas stat
 | void OH_Drawing_CanvasSave(OH_Drawing_Canvas \*canvas) | Saves the current canvas state (canvas matrix) to the top of a stack. |
 | void OH_Drawing_CanvasRestore(OH_Drawing_Canvas \*canvas) | Restores the canvas state (canvas matrix) saved at the top of the stack. |
 | void OH_Drawing_CanvasRestoreToCount(OH_Drawing_Canvas \*canvas, uint32_t saveCount) | Restores the canvas state (canvas matrix) to a specified save count. |
+
 
 ### How to Develop
 
@@ -229,7 +246,7 @@ OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN
 OH_Drawing_PenSetWidth(pen, 20);
 // Set the pen for the canvas.
 OH_Drawing_CanvasAttachPen(canvas, pen);
-// Save the current canvas status. Currently, no scale-up operation is performed. The original status is saved.
+// Save the current canvas state. Currently, no scale-up operation is performed. The original state is saved.
 OH_Drawing_CanvasSave(canvas);
 OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateScale(2, 2, 2, 2);
 // Scale up the canvas.
@@ -237,7 +254,7 @@ OH_Drawing_CanvasConcatMatrix(canvas, matrix);
 OH_Drawing_Point* point = OH_Drawing_PointCreate(value300_, value300_);
 // Draw a circle. Because the scale-up operation has been performed, a large circle is drawn.
 OH_Drawing_CanvasDrawCircle(canvas, point, value200_);
-// Restore the canvas to the original status.
+// Restore the canvas to the original state.
 OH_Drawing_CanvasRestore(canvas);
 // Draw a circle. Because the original state is restored, a small circle is drawn.
 OH_Drawing_CanvasDrawCircle(canvas, point, value200_);
@@ -252,11 +269,9 @@ OH_Drawing_MatrixDestroy(matrix);
 ![Development-example](figures/Development-example.png)
 
 <!--RP1-->
-
 ## Samples
 
 The following samples are provided to help you better understand how to use the **Drawing** APIs (C/C++) for development:
 
 - [NDKGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw)
-
 <!--RP1End-->

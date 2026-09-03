@@ -247,10 +247,6 @@ struct CustomShadowExample {
     Column() {
       Navigation() {
         // 页面内容
-        Image($r('app.media.invert'))
-          .width('100%')
-          .height('100%')
-          .objectFit(ImageFit.Cover)
       }
       .title({ builder: this.NavigationTitle, height: '100%' })
       // $r('app.media.greyBackground')需要替换为开发者所需的图像资源文件

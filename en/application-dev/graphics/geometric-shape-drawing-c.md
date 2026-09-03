@@ -1,12 +1,12 @@
 # Drawing Geometric Shapes (C/C++)
-
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
 <!--Owner: @hangmengxin-->
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=7fa9bdd4667c105b22f0d6acf550a50bf15bd338 translatedAt=2026-08-22T01:33:57.129Z pushedAt=2026-08-22T03:30:07.612Z -->
+<!-- md-trans-meta sourceCommit=39a9e003216daede3f45c712299412a7891e82ae translatedAt=2026-09-01T02:29:51.121Z pushedAt=2026-09-02T01:40:35.658Z -->
+
 
 ## Overview
 
@@ -28,6 +28,7 @@ The following geometric shapes can be drawn:
 
 Most geometric shapes can be drawn using a pen or brush. Points can only be drawn using a pen.
 
+
 ## Available APIs
 
 The following table lists the commonly used APIs for drawing geometric shapes. For details about usage and parameters, see [drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md), [drawing_point.h](../reference/apis-arkgraphics2d/capi-drawing-point-h.md), [drawing_rect.h](../reference/apis-arkgraphics2d/capi-drawing-rect-h.md), [drawing_path.h](../reference/apis-arkgraphics2d/capi-drawing-path-h.md), [drawing_region.h](../reference/apis-arkgraphics2d/capi-drawing-region-h.md), and [drawing_round_rect.h](../reference/apis-arkgraphics2d/capi-drawing-round-rect-h.md).
@@ -47,6 +48,7 @@ The following table lists the commonly used APIs for drawing geometric shapes. F
 | OH_Drawing_RoundRect\* OH_Drawing_RoundRectCreate(const OH_Drawing_Rect \*rect, float xRad, float yRad) | Creates a rounded rectangle object. |
 | void OH_Drawing_CanvasDrawRoundRect(OH_Drawing_Canvas \*canvas, const OH_Drawing_RoundRect \*roundRect) | Draws a rounded rectangle. |
 
+
 ## Drawing Points
 
 Points can only be drawn on the canvas using a pen. You can use the **OH_Drawing_CanvasDrawPoint()** API to draw points. This API takes two parameters: (1) **Canvas** object, which must be created or obtained. For details, see [Obtaining a Canvas and Displaying Drawing Results (C/C++)](canvas-get-result-draw-c.md); (2) pointer to the point to be drawn.
@@ -65,7 +67,6 @@ OH_Drawing_PenSetWidth(pen, 40);
 // Set the pen of the canvas.
 OH_Drawing_CanvasAttachPen(canvas, pen);
 // Draw five points.
-AdaptationUtil* adaptationUtil = AdaptationUtil::GetInstance();
 OH_Drawing_Point2D point1 = {value200_, value200_};
 OH_Drawing_CanvasDrawPoint(canvas, &point1);
 OH_Drawing_Point2D point2 = {value400_, value400_};
@@ -82,9 +83,12 @@ OH_Drawing_CanvasDetachPen(canvas);
 OH_Drawing_PenDestroy(pen);
 ```
 
+
 The effect is as follows:
 
+
 ![Drawing-Points](figures/Drawing-Points.png)
+
 
 ## Drawing an Arc
 
@@ -126,6 +130,7 @@ The effect is as follows:
 
 ![Drawing-Arc](figures/Drawing-Arc.png)
 
+
 ## Drawing a Circle
 
 You can use the pen or brush to draw a circle on the canvas by calling **OH_Drawing_CanvasDrawCircle()**. The following three parameters need to be passed to use the API:
@@ -163,6 +168,7 @@ OH_Drawing_PointDestroy(point);
 The effect is as follows:
 
 ![Drawing-a-Circle](figures/Drawing-a-Circle.png)
+
 
 ## Drawing a Path
 
@@ -233,6 +239,7 @@ The effect is as follows:
 
 ![Drawing-a-Path](figures/Drawing-a-Path.png)
 
+
 ## Drawing a Region
 
 A region is not a specific shape. You can set it to a specified rectangle or path, or combine two regions. You can use a pen or brush to draw a region on the canvas. For details about the APIs, see [drawing_region.h](../reference/apis-arkgraphics2d/capi-drawing-region-h.md).
@@ -259,7 +266,7 @@ OH_Drawing_Region *region2 = OH_Drawing_RegionCreate();
 OH_Drawing_Rect *rect2 = OH_Drawing_RectCreate(value300_, value300_, value900_, value900_);
 OH_Drawing_RegionSetRect(region2, rect2);
 // Combination of two rectangle regions.
-OH_Drawing_RegionOp(region1, region2, OH_Drawing_RegionOpMode::REGION_OP_MODE_XOR);
+OH_Drawing_RegionOp(region1, region2, REGION_OP_MODE_XOR);
 OH_Drawing_CanvasDrawRegion(canvas, region1);
 // Remove the brush from the canvas.
 OH_Drawing_CanvasDetachBrush(canvas);
@@ -275,9 +282,10 @@ The effect is as follows:
 
 ![Screenshot_20241206112505234](figures/Screenshot_20241206112505234.jpg)
 
+
 ## Drawing a Rectangle
 
-You can use a pen or brush to draw a rectangle on the canvas. Use **OH_Drawing_RectCreate()** to create a rectangle. The API needs to pass four floating points, which indicate the coordinates of the left, top, right, and bottom positions of the rectangle. The four coordinates form a rectangle.
+You can use a pen or brush to draw a rectangle on the canvas. Use **OH_Drawing_RectCreate()** to create a rectangle. The API takes four floating-point numbers, which represent the left, top, right, and bottom coordinates of the rectangle. The four coordinates form a rectangle.
 
 A simple example is as follows:
 
@@ -303,6 +311,7 @@ OH_Drawing_RectDestroy(rect);
 The effect is as follows:
 
 ![draw-rect](figures/draw-rect.png)
+
 
 ## Drawing a Rounded Rectangle
 
@@ -339,16 +348,16 @@ OH_Drawing_RectDestroy(rect);
 OH_Drawing_RoundRectDestroy(roundRect);
 ```
 
+
 The effect is as follows:
+
 
 ![Drawing-Rounded-Rectangle](figures/Drawing-Rounded-Rectangle.png)
 
 <!--RP1-->
-
 ## Samples
 
 The following samples are provided to help you better understand how to use the **Drawing** APIs (C/C++) for development:
 
 - [NDKGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw)
-
 <!--RP1End-->

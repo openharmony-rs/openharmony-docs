@@ -1,18 +1,19 @@
 # Customizing Page Request Responses
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=3c58e4e8c2e5351ea27202ae3668f4184e7effa1 translatedAt=2026-08-14T03:49:59.882Z pushedAt=2026-08-14T09:33:04.008Z -->
+<!-- md-trans-meta sourceCommit=5191f5de3eca0919d8d5e44823dbef1bf6b74270 translatedAt=2026-09-01T02:55:08.327Z pushedAt=2026-09-02T07:30:39.329Z -->
+
 
 The **Web** component supports customizing request responses after the app intercepts a page request. You can use the [onInterceptRequest()](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9) API to implement custom resource request responses. The custom request capability can be used in scenarios such as custom web page responses and custom file resource responses.
 
 When a resource loading request is initiated on a web page, the application layer will receive the request. The application layer then constructs a local resource response and sends it to the web kernel. On receiving the response, the web kernel parses the response and loads page resources accordingly.
 
 In the following example, the **Web** component intercepts the page request ''https://www.example.com/test.html'', and a response resource is constructed in the app-side code to implement a custom page response scenario.
+
 
 - Code of the **index1.html** page:
 
@@ -30,7 +31,6 @@ In the following example, the **Web** component intercepts the page request ''ht
   ```
 
 - Application code:
-
   <!-- @[build_response_resources_to_implement_custom_page_response_scenarios](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/CustomizePageResp/entry/src/main/ets/pages/OnInterceptRequest_one.ets) -->
 
   ``` TypeScript
@@ -112,7 +112,6 @@ In the following example, the **Web** component intercepts the page request ''ht
   ```
 
 - Application code:
-
   <!-- @[build_response_resource_enable_gen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/CustomizePageResp/entry/src/main/ets/pages/OnInterceptRequest_two.ets) -->
 
   ``` TypeScript
