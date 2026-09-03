@@ -7402,8 +7402,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | mediaType | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | 否 | 否 | 图片资产的媒体类型。|
 | displayName | string | 否 | 否 | 图片资产的显示名称。|
 | size | number  | 否 | 否 | 图片资产文件大小，单位：字节（Byte）。|
-| dateAdded | number | 否 | 否 | 添加了图片资产数据，单位：秒（s）。|
-| dateModified | number | 否 | 否 | 更改了图片资产数据，单位：秒（s）。|
+| dateAdded | number | 否 | 否 | 添加图片资产数据的时间戳，单位：秒（s）。|
+| dateModified | number | 否 | 否 | 更改图片资产数据的时间戳，单位：秒（s）。|
 | duration | number | 否 | 否 | 视频类型的图片资产时长，单位：毫秒（ms）。|
 | width | number | 否 | 否 | 图片资产的像素宽度，单位：像素（px）。|
 | height | number | 否 | 否 | 图片资产的像素高度，单位：像素（px）。|
