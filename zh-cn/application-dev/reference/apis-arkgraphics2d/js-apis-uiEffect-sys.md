@@ -1451,7 +1451,6 @@ ArkTS-Sta: haloBloom(tintColor: Color, bloomFactor: double, glowExposure: double
 | ----------------- | ---------------------------------- |
 | [Filter](#filter) | 返回附加了光晕泛光效果的Filter。 |
 
-
 **示例：**
 
 ArkTS-Dyn示例：
@@ -1520,7 +1519,6 @@ struct example {
   }
 }
 ```
-
 
 ### spinBlur
 
@@ -1625,8 +1623,6 @@ struct example {
     }
   }
 }
-
-
 ```
 
 ## TileMode
@@ -2932,7 +2928,6 @@ struct SweepRefractionExample {
     .backgroundColor('#0A0A14')
   }
 }
-
 ```
 
 ### createWarpedRingMask
@@ -3007,7 +3002,51 @@ struct example {
 
 ArkTS-Sta示例：
 ```ts
+'use static'
+import {
+  Entry,
+  Component,
+  RelativeContainer,
+  Stack,
+  Column,
+} from '@kit.ArkUI';
 
+import { uiEffect } from '@kit.ArkGraphics2D';
+
+// params that control the shape of the Mask
+let param: uiEffect.WarpedRingParam = {
+  radius: 0.5,
+  baseHalfWidth: 0.02,
+  widthVariation: 0.4,
+  rotateAngle: 0.0,
+  rotate3DProgress: 0.0,
+  noiseEvolution: 1.0
+};
+
+// the Mask that defines the shape to be extracted from the color gradient or other effects
+let exampleMask: uiEffect.Mask = uiEffect.Mask.createWarpedRingMask(param);
+
+@Entry
+@Component
+struct example {
+  build() {
+    RelativeContainer() {
+      Stack() {
+        Column()
+          .width(200)
+          .height(200)
+          .visualEffect(
+            uiEffect.createEffect().colorGradient(
+              [ { red:1.0, green:0.5, blue:0.75, alpha:1.0 } ],
+              [ { x:1.0, y:0.5 } ],
+              [ 1.0 ],
+              exampleMask
+            )
+          )
+      }
+    }
+  }
+}
 ```
 
 ### createFractalGlassMask
@@ -3073,7 +3112,6 @@ struct Index {
     }
   }
 }
-
 ```
 
 ArkTS-Sta示例：
@@ -3125,8 +3163,6 @@ struct Index {
     .width('100%').height('100%')
   }
 }
-
-
 ```
 
 ### createBinocularMask
@@ -3162,7 +3198,6 @@ ArkTS-Sta: createBinocularMask(radiusX: double, radiusY: double, gap: double, so
 | --------------- | -------------------------------------- |
 | [Mask](#mask20) | 返回带有双目蒙版效果的Mask实例。       |
 
-
 **示例：**
 
 ArkTS-Dyn示例：
@@ -3189,12 +3224,10 @@ struct Index {
     }
   }
 }
-
 ```
 
 ArkTS-Sta示例：
 ```ts
-
 'use static'
 
 import { Entry, Component, Stack, Image } from '@ohos.arkui.component'
@@ -3238,8 +3271,6 @@ struct Index {
     .width('100%').height('100%')
   }
 }
-
-
 ```
 
 ## BrightnessBlenderParam
