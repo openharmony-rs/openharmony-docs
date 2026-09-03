@@ -66132,6 +66132,16 @@
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/module.json5",
 				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":75,
+						"name":"enable_module_config",
+						"start_line":15
+					}
+				]
 			}
 		]
 	},
@@ -66584,6 +66594,91 @@
 					{
 						"end_line":53,
 						"name":"NavDestinationSystemTransition",
+						"start_line":15
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-immersive-light-sense-common-capability.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialColorInvertExample.ets",
+				"functions":[
+					{
+						"end_line":79,
+						"name":"material_color_invert",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialColorExample.ets",
+				"functions":[
+					{
+						"end_line":60,
+						"name":"material_color",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialInteractiveLightExample.ets",
+				"functions":[
+					{
+						"end_line":60,
+						"name":"material_interactive_light",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/CustomShadowExample.ets",
+				"functions":[
+					{
+						"end_line":61,
+						"name":"custom_shadow",
+						"start_line":15
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-immersive-light-sense-compatibility.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/AppLevelCompatibilityExample.ets",
+				"functions":[
+					{
+						"end_line":46,
+						"name":"app_level_compatibility",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/ComponentLevelCompatibilityExample.ets",
+				"functions":[
+					{
+						"end_line":46,
+						"name":"component_level_compatibility",
+						"start_line":15
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-immersive-light-sense-faq.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialScopeAdaptExample.ets",
+				"functions":[
+					{
+						"end_line":103,
+						"name":"material_scope_adapt",
 						"start_line":15
 					}
 				]
