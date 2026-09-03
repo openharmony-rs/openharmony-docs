@@ -194,8 +194,8 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
 
 * ArkTS侧代码
 
+  ArkTS-Dyn示例：
   <!-- @[webview_and_native_modules_are_used_to_implement_complex_message_interaction_between_applications_and_h5_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsBridge/entry/src/main/ets/pages/Index.ets) -->
-  
   ``` TypeScript
   import testNapi from 'libentry.so';
   import { webview } from '@kit.ArkWeb';
@@ -456,23 +456,267 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
   }
   ```
 
-* Node-API侧暴露ArkTS接口
+  ArkTS-Sta示例：
+  <!-- @[webview_and_native_modules_are_used_to_implement_complex_message_interaction_between_applications_and_h5_pages](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebJsBridge/entry/src/main/ets/pages/Index.ets) -->
 
-  <!-- @[the_arkts_interface_is_exposed_on_the_node_api_side](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsBridge/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-  
   ``` TypeScript
-  // entry/src/main/cpp/types/libentry/index.d.ts
-  export const nativeWebInit: (webName: string) => void;
-  export const createWebMessagePorts: (webName: string) => void;
-  export const postMessage: (webName: string) => void;
-  export const postNoneMessage: (webName: string) => void;
-  export const setMessageEventHandler: (webName: string) => void;
-  export const closeMessagePort: (webName: string) => void;
-  export const destroyMessagePort: (webName: string) => void;
-  export const postBufferMessage: (webName: string) => void;
-  export const destroyNullMessagePort: (webName: string) => void;
-  export const setMessageEventHandlerThread: (webName: string) => void;
-  export const postMessageThread: (webName: string) => void;
+  import { $rawfile, Entry, Row, Scroll, ScrollDirection, State, Text, Web } from '@kit.ArkUI';
+  import { EdgeEffect, BarState, Button, Column, Component, TextArea } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import testNapi from 'libentry.so';
+  
+  @Entry
+  @Component
+  struct Index {
+    @State webTag: string = 'postMessage';
+    controller: webview.WebviewController = new webview.WebviewController(this.webTag);
+    @State h5Log: string = 'Display received message send from HTML';
+  
+    aboutToAppear() {
+      webview.WebviewController.setWebDebuggingAccess(true);
+      // 初始化web Native Development Kit
+      testNapi.nativeWebInit(this.webTag);
+    }
+  
+    aboutToDisappear() {
+      console.error('aboutToDisappear');
+    }
+  
+    build() {
+      Scroll() {
+        Column() {
+          // 展示H5接收到的内容
+          Text('H5_Side_Message_Display_From_App')
+          TextArea({text: this.h5Log})
+            .id('log_area')
+            .width('100%')
+            .height(100)
+            .border({ width: 1 })
+          Text('App_Side_Button')
+          Row() {
+            Button('createNoControllerTagPort')
+              .id('create_no_tag_btn')
+              .onClick(() => {
+                try {
+                  testNapi.createWebMessagePorts('noTag');
+                } catch (error) {
+                  console.error(
+                    `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                }
+              })
+            Button('createPort')
+              .id('create_port_btn')
+              .onClick(() => {
+                try {
+                  testNapi.createWebMessagePorts(this.webTag);
+                } catch (error) {
+                  console.error(
+                    `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                }
+              })
+          }
+  
+          Row() {
+            Button('setHandler')
+              .id('set_handler_btn')
+              .onClick(() => {
+                try {
+                  testNapi.setMessageEventHandler(this.webTag);
+                } catch (error) {
+                  console.error(
+                    `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                }
+              })
+  
+            Button('setHandlerThread')
+              .id('set_handler_thread_btn')
+              .onClick(() => {
+                try {
+                  testNapi.setMessageEventHandlerThread(this.webTag);
+                } catch (error) {
+                  console.error(
+                    `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                }
+              })
+          }
+  
+          Row() {
+            Button('SendString')
+              .id('send_string_btn')
+              .onClick(() => {
+                try {
+                  this.h5Log = ''
+                  testNapi.postMessage(this.webTag);
+                } catch (error) {
+                  console.error(
+                    `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                }
+              })
+            Button('SendStringThread')
+              .id('send_string_thread_btn')
+              .onClick(() => {
+                try {
+                  this.h5Log = ''
+                  testNapi.postMessageThread(this.webTag);
+                } catch (error) {
+                  console.error(
+                    `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                }
+              })
+          }
+  
+          Row() {
+            Button('SendBuffer')
+              .id('send_buffer_btn')
+              .onClick(() => {
+                try {
+                  this.h5Log = ''
+                  testNapi.postBufferMessage(this.webTag);
+                } catch (error) {
+                  console.error(
+                    `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                }
+              })
+            Button('SendNone')
+              .id('send_none_btn')
+              .onClick(() => {
+                try {
+                  this.h5Log = ''
+                  testNapi.postNoneMessage(this.webTag);
+                } catch (error) {
+                  console.error(
+                    `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                }
+              })
+          }
+  
+          Row() {
+            Button('closePort')
+              .id('close_port_btn')
+              .onClick(() => {
+                try {
+                  testNapi.closeMessagePort(this.webTag);
+                } catch (error) {
+                  console.error(
+                    `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                }
+              })
+            Button('destroyNullPort')
+              .id('destroy_null_btn')
+              .onClick(() => {
+                try {
+                  testNapi.destroyNullMessagePort(this.webTag);
+                } catch (error) {
+                  console.error(
+                    `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                }
+              })
+            Button('destroyPort')
+              .id('destroy_port_btn')
+              .onClick(() => {
+                try {
+                  testNapi.destroyMessagePort(this.webTag);
+                } catch (error) {
+                  console.error(
+                    `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                }
+              })
+          }
+          .width('100%')
+          .padding(10)
+          .border({ width: 1 })
+  
+          Column() {
+            Text('H5_Side_Send_Button')
+            Row() {
+              Button('H5String')
+                .id('h5_send_string_btn')
+                .onClick(() => {
+                  try {
+                    this.controller.runJavaScript('for(var i = 0; i < 2000; i++) postStringToApp()');
+                  } catch (error) {
+                    console.error(
+                      `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  }
+                })
+              Button('H5Buffer')
+                .id('h5_send_buffer_btn')
+                .onClick(() => {
+                  try {
+                    this.controller.runJavaScript('postBufferToApp()');
+                  } catch (error) {
+                    console.error(
+                      `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  }
+                })
+              Button('H5Number')
+                .id('h5_send_number_btn')
+                .onClick(() => {
+                  try {
+                    this.controller.runJavaScript('postNumberToApp()');
+                  } catch (error) {
+                    console.error(
+                      `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  }
+                })
+            }
+  
+            Row() {
+              Button('H5Json')
+                .id('h5_send_json_btn')
+                .onClick(() => {
+                  try {
+                    this.controller.runJavaScript('postJsonToApp()');
+                  } catch (error) {
+                    console.error(
+                      `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  }
+                })
+              Button('H5Array')
+                .id('h5_send_array_btn')
+                .onClick(() => {
+                  try {
+                    this.controller.runJavaScript('postArrayStringToApp()');
+                  } catch (error) {
+                    console.error(
+                      `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  }
+                })
+              Button('H5Object')
+                .id('h5_send_object_btn')
+                .onClick(() => {
+                  try {
+                    this.controller.runJavaScript('postObjectToApp()');
+                  } catch (error) {
+                    console.error(
+                      `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  }
+                })
+            }
+          }
+          .width('100%')
+          .margin(10)
+          .padding(10)
+          .border({ width: 1 })
+  
+          Web({ src: $rawfile('index.html'), controller: this.controller })
+            .onConsole((event) => {
+              if (event) {
+                let msg = event.message.getMessage();
+                if (msg.startsWith('H5')) {
+                  this.h5Log = event.message.getMessage() + '\n' + this.h5Log;
+                }
+              }
+              return false;
+            })
+        }
+      }.height('100%')
+      .scrollable(ScrollDirection.Vertical)
+      .scrollBar(BarState.Off)
+      .edgeEffect(EdgeEffect.Spring)
+    }
+  }
   ```
 
 * Node-API侧编译配置
@@ -507,8 +751,8 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
 
 * Node-API层代码
 
+  ArkTS-Dyn示例：
   <!-- @[the_node_api_layer_code_for_the_data_channel_between_the_application_side_and_the_frontend_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsBridge/entry/src/main/cpp/hello.cpp) -->
-  
   ``` C++
   #include "hilog/log.h"
   #include "napi/native_api.h"
@@ -968,3 +1212,43 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
   
   extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
   ```
+
+* Node-API侧暴露ArkTS接口
+
+  ArkTS-Dyn示例：
+  <!-- @[the_arkts_interface_is_exposed_on_the_node_api_side](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsBridge/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+  ``` TypeScript
+  // entry/src/main/cpp/types/libentry/index.d.ts
+  export const nativeWebInit: (webName: string) => void;
+  export const createWebMessagePorts: (webName: string) => void;
+  export const postMessage: (webName: string) => void;
+  export const postNoneMessage: (webName: string) => void;
+  export const setMessageEventHandler: (webName: string) => void;
+  export const closeMessagePort: (webName: string) => void;
+  export const destroyMessagePort: (webName: string) => void;
+  export const postBufferMessage: (webName: string) => void;
+  export const destroyNullMessagePort: (webName: string) => void;
+  export const setMessageEventHandlerThread: (webName: string) => void;
+  export const postMessageThread: (webName: string) => void;
+  ```
+
+  ArkTS-Sta示例：
+  <!-- @[the_arkts_interface_is_exposed_on_the_node_api_side](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebJsBridge/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+  
+  ``` TypeScript
+  declare namespace testNapi {
+    function nativeWebInit(webName: string): void;
+    function createWebMessagePorts(webName: string): void;
+    function postMessage(webName: string): void;
+    function postNoneMessage(webName: string): void;
+    function setMessageEventHandler(webName: string): void;
+    function closeMessagePort(webName: string): void;
+    function destroyMessagePort(webName: string): void;
+    function postBufferMessage(webName: string): void;
+    function destroyNullMessagePort(webName: string): void;
+    function setMessageEventHandlerThread(webName: string): void;
+    function postMessageThread(webName: string): void;
+  }
+  export default testNapi;
+  ```
+
