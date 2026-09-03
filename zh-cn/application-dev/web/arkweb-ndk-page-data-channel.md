@@ -193,9 +193,9 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
   ```
 
 * ArkTS侧代码
-
   ArkTS-Dyn示例：
   <!-- @[webview_and_native_modules_are_used_to_implement_complex_message_interaction_between_applications_and_h5_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsBridge/entry/src/main/ets/pages/Index.ets) -->
+  
   ``` TypeScript
   import testNapi from 'libentry.so';
   import { webview } from '@kit.ArkWeb';
@@ -458,7 +458,7 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
 
   ArkTS-Sta示例：
   <!-- @[webview_and_native_modules_are_used_to_implement_complex_message_interaction_between_applications_and_h5_pages](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebJsBridge/entry/src/main/ets/pages/Index.ets) -->
-
+  
   ``` TypeScript
   import { $rawfile, Entry, Row, Scroll, ScrollDirection, State, Text, Web } from '@kit.ArkUI';
   import { EdgeEffect, BarState, Button, Column, Component, TextArea } from '@kit.ArkUI';
@@ -753,6 +753,7 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
 
   ArkTS-Dyn示例：
   <!-- @[the_node_api_layer_code_for_the_data_channel_between_the_application_side_and_the_frontend_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsBridge/entry/src/main/cpp/hello.cpp) -->
+  
   ``` C++
   #include "hilog/log.h"
   #include "napi/native_api.h"
@@ -1217,6 +1218,7 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
 
   ArkTS-Dyn示例：
   <!-- @[the_arkts_interface_is_exposed_on_the_node_api_side](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsBridge/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+  
   ``` TypeScript
   // entry/src/main/cpp/types/libentry/index.d.ts
   export const nativeWebInit: (webName: string) => void;
@@ -1251,4 +1253,3 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
   }
   export default testNapi;
   ```
-
