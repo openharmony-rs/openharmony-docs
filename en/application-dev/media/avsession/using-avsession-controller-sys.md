@@ -1,12 +1,11 @@
 # AVSession Controller (for System Applications Only)
-
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=b05dcf4516f8cf4d9f7a7e45d9561a73d2ebee04 translatedAt=2026-07-22T01:45:17.022Z pushedAt=2026-07-22T03:57:56.170Z -->
+<!-- md-trans-meta sourceCommit=092adc6b47e5b0c088b6fe6b4574b30796b51a5e translatedAt=2026-09-02T08:39:23.576Z pushedAt=2026-09-03T03:35:06.923Z -->
 
 Media Controller preset in OpenHarmony functions as the controller to interact with audio and video applications, for example, obtaining and displaying media information and delivering playback control commands.
 
@@ -23,7 +22,6 @@ You can develop a system application (for example, a new playback control center
 The key APIs used by the controller are classified into the following types:
 
 1. APIs called by the AVSessionManager object, which is obtained by means of import. An example API is **AVSessionManager.createController(sessionId)**.
-
 2. APIs called by the AVSessionController object. An example API is **controller.getAVPlaybackState()**.
 
 Asynchronous JavaScript APIs use either a callback or promise to return the result. The two forms differ only in the return method and provide the same functionality.
@@ -117,9 +115,7 @@ To enable a system application to access the AVSession service as a controller, 
    The following session state events are available:
 
    - **sessionCreate**: triggered when a session is created.
-
    - **sessionDestroy**: triggered when a session is destroyed.
-
    - **topSessionChange**: triggered when the top session is changed.
 
    The service state event **sessionServiceDie** is reported when the AVSession service is abnormal.
@@ -173,23 +169,14 @@ To enable a system application to access the AVSession service as a controller, 
    The following media information change events are available:
 
    - **metadataChange**: triggered when the session metadata changes.
-
    - **playbackStateChange**: triggered when the playback state changes.
-
    - **activeStateChange**: triggered when the activation state of the session changes.
-
-   - **validCommandChange**: triggered when the valid commands supported by the session changes.
-
+   - **validCommandChange**: triggered when the valid commands supported by the session change.
    - **outputDeviceChange**: triggered when the output device changes.
-
    - **sessionDestroy**: triggered when a session is destroyed.
-
    - **sessionEvent**: triggered when the custom session event changes.
-
    - **extrasChange**: triggered when the custom media packet of the session changes.
-
    - **queueItemsChange**: triggered when one or more items in the custom playlist of the session changes.
-
    - **queueTitleChange**: triggered when the custom playlist name of the session changes.
 
    The controller can listen for events as required.
@@ -259,7 +246,7 @@ To enable a system application to access the AVSession service as a controller, 
     });
     // Subscribe to custom playback name changes.
     controller.on('queueTitleChange', (title) => {
-      console.info(`Caught queue title change, title is ${title}`);
+      console.info(`Caught queue title change, queue title is ${title}`);
     });
    }
    ```
@@ -269,10 +256,15 @@ To enable a system application to access the AVSession service as a controller, 
    ```ts
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
    async function getInfoFromSessionByController() {
-     // It is assumed that an AVSessionController object corresponding to the session already exists. For details about how to create an AVSessionController object, see the code snippet above.
-     let controller = await AVSessionManager.createController("");
-     // Obtain the session ID.
-     let sessionId = controller.sessionId;
+     // Obtain the descriptors of all sessions in the current system.
+     let descriptors = await AVSessionManager.getAllSessionDescriptors();
+     if (descriptors.length === 0) {
+       console.error(`No session in system, can not create controller.`);
+       return;
+     }
+     // Obtain the sessionId of the target session to create a controller.
+     let sessionId = descriptors[0].sessionId;
+     let controller = await AVSessionManager.createController(sessionId);
      console.info(`get sessionId by controller : isActive : ${sessionId}`);
      // Obtain the activation state of the session.
      let isActive = await controller.isActive();
@@ -314,7 +306,7 @@ To enable a system application to access the AVSession service as a controller, 
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
    import { BusinessError } from '@kit.BasicServicesKit';
 
-   async function  sendCommandToSessionByController() {
+   async function sendCommandToSessionByController() {
      // Obtain the descriptors of all sessions in the current system.
      let descriptors = await AVSessionManager.getAllSessionDescriptors();
      if (descriptors.length === 0) {
@@ -372,8 +364,15 @@ To enable a system application to access the AVSession service as a controller, 
    import { BusinessError } from '@kit.BasicServicesKit';
 
    async function destroyController() {
-     // It is assumed that an AVSessionController object corresponding to the session already exists. For details about how to create an AVSessionController object, see the code snippet above.
-     let controller = await AVSessionManager.createController("");
+     // Obtain the descriptors of all sessions in the current system.
+     let descriptors = await AVSessionManager.getAllSessionDescriptors();
+     if (descriptors.length === 0) {
+       console.error(`No session in system, can not create controller.`);
+       return;
+     }
+     // Obtain the sessionId of the target session to create a controller.
+     let sessionId = descriptors[0].sessionId;
+     let controller = await AVSessionManager.createController(sessionId);
      
      // Destroy the current controller. After destruction, this controller will no longer be available.
      controller.destroy((err: BusinessError) => {

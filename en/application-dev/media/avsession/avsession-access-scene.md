@@ -1,20 +1,21 @@
 # Accessing AVSession
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=74c5c403cb641e8351820634af05f0bfefb8e44a translatedAt=2026-09-02T08:34:30.065Z pushedAt=2026-09-02T11:03:08.200Z -->
 
-In addition to the implementation of audio and video playback, media applications may need to access AVSession provided by AVSession Kit for display and control purposes. This topic describes typical display and control scenarios of accessing AVSession.
+When implementing audio and video features, media applications also need to integrate with AVSession Kit. Based on typical use cases, this document describes how to integrate with AVSession for media display and control, providing developers with adaptation guidance.
 
-In different access scenarios, different UIs are displayed in the controller of the system, and different specifications are posed for application access processing.
+Different scenarios are presented with different UIs in the Media Controller. In addition, application integration must comply with different requirements and constraints depending on the scenario.
 
 ## Scenarios That Require AVSession Access
 
-AVSession restricts background audio playback and VoIP calls. As such, applications that provide long-duration audio or video playback, audiobook applications, and VoIP applications need to access AVSession. If such an application does not access AVSession, the system stops its audio playback or mutes the ongoing call when detecting that the application is running in the background. In this way, the application behavior is restricted. You can verify the restriction locally before the application is released.
+AVSession restricts background audio playback and VoIP calls. Therefore, applications that provide long-duration audio playback, audiobooks, long-duration video playback, and VoIP calls need to access AVSession. If such an application does not create an AVSession during these services, the system stops the corresponding audio playback or mutes the call when detecting that the application is running in the background. You can verify the restriction locally before the application is released.
 
-For applications that may use audio playback, such as gaming and live broadcast applications, accessing AVSession is optional. However, if they want to continue audio playback after switching to the background, they must access AVSession.
+For other applications that use audio playback, such as games and live streams, accessing AVSession is optional, depending on whether the application requires background playback. If background playback is required, AVSession access is still mandatory. Otherwise, normal service functions will be restricted.
 
 To implement background playback, the application must also use [Background Tasks Kit](../../task-management/background-task-overview.md) to request a continuous task to avoid being suspended.
 
@@ -22,39 +23,44 @@ To implement background playback, the application must also use [Background Task
 
 The process for implementing AVSession access is as follows:
 
-1. Determine the type of AVSession to be created for the application, and then [create one](#creating-avsession). The AVSession type determines the style of the control template displayed in the controller.
+1. Determine the type of AVSession to be created for the application, and then [create one](#creating-avsession). The AVSession type determines the style of the control template displayed in the Media Controller.
 2. [Create a background task](#creating-a-background-task).
-3. [Set necessary metadata](#setting-metadata), which is the response information displayed in the controller. The metadata includes the IDs of the current media asset (assetId), previous media asset (previousAssetId), and next media asset (nextAssetId), title, author, album, writer, and duration.
-4. [Set playback state information](#setting-playback-state-information). The information includes the playback state, position, speed, buffered time, loop mode, media item being played (activeItemId), custom media data (extras), and whether the media asset is favorited (isFavorite).
-5. [Register control commands](#registering-control-commands). The control commands include **play**, **pause**, **previous**, **next**, **fastForward**, **rewind**, **toggleFavorite**, **setLoopMode**, and **seek**.
+3. [Set necessary metadata](#setting-metadata-information) to display corresponding information in the Media Controller. The metadata includes but is not limited to the IDs of the current media asset (**assetId**), previous media asset (**previousAssetId**), and next media asset (**nextAssetId**), title, author, album, writer, and duration.
+4. [Set playback state information](#setting-playback-state). The information includes but is not limited to the playback state (**state**), position (**position**), speed (**speed**), buffered time (**bufferedTime**), loop mode (**loopMode**), whether the media asset is favorited (**isFavorite**), media ID being played (**activeItemId**), and custom media data (**extras**).
+5. [Register control commands](#control-command-processing) as required, including but not limited to play/pause, previous/next, fast-forward/rewind, favorite, loop mode, and progress bar.
 6. Destroy AVSession when the application exits or stops providing service.
 
 ## Creating AVSession
 
-[AVSessionType](../../reference/apis-avsession-kit/arkts-apis-avsession-t.md#avsessiontype10) in the constructor determines the type of AVSession to create. Different AVSession types represent the control capabilities in various scenarios and display different control templates in the controller.
+[AVSessionType](../../reference/apis-avsession-kit/arkts-apis-avsession-t.md#avsessiontype10) in the constructor determines the type of AVSession to create. Different AVSession types represent the control capabilities in various scenarios and display different control templates in the Media Controller.
 
-- For audio AVSession, the controller provides the following control buttons: favorite, previous, play/pause, next, and loop mode.
+- For audio AVSession, the Media Controller provides the following control buttons: favorite, previous, play/pause, next, and loop mode.
 
-- For video AVSession, the controller provides the following control buttons: rewind, previous, play/pause, next, and fast-forward.
+- For video AVSession, the Media Controller provides the following control buttons: fast-rewind, previous, play/pause, next, and fast-forward.
 
-- For voice_call AVSession, the application is not displayed in the controller.
+- For voice_call AVSession, the application is not displayed in the Media Controller.
 
 Refer to the code snippet below:
 
 > **NOTE**
 >
-> The sample code below demonstrates only the API call for creating an AVSession object. When actually using it, the application must ensure that the AVSession object remains throughout the application's background playback activities. This prevents the system from reclaiming or releasing it, which could lead to playback being controlled by the system.
+> The sample code below demonstrates only the API call for creating an AVSession object. When actually using it, the application must ensure that the AVSession object persists throughout the application's background playback activities. This prevents the system from reclaiming or releasing it, which could lead to playback being controlled by the system.
 
-```ts
+<!-- @[createAVSession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/CreateAVSession.ets) -->
+
+``` TypeScript
 import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+// ...
 
 @Entry
 @Component
 struct Index {
   @State message: string = 'hello world';
+  // ...
 
   build() {
     Column() {
+      // ...
       Text(this.message)
         .onClick(async () => {
           // Start to create and activate an AVSession object.
@@ -65,6 +71,7 @@ struct Index {
           // Call activate() after the metadata and control commands are registered.
           await session.activate();
           console.info(`session create done : sessionId : ${session.sessionId}`);
+          // ...
         })
     }
     .width('100%')
@@ -80,23 +87,30 @@ To implement background playback, the application must also use [Background Task
 Media playback applications must request a continuous task of the [AUDIO_PLAYBACK](../../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundmode) background mode.
 
 
-## Setting Metadata
+## Setting Metadata Information
 
-### Setting Common Metadata
+The application uses [setAVMetadata](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setavmetadata10) to set the metadata information of the current media session to the system. The Media Controller displays information based on the metadata set by the application.
 
-The application can call **setAVMetadata()** to set AVSession metadata to the system so that the metadata can be displayed in the controller. The metadata includes the IDs of the current media asset (assetId), previous media asset (previousAssetId), and next media asset (nextAssetId), title, author, album, writer, and duration.
+### Metadata Information
 
-```ts
+Metadata information [AVMetadata](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avmetadata10) includes the ID of the current media (`assetId`), ID of the previous media (`previousAssetId`), ID of the next media (`nextAssetId`), title (`title`), album author (`author`), artist (`artist`), album name (`album`), lyricist (`writer`), media image (`mediaImage`), and media duration (`duration`).
+
+<!-- @[setAVMetadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SetAVMetadata.ets) -->
+
+``` TypeScript
 import { avSession as AVSessionManager } from '@kit.AVSessionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+// ...
 
 @Entry
 @Component
 struct Index {
   @State message: string = 'hello world';
+  // ...
 
   build() {
     Column() {
+      // ...
       Text(this.message)
         .onClick(async () => {
           try {
@@ -112,12 +126,15 @@ struct Index {
             };
             session.setAVMetadata(metadata).then(() => {
               console.info(`SetAVMetadata successfully`);
+              // ...
             }).catch((err: BusinessError) => {
               console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
+              // ...
             });
           } catch (err) {
             if (err) {
               console.error(`AVSession create Error: Code: ${err.code}, message: ${err.message}`);
+              // ...
             }
           }
         })
@@ -128,21 +145,36 @@ struct Index {
 }
 ```
 
-### Setting Lyrics
+### Setting Lyrics Field Information
 
-The controller provides the UI to show lyrics. The application only needs to set the lyrics content. The controller parses the lyrics content and displays it based on the playback progress.
+Metadata [AVMetadata](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avmetadata10) contains lyric fields. The application can set lyric fields to display lyrics in certain scenarios. Currently, two lyric fields can be set:
 
-```ts
+- **lyric**: complete lyrics of the media asset. The Media Controller displays lyric content based on this field. The application needs to concatenate the lyric content into a string and pass it in.
+
+- **singleLyricText**: a single line of lyric text. The system Bluetooth module displays lyric content in certain scenarios, such as Bluetooth speakers, based on this field.
+
+> **NOTE**
+>
+> - The `lyric` field supports only lyrics in LRC format (time tags plus lyric information, for example, `[00:25.44]lyric information`). If you pass lyrics in other formats, the Media Controller may fail to parse them, causing abnormal lyric display.
+>
+> - The size of both the `lyric` field and the `singleLyricText` field must not exceed 40960 bytes. Otherwise, the lyric information fails to be set due to system transmission limits.
+
+<!-- @[settingLyrics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingLyrics.ets) -->
+
+``` TypeScript
 import { avSession as AVSessionManager } from '@kit.AVSessionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+// ...
 
 @Entry
 @Component
 struct Index {
   @State message: string = 'hello world';
+  // ...
 
   build() {
     Column() {
+      // ...
       Text(this.message)
         .onClick(async () => {
           let context = this.getUIContext().getHostContext() as Context;
@@ -150,23 +182,26 @@ struct Index {
           let type: AVSessionManager.AVSessionType = 'audio';
           let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
 
-          // Set the lyric to AVSession.
+          // Set the lyric information to AVSession.
           let metadata: AVSessionManager.AVMetadata = {
             assetId: '0',
             title: 'TITLE',
             mediaImage: 'IMAGE',
-            // The LRC contains two types of elements: time tag + lyrics, and ID tag.
-            // Example: [00:25.44]xxx\r\n[00:26.44]xxx\r\n
-            lyric: "Lyrics in LRC format",
-            // The singleLyricText field stores a single line of lyric text without timestamps.
-            // Example: "Content of a single lyric line"
-            singleLyricText: "Content of a single lyric line",
+            // There are two types of elements in LRC: one is a time tag plus lyrics, and the other is an ID tag.
+            // For example: [00:25.44]xxx\r\n[00:26.44]xxx\r\n.
+            lyric: 'lyric content in LRC format',
+            // The singleLyricText field stores a single line of lyric text without a timestamp.
+            // For example: "single line of lyric content".
+            singleLyricText: 'single line of lyric content',
           };
           session.setAVMetadata(metadata).then(() => {
             console.info(`SetAVMetadata successfully`);
+            // ...
           }).catch((err: BusinessError) => {
             console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
+            // ...
           });
+          // ...
         })
     }
     .width('100%')
@@ -175,115 +210,26 @@ struct Index {
 }
 ```
 
-<!--RP1-->
-<!--RP1End-->
+### Setting Progress Bar Information
 
-### Display Tags of Media Assets
+The metadata [AVMetadata](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avmetadata10) contains the **duration** field, in ms. To display the progress bar of a media asset in the Media Controller, set the correct playback duration in **duration**.
 
-The controller displays a special type identifier for long-duration media assets. Currently, only the Audio Vivid identifier is displayed.
+<!-- @[settingTheProgressBar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingTheProgressBar.ets) -->
 
-The application notifies the system of the display tag of the media asset through the AVMetadata during the access, and the controller displays the tag when the media asset is being played.
-
-```ts
+``` TypeScript
 import { avSession as AVSessionManager } from '@kit.AVSessionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+// ...
 
 @Entry
 @Component
 struct Index {
   @State message: string = 'hello world';
+  // ...
 
   build() {
     Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let context = this.getUIContext().getHostContext() as Context;
-          // It is assumed that an AVSession object has been created. For details about how to create an AVSession object, see the node snippet above.
-          let type: AVSessionManager.AVSessionType = 'audio';
-          let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
-
-          // Set the media audio source information to AVSession.
-          let metadata: AVSessionManager.AVMetadata = {
-            assetId: '0',
-            title: 'TITLE',
-            mediaImage: 'IMAGE',
-            // The display tag of the audio source is Audio Vivid.
-            displayTags: AVSessionManager.DisplayTag.TAG_AUDIO_VIVID,
-          };
-          session.setAVMetadata(metadata).then(() => {
-            console.info(`SetAVMetadata successfully`);
-          }).catch((err: BusinessError) => {
-            console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
-          });
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
-## Setting Playback State Information
-
-### Setting General State Information
-
-The application can call [setAVPlaybackState](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setavplaybackstate10) to set the playback state information to the system so that the information can be displayed in the controller.
-
-Generally, the playback state information includes the playback state, position, speed, buffered time, loop mode, media item being played (activeItemId), custom media data (extras), and whether the media asset is favorited (isFavorite). It changes during the playback.
-
-```ts
-import { avSession as AVSessionManager } from '@kit.AVSessionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let context = this.getUIContext().getHostContext() as Context;
-          // It is assumed that an AVSession object has been created. For details about how to create an AVSession object, see the node snippet above.
-          let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', 'audio');
-
-          // The player logic that triggers changes in the session metadata and playback state is omitted here.
-          // Set the playback state to paused and set isFavorite to false.
-          let playbackState: AVSessionManager.AVPlaybackState = {
-            state: AVSessionManager.PlaybackState.PLAYBACK_STATE_PAUSE,
-            isFavorite: false
-          };
-          session.setAVPlaybackState(playbackState, (err: BusinessError) => {
-            if (err) {
-              console.error(`Failed to set AVPlaybackState. Code: ${err.code}, message: ${err.message}`);
-            } else {
-              console.info(`SetAVPlaybackState successfully`);
-            }
-          });
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
-### Setting the Progress Bar
-
-To display a progress bar in the controller, the application must set the duration, playback state (pause or play), playback position, and playback speed. The controller displays the progress bar based on the information.
-
-```ts
-import { avSession as AVSessionManager } from '@kit.AVSessionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
+      // ...
       Text(this.message)
         .onClick(async () => {
           let context = this.getUIContext().getHostContext() as Context;
@@ -300,8 +246,10 @@ struct Index {
           };
           session.setAVMetadata(metadata).then(() => {
             console.info(`SetAVMetadata successfully`);
+            // ...
           }).catch((err: BusinessError) => {
             console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
+            // ...
           });
 
           // Set the playback state information, including the playback state, position, speed, and buffered time.
@@ -317,10 +265,13 @@ struct Index {
           session.setAVPlaybackState(playbackState, (err) => {
             if (err) {
               console.error(`Failed to set AVPlaybackState. Code: ${err.code}, message: ${err.message}`);
+              // ...
             } else {
               console.info(`SetAVPlaybackState successfully`);
+              // ...
             }
           });
+          // ...
         })
     }
     .width('100%')
@@ -329,13 +280,7 @@ struct Index {
 }
 ```
 
-The controller calculates the playback progress based on the information set by the application. The application does not need to update the playback progress in real time.
-
-However, it needs to update the playback state when the following information changes to avid calculation errors:
-
-- state
-- position
-- speed
+The Media Controller automatically calculates the playback progress based on the information set by the application. The application does not need to update the playback progress in real time. However, when the **state**, **position**, or **speed** changes, the application must update **AVPlaybackState**. Otherwise, the application state information and progress bar information displayed in the Media Controller may be abnormal.
 
 The application reports the start position of the progress once the actual playback starts. If the playback is in the buffer state, the application can report **AVSessionManager.PlaybackState.PLAYBACK_STATE_BUFFERING** to instruct the system not to update the progress.
 
@@ -343,60 +288,172 @@ Certain special processing is required when setting the progress bar.
 
 1. Songs that can be previewed
 
-    (1) The application sets the preview duration, rather than the total duration, for a song. In this case, when the user performs progress control in the controller, the application receives the relative timestamp within the preview duration, rather than that within the total duration. The application needs to calculate the absolute timestamp from the very beginning of the song.
-    
-    (2) The application sets the total duration for a song but requires the system to provide preview, the application can report the start position of the progress when the playback starts, and report the end position when the received seek instruction is not within the preview duration. In the latter case, the playback control progress of the system rebounds.
+   (1) The application sets the preview duration, rather than the total duration, for a song. In this case, when the user performs progress control in the Media Controller, the application receives the relative timestamp within the preview duration, rather than that within the total duration. The application needs to calculate the absolute timestamp from the very beginning of the song.
+
+   (2) If the application sets the total duration for a song but requires the system to provide preview, it can report the start position of the progress when the playback starts, and report the end position when the received seek instruction is not within the preview duration. In the latter case, the playback control progress of the system rebounds.
 
 2. Songs that do not support preview
 
-    If a song cannot be previewed, it cannot be displayed by the application. In this case, the application should set the duration to **-1**, so the system does not display the actual duration.
+   If a song cannot be previewed, it cannot be played by the application. In this case, the application should set the duration to **-1**, so the system does not display the actual duration.
 
 3. Special contents such as ads
 
-    For media assets with pre-roll or post-roll ads, you are advised to:
-    - Set the ad duration separately.
-    - Set a new duration for the actual content, to distinguish it from the ad.
+   For media assets with pre-roll or post-roll ads, you are advised to:
+   - Set the ad duration separately.
+   - Set a new duration for the actual content, to distinguish it from the ad.
 
-## Registering Control Commands
+<!--RP1--><!--RP1End-->
 
-The application can register different control commands through **on()** to implement control operations in the controller. For details, see the [API reference](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onplay10).
+### Display Tags of Media Assets
+
+The metadata [AVMetadata](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avmetadata10) provides the **displayTags** field for displaying the media asset tag, which identifies the audio source of the application. After the application sets **displayTags**, the Media Controller displays the tag synchronously. Currently, only the Audio Vivid tag is supported.
+
+<!-- @[displayTagsOfMediaAssets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/DisplayTagsOfMediaAssets.ets) -->  
+
+``` TypeScript
+import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// ...
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+  // ...
+
+  build() {
+    Column() {
+      // ...
+      Text(this.message)
+        .onClick(async () => {
+          let context = this.getUIContext().getHostContext() as Context;
+          // Assume that a session has been created. For details about how to create a session, see the previous example.
+          let type: AVSessionManager.AVSessionType = 'audio';
+          let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
+
+          // Set the media source information to the AVSession.
+          let metadata: AVSessionManager.AVMetadata = {
+            assetId: '0',
+            title: 'TITLE',
+            mediaImage: 'IMAGE',
+            // Indicate that the media source is Audio Vivid.
+            displayTags: AVSessionManager.DisplayTag.TAG_AUDIO_VIVID,
+          };
+          session.setAVMetadata(metadata).then(() => {
+            console.info(`SetAVMetadata successfully`);
+            // ...
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
+            // ...
+          });
+          // ...
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## Setting Playback State
+
+The application uses [setAVPlaybackState](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setavplaybackstate10) to set the playback state information of the current media session to the system. The Media Controller strictly displays information based on the playback state information passed by the application.
+
+### Playback State Information
+
+Playback state information [AVPlaybackState](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avplaybackstate10) includes the playback state of the current media (`state`), playback position (`position`, which contains the elapsed playback time `elapsedTime` and the update timestamp `updateTime`), playback speed (`speed`), buffered time (`bufferedTime`), loop mode (`loopMode`), whether the media is marked as favorite (`isFavorite`), ID of the media being played (`activeItemId`), and custom media data (`extras`).
+
+<!-- @[settingGeneralStateInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingGeneralStateInformation.ets) -->  
+
+``` TypeScript
+import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// ...
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+  // ...
+
+  build() {
+    Column() {
+      // ...
+      Text(this.message)
+        .onClick(async () => {
+          let context = this.getUIContext().getHostContext() as Context;
+          // Assume that a session has been created. For details about how to create a session, see the previous example.
+          let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', 'audio');
+
+          // Player logic... triggers changes to the media information and playback state.
+          // Set a simple playback state - paused, not favorited.
+          let playbackState: AVSessionManager.AVPlaybackState = {
+            state: AVSessionManager.PlaybackState.PLAYBACK_STATE_PAUSE,
+            isFavorite: false
+          };
+          session.setAVPlaybackState(playbackState, (err: BusinessError) => {
+            if (err) {
+              console.error(`Failed to set AVPlaybackState. Code: ${err.code}, message: ${err.message}`);
+              // ...
+            } else {
+              console.info(`SetAVPlaybackState successfully`);
+              // ...
+            }
+          });
+          // ...
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## Control Command Processing
+
+### Supported Control Commands
+
+After an application accesses AVSession, it can register control commands through **on()** to implement the corresponding control button operations in the Media Controller.
+
 > **NOTE**
 >
 > After an AVSession object is created, register control commands supported by the application before activating the object.
 
-The table below lists the control commands supported by media assets.
+The following table lists the control commands supported by audio and video applications.
 
 | Control Command| Description  |
 | ------  | -------------------------|
-| play    | Plays the media.|
-| pause    | Pauses the playback.|
-| stop    | Stops the playback.|
-| playNext    | Plays the next media asset.|
-| playPrevious    | Plays the previous media asset.|
-| fastForward    | Fast-forwards.|
-| rewind    | Rewinds.|
-| playFromAssetId    | Plays a media asset with a given asset ID.|
-| seek    | Seeks to a playback position. |
-| setSpeed    | Sets the playback speed.|
-| setLoopMode    | Sets the loop mode.|
-| toggleFavorite    | Favorites or unfavorites a media asset.|
-| skipToQueueItem    | Selects an item in the playlist.|
-| handleKeyEvent    | Sets a key event.|
-| commonCommand    | Customizes a control command.|
+| [play](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onplay10)    | Start playback. |
+| [pause](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onpause10)    | Pause playback. |
+| [stop](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onstop10)    | Stop playback. |
+| [playNext](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onplaynext10)    | Play next track. |
+| [playPrevious](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onplayprevious10)    | Play previous track. |
+| [fastForward](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onfastforward10)    | Fast forward. |
+| [rewind](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onrewind10)    | Fast rewind. |
+| [playWithAssetId](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onplaywithassetid20)    | Play based on a specific asset ID. |
+| [seek](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onseek10)    | Seek command. |
+| [setSpeed](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onsetspeed10)    | Set playback speed. |
+| [setLoopMode](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onsetloopmode10)    | Set loop mode. |
+| [toggleFavorite](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#ontogglefavorite10)    | Set favorite status. |
+| [skipToQueueItem](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onskiptoqueueitem10)    | Play a selected item in the playlist. |
+| [handleKeyEvent](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onhandlekeyevent10)    | Handle key events. |
+| [commonCommand](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#oncommoncommand10)    | Set custom control. |
 
 The table below lists the control commands for calling applications.
 
 | Control Command| Description  |
 | ------  | -------------------------|
-| answer    | Answers a call.|
-| hangUp    | Ends a call.|
-| toggleCallMute    | Mutes or unmutes a call.|
+| [answer](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onanswer11)    | Answer a call. |
+| [hangUp](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onhangup11)    | Hang up a call. |
+| [toggleCallMute](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#ontogglecallmute11)    | Mute or unmute a call. |
 
-### Handling Unsupported Commands
+### Handling Unsupported Control Commands
 
-If the application does not support a control command supported by the system, for example, the **playPrevious** command, it can use **off()** to deregister the control command. Then the controller grays out the control page accordingly, so that users know that the control command is not supported.
+If the application does not support certain control command operations, for example, the **playPrevious** command, it can use **off()** to unregister the corresponding control command. The Media Controller then grays out or hides the corresponding control button to clearly inform users that the application does not support this control operation.
 
-```ts
+<!-- @[handing_unSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/HandlingUnsupportedCommands.ets) --> 
+
+``` TypeScript
 import { avSession as AVSessionManager } from '@kit.AVSessionKit';
 
 @Entry
@@ -419,6 +476,7 @@ struct Index {
           session.off('stop');
           session.off('playNext');
           session.off('playPrevious');
+          // ...
         })
     }
     .width('100%')
@@ -429,47 +487,53 @@ struct Index {
 
 ### Setting Fast-Forward/Rewind
 
-The application can call APIs to set the fast-forward/rewind intervals in three different ways. It also registers the fast-forward/rewind control command to respond to user operations.
+The system supports three fast-forward/rewind durations, which the application can set through APIs. It also registers the fast-forward/rewind control command to respond to user operations.
 
 > **NOTE**
 >
-> When applications register commands for fast-forward/rewind and next/previous track switching, there are differences in the display on the controller.
+> When applications register commands for fast-forward/rewind and next/previous track switching, there are differences in the display on the Media Controller.
 
 - When **AVSessionType** is **audio**:
 
-    | Registered Event Combination| Controller Buttons| Button Availability|
-    | ------------ | ------------ | ------------ |
-    | No events registered| **Previous**, **Next**| All buttons are unavailable.|
-    | Previous/Next events registered| **Previous**, **Next**| If previous events registered, the **Previous** button is available.<br>If next events registered, the **Next** button is available.<br>Buttons corresponding to unregistered events are unavailable. |
-    | Fast-forward/rewind events registered| **Previous**, **Next**|  All buttons are unavailable.|
-    | Previous/Next and fast-forward/rewind events registered| **Previous**, **Next**| If previous events registered, the **Previous** button is available.<br>If next events registered, the **Next** button is available.<br>Buttons corresponding to unregistered events are unavailable. |
+  | Registered Events | Buttons Displayed in Media Controller | Button Availability|
+  | ------------ | ------------ | ------------ |
+  | No events registered| **Previous**, **Next**| All buttons are unavailable.|
+  | Previous/Next events registered| **Previous**, **Next**| If the Previous event is registered, the **Previous** button is available.<br>If the Next event is registered, the **Next** button is available.<br>A button is unavailable if its corresponding event is not registered. |
+  | Fast-forward/rewind events registered| **Previous**, **Next**|  All buttons are unavailable.|
+  | Previous/Next and fast-forward/rewind events registered| **Previous**, **Next**| If the Previous event is registered, the **Previous** button is available.<br>If the Next event is registered, the **Next** button is available.<br>A button is unavailable if its corresponding event is not registered. |
 
 - When **AVSessionType** is **video**:
 
-    | Registered Event Combination| Controller Buttons| Button Availability|
-    | ------------ | ------------ | ------------ |
-    | No events registered| **Fast-Forward**, **Rewind**| All buttons are unavailable.|
-    | Previous/Next events registered| **Previous**, **Next**| If previous events registered, the **Previous** button is available.<br>If next events registered, the **Next** button is available.<br>Buttons corresponding to unregistered events are unavailable. |
-    | Fast-forward/rewind events registered| **Fast-Forward**, **Rewind**|  If fast-forward events are registered, the **Fast-Forward** button is available.<br>If rewind events are registered, the **Rewind** button is available.<br>Buttons corresponding to unregistered events are unavailable.|
-    | Previous/Next and fast-forward/rewind events registered| **Fast-Forward**, **Rewind**|  If fast-forward events are registered, the **Fast-Forward** button is available.<br>If rewind events are registered, the **Rewind** button is available.<br>Buttons corresponding to unregistered events are unavailable.|
+  | Registered Events | Buttons Displayed in Media Controller| Button Availability|
+  | ------------ | ------------ | ------------ |
+  | No events registered| **Fast-Forward**, **Rewind**| All buttons are unavailable.|
+  | Previous/Next events registered| **Previous**, **Next**| If the Previous event is registered, the **Previous** button is available.<br>If the Next event is registered, the **Next** button is available.<br>A button is unavailable if its corresponding event is not registered. |
+  | Fast-forward/rewind events registered| **Fast-Forward**, **Rewind**|  If the Fast-forward event is registered, the **Fast-forward** button is available.<br>If the Rewind event is registered, the **Rewind** button is available.<br>A button is unavailable if its corresponding event is not registered.|
+  | Previous/Next and fast-forward/rewind events registered| **Fast-Forward**, **Rewind**|  If the Fast-forward event is registered, the **Fast-forward** button is available.<br>If the Rewind event is registered, the **Rewind** button is available.<br>A button is unavailable if its corresponding event is not registered.|
 
-  ```ts
+  <!-- @[settingFastForward](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingFastForward.ets) -->
+
+  ``` TypeScript
   import { avSession as AVSessionManager } from '@kit.AVSessionKit';
   import { BusinessError } from '@kit.BasicServicesKit';
+  // ...
 
   @Entry
   @Component
   struct Index {
     @State message: string = 'hello world';
+    // ...
 
     build() {
       Column() {
+        // ...
         Text(this.message)
           .onClick(async () => {
             let context = this.getUIContext().getHostContext() as Context;
             // It is assumed that an AVSession object has been created. For details about how to create an AVSession object, see the node snippet above.
             let type: AVSessionManager.AVSessionType = 'audio';
             let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
+            // ...
 
             // Set the supported fast-forward or rewind duration for AVSession.
             let metadata: AVSessionManager.AVMetadata = {
@@ -480,18 +544,23 @@ The application can call APIs to set the fast-forward/rewind intervals in three 
             };
             session.setAVMetadata(metadata).then(() => {
               console.info(`SetAVMetadata successfully`);
+              // ...
             }).catch((err: BusinessError) => {
               console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
+              // ...
             });
 
-            session.on('fastForward', (time ?: number) => {
+            session.on('fastForward', (time?: number) => {
               console.info(`on fastForward , do fastForward task`);
+              // ...
               // do some tasks ···
             });
-            session.on('rewind', (time ?: number) => {
+            session.on('rewind', (time?: number) => {
               console.info(`on rewind , do rewind task`);
+              // ...
               // do some tasks ···
             });
+            // ...
           })
       }
       .width('100%')
@@ -502,27 +571,34 @@ The application can call APIs to set the fast-forward/rewind intervals in three 
 
 ### Favoriting Media Assets
 
-To implement favoriting, a music application must call [on('toggleFavorite')](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#ontogglefavorite10) to register the **toggleFavorite** control command.
+To implement favoriting, a music application can call [on('toggleFavorite')](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#ontogglefavorite10) to register the **toggleFavorite** control command.
 
-```ts
+<!-- @[toggleFavorite_mediaAssets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/FavoritingMediaAssets.ets) -->
+
+``` TypeScript
 import { avSession as AVSessionManager } from '@kit.AVSessionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+// ...
 
 @Entry
 @Component
 struct Index {
   @State message: string = 'hello world';
+  // ...
 
   build() {
     Column() {
+      // ...
       Text(this.message)
         .onClick(async () => {
           let context = this.getUIContext().getHostContext() as Context;
           // It is assumed that an AVSession object has been created. For details about how to create an AVSession object, see the node snippet above.
           let type: AVSessionManager.AVSessionType = 'audio';
           let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
+          // ...
           session.on('toggleFavorite', (assetId) => {
             console.info(`on toggleFavorite `);
+            // ...
             // The application receives the toggleFavorite command and favorites or unfavorites the media asset.
 
             // Set the new state to AVSession after the application finishes favoriting or unfavoriting.
@@ -531,10 +607,13 @@ struct Index {
             };
             session.setAVPlaybackState(playbackState).then(() => {
               console.info(`SetAVPlaybackState successfully`);
+              // ...
             }).catch((err: BusinessError) => {
               console.error(`SetAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
+              // ...
             });
           });
+          // ...
         })
     }
     .width('100%')
@@ -543,31 +622,39 @@ struct Index {
 }
 ```
 
-### Setting the Loop Mode
+### Implementing Loop Mode
 
-For music applications, the controller displays control operations in loop mode by default. Currently, the system supports four fixed [loop modes](../../reference/apis-avsession-kit/arkts-apis-avsession-e.md#loopmode10), namely, shuffle, sequential playback, single loop, and playlist loop. After switching the loop mode as instructed, the application needs to report the new loop mode.
+For music applications, the Media Controller displays control operations in loop mode by default.
 
-Even if the application does not support the four fixed loop modes, it must report one of them to the system.
+The Media Controller supports switching between four fixed [loop modes](../../reference/apis-avsession-kit/arkts-apis-avsession-e.md#loopmode10): shuffle, sequential playback, single loop, and playlist loop. After the application receives the loop mode switching command and completes the switching, it needs to report the switched **LoopMode** to the system.
+
+If the **LoopMode** supported by the application does not match any of the four predefined loop modes, the application must select and report one of the four modes to the system. The mode to report is determined by the application.
 
 Refer to the code snippet below:
 
-```ts
+<!-- @[settingTheLoopMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingTheLoopMode.ets) -->
+
+``` TypeScript
 import { avSession as AVSessionManager } from '@kit.AVSessionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+// ...
 
 @Entry
 @Component
 struct Index {
   @State message: string = 'hello world';
+  // ...
 
   build() {
     Column() {
+      // ...
       Text(this.message)
         .onClick(async () => {
           let context = this.getUIContext().getHostContext() as Context;
           // It is assumed that an AVSession object has been created. For details about how to create an AVSession object, see the node snippet above.
           let type: AVSessionManager.AVSessionType = 'audio';
           let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
+          // ...
 
           // When the application starts or switches the loop mode, it sets the loop mode in use to the AVSession.
           let playBackState: AVSessionManager.AVPlaybackState = {
@@ -575,23 +662,29 @@ struct Index {
           };
           session.setAVPlaybackState(playBackState).then(() => {
             console.info(`set AVPlaybackState successfully`);
+            // ...
           }).catch((err: BusinessError) => {
             console.error(`Failed to set AVPlaybackState. Code: ${err.code}, message: ${err.message}`);
+            // ...
           });
 
           // The application listens for loop mode changes.
           session.on('setLoopMode', (mode) => {
             console.info(`on setLoopMode ${mode}`);
+            // ...
             // After receiving the instruction for setting the loop mode, the application determines the next mode. After the switching is complete, the application reports the new loop mode through AVPlaybackState.
             let playBackState: AVSessionManager.AVPlaybackState = {
               loopMode: AVSessionManager.LoopMode.LOOP_MODE_SINGLE,
             };
             session.setAVPlaybackState(playBackState).then(() => {
               console.info(`set AVPlaybackState successfully`);
+              // ...
             }).catch((err: BusinessError) => {
               console.error(`Failed to set AVPlaybackState. Code: ${err.code}, message: ${err.message}`);
+              // ...
             });
           });
+          // ...
         })
     }
     .width('100%')
@@ -602,27 +695,34 @@ struct Index {
 
 ### Performing Progress Control
 
-An application that supports progress display can further support progress control. To support progress control, the application must respond to the **seek** control command. When users drag the progress bar in the controller, the application receives a callback. Refer to the code snippet below:
+If the application supports [progress bar display](#setting-progress-bar-information), it must also support progress bar control by registering the seek control command. When the user drags the progress bar in the Media Controller, the application receives the corresponding callback and must handle it properly. For reference, see the following implementation:
 
-```ts
+<!-- @[performingProgressControl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/PerformingProgressControl.ets) -->
+
+``` TypeScript
 import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+// ...
 
 @Entry
 @Component
 struct Index {
   @State message: string = 'hello world';
+  // ...
 
   build() {
     Column() {
+      // ...
       Text(this.message)
         .onClick(async () => {
           let context = this.getUIContext().getHostContext() as Context;
           // It is assumed that an AVSession object has been created. For details about how to create an AVSession object, see the node snippet above.
           let type: AVSessionManager.AVSessionType = 'audio';
           let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
+          // ...
 
-          session.on('seek', (position: number) => {
-            console.info(`on seek , the time is ${JSON.stringify(position)}`);
+          session.on('seek', (time: number) => {
+            console.info(`on seek , the time is ${time}`);
+            // ...
 
             // The seek operation may trigger a long buffering time. You can set the playback state to PLAYBACK_STATE_BUFFERING.
             let playbackState: AVSessionManager.AVPlaybackState = {
@@ -631,8 +731,10 @@ struct Index {
             session.setAVPlaybackState(playbackState, (err) => {
               if (err) {
                 console.error(`Failed to set AVPlaybackState. Code: ${err.code}, message: ${err.message}`);
+                // ...
               } else {
                 console.info(`SetAVPlaybackState successfully`);
+                // ...
               }
             });
 
@@ -641,17 +743,21 @@ struct Index {
             // After seeking to the specified position, the application synchronizes the new position to the system.
             playbackState.state = AVSessionManager.PlaybackState.PLAYBACK_STATE_PLAY; // Playing state.
             playbackState.position = {
-              elapsedTime: position, // Playback position, in milliseconds.
+              elapsedTime: time, // Elapsed playback position, in ms.
               updateTime: new Date().getTime(), // Timestamp when the application updates the current position, in milliseconds.
             }
             session.setAVPlaybackState(playbackState, (err) => {
               if (err) {
                 console.error(`Failed to set AVPlaybackState. Code: ${err.code}, message: ${err.message}`);
+                // ...
               } else {
                 console.info(`SetAVPlaybackState successfully`);
+                // ...
               }
             });
           });
+
+          // ...
         })
     }
     .width('100%')
@@ -662,18 +768,15 @@ struct Index {
 
 ## Adapting to Media Notification
 
-Currently, the system does not provide APIs for proactively sending control notifications to applications. When an application that has integrated the media controller enters the playing state, the system automatically sends a notification and displays the notification in the notification center and on the lock screen.
+After the application properly integrates with AVSession by following the preceding process, sets the metadata and correct playback state information, and registers control commands, information about the application is displayed in the system notification and on the lock screen when the application starts playback.
 
-> **NOTE**
->
-> The system sends playback control widgets in the notification center and on the lock screen and controls their lifecycle.
 
 ## Adapting to Bluetooth and Wired Key Events
 
-Currently, the system does not provide APIs for listening for multimodal key events for applications. If an application needs to listen for media key events from Bluetooth and wired headsets, the application can register control commands with AVSession. AVSession provides the following two methods for implementation:
+After an application correctly accesses AVSession, it can listen for Bluetooth and wired headset key events by registering control commands. AVSession provides the following two implementation methods:
 - Method 1 (recommended)
 
-  Integrate the media controller based on service requirements, [register the required control commands](#registering-control-commands), and implement the corresponding functionalities. AVSession listens for multimodal key events, converts them into AVSession control commands, and sends them to the application. The application does not need to differentiate between various key events. Instead, it processes the key events based on the callback of AVSession. Implementing play and pause functions through this method also adapts to the wear detection of Bluetooth headsets, with play and pause commands received upon wearing or removing both earpieces. Currently, the following AVSession control commands can be converted:
+  You can register the required control commands as needed by referring to [Control Command Processing](#control-command-processing). The AVSession control commands that can be converted are as follows:
   | Control Command| Description  |
   | ------  | -------------------------|
   | play    | Plays the media.|
@@ -683,63 +786,76 @@ Currently, the system does not provide APIs for listening for multimodal key eve
   | playPrevious    | Plays the previous media asset.|
   | fastForward    | Fast-forwards.|
   | rewind    | Rewinds.|
-  
-  ```ts
+
+  <!-- @[adaptingToBluetoothMethodOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/AdaptingToBluetoothMethodOne.ets) -->
+
+  ``` TypeScript
   import { avSession as AVSessionManager } from '@kit.AVSessionKit';
   import { BusinessError } from '@kit.BasicServicesKit';
+  // ...
   
   @Entry
   @Component
   struct Index {
     @State message: string = 'hello world';
+    // ...
   
     build() {
       Column() {
+        // ...
         Text(this.message)
           .onClick(async () => {
             try {
               let context = this.getUIContext().getHostContext() as Context;
               let type: AVSessionManager.AVSessionType = 'audio';
               let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
-              // Set the necessary media information. This step is mandatory. Otherwise, the application cannot receive control events.
+              // ...
+              // Set the required media information. This is mandatory; otherwise, control events cannot be received.
               let metadata: AVSessionManager.AVMetadata = {
-                assetId: '0', // Specified by the application, used to identify the media asset in the application media library.
+                assetId: '0', // Specified by the application to identify the media in the application's media library.
                 title: 'TITLE',
                 mediaImage: 'IMAGE',
                 artist: 'ARTIST'
               };
               session.setAVMetadata(metadata).then(() => {
                 console.info(`SetAVMetadata successfully`);
+                // ...
               }).catch((err: BusinessError) => {
                 console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
+                // ...
               });
-              // Generally, logic processing on the player is implemented in the listener.
-              // After the processing is complete, use the setter to synchronize the playback information. For details, see the code snippet above.
+              // Generally, the corresponding logic for the player is processed in the listener.
+              // After processing, synchronize the playback-related information through the set API. Refer to the example above.
               session.on('play', () => {
                 console.info(`on play , do play task`);
-                // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('play') to cancel listening.
-                // After the processing is complete, call setAVPlayState to report the playback state.
+                // ...
+                // If this command is not supported yet, do not register it; or, if it is registered but not used for the time being, cancel the listener through session.off('play').
+                // After processing, use setAVPlayState to report the playback state.
               });
               session.on('pause', () => {
                 console.info(`on pause , do pause task`);
-                // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('pause') to cancel listening.
-                // After the processing is complete, call setAVPlayState to report the playback state.
+                // ...
+                // If this command is not supported yet, do not register it; or, if it is registered but not used for the time being, cancel the listener through session.off('pause').
+                // After processing, use setAVPlayState to report the playback state.
               });
+              // ...
             } catch (err) {
               if (err) {
                 console.error(`AVSession create Error: Code: ${err.code}, message: ${err.message}`);
+                // ...
               }
-            }
+              }
           })
       }
       .width('100%')
       .height('100%')
+      }
     }
-  }
   ```
-  
+
 - Method 2
-  Register the [HandleMediaKeyEvent](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onhandlekeyevent10) callback through AVSession. The callback directly forwards the [KeyEvent](../../reference/apis-input-kit/js-apis-keyevent.md). The application is required to identify the type of the key event and implement the corresponding functionalities. Currently, the following key events can be forwarded:
+
+  Register the [on('handleKeyEvent')](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onhandlekeyevent10) command through AVSession. This callback directly forwards the media key event [KeyEvent](../../reference/apis-input-kit/js-apis-keyevent.md). You need to identify the type of the key event and respond to the event to implement the corresponding function. The key event types that can be forwarded are as follows:
 
   | Key Type ([KeyCode](../../reference/apis-input-kit/js-apis-keycode.md#keycode))| Description  |
   | ------  | -------------------------|
@@ -752,44 +868,54 @@ Currently, the system does not provide APIs for listening for multimodal key eve
   | KEYCODE_MEDIA_PLAY    | Play key.|
   | KEYCODE_MEDIA_PAUSE   | Pause key.|
 
-  ```ts
+  <!-- @[adaptingToBluetoothMethodTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/AdaptingToBluetoothMethodTwo.ets) -->  
+
+  ``` TypeScript
   import { avSession as AVSessionManager } from '@kit.AVSessionKit';
   import { BusinessError } from '@kit.BasicServicesKit';
+  // ...
   
   @Entry
   @Component
   struct Index {
     @State message: string = 'hello world';
+    // ...
   
     build() {
       Column() {
+        // ...
         Text(this.message)
           .onClick(async () => {
             let context = this.getUIContext().getHostContext() as Context;
             let type: AVSessionManager.AVSessionType = 'audio';
             let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
-            // Set the necessary media information. This step is mandatory. Otherwise, the application cannot receive key events.
+            // ...
+            // Set the required media information. This is mandatory; otherwise, key events cannot be received.
             let metadata: AVSessionManager.AVMetadata = {
-              assetId: '0', // Specified by the application, used to identify the media asset in the application media library.
+              assetId: '0', // Specified by the application to identify the media in the application's media library.
               title: 'TITLE',
               mediaImage: 'IMAGE',
               artist: 'ARTIST'
             };
             session.setAVMetadata(metadata).then(() => {
               console.info(`SetAVMetadata successfully`);
+              // ...
             }).catch((err: BusinessError) => {
               console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
+              // ...
             });
             session.on('handleKeyEvent', (event) => {
-              // Parse the key code. The application must perform logic processing on the player based on the key code.
+              // Parse the keycode. The application needs to perform corresponding logic on the player based on the keycode.
               console.info(`on handleKeyEvent, keyCode=${event.key.code}`);
+              // ...
             });
+            // ...
           })
       }
       .width('100%')
       .height('100%')
+      }
     }
-  }
   ```
 
 > **NOTE**
@@ -797,5 +923,4 @@ Currently, the system does not provide APIs for listening for multimodal key eve
 > 1. Both methods require the accurate configuration of media information AVMetadata and the registration of corresponding control interfaces to receive control commands and key events.
 > 2. Choose either method for integration. Method 1 is recommended.
 
-<!--RP2-->
-<!--RP2End-->
+<!--RP2--><!--RP2End-->

@@ -1,46 +1,45 @@
 # Glossary
-
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=45526eba67080b876eb51af31a33be43ae26f701 translatedAt=2026-07-13T13:20:22.365Z pushedAt=2026-07-20T14:00:02.457Z -->
+<!-- md-trans-meta sourceCommit=092adc6b47e5b0c088b6fe6b4574b30796b51a5e translatedAt=2026-09-02T08:33:02.636Z pushedAt=2026-09-03T02:12:25.664Z -->
 
 ## A
 
 ### Audio & Video Session (AVSession)
 
-A communication channel between a media application and a media controller for exchanging playback information and control commands. One end is connected to the media application, and the other is connected to a controller, such as the playback control center or a voice assistant. It is the core concept of AVSession Kit and provides unified media presentation and playback control capabilities.
+A communication channel between a media application and a media controller for exchanging playback information and control commands. One end is connected to the media application, and the other is connected to a controller, such as Media Controller or AI Voice. It is the core concept of AVSession Kit and provides unified media presentation and playback control capabilities.
 
 ### AVMetadata
 
-A collection of metadata that describes a media item. It includes properties such as the media ID (`assetId`), title (`title`), author (`author`), album (`album`), writer (`writer`), duration (`duration`), lyrics (`lyric`), cover image (`mediaImage`), and audio source tag (`displayTags`). Media applications use this metadata to present media information in the playback control center.
+A collection of metadata that describes a media item. It includes properties such as the media ID (`assetId`), title (`title`), author (`author`), album (`album`), writer (`writer`), duration (`duration`), lyrics (`lyric`), cover image (`mediaImage`), and audio source tag (`displayTags`). Media applications use this metadata to present media information in the Media Controller.
 
 ### AVMusicTemplate
 
-A class that encapsulates interactions with the playback control center. It includes properties such as the session ID (`sessionId`) and session tag (`sessionTag`), and provides APIs for exchanging data with the playback control center. Media applications can use this class to report media information and respond to playback control commands, reducing application-side implementation effort.
+A class that encapsulates interactions with the Media Controller. It includes properties such as the session ID (`sessionId`) and session tag (`sessionTag`), and provides APIs for exchanging data with the Media Controller. Media applications can use this class to report media information and respond to playback control commands, reducing application-side implementation effort.
 
 ### AVPlaybackState
 
-A collection of properties that describes the current playback state. It includes the playback state (`state`), playback position (`position`), playback speed (`speed`), buffered time (`bufferedTime`), loop mode (`loopMode`), favorite status (`isFavorite`), active media ID (`activeItemId`), and custom media data (`extras`). It is used to present playback progress and playback controls in the playback control center.
+A collection of properties that describes the current playback state. It includes the playback state (`state`), playback position (`position`), playback speed (`speed`), buffered time (`bufferedTime`), loop mode (`loopMode`), favorite status (`isFavorite`), active media ID (`activeItemId`), and custom media data (`extras`). It is used to present playback progress and playback controls in the Media Controller.
 
 ### AVSessionController
 
-An object held by a media session controller to control playback in the application that provides the media session. It can obtain playback information and listen for playback state changes in the media application, keeping media session information synchronized between the media application and the playback control center.
+An object held by an AVSession controller to control playback in the application that provides the AVSession. It can obtain playback information and listen for playback state changes in the media application, keeping AVSession information synchronized between the media application and the Media Controller.
 
 ### AVSessionDescriptor
 
-An object that describes a media session. It includes properties such as the media session ID (`sessionId`), media session type (`type`), custom media session name (`sessionTag`), information about the application to which the media session belongs (`elementName`), and whether the session is the top session (`isTopSession`).
+An object that describes an AVSession. It includes properties such as the AVSession ID (`sessionId`), session type (`type`), custom session name (`sessionTag`), information about the application to which the AVSession belongs (`elementName`), and whether the session is the top session (`isTopSession`).
 
 ### AVSessionManager
 
-A module that provides media session management capabilities. It can create media sessions (`AVSession`) and media session controllers (`AVSessionController`), send system control events, and listen for media session state changes.
+A module that provides AVSession management capabilities. It can create AVSessions (`AVSession`) and AVSession controllers (`AVSessionController`), send system control events, and listen for AVSession state changes.
 
 ### AVSessionType
 
-An enumeration that defines media session types, including `audio` for audio sessions, `video` for video sessions, `voice_call` for voice call sessions, `video_call` for video call sessions, and `photo` for photo sessions. The session type determines the playback control template displayed in the playback control center.
+Parameters that define the AVSession type, including five types: `audio` (audio session), `video` (video session), `voice_call` (voice call session), `video_call` (video call session), and `photo` (photo session). Different types determine the control template style displayed in the Media Controller.
 
 ## B
 
@@ -52,7 +51,7 @@ An enumeration that specifies whether playback continues after an application en
 
 ### DisplayTag
 
-A tag that identifies the audio source of media content. It is used to display audio source information in the playback control center. Currently, `TAG_AUDIO_VIVID` is supported to indicate that the audio source uses Audio Vivid.
+A tag that identifies the media audio source, used to display media audio information in the Media Controller. Currently, the `TAG_AUDIO_VIVID` tag is supported, indicating that the audio source is Audio Vivid.
 
 ## P
 
@@ -64,4 +63,4 @@ An enumeration that defines the protocol types supported by a remote device. It 
 
 ### TopSession
 
-The media session with the highest priority in the system, typically a session that is currently playing. A media session controller can communicate directly with the top session without first obtaining its corresponding controller. For example, it can send playback control commands and key events directly to the top session.
+The AVSession with the highest priority in the system, typically a session that is currently playing. An AVSession controller can communicate directly with the top session without first obtaining its corresponding controller. For example, it can send playback control commands and key events directly to the top session.
