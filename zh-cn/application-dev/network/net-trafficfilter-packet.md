@@ -57,6 +57,25 @@ libnet_trafficfilter.so
 
 <!-- @[header_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp) -->
 
+<div class="same-source-code">
+``` C++
+#include "napi/native_api.h"
+#include <cstdint>
+#include <cstring>
+#include <string>
+#include <vector>
+#include <map>
+#include <algorithm>
+#include <arpa/inet.h>
+#include "hilog/log.h"
+#include "network/netmanager_ext/net_trafficfilter.h"
+```
+
+<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp?same_code_link_text=header_file" target="_blank" rel="nofollow">napi_init.cpp</a></p>
+
+</div>
+
+
 
 在 C++ 源文件中引入以下头文件：
 
