@@ -387,6 +387,36 @@ libnet_trafficfilter.so
 
    <!-- @[clear_packet_rule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp) -->
 
+   <div class="same-source-code">
+   ``` C++
+   static napi_value ClearPacketRuleNapi(napi_env env, napi_callback_info info)
+   {
+       size_t argc = 1;
+       napi_value args[1] = {nullptr};
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+   
+       uint32_t id;
+       if (argc >= 1) {
+           napi_get_value_uint32(env, args[0], &id);
+       }
+   
+       int ret = -1;
+       OH_TrafficFilter_PacketController* controller = g_controllerMap[id];
+       if (controller != nullptr) {
+           ret = OH_TrafficFilter_ClearPacketRule(controller);
+       }
+   
+       napi_value result;
+       napi_create_int32(env, ret, &result);
+       return result;
+   }
+   ```
+
+   <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp?same_code_link_text=clear_packet_rule" target="_blank" rel="nofollow">napi_init.cpp</a></p>
+
+   </div>
+
+
 
    简要说明：清除规则后，已注册的回调仍可能因后续新增规则而被触发；如需完全停止回调，请在清除规则前先注销回调。
 
