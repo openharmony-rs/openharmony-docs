@@ -6,8 +6,9 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=627767fa3527b3e4ea03a35d3df7c7dd0cac695b translatedAt=2026-09-02T11:22:29.226Z pushedAt=2026-09-03T01:57:15.280Z -->
 
-**@ObservedV2** is a class decorator used in state management V2. **@ObservedV2** is used together with **@Trace** to decorate classes and class properties, enhancing the observation capability for decorated classes and properties. Compared with **@Observed** in state management V1, **@ObservedV2** provides more fine-grained, property-level in-depth observation capabilities. It is suitable for scenarios where changes in nested object properties need to be precisely tracked to drive UI updates, effectively improving the performance and flexibility of state management.
+**\@ObservedV2** is a class decorator used in [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2). **\@ObservedV2** is used together with [@Trace](./ts-state-management-trace.md) to decorate classes and class properties, enhancing the observation capability for decorated classes and properties. Compared with [@Observed](./ts-state-management-observed.md) in [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1), **\@ObservedV2** provides more fine-grained, property-level in-depth observation capabilities. It is suitable for scenarios where changes in nested object properties need to be precisely tracked to drive UI updates, effectively improving the performance and flexibility of state management.
 
 For details, see [@ObservedV2 and @Trace Decorators: Observing Class Property Changes](../../../ui/state-management/arkts-new-observedV2-and-trace.md).
 
@@ -55,3 +56,4 @@ struct Index {
   }
 }
 ```
+
