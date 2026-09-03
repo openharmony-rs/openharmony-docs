@@ -1,11 +1,11 @@
-# Local Media Session FAQs
+# Local AVSession FAQs
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=c4bf94fb8e83e02f048c200f5055c767e61447fe translatedAt=2026-09-02T08:33:22.106Z pushedAt=2026-09-03T01:45:03.483Z -->
+<!-- md-trans-meta sourceCommit=c4bf94fb8e83e02f048c200f5055c767e61447fe translatedAt=2026-09-02T08:33:22.106Z pushedAt=2026-09-03T07:55:06.984Z -->
 
 This document summarizes typical issues encountered by audio and video apps during local media session integration with [AVSession Kit](avsession-overview.md), along with their diagnosis and resolution methods. You can use [AVSession management error codes](../../reference/apis-avsession-kit/errorcode-avsession.md) and HiLog logs to further diagnose issues.
 
@@ -102,7 +102,7 @@ After the app is switched to the background, audio and video playback is forcibl
      }
      ```
 
-     For more details, see [Setting the Background Playback Mode](avsession-background-scene.md#setting-the-background-playback-mode).
+     For more details, see [Configuring Background Playback Mode](avsession-background-scene.md#configuring-background-playback-mode).
 
 ## Media Controller Not Displaying the App Session
 

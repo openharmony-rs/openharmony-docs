@@ -24,7 +24,7 @@
   - [Distributed AVSession Overview (for System Applications Only)](distributed-avsession-overview-sys.md)
   - [Using Distributed AVSession (for System Applications Only)](using-distributed-avsession-sys.md)
   <!--DelEnd-->
-  - [Using the Call Device Switching Component](using-switch-call-devices.md)<!--RP1--><!--RP1End-->
+  - [Switching Call Devices Using Components](using-switch-call-devices.md)<!--RP1--><!--RP1End-->
 
 - Audio Template<!--music-template-->
   - [Using the Audio Template](using-avsession-AVMusicTemplate.md)
@@ -33,6 +33,6 @@
   <!--DelEnd-->
 
 - AVSession Kit FAQs<!--avsession-kit-faq-->
-  - [Local Media AVSession FAQs](avsession-faq-local.md)<!--RP2--><!--RP2End-->
+  - [Local AVSession FAQs](avsession-faq-local.md)<!--RP2--><!--RP2End-->
 
 - [Glossary](avsession-glossary.md)
