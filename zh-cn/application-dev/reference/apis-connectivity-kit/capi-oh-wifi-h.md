@@ -93,11 +93,11 @@ enum OH_WifiLinkType
 | -- | -- |
 | OH_WIFI_LINK_DISCONNECT = -1 | 未连接。|
 | OH_WIFI_LINK_DEFAULT_LINK = 0 | 默认链路。|
-| OH_WIFI_LINK_WIFI7_SINGLE_LINK = 1 | WIFI7单链路。|
-| OH_WIFI_LINK_WIFI7_MLSR = 2 | WIFI7 MLSR（Multi-Link Single Radio 多链路单射频）。|
-| OH_WIFI_LINK_WIFI7_EMLSR = 3 | WIFI7 EMLSR（Enhanced Multi-Link Single Radio 增强型多链路单射频）。|
-| OH_WIFI_LINK_WIFI7_STR = 4 | WIFI7 STR（Simultaneous Transmit and Receive 同时发送与接收）。|
-| OH_WIFI_LINK_WIFI7_LEGACY = 5 | WIFI7传统模式。|
+| OH_WIFI_LINK_WIFI7_SINGLE_LINK = 1 | Wi-Fi7单链路。|
+| OH_WIFI_LINK_WIFI7_MLSR = 2 | Wi-Fi7 MLSR（Multi-Link Single Radio 多链路单射频）。|
+| OH_WIFI_LINK_WIFI7_EMLSR = 3 | Wi-Fi7 EMLSR（Enhanced Multi-Link Single Radio 增强型多链路单射频）。|
+| OH_WIFI_LINK_WIFI7_STR = 4 | Wi-Fi7 STR（Simultaneous Transmit and Receive 同时发送与接收）。|
+| OH_WIFI_LINK_WIFI7_LEGACY = 5 | Wi-Fi7传统模式。|
 
 ### OH_WifiConnState
 
@@ -114,14 +114,14 @@ Wi-Fi连接状态。
 | 枚举项 | 描述 |
 | -- | -- |
 | OH_WIFI_CONN_SCANNING | 设备正在搜索可用的热点。|
-| OH_WIFI_CONN_CONNECTING | WIFI连接正在建立。|
-| OH_WIFI_CONN_AUTHENTICATING | WIFI连接正在进行认证。|
-| OH_WIFI_CONN_OBTAINING_IPADDR | 正在获取WIFI连接的IP地址。|
-| OH_WIFI_CONN_CONNECTED | WIFI连接已建立。|
-| OH_WIFI_CONN_DISCONNECTING | WIFI连接正在断开。|
-| OH_WIFI_CONN_DISCONNECTED | WIFI连接已断开。|
-| OH_WIFI_CONN_SPECIAL_CONNECT | WIFI连接处于特殊状态。|
-| OH_WIFI_CONN_UNKNOWN | WIFI连接建立失败。|
+| OH_WIFI_CONN_CONNECTING | Wi-Fi连接正在建立。|
+| OH_WIFI_CONN_AUTHENTICATING | Wi-Fi连接正在进行认证。|
+| OH_WIFI_CONN_OBTAINING_IPADDR | 正在获取Wi-Fi连接的IP地址。|
+| OH_WIFI_CONN_CONNECTED | Wi-Fi连接已建立。|
+| OH_WIFI_CONN_DISCONNECTING | Wi-Fi连接正在断开。|
+| OH_WIFI_CONN_DISCONNECTED | Wi-Fi连接已断开。|
+| OH_WIFI_CONN_SPECIAL_CONNECT | Wi-Fi连接处于特殊状态。|
+| OH_WIFI_CONN_UNKNOWN | Wi-Fi连接建立失败。|
 
 ### OH_WifiChannelWidth
 
@@ -159,10 +159,10 @@ Wi-Fi类别。
 | 枚举项 | 描述 |
 | -- | -- |
 | OH_WIFI_CATEGORY_DEFAULT = 1 | 默认类别。|
-| OH_WIFI_CATEGORY_WIFI6 = 2 | WIFI6类别。|
-| OH_WIFI_CATEGORY_WIFI6_PLUS = 3 | WIFI6+类别。|
-| OH_WIFI_CATEGORY_WIFI7 = 4 | WIFI7类别。|
-| OH_WIFI_CATEGORY_WIFI7_PLUS = 5 | WIFI7+类别。|
+| OH_WIFI_CATEGORY_WIFI6 = 2 | Wi-Fi6类别。|
+| OH_WIFI_CATEGORY_WIFI6_PLUS = 3 | Wi-Fi6+类别。|
+| OH_WIFI_CATEGORY_WIFI7 = 4 | Wi-Fi7类别。|
+| OH_WIFI_CATEGORY_WIFI7_PLUS = 5 | Wi-Fi7+类别。|
 
 ### OH_WifiStandard
 
@@ -178,14 +178,14 @@ Wi-Fi标准。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_WIFI_STANDARD_UNDEFINED = 0 | 无效的WIFI标准。|
-| OH_WIFI_STANDARD_11A = 1 | 802.11a WIFI标准。|
-| OH_WIFI_STANDARD_11B = 2 | 802.11b WIFI标准。|
-| OH_WIFI_STANDARD_11G = 3 | 802.11g WIFI标准。|
-| OH_WIFI_STANDARD_11N = 4 | 802.11n WIFI标准。|
-| OH_WIFI_STANDARD_11AC = 5 | 802.11ac WIFI标准。|
-| OH_WIFI_STANDARD_11AX = 6 | 802.11ax WIFI标准。|
-| OH_WIFI_STANDARD_11AD = 7 | 802.11ad WIFI标准。|
+| OH_WIFI_STANDARD_UNDEFINED = 0 | 无效的Wi-Fi标准。|
+| OH_WIFI_STANDARD_11A = 1 | 802.11a Wi-Fi标准。|
+| OH_WIFI_STANDARD_11B = 2 | 802.11b Wi-Fi标准。|
+| OH_WIFI_STANDARD_11G = 3 | 802.11g Wi-Fi标准。|
+| OH_WIFI_STANDARD_11N = 4 | 802.11n Wi-Fi标准。|
+| OH_WIFI_STANDARD_11AC = 5 | 802.11ac Wi-Fi标准。|
+| OH_WIFI_STANDARD_11AX = 6 | 802.11ax Wi-Fi标准。|
+| OH_WIFI_STANDARD_11AD = 7 | 802.11ad Wi-Fi标准。|
 
 
 ## 函数说明
