@@ -16,7 +16,10 @@
 
 以下示例为自动反色的效果：材质下方的背景在黑白之间滚动变化，为TabBar组件设置colorInvert为true的ULTRA_THIN材质后，TabBar内的文字和图标颜色随背景自动反色，使文字与图标清晰可读。
 
-```ts
+<!-- @[material_color_invert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialColorInvertExample.ets) -->
+
+
+``` TypeScript
 import { uiMaterial } from '@kit.ArkUI';
 
 @Component
@@ -82,6 +85,7 @@ struct PageMaterialReverse {
 }
 ```
 
+
 ![colorInvert](figures/colorInvert.gif)
 
 ## 为沉浸式系统材质赋色
@@ -94,7 +98,10 @@ struct PageMaterialReverse {
 
 以下示例为材质赋色的效果：为ULTRA_THIN材质组件设置半透明的materialColor后，材质在透出背景内容的同时呈现对应的色调。
 
-```ts
+<!-- @[material_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialColorExample.ets) -->
+
+
+``` TypeScript
 import { uiMaterial } from '@kit.ArkUI';
 
 @Entry
@@ -141,6 +148,7 @@ struct MaterialColorExample {
 }
 ```
 
+
 ![materialColor](figures/material-color.jpg)
 
 ## 设置沉浸式系统材质交互效果
@@ -152,12 +160,15 @@ struct MaterialColorExample {
 
 以下示例为交互形变与点光源的效果：设置interactive为true并传入lightEffect对象后，按压组件时产生弹性形变，手指触摸时产生流光跟随效果。
 
-```ts
+<!-- @[material_interactive_light](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialInteractiveLightExample.ets) -->
+
+
+``` TypeScript
 import { uiMaterial } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct MaterialColorExample {
+struct MaterialInteractiveLightExample {
   build() {
     Column() {
       Tabs({ barPosition: BarPosition.End }) {
@@ -199,6 +210,7 @@ struct MaterialColorExample {
 }
 ```
 
+
 ![interactiveLight](figures/interactive-light.gif)
 
 ## 设置沉浸式系统材质阴影效果
@@ -207,7 +219,10 @@ struct MaterialColorExample {
 
 将applyShadow置为false后设置自定义shadow（如粉色阴影）的效果，示例如下：
 
-```ts
+<!-- @[custom_shadow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/CustomShadowExample.ets) -->
+
+
+``` TypeScript
 import { uiMaterial } from '@kit.ArkUI';
 
 @Entry
@@ -241,6 +256,10 @@ struct CustomShadowExample {
     Column() {
       Navigation() {
         // 页面内容
+        Image($r('app.media.invert'))
+          .width('100%')
+          .height('100%')
+          .objectFit(ImageFit.Cover)
       }
       .title({ builder: this.NavigationTitle, height: '100%' })
       // $r('app.media.greyBackground')需要替换为开发者所需的图像资源文件
@@ -250,5 +269,6 @@ struct CustomShadowExample {
   }
 }
 ```
+
 
 ![shadowPink](figures/shadowPink.jpg)
