@@ -6,7 +6,7 @@
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=4c244f2ed12456a4c6059eccff764e442d7872b9 translatedAt=2026-08-24T07:41:46.634Z pushedAt=2026-08-26T09:18:29.219Z -->
+<!-- md-trans-meta sourceCommit=c9f68a28229d3fb5da602baa0bfb8e542d407a50 translatedAt=2026-09-02T02:26:48.528Z pushedAt=2026-09-02T11:29:20.109Z -->
 
 > **NOTE**
 >
@@ -68,7 +68,7 @@ Input method client error. Possible causes:
 
 **Description**
 
-This error code is reported when the API for showing or hiding the keyboard fails to be called by an application.
+This error code is reported when edit controls such as dialog boxes within applications (WeChat, Settings, Contacts, etc.) fail to show or hide the soft keyboard.
 
 **Possible Causes**
 
@@ -84,7 +84,7 @@ This error code is reported when the API for showing or hiding the keyboard fail
 
 2. Switch the application to the foreground, ensure that it is not covered by other apps or windows, and trigger the keyboard to pop up.
 
-3. According to the IPC constraints and limitations, adjust the volume of data to be transmitted to a smaller size before initiating the request. The total volume of data transmitted at the IPC layer in a single API call equals the volume of data sent by the application side plus the necessary data required for system-layer processing. Therefore, the maximum volume of data that an application can actually send when calling an API (about 1 MB) is smaller than the maximum volume of data limited by IPC itself (about 1.2 MB). Note: **showTextInput** and **hideTextInput** must be called in pairs to avoid resource leaks.
+3. According to the IPC constraints, adjust the volume of data to be transmitted to a smaller size before initiating the request. The total volume of data transmitted at the IPC layer in a single API call equals the volume of data sent by the application side plus the necessary data required for system-layer processing. Therefore, the maximum volume of data that an application can actually send when calling an API (about 1 MB) is smaller than the maximum volume of data limited by IPC itself (about 1.2 MB). Note: **showTextInput** and **hideTextInput** must be called in pairs to avoid resource leaks.
 
 ## 12800004 Not an Input Method
 
@@ -120,7 +120,7 @@ When the API for switching input methods is called, input method configuration p
 
 **Solution**
 
-Run the command **hdc shell param get persist.sys.default_ime** to check the default input method parameter. If the parameter is displayed normally, the system parameter configuration module is working properly. It is recommended that you restart the device and retry the configuration persistence operation.
+Run the command `hdc shell param get persist.sys.default_ime` to check the default input method parameter. If the parameter is displayed normally, the system parameter configuration module is working properly. It is recommended that you restart the device and retry the configuration persistence operation.
 
 ## 12800006 Input Method Controller Error
 
@@ -174,7 +174,7 @@ This error code is thrown when an application calls any API of the [input method
 
 **Solution**
 
-Run the command **ps -A | grep inputmethod** to check the process ID of the input method service. If the process exists, the service is running normally.
+Run the command `ps -A | grep inputmethod` to check the process ID of the input method service. If the process exists, the service is running normally.
 
 ## 12800009 Input Method Client Detached
 
@@ -224,7 +224,7 @@ The current edit box does not support the text preview feature.
 
 **Possible Causes**
 
-Preview of the text input box is not supported.
+Text preview of the edit box is not supported.
 
 **Solution**
 
@@ -242,7 +242,7 @@ The input method panel of the soft keyboard type is not created.
 
 **Possible Causes**
 
-The input method app has not created a soft keyboard type panel.
+The input method application has not created a soft keyboard panel.
 
 **Solution**
 
@@ -260,7 +260,7 @@ The window manager service is not running properly.
 
 **Possible Causes**
 
-After the API is called, the system uses the capabilities of the window manager module. This error is thrown due to an error of the window manager service.
+After the API is called, the system uses the capabilities of the window manager service module. This error is thrown due to an error of the window manager service.
 
 **Solution**
 
@@ -300,7 +300,7 @@ This error is thrown if the message receiver does not register [MessageHandler](
 
 **Solution**
 
-The message receiving side must first register a **MessageHandler** to receive custom communication data before calling **recvMessage** to receive messages. Calling sequence: first register a **MessageHandler** (to listen for data), and then call **recvMessage** (to receive data). The input method application side calls [recvMessage](js-apis-inputmethodengine.md#recvmessage15), and the input method client side calls [recvMessage](js-apis-inputmethod.md#recvmessage15). Calling **recvMessage** without registering **MessageHandler** will result in failure to receive data.
+The message receiver must first register a **MessageHandler** to receive custom communication data before calling **recvMessage** to receive messages. Calling sequence: first register a **MessageHandler** (to listen for data), and then call **recvMessage** (to receive data). The input method application side calls [recvMessage](js-apis-inputmethodengine.md#recvmessage15), and the input method client side calls [recvMessage](js-apis-inputmethod.md#recvmessage15). Calling **recvMessage** without registering **MessageHandler** will result in failure to receive data.
 
 ## 12800016 Input Method Client Not in Edit Mode
 
@@ -314,11 +314,11 @@ The input method client is not in edit mode.
 
 **Possible Causes**
 
-The input method client exits the edit mode after being attached. For example, [hideTextInput](js-apis-inputmethod.md#hidetextinput10) is called after the self-drawing component is attached to the input method through `Attach`.
+The input method client exits edit mode after being attached. For example, [hideTextInput](js-apis-inputmethod.md#hidetextinput10) is called after the self-drawn component is attached to the input method through `Attach`.
 
 **Solution**
 
-After the input method client is attached and exits the editing state, it needs to re-enter the editing state. The complete call process is: **attach** (to establish attachment) → **showTextInput** (to enter the editing state) → **hideTextInput** (to exit the editing state). For example, a self-drawn control needs to call [showTextInput](js-apis-inputmethod.md#showtextinput10) to re-enter the editing state. Note: After **hideTextInput** is called, other editing operations cannot be called directly; **showTextInput** must be called first to re-enter the editing state.
+After the input method client is attached and exits edit mode, it needs to re-enter edit mode. The complete call process is: **attach** (to establish attachment) → **showTextInput** (to enter the edit mode) → **hideTextInput** (to exit the edit mode). For example, a self-drawn component needs to call [showTextInput](js-apis-inputmethod.md#showtextinput10) to re-enter the edit mode. Note: After **hideTextInput** is called, other editing operations cannot be called directly; **showTextInput** must be called first to re-enter the edit mode.
 
 ## 12800017 Invalid Panel Type or Panel Flag
 
@@ -336,7 +336,7 @@ This error code is thrown when the input method panel type or panel flag is not 
 
 **Solution**
 
-Read the API usage description and adjust the input method panel type or panel status as required.
+Read the API usage description and adjust the input method panel type or panel flag as required.
 
 <!--Del-->
 
@@ -348,7 +348,7 @@ The input method is not found.
 
 **Description**
 
-The input method is not found.
+The input method is not found in the list of input methods installed on the system.
 
 **Possible Causes**
 
@@ -366,15 +366,15 @@ Current operation cannot be applied to the preconfigured default input method.
 
 **Description**
 
-The default input method configured in the system does not support this operation.
+The preconfigured default input method does not support this operation.
 
 **Possible Causes**
 
-[enableInputMethod](js-apis-inputmethod-sys.md#enableinputmethod20) or [EnabledState](js-apis-inputmethod.md#enabledstate15) is called to enable or disable the default input method.
+[enableInputMethod](js-apis-inputmethod-sys.md#enableinputmethod20) or [EnabledState](js-apis-inputmethod.md#enabledstate15) is called to set the enabled state of the preconfigured default input method in the system.
 
 **Solution**
 
-Call the [getDefaultInputMethod](js-apis-inputmethod.md#inputmethodgetdefaultinputmethod11) API to query the default input method configured in the system, and check whether the input method in use is the default input method. If yes, no processing is performed.
+Call the [getDefaultInputMethod](js-apis-inputmethod.md#inputmethodgetdefaultinputmethod11) API to query the preconfigured default input method in the system, and check whether the input method in use is the default input method. If yes, no processing is performed.
 
 <!--DelEnd-->
 
@@ -518,6 +518,7 @@ An application of a user other than user 0 attempts to access or operate on da
 
 Ensure that only applications for user 0 call the APIs for such cross‑user operations.
 
+
 ## 12800026 Input Method System Panel Error
 
 **Error Message**
@@ -551,3 +552,4 @@ An input method system panel operation failed. For example, an application may e
 3. Ensure that the caller is the system panel.
 
 <!--DelEnd-->
+
