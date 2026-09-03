@@ -1,24 +1,27 @@
 # Image Effect (System API)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=e10e7def4863f4f964c4d0cb425b7650081cb83e translatedAt=2026-09-01T12:42:02.685Z -->
 
 This module provides APIs for setting the blur, shadow, and spherical effects of components, and applying image effects to pictures.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [Image Effects](ts-universal-attributes-image-effect.md).
+> - The APIs of this module can be used only in the stage model.
+>
+> - This page contains only the system APIs of this module. For details about other public APIs, see [Image Effects](ts-universal-attributes-image-effect.md).
 
 ## advancedBlendMode<sup>13+</sup>
 
 advancedBlendMode(effect: BlendMode | Blender, type?: BlendApplyType): T
 
-Defines how the component's content (including the content of it child components) is blended with the existing content on the canvas (possibly offscreen canvas) below. This API cannot be used with [blendMode](ts-universal-attributes-image-effect.md#blendmode11).
+Blends the content of the current component (including the content of its child nodes) with the existing content on the canvas below (which may be an offscreen canvas). This API cannot be used together with [blendMode](ts-universal-attributes-image-effect.md#blendmode11). If both are set, only the advancedBlendMode effect takes effect.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 13.
 
@@ -30,14 +33,14 @@ Defines how the component's content (including the content of it child component
 
 | Name| Type                           | Mandatory| Description                                                        |
 | ------ | ------------------------------- | ---- | ------------------------------------------------------------ |
-| effect  | [BlendMode](ts-universal-attributes-image-effect.md#blendmode11)&nbsp;\|&nbsp;[Blender](../../apis-arkgraphics2d/js-apis-uiEffect-sys.md#blender13)  | Yes  | Blend mode or blender type, depending on the parameter type.<br>When the parameter type is **BlendMode**, it indicates the blend mode.<br>Default value: **BlendMode.NONE**<br>When the parameter type is **Blender**, it indicates the blender type, used to describe the blending effect.<br>A **Blender** instance must be created using methods, for example, [uiEffect.createBrightnessBlender](../../apis-arkgraphics2d/js-apis-uiEffect-sys.md#uieffectcreatebrightnessblender), from the **uiEffect** module. Using a custom object as a parameter will not take effect. |
-| type   | [BlendApplyType](ts-universal-attributes-image-effect-sys.md#blendapplytype) |    No   | Whether the blend mode is implemented offscreen.<br>Default value: **BlendApplyType.FAST**<br>**NOTE**<br>1. When this parameter is set to **BlendApplyType.FAST**, the blend mode is not implemented offscreen.<br>2. When this parameter is set to **BlendApplyType.OFFSCREEN**, an offscreen canvas matching the size of the current component is created. The content of the current component (including its child components) is then drawn onto the offscreen canvas, and blended with the existing content on the underlying canvas using the specified blend mode.<br>3. For text components, this API does not apply to emoji expressions when not offscreen.<br>4. Compared with **BlendApplyType.OFFSCREEN**, when this parameter is set to **BlendApplyType.OFFSCREEN_WITH_BACKGROUND**, the system first copies a canvas with a background as the initial background color (the canvas for **BlendApplyType.OFFSCREEN** starts with a transparent background) when creating an offscreen canvas matching the current component's size. The blending operation is then performed on this base. The two modes are identical in all other functional aspects.    |
+| effect  | [BlendMode](ts-universal-attributes-image-effect.md#blendmode11 )&nbsp;\|&nbsp;[Blender](../../apis-arkgraphics2d/js-apis-uiEffect-sys.md#blender13)  | Yes   | When the input parameter type is BlendMode, it indicates the blend mode, and no blending is performed by default. Default value: BlendMode.NONE, which means no special blend effect is applied and the component content is drawn in the default manner.<br>When the input parameter type is Blender, it indicates the blender type, which is used to describe the blend effect.<br>You need to use a method in the uiEffect module to create a Blender instance. For example: [uiEffect.createBrightnessBlender](../../apis-arkgraphics2d/js-apis-uiEffect-sys.md#uieffectcreatebrightnessblender). Using a custom object as the input parameter does not take effect.  |
+| type   | [BlendApplyType](ts-universal-attributes-image-effect-sys.md#blendapplytype)  |    No    | Whether the blend effect (blendMode) is implemented offscreen.<br>Default value: BlendApplyType.FAST<br>**NOTE**<br>1. When set to BlendApplyType.FAST, no offscreen rendering is performed.<br>2. When set to BlendApplyType.OFFSCREEN, an offscreen canvas of the current component size is created, the content of the current component (including child components) is drawn onto the offscreen canvas, and then the specified blend effect (BlendMode or Blender) is used to blend with the existing content on the canvas below.<br>3. In the non-offscreen case, the effect does not apply to emoji in text components.<br>4. Compared with BlendApplyType.OFFSCREEN, when set to BlendApplyType.OFFSCREEN_WITH_BACKGROUND, the system first copies a canvas with a background as the initial base color when creating an offscreen canvas of the same size as the current component (the canvas of the BlendApplyType.OFFSCREEN type is initially transparent), and then performs the blending operation on this basis. The two are consistent in other functional features.     |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## BlendApplyType
 
@@ -49,7 +52,7 @@ Sets how to apply the specified blend mode to the content of a view.
 
 | Name          | Value  | Description                                                            |
 | ---------------| ------ | ---------------------------------------------------------------- |
-| OFFSCREEN_WITH_BACKGROUND<sup>23+</sup> | 2 |When an offscreen canvas is created, an initial background canvas is copied first, and then the content of this component and its child components is drawn on the offscreen canvas. The content is then blended on the canvas.<br> **System API**: This is a system API.|
+| OFFSCREEN_WITH_BACKGROUND<sup>23+</sup> | 2 |When creating an offscreen canvas, first copies a canvas with a background as the initial base color (the canvas of the BlendApplyType.OFFSCREEN type is initially transparent), then draws the content of this component and its child components onto the offscreen canvas, and finally blends the whole. In other functional features, it is consistent with BlendApplyType.OFFSCREEN. <br> **System API:** This API is a system API. |
 
 ## excludeFromRenderGroup<sup>22+</sup>
 
@@ -63,7 +66,7 @@ If this attribute is not set, the current component and its children are not rem
 
 > **NOTE**
 >
-> The drawing content of the component with **excludeFromRenderGroup** set to **true** and its children cannot the component's own boundary range. Otherwise, the displayed content may be clipped. For example, if the child component exceeds the boundary range of the current component due to attributes such as [translate](./ts-universal-attributes-transformation.md#translate) or [scale](./ts-universal-attributes-transformation.md#scale), or the drawing content extend beyond its boundaries because the current component has attributes such as [shadow](./ts-universal-attributes-image-effect.md#shadow) and [pixelStretchEffect](./ts-universal-attributes-image-effect.md#pixelstretcheffect12), the displayed content may be clipped. In such scenarios, **excludeFromRenderGroup** should not be set to **true**.
+> The drawing content of the component with **excludeFromRenderGroup** set to **true** and its children cannot exceed the component's own boundary range. Otherwise, the displayed content may be clipped. For example, if the child component exceeds the boundary range of the current component due to attributes such as [translate](./ts-universal-attributes-transformation.md#translate) or [scale](./ts-universal-attributes-transformation.md#scale), or the drawing content extends beyond its boundaries because the current component has attributes such as [shadow](./ts-universal-attributes-image-effect.md#shadow) and [pixelStretchEffect](./ts-universal-attributes-image-effect.md#pixelstretcheffect12), the displayed content may be clipped. In such scenarios, **excludeFromRenderGroup** should not be set to **true**.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -75,19 +78,27 @@ If this attribute is not set, the current component and its children are not rem
 
 | Name | Type              | Mandatory| Description                                                        |
 | ------- | ------------------ | ---- | ------------------------------------------------------------ |
-| exclude | boolean \| undefined | Yes  | Whether to remove the current component and its child components from the render group of the ancestor component.<br>**true**: yes. **false**: no.<br>If **exclude** is set to **undefined**, the value **false** is used.|
+| exclude | boolean \| undefined | Required | Whether to exclude the current component and its child components from the render group of the ancestor component.<br>The value true means that the current component and its child components are excluded from the render group of the ancestor component and do not belong to the render group of the ancestor component; the value false means that the current component and its child components belong to the render group of the ancestor component.<br>When the value of exclude is undefined, it is processed as false.<br>**Note:**<br>It must be used together with the renderGroup attribute set on the ancestor component to create a render group; it has no effect when used alone. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
-## systemMaterial<sup>23+</sup>
+## edgeLight
 
-systemMaterial(material: SystemUiMaterial | undefined): T
+edgeLight(params: EdgeLightParams | undefined): T
 
-Sets the system material for a component. Different system materials have different attribute effects. This API affects the background color ([backgroundColor](ts-universal-attributes-background.md#backgroundcolor)), border color ([borderColor](ts-universal-attributes-border.md#bordercolor)), border width ([borderWidth](ts-universal-attributes-border.md#borderwidth)), and shadow ([shadow](ts-universal-attributes-image-effect.md#shadow)). You are advised not to use this API together with the aforementioned APIs. For details about the example, see [Setting the System Material](../arkts-apis-uimaterial-sys.md#example-1-setting-the-system-material).
+Adds an edge glow effect to a component. The edge glow effect creates a glowing effect along the edges of the component, starting from a specified position and extending along the edges. This effect enhances the visual appeal of the component and highlights important components.
+
+> **NOTE**
+>
+> - Setting edgeLight alone does not produce an edge glow effect. You need to use [animateTo](../arkts-apis-uicontext-uicontext.md#animateto) to change the position parameter to achieve the glow effect. For details, see [Example 4: Setting Component Edge Light Effect](#example-4-setting-component-edge-light-effect).
+>
+> - When the position parameter changes diagonally (for example, from TOP_LEFT to BOTTOM_RIGHT), the edge glow runs at a 45° angle.
+
+**Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -99,17 +110,19 @@ Sets the system material for a component. Different system materials have differ
 
 | Name| Type                           | Mandatory| Description                                                        |
 | ------ | ------------------------------- | ---- | ------------------------------------------------------------ |
-| material  | [SystemUiMaterial](#systemuimaterial23) &nbsp;\|&nbsp; undefined  | Yes  | System material object of the component. Setting it to **undefined** will make the component return to the no-material effect. |
+| params | [EdgeLightParams](#edgelightparams) \| undefined | Yes | Defines the position, length, intensity, color, and thickness of the edge glow effect.<br>When the value of params is undefined, the edge glow effect is removed. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
+| T    | Current component, used for chained calls. |
 
-## SystemUiMaterial<sup>23+</sup>
+## EdgeLightParams
 
-type SystemUiMaterial = uiMaterial.Material
+Defines the parameters of the edge glow effect.
+
+**Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -117,18 +130,22 @@ type SystemUiMaterial = uiMaterial.Material
 
 **System API**: This is a system API.
 
-| Type                             | Description          |
-| --------------------------------- | -------------- |
-| [uiMaterial.Material](../arkts-apis-uimaterial-sys.md#material)     | System material object.|
+| Name     | Type                                                       | Read-only | Optional | Description                                                    |
+| -------- | --------------------------------------------------------- | ---- | ---- |------------------------------------------------------- |
+| position | [EdgeLightPosition](./ts-appendix-enums-sys.md#edgelightposition)          | No   | No   | Position of the edge glow.                                           |
+| length   | [Length](ts-types.md#length)                              | No   | No   | Projection length of the edge glow along the flow direction (percentage is not supported; if a percentage is passed, it does not take effect).<br>Value range: [0, +∞)<br>Unit: vp<br>**Note:**<br>When length is 0, there is no edge glow projection effect.<br>When a value less than 0 is set, it is treated as 0. |
+| intensity | number                                                   | No   | Yes   | Glow intensity of the edge glow effect.<br>Value range: [0, 1]<br>Default value: 1<br>**Note:**<br>When the value is 0, the glow effect is completely invisible.<br>When the value is 1, the glow effect reaches the maximum brightness.<br>When a value greater than 1 is set, it is treated as 1.<br>When a value less than 0 is set, it is treated as 0. |
+| color    | [ResourceColor](ts-types.md#resourcecolor)                | No   | Yes   | Color of the edge glow.<br>Default value: #FFFFFF, displayed as white. |
+| thickness | [Length](ts-types.md#length)                             | No   | Yes   | Thickness of the edge glow line (percentage is not supported; if a percentage is passed, it does not take effect).<br>Value range: [0, +∞)<br>Unit: vp<br>Default value: 0<br>**Note:**<br>When thickness is 0, the edge glow line is invisible.<br>When a value less than 0 is set, it is treated as 0. |
 
-## Example
+## Examples
 ### Example 1: Setting the Brightness Effect
 
 This example demonstrates how to add a brightness effect to a component using **advancedBlendMode**.
 
 ```ts
 // xxx.ets
-import { uiEffect } from "@kit.ArkGraphics2D";
+import { uiEffect } from '@kit.ArkGraphics2D';
 
 // Use uiEffect.createBrightnessBlender to create a BrightnessBlender instance, which can be used to apply the brightness effect to a component.
 let blender: uiEffect.BrightnessBlender = uiEffect.createBrightnessBlender({
@@ -141,8 +158,8 @@ let blender: uiEffect.BrightnessBlender = uiEffect.createBrightnessBlender({
   negativeCoefficient: [0.5, 2.0, 0.5],
   fraction: 0.5
 });
-// Using a custom object as a parameter will not take effect.
-let blender1: uiEffect.BrightnessBlender = {
+// Caution: Using a custom object as the Blender input parameter does not take effect. Use the uiEffect.createBrightnessBlender method to create a Blender instance.
+let customBlender: uiEffect.BrightnessBlender = {
   cubicRate: 0.5,
   quadraticRate: 0.5,
   linearRate: 0.5,
@@ -174,7 +191,7 @@ struct Index {
 
         Text(String.fromCodePoint(0x1F600) + 'TEST')
           .fontSize(60)
-          .advancedBlendMode(blender1)
+          .advancedBlendMode(customBlender)
       }
     }
   }
@@ -209,7 +226,8 @@ struct ExcludeFromRenderGroupDemo {
           .width(100)
           .height(100)
           .backgroundColor(this.myColor)
-          .excludeFromRenderGroup(this.isExcluded)// Set the excludeFromRenderGroup attribute. When the background color animation is performed for the component, the actual display effect needs to be frequently updated. The component area only occupies a part of the render group area. Therefore, setting the excludeFromRenderGroup attribute helps reuse the render group cache.
+          // Set the excludeFromRenderGroup attribute. When this component performs a background color animation, the actual display effect requires frequent attribute updates, and the component area occupies only part of the render group area. Therefore, set the excludeFromRenderGroup attribute to reuse the render group cache.
+          .excludeFromRenderGroup(this.isExcluded)
           .onClick(() => {
             this.isExcluded = true; // Before playing the animation, change the is attribute of the render group to true.
             this.animationCnt++;
@@ -217,8 +235,8 @@ struct ExcludeFromRenderGroupDemo {
               duration: 600,
               onFinish: () => {
                 this.animationCnt--;
-                if (this.animationCnt == 0) { // If the value of animationCnt is 0, all animations have ended.
-                  this.isExcluded = false; // After the animations of the component ends, if no attribute change occurs on the component, you can reset this attribute of the render group.
+                if (this.animationCnt === 0) { // animationCnt becomes 0, indicating that all animations have ended.
+                  this.isExcluded = false; // After the animations of the component end, if no attribute change occurs on the component, you can reset this attribute of the render group.
                 }
               }
             }, () => {
@@ -226,10 +244,10 @@ struct ExcludeFromRenderGroupDemo {
             })
           })
         // Other components in the render group.
-        Image($r('app.media.bg1'))// Replace $r('app.media.bg1') with the image resource file you use.
+        Image($r('app.media.bg1')) // $r('app.media.bg1') needs to be replaced with the image resource file required by the developer.
           .width(100)
           .height(100)
-        Image($r('app.media.bg1'))// Replace $r('app.media.bg1') with the image resource file you use.
+        Image($r('app.media.bg1')) // $r('app.media.bg1') needs to be replaced with the image resource file required by the developer.
           .width(100)
           .height(100)
       }.renderGroup(true)
@@ -303,3 +321,49 @@ struct Index {
 ```
 
 ![advancedBlendMode2](figures/advancedBlendMode2.jpg)
+
+### Example 4: Setting Component Edge Light Effect
+
+This example demonstrates how to add an edge glow effect to a component through [edgeLight](#edgelight).
+
+Since API version 26.0.0, the edgeLight method is added.
+
+```ts
+// xxx.ets
+import { curves } from '@kit.ArkUI';
+@Entry
+@Component
+struct Index {
+  @State animate: boolean = false;
+  @State edgeLightPosition: EdgeLightPosition = EdgeLightPosition.TOP_LEFT;
+  build() {
+    Column() {
+      Column()
+        .height(300)
+        .width(300)
+        .backgroundColor(Color.Gray)
+        .borderRadius(20)
+        .edgeLight({
+          position: this.edgeLightPosition,
+          length: 90,
+          intensity: 1,
+          color: Color.White,
+          thickness: 2
+        })
+        .onClick(() => {
+          this.getUIContext()?.animateTo({ curve: curves.springMotion(), duration: 3000}, () => {
+            this.animate = !this.animate;
+            this.edgeLightPosition = this.animate ? EdgeLightPosition.BOTTOM_RIGHT : EdgeLightPosition.TOP_LEFT;
+          })
+        })
+    }
+    .height('100%')
+    .width('100%')
+    .justifyContent(FlexAlign.Center)
+    .alignItems(HorizontalAlign.Center)
+    .backgroundColor('#aaaaaa')
+  }
+}
+```
+
+![edgeLightDemo](figures/edgeLightDemo.gif)
