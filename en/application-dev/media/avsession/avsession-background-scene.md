@@ -1,11 +1,11 @@
 # Background Playback
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=5b3ab60fe000eb4bad70440a3e7f30019a2671f9 translatedAt=2026-09-03T06:54:08.110Z pushedAt=2026-09-03T07:24:02.974Z -->
+<!-- md-trans-meta sourceCommit=6db95933f92c36be892f64316b822565946ecf49 translatedAt=2026-09-03T09:01:19.926Z pushedAt=2026-09-03T09:04:52.941Z -->
 
 In real-world application scenarios, most audio and video applications require background playback. This guide describes in detail how to implement long-duration background playback.
 

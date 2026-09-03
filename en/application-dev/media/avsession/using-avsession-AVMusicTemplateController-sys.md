@@ -2,10 +2,10 @@
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @gcw_gyH0B0hP-->
-<!--Designer: @ccfriend-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=fea2c2dece46f30cb79ca30edc9fb057098cc31b translatedAt=2026-09-02T08:38:51.038Z pushedAt=2026-09-03T03:31:05.888Z -->
+<!-- md-trans-meta sourceCommit=6db95933f92c36be892f64316b822565946ecf49 translatedAt=2026-09-03T09:02:56.587Z pushedAt=2026-09-03T09:04:52.951Z -->
 
 Starting from API version 23, the audio template capability is supported, which enables a system application to create an audio template controller for unified management of media applications that integrate with the audio template. The controller provides a unified user interface for features such as playlists, favorites, and media details, and supports media playback controls such as play, pause, search, and favorite. This section describes the system APIs for the audio template capability and the basic development workflow, including listening for media applications that integrate with the audio template, querying media data, and sending playback control commands to media applications. For details about media application integration, see [Using the Audio Template](using-avsession-AVMusicTemplate.md).
 

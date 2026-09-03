@@ -1,11 +1,11 @@
 # Integrating the Lyrics Component
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend@devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J@devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=9920b4322632c95223043c2b8d7016dc1dbd092a translatedAt=2026-09-02T08:33:02.103Z pushedAt=2026-09-02T11:03:30.387Z -->
+<!-- md-trans-meta sourceCommit=6db95933f92c36be892f64316b822565946ecf49 translatedAt=2026-09-03T09:01:16.830Z pushedAt=2026-09-03T09:04:52.936Z -->
 
 Starting from API version 23, HarmonyOS provides a desktop lyrics component that displays synchronized lyrics in a floating window on the desktop. The component supports displaying lyrics, controlling its visibility, and locking or unlocking the window. Custom styling of the component is not supported. This section describes how to use the desktop lyrics component in your application.
 

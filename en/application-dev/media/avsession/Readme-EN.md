@@ -1,11 +1,11 @@
 # AVSession Kit
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=69edf4b93c17d34807cbb4b44a9d055a7f5a449c translatedAt=2026-09-03T06:52:30.393Z pushedAt=2026-09-03T06:54:52.507Z -->
+<!-- md-trans-meta sourceCommit=6db95933f92c36be892f64316b822565946ecf49 translatedAt=2026-09-03T09:02:06.961Z pushedAt=2026-09-03T09:04:52.948Z -->
 
 - [About This Kit](avsession-overview.md)
 - Local AVSession<!--local-avsession-->

@@ -1,11 +1,11 @@
 # Accessing AVSession
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=74c5c403cb641e8351820634af05f0bfefb8e44a translatedAt=2026-09-02T08:34:30.065Z pushedAt=2026-09-02T11:03:08.200Z -->
+<!-- md-trans-meta sourceCommit=6db95933f92c36be892f64316b822565946ecf49 translatedAt=2026-09-03T09:01:21.285Z pushedAt=2026-09-03T09:04:52.946Z -->
 
 When implementing audio and video features, media applications also need to integrate with AVSession Kit. Based on typical use cases, this document describes how to integrate with AVSession for media display and control, providing developers with adaptation guidance.
 

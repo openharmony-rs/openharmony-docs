@@ -1,11 +1,11 @@
 # AVSession Provider (C/C++)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=74c5c403cb641e8351820634af05f0bfefb8e44a translatedAt=2026-09-02T08:43:00.395Z pushedAt=2026-09-03T06:48:52.413Z -->
+<!-- md-trans-meta sourceCommit=6db95933f92c36be892f64316b822565946ecf49 translatedAt=2026-09-03T09:03:26.242Z pushedAt=2026-09-03T09:04:52.956Z -->
 
 You can use the C APIs provided by the OHAVSession system to implement a media session provider, enabling media information to be displayed in media session controllers (such as Media Controller) and the provider to respond to playback control commands issued by the controllers.
 
