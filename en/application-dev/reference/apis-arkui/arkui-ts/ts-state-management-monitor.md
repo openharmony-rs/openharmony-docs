@@ -22,7 +22,7 @@ Monitor: MonitorDecorator
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
@@ -36,15 +36,15 @@ Represents the actual type of the **@Monitor** decorator.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name | Type | Required | Description |
+| Name | Type | Mandatory | Description |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
 | value  | string \| [MonitorDecoratorOptions](#monitordecoratoroptions) | Yes | In versions earlier than API 26.0.0, this parameter indicates the path of the monitored variable name. The path is separated by dots (.) to indicate nested properties (for example, 'a.b.c'). The content is specified by you. The input value is of the string type when only a string is passed. Since API version 26.0.0, this parameter can also be an object of the **MonitorDecoratorOptions** type, which is used to configure the wildcard capability. |
 | ...args   | string[] | No | Array of paths of the state variables to monitor. The path uses dots (.) to separate nested properties (for example, 'a.b.c'), and its content is specified by you. When the developer has used MonitorDecoratorOptions or passed multiple strings, the input parameter is of this type. If this parameter is not passed, it defaults to empty. When value is of the string type, only the state variable path specified by the value parameter is monitored. When value is of the MonitorDecoratorOptions type, the state variable path to monitor must be specified through this parameter. If undefined is passed, the corresponding monitoring does not take effect. |
@@ -116,7 +116,7 @@ Represents the configuration options of the **@Monitor** decorator.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name           | Type    | Read-only | Optional | Description                                                         |
+| Name           | Type    | Read-Only | Optional | Description                                                         |
 | -------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
 | enableWildcard | boolean | No   | Yes   | Whether to support the wildcard capability. The value **true** indicates to enable the wildcard capability, allowing the use of wildcards (**'*'**) in the path for fuzzy monitoring, and **false** indicates to disable the wildcard capability. The default value is **true**. |
 
@@ -135,7 +135,7 @@ When the monitored state variable changes, the state management framework will c
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type | Read-only | Optional | Description |
+| Name | Type | Read-Only | Optional | Description |
 | ------------------- | --------------- | ---- | ---- | ---------------- |
 | dirty | Array\<string\> | No | No | Array of paths where properties have changed in the monitored state variable. The path format is the same as that of the variable name path specified by **\@Monitor**. Nested property paths separated by periods (.) are supported, for example, **'a.b.c'**. Since API version 26.0.0, when the wildcard capability is enabled, this array may contain wildcard paths, and querying wildcard paths through [value](#value)() will return **undefined**. |
 
@@ -147,11 +147,11 @@ Obtains the change information for the specified path.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
@@ -226,7 +226,7 @@ Provides the specific information about the state variable changes monitored by 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type   | Read-only | Optional | Description             |
+| Name   | Type   | Read-Only | Optional | Description             |
 | ------ | ------ | --------- | -------- | ----------------------- |
 | before | T      | No        | No       | Value of the state variable before the change. |
 | now    | T      | No        | No       | Current value of the state variable.   |

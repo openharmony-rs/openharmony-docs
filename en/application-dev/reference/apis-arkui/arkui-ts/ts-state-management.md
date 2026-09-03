@@ -339,7 +339,7 @@ The property subscribers include the following:
 
 1. Variables decorated by [@StorageLink](../../../ui/state-management/arkts-appstorage.md#storagelink) and [@StorageProp](../../../ui/state-management/arkts-appstorage.md#storageprop).
 
-2. Instances of [SubscribedAbstractProperty](#link10) returned by [link](#prop10), [prop](#setandlink10), [setAndLink](#setandprop10), or [setAndProp](#setandprop10).
+2. Instances of [SubscribedAbstractProperty](#subscribedabstractpropertyt9) returned by [link](#link10), [prop](#prop10), [setAndLink](#setandlink10), or [setAndProp](#setandprop10).
 
 To delete these subscribers:
 
@@ -1269,7 +1269,7 @@ The property subscribers include the following:
 
 1. Variables decorated by [@LocalStorageLink](../../../ui/state-management/arkts-localstorage.md#localstoragelink) and [@LocalStorageProp](../../../ui/state-management/arkts-localstorage.md#localstorageprop).
 
-2. Instances of [SubscribedAbstractProperty](#link9) returned by [link](#prop9), [prop](#setandlink9), [setAndLink](#setandprop9), or [setAndProp](#setandprop9).
+2. Instances of [SubscribedAbstractProperty](#subscribedabstractpropertyt9) returned by [link](#link9), [prop](#prop9), [setAndLink](#setandlink9), or [setAndProp](#setandprop9).
 
 To delete these subscribers:
 
