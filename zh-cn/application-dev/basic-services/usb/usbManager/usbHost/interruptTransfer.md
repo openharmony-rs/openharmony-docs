@@ -1,4 +1,4 @@
-# USB实时传输
+# USB中断传输
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: USB-->
@@ -9,7 +9,7 @@
 
 ## 场景介绍
 
-实时传输是通过USB协议在固定时间窗口内完成数据传输，确保数据流的时序稳定性和低延迟，但允许少量数据丢失（如视频丢帧、音频杂音）的传输模式。这种传输方式适用于USB耳机、USB音响、视频会议设备等对连续性要求高、容错性强的场景。
+中断传输主要用于主机（Host）接收设备（Device）发送的数据包。设备的端点模式决定了接口支持中断读或中断写，这种传输方式适用于少量的、分散的、不可预测的数据类型的传输，鼠标、键盘和操纵杆等设备均属于这种类型，且此类设备的端点一般只支持中断读操作。
 
 ## 环境准备
 
@@ -22,7 +22,7 @@
 
 - SDK版本配置：
 
-  扩展外设管理提供的ArkTs接口，所需SDK版本为API16及以上才可使用。
+  扩展外设管理提供的ArkTS接口，所需SDK版本为API16及以上才可使用。
 
 
 - HDC配置：
@@ -32,7 +32,7 @@
 ### 搭建环境
 
 - 在PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，要求版本在4.1及以上。
-- 将public-SDK更新到API 16或以上<!--Del-->，更新SDK的具体操作可参见[更新指南](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/faqs/full-sdk-switch-guide.md)<!--DelEnd-->。
+- 将public-SDK更新到API 16或以上。
 - PC安装HDC工具，通过该工具可以在Windows/Linux/Mac系统上与真实设备或者模拟器进行交互。
 - 用USB线缆将搭载OpenHarmony的设备连接到PC。
 
@@ -49,11 +49,11 @@
 
 ### 开发步骤
 
-主机（Host）连接设备（Device），通过`usbSubmitTransfer`接口进行数据传输。以下步骤描述了如何使用实时传输方式来传输数据：
+主机（Host）连接设备（Device），通过`usbSubmitTransfer`接口进行数据传输。以下步骤描述了如何使用中断传输方式来传输数据：
 
 > **说明：** 
 >
-> 以下示例代码只是使用实时传输方式来传输数据的必要流程，需要放入具体的方法中执行。在实际调用时，设备开发者需要遵循设备相关协议进行调用，确保数据的正确传输和设备的兼容性。
+> 以下示例代码只是使用中断传输方式来传输数据的必要流程，需要放入具体的方法中执行。在实际调用时，设备开发者需要遵循设备相关协议进行调用，确保数据的正确传输和设备的兼容性。
 
 1. 导入模块。
 
@@ -84,7 +84,7 @@
 
    ArkTS-Dyn示例：
    <!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
-   
+
    ``` TypeScript
    // 获取设备列表。
    let deviceList: usbManager.USBDevice[] = [];
@@ -156,6 +156,7 @@
    this.deviceList_ = deviceList;
    ```
 
+   ArkTS-Sta示例：   
    <!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -252,6 +253,7 @@
    });
    ```
 
+   ArkTS-Sta示例：
    <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -272,10 +274,10 @@
    });
    ```
 
-4. 获取通过实时传输读取数据的端点。
+4. 获取通过中断传输读取数据的端点。
 
    ArkTS-Dyn示例：
-   <!-- @[isochronousTransfer_getEndpoint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[interruptTransfer_getEndpoint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
@@ -300,10 +302,11 @@
    try {
      devicePipe = usbManager.connectDevice(usbDevice);
    } catch (error) {
-     console.error(`connectDevice failed ${error}`);
-     this.logInfo_ += '\n[ERROR] connectDevice: ' + JSON.stringify(error);
-     return
+     console.error(`USB connectDevice failed: ${error}`);
+     this.logInfo_ += '\n[ERROR] USB connectDevice failed: ' + JSON.stringify(error);
+     return;
    }
+   
    let usbConfigs: usbManager.USBConfiguration[] = usbDevice.configs;
    let usbInterfaces: usbManager.USBInterface[] = [];
    let usbInterface: usbManager.USBInterface | undefined = undefined;
@@ -314,8 +317,7 @@
      for (let j = 0; j < usbInterfaces?.length; j++) {
        usbEndpoints = usbInterfaces[j]?.endpoints;
        usbEndpoint = usbEndpoints?.find((value) => {
-         // direction为请求方向，0表示写入数据，128表示读取数据
-         return value.direction === 128 && value.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS;
+         return value.direction === 128 && value.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_INTERRUPT;
        })
        if (usbEndpoint !== undefined) {
          usbInterface = usbInterfaces[j];
@@ -324,14 +326,14 @@
      }
    }
    if (usbEndpoint === undefined) {
-     console.error(`get usbEndpoint error`);
+     console.error(`get usbEndpoint error`)
      this.logInfo_ += '\n[ERROR] get usbEndpoint error';
      return;
    }
    ```
 
    ArkTS-Sta示例：   
-   <!-- @[isochronousTransfer_getEndpoint](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[interruptTransfer_getEndpoint](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
@@ -356,10 +358,11 @@
    try {
      devicePipe = usbManager.connectDevice(usbDevice);
    } catch (error) {
-     console.error(`connectDevice failed ${error}`);
-     this.logInfo_ += '\n[ERROR] connectDevice: ' + JSON.stringify(error);
-     return
+     console.error(`USB connectDevice failed: ${error}`);
+     this.logInfo_ += '\n[ERROR] USB connectDevice failed: ' + JSON.stringify(error);
+     return;
    }
+   
    let usbConfigs: usbManager.USBConfiguration[] = usbDevice.configs;
    let usbInterfaces: usbManager.USBInterface[] = [];
    let usbInterface: usbManager.USBInterface | undefined = undefined;
@@ -370,8 +373,7 @@
      for (let j = 0; j < usbInterfaces?.length; j++) {
        usbEndpoints = usbInterfaces[j]?.endpoints;
        usbEndpoint = usbEndpoints?.find((value) => {
-         // direction为请求方向，0表示写入数据，128表示读取数据
-         return value.direction === 128 && value.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS;
+         return value.direction === 128 && value.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_INTERRUPT;
        })
        if (usbEndpoint !== undefined) {
          usbInterface = usbInterfaces[j];
@@ -380,7 +382,7 @@
      }
    }
    if (usbEndpoint === undefined) {
-     console.error(`get usbEndpoint error`);
+     console.error(`get usbEndpoint error`)
      this.logInfo_ += '\n[ERROR] get usbEndpoint error';
      return;
    }
@@ -389,7 +391,7 @@
 5. 连接设备，注册通信接口。
 
    ArkTS-Dyn示例：
-   <!-- @[isochronousTransfer_claimInterface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[interruptTransfer_claimInterface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 注册通信接口，注册成功返回0，注册失败返回其他错误码。
@@ -405,26 +407,10 @@
      this.logInfo_ += '\n[ERROR] USB claimInterface failed: ' + JSON.stringify(error);
      return;
    }
-   
-   // 传输类型为“实时传输”时，需设置设备接口。设置成功返回0，注册失败返回其他错误码。
-   if (usbEndpoint.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS) {
-     try {
-       let setInterfaceResult = usbManager.setInterface(devicePipe, usbInterface);
-       if (setInterfaceResult !== 0) {
-         console.error(`setInterfaceResult error = ${setInterfaceResult}`)
-         this.logInfo_ += '\n[ERROR] setInterfaceResult error = ' + JSON.stringify(setInterfaceResult);
-         return;
-       }
-     } catch (error) {
-       console.error(`USB setInterface failed: ${error}`);
-       this.logInfo_ += '\n[ERROR] USB setInterface failed: ' + JSON.stringify(error);
-       return;
-     }
-   }
    ```
 
    ArkTS-Sta示例：   
-   <!-- @[isochronousTransfer_claimInterface](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[interruptTransfer_claimInterface](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    if (usbInterface === undefined) {
@@ -445,28 +431,12 @@
      this.logInfo_ += '\n[ERROR] USB claimInterface failed: ' + JSON.stringify(error);
      return;
    }
-   
-   // 传输类型为“实时传输”时，需设置设备接口。设置成功返回0，注册失败返回其他错误码。
-   if (usbEndpoint.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS) {
-     try {
-       let setInterfaceResult = usbManager.setInterface(devicePipe, usbInterface);
-       if (setInterfaceResult !== 0) {
-         console.error(`setInterfaceResult error = ${setInterfaceResult}`)
-         this.logInfo_ += '\n[ERROR] setInterfaceResult error = ' + JSON.stringify(setInterfaceResult);
-         return;
-       }
-     } catch (error) {
-       console.error(`USB setInterface failed: ${error}`);
-       this.logInfo_ += '\n[ERROR] USB setInterface failed: ' + JSON.stringify(error);
-       return;
-     }
-   }
    ```
 
 6. 传输数据。
 
    ArkTS-Dyn示例：
-   <!-- @[isochronousTransfer_isochronousTransfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[interruptTransfer_interruptTransfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    let transferParams: usbManager.UsbDataTransferParams | undefined = undefined;
@@ -476,7 +446,7 @@
        devPipe: devicePipe,
        flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
        endpoint: usbEndpoint.address,
-       type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS,
+       type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_INTERRUPT,
        timeout: 2000,
        length: 10,
        callback: () => {
@@ -489,8 +459,8 @@
      transferParams.callback = (err: Error, callBackData: usbManager.SubmitTransferCallback) => {
        console.info(`callBackData = ${callBackData}`);
        this.logInfo_ += '\n[INFO] callBackData = ' + JSON.stringify(callBackData);
-       console.info('transfer success,result = ' + transferParams?.buffer.toString());
-       this.logInfo_ += '\n[INFO] transfer success,result = ' + transferParams?.buffer.toString();
+       console.info(`transfer success,result = ${transferParams?.buffer}`);
+       this.logInfo_ += '\n[INFO] transfer success,result = ' + JSON.stringify(transferParams?.buffer);
      }
      usbManager.usbSubmitTransfer(transferParams);
      console.info('USB transfer request submitted.');
@@ -502,7 +472,7 @@
    ```
 
    ArkTS-Sta示例：   
-   <!-- @[isochronousTransfer_isochronousTransfer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[interruptTransfer_interruptTransfer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    let transferParams: usbManager.UsbDataTransferParams | undefined = undefined;
@@ -512,7 +482,7 @@
        devPipe: devicePipe,
        flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
        endpoint: usbEndpoint.address,
-       type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS,
+       type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_INTERRUPT,
        timeout: 2000,
        length: 10,
        callback: () => {
@@ -525,8 +495,8 @@
      transferParams.callback = (err: BusinessError | null, callBackData: usbManager.SubmitTransferCallback | undefined) => {
        console.info(`callBackData = ${callBackData}`);
        this.logInfo_ += '\n[INFO] callBackData = ' + JSON.stringify(callBackData);
-       console.info('transfer success,result = ' + transferParams?.buffer.toString());
-       this.logInfo_ += '\n[INFO] transfer success,result = ' + transferParams?.buffer.toString();
+       console.info(`transfer success,result = ${transferParams?.buffer}`);
+       this.logInfo_ += '\n[INFO] transfer success,result = ' + JSON.stringify(transferParams?.buffer);
      }
      usbManager.usbSubmitTransfer(transferParams);
      console.info('USB transfer request submitted.');
@@ -540,7 +510,7 @@
 7. 取消传输，释放接口，关闭设备消息控制通道。
 
    ArkTS-Dyn示例：
-   <!-- @[isochronousTransfer_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[interruptTransfer_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    try {
@@ -554,7 +524,7 @@
    ```
 
    ArkTS-Sta示例：   
-   <!-- @[isochronousTransfer_release](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[interruptTransfer_release](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    if (transferParams === undefined) {
@@ -571,9 +541,9 @@
      this.logInfo_ += '\n[ERROR] release failed: ' + JSON.stringify(error);
    }
    ```
-
+   
 ### 调测验证
 
-1. 主机端通过USB接口连接支持实时传输的设备（USB耳机等）。
+1. 主机端通过USB接口连接支持中断传输的终端设备（鼠标、键盘等）。
 2. 执行上述代码。
-3. log中搜索关键字`transfer success`，表示实时传输接口调用成功。
+3. log中搜索关键字`transfer success`，表示中断传输接口调用成功。
