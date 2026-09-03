@@ -5,7 +5,7 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=41645ccd887f1faa76ea677e1eacb1a04eaf66bb translatedAt=2026-09-02T08:44:43.823Z pushedAt=2026-09-03T06:51:27.590Z -->
+<!-- md-trans-meta sourceCommit=41645ccd887f1faa76ea677e1eacb1a04eaf66bb translatedAt=2026-09-02T08:44:43.823Z pushedAt=2026-09-03T08:07:09.110Z -->
 
 ## Switching Call Output Devices
 
@@ -269,7 +269,7 @@ Currently, the system provides the default style and custom style for the **AVCa
 
 You can customize a style by setting the [customPicker](../../reference/apis-avsession-kit/ohos-multimedia-avcastpicker.md#avcastpicker) parameter of the [CustomBuilder](../../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8) type.
 
-The procedure for implementing a custom style is basically the same to that for implementing the default style. You can create an AVSession and implement audio playback by referring to [Implementing the Default Style Implementation](#implementing-the-default-style).
+The procedure for implementing a custom style is basically the same as that for implementing the default style. You can create an AVSession and implement audio playback by referring to [Implementing the Default Style Implementation](#implementing-the-default-style).
 
 The differences are as follows:
 
