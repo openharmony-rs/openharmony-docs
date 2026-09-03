@@ -289,6 +289,60 @@ libnet_trafficfilter.so
 
    <!-- @[register_packet_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp) -->
 
+   <div class="same-source-code">
+   ``` C++
+   OH_TrafficFilter_PacketDecision MyPacketHandler(
+       const OH_TrafficFilter_PacketDesc* packet,
+       void* userData)
+   {
+       napi_acquire_threadsafe_function(tsFn);
+       g_asyncContext->packet = packet;
+       napi_call_threadsafe_function(tsFn, g_asyncContext, napi_tsfn_nonblocking);
+       napi_release_threadsafe_function(tsFn, napi_tsfn_release);
+   
+       return OH_TRAFFICFILTER_DECISION_DROP;
+   }
+   
+   static napi_value RegisterPacketCallbackNapi(napi_env env, napi_callback_info info)
+   {
+       size_t argc = ARG_IDX_JS_CALLBACK + 1;
+       napi_value args[ARG_IDX_JS_CALLBACK + 1] = {nullptr};
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+   
+       uint32_t id = -1;
+       napi_get_value_uint32(env, args[0], &id);
+       OH_TrafficFilter_PacketController* controller = g_controllerMap[id];
+       if (controller == nullptr) {
+           napi_value result;
+           napi_create_int32(env, ERR_CONTROLLER_NOT_FOUND, &result);
+           return result;
+       }
+   
+       size_t copyLen = 0;
+       char buf[BUFFER_SIZE] = {0};
+       napi_get_value_string_utf8(env, args[1], buf, BUFFER_SIZE, &copyLen);
+       void* userData = reinterpret_cast<void*>(buf);
+   
+       napi_value workName;
+       napi_create_string_utf8(env, "ThreadSafeCase", NAPI_AUTO_LENGTH, &workName);
+       napi_create_threadsafe_function(env, nullptr, nullptr, workName, 0, 1, nullptr, nullptr,
+                                       nullptr, ThreadSafeCallJs, &tsFn);
+   
+       g_asyncContext->env = env;
+       napi_create_reference(env, args[ARG_IDX_JS_CALLBACK], 1, &g_asyncContext->jsCallbackRef);
+   
+       int ret = OH_TrafficFilter_RegisterPacketCallback(controller, MyPacketHandler, userData);
+       napi_value result;
+       napi_create_int32(env, 0, &result);
+       return result;
+   }
+   ```
+
+   <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp?same_code_link_text=register_packet_callback" target="_blank" rel="nofollow">napi_init.cpp</a></p>
+
+   </div>
+
+
 
 4. 注销回调、清除规则并销毁报文控制器。
 
