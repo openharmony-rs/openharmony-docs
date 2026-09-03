@@ -3078,6 +3078,54 @@ struct Index {
 
 ArkTS-Sta示例：
 ```ts
+'use static'
+
+import { Entry, Component, Stack, Image } from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import { DrawableDescriptor } from '@ohos.arkui.drawableDescriptor'
+import uiEffect from '@ohos.graphics.uiEffect'
+import { common } from '@kit.AbilityKit'
+import image from '@ohos.multimedia.image'
+
+@Entry
+@Component
+struct Index {
+  @State bgRes: DrawableDescriptor | undefined = undefined
+  private cachedMask: image.PixelMap | undefined = undefined
+
+  aboutToAppear(): void {
+    const context = this.getUIContext()?.getHostContext() as common.UIAbilityContext
+    this.bgRes = context.resourceManager.getDrawableDescriptorByName('BG_00000')
+    this.cachedMask = context.resourceManager.getDrawableDescriptorByName('mask')?.getPixelMap()
+  }
+
+  private createMyFilter(): uiEffect.Filter {
+    return uiEffect.createFilter()
+      .displacementDistort(
+        uiEffect.Mask.createFractalGlassMask(20, 1.5, 0.005, true, this.cachedMask),
+        [1.0, 0.0]
+      )
+  }
+
+  build() {
+    Stack(undefined) {
+      Stack(undefined) {
+        Image(this.bgRes)
+          .width('100%')
+          .height('100%')
+
+        Stack(undefined) {}
+        .width('100%')
+        .height('100%')
+        .backgroundFilter(this.createMyFilter())
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .width('100%').height('100%')
+  }
+}
+
 
 ```
 
@@ -3146,6 +3194,51 @@ struct Index {
 
 ArkTS-Sta示例：
 ```ts
+
+'use static'
+
+import { Entry, Component, Stack, Image } from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import { DrawableDescriptor } from '@ohos.arkui.drawableDescriptor'
+import uiEffect from '@ohos.graphics.uiEffect'
+import { common } from '@kit.AbilityKit'
+
+@Entry
+@Component
+struct Index {
+  @State bgRes: DrawableDescriptor | undefined = undefined
+
+  aboutToAppear(): void {
+    const context = this.getUIContext()?.getHostContext() as common.UIAbilityContext
+    this.bgRes = context.resourceManager.getDrawableDescriptorByName('BG_00001')
+  }
+
+  private createMyFilter(): uiEffect.Filter {
+    return uiEffect.createFilter()
+      .maskDispersion(uiEffect.Mask.createBinocularMask(0.28, 0.48, 0.52, 0.20), 1.0, [0.026, 0.0],
+        [0.0, 0.0],
+        [-0.026, 0.0])
+  }
+
+  build() {
+    Stack(undefined) {
+      Stack(undefined) {
+        Image(this.bgRes)
+          .width('100%')
+          .height('100%')
+
+        Stack(undefined) {}
+        .width('100%')
+        .height('100%')
+        .backgroundFilter(this.createMyFilter())
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .width('100%').height('100%')
+  }
+}
+
 
 ```
 
