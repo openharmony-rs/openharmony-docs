@@ -5,6 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=0e931f12bb3526b5019e05e0fbb556ee6c82f51e translatedAt=2026-09-01T02:23:12.711Z pushedAt=2026-09-01T13:38:28.854Z -->
 
 This section provides the development guidelines for active update. For details about the update process, see [Active Update](./arkts-ui-widget-interaction-overview.md#active-update).
 
@@ -18,7 +19,7 @@ The following demonstrates how to add a widget to the home screen and update the
 2. Implement the widget layout, add an update button to the widget, and call the [postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1) API to trigger the **onFormEvent** callback.
 
    <!-- @[update_by_message_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets) --> 
-    
+
     ``` TypeScript
     // entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets
     let storageUpdateByMsg = new LocalStorage();
@@ -81,7 +82,7 @@ The following demonstrates how to add a widget to the home screen and update the
 3. In the implementation of **onFormEvent**, call the **updateForm** API to update the widget data.
 
    <!-- @[update_by_message_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) -->
-   
+
    ``` TypeScript
    // entry/src/main/ets/entryformability/EntryFormAbility.ts
    import { formBindingData, FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
@@ -203,7 +204,7 @@ The following demonstrates how to add multiple widgets of an application to the 
 2. Implement the widget layout and add two **Text** components that can be updated to the widget.
 
    <!-- @[ReloadByUIAbilityCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/reloadbyuiability/pages/ReloadByUIAbilityCard.ets) --> 
-   
+
    ``` TypeScript
    // entry/src/main/ets/reloadbyuiability/pages/ReloadByUIAbilityCard.ets
    let storageReloadForm = new LocalStorage();
@@ -237,7 +238,7 @@ The following demonstrates how to add multiple widgets of an application to the 
 3. Implement the **onUpdateForm** callback in FormExtensionAbility and use the **updateForm** API to define the widget update logic.
 
    <!-- @[EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/entryformability/EntryFormAbility.ets) --> 
-   
+
    ``` TypeScript
    // entry/src/main/ets/entryformability/EntryFormAbility.ets
    import { formBindingData, FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
@@ -293,7 +294,7 @@ The following demonstrates how to add multiple widgets of an application to the 
 4. Add two batch update buttons to the UIAbility. After the buttons are tapped, the **reloadForms** or **reloadAllForms** API is called to trigger the **onUpdateForm** callback for batch updates.
 
    <!-- @[index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/pages/Index.ets) --> 
-   
+
    ``` TypeScript
    // entry/src/main/ets/pages/index.ets
    import { common } from '@kit.AbilityKit';
@@ -360,17 +361,16 @@ The following demonstrates how to add multiple widgets of an application to the 
       ]
    }
    ```
-
 ### Running Result
 ![WidgetPrinciple](figures/batch-update-result.gif)
 
 <!--Del-->
 ## Active Update by Widget Host (for System Applications Only)
 
-Due to the time limit of interval-based and time-specific updates, the widget host can call [requestForm](../reference/apis-form-kit/js-apis-app-form-formHost-sys.md#requestform) to request the Widget Manager to actively update the widget. The Widget Manager calls the [onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform) lifecycle callback in the FormExtensionAbility of the widget provider. In the callback, the [updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform) API can be called to update the widget content.
+Due to the time restrictions on scheduled and periodic updates, a widget host can call the `requestForm` API to request the widget management service to actively trigger widget refresh. The widget management service triggers the [onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform) lifecycle callback in the widget provider's FormExtensionAbility, in which the [updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform) API can be used to refresh the widget content.
 
    <!-- @[FormUpdate_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormUpdateDemo/entry/src/main/ets/pages/Index.ets) --> 
-   
+
    ``` TypeScript
    import { formHost } from '@kit.FormKit';
    import { BusinessError } from '@kit.BasicServicesKit';

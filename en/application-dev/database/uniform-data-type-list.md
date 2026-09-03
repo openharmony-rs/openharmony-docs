@@ -1,16 +1,15 @@
 # Prebuilt UTDs
-
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @jcwen-->
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=7c57fe2e8c871d6c8a49dba383d3d523cb8ea605 translatedAt=2026-08-15T01:44:12.946Z pushedAt=2026-08-15T06:38:56.514Z -->
+<!-- md-trans-meta sourceCommit=fadd7d812e259ee0411353f410f7f8f5e48ebdff translatedAt=2026-09-01T02:11:16.849Z pushedAt=2026-09-01T11:38:53.716Z -->
 
 A Uniform Type Descriptor (UTD) is used to address data type ambiguity in a system. It provides a standardized way to describe the same data type in different representations, such as MIME types and file name extensions. For example, when describing a JPG/JPEG image, you can use **image/jpeg**, **.jpg**, **.jpeg**, or **image/picture**. For details, see [Generic UTDs](#generic-utds).
 
-When data in various formats is passed across applications or devices, the target application or device may fail to identify the data or can process the data after lots of adaptation.
+When data in various formats is passed across applications or devices, the target application or device may need extensive adaptation to process the data, and may even fail to identify it.
 
 To facilitate use, OpenHarmony is prebuilt with common UTDs, which are classified into [Generic UTDs](#generic-utds), [system-specific UTDs](#system-specific-utds), and [application-specific UTDs](#application-specific-utds).
 
@@ -115,8 +114,8 @@ Generic UTDs represent universal data types that can be identified by the vast m
 | general.ustar                       | general.archive               | .ustar                                 | application/x-ustar                                                                    | Unix Standard TAR (UStar) archive format.                     |
 | general.taz-archive                 | general.tar-archive           | .taz, .tar.z, .tz                       | application/x-gtar                                                                     | TAZ archive format.                         |
 | general.bz-archive                  | general.archive               | .bz                                    | application/x-bzip                                                                     | bzip archive format.                        |
-| general.tar-bzip-archive            | general.bz-archive            | .tbz                                   | application/x-bzip-compressed-tar                                                      | TBZ archive format (TAR archives compressed with bzip)                 |
-| general.tar-bzip2-archive           | general.bz2-archive           | .tbz2                                  | application/x-bzip2-compressed-tar                                                     | TBZ2 archive format (TAR archives compressed with bzip2)                |
+| general.tar-bzip-archive            | general.bz-archive            | .tbz                                   | application/x-bzip-compressed-tar                                                      | TBZ archive format (TAR archives compressed with bzip).                 |
+| general.tar-bzip2-archive           | general.bz2-archive           | .tbz2                                  | application/x-bzip2-compressed-tar                                                     | TBZ2 archive format (TAR archives compressed with bzip2).                |
 | general.xar-archive                 | general.archive               | .xar                                   | application/x-xar                                                                      | XAR archive format.                         |
 | general.lza-archive                 | general.archive               | .lza                                   | application/x-lzh-compressed                                                           | LZA archive format.                         |
 | general.arj-archive                 | general.archive               | .arj                                   | application/x-arj                                                                      | ARJ archive format.                         |
@@ -221,10 +220,9 @@ Generic UTDs represent universal data types that can be identified by the vast m
 | com.huawei.hmos.musiccreate.gofile                                     |                 general.archive                                                          | .gomusic                            |    -    |  **musiccreate** file format. <!--RP2-->This type is supported since OpenHarmony 6.1.<!--RP2End-->         |
 | com.apple.coreaudio-format                                     |                 general.audio                                                            | .caf                            |    audio/x-caf                   |  CAF audio data file. <!--RP2-->This type is supported since OpenHarmony 6.1.<!--RP2End-->         |
 
+
 ## System-specific UTDs
-
 The system-specific UTDs are closely related to a platform or an operating system and are used for cross-application interaction within the system or platform. The IDs of system-specific UTDs are in the ***os-name*.xxx** format. The following table lists the system-specific UTDs prebuilt in the system.
-
 | **UTD ID**                | **BelongingTo**   | **File Name Extension**              | **MIME Type**                                                    | **Description**                          |
 |----------------------------|--------------------------|---------------------------------------|--------------------------------------------------------------------|----------------------------------|
 | openharmony.form           | general.object           |                  -                    |-                                                                    | Form type defined by OpenHarmony.          |
@@ -249,9 +247,7 @@ The system-specific UTDs are closely related to a platform or an operating syste
 | openharmony.dlp            | general.composite-object | .dlp                                  |-                                                                    | Account-based encryption file defined by OpenHarmony.    |
 
 ## Application-specific UTDs
-
 Application-specific UTDs are defined and maintained by a specific application or organization, and the data interaction is identified by the specific application. The IDs of these types of UTDs are in the **com.*company-name*.xxx** or **org.*organization-name*.xxx** format. The following table lists the application-specific UTDs prebuilt in the system.
-
 | **UTD ID**                                                 | **BelongingTo**                                                   | **File Name Extension**        | **MIME Type**                                                           | **Description**                                   |
 |-------------------------------------------------------------|--------------------------------------------------------------------------|---------------------------------|---------------------------------------------------------------------------|-------------------------------------------|
 | com.microsoft.bmp                                           | general.image                                                            | .bmp, .bm               | image/bmp, image/x-ms-bmp                                                 | Microsoft Windows BMP format.                            |
@@ -386,7 +382,7 @@ Application-specific UTDs are defined and maintained by a specific application o
 | com.sun.java-class                                          | general.executable                                                       | .class                  |                                   -                                       | Java class file.                                |
 | com.sun.java-archive                                        | general.archive,general.executable                                       | .jar                    | application/java-archive                                                  | Java archive format.                               |
 | com.sun.raster                                              | general.image                                                            | .ras                    | image/x-cmu-raster                                                        | Sun Raster image format.                           |
-| org.gnu.gnu-tar-archive                                     | general.archive                                                          | .gtar                   | application/x-gtar                                                        | GUN archive format.                                |
+| org.gnu.gnu-tar-archive                                     | general.archive                                                          | .gtar                   | application/x-gtar                                                        | GNU archive file type.                                 |
 | org.gnu.gnu-zip-archive                                     | general.archive                                                          | .gz, .gzip              | application/x-gzip, application/gzip                                      | gzip archive format.                               |
 | org.gnu.gnu-zip-tar-archive                                 | general.archive                                                          | .tgz                    | application/x-gtar                                                        | gzip TAR archive format.                           |
 | org.gnu.texinfo                                             | general.source-code                                                      | .texinfo,.texi          | application/x-texinfo                                                     | GNU Texinfo source file format.                         |

@@ -1,20 +1,19 @@
 # Working with Wrapper Objects Using JSVM-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-08-12T06:34:09.251Z pushedAt=2026-08-12T11:01:35.143Z -->
+<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-09-01T02:43:32.038Z pushedAt=2026-09-02T06:46:05.210Z -->
 
 ## Introduction
 
-This topic walks you through on how to use JSVM-API to quickly determine the wrapper object.
+JSVM-API provides APIs for quickly determining the wrapper type of an object.
 
 ## Basic Concepts
 
-JSVM-API provides the following APIs to quickly determine five wrapper objects.
+In JSVM-API, the wrapper object APIs provide a quick way to identify five types of wrapper objects.
 
 ## Available APIs
 
@@ -76,7 +75,6 @@ const char *srcCallNative = R"JS(wrapperObject();)JS";
 ```
 
 Expected result:
-
 ```txt
 JSVM OH_JSVM_IsNumberObject: 1
 ```

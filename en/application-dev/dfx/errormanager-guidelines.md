@@ -6,17 +6,13 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=f319e3e62d6356bf78f31e2e8f7ba3927caddf1e translatedAt=2026-07-29T10:47:54.653Z pushedAt=2026-07-29T11:05:24.194Z -->
+<!-- md-trans-meta sourceCommit=08c5a12c1e83d2e6c0db1453ae58132aa5f8ed0a translatedAt=2026-09-01T02:20:14.743Z pushedAt=2026-09-01T13:10:10.395Z -->
 
 ## Overview
 
 If coding specification issues or errors exist in the code of an application, the application may encounter unexpected errors, for example, uncaught exceptions, while it is running. In such a case, the application may exit unexpectedly. Error logs, however, are usually stored on users' local storage devices, making it inconvenient to locate faults. With the APIs provided by the errorManager module, the related errors and logs will be reported to your service platform for fault locating before application exits.
 
 After the errorManager APIs are used to listen for exceptions and errors, the application does not exit. You are advised to add the synchronous exit operation after the callback is executed. If you only want to obtain error logs, you are advised to use [HiAppEvent](hiappevent-intro.md) to subscribe to events.
-
-> **NOTE**
->
-> Starting from API version 26.0.0, if catchable exceptions have already been listened for through the errorManager APIs, HiAppEvent cannot subscribe to [JsError crashes](hiappevent-watcher-crash-events.md#jserror).
 
 ## Available APIs
 
@@ -26,20 +22,20 @@ The errorManager APIs are provided by [@ohos.app.ability.errorManager(Error Mana
 
 | API| Description|
 | -------- | -------- |
-| on(type: "error", observer: ErrorObserver): number | Registers an observer for application errors. A callback will be invoked when an application error is detected. This API works in a synchronous manner. The return value is the serial number (SN) of the registered observer.|
-| off(type: "error", observerId: number, callback: AsyncCallback&lt;void>): void | Unregisters an observer in callback mode. The number is the SN of the registered observer.|
-| off(type: "error", observerId: number): Promise&lt;void> | Unregisters an observer in promise mode. The number is the SN of the registered observer.|
-| on(type: 'globalErrorOccurred', observer: GlobalObserver): void | Registers a global observer for process errors. This is a synchronous API. When the system detects an application exception, the observer is called. (**Recommended**)<br>Note: This API is supported since API version 18.|
-| off(type: 'globalErrorOccurred', observer?: GlobalObserver): void | Unregisters an observer in callback mode. (**Recommended**)<br>Note: This API is supported since API version 18.|
-| on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void | Registers a global observer for process errors. This is a synchronous API. When the system detects an application promise exception, the observer is called. (**Recommended**)<br>Note: This API is supported since API version 18.|
-| off(type: 'globalUnhandledRejectionDetected', observer?: GlobalObserver): void | Unregisters an observer in callback mode. (**Recommended**)<br>Note: This API is supported since API version 18.|
+| on(type: "error", observer: ErrorObserver): number | Registers an observer for application errors. A callback is invoked when an application error is detected. This API works in a synchronous manner. The return value is the serial number (SN) of the registered observer.|
+| off(type: "error", observerId: number, callback: AsyncCallback&lt;void>): void | Unregisters an observer using a callback. The number is the SN of the registered observer.|
+| off(type: "error", observerId: number): Promise&lt;void> | Unregisters an observer using a promise. The number is the SN of the registered observer.|
+| on(type: 'globalErrorOccurred', observer: GlobalObserver): void | Registers a process error observer. When the system detects an application exception, it calls back the observer. This API is synchronous, meaning that a single registration enables global listening.<br/>**Note:** This API is supported since API version 18. |
+| off(type: 'globalErrorOccurred', observer?: GlobalObserver): void | Unregisters the observer using a callback.<br/>**Note:**<br/>- This API is supported since API version 18.<br/>- When unregistering the observer, you can listen for exceptions on all threads in the process. It is recommended that you call the off API during process reclamation; otherwise, the application may crash. |
+| on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void | Registers a process error observer. When the system detects an application promise exception, it calls back the observer. This API is synchronous, meaning that a single registration enables global listening.<br/>Note: This API is supported since API version 18. |
+| off(type: 'globalUnhandledRejectionDetected', observer?: GlobalObserver): void | Unregisters the observer using a callback.<br/>**Note:**<br/>- This API is supported since API version 18.<br/>- When unregistering the observer, you can listen for exceptions on all threads in the process. It is recommended that you call the off API during process reclamation; otherwise, the application may crash. |
 | on(type: 'loopObserver', timeout: number, observer: LoopObserver): void | Registers an observer for the message processing timeouts of the main thread.<br>This API can be called only in the main thread. A new observer will overwrite the previous one.|
 | off(type: 'loopObserver', observer?: LoopObserver): void | Unregisters an observer for the message processing timeouts of the main thread in LoopObserver mode.|
 | on(type: 'freeze', observer: FreezeObserver): void | Registers an observer for the main thread freeze event of the application. This API can be called only in the main thread. A new observer will overwrite the previous one.|
 | off(type: 'freeze', observer?: FreezeObserver): void | Unregisters an observer for the message processing timeouts of the main thread in FreezeObserver mode.<br>Note: This API is supported since API version 18.|
-| setDefaultErrorHandler(defaultHandler?: ErrorHandler): ErrorHandler | Sets a default error handler. This API can be called only in the main thread. When the **JS_CRASH** exception occurs, chain callback is supported and the return value is the last registered handler.<br>Note: This API is supported since API version 21.|
-| setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver): ResourceUsageObserver; | Called only on the main thread. When app resource usage exceeds the baseline, chained callbacks are supported. The return value is the previously registered resource usage observer. <br/>Note: This API is supported since API version 24. |
-| setDefaultFreezeObserver(defaultObserver?: FreezeObserver) : FreezeObserver | Called only on the main thread. When an APP_FREEZE exception occurs, chained callbacks are supported. The return value is the previously registered handler.<br/>**NOTE**<br/>This API is supported since API version 26.0.0.<br/>**Model restriction:** This API can be used only in the stage model. |
+| setDefaultErrorHandler(defaultHandler?: ErrorHandler): ErrorHandler | Sets a default error handler. This API can be called only in the main thread. When the **JS_CRASH** exception occurs, chained callbacks are supported and the return value is the last registered handler.<br>Note: This API is supported since API version 21.|
+| setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver): ResourceUsageObserver; | Called only in the main thread. When app resource usage exceeds the baseline, chained callbacks are supported. The return value is the previously registered resource usage observer. <br/>Note: This API is supported since API version 24. |
+| setDefaultFreezeObserver(defaultObserver?: FreezeObserver) : FreezeObserver | Called only in the main thread. When an APP_FREEZE exception occurs, chained callbacks are supported. The return value is the previously registered handler.<br/>**NOTE**<br/>This API is supported since API version 26.0.0.<br/>**Model restriction:** This API can be used only in the stage model. |
 
 When an asynchronous callback is used, the next step can be processed in the callback.
 
@@ -75,7 +71,6 @@ When a promise is used, the return value can also be processed in the promise. F
 ### Listening for a Single Thread
 
  Import the header files.
-
 <!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
@@ -84,7 +79,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
  Add an observer.
-
 <!-- @[error_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
@@ -103,7 +97,6 @@ let observer: errorManager.ErrorObserver = {
 ```
 
  Add a trigger button.
-
 <!-- @[onclick_error_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
@@ -121,10 +114,10 @@ Button('Listening for a single thread').onClick(()=>{
 }).position({x:50, y:50});
 ```
 
+
 ### Listening for Process Exceptions
 
  Import the header files.
-
 <!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
@@ -133,7 +126,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
  Add an observer.
-
 <!-- @[error_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
@@ -147,7 +139,6 @@ function errorFunc(observer: errorManager.GlobalError) {
 ```
 
  Add a trigger button.
-
 <!-- @[onclick_error_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
@@ -167,7 +158,6 @@ Button('Listening for process exceptions').onClick(()=>{
 ### Listening for Process Promise Exceptions
 
  Import the header files.
-
 <!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
@@ -176,7 +166,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
  Add an observer.
-
 <!-- @[promise_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
@@ -194,7 +183,6 @@ async function promiseFuncOne() {
 ```
 
  Add a trigger button.
-
 <!-- @[onclick_promise_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
@@ -218,7 +206,6 @@ Button('Listening for process promise exceptions').onClick(()=>{
 ### Listening for Main Thread Freeze Exceptions
 
  Import the header files.
-
 <!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
@@ -227,7 +214,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
  Add an observer.
-
 <!-- @[freeze_call_back](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
@@ -237,7 +223,6 @@ function freezeCallback() {
 ```
 
  Add a trigger button.
-
 <!-- @[onclick_freeze_call_back](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
@@ -259,7 +244,6 @@ Button('Listening for main thread freeze exceptions').onClick(()=>{
 ### Listening for Main Thread Timeouts
 
  Import the header files.
-
 <!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
@@ -268,7 +252,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
  Add an observer.
-
 <!-- @[loop_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
@@ -280,7 +263,6 @@ let loopObserver: errorManager.LoopObserver = {
 ```
 
  Add a trigger button.
-
 <!-- @[onclick_loop_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
@@ -302,7 +284,6 @@ Button('Listening for main thread timeouts').onClick(()=>{
 ### Listening for Process Promise Exceptions
 
  Import the header files.
-
 <!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
@@ -311,7 +292,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
  Add an observer.
-
 <!-- @[unhandled_rejection_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
@@ -336,7 +316,6 @@ async function promiseFuncTwo() {
 ```
 
  Add a trigger button.
-
 <!-- @[onclick_unhandled_rejection_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
@@ -360,7 +339,6 @@ Button('Listening for process promise exceptions').onClick(()=>{
 ### Chaining Error Handlers
 
  Define the first error handler and register the method. If no pre-handler is available, the process exits.
-
 <!-- @[first_error_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/FirstErrorHandler.ets) -->  
 
 ``` TypeScript
@@ -394,7 +372,6 @@ export function setFirstErrorHandler() {
 ```
 
  Define the second error handler and register the method to implement a chain call.
-
 <!-- @[second_error_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/SecondErrorHandler.ets) -->  
 
 ``` TypeScript
@@ -427,7 +404,6 @@ export function setSecondErrorHandler() {
 ```
 
  Import the header files.
-
 <!-- @[error_handler_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
@@ -436,7 +412,6 @@ import { setSecondErrorHandler } from './SecondErrorHandler';
 ```
 
  Add the constructor for chaining error handlers.
-
 <!-- @[test_error_handlers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
@@ -448,7 +423,6 @@ function testErrorHandlers() {
 ```
 
  Trigger the test through the button for the main component, register two handlers, and throw an error to verify the handler chain.
-
 <!-- @[onclick_error_Handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
@@ -460,7 +434,6 @@ Button ('Chaining error handlers').onClick(()=>{
 ### Freeze Handler Chain of Responsibility Pattern Scenario
 
  Define the first freeze handler and its registration method. The process exits when there is no preceding handler.
-
 <!-- @[first_freeze_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/FirstFreezeHandler.ets) -->  
 
 ``` TypeScript
@@ -491,7 +464,6 @@ export function setFirstFreezeHandler() {
 ```
 
  Define the second freeze handler and its registration method to form a chained call.
-
 <!-- @[second_freeze_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/SecondFreezeHandler.ets) -->  
 
 ``` TypeScript
@@ -522,7 +494,6 @@ export function setSecondFreezeHandler() {
 ```
 
  Import the header files.
-
 <!-- @[freeze_handler_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
@@ -531,7 +502,6 @@ import { setSecondFreezeHandler } from './SecondFreezeHandler';
 ```
 
  Add a function for constructing the scenario fault.
-
 <!-- @[test_timeout_handlers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
@@ -544,7 +514,6 @@ function waitTime() {
 ```
 
  Add the constructor for the freeze handler chain of responsibility pattern.
-
 <!-- @[test_freeze_handlers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
@@ -556,7 +525,6 @@ function testFreezeHandlers() {
 ```
 
  The main component triggers the test through a button, registers two handlers, and calls the scenario fault construction function to verify the processing chain.
-
 <!-- @[onclick_freeze_Handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript

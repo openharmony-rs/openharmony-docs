@@ -1,12 +1,11 @@
 # Intercepting Network Requests Initiated by the Web Component
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=4248a04d1b026b87b7cace162036b2fac054f3a9 translatedAt=2026-08-14T03:50:40.376Z pushedAt=2026-08-14T09:43:14.295Z -->
+<!-- md-trans-meta sourceCommit=5191f5de3eca0919d8d5e44823dbef1bf6b74270 translatedAt=2026-09-01T02:55:12.830Z pushedAt=2026-09-02T07:30:43.172Z -->
 
 The application can use [onInterceptRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9) or the ArkTS and NDK APIs provided by **SchemeHandler** to intercept network requests initiated by **Web** components.
 
@@ -189,7 +188,6 @@ In the NDK, obtain information about intercepted requests:
   ```
 
 In ArkTS, obtain information about intercepted requests:
-
   ```ts
   this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
     try {
@@ -300,16 +298,13 @@ Before calling [OH_ArkWebResourceHandler_DidFailWithError](../reference/apis-ark
 Since API version 20, you can directly use [OH_ArkWebResourceHandler_DidFailWithErrorV2](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfailwitherrorv2) or [didFail(code: WebNetErrorList, completeIfNoResponse: boolean)](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didfail20) to end a network request. You do not need to use [OH_ArkWebResourceHandler_DidReceiveResponse](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse) or [didReceiveResponse](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didreceiveresponse12) to return a response header to the web kernel.
 
 NDK sample code:
-
   ```c++
   void OnRequestStart(){
     // Return the network error code ARKWEB_ERR_CONNECTION_FAILED to end the request.
     OH_ArkWebResourceHandler_DidFailWithErrorV2(resourceHandler_, ARKWEB_ERR_CONNECTION_FAILED, true);
   }
   ```
-
 ArkTS sample code:
-
   ```ts
   this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
     // Call didFail(WebNetErrorList.ERR_CONNECTION_FAILED, true) to automatically construct a network request error ERR_CONNECTION_FAILED.
@@ -321,7 +316,5 @@ ArkTS sample code:
 ## Sample Code
 
 <!--RP1-->
-
 [Intercepting Network Requests Initiated by the Web Component](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler)
-
 <!--RP1End-->

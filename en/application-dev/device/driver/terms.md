@@ -1,11 +1,11 @@
-# Terms
+# Glossary
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
 <!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:40:19.595Z pushedAt=2026-06-25T06:57:18.281Z -->
+<!-- md-trans-meta sourceCommit=bf2c7dec6618c889ba9f8aba11f191335ed707dc translatedAt=2026-09-01T02:15:56.771Z pushedAt=2026-09-01T12:06:05.038Z -->
 
 ## A
 
@@ -29,7 +29,7 @@
 
 ### DDK
 
-  A toolkit provided by OpenHarmony to develop drivers for non-standard USB serial port devices based on the peripheral framework.
+  Driver Development Kit (DDK) is a tool package provided by OpenHarmony for developing drivers for non-standard USB devices based on the peripheral framework.
 
 ## H
 
@@ -45,7 +45,7 @@
 
 ### Logical Block
 
-  A logical block is a basic data storage unit. It represents a data area of a fixed size on a device and is usually used for data read and write operations. The size of a logical block may be 512 bytes, 1024 bytes, 2048 bytes, and so on. A specific size depends on a configuration of the device and a design of the file system.
+  A logical block is a basic data storage unit. It represents a data area of a fixed size on a device and is usually used for data read and write operations. The size of a logical block may be 512 bytes, 1024 bytes, 2048 bytes, and so on. The specific size depends on a configuration of the device and a design of the file system.
 
 ## S
 

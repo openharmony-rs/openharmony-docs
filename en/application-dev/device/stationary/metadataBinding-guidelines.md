@@ -1,16 +1,15 @@
 # Metadata Binding Development
-
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @codexu62-->
 <!--Designer: @yuxiaoyang-->
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=7ebe5ca28e86a74fd7bfca7f2a0ba9f738fdd1c2 translatedAt=2026-08-15T01:45:23.135Z pushedAt=2026-08-15T06:56:31.617Z -->
+<!-- md-trans-meta sourceCommit=e99e3b6ac6d7c1d97882fa9d3b068fd08262f383 translatedAt=2026-09-01T02:18:13.596Z pushedAt=2026-09-01T12:41:25.918Z -->
 
 ## Overview
 
-Metadata binding allows the system to map the content browsed by the current user to the [App Linking link](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/applinking-introduction) provided by a third-party application and save their mapping.
+Metadata binding allows the system to map the content browsed by the current user to the [App Linking link](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/applinking-introduction) provided by a third-party application and save the association.
 
 For detailed API introduction, refer to [@ohos.multimodalAwareness.metadataBinding (Metadata Binding)](../../reference/apis-multimodalawareness-kit/js-apis-awareness-metadataBinding.md).
 
@@ -25,7 +24,6 @@ Third-party apps can use the metadata binding function to map App Linking links 
 ## Available APIs
 
   - The initial APIs of this module are supported since API version 18. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
   - This module supports the metadata binding function.
 
 | Name                                                       | Description                                   |
@@ -56,7 +54,7 @@ Third-party apps can use the metadata binding function to map App Linking links 
 
    ``` TypeScript
    let callback : Callback<number> = (event: number) => {};
-   let bundleName: string = '';
+   let bundleName: string = 'com.example.app';
    ```
 
 3. Subscribe to the metadata binding service.
@@ -80,7 +78,7 @@ Third-party apps can use the metadata binding function to map App Linking links 
    <!-- @[metadata_binding_submit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) --> 
 
    ``` TypeScript
-   let metadata: string = '';
+   let metadata: string = 'sample metadata';
    try {
      metadataBinding.submitMetadata(metadata);
      // ...

@@ -1,12 +1,11 @@
 # Setting the private Property Using JSVM-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=fa3fc214ef4b265f033bc3f0d0a2df54f511a497 translatedAt=2026-08-12T06:33:48.027Z pushedAt=2026-08-12T10:57:00.687Z -->
+<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-09-01T02:41:28.399Z pushedAt=2026-09-02T06:35:06.041Z -->
 
 ## Introduction
 
@@ -98,7 +97,6 @@ const char *srcCallNative = R"JS(privateTest();)JS";
 ```
 
 ## Expected Result
-
 ```txt
 private property set: 1
 private property deleted is undefined: 1

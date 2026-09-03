@@ -6,7 +6,7 @@
 <!--Designer: @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=5e8f9d2a844f282b995b6f70d4fe57e8d0729081 translatedAt=2026-08-22T07:46:18.525Z pushedAt=2026-08-22T10:31:15.589Z -->
+<!-- md-trans-meta sourceCommit=fd21a16670d7ab2013b410804ba37cf2f24a5883 translatedAt=2026-09-01T02:22:33.480Z pushedAt=2026-09-01T13:19:49.981Z -->
 
 OpenHarmony Device Connector (hdc) is a command line tool used to interact with devices for debugging, data transfer, log viewing, and application installation. It can run on Windows, Linux, and MacOS to provide efficient and convenient device debugging capabilities.
 
@@ -127,7 +127,7 @@ hdc -t connect-key shell echo "Hello world"
 | [-s](#remote-connection)| (Optional) Specifies the IP and port in **IP:port** format for listening when the client connects to the server.|
 | [-p](#quick-command-execution)| (Optional) Executes a client command without querying the server process.|
 | [-m](#starting-a-server-in-the-foreground)| (Optional) Starts the server process in the foreground.|
-| [-e](#creating-a-local-port-forwarding)| (Optional) Specifies the IP address for listening on the local host when TCP port forwarding is performed. The default value is **127.0.0.1**. This parameter must be used together with **-m**.<br>If the **-e** parameter is used to specify the listening address, and the address is not the local loopback address (for example, **127.0.0.1**), pay attention to the access security.<br>Note: This API is supported since API version 20.|
+| [-e](#creating-a-local-port-forwarding) | (Optional) Specifies the IP address for listening on the local host when TCP port forwarding is performed. The default value is **127.0.0.1**. This parameter must be used together with **-m**.<br/>If the **-e** parameter is used to specify the listening address, and the address is not the local loopback address (for example, **127.0.0.1**), pay attention to the access security.<br/>**Note:** This API is supported since API version 20.|
 
 ### Commands
 
@@ -135,7 +135,7 @@ hdc -t connect-key shell echo "Hello world"
 | -------- | -------- |
 | [list targets](#displaying-devices)| Displays all connected target devices.|
 | [wait](#waiting-for-device-connection)| Waits until the device is properly connected.|
-| [tmode usb](#switching-between-usb-debugging-and-wireless-debugging)| Since version 3.1.0e, this command is deprecated. You need to set the USB debugging on the device setting page.|
+| [tmode usb](#switching-between-usb-debugging-and-wireless-debugging) | Deprecated since API version 15. It does not operate the device connection channel. Set it through the USB debugging switch in the device settings screen. |
 | [tmode port](#enabling-the-network-connection-channel)| Enables the network connection channel of the device.|
 | [tmode port close](#disabling-the-network-connection-channel)| Disables the network connection channel of the device.|
 | [tconn](#connecting-to-a-device-over-tcp)| Specifies the device to connect based on **IP:port**.|
@@ -204,7 +204,6 @@ hdc can be used with other debugging tools. The following table lists the tools.
 | <!--DelRow-->[wukong](../application-test/wukong-guidelines.md) | Wukong stability tool|
 | <!--DelRow-->[UItest](../application-test/uitest-guidelines.md) | UI test framework|
 | <!--DelRow-->[SmartPerf Device daemon](../application-test/smartperf-guidelines.md#smartperf-device-daemon)| SmartPerf Device-daemon tool commands|
-
 <!--RP1--><!--RP1End-->
 
 ### Obtaining the Help Information
@@ -324,7 +323,7 @@ hdc -t [connect-key] wait # Wait for the specified device to connect. Replace co
 
 | Name| Description|
 | -------- | -------- |
-| -t connect-key | This parameter is added in version 3.1.0a.<br>When a single device is connected, it is optional.<br>When multiple devices are connected, it is mandatory.|
+| -t connect-key | Parameter added in API version 12:<br/>Optional when connecting to a single device.<br/>Required when connecting to multiple devices. |
 
 **Return value**
 
@@ -599,14 +598,14 @@ hdc shell [-b bundlename] [command]
 
 | Parameter| Description|
 | -------- | -------- |
-| -b bundlename | This parameter is added in 3.1.0e. Bundle name of the debug-type application.<br>- If the command parameter is specified, the command is executed in non-interactive mode in the data directory of the app that can be debugged. For details, [Accessing the App Sandbox in CLI Mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-device-file-explorer#section48216711204)<br>In version 3.2.0e and later, the following features are added to the parameter:<br>- If the command parameter is not specified, the interactive shell session of the data directory of the app that can be debugged is supported. The default working directory is the root directory of the data directory of the app that can be debugged.<br>- If the [-b bundlename] parameter is not specified, the default execution path is the root directory of the system.|
+| -b bundlename | This parameter is added in API version 15. The bundle name of a debug application.<br/>- When the command parameter is specified: the command is executed in non-interactive mode in the data directory of the debug application. For details, see [Accessing the App Sandbox in CLI Mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-device-file-explorer#section48216711204).<br/>Since API version 26.0.0, this parameter supports the following features:<br>- When the command parameter is omitted, you can enter an interactive shell session in the data directory of the debug application, and the default working directory is the root path of the debug application data directory.<br/>- When the [-b bundlename] parameter is omitted, the default execution path is the system root directory. |
 | command | A single command to execute on the device. The command varies depending on the system type or version. You can run the **hdc shell ls /system/bin** command to obtain the supported command list. Currently, most commands are provided by [toybox](../tools/toybox.md). You can run the **hdc shell toybox --help** command to obtain the help information.<br>If this parameter is not specified, hdc starts an interactive shell session, in which you can enter commands such as **ls**, **cd**, and **pwd** at the command prompt.|
 
 > **NOTE**
 >
 > If the **[-b bundlename]** parameter is specified, the installed application corresponding to the bundle name must be signed using the debug certificate and started on the device. For details about how to request and use the debug certificate, see [Requesting a Debug Certificate](https://developer.huawei.com/consumer/en/doc/app/agc-help-add-debugcert-0000001914263178).
 >
-> If both the system version and hdc version of the device are earlier than 3.2.0e, the default working directory of the interactive shell session entered by the command parameter is still the root directory of the system. You are advised to upgrade the system version of the device and check the version compatibility by referring to the [hdc version mapping table](#hdc-version-mappings). You can run the hdc shell hdcd -v command to query the system version number of the device.
+> If both the device system version and the hdc version are earlier than API version 26.0.0, the default working directory of the interactive shell session entered without the command parameter is still the system root directory. You are advised to upgrade the device system version and check version compatibility by referring to [hdc Version Mappings](#hdc-version-mappings). You can run the **hdc shell hdcd -v** command to query the device system version.
 
 **Return value**
 
@@ -665,17 +664,17 @@ hdc install [-cwd path|-r|-s|-w waitingTime|-u userId|-p|-g|-h] src
 
 **Parameters**
 
-| Name| Description|
+| Parameter | Description |
 | -------- | -------- |
-| src | Used to specify the path of the application installation package. You can install [HAP](../quick-start/hap-package.md) and inter-application [HSP](../quick-start/in-app-hsp.md). From API version 22, [app packages](../quick-start/application-package-glossary.md#app) are supported.|
-| -cwd | Modifies the working directory.<br>This parameter is used to switch the **src** directory to the specified path during application installation. For example, when the new application is **test.hap** and the directory is **C:\\**, the actual installation file path is **C:\\test.hap**. If **-cwd "D:\\"** is executed, the actual installation file path is **D:\\test.hap**.|
-| -r | Used to overwrite an existing HAP or HSP file. This parameter is optional. This parameter is not specified by default, indicating that the existing file will be overwritten.|
-| -s | Used to specify the path of the HSP for applications to be installed. This parameter is mandatory when installing an application HSP, and optional in all other scenarios. Each directory can contain only one HSP file.|
-| -w | Used to specify the wait time for the bm tool when installing the HAP. This parameter is optional. The minimum wait time is 180 seconds, the maximum is 600 seconds, and the default value is 180 seconds.|
-| -u | Used to specify the [user](../tools/bm-tool.md#userid). By default, the application is installed for the current active user. This parameter is optional.|
-| -p | Used to specify the path of the HAP or HSP file to be installed. This parameter is optional. If multiple HAPs or HSPs are required, you can specify the folder path of the HAPs or HSPs. Since API version 22, you can specify the path of the APP file to be installed or the folder path of only one APP.|
-| -g | This parameter is optional. It is used to support [user_grant](../security/AccessToken/app-permission-mgmt-overview.md#user_grant-user-authorization) and [manual_settings](../security/AccessToken/app-permission-mgmt-overview.md#manual_settings-manual-authorization) permission authorization during debug package installation.<br>This parameter takes effect only for [applications of the debug version](performance-analysis-kit-terminology.md#applications-of-the-debug-version). When a debug application is updated to a release application, user authorization and manual authorization are canceled.<br>**NOTE**: This parameter is supported since API version 24.|
-| -h | Used to display the help information about the [install command](../tools/bm-tool.md#install) of the bm module. This parameter is optional.|
+| src | Path of the application installation package. You can install [HAP](../quick-start/hap-package.md) and inter-application [HSP](../quick-start/in-app-hsp.md). Since API version 22, [APP](../quick-start/application-package-glossary.md#app) can be installed. |
+| -cwd | Modifies the working directory.<br>Used to switch src to the specified path during application installation. For example, the initially installed application is test.hap, whose directory is C:\\, and the actual installation package path is C:\\test.hap. If -cwd "D:\\" is used, the actual installation package path is D:\\test.hap. |
+| -r | Optional parameter. Overwrites and installs an HAP/HSP. By default, this parameter is omitted, which means overwrite installation. |
+| -s | Mandatory when installing an inter-application HSP, and optional in other scenarios. Used to specify the path of the inter-application HSP to be installed. When a directory is specified, each path directory can contain only one HSP. |
+| -w | Optional parameter. Specifies the waiting time of the bm tool when installing a HAP. The minimum waiting time is 180s, the maximum waiting time is 600s, and the default value is 180s. |
+| -u | Optional parameter. Specifies the [user](../tools/bm-tool.md#userid). By default, the application is installed under the current active user. |
+| -p | Optional parameter. Specifies the path of the HAP/HSP to be installed. For a multi-HAP/HSP application, you can specify the folder path where multiple HAPs/HSPs are located. Since API version 22, you can specify the path of the APP to be installed, or the path of a folder that contains only one APP. |
+| -g | Optional parameter. When installing a debug package, supports [user authorization](../security/AccessToken/app-permission-mgmt-overview.md#user_grant-user-authorization) and [manual authorization](../security/AccessToken/app-permission-mgmt-overview.md#manual_settings-manual-authorization).<br>This parameter takes effect only for [debug applications](performance-analysis-kit-terminology.md#applications-of-the-debug-version). When a debug application is updated to a release application, the granted user authorization and manual authorization are revoked.<br>**Note:** This parameter is supported since API version 24. |
+| -h | Optional parameter. Displays the help information of the bm module [install command](../tools/bm-tool.md#install). |
 
 **Return value**
 
@@ -801,13 +800,13 @@ hdc file send [-a|-sync|-z|-m|-cwd path|-b bundlename] SOURCE DEST
 | Name| Description|
 | -------- | -------- |
 | SOURCE | Path of the file to send.|
-| DEST | Path of the target file.<br>Since API version 21, some operations on the media library file can be performed through hdc. (In earlier versions, "[Fail]Error opening file: ..." is displayed.)<br>Path of the media library file: **/mnt/data/\<uid\>/media_fuse/Photo/** directory and its subdirectories. **\<uid\>** is the ID of the current user.<br>For details about how to operate the media library through hdc, see [mediatool](../tools/mediatool.md#hdc-commands).|
+| DEST | Path of the target file.<br>Since API version 21, some operations on the media library file can be performed through hdc. (In earlier versions, `"[Fail]Error opening file: ..."` is displayed.)<br>Path of the media library file: `/mnt/data/<uid>/media_fuse/Photo/` directory and its subdirectories. `<uid>` is the ID of the current user.<br>For details about how to operate the media library through hdc, see [mediatool](../tools/mediatool.md#hdc-commands). |
 | -a | Used to retain the file modification timestamp.|
 | -sync | Used to transfer only the files whose **mtime** is updated.<br>**mtime** (modified timestamp): timestamp after modification.|
 | -z | Used to compress and transmit files in LZ4 format. This parameter is unavailable.|
 | -m | Used to synchronize the DAC permission, UID, GID, and MAC permission during file transfer.<br>**DAC** (Discretionary Access Control): discretionary access control;<br>**uid** (User identifier): user identifier (or user ID);<br>**gid** (Group identifier): group identifier (or group ID);<br>**MAC** (Mandatory Access Control): mandatory access control (or non-discretionary access control).|
 | -cwd | Modifies the working directory.<br>This parameter is used to switch the **SOURCE** to a specified path during file transfer. For example, if the file is **test** and the directory is **/data**, the actual file path is **/data/test**. If **-cwd "/user/"** is used, the actual file path is **/user/test**.|
-| -b | Used to specify the bundle name of the debug-type application. This parameter is added in 3.1.0e (If this parameter is used in an earlier version, the message "[Fail]Unknown file option: -b" is displayed). <br>For details, see [Accessing the App Sandbox in CLI Mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-device-file-explorer#section48216711204).|
+| -b | Used to specify the bundle name of the debug-type application. This parameter is added in API version 15 (If this parameter is used in an earlier version, the message `"[Fail]Unknown file option: -b"` is displayed).<br/>For details, see [Accessing the App Sandbox in CLI Mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-device-file-explorer#section48216711204). |
 | bundlename | Bundle name of the debug-type application.|
 
 **Return value**
@@ -846,13 +845,13 @@ hdc file recv [-a|-sync|-z|-m|-cwd path|-b bundlename] DEST SOURCE
 | Name| Description|
 | -------- | -------- |
 | SOURCE | Destination path on the local device.|
-| DEST | Path of the file to send.<br>Since API version 21, some operations on the media library file can be performed through hdc. (In earlier versions, "[Fail]Error opening file: ..." is displayed.)<br>Path of the media library file: **/mnt/data/\<uid\>/media_fuse/Photo/** directory and its subdirectories. **\<uid\>** is the ID of the current user.<br>For details about media library operations, see [mediatool](../tools/mediatool.md#hdc-commands).|
+| DEST | Path of the file to send.<br>Since API version 21, some operations on the media library file can be performed through hdc. (In earlier versions, `"[Fail]Error opening file: ..."` is displayed.)<br>Path of the media library file: `/mnt/data/<uid>/media_fuse/Photo/` directory and its subdirectories. `<uid>` is the ID of the current user.<br>For details about media library operations, see [mediatool](../tools/mediatool.md#hdc-commands). |
 | -a | Used to retain the file modification timestamp.|
 | -sync | Used to transfer only the files whose **mtime** is updated.<br>**mtime** (modified timestamp): timestamp after modification.|
 | -z | Used to compress and transmit files in LZ4 format. This parameter is unavailable.|
 | -m | Used to synchronize the DAC permission, UID, GID, and MAC permission during file transfer.<br>**DAC** (Discretionary Access Control): discretionary access control;<br>**uid** (User identifier): user identifier (or user ID);<br>**gid** (Group identifier): group identifier (or group ID);<br>**MAC** (Mandatory Access Control): mandatory access control (or non-discretionary access control).|
 | -cwd | Modifies the working directory.<br>This parameter is used to switch the **SOURCE** to a specified path during file transfer. For example, if the initial directory for receiving files is **/data/** but **-cwd "/user/"** is used, the actual directory for receiving files is **/user/**.|
-| -b | Used to send files in the data directory of a specified debug-type application process. This parameter is added in version 3.1.0e.<br>For details, see [Accessing the App Sandbox in CLI Mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-device-file-explorer#section48216711204).|
+| -b | Used to send files in the data directory of a specified debug-type application process. This parameter is added in API version 15.<br>For details, see [Accessing the App Sandbox in CLI Mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-device-file-explorer#section48216711204). |
 | bundlename | Bundle name of the debug application process.|
 
 **Return value**
@@ -880,9 +879,9 @@ FileTransfer finish, Size:xxx, File...
 
 > **NOTE**
 >
-> To use the **\[-b bundlename]** parameter, ensure that the installed application is signed by a debug certificate and started. For details about how to request and use the debug certificate, see [Requesting a Debug Certificate](https://developer.huawei.com/consumer/en/doc/app/agc-help-add-debugcert-0000001914263178).
+> To use the **[-b bundlename]** parameter, ensure that the installed application is signed by a debug certificate and started. For details about how to request and use the debug certificate, see [Requesting a Debug Certificate](https://developer.huawei.com/consumer/en/doc/app/agc-help-add-debugcert-0000001914263178).
 >
-> **Version updates**: Since version 3.1.0a, Chinese characters can be used as file transfer command parameters, which facilitates the use in multi-language environments.
+> **Version updates**: Since API version 12, Chinese characters can be used as file transfer command parameters, which facilitates the use in multi-language environments.
 
 ## Port Forwarding
 
@@ -951,6 +950,7 @@ Forwardport result:OK
 > **NOTE**
 >
 > When creating a local port forwarding task, the PC uses the TCP protocol and the specified **port**. By default, **127.0.0.1:port** is listened for. If the **-e** parameter is used to specify the IP address of the host that to be listened when the service process starts, the PC listens for the **IP:port** specified by **-e**.
+
 
 ### Creating a Remote Port Forwarding
 
@@ -1173,6 +1173,7 @@ $ hdc -e 0.0.0.0 -m # Set the local listening IP address to 0.0.0.0 for port for
 >
 > 3. Only one server instance is allowed in the running environment. If a server is running, a new server instance cannot be started in the foreground.
 
+
 ## Operating the Device
 
 | Command| Description|
@@ -1334,7 +1335,7 @@ $ hdc keygen key
 
 ### Querying the Client Version
 
-Query the hdc client version.
+Queries the version information of the hdc client process. For details, see [hdc Version Mappings](#hdc-version-mappings). The command format is as follows:
 
 ```shell
 hdc -v
@@ -1355,7 +1356,7 @@ Ver: 3.1.0e
 
 ### Querying the Server Version
 
-Query the server version.
+Queries the version information of the hdc server process. For details, see [hdc Version Mappings](#hdc-version-mappings). The command format is as follows:
 
 ```shell
 hdc version
@@ -1431,7 +1432,9 @@ Manufacture: default
 
 ## hdc Debugging Logs
 
+
 ### Server Logs
+
 
 **Specify the log level at runtime**
 
@@ -1689,7 +1692,6 @@ The following example describes how to set environment variables by setting **OH
 | 3.1.0e | 15 or later| - The **file send** command supports the **-b** parameter. For details, see [Transferring Files](#transferring-files).<br>- The **file recv** command supports the **-b** parameter. For details, see [Transferring Files](#transferring-files).<br>- The **shell** command supports the **-b** parameter. For details, see [Running Interactive Commands](#running-interactive-commands).|
 | 3.2.0b | 20 | - The port forwarding task can listen for the IP address of the remote host. For details, see [Creating a Local Port Forwarding](#creating-a-local-port-forwarding).|
 | 3.2.0e | 26.0.0 or later| - The **shell** command supports the **-b** parameter. If the **command** parameter is not specified, the interactive shell session is entered by default. For details, see [Running Interactive Commands](#running-interactive-commands).|
-
 > **NOTE**
 >
 > If the current hdc version is too early, the compatibility of some functionalities may be affected. You can download the latest version based on the API version description.
@@ -1912,7 +1914,7 @@ Garbled characters are displayed when the **hdc file send/recv** command is exec
 
 **Possible Causes and Solution**
 
-Since 3.1.0a, the file transfer command supports Chinese characters in the parameter path. Update the version to the latest version.
+Since API version 12, the file transfer command supports Chinese characters in the parameter path. Update the version to the latest version.
 
 Run the **hdc checkserver** command to check the current version. If the version is earlier than 3.1.0a, upgrade the SDK to API version 12 or later.
 
@@ -1945,6 +1947,7 @@ Modify the registry information in the PC as follows:
 2. Enter the following address in the address bar, and press **Enter**.
 
    **Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography\Protect\Providers\df9d8cd0-1501-11d1-8c7a-00c04fc297eb**;
+
 
 3. Right-click to create a DWORD (32-bit) value (D), set its name to **ProtectionPolicy** and value to **1** (hexadecimal), and click **OK**.
 
@@ -2034,7 +2037,7 @@ The hdc version is too early. You need to update it to the latest version.
 
 **Possible Causes**
 
-If the client version is earlier than 3.0.0b, authorization is not supported and the client cannot access the system.
+If the hdc version is earlier than 3.0.0b, authorization is not supported and the client cannot access the system.
 
 **Solution**
 
@@ -2145,7 +2148,6 @@ The public key verification on the device fails, and the current computer is rej
 **Possible Causes**
 
 1. The public key file is missing on the device.
-
 2. The public key file on the device does not match that on the computer.
 
 **Solution**

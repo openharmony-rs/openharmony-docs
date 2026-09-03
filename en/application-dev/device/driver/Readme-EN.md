@@ -30,4 +30,4 @@
 
 - [FAQs](externaldevice-faqs.md)
 
-- [Terms](terms.md)
+- [Glossary](terms.md)

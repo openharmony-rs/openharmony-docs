@@ -1,21 +1,17 @@
 # Using the Network Firewall
-
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wmyao_mm-->
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=347d255af45ee8903284b9e542c2eff6d5717de4 translatedAt=2026-08-13T03:08:57.932Z pushedAt=2026-08-13T06:38:25.675Z -->
+<!-- md-trans-meta sourceCommit=4606664f710e584bd6ff3bf94fe143ad758cd129 translatedAt=2026-09-01T02:47:51.519Z pushedAt=2026-09-02T07:17:06.785Z -->
 
 ## Introduction
 
 The network firewall module provides the following functions:
-
 - Basic firewall management functions, such as enabling and disabling of firewalls and firewall rules, and audit.
-
 - Firewall rule configuration, including the rule name, description, operation, applicable application, protocol type, address, port, and outbound/inbound direction.
-
 - DNS policy configuration, including the domain names allowed or not allowed for resolution and the DNS server (active or standby) used for resolution (application level).
 
 > **NOTE**
@@ -24,33 +20,19 @@ The network firewall module provides the following functions:
 ## When to Use
 
 Typical firewall scenarios include:
-
 - IP address-based access control
-
 1. Restricting network access for specific applications
-
 2. Restricting network communication to specific IP addresses, protocols, ports, and physical NICs.
-
 3. Restricting network communication of specific applications to specific IP addresses, protocols, ports, and physical NICs.
-
 4. Applying interception rules immediately after they are delivered. For TCP, any existing intercepted TCP connections must be disconnected.
-
 - Domain name-based access control
-
 1. Restricting DNS resolution for specific domain names. Only standard unencrypted DNS is restricted. Encrypted DNS and private DNS are not affected.
-
 2. Restricting DNS resolution for specific domain names by specific applications. Only standard unencrypted DNS is restricted. Encrypted DNS and private DNS are not affected.
-
 3. Applying interception rules immediately after they are delivered. For TCP, any existing intercepted TCP connections must be disconnected.
-
 <!--Del-->
-
 - Traceable network access
-
 1. Query of interception records for system applications
-
 2. Automatic saving of interception rules and automatic recovery upon startup
-
 <!--DelEnd-->
 
 The following describes the development procedure specific to each application scenario.
@@ -58,7 +40,6 @@ The following describes the development procedure specific to each application s
 ## IP address-based access control
 
 1. Use a network cable to connect the device to a network port.
-
 2. Import the **netFirewall** namespace from **@kit.NetworkKit**.
 
    <!-- @[net_firewall_case_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
@@ -69,7 +50,6 @@ The following describes the development procedure specific to each application s
    import { BusinessError } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    ```
-
 3. Call **setNetFirewallPolicy** to enable the firewall.
 
    <!-- @[net_firewall_set_net_firewall_policy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
@@ -104,7 +84,6 @@ The following describes the development procedure specific to each application s
          hilog.error(0x0000, 'testTag', `error: set firewall policy failed: ${JSON.stringify(error)}`);
        });
    ```
-
 4. Call **addNetFirewallRule** to add firewall rules.
 
    <!-- @[net_firewall_add_net_firewall_rule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
@@ -169,11 +148,9 @@ The following describes the development procedure specific to each application s
      hilog.error(0x0000, 'testTag', `error: add firewall rule failed:  ${JSON.stringify(reason)}`);
    });
    ```
-
 ## Domain Name-based Access Control
 
 1. Use a network cable to connect the device to a network port.
-
 2. Import the **netFirewall** namespace from **@kit.NetworkKit**.
 
    <!-- @[net_firewall_case_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
@@ -184,7 +161,6 @@ The following describes the development procedure specific to each application s
    import { BusinessError } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    ```
-
 3. Call **setNetFirewallPolicy** to enable the firewall.
 
    <!-- @[net_firewall_set_net_firewall_policy_domain_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
@@ -209,7 +185,6 @@ The following describes the development procedure specific to each application s
          hilog.error(0x0000, 'testTag', `error: set firewall policy failed: ${JSON.stringify(error)}`);
        });
    ```
-
 4. Call **addNetFirewallRule** to add firewall rules.
 
    <!-- @[net_firewall_add_net_firewall_rule_domain_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
@@ -229,8 +204,17 @@ The following describes the development procedure specific to each application s
          isWildcard: false,
          domain: 'www.HarmonyOS.cn'
        },{
-       isWildcard: true,
-       domain: '*.HarmonyOS.cn'
+         isWildcard: true,
+         domain: '*.HarmonyOS.cn'
+       },{
+         isWildcard: true,
+         domain: '*w.HarmonyOS.cn' // Supported since API version 26.0.0.
+       },{
+         isWildcard: true,
+         domain: 'www.HarmonyOS.*' // Supported since API version 26.0.0.
+       },{
+         isWildcard: true,
+         domain: 'www.HarmonyOS.c*' // Supported since API version 26.0.0.
      }] as domain[],
      userId: 100,
      interface:'wlan0' // Supported since API version 26.0.0.
@@ -245,13 +229,10 @@ The following describes the development procedure specific to each application s
      hilog.error(0x0000, 'testTag', `error: add firewall rule failed:  ${JSON.stringify(reason)}`);
    });
    ```
-
 <!--Del-->
-
 ## Query of Firewall Interception Records
 
 1. Use a network cable to connect the device to a network port.
-
 2. Import the **netFirewall** namespace from **@kit.NetworkKit**.
 
     ```ts
@@ -276,5 +257,4 @@ The following describes the development procedure specific to each application s
       console.error("get intercept records failed: " + JSON.stringify(error));
     });
     ```
-
 <!--DelEnd-->
