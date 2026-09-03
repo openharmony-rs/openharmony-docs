@@ -239,7 +239,7 @@ Wifi_ResultCode OH_Wifi_GetDeviceMacAddress(char *macAddr, unsigned int *macAddr
 
 | 类型 | 说明 |
 | -- | -- |
-| [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode) | 返回操作结果，详细定义参见[Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode)。<br> [WIFI_SUCCESS](capi-oh-wifi-h.md#wifi_resultcode) 成功获取设备MAC地址。<br> [WIFI_PERMISSION_DENIED](capi-oh-wifi-h.md#wifi_resultcode) 权限拒绝。<br> [WIFI_NOT_SUPPORTED](capi-oh-wifi-h.md#wifi_resultcode) 不支持该能力。<br> [WIFI_INVALID_PARAM](capi-oh-wifi-h.md#wifi_resultcode) 输入参数macAddr是空指针。<br> [WIFI_OPERATION_FAILED](capi-oh-wifi-h.md#wifi_resultcode) 内部执行失败。<br> [WIFI_STA_DISABLED](capi-oh-wifi-h.md#wifi_resultcode) WIFI STA模式未启用。 |
+| [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode) | 返回操作结果，详细定义参见[Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode)。<br> [WIFI_SUCCESS](capi-oh-wifi-h.md#wifi_resultcode) 成功获取设备MAC地址。<br> [WIFI_PERMISSION_DENIED](capi-oh-wifi-h.md#wifi_resultcode) 权限拒绝。<br> [WIFI_NOT_SUPPORTED](capi-oh-wifi-h.md#wifi_resultcode) 不支持该能力。<br> [WIFI_INVALID_PARAM](capi-oh-wifi-h.md#wifi_resultcode) 输入参数macAddr是空指针。<br> [WIFI_OPERATION_FAILED](capi-oh-wifi-h.md#wifi_resultcode) 内部执行失败。<br> [WIFI_STA_DISABLED](capi-oh-wifi-h.md#wifi_resultcode) Wi-Fi STA模式未启用。 |
 
 ### OH_Wifi_GetLinkedInfo()
 
@@ -269,6 +269,6 @@ Wifi_ResultCode OH_Wifi_GetLinkedInfo(OH_WifiLinkedInfo *info)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode) | 返回操作结果，详细定义参见[Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode)。<br> [WIFI_SUCCESS](capi-oh-wifi-h.md#wifi_resultcode) 成功获取WIFI连接信息。<br> [WIFI_PERMISSION_DENIED](capi-oh-wifi-h.md#wifi_resultcode) 权限拒绝。<br> [WIFI_NOT_SUPPORTED](capi-oh-wifi-h.md#wifi_resultcode) 不支持该能力。<br> [WIFI_INVALID_PARAM](capi-oh-wifi-h.md#wifi_resultcode) 输入参数info是空指针。<br> [WIFI_OPERATION_FAILED](capi-oh-wifi-h.md#wifi_resultcode) 内部执行失败。<br> [WIFI_STA_DISABLED](capi-oh-wifi-h.md#wifi_resultcode) Wi-Fi STA模式未启用。 |
+| [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode) | 返回操作结果，详细定义参见[Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode)。<br> [WIFI_SUCCESS](capi-oh-wifi-h.md#wifi_resultcode) 成功获取Wi-Fi连接信息。<br> [WIFI_PERMISSION_DENIED](capi-oh-wifi-h.md#wifi_resultcode) 权限拒绝。<br> [WIFI_NOT_SUPPORTED](capi-oh-wifi-h.md#wifi_resultcode) 不支持该能力。<br> [WIFI_INVALID_PARAM](capi-oh-wifi-h.md#wifi_resultcode) 输入参数info是空指针。<br> [WIFI_OPERATION_FAILED](capi-oh-wifi-h.md#wifi_resultcode) 内部执行失败。<br> [WIFI_STA_DISABLED](capi-oh-wifi-h.md#wifi_resultcode) Wi-Fi STA模式未启用。 |
 
 
