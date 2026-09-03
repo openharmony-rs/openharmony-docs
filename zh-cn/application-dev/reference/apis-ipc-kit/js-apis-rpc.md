@@ -720,7 +720,7 @@ writeByte(val: number): void
 
 将字节值写入MessageSequence实例。调用此方法后，字节值会被以8位无符号整数形式存入缓冲区当前写指针位置，并自动更新写指针。该方法适用于传输小范围整数或标志位数据。
 
-- 存储范围:0-255(无符号)或-128-127(有符号)。
+- 存储范围：[0, 255]（无符号）或[-128, 127]（有符号）。
 - 数据对齐方式为字节对齐。
 - 数值必须在字节范围内，超出范围可能导致数据截断。
 - 读取时必须使用[readByte](#readbyte9)方法配对读取。
@@ -2774,7 +2774,7 @@ readStringArray(): string[]
 从MessageSequence实例中读取字符串数组。
 
 - 返回新创建的数组，无需预先创建。
-- 数组单个元素的长度范围0-40959字节。
+- 数组单个元素的长度范围[0, 40960)。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -7814,7 +7814,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, options: MessageOption, callback: AsyncCallback&lt;RequestResult&gt;): void
 
-以同步或异步方式向对端进程发送MessageSequence消息。如果为选项设置了异步模式，则立即收到回调，reply报文里没有内容，具体回复需要在业务侧的回调中获取。如果为选项设置了同步模式，则将在sendRequest返回时收到回调，回复内容在reply报文里。
+以同步或异步方式向对端进程发送MessageSequence消息。如果为选项设置了异步模式，则立即收到回调，reply报文里没有内容，具体回复需要在业务侧的回调中获取。如果为选项设置了同步模式，则将在sendMessageRequest返回时收到回调，回复内容在reply报文里。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -10840,7 +10840,7 @@ let testRemoteObject = new TestRemoteObject("testObject");
 
 提供与匿名共享内存对象相关的方法，包括创建、关闭、映射和取消映射Ashmem、从Ashmem读取数据和写入数据、获取Ashmem大小、设置Ashmem保护。
 
-共享内存只适用与本设备内跨进程通信。
+共享内存只适用于本设备内跨进程通信。
 
 - 大数据传输：传输大量数据(如图片、文件)时使用共享内存提升效率。
 - 跨进程数据共享：多个进程需要共享访问同一块内存数据。
