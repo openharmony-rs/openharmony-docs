@@ -24,7 +24,7 @@
 
 <!-- @[app_level_compatibility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/AppLevelCompatibilityExample.ets) -->
 
-<div class="same-source-code">
+
 ``` TypeScript
 import { uiMaterial } from '@kit.ArkUI';
 
@@ -58,11 +58,6 @@ struct AppLevelCompatibility {
 }
 ```
 
-<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/AppLevelCompatibilityExample.ets?same_code_link_text=app_level_compatibility" target="_blank" rel="nofollow">AppLevelCompatibilityExample.ets</a></p>
-
-</div>
-
-
 
 应用级ENABLE模式下，Select呈现沉浸式系统材质样式：
 
@@ -86,7 +81,7 @@ struct AppLevelCompatibility {
 
 <!-- @[component_level_compatibility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/ComponentLevelCompatibilityExample.ets) -->
 
-<div class="same-source-code">
+
 ``` TypeScript
 import { uiMaterial } from '@kit.ArkUI';
 import { deviceInfo } from '@kit.BasicServicesKit';
@@ -119,11 +114,6 @@ struct ComponentLevelCompatibility {
   }
 }
 ```
-
-<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/ComponentLevelCompatibilityExample.ets?same_code_link_text=component_level_compatibility" target="_blank" rel="nofollow">ComponentLevelCompatibilityExample.ets</a></p>
-
-</div>
-
 
 
 系统软件API版本低于26.0.0时，组件保持原有样式：
