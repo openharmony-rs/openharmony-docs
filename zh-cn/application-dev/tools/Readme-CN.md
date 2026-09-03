@@ -41,8 +41,8 @@
 - [acm工具](acm-tool.md)
 <!--DelEnd-->
 - 命令行工具<!--command-line-utilities-->
-  - [toybox](toybox.md)
-  - [媒体库资源访问工具](mediatool.md)
+  - [toybox工具](toybox.md)
+  - [mediatool工具](mediatool.md)
   - [devicedebug工具](devicedebug-tool.md)
   - [rawheap-translator工具](rawheap-translator.md)
   - [js-rawheap-translator工具](js-rawheap-translator.md)
