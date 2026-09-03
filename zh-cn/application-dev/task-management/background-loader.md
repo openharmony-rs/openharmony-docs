@@ -11,6 +11,8 @@
 
 适用于期望通过后台预先加载应用数据实现优化应用启动体验的场景，系统会根据用户使用习惯、频次以及系统资源（内存、电量）等条件，预先启动应用进程并执行加载回调方法，允许应用在后台执行短时的内容和数据加载。例如：资讯刷新、消息获取、视频缓存等。
 
+后台加载任务仅适用于启动加速场景的短时数据预加载。若应用无需启动加速，则不适用本模块。
+
 后台加载任务相关接口从API版本26.1.0开始支持。
 
 ## 实现原理
@@ -59,7 +61,7 @@
 
 后台加载任务的开发步骤分为三步：
 
-1. **实现后台加载任务回调能力：** 定义ON_START和ON_STOP回调函数，并注册到应用主UIAbility的[Callee](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)中。
+1. **实现后台加载任务回调能力：** 定义[ON_START](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#常量)和[ON_STOP](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#常量)回调函数，并注册到应用主UIAbility的[Callee](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)中。
 
 2. **注册、取消注册及查询后台加载任务：** 调用[registerTask](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#backgroundloaderregistertask)接口注册任务，可通过[unregisterTask](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#backgroundloaderunregistertask)取消注册，通过[getTaskInfo](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#backgroundloadergettaskinfo)查询任务信息。
 
@@ -101,7 +103,7 @@
 
    ``` TypeScript
    const taskInfo: backgroundLoader.TaskInfo = {
-     abilityName: abilityName,
+     abilityname: abilityname,
      taskId: taskId
    };
    try {
@@ -121,7 +123,7 @@
 
    ``` TypeScript
    const taskInfo: backgroundLoader.TaskInfo = {
-     abilityName: abilityName,
+     abilityname: abilityname,
      taskId: taskId
    };
    try {
@@ -140,15 +142,16 @@
    <!-- @[backgroundLoader_getTaskInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
    ``` TypeScript
-   backgroundLoader.getTaskInfo(taskId).then((taskInfoData: backgroundLoader.TaskInfo) => {
+   try {
+     const taskInfoData = backgroundLoader.getTaskInfo(taskId);
      const result = `taskId=${taskInfoData.taskId}, abilityName=${taskInfoData.abilityName}`;
      hilog.info(DOMAIN, 'testTag', 'getTaskInfo result: %{public}s', result);
      return result;
-   }).catch((err: BusinessError) => {
+   } catch (err) {
      const errMsg = JSON.stringify(err);
      hilog.error(DOMAIN, 'testTag', 'getTaskInfo failed: %{public}s', errMsg);
      return `Failed: ${(err as BusinessError).message ?? errMsg}`;
-   });
+   }
    ```
 
 ### 完成后台加载任务
@@ -159,7 +162,7 @@
 
    ``` TypeScript
    const taskInfo: backgroundLoader.TaskInfo = {
-     abilityName: abilityName,
+     abilityname: abilityname,
      taskId: taskId
    };
    try {
