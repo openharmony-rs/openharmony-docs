@@ -13,7 +13,7 @@ typedef struct OH_CryptoEcPoint OH_CryptoEcPoint
 
 ## 概述
 
-定义EC点结构体。
+椭圆曲线点结构体，表示椭圆曲线上的点。
 
 **起始版本：** 20
 
