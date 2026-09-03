@@ -22,7 +22,7 @@ animation(value:AnimateParam): T
 
 > **说明：**
 >
->  - 在单一页面上存在大量应用动效的组件时，可以使用[renderGroup](ts-universal-attributes-image-effect.md#rendergroup10)方法来解决卡顿问题，从而提升动画性能。最佳实践请参考优化动画性能-[使用renderGroup](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkts-animation-usage-guide#使用rendergroup)。
+>  - 在单一页面上存在大量应用动效的组件时，可以使用[renderGroup](ts-universal-attributes-image-effect.md#rendergroup10)方法来解决卡顿问题，从而提升动画性能。最佳实践请参考优化动画性能中的[使用renderGroup](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkts-animation-usage-guide#使用rendergroup)。
 >
 >  - 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
@@ -57,7 +57,7 @@ animation(value: AnimateParam | undefined)
 
 > **说明：**
 >
->  - 在单一页面上存在大量应用动效的组件时，可以使用[renderGroup](ts-universal-attributes-image-effect.md#rendergroup10)方法来解决卡顿问题，从而提升动画性能。最佳实践请参考优化动画性能-[使用renderGroup](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkts-animation-usage-guide#使用rendergroup)。
+>  - 在单一页面上存在大量应用动效的组件时，可以使用[renderGroup](ts-universal-attributes-image-effect.md#rendergroup10)方法来解决卡顿问题，从而提升动画性能。最佳实践请参考优化动画性能中的[使用renderGroup](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkts-animation-usage-guide#使用rendergroup)。
 >
 >  - 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
