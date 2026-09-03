@@ -52,8 +52,8 @@ ZOrder值越大，窗口越靠前显示，能够覆盖ZOrder值较小的窗口�
   系统为不同类型的子窗口分配了默认层级。优先级由高到低如下所示：
 
   | 窗口类型     | 创建方式 |
-  |----------| -------- |
-  | 应用模态子窗   | 调用[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-Window.md#createsubwindowwithoptions12)接口，并设置子窗口参数[SubWindowOptions](../reference/apis-arkui/arkts-apis-window-i.md#subwindowoptions11)中的isModal为true，modalityType为APPLICATION_MODALITY。 |
+  | -------- | -------- |
+  | 模应用子窗   | 调用[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-Window.md#createsubwindowwithoptions12)接口，并设置子窗口参数[SubWindowOptions](../reference/apis-arkui/arkts-apis-window-i.md#subwindowoptions11)中的isModal为true，modalityType为APPLICATION_MODALITY。 |
   | Toast子窗  | 调用[showToast()](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showtoast)接口，并设置showMode为TOP_MOST。 |
   | 文本菜单子窗   | 调用[showActionMenu()](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)接口，并设置showInSubWindow为true。 |
   | Dialog子窗 | 调用[openCustomDialog()](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)传入dialogContent、options参数，并设置showInSubWindow为true。<br>调用[openCustomDialog()](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12-1)传入options参数，并设置showInSubWindow为true。<br>调用[openCustomDialogWithController()](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)，并设置showInSubWindow为true。 |
@@ -77,12 +77,12 @@ ZOrder值越大，窗口越靠前显示，能够覆盖ZOrder值较小的窗口�
 ## 窗口层级控制机制汇总表
 
 
-| 特性/操作 | 控制方式 | 生效范围    | 适用场景 |
-| -------- | -------- |---------| -------- |
-| ZOrder | 系统管理 | 可跨应用生效  | 内部渲染顺序管理 |
-| zLevel | setSubWindowZLevel()/创建窗口时设置 | 仅同应用内生效 | 子窗口层级管理 |
-| 窗口置顶 | setWindowTopmost() | 可跨应用生效  | 视频、导航等常驻窗口 |
-| 点击抬升 | setRaiseByClickEnabled() | 仅同应用内生效 | 防误触、固定布局 |
+| 特性/操作 | 控制方式 | 支持窗口类型 | 生效范围 | 适用场景 |
+| -------- | -------- | -------- | -------- | -------- |
+| ZOrder | 系统管理 | 所有窗口 | 可跨应用生效 | 内部渲染顺序管理 |
+| zLevel | setSubWindowZLevel()/创建窗口时设置 | 子窗口 | 仅同应用内生效 | 子窗口层级管理 |
+| 窗口置顶 | setWindowTopmost() | 主窗口 | 可跨应用生效 | 视频、导航等常驻窗口 |
+| 点击抬升 | setRaiseByClickEnabled() | 子窗口 | 同应用内同类型子窗口之间 | 防误触、固定布局 |
 
 ## 层级相关开发场景
 
