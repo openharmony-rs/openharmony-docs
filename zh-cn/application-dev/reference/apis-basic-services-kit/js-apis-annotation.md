@@ -132,7 +132,7 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 
   ```typescript
   import { SuppressWarnings, SuppressWarningsType, systemDateTime } from '@kit.BasicServicesKit';
-  import { photoAccessHelper } from '@kit.MediaLibraryKit';
+  import photoAccessHelper from '@ohos.file.photoAccessHelper';
   import { common } from '@kit.AbilityKit';
   // 注解场景
   // 兼容性告警消除部分
@@ -153,6 +153,9 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
   // 权限告警消除部分
   async function savePhotoToGallery(context: common.UIAbilityContext) {
     let helper = photoAccessHelper.getPhotoAccessHelper(context);
+    if (!helper) {
+      return;
+    }
     let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg');
     // To use this API, you need to apply for the permissions: ohos.permission.WRITE_IMAGEVIDEO
   }
@@ -160,6 +163,9 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
   @SuppressWarnings({rules: [SuppressWarningsType.PERMISSION]})
   async function savePhotoToGallerySuppressCompatibility(context: common.UIAbilityContext) {
     let helper = photoAccessHelper.getPhotoAccessHelper(context);
+    if (!helper) {
+      return;
+    }
     @SuppressWarnings({rules: [SuppressWarningsType.COMPATIBILITY]}) // 如果同时存在两种屏蔽内容，仅生效最近的抑制类型。（兼容性告警被抑制，权限告警仍然存在）
     let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg'); // 使用@SuppressWarnings注解后，兼容性告警被抑制，权限告警仍然存在。
   }
@@ -167,6 +173,9 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
   @SuppressWarnings({rules: [SuppressWarningsType.PERMISSION]})
   async function savePhotoToGallerySuppress(context: common.UIAbilityContext) {
     let helper = photoAccessHelper.getPhotoAccessHelper(context);
+    if (!helper) {
+      return;
+    }
     let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg'); // 使用@SuppressWarnings注解后，权限告警被抑制。
   }
   ```
@@ -193,7 +202,7 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 
   ```typescript
   import { systemDateTime } from '@kit.BasicServicesKit';
-  import { photoAccessHelper } from '@kit.MediaLibraryKit';
+  import photoAccessHelper from '@ohos.file.photoAccessHelper';
   import { common } from '@kit.AbilityKit';
   // 注释场景
   // 兼容性告警消除部分
@@ -207,18 +216,27 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
   // 权限告警消除部分
   async function savePhotoToGallery(context: common.UIAbilityContext) {
     let helper = photoAccessHelper.getPhotoAccessHelper(context);
+    if (!helper) {
+      return;
+    }
     let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg');
     // To use this API, you need to apply for the permissions: ohos.permission.WRITE_IMAGEVIDEO
   }
   // @SuppressWarnings permission
   async function savePhotoToGallerySuppressNoUse(context: common.UIAbilityContext) {
     let helper = photoAccessHelper.getPhotoAccessHelper(context);
+    if (!helper) {
+      return;
+    }
     let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg'); // 使用注释后，容器内子节点的告警不支持消除，仍会产生告警
     // To use this API, you need to apply for the permissions: ohos.permission.WRITE_IMAGEVIDEO
   }
 
   async function savePhotoToGallerySuppress(context: common.UIAbilityContext) {
     let helper = photoAccessHelper.getPhotoAccessHelper(context);
+    if (!helper) {
+      return;
+    }
     // @SuppressWarnings permission
     let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg'); // 使用@SuppressWarnings注释后，权限告警被抑制。
   }
