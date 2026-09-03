@@ -33,18 +33,22 @@
 
 以下示例展示了分别在Navigation标题栏中和Navigation内容区，开启沉浸光感的显示效果。位于Navigation标题栏中的Column开启沉浸光感正常生效；位于Navigation内容区中的Column组件，因其不处于Navigation标题栏或底部TabBar中，不生效沉浸光感效果。
  
-```ts
+<!-- @[material_scope_adapt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialScopeAdaptExample.ets) -->
+
+
+``` TypeScript
 import { CircleShape, TitleBarType, uiMaterial } from '@kit.ArkUI';
- 
+
 @Entry
 @Component
 struct MaterialScopeAdaptExample {
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
- 
+
   @Builder
   NavigationTitle() {
     Row() {
-      Text('标题栏')
+      // 请将$r('app.string.title_bar')替换为实际资源文件，在本示例中该资源文件的value值为"标题栏"
+      Text($r('app.string.title_bar'))
         .fontColor('#182431')
         .fontSize(30)
         .lineHeight(41)
@@ -70,16 +74,17 @@ struct MaterialScopeAdaptExample {
     .width('100%')
     .padding(16)
   }
- 
+
   build() {
     Column() {
       Navigation() {
         Column() {
           Row() {
-            Text('内容区')
- 
+            // 请将$r('app.string.content_area')替换为实际资源文件，在本示例中该资源文件的value值为"内容区"
+            Text($r('app.string.content_area'))
+
             Blank()
- 
+
             Column() {
               SymbolGlyph($r('sys.symbol.a_3d_square_fill'))
             }
@@ -119,8 +124,8 @@ struct MaterialScopeAdaptExample {
     }.width('100%').height('100%').backgroundColor('#F1F3F5')
   }
 }
- 
 ```
+
 
 ![material_example](./figures/material_example.JPG)
 
