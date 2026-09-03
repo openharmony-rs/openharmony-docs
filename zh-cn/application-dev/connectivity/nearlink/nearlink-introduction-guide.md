@@ -22,7 +22,3 @@
 ## 模拟器支持情况
 
 星闪服务暂不支持模拟器。
-
-> 星闪相关API归属于 @kit.ConnectivityKit，各模块（manager、advertising、scan、ssap、dataTransfer、cdsm）的能力说明请参考[Connectivity Kit简介 > 星闪简介](../connectivity-kit-intro.md#星闪简介)。
-
-> 开发前建议先阅读[星闪常见问题](nearlink-faq-guide.md)中关于服务UUID、事件订阅、SSAP属性描述符与设备地址的说明。
