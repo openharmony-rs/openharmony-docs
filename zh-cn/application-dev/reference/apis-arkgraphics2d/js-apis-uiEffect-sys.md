@@ -2075,8 +2075,8 @@ distortionCollapse(distortionParam: DistortionParam): VisualEffect
 >
 > - 形变效果允许在组件边界之外绘制，但渲染结果仍会受到父级组件裁剪属性的影响。
 > - 调用此接口会创建一个与形变后区域大小相同的离屏渲染画布。为避免显示异常或性能开销过大，不建议将组件形变至超出屏幕尺寸。
-> - 此接口包含前景Filter，当与[systemMaterial](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect-sys.md#systemmaterial23)、[backgroundEffect](../apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundeffect19)、[brightness](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#brightness)、[blur](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#blur19)、[backgroundColorBlender](#backgroundcolorblender)等依赖背景截图的接口组合使用时，必须嵌套在[EffectComponent](../apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md)中，否则可能导致部分视觉效果失效或表现异常。
-> - 当子节点调用[systemMaterial](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect-sys.md#systemmaterial23)接口时，调用此接口的节点必须嵌套在[EffectComponent](../apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md)中，否则会导致系统材质丢失。但应注意的是，该调用方式会额外增加系统材质的背景扭曲。
+> - 此接口包含前景Filter，当与[systemMaterial](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)、[backgroundEffect](../apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundeffect19)、[brightness](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#brightness)、[blur](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#blur19)、[backgroundColorBlender](#backgroundcolorblender)等依赖背景截图的接口组合使用时，必须嵌套在[EffectComponent](../apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md)中，否则可能导致部分视觉效果失效或表现异常。
+> - 当子节点调用[systemMaterial](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)接口时，调用此接口的节点必须嵌套在[EffectComponent](../apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md)中，否则会导致系统材质丢失。但应注意的是，该调用方式会额外增加系统材质的背景扭曲。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn
 
