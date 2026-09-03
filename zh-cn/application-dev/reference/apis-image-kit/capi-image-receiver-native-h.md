@@ -52,6 +52,7 @@
 | [Image_ErrorCode OH_ImageReceiverNative_Release(OH_ImageReceiverNative* receiver)](#oh_imagereceivernative_release) | - | 释放Native OH_ImageReceiverNative对象。 |
 | [Image_ErrorCode OH_ImageReceiverNative_OnImageArrive(OH_ImageReceiverNative *receiver, OH_ImageReceiver_ImageArriveCallback callback, void *userData)](#oh_imagereceivernative_onimagearrive) | - | 注册[OH_ImageReceiver_ImageArriveCallback](#oh_imagereceiver_imagearrivecallback)回调。 |
 | [Image_ErrorCode OH_ImageReceiverNative_OffImageArrive(OH_ImageReceiverNative *receiver, OH_ImageReceiver_ImageArriveCallback callback)](#oh_imagereceivernative_offimagearrive) | - | 注销[OH_ImageReceiver_ImageArriveCallback](#oh_imagereceiver_imagearrivecallback)回调。 |
+| [Image_ErrorCode OH_ImageReceiverNative_SetMemoryName(const OH_ImageReceiverNative* receiver, const char *name, uint32_t size)](#oh_imagereceivernative_setmemoryname) | - | 设置OH_ImageReceiverNative对象的内存名称。仅支持可见ASCII字符，空格、换行、制表符及其他控制字符将被过滤掉。如果过滤后的结果完全由数字组成，将自动添加前缀"ImageReceiver:"。过滤后的名称长度（包括结束符'\0'）不得超过256字节。 |
 
 ## 函数说明
 
@@ -539,4 +540,29 @@ Image_ErrorCode OH_ImageReceiverNative_OffImageArrive(OH_ImageReceiverNative *re
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) |IMAGE_SUCCESS：操作成功。<br>         IMAGE_RECEIVER_INVALID_PARAMETER：参数错误，receiver或callback未注册。 |
 
+### OH_ImageReceiverNative_SetMemoryName()
+
+```c
+Image_ErrorCode OH_ImageReceiverNative_SetMemoryName(const OH_ImageReceiverNative* receiver, const char *name, uint32_t size)
+```
+
+**描述**
+
+设置OH_ImageReceiverNative对象的内存名称。仅支持可见ASCII字符，空格、换行、制表符及其他控制字符将被过滤掉。如果过滤后的结果完全由数字组成，将自动添加前缀"ImageReceiver:"。过滤后的名称长度（包括结束符'\0'）不得超过256字节。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_ImageReceiverNative](capi-image-nativemodule-oh-imagereceivernative.md)* receiver | [in] 指向OH_ImageReceiverNative对象的指针，不能为NULL。 |
+| const char *name | [in] 指向要设置的内存名称字符串的指针，不能为NULL。字符串必须以'\0'结尾。 |
+| uint32_t size | [in] 名称字符串的字节大小，包括结束符'\0'。必须大于0。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) 操作成功。</li><br>         <li>[IMAGE_RECEIVER_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) receiver或name为NULL，或size为0，<br>             或name过滤后无可视字符，或过滤后大小超过256字节。</li><br>         </ul> |
 
