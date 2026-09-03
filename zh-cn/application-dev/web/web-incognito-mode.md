@@ -37,8 +37,6 @@
   <!-- @[create_a_web_component_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/IncognitoMode_one.ets) -->
 
   ``` TypeScript
-  'use static'
-
   import { Web, Column, Entry, Component } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
@@ -91,8 +89,6 @@ ArkTS-Sta示例：
   <!-- @[determine_whether_the_current_web_component_is_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/IncognitoMode_two.ets) -->
 
   ``` TypeScript
-  'use static'
-
   import { Web, Column, Button, Entry, Component } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -159,8 +155,6 @@ ArkTS-Sta示例：
   <!-- @[setting_the_web_component_in_privacy_mode_allows_specifying_the_geolocation_of_the_source_used](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/AllowGeolocation.ets) -->
 
   ``` TypeScript
-  'use static'
-
   import { Web, Column, Button, Entry, Component } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -226,8 +220,6 @@ ArkTS-Sta示例：
   <!-- @[clear_the_geolocation_permission_status_of_the_specified_source_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DeleteGeolocation.ets) -->
 
   ``` TypeScript
-  'use static'
-
   import { Web, Column, Button, Entry, Component } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -300,8 +292,6 @@ ArkTS-Sta示例：
   <!-- @[asynchronously_obtains_the_geolocation_permission_status_of_the_specified_source_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/GetAccessibleGeolocation.ets) -->
 
   ``` TypeScript
-  'use static'
-
   import { Web, Column, Button, Entry, Component } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -376,8 +366,6 @@ ArkTS-Sta示例：
   <!-- @[clear_all_storage_currently_used_by_web_sql_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DeleteAllData.ets) -->
 
   ``` TypeScript
-  'use static'
-
   import { Web, Column, Button, Entry, Component, $rawfile } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -489,8 +477,6 @@ ArkTS-Sta示例：
   <!-- @[obtain_the_value_of_the_cookie_corresponding_to_the_specified_url_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/FetchCookieSync.ets) -->
 
   ``` TypeScript
-  'use static'
-
   import { Web, Column, Button, Entry, Component } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -555,8 +541,6 @@ ArkTS-Sta示例：
   <!-- @[set_the_value_of_a_single_cookie_for_a_specified_url_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ConfigCookieSync.ets) -->
 
   ``` TypeScript
-  'use static'
-
   import { Web, Column, Button, Entry, Component } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -615,8 +599,6 @@ ArkTS-Sta示例：
   <!-- @[check_whether_cookies_exist_in_mode](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ExistCookie.ets) -->
 
   ``` TypeScript
-  'use static'
-
   import { Web, Column, Button, Entry, Component } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
@@ -669,8 +651,6 @@ ArkTS-Sta示例：
   <!-- @[clear_all_cookies_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ClearAllCookiesSync.ets) -->
 
   ``` TypeScript
-  'use static'
-  
   import { Web, Column, Button, Entry, Component } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
