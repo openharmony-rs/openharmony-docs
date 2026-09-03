@@ -31,7 +31,7 @@
 | const char * OH_AVMETA_KEY_MIME_TYPE | 编解码器MIME类型，值类型为字符串（string）。<br>**起始版本：** 23 |
 | const char * OH_AVMETA_KEY_DURATION | 媒体时长，单位为微秒（μs），值类型为int64_t。<br>**起始版本：** 23 |
 | const char * OH_AVMETA_KEY_BITRATE | 比特率（单位：bps），值类型为int64_t。<br>**起始版本：** 23 |
-| const char * OH_AVMETA_KEY_FRAME_RATE | 视频帧率（fps），值类型为double。<br>**起始版本：** 23 |
+| const char * OH_AVMETA_KEY_FRAME_RATE | 视频帧率（每100秒的帧数），值类型为double。<br>**起始版本：** 23 |
 | const char * OH_AVMETA_KEY_WIDTH | 视频宽度，单位为像素（px），值类型为int32_t。<br>**起始版本：** 23 |
 | const char * OH_AVMETA_KEY_HEIGHT | 视频高度，单位为像素（px），值类型为int32_t。<br>**起始版本：** 23 |
 | const char * OH_AVMETA_KEY_CHANNEL_COUNT | 音频声道数，值类型为int32_t。<br>**起始版本：** 23 |
