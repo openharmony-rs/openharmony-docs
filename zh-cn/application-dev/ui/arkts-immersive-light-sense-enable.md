@@ -29,7 +29,6 @@
 
 <!-- @[enable_module_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/module.json5) -->
 
-
 ``` JSON5
 {
   "module": {

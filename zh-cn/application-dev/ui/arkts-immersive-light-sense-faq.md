@@ -35,7 +35,6 @@
  
 <!-- @[material_scope_adapt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialScopeAdaptExample.ets) -->
 
-
 ``` TypeScript
 import { CircleShape, TitleBarType, uiMaterial } from '@kit.ArkUI';
 

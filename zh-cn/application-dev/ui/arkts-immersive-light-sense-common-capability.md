@@ -18,7 +18,6 @@
 
 <!-- @[material_color_invert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialColorInvertExample.ets) -->
 
-
 ``` TypeScript
 import { uiMaterial } from '@kit.ArkUI';
 
@@ -100,7 +99,6 @@ struct PageMaterialReverse {
 
 <!-- @[material_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialColorExample.ets) -->
 
-
 ``` TypeScript
 import { uiMaterial } from '@kit.ArkUI';
 
@@ -162,7 +160,6 @@ struct MaterialColorExample {
 
 <!-- @[material_interactive_light](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialInteractiveLightExample.ets) -->
 
-
 ``` TypeScript
 import { uiMaterial } from '@kit.ArkUI';
 
@@ -220,7 +217,6 @@ struct MaterialInteractiveLightExample {
 将applyShadow置为false后设置自定义shadow（如粉色阴影）的效果，示例如下：
 
 <!-- @[custom_shadow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/CustomShadowExample.ets) -->
-
 
 ``` TypeScript
 import { uiMaterial } from '@kit.ArkUI';

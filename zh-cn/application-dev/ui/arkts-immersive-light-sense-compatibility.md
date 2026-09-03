@@ -24,7 +24,6 @@
 
 <!-- @[app_level_compatibility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/AppLevelCompatibilityExample.ets) -->
 
-
 ``` TypeScript
 import { uiMaterial } from '@kit.ArkUI';
 
@@ -80,7 +79,6 @@ struct AppLevelCompatibility {
 以下以Select组件为例，通过deviceInfo.sdkApiVersion判断系统软件API版本：不低于26.0.0时，为组件设置材质样式为THIN的ImmersiveMaterial；低于26.0.0时，将systemMaterial设置为undefined，组件恢复原有样式。
 
 <!-- @[component_level_compatibility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/ComponentLevelCompatibilityExample.ets) -->
-
 
 ``` TypeScript
 import { uiMaterial } from '@kit.ArkUI';
