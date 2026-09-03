@@ -31,7 +31,7 @@ Navigation标题栏支持通过应用级开启、组件级开启方式开启沉�
 
 底部页签支持通过应用级开启、组件级开启方式开启沉浸光感。
 
-应用级开启：应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)模式下，底部页签不会默认开启沉浸光感。
+应用级开启：应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)模式下，底部页签不会默认开启沉浸光感；设置[barFloatingStyle](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#barfloatingstyle)属性并生效底部页签的悬浮样式时，底部页签默认开启沉浸光感，沉浸式系统材质样式默认取值为THIN。
  
 组件级开启：底部页签支持通过[barFloatingStyle](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#barfloatingstyle)属性中[FloatingTabBarStyle](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#floatingtabbarstyle)的systemMaterial字段，设置TabBar背板的沉浸光感效果。
  
