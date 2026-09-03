@@ -12,7 +12,7 @@ typedef struct {...} OH_WifiLinkedInfo
 
 ## 概述
 
-表示WIFI连接信息。此结构体描述当前STA连接的热点信息。<br> 可通过调用 [OH_Wifi_GetLinkedInfo](capi-oh-wifi-h.md#oh_wifi_getlinkedinfo) 获取这些信息。
+表示Wi-Fi连接信息。此结构体描述当前STA连接的热点信息。<br> 可通过调用 [OH_Wifi_GetLinkedInfo](capi-oh-wifi-h.md#oh_wifi_getlinkedinfo)获取这些信息。
 
 **起始版本：** 24
 
@@ -26,7 +26,7 @@ typedef struct {...} OH_WifiLinkedInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| char ssid[WIFI_MAX_SSID_LEN] | 服务集标识符（ssid）用于获取当前设备已连接的WIFI热点的公开名称（即无线网络的名称），编码格式为UTF-8。<br>长度 WIFI_MAX_SSID_LEN = 33。<br>**起始版本：** 24 |
+| char ssid[WIFI_MAX_SSID_LEN] | 服务集标识符（ssid）用于获取当前设备已连接的Wi-Fi热点的公开名称（即无线网络的名称），编码格式为UTF-8。<br>长度 WIFI_MAX_SSID_LEN = 33。<br>**起始版本：** 24 |
 | int32_t rssi | 热点的信号强度(dBm)。RSSI（Received Signal Strength Indicator，接收信号强度指示）。<br>**起始版本：** 24 |
 | int32_t band | 热点的WIFI频段信息。1表示2.4GHz；2表示5GHz。<br>**起始版本：** 24 |
 | int32_t linkSpeed | Wi-Fi接入点的上行速度单位Mbps。<br>**起始版本：** 24 |
@@ -44,5 +44,5 @@ typedef struct {...} OH_WifiLinkedInfo
 | [OH_WifiStandard](capi-oh-wifi-h.md#oh_wifistandard) wifiStandard | 当前连接热点的Wi-Fi标准。详情参见 [OH_WifiStandard](capi-oh-wifi-h.md#oh_wifistandard)。<br>**起始版本：** 24 |
 | [OH_WifiCategory](capi-oh-wifi-h.md#oh_wificategory) supportedWifiCategory | 热点支持的最高Wi-Fi级别。详情参见 [OH_WifiCategory](capi-oh-wifi-h.md#oh_wificategory)。<br>**起始版本：** 24 |
 | bool isHiLinkNetwork | 热点是否支持hilink，true表示支持，false表示不支持。<br>**起始版本：** 24 |
-| [OH_WifiLinkType](capi-oh-wifi-h.md#oh_wifilinktype) wifiLinkType | WIFI链路类型。详情参见 [OH_WifiLinkType](capi-oh-wifi-h.md#oh_wifilinktype)。<br>**起始版本：** 24 |
+| [OH_WifiLinkType](capi-oh-wifi-h.md#oh_wifilinktype) wifiLinkType | Wi-Fi链路类型。详情参见 [OH_WifiLinkType](capi-oh-wifi-h.md#oh_wifilinktype)。<br>**起始版本：** 24 |
 
