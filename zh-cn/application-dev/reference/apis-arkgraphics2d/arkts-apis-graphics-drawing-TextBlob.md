@@ -72,8 +72,8 @@ class DrawingRenderNode extends RenderNode {
     for (let i = 0; i !== length; ++i) {
       points.push({ x: i * 35, y: i * 35 });
     }
-    let textblob : drawing.TextBlob = drawing.TextBlob.makeFromPosText(text, points.length, points, font);
-    canvas.drawTextBlob(textblob, 100, 100);
+    let textBlob : drawing.TextBlob = drawing.TextBlob.makeFromPosText(text, points.length, points, font);
+    canvas.drawTextBlob(textBlob, 100, 100);
   }
 }
 ```
@@ -100,7 +100,7 @@ import { drawing } from "@kit.ArkGraphics2D";
 let text : string = 'TextBlobUniqueId';
 let font : drawing.Font = new drawing.Font();
 font.setSize(100);
-let textBlob = drawing.TextBlob.makeFromString(text, font, 0);
+let textBlob = drawing.TextBlob.makeFromString(text, font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
 let id = textBlob.uniqueID();
 console.info('uniqueID---------------' + id);
 ```

@@ -168,14 +168,14 @@ send(options: UDPSendOptions, callback: AsyncCallback\<void\>): void
 | ------- | ----------------------- |
 | 401     | Parameter error.        |
 | 201     | Permission denied.      |
-| 2301206 | Socks5 failed to connect to the proxy server.  |
-| 2301207 | Socks5 username or password is invalid.        |
-| 2301208 | Socks5 failed to connect to the remote server. |
-| 2301209 | Socks5 failed to negotiate the authentication method. |
-| 2301210 | Socks5 failed to send the message.             |
-| 2301211 | Socks5 failed to receive the message.          |
-| 2301212 | Socks5 serialization error.                    |
-| 2301213 | Socks5 deserialization error.                  |
+| 2301206 | Socks5 failed to connect to the proxy server. <br>适用版本：18+         |
+| 2301207 | Socks5 username or password is invalid. <br>适用版本：18+               |
+| 2301208 | Socks5 failed to connect to the remote server. <br>适用版本：18+        |
+| 2301209 | Socks5 failed to negotiate the authentication method. <br>适用版本：18+ |
+| 2301210 | Socks5 failed to send the message. <br>适用版本：18+                    |
+| 2301211 | Socks5 failed to receive the message. <br>适用版本：18+                 |
+| 2301212 | Socks5 serialization error. <br>适用版本：18+                           |
+| 2301213 | Socks5 deserialization error. <br>适用版本：18+                         |
 
 **示例：**
 
@@ -290,14 +290,14 @@ send(options: UDPSendOptions): Promise\<void\>
 | ------- | ----------------------- |
 | 401     | Parameter error.        |
 | 201     | Permission denied.      |
-| 2301206 | Socks5 failed to connect to the proxy server.  |
-| 2301207 | Socks5 username or password is invalid.        |
-| 2301208 | Socks5 failed to connect to the remote server. |
-| 2301209 | Socks5 failed to negotiate the authentication method. |
-| 2301210 | Socks5 failed to send the message.             |
-| 2301211 | Socks5 failed to receive the message.          |
-| 2301212 | Socks5 serialization error.                    |
-| 2301213 | Socks5 deserialization error.                  |
+| 2301206 | Socks5 failed to connect to the proxy server. <br>适用版本：18+         |
+| 2301207 | Socks5 username or password is invalid. <br>适用版本：18+               |
+| 2301208 | Socks5 failed to connect to the remote server. <br>适用版本：18+        |
+| 2301209 | Socks5 failed to negotiate the authentication method. <br>适用版本：18+ |
+| 2301210 | Socks5 failed to send the message. <br>适用版本：18+                    |
+| 2301211 | Socks5 failed to receive the message. <br>适用版本：18+                 |
+| 2301212 | Socks5 serialization error. <br>适用版本：18+                           |
+| 2301213 | Socks5 deserialization error. <br>适用版本：18+                         |
 
 
 **示例：**
@@ -524,7 +524,7 @@ getState(): Promise\<SocketStateBase\>
 
 | 类型                                             | 说明                                       |
 |  ----------------------------------------------- |  ----------------------------------------- |
-| Promise\<[SocketStateBase](#socketstatebase)\> | 以Promise形式返回获取UDPSocket状态的结果。 |
+| Promise\<[SocketStateBase](#socketstatebase)\> | Promise对象，返回获取UDPSocket状态的结果。 |
 
 **错误码：**
 
@@ -763,7 +763,7 @@ getLocalAddress(): Promise\<NetAddress\>
 
 | 类型            | 说明                                                 |
 |  -------------- |  --------------------------------------------------- |
-| Promise\<[NetAddress](#netaddress)\> | 以Promise形式返回获取本地socket地址的结果。 |
+| Promise\<[NetAddress](#netaddress)\> | Promise对象，返回获取本地socket地址的结果。 |
 
 **错误码：**
 
@@ -1541,7 +1541,7 @@ getMulticastTTL(): Promise\<number\>
 
 | 类型               | 说明                        |
 | ----------------   | --------------------------- |
-| Promise\<number\> | 以Promise形式返回当前TTL数值。 |
+| Promise\<number\> | Promise对象，返回当前TTL数值。 |
 
 **错误码：**
 
@@ -1956,14 +1956,14 @@ connect(options: TCPConnectOptions, callback: AsyncCallback\<void\>): void
 | ------- | ----------------------- |
 | 401     | Parameter error.        |
 | 201     | Permission denied.      |
-| 2301206 | Socks5 failed to connect to the proxy server.  |
-| 2301207 | Socks5 username or password is invalid.        |
-| 2301208 | Socks5 failed to connect to the remote server. |
-| 2301209 | Socks5 failed to negotiate the authentication method. |
-| 2301210 | Socks5 failed to send the message.             |
-| 2301211 | Socks5 failed to receive the message.          |
-| 2301212 | Socks5 serialization error.                    |
-| 2301213 | Socks5 deserialization error.                  |
+| 2301206 | Socks5 failed to connect to the proxy server. <br>适用版本：18+         |
+| 2301207 | Socks5 username or password is invalid. <br>适用版本：18+               |
+| 2301208 | Socks5 failed to connect to the remote server. <br>适用版本：18+        |
+| 2301209 | Socks5 failed to negotiate the authentication method. <br>适用版本：18+ |
+| 2301210 | Socks5 failed to send the message. <br>适用版本：18+                    |
+| 2301211 | Socks5 failed to receive the message. <br>适用版本：18+                 |
+| 2301212 | Socks5 serialization error. <br>适用版本：18+                           |
+| 2301213 | Socks5 deserialization error. <br>适用版本：18+                         |
 
 **示例：**
 
@@ -2057,14 +2057,14 @@ connect(options: TCPConnectOptions): Promise\<void\>
 | ------- | ----------------------- |
 | 401     | Parameter error.        |
 | 201     | Permission denied.      |
-| 2301206 | Socks5 failed to connect to the proxy server.  |
-| 2301207 | Socks5 username or password is invalid.        |
-| 2301208 | Socks5 failed to connect to the remote server. |
-| 2301209 | Socks5 failed to negotiate the authentication method. |
-| 2301210 | Socks5 failed to send the message.             |
-| 2301211 | Socks5 failed to receive the message.          |
-| 2301212 | Socks5 serialization error.                    |
-| 2301213 | Socks5 deserialization error.                  |
+| 2301206 | Socks5 failed to connect to the proxy server. <br>适用版本：18+         |
+| 2301207 | Socks5 username or password is invalid. <br>适用版本：18+               |
+| 2301208 | Socks5 failed to connect to the remote server. <br>适用版本：18+        |
+| 2301209 | Socks5 failed to negotiate the authentication method. <br>适用版本：18+ |
+| 2301210 | Socks5 failed to send the message. <br>适用版本：18+                    |
+| 2301211 | Socks5 failed to receive the message. <br>适用版本：18+                 |
+| 2301212 | Socks5 serialization error. <br>适用版本：18+                           |
+| 2301213 | Socks5 deserialization error. <br>适用版本：18+                         |
 
 **示例：**
 
@@ -2393,7 +2393,7 @@ getRemoteAddress(): Promise\<NetAddress\>
 
 | 类型                                        | 说明                                        |
 | ------------------------------------------ | ------------------------------------------ |
-| Promise\<[NetAddress](#netaddress)\> | 以Promise形式返回获取对端socket地址的结果。 |
+| Promise\<[NetAddress](#netaddress)\> | Promise对象，返回获取对端socket地址的结果。 |
 
 **错误码：**
 
@@ -2501,7 +2501,7 @@ getState(): Promise\<SocketStateBase\>
 
 | 类型                                             | 说明                                       |
 | ----------------------------------------------- | ----------------------------------------- |
-| Promise\<[SocketStateBase](#socketstatebase)\> | 以Promise形式返回获取TCPSocket状态的结果。 |
+| Promise\<[SocketStateBase](#socketstatebase)\> | Promise对象，返回获取TCPSocket状态的结果。 |
 
 **错误码：**
 
@@ -2600,7 +2600,7 @@ getSocketFd(): Promise\<number\>
 
 | 类型                                             | 说明                                       |
 | ----------------------------------------------- | ----------------------------------------- |
-| Promise\<number\> | 以Promise形式返回socket的文件描述符。 |
+| Promise\<number\> | Promise对象，返回socket的文件描述符。 |
 
 **示例：**
 
@@ -3277,7 +3277,7 @@ getState(): Promise\<SocketStateBase\>
 
 | 类型                                         | 说明                                       |
 |  ------------------------------------------- |  ----------------------------------------- |
-| Promise\<[SocketStateBase](#socketstatebase)\> | 以Promise形式返回获取TCPSocket状态的结果。 |
+| Promise\<[SocketStateBase](#socketstatebase)\> | Promise对象，返回获取TCPSocket状态的结果。 |
 
 **错误码：**
 
@@ -4102,7 +4102,7 @@ getRemoteAddress(): Promise\<NetAddress\>
 
 | 类型                               | 说明                                        |
 |  --------------------------------- |  ------------------------------------------ |
-| Promise\<[NetAddress](#netaddress)\> | 以Promise形式返回获取对端socket地址的结果。 |
+| Promise\<[NetAddress](#netaddress)\> | Promise对象，返回获取本地socket地址的结果。 |
 
 **错误码：**
 
@@ -4772,7 +4772,7 @@ getState(): Promise\<SocketStateBase\>
 
 | 类型                                          | 说明                                     |
 | :------------------------------------------- | :--------------------------------------- |
-| Promise\<[SocketStateBase](#socketstatebase)\> | 以Promise形式返回获取LocalSocket状态的结果。 |
+| Promise\<[SocketStateBase](#socketstatebase)\> | Promise对象，返回获取LocalSocket状态的结果。 |
 
 **示例：**
 
@@ -4825,7 +4825,7 @@ getSocketFd(): Promise\<number\>
 
 | 类型               | 说明                              |
 | :---------------- | :-------------------------------- |
-| Promise\<number\> | 以Promise形式返回socket的文件描述符。 |
+| Promise\<number\> | Promise对象，返回socket的文件描述符。 |
 
 **示例：**
 
@@ -4945,7 +4945,7 @@ getExtraOptions(): Promise\<ExtraOptionsBase\>;
 
 | 类型                         | 说明                                      |
 | :-------------------------- | :---------------------------------------- |
-| Promise\<[ExtraOptionsBase](#extraoptionsbase)\> | 以Promise形式返回设置LocalSocket套接字的属性。 |
+| Promise\<[ExtraOptionsBase](#extraoptionsbase)\> | Promise对象，返回设置LocalSocket套接字的属性。 |
 
 **错误码：**
 
@@ -5003,7 +5003,7 @@ getLocalAddress(): Promise\<string\>
 
 | 类型            | 说明                                                 |
 |  -------------- |  --------------------------------------------------- |
-| Promise\<string\> | 以Promise形式返回获取本地socket地址的结果。 |
+| Promise\<string\> | Promise对象，返回获取本地socket地址的结果。 |
 
 **错误码：**
 
@@ -5448,7 +5448,7 @@ listen(address: LocalAddress): Promise\<void\>
 
 | 类型            | 说明                                                   |
 | :-------------- | :---------------------------------------------------- |
-| Promise\<void\> | 以Promise形式返回执行结果， 成功返回空，失败返回错误码错误信息。|
+| Promise\<void\> | Promise对象，无返回结果。|
 
 **错误码：**
 
@@ -5501,7 +5501,7 @@ getState(): Promise\<SocketStateBase\>
 
 | 类型                                         | 说明                                            |
 | :------------------------------------------- | :--------------------------------------------- |
-| Promise\<[SocketStateBase](#socketstatebase)\> | 以Promise形式返回获取LocalSocketServer状态的结果。 |
+| Promise\<[SocketStateBase](#socketstatebase)\> | Promise对象，返回获取LocalSocketServer状态的结果。 |
 
 **示例：**
 
@@ -5579,7 +5579,7 @@ import { common } from '@kit.AbilityKit';
 let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
 let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let sandboxPath: string = context.filesDir + '/testSocket';
-let listenAddr: socket.NetAddress = {
+let listenAddr: socket.LocalAddress = {
   address: sandboxPath
 }
 server.listen(listenAddr).then(() => {
@@ -5615,7 +5615,7 @@ getExtraOptions(): Promise\<ExtraOptionsBase\>;
 
 | 类型                         | 说明                        |
 | :-------------------------- | :-------------------------- |
-| Promise\<[ExtraOptionsBase](#extraoptionsbase)\> | 以Promise形式返回套接字的属性。 |
+| Promise\<[ExtraOptionsBase](#extraoptionsbase)\> | Promise对象，返回套接字的属性。 |
 
 **错误码：**
 
@@ -5669,7 +5669,7 @@ getLocalAddress(): Promise\<string\>
 
 | 类型            | 说明                                                 |
 |  -------------- |  --------------------------------------------------- |
-| Promise\<string\> | 以Promise形式返回获取本地socket地址的结果。 |
+| Promise\<string\> | Promise对象，返回获取本地socket地址的结果。 |
 
 **错误码：**
 
@@ -6087,7 +6087,7 @@ getLocalAddress(): Promise\<string\>
 
 | 类型            | 说明                                                 |
 |  -------------- |  --------------------------------------------------- |
-| Promise\<string\> | 以Promise形式返回获取本地socket地址的结果。 |
+| Promise\<string\> | Promise对象，返回获取本地socket地址的结果。 |
 
 **错误码：**
 
@@ -6457,7 +6457,7 @@ constructTLSSocketInstance(): TLSSocket
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**返回值:**
+**返回值：**
 
 | 类型                               | 说明                    |
 |  --------------------------------- |  ---------------------- |
@@ -6488,7 +6488,7 @@ constructTLSSocketInstance(tcpSocket: TCPSocket): TLSSocket
 |-----------|----| ---- |------------------------|
 | tcpSocket | [TCPSocket](#tcpsocket)   | 是   | 需要进行升级的TCPSocket对象。 |
 
-**返回值:**
+**返回值：**
 
 | 类型                               | 说明                    |
 |  --------------------------------- |  ---------------------- |
@@ -6704,7 +6704,7 @@ getState(): Promise\<SocketStateBase\>
 
 | 类型                                             | 说明                                       |
 |  ----------------------------------------------- |  ----------------------------------------- |
-| Promise\<[SocketStateBase](#socketstatebase)\> | 以Promise形式返回获取TLSSocket状态的结果。失败返回错误码，错误信息。|
+| Promise\<[SocketStateBase](#socketstatebase)\> | Promise对象，返回获取TLSSocket状态的结果。失败返回错误码，错误信息。|
 
 **错误码：**
 
@@ -7194,14 +7194,14 @@ connect(options: TLSConnectOptions, callback: AsyncCallback\<void\>): void
 | 2303505 | An error occurred in the TLS system call.    |
 | 2303506 | Failed to close the TLS connection.          |
 | 2300002 | System internal error.                       |
-| 2301206 | Socks5 failed to connect to the proxy server.  |
-| 2301207 | Socks5 username or password is invalid.        |
-| 2301208 | Socks5 failed to connect to the remote server. |
-| 2301209 | Socks5 failed to negotiate the authentication method. |
-| 2301210 | Socks5 failed to send the message.             |
-| 2301211 | Socks5 failed to receive the message.          |
-| 2301212 | Socks5 serialization error.                    |
-| 2301213 | Socks5 deserialization error.                  |
+| 2301206 | Socks5 failed to connect to the proxy server. <br>适用版本：18+         |
+| 2301207 | Socks5 username or password is invalid. <br>适用版本：18+               |
+| 2301208 | Socks5 failed to connect to the remote server. <br>适用版本：18+        |
+| 2301209 | Socks5 failed to negotiate the authentication method. <br>适用版本：18+ |
+| 2301210 | Socks5 failed to send the message. <br>适用版本：18+                    |
+| 2301211 | Socks5 failed to receive the message. <br>适用版本：18+                 |
+| 2301212 | Socks5 serialization error. <br>适用版本：18+                           |
+| 2301213 | Socks5 deserialization error. <br>适用版本：18+                         |
 
 **示例：**
 
@@ -7373,7 +7373,7 @@ connect(options: TLSConnectOptions): Promise\<void\>
 
 | 类型                                        | 说明                          |
 | ------------------------------------------- | ----------------------------- |
-| Promise\<void\>                              | 以Promise形式返回，成功无返回，失败返回错误码，错误信息。|
+| Promise\<void\>                              | Promise对象，无返回结果。|
 
 **错误码：**
 
@@ -7394,14 +7394,14 @@ connect(options: TLSConnectOptions): Promise\<void\>
 | 2303505 | An error occurred in the TLS system call.    |
 | 2303506 | Failed to close the TLS connection.          |
 | 2300002 | System internal error.                       |
-| 2301206 | Socks5 failed to connect to the proxy server.  |
-| 2301207 | Socks5 username or password is invalid.        |
-| 2301208 | Socks5 failed to connect to the remote server. |
-| 2301209 | Socks5 failed to negotiate the authentication method. |
-| 2301210 | Socks5 failed to send the message.             |
-| 2301211 | Socks5 failed to receive the message.          |
-| 2301212 | Socks5 serialization error.                    |
-| 2301213 | Socks5 deserialization error.                  |
+| 2301206 | Socks5 failed to connect to the proxy server. <br>适用版本：18+         |
+| 2301207 | Socks5 username or password is invalid. <br>适用版本：18+               |
+| 2301208 | Socks5 failed to connect to the remote server. <br>适用版本：18+        |
+| 2301209 | Socks5 failed to negotiate the authentication method. <br>适用版本：18+ |
+| 2301210 | Socks5 failed to send the message. <br>适用版本：18+                    |
+| 2301211 | Socks5 failed to receive the message. <br>适用版本：18+                 |
+| 2301212 | Socks5 serialization error. <br>适用版本：18+                           |
+| 2301213 | Socks5 deserialization error. <br>适用版本：18+                         |
 
 **示例：**
 
@@ -7612,7 +7612,7 @@ getRemoteAddress(): Promise\<NetAddress\>
 
 | 类型                                        | 说明                                        |
 |  ------------------------------------------ |  ------------------------------------------ |
-| Promise\<[NetAddress](#netaddress)\> | 以Promise形式返回获取对端socket地址的结果。失败返回错误码，错误信息。 |
+| Promise\<[NetAddress](#netaddress)\> | Promise对象，返回获取本地socket地址的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -7685,7 +7685,7 @@ getCertificate():Promise\<[X509CertRawData](#x509certrawdata9)\>
 
 | 类型            | 说明                  |
 | -------------- | -------------------- |
-| Promise\<[X509CertRawData](#x509certrawdata9)\> | 以Promise形式返回本地的数字证书的结果。失败返回错误码，错误信息。 |
+| Promise\<[X509CertRawData](#x509certrawdata9)\> | Promise对象，返回本地的数字证书的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -7764,7 +7764,7 @@ getRemoteCertificate():Promise\<[X509CertRawData](#x509certrawdata9)\>
 
 | 类型            | 说明                  |
 | -------------- | -------------------- |
-| Promise\<[X509CertRawData](#x509certrawdata9)\> | 以Promise形式返回服务端的数字证书的结果。失败返回错误码，错误信息。 |
+| Promise\<[X509CertRawData](#x509certrawdata9)\> | Promise对象，返回服务端的数字证书的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -7840,7 +7840,7 @@ getProtocol():Promise\<string\>
 
 | 类型            | 说明                  |
 | -------------- | -------------------- |
-| Promise\<string\> | 以Promise形式返回通信的协议。失败返回错误码，错误信息。 |
+| Promise\<string\> | Promise对象，返回通信的协议。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -7915,7 +7915,7 @@ getCipherSuite(): Promise\<Array\<string\>\>
 
 | 类型                    | 说明                  |
 | ---------------------- | --------------------- |
-| Promise\<Array\<string\>\> | 以Promise形式返回通信双方支持的加密套件。失败返回错误码，错误信息。 |
+| Promise\<Array\<string\>\> | Promise对象，返回通信双方支持的加密套件。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -7989,7 +7989,7 @@ getSignatureAlgorithms(): Promise\<Array\<string\>\>
 
 | 类型                    | 说明                  |
 | ---------------------- | -------------------- |
-| Promise\<Array\<string\>\> | 以Promise形式返回获取到的双方支持的签名算法。 |
+| Promise\<Array\<string\>\> | Promise对象，返回获取到的双方支持的签名算法。 |
 
 **错误码：**
 
@@ -8068,7 +8068,7 @@ getSocketFd(): Promise\<number\>
 
 | 类型                                             | 说明                                       |
 | ----------------------------------------------- | ----------------------------------------- |
-| Promise\<number\> | 以Promise形式返回socket的文件描述符。 |
+| Promise\<number\> | Promise对象，返回socket的文件描述符。 |
 
 **示例：**
 
@@ -8322,7 +8322,7 @@ constructTLSSocketServerInstance(): TLSSocketServer
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**返回值:**
+**返回值：**
 
 | 类型                                  | 说明                          |
 |  ------------------------------------ |  ---------------------------- |
@@ -8431,7 +8431,7 @@ listen(options: TLSConnectOptions): Promise\<void\>
 
 | 类型            | 说明                                                      |
 | --------------- | --------------------------------------------------------- |
-| Promise\<void\> | 以Promise形式返回，成功返回空，失败返回错误码，错误信息。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -8564,7 +8564,7 @@ getState(): Promise\<SocketStateBase\>
 
 | 类型                                           | 说明                                                         |
 |  --------------------------------------------- |  ----------------------------------------------------------- |
-| Promise\<[SocketStateBase](#socketstatebase)\> | 以Promise形式返回获取TLSSocketServer状态的结果。失败返回错误码，错误信息。 |
+| Promise\<[SocketStateBase](#socketstatebase)\> | Promise对象，返回获取TLSSocketServer状态的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -8784,7 +8784,7 @@ setExtraOptions(options: TCPExtraOptions): Promise\<void\>
 
 | 类型            | 说明                                                      |
 |  -------------- |  -------------------------------------------------------- |
-| Promise\<void\> | 以Promise形式返回，成功返回空，失败返回错误码，错误信息。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -8932,7 +8932,7 @@ getCertificate():Promise\<[X509CertRawData](#x509certrawdata9)\>
 
 | 类型                                            | 说明                                                         |
 | ----------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<[X509CertRawData](#x509certrawdata9)\> | 以Promise形式返回本地的数字证书的结果。失败返回错误码，错误信息。 |
+| Promise\<[X509CertRawData](#x509certrawdata9)\> | Promise对象，返回本地的数字证书的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -9064,7 +9064,7 @@ getProtocol():Promise\<string\>
 
 | 类型              | 说明                                                    |
 | ----------------- | ------------------------------------------------------- |
-| Promise\<string\> | 以Promise形式返回通信的协议。失败返回错误码，错误信息。 |
+| Promise\<string\> | Promise对象，返回通信的协议。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -9572,7 +9572,7 @@ send(data: string \| ArrayBuffer): Promise\<void\>
 
 | 类型            | 说明                                                      |
 | --------------- | --------------------------------------------------------- |
-| Promise\<void\> | 以Promise形式返回，成功返回空，失败返回错误码，错误信息。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -9705,7 +9705,7 @@ close(): Promise\<void\>
 
 | 类型            | 说明                                                      |
 | --------------- | --------------------------------------------------------- |
-| Promise\<void\> | 以Promise形式返回，成功返回空。失败返回错误码，错误信息。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -9832,7 +9832,7 @@ getRemoteAddress(): Promise\<NetAddress\>
 
 | 类型                                 | 说明                                                         |
 |  ----------------------------------- |  ----------------------------------------------------------- |
-| Promise\<[NetAddress](#netaddress)\> | 以Promise形式返回获取对端socket地址的结果。失败返回错误码，错误信息。 |
+| Promise\<[NetAddress](#netaddress)\> | Promise对象，返回获取本地socket地址的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -9960,7 +9960,7 @@ getRemoteCertificate():Promise\<[X509CertRawData](#x509certrawdata9)\>
 
 | 类型                                            | 说明                                                         |
 | ----------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<[X509CertRawData](#x509certrawdata9)\> | 以Promise形式返回对端的数字证书的结果。失败返回错误码，错误信息。 |
+| Promise\<[X509CertRawData](#x509certrawdata9)\> | Promise对象，返回对端的数字证书的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -10090,7 +10090,7 @@ getCipherSuite(): Promise\<Array\<string\>\>
 
 | 类型                       | 说明                                                         |
 | -------------------------- | ------------------------------------------------------------ |
-| Promise\<Array\<string\>\> | 以Promise形式返回通信双方支持的加密套件。失败返回错误码，错误信息。 |
+| Promise\<Array\<string\>\> | Promise对象，返回通信双方支持的加密套件。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -10217,7 +10217,7 @@ getSignatureAlgorithms(): Promise\<Array\<string\>\>
 
 | 类型                       | 说明                                          |
 | -------------------------- | --------------------------------------------- |
-| Promise\<Array\<string\>\> | 以Promise形式返回获取到的双方支持的签名算法。 |
+| Promise\<Array\<string\>\> | Promise对象，返回获取到的双方支持的签名算法。 |
 
 **错误码：**
 

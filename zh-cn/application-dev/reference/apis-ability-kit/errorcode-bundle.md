@@ -97,12 +97,12 @@ The specified user ID is not found.
 
 **可能原因**
 
-1. 输入的用户名有误。
+1. 输入的用户编号有误。
 2. 系统中没有该用户。
 
 **处理步骤**
 
-1. 检查用户名拼写是否正确。
+1. 检查用户编号拼写是否正确。
 2. 确认系统中存在该用户。
 <!--Del-->
 ## 17700005 指定的appId为空字符串
@@ -162,6 +162,7 @@ The specified device ID is not found.
 
 1. 检查deviceId拼写是否正确。
 2. 确认deviceId是否存在。
+<!--DelEnd-->
 
 ## 17700010 文件解析失败导致应用安装失败
 
@@ -171,7 +172,8 @@ Failed to install the HAP because the HAP fails to be parsed.
 
 **错误描述**
 
-调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，传入的HAP或APP解析失败。[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。
+<!--Del-->
+调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，<!--DelEnd-->传入的HAP或APP解析失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
 
 **可能原因**
 
@@ -182,6 +184,7 @@ Failed to install the HAP because the HAP fails to be parsed.
 5. 传入的安装路径中或目录下存在多个APP。
 6. APP中不包含适合在当前设备类型上安装的HAP。
 7. 应用配置了skill，但配置的skill名称、skill目录名与SKILL.md中frontmatter的name不一致。
+<!--Del-->8. 在双模式设备上安装应用时，不同包体类别（[InstallParam](js-apis-installer-sys.md#installparam)中ohos.bms.param.deviceModeDistributionPolicy值为4、6、8）仅支持系统应用配置，非系统应用配置将无法安装；同时，新安装应用必须与设备上已存在的同包名应用保持包体类别属性大类一致，“不同包体类别”与“相同包体类别”（值为0、1、2、3、5、7）不能混合覆盖安装。<!--DelEnd-->
 
 **处理步骤**
 
@@ -192,6 +195,7 @@ Failed to install the HAP because the HAP fails to be parsed.
 5. 检查传入的路径下是否包含多个APP。
 6. 确认APP内是否存在支持当前设备类型的HAP。
 7. 检查module.json中skillProfiles下skill的name、skills目录下的子目录名称、SKILL.md中frontmatter的name，确保三者一致。
+<!--Del-->8. 确认应用为系统应用后再配置不同包体类别；确认新安装的应用与已存在应用的[InstallParam](js-apis-installer-sys.md#installparam)中ohos.bms.param.deviceModeDistributionPolicy配置是否属于同一包体类别（均为不同包体或均为相同包体），避免不同包体类别与相同包体类别之间互转更新。<!--DelEnd-->
 
 ## 17700011 签名校验失败导致应用安装失败
 
@@ -201,7 +205,8 @@ Failed to install the HAP because the HAP signature fails to be verified.
 
 **错误描述**
 
-调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，签名校验失败导致应用安装失败。[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。
+<!--Del-->
+调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，<!--DelEnd-->签名校验失败导致应用安装失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
 
 **可能原因**
 
@@ -226,7 +231,8 @@ Failed to install the HAP because the HAP path is invalid or the HAP is too larg
 
 **错误描述**
 
-调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，安装包路径无效或者文件过大导致应用安装失败。[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。
+<!--Del-->
+调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，<!--DelEnd-->安装包路径无效或者文件过大导致应用安装失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
 
 **可能原因**
 
@@ -248,7 +254,8 @@ Failed to install the HAPs because they have different configuration information
 
 **错误描述**
 
-调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，多个HAP配置信息不同导致应用安装失败。[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。
+<!--Del-->
+调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，<!--DelEnd-->多个HAP配置信息不同导致应用安装失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
 
 **可能原因**
 
@@ -266,7 +273,8 @@ Failed to install the HAP because of insufficient system disk space.
 
 **错误描述**
 
-调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，系统磁盘空间不足导致应用安装失败。[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。
+<!--Del-->
+调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，<!--DelEnd-->系统磁盘空间不足导致应用安装失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
 
 **可能原因**
 
@@ -284,7 +292,8 @@ Failed to install the HAP since the version of the HAP to install is too early.
 
 **错误描述**
 
-调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，新安装的应用版本号低于已安装的版本号导致应用安装失败。[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。
+<!--Del-->
+调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，<!--DelEnd-->新安装的应用版本号低于已安装的版本号导致应用安装失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
 
 **可能原因**
 
@@ -302,7 +311,7 @@ Failed to install the HAP since the version of the HAP to install is too early.
 
 2. 新安装的应用查看版本，HAP或者HSP用DevEco Studio打开，查看里面module.json文件中的versionCode字段配置。
 
-    ![示例图](figures/hap_versionCode.PNG)
+    ![示例图](figures/hap_versionCode.PNG)<!--Del-->
 
 3. 对于已安装的签名证书分发类型为app_gallery或者签名证书类型为debug的三方应用，当新安装的版本低于当前版本时，支持降级安装，具体参数配置可参考[InstallParam](js-apis-installer-sys.md#installparam)中parameters描述。
 
@@ -683,7 +692,7 @@ The specified shared bundle does not exist.
 
 **可能原因**
 
-1. 当前指定卸载的版本不存在与被卸载的shared library中。
+1. 当前指定卸载的版本不存在于被卸载的shared library中。
 2. 当前指定卸载的shared library在设备中不存在。
 
 **处理步骤**
@@ -813,11 +822,11 @@ Failed to uninstall the HAP because the uninstall is forbidden by enterprise dev
 
 **可能原因**
 
-企业设备管理不允许安装该应用。
+企业设备管理不允许卸载该应用。
 
 **处理步骤**
 
-请在设备中检查应用是否被企业设备管理禁止卸载安装。
+请在设备中检查应用是否被企业设备管理禁止卸载。
 
 ## 17700047 要更新的应用版本没有大于当前版本
 **错误信息**
@@ -837,6 +846,7 @@ Failed to install the HAP because the VersionCode to be updated is not greater t
 
 1. 设置应用的版本号大于当前版本，查看版本号的方法请参考错误码[17700017](#17700017-新安装的应用版本号低于已安装的版本号导致应用安装失败)的操作步骤。
 2. 如果希望应用更新但版本号不升级，需要设置installFlag为REPLACE_EXISTING。
+<!--DelEnd-->
 
 ## 17700048 代码签名校验失败
 **错误信息**
@@ -845,7 +855,7 @@ Failed to install the HAP because the code signature verification failed.
 
 **错误描述**
 
-安装应用时，安装包的代码签名文件校验失败。[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。
+安装应用时，安装包的代码签名文件校验失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
 
 **可能原因**
 
@@ -859,6 +869,7 @@ Failed to install the HAP because the code signature verification failed.
 2. 检查提供的代码签名文件的路径是否合法。
 3. 使用和安装包匹配的代码签名文件。
 
+<!--Del-->
 ## 17700049 应用自升级时安装的应用与调用方包名不同
 **错误信息**
 
@@ -909,15 +920,16 @@ Failed to install the HAP because the distribution type of the caller applicatio
 **处理步骤**
 
 检查应用的签名文件是否正确配置。
+<!--DelEnd-->
 
-## 17700052 非开发者模式下不允许安装调试应用
+## 17700052 非开发者模式下不允许安装调试自分发插件或调试应用
 **错误信息**
 
 Failed to install the HAP because a debug bundle can be installed only in developer mode.
 
 **错误描述**
 
-安装调试应用时，设备处于非开发者模式，不允许安装。[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。
+安装调试应用时，设备处于非开发者模式，不允许安装。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
 
 **可能原因**
 
@@ -927,6 +939,7 @@ Failed to install the HAP because a debug bundle can be installed only in develo
 
 执行hdc shell param get const.security.developermode.state，若返回结果为false，说明该设备无法安装调试应用。
 
+<!--Del-->
 ## 17700053 非应用市场调用
 **错误信息**
 
@@ -1244,7 +1257,6 @@ The launch want is not found.
 
 应用需要有entities配置包含“entity.system.home”并且actions配置包含“ohos.want.action.home”的UIAbility。
 
-<!--Del-->
 ## 17700073 由于设备上存在具有相同包名称但不同签名信息的应用程序，导致安装失败
 **错误信息**
 
@@ -1252,10 +1264,9 @@ Failed to install the HAP because an application with the same bundle name but d
 
 **错误描述**
 
-由于设备上存在具有相同包名称但不同签名信息的应用程序，导致安装失败。[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。
+由于设备上存在具有相同包名称但不同签名信息的应用程序，导致安装失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
 
 **可能原因**
-
 
 1. 由于设备上存在具有相同包名称但不同签名信息的已安装应用程序，导致安装失败。
 2. 设备上存在相同包名但签名信息不一致的应用被保留数据地卸载，导致安装失败。
@@ -1265,6 +1276,7 @@ Failed to install the HAP because an application with the same bundle name but d
 1. 卸载设备上相同包名的应用。
 2. 若设备上存在相同包名但签名信息不一致的应用被保留数据地卸载，导致安装失败，则先安装已卸载的应用之后不保留数据地卸载掉。
 
+<!--Del-->
 ## 17700074 传入的appIdentifier无效
 
 **错误信息**
@@ -1473,6 +1485,7 @@ System error occurred during copy execution.
 
 1. 检查目标路径空间是否充足。
 2. 检查源路径文件是否存在。
+<!--DelEnd-->
 
 ## 17700087 当前设备不支持安装插件
 
@@ -1492,6 +1505,7 @@ Failed to install the plugin because the current device does not support plugins
 
 使用[param工具](../../tools/param-tool.md)设置const.bms.support_plugin的值为true，即执行hdc shell param set const.bms.support_plugin true。
 
+<!--Del-->
 ## 17700088 应用缺少安装插件的权限
 
 **错误信息**
@@ -1562,6 +1576,7 @@ Failed to install the plugin because the plugin id fails to be verified.
     }
 }
 ```
+<!--DelEnd-->
 
 ## 17700091 插件与主体同包名
 
@@ -1599,7 +1614,6 @@ Failed to uninstall the plugin because the specified plugin is not found.
 
 使用[bm dump -n 命令](../../tools/bm-tool.md#查询应用信息命令dump)查询应用信息，确认插件是否安装。
 
-<!--DelEnd-->
 
 ## 17700093 指定的skillName不存在
 
@@ -1660,6 +1674,65 @@ The specified bundle not found app clone preference.
 
 1. 确认应用是否需要分身偏好。
 2. 使用[bundleManager.setAppClonePreference](js-apis-bundleManager-sys.md#bundlemanagersetappclonepreference)设置分身偏好后重试。
+
+## 17700097 设备不支持双模式
+
+**错误信息**
+
+The device does not support the dual mode.
+
+**错误描述**
+
+当前设备不支持双模式（即设备不支持在主模式和副模式之间切换）。
+
+**可能原因**
+
+当前设备为非双模设备，系统参数const.sceneboard.mainmode或persist.sceneboard.ispcmode缺失或值非法。
+
+**处理步骤**
+
+1. 确认设备是否为双模设备，可以在开发者模式下查看设备是否存在系统参数const.sceneboard.mainmode和persist.sceneboard.ispcmode。
+2. 若设备不支持双模式，该接口不适用，无需调用。
+
+## 17700098 入参无效
+
+**错误信息**
+
+The input parameter is invalid. It is either outside the range of valid enum values or does not include the following required enum values: [DeviceModeDistributionPolicy.UNIVERSAL_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.FULL_COMPATIBLE_DIFFERENT_PACKAGE].
+
+**错误描述**
+
+调用filterBundleListByDeviceModeDistributionPolicies接口时，传入的参数无效。
+
+**可能原因**
+
+1. 传入的枚举值超出DeviceModeDistributionPolicy枚举值范围。
+2. 传入的枚举数组未包含所有不同包体的策略（UNIVERSAL_DIFFERENT_PACKAGE、PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE和FULL_COMPATIBLE_DIFFERENT_PACKAGE）。
+
+**处理步骤**
+
+1. 需要检查传入的枚举值，是否有超过DeviceModeDistributionPolicy枚举值。
+2. 需要检查传入的枚举数组是否包含了[DeviceModeDistributionPolicy.UNIVERSAL_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.FULL_COMPATIBLE_DIFFERENT_PACKAGE]，这三个在切换时必须传入。
+
+## 17700099 设备正在安装卸载应用或双模切换正在处理中
+
+**错误信息**
+
+The device is installing or uninstalling an application, or a previous API call is still being processed. Please try again.
+
+**错误描述**
+
+设备正在安装或卸载应用，或者上一次双模切换调用正在处理中，请重试。
+
+**可能原因**
+
+设备正在安装或卸载应用，或者上一次双模切换调用正在处理中。
+
+**处理步骤**
+
+1. 检查下设备是否正在安装、卸载应用。
+2. 检查下是否已经调用该接口且双模切换正在处理中。
+3. 等待上述操作完成后重新调用该接口。
 <!--DelEnd-->
 
 ## 17700101 包管理服务异常
@@ -1950,7 +2023,7 @@ Invalid fileTypes.
 ## 18100001 ShortcutInfo列表中bundleName和appIndex不一一对应
 **错误信息**
 
-A combination of bundleName and appIndex in the shutcutInfo list is different from the others.
+A combination of bundleName and appIndex in the shortcutInfo list is different from the others.
 
 **错误描述**
 

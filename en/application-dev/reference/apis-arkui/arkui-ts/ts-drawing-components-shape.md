@@ -5,18 +5,23 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=814c7cb9af37d443e12a84b71f28815df508c584 translatedAt=2026-08-28T01:26:55.169Z pushedAt=2026-08-31T07:44:19.324Z -->
 
-The **Shape** component is the parent component of the drawing components. The attributes described in this topic are universal attributes supported by all the drawing components.
+The **Shape** component is the parent component of drawing components. It describes the universal attributes supported by all the drawing components.
 
-1. Drawing components use **Shape** as their parent to implement the effect similar to SVG.
+The **Shape** component supports the drawing and combination of vector graphics by defining attributes such as the viewport, fill, and stroke. As a container component, **Shape** can contain drawing child components such as **Rect**, **Circle**, and **Path** to implement vector graphics drawing capabilities similar to SVG (Scalable Vector Graphics).
+
+There are two ways to use the **Shape** component:
+
+1. Drawing components use **Shape** as their parent to implement combined drawing of vector graphics similar to SVG.
 
 2. Drawing components can be used independently to draw specified shapes.
 
 >  **NOTE**
 >
->  This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+>  This component is supported since API version 7. New APIs in later versions are marked with a superscript to indicate their earliest API version.
 >
->  This component supports dynamic constructor parameter updates using the [updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#properties) API of the [AttributeUpdater](../js-apis-arkui-AttributeUpdater.md) class since API version 20.
+>  Since API version 20, this component supports updating constructor parameters using the [updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#properties) API of the [AttributeUpdater](../js-apis-arkui-AttributeUpdater.md) class.
 
 
 ## Child Components
@@ -26,9 +31,27 @@ The following child components are supported: [Rect](ts-drawing-components-rect.
 
 ## APIs
 
-Shape(value?: PixelMap)
+### Shape
 
-Since API version 9, this API is supported in ArkTS widgets, except that **PixelMap** objects are not supported.
+new Shape(value?: PixelMap)
+
+Draws the **Shape** component. After being called, it creates a **Shape** object, on which attributes such as the viewport, fill, and stroke can be set.
+
+**Atomic service API:** Since API version 11, this API is supported in atomic services.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| value | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | No | Drawing target. You can draw a shape in the specified **PixelMap** object. If this parameter is not set, the shape is drawn in the current drawing target by default.<br>The abnormal values **undefined** and **null** are treated as invalid values, and this setting does not take effect. |
+
+### Shape
+
+Shape(value: PixelMap)
+
+Draws the **Shape** component. After being called, it creates a **Shape** object, on which attributes such as the viewport, fill, and stroke can be set.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -38,8 +61,19 @@ Since API version 9, this API is supported in ArkTS widgets, except that **Pixel
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | No| Drawing target. You can draw a shape in a specified **PixelMap** object. If this parameter is not set, the shape is drawn in the current drawing target by default.<br>The **undefined** and **null** values are treated as invalid and will not take effect.|
+| value | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes | Drawing target. The shape can be drawn into the specified **PixelMap** object.<br>Note: This parameter is mandatory. A valid **PixelMap** object must be passed in. The parameter does not take effect when **undefined** or **null** is passed in. |
 
+### Shape
+
+Shape()
+
+Draws the **Shape** component. This function has no parameter. After being called, it creates a **Shape** object with the default viewport and attributes.
+
+**Widget capability**: Since API version 9, this feature is supported in ArkTS widgets.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ## ViewportRect<sup>18+</sup>
 
@@ -53,25 +87,29 @@ Describes the options of the viewport.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| x<sup>7+</sup> | [Length](ts-types.md#length) | No| Yes| Horizontal coordinate of the start point of the viewport.<br>Default value: **0**<br>Default unit: vp<br>Invalid values are treated as the default value.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| y<sup>7+</sup> | [Length](ts-types.md#length) | No| Yes| Vertical coordinate of the start point of the viewport.<br>Default value: **0**<br>Default unit: vp<br>Invalid values are treated as the default value.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| width<sup>7+</sup> | [Length](ts-types.md#length) | No| Yes| Width of the viewport. The value must be greater than or equal to 0.<br>Default value: **0**<br>Default unit: vp<br>Invalid values are treated as the default value.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| height<sup>7+</sup> | [Length](ts-types.md#length) | No| Yes| Height of the viewport. The value must be greater than or equal to 0.<br>Default value: **0**<br>Default unit: vp<br>Invalid values are treated as the default value.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| x<sup>7+</sup> | [Length](ts-types.md#length) | No | Yes | Horizontal coordinate of the start point of the shape viewport.<br>Default value: **0**<br>Default unit: vp<br>The abnormal values **undefined**, **null**, **NaN**, and **Infinity** are handled as the default value.<br>**Widget capability:** This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| y<sup>7+</sup> | [Length](ts-types.md#length) | No | Yes | Vertical coordinate of the start point of the shape viewport.<br>Default value: **0**<br>Default unit: vp<br>The abnormal values **undefined**, **null**, **NaN**, and **Infinity** are handled as the default value.<br>**Widget capability:** This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| width<sup>7+</sup> | [Length](ts-types.md#length) | No | Yes | Width of the shape viewport. The value range is ≥ 0.<br>Default value: **0**<br>Default unit: vp<br>The abnormal values **undefined**, **null**, **NaN**, and **Infinity** are handled as the default value.<br>**Widget capability:** This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| height<sup>7+</sup> | [Length](ts-types.md#length) | No | Yes | Height of the shape viewport. The value range is ≥ 0.<br>Default value: **0**<br>Default unit: vp<br>The abnormal values **undefined**, **null**, **NaN**, and **Infinity** are handled as the default value.<br>**Widget capability:** This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API:** This API can be used in atomic services since API version 11. |
 
 
 ## Attributes
 
-In addition to the [universal attributes](ts-component-general-attributes.md), the following attributes are supported.
+In addition to the [universal attributes](ts-component-general-attributes.md) and [universal drawing attributes](ts-drawing-components-common.md), the following attributes are supported:
 
 ### viewPort
 
 viewPort(value: ViewportRect)
 
 Sets the viewport of the shape.
+
+The viewport defines the coordinate system and display area of the drawing content. The start point coordinates (x, y) and the width and height (width, height) of the viewport determine the display position and range of the drawing content in the component. When the viewport range differs from the component size, the drawing content is automatically scaled to fit. The viewport is commonly used to adjust the display scale and position of the drawing content.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -83,213 +121,15 @@ Sets the viewport of the shape.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | [ViewportRect](ts-drawing-components-shape.md#viewportrect18)| Yes| Options of the viewport.<br>Default value: **{}**<br>The **undefined** and **null** values are invalid and treated as the default value.|
-
-### fill
-
-fill(value: ResourceColor)
-
-Sets the color of the fill area. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). Invalid values are treated as the default value. If this attribute and the universal attribute **foregroundColor** are both set, whichever is set later takes effect.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                      | Mandatory| Description                                  |
-| ------ | ------------------------------------------ | ---- | -------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Color of the fill area.<br>Default value: [Color](ts-appendix-enums.md#color).Black<br>The **undefined**, **null**, **NaN**, and **Infinity** values are invalid and treated as the default value.|
-
-### fillOpacity
-
-fillOpacity(value: number | string | Resource)
-
-Sets the opacity of the fill area. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                                        | Mandatory| Description                          |
-| ------ | ------------------------------------------------------------ | ---- | ------------------------------ |
-| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Opacity of the fill area.<br>**NOTE**<br>For the number type, the value range is [0.0, 1.0]. A value less than 0.0 is treated as **0.0**. A value greater than 1.0 is treated as **1.0**. Any other invalid value is treated as **1.0**.<br>For the string type, the value is a character string of the number type. The value range is the same as that of the number type.<br>For the Resource type, the value is a character string from the system resource or application resource. The value range is the same as that of the number type.<br>Default value: **1.0**|
-
-### stroke
-
-stroke(value: ResourceColor)
-
-Sets the stroke color. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). If this attribute is not set, the default stroke opacity is **0**, meaning no stroke is displayed.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                      | Mandatory| Description      |
-| ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Stroke color.<br>Default value: [Color](ts-appendix-enums.md#color).Transparent<br>Invalid values **undefined** and **null** values are treated as the default value, and invalid values **NaN** and **Infinity** are treated as [Color](ts-appendix-enums.md#color).Black.|
-
-### strokeDashArray
-
-strokeDashArray(value: Array&lt;any&gt;)
-
-Sets the stroke dashes. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). The value must be greater than or equal to 0. Invalid values are treated as the default value.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type            | Mandatory| Description                     |
-| ------ | ---------------- | ---- | ------------------------- |
-| value  | Array&lt;any&gt; | Yes  | Array defining the dash pattern for the shape outline. Elements alternate between dash length and gap length.<br>Default value: **[]** (empty array)<br>Default unit: vp<br>The **undefined** and **null** values are invalid and treated as the default value.<br>**NOTE**<br>Empty array: solid line<br>Even-numbered array: Elements cycle sequentially, for example, [a, b, c, d] represents: dash a -> gap b -> dash c -> gap d -> dash a -> ...<br>Odd-numbered array: Elements are duplicated to create an even-numbered array, for example, [a, b, c] becomes [a, b, c, a, b, c], representing: dash a -> gap b -> dash c -> gap a -> dash b -> gap c -> dash a -> ...|
-
-### strokeDashOffset
-
-strokeDashOffset(value: Length)
-
-Sets the offset of the start point for drawing the stroke. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). Invalid values are treated as the default value.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                      | Mandatory| Description                                |
-| ------ | -------------------------- | ---- | ------------------------------------ |
-| value  | [Length](ts-types.md#length) | Yes  | Offset of the start point for drawing the stroke.<br>Default value: **0**<br>Default unit: vp<br>Invalid values **undefined** and **null** are treated as the default value. If set to **NaN** or **Infinity**, **strokeDashArray** has no effect.|
-
-### strokeLineCap
-
-strokeLineCap(value: LineCapStyle)
-
-Sets the cap style of the stroke. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                             | Mandatory| Description                                            |
-| ------ | ------------------------------------------------- | ---- | ------------------------------------------------ |
-| value  | [LineCapStyle](ts-appendix-enums.md#linecapstyle) | Yes  | Cap style of the stroke.<br>Default value: **LineCapStyle.Butt**<br>The **undefined**, **null**, **NaN**, and **Infinity** values are invalid and treated as the default value.|
-
-### strokeLineJoin
-
-strokeLineJoin(value: LineJoinStyle)
-
-Sets the join style of the stroke. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                               | Mandatory| Description                                              |
-| ------ | --------------------------------------------------- | ---- | -------------------------------------------------- |
-| value  | [LineJoinStyle](ts-appendix-enums.md#linejoinstyle) | Yes  | Join style of the stroke.<br>Default value: **LineJoinStyle.Miter**<br>The **undefined**, **null**, **NaN**, and **Infinity** values are invalid and treated as the default value.|
-
-### strokeMiterLimit
-
-strokeMiterLimit(value: Length)
-
-Sets the limit on the ratio of the miter length to the value of stroke width used to draw a miter join. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). The miter length indicates the distance from the outer tip to the inner corner of the miter. The border width is the value of **strokeWidth**. This attribute works only when **strokeLineJoin** is set to **LineJoinStyle.Miter**.
-
-The value must be greater than or equal to 1.0. If the value is in the [0, 1) range, the value **1.0** will be used. In other cases, the default value will be used.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                      | Mandatory| Description                                          |
-| ------ | -------------------------- | ---- | ---------------------------------------------- |
-| value  | [Length](ts-types.md#length) | Yes  | Limit on the ratio of the miter length to the value of **strokeWidth** used to draw a miter join.<br>Default value: **4**<br>The **undefined**, **null**, and **NaN** values are invalid and treated as the default value. If set to **Infinity**, **stroke** has no effect.|
-
-### strokeOpacity
-
-strokeOpacity(value: number | string | Resource)
-
-Sets the stroke opacity. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). The value range is [0.0, 1.0]. If the set value is less than 0.0, **0.0** will be used. If the set value is greater than 1.0, **1.0** will be used.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                                        | Mandatory| Description                      |
-| ------ | ------------------------------------------------------------ | ---- | -------------------------- |
-| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Stroke opacity.<br>Default value: opacity set by the [stroke](#stroke) API<br>Invalid value **NaN** is treated as **0.0**, while invalid values **undefined**, **null**, and **Infinity** are treated as **1.0**.|
-
-### strokeWidth
-
-strokeWidth(value: Length)
-
-Sets the stroke width. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). If this attribute is of the string type, percentage values are not supported and will be treated as 1 px.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                        | Mandatory| Description                    |
-| ------ | ---------------------------- | ---- | ------------------------ |
-| value  | [Length](ts-types.md#length) | Yes  | Stroke width. The value must be greater than or equal to 0.<br>Default value: **1**<br>Default unit: vp<br>Invalid values **undefined**, **null**, and **NaN** are treated as the default value, and invalid value **Infinity** is treated as **0**.|
-
-### antiAlias
-
-antiAlias(value: boolean)
-
-Sets whether to enable anti-aliasing. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type   | Mandatory| Description                                 |
-| ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | Yes  | Whether to enable anti-aliasing.<br>**true**: enable anti-aliasing; **false**: disable anti-aliasing.<br>Default value: **true**<br>Invalid values **undefined** and **null** are treated as **false**.|
+| value | [ViewportRect](ts-drawing-components-shape.md#viewportrect18) | Yes | Viewport drawing attribute.<br>Default value: **{x: 0, y: 0, width: 0, height: 0}**<br>The abnormal values **undefined** and **null** are processed as the default value. |
 
 ### mesh<sup>8+</sup>
 
 mesh(value: Array&lt;any&gt;, column: number, row: number)
 
-Sets the mesh effect. An image is divided into (row + 1) × (column + 1) meshes. The coordinates of each mesh intersection point are stored in the array. (Every two elements indicate the x and y coordinates of an intersection point.) The mesh vertex position is relocated based on the coordinates in the array value to implement partial image distortion. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+Sets the mesh effect. Divides the image into a grid of (row + 1) × (column + 1), with the coordinates of each grid intersection stored in an array (every two elements represent the x and y coordinates of an intersection). The coordinates in the **value** array are used to reposition the grid vertices, implementing local distortion of the image. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). It is applicable to scenarios that require image deformation effects, such as image distortion and wave effects.
+
+The coordinate array is stored in row-major order. After the original image is evenly divided, each grid area is transformed based on the new coordinates of its vertices, ultimately producing a distortion effect.
 
 > **NOTE**
 >
@@ -305,9 +145,9 @@ Sets the mesh effect. An image is divided into (row + 1) × (column + 1) meshes.
 
 | Name| Type               | Mandatory| Description                                                        |
 | ------ | ------------------- | ---- | ------------------------------------------------------------ |
-| value  | Array&lt;any&gt; | Yes  | Array with a length of (row + 1) × (column + 1) × 2, which records the position of each vertex of the distorted bitmap.<br>Invalid values **undefined** and **null** are treated as an empty array. If the value is set to an empty array, the values of **column** and **row** are handled as **0**, and the value is handled as an empty array.|
-| column | number              | Yes  | Number of mesh matrix columns.<br>If the value is **undefined**, **null**, **NaN**, or **Infinity**, the values of **column** and **row** are treated as **0**, and the value of **value** is treated as an empty array.|
-| row    | number              | Yes  | Number of mesh matrix rows.<br>If the value is **undefined**, **null**, **NaN**, or **Infinity**, the values of **column** and **row** are treated as **0**, and the value of **value** is treated as an empty array.|
+| value  | Array&lt;any&gt; | Yes   | Array of length (row + 1) × (column + 1) × 2, which records the position of each vertex of the distorted bitmap. The coordinate system is based on the display area of the **Shape** component, with the origin (0,0) at the upper left corner, the x-axis extending to the right, and the y-axis extending downward.<br>Default unit: vp<br>When the abnormal values **undefined** and **null** are set, the parameter is processed as an empty array. |
+| column | number              | Yes   | Number of columns in the mesh matrix. The value range is ≥ 0.<br>Default value: **0**<br>When the abnormal values **undefined**, **null**, **NaN**, and **Infinity** are set, the column and row parameters are processed as the default value **0**, and the value parameter is processed as an empty array. |
+| row    | number              | Yes   | Number of rows in the mesh matrix. The value range is ≥ 0.<br>Default value: **0**<br>When the abnormal values **undefined**, **null**, **NaN**, and **Infinity** are set, the column and row parameters are processed as the default value **0**, and the **value** parameter is processed as an empty array. |
 
 ## Examples
 
@@ -323,9 +163,9 @@ struct ShapeExample {
   build() {
     Column({ space: 10 }) {
       Text('basic').fontSize(11).fontColor(0xCCCCCC).width(320)
-      // Draw a 300 × 50 rectangle with strokes at (-2, -2). The fill color is 0x317AF7, the stroke color is black, the stroke width is 4, the stroke dash array is 20, the offset is 10 to the left, the cap style is semi-circle, the join style is rounded, and anti-aliasing is enabled (default).
-      // Draw a 300 × 50 ellipse with strokes at (-2, 58). The fill color is 0x317AF7, the stroke color is black, the stroke width is 4, the stroke dash array is 20, the offset is 10 to the left, the cap style is semi-circle, the join style is rounded, and anti-aliasing is enabled (default).
-      // Draw a 300 × 10 straight line at (-2, 118). The fill color is 0x317AF7, the stroke color is black, the stroke width is 4, the stroke dash array is 20, the offset is 10 to the left, the cap style is semi-circle, the join style is rounded, and anti-aliasing is enabled (default).
+      // Draw a 300 × 50 rectangle with a stroke at the point (-2, -2) in Shape, with the color 0x317AF7, stroke color black, stroke width 4, stroke gap 20, offset to the left by 10, line cap style round, line join style round, and anti-aliasing (enabled by default).
+      // Draw a 300 × 50 ellipse with a stroke at the point (-2, 58) in Shape, with the color 0x317AF7, stroke color black, stroke width 4, stroke gap 20, offset to the left by 10, line cap style round, line join style round, and anti-aliasing (enabled by default).
+      // Draw a 300 × 10 straight line at the point (-2, 118) in Shape, with the color 0x317AF7, stroke color black, width 4, gap 20, offset to the left by 10, line cap style round, line join style round, and anti-aliasing (enabled by default).
       Shape() {
         Rect().width(300).height(50)
         Ellipse().width(300).height(50).offset({ x: 0, y: 60 })
@@ -380,7 +220,7 @@ struct ShapeExample {
       .strokeWidth(10)
 
       Text('path').fontSize(11).fontColor(0xCCCCCC).width(320)
-      // Draw a straight line at (0, -5). The fill color is 0xEE8443, the stroke width is 10, and the stroke dash array is 20.
+      // Draw a straight line at (0, -5). The color is 0xEE8443, the stroke width is 10, and the stroke dash array is 20.
       Shape() {
         Path().width(300).height(10).commands('M0 0 L900 0')
       }
@@ -396,7 +236,7 @@ struct ShapeExample {
       .strokeWidth(10)
       .strokeDashArray([20])
 
-      // Draw a straight line at (0, -5). The fill color is 0xEE8443, the stroke width is 10, the stroke dash array is 20, and the offset is 10 to the left.
+      // Draw a straight line at (0, -5). The color is 0xEE8443, the stroke width is 10, the stroke dash array is 20, and the offset is 10 to the left.
       Shape() {
         Path().width(300).height(10).commands('M0 0 L900 0')
       }
@@ -413,7 +253,7 @@ struct ShapeExample {
       .strokeDashArray([20])
       .strokeDashOffset(10)
 
-      // Draw a straight line at (0, -5). The fill color is 0xEE8443, the stroke width is 10, and the opacity is 0.5.
+      // Draw a straight line at (0, -5). The color is 0xEE8443, the stroke width is 10, and the opacity is 0.5.
       Shape() {
         Path().width(300).height(10).commands('M0 0 L900 0')
       }
@@ -429,7 +269,7 @@ struct ShapeExample {
       .strokeWidth(10)
       .strokeOpacity(0.5)
 
-      // Draw a straight line at (0, -5). The fill color is 0xEE8443, the stroke width is 10, the stroke dash array is 20, and the cap style is semi-circle.
+      // Draw a straight line at (0, -5). The color is 0xEE8443, the stroke width is 10, the stroke dash array is 20, and the cap style is semi-circle.
       Shape() {
         Path().width(300).height(10).commands('M0 0 L900 0')
       }
@@ -446,7 +286,7 @@ struct ShapeExample {
       .strokeDashArray([20])
       .strokeLineCap(LineCapStyle.Round)
 
-      // Draw a closed path at (-20, -5). The fill color is 0x317AF7, the stroke width is 10, the stroke color is 0xEE8443, and the join style is miter (default).
+      // Draw a closed path at (-20, -5). The fill color is 0x317AF7, the stroke width is 10, the color is 0xEE8443, and the join style is miter (default).
       Shape() {
         Path().width(200).height(60).commands('M0 0 L400 0 L400 150 Z')
       }
@@ -468,7 +308,7 @@ struct ShapeExample {
 }
 ```
 
-![shape1](figures/shape1.png)
+![shape](figures/shape.png)
 
 ### Example 2: Drawing a Shape with Different Parameter Types
 
@@ -481,9 +321,9 @@ This example demonstrates how to draw shaps with different length types for attr
 struct ShapeTypeExample {
   build() {
     Column({ space: 10 }) {
-      // Draw a 300 × 50 rectangle with strokes at (-2, -2). The fill color is 0x317AF7, the stroke color is black, the stroke width is 4, the stroke dash array is 20, the offset is 10 to the left, the cap style is semi-circle, the join style is rounded, and anti-aliasing is enabled (default).
-      // Draw a 300 × 50 ellipse with strokes at (-2, 58). The fill color is 0x317AF7, the stroke color is black, the stroke width is 4, the stroke dash array is 20, the offset is 10 to the left, the cap style is semi-circle, the join style is rounded, and anti-aliasing is enabled (default).
-      // Draw a 300 × 10 straight line at (-2, 118). The fill color is 0x317AF7, the stroke color is black, the stroke width is 4, the stroke dash array is 20, the offset is 10 to the left, the cap style is semi-circle, the join style is rounded, and anti-aliasing is enabled (default).
+      // Draw a 300 × 50 rectangle with a stroke at point (-2, -2) in Shape, in orange, with a black stroke, stroke width 4, stroke gap 20, offset 10 to the left, line cap style round, line join style round, and anti-aliasing (enabled by default).
+      // Draw a 300 × 50 ellipse with a stroke at point (-2, 58) in Shape, in orange, with a black stroke, stroke width 4, stroke gap 20, offset 10 to the left, line cap style round, line join style round, and anti-aliasing (enabled by default).
+      // Draw a 300 × 10 straight line at point (-2, 118) in Shape, in orange, with a black stroke, width 4, gap 20, offset 10 to the left, line cap style round, line join style round, and anti-aliasing (enabled by default).
       Shape() {
         Rect().width('300').height('50')
         Ellipse().width(300).height(50).offset({ x: 0, y: 60 })
@@ -521,7 +361,7 @@ This example shows how to use **attributeModifier** to dynamically set the **fil
 // xxx.ets
 class MyShapeModifier implements AttributeModifier<ShapeAttribute> {
   applyNormalAttribute(instance: ShapeAttribute): void {
-    // Fill color: #707070; fill opacity: 0.5; stroke color: #2787D9; stroke dash array: [20, 15]; offset to left: 15; cap style: semi-circle; join style: miter; miter limit: 5; stroke opacity: 0.5; stroke width: 10; anti-aliasing enabled.
+    // Fill color: #707070; fill opacity: 0.5; color: #2787D9; stroke dash array: [20, 15]; offset to left: 15; cap style: semi-circle; join style: miter; miter limit: 5; stroke opacity: 0.5; stroke width: 10; anti-aliasing enabled.
     instance.fill("#707070")
     instance.fillOpacity(0.5)
     instance.stroke("#2787D9")
@@ -569,13 +409,16 @@ import { image } from '@kit.ImageKit';
 @Component
 struct Index {
   private context: OffscreenCanvasRenderingContext2D = new OffscreenCanvasRenderingContext2D(200, 200)
+  // The mesh array, whose length is (row + 1) × (column + 1) × 2, where every two elements represent the x and y coordinates of a mesh vertex.
   private meshArray: Array<number> = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360]
   @State pixelMap: image.PixelMap | undefined = undefined
 
   aboutToAppear(): void {
     // Replace "resources/base/media/img.png" with the image resource file you use.
+    // Create an image bitmap and draw it to the offscreen canvas.
     let img: ImageBitmap = new ImageBitmap("resources/base/media/img.png")
     this.context.drawImage(img, 0, 0, 200, 200)
+    // Obtain the PixelMap object from the canvas for the Shape component.
     this.pixelMap = this.context.getPixelMap(0, 0, 200, 200)
   }
 

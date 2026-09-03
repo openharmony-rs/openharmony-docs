@@ -10,9 +10,11 @@
 
 >  **说明：**
 >
->  该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
->  该组件仅支持单文本样式，若需实现富文本样式，建议使用[RichEditor](ts-basic-components-richeditor.md)组件。
+> - 该组件仅支持单文本样式，若需实现富文本样式，建议使用[RichEditor](ts-basic-components-richeditor.md)组件。
+>
+> - 如需设置触摸文本组件外部时是否清除文本选中和手柄，可使用[setTextSelectionClearPolicy](../arkts-apis-uicontext-uicontext.md#settextselectionclearpolicy)接口。
 
 
 ## 子组件
@@ -374,7 +376,7 @@ textDirection(direction: TextDirection | undefined)
 
 selectedBackgroundColor(value: ResourceColor)
 
-设置文本选中底板颜色。如果未设置不透明度，默认为20%不透明度。未通过该接口设置时，默认为'#FF007DFF'（蓝色），Wearable设备上默认值为'#FF1F71FF'（蓝色，比'#FF007DFF'颜色稍深）。
+设置文本选中高亮颜色。如果未设置不透明度或设置为完全不透明，默认使用20%不透明度。未通过该接口设置时，默认为'#007DFF'（蓝色），Wearable设备上默认值为'#1F71FF'（蓝色，比'#007DFF'颜色稍深）。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -386,7 +388,7 @@ selectedBackgroundColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                       |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 文本选中底板颜色。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 文本选中高亮颜色。 |
 
 ### caretStyle<sup>10+</sup>
 
@@ -1211,7 +1213,7 @@ strokeWidth(width: Optional\<LengthMetrics>)
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | 是   | 文本描边的宽度。如果LengthMetrics的unit值是PERCENT，当前设置不生效，按默认值处理。<br>若设置值小于0，显示实心字；若大于0，显示空心字。 |
+| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | 是   | 文本描边的宽度。当LengthMetrics对象的unit属性为LengthUnit.PERCENT时，当前设置不生效，按默认值处理。<br>若设置值小于0，显示实心字；若大于0，显示空心字。 |
 
 ### strokeColor<sup>20+</sup>
 
@@ -1558,7 +1560,7 @@ selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
 | NEW_PASSWORD<sup>11+</sup>    | 11 | 新密码输入模式。<br>默认输入文字短暂显示后变成圆点。从API version 12开始，PC/2in1设备上输入文字直接显示为圆点。<br>TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框末尾默认显示小眼睛图标。<br>密码输入模式中，[decoration](#decoration12)、[showUnderline](#showunderline10)、[lineHeight](#lineheight12)、[fontFeature](#fontfeature12)不生效。在已启用密码保险箱的情况下，支持自动生成新密码。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | NUMBER_DECIMAL<sup>11+</sup>  | 12 | 带小数点的数字输入模式。<br>支持数字，小数点（只能存在一个小数点）。不支持负数（包括负数整数和负数小数）。若需支持负数输入，请使用[inputFilter](#inputfilter8)属性实现负数过滤。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | URL<sup>12+</sup>  | 13 | 带URL的输入模式，无特殊限制。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| ONE_TIME_CODE<sup>20+</sup>  | 14 | 验证码输入模式，无特殊限制。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| ONE_TIME_CODE<sup>20+</sup>  | 14 | 验证码输入模式，无特殊限制。该模式下组件获焦后会默认拉起系统输入法。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## ContentType<sup>12+</sup>枚举说明
 
@@ -1613,8 +1615,8 @@ selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
 
 | 名称    |  值 | 说明                                                         |
 | ------- | --- | ------------------------------------------------------------ |
-| Default | - | 默认风格，光标宽1.5vp，光标高度与文本选中底板高度和字体大小相关。 |
-| Inline  | - | 内联输入风格，也称内联模式。文本选中底板高度与输入框高度相同。<br>内联输入是在有明显的编辑态/非编辑态的区分场景下使用，例如：文件列表视图中的重命名。<br>不支持showError属性。<br>不支持showCounter属性，内联模式下字符计数器不显示。<br>内联模式下，不支持拖入文本。 |
+| Default | - | 默认风格，光标宽1.5vp，光标高度与文本选中高亮高度和字体大小相关。 |
+| Inline  | - | 内联输入风格，也称内联模式。文本选中高亮高度与输入框高度相同。<br>内联输入是在有明显的编辑态/非编辑态的区分场景下使用，例如：文件列表视图中的重命名。<br>不支持showError属性。<br>不支持showCounter属性，内联模式下字符计数器不显示。<br>内联模式下，不支持拖入文本。 |
 
 ## PasswordIcon<sup>10+</sup>对象说明
 
@@ -2728,7 +2730,7 @@ struct TextInputExample {
   build() {
     Row() {
       Column() {
-        Text('TextInput为inline模式，WordBreakType属性为NORMAL的样式：').fontSize(16).fontColor(0xCCCCCC)
+        Text('TextInput为inline模式，wordBreak属性为NORMAL的样式：').fontSize(16).fontColor(0xCCCCCC)
         TextInput({
           text: this.textStrEn
         })
@@ -2737,7 +2739,7 @@ struct TextInputExample {
           .style(TextInputStyle.Inline)// Inline模式
           .wordBreak(WordBreak.NORMAL) // 非Inline模式该属性无效
 
-        Text('TextInput为inline模式，英文文本，WordBreakType属性为BREAK_ALL的样式：').fontSize(16).fontColor(0xCCCCCC)
+        Text('TextInput为inline模式，英文文本，wordBreak属性为BREAK_ALL的样式：').fontSize(16).fontColor(0xCCCCCC)
         TextInput({
           text: this.textStrEn
         })
@@ -2746,7 +2748,7 @@ struct TextInputExample {
           .style(TextInputStyle.Inline)
           .wordBreak(WordBreak.BREAK_ALL)
 
-        Text('TextInput为inline模式，中文文本，WordBreakType属性为BREAK_ALL的样式：').fontSize(16).fontColor(0xCCCCCC)
+        Text('TextInput为inline模式，中文文本，wordBreak属性为BREAK_ALL的样式：').fontSize(16).fontColor(0xCCCCCC)
         TextInput({
           text: this.textStrZn
         })
@@ -2755,7 +2757,7 @@ struct TextInputExample {
           .style(TextInputStyle.Inline)
           .wordBreak(WordBreak.BREAK_ALL)
 
-        Text('TextInput为inline模式，WordBreakType属性为BREAK_WORD的样式：').fontSize(16).fontColor(0xCCCCCC)
+        Text('TextInput为inline模式，wordBreak属性为BREAK_WORD的样式：').fontSize(16).fontColor(0xCCCCCC)
         TextInput({
           text: this.textStrEn
         })
@@ -3434,8 +3436,7 @@ struct TextInputExample {
   // 设置字体大小
   async setFontScale(scale: number): Promise<void> {
     let configInit: Configuration = {
-      language: 'zh-Ch',
-      fontSizeScale: scale,
+      fontSizeScale: scale
     };
     // 更新配置-字体大小，调用系统接口更新字体配置
     // 需在工程的module.json5文件的requestPermissions字段配置权限：ohos.permission.UPDATE_CONFIGURATION
@@ -3460,7 +3461,7 @@ struct TextInputExample {
           .minFontScale(this.minFontScale)// 设置最小字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
           .maxFontScale(this.maxFontScale) // 设置最大字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
       }.width('100%')
-
+      // 以下按钮只用做字体大小倍数调整，不在示例图中呈现
       Column() {
         Row() {
           Button('1倍').onClick(() => {

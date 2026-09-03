@@ -5,6 +5,7 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=f9f86808d6457a0596524236c4fda040b8986571 translatedAt=2026-08-29T09:22:40.108Z pushedAt=2026-08-31T03:35:47.086Z -->
 
 > **NOTE**
 >
@@ -44,7 +45,7 @@ During render tree construction, the custom node designated as the root node has
 
 **Solution**
 
-When integrating a render node, verify whether the custom node being used already has child nodes.
+When integrating a render node, check whether the custom node being used already has child nodes. If yes, remove the child nodes first.
 
 ## 106403 Current Render Node Has a Parent Node
 
@@ -62,7 +63,7 @@ The provided **ArkUI_RenderNodeHandle** pointer references a node that is alread
 
 **Solution**
 
-When integrating a render node, check whether the RenderNode designated as the root node is already mounted under another component.
+When integrating a render node, use the RenderNode that has not been mounted under another component. If the RenderNode already has a parent node, remove it from the parent node first.
 
 ## 106404 Corresponding Render Child Node Not Found
 
@@ -80,7 +81,7 @@ The render node referenced by the provided **ArkUI_RenderNodeHandle** pointer do
 
 **Solution**
 
-Check whether the provided index exceeds the node's range, or whether the render node referenced by the pointer contains any child nodes.
+Verify that the render node referenced by the **ArkUI_RenderNodeHandle** pointer has child nodes, and adjust the provided index to fall within the valid child node index range of that node.
 
 ## 106405 Parameter Value Out of Range
 
@@ -98,7 +99,7 @@ The provided parameter exceeds the boundary limits defined for the API being cal
 
 **Solution**
 
-Check the valid parameter range for the API being called.
+Check the valid parameter range for the API and adjust the parameter value to fall within this range.
 
 ## 106406 Current Render Node Is Obtained from FrameNode
 
@@ -116,7 +117,7 @@ The RenderNode is obtained from a FrameNode. Such nodes only support mounting an
 
 **Solution**
 
-Skip the node during execution if operations other than mounting and unmounting are attempted.
+The current node can only be mounted or unmounted as a child node. Skip this node when performing other operations.
 
 ## 106407 Current Render Node Is Obtained from FrameNode and the FrameNode Is Disposed or No Longer Adopted
 
@@ -126,7 +127,7 @@ The RenderNode is obtained from a FrameNode, and its corresponding FrameNode is 
 
 **Description**
 
-This error code is reported when the FrameNode from which the RenderNode is obtained has been disposed or is no longer adopted.
+This error code is reported when the FrameNode from which the RenderNode is obtained has been disposed of or is no longer adopted.
 
 **Possible Causes**
 
@@ -134,7 +135,7 @@ After the RenderNode is obtained from the adopted FrameNode, the FrameNode is no
 
 **Solution**
 
-Release the RenderNode when its source FrameNode is unadopted.
+If the adopted FrameNode is removed from adoption through [OH_ArkUI_NativeModule_RemoveAdoptedChild](./capi-native-node-h.md#oh_arkui_nativemodule_removeadoptedchild), or the FrameNode is destroyed, call [OH_ArkUI_RenderNodeUtils_DisposeNode](./capi-native-render-h.md#oh_arkui_rendernodeutils_disposenode) to release the RenderNode previously obtained through [OH_ArkUI_RenderNodeUtils_GetRenderNode](./capi-native-render-h.md#oh_arkui_rendernodeutils_getrendernode).
 
 ## 106408 Current Node Is Not in Adopted State
 
@@ -148,7 +149,7 @@ This error code is reported when the node is not adopted, making its RenderNode 
 
 **Possible Causes**
 
-The node is not adopted, making its RenderNode inaccessible.
+Before calling **OH_ArkUI_RenderNodeUtils_GetRenderNode**, the node is not adopted as a child node through **OH_ArkUI_NativeModule_AdoptChild**.
 
 **Solution**
 

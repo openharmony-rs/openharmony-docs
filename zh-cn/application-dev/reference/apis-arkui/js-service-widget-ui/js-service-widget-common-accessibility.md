@@ -19,7 +19,7 @@
 | accessibilitygroup | boolean | false | 无障碍组，设置为true时表示该组件及其所有子组件为一个整体的可选中组件，无障碍辅助服务将不再关注其子组件内容；设置为false表示不启用无障碍分组。 |
 | accessibilitytext | string | - | 无障碍文本，当组件不包含可被屏幕朗读的文本属性（如image等本身不直接显示文本的组件）时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此问题，开发人员可为不包含文本属性的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容。若组件既拥有文本属性，又拥有无障碍文本属性，则组件被选中时，以无障碍文本内容替代文本属性进行播报。 |
 | accessibilitydescription | string | - | 无障碍说明，用于为用户进一步说明当前组件，尤其是当操作后果无法从组件本身属性与无障碍文本中了解到时。开发人员可为组件设置详细的解释文本，说明操作的预期后果。若组件设置了无障碍说明属性，则组件被选中时，先播报组件的文本属性（若已设置accessibilitytext则播报accessibilitytext的内容），再播报无障碍说明属性的内容。 |
-| accessibilityimportance | string | auto | 无障碍重要性，用于控制某个组件是否可被无障碍辅助服务所识别。具体值可以设置为auto，yes，no和no-hide-descendants。若设置为auto，则由系统根据组件类型自动决定是否可被无障碍辅助服务识别；若设置为yes，则当前组件可被无障碍辅助服务选中；若设置为no，则当前组件不可被无障碍辅助服务选中；若设置为no-hide-descendants，则无障碍辅助服务忽略当前组件及其所有子组件。 |
+| accessibilityimportance | string | auto | 无障碍重要性，用于控制某个组件是否可被无障碍辅助服务所识别。具体值可以设置为auto、yes、no和no-hide-descendants。若设置为auto，则由系统根据组件类型自动决定是否可被无障碍辅助服务识别；若设置为yes，则当前组件可被无障碍辅助服务选中；若设置为no，则当前组件不可被无障碍辅助服务选中；若设置为no-hide-descendants，则无障碍辅助服务忽略当前组件及其所有子组件。 |
 
 - accessibilitygroup
   
@@ -39,7 +39,7 @@
 - accessibilitydescription
   
   ```html
-  <!-- showDialog为开发者自定义的事件处理函数，需在JS文件中定义 -->
+  <!-- showDialog为开发者自定义的事件名称，需在卡片json配置文件的actions字段中声明 -->
   <button accessibilitydescription="点击此按键会弹出一个对话框" onclick="showDialog">按键</button>
   ```
 
@@ -66,4 +66,4 @@
 | 属性 | 类型 | 说明 |
 | -------- | -------- | -------- |
 | eventType | number | 事件类型：<br/>-&nbsp;0：custom&nbsp;event<br/>-&nbsp;1：accessibility&nbsp;focus<br/>-&nbsp;2：clear&nbsp;accessibility&nbsp;focus<br/>无障碍服务下发的自定义事件为0，无障碍服务下发的获焦事件为1，无障碍服务下发的失焦事件为2。 |
-| param | Object | 无障碍辅助应用发送自定义事件时需传入的参数对象，参数内容取决于自定义事件的具体业务场景，可包含与该事件相关的业务数据字段。 |
+| param | Object | 无障碍辅助服务发送自定义事件时传入的参数对象，参数内容取决于自定义事件的具体业务场景，可包含与该事件相关的业务数据字段。 |

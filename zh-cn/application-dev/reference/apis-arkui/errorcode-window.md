@@ -463,23 +463,21 @@ This window context is abnormal.
 **处理步骤**<br>
 在对窗口上下文进行操作前，检查该窗口上下文是否存在，确保其未被销毁，再进行相关操作。
 
-<!--Del-->
-## 1300007 WindowExtension拉起应用失败
+## 1300007 恢复当前窗口的主窗口到前台显示失败
 
 **错误信息**<br>
-Failed to start the ability.
+Restore parent main window failed.
 
 **错误描述**<br>
-WindowExtension拉起应用失败。
+恢复当前窗口的主窗口到前台显示失败。
 
 **可能原因**<br>
-WindowExtension拉起应用的参数异常。
+1. 主窗口处于PAUSED生命周期状态。<br>
+2. 主窗口处于后台。
 
 **处理步骤**<br>
-检查WindowExtension参数是否被异常修改，确保其参数合法，再进行相关操作。
-<!--DelEnd-->
+确保主窗口生命周期状态正常，再进行相关操作。
 
-<!--Del-->
 ## 1300008 显示设备异常
 
 **错误信息**<br>
@@ -495,7 +493,6 @@ The display device is abnormal.
 
 **处理步骤**<br>
 确保显示设备正常，再进行相关开发。
-<!--DelEnd-->
 
 ## 1300009 父窗口无效
 

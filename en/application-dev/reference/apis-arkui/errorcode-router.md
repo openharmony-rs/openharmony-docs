@@ -1,10 +1,14 @@
 # Router Error Codes
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @huangxiaolinabc-->
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=66d449f865d808c2ab2228de4384c97bf7b4883d translatedAt=2026-08-19T08:37:41.144Z pushedAt=2026-08-19T08:50:51.767Z -->
+
+Page routing error codes are used to identify common errors in scenarios such as page redirection, page replacement, and Navigation-based redirection, helping you quickly locate issues in route configuration, page stack, and parameter passing.
 
 > **NOTE**
 >
@@ -40,7 +44,7 @@ This error code is reported when more than 32 pages are pushed into the page sta
 
 **Possible Causes**
 
-Too many pages are pushed.
+More than 32 pages are pushed.
 
 **Solution**
 
@@ -76,11 +80,21 @@ This error code is reported during navigation when the builder function for crea
 
 **Possible Causes**
 
-The builder function for creating the **NavDestination** component is not registered at the time of navigation.
+- The builder function for creating the **NavDestination** component is not registered during navigation.
+
+- The target page for navigation does not contain the **Navigation** component.
+
+- The route table is not configured.
 
 **Solution**
 
-Make sure the **builder** function for creating the **NavDestination** component is registered.
+Perform the following:
+
+1. Check whether **Navigation** provides the builder function for creating **NavDestination**.
+
+2. Ensure that the route table is correctly configured.
+
+3. Ensure that the target page for navigation contains the **Navigation** component.
 
 ## 100006 NavDestination Not Found
 
@@ -108,15 +122,15 @@ index value is invalid.
 
 **Description**
 
-This error code is reported when an invalid index value is provided.
+This error code is reported when an invalid index value is passed when a route-related API is called.
 
 **Possible Causes**
 
-The index value is invalid.
+The passed index value is invalid, for example, less than 0 or beyond the valid range of the page stack.
 
 **Solution**
 
-Check the provided index value.
+Ensure that the passed index value is a valid integer within the valid range of the current page stack.
 
 ## 106201 Failed to Obtain Route Navigation Information
 
@@ -126,17 +140,17 @@ Failed to query route navigation information.
 
 **Description**
 
-This error code is reported when the system fails to obtain route navigation information.
+This error code is reported when the system fails to query route navigation information because the current node is not mounted under a page.
 
 **Possible Causes**
 
-The current node is not within a **Navigation** component.
+The current node may not be mounted under the page.
 
 **Solution**
 
-Check whether the current node is within a **Navigation** component.
+Check whether the current node is on the page.
 
-## 106202 Invalid Buffer Size
+## 106202 Buffer Size Not Sufficient to Hold the Target Data
 
 **Error Message**
 
@@ -144,7 +158,7 @@ buffer size is not large enough.
 
 **Description**
 
-This error code is reported when an invalid buffer size is provided.
+This error code is reported when the input buffer size is not large enough to hold the target data.
 
 **Possible Causes**
 
@@ -152,7 +166,7 @@ The provided buffer size is smaller than the minimum required to accommodate the
 
 **Solution**
 
-Check the provided buffer size.
+Ensure that the provided buffer size meets the minimum buffer size requirement.
 
 ## 200002 Incorrect URI During Page Replacement
 
@@ -172,7 +186,7 @@ The entered URI is incorrect or does not exist.
 
 Ensure that the URI is correct.
 
-## 300001 HSP Download Failure Before Redirection
+## 300001 Silent Installation of the HSP Failed Before Navigation
 
 **Error Message**
 
@@ -180,7 +194,7 @@ hsp silent install fail.
 
 **Description**
 
-This error code is reported when the download of the HSP, which contains the target page, fails before **Navigation** performs the redirection.
+This error code is reported when the silent installation of the HSP containing the target page fails before **Navigation** performs the redirection.
 
 **Possible Causes**
 

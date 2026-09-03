@@ -1,10 +1,11 @@
 # NativeDisplayManager_CutoutInfo
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @logn; @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=9ff629abb1f77c36b24792690e916ea8f7bdd366 translatedAt=2026-08-27T08:35:14.351Z pushedAt=2026-08-27T11:44:12.142Z -->
 
 ```c
 typedef struct {...} NativeDisplayManager_CutoutInfo
@@ -27,5 +28,7 @@ Describes the unusable area of a display, including a punch hole, a notch, and t
 | Name| Description|
 | -- | -- |
 | int32_t boundingRectsLength | Number of the unusable areas on a display, including a punch hole and a notch.|
-| [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md)* boundingRects | Pointer to the boundary rectangle array of the unusable areas on a display, including a punch hole and a notch.|
+| [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md)* boundingRects | Bounding rectangles of the unusable areas on a display, including a punch hole and a notch. |
 | [NativeDisplayManager_WaterfallDisplayAreaRects](capi-nativedisplaymanager-waterfalldisplayarearects.md) waterfallDisplayAreaRects | Curved area on a waterfall display.|
+
+

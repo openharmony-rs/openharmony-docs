@@ -59,6 +59,7 @@ static setSystemLanguage(language: string): void
 | 错误码ID  | 错误信息                   |
 | ------ | ---------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 890001 | Invalid parameter. Possible causes: Parameter verification failed. |
 
@@ -107,6 +108,7 @@ static setSystemRegion(region: string): void
 | 错误码ID  | 错误信息                   |
 | ------ | ---------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br>适用版本：26.0.0+|
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 890001 | Invalid parameter. Possible causes: Parameter verification failed. |
 
@@ -196,8 +198,9 @@ static set24HourClock(option: boolean): void
 | 错误码ID  | 错误信息                   |
 | ------ | ---------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 890001 | Invalid parameter. Possible causes: Parameter verification failed. |
+| 890001 | Invalid parameter. Possible causes: Parameter verification failed.<br>适用版本：9-24 |
 
 **示例：**
   ```ts
@@ -239,6 +242,7 @@ static addPreferredLanguage(language: string, index?: number): void
 | 错误码ID  | 错误信息                   |
 | ------ | ---------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 890001 | Invalid parameter. Possible causes: Parameter verification failed. |
 
@@ -283,8 +287,9 @@ static removePreferredLanguage(index: number): void
 | 错误码ID  | 错误信息                   |
 | ------ | ---------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 890001 | Invalid parameter. Possible causes: Parameter verification failed. |
+| 890001 | Invalid parameter. Possible causes: Parameter verification failed.<br>适用版本：9-24 |
 
 **示例：**
   ```ts
@@ -326,8 +331,9 @@ static setUsingLocalDigit(flag: boolean): void
 | 错误码ID  | 错误信息                   |
 | ------ | ---------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 890001 | Invalid parameter. Possible causes: Parameter verification failed. |
+| 890001 | Invalid parameter. Possible causes: Parameter verification failed.<br>适用版本：9-24 |
 
 **示例：**
   ```ts
@@ -582,6 +588,43 @@ try {
 } catch(error) {
   let err: BusinessError = error as BusinessError;
   console.error(`call System.getSystemNumberingSystems failed, error code: ${err.code}, message: ${err.message}.`);
+}
+```
+
+### getUsingNumberingSystem<sup>20+</sup>
+
+static getUsingNumberingSystem(): string
+
+获取系统当前使用的数字系统。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Global.I18n
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| string | 系统当前使用的数字系统。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息                   |
+| ------ | ---------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n } from '@kit.LocalizationKit';
+
+try {
+  let usingNumberingSystem: string = i18n.System.getUsingNumberingSystem();
+} catch(error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`call System.getUsingNumberingSystem failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
 
@@ -985,6 +1028,14 @@ constructor()
 
 **系统能力**：SystemCapability.Global.I18n
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息                   |
+| ------ | ---------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API.<br>适用版本：26.0.0+ |
+
 **示例：**
   ```ts
   import { i18n } from '@kit.LocalizationKit';
@@ -1022,7 +1073,7 @@ getLanguageInfoArray(languages: Array&lt;string&gt;, options?: SortOptions): Arr
 
 | 错误码ID  | 错误信息                   |
 | ------ | ---------------------- |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 890001 | Invalid parameter. Possible causes: Parameter verification failed. |
 
@@ -1074,7 +1125,7 @@ getRegionInfoArray(regions: Array&lt;string&gt;, options?: SortOptions): Array&l
 
 | 错误码ID  | 错误信息                   |
 | ------ | ---------------------- |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 890001 | Invalid parameter. Possible causes: Parameter verification failed. |
 
@@ -1114,11 +1165,11 @@ static getTimeZoneCityItemArray(): Array&lt;TimeZoneCityItem&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.i18n错误码](errorcode-i18n.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID  | 错误信息                   |
 | ------ | ---------------------- |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 
 **示例：**
   ```ts
@@ -1164,10 +1215,12 @@ static getTimeZoneCityItemArray(): Array&lt;TimeZoneCityItem&gt;
 | --------------- | --------------- | ------  | ------  | --------------------------------------- |
 | zoneId          | string          |   否    |   否    | 时区ID，例如Asia/Shanghai。              |
 | cityId          | string          |   否    |   否    | 城市ID，例如Shanghai。                   |
-| cityDisplayName | string          |   否    |   否    | 城市ID在系统区域下显示的名称。          |
-| offset          | number             |   否    |   否    | 时区ID的偏移量，单位为毫秒（ms）。                         |
-| zoneDisplayName | string          |   否    |   否    | 时区ID在系统区域下显示的名称。          |
-| rawOffset       | number             |   否    |   是    | 时区ID的固定偏移量，单位为毫秒（ms）。                       |
+| cityDisplayName | string          |   否    |   否    | 城市ID在系统区域下显示的名称。           |
+| offset          | number          |   否    |   否    | 时区ID的偏移量，单位为毫秒（ms）。       |
+| zoneDisplayName | string          |   否    |   否    | 时区ID在系统区域下显示的名称。           |
+| latitude        | number          |   否    |   否    | 城市纬度坐标，单位为度（°）。<br>**起始版本**：26.1.0<br>**模型约束**：此接口仅可在Stage模型下使用。        |
+| longitude       | number          |   否    |   否    | 城市经度坐标，单位为度（°）。<br>**起始版本**：26.1.0<br>**模型约束**：此接口仅可在Stage模型下使用。        |
+| rawOffset       | number          |   否    |   是    | 时区ID的固定偏移量，单位为毫秒（ms）。   |
 
 
 ## SuggestionType<sup>10+</sup>

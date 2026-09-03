@@ -33,7 +33,7 @@ constructor(needCrossThread?: boolean, file?: string)
 
 | 参数名          | 类型    | 必填 | 说明                                   |
 | --------------- | ------- | ---- | -------------------------------------- |
-| needCrossThread | boolean | 否   | 是否需要跨线程访问存储。预留接口，暂不提供具体功能。 |
+| needCrossThread | boolean | 否   | 是否需要跨线程访问存储。预留接口，暂不提供具体功能。默认值：false。 |
 | file            | string  | 否   | 指定存储文件名。预留接口，暂不提供具体功能。默认使用应用文件目录下的persistent_storage作为存储文件。 |
 
 ### get

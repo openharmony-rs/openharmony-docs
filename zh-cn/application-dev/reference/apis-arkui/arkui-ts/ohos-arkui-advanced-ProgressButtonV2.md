@@ -1,8 +1,8 @@
 # ProgressButtonV2
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @wangrunsen-->
-<!--Designer: @YanSanzo-->
+<!--Owner: @zhangwentao96-->
+<!--Designer: @song-song-song-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -16,9 +16,9 @@
 >
 > - 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 该组件仅可在Stage模型下使用。
+> - 本模块接口仅可在Stage模型下使用。
 >
-> - 如果ProgressButtonV2设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ProgressButtonV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ProgressButtonV2设置通用属性和通用事件。
+> - 如果ProgressButtonV2设置[通用属性](ts-component-general-attributes.md)或[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ProgressButtonV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ProgressButtonV2设置通用属性和通用事件。
 
 
 ## 导入模块
@@ -37,6 +37,8 @@ ProgressButtonV2({progress: number, content: ResourceStr, progressButtonWidth?: 
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
@@ -49,10 +51,7 @@ ProgressButtonV2({progress: number, content: ResourceStr, progressButtonWidth?: 
 | onClicked                         | [ClickCallback](#clickcallback)                               | 是  | \@Param                | 下载按钮的点击回调。                                                                 |
 | isEnabled                         | boolean                                                       | 是  | \@Param                | 下载按钮是否可以点击。<br> true：可以点击。<br> false：不可点击。       |
 | colorOptions                      | [ProgressButtonV2Color](#progressbuttonv2color)               | 否  | \@Param                | 下载按钮颜色选项。                                                      |
-| progressButtonRadius<sup>18+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  | \@Param                | 下载按钮的圆角（不支持百分比设置）。<br/>取值范围：[0, height/2]<br/>默认值：height/2<br/>设置非法数值时，按照默认值处理。 |
-
-## 属性
-不支持[通用属性](ts-component-general-attributes.md)。
+| progressButtonRadius | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  | \@Param                | 下载按钮的圆角（不支持百分比设置）。<br/>取值范围：[0, height/2]<br/>默认值：height/2<br/>设置非法数值时，按照默认值处理。 |
 
 ## ClickCallback
 
@@ -75,6 +74,8 @@ type ClickCallback = () => void
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
@@ -95,6 +96,8 @@ constructor(options: ProgressButtonV2ColorOptions);
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **参数：**
@@ -109,6 +112,8 @@ constructor(options: ProgressButtonV2ColorOptions);
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
@@ -119,9 +124,6 @@ constructor(options: ProgressButtonV2ColorOptions);
 | borderColor     | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)| 否 | 是 | 按钮描边颜色。<br/>默认值：#330A59F7                                          |
 | textColor       | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)| 否 | 是 | 按钮文本颜色。<br/>默认值：系统默认值(#CE000000)                                   |
 | backgroundColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)| 否 | 是 | 按钮背景颜色。<br/>默认值：\$r('sys.color.ohos_id_color_foreground_contrary') |
-
-## 事件
-不支持[通用事件](ts-component-general-events.md)。
 
 ## 示例
 

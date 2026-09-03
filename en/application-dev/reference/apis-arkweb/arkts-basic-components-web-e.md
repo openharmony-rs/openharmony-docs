@@ -1,10 +1,12 @@
 # Enums
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:30:42.281Z pushedAt=2026-08-07T08:12:02.396Z -->
 
 > **NOTE**
 >
@@ -16,17 +18,17 @@ Enumerates the information levels of the console messages.
 
 > **NOTE**
 >
-> - On the HTML5 side, the information level of **ConsoleMessage** corresponding to **console.log** or **console.info** is **MessageLevel.Info**.
+> On the HTML5 side, calling console.log or console.info both correspond to the console message level of MessageLevel.Info.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 | Name   | Value| Description   |
 | ----- | -- | ---- |
 | Debug | 1 | Debug level.|
-| Error | 4 | Error level.|
 | Info  | 2 | Information level.|
-| Log   | 5 | Log level.|
 | Warn  | 3 | Warning level.|
+| Error | 4 | Error level. |
+| Log   | 5 | Log level.<br/>**Since:** 8<br/> **Deprecated since:** 26.0.0 |
 
 ## ConsoleMessageSource<sup>23+</sup>
 
@@ -59,7 +61,7 @@ Enumerates the mixed content modes.
 | Name       | Value| Description                                |
 | ---------- | -- | ---------------------------------- |
 | All        | 0 | Loose mode: HTTP and HTTPS hybrid content can be loaded. This means that all insecure content can be loaded.|
-| Compatible | 1 | Compatible mode: HTTP and HTTPS hybrid content can be loaded in compatibility mode. This means that some insecure content may be loaded.          |
+| Compatible | 1 | Compatible mode. Allows some HTTP content to be loaded on an HTTPS page. |
 | None       | 2 | Strict mode: HTTP and HTTPS hybrid content cannot be loaded.              |
 
 ## HitTestType<sup>(deprecated)</sup>
@@ -70,7 +72,7 @@ Enumerates the test result types of the click event.
 
 > **NOTE**
 >
-> This enum is supported since API version 9 and deprecated since API version 21. You are advised to use [WebHitTestType](./arkts-apis-webview-e.md#webhittesttype) instead.
+> Supported since API version 9 and deprecated since API version 21. You are advised to use [WebHitTestType](./arkts-apis-webview-e.md#webhittesttype) instead.
 
 | Name           | Value| Description                      |
 | ------------- | -- | ------------------------ |
@@ -92,10 +94,9 @@ Enumerates the cache modes.
 | Name     | Value| Description                                  |
 | ------- | -- | ------------------------------------ |
 | Default<sup>9+</sup> | 0 | The cache that has not expired is preferentially used to load resources. If the cache is invalid or no cache is available, resources are obtained from the Internet.|
-| None    | 1 | The cache (including expired caches) is preferentially used to load resources. If no cache is available, resources are obtained from the Internet.    |
+| None    | 1 | Preferentially loads resources from the cache (including expired ones), and fetches them from the network when no cache is available.     |
 | Online  | 2 | The cache is not used to load the resources. All resources are forcibly obtained from the Internet.              |
 | Only    | 3 | The local cache alone is used to load the resources.                       |
-
 
 ## OverScrollMode<sup>11+</sup>
 
@@ -105,8 +106,8 @@ Enumerates whether to enable overscroll mode.
 
 | Name    | Value| Description         |
 | ------ | -- | ----------- |
-| NEVER  | 0 | The overscroll mode is disabled.|
-| ALWAYS | 1 | The overscroll mode is enabled.|
+| NEVER  | 0 | Web overscroll mode disabled. Applicable to pages that do not require additional scrolling effects, such as scenarios where the content height matches the container height. |
+| ALWAYS | 1 | Web overscroll mode enabled. Applicable to pages that require enhanced scrolling feedback, such as list pages or scenarios that require clear scroll boundary indication. |
 
 ## BlurOnKeyboardHideMode<sup>14+</sup>
 
@@ -118,12 +119,12 @@ Enumerates whether the **Web** component loses focus when the soft keyboard is h
 
 | Name    | Value| Description         |
 | ------ | -- | ----------- |
-| SILENT  | 0 | The **Web** component does not lose focus when the soft keyboard is hidden.|
-| BLUR | 1 | The **Web** component loses focus when the soft keyboard is hidden, and the focus moves from the text box to the web body.|
+| SILENT | 0 | The blur function of the Web component is disabled when the soft keyboard is hidden. When the user manually hides the soft keyboard, the focus remains on the text box. This is applicable to scenarios where the input focus needs to be retained. |
+| BLUR | 1 | The blur function of the Web component is enabled when the soft keyboard is hidden. When the user manually hides the soft keyboard, the focus moves from the text box to the body of the Web component, and the text box loses focus. This is applicable to scenarios where standard input box behavior is required. |
 
 ## WebDarkMode<sup>9+</sup>
 
-Enumerates whether to enable web dark mode.
+Configures the web dark mode, which controls the dark theme display of web content and helps developers improve visual experience and readability based on user preferences and system themes.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -131,7 +132,7 @@ Enumerates whether to enable web dark mode.
 | ---- | -- | ------------ |
 | Off  | 0 | The web dark mode is disabled.  |
 | On   | 1 | The web dark mode is enabled.  |
-| Auto | 2 | The web dark mode setting follows the system setting.|
+| Auto | 2 | The Web dark mode follows the system. This mode is applicable to scenarios where the Web component theme needs to stay consistent with the system. It is recommended to use this mode to provide a consistent user experience. |
 
 ## WebCaptureMode<sup>10+</sup>
 
@@ -166,11 +167,11 @@ Enumerates the reasons why the rendering process exits.
 
 | Name                        | Value| Description               |
 | -------------------------- | -- | ----------------- |
-| ProcessAbnormalTermination | 0 | The rendering process terminates abnormally. Possible causes include: rendering process startup timeout, system reclaiming older rendering processes upon reaching the process limit, or simultaneous closure of multiple tabs.        |
+| ProcessAbnormalTermination | 0 | The rendering process exited abnormally. Possible causes include rendering process startup timeout, system reclaiming old rendering processes due to reaching the process quantity limit, and simultaneous closing of multiple tabs.     |
 | ProcessWasKilled           | 1 | The rendering process receives a SIGKILL message or is manually terminated.|
 | ProcessCrashed             | 2 | The rendering process crashes due to segmentation or other errors.   |
 | ProcessOom                 | 3 | The program memory is insufficient.          |
-| ProcessExitUnknown         | 4 | Other reasons, such as failure to spawn the rendering process.            |
+| ProcessExitUnknown         | 4 | Other reasons, such as rendering process spawning failure.        |
 
 ## SslError<sup>9+</sup>
 
@@ -187,7 +188,7 @@ Enumerates the error codes returned by **onSslErrorEventReceive** API.
 
 ## FileSelectorMode<sup>9+</sup>
 
-Enumerates the modes of the file selector.
+Defines the file selector mode, which controls how the file selector is opened and behaves, helping developers implement file operation scenarios such as file upload.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -200,14 +201,14 @@ Enumerates the modes of the file selector.
 
 ## WebLayoutMode<sup>11+</sup>
 
-Enumerates the web layout modes.
+Configures the web layout mode, which controls the page layout of web content and helps developers optimize web page adaptability and user experience based on screen size and display requirements.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 | Name         | Value| Description                |
 | ----------- | -- | ------------------ |
-| NONE        | 0 | The web layout follows the system.        |
-| FIT_CONTENT | 1 | The web layout adapts to the page size.|
+| NONE        | 0 | Web layout follows the system. This is suitable for traditional web page layout scenarios, keeping consistent with the default system behavior.         |
+| FIT_CONTENT | 1 | Web adaptive layout based on page size. This is suitable for scenarios where the layout needs to automatically adjust based on the screen size, and is recommended for mobile web page optimization. |
 
 ## RenderProcessNotRespondingReason<sup>12+</sup>
 
@@ -221,6 +222,8 @@ Enumerates the reasons why the rendering process does not respond.
 | NAVIGATION_COMMIT_TIMEOUT      | 1 | The navigation for loading a new web page times out.  |
 
 ## ProtectedResourceType<sup>9+</sup>
+
+Defines the types of protected resources that the Web component needs to access. It is used to control access permissions for sensitive resources such as MIDI, camera, microphone, and sensors, helping developers provide rich web functionality while protecting user privacy.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -255,6 +258,7 @@ Enumerates the media types that trigger the context menu.
 | Image | 1 | Image.          |
 
 ## ContextMenuDataMediaType<sup>22+</sup>
+
 Enumerates the media types that trigger the context menu (enhanced type obtaining capability).
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -275,7 +279,7 @@ Enumerates the input field types.
 
 | Name       | Value| Description                         |
 | --------- | -- | --------------------------- |
-| None      | 0 | Non-input field.                      |
+| None      | 0 | Non-input field, referring to non-editable web elements such as buttons, divs, spans, and other common HTML elements.                       |
 | PlainText | 1 | Plain text field, such as the text, search, or email field.|
 | Password  | 2 | Password field.                      |
 | Number    | 3 | Number field.                      |
@@ -346,8 +350,8 @@ The asynchronous rendering mode is recommended because it has better performance
 
 | Name                          | Value| Description          |
 | ----------------------------- | -- | ------------ |
-| ASYNC_RENDER                        | 0 | The **Web** component as a graphic surface node is rendered asynchronously and displayed independently. The maximum width of the **Web** component is 7,680 px (physical pixel).  |
-| SYNC_RENDER                        | 1 | The **Web** component as a graphic canvas node is rendered synchronously and displayed together with the system component. The maximum width of the **Web** component is 500,000 px (physical pixel).  |
+| ASYNC_RENDER                        | 0 | Asynchronous rendering mode of the Web component. The ArkWeb component acts as a graphics surface node and independently outputs display. The maximum height of the Web component does not exceed 7,680 px (physical pixels).   |
+| SYNC_RENDER                        | 1 | Synchronous rendering mode of the Web component. The ArkWeb component acts as a graphics canvas node and outputs display together with system components, allowing longer Web component content to be rendered. The maximum height of the Web component does not exceed 500,000 px (physical pixels).   |
 
 ## ViewportFit<sup>12+</sup>
 
@@ -357,9 +361,9 @@ Enumerates the viewport types available for **viewport-fit** in the web page **\
 
 | Name                          | Value| Description          |
 | ----------------------------- | -- | ------------ |
-| AUTO                  | 0 | The entire web page is visible. Default value.  |
-| CONTAINS      | 1 | The initial layout viewport and the visual viewport fit within the largest rectangle that adapts to the device's display screen.  |
-| COVER      | 2| The initial layout viewport and the visual viewport are confined within the bounding rectangle of the device's physical screen.  |
+| AUTO                  | 0 | Default value. The entire web page is visible. This is suitable for scenarios where the web page needs to be fully displayed within the visible area, and is recommended for most common web pages.   |
+| CONTAINS      | 1 | The initial layout viewport and visual viewport are within the largest rectangle that fits the device display. This is suitable for scenarios where content must be completely within the safe area, such as preventing important content from being obscured by a notch.   |
+| COVER      | 2| The initial layout viewport and visual viewport are within the bounding rectangle of the device's physical screen. This is suitable for scenarios where web page content needs to extend to the screen edges, such as full-screen background effects or immersive experiences.   |
 
 ## WebKeyboardAvoidMode<sup>12+</sup>
 
@@ -403,7 +407,7 @@ Enumerates the response types of the menu.
 
 ## AudioSessionType<sup>20+</sup>
 
-Enumerates the web audio types in the application.
+Defines the web audio types in the app, which control the audio stream type and behavior of web audio and help developers optimize the audio experience based on app scenarios, such as supporting simultaneous playback of web game sounds and system music.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -444,25 +448,25 @@ Enumerates whether to allow the rendering process to bypass the vsync scheduling
 | Name         | Value| Description                |
 | ----------- | -- | ------------------ |
 | NONE        | 0 | The rendering process does not bypass the vsync scheduling. Default value.        |
-| SCROLLBY_FROM_ZERO_OFFSET | 1 | When **scrollBy** is used (only the scrolling offset is supported) and the scrolling offset of the web page is **0**, the rendering process bypasses the vsync scheduling.|
+| SCROLLBY_FROM_ZERO_OFFSET | 1 | When scrollBy (which supports only scroll with an offset) is used and the web page scroll offset is 0, the rendering process skips vsync scheduling and draws directly. |
 
 ## PdfLoadResult<sup>20+</sup>
 
-Enumerates the PDF page loading results.
+Defines the PDF page loading results, which identify various states and error types during PDF file loading and help developers diagnose errors and provide user prompts when PDF display fails.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 | Name            | Value   | Description                                      |
 | -------------- | ---- | ---------------------------------------- |
 | LOAD_SUCCESS | 0 | The PDF file is successfully loaded.   |
-| PARSE_ERROR_FILE | 1 | The PDF file fails to be loaded.|
-| PARSE_ERROR_FORMAT | 2 | The PDF file format is not supported.|
-| PARSE_ERROR_PASSWORD | 3 | The PDF file password is incorrect.|
-| PARSE_ERROR_HANDLER | 4 | The PDF file fails to be processed.|
+| PARSE_ERROR_FILE | 1 | Failed to load the PDF file. |
+| PARSE_ERROR_FORMAT | 2 | The PDF file format is not supported. |
+| PARSE_ERROR_PASSWORD | 3 | The PDF file password is incorrect. |
+| PARSE_ERROR_HANDLER | 4 | Failed to process the PDF file. |
 
 ## DetectedBlankScreenReason<sup>22+</sup>
 
-Enumerates the reasons for the blank screen.
+Defines the specific reasons for the blank screen, which identify the underlying causes of page blank screen phenomena and help developers quickly locate the source of issues, improving the efficiency of troubleshooting page loading problems and user experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -473,7 +477,7 @@ Enumerates the reasons for the blank screen.
 
 ## BlankScreenDetectionMethod<sup>22+</sup>
 
-Enumerates the methods for the blank screen detection.
+Defines the detection strategy methods used for blank screen detection, which specify the specific algorithms and points for page content detection and help developers strike a balance between detection accuracy and performance overhead, enabling timely identification of page rendering anomalies.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -483,7 +487,7 @@ Enumerates the methods for the blank screen detection.
 
 ## CredentialType<sup>22+</sup>
 
-Enumerates the credential types.
+Defines the credential types used for identity authentication.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -495,7 +499,7 @@ Enumerates the credential types.
 
 ## PinVerifyResult<sup>22+</sup>
 
-Enumerates the PIN verification results.
+Defines the PIN verification results, which identify the execution status of PIN verification.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -506,7 +510,7 @@ Enumerates the PIN verification results.
 
 ## CameraCaptureState<sup>23+</sup>
 
-Enumerates the camera capture states.
+Defines the camera capture states, which identify the current working status of the camera and help developers monitor camera resource usage in real time, optimizing resource management and user privacy protection.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -518,7 +522,7 @@ Enumerates the camera capture states.
 
 ## MicrophoneCaptureState<sup>23+</sup>
 
-Enumerates the microphone capture states.
+Defines the microphone capture states, which identify the current working status of the microphone and help developers monitor microphone resource usage in real time, optimizing resource management and user privacy protection.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -530,7 +534,7 @@ Enumerates the microphone capture states.
 
 ## NavigationPolicy<sup>23+</sup>
 
-Enumerates the modes of opening a new window in the WebView.
+Defines the modes of opening a new window in the WebView, including pop-up windows, new windows, foreground tabs, and background tabs.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -540,3 +544,86 @@ Enumerates the modes of opening a new window in the WebView.
 | NEW_WINDOW                    | 1 | Open in a new window.  |
 | NEW_BACKGROUND_TAB            | 2 | Open in a new tab in background.|
 | NEW_FOREGROUND_TAB            | 3 | Open in a new tab in foreground.|
+
+## ScrollDirectionalLockType
+
+Defines the scenario types for scroll direction locking.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name           | Value | Description                           |
+| ------------- | -- | ------------------------------ |
+| ALL           | 0  | Scroll locking is supported in all scenarios.     |
+| NESTED_SCROLL | 1  | Scroll locking is supported in nested scroll scenarios. |
+
+## ScrollbarLayoutPolicy
+
+Defines the enumeration type for scrollbar layout mode control parameters.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name    | Value  | Description                                 |
+| ------- | --- | ------------------------------------ |
+| CONTENT | 0   | The left and right layout of the scrollbar follows the CSS settings.      |
+| SYSTEM  | 1   | The left and right layout of the scrollbar follows the system language settings. |
+
+## AISessionType
+
+Defines the supported AI session types.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name                 | Value | Description        |
+| ------------------ | - | --------- |
+| TRANSLATOR         | 1 | Translation model.     |
+| LANGUAGE_DETECTOR  | 2 | Language detection model.   |
+| SUMMARIZER         | 3 | Content summary generation model. |
+| WRITER             | 4 | Writing assistant model.   |
+| REWRITER           | 5 | Content rewriting assistant model. |
+| PROMPT             | 6 | Prompt model.    |
+| PROOFREADER        | 7 | Content proofreading assistant model. |
+
+## AISessionResultType
+
+Defines the result status of AI session operations.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name      | Value | Description       |
+| ------- | - | -------- |
+| SUCCESS | 0 | The operation is successful.  |
+| FAILURE | 1 | The operation failed.  |
+| RUNNING | 2 | The operation is in progress. |
+
+## WebKeyboardAppearanceMode
+
+Defines the input method immersive mode in the WebView, which controls the display style of the soft keyboard and helps developers provide a consistent visual experience based on the app theme and user preferences. It supports the default appearance, system-following, light immersive, and dark immersive styles.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name | Value | Description |
+| ------- | ----  | ------------------- |
+| NONE_IMMERSIVE  | 0 | Default appearance mode, without immersive style. |
+| IMMERSIVE       | 1 | Immersive mode, following the system.|
+| LIGHT_IMMERSIVE | 2 | Light immersive style.                |
+| DARK_IMMERSIVE  | 3 | Dark immersive style.                |

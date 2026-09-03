@@ -842,7 +842,7 @@ struct SheetSideExample {
   @Builder
   sideBuilder() {
     Column() {
-      ForEach(this.arr, (item: number) => {
+      ForEach(this.numberList, (item: number) => {
         Row() {
           Text(item.toString())
             .width('90%')
@@ -1049,4 +1049,3 @@ struct SheetMaterialExample {
 ```
 
 ![zh-cn_sheet](figures/sheetMaterial-new-s.jpg)
-

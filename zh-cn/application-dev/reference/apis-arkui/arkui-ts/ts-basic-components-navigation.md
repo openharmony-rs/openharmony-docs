@@ -818,7 +818,7 @@ Navigation导航控制器，以栈的数据结构管理Navigation中所有的子
 >
 > 3.在应用处于后台状态下，调用NavPathStack的栈操作方法，会在应用再次回到前台状态时触发刷新。
 
-### constructor
+### constructor<sup>10+</sup>
 
 constructor()
 
@@ -1694,7 +1694,7 @@ preloadPath(info: NavPathInfo, options?: PreloadOptions): Promise&lt;void&gt;
 
 路由页面信息。
 
-### constructor
+### constructor<sup>10+</sup>
 
 constructor(name: string, param: unknown, onPop?: import('../api/@ohos.base').Callback\<PopInfo>, isEntry?: boolean)
 
@@ -5754,7 +5754,7 @@ struct NavigationExample {
 
 ### 示例20（设置systemMaterial开启标题栏材质效果）
 
-该示例演示如何使用systemMaterial属性，开启标题栏材质效果。
+该示例演示如何通过systemMaterial属性设置组件的系统材质，开启标题栏沉浸光感效果。
 
 从API版本26.0.0开始，[NavigationTitleOptions](#navigationtitleoptions11)新增了systemMaterial属性。
 

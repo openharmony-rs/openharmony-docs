@@ -178,7 +178,7 @@ fetchScaledFrameByTime(timeUs: number, queryMode: AVImageQueryOptions, outputSiz
 | ---------- | --------------------------------------------- | ---- | ---------------------------------------------------- |
 | timeUs     | number                                        | 是   | 在视频中需要获取的缩略图的时间点，单位为微秒（μs）。 |
 | queryMode  | [AVImageQueryOptions](arkts-apis-media-e.md#avimagequeryoptions12) | 是   | 需要获取的缩略图时间点与视频帧的对应关系。           |
-| outputSize | [OutputSize ](arkts-apis-media-i.md#outputsize20)                  | 否   | 定义帧的输出大小。默认按原图大小显示。               |
+| outputSize | [OutputSize](arkts-apis-media-i.md#outputsize20)                  | 否   | 定义帧的输出大小。默认按原图大小显示。               |
 
 **返回值：**
 

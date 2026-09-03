@@ -1,10 +1,11 @@
 # @ohos.screenshot (Screenshot) (System API)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @logn; @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=6cdd905d6b7ce4c352f929e5cee241a6049b1f5a translatedAt=2026-09-01T03:29:30.284Z pushedAt=2026-09-02T03:48:56.469Z -->
 
 The **Screenshot** module provides APIs for you to set information such as the region to capture and the size of the screen region when capturing a screen. It serves scenarios such as screen content sharing, feedback, and test verification. Supporting common and HDR screenshot capture modes, this module provides features such as region selection, rotation, multi-screen, and screenshot capture notifications, helping you flexibly obtain screen content.
 
@@ -31,7 +32,7 @@ Describes the screenshot options.
 | ---------------------- | ------------- | ---- | ---- | ------------------------------------------------------------ |
 | screenRect             | [Rect](js-apis-screenshot.md#rect) | No | Yes| Region of the screen to capture. If no value is passed, the region of the logical screen associated with the specified display ID is returned.                      |
 | imageSize              | [Size](#size) | No| Yes | Size of the captured image. If no value is passed, the size of the logical screen associated with the specified display ID is returned. If **screenRect** is smaller than **imageSize**, the image is stretched to **imageSize**; otherwise, it is compressed to **imageSize**.                      |
-| rotation               | number        | No | Yes| Rotation angle of the captured image. Currently, only the value **0** is supported. The default value is **0**. If other values are passed, the default value is used.    |
+| rotation               | number        | No  | Yes | Angle to rotate the captured image, in degrees. Currently only **0** is supported, and the default value is **0**. If other values are passed, the default value is used.     |
 | displayId<sup>8+</sup> | number        | No| Yes | ID of the [display](js-apis-display.md#display) device on which the screen region is to be captured. The value must be an integer. The default value is **0**.|
 | isNotificationNeeded<sup>14+</sup>| boolean        | No | Yes| Whether to send a notification after a snapshot is captured. **true** to send, **false** otherwise. The default value is **true**. Such a notification can be listened for through [captureStatusChange](js-apis-display.md#displayoncapturestatuschange12).  |
 | isCaptureFullOfScreen<sup>20+</sup> | boolean        | No | Yes| Whether to capture all displays on the current screen. If the screen contains multiple displays, the value **true** means that the entire screen is captured, and **false** means that only the region of the logical screen associated with the specified display ID is captured.|
@@ -51,11 +52,13 @@ Describes the HDR screenshot options.
 | isCaptureFullOfScreen | boolean        | No| Yes  | Whether to capture all displays on the current screen. If the screen contains multiple displays, the value **true** means that the entire screen is captured, and **false** means that only the region of the logical screen associated with the specified display ID is captured. The default value is **false**.|
 | displayIntent | [DisplayIntentType](#displayintenttype)        | No| Yes  | Rendering mode of the captured HDR image. This does not affect the SDR image effect. The default value is **screenshot.DisplayIntentType.CANONICAL**.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 
-## DisplayIntentType 
+## DisplayIntentType
 
 Enumerates the rendering modes of the captured HDR image.
 
 **Since**: 26.0.0
+
+**System API**: This is a system API.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -76,8 +79,8 @@ Describes the size of the screen region to capture.
 
 | Name                | Type         |  Read-Only|  Optional| Description                                                        |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| width  | number | No  | No  | Width of the screen region to capture, in px. The value must be an integer.|
-| height | number | No  | No  | Height of the screen region to capture, in px. The value must be an integer.|
+| width  | number | No   | No   | Width of the image to capture, in px. The value must be a positive integer. |
+| height | number | No   | No   | Height of the image to capture, in px. The value must be a positive integer. |
 
 ## screenshot.save
 
@@ -92,7 +95,8 @@ The returned **PixelMap** object must be manually released. After using the obje
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Required permissions**:
-- API versions 22+: **ohos.permission.CAPTURE_SCREEN** or **ohos.permission.CUSTOM_SCREEN_RECORDING**
+- API versions 26.0.0+: **ohos.permission.CUSTOM_SCREEN_CAPTURE**,  **ohos.permission.CAPTURE_SCREEN**, or **ohos.permission.CUSTOM_SCREEN_RECORDING**
+- API versions 22-24: **ohos.permission.CAPTURE_SCREEN** or **ohos.permission.CUSTOM_SCREEN_RECORDING**
 - API versions 7-21: **ohos.permission.CAPTURE_SCREEN**
 
 **Parameters**
@@ -156,7 +160,8 @@ The returned **PixelMap** object must be manually released. After using the obje
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Required permissions**:
-- API versions 22+: **ohos.permission.CAPTURE_SCREEN** or **ohos.permission.CUSTOM_SCREEN_RECORDING**
+- API versions 26.0.0+: **ohos.permission.CUSTOM_SCREEN_CAPTURE**, **ohos.permission.CAPTURE_SCREEN**, or **ohos.permission.CUSTOM_SCREEN_RECORDING**
+- API versions 22-24: **ohos.permission.CAPTURE_SCREEN** or **ohos.permission.CUSTOM_SCREEN_RECORDING**
 - API versions 7-21: **ohos.permission.CAPTURE_SCREEN**
 
 **Parameters**
@@ -205,7 +210,8 @@ The returned **PixelMap** object must be manually released. After using the obje
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Required permissions**:
-- API versions 22+: **ohos.permission.CAPTURE_SCREEN** or **ohos.permission.CUSTOM_SCREEN_RECORDING**
+- API versions 26.0.0+: **ohos.permission.CUSTOM_SCREEN_CAPTURE**, **ohos.permission.CAPTURE_SCREEN**, or **ohos.permission.CUSTOM_SCREEN_RECORDING**
+- API versions 22-24: **ohos.permission.CAPTURE_SCREEN** or **ohos.permission.CUSTOM_SCREEN_RECORDING**
 - API versions 7-21: **ohos.permission.CAPTURE_SCREEN**
 
 **Parameters**
@@ -303,7 +309,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | -------------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801     | Capability not supported. |
 | 1400001  | Invalid display or screen. |
 | 1400003  | This display manager service works abnormally. |
 | 1400004  | Parameter error. Possible cause: 1. Invalid parameter range. |
@@ -325,7 +331,7 @@ try {
   promise.then((pixelMapArray: Array<image.PixelMap>) => {
     for (let i = 0; i < pixelMapArray.length; i++) {
       const pixelMap = pixelMapArray[i];
-      console.info(`succeeded in saving screenshot ${i}. Pixel bytes number: ${pixelMap.getPixelBytesNumber()}`);
+      console.info(`Succeeded in saving screenshot ${i}. Pixel bytes number: ${pixelMap.getPixelBytesNumber()}`);
       pixelMap.release();
     }
   }).catch((err: BusinessError) => {

@@ -1,12 +1,14 @@
 # Interface (WebMessagePort)
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:49:50.719Z pushedAt=2026-08-07T08:11:41.801Z -->
 
-Implements a **WebMessagePort** to send and receive [WebMessageType](./arkts-apis-webview-e.md#webmessagetype10) or [WebMessage](./arkts-apis-webview-t.md#webmessage) messages to the HTML5 side.
+WebMessagePort is a message port interface in the Web component used for bidirectional communication between the app side (ArkTS) and the HTML5 side (JavaScript). A pair of associated ports is created through createWebMessagePorts, with one port sent to the HTML5 side and the other retained on the app side, enabling cross-runtime message passing. WebMessagePort supports two message protocols: the basic protocol uses WebMessage as the message carrier (postMessageEvent/onMessageEvent), and the extended protocol uses WebMessageExt to support richer data types (postMessageEventExt/onMessageEventExt).
 
 > **NOTE**
 >
@@ -72,8 +74,21 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.ports = this.controller.createWebMessagePorts();
+            this.ports[1].onMessageEvent((msg) => {
+                if (typeof (msg) == "string") {
+                    console.info("received string message from HTML5, string is:" + msg);
+                } else if (typeof (msg) == "object") {
+                    if (msg instanceof ArrayBuffer) {
+                        console.info("received arraybuffer from HTML5, length is:" + msg.byteLength);
+                    } else {
+                        console.info("not support");
+                    }
+                } else {
+                    console.info("not support");
+                }
+            })            
             this.controller.postMessage('__init_port__', [this.ports[0]], '*');
-            this.ports[1].postMessageEvent("post message from ets to html5");
+            this.ports[1].postMessageEvent("post message from ETS to HTML5");
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -214,7 +229,7 @@ class TestObj {
   }
 }
 
-// Example of sending messages between an application and a web page: Use the init_web_messageport channel to receive messages from the web page on the application side through port 0 and receive messages from the application on the web page side through port 1.
+// Example of exchanging messages between the app and web page: uses the "init_web_messageport" channel, receives messages sent from the web page on the app side through port 0, and receives messages sent from the app on the web page side through port 1.
 @Entry
 @Component
 struct WebComponent {
@@ -400,6 +415,7 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
+
 ```html
 <!--index.html-->
 <!DOCTYPE html>
@@ -421,6 +437,7 @@ HTML file to be loaded:
 ```
 
 <!--code_no_check-->
+
 ```js
 //index.js
 var h5Port;

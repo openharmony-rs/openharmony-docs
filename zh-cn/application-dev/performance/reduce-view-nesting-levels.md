@@ -9,7 +9,7 @@
 
 ## 背景介绍
 
-应用开发中的用户界面（UI）布局是用户与应用程序交互的关键部分。使用不同类型的布局可以将页面排布的更加美观，但也容易带来不合理的布局。不合理的布局虽然能在界面显示上达到相同效果，但是过度的布局计算，界面嵌套带来了渲染和计算的大量开销，造成性能的衰退，本文重点介绍了几种常见的布局功能和适用场景，同时提供了几种优化布局结构的方法。
+应用开发中的用户界面（UI）布局是用户与应用程序交互的关键部分。使用不同类型的布局可以将页面排布得更加美观，但也容易带来不合理的布局。不合理的布局虽然能在界面显示上达到相同效果，但是过度的布局计算，界面嵌套带来了渲染和计算的大量开销，造成性能的衰退，本文重点介绍了几种常见的布局功能和适用场景，同时提供了几种优化布局结构的方法。
 
 ## 常用布局
 
@@ -63,7 +63,7 @@ struct AspectRatioExample12 {
 通过查看组件树结构，发现三层Stack容器设置了不同的属性参数，可以使用GridItem的属性参数实现同样的UI效果。因此，三层Stack容器是冗余的容器，可以去掉，只留下GridItem作为组件节点。
 
 
-```
+```text
 └─┬Scroll
   └─┬Grid
     ├─┬GridItem
@@ -105,7 +105,7 @@ struct AspectRatioExample11 {
 
 通过查看该组件树层级结构如下：
 
-```
+```text
 └─┬Scroll
   └─┬Grid
     ├─┬GridItem
@@ -140,7 +140,7 @@ struct MyComponent {
         .width("40vp")  
         .height("40vp")  
       }.height("100%").justifyContent(FlexAlign.Center)  
-      //body  
+      // body  
       Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Start }) {  
           Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center }) {  
           Flex({ direction: FlexDirection.Row,  
@@ -160,7 +160,7 @@ struct MyComponent {
               //Content Abbreviations for Latest News  
               Span('Hello World'.replace(new RegExp("/[\r\n]/g"), " "))  
                 .fontSize("14fp")  
-                .fontColor('# 66182431')  
+                .fontColor('#66182431')  
             }  
             .maxLines(1)  
             .textOverflow({ overflow: TextOverflow.Ellipsis })  
@@ -186,7 +186,7 @@ struct MyComponent {
 
 通过查看该组件树层级结构如下：
 
-```
+```text
 └─┬Row
   ├──┬Column
   │  └─┬Flex
@@ -234,7 +234,7 @@ struct MyComponent {
         Text('张三')  
           .fontSize('16.0fp')  
           .textOverflow({ overflow: TextOverflow.Ellipsis })  
-          .fontColor('# ff182431')  
+          .fontColor('#ff182431')  
           .maxLines(1)  
           .fontWeight(FontWeight.Medium)  
           .padding({ left: '12vp' })  
@@ -245,7 +245,7 @@ struct MyComponent {
           })  
           .id('name')  
         Text('2分钟前')  
-          .fontColor('# 66182431')  
+          .fontColor('#66182431')  
           .fontSize('12fp')  
           .maxLines(1)  
           .height(22)  
@@ -258,7 +258,7 @@ struct MyComponent {
           //Content Abbreviations for Latest News  
           Span('Hello World'.replace(new RegExp("/[\r\n]/g"), " "))  
             .fontSize('14fp')  
-            .fontColor('# 66182431')  
+            .fontColor('#66182431')  
         }  
         .maxLines(1)  
         .textOverflow({ overflow: TextOverflow.Ellipsis })  
@@ -273,7 +273,7 @@ struct MyComponent {
         .id('content')  
       }  
       .width('100%').height('100%')  
-      .border({ width: 1, color: "# 6699FF" })  
+      .border({ width: 1, color: "#6699FF" })  
     }  
     .height('100%')  
   }  
@@ -282,7 +282,7 @@ struct MyComponent {
 
 通过减少嵌套层数后可以发现，布局实现了相同的效果，但是组件层级减少了3层，使用组件数也减少了6个。
 
-```
+```text
 └─┬RelativeContainer
   ├──Text
   ├──Text
@@ -294,7 +294,7 @@ struct MyComponent {
 
 ![输入图片说明](figures/layout-relative-introduce.png)
 
-使用扁平化布局推荐使用[RelativeContainer](../reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md)、[绝对定位](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md)、[Grid组件](../reference/apis-arkui/arkui-ts/ts-container-grid.md)等
+使用扁平化布局推荐使用[RelativeContainer](../reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md)、[位置设置](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md)、[Grid组件](../reference/apis-arkui/arkui-ts/ts-container-grid.md)等
 
 ### 使用高性能布局组件
 
@@ -338,7 +338,7 @@ struct TopicItem {
 
 下图为isVisible值不同时组件树的情况：
 
-```
+```text
 isVisible为true：
 └─┬Stack
   ├─┬Column
@@ -393,7 +393,8 @@ struct TopicItem {
 布局的嵌套层次过深会导致在创建节点及进行布局时耗费更多时间。因此开发者在开发时，应避免冗余的嵌套或者使用扁平化布局来优化嵌套层次。
 
 反例：
-使用线性布局，布局耗时166ms313us。
+
+使用线性布局，布局耗时166ms313μs。
 
 ```ts
 
@@ -459,7 +460,8 @@ struct PerformanceRelative {
 ```
 
 正例：
-使用相对布局上述界面，减少了组件的嵌套深度以及组件个数，布局耗时123ms278us。
+
+使用相对布局上述界面，减少了组件的嵌套深度以及组件个数，布局耗时123ms278μs。
 
 ```ts
 
@@ -613,7 +615,7 @@ struct CustomComponentNormal {
 struct NormalCustom {
   build() {
     Column() {
-      Text('Hello Word')
+      Text('Hello World')
     }
   }
 }
@@ -716,7 +718,7 @@ struct ComponentStackNormal {
 
 ArkUI提供了overlay接口，可以直接给组件添加一个无交互、无动画场景的浮层，实现堆叠的效果。
 
-```
+```typescript
 @Entry
 @Component
 struct ComponentStackOverlay {
@@ -824,7 +826,7 @@ struct GrayScaleCustom {
 
 **反例**
 
-```
+```typescript
 @Component
 struct ColorNormal {
   @Prop isSelected: boolean = false;
@@ -877,7 +879,7 @@ struct Index {
 
 系统中提供了颜色计算的API，可以通过计算的方式，将两个颜色合并为一个，省去Stack层的布局节点，并且可以少绘制一个组件，减少重复绘制的情况发生。
 
-```
+```typescript
 import { ColorMetrics } from '@kit.ArkUI';
 
 @Component
@@ -934,4 +936,5 @@ struct Index {
 ## 优化布局工具介绍
 
 [DevEco Studio](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-tools-overview)内置ArkUI Inspector工具，开发者可以使用ArkUI
+
 Inspector，在DevEco Studio上查看应用在真机上的UI显示效果。利用ArkUI Inspector工具，开发者可以快速定位布局不理想或其他UI相关问题，同时也可以观察和了解不同组件之间的布局关系和属性。

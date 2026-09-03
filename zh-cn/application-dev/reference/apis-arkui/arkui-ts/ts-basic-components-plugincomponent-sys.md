@@ -69,7 +69,7 @@ PluginComponent(options: PluginComponentOptions)
 
 | 名称       | 类型  | 只读 | 可选 | 说明                        |
 | ---------- | ------ | ------ | ------ | --------------------------- |
-| source     | string | 否 | 否 | 组件模板，取值可为模板绝对路径（不建议）、相对HAP包的相对路径（多HAP场景使用"相对路径&模块名称"格式）或FA模型下的AbilityName，详见[属性](#属性)。                |
+| source     | string | 否 | 否 | 组件模板的来源，取值可为模板绝对路径（不建议）、相对HAP包的相对路径（多HAP场景使用"相对路径&模块名称"格式）或FA模型下的AbilityName，详见[属性](#属性)。                |
 | bundleName | string | 否 | 否 | 提供方应用的bundleName。使用绝对路径提供模板时不需要填写，使用应用包提供模板时需要填写，详见[属性](#属性)。 |
 
 ## 属性
@@ -111,7 +111,7 @@ onComplete(callback:&nbsp;VoidCallback)
 
 | 参数名  | 类型                                                     | 必填 | 说明                                                     |
 | ------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | [VoidCallback](../../apis-basic-services-kit/js-apis-base.md#callback) | 是   | 组件加载完成时触发事件回调。 |
+| callback | [VoidCallback](ts-types.md#voidcallback12) | 是   | 组件加载完成时触发事件回调。 |
 
 ### onError
 
@@ -127,9 +127,11 @@ onError(callback:&nbsp;PluginErrorCallback)
 
 | 参数名    | 类型                                                         | 必填 | 说明                                            |
 | --------- | ------------------------------------------------------------ | ---- | ----------------------------------------------- |
-| callback  | [PluginErrorCallback](#pluginerrorcallback18类型说明)          | 是   | 组件加载错误时触发事件回调。 |
+| callback  | [PluginErrorCallback](#pluginerrorcallback18)          | 是   | 组件加载错误时触发事件回调。 |
 
-## PluginErrorCallback<sup>18+</sup>类型说明
+## PluginErrorCallback<sup>18+</sup>
+
+type PluginErrorCallback = (info: PluginErrorData) => void
 
 发生错误时触发事件回调。
 
@@ -139,9 +141,9 @@ onError(callback:&nbsp;PluginErrorCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 参数     | 类型               | 描述                        |
-| -------- | ------------------ | --------------------------- |
-| info     | [PluginErrorData](#pluginerrordata18类型说明)  | 发生错误时提供的数据。 |
+| 参数名     | 类型         | 必填      | 说明                        |
+| -------- | ------------------| ------ | --------------------------- |
+| info     | [PluginErrorData](#pluginerrordata18类型说明) | 是  | 发生错误时提供的数据。 |
 
 ## PluginErrorData<sup>18+</sup>类型说明
 
@@ -169,17 +171,17 @@ onError(callback:&nbsp;PluginErrorCallback)
 | package path is empty. | 包路径为空。 | 检查PluginComponentTemplate参数中source字段是否有误。  |
 | Query Active OsAccountIds failed! | 获取激活的用户ID失败。 | 检查Account服务是否异常，或检查应用是否具备用户ID查询权限。    |
 | Template source is empty. | 模板source为空。 | 检查PluginComponentTemplate参数中source字段是否有误。  |
-| Bms bundleManager is nullptr. | 获取BundleManager失败。 |  检查BMS服务是否异常，或检查应用是否具备ohos.permission.GET_BUNDLE_INFO_PRIVILEGED,ohos.permission.GET_BUNDLE_INFO,ohos.permission.REQUIRE_FORM权限。                  |
+| Bms bundleManager is nullptr. | 获取BundleManager失败。 |  检查BMS服务是否异常，或检查应用是否具备ohos.permission.GET_BUNDLE_INFO_PRIVILEGED、ohos.permission.GET_BUNDLE_INFO和ohos.permission.REQUIRE_FORM权限。                  |
 | App bundleName is empty. | 应用包名为空。  | 检查PluginComponentTemplate参数中bundleName字段是否有误。                   |
-| Bms get bundleName failed! | 获取包名失败。  |  检查PluginComponentTemplate参数中bundleName字段是否有误，或检查bundleName字段对应的包是否已正确安装，或检查BMS服务是否异常，或检查应用是否具备ohos.permission.GET_BUNDLE_INFO_PRIVILEGED,ohos.permission.GET_BUNDLE_INFO,ohos.permission.REQUIRE_FORM权限。                |
+| Bms get bundleName failed! | 获取包名失败。  |  检查PluginComponentTemplate参数中bundleName字段是否有误，或检查bundleName字段对应的包是否已正确安装，或检查BMS服务是否异常，或检查应用是否具备ohos.permission.GET_BUNDLE_INFO_PRIVILEGED、ohos.permission.GET_BUNDLE_INFO和ohos.permission.REQUIRE_FORM权限。                |
 | Bms moduleResPaths is empty. | 插件包moduleResPaths属性为空。 |  检查bundleName字段对应的包的moduleResPaths属性是否异常，或检查BMS服务是否异常                   |
-| Bms get hapPath failed! Cannot find hap according to BundleName and ModuleName! | 获取hapPath失败。  |   检查PluginComponentTemplate参数中bundleName字段是否有误，检查bundleName字段对应的模块是否已正确安装。               |
+| Bms get hapPath failed! Cannot find hap according to BundleName and ModuleName! | 获取hapPath失败，无法根据BundleName和ModuleName找到对应的HAP。  |   检查PluginComponentTemplate参数中bundleName字段是否有误，检查bundleName字段对应的模块是否已正确安装。               |
 
 
 ## 示例（加载PluginComponent）
 
 本示例展示PluginComponent组件的基础使用方式，需要创建一个bundleName为"com.example.user"的[使用方](#组件使用方)应用，和一个bundleName为"com.example.provider"的[提供方](#组件提供方)应用。应用项目构建完成后，具体测试步骤如下：
-1. 将两个应用的hap包安装到设备上；
+1. 将两个应用的HAP包安装到设备上；
 2. 打开使用方应用页面，使用方与提供方内容都正确显示；
 3. 分别点击使用方的“Register Push Listener”按钮和提供方的“Register Request Listener”按钮注册监听；
 4. 点击使用方的“Request”按钮向提供方发送事件，日志中打印“onRequestListener”相关信息；
@@ -307,7 +309,7 @@ Plugin组件工具，用于使用方与提供方之间进行通信。根据模�
 ### FA模型
 ```js
 // 当前示例代码仅适用于FA模型
-import pluginComponentManager from '@ohos.pluginComponent';
+import { pluginComponentManager } from '@kit.ArkUI';
 
 const providerBundleName = 'com.example.provider';
 const providerAbilityName = 'com.example.provider.EntryAbility';
@@ -389,7 +391,7 @@ export default {
 ### Stage模型
 ```js
 // 当前示例代码仅适用于Stage模型
-import pluginComponentManager from '@ohos.pluginComponent';
+import { pluginComponentManager } from '@kit.ArkUI';
 
 let userBundleName: string = 'com.example.user';
 let userAbilityName: string = 'com.example.user.EntryAbility';

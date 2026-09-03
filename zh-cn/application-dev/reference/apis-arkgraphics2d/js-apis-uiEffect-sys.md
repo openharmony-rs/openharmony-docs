@@ -168,6 +168,73 @@ struct Example {
 }
 ```
 
+## uiEffect.createColorfulBrightnessBlender
+
+createColorfulBrightnessBlender(brightnessBlenderParam: BrightnessBlenderParam, options?: ColorfulBrightnessBlenderOptions): ColorfulBrightnessBlender
+
+创建[ColorfulBrightnessBlender](#colorfulbrightnessblender)实例，用于给组件添加基于保持色相的提亮压暗效果。该效果在对前景提亮或压暗时通过逐通道重建保持色相、并可增强饱和度，避免普通提亮压暗的去色问题。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名  | 类型                                              | 必填 | 说明                        |
+| ------ | ------------------------------------------------- | ---- | --------------------------- |
+| brightnessBlenderParam  | [BrightnessBlenderParam](#brightnessblenderparam) | 是   | 提亮压暗的常规参数，用于配置亮度映射、饱和度曲线等基础属性。|
+| options  | [ColorfulBrightnessBlenderOptions](#colorfulbrightnessblenderoptions) | 否   |  提亮压暗的增强参数，用于控制提亮压暗方向、色彩增强强度、可读性阈值及HDR开关。 |
+
+**返回值：**
+
+| 类型                                     | 说明                     |
+| ---------------------------------------- | ----------------------- |
+| [ColorfulBrightnessBlender](#colorfulbrightnessblender)  | 返回基于保持色相的提亮压暗混合器。 |
+
+**示例：**
+
+```ts
+import { uiEffect } from "@kit.ArkGraphics2D"
+
+let blender : uiEffect.ColorfulBrightnessBlender =
+  uiEffect.createColorfulBrightnessBlender({
+    cubicRate:1.0,
+    quadraticRate:1.0,
+    linearRate:1.0,
+    degree:1.0,
+    saturation:1.0,
+    positiveCoefficient:[2.3, 4.5, 2.0],
+    negativeCoefficient:[0.5, 2.0, 0.5],
+    fraction:0.0}, {
+    darkenWeight: 0.6,
+    vibrancyStrength: 0.5,
+    lumaDiff: 0.4,
+    hdrEnabled: true})
+
+@Entry
+@Component
+struct example {
+  build() {
+    RelativeContainer() {
+      Image($r("app.media.backgroundImage"))
+        .width("100%")
+        .height("100%")
+      
+      Text("Hello world")
+        .fontSize(100)
+        .fontColor(Color.Red)
+        .fontWeight(900)
+        .position({x: 50, y: 200})
+        .advancedBlendMode(blender)
+    }
+  }
+}
+```
+
 ## Filter
 
 Filter效果类，用于将模糊、边缘像素扩展、水波纹等效果添加到组件上。在调用Filter的方法前，需要先通过[createFilter](js-apis-uiEffect.md#uieffectcreatefilter)创建一个Filter实例。
@@ -1086,6 +1153,129 @@ struct BlurBubblesRiseExample {
 }
 ```
 
+### haloBloom
+
+haloBloom(tintColor: Color, bloomFactor: number, glowExposure: number): Filter
+
+对图像应用柔和光晕泛光效果，在明亮区域周围产生柔和的光晕。
+
+> **说明**
+>
+> 建议作为前景滤镜使用。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名        | 类型                  | 必填 | 说明                                                                                                                                                   |
+| ------------- | --------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| tintColor     | [Color](#color20)     | 是   | 指定应用于光晕泛光的颜色色调。该值无限制，各颜色分量取值推荐范围为[0.0, 1.0)。其中A分量无效，并无实际效果。当R、G、B三个分量均设置为0.0时，不应用色调，光晕泛光保留原始颜色。                                        |
+| bloomFactor   | number                | 是   | 控制光晕泛光的亮度。该值无限制，推荐范围为[0.0, 10.0]。设置为0.0时，光晕泛光无可见效果。                                                       |
+| glowExposure  | number                | 是   | 控制光晕泛光的扩散范围。该值无限制，推荐范围为[0.0, 10.0]。设置为0.0时，光晕泛光无可见效果。                                        |
+
+**返回值：**
+
+| 类型              | 说明                               |
+| ----------------- | ---------------------------------- |
+| [Filter](#filter) | 返回附加了光晕泛光效果的Filter。 |
+
+
+**示例：**
+
+```ts
+import { uiEffect } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct example {
+  @State tintColor: uiEffect.Color = { red: 1.0, green: 0.0, blue: 0.75, alpha: 1.0 };
+  @State bloomFactor: number = 0.5;
+  @State glowExposure: number = 0.5;
+
+  build() {
+    RelativeContainer() {
+      Stack() {
+        Image($r("app.media.startIcon"))
+          .width(200)
+          .height(200)
+          .foregroundFilter(uiEffect.createFilter().haloBloom(
+            this.tintColor,
+            this.bloomFactor,
+            this.glowExposure
+          ))
+      }
+    }
+  }
+}
+```
+
+### spinBlur
+
+spinBlur(center: common2D.Point, angle: number, samples: number): Filter
+
+对图像应用旋转模糊效果，在指定中心点周围产生旋转运动拖影。
+
+> **说明**
+>
+> 建议作为前景滤镜使用。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名     | 类型                                          | 必填 | 说明                                                                                                                                                   |
+| ---------- | --------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| center     | [common2D.Point](js-apis-graphics-common2D.md#point12) | 是   |  以归一化坐标指定模糊中心点。[0.0, 0.0]表示左上角，[0.5, 0.5]表示中心，[1.0, 1.0]表示右下角。                                 |
+| angle      | number                                        | 是   | 以弧度指定旋转模糊的角度范围。该值无限制，推荐范围为[-2π, 2π]。正值表示顺时针旋转，负值表示逆时针旋转。                          |
+| samples    | number                                        | 是   | 指定旋转模糊的采样数量。该值会被截断到[0, 128]范围内。值越大效果越平滑，但处理开销也越大，通常32即可满足需求。             |
+
+**返回值：**
+
+| 类型              | 说明                               |
+| ----------------- | ---------------------------------- |
+| [Filter](#filter) | 返回附加了旋转模糊效果的Filter。 |
+
+**示例：**
+
+```ts
+import { common2D, uiEffect } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct example {
+  @State center: common2D.Point = { x: 0.5, y: 0.5 };
+  @State angle: number = 1.5; // in radians
+  @State samples: number = 32;
+
+  build() {
+    RelativeContainer() {
+      Stack() {
+        Image($r("app.media.startIcon"))
+          .width(200)
+          .height(200)
+          .foregroundFilter(uiEffect.createFilter().spinBlur(
+            this.center,
+            this.angle,
+            this.samples
+          ))
+      }
+    }
+  }
+}
+```
+
 ## TileMode
 像素填充模式枚举。
 
@@ -1401,10 +1591,10 @@ distortionCollapse(distortionParam: DistortionParam): VisualEffect
 
 > **说明：**
 >
-> - 该视效支持控件范围外的绘制，但仍会受到父控件Clip的影响。
-> - 因包含前景Filter，未与[EffectComponent](../apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md)组合使用时不兼容组件自身及子组件的部分视效（如[BrightnessBlender](#brightnessblender)或[systemMaterial](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect-sys.md#systemmaterial23)）。
-> - 支持对系统材质进行扭曲，但是与[EffectComponent](../apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md)组合使用时，会导致系统材质的背景扭曲。
-> - 调用该接口时，会创建与形变后区域等大的离屏画布，再将当前组件（含子组件）的内容绘制到离屏画布上，再对画布上绘制的组件内容进行形变绘制。使用该实现方式时，如果不与[EffectComponent](../apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md)组合使用，将导致[systemMaterial](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect-sys.md#systemmaterial23)、[backgroundEffect](../apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundeffect19)、[brightness](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#brightness)或[blur](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#blur19)等需要截屏的接口无法截取到正确的画面。
+> - 形变效果允许在组件边界之外绘制，但渲染结果仍会受到父级组件裁剪属性的影响。
+> - 调用此接口会创建一个与形变后区域大小相同的离屏渲染画布。为避免显示异常或性能开销过大，不建议将组件形变至超出屏幕尺寸。
+> - 此接口包含前景Filter，当与[backgroundEffect](../apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundeffect19)、[brightness](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#brightness)、[blur](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#blur19)、[backgroundColorBlender](#backgroundcolorblender)等依赖背景截图的接口组合使用时，必须嵌套在[EffectComponent](../apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md)中，否则可能导致部分视觉效果失效或表现异常。
+> - 当子节点调用[systemMaterial](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)接口时，调用此接口的节点必须嵌套在[EffectComponent](../apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md)中，否则会导致系统材质丢失。但应注意的是，该调用方式会额外增加系统材质的背景扭曲。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1455,7 +1645,7 @@ struct Index {
 
 ## Blender<sup>13+</sup>
 
-type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender
+type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender | ColorfulBrightnessBlender
 
 混合器类型，用于描述混合效果。
 
@@ -1468,6 +1658,7 @@ type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender
 | [BrightnessBlender](#brightnessblender) | 具有提亮效果的混合器。 |
 | [HdrBrightnessBlender](#hdrbrightnessblender20)<sup>20+</sup> | 具有提亮效果的混合器（支持HDR）。 |
 | [HdrDarkenBlender](#hdrdarkenblender) | 具有压暗效果的混合器（支持HDR）。<br> **起始版本：** 26.0.0 |
+| [ColorfulBrightnessBlender](#colorfulbrightnessblender) | 具有提亮压暗效果的混合器（保持色相）。<br> **起始版本：** 26.1.0 |
 
 ## BrightnessBlender
 提亮混合器，用于将提亮效果添加到指定的组件上。在调用BrightnessBlender前，需要先通过[createBrightnessBlender](#uieffectcreatebrightnessblender)创建一个BrightnessBlender实例。
@@ -1512,6 +1703,23 @@ type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender
 | ----- | ------ | ---- | ---- | ---------------------------------------- |
 | hdrBrightnessRatio   | number | 否   | 否   | HDR的提亮倍数。<br>取值范围为[1.0, 设备当前支持最大提亮倍数]。<br>设置小于1.0的值时，按值为1.0处理；<br>当值等于1.0时，为组件原本亮度；<br>设置大于设备当前支持最大提亮倍数的值时，按值为设备当前支持最大提亮倍数处理，支持最大提亮倍数 = 设备最大亮度 / 设备默认亮度。<br>设备最大亮度通过hdc命令获取：hdc shell param get const.display.brightness.max <br>设备默认亮度通过hdc命令获取：hdc shell param get const.display.brightness.default |
 | grayscaleFactor | [number, number, number] | 否   | 是   | 将RGB颜色转换为灰度值。灰度转换公式的权重可随当前色域自动调整，不同色域下使用不同的权重计算方式；适用于sRGB等标准色域场景。当需要根据特定色域或视觉效果自定义灰度转换权重时传入此参数。三个分量均无边界限制。默认值为标准灰度权重[0.299, 0.587, 0.114]。 |
+
+## ColorfulBrightnessBlender
+
+基于保持色相的提亮压暗混合器，用于将该提亮压暗效果添加到指定的组件上。该效果在对前景提亮或压暗时通过逐通道重建保持色相、并可增强饱和度，避免普通提亮压暗的去色问题；同时依据亮度差阈值保证前景与背景的对比度（可读性）。在调用ColorfulBrightnessBlender前，需要先通过[createColorfulBrightnessBlender](#uieffectcreatecolorfulbrightnessblender)创建一个ColorfulBrightnessBlender实例。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+| 名称  | 类型   | 只读 | 可选 | 说明                                     |
+| ----- | ------ | ---- | ---- | ---------------------------------------- |
+| brightnessBlenderParam   | [BrightnessBlenderParam](#brightnessblenderparam) | 否   | 否   | 提亮压暗的常规参数，用于配置亮度映射、饱和度曲线等基础属性。 |
+| options | [ColorfulBrightnessBlenderOptions](#colorfulbrightnessblenderoptions) | 否   | 是   | 提亮压暗的增强参数，用于控制提亮压暗方向、色彩增强强度、可读性阈值及HDR开关。 |
 
 
 ## Color<sup>20+</sup>
@@ -1562,6 +1770,26 @@ RGBA格式的颜色描述。
 | negRgb        | [number, number, number] | 否   | 否   | 基于基准饱和度的负向调整系数。取值范围为[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大饱和度越低。 |
 | fraction      | number                   | 否   | 否   | 提亮效果混合比例。取值范围为[0, 1]，小于0时取值为0，大于1时取值为1，值越大，提亮效果越弱。 |
 
+## WarpedRingParam
+
+扭曲环遮罩参数，用于指定光环的半径、宽度、变化量、旋转角度、3D朝向和噪声演化。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+| 名称               | 类型   | 只读 | 可选 | 说明                                                                                                                           |
+| ------------------ | ------ | ---- | ---- | ------------------------------------------------------------------------------------------------------------------------------ |
+| radius             | number | 否   | 否   | 定义光环的半径，从光环中心到其厚度中点测量。该值无限制，推荐范围为[0.0, 1.0]。小于0.0的值无实际效果。设置为1.0时，光环的直径等于组件宽度和高度中的较小值。                           |
+| baseHalfWidth      | number | 否   | 否   | 定义光环厚度的一半，从中心线到任一侧边缘测量。该值无限制，推荐范围为[0.0, 0.5]。小于0.0的值无实际效果。             |
+| widthVariation     | number | 否   | 否   | 定义沿光环圆周方向的变化量。该值无限制，推荐范围为[0.0, 1.0]。小于0.0的值无实际效果。值越接近0.0，光环越接近圆形。 |
+| rotateAngle        | number | 否   | 否   |  定义光环绕其中心旋转的角度。该值无限制，推荐范围为[-2π, 2π]。正值表示顺时针旋转，负值表示逆时针旋转。与noiseEvolution配合使用时，可使噪声沿光环圆周流动。 |
+| rotate3DProgress   | number | 否   | 否   | 定义光环3D朝向循环的进度。输入值会对1.0取模，映射到[0.0, 1.0)范围内。值为0.0表示初始位置，值为1.0表示完成一次完整旋转后的位置。       |
+| noiseEvolution   | number | 否   | 否   | 定义噪声图案随时间的演化。该值无限制，持续动画化该值可产生动态噪声效果。       |
 
 ## Mask<sup>20+</sup>
 Mask效果类，作为[Filter](#filter)以及[VisualEffect](#visualeffect)的输入使用。不同类型的Mask提供不同的灰度分布模式，如波环遮罩、径向渐变、像素图遮罩等。
@@ -1989,6 +2217,286 @@ struct Index {
 }
 ```
 
+### createSweepRefractionMask
+
+static createSweepRefractionMask(param: SweepRefractionParam, options?: SweepRefractionMaskOptions): Mask
+
+创建一个模拟棱镜色散效果的扫光折射遮罩[Mask](#mask20)实例。该遮罩会在组件上生成一条带有颜色分离效果的扫光光带。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名  | 类型                                                        | 必填 | 说明                                                                                              |
+| ------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------- |
+| param   | [SweepRefractionParam](#sweeprefractionparam)            | 是   | 扫光折射遮罩的必选参数，包括遮罩半径、边缘厚度、折射强度、波纹宽度、扫光偏移和色散偏移量。 |
+| options | [SweepRefractionMaskOptions](#sweeprefractionmaskoptions) | 否   | 扫光折射的可选参数，用于配置棱镜形状、尺寸和扫光中心等属性。此参数不填时，使用SweepRefractionMaskOptions各字段的默认值。 |
+
+**返回值：**
+
+| 类型            | 说明                                   |
+| --------------- | -------------------------------------- |
+| [Mask](#mask20) | 返回具有扫光折射遮罩效果的Mask实例。 |
+
+**示例：**
+
+```ts
+import { uiEffect, common2D } from '@kit.ArkGraphics2D';
+
+// 构建色散颜色：RGB三通道各3个stop
+let chromaColors: uiEffect.Color[] = [
+  { red: 0.8, green: 0, blue: 0, alpha: 1 },
+  { red: 0.8, green: 0, blue: 0, alpha: 1 },
+  { red: 0.8, green: 0, blue: 0, alpha: 1 },
+  { red: 0, green: 0.8, blue: 0, alpha: 1 },
+  { red: 0, green: 0.8, blue: 0, alpha: 1 },
+  { red: 0, green: 0.8, blue: 0, alpha: 1 },
+  { red: 0, green: 0, blue: 0.8, alpha: 1 },
+  { red: 0, green: 0, blue: 0.8, alpha: 1 },
+  { red: 0, green: 0, blue: 0.8, alpha: 1 },
+];
+
+// 构建颜色位置：每个通道3个stop，分别对应环的起止和中间位置
+let chromaPositions: common2D.Point[] = [];
+for (let g = 0; g < 3; g++) {
+  chromaPositions.push({ x: 0, y: 0 });
+  chromaPositions.push({ x: 0.5, y: 0.5 });
+  chromaPositions.push({ x: 1, y: 1 });
+}
+
+// 创建扫光折射遮罩
+let mask = uiEffect.Mask.createSweepRefractionMask(
+  {
+    maskRadius: 0.0,
+    edgeThickness: 100.0,
+    refractAmount: 0.2,
+    rippleWidth: 0.5,
+    sweepOffset: 0.25,
+    chromaDelta: 0.1
+  },
+  {
+    shapeType: uiEffect.PrismShapeType.ROUNDED_RECT,
+    cornerRadius: 0.12,
+    prismWidth: 1.0,
+    prismHeight: 1.0,
+    sweepCenterX: 0.0,
+    sweepCenterY: 0.0
+  }
+);
+
+@Entry
+@Component
+struct SweepRefractionExample {
+  build() {
+    Column() {
+      Row() {}
+        .width('100%').height('100%')
+        .hitTestBehavior(HitTestMode.None)
+        .visualEffect(uiEffect.createEffect()
+          .colorGradient(chromaColors, chromaPositions,
+            [10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0],
+            mask))
+        .blendMode(BlendMode.SRC_OVER)
+    }
+    .width(342).height(137)
+    .borderRadius(16).clip(true)
+    .backgroundColor('#0A0A14')
+  }
+}
+```
+
+### createWarpedRingMask
+
+static createWarpedRingMask(ringParam: WarpedRingParam): Mask
+
+创建一个表示扭曲光环的[Mask](#mask20)实例。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名     | 类型                          | 必填 | 说明                                                                                                     |
+| ---------- | ----------------------------- | ---- | -------------------------------------------------------------------------------------------------------- |
+| ringParam  | [WarpedRingParam](#warpedringparam)     | 是   |  配置扭曲环遮罩参数，用于指定光环的半径、宽度、变化量、旋转、3D朝向和噪声演化，控制光环的几何形态和动态行为。                 |
+
+**返回值：**
+
+| 类型            | 说明                                   |
+| --------------- | -------------------------------------- |
+| [Mask](#mask20) | 返回带有扭曲光环效果的Mask实例。 |
+
+**示例：**
+
+```ts
+import { uiEffect } from '@kit.ArkGraphics2D';
+
+// params that control the shape of the Mask
+let param: uiEffect.WarpedRingParam = {
+  radius: 0.5,
+  baseHalfWidth: 0.02,
+  widthVariation: 0.4,
+  rotateAngle: 0.0,
+  rotate3DProgress: 0.0,
+  noiseEvolution: 1.0
+};
+
+// the Mask that defines the shape to be extracted from the color gradient or other effects
+let exampleMask: uiEffect.Mask = uiEffect.Mask.createWarpedRingMask(param);
+
+@Entry
+@Component
+struct example {
+  build() {
+    RelativeContainer() {
+      Stack() {
+        Column()
+          .width(200)
+          .height(200)
+          .visualEffect(
+            uiEffect.createEffect().colorGradient(
+              [ { red:1.0, green:0.5, blue:0.75, alpha:1.0 } ],
+              [ { x:1.0, y:0.5 } ],
+              [ 1.0 ],
+              exampleMask
+            )
+          )
+      }
+    }
+  }
+}
+```
+
+### createFractalGlassMask
+
+static createFractalGlassMask(glassNum: number, glassStrength: number, glassSoftness: number, isSymmetric: boolean, refractMask?: image.PixelMap): Mask
+
+创建一个分形玻璃蒙版。通过分形条纹对输入纹理进行周期性水平位移采样，产生类似玻璃折射的扭曲效果。当启用对称模式时，扭曲效果关于图像垂直轴对称。可以配合[displacementDistort](#displacementdistort20)使用，产生光栅折射的视觉效果。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名        | 类型                                                         | 必填 | 说明                                                                                              |
+| ------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------------------------------------------- |
+| glassNum      | number                                                       | 是   | 分形玻璃条纹的数量，单位为条。取值范围为[0, 100]，值为0时表示无分形玻璃条纹。超出该区间的值将被自动截断至最近边界值。              |
+| glassStrength | number                                                       | 是   | 分形玻璃的扭曲强度。取值范围为[0.0, 10.0]，值为0.0时表示无扭曲。超出该区间的值将被自动截断至最近边界值。 |
+| glassSoftness | number                                                       | 是   |  分形玻璃条纹的边缘柔和度。取值范围为[0.0, 0.01]，超出该区间的值将被自动截断至最近边界值。 |
+| isSymmetric   | boolean                                                      | 是   | 表示是否启用对称模式。true表示启用对称模式，扭曲效果关于图像垂直轴对称。false表示不启用对称模式，效果为不对称的自然扭曲。                                          |
+| refractMask   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 玻璃纹理贴图，用于生成条纹位移的源图像，控制分形效果的有效区域。此参数不填时，使用内置分形条纹生成位移。当传入此参数时，glassNum不再表示条纹数量，glassNum和glassStrength共同决定折射强度。                          |
+
+**返回值：**
+
+| 类型            | 说明                                   |
+| --------------- | -------------------------------------- |
+| [Mask](#mask20) | 返回带有分形玻璃蒙版效果的Mask实例。 |
+
+**示例：**
+
+```ts
+import { image } from '@kit.ImageKit';
+import { uiEffect } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct Index {
+  private getPixelMap(): image.PixelMap | undefined {
+    return this.getUIContext().getHostContext()?.resourceManager.getDrawableDescriptor($r('app.media.mask').id)?.getPixelMap();
+  }
+
+  private myFilter: uiEffect.Filter = uiEffect.createFilter()
+    .displacementDistort(uiEffect.Mask.createFractalGlassMask(20.0, 1.5, 0.005, true, this.getPixelMap()), [1.0, 0.0])
+
+  build() {
+    Stack() {
+      Image($r('app.media.BG_00000'))
+      Stack() {
+
+      }
+      .width('100%')
+      .height('100%')
+      .backgroundFilter(this.myFilter)
+    }
+  }
+}
+
+```
+
+### createBinocularMask
+
+static createBinocularMask(radiusX: number, radiusY: number, gap: number, softness: number): Mask
+
+创建一个双目蒙版，生成一个左右对称的双椭圆弧形蒙版形状。可以与[maskDispersion](#maskdispersion20)滤镜配合使用，用于控制色散效果的作用区域和方向。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名    | 类型   | 必填 | 说明                                                                                                    |
+| --------- | ------ | ---- | ------------------------------------------------------------------------------------------------------- |
+| radiusX   | number | 是   |  双目椭圆的半长轴。取值范围为[0.0, 1.0]，超出该区间的值将被自动截断至最近边界值。 |
+| radiusY   | number | 是   | 双目椭圆的半短轴。取值范围为[0.0, 1.0]，超出该区间的值将被自动截断至最近边界值。 |
+| gap       | number | 是   | 每个椭圆中心相对于原点的水平偏移。取值范围为[0.0, 1.0]，超出该区间的值将被自动截断至最近边界值。 |
+| softness  | number | 是   | 双目蒙版形状的边缘柔和度。取值范围为[0.0, 1.0]，超出该区间的值将被自动截断至最近边界值。 |
+
+**返回值：**
+
+| 类型            | 说明                                   |
+| --------------- | -------------------------------------- |
+| [Mask](#mask20) | 返回带有双目蒙版效果的Mask实例。       |
+
+
+**示例：**
+
+```ts
+import { uiEffect } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct Index {
+  private myFilter: uiEffect.Filter = uiEffect.createFilter()
+    .maskDispersion(uiEffect.Mask.createBinocularMask(0.28, 0.48, 0.52, 0.20), 1.0, [0.026, 0.0],
+      [0.0, 0.0],
+      [-0.026, 0.0])
+
+  build() {
+    Stack() {
+      Image($r('app.media.BG_00001'))
+      Stack() {
+
+      }
+      .width('100%')
+      .height('100%')
+      .backgroundFilter(this.myFilter)
+    }
+  }
+}
+
+```
+
 ## BrightnessBlenderParam
 BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包括灰度调整系数、饱和度和混合比例等参数。
 
@@ -2006,6 +2514,25 @@ BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包
 | positiveCoefficient | [number, number, number]   | 否   | 否   | 基于基准饱和度的RGB正向调整参数。<br>每个number的取值范围为[-20, 20]，超出边界会在实现时自动截断。 |
 | negativeCoefficient | [number, number, number]   | 否   | 否   | 基于基准饱和度的RGB负向调整参数。<br>每个number的取值范围为[-20, 20]，超出边界会在实现时自动截断。 |
 | fraction            | number                     | 否   | 否   | 提亮效果的混合比例。<br>取值范围为[0, 1]，超出边界会在实现时自动截断。  |
+
+## ColorfulBrightnessBlenderOptions
+
+基于保持色相的提亮压暗混合器的可选增强配置项，作为[createColorfulBrightnessBlender](#uieffectcreatecolorfulbrightnessblender)的options参数传入。它在常规参数[BrightnessBlenderParam](#brightnessblenderparam)之外，进一步控制提亮或压暗方向、色彩增强强度、与背景的对比度（可读性）以及HDR开关；当需要对前景的明暗方向、色彩鲜艳度、可读性对比或HDR行为做精细调整时使用，不传时各项采用默认值。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+| 名称                | 类型                        | 只读 | 可选 | 说明                                                              |
+| ------------------- | -------------------------- | ---- | ---- | ---------------------------------------------------------------- |
+| darkenWeight        | number                     | 否   | 是   | 前景压暗权重，控制提亮压暗的方向与强度。取0时提亮前景（前景倾向亮于背景以保证可读性）；取1时压暗前景（前景倾向暗于背景）；0到1之间为提亮与压暗的过渡。<br>默认值为1。取值范围为[0, 1]，超出边界会在实现时自动截断。 |
+| vibrancyStrength    | number                     | 否   | 是   | 色彩增强强度，控制对前景饱和度的增强程度。取0时不额外增强饱和度，前景保持原始饱和度；值越大饱和度增强越明显，取1时增强到最大、色彩最鲜艳。<br>默认值为0。取值范围为[0, 1]，超出边界会在实现时自动截断。 |
+| lumaDiff            | number                     | 否   | 是   | 保证可读性的亮度差阈值，用于约束前景与背景之间的亮度差以保持足够对比度。取0时不强制额外亮度差（可读性约束最弱）；值越大强制的亮度差越大、对比度越强；取1时强制最大亮度差。<br>默认值为0。取值范围为[0, 1]，超出边界会在实现时自动截断。 |
+| hdrEnabled          | boolean                    | 否   | 是   | 是否主动开启HDR。取true时主动开启HDR，结果亮度可超出SDR范围（大于1.0），在HDR设备上呈现更高亮度，适合HDR内容；取false时不主动开启HDR，结果限制在SDR范围（≤1.0），但当前景或背景本身为HDR时仍可能被动触发HDR。<br>默认值为true。 |
 
 ## HeatDistortionEffectParam
 
@@ -2044,3 +2571,62 @@ BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包
 | mixStrength | number | 否 | 否 | 原图与模糊图的混合强度。<br>取值范围为[0, 1]，超出边界会在实现时自动截断。<br>0对应原图，1对应模糊后的图像。 |
 | progress | number | 否 | 否 | 模糊气泡上升效果的动画进度。<br>取值范围为[0, 1]，超出边界会在实现时自动截断。<br>0对应动画开始，1对应动画结束。 |
 | maskImage | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 否 | 否 | 模糊气泡上升效果的遮罩图像，控制模糊气泡区域。<br>被遮罩的区域有模糊效果，未遮罩的区域无模糊效果。 |
+
+## SweepRefractionParam
+
+创建扫光折射遮罩的必选参数，包括遮罩半径、边缘厚度、折射强度、波纹宽度、扫光偏移和色散偏移量。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+| 名称          | 类型   | 只读 | 可选 | 说明                                                                                              |
+| ------------- | ------ | ---- | ---- | ------------------------------------------------------------------------------------------------- |
+| maskRadius    | number | 否   | 否   | 棱镜遮罩的归一化半径。取值范围为[0.0, 10.0]，超出该区间的值将被自动截断至最近边界值。当值为1.0时，表示棱镜遮罩的归一化半径等于组件宽度 |
+| edgeThickness | number | 否   | 否   | 棱镜的归一化边缘厚度。取值范围为[1.0, 1000.0]，超出该区间的值将被自动截断至最近边界值。 |
+| refractAmount | number | 否   | 否   | 棱镜的折射强度。取值范围为[0.0, 1.0]，超出该区间的值将被自动截断至最近边界值。 |
+| rippleWidth   | number | 否   | 否   | 扫光波纹的宽度。取值范围为[0.01, 1.0]，超出该区间的值将被自动截断至最近边界值。 |
+| sweepOffset   | number | 否   | 否   | 扫光的位置偏移。取值范围为[-2.0, 2.0]，超出该区间的值将被自动截断至最近边界值。 |
+| chromaDelta   | number | 否   | 否   | 色散偏移量。取值范围为[0.0, 0.5]，超出该区间的值将被自动截断至最近边界值。 |
+
+## PrismShapeType
+
+棱镜形状类型枚举，用于指定扫光折射遮罩中棱镜的几何形状。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+| 名称           | 值 | 说明                 |
+| -------------- | - | -------------------- |
+| ROUNDED_RECT   | 0 | 圆角矩形棱镜形状。   |
+| ELLIPSE        | 1 | 椭圆棱镜形状。       |
+
+## SweepRefractionMaskOptions
+
+创建扫光折射遮罩的可选参数，用于配置棱镜的形状、尺寸和扫光中心位置。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+| 名称          | 类型                                          | 只读 | 可选 | 说明                                                                                                                               |
+| ------------- | --------------------------------------------- | ---- | ---- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| shapeType     | [PrismShapeType](#prismshapetype)           | 否   | 是   | 棱镜的形状类型。默认值为ROUNDED_RECT。                                                                                             |
+| cornerRadius  | number                                        | 否   | 是   | 棱镜的归一化圆角半径，仅在shapeType为ROUNDED_RECT时生效。取值范围为[0.0, 1.0]，默认值为0.16，超出该区间的值将被自动截断至最近边界值。值为1.0时，表示棱镜的归一化圆角半径等于组件高度。 |
+| prismWidth    | number                                        | 否   | 是   | 棱镜的归一化宽度。取值范围为[0.01, 2.0]，默认值为1.0，超出该区间的值将被自动截断至最近边界值。值为1.0时，表示棱镜的归一化宽度等于组件宽度。                   |
+| prismHeight   | number                                        | 否   | 是   | 棱镜的归一化高度。取值范围为[0.01, 2.0]，默认值为1.0，超出该区间的值将被自动截断至最近边界值。值为1.0时，表示棱镜的归一化高度等于组件高度。                   |
+| sweepCenterX  | number                                        | 否   | 是   | 扫光中心的归一化X坐标。取值范围为[0.0, 1.0]，默认值为0.0，超出该区间的值将被自动截断至最近边界值。0.0表示左边缘。1.0表示右边缘。 |
+| sweepCenterY  | number                                        | 否   | 是   | 扫光中心的归一化Y坐标。取值范围为[0.0, 1.0]，默认值为0.0，超出该区间的值将被自动截断至最近边界值。0.0表示上边缘，1.0表示下边缘。                                    |

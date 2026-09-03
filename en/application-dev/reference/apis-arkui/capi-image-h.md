@@ -1,10 +1,12 @@
 # image.h
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=5864cce8635f28f77b4a95cd3e2b9b3e5bd231e2 translatedAt=2026-08-10T03:32:56.660Z pushedAt=2026-08-10T06:44:31.118Z -->
 
 ## Overview
 
@@ -52,10 +54,10 @@ Enumerates the image repeat patterns. This enumeration is used to control how an
 
 | Value| Description|
 | -- | -- |
-| ARKUI_IMAGE_REPEAT_NONE = 0 | The image is not repeatedly drawn.|
-| ARKUI_IMAGE_REPEAT_X = 1 | The image is repeatedly drawn only along the x-axis.|
-| ARKUI_IMAGE_REPEAT_Y = 2 | The image is repeatedly drawn only along the y-axis.|
-| ARKUI_IMAGE_REPEAT_XY = 3 | The image is repeatedly drawn along both axes.|
+| ARKUI_IMAGE_REPEAT_NONE = 0 | The image is not repeatedly drawn. The image is displayed once as is. |
+| ARKUI_IMAGE_REPEAT_X = 1 | The image is repeatedly drawn only along the x-axis to fill the display area horizontally. |
+| ARKUI_IMAGE_REPEAT_Y = 2 | The image is repeatedly drawn only along the y-axis to fill the display area vertically. |
+| ARKUI_IMAGE_REPEAT_XY = 3 | The image is repeatedly drawn along both axes to fill the entire display area. |
 
 ### ArkUI_ImageSize
 

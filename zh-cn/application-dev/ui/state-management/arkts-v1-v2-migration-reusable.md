@@ -104,7 +104,7 @@ ReusableV2Component().reuse({reuseId: () => 'groupA'})
 
 **迁移规则**
 
-组件复用V1中，当开发者打开复用组件的冻结开关freezeWhenInactive时，才会冻结复用池中的组件，详细规则参考[自定义组件冻结功能](./arkts-custom-components-freeze.md)。而在组件复用V2中，会自动开启冻结，详细规则参考[复用阶段的冻结](./arkts-new-reusableV2.md#复用阶段的冻结)。
+组件复用V1中，当开发者打开复用组件的冻结开关freezeWhenInactive时，才会冻结复用池中的组件，详细规则参考[自定义组件冻结](./arkts-custom-components-freeze.md)。而在组件复用V2中，会自动开启冻结，详细规则参考[复用阶段的冻结](./arkts-new-reusableV2.md#复用阶段的冻结)。
 
 
 ### LazyForEach->Repeat
@@ -172,7 +172,7 @@ struct Child {
 
   // 组件复用时回调，如无需对状态变量做额外修改可移除
   aboutToReuse() {
-    console.info('Recycle====Child==');
+    console.info('Reuse====Child==');
   }
 
   build() {
@@ -247,7 +247,6 @@ export struct CardViewV2 {
       // 显示当前列表项序号
       Text(`#${this.item}`)
         .fontSize(20)
-        .fontColor('#007dffa')
         .fontWeight(FontWeight.Bold)
 
       // 显示列表项内容
@@ -612,8 +611,6 @@ struct ReusableWaterFlowScene {
   @Local minSize: number = 50;
   // 流式布局子项最大尺寸
   @Local maxSize: number = 80;
-  @Local fontSize: number = 24;
-  @Local colors: number[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
   // 瀑布流滚动控制器
   scroller: Scroller = new Scroller();
   // 瀑布流数据源

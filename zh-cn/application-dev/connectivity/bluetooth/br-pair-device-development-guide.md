@@ -3,7 +3,7 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -96,7 +96,7 @@ try {
 ```
 
 ### 连接已配对设备的profile
-若应用配对完目标设备后，可以调用[connectAllowedProfiles](../../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectionconnectallowedprofiles16)，发起连接该设备支持的profile能力（只包括A2DP、HFP和HID）。若应用需要使用SPP连接，请参考[连接和传输数据](spp-development-guide.md)。
+应用配对完目标设备后，可以调用[connectAllowedProfiles](../../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectionconnectallowedprofiles16)，发起连接该设备支持的profile能力（包括A2DP、HFP、HID和PAN）。若应用需要使用SPP连接，请参考[连接和传输数据](spp-development-guide.md)。
 
 - 蓝牙子系统会在配对过程中查询和保存目标设备支持的所有profile能力。
 - 配对完成后，应用可以主动查询目标设备的profile能力，需调用[getRemoteProfileUuids](../../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectiongetremoteprofileuuids12)。若存在应用需要的能力，则可以在配对完成后30s内，发起连接目标设备的profile。

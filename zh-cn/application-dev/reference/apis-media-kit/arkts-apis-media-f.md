@@ -4,7 +4,7 @@
 <!--Owner: @chenkun613227-->
 <!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @zzs911-->
 
 > **说明：**
 >
@@ -584,7 +584,7 @@ createMediaSourceWithUrl(url: string, headers?: Record\<string, string>): MediaS
 
 ```ts
 let headers: Record<string, string> = {"User-Agent" : "User-Agent-Value"};
-let mediaSource : media.MediaSource = media.createMediaSourceWithUrl("http://xxx",  headers);
+let mediaSource : media.MediaSource = media.createMediaSourceWithUrl("http://xxx", headers);
 ```
 
 **示例2：**
@@ -594,7 +594,6 @@ let mediaSource : media.MediaSource = media.createMediaSourceWithUrl("http://xxx
 import { media } from "@kit.MediaKit";
 
 async function test(context: Context){
-    // this.getUIContext().getHostContext();
     let mgr = context?.resourceManager;
     if (!mgr) {
         return;
@@ -926,7 +925,7 @@ createMediaSourceWithDirectory(path: string): Promise\<MediaSource | undefined>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5411007  | The directory specified by the path parameter does not exist or unaccessed. |
+| 5411007  | The directory specified by the path parameter does not exist or inaccessible. |
 
 **示例：**
 

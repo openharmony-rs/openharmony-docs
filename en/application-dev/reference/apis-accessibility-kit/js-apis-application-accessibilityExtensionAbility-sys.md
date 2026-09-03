@@ -6,8 +6,11 @@
 <!--Designer: @z7o-->
 <!--Tester: @A_qqq-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=99f3a25c59b421571c24fff3c5fcfaa67986a20e translatedAt=2026-08-03T09:35:56.109Z pushedAt=2026-08-07T02:23:51.454Z -->
 
-AccessibilityExtensionAbility provides accessibility service capabilities based on the ExtensionAbility framework, including connecting to and disconnecting from accessibility services, and processing accessibility service events and accessibility key events.
+AccessibilityExtensionAbility provides accessibility extension capabilities based on the ExtensionAbility framework, including connecting to and disconnecting from accessibility services, processing accessibility events, and processing accessibility key events.
+
+**Lifecycle flow:** onAccessibilityConnect (connection callback, used for initialization) → onAccessibilityEventInfo/onAccessibilityKeyEvent (processing accessibility events and key events) → onAccessibilityDisconnect (disconnection callback, used for resource reclamation).
 
 > **NOTE**
 >
@@ -19,34 +22,41 @@ AccessibilityExtensionAbility provides accessibility service capabilities based 
 ```ts
 import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
 ```
+
 ## AccessibilityEventInfo
 
 Describes the accessibility event information.
 
-**System capability**: SystemCapability.BarrierFree.Accessibility.Core
+**System API**: This is a system API.
+
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ### Properties
 
 | Name                           | Type                                      | Read-Only  | Optional  | Description                                      |
 | ----------------------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
-| eventType                     | [AccessibilityEventType](./js-apis-accessibility-sys.md#accessibilityeventtype) | No   | No   | Event type.                                |
-| target                        | [AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext-sys.md#accessibilityelement12) | No   | Yes   | Target component where the event occurs.                              |
-| timeStamp                     | number                                   | No   | Yes   | Timestamp of the event, in milliseconds. The default value is **0**.                      |
-| extraInfo                     | string                                   | No   | Yes   | Added or deleted text content carried by the **TextArea**, **TextInput**, **SearchField**, or **RichEdit** component.|
+| eventType                     | [AccessibilityEventType](js-apis-accessibility-sys.md#accessibilityeventtype) | No    | No    | Accessibility event type. |
+| target                        | [AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext-sys.md#accessibilityelement) | No    | Yes    | Target component where the event occurs. When the accessibility event involves a specific component, this property contains the component information. |
+| timeStamp                     | number                                   | No    | Yes    | Event timestamp, in milliseconds. The default value is **0**. |
+| extraInfo                     | string                                   | No    | Yes    | For TextArea, TextInput, SearchField, and RichEdit components, when text content is added or deleted, this property indicates the specific text content added or deleted. The default value is an empty string. |
 
+## AccessibilityExtensionAbility
 
-## AccessibilityExtensionAbility.onAccessibilityConnect
+AccessibilityExtensionAbility provides accessibility extension capabilities based on the ExtensionAbility framework, including connecting to and disconnecting from accessibility services, processing accessibility events, and processing accessibility key events.
 
-onAccessibilityConnect(): void;
+### onAccessibilityConnect
 
-Called when the AccessibilityExtensionAbility is enabled and connected to the system service.
-In this API, you can have the service logic initialized. This API can be overridden as required. It returns the result to notify that the ability is successfully connected.
+onAccessibilityConnect(): void
+
+Callback invoked when the accessibility service is successfully connected.
+
+When the user enables AccessibilityExtensionAbility, the system service calls this API after the connection is established to notify the ability that it has been successfully connected. You can implement service logic initialization in this method. This API can be overridden as required.
 
 **System API**: This is a system API.
 
-**Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**Required permissions:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
-**System capability**: SystemCapability.BarrierFree.Accessibility.Core
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Error codes**
 
@@ -64,23 +74,24 @@ import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
 
 class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
   onAccessibilityConnect(): void {
-    console.log('AxExtensionAbility onAccessibilityConnect');
+    console.info('AxExtensionAbility onAccessibilityConnect');
   }
 }
 ```
 
-## AccessibilityExtensionAbility.onAccessibilityDisconnect
+### onAccessibilityDisconnect
 
-onAccessibilityDisconnect(): void;
+onAccessibilityDisconnect(): void
 
-Called when the AccessibilityExtensionAbility is successfully disconnected from the system service.
-In this API, you can implement the service logic of resource release and exit. This API can be overridden as required.
+Callback invoked when the accessibility service is successfully disconnected.
+
+When the user disables AccessibilityExtensionAbility, the system service calls this API after the disconnection is completed. You can implement resource reclamation and service exit operations in this method. This API can be overridden as required.
 
 **System API**: This is a system API.
 
-**Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**Required permissions:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
-**System capability**: SystemCapability.BarrierFree.Accessibility.Core
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Error codes**
 
@@ -98,28 +109,28 @@ import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
 
 class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
   onAccessibilityDisconnect(): void {
-    console.log('AxExtensionAbility onAccessibilityDisconnect');
+    console.info('AxExtensionAbility onAccessibilityDisconnect');
   }
 }
 ```
 
-## AccessibilityExtensionAbility.onAccessibilityEventInfo
+### onAccessibilityEventInfo
 
-onAccessibilityEventInfo(event: AccessibilityEventInfo): void;
+onAccessibilityEventInfo(event: AccessibilityEventInfo): void
 
-Called when a specified event occurs in an application. In this API, you can implement event-specific service logic. Generally, this API needs to be overridden.
+When an accessibility event occurs, the system distributes the event to the connected AccessibilityExtensionAbility and calls this API. You can process service logic based on the event information. This API usually needs to be overridden. For details about event types, see [AccessibilityEventType](js-apis-accessibility-sys.md#accessibilityeventtype).
 
 **System API**: This is a system API.
 
-**Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**Required permissions:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
-**System capability**: SystemCapability.BarrierFree.Accessibility.Core
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters**
 
 | Name  | Type                                      | Mandatory  | Description   |
 | ----- | ---------------------------------------- | ---- | ----- |
-| event | [AccessibilityEventInfo](#accessibilityeventinfo) | Yes   | Accessibility event information.|
+| event | [AccessibilityEventInfo](#accessibilityeventinfo) | Yes | Accessibility event information. |
 
 **Error codes**
 
@@ -137,25 +148,25 @@ import { AccessibilityExtensionAbility, AccessibilityEventInfo, AccessibilityEve
 
 class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
   onAccessibilityEventInfo(event: AccessibilityEventInfo): void {
-    console.log('AxExtensionAbility onAccessibilityEventInfo');
+    console.info('AxExtensionAbility onAccessibilityEventInfo');
     if (event.eventType === AccessibilityEventType.TYPE_CLICK) {
-      console.log('AxExtensionAbility onAccessibilityEventInfo: click');
+      console.info('AxExtensionAbility onAccessibilityEventInfo: click');
     }
   }
 }
 ```
 
-## AccessibilityExtensionAbility.onAccessibilityKeyEvent
+### onAccessibilityKeyEvent
 
-onAccessibilityKeyEvent(keyEvent: KeyEvent): boolean;
+onAccessibilityKeyEvent(keyEvent: KeyEvent): boolean
 
-Called when a physical key is pressed. In this API, you can determine whether to consume the event based on the service.
+Called when a key is pressed. You can determine whether to consume the event based on the service logic in this method. This API can be overridden as required.
 
 **System API**: This is a system API.
 
-**Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**Required permissions:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
-**System capability**: SystemCapability.BarrierFree.Accessibility.Core
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters**
 
@@ -164,9 +175,10 @@ Called when a physical key is pressed. In this API, you can determine whether to
 | keyEvent | [KeyEvent](../apis-input-kit/js-apis-keyevent.md#keyevent) | Yes   | Key event.|
 
 **Return value**
+
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| boolean | Returns **true** if the event is consumed and will not be transferred; returns **false** otherwise. |
+| boolean | The value **true** indicates that the event is consumed and will not be propagated.<br>The value **false** indicates that the event is not consumed and will continue to be propagated.|
 
 **Error codes**
 
@@ -185,9 +197,9 @@ import { KeyEvent, KeyCode } from '@kit.InputKit';
 
 class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
   onAccessibilityKeyEvent(keyEvent: KeyEvent): boolean {
-    console.log('AxExtensionAbility onAccessibilityKeyEvent');
+    console.info('AxExtensionAbility onAccessibilityKeyEvent');
     if (keyEvent.key.code === KeyCode.KEYCODE_VOLUME_UP) {
-      console.log('AxExtensionAbility onAccessibilityKeyEvent: intercept 16');
+      console.info('AxExtensionAbility onAccessibilityKeyEvent: intercept 16');
       return true;
     }
     return false;

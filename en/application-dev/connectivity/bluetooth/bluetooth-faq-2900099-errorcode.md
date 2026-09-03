@@ -3,10 +3,10 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @guoxiadi-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=d241559a07d666c58bda5c21e7d106eb754e4813 translatedAt=2026-07-28T06:44:03.958Z pushedAt=2026-07-28T07:10:46.758Z -->
+<!-- md-trans-meta sourceCommit=1cdd305776bcaacdd45f57f863b06eb9c8b2cb12 translatedAt=2026-08-19T07:05:03.952Z pushedAt=2026-08-19T07:09:18.253Z -->
 
 ## Symptom
 

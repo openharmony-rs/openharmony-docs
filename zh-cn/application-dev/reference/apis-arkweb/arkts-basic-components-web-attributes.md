@@ -1,7 +1,7 @@
 # 属性
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 示例效果请以真机运行为准。
 
@@ -1460,16 +1460,16 @@ struct WebComponent {
                         this.dialogController.close()
                     }
                     let popController: webview.WebviewController = new webview.WebviewController();
+                    // 将新窗口对应WebviewController返回给Web内核。
+                    // 若不调用event.handler.setWebController接口，会造成渲染进程阻塞。
+                    // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
+                    event.handler.setWebController(popController);
                     this.dialogController = new CustomDialogController({
                         builder: NewWebViewComp({ webviewController1: popController }),
                         // isModal设置为false，防止新窗口被销毁而无法触发onActivateContent回调
                         isModal: false
                     })
                     this.dialogController.open();
-                    // 将新窗口对应WebviewController返回给Web内核。
-                    // 若不调用event.handler.setWebController接口，会造成渲染进程阻塞。
-                    // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
-                    event.handler.setWebController(popController);
                 })
         }
     }
@@ -3288,7 +3288,7 @@ blurOnKeyboardHideMode(mode: BlurOnKeyboardHideMode)
 
 enableFollowSystemFontWeight(follow: boolean)
 
-设置Web组件是否开启字重跟随系统设置变化。当属性没有显式调用时，Web组件默认开启字重跟随系统设置变化。
+设置Web组件是否开启字重跟随系统设置变化。当属性没有显式调用时，Web组件默认字重不跟随系统设置变化。
 
 > **说明：**
 >
@@ -3300,7 +3300,7 @@ enableFollowSystemFontWeight(follow: boolean)
 
 | 参数名       | 类型                             | 必填 | 说明                                |
 | ------------ | ------------------------------- | ---- | ----------------------------------- |
-| follow | boolean | 是    | 设置Web组件是否开启字重跟随系统设置变化。<br>true表示字重跟随系统设置中的字体粗细变化，系统设置改变时字重跟随变化。false表示字重不再跟随系统设置中的字体粗细变化，系统设置改变时维持当前字重不变。<br>传入undefined或null时为true。 |
+| follow | boolean | 是    | 设置Web组件是否开启字重跟随系统设置变化。<br>true表示字重跟随系统设置中的字体粗细变化，系统设置改变时字重跟随变化。false表示字重不再跟随系统设置中的字体粗细变化，系统设置改变时维持当前字重不变。<br>传入undefined或null时为false。 |
 
 **示例：**
 
@@ -3366,6 +3366,9 @@ ArkWeb内核在解析HTML文档结构时采取分段解析策略，旨在避免�
 enableWebAVSession(enabled: boolean)
 
 设置是否支持应用对接到播控中心。当属性没有显式设置时，默认支持应用对接到播控中心。
+
+<!--RP2-->
+<!--RP2End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

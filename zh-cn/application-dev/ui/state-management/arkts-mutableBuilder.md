@@ -53,11 +53,11 @@ struct Index {
 
 ## 接口说明
 
-mutableBuilder是一个模板函数，返回一个[MutableBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-mutableBuilder.md#mutablebuilder-2)对象。相比[WrappedBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder)，MutableBuilder可以实现动态切换全局@Builder。
+mutableBuilder是一个模板函数，返回一个[MutableBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-mutableBuilder.md#mutablebuilder-1)对象。相比[WrappedBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder)，MutableBuilder可以实现动态切换全局@Builder。
 ```ts
 declare function mutableBuilder<Args extends Object[]>(builder: BuilderCallback): MutableBuilder<Args>;
 ```
-同时`MutableBuilder`对象是一个模板类，继承自[WrappedBuilder](./arkts-wrapBuilder.md#接口说明)。
+同时`MutableBuilder`是一个模板类，继承自[WrappedBuilder](./arkts-wrapBuilder.md#接口说明)。
 
 ```ts
 declare class MutableBuilder<Args extends Object[]> extends WrappedBuilder<Args> {
@@ -146,9 +146,9 @@ let builderArr: MutableBuilder<[string, number]>[] = [mutableBuilder(MyBuilder)]
 
    ```ts
    // 在实例化MutableBuilder对象时，建议使用mutableBuilder(builderName)方法
-   @State switchingBuilder: MutableBuilder<[MutableBinding]> = mutableBuilder(textBuilder);
+   @State switchingBuilder: MutableBuilder<[MutableBinding<string>]> = mutableBuilder(textBuilder);
    // 不支持将MutableBuilder类型的变量赋值为undefined或null，会导致运行时crash
-   @State switchingBuilder: MutableBuilder<[MutableBinding]> | undefined | null = null; 
+   @State switchingBuilder: MutableBuilder<[MutableBinding<string>]> | undefined | null = null; 
    Button(`MutableBuilder`).onClick(() => {
      // 不建议将wrapBuilder创建的对象赋值给MutableBuilder类型的对象，赋值后会将textBuilder动态切换成buttonBuilder
      this.switchingBuilder = wrapBuilder(buttonBuilder);  
@@ -159,7 +159,7 @@ let builderArr: MutableBuilder<[string, number]>[] = [mutableBuilder(MyBuilder)]
 
    ```ts
    // 在实例化MutableBuilder对象时，建议使用mutableBuilder(builderName)方法
-   @State switchingBuilder: MutableBuilder<[MutableBinding]> = mutableBuilder(textBuilder);
+   @State switchingBuilder: MutableBuilder<[MutableBinding<string>]> = mutableBuilder(textBuilder);
    
    Button(`MutableBuilder`).onClick(() => {
       // 赋值会将textBuilder动态切换成buttonBuilder
@@ -244,7 +244,7 @@ struct Index {
         ForEach(this.arr, (item: number) => {
           ListItem() {
             Text(`${item}`)
-            .width('100%')
+              .width('100%')
               .height(100)
               .fontSize(16)
               .textAlign(TextAlign.Center)

@@ -50,6 +50,12 @@
 
    - [使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)，可调用[OH_AudioRenderer_SetSilentModeAndMixWithOthers](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_setsilentmodeandmixwithothers)函数。
 
+   当应用A先播放媒体流，应用B再启动媒体静音流但不设置上述并发模式时，应用B会打断应用A的媒体音频播放，影响用户体验。针对此场景，从API版本26.0.0开始有以下优化：
+
+   当应用A和应用B播放[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)为Music、Movie、AudioBook类型的媒体流时，应用B不会立刻打断应用A，是否打断根据以下情况判断：
+   - 情况1：当应用B全程静音时，不会打断应用A播放。
+   - 情况2：当应用B媒体流改变成非静音数据且音量大于0时，才会打断应用A播放。
+
 ### 释放音频焦点
 
 **当应用结束播放或录制音频时，系统会自动为相应的音频流释放音频焦点。**

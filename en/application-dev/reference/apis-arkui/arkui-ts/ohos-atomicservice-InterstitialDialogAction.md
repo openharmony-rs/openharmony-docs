@@ -6,8 +6,9 @@
 <!--Designer: @autojuan-->
 <!--Tester: @tinygreyy-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=34499ca97f5c7f70d4f5905fec380d52cfd57e11 translatedAt=2026-08-28T01:35:43.113Z pushedAt=2026-08-28T07:44:51.726Z -->
 
-The **InterstitialDialogAction** component is a dialog box used in atomic services to temporarily display information that requires user attention or actions to be taken while maintaining the current context. Users can trigger corresponding actions by clicking different areas of the dialog box.
+The **InterstitialDialogAction** component is a dialog box used in atomic services to temporarily display information that requires user attention or actions to be taken while maintaining the current context. Users can trigger corresponding callback actions by clicking different areas of the dialog box.
 
 > **NOTE**
 >
@@ -26,6 +27,10 @@ Not supported
 ## Attributes
 
 The [universal attributes](ts-component-general-attributes.md) are not supported.
+
+## Events
+
+The [universal events](ts-component-general-events.md) are not supported.
 
 ## InterstitialDialogAction
 
@@ -69,34 +74,34 @@ Closes the dialog box.
 
 ## DialogOptions
 
+Defines the attributes specific to the dialog box and custom click actions for the user.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-Defines the attributes specific to the dialog box and custom click actions for the user.
 
 | Name| Type| Read-Only| Optional| Description|
 | - | - | - | - | - |
 | uiContext | [UIContext](../arkts-apis-uicontext-uicontext.md) | No| No| UI context.|
-| bottomOffsetType | [BottomOffset](#bottomoffset) | No| Yes| Bottom offset type of the dialog box. Default value: **[BottomOffset](#bottomoffset).OFFSET_FOR_BAR**.|
-| title | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Title of the dialog box. The default value is an empty string.|
+| bottomOffsetType | [BottomOffset](#bottomoffset) | No | Yes | Bottom offset type of the dialog box. Select a value based on whether a menu bar exists. Default value: [BottomOffset](#bottomoffset).OFFSET_FOR_NONE. |
+| title | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Main title of the dialog box. The default value is an empty string. |
 | subtitle | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Subtitle of the dialog box. The default value is an empty string.|
-| titleColor | [ResourceStr](ts-types.md#resourcestr) \| [Color](ts-appendix-enums.md#color) | No| Yes| Font color of the dialog box title. <br>Default value: **$r('sys.color.ohos_id_color_text_primary_contrary')**.|
+| titleColor | [ResourceStr](ts-types.md#resourcestr) \| [Color](ts-appendix-enums.md#color) | No | Yes | Font color of the main title of the dialog box. <br>Default value: **$r('sys.color.ohos_id_color_text_primary_contrary')**. |
 | subtitleColor | [ResourceStr](ts-types.md#resourcestr) \| [Color](ts-appendix-enums.md#color) | No| Yes| Font color of the dialog box subtitle. <br>Default value: **$r('sys.color.ohos_id_color_text_secondary_contrary')**.|
 | backgroundImage | [Resource](ts-types.md#resource) | No| Yes| Background image of the dialog box. The default background color is a solid color background with the color value **#EBEEF5**.|
 | foregroundImage | [Resource](ts-types.md#resource) | No| Yes| Foreground image of the dialog box. The default value is empty, meaning no foreground image is displayed.|
 | iconStyle | [IconStyle](#iconstyle) | No| Yes| Style of the close button icon (light or dark).<br>Default value: [IconStyle](#iconstyle).LIGHT|
-| titlePosition | [TitlePosition](#titleposition) | No| Yes| Vertical position of the title relative to the subtitle in the dialog box.<br>Default value: [TitlePosition](#titleposition).TOP|
-| onDialogClick | Callback\<void\> | No| Yes| Custom action triggered by clicking anywhere on the dialog box. The default value is to close the dialog box only.|
-| onDialogClose | Callback\<void\> | No| Yes| Custom action triggered by clicking the close button. The default value is to close the dialog box only.|
+| titlePosition | [TitlePosition](#titleposition) | No | Yes | Position of the main title in the dialog box, above or below the subtitle. This parameter takes effect only when the subtitle attribute is set.<br>Default value: [TitlePosition](#titleposition).TOP |
+| onDialogClick | Callback\<void\> | No | Yes | Custom action triggered by tapping anywhere in the dialog box. By default, the **closeDialog** method is called to close the dialog box.<br>Note: Tapping the close button area triggers only **onDialogClose**, not this callback. To trigger both, explicitly call the logic of this callback in **onDialogClose**. |
+| onDialogClose | Callback\<void\> | No | Yes | Custom action triggered by tapping the close button. By default, the **closeDialog** method is called to close the dialog box. |
 
 ## IconStyle
+
+Sets the color tone of the close button. Defaults to light color.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-Sets the color style of the close button. By default, the close button is set to light color.
 
 | Name| Value| Description|
 | - | - | - |
@@ -105,32 +110,29 @@ Sets the color style of the close button. By default, the close button is set to
 
 ## TitlePosition
 
+Sets the vertical position of the title relative to the subtitle in the dialog box. By default, the title is above the subtitle.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-Defines the vertical position of the title relative to the subtitle in the dialog box. By default, the title is above the subtitle.
 
 | Name| Value| Description|
 | - | - | - |
 | TOP | 0 | The title is above the subtitle.<br>Default value.|
-| BOTTOM | 1 | The title is below the subtitle.|
+| BOTTOM | 1 | The title is below the subtitle. |
 
 ## BottomOffset
+
+Sets the distance between the popup and the bottom in different scenario modes, based on the presence or absence of a menu bar, with the default being the distance when there is no menu bar.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-Defines the distance between the popup and the bottom in different scenario modes, based on the presence or absence of a menu bar, with the default being the distance when there is no menu bar.
-
 | Name| Value| Description|
 | - | - | - |
-| OFFSET_FOR_BAR | 0 | Distance from the bottom of the window when there is a menu bar.<br>Default value. It sets the dialog box 88 vp away from the bottom of the window.|
-| OFFSET_FOR_NONE | 1 | Distance from the bottom of the window when there is no menu bar.<br>It sets the dialog box 44 vp away from the bottom of the window.|
-
-## Events
-The [universal events](ts-component-general-events.md) are not supported.
+| OFFSET_FOR_BAR | 0 | Distance from the bottom of the window when there is a menu bar.<br>It sets the dialog box 88 vp away from the bottom of the window. |
+| OFFSET_FOR_NONE | 1 | Distance from the bottom of the window when there is no menu bar.<br>Default value. It sets the dialog box 44 vp away from the bottom of the window. |
 
 ## Examples
 
@@ -139,6 +141,7 @@ The [universal events](ts-component-general-events.md) are not supported.
 In this example, color values are assigned to the title and subtitle using two different parameter types; the close button is set to dark color; the title is set above the subtitle; and the distance type is set to the distance used when there is no menu bar.
 
 <!--code_no_check-->
+
 ```ts
 // ../entryability/EntryAbility
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -170,7 +173,7 @@ export default class EntryAbility extends UIAbility {
 
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        hilog.error(0x0000, 'testTag', `Failed to load the content, code: ${err.code}, message: ${err.message}`);
         return;
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content.');
@@ -180,24 +183,24 @@ export default class EntryAbility extends UIAbility {
     windowStage.getMainWindow((err: BusinessError, data) => {
       let errCode: number = err.code;
       if (errCode) {
-        console.error('Failed to obtain the main window. Cause: ' + JSON.stringify(err));
+        console.error(`Failed to obtain the main window, code: ${err.code}, message: ${err.message}`);
         return;
       }
       windowClass = data;
       console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
       dialogUIContext = windowClass.getUIContext();
-    })
+    });
 
     // Obtain the main window.
     windowStage.getMainWindow((err, data) => {
       if (err.code) {
-        console.error('Failed to obtain the main window. Cause: ' + JSON.stringify(err));
+        console.error(`Failed to obtain the main window, code: ${err.code}, message: ${err.message}`);
         return;
       }
       windowClass = data;
       console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
-      // Set the window to full screen.
-      windowClass.setWindowLayoutFullScreen(false)
+      // Set the window to non-full-screen.
+      windowClass.setWindowLayoutFullScreen(false);
     })
   }
 
@@ -217,7 +220,9 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
 <!--code_no_check-->
+
 ```ts
 // Index.ets
 import { getDialogUIContext } from '../entryability/EntryAbility';
@@ -229,15 +234,15 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Text("show dialog")
+        Text('show dialog')
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
             let ctx: UIContext | null = getDialogUIContext();
             let interstitialDialogAction: InterstitialDialogAction = new InterstitialDialogAction({
               uiContext: ctx as UIContext,
-              title: "Title",
-              subtitle: "Subtitle",
+              title: 'Title',
+              subtitle: 'Subtitle',
               titleColor: 'rgb(255, 192, 0)',
               subtitleColor: Color.Red,
               backgroundImage: $r('app.media.testBackgroundImg'),
@@ -266,6 +271,7 @@ struct Index {
 In this example, color values are assigned to the title and subtitle using two different parameter types; the close button is set to light color; the title is set below the subtitle; and the distance type is set to the distance used when there is a menu bar.
 
 <!--code_no_check-->
+
 ```ts
 // ../entryability/EntryAbility
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -297,7 +303,7 @@ export default class EntryAbility extends UIAbility {
 
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        hilog.error(0x0000, 'testTag', `Failed to load the content, code: ${err.code}, message: ${err.message}`);
         return;
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content.');
@@ -307,24 +313,24 @@ export default class EntryAbility extends UIAbility {
     windowStage.getMainWindow((err: BusinessError, data) => {
       let errCode: number = err.code;
       if (errCode) {
-        console.error('Failed to obtain the main window. Cause: ' + JSON.stringify(err));
+        console.error(`Failed to obtain the main window, code: ${err.code}, message: ${err.message}`);
         return;
       }
       windowClass = data;
       console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
       dialogUIContext = windowClass.getUIContext();
-    })
+    });
 
     // Obtain the main window.
     windowStage.getMainWindow((err, data) => {
       if (err.code) {
-        console.error('Failed to obtain the main window. Cause: ' + JSON.stringify(err));
+        console.error(`Failed to obtain the main window, code: ${err.code}, message: ${err.message}`);
         return;
       }
       windowClass = data;
       console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
-      // Set the window to full screen.
-      windowClass.setWindowLayoutFullScreen(false)
+      // Set the window to non-full-screen.
+      windowClass.setWindowLayoutFullScreen(false);
     })
   }
 
@@ -344,7 +350,9 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
 <!--code_no_check-->
+
 ```ts
 // Index.ets
 import { getDialogUIContext } from '../entryability/EntryAbility';
@@ -356,15 +364,15 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Text("show dialog")
+        Text('show dialog')
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
             let ctx: UIContext | null = getDialogUIContext();
             let interstitialDialogAction: InterstitialDialogAction = new InterstitialDialogAction({
               uiContext: ctx as UIContext,
-              title: "Title",
-              subtitle: "Subtitle",
+              title: 'Title',
+              subtitle: 'Subtitle',
               titleColor: 'rgb(255, 192, 0)',
               subtitleColor: Color.Red,
               backgroundImage: $r('app.media.testBackgroundImg'),

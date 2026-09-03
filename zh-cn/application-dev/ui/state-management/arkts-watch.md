@@ -191,7 +191,7 @@ struct BasketViewer {
 
   updateTotal(): number {
     let total = this.shopBasket.reduce((sum, i) => sum + i.price, 0);
-    // 超过100欧元可享受折扣
+    // 满100欧元可享受折扣
     if (total >= 100) {
       total = 0.9 * total;
     }

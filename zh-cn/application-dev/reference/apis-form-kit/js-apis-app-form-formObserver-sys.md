@@ -19,7 +19,7 @@ formObserver模块提供了卡片监听方相关接口的能力，包括对同�
 import { formObserver } from '@kit.FormKit';
 ```
 
-## on('formAdd')
+## formObserver.on('formAdd')
 
 on(type: 'formAdd', observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -57,7 +57,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('formAdd', callback);
 ```
 
-## on('formAdd')
+## formObserver.on('formAdd')
 
  on(type: 'formAdd', hostBundleName: string, observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -98,7 +98,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('formAdd', bundleName, callback);
 ```
 
-## off('formAdd')
+## formObserver.off('formAdd')
 
 off(type: 'formAdd', hostBundleName?: string, observerCallback?: Callback<formInfo.RunningFormInfo>): void;
 
@@ -144,7 +144,7 @@ formObserver.off('formAdd', bundleName, callback);
 > on('formAdd', bundleName, callback)与off('formAdd', bundleName, callback)相对应；
 > 订阅（on）只能由自己对应的取消订阅接口（off）取消。
 
-## on('formRemove')
+## formObserver.on('formRemove')
 
  on(type: 'formRemove', observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -182,7 +182,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('formRemove', callback);
 ```
 
-## on('formRemove')
+## formObserver.on('formRemove')
 
  on(type: 'formRemove', hostBundleName: string, observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -223,7 +223,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('formRemove', bundleName, callback);
 ```
 
-## off('formRemove')
+## formObserver.off('formRemove')
 
 off(type: 'formRemove', hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -269,13 +269,13 @@ formObserver.off('formRemove', bundleName, callback);
 > on('formRemove', bundleName, callback)与off('formRemove', bundleName, callback)相对应；
 > 订阅（on）只能由自己对应的取消订阅接口（off）取消。
 
-## on('notifyVisible')
+## formObserver.on('notifyVisible')
 
  on(type: 'notifyVisible', observerCallback: Callback&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;): void
 
 订阅通知卡片可见的事件。使用callback异步回调。
 
-​触发通知卡片可见场景为：调用[notifyVisibleForms](js-apis-app-form-formHost-sys.md#notifyvisibleforms)接口通知对应卡片可见性变更为可见状态。
+​触发通知卡片可见场景为：调用[notifyVisibleForms](js-apis-app-form-formHost-sys.md#formhostnotifyvisibleforms)接口通知对应卡片可见性变更为可见状态。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
 
@@ -311,13 +311,13 @@ let callback = (data: formInfo.RunningFormInfo[]) => {
 formObserver.on('notifyVisible', callback);
 ```
 
-## on('notifyVisible')
+## formObserver.on('notifyVisible')
 
  on(type: 'notifyVisible', hostBundleName: string, observerCallback: Callback&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;): void
 
 订阅通知卡片可见的事件。使用callback异步回调。
 
-​触发通知卡片可见场景为：调用[notifyVisibleForms](js-apis-app-form-formHost-sys.md#notifyvisibleforms)接口通知对应卡片可见性变更为可见状态。
+​触发通知卡片可见场景为：调用[notifyVisibleForms](js-apis-app-form-formHost-sys.md#formhostnotifyvisibleforms)接口通知对应卡片可见性变更为可见状态。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
 
@@ -357,7 +357,7 @@ let callback = (data: formInfo.RunningFormInfo[]) => {
 formObserver.on('notifyVisible', bundleName, callback);
 ```
 
-## off('notifyVisible')
+## formObserver.off('notifyVisible')
 
  off(type: 'notifyVisible', hostBundleName?: string, observerCallback?: Callback&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;): void
 
@@ -406,13 +406,13 @@ formObserver.off('notifyVisible', bundleName, callback);
 > on('notifyVisible', bundleName, callback)与off('notifyVisible', bundleName, callback)相对应；
 > 订阅（on）只能由自己对应的取消订阅接口（off）取消。
 
-## on('notifyInvisible')
+## formObserver.on('notifyInvisible')
 
  on(type: 'notifyInvisible', observerCallback: Callback&lt;Array&lt;formInfo.RunningFormInfo&gt;>): void
 
 订阅通知卡片不可见的事件。使用callback异步回调。
 
-​触发通知卡片不可见场景为：调用[notifyInvisibleForms](js-apis-app-form-formHost-sys.md#notifyinvisibleforms)接口通知对应卡片可见性变更为不可见状态。
+​触发通知卡片不可见场景为：调用[notifyInvisibleForms](js-apis-app-form-formHost-sys.md#formhostnotifyinvisibleforms)接口通知对应卡片可见性变更为不可见状态。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
 
@@ -449,13 +449,13 @@ formObserver.on('notifyInvisible', callback);
 ```
 
 
-## on('notifyInvisible')
+## formObserver.on('notifyInvisible')
 
  on(type: 'notifyInvisible', hostBundleName: string, observerCallback: Callback&lt;Array&lt;formInfo.RunningFormInfo&gt;>): void
 
 订阅通知卡片不可见的事件。使用callback异步回调。
 
-​触发通知卡片不可见场景为：调用[notifyInvisibleForms](js-apis-app-form-formHost-sys.md#notifyinvisibleforms)接口通知对应卡片可见性变更为不可见状态。
+​触发通知卡片不可见场景为：调用[notifyInvisibleForms](js-apis-app-form-formHost-sys.md#formhostnotifyinvisibleforms)接口通知对应卡片可见性变更为不可见状态。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
 
@@ -494,7 +494,7 @@ let callback = (data: formInfo.RunningFormInfo[]) => {
 formObserver.on('notifyInvisible', bundleName, callback);
 ```
 
-## off('notifyInvisible')
+## formObserver.off('notifyInvisible')
 
  off(type: 'notifyInvisible', hostBundleName?: string, observerCallback?: Callback&lt;Array&lt;formInfo.RunningFormInfo>&gt;): void
 
@@ -544,7 +544,7 @@ formObserver.off('notifyInvisible', bundleName, callback);
 > 订阅（on）只能由自己对应的取消订阅接口（off）取消。
 
 
-## getRunningFormInfos
+## formObserver.getRunningFormInfos
 
 getRunningFormInfos(callback: AsyncCallback&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;, hostBundleName?: string): void
 
@@ -594,7 +594,7 @@ try {
 }
 ```
 
-## getRunningFormInfos<sup>11+</sup>
+## formObserver.getRunningFormInfos<sup>11+</sup>
 
 getRunningFormInfos(callback: AsyncCallback&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;, isUnusedIncluded: boolean, hostBundleName?: string): void
 
@@ -645,7 +645,7 @@ try {
 }
 ```
 
-## getRunningFormInfos
+## formObserver.getRunningFormInfos
 
 getRunningFormInfos(hostBundleName?: string):  Promise&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;
 
@@ -696,7 +696,7 @@ try {
 }
 ```
 
-## getRunningFormInfos<sup>11+</sup>
+## formObserver.getRunningFormInfos<sup>11+</sup>
 
 getRunningFormInfos(isUnusedIncluded: boolean, hostBundleName?: string):  Promise&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;
 
@@ -748,7 +748,7 @@ try {
 }
 ```
 
-## getRunningFormInfosByFilter
+## formObserver.getRunningFormInfosByFilter
 
 getRunningFormInfosByFilter(formProviderFilter: formInfo.FormProviderFilter): Promise&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;
 
@@ -809,7 +809,7 @@ try {
 }
 ```
 
-## getRunningFormInfosByFilter
+## formObserver.getRunningFormInfosByFilter
 
 getRunningFormInfosByFilter(formProviderFilter: formInfo.FormProviderFilter, callback: AsyncCallback&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;): void
 
@@ -869,7 +869,7 @@ try {
 }
 ```
 
-## getRunningFormInfoById
+## formObserver.getRunningFormInfoById
 
 getRunningFormInfoById(formId: string): Promise&lt;formInfo.RunningFormInfo&gt;
 
@@ -924,7 +924,7 @@ try {
 }
 ```
 
-## getRunningFormInfoById<sup>11+</sup>
+## formObserver.getRunningFormInfoById<sup>11+</sup>
 
 getRunningFormInfoById(formId: string, isUnusedIncluded: boolean): Promise&lt;formInfo.RunningFormInfo&gt;
 
@@ -980,7 +980,7 @@ try {
 }
 ```
 
-## getRunningFormInfoById
+## formObserver.getRunningFormInfoById
 
 getRunningFormInfoById(formId: string, callback: AsyncCallback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -1032,7 +1032,7 @@ try {
 }
 ```
 
-## getRunningFormInfoById<sup>11+</sup>
+## formObserver.getRunningFormInfoById<sup>11+</sup>
 
 getRunningFormInfoById(formId: string, isUnusedIncluded: boolean, callback: AsyncCallback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -1085,7 +1085,7 @@ try {
 }
 ```
 
-## on('router')<sup>11+</sup>
+## formObserver.on('router')<sup>11+</sup>
 
  on(type: 'router', observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -1122,7 +1122,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('router', callback);
 ```
 
-## on('router')<sup>11+</sup>
+## formObserver.on('router')<sup>11+</sup>
 
  on(type: 'router', hostBundleName: string, observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -1161,7 +1161,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('router', hostBundleName, callback);
 ```
 
-## off('router')<sup>11+</sup>
+## formObserver.off('router')<sup>11+</sup>
 
  off(type: 'router', hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -1200,7 +1200,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.off('router', hostBundleName, callback);
 ```
 
-## on('message')<sup>11+</sup>
+## formObserver.on('message')<sup>11+</sup>
 
  on(type: 'message', observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -1237,7 +1237,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('message', callback);
 ```
 
-## on('message')<sup>11+</sup>
+## formObserver.on('message')<sup>11+</sup>
 
  on(type: 'message', hostBundleName: string, observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -1276,7 +1276,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('message', hostBundleName, callback);
 ```
 
-## off('message')<sup>11+</sup>
+## formObserver.off('message')<sup>11+</sup>
 
  off(type: 'message', hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -1315,7 +1315,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.off('message', hostBundleName, callback);
 ```
 
-## on('call')<sup>11+</sup>
+## formObserver.on('call')<sup>11+</sup>
 
  on(type: 'call', observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -1352,7 +1352,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('call', callback);
 ```
 
-## on('call')<sup>11+</sup>
+## formObserver.on('call')<sup>11+</sup>
 
  on(type: 'call', hostBundleName: string, observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -1391,7 +1391,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('call', hostBundleName, callback);
 ```
 
-## off('call')<sup>11+</sup>
+## formObserver.off('call')<sup>11+</sup>
 
  off(type: 'call', hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
 

@@ -2,7 +2,7 @@
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @gcw_gyH0B0hP-->
-<!--Designer: @ccfriend-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -21,7 +21,7 @@
 
 | 名称    | 值         | 说明                                                         |
 | ------- | ---------- | ------------------------------------------------------------ |
-| DEFAULT | 'smartCar' | 音频模板类型的默认值。<br>用于标识当前音频模板应用的业务类型，开发者创建模板时可根据自身业务修改此值。 |
+| DEFAULT | 'smartCar' | 音频模板类型的默认值。<br>用于标识当前音频模板应用的业务类型。 |
 
 ## EntityType
 
@@ -69,7 +69,7 @@
 
 | 名称          | 值   | 说明        |
 | ------------- | ---- |-----------|
-| NONE          | 0    | 默认值，默认正序。 |
+| NONE          | 0    | 不指定排序方式，使用默认正序。 |
 | ORDER         | 1    | 正序。       |
 | REVERSE_ORDER | 2    | 倒序。       |
 

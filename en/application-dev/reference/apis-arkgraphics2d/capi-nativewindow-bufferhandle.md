@@ -1,10 +1,13 @@
 # BufferHandle
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Felix-fangyang; @BruceXu; @dingpy-->
+<!--Owner: @Felix-fangyang-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=c9742d4d4a757fbb6f0510281af0e732af135c64 translatedAt=2026-08-24T09:16:43.100Z pushedAt=2026-08-31T11:57:10.177Z -->
+
 ```c
 typedef struct {...} BufferHandle
 ```
@@ -31,7 +34,7 @@ Describes the buffer handle, which is used to transfer and obtain buffer informa
 | int32_t height | Height of the buffer memory, in pixels.|
 | int32_t size | Size of the buffer memory, in bytes.|
 | int32_t format | Format of the buffer memory. For details about the available options, see [OH_NativeBuffer_Format](capi-buffer-common-h.md#oh_nativebuffer_format).|
-| uint64_t usage | Usage of the buffer memory, represented as bit flags. For details about the available options, see [OH_NativeBuffer_Format](capi-buffer-common-h.md#oh_nativebuffer_format).|
+| uint64_t usage | Purpose of the buffer memory, represented by bit flags. For details about the values, see [OH_NativeBuffer_Usage](capi-native-buffer-h.md#oh_nativebuffer_usage). |
 | void* virAddr | Virtual address of the buffer memory.|
 | int32_t key | Shared memory key of the buffer memory.|
 | uint64_t phyAddr | Physical address of the buffer memory.|

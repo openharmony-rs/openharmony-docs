@@ -61,6 +61,7 @@ setValue(admin: Want, item: string, value: string): void
 ```ts
 import { deviceSettings } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
+import { inputMethod } from '@kit.IMEKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -68,12 +69,58 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 
+// 设置设备息屏时间为3秒
 try {
   // 需根据实际情况进行替换
   deviceSettings.setValue(wantTemp, 'screenOff', '3000');
   console.info(`Succeeded in setting screen off time.`);
 } catch (err) {
   console.error(`Failed to set screen off time. Code: ${err.code}, message: ${err.message}`);
+}
+
+// 设置系统时间，value为要设置的系统时间（单位：毫秒）
+try {
+  // 需根据实际情况进行替换
+  deviceSettings.setValue(wantTemp, 'dateTime', '1698768000000');
+  console.info(`Succeeded in setting date time.`);
+} catch (err) {
+  console.error(`Failed to set date time. Code: ${err.code}, message: ${err.message}`);
+}
+
+// 设置设备电源策略，超时灭屏后自动进入睡眠，延迟时间为60000毫秒（该能力仅支持PC/2in1设备）
+try {
+  // 需根据实际情况进行替换
+  let powerPolicyString: string = JSON.stringify({
+    powerPolicyAction: 1,
+    delayTime: 60000
+  });
+  let value: string = JSON.stringify({
+    powerScene: 0,
+    powerPolicy: powerPolicyString
+  });
+  deviceSettings.setValue(wantTemp, 'powerPolicy', value);
+  console.info(`Succeeded in setting power policy.`);
+} catch (err) {
+  console.error(`Failed to set power policy. Code: ${err.code}, message: ${err.message}`);
+}
+
+// 设置护眼模式为全天开启，value可设置为on或off
+try {
+  // 需根据实际情况进行替换
+  deviceSettings.setValue(wantTemp, 'eyeComfort', 'on');
+  console.info(`Succeeded in setting eye comfort.`);
+} catch (err) {
+  console.error(`Failed to set eye comfort. Code: ${err.code}, message: ${err.message}`);
+}
+
+// 设置默认输入法，value为输入法应用包名
+try {
+  // 需根据实际情况进行替换
+  let currentInputMethod: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod();
+  deviceSettings.setValue(wantTemp, 'defaultInputMethod', currentInputMethod.name);
+  console.info(`Succeeded in setting default input method.`);
+} catch (err) {
+  console.error(`Failed to set default input method. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -100,7 +147,7 @@ getValue(admin: Want, item: string): string
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| string | 策略类型值。<br/>当item为screenOff时，返回设备息屏时间（单位：毫秒），对于PC/2in1设备，返回设备电池供电下的息屏时间（单位：毫秒）。<br/>当item为powerPolicy时，返回电源策略，对于PC/2in1设备，返回设备电池供电下的电源策略，格式为JSON字符串:{"powerScene":xx,"powerPolicy":{"powerPolicyAction":xx,"delayTime":xx}}。powerScene为电源策略场景；delayTime为延迟时间（单位：毫秒）；powerPolicyAction为休眠策略。<br/>电源策略场景：<br/>- 0：超时场景。<br/>休眠策略：<br/>- 0：不执行动作。<br/>- 1：自动进入睡眠。<br/>- 2：强制进入睡眠。<br/>- 3：进入休眠，该策略暂不生效。<br/>- 4：关机。<br/>当item为eyeComfort时，返回的value为护眼模式开关状态的字符串。<br/>- on：全天开启护眼模式。<br/>- off：关闭护眼模式。<br/>- unknown：其他模式。 |
+| string | 策略类型值。<br/>当item为screenOff时，返回设备息屏时间（单位：毫秒），对于PC/2in1设备，返回设备电池供电下的息屏时间（单位：毫秒）。<br/>当item为powerPolicy时，返回电源策略，对于PC/2in1设备，返回设备电池供电下的电源策略，格式为JSON字符串：{"powerScene":xx,"powerPolicy":{"powerPolicyAction":xx,"delayTime":xx}}。powerScene为电源策略场景；delayTime为延迟时间（单位：毫秒）；powerPolicyAction为休眠策略。<br/>电源策略场景：<br/>- 0：超时场景。<br/>休眠策略：<br/>- 0：不执行动作。<br/>- 1：自动进入睡眠。<br/>- 2：强制进入睡眠。<br/>- 3：进入休眠，该策略暂不生效。<br/>- 4：关机。<br/>当item为eyeComfort时，返回的value为护眼模式开关状态的字符串。<br/>- on：全天开启护眼模式。<br/>- off：关闭护眼模式。<br/>- unknown：其他模式。 |
 
 **错误码**：
 
@@ -125,12 +172,31 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 
+// 获取设备息屏时间，返回设备息屏时间（单位：毫秒）
 try {
   // 参数需根据实际情况进行替换
   let result: string = deviceSettings.getValue(wantTemp, 'screenOff');
   console.info(`Succeeded in getting screen off time, result : ${result}`);
 } catch (err) {
   console.error(`Failed to get screen off time. Code: ${err.code}, message: ${err.message}`);
+}
+
+// 获取设备电源策略（仅支持PC/2in1设备），返回JSON字符串{"powerScene":xx,"powerPolicy":{"powerPolicyAction":xx,"delayTime":xx}}
+try {
+  // 参数需根据实际情况进行替换
+  let result: string = deviceSettings.getValue(wantTemp, 'powerPolicy');
+  console.info(`Succeeded in getting power policy, result : ${result}`);
+} catch (err) {
+  console.error(`Failed to get power policy. Code: ${err.code}, message: ${err.message}`);
+}
+
+// 获取护眼模式开关状态，返回值为on、off或unknown
+try {
+  // 参数需根据实际情况进行替换
+  let result: string = deviceSettings.getValue(wantTemp, 'eyeComfort');
+  console.info(`Succeeded in getting eye comfort, result : ${result}`);
+} catch (err) {
+  console.error(`Failed to get eye comfort. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -143,6 +209,8 @@ setHomeWallpaper(admin: Want, fd: number): Promise&lt;void&gt;
 **需要权限：** ohos.permission.ENTERPRISE_SET_WALLPAPER
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
@@ -177,7 +245,7 @@ setHomeWallpaper(admin: Want, fd: number): Promise&lt;void&gt;
 import { deviceSettings } from '@kit.MDMKit';
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs }  from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 let wantTemp: Want = {
   // 请根据实际情况修改
@@ -190,13 +258,13 @@ const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 // 参数根据实际情况进行替换
 let filename: string = "homewallpaper.jpg";
 let filePath: string = context.filesDir + '/' + filename;
-let fd: number = fs.openSync(filePath, fs.OpenMode.READ_WRITE).fd;
+let fd: number = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE).fd;
 deviceSettings.setHomeWallpaper(wantTemp, fd).then(() => {
   console.info('Succeeded in setting home wallpaper');
 }).catch((err: BusinessError) => {
   console.error(`Failed to set home wallpaper. Code: ${err.code}, message: ${err.message}`);
 }).finally(() => {
-  fs.closeSync(fd);
+  fileIo.closeSync(fd);
 });
 ```
 ## deviceSettings.setUnlockWallpaper<sup>20+</sup>
@@ -208,6 +276,8 @@ setUnlockWallpaper(admin: Want, fd: number): Promise&lt;void&gt;
 **需要权限：** ohos.permission.ENTERPRISE_SET_WALLPAPER
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
@@ -242,7 +312,7 @@ setUnlockWallpaper(admin: Want, fd: number): Promise&lt;void&gt;
 import { deviceSettings } from '@kit.MDMKit';
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs }  from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -255,13 +325,13 @@ const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 // 参数根据实际情况进行替换
 let filename: string = "lockwallpaper.jpg";
 let filePath: string = context.filesDir + '/' + filename;
-let fd: number = fs.openSync(filePath, fs.OpenMode.READ_WRITE).fd;
+let fd: number = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE).fd;
 deviceSettings.setUnlockWallpaper(wantTemp, fd).then(() => {
   console.info('Succeeded in setting lock wallpaper');
 }).catch((err: BusinessError) => {
   console.error(`Failed to set lock wallpaper. Code: ${err.code}, message: ${err.message}`);
 }).finally(() => {
-  fs.closeSync(fd);
+  fileIo.closeSync(fd);
 });
 ```
 
@@ -313,7 +383,7 @@ let wantTemp: Want = {
 try {
   // 需根据实际情况进行替换
   let accountId = 100;
-  let deviceName: string = "deviceName"
+  let deviceName: string = "deviceName";
   deviceSettings.setValueForAccount(wantTemp, deviceSettings.SettingsItem.DEVICE_NAME, accountId, deviceName);
   console.info('Succeeded in setting device name.');
 } catch (err) {
@@ -430,8 +500,8 @@ let wantTemp: Want = {
 let menusToHidden: Array<deviceSettings.SettingsMenu> = [
   // 需根据实际情况进行替换或增加
   deviceSettings.SettingsMenu.ACCOUNT_ID,
-  deviceSettings.SettingsMenu.WIFI,
-]
+  deviceSettings.SettingsMenu.WIFI
+];
 
 try {
   deviceSettings.addHiddenSettingsMenu(wantTemp, menusToHidden);
@@ -493,8 +563,8 @@ let wantTemp: Want = {
 let menusToHidden: Array<deviceSettings.SettingsMenu> = [
   // 需根据实际情况进行替换或增加
   deviceSettings.SettingsMenu.ACCOUNT_ID,
-  deviceSettings.SettingsMenu.WIFI,
-]
+  deviceSettings.SettingsMenu.WIFI
+];
 
 try {
   deviceSettings.removeHiddenSettingsMenu(wantTemp, menusToHidden);
@@ -569,7 +639,7 @@ try {
 
 setSwitchStatus(admin: Want, key: SwitchKey, status: SwitchStatus): void
 
-设置开关的状态。支持设置星闪、蓝牙、Wi-Fi、NFC的状态为开启或关闭，设置完毕后，用户可以手动开关。支持设置蓝牙、NFC的状态为强制开启，设置完毕后，用户不可以手动开关。若已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated) 接口禁用了某个开关，则通过本接口设置这个开关的状态会抛出错误码203，需通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated) 接口解除该开关禁用策略。当设备有多个MDM应用时，各MDM应用设置开关状态不存在冲突，最后设置的策略生效。开启(用户可手动开启、关闭)、关闭(用户可手动开启、关闭)、强制开启(用户不可手动关闭)三个状态可以随意切换，也不存在冲突。
+设置开关的状态。支持设置星闪、蓝牙、Wi-Fi、NFC的状态为开启或关闭，设置完毕后，用户可以手动开关。支持设置蓝牙、NFC的状态为强制开启，设置完毕后，用户不可以手动开关。若已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated) 接口禁用了某个开关，则通过本接口设置这个开关的状态会抛出错误码203，需通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated) 接口解除该开关禁用策略。当设备有多个MDM应用时，各MDM应用设置开关状态不存在冲突，最后设置的策略生效。开启（用户可手动开启、关闭）、关闭（用户可手动开启、关闭）、强制开启（用户不可手动关闭）三个状态可以随意切换，也不存在冲突。
 
 **起始版本：** 26.0.0
 
@@ -632,6 +702,7 @@ try {
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 值   | 说明           |
 | ---- | ---- | -------------- |
@@ -643,6 +714,8 @@ try {
 设置项列表。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称   | 值 | 说明         |
 | ------ | ------ | ----------- |

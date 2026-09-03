@@ -1,4 +1,4 @@
-# 签名验签介绍及算法规格
+# 签名验签
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -296,4 +296,6 @@ Ed25519是基于椭圆曲线的签名验签算法。
 
 | 非对称密钥类型 | 字符串参数 | API版本 |
 | -------- | -------- | -------- |
-| ML-DSA | ML-DSA | 26.0.0+ |
+| ML-DSA-44 | ML-DSA | 26.0.0+ |
+| ML-DSA-65 | ML-DSA | 26.0.0+ |
+| ML-DSA-87 | ML-DSA | 26.0.0+ |
