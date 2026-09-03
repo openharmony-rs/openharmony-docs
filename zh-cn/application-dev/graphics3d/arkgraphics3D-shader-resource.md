@@ -10,15 +10,15 @@ ArkGraphics 3D中支持的.shader文件基于JSON格式，书写.shader文件时
 
 ## compatibility_info
  - 类型：object
- - 说明：用于向引擎声明shader版本兼容性信息。统一使用如下字段：
+ - 说明：用于向引擎声明Shader版本兼容性信息。统一使用如下字段：
    ```json
    "compatibility_info": { "version": "22.00", "type": "shader" }
    ```
-   表示这是引擎22.00版本下的shader描述文件。
+   表示这是引擎22.00版本下的Shader描述文件。
 
 ## vert
  - 类型：string
- - 说明：指定使用该shader的DrawCall中使用的vertex shader文件。
+ - 说明：指定使用该Shader的DrawCall中使用的vertex shader文件。
  - 默认值：
    ```json
    "vert": "3dshaders://shader/core3d_dm_fw.vert.spv"
@@ -27,11 +27,11 @@ ArkGraphics 3D中支持的.shader文件基于JSON格式，书写.shader文件时
    ```json
    "vert": "appshaders://yourDir/yourShader.vert.spv"
    ```
-   其中yourDir/yourShader.vert.spv是用户使用的shader文件在文件沙箱中的路径。
+   其中yourDir/yourShader.vert.spv是用户使用的Shader文件在文件沙箱中的路径。
 
 ## frag
  - 类型：string
- - 说明：指定使用该shader的DrawCall中使用的fragment shader文件。
+ - 说明：指定使用该Shader的DrawCall中使用的fragment Shader文件。
  - 默认值：
    ```json
    "frag": "3dshaders://shader/core3d_dm_fw.frag.spv"
@@ -40,7 +40,7 @@ ArkGraphics 3D中支持的.shader文件基于JSON格式，书写.shader文件时
    ```json
    "frag": "appshaders://yourDir/yourShader.frag.spv"
    ```
-   其中yourDir/yourShader.frag.spv是用户使用的shader文件在文件沙箱中的路径。
+   其中yourDir/yourShader.frag.spv是用户使用的Shader文件在文件沙箱中的路径。
 
 ## vertexInputDeclaration
  - 类型：string

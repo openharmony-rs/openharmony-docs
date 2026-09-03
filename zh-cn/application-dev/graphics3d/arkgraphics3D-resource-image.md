@@ -111,7 +111,7 @@ ArkGraphics 3D提供基于png、jpg、ktx格式创建Image资源的能力，支�
 
 6. 应用图片材质到模型节点。
 
-   在按钮点击回调中，通过createShader()和createMaterial()创建shader材质，调用createImagePromise()获取图片资源并绑定到shader输入属性BASE_COLOR_Image上，最后将材质应用到模型几何体，使模型表面贴图生效，实现贴图替换。
+   在按钮点击回调中，通过createShader()和createMaterial()创建Shader材质，调用createImagePromise()获取图片资源并绑定到Shader输入属性BASE_COLOR_Image上，最后将材质应用到模型几何体，使模型表面贴图生效，实现贴图替换。
 
    <!-- @[replace_with_image_material](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    

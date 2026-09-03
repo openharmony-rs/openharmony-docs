@@ -8,11 +8,11 @@
 
 材质（Material）：材质是用于定义物体表面视觉效果的重要资源。材质决定了物体如何与光线交互，从而影响其最终的渲染效果，如颜色、金属感、粗糙度等外观属性。
 
-ArkGraphics 3D采用基于物理的渲染（PBR, Physically-Based Rendering）模型，其材质实现遵循通用的PBR原理。开发者既可以使用标准材质快速实现真实感效果，也可以通过自定义shader材质灵活控制渲染逻辑。
+ArkGraphics 3D采用基于物理的渲染（PBR, Physically-Based Rendering）模型，其材质实现遵循通用的PBR原理。开发者既可以使用标准材质快速实现真实感效果，也可以通过自定义Shader材质灵活控制渲染逻辑。
 
 ## 基本概念
 
-着色器（shader）：着色器是GPU上可以执行的一段程序，可以控制GPU执行哪些并行计算操作。AGP引擎提供的默认着色器实现了PBR渲染，开发者只需要指定对应的参数就可以完成不同的PBR渲染。
+着色器（Shader）：着色器是GPU上可以执行的一段程序，可以控制GPU执行哪些并行计算操作。AGP引擎提供的默认着色器实现了PBR渲染，开发者只需要指定对应的参数就可以完成不同的PBR渲染。
 
 ArkGraphics 3D支持开发者创建自定义的着色器，开发者可以通过自定义着色器自定义渲染计算过程，完全控制渲染计算流程，比如控制某物体不受某光源的影响、自定义边缘描边、高亮效果等个性化视觉呈现。
 
@@ -21,7 +21,7 @@ ArkGraphics 3D支持开发者创建自定义的着色器，开发者可以通过
 ## 材质类型（MaterialType）
 ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphics3d/js-apis-inner-scene-resources.md#materialtype)枚举指定，目前支持以下两种类型：
 
-- MaterialType.SHADER：基于shader（着色器）的材质类型，支持绑定自定义着色器，开发者可通过自定义渲染程序实现个性化的视觉表现，适用于高级图形渲染需求。
+- MaterialType.SHADER：基于Shader（着色器）的材质类型，支持绑定自定义着色器，开发者可通过自定义渲染程序实现个性化的视觉表现，适用于高级图形渲染需求。
 
 - MaterialType.METALLIC_ROUGHNESS：基于金属-粗糙度模型的标准PBR材质类型，符合glTF材质规范，适合快速构建真实感渲染效果，支持设置基础色、金属度、粗糙度、法线贴图等常见属性。
 
@@ -37,9 +37,9 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
 ### 通用属性
 所有材质均具备以下基础属性（如materialType、shadowReceiver、blend等）可通过设置[Material](../reference/apis-arkgraphics3d/js-apis-inner-scene-resources.md#material)类型对象实现，用于控制材质的类型及其渲染基础行为：
 
-- materialType：材质类型，标识该材质是标准PBR材质还是基于shader的自定义材质。
+- materialType：材质类型，标识该材质是标准PBR材质还是基于Shader的自定义材质。
 
-  适用场景：当需要快速使用预设真实感材质时选择PBR材质，需实现个性化或特殊渲染效果时选择shader材质。
+  适用场景：当需要快速使用预设真实感材质时选择PBR材质，需实现个性化或特殊渲染效果时选择Shader材质。
 
 - shadowReceiver：材质是否可以接收场景中的阴影投射，true表示可以接收，false表示不能接收，默认为false。
 
@@ -108,12 +108,12 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
 
   适用场景：玻璃、水面、塑料等非金属材质的高光表现，增强材质的镜面反射效果。
 
-## 创建shader材质并设置属性
-在需要自定义渲染逻辑或实现特殊视觉效果时，可以通过MaterialType.SHADER类型创建shader材质。shader材质支持绑定自定义的.shader文件，开发者可以在其中编写自定义的渲染计算逻辑，灵活控制模型的外观表现，实现如描边、高光、发光等个性化视觉效果。以下示例展示了shader材质的创建与使用流程，包括场景加载、shader资源创建与绑定，以及将shader材质应用到目标几何体节点的过程。
+## 创建Shader材质并设置属性
+在需要自定义渲染逻辑或实现特殊视觉效果时，可以通过MaterialType.SHADER类型创建Shader材质。Shader材质支持绑定自定义的.shader文件，开发者可以在其中编写自定义的渲染计算逻辑，灵活控制模型的外观表现，实现如描边、高光、发光等个性化视觉效果。以下示例展示了Shader材质的创建与使用流程，包括场景加载、Shader资源创建与绑定，以及将Shader材质应用到目标几何体节点的过程。
 
 1. 导入相关模块。
 
-   在页面脚本中导入ArkGraphics 3D提供的核心类型，用于创建shader材质及绑定shader资源。
+   在页面脚本中导入ArkGraphics 3D提供的核心类型，用于创建Shader材质及绑定Shader资源。
 
    <!-- @[resource_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
@@ -171,9 +171,9 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
    this.originalMat = this.geom.mesh.subMeshes[0].material;
    ```
 
-5. 创建shader材质（空白）。
+5. 创建Shader材质（空白）。
 
-   调用SceneResourceFactory.createMaterial()创建shader类型的空白材质，为后续绑定自定义shader做准备。
+   调用SceneResourceFactory.createMaterial()创建Shader类型的空白材质，为后续绑定自定义Shader做准备。
 
    <!-- @[create_material_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
@@ -198,9 +198,9 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
    }
    ```
 
-6. 创建shader资源。
+6. 创建Shader资源。
 
-   通过SceneResourceFactory.createShader()创建自定义着色器资源，创建的shader资源可在后续步骤中绑定到shader材质上，实现自定义渲染逻辑。
+   通过SceneResourceFactory.createShader()创建自定义着色器资源，创建的Shader资源可在后续步骤中绑定到Shader材质上，实现自定义渲染逻辑。
 
    <!-- @[create_shader_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
@@ -231,9 +231,9 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
    }
    ```
 
-7. 将shader材质绑定至几何体节点。
+7. 将Shader材质绑定至几何体节点。
 
-   将着色器资源绑定至shader材质，再将shader材质绑定至几何体节点，使用自定义渲染逻辑进行绘制。通过按钮点击事件可触发材质切换，实现运行时从默认材质到shader材质的动态过渡。
+   将着色器资源绑定至Shader材质，再将Shader材质绑定至几何体节点，使用自定义渲染逻辑进行绘制。通过按钮点击事件可触发材质切换，实现运行时从默认材质到Shader材质的动态过渡。
 
    <!-- @[material_button_action](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
