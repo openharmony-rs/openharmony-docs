@@ -12,7 +12,7 @@ typedef struct {...} OH_WifiLinkedInfo
 
 ## 概述
 
-表示Wi-Fi连接信息。此结构体描述当前STA连接的热点信息。<br> 可通过调用 [OH_Wifi_GetLinkedInfo](capi-oh-wifi-h.md#oh_wifi_getlinkedinfo)获取这些信息。
+表示Wi-Fi连接信息。此结构体描述当前STA连接的热点信息。<br> 可通过调用[OH_Wifi_GetLinkedInfo](capi-oh-wifi-h.md#oh_wifi_getlinkedinfo)获取这些信息。
 
 **起始版本：** 24
 
