@@ -1,12 +1,11 @@
 # Integrating the Lyrics Component
-
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @ccfriend@devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=45526eba67080b876eb51af31a33be43ae26f701 translatedAt=2026-07-13T13:20:09.482Z pushedAt=2026-07-20T13:50:12.855Z -->
+<!-- md-trans-meta sourceCommit=9920b4322632c95223043c2b8d7016dc1dbd092a translatedAt=2026-09-02T08:33:02.103Z pushedAt=2026-09-02T11:03:30.387Z -->
 
 Starting from API version 23, HarmonyOS provides a desktop lyrics component that displays synchronized lyrics in a floating window on the desktop. The component supports displaying lyrics, controlling its visibility, and locking or unlocking the window. Custom styling of the component is not supported. This section describes how to use the desktop lyrics component in your application.
 
@@ -14,17 +13,17 @@ Starting from API version 23, HarmonyOS provides a desktop lyrics component that
 
 1. Call [isDesktopLyricSupported](../../reference/apis-avsession-kit/arkts-apis-avsession-f.md#avsessionisdesktoplyricsupported23) to check whether the system/device supports the lyrics component capability. If `true` is returned, the lyrics component capability is supported.
 
-2. Create an [AVSession instance](../avsession/avsession-access-scene.md#creating-avsession), and [set metadata](avsession-access-scene.md#setting-metadata) to fill in lyrics data in LRC format. The lyrics must contain timestamp tags and the corresponding lyric text. Lyrics that do not conform to the LRC format may not be parsed correctly and therefore might not be displayed.
+2. Create an [AVSession instance](../avsession/avsession-access-scene.md#creating-avsession), and fill in LRC-format lyrics data through [setting metadata information](../avsession/avsession-access-scene.md#setting-metadata-information), including time tags and corresponding lyrics text. For lyrics data that does not conform to the LRC format, the system may encounter parsing errors, resulting in failure to display the lyrics content.
 
-3. Call [enableDesktopLyric](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#enabledesktoplyric23) to enable the lyrics component by passing `true` as the parameter.
+3. Call the [enableDesktopLyric](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#enabledesktoplyric23) API to enable the lyrics component by passing `true` as the parameter.
 
-4. After the component is enabled, it is hidden by default. You can control its visibility using the following APIs:
+4. After the lyrics component is enabled, it is hidden (not displayed) by default. The app can proactively show or hide the lyrics component through the following APIs:
 
    **Setting visibility:** Call [setDesktopLyricVisible](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setdesktoplyricvisible23) to set whether the lyrics component is displayed.
 
    **Querying visibility:** Call [isDesktopLyricVisible](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#isdesktoplyricvisible23) to query whether the lyrics component is currently displayed.
 
-5. After the component is enabled, it is unlocked by default. You can control its lock state using the following APIs:
+5. After the lyrics component is enabled, it is in the unlocked state by default. You can use APIs to actively lock or unlock the lyrics component. The specific APIs are as follows:
 
    **Setting the locked state:** Call [setDesktopLyricState](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setdesktoplyricstate23) to set whether the lyrics window is locked (which restricts operations such as dragging and settings on the lyrics window).
 

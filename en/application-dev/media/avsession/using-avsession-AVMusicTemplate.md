@@ -1,14 +1,13 @@
 # Using the Audio Template
-
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @gcw_gyH0B0hP-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=775692d35d5a934cb9e00b07a370408268f89d43 translatedAt=2026-07-20T14:15:39.804Z pushedAt=2026-07-20T14:35:02.689Z -->
+<!-- md-trans-meta sourceCommit=7b89e0921c71713a4f37f22389459e82e517ac47 translatedAt=2026-09-02T08:37:29.742Z pushedAt=2026-09-03T02:59:45.192Z -->
 
-Starting from API version 23, media applications can integrate with the playback control center through the audio template capability. This capability provides a unified user interface and playback control experience for audio and video content, reducing application-side development effort. This section describes the audio template APIs and the basic development workflow, including integrating with the playback control center, reporting media information (such as the title, author, and playback state), and responding to playback control commands (such as play, pause, search, and favorite) issued by the playback control center.
+Starting from API version 23, media applications can integrate with the Media Controller through the audio template capability. This capability provides a unified user interface and playback control experience for audio and video content, reducing application-side development effort. This section describes the audio template APIs and the basic development workflow, including integrating with the Media Controller, reporting media information (such as the title, author, and playback state), and responding to playback control commands (such as play, pause, search, and favorite) issued by the Media Controller.
 
 The audio template supports both audio and video content. Because the integration workflow is the same, this topic uses audio as an example.
 
@@ -18,7 +17,7 @@ The audio template supports both audio and video content. Because the integratio
 
 ## Basic Concepts
 
-Audio template (`AVMusicTemplate`): A class that encapsulates interactions between a media application and the playback control center. It includes properties such as the current media session ID (`sessionId`) and session tag (`sessionTag`), and provides methods for exchanging data with the playback control center. Media applications use this class to report media information and respond to playback control commands.
+Audio template (`AVMusicTemplate`): A class that encapsulates interactions between a media application and the Media Controller. It includes properties such as the current media session ID (`sessionId`) and session tag (`sessionTag`), and provides methods for exchanging data with the Media Controller. Media applications use this class to report media information and respond to playback control commands.
 
 ## Available APIs
 
@@ -78,6 +77,7 @@ The basic steps for a media application to access the audio template are as foll
      private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
      private static sInstance: TemplateManager;
      // ...
+   
      private constructor() {
      }
    
@@ -118,7 +118,6 @@ The basic steps for a media application to access the audio template are as foll
    To display the main audio template interface, register both of the following callbacks:
 
    - [onQueryMainTabs](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplate.md#onquerymaintabs): Registers a callback for querying the main tabs. Return the collection of tab data to display on the main interface. The `tabId` for **Home** must be `"minePage"`.
-
    - [onQueryMediaTabContent](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplate.md#onquerymediatabcontent): Registers the listener for querying media tab content events. Provides page display content data based on the `tabId`.
 
    <!-- @[template_register_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
@@ -131,26 +130,10 @@ The basic steps for a media application to access the audio template are as foll
      private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
      // ...
      private queryMainTabsEvent: avMusicTemplate.QueryMainTabsEvent = async () => {
-       return new Promise<avMusicTemplate.MediaTab[]>(async (resolve, reject) => {
-         try {
-           let tabs: avMusicTemplate.MediaTab[] = await this.getMainTabs();
-           resolve(tabs);
-         } catch (e) {
-           console.error(`queryMainTabsEvent fail, errCode: ${e?.code}`);
-           reject(e);
-         }
-       });
+       return this.handlePromiseReturnFunc(() => this.getMainTabs(), 'queryMainTabsEvent');
      };
      private queryMediaTabContentEvent: avMusicTemplate.QueryMediaTabContentEvent = async (tabId: string) => {
-       return new Promise<avMusicTemplate.MediaTabContent>(async (resolve, reject) => {
-         try {
-           let tabContent: avMusicTemplate.MediaTabContent = await this.createMediaTabContent();
-           resolve(tabContent);
-         } catch (e) {
-           console.error(`queryMediaTabContentEvent fail, errCode: ${e?.code}`);
-           reject(e);
-         }
-       });
+       return this.handlePromiseReturnFunc(() => this.createMediaTabContent(), 'queryMediaTabContentEvent');
      };
      // ...
    
@@ -233,9 +216,20 @@ The basic steps for a media application to access the audio template are as foll
        };
        return mediaEntity;
      };
+   
      // ...
+     private async handlePromiseReturnFunc<T>(func: () => Promise<T>, errFunc: string): Promise<T> {
+       try {
+         return await func();
+       } catch (e) {
+         const msg = `Failed to ${errFunc}. Code: ${e?.code}`;
+         console.error(msg);
+         throw e instanceof Error ? e : new Error(e?.message ?? msg);
+       }
+     }
    }
    ```
+
 
 3. In scenarios where the audio template cannot directly detect application state changes, such as user sign-in or download status, the media application must proactively synchronize the corresponding data with the audio template. For details about the sync APIs, see [AVMusicTemplate](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplate.md).
 
@@ -292,6 +286,7 @@ The basic steps for a media application to access the audio template are as foll
    export class TemplateManager {
      private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
      // ...
+   
      /**
       * Unregister the listener.
       */
