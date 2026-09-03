@@ -1180,7 +1180,7 @@ Similar to the [link](#link9) API, establishes a two-way data binding with the p
 
 | Type                               | Description                                                        |
 | ----------------------------------- | ------------------------------------------------------------ |
-| [SubscribedAbstractProperty&lt;T&gt;](#subscribedabstractpropertyt9) | Instance of SubscribedAbstractProperty&lt;T&gt;, which is the two-way bound data bound of the property corresponding to **propName** in LocalStorage. |
+| [SubscribedAbstractProperty&lt;T&gt;](#subscribedabstractpropertyt9) | Instance of SubscribedAbstractProperty&lt;T&gt;, which is the two-way bound data of the property corresponding to **propName** in LocalStorage. |
 
 **Example**
 ```ts

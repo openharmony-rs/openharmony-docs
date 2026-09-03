@@ -1,4 +1,4 @@
-# State Management with Application-level Variables (System API)
+# State Management with Application-Level Variables (System API)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhushilin0206-->
