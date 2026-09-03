@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-本文按导航类、弹窗类、按钮与选择类三大组件分类，系统介绍各组件如何通过应用级开关与组件级配置开启沉浸光感，涵盖沉浸光感的视觉效果、设置方法及适配要点，帮助开发者快速完成沉浸光感的组件适配。
+本文按导航类、弹窗类、按钮与选择类、基础组件四大场景分类，系统介绍各组件如何通过应用级开关与组件级配置开启沉浸光感，涵盖沉浸光感的视觉效果、设置方法及适配要点，帮助开发者快速完成沉浸光感的组件适配。
 
 ## 导航类组件
 
@@ -189,3 +189,7 @@ Popup和Tips支持通过应用级开启、组件级开启方式开启沉浸光�
 - 设置自动反色时，即colorInvert为true，如果SegmentButton中的fontColor、selectedFontColor，或SegmentButtonV2中的itemFontColor、itemSelectedFontColor、itemIconFillColor、itemSelectedIconFillColor等使用支持反色的系统资源，颜色自动适配到材质背景色的反色。
  
 组件开启沉浸光感的效果请参见[示例8（设置背景板材质）](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md#示例8设置背景板材质)和[示例6（设置背景板材质）](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md#示例6设置背景板材质)。
+
+## 其余组件
+
+其余组件均支持通用属性[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)设置沉浸式系统材质，跟随通用属性的生效规则呈现效果，例如[布局容器](arkts-layout-development-overview.md)、[滚动容器](arkts-list-grid-development-overview.md)。生效区域为Navigation/NavDestination标题栏，或横向Tab中barPosition为BarPosition.End的底部TabBar。开启后的常见问题请参考[沉浸光感常见问题](arkts-immersive-light-sense-faq.md)。
