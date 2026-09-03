@@ -24,7 +24,7 @@
 
 <!-- @[material_color_invert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialColorInvertExample.ets) -->
 
-<div class="same-source-code">
+
 ``` TypeScript
 import { uiMaterial } from '@kit.ArkUI';
 
@@ -91,11 +91,6 @@ struct PageMaterialReverse {
 }
 ```
 
-<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialColorInvertExample.ets?same_code_link_text=material_color_invert" target="_blank" rel="nofollow">MaterialColorInvertExample.ets</a></p>
-
-</div>
-
-
 
 ![colorInvert](figures/colorInvert.gif)
 
@@ -111,7 +106,7 @@ struct PageMaterialReverse {
 
 <!-- @[material_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialColorExample.ets) -->
 
-<div class="same-source-code">
+
 ``` TypeScript
 import { uiMaterial } from '@kit.ArkUI';
 
@@ -159,11 +154,6 @@ struct MaterialColorExample {
 }
 ```
 
-<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialColorExample.ets?same_code_link_text=material_color" target="_blank" rel="nofollow">MaterialColorExample.ets</a></p>
-
-</div>
-
-
 
 ![materialColor](figures/material-color.jpg)
 
@@ -178,7 +168,7 @@ struct MaterialColorExample {
 
 <!-- @[material_interactive_light](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialInteractiveLightExample.ets) -->
 
-<div class="same-source-code">
+
 ``` TypeScript
 import { uiMaterial } from '@kit.ArkUI';
 
@@ -226,11 +216,6 @@ struct MaterialInteractiveLightExample {
 }
 ```
 
-<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialInteractiveLightExample.ets?same_code_link_text=material_interactive_light" target="_blank" rel="nofollow">MaterialInteractiveLightExample.ets</a></p>
-
-</div>
-
-
 
 ![interactiveLight](figures/interactive-light.gif)
 
@@ -242,7 +227,7 @@ struct MaterialInteractiveLightExample {
 
 <!-- @[custom_shadow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/CustomShadowExample.ets) -->
 
-<div class="same-source-code">
+
 ``` TypeScript
 import { uiMaterial } from '@kit.ArkUI';
 
@@ -290,11 +275,6 @@ struct CustomShadowExample {
   }
 }
 ```
-
-<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/CustomShadowExample.ets?same_code_link_text=custom_shadow" target="_blank" rel="nofollow">CustomShadowExample.ets</a></p>
-
-</div>
-
 
 
 ![shadowPink](figures/shadowPink.jpg)

@@ -35,7 +35,7 @@
  
 <!-- @[material_scope_adapt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialScopeAdaptExample.ets) -->
 
-<div class="same-source-code">
+
 ``` TypeScript
 import { CircleShape, TitleBarType, uiMaterial } from '@kit.ArkUI';
 
@@ -125,11 +125,6 @@ struct MaterialScopeAdaptExample {
   }
 }
 ```
-
-<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialScopeAdaptExample.ets?same_code_link_text=material_scope_adapt" target="_blank" rel="nofollow">MaterialScopeAdaptExample.ets</a></p>
-
-</div>
-
 
 
 ![material_example](./figures/material_example.JPG)
