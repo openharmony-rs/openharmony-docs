@@ -7402,8 +7402,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | mediaType | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | 否 | 否 | 图片资产的媒体类型。|
 | displayName | string | 否 | 否 | 图片资产的显示名称。|
 | size | number  | 否 | 否 | 图片资产文件大小，单位：字节（Byte）。|
-| dateAdded | number | 否 | 否 | 添加了图片资产数据，单位：秒（s）。|
-| dateModified | number | 否 | 否 | 更改了图片资产数据，单位：秒（s）。|
+| dateAdded | number | 否 | 否 | 添加图片资产数据的时间戳，单位：秒（s）。|
+| dateModified | number | 否 | 否 | 更改图片资产数据的时间戳，单位：秒（s）。|
 | duration | number | 否 | 否 | 视频类型的图片资产时长，单位：毫秒（ms）。|
 | width | number | 否 | 否 | 图片资产的像素宽度，单位：像素（px）。|
 | height | number | 否 | 否 | 图片资产的像素高度，单位：像素（px）。|
@@ -13611,8 +13611,10 @@ async function example(context: Context) {
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
 | SCREENSHOT |  1 |  截屏录屏文件类型。<br>**系统接口**：此接口为系统接口。 |
+| CINEMATIC_VIDEO |  5 |  电影风格视频文件类型。<br>**起始版本：** 26.1.0<br>**系统接口**：此接口为系统接口。 |
 | SLOW_MOTION_VIDEO<sup>22+</sup> |  6 |  慢动作视频文件类型。<br>**系统接口**：此接口为系统接口。 |
 | SPATIAL_3DGS<sup>22+</sup> |  7 |  3DGS（3D高斯点渲染）视频文件类型。<br>**系统接口**：此接口为系统接口。 |
+| CINEMATIC_VIDEO_V2 |  8 |  新版电影风格视频文件类型，与CINEMATIC_VIDEO相比新增了希区柯克等更多的特效。<br>**起始版本：** 26.1.0<br>**系统接口**：此接口为系统接口。 |
 
 ## NotifyChangeType<sup>20+</sup>
 
@@ -13752,6 +13754,8 @@ async function example(context: Context) {
 | EXTRA_INFO_ATTR | 'extra_info' | 相册扩展信息操作属性。 |
 | IS_REMOVED_ATTR | 'is_removed' | 相册是否已删除。<br>- 现支持人像相册。<br>- 值为1表示该相册已删除。<br>- 值为0表示该相册未删除或已恢复。 |
 | FRIEND_ID_ATTR | 'friend_id' | 相册亲友圈信息操作属性。<br>**起始版本：** 26.1.0 |
+| CONTACT_INFO_ATTR | 'contact_info' | 相册联系人信息操作属性。<br>**起始版本：** 26.1.0 |
+
 ## AlbumOperationType
 
 枚举，设置相册属性的操作类型。

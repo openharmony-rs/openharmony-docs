@@ -345,15 +345,17 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 ## ohos.permission.kernel.ALLOW_WRITABLE_CODE_MEMORY
 
-允许应用申请可写可执行匿名内存。
-
-<!--RP10-->
-针对使用跨平台框架开发的应用，用于应用申请可写可执行的匿名内存。当前仅平板、2in1设备应用可申请此权限。
-<!--RP10End-->
+允许应用申请可写可执行匿名内存，该能力主要用于为应用自带引擎（如 JS 引擎、游戏脚本引擎等）提供即时编译（JIT）能力，提升代码执行效率。
+ 
+<!--RP10--><!--RP10End-->
 
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Tablet
+ 
+<!--RP108--><!--RP108End-->
 
 **起始版本**：14
 

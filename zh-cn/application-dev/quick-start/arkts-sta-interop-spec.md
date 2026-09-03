@@ -972,7 +972,7 @@ worker2.join().Await();
 > **说明：**
 >
 > - ArkTS-Sta的`BigInt`或`long`类型值经类型映射进入ArkTS-Dyn上下文后，若其数值超出ArkTS-Dyn中`Number`的安全整数范围（即[-2<sup>53</sup>+1, 2<sup>53</sup>-1]），使用ArkTS-Dyn内置`JSON.stringify`序列化时该值将转换为字符串形式输出，以保证数值精度不被丢失。
-> - ArkTS-Sta的`char`类型值经类型映射进入ArkTS-Dyn上下文后，若该字符为Unicode控制字符（U+0000至U+001F），使用ArkTS-Dyn内置`JSON.stringify`序列化时将按JSON规范对其添加`\`进行转义处理，序列化结果为对应的转义编码形式（如`\\u0000`）。
+> - ArkTS-Sta的`char`类型值经类型映射进入ArkTS-Dyn上下文后，其序列化结果与`string`类型值的序列化结果一致，若该字符为Unicode控制字符（U+0000至U+001F），使用ArkTS-Dyn内置`JSON.stringify`序列化时将按JSON规范对其添加`\`进行转义处理，序列化结果为对应的转义编码形式（如`\\u0000`）。
 > - ArkTS-Dyn上下文中若需获取ArkTS-Sta对象的JSON字符串，也可通过STValue显式调用ArkTS-Sta侧的`JSON.stringify`方法，具体方式参见[如何通过STValue调用ArkTS-Sta内的JSON.stringify()方法](./arkts-sta-interop-interface.md#常见问题)。
 
 示例：在ArkTS-Dyn上下文直接序列化ArkTS-Sta对象。
@@ -981,19 +981,21 @@ worker2.join().Await();
 // ArkTS-Sta
 export let staCla: StaClass = new StaClass();
 export class StaClass {
-    public big: BigInt = 12345678901234567890n; // 超出序列化范围的bigint类型会转换成字符串类型 
+    public big: BigInt = 12345678901234567890n; // 超出序列化范围的bigint类型会转换成字符串类型
     public safe: BigInt = 1234567890n;
     public value: char = c'\u0000';  // Unicode控制字符会添加'\'进行转义，序列化结果为"\\u0000"
     public small: int = 42;
     public name: string = "hello";
+    public space: char = c'\t'; // 序列化结果为"\\t"
 }
 
 // ArkTS-Dyn
 import { staCla } from "./static"; // 导入ArkTS-Sta对象
 
-function test(): void {
+export function test(): void {
     let json = JSON.stringify(staCla);
-    console.info(json); // {"big":"12345678901234567890","safe":1234567890,"value":"\\u0000","small":42,"name":"hello"}
+    console.info(json); // {"big":"12345678901234567890","safe":1234567890,"value":"\u0000","small":42,"name":"hello","space":"\t"}
+    console.info(`${json == '{"big":"12345678901234567890","safe":1234567890,"value":"\\u0000","small":42,"name":"hello","space":"\\t"}'}`); // true
 }
 ```
 

@@ -184,7 +184,7 @@ Failed to install the HAP because the HAP fails to be parsed.
 5. 传入的安装路径中或目录下存在多个APP。
 6. APP中不包含适合在当前设备类型上安装的HAP。
 7. 应用配置了skill，但配置的skill名称、skill目录名与SKILL.md中frontmatter的name不一致。
-8. 在双模式设备上安装应用时，不同包体类别（[installparam](js-apis-installer-sys.md#installparam)中ohos.bms.param.deviceModeDistributionPolicy值为4、6、8）仅支持系统应用配置，非系统应用配置将无法安装；同时，新安装应用必须与设备上已存在的同包名应用保持包体类别属性大类一致，“不同包体类别”与“相同包体类别”（值为0、1、2、3、5、7）不能混合覆盖安装。
+<!--Del-->8. 在双模式设备上安装应用时，不同包体类别（[InstallParam](js-apis-installer-sys.md#installparam)中ohos.bms.param.deviceModeDistributionPolicy值为4、6、8）仅支持系统应用配置，非系统应用配置将无法安装；同时，新安装应用必须与设备上已存在的同包名应用保持包体类别属性大类一致，“不同包体类别”与“相同包体类别”（值为0、1、2、3、5、7）不能混合覆盖安装。<!--DelEnd-->
 
 **处理步骤**
 
@@ -195,7 +195,7 @@ Failed to install the HAP because the HAP fails to be parsed.
 5. 检查传入的路径下是否包含多个APP。
 6. 确认APP内是否存在支持当前设备类型的HAP。
 7. 检查module.json中skillProfiles下skill的name、skills目录下的子目录名称、SKILL.md中frontmatter的name，确保三者一致。
-8. 确认应用为系统应用后再配置不同包体类别；确认新安装的应用与已存在应用的[installparam](js-apis-installer-sys.md#installparam)中ohos.bms.param.deviceModeDistributionPolicy配置是否属于同一包体类别（均为不同包体或均为相同包体），避免不同包体类别与相同包体类别之间互转更新。
+<!--Del-->8. 确认应用为系统应用后再配置不同包体类别；确认新安装的应用与已存在应用的[InstallParam](js-apis-installer-sys.md#installparam)中ohos.bms.param.deviceModeDistributionPolicy配置是否属于同一包体类别（均为不同包体或均为相同包体），避免不同包体类别与相同包体类别之间互转更新。<!--DelEnd-->
 
 ## 17700011 签名校验失败导致应用安装失败
 
