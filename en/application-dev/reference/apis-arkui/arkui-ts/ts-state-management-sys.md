@@ -1,14 +1,15 @@
-# State Management with Application-level Variables (System API)
-
+# State Management with Application-Level Variables (System API)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhushilin0206-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=79e4597a11fe0470e85a7a6ec526decbb0cbcff4 translatedAt=2026-07-15T07:41:45.810Z pushedAt=2026-07-16T02:15:38.271Z -->
+<!-- md-trans-meta sourceCommit=6e64be832e5abd826cf90c3affb2291412054cd5 translatedAt=2026-09-02T11:26:37.461Z pushedAt=2026-09-03T02:39:41.123Z -->
+
 
 The state management module provides data storage, persistent data management, UIAbility data storage, and environment state management capabilities required by applications, which is suitable to scenarios such as cross-component state sharing, persistent data storage, and UIAbility data management.
+
 
 >**NOTE**
 >
@@ -44,7 +45,7 @@ A set of subscribers.
 
 private id_
 
-Private member variable ID.
+Unique ID of the subscription property, used to distinguish different subscription property instances in subscription relationship management.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,7 +53,7 @@ Private member variable ID.
 
 private info_?
 
-Variable information.
+Variable information used to identify the subscription relationship.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,7 +61,7 @@ Variable information.
 
 constructor(subscribeMe?: IPropertySubscriber,info?: string)
 
-Constructor.
+Constructor. If the **subscribeMe** parameter has been passed in to establish a subscription relationship, call [unlinkSuscriber()](#unlinksuscriber) to unsubscribe when the subscription relationship is no longer needed (the subscriber ID is obtained through [IPropertySubscriber](#ipropertysubscriber).[id()](#id-1)).
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -89,7 +90,7 @@ Called when obtaining the ID.
 
 createTwoWaySync(subscribeMe?: IPropertySubscriber, info?: string): SyncedPropertyTwoWay\<T\>
 
-Creates two-way synchronization. Data changes are transferred bidirectionally between the data source and the subscriber. When the subscription relationship is no longer needed, call [unlinkSuscriber()](#unlinksuscriber) to cancel the subscription (the subscriber ID is obtained through [IPropertySubscriber](#ipropertysubscriber).[id()](#id-1)), or call [aboutToBeDeleted()](#abouttobedeleted-1) of the returned [SyncedPropertyTwoWay](#syncedpropertytwowayt) object to cancel the subscription.
+Creates two-way synchronization. Data changes are transferred bidirectionally between the data source and the subscriber. Compared with [createOneWaySync](#createonewaysync), this API supports two-way synchronization between the data source and the subscriber, and is suitable for scenarios where the subscriber also needs to modify the data source in reverse. If only one-way synchronization from the data source to the subscriber is required, use [createOneWaySync](#createonewaysync). When the subscription relationship is no longer needed, call [unlinkSuscriber()](#unlinksuscriber) to unsubscribe (the subscriber ID is obtained through [IPropertySubscriber](#ipropertysubscriber).[id()](#id-1)), or call [aboutToBeDeleted()](#abouttobedeleted-1) of the returned [SyncedPropertyTwoWay](#syncedpropertytwowayt) object to cancel the subscription.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,7 +105,7 @@ Creates two-way synchronization. Data changes are transferred bidirectionally be
 
 |Type  |Description      |
 |-----------|--------------|
-|[SyncedPropertyTwoWay\<T\>](#syncedpropertytwowayt)  |Two-way synchronized property.|
+|[SyncedPropertyTwoWay\<T\>](#syncedpropertytwowayt)  |Two-way synchronized property object created, used for two-way data synchronization and read/write operations between the data source and the subscriber. |
 
 ### createOneWaySync
 
@@ -125,13 +126,13 @@ Creates one-way synchronization. Data changes are transferred only from the data
 
 |Type  |Description      |
 |-----------|--------------|
-|[SyncedPropertyOneWay\<T\>](#syncedpropertyonewayt)  |One-way synchronized property. |
+|[SyncedPropertyOneWay\<T\>](#syncedpropertyonewayt)  |One-way synchronized property object created, which is used to receive one-way synchronization of the parent component's state value and update its own value when the parent component's state changes. |
 
 ### unlinkSuscriber
 
 unlinkSuscriber(subscriberId: number): void
 
-Removes a subscriber.
+Removes a subscriber based on the subscriber ID.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -139,7 +140,7 @@ Removes a subscriber.
 
 |Name  |Type  |Mandatory  |Description            |
 |---------|-----------|------------|--------------|
-|subscriberId   |number   |Yes   |ID of the subscriber to remove, obtained through [IPropertySubscriber](#ipropertysubscriber).[id()](#id-1).    |
+|subscriberId   |number   |Yes   |ID of the subscriber to remove. It must be a subscriber ID that has established a subscription relationship through [createTwoWaySync](#createtwowaysync) or [createOneWaySync](#createonewaysync), and is obtained through [IPropertySubscriber](#ipropertysubscriber).[id()](#id-1).    |
 
 ### notifyHasChanged
 
@@ -229,7 +230,7 @@ Data source for the two-way synchronized property.
 
 constructor(source: SubscribedAbstractProperty\<T\>, subscribeMe?: IPropertySubscriber, info?: string)
 
-Constructor.
+Constructor. When the subscription relationship is no longer needed, call [unlinkSuscriber()](#unlinksuscriber) to unsubscribe (the subscriber ID is obtained through [IPropertySubscriber](#ipropertysubscriber).[id()](#id-1)), or call [aboutToBeDeleted()](#abouttobedeleted-1) of this object to cancel the subscription.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -253,7 +254,7 @@ Called when the object is about to be destroyed.
 
 |Name  |Type  |Mandatory  |Description            |
 |---------|-----------|------------|--------------|
-|unsubscribeMe   |[IPropertySubscriber](#ipropertysubscriber)   |No   |Subscriber to remove. If not passed, all subscribers are removed.    |
+|unsubscribeMe   |[IPropertySubscriber](#ipropertysubscriber)   |No   |Subscriber to remove, which must be the subscriber who has established a subscription relationship. If not passed, all subscribers are removed.    |
 
 ### hasChanged
 
@@ -323,7 +324,7 @@ A data source for the one-way synchronized property.
 
 constructor(source: SubscribedAbstractProperty\<T\>, subscribeMe?: IPropertySubscriber, info?: string)
 
-Constructor.
+Constructor. When the subscription relationship is no longer needed, call [unlinkSuscriber](#unlinksuscriber) to unsubscribe (the subscriber ID is obtained through [IPropertySubscriber](#ipropertysubscriber).[id()](#id-1)), or call [aboutToBeDeleted()](#abouttobedeleted-2) of this object to cancel the subscription.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -347,7 +348,7 @@ Called when the object is about to be destroyed.
 
 |Name  |Type  |Mandatory  |Description            |
 |---------|-----------|------------|--------------|
-|unsubscribeMe   |[IPropertySubscriber](#ipropertysubscriber)   |No   |Subscriber to remove. If not passed, all subscribers are removed.    |
+|unsubscribeMe   |[IPropertySubscriber](#ipropertysubscriber)   |No   |Subscriber to remove, which must be the subscriber who has established a subscription relationship. If not passed, all subscribers are removed.     |
 
 ### hasChanged
 
@@ -451,7 +452,7 @@ Called when notifying a property change.
 
 |Name  |Type  |Mandatory  |Description            |
 |---------|-----------|------------|--------------|
-|propName   |string   |Yes  |Property name.   |
+|propName   |string   |Yes   |Name of the property whose change is to be notified.    |
 |newValue   |any   |Yes   |New value after the change.   |
 
 ### addOwningProperty
@@ -480,7 +481,7 @@ Removes a subscriber from the list of owned properties.
 
 |Name  |Type  |Mandatory  |Description            |
 |---------|-----------|------------|--------------|
-|property|[IPropertySubscriber](#ipropertysubscriber)|Yes|Subscriber to remove, which must have been added through [addOwningProperty](#addowningproperty).|
+|property   |[IPropertySubscriber](#ipropertysubscriber)   |Yes   |Subscriber to remove, which must be the subscriber that has been added through [addOwningProperty](#addowningproperty).    |
 
 ### removeOwningPropertyById
 

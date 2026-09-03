@@ -6,6 +6,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=b7c9d17bef7d70b4a25b2a21b9205c96e03b913a translatedAt=2026-09-02T11:20:34.564Z pushedAt=2026-09-03T01:19:18.866Z -->
 
 >**NOTE**
 >
