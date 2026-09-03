@@ -44,7 +44,7 @@ setNetFirewallPolicy(userId: number, policy: NetFirewallPolicy): Promise\<void>
 
 | 类型                | 说明                                     |
 | ------------------- | ---------------------------------------- |
-| Promise\<void>      | 无返回结果的Promise对象。                |
+| Promise\<void>      | Promise对象，无返回结果。                |
 
 **错误码：**
 
@@ -97,7 +97,7 @@ getNetFirewallPolicy(userId: number): Promise\<NetFirewallPolicy>
 
 | 类型                                              | 说明                                  |
 | ------------------------------------------------- | ------------------------------------- |
-| Promise\<[NetFirewallPolicy](#netfirewallpolicy)> | 以Promise形式返回当前用户防火墙策略。 |
+| Promise\<[NetFirewallPolicy](#netfirewallpolicy)> | Promise对象，返回当前用户防火墙策略。 |
 
 
 **错误码：**
@@ -132,7 +132,7 @@ addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 
 添加系统用户ID的防火墙规则，目前支持的规则类型有：IP、Domain、DNS。使用Promise异步回调。
 
-> **说明**
+> **说明：**
 > 
 > 1. 防火墙规则优先级说明（[setNetFirewallPolicy](#netfirewallsetnetfirewallpolicy)和[addNetFirewallRule](#netfirewalladdnetfirewallrule)无调用顺序要求）：
 >    - 调用[setNetFirewallPolicy](#netfirewallsetnetfirewallpolicy)设置默认策略为阻止，调用[addNetFirewallRule](#netfirewalladdnetfirewallrule)新增显式规则，规则优先级由高到低为：
@@ -156,7 +156,7 @@ addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 > 2. 规则类型补充说明：
 >    - 当addNetFirewallRule的入参rule.type配置为RULE_IP时：
 >      - 若rule.action为RULE_ALLOW，且rule.localIps、rule.remoteIps均不配置，规则生效为全IP段允许通行；
->      - 若rule.action 为RULE_DENY，且rule.localIps、rule.remoteIps均不配置，规则生效为全IP段拦截。
+>      - 若rule.action为RULE_DENY，且rule.localIps、rule.remoteIps均不配置，规则生效为全IP段拦截。
 >    - 当addNetFirewallRule的入参rule.type配置为RULE_DOMAIN时，若rule.domains未配置，该规则不生效。
 > 3. 防火墙规则添加上限说明： 
 >    - 单个系统用户ID添加的防火墙规则上限是1000，若超过该上限，则报错29400001。
@@ -177,7 +177,7 @@ addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 
 | 类型                                            | 说明                                     |
 | ------------------------- | ----------------------------------------------------------- |
-| Promise\<number>          | 以Promise形式返回防火墙规则ID，防火墙规则ID由系统自动生成。 |
+| Promise\<number>          | Promise对象，返回防火墙规则ID，防火墙规则ID由系统自动生成。 |
 
 **错误码：**
 
@@ -335,7 +335,7 @@ removeNetFirewallRule(userId: number, ruleId: number): Promise\<void>
 
 | 类型                | 说明                                                                 |
 | ------------------- | ---------------------------------------------------------------------|
-| Promise\<void>      | Promise对象。无返回结果的Promise对象。                                 |
+| Promise\<void>      | Promise对象，无返回结果。                                 |
 
 **错误码：**
 
@@ -384,7 +384,7 @@ updateNetFirewallRule(rule: NetFirewallRule): Promise\<void>
 
 | 类型                 | 说明                                                                |
 | -------------------  | ------------------------------------------------------------------- |
-| Promise\<void>       | Promise对象。无返回结果的Promise对象。                                |
+| Promise\<void>       | Promise对象，无返回结果。                                |
 
 **错误码：**
 
@@ -463,7 +463,7 @@ getNetFirewallRules(userId: number, requestParam: RequestParam): Promise\<Firewa
 
 | 类型                                            | 说明                                     |
 | ----------------------------------------------- | ---------------------------------------- |
-| Promise\<[FirewallRulePage](#firewallrulepage)> | 以Promise形式返回防火墙分页规则列表。    |
+| Promise\<[FirewallRulePage](#firewallrulepage)> | Promise对象，返回防火墙分页规则列表。    |
 
 **错误码：**
 
@@ -518,7 +518,7 @@ getNetFirewallRule(userId: number, ruleId: number): Promise\<NetFirewallRule>
 
 | 类型                                            | 说明                                     |
 | ----------------------------------------------- | ---------------------------------------- |
-| Promise\<[NetFirewallRule](#netfirewallrule)>   | 以Promise形式返回防火墙规则。            |
+| Promise\<[NetFirewallRule](#netfirewallrule)>   | Promise对象，返回防火墙规则。            |
 
 **错误码：**
 
@@ -571,7 +571,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 | remotePorts | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | 否 |是 |远端端口。当type=RULE_IP时有效，否则将被忽略。最多10个。   |
 | domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | 否 |是 |域名列表，当type=RULE_DOMAIN时有效，否则将被忽略，目前不支持中文域名。         |
 | dns         | [NetFirewallDnsParams](#netfirewalldnsparams)               | 否 |是 |DNS：当type=RULE_DNS时有效，否则将被忽略。当type=RULE_DNS时，该字段不能为空。                 |
-| interface   | string                                                      | 否 |是 |物理网卡名称，例如wlan0。当type=RULE_IP时有效，否则将被忽略。可选，最多16个字符。<br>**起始版本**：26.0.0 <br>**模型约束**：此接口仅可在Stage模型下使用。                 |
+| interface   | string                                                      | 否 |是 |物理网卡名称，例如wlan0。当type=RULE_IP时有效，否则将被忽略。可选，最多16个字符。<br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。                 |
 
 ## RequestParam
 
@@ -651,7 +651,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 ## NetFirewallOrderField
 
 枚举类型，防火墙规则排序方法。
-> **说明**
+> **说明：**
 > 
 > [getNetFirewallRules](#netfirewallgetnetfirewallrules)接口，仅支持ORDER_BY_RULE_NAME字段。<br>
 
@@ -722,7 +722,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 
 防火墙规则DNS信息。
 
- > **说明**
+ > **说明：**
  >
  >  当[addNetFirewallRule](#netfirewalladdnetfirewallrule)的入参rule.type配置为RULE_DNS时，该字段不能为空。
 

@@ -6,7 +6,7 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=91dd63b1005715af7367fe6e4ce97d615a44a8bf translatedAt=2026-07-29T02:58:37.084Z pushedAt=2026-08-04T02:46:48.201Z -->
+<!-- md-trans-meta sourceCommit=f61ce95179b4c1b9fc3671fde09ef06c73b5f91d translatedAt=2026-08-28T01:30:51.553Z pushedAt=2026-08-28T09:09:12.920Z -->
 
 The **Counter** component is used for precise numerical value adjustment. It supports four styles: list, compact, inline numeric, and inline date, and is suitable for scenarios such as shopping quantity adjustment, parameter setting, and date selection. It provides flexible style configuration and event callback capabilities.
 
@@ -44,7 +44,7 @@ Creates a **Counter** component instance.
 
 | Name  | Type                             | Mandatory| Decorator| Description                   |
 | ------- | --------------------------------- | ---- | ---------- | ----------------------- |
-| options | [CounterOptions](#counteroptions) | Yes   | @Prop      | Defines the type and style options of the **Counter** component. |
+| options | [CounterOptions](#counteroptions) | Yes | \@Prop | Configuration options for the type and style of the **Counter** component, including type (Counter type), **direction** (layout direction), **numberOptions** (list and compact styles), **inlineOptions** (inline number style), and **dateOptions** (inline date style). |
 
 ## CounterOptions
 
@@ -117,7 +117,7 @@ Inherits from [CommonOptions](#commonoptions).
 | min       | number                 | No  | Yes  | Minimum value of **Counter**.<br>Default value: **0**<br>Value range: (-∞, max]<br>If the value exceeds the range (that is, the set value is greater than **max**), **max** is used.<br>If the value is **undefined**, the default value is used. |
 | max       | number                 | No  | Yes  | Maximum value of **Counter**.<br>Default value: **999**<br>Value range: [min, +∞)<br>If the value exceeds the range (that is, the set value is less than **min**), **min** is used.<br>If the value is **undefined**, the default value is used. |
 | textWidth | number                 | No  | Yes  | Width of the number text.<br>Default value: adaptive text width.<br>Value range: [0, +∞)<br>Unit: vp<br>If the value exceeds the range (that is, the set value is less than 0), **0** is used.<br>If the value is **undefined**, the default value is used.|
-| onChange  | (value: number) => void | No  | Yes  | Callback invoked when the value changes, returning the current value. Use case: pass in this callback when you need to perform custom operations upon value changes (such as updating associated UI, logging, saving state, etc.).<br>**value**: current displayed value.<br>Default value: no value is returned when the value changes.<br>If the value is **undefined**, the default value is used. |
+| onChange  | (value: number) => void | No  | Yes  | Callback invoked when the value changes, returning the current value. Use case: pass in this callback when you need to perform custom operations upon value changes (such as updating associated UI, logging, saving state, etc.).<br>**value**: current displayed value.<br>Default value: the callback is not triggered when the value changes.<br>If the value is **undefined**, the default value is used. |
 
 > **NOTE**
 >
@@ -339,7 +339,7 @@ struct DateStyleExample {
 
 ### Example 5: Implementing a Mirrored Layout
 
-Set the **direction** attribute to implement a mirrored layout for list, compact, inline numeric, and inline date counters.
+This example sets the **direction** attribute to implement a mirrored layout for list, compact, inline numeric, and inline date counters.
 
 ```ts
 import { CounterType, CounterComponent, DateData } from '@kit.ArkUI';

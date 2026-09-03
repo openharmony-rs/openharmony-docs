@@ -184,6 +184,7 @@ Failed to install the HAP because the HAP fails to be parsed.
 5. 传入的安装路径中或目录下存在多个APP。
 6. APP中不包含适合在当前设备类型上安装的HAP。
 7. 应用配置了skill，但配置的skill名称、skill目录名与SKILL.md中frontmatter的name不一致。
+<!--Del-->8. 在双模式设备上安装应用时，不同包体类别（[InstallParam](js-apis-installer-sys.md#installparam)中ohos.bms.param.deviceModeDistributionPolicy值为4、6、8）仅支持系统应用配置，非系统应用配置将无法安装；同时，新安装应用必须与设备上已存在的同包名应用保持包体类别属性大类一致，“不同包体类别”与“相同包体类别”（值为0、1、2、3、5、7）不能混合覆盖安装。<!--DelEnd-->
 
 **处理步骤**
 
@@ -194,6 +195,7 @@ Failed to install the HAP because the HAP fails to be parsed.
 5. 检查传入的路径下是否包含多个APP。
 6. 确认APP内是否存在支持当前设备类型的HAP。
 7. 检查module.json中skillProfiles下skill的name、skills目录下的子目录名称、SKILL.md中frontmatter的name，确保三者一致。
+<!--Del-->8. 确认应用为系统应用后再配置不同包体类别；确认新安装的应用与已存在应用的[InstallParam](js-apis-installer-sys.md#installparam)中ohos.bms.param.deviceModeDistributionPolicy配置是否属于同一包体类别（均为不同包体或均为相同包体），避免不同包体类别与相同包体类别之间互转更新。<!--DelEnd-->
 
 ## 17700011 签名校验失败导致应用安装失败
 
@@ -1672,6 +1674,65 @@ The specified bundle not found app clone preference.
 
 1. 确认应用是否需要分身偏好。
 2. 使用[bundleManager.setAppClonePreference](js-apis-bundleManager-sys.md#bundlemanagersetappclonepreference)设置分身偏好后重试。
+
+## 17700097 设备不支持双模式
+
+**错误信息**
+
+The device does not support the dual mode.
+
+**错误描述**
+
+当前设备不支持双模式（即设备不支持在主模式和副模式之间切换）。
+
+**可能原因**
+
+当前设备为非双模设备，系统参数const.sceneboard.mainmode或persist.sceneboard.ispcmode缺失或值非法。
+
+**处理步骤**
+
+1. 确认设备是否为双模设备，可以在开发者模式下查看设备是否存在系统参数const.sceneboard.mainmode和persist.sceneboard.ispcmode。
+2. 若设备不支持双模式，该接口不适用，无需调用。
+
+## 17700098 入参无效
+
+**错误信息**
+
+The input parameter is invalid. It is either outside the range of valid enum values or does not include the following required enum values: [DeviceModeDistributionPolicy.UNIVERSAL_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.FULL_COMPATIBLE_DIFFERENT_PACKAGE].
+
+**错误描述**
+
+调用filterBundleListByDeviceModeDistributionPolicies接口时，传入的参数无效。
+
+**可能原因**
+
+1. 传入的枚举值超出DeviceModeDistributionPolicy枚举值范围。
+2. 传入的枚举数组未包含所有不同包体的策略（UNIVERSAL_DIFFERENT_PACKAGE、PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE和FULL_COMPATIBLE_DIFFERENT_PACKAGE）。
+
+**处理步骤**
+
+1. 需要检查传入的枚举值，是否有超过DeviceModeDistributionPolicy枚举值。
+2. 需要检查传入的枚举数组是否包含了[DeviceModeDistributionPolicy.UNIVERSAL_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.FULL_COMPATIBLE_DIFFERENT_PACKAGE]，这三个在切换时必须传入。
+
+## 17700099 设备正在安装卸载应用或双模切换正在处理中
+
+**错误信息**
+
+The device is installing or uninstalling an application, or a previous API call is still being processed. Please try again.
+
+**错误描述**
+
+设备正在安装或卸载应用，或者上一次双模切换调用正在处理中，请重试。
+
+**可能原因**
+
+设备正在安装或卸载应用，或者上一次双模切换调用正在处理中。
+
+**处理步骤**
+
+1. 检查下设备是否正在安装、卸载应用。
+2. 检查下是否已经调用该接口且双模切换正在处理中。
+3. 等待上述操作完成后重新调用该接口。
 <!--DelEnd-->
 
 ## 17700101 包管理服务异常

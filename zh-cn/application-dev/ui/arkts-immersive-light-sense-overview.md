@@ -43,7 +43,8 @@
 
 | 动效类型 | 说明 | 支持的组件 |
 | --- | --- | --- |
-| 非线性形变<br/>边缘流光 | 非线性形变：实现光影形体的动态蜕变，打破规整边界带来柔和自然的空间过渡。<br/>边缘流光：流光塑造视觉焦点与层级秩序，依靠光流走向引导用户的视线流转。 | AlertDialog参考[示例9（设置弹窗的沉浸光感效果）](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#示例9设置弹窗的沉浸光感效果)<br/>CustomDialog参考[示例14（设置弹窗的沉浸光感效果）](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#示例14设置弹窗的沉浸光感效果)<br/>ActionSheet参考[示例9（设置弹窗的沉浸光感效果）](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#示例9设置弹窗的沉浸光感效果)<br/>菜单控制参考[示例24（设置菜单的沉浸光感）](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#示例24设置菜单的沉浸光感) |
-| 粒子动画 | 粒子承载信息具象表达，以粒子光点传递信息变化。 | Slider参考[示例10（设置滑动条的沉浸光感效果）](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md#示例10设置滑动条的沉浸光感效果) |
+| 非线性形变 | 实现光影形体的动态蜕变，打破规整边界带来柔和自然的空间过渡。 | AlertDialog，具体示例请参考[示例9（设置弹窗的沉浸光感效果）](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#示例9设置弹窗的沉浸光感效果)。<br/>CustomDialog，具体示例请参考[示例14（设置弹窗的沉浸光感效果）](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#示例14设置弹窗的沉浸光感效果)。<br/>ActionSheet，具体示例请参考[示例9（设置弹窗的沉浸光感效果）](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#示例9设置弹窗的沉浸光感效果)。<br/>菜单控制，具体示例请参考[示例24（设置菜单的沉浸光感）](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#示例24设置菜单的沉浸光感)。 |
+| 边缘流光 | 流光塑造视觉焦点与层级秩序，依靠光流走向引导用户的视线流转。 | AlertDialog，具体示例请参考[示例9（设置弹窗的沉浸光感效果）](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#示例9设置弹窗的沉浸光感效果)。<br/>CustomDialog，具体示例请参考[示例14（设置弹窗的沉浸光感效果）](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#示例14设置弹窗的沉浸光感效果)。<br/>ActionSheet，具体示例请参考[示例9（设置弹窗的沉浸光感效果）](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#示例9设置弹窗的沉浸光感效果)。<br/>菜单控制，具体示例请参考[示例24（设置菜单的沉浸光感）](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#示例24设置菜单的沉浸光感)。 |
+| 粒子动画 | 粒子承载信息具象表达，以粒子光点传递信息变化。 | Slider，具体示例请参考[示例10（设置滑动条的沉浸光感效果）](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md#示例10设置滑动条的沉浸光感效果)。 |
 
 <!--RP3--><!--RP3End-->

@@ -592,7 +592,7 @@ Font Feature当前支持的属性参见[fontFeature](ts-basic-components-text.md
 
 selectedBackgroundColor(value: ResourceColor)
 
-设置文本选中底板颜色。未通过该接口设置时，默认颜色为'#007DFF'（蓝色）。
+设置文本选中高亮颜色。未通过该接口设置时，默认颜色为'#007DFF'（蓝色）。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -604,7 +604,7 @@ selectedBackgroundColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                       |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 文本选中底板颜色。如果未设置不透明度，默认为20%不透明度。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 文本选中高亮颜色。如果未设置不透明度或设置为完全不透明，默认使用20%不透明度。 |
 
 ### inputFilter<sup>12+</sup>
 

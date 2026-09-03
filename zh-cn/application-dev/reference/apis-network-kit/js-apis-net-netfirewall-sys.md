@@ -12,7 +12,7 @@
 > **说明：**
 >
 > 本模块首批接口从API version 14开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 本模块为系统接口。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.net.netFirewall (网络防火墙)](js-apis-net-netfirewall.md)。
 
 ## 导入模块
 
@@ -43,11 +43,11 @@ getInterceptedRecords(userId: number, requestParam: RequestParam): Promise\<Inte
 
 | 类型                                                      | 说明                            |
 | --------------------------------------------------------- | ------------------------------- |
-| Promise\<[InterceptedRecordPage](#interceptedrecordpage)> | 以Promise形式返回拦截记录列表。 |
+| Promise\<[InterceptedRecordPage](#interceptedrecordpage)> | Promise对象，返回拦截记录列表。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见通用错误码和网络连接管理错误码。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[网络连接管理错误码](errorcode-net-connection.md)和[防火墙错误码](errorcode-net-netfirewall.md)。
 | 错误码ID | 错误信息                                                                        |
 | -------  | --------------------------------------------------------------------------------|
 | 201      | Permission denied.                                                              |

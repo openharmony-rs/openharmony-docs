@@ -153,7 +153,7 @@ getDefaultNet(): Promise\<NetHandle>
 
 | 类型                              | 说明                                  |
 | --------------------------------- | ------------------------------------- |
-| Promise\<[NetHandle](#nethandle)> | 以Promise形式返回默认网络的网络句柄。 |
+| Promise\<[NetHandle](#nethandle)> | Promise对象，返回默认网络的网络句柄。 |
 
 **错误码：**
 
@@ -343,7 +343,7 @@ getDefaultHttpProxy(): Promise\<HttpProxy>
 
 | 类型                             | 说明                                      |
 | -------------------------------- | ----------------------------------------- |
-| Promise<[HttpProxy](#httpproxy10)> | 以Promise形式返回网络默认的代理配置信息。 |
+| Promise<[HttpProxy](#httpproxy10)> | Promise对象，返回网络默认的代理配置信息。 |
 
 **错误码：**
 
@@ -418,7 +418,7 @@ getAppNet(): Promise\<NetHandle>
 
 | 类型                              | 说明                                  |
 | --------------------------------- | ------------------------------------- |
-| Promise\<[NetHandle](#nethandle)> | 以Promise形式返回App绑定的网络信息。 |
+| Promise\<[NetHandle](#nethandle)> | Promise对象，返回App绑定的网络信息。 |
 
 **错误码：**
 
@@ -2008,7 +2008,7 @@ setPacFileUrl(pacFileUrl: string): void
 
 **示例：**
 
-```typescript
+```ts
 import { connection } from '@kit.NetworkKit';
 
 let pacFileUrl = "http://example.com/proxy.pac";
@@ -2038,7 +2038,7 @@ getPacFileUrl(): string
 
 **示例：**
 
-```typescript
+```ts
 import { connection } from '@kit.NetworkKit';
 
 let pacFileUrl = connection.getPacFileUrl();
@@ -2074,7 +2074,7 @@ findProxyForUrl(url: string): string
 
 **示例：**
 
-```typescript
+```ts
 import { connection } from '@kit.NetworkKit';
 
 let proxyInfo = connection.findProxyForUrl("http://example.com");
@@ -2562,7 +2562,7 @@ getDnsAscii(host: string, flag?: ConversionProcess): string
 
 **示例：**
 
-```typescript
+```ts
 import { connection } from '@kit.NetworkKit';
 
 let result = connection.getDnsAscii("www.示例.com", connection.ConversionProcess.NO_CONFIGURATION);
@@ -2604,7 +2604,7 @@ getDnsUnicode(host: string, flag?: ConversionProcess): string
 
 **示例：**
 
-```typescript
+```ts
 import { connection } from '@kit.NetworkKit';
 
 let result = connection.getDnsUnicode("www.xn--fsq092h.com", connection.ConversionProcess.NO_CONFIGURATION);
@@ -2689,7 +2689,7 @@ queryTraceRoute(destination: string, option?: TraceRouteOptions): Promise\<Trace
 
 **起始版本**：26.0.0
 
-**需要权限**：ohos.permission.INTERNET、ohos.permission.ACCESS_NET_TRACE_INFO、ohos.permission.LOCATION和ohos.permission.APPROXIMATELY_LOCATION
+**需要权限**：ohos.permission.INTERNET 和 ohos.permission.ACCESS_NET_TRACE_INFO 和 ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -2750,7 +2750,7 @@ queryProbeResult(destination: string, duration: number): Promise\<ProbeResultInf
 
 **起始版本**：26.0.0
 
-**需要权限**：ohos.permission.INTERNET。
+**需要权限**：ohos.permission.INTERNET
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 

@@ -104,7 +104,7 @@ struct Index {
 
 ### API version 22之前的迁移方案
 
-从API version 22之前，可以使用一个duration为0的[animateToImmediately](../../reference/apis-arkui/arkui-ts/ts-explicit-animatetoimmediately.md#animatetoimmediately)将额外的修改先刷新，再执行原来的动画达成预期的效果。
+在API version 22之前，可以使用一个duration为0的[animateToImmediately](../../reference/apis-arkui/arkui-ts/ts-explicit-animatetoimmediately.md#animatetoimmediately)将额外的修改先刷新，再执行原来的动画达成预期的效果。
 
 完整代码如下：
 

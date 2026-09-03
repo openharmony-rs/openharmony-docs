@@ -1,14 +1,13 @@
 # @ohos.PiPWindow (PiP Window) (System API)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @betafringe007-->
 <!--Designer: @taoweihua-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=75ebd2e725f59c620a708b014749d381526b576a translatedAt=2026-08-20T02:05:16.776Z pushedAt=2026-08-20T07:12:46.178Z -->
+<!-- md-trans-meta sourceCommit=18725a1c910c26a150d1e4b30340bf2eaf450236 translatedAt=2026-09-01T03:21:28.923Z pushedAt=2026-09-02T01:54:14.037Z -->
 
-This module provides basic APIs for manipulating Picture in Picture (PiP). For example, you can use the APIs to check whether the PiP feature is supported and create a PiP controller to start or stop a PiP window. In this way, users can continue watching videos in a small window while performing other operations, improving multitasking efficiency. This module is mainly used to display content in small window (PiP) mode in video playback, video calls, video meetings, in-vehicle video, or in-vehicle navigation.
+This module provides basic APIs for manipulating Picture in Picture (PiP). For example, you can use the APIs to check whether the PiP feature is supported and create a PiP controller to start or stop a PiP window. In this way, users can continue watching videos in a small window while performing other operations, improving multitasking efficiency. This module is mainly used to display content in a small window (PiP) mode in video playback, video calls, video meetings, in-vehicle video, or in-vehicle navigation.
 
 > **NOTE**
 >
@@ -23,6 +22,7 @@ This module provides basic APIs for manipulating Picture in Picture (PiP). For e
 ```ts
 import { PiPWindow } from '@kit.ArkUI';
 ```
+
 
 ## PiPTemplateType
 
@@ -54,8 +54,6 @@ Checks whether the current device supports the PiP feature. Before starting the 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Window.SessionManager
-
-**Since**: 18
 
 **Return value**
 

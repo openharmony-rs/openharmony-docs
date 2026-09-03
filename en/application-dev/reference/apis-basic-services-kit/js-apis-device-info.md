@@ -1,12 +1,11 @@
 # @ohos.deviceInfo (Device Information)
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Startup-->
 <!--Owner: @chenjinxiang3-->
 <!--Designer: @chenjinxiang3-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=5dd6ca44509be28d37b1b8abb4fb9a1f05ff5b2a translatedAt=2026-07-29T01:29:37.411Z pushedAt=2026-07-29T11:55:39.816Z -->
+<!-- md-trans-meta sourceCommit=dedb6730301e201bd92e89c565e2c1a291211a57 translatedAt=2026-09-01T03:43:17.501Z pushedAt=2026-09-01T08:15:36.231Z -->
 
 This module provides APIs for querying terminal device information, including the device type, brand, model, system version, security patch tag, and unique device ID. It is applicable to scenarios such as device adaptation, version compatibility check, device identification, and statistical analysis, helping you quickly obtain device information for application adaptation and optimization. You cannot configure this information.
 
@@ -23,7 +22,6 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 ```
 
 ## Constants
-
 > **NOTE**
 > Unless otherwise specified, the maximum data length is 96 bytes.
 
@@ -48,7 +46,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | abiList | string | Yes | Application binary interface (Abi) list.<br>Example: arm64-v8a |
 | securityPatchTag | string | Yes | Security patch tag.<br>Example: <!--RP7-->2021/01/01<!--RP7End--> |
 | displayVersion | string | Yes | Product version.<!--RP14--><!--RP14End--><br>Example: <!--RP8-->XXX X.X.X.X<!--RP8End--> |
-| incrementalVersion | string | Yes | Incremental version, which is the Ohos version number generated during compilation.<br>Example: default |
+| incrementalVersion | string | Yes | Incremental version, which is the Ohos version number generated during compilation. <br>Example: 6.1.1.120 |
 | osReleaseType | string | Yes | OS release type. The options are as follows:<br>-&nbsp;**Canary**: Preliminary release open only to specific developers. This release does not promise API stability and may require tolerance of instability.<br>-&nbsp;**Beta**: Release open to all developers. This release does not promise API stability and may require tolerance of instability.<br>-&nbsp;**Release**: Official release open to all developers. This release promises that all APIs are stable.<br>Example: <!--RP9-->Canary/Beta/Release<!--RP9End--> |
 | osFullName | string | Yes | System version. The version number is in the format of **<!--RP12-->OpenHarmony-x.x.x.x**, where **x** is a placeholder for digits. <!--RP12End-->To obtain the value of a segment in the version number, you are advised to use **majorVersion**, **seniorVersion**, **featureVersion**, or **buildVersion**, which can improve efficiency. Parsing **osFullName** is not recommended.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>Example: <!--RP10-->OpenHarmony-5.0.0.1<!--RP10End--> |
 | majorVersion | number | Yes | Major version number, which increments with the main version. The value is the first digit in **osFullName**. You are advised to use **deviceInfo.majorVersion** instead of parsing **osFullName** to obtain the value, facilitating efficiency improvement.<br>Example: 5 |
@@ -56,8 +54,8 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | featureVersion | number | Yes | Feature version number, which identifies the planned new feature version. The value is the third digit in **osFullName**. You are advised to use **deviceInfo.featureVersion** instead of parsing **osFullName** to obtain the value, facilitating efficiency improvement.<br>Example: 0 |
 | buildVersion | number | Yes | Build version number, which identifies the build version. The value is the fourth digit in **osFullName**. You are advised to use **deviceInfo.buildVersion** instead of parsing **osFullName** to obtain the value, facilitating efficiency improvement.<br>Example: 1 |
 | sdkApiVersion | number | Yes | SDK API version.<br>**Atomic service API**: This API can be used in atomic services since API version 14.<br>Example: 12 |
-| sdkMinorApiVersion | number | Yes | SDK minor API version. Starting from API version 26.0.0, the system API version is in the format of **sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion**.<br>**Model constraint**: This API can be used only in the stage model.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>Example: 0 |
-| sdkPatchApiVersion | number | Yes | SDK patch API version. Starting from API version 26.0.0, the system API version is in the format of **sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion**.<br>**Model constraint**: This API can be used only in the stage model.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>Example: 0 |
+| sdkMinorApiVersion | number | Yes | SDK minor API version. Starting from API version 26.0.0, the system API version is in the format of **sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>Example: 0 |
+| sdkPatchApiVersion | number | Yes | SDK patch API version. Starting from API version 26.0.0, the system API version is in the format of **sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>Example: 0 |
 | firstApiVersion | number | Yes | First API version.<br>Example: 3 |
 | versionId | string | Yes | Version ID, which is a concatenation of **deviceType**, **manufacture**, **brand**, **productSeries**, **osFullName**, **productModel**, **softwareModel**, **sdkApiVersion**, **incrementalVersion**, and **buildType**. To obtain a specific field value, you are advised to use the corresponding field directly (such as **deviceType** and **manufacture**) instead of parsing **versionId**, facilitating efficiency improvement. |
 | buildType | string | Yes | Build type.<br>Example: default |
@@ -65,18 +63,18 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | buildHost | string | Yes | Build host.<br>Example: default |
 | buildTime | string | Yes | Build time.<br>Example: default |
 | buildRootHash | string | Yes | Build root hash.<br>Example: default |
-| udid<sup>7+</sup> | string | Yes | UDID of the device. This API will start a temporary process during execution. When the system load is high, blocking may occur. To ensure the response of the main thread of your application, you are advised not to call this API in the main thread. This value varies depending on the device and is fixed. To improve performance, you can store this information on a local device after obtaining it for the first time.<br>Note: The data length is 65 bytes. The UDID can be used as the unique identifier of a device.<br>**Required permissions**: ohos.permission.sec.ACCESS_UDID(for system applications and enterprise applications only)<br>Example: 9D6AABD147XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXE5536412 |
+| udid<sup>7+</sup> | string | Yes | UDID of the device. This API will start a temporary process during execution. When the system load is high, blocking may occur. To ensure the response of the main thread of your application, you are advised not to call this API in the main thread. This value varies depending on the device and is fixed. To improve performance, you can store this information on a local device after obtaining it for the first time.<br>**Note:** The data length is 65 bytes (including the terminator). The UDID can be used as the unique identifier of a device.<br>**Required permissions**: ohos.permission.sec.ACCESS_UDID(for system applications and enterprise applications only)<br>Example: 9D6AABD147XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXE5536412 |
 | distributionOSName<sup>10+</sup> | string | Yes | Distribution OS name<!--Del-->, which is defined by the issuer<!--DelEnd-->.<br>Example: OpenHarmony |
 | distributionOSVersion<sup>10+</sup> | string | Yes | Distribution OS version<!--Del-->, which is defined by the issuer<!--DelEnd-->.<!--RP11--><!--RP11End--><br>Example: 5.0.0 |
-| distributionOSApiVersion<sup>10+</sup> | number | Yes | Distribution OS API version<!--Del-->, which is defined by the issuer<!--DelEnd-->.<br>Example: 500001 |
-| distributionOSApiName<sup>13+</sup> | string | Yes | Distribution OS API name<!--Del-->, which is defined by the issuer<!--DelEnd-->.<br>Example: OpenHarmony-API |
+| distributionOSApiVersion<sup>10+</sup> | number | Yes | Distribution OS API version.<!--Del--> It is defined by the issuer.<!--DelEnd-->.<!--RP15--><!--RP15End--><br>Example: 50001 |
+| distributionOSApiName<sup>13+</sup> | string | Yes | Distribution OS API name.<!--Del--> It is defined by the issuer.<!--DelEnd-->.<!--RP16--><br>**Note:** It is not recommended that this field be used to determine the version number.<br>Example: 5.0.1<!--RP16End--> |
 | distributionOSReleaseType<sup>10+</sup> | string | Yes | Distribution OS release type<!--Del-->, which is defined by the issuer<!--DelEnd-->.<br>Example: Release |
 | ODID<sup>12+</sup> | string | Yes | Open device identifier (ODID).<br>An ODID will be regenerated in the following scenarios:<br>Restore a phone to its factory settings.<br>Uninstall and reinstall all apps with the same **developerId** on one device.<br>An ODID is generated based on the following rules:<br>The value is generated based on the **groupId** parsed from the **developerId** in the signature information. As **groupId.developerId** is the rule, if no **groupId** exists, the **developerId** is used as the **groupId**.<br>Applications with the same **developerId** use the same ODID on one device.<br>Applications with different **developerId**s use different ODIDs on one device.<br>Applications with the same **developerId** use different ODIDs on different devices.<br>Applications with different **developerId**s use different ODIDs on different devices.<br>Note: The data length is 37 bytes (including the terminator).<br>Example: 1234a567-XXXX-XXXX-XXXX-XXXXXXXXXXXX |
 | diskSN<sup>15+</sup> | string | Yes | Serial number of the disk. This API will start a temporary process during execution. When the system load is high, blocking may occur. To ensure the response of the main thread of your application, you are advised not to call this API in the main thread. This value varies depending on the device and is fixed. To improve performance, you can store this information on a local device after obtaining it for the first time.<br>Note: This field can be queried only on some 2-in-1 devices. The query result is empty on other devices.<br>**Required permissions**: ohos.permission.ACCESS_DISK_PHY_INFO(for system applications and enterprise applications only)<br>Example: 2502EM400567 |
 | performanceClass<sup>19+</sup> | [PerformanceClassLevel](#performanceclasslevel19) | Yes | Device capability level, which is evaluated based on factors such as CPU, memory, storage read/write performance, and screen resolution.<br>**Use scenarios**: This parameter can be used for performance adaptation based on device capabilities, such as adjusting animation complexity, selecting resources of different quality, and dynamically controlling features.<br>Example: 0 |
 | chipType<sup>21+</sup> | string | Yes | CPU chip model of the device.<br>**Use scenarios**: This parameter can be used for performance adaptation, device feature identification, and compatibility check based on the chip model. Different chip models may have different GPU performance and AI acceleration capabilities.<br>Example: xxxxx |
 | bootCount<sup>21+</sup> | number | Yes | Number of device reboots. If the number cannot be obtained, **-1** is returned.<br>Example: 100 |
-| deviceColor | string | Yes | Device color. If the value cannot be obtained, an empty string is returned.<br>**Model constraint**: This API can be used only in the stage model.<br>**Since**: 26.0.0<br>Example: blue |
+| deviceColor | string | Yes | Device color. If the value cannot be obtained, an empty string is returned.<br>**Model restriction:** This API can only be used in the stage model.<br> **Since:** 26.0.0<br> Example: gold |
 
 **Error codes**
 
@@ -192,7 +190,7 @@ For details about the error codes, see [deviceInfo Error Codes](errorcode-device
     console.info('the value of the deviceInfo firstApiVersion is :' + firstApiVersionInfo);
 
     let versionIdInfo: string = deviceInfo.versionId;
-// Output: the value of the versionId is :wearable/XXXX/XXXX/TAS/OpenHarmony-5.0.0.1/XXXX/XXXX/12/default/release:nolog
+// Output: the value of the versionId is :wearable/XXXX/XXXX/TAS/OpenHarmony-5.0.0.1/TAS-AL00/TAS-AL00/12/default/release:nolog
     console.info('the value of the deviceInfo versionId is :' + versionIdInfo);
 
     let buildTypeInfo: string = deviceInfo.buildType;
@@ -247,7 +245,7 @@ For details about the error codes, see [deviceInfo Error Codes](errorcode-device
     // Output: the value of the deviceInfo diskSN is :2502EM400567
     console.info('the value of the deviceInfo diskSN is :' + diskSN);
 
-let performanceClass: PerformanceClassLevel = deviceInfo.performanceClass;
+let performanceClass = deviceInfo.performanceClass;
     // Output: the value of the deviceInfo performanceClass is :0
     console.info('the value of the deviceInfo performanceClass is :' + performanceClass);
 
@@ -326,13 +324,13 @@ Enumerates device types, which can be used to verify the return value of **devic
     console.info('the value of the DeviceTypes is :' + deviceTypesInfoCar);
 ```
 
+
 ## deviceInfo.apiAvailable
 
 apiAvailable(version: string | number): boolean;
 
-<!--RP13-->
-
-Checks whether a specified API version is available on the current device.<br>This API provides compatibility check across different OpenHarmony/distributed OS versions. A version check method is automatically selected based on the input format and supported API versions.
+Checks whether a specified API version is available on the current device.<br>
+This API provides compatibility check for OpenHarmony and its released versions. A suitable version check method is automatically selected based on the input format and supported API versions.
 
 **Since**: 26.0.0
 
@@ -344,7 +342,7 @@ Checks whether a specified API version is available on the current device.<br>Th
 
 | Name   | Type                                     | Mandatory| Description                              |
 | --------- | ----------------------------------------- | ---- | ---------------------------------- |
-| version | string \| number | Yes | API version number to be verified. The value can be an integer or in the dotted format. The integer version number must be a positive integer. The dotted version number is in the format of **x.x.x** (for example, **5.0.0** or **26.0.0**), and each segment is a non-negative integer. If an invalid value is passed, **false** is returned. |
+| version | string \| number | Yes | API version to be verified. Supports both integer and string formats. The string uses the M.S.F format (for example, "26.0.0" and "5.0.1"): for API 26.0.0 and later (version >= 26.0.0), it represents the OpenHarmony and distribution system API version. For API earlier than 26.0.0 (version < 26.0.0), it represents the distribution system API version. The integer format (for example, 13) represents the OpenHarmony SDK API version. (Only API earlier than 26 is supported.) M>=26, 0<=S<=99, 0<=F<=99. A compilation error occurs when an invalid literal is passed. |
 
 **Return value**
 
@@ -357,23 +355,21 @@ Checks whether a specified API version is available on the current device.<br>Th
 ```ts
 import { deviceInfo } from '@kit.BasicServicesKit';
 
-// Check whether the API version is 26.0.0 or later. If true is returned, the API version of the current device meets the requirements.
+// For OpenHarmony base and distribution APIs of API version 26.0.0 or later
 if (deviceInfo.apiAvailable("26.0.0")) {
    // Method that requires version isolation
 }
 
 
-// Check API 5.0.1 (Distribution OS version, API 26.0.0-)
+// For Distribution OS-specific APIs, that is, APIs marked with since M.S.F(N)
 if (deviceInfo.apiAvailable("5.0.1")) {
    // Method that requires version isolation
 }
 
 
-// Check API 13 (OpenHarmony SDK version, API 26.0.0-)
+// For OpenHarmony base public APIs, that is, APIs marked with since N
 if (deviceInfo.apiAvailable(13)) {
    // Method that requires version isolation
 }
 
 ```
-
-<!--RP13End-->

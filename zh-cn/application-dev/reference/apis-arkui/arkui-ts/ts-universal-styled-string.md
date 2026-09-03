@@ -1000,6 +1000,7 @@ ShadowOptions对象中不支持fill字段。
 | layoutStyle  | [ImageAttachmentLayoutStyle](#imageattachmentlayoutstyle对象说明) |  是  |  是  | 获取属性字符串的图片布局。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | colorFilter<sup>15+</sup>  | [ColorFilterType](#colorfiltertype15) |  是  |  是  | 获取属性字符串的图片颜色滤镜效果。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 | supportSvg2<sup>22+</sup>  | boolean |  是  |  是  | 获取属性字符串是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>默认值：false<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| resizable  | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) |  是  |  是  | 获取属性字符串的图片拉伸选项。<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ### constructor
 
@@ -1075,6 +1076,7 @@ type ColorFilterType = ColorFilter | DrawingColorFilter
 | objectFit | [ImageFit](ts-appendix-enums.md#imagefit) | 否    | 是 | 设置图片的缩放类型，当前枚举类型不支持ImageFit.MATRIX。具体枚举及说明请参考ImageFit。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>默认值：ImageFit.Cover |
 | layoutStyle | [ImageAttachmentLayoutStyle](#imageattachmentlayoutstyle对象说明) | 否    | 是 | 设置图片布局。不传入时使用默认布局（外边距、内边距和圆角均为0）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | colorFilter<sup>15+</sup>  | [ColorFilterType](#colorfiltertype15) |  否   | 是 | 设置属性字符串的图片颜色滤镜效果。不传入时不应用颜色滤镜，图片显示原始颜色。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| resizable  | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) |  否   | 是 | 设置属性字符串的图片拉伸选项。不传入时不进行拉伸。<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## ImageAttachmentLayoutStyle对象说明
 
@@ -1104,6 +1106,7 @@ ResourceStr类型图片设置项。
 | colorFilter  | [ColorFilterType](#colorfiltertype15) |  否  | 是 | 设置属性字符串的图片颜色滤镜效果。不传入时不应用颜色滤镜，图片显示原始颜色。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 | syncLoad  | boolean |  否  | 是 | 是否同步加载图片，默认是异步加载。同步加载时阻塞UI线程，不会显示占位图。<br>true：同步加载；false：异步加载。<br>默认值：false<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 | supportSvg2<sup>22+</sup>  | boolean |  否  |  是  | 控制是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>默认值：false<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| resizable  | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) |  否  |  是  | 设置属性字符串的图片拉伸选项。不传入时不进行拉伸。<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## CustomSpan
 
@@ -3490,3 +3493,60 @@ struct TailIndentsExample {
 ```
 
 ![styledStringTailIndents](figures/styledStringTailIndents.png)
+
+
+### 示例22（设置图片拉伸）
+
+该示例通过设置[ImageAttachment](#imageattachmentinterface对象说明)中的resizable属性，对图片不同方向进行拉伸。
+
+从API版本26.1.0开始，ImageAttachment接口新增resizable属性。
+
+```ts
+@Entry
+@Component
+struct StyledStringResizablePage {
+  controller: TextController = new TextController();
+  build() {
+    Column({ space: 20 }) {
+      Text('StyledString resizable Demo')
+        .fontSize(28)
+        .fontWeight(FontWeight.Bold)
+
+      Text(undefined, { controller: this.controller })
+        .width('90%')
+        .margin({ top: 10 })
+        .fontSize(28)
+        .onAppear(() => {
+          let mutableStyledString2: MutableStyledString = new MutableStyledString(new ImageAttachment({
+            resourceValue: $r('app.media.landscape'),
+            size: { width: 260, height: 260 },
+            resizable: {
+              slice: {
+                left: '200px',
+                top: '200px',
+                right: '20px',
+                bottom: '20px'
+              }
+            }
+          }));
+          let mutableStyledString: MutableStyledString = new MutableStyledString(new ImageAttachment({
+            resourceValue: $r('app.media.landscape'),
+            size: { width: 260, height: 260 },
+          }));
+          mutableStyledString.insertString(0, "原图\n")
+          mutableStyledString.insertString(mutableStyledString.length, "\n设置Resizable后\n")
+          mutableStyledString.appendStyledString(mutableStyledString2);
+          this.controller.setStyledString(mutableStyledString);
+        })
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+
+```
+
+![imageAttachmentResizable](figures/styledstring-resizable.png)
+

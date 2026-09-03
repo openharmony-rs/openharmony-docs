@@ -1025,7 +1025,7 @@ try {
 
 getInstallLocalEnterpriseAppEnabled(admin: Want | null): boolean
 
-查询是否支持本地安装企业应用。适用于需要验证设备本地安装企业应用功能是否开启的场景，帮助企业管理员确认策略配置状态，确保设备能够正常安装企业应用。<!--RP8--><!--RP8End-->
+查询是否支持本地安装企业应用。适用于需要验证设备本地安装企业应用功能是否开启的场景，帮助企业管理员确认策略配置状态，确保设备能够正常安装企业应用。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1799,7 +1799,7 @@ try {
 
 getInstallLocalEnterpriseAppEnabledForAccount(admin: Want | null, accountId: number): boolean
 
-查询指定用户是否支持本地安装企业应用。适用于需要验证特定用户本地安装企业应用功能是否开启的场景，帮助企业管理员确认策略配置状态，确保用户能够正常安装企业应用。<!--RP8--><!--RP8End-->
+查询指定用户是否支持本地安装企业应用。适用于需要验证特定用户本地安装企业应用功能是否开启的场景，帮助企业管理员确认策略配置状态，确保用户能够正常安装企业应用。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 

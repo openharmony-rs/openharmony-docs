@@ -9174,3 +9174,17 @@ Allows a system application to access sensitive data provided by the navigation 
 **Supported devices**: cars
 
 **Valid since**: 26.1.0
+
+## ohos.permission.MANAGE_SHARE_PHOTO
+
+Allows a system application to access shared albums and files within the albums.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | tablets | PCs/2-in-1 devices | cars | TVs | wearables
+
+**Valid since**: 26.1.0

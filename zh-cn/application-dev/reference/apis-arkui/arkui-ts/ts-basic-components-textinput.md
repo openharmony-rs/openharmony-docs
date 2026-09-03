@@ -376,7 +376,7 @@ textDirection(direction: TextDirection | undefined)
 
 selectedBackgroundColor(value: ResourceColor)
 
-设置文本选中底板颜色。如果未设置不透明度，默认为20%不透明度。未通过该接口设置时，默认为'#FF007DFF'（蓝色），Wearable设备上默认值为'#FF1F71FF'（蓝色，比'#FF007DFF'颜色稍深）。
+设置文本选中高亮颜色。如果未设置不透明度或设置为完全不透明，默认使用20%不透明度。未通过该接口设置时，默认为'#007DFF'（蓝色），Wearable设备上默认值为'#1F71FF'（蓝色，比'#007DFF'颜色稍深）。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -388,7 +388,7 @@ selectedBackgroundColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                       |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 文本选中底板颜色。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 文本选中高亮颜色。 |
 
 ### caretStyle<sup>10+</sup>
 
@@ -1615,8 +1615,8 @@ selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
 
 | 名称    |  值 | 说明                                                         |
 | ------- | --- | ------------------------------------------------------------ |
-| Default | - | 默认风格，光标宽1.5vp，光标高度与文本选中底板高度和字体大小相关。 |
-| Inline  | - | 内联输入风格，也称内联模式。文本选中底板高度与输入框高度相同。<br>内联输入是在有明显的编辑态/非编辑态的区分场景下使用，例如：文件列表视图中的重命名。<br>不支持showError属性。<br>不支持showCounter属性，内联模式下字符计数器不显示。<br>内联模式下，不支持拖入文本。 |
+| Default | - | 默认风格，光标宽1.5vp，光标高度与文本选中高亮高度和字体大小相关。 |
+| Inline  | - | 内联输入风格，也称内联模式。文本选中高亮高度与输入框高度相同。<br>内联输入是在有明显的编辑态/非编辑态的区分场景下使用，例如：文件列表视图中的重命名。<br>不支持showError属性。<br>不支持showCounter属性，内联模式下字符计数器不显示。<br>内联模式下，不支持拖入文本。 |
 
 ## PasswordIcon<sup>10+</sup>对象说明
 

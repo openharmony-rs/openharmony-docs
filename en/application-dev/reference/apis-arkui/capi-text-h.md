@@ -5,7 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=330b06588843f46c9bd90648f10e5c574cf1a509 translatedAt=2026-08-27T08:55:47.194Z pushedAt=2026-08-28T08:52:21.876Z -->
+<!-- md-trans-meta sourceCommit=5835a654c43d42e4957bbd83eedb5298c773b9b1 translatedAt=2026-08-29T09:16:43.134Z pushedAt=2026-08-31T02:16:36.408Z -->
 
 ## Overview
 
@@ -76,7 +76,7 @@ Defines enumerations and APIs related to **Text** for configuring text styles, c
 | [OH_ArkUI_FontWeightConfigs* OH_ArkUI_FontWeightConfigs_Create()](#oh_arkui_fontweightconfigs_create) | Creates a text font weight configuration object. When the object is no longer used, call [OH_ArkUI_FontWeightConfigs_Destroy](#oh_arkui_fontweightconfigs_destroy) to destroy it and release resources to avoid memory leaks. |
 | [void OH_ArkUI_FontWeightConfigs_Destroy(OH_ArkUI_FontWeightConfigs* option)](#oh_arkui_fontweightconfigs_destroy) | Destroys the text font weight configuration object. This API must be used in pair with [OH_ArkUI_FontWeightConfigs_Create](#oh_arkui_fontweightconfigs_create); otherwise, memory leaks may occur. |
 | [void OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight(OH_ArkUI_FontWeightConfigs* option, bool enable)](#oh_arkui_fontweightconfigs_setenablevariablefontweight) | Sets whether to enable variable font weight adjustment. Variable font weight adjustment allows the font to display weight at any integer value from 100 to 900, enabling finer control over font weight. |
-| [bool OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight(OH_ArkUI_FontWeightConfigs* option)](#oh_arkui_fontweightconfigs_getenablevariablefontweight) | Obtains whether variable weight adjustment is enabled for the text font weight configuration object.|
+| [bool OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight(OH_ArkUI_FontWeightConfigs* option)](#oh_arkui_fontweightconfigs_getenablevariablefontweight) | Obtains whether variable font weight adjustment is enabled for the text font weight configuration object.|
 | [void OH_ArkUI_FontWeightConfigs_SetEnableDeviceFontWeightCategory(OH_ArkUI_FontWeightConfigs* option, bool enable)](#oh_arkui_fontweightconfigs_setenabledevicefontweightcategory) | Sets whether to automatically update the text font weight when the font weight level of the device changes. The font weight level of the device refers to the global font weight configuration in system settings, which users can adjust in the system settings. |
 | [bool OH_ArkUI_FontWeightConfigs_GetEnableDeviceFontWeightCategory(OH_ArkUI_FontWeightConfigs* option)](#oh_arkui_fontweightconfigs_getenabledevicefontweightcategory) | Obtains whether the text font weight is updated along with the font weight level of the device.|
 | [OH_ArkUI_FontConfigs* OH_ArkUI_FontConfigs_Create()](#oh_arkui_fontconfigs_create) | Creates a text font configuration object. When the object is no longer used, call [OH_ArkUI_FontConfigs_Destroy](#oh_arkui_fontconfigs_destroy) to destroy it and release resources to avoid memory leaks. |
@@ -239,7 +239,7 @@ void OH_ArkUI_TextMarqueeOptions_Dispose(ArkUI_TextMarqueeOptions* option)
 
 **Description**
 
-Disposes of the pointer to the text marquee option object. This API must be used in pair with [OH_ArkUI_TextMarqueeOptions_Create](#oh_arkui_textmarqueeoptions_create); otherwise, memory leaks will occur.
+Disposes of the text marquee option object. This API must be used in pair with [OH_ArkUI_TextMarqueeOptions_Create](#oh_arkui_textmarqueeoptions_create); otherwise, memory leaks will occur.
 
 **Since:** 23
 
@@ -352,7 +352,7 @@ Sets the distance between the start and end items of the text marquee option.
 | Name| Description|
 | -- | -- |
 | [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option object.|
-| float spacing | Spacing between the start and end items. Unit: vp. Value range: [0, +∞). If the value is out of range, **48.0vp** is used. Default value: **48.0vp**. After setting, when the marquee finishes one scroll cycle, the distance between the start and end text is this spacing value. It is recommended to set this value based on the width of the display area. |
+| float spacing | Spacing between the start and end items. Unit: vp. Value range: [0, +∞). If the value is less than 0, the default value **48.0vp** is used. Default value: **48.0vp**. After setting, when the marquee finishes one scroll cycle, the distance between the start and end text is this spacing value. It is recommended to set this value based on the width of the display area. |
 
 ### OH_ArkUI_TextMarqueeOptions_GetSpacing()
 
@@ -362,7 +362,7 @@ float OH_ArkUI_TextMarqueeOptions_GetSpacing(ArkUI_TextMarqueeOptions* option)
 
 **Description**
 
-Obtains the distance between the start and end items of the text marquee option.
+Obtains the spacing between the start and end items of the text marquee option.
 
 **Since:** 23
 
@@ -558,7 +558,7 @@ void OH_ArkUI_TextMarqueeOptions_SetStartPolicy(ArkUI_TextMarqueeOptions* option
 
 **Description**
 
-Sets the startup policy of the text marquee option.
+Sets the start policy of the text marquee option.
 
 **Since:** 23
 
@@ -729,7 +729,7 @@ Sets whether to enable variable font weight adjustment. Variable font weight adj
 | Name| Description|
 | -- | -- |
 | [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* option | Pointer to the text font weight configuration object to be modified.|
-| bool enable | Whether to enable variable font weight adjustment. **true** indicates to enable variable font weight adjustment. If the value of **weight** is any integer in the range of [100, 900], the value of **weight** is used. Otherwise, the default value **400** is used. **false** indicates to disable variable font weight adjustment. If the value of **weight** is an integer multiple of 100 in the range of [100, 900], the value of **weight** is used. Otherwise, the default value **400** is used. The default value is **false**. |
+| bool enable | Whether to enable variable font weight adjustment. The default value is **false**. The value true means to enable variable font weight adjustment. In this case, if the value of **weight** is any integer in the range [100, 900], the value is used; otherwise, the default value **400** is used. The value **false** means to disable variable font weight adjustment. In this case, the value of **weight** can only be multiples of 100 in the range [100, 900]; for a non-multiple of 100, the default value **400** is used. |
 
 ### OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight()
 
@@ -739,7 +739,7 @@ bool OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight(OH_ArkUI_FontWeightC
 
 **Description**
 
-Obtains whether variable weight adjustment is enabled for the text font weight configuration object.
+Obtains whether variable font weight adjustment is enabled for the text font weight configuration object.
 
 **Since:** 24
 
@@ -855,7 +855,7 @@ Sets the text font weight configurations for the text font configuration object.
 | Name| Description|
 | -- | -- |
 | [OH_ArkUI_FontConfigs](capi-arkui-nativemodule-oh-arkui-fontconfigs.md)* option | Pointer to the text font configuration object to be modified.|
-| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* fontWeightConfigs | Pointer to the text font weight configuration object. When the value is not a null pointer, if the user does not explicitly make configurations, the default values of the parameters are used (that is, variable font weight adjustment is disabled by default, and the text font weight is updated based on the device font weight level by default), and the value of **weight** is within [100, 900]. When the value is a null pointer, the default values are not used, and the text font weight behavior is the same as that of the parent component. |
+| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* fontWeightConfigs | Pointer to the text font weight configuration. When this parameter is not a null pointer, if the user does not explicitly set it, each configuration item uses the default value (variable font weight adjustment is disabled by default, and the text font weight following the device font weight level update is enabled by default). When this parameter is a null pointer, the above default values are not applied, and the text font weight behavior keeps consistent with that of the parent component. |
 
 ### OH_ArkUI_FontConfigs_GetFontWeightConfigs()
 
@@ -994,7 +994,7 @@ Obtains the **onlyBetweenLines** parameter of the text line spacing options.
 
 | Name | Description |
 | -- | -- |
-| [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md)* options | Pointer to the [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) object. |
+| const [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md)* options | Pointer to the [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) object. |
 | bool* onlyBetweenLines | Output parameter, which is a pointer to a variable of the bool type, used to receive the value. The value **true** indicates that the line spacing is applied only between lines, and the value **false** indicates that the line spacing also exists above the first line and below the last line. The default value is **false**. |
 
 **Return value**

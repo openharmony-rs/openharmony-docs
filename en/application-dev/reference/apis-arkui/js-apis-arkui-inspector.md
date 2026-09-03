@@ -1,14 +1,13 @@
 # @ohos.arkui.inspector (Layout Callback)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @pengzhiwen3-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e11cb4729843400fb236089e65f2f10c005324a2 translatedAt=2026-07-29T09:18:47.282Z pushedAt=2026-07-31T07:03:39.580Z -->
+<!-- md-trans-meta sourceCommit=e2e8608c64e606248f00eb66f3b2d4805fae44da translatedAt=2026-08-29T09:32:48.237Z pushedAt=2026-08-31T12:25:33.368Z -->
 
-The **Inspector** module provides APIs for registering the component layout and drawing completion callbacks. It is suitable for scenarios where custom logic needs to be executed after component layout or drawing is complete, helping you precisely control the component rendering timing.
+The **Inspector** module provides APIs for registering the component layout and drawing completion callbacks. By registering callbacks, you can receive notifications in a timely manner after component layout or drawing is complete. It is suitable for scenarios where custom logic needs to be executed after component layout or drawing is complete, helping you precisely control the component rendering timing.
 
 > **NOTE**
 >
@@ -19,7 +18,6 @@ The **Inspector** module provides APIs for registering the component layout and 
 ## Modules to Import
 
 <!--deprecated_code_no_check-->
-
 ```ts
 import { inspector } from '@kit.ArkUI';
 ```
@@ -274,10 +272,10 @@ struct ImageExample {
     // this.listenerForRow.off('drawChildren', offFuncDrawChildren)
 
     let onLayoutChildrenComplete: () => void = (): void => {
-      // After the LayoutChildren event is received, you can customize the implementation logic.
+      // After the layoutChildren event is received, you can customize the implementation logic.
     };
 
-    let uniqueId: number = this.getUniqueId();
+    let uniqueId: number = 0; // Replace it with the unique ID of the actual component.
     let listenerForUniqueId: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver(uniqueId.toString());
     listenerForUniqueId.onLayoutChildren(onLayoutChildrenComplete);
   }
@@ -336,7 +334,7 @@ struct ImageExample {
 
   aboutToAppear() {
     let onDrawChildrenCompleteUniqueId: (childIds: number[]) => void = (childIds: number[]): void => {
-      // The onDrawChildren API is added since API version 24. After the DrawChildren event is received, you can customize the implementation logic.
+      // Since API version 24, the onDrawChildren API is added. After the drawChildren event is received, you can customize the implementation logic.
     };
 
     this.listenerForRow.onDrawChildren(onDrawChildrenCompleteUniqueId);
