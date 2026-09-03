@@ -1,11 +1,11 @@
 # AVSession Controller
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=c6f5bb15059ca0a3b735d5853df39b8ab6efc0cf translatedAt=2026-09-02T08:40:03.664Z pushedAt=2026-09-03T08:18:48.155Z -->
+<!-- md-trans-meta sourceCommit=6db95933f92c36be892f64316b822565946ecf49 translatedAt=2026-09-03T09:03:07.693Z pushedAt=2026-09-03T09:04:52.952Z -->
 
 Starting from API version 23, apps can use AVSession Kit to obtain playback information of AVSessions and control playback actions such as play and pause, enabling unified playback control over audio and video apps in the system. This document describes the API capabilities and basic development process of the AVSession controller, including obtaining metadata and playback state information from AVSession providers, as well as sending commands and events to AVSession providers to control their playback, pause, and other actions.
 

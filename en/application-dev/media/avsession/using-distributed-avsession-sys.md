@@ -1,11 +1,11 @@
 # Using Distributed AVSession (for System Applications Only)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=092adc6b47e5b0c088b6fe6b4574b30796b51a5e translatedAt=2026-09-02T08:41:27.201Z pushedAt=2026-09-03T06:31:53.837Z -->
+<!-- md-trans-meta sourceCommit=6db95933f92c36be892f64316b822565946ecf49 translatedAt=2026-09-03T09:03:19.095Z pushedAt=2026-09-03T09:04:52.954Z -->
 
 ## Basic Concepts
 

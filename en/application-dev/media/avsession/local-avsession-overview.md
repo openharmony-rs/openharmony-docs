@@ -1,11 +1,11 @@
 # Local AVSession Overview
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=74c5c403cb641e8351820634af05f0bfefb8e44a translatedAt=2026-09-02T08:35:10.472Z pushedAt=2026-09-03T02:57:49.937Z -->
+<!-- md-trans-meta sourceCommit=6db95933f92c36be892f64316b822565946ecf49 translatedAt=2026-09-03T09:02:05.035Z pushedAt=2026-09-03T09:04:52.947Z -->
 
 ## Interaction Process
 

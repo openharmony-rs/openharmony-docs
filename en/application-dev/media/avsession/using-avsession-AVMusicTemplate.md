@@ -2,10 +2,10 @@
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @gcw_gyH0B0hP-->
-<!--Designer: @ccfriend-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=7b89e0921c71713a4f37f22389459e82e517ac47 translatedAt=2026-09-02T08:37:29.742Z pushedAt=2026-09-03T02:59:45.192Z -->
+<!-- md-trans-meta sourceCommit=6db95933f92c36be892f64316b822565946ecf49 translatedAt=2026-09-03T09:02:33.615Z pushedAt=2026-09-03T09:04:52.949Z -->
 
 Starting from API version 23, media applications can integrate with the Media Controller through the audio template capability. This capability provides a unified user interface and playback control experience for audio and video content, reducing application-side development effort. This section describes the audio template APIs and the basic development workflow, including integrating with the Media Controller, reporting media information (such as the title, author, and playback state), and responding to playback control commands (such as play, pause, search, and favorite) issued by the Media Controller.
 
