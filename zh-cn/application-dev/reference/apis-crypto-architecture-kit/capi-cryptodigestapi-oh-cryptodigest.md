@@ -13,7 +13,7 @@ typedef struct OH_CryptoDigest OH_CryptoDigest
 
 ## 概述
 
-定义摘要结构体。
+摘要结构体，表示摘要上下文。
 
 **起始版本：** 12
 
