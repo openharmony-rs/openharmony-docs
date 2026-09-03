@@ -137,6 +137,32 @@ edgeLight(params: EdgeLightParams | undefined): T
 | color    | [ResourceColor](ts-types.md#resourcecolor)                | 否   | 是   | 边缘流光颜色。<br>默认值：#FFFFFF，显示为白色。 |
 | thickness | [Length](ts-types.md#length)                             | 否   | 是   | 边缘流光线条粗细（不支持百分比，传入百分比时不生效）。<br>取值范围：[0, +∞)<br>单位：vp<br>默认值：0<br>**说明：**<br>thickness为0时，边缘流光线条不可见。<br>设置小于0的值时，按值为0处理。 |
 
+## markLayeredRender
+   
+markLayeredRender(value: boolean | undefined): T
+
+标记节点是否为独立图层进行绘制，基于该分层标记使能离屏缓存并且在后续帧会复用此缓存，缓存需要刷新时会基于脏区进行局部刷新，达到降负载效果。未通过该接口设置时，节点不标记为独立图层进行绘制。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名  | 类型               | 必填 | 说明                                                         |
+| ------- | ------------------ | ---- | ------------------------------------------------------------ |
+| value | boolean \| undefined | 是   | 标记节点是否为独立图层进行绘制。<br>true表示标记为独立图层进行绘制；false表示不标记为独立图层进行绘制。<br>当value的值为undefined时，按false处理。<br>**说明：**<br>以下场景不应设置分层渲染：<br>1. 当前节点不透明度[opacity](./ts-universal-attributes-opacity.md#opacity18)小于1。 <br>2. 当前节点的任意孩子节点设置了系统材质[systemMaterial](./ts-universal-attributes-image-effect.md#systemmaterial)、背景模糊（[backgroundBlurStyle](./ts-universal-attributes-background.md#backgroundblurstyle18)、[backgroundEffect](./ts-universal-attributes-background.md#backgroundeffect19)、[backdropBlur](./ts-universal-attributes-background.md#backdropblur18)、[foregroundBlurStyle](./ts-universal-attributes-foreground-blur-style.md#foregroundblurstyle19)、[foregroundEffect](./ts-universal-attributes-foreground-effect.md#foregroundeffect)、[blur](./ts-universal-attributes-image-effect.md#blur19)）。 <br>3. 当前节点的任意孩子节点为自绘制图层，如[XComponent](./ts-basic-components-xcomponent.md)、[Canvas](./ts-components-canvas-canvas.md)、[Video](./ts-media-components-video.md)、[Web](../../apis-arkweb/arkts-basic-components-web.md)。 <br>4. 当前节点的子树在动效期间频繁大面积更新。 <br>5. 当前节点已使用节点组[renderGroup](./ts-universal-attributes-image-effect.md#rendergroup18)。 |
+
+**返回值：**
+
+| 类型 | 说明                     |
+| ---- | ------------------------ |
+| T    | 返回当前组件，用于链式调用。 |
+
 ## 示例
 ### 示例1（设置组件提亮）
 
