@@ -466,6 +466,35 @@ libnet_trafficfilter.so
 
    <!-- @[init_exports](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp) -->
 
+   <div class="same-source-code">
+   ``` C++
+   static napi_value Init(napi_env env, napi_value exports)
+   {
+       napi_property_descriptor desc[] = {
+           { "createPacketController", nullptr, CreatePacketControllerNapi, nullptr, nullptr,
+             nullptr, napi_default, nullptr },
+           { "destroyPacketController", nullptr, DestroyPacketControllerNapi, nullptr, nullptr,
+             nullptr, napi_default, nullptr },
+           { "addPacketRule", nullptr, AddPacketRuleNapi, nullptr, nullptr,
+             nullptr, napi_default, nullptr },
+           { "clearPacketRule", nullptr, ClearPacketRuleNapi, nullptr, nullptr,
+             nullptr, napi_default, nullptr },
+           { "registerPacketCallback", nullptr, RegisterPacketCallbackNapi, nullptr, nullptr,
+             nullptr, napi_default, nullptr },
+           { "unregisterPacketCallback", nullptr, UnregisterPacketCallbackNapi, nullptr, nullptr,
+             nullptr, napi_default, nullptr }
+       };
+       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+       return exports;
+   }
+   EXTERN_C_END
+   ```
+
+   <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp?same_code_link_text=init_exports" target="_blank" rel="nofollow">napi_init.cpp</a></p>
+
+   </div>
+
+
 6. 将初始化成功的对象通过 `RegisterEntryModule` 函数，使用 `napi_module_register` 函数将模块注册到 Node.js 中。
 
    <!-- @[register_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp) -->
