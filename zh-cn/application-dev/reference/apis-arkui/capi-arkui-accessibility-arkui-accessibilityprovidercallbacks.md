@@ -1,7 +1,7 @@
 # ArkUI_AccessibilityProviderCallbacks
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @wangyinhua-->
+<!--Owner: @pengzhiwen3-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -12,7 +12,7 @@ typedef struct ArkUI_AccessibilityProviderCallbacks {...} ArkUI_AccessibilityPro
 
 ## 概述
 
-第三方[provider](capi-arkui-accessibility-arkui-accessibilityprovider.md)回调函数结构定义，需要第三方平台实现的相关函数，通过[OH_ArkUI_AccessibilityProviderRegisterCallback](capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallback)注册到系统侧。适用于读屏软件、语音控制、开关控制等无障碍辅助场景，第三方平台通过实现这些回调响应系统的无障碍查询和操作请求。
+第三方[provider](capi-arkui-accessibility-arkui-accessibilityprovider.md)回调函数结构定义，需要第三方平台实现的相关函数，通过[OH_ArkUI_AccessibilityProviderRegisterCallback](capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallback)注册到系统侧。适用于读屏软件、语音控制、开关控制等无障碍辅助场景，第三方平台通过实现这些回调响应系统的无障碍查询和操作请求。所有的回调函数执行线程为IPC线程，非UI线程。
 
 **起始版本：** 13
 

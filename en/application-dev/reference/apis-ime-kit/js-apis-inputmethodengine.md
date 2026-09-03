@@ -6,7 +6,7 @@
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=48114fc7693d377b589453b7291c3e2c895729fd translatedAt=2026-08-26T12:14:31.650Z pushedAt=2026-08-31T08:17:27.859Z -->
+<!-- md-trans-meta sourceCommit=48114fc7693d377b589453b7291c3e2c895729fd translatedAt=2026-08-26T12:14:31.650Z pushedAt=2026-09-02T11:40:36.231Z -->
 
 The **@ohos.inputMethodEngine** module is a server-side API module for input method apps (including system input methods and third-party input methods). It provides interaction capabilities between input method apps and the system input method framework.
 
@@ -4922,7 +4922,7 @@ Sets the preview text. This API uses a promise to return the result.
 
 **Parameters**
 
-
+<!--Table: auto; auto; 10%; 60%-->
 
 | Name| Type             | Mandatory| Description                                                        |
 | ------ | ----------------- | ---- | ------------------------------------------------------------ |
@@ -4973,6 +4973,7 @@ Sets the preview text.
 
 **Parameters**
 
+<!--Table: auto; auto; 10%; 60%-->
 
 
 | Name | Type             | Mandatory| Description                                                        |
@@ -6029,3 +6030,4 @@ textInputClient.getEditorAttribute().then((editorAttribute: inputMethodEngine.Ed
 ```
 
 <!--no_check-->
+
