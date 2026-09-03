@@ -665,7 +665,7 @@ discoveryService.stopSearchingMDNS();
 
 ### off('discoveryStop')
 
-off(type: 'discoveryStop', callback?: Callback\<[DiscoveryEventInfo](#discoveryeventinfo11)\>): void
+off(type: 'discoveryStop', callback?: Callback\<DiscoveryEventInfo\>): void
 
 取消订阅停止监听MDNS服务的通知。
 
