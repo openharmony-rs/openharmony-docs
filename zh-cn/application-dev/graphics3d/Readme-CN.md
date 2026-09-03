@@ -12,7 +12,7 @@
   - [创建并使用材质资源](arkgraphics3D-resource-material.md)
   - [创建并使用图片资源](arkgraphics3D-resource-image.md)
   - [创建并使用环境资源](arkgraphics3D-resource-environment.md)
-  - [shader资源文件格式要求](arkgraphics3D-shader-resource.md)
+  - [.shader资源文件格式要求](arkgraphics3D-shader-resource.md)
 - [场景动画控制与管理](arkgraphics3D-animation.md)
 <!--RP1-->
 <!--RP1End-->

@@ -1,4 +1,4 @@
-# shader资源文件格式要求
+# .shader资源文件格式要求
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @jason_stark-->
@@ -10,15 +10,15 @@ ArkGraphics 3D中支持的.shader文件基于JSON格式，书写.shader文件时
 
 ## compatibility_info
  - 类型：object
- - 说明：用于向引擎声明Shader版本兼容性信息。统一使用如下字段：
+ - 说明：用于向引擎声明shader版本兼容性信息。统一使用如下字段：
    ```json
    "compatibility_info": { "version": "22.00", "type": "shader" }
    ```
-   表示这是引擎22.00版本下的Shader描述文件。
+   表示这是引擎22.00版本下的shader描述文件。
 
 ## vert
  - 类型：string
- - 说明：指定使用该Shader的DrawCall中使用的vertex shader文件。
+ - 说明：指定使用该shader的DrawCall中使用的vertex shader文件。
  - 默认值：
    ```json
    "vert": "3dshaders://shader/core3d_dm_fw.vert.spv"
