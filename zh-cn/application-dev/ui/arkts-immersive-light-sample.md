@@ -232,7 +232,7 @@
   2. 滑动内容区，当内容区标题滑动到标题栏区域时，将其切换到标题栏中显示。
 
   <!-- @[game_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/GamePage.ets) -->
-
+  
   ``` TypeScript
   @ComponentV2
   struct GamePage {
