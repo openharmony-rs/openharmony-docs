@@ -836,3 +836,17 @@ With this permission, an application can call APIs to request local account auth
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | cars | TVs | wearables
 
 **Since**: 26.1.0
+
+## ohos.permission.ACCESS_USER_PASSIVE_RECOGNITION
+
+Allows an application to identify whether the current user is the device owner.
+
+With this permission, the application can use the user passive recognition capability to identify whether the current user is the device owner and obtain information such as the user ID and authentication trust level.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | cars
+
+**Valid since**: 26.1.0
