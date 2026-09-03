@@ -6,7 +6,7 @@
 <!--Tester: @jiyong_sd-->
 <!--Adviser: @fang-jinxu-->
 
-本模块定义了OpenHarmony ArkTS API的注解类型，如生命周期最小可用版本等。
+本模块定义了OpenHarmony ArkTS API的注解类型，如生命周期最小可用版本、API告警屏蔽等，用于帮助开发者标识和管理API的兼容性、告警抑制等特性。该模块解决了开发者在跨版本开发、第三方SDK集成等场景中遇到的版本兼容性告警、权限告警、多设备适配告警等问题，通过注解方式抑制不必要的告警干扰，提高代码的可维护性和开发效率。
 
 > **说明：**
 >
@@ -30,7 +30,7 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 
 @interface Available { minApiVersion: string = '' }
 
-系统提供的API注解能力，可用于标记API支持的最低可用版本。此注解可以标注在类、接口、变量、类型、模块、枚举上。在源码定义处添加注解后，编译工具会在使用处检查潜在的兼容性问题。当minApiVersion大于build-profile.json5中指定的compatibleSDKVersion字段，会生成兼容性警告。
+提供API注解能力，用于标记API支持的最低可用版本。此注解可以标注在类、接口、函数、变量、类型、模块、枚举上。在源码定义处添加注解后，编译工具会在使用处检查潜在的兼容性问题。当minApiVersion大于build-profile.json5中指定的compatibleSdkVersion字段，会生成兼容性警告。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
@@ -47,7 +47,7 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 <!--RP1-->
 | 名称 | 类型 | 只读 | 可选 | 说明                       |
 | ---- | ---- | ---- | --- | -------------------------- |
-| minApiVersion | string | 否 | 否 | minApiVersion用于标识最低可用版本，由两部分组成：系统类型+版本号。仅当系统类型为OpenHarmony时可省略系统类型。例如：'OpenHarmony 20'，'20'。 |
+| minApiVersion | string | 否 | 否 | minApiVersion用于标识最低可用版本，由两部分组成：系统类型+版本号。仅当系统类型为OpenHarmony时可省略系统类型。例如：'OpenHarmony 20'，'20'。当minApiVersion大于build-profile.json5中指定的compatibleSdkVersion字段时，会生成兼容性警告。传入无效格式时，编译器会报错提示格式不正确。 |
 
 **示例：**
 
@@ -243,5 +243,4 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 | 名称                   | 值   | 说明                           |
 | ---------------------- | ---- | ------------------------------ |
 | COMPATIBILITY     | compatibility    | 支持消除兼容性告警。当调用API的起始版本高于工程设置的兼容SDK版本时（build-profile.json5中指定的compatibleSdkVersion）产生的告警。建议在已做版本判断或兼容性处理时使用，避免盲目抑制告警导致低版本设备运行异常。<br>**ArkTS-Dyn起始版本：** 23 <br>**ArkTS-Sta起始版本：** 26.1.0 |
-| SYSCAP     | syscap    | 支持消除多设备告警。当调用API的系统能力在目标设备上不支持时产生的告警。<br>**ArkTS-Dyn起始版本：** 23 <br>**ArkTS-Sta起始版本：** 26.1.0 |
 | PERMISSION     | permission    | 支持消除权限告警。当调用需要权限的API但未在配置文件中声明相应权限时产生的告警。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.1.0 |
