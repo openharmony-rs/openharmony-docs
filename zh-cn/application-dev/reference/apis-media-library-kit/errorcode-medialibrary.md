@@ -84,6 +84,27 @@ MediaLibrary inner fail.
 
 清理后台或重启设备。
 
+
+## 23800302 打开文件失败
+
+**错误信息**
+
+Failed to open the file.
+
+**错误描述**
+
+媒体库打开文件失败。
+
+**可能原因**
+
+1. 因网络连接问题，无法访问云图库资产（Unable to access cloud images due to network connectivity issues）。
+
+2. 文件系统异常（File system malfunction）。
+
+**处理步骤**
+
+检查网络或文件访问路径。
+
 ## 23800151 场景参数校验不通过
 
 **错误信息**
@@ -168,3 +189,145 @@ Invalid call context. Possible causes: 1. The API is called outside the photo br
 **处理步骤**
 
 检查接口[setMovingPhotoState](ohos-file-PhotoPickerComponent.md#setmovingphotostate23)的使用场景。
+
+<!--Del-->
+## 23800203 设备温度过高
+
+**错误信息**
+
+Asset analysis failed due to high temperature.
+
+**错误描述**
+
+设备温度过高导致资产分析失败。
+
+**可能原因**
+
+资产分析会加速设备温度升高，设备温度过高导致资产分析失败。
+
+
+**处理步骤**
+
+待设备温度恢复正常后再次触发。
+<!--DelEnd-->
+
+<!--Del-->
+## 23800204 设备电量过低
+
+**错误信息**
+
+Asset analysis failed due to low battery.
+
+**错误描述**
+
+设备电量低导致资产分析失败。
+
+**可能原因**
+
+资产分析会加速设备电量消耗，设备电量低导致资产分析失败。
+
+**处理步骤**
+
+等待设备电量恢复正常后再次触发。
+<!--DelEnd-->
+
+<!--Del-->
+## 23800205 存储空间不足
+
+**错误信息**
+
+Asset analysis failed due to insufficient storage.
+
+**错误描述**
+
+设备存储空间不足导致资产分析失败。
+
+**可能原因**
+
+资产分析会加速设备存储空间消耗，设备存储空间不足时导致资产分析失败。
+
+**处理步骤**
+
+等待设备存储空间恢复正常后再次触发。
+<!--DelEnd-->
+
+<!--Del-->
+## 23800206 省电模式已开启
+
+**错误信息**
+
+Asset analysis failed because power saving mode is enabled.
+
+**错误描述**
+
+设备省电模式打开导致资产分析失败。
+
+**可能原因**
+
+资产分析会消耗大量设备电量，当设备处于省电模式时无法进行资产分析。
+
+**处理步骤**
+
+等待用户关闭设备省电模式后再尝试。
+<!--DelEnd-->
+
+<!--Del-->
+## 23800207 智慧分析服务正在运行
+
+**错误信息**
+
+Asset analysis failed because analysis service is running.
+
+**错误描述**
+
+智慧分析服务正在运行导致资产分析失败。
+
+**可能原因**
+
+媒体智慧分析服务正在运行。
+
+**处理步骤**
+
+等待媒体智慧分析服务运行结束再尝试调用。
+<!--DelEnd-->
+
+<!--Del-->
+## 23800208 智慧分析开关已关闭
+
+**错误信息**
+
+Asset analysis failed because media analysis is disabled.
+
+**错误描述**
+
+设备智慧分析开关关闭导致资产分析失败。
+
+**可能原因**
+
+设备智慧分析开关关闭，无法进行资产分析。
+
+**处理步骤**
+
+提示用户打开设备智慧分析开关，待用户打开设备智慧分析开关后再重试。
+<!--DelEnd-->
+
+<!--Del-->
+## 23800209 其他原因导致资产分析失败
+
+**错误信息**
+
+Asset analysis failed due to other reasons.
+
+**错误描述**
+
+其他原因导致资产分析失败。
+
+**可能原因**
+
+1. 任务后台运行冲突。
+2. 任务运行超时。
+
+**处理步骤**
+
+等待一段时间后再次触发智慧分析任务。
+<!--DelEnd-->

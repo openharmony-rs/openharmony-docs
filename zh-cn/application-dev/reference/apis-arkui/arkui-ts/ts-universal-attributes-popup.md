@@ -98,7 +98,7 @@ bindPopup(show: boolean, popup: PopupOptions | CustomPopupOptions): T
 | backgroundEffect | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | 否 | 是 | 背景效果参数。默认值请参考BackgroundEffectOptions类型说明。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | placementOnTop<sup>(deprecated)</sup> | boolean                                                      | 否   | 是 | 是否在组件上方显示，默认值为false。取值为true：气泡显示到绑定组件的上方，取值false：气泡显示到绑定组件的下方。<br />**说明：**<br />从API version 7开始支持，从API version 10开始废弃，建议使用`placement`替代。 |
 | colorMode | [AnchoredColorMode](#anchoredcolormode) | 否 | 是 | 设置气泡深浅色模式，默认跟随绑定组件深浅色模式。<br />默认值：AnchoredColorMode.FOLLOW_TARGET<br />**说明：**<br />1. 仅当绑定组件使用了[WithTheme](ts-container-with-theme.md#接口)标签时，该属性才会生效。<br />2. 该属性仅影响组件的默认样式，以及开发者设置的涉及深浅色资源的属性。<br />3. 设置为AnchoredColorMode.FOLLOW_SYSTEM时，模糊材质可以跟随，文字颜色以及涉及深浅色资源的属性仍保持跟随绑定组件的深浅色配置。<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br />**模型约束：** 此接口仅可在Stage模型下使用。 |
-| levelMode | [LevelMode](../js-apis-promptAction.md#levelmode15枚举说明) | 否 | 是 | 设置气泡的显示层级模式。<br/>默认值：LevelMode.OVERLAY<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| levelMode | [LevelMode](../js-apis-promptAction.md#levelmode15) | 否 | 是 | 设置气泡的显示层级模式。<br/>默认值：LevelMode.OVERLAY<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## PopupMessageOptions<sup>10+</sup>类型说明
 
@@ -189,7 +189,7 @@ bindPopup(show: boolean, popup: PopupOptions | CustomPopupOptions): T
 | systemMaterial |  [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | 否 | 是  | 设置组件的系统材质。<br/>默认值：undefined，会清除由该接口设置的材质效果。 <br/>**说明：** <br />不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，当设置系统材质时，上述接口不生效。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | backgroundBlurStyleOptions | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) | 否 | 是 | 背景模糊效果。默认值请参考BackgroundBlurStyleOptions类型说明。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | backgroundEffect | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | 否 | 是 | 背景效果参数。默认值请参考BackgroundEffectOptions类型说明。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
-| levelMode | [LevelMode](../js-apis-promptAction.md#levelmode15枚举说明) | 否 | 是 | 设置气泡的显示层级模式。<br/>默认值：LevelMode.OVERLAY<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| levelMode | [LevelMode](../js-apis-promptAction.md#levelmode15) | 否 | 是 | 设置气泡的显示层级模式。<br/>默认值：LevelMode.OVERLAY<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## PopupCommonOptions<sup>18+</sup>类型说明
 
@@ -232,7 +232,7 @@ bindPopup(show: boolean, popup: PopupOptions | CustomPopupOptions): T
 | systemMaterial |  [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | 否 | 是  | 设置组件的系统材质。<br/>默认值：undefined，会清除由该接口设置的材质效果。 <br/>**说明：** <br />不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，当设置系统材质时，上述接口不生效。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | backgroundBlurStyleOptions | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) | 否 | 是 | 背景模糊效果。默认值请参考BackgroundBlurStyleOptions类型说明。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | backgroundEffect | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | 否 | 是 | 背景效果参数。默认值请参考BackgroundEffectOptions类型说明。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
-| levelMode | [LevelMode](../js-apis-promptAction.md#levelmode15枚举说明) | 否 | 是 | 设置气泡的显示层级模式。<br/>默认值：LevelMode.OVERLAY<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| levelMode | [LevelMode](../js-apis-promptAction.md#levelmode15) | 否 | 是 | 设置气泡的显示层级模式。<br/>默认值：LevelMode.OVERLAY<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## PopupStateChangeParam<sup>18+</sup>类型说明
 
@@ -250,7 +250,7 @@ bindPopup(show: boolean, popup: PopupOptions | CustomPopupOptions): T
 
 ## PopupStateChangeCallback<sup>18+</sup>
 
-type PopupStateChangeCallback = (event: PopupStateChangeParam) => void;
+type PopupStateChangeCallback = (event: PopupStateChangeParam) => void
 
 气泡状态变化事件回调。
 
@@ -778,9 +778,11 @@ struct PopupExample {
 
 ![](figures/popup_07.gif)
 
-### 示例9（设置Popup的系统材质视觉效果）
+### 示例9（设置Popup的沉浸光感视觉效果）
 
-该示例通过设置[PopupOptions](#popupoptions类型说明)中的systemMaterial属性，实现了Popup的系统材质视效。
+该示例通过[PopupOptions](#popupoptions类型说明)中的systemMaterial属性设置组件的系统材质，实现了Popup的沉浸光感视效。
+
+组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
 
 从API版本26.0.0开始，在PopupOptions中新增了systemMaterial属性。
 
@@ -809,7 +811,7 @@ struct PopupExample {
         .bindPopup(this.handlePopup!!, {
           message: 'This is a popup with PopupOptions',
           placement: Placement.Top,
-          // 控制是否设置系统材质
+          // 控制是否设置系统材质接口
           systemMaterial: new uiMaterial.ImmersiveMaterial({
             style: uiMaterial.ImmersiveStyle.THIN
           })
@@ -824,11 +826,11 @@ struct PopupExample {
 ```
 未设置系统材质时：
 
-![](figures/popupWithoutNewMaterial.png)
+![](figures/popupWithoutNewMaterial.gif)
 
 设置系统材质后：
 
-![](figures/popupNewMaterial.png)
+![](figures/popupNewMaterial.gif)
 
 ### 示例10（自定义气泡背景效果参数）
 

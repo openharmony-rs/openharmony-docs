@@ -28,7 +28,7 @@ To facilitate smooth migration to state management V2, constraints on the mixed 
 
 ### makeV1Observed
 
-The [makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19) API encapsulates non-observable objects into observable objects of status management V1. **makeV1Observed** has the same capability as \@Observed, and its return value can be used to initialize \@ObjectLink.
+The [makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19) API encapsulates non-observable objects into observable objects of state management V1. **makeV1Observed** has the same capability as \@Observed, and its return value can be used to initialize \@ObjectLink.
 
 > **NOTE**
 > 

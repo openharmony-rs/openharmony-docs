@@ -134,7 +134,7 @@ libnative_window.so
         ```
 
 
-2. 设置OHNativeWindowBuffer的属性。使用`OH_NativeWindow_NativeWindowHandleOpt`设置`OHNativeWindowBuffer`的属性（默认携带NATIVEBUFFER_USAGE_CPU_READ usage参数，如果不使用CPU读写数据，建议去除NATIVEBUFFER_USAGE_CPU_READ usage参数，具体可见[关闭CPU访问窗口缓冲区数据](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-arkgraphics-2d-14)）。
+2. 设置OHNativeWindow的属性。使用`OH_NativeWindow_NativeWindowHandleOpt`设置`OHNativeWindowBuffer`的属性（默认携带NATIVEBUFFER_USAGE_CPU_READ usage参数，如果不使用CPU读写数据，建议去除NATIVEBUFFER_USAGE_CPU_READ usage参数，具体可见[关闭CPU访问窗口缓冲区数据](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-arkgraphics-2d-14)）。
     <!-- @[set_buffer_geometry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
     
     ``` C++
@@ -149,9 +149,9 @@ libnative_window.so
     <!-- @[request_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
     
     ``` C++
-    int fenceFd = -1;
+    int releaseFenceFd = -1;
     OHNativeWindowBuffer *nativeWindowBuffer = nullptr;
-    ret = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &nativeWindowBuffer, &fenceFd);
+    ret = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &nativeWindowBuffer, &releaseFenceFd);
     if (ret != 0 || nativeWindowBuffer == nullptr) {
         return;
     }
@@ -174,16 +174,17 @@ libnative_window.so
     ``` C++
     int retCode = -1;
     uint32_t timeout = 3000;
-    if (fenceFd != -1) {
+    if (releaseFenceFd != -1) {
         struct pollfd pollfds = {0};
-        pollfds.fd = fenceFd;
+        pollfds.fd = releaseFenceFd;
         pollfds.events = POLLIN;
         do {
             retCode = poll(&pollfds, 1, timeout);
         } while (retCode == -1 && (errno == EINTR || errno == EAGAIN));
-        close(fenceFd);
+        close(releaseFenceFd);
     }
     uint32_t *pixel = static_cast<uint32_t *>(mappedAddr);
+    uint32_t value = flag_ ? 0xfff0000f : 0xff00ffff;
     for (uint64_t x = 0; x < bufferHandle->width; x++) {
         for (uint64_t y = 0; y < bufferHandle->height; y++) {
             *pixel++ = value;
@@ -196,8 +197,9 @@ libnative_window.so
     <!-- @[flush_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
     
     ``` C++
-    struct Region *region = new Region();
-    ret = OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow, nativeWindowBuffer, fenceFd, *region);
+    struct Region region = {0};
+    int acquireFenceFd = -1;
+    ret = OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow, nativeWindowBuffer, acquireFenceFd, region);
     if (ret != NATIVE_ERROR_OK) {
         LOGE("flush failed");
         (void)OH_NativeWindow_NativeWindowAbortBuffer(nativeWindow, nativeWindowBuffer);

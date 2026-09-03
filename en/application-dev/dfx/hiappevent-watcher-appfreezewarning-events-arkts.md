@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=abb2cbc3c0ee7701da88cfed86a07b11347a25be translatedAt=2026-07-08T03:43:49.372Z pushedAt=2026-07-08T06:42:20.978Z -->
+<!-- md-trans-meta sourceCommit=85aa562299b7054dce3d0e6b2f6a7c9f2482e25f translatedAt=2026-07-30T02:50:58.439Z pushedAt=2026-07-30T06:05:35.873Z -->
 
 ## Overview
 
@@ -25,7 +25,7 @@ This section describes how to use the ArkTS APIs provided by HiAppEvent to subsc
 
 The following uses subscribing to app freeze warning events as an example to illustrate the development procedure.
 
-1. Create an ArkTS app project and edit the **EntryAbility.ets**  file under **entry > src > main > ets > entryability** in the project to import the dependency modules. The following is the sample code:
+1. In DevEco Studio, create an ArkTS app project, edit the **entry > src > main > ets > entryability > EntryAbility.ets** file in the project, and import the dependent modules. The sample code is as follows:
 
    ```ts
    import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';

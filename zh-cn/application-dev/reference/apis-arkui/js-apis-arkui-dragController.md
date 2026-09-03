@@ -702,7 +702,7 @@ struct ImageExample {
   @State uri: string = '';
   @State blockArr: string[] = [];
   uiContext = this.getUIContext();
-  udKey: string = '';
+  dataLoadingKey: string = '';
 
   @Builder
   DraggingBuilder() {
@@ -738,14 +738,14 @@ struct ImageExample {
                     fileIo.closeSync(file.fd);
                     context.resourceManager.closeRawFdSync('test1.mp4')
                     this.uri = fileUri.getUriFromPath(filePath);
-                    let videoMp: uniformDataStruct.FileUri = {
+                    let videoFileUri: uniformDataStruct.FileUri = {
                       uniformDataType: 'general.file-uri',
                       oriUri: this.uri,
                       fileType: 'general.video',
                     }
                     let unifiedRecord = new unifiedDataChannel.UnifiedRecord();
                     let unifiedData = new unifiedDataChannel.UnifiedData();
-                    unifiedRecord.addEntry(uniformTypeDescriptor.UniformDataType.FILE_URI, videoMp);
+                    unifiedRecord.addEntry(uniformTypeDescriptor.UniformDataType.FILE_URI, videoFileUri);
                     unifiedData.addRecord(unifiedRecord);
                     return unifiedData;
                   }
@@ -833,8 +833,8 @@ struct ImageExample {
               dataProgressListener: progressListener,
             }
             try {
-              this.udKey = (event as DragEvent).startDataLoading(options);
-              console.info('udKey: ', this.udKey);
+              this.dataLoadingKey = (event as DragEvent).startDataLoading(options);
+              console.info('dataLoadingKey: ', this.dataLoadingKey);
             } catch (e) {
               console.error(`startDataLoading errorCode: ${e.code}, errorMessage: ${e.message}`);
             }
@@ -848,7 +848,7 @@ struct ImageExample {
       Button('取消数据传输')
         .onClick(() => {
           try {
-            this.getUIContext().getDragController().cancelDataLoading(this.udKey);
+            this.getUIContext().getDragController().cancelDataLoading(this.dataLoadingKey);
           } catch (e) {
             console.error(`cancelDataLoading errorCode: ${e.code}, errorMessage: ${e.message}`);
           }
@@ -1192,8 +1192,7 @@ animate(options: AnimationOptions, handler: () => void): void
 
        windowStage.loadContent('pages/Index', this.storage, (err, data) => {
          if (err.code) {
-           hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s',
-             `Code is ${err.code}, message is ${err.message}`);
+           console.error(`Failed to load the content. Code: ${err.code}, message: ${err.message}`);
            return;
          }
          hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s',
@@ -1247,19 +1246,19 @@ animate(options: AnimationOptions, handler: () => void): void
            .onDragEnter(() => {
              try {
                let uiContext: UIContext = this.storages?.get<UIContext>('uiContext') as UIContext;
-               let previewObj: dragController.DragPreview = uiContext.getDragController().getDragPreview();
+               let dragPreview: dragController.DragPreview = uiContext.getDragController().getDragPreview();
                let foregroundColor: ResourceColor = Color.Green;
 
                let previewAnimation: dragController.AnimationOptions = {
                  curve: curves.cubicBezierCurve(0.2, 0, 0, 1),
                }
-               previewObj.animate(previewAnimation, () => {
-                 previewObj.setForegroundColor(foregroundColor);
+               dragPreview.animate(previewAnimation, () => {
+                 dragPreview.setForegroundColor(foregroundColor);
                });
              } catch (error) {
-               let msg = (error as BusinessError).message;
+               let message = (error as BusinessError).message;
                let code = (error as BusinessError).code;
-               hilog.error(0x0000, `show error code is ${code}, message is ${msg}`, '');
+               console.error(`Failed to animate drag preview. Code: ${code}, message: ${message}`);
              }
            })
            .onDrop(() => {
@@ -1275,21 +1274,23 @@ animate(options: AnimationOptions, handler: () => void): void
                  data: unifiedData,
                  extraParams: ''
                }
-               let eve: DragInfo = new DragInfo();
                this.getUIContext()
                  .getDragController()
                  .executeDrag(() => { // 建议使用 this.getUIContext().getDragController().executeDrag()接口
                    this.draggingBuilder()
-                 }, dragInfo, (err, eve) => {
-                   hilog.info(0x0000, `${JSON.stringify(err)}`, '')
-                   if (eve && eve.event) {
-                     if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
-                       hilog.info(0x0000, 'success', '');
-                     } else if (eve.event.getResult() == DragResult.DRAG_FAILED) {
-                       hilog.info(0x0000, 'failed', '');
-                     }
+                 }, dragInfo, (err, dragEventParam) => {
+                   if (err) {
+                     console.error(`Failed to execute drag. Code: ${err.code}, message: ${err.message}`);
+                     return;
                    }
-                 })
+                   if (dragEventParam && dragEventParam.event) {
+                     if (dragEventParam.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
+                       hilog.info(0x0000, 'success', '');
+                     } else if (dragEventParam.event.getResult() == DragResult.DRAG_FAILED) {
+                       hilog.info(0x0000, 'failed', '');
+                      }
+                    }
+                  })
              }
            }
          }).margin({ top: 100 })
@@ -1379,7 +1380,7 @@ animate(options: AnimationOptions, handler: () => void): void
 
 abort(): void
 
-终止后续的悬停检测。该方法应在悬停检测回调中通过SpringLoadingContext对象调用。本方法不会触发CANCEL状态通知，应用程序需要在执行本方法时进行状态清理。
+终止后续的悬停检测。该方法应在悬停检测回调中通过SpringLoadingContext对象调用。本方法不会触发CANCEL状态通知，应用需要在执行本方法时进行状态清理。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 

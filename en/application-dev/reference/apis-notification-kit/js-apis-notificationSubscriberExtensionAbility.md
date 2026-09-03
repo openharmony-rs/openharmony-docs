@@ -1,12 +1,11 @@
 # @ohos.application.NotificationSubscriberExtensionAbility (ExtensionAbility for Notification Subscription)
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=50e734d278c25dbb71273705da516c218b3754a1 translatedAt=2026-06-29T02:38:01.871Z pushedAt=2026-06-30T10:57:37.017Z -->
+<!-- md-trans-meta sourceCommit=9aa812250f4e9aa6e205822b2fc097b3c5b2a47d translatedAt=2026-07-21T01:11:41.410Z pushedAt=2026-07-21T09:31:30.176Z -->
 
 NotificationSubscriberExtensionAbility is the base class for notification subscriber extension abilities, providing notification subscription-related functionality. Third-party wearable apps (such as companion applications for watches) implement callback logic by inheriting this class, receiving notification information when notifications are published on the local device and forwarding them to the wearable device via Bluetooth, and receiving callbacks for notification cancellation when local notifications are cancelled and forwarding them to the wearable device to delete the corresponding notifications.
 
@@ -27,9 +26,11 @@ import { notificationExtensionSubscription, NotificationSubscriberExtensionAbili
 
 **System capability**: SystemCapability.Notification.Notification
 
+
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | context | [NotificationSubscriberExtensionContext](js-apis-notificationSubscriberExtensionContext.md)  | No| No| Context for the NotificationSubscriberExtensionAbility.|
+
 
 ### onDestroy
 
@@ -63,7 +64,7 @@ Called when a notification is received.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| notificationInfo |  [NotificationInfo](../apis-notification-kit/js-apis-inner-notification-notificationInfo.md) | Yes| Notification information delivered to the [onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage) callback of ExtensionAbility for notification subscriptions.|
+| notificationInfo | [NotificationInfo](../apis-notification-kit/js-apis-inner-notification-notificationInfo.md) | Yes | Callback information about the notification received in the notification subscription extension capability. |
 
 **Example**:
 

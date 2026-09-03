@@ -6,7 +6,7 @@
 <!--Designer: @shinmy-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=58ff40ad92758153f7b55166a9e6e0a0e9be5d28 translatedAt=2026-07-13T09:19:26.328Z pushedAt=2026-07-13T10:25:59.924Z -->
+<!-- md-trans-meta sourceCommit=84db341fabc3c99a34323529a216493875ffd8f8 translatedAt=2026-08-11T10:11:19.380Z pushedAt=2026-08-11T11:20:01.467Z -->
 
 ## When to Use
 
@@ -274,12 +274,13 @@ In the [freeform window](window-terminology.md#freeform-window) state, the app u
 
 The sample code is as follows:
 
-<!-- @[window_destroy_transition_animation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AppTransitionAnimationSample/entry/src/main/ets/entryability/EntryAbility.ets) --> 
+<!-- @[window_destroy_transition_animation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AppTransitionAnimationSample/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const DOMAIN = 0x0000;
 

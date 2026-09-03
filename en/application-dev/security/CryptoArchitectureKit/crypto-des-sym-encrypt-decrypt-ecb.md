@@ -1,4 +1,4 @@
-# Encryption and Decryption with a DES Symmetric Key (ECB Mode) (ArkTS)
+# Encryption and Decryption with the DES Symmetric Key (ArkTS)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -6,46 +6,54 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=71a9c24c930904b17deb97103d1dfffd94b342e3 translatedAt=2026-08-07T03:26:55.301Z pushedAt=2026-08-10T08:13:31.646Z -->
 
-For details about the algorithm specifications, see [DES](crypto-sym-encrypt-decrypt-spec.md#des).
+For details about the algorithm specifications, see [DES](crypto-encryption-decryption.md#des).
+
+## Encrypting and Decrypting with DES Symmetric Key (ECB Mode)
 
 **Encryption**
 
 1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a 64-bit DES symmetric key (**SymKey**).
-   
-   In addition to the example in this topic, [DES](crypto-sym-key-generation-conversion-spec.md#des) and [Converting Binary Data into a Symmetric Key](crypto-convert-binary-data-to-sym-key.md) may help you better understand how to generate a DES symmetric key pair. Note that the input parameters in the reference documents may be different from those in the example below.
+
+   To generate a DES symmetric key, refer to the following example, together with [DES](crypto-key-generation-conversion.md#des) and [Converting Binary Data into a Symmetric Key](crypto-convert-binary-data-to-sym-key.md). Note that the referenced documents may differ from the current example in input parameters. Pay attention to these differences when reading.
 
 2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **'DES64|ECB|PKCS7'** to create a **Cipher** instance for encryption. The key type is **DES64**, block cipher mode is **ECB**, and the padding mode is **PKCS7**.
 
 3. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. Specifically, set the mode to **cryptoFramework.CryptoMode.ENCRYPT_MODE** (encryption) and key to **SymKey** (the key used for encryption).
-   
+
    If ECB mode is used, pass in **null**.
 
 4. Call [Cipher.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-1) to pass in the data to be encrypted (plaintext).
-   
+
    - If a small amount of data is to be encrypted, you can use **Cipher.doFinal** immediately after **Cipher.init**.
+
    - If a large amount of data is to be encrypted, you can call **Cipher.update** multiple times to pass in the data by segment.
-   - You can determine the method to use based on the data size. For example, if the message is greater than 20 bytes, use **Cipher.update**.
+
+   - You can determine the method to use based on the data size. For example, if the data exceeds 20 bytes, use `update`.
 
 5. Call [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1) to obtain the encrypted data.
-   
+
    - If data has been passed in by **Cipher.update**, pass in **null** in the **data** parameter of **Cipher.doFinal**.
+
    - The output of **Cipher.doFinal** may be **null**. To avoid exceptions, always check whether the result is **null** before accessing specific data.
 
 **Decryption**
 
 1. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **'DES64|ECB|PKCS7'** to create a **Cipher** instance for decryption. The key type is **DES64**, block cipher mode is **ECB**, and the padding mode is **PKCS7**.
 
-2. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. Specifically, set the mode to **cryptoFramework.CryptoMode.DECRYPT_MODE** (decryption) and key to **SymKey** (the key used for decryption). If ECB mode is used, pass in **null**.
+2. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. Specifically, set the mode to **cryptoFramework.CryptoMode.DECRYPT_MODE** (decryption) and key to **SymKey** (the key used for decryption). The ECB mode has no encryption parameters, so pass in **null**.
 
 3. Call [Cipher.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-1) to pass in the data to be decrypted (ciphertext).
 
 4. Call [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1) to obtain the decrypted data.
 
+If DES decryption fails with error code 17630001, see [DES/3DES Decryption doFinal Failure](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#des3des-decryption-dofinal-failure).
+
 - Example (using asynchronous APIs):
 
   <!-- @[async_symmetry_encrypt_decrypt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceDES/entry/src/main/ets/pages/des/des_ecb_encryption_decryption_asynchronous.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -90,11 +98,10 @@ For details about the algorithm specifications, see [DES](crypto-sym-encrypt-dec
   }
   ```
 
-
 - Example (using synchronous APIs):
 
   <!-- @[sync_symmetry_encrypt_decrypt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceDES/entry/src/main/ets/pages/des/des_ecb_encryption_decryption_synchronous.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -138,3 +145,5 @@ For details about the algorithm specifications, see [DES](crypto-sym-encrypt-dec
     }
   }
   ```
+
+  <!--no_check-->

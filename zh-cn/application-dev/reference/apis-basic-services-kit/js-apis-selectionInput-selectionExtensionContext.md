@@ -9,7 +9,7 @@
 
 SelectionExtensionContext是[SelectionExtensionAbility](./js-apis-selectionInput-selectionExtensionAbility.md)的上下文，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
 
-每个SelectionExtensionAbility组件实例化时，系统都会自动创建对应的SelectionExtensionContext。开发者可以通过SelectionExtensionContext拉起同应用内其他Ability。适用于在划词扩展场景中需要跳转至应用内其他Ability的情况，帮助用户在划词操作后快速获取与划词内容关联的功能或信息。
+每个SelectionExtensionAbility组件实例化时，系统都会自动创建对应的SelectionExtensionContext。开发者可以通过SelectionExtensionContext调用[startAbility](#startability)接口拉起同应用内其他Ability。适用于在划词扩展场景中需要跳转至应用内其他Ability的情况，帮助用户在划词操作后快速获取与划词内容关联的功能或信息。
 
 > **说明：**
 >
@@ -113,7 +113,7 @@ class SelectionExtAbility extends SelectionExtensionAbility {
       }).catch((err: BusinessError) => {
         console.error(`Failed to startAbility. Error code: ${err.code}, error message: ${err.message}`);
       });
-    } catch(err) {
+    } catch (err) {
       console.error(`Failed to startAbility. Error code: ${err.code}, error message: ${err.message}`);
     }
     return new SelectionAbilityStub('remote');

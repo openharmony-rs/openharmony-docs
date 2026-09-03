@@ -38,7 +38,7 @@ import { ArcList } from '@kit.ArkUI';
 
 ## 子组件
 
-仅支持[ArcListItem](ts-container-arclistitem.md)子组件。
+仅支持[ArcListItem](ts-container-arclistitem.md)和自定义组件。自定义组件在ArcList下使用时，请使用ArcListItem作为自定义组件的顶层组件，请勿直接给自定义组件设置属性和事件方法，因为ArcList通过ArcListItem管理子组件的布局和事件处理，直接设置可能导致部分功能无法正常生效。
 
 > **说明：**
 >
@@ -235,7 +235,7 @@ scrollBarColor(color: Optional\<ColorMetrics>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                     |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------- |
-| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | 是   | 设置滚动条颜色。<br>默认值：ColorMetrics.numeric(0xA9FFFFFF) |
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | 是   | 设置滚动条颜色。<br>默认值：ColorMetrics.numeric(0xA9FFFFFF)<br>异常值undefined和null按照无效值处理，本次设置不生效。 |
 
 ### flingSpeedLimit
 
@@ -251,7 +251,7 @@ flingSpeedLimit(speed: Optional\<number>)
 
 | 参数名 | 类型              | 必填 | 说明                            |
 | ------ | ----------------- | ---- | ------------------------------- |
-| speed  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> | 是   | 惯性滚动动效开始时的最大初始速度。设置为小于等于0的值时，按默认值处理。<br>默认值：9000<br>单位：vp/s<br>取值范围：(0, +∞) |
+| speed  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> | 是   | 惯性滚动动效开始时的最大初始速度。设置为小于等于0的值时，按默认值处理。<br>默认值：9000<br>单位：vp/s<br>取值范围：(0, +∞)<br>异常值undefined和null按照无效值处理，本次设置不生效。 |
 
 ### childrenMainSize
 

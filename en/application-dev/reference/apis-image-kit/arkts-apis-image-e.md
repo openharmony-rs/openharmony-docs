@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-A collection of enumeration types provided by Image Kit, covering image pixel formats, transparency types, image metadata, scaling modes, dynamic range, memory allocation, and more. These enumerations are used to specify various configuration parameters in image encoding, decoding, processing, and display scenarios.
+A collection of enumeration types provided by Image Kit, covering image pixel formats, image formats, alpha types, image metadata, image property information (Exif and format-specific properties), auxiliary image types, scaling modes, cropping and scaling strategies, dynamic range, HDR metadata, memory allocation, interpolation algorithms, image orientation, focus modes, color modes, XMP tag types, and more. These enumerations are used to specify various configuration parameters in image encoding, decoding, processing, and display scenarios.
 
 > **NOTE**
 >
@@ -26,13 +26,13 @@ Enumerates image pixel formats.
 | RGBA_8888              | 3      | Color information consists of four components: Red (R), Green (G), Blue (B), and transparency (Alpha). Each component occupies 8 bits, totaling 32 bits. The components are stored in order from the most significant bit to the least significant bit. It corresponds to [CAMERA_FORMAT_RGBA_8888 in CameraFormat](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat).<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.|
 | BGRA_8888<sup>9+</sup> | 4      | Color information consists of four components: Blue (B), Green (G), Red (R), and transparency (Alpha). Each component occupies 8 bits, totaling 32 bits. The components are stored in order from the most significant bit to the least significant bit.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.|
 | RGB_888<sup>9+</sup>   | 5      | Color information consists of three components: Red (R), Green (G), and Blue (B). Each component occupies 8 bits, totaling 24 bits. The components are stored in order from the most significant bit to the least significant bit.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.  |
-| ALPHA_8<sup>9+</sup>   | 6      | Color information consists of only the transparency (Alpha), with 8 bits per pixel, stored in order from the most significant bit to the least significant bit. Each row of pixels is composed of one or more pixels, and the data for each row is aligned to 4 bytes. If the byte count of a row is not a multiple of 4, blank bytes are padded at the end to ensure proper alignment.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.  |
+| ALPHA_8<sup>9+</sup>   | 6      | Color information consists of only the transparency (Aalpha), with 8 bits per pixel, stored in order from the most significant bit to the least significant bit. Each row of pixels is composed of one or more pixels, and the data for each row is aligned to 4 bytes. If the byte count of a row is not a multiple of 4, blank bytes are padded at the end to ensure proper alignment.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.  |
 | RGBA_F16<sup>9+</sup>  | 7      | Color information consists of four components: Red (R), Green (G), Blue (B), and transparency (Alpha). Each component occupies 16 bits, totaling 64 bits. The components are stored in order from the most significant bit to the least significant bit, in FP16 half-precision floating-point format.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12. |
 | NV21<sup>9+</sup>      | 8      | YVU pixel arrangement, where the V component precedes the U component. Color information consists of a luminance component Y and interleaved chrominance components V and U. The Y component occupies 8 bits, and the UV components occupy an average of 4 bits due to 4:2:0 subsampling, totaling an average of 12 bits. The components are stored in order from the most significant bit to the least significant bit. It corresponds to [CAMERA_FORMAT_YUV_420_SP in CameraFormat](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat).<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.     |
 | NV12<sup>9+</sup>      | 9      | YUV pixel arrangement, where the U component precedes the V component. Color information consists of a luminance component Y and interleaved chrominance components U and V. The Y component occupies 8 bits, and the UV components occupy an average of 4 bits due to 4:2:0 subsampling, totaling an average of 12 bits. The components are stored in order from the most significant bit to the least significant bit.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.     |
 | RGBA_1010102<sup>12+</sup> | 10 | Color information consists of four components: Red (R), Green (G), Blue (B), and transparency (Alpha). R, G, and B each occupy 10 bits, and Alpha occupies 2 bits, totaling 32 bits. The components are stored in order from the most significant bit to the least significant bit.|
 | YCBCR_P010<sup>12+</sup> | 11 | Color information consists of a luminance component Y and chrominance components Cb and Cr. Each component has an effective bit depth of 10 bits. In storage, the Y plane occupies 16 bits per pixel (with 10 effective bits), and the UV plane is interleaved, occupying 32 bits for every 4 pixels (with 10 effective bits per chrominance component), resulting in an average effective bit depth of 15 bits. The data is stored in order from the most significant bit to the least significant bit. It corresponds to [CAMERA_FORMAT_YCBCR_P010 in CameraFormat](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat). |
-| YCRCB_P010<sup>12+</sup> | 12 | Color information consists of a luminance component Y and chrominance components Cr and Cb. Each component has an effective bit depth of 10 bits. In storage, the Y plane occupies 16 bits per pixel (with 10 effective bits), and the UV plane is interleaved, occupying 32 bits for every 4 pixels (with 10 effective bits per chrominance component), resulting in an average effective bit depth of 15 bits. The data is stored in order from the most significant bit to the least significant bit. It corresponds to [CAMERA_FORMAT_YCRCB_P010 in CameraFormat](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat). |
+| YCRCB_P010<sup>12+</sup> | 12 | Color information consists of a luminance component Y and chrominance components Cb and Cr. Each component has an effective bit depth of 10 bits. In storage, the Y plane occupies 16 bits per pixel (with 10 effective bits), and the UV plane is interleaved, occupying 32 bits for every 4 pixels (with 10 effective bits per chrominance component), resulting in an average effective bit depth of 15 bits. The data is stored in order from the most significant bit to the least significant bit. It corresponds to [CAMERA_FORMAT_YCRCB_P010 in CameraFormat](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat). |
 | Y8 | 14 | Single-channel grayscale format that contains only the Y plane (luminance). Each pixel occupies 8 bits, stored in order from the most significant bit to the least significant bit.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model. |
 | ALPHA_U8 | 15 | Color information consists of only the transparency (Aalpha), with 8 bits per pixel, stored in order from the most significant bit to the least significant bit. All pixels are tightly arranged without alignment.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 26.0.0. |
 | ALPHA_F16 | 16 | Color information consists of only the transparency (Aalpha), with each pixel occupying 16 bits. The data is stored in order from the most significant bit to the least significant bit in FP16 half-precision floating-point format.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 26.0.0. |
@@ -106,8 +106,8 @@ Enumerates image scaling modes.
 
 | Name           |   Value  | Description                                              |
 | --------------- | ------ | -------------------------------------------------- |
-| CENTER_CROP     | 1      | Scales the image so that it fills the requested bounds of the target and crops the extra.|
-| FIT_TARGET_SIZE | 0      | Reduces the image size to the dimensions of the target.                          |
+| CENTER_CROP     | 1      | Center cropping mode. The image is scaled proportionally to cover the entire target area (short side aligned), and then the excess area is cropped from the center.|
+| FIT_TARGET_SIZE | 0      | Fit target size mode. The image is scaled proportionally to fit entirely within the target area (long side aligned). Any remaining space is filled with black or transparency.|
 
 ## PropertyKey<sup>7+</sup>
 
@@ -657,7 +657,7 @@ Enumerates the keys of HDR metadata used by [PixelMap](arkts-apis-image-PixelMap
 | HDR_METADATA_TYPE    | 0    | Metadata type used by [PixelMap](arkts-apis-image-PixelMap.md). |
 | HDR_STATIC_METADATA  | 1    | Static metadata.  |
 | HDR_DYNAMIC_METADATA | 2    | Dynamic metadata.  |
-| HDR_GAINMAP_METADATA | 3    | Metadata used by gain maps.  |
+| HDR_GAINMAP_METADATA | 3    | Metadata used by the gain map.  |
 
 ## HdrMetadataType<sup>12+</sup>
 
@@ -665,12 +665,12 @@ Enumerates the values corresponding to the **HDR_METADATA_TYPE** keyword in [Hdr
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
-| Name         | Value      | Description        |
-| ------------- | ----------| ------------ |
-| NONE     | 0    | No metadata. |
-| BASE     | 1    | Metadata used for base graphics.  |
-| GAINMAP  | 2    | Metadata used for gain maps.  |
-| ALTERNATE| 3    | Metadata used for synthesized HDR graphics.  |
+| Name         | Value | Description        |
+| ------------- | --- | ------------ |
+| NONE          | 0   | No metadata. |
+| BASE          | 1   | Metadata used for base graphics.  |
+| GAINMAP       | 2   | Metadata used for gain maps.  |
+| ALTERNATE     | 3   | Metadata used for synthesized HDR graphics.  |
 
 ## AntiAliasingLevel<sup>12+</sup>
 

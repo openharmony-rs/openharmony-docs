@@ -10,12 +10,6 @@
 
 在应用开发中，启动应用（通常指启动UIAbility组件）是开发者的常见任务。例如，从商城应用跳转到支付应用进行付款，从聊天应用启动视频应用播放视频，或者在应用间跳转时需要指定特定的窗口模式等场景。
 
-## 应用、进程与UIAbility组件的关系
-
-一个应用可以运行在一个或多个进程中，一个进程中也可以运行单个或多个[UIAbility](./uiability-overview.md)组件实例。三方应用开发者开发的应用，必须包含至少一个[UIAbility](./uiability-overview.md)组件，否则没有界面对用户展示。
-
-对于用户而言，只有[UIAbility](./uiability-overview.md)组件是可见的，启动应用内的第一个UIAbility组件就代表启动应用。后面的章节中，启动应用就是指启动UIAbility。
-
 通过[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)，开发者可以在启动UIAbility时灵活控制其启动行为，包括窗口模式、窗口位置、启动动效、启动页样式、窗口尺寸限制等多个方面，从而满足不同设备形态和用户场景的需求。
 
 ## 指定窗口模式启动应用
@@ -418,7 +412,7 @@ struct SetWindowPosition {
 **开发步骤如下：**
 1. 在启动UIAbility之前，需要先导入相关的模块。
 2. 创建Want对象，指定要启动的UIAbility信息。UIAbilityContext的获取方式参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
-3. 配置StartOptions的minWindowWidth、minWindowHeight、maxWindowWidth、maxWindowHeight属性，设置窗口尺寸限制。相关属性的说明参见[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)。可以通过[getWindowLimitsVP](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimitsvp22)获取当前窗口的尺寸限制。
+3. 配置StartOptions的minWindowWidth、minWindowHeight、maxWindowWidth、maxWindowHeight属性，设置窗口尺寸限制。相关属性的说明参见[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)。可以通过[getWindowLimitsVP()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimitsvp22)获取当前窗口的尺寸限制。
 4. 调用startAbility接口，启动目标UIAbility。
 
 <!-- @[startOptions_windowSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/SetWindowSizeConstraints/src/main/ets/pages/Index.ets) --> 

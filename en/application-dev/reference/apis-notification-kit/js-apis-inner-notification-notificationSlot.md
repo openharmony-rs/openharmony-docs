@@ -6,7 +6,7 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=50e734d278c25dbb71273705da516c218b3754a1 translatedAt=2026-06-29T02:36:49.026Z pushedAt=2026-06-30T10:57:37.004Z -->
+<!-- md-trans-meta sourceCommit=9aa812250f4e9aa6e205822b2fc097b3c5b2a47d translatedAt=2026-07-21T01:09:05.947Z pushedAt=2026-07-21T09:31:58.426Z -->
 
 The **NotificationSlot** module provides APIs for defining the notification slots. The notification reminder modes vary according to notification slots.
 
@@ -20,8 +20,8 @@ The **NotificationSlot** module provides APIs for defining the notification slot
 
 | Name                | Type                | Read-Only| Optional| Description                  |
 | -------------------- | ---------------------|---- | --- |----------------------|
-| notificationType<sup>11+</sup>                 | [notificationManager.SlotType](js-apis-notificationManager.md#slottype) | No | Yes  | Channel type. |
-| enabled<sup>9+</sup> | boolean               | Yes | Yes  | Whether to allow notifications to be published from this notification channel.<br> - **true**: yes.<br> - **false**: no.   |
+| notificationType<sup>11+</sup>                 | [notificationManager.SlotType](js-apis-notificationManager.md#slottype) | No | Yes  | Slot type. Different slot types have different notification reminder types. |
+| enabled<sup>9+</sup> | boolean               | Yes | Yes  | Whether to allow notifications of this slot type to be published.<br> - **true**: yes.<br> - **false**: no.   |
 | notificationLevel<sup>20+</sup>                 | [notificationManager.SlotLevel](js-apis-notificationManager.md#slotlevel) | No | Yes  | Notification level, which is used to describe the display priority and alert intensity of notifications of this channel type.           |
 | desc                 | string                | No | Yes  | Description of the notification channel. The size cannot exceed 243 bytes, and the excess part will be truncated. |
 | badgeFlag            | boolean               | No | Yes  | Whether to display the badge. The default value is **true**.<br> - **true**: Display the badge.<br> - **false**: Do not display the badge.              |

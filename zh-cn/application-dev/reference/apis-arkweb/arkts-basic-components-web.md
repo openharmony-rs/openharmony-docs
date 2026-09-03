@@ -12,7 +12,7 @@ Web组件是ArkWeb Kit提供的具有网页显示能力的UI组件，用于在�
 
 > **说明：**
 >
-> - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 示例效果请以真机运行为准。
 >
@@ -41,6 +41,7 @@ Web组件是ArkWeb Kit提供的具有网页显示能力的UI组件，用于在�
 - [WebResourceError](./arkts-basic-components-web-WebResourceError.md)：资源管理错误。
 - [WebResourceRequest](./arkts-basic-components-web-WebResourceRequest.md)：资源获取请求。
 - [WebResourceResponse](./arkts-basic-components-web-WebResourceResponse.md)：资源获取响应。
+- [VerifyPinHandler](./arkts-basic-components-web-VerifyPinHandler.md)：PIN码验证请求。
 
 ## 需要权限
 

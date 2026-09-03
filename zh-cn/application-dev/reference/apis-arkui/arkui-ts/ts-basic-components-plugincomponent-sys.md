@@ -127,9 +127,11 @@ onError(callback:&nbsp;PluginErrorCallback)
 
 | 参数名    | 类型                                                         | 必填 | 说明                                            |
 | --------- | ------------------------------------------------------------ | ---- | ----------------------------------------------- |
-| callback  | [PluginErrorCallback](#pluginerrorcallback18类型说明)          | 是   | 组件加载错误时触发事件回调。 |
+| callback  | [PluginErrorCallback](#pluginerrorcallback18)          | 是   | 组件加载错误时触发事件回调。 |
 
-## PluginErrorCallback<sup>18+</sup>类型说明
+## PluginErrorCallback<sup>18+</sup>
+
+type PluginErrorCallback = (info: PluginErrorData) => void
 
 发生错误时触发事件回调。
 
@@ -139,9 +141,9 @@ onError(callback:&nbsp;PluginErrorCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 参数     | 类型               | 描述                        |
-| -------- | ------------------ | --------------------------- |
-| info     | [PluginErrorData](#pluginerrordata18类型说明)  | 发生错误时提供的数据。 |
+| 参数名     | 类型         | 必填      | 说明                        |
+| -------- | ------------------| ------ | --------------------------- |
+| info     | [PluginErrorData](#pluginerrordata18类型说明) | 是  | 发生错误时提供的数据。 |
 
 ## PluginErrorData<sup>18+</sup>类型说明
 
@@ -169,9 +171,9 @@ onError(callback:&nbsp;PluginErrorCallback)
 | package path is empty. | 包路径为空。 | 检查PluginComponentTemplate参数中source字段是否有误。  |
 | Query Active OsAccountIds failed! | 获取激活的用户ID失败。 | 检查Account服务是否异常，或检查应用是否具备用户ID查询权限。    |
 | Template source is empty. | 模板source为空。 | 检查PluginComponentTemplate参数中source字段是否有误。  |
-| Bms bundleManager is nullptr. | 获取BundleManager失败。 |  检查BMS服务是否异常，或检查应用是否具备ohos.permission.GET_BUNDLE_INFO_PRIVILEGED,ohos.permission.GET_BUNDLE_INFO,ohos.permission.REQUIRE_FORM权限。                  |
+| Bms bundleManager is nullptr. | 获取BundleManager失败。 |  检查BMS服务是否异常，或检查应用是否具备ohos.permission.GET_BUNDLE_INFO_PRIVILEGED、ohos.permission.GET_BUNDLE_INFO和ohos.permission.REQUIRE_FORM权限。                  |
 | App bundleName is empty. | 应用包名为空。  | 检查PluginComponentTemplate参数中bundleName字段是否有误。                   |
-| Bms get bundleName failed! | 获取包名失败。  |  检查PluginComponentTemplate参数中bundleName字段是否有误，或检查bundleName字段对应的包是否已正确安装，或检查BMS服务是否异常，或检查应用是否具备ohos.permission.GET_BUNDLE_INFO_PRIVILEGED,ohos.permission.GET_BUNDLE_INFO,ohos.permission.REQUIRE_FORM权限。                |
+| Bms get bundleName failed! | 获取包名失败。  |  检查PluginComponentTemplate参数中bundleName字段是否有误，或检查bundleName字段对应的包是否已正确安装，或检查BMS服务是否异常，或检查应用是否具备ohos.permission.GET_BUNDLE_INFO_PRIVILEGED、ohos.permission.GET_BUNDLE_INFO和ohos.permission.REQUIRE_FORM权限。                |
 | Bms moduleResPaths is empty. | 插件包moduleResPaths属性为空。 |  检查bundleName字段对应的包的moduleResPaths属性是否异常，或检查BMS服务是否异常                   |
 | Bms get hapPath failed! Cannot find hap according to BundleName and ModuleName! | 获取hapPath失败。  |   检查PluginComponentTemplate参数中bundleName字段是否有误，检查bundleName字段对应的模块是否已正确安装。               |
 
@@ -307,7 +309,7 @@ Plugin组件工具，用于使用方与提供方之间进行通信。根据模�
 ### FA模型
 ```js
 // 当前示例代码仅适用于FA模型
-import pluginComponentManager from '@ohos.pluginComponent';
+import { pluginComponentManager } from '@kit.ArkUI';
 
 const providerBundleName = 'com.example.provider';
 const providerAbilityName = 'com.example.provider.EntryAbility';
@@ -389,7 +391,7 @@ export default {
 ### Stage模型
 ```js
 // 当前示例代码仅适用于Stage模型
-import pluginComponentManager from '@ohos.pluginComponent';
+import { pluginComponentManager } from '@kit.ArkUI';
 
 let userBundleName: string = 'com.example.user';
 let userAbilityName: string = 'com.example.user.EntryAbility';

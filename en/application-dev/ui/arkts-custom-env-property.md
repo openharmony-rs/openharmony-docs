@@ -6,7 +6,7 @@
 <!--Designer: @s10021109-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3674363ed3360f810dd5d530a025dd3006fb0270 translatedAt=2026-07-03T06:28:25.560Z pushedAt=2026-07-06T09:01:41.616Z -->
+<!-- md-trans-meta sourceCommit=9d70260b1c7351fd25425cbafe0b7fbb6d84a828 translatedAt=2026-07-30T11:31:36.135Z pushedAt=2026-07-30T12:11:45.433Z -->
 
 [\@CustomEnv](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenv) can be used to obtain custom environment variables. Developers can set custom environment variables via the [.customEnv](../reference/apis-arkui/arkui-ts/ts-container-with-env.md#customenv) API of the [WithEnv](../reference/apis-arkui/arkui-ts/ts-container-with-env.md) component, and read the variable value corresponding to the same [CustomEnvKey\<S\>](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenvkeys) in child components through the [\@CustomEnv](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenv) decorator. This mechanism implements data transparent transmission within the component tree, enabling parent-child components to interact based on environment variables while keeping the code decoupled.
 
@@ -126,12 +126,12 @@ Both \@CustomEnv and [\@Env](./arkts-env-system-property.md) are related to envi
 
 ## Constraints
 
-- \@CustomEnv can only be used in \@Component and \@ComponentV2; otherwise, a compile-time error will occur.
+- \@CustomEnv is only supported in \@Component and \@ComponentV2; otherwise, a compilation error occurs.
 
 ```ts
 
 const custom = CustomEnvKey.create<string>();
-// Incorrect usage, compile-time error
+// Incorrect usage. A compilation error occurs.
 class CustomEnvKey {
   @CustomEnv(custom) customVarName: string = 'hello world'; 
 }
@@ -168,7 +168,7 @@ struct Index {
 }
 ```
 
-- Variables decorated by \@CustomEnv are read-only attributes. Developers are not allowed to perform assignment operations on them; otherwise, a compilation error will occur.
+- Variables decorated by \@CustomEnv are read-only attributes. Developers are not allowed to perform assignment operations; otherwise, a compilation error occurs.
 
 ```ts
 import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
@@ -185,7 +185,7 @@ struct Index {
     Column() {
       Button('update')
         .onClick(() => {
-          this.customVarName = 'Change Message'; // Incorrect usage, compilation error
+          this.customVarName = 'Change Message'; // Incorrect usage, compilation error.
         })
 
       WithEnv() {
@@ -210,7 +210,7 @@ struct PageOne {
 
   build() {
     Column() {
-      Child({ firstValue: this.defaultMessage }) // Incorrect usage, compilation error
+      Child({ firstValue: this.defaultMessage }) // Incorrect usage. Compilation error.
     }
   }
 }
@@ -281,7 +281,7 @@ The flowchart is shown in the figure below.
 
 ### Supporting Custom Keys and Values
 
-The newly added state management decorator \@CustomEnv supports custom key configuration and allows specifying the initial value of the variable. The syntax format is: `@CustomEnv(custom) customVarName: string = 'hello world'`. Here, 'custom' is the developer-defined environment variable key, and 'hello world' is the initial value of the variable.
+The newly added state management decorator \@CustomEnv supports custom key configuration and can specify the initial value of the variable. The syntax format is: `@CustomEnv(custom) customVarName: string = 'hello world'`. Here, `custom` is the customized environment variable **key**, and `hello world` is the initial value of the variable.
 
 ```ts
 
@@ -900,7 +900,7 @@ The running effect figure is as follows.
 
 \@CustomEnv can be used in \@Component and \@ComponentV2, and it follows the [basic rules for V1/V2 mixing](./state-management/arkts-v1-v2-mixusage.md). When a variable decorated by \@CustomEnv is passed to V1, it follows the rule that V1 state variable decorators cannot be used with classes decorated by [\@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md). When a variable decorated by \@CustomEnv is passed to V2, it follows the rule that only [\@Param](./state-management/arkts-new-param.md) in V2 can receive external variables.
 
-- When a variable decorated by \@CustomEnv is passed to V1, it follows the rule that V1 state variable decorators cannot receive classes decorated by \@ObservedV2.
+- When a variable decorated with \@CustomEnv is passed to V1, it follows the following rule: V1 state variable decorators cannot receive classes decorated with \@ObservedV2.
 
 ```ts
 @ObservedV2

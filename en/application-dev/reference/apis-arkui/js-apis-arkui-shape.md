@@ -1,13 +1,14 @@
 # @ohos.arkui.shape (Shape)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=4074739ec104663f417d9981273bcd01b284c4ca translatedAt=2026-07-29T09:31:15.819Z pushedAt=2026-08-03T09:01:05.929Z -->
 
-The **shape** module provides [clipShape](arkui-ts/ts-universal-attributes-sharp-clipping.md#clipshape12) and [maskShape](arkui-ts/ts-universal-attributes-sharp-clipping.md#maskshape12) APIs to allow you to pass in various shapes.
-
+The **Shape** module provides multiple shape definitions such as **CircleShape**, **EllipseShape**, **PathShape**, and **RectShape**, which can be passed to the [clipShape](arkui-ts/ts-universal-attributes-sharp-clipping.md#clipshape12) and [maskShape](arkui-ts/ts-universal-attributes-sharp-clipping.md#maskshape12) APIs to clip and mask components. It is suitable for scenarios where components need to be clipped into specific shapes such as circles, ellipses, and rectangles, or where visual effects are achieved through shape masking, such as avatar clipping and icon masking.
 
 > **NOTE**
 >
@@ -18,7 +19,7 @@ The **shape** module provides [clipShape](arkui-ts/ts-universal-attributes-sharp
 ## Modules to Import
 
 ```ts
-import { CircleShape, EllipseShape, PathShape, RectShape } from "@kit.ArkUI";
+import { CircleShape, EllipseShape, PathShape, RectShape } from '@kit.ArkUI';
 ```
 
 ## CircleShape
@@ -49,7 +50,7 @@ A constructor used to create a **CircleShape** object.
 
 | Name        | Type                                              | Mandatory| Description                                        |
 | ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| options | [ShapeSize](#shapesize) | No| Size of the shape.|
+| options | [ShapeSize](#shapesize) | No | Size of the shape, including the **width** and **height** attributes, which is used to set the dimensions of the shape. If not specified, the default size is used, with the default width of 0 vp and default height of 0 vp. |
 
 ## EllipseShape
 
@@ -79,11 +80,11 @@ A constructor used to create an **EllipseShape** object.
 
 | Name        | Type                                              | Mandatory| Description                                        |
 | ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| options | [ShapeSize](#shapesize) | No| Size of the shape.|
+| options | [ShapeSize](#shapesize) | No | Size of the shape, which is used to customize the width and height of the ellipse. If not specified, the default value of **width** and **height** is 0 vp. |
 
 ## PathShape
 
-Represents a path used in the **clipShape** and **maskShape** APIs.
+Represents a path shape used for the **clipShape** and **maskShape** APIs.
 
 This API inherits from [CommonShapeMethod](#commonshapemethod).
 
@@ -103,7 +104,7 @@ A constructor used to create a **PathShape** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
@@ -133,7 +134,7 @@ Sets the path drawing commands.
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| [PathShape](#pathshape) | **PathShape** object.|
+| [PathShape](#pathshape) | **PathShape** object with path drawing commands configured, which can be used for chained calls to further configure the path shape. |
 
 ## RectShape
 
@@ -149,7 +150,7 @@ This API inherits from [BaseShape](#baseshape).
 
 ### constructor
 
-constructor(options?: RectShapeOptions | RoundRectShapeOptions)
+constructor(options?: RectShapeOptions \| RoundRectShapeOptions)
 
 A constructor used to create a **RectShape** object.
 
@@ -167,7 +168,7 @@ A constructor used to create a **RectShape** object.
 
 ### radiusWidth
 
-radiusWidth(rWidth: number | string): RectShape
+radiusWidth(rWidth: number \| string): RectShape
 
 Sets the radius width of the rectangle border corners.
 
@@ -181,17 +182,17 @@ Sets the radius width of the rectangle border corners.
 
 | Name        | Type                                              | Mandatory| Description                                        |
 | ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| rWidth | number &nbsp;\|&nbsp; string | Yes| Radius width of the rectangle border corners.<br> When the parameter type is number, the valid value range is [0, +∞). When the parameter type is string, the value must conform to the [Length](arkui-ts/ts-types.md#length) type specification.<br>Unit: vp.<br>If the value is invalid, 0 vp is used.| 
+| rWidth | number &nbsp;\|&nbsp; string | Yes | Width of the corner radius of the rectangle shape.<br>If the type is number, the value range is [0, +∞); if the type is string, the value is specified by [Length](arkui-ts/ts-types.md#length).<br>Unit: vp<br>If the value is abnormal, 0 vp is used. |
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| [RectShape](#rectshape) | **RectShape** object.|
+| [RectShape](#rectshape) | **RectShape** object with the corner radius set, which can be used for chained calls to further configure the rectangle shape. |
 
 ### radiusHeight
 
-radiusHeight(rHeight: number | string): RectShape
+radiusHeight(rHeight: number \| string): RectShape
 
 Sets the radius height of the rectangle border corners.
 
@@ -205,13 +206,13 @@ Sets the radius height of the rectangle border corners.
 
 | Name        | Type                                              | Mandatory| Description                                        |
 | ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| rHeight | number &nbsp;\|&nbsp; string | Yes| Radius height of the rectangle border corners.<br> When the parameter type is number, the valid value range is [0, +∞). When the parameter type is string, the value must conform to the [Length](arkui-ts/ts-types.md#length) type specification.<br>Unit: vp.<br>If the value is invalid, 0 vp is used.|
+| rHeight | number &nbsp;\|&nbsp; string | Yes | Height of the corner radius of the rectangle shape. If the type is number, the value range is [0, +∞); if the type is string, the value is specified by [Length](arkui-ts/ts-types.md#length). Unit: vp. If the value is abnormal, 0 vp is used. |
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| [RectShape](#rectshape) | **RectShape** object.|
+| [RectShape](#rectshape) | **RectShape** object with the height of the corner radius set, which can be used for chained calls to further configure the rectangle shape. |
 
 ### radius
 
@@ -229,18 +230,17 @@ Sets the radius of the rectangle border corners.
 
 | Name        | Type                                              | Mandatory| Description                                        |
 | ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| radius | number &nbsp;\|&nbsp; string &nbsp;\|&nbsp; Array<number &nbsp;\|&nbsp; string> | Yes| Radius of the rectangle border corners. When an array is provided, it should contain exactly four elements, corresponding to the radius of the upper left, upper right, lower left, and lower right corners of the rectangle, respectively. If more than four elements are contained, only the first four are accepted.<br> When the parameter type is number, the valid value range is [0, +∞). When the parameter type is string, the value must conform to the [Length](arkui-ts/ts-types.md#length) type specification.<br>Unit: vp.<br>If the value is invalid, 0 vp is used.|
+| radius | number &nbsp;\|&nbsp; string &nbsp;\|&nbsp; Array<number &nbsp;\|&nbsp; string> | Yes | Corner radius of the rectangle shape. Only the first four elements of the array are accepted, which represent the corner radii of the top-left, top-right, bottom-left, and bottom-right corners of the rectangle, respectively.<br>If the type is number, the value range is [0, +∞); if the type is string, the value is specified by [Length](arkui-ts/ts-types.md#length).<br>Unit: vp<br>If the value is abnormal, 0 vp is used. |
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| [RectShape](#rectshape) | **RectShape** object.|
-
+| [RectShape](#rectshape) | **RectShape** object with the width of the corner radius set, which can be used for chained calls to further configure the rectangle shape. |
 
 ## ShapeSize
 
-Describes the size of a shape.
+Provides the size parameters of a shape.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -250,8 +250,8 @@ Describes the size of a shape.
 
 | Name        | Type                                              | Read-Only                                            | Optional                                            | Description                                        |
 | ----------- | -------------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| width | number &nbsp;\|&nbsp; string | No| Yes| Width of the shape.<br> When the parameter type is number, the valid value range is [0, +∞). When the parameter type is string, the value must conform to the [Length](arkui-ts/ts-types.md#length) type specification.<br>Unit: vp.<br>If the value is invalid, 0 vp is used.|
-| height | number &nbsp;\|&nbsp; string | No| Yes| Height of the shape.<br> When the parameter type is number, the valid value range is [0, +∞). When the parameter type is string, the value must conform to the [Length](arkui-ts/ts-types.md#length) type specification.<br>Unit: vp.<br>If the value is invalid, 0 vp is used.|
+| width | number &nbsp;\|&nbsp; string | No | Yes | Width of the shape.<br/> If the type is number, the value range is [0, +∞); if the type is string, the value is specified by [Length](arkui-ts/ts-types.md#length). <br/>Unit: vp<br/>Default value: **0vp**<br/>If an abnormal value is set, **0vp** is used.<br/>If not set, the default value **0vp** is used. |
+| height | number &nbsp;\|&nbsp; string | No | Yes | Height of the shape. <br/> If the type is number, the value range is [0, +∞); if the type is string, the value is specified by [Length](arkui-ts/ts-types.md#length). <br/>Unit: vp<br/>Default value: **0vp**<br/>If an abnormal value is set, **0vp** is used.<br/>If not set, the default value **0vp** is used. |
 
 ## PathShapeOptions
 
@@ -265,7 +265,7 @@ Represents the parameter of the constructor used to create a **PathShape** objec
 
 | Name        | Type                                              | Read-Only                                            | Optional                                            | Description                                        |
 | ----------- | -------------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| commands | string | No| Yes| Path drawing commands. For more about the commands, see [commands](./arkui-ts/ts-drawing-components-path.md#commands).|
+| commands | string | No | Yes | Commands for drawing the path. The default value is an empty string, and no path is drawn when this parameter is not set. For more information, see the drawing commands supported by [commands](arkui-ts/ts-drawing-components-path.md#commands). |
 
 ## RectShapeOptions
 
@@ -285,7 +285,7 @@ This API inherits from [ShapeSize](#shapesize).
 
 ## RoundRectShapeOptions
 
-Represents the parameter of the constructor used to create a **RectShape** object with rounded corners.
+Represents the parameters of the constructor used to create a **RectShape** object with rounded corners.
 
 This API inherits from [ShapeSize](#shapesize).
 
@@ -297,8 +297,8 @@ This API inherits from [ShapeSize](#shapesize).
 
 | Name        | Type                                              | Read-Only                                            | Optional                                            | Description                                        |
 | ----------- | -------------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| radiusWidth | number &nbsp;\|&nbsp; string | No| Yes| Radius width of the rectangle border corners.<br> When the parameter type is number, the valid value range is [0, +∞). When the parameter type is string, the value must conform to the [Length](arkui-ts/ts-types.md#length) type specification.<br>Unit: vp.<br>If the value is invalid, 0 vp is used.|
-| radiusHeight | number &nbsp;\|&nbsp; string | No| Yes| Radius height of the rectangle border corners.<br> When the parameter type is number, the valid value range is [0, +∞). When the parameter type is string, the value must conform to the [Length](arkui-ts/ts-types.md#length) type specification.<br>Unit: vp.<br>If the value is invalid, 0 vp is used.|
+| radiusWidth | number &nbsp;\|&nbsp; string | No | Yes | Radius width of the rectangle border corners.<br/>If the type is number, the value range is [0, +∞); if the type is string, the value is specified by [Length](arkui-ts/ts-types.md#length).<br/>Unit: vp<br/>Default value: **0vp**<br/>If an abnormal value is set, **0vp** is used. |
+| radiusHeight | number &nbsp;\|&nbsp; string | No | Yes | Radius height of the rectangle border corners.<br/>If the type is number, the value range is [0, +∞); if the type is string, the value is specified by [Length](arkui-ts/ts-types.md#length).<br/>Unit: vp<br/>Default value: **0vp**<br/>If an abnormal value is set, **0vp** is used. |
 
 ## BaseShape
 
@@ -384,7 +384,7 @@ Sets the size of a shape.
 
 ## CommonShapeMethod
 
-Implements the common shape methods.
+A base class that provides common methods such as offset, fill, and position settings for shapes.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -416,7 +416,6 @@ Sets the coordinate offset relative to the component's layout position.
 | ------ | ------------------------ |
 | T | Current object.|
 
-
 ### fill
 
 fill(color: ResourceColor): T
@@ -441,12 +440,11 @@ Sets the fill color of this shape, which determines its opacity, with black repr
 | ------ | ------------------------ |
 | T | Current object.|
 
-
 ### position
 
 position(position: Position): T
 
-Sets the position of the shape.
+Sets the position coordinates of the shape.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -458,7 +456,7 @@ Sets the position of the shape.
 
 | Name        | Type                                              | Mandatory| Description                                        |
 | ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| position | [Position](arkui-ts/ts-types.md#position) | Yes| Position of the shape.|
+| position | [Position](arkui-ts/ts-types.md#position) | Yes | Position of the shape. |
 
 **Return value**
 
@@ -493,6 +491,7 @@ struct ShapeExample {
       Text('PathShape, fill').fontSize(20).width('75%').fontColor('#DCDCDC')
       // Replace $r('app.media.startIcon') with the resource file you use.
       Image($r('app.media.startIcon'))
+        // Use SVG path commands to draw a triangle as the mask shape.
         .maskShape(new PathShape().commands('M100 0 L200 240 L0 240 Z').fill(Color.Red))
         .width('500px').height('280px')
     

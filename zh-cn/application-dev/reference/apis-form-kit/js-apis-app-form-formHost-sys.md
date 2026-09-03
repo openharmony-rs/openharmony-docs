@@ -2086,6 +2086,7 @@ acquireFormData(formId: string, callback: AsyncCallback\<Record\<string, Object>
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permissions denied. |
+| 202 | The application is not a system application. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error. |
 | 16500060 | Service connection error. |
@@ -2142,6 +2143,7 @@ acquireFormData(formId: string): Promise\<Record\<string, Object>>
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permissions denied. |
+| 202 | The application is not a system application. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error. |
 | 16500060 | Service connection error. |
@@ -2829,7 +2831,7 @@ updateFormLockedState(formId: string, isLocked: boolean): Promise&lt;void&gt;
 
 通知卡片管控状态更新。使用Promise异步回调。
 
-卡片管控状态是指，应用使能了应用锁管控，对应应用的卡片也会跟随使能应用锁管控，此时卡片页面会使用加锁的蒙板样式遮罩卡片。在管控状态下，操作和使用卡片需要输入加锁时设置的密码。
+卡片管控状态是指，应用使能了应用锁管控，对应应用的卡片也会跟随使能应用锁管控，此时卡片页面会使用加锁的蒙版样式遮罩卡片。在管控状态下，操作和使用卡片需要输入加锁时设置的密码。
 
 **需要权限**：ohos.permission.REQUIRE_FORM
 
@@ -3309,7 +3311,7 @@ onTemplateFormDetailInfoChange(callback: formInfo.TemplateFormDetailInfoCallback
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permissions denied. |
-| 202 | Permissions denied.Called by non-system application. |
+| 202 | The application is not a system application. |
 | 16500050 | IPC connection error. |
 
 **示例：**
@@ -3359,7 +3361,7 @@ offTemplateFormDetailInfoChange(callback?: formInfo.TemplateFormDetailInfoCallba
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permissions denied. |
-| 202 | Permissions denied.Called by non-system application. |
+| 202 | The application is not a system application. |
 | 16500050 | IPC connection error. |
 
 **示例：**

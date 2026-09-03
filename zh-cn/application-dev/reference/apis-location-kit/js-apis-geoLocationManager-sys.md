@@ -75,6 +75,176 @@ import { geoLocationManager } from '@kit.LocationKit';
 | GEOFENCE_TRANSITION_EVENT_NEAR_WANDER    | 32 | 该事件表示设备正在接近地理围栏区域，且持续徘徊超过15分钟。<br/>**系统接口**：此接口为系统接口。 |
 
 
+## FusionFenceRequestParams
+
+融合围栏请求信息。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| identifier | string | 否 | 否 | 表示融合围栏唯一标识。<br/>**系统接口**：此接口为系统接口。 |
+| scene | FusionFenceScene&lt;[FusionFenceScene](#fusionfencescene)&gt; | 否 | 否 | 表示融合围栏场景。<br/>**系统接口**：此接口为系统接口。 |
+| fenceType | number | 否 | 否 | 表示融合围栏类型。可参考FusionFenceType&lt;[FusionFenceType](#fusionfencetype)&gt;。使用时按二进制bit位进行设置。例如3（二进制11）表示GNSS围栏和CELLULAR围栏。<br/>**系统接口**：此接口为系统接口。 |
+| poiType | string | 否 | 是 | 表示POI类型。<br/>**系统接口**：此接口为系统接口。 |
+| poiLocation | Point&lt;[Point](#point)&gt; | 否 | 否 | 表示POI位置信息。<br/>**系统接口**：此接口为系统接口。 |
+| monitorTransitionEvents | number | 否 | 否 | 表示监听的围栏事件。可参考GeofenceTransitionEvent&lt;[GeofenceTransitionEvent](#geofencetransitionevent12)&gt;。使用时按二进制bit位进行设置。例如3（二进制11）表示同时监听围栏进入和围栏退出两种事件。<br/>**系统接口**：此接口为系统接口。 |
+| loiterTimeMs | number | 否 | 否 | 表示徘徊时间，单位为毫秒。取值范围为大于0。若监听徘徊事件，当设备在围栏内徘徊时间达到该值，则上报徘徊事件。<br/>**系统接口**：此接口为系统接口。 |
+| gnssFences | Array&lt;[GnssFence](#gnssfence)&gt; | 否 | 是 | 表示GNSS围栏信息集合。若FusionFenceType&lt;[FusionFenceType](#fusionfencetype)&gt选择GNSS，则为必填<br/>**系统接口**：此接口为系统接口。 |
+| cellFences | Array&lt;[CellFence](#cellfence)&gt; | 否 | 是 | 表示CELL围栏信息集合。若FusionFenceType&lt;[FusionFenceType](#fusionfencetype)&gt选择CELLULAR，则为必填<br/>**系统接口**：此接口为系统接口。 |
+| wifiFences | Array&lt;[WifiFence](#wififence)&gt; | 否 | 是 | 表示Wi-Fi围栏信息集合。若FusionFenceType&lt;[FusionFenceType](#fusionfencetype)&gt选择WIFI，则为必填<br/>**系统接口**：此接口为系统接口。 |
+| expirationMs | number | 否 | 否 | 表示围栏存活时间，单位是毫秒。取值范围为大于0。<br/>**系统接口**：此接口为系统接口。 |
+| fenceTransitionCallback | Callback&lt;[FusionFenceTransition](#fusionfencetransition)&gt; | 否 | 否 | 表示用于接收围栏事件的回调函数。<br/>**系统接口**：此接口为系统接口。 |
+
+
+## FusionFenceScene 
+
+融合围栏场景。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| AIRPORT    | 1 | 表示机场场景。<br/>**系统接口**：此接口为系统接口。 |
+| TRAIN_STATION    | 2 | 表示火车站场景。<br/>**系统接口**：此接口为系统接口。 |
+| SUBWAY    | 3 | 表示地铁场景。<br/>**系统接口**：此接口为系统接口。 |
+| SHOP    | 4 | 表示商场场景。<br/>**系统接口**：此接口为系统接口。 |
+
+
+## FusionFenceType
+
+融合围栏类型采用二进制标记，该类型在使用时是将支持的围栏类型所在bit位置为1。例如支持GNSS和CELLULAR围栏，则值为0011（二进制），转换为十进制为3；全部四种围栏都支持，则值为1111（二进制），转换为十进制为15。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| GNSS    | 1 | 四位二进制数的最低位，表示GNSS围栏。<br/>**系统接口**：此接口为系统接口。 |
+| CELLULAR    | 2 | 四位二进制数由低到高的第二位，表示CELLULAR围栏。<br/>**系统接口**：此接口为系统接口。 |
+| WIFI    | 4 | 四位二进制数由低到高的第三位，表示Wi-Fi围栏。<br/>**系统接口**：此接口为系统接口。 |
+| BLUETOOTH    | 8 | 四位二进制数的最高位，表示蓝牙围栏。<br/>**系统接口**：此接口为系统接口。 |
+
+
+## Point
+
+POI位置信息。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| latitude | number | 否 | 否 |表示纬度。取值范围为-90到90。 |
+| longitude | number | 否 |否 | 表示经度。取值范围为-180到180。 |
+
+
+## GnssFence
+
+GNSS围栏信息。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| gnssFenceType | number | 否 | 否 | 表示GNSS围栏类型。可参考GnssFenceType&lt;[GnssFenceType](#gnssfencetype)&gt;。支持多类型GNSS围栏，比如3，代表包含圆形、多边形两种围栏。<br/>**系统接口**：此接口为系统接口。 |
+| circularFence | Geofence&lt;[Geofence](js-apis-geoLocationManager.md#geofence)&gt; | 否 | 是 | 表示圆形围栏信息集合。若GnssFenceType&lt;[GnssFenceType](#gnssfencetype)&gt选择CIRCULAR，则为必填。<br/>**系统接口**：此接口为系统接口。 |
+| polygon | Array&lt;[Point](#point)&gt; | 否 | 是 | 表示多边形围栏信息集合。若GnssFenceType&lt;[GnssFenceType](#gnssfencetype)&gt选择POLYGON，则为必填。<br/>**系统接口**：此接口为系统接口。 |
+
+
+## GnssFenceType
+
+GNSS围栏类型。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| POLYGON    | 1 | 表示多边形围栏。<br/>**系统接口**：此接口为系统接口。 |
+| CIRCULAR    | 2 | 表示圆形围栏。<br/>**系统接口**：此接口为系统接口。 |
+
+
+## CellFence
+
+CELL围栏信息。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| cellInfos | Array&lt;[CellInfo](#cellinfo23)&gt; | 否 | 否 | 表示CELL围栏信息集合。<br/>**系统接口**：此接口为系统接口。 |
+
+
+## WifiFence
+
+Wi-Fi围栏信息。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| type | WifiFingerprintType&lt;[WifiFingerprintType](#wififingerprinttype)&gt; | 否 | 否 | 表示Wi-Fi指纹算法类型。<br/>**系统接口**：此接口为系统接口。 |
+| wifiFeatures | Array&lt;[WirelessSignalFeature](#wirelesssignalfeature)&gt; | 否 | 否 | 表示Wi-Fi指纹信息集合。<br/>**系统接口**：此接口为系统接口。 |
+
+
+## WifiFingerprintType
+
+Wi-Fi指纹算法类型。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| SEMANTIC    | 1 | 表示语义算法。<br/>**系统接口**：此接口为系统接口。 |
+| LOCATION    | 2 | 表示高精指纹算法。<br/>**系统接口**：此接口为系统接口。 |
+
+
+## WirelessSignalFeature
+
+Wi-Fi指纹信息。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| rssiAvg | number | 否 | 否 | 表示RSSI平均值。<br/>**系统接口**：此接口为系统接口。 |
+| rssiStandardDeviation | number | 否 | 否 | 表示RSSI标准差。<br/>**系统接口**：此接口为系统接口。 |
+| mac | Array&lt;string&gt; | 否 | 否 | 表示设备MAC地址信息集合。<br/>**系统接口**：此接口为系统接口。 |
+
+
+## FusionFenceTransition
+
+融合围栏回调事件信息。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| identifier | string | 否 | 否 | 表示融合围栏唯一标识。<br/>**系统接口**：此接口为系统接口。 |
+| scene | FusionFenceScene&lt;[FusionFenceScene](#fusionfencescene)&gt; | 否 | 否 | 表示融合围栏场景。<br/>**系统接口**：此接口为系统接口。 |
+| transitionEvent | GeofenceTransitionEvent&lt;[GeofenceTransitionEvent](#geofencetransitionevent12)&gt; | 否 | 否 | 表示围栏事件。<br/>**系统接口**：此接口为系统接口。 |
+
+
 ## Location
 
 位置信息。
@@ -199,7 +369,8 @@ WiFi扫描信息，包含扫描到的WiFi热点的ssid、bssid和rssi等信息�
 | signalIntensity | number | 否 | 否 | 表示信号强度。 <br>**系统接口**：此接口为系统接口。|
 | arfcn | number | 否 | 否 | 表示绝对无线载频信道号（absolute radio frequency channel number）。<br> **系统接口**：此接口为系统接口。|
 | pci | number | 否 | 否 | 表示物理小区标识。 <br>**系统接口**：此接口为系统接口。|
-| additionsMap | Map&lt;string, string&gt; | 否 | 否 | 附加信息。 <br>**系统接口**：此接口为系统接口。|
+| tag | number | 否 | 是 | 表示跟踪区域码。 <br>**系统接口**：此接口为系统接口。<br />**起始版本：** 26.0.0|
+| additionsMap | Map&lt;string, string&gt; | 否 | 是 | 附加信息。 <br>**系统接口**：此接口为系统接口。|
 
 
 ## LocationPrivacyType
@@ -1307,5 +1478,230 @@ setLocationSwitchIgnored(isIgnored: boolean): void
     geoLocationManager.setLocationSwitchIgnored(isIgnored);
   } catch (err) {
     console.error("errCode:" + err.code + ", message:" + err.message);
+  }
+  ```
+
+
+## geoLocationManager.addFusionFence
+
+addFusionFence(fenceRequestParams: FusionFenceRequestParams): Promise&lt;void&gt;
+
+添加一个融合围栏，并订阅围栏事件。使用Promise异步回调。调用该接口前建议先通过[geoLocationManager.isFusionFenceSupported](#geolocationmanagerisfusionfencesupported)接口判断对应能力是否支持。
+
+融合围栏支持设置多种类型围栏，包括GNSS围栏、Wi-Fi围栏、CELL围栏。
+
+**起始版本：** 26.0.0
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.LOCATION
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+**参数**：
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | fenceRequestParams | FusionFenceRequestParams&lt;[FusionFenceRequestParams](#fusionfencerequestparams)&gt; | 是 | 融合围栏请求信息。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|202 | Permission verification failed. A non-system application calls a system API. |
+|401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
+|801 | Capability not supported. Failed to call ${geoLocationManager.addFusionFence} due to limited device.          |
+|3301000 | The location service is unavailable.                                            |
+|3301100 | The location switch is off.|
+|3301603 | Duplicate fusion fence identifier.                                            |
+|3301601 | The number of geofences exceeds the maximum.                                            |
+
+**示例**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+  // 创建围栏请求信息
+  let latitude = 30.07;
+  let longitude = 119.98;
+  // 多边形围栏位置信息
+  let point: geoLocationManager.Point = {
+    latitude:latitude,
+    longitude:longitude
+  }
+  // 圆形围栏信息，包括经纬度、半径、存活时间
+  let geofence: geoLocationManager.Geofence = {
+    "latitude": latitude, "longitude": longitude, "radius": 2000, "expiration": 500000000
+  }
+  // 多边形围栏位置信息集合
+  let polygon: Array<geoLocationManager.Point> = [point];
+  // GNSS围栏请求信息
+  let gnssFence: geoLocationManager.GnssFence = {
+    gnssFenceType: geoLocationManager.GnssFenceType.CIRCULAR, // GnssFenceType
+    circularFence: geofence,
+    polygon: polygon
+  }
+  // GNSS围栏请求信息集合
+  let gnssFences: Array<geoLocationManager.GnssFence> = [gnssFence];
+  // CELL围栏信息扩展字段，可选字段，可传空
+  let additionsMap: Map<string, string> = new Map<string, string>();
+  // CELL信息
+  let cellInfo: geoLocationManager.CellInfo = {
+    timeSinceBoot:1781062881671, cellId:9999, lac:1024, mcc: 460, mnc: 1, rat: 13, signalIntensity: -75, arfcn: 1850, pci: 256, tac: 888,
+    additionsMap: additionsMap
+  }
+  // CELL信息集合
+  let cellInfos: Array<geoLocationManager.CellInfo> = [cellInfo];
+  // CELL围栏请求信息
+  let cellFence: geoLocationManager.CellFence = {
+    cellInfos: cellInfos,
+  };
+  // CELL围栏请求信息集合
+  let cellFences: Array<geoLocationManager.CellFence> = [cellFence];
+  // MAC地址
+  let mac: Array<string> = ["FA:C4:D0:0E:BF:DF"];
+  // Wi-Fi指纹信息
+  let wifiFeature: geoLocationManager.WirelessSignalFeature = {
+    rssiAvg: 1,
+    rssiStandardDeviation:2.0,
+    mac:mac
+  };
+  // Wi-Fi指纹信息集合
+  let wifiFeatures: Array<geoLocationManager.WirelessSignalFeature> = [wifiFeature];
+  // Wi-Fi围栏请求信息
+  let wifiFence: geoLocationManager.WifiFence = {
+    type: geoLocationManager.WifiFingerprintType.LOCATION,
+    wifiFeatures:wifiFeatures
+  };
+  // Wi-Fi围栏请求信息集合
+  let wifiFences: Array<geoLocationManager.WifiFence> = [wifiFence];
+  // 构造围栏请求参数fenceRequestParams
+  let fenceRequestParams: geoLocationManager.FusionFenceRequestParams = {
+    // 融合围栏唯一标识
+    identifier: "123456789",
+    // 融合围栏场景
+    scene: geoLocationManager.FusionFenceScene.AIRPORT,
+    // 融合围栏类型,可参考FusionFenceType
+    fenceType: 1,
+    // POI类型,参数为可选
+    poiType: "1",
+    // POI位置信息
+    poiLocation: point,
+    // 监听的围栏事件,可参考GeofenceTransitionEvent,每个bit位表示一种围栏事件，比如3，代表同时监听围栏进入和围栏退出两种事件。
+    monitorTransitionEvents: 63,
+    // 表示徘徊时间，单位为毫秒
+    loiterTimeMs: 10000,
+    // GNSS围栏信息集合,参数为可选。若fenceType选择GNSS，则必须填写
+    gnssFences: gnssFences,
+    // CELL围栏信息集合,参数为可选。若fenceType选择CELLULAR，则必须填写
+    cellFences: cellFences,
+    // Wi-Fi围栏信息集合,参数为可选。若fenceType选择WIFI，则必须填写
+    wifiFences: wifiFences,
+    // 表示围栏存活时间，单位是毫秒
+    expirationMs: 100000000,
+    // 用于接收围栏事件的回调函数
+    fenceTransitionCallback: (transition : geoLocationManager.FusionFenceTransition) => {
+      if (transition) {
+        console.info("GeofenceTransition: ", JSON.stringify(transition));
+      }
+    },
+  }
+  try {
+    // 添加围栏
+    await geoLocationManager.addFusionFence(fenceRequestParams).then(() => {
+      // 围栏添加成功
+      console.info("addFusionFence success");
+    }).catch((error : BusinessError) => {
+      console.error("addFusionFence: BusinessError=" + JSON.stringify(error));
+    });
+  } catch(error) {
+    console.error("addFusionFence: error=" + JSON.stringify(error));
+  }
+  ```
+
+
+## geoLocationManager.removeFusionFence
+
+removeFusionFence(identifier: string): Promise&lt;void&gt;
+
+删除一个融合围栏，并取消订阅该围栏事件。使用Promise异步回调。调用该接口前建议先通过[geoLocationManager.isFusionFenceSupported](#geolocationmanagerisfusionfencesupported)接口判断对应能力是否支持。
+
+**起始版本：** 26.0.0
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+**参数**：
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | identifier | string | 是 | 融合围栏唯一标识。必须与addFusionFence传入的identifier相同才能成功删除围栏。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+|202 | Permission verification failed. A non-system application calls a system API. |
+|401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
+|801 | Capability not supported. Failed to call ${geoLocationManager.removeFusionFence} due to limited device.          |
+|3301000 | The location service is unavailable.                                            |
+|3301602 | Failed to delete a fusion fence due to an incorrect identifier.                                          |
+
+**示例**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+
+  try {
+    // 必须与addFusionFence传入的identifier相同才能成功删除围栏
+    let identifier = "123456789";
+    await geoLocationManager.removeFusionFence(identifier).then(() => {
+      // 围栏删除成功
+      console.info("removeFusionFence success");
+    }).catch((error : BusinessError) => {
+      console.error("removeFusionFence: BusinessError=" + JSON.stringify(error));
+    });
+  } catch(error) {
+    console.error("removeFusionFence: error=" + JSON.stringify(error));
+  }
+  ```
+
+
+## geoLocationManager.isFusionFenceSupported
+
+isFusionFenceSupported(): boolean
+
+判断系统是否支持融合围栏能力。
+
+**起始版本：** 26.0.0
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+
+**返回值**：
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | boolean | true：支持融合围栏能力。<br/>false：不支持融合围栏能力。 |
+
+**示例**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+
+  try {
+    let isFusionFenceSupported = geoLocationManager.isFusionFenceSupported();
+  } catch (err) {
+    console.error("errCode:" + err.code + ", message:"  + err.message);
   }
   ```

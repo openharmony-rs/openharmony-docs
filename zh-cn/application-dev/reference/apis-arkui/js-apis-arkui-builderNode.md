@@ -321,6 +321,10 @@ class TextNodeController extends NodeController {
     // 返回当前BuilderNode包含的FrameNode
     return this.textNode.getFrameNode();
   }
+
+  aboutToDisappear() {
+    this.textNode?.dispose();
+  }
 }
 
 @Entry
@@ -391,6 +395,10 @@ class TextNodeController extends NodeController {
     }
 
     return this.rootNode;
+  }
+
+  aboutToDisappear() {
+    this.textNode?.dispose();
   }
 }
 
@@ -467,6 +475,10 @@ class TextNodeController extends NodeController {
     }
 
     return this.rootNode;
+  }
+
+  aboutToDisappear() {
+    this.textNode?.dispose();
   }
 }
 
@@ -550,7 +562,6 @@ function buildText(params: Params) {
 
 // 继承NodeController实现自定义textNode控制器
 class TextNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
   private textNode: BuilderNode<[Params]> | null = null;
   private message: string = '';
 
@@ -570,6 +581,9 @@ class TextNodeController extends NodeController {
     if (this.textNode !== null) {
       this.textNode.update(new Params(message));
     }
+  }
+  aboutToDisappear() {
+    this.textNode?.dispose();
   }
 }
 
@@ -702,6 +716,10 @@ class MyNodeController extends NodeController {
     let result = this.rootNode.postTouchEvent(event);
     console.info(`result ${result}`);
     return result;
+  }
+
+  aboutToDisappear() {
+    this.rootNode?.dispose();
   }
 }
 
@@ -924,6 +942,9 @@ class MyNodeController extends NodeController {
     }
     return this.builderNode.getFrameNode();
   }
+  aboutToDisappear() {
+    this.builderNode?.dispose();
+  }
 }
 
 // 被回收复用的自定义组件，其状态变量会更新，而子自定义组件ReusableChildComponent3中的状态变量也会更新，但BuilderNode会阻断这一传递过程
@@ -1101,6 +1122,9 @@ class MyNodeController extends NodeController {
       this.builderNode.build(wrapBuilder<[Params]>(buildNode), new Params(this.item));
     }
     return this.builderNode.getFrameNode();
+  }
+  aboutToDisappear() {
+    this.builderNode?.dispose();
   }
 }
 
@@ -1688,6 +1712,10 @@ class TextNodeController extends NodeController {
     }
 
   }
+
+  aboutToDisappear() {
+    this.rootNode?.dispose();
+  }
 }
 
 const textNodeController: TextNodeController = new TextNodeController();
@@ -1942,6 +1970,7 @@ struct Index {
             );
             // 将构建好的FrameNode添加到内容容器中显示
             this.content.addFrameNode(node.getFrameNode());
+            node.dispose();
           })
         ContentSlot(this.content)
       }
@@ -2054,6 +2083,7 @@ struct Index {
               this.params.count
             );
             this.content.addFrameNode(node.getFrameNode());
+            node.dispose();
           })
         ContentSlot(this.content)
       }
@@ -2169,6 +2199,10 @@ class MyNodeController extends NodeController {
     let result = this.rootNode.postTouchEvent(event);
     console.info(`result ${result}`);
     return result;
+  }
+
+  aboutToDisappear() {
+    this.rootNode?.dispose();
   }
 }
 
@@ -2410,6 +2444,10 @@ class MyNodeController extends NodeController {
     }
     return this.builderNode.getFrameNode();
   }
+
+  aboutToDisappear() {
+    this.builderNode?.dispose();
+  }
 }
 
 @Reusable
@@ -2596,6 +2634,10 @@ class MyNodeController extends NodeController {
       this.builderNode.build(wrapBuilder<[Params]>(buildNode), {}, new Params(this.item));
     }
     return this.builderNode.getFrameNode();
+  }
+
+  aboutToDisappear() {
+    this.builderNode?.dispose();
   }
 }
 
@@ -2953,6 +2995,7 @@ struct Index {
                 })
               );
               this.content.addFrameNode(node.getFrameNode());
+              node.dispose();
             })
           // 创建使用V1装饰器的ReactiveBuilderNode
           Button('绑定参数由V1装饰器装饰').onClick(
@@ -3152,6 +3195,10 @@ class TextNodeController extends NodeController {
       this.count += 1; // 增加计数
       this.textNode.flushState();
     }
+  }
+
+  aboutToDisappear() {
+    this.textNode?.dispose();
   }
 }
 
@@ -3581,6 +3628,10 @@ class MyNodeController extends NodeController {
     let result = this.rootNode.postInputEvent(event);
     return result;
   }
+
+  aboutToDisappear() {
+    this.rootNode?.dispose();
+  }
 }
 
 @Entry
@@ -3697,6 +3748,10 @@ class MyNodeController extends NodeController {
     let result = this.rootNode.postInputEvent(event);
     return result;
   }
+  
+  aboutToDisappear() {
+    this.rootNode?.dispose();
+  }
 }
 
 @Entry
@@ -3792,6 +3847,10 @@ class MyNodeController extends NodeController {
     // 将轴事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
     let result = this.rootNode.postInputEvent(event);
     return result;
+  }
+  
+  aboutToDisappear() {
+    this.rootNode?.dispose();
   }
 }
 
@@ -3956,6 +4015,10 @@ struct Index {
     this.content.addFrameNode(this.builderNode.getFrameNode());
   }
 
+  aboutToDisappear() {
+    this.builderNode?.dispose();
+  }
+
   build() {
     Column() {
       Text(this.message)
@@ -4009,6 +4072,10 @@ class TextNodeControllerAdd extends NodeController {
     // 构建builderNode，enableProvideConsumeCrossing设置为true
     this.builderNode.build(wrapBuilder<[]>(buildText), undefined, { enableProvideConsumeCrossing: true });
     return this.builderNode.getFrameNode();
+  }
+
+  aboutToDisappear() {
+    this.builderNode?.dispose();
   }
 }
 
@@ -4248,6 +4315,10 @@ struct AddRemoveAddToAnother {
     console.info(`Provider change ${this.content}`);
   }
 
+  aboutToDisappear() {
+    globalBuilderNode?.dispose();
+  }
+
   controllerIndex: TextNodeController = new TextNodeController();
 
   build() {
@@ -4399,6 +4470,11 @@ struct BuildNodeToBuildNode {
   @Monitor('content')
   providerWatch() {
     console.info(`Provider change ${this.content}`);
+  }
+
+  aboutToDisappear() {
+    globalBuilderNode?.dispose();
+    globalBuilderNode2?.dispose();
   }
 
   controllerIndex: TextNodeControllerAdd = new TextNodeControllerAdd();
@@ -5032,6 +5108,10 @@ class MyNodeController extends NodeController {
     let result = this.rootNode.postInputEvent(event);
     return result;
   }
+
+  aboutToDisappear() {
+    this.rootNode?.dispose();
+  }
 }
 
 @Entry
@@ -5148,6 +5228,10 @@ class MyNodeController extends NodeController {
     let result = this.rootNode.postInputEvent(event);
     return result;
   }
+
+  aboutToDisappear() {
+    this.rootNode?.dispose();
+  }
 }
 
 @Entry
@@ -5243,6 +5327,10 @@ class MyNodeController extends NodeController {
     // 调用postInputEvent将转换后的事件传递给ReactiveBuilderNode
     let result = this.rootNode.postInputEvent(event);
     return result;
+  }
+
+  aboutToDisappear() {
+    this.rootNode?.dispose();
   }
 }
 
@@ -5419,6 +5507,10 @@ class MyNodeController extends NodeController {
     let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
     return result;
   }
+
+  aboutToDisappear() {
+    this.rootNode?.dispose();
+  }
 }
 
 class MyNodeController2 extends NodeController {
@@ -5451,6 +5543,10 @@ class MyNodeController2 extends NodeController {
     let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
     return result;
   }
+
+  aboutToDisappear() {
+    this.rootNode?.dispose();
+  }
 }
 
 class MyNodeController3 extends NodeController {
@@ -5481,6 +5577,10 @@ class MyNodeController3 extends NodeController {
     // 将鼠标事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
     let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
     return result;
+  }
+
+  aboutToDisappear() {
+    this.rootNode?.dispose();
   }
 }
 
@@ -5676,6 +5776,10 @@ class MyNodeController extends NodeController {
     let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
     return result;
   }
+
+  aboutToDisappear() {
+    this.rootNode?.dispose();
+  }
 }
 
 class MyNodeController2 extends NodeController {
@@ -5716,6 +5820,10 @@ class MyNodeController2 extends NodeController {
     let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
     return result;
   }
+
+  aboutToDisappear() {
+    this.rootNode?.dispose();
+  }
 }
 
 class MyNodeController3 extends NodeController {
@@ -5755,6 +5863,10 @@ class MyNodeController3 extends NodeController {
     // 将触摸事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
     let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
     return result;
+  }
+  
+  aboutToDisappear() {
+    this.rootNode?.dispose();
   }
 }
 
@@ -5866,6 +5978,10 @@ class MyNodeController extends NodeController {
     // 将轴事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
     let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
     return result;
+  }
+
+  aboutToDisappear() {
+    this.rootNode?.dispose();
   }
 }
 

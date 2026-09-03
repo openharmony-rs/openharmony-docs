@@ -1,10 +1,13 @@
 # OH_Drawing_StrutStyle
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=fc361649f5966265cb0ed6967b54917e7d96079a translatedAt=2026-08-24T08:41:48.260Z pushedAt=2026-08-25T07:15:59.640Z -->
+
 ```
 typedef struct {...} OH_Drawing_StrutStyle
 ```
@@ -26,7 +29,7 @@ This struct describes a strut style. The strut style determines the line spacing
 | Name                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [OH_Drawing_FontWeight](capi-drawing-text-typography-h.md#oh_drawing_fontweight) weight | Font weight used for calculating the strut.                                  |
-| [OH_Drawing_FontStyle](capi-drawing-text-typography-h.md#oh_drawing_fontstyle) style | Font style used for calculating the strut.                                  |
+| [OH_Drawing_FontStyle](capi-drawing-text-typography-h.md#oh_drawing_fontstyle) style | Font style used when calculating the strut. |
 | double size                                                  | Size of the ascent plus descent in the logical pixels.                              |
 | double heightScale                                           | Scale factor of the line height.                                              |
 | bool heightOverride                                          | Whether to enable height override. **true**: enabled; **false**: disabled.           |

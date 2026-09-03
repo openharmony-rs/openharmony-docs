@@ -168,14 +168,14 @@ send(options: UDPSendOptions, callback: AsyncCallback\<void\>): void
 | ------- | ----------------------- |
 | 401     | Parameter error.        |
 | 201     | Permission denied.      |
-| 2301206 | Socks5 failed to connect to the proxy server.  |
-| 2301207 | Socks5 username or password is invalid.        |
-| 2301208 | Socks5 failed to connect to the remote server. |
-| 2301209 | Socks5 failed to negotiate the authentication method. |
-| 2301210 | Socks5 failed to send the message.             |
-| 2301211 | Socks5 failed to receive the message.          |
-| 2301212 | Socks5 serialization error.                    |
-| 2301213 | Socks5 deserialization error.                  |
+| 2301206 | Socks5 failed to connect to the proxy server. <br>适用版本：18+         |
+| 2301207 | Socks5 username or password is invalid. <br>适用版本：18+               |
+| 2301208 | Socks5 failed to connect to the remote server. <br>适用版本：18+        |
+| 2301209 | Socks5 failed to negotiate the authentication method. <br>适用版本：18+ |
+| 2301210 | Socks5 failed to send the message. <br>适用版本：18+                    |
+| 2301211 | Socks5 failed to receive the message. <br>适用版本：18+                 |
+| 2301212 | Socks5 serialization error. <br>适用版本：18+                           |
+| 2301213 | Socks5 deserialization error. <br>适用版本：18+                         |
 
 **示例：**
 
@@ -290,14 +290,14 @@ send(options: UDPSendOptions): Promise\<void\>
 | ------- | ----------------------- |
 | 401     | Parameter error.        |
 | 201     | Permission denied.      |
-| 2301206 | Socks5 failed to connect to the proxy server.  |
-| 2301207 | Socks5 username or password is invalid.        |
-| 2301208 | Socks5 failed to connect to the remote server. |
-| 2301209 | Socks5 failed to negotiate the authentication method. |
-| 2301210 | Socks5 failed to send the message.             |
-| 2301211 | Socks5 failed to receive the message.          |
-| 2301212 | Socks5 serialization error.                    |
-| 2301213 | Socks5 deserialization error.                  |
+| 2301206 | Socks5 failed to connect to the proxy server. <br>适用版本：18+         |
+| 2301207 | Socks5 username or password is invalid. <br>适用版本：18+               |
+| 2301208 | Socks5 failed to connect to the remote server. <br>适用版本：18+        |
+| 2301209 | Socks5 failed to negotiate the authentication method. <br>适用版本：18+ |
+| 2301210 | Socks5 failed to send the message. <br>适用版本：18+                    |
+| 2301211 | Socks5 failed to receive the message. <br>适用版本：18+                 |
+| 2301212 | Socks5 serialization error. <br>适用版本：18+                           |
+| 2301213 | Socks5 deserialization error. <br>适用版本：18+                         |
 
 
 **示例：**
@@ -1010,7 +1010,7 @@ udp.off('error');
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
 | address<sup>11+</sup> | string | 否   | 否   | IP地址。                                           |
 | port    | number | 否   | 否   | 端口号 ，范围0~65535。如果不指定系统随机分配端口。           |
-| family  | number | 否   | 否   | 网络协议类型，可选类型：<br />- 1：IPv4。默认为1。<br />- 2：IPv6。地址为IPV6类型，该字段必须被显式指定为2。<br />- 3：Domain<sup>18+</sup>。地址为Domain类型，该字段必须被显式指定为3。当前仅支持[TCPSocket.connect](#connect)和[TLSSocket.connect](#connect9)。|
+| family  | number | 否   | 否   | 网络协议类型，可选类型：<br />- 1：IPv4。默认为1。<br />- 2：IPv6。地址为IPv6类型，该字段必须被显式指定为2。<br />- 3：Domain<sup>18+</sup>。地址为Domain类型，该字段必须被显式指定为3。当前仅支持[TCPSocket.connect](#connect)和[TLSSocket.connect](#connect9)。|
 
 ## ProxyOptions<sup>18+</sup>
 
@@ -1956,14 +1956,14 @@ connect(options: TCPConnectOptions, callback: AsyncCallback\<void\>): void
 | ------- | ----------------------- |
 | 401     | Parameter error.        |
 | 201     | Permission denied.      |
-| 2301206 | Socks5 failed to connect to the proxy server.  |
-| 2301207 | Socks5 username or password is invalid.        |
-| 2301208 | Socks5 failed to connect to the remote server. |
-| 2301209 | Socks5 failed to negotiate the authentication method. |
-| 2301210 | Socks5 failed to send the message.             |
-| 2301211 | Socks5 failed to receive the message.          |
-| 2301212 | Socks5 serialization error.                    |
-| 2301213 | Socks5 deserialization error.                  |
+| 2301206 | Socks5 failed to connect to the proxy server. <br>适用版本：18+         |
+| 2301207 | Socks5 username or password is invalid. <br>适用版本：18+               |
+| 2301208 | Socks5 failed to connect to the remote server. <br>适用版本：18+        |
+| 2301209 | Socks5 failed to negotiate the authentication method. <br>适用版本：18+ |
+| 2301210 | Socks5 failed to send the message. <br>适用版本：18+                    |
+| 2301211 | Socks5 failed to receive the message. <br>适用版本：18+                 |
+| 2301212 | Socks5 serialization error. <br>适用版本：18+                           |
+| 2301213 | Socks5 deserialization error. <br>适用版本：18+                         |
 
 **示例：**
 
@@ -2057,14 +2057,14 @@ connect(options: TCPConnectOptions): Promise\<void\>
 | ------- | ----------------------- |
 | 401     | Parameter error.        |
 | 201     | Permission denied.      |
-| 2301206 | Socks5 failed to connect to the proxy server.  |
-| 2301207 | Socks5 username or password is invalid.        |
-| 2301208 | Socks5 failed to connect to the remote server. |
-| 2301209 | Socks5 failed to negotiate the authentication method. |
-| 2301210 | Socks5 failed to send the message.             |
-| 2301211 | Socks5 failed to receive the message.          |
-| 2301212 | Socks5 serialization error.                    |
-| 2301213 | Socks5 deserialization error.                  |
+| 2301206 | Socks5 failed to connect to the proxy server. <br>适用版本：18+         |
+| 2301207 | Socks5 username or password is invalid. <br>适用版本：18+               |
+| 2301208 | Socks5 failed to connect to the remote server. <br>适用版本：18+        |
+| 2301209 | Socks5 failed to negotiate the authentication method. <br>适用版本：18+ |
+| 2301210 | Socks5 failed to send the message. <br>适用版本：18+                    |
+| 2301211 | Socks5 failed to receive the message. <br>适用版本：18+                 |
+| 2301212 | Socks5 serialization error. <br>适用版本：18+                           |
+| 2301213 | Socks5 deserialization error. <br>适用版本：18+                         |
 
 **示例：**
 
@@ -5579,7 +5579,7 @@ import { common } from '@kit.AbilityKit';
 let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
 let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let sandboxPath: string = context.filesDir + '/testSocket';
-let listenAddr: socket.NetAddress = {
+let listenAddr: socket.LocalAddress = {
   address: sandboxPath
 }
 server.listen(listenAddr).then(() => {
@@ -6898,7 +6898,7 @@ on(type: 'message', callback: Callback\<SocketMessageInfo\>): void
 | 参数名   | 类型                                                         | 必填 | 说明                                      |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------- |
 | type     | string                                                       | 是   | 订阅的事件类型。'message'：接收消息事件。 |
-| callback | Callback\<[SocketMessageInfo](#socketmessageinfo11)\> | 是   | 回调函数。TLSSocket连接订阅某类接受消息事件触发的调用函数，返回TLSSocket连接信息。 |
+| callback | Callback\<[SocketMessageInfo](#socketmessageinfo11)\> | 是   | 回调函数。TLSSocket连接订阅某类接收消息事件触发的调用函数，返回TLSSocket连接信息。 |
 
 **错误码：**
 
@@ -6952,7 +6952,7 @@ off(type: 'message', callback?: Callback\<SocketMessageInfo\>): void
 | 参数名   | 类型                                                         | 必填 | 说明                                      |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------- |
 | type     | string                                                       | 是   | 订阅的事件类型。'message'：接收消息事件。 |
-| callback | Callback\<[SocketMessageInfo](#socketmessageinfo11)\> | 否   | 回调函数。TLSSocket连接取消订阅某类接受消息事件触发的调用函数，返回TLSSocket连接信息。 |
+| callback | Callback\<[SocketMessageInfo](#socketmessageinfo11)\> | 否   | 回调函数。TLSSocket连接取消订阅某类接收消息事件触发的调用函数，返回TLSSocket连接信息。 |
 
 **错误码：**
 
@@ -7194,14 +7194,14 @@ connect(options: TLSConnectOptions, callback: AsyncCallback\<void\>): void
 | 2303505 | An error occurred in the TLS system call.    |
 | 2303506 | Failed to close the TLS connection.          |
 | 2300002 | System internal error.                       |
-| 2301206 | Socks5 failed to connect to the proxy server.  |
-| 2301207 | Socks5 username or password is invalid.        |
-| 2301208 | Socks5 failed to connect to the remote server. |
-| 2301209 | Socks5 failed to negotiate the authentication method. |
-| 2301210 | Socks5 failed to send the message.             |
-| 2301211 | Socks5 failed to receive the message.          |
-| 2301212 | Socks5 serialization error.                    |
-| 2301213 | Socks5 deserialization error.                  |
+| 2301206 | Socks5 failed to connect to the proxy server. <br>适用版本：18+         |
+| 2301207 | Socks5 username or password is invalid. <br>适用版本：18+               |
+| 2301208 | Socks5 failed to connect to the remote server. <br>适用版本：18+        |
+| 2301209 | Socks5 failed to negotiate the authentication method. <br>适用版本：18+ |
+| 2301210 | Socks5 failed to send the message. <br>适用版本：18+                    |
+| 2301211 | Socks5 failed to receive the message. <br>适用版本：18+                 |
+| 2301212 | Socks5 serialization error. <br>适用版本：18+                           |
+| 2301213 | Socks5 deserialization error. <br>适用版本：18+                         |
 
 **示例：**
 
@@ -7394,14 +7394,14 @@ connect(options: TLSConnectOptions): Promise\<void\>
 | 2303505 | An error occurred in the TLS system call.    |
 | 2303506 | Failed to close the TLS connection.          |
 | 2300002 | System internal error.                       |
-| 2301206 | Socks5 failed to connect to the proxy server.  |
-| 2301207 | Socks5 username or password is invalid.        |
-| 2301208 | Socks5 failed to connect to the remote server. |
-| 2301209 | Socks5 failed to negotiate the authentication method. |
-| 2301210 | Socks5 failed to send the message.             |
-| 2301211 | Socks5 failed to receive the message.          |
-| 2301212 | Socks5 serialization error.                    |
-| 2301213 | Socks5 deserialization error.                  |
+| 2301206 | Socks5 failed to connect to the proxy server. <br>适用版本：18+         |
+| 2301207 | Socks5 username or password is invalid. <br>适用版本：18+               |
+| 2301208 | Socks5 failed to connect to the remote server. <br>适用版本：18+        |
+| 2301209 | Socks5 failed to negotiate the authentication method. <br>适用版本：18+ |
+| 2301210 | Socks5 failed to send the message. <br>适用版本：18+                    |
+| 2301211 | Socks5 failed to receive the message. <br>适用版本：18+                 |
+| 2301212 | Socks5 serialization error. <br>适用版本：18+                           |
+| 2301213 | Socks5 deserialization error. <br>适用版本：18+                         |
 
 **示例：**
 
@@ -8345,7 +8345,7 @@ TLSSocketServer连接。在调用TLSSocketServer的方法前，需要先通过[s
 
 listen(options: TLSConnectOptions, callback: AsyncCallback\<void\>): void
 
-绑定IP地址和端口，在TLSSocketServer上bind成功之后，监听客户端的连接，创建和初始化TLS会话，实现建立连接过程，加载证书秘钥并验证，使用callback异步回调。
+绑定IP地址和端口，在TLSSocketServer上bind成功之后，监听客户端的连接，创建和初始化TLS会话，实现建立连接过程，加载证书密钥并验证，使用callback异步回调。
 
 >**注意：**
 >
@@ -8415,7 +8415,7 @@ tlsServer.listen(tlsConnectOptions, (err: BusinessError) => {
 
 listen(options: TLSConnectOptions): Promise\<void\>
 
-绑定IP地址和端口，在TLSSocketServer上bind成功之后，监听客户端的连接，并创建和初始化TLS会话，实现建立连接过程，加载证书秘钥并验证，使用Promise异步回调。
+绑定IP地址和端口，在TLSSocketServer上bind成功之后，监听客户端的连接，并创建和初始化TLS会话，实现建立连接过程，加载证书密钥并验证，使用Promise异步回调。
 
 **需要权限**：ohos.permission.INTERNET
 

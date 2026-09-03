@@ -6,7 +6,7 @@
 <!--Designer: @zou_ye-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=45bd746ae860f1fef969073ffaa0af763a0251fa translatedAt=2026-06-29T06:19:39.192Z pushedAt=2026-06-30T02:42:51.231Z -->
+<!-- md-trans-meta sourceCommit=1d432eccd2a4695fccf1a14b13e10c9b4f4ac00c translatedAt=2026-07-28T06:46:58.577Z pushedAt=2026-07-28T09:08:16.974Z -->
 
 The **DeviceStatus** module provides device status awareness capabilities. It can be used to obtain device information, such as the steady standing state (stand mode).
 
@@ -41,9 +41,9 @@ The device must support accelerometers.
 
 ### Development Procedure
 
-1. Import the **deviceStatus** module.
+1. Import the required module.
 
-   <!-- @[import_the_device_status_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/DeviceStatus/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[import_the_device_status_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/DeviceStatus/entry/src/main/ets/pages/Index.ets) --> 
 
    ``` TypeScript
    import { deviceStatus } from '@kit.MultimodalAwarenessKit';
@@ -51,33 +51,37 @@ The device must support accelerometers.
 
 2. Subscribe to steady standing state change events.
 
-   <!-- @[device_status_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/DeviceStatus/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[device_status_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/DeviceStatus/entry/src/main/ets/pages/Index.ets) --> 
 
    ``` TypeScript
    try {
      deviceStatus.on('steadyStandingDetect', (data:deviceStatus.SteadyStandingStatus) => {
        console.info('succeed to get status, now status = ' + data);
      });
+     // ...
    } catch (err) {
      console.error('on failed, err = ' + err);
+     // ...
    }
    ```
 
 3. Unsubscribe from all steady standing state change events subscribed by this client.
 
-   <!-- @[device_status_unsubscribe_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/DeviceStatus/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[device_status_unsubscribe_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/DeviceStatus/entry/src/main/ets/pages/Index.ets) --> 
 
    ``` TypeScript
    try {
      deviceStatus.off('steadyStandingDetect');
+     // ...
    } catch (err) {
      console.error('off failed, err = ' + err);
+     // ...
    }
    ```
 
 4. Unsubscribe from the specific callback of steady standing state change events.
 
-   <!-- @[device_status_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/DeviceStatus/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[device_status_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/DeviceStatus/entry/src/main/ets/pages/Index.ets) --> 
 
    ``` TypeScript
    // Define a callback.
@@ -87,13 +91,17 @@ The device must support accelerometers.
    // Subscribe to steady standing state change events with the callback.
    try {
      deviceStatus.on('steadyStandingDetect', callback);
+     // ...
    } catch (err) {
      console.error('on failed, err = ' + err);
+     // ...
    }
    // Unsubscribes the specified callback from steady standing state change events for this client.
    try {
      deviceStatus.off('steadyStandingDetect', callback);
+     // ...
    } catch (err) {
      console.error('off failed, err = ' + err);
+     // ...
    }
    ```

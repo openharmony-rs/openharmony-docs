@@ -60,7 +60,7 @@ import { insightIntent } from '@kit.AbilityKit';
 
 ## IntentResult\<T><sup>20+</sup>
 
-意图执行的返回结果，支持[泛型类型](../../quick-start/introduction-to-arkts.md#泛型类和接口)。
+意图执行的返回结果，支持[泛型类型](../../quick-start/arkts-language-guide-generics.md#泛型类)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -111,7 +111,7 @@ import { insightIntent } from '@kit.AbilityKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| queryType | [QueryType](#querytype) | 否 | 否 | 意图实体查询模式。 |
+| queryType | [QueryType](#querytype) | 否 | 否 | 意图实体查询方式。 |
 | parameters | Record\<string, Object> | 否 | 是 | 意图实体查询参数。该字段在[QueryType](#querytype)为[BY_PROPERTY](#querytype)时需要填写。 |
 
 ## AppIntentEntity

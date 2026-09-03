@@ -97,8 +97,8 @@ TabSegmentButtonV2({
 | itemPadding                      | [LocalizedPadding](ts-types.md#localizedpadding12)           | 否   | @Param             | 配置分段按钮选项内边距。<br> 默认值：`{ top: LengthMetrics.resource($r('sys.float.padding_level2')), bottom: LengthMetrics.resource($r('sys.float.padding_level2')), start: LengthMetrics.resource($r('sys.float.padding_level4')), end: LengthMetrics.resource($r('sys.float.padding_level4')) }`<br>值为undefined时，按默认值处理。<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | itemShadow                       | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明) \| [ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10枚举说明) | 否   | @Param             | 配置分段按钮选项阴影。<br>默认值：ShadowStyle.OUTER_DEFAULT_XS<br>超出取值范围按默认值处理。<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | itemSpace                        | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | @Param             | 配置分段按钮选项之间的间隔。<br>取值范围：[0, +∞)<br>默认值：`LengthMetrics.vp(0)`<br>**说明：** <br>不支持设置百分比类型，异常值按默认值处理。<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| itemMinFontScale                 | number \| [Resource](ts-types.md#resource)                   | 否   | @Param             | 配置分段按钮选项文字大小的最小字体缩放倍数。<br>取值范围：[0, 1]<br>默认值：0<br>**说明：** <br>设置的最小字体缩放值小于 0 时，按值为 0 处理，设置的最小字体缩放值大于 1 时，按值为 1 处理，异常值默认不生效。<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| itemMaxFontScale                 | number \| [Resource](ts-types.md#resource)                   | 否   | @Param             | 配置分段按钮选项文字大小的最大字体缩放倍数。<br>取值范围：[1, 2]<br>默认值：1<br>**说明：** <br>设置的值小于 1 时，按值为 1 处理，设置的值大于 2，按值为 2 处理，异常值默认不生效。<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| itemMinFontScale                 | number \| [Resource](ts-types.md#resource)                   | 否   | @Param             | 配置分段按钮选项文字大小的最小字体缩放倍数。<br>取值范围：[0, 1]<br>默认值：0<br>**说明：** <br>设置的最小字体缩放值小于0时，按值为0处理，设置的最小字体缩放值大于1时，按值为1处理，异常值默认不生效。<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| itemMaxFontScale                 | number \| [Resource](ts-types.md#resource)                   | 否   | @Param             | 配置分段按钮选项文字大小的最大字体缩放倍数。<br>取值范围：[1, 2]<br>默认值：1<br>**说明：** <br>设置的值小于1时，按值为1处理；设置的值大于2时，按值为2处理；异常值默认不生效。<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | itemFontSize                     | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | @Param             | 配置分段按钮非选中的选项字体大小。<br>取值范围：[0, +∞)<br>默认值：`14fp`<br>**说明：** <br>不支持设置百分比类型，异常值按默认值处理。<br>items设置textModifier/fontSize属性值时，itemFontSize不生效。<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | itemSelectedFontSize             | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | @Param             | 配置分段按钮选中的选项字体大小。<br>取值范围：[0, +∞)<br>默认值：`14fp`<br>**说明：** <br>不支持设置百分比类型，异常值按默认值处理。<br>items设置textModifier/fontSize属性值时，itemSelectedFontSize不生效。<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | itemFontColor                    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | @Param             | 配置分段按钮非选中选项的字体颜色。<br>默认值：`$r('sys.color.font_secondary')`<br>值为undefined时，按默认值处理。<br>**说明：**<br>items设置textModifier/fontColor属性值时，itemFontColor不生效。<br>backgroundSystemMaterial设置自动反色的系统材质时，该属性使用支持反色的特殊系统资源，颜色自动适配到材质背景色的反色。<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
@@ -114,7 +114,7 @@ TabSegmentButtonV2({
 | itemSelectedSymbolFontColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | @Param             | 配置分段按钮选中选项的HM Symbol类型图标颜色。<br>默认值：`$r('sys.color.font_primary')`<br>值为undefined时，按默认值处理。<br>**说明：**<br>items设置symbolModifier/fontColor属性值时，itemSelectedSymbolFontColor不生效。<br>backgroundSystemMaterial设置自动反色的系统材质时，该属性使用支持反色的特殊系统资源，颜色自动适配到材质背景色的反色。<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | languageDirection                | [Direction](ts-appendix-enums.md#direction)                  | 否   | @Param             | 配置分段按钮的布局方向。<br>默认值：Direction.Auto<br>超出取值范围按默认值处理。<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | enableStateAnimation<sup>24+</sup>             | boolean                                                      | 否   | @Param             | 设置当通过变量修改selectedIndex值时，是否开启分段按钮的属性动画。<br>true表示开启分段按钮的属性动画；未配置该属性或值为false时表示不开启分段按钮的属性动画，使用组件默认的切换动画效果。<br>默认值：false<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | 否 | @Param | 分段按钮组件的背景板的系统材质。不同系统材质包含不同的属性影响效果。传入材质后，SegmentButtonV2的动效发生改变。<br>默认值：无材质效果。 <br>该成员只读，不支持更改。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | 否 | @Param | 分段按钮组件的背景板的系统材质。需要将组件放置在Navigation或NavDestination的标题栏子树，或横向Tabs的底部TabBar子树中，材质效果才会生效。不同系统材质包含不同的属性影响效果。传入材质后，SegmentButtonV2的动效发生改变。<br>分段按钮在使用系统材质时支持选中项的背景跟随手指拖拽的能力，分段按钮被选中的选项下标在跟随手指拖拽过程中保持不变、在拖拽结束时更新。<br>默认值：无材质效果。 <br>该成员只读，不支持更改。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 > **说明：**
 >
@@ -185,8 +185,8 @@ CapsuleSegmentButtonV2({
 | itemPadding                      | [LocalizedPadding](ts-types.md#localizedpadding12)           | 否   | @Param             | 配置分段按钮选项的内边距。<br>默认值：`{ top: LengthMetrics.resource($r('sys.float.padding_level2')), bottom: LengthMetrics.resource($r('sys.float.padding_level2')), start: LengthMetrics.resource($r('sys.float.padding_level4')), end: LengthMetrics.resource($r('sys.float.padding_level4')) }`<br>值为undefined时，按默认值处理。<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | itemShadow                       | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明) \| [ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10枚举说明) | 否   | @Param             | 配置分段按钮选项的阴影。<br>默认值：ShadowStyle.OUTER_DEFAULT_XS<br>超出取值范围按默认值处理。<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | itemSpace                        | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | @Param             | 配置分段按钮选项之间的间隔。<br>取值范围：[0, +∞)<br>默认值：`LengthMetrics.vp(0)`<br>**说明：** <br>不支持设置百分比类型，异常值按默认值处理。<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| itemMinFontScale                 | number \| [Resource](ts-types.md#resource)                   | 否   | @Param             | 配置分段按钮选项文字大小的最小字体缩放倍数。<br>取值范围：[0, 1]<br>默认值：0<br>**说明：** <br>设置的最小字体缩放值小于 0 时，按值为 0 处理，设置的最小字体缩放值大于 1 时，按值为 1 处理，异常值默认不生效。<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| itemMaxFontScale                 | number \| [Resource](ts-types.md#resource)                   | 否   | @Param             | 配置分段按钮选项文字大小的最大字体缩放倍数。<br>取值范围：[1, 2]<br>默认值：1<br>**说明：** <br>设置的值小于 1 时，按值为 1 处理，设置的值大于 2，按值为 2 处理，异常值默认不生效。<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| itemMinFontScale                 | number \| [Resource](ts-types.md#resource)                   | 否   | @Param             | 配置分段按钮选项文字大小的最小字体缩放倍数。<br>取值范围：[0, 1]<br>默认值：0<br>**说明：** <br>设置的最小字体缩放值小于0时，按值为0处理，设置的最小字体缩放值大于1时，按值为1处理，异常值默认不生效。<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| itemMaxFontScale                 | number \| [Resource](ts-types.md#resource)                   | 否   | @Param             | 配置分段按钮选项文字大小的最大字体缩放倍数。<br>取值范围：[1, 2]<br>默认值：1<br>**说明：** <br>设置的值小于1时，按值为1处理；设置的值大于2时，按值为2处理；异常值默认不生效。<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | itemFontSize                     | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | @Param             | 配置分段按钮非选中的选项字体大小。<br>取值范围：[0, +∞)<br>默认值：`14fp`<br>**说明：** <br>不支持设置百分比类型，异常值按默认值处理。<br>items设置textModifier/fontSize属性值时，itemFontSize不生效。<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | itemSelectedFontSize             | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | @Param             | 配置分段按钮选中的选项字体大小。<br>取值范围：[0, +∞)<br>默认值：`14fp`<br>**说明：** <br>不支持设置百分比类型，异常值按默认值处理。<br>items设置textModifier/fontSize属性值时，itemSelectedFontSize不生效。<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | itemFontColor                    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | @Param             | 配置分段按钮非选中的选项字体颜色。<br>默认值：`$r('sys.color.font_secondary')`<br>值为undefined时，按默认值处理。<br>**说明：**<br>items设置textModifier/fontColor属性值时，itemFontColor不生效。<br>backgroundSystemMaterial设置自动反色的系统材质时，该属性使用支持反色的特殊系统资源，颜色自动适配到材质背景色的反色。<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
@@ -202,7 +202,7 @@ CapsuleSegmentButtonV2({
 | itemSelectedSymbolFontColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | @Param             | 配置分段按钮选中的选项中HM Symbol类型图标颜色。<br>默认值：`$r('sys.color.font_on_primary')`<br>值为undefined时，按默认值处理。<br>**说明：**<br>items设置symbolModifier/fontColor属性值时，itemSelectedSymbolFontColor不生效。<br>backgroundSystemMaterial设置自动反色的系统材质时，该属性使用支持反色的特殊系统资源，颜色自动适配到材质背景色的反色。<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | languageDirection                | [Direction](ts-appendix-enums.md#direction)                  | 否   | @Param             | 配置分段按钮的布局方向。<br>默认值：Direction.Auto<br>超出取值范围按默认值处理。<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | enableStateAnimation<sup>24+</sup>             | boolean                                                      | 否   | @Param             | 设置当通过变量修改selectedIndex值时，是否开启分段按钮的属性动画。<br>true表示开启分段按钮的属性动画；未配置该属性或值为false时表示不开启分段按钮的属性动画，使用组件默认的切换动画效果。<br>默认值：false<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | 否 | @Param | 分段按钮组件的背景板的系统材质。不同系统材质包含不同的属性影响效果。传入材质后，SegmentButtonV2的动效发生改变。<br>默认值：无材质效果。 <br>该成员只读，不支持更改。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。  <br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | 否 | @Param | 分段按钮组件的背景板的系统材质。需要将组件放置在Navigation或NavDestination的标题栏子树，或横向Tabs的底部TabBar子树中，材质效果才会生效。不同系统材质包含不同的属性影响效果。传入材质后，SegmentButtonV2的动效发生改变。<br>分段按钮在使用系统材质时支持选中项的背景跟随手指拖拽的能力，分段按钮被选中的选项下标在跟随手指拖拽过程中保持不变、在拖拽结束时更新。<br>默认值：无材质效果。 <br>该成员只读，不支持更改。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。  <br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 > **说明：**
 >
@@ -265,8 +265,8 @@ MultiCapsuleSegmentButtonV2({
 | itemMinHeight                  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | @Param             | 配置分段按钮选项的最小高度。<br>取值范围：[0, +∞)<br>默认值：<br>只有纯文本或者纯图标选项时：`$r('sys.float.segment_button_v2_singleline_selected_height')`；有图文混合的选项时：`$r('sys.float.segment_button_v2_doubleline_selected_height')`<br>超出取值范围按默认值处理。<br>该成员只读，不支持更改。 |
 | itemPadding                    | [LocalizedPadding](ts-types.md#localizedpadding12)           | 否   | @Param             | 配置分段按钮选项的内边距。<br>默认值：`{ top: LengthMetrics.resource($r('sys.float.padding_level2')), bottom: LengthMetrics.resource($r('sys.float.padding_level2')), start: LengthMetrics.resource($r('sys.float.padding_level4')), end: LengthMetrics.resource($r('sys.float.padding_level4')) }`<br>值为undefined时，按默认值处理。<br>该成员只读，不支持更改。 |
 | itemSpace                      | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | @Param             | 配置分段按钮选项之间的间隔。<br>取值范围：[0, +∞)<br>默认值：`LengthMetrics.vp(1)`<br>**说明：** <br>不支持设置百分比类型，异常值按默认值处理。<br>该成员只读，不支持更改。 |
-| itemMinFontScale               | number \| [Resource](ts-types.md#resource)                   | 否   | @Param             | 配置分段按钮选项文字大小的最小字体缩放倍数。<br>取值范围：[0, 1]<br>默认值：0<br>**说明：** <br>设置的最小字体缩放值小于 0 时，按值为 0 处理，设置的最小字体缩放值大于 1 时，按值为 1 处理，异常值默认不生效。<br>该成员只读，不支持更改。 |
-| itemMaxFontScale                 | number \| [Resource](ts-types.md#resource)                   | 否   | @Param             | 配置分段按钮选项文字大小的最大字体缩放倍数。<br>取值范围：[1, 2]<br>默认值：1<br>**说明：** <br>设置的值小于 1 时，按值为 1 处理，设置的值大于 2，按值为 2 处理，异常值默认不生效。<br>该成员只读，不支持更改。 |
+| itemMinFontScale               | number \| [Resource](ts-types.md#resource)                   | 否   | @Param             | 配置分段按钮选项文字大小的最小字体缩放倍数。<br>取值范围：[0, 1]<br>默认值：0<br>**说明：** <br>设置的最小字体缩放值小于0时，按值为0处理，设置的最小字体缩放值大于1时，按值为1处理，异常值默认不生效。<br>该成员只读，不支持更改。 |
+| itemMaxFontScale                 | number \| [Resource](ts-types.md#resource)                   | 否   | @Param             | 配置分段按钮选项文字大小的最大字体缩放倍数。<br>取值范围：[1, 2]<br>默认值：1<br>**说明：** <br>设置的值小于1时，按值为1处理；设置的值大于2时，按值为2处理；异常值默认不生效。<br>该成员只读，不支持更改。 |
 | itemSelectedFontSize           | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | @Param             | 配置分段按钮选中的选项字体大小。<br>取值范围：[0, +∞)<br>默认值：`14fp`<br>**说明：** <br>不支持设置百分比类型，异常值按默认值处理。<br>items设置textModifier/fontSize属性值时，itemSelectedFontSize不生效。<br>该成员只读，不支持更改。 |
 | itemFontColor                  | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | @Param             | 配置分段按钮非选中的选项字体颜色。<br>默认值：`$r('sys.color.font_secondary')`<br>值为undefined时，按默认值处理。<br>**说明：**<br>items设置textModifier/fontColor属性值时，itemFontColor不生效。<br>该成员只读，不支持更改。 |
 | itemFontSize                   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | @Param             | 配置分段按钮非选中的选项字体大小。<br>取值范围：[0, +∞)<br>默认值：`14fp`<br>**说明：** <br>不支持设置百分比类型，异常值按默认值处理。<br>items设置textModifier/fontSize属性值时，itemFontSize不生效。<br>该成员只读，不支持更改。 |
@@ -1047,7 +1047,7 @@ export struct VCard {
 ![segmentbuttonv2-sample83](figures/segmentbuttonv2-sample83.gif)
 
 ### 示例6（设置背景板材质）
-以下示例通过backgroundSystemMaterial属性，为分段按钮设置透明的背景板材质，开启自动反色和交互形变效果，并自定义反馈光感的颜色。
+以下示例通过backgroundSystemMaterial属性，为分段按钮设置了透明的背景板材质、开启自动反色和交互形变效果，并自定义反馈光感的颜色。
 
 从API版本26.0.0开始，[TabSegmentButtonV2](#tabsegmentbuttonv2)和[CapsuleSegmentButtonV2](#capsulesegmentbuttonv2)中新增backgroundSystemMaterial属性。
 
@@ -1072,7 +1072,8 @@ struct SegmentButtonV2Example {
   ]);
   @Local imageSelectedIndex: number = 0;
 
-  build() {
+  @Builder
+  NavigationTitle() {
     Column({ space: 12 }) {
       VCard({ title: '纯文本选项' }) {
         TabSegmentButtonV2({
@@ -1107,7 +1108,6 @@ struct SegmentButtonV2Example {
           })
         })
       }
-
     }
     .linearGradient({
       angle: 180, // 渐变角度，180度是从上到下。
@@ -1120,6 +1120,15 @@ struct SegmentButtonV2Example {
     .height(225)
     .justifyContent(FlexAlign.Start)
     .padding(16)
+  }
+
+  build() {
+    Column() {
+      Navigation() {
+        // 页面内容
+      }
+      .title({ builder: this.NavigationTitle, height: '100%' })
+    }.width('100%').height('100%')
   }
 }
 

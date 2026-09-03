@@ -6,37 +6,39 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=56bb123f81b3c1c6ce89c67e24c5686a564c7577 translatedAt=2026-07-29T04:50:06.938Z pushedAt=2026-07-29T07:54:36.639Z -->
 
 For details about the algorithm specifications, see [AES](crypto-sym-encrypt-decrypt-spec.md#aes).
 
 **Encryption**
 
 1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) to generate a symmetric key (**SymKey**) with the key algorithm being AES and the key length being 128 bits. Then, call [SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1) to generate a symmetric key.
-   
+
    In addition to the example in this topic, [AES](crypto-sym-key-generation-conversion-spec.md#aes) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md) may help you better understand how to generate an AES symmetric key. Note that the input parameters in the reference documents may be different from those in the example below.
 
-2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **'AES128|GCM|PKCS7'** to create a **Cipher** instance for encryption. The key type is **AES128**, block cipher mode is **GCM**, and the padding mode is **PKCS7**.
+2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter 'AES128|GCM' to create a Cipher instance with the symmetric key type of AES128 and block cipher mode of GCM for encryption.
 
 3. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. Specifically, set the mode to **cryptoFramework.CryptoMode.ENCRYPT_MODE** (encryption), key to **SymKey** (the key for encryption), and parameter to **GcmParamsSpec** corresponding to the GCM mode.
 
 4. Call [Cipher.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-1) to pass in the data to be encrypted (plaintext).
-   
-   Currently, there is no length limit for a single update. You can call **Cipher.update** based on the data volume.
+
+   Currently, there is no length limit for a single update. Call **Cipher.update** based on the data volume.
 
    - If a small amount of data is to be encrypted, you can use **Cipher.doFinal** immediately after **Cipher.init**.
+
    - If a large amount of data is to be encrypted, you can call **Cipher.update** multiple times to [pass in the data by segment](crypto-aes-sym-encrypt-decrypt-gcm-by-segment.md).
 
 5. Call [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1) to obtain the encrypted data. Note that if data has been passed in by **Cipher.update**, pass in **null** in the **data** parameter of **Cipher.doFinal**. The output of **Cipher.doFinal** may be **null**. To avoid exceptions, always check whether the result is **null** before accessing specific data.
-   - If data has been passed in by **Cipher.update**, pass in **null** in the **data** parameter of **Cipher.doFinal**.
-   - The output of **doFinal** may be **null**. Check the result before accessing the data.
 
 6. Obtain [GcmParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#gcmparamsspec).authTag as the authentication information for decryption.
 
-   In GCM mode, the algorithm library supports only 16-byte **authTag**, which is used for initialization authentication during decryption. In the following example, **authTag** is of 16 bytes.
+   > **NOTE**
+   >
+   > In GCM mode, during a single encryption process, concatenating the results of each update and the final doFinal yields "ciphertext + authTag", where authTag is the last 16 bytes. The remaining part is the ciphertext. If the data parameter of doFinal is passed as null, the result of doFinal is the authTag.
 
 **Decryption**
 
-1. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **'AES128|GCM|PKCS7'** to create a **Cipher** instance for decryption. The key type is **AES128**, block cipher mode is **GCM**, and the padding mode is **PKCS7**.
+1. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter 'AES128|GCM' to create a Cipher instance with the symmetric key type of AES128 and block cipher mode of GCM for decryption.
 
 2. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. Specifically, set the mode to **cryptoFramework.CryptoMode.DECRYPT_MODE** (decryption), key to **SymKey** (the key for decryption), and parameter to **GcmParamsSpec** corresponding to the GCM mode.
 
@@ -47,7 +49,7 @@ For details about the algorithm specifications, see [AES](crypto-sym-encrypt-dec
 - Example (using asynchronous APIs):
 
   <!-- @[gcm_encrypt_decrypt_aes_symkey_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_gcm_encryption_decryption/aes_gcm_encryption_decryption_asynchronous.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -82,7 +84,7 @@ For details about the algorithm specifications, see [AES](crypto-sym-encrypt-dec
   
   // Encrypt the message.
   async function encryptMessagePromise(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
-    let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
+    let cipher = cryptoFramework.createCipher('AES128|GCM');
     await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
     let encryptUpdate = await cipher.update(plainText);
     // In GCM mode, pass in null in Cipher.doFinal in encryption. Obtain the tag data and fill it in the gcmParams object.
@@ -92,7 +94,7 @@ For details about the algorithm specifications, see [AES](crypto-sym-encrypt-dec
   
   // Decrypt the message.
   async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
-    let decoder = cryptoFramework.createCipher('AES128|GCM|PKCS7');
+    let decoder = cryptoFramework.createCipher('AES128|GCM');
     await decoder.init(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, gcmParams);
     let decryptUpdate = await decoder.update(cipherText);
     // In GCM mode, pass in null in Cipher.doFinal in decryption. Verify the tag data passed in Cipher.init. If the verification fails, an exception will be thrown.
@@ -127,11 +129,10 @@ For details about the algorithm specifications, see [AES](crypto-sym-encrypt-dec
   }
   ```
 
-
 - Example (using synchronous APIs):
 
   <!-- @[gcm_encrypt_decrypt_aes_symkey_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_gcm_encryption_decryption/aes_gcm_encryption_decryption_synchronous.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -166,7 +167,7 @@ For details about the algorithm specifications, see [AES](crypto-sym-encrypt-dec
   
   // Encrypt the message.
   function encryptMessage(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
-    let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
+    let cipher = cryptoFramework.createCipher('AES128|GCM');
     cipher.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
     let encryptUpdate = cipher.updateSync(plainText);
     // In GCM mode, pass in null in Cipher.doFinal in encryption. Obtain the tag data and fill it in the gcmParams object.
@@ -176,7 +177,7 @@ For details about the algorithm specifications, see [AES](crypto-sym-encrypt-dec
   
   // Decrypt the message.
   function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
-    let decoder = cryptoFramework.createCipher('AES128|GCM|PKCS7');
+    let decoder = cryptoFramework.createCipher('AES128|GCM');
     decoder.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, gcmParams);
     let decryptUpdate = decoder.updateSync(cipherText);
     // In GCM mode, pass in null in Cipher.doFinal in decryption. Verify the tag data passed in Cipher.init. If the verification fails, an exception will be thrown.

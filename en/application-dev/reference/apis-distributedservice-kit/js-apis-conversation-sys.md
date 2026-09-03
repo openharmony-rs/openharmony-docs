@@ -1,10 +1,12 @@
 # @ohos.distributedSoftBus.conversation (Cross-Device Wakeup and Message Transfer) (System API)
+
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wangrui7-->
 <!--Designer: @yangyang2-->
 <!--Tester: @Ytt-test-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=f44fb7f8070e1cb97778b3fca79dffbcf4e0c7e9 translatedAt=2026-08-07T09:45:52.568Z pushedAt=2026-08-07T11:30:45.925Z -->
 
 The DSoftBus module **conversation** provides APIs for cross-device interaction of apps, including obtaining the trusted device list, and sending and receiving session data. With this module, your app can obtain trusted devices under the same account, register a listener to receive cross-device data, and send data to a specified device through a session channel. This module is applicable to scenarios that require cross-device collaboration and multi-device data transfer, simplifying the development of cross-device interaction.
 
@@ -53,22 +55,19 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-```ts
+```TypeScript
 import { conversation } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const TAG = 'conversationDemo';
 
 try {
   let devices: conversation.DeviceNodeInfo[] = conversation.getTrustedDevices();
-  hilog.info(0x0000, TAG, 'trusted devices count = ' + devices.length);
+  console.info(`getTrustedDevices success, count: ${devices.length}`);
   for (let device of devices) {
-    hilog.info(0x0000, TAG, 'device name = ' + device.deviceName + ', networkId = ' + device.networkId);
+    console.info(`device name: ${device.deviceName}, networkId: ${device.networkId}`);
   }
 } catch (err) {
-  hilog.error(0x0000, TAG, 'getTrustedDevices errCode: ' + (err as BusinessError).code + ', errMessage: ' +
-  (err as BusinessError).message);
+  const e: BusinessError = err as BusinessError;
+  console.error(`getTrustedDevices errCode: ${e.code}, errMessage: ${e.message}`);
 }
 ```
 
@@ -106,19 +105,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | Invalid parameter. The deviceId, bundleName, abilityName or msg is invalid or empty.|
 | 801      | Capability not supported.|
 | 2000001  | Internal error.|
-| 2004001  | Remote not supported.|
-| 2004002  | Duplicate calls, previous call still in progress.|
-| 2004003  | Send data failed.|
-| 2004004  | Wait remote ack timeout.|
+| 2004001  | Remote system version is too low.|
+| 2004002  | Failed to start ability on the remote side.|
+| 2004003  | Failed to send data.|
+| 2004004  | Timeout while waiting for acknowledgement from the remote side.|
 
 **Example**
 
-```ts
+```TypeScript
 import { conversation } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const TAG = 'conversationDemo';
 
 try {
   let deviceId: string = 'device_network_id_or_udid'; // deviceId is the network ID or UDID of the target device obtained by calling conversation.getTrustedDevices().
@@ -129,13 +125,13 @@ try {
   view[0] = 1;
 
   conversation.postConversationData(deviceId, bundleName, abilityName, msg).then(() => {
-    hilog.info(0x0000, TAG, 'postConversationData success');
+    console.info(`postConversationData success`);
   }).catch((err: BusinessError) => {
-    hilog.error(0x0000, TAG, 'postConversationData errCode: ' + err.code + ', errMessage: ' + err.message);
+    console.error(`postConversationData errCode: ${err.code}, errMessage: ${err.message}`);
   });
 } catch (err) {
-  hilog.error(0x0000, TAG, 'postConversationData errCode: ' + (err as BusinessError).code + ', errMessage: ' +
-  (err as BusinessError).message);
+  const e: BusinessError = err as BusinessError;
+  console.error(`postConversationData errCode: ${e.code}, errMessage: ${e.message}`);
 }
 ```
 
@@ -177,24 +173,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-```ts
+```TypeScript
 import { conversation } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const TAG = 'conversationDemo';
 
 try {
   let bundleName: string = 'com.example.demo';
   let abilityName: string = 'EntryAbility';
 
   conversation.registerConversationListener(bundleName, abilityName, (deviceId: string, msg: ArrayBuffer) => {
-    hilog.info(0x0000, TAG, 'received message from deviceId = ' + deviceId + ', msg length = ' + msg.byteLength);
+    console.info(`received message, deviceId: ${deviceId}, msg length: ${msg.byteLength}`);
   });
-  hilog.info(0x0000, TAG, 'registerConversationListener success');
+  console.info(`registerConversationListener success`);
 } catch (err) {
-  hilog.error(0x0000, TAG, 'registerConversationListener errCode: ' + (err as BusinessError).code + ', errMessage: ' +
-  (err as BusinessError).message);
+  const e: BusinessError = err as BusinessError;
+  console.error(`registerConversationListener errCode: ${e.code}, errMessage: ${e.message}`);
 }
 ```
 
@@ -211,6 +204,10 @@ Unregisters the listener with the specified bundle name and ability name. This A
 **System API:** This is a system API.
 
 **Model restriction:** This API can be used only in the stage model.
+
+**ArkTS-Dyn start version:** 26.1.0
+
+**ArkTS-Sta start version:** 26.1.0
 
 **Parameters**
 
@@ -233,22 +230,19 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-```ts
+```TypeScript
 import { conversation } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const TAG = 'conversationDemo';
 
 try {
   let bundleName: string = 'com.example.demo';
   let abilityName: string = 'EntryAbility';
 
   conversation.unregisterConversationListener(bundleName, abilityName);
-  hilog.info(0x0000, TAG, 'unregisterConversationListener success');
+  console.info(`unregisterConversationListener success`);
 } catch (err) {
-  hilog.error(0x0000, TAG, 'unregisterConversationListener errCode: ' + (err as BusinessError).code + ', errMessage: ' +
-  (err as BusinessError).message);
+  const e: BusinessError = err as BusinessError;
+  console.error(`unregisterConversationListener errCode: ${e.code}, errMessage: ${e.message}`);
 }
 ```
 
@@ -266,7 +260,7 @@ Defines the device node information, including the network ID, device name, devi
 | ----------------- | ------ | ----  | ---- | ------------------ |
 | networkId          | string | No   |No   | Network ID of the device, which uniquely identifies a device on a distributed network and is used for device addressing during data sending. It is an alternative to UDID. Either of them can be used for data sending.    |
 | deviceName           | string | No   |No  | Device name.|
-| deviceTypeId            | number | No   |No   | Device type ID, which indicates the device type. The value is an integer, for example, **0x0E** is the mobile phone ID, **0x11** is the tablet ID, **0x9C** is the TV ID, and **0x0C** is the PC ID. The specific value is subject to the system definition.|
+| deviceTypeId            | number | No    | No    | Device type ID, which indicates the device type. The value is an integer, for example, **0x0E** is the mobile phone ID, **0x11** is the tablet ID, **0x9C** is the TV ID, and **0x0C** is the PC ID. The specific value is subject to the system definition. |
 | nearby            | boolean | No   |No   | Whether the device is in the near field. The value **true** indicates that the device is in the near field, and the value **false** indicates that the device is not in the near field.|
 | udid            | string | No   |No   | UDID of the device, which uniquely identifies a device and is used for device addressing during data sending. Different from the network ID, the UDID is a permanent and unique ID of a device and does not change with the network topology. They are alternative to each other and either of them can be used for data sending.|
 

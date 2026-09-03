@@ -1,4 +1,4 @@
-# Event Error Codes
+# Common Event Error Codes
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
@@ -58,11 +58,11 @@ The frequency at which the application sends common events exceeds the system li
 
 **Possible Causes**
 
-The number of events sent by the application within a short period of time exceeds the system limit, triggering frequency control.
+More than 20 common events are sent per 5 milliseconds, triggering the system frequency limit.
 
 **Solution**
 
-Check whether the application sends common events too frequently. If so, reduce the event sending frequency or increase the sending interval and try again.
+Check whether the application sends common events too frequently. If more than 20 common events are sent every 5 milliseconds, reduce the common event sending frequency or increase the sending interval and try again.
 
 ## 1500004 Failed to Send System Common Events
 

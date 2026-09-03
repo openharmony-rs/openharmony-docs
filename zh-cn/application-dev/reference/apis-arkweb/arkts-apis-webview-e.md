@@ -401,7 +401,7 @@ ArkWeb内核版本，请参考[M114内核在OpenHarmony 6.0系统上的适配指
 | M114             | 1     | OpenHarmony 6.0版本的遗留内核。开发者可选择此遗留内核，若系统版本上不存在此内核则设置无效，使用系统默认内核。|
 | M132             | 2     | OpenHarmony 6.0版本的常青内核（OpenHarmony 7.0版本的遗留内核），M132为OpenHarmony 6.0版本的默认内核。若系统版本上不存在此内核则设置无效，使用系统默认内核。|
 | M144             | 3     | OpenHarmony 7.0版本的常青内核，M144为OpenHarmony 7.0版本的默认内核。若系统版本上不存在此内核则设置无效，使用系统默认内核。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| ARKWEB_EVERGREEN<sup>23+</sup> | 99999 | 系统的最新内核（常青内核）。开发者可选择在每个系统版本上都使用最新的内核，OpenHarmony开发套件API version 23及之后所有系统版本都生效。 |
+| ARKWEB_EVERGREEN<sup>23+</sup> | 99999 | 系统的最新内核（常青内核）。开发者可选择在每个系统版本上都使用最新的内核。 |
 
 **表1** 常青内核与遗留内核含义说明
 
@@ -463,3 +463,14 @@ Web软键盘自动控制模式。
 | TABLET | 'Tablet' |平板，字符串类型。|
 | WATCH        | 'Watch' |手表，字符串类型。|
 | XR        | 'XR' |VR+AR设备，字符串类型。|
+
+## ControllerAttachState<sup>20+</sup>
+
+WebviewController与Web组件的绑定状态。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称 | 值 | 说明 |
+| ------------------------------- | - | ---------- |
+| UNATTACHED | 0 | 未绑定状态。 |
+| ATTACHED   | 1 | 已绑定状态。 |

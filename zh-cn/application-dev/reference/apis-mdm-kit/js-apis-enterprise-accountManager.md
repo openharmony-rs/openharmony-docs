@@ -78,9 +78,11 @@ try {
 
 ## accountManager.isOsAccountAdditionDisallowed
 
-isOsAccountAdditionDisallowed(admin: Want | null, accountId?: number): boolean
+isOsAccountAdditionDisallowed(admin: Want, accountId?: number): boolean
 
 查询是否禁止用户添加账号。适用于企业审计和合规检查场景，帮助管理员确认账号策略执行情况。
+
+本接口通过传入Want查询对应企业设备管理应用设置的策略，如需查询实际生效的策略，请使用[accountManager.isOsAccountAdditionDisallowed](#accountmanagerisosaccountadditiondisallowed-1)接口。
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
@@ -93,7 +95,7 @@ isOsAccountAdditionDisallowed(admin: Want | null, accountId?: number): boolean
 
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。                          |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                         |
 | accountId | number                                                  | 否   | 用户ID，指定具体用户。当不传入此参数时，表示查询所有用户是否禁止添加账号；当传入此参数时，表示查询指定用户是否禁止添加账号。取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
 **返回值：**
@@ -128,6 +130,59 @@ let wantTemp: Want = {
 try {
   // 参数需根据实际情况进行替换
   let isDisallowed: boolean = accountManager.isOsAccountAdditionDisallowed(wantTemp, 100);
+  console.info(`Succeeded in querying the os account addition or not: ${isDisallowed}`);
+} catch (err) {
+  console.error(`Failed to query the os account addition or not. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## accountManager.isOsAccountAdditionDisallowed
+
+isOsAccountAdditionDisallowed(admin: Want | null, accountId?: number): boolean
+
+查询是否禁止用户添加账号。适用于企业审计和合规检查场景，帮助管理员确认账号策略执行情况。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+
+**参数：**
+
+| 参数名    | 类型                                                    | 必填 | 说明                                                         |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，传入Want时查询对应企业设备管理应用设置的策略，传入null时查询实际生效的策略。                          |
+| accountId | number                                                  | 否   | 用户ID，指定具体用户。当不传入此参数时，表示查询所有用户是否禁止添加账号；当传入此参数时，表示查询指定用户是否禁止添加账号。取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
+
+**返回值：**
+
+| 类型    | 说明                                                       |
+| ------- | ---------------------------------------------------------- |
+| boolean | 是否禁止添加账号。返回true表示禁止添加账号。<br/>返回false表示允许添加账号。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { accountManager } from '@kit.MDMKit';
+
+try {
+  // 参数需根据实际情况进行替换
+  let isDisallowed: boolean = accountManager.isOsAccountAdditionDisallowed(null, 100);
   console.info(`Succeeded in querying the os account addition or not: ${isDisallowed}`);
 } catch (err) {
   console.error(`Failed to query the os account addition or not. Code: ${err.code}, message: ${err.message}`);
@@ -278,7 +333,7 @@ async function setDomainAccountPolicy() {
       accountInfo2 = domainAccountInfo;
     }).catch((err: BusinessError) => {
       console.error(`Failed to get account domain info. Code: ${err.code}, message: ${err.message}`);
-    })
+    });
   try {
     accountManager.setDomainAccountPolicy(wantTemp, accountInfo2, policy);
     console.info('Succeeded in setting domain account policy.');
@@ -369,7 +424,7 @@ async function getDomainAccountPolicy() {
     })
     .catch((err: BusinessError) => {
       console.error(`Failed to get account domain info. Code: ${err.code}, message: ${err.message}`);
-    })
+    });
   try {
     domainAccountPolicy = accountManager.getDomainAccountPolicy(wantTemp, accountInfo2);
     console.info('Succeeded in getting domain account policy.');
@@ -385,25 +440,27 @@ async function getDomainAccountPolicy() {
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 <!--Table: 28%; 10%; 8%; 8%; 46%-->
 | 名称                           | 类型   | 只读 | 可选 | 说明                                                         |
 | ------------------------------ | ------ | ---- | ---- |------------------------------------------------------------ |
-| authenticationValidityPeriod   | number | 否   | 是   |表示域账号认证Token的有效期（单位：s），用于控制用户在Token有效期内无需重复认证即可访问系统资源。取值范围是[-1,2147483647]。有效期起始时间为最后一次域账号的认证时间点，如登录、锁屏后解锁等。<br/>默认值为-1，表示Token永久有效。取值为0，表示Token立即失效。Token过期/失效后，用户进入系统时必须进行域账号认证，验证域账号和密码。 |
-| passwordValidityPeriod         | number | 否   | 是   |表示域账号密码有效期（单位：s），用于用户定期修改密码以提升账号安全性。取值范围是[-1,2147483647]，有效期起始时间为设备侧最后一次修改密码的时间点。<br/>默认值为-1，表示域账号密码永久有效。 |
-| passwordExpirationNotification | number | 否   | 是   |表示域账号密码过期前提示时间（单位：s），取值范围是[0,2147483647]。<br/>默认值为0，表示域账号密码过期不提示。<br/>**说明：**passwordExpirationNotification需与passwordValidityPeriod配合使用，当系统时间大于或等于（设备侧最后一次修改域账号密码时间 + passwordValidityPeriod - passwordExpirationNotification）时，会发页面通知提示密码即将过期。 |
+| authenticationValidityPeriod   | number | 否   | 是   |表示域账号认证Token的有效期（单位：s），用于控制用户在Token有效期内无需重复认证即可访问系统资源。取值范围是[-1, 2147483647]。有效期起始时间为最后一次域账号的认证时间点，如登录、锁屏后解锁等。<br/>默认值为-1，表示Token永久有效。取值为0，表示Token立即失效。Token过期/失效后，用户进入系统时必须进行域账号认证，验证域账号和密码。 |
+| passwordValidityPeriod         | number | 否   | 是   |表示域账号密码有效期（单位：s），用于用户定期修改密码以提升账号安全性。取值范围是[-1, 2147483647]，有效期起始时间为设备侧最后一次修改密码的时间点。<br/>默认值为-1，表示域账号密码永久有效。 |
+| passwordExpirationNotification | number | 否   | 是   |表示域账号密码过期前提示时间（单位：s），取值范围是[0, 2147483647]。<br/>默认值为0，表示域账号密码过期不提示。<br/>**说明：**passwordExpirationNotification需与passwordValidityPeriod配合使用，当系统时间大于或等于（设备侧最后一次修改域账号密码时间 + passwordValidityPeriod - passwordExpirationNotification）时，会发页面通知提示密码即将过期。 |
 
 ## accountManager.createNormalOsAccount
 
 createNormalOsAccount(admin: Want, name: string): Promise&lt;osAccount.OsAccountInfo&gt;
 
-创建普通系统账号。最多可以创建2个normal类型的系统账号 ([osAccount.OsAccountType](../apis-basic-services-kit/js-apis-osAccount.md#osaccounttype)) 。
+创建普通系统账号。使用Promise异步回调。最多可以创建2个normal类型的系统账号 ([osAccount.OsAccountType](../apis-basic-services-kit/js-apis-osAccount.md#osaccounttype)) 。
 > **说明：**
 > 
 > 创建账号的流程比较耗时，当调用此接口后，后续如果在应用主线程调用其他同步接口时需要等待该接口异步返回。
 > 
 > 创建系统账号对设备的性能影响较大，此接口仅支持12GB及以上运行内存的手机、平板设备使用。
 
-**起始版本**：26.0.0
+**起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_LOCAL_ACCOUNTS
 
@@ -465,9 +522,9 @@ accountManager.createNormalOsAccount(wantTemp, "TestAccountName").then((accountI
 
 removeOsAccount(admin: Want, accountId: number): Promise&lt;void&gt;
 
-移除系统账号。当前仅支持手机、平板设备使用，可以移除使用[createNormalOsAccount](#accountmanagercreatenormalosaccount)创建的普通系统账号（normal类型）和[addOsAccountAsync](#accountmanageraddosaccountasync)创建的系统账号（admin、normal、guest类型），不可移除默认系统账号（ID为100）。
+移除系统账号。使用Promise异步回调。当前仅支持手机、平板设备使用，可以移除使用[createNormalOsAccount](#accountmanagercreatenormalosaccount)创建的普通系统账号（normal类型）和[addOsAccountAsync](#accountmanageraddosaccountasync)创建的系统账号（admin、normal、guest类型），不可移除默认系统账号（ID为100）。
 
-**起始版本**：26.0.0
+**起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_LOCAL_ACCOUNTS
 
@@ -534,9 +591,9 @@ accountManager.createNormalOsAccount(wantTemp, "TestAccountName").then((accountI
 
 activateOsAccount(admin: Want, accountId: number): Promise&lt;void&gt;
 
-切换系统账号。当前仅支持手机、平板设备使用，只能在[createNormalOsAccount](#accountmanagercreatenormalosaccount)创建的普通系统账号和默认系统账号 (ID为100) 之间切换。
+切换系统账号。使用Promise异步回调。当前仅支持手机、平板设备使用，只能在[createNormalOsAccount](#accountmanagercreatenormalosaccount)创建的普通系统账号和默认系统账号 (ID为100) 之间切换。
 
-**起始版本**：26.0.0
+**起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.ENTERPRISE_INTERACT_ACROSS_LOCAL_ACCOUNTS
 

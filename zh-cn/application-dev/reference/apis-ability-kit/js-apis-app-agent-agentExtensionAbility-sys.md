@@ -27,7 +27,7 @@ import { AgentExtensionAbility } from '@kit.AbilityKit';
 
 onAgentInvoked(agentId: string): void
 
-当[LOW_CODE](js-apis-app-agent-agentConstant-sys.md#agentconstantagentcardtype)类型的Agent被成功连接时触发，用于执行初始化操作（如从云端下载资源、加载配置等）。
+当[LOW_CODE](js-apis-app-agent-agentConstant-sys.md#agentconstantagentcardtype)类型的Agent被成功调用时触发，用于执行初始化操作（如从云端下载资源、加载配置等）。
 
 **起始版本**：26.0.0
 
@@ -41,7 +41,7 @@ onAgentInvoked(agentId: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| agentId | string | 是 | 低代码类型的Agent的ID。 |
+| agentId | string | 是 | [LOW_CODE](js-apis-app-agent-agentConstant-sys.md#agentconstantagentcardtype)类型的Agent的ID。 |
 
 **示例：**
 

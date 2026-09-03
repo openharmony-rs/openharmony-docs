@@ -18,8 +18,8 @@
 
 | 接口                       | 功能说明                       |
 |----------------------------|--------------------------------|
-| OH_JSVM_JsonParse          | 解析JSON字符串，并将结果存储在JSON对象。 |
-| OH_JSVM_JsonStringify      | 将对象字符串化，并将结果存储在JSVM字符串对象。 |
+| OH_JSVM_JsonParse          | 解析JSON字符串，并将结果存储在JSON对象中。 |
+| OH_JSVM_JsonStringify      | 将对象字符串化，并将结果存储在JSVM字符串对象中。 |
 
 ## 使用示例
 
@@ -81,7 +81,7 @@ static JSVM_CallbackStruct param[] = {
 
 static JSVM_CallbackStruct *method = param;
 
-JSVM_PropertyDescriptor descriptor[] = {
+static JSVM_PropertyDescriptor descriptor[] = {
     {"jsonParseNumber", nullptr, method, nullptr, nullptr, nullptr, JSVM_DEFAULT},
     {"jsonParseObject", nullptr, method + 1, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };

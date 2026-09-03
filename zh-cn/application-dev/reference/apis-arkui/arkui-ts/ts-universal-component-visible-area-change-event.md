@@ -103,7 +103,7 @@ onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleA
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
 | options  | [VisibleAreaEventOptions](#visibleareaeventoptions12) | 是   | 可见区域变化相关的配置参数，用于设置可见区域回调阈值、期望计算间隔以及可见区域计算模式。 |
-| event  | [VisibleAreaChangeCallback](#visibleareachangecallback12)   \| undefined | 是   | onVisibleAreaChange事件的回调函数。当组件可见面积与自身面积的比值达到options中设置的阈值时触发该回调，可见区域比例计算间隔由options中的expectedUpdateInterval参数决定。 |
+| event  | [VisibleAreaChangeCallback](#visibleareachangecallback12)   \| undefined | 是   | onVisibleAreaApproximateChange事件的回调函数。当组件可见面积与自身面积的比值达到options中设置的阈值时触发该回调，可见区域比例计算间隔由options中的expectedUpdateInterval参数决定。传入undefined表示不设置该回调。 |
 
 **返回值：**
 
@@ -370,9 +370,9 @@ struct ScrollExample {
 ```
 ![visible-area-change.gif](figures/visible-area-change.gif)
 
-### 示例3 (设置measureFromViewport子组件超出父组件显示)
+### 示例3 (设置measureFromViewport计算子组件超出父组件显示时的可见区域)
 
-从API version 22开始，该示例展示onVisibleAreaChange事件设置measureFromViewport参数后的效果对比，主要差异体现在回调返回的组件可见比例（currentRatio）上。设置measureFromViewport为true时，返回的组件可见比例（currentRatio）更符合实际效果。该示例在不同设备上currentRatio会有微小差异。
+从API version 22开始，该示例展示onVisibleAreaChange事件设置measureFromViewport参数后的效果对比，主要差异体现在回调返回的组件可见比例（currentRatio）上。设置measureFromViewport为true时，返回的组件可见比例（currentRatio）更符合实际效果。由于不同设备的屏幕像素密度不同，可见区域变化事件的计算过程涉及小数取整，currentRatio可能存在微小差异。
 
 ```ts
 @Entry
@@ -480,4 +480,4 @@ struct OnVisibleAreaChangeSample {
   }
 }
 ```
-![visible-area-change.gif](figures/visible-area-change3.jpg)
+![visible-area-change3.jpg](figures/visible-area-change3.jpg)

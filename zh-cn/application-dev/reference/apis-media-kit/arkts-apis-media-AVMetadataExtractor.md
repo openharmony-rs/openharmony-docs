@@ -97,7 +97,7 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
 | 5400102  | Operation not allowed. Returned by promise. |
-| 5400106  | Unsupported format. Returned by promise.  |
+| 5400106  | Unsupported format. Returned by promise. |
 | 5400108  | Parameter check failed. Returned by promise. |
 | 5411012  | Http cleartext traffic is not permitted. <br>适用版本：23+ |
 
@@ -169,7 +169,7 @@ fetchFrameByTimeWithTimeout(timeUs: number, options: AVImageQueryOptions, param:
 | -------- | ----------------------------------------- |
 | 5400102  | Operation not allowed. Returned by promise. |
 | 5400104  | Operation timeout. |
-| 5400106  | Unsupported format. Returned by promise.  |
+| 5400106  | Unsupported format. Returned by promise. |
 | 5400108  | Parameter check failed. Returned by promise. |
 | 5411012  | Http cleartext traffic is not permitted. |
 
@@ -477,7 +477,7 @@ fetchMetadataWithTimeout(timeoutMs: number): Promise\<AVMetadata | undefined>
 
 | 参数名   | 类型                                         | 必填 | 说明                                |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| timeoutMs | number | 是 | 获取媒体元数据的最大等待时间，时间范围为(0, 20000]，单位为毫秒（ms）。<br>在给定的超时时间内未返回元数据则返回错误码5400104。|
+| timeoutMs | number | 是 | 获取媒体元数据的最大等待时间，时间范围为(0, 20000]，单位为毫秒（ms）。<br>在给定的超时时间内未完成元数据获取操作，则返回操作超时错误码5400104。|
 
 **返回值：**
 

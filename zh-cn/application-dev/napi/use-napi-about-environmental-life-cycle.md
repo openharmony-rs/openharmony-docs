@@ -141,7 +141,7 @@ ArkTS侧示例代码
 let data = 5;
 testNapi.setInstanceData(data);
 let value = testNapi.getInstanceData();
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_set_instance_data:%{public}d', value);
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_instance_data:%{public}d', value);
 ```
 
 以上代码如果要在native cpp中打印日志，需在CMakeLists.txt文件中添加以下配置信息（并添加头文件：#include "hilog/log.h"）：
@@ -152,3 +152,8 @@ add_definitions( "-DLOG_DOMAIN=0xd0d0" )
 add_definitions( "-DLOG_TAG=\"testTag\"" )
 target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
 ```
+
+## 注意事项
+
+1. 当在同一个运行时环境调用第二次napi_set_instance_data时，第一次调用时注册的FinalizeCallback回调将会被执行，原先的instance_data数据已经释放并失效。
+2. 运行时环境销毁过程中会执行通过napi_set_instance_data接口注册的FinalizeCallback回调，此时运行时环境已不再有效，应避免在该回调中访问ArkTS对象，如napi_ref、napi_value等。

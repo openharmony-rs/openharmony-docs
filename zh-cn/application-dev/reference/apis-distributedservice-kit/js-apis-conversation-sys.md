@@ -53,22 +53,19 @@ getTrustedDevices(): DeviceNodeInfo[]
 
 **示例**：
 
-```ts
+```TypeScript
 import { conversation } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const TAG = 'conversationDemo';
 
 try {
   let devices: conversation.DeviceNodeInfo[] = conversation.getTrustedDevices();
-  hilog.info(0x0000, TAG, 'trusted devices count = ' + devices.length);
+  console.info(`getTrustedDevices success, count: ${devices.length}`);
   for (let device of devices) {
-    hilog.info(0x0000, TAG, 'device name = ' + device.deviceName + ', networkId = ' + device.networkId);
+    console.info(`device name: ${device.deviceName}, networkId: ${device.networkId}`);
   }
 } catch (err) {
-  hilog.error(0x0000, TAG, 'getTrustedDevices errCode: ' + (err as BusinessError).code + ', errMessage: ' +
-  (err as BusinessError).message);
+  const e: BusinessError = err as BusinessError;
+  console.error(`getTrustedDevices errCode: ${e.code}, errMessage: ${e.message}`);
 }
 ```
 
@@ -106,19 +103,16 @@ postConversationData(deviceId:&nbsp;string,&nbsp;bundleName:&nbsp;string,&nbsp;a
 | 401      | Invalid parameter. The deviceId, bundleName, abilityName or msg is invalid or empty.|
 | 801      | Capability not supported.|
 | 2000001  | Internal error.|
-| 2004001  | Remote not supported.|
-| 2004002  | Duplicate calls, previous call still in progress.|
-| 2004003  | Send data failed.|
-| 2004004  | Wait remote ack timeout.|
+| 2004001  | Remote system version is too low.|
+| 2004002  | Failed to start ability on the remote side.|
+| 2004003  | Failed to send data.|
+| 2004004  | Timeout while waiting for acknowledgement from the remote side.|
 
 **示例**：
 
-```ts
+```TypeScript
 import { conversation } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const TAG = 'conversationDemo';
 
 try {
   let deviceId: string = 'device_network_id_or_udid'; // deviceId需通过调用conversation.getTrustedDevices()获取目标设备的networkId或UDID
@@ -129,13 +123,13 @@ try {
   view[0] = 1;
 
   conversation.postConversationData(deviceId, bundleName, abilityName, msg).then(() => {
-    hilog.info(0x0000, TAG, 'postConversationData success');
+    console.info(`postConversationData success`);
   }).catch((err: BusinessError) => {
-    hilog.error(0x0000, TAG, 'postConversationData errCode: ' + err.code + ', errMessage: ' + err.message);
+    console.error(`postConversationData errCode: ${err.code}, errMessage: ${err.message}`);
   });
 } catch (err) {
-  hilog.error(0x0000, TAG, 'postConversationData errCode: ' + (err as BusinessError).code + ', errMessage: ' +
-  (err as BusinessError).message);
+  const e: BusinessError = err as BusinessError;
+  console.error(`postConversationData errCode: ${e.code}, errMessage: ${e.message}`);
 }
 ```
 
@@ -177,24 +171,21 @@ registerConversationListener(bundleName:&nbsp;string,&nbsp;abilityName:&nbsp;str
 
 **示例**：
 
-```ts
+```TypeScript
 import { conversation } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const TAG = 'conversationDemo';
 
 try {
   let bundleName: string = 'com.example.demo';
   let abilityName: string = 'EntryAbility';
 
   conversation.registerConversationListener(bundleName, abilityName, (deviceId: string, msg: ArrayBuffer) => {
-    hilog.info(0x0000, TAG, 'received message from deviceId = ' + deviceId + ', msg length = ' + msg.byteLength);
+    console.info(`received message, deviceId: ${deviceId}, msg length: ${msg.byteLength}`);
   });
-  hilog.info(0x0000, TAG, 'registerConversationListener success');
+  console.info(`registerConversationListener success`);
 } catch (err) {
-  hilog.error(0x0000, TAG, 'registerConversationListener errCode: ' + (err as BusinessError).code + ', errMessage: ' +
-  (err as BusinessError).message);
+  const e: BusinessError = err as BusinessError;
+  console.error(`registerConversationListener errCode: ${e.code}, errMessage: ${e.message}`);
 }
 ```
 
@@ -211,6 +202,10 @@ unregisterConversationListener(bundleName:&nbsp;string,&nbsp;abilityName:&nbsp;s
 **系统接口**：此接口为系统接口。
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **参数**：
 
@@ -233,22 +228,19 @@ unregisterConversationListener(bundleName:&nbsp;string,&nbsp;abilityName:&nbsp;s
 
 **示例**：
 
-```ts
+```TypeScript
 import { conversation } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const TAG = 'conversationDemo';
 
 try {
   let bundleName: string = 'com.example.demo';
   let abilityName: string = 'EntryAbility';
 
   conversation.unregisterConversationListener(bundleName, abilityName);
-  hilog.info(0x0000, TAG, 'unregisterConversationListener success');
+  console.info(`unregisterConversationListener success`);
 } catch (err) {
-  hilog.error(0x0000, TAG, 'unregisterConversationListener errCode: ' + (err as BusinessError).code + ', errMessage: ' +
-  (err as BusinessError).message);
+  const e: BusinessError = err as BusinessError;
+  console.error(`unregisterConversationListener errCode: ${e.code}, errMessage: ${e.message}`);
 }
 ```
 
@@ -266,7 +258,7 @@ try {
 | ----------------- | ------ | ----  | ---- | ------------------ |
 | networkId          | string | 否    |否    | 设备的networkId，在分布式网络中唯一标识一台设备，用于发送数据时的设备寻址。与UDID互为替代，发送数据时可任选其一。     |
 | deviceName           | string | 否    |否   | 设备名称。 |
-| deviceTypeId            | number | 否    |否    | 设备类型标识符，表示设备的类别，取值为整数，例如：0x0E-手机，0x11-平板，0x9C-电视，0x0C-PC等（具体数值以系统定义为准）。 |
+| deviceTypeId            | number | 否    |否    | 设备类型标识符，表示设备的类别，取值为整数，例如：0x0E-手机、0x11-平板、0x9C-电视、0x0C-PC等（具体数值以系统定义为准）。 |
 | nearby            | boolean | 否    |否    | 设备是否在近场。true表示设备在近场，false表示设备不在近场。 |
 | udid            | string | 否    |否    | 设备的UDID，唯一标识一台设备，用于发送数据时的设备寻址。与networkId不同，UDID为设备的永久唯一标识，不随网络拓扑变化而改变，两者互为替代，发送数据时可任选其一。 |
 

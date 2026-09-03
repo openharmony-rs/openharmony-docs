@@ -12,5 +12,5 @@
 - [App Model](mdm-kit-application-model.md)
 - [Multi-App Management](mdm-kit-multi-mdm.md)
 - [EnterpriseAdminExtensionAbility Development](mdm-kit-admin.md)<!--RP1--><!--RP1End-->
-- [MDM Kit Terms](mdm-kit-term.md)
+- [Glossary](mdm-kit-term.md)
 - [Appendix](mdm-kit-appendix.md)

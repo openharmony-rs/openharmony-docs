@@ -2405,7 +2405,7 @@ Obtains the authenticator callback for an authentication session. This API uses 
 
 | Name      | Type                                      | Mandatory  | Description      |
 | --------- | ---------------------------------------- | ---- | -------- |
-| sessionId | string                                   | Yes   | ID of the authentication session.|
+| sessionId | string                                   | Yes   | ID of the authentication session. The value contains a maximum of 1024 characters. |
 | callback  | AsyncCallback&lt;[AuthCallback](#authcallback9)&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the authenticator callback object obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -2466,7 +2466,7 @@ Obtains the authenticator callback for an authentication session. This API uses 
 
 | Name      | Type    | Mandatory  | Description      |
 | --------- | ------ | ---- | -------- |
-| sessionId | string | Yes   | ID of the authentication session.|
+| sessionId | string | Yes   | ID of the authentication session. The value contains a maximum of 1024 characters. |
 
 **Return value**
 
@@ -3041,7 +3041,7 @@ Sets the authenticator attributes of an application. This API uses an asynchrono
 
 | Name   | Type                 | Mandatory | Description                    |
 | -------- | --------------------- | ----- | ----------------------- |
-| owner    | string                | Yes   | Owner of the authenticator. The value is the bundle name of the application.         |
+| owner    | string                | Yes   | Owner of the authenticator. The value is the bundle name of the application. The value contains a maximum of 1024 characters.         |
 | callback | [AuthCallback](#authcallback9) | Yes   | Callback used to return the result.|
 
 **Error codes**
@@ -3091,7 +3091,7 @@ Sets the authenticator attributes of an application. This API uses an asynchrono
 
 | Name   | Type                 | Mandatory | Description                    |
 | -------- | --------------------- | ----- | ----------------------- |
-| owner    | string                | Yes   | Owner of the authenticator. The value is the bundle name of the application.         |
+| owner    | string                | Yes   | Owner of the authenticator. The value is the bundle name of the application. The value contains a maximum of 1024 characters.          |
 | options  | [SetPropertiesOptions](#setpropertiesoptions9)  | Yes   | Authenticator properties to set.         |
 | callback | [AuthCallback](#authcallback9) | Yes   | Authenticator callback used to return the result.|
 
@@ -3179,7 +3179,7 @@ Adds an application account name and additional information. This API uses an as
 | Name      | Type                       | Mandatory  | Description                                      |
 | --------- | ------------------------- | ---- | ---------------------------------------- |
 | name      | string                    | Yes   | Name of the application account. The value contains a maximum of 512 characters.                             |
-| extraInfo | string                    | Yes   | Additional information (information that can be converted to the string type). It cannot contain sensitive information, such as the application account password and token.|
+| extraInfo | string                    | Yes   | Additional information (information that can be converted to the string type). It cannot contain sensitive information, such as the application account password and token. The value contains a maximum of 1024 characters.  |
 | callback  | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.            |
 
 **Example**
@@ -3208,7 +3208,7 @@ Adds an application account name and additional information. This API uses a pro
 | Name      | Type    | Mandatory  | Description                                      |
 | --------- | ------ | ---- | ---------------------------------------- |
 | name      | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.                           |
-| extraInfo | string | No   | Additional information (information that can be converted to the string type). <br>The additional information cannot be sensitive information (such as the password and token) of the application account.<br>By default, no value is passed, which means no additional information needs to be added for the account.|
+| extraInfo | string | No   | Additional information (information that can be converted to the string type). <br>The additional information cannot be sensitive information (such as the password and token) of the application account. The value contains a maximum of 1024 characters. <br>By default, no value is passed, which means no additional information needs to be added for the account.|
 
 **Return value**
 
@@ -3656,7 +3656,7 @@ Sets additional information for an application account. This API uses an asynchr
 | Name      | Type                       | Mandatory  | Description             |
 | --------- | ------------------------- | ---- | --------------- |
 | name      | string                    | Yes   | Name of the application account. The value contains a maximum of 512 characters.        |
-| extraInfo | string                    | Yes   | Additional information (information that can be converted to the string type). It cannot contain sensitive information, such as the application account password and token.      |
+| extraInfo | string                    | Yes   | Additional information (information that can be converted to the string type). It cannot contain sensitive information, such as the application account password and token. The value contains a maximum of 1024 characters.      |
 | callback  | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Example**
@@ -3690,7 +3690,7 @@ Sets additional information for an application account. This API uses a promise 
 | Name      | Type    | Mandatory  | Description       |
 | --------- | ------ | ---- | --------- |
 | name      | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.  |
-| extraInfo | string | Yes   | Additional information (information that can be converted to the string type). It cannot contain sensitive information, such as the application account password and token.|
+| extraInfo | string | Yes   | Additional information (information that can be converted to the string type). It cannot contain sensitive information, such as the application account password and token. The value contains a maximum of 1024 characters.  |
 
 **Return value**
 
@@ -3802,8 +3802,8 @@ Sets data to be associated with an application account. This API uses an asynchr
 | Name     | Type                       | Mandatory  | Description               |
 | -------- | ------------------------- | ---- | ----------------- |
 | name     | string                    | Yes   | Name of the application account. The value contains a maximum of 512 characters.          |
-| key      | string                    | Yes   | Key of the associated data.|
-| value    | string                    | Yes   | Value of the data to set.        |
+| key      | string                    | Yes   | Key of the associated data. The value contains a maximum of 1024 characters. |
+| value    | string                    | Yes   | Value of the data to set. The value contains a maximum of 1024 characters.        |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Example**
@@ -3837,8 +3837,8 @@ Sets data to be associated with an application account. This API uses a promise 
 | Name  | Type    | Mandatory  | Description               |
 | ----- | ------ | ---- | ----------------- |
 | name  | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.          |
-| key      | string | Yes   | Key of the associated data.|
-| value    | string | Yes   | Value of the data to set.|
+| key      | string | Yes   | Key of the associated data. The value contains a maximum of 1024 characters. |
+| value    | string | Yes   | Value of the data to set. The value contains a maximum of 1024 characters. |
 
 **Return value**
 
@@ -4156,7 +4156,7 @@ Obtains the associated data of an application account based on the specified key
 | Name     | Type                         | Mandatory  | Description               |
 | -------- | --------------------------- | ---- | ----------------- |
 | name     | string                      | Yes   | Name of the application account. The value contains a maximum of 512 characters.          |
-| key      | string                      | Yes   | Key of the associated data.        |
+| key      | string                      | Yes   | Key of the associated data. The value contains a maximum of 1024 characters.        |
 | callback | AsyncCallback&lt;string&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the data obtained. Otherwise, **err** is an error object.|
 
 **Example**
@@ -4190,7 +4190,7 @@ Obtains data to be associated with an application account. This API uses a promi
 | Name | Type    | Mandatory  | Description       |
 | ---- | ------ | ---- | --------- |
 | name | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.  |
-| key  | string | Yes   | Key of the associated data.|
+| key  | string | Yes   | Key of the associated data. The value contains a maximum of 1024 characters. |
 
 **Return value**
 
@@ -4883,7 +4883,7 @@ Obtains the authenticator callback for an authentication session. This API uses 
 
 | Name      | Type                                      | Mandatory  | Description      |
 | --------- | ---------------------------------------- | ---- | -------- |
-| sessionId | string                                   | Yes   | ID of the authentication session.|
+| sessionId | string                                   | Yes   | ID of the authentication session. The value contains a maximum of 1024 characters. |
 | callback  | AsyncCallback&lt;[AuthenticatorCallback](#authenticatorcallbackdeprecated)&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the authenticator callback obtained. Otherwise, **err** is an error object.|
 
 **Example**
@@ -4928,7 +4928,7 @@ Obtains the authenticator callback for an authentication session. This API uses 
 
 | Name      | Type    | Mandatory  | Description      |
 | --------- | ------ | ---- | -------- |
-| sessionId | string | Yes   | ID of the authentication session.|
+| sessionId | string | Yes   | ID of the authentication session. The value contains a maximum of 1024 characters. |
 
 **Return value**
 

@@ -735,7 +735,7 @@ export default function afterReturnTest() {
       let claser: ClassName = new ClassName();
       // 进行Mock操作，对ClassName类的method_1函数进行Mock
       let mockfunc: Function = mocker.mockFunc(claser, claser.method_1);
-      // 期望claser.method_1函数被Mock后, 以'testA'为入参时调用函数返回结果'1',以'testB''为入参时调用函数返回结果undefined
+      // 期望claser.method_1函数被Mock后, 以'testA'为入参时调用函数返回结果'1',以'testB'为入参时调用函数返回结果undefined
       when(mockfunc)('testA').afterReturn('1');
       when(mockfunc)('testB').afterReturnNothing();
       // 对Mock后的函数进行断言，看是否符合预期。分别传入参数'testA'和'testB'时，应该返回自定义的预期结果1和undefined
@@ -1017,7 +1017,7 @@ export default function afterThrowTest() {
       let mockfunc: Function = mocker.mockFunc(claser, claser.method_1);
       // 期望claser.method_1函数被Mock后, 以'test'为参数调用函数时抛出error xxx异常
       when(mockfunc)('test').afterThrow('error xxx');
-      // 执行Mock后的函数，捕捉异常并使用assertEqual对比msg否符合预期
+      // 执行Mock后的函数，捕捉异常并使用assertEqual对比msg是否符合预期
       try {
         claser.method_1('test');
       } catch (e) {
@@ -1341,9 +1341,10 @@ export default class TestAbility extends UIAbility {
    value: string
  }
  ```
->**说明:** 
+ 
+> **说明：** 
 >
->若要使用数据驱动传入参数功能，测试用例`it`的`func`必须传入两个参数：`done`和`data`，且入参顺序不可调整。若不使用数据驱动传入参数功能，`func`可以不传参或仅传入`done`。
+> 若要使用数据驱动传入参数功能，测试用例`it`的`func`必须传入两个参数：`done`和`data`，且入参顺序不可调整。若不使用数据驱动传入参数功能，`func`可以不传参或仅传入`done`。
 
 ### 专项能力
 专项能力提供脚本执行配置能力，包括筛选执行、压力执行、随机执行等，通过命令行方式执行，具体用法请参考[命令行执行测试脚本](#命令行执行测试脚本)章节介绍。

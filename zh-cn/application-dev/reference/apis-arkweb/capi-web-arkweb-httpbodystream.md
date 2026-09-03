@@ -18,5 +18,7 @@ ArkWeb_HttpBodyStream是HTTP请求体流结构体，用于在自定义Scheme请�
 
 **相关模块：** [Web](capi-web.md)
 
+**系统能力：** SystemCapability.Web.Webview.Core
+
 **所在头文件：** [arkweb_scheme_handler.h](capi-arkweb-scheme-handler-h.md)
 

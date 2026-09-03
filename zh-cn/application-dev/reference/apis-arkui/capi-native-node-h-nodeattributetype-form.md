@@ -252,13 +252,13 @@ NODE_CHECKBOX_SELECT_COLOR = 11001
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 多选框选中状态颜色, 类型为0xARGB，如0xFF1122FF。 |
+| .value[0].u32 | 多选框选中状态颜色，类型为0xARGB，如0xFF1122FF。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 多选框选中状态颜色, 类型为0xARGB，如0xFF1122FF。 |
+| .value[0].u32 | 多选框选中状态颜色，类型为0xARGB，如0xFF1122FF。 |
 
 ## NODE_CHECKBOX_UNSELECT_COLOR
 
@@ -276,13 +276,13 @@ NODE_CHECKBOX_UNSELECT_COLOR = 11002
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 边框颜色, 类型为0xARGB，如0xFF1122FF。 |
+| .value[0].u32 | 边框颜色，类型为0xARGB，如0xFF1122FF。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 边框颜色, 类型为0xARGB，如0xFF1122FF。 |
+| .value[0].u32 | 边框颜色，类型为0xARGB，如0xFF1122FF。 |
 
 ## NODE_CHECKBOX_MARK
 
@@ -300,7 +300,7 @@ NODE_CHECKBOX_MARK = 11003
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 边框颜色, 类型为0xARGB，如0xFF1122FF。 |
+| .value[0].u32 | 边框颜色，类型为0xARGB，如0xFF1122FF。 |
 | .value[1]?.f32 | 可选，内部图标大小，单位vp。 |
 | .value[2]?.f32 | 可选，内部图标粗细，单位vp，默认值2。 |
 
@@ -308,7 +308,7 @@ NODE_CHECKBOX_MARK = 11003
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 边框颜色, 类型为0xARGB，如0xFF1122FF。 |
+| .value[0].u32 | 边框颜色，类型为0xARGB，如0xFF1122FF。 |
 | .value[1].f32 | 内部图标大小，单位vp。 |
 | .value[2].f32 | 内部图标粗细，单位vp，默认值2。 |
 
@@ -318,7 +318,7 @@ NODE_CHECKBOX_MARK = 11003
 NODE_CHECKBOX_SHAPE = 11004
 ```
 
-CheckBox组件形状, 支持属性设置，属性重置和属性获取。<br>
+CheckBox组件形状，支持属性设置，属性重置和属性获取。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -342,7 +342,7 @@ CheckBox组件形状, 支持属性设置，属性重置和属性获取。<br>
 NODE_CHECKBOX_NAME = 11005
 ```
 
-定义复选框的名称, 支持属性设置，属性重置和属性获取。<br>
+定义复选框的名称，支持属性设置，属性重置和属性获取。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 15
@@ -366,7 +366,7 @@ NODE_CHECKBOX_NAME = 11005
 NODE_CHECKBOX_GROUP = 11006
 ```
 
-定义复选框的组的名称, 支持属性设置，属性重置和属性获取。<br>
+定义复选框的组的名称，支持属性设置，属性重置和属性获取。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 15
@@ -400,13 +400,13 @@ Slider滑块的颜色，支持属性设置，属性重置和属性获取。<br>
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 滑块的颜色, 类型为0xARGB，如0xFF1122FF。 |
+| .value[0].u32 | 滑块的颜色，类型为0xARGB，如0xFF1122FF。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 滑块的颜色, 类型为0xARGB，如0xFF1122FF。 |
+| .value[0].u32 | 滑块的颜色，类型为0xARGB，如0xFF1122FF。 |
 
 ## NODE_SLIDER_TRACK_COLOR
 
@@ -424,13 +424,13 @@ Slider滑轨的背景颜色，支持属性设置，属性重置和属性获取�
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 背景颜色, 类型为0xARGB，如0xFF1122FF。 |
+| .value[0].u32 | 背景颜色，类型为0xARGB，如0xFF1122FF。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 背景颜色, 类型为0xARGB，如0xFF1122FF。 |
+| .value[0].u32 | 背景颜色，类型为0xARGB，如0xFF1122FF。 |
 
 ## NODE_SLIDER_SELECTED_COLOR
 
@@ -448,13 +448,13 @@ Slider滑轨的已滑动部分颜色，支持属性设置，属性重置和属�
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 已滑动部分颜色, 类型为0xARGB，如0xFF1122FF。 |
+| .value[0].u32 | 已滑动部分颜色，类型为0xARGB，如0xFF1122FF。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 已滑动部分颜色, 类型为0xARGB，如0xFF1122FF。 |
+| .value[0].u32 | 已滑动部分颜色，类型为0xARGB，如0xFF1122FF。 |
 
 ## NODE_SLIDER_SHOW_STEPS
 
@@ -725,13 +725,13 @@ NODE_SLIDER_ENABLE_HAPTIC_FEEDBACK = 17013
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].f32 | 是否开启触控反馈。默认值：true，true表示开启触控反馈，false则表示不开启触控反馈。 |
+| .value[0].i32 | 是否开启触控反馈。默认值：true，true表示开启触控反馈，false则表示不开启触控反馈。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].f32 | 是否开启触控反馈。 |
+| .value[0].i32 | 是否开启触控反馈。 |
 
 ## NODE_SLIDER_PREFIX
 
@@ -881,17 +881,17 @@ NODE_RADIO_STYLE = 18001
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0]?.u32 | 开启状态底板颜色, 类型为0xARGB，默认值为0xFF007DFF。 |
-| .value[1]?.u32 | 关闭状态描边颜色, 类型为0xARGB，默认值为0xFF182431。 |
-| .value[2]?.u32 | 开启状态内部圆饼颜色, 类型为0xARGB，默认值为0xFFFFFFFF。 |
+| .value[0]?.u32 | 开启状态底板颜色，类型为0xARGB，默认值为0xFF007DFF。 |
+| .value[1]?.u32 | 关闭状态描边颜色，类型为0xARGB，默认值为0xFF182431。 |
+| .value[2]?.u32 | 开启状态内部圆饼颜色，类型为0xARGB，默认值为0xFFFFFFFF。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 开启状态底板颜色, 类型为0xARGB，默认值为0xFF007DFF。 |
-| .value[1].u32 | 关闭状态描边颜色, 类型为0xARGB，默认值为0xFF182431。 |
-| .value[2].u32 | 开启状态内部圆饼颜色, 类型为0xARGB，默认值为0xFFFFFFFF。 |
+| .value[0].u32 | 开启状态底板颜色，类型为0xARGB，默认值为0xFF007DFF。 |
+| .value[1].u32 | 关闭状态描边颜色，类型为0xARGB，默认值为0xFF182431。 |
+| .value[2].u32 | 开启状态内部圆饼颜色，类型为0xARGB，默认值为0xFFFFFFFF。 |
 
 ## NODE_RADIO_VALUE
 
@@ -947,7 +947,7 @@ NODE_RADIO_GROUP = 18003
 NODE_CHECKBOX_GROUP_NAME = MAX_NODE_SCOPE_NUM * ARKUI_NODE_CHECKBOX_GROUP = 21000
 ```
 
-定义复选框组的名称, 支持属性设置，属性重置和属性获取。<br>
+定义复选框组的名称，支持属性设置，属性重置和属性获取。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 15
@@ -971,7 +971,7 @@ NODE_CHECKBOX_GROUP_NAME = MAX_NODE_SCOPE_NUM * ARKUI_NODE_CHECKBOX_GROUP = 2100
 NODE_CHECKBOX_GROUP_SELECT_ALL = 21001
 ```
 
-[CheckBoxGroup](arkui-ts/ts-basic-components-checkboxgroup.md)多选框组是否全选, 支持属性设置，属性重置和属性获取。<br>
+[CheckBoxGroup](arkui-ts/ts-basic-components-checkboxgroup.md)多选框组是否全选，支持属性设置，属性重置和属性获取。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 15
@@ -995,7 +995,7 @@ NODE_CHECKBOX_GROUP_SELECT_ALL = 21001
 NODE_CHECKBOX_GROUP_SELECTED_COLOR = 21002
 ```
 
-[CheckBoxGroup](arkui-ts/ts-basic-components-checkboxgroup.md)多选框选中状态颜色, 支持属性设置，属性重置和属性获取。<br>
+[CheckBoxGroup](arkui-ts/ts-basic-components-checkboxgroup.md)多选框选中状态颜色，支持属性设置，属性重置和属性获取。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 15
@@ -1005,13 +1005,13 @@ NODE_CHECKBOX_GROUP_SELECTED_COLOR = 21002
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | CheckBoxGroup多选框选中状态颜色, 0xARGB格式。例如0xFF1122FF。 |
+| .value[0].u32 | CheckBoxGroup多选框选中状态颜色，0xARGB格式。例如0xFF1122FF。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | [CheckBoxGroup](arkui-ts/ts-basic-components-checkboxgroup.md)多选框选中状态颜色, 0xARGB格式。例如0xFF1122FF。 |
+| .value[0].u32 | [CheckBoxGroup](arkui-ts/ts-basic-components-checkboxgroup.md)多选框选中状态颜色，0xARGB格式。例如0xFF1122FF。 |
 
 ## NODE_CHECKBOX_GROUP_UNSELECTED_COLOR
 
@@ -1019,7 +1019,7 @@ NODE_CHECKBOX_GROUP_SELECTED_COLOR = 21002
 NODE_CHECKBOX_GROUP_UNSELECTED_COLOR = 21003
 ```
 
-[CheckBoxGroup](arkui-ts/ts-basic-components-checkboxgroup.md)多选框未选中边框颜色, 支持属性设置，属性重置和属性获取。<br>
+[CheckBoxGroup](arkui-ts/ts-basic-components-checkboxgroup.md)多选框未选中边框颜色，支持属性设置，属性重置和属性获取。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 15
@@ -1029,13 +1029,13 @@ NODE_CHECKBOX_GROUP_UNSELECTED_COLOR = 21003
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 边框颜色, 类型为0xARGB，如0xFF1122FF。 |
+| .value[0].u32 | 边框颜色，类型为0xARGB，如0xFF1122FF。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 边框颜色, 类型为0xARGB，如0xFF1122FF。 |
+| .value[0].u32 | 边框颜色，类型为0xARGB，如0xFF1122FF。 |
 
 ## NODE_CHECKBOX_GROUP_MARK
 
@@ -1043,7 +1043,7 @@ NODE_CHECKBOX_GROUP_UNSELECTED_COLOR = 21003
 NODE_CHECKBOX_GROUP_MARK = 21004
 ```
 
-[CheckBoxGroup](arkui-ts/ts-basic-components-checkboxgroup.md)多选框内部图标样式, 支持属性设置，属性重置和属性获取。<br>
+[CheckBoxGroup](arkui-ts/ts-basic-components-checkboxgroup.md)多选框内部图标样式，支持属性设置，属性重置和属性获取。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 15
@@ -1053,7 +1053,7 @@ NODE_CHECKBOX_GROUP_MARK = 21004
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 边框颜色, 类型为0xARGB，如0xFF1122FF。 |
+| .value[0].u32 | 边框颜色，类型为0xARGB，如0xFF1122FF。 |
 | .value[1]?.f32 | 可选，内部图标大小，单位vp。 |
 | .value[2]?.f32 | 可选，内部图标粗细，单位vp，默认值2。 |
 
@@ -1061,7 +1061,7 @@ NODE_CHECKBOX_GROUP_MARK = 21004
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 边框颜色, 类型为0xARGB，如0xFF1122FF。 |
+| .value[0].u32 | 边框颜色，类型为0xARGB，如0xFF1122FF。 |
 | .value[1]?.f32 | 可选，内部图标大小，单位vp。 |
 | .value[2]?.f32 | 可选，内部图标粗细，单位vp，默认值2。 |
 
@@ -1071,7 +1071,7 @@ NODE_CHECKBOX_GROUP_MARK = 21004
 NODE_CHECKBOX_GROUP_SHAPE = 21005
 ```
 
-[CheckBoxGroup](arkui-ts/ts-basic-components-checkboxgroup.md)组件形状, 支持属性设置，属性重置和属性获取。<br>
+[CheckBoxGroup](arkui-ts/ts-basic-components-checkboxgroup.md)组件形状，支持属性设置，属性重置和属性获取。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 15

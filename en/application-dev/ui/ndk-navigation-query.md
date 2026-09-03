@@ -3,10 +3,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @tsj_20201-->
-<!--Designer: @jiangdayuan-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=087470085268b4c7968360a1498b1da15f27d467 translatedAt=2026-07-06T13:07:35.315Z pushedAt=2026-07-09T10:55:30.177Z -->
+<!-- md-trans-meta sourceCommit=d1e4d0c1349312557d4315ff2b1c5d57de74d862 translatedAt=2026-08-05T10:07:08.268Z pushedAt=2026-08-06T06:21:47.804Z -->
 
 NDK provides a series of [Navigation](./arkts-navigation-architecture.md#overall-architecture) and [page routing](./arkts-routing.md) state query APIs. You can use [OH_ArkUI_GetNavDestinationName](../reference/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnavdestinationname), [OH_ArkUI_GetNavDestinationParam](../reference/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnavdestinationparam), [OH_ArkUI_GetNavDestinationState](../reference/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnavdestinationstate), [OH_ArkUI_GetNavigationId](../reference/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnavigationid), [OH_ArkUI_GetNavDestinationIndex](../reference/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnavdestinationindex), and other APIs to query page state, index, name, and other information, and perform corresponding operations based on the query results, such as displaying different page information.
 

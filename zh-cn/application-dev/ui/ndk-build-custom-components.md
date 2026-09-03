@@ -346,24 +346,45 @@ ArkUI开发框架在NDK接口提供了自定义UI组件的能力，这些能力�
                auto drawCanvas = reinterpret_cast<OH_Drawing_Canvas *>(OH_ArkUI_DrawContext_GetCanvas(drawContext));
                // 获取组件大小。
                auto size = OH_ArkUI_DrawContext_GetSize(drawContext);
+               // 局部资源对象离开作用域时，析构函数会自动分离画笔并释放已经成功创建的资源。
+               struct DrawingResources {
+                   OH_Drawing_Canvas *canvas = nullptr;
+                   OH_Drawing_Path *path = nullptr;
+                   OH_Drawing_Brush *brush = nullptr;
+                   bool brushAttached = false;
+
+                   ~DrawingResources()
+                   {
+                       if (brushAttached) {
+                           OH_Drawing_CanvasDetachBrush(canvas);
+                       }
+                       OH_Drawing_BrushDestroy(brush);
+                       OH_Drawing_PathDestroy(path);
+                   }
+               } resources;
+               resources.canvas = drawCanvas;
                // 绘制自定义内容。
-               auto path = OH_Drawing_PathCreate();
+               resources.path = OH_Drawing_PathCreate();
+               if (resources.path == nullptr) {
+                   return;
+               }
                const float kQuarter = 0.25f;
                const float kThreeQuarters = 0.75f;
-               OH_Drawing_PathMoveTo(path, size.width * kQuarter, size.height * kQuarter);
-               OH_Drawing_PathLineTo(path, size.width * kThreeQuarters, size.height * kQuarter);
-               OH_Drawing_PathLineTo(path, size.width * kThreeQuarters, size.height * kThreeQuarters);
-               OH_Drawing_PathLineTo(path, size.width * kQuarter, size.height * kThreeQuarters);
-               OH_Drawing_PathLineTo(path, size.width * kQuarter, size.height * kQuarter);
-               OH_Drawing_PathClose(path);
-               auto brush = OH_Drawing_BrushCreate();
-               OH_Drawing_BrushSetColor(brush, color_);
-               OH_Drawing_CanvasAttachBrush(drawCanvas, brush);
-               OH_Drawing_CanvasDrawPath(drawCanvas, path);
-               OH_Drawing_CanvasDetachBrush(drawCanvas);
-               // 释放资源
-               OH_Drawing_BrushDestroy(brush);
-               OH_Drawing_PathDestroy(path);
+               OH_Drawing_PathMoveTo(resources.path, size.width * kQuarter, size.height * kQuarter);
+               OH_Drawing_PathLineTo(resources.path, size.width * kThreeQuarters, size.height * kQuarter);
+               OH_Drawing_PathLineTo(
+                   resources.path, size.width * kThreeQuarters, size.height * kThreeQuarters);
+               OH_Drawing_PathLineTo(resources.path, size.width * kQuarter, size.height * kThreeQuarters);
+               OH_Drawing_PathLineTo(resources.path, size.width * kQuarter, size.height * kQuarter);
+               OH_Drawing_PathClose(resources.path);
+               resources.brush = OH_Drawing_BrushCreate();
+               if (resources.brush == nullptr) {
+                   return;
+               }
+               OH_Drawing_BrushSetColor(resources.brush, color_);
+               OH_Drawing_CanvasAttachBrush(drawCanvas, resources.brush);
+               resources.brushAttached = true;
+               OH_Drawing_CanvasDrawPath(drawCanvas, resources.path);
            }
    
            uint32_t color_ = 0xFFFFE4B5;

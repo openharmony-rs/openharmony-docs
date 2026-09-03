@@ -781,6 +781,20 @@ With this permission, the application can set audio sound effects and manage aud
 
 **Since**: 26.0.0
 
+## ohos.permission.vehicle.ACCESS_CAR_SECURITY_PRIVACY
+
+Allows an application to access vehicle security and privacy service APIs.
+
+With this permission, the application can query vehicle privacy agreements or policies, driver-seat privacy mode, and trace removal status.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
 ## ohos.permission.DCAS_RUN_MODEL
 
 Allows an application to access device-side model runtime management.
@@ -794,3 +808,31 @@ With this permission, the application can access device-side model runtime manag
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 26.0.0
+
+## ohos.permission.UPDATE_SCOPE_FONT
+
+Allows an application to manage application-level and session-level fonts.
+
+With this permission, the application can use font management APIs to install, uninstall, and query application-level and session-level fonts, and register font service status listener.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.1.0
+
+## ohos.permission.REQUEST_LOCAL_ACCOUNT_AUTHORIZATION
+
+Allows an application to obtain authorization from the local account.
+
+With this permission, an application can call APIs to request local account authorization. A system authorization dialog will then prompt the user to complete local identity authentication. Upon successful authentication, the specified privileges will be granted, enabling the application to perform corresponding sensitive operations (such as network packet capture).
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | cars | TVs | wearables
+
+**Since**: 26.1.0

@@ -6,16 +6,14 @@
 <!--Designer: @lichangting518-->
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=be48531bb599ab262690e4bcab7fffa1f7126656 translatedAt=2026-07-27T00:47:20.394Z pushedAt=2026-07-27T08:45:08.374Z -->
 
-## Overview
-
-The **faceAuth** module is an important part of the OpenHarmony user identity and access management (UserIAM) and is used to manage face enrollment. This module provides core APIs for face authentication management, enabling developers to enroll and manage face information within their applications.
+The **faceAuth** module is an important part of the OpenHarmony user identity and access management (UserIAM) and is used to manage face enrollment. This module provides core APIs for face authentication management, allowing developers to enroll and manage face information within the application.
 
 This module applies to the following scenarios:
 - Applications that need to implement the face enrollment function.
 - Scenarios where the system-level identity authentication service needs to be integrated.
 - Applications that need to customize the face preview page.
-
 
 > **NOTE**
 >
@@ -31,7 +29,7 @@ This module applies to the following scenarios:
 
 It provides the following features:
 - Creating a face authentication manager instance.
-- Setting the **surface** object of the preview page during face enrollment to the face authentication service.
+- Setting the **SurfaceId** of the preview page during face enrollment to the face authentication service.
 
 ![Class relationship diagram](figures/uml_faceauth.png)
 
@@ -47,7 +45,7 @@ let faceAuthManager = new faceAuth.FaceAuthManager();
 // 2. Obtain the surface ID of the XComponent (using XComponentController).
 let surfaceId = xComponentController.getXComponentSurfaceId();
 
-// 3. Set the surface ID for the face preview page.
+// 3. Set the surfaceId for the face preview page.
 faceAuthManager.setSurfaceId(surfaceId);
 
 // 4. Call the addCredential method of the osAccount module to complete face enrollment.
@@ -62,7 +60,7 @@ import { faceAuth } from '@kit.UserAuthenticationKit';
 
 ## FaceAuthManager
 
-Provides APIs for facial authentication management. It provides management features during face enrollment, including setting the surface ID of the face preview page.
+Provides APIs for facial authentication management. It provides management features during face enrollment, including setting the **SurfaceId** of the face preview page.
 
 ### constructor
 
@@ -92,7 +90,7 @@ let faceAuthManager = new faceAuth.FaceAuthManager();
 
 setSurfaceId(surfaceId: string): void
 
-Sets the surface ID of the face preview page during face enrollment. This API must be used together with [addCredential](../apis-basic-services-kit/js-apis-osAccount-sys.md#addcredential8) to display the face preview page through the surface of the [getXComponentSurfaceId](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9) component.
+Sets the **SurfaceId** of the face preview page during face enrollment. This API must be used together with [addCredential](../apis-basic-services-kit/js-apis-osAccount-sys.md#addcredential8). Use the [getXComponentSurfaceId](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9) method to obtain the **SurfaceId** of the **XComponent** component to display the face preview page.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.FaceAuth
 
@@ -104,11 +102,11 @@ Sets the surface ID of the face preview page during face enrollment. This API mu
 
 | Name        | Type                              | Mandatory| Description                      |
 | -------------- | ---------------------------------- | ---- | -------------------------- |
-| surfaceId       | string     | Yes  | ID of the surface held by [XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9). This ID is used to display the face preview page during face enrollment. It must be obtained using the **getXComponentSurfaceId** method of **XComponentController**.|
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
+| surfaceId       | string     | Yes   | ID of the surface held by [XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md). This ID is used to display the face preview page during face enrollment.<br>**Note:** A valid **surfaceId** must be obtained through the [getXComponentSurfaceId](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9) method after **XComponent** initialization. An invalid **surfaceId** may cause the preview page to fail to display or the API call to fail. |
 
 **Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
 
 | ID| Error Message|
 | -------- | ------- |
@@ -122,11 +120,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { faceAuth } from '@kit.UserAuthenticationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// The surfaceId is obtained from the XComponent control. The surfaceId here is only an example.
+// Obtain this surfaceId through the XComponentController.getXComponentSurfaceId() method from the XComponent component. This is only an example.
 let surfaceId = '123456';
-let manager = new faceAuth.FaceAuthManager();
+let faceManager = new faceAuth.FaceAuthManager();
 try {
-  manager.setSurfaceId(surfaceId);
+  faceManager.setSurfaceId(surfaceId);
   console.info('set surface id successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;

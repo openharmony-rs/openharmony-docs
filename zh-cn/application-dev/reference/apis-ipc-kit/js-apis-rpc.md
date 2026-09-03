@@ -66,6 +66,8 @@ import { rpc } from '@kit.IPCKit';
 
 在RPC或IPC过程中，发送方可以使用MessageSequence提供的写方法，将待发送的数据以特定格式写入该对象。接收方可以使用MessageSequence提供的读方法从该对象中读取特定格式的数据。数据格式包括：基础类型及数组、IPC对象、接口描述符和自定义序列化对象。读取顺序必须与写入顺序一致，否则会导致数据解析错误。
 
+**系统能力：** SystemCapability.Communication.IPC.Core
+
 ### create<sup>9+</sup>
 
 static create(): MessageSequence
@@ -75,8 +77,6 @@ static create(): MessageSequence
 - 创建的MessageSequence对象必须在使用完毕后调用reclaim()释放资源，否则会导致内存泄漏。
 - MessageSequence对象不能跨线程使用。
 - 建议在需要IPC/RPC通信时按需创建，避免频繁创建和释放。
-
-**配对调用：** 调用create()创建MessageSequence对象后，必须在使用完毕后调用reclaim()释放资源，未调用reclaim()会导致内存资源泄漏。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -948,7 +948,7 @@ readInt(): number
 从MessageSequence实例中读取整数值。
 
 - 整数值占用4字节存储空间。
-- 存储范围：-2^31到2^31-1。
+- 存储范围：[-2^31, 2^31-1]。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -3833,7 +3833,7 @@ readRawDataBuffer(size: number): ArrayBuffer
 从MessageSequence读取原始数据。
 
 - 需与写入时的数据大小匹配。
-- 该接口是一次性接口,不允许在一次parcel通信中多次调用。
+- 该接口是一次性接口，不允许在一次parcel通信中多次调用。
 - 大数据量传输时注意系统资源占用。
 - 必须与[writeRawDataBuffer](#writerawdatabuffer11)配对使用。
 
@@ -3907,7 +3907,7 @@ writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void
   | 参数名    | 类型                      | 必填 | 说明                        |
   | --------- | ------------------------- | ---- | --------------------------- |
   | buf       | ArrayBuffer               | 是   | 要写入的ArrayBuffer数据，数据将根据typeCode指定的TypedArray类型进行格式化写入。   |
-  | typeCode  | [TypeCode](#typecode12)   | 是   | ArrayBuffer数据具体是以哪一种TypedArray来访问和操作(会根据业务传递的类型枚举值去决定底层的写入方式，需要业务正确传递枚举值。) |
+  | typeCode  | [TypeCode](#typecode12)   | 是   | ArrayBuffer数据具体是以哪一种TypedArray来访问和操作（会根据业务传递的类型枚举值去决定底层的写入方式，需要业务正确传递枚举值。） |
 
 **错误码：**
 
@@ -3957,7 +3957,7 @@ readArrayBuffer(typeCode: TypeCode): ArrayBuffer
 
   | 参数名   | 类型                     | 必填 | 说明                   |
   | -------- | ----------------------- | ---- | ------------------------|
-  | typeCode | [TypeCode](#typecode12) | 是   | ArrayBuffer数据具体是以哪一种TypedArray来访问和操作(会根据业务传递的类型枚举值去决定底层的读取方式，需要业务正确传递枚举值，读写枚举值不匹配会导致数据异常。)  |
+  | typeCode | [TypeCode](#typecode12) | 是   | ArrayBuffer数据具体是以哪一种TypedArray来访问和操作（会根据业务传递的类型枚举值去决定底层的读取方式，需要业务正确传递枚举值，读写枚举值不匹配会导致数据异常。）  |
 
 **返回值：**
 

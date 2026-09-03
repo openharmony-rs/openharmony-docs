@@ -6,7 +6,7 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=50e734d278c25dbb71273705da516c218b3754a1 translatedAt=2026-06-29T02:37:37.772Z pushedAt=2026-06-30T10:57:37.016Z -->
+<!-- md-trans-meta sourceCommit=9aa812250f4e9aa6e205822b2fc097b3c5b2a47d translatedAt=2026-07-21T01:11:20.676Z pushedAt=2026-07-21T09:32:07.083Z -->
 
 The **notificationExtensionSubscription** module provides capabilities for managing notification extension, including opening the extension settings screen, subscribing to/unsubscribing from notification extension, and obtaining/setting the notification authorization status.
 
@@ -63,13 +63,13 @@ try {
   // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   notificationExtensionSubscription.openSubscriptionSettings(context).then(() => {
-    console.info(`openSubscriberSettings success`);
-  }).catch((e:Error) => {
+    console.info(`openSubscriptionSettings success`);
+  }).catch((e: Error) => {
     let error = e as BusinessError
-    console.error(`failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
+    console.error(`failed to call openSubscriptionSettings, code is ${error.code}, message is ${error.message}`)
   });
 } catch (error) {
-  console.error(`failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
+  console.error(`failed to call openSubscriptionSettings, code is ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -120,12 +120,12 @@ try {
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   notificationExtensionSubscription.openSubscriptionSettingsWithResult(context).then((data) => {
     console.info(`openSubscriptionSettingsWithResult success, data: ${JSON.stringify(data)}`);
-  }).catch((e:Error) => {
+  }).catch((e: Error) => {
     let error = e as BusinessError
-    console.error(`failed to call openSubscriptionSettingsWithResult ${JSON.stringify(error)}`)
+    console.error(`failed to call openSubscriptionSettingsWithResult, code is ${error.code}, message is ${error.message}`)
   });
 } catch (error) {
-  console.error(`failed to call openSubscriptionSettingsWithResult ${JSON.stringify(error)}`)
+  console.error(`failed to call openSubscriptionSettingsWithResult, code is ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -175,7 +175,7 @@ let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionIn
 notificationExtensionSubscription.subscribe(infos).then(() => {
   console.info(`subscribe success`);
 }).catch((err: BusinessError) => {
-  console.error(`subscribe fail: ${JSON.stringify(err)}`);
+  console.error(`subscribe fail, code is ${err.code}, message is ${err.message}`);
 });
 
 ```
@@ -213,7 +213,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 notificationExtensionSubscription.unsubscribe().then(() => {
   console.info(`unsubscribe success`);
 }).catch((err: BusinessError) => {
-  console.error(`unsubscribe fail: ${JSON.stringify(err)}`);
+  console.error(`unsubscribe fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -250,7 +250,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 notificationExtensionSubscription.getSubscribeInfo().then((data: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[]) => {
   console.info(`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`getSubscribeInfo fail: ${JSON.stringify(err)}`);
+  console.error(`getSubscribeInfo fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -291,7 +291,7 @@ notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
     console.info('isUserGranted false');
   }
 }).catch((err: BusinessError) => {
-  console.error(`isUserGranted fail: ${JSON.stringify(err)}`);
+  console.error(`isUserGranted fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -299,7 +299,7 @@ notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
 
 getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 
-Obtains the applications that are allowed to access device notifications. This API uses a promise to return the result.
+Obtains the applications that are allowed to access device notifications for the current application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -309,7 +309,7 @@ Obtains the applications that are allowed to access device notifications. This A
 
 | Type    | Description       |
 | ------- |-----------|
-| Promise\<[GrantedBundleInfo](js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22)[]\>   | Promise used to return the list of applications that are allowed to access device notifications.        |
+| Promise\<[GrantedBundleInfo](js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22)[]\>   | Promise used to return the list of applications that are allowed to access device notifications for the current application.        |
 
 **Error codes**
 
@@ -328,7 +328,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data: notificationExtensionSubscription.GrantedBundleInfo[]) => {
   console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
+  console.error(`getUserGrantedEnabledBundles fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -338,7 +338,7 @@ type NotificationExtensionSubscriptionInfo = _NotificationExtensionSubscriptionI
 
 Describes the information about the notification extension subscription.
 
-**System capability**: SystemCapability.Notification.Notification
+**System capability:** SystemCapability.Notification.Notification
 
 | Type| Description|
 | --- | --- |
@@ -372,7 +372,7 @@ type BundleOption = _BundleOption
 
 Describes the bundle information of an application.
 
-**System capability**: SystemCapability.Notification.Notification
+**System capability:** SystemCapability.Notification.Notification
 
 | Type| Description|
 | --- | --- |
@@ -384,7 +384,7 @@ type GrantedBundleInfo = _GrantedBundleInfo
 
 Describes the bundle information of the authorized application.
 
-**System capability**: SystemCapability.Notification.Notification
+**System capability:** SystemCapability.Notification.Notification
 
 | Type| Description|
 | --- | --- |
@@ -400,7 +400,7 @@ Describes the user authorization settings.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.Notification.Notification
+**System capability:** SystemCapability.Notification.Notification
 
 | Type| Description|
 | --- | --- |

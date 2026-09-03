@@ -3,10 +3,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @huangxiaolinabc-->
-<!--Designer: @jiangdayuan-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @zhangwenhan12-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=087470085268b4c7968360a1498b1da15f27d467 translatedAt=2026-07-06T13:07:15.858Z pushedAt=2026-07-07T08:50:10.535Z -->
+<!-- md-trans-meta sourceCommit=d1e4d0c1349312557d4315ff2b1c5d57de74d862 translatedAt=2026-08-05T01:25:10.419Z pushedAt=2026-08-05T02:32:49.600Z -->
 
 ## A
 
@@ -27,6 +27,12 @@ When an attribute value changes within an animatable closure function, a smooth 
 A general event triggered by pointer input devices such as a mouse wheel or touchpad when the pointer is within the component area, caused by scrolling the wheel, sliding two fingers along the horizontal or vertical axis, or pinching two fingers. The axis refers to the two-dimensional directions (horizontal X-axis, vertical Y-axis). The event carries horizontal axis value, vertical axis value, and pinch scale, used to implement custom scrolling and scaling interactions.
 
 ## C
+
+### Component Coordinate System
+
+A coordinate system that takes the top‑left corner of the component as the origin, where the positive x‑axis points to the right and the positive y‑axis points downward. If the coordinate system is a three-dimensional coordinate system, the positive z‑axis points outward from the screen.
+
+![coordinates](../reference/apis-arkui/arkui-ts/figures/coordinates.png)
 
 ### Concurrent Recognition
 
@@ -189,11 +195,3 @@ A page construction method that creates UI components and sets attributes throug
 ### UI Thread
 
 The thread that runs the ArkUI interface and processes UI events, typically the app's main thread. It is used to execute ArkUI interfaces that require binding to a UI context. Interfaces related to UI processing, including UI context environment initialization, destruction notifications, and frame callback registration, must be called on this thread; otherwise, the program will actively abort.
-
-## Z
-
-### Component Coordinate System
-
-A coordinate system that takes the top‑left corner of the component as the origin, where the positive x‑axis points to the right and the positive y‑axis points downward. If the coordinate system is a three-dimensional coordinate system, the positive z‑axis points outward from the screen.
-
-![coordinates](../reference/apis-arkui/arkui-ts/figures/coordinates.png)

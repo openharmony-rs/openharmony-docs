@@ -1,17 +1,18 @@
 # @ohos.arkui.componentSnapshot (Component Snapshot)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9430c77017ca73641537d932a3d7d8a4c99c078b translatedAt=2026-07-29T09:22:32.041Z pushedAt=2026-08-03T02:35:51.828Z -->
 
 The **componentSnapshot** module provides APIs for obtaining component snapshots, including snapshots of components that have been loaded and snapshots of components that have not been loaded yet. Snapshots are strictly limited to the component's layout bounds. Content drawn outside the area of the owning component or the parent component is not visible in the snapshots. In addition, sibling components stacked in the component's area are not displayed in the snapshot.
 
 Transformation attributes such as scaling, translation, and rotation only apply to the child components of the target component. Applying these transformation attributes directly to the target component itself has no effect; the snapshot will still display the component as it appears before any transformations are applied.
 
 For typical use cases (for example, long screenshots) and best practices of component snapshots, see [Using Component Snapshot (ComponentSnapshot)](../../ui/arkts-uicontext-component-snapshot.md).
-
 
 > **NOTE**
 >
@@ -24,7 +25,6 @@ For typical use cases (for example, long screenshots) and best practices of comp
 > - If the content of a component does not fill the entire area allocated for it, any remaining space in the snapshot will be rendered as transparent pixels. In addition, if the component uses [image effects](arkui-ts/ts-universal-attributes-image-effect.md) or other effect-related attributes, the resulting snapshot may not be as expected. To address these potential issues, check whether the component's transparent content area needs to be filled, or use the window screenshot API [snapshot](arkts-apis-window-Window.md#snapshot9) instead.
 >
 > - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
-
 
 ## Modules to Import
 
@@ -69,7 +69,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 > **NOTE**
 > 
-> Directly using **componentSnapshot** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain a **UIContext** instance using **getUIContext()**, and then obtain the associated **componentSnapshot** object using [getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12).
+> Directly using **componentSnapshot** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, you are advised to use **getUIContext()** to obtain a [UIContext](arkts-apis-uicontext-uicontext.md) instance, and use [getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) to obtain **componentSnapshot** associated with the instance.
 
 **Example**
 
@@ -158,7 +158,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 > **NOTE**
 > 
-> Directly using **componentSnapshot** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain a **UIContext** instance using **getUIContext()**, and then obtain the associated **componentSnapshot** object using [getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12).
+> Directly using **componentSnapshot** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, you are advised to use **getUIContext()** to obtain a [UIContext](arkts-apis-uicontext-uicontext.md) instance, and use [getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) to obtain **componentSnapshot** associated with the instance.
 
 **Example**
 
@@ -230,10 +230,10 @@ Renders a custom component in the application background and outputs its snapsho
 
 | Name     | Type                                      | Mandatory  | Description        |
 | -------- | ---------------------------------------- | ---- | ---------- |
-| builder  | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) | Yes   | Builder of the custom component.<br>Note: The global builder is not supported.<br>If the root component of the builder has a width or height of zero, the snapshot operation will fail with error code 100001.|
+| builder  | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) | Yes    | Builder of the custom component.<br>**Note:** The global builder is not supported.<br>If the width and height of the root component of the builder are both 0, the snapshot operation fails and error code 100001 is thrown.|
 | callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt;      | Yes   | Callback used to return the result. The coordinates and size of the offscreen component's drawing area can be obtained through the callback.|
-| delay<sup>12+</sup>   | number | No   | Delay time for triggering the screenshot command. When the layout includes an image component, it is necessary to set a delay time to allow the system to decode the image resources. The decoding time is subject to the resource size. In light of this, whenever possible, use pixel map resources that do not require decoding.<br> When pixel map resources are used or when **syncLoad** to **true** for the **Image** component, you can set **delay** to **0** to forcibly capture snapshots without waiting. This delay time does not refer to the time from the API call to the return: As the system needs to temporarily construct the passed-in **builder** offscreen, the return time is usually longer than this delay.<br>Note: In the **builder** passed in, state variables should not be used to control the construction of child components. If they are used, they should not change when the API is called, so as to avoid unexpected snapshot results.<br> Default value: **300**<br> Unit: ms<br> Value range: [0, +∞). If the value is less than 0, the default value is used.|
-| checkImageStatus<sup>12+</sup>  | boolean | No   | Whether to verify the image decoding status before taking a snapshot. <br>**true**: Check whether all Image components have been decoded. <br>**false**: Skip verification. If the verification is not completed, snapshot capture will be canceled and an exception will be returned.<br>Default value: **false**|
+| delay<sup>12+</sup>   | number | No    | Delay time for triggering the snapshot command. When an image component is used in the layout, delay time must be specified so that the system can decode the image resource. The larger the resource, the longer the decoding takes. It is recommended to use PixelMap resources that do not require decoding whenever possible.<br> When PixelMap resources are used or **syncLoad** is set to **true** for the **Image** component, **delay** can be set to **0** to forcibly capture snapshots without waiting. This delay time does not refer to the time from API call to return. Since the system needs to perform temporary off-screen construction of the passed-in builder, the return time is usually longer than this delay.<br>**Note:** In the builder passed to the snapshot API, state variables should not be used to control the construction of child components. If they must be used, they should not change when the snapshot API is called, to avoid unexpected snapshot results.<br> Default value: **300** <br> Unit: ms <br> Value range: [0, +∞). Values less than 0 are processed as the default value. |
+| checkImageStatus<sup>12+</sup>  | boolean | No    | Whether to verify the image decoding status before taking a snapshot. The value **true** indicates to check whether all **Image** components have been decoded. The value **false** indicates to skip verification. If the verification is not completed, snapshot capture will be canceled and an exception will be returned.<br>Default value: **false**|
 | options<sup>12+</sup>       | [SnapshotOptions](#snapshotoptions12)           | No   | Custom settings of the snapshot.|
 
 **Error codes**
@@ -244,11 +244,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | The builder is not a valid build function.                   |
-| 160001   | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled.<br>Applicable versions: 12+|
+| 160001   | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled.<br>Applicable versions: 12+ |
 
 > **NOTE**
 > 
-> Directly using **componentSnapshot** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain a **UIContext** instance using **getUIContext()**, and then obtain the associated **componentSnapshot** object using [getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12).
+> Directly using **componentSnapshot** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, you are advised to use **getUIContext()** to obtain a [UIContext](arkts-apis-uicontext-uicontext.md) instance, and use [getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) to obtain **componentSnapshot** associated with the instance.
 
 **Example**
 
@@ -318,7 +318,7 @@ struct OffscreenSnapshotExample {
 
 createFromBuilder(builder: CustomBuilder, delay?: number, checkImageStatus?: boolean, options?: SnapshotOptions): Promise<image.PixelMap>
 
-Renders a custom component in the application background and outputs its snapshot. This API uses a promise to return the result. The coordinates and size of the offscreen component's drawing area can be obtained through the callback.
+Renders a custom component in the application background and outputs its snapshot. This API uses a promise to return the result. The coordinates and size of the offscreen component's drawing area can be obtained through the promise.
 
 > **NOTE**
 >
@@ -340,9 +340,9 @@ Renders a custom component in the application background and outputs its snapsho
 
 | Name    | Type                                      | Mandatory  | Description        |
 | ------- | ---------------------------------------- | ---- | ---------- |
-| builder | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) | Yes   | Builder of the custom component.<br>Note: The global builder is not supported.<br>If the root component of the builder has a width or height of zero, the snapshot operation will fail with error code 100001.|
-| delay<sup>12+</sup>   | number | No   | Delay time for triggering the screenshot command. When the layout includes an image component, it is necessary to set a delay time to allow the system to decode the image resources. The decoding time is subject to the resource size. In light of this, whenever possible, use pixel map resources that do not require decoding.<br> When pixel map resources are used or when **syncLoad** to **true** for the **Image** component, you can set **delay** to **0** to forcibly capture snapshots without waiting. This delay time does not refer to the time from the API call to the return: As the system needs to temporarily construct the passed-in **builder** offscreen, the return time is usually longer than this delay.<br>Note: In the **builder** passed in, state variables should not be used to control the construction of child components. If they are used, they should not change when the API is called, so as to avoid unexpected snapshot results.<br> Default value: **300**<br> Unit: ms|
-| checkImageStatus<sup>12+</sup>  | boolean | No   | Whether to verify the image decoding status before taking a snapshot. <br>**true**: Check whether all Image components have been decoded. <br>**false**: Skip verification. If the verification is not completed, snapshot capture will be canceled and an exception will be returned.<br>Default value: **false**|
+| builder | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) | Yes    | Builder of the custom component.<br>**Note:** The global builder is not supported.<br>If the width and height of the root component of the builder are both 0, the screenshot operation fails and error code 100001 is thrown. |
+| delay<sup>12+</sup>   | number | No    | Delay time for triggering the screenshot command. When an image component is used in the layout, delay time must be specified to allow the system to decode the image resource. The larger the resource, the longer the decoding takes. It is recommended to use PixelMap resources that do not require decoding whenever possible.<br> When PixelMap resources are used or **syncLoad** of the **Image** component is set to **true**, **delay** can be set to **0** to forcibly capture snapshots without waiting. This delay time does not refer to the time from API call to return. Since the system needs to perform temporary off-screen building of the passed-in builder, the return time is usually longer than this delay.<br>**Note:** In the builder passed to the screenshot API, state variables should not be used to control the construction of child components. If they must be used, they should not change when the screenshot API is called, to avoid unexpected screenshot results.<br> Default value: **300** <br> Unit: ms|
+| checkImageStatus<sup>12+</sup>  | boolean | No    | Whether to verify the image decoding status before taking a snapshot. The value **true** indicates to check whether all **Image** components have been decoded. The value **false** indicates to skip verification. If the verification is not completed, snapshot capture will be canceled and an exception will be returned.<br>Default value: **false**|
 | options<sup>12+</sup>       | [SnapshotOptions](#snapshotoptions12)           | No   | Custom settings of the snapshot.|
 
 **Return value**
@@ -358,11 +358,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------ | ---------------------------------------- |
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | The builder is not a valid build function. |
-| 160001 | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled.<br>Applicable versions: 12+|
+| 160001 | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled.<br>Applicable versions: 12+ |
 
 > **NOTE**
 > 
-> Directly using **componentSnapshot** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain a **UIContext** instance using **getUIContext()**, and then obtain the associated **componentSnapshot** object using [getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12).
+> Directly using **componentSnapshot** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, you are advised to use **getUIContext()** to obtain a [UIContext](arkts-apis-uicontext-uicontext.md) instance, and use [getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) to obtain **componentSnapshot** associated with the instance.
 
 **Example**
 
@@ -424,7 +424,7 @@ struct OffscreenSnapshotExample {
 }
 ```
 
-![componentcreate](figures/componentcreate.gif) 
+![componentcreate](figures/componentcreate.gif)
 
 ## componentSnapshot.getSync<sup>12+</sup>
 
@@ -445,13 +445,13 @@ Obtains the snapshot of a component that has been loaded based on the provided [
 | Name | Type    | Mandatory  | Description                                      |
 | ---- | ------ | ---- | ---------------------------------------- |
 | id   | string | Yes   | [ID](arkui-ts/ts-universal-attributes-component-id.md) of the target component.|
-| options       | [SnapshotOptions](#snapshotoptions12)                              | No   | Custom settings of the snapshot.|
+| options       | [SnapshotOptions](#snapshotoptions12)                              | No    | Custom options related to the snapshot, which are passed when custom snapshot behavior is needed, for example, setting the scale ratio, waiting for rendering to complete, snapshot area, color space, or dynamic range. Default snapshot configuration is used when this parameter is not passed. |
 
 **Return value**
 
 | Type                           | Description      |
 | ----------------------------- | -------- |
-| image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Promise used to return the result.|
+| image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | **PixelMap** object of the component snapshot, which represents the captured component image. |
 
 **Error codes**
 
@@ -462,11 +462,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | Invalid ID. |
 | 160002 | Timeout. |
-| 160003 | Unsupported color space or dynamic range mode in snapshot options.<br>Applicable versions: 23+|
+| 160003 | Unsupported color space or dynamic range mode in snapshot options.<br>Applicable versions: 23+ |
 
 > **NOTE**
-> 
-> Directly using **componentSnapshot** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain a [UIContext](arkts-apis-uicontext-uicontext.md) instance using **getUIContext()**, and then obtain the associated **componentSnapshot** object using [getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12).
+>
+> Directly using **componentSnapshot** may cause the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, you are advised to use **getUIContext()** to obtain a [UIContext](arkts-apis-uicontext-uicontext.md) instance, and use [getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) to obtain the **componentSnapshot** associated with the instance.
 
 **Example**
 
@@ -489,17 +489,17 @@ struct SnapshotExample {
           .width(200)
           .height(200)
           .margin(5)
-          .id("root")
+          .id('root')
       }
 
-      Button("click to generate UI snapshot")
+      Button('click to generate UI snapshot')
         .onClick(() => {
           try {
             // You are advised to use this.getUIContext().getComponentSnapshot().getSync().
-            let pixelmap = componentSnapshot.getSync("root", { scale: 2, waitUntilRenderFinished: true })
-            this.pixmap = pixelmap
+            let pixelmap = componentSnapshot.getSync('root', { scale: 2, waitUntilRenderFinished: true });
+            this.pixmap = pixelmap;
           } catch (error) {
-            console.error(`getSync errorCode:${error.code} message:${error.message}`)
+            console.error(`getSync error message:${error.message}`);
           }
         }).margin(10)
     }
@@ -526,21 +526,24 @@ Defines the size limit of a component screenshot.
 
 | Name       | Type    | Read-Only| Optional| Description                  |
 | --------- | ------ | ---- | ---- | -------------------- |
-| maxWidth  | number | No  | No  | Maximum width of a component screenshot.<br>Value range: (-∞, +∞)<br>Unit: px.|
-| maxHeight | number | No  | No  | Maximum height of a component screenshot.<br>Value range: (-∞, +∞)<br>Unit: px.|
+| maxWidth  | number | No   | No   | Maximum width for the component snapshot.<br>Value range: [0, +∞)<br>Unit: px |
+| maxHeight | number | No   | No   | Maximum height for the component snapshot.<br>Value range: [0, +∞)<br>Unit: px |
 
 ## SnapshotOptions<sup>12+</sup>
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
+
 | Name          | Type           |    Read-Only      |    Optional          |   Description                   |
 | ---------------|------------     | -------------|---------------| -----------------------------|
-| scale           | number | No |  Yes| Scale ratio for rendering pixel maps during a snapshot. Note that a high scale ratio may increase the time taken for the snapshot or even result in a snapshot failure.<br>Value range: [0, +∞). If the value is less than or equal to 0, the default value is used.<br> Default value: **1**<br>**NOTE**<br>Avoid capturing images that are excessively large, ideally not larger than the screen size. If the size of the image to capture exceeds device-specific underlying limits, the capture will fail.<br>**Atomic service API**: This API can be used in atomic services since API version 12.   |
-| waitUntilRenderFinished    | boolean | No| Yes | Whether to force the system to wait for all rendering commands to complete before taking the snapshot. The value **true** means to force the system to wait for all rendering commands to complete before taking the snapshot, and **false** means the opposite. This option ensures the snapshot reflects the most up-to-date content and should be enabled whenever possible. Note that enabling this option may increase the time required for the snapshot to complete, which depends on the size of the area that needs to be redrawn at the time.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 12.        |
-| region<sup>15+</sup> | [SnapshotRegionType](#snapshotregiontype15) | No | Yes| Rectangular region for the snapshot. The default region is the entire component.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
-| colorMode<sup>23+</sup> | [ColorModeOptions](#colormodeoptions23) | No | Yes| Color space used for the snapshot.<br>Default value: **{colorSpace: SRGB, isAuto: false}**<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
-| dynamicRangeMode<sup>23+</sup> | [DynamicRangeModeOptions](#dynamicrangemodeoptions23) | No | Yes| Dynamic range mode used for the snapshot.<br>Default value: **{dynamicRangeMode: STANDARD, isAuto: false}**<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| scale           | number | No  |  Yes | Scale ratio for rendering a PixelMap on the graphics side during snapshot. If the ratio is too large, the snapshot may take longer or fail.<br>Value range: [0, +∞). Values less than or equal to 0 are treated as the default value.<br>Default value: 1<br>**NOTE**<br>Do not take snapshots of excessively large sizes. It is recommended that the snapshot size not exceed the screen size. If the target width or height of the snapshot exceeds the underlying limit, the snapshot will fail. The underlying limit varies by device. You can obtain the specific limit through the [getSizeLimitation](./arkts-apis-uicontext-componentsnapshot.md#getsizelimitation) API.<br>**Atomic service API:** This API can be used in atomic services since API version 12.    |
+| waitUntilRenderFinished    | boolean | No | Yes  | Whether to force the system to wait for all rendering commands to complete before taking the snapshot. The value **true** means the system is forced to wait for all rendering commands to complete before taking the snapshot, and **false** means the system is not forced to wait. This parameter ensures that the snapshot content is as up-to-date as possible and should be enabled whenever possible. Note that enabling this parameter may cause the API to take longer to return, depending on the size of the area that needs to be redrawn on the current page.<br>Default value: **false**<br>**Atomic service API:** This API can be used in atomic services since API version 12.         |
+| region<sup>15+</sup> | [SnapshotRegionType](#snapshotregiontype15) | No  | Yes | Rectangular region for the snapshot. The default region is the entire component.<br>**Atomic service API:** This API can be used in atomic services since API version 15. |
+| colorMode<sup>23+</sup> | [ColorModeOptions](#colormodeoptions23) | No  | Yes | Color space used for the snapshot.<br>Default value: **{colorSpace: SRGB, isAuto: false}**<br>**Atomic service API:** This API can be used in atomic services since API version 23. |
+| dynamicRangeMode<sup>23+</sup> | [DynamicRangeModeOptions](#dynamicrangemodeoptions23) | No  | Yes | Dynamic range mode used for the snapshot.<br>Default value: **{dynamicRangeMode: STANDARD, isAuto: false}**<br>**Atomic service API:** This API can be used in atomic services since API version 23. |
 
 ## ColorModeOptions<sup>23+</sup>
 
@@ -548,16 +551,18 @@ Defines the color space used for the snapshot.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type| Read-Only | Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| colorSpace | [colorSpaceManager.ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace) | No| Yes| Color space used for the snapshot.<br>If the target component's color space is known, specify it through **colorSpace** and set **isAuto** to **false** to achieve optimal snapshot quality.<br>The value can be **DISPLAY_P3**, **SRGB**, or **DISPLAY_BT2020_SRGB** in [colorSpaceManager.ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace).<br>Default value: **SRGB**<br>If the value is **undefined**, **null**, or not set, the default value is used. If an abnormal value is used, snapshot capture fails and the error code 160003 is returned.|
-| isAuto | boolean | No| Yes| Whether the system automatically determines the color space to be used.<br>The value **true** means to allow the system to automatically determine the color space to be used, and **false** means to manually set the color space through **colorSpace**. If an invalid value is used, the default value **false** is used.<br>Default value: **false**<br>For offscreen snapshots, this parameter can only be set to **false**. Otherwise, the error code 160004 will be returned.<br>If `isAuto` is set to **true**, you are advised to set `waitUntilRenderFinished` in [SnapshotOptions](#snapshotoptions12) to **true** to ensure that the system can properly detect the used color space.<br>If the color space used by the component is uncertain, you are advised to set **isAuto** to **true** so that the system can automatically determine the color space to be used.<br>When **isAuto** is set to true, the value of **colorSpace** is ignored. In this case, if the target component contains child components in different color spaces, the color space with the highest priority is used for the snapshot. The priority order of the color space is as follows: **DISPLAY_BT2020_SRGB** > **DISPLAY_P3** > **SRGB**.|
+| colorSpace | [colorSpaceManager.ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace) | No | Yes | Color space used for the snapshot.<br>If the color space used by the component to be captured is known, you can specify it through the `colorSpace` field and set `isAuto` to **false** to achieve the expected snapshot effect.<br>The value can be **DISPLAY_P3**, **SRGB**, and **DISPLAY_BT2020_SRGB** in [colorSpaceManager.ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace).<br>Default value: **SRGB**<br>If the value is **undefined**, **null**, or not set, the default value is used for the snapshot. Other invalid values will cause the snapshot to fail, and error code 160003 is returned. |
+| isAuto | boolean | No | Yes | Whether the system automatically determines the color space to use.<br>The value options are as follows: **true** indicates that the system automatically determines the color space to use. **false** indicates that the color space set through the `colorSpace` field is used for the snapshot. If an invalid value is used, the default value **false** is applied.<br>Default value: **false**<br>For off-screen snapshots, only **false** is supported. Otherwise, error code 160004 is returned.<br>When `isAuto` is set to **true**, it is recommended to also set the `waitUntilRenderFinished` field in [SnapshotOptions](#snapshotoptions12) to **true** to ensure that the system can properly detect the mode used.<br>When you are unsure about the color space used by the component, it is recommended to set `isAuto` to **true** so that the system automatically determines the color space based on the actual situation.<br>When `isAuto` is to **true**, the value set in the `colorSpace` field will be ignored. In this case, if the component to be captured contains child components with different color spaces, the color space of the snapshot is the one with the highest priority, in the order of **DISPLAY_BT2020_SRGB** > **DISPLAY_P3** > **SRGB**. |
 
 **Example**
 
-``` ts  
+```ts
 import { image } from '@kit.ImageKit';
 import { colorSpaceManager } from '@kit.ArkGraphics2D';
 
@@ -576,17 +581,17 @@ struct SnapshotColorModeExample {
           .width(200)
           .height(200)
           .margin(5)
-          .id("root")
+          .id('root')
       }
 
-      Button("click to generate UI snapshot")
+      Button('click to generate UI snapshot')
         .onClick(() => {
-          this.getUIContext().getComponentSnapshot().get("root", (error: Error, pixmap: image.PixelMap) => {
+          this.getUIContext().getComponentSnapshot().get('root', (error: Error, pixmap: image.PixelMap) => {
             if (error) {
-              console.error(`error:${JSON.stringify(error)}`)
+              console.error(`error:${JSON.stringify(error)}`);
               return;
             }
-            this.pixmap = pixmap
+            this.pixmap = pixmap;
           }, {
             scale: 2,
             waitUntilRenderFinished: true,
@@ -610,16 +615,18 @@ Defines the dynamic range mode used for the snapshot.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type| Read-Only | Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| dynamicRangeMode| [DynamicRangeMode](./arkui-ts/ts-basic-components-image.md#dynamicrangemode12)| No| Yes| Dynamic range mode used for the snapshot.<br> By default, the system snapshots in [STANDARD](./arkui-ts/ts-basic-components-image.md#dynamicrangemode12) mode. If the dynamic range mode used by the target component is known, you can specify the dynamic range mode using the **dynamicRangeMode** field and set **isAuto** to **false** to achieve the expected snapshot effect.<br>There are three dynamic range modes available. HDR is applied for **HIGH** and **CONSTRAINT** modes, and SDR is applied for **STANDARD** mode.<br>After a valid dynamic range mode is specified, the dynamic range to be used for the snapshot is determined by both the target component and the specified mode. The details are as follows:<br>1. If SDR is used for the component, SDR is applied for the snapshot even if the dynamic range mode is set to **HIGH**.<br>2. If HDR is used for the component, the specified dynamic range mode is applied for the screenshot.<br>3. If the [color space](#colormodeoptions23) is set to **SRGB** or **DISPLAY_P3**, SDR is applied for the snapshot.<br>4. If both SDR and HDR are used for the child components, HDR is applied for the snapshot.<br>5. If both conditions 3 and 4 are met, SDR is applied for the snapshot.<br>For details about the enum values, see [DynamicRangeMode](./arkui-ts/ts-basic-components-image.md#dynamicrangemode12).<br>Default value: **STANDARD**<br>If the value is **undefined**, **null**, or not set, the default value is used. If an abnormal value is used, snapshot capture fails and the error code 160003 is returned.|
-|isAuto | boolean | No| Yes| Whether the system automatically determines the dynamic range mode to be used.<br>The value **true** means to allow the system to automatically determine the dynamic range mode to be used, and **false** means to manually set the dynamic range mode through **dynamicRangeMode**. If an invalid value is used, the default value **false** is used.<br>Default value: **false**<br>For offscreen snapshots, this parameter can only be set to **false**. Otherwise, the error code 160004 will be returned.<br>If `isAuto` is set to **true**, you are advised to set `waitUntilRenderFinished` in [SnapshotOptions](#snapshotoptions12) to **true** to ensure that the system can properly detect the used dynamic range mode.<br>If the dynamic range mode used by the component is uncertain, you are advised to set **isAuto** to **true** so that the system can automatically determine the dynamic range mode to be used.<br> When **isAuto** is set to true, the value of **dynamicRangeMode** is ignored.|
+| dynamicRangeMode| [DynamicRangeMode](./arkui-ts/ts-basic-components-image.md#dynamicrangemode12) | No | Yes | Dynamic range mode used for snapshot.<br> By default, the system takes snapshots in [STANDARD](./arkui-ts/ts-basic-components-image.md#dynamicrangemode12) mode. If you know the dynamic range mode used by the component to be captured, you can specify the specific dynamic range mode through the `dynamicRangeMode` field and set `isAuto` to **false** to achieve the expected snapshot effect.<br>Although there are three dynamic range modes, both **HIGH** and **CONSTRAINT** behave as HDR (High Dynamic Range). The **STANDARD** mode corresponds to SDR (Standard Dynamic Range).<br>After a valid dynamic range mode is specified, the dynamic range actually used for the snapshot is affected by both the component being captured and the set value, as follows:<br>1. When the dynamic range of the component being captured is SDR, the snapshot actually uses SDR even if the dynamic range mode is specified as **HIGH**.<br>2. When the dynamic range of the component being captured is HDR, the snapshot actually uses the specified dynamic range mode.<br>3. When the [color space](#colormodeoptions23) is set to **SRGB** or **DISPLAY_P3**, the snapshot actually uses SDR as the dynamic range mode.<br>4. If the component being captured contains child components with both SDR and HDR, HDR is used.<br>5. If conditions 3 and 4 are met simultaneously, the snapshot actually uses SDR as the dynamic range mode.<br>Value range: enumerated values of [DynamicRangeMode](./arkui-ts/ts-basic-components-image.md#dynamicrangemode12).<br>Default value: **STANDARD** <br>If the value is **undefined**, **null**, or not set, the default value is used for the snapshot. Other invalid values cause the snapshot to fail and return error code 160003. |
+|isAuto | boolean | No | Yes | Whether the system automatically determines the dynamic range mode to use.<br>The value options are as follows: **true** indicates that the system automatically determines the dynamic range mode to use. **false** indicates that the dynamic range mode set through the `dynamicRangeMode` field is used for the snapshot. Invalid values are treated as the default value **false**.<br>Default value: **false**<br>For off-screen snapshots, only **false** is supported. Otherwise, error code 160004 is returned.<br>When `isAuto` is set to **true**, it is recommended to also set the `waitUntilRenderFinished` field in [SnapshotOptions](#snapshotoptions12) to **true** to ensure that the system can properly detect the mode used.<br>When you are unsure about the dynamic range mode used by the component, it is recommended to set `isAuto` to **true** so that the system automatically determines the dynamic range mode based on the actual situation.<br> When `isAuto` is set to **true**, the value set in the `dynamicRangeMode` field is ignored. |
 
 **Example**
 
-``` ts
+```ts
 import { image } from '@kit.ImageKit';
 
 @Entry
@@ -637,17 +644,17 @@ struct SnapshotDynamicRangeExample {
           .width(200)
           .height(200)
           .margin(5)
-          .id("root")
+          .id('root')
       }
 
-      Button("click to generate UI snapshot")
+      Button('click to generate UI snapshot')
         .onClick(() => {
-          this.getUIContext().getComponentSnapshot().get("root", (error: Error, pixmap: image.PixelMap) => {
+          this.getUIContext().getComponentSnapshot().get('root', (error: Error, pixmap: image.PixelMap) => {
             if (error) {
-              console.error(`error:${JSON.stringify(error)}`)
+              console.error(`error:${JSON.stringify(error)}`);
               return;
             }
-            this.pixmap = pixmap
+            this.pixmap = pixmap;
           }, {
             scale: 2,
             waitUntilRenderFinished: true,
@@ -667,18 +674,20 @@ struct SnapshotDynamicRangeExample {
 
 ## SnapshotRegionType<sup>15+</sup>
 
-type SnapshotRegionType =  SnapshotRegion | LocalizedSnapshotRegion
+type SnapshotRegionType = SnapshotRegion | LocalizedSnapshotRegion
 
 Represents the region of a component to be captured in a snapshot. It can take one of the types listed in the table below.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type  | Description  |
 | ------ | ------ |
 | [SnapshotRegion](#snapshotregion15) | Rectangular region for capturing the component snapshot.|
-| [LocalizedSnapshotRegion ](#localizedsnapshotregion15) | Rectangular region for capturing the component snapshot, with horizontal flipping based on the layout direction. If the layout direction is right-to-left (RTL), the specified region is flipped horizontally to accommodate the RTL layout.|
+| [LocalizedSnapshotRegion](#localizedsnapshotregion15) | Rectangular region for capturing the component snapshot, with horizontal flipping based on the layout direction. If the layout direction is right-to-left (RTL), the specified region is flipped horizontally to accommodate the RTL layout. |
 
 ## SnapshotRegion<sup>15+</sup>
 
@@ -686,14 +695,16 @@ Defines the rectangular region for capturing the component snapshot.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name  | Type  | Read-Only| Optional| Description                                   |
 | ------ | ------ | ---- | ---- | --------------------------------------- |
-| left   | number | No  | No  | X-coordinate of the upper left corner of the rectangular region.<br>Unit: px.<br>Value range: [0, Component width].|
-| top    | number | No  | No  | Y-coordinate of the upper left corner of the rectangular region.<br>Unit: px.<br>Value range: [0, Component height].|
-| right  | number | No  | No  | X-coordinate of the lower right corner of the rectangular region.<br>Unit: px.<br>Value range: [0, Component width].|
-| bottom | number | No  | No  | Y-coordinate of the lower right corner of the rectangular region.<br>Unit: px.<br>Value range: [0, Component height].|
+| left   | number | No   | No   | X-coordinate of the upper left corner of the rectangular region.<br>Unit: px<br>Value range: [0, Component width]. If the value is out of range, the snapshot fails and error code 401 is returned. |
+| top    | number | No   | No   | Y-coordinate of the upper left corner of the rectangular region.<br>Unit: px<br>Value range: [0, Component height]. If the value is out of range, the snapshot fails and error code 401 is returned. |
+| right  | number | No   | No   | X-coordinate of the lower right corner of the rectangular region.<br>Unit: px<br>Value range: [0, Component width]. If the value is out of range, the snapshot fails and error code 401 is returned. |
+| bottom | number | No   | No   | Y-coordinate of the lower right corner of the rectangular region.<br>Unit: px<br>Value range: [0, Component height]. If the value is out of range, the snapshot fails and error code 401 is returned. |
 
 ## LocalizedSnapshotRegion<sup>15+</sup>
 
@@ -701,18 +712,19 @@ Defines the rectangular region for capturing the component snapshot, with coordi
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name  | Type  | Read-Only| Optional| Description                                                        |
 | ------ | ------ | ----| ---- | ------------------------------------------------------------ |
-| start  | number | No | No  | For LTR layouts: X-coordinate of the upper left corner of the rectangular region.<br>For RTL layouts: X-coordinate of the upper right corner of the rectangular region.<br>Unit: px.<br>Value range: [0, Component width].|
-| top    | number | No | No  | For LTR layouts: Y-coordinate of the upper left corner of the rectangular region.<br>For RTL layouts: Y-coordinate of the upper right corner of the rectangular region.<br>Unit: px.<br>Value range: [0, Component height].|
-| end    | number | No | No  | For LTR layouts: X-coordinate of the lower right corner of the rectangular region.<br>For RTL layouts: X-coordinate of the lower left corner of the rectangular region.<br>Unit: px.<br>Value range: [0, Component width].|
-| bottom | number | No | No  | For LTR layouts: Y-coordinate of the lower right corner of the rectangular region.<br>For RTL layouts: Y-coordinate of the lower left corner of the rectangular region.<br>Unit: px.<br>Value range: [0, Component height].|
+| start  | number | No  | No   | For LTR layouts: X-coordinate of the upper left corner of the rectangular region. For RTL layouts: X-coordinate of the upper right corner of the rectangular region.<br>Unit: px<br>Value range: [0, Component width]. If the value is out of range, the snapshot fails and error code 401 is returned. |
+| top    | number | No  | No   | For LTR layouts: Y-coordinate of the upper left corner of the rectangular region. For RTL layouts: Y-coordinate of the upper right corner of the rectangular region.<br>Unit: px<br>Value range: [0, Component height]. If the value is out of range, the snapshot fails and error code 401 is returned. |
+| end    | number | No  | No   | For LTR layouts: X-coordinate of the lower right corner of the rectangular region. For RTL layouts: X-coordinate of the lower left corner of the rectangular region.<br>Unit: px<br>Value range: [0, Component width]. If the value is out of range, the snapshot fails and error code 401 is returned. |
+| bottom | number | No  | No   | For LTR layouts: Y-coordinate of the lower right corner of the rectangular region. For RTL layouts: Y-coordinate of the lower left corner of the rectangular region.<br>Unit: px<br>Value range: [0, Component height]. If the value is out of range, the snapshot fails and error code 401 is returned. |
 
 > **NOTE**
-> 
-> Directly using **componentSnapshot** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain a **UIContext** instance using **getUIContext()**, and then obtain the associated **componentSnapshot** object using [getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12).
+> Directly using **componentSnapshot** may cause the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, you are advised to use **getUIContext()** to obtain a [UIContext](arkts-apis-uicontext-uicontext.md) instance, and use [getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) to obtain **componentSnapshot** associated with the instance.
 
 **Example**
 
@@ -729,31 +741,31 @@ struct SnapshotExample {
       Row() {
         Column() {
           TextClock()
-          Button("Button ABCDE").type(ButtonType.Normal)
+          Button('Button ABCDE').type(ButtonType.Normal)
           Row() {
             Checkbox()
-            Text("√")
-            Text(" | ")
+            Text('√')
+            Text(' | ')
             Checkbox()
-            Text("×")
+            Text('×')
           }.align(Alignment.Start)
 
           TextInput()
         }
         .align(Alignment.Start)
-        .id("component1")
-        .width("600px")
-        .height("600px")
+        .id('component1')
+        .width('600px')
+        .height('600px')
         .borderRadius(6)
         .borderWidth(2)
         .borderColor(Color.Green)
 
       }
 
-      Button("get capture")
+      Button('get capture')
         .onClick(() => {
           try {
-            let pixelmap = this.getUIContext().getComponentSnapshot().getSync("component1",
+            let pixelmap = this.getUIContext().getComponentSnapshot().getSync('component1',
               {
                 scale: 2,
                 waitUntilRenderFinished: true,
@@ -764,15 +776,17 @@ struct SnapshotExample {
                   bottom: 240
                 }
               })
-            this.pixmap = pixelmap
+            this.pixmap = pixelmap;
           } catch (error) {
-            console.error(`getSync errorCode:${error.code} message:${error.message}`)
+            console.error(`getSync error message:${error.message}`);
           }
         }).margin(10)
-      Image(this.pixmap).border({ color: Color.Black, width: 2 }).width("600px")
-    }.width("100%").align(Alignment.Center)
+      Image(this.pixmap).border({ color: Color.Black, width: 2 }).width('600px')
+    }.width('100%').align(Alignment.Center)
   }
 }
 ```
 
 ![localized_snapshot](figures/localized_snapshot.gif)
+
+<!--no_check-->

@@ -1784,7 +1784,7 @@ console.info("test Decimal toHexadecimal:" + data1); // 'test Decimal toHexadeci
 
 toDecimalPlaces(): Decimal
 
-返回一个保留小数点后指定位数的Decimal对象，不进行小数的取舍。
+返回一个保留小数点后指定位数的Decimal对象，不进行小数的舍入。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -1993,7 +1993,7 @@ console.info("test Decimal toExponential:" + data1); // 'test Decimal toExponent
 
 toFixed(): string
 
-将数值转换为十进制定点模式表示的字符串，不进行小数的取舍。
+将数值转换为十进制定点模式表示的字符串，不进行小数的舍入。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -2052,7 +2052,7 @@ let data: Decimal = new Decimal(3.456);
 let data1: string = data.toFixed(0);
 console.info("test Decimal toFixed:" + data1); // 'test Decimal toFixed:3'
 data1 = data.toFixed(2); // data1：'3.46'
-data1 = data.toFixed(5) // data1：'3.45600'
+data1 = data.toFixed(5); // data1：'3.45600'
 ```
 
 ### toFixed
@@ -2180,7 +2180,7 @@ toNearest(n: Value): Decimal
 
 | 类型    | 说明                                        |
 | ------- | ------------------------------------------- |
-| Decimal | 返回一个Decimal对象，为最接近原值的指定值的倍数值。 |
+| [Decimal](#decimal) | 返回一个Decimal对象，为最接近原值的指定值的倍数值。 |
 
 **错误码：**
 
@@ -3832,7 +3832,7 @@ static atan2(y: Value, x: Value): Decimal
 
 | 类型                | 说明                                                       |
 | ------------------- | ---------------------------------------------------------- |
-| [Decimal](#decimal) | 返回-pi 到 pi 范围内的"y/x"反正切值对应的Decimal对象实例。 |
+| [Decimal](#decimal) | 返回-π到π范围内的"y/x"反正切值对应的Decimal对象实例。 |
 
 **错误码**：
 
@@ -4033,7 +4033,7 @@ let data: Decimal = Decimal.random(20);
 
 static sign(n: Value): number
 
-根据参数的值进行判断返回对应的值：当n>0返回1，当n<0返回-1，当n==0返回0，当n==-0返回-0，否则返回NaN。
+根据参数的值进行判断返回对应的值：当n>0返回1，当n<0返回-1，当n==0返回0，否则返回NaN。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 

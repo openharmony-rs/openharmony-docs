@@ -714,7 +714,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 stopVibrationSync(): void
 
-Stops any form of motor vibration.
+Stops any form of vibration.
 
 **Required permissions**: ohos.permission.VIBRATE
 
@@ -739,7 +739,7 @@ For details about the error codes, see [Vibrator Error Codes](errorcode-vibrator
 
    // Use try catch to capture possible exceptions.
    try {
-     // Stop any form of motor vibration.
+     // Stop any form of vibration.
      vibrator.stopVibrationSync()
      console.info('Succeed in stopping vibration');
    } catch (error) {

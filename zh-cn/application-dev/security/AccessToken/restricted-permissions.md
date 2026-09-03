@@ -13,7 +13,7 @@
 
 以下权限的开放范围为普通应用，但需要通过[访问控制列表（ACL）](app-permission-mgmt-overview.md#权限机制中的基本概念)的方式跨级别申请。
 
-normal等级的应用需要将自身的APL等级声明为system_basic及以上，在开发应用安装包时，需要修改应用的HarmonyAppProvision配置文件即SDK目录下的“`Toolchains / _{Version} _/ lib / UnsignedReleasedProfileTemplate.json`”文件，并重新进行应用签名。
+normal等级的应用需要将自身的APL等级声明为system_basic及以上，在开发应用安装包时，需要修改应用的HarmonyAppProvision配置文件即SDK目录下的“`Toolchains / _{Version} _/ lib / UnsgnedReleasedProfileTemplate.json`”文件，并重新进行应用签名。
 
 **修改方式：**
 
@@ -210,7 +210,12 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 > **说明：**
 >
-> 在API 12及以上版本，该权限等级变更为normal，应用可直接[声明使用](declare-permissions.md)；若需兼容API12之前版本，仍需按[受限权限申请方式](declare-permissions-in-acl.md)使用该权限。
+> 在API版本12，该权限等级变更为normal。
+> - 如果应用仅在本地调试：
+>   - 适配API版本12之前的版本，仍需按[受限权限申请方式](declare-permissions-in-acl.md)使用该权限。
+>   - 仅适配API版本12及之后的版本，可直接[声明使用](declare-permissions.md)。
+> - 如果应用需要上架应用市场：
+>   仍需按[受限权限申请方式](declare-permissions-in-acl.md)使用该权限。
 
 <!--RP18--><!--RP18End-->
 
@@ -356,7 +361,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 允许系统JS引擎申请带MAP_FORT标识的匿名可执行内存。
 
-应用申请此权限后，系统引擎可申请带MAP_FORT的匿名可执行内存，做即时编译，提高与形式执行效率。
+应用申请此权限后，系统引擎可申请带MAP_FORT的匿名可执行内存，做即时编译，提高运行时执行效率。
 
 <!--RP13--><!--RP13End-->
 
@@ -564,7 +569,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **起始版本**：13
 
-**变更信息**：API 13，该权限仅面向MDM应用开放；从API 14开始，开放范围从MDM应用变为更为企业普通应用；从API 16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放。
+**变更信息**：API 13，该权限仅面向MDM应用开放；从API 14开始，开放范围从MDM应用变更为企业普通应用；从API 16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放。
 
 ## ohos.permission.kernel.DISABLE_GOTPLT_RO_PROTECTION
 
@@ -809,20 +814,6 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **起始版本**: 20
 
-<!--Del-->
-## ohos.permission.atomicService.MANAGE_STORAGE
-
-允许原子化服务申请差异化的存储空间大小。
-
-**权限级别**：system_basic
-
-**授权方式**: 系统授权（system_grant）
-
-**支持设备**: Phone | PC/2in1 | Tablet
-
-**起始版本**: 20
-<!--DelEnd-->
-
 ## ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM
 
 允许应用申请特殊类型长时任务，如在手机上申请计算任务类型的长时任务。
@@ -894,6 +885,116 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 **起始版本**：9
 
 **变更信息**：在API 9-19，该权限面向系统应用开放；从API 20开始，面向普通应用开放。
+
+## ohos.permission.vehicle.CAR_CONTROL
+
+允许应用通过车机查询、设置、订阅对手件状态信息。
+
+<!--RP102--><!--RP102End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.STEERINGWHEEL_INFO
+
+允许应用订阅、获取方向盘对手件状态信息。
+
+申请此权限前，需要先申请ohos.permission.vehicle.CAR_CONTROL。
+
+<!--RP102--><!--RP102End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.INTERIOR_LIGHT_INFO
+
+允许应用订阅、获取车内灯光对手件状态信息。
+
+申请此权限前，需要先申请ohos.permission.vehicle.CAR_CONTROL。
+
+<!--RP102--><!--RP102End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_INTERIOR_LIGHT
+
+允许应用设置车内灯光对手件状态。
+
+申请此权限前，需要先申请ohos.permission.vehicle.CAR_CONTROL。
+
+<!--RP102--><!--RP102End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.DRIVE_INFORMATION_INFO
+
+允许应用订阅、获取行车信息模块对手件状态信息。
+
+申请此权限前，需要先申请ohos.permission.vehicle.CAR_CONTROL。
+
+<!--RP102--><!--RP102End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.ACCELERATOR_PEDAL_INFO
+
+允许应用订阅、获取加速踏板对手件状态信息。
+
+申请此权限前，需要先申请ohos.permission.vehicle.CAR_CONTROL。
+
+<!--RP102--><!--RP102End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.BRAKE_PEDAL_INFO
+
+允许应用订阅、获取制动踏板对手件状态信息。
+
+申请此权限前，需要先申请ohos.permission.vehicle.CAR_CONTROL。
+
+<!--RP102--><!--RP102End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
 
 ## ohos.permission.SET_SYSTEMSHARE_APPLAUNCHTRUSTLIST
 
@@ -1103,7 +1204,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 ## ohos.permission.SET_WINDOW_ALPHA
 
-允许应用设置主窗容器透明。
+允许应用设置主窗口容器透明。
 
 获取该权限后，应用可以设置主窗口容器背景色。
 
@@ -1119,7 +1220,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 ## ohos.permission.MANAGE_CALL_FOR_DEVICES
 
-允许应用管理通话状态。如获取来电号码、接听、拒接、挂断等.
+允许应用管理通话状态。如获取来电号码、接听、拒接、挂断等。
 
 <!--RP64--><!--RP64End-->
 
@@ -1306,7 +1407,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 **起始版本**：26.0.0
 
 ## ohos.permission.MANAGE_SKILL
-    
+
 允许应用使用skill的能力。
 
 获取该权限后，应用可以：
@@ -1343,7 +1444,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 允许应用访问游戏伴随服务。
 
-获取该权限后，应用可使用游戏伴随服务提供的接口，比如获取正在运行的游戏应用截图、通过麦克风获取用户语音数据等。
+获取该权限后，应用可使用游戏伴随服务提供的接口，比如获取正在运行的游戏应用截图、获取游戏应用前后台状态等。
 
 <!--RP93--><!--RP93End-->
 
@@ -1496,3 +1597,59 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 **支持设备**：Phone | Wearable | TV | PC/2in1 | Tablet | Car
 
 **起始版本**：26.0.0
+
+## ohos.permission.DEFAULT_WEB_BROWSER
+
+允许应用被设置为用户的默认浏览器。
+
+<!--RP103--><!--RP103End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | Wearable | TV | PC/2in1 | Tablet | Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.MMA_ENERGYREFILL
+
+允许车上应用获取当前车辆的补能状态。
+
+<!--RP104--><!--RP104End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.MMA_WEATHER
+
+允许车上应用获取车辆所处环境的实时天气。
+
+<!--RP105--><!--RP105End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.MMA_SPATIALACTION
+
+允许车内后排屏上应用调用空间手势接口，完成乘客与屏幕隔空交互。
+
+<!--RP106--><!--RP106End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.1.0

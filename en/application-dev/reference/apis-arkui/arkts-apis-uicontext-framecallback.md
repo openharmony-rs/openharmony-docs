@@ -1,12 +1,14 @@
 # Class (FrameCallback)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=6b08011c092d34059e19744a8f7cabfbde4edcb7 translatedAt=2026-08-05T03:10:13.383Z pushedAt=2026-08-05T06:43:04.568Z -->
 
-Implements the API for setting the task that needs to be executed during the next frame rendering.
+Defines a frame callback task that can be executed during the rendering phase of the next frame or in the idle phase after the frame rendering task is completed.
 
 > **NOTE**
 >
@@ -14,13 +16,19 @@ Implements the API for setting the task that needs to be executed during the nex
 >
 > - The initial APIs of this class are supported since API version 12.
 >
-> - The following APIs must be used in conjunction with [postFrameCallback](arkts-apis-uicontext-uicontext.md#postframecallback12) and [postDelayedFrameCallback](arkts-apis-uicontext-uicontext.md#postdelayedframecallback12) from [UIContext](arkts-apis-uicontext-uicontext.md). Extend this class and override either the [onFrame](#onframe12) or [onIdle](#onidle12) method to implement specific service logic.
+> - This API can be used only in the stage model.
+>
+> - The following APIs must be used in conjunction with [postFrameCallback](arkts-apis-uicontext-uicontext.md#postframecallback12) and [postDelayedFrameCallback](arkts-apis-uicontext-uicontext.md#postdelayedframecallback12) in [UIContext](arkts-apis-uicontext-uicontext.md). You need to inherit this class and override the [onFrame](#onframe12) or [onIdle](#onidle12) method to implement specific service logic.
 
 ## onFrame<sup>12+</sup>
 
 onFrame(frameTimeInNano: number): void
 
 Called when the next frame is rendered.
+
+After inheriting the FrameCallback class and overriding this method, it can be used together with [postFrameCallback](arkts-apis-uicontext-uicontext.md#postframecallback12) or [postDelayedFrameCallback](arkts-apis-uicontext-uicontext.md#postdelayedframecallback12) in [UIContext](arkts-apis-uicontext-uicontext.md).
+
+**Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -30,7 +38,7 @@ Called when the next frame is rendered.
 
 | Name | Type                                                | Mandatory| Description                                                   |
 | ------- | ---------------------------------------------------- | ---- | ------------------------------------------------------- |
-| frameTimeInNano | number | Yes  | Time when the rendering of the next frame starts, in nanoseconds.<br>Value range: [0, +∞)|
+| frameTimeInNano | number | Yes | Time at which the next frame rendering starts, in nanoseconds. This parameter is passed by the system during callback and does not need to be manually passed in.<br>Value range: [0, +∞) |
 
 **Example**
 
@@ -45,8 +53,8 @@ class MyFrameCallback extends FrameCallback {
     this.tag = tag;
   }
 
-  onFrame(frameTimeNanos: number) {
-    console.info('MyFrameCallback ' + this.tag + ' ' + frameTimeNanos.toString());
+  onFrame(frameTimeInNano: number) {
+    console.info('MyFrameCallback ' + this.tag + ' ' + frameTimeInNano.toString());
   }
 }
 
@@ -58,11 +66,11 @@ struct Index {
       Column() {
         Button('Invoke postFrameCallback')
           .onClick(() => {
-            this.getUIContext().postFrameCallback(new MyFrameCallback("normTask"));
+            this.getUIContext().postFrameCallback(new MyFrameCallback('normTask'));
           })
         Button('Invoke postDelayedFrameCallback')
           .onClick(() => {
-            this.getUIContext().postDelayedFrameCallback(new MyFrameCallback("delayTask"), 5);
+            this.getUIContext().postDelayedFrameCallback(new MyFrameCallback('delayTask'), 5);
           })
       }
       .width('100%')
@@ -76,7 +84,11 @@ struct Index {
 
 onIdle(timeLeftInNano: number): void
 
-Called after the rendering of the subsequent frame has finished and there is more than 1 millisecond left before the next VSync signal. If the time left is not more than 1 millisecond, the execution of this API will be deferred to a later frame.
+After the next frame rendering task is completed, if the remaining time from the current moment to the next VSync signal is greater than 1 ms, this callback is executed. If the remaining time is less than or equal to 1 ms, the callback is deferred to a subsequent frame and executed when the remaining time from the current moment to the next VSync signal is greater than 1 ms. If no next frame has been requested, the system automatically requests one.
+
+After inheriting the FrameCallback class and overriding this method, it can be used together with [postFrameCallback](arkts-apis-uicontext-uicontext.md#postframecallback12) or [postDelayedFrameCallback](arkts-apis-uicontext-uicontext.md#postdelayedframecallback12) in [UIContext](arkts-apis-uicontext-uicontext.md).
+
+**Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -86,7 +98,7 @@ Called after the rendering of the subsequent frame has finished and there is mor
 
 | Name | Type                                                | Mandatory| Description                                                   |
 | ------- | ---------------------------------------------------- | ---- | ------------------------------------------------------- |
-| timeLeftInNano | number | Yes  | Remaining idle time for the current frame, in nanoseconds.<br>Value range: [0, +∞)|
+| timeLeftInNano | number | Yes | Remaining idle time of this frame, in nanoseconds. This value is passed in by the system during callback and does not need to be manually passed in.<br>Value range: [0, +∞) |
 
 **Example**
 
@@ -114,11 +126,11 @@ struct Index {
       Column() {
         Button('Invoke postFrameCallback')
           .onClick(() => {
-            this.getUIContext().postFrameCallback(new MyIdleCallback("normTask"));
+            this.getUIContext().postFrameCallback(new MyIdleCallback('normTask'));
           })
         Button('Invoke postDelayedFrameCallback')
           .onClick(() => {
-            this.getUIContext().postDelayedFrameCallback(new MyIdleCallback("delayTask"), 5);
+            this.getUIContext().postDelayedFrameCallback(new MyIdleCallback('delayTask'), 5);
           })
       }
       .width('100%')

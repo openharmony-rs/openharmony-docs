@@ -12,7 +12,7 @@ This module provides essential functionalities for floating balls. It lets you c
 >
 > - The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - In versions earlier than OpenHarmony 7.0.0, the floating ball feature is supported only on tablets in non-[desktop](../../windowmanager/freeform-window-overview.md#desktop) mode and on phones. Since OpenHarmony 7.0.0, the floating ball feature is supported only on phones, PCs/2-in-1 devices, and tablets.
+> - In versions earlier than OpenHarmony 7.0.0, the floating ball feature is supported only on tablets in non-[desktop mode](../../windowmanager/freeform-window-overview.md#desktop-mode) and on phones. Since OpenHarmony 7.0.0, the floating ball feature is supported only on phones, PCs/2-in-1 devices, and tablets.
 >
 > - For the system capability SystemCapability.Window.SessionManager, use [canIUse()](../common/js-apis-syscap.md#caniuse) to check whether the device supports this system capability and the corresponding APIs.
 
@@ -64,7 +64,7 @@ Creates a floating ball controller. This API uses a promise to return the result
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: In versions earlier than OpenHarmony 7.0.0, this API can be called properly on tablets in non-[desktop](../../windowmanager/freeform-window-overview.md#desktop) mode and phones. If it is called on other devices and tables in desktop mode, error code 801 is returned. Since OpenHarmony 7.0.0, this API can be properly called on phones, PCs/2-in-1 devices, and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: In versions earlier than OpenHarmony 7.0.0, this API can be called properly on tablets in non-[desktop mode](../../windowmanager/freeform-window-overview.md#desktop-mode) and phones. If it is called on other devices and tablets in desktop mode, error code 801 is returned. Since OpenHarmony 7.0.0, this API can be properly called on phones, PCs/2-in-1 devices, and tablets. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -559,9 +559,9 @@ try {
 setFloatingBallVisibilityInApp(isVisible: boolean): Promise&lt;void&gt;
 
 Sets whether the floating ball is visible in the application. This API uses a promise to return the result.
-- When the application is in the multitasking screen (the [lifecycle state](../../windowmanager/window-lifecycle.md#lifecycle-state-of-the-application-main-window) is **PAUSED**), the floating ball is invisible.
+- When the application is in the multitasking screen (the [lifecycle state](../../windowmanager/window-lifecycle.md#lifecycle-states-of-an-apps-main-window) is **PAUSED**), the floating ball is invisible.
 - By default (when this API is not called) or when this API is called with the value **true** passed in, the floating ball is visible except on the recent tasks screen.
-- When this API is called with the value **false** passed in, the floating ball is invisible when the application is in the foreground (the [lifecycle state](../../windowmanager/window-lifecycle.md#lifecycle-state-of-the-application-main-window) is **SHOWN** or **RESUMED**) and is visible when the application is in the background (the [lifecycle state](../../windowmanager/window-lifecycle.md#lifecycle-state-of-the-application-main-window) is **HIDDEN**).
+- When this API is called with the value **false** passed in, the floating ball is invisible when the application is in the foreground (the [lifecycle state](../../windowmanager/window-lifecycle.md#lifecycle-states-of-an-apps-main-window) is **SHOWN** or **RESUMED**) and is visible when the application is in the background (the [lifecycle state](../../windowmanager/window-lifecycle.md#lifecycle-states-of-an-apps-main-window) is **HIDDEN**).
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -706,7 +706,7 @@ Describes the parameters for starting and updating the floating ball.
 | template | [FloatingBallTemplate](#floatingballtemplate) | No| No| Floating ball template. Different templates have different requirements on other parameters. For details, see the enumeration description of **FloatingBallTemplate**.|
 | title | string | No| No| Title of the floating ball. It cannot be an empty string and cannot exceed 64 bytes. If an empty string or a string longer than 64 bytes is passed, error code [1300019](errorcode-window.md#1300019-floating-ball-parameter-verification-error) is returned.|
 | content | string | No| Yes| Content of the floating ball. It cannot exceed 64 bytes. The default value is an empty string, and no content is displayed on the floating ball. If the value exceeds 64 bytes, error code [1300019](errorcode-window.md#1300019-floating-ball-parameter-verification-error) is returned.|
-| backgroundColor | string | No| Yes| Background color of the floating ball, in hexadecimal format without the alpha channel (for example, **'#008EF5'** or **'#FF008EF5'**). If this parameter is not specified, the default background color of the system (light or dark mode) is used. If the format is incorrect, error code [1300019](errorcode-window.md#1300019-floating-ball-parameter-verification-error) is returned. If this parameter is not specified, the default background color of the system (light or dark mode) is used.|
+| backgroundColor | string | No| Yes| Background color of the floating ball, in hexadecimal format without transparency (for example, **'#008EF5'** or **'#FF008EF5'**). If the format is incorrect, error code [1300019](errorcode-window.md#1300019-floating-ball-parameter-verification-error) is returned. If this parameter is not specified, the default background color of the system (light or dark mode) is used.|
 | titleColor | string | No| Yes| Title text color of the floating ball, in hexadecimal format without the alpha channel (for example, **'#008EF5'** or **'#FF008EF5'**). If this parameter is not specified, the color is automatically filled based on the background color. If the background color is light, the text color is filled with black (**'#E5000000'**). If the background color is dark, the text color is filled with white (**'#E5FFFFFF'**). When setting this attribute, you must also set **backgroundColor**. Otherwise, error code [1300019](errorcode-window.md#1300019-floating-ball-parameter-verification-error) will be returned.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 | contentColor | string | No| Yes| Content text color of the floating ball, in hexadecimal format without the alpha channel (for example, **'#008EF5'** or **'#FF008EF5'**). If this parameter is not specified, the color is automatically filled based on the background color. If the background color is light, the text color is filled with black (**'#99000000'**). If the background color is dark, the text color is filled with white (**'#99FFFFFF'**). When setting this attribute, you must also set **backgroundColor**. Otherwise, error code [1300019](errorcode-window.md#1300019-floating-ball-parameter-verification-error) will be returned.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 | icon | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | No| Yes| Icon of the floating ball. The total number of icon pixel bytes cannot exceed 192 KB (which is obtained through [getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)). If the total number exceeds 192 KB, error code [1300019](errorcode-window.md#1300019-floating-ball-parameter-verification-error) is returned. The recommended size is 128 px * 128 px. Actual display may vary based on the device capability and floating ball UI style.|
@@ -760,5 +760,3 @@ Enumerates the animation types used when the floating ball text is updated.
 |------------|------------|------------|
 | ANIMATION_NONE | 0 | No animation.|
 | ANIMATION_OPACITY | 1 | Fade-in and fade-out animation.|
-
-<!--no_check-->

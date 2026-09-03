@@ -1024,7 +1024,7 @@ function updateUser(id: number, request: UpdateUserRequest): void {
 
 ## 泛型的高级边界
 
-泛型约束通过extends限制类型范围，支持嵌套和递归约束。
+泛型约束通过extends限制类型范围，支持嵌套和递归约束。ArkTS的泛型约束行为与TypeScript基本一致，支持`extends`约束、多参数约束和约束类型参数引用其他类型参数等用法。
 
 ### 条件类型、映射类型与infer
 
@@ -1229,7 +1229,7 @@ console.info(`${typeofConfig.timeout.toString()}`);
 <!-- @[ts_indexed_access](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Generics.ts) -->
 
 ``` TypeScript
-// 索引访问类型：通过键名获取属性类型
+// 变型标注：协变out、逆变in、不变in out
 type IndexedPerson = { name: string; age: number; alive: boolean };
 type IndexedName = IndexedPerson['name'];   // string
 type IndexedAge = IndexedPerson['age'];     // number
@@ -1264,7 +1264,7 @@ console.info(`${iaPersonAlive.toString()}`);
 <!-- @[ts_conditional_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Generics.ts) -->
 
 ``` TypeScript
-// 条件类型：根据类型关系选择不同结果
+// 变型标注：协变out、逆变in、不变in out
 type IsString<T> = T extends string ? true : false;
 type CondA = IsString<string>;   // true
 type CondB = IsString<number>;   // false
@@ -1307,7 +1307,7 @@ console.info(`${condN}`);  // 42.00
 <!-- @[ts_mapped_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Generics.ts) -->
 
 ``` TypeScript
-// 映射类型：遍历属性键生成新类型
+// 变型标注：协变out、逆变in、不变in out
 type MappedReadonly<T> = { readonly [P in keyof T]: T[P] };
 type MappedPartial<T> = { [P in keyof T]?: T[P] };
 
@@ -1523,11 +1523,17 @@ console.info(`${smLowerStr}`); // world
 
 TypeScript的`ThisType<T>`用于标记`this`的上下文类型，常在对象字面量中指定`this`类型。ArkTS中不使用`ThisType`，通过类和方法明确`this`的指向。
 
+<!-- @[ts_thistype_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Generics.ts) -->
+
 ``` TypeScript
 // TypeScript对照写法（ArkTS不支持）
-interface MyContext { name: string; }
+interface MyContext {
+  name: string;
+}
 const obj: ThisType<MyContext> = {
-  greet() { return this.name; }
+  greet() {
+    return this.name;
+  }
 };
 ```
 
@@ -1822,7 +1828,7 @@ let utilitiesUser: UtilitiesUser = {
   email: 'alice@example.com'
 };
 
-// ArkTS中优先使用明确的属性访问，避免依赖keyof和索引访问类型。
+// ArkTS中优先使用明确的属性访问，避免依赖keyof和索引访问类型
 function renameUser(target: UtilitiesUser, newName: string): void {
   target.name = newName;
 }

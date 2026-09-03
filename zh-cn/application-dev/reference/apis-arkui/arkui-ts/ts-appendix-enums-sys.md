@@ -14,6 +14,8 @@
 
 ## IlluminatedType
 
+定义光照类型，用于指定组件是否可以被光源照亮以及被照亮的类型。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -93,6 +95,6 @@
 
 | 名称     | 值 | 说明              |
 | ------ | --- | --------------- |
-| EDGELIGHT_AUTO | 0 | 当设置[IMMERSIVE](../arkts-apis-uimaterial.md#immersivematerial)类型的材质，依据设备算力档位和系统设置中的沉浸光感配置自动生效流光效果。高算力设备在沉浸光感配置为强或均衡时生效，为弱时不生效；中算力设备在沉浸光感配置为强时生效，为均衡或弱时不生效；低算力设备不生效。 |
+| EDGELIGHT_AUTO | 0 | 当设置[IMMERSIVE](../arkts-apis-uimaterial.md#immersivematerial)类型的材质，组件类型不同，流光效果的自动生效规则不同。对于在组件接口处未做特殊说明的组件，依据设备算力档位和系统设置中的沉浸光感配置自动生效流光效果：高算力设备在沉浸光感配置为强或均衡时生效流光动画，为弱时不生效；中算力设备在沉浸光感配置为强时生效流光动画，为均衡或弱时不生效；低算力设备不生效。 |
 | EDGELIGHT_ENABLED | 1 | 系统材质下流光动画生效。|
 | EDGELIGHT_DISABLED | 2 | 系统材质下流光动画不生效。 |

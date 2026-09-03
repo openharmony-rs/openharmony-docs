@@ -146,9 +146,13 @@ addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 >    - 防火墙IP规则和域名规则冲突时（域名解析的IP与IP规则的IP相同，规则行为冲突）：
 >      - 若以域名方式访问，则域名规则优先级高于IP规则，不受域名解析出的IP的规则影响。
 >      - 若以IP方式访问，遵循以下原则：
->        - 域名规则放行，若以IP方式访问之前经历过域名解析过程，则IP规则拦截或者默认策略拦截是不生效的，最终以IP方式访问是放行的。
->        - 域名规则放行，若以IP方式访问之前未经历过域名解析过程，则IP规则拦截或者默认策略拦截是生效的，最终以IP方式访问是拦截的。
->        - 域名规则拦截，则IP规则放行或者默认策略放行是生效的，最终以IP方式访问是放行的。
+>        - 域名规则放行时，IP规则或默认策略的拦截均不生效，最终以IP方式访问放行。
+>        - 域名规则拦截时，IP规则或默认策略的放行仍生效，最终以IP方式访问放行。
+>       - 系统侧识别域名访问与IP访问的方式：
+>         - 若目标IP与系统网络层域名缓存表中的IP地址匹配，则认为应用侧以域名形式访问；
+>         - 若目标IP未匹配上系统网络层域名缓存表中的任意IP地址，则认为应用侧以IP形式访问；
+>         - 其中，系统网络层会主动查询防火墙配置的DNS信息，并缓存对应的IP地址，使域名放行规则生效。
+>        
 > 2. 规则类型补充说明：
 >    - 当addNetFirewallRule的入参rule.type配置为RULE_IP时：
 >      - 若rule.action为RULE_ALLOW，且rule.localIps、rule.remoteIps均不配置，规则生效为全IP段允许通行；
@@ -270,6 +274,15 @@ let domainRule: netFirewall.NetFirewallRule = {
     },{
       isWildcard: true,
       domain: "*.example.cn"
+    },{
+      isWildcard: true,
+      domain: "*w.example.cn"  // 从API版本26.0.0开始支持
+    },{
+      isWildcard: true,
+      domain: "www.example.*"  // 从API版本26.0.0开始支持
+    },{
+      isWildcard: true,
+      domain: "www.example.c*"  // 从API版本26.0.0开始支持
     }],
   userId: 100,
   interface:"wlan0" // 从API版本26.0.0开始支持
@@ -696,7 +709,14 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 | 名称         | 类型    | 只读 | 可选|说明                                      |
 | ------------ | --------|------|-----|------------------------------------- |
 | isWildcard   | boolean | 否  | 否|是否包含通配符。true表示包含，false表示不包含。                          |
-| domain       | string  | 否  |否 |当isWildcard为false时，需要确定的完整域， 例如"www.example.cn"。 |
+| domain       | string  | 否  |否 |当isWildcard为false时，需要确定的完整域， 例如"www.example.cn"；当isWildcard为true时，支持通配符规则，具体格式见下文说明。 |
+
+当isWildcard为true时，domain支持使用通配符"*"，"*"可出现在域名的首部、尾部或首尾同时出现，表示匹配任意长度（包括零）的任意字符。支持以下通配符格式：
+
+- `"*.xxx.xxx"`：前缀通配，匹配xxx.xxx及其所有子域名。例如"*.example.com"可匹配"example.com"、"www.example.com"、"a.b.example.com"。（从API版本21开始支持）
+- `"*xx.xxx.xxx"`：前缀通配，匹配以"xx.xxx.xxx"结尾的域名。例如"*a.example.com"可匹配"a.example.com"、"www.a.example.com"。（从API版本26.0.0开始支持）
+- `"xxx.xxx.xxx.*"`：后缀通配，匹配以"xxx.xxx.xxx."开头的域名。例如"www.example.*"可匹配"www.example.com"、"www.example.cn"。（从API版本26.0.0开始支持）
+- `"xxx.xxx.xxx.xx*"`：后缀通配，匹配以"xxx.xxx.xxx.xx"开头的域名。例如"www.example.co*"可匹配"www.example.com"、"www.example.com.cn"。（从API版本26.0.0开始支持）
 
 ## NetFirewallDnsParams
 

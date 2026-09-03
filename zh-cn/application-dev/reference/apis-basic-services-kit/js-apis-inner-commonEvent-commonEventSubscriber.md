@@ -1,4 +1,4 @@
-# commonEventSubscriber
+# CommonEventSubscriber
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
@@ -12,7 +12,7 @@
 
 ## CommonEventSubscriber
 
-表示公共事件的订阅者。CommonEventSubscriber提供了对有序公共事件的处理能力，包括获取和设置事件传递的Code和Data数据、查询当前公共事件是否为有序或粘性公共事件、中止或清理有序公共事件的中止状态、结束对当前有序公共事件的处理，以及获取订阅者的订阅信息等，适用于订阅者需要对接收到的公共事件进行数据处理和流程控制的场景。
+表示公共事件的订阅者。CommonEventSubscriber提供了对[有序公共事件](../../basic-services/common-event/common-event-glossary.md#ordered-common-event有序公共事件)的处理能力，包括获取和设置事件传递的Code和Data数据、查询当前公共事件是否为有序或[粘性公共事件](../../basic-services/common-event/common-event-glossary.md#sticky-common-event粘性公共事件)、中止或清理有序公共事件的中止状态、结束对当前有序公共事件的处理，以及获取订阅者的订阅信息等，适用于订阅者需要对接收到的公共事件进行数据处理和流程控制的场景。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -51,7 +51,7 @@ getCode(callback: AsyncCallback\<number>): void
 
 | 参数名   | 类型                   | 必填 | 说明               |
 | -------- | ---------------------- | ---- | ------------------ |
-| callback | AsyncCallback\<number\> | 是   | 回调函数。当获取有序公共事件传递的数据（number类型）成功时，err为undefined，data为获取到的数据；否则err为错误对象。 |
+| callback | AsyncCallback\<number\> | 是   | 回调函数。当获取有序公共事件传递的数据成功时，err为undefined，data为获取到的数据；否则err为错误对象。 |
 
 **错误码：**
 
@@ -89,7 +89,7 @@ getCode(): Promise\<number>
 
 | 类型             | 说明                 |
 | ---------------- | -------------------- |
-| Promise\<number> | Promise对象。返回有序公共事件传递的数据（number类型）。 |
+| Promise\<number> | Promise对象。返回有序公共事件传递的数据。 |
 
 **示例：**
 
@@ -143,7 +143,7 @@ setCode(code: number, callback: AsyncCallback\<void>): void
 | 参数名   | 类型                 | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | code     | number               | 是   | 有序公共事件传递的数据。   |
-| callback | AsyncCallback\<void> | 是   | 回调函数。当设置有序公共事件传递的数据（number类型）成功时，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。当设置有序公共事件传递的数据成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -260,7 +260,7 @@ getData(callback: AsyncCallback\<string>): void
 
 | 参数名   | 类型                   | 必填 | 说明                 |
 | -------- | ---------------------- | ---- | -------------------- |
-| callback | AsyncCallback\<string> | 是   | 回调函数。当获取有序公共事件传递的数据（string类型）成功时，err为undefined，data为获取到的数据；否则err为错误对象。 |
+| callback | AsyncCallback\<string> | 是   | 回调函数。当获取有序公共事件传递的数据成功时，err为undefined，data为获取到的数据；否则err为错误对象。 |
 
 **错误码：**
 
@@ -275,7 +275,7 @@ getData(callback: AsyncCallback\<string>): void
 <!--code_no_check-->
 
 ```ts
-// 获取有序公共事件传递的数据（string类型）回调
+// 获取有序公共事件传递的数据回调
 subscriber.getData((err: BusinessError, data: string) => {
   if (err) {
     console.error(`Failed to get data. Code is ${err.code}, message is ${err.message}`);
@@ -299,7 +299,7 @@ getData(): Promise\<string>
 
 | 类型             | 说明               |
 | ---------------- | ------------------ |
-| Promise\<string> | Promise对象。返回有序公共事件传递的数据（string类型）。 |
+| Promise\<string> | Promise对象。返回有序公共事件传递的数据。 |
 
 **示例：**
 
@@ -352,8 +352,8 @@ setData(data: string, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明                 |
 | -------- | -------------------- | ---- | -------------------- |
-| data     | string               | 是   | 有序公共事件传递的数据（string类型），长度不超过65536字符，若超过限制，接口设置失效。   |
-| callback | AsyncCallback\<void> | 是   | 回调函数。当设置有序公共事件传递的数据（string类型）成功时，err为undefined，否则为错误对象。 |
+| data     | string               | 是   | 有序公共事件传递的数据，长度不超过65536字符，若超过限制，接口设置失效。   |
+| callback | AsyncCallback\<void> | 是   | 回调函数。当设置有序公共事件传递的数据成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -626,7 +626,7 @@ isOrderedCommonEvent(): Promise\<boolean>
 
 | 类型              | 说明                             |
 | ----------------- | -------------------------------- |
-| Promise\<boolean> | Promise对象。返回true表示有序公共事件；返回false表示无序公共事件。 |
+| Promise\<boolean> | Promise对象。返回true表示有序公共事件；返回false表示[无序公共事件](../../basic-services/common-event/common-event-glossary.md#unordered-common-event无序公共事件)。 |
 
 **示例：**
 

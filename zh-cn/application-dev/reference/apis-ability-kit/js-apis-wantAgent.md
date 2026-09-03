@@ -9,7 +9,7 @@
 
 <!--deprecated_code_no_check-->
 
-WantAgent模块提供了创建WantAgent实例、获取实例的用户ID、获取want信息、比较WantAgent实例和获取bundle名称等能力。
+WantAgent模块提供了创建WantAgent实例、获取实例的用户ID、获取Want信息、比较WantAgent实例和获取Bundle名称等能力。
 
 > **说明：**
 > 
@@ -47,7 +47,7 @@ import { BusinessError } from '@ohos.base';
 // getWantAgent回调
 function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
     if (err.code) {
-        console.info('getWantAgent Callback err:' + JSON.stringify(err));
+        console.error('getWantAgent Callback err:' + JSON.stringify(err));
     } else { 
         console.info('getWantAgent Callback success');
     }
@@ -153,7 +153,7 @@ getBundleName(agent: WantAgent, callback: AsyncCallback\<string\>): void
 | 参数名     | 类型                    | 必填 | 说明                              |
 | -------- | ----------------------- | ---- | --------------------------------- |
 | agent    | WantAgent               | 是   | WantAgent对象。                     |
-| callback | AsyncCallback\<string\> | 是   | 获取WantAgent实例的包名的回调方法。 |
+| callback | AsyncCallback\<string\> | 是   | 获取WantAgent实例的Bundle名称的回调方法。 |
 
 **示例：**
 
@@ -811,7 +811,7 @@ wantAgent.getWantAgent({
 | UNKNOWN_TYPE      | 0 | 不识别的类型。            |
 | START_ABILITY     | 1 | 开启一个有页面的Ability。 |
 | START_ABILITIES   | 2 | 开启多个有页面的Ability。 |
-| START_SERVICE     | 3 | 开启一个无页面的ability。 |
+| START_SERVICE     | 3 | 开启一个无页面的Ability。 |
 | SEND_COMMON_EVENT | 4 | 发送一个公共事件。        |
 
 ## CompleteData 
@@ -822,9 +822,9 @@ wantAgent.getWantAgent({
 
 | 名称           | 类型                           | 只读 | 可选 | 说明                |
 | -------------- | ----------------------------- | ---- | ---- | ------------------ |
-| info           | WantAgent                       | 否   | 否   | 触发的wantAgent。       |
-| want           | Want                            | 否   | 否   | 存在的被触发的want。     |
-| finalCode      | number                          | 否   | 否   | 触发wantAgent的请求代码。|
+| info           | WantAgent                       | 否   | 否   | 触发的WantAgent。       |
+| want           | Want                            | 否   | 否   | 存在的被触发的Want。     |
+| finalCode      | number                          | 否   | 否   | 触发WantAgent的请求代码。|
 | finalData      | string                          | 否   | 否   | 公共事件收集的最终数据。  |
 | extraInfo      | { [key: string]: any }          | 否   | 是   | 额外数据。               |
 

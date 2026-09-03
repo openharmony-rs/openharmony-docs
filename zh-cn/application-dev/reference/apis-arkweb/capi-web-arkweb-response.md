@@ -18,5 +18,7 @@ ArkWeb_Response是用于构建自定义HTTP响应的结构体，定义了响应�
 
 **相关模块：** [Web](capi-web.md)
 
+**系统能力：** SystemCapability.Web.Webview.Core
+
 **所在头文件：** [arkweb_scheme_handler.h](capi-arkweb-scheme-handler-h.md)
 

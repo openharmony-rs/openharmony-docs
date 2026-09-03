@@ -895,6 +895,116 @@ Allows an application to add, remove, or change all calendar events.
 
 **Changelog**: This permission is available only to system applications in API versions 9 to 19. From API version 20, it's also available to normal applications.
 
+## ohos.permission.vehicle.CAR_CONTROL
+
+Allows an application to query, set, and subscribe to the mating part status information via the head unit.
+
+<!--RP102--><!--RP102End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.STEERINGWHEEL_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (steering wheel).
+
+You must request ohos.permission.vehicle.CAR_CONTROL before requesting this permission.
+
+<!--RP102--><!--RP102End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.INTERIOR_LIGHT_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (interior light).
+
+You must request ohos.permission.vehicle.CAR_CONTROL before requesting this permission.
+
+<!--RP102--><!--RP102End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.CONTROL_INTERIOR_LIGHT
+
+Allows an application to set the status of the mating part (interior light).
+
+You must request ohos.permission.vehicle.CAR_CONTROL before requesting this permission.
+
+<!--RP102--><!--RP102End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.DRIVE_INFORMATION_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (driving information module).
+
+You must request ohos.permission.vehicle.CAR_CONTROL before requesting this permission.
+
+<!--RP102--><!--RP102End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.ACCELERATOR_PEDAL_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (accelerator pedal).
+
+You must request ohos.permission.vehicle.CAR_CONTROL before requesting this permission.
+
+<!--RP102--><!--RP102End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.BRAKE_PEDAL_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (brake pedal).
+
+You must request ohos.permission.vehicle.CAR_CONTROL before requesting this permission.
+
+<!--RP102--><!--RP102End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
 ## ohos.permission.SET_SYSTEMSHARE_APPLAUNCHTRUSTLIST
 
 Allows an application to set the trustlist of target applications for system sharing.
@@ -1342,7 +1452,7 @@ Allows an application to install the PCIe driver.
 ## ohos.permission.ACCESS_GAME_BUDDY_SERVICE
 
 Allows an application to access the game buddy service. 
-With this permission, the application can utilize the APIs provided by the game buddy service, such as capturing screenshots of running games and capturing user voice data via the microphone.
+With this permission, the application can utilize the APIs provided by the game buddy service, such as capturing screenshots of running games and obtaining the foreground and background states of games.
 
 <!--RP93--><!--RP93End-->
 
@@ -1495,3 +1605,59 @@ Allows an application to generate, use, and delete secure element keys.
 **Supported devices**: phones | wearables | TVs | PCs/2-in-1 devices | tablets | cars
 
 **Since**: 26.0.0
+
+## ohos.permission.DEFAULT_WEB_BROWSER
+
+Allows an application to be set as the user's default browser.
+
+<!--RP103--><!--RP103End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | wearables | TVs | PCs/2-in-1 devices | tablets | cars
+
+**Since**: 26.1.0
+ 
+## ohos.permission.vehicle.MMA_ENERGYREFILL
+ 
+Allows an in-vehicle application to obtain the current vehicle's energy replenishment status.
+ 
+<!--RP104--><!--RP104End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: cars
+ 
+**Since**: 26.1.0
+ 
+## ohos.permission.vehicle.MMA_WEATHER
+ 
+Allows an in-vehicle application to obtain real-time weather information of the vehicle's surroundings.
+ 
+<!--RP105--><!--RP105End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: cars
+ 
+**Since**: 26.1.0
+ 
+## ohos.permission.vehicle.MMA_SPATIALACTION
+ 
+Allows an application on the rear display to call spatial gesture APIs to enable contactless interaction for passengers.
+ 
+<!--RP106--><!--RP106End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: cars
+ 
+**Since**: 26.1.0

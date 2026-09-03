@@ -14,7 +14,6 @@
 - 授予/撤销指定应用的权限，批量查询权限授权状态。
 - 订阅指定应用的指定权限的状态变化。
 - 基于窗口发起用户权限请求弹窗。
-- 对CLI命令进行权限弹窗预判、权限映射查询和授权结果生成。
 
 > **说明：**
 >
@@ -29,24 +28,15 @@
 - **[PermissionStatus](js-apis-abilityAccessCtrl.md#permissionstatus20)：** 权限状态枚举，用于表示当前权限状态。
 - **[PermissionStateChangeType](js-apis-abilityAccessCtrl.md#permissionstatechangetype18)：** 权限状态变化类型枚举，用于表示授权、取消授权等变化。
 - **[PermissionRequestToggleStatus](#permissionrequesttogglestatus12)：** 权限申请开关状态枚举，用于表示指定权限的弹窗开关状态。
-- **[PermissionDecisionStatus](#permissiondecisionstatus)：** CLI权限决策状态枚举，用于表示命令权限的判定结果。
 
 ### 核心接口类型
 
 - **[PermissionStatusInfo](#permissionstatusinfo)：** 权限状态信息对象，用于返回应用权限的授权状态、标志位和时间戳。
 - **[PermissionStateChangeInfo](js-apis-abilityAccessCtrl.md#permissionstatechangeinfo18)** 权限状态变化事件对象，用于返回变化类型、应用身份标识和权限名。
-- **[CliInfo](#cliinfo)：** CLI命令信息对象，用于描述命令名称和子命令名称。
-- **[PermissionDialogDetail](#permissiondialogdetail)：** 权限弹窗明细对象，用于描述单个CLI权限弹窗的状态和未满足权限。
-- **[PermissionDialogResult](#permissiondialogresult)：** 权限弹窗查询结果对象，用于返回命令对应的弹窗信息。
-- **[CliPermissionDetail](#clipermissiondetail)：** CLI权限明细对象，用于描述命令权限、决策状态和映射出的运行时权限。
-- **[CliCommandPermissionResult](#clicommandpermissionresult)：** CLI命令权限结果对象，用于返回单个命令依赖的权限信息。
-- **[CliPermissionsResult](#clipermissionsresult)：** CLI权限查询结果对象，用于返回命令所需权限的映射结果。
-- **[CliAuthInfo](#cliauthinfo)：** CLI授权信息对象，用于描述待生成授权结果的命令授权状态。
-- **[ToolAuthResult](#toolauthresult)：** 工具授权结果对象，用于返回生成后的授权结果。
 
 ### 核心类
 
-- **[AtManager](#atmanager)：** 程序访问控制管理类，提供跨应用权限授予、撤销、查询、监听和CLI权限管理等能力。
+- **[AtManager](#atmanager)：** 程序访问控制管理类，提供跨应用权限授予、撤销、查询、监听等能力。
 
 ![](figures/abilityAccessCtrl-sys.png)
 
@@ -106,41 +96,6 @@ atManager.on('permissionStateChange', tokenIDList, permissionList, callback);
 atManager.off('permissionStateChange', tokenIDList, permissionList, callback);
 ```
 
-场景3：处理CLI工具权限授权。
-
-场景说明：系统应用代理CLI工具执行命令时，可先调用[getCliPermissionRequestInfo](#getclipermissionrequestinfo)查询命令是否需要权限弹窗，再调用[getCliPermissions](#getclipermissions)查询命令依赖的CLI权限和运行时权限，最后调用[generateCliAuthResult](#generatecliauthresult)生成工具授权结果。
-
-典型使用流程如下：
-
-```ts
-import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
-
-let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let hostTokenID: number = 0; // 获取方式可参考AtManager章节的描述。
-let agentID: string = 'agent.demo';
-let cliInfoList: Array<abilityAccessCtrl.CliInfo> = [{
-  cliName: 'ohos-example',
-  subCliName: 'run'
-}];
-let authInfoList: Array<abilityAccessCtrl.CliAuthInfo> = [{
-  cliInfo: {
-    cliName: 'ohos-example',
-    subCliName: 'run'
-  },
-  permissionNames: ['ohos.permission.ACCESS_SYSTEM_SETTINGS' as Permissions],
-  authorizationResults: [true]
-}];
-
-// 1. 判断命令是否需要权限弹窗。
-await atManager.getCliPermissionRequestInfo(agentID, cliInfoList);
-
-// 2. 查询命令依赖的CLI权限和运行时权限。
-await atManager.getCliPermissions(hostTokenID, agentID, cliInfoList);
-
-// 3. 基于用户选择生成授权结果。
-await atManager.generateCliAuthResult(hostTokenID, agentID, authInfoList);
-```
-
 ## 导入模块
 
 ```ts
@@ -149,7 +104,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 
 ## AtManager
 
-管理访问控制模块的实例。该类作为本模块的核心管理类，提供跨应用权限授予、撤销、查询、状态监听和CLI权限管理等能力。
+管理访问控制模块的实例。该类作为本模块的核心管理类，提供跨应用权限授予、撤销、查询、状态监听等能力。
 
 AtManager接口调用依赖于tokenID，系统应用可通过[bundleManager.getBundleInfoSync](js-apis-bundleManager.md#bundlemanagergetbundleinfosync14)或[bundleManager.getBundleInfoForSelfSync](js-apis-bundleManager.md#bundlemanagergetbundleinfoforselfsync10)获取tokenID。
 
@@ -194,7 +149,7 @@ grantUserGrantedPermission(tokenID: number, permissionName: Permissions, permiss
 | 12100002 | The specified tokenID does not exist. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100006 | The application specified by the tokenID is not allowed to be granted with the specified permission. Either the application is a sandbox or the tokenID is from a remote device. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 
 **示例：**
 
@@ -246,7 +201,7 @@ grantUserGrantedPermission(tokenID: number, permissionName: Permissions, permiss
 | 12100002 | The specified tokenID does not exist. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100006 | The application specified by the tokenID is not allowed to be granted with the specified permission. Either the application is a sandbox or the tokenID is from a remote device. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 
 **示例：**
 
@@ -309,7 +264,7 @@ revokeUserGrantedPermission(tokenID: number, permissionName: Permissions, permis
 | 12100002 | The specified tokenID does not exist. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100006 | The application specified by the tokenID is not allowed to be revoked with the specified permission. Either the application is a sandbox or the tokenID is from a remote device. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 
 **示例：**
 
@@ -361,7 +316,7 @@ revokeUserGrantedPermission(tokenID: number, permissionName: Permissions, permis
 | 12100002 | The specified tokenID does not exist. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100006 | The application specified by the tokenID is not allowed to be revoked with the specified permission. Either the application is a sandbox or the tokenID is from a remote device. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 
 **示例：**
 
@@ -419,7 +374,7 @@ getPermissionFlags(tokenID: number, permissionName: Permissions): Promise&lt;num
 | 12100002 | The specified tokenID does not exist. |
 | 12100003 | The specified permission does not exist or is not declared in the module.json file. |
 | 12100006 | The operation is not allowed. Either the application is a sandbox or the tokenID is from a remote device. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 
 **示例：**
 
@@ -472,7 +427,8 @@ setPermissionRequestToggleStatus(permissionName: Permissions, status: Permission
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The permissionName exceeds 256 characters, the specified permission is not a user_grant permission, or the status value is invalid. |
 | 12100003 | The specified permission does not exist. |
-| 12100007 | The service is abnormal. |
+| 12100006 | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus).<br>适用版本：26.1.0+ |
+| 12100007 | Service exception. |
 | 12100009 | Common inner error. A database error occurs. |
 
 **示例：**
@@ -486,6 +442,67 @@ let permission: Permissions = 'ohos.permission.CAMERA';
 
 atManager.setPermissionRequestToggleStatus(permission, abilityAccessCtrl.PermissionRequestToggleStatus.CLOSED).then(() => {
   console.info('setPermissionRequestToggleStatus: set closed successful');
+}).catch((err: BusinessError): void => {
+  console.error(`setPermissionRequestToggleStatus fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### setPermissionRequestToggleStatus
+
+setPermissionRequestToggleStatus(permissionName: Permissions, status: PermissionRequestToggleStatus, subProfileId: number): Promise&lt;void&gt;
+
+设置指定子身份资料下指定权限的弹窗开关状态。适用于系统应用需要对某一子身份资料的用户授权权限单独控制授权弹窗的场景。调用成功后，该子身份资料请求此权限时将遵循指定状态：`CLOSED`时不弹出权限弹窗，`OPEN`时正常弹出权限弹窗。使用Promise异步回调。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.DISABLE_PERMISSION_DIALOG
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | 是 | 待设置弹窗开关状态的权限名称。仅支持`user_grant`类型权限，权限名长度不得超过256个字符；不满足要求时返回错误码12100001。 |
+| status | [PermissionRequestToggleStatus](#permissionrequesttogglestatus12) | 是 | 指定权限的弹窗开关状态。`CLOSED`表示关闭授权弹窗，应用请求该权限时不会弹窗；`OPEN`表示开启授权弹窗，应用请求该权限时正常弹窗。 |
+| subProfileId | number | 是 | 待设置的子身份资料标识符。可通过[OsAccountSubProfile](../apis-basic-services-kit/js-apis-osAccount-sys.md#osaccountsubprofile)对象的`id`字段获取。取值必须为大于0的整数，且必须属于当前用户；传入不存在的标识符时返回错误码12100001。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 201 | Permission denied. Interface caller does not have permission specified below. |
+| 202 | Not System App. Interface caller is not a system app. |
+| 801 | Capability not supported. |
+| 12100001 | Invalid parameter. The permissionName exceeds 256 characters, the specified permission is not a user_grant permission, the status value is invalid, or the specified subProfileId does not exist for the current user. |
+| 12100003 | The specified permission does not exist. |
+| 12100006 | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus12). |
+| 12100007 | Service exception. |
+| 12100009 | Common inner error. A database error occurs. |
+
+**示例：**
+
+```ts
+import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let permission: Permissions = 'ohos.permission.CAMERA';
+let subProfileId: number = 100001; // 请替换为当前用户子身份资料的有效id。
+atManager.setPermissionRequestToggleStatus(permission, abilityAccessCtrl.PermissionRequestToggleStatus.CLOSED, subProfileId).then(() => {
+  console.info('setPermissionRequestToggleStatus success');
 }).catch((err: BusinessError): void => {
   console.error(`setPermissionRequestToggleStatus fail, code: ${err.code}, message: ${err.message}`);
 });
@@ -526,7 +543,8 @@ getPermissionRequestToggleStatus(permissionName: Permissions): Promise&lt;Permis
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The permissionName exceeds 256 characters, or the specified permission is not a user_grant permission. |
 | 12100003 | The specified permission does not exist. |
-| 12100007 | The service is abnormal. |
+| 12100004 | This API must be used together with [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus12).<br>适用版本：26.1.0+ |
+| 12100007 | Service exception. |
 
 **示例：**
 
@@ -543,6 +561,65 @@ atManager.getPermissionRequestToggleStatus(permission).then((res: abilityAccessC
   } else {
     console.info('getPermissionRequestToggleStatus: The toggle status is open');
   }
+}).catch((err: BusinessError): void => {
+  console.error(`getPermissionRequestToggleStatus fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### getPermissionRequestToggleStatus
+
+getPermissionRequestToggleStatus(permissionName: Permissions, subProfileId: number): Promise&lt;PermissionRequestToggleStatus&gt;
+
+获取指定子身份资料下指定权限的弹窗开关状态。适用于系统应用在权限管理界面展示或核验某一子身份资料的权限弹窗配置。调用成功后，Promise返回该权限当前的弹窗开关状态，可据此判断应用请求该权限时是否会弹出授权窗口。使用Promise异步回调。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | 是 | 待查询弹窗开关状态的权限名称。仅支持`user_grant`类型权限，权限名长度不得超过256个字符；不满足要求时返回错误码12100001。 |
+| subProfileId | number | 是 | 待查询的子身份资料标识符。可通过[OsAccountSubProfile](../apis-basic-services-kit/js-apis-osAccount-sys.md#osaccountsubprofile)对象的`id`字段获取。取值必须为大于0的整数，且必须属于当前用户；传入不存在的标识符时返回错误码12100001。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;[PermissionRequestToggleStatus](#permissionrequesttogglestatus12)&gt; | Promise对象，返回指定子身份资料下该权限的弹窗开关状态。返回`CLOSED`表示应用请求该权限时不会弹窗；返回`OPEN`表示应用请求该权限时正常弹窗。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 201 | Permission denied. Interface caller does not have permission specified below. |
+| 202 | Not System App. Interface caller is not a system app. |
+| 801 | Capability not supported. |
+| 12100001 | Invalid parameter. The permissionName exceeds 256 characters, the specified permission is not a user_grant permission, or the specified subProfileId does not exist for the current user. |
+| 12100003 | The specified permission does not exist. |
+| 12100007 | Service exception. |
+| 12100009 | Common inner error. A database error occurs. |
+
+**示例：**
+
+```ts
+import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let permission: Permissions = 'ohos.permission.CAMERA';
+let subProfileId: number = 100001; // 请替换为当前用户子身份资料的有效id。
+atManager.getPermissionRequestToggleStatus(permission, subProfileId).then((status: abilityAccessCtrl.PermissionRequestToggleStatus) => {
+  console.info(`getPermissionRequestToggleStatus success, status: ${status}`);
 }).catch((err: BusinessError): void => {
   console.error(`getPermissionRequestToggleStatus fail, code: ${err.code}, message: ${err.message}`);
 });
@@ -623,7 +700,7 @@ getPermissionsStatus(tokenID: number, permissionList: Array&lt;Permissions&gt;):
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The tokenID is 0 or the permissionList is empty or exceeds the size limit. |
 | 12100002 | The specified tokenID does not exist. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 
 **示例：**
 
@@ -678,7 +755,7 @@ on(type: 'permissionStateChange', tokenIDList: Array&lt;number&gt;, permissionLi
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. Possible causes: 1. The tokenIDList or permissionList exceeds the size limit; 2. The tokenIDs or permissionNames in the list are all invalid. |
 | 12100005 | The registration time has exceeded the limit. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 | 12100008 | Out of memory. |
 
 **示例：**
@@ -738,7 +815,7 @@ off(type: 'permissionStateChange', tokenIDList: Array&lt;number&gt;, permissionL
 | 202 | Not System App. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The tokenIDList or permissionList is not in the listening list. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 
 **示例：**
 
@@ -789,8 +866,9 @@ requestPermissionOnApplicationSetting(tokenID: number): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 202 | Not System App. Interface caller is not a system app. |
+| 12100001 | Invalid parameter. The tokenID is 0. |
 | 12100002 | The specified tokenID does not exist. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 
 **示例：**
 
@@ -845,7 +923,7 @@ grantPermission(tokenID: number, permissionName: Permissions, permissionFlags: n
 | 12100002 | The specified tokenID does not exist. |
 | 12100003 | The specified permission does not exist. |
 | 12100006 | The application specified by the tokenID is not allowed to be granted with the specified permission. Either the application is a sandbox or the tokenID is from a remote device. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 | 12100014 | Unexpected permission. The specified permission is not a user_grant or manual_settings permission. |
 
 **示例：**
@@ -905,7 +983,7 @@ revokePermission(tokenID: number, permissionName: Permissions, permissionFlags: 
 | 12100002 | The specified tokenID does not exist. |
 | 12100003 | The specified permission does not exist. |
 | 12100006 | The specified permission is not allowed to be revoked from the application specified by the tokenID. Either the application is a sandbox or the tokenID is from a remote device. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 | 12100014 | Unexpected permission. The specified permission is not a user_grant or manual_settings permission. |
 
 **示例：**
@@ -1035,7 +1113,7 @@ queryStatusByPermission(permissionList: Array&lt;Permissions&gt;): Promise&lt;Ar
 | 202 | Not system application. Interface caller is not a system application. |
 | 12100001 | Invalid parameter. The permissionList is empty or exceeds the size limit. |
 | 12100003 | The specified permission does not exist. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 | 12100015 | The queried data exceeds the upper limit. |
 
 **示例：**
@@ -1091,7 +1169,7 @@ queryStatusByTokenID(tokenIDList: Array&lt;number&gt;): Promise&lt;Array&lt;Perm
 | 202 | Not system application. Interface caller is not a system application. |
 | 12100001 | Invalid parameter. The tokenIDList is empty or exceeds the size limit. |
 | 12100002 | The specified tokenID does not exist. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 | 12100015 | The queried data exceeds the upper limit. |
 
 **示例：**
@@ -1109,353 +1187,6 @@ atManager.queryStatusByTokenID(tokenIDList).then((data: Array<abilityAccessCtrl.
   console.error(`queryStatusByTokenID fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
-### getCliPermissionRequestInfo
-
-getCliPermissionRequestInfo(agentID: string, cliInfoList: Array&lt;CliInfo&gt;): Promise&lt;PermissionDialogResult&gt;
-
-查询CLI（Command Line Interface，命令行界面）命令是否需要权限弹窗，调用成功后，返回每条命令对应的权限弹窗判定结果。使用Promise异步回调。
-
-**起始版本：** 26.0.0
-
-**需要权限：** ohos.permission.QUERY_TOOL_PERMISSIONS
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Security.AccessToken
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| agentID | string | 是 | 智能体标识，用于标识发起CLI相关操作的智能体，长度不能超过48个字符。超出限制时返回错误码12100001。 |
-| cliInfoList | Array&lt;[CliInfo](#cliinfo)&gt; | 是 | 待查询的CLI信息列表。数组长度必须在1到99之间，每项包含一条命令及其子命令信息；建议按实际即将执行的命令集合传入，避免无关命令扩大判定范围。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| Promise&lt;[PermissionDialogResult](#permissiondialogresult)&gt; | Promise对象，返回每条CLI命令的权限弹窗判定结果，包含是否需要弹窗、未满足的权限列表及决策状态等信息。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 201 | Permission denied. Interface caller does not have permission "ohos.permission.QUERY_TOOL_PERMISSIONS". |
-| 202 | Not system application. Interface caller is not a system application. |
-| 12100001 | Invalid parameter. The agentID exceeds 48 characters, cliInfoList is empty or contains more than 99 items, the cliName of an item in cliInfoList is empty or exceeds 256 characters, the subCliName of an item in cliInfoList exceeds 256 characters, or the CLI command does not exist. |
-| 12100007 | The service is abnormal. |
-| 12100009 | Common internal error. The account is not logged in, network is not connected or an internal error occurs when querying CLI permissions or generating auth results. |
-
-**示例：**
-
-```ts
-import { abilityAccessCtrl } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let agentID: string = 'agent.demo';
-let cliInfoList: Array<abilityAccessCtrl.CliInfo> = [{
-  cliName: 'ohos-example',
-  subCliName: 'run'
-}];
-atManager.getCliPermissionRequestInfo(agentID, cliInfoList).then((data: abilityAccessCtrl.PermissionDialogResult) => {
-  console.info('getCliPermissionRequestInfo success, data: ' + JSON.stringify(data));
-}).catch((err: BusinessError): void => {
-  console.error(`getCliPermissionRequestInfo fail, code: ${err.code}, message: ${err.message}`);
-});
-```
-
-### getCliPermissions
-
-getCliPermissions(hostTokenID: number, agentID: string, cliInfoList: Array&lt;CliInfo&gt;): Promise&lt;CliPermissionsResult&gt;
-
-查询指定应用使用的CLI命令依赖的CLI权限及映射的运行时权限。调用成功后返回每条命令的CLI权限决策状态和运行时权限映射列表。使用Promise异步回调。
-
-**起始版本：** 26.0.0
-
-**需要权限：** ohos.permission.MANAGE_TOOL_RUNTIME_PERMISSIONS
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Security.AccessToken
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| hostTokenID | number | 是 | 访问CLI指令的应用的tokenID，可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。该参数必须为大于0的整数，传入0时返回错误码12100001。 |
-| agentID | string | 是 | 智能体标识，用于标识发起CLI相关操作的智能体，长度不能超过48个字符。超出限制时返回错误码12100001。 |
-| cliInfoList | Array&lt;[CliInfo](#cliinfo)&gt; | 是 | 待查询的CLI信息列表。数组长度必须在1到99之间，每项包含一条命令及其子命令信息。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| Promise&lt;[CliPermissionsResult](#clipermissionsresult)&gt; | Promise对象，返回每条CLI命令依赖的CLI权限及其对应的运行时权限映射信息。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 201 | Permission denied. Interface caller does not have permission "ohos.permission.MANAGE_TOOL_RUNTIME_PERMISSIONS". |
-| 202 | Not system application. Interface caller is not a system application. |
-| 12100001 | Invalid parameter. The hostTokenID is 0, the agentID exceeds 48 characters, cliInfoList is empty or contains more than 99 items, the cliName of an item in cliInfoList is empty or exceeds 256 characters, the subCliName of an item in cliInfoList exceeds 256 characters, or the CLI command does not exist. |
-| 12100002 | The specified tokenID does not exist. |
-| 12100007 | The service is abnormal. |
-| 12100009 | Common internal error. An internal error occurs when querying CLI permissions or runtime permission information. |
-
-**示例：**
-
-```ts
-import { abilityAccessCtrl } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let hostTokenID: number = 0; // 获取方式可参考AtManager章节的描述。
-let agentID: string = 'agent.demo';
-let cliInfoList: Array<abilityAccessCtrl.CliInfo> = [{
-  cliName: 'ohos-example',
-  subCliName: 'run'
-}];
-atManager.getCliPermissions(hostTokenID, agentID, cliInfoList).then((data: abilityAccessCtrl.CliPermissionsResult) => {
-  console.info('getCliPermissions success, data: ' + JSON.stringify(data));
-}).catch((err: BusinessError): void => {
-  console.error(`getCliPermissions fail, code: ${err.code}, message: ${err.message}`);
-});
-```
-
-### generateCliAuthResult
-
-generateCliAuthResult(hostTokenID: number, agentID: string, authInfoList: Array&lt;CliAuthInfo&gt;): Promise&lt;ToolAuthResult&gt;
-
-根据CLI授权信息生成授权结果。使用Promise异步回调。
-
-**起始版本：** 26.0.0
-
-**需要权限：** ohos.permission.MANAGE_TOOL_RUNTIME_PERMISSIONS
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Security.AccessToken
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| hostTokenID | number | 是 | 访问CLI指令的应用的tokenID，可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。该参数必须为大于0的整数，传入0时返回错误码12100001。 |
-| agentID | string | 是 | 智能体标识，用于标识发起CLI相关操作的智能体，长度不能超过48个字符。超出限制时返回错误码12100001。 |
-| authInfoList | Array&lt;[CliAuthInfo](#cliauthinfo)&gt; | 是 |  CLI授权信息列表，每项包含CLI信息（主命令和子命令名称）、待授权的权限名称列表和对应的授权结果列表。数组长度不能为0，且不能超过99。超出限制时返回错误码12100001。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| Promise&lt;[ToolAuthResult](#toolauthresult)&gt; | Promise对象，返回生成的授权结果，包含授权结果字符串列表，可用于传递给CLI工具执行命令。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 201 | Permission denied. Interface caller does not have permission "ohos.permission.MANAGE_TOOL_RUNTIME_PERMISSIONS". |
-| 202 | Not system application. Interface caller is not a system application. |
-| 12100001 | Invalid parameter. The hostTokenID is 0, the agentID exceeds 48 characters, authInfoList is empty or contains more than 99 items, the cliName in cliInfo of an item in authInfoList is empty or exceeds 256 characters, the subCliName in cliInfo of an item in authInfoList exceeds 256 characters, a permission name in permissionNames of an item in authInfoList is empty or exceeds 256 characters, or the number of permissionNames does not equal the number of authorizationResults in an item in authInfoList. |
-| 12100002 | The specified tokenID does not exist. |
-| 12100003 | A permission name in permissionNames of an item in authInfoList does not exist. |
-| 12100007 | The service is abnormal. |
-| 12100009 | Common internal error. The account is not logged in, network is not connected or an internal error occurs when generating authorization results. |
-
-**示例：**
-
-```ts
-import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let hostTokenID: number = 0; // 获取方式可参考AtManager章节的描述。
-let agentID: string = 'agent.demo';
-let authInfoList: Array<abilityAccessCtrl.CliAuthInfo> = [{
-  cliInfo: {
-    cliName: 'ohos-example',
-    subCliName: 'run'
-  },
-  permissionNames: ['ohos.permission.ACCESS_SYSTEM_SETTINGS' as Permissions],
-  authorizationResults: [true]
-}];
-atManager.generateCliAuthResult(hostTokenID, agentID, authInfoList).then((data: abilityAccessCtrl.ToolAuthResult) => {
-  console.info('generateCliAuthResult success, data: ' + JSON.stringify(data));
-}).catch((err: BusinessError): void => {
-  console.error(`generateCliAuthResult fail, code: ${err.code}, message: ${err.message}`);
-});
-```
-
-## PermissionDecisionStatus
-
-权限决策状态枚举。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Security.AccessToken
-
-**系统接口：** 此接口为系统接口。
-
-| 名称 | 值 | 说明 |
-| -------- | -------- | -------- |
-| NEED_PERMISSION_DIALOG | 0 | 表示需要弹出权限对话框。 |
-| NO_DIALOG_DENIED | 1 | 表示无需弹窗，权限已被用户拒绝。 |
-| NO_DIALOG_RESTRICTED | 2 | 表示无需弹窗，权限受系统或策略限制。 |
-| NO_DIALOG_GRANTED | 3 | 表示无需弹窗，权限已授予。 |
-| NO_DIALOG_NOT_DECLARED | 4 | 表示无需弹窗，但权限未声明。 |
-| NO_DIALOG_CLI_PERMISSION_RESOLVED | 5 | 表示无需弹窗，CLI权限已完成运行时权限解析。 |
-
-## CliInfo
-
-表示CLI（Command Line Interface，命令行界面）信息。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Security.AccessToken
-
-**系统接口：** 此接口为系统接口。
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| -------- | -------- | -------- | -------- | -------- |
-| cliName | string | 否 | 否 | CLI名称。该字段不能为空，且长度不能超过256个字符。 |
-| subCliName | string | 否 | 否 | CLI子命令名称。该字段可以为空，但长度不能超过256个字符。 |
-
-## PermissionDialogDetail
-
-表示单条命令的权限弹窗信息。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Security.AccessToken
-
-**系统接口：** 此接口为系统接口。
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| -------- | -------- | -------- | -------- | -------- |
-| needPermissionDialog | boolean | 否 | 否 | 当前CLI命令是否需要权限弹窗，true表示需要权限弹窗，false表示不需要权限弹窗。 |
-| permissionNameList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt; | 否 | 否 | 发起CLI相关操作的智能体当前未满足的权限名称列表。若相关权限不满足，CLI将无法拉起，或拉起后的CLI进程无法获得对应权限。 |
-| statusList | Array&lt;[PermissionDecisionStatus](#permissiondecisionstatus)&gt; | 否 | 否 | 权限决策状态列表。 |
-| authResult | string | 否 | 否 | 授权结果字符串。 |
-
-## PermissionDialogResult
-
-表示权限弹窗查询结果。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Security.AccessToken
-
-**系统接口：** 此接口为系统接口。
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| -------- | -------- | -------- | -------- | -------- |
-| detailList | Array&lt;[PermissionDialogDetail](#permissiondialogdetail)&gt; | 否 | 否 | 权限弹窗的信息列表。 |
-
-## CliPermissionDetail
-
-表示CLI指令声明的单个CLI权限的状态信息。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Security.AccessToken
-
-**系统接口：** 此接口为系统接口。
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| -------- | -------- | -------- | -------- | -------- |
-| requiredCliPermission | [Permissions](../../security/AccessToken/app-permissions.md) | 否 | 否 | 调用CLI所需的CLI权限。 |
-| cliPermissionStatus | [PermissionDecisionStatus](#permissiondecisionstatus) | 否 | 否 | CLI指令声明的CLI权限的决策状态。 |
-| usedPermissions | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt; | 否 | 否 | 由requiredCliPermission映射出的运行时权限列表。 |
-
-## CliCommandPermissionResult
-
-表示单条CLI命令的权限信息。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Security.AccessToken
-
-**系统接口：** 此接口为系统接口。
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| -------- | -------- | -------- | -------- | -------- |
-| requiredCliPermissions | Array&lt;[CliPermissionDetail](#clipermissiondetail)&gt; | 否 | 否 | 当前CLI命令依赖的CLI权限信息列表。 |
-
-## CliPermissionsResult
-
-表示CLI权限查询结果。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Security.AccessToken
-
-**系统接口：** 此接口为系统接口。
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| -------- | -------- | -------- | -------- | -------- |
-| permList | Array&lt;[CliCommandPermissionResult](#clicommandpermissionresult)&gt; | 否 | 否 | CLI权限信息的列表。 |
-
-## CliAuthInfo
-
-表示CLI授权信息。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Security.AccessToken
-
-**系统接口：** 此接口为系统接口。
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| -------- | -------- | -------- | -------- | -------- |
-| cliInfo | [CliInfo](#cliinfo) | 否 | 否 | 授权信息对应的CLI信息。 |
-| permissionNames | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt; | 否 | 否 | 权限名称列表。每个元素不能为空，且长度不能超过256个字符。 |
-| authorizationResults | Array&lt;boolean&gt; | 否 | 否 | 授权结果列表，且数组长度必须等于permissionNames.length。true表示授权成功，CLI命令可获得对应权限；false表示拒绝授权，CLI命令无法获得对应权限。 |
-
-## ToolAuthResult
-
-表示工具授权结果。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Security.AccessToken
-
-**系统接口：** 此接口为系统接口。
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| -------- | -------- | -------- | -------- | -------- |
-| authResults | Array&lt;string&gt; | 否 | 否 | 授权结果字符串列表。 |
 
 ## PermissionStatusInfo
 

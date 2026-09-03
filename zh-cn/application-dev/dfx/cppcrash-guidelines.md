@@ -185,7 +185,7 @@ HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hia
 | Device info | 设备信息 | 8 | 是 | - |
 | Build info | 版本信息 | 8 | 是 | - |
 | DeviceDebuggable | 设备的系统版本是否可调试 | 23 | 是 | - |
-| Fingerprint | 故障特征，聚类同类问题的哈希值，哈希值相同即判定为同一故障原因 | 8 | 是 | - |
+| Fingerprint | 故障特征，聚类同类问题的哈希值，哈希值相同即判定为同一故障原因。 | 8 | 是 | - |
 | Enabled app log configs | 使能的配置参数列表 | 20 | 否 | 仅用户配置时打印，详见[应用通过HiAppEvent设置崩溃日志配置参数场景日志规格](#应用通过hiappevent设置崩溃日志配置参数场景日志规格)。 |
 | Module name | 模块名 | 8 | 是 | - |
 | ReleaseType | 应用的版本类型 | 23 | 否 | 仅在应用进程提供，release表示应用为[release版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)，debug表示应用为[debug版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)。 |
@@ -205,7 +205,7 @@ HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hia
 | Process life time | 故障进程存活时间 | 8 | 是 | - |
 | Process Memory(kB) | 故障进程内存占用 | 20 | 是 | - |
 | Device Memory(kB) | 整机内存信息 | 20 | 否 | 依赖维测服务进程，若发生故障时维测服务进程停止或设备重启则无此字段，详见[实现原理](#实现原理)。 |
-| Log source | 用于标识采集日志的方式，目前有以下几种方式： <br> **processdump：** 用户态生成的cppcrash日志<br> **pdump：** 用户态生成cppcrash日志失败时由内核补偿生成<br> **liteprocessdump：** render/cpu等低权限进程崩溃时生成的cppcrash日志<br> 不同方式下生成日志规格会有差异，详见[不同采集方式下日志规格差异](#不同采集方式下日志规格差异) | 26.0.0 | 是 | - |
+| Log source | 用于标识采集日志的方式，目前有以下几种方式： <br> **processdump：** 由用户态生成<br> **pdump：** 用户态生成cppcrash日志失败时由内核补偿生成<br> **liteprocessdump：** render/cpu等低权限进程崩溃时由用户态生成<br> 不同方式下生成日志规格会有差异，详见[不同采集方式下日志规格差异](#不同采集方式下日志规格差异)。 | 26.0.0 | 是 | - |
 | Reason | 故障原因 | 8 | 是 | - |
 | LastFatalMessage | Fatal消息 | 8 | 否 | 以下几种情况共用此字段：<br> 解析到不可靠的栈帧地址时输出的提示信息。<br> 因ABORT信号崩溃退出时保存最后一条FATAL级Hilog日志。<br>系统内部的维测信息。<br>应用通过[OH_HiDebug_SetCrashObj](hidebug-guidelines.md#添加维测信息到崩溃日志中)设置的字符串信息。<br>从API版本26.0.0开始，应用若开启[模块加载链路调试开关](../arkts-utils/arkts-module-debug.md)，则此字段包含模块加载链路。|
 | Fault thread info | 故障线程信息 | 8 | 是 | - |
@@ -277,6 +277,7 @@ App running unique id:124500628566978194 <- 应用运行时唯一关联的id
 Process life time:255s <- 故障进程存活时间
 Process Memory(kB): 177672(Rss) <- 故障进程内存占用
 Device Memory(kB): Total 2001936, Free 509212, Available 1115804 <- 整机内存信息（非必选）
+Log source:processdump <- 用于标识采集日志的方式，processdump表示由用户态生成
 Reason:Signal:SIGSEGV(SI_USER)@0x00001e99 from:7833:0 <- 故障原因，详见信号值说明
 Fault thread info:           <- 故障线程信息
 Tid:6946, Name:e.myapplication  <- 故障线程号，线程名
@@ -463,6 +464,7 @@ App running unique id:124500628566978194 <- 应用运行时唯一关联的id
 Process life time:1s               <- 故障进程存活时间
 Process Memory(kB): 5357(Rss)     <- 故障进程内存占用
 Device Memory(kB): Total 2001936, Free 583336, Available 1194164 <- 整机内存信息（非必选）
+Log source:processdump <- 用于标识采集日志的方式，processdump表示由用户态生成
 Reason:Signal:SIGSEGV(SEGV_MAPERR)@0x00000004  probably caused by NULL pointer dereference   <- 故障原因和空指针提示
 Fault thread info:
 Tid:9623, Name:crasher_cpp         <- 故障线程号，线程名
@@ -526,6 +528,7 @@ App running unique id:124500628566978194 <- 应用运行时唯一关联的id
 Process life time:1s                  <- 故障进程存活时间
 Process Memory(kB): 5279(Rss)     <- 故障进程内存占用
 Device Memory(kB): Total 2001936, Free 311000, Available 1181132 <- 整机内存信息（非必选）
+Log source:processdump <- 用于标识采集日志的方式，processdump表示由用户态生成
 Reason:Signal:SIGSEGV(SEGV_ACCERR)@0xf740efe0  current thread stack low address = 0xf740f000, probably caused by stack-buffer-overflow    <- 故障原因和栈溢出提示
 Fault thread info:
 Tid:15414, Name:crasher_cpp
@@ -561,6 +564,7 @@ App running unique id:124500628566978194 <- 应用运行时唯一关联的id
 Process life time:1s                      <- 故障进程存活时间
 Process Memory(kB): 5271(Rss)            <- 故障进程内存占用
 Device Memory(kB): Total 2001936, Free 311220, Available 1181516 <- 整机内存信息（非必选）
+Log source:processdump <- 用于标识采集日志的方式，processdump表示由用户态生成
 Reason:Signal:SIGSEGV(SEGV_MAPERR)@0000000000  probably caused by NULL pointer dereference      <- 故障原因
 LastFatalMessage:Failed to unwind stack, try to get unreliable call stack from #02 by reparsing thread stack. <- #00和#01一般认为是可信的，从#02开始尝试从线程栈内存里解析不可靠的调用栈
 Fault thread info:
@@ -647,6 +651,7 @@ App running unique id:124500628566978194    <- 应用运行时唯一关联的id
 Process life time:42s                        <- 故障进程存活时间
 Process Memory(kB): 151736(Rss)            <- 故障进程内存占用
 Device Memory(kB): Total 11712088, Free 2500232, Available 5275648 <- 整机内存信息（非必选）
+Log source:processdump <- 用于标识采集日志的方式，processdump表示由用户态生成
 Reason:Signal:SIGABRT(SI_TKILL)@0x01317bf600006f05  from:28421:20020214  <- 故障原因
 Fault thread info:
 Tid:29192, Name:OS_FFRT_2_0                 <- 故障线程号，线程名
@@ -959,7 +964,7 @@ at onPageShow (sample|sample|1.0.0|src/main/ets/pages/Index.ts:381:36)
 | Device info | 设备信息 | 有 | 有 | 有 |
 | Build info | 版本信息 | 有 | 有 | 有 |
 | DeviceDebuggable | 设备的系统版本是否可调试 | 有 | 有 | 有 |
-| Fingerprint | 故障特征，聚类同类问题的哈希值，哈希值相同即判定为同一故障原因 | 有 | 有 | 有 |
+| Fingerprint | 故障特征，聚类同类问题的哈希值，哈希值相同即判定为同一故障原因。 | 有 | 有 | 有 |
 | Enabled app log configs | 使能的配置参数列表 | 有 | 无 | 无 |
 | Module name | 模块名 | 有 | 有 | 有 |
 | ReleaseType | 应用的版本类型 | 有 | 有 | 有 |
@@ -979,7 +984,7 @@ at onPageShow (sample|sample|1.0.0|src/main/ets/pages/Index.ts:381:36)
 | Process life time | 故障进程存活时间 | 有 | 有 | 有 |
 | Process Memory(kB) | 故障进程内存占用 | 有 | 有 | 有 |
 | Device Memory(kB) | 整机内存状态 | 有 | 有 | 有 |
-| Log source | 用于标识采集日志的方式 | 有 | 有 | 有 |
+| Log source | 用于标识采集日志的方式。 | 有 | 有 | 有 |
 | Reason | 故障原因 | 有 | 有 | 有 |
 | LastFatalMessage | Fatal消息 | 有 | 无 | 无 |
 | Fault thread info | 故障线程信息 | 有 | 有 | 有 |

@@ -43,7 +43,7 @@
 
 | 参数名   | 类型                             | 必填 | 说明                                                |
 | -------- | -------------------------------- | ---- |---------------------------------------------------|
-| type     | string                           | 是   | 事件类型。type为“steadyStandingDetect”，表示设备静止姿态（支架态）感知。 |
+| type     | string                           | 是   | 事件类型。固定传入'steadyStandingDetect'，表示设备静止姿态（支架态）感知。 |
 | callback | Callback&lt;[SteadyStandingStatus](#steadystandingstatus)&gt; | 是   | 回调函数，用于接收设备静止姿态（支架态）状态信息。                         |
 
 **错误码**：
@@ -60,7 +60,7 @@
 
    ```ts
    try {
-      deviceStatus.on('steadyStandingDetect', (data:deviceStatus.SteadyStandingStatus) => {
+      deviceStatus.on('steadyStandingDetect', (data: deviceStatus.SteadyStandingStatus) => {
          console.info(`succeeded to get status, now status = ${JSON.stringify(data)}`);
       });
    } catch (err) {
@@ -80,7 +80,7 @@ off(type: 'steadyStandingDetect', callback?: Callback&lt;SteadyStandingStatus&gt
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                           | 是   | 事件类型。type为“steadyStandingDetect”，表示设备静止姿态（支架态）感知。 |
+| type     | string                           | 是   | 事件类型。固定传入'steadyStandingDetect'，表示设备静止姿态（支架态）感知。 |
 | callback | Callback&lt;[SteadyStandingStatus](#steadystandingstatus)&gt; | 否   | 要注销的回调函数，需与订阅时传入的回调函数一致。若不填，则取消当前监听该事件的所有回调函数。 |
 
 **错误码**：
@@ -101,13 +101,15 @@ off(type: 'steadyStandingDetect', callback?: Callback&lt;SteadyStandingStatus&gt
    try {
       deviceStatus.off('steadyStandingDetect');
    } catch (err) {
-      console.error(`off failed, err = ${err}`);
+      console.error(`off failed. Code: ${err.code}, message: ${err.message}`);
    }
    ```
 
 示例二：取消订阅该客户端订阅设备静止姿态感知（支架态）事件的特定回调。
 
    ```ts
+   import { Callback } from '@kit.BasicServicesKit';
+
    // 定义callback变量
    let callback : Callback<deviceStatus.SteadyStandingStatus> = (data : deviceStatus.SteadyStandingStatus) => {
       console.info('succeeded to get status, now status = ' + JSON.stringify(data));

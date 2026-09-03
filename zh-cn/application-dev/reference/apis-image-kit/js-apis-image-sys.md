@@ -317,6 +317,58 @@ async function DecomposeToPictureTest(context: Context) {
 }
 ```
 
+## SourceOptions<sup>9+</sup>
+
+ImageSource的初始化选项。
+
+**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称              | 类型                               | 只读 | 可选 | 说明               |
+| ----------------- | ---------------------------------- | ---- | ---- | ------------------ |
+| svgResourceLimitLevel | [SVGResourceLimitLevel](#svgresourcelimitlevel)   | 否   | 是   | SVG（Scalable Vector Graphics）图像解析和绘制时使用的资源限制。该限制对非SVG图像无效，于SVG元数据解析前生效，因此也应用于图像信息获取。<br>默认值为NONE，它使用系统定义的默认资源限制，不会禁用SVG资源保护。<br>**起始版本：** 26.1.0 |
+
+## SVGResourceLimitLevel
+
+表示SVG资源限制等级的枚举。
+
+更高等级允许解析和绘制SVG图像时使用更少的资源，无论指定哪种等级，系统资源限制都会实施。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称                         | 值      | 说明       |
+| ---------------------------- | ------ | ---------- |
+| NONE    | 0     | 使用系统默认的SVG资源限制，该等级不会关闭SVG资源保护。|
+| LOW     | 1     | 使用低等级限制，允许使用更多SVG资源预算，适用于复杂的SVG图片。|
+| MEDIUM  | 2     | 使用中等级限制，允许使用适中的SVG资源预算，该等级平衡SVG兼容性和资源消耗，适用于大多数SVG图像。|
+| HIGH    | 3     | 使用高等级限制，允许使用更少SVG资源预算，该等级适用于简单SVG图像，如图标和基础的UI资源。|
+
+**示例：**
+```ts
+import { fileIo } from '@kit.CoreFileKit';
+
+async function CreateImageSource(context : Context) {
+  let sourceOptions: image.SourceOptions = { sourceDensity: 120, svgResourceLimitLevel: image.SVGResourceLimitLevel.MEDIUM};
+  // 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+  const filePath: string = context.filesDir + "/test.jpg";
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+  const imageSourceObj: image.ImageSource = image.createImageSource(file.fd, sourceOptions);
+}
+```
+
 ## ImageSource
 
 ImageSource类，用于获取图片相关信息。

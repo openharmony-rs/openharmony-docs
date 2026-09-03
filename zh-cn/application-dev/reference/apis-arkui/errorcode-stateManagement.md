@@ -340,3 +340,21 @@ key不是string或[TypeConstructorWithArgs\<T\>](./js-apis-stateManagement.md#ty
 **处理步骤**
 
 确保调用AppStorageV2、PersistenceV2的remove接口和PersistenceV2的save接口时传入的key参数为string或TypeConstructorWithArgs\<T\>类型。
+
+## 140123 @Link装饰变量的数据源不是状态变量
+
+**错误信息**
+
+The data source of the @Link-decorated variable 'xxx' in custom component 'yyy' is not a state variable.
+
+**错误描述**
+
+自定义组件'yyy'中用@Link装饰的变量'xxx'的数据源不是状态变量。
+
+**可能原因**
+
+父组件初始化子组件@Link变量时，未直接传入状态变量（如通过方法调用返回或使用三元表达式），或传入了非状态变量。
+
+**处理步骤**
+
+父组件初始化子组件@Link变量时，应该直接传入父组件的状态变量，参考@Link[变量的传递/访问规则说明](../../ui/state-management/arkts-link.md#变量的传递访问规则说明)。

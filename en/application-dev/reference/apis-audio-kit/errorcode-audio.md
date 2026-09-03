@@ -1,10 +1,12 @@
 # Audio Error Codes
+
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=1961de06e85063963f633ec54a8a4baaf5cb7dc8 translatedAt=2026-07-21T04:01:58.671Z pushedAt=2026-07-22T01:35:57.416Z -->
 
 > **NOTE**
 >
@@ -18,11 +20,11 @@ Invalid parameter.
 
 **Description**
 
-A parameter passed in the API is invalid.
+A parameter passed to the API is invalid.
 
 **Possible Causes**
 
-The parameter is invalid. For example, the parameter value is not within the range supported.
+Invalid parameter, for example, the value is out of range, or does not fall within the specified enumeration range.
 
 **Solution**
 
@@ -41,11 +43,13 @@ When the API is called, the memory fails to be allocated or a null pointer occur
 **Possible Causes**
 
 1. The system does not have sufficient memory for mapping.
+
 2. Invalid instances are not destroyed in time to release the memory.
 
 **Solution**
 
-1. Destroy the existing instances.
+1. Destroy the current instance.
+
 2. Create a new instance. If the creation fails, stop related operations.
 
 ## 6800103 Unsupported State
@@ -65,6 +69,7 @@ The operation is not supported in the current state of the object, for example, 
 **Solution**
 
 1. Check whether this operation is supported in the current state.
+
 2. Transition the object to the correct state before performing the operation.
 
 ## 6800104 Unsupported Parameter Value
@@ -84,6 +89,7 @@ The value of the input parameter is not within the range supported.
 **Solution**
 
 1. Check the enums or other input parameters supported by the API.
+
 2. Use a supported value.
 
 ## 6800105 Processing Timeout
@@ -98,13 +104,15 @@ The processing times out.
 
 **Possible Causes**
 
-1. An internal exception occurs in the system, triggering a timeout check of an internal interface.
+1. An internal exception occurs in the system, triggering a timeout check of an internal API.
+
 2. The system relies on timely callback processing by the application. If the application fails to return promptly, the system reports a timeout.
 
 **Solution**
 
 1. For internal system timeouts, the application can only report the error.
-2. For interface implementations that depend on timely callback processing by the application, the application should check the callback execution and ensure prompt returns to avoid disrupting subsequent system processes.
+
+2. For API implementations that depend on timely callback processing by the application, the application should check the callback execution and ensure prompt returns to avoid disrupting subsequent system processes.
 
 ## 6800201 Too Many Audio Streams
 
@@ -123,6 +131,7 @@ Excess audio streams are not released in a timely manner.
 **Solution**
 
 1. Release unused audio stream resources and retry.
+
 2. If the system limit is reached due to other applications, report an error message to the user, asking them to close other applications.
 
 ## 6800301 System Error
@@ -133,12 +142,12 @@ System error.
 
 **Description**
 
-The system processing is abnormal.
+System processing exception.
 
 **Possible Causes**
 
-The system processing is abnormal, for example, system service restart or IPC exceptions.
+System processing exception, for example, system service restart or IPC exceptions.
 
 **Solution**
 
-This is a general internal system error with unclear circumstances. You are advised to try re-creating the service process or directly report a system error.
+This is a general internal system error with unclear circumstances. You are advised to try re-creating the service or directly report a system error.

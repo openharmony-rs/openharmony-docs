@@ -814,9 +814,9 @@ export default class EntryAbility extends UIAbility {
     // 开发者定义预关闭动作
     // 例如拉起另一个ability，根据ability处理结果执行异步关闭
     let want: Want = {
-      bundleName: "com.example.myapplication",
-      moduleName: "entry",
-      abilityName: "SecondAbility"
+      bundleName: 'com.example.myapplication',
+      moduleName: 'entry',
+      abilityName: 'SecondAbility'
     }
     this.context.startAbilityForResult(want)
       .then((result) => {
@@ -829,7 +829,7 @@ export default class EntryAbility extends UIAbility {
       // 异常处理
       console.error('startAbilityForResult failed, err:' + JSON.stringify(err));
       this.context.terminateSelf();
-    })
+    });
 
     return true; // 已定义预关闭操作后，返回true表示UIAbility取消关闭
   }
@@ -1482,7 +1482,7 @@ on(method: string, callback: CalleeCallback): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | method | string | 是 | 由Caller和Callee双方约定好的方法名，Callee方通过该字段区分消息类型。 |
-| callback | [CalleeCallback](#calleecallback) | 是 | 一个[rpc.MessageSequence](../apis-ipc-kit/js-apis-rpc.md#messagesequence9)类型入参的js通知同步回调函数,&nbsp;回调函数至少要返回一个空的[rpc.Parcelable](../apis-ipc-kit/js-apis-rpc.md#parcelable9)数据对象,&nbsp;其他视为函数执行错误。 |
+| callback | [CalleeCallback](#calleecallback) | 是 | 一个[rpc.MessageSequence](../apis-ipc-kit/js-apis-rpc.md#messagesequence9)类型入参的js通知同步回调函数，&nbsp;回调函数至少要返回一个空的[rpc.Parcelable](../apis-ipc-kit/js-apis-rpc.md#parcelable9)数据对象，&nbsp;其他视为函数执行错误。 |
 
 **错误码：**
 

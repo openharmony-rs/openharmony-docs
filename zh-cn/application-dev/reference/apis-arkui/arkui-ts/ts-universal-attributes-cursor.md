@@ -6,13 +6,15 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-鼠标光标控制用于控制鼠标光标的显示样式，适用于需要根据组件状态或交互区域切换光标样式的场景，帮助提升用户的交互识别和操作反馈体验。
+鼠标光标控制用于设置鼠标光标的显示样式，支持设置多种预设光标样式及恢复默认箭头样式，适用于需要根据组件状态或交互区域切换光标样式的场景，解决默认光标样式无法匹配交互意图的问题，帮助提升用户的交互识别和操作反馈体验。
 
 >  **说明：**
 >
 > - 从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口仅可在Stage模型下使用。
+>
+> - 直接使用cursorControl可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，并使用[getCursorController](../arkts-apis-uicontext-uicontext.md#getcursorcontroller12)获取绑定实例的cursorControl。
 
 
 ## cursorControl
@@ -21,7 +23,7 @@
 
 setCursor(value: PointerStyle): void
 
-方法语句中可使用的全局接口，调用该接口可更改当前的鼠标光标样式。
+在组件方法或事件回调中可使用的全局接口，调用该接口可设置当前的鼠标光标样式，例如在文本编辑区域悬浮时显示I型光标、在可拖拽元素上显示移动光标或在地图标记点悬浮时显示手指光标。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -31,13 +33,13 @@ setCursor(value: PointerStyle): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ----- | ------ | ---- | ---- |
-| value | [PointerStyle](#pointerstyle) | 是   | 设置的光标样式。 |
+| value | [PointerStyle](#pointerstyle) | 是   | 设置的鼠标光标样式。 |
 
 ### restoreDefault
 
 restoreDefault(): void
 
-方法语句中可使用的全局接口，调用此接口可将鼠标光标恢复成默认箭头样式。
+在组件方法或事件回调中可使用的全局接口，调用该接口可将鼠标光标恢复成默认箭头样式，例如在鼠标离开悬浮区域、组件失焦或交互结束时恢复默认光标。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -47,7 +49,7 @@ restoreDefault(): void
 
 type PointerStyle = import('../api/@ohos.multimodalInput.pointer').default.PointerStyle
 
-光标样式。
+鼠标光标样式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -55,15 +57,11 @@ type PointerStyle = import('../api/@ohos.multimodalInput.pointer').default.Point
 
 |类型|说明|
 | -- | -- |
-|import('../api/@ohos.multimodalInput.pointer').default.[PointerStyle](../../apis-input-kit/js-apis-pointer.md#pointerstyle) |光标样式。|
-
-> **说明：**
->
-> 直接使用cursorControl可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，并使用[getCursorController](../arkts-apis-uicontext-uicontext.md#getcursorcontroller12)获取绑定实例的cursorControl。
+|import('../api/@ohos.multimodalInput.pointer').default.[PointerStyle](../../apis-input-kit/js-apis-pointer.md#pointerstyle) |鼠标光标样式。|
 
 ## 示例
 
-该示例通过setCursor实现了鼠标光标样式的更改。
+该示例通过setCursor实现了鼠标光标样式的设置。
 
 ```ts
 // xxx.ets
