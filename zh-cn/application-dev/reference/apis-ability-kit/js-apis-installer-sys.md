@@ -2828,6 +2828,8 @@ PGO（Profile-guided Optimization）配置文件参数信息。
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
