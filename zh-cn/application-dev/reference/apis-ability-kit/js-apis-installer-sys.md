@@ -2838,7 +2838,7 @@ PGO（Profile-guided Optimization）配置文件参数信息。
 | ----------- | ------ | ---- |---- | ------------------------------------------------------------ |
 | userId      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是  | 指定创建分身应用所在的用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。            |
 | appIndex    | ArkTS-Dyn: number<br>ArkTS-Sta: int |  否 | 是   | 指定创建分身应用的索引值。默认值：当前可用的最小索引值。           |
-| parameters  | Array<[Parameters](#parameters15)> | 否 | 是   | 创建分身应用扩展参数，默认值为空。Parameters.key取值支持：</br>- "ohos.bms.param.disableInstallEventReport"：若对应value值为"true"，表示分身创建完成后不发送安装广播事件。若不传入该键或value值非"true"，则正常发送安装广播。</br>- "ohos.bms.param.bundleEnableState"：若对应value值为"false"，表示分身创建后处于禁用状态（enabled为false）。若对应value值为"true"或不传入该键，表示分身创建后处于启用状态（enabled为true，默认行为）。</br>**模型约束：** 此接口仅可在Stage模型下使用。</br>**起始版本：** 26.1.0。           |
+| parameters  | Array<[Parameters](#parameters15)> | 否 | 是   | 创建分身应用扩展参数，默认值为空。Parameters.key取值支持：</br>- "ohos.bms.param.disableInstallEventReport"：若对应value值为"true"，表示分身创建完成后不发送安装广播事件。若不传入该键或value值非"true"，则正常发送安装广播。</br>- "ohos.bms.param.bundleEnableState"：若对应value值为"false"，表示分身创建后处于禁用状态（enabled为false）。若对应value值为"true"或不传入该键，表示分身创建后处于启用状态（enabled为true，默认行为）。</br>**模型约束：** 此接口仅可在Stage模型下使用。</br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0。           |
 
 ## DestroyAppCloneParam<sup>15+</sup>
 
