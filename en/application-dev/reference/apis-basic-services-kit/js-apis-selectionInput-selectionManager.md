@@ -294,7 +294,7 @@ For details about the error codes, see [Word Selection Service Error Codes](erro
 
 | Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 | 33600003   | The application calling the API does not match the application selected in the system settings. |
 
 **Example**
@@ -419,7 +419,7 @@ For details about the error codes, see [Word Selection Service Error Codes](erro
 
 | Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 
 **Example**
 
@@ -609,7 +609,7 @@ For details about the error codes, see [Word Selection Service Error Codes](erro
 
 | Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 | 33600002   | This selection window has been destroyed. |
 
 **Example**
@@ -673,7 +673,7 @@ For details about the error codes, see [Word Selection Service Error Codes](erro
 
 | Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 | 33600002   | This selection window has been destroyed. |
 
 **Example**
@@ -729,7 +729,7 @@ For details about the error codes, see [Word Selection Service Error Codes](erro
 
 | Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 | 33600002   | This selection window has been destroyed. |
 
 **Example**
@@ -785,7 +785,7 @@ For details about the error codes, see [Word Selection Service Error Codes](erro
 
 | Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 | 33600002   | This selection window has been destroyed. |
 
 **Example**
@@ -875,7 +875,7 @@ For details about the error codes, see [Word Selection Service Error Codes](erro
 
 | Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 | 33600002   | This selection window has been destroyed. |
 
 **Example**
@@ -930,7 +930,7 @@ For details about the error codes, see [Word Selection Service Error Codes](erro
 
 | Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 | 33600002   | This selection window has been destroyed. |
 
 **Example**
