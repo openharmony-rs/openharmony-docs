@@ -6,7 +6,7 @@
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=7fc39f347cbf6fb5f978319188a05e74c6344424 translatedAt=2026-09-03T08:54:17.842Z pushedAt=2026-09-04T03:45:47.783Z -->
+<!-- md-trans-meta sourceCommit=7fc39f347cbf6fb5f978319188a05e74c6344424 translatedAt=2026-09-03T08:54:17.842Z pushedAt=2026-09-04T04:05:46.913Z -->
 
 Provides unified Dialog APIs for creating and displaying fixed-style and custom-style dialog boxes, and updating and closing dialog boxes. It applies to scenarios where pop-up interactions such as prompts, confirmations, and selections are required within an application.
 
@@ -292,7 +292,7 @@ This API accepts a dialog box ID (**dialogId** in [DialogResult](js-apis-dialog.
 
 | Name | Type                                                         | Mandatory | Description                                   |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| target | number \| [ComponentContent](./js-apis-arkui-ComponentContent.md)&lt;Object&gt; | Yes   | Dialog box or component content for dissing a dialog box.            |
+| target | number \| [ComponentContent](./js-apis-arkui-ComponentContent.md)&lt;Object&gt; | Yes   | Dialog box or component content for closing a dialog box.            |
 
 **Returns**
 
