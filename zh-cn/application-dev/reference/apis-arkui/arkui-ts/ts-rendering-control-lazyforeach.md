@@ -26,8 +26,6 @@ LazyForEach从提供的数据源中按需迭代数据，并在每次迭代过程
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **参数：**
 
 | 参数名        | 类型                                                      | 必填 | 说明                                                         |
