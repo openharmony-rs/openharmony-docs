@@ -812,7 +812,7 @@ pageInfo对象中的字段说明如下：
 | windowId | number | 否 | 窗口ID，指定填充内容的目标窗口。不传或传入无效值（≤0）时，系统将自动获取当前前台应用主窗口ID。|
 
 ```ts
-import onScreen from "@ohos.multimodalAwareness.onScreen";
+import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
   capList: [
