@@ -9,11 +9,7 @@
 
 ## 概述
 
-适用于期望通过后台预先加载应用数据实现优化应用启动体验的场景，系统会根据用户使用习惯、频次以及系统资源（内存、电量）等条件，预先启动应用进程并执行加载回调方法，允许应用在后台执行短时的内容和数据加载。例如：资讯刷新、消息获取、视频缓存等。
-
-后台加载任务仅适用于启动加速场景的短时数据预加载。若应用无需启动加速，则不适用本模块。
-
-后台加载任务相关接口从API版本26.1.0开始支持。
+从API版本26.1.0开始，系统提供后台加载任务能力，适用于期望通过后台预先加载应用数据以优化应用启动体验的场景（如资讯刷新、消息获取、视频缓存等），不适用于需要定时或条件触发的通用后台任务及长时间后台运行场景。
 
 ## 实现原理
 
@@ -23,10 +19,6 @@
 
 ## 约束与限制
 
-**设备限制**
-
-本功能仅支持标准系统设备。
-
 **规格限制**
 
 - 数量限制：一个应用只能注册一个后台加载任务，任务中只能指定唯一的主UIAbility。
@@ -34,27 +26,6 @@
 - 超时：系统回调后台加载任务开始执行后，任务最长运行30秒。如果应用多次超时，系统将禁用该应用的后台加载任务调度，即使重新注册任务也不会再被调度。
 
 - 禁止执行可感知操作：在UIAbility创建阶段和加载任务执行阶段，禁止应用执行音频播放、音频录制、定位、操作闪光灯等可感知行为。如果系统检测到应用存在此类操作，系统将禁用该应用的后台加载任务调度，取消后续的任务调度。
-
-
-## 接口说明
-
-**表1** 后台加载任务主要接口
-
-以下是后台加载任务开发使用的相关接口，更多接口及使用方式请见[后台加载任务](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md)文档。
-| 接口名 | 接口描述 |
-| -------- | -------- |
-| [registerTask(taskInfo: TaskInfo): void](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#backgroundloaderregistertask) | 注册后台加载任务。 |
-| [unregisterTask(taskInfo: TaskInfo): void](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#backgroundloaderunregistertask) | 取消注册后台加载任务。 |
-| [getTaskInfo(taskId: number): Promise&lt;TaskInfo&gt;](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#backgroundloadergettaskinfo) | 查询注册后台加载任务信息（Promise形式）。 |
-| [finishTask(taskInfo: TaskInfo): void](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#backgroundloaderfinishtask) | 通知系统加载任务执行完成。 |
-
-**表2** 后台加载任务需要应用实现的回调接口
-
-应用需要实现的回调方法如下：
-| 接口名 | 接口描述 |
-| -------- | -------- |
-| [ON_START](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#常量) | 需要应用实现的回调方法名，系统通过StartAbilityByCall方法启动应用后，会回调此方法。方法的入参为[backgroundLoader.TaskInfo](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#taskinfo)。 |
-| [ON_STOP](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#常量) | 需要应用实现的回调方法名，系统在后台加载任务异常取消时，会回调此方法。方法的入参为[backgroundLoader.TaskStopInfo](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#taskstopinfo)。 |
 
 
 ## 开发步骤
@@ -81,7 +52,6 @@
 3. 在应用主UIAbility的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)生命周期中，通过[Callee](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)注册ON_START和ON_STOP回调函数。Callee回调注册随主UIAbility生命周期存在，随其销毁自动释放，无需手动注销。
 
    <!-- @[backgroundLoader_register_callee](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
    ``` TypeScript
    try {
      // 注册ON_START回调，当后台加载任务启动时触发funCallBack
@@ -100,7 +70,6 @@
 1. 注册后台加载任务。
 
    <!-- @[backgroundLoader_registerTask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
    ``` TypeScript
    const taskInfo: backgroundLoader.TaskInfo = {
      abilityname: abilityname,
@@ -120,7 +89,6 @@
 2. 取消注册后台加载任务。
 
    <!-- @[backgroundLoader_unregisterTask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
    ``` TypeScript
    const taskInfo: backgroundLoader.TaskInfo = {
      abilityname: abilityname,
@@ -140,7 +108,6 @@
 3. 查询后台加载任务信息。
 
    <!-- @[backgroundLoader_getTaskInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
    ``` TypeScript
    try {
      const taskInfoData = backgroundLoader.getTaskInfo(taskId);
@@ -159,7 +126,6 @@
 1. 完成后台加载任务。
 
    <!-- @[backgroundLoader_finishTask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
    ``` TypeScript
    const taskInfo: backgroundLoader.TaskInfo = {
      abilityname: abilityname,
@@ -195,9 +161,3 @@ $ hidumper -s 1901 -a 'backgroundLoader com.example.myapplication EntryAbility'
 
 ----------------------------------ResourceSched----------------------------------
 ```
-
-## 相关实例
-
-针对后台加载任务的开发，有以下相关示例可供参考：
-
-- [后台加载任务（ArkTS）（API版本26.1.0）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader)
