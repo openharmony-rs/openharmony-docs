@@ -122,7 +122,6 @@ export default class EntryAbility extends UIAbility {
 // ...
 };
 ```
-
 testNapi.registerCustomSchemes的C++实现：
 
 <!-- @[register_set_custom_schemes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/cpp/hello.cpp) -->
