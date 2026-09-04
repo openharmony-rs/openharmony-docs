@@ -6,7 +6,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=9d2bc7386aedc5c38819f3fdab4390f797851b9c translatedAt=2026-09-01T08:30:38.432Z pushedAt=2026-09-03T07:34:33.599Z -->
+<!-- md-trans-meta sourceCommit=9d2bc7386aedc5c38819f3fdab4390f797851b9c translatedAt=2026-09-01T08:30:38.432Z pushedAt=2026-09-04T09:42:52.242Z -->
 
 This module provides APIs for managing USB devices, including USB device list query, bulk data transfer, control transfer, and permission control on the host side as well as port management, and function switch and query on the device side. This module can be used to exchange data with USB devices, manage USB device permissions, and dynamically switch the USB device mode.
 
@@ -886,7 +886,7 @@ async function bulkTransfer() {
 
 usbSubmitTransfer(transfer: UsbDataTransferParams): void
 
-Submits an asynchronous transfer request. The result is returned immediately after this API is called. This API uses a callback to rerturn the actual read/write operation result. You can call [usbCancelTransfer](#usbmanagerusbcanceltransfer18) to cancel an asynchronous transfer request.
+Submits an asynchronous transfer request. The result is returned immediately after this API is called. This API uses a callback to return the actual read/write operation result. You can call [usbCancelTransfer](#usbmanagerusbcanceltransfer18) to cancel an asynchronous transfer request.
 
 > **NOTE**
 >
@@ -1246,7 +1246,7 @@ async function requestAccessoryRight() {
 
 cancelAccessoryRight(accessory: USBAccessory): void
 
-Cancels the permission of the current app to access USB accessories. This API is called to to cancel the accessory access permission requested using **requestAccessoryRight()**. This API must be used with **requestAccessoryRight()** in pairs.
+Cancels the permission of the current app to access USB accessories. This API is called to cancel the accessory access permission requested using **requestAccessoryRight()**. This API must be used with **requestAccessoryRight()** in pairs.
 
 You need to call [usbManager.getAccessoryList](#usbmanagergetaccessorylist14) to obtain the accessory list and use [USBAccessory](#usbaccessory14) as a parameter.
 

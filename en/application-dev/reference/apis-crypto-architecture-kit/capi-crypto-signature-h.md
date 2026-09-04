@@ -633,7 +633,7 @@ Sets the **r** and **s** values in ECC signing specifications.
 | Name| Description|
 | -- | -- |
 | [OH_CryptoEccSignatureSpec](capi-cryptosignatureapi-oh-cryptoeccsignaturespec.md) *spec | Input parameter, indicating a pointer to the ECC signing specifications. The value cannot be null.|
-| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *r | Input paramete, indicating a pointer to the **r** value. This API performs deep copy of the data in **r** and **s**. The caller can immediately release **r** and **s** after the API returns a result. The value cannot be null.|
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *r | Input parameter, indicating a pointer to the **r** value. This API performs deep copy of the data in **r** and **s**. The caller can immediately release **r** and **s** after the API returns a result. The value cannot be null.|
 | [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *s | Input parameter, indicating a pointer to the **s** value. The value cannot be null.|
 
 **Returns**
