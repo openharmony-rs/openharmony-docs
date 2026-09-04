@@ -5,7 +5,7 @@
 <!--Designer: @lingminghw-->
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=c68ee3b9aca136aa0cab50a5bff69a240c48dbd0 translatedAt=2026-09-01T08:40:06.076Z pushedAt=2026-09-02T04:43:05.401Z -->
+<!-- md-trans-meta sourceCommit=c68ee3b9aca136aa0cab50a5bff69a240c48dbd0 translatedAt=2026-09-01T08:40:06.076Z pushedAt=2026-09-04T09:59:21.327Z -->
 
 - ArkTS API<!--basic-services-arkts-->
   - Account Management<!--account-management-arkts-->
@@ -24,8 +24,8 @@
     - [@ohos.power (Power Management)](js-apis-power.md)
     - [@ohos.runningLock (RunningLock)](js-apis-runninglock.md)
     - [@ohos.thermal (thermal management)](js-apis-thermal.md)
-    - [@ohos.usbManager (USB management)](js-apis-usbManager.md)
-    - [@ohos.usbManager.serial (serial port management)](js-apis-serialManager.md)
+    - [@ohos.usbManager (USB Manager)](js-apis-usbManager.md)
+    - [@ohos.usbManager.serial (Serial Port Management)](js-apis-serialManager.md)
     <!--Del-->
     - [@ohos.batteryInfo (battery information)(system interface)](js-apis-battery-info-sys.md)
     - [@ohos.batteryStatistics (power consumption statistics)(system interface)](js-apis-batteryStatistics-sys.md)
@@ -44,7 +44,7 @@
   - Data File Processing<!--data-file-processing-arkts-->
     - [@ohos.app.ability.PrintExtensionAbility (Print Extension Capability)](js-apis-app-ability-PrintExtensionAbility.md)
     - [PrintExtensionContext](js-apis-PrintExtensionContext.md)
-    - [@ohos.pasteboard (Clipboard)](js-apis-pasteboard.md)
+    - [@ohos.pasteboard (Pasteboard)](js-apis-pasteboard.md)
     - [@ohos.print (Print)](js-apis-print.md)
     - [@ohos.scan (Scan)](js-apis-scan.md)
     - [@ohos.request (Upload and Download)](js-apis-request.md)
