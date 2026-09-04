@@ -5,15 +5,18 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=8aa8522c1582655206875d9c89c21656113a2dda translatedAt=2026-09-03T04:10:22.466Z -->
 
-The **LoadingProgress** component is used to create a loading progress animation.
+The **LoadingProgress** component is used to display a loading progress bar, providing visual feedback to users during data loading to improve user experience. This component supports features such as setting the foreground color and controlling the animation display state, and is suitable for scenarios where loading progress needs to be displayed in an application.
 
-The loading progress animation stops when the component is invisible. The component's visibility is determined by the value of **ratios** in the [onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange) event callback: If the value is greater than 0, the component is visible.
+The loading progress animation stops when the component is invisible. The component's visibility is determined by the value of **ratios** in the [onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange) handler. The component is considered visible when the visibility threshold **ratios** is greater than 0.
 
 >  **NOTE**
 >
-> This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
-
+> - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> 
+> - This component supports [WithTheme](./ts-container-with-theme.md) since API version 26.0.0.
+>
 
 ## Child Components
 
@@ -38,7 +41,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 >  **NOTE**
 >
-> Set the component's width and height to reasonable values. If they are too large, the loading animation might not work as expected.
+> The component should be set to a reasonable width and height. When the width and height of the component are set too large, the loading progress animation may not meet the expected effect.
 
 ### color
 
@@ -56,7 +59,7 @@ Sets the foreground color for the **LoadingProgress** component.
 
 | Name| Type                                      | Mandatory| Description                                                        |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Foreground color of the **LoadingProgress** component.<br>Default value:<br>API version 10 or earlier: **'#99666666'**<br>API version 11 or later: **'#ff666666'**|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes   | Foreground color of the loading progress bar.<br>Default value:<br>API version 10 and earlier: '#99666666'<br>API version 11 and later: '#ff666666' |
 
 ### enableLoading<sup>10+</sup>
 
@@ -64,8 +67,9 @@ enableLoading(value: boolean)
 
 Sets whether to display the LoadingProgress animation. The component still takes up space in the layout when the loading animation is not shown. The universal attribute [Visibility](ts-appendix-enums.md#visibility).Hidden hides the entire component area, including the regions specified by [border](ts-universal-attributes-border.md#border) and [padding](ts-universal-attributes-size.md#padding). In contrast, when the value of **enableLoading** is set to **false**, only the loading animation itself is hidden without affecting the borders or other elements.
 
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,7 +77,7 @@ Sets whether to display the LoadingProgress animation. The component still takes
 
 | Name| Type   | Mandatory| Description                                          |
 | ------ | ------- | ---- | ---------------------------------------------- |
-| value  | boolean | Yes  | Whether to show the loading animation.<br>Default value: **true**. **true**: Show the loading animation. **false**: Do not show the loading animation.|
+| value  | boolean | Yes   | Whether to display the LoadingProgress animation.<br>Default value: true, where true means to display the LoadingProgress animation and false means not to display it. |
 
 ### contentModifier<sup>12+</sup>
 
@@ -83,13 +87,15 @@ Creates a content modifier.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                         | Mandatory| Description                                            |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | ContentModifier\<[LoadingProgressConfiguration](#loadingprogressconfiguration12)> | Yes  | Content modifier to apply to the current component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.|
+| modifier  | ContentModifier\<[LoadingProgressConfiguration](#loadingprogressconfiguration12)> | Yes   | Method for customizing the content area on the LoadingProgress component.<br>modifier: content modifier. Developers need to customize a class to implement the ContentModifier interface. |
 
 ## Events
 
@@ -101,11 +107,13 @@ You need a custom class to implement the **ContentModifier** API. Inherits from 
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name | Type   |    Read Only   |    Optional   |  Description             |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
-| enableLoading | boolean | No| No|Whether to show the loading animation.<br>Default value: **true**. **true**: Show the loading animation. **false**: Do not show the loading animation.|
+| enableLoading | boolean | No | No | Whether to display the LoadingProgress animation.<br>Default value: true, where true means to display the LoadingProgress animation and false means not to display the LoadingProgress animation. |
 
 ## LoadingProgressStyle
 
@@ -127,7 +135,7 @@ Enumerates style types of **LoadingProgress**. This API is not recommended for u
 
 ### Example 1: Setting the Color of the Loading Progress Animation
 
-This example demonstrates how to set the color of the loading progress animation using the [color](#color) attribute.
+This example uses the [color](#color) API to set the color of the loading progress bar.
 
 ```ts
 // xxx.ets
@@ -149,7 +157,7 @@ struct LoadingProgressExample {
 
 ### Example 2: Setting the Custom Content Area
 
-This example demonstrates how to customize the content area using the [contentModifier](#contentmodifier12) API and how to toggle the display of the **LoadingProgress** component using the [enableLoading](#enableloading10) API.
+This example uses the [contentModifier](#contentmodifier12) API to customize the content area, and demonstrates how to toggle the display of the custom content based on the [enableLoading](#enableloading10) property of [LoadingProgressConfiguration](#loadingprogressconfiguration12).
 
 ```ts
 // xxx.ets
@@ -169,9 +177,7 @@ class MyLoadingProgressStyle implements ContentModifier<LoadingProgressConfigura
   }
 }
 
-let arr1: string[] =
-  ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19'];
-let arr2: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+let arr: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
 @Builder
 function buildLoadingProgress(config: LoadingProgressConfiguration) {
@@ -232,7 +238,7 @@ function buildLoadingProgress(config: LoadingProgressConfiguration) {
 
     Column() {
       List({ space: 20, initialIndex: 0 }) {
-        ForEach(arr2, (item: string) => {
+        ForEach(arr, (item: string) => {
           ListItem() {
             Text((config.contentModifier as MyLoadingProgressStyle).enableLoading ? '' + item : Number(item) * 2 + '')
               .width('100%')
@@ -268,9 +274,7 @@ function buildLoadingProgress(config: LoadingProgressConfiguration) {
 @Component
 struct LoadingProgressDemoExample {
   @State loadingProgressList: (boolean | undefined | null)[] = [undefined, true, null, false];
-  @State widthList: (number | string)[] = ['110%', 220, '40%', 80];
   @State loadingProgressIndex: number = 0;
-  @State clickFlag: number = 0;
   scroller: Scroller = new Scroller();
 
   build() {
@@ -286,8 +290,7 @@ struct LoadingProgressDemoExample {
         }.width('100%').margin({ top: 5 })
       }.height('85%')
 
-      Button('Switch config.enableloading').onClick(() => {
-        this.clickFlag++;
+      Button('Click to toggle config.enableLoading').onClick(() => {
         this.loadingProgressIndex = (this.loadingProgressIndex + 1) % this.loadingProgressList.length;
         console.info('enableLoading:' + this.loadingProgressList[this.loadingProgressIndex]);
       }).margin(20)
