@@ -1938,6 +1938,8 @@ PGO（Profile-guided Optimization）配置文件参数信息。
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称        | 类型   | 只读  |  可选 | 说明                                                          |
 | ----------- | ------ | ---- |---- | ------------------------------------------------------------ |
 | userId      | number | 否 | 是  | 指定创建分身应用所在的用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。            |
