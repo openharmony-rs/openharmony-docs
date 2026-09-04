@@ -114,7 +114,7 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 
 | 名称 | 类型 | 只读 | 可选 | 说明                       |
 | ---- | ---- | ---- | --- | -------------------------- |
-| rules | Array<[SuppressWarningsType](#suppresswarningstype23)> | 否 | 否 | 支持告警消除的规则集合，用于指定需要抑制的告警类型。可通过数组传入多个规则同时抑制多种告警，数组至少包含一个元素。可选取值参见[SuppressWarningsType](#suppresswarningstype23)。建议仅在明确告警不影响应用功能或已做兼容性处理时使用，避免掩盖潜在问题。|
+| rules | Array<[SuppressWarningsType](#suppresswarningstype)> | 否 | 否 | 支持告警消除的规则集合，用于指定需要抑制的告警类型。可通过数组传入多个规则同时抑制多种告警，数组至少包含一个元素。可选取值参见[SuppressWarningsType](#suppresswarningstype)。建议仅在明确告警不影响应用功能或已做兼容性处理时使用，避免掩盖潜在问题。|
 
 **示例：**
 
