@@ -5616,9 +5616,9 @@ on(type: 'windowFocusStateChange', callback: Callback&lt;[WindowFocusState](arkt
 
 Subscribes to the focus state change event of the window. When the focus state of the window changes, the callback is triggered to return the focus state change information of the window.
 
-**Since**: 26.0.0
+**Since**: 26.1.0
 
-**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -5658,9 +5658,9 @@ off(type: 'windowFocusStateChange', callback?: Callback&lt;[WindowFocusState](ar
 
 Unsubscribes from the focus state change event of the window.
 
-**Since**: 26.0.0
+**Since**: 26.1.0
 
-**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
 
 **System capability**: SystemCapability.Window.SessionManager
 

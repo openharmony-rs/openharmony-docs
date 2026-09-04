@@ -5706,9 +5706,9 @@ on(type: 'windowFocusStateChange', callback: Callback&lt;[WindowFocusState](arkt
 
 开启窗口焦点状态变化事件的监听。当窗口焦点状态发生变化时，会触发回调，返回窗口的焦点状态变化信息。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -5748,9 +5748,9 @@ off(type: 'windowFocusStateChange', callback?: Callback&lt;[WindowFocusState](ar
 
 关闭窗口焦点状态变化事件的监听。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 

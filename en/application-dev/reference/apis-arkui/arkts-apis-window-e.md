@@ -92,7 +92,7 @@ Enumerates the reasons for window rectangle (position and size) changes.
 
 Enumerates the reasons for the window focus state change.
 
-**Since**: 26.0.0
+**Since**: 26.1.0
 
 **System capability**: SystemCapability.Window.SessionManager
 

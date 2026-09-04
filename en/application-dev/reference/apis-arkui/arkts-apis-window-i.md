@@ -354,7 +354,7 @@ Describes the information about the display density of the screen where the wind
 
 Describes the focus state change information of the window.
 
-**Since**: 26.0.0
+**Since**: 26.1.0
 
 **System capability**: SystemCapability.Window.SessionManager
 

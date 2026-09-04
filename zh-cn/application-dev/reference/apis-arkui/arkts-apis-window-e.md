@@ -124,7 +124,7 @@
 
 窗口焦点状态变化的原因。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.Window.SessionManager
 
