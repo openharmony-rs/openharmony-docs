@@ -58,6 +58,8 @@
 > 卡片管理服务重启后，临时卡片会被删除，且对应卡片ID不会通知到卡片提供方。因此：
 > - **卡片使用方**：若需将临时卡片保留为常态卡片，应在进程退出前调用[formHost.castToNormalForm](../reference/apis-form-kit/js-apis-app-form-formHost-sys.md#formhostcasttonormalform)转换。
 > - **卡片提供方**：需自行清理长时间未删除的临时卡片；若使用方已将临时卡片转为常态卡片，提供方需同步更新记录，防止清理时误删已转换的卡片信息。
+>
+> 此外，系统对可添加的卡片数量有一定限制，具体配额上限请参考卡片的[约束与限制](formkit-overview.md#约束与限制)。
 
 ## formHost接口
 
