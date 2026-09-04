@@ -6,8 +6,9 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=627767fa3527b3e4ea03a35d3df7c7dd0cac695b translatedAt=2026-09-02T11:22:55.673Z pushedAt=2026-09-03T01:58:32.900Z -->
 
-**@Once** is an auxiliary decorator used in state management V2. It must be used together with [@Param](../../../ui/state-management/arkts-new-param.md) and is applicable to scenarios where data is initialized from an external source only once without accepting subsequent synchronization changes. If **@Once** is not used together with **@Param**, an error will be reported during compilation when **@Once** is used independently.
+**\@Once** is an auxiliary decorator used in [State Management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2). It must be used together with [@Param](./ts-state-management-param.md) and is applicable to scenarios where data is initialized from an external source only once without accepting subsequent synchronization changes. If **\@Once** is not used together with **\@Param**, an error will be reported during compilation when **\@Once** is used independently.
 
 For details, see [@Once: Implementing Initialization Once](../../../ui/state-management/arkts-new-once.md).
 
@@ -68,3 +69,4 @@ struct Index {
   }
 }
 ```
+

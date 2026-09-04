@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-沉浸光感从API版本26.0.0开始支持。应用在接入沉浸光感时，如果需要兼容低版本，需要处理好两方面问题。一是应用级开启时，避免沉浸式系统材质属性冲突。二是组件级开启时，沉浸式系统材质接口在低版本上不可用，需要进行版本判断，在低版本上将材质设置为undefined，保持组件原有样式。
+沉浸光感从API版本26.0.0开始支持。应用在接入沉浸光感时，如果需兼容低版本，需要处理好两方面问题。一是应用级开启时，避免沉浸式系统材质属性冲突。二是组件级开启时，沉浸式系统材质接口在低版本上不可用，需要进行版本判断，在低版本上将材质设置为undefined，保持组件原有样式。
 
 本文从应用级开启和组件级开启两个维度，提供沉浸式系统材质向低版本兼容的适配方案。
 
@@ -22,7 +22,10 @@
 
 以下示例以支持应用级开启的Select组件为例，该组件在ENABLE模式下默认开启沉浸式系统材质。通过uiMaterial.getMaterialInfo()获取材质配置信息后，当状态为ENABLE（即沉浸式系统材质已开启）时，将backgroundColor置为undefined，避免白色背景遮挡材质效果；否则保持Color.White白色背景，保证材质未开启时的显示效果。
 
-```ts
+<!-- @[app_level_compatibility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/AppLevelCompatibilityExample.ets) -->
+
+
+``` TypeScript
 import { uiMaterial } from '@kit.ArkUI';
 
 @Entry
@@ -39,8 +42,11 @@ struct AppLevelCompatibility {
         .backgroundImage($r('app.media.invert'))
 
       Column() {
-        Select([{ value: '选项1' }, { value: '选项2' }])
-          .value('选择')
+        // 请将$r('app.string.select_option_1')替换为实际资源文件，在本示例中该资源文件的value值为"选项1"
+        // 请将$r('app.string.select_option_2')替换为实际资源文件，在本示例中该资源文件的value值为"选项2"
+        Select([{ value: $r('app.string.select_option_1') }, { value: $r('app.string.select_option_2') }])
+          // 请将$r('app.string.select_placeholder')替换为实际资源文件，在本示例中该资源文件的value值为"选择"
+          .value($r('app.string.select_placeholder'))
           // 应用级沉浸式系统材质开启时，将backgroundColor置为undefined，避免遮挡材质效果
           .backgroundColor(this.info.state === uiMaterial.MaterialState.ENABLE ? undefined :  Color.White)
       }
@@ -51,6 +57,7 @@ struct AppLevelCompatibility {
   }
 }
 ```
+
 
 应用级ENABLE模式下，Select呈现沉浸式系统材质样式：
 
@@ -72,7 +79,10 @@ struct AppLevelCompatibility {
 
 以下以Select组件为例，通过deviceInfo.sdkApiVersion判断系统软件API版本：不低于26.0.0时，为组件设置材质样式为THIN的ImmersiveMaterial；低于26.0.0时，将systemMaterial设置为undefined，组件恢复原有样式。
 
-```ts
+<!-- @[component_level_compatibility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/ComponentLevelCompatibilityExample.ets) -->
+
+
+``` TypeScript
 import { uiMaterial } from '@kit.ArkUI';
 import { deviceInfo } from '@kit.BasicServicesKit';
 
@@ -88,8 +98,11 @@ struct ComponentLevelCompatibility {
         .backgroundImage($r('app.media.invert'))
 
       Column() {
-        Select([{ value: '选项1' }, { value: '选项2' }])
-          .value('选择')
+        // 请将$r('app.string.select_option_1')替换为实际资源文件，在本示例中该资源文件的value值为"选项1"
+        // 请将$r('app.string.select_option_2')替换为实际资源文件，在本示例中该资源文件的value值为"选项2"
+        Select([{ value: $r('app.string.select_option_1') }, { value: $r('app.string.select_option_2') }])
+          // 请将$r('app.string.select_placeholder')替换为实际资源文件，在本示例中该资源文件的value值为"选择"
+          .value($r('app.string.select_placeholder'))
           // API版本不低于26.0.0时，设置沉浸式系统材质；低于26.0.0时，设置为undefined组件恢复原有样式。
           .systemMaterial(deviceInfo.sdkApiVersion >= 26 ?
             new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.THIN }) : undefined)
@@ -101,6 +114,7 @@ struct ComponentLevelCompatibility {
   }
 }
 ```
+
 
 系统软件API版本低于26.0.0时，组件保持原有样式：
 

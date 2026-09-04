@@ -8,12 +8,6 @@
 
 本文介绍如何按场景定制沉浸式系统材质的视效，包括设置沉浸式系统材质反色、为沉浸式系统材质赋色、设置沉浸式系统材质交互效果以及设置沉浸式系统材质阴影效果。
 
-> **说明：**
->
-> 本文涉及的沉浸光感效果均需在材质生效范围内才会呈现。具体生效范围如下：
-> - 通过[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)为组件设置的沉浸式系统材质仅在Navigation/NavDestination标题栏子树，或横向Tabs中barPosition为BarPosition.End的底部TabBar子树中生效。
-> - Slider、Toggle以及弹窗类组件不受此范围限制。弹窗类组件包括：Popup、Tips、Menu、BindSheet、AlertDialog、CustomDialog、ActionSheet、CalendarPickerDialog、DatePickerDialog、TextPickerDialog、TimePickerDialog、Toast、Select下拉菜单、AlphabetIndexer气泡弹窗。
-
 ## 设置沉浸式系统材质反色
 
 当组件设置为透明度较高的沉浸式系统材质（如ULTRA_THIN或THIN）时，例如组件内的文字可能与背景色对比度不足，导致阅读体验不佳。开启[ImmersiveOptions](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)中的colorInvert自动反色功能后，组件子节点中的文字颜色会自动调整为沉浸式系统材质下方背景色的反色，确保文字始终可读。具体的使用限制请参见[colorInvert](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)参数说明。
@@ -22,7 +16,10 @@
 
 以下示例为自动反色的效果：材质下方的背景在黑白之间滚动变化，为TabBar组件设置colorInvert为true的ULTRA_THIN材质后，TabBar内的文字和图标颜色随背景自动反色，使文字与图标清晰可读。
 
-```ts
+<!-- @[material_color_invert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialColorInvertExample.ets) -->
+
+
+``` TypeScript
 import { uiMaterial } from '@kit.ArkUI';
 
 @Component
@@ -88,6 +85,7 @@ struct PageMaterialReverse {
 }
 ```
 
+
 ![colorInvert](figures/colorInvert.gif)
 
 ## 为沉浸式系统材质赋色
@@ -100,7 +98,10 @@ struct PageMaterialReverse {
 
 以下示例为材质赋色的效果：为ULTRA_THIN材质组件设置半透明的materialColor后，材质在透出背景内容的同时呈现对应的色调。
 
-```ts
+<!-- @[material_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialColorExample.ets) -->
+
+
+``` TypeScript
 import { uiMaterial } from '@kit.ArkUI';
 
 @Entry
@@ -147,6 +148,7 @@ struct MaterialColorExample {
 }
 ```
 
+
 ![materialColor](figures/material-color.jpg)
 
 ## 设置沉浸式系统材质交互效果
@@ -158,12 +160,15 @@ struct MaterialColorExample {
 
 以下示例为交互形变与点光源的效果：设置interactive为true并传入lightEffect对象后，按压组件时产生弹性形变，手指触摸时产生流光跟随效果。
 
-```ts
+<!-- @[material_interactive_light](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialInteractiveLightExample.ets) -->
+
+
+``` TypeScript
 import { uiMaterial } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct MaterialColorExample {
+struct MaterialInteractiveLightExample {
   build() {
     Column() {
       Tabs({ barPosition: BarPosition.End }) {
@@ -205,6 +210,7 @@ struct MaterialColorExample {
 }
 ```
 
+
 ![interactiveLight](figures/interactive-light.gif)
 
 ## 设置沉浸式系统材质阴影效果
@@ -213,7 +219,10 @@ struct MaterialColorExample {
 
 将applyShadow置为false后设置自定义shadow（如粉色阴影）的效果，示例如下：
 
-```ts
+<!-- @[custom_shadow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/CustomShadowExample.ets) -->
+
+
+``` TypeScript
 import { uiMaterial } from '@kit.ArkUI';
 
 @Entry
@@ -247,6 +256,10 @@ struct CustomShadowExample {
     Column() {
       Navigation() {
         // 页面内容
+        Image($r('app.media.invert'))
+          .width('100%')
+          .height('100%')
+          .objectFit(ImageFit.Cover)
       }
       .title({ builder: this.NavigationTitle, height: '100%' })
       // $r('app.media.greyBackground')需要替换为开发者所需的图像资源文件
@@ -256,5 +269,6 @@ struct CustomShadowExample {
   }
 }
 ```
+
 
 ![shadowPink](figures/shadowPink.jpg)

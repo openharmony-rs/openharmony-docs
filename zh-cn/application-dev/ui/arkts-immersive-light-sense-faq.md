@@ -16,12 +16,12 @@
 
 **问题现象**
 
-- 为组件调用了[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)接口开启沉浸光感后，组件没有呈现沉浸光感效果。
+- 开启沉浸光感后，组件没有呈现沉浸光感效果。
 - 日志中存在打印：Material inactive: out of scope. Use component in navigation title bar or Tabbar.
 
 **可能原因**
 
-沉浸光感在组件上生效存在约束。通过[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)为组件开启的沉浸光感仅在Navigation或NavDestination标题栏，或Tabs的底部TabBar中生效，范围外的普通组件不显示材质效果。Slider、Toggle不受此范围限制；Popup、Tips、Menu、bindSheet、AlertDialog、CustomDialog、ActionSheet、CalendarPickerDialog、DatePickerDialog、TextPickerDialog、Toast、Select下拉菜单、AlphabetIndexer气泡弹窗等弹窗类组件不受此范围限制。
+沉浸光感开启后，弹窗类组件以及Slider、Toggle在页面内全部区域可生效；其余组件的生效区域为：Navigation/NavDestination标题栏，或横向Tab中barPosition为BarPosition.End的底部TabBar中。弹窗类组件和接口包括：[PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md)、[AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)、[ActionSheet](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md)、[CustomDialog](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)、[CalendarPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md)、[DatePickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md)、[TimePickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-timepicker-dialog.md)、[TextPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-textpicker-dialog.md)、[SelectionMenu](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SelectionMenu.md)、[ArkUI_NativeDialog](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialog.md)、[@ohos.promptAction (弹窗)](../reference/apis-arkui/js-apis-promptAction.md)、[Popup控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md)、[Tips控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-tips.md)、[菜单控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md)、[半模态转场](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md)、[AlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md)气泡弹窗、Select下拉菜单的[menuSystemMaterial](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md#menusystemmaterial)、[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)设置[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9)后长按或双击触发的文本菜单。
 
 **解决措施**
 
@@ -33,18 +33,22 @@
 
 以下示例展示了分别在Navigation标题栏中和Navigation内容区，开启沉浸光感的显示效果。位于Navigation标题栏中的Column开启沉浸光感正常生效；位于Navigation内容区中的Column组件，因其不处于Navigation标题栏或底部TabBar中，不生效沉浸光感效果。
  
-```ts
+<!-- @[material_scope_adapt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialScopeAdaptExample.ets) -->
+
+
+``` TypeScript
 import { CircleShape, TitleBarType, uiMaterial } from '@kit.ArkUI';
- 
+
 @Entry
 @Component
 struct MaterialScopeAdaptExample {
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
- 
+
   @Builder
   NavigationTitle() {
     Row() {
-      Text('标题栏')
+      // 请将$r('app.string.title_bar')替换为实际资源文件，在本示例中该资源文件的value值为"标题栏"
+      Text($r('app.string.title_bar'))
         .fontColor('#182431')
         .fontSize(30)
         .lineHeight(41)
@@ -70,16 +74,17 @@ struct MaterialScopeAdaptExample {
     .width('100%')
     .padding(16)
   }
- 
+
   build() {
     Column() {
       Navigation() {
         Column() {
           Row() {
-            Text('内容区')
- 
+            // 请将$r('app.string.content_area')替换为实际资源文件，在本示例中该资源文件的value值为"内容区"
+            Text($r('app.string.content_area'))
+
             Blank()
- 
+
             Column() {
               SymbolGlyph($r('sys.symbol.a_3d_square_fill'))
             }
@@ -119,8 +124,8 @@ struct MaterialScopeAdaptExample {
     }.width('100%').height('100%').backgroundColor('#F1F3F5')
   }
 }
- 
 ```
+
 
 ![material_example](./figures/material_example.JPG)
 

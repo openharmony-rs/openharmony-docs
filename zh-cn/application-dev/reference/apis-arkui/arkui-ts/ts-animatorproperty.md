@@ -20,7 +20,7 @@ animation(value:AnimateParam): T
 
 > **说明：**
 >
-> - 在单一页面上同时存在数十个及以上应用动效的组件时，可以使用[renderGroup](ts-universal-attributes-image-effect.md#rendergroup10)方法来解决卡顿问题，从而提升动画性能。最佳实践请参考[动画使用指导-使用renderGroup](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-fair-use-animation#section1223162922415)。
+> - 在单一页面上同时存在数十个及以上应用动效的组件时，可以使用[renderGroup](ts-universal-attributes-image-effect.md#rendergroup10)方法来解决卡顿问题，从而提升动画性能。最佳实践请参考优化动画性能中的[使用renderGroup](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkts-animation-usage-guide#使用rendergroup)。
 >
 > - 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用，在attributeModifier中调用animation不会产生动画效果。如需在attributeModifier中实现属性变化动画，请使用[显式动画](ts-explicit-animation.md)（animateTo）替代。
 > - 仅对部分通用属性生效（包括width、height、backgroundColor、opacity、scale、rotate、translate等）。对于改变布局类属性（如宽高）的动画，组件内容（如文字或Canvas中的内容）通常会直接跳转到最终状态。如果希望内容跟随宽高变化平滑过渡，可以配合使用[renderFit](ts-universal-attributes-renderfit.md#renderfit)属性进行配置，建议将renderFit设置为RenderFit.CENTER或RenderFit.TOP_LEFT等值，使内容在动画过程中随组件尺寸同步变化。

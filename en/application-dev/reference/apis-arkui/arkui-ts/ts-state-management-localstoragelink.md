@@ -6,8 +6,9 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=627767fa3527b3e4ea03a35d3df7c7dd0cac695b translatedAt=2026-09-02T11:20:58.384Z pushedAt=2026-09-03T01:26:29.927Z -->
 
-**@LocalStorageLink** is used in state management V1 to establish bidirectional data synchronization with the property corresponding to the specified key in LocalStorage. When either the variable decorated by **@LocalStorageLink** or the corresponding property in LocalStorage changes, the change will be synchronized to the other party. This is applicable to scenarios where the UI state needs to be shared among multiple components and data needs to be synchronized with LocalStorage in real time. It can avoid layer-by-layer data transfer and ensure cross-component data consistency.
+**\@LocalStorageLink** is used in [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1) to establish bidirectional data synchronization with the property corresponding to the specified key in [LocalStorage](./ts-state-management.md#localstorage9). When either the variable decorated by **\@LocalStorageLink** or the corresponding property in LocalStorage changes, the change will be synchronized to the other party. This is applicable to scenarios where the UI state needs to be shared among multiple components and data needs to be synchronized with LocalStorage in real time. It can avoid layer-by-layer data transfer and ensure cross-component data consistency.
 
 For details, see [LocalStorage: Storing Page-Level UI State](../../../ui/state-management/arkts-localstorage.md).
 
@@ -62,3 +63,4 @@ struct Parent {
   }
 }
 ```
+

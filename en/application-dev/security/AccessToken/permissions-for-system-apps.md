@@ -9188,3 +9188,45 @@ Allows a system application to access shared albums and files within the albums.
 **Supported devices**: phones | tablets | PCs/2-in-1 devices | cars | TVs | wearables
 
 **Valid since**: 26.1.0
+
+## ohos.permission.MANAGE_LOH
+ 	 
+Allows an application to invoke virtualization capabilities of the Linux subsystem.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.1.0
+
+## ohos.permission.MANAGE_LOH_PTY
+
+Allows an application to pass Linux commands with normal privileges to a container for execution through a pseudo-terminal (PTY).
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.1.0
+
+## ohos.permission.MANAGE_LOH_PTY_ROOT
+
+Allows an application to pass Linux commands with root privileges to a container for execution through a pseudo-terminal (PTY).
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.1.0
