@@ -1961,7 +1961,7 @@ systemPasteboard.setData(pasteData, (err, data) => {
 
 setData(data: PasteData): Promise&lt;void&gt;
 
-Writes a **PasteData** object to the pasteboard. This API uses a promise to return the result. This API can be used to write date to the pasteboard asynchronously without blocking the main thread, such as the interaction process that requires the UI response. Unlike the synchronous API [setDataSync](#setdatasync11), this API does not block the UI thread and is more suitable for UI interactions.
+Writes a **PasteData** object to the pasteboard. This API uses a promise to return the result. This API can be used to write data to the pasteboard asynchronously without blocking the main thread, such as the interaction process that requires the UI response. Unlike the synchronous API [setDataSync](#setdatasync11), this API does not block the UI thread and is more suitable for UI interactions.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2838,7 +2838,7 @@ try {
 
 setUnifiedData(data: unifiedDataChannel.UnifiedData): Promise&lt;void&gt;
 
-Writes a **PasteData** object to the pasteboard. This API uses a promise to return the result. This API can be used to write date to the pasteboard asynchronously without blocking the main thread, such as the interaction process that requires the UI response. Unlike the synchronous API [setUnifiedDataSync](#setunifieddatasync12), this API does not block the UI thread and is more suitable for UI interactions.
+Writes a **PasteData** object to the pasteboard. This API uses a promise to return the result. This API can be used to write data to the pasteboard asynchronously without blocking the main thread, such as the interaction process that requires the UI response. Unlike the synchronous API [setUnifiedDataSync](#setunifieddatasync12), this API does not block the UI thread and is more suitable for UI interactions.
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
