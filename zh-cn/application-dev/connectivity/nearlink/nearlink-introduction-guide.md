@@ -19,6 +19,8 @@
 
 星闪服务适用于Phone、PC/2in1、TV、Tablet和Wearable设备。
 
+<!--RP1-->
 ## 模拟器支持情况
 
 星闪服务暂不支持模拟器。
+<!--RP1End-->
