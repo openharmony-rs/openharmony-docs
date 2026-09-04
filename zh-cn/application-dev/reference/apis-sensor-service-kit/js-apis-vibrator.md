@@ -2,7 +2,7 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @andeszhang-->
+<!--Designer: @LiuChao-->
 <!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
 
@@ -1120,7 +1120,7 @@ on(type: 'vibratorStateChange', callback: Callback&lt;VibratorStatusEvent&gt;): 
 
 当开发者需要实时感知马达设备的上下线状态变化时使用此接口。适用于分布式多设备场景中动态获取马达设备信息，以便在马达上线时及时触发振动或在下线时停止振动。注册成功后，当马达设备上线或下线时，系统将回调VibratorStatusEvent对象，包含设备ID、马达数量、上下线状态等信息。回调中获取的deviceId可用于[startVibration](#vibratorstartvibration9)和[stopVibration](#vibratorstopvibration19)等接口指定目标设备。
 
-注册回调后，需在合适的时机调用[vibrator.off](#vibratoroff19)注销回调，避免内存泄露。同一type重复注册同一callback不会覆盖，需先off再on。
+注册回调后，需在合适的时机调用[vibrator.off](#vibratoroff19)注销回调，避免内存泄漏。同一type重复注册同一callback不会覆盖，需先off再on。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -1175,7 +1175,7 @@ onVibratorStateChange(callback: Callback&lt;VibratorStatusEvent&gt;): void
 
 当开发者需要实时感知马达设备的上下线状态变化时使用此接口。适用于分布式多设备场景中动态获取马达设备信息，以便在马达上线时及时触发振动或在下线时停止振动。注册成功后，当马达设备上线或下线时，系统将回调VibratorStatusEvent对象，包含设备ID、马达数量、上下线状态等信息。回调中获取的deviceId可用于[startVibration](#vibratorstartvibration9)和[stopVibration](#vibratorstopvibration19)等接口指定目标设备。
 
-注册回调后，需在合适的时机调用[vibrator.off](#vibratoroff19)注销回调，避免内存泄露。同一type重复注册同一callback不会覆盖，需先off再on。
+注册回调后，需在合适的时机调用[vibrator.off](#vibratoroff19)注销回调，避免内存泄漏。同一type重复注册同一callback不会覆盖，需先off再on。
 
 **ArkTS模式:** 该接口仅适用于ArkTS-Sta。
 
