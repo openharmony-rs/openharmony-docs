@@ -817,7 +817,7 @@ CMS封装数据的接收者信息。
 | --------------------- | ----------------------------- | ---- | ---- |------------------------------------------------------ |
 | contentDataFormat     | [CmsContentDataFormat](#cmscontentdataformat18)               | 否   | 是   |内容数据的格式。默认为CmsContentDataFormat.BINARY。   |
 | outFormat             | [CmsFormat](#cmsformat18)                          | 否   |是   | Cms最终数据的输出格式。默认为DER。         |
-| isDetached     | boolean                            | 否   |是   | Cms最终数据是否不包含原始数据。默认为false。true为包含，false为不包含。         |
+| isDetached     | boolean                            | 否   |是   | Cms最终数据是否不包含原始数据。默认为false。true为不包含，false为包含。         |
 
 ## CmsVerificationConfig<sup>22+</sup>
 

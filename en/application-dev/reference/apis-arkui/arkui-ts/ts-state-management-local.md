@@ -6,8 +6,9 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=627767fa3527b3e4ea03a35d3df7c7dd0cac695b translatedAt=2026-09-02T11:19:55.975Z pushedAt=2026-09-03T01:24:48.740Z -->
 
-**@Local** is used in state management V2 to represent the internal state of components, enabling the observation of variables within custom components. It is applicable to scenarios where partial states (such as counters and switch states) need to be maintained and observed within custom components. Using **@Local** can simplify the internal state management logic of components. When the state changes, the UI is automatically refreshed without manual management.
+**\@Local** is used in [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2) to represent the internal state of components, enabling the observation of variables within custom components. It is applicable to scenarios where partial states (such as counters and switch states) need to be maintained and observed within custom components. Using **\@Local** can simplify the internal state management logic of components. When the state changes, the UI is automatically refreshed without manual management.
 
 For details, see [@Local Decorator: Representing the Internal State of Components](../../../ui/state-management/arkts-new-local.md).
 
@@ -41,3 +42,4 @@ struct LocalExample {
   }
 }
 ```
+

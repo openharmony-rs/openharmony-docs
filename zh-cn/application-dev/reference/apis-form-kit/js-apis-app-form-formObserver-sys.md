@@ -1036,7 +1036,7 @@ try {
 
 getRunningFormInfoById(formId: string, isUnusedIncluded: boolean, callback: AsyncCallback&lt;formInfo.RunningFormInfo&gt;): void
 
-根据卡片标识formId，查询已添加的卡片信息。使用callback异步回调。
+根据formId查询已添加的卡片信息。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

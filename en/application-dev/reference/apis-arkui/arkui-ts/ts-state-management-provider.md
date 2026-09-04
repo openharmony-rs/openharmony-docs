@@ -6,8 +6,9 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=627767fa3527b3e4ea03a35d3df7c7dd0cac695b translatedAt=2026-09-02T11:23:44.375Z pushedAt=2026-09-03T02:01:33.400Z -->
 
-**@Provider** and **@Consumer** are used together in state management V2 to implement bidirectional data synchronization across component levels. **@Provider** decorates a data provider to provide data for child components. It is applicable to scenarios where state data needs to be shared across multiple layers of components (with deep component layers) to avoid layer-by-layer data transfer. This simplifies the state management process and reduces the coupling between components.
+**\@Provider** and [@Consumer](./ts-state-management-consumer.md) are used together in [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2) to implement bidirectional data synchronization across component levels. **\@Provider** decorates a data provider to provide data for child components. It is applicable to scenarios where state data needs to be shared across multiple layers of components (with deep component layers) to avoid layer-by-layer data transfer. This simplifies the state management process and reduces the coupling between components.
 
 For details, see [@Provider and @Consumer Decorators: Synchronizing Across Component Levels in a Two-Way Manner](../../../ui/state-management/arkts-new-provider-and-consumer.md).
 
@@ -70,3 +71,4 @@ struct Child {
   }
 }
 ```
+

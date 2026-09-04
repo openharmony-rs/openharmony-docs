@@ -248,7 +248,7 @@ enableScrollInteraction(value: boolean): T
 
 friction(value: number | Resource): T
 
-设置摩擦系数，手动划动滚动区域时生效，仅影响惯性滚动过程，对惯性滚动过程中嵌套滚动组件间的联动效果（如List组件的链式动效[chainAnimation](ts-container-list.md#chainanimation)）有间接影响，适用于需要调整惯性滚动减速快慢的场景。设置为小于等于0的值时，按默认值处理。
+设置摩擦系数，手动滑动滚动区域时生效，仅影响惯性滚动过程，对惯性滚动过程中嵌套滚动组件间的联动效果（如List组件的链式动效[chainAnimation](ts-container-list.md#chainanimation)）有间接影响，适用于需要调整惯性滚动减速快慢的场景。设置为小于等于0的值时，按默认值处理。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -555,7 +555,7 @@ onReachStart(event: () => void): T
 
 滚动组件到达起始位置时触发。
 
-滚动组件初始化时会触发一次，滚动到起始位置时触发一次。边缘效果为弹簧效果时，划动经过起始位置时触发一次，回弹回起始位置时再触发一次。
+滚动组件初始化时会触发一次，滚动到起始位置时触发一次。边缘效果为弹簧效果时，滑动经过起始位置时触发一次，回弹回起始位置时再触发一次。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -581,7 +581,7 @@ onReachEnd(event: () => void): T
 
 滚动组件到达末尾位置时触发。
 
-滚动组件初始化时，若已处于末尾位置则会触发一次。边缘效果为弹簧效果时，划动经过末尾位置时触发一次，回弹回末尾位置时再触发一次。
+滚动组件初始化时，若已处于末尾位置则会触发一次。边缘效果为弹簧效果时，滑动经过末尾位置时触发一次，回弹回末尾位置时再触发一次。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -781,7 +781,7 @@ onWillStartDragging(handler: VoidCallback): T
 
 onWillStopDragging(handler: OnWillStopDraggingCallback): T
 
-滚动组件划动离手时触发，使用鼠标滚轮划动时不会触发。
+滚动组件滑动离手时触发，使用鼠标滚轮滑动时不会触发。
 
 **卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
 
@@ -795,7 +795,7 @@ onWillStopDragging(handler: OnWillStopDraggingCallback): T
 
 | 参数名  | 类型                                                        | 必填 | 说明                         |
 | ------- | ----------------------------------------------------------- | ---- | ---------------------------- |
-| handler | [OnWillStopDraggingCallback](#onwillstopdraggingcallback20) | 是   | 滚动组件划动离手时触发的回调。 |
+| handler | [OnWillStopDraggingCallback](#onwillstopdraggingcallback20) | 是   | 滚动组件滑动离手时触发的回调。 |
 
 **返回值：**
 
@@ -1348,7 +1348,7 @@ setOnScrollFrameBegin(callback: OnScrollFrameBeginCallback | undefined): void
 
 type OnWillStopDraggingCallback = (velocity: number) => void
 
-滚动组件划动离手时触发的回调。
+滚动组件滑动离手时触发的回调。
 
 **卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
 
@@ -1362,7 +1362,7 @@ type OnWillStopDraggingCallback = (velocity: number) => void
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| velocity | number | 是   | 划动离手速度，滚动组件的内容向上滚动时速度为正，向下滚动时速度为负。<br/>单位vp/s。 |
+| velocity | number | 是   | 滑动离手速度，滚动组件的内容向上滚动时速度为正，向下滚动时速度为负。<br/>单位vp/s。 |
 
 ## OnDidStopDraggingCallback<sup>21+</sup>
 

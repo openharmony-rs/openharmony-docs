@@ -542,7 +542,7 @@ private:
        // ...
    };
    ```
-## ListItem横划删除 
+## ListItem横滑删除
 
 1. [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)设置[NODE_LIST_ITEM_SWIPE_ACTION](../reference/apis-arkui/capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_list_item_swipe_action)属性，将[ArkUI_ListItemSwipeActionOption](../reference/apis-arkui/capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)对象作为属性参数传入。
    <!-- @[Provide_wrapper_class_list_items](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemNode.h) -->
@@ -593,7 +593,7 @@ private:
    } // namespace NativeModule
    #endif // MYAPPLICATION_ARKUILISTITEMNODE_H
    ```
-2. 设置创建ListItem和复用ListItem的回调函数。当创建[ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)时，创建ListItem的划出组件，并绑定点击事件，在点击事件中执行删除数据源操作。ListItem复用时，更新划出组件的绑定事件。
+2. 设置创建ListItem和复用ListItem的回调函数。当创建[ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)时，创建ListItem的滑出组件，并绑定点击事件，在点击事件中执行删除数据源操作。ListItem复用时，更新滑出组件的绑定事件。
     <!-- @[SetCallBack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/LazyTextListExample1.h) -->
 
    ``` C

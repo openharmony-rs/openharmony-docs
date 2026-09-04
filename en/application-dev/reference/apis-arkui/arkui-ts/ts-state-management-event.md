@@ -6,8 +6,9 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=627767fa3527b3e4ea03a35d3df7c7dd0cac695b translatedAt=2026-09-02T11:19:57.149Z pushedAt=2026-09-03T01:20:43.801Z -->
 
-**@Event** decorates a callback function, which is used as the output of a custom component in state management V2. **@Event** is usually used together with **@Param**. **@Param** transfers data from a parent component to its child component. **@Event** defines the callback for the child component to transfer messages to the parent component, which is applicable to scenarios where the parent component state change or event processing needs to be triggered in the child component.
+**\@Event** decorates a callback function, which is used as the output of a custom component in [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2). **\@Event** is usually used together with [@Param](./ts-state-management-param.md). **\@Param** transfers data from a parent component to its child component. **\@Event** defines the callback for the child component to transfer messages to the parent component, which is applicable to scenarios where the parent component state change or event processing needs to be triggered in the child component.
 
 For details, see [@Event Decorator: Standardizing Component Output](../../../ui/state-management/arkts-new-event.md).
 
@@ -73,3 +74,4 @@ struct Child {
   }
 }
 ```
+

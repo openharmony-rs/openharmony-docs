@@ -6,8 +6,11 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=627767fa3527b3e4ea03a35d3df7c7dd0cac695b translatedAt=2026-09-02T11:19:56.634Z pushedAt=2026-09-03T01:14:50.622Z -->
 
-**@Computed** is a method decorator used to decorate **getter** methods in state management V2. For details, see [@Computed Decorator: Declaring Computed Properties](../../../ui/state-management/arkts-new-computed.md).
+**@Computed** is a method decorator used in [State Management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2) to decorate a **getter** method, turning it into a computed property. Its return value is cached and recalculated only when the dependent source data changes, reducing the overhead of repeated computation.
+
+For details, see [@Computed Decorator: Declaring Computed Properties](../../../ui/state-management/arkts-new-computed.md).
 
 > **NOTE**
 >
@@ -30,7 +33,7 @@ const Computed: MethodDecorator
 ```ts
 @Entry
 @ComponentV2
-  struct Index {
+struct Index {
   @Local firstName: string = 'Hua';
   @Local lastName: string = 'Li';
 
@@ -47,3 +50,4 @@ const Computed: MethodDecorator
   }
 }
 ```
+

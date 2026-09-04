@@ -836,3 +836,17 @@
 **支持设备**：Phone | PC/2in1 | Tablet | Car | TV | Wearable
 
 **起始版本**：26.1.0
+
+## ohos.permission.ACCESS_USER_PASSIVE_RECOGNITION
+
+允许应用识别当前使用者是否为用户本人。
+
+获取该权限后，应用可以使用用户被动识别能力，识别当前使用者是否为用户本人，并获取用户ID、认证可信等级等信息。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | Car
+
+**起始版本**：26.1.0
