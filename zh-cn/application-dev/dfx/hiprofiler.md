@@ -1041,10 +1041,7 @@ CONFIG
 
 ### 抓取指定进程句柄调用栈
 
-抓取指定进程的句柄调用栈数据。
-> **说明：**
-> 
-> restrace_tag 参数需设置为"RES_FD_ALL"。
+抓取指定进程的句柄调用栈数据，restrace_tag 参数需设置为"RES_FD_ALL"。
 
 ```shell
 $ hiprofiler_cmd \
@@ -1089,10 +1086,7 @@ CONFIG
 
 ### 抓取指定进程DMA内存调用栈
 
-抓取指定进程的DMA内存调用栈数据。
-> **说明：**
-> 
-> restrace_tag 参数需设置为"RES_DMABUF_MASK"。
+抓取指定进程的DMA内存调用栈数据，restrace_tag 参数需设置为"RES_DMABUF_MASK"。
 
 ```shell
 $ hiprofiler_cmd \
