@@ -117,7 +117,7 @@ cancelingUserAuthentication() {
     Logger.info('get userAuth instance successfully.');
     this.handleAuthResultAndCanceling(userAuthInstance, ResultIndex.CANCEL);
   } catch (error) {
-      Logger.error(`auth failed, code is ${error.code}, message is ${error.message}`);
+    Logger.error(`auth failed, code is ${error.code}, message is ${error.message}`);
   }
 }
 ```
