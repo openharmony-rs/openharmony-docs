@@ -5,7 +5,7 @@
 <!--Designer: @chenjinxiang3-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=dedb6730301e201bd92e89c565e2c1a291211a57 translatedAt=2026-09-01T03:43:17.501Z pushedAt=2026-09-01T08:15:36.231Z -->
+<!-- md-trans-meta sourceCommit=dedb6730301e201bd92e89c565e2c1a291211a57 translatedAt=2026-09-01T03:43:17.501Z pushedAt=2026-09-04T08:59:49.593Z -->
 
 This module provides APIs for querying terminal device information, including the device type, brand, model, system version, security patch tag, and unique device ID. It is applicable to scenarios such as device adaptation, version compatibility check, device identification, and statistical analysis, helping you quickly obtain device information for application adaptation and optimization. You cannot configure this information.
 
@@ -330,7 +330,7 @@ Enumerates device types, which can be used to verify the return value of **devic
 apiAvailable(version: string | number): boolean;
 
 Checks whether a specified API version is available on the current device.<br>
-This API provides compatibility check for OpenHarmony and its released versions. A suitable version check method is automatically selected based on the input format and supported API versions.
+This API provides compatibility check for OpenHarmony and its distribution OS API versions. A suitable version check method is automatically selected based on the input format and supported API versions.
 
 **Since**: 26.0.0
 
