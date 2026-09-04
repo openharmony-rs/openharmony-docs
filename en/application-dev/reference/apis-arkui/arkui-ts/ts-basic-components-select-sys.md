@@ -1,4 +1,4 @@
-# Select (system API)
+# Select (System API)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhanghaibo0-->

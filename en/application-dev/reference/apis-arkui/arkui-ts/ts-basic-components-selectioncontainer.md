@@ -791,3 +791,5 @@ struct SelectionContainerControllerExample {
 ```
 
 ![selectionContainerController](figures/selectionContainerController.gif)
+
+<!--no_check-->

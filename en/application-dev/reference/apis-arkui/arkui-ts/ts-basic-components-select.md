@@ -586,7 +586,7 @@ Sets the alignment between the text of a dropdown menu item and the arrow.
 
 | Name | Type                                      | Mandatory | Description                                                         |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ArrowPosition](#arrowposition10enumeration) | Yes   | Alignment between the text of a dropdown menu item and the arrow.<br/>Default value: ArrowPosition.END |
+| value  | [ArrowPosition](#arrowposition10) | Yes   | Alignment between the text of a dropdown menu item and the arrow.<br/>Default value: ArrowPosition.END |
 
 ### arrowPosition<sup>18+</sup>
 
@@ -886,7 +886,7 @@ Method for customizing the text style of the Select button. After textModifier i
 
 | Name   | Type                                                         | Mandatory | Description                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextModifier](ts-universal-attributes-attribute-modifier.md# Custom modifier)> | Yes   | Method for customizing the button text style on the Select component. <br/> When the value of modifier is undefined, the text style is not customized. |
+| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)> | Yes   | Method for customizing the button text style on the Select component. <br/> When the value of modifier is undefined, the text style is not customized. |
 
 ### arrowModifier<sup>20+</sup>
 
@@ -936,7 +936,7 @@ If [optionFont](#optionfont) and the font attribute of optionTextModifier are se
 
 ### selectedOptionTextModifier<sup>20+</sup>
 
-selectedOptionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribute-modifier.md# custom modifier)>)
+selectedOptionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)>)
 
 Method for customizing the text style of the selected item in the Select dropdown menu. After selectedOptionTextModifier is applied, the text style of the selected item in the dropdown menu is completely customized by the developer.
 
