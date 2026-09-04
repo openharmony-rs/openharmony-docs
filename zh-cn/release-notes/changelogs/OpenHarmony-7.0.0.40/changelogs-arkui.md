@@ -90,7 +90,7 @@ struct MaterialScopeExample {
 
 变更后，如果组件需要沉浸光感效果，需要将该组件放置于Navigation/NavDestination标题栏或Tabs的底部TabBar。
 
-下面提供两个示例，分别介绍如何将组件放置于Navigation标题栏、横向Tabs中barPosition为BarPosition.End的底部TabBar中，从而显示沉浸光感效果。
+下面提供三个示例，分别介绍如何将组件放置于Navigation标题栏、横向Tabs中barPosition为BarPosition.End的底部TabBar中，开启沉浸光感效果，以及弹窗类组件开启沉浸光感的使用示例。
 
 - Navigation标题栏适配指导
 
@@ -125,7 +125,7 @@ struct MaterialScopeExample {
         }))
         .justifyContent(FlexAlign.Center)
         .backgroundColor(Color.Transparent)
-        // 在Navigation标题栏区域中设置Column的沉浸光感效果，处于生效范围  内，沉浸光感效果生效。
+        // 在Navigation标题栏区域中设置Column的沉浸光感效果，处于生效范围内，沉浸光感效果生效。
         .systemMaterial(new uiMaterial.ImmersiveMaterial({
           style: uiMaterial.ImmersiveStyle.THIN,
         }))
@@ -160,7 +160,7 @@ struct MaterialScopeExample {
         .title({ builder: this.customTitle, height: this.titleHeight },   { barStyle: BarStyle.STACK })
         .titleMode(NavigationTitleMode.Full)
   
-        // 在沉浸光感生效范围外，通过systemMaterial设置Column组件的沉浸光感  效果，沉浸光感效果不生效。
+        // 在沉浸光感生效范围外，通过systemMaterial设置Column组件的沉浸光感效果，沉浸光感效果不生效。
         // this.customTitle()
       }.width('100%').height('100%').backgroundColor('#F1F3F5')
     }
@@ -279,3 +279,79 @@ struct MaterialScopeExample {
   在底部TabBar中，为Column组件设置了沉浸光感，处于生效范围内，沉浸光感效果生效。示例图片如下：
 
   ![tabbarCustomTabbar-w300](./figures/tabsCustomTabbar.jpg)
+
+
+- 弹窗类组件沉浸光感使用示例
+
+  由于不处于Navigation/NavDestination标题栏或Tabs的底部TabBar的区域内，因此以下两个场景，设置于背板的沉浸光感效果不会生效：
+
+  - 使用Stack组件堆叠的形式配合组件可见性实现的类弹窗效果。
+
+  - 设置于自定义弹窗外层容器组件上的沉浸光感效果。
+
+  上述两种场景，若想生效沉浸光感效果，建议使用弹窗类组件和弹窗类接口配合沉浸光感属性进行改造。以下示例展示了通过[CustomDialog](../../../application-dev/reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)的systemMaterial属性开启沉浸光感。
+
+  ```ts
+  import { uiMaterial } from '@kit.ArkUI';
+  
+  @CustomDialog
+  struct CustomDialogExample {
+    controller?: CustomDialogController;
+  
+    build() {
+      Column() {
+        Text('这是自定义弹窗')
+          .fontSize(30)
+          .height(100)
+        Button('点我关闭弹窗')
+          .onClick(() => {
+            if (this.controller != undefined) {
+              this.controller.close();
+            }
+          })
+          .margin(20)
+      }
+      // 在自定义弹窗外层容器上设置沉浸光感效果，不处于沉浸光感的生效区域中，沉浸光感效果不生效
+      // .systemMaterial(new uiMaterial.ImmersiveMaterial({
+      //   style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+      // }))
+    }
+  }
+  
+  @Entry
+  @Component
+  struct CustomDialogUser {
+    dialogController: CustomDialogController | null = new CustomDialogController({
+      builder: CustomDialogExample(),
+      systemMaterial: new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.ULTRA_THIN })
+    })
+  
+    build() {
+      Stack({ alignContent: Alignment.Top }) {
+        Column() {
+          Button('CustomDialog')
+            .margin(20)
+            .onClick(() => {
+              if (this.dialogController != null) {
+                this.dialogController.open();
+              }
+            })
+        }
+        .height('100%')
+        .width('100%')
+        .linearGradient({
+          angle: 0,
+          colors: [
+            ['#004AAF', 0.0],
+            ['#2787D9', 0.5],
+            ['#F0FAFF', 1.0]
+          ]
+        })
+      }
+    }
+  }
+  ```
+
+  使用CustomDialog的systemMaterial属性开启弹窗的沉浸光感效果，示例图片如下：
+
+  ![customDialog](./figures/customDialog.JPG)
