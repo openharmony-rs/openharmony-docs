@@ -25,7 +25,7 @@ import { connection } from '@kit.NetworkKit';
 
 createNetConnection(netSpecifier?: NetSpecifier, timeout?: number): NetConnection
 
-创建一个NetConnection对象，可用于监听网络状态。[netSpecifier](#netspecifier)表示需要监听网络的网络特征；timeout是超时时间（单位：毫秒)；netSpecifier是timeout的必要条件，两者都没有则表示关注默认网络。
+创建一个NetConnection对象，可用于监听网络状态。[netSpecifier](#netspecifier)表示需要监听网络的网络特征；timeout是超时时间（单位：ms)；netSpecifier是timeout的必要条件，两者都没有则表示关注默认网络。
 
 >**说明：**
 >
@@ -40,7 +40,7 @@ createNetConnection(netSpecifier?: NetSpecifier, timeout?: number): NetConnectio
 | 参数名       | 类型                          | 必填 | 说明                                                         |
 | ------------ | ----------------------------- | ---- | ------------------------------------------------------------ |
 | netSpecifier | [NetSpecifier](#netspecifier) | 否   | 需要监听网络的网络特征，缺省则表示监听默认网络。                   |
-| timeout      | number                        | 否   | 获取netSpecifier指定网络时的超时时间，单位为毫秒，传入值需为uint32_t范围内的整数，仅netSpecifier存在时生效，默认值为0。<br>**说明**：当监听网络不存在时，会尝试激活此网络。若超过设置的超时时间，且注册了网络状态监听，则会触发netUnavailable事件。|
+| timeout      | number                        | 否   | 获取netSpecifier指定网络时的超时时间，单位为ms，传入值需为uint32_t范围内的整数，仅netSpecifier存在时生效，默认值为0。<br>**说明**：当监听网络不存在时，会尝试激活此网络。若超过设置的超时时间，且注册了网络状态监听，则会触发netUnavailable事件。|
 
 **返回值：**
 
@@ -2761,7 +2761,7 @@ queryProbeResult(destination: string, duration: number): Promise\<ProbeResultInf
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | destination | string | 是 | 目标域名或IP地址，例如www.example.com、8.8.8.8。 |
-| duration | number | 是 | 探测持续时间，单位为秒，取值范围\[1, 1000\]。探测间隔为1秒。若未出现异常（例如断网），探测时间到期后返回探测结果。该字段表示探测持续总时长，设置过长可能导致长时间占用应用线程资源。|
+| duration | number | 是 | 探测持续时间，单位为，取值范围\[1, 1000\]。探测间隔为1秒。若未出现异常（例如断网），探测时间到期后返回探测结果。该字段表示探测持续总时长，设置过长可能导致长时间占用应用线程资源。|
 
 **返回值：**
 
@@ -4066,7 +4066,7 @@ UDP端口状态信息。
 | -------- | -------- | -------- | -------- | -------- |
 | jumpNo | number | 否 | 否 | 跳数序号。 |
 | address | string | 否 | 否 | 该跳的IP地址。 |
-| rtt | number[] | 否 | 否 | 往返时间（RTT），单位为毫秒。每一跳发送5个探测报文，数组元素依次为这些探测报文RTT中的最小值、平均值、最大值、标准差。 |
+| rtt | number[] | 否 | 否 | 往返时间（RTT），单位为ms。每一跳发送5个探测报文，数组元素依次为这些探测报文RTT中的最小值、平均值、最大值、标准差。 |
   
 
 ## ProbeResultInfo
@@ -4082,4 +4082,4 @@ UDP端口状态信息。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | lossRate | number | 否 | 否 | 丢包率，取值范围\[0, 100\]。例如，100表示100%丢包，50表示50%丢包。 |
-| rtt | number[] | 否 | 否 | 往返时间（RTT），单位为毫秒。对目的主机发送多个探测报文，探测报文数量由[queryProbeResult](#connectionqueryproberesult)接口中duration参数决定。数组元素依次为这些探测报文RTT中最小值、平均值、最大值、标准差。 |
+| rtt | number[] | 否 | 否 | 往返时间（RTT），单位为ms。对目的主机发送多个探测报文，探测报文数量由[queryProbeResult](#connectionqueryproberesult)接口中duration参数决定。数组元素依次为这些探测报文RTT中最小值、平均值、最大值、标准差。 |
