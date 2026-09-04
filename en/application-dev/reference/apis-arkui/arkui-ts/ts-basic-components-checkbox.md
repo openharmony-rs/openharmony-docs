@@ -5,14 +5,17 @@
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=ecf5d58a25055daa53a34747272770e0f3c1f57a translatedAt=2026-09-03T03:47:28.534Z -->
 
-**Checkbox** is a component that is used to enable or disable an option.
+Provides a checkbox component for selecting among multiple options.
 
 >  **NOTE**
 >
 >  Since API version 11, the default style of the **Checkbox** component is changed from rounded square to circle.
 >
 >  This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+>
+>  By default, this component has a [margin](ts-universal-attributes-size.md#margin) of {&nbsp;top: '14px',&nbsp;right: '14px',&nbsp;bottom: '14px',&nbsp;left: '14px' }.
 
 ## Child Components
 
@@ -22,7 +25,7 @@ Not supported
 
 Checkbox(options?: CheckboxOptions)
 
-Creates a check box.
+Provides a checkbox component for selecting among multiple options.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -34,7 +37,7 @@ Creates a check box.
 
 | Name | Type                                       | Mandatory| Description              |
 | ------- | ------------------------------------------- | ---- | ------------------ |
-| options | [CheckboxOptions](#checkboxoptions)| No  | Check box parameters.|
+| options | [CheckboxOptions](#checkboxoptions) | No | Configures the parameters of the checkbox. If this parameter is not passed, the checkbox uses the default configuration. |
 
 ## CheckboxOptions
 
@@ -44,9 +47,9 @@ Provides information about the check box.
 
 | Name | Type| Read-Only| Optional| Description|
 | --------| --------| ------ | -------- | -------- |
-| name    | string | No| Yes| Name of the check box.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| group   | string | No| Yes| Group name of the check box (that is, the name of the check box group to which the check box belongs).<br>**NOTE**<br>For the settings to take effect, this parameter must be used with the [CheckboxGroup](ts-basic-components-checkboxgroup.md) component.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| indicatorBuilder<sup>12+</sup> | [CustomBuilder](ts-types.md#custombuilder8) | No| Yes| Custom component to indicate that the check box is selected. This custom component is center aligned with the check box. When **indicatorBuilder** is set to **undefined** or **null**, it defaults to the state where it is not set.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| name    | string | No | Yes | Name of the checkbox, used to identify different checkbox instances.<br/> Default value: undefined. <br/>**Widget Capability:** Since API version 9, this API is supported in ArkTS widgets.<br/>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
+| group   | string | No | Yes | Name of the group to which the checkbox belongs (that is, the name of the CheckboxGroup to which it belongs).<br/> Default value: undefined, used with nodes whose group information is undefined in [CheckboxGroupOptions](ts-basic-components-checkboxgroup.md#checkboxgroupoptions). <br/>**NOTE**<br/>This value is useless when the [CheckboxGroup](ts-basic-components-checkboxgroup.md) component is not used together. <br/>**Widget Capability:** Since API version 9, this API is supported in ArkTS widgets.<br/>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
+| indicatorBuilder<sup>12+</sup> | [CustomBuilder](ts-types.md#custombuilder8) | No | Yes | Configures the selected style of the checkbox as a custom component. Use this parameter when a selected style other than the default check icon (such as text, numbers, or a custom icon) is required. The custom component and the Checkbox component are aligned and displayed with their center points. When indicatorBuilder is set to undefined/null, it defaults to the state where indicatorBuilder is not set, and the default check icon style is used.<br/>**Atomic service API:** Since API version 12, this API is supported in atomic services.<br/>**Model restriction:** This API can be used only in the stage model.|
 
 ## Attributes
 
@@ -86,13 +89,15 @@ This attribute supports two-way binding through [$$](../../../ui/state-managemen
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name    | Type                                                        | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| isSelected | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether the check box is selected.<br>If **isSelected** is set to **undefined**, the default value **false** is used.<br>**true**: The check box is selected. <br>**false**: The check box is not selected.|
+| isSelected | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes | Whether the checkbox is selected.<br/>The default value is false when the value of isSelected is undefined.<br/>The checkbox is selected when the value is true, and is not selected when the value is false. |
 
 ### selectedColor
 
@@ -122,13 +127,15 @@ Sets the color of the check box when it is selected. Compared with [selectedColo
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Color of the check box when it is selected.<br>If **resColor** is set to **undefined**, the default value **$r('sys.color.ohos_id_color_text_primary_activated')** is used.<br>An invalid value is handled as the default value.|
+| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes | Color of the checkbox in the selected state.<br/>When the value of resColor is undefined, the default value $r('sys.color.ohos_id_color_text_primary_activated') is used.<br/>Invalid values are handled as the default value. |
 
 ### unselectedColor<sup>10+</sup>
 
@@ -137,6 +144,8 @@ unselectedColor(value: ResourceColor)
 Sets the border color of the check box when it is not selected.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -154,13 +163,15 @@ Sets the border color of the check box when it is not selected. Compared with [u
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Border color of the check box when it is not selected.<br>If **resColor** is set to **undefined**, the default value **$r('sys.color.ohos_id_color_switch_outline_off')** is used.|
+| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes | Border color of the checkbox in the unselected state.<br/>When the value of resColor is undefined, the default value $r('sys.color.ohos_id_color_switch_outline_off') is used.|
 
 ### mark<sup>10+</sup>
 
@@ -169,6 +180,8 @@ mark(value: MarkStyle)
 Sets the check mark style of the check box.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -186,13 +199,15 @@ Sets the check mark style of the check box. Compared with [mark](#mark10)<sup>10
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[MarkStyle](ts-types.md#markstyle10)> | Yes  | Check mark style of the check box. If **indicatorBuilder** is set, the style is determined by **indicatorBuilder**.<br>If **style** is set to **undefined**, the default value is used: {<br>strokeColor : `$r('sys.color.ohos_id_color_foreground_contrary')`,<br>strokeWidth: `$r('sys.float.ohos_id_checkbox_stroke_width')`,<br>size: '20vp'<br>} |
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[MarkStyle](ts-types.md#markstyle10) | Yes   | Style of the internal icon of the checkbox. When indicatorBuilder is set, the content in indicatorBuilder is displayed.<br/>When the value of style is undefined, the default value is: {<br/>strokeColor : `$r('sys.color.ohos_id_color_foreground_contrary')`,<br/>strokeWidth: `$r('sys.float.ohos_id_checkbox_stroke_width')`,<br/>size: '20vp'<br/>} |
 
 ### shape<sup>11+</sup>
 
@@ -203,6 +218,8 @@ Sets the check box shape. To adjust the style of the current check box, use [con
 **Widget capability**: This API can be used in ArkTS widgets since API version 11.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -216,11 +233,13 @@ Sets the check box shape. To adjust the style of the current check box, use [con
 
 shape(shape: Optional\<CheckBoxShape>)
 
-Sets the check box shape. Compared with [shape](#shape11)<sup>11+</sup>, this API supports the **undefined** type for the **shape** parameter. To adjust the style of the current check box, use [contentModifier](#contentmodifier12).
+Sets the shape of the **Checkbox** component. Compared with [shape](#shape11)<sup>11+</sup>, the shape parameter adds support for the undefined type. To adjust the style of the current **Checkbox**, use the [contentModifier](#contentmodifier12) attribute to customize the **Checkbox** style.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -228,7 +247,7 @@ Sets the check box shape. Compared with [shape](#shape11)<sup>11+</sup>, this AP
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| shape  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[CheckBoxShape](ts-appendix-enums.md#checkboxshape11)> | Yes  | Shape of the check box.<br>If **shape** is set to **undefined**, the default value **CheckBoxShape.CIRCLE** is used.|
+| shape  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CheckBoxShape](ts-appendix-enums.md#checkboxshape11)> | Yes   | Component shape of the Checkbox, which can be a circle or a rounded square.<br/>When the value of shape is undefined, the default value is CheckBoxShape.CIRCLE. |
 
 ### contentModifier<sup>12+</sup>
 
@@ -238,13 +257,15 @@ Creates a content modifier for the **Checkbox** component. Setting this attribut
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                         | Mandatory| Description                                            |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<CheckBoxConfiguration>](#checkboxconfiguration12) | Yes  | Content modifier to apply to the **Checkbox** component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.|
+| modifier  | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)\<[CheckBoxConfiguration](#checkboxconfiguration12)\> | Yes   | Method for customizing the content area on the Checkbox component.<br/>modifier: content modifier. Developers need to customize a class to implement the ContentModifier interface. |
 
 ### contentModifier<sup>18+</sup>
 
@@ -254,13 +275,15 @@ Creates a content modifier for the **Checkbox** component. Compared with [conten
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<CheckBoxConfiguration>](#checkboxconfiguration12)> | Yes  | Content modifier to apply to the **Checkbox** component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.<br>If **modifier** is set to **undefined**, no content modifier is used.|
+| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)\<[CheckBoxConfiguration](#checkboxconfiguration12)\>\> | Yes | Method for customizing the content area on the Checkbox component.<br/>modifier: content modifier. The developer needs to customize a class to implement the ContentModifier interface.<br/>When the value of modifier is undefined, the content modifier is not used. |
 
 ## Events
 
@@ -282,7 +305,7 @@ Invoked when the selected state of the check box changes.
 
 | Name  | Type                                                   | Mandatory| Description            |
 | -------- | ------------------------------------------------------- | ---- | ---------------- |
-| callback | [OnCheckboxChangeCallback](#oncheckboxchangecallback18) | Yes  | Callback used to return the selected state.|
+| callback | [OnCheckboxChangeCallback](#oncheckboxchangecallback18) | Yes | Callback invoked to return the selected state. The value **true** indicates that the checkbox is selected, and **false** indicates that it is not selected. |
 
 ### onChange<sup>18+</sup>
 
@@ -294,23 +317,27 @@ Invoked when the selected state of the check box changes. Compared with [onChang
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[OnCheckboxChangeCallback](#oncheckboxchangecallback18)> | Yes  | Callback used to return the selected state.<br>If **callback** is set to **undefined**, the callback function is not used.|
+| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnCheckboxChangeCallback](#oncheckboxchangecallback18)> | Yes | Returns the selected state. The value true indicates that the checkbox is selected, and false indicates that it is not selected.<br/>When the value of callback is undefined, the callback is not used. |
 
 ## OnCheckboxChangeCallback<sup>18+</sup>
 
 type OnCheckboxChangeCallback  = (value: boolean) => void
 
-Represents the callback invoked when the selected state of the check box changes.
+Callback invoked when the selected state of the checkbox changes.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -326,13 +353,15 @@ You need a custom class to implement the **ContentModifier** API. Inherits from 
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type   |    Read-Only   |    Optional     |  Description             |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
 | name | string | No| No|Name of the check box.|
-| selected | boolean| No| No| Whether the check box is selected.<br>**true**: The check box is selected. <br>**false**: The check box is not selected.<br>If the **select** attribute is not set, the default value **false** is used.<br>If the **select** attribute is set, the attribute value is used here.|
-| triggerChange |Callback\<boolean>| No| No|Triggers a change in the check box selection state. <br>The value **true** indicates a change from unselected to selected, and **false** indicates a change from selected to unselected.|
+| selected | boolean| No | No | Whether the checkbox is selected. The value true means the checkbox is selected, and the value false means the checkbox is not selected.<br/>If the select attribute is not set, the default value is false.<br/>If the select attribute is set, this value is the same as the select attribute. |
+| triggerChange |Callback\<boolean>| No | No |Callback invoked when the selected state of the checkbox changes. The value true sets the checkbox to the selected state, and the value false sets the checkbox to the unselected state. |
 
 ## Example
 
@@ -352,14 +381,14 @@ struct CheckboxExample {
         .selectedColor(0xed6f21)
         .shape(CheckBoxShape.CIRCLE)
         .onChange((value: boolean) => {
-          console.info('Checkbox1 change is' + value);
+          console.info('Checkbox1 change is ' + value);
         })
       Checkbox({ name: 'checkbox2', group: 'checkboxGroup' })
         .select(false)
         .selectedColor(0x39a2db)
         .shape(CheckBoxShape.ROUNDED_SQUARE)
         .onChange((value: boolean) => {
-          console.info('Checkbox2 change is' + value);
+          console.info('Checkbox2 change is ' + value);
         })
     }
   }
@@ -387,10 +416,10 @@ struct Index {
             .selectedColor(0x39a2db)
             .shape(CheckBoxShape.ROUNDED_SQUARE)
             .onChange((value: boolean) => {
-              console.info('Checkbox1 change is'+ value);
+              console.info('Checkbox1 change is ' + value);
             })
             .mark({
-              strokeColor:Color.Black,
+              strokeColor: Color.Black,
               size: 50,
               strokeWidth: 5
             })
@@ -404,7 +433,7 @@ struct Index {
             .selectedColor(0x39a2db)
             .shape(CheckBoxShape.ROUNDED_SQUARE)
             .onChange((value: boolean) => {
-              console.info('Checkbox2 change is' + value);
+              console.info('Checkbox2 change is ' + value);
             })
             .width(30)
             .height(30)
@@ -422,7 +451,7 @@ struct Index {
 ![](figures/checkbox2.gif)
 
 ### Example 3: Customizing the Check Box Style
-This example demonstrates how to implement a custom check box using [contentModifier](#contentmodifier12). This check box comes in the custom pentagon style. When selected, the check box shows a red triangle pattern inside, and the title displays the word "Selected;" when deselected, the check box hides the red triangle pattern inside, and the title displays the word "Unselected."
+This example uses the [contentModifier](#contentmodifier12) attribute to implement a custom checkbox style, which implements a pentagon-shaped checkbox. When selected, a red triangle pattern is displayed inside and the title shows "Selected"; when deselected, the red triangle pattern disappears and the title shows "Unselected".
 
 ```ts
 // xxx.ets
@@ -452,9 +481,9 @@ function buildCheckbox(config: CheckBoxConfiguration) {
         .strokeWidth(3)
         .onClick(() => {
           if (config.selected) {
-            config.triggerChange(false);
+            config.triggerChange(false); // Trigger the checkbox selected state change and set it to unselected.
           } else {
-            config.triggerChange(true);
+            config.triggerChange(true); // Trigger the checkbox selected state change and set it to selected.
           }
         })
         .opacity(config.enabled ? 1 : 0.1)
@@ -492,7 +521,7 @@ struct Index {
       Checkbox({ name: 'Check box status', group: 'checkboxGroup' })
         .contentModifier(new MyCheckboxStyle(Color.Red))
         .onChange((value: boolean) => {
-          console.info('Checkbox change is' + value);
+          console.info('Checkbox change is ' + value);
         }).enabled(this.checkboxEnabled)
 
       Row() {
@@ -522,7 +551,7 @@ struct CheckboxExample {
   @Builder
   indicatorBuilder(value: number) {
     Column(){
-      Text(value > 99 ? '99+': value.toString())
+      Text(value > 99 ? '99+' : value.toString())
         .textAlign(TextAlign.Center)
         .fontSize(value > 99 ?  '16vp': '20vp')
         .fontWeight(FontWeight.Medium)
@@ -533,13 +562,13 @@ struct CheckboxExample {
     Row() {
       Column() {
         Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center}) {
-          Checkbox({ name: 'checkbox1', group: 'checkboxGroup', indicatorBuilder:()=>{this.indicatorBuilder(9)}})
+          Checkbox({ name: 'checkbox1', group: 'checkboxGroup', indicatorBuilder: () => this.indicatorBuilder(9)})
             .shape(CheckBoxShape.CIRCLE)
             .onChange((value: boolean) => {
-              console.info('Checkbox1 change is'+ value);
+              console.info('Checkbox1 change is ' + value);
             })
             .mark({
-              strokeColor:Color.Black,
+              strokeColor: Color.Black,
               size: 50,
               strokeWidth: 5
             })
@@ -548,10 +577,10 @@ struct CheckboxExample {
           Text('Checkbox1').fontSize(20)
         }.padding(15)
         Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-          Checkbox({ name: 'checkbox2', group: 'checkboxGroup', indicatorBuilder:()=>{this.indicatorBuilder(100)}})
+          Checkbox({ name: 'checkbox2', group: 'checkboxGroup', indicatorBuilder: () => this.indicatorBuilder(100)})
             .shape(CheckBoxShape.ROUNDED_SQUARE)
             .onChange((value: boolean) => {
-              console.info('Checkbox2 change is' + value);
+              console.info('Checkbox2 change is ' + value);
             })
             .width(30)
             .height(30)
@@ -608,7 +637,7 @@ struct CheckboxExample {
                 .selectedColor('#007DFF')
                 .shape(CheckBoxShape.ROUNDED_SQUARE)
                 .onChange((value: boolean) => {
-                  console.info('Checkbox' + item + 'change is' + value);
+                  console.info('Checkbox ' + item + ' change is ' + value);
                 })
                 .margin({ left: 20 })
               Text('Checkbox' + item)
@@ -643,7 +672,7 @@ struct CheckboxExample {
                 .selectedColor('#007DFF')
                 .shape(CheckBoxShape.ROUNDED_SQUARE)
                 .onChange((value: boolean) => {
-                  console.info('Checkbox' + item + 'change is' + value);
+                  console.info('Checkbox ' + item + ' change is ' + value);
                 })
                 .margin({ left: 20 })
               Text('Checkbox' + item)
@@ -678,7 +707,7 @@ struct CheckboxExample {
                 .selectedColor('#007DFF')
                 .shape(CheckBoxShape.ROUNDED_SQUARE)
                 .onChange((value: boolean) => {
-                  console.info('Checkbox' + item + 'change is' + value);
+                  console.info('Checkbox ' + item + ' change is ' + value);
                 })
                 .margin({ left: 20 })
               Text('Checkbox' + item)
@@ -692,7 +721,7 @@ struct CheckboxExample {
         }
       }.margin({ bottom: 15 })
 
-      // Global Select All button
+      // Select all button.
       Flex({ justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center }) {
         Row() {
           CheckboxGroup({ group: 'checkboxGroup' })
@@ -712,7 +741,7 @@ struct CheckboxExample {
         }
       }.margin({ bottom: 15 })
 
-      // Obtain the selection information.
+      // Obtain the selected information.
       Button('get selected info')
         .margin({ top: 10 })
         .onClick(() => {
@@ -725,7 +754,7 @@ struct CheckboxExample {
 }
 ```
 
-![checkbox5](figures/checkbox5.gif)
+![](figures/checkbox5.gif)
 
 ### Example 6: Implementing Swipe-based Multi-Selection
 
@@ -746,15 +775,11 @@ struct Index {
   @State selectedList: number[] = [];
   @State image: Resource[] =
     // Replace $r('app.media.xxx') with the image resource file you use.
-    [$r("app.media.imageOne"), $r('app.media.imageTwo'), $r('app.media.imageThree'), $r('app.media.imageFour')];
+    [$r('app.media.imageOne'), $r('app.media.imageTwo'), $r('app.media.imageThree'), $r('app.media.imageFour')];
   private selectedState: SelectedState = SelectedState.None;
   private componentUtils: ComponentUtils = this.getUIContext().getComponentUtils();
   private listScroller: ListScroller = new ListScroller();
   private currentOffsetY: number = 0;
-
-  onChange() {
-    console.info('change successful');
-  }
 
   getSpeed(fingerY: number, edge: number) {
     return 150 * 150 * (fingerY - edge) / 2000 / Math.abs(fingerY - edge);
@@ -778,6 +803,7 @@ struct Index {
     return this.selectedEnd;
   }
   
+  // Update the selected photo list in batches based on the start and end range of the selected state.
   onSelectedEndChange() {
     let start: number = -1;
     let end: number = -1;
@@ -804,6 +830,7 @@ struct Index {
     this.selectedList = this.selectedPhotos.convertToArray();
   }
 
+  // Control automatic scrolling of the list based on the finger position.
   scroll(fingerY: number) {
     if (fingerY > 700 && !this.listScroller.isAtEnd()) {
       this.listScroller.scrollBy(0, this.getSpeed(fingerY, 700));
@@ -934,10 +961,10 @@ struct Index {
 }
 
 enum SelectedState {
-  None,
-  Selected,
-  Remove
+  None, // Default state.
+  Selected, // Selected state. Adds selected items when swiping.
+  Remove // Remove state. Removes selected items when swiping.
 }
 ```
 
-![checkbox6](figures/checkbox6.gif)
+![](figures/checkbox6.gif)

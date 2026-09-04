@@ -5,6 +5,7 @@
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=4e262b0cf5d2db1530f56b5b4a73ee6cf2edf084 translatedAt=2026-09-03T04:17:34.106Z -->
 
 The **Navigation** component is the root view container for navigation. It typically functions as the root container of a page and includes a title bar, content area, and toolbar. The content area switches between the home page content (child components of **Navigation**) and non-home page content (child components of [NavDestination](ts-basic-components-navdestination.md)) through routing.
 
@@ -2184,7 +2185,7 @@ Defines the title bar options.
 
 > **systemMaterial attribute description**
 >
-> The title bar material takes effect on the background of the back button, the background of the menu button, and the background of the **More** dialog box of the menu. When the application-level system material switch is set to **disable**, the title bar material effect does not take effect regardless of the value of **systemMaterial**. For details about the application-level system material switch, see [MaterialState]../arkts-apis-uimaterial.md#materialstate). The effects of different values for the system material of the title bar are as follows:
+> The title bar material takes effect on the background of the back button, the background of the menu button, and the background of the **More** dialog box of the menu. When the application-level system material switch is set to **disable**, the title bar material effect does not take effect regardless of the value of **systemMaterial**. For details about the application-level system material switch, see [MaterialState](../arkts-apis-uimaterial.md#materialstate). The effects of different values for the system material of the title bar are as follows:
 >
 > - **undefined** (default value): When the application-level system material switch is set to **default**, the title bar has no material effect. When the application-level system material switch is set to **enable**, the default immersive material effect takes effect on the title bar.
 >
@@ -5754,7 +5755,7 @@ struct NavigationExample {
 
 ### Example 20: Setting systemMaterial to Enable the Material Effect for the Title Bar
 
-This example demonstrates how to use the **systemMaterial** attribute to enable the material effect for the title bar.
+This example demonstrates how to use the **systemMaterial** attribute to set the system material of the component and enable the immersive light effect for the title bar.
 
 The **systemMaterial** attribute is added to [NavigationTitleOptions](#navigationtitleoptions11) since API version 26.0.0.
 
@@ -5996,3 +5997,4 @@ struct NavigationConfig {
 ```
 
 ![navigationClearContent.gif](figures/navigationClearContent.gif)
+
