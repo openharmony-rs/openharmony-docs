@@ -6,6 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=e9a226ed6be406b56bf2cbe8be651aa0b4b98e5a translatedAt=2026-09-01T01:20:08.830Z pushedAt=2026-09-04T02:13:57.494Z -->
 
 The **inputConsumer** module implements listening for combination key events as well as listening and interception for volume key events.
 
@@ -15,9 +16,7 @@ The **inputConsumer** module implements listening for combination key events as 
 >
 > - Global shortcut keys are combination keys defined by the system or application. System shortcut keys are defined by the system, and application shortcut keys are defined by applications.
 
-
 ## Modules to Import
-
 
 ```js
 import { inputConsumer, KeyEvent } from '@kit.InputKit';
@@ -32,7 +31,7 @@ Defines shortcut key options.
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ------- | ------- | ------- |
 | preKeys   | Array&lt;number&gt; | No     | No     | Modifier key set (including Ctrl, Shift, and Alt). One to four modifier keys are supported. There is no requirement on the sequence of modifier keys.<br>For example, in **Ctrl+Shift+Esc**, **Ctrl** and **Shift** are modifier keys.|
-| finalKey  | number  | No     | No     | Modified key, which can be any key except the modifier keys and Meta key. For details about the keys, see [@ohos.multimodalInput.keyCode (Keycode)](js-apis-keycode.md).<br>For example, in **Ctrl+Shift+Esc**, **Esc** is the modifier key.|
+| finalKey  | number  | No     | No     | Modified key, which can be any key except the modifier keys and Meta key. For details about the keys, see [@ohos.multimodalInput.keyCode (Keycode)](js-apis-keycode.md).<br>For example, in **Ctrl+Shift+Esc**, **Esc** is the modified key.|
 | isRepeat  | boolean  | No     | Yes     | Whether to report repeated key events. The value **true** means to report repeated key events, and the value **false** means the opposite. The default value is **true**.|
 
 ## KeyPressedConfig<sup>16+</sup>
@@ -41,12 +40,13 @@ Sets the key event consumption configuration.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
 
-**Device behavior differences**: In versions earlier than API version 23, this API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned. Since API version 23, this API can be properly called on phones, tablets, PCs/2-in-1 devices, and TVs. On other device types, error code 801 is returned.
+**Device behavior difference**: Before API version 23, this API is supported on phones, tablets, PCs/2-in-1 devices, and TVs. On other device types, this API returns error code 801. Since API version 23, this API is supported on phones, tablets, PCs/2-in-1 devices, TVs, and car devices. On other device types, this API returns error code 801.
 
 <!--Table: 10%; 10%; 10%; 10%; 60%-->
+
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ------- | ------- | ------- |
-| key       | number  | No     | No     | Key value.<br>**Note:** Since API version 26.0.0, the [KEYCODE_FINGERPRINT_SLIDE_UP](js-apis-keycode.md#keycode) and [KEYCODE_FINGERPRINT_SLIDE_DOWN](js-apis-keycode.md#keycode) keys are supported. The keys are not universal device keys. Before using them, check whether the current device supports the reporting of related key events. For details, see [Preferential Response of System Function Keys](../../device/input/keypressed-guidelines.md).<br>Since API version 21, the [KEYCODE_MEDIA_PLAY_PAUSE](js-apis-keycode.md#keycode), [KEYCODE_MEDIA_NEXT](js-apis-keycode.md#keycode), and [KEYCODE_MEDIA_PREVIOUS](js-apis-keycode.md#keycode) keys are supported.<br>In API version 20 or earlier versions, only the [KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode) and [KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode) keys are supported.|
+| key       | number  | No      | No      | Key value.<br/>**Note:** Since API version 26.0.0, the [KEYCODE_FINGERPRINT_SLIDE_UP](js-apis-keycode.md#keycode) key and [KEYCODE_FINGERPRINT_SLIDE_DOWN](js-apis-keycode.md#keycode) key are newly supported. These are not universal key values across devices. Before using them, check whether the current device supports reporting the related key events. For details, see [Development Guide for Prioritized Response to System Function Keys](../../device/input/keypressed-guidelines.md).<br/>Since API version 21, the [KEYCODE_MEDIA_PLAY_PAUSE](js-apis-keycode.md#keycode) key, [KEYCODE_MEDIA_NEXT](js-apis-keycode.md#keycode) key, and [KEYCODE_MEDIA_PREVIOUS](js-apis-keycode.md#keycode) key are newly supported.<br/>For API version 20 and earlier, only the [KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode) key and [KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode) key are supported. |
 | action    | number  | No     | No     | Subscription type.<br>**Note**: Since API version 21, the value of this parameter can be **1** or **2**. The value **1** indicates subscription to only key press events, and the value **2** indicates subscription to both key press and release events.<br>In API version 20 or earlier versions, the value of this parameter can only be set to **1**, indicating subscription to only key press events.|
 | isRepeat  | boolean  | No     | No     | Whether to report repeated key events. The value **true** means to report repeated key events, and the value **false** means the opposite. The default value is **true**.|
 
@@ -132,6 +132,7 @@ For details about the error codes, see [Global Shortcut Key Error Codes](errorco
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -149,10 +150,10 @@ struct Index {
           };
           let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
             console.info(`Succeeded in consuming hotkey, hotkeyOptions: ${JSON.stringify(hotkeyOptions)}.`);
-          }
+          };
           try {
             // Subscribe to shortcut key change events.
-            inputConsumer.on("hotkeyChange", hotkeyOptions, hotkeyCallback);
+            inputConsumer.on('hotkeyChange', hotkeyOptions, hotkeyCallback);
           } catch (error) {
             console.error(`Failed to Subscribe hot key, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -191,6 +192,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -204,13 +206,13 @@ struct Index {
           // Disable listening for a single callback.
           let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
             console.info(`Succeeded in consuming hotkey, hotkeyOptions: ${JSON.stringify(hotkeyOptions)}.`);
-          }
+          };
           let hotkeyOption: inputConsumer.HotkeyOptions = { preKeys: [leftCtrlKey], finalKey: zKey, isRepeat: true };
           try {
             // Subscribe to shortcut key change events.
-            inputConsumer.on("hotkeyChange", hotkeyOption, hotkeyCallback);
+            inputConsumer.on('hotkeyChange', hotkeyOption, hotkeyCallback);
             // Unsubscribe from shortcut key change events.
-            inputConsumer.off("hotkeyChange", hotkeyOption, hotkeyCallback);
+            inputConsumer.off('hotkeyChange', hotkeyOption, hotkeyCallback);
             console.info(`Succeeded in unsubscribing.`);
           } catch (error) {
             console.error(`Failed to unsubscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -223,6 +225,7 @@ struct Index {
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -236,13 +239,13 @@ struct Index {
           // Disable listening for all callbacks.
           let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
             console.info(`Succeeded in consuming hotkey, hotkeyOptions: ${JSON.stringify(hotkeyOptions)}.`);
-          }
+          };
           let hotkeyOption: inputConsumer.HotkeyOptions = { preKeys: [leftCtrlKey], finalKey: zKey, isRepeat: true };
           try {
             // Subscribe to shortcut key change events.
-            inputConsumer.on("hotkeyChange", hotkeyOption, hotkeyCallback);
+            inputConsumer.on('hotkeyChange', hotkeyOption, hotkeyCallback);
             // Unsubscribe from shortcut key change events.
-            inputConsumer.off("hotkeyChange", hotkeyOption);
+            inputConsumer.off('hotkeyChange', hotkeyOption);
             console.info(`Succeeded in unsubscribing.`);
           } catch (error) {
             console.error(`Failed to unsubscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -263,7 +266,7 @@ If the API call is successful, the system's default response to the key event wi
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
 
-**Device behavior differences**: In versions earlier than API version 23, this API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned. Since API version 23, this API can be properly called on phones, tablets, PCs/2-in-1 devices, and TVs. On other device types, error code 801 is returned.
+**Device behavior difference**: Before API version 23, this API is supported on phones, tablets, PCs/2-in-1 devices, and TVs. On other device types, this API returns error code 801. Since API version 23, this API is supported on phones, tablets, PCs/2-in-1 devices, TVs, and car devices. On other device types, this API returns error code 801.
 
 **Parameters**
 
@@ -286,6 +289,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputConsumer, KeyEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -321,7 +325,7 @@ Unsubscribes from key press events. This API uses an asynchronous callback to re
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
 
-**Device behavior differences**: In versions earlier than API version 23, this API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned. Since API version 23, this API can be properly called on phones, tablets, PCs/2-in-1 devices, and TVs. On other device types, error code 801 is returned.
+**Device behavior difference**: Before API version 23, this API is supported on phones, tablets, PCs/2-in-1 devices, and TVs. On other device types, this API returns error code 801. Since API version 23, this API is supported on phones, tablets, PCs/2-in-1 devices, TVs, and car devices. On other device types, this API returns error code 801.
 
 **Parameters**
 
@@ -343,6 +347,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputConsumer, KeyEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -360,13 +365,13 @@ struct Index {
             }
             let callback = (event: KeyEvent) => {
               console.info(`Succeeded in unsubscribing ${JSON.stringify(event)}.`);
-            }
+            };
             // Subscribe to key press events.
             inputConsumer.on('keyPressed', options, callback);
             // Unsubscribe from key press events.
             inputConsumer.off('keyPressed', callback);
             // Disable listening for all callbacks.
-            inputConsumer.off("keyPressed");
+            inputConsumer.off('keyPressed');
           } catch (error) {
             console.error(`Failed to unsubscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }

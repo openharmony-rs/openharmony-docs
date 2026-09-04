@@ -6,8 +6,9 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=c27e0e5f22d6b3cf08575f1a30584cd1902be584 translatedAt=2026-09-01T01:21:23.166Z pushedAt=2026-09-03T08:42:47.286Z -->
 
-The input event injection module provides the capability to simulate keyboard, mouse, and touch input events.
+The inputEventClient module provides the capability to inject input event, including key, mouse/touchpad, and touchscreen events.
 
 **Since:** 26.0.0
 
@@ -196,7 +197,9 @@ struct Index {
 Provides the capability of simulating key operations. The simulated key operation sequence must meet the following requirements:
 
 1. A key can only be pressed when it is in the released state, or when it is the most recently pressed key and has not been released.
+
 2. A key can only be released after it has been pressed.
+
 3. A maximum of five keys can be pressed and held simultaneously.
 
 ### pressKey
@@ -317,8 +320,11 @@ For details, see [pressKey](#presskey).
 Provides the capability of simulating mouse operations. The simulated mouse operation sequence must meet the following requirements:
 
 1. A mouse button can be pressed only when it is in the released state.
+
 2. A mouse button can only be released after it has been pressed.
+
 3. A valid axis event sequence must begin with a **beginAxis** call, followed by zero or more **updateAxis** calls, and end with an **endAxis** call.
+
 4. Only one axis event sequence can be in progress at a time.
 
 ### moveTo
@@ -686,6 +692,7 @@ Represents information about a single touch point on the display.
 Provides the capability of simulating touch operations. The simulated touch operation sequence must meet the following requirements:
 
 1. All touch points must share the same **displayId**.
+
 2. Each touch point must begin with a **touchDown()** call, followed by zero or more **touchMove()** calls, and end with an **touchUp()** call.
 
 ### touchDown
