@@ -41330,11 +41330,15 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication_Sta/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":611,
+						"end_line":592,
 						"name":"obtain_auth_lock_state_capabilities",
-						"start_line":592
+						"start_line":573
 					}
 				]
 			}
@@ -41355,11 +41359,15 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication_Sta/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":586,
+						"end_line":567,
 						"name":"obtain_enrolled_capabilities",
-						"start_line":574
+						"start_line":555
 					}
 				]
 			}
@@ -41380,11 +41388,15 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication_Sta/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":156,
+						"end_line":137,
 						"name":"obtain_supported_capabilities",
-						"start_line":143
+						"start_line":124
 					}
 				]
 			}
@@ -41405,11 +41417,15 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication_Sta/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":488,
+						"end_line":469,
 						"name":"perceive-adjust-authentication-process",
-						"start_line":448
+						"start_line":429
 					}
 				]
 			}
@@ -41445,26 +41461,30 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication_Sta/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":207,
+						"end_line":188,
 						"name":"authentication_example1",
-						"start_line":163
+						"start_line":144
 					},
 					{
-						"end_line":263,
+						"end_line":244,
 						"name":"authentication_example2",
-						"start_line":214
+						"start_line":195
 					},
 					{
-						"end_line":319,
+						"end_line":300,
 						"name":"authentication_example3",
-						"start_line":270
+						"start_line":251
 					},
 					{
-						"end_line":371,
+						"end_line":352,
 						"name":"authentication_example4",
-						"start_line":326
+						"start_line":307
 					}
 				]
 			}
@@ -45034,6 +45054,36 @@
 						"end_line":1687,
 						"name":"sensor_js_get_single_sensor_sync_example",
 						"start_line":1679
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/UserAuthenticationKit/apply-custom-authentication.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication_Sta/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":549,
+						"name":"custom_authentication",
+						"start_line":471
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/UserAuthenticationKit/cancel-authentication.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication_Sta/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":423,
+						"name":"cancel_authentication",
+						"start_line":354
 					}
 				]
 			}
