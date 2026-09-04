@@ -47600,7 +47600,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MenuPanel.ets",
 				"functions":[
 					{
-						"end_line":109,
+						"end_line":115,
 						"name":"MenuPanel",
 						"start_line":16
 					}
