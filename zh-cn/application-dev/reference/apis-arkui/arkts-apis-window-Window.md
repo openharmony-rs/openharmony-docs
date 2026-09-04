@@ -5700,13 +5700,15 @@ try {
 }
 ```
 
-## on('windowFocusStateChange')<sup>26+</sup>
+## on('windowFocusStateChange')
 
-on(type: 'windowFocusStateChange', callback: Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate26)&gt;): void
+on(type: 'windowFocusStateChange', callback: Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt;): void
 
 开启窗口焦点状态变化事件的监听。当窗口焦点状态发生变化时，会触发回调，返回窗口的焦点状态变化信息。
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -5715,7 +5717,7 @@ on(type: 'windowFocusStateChange', callback: Callback&lt;[WindowFocusState](arkt
 | 参数名 | 类型                                                                                     | 必填 | 说明                                                                                                                                          |
 | -------- | -------------------------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------ |
 | type     | string                                                                                  | 是   | 监听事件，固定为'windowFocusStateChange'，即窗口焦点状态变化事件。|
-| callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate26)&gt; | 是   | 回调函数。返回窗口的焦点状态变化信息，包括窗口是否获焦、变化原因，以及同进程内相邻获焦窗口的ID。|
+| callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt; | 是   | 回调函数。返回窗口的焦点状态变化信息，包括窗口是否获焦、变化原因，以及同进程内相邻获焦窗口的ID。|
 
 **错误码：**
 
@@ -5740,13 +5742,15 @@ try {
 }
 ```
 
-## off('windowFocusStateChange')<sup>26+</sup>
+## off('windowFocusStateChange')
 
-off(type: 'windowFocusStateChange', callback?: Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate26)&gt;): void
+off(type: 'windowFocusStateChange', callback?: Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt;): void
 
 关闭窗口焦点状态变化事件的监听。
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -5755,7 +5759,7 @@ off(type: 'windowFocusStateChange', callback?: Callback&lt;[WindowFocusState](ar
 | 参数名 | 类型                                                                                     | 必填 | 说明                                                                                                                          |
 | -------- | -------------------------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------ |
 | type     | string                                                                                  | 是   | 监听事件，固定为'windowFocusStateChange'，即窗口焦点状态变化事件。     |
-| callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate26)&gt; | 否   | 回调函数。返回窗口的焦点状态变化信息。若传入参数，则关闭该监听。若未传入参数，则关闭所有窗口焦点状态变化的监听。 |
+| callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt; | 否   | 回调函数。返回窗口的焦点状态变化信息。若传入参数，则关闭该监听。若未传入参数，则关闭所有窗口焦点状态变化的监听。 |
 
 **错误码：**
 

@@ -350,16 +350,18 @@ Describes the information about the display density of the screen where the wind
 | defaultDensity | number   | No  | No  | Default display size scale factor for the screen where the window is located. The value ranges from 0.5 to 4.0 and varies with the screen.|
 | customDensity | number   | No  | No  | Custom display size scale factor of the window. The value ranges from 0.5 to 4.0. If this parameter is left unspecified, the system's display size scale factor is used. This parameter takes effect only for the main window. For the child window or system window, it is equivalent to the system's display size scale factor (**systemDensity**).|
 
-## WindowFocusState<sup>26+</sup>
+## WindowFocusState
 
 Describes the focus state change information of the window.
+
+**Since**: 26.0.0
 
 **System capability**: SystemCapability.Window.SessionManager
 
 | Name  | Type  | Read-Only| Optional| Description  |
 | ------ | ------ | ---- | ---- | ---------- |
 | focused | boolean | No  | No  | Whether the window gains focus. **true** if the window gains focus, **false** otherwise.|
-| focusChangeReason | [FocusChangeReason](arkts-apis-window-e.md#focuschangereason26) | No  | No  | Reason for the focus state change.|
+| focusChangeReason | [FocusChangeReason](arkts-apis-window-e.md#focuschangereason) | No  | No  | Reason for the focus state change.|
 | nextFocusedWindowId | number | No  | Yes | ID of the next focused window. This field is valid only when the window is unfocused and the next focused window is in the same process as this window.|
 | preFocusedWindowId | number | No  | Yes | ID of the previous focused window. This field is valid only when the window is focused and the previous focused window is in the same process as this window.|
 

@@ -88,9 +88,11 @@ Enumerates the reasons for window rectangle (position and size) changes.
 | DRAG_START  | 5    | The window starts zooming in or out.|
 | DRAG_END  | 6    | The window finishes zooming in or out.|
 
-## FocusChangeReason<sup>26+</sup>
+## FocusChangeReason
 
 Enumerates the reasons for the window focus state change.
+
+**Since**: 26.0.0
 
 **System capability**: SystemCapability.Window.SessionManager
 

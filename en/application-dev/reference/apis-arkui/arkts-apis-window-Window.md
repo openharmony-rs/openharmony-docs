@@ -5610,13 +5610,15 @@ try {
 }
 ```
 
-## on('windowFocusStateChange')<sup>26+</sup>
+## on('windowFocusStateChange')
 
-on(type: 'windowFocusStateChange', callback: Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate26)&gt;): void
+on(type: 'windowFocusStateChange', callback: Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt;): void
 
 Subscribes to the focus state change event of the window. When the focus state of the window changes, the callback is triggered to return the focus state change information of the window.
 
-**Atomic service API**: This API can be used in atomic services since API version 26.
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -5625,7 +5627,7 @@ Subscribes to the focus state change event of the window. When the focus state o
 | Name  | Type                                                                                     | Mandatory| Description                                                                                                   |
 | -------- | -------------------------------------------------------------------------------------- | ---- | --------------------------------------------------------------------------------------------------------- |
 | type     | string                                                                                  | Yes  | Event type. The value is fixed at **'windowFocusStateChange'**, indicating the window focus state change event.|
-| callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate26)&gt; | Yes  | Callback used to return the focus state change information of the window, including whether the window gains focus, the reason for the change, and the IDs of the adjacent focused windows in the same process.|
+| callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt; | Yes  | Callback used to return the focus state change information of the window, including whether the window gains focus, the reason for the change, and the IDs of the adjacent focused windows in the same process.|
 
 **Error codes**
 
@@ -5650,13 +5652,15 @@ try {
 }
 ```
 
-## off('windowFocusStateChange')<sup>26+</sup>
+## off('windowFocusStateChange')
 
-off(type: 'windowFocusStateChange', callback?: Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate26)&gt;): void
+off(type: 'windowFocusStateChange', callback?: Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt;): void
 
 Unsubscribes from the focus state change event of the window.
 
-**Atomic service API**: This API can be used in atomic services since API version 26.
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -5665,7 +5669,7 @@ Unsubscribes from the focus state change event of the window.
 | Name  | Type                                                                                     | Mandatory| Description                                                                        |
 | -------- | -------------------------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------- |
 | type     | string                                                                                  | Yes  | Event type. The value is fixed at **'windowFocusStateChange'**, indicating the window focus state change event.    |
-| callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate26)&gt; | No  | Callback used to return the focus state change information of the window. If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled.|
+| callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt; | No  | Callback used to return the focus state change information of the window. If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled.|
 
 **Error codes**
 

@@ -120,9 +120,11 @@
 | DRAG_START  | 5    | 窗口开始拖拽缩放。 |
 | DRAG_END  | 6    | 窗口结束拖拽缩放。 |
 
-## FocusChangeReason<sup>26+</sup>
+## FocusChangeReason
 
 窗口焦点状态变化的原因。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.Window.SessionManager
 
