@@ -1,4 +1,4 @@
-# 签名验签介绍及算法规格
+# 签名验签
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
