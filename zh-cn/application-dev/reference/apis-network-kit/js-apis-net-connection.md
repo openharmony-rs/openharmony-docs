@@ -53,7 +53,7 @@ createNetConnection(netSpecifier?: NetSpecifier, timeout?: number): NetConnectio
 ```ts
 import { connection } from '@kit.NetworkKit';
 
-// 示例1：仅关注默认网络, 无需指定netSpecifier参数，timeout参数未传入说明未使用超时时间，此时timeout为0。
+// 示例1：仅关注默认网络，无需指定netSpecifier参数，timeout参数未传入说明未使用超时时间，此时timeout为0。
 let netConnection = connection.createNetConnection();
 
 // 示例2：仅关注蜂窝网络，需要指定网络类型为蜂窝网络。
