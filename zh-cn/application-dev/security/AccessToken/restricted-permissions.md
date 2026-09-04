@@ -1669,3 +1669,17 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 **支持设备**：PC/2in1 | Tablet
 
 **起始版本**：26.1.0
+
+## ohos.permission.kernel.ALLOW_PTRACE_READ
+
+允许应用通过PTRACE读能力获取应用内进程的寄存器及内存信息。
+
+<!--RP108--><!--RP108End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.1.0
