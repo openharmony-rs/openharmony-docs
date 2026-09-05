@@ -4587,7 +4587,7 @@ excludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Promi
 > 该功能仅能排除外部输出设备，不支持本地输出设备。
 
 **需要权限：**
-
+- API版本23+：N/A
 - API版本18-22：ohos.permission.MANAGE_AUDIO_CONFIG
 
 **系统接口：** 此接口为系统接口。
@@ -4660,7 +4660,7 @@ unexcludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Pro
 解除排除输出设备。成功调用此函数后，音频将会重新选择输出设备。
 
 **需要权限：**
-
+- API版本23+：N/A
 - API版本18-22：ohos.permission.MANAGE_AUDIO_CONFIG
 
 **系统接口：** 此接口为系统接口。
@@ -4733,7 +4733,7 @@ unexcludeOutputDevices(usage: DeviceUsage): Promise&lt;void&gt;
 解除属于特定用途的所有输出设备的排除。成功调用此函数后，音频将会重新选择输出设备。
 
 **需要权限：**
-
+- API版本23+：N/A
 - API版本18-22：ohos.permission.MANAGE_AUDIO_CONFIG
 
 **系统接口：** 此接口为系统接口。

@@ -606,7 +606,7 @@ struct ForEachSort {
 
 ### 渲染结果非预期
 
-在本示例中，通过设置`ForEach`的第三个参数`KeyGenerator`函数，自定义键值生成规则为数据源的索引`index`的字符串类型值。当点击父组件`ForEachAbnormal`中“Insert Item After First Item”文本组件后，界面会出现非预期的结果。
+在本示例中，通过设置`ForEach`的第三个参数`keyGenerator`函数，自定义键值生成规则为数据源的索引`index`的字符串类型值。当点击父组件`ForEachAbnormal`中“Insert Item After First Item”文本组件后，界面会出现非预期的结果。
 
 <!-- @[foreach_abnormal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/AbnormalExample.ets) -->
 
@@ -662,7 +662,7 @@ struct ForEachAbnormalChildItem {
 
 ### 渲染性能降低
 
-在本示例中，`ForEach`的第三个参数`KeyGenerator`函数缺省。根据上述[键值生成规则](#键值生成规则)，此例使用框架默认的键值，即最终键值为字符串`index + '__' + JSON.stringify(item)`。点击文本组件“在第1项后插入新项”后，`ForEach`将为第2个数组项及后面的所有数据项重新创建组件。
+在本示例中，`ForEach`的第三个参数`keyGenerator`函数缺省。根据上述[键值生成规则](#键值生成规则)，此例使用框架默认的键值，即最终键值为字符串`index + '__' + JSON.stringify(item)`。点击文本组件“Insert Item After First Item”后，`ForEach`将为第2个数组项及后面的所有数据项重新创建组件。
 
 <!-- @[bad_performance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/BadPerformance.ets) -->
 
@@ -728,7 +728,7 @@ struct ReducedChildItem {
 2. 插入新项后，数据源`simpleList`变为`['one', 'new item', 'two', 'three']`，ArkUI框架监听到`@State`装饰的数据源长度变化触发`ForEach`重新渲染。
 3. `ForEach`依次遍历新数据源，遍历数据项`one`时生成键值`0__one`，键值已存在，因此不创建新组件。继续遍历数据项`new item`时生成键值`1__new item`，不存在相同键值，创建内容为`new item`的新组件并渲染。继续遍历数据项`two`生成键值`2__two`，不存在相同键值，创建内容为`two`的新组件并渲染。最后遍历数据项`three`时生成键值`3__three`，不存在相同键值，创建内容为`three`的新组件并渲染。
 
-尽管本例中界面渲染结果符合预期，但在每次向数组中间插入新数组项时，`ForEach`会为该数组项及其后面的所有数组项重新创建组件。当数据源数据量较大或组件结构复杂时，组件无法复用会导致性能下降。因此，不建议省略第三个参数`KeyGenerator`函数，也不建议在键值中使用数据项索引`index`。
+尽管本例中界面渲染结果符合预期，但在每次向数组中间插入新数组项时，`ForEach`会为该数组项及其后面的所有数组项重新创建组件。当数据源数据量较大或组件结构复杂时，组件无法复用会导致性能下降。因此，不建议省略第三个参数`keyGenerator`函数，也不建议在键值中使用数据项索引`index`。
 
 正确渲染并保证效率的`ForEach`写法是：
 
@@ -740,7 +740,7 @@ ForEach(this.simpleList, (item: string) => {
 }, (item: string) => item) // 需要保证key唯一
 ```
 
-提供了第三个参数`KeyGenerator`，在这个例子中，对数据源的不同数据项生成不同的key，并且对同一个数据项每次生成相同的key。
+提供了第三个参数`keyGenerator`，在这个例子中，对数据源的不同数据项生成不同的key，并且对同一个数据项每次生成相同的key。
 
 ### 数据变化不渲染
 点击按钮`Like/Unlike first article`，第一个组件会切换点赞手势和后面的点赞数量，但是点击按钮`Replace first article`之后再点击按钮`Like/Unlike first article`就不生效了。原因是替换`articleList[0]`之后，`articleList`状态变量发生变化，触发ForEach重新渲染，但是新的`articleList[0]`生成的key没有变，ForEach不会将数据更新同步给子组件，因此第一个组件仍然绑定旧的`articleList[0]`。新`articleList[0]`的属性发生变更，第一个组件感知不到，不会重新渲染。点击点赞手势，会触发渲染。因为变更的是跟组件绑定的数组项的属性，组件会感知并重新渲染。
