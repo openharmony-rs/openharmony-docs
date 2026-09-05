@@ -200,7 +200,6 @@
       - [组件适配沉浸光感](arkts-immersive-light-sense-component-adaptation.md)
       - [沉浸式系统材质视效](arkts-immersive-light-sense-common-capability.md)
     - [沉浸光感功耗优化](arkts-immersive-light-sense-constraints.md)
-    - [沉浸光感兼容性适配](arkts-immersive-light-sense-compatibility.md)
     - [沉浸光感常见问题](arkts-immersive-light-sense-faq.md)
     - [沉浸光感典型场景](arkts-immersive-light-sample.md)
   - 几何图形绘制<!--arkts-draw-graphics-->
