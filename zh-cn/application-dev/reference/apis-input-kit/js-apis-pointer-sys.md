@@ -1151,7 +1151,7 @@ struct Index {
 
 ## pointer.getTouchpadScrollSwitch<sup>10+</sup>
 
-getTouchpadScrollSwitch(callback:  AsyncCallback\<boolean>): void
+getTouchpadScrollSwitch(callback: AsyncCallback\<boolean>): void
 
 获取触控板滚轴能力开启状态，使用callback异步回调。
 
@@ -1378,7 +1378,7 @@ struct Index {
 
 ## pointer.getTouchpadScrollDirection<sup>10+</sup>
 
-getTouchpadScrollDirection(callback:  AsyncCallback\<boolean>): void
+getTouchpadScrollDirection(callback: AsyncCallback\<boolean>): void
 
 获取触控板滚轴方向，使用callback异步回调。
 
@@ -1605,7 +1605,7 @@ struct Index {
 
 ## pointer.getTouchpadTapSwitch<sup>10+</sup>
 
-getTouchpadTapSwitch(callback:  AsyncCallback\<boolean>): void
+getTouchpadTapSwitch(callback: AsyncCallback\<boolean>): void
 
 获取触控板轻触能力开启状态，使用callback异步回调。
 
@@ -2058,7 +2058,7 @@ struct Index {
 
 ## pointer.getTouchpadPinchSwitch<sup>10+</sup>
 
-getTouchpadPinchSwitch(callback:  AsyncCallback\<boolean>): void
+getTouchpadPinchSwitch(callback: AsyncCallback\<boolean>): void
 
 获取触控板双指捏合功能开启状态，使用callback异步回调。
 
@@ -2285,7 +2285,7 @@ struct Index {
 
 ## pointer.getTouchpadSwipeSwitch<sup>10+</sup>
 
-getTouchpadSwipeSwitch(callback:  AsyncCallback\<boolean>): void
+getTouchpadSwipeSwitch(callback: AsyncCallback\<boolean>): void
 
 获取触控板多指滑动功能开启状态，使用callback异步回调。
 
