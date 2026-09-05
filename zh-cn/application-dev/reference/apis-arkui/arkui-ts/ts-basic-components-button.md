@@ -824,11 +824,9 @@ struct Index {
 
 ### 示例9（设置按钮的沉浸光感效果）
 
-该示例使用通用属性[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)接口来设置组件的系统材质，以实现沉浸光感效果。
+该示例使用通用属性[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)接口来设置组件的系统材质，以实现沉浸光感效果。Button设置系统材质后，默认背景色依旧为蓝色。
 
 组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
-
-Button设置系统材质后，默认背景色依旧使用蓝色。
 
 从API版本26.0.0开始，新增systemMaterial属性。
 
@@ -844,7 +842,7 @@ struct Index {
       Button('helloWorld')
         .width(200)
         .fontColor(Color.Black)
-        // 注释此接口，可以关闭系统材质
+        // 不设置此接口，可以关闭Button沉浸光感效果
         .systemMaterial(new uiMaterial.ImmersiveMaterial({
           style: uiMaterial.ImmersiveStyle.THIN
         }))
@@ -896,6 +894,6 @@ struct Index {
 
 ![未设置系统材质时](figures/buttonWithoutNewMaterial.png)
 
-设置沉浸光感后：
+设置系统材质后：
 
 ![设置系统材质后](figures/buttonNewMaterial.png)
