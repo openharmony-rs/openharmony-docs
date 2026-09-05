@@ -155,7 +155,7 @@ setPointerSpeedSync(speed: number): void
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| speed | number | 是    | 鼠标移动速度，范围1-20，默认为10。 |
+| speed | number | 是    | 鼠标移动速度，取值范围[1, 20]，默认为10。 |
 
 **错误码**：
 
@@ -315,7 +315,7 @@ getPointerSpeedSync(): number
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| number | 返回鼠标移动速度，范围1-20。  |
+| number | 返回鼠标移动速度，取值范围[1, 20]。  |
 
 **错误码**：
 
@@ -819,7 +819,7 @@ setMouseScrollRows(rows: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| rows     | number                    | 是    | 鼠标滚动行数，范围1-100，默认为3。   |
+| rows     | number                    | 是    | 鼠标滚动行数，取值范围[1, 100]，默认为3。   |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置鼠标滚动行数成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
@@ -876,7 +876,7 @@ setMouseScrollRows(rows: number): Promise&lt;void&gt;
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| rows  | number | 是    | 鼠标滚动行数，范围1-100，默认为3。 |
+| rows  | number | 是    | 鼠标滚动行数，取值范围[1, 100]，默认为3。 |
 
 **返回值**：
 
@@ -1726,7 +1726,7 @@ setTouchpadPointerSpeed(speed: number, callback: AsyncCallback\<void>): void
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| speed | number                    | 是    |speed代表光标移动速度。speed取值范围[1,11]，默认6。  |
+| speed | number                    | 是    |speed代表光标移动速度。speed取值范围[1, 11]，默认6。  |
 | callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板光标移动速度成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
@@ -1783,7 +1783,7 @@ setTouchpadPointerSpeed(speed: number): Promise\<void>
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| speed| number | 是    | speed代表光标移动速度。speed取值范围[1,11]，默认6。    |
+| speed| number | 是    | speed代表光标移动速度。speed取值范围[1, 11]，默认6。    |
 
 **返回值**：
 
@@ -1899,7 +1899,7 @@ getTouchpadPointerSpeed(): Promise\<number>
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<number> | Promise对象，返回触控板光标移动速度，speed取值范围[1,11]。 |
+| Promise\<number> | Promise对象，返回触控板光标移动速度，speed取值范围[1, 11]。 |
 
 **错误码**：
 
