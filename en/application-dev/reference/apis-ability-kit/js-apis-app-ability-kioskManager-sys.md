@@ -3,10 +3,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zhu-feimo-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=9b45198dbdb6f53f8bf0896d62425626f2442690 translatedAt=2026-09-03T10:23:02.822Z pushedAt=2026-09-05T10:47:30.408Z -->
 
-The KioskManager module provides APIs to manage kiosk mode, including entering/exiting kiosk mode and querying the kiosk mode status.
+The KioskManager module provides Kiosk mode management capabilities, including entering/exiting Kiosk mode for the system and querying the current Kiosk mode status of the system.
 
 Kiosk mode is a dedicated device lockdown mode that ensures the device UI serves only specific interaction scenarios. In this mode, device usage is confined to predetermined applications. A typical example is a bank ATM, where users can only interact with the ATM software and cannot exit it or access any other functions.
 
@@ -14,7 +15,7 @@ Kiosk mode is a dedicated device lockdown mode that ensures the device UI serves
 >
 > - The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The APIs of this module can be used only in the stage model.
-> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.app.ability.kioskManager (Kiosk Mode Management)](js-apis-app-ability-kioskManager.md).
+> - This document describes only the system APIs of this module. For details about other public APIs, see [@ohos.app.ability.kioskManager (Kiosk Mode Management)](js-apis-app-ability-kioskManager.md).
 
 ## Modules to Import
 
@@ -64,12 +65,13 @@ struct Index {
     Column() {
       Button('getKioskInfo').margin({ top: 10 })
         .onClick(() => {
+          // Obtain the Kiosk mode status information.
           kioskManager.getKioskStatus()
             .then((data: kioskManager.KioskStatus) => {
-              hilog.info(0x0000, 'testTag', '%{public}s', `getKioskinfo success: ${JSON.stringify(data)}`);
+              hilog.info(0x0000, 'testTag', '%{public}s', `getKioskStatus success: ${JSON.stringify(data)}`);
             })
             .catch((error: BusinessError) => {
-              hilog.error(0x0000, 'testTag', '%{public}s', `getKioskinfo failed:${JSON.stringify(error)}`);
+              hilog.error(0x0000, 'testTag', '%{public}s', `getKioskStatus failed. Code: ${error.code}, message: ${error.message}`);
             });
         })
     }

@@ -1,12 +1,11 @@
 # @ohos.bundle.distributedBundleManager (distributedBundleManager Module) (System API)
-
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=7eb6f57046c125c4e13d8acd776d3cbaf09f5103 translatedAt=2026-06-22T06:57:01.304Z pushedAt=2026-06-25T06:27:56.429Z -->
+<!-- md-trans-meta sourceCommit=3a7b8d1fce741c2abccde7cccac39375139c4568 translatedAt=2026-09-03T11:21:40.795Z pushedAt=2026-09-05T10:47:30.607Z -->
 
 The module provides APIs for managing distributed bundles.
 
@@ -51,7 +50,7 @@ Obtains information about the remote ability that matches the given element name
 | Name     | Type                                                        | Mandatory| Description                                                        |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | elementName | [ElementName](js-apis-bundleManager-elementName.md)          | Yes  | Target element name.                                           |
-| callback    | AsyncCallback<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)> | Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null** and **data** is the RemoteAbilityInfo object obtained. Otherwise, **err** is an error object and **data** is **undefined**.|
+| callback    | AsyncCallback<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)> | Yes   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback). If the call succeeds, err is null and data is the RemoteAbilityInfo object. If the call fails, err is an error object and data is undefined. |
 
 **Error codes**
 
@@ -161,7 +160,7 @@ try {
 
 getRemoteAbilityInfo(elementNames: Array\<ElementName>, callback: AsyncCallback\<Array\<RemoteAbilityInfo>>): void
 
-Obtains information about the remote abilities that match the given element names. This API uses an asynchronous callback to return the result.
+Obtains the AbilityInfo array information of the application on the specified remote device identified by elementNames. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -173,8 +172,8 @@ Obtains information about the remote abilities that match the given element name
 
 | Name      | Type                                                        | Mandatory| Description                                                        |
 | ------------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| elementNames | Array<[ElementName](js-apis-bundleManager-elementName.md)>   | Yes  | **ElementName** array, whose maximum length is 10.                            |
-| callback     | AsyncCallback\<Array\<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null** and **data** is the array of RemoteAbilityInfo objects obtained. Otherwise, **err** is an error object and **data** is **undefined**.|
+| elementNames | Array<[ElementName](js-apis-bundleManager-elementName.md)> | Yes | ElementName information. The maximum array length is 10. |
+| callback | AsyncCallback\<Array\<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | Yes | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback). If the call succeeds, err is null and data is an array of RemoteAbilityInfo objects. If the call fails, err is an error object and data is undefined. |
 
 **Error codes**
 
@@ -228,7 +227,7 @@ try {
 
 getRemoteAbilityInfo(elementNames: Array\<ElementName>): Promise\<Array\<RemoteAbilityInfo>>
 
-Obtains information about the remote abilities that match the given element names. This API uses a promise to return the result.
+Obtains the AbilityInfo array information of the application on the specified remote device identified by elementNames. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -246,7 +245,7 @@ Obtains information about the remote abilities that match the given element name
 
 | Type                                                        | Description                             |
 | ------------------------------------------------------------ | --------------------------------- |
-| Promise\<Array<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | Promise used to return the result. If the operation is successful, an array of RemoteAbilityInfo objects is returned. Otherwise, an error object is returned.|
+| Promise\<Array<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | Promise object. If the call succeeds, it returns a list of RemoteAbilityInfo objects; if the call fails, it returns an error object. |
 
 **Error codes**
 
@@ -312,7 +311,7 @@ Obtains information about the remote ability that matches the given element name
 | ----------- | ------------------------------------------------------------ | ---- | -------------------------------------------------- |
 | elementName | [ElementName](js-apis-bundleManager-elementName.md)                 | Yes  | Target element name.                           |
 | locale  | string |Yes| Target locale.|
-| callback    | AsyncCallback<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)> | Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null** and **data** is the RemoteAbilityInfo object obtained. Otherwise, **err** is an error object and **data** is **undefined**.|
+| callback    | AsyncCallback<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)> | Yes   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback). If the call succeeds, err is null and data is the RemoteAbilityInfo object. If the call fails, err is an error object and data is undefined. |
 
 **Error codes**
 
@@ -423,7 +422,7 @@ try {
 
 getRemoteAbilityInfo(elementNames: Array\<ElementName>, locale: string, callback: AsyncCallback\<Array\<RemoteAbilityInfo>>): void
 
-Obtains information about the remote abilities that match the given element names and locale. This API uses an asynchronous callback to return the result.
+Obtains the AbilityInfo array information of the application on the specified remote device identified by elementNames and locale. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -435,9 +434,9 @@ Obtains information about the remote abilities that match the given element name
 
 | Name       | Type                                                        | Mandatory| Description                                              |
 | ------------ | ------------------------------------------------------------ | ---- | -------------------------------------------------- |
-| elementNames | Array<[ElementName](js-apis-bundleManager-elementName.md)>          | Yes  | **ElementName** array, whose maximum length is 10.                  |
+| elementNames | Array<[ElementName](js-apis-bundleManager-elementName.md)>          | Yes   | ElementName information. The maximum array length is 10.                   |
 | locale  | string |Yes| Target locale.|
-| callback     | AsyncCallback\<Array\<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null** and **data** is the array of RemoteAbilityInfo objects obtained. Otherwise, **err** is an error object and **data** is **undefined**.|
+| callback     | AsyncCallback\<Array\<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | Yes   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback). If the call succeeds, err is null and data is an array of RemoteAbilityInfo objects. If the call fails, err is an error object and data is undefined. |
 
 **Error codes**
 
@@ -491,7 +490,7 @@ try {
 
 getRemoteAbilityInfo(elementNames: Array\<ElementName>, locale: string): Promise\<Array\<RemoteAbilityInfo>>
 
-Obtains information about the remote abilities that match the given element names and locale. This API uses a promise to return the result.
+Obtains the AbilityInfo array information of the application on the specified remote device identified by elementNames and locale. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -503,14 +502,14 @@ Obtains information about the remote abilities that match the given element name
 
 | Name       | Type                                               | Mandatory| Description                   |
 | ------------ | --------------------------------------------------- | ---- | ----------------------- |
-| elementNames | Array<[ElementName](js-apis-bundleManager-elementName.md)> | Yes  | **ElementName** array, whose maximum length is 10.|
+| elementNames | Array<[ElementName](js-apis-bundleManager-elementName.md)> | Yes | ElementName information. The maximum array length is 10. |
 | locale  | string |Yes| Target locale.|
 
 **Return value**
 
 | Type                                                        | Description                             |
 | ------------------------------------------------------------ | --------------------------------- |
-| Promise\<Array<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | Promise used to return the result. If the operation is successful, an array of RemoteAbilityInfo objects is returned. Otherwise, an error object is returned.|
+| Promise\<Array<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | Promise object. If the call succeeds, a list of RemoteAbilityInfo objects is returned; if the call fails, an error object is returned. |
 
 **Error codes**
 
@@ -562,7 +561,7 @@ try {
 
 getRemoteBundleVersionCode(deviceId: string, bundleName: string): Promise\<number>
 
-Obtains the version information of an app with a specified bundle name on a specified remote device. This API uses a promise to return the result.
+Obtains the version code of the application with the specified bundle name on the specified remote device. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -585,7 +584,7 @@ Obtains the version information of an app with a specified bundle name on a spec
 
 | Type                                                         | Description                              |
 | ------------------------------------------------------------ | --------------------------------- |
-| Promise\<number> | Promise object. If the call succeeds, the version information is returned; if the call fails, an error object is returned. |
+| Promise\<number> | Promise object. The version code is returned if the call succeeds; an error object is returned if the call fails. |
 
 **Error codes**
 

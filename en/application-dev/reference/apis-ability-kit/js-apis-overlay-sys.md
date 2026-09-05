@@ -1,12 +1,11 @@
 # @ohos.bundle.overlay (overlay Module) (System API)
-
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=1bd317f06f1afd85920306c4a4cf71333749080f translatedAt=2026-08-13T02:42:37.105Z pushedAt=2026-08-13T06:27:05.419Z -->
+<!-- md-trans-meta sourceCommit=9dd9c9b18255d12a5799f25458403aea81c3ef0c translatedAt=2026-09-03T12:24:52.468Z pushedAt=2026-09-05T10:47:30.918Z -->
 
 This module provides the capabilities of installing a featured application with the overlay feature, querying the [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md) information of the featured application, and disabling/enabling the featured application.
 
@@ -28,7 +27,7 @@ setOverlayEnabledByBundleName(bundleName: string, moduleName: string, isEnabled:
 
 Enables or disables a module with the overlay feature in another application. This API uses a promise to return the result.
 
-No permission is required when the specified application is the caller itself.
+No permission is required when the specified application is the caller itself. If the API call fails, null may be returned. Verify the return value before using it.
 
 **Required permissions**: ohos.permission.CHANGE_OVERLAY_ENABLED_STATE
 
@@ -233,7 +232,7 @@ No permission is required when the specified application is the caller itself.
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
 | bundleName | string | Yes   | Bundle name of the application.                   |
-| moduleName | string | Yes   | Name of the module with the overlay feature. If this parameter is not specified, the API obtains the information of all modules with the overlay feature in that application.    |
+| moduleName | string | Yes    | Name of the overlay feature module in the specified application. When this field is omitted, the query API queries the OverlayModuleInfo information of all modules in the specified application.     |
 | callback    | AsyncCallback\<Array\<[OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md)>> | Yes    | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback). When the [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md) information of the specified module in the specified application is obtained successfully, err returns undefined. Otherwise, the callback returns a specific error object.    |
 
 **Error codes**
@@ -338,7 +337,7 @@ getTargetOverlayModuleInfosByBundleName(targetBundleName: string, moduleName?: s
 
 Obtains all OverlayModuleInfo information associated with the specified module in the specified application. This API uses a promise to return the result.
 
-No permission is required when the specified application is the caller itself.
+No permission is required when the specified application is the caller itself. If the API call fails, null may be returned. Verify the return value before using it.
 
 **Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -414,7 +413,7 @@ No permission is required when the specified application is the caller itself.
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
 | targetBundleName | string | Yes   | Bundle name of the application.                   |
-| moduleName | string | Yes   | Name of the target module. If this parameter is not specified, the API obtains the information associated with all modules in that application.    |
+| moduleName | string | Yes | Name of the target module in the specified application. |
 | callback    | AsyncCallback\<Array\<[OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md)>> | Yes    | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback). When all associated [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md) information of the specified module in the specified application is obtained successfully, err returns undefined. Otherwise, the callback returns a specific error object.                   |
 
 **Error codes**

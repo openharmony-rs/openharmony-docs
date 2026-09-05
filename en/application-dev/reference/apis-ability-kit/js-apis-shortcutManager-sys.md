@@ -3,10 +3,11 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=e5b78af6b5bbb1a9a38bb4bd5c5ed13eb9c1e2bf translatedAt=2026-09-03T12:32:41.015Z pushedAt=2026-09-05T10:47:30.945Z -->
 
-The module allows system applications to add, delete, and query shortcuts, including [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md).
+This module provides system applications with the capabilities of adding, deleting, and querying shortcuts, including adding, deleting, and querying [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1) information.
 
 > **NOTE**
 >
@@ -23,7 +24,7 @@ import { shortcutManager } from '@kit.AbilityKit';
 
 ## shortcutManager.addDesktopShortcutInfo
 
-addDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md), userId: number) : Promise\<void>
+addDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1), userId: number) : Promise\<void>
 
 Adds a shortcut for the given user. This API uses a promise to return the result.
 
@@ -37,14 +38,14 @@ Adds a shortcut for the given user. This API uses a promise to return the result
 
 | Name    | Type  | Mandatory| Description        |
 | ---------- | ------ | ---- | -------------- |
-| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) | Yes  | Shortcut information.|
-| userId     | number | Yes  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9).|
+| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1) | Yes | Shortcut information. |
+| userId | number | Yes | User ID, which can be obtained by [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). |
 
 **Return value**
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise object, no return result. |
 
 **Error codes**
 
@@ -108,7 +109,7 @@ struct ShortcutExample {
 
 ## shortcutManager.deleteDesktopShortcutInfo
 
-deleteDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md), userId: number) : Promise\<void>
+deleteDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1), userId: number) : Promise\<void>
 
 Deletes a shortcut for the given user. This API uses a promise to return the result.
 
@@ -122,14 +123,14 @@ Deletes a shortcut for the given user. This API uses a promise to return the res
 
 | Name    | Type  | Mandatory| Description        |
 | ---------- | ------ | ---- | -------------- |
-| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) | Yes  | Shortcut information.|
-| userId     | number | Yes  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9).|
+| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1) | Yes | Shortcut information. |
+| userId     | number | Yes | User ID, which can be obtained by [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). |
 
 **Return value**
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise object, no return result. |
 
 **Error codes**
 
@@ -187,9 +188,91 @@ struct ShortcutExample {
 }
 ```
 
+## shortcutManager.updateDesktopShortcutInfo
+
+updateDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: number): Promise\<void>;
+
+Updates the shortcut information of the specified user. This API uses a promise to return the result.
+
+**Since:** 26.1.0
+
+**System API**: This is a system API.
+
+**Required permissions:** ohos.permission.MANAGE_SHORTCUTS or (ohos.permission.MANAGE_SHORTCUTS and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
+
+ - To update shortcuts for the user associated with the application, the ohos.permission.MANAGE_SHORTCUTS permission is required.
+
+ - To update shortcuts for other users, the ohos.permission.MANAGE_SHORTCUTS and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permissions are required.
+
+**System capability**: SystemCapability.BundleManager.BundleFramework.Launcher
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name     | Type   | Mandatory | Description         |
+| ---------- | ------ | ---- | -------------- |
+| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1) | Yes   | Shortcut information. |
+| userId     | number | Yes   | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). |
+
+**Return value**
+
+| Type                                       | Description      |
+| ---------------------------------------- | ------- |
+| Promise\<void> | Promise object, which returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bundle Error Codes](errorcode-bundle.md).
+
+| ID | Error Message                                 |
+| -------- | ---------------------------------------- |
+| 201 | Verify permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+| 17700001 | The specified bundle name is not found. |
+| 17700004 | The specified user ID is not found.       |
+| 17700026 | The specified bundle is disabled. |
+| 17700061 | The specified app index is invalid. |
+| 18100002 | The specified shortcut to be updated is not found. |
+
+**Example**
+
+```ts
+import { shortcutManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// Replace with the actual shortcut information and user ID.
+let shortcutInfo: shortcutManager.ShortcutInfo = {
+  id: 'test1',
+  bundleName: 'com.example.myapplication',
+  moduleName: '',
+  hostAbility: '',
+  icon: '',
+  iconId: 1,
+  label: 'hello',
+  labelId: 1,
+  wants: [],
+  appIndex: 0,
+  sourceType: 0,
+};
+
+try {
+  shortcutManager.updateDesktopShortcutInfo(shortcutInfo, 100)
+    .then(() => {
+      hilog.info(0x0000, 'testTag', 'updateDesktopShortcutInfo successfully');
+    }).catch((err: Error) => {
+      hilog.error(0x0000, 'testTag', 'updateDesktopShortcutInfo failed. Cause: %{public}s', err.message);
+    });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'updateDesktopShortcutInfo failed. Cause: %{public}s', message);
+}
+```
+
 ## shortcutManager.getAllDesktopShortcutInfo
 
-getAllDesktopShortcutInfo(userId: number) : Promise<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)>>
+getAllDesktopShortcutInfo(userId: number) : Promise<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1)>>
 
 Obtains the information about all shortcuts of the given user.
 
@@ -203,13 +286,13 @@ Obtains the information about all shortcuts of the given user.
 
 | Name    | Type  | Mandatory| Description        |
 | ---------- | ------ | ---- | -------------- |
-| userId     | number | Yes  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9).|
+| userId     | number | Yes   | ID of the user to query, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). |
 
 **Return value**
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Promise<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)>> | Promise that returns the shortcut information defined in the application configuration file.|
+| Promise<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1)>> | Promise object, returning the shortcut information defined in the application configuration file. |
 
 **Error codes**
 
@@ -275,7 +358,7 @@ Adds dynamic shortcuts for the given user.
 | Name    | Type  | Mandatory| Description        |
 | ---------- | ------ | ---- | -------------- |
 |  shortcutInfo   |   Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1)>    |   Yes |  Information about the dynamic shortcuts. When the shortcut information is submitted through this API, the following validations are performed:<br> 1. The **sourceType** field in **ShortcutInfo** is set to **2**.<br> 2. If the **moduleName** field in **ShortcutInfo** does not exist in the corresponding application, error code 17700002 is thrown.<br> 3. If the **hostAbility** field in **ShortcutInfo** is set to a non-empty string, the system checks whether the corresponding ability exists. If it does not exist, error code 17700003 is thrown. |
-| userId     | number | Yes  | ID of the user to which the dynamic shortcuts belong. The user ID can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). The default value is the user ID of the caller. The value must be greater than or equal to 0.|
+| userId     | number | Yes   | User ID of the dynamic shortcut, which can be obtained by [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). Default value: the user where the caller is located. Value range: greater than or equal to 0. |
 
 **Return value**
 
@@ -299,7 +382,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 17700026 | The specified bundle is disabled.|
 | 17700061 | The specified app index is invalid.|
 | 17700070 | The specified shortcut id is illegal.|
-| 18100001 | A combination of bundleName and appIndex in the shutcutInfo list is different from the others.|
+| 18100001 | A combination of bundleName and appIndex in the shortcutInfo list is different from the others.|
 
 **Example**
 
@@ -361,7 +444,7 @@ Deletes dynamic shortcuts.
 | ---------- | ------ | ---- | -------------- |
 | bundleName   |   string    |   Yes |   Bundle name of the application to which the dynamic shortcuts belong.   |
 | appIndex     | number | Yes  | Clone index of the application to which the dynamic shortcuts belong. The value can be 1, 2, 3, 4, or 5.|
-| userId     | number | Yes  | ID of the user to which the dynamic shortcuts belong. The user ID can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). The default value is the user ID of the caller. The value must be greater than or equal to 0.|
+| userId     | number | Yes   | User ID of the user to which the dynamic shortcut to be deleted belongs. It can be obtained through the [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9) API. Default value: the user where the caller is located. Value range: greater than or equal to 0.|
 | ids     |  Array\<string> | No  | Array of IDs of the dynamic shortcuts to be deleted. If the default value is used or an empty array is passed, all dynamic shortcuts that meet the conditions are deleted.|
 
 **Return value**
@@ -475,5 +558,117 @@ try {
   });
 } catch (err) {
   console.error(`setShortcutsEnabled errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
+}
+```
+
+## shortcutManager.getShortcutInfoByAbility<sup>24+</sup>
+
+getShortcutInfoByAbility(bundleName: string, moduleName: string, abilityName: string, userId?: number, appIndex?: number): Array\<ShortcutInfo>
+
+Queries the shortcut information of a specified UIAbility under a specified user.
+
+**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or (ohos.permission.GET_BUNDLE_INFO_PRIVILEGED and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
+
+ - When querying the shortcuts of an application under the current user, the ohos.permission.GET_BUNDLE_INFO_PRIVILEGED permission is required.
+
+ - When querying the shortcuts of an application under another user, the ohos.permission.GET_BUNDLE_INFO_PRIVILEGED and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permissions are required.
+
+ - When querying the shortcuts of the caller's own application under the current user, no permission is required.
+
+ - When querying the shortcuts of the caller's own application under another user, the ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is required.
+
+**System API**: This is a system API.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.BundleManager.BundleFramework.Launcher
+
+**Parameters**
+
+| Name        | Type   | Mandatory | Description         |
+| ----------  | ------ | ---- | -------------- |
+| bundleName  | string | Yes  | Bundle name of the application.  |
+| moduleName  | string | Yes  | Name of the module.  |
+| abilityName | string | Yes  | Name of the UIAbility component. |
+| userId      | number | No   | User ID, which can be obtained through [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9).<br/>Default value: the user where the caller is located.<br/>Value range: greater than or equal to 0.  |
+| appIndex    | number | No   | Application index. The value is an integer ranging from 0 to 5. The value 0 indicates the main application, and the values 1 to 5 indicate the indexes of clone applications.<br/>Default value: 0 |
+
+**Return value**
+
+| Type                   | Description                                            |
+| ---------------------- | ----------------------------------------------- |
+| Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1)\> | Returns an array of [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1) of the specified UIAbility under the specified user. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bundle Error Codes](errorcode-bundle.md).
+
+| ID | Error Message                                 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+| 801 | Capability not supported. |
+| 17700001 | The specified bundle is not found.  |
+| 17700002 | The specified module is not found.  |
+| 17700003 | The specified ability is not found. |
+| 17700004 | The specified user id is not found.     |
+| 17700026 | The specified bundle is disabled.       |
+| 17700061 | The specified app index is invalid.     |
+
+**Example**
+
+```ts
+import { shortcutManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Replace with the actual bundleName, moduleName, abilityName, userId, and appIndex to query.
+const bundleName = 'com.example.myapplication';
+const moduleName = 'application';
+const abilityName = 'ApplicationAbility';
+let userId = 100;
+let appIndex = 0;
+
+try {
+  let shortcutInfos: Array<shortcutManager.ShortcutInfo> = shortcutManager.getShortcutInfoByAbility(bundleName, moduleName, abilityName, userId, appIndex);
+  console.info('getShortcutInfoByAbility shortcutInfos is' + JSON.stringify(shortcutInfos));
+} catch (err) {
+  console.error(`getShortcutInfoByAbility errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
+}
+```
+
+```ts
+// Do not pass the optional parameter appIndex.
+import { shortcutManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Replace with the actual bundleName, moduleName, abilityName, and userId to query.
+const bundleName = 'com.example.myapplication';
+const moduleName = 'application';
+const abilityName = 'ApplicationAbility';
+let userId = 100;
+
+try {
+  let shortcutInfos: Array<shortcutManager.ShortcutInfo> = shortcutManager.getShortcutInfoByAbility(bundleName, moduleName, abilityName, userId);
+  console.info('getShortcutInfoByAbility shortcutInfos is' + JSON.stringify(shortcutInfos));
+} catch (err) {
+  console.error(`getShortcutInfoByAbility errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
+}
+```
+
+```ts
+// Do not pass the optional parameters userId and appIndex.
+import { shortcutManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Replace with the actual bundleName, moduleName, and abilityName to query.
+const bundleName = 'com.example.myapplication';
+const moduleName = 'application';
+const abilityName = 'ApplicationAbility';
+
+try {
+  let shortcutInfos: Array<shortcutManager.ShortcutInfo> = shortcutManager.getShortcutInfoByAbility(bundleName, moduleName, abilityName);
+  console.info('getShortcutInfoByAbility shortcutInfos is' + JSON.stringify(shortcutInfos));
+} catch (err) {
+  console.error(`getShortcutInfoByAbility errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
 }
 ```

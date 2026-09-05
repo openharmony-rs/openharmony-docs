@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=b3bc27a342923ac4fafa55153b55c4f3b627330f translatedAt=2026-09-03T08:29:01.775Z pushedAt=2026-09-05T10:47:30.051Z -->
 
 ## Overview
 
@@ -20,4 +21,4 @@ As the basic definition module of Ability Kit, AbilityBase provides definitions 
 | Name| Description|
 | -- | -- |
 | [ability_base_common.h](capi-ability-base-common-h.md) | Declares the error codes defined by AbilityBase.|
-| [want.h](capi-want-h.md) | Want is a carrier for information transfer between objects (application components). Want can be used as a parameter of **startAbility** to specify a startup target and information that needs to be carried during startup, for example, **bundleName** and **abilityName**, which respectively indicate the bundle name of the target ability and the ability name in the bundle. When ability A needs to start ability B and transfer some data to ability B, it can use Want a carrier to transfer the data.|
+| [want.h](capi-want-h.md) | Want is a carrier for information transfer between objects, and can be used for information transfer between application components. One of the use scenarios of Want is to serve as a parameter of startAbility. It contains the specified launch target and the related data to carry during startup. For example, the bundleName and abilityName fields respectively indicate the bundle name of the application where the target Ability resides and the Ability name in the corresponding package. When Ability A needs to start Ability B and pass in some data, Want can be used as a carrier to pass the data to Ability B. |

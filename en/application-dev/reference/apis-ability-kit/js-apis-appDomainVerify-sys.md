@@ -4,7 +4,8 @@
 <!--Owner: @hw-xpc-->
 <!--Designer: @xuchuanqi87-->
 <!--Tester: @sl_sunshineGirl-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=a25f23f63f302873dc43f20e41915285e52f064b translatedAt=2026-09-03T10:51:58.536Z pushedAt=2026-09-05T10:47:30.490Z -->
 
 The appDomainVerify module provides APIs to query the mappings between applications and domain names for the purposes of application domain name verification.
 
@@ -31,6 +32,8 @@ For details about the APL, see [Basic Concepts in the Permission Mechanism](../.
 queryAssociatedDomains(bundleName: string): string[]
 
 Queries the list of domain names associated with an application based on its bundle name.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **Required permissions**: ohos.permission.GET_APP_DOMAIN_BUNDLE_INFO
 
@@ -80,6 +83,8 @@ domains.forEach(domain => {
 queryAssociatedBundleNames(domain: string): string[]
 
 Obtains the list of bundle names associated with a domain name.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **Required permissions**: ohos.permission.GET_APP_DOMAIN_BUNDLE_INFO
 

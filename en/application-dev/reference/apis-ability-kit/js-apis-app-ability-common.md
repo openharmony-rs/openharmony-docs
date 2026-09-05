@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=aa0fb9ac9cb84f1c8f057e9ad47e9d44face8fc4 translatedAt=2026-09-03T10:10:24.519Z pushedAt=2026-09-05T10:47:30.366Z -->
 
 The module provides pure type definitions for common capabilities within Ability Kit, including various context objects, callback interfaces, and data structures. It exports type declarations only and does not include any implementation logic or executable code.
 
@@ -33,7 +34,7 @@ Defines the context environment for the [UIAbility](../apis-ability-kit/js-apis-
 
 | Type| Description|
 | --- | --- |
-| [_UIAbilityContext.default](js-apis-inner-application-uiAbilityContext.md) | Default context of the UIAbility.|
+| [_UIAbilityContext](js-apis-inner-application-uiAbilityContext.md).default | UIAbility component context. |
 
 ## AbilityStageContext
 
@@ -49,7 +50,7 @@ Defines the context environment for the [AbilityStage](../apis-ability-kit/js-ap
 
 | Type| Description|
 | --- | --- |
-| [_AbilityStageContext.default](js-apis-inner-application-abilityStageContext.md) | Default context of the AbilityStage.|
+| [_AbilityStageContext](js-apis-inner-application-abilityStageContext.md).default | AbilityStage component context. |
 
 ## ApplicationContext
 
@@ -65,7 +66,7 @@ Defines the application context. It inherits from Context.
 
 | Type| Description|
 | --- | --- |
-| [_ApplicationContext.default](js-apis-inner-application-applicationContext.md) | Application context.|
+| [_ApplicationContext](js-apis-inner-application-applicationContext.md).default | Application context. |
 
 ## BaseContext
 
@@ -81,7 +82,7 @@ Defines the parent class of all context types.
 
 | Type| Description|
 | --- | --- |
-| [_BaseContext.default](js-apis-inner-application-baseContext.md) | Parent class of all context types.|
+| [_BaseContext](js-apis-inner-application-baseContext.md).default | Parent class of all contexts. |
 
 ## Context
 
@@ -97,7 +98,7 @@ Defines the context base class for the [stage model](../../application-models/ab
 
 | Type| Description|
 | --- | --- |
-| [_Context.default](js-apis-inner-application-context.md) | Base class of the context in the stage model.|
+| [_Context](js-apis-inner-application-context.md).default | Base class of the context in the Stage model. |
 
 ## ExtensionContext
 
@@ -113,7 +114,7 @@ Defines the context environment for the [ExtensionAbility](../apis-ability-kit/j
 
 | Type| Description|
 | --- | --- |
-| [_ExtensionContext.default](js-apis-inner-application-extensionContext.md) | Default context of the ExtensionAbility.|
+| [_ExtensionContext](js-apis-inner-application-extensionContext.md).default | ExtensionAbility component context. |
 
 ## FormExtensionContext
 
@@ -129,9 +130,9 @@ Defines the context environment for the [FormExtensionAbility](../apis-form-kit/
 
 | Type| Description|
 | --- | --- |
-| [_FormExtensionContext.default](../apis-form-kit/js-apis-inner-application-formExtensionContext.md) | Default context of the FormExtensionAbility.|
+| [_FormExtensionContext](../apis-form-kit/js-apis-inner-application-formExtensionContext.md).default | FormExtensionAbility component context. |
 
-## VpnExtensionContext<sup>11+<sup>
+## VpnExtensionContext<sup>11+</sup>
 
 type VpnExtensionContext = _VpnExtensionContext.default
 
@@ -143,7 +144,7 @@ Defines the context environment for the [VpnExtensionAbility](../apis-network-ki
 
 | Type| Description|
 | --- | --- |
-| [_VpnExtensionContext.default](../apis-network-kit/js-apis-inner-application-VpnExtensionContext.md) | Default context of the VpnExtensionAbility.|
+| [_VpnExtensionContext](../apis-network-kit/js-apis-inner-application-VpnExtensionContext.md).default | Context of the VpnExtensionAbility component. |
 
 ## EventHub
 
@@ -159,7 +160,7 @@ Defines EventHub, which is an event communication mechanism based on the publish
 
 | Type| Description|
 | --- | --- |
-| [_EventHub.default](js-apis-inner-application-eventHub.md) | Event communication mechanism based on the publish-subscribe pattern.|
+| [_EventHub](js-apis-inner-application-eventHub.md).default | Event communication mechanism provided by the system and implemented based on the publish-subscribe pattern. |
 
 ## PacMap
 
@@ -170,6 +171,9 @@ Defines the container of basic data types.
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Model constraint:**
+This API can be used in both the stage model and the FA model since API version 11.
 
 | Type| Description|
 | --- | --- |
@@ -191,7 +195,7 @@ Defines the result code and data returned when a started ability is terminated.
 | --- | --- |
 | [_AbilityResult](js-apis-inner-ability-abilityResult.md) | Result code and data returned when a started ability is terminated.|
 
-## AbilityStartCallback<sup>11+<sup>
+## AbilityStartCallback<sup>11+</sup>
 
 type AbilityStartCallback = _AbilityStartCallback
 
@@ -233,9 +237,9 @@ Defines the context environment for the [UIExtensionAbility](../apis-ability-kit
 
 | Type| Description|
 | --- | --- |
-| [_UIExtensionContext.default](js-apis-inner-application-uiExtensionContext.md) | Default context of the UIExtensionAbility.|
+| [_UIExtensionContext](js-apis-inner-application-uiExtensionContext.md).default | UIExtensionAbility component context. |
 
-## EmbeddableUIAbilityContext<sup>12+<sup>
+## EmbeddableUIAbilityContext<sup>12+</sup>
 
 type EmbeddableUIAbilityContext = _EmbeddableUIAbilityContext.default
 
@@ -249,9 +253,9 @@ Defines the context environment for the [EmbeddableUIAbility](../apis-ability-ki
 
 | Type| Description|
 | --- | --- |
-| [_EmbeddableUIAbilityContext.default](js-apis-inner-application-EmbeddableUIAbilityContext.md) | Default context of the EmbeddableUIAbility.|
+| [_EmbeddableUIAbilityContext](js-apis-inner-application-EmbeddableUIAbilityContext.md).default | EmbeddableUIAbility component context. |
 
-## PhotoEditorExtensionContext<sup>12+<sup>
+## PhotoEditorExtensionContext<sup>12+</sup>
 
 type PhotoEditorExtensionContext = _PhotoEditorExtensionContext.default
 
@@ -263,9 +267,9 @@ Defines the context environment for the [PhotoEditorExtensionAbility](../apis-ab
 
 | Type| Description|
 | --- | --- |
-| [_PhotoEditorExtensionContext.default](js-apis-app-ability-photoEditorExtensionContext.md) | Default context of the PhotoEditorExtensionAbility.|
+| [_PhotoEditorExtensionContext](js-apis-app-ability-photoEditorExtensionContext.md).default | Component context of PhotoEditorExtensionAbility. |
 
-## UIServiceProxy<sup>14+<sup>
+## UIServiceProxy<sup>14+</sup>
 
 type UIServiceProxy = _UIServiceProxy.default
 
@@ -279,9 +283,9 @@ Defines the capability for data communication with the UIServiceExtensionAbility
 
 | Type| Description|
 | --- | --- |
-| [_UIServiceProxy.default](js-apis-inner-application-uiserviceproxy.md) | Capability for data communication with the UIServiceExtensionAbility.|
+| [_UIServiceProxy](js-apis-inner-application-uiserviceproxy.md).default | Provides the capability of data communication with the UIServiceExtensionAbility server. |
 
-## UIServiceExtensionConnectCallback<sup>14+<sup>
+## UIServiceExtensionConnectCallback<sup>14+</sup>
 
 type UIServiceExtensionConnectCallback = _UIServiceExtensionConnectCallback.default
 
@@ -295,7 +299,7 @@ Defines the connection callback. It is used as an input parameter for connection
 
 | Type| Description|
 | --- | --- |
-| [_UIServiceExtensionConnectCallback.default](js-apis-inner-application-uiServiceExtensionconnectcallback.md) | Callback for connection to a UIServiceExtensionAbility.|
+| [_UIServiceExtensionConnectCallback](js-apis-inner-application-uiServiceExtensionconnectcallback.md).default | Provides the capability of UIServiceExtensionAbility connection callback data. |
 
 ## AppServiceExtensionContext<sup>20+</sup>
 
@@ -309,7 +313,7 @@ Defines the context environment for the [AppServiceExtensionAbility](js-apis-app
 
 | Type| Description|
 | --- | --- |
-| [_AppServiceExtensionContext.default](js-apis-inner-application-appServiceExtensionContext.md) | Default context of the AppServiceExtensionAbility.|
+| [_AppServiceExtensionContext](js-apis-inner-application-appServiceExtensionContext.md).default | Component context of AppServiceExtensionAbility. |
 
 ## FormEditExtensionContext<sup>22+</sup>
 
@@ -325,7 +329,7 @@ Defines the context environment for the [FormEditExtensionAbility](../apis-form-
 
 | Type| Description|
 | --- | --- |
-| [_FormEditExtensionContext.default](../apis-form-kit/js-apis-inner-application-formEditExtensionContext.md) | Default context of the FormEditExtensionAbility.|
+| [_FormEditExtensionContext](../apis-form-kit/js-apis-inner-application-formEditExtensionContext.md).default | Component context of FormEditExtensionAbility. |
 
 ## LiveFormExtensionContext<sup>22+</sup>
 
@@ -341,7 +345,119 @@ Defines the context environment for the [LiveFormExtensionAbility](../apis-form-
 
 | Type| Description|
 | --- | --- |
-| [_LiveFormExtensionContext.default](../apis-form-kit/js-apis-application-LiveFormExtensionContext.md) | Default context of the LiveFormExtensionAbility.|
+| [_LiveFormExtensionContext](../apis-form-kit/js-apis-application-LiveFormExtensionContext.md).default | Component context of LiveFormExtensionAbility. |
+
+## AgentCard<sup>24+</sup>
+
+type AgentCard = _AgentCard
+
+[AgentCard](../apis-ability-kit/js-apis-inner-application-AgentCard.md) is equivalent to the "business card" of an Agent, used to describe the capabilities and skills of the Agent. It is configured by the developer in the agent_config.json configuration file of the Agent.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Ability.AgentRuntime.Core
+
+**Model restriction:** This API can be used only in the stage model.
+
+| Type | Description |
+| --- | --- |
+| [_AgentCard](../apis-ability-kit/js-apis-inner-application-AgentCard.md) | The "business card" of an Agent, used to describe the capabilities and skills of the Agent. |
+
+## AgentProvider<sup>24+</sup>
+
+type AgentProvider = _AgentProvider
+
+[AgentProvider](../apis-ability-kit/js-apis-inner-application-AgentCard.md#agentprovider) indicates the service provider of an Agent.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Ability.AgentRuntime.Core
+
+**Model restriction:** This API can be used only in the stage model.
+
+| Type | Description |
+| --- | --- |
+| [_AgentProvider](../apis-ability-kit/js-apis-inner-application-AgentCard.md#agentprovider) | Service provider of an Agent. |
+
+## AgentCapabilities<sup>24+</sup>
+
+type AgentCapabilities = _AgentCapabilities
+
+[AgentCapabilities](../apis-ability-kit/js-apis-inner-application-AgentCard.md#agentcapabilities) defines the optional capabilities supported by an Agent.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Ability.AgentRuntime.Core
+
+**Model restriction:** This API can be used only in the stage model.
+
+| Type | Description |
+| --- | --- |
+| [_AgentCapabilities](../apis-ability-kit/js-apis-inner-application-AgentCard.md#agentcapabilities) | Defines the optional capabilities supported by an agent. |
+
+## AgentSkill<sup>24+</sup>
+
+type AgentSkill = _AgentSkill
+
+[AgentSkill](../apis-ability-kit/js-apis-inner-application-AgentCard.md#agentskill) indicates the different capabilities or functions that an Agent can perform.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Ability.AgentRuntime.Core
+
+**Model restriction:** This API can be used only in the stage model.
+
+| Type | Description |
+| --- | --- |
+| [_AgentSkill](../apis-ability-kit/js-apis-inner-application-AgentCard.md#agentskill) | Represents the different capabilities or functions that an agent can perform. |
+
+## AgentAppInfo<sup>24+</sup>
+
+type AgentAppInfo = _AgentAppInfo
+
+[AgentAppInfo](../apis-ability-kit/js-apis-inner-application-AgentCard.md#agentappinfo) indicates the application information of the agent to which the Agent belongs.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Ability.AgentRuntime.Core
+
+**Model restriction:** This API can be used only in the stage model.
+
+| Type | Description |
+| --- | --- |
+| [_AgentAppInfo](../apis-ability-kit/js-apis-inner-application-AgentCard.md#agentappinfo) | Application information of the agent to which the Agent belongs. |
+
+## AgentHostProxy<sup>24+</sup>
+
+type AgentHostProxy = _AgentHostProxy
+
+[AgentHostProxy](../apis-ability-kit/js-apis-inner-application-agentHostProxy.md) is used to send data or security authentication requests from the [AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md) server to the client.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Ability.AgentRuntime.Core
+
+**Model restriction:** This API can be used only in the stage model.
+
+| Type | Description |
+| --- | --- |
+| [_AgentHostProxy](../apis-ability-kit/js-apis-inner-application-agentHostProxy.md) | Used to send data or security authentication requests from the [AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md) server to the client. |
+
+## AgentExtensionContext<sup>24+</sup>
+
+type AgentExtensionContext = _AgentExtensionContext
+
+[AgentExtensionContext](../apis-ability-kit/js-apis-inner-application-agentExtensionContext.md) is the context of [AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md), and inherits from [ExtensionContext](js-apis-inner-application-extensionContext.md).
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Ability.AgentRuntime.Core
+
+**Model restriction:** This API can be used only in the stage model.
+
+| Type | Description |
+| --- | --- |
+| [_AgentExtensionContext](../apis-ability-kit/js-apis-inner-application-agentExtensionContext.md) | The context of [AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md), which inherits from [ExtensionContext](js-apis-inner-application-extensionContext.md). |
 
 **Example**
 
@@ -369,4 +485,11 @@ let uiServiceExtensionConnectCallback : common.UIServiceExtensionConnectCallback
 let appServiceExtensionContext : common.AppServiceExtensionContext;
 let formEditExtensionContext : common.FormEditExtensionContext;
 let liveFormExtensionContext : common.LiveFormExtensionContext;
+let agentCard: common.AgentCard;
+let agentProvider: common.AgentProvider;
+let agentCapabilities: common.AgentCapabilities;
+let agentSkill: common.AgentSkill;
+let agentAppInfo: common.AgentAppInfo;
+let agentHostProxy: common.AgentHostProxy;
+let agentExtensionContext: common.AgentExtensionContext;
 ```

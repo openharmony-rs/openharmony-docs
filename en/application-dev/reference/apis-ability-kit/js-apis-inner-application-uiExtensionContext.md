@@ -4,10 +4,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @xhz-sz-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=7fe4eacae9c952d492316e40f501d71d3714186d translatedAt=2026-09-03T12:09:24.134Z pushedAt=2026-09-05T10:47:30.878Z -->
 
-UIExtensionContext provides the context environment for the [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md). It inherits from [ExtensionContext](js-apis-inner-application-extensionContext.md) and provides UIExtensionAbility-related configurations and APIs for operating the [UIAbility](js-apis-app-ability-uiAbility.md). For example, you can use the APIs to start a UIAbility.
+UIExtensionContext is the context environment of [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md). It inherits from [ExtensionContext](js-apis-inner-application-extensionContext.md) and provides the configuration information of [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md) as well as the capabilities for operating [UIAbility](js-apis-app-ability-uiAbility.md), such as starting [UIAbility](js-apis-app-ability-uiAbility.md).
 
 > **NOTE**
 >
@@ -31,7 +32,7 @@ Starts a UIAbility. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Component Startup Rules (Inner Device)](../../application-models/component-startup-rules-inner-device.md) and [Component Startup Rules (Cross-Device)](../../application-models/component-startup-rules-cross-device.md).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -39,7 +40,7 @@ Starts a UIAbility. This API uses an asynchronous callback to return the result.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want required for starting the UIAbility, which contains information such as the name of the UIAbility to start.|
+| want | [Want](js-apis-app-ability-want.md) | Yes | Want used to start the UIAbility, including the name of the UIAbility to start and other information. |
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the UIAbility is started, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -61,21 +62,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000011 | The context does not exist.        |
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000019 | No matching ability is found. |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>Applicable version: 12+ |
+| 16000019 | No matching ability is found. <br>Applicable version: 12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000069 | The extension cannot start the third party application. |
-| 16000070 | The extension cannot start the service. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000069 | The extension cannot start the third party application. <br>Applicable version: 12+ |
+| 16000070 | The extension cannot start the service. <br>Applicable version: 12+ |
+| 16000071 | App clone is not supported. <br>Applicable version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable version: 12+ |
+| 16000076 | The app instance key is invalid. <br>Applicable version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable version: 14+ |
+| 16000080 | Creating a new instance is not supported. <br>Applicable version: 14+ |
 | 16200001 | The caller has been released. |
 
 **Example**
@@ -121,7 +122,7 @@ Starts a UIAbility. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Component Startup Rules (Inner Device)](../../application-models/component-startup-rules-inner-device.md) and [Component Startup Rules (Cross-Device)](../../application-models/component-startup-rules-cross-device.md).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -150,21 +151,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000011 | The context does not exist.        |
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000019 | No matching ability is found. |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>Applicable version: 12+ |
+| 16000019 | No matching ability is found. <br>Applicable version: 12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000069 | The extension cannot start the third party application. |
-| 16000070 | The extension cannot start the service. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000069 | The extension cannot start the third party application. <br>Applicable version: 12+ |
+| 16000070 | The extension cannot start the service. <br>Applicable version: 12+ |
+| 16000071 | App clone is not supported. <br>Applicable version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable version: 12+ |
+| 16000076 | The app instance key is invalid. <br>Applicable version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable version: 14+ |
+| 16000080 | Creating a new instance is not supported. <br>Applicable version: 14+ |
 | 16200001 | The caller has been released. |
 
 **Example**
@@ -213,7 +214,7 @@ Starts a UIAbility. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Component Startup Rules (Inner Device)](../../application-models/component-startup-rules-inner-device.md) and [Component Startup Rules (Cross-Device)](../../application-models/component-startup-rules-cross-device.md).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -221,8 +222,8 @@ Starts a UIAbility. This API uses a promise to return the result.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want required for starting the UIAbility, which contains information such as the name of the UIAbility to start.|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Extra parameters used for starting the UIAbility.|
+| want | [Want](js-apis-app-ability-want.md) | Yes | Want used to start the UIAbility, including the name of the UIAbility to start. |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | No | Extra parameters carried for starting the UIAbility, used to customize the startup behavior (for example, specifying the display screen ID and window mode). Pass this parameter when custom startup configuration is required; otherwise, the system default startup configuration is used. |
 
 **Return value**
 
@@ -249,21 +250,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000011 | The context does not exist.        |
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000019 | No matching ability is found. |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>Applicable version: 12+ |
+| 16000019 | No matching ability is found. <br>Applicable version: 12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000069 | The extension cannot start the third party application. |
-| 16000070 | The extension cannot start the service. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000069 | The extension cannot start the third party application. <br>Applicable version: 12+ |
+| 16000070 | The extension cannot start the service. <br>Applicable version: 12+ |
+| 16000071 | App clone is not supported. <br>Applicable version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable version: 12+ |
+| 16000076 | The app instance key is invalid. <br>Applicable version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable version: 14+ |
+| 16000080 | Creating a new instance is not supported. <br>Applicable version: 14+ |
 | 16200001 | The caller has been released. |
 
 **Example**
@@ -307,14 +308,14 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 
 startAbilityForResult(want: Want, callback: AsyncCallback&lt;AbilityResult&gt;): void
 
-Starts a UIAbility and returns the exit result of the launched UIAbility via a callback. This API uses an asynchronous callback to return the result. The following situations may be possible for a started UIAbility:
+Starts a UIAbility. The developer can use the callback to receive the result returned when the started UIAbility exits. This API uses an asynchronous callback to return the result. After the UIAbility is started, the following cases may occur:
  - Normally, you can call [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) to terminate the UIAbility. The result is returned to the caller.
- - If an exception occurs, for example, the UIAbility is killed, an error message, in which **resultCode** is **-1**, is returned to the initiator UIAbility.
- - If different applications call this API to start a UIAbility that uses the singleton mode and then call [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) to terminate the UIAbility, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
+ - If an exception occurs, for example, the UIAbility is killed, an error message, in which **resultCode** is **-1**, is returned to the caller.
+ - If the started UIAbility uses the singleton mode and different applications call this API multiple times to start it, when the UIAbility calls [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) to terminate itself, the normal result is returned only to the last caller, and an error message, in which **resultCode** is **-1**, is returned to the other callers.
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Component Startup Rules (Inner Device)](../../application-models/component-startup-rules-inner-device.md) and [Component Startup Rules (Cross-Device)](../../application-models/component-startup-rules-cross-device.md).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -344,21 +345,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000011 | The context does not exist. |
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000019 | No matching ability is found. |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>Applicable version: 12+ |
+| 16000019 | No matching ability is found. <br>Applicable version: 12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000069 | The extension cannot start the third party application. |
-| 16000070 | The extension cannot start the service. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000069 | The extension cannot start the third party application. <br>Applicable version: 12+ |
+| 16000070 | The extension cannot start the service. <br>Applicable version: 12+ |
+| 16000071 | App clone is not supported. <br>Applicable version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable version: 12+ |
+| 16000076 | The app instance key is invalid. <br>Applicable version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable version: 14+ |
+| 16000080 | Creating a new instance is not supported. <br>Applicable version: 14+ |
 | 16200001 | The caller has been released. |
 
 **Example**
@@ -399,14 +400,14 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 
 startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback&lt;AbilityResult&gt;): void
 
-Starts a UIAbility and returns the exit result of the launched UIAbility via a callback. This API uses an asynchronous callback to return the result. The following situations may be possible for a started UIAbility:
+Starts a UIAbility. The developer can use the callback to receive the result returned when the started UIAbility exits. This API uses an asynchronous callback to return the result. After the UIAbility is started, the following cases may occur:
  - Normally, you can call [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) to terminate the UIAbility. The result is returned to the caller.
  - If an exception occurs, for example, the UIAbility is killed, an error message, in which **resultCode** is **-1**, is returned to the initiator UIAbility.
- - If different applications call this API to start a UIAbility that uses the singleton mode and then call [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) to terminate the UIAbility, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
+ - If the started UIAbility uses the singleton mode and different applications call this API multiple times to start it, when the UIAbility calls [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) to terminate itself, the normal result is returned only to the last caller, and an error message, in which **resultCode** is **-1**, is returned to the other callers.
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Component Startup Rules in the Device](../../application-models/component-startup-rules-inner-device.md) and [Component Startup Rules Across Devices](../../application-models/component-startup-rules-cross-device.md).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -435,21 +436,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000011 | The context does not exist. |
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000019 | No matching ability is found. |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>Applicable version: 12+ |
+| 16000019 | No matching ability is found. <br>Applicable version: 12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000069 | The extension cannot start the third party application. |
-| 16000070 | The extension cannot start the service. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000069 | The extension cannot start the third party application. <br>Applicable version: 12+ |
+| 16000070 | The extension cannot start the service. <br>Applicable version: 12+ |
+| 16000071 | App clone is not supported. <br>Applicable version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable version: 12+ |
+| 16000076 | The app instance key is invalid. <br>Applicable version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable version: 14+ |
+| 16000080 | Creating a new instance is not supported. <br>Applicable version: 14+ |
 | 16200001 | The caller has been released. |
 
 **Example**
@@ -494,14 +495,14 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 
 startAbilityForResult(want: Want, options?: StartOptions): Promise&lt;AbilityResult&gt;
 
-Starts a UIAbility and returns the exit result of the launched UIAbility via a callback. This API uses a promise to return the result. The following situations may be possible for a started UIAbility:
+Starts a UIAbility. The developer can use a callback to receive the result returned when the started UIAbility exits. This API uses a promise to return the result. After the UIAbility is started, the following cases may occur:
  - Normally, you can call [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) to terminate the UIAbility. The result is returned to the caller.
- - If an exception occurs, for example, the UIAbility is killed, an error message, in which **resultCode** is **-1**, is returned to the initiator UIAbility.
- - If different applications call this API to start a UIAbility that uses the singleton mode and then call [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) to terminate the UIAbility, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
+ - If an exception occurs, for example, the UIAbility is killed, an error message, in which **resultCode** is **-1**, is returned to the caller.
+ - If different applications call this API to start a UIAbility that uses the singleton mode and then call [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) to terminate the UIAbility, only the last caller receives the normal result, and the other callers receive an error message, in which **resultCode** is **-1**.
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Component Startup Rules in the Device](../../application-models/component-startup-rules-inner-device.md) and [Component Startup Rules Across Devices](../../application-models/component-startup-rules-cross-device.md).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -509,8 +510,8 @@ Starts a UIAbility and returns the exit result of the launched UIAbility via a c
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want required for starting the UIAbility, which contains information such as the name of the UIAbility to start.|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Extra parameters used for starting the UIAbility.|
+| want | [Want](js-apis-app-ability-want.md) | Yes | Want used to start the UIAbility, including the name of the UIAbility to start and other information. |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | No | Additional parameters carried for starting the UIAbility, used to customize the startup behavior (such as specifying the display screen ID and window mode). Pass this parameter when custom startup configuration is required; otherwise, the system default startup configuration is used. |
 
 
 **Return value**
@@ -538,21 +539,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000011 | The context does not exist. |
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000019 | No matching ability is found. |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>Applicable version: 12+ |
+| 16000019 | No matching ability is found. <br>Applicable version: 12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000069 | The extension cannot start the third party application. |
-| 16000070 | The extension cannot start the service. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000069 | The extension cannot start the third party application. <br>Applicable version: 12+ |
+| 16000070 | The extension cannot start the service. <br>Applicable version: 12+ |
+| 16000071 | App clone is not supported. <br>Applicable version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable version: 12+ |
+| 16000076 | The app instance key is invalid. <br>Applicable version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable version: 14+ |
+| 16000080 | Creating a new instance is not supported. <br>Applicable version: 14+ |
 | 16200001 | The caller has been released. |
 
 **Example**
@@ -603,7 +604,7 @@ ServiceExtensionAbility is a special type of [ExtensionAbility](../../applicatio
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Component Startup Rules in the Device](../../application-models/component-startup-rules-inner-device.md) and [Component Startup Rules Across Devices](../../application-models/component-startup-rules-cross-device.md).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -635,6 +636,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist.        |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
@@ -687,8 +690,6 @@ disconnectServiceExtensionAbility(connection: number): Promise\<void>
 
 Disconnects from a ServiceExtensionAbility. Once the connection is terminated, set the remote object, which is returned when the connection is established, to null. This API uses a promise to return the result.
 
-ServiceExtensionAbility is a special type of [ExtensionAbility](../../application-models/extensionability-overview.md) provided by the system. It is designed to offer background services for specific scenarios and is not customizable by developers. It can be connected to by other components and handles requests in the background based on the caller information.
-
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters**
@@ -723,8 +724,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class ShareExtAbility extends ShareExtensionAbility {
   onForeground() {
-    // connection is the return value of connectServiceExtensionAbility.
-    let connection = 1;
+// Obtain connection through the return value of connectServiceExtensionAbility. For details, see the connectServiceExtensionAbility example.
+let connection = 1; // Example value. In actual development, use the connectionId returned when the connection is established.
     let commRemote: rpc.IRemoteObject | null;
 
     try {
@@ -735,7 +736,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
       }).catch((err: BusinessError) => {
         // Process service logic errors.
         console.error(`disconnectServiceExtensionAbility failed, code is ${err.code}, message is ${err.message}`);
-      })
+      });
     } catch (err) {
       commRemote = null;
       // Process input parameter errors.
@@ -752,8 +753,6 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback\<void>): void
 
 Disconnects from a ServiceExtensionAbility. Once the connection is terminated, set the remote object, which is returned when the connection is established, to null. This API uses an asynchronous callback to return the result.
-
-ServiceExtensionAbility is a special type of [ExtensionAbility](../../application-models/extensionability-overview.md) provided by the system. It is designed to offer background services for specific scenarios and is not customizable by developers. It can be connected to by other components and handles requests in the background based on the caller information.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -822,7 +821,7 @@ Destroys this UIExtensionAbility and closes the corresponding window. This API u
 
 | Name  | Type                     | Mandatory| Description                                                        |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback invoked when the UIExtensionAbility is destroyed. If the UIExtensionAbility is destroyed successfully, err is undefined; otherwise, err is an error object. |
 
 **Error codes**
 
@@ -917,7 +916,7 @@ Destroys this UIExtensionAbility, closes the corresponding window, and returns t
 | Name   | Type                                                   | Mandatory| Description                                                  |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------ |
 | parameter | [AbilityResult](js-apis-inner-ability-abilityResult.md) | Yes  | Information returned to the caller of the UIExtensionAbility.                |
-| callback  | AsyncCallback&lt;void&gt;                               | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback  | AsyncCallback&lt;void&gt;                               | Yes   | Callback invoked when the UIExtensionAbility is destroyed. If the destruction succeeds, err is undefined; otherwise, err is an error object. |
 
 **Error codes**
 
@@ -1033,7 +1032,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 }
 ```
 
-### reportDrawnCompleted<sup>12+<sup>
+### reportDrawnCompleted<sup>12+</sup>
 
 reportDrawnCompleted(callback: AsyncCallback\<void>): void
 
@@ -1093,7 +1092,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 }
 ```
 
-### openAtomicService<sup>12+<sup>
+### openAtomicService<sup>12+</sup>
 
 openAtomicService(appId: string, options?: AtomicServiceOptions): Promise&lt;AbilityResult&gt;
 
@@ -1102,11 +1101,11 @@ Opens an atomic service in an independent window and returns the result. This AP
 The following situations may be possible for a started atomic service:
  - Normally, you can call [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) to terminate the atomic service. The result is returned to the caller.
  - If an exception occurs, for example, the atomic service is killed, an error message, in which **resultCode** is **-1**, is returned to the caller.
- - If different applications call this API to start an atomic service and then call [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) to terminate the atomic service, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
+ - If different applications call this API multiple times to start the same atomic service, when the atomic service calls [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) to terminate itself, only the normal result is returned to the last caller, and an error message, in which **resultCode** is **-1**, is returned to the other callers.
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Component Startup Rules (for System Applications Only)](../../application-models/component-startup-rules-inner-device.md).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1175,7 +1174,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 }
 ```
 
-### openLink<sup>12+<sup>
+### openLink<sup>12+</sup>
 
 openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;AbilityResult&gt;): Promise&lt;void&gt;
 
@@ -1192,7 +1191,7 @@ If an input parameter is invalid, for example, a mandatory parameter is not set 
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Component Startup Rules (Inner Device)](../../application-models/component-startup-rules-inner-device.md).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1201,8 +1200,8 @@ If an input parameter is invalid, for example, a mandatory parameter is not set 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | link | string | Yes| URL to open, which must be in the standard format.|
-| options | [OpenLinkOptions](js-apis-app-ability-openLinkOptions.md) | No| Options of the URL.|
-| callback | AsyncCallback&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | No| Callback used to return the result.|
+| options | [OpenLinkOptions](js-apis-app-ability-openLinkOptions.md) | No | Options for opening the URL. If this parameter is not passed, the default options are used. |
+| callback | AsyncCallback&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | No | Callback used to asynchronously receive the operation result and returned data. When the result after the started party is terminated is obtained, err is undefined and result is an AbilityResult object; otherwise, err is an error object. |
 
 **Return value**
 
@@ -1233,7 +1232,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000069 | The extension cannot start the third party application. |
 | 16200001 | The caller has been released. |
 | 16000053 | The ability is not on the top of the UI. |
-| 16000136 | The UIAbility is prohibited from launching itself via App Linking. |
+| 16000136 | The UIAbility is prohibited from launching itself via App Linking. <br>Applicable version: 23+ |
 
 **Example**
 
@@ -1273,6 +1272,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
       appLinkingOnly: true
     };
     try {
+      // Start the UIAbility through App Linking or Deep Linking.
       this.context.openLink(
         link,
         openLinkOptions,
@@ -1301,7 +1301,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 }
 ```
 
-### startUIServiceExtensionAbility<sup>14+<sup>
+### startUIServiceExtensionAbility<sup>14+</sup>
 
 startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
@@ -1309,8 +1309,8 @@ Starts a UIServiceExtensionAbility. This API uses a promise to return the result
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
->
+> - For details about the component startup rules, see [Component Startup Rules on the Same Device](../../application-models/component-startup-rules-inner-device.md) and [Component Startup Rules Across Devices](../../application-models/component-startup-rules-cross-device.md).
+> - This API does not support starting the UIServiceExtensionAbility of a cloned application.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1374,20 +1374,20 @@ struct Index {
                 console.info(`startUIServiceExtensionAbility success.`);
               }).catch((error: BusinessError) => {
                 console.error(`startUIServiceExtensionAbility failed, err code: ${error.code}, err msg: ${error.message}.`);
-              })
+              });
             } catch (err) {
               let code = (err as BusinessError).code;
               let msg = (err as BusinessError).message;
               console.error(`startUIServiceExtensionAbility failed, err code: ${code}, err msg: ${msg}.`);
             }
-          })
+          });
       }
     }
   }
 }
 ```
 
-### connectUIServiceExtensionAbility<sup>14+<sup>
+### connectUIServiceExtensionAbility<sup>14+</sup>
 
 connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnectCallback) : Promise&lt;UIServiceProxy&gt;
 
@@ -1395,8 +1395,8 @@ Connects to a UIServiceExtensionAbility. This API uses a promise to return the r
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
->
+> - For details about the component startup rules, see [Component Startup Rules Within a Device](../../application-models/component-startup-rules-inner-device.md) and [Component Startup Rules Across Devices](../../application-models/component-startup-rules-cross-device.md).
+> - This API does not support connecting to the UIServiceExtensionAbility of an app clone.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1404,7 +1404,7 @@ Connects to a UIServiceExtensionAbility. This API uses a promise to return the r
 
 | Name              | Type                            | Mandatory| Description                |
 | -------------------- | -------------------------------- | ---- |  -------------------- |
-| want                 | Want                             | Yes| Want information used for connection.|
+| want                 | [Want](js-apis-app-ability-want.md) | Yes | Want information used for the connection. |
 | callback | [UIServiceExtensionConnectCallback](js-apis-inner-application-uiServiceExtensionconnectcallback.md) | Yes| Callback for connecting to the UIServiceExtensionAbility.    |
 
 **Return value**
@@ -1469,14 +1469,14 @@ struct Page_UIServiceExtensionAbility {
           console.info(`connectUIServiceExtensionAbility success`);
         }).catch((error: BusinessError) => {
           console.error(`connectUIServiceExtensionAbility failed, err code: ${error.code}, err msg: ${error.message}.`);
-        })
+        });
       })
     }
   }
 }
 ```
 
-### disconnectUIServiceExtensionAbility<sup>14+<sup>
+### disconnectUIServiceExtensionAbility<sup>14+</sup>
 
 disconnectUIServiceExtensionAbility(proxy: UIServiceProxy): Promise&lt;void&gt;
 
@@ -1524,11 +1524,12 @@ struct Page_UIServiceExtensionAbility {
       }.onClick(() => {
         const context = this.getUIContext().getHostContext() as common.UIExtensionContext;
         // this.uiServiceProxy is the proxy object saved during connection.
+        // Disconnect from the UIServiceExtensionAbility.
         context.disconnectUIServiceExtensionAbility(this.uiServiceProxy).then(() => {
           console.info(`disconnectUIServiceExtensionAbility success.`);
         }).catch((error: BusinessError) => {
-          console.info(`disconnectUIServiceExtensionAbility failed, err code: ${error.code}, err msg: ${error.message}.`);
-        })
+          console.error(`disconnectUIServiceExtensionAbility failed, err code: ${error.code}, err msg: ${error.message}.`);
+        });
       })
     }
   }
@@ -1542,8 +1543,8 @@ setColorMode(colorMode: ConfigurationConstant.ColorMode): void
 Sets the dark/light color mode for this UIExtensionAbility. Before calling this API, ensure that the page corresponding to the UIExtensionContext has been loaded. This API can be called only by the main thread.
 
 > **NOTE**
-> - After this API is called, a new resource manager object is created. If a resource manager was previously cached, it should be updated accordingly.
-> - The priority of the dark/light color mode is as follows: UIExtensionAbility dark/light color mode > Application dark/light color mode (set via [ApplicationContext.setColorMode](js-apis-inner-application-applicationContext.md#applicationcontextsetcolormode11)) > System dark/light color mode.
+> - After this API is called, a new resource manager object is created. If a resource manager has been cached, the developer needs to update the cached resource manager reference to use the newly created resource manager object.
+> - Priority of the dark/light color mode: the dark/light color mode of the UIExtensionAbility > the dark/light color mode of the application ([ApplicationContext.setColorMode](js-apis-inner-application-applicationContext.md#applicationcontextsetcolormode11)) > the dark/light color mode of the system.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 

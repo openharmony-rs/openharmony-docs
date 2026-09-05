@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @xhz-sz-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=b0bde6583328c2ecbf95a4b39ab81d082ad88bca translatedAt=2026-09-03T12:18:45.807Z pushedAt=2026-09-05T10:47:30.895Z -->
 
 UIServiceProxy functions as a proxy to send data from the UIServiceExtensionAbility client to the server.
 
@@ -30,7 +31,7 @@ Sends data to the UIServiceExtensionAbility server.
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md). 
+> For details about the component startup rules, see [Component Startup Rules in a Device](../../application-models/component-startup-rules-inner-device.md).
 >
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
@@ -111,7 +112,7 @@ struct UIServiceExtensionAbility {
       // Connect to the UIServiceExtensionAbility.
       context.connectUIServiceExtensionAbility(startWant, this.dataCallBack)
         .then((proxy: common.UIServiceProxy) => {
-          console.info(TAG + `try to connectUIServiceExtensionAbility ${proxy}}`);
+          console.info(TAG + `try to connectUIServiceExtensionAbility ${proxy}`);
           this.comProxy = proxy;
           let formData: Record<string, string> = {
             'PATH': '/tmp/aaa.jpg'
@@ -138,3 +139,4 @@ struct UIServiceExtensionAbility {
   }
 }
 ```
+

@@ -1,11 +1,12 @@
-# @ohos.app.ability.UIExtensionContentSession (UI Operation Class for ExtensionAbility with UI) (System API)
+# @ohos.app.ability.UIExtensionContentSession (UI Content Operation Class with UI Extension Capability) (System API)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @xhz-sz-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=68b6c358aa355441ba00a2df89af84c41abac871 translatedAt=2026-09-03T10:34:56.948Z pushedAt=2026-09-05T10:47:30.437Z -->
 
 UIExtensionContentSession is an instance created when the [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md) loads UI content. When the UIExtensionComponent starts a UIExtensionAbility, the UIExtensionAbility creates a UIExtensionContentSession instance and returns it through the [onSessionCreate](js-apis-app-ability-uiExtensionAbility.md#onsessioncreate) callback. One UIExtensionComponent corresponds to one UIExtensionContentSession instance, which provides methods such as UI loading and result notification. The UIExtensionContentSession instances of multiple UIExtensionAbilities are operated separately.
 
@@ -15,7 +16,7 @@ UIExtensionContentSession is an instance created when the [UIExtensionAbility](j
 >
 > The APIs of this module can be used only in the stage model.
 >
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.app.ability.UIExtensionContentSession (UI Operation Class for ExtensionAbilities with UI)](js-apis-app-ability-uiExtensionContentSession.md).
+> This page contains only the system APIs of this module. For details about other public APIs, see [@ohos.app.ability.UIExtensionContentSession (UI Content Operation Class with UI Extension Capability)](js-apis-app-ability-uiExtensionContentSession.md).
 
 ## Modules to Import
 
@@ -201,8 +202,8 @@ Starts an ability. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
-> The application where the UIExtensionComponent is located must be running in the foreground and gain focus.
+> For details about the component startup rules, see [intra-device component startup rules (only for system applications)](../../application-models/component-startup-rules-inner-device-sys.md) and [cross-device component startup rules (only for system applications)](../../application-models/component-startup-rules-cross-device-sys.md).
+> The application where the UIExtensionComponent control is located needs to be in the foreground focused state.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -271,8 +272,8 @@ Starts an ability with **options** specified. This API uses an asynchronous call
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
-> The application where the UIExtensionComponent is located must be running in the foreground and gain focus.
+> For details about the component startup rules, see [intra-device component startup rules (only for system applications)](../../application-models/component-startup-rules-inner-device-sys.md) and [cross-device component startup rules (only for system applications)](../../application-models/component-startup-rules-cross-device-sys.md).
+> The application where the UIExtensionComponent control is located needs to be in the foreground focused state.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -344,8 +345,8 @@ Starts an ability. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
-> The application where the UIExtensionComponent is located must be running in the foreground and gain focus.
+> For details about the component startup rules, see [intra-device component startup rules (only for system applications)](../../application-models/component-startup-rules-inner-device-sys.md) and [cross-device component startup rules (only for system applications)](../../application-models/component-startup-rules-cross-device-sys.md).
+> The application where the UIExtensionComponent control is located needs to be in the foreground focused state.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -429,8 +430,8 @@ An ability can be terminated in the following ways:
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
-> The application where the UIExtensionComponent is located must be running in the foreground and gain focus.
+> For details about the component startup rules, see [intra-device component startup rules (only for system applications)](../../application-models/component-startup-rules-inner-device-sys.md) and [cross-device component startup rules (only for system applications)](../../application-models/component-startup-rules-cross-device-sys.md).
+> The application where the UIExtensionComponent control is located needs to be in the foreground focused state.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -504,8 +505,8 @@ An ability can be terminated in the following ways:
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
-> The application where the UIExtensionComponent is located must be running in the foreground and gain focus.
+> For details about the component startup rules, see [intra-device component startup rules (only for system applications)](../../application-models/component-startup-rules-inner-device-sys.md) and [cross-device component startup rules (only for system applications)](../../application-models/component-startup-rules-cross-device-sys.md).
+> The application where the UIExtensionComponent control is located needs to be in the foreground focused state.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -582,8 +583,8 @@ An ability can be terminated in the following ways:
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
-> The application where the UIExtensionComponent is located must be running in the foreground and gain focus.
+> For details about the component startup rules, see [intra-device component startup rules (only for system applications)](../../application-models/component-startup-rules-inner-device-sys.md) and [cross-device component startup rules (only for system applications)](../../application-models/component-startup-rules-cross-device-sys.md).
+> The application where the UIExtensionComponent control is located needs to be in the foreground focused state.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -947,7 +948,7 @@ Obtains the window object corresponding to the current UIExtension to notify the
 
 | Type| Description|
 | -------- | -------- |
-| [uiExtensionHost.UIExtensionHostWindowProxy](../apis-arkui/js-apis-uiExtensionHost-sys.md) | Window information of the host application.|
+| [uiExtensionHost.UIExtensionHostWindowProxy](../apis-arkui/js-apis-uiExtensionHost-sys.md#uiextensionhostwindowproxy) | Window information of the host application. |
 
 **Error codes**
 

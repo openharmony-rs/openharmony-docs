@@ -4,12 +4,13 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @xhz-sz-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=7fe4eacae9c952d492316e40f501d71d3714186d translatedAt=2026-09-03T12:11:56.437Z pushedAt=2026-09-05T10:47:30.888Z -->
 
 The UIServiceExtensionContext module provides the context environment for a [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md). It inherits from [ExtensionContext](js-apis-inner-application-extensionContext.md).
 
-UIServiceExtensionContext provides access to a [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md) and APIs for operating the ability, for example, starting, terminating, connecting, and disconnecting ability.
+The UIServiceExtensionContext module provides access to the specific resources and capabilities of [UIServiceExtension](js-apis-app-ability-uiServiceExtensionAbility-sys.md), including starting an ability, destroying a UIServiceExtension, and connecting to and disconnecting from a UIExtensionAbility.
 
 > **NOTE**
 >
@@ -35,7 +36,8 @@ import { common, UIServiceExtensionAbility } from '@kit.AbilityKit';
 
 class UIServiceExtAbility extends UIServiceExtensionAbility {
   onCreate() {
-    let context:common.UIServiceExtensionContext = this.context; // Obtain the UIServiceExtensionContext.
+    // Obtain the UIServiceExtensionContext.
+    let context:common.UIServiceExtensionContext = this.context;
   }
 }
 ```
@@ -49,7 +51,7 @@ Starts an ability. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Intra-device Component Startup Rules (System Applications Only)](../../application-models/component-startup-rules-inner-device-sys.md) and [Cross-device Component Startup Rules (System Applications Only)](../../application-models/component-startup-rules-cross-device-sys.md).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -60,7 +62,7 @@ Starts an ability. This API uses a promise to return the result.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md)  | Yes| Want information about the target ability, such as the ability name and bundle name.|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Parameters used for starting the ability.|
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | No | Parameters carried for starting the Ability, used to customize the startup configuration (such as window mode and display mode). Pass this parameter when custom startup behavior is required; otherwise, the system default startup configuration is used. |
 
 **Return value**
 
@@ -101,10 +103,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 class UIEntryAbility extends UIServiceExtensionAbility {
   onCreate() {
+    // Set the Want parameter for starting the Ability.
     let want: Want = {
       bundleName: 'com.example.myapp',
       abilityName: 'MyAbility'
     };
+    // Set the startup option parameter.
     let options: StartOptions = {
       windowMode: 0,
     };
@@ -152,6 +156,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 class UIEntryAbility extends UIServiceExtensionAbility {
   onCreate() {
+    // Destroy the UIServiceExtension.
     this.context.terminateSelf().then(() => {
       // Carry out normal service processing.
       console.info('terminateSelf succeed');
@@ -172,7 +177,7 @@ Starts a [UIAbility](js-apis-app-ability-uiAbility.md) or [UIExtensionAbility](j
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Intra-device Component Startup Rules (System Applications Only)](../../application-models/component-startup-rules-inner-device-sys.md) and [Cross-device Component Startup Rules (System Applications Only)](../../application-models/component-startup-rules-cross-device-sys.md).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -182,9 +187,9 @@ Starts a [UIAbility](js-apis-app-ability-uiAbility.md) or [UIExtensionAbility](j
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- |  -------- |
-| type | string  | Yes| Type of the target ability.|
+| type | string | Yes | Type of the target ability. Predefined type values are supported. If an unsupported type value is passed in, the API returns error code 401. |
 | wantParam | Record&lt;string, Object&gt;| Yes| Want parameter.|
-| abilityStartCallback | [AbilityStartCallback](js-apis-inner-application-abilityStartCallback.md)| Yes| Callback invoked to return the UIExtensionAbility startup result.|
+| abilityStartCallback | [AbilityStartCallback](js-apis-inner-application-abilityStartCallback.md) | Yes | Callback used to return the result of starting the UIExtensionAbility, including callback functions such as error handling. |
 
 **Return value**
 
@@ -225,7 +230,7 @@ struct SubIndex {
               'email': [encodeURI('xxx@example.com'),
                 encodeURI('xxx@example.com')], // Email address of the recipient. Multiple values are separated by commas (,). The array content is URL-encoded using the **encodeURI()** method.
               'cc': [encodeURI('xxx@example.com'),
-                encodeURI('xxx@example.com')], // Email address of the CC recipient. Multiple values are separated by commas (,). The array content is URL-encoded using the **encodeURI()** method.
+                encodeURI('xxx@example.com')], // Email addresses of the CC recipients, separated by commas. Use the encodeURI() method to URL-encode the array content.
               'bcc': [encodeURI('xxx@example.com'),
                 encodeURI('xxx@example.com')], // Email address of the BCC recipient. Multiple values are separated by commas (,). The array content is URL-encoded using the **encodeURI()** method.
               'subject': encodeURI('Email subject'), // Email subject. The content is URL encoded using encodeURI().
@@ -234,7 +239,9 @@ struct SubIndex {
                 encodeURI ('attachment uri2') ], // Attachment URI. Multiple values are separated by commas (,). The array content is URL-encoded using the encodeURI() method.
               'ability.want.params.uriPermissionFlag': 1
             };
+            // Define the callback object for the startup result.
             let abilityStartCallback: common.AbilityStartCallback = {
+              // Handle the error callback for startup failure.
               onError: (code: number, name: string, message: string) => {
                 console.error(TAG + `code: ${code}  name:${name}  message:${message}`);
               }
@@ -266,12 +273,13 @@ struct SubIndex {
 
 connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
-Connects to a [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md) and returns the connection ID.
+Connects to a [ServiceExtensionAbility](js-apis-app-ability-serviceExtensionAbility-sys.md#serviceextensionability) and returns the connection ID. This API is used when you need to establish a connection with a ServiceExtensionAbility for interaction, for example, connecting to a ServiceExtensionAbility provided by another application to use its services.
 
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> - For details about the component startup rules, see [Intra-device Component Startup Rules (System Applications Only)](../../application-models/component-startup-rules-inner-device-sys.md) and [Cross-device Component Startup Rules (System Applications Only)](../../application-models/component-startup-rules-cross-device-sys.md).
+> - This API does not support connecting to the ServiceExtensionAbility of a cloned application.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -281,14 +289,14 @@ Connects to a [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md) an
 
 | Name              | Type                    | Mandatory| Description             |
 | -------------------- | ------------------------ | ---- |----------------- |
-| want                 | [Want](js-apis-app-ability-want.md) | Yes| Want parameter.      |
+| want                 | [Want](js-apis-app-ability-want.md) | Yes | Want parameter, used to pass in the information about the UIExtensionAbility to connect, such as the Ability name and bundle name.       |
 | options              | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | Yes| Connection options.|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| number | Connection ID.|
+| number | Connection ID, which the developer needs to save for subsequent disconnection. |
 
 **Error codes**
 
@@ -305,6 +313,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000006   | Cross-user operations are not allowed.         |
 | 16000008   | The crowdtesting application expires.        |
 | 16000011   | The context does not exist.         |
+| 16000012 | The application is controlled. |
 | 16000013   | The application is controlled by EDM.       |
 | 16000050   | Internal error.        |
 | 16000053   | The ability is not on the top of the UI.        |
@@ -321,20 +330,26 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 const TAG: string = '[Page_ServiceExtensionAbility]';
 const DOMAIN_NUMBER: number = 0xFF00;
 
-let connectionId: number;
+// The connectionId must be obtained from the return value of the connectServiceExtensionAbility API and saved.
+let connectionId: number = 0; // Example value. Use the connection ID returned by connectServiceExtensionAbility in practice.
+// Set the information about the background service Ability to connect.
 let want: Want = {
   deviceId: '',
   bundleName: 'com.samples.stagemodelabilitydevelop',
   abilityName: 'ServiceExtAbility'
-};
+  };
 
+// Set the connection option callbacks.
 let options: common.ConnectOptions = {
+  // Callback invoked when the connection is successful.
   onConnect(elementName, remote: rpc.IRemoteObject): void {
     hilog.info(DOMAIN_NUMBER, TAG, 'onConnect callback');
   },
+  // Callback invoked when the connection is disconnected.
   onDisconnect(elementName): void {
     hilog.info(DOMAIN_NUMBER, TAG, 'onDisconnect callback');
   },
+  // Callback invoked when the connection fails.
   onFailed(code: number): void {
     hilog.info(DOMAIN_NUMBER, TAG, `onFailed callback, ${code}`);
   }
@@ -352,7 +367,7 @@ struct Page_UIServiceExtensionAbility {
           .onClick(() => {
             let context: common.UIServiceExtensionContext =
               this.getUIContext().getHostContext() as common.UIServiceExtensionContext;
-            // The ID returned after the connection is set up must be saved. The ID will be used for disconnection.
+            // Save the ID returned after a successful connection for subsequent disconnection.
             connectionId = context.connectServiceExtensionAbility(want, options);
             // The background service is connected.
             this.getUIContext().getPromptAction().showToast({
@@ -372,7 +387,7 @@ struct Page_UIServiceExtensionAbility {
 
 disconnectServiceExtensionAbility(connectionId: number): Promise&lt;void&gt;
 
-Disconnects from a [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md). This API is opposite to [connectServiceExtensionAbility](#uiserviceextensioncontextconnectserviceextensionability). This API uses a promise to return the result.
+Disconnects from a [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md). This API is the reverse of [connectServiceExtensionAbility](#uiserviceextensioncontextconnectserviceextensionability) and uses a promise to return the result. This API is used when you no longer need to interact with a UIExtensionAbility, for example, to release resources after a service is complete.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -382,7 +397,7 @@ Disconnects from a [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.m
 
 | Name               | Type                    | Mandatory| Description             |
 | -------------------- | ------------------------ | ---- | ----------------- |
-| connectionId         | number                   | Yes| Connection ID returned by [connectServiceExtensionAbility](#uiserviceextensioncontextconnectserviceextensionability).|
+| connectionId         | number                   | Yes | Connection ID returned by [connectServiceExtensionAbility](#uiserviceextensioncontextconnectserviceextensionability), which must be a valid connection ID. |
 
 
 **Return value**
@@ -411,7 +426,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const TAG: string = '[Page_ServiceExtensionAbility]';
 const DOMAIN_NUMBER: number = 0xFF00;
 
-let connectionId: number;
+// Obtain and save connectionId from the return value of the connectServiceExtensionAbility API.
+let connectionId: number = 0; // Example value. Use the connection ID returned by connectServiceExtensionAbility in actual scenarios.
 
 @Entry
 @Component

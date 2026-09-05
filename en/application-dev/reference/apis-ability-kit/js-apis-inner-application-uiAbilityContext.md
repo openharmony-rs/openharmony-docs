@@ -4,12 +4,13 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zhu-feimo-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=7fe4eacae9c952d492316e40f501d71d3714186d translatedAt=2026-09-03T12:13:37.339Z pushedAt=2026-09-05T10:47:30.912Z -->
 
 UIAbilityContext provides the context environment for a [UIAbility](./js-apis-app-ability-uiAbility.md). It inherits from [Context](./js-apis-inner-application-context.md). For details about the relationships and differences between various types of contexts, see [Context](../../application-models/application-context-stage.md).
 
-When a UIAbility component is instantiated, the system automatically creates the corresponding UIAbilityContext. You can use the APIs provided by UIAbilityContext to obtain the ability information (AbilityInfo), application information (ApplicationInfo), and other information, start another UIAbility, connect to system services, and destroy a UIAbility.
+When each UIAbility component is instantiated, the system automatically creates a corresponding UIAbilityContext. Through UIAbilityContext, developers can obtain the component information AbilityInfo, obtain the application information ApplicationInfo, start other UIAbilities, connect to system services, destroy the UIAbility, and so on. The main features of UIAbilityContext include lifecycle management, resource access, and task management, making it suitable for scenarios such as communication between UIAbilities, data sharing, and task management.
 
 > **NOTE**
 >
@@ -44,7 +45,7 @@ Starts a UIAbility. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Component Startup Rules Within a Device](../../application-models/component-startup-rules-inner-device.md) and [Component Startup Rules Across Devices](../../application-models/component-startup-rules-cross-device.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -63,7 +64,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>Applicable version: 10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -74,21 +75,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>Applicable version: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Applicable version: 10+ |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>Applicable version: 12+ |
+| 16000019 | No matching ability is found. <br>Applicable version: 12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>Applicable version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable version: 12+ |
+| 16000076 | The app instance key is invalid. <br>Applicable version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable version: 14+ |
+| 16000080 | Creating a new instance is not supported. <br>Applicable version: 14+ |
 | 16200001 | The caller has been released. |
 
 **Example**
@@ -105,6 +106,7 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
+      // Start the UIAbility.
       this.context.startAbility(want, (err: BusinessError) => {
         if (err.code) {
           // Process service logic errors.
@@ -132,7 +134,7 @@ Starts a UIAbility. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Component Startup Rules Within a Device](../../application-models/component-startup-rules-inner-device.md) and [Component Startup Rules Across Devices](../../application-models/component-startup-rules-cross-device.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -152,34 +154,36 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>Applicable version: 10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 801 | Capability not support. |
+| 801 | Capability not support. <br>Applicable version: 12+ |
 | 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. <br>Applicable version: 9 |
 | 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. <br>Applicable version: 9 |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>Applicable version: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Applicable version: 10+ |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>Applicable version: 12+|
+| 16000019 | No matching ability is found. <br>Applicable version: 12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000067 | The StartOptions check failed. |
-| 16000068 | The ability is already running. |
-| 16300003 | The target application is not the current application. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000067 | The StartOptions check failed. <br>Applicable version: 12+ |
+| 16000068 | The ability is already running. <br>Applicable version: 12+ |
+| 16300003 | The target application is not the current application. <br>Applicable version: 12+ |
+| 16000071 | App clone is not supported. <br>Applicable version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable version: 12+ |
+| 16000076 | The app instance key is invalid. <br>Applicable version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable version: 14+ |
+| 16000080 | Creating a new instance is not supported. <br>Applicable version: 14+ |
 | 16200001 | The caller has been released. |
 
 **Example**
@@ -200,6 +204,7 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
+      // Start the UIAbility.
       this.context.startAbility(want, options, (err: BusinessError) => {
         if (err.code) {
           // Process service logic errors.
@@ -227,7 +232,7 @@ Starts a UIAbility. This API uses a promise to return the result. It can be call
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Component Startup Rules Within a Device](../../application-models/component-startup-rules-inner-device.md) and [Component Startup Rules Across Devices](../../application-models/component-startup-rules-cross-device.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -238,13 +243,13 @@ Starts a UIAbility. This API uses a promise to return the result. It can be call
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | Yes| Mandatory information for starting the UIAbility.|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Parameters used for starting the UIAbility.|
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | No | Parameters carried for starting the UIAbility. If this parameter is not passed, the default startup configuration of the system is used. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object. If the operation is successful, no business data is returned, indicating that the operation is complete. If the operation fails, an error object is returned. |
 
 **Error codes**
 
@@ -252,9 +257,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>Applicable version: 10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 801 | Capability not support. |
+| 801 | Capability not support. <br>Applicable version: 12+ |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
@@ -264,24 +269,24 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden.  |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>Applicable version: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Applicable version: 10+ |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>Applicable version: 12+ |
+| 16000019 | No matching ability is found. <br>Applicable version: 12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000067 | The StartOptions check failed. |
-| 16000068 | The ability is already running. |
-| 16300003 | The target application is not the current application. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000067 | The StartOptions check failed. <br>Applicable version: 12+ |
+| 16000068 | The ability is already running. <br>Applicable version: 12+ |
+| 16300003 | The target application is not the current application. <br>Applicable version: 12+ |
+| 16000071 | App clone is not supported. <br>Applicable version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable version: 12+ |
+| 16000076 | The app instance key is invalid. <br>Applicable version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable version: 14+ |
+| 16000080 | Creating a new instance is not supported. <br>Applicable version: 14+ |
 | 16200001 | The caller has been released. |
 
 **Example**
@@ -301,6 +306,7 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
+      // Start the UIAbility.
       this.context.startAbility(want, options)
         .then(() => {
           // Carry out normal service processing.
@@ -333,7 +339,7 @@ The following situations may be possible for a started UIAbility:
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Component Startup Rules Within a Device](../../application-models/component-startup-rules-inner-device.md) and [Component Startup Rules Across Devices](../../application-models/component-startup-rules-cross-device.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -343,7 +349,7 @@ The following situations may be possible for a started UIAbility:
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want |[Want](js-apis-app-ability-want.md) | Yes| Mandatory information for starting the UIAbility.|
+| want |[Want](js-apis-app-ability-want.md) | Yes | Information required for starting a UIAbility. |
 | callback | AsyncCallback&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | Yes| Callback used to return the result. If the API call is successful, **code** in **err** is **0** and **data** is the result code and data when the UIAbility exits. Otherwise, **err** contains the corresponding error code and error information.|
 
 **Error codes**
@@ -352,7 +358,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>Applicable version: 10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -363,21 +369,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>Applicable version: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Applicable version: 10+ |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>Applicable version: 12+|
+| 16000019 | No matching ability is found. <br>Applicable version: 12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>Applicable version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable version: 12+ |
+| 16000076 | The app instance key is invalid. <br>Applicable version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable version: 14+ |
+| 16000080 | Creating a new instance is not supported. <br>Applicable version: 14+ |
 | 16200001 | The caller has been released. |
 
 **Example**
@@ -395,6 +401,7 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
+      // Start the UIAbility and obtain the return result.
       this.context.startAbilityForResult(want, (err: BusinessError, result: common.AbilityResult) => {
         if (err.code) {
           // Process service logic errors.
@@ -427,7 +434,7 @@ The following situations may be possible for a started UIAbility:
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Component Startup Rules Within a Device](../../application-models/component-startup-rules-inner-device.md) and [Component Startup Rules Across Devices](../../application-models/component-startup-rules-cross-device.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -447,30 +454,32 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>Since: 10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. <br>Since: 9 |
 | 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. <br>Since: 9 |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>Since: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Since: 10+ |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>Since: 12+ |
+| 16000019 | No matching ability is found. <br>Since: 12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>Since: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Since: 14+ |
+| 16000073 | The app clone index is invalid. <br>Since: 12+ |
+| 16000076 | The app instance key is invalid. <br>Since: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Since: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Since: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Since: 14+ |
+| 16000080 | Creating a new instance is not supported. <br>Since: 14+ |
 | 16200001 | The caller has been released. |
 
 **Example**
@@ -491,6 +500,7 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
+      // Start the UIAbility and obtain the return result.
       this.context.startAbilityForResult(want, options, (err: BusinessError, result: common.AbilityResult) => {
         if (err.code) {
           // Process service logic errors.
@@ -524,7 +534,7 @@ The following situations may be possible for a started UIAbility:
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Component Startup Rules Within a Device](../../application-models/component-startup-rules-inner-device.md) and [Component Startup Rules Across Devices](../../application-models/component-startup-rules-cross-device.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -535,7 +545,7 @@ The following situations may be possible for a started UIAbility:
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | Yes| Mandatory information for starting the UIAbility.|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Parameters used for starting the UIAbility.|
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | No | Parameters carried when starting an Ability. If this parameter is not passed, the default startup configuration is used. |
 
 
 **Return value**
@@ -550,7 +560,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>Applicable version: 10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -561,21 +571,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>Applicable version: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Applicable version: 10+ |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>Applicable version: 12+ |
+| 16000019 | No matching ability is found. <br>Applicable version: 12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>Applicable version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable version: 12+ |
+| 16000076 | The app instance key is invalid. <br>Applicable version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable version: 14+ |
+| 16000080 | Creating a new instance is not supported. <br>Applicable version: 14+ |
 | 16200001 | The caller has been released. |
 
 **Example**
@@ -595,6 +605,7 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
+      // Start the UIAbility and obtain the return result.
       this.context.startAbilityForResult(want, options)
         .then((result: common.AbilityResult) => {
           // Carry out normal service processing.
@@ -641,6 +652,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 16000005 | The specified process does not have the permission. <br>Applicable version: 9 |
+| 16000004 | Cannot start an invisible component. <br>Applicable version: 9 |
+| 16000001 | The specified ability does not exist. <br>Applicable version: 9 |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
@@ -656,6 +670,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     export default class EntryAbility extends UIAbility {
       onForeground() {
         try {
+          // Destroy the current UIAbility.
           this.context.terminateSelf((err: BusinessError) => {
             if (err.code) {
               // Process service logic errors.
@@ -709,7 +724,7 @@ Terminates this UIAbility. This API uses a promise to return the result. It can 
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object. If the operation is successful, no business data is returned, indicating that the operation is complete. If the operation fails, an error object is returned. |
 
 **Error codes**
 
@@ -717,6 +732,9 @@ For details about the error codes, see [Ability Error Codes](errorcode-ability.m
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 16000005 | The specified process does not have the permission. <br>Applicable version: 9 |
+| 16000004 | Cannot start an invisible component. <br>Applicable version: 9 |
+| 16000001 | The specified ability does not exist. <br>Applicable version: 9 |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
@@ -733,6 +751,7 @@ For details about the error codes, see [Ability Error Codes](errorcode-ability.m
     export default class EntryAbility extends UIAbility {
       onForeground() {
         try {
+          // Destroy the current UIAbility.
           this.context.terminateSelf()
             .then(() => {
               // Carry out normal service processing.
@@ -798,6 +817,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 16000005 | The specified process does not have the permission. <br>Applicable version: 9 |
+| 16000004 | Cannot start an invisible component. <br>Applicable version: 9 |
+| 16000001 | The specified ability does not exist. <br>Applicable version: 9 |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
@@ -823,6 +845,7 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
+      // Destroy the current UIAbility.
       this.context.terminateSelfWithResult(abilityResult, (err: BusinessError) => {
         if (err.code) {
           // Process service logic errors.
@@ -869,7 +892,7 @@ The result is returned to the caller when **terminateSelfWithResult** is called 
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object. If the operation is successful, no business data is returned, indicating that the operation is complete. If the operation fails, an error object is returned. |
 
 **Error codes**
 
@@ -878,6 +901,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 16000005 | The specified process does not have the permission. <br>Applicable version: 9 |
+| 16000004 | Cannot start an invisible component. <br>Applicable version: 9 |
+| 16000001 | The specified ability does not exist. <br>Applicable version: 9 |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
@@ -903,6 +929,7 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
+      // Destroy the current UIAbility.
       this.context.terminateSelfWithResult(abilityResult)
         .then(() => {
           // Carry out normal service processing.
@@ -930,7 +957,8 @@ Connects this UIAbility to a [ServiceExtensionAbility](../../application-models/
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> - For details about the component startup rules, see [Component Startup Rules Within a Device](../../application-models/component-startup-rules-inner-device.md) and [Component Startup Rules Across Devices](../../application-models/component-startup-rules-cross-device.md).
+> - This API does not support connecting to the ServiceExtensionAbility of a cloned application.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -956,15 +984,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | The application does not have permission to call the interface. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
-| 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000002 | Incorrect ability type. <br>Applicable version: 10+ |
+| 16000004 | Cannot start an invisible component. <br>Applicable version: 10+ |
 | 16000005 | The specified process does not have the permission. |
-| 16000006 | Cross-user operations are not allowed. |
-| 16000008 | The crowdtesting application expires. |
+| 16000006 | Cross-user operations are not allowed. <br>Applicable version: 10+ |
+| 16000008 | The crowdtesting application expires. <br>Applicable version: 10+ |
 | 16000011 | The context does not exist.        |
+| 16000012 | The application is controlled. <br>Applicable version: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Applicable version: 10+ |
 | 16000050 | Internal error. |
-| 16000053 | The ability is not on the top of the UI. |
-| 16000055 | Installation-free timed out. |
+| 16000053 | The ability is not on the top of the UI. <br>Applicable version: 10+ |
+| 16000055 | Installation-free timed out. <br>Applicable version: 10+ |
 
 **Example**
 
@@ -996,6 +1026,7 @@ export default class EntryAbility extends UIAbility {
     let connection: number;
 
     try {
+      // Connect ServiceExtensionAbility.
       connection = this.context.connectServiceExtensionAbility(want, options);
     } catch (err) {
       // Process input parameter errors.
@@ -1025,7 +1056,7 @@ Disconnects from a [ServiceExtensionAbility](../../application-models/extensiona
 
 | Type| Description|
 | -------- | -------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object. If the operation is successful, no business data is returned, indicating that the operation is complete. If the operation fails, an error object is returned. |
 
 **Error codes**
 
@@ -1051,6 +1082,7 @@ export default class EntryAbility extends UIAbility {
     let commRemote: rpc.IRemoteObject | null;
 
     try {
+      // Disconnect from the ServiceExtensionAbility.
       this.context.disconnectServiceExtensionAbility(connection).then(() => {
         commRemote = null;
         // Carry out normal service processing.
@@ -1109,6 +1141,7 @@ export default class EntryAbility extends UIAbility {
     let commRemote: rpc.IRemoteObject | null;
 
     try {
+      // Disconnect from the ServiceExtensionAbility.
       this.context.disconnectServiceExtensionAbility(connection, (err: BusinessError) => {
         commRemote = null;
         if (err.code) {
@@ -1140,11 +1173,11 @@ This API cannot be used to start the UIAbility with the launch type set to [spec
 
 > **NOTE**
 >
-> - In cross-device scenarios, the caller and the callee must belong to the same application.
+> - In a cross-device scenario, the caller and the target must be the same application.
 >
-> - In same-device scenarios, the caller and the callee must belong to different applications, and the caller must have the ohos.permission.ABILITY_BACKGROUND_COMMUNICATION permission (available only for system applications).
+> - In a same-device scenario, the caller and the target must be different applications, and the caller must have the ohos.permission.ABILITY_BACKGROUND_COMMUNICATION permission (which can be requested only by system applications).
 >
-> - In addition, if the application needs to call this API in the background, the ohos.permission.START_ABILITIES_FROM_BACKGROUND permission is required (available only for system applications). For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> - In addition, if an application needs to call this API in the background, it must have the ohos.permission.START_ABILITIES_FROM_BACKGROUND permission (which can be requested only by system applications). For more details about the component startup rules, see [Component Startup Rules Within a Device](../../application-models/component-startup-rules-inner-device.md) and [Component Startup Rules Across Devices](../../application-models/component-startup-rules-cross-device.md).
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1166,7 +1199,7 @@ This API cannot be used to start the UIAbility with the launch type set to [spec
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;[Caller](js-apis-app-ability-uiAbility.md#caller)&gt; | Promise used to return the Caller object.|
+| Promise&lt;[Caller](js-apis-app-ability-uiAbility.md#caller)&gt; | Promise object. If the operation is successful, a Caller communication object is returned, which is used to communicate with the Callee. If the operation fails, an error object is returned. |
 
 **Error codes**
 
@@ -1179,21 +1212,23 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
+| 16000005 | The specified process does not have the permission. <br>Applicable version: 9 |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
+| 16000012 | The application is controlled. <br>Applicable version: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Applicable version: 10+ |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>Applicable version: 12+ |
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.Sending restart message to system service failed. 3.System service failed to communicate with dependency module. 4.Non-system applications are only allowed to call this interface across devices, not on the current device. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>Applicable version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable version: 12+ |
+| 16000076 | The app instance key is invalid. <br>Applicable version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable version: 14+ |
+| 16200001 | The caller has been released. <br>Applicable version: 9 |
+| 16000080 | Creating a new instance is not supported. <br>Applicable version: 14+ |
 
 **Example**
 
@@ -1232,6 +1267,7 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
+      // Obtain the Caller communication object and start the UIAbility in the background.
       caller = await this.context.startAbilityByCall(wantBackground);
       await caller.call('TEST_CALL', new TestParcelable());
       caller.release();
@@ -1310,6 +1346,7 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
+      // Obtain the Caller communication object and start the UIAbility in the foreground.
       caller = await this.context.startAbilityByCall(wantForeground);
       caller.release();
     } catch (err) {
@@ -1355,8 +1392,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    this.context.setMissionLabel('test', (result: BusinessError) => {
-      console.info(`setMissionLabel: ${JSON.stringify(result)}`);
+    this.context.setMissionLabel('test', (err: BusinessError) => {
+      if (err.code) {
+        console.error(`setMissionLabel failed, code is ${err.code}, message is ${err.message}`);
+        return;
+      }
+      console.info('setMissionLabel succeed');
     });
   }
 }
@@ -1382,7 +1423,7 @@ Sets a mission label for this UIAbility on the multitasking screen. This API use
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object. No business data is returned on success; it only indicates that the operation is complete. An error object is returned on failure. |
 
 **Error codes**
 
@@ -1423,12 +1464,14 @@ Sets the mission continuation state of this UIAbility. This API uses an asynchro
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior difference:** This API does not take effect when called on a Wearable device that does not support distributed services.
+
 **Parameters**
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | state | [AbilityConstant.ContinueState](js-apis-app-ability-abilityConstant.md#continuestate10) | Yes| Mission continuation state.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the API call is successful, **code** in **err** is **0**. Otherwise, **err** contains the corresponding error code and error information.|
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback invoked when the migration state of the UIAbility task is set successfully, in which case err.code is 0; otherwise, err contains the corresponding error code and error information. |
 
 **Error codes**
 
@@ -1448,9 +1491,19 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onForeground() {
-    this.context.setMissionContinueState(AbilityConstant.ContinueState.INACTIVE, (result: BusinessError) => {
-      console.info(`setMissionContinueState: ${JSON.stringify(result)}`);
-    });
+    try {
+      this.context.setMissionContinueState(AbilityConstant.ContinueState.INACTIVE, (err: BusinessError) => {
+        if (err.code) {
+          console.error(`setMissionContinueState failed, code is ${err.code}, message is ${err.message}`);
+          return;
+        }
+        console.info('setMissionContinueState succeed');
+      });
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`setMissionContinueState failed, code is ${code}, message is ${message}`);
+    }
   }
 }
 ```
@@ -1465,6 +1518,8 @@ Sets the mission continuation state of this UIAbility. This API uses a promise t
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior difference** This API does not take effect when called on Wearable devices that do not support distributed services.
+
 **Parameters**
 
 | Name| Type| Mandatory| Description|
@@ -1475,7 +1530,7 @@ Sets the mission continuation state of this UIAbility. This API uses a promise t
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object. No business data is returned on success; it only indicates that the operation is complete. An error object is returned on failure. |
 
 **Error codes**
 
@@ -1518,7 +1573,7 @@ Restores the WindowStage data in the UIAbility. It can be called only on the mai
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| localStorage | LocalStorage | Yes| Storage used to store the restored window stage.|
+| localStorage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | Yes | Storage data used to restore the window stage. |
 
 **Error codes**
 
@@ -1588,7 +1643,9 @@ Starts a ServiceExtensionAbility that supports modal dialog boxes. After the Ser
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Component Startup Rules (for System Applications Only)](../../application-models/component-startup-rules-inner-device.md).
+>
+> This API does not support app clones.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1605,7 +1662,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>Applicable version: 10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -1616,8 +1673,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
+| 16000012 | The application is controlled. <br>Applicable version: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Applicable version: 10+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
@@ -1665,7 +1722,9 @@ Starts a ServiceExtensionAbility that supports modal dialog boxes. After the Ser
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Component Startup Rules (for System Applications Only)](../../application-models/component-startup-rules-inner-device.md).
+>
+> This API does not support app clones.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1680,7 +1739,7 @@ Starts a ServiceExtensionAbility that supports modal dialog boxes. After the Ser
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;[dialogRequest.RequestResult](js-apis-app-ability-dialogRequest.md#requestresult)&gt; | Promise that returns no value.|
+| Promise&lt;[dialogRequest.RequestResult](js-apis-app-ability-dialogRequest.md#requestresult)&gt; | Promise used to return the request processing result. It returns the result if the request is successful, and returns an error object if the request fails. |
 
 **Error codes**
 
@@ -1688,7 +1747,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>Since: 10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -1699,8 +1758,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
+| 16000012 | The application is controlled. <br>Since: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Since: 10+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
@@ -1825,6 +1884,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. <br>Applicable version: 11 |
+| 16000004 | Cannot start an invisible component. <br>Applicable version: 11  |
+| 16200001 | The caller has been released. <br>Applicable version: 11  |
+| 16000002 | Incorrect ability type. <br>Applicable version: 11  |
+| 16000001 | The specified ability does not exist. <br>Applicable version: 11 |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000050 | Internal error. |
 
@@ -1840,7 +1904,7 @@ export default class EntryAbility extends UIAbility {
     };
     let abilityStartCallback: common.AbilityStartCallback = {
       onError: (code: number, name: string, message: string) => {
-        console.info(`code:` + code + `name:` + name + `message:` + message);
+        console.error(`code:` + code + `name:` + name + `message:` + message);
       },
       onResult: (abilityResult: common.AbilityResult) => {
         console.info(`resultCode:` + abilityResult.resultCode + `bundleName:` + abilityResult.want?.bundleName);
@@ -1880,7 +1944,7 @@ Implicitly starts a given type of [UIExtensionAbility](js-apis-app-ability-uiExt
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object. If the operation is successful, no business data is returned, indicating that the operation is complete; if the operation fails, an error object is returned. |
 
 **Error codes**
 
@@ -1888,6 +1952,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. <br>Applicable version: 11 |
+| 16000004 | Cannot start an invisible component. <br>Applicable version: 11 |
+| 16200001 | The caller has been released. <br>Applicable version: 11 |
+| 16000002 | Incorrect ability type. <br>Applicable version: 11 |
+| 16000001 | The specified ability does not exist. <br>Applicable version: 11 |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000050 | Internal error. |
 
@@ -1904,7 +1973,7 @@ export default class EntryAbility extends UIAbility {
     };
     let abilityStartCallback: common.AbilityStartCallback = {
       onError: (code: number, name: string, message: string) => {
-        console.info(`code:` + code + `name:` + name + `message:` + message);
+        console.error(`code:` + code + `name:` + name + `message:` + message);
       },
       onResult: (abilityResult: common.AbilityResult) => {
         console.info(`resultCode:` + abilityResult.resultCode + `bundleName:` + abilityResult.want?.bundleName);
@@ -1936,7 +2005,7 @@ Before calling this API, ensure that the application has been added to the statu
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object. No business data is returned on success, which only indicates that the operation is complete; an error object is returned on failure. |
 
 **Error codes**
 
@@ -1969,6 +2038,7 @@ struct Index {
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
+            // Display the current UIAbility.
             context.showAbility().then(() => {
               console.info(`showAbility success`);
             }).catch((err: BusinessError) => {
@@ -2036,7 +2106,7 @@ Before calling this API, ensure that the application has been added to the statu
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object. No business data is returned on success; it only indicates that the operation is complete. An error object is returned on failure. |
 
 **Error codes**
 
@@ -2069,6 +2139,7 @@ struct Index {
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
+            // Hide the current UIAbility.
             context.hideAbility().then(() => {
               console.info(`hideAbility success`);
             }).catch((err: BusinessError) => {
@@ -2120,7 +2191,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### moveAbilityToBackground<sup>12+<sup>
+### moveAbilityToBackground<sup>12+</sup>
 
 moveAbilityToBackground(): Promise\<void>
 
@@ -2131,14 +2202,16 @@ Moves this UIAbility from the foreground to the background. This API uses a prom
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Device behavior differences**
-- Starting from API version 12, this API can be properly called on phones, wearables, and TVs. If it is called on other device types, error code 16000061 is returned.
-- Starting from API version 13, this API can be properly called on phones, tablets, wearables, and TVs. If it is called on other device types, error code 16000061 is returned.
+- Starting from API version 12, this API can be properly called only on phones. If it is called on other device types, error code 16000061 is returned.
+- Starting from API version 13, this API can be properly called only on phones and tablets. If it is called on other device types, error code 16000061 is returned.
+- Starting from API version 18, this API can be called normally only on Phone, Tablet, and Wearable devices. On other devices, error code 16000061 is returned.
+- Starting from API version 19, this API can be called normally only on Phone, Tablet, Wearable, and TV devices. On other devices, error code 16000061 is returned.
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object. If the operation is successful, no business data is returned, indicating that the operation is complete. If the operation fails, an error object is returned. |
 
 **Error codes**
 
@@ -2172,10 +2245,11 @@ struct Index {
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
+            // Move the UIAbility in the foreground to the background.
             context.moveAbilityToBackground().then(() => {
               console.info(`moveAbilityToBackground success.`);
             }).catch((err: BusinessError) => {
-              console.info(`moveAbilityToBackground error: ${JSON.stringify(err)}.`);
+              console.error(`moveAbilityToBackground error: ${JSON.stringify(err)}.`);
             });
           });
       }
@@ -2186,7 +2260,7 @@ struct Index {
 }
 ```
 
-### openAtomicService<sup>12+<sup>
+### openAtomicService<sup>12+</sup>
 
 openAtomicService(appId: string, options?: AtomicServiceOptions): Promise&lt;AbilityResult&gt;
 
@@ -2195,11 +2269,11 @@ Opens an atomic service in an independent window. This API uses a promise to ret
 After an atomic service is started, the following situations may occur:
  - Normally, the atomic service can call [terminateSelfWithResult](#terminateselfwithresult) to terminate itself. The result is returned to the caller.
  - If an exception occurs, for example, the atomic service is killed, an exception result, in which **resultCode** is **-1**, is returned to the caller.
- - If the atomic service is started multiple times by different applications calling this API, when the atomic service calls [terminateSelfWithResult](#terminateselfwithresult) to terminate itself, it will only return the normal result to the last caller. All other callers will receive an exception result with **resultCode** set to **-1**.
+ - If different applications call this API multiple times to start the same atomic service, when the atomic service calls [terminateSelfWithResult](#terminateselfwithresult) to destroy itself, the normal result is returned only to the last caller, and an exception result, in which **resultCode** is **-1**, is returned to the other callers.
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Component Startup Rules (for System Applications)](../../application-models/component-startup-rules-inner-device.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2210,7 +2284,7 @@ After an atomic service is started, the following situations may occur:
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | appId | string | Yes| Unique ID of the application, which is allocated by the cloud.|
-| options | [AtomicServiceOptions](js-apis-app-ability-atomicServiceOptions.md) | No| Parameter carried in the request for starting the atomic service.|
+| options | [AtomicServiceOptions](js-apis-app-ability-atomicServiceOptions.md) | No | Parameters carried for starting the atomic service. If this parameter is not passed, the default startup configuration of the system is used. |
 
 
 **Return value**
@@ -2250,6 +2324,7 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
+      // Start the Atomic service.
       this.context.openAtomicService(appId, options)
         .then((result: common.AbilityResult) => {
           // Carry out normal service processing.
@@ -2269,7 +2344,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### openLink<sup>12+<sup>
+### openLink<sup>12+</sup>
 
 openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;AbilityResult&gt;): Promise&lt;void&gt;
 
@@ -2286,7 +2361,7 @@ If an input parameter is invalid, for example, a mandatory parameter is not set 
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Component Startup Rules (for System Applications)](../../application-models/component-startup-rules-inner-device.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2297,14 +2372,14 @@ If an input parameter is invalid, for example, a mandatory parameter is not set 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | link | string | Yes| URL to open, which must be in the standard format.|
-| options | [OpenLinkOptions](js-apis-app-ability-openLinkOptions.md) | No| Options of the URL.|
-| callback | AsyncCallback&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | No| Callback used to return the result.|
+| options | [OpenLinkOptions](js-apis-app-ability-openLinkOptions.md) | No | Options for opening the URL. If this parameter is not passed, the default system opening configuration is used. |
+| callback | AsyncCallback&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | No | Callback invoked to return the information to the caller. If this parameter is not passed, the return result of the called party will not be received. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object. No business data is returned on success; it only indicates that the operation is complete. An error object is returned on failure. |
 
 **Error codes**
 
@@ -2328,7 +2403,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000019 | No matching ability is found. |
 | 16200001 | The caller has been released. |
 | 16000053 | The ability is not on the top of the UI. |
-| 16000136 | The UIAbility is prohibited from launching itself via App Linking. |
+| 16000136 | The UIAbility is prohibited from launching itself via App Linking. <br>Applicable version: 23+ |
 
 **Example**
 
@@ -2355,6 +2430,7 @@ struct Index {
           };
 
           try {
+            // Start the UIAbility through App Linking.
             context.openLink(
               link,
               openLinkOptions,
@@ -2370,7 +2446,7 @@ struct Index {
             });
           }
           catch (e) {
-            hilog.error(DOMAIN, TAG, `exception occured, errCode ${JSON.stringify(e.code)}`);
+            hilog.error(DOMAIN, TAG, `exception occurred, errCode ${JSON.stringify(e.code)}`);
           }
         })
     }
@@ -2380,11 +2456,11 @@ struct Index {
 }
 ```
 
-### backToCallerAbilityWithResult<sup>12+<sup>
+### backToCallerAbilityWithResult<sup>12+</sup>
 
 backToCallerAbilityWithResult(abilityResult: AbilityResult, requestCode: string): Promise&lt;void&gt;
 
-Returns the startup result to the caller of [startAbilityForResult](#startabilityforresult) or [openLink](#openlink12). Different from [terminateSelfWithResult](#terminateselfwithresult), this API does not destroy the current UIAbility when it returns the result. This API uses a promise to return the result.
+When the target UIAbility is started through [startAbilityForResult](#startabilityforresult) or [openLink](#openlink12) and needs to return a result to the caller, the target can call this API to return the result and start the caller. Unlike [terminateSelfWithResult](#terminateselfwithresult), this API does not destroy the current UIAbility when returning. This API uses a promise to return the result. This API can be called only on the main thread.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2395,13 +2471,13 @@ Returns the startup result to the caller of [startAbilityForResult](#startabilit
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | abilityResult | [AbilityResult](js-apis-inner-ability-abilityResult.md) | Yes| Result returned to the caller.|
-| requestCode  |  string | Yes| Request code generated by the system when the target UIAbility is started using [startAbilityForResult](#startabilityforresult) or [openLink](#openlink12). The value can be obtained from the [CALLER_REQUEST_CODE](js-apis-app-ability-wantConstant.md) field in **want**.|
+| requestCode  |  string | Yes | requestCode generated by the system to identify this call when the target ability is started through [startAbilityForResult](#startabilityforresult) or [openLink](#openlink12) and needs to return a result. This value can be obtained through the CALLER_REQUEST_CODE field in [wantConstant](js-apis-app-ability-wantConstant.md). |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object. No business data is returned on success, which only indicates that the operation is complete; an error object is returned on failure. |
 
 **Error codes**
 
@@ -2418,13 +2494,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000075 | BackToCaller is not supported. |
 
 **Example**
-The caller uses **startAbilityForResult** to start a UIAbility, and the target UIAbility calls **backToCallerAbilityWithResult** to return the result to the caller.
+The caller starts the target through the startAbilityForResult API, and the target then calls the backToCallerAbilityWithResult API to return to the caller.
 
 ```ts
 // Caller
 // index.ets
 import { common, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
@@ -2533,9 +2609,15 @@ setRestoreEnabled(enabled: boolean): void
 
 Sets whether to enable backup and restore for this UIAbility.
 
+> **NOTE**
+>
+> If the application sets [removeMissionAfterTerminate](../../quick-start/module-configuration-file.md#abilities-tag) to true, the backup and restore function does not take effect.
+
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: The UIAbility backup and restore function takes effect only on Phone, Tablet, Wearable, and TV devices. PC/2in1 devices do not support the backup and restore function. On Tablet devices, the backup and restore function does not take effect after free multi-window is enabled.
 
 **Parameters**
 
@@ -2572,15 +2654,16 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### startUIServiceExtensionAbility<sup>14+<sup>
+### startUIServiceExtensionAbility<sup>14+</sup>
 
 startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
-Starts a UIServiceExtensionAbility. This API uses a promise to return the result.
+Starts a UIServiceExtensionAbility. This API uses a promise to return the result. It can be called only in the main thread.
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> - For details about the component startup rules, see [Component Startup Rules (for System Applications)](../../application-models/component-startup-rules-inner-device.md).
+> - This API does not support starting the UIServiceExtensionAbility of a cloned application.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -2598,7 +2681,7 @@ Starts a UIServiceExtensionAbility. This API uses a promise to return the result
 
 | Type               | Description                                  |
 | ------------------- | -------------------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object. No business data is returned on success; it only indicates that the operation is complete. An error object is returned on failure. |
 
 **Error codes**
 
@@ -2647,10 +2730,10 @@ struct Index {
               context.startUIServiceExtensionAbility(startWant).then(() => {
                 console.info('startUIServiceExtensionAbility success');
               }).catch((error: BusinessError) => {
-                console.info('startUIServiceExtensionAbility error', JSON.stringify(error));
+                console.error('startUIServiceExtensionAbility error', JSON.stringify(error));
               })
             } catch (err) {
-              console.info('startUIServiceExtensionAbility failed', JSON.stringify(err));
+              console.error('startUIServiceExtensionAbility failed', JSON.stringify(err));
             }
           })
       }
@@ -2659,16 +2742,16 @@ struct Index {
 }
 ```
 
-### connectUIServiceExtensionAbility<sup>14+<sup>
+### connectUIServiceExtensionAbility<sup>14+</sup>
 
 connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnectCallback) : Promise&lt;UIServiceProxy&gt;
 
-Connects to a UIServiceExtensionAbility. This API uses a promise to return the result.
+Connects to a UIServiceExtensionAbility. This API uses a promise to return the result. It can be called only in the main thread.
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
->
+> - For details about the component startup rules, see [Component Startup Rules (for System Applications)](../../application-models/component-startup-rules-inner-device.md).
+> - This API does not support connecting to the UIServiceExtensionAbility of a cloned application.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -2747,12 +2830,12 @@ struct UIServiceExtensionAbility {
         }).catch((err: Error) => {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
-        console.info(TAG + `connectUIServiceExtensionAbility failed, code is ${code}, message is ${message}`);
+        console.error(TAG + `connectUIServiceExtensionAbility failed, code is ${code}, message is ${message}`);
       });
     } catch (err) {
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
-      console.info(TAG + `connectUIServiceExtensionAbility failed, code is ${code}, message is ${message}`);
+      console.error(TAG + `connectUIServiceExtensionAbility failed, code is ${code}, message is ${message}`);
     };
   }
 
@@ -2774,15 +2857,15 @@ struct UIServiceExtensionAbility {
 }
 ```
 
-### disconnectUIServiceExtensionAbility<sup>14+<sup>
+### disconnectUIServiceExtensionAbility<sup>14+</sup>
 
 disconnectUIServiceExtensionAbility(proxy: UIServiceProxy): Promise&lt;void&gt;
 
-Disconnects from a UIServiceExtensionAbility. This API uses a promise to return the result.
+Disconnects from the UIServiceExtensionAbility. This API uses a promise to return the result. This API can be called only in the main thread.
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Component Startup Rules (for System Applications Only)](../../application-models/component-startup-rules-inner-device.md).
 >
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
@@ -2799,7 +2882,7 @@ Disconnects from a UIServiceExtensionAbility. This API uses a promise to return 
 
 | Type               | Description                                  |
 | ------------------- | -------------------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object. No service data is returned on success; it only indicates that the operation is complete. An error object is returned on failure. |
 
 **Error codes**
 
@@ -2859,18 +2942,18 @@ struct UIServiceExtensionAbility {
         }).catch((err: Error) => {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
-        console.info(TAG + `disconnectUIServiceExtensionAbility failed, code is ${code}, message is ${message}`);
+        console.error(TAG + `disconnectUIServiceExtensionAbility failed, code is ${code}, message is ${message}`);
       });
     } catch (err) {
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
-      console.info(TAG + `disconnectUIServiceExtensionAbility failed, code is ${code}, message is ${message}`);
+      console.error(TAG + `disconnectUIServiceExtensionAbility failed, code is ${code}, message is ${message}`);
     }
   }
 }
 ```
 
-### setAbilityInstanceInfo<sup>15+<sup>
+### setAbilityInstanceInfo<sup>15+</sup>
 
 setAbilityInstanceInfo(label: string, icon: image.PixelMap): Promise&lt;void&gt;
 
@@ -2893,7 +2976,7 @@ Sets the icon and label for this UIAbility. The icon and label can be displayed 
 
 | Type               | Description                                  |
 | ------------------- | -------------------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object. If the operation is successful, no business data is returned, indicating that the operation is complete. If the operation fails, an error object is returned. |
 
 **Error codes**
 
@@ -2936,6 +3019,7 @@ export default class EntryAbility extends UIAbility {
         editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 512, width: 512 }
       };
       let imagePixelMap: image.PixelMap = await image.createPixelMap(color, opts);
+      // Set the icon and label information of the UIAbility instance.
       this.context.setAbilityInstanceInfo(newLabel, imagePixelMap)
         .then(() => {
           console.info('setAbilityInstanceInfo success');
@@ -2965,7 +3049,7 @@ Once the DelegatorAbility has completed its specific operations, you can use thi
 
 | Type               | Description                                  |
 | ------------------- | -------------------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object. No service data is returned on success; it only indicates that the operation is complete. An error object is returned on failure. |
 
 **Error codes**
 
@@ -3037,7 +3121,7 @@ Sets the dark/light color mode for this UIAbility. Before calling this API, ensu
 
 | Name| Type         | Mandatory| Description                |
 | ------ | ------------- | ---- | -------------------- |
-| colorMode | [ConfigurationConstant.ColorMode](js-apis-app-ability-configurationConstant.md) | Yes  | Color mode. The options are as follows:<br> - **COLOR_MODE_DARK**: dark mode.<br> - **COLOR_MODE_LIGHT**: light mode.<br> - **COLOR_MODE_NOT_SET**: not set (following the system or application).|
+| colorMode | [ConfigurationConstant](js-apis-app-ability-configurationConstant.md).ColorMode | Yes | Color mode to set, which can be any of the following:<br> - COLOR_MODE_DARK: dark mode <br> - COLOR_MODE_LIGHT: light mode <br> - COLOR_MODE_NOT_SET: not set (follows the system or application) |
 
 **Error codes**
 
@@ -3061,6 +3145,7 @@ export default class MyAbility extends UIAbility {
         hilog.error(0x0000, 'testTag', 'Failed to load the content.');
         return;
       }
+      // Set the light/dark color mode of the UIAbility.
       let uiAbilityContext = this.context;
       uiAbilityContext.setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_DARK);
     });
@@ -3072,11 +3157,13 @@ export default class MyAbility extends UIAbility {
 
 startAppServiceExtensionAbility(want: Want): Promise\<void>
 
-Starts an [AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md) instance. This API uses a promise to return the result.
+Starts an [AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md) instance. This API uses a promise to return the result. This API can be called only in the main thread.
 
 > **NOTE**
 >
-> The caller of this API must be the application to which the [AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md) instance belongs or an application in the application list supported by the AppServiceExtensionAbility instance (configured in the **appIdentifierAllowList** property of [extensionAbilities](../../quick-start/module-configuration-file.md#extensionabilities)).
+> - The caller of this API must be the application to which the [AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md) belongs, or an application in the application list supported by the AppServiceExtensionAbility (that is, the application in the appIdentifierAllowList attribute of the [extensionAbilities tag](../../quick-start/module-configuration-file.md#extensionabilities-tag)).
+>
+> - This API does not support starting an AppServiceExtensionAbility instance of a cloned application.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -3092,7 +3179,7 @@ Starts an [AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAb
 
 | Type               | Description                                  |
 | ------------------- | -------------------------------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object. No service data is returned on success; it only indicates that the operation is complete. An error object is returned on failure. |
 
 **Error codes**
 
@@ -3129,6 +3216,7 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
+      // Start the AppServiceExtensionAbility.
       this.context.startAppServiceExtensionAbility(want)
         .then(() => {
           // Carry out normal service processing.
@@ -3152,7 +3240,7 @@ export default class EntryAbility extends UIAbility {
 
 stopAppServiceExtensionAbility(want: Want): Promise\<void>
 
-Stops an [AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md) instance. This API uses a promise to return the result.
+Stops an [AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md) instance. This API uses a promise to return the result. This API can be called only in the main thread.
 
 > **NOTE**
 >
@@ -3172,7 +3260,7 @@ Stops an [AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbi
 
 | Type               | Description                                  |
 | ------------------- | -------------------------------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object. No service data is returned on success; it only indicates that the operation is complete. An error object is returned on failure. |
 
 **Error codes**
 
@@ -3205,6 +3293,7 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
+      // Stop the AppServiceExtensionAbility.
       this.context.stopAppServiceExtensionAbility(want)
         .then(() => {
           // Carry out normal service processing.
@@ -3232,7 +3321,9 @@ Connects this UIAbility to an [AppServiceExtensionAbility](js-apis-app-ability-a
 
 > **NOTE**
 >
-> If the [AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md) instance is not started, the caller of this API must be the application to which the [AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md) instance belongs or an application in the application list supported by the AppServiceExtensionAbility instance (configured in the **appIdentifierAllowList** property of [extensionAbilities](../../quick-start/module-configuration-file.md#extensionabilities)).
+> - If the [AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md) instance is not started, the caller of this API must be the application to which the AppServiceExtensionAbility belongs, or an application in the application list supported by the AppServiceExtensionAbility (that is, the application in the appIdentifierAllowList attribute of the [extensionAbilities tag](../../quick-start/module-configuration-file.md#extensionabilities-tag)).
+>
+> - This API does not support connecting to the AppServiceExtensionAbility of a cloned application.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -3298,6 +3389,7 @@ export default class EntryAbility extends UIAbility {
     let connection: number;
 
     try {
+      // Connect to AppServiceExtensionAbility.
       connection = this.context.connectAppServiceExtensionAbility(want, callback);
     } catch (err) {
       // Process input parameter errors.
@@ -3331,7 +3423,7 @@ Once the connection is terminated, you are advised to set the remote object retu
 
 | Type| Description|
 | -------- | -------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object. No service data is returned on success; it only indicates that the operation is complete. An error object is returned on failure. |
 
 **Error codes**
 
@@ -3357,6 +3449,7 @@ export default class EntryAbility extends UIAbility {
     let commRemote: rpc.IRemoteObject | null;
 
     try {
+      // Disconnect from the AppServiceExtensionAbility.
       this.context.disconnectAppServiceExtensionAbility(connection).then(() => {
         commRemote = null;
         // Carry out normal service processing.
@@ -3400,7 +3493,7 @@ Sets whether to trigger the [onNewWant](./js-apis-app-ability-uiAbility.md#onnew
 
 | Type| Description|
 | -------- | -------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object. If the operation is successful, no business data is returned, indicating that the operation is complete. If the operation fails, an error object is returned. |
 
 **Error codes**
 
@@ -3423,6 +3516,7 @@ export default class EntryAbility extends UIAbility {
       contextConstant.Scenarios.SCENARIO_BACK_TO_CALLER_ABILITY_WITH_RESULT;
 
     try {
+      // Set that starting a UIAbility in specific scenarios does not trigger the onNewWant lifecycle callback.
       this.context.setOnNewWantSkipScenarios(scenarios).then(() => {
         // Carry out normal service processing.
         console.info('setOnNewWantSkipScenarios succeed');
@@ -3444,15 +3538,19 @@ export default class EntryAbility extends UIAbility {
 
 startSelfUIAbilityInCurrentProcess(want: Want, specifiedFlag: string, options?: StartOptions): Promise\<void>
 
-Starts the application's own UIAbility within the current process.
+Starts the application's own UIAbility in the current process. This API can be called only in the main thread.
 
 > **NOTE**
->- The target UIAbility can only be cold-started. If an instance of the target UIAbility has already been launched, the startup fails.
->- The UIAbility instance started through this API runs in the same process as the caller. Other process-related policies for the target UIAbility (such as those specified via the **isolationProcess** or **isolationMode** fields in the [module.json5](../../quick-start/module-configuration-file.md) file) does not take effect.
+> - The target UIAbility can only be cold-started. If the target UIAbility instance has already been started, the startup fails.
+> - The UIAbility instance started through this API runs in the process where the caller resides. Other process-related policies of the target UIAbility (for example, the process specified by the isolationProcess or isolationMode field in the [module.json5 configuration file](../../quick-start/module-configuration-file.md)) do not take effect.
+>
+> This API does not support application cloning.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**
+- Since API version 23, this API can be properly called only on PCs/2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+- Since API version 22, this API can be properly called only on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -3460,13 +3558,13 @@ Starts the application's own UIAbility within the current process.
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md)  | Yes| Mandatory information for starting the UIAbility. Only [explicit startup](../../application-models/explicit-implicit-want-mappings.md#matching-rules-of-explicit-want) is supported. [Implicit startup](../../application-models/explicit-implicit-want-mappings.md#matching-rules-of-implicit-want) is not supported.|
 | specifiedFlag | string  | Yes| ID of the UIAbility. This ID must not duplicate that of any already running UIAbility instance; otherwise, an error is returned.<br>**NOTE**<br>When this API is used to start a UIAbility instance in [specified](../../application-models/uiability-launch-type.md#specified) mode, the [onAcceptWant](./js-apis-app-ability-abilityStage.md#onacceptwant) callback is not triggered.|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Parameters used for starting the UIAbility.|
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | No | Parameters carried for starting the Ability. If this parameter is not passed, the default startup configuration of the system is used. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object. No business data is returned on success; it only indicates that the operation is complete. An error object is returned on failure. |
 
 **Error codes**
 
@@ -3508,6 +3606,7 @@ export default class EntryAbility extends UIAbility {
     let instanceFlag = 'instance1';
 
     try {
+      // Start the application's own UIAbility in the current process.
       this.context.startSelfUIAbilityInCurrentProcess(want, instanceFlag, options);
     } catch (err) {
       // Process input parameter errors.
@@ -3529,11 +3628,13 @@ If the target UIAbility is the current one, this action resets the window to its
 
 > **NOTE**
 >
-> When this API is called to restart the process, the **onDestroy** lifecycle callback of the UIAbility in the process is not triggered.
+> When the process is restarted through this API, the onDestroy lifecycle callback of the Ability in the process is not triggered.
 >
-> If an atomic service calls this API, [restartSelfAtomicService()](js-apis-app-ability-abilityManager.md#abilitymanagerrestartselfatomicservice20), or [ApplicationContext.restartApp()](js-apis-inner-application-applicationContext.md#applicationcontextrestartapp12) within 3 seconds after a successful call to this API, the system returns error code 16000064.
+> Within 3 seconds after an atomic service successfully calls this API, if any of this API, [restartSelfAtomicService()](js-apis-app-ability-abilityManager.md#abilitymanagerrestartselfatomicservice20), or [ApplicationContext.restartApp()](js-apis-inner-application-applicationContext.md#applicationcontextrestartapp12) is called again, the system returns error code 16000064.
 >
-> If an application calls this API or [ApplicationContext.restartApp()](js-apis-inner-application-applicationContext.md#applicationcontextrestartapp12) within 3 seconds after a successful call to this API, the system returns error code 16000064.
+> Within 3 seconds after an application successfully calls this API, if either this API or [ApplicationContext.restartApp()](js-apis-inner-application-applicationContext.md#applicationcontextrestartapp12) is called again, the system returns error code 16000064.
+>
+> This API does not support switching the app clone by specifying appCloneIndex in Want. It only supports restarting within the current app clone.
 
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
@@ -3552,7 +3653,7 @@ If the target UIAbility is the current one, this action resets the window to its
 
 | Type| Description|
 | -------- | -------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object. No business data is returned on success, which only indicates that the operation is complete; an error object is returned on failure. |
 
 **Error codes**
 
@@ -3595,6 +3696,7 @@ struct Index {
           };
           let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
           try {
+            // Restarts the process where the current UIAbility resides and starts the specified UIAbility.
             await context.restartApp(want);
           } catch (err) {
             hilog.error(0x0000, 'testTag', `restart failed: ${err.code}, ${err.message}`);
@@ -3631,7 +3733,7 @@ Sets the icon for this UIAbility, which is displayed in the application window, 
 
 | Type| Description|
 | -------- | -------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object. No business data is returned on success, which only indicates that the operation is complete; an error object is returned on failure. |
 
 **Error codes**
 
@@ -3675,6 +3777,150 @@ export default class EntryAbility extends UIAbility {
     }).catch((err: BusinessError) => {
       console.error(`createPixelMap failed, code is ${err.code}, message is ${err.message}`);
     });
+  }
+}
+```
+
+### startSelf
+
+startSelf(): Promise\<void>
+
+Starts the current UIAbility instance and switches it to the foreground. This API is used to bring a native UIAbility that stays in an intermediate phase to the foreground. This API uses a promise to return the result. It can be called only in the main thread.
+
+> **NOTE**
+>
+> For a UIAbility configured with a native module, its startup may stay in a specific phase due to the startupPhase configuration: PRE_WINDOW or PRE_FOREGROUND.
+> If the UIAbility is not configured with a native module, calling this API returns error code 801.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences:** This API is supported on 2-in-1 and tablet devices. On other device types, it returns error code 801.
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise that returns no value. It returns no business data on success, and returns an error object on failure. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+| ID | Error Message |
+| ------- | -------- |
+| 801 | Capability not supported, because starting self to foreground from background is not supported in current device or current UIAbility is a non-native UIAbility. |
+| 16000011 | The context does not exist. |
+| 16000050 | Internal error. Connect to system service failed. |
+| 16000082 | The UIAbility is being started. The UIAbility has not completed onCreate or onWindowStageCreate. |
+
+**Example**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    try {
+      setTimeout((): void => {
+        // Start the current UIAbility instance and switch it to the foreground.
+        this.context.startSelf()
+          .then((): void => {
+            console.info('startSelf succeed');
+          })
+          .catch((err: BusinessError): void => {
+            console.error(`startSelf failed, code is ${err.code}, message is ${err.message}`);
+          });
+      }, 100);
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`startSelf failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
+### startSelfUIAbilityInChildProcess
+
+startSelfUIAbilityInChildProcess(want: Want, specifiedFlag: string): Promise\<void>
+
+Starts the UIAbility of the current application in a child process. The UIAbility in the child process supports loading native modules. This API uses a promise to return the result. It can be called only in the main thread.
+
+> **NOTE**
+>
+> The lifecycle of the child process follows that of the parent process. When the parent process exits, the child process exits automatically.
+>
+> This API does not support app clones.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences:** This API is supported on 2-in-1 and tablet devices. On other device types, it returns error code 801.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| want | [Want](js-apis-app-ability-want.md)  | Yes | Necessary information for starting the ability. Only [explicit launch](../../application-models/explicit-implicit-want-mappings.md#explicit-want-matching) is supported, and [implicit launch](../../application-models/explicit-implicit-want-mappings.md#implicit-want-matching) is not supported. |
+| specifiedFlag | string  | Yes | Developer-defined identifier of the UIAbility. This identifier must be different from the identifiers of the started UIAbilities; otherwise, an error is returned. <br>**Note:**<br>When this API is used to start a UIAbility whose launch type is [specified](../../application-models/uiability-launch-type.md#specified-launch-type), the [onAcceptWant](./js-apis-app-ability-abilityStage.md#onacceptwant) callback will not be triggered. |
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise that returns no value. It indicates that the operation is complete when the promise is fulfilled, and returns an error object when the promise is rejected. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+| ID | Error Message |
+| ------- | -------------------------------- |
+| 801 | Capability not supported. |
+| 16000001 | The specified ability does not exist. |
+| 16000008 | The crowdtesting application expires. |
+| 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000011 | The context does not exist.        |
+| 16000050 | Internal error. Connect to system service failed. |
+| 16000053 | The ability is not on the top of the UI. |
+| 16000122 | The target component is blocked by the system module and does not support startup. |
+| 16000123 | Implicit startup is not supported. |
+| 16000124 | Starting a remote UIAbility is not supported. |
+| 16000130 | The UIAbility not belong to caller. |
+| 16000131 | The UIAbility is already exist, can not start again. |
+
+**Example**
+
+```ts
+import { UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let want: Want = {
+      bundleName: 'com.example.myapplication',
+      abilityName: 'ChildProcessAbility'
+    };
+    let instanceFlag = 'instance1';
+    try {
+      // Start the UIAbility of the current application in a child process.
+      this.context.startSelfUIAbilityInChildProcess(want, instanceFlag)
+        .then(() => {
+          console.info('startSelfUIAbilityInChildProcess succeed');
+        })
+        .catch((err: BusinessError) => {
+          console.error(`startSelfUIAbilityInChildProcess failed, code is ${err.code}, message is ${err.message}`);
+        });
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`startSelfUIAbilityInChildProcess failed, code is ${code}, message is ${message}`);
+    }
   }
 }
 ```

@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=79ff6b5cab3530f52af035cd9f5c5b50875571fe translatedAt=2026-09-03T11:44:06.024Z pushedAt=2026-09-05T10:47:30.681Z -->
 
 The AutoFillExtensionContext module provides the context environment for the AutoFillExtensionAbility. It inherits from [ExtensionContext](js-apis-inner-application-extensionContext.md).
 
@@ -35,7 +36,7 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
 
 reloadInModal(customData: CustomData): Promise\<void>
 
-Starts a modal page. This API uses a promise to return the result.
+Reloads the modal page. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -80,6 +81,7 @@ export default class AutoFillAbility extends AutoFillExtensionAbility {
     callback: autoFillManager.FillRequestCallback) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'autofill onFillRequest');
     try {
+      // Create a LocalStorage and store the data required for autofill.
       let storage_fill: LocalStorage = new LocalStorage(
         {
           'session': session,
@@ -133,14 +135,15 @@ struct AccountPage {
           .onClick(() => {
             if (this.viewData != undefined) {
               if (this.context != undefined) {
+                // Call the reloadInModal API to retrigger autofill and pass custom data for the modal page.
                 this.context.reloadInModal({ data: { viewData: 20, text: 'HelloWorld789456' } }).then(() => {
                   console.info('reloadInModal successfully.')
                 }).catch((err: BusinessError) => {
-                  console.error('reloadInModal failed.')
+                  console.error(`reloadInModal failed. Code: ${err.code}, message: ${err.message}`);
                 })
               }
             }
-          })
+          });
         }
         // ...
       }

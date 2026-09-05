@@ -5,6 +5,7 @@
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=e5b78af6b5bbb1a9a38bb4bd5c5ed13eb9c1e2bf translatedAt=2026-09-03T11:20:00.605Z pushedAt=2026-09-05T10:47:30.604Z -->
 
 The module provides APIs to query, set, and reset the default application of a specific type and check whether the current application is the default application.
 
@@ -905,7 +906,7 @@ Sets an application clone as the default application of the specified type. This
 | type        | string | Yes  | Type of the application. The value can be a value of [ApplicationType](js-apis-defaultAppManager.md#applicationtype), [MIMEType](../../database/uniform-data-type-list.md#generic-utds), or [UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype).|
 | elementName | [ElementName](js-apis-bundleManager-elementName.md#elementname-1) | Yes| Element information of the application. Only **bundleName**, **abilityName**, and **moduleName** are used, and the three properties must be set.                          |
 | appIndex    | number | Yes  | Index of the application clone.<br>The options include 1, 2, 3, 4, and 5.|
-| userId      | number | No  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9).<br>The default value is the user ID of the caller.                           |
+| userId      | number | No   | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9).<br>Default value: the ID of the user that calls the API.                           |
 
 **Error codes**
 

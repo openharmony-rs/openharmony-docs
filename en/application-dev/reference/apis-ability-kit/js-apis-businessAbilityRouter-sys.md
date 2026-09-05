@@ -3,8 +3,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zhu-feimo-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=c729316c7132777446bc2bf258a399ce6ac24a11 translatedAt=2026-09-03T11:19:29.712Z pushedAt=2026-09-05T10:47:30.600Z -->
 
 The module provides APIs for you to query the information about routable ability components within applications installed on the device. It offers a standardized framework for managing and accessing service capabilities. It allows you to register your application's functionalities as standardized services under specific categories, effectively creating a rich ecosystem or marketplace of capabilities. System applications can leverage this router to easily discover and integrate these predefined ability components. Furthermore, the router enforces unified control over navigation between applications and services. This ensures proper redirection, prevents unauthorized jumps between foreground/background states, and blocks attempts by third-party application to use redirection for unintended distribution, ultimately enhancing system security and user experience.
 
@@ -81,8 +82,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 202 | non-system app called system api. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -137,8 +138,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 202 | non-system app called system api. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -160,3 +161,17 @@ try {
   console.error('queryBusinessAbilityInfo failed ' + message);
 }
 ```
+
+## BusinessAbilityInfo<sup>10+</sup>
+
+type BusinessAbilityInfo = _BusinessAbilityInfo.BusinessAbilityInfo
+
+Business router information.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**System API**: This is a system API.
+
+| Type | Description |
+| --- | --- |
+| [_BusinessAbilityInfo.BusinessAbilityInfo](js-apis-bundleManager-businessAbilityInfo-sys.md#businessabilityinfo) | Business router information. |

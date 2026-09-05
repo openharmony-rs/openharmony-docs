@@ -3,8 +3,9 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=bdf5bf0de2a6113c90791e021e843f8a4bb9faff translatedAt=2026-09-03T10:54:54.672Z pushedAt=2026-09-05T10:47:30.496Z -->
 
 The module provides APIs for setting, obtaining, and deleting the disposed status of an application. An application in the disposed status is forbidden to run. When a user clicks the application icon on the home screen, the corresponding page is displayed based on the disposal intent.  
 
@@ -16,7 +17,7 @@ The module provides APIs for setting, obtaining, and deleting the disposed statu
 
 ## Modules to Import
 
-``` ts
+```ts
 import { appControl } from '@kit.AbilityKit';
 ```
 
@@ -36,14 +37,14 @@ Sets the disposed status for an application. This API uses a promise to return t
 
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | Yes   | ID of the target application.<br> **appId** is the unique identifier of an application and is determined by the bundle name and signature information of the application. For details about how to obtain **appId**, see [How do I obtain appId from application information](../../quick-start/common_problem_of_application.md#how-do-i-obtain-appid-from-application-information).              |
+| appId  | string | Yes    | appId of the application for which the disposition status is to be set.<br> appId is the unique identifier of the application, determined by the application bundle name and signature information. For details about how to obtain it, see [obtaining the appId of an application](../../quick-start/common-problem-of-application.md#how-to-obtain-the-appid-in-application-information).               |
 | disposedWant | Want  | Yes| Disposal intent of the application.|
 
 **Return value**
 
 | Type                       | Description                |
 | ------------------------- | ------------------ |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise object that returns no value. |
 
 **Error codes**
 
@@ -97,9 +98,9 @@ Sets the disposed status for an application. This API uses an asynchronous callb
 
 | Name      | Type                             | Mandatory  | Description                                   |
 | ----------- | ------------------------------- | ---- | --------------------------------------- |
-| appId  | string | Yes   | ID of the target application.<br> **appId** is the unique identifier of an application and is determined by the bundle name and signature information of the application. For details about how to obtain **appId**, see [How do I obtain appId from application information](../../quick-start/common_problem_of_application.md#how-do-i-obtain-appid-from-application-information).                     |
+| appId  | string | Yes    | appId of the application for which the disposition status is to be set.<br> appId is the unique identifier of the application, determined by the application Bundle name and signature information. For details about how to obtain it, see [Obtaining the appId of an Application](../../quick-start/common-problem-of-application.md#obtaining-the-appid-of-an-application).                      |
 | disposedWant | Want  | Yes| Disposal intent of the application.|
-| callback    | AsyncCallback\<void> | Yes   | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**; otherwise, **err** is an error object.|
+| callback    | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)\<void> | Yes    | Callback function. If the disposition status is set successfully, err is null; otherwise, err is an error object. |
 
 **Error codes**
 
@@ -155,7 +156,7 @@ Sets the disposed status for an application. This API returns the result synchro
 
 | Name      | Type                             | Mandatory  | Description                                   |
 | ----------- | ------------------------------- | ---- | --------------------------------------- |
-| appId  | string | Yes   | ID of the target application.<br> **appId** is the unique identifier of an application and is determined by the bundle name and signature information of the application. For details about how to obtain **appId**, see [How do I obtain appId from application information](../../quick-start/common_problem_of_application.md#how-do-i-obtain-appid-from-application-information).                     |
+| appId  | string | Yes    | appId of the application for which the disposition status is to be set.<br> appId is the unique identifier of the application, determined by the application Bundle name and signature information. For details about how to obtain it, see [obtaining the appId of an application](../../quick-start/common-problem-of-application.md#how-to-obtain-the-appid-in-application-information).                      |
 | disposedWant | Want  | Yes| Disposal intent of the application.|
 
 **Error codes**
@@ -204,7 +205,7 @@ Obtains the disposed status of an application. This API uses a promise to return
 
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | Yes   | ID of the target application.<br> **appId** is the unique identifier of an application and is determined by the bundle name and signature information of the application. For details about how to obtain **appId**, see [How do I obtain appId from application information](../../quick-start/common_problem_of_application.md#how-do-i-obtain-appid-from-application-information). |
+| appId  | string | Yes    | appId of the application to be queried.<br> appId is the unique identifier of the application, determined by the application bundle name and signature information. For details about how to obtain it, see [obtain the appId of an application](../../quick-start/common-problem-of-application.md#how-to-obtain-the-appid-in-application-information).  |
 
 **Return value**
 
@@ -262,8 +263,8 @@ Obtains the disposed status of an application. This API uses an asynchronous cal
 
 | Name      | Type    | Mandatory  | Description                                 |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | Yes   | ID of the target application.<br> **appId** is the unique identifier of an application and is determined by the bundle name and signature information of the application. For details about how to obtain **appId**, see [How do I obtain appId from application information](../../quick-start/common_problem_of_application.md#how-do-i-obtain-appid-from-application-information). |
-| callback    | AsyncCallback\<Want> | Yes   | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null** and **data** is the disposed status obtained; otherwise, **err** is an error object.                   |
+| appId  | string | Yes    | appId of the application to be queried.<br> appId is the unique identifier of the application, determined by the application Bundle name and signature information. For details about how to obtain it, see [obtaining the appId of an application](../../quick-start/common-problem-of-application.md#how-to-obtain-appid-in-application-information).  |
+| callback    | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)\<Want> | Yes    | Callback function. When the disposition status of the application is obtained successfully, err is null and data is the obtained disposition status; otherwise, err is an error object.                    |
 
 **Error codes**
 
@@ -316,7 +317,7 @@ Obtains the disposed status of an application. This API returns the result synch
 
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | Yes   | ID of the target application.<br> **appId** is the unique identifier of an application and is determined by the bundle name and signature information of the application. For details about how to obtain **appId**, see [How do I obtain appId from application information](../../quick-start/common_problem_of_application.md#how-do-i-obtain-appid-from-application-information). |
+| appId  | string | Yes    | appId of the application to be queried.<br> appId is the unique identifier of the application, determined by the application bundle name and signature information. For details about how to obtain it, see [obtain the appId of an application](../../quick-start/common-problem-of-application.md#how-to-obtain-the-appid-in-application-information).  |
 
 **Return value**
 
@@ -358,7 +359,7 @@ try {
 
 deleteDisposedStatus(appId: string): Promise\<void>
 
-Deletes the disposed status for an application. This API uses a promise to return the result. If the operation is successful, **null** is returned. If the operation fails, an error message is returned.
+Deletes the disposition status of an application. This API uses a promise to return the result. null is returned on success, and the corresponding error message is returned on failure.
 
 **System API**: This is a system API.
 
@@ -370,13 +371,13 @@ Deletes the disposed status for an application. This API uses a promise to retur
 
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | Yes   | appId or appIdentifier of the target application. If a rule is set using appId, it must be deleted using appId; the same principle applies to appIdentifier.<br>**NOTE**<br> **appId** is the unique identifier of an application and is determined by the bundle name and signature information of the application. For details about how to obtain **appId**, see [How do I obtain appId from application information](../../quick-start/common_problem_of_application.md#how-do-i-obtain-appid-from-application-information).<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo) is also the unique identifier of an app. For details, see [What is appIdentifier](../../quick-start/common_problem_of_application.md#what-is-appidentifier). For details about how to obtain **appIdentifier**, see [How do I obtain appIdentifier from application information](../../quick-start/common_problem_of_application.md#how-do-i-obtain-appidentifier-from-application-information). |
+| appId  | string | Yes    | appId or appIdentifier of the application whose disposition status is to be deleted. The disposition status set using appId can only be deleted using appId, and the same applies to the disposition status set using appIdentifier.<br/>**NOTE**<br/> appId is the application's unique identifier, determined by the application Bundle name and signature information. For how to obtain it, see [obtain the appId of the application](../../quick-start/common-problem-of-application.md#how-to-obtain-the-appid-in-application-information).<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo) is also the application's unique identifier. For detailed information, refer to [what is appIdentifier](../../quick-start/common-problem-of-application.md#what-is-appidentifier). For how to obtain it, see [obtain the appIdentifier of the application](../../quick-start/common-problem-of-application.md#how-to-obtain-the-appidentifier-in-application-information).  |
 
 **Return value**
 
 | Type                       | Description                |
 | ------------------------- | ------------------ |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise that returns no value. |
 
 **Error codes**
 
@@ -428,8 +429,8 @@ Deletes the disposed status for an application. This API uses an asynchronous ca
 
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | Yes   | appId or appIdentifier of the target application. If a rule is set using appId, it must be deleted using appId; the same principle applies to appIdentifier.<br>**NOTE**<br> **appId** is the unique identifier of an application and is determined by the bundle name and signature information of the application. For details about how to obtain **appId**, see [How do I obtain appId from application information](../../quick-start/common_problem_of_application.md#how-do-i-obtain-appid-from-application-information).<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo) is also the unique identifier of an app. For details, see [What is appIdentifier](../../quick-start/common_problem_of_application.md#what-is-appidentifier). For details about how to obtain **appIdentifier**, see [How do I obtain appIdentifier from application information](../../quick-start/common_problem_of_application.md#how-do-i-obtain-appidentifier-from-application-information). |
-| callback    | AsyncCallback\<void> | Yes   | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**. otherwise, **err** is an error object.                  |
+| appId  | string | Yes    | appId or appIdentifier of the application whose disposition status is to be deleted. A disposition status set using appId can only be deleted using appId, and the same applies to one set using appIdentifier.<br/>**Note:**<br/> appId is the unique identifier of the application, determined by the application bundle name and signature information. For details about how to obtain it, see [obtain the appId of the application](../../quick-start/common-problem-of-application.md#how-to-obtain-appid-in-application-information).<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo) is also the unique identifier of the application. For detailed information, see [what is appIdentifier](../../quick-start/common-problem-of-application.md#what-is-appidentifier). For details about how to obtain it, see [obtain the appIdentifier of the application](../../quick-start/common-problem-of-application.md#how-to-obtain-appidentifier-in-application-information).  |
+| callback    | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)\<void> | Yes    | Callback function. If the disposition status is deleted successfully, err returns null; otherwise, the callback function returns a specific error object.                   |
 
 **Error codes**
 
@@ -466,7 +467,7 @@ try {
 
 ## appControl.deleteDisposedStatusSync<sup>10+</sup>
 
-deleteDisposedStatusSync(appId: string, appIndex:? number) : void
+deleteDisposedStatusSync(appId: string, appIndex?: number) : void
 
 Deletes the disposed status for an application or an application clone. This API returns the result synchronously. If the operation is successful, **null** is returned. If the operation fails, an error message is returned.
 
@@ -480,7 +481,7 @@ Deletes the disposed status for an application or an application clone. This API
 
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | Yes   | appId or appIdentifier of the target application. If a rule is set using appId, it must be deleted using appId; the same principle applies to appIdentifier.<br>**NOTE**<br> **appId** is the unique identifier of an application and is determined by the bundle name and signature information of the application. For details about how to obtain **appId**, see [How do I obtain appId from application information](../../quick-start/common_problem_of_application.md#how-do-i-obtain-appid-from-application-information).<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo) is also the unique identifier of an app. For details, see [What is appIdentifier](../../quick-start/common_problem_of_application.md#what-is-appidentifier). For details about how to obtain **appIdentifier**, see [How do I obtain appIdentifier from application information](../../quick-start/common_problem_of_application.md#how-do-i-obtain-appidentifier-from-application-information). |
+| appId  | string | Yes    | appId or appIdentifier of the application whose disposition status is to be deleted. The disposition status set using appId can only be deleted using appId, and the same applies to the disposition status set using appIdentifier.<br/>**NOTE**<br/> appId is the unique identifier of the application, determined by the bundle name and signature information of the application. For details about how to obtain it, see [Obtaining the appId of an application](../../quick-start/common-problem-of-application.md#how-to-obtain-the-appid-in-application-information).<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo) is also the unique identifier of the application. For details, see [What is appIdentifier](../../quick-start/common-problem-of-application.md#what-is-appidentifier). For details about how to obtain it, see [Obtaining the appIdentifier of an application](../../quick-start/common-problem-of-application.md#how-to-obtain-the-appidentifier-in-application-information).  |
 | appIndex<sup>12+</sup>   | number  | No  | Index of the application clone. The default value is **0**.<br> The value **0** means to delete the disposed status of the main application. A value greater than 0 means to delete the disposed status of the application clone. |
 
 **Error codes**
@@ -490,11 +491,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                               |
 | ------ | -------------------------------------- |
 | 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission denied. A non-system application is not allowed to call a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
 | 17700005 | The specified app ID is invalid. |
-| 17700061 | AppIndex is not in the valid range. |
+| 17700061 | AppIndex is not in the valid range.<br>Applicable version: 12+ |
 
 **Example**
 
@@ -515,7 +516,7 @@ try {
 
 ## appControl.getDisposedRule<sup>11+</sup>
 
-getDisposedRule(appId: string, appIndex:? number): DisposedRule
+getDisposedRule(appId: string, appIndex?: number): DisposedRule
 
 Obtains the disposed rule of an application or an application clone.
 
@@ -529,7 +530,7 @@ Obtains the disposed rule of an application or an application clone.
 
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | Yes   | appId or appIdentifier of the target application. If a rule is set using appId, it must be obtained using appId; the same principle applies to appIdentifier.<br>**NOTE**<br> **appId** is the unique identifier of an application and is determined by the bundle name and signature information of the application. For details about how to obtain **appId**, see [How do I obtain appId from application information](../../quick-start/common_problem_of_application.md#how-do-i-obtain-appid-from-application-information).<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo) is also the unique identifier of an app. For details, see [What is appIdentifier](../../quick-start/common_problem_of_application.md#what-is-appidentifier). For details about how to obtain **appIdentifier**, see [How do I obtain appIdentifier from application information](../../quick-start/common_problem_of_application.md#how-do-i-obtain-appidentifier-from-application-information). |
+| appId  | string | Yes    | appId or appIdentifier of the application whose disposed rule is to be obtained. A disposed rule set using appId can be obtained only through appId, and the same applies to a disposed rule set using appIdentifier.<br/>**Note:**<br/> appId is the unique identifier of the application, determined by the application bundle name and signature information. For details about how to obtain it, see [obtaining the appId of an application](../../quick-start/common-problem-of-application.md#how-to-obtain-appid-in-application-information).<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo) is also the unique identifier of the application. For details, see [what is appIdentifier](../../quick-start/common-problem-of-application.md#what-is-appidentifier). For details about how to obtain it, see [obtaining the appIdentifier of an application](../../quick-start/common-problem-of-application.md#how-to-obtain-appidentifier-in-application-information).  |
 | appIndex<sup>12+</sup>   | number  | No  | Index of the application clone. The default value is **0**.<br> The value **0** means to obtain the disposed rule of the main application. A value greater than 0 means to obtain the disposed rule of the application clone with the specified index.   |
 
 **Return value**
@@ -545,11 +546,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                               |
 | ------ | -------------------------------------- |
 | 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission denied. A non-system application is not allowed to call a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
 | 17700005 | The specified app ID is invalid. |
-| 17700061 | AppIndex is not in the valid range. |
+| 17700061 | AppIndex is not in the valid range.<br>Applicable version: 12+ |
 
 **Example**
 
@@ -611,9 +612,62 @@ try {
 }
 ```
 
+## appControl.getDisposedRulesByBundle<sup>23+</sup>
+
+getDisposedRulesByBundle(bundleName: string): Array\<DisposedRuleConfiguration>
+
+Obtains all disposed rules set for a specified application bundle.
+
+**System API**: This is a system API.
+
+**Required permissions:** ohos.permission.MANAGE_DISPOSED_APP_STATUS or ohos.permission.GET_DISPOSED_APP_STATUS
+
+**System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name      | Type    | Mandatory  | Description                                   |
+| ----------- | ------ | ---- | --------------------------------------- |
+| bundleName  | string | Yes   | Bundle name of the application bundle for which the disposed rule is set.               |
+
+**Return value**
+
+| Type                                                      | Description                   |
+| --------------------------------------------------------- | ---------------------- |
+|Array\<[DisposedRuleConfiguration](#disposedruleconfiguration20)> | Disposed rules set for the specified application bundle. |
+
+**Error codes**
+
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Permission denied. A non-system application is not allowed to call a system API. |
+| 801      | Capability not supported.                                    |
+
+**Example**
+
+```ts
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleName = 'com.example.myapplication';
+
+try {
+  let data = appControl.getDisposedRulesByBundle(bundleName);
+  console.info('getDisposedRulesByBundle successfully. Data: ' + JSON.stringify(data));
+} catch (error) {
+  let message = (error as BusinessError).message;
+  console.error('getDisposedRulesByBundle failed ' + message);
+}
+```
+
 ## appControl.setDisposedRule<sup>11+</sup>
 
-setDisposedRule(appId: string, rule: DisposedRule, appIndex:? number): void
+setDisposedRule(appId: string, rule: DisposedRule, appIndex?: number): void
 
 Sets the disposed rule for an application or an application clone.
 
@@ -627,7 +681,7 @@ Sets the disposed rule for an application or an application clone.
 
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | Yes   | appId or appIdentifier of the target application. If a rule is set using appId, it overwrites the one set with appIdentifier, and the reverse is also true.<br>**NOTE**<br> **appId** is the unique identifier of an application and is determined by the bundle name and signature information of the application. For details about how to obtain **appId**, see [How do I obtain appId from application information](../../quick-start/common_problem_of_application.md#how-do-i-obtain-appid-from-application-information).<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo) is also the unique identifier of an app. For details, see [What is appIdentifier](../../quick-start/common_problem_of_application.md#what-is-appidentifier). For details about how to obtain **appIdentifier**, see [How do I obtain appIdentifier from application information](../../quick-start/common_problem_of_application.md#how-do-i-obtain-appidentifier-from-application-information). |
+| appId  | string | Yes    | appId or appIdentifier of the application for which the disposed rule is to be set. A disposed rule set using appId overrides the disposed rule set using appIdentifier, and vice versa.<br/>**NOTE**<br/> appId is the unique identifier of the application, determined by the application bundle name and signature information. For details about how to obtain it, see [obtain the appId of the application](../../quick-start/common-problem-of-application.md#how-to-obtain-the-appid-in-application-information).<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo) is also the unique identifier of the application. For detailed information, see [what is appIdentifier](../../quick-start/common-problem-of-application.md#what-is-appidentifier). For details about how to obtain it, see [obtain the appIdentifier of the application](../../quick-start/common-problem-of-application.md#how-to-obtain-the-appidentifier-in-application-information).  |
 | rule | [DisposedRule](#disposedrule11) | Yes| Disposed rule to set.|
 | appIndex<sup>12+</sup>   | number  | No  | Index of the application clone. The default value is **0**.<br> The value **0** means to set the disposed rule for the main application. A value greater than 0 means to set the disposed rule for the application clone with the specified index.           |
 
@@ -638,11 +692,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                               |
 | ------ | -------------------------------------- |
 | 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission denied. A non-system application is not allowed to call a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
 | 17700005 | The specified app ID is invalid. |
-| 17700061 | AppIndex is not in the valid range. |
+| 17700061 | AppIndex is not in the valid range.<br>Applicable version: 12+ |
 
 **Example**
 
@@ -671,7 +725,8 @@ let rule: appControl.DisposedRule = {
   elementList: [
     elementName
   ],
-  priority: 100
+  priority: 100,
+  pageJump: appControl.PageJumpMode.PAGE_JUMP_WINDOW_SHOW
 };
 
 try {
@@ -736,7 +791,8 @@ let rule: appControl.DisposedRule = {
   elementList: [
     elementName
   ],
-  priority: 100
+  priority: 100,
+  pageJump: appControl.PageJumpMode.PAGE_JUMP_WINDOW_SHOW
 };
 
 let disposedRuleConfiguration: appControl.DisposedRuleConfiguration = {
@@ -772,7 +828,7 @@ struct Index {
 
 ## appControl.setUninstallDisposedRule<sup>15+</sup>
 
-setUninstallDisposedRule(appIdentifier: string, rule: UninstallDisposedRule, appIndex:? number): void
+setUninstallDisposedRule(appIdentifier: string, rule: UninstallDisposedRule, appIndex?: number): void
 
 Sets an uninstallation disposed rule for an application or an application clone.
 
@@ -786,7 +842,7 @@ Sets an uninstallation disposed rule for an application or an application clone.
 
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appIdentifier  | string | Yes   | appIdentifier of the target application.<br> If the application does not have an appIdentifier, use its appId instead. **appId** is the unique identifier of an application and is determined by the bundle name and signature information of the application. For details about how to obtain **appId**, see [How do I obtain appId from application information](../../quick-start/common_problem_of_application.md#how-do-i-obtain-appid-from-application-information). |
+| appIdentifier  | string | Yes    | appIdentifier of the application for which the uninstall disposition rule is to be set.<br> If the application does not have an appIdentifier, appId can be used instead. appId is the unique identifier of the application, determined by the application Bundle name and signature information. For details about how to obtain it, see [Obtaining the appId of an Application](../../quick-start/common-problem-of-application.md#how-to-obtain-the-appid-in-application-information).  |
 | rule | [UninstallDisposedRule](#uninstalldisposedrule15) | Yes| Uninstallation disposed rule.|
 | appIndex   | number  | No  | Index of the application clone. The default value is **0**.<br> The value **0** means to set the uninstallation disposed rule for the main application. A value greater than 0 means to set the uninstallation disposed rule for the application clone.       |
 
@@ -833,9 +889,9 @@ try {
 
 ## appControl.getUninstallDisposedRule<sup>15+</sup>
 
-getUninstallDisposedRule(appIdentifier: string, appIndex:? number): UninstallDisposedRule
+getUninstallDisposedRule(appIdentifier: string, appIndex?: number): UninstallDisposedRule
 
-Obtains the uninstallation disposed rule of an application or an application clone.
+Obtains the uninstall disposition rule with the highest priority that has been set for a specified application or application clone.
 
 **System API**: This is a system API.
 
@@ -847,7 +903,7 @@ Obtains the uninstallation disposed rule of an application or an application clo
 
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appIdentifier  | string | Yes   | appIdentifier of the target application.<br> If the application does not have an appIdentifier, use its appId instead. **appId** is the unique identifier of an application and is determined by the bundle name and signature information of the application. For details about how to set **appId**, see [How do I obtain appId from application information](../../quick-start/common_problem_of_application.md#how-do-i-obtain-appid-from-application-information). |
+| appIdentifier  | string | Yes    | appIdentifier of the application whose uninstall disposition rule is to be obtained.<br> If the application does not have an appIdentifier, appId can be used instead. appId is the unique identifier of the application, determined by the application Bundle name and signature information. For details about how to obtain it, see [obtain the appId of the application](../../quick-start/common-problem-of-application.md#how-to-obtain-appid-in-application-information).  |
 | appIndex   | number  | No  | Index of the application clone. The default value is **0**.<br> The value **0** means to obtain the uninstallation disposed rule of the main application. A value greater than 0 means to obtain the uninstallation disposed rule of the application clone.             |
 
 **Return value**
@@ -888,7 +944,7 @@ try {
 
 ## appControl.deleteUninstallDisposedRule<sup>15+</sup>
 
-deleteUninstallDisposedRule(appIdentifier: string, appIndex:? number): void
+deleteUninstallDisposedRule(appIdentifier: string, appIndex?: number): void
 
 Deletes an uninstallation disposed rule for an application or an application clone.
 
@@ -902,7 +958,7 @@ Deletes an uninstallation disposed rule for an application or an application clo
 
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appIdentifier  | string | Yes   | appIdentifier of the target application.<br> If the application does not have an appIdentifier, use its appId instead. **appId** is the unique identifier of an application and is determined by the bundle name and signature information of the application. For details about how to delete **appId**, see [How do I obtain appId from application information](../../quick-start/common_problem_of_application.md#how-do-i-obtain-appid-from-application-information). |
+| appIdentifier  | string | Yes    | appIdentifier of the application whose uninstall disposition rule is to be deleted.<br> If the application does not have an appIdentifier, appId can be used instead. appId is the unique identifier of the application, determined by the application Bundle name and signature information. For how to obtain it, see [Obtaining the appId of an Application](../../quick-start/common-problem-of-application.md#obtaining-the-appid-in-application-information).  |
 | appIndex   | number  | No  | Index of the application clone. The default value is **0**.<br> The value **0** means to delete the uninstallation disposed rule of the main application. A value greater than 0 means to delete the uninstallation disposed rule of the application clone.           |
 
 **Error codes**
@@ -938,7 +994,7 @@ try {
 
 Defines a disposed rule.
 
-**System capability**: SystemCapability.BundleManager.BundleFramework.AppControl
+**System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 
  **System API**: This is a system API.
 
@@ -946,16 +1002,17 @@ Defines a disposed rule.
 | --------- | -------------- | ---- | ---- | --------------------------- |
 | want | [Want](js-apis-app-ability-want.md)     | No  | No  | Page displayed when the application is disposed of.|
 | componentType | [ComponentType](#componenttype11)  | No  | No  | Type of application component that functions as the displayed page.|
-| disposedType | [DisposedType](#disposedrule11) | No  | No| Type of application disposal.|
+| disposedType | [DisposedType](#disposedtype11) | No | No | Disposed rule for the application. |
 | controlType | [ControlType](#controltype11) | No  | No| Control type of application disposal.|
 | elementList | Array\<[ElementName](js-apis-bundleManager-elementName.md)> | No  | No| List of application components to be disposed of or exempted.|
-| priority | number | No  | No| Priority of the disposed rule, which is used to sort the query results of the rule list. The value is an integer. A smaller value indicates a higher priority.|
+| priority | number | No | No | Priority of the disposed rule, used for sorting the rule list query results. The value is an integer. A smaller value indicates a higher priority and an earlier position in the sorting. |
+| pageJump | [PageJumpMode](#pagejumpmode) | No | Yes | Whether to jump to a page when the target application is intercepted. The default value is PageJumpMode.PAGE_JUMP_WINDOW_SHOW.<br>**Model restriction:** This API can be used only in the stage model.<br>**Initial version:** 26.0.0 |
 
 ### ComponentType<sup>11+</sup>
 
 Enumerates the types of application components that function as the displayed page.
 
-**System capability**: SystemCapability.BundleManager.BundleFramework.AppControl
+**System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 
  **System API**: This is a system API.
 
@@ -968,7 +1025,7 @@ Enumerates the types of application components that function as the displayed pa
 
 Enumerates the types of application disposals.
 
-**System capability**: SystemCapability.BundleManager.BundleFramework.AppControl
+**System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 
  **System API**: This is a system API.
 
@@ -982,7 +1039,7 @@ Enumerates the types of application disposals.
 
 Enumerates the control type of application disposal.
 
-**System capability**: SystemCapability.BundleManager.BundleFramework.AppControl
+**System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 
  **System API**: This is a system API.
 
@@ -991,25 +1048,42 @@ Enumerates the control type of application disposal.
 | ALLOWED_LIST | 1    | A trustlist is used, which means that the application components in the list are allowed to run.|
 | DISALLOWED_LIST | 2    | A blocklist is used, which means that the application components in the list are forbidden to run.|
 
+### PageJumpMode
+
+Indicates whether to jump to a page when the target application is intercepted.
+
+**Since:** 26.0.0
+
+**System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
+
+**System API**: This is a system API.
+
+**Model restriction:** This API can be used only in the stage model.
+
+| Name    | Value   | Description                 |
+| ------- | ---- | -------------------- |
+| PAGE_JUMP_WINDOW_SHOW | 0    | Jumps to a page when the target application is intercepted. |
+| PAGE_JUMP_WINDOW_NOT_SHOW | 1    | Does not jump to a page when the target application is intercepted. |
+
 ## UninstallDisposedRule<sup>15+</sup>
 
 Describes an uninstallation disposed rule.
 
-**System capability**: SystemCapability.BundleManager.BundleFramework.AppControl
+**System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 
  **System API**: This is a system API.
 
 | Name     | Type          | Read-Only| Optional| Description                       |
 | --------- | -------------- | ---- | ---- | --------------------------- |
 | want | [Want](js-apis-app-ability-want.md)     | No  | No  | Component displayed when the application is disposed of.|
-| UninstallComponentType | [UninstallComponentType](#uninstallcomponenttype15)  | No  | No  | Type of the ability to start during interception.|
-| priority | number | No| No| Priority of the disposed rule, which is used to sort the query results of the rule list. The value is an integer. A smaller value indicates a higher priority.|
+| uninstallComponentType | [UninstallComponentType](#uninstallcomponenttype15)  | No   | No   | Type of the ability to be started upon interception. |
+| priority | number | No | No | Priority of the uninstall disposition rule, used to sort the query results of the rule list. The value is an integer. A smaller value indicates a higher priority and an earlier position in the sorting. |
 
 ### UninstallComponentType<sup>15+</sup>
 
 Enumerates the types of abilities during uninstallation.
 
-**System capability**: SystemCapability.BundleManager.BundleFramework.AppControl
+**System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 
  **System API**: This is a system API.
 
@@ -1028,6 +1102,6 @@ Describes the configurations for setting disposed rules in batches.
 
 | Name        | Type                           | Read-Only| Optional| Description                                                        |
 | ------------ | ------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| appId        | string                          | No  | No  | appId or appIdentifier of the target application. Identical appId and appIdentifier values indicate the same application instance. If a rule is set using appId, it overwrites the one set with appIdentifier, and the reverse is also true.<br>**NOTE**<br>**appId** is also the unique identifier of an app. For details, see [What is appIdentifier](../../quick-start/common_problem_of_application.md#what-is-appidentifier). For details about how to obtain **appIdentifier**, see [How do I obtain appIdentifier from application information](../../quick-start/common_problem_of_application.md#how-do-i-obtain-appidentifier-from-application-information).|
+| appId        | string                          | No   | No   | appId or appIdentifier of the application for which the disposed rule is to be set. appId and appIdentifier can identify the same application. Therefore, for the same application, if the disposed rule is set using appIdentifier, it can overwrite the rule previously set using appId, and vice versa.<br/>**NOTE**<br/> appId is the unique identifier of the application, determined by the application bundle name and signature information. For details about how to obtain it, see [Obtaining the appId of an Application](../../quick-start/common-problem-of-application.md#how-to-obtain-appid-in-application-information).<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo) is also the unique identifier of the application. For detailed information, see [What Is appIdentifier](../../quick-start/common-problem-of-application.md#what-is-appidentifier). For details about how to obtain it, see [Obtaining the appIdentifier of an Application](../../quick-start/common-problem-of-application.md#how-to-obtain-appidentifier-in-application-information). |
 | appIndex     | number                          | No  | No  | Index of the application clone. The default value is **0**.<br> The value **0** means to set the disposed rule for the main application. A value greater than 0 means to set the disposed rule for the application clone with the specified index.|
 | disposedRule | [DisposedRule](#disposedrule11) | No  | No  | Disposal rule of the application, including the type of the ability to be started during disposal.        |

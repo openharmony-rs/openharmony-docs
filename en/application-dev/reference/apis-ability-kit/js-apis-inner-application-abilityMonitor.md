@@ -4,10 +4,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=7e647be53cee0e352795102117faaeb99055eefa translatedAt=2026-09-03T11:35:59.555Z pushedAt=2026-09-05T10:47:30.654Z -->
 
-The module provides the capability of listening for lifecycle state changes of a specified [UIAbility](js-apis-app-ability-uiAbility.md). You can use AbilityMonitor as an input parameter of [abilityDelegator.addAbilityMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#addabilitymonitor9) to register a listener.
+This module provides the capability to monitor the lifecycle state changes of a specified [UIAbility](js-apis-app-ability-uiAbility.md). You can use AbilityMonitor as an input parameter of [abilityDelegator.addAbilityMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#addabilitymonitor) to register the listener.
 
 > **NOTE**
 > 
@@ -21,7 +22,7 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 
 ## Usage
 
-AbilityMonitor can be used as an input parameter of [addAbilityMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#addabilitymonitor9) in **abilityDelegator** to listen for lifecycle changes of an ability.
+It can be used as an input parameter of [addAbilityMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#addabilitymonitor) in abilityDelegator to monitor the lifecycle state changes of a specified UIAbility.
 
 ## AbilityMonitor
 
@@ -54,14 +55,14 @@ function onAbilityCreateCallback(data: UIAbility) {
 
 let monitor: abilityDelegatorRegistry.AbilityMonitor = {
   abilityName: 'abilityname',
-  moduleName: "moduleName",
+  moduleName: 'moduleName',
   onAbilityCreate: onAbilityCreateCallback
 }
 
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.addAbilityMonitor(monitor, (error: BusinessError) => {
   if (error) {
-    console.error(`addAbilityMonitor fail, error: ${JSON.stringify(error)}`);
+    console.error(`Failed to add ability monitor. Code: ${error.code}, message: ${error.message}`);
   }
 });
 ```

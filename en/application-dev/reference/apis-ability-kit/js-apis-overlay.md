@@ -1,12 +1,11 @@
 # @ohos.bundle.overlay (overlay Module)
-
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=850c7d4f71d6bc50d82f299a21bb9cea3a266f3d translatedAt=2026-08-13T02:42:19.353Z pushedAt=2026-08-13T07:42:56.544Z -->
+<!-- md-trans-meta sourceCommit=9dd9c9b18255d12a5799f25458403aea81c3ef0c translatedAt=2026-09-03T12:25:11.085Z pushedAt=2026-09-05T10:47:30.920Z -->
 
 This module provides APIs for querying the [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md) of an application with the overlay feature, and disabling and enabling the feature.
 
@@ -18,6 +17,7 @@ An overlay feature module means that the current module contains an overlay reso
 >
 > The APIs provided by this module apply only to the stage model and [static overlay](../../quick-start/resource-categories-and-access.md#using-overlay-in-static-mode) mode.
 
+
 ## Modules to Import
 
 ``` ts
@@ -28,7 +28,7 @@ import { overlay } from '@kit.AbilityKit';
 
 setOverlayEnabled(moduleName:string, isEnabled: boolean): Promise\<void>
 
-Sets the enabled/disabled state of the overlay feature module in the current application. This API uses a promise to return the result.
+Sets the enabled or disabled state of the overlay feature module in the current application. This API uses a promise to return the result. If the API call fails, null may be returned. You need to verify the return value before using it.
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Overlay
 
@@ -132,7 +132,7 @@ try {
 
 getOverlayModuleInfo(moduleName: string): Promise\<OverlayModuleInfo>
 
-Obtains the OverlayModuleInfo of the overlay feature module in the current application. This API uses a promise to return the result.
+Obtains the OverlayModuleInfo of the overlay feature module in the current application. This API uses a promise to return the result. If the API call fails, null may be returned. You need to verify the return value before using it.
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Overlay
 
@@ -232,7 +232,7 @@ try {
 
 getTargetOverlayModuleInfos(targetModuleName: string): Promise\<Array\<OverlayModuleInfo>>
 
-Obtains the OverlayModuleInfo associated with the specified target module. Modules with the overlay feature generally provide an overlay resource file for other modules (target module) on the device. This API uses a promise to return the result.
+Obtains the OverlayModuleInfo associated with the specified target module. Modules with the overlay feature generally provide an overlay resource file for other modules (target module) on the device. This API uses a promise to return the result. If the API call fails, null may be returned. You need to verify the return value before using it.
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Overlay
 

@@ -3,15 +3,16 @@
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 <!--deprecated_code_no_check-->
+<!-- md-trans-meta sourceCommit=8e4ee7947dfeb3a89be0dfff4e576f69a510a94f translatedAt=2026-09-03T10:56:44.160Z pushedAt=2026-09-05T10:47:30.507Z -->
 
 The appManager module provides APIs for application management. For example, you can query whether the system is undergoing a stability test, determine whether the device is RAM-constrained, obtain the maximum memory available to the current application, and retrieve information about running processes.
 
 > **NOTE**
-> 
-> The APIs of this module are supported since API version 8 and deprecated since API version 9. You are advised to use [@ohos.app.ability.appManager](js-apis-app-ability-appManager.md) instead. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> The initial APIs of this module are supported since API version 7 and deprecated since API version 9. You are advised to use [@ohos.app.ability.appManager](js-apis-app-ability-appManager.md) instead. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
@@ -38,7 +39,7 @@ Checks whether the system is undergoing a stability test. This API uses an async
   | callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the API call result and the result indicating whether the system is undergoing a stability test. You can perform error handling or custom processing in this callback. **true** if the system is undergoing a stability test, **false** otherwise.|
 
 **Example**
-    
+
   ```ts
   import appManager from '@ohos.application.appManager';
 
@@ -66,12 +67,12 @@ Checks whether the system is undergoing a stability test. This API uses a promis
 
 **Return value**
 
-  | Type| Description| 
+  | Type| Description|
   | -------- | -------- |
-  | Promise&lt;boolean&gt; | Promise used to return the API call result and the result indicating whether the system is undergoing a stability test. You can perform error handling or custom processing in this callback. **true** if the system is undergoing a stability test, **false** otherwise.|
+  | Promise&lt;boolean&gt; | Promise object. true if the system is in a stability test scenario; false otherwise. |
 
 **Example**
-    
+
   ```ts
   import appManager from '@ohos.application.appManager';
   import { BusinessError } from '@ohos.base';
@@ -84,7 +85,7 @@ Checks whether the system is undergoing a stability test. This API uses a promis
   ```
 
 
-## appManager.isRamConstrainedDevice<sup>7+<sup>
+## appManager.isRamConstrainedDevice<sup>7+</sup>
 
 isRamConstrainedDevice(): Promise\<boolean>
 
@@ -94,12 +95,12 @@ Checks whether the current device is a RAM-constrained device (a device with sev
 
 **Return value**
 
-  | Type| Description| 
+  | Type| Description|
   | -------- | -------- |
-  | Promise&lt;boolean&gt; | Promise used to return the API call result and the result indicating whether the device is RAM-constrained. You can perform error handling or custom processing in this callback. **true** if the device is RAM-constrained, **false** otherwise.|
+  | Promise&lt;boolean&gt; | Promise object. Returns true if the current device is a RAM-restricted device; returns false otherwise. |
 
 **Example**
-    
+
   ```ts
   import appManager from '@ohos.application.appManager';
   import { BusinessError } from '@ohos.base';
@@ -111,7 +112,7 @@ Checks whether the current device is a RAM-constrained device (a device with sev
   });
   ```
 
-## appManager.isRamConstrainedDevice<sup>7+<sup>
+## appManager.isRamConstrainedDevice<sup>7+</sup>
 
 isRamConstrainedDevice(callback: AsyncCallback\<boolean>): void
 
@@ -121,12 +122,12 @@ Checks whether the current device is a RAM-constrained device (a device with sev
 
 **Parameters**
 
-  | Name| Type| Mandatory| Description| 
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the API call result and the result indicating whether the device is RAM-constrained. You can perform error handling or custom processing in this callback. **true** if the device is RAM-constrained, **false** otherwise.|
+  | callback | AsyncCallback&lt;boolean&gt; | Yes | Callback used to return the operation result and whether the current device is a RAM restricted device. This callback can be used for error handling or other custom handling. The value true indicates the current device is a RAM restricted device, and the value false indicates the current device is not a RAM restricted device. |
 
 **Example**
-    
+
   ```ts
   import appManager from '@ohos.application.appManager';
 
@@ -139,7 +140,7 @@ Checks whether the current device is a RAM-constrained device (a device with sev
   });
   ```
 
-## appManager.getAppMemorySize<sup>7+<sup>
+## appManager.getAppMemorySize<sup>7+</sup>
 
 getAppMemorySize(): Promise\<number>
 
@@ -149,12 +150,12 @@ Obtains the maximum memory (RAM allocation) available to the current application
 
 **Return value**
 
-  | Type| Description| 
+  | Type| Description|
   | -------- | -------- |
-  | Promise&lt;number&gt; | Promise used to return the maximum memory (RAM allocation) size, in MB. You can perform error processing or other custom processing based on the size.  |
+  | Promise&lt;number&gt; | Promise object that returns the maximum memory (RAM) value that the current application can use. This value can be used for error handling or other custom handling. The unit is MB. |
 
 **Example**
-    
+
   ```ts
   import appManager from '@ohos.application.appManager';
   import { BusinessError } from '@ohos.base';
@@ -166,7 +167,7 @@ Obtains the maximum memory (RAM allocation) available to the current application
   });
   ```
 
-## appManager.getAppMemorySize<sup>7+<sup>
+## appManager.getAppMemorySize<sup>7+</sup>
 
 getAppMemorySize(callback: AsyncCallback\<number>): void
 
@@ -176,12 +177,12 @@ Obtains the maximum memory (RAM allocation) available to the current application
 
 **Parameters**
 
-  | Name| Type| Mandatory| Description| 
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;number&gt; | Yes| Callback used to return the maximum memory (RAM allocation) size, in MB. You can perform error processing or other custom processing based on the size.  |
+  | callback | AsyncCallback&lt;number&gt; | Yes | Callback invoked to return the maximum memory (RAM) value that the current application can use, in MB. This value can be used for error handling or other custom handling. |
 
 **Example**
-    
+
   ```ts
   import appManager from '@ohos.application.appManager';
 
@@ -199,7 +200,7 @@ getProcessRunningInfos(): Promise\<Array\<ProcessRunningInfo>>
 
 Obtains information about the running processes. This API uses a promise to return the result.
 
-> This API is deprecated since API version 9. You are advised to use [appManager.getRunningProcessInformation](js-apis-app-ability-appManager.md#appmanagergetrunningprocessinformation) instead.
+> This API starts supporting since API version 7 and starts deprecating since API version 9. You are advised to use [appManager.getRunningProcessInformation](js-apis-app-ability-appManager.md#appmanagergetrunningprocessinformation) instead.
 
 **Required permissions**: ohos.permission.GET_RUNNING_INFO (available only for system applications)
 
@@ -212,7 +213,7 @@ Obtains information about the running processes. This API uses a promise to retu
 | Promise\<Array\<[ProcessRunningInfo](js-apis-inner-application-processRunningInfo.md)>> | Promise used to return the information about the running processes.|
 
 **Example**
-    
+
   ```ts
   import appManager from '@ohos.application.appManager';
   import { BusinessError } from '@ohos.base';
@@ -230,7 +231,7 @@ getProcessRunningInfos(callback: AsyncCallback\<Array\<ProcessRunningInfo>>): vo
 
 Obtains information about the running processes. This API uses an asynchronous callback to return the result.
 
-> This API is deprecated since API version 9. You are advised to use [appManager.getRunningProcessInformation](js-apis-app-ability-appManager.md#appmanagergetrunningprocessinformation) instead.
+> This API starts supporting since API version 7 and starts deprecating since API version 9. You are advised to use [appManager.getRunningProcessInformation](js-apis-app-ability-appManager.md#appmanagergetrunningprocessinformation-1) instead.
 
 **Required permissions**: ohos.permission.GET_RUNNING_INFO (available only for system applications)
 
@@ -240,10 +241,10 @@ Obtains information about the running processes. This API uses an asynchronous c
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback\<Array\<[ProcessRunningInfo](js-apis-inner-application-processRunningInfo.md)>> | Yes| Callback used to return the information about the running processes.|
+| callback | AsyncCallback\<Array\<[ProcessRunningInfo](js-apis-inner-application-processRunningInfo.md)>> | Yes | Returns the interface operation result and information about the running process in callback mode, which can be used for error handling or other custom handling. |
 
 **Example**
-    
+
   ```ts
   import appManager from '@ohos.application.appManager';
 
