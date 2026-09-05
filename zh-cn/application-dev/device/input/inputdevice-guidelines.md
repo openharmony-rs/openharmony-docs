@@ -34,7 +34,7 @@ import { inputDevice } from '@kit.InputKit';
 
 ### 开发步骤
 
-1. 调用[getDeviceList](../../reference/apis-input-kit/js-apis-inputdevice.md#inputdevicegetdevicelist9)方法查询所有连接的输入设备，调用[getKeyboardType](../../reference/apis-input-kit/js-apis-inputdevice.md#inputdevicegetkeyboardtype9)方法遍历所有连接的设备，判断是否有物理键盘，若有则标记已有物理键盘连接，该步骤确保在监听设备热插拔之前，先检测所有已插入的输入设备。
+1. 调用[getDeviceList](../../reference/apis-input-kit/js-apis-inputdevice.md#inputdevicegetdevicelist9)方法查询所有连接的输入设备，并遍历所有连接的设备，对每个设备调用[getKeyboardType](../../reference/apis-input-kit/js-apis-inputdevice.md#inputdevicegetkeyboardtype9)方法，判断是否有物理键盘，若有则标记已有物理键盘连接，该步骤确保在监听设备热插拔之前，先检测所有已插入的输入设备。
 2. 调用[on](../../reference/apis-input-kit/js-apis-inputdevice.md#inputdeviceonchange9)接口监听输入设备热插拔事件，若监听到有物理键盘插入，则标记已有物理键盘连接；若监听到有物理键盘拔出，则标记没有物理键盘连接。
 
 ArkTS-Dyn示例：
