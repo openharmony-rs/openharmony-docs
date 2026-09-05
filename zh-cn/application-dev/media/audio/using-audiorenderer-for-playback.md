@@ -630,7 +630,7 @@ async function initArguments(context: common.UIAbilityContext) {
       if (bufferSize > file.length) {
         let view = new DataView(buffer);
         for (let i: int = (bufferSize - file.length).toInt(); i < buffer.byteLength.toInt(); i++) {
-          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x7F为静音数据，使用其他采样格式时0为静音数据。
+          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x80为静音数据，使用其他采样格式时0为静音数据。本示例采样格式为SAMPLE_FORMAT_S16LE，因此静音数据填充0。
           view.setUint8(i, 0);
         }
       }
