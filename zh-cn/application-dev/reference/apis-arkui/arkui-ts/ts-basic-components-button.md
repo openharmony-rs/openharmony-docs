@@ -828,6 +828,8 @@ struct Index {
 
 组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
 
+Button设置系统材质后，默认背景色依旧使用蓝色。
+
 从API版本26.0.0开始，新增systemMaterial属性。
 
 ```ts
@@ -842,6 +844,7 @@ struct Index {
       Button('helloWorld')
         .width(200)
         .fontColor(Color.Black)
+        // 注释此接口，可以关闭系统材质
         .systemMaterial(new uiMaterial.ImmersiveMaterial({
           style: uiMaterial.ImmersiveStyle.THIN
         }))
