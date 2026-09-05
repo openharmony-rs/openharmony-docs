@@ -126,7 +126,7 @@
 
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, ConstIde::K_LOG_DOMAIN, "%{public}s after GetNodeContent", who);
 
-        // 可选：保留对 nodeAPI_ 的健壮性检查（与你现有代码一致）
+        // 可选：保留对 nodeAPI_ 的健壮性检查（与现有代码一致）
         if (Manager::nodeAPI_ == nullptr) {
             OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, ConstIde::K_LOG_DOMAIN, "%{public}s nodeAPI_ is null", who);
             return nullptr;

@@ -32,13 +32,13 @@
 
 ArkTS-Dyn示例：
 
-  <!-- @[Word_Break](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/WordBreakd.ets) -->
+  <!-- @[Word_Break](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/WordBreakExample.ets) -->
   
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
   @Entry
   @Component
-  struct WordBreakd {
+  struct WordBreakExample {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
@@ -766,14 +766,14 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn示例：
 
-  <!-- @[Text_Long_Tow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLongTow.ets) -->
+  <!-- @[Text_Long_Two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLongTwo.ets) -->
   
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
   
   @Entry
   @Component
-  struct TextLongTow {
+  struct TextLongTwo {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
@@ -916,26 +916,31 @@ ArkTS-Sta示例：
 
 想要使长按手势对文本不生效，可以设置触发时间小于系统菜单触发时间（500ms）的自定义长按手势。
 
-```ts
-// xxx.ets
+<!-- @[How_To_Disable_Text_Long_Press](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/faq/HowToDisableTextLongPress.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct TextExample8 {
+export struct HowToDisableTextLongPressExample {
   build() {
-    Column() {
-      Text("TextTextTextText")
-        .copyOption(CopyOptions.InApp)
-        .gesture(LongPressGesture({ repeat: false, duration: 400 })
-          .onAction(() => {
-          }))
-        .margin({
-          top: 100,
-          bottom: 100,
-          left: 100,
-          right: 100
-        })
+    NavDestination() {
+      Column() {
+        Text('TextTextTextText')
+          .copyOption(CopyOptions.InApp)
+          .gesture(LongPressGesture({ repeat: false, duration: 400 })
+            .onAction(() => {
+            }))
+          .margin({
+            top: 100,
+            bottom: 100,
+            left: 100,
+            right: 100
+          })
+      }
+      .height('100%')
     }
-    .height('100%')
+    .backgroundColor('#f1f2f3')
+    .title($r('app.string.How_To_Disable_Text_Long_Press'))
   }
 }
 ```
