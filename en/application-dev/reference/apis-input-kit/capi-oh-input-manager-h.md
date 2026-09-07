@@ -3386,7 +3386,7 @@ Unregisters the listener for all device hot swap events.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **OH_Input_UnregisterDeviceListener** function.<br>         [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+| [Input_Result](#input_result) | Return value of the **OH_Input_UnregisterDeviceListeners** function.<br>         [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
 
 ### OH_Input_GetDeviceIds()
 
