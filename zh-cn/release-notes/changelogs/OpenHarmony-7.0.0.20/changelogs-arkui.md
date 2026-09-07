@@ -356,7 +356,7 @@ struct MouseEventExample {
 
 **变更原因**
 
-[Button](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-button.md)、[Button模式的Toggle](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md)、[Select](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-select.md)、[Chip](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)、[ChipGroup](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipGroup.md)组件触摸热区当前最小高度28vp，点击范围小，不易操作。
+按钮尺寸设置为ControlSize.SMALL的[Button](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-button.md)组件、[Button模式的Toggle](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md)、[Select](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-select.md)、[Chip](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)、[ChipGroup](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipGroup.md)组件触摸热区当前最小高度28vp，点击范围小，不易操作。
 
 **变更影响**
 
