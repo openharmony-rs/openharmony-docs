@@ -190,7 +190,7 @@ Common APIs for adding, removing, modifying, and accessing elements in Vector ar
 | Accessing elements| getLastElement() | Obtains the last element.|
 | Accessing elements| getIndexOf(element: T) | Obtains the index of the first matching element.|
 | Accessing elements| getLastIndexOf(element: T) | Obtains the index of the last matching element.|
-| Accessing elements| forEach(callbackFn: (value: T, index?: number, Vector?: Vector&lt;T&gt;) =&gt; void, thisArg?: Object) | Iterates over each element in the Stack and executes the specified callback function.|
+| Accessing elements| forEach(callbackFn: (value: T, index?: number, Vector?: Vector&lt;T&gt;) =&gt; void, thisArg?: Object) | Iterates over each element in the Vector and executes the specified callback function.|
 | Accessing elements| \[Symbol.iterator]():IterableIterator&lt;T&gt; | Creates an iterator for data access.|
 | Modifying elements| set(index:number, element: T) | Modifies the element at the specified index.|
 | Modifying elements| vec[index] = element | Modifies the element at the specified index.|

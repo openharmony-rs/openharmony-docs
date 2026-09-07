@@ -6,9 +6,9 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=81f445fd08211cfc3b68579d2e6edda6177d5f3e translatedAt=2026-08-13T03:12:35.004Z pushedAt=2026-08-13T07:36:50.073Z -->
+<!-- md-trans-meta sourceCommit=b0e965054b682272b6c9e3890a6020b1129a6551 translatedAt=2026-08-22T02:17:58.633Z pushedAt=2026-08-22T07:05:56.149Z -->
 
-The cross-device notification is designed to implement collaborative interaction of notifications between a smartphone and another device such as a watch. Typical scenarios are as follows:
+[Cross-device collaboration](notification-glossary.md#cross-device-collaboration) notifications aim to use the phone as the center to implement collaborative interaction of notification messages with other devices such as watches. Typical scenarios are as follows:
 
 <!--Del-->
 
@@ -20,7 +20,7 @@ The cross-device notification is designed to implement collaborative interaction
 
 ## Constraints
 
-  - Devices supported for cross-device collaboration: Starting from API version 18, notification message collaboration between phones and wearables is supported; starting from API version 20, notification message collaboration between phones and tablets/PCs/2-in-1 devices is supported.
+  - Devices supported for [cross-device collaboration](notification-glossary.md#cross-device-collaboration): Starting from API version 18, notification message collaboration between phones and wearables is supported. Starting from API version 20, notification message collaboration between phones and tablets/PCs/2-in-1 devices is supported.
 
   - [Notification slot types](../../application-dev/reference/apis-notification-kit/js-apis-notificationManager.md#slottype) supported for cross-device notification:
 

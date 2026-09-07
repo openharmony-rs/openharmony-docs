@@ -6,7 +6,7 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @qin_wei_jie-->
-<!-- md-trans-meta sourceCommit=6dec6b14cb206fe02a5ddd5033caa3930c0dd80f translatedAt=2026-08-18T11:02:44.221Z pushedAt=2026-08-18T11:38:45.618Z -->
+<!-- md-trans-meta sourceCommit=00c069b74e3d33a090d0d5814ea0cab4ea7d744e translatedAt=2026-09-01T02:36:04.394Z pushedAt=2026-09-02T03:37:10.218Z -->
 
 DRM Kit provides ArkTS APIs for comprehensive digital rights management, covering certificate management, license management, content authorization, and content decryption.
 
@@ -84,7 +84,7 @@ For detailed API descriptions, refer to [@ohos.multimedia.drm](../../reference/a
        console.info("The certificate already exists.");
    }
    // Send drmRequest.data returned by the DRM certificate request to the DRM certificate service through a network request and process the response.
-   let provisionResponseByte = new Uint8Array([0x00, 0x00, 0x00, 0x00]); // Example response data.
+   let provisionResponseByte = new Uint8Array([0x00, 0x00, 0x00, 0x00]); // Device DRM certificate response.
    mediaKeySystem.processKeySystemResponse(provisionResponseByte).then(() => {
        console.info("processKeySystemResponse success");
    }).catch((err:BusinessError) =>{
@@ -192,7 +192,7 @@ For detailed API descriptions, refer to [@ohos.multimedia.drm](../../reference/a
     });
       ```
 
-13. (Optional) Call [restoreOfflineMediaKey](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#restoreofflinemediakeys) to restore offline media keys.
+13. (Optional) Call [restoreOfflineMediaKeys](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#restoreofflinemediakeys) to restore offline media keys.
 
     ```ts
     mediaKeySession.restoreOfflineMediaKeys(offlineMediaKeyId).then(() => {

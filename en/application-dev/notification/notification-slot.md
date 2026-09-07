@@ -6,19 +6,19 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=81f445fd08211cfc3b68579d2e6edda6177d5f3e translatedAt=2026-08-13T03:11:32.507Z pushedAt=2026-08-13T07:39:25.987Z -->
+<!-- md-trans-meta sourceCommit=b0e965054b682272b6c9e3890a6020b1129a6551 translatedAt=2026-08-22T02:19:44.838Z pushedAt=2026-08-22T07:15:14.428Z -->
 
-The system supports a range of notification slots. Different notification slots are assigned different reminder modes. You can choose notification slots for your application and manage them as required, such as creating, querying, and deleting notification slots.
+The system supports multiple [notification channels](notification-glossary.md#notification-slot). Different notification channels correspond to different [notification reminder modes](notification-glossary.md#notification-reminder-mode). You can select an appropriate notification channel based on the actual application scenario and manage notification channels (including creating, querying, and deleting them).
 
 ## Notification Slots
 
-The following table lists the notification slots and their reminder modes. **Y** indicates that the feature is supported, and **N** indicates that the feature is not supported.
+Different types of [notification channels](notification-glossary.md#notification-slot) correspond to different [notification reminder modes](notification-glossary.md#notification-reminder-mode), as shown in the following table. In the table, Y indicates supported and N indicates not supported.
 
 <!--RP1-->
 <!--RP1End-->
 <!--RP2-->
 
-| SlotType             | Value   | Classification     | Notification Center | Banner | Lock Screen | Sound/Vibration | Status Bar Icon | Screen Wake |
+| SlotType             | Value   | Classification     | [Notification Center](notification-glossary.md#notification-center) | Banner | Lock Screen | Sound/Vibration | Status Bar Icon | Screen Wake |
 | -------------------- | ------ | --------| ------- |------|------|----------|-----------|---------|
 | SOCIAL_COMMUNICATION | 1      | Social Communication | Y | Y | Y | Y | Y | Y |
 | SERVICE_INFORMATION  | 2      | Service Reminder | Y | Y | Y | Y | Y | Y |
@@ -31,7 +31,7 @@ The following table lists the notification slots and their reminder modes. **Y**
 
 ## Available APIs
 
-The main notification slot APIs are as follows. For details about other APIs, see [@ohos.notificationManager (NotificationManager)](../reference/apis-notification-kit/js-apis-notificationManager.md).
+The main APIs of [notification channels](notification-glossary.md#notification-slot) are as follows. For details about other APIs, see [@ohos.notificationManager (NotificationManager Module)](../reference/apis-notification-kit/js-apis-notificationManager.md).
 
 | **API**| **Description**|
 | ---------- | -------- |
@@ -56,7 +56,7 @@ In addition to using **addSlot()**, you can also create a notification slot by p
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
-2. Add a notification slot.
+2. Create a [notification channel](notification-glossary.md#notification-slot) of the specified type.
 
    <!-- @[create_type_channel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationWays.ets) -->
 
@@ -74,7 +74,7 @@ In addition to using **addSlot()**, you can also create a notification slot by p
 
 3. Obtain a notification slot.
 
-   Retrieve the slot's creation status and supported notification modes—for example, whether there is an alert tone, vibration, and lock screen visibility.
+   Obtain whether the corresponding channel has been created and the [notification reminder modes](notification-glossary.md#notification-reminder-mode) supported by the channel, such as whether a ringtone is available, whether vibration is available, and whether the notification is visible on the lock screen.
 
    <!-- @[get_type_channel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationWays.ets) -->
 

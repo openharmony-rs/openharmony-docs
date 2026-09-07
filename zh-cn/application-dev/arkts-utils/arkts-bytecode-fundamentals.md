@@ -34,7 +34,7 @@
 
 **约束**
 
-* 本文中所有采用代码形式描述的内容均遵循[ArkTS语法](../quick-start/arkts-language-guide-basics.md)。
+* 本文中所有采用代码形式描述的内容均遵循[ArkTS语言规范](../quick-start/introduction-to-arkts.md)。
 * 本文仅适用于版本号为12.0.6.0的方舟字节码（版本号为方舟编译器内部保留字段，开发者无需关注）。
 
 ### 字节码构成
@@ -460,7 +460,7 @@ function foo3(a: number, b: number): void {}
 |  0x31 |  IMM8_IMM8_V8 |  callthisrange RR, +AA, vBB   |  默认入参：acc：函数对象<br>R：方舟运行时内部使用的8位保留数字<br>A：参数数量<br>B：对象<br>B + 1, ..., B + A：参数   |  将`this`的值设置为B，以B + 1，...，B + A作为参数，调用acc中存放的函数对象，并将计算结果存放到acc中。   |
 |  0x32 |  IMM8_IMM8_V8 |  supercallthisrange RR, +AA, vBB  |  R：方舟运行时内部使用的8位保留数字<br>A：参数数量<br>B, ..., B + A - 1：参数 |  以B, ..., B + A - 1作为参数, 调用`super`函数，并将结果存放到acc中。<br>当A的值是0时，B是**undefined**。<br>此指令仅出现在非箭头函数中。   |
 |  0x33 |  IMM8_ID16_IMM8   |  definefunc RR, @AAAA, +BB    |  R：方舟运行时内部使用的8位保留数字<br>A：method id<br>B：方法A的形参数量 | 创建方法A的函数对象，并将其存放到acc中。   |
-|  0x34 |  IMM8_ID16_IMM8   |  definemethod RR, @AAAA, +BB  |  默认入参：acc：类对象或类对象的对象原型，方法为静态方法时，acc中是类对象<br>R：方舟运行时内部使用的8位保留数字<br>A：method id<br>B：方法A的形参数量     |  创建方法A的函数对象，将acc中的对象设置为该函数对象的[HomeObject](https://262.ecma-international.org/12.0/#sec-ecmascript-function-objects)属性，并将该函数对象存放到acc中。   |
+|  0x34 |  IMM8_ID16_IMM8   |  definemethod RR, @AAAA, +BB  |  默认入参：acc：类对象或类对象的对象原型，方法为静态方法时，acc中是类对象<br>R：方舟运行时内部使用的8位保留数字<br>A：method id<br>B：方法A的形参数量     |  创建方法A的函数对象，将acc中的对象设置为该函数对象的[[[HomeObject]]](https://262.ecma-international.org/12.0/#sec-ecmascript-function-objects)属性，并将该函数对象存放到acc中。   |
 |  0x35 |  IMM8_ID16_ID16_IMM16_V8  |  defineclasswithbuffer RR, @AAAA, @BBBB, +CCCC, vDD   |  R：方舟运行时内部使用的8位保留数字<br>A：类的构造函数的method id<br>B：literal id<br>C：方法A的形参数量<br>D：父类   |  使用索引B对应的字面量数组和父类D，创建A的类对象，并将其存放到acc中。   |
 |  0x36 |  V8   |  getnextpropname vAA  | A：迭代器 |  执行[for-in迭代器](https://262.ecma-international.org/12.0/#sec-createiterresultobject)A的[next](https://262.ecma-international.org/12.0/#sec-%25foriniteratorprototype%25.next)方法，并将结果存放到acc中。   |
 |  0x37 |  IMM8_V8  |  ldobjbyvalue RR, vAA |  默认入参：acc：属性键值<br>R：方舟运行时内部使用的8位保留数字<br>A：对象 |  加载A对象的键值为acc的属性，并将结果存放到acc中。|

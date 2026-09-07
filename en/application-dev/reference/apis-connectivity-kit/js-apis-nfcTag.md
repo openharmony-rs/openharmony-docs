@@ -2,7 +2,7 @@
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @amunra03-->
+<!--Owner: @yh1719-->
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
@@ -14,7 +14,7 @@ The **tag** module provides APIs for operating and managing NFC tags. The follow
 > **NOTE**
 >
 >1. The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
->2. Since API version 26.0.0, it is more accurate to determine whether a device supports NFC by calling both [canIUse("SystemCapability.Communication.NFC.Tag")](../common/init.md#caniuse) and [nfcController.isNfcSupported](js-apis-nfcController.md#nfccontrollerisnfcsupported). If the device does not support NFC, the application stability may be affected. For details, see [NFC Tag Read/Write Development](../../connectivity/nfc/nfc-tag-access-guide.md).
+>2. For API versions earlier than 26.0.0, use [canIUse("SystemCapability.Communication.NFC.Tag")](../common/syscap__ndk_8h.md#caniuse) and [nfcController.isNfcAvailable](js-apis-nfcController.md#nfccontrollerisnfcsupported) to check whether the device supports NFC. Since API version 26.0.0, it is more accurate to determine whether a device supports NFC by calling both [canIUse("SystemCapability.Communication.NFC.Tag")](../common/syscap__ndk_8h.md#caniuse) and [nfcController.isNfcSupported](js-apis-nfcController.md#nfccontrollerisnfcsupported). If the device does not support NFC, the application stability may be affected. For details, see [NFC Tag Read/Write Development](../../connectivity/nfc/nfc-tag-access-guide.md).
 >3. If an error is reported while importing the tag module editor, the capabilities of a specific device model may exceed the capability set defined for the default device. To use these capabilities, configure a custom SysCap by following instructions in [SystemCapability](https://developer.huawei.com/consumer/en/doc/harmonyos-references/syscap).
 
 ## **Modules to Import**
@@ -23,7 +23,7 @@ The **tag** module provides APIs for operating and managing NFC tags. The follow
 import { tag } from '@kit.ConnectivityKit';
 ```
 
-## **tag.TagInfo**
+## **Example of tag.TagInfo**
 
 Before a card with tags is read or written, **[TagInfo](#taginfo)** must be obtained to determine the tag technologies supported by the card. In this way, the application can invoke the correct API to communicate with the card.
 ```js
@@ -135,7 +135,7 @@ Obtains an **NfcATag** object, which allows access to the tags that use the NFC-
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 801  | Capability not supported. |
@@ -191,7 +191,7 @@ Obtains an **NfcBTag** object, which allows access to the tags that use the NFC-
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 801  | Capability not supported. |
@@ -247,7 +247,7 @@ Obtains an **NfcFTag** object, which allows access to the tags that use the NFC-
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 801  | Capability not supported. |
@@ -303,7 +303,7 @@ Obtains an **NfcVTag** object, which allows access to the tags that use the NFC-
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 801  | Capability not supported. |
@@ -335,7 +335,7 @@ Obtains an **IsoDepTag** object, which allows access to the tags that use the Is
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 801  | Capability not supported. |
@@ -367,7 +367,7 @@ Obtains an **NdefTag** object, which allows access to NFC Data Exchange Format (
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 801  | Capability not supported. |
@@ -399,7 +399,7 @@ Obtains a **MifareClassicTag** object, which allows access to the tags that use 
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 801  | Capability not supported. |
@@ -430,7 +430,7 @@ Obtains a **MifareUltralightTag** object, which allows access to the tags that u
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 801  | Capability not supported. |
@@ -461,7 +461,7 @@ Obtains an **NdefFormatableTag** object, which allows access to the tags that ar
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 801  | Capability not supported. |
@@ -493,7 +493,7 @@ Obtains a **BarcodeTag** object, which allows access to the tags in the BarcodeT
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 801  | Capability not supported. |
@@ -526,7 +526,7 @@ Obtains **TagInfo** from **Want**, which is initialized by the NFC service and c
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 801  | Capability not supported. |
@@ -555,7 +555,7 @@ Registers a listener for the NFC tag read event so that the tag can be preferent
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
@@ -589,7 +589,7 @@ Unregisters the listener for the NFC tag read event. If the listener is unregist
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
@@ -682,7 +682,7 @@ Subscribes to the NFC tag read event to implement dispatch of the tag to a foreg
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
@@ -718,7 +718,7 @@ Unsubscribes from the NFC tag card read event. The device exits the reader mode 
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
@@ -817,7 +817,7 @@ Subscribes to the NFC tag read event so that the tag can be preferentially dispa
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 201  | Permission denied. |
 | 801  | Capability not supported. |
@@ -852,7 +852,7 @@ Unsubscribes from the NFC tag card read event. The device exits the reader mode 
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 201  | Permission denied. |
 | 801  | Capability not supported. |
@@ -946,7 +946,7 @@ Creates an NDEF record based on the specified URI.
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 
@@ -996,7 +996,7 @@ Creates an NDEF record based on the specified text data and language type.
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 
@@ -1046,7 +1046,7 @@ Creates an NDEF record based on the specified application bundle name.
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 
@@ -1096,7 +1096,7 @@ Creates an NDEF record based on the specified MIME data and type.
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 
@@ -1147,7 +1147,7 @@ Creates an NDEF record based on application-specific data.
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 
@@ -1198,7 +1198,7 @@ Converts an NDEF message to bytes.
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 
@@ -1243,7 +1243,7 @@ Creates an NDEF message from raw byte data. The data must comply with the NDEF r
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 
@@ -1286,7 +1286,7 @@ Creates an NDEF message from the NDEF records list.
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 
@@ -1351,7 +1351,7 @@ Enumerates the tag technology types.
 | MIFARE_CLASSIC               |  number | 8      | MIFARE Classic.<br>**Atomic service API**: This API can be used in atomic services since API version 12.       |
 | MIFARE_ULTRALIGHT            |  number | 9      | MIFARE Ultralight.<br>**Atomic service API**: This API can be used in atomic services since API version 12.     |
 | NFC_BARCODE<sup>18+</sup>    |  number | 10     | BARCODE technology.<br>**Atomic service API**: This API can be used in atomic services since API version 18.              |
-| SKIP_NDEF                    | number |     11  | Method used to skip the NDEF check.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| SKIP_NDEF                    | number |     11  | Method used to skip the NDEF check.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>**Model restriction:** This API can be used only in the stage model.|
 | RTD_TEXT<sup>9+</sup>        | number[] | [0x54] | NDEF record of the text type. For details, see **NFCForum-TS-NDEF_1.0**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | RTD_URI<sup>9+</sup>         | number[] | [0x55] | NDEF record of the URI type. For details, see **NFCForum-TS-NDEF_1.0**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 

@@ -6,7 +6,7 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=a56d795a51f9068e61c2cc2726ea675f5d93d82a translatedAt=2026-08-13T03:12:45.878Z pushedAt=2026-08-13T07:52:57.444Z -->
+<!-- md-trans-meta sourceCommit=b0e965054b682272b6c9e3890a6020b1129a6551 translatedAt=2026-08-22T02:22:43.615Z pushedAt=2026-08-22T07:17:13.087Z -->
 
 - [About This Kit](notification-overview.md)
 
@@ -59,6 +59,8 @@
   - [Introduction to NotificationSubscriberExtensionAbility](notification-subscriber-extension-ability.md)
 
   - [Developing the ExtensionAbility for Notification Subscription](notification-subscriber-extension-ability-development-steps.md)
+
+- [Glossary](notification-glossary.md)
 
 <!--RP1--><!--RP1End-->
 <!--RP2--><!--RP2End-->

@@ -23,6 +23,8 @@
 > 该组件不支持在Wearable设备上使用。
 >
 > 卡片具体开发指导请参考[卡片开发指南](../../../form/formkit-overview.md)。
+>
+> 从API version 18开始，建议使用[formProvider.openFormManager](../../apis-form-kit/js-apis-app-form-formProvider.md#formprovideropenformmanager18)接口。
 
 
 ## 导入模块

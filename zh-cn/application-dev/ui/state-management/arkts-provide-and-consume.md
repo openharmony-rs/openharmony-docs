@@ -30,7 +30,7 @@
 
 - \@Provide装饰的状态变量自动对其所有后代组件可用，开发者不需要多次在组件之间传递变量。
 
-- 后代通过使用\@Consume获取\@Provide提供的变量，建立在\@Provide和\@Consume之间的双向数据同步，与[\@State](./arkts-state.md)/[\@Link](./arkts-link.md)不同的是，前者可以更便捷的在多层级父子组件之间传递。
+- 后代通过使用\@Consume获取\@Provide提供的变量，建立在\@Provide和\@Consume之间的双向数据同步，与[\@State](./arkts-state.md)/[\@Link](./arkts-link.md)不同的是，前者可以更便捷地在多层级父子组件之间传递。
 
 - \@Provide和\@Consume通过变量名或者变量别名绑定，需要类型相同，否则会发生类型隐式转换，从而导致应用行为异常。
 ```ts

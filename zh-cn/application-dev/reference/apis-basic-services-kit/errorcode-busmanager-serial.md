@@ -15,7 +15,6 @@
 > 本文档提供串口通信接口调用的错误码说明，帮助开发者快速定位和解决串口通信问题。适用于开发串口通信应用、调试串口通信异常等场景。以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
 ## 错误码汇总
-
 | 错误码ID | 错误信息 | 触发接口 |
 | --- | --- | --- |
 | 35700001 | Service error. | getSerialPortList, open, close, write, onDataRead, offDataRead, flush, drain, setRts, getCts, getDsr, sendBrk, onDisconnect, offDisconnect, setDtr, addPortAuthorization |

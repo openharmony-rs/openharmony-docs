@@ -322,7 +322,7 @@ export { SubPage } from './src/main/ets/components/mainpage/SubPage'; // 非冷�
 
 **【优化方案一】**  
 将HAR包的导出文件**Index.ets**进行拆分，**IndexAppStart.ets**文件仅导出首页相关文件，即**MainPage.ets**。**IndexOthers.ets**文件导出非首页相关文件，即**SubPage.ets。**  
-**优点**：使用此种方案优化后可以将冷启阶段（加载首页文件）与非冷启阶段（加载非首页文件）需要执行的.ets文件进行完全拆分，类比其他需优化的场景也可以使用本方案进行拆分。  
+**优点**：使用此种方案优化后可以将冷启动阶段（加载首页文件）与非冷启动阶段（加载非首页文件）需要执行的.ets文件进行完全拆分，类比其他需优化的场景也可以使用本方案进行拆分。  
 **缺点**：需保证拆分后IndexAppStart.ets中的导出文件不存在对于IndexOthers.ets中的导出文件的引用。
 
 【图一】拆分HAR导出文件  
@@ -390,8 +390,8 @@ export { SubPage } from './src/main/ets/components/mainpage/SubPage'; // 非冷�
     ```
 **【优化方案二】**  
 在首页的**Index.ets**文件中导入**MainPage.ets**时使用全路径展开。  
-**优点**：不需要新增文件来汇总导出所有冷启阶段文件。  
-**缺点**：引用时需要对所有冷启阶段文件进行路径展开，增加开发和维护成本。
+**优点**：不需要新增文件来汇总导出所有冷启动阶段文件。  
+**缺点**：引用时需要对所有冷启动阶段文件进行路径展开，增加开发和维护成本。
 
 【图二】首页导入冷启动文件时使用全路径展开  
 
@@ -606,7 +606,7 @@ export default class MyAbilityStage extends AbilityStage {
 
 ### 非UI耗时操作并行化
 
-在应用启动流程中，主要聚焦在执行UI相关操作中，为了更快的能显示首页内容，不建议在主线程中执行非UI相关的耗时操作，耗时操作建议通过异步任务进行延迟处理或放到其他子线程中执行，线程并发方案可以参考：[TaskPool和Worker的对比实践](../arkts-utils/multi-thread-concurrency-overview.md)。  
+在应用启动流程中，主要聚焦在执行UI相关操作中，为了更快地能显示首页内容，不建议在主线程中执行非UI相关的耗时操作，耗时操作建议通过异步任务进行延迟处理或放到其他子线程中执行，线程并发方案可以参考：[TaskPool和Worker的对比实践](../arkts-utils/multi-thread-concurrency-overview.md)。  
 
 在冷启动过程中如果存在图片下载、网络请求前置数据、数据反序列化等非UI操作可以根据开发者实际情况移至子线程中进行，参考下面文章：[避免在主线程中执行耗时操作](avoid_time_consuming_operations_in_mainthread.md)。
 
@@ -770,9 +770,9 @@ struct Index {
 
 ![](./figures/application_coldstart15.png)
 
-将网络请求提前至AbilityStage/UIAbility生命的onCreate()生命周期回调函数中，可以将首刷或二刷的时间提前，减少用户等待时间。此处为了体现性能收益，将网络请求放到了更早的AbilityStage的onCreate()生命周期回调中。
+将网络请求提前至AbilityStage/UIAbility的onCreate()生命周期回调函数中，可以将首刷或二刷的时间提前，减少用户等待时间。此处为了体现性能收益，将网络请求放到了更早的AbilityStage的onCreate()生命周期回调中。
 
-【优化后】网络请求提前至AbilityStage的onCreate()周期回调中。
+【优化后】网络请求提前至AbilityStage的onCreate()生命周期回调中。
 
 ![](./figures/application_coldstart16.png)
 
@@ -827,7 +827,7 @@ export function httpRequest() {
       }
     )
 }
-// 使用createPixelMap将ArrayBuffer类型的图片装换为PixelMap类型
+// 使用createPixelMap将ArrayBuffer类型的图片转换为PixelMap类型
 function transcodePixelMap(data: http.HttpResponse) {
   if (http.ResponseCode.OK === data.responseCode) {
     const imageData: ArrayBuffer = data.result as ArrayBuffer;

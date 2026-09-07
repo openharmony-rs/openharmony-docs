@@ -1,10 +1,12 @@
 # JSVM_CompileProfile
-<!--Kit: Common Basic Capability-->
+
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-08-27T03:47:21.467Z pushedAt=2026-08-27T06:26:02.619Z -->
 
 ```c
 typedef const struct {...} JSVM_CompileProfile
@@ -13,6 +15,10 @@ typedef const struct {...} JSVM_CompileProfile
 ## Overview
 
 Defines the compilation sampling file transferred together with **JSVM_COMPILE_COMPILE_PROFILE**.
+
+**Use scenario**: Used for pre-compilation optimization during the second launch of an app to improve app startup speed and runtime performance. It applies to app scenarios that require startup performance optimization.
+
+**System capability:** SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
 

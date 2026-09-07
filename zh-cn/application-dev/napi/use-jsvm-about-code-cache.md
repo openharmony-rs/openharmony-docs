@@ -6,7 +6,7 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
 
-##code cache简介
+## code cache简介
 
 JSVM提供了生成并使用code cache加速编译过程的方法，其获取和使用分为下面几个部分：
 
@@ -16,7 +16,7 @@ JSVM提供了生成并使用code cache加速编译过程的方法，其获取和
 
 通过上述流程，将会在使用code cache的那次编译中，极大减少编译时间，其原理为将编译完成的script序列化，然后使用code cache编译时就不再需要重新解析/编译已经被序列化的函数，只需要进行一次反序列化即可，这样编译就简化为了一次数据读取。
 
-##code cache校验规格说明
+## code cache校验规格说明
 | 规格       | 规格说明                                            |
 | ---------- | -------------------------------------------------- |
 | 完整性校验  | 校验cache实际长度，是否与生成时一致                 |
@@ -135,4 +135,4 @@ cache rejected: 0
 -code cache校验成功
 - 内存中存在编译缓存，code cache没有被校验
 
-对于第一种情况，这个参数会被设置为true，而后两种情况都是false，因此需要注意即使reject为false，也不能说明code cache被接收了。
+对于第一种情况，这个参数会被设置为true，而后两种情况都是false，因此需要注意即使reject为false，也不能说明code cache被接受了。

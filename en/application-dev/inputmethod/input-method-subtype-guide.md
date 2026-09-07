@@ -1,12 +1,11 @@
 # Setting Input Method Subtypes
-
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3103aea9f27e22b8029f7224f57c27c4f91680cc translatedAt=2026-08-04T08:28:50.086Z pushedAt=2026-08-04T08:42:34.431Z -->
+<!-- md-trans-meta sourceCommit=c4600a44573a6aee547e47f52cb983f9fbf70114 translatedAt=2026-08-26T02:54:11.914Z pushedAt=2026-08-26T03:21:31.831Z -->
 
 The input method subtypes allow the input method to switch to a specific mode or language, for example, the Chinese or English keyboard.
 
@@ -66,13 +65,14 @@ The input method subtypes allow the input method to switch to a specific mode or
    // Register a listener in the input method application for subtype changes.
    inputMethodAbility.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
      if (inputMethodSubtype.id === 'InputMethodExtAbility') {
-       AppStorage.setOrCreate('subtypeChange', 0);
+       AppStorage.setOrCreate('subtypeChange', CustomInputMethodSubtype.english);
      }
      if (inputMethodSubtype.id === 'InputMethodExtAbility1') {
-       AppStorage.setOrCreate('subtypeChange', 1);
+       AppStorage.setOrCreate('subtypeChange', CustomInputMethodSubtype.chinese);
      }
    });
    ```
+
 
 ## Obtaining Information About Input Method Subtypes
 
@@ -81,6 +81,7 @@ The input method subtypes allow the input method to switch to a specific mode or
 2. To obtain all subtypes of the current input method, call [listCurrentInputMethodSubtype](../reference/apis-ime-kit/js-apis-inputmethod.md#listcurrentinputmethodsubtype9).
 
 3. To obtain all subtypes of a specified input method, call [listInputMethodSubtype](../reference/apis-ime-kit/js-apis-inputmethod.md#listinputmethodsubtype9).
+
 
 ## Switching Between Input Method Subtypes
 

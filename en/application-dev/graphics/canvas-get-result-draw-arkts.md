@@ -6,15 +6,19 @@
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=379459ed39b4b4ff1b499df9523039b8689cb0ba translatedAt=2026-08-15T01:50:29.985Z pushedAt=2026-08-15T08:19:41.828Z -->
+<!-- md-trans-meta sourceCommit=0edaaef5de1186c959319c99afaf3d467527fe8c translatedAt=2026-09-01T02:26:52.511Z pushedAt=2026-09-01T13:52:56.861Z -->
+
 
 ## Overview
 
 Canvas provides the capability of drawing and processing basic graphics on the screen. You can use Canvas to implement custom drawing effects to enhance user experience.
 
+
 Canvas is the core of graphics drawing. All drawing operations mentioned in this topic (including drawing basic graphics, text, and images, and performing graphic transformation) are based on Canvas.
 
+
 In ArkTS, you can obtain a canvas in either of the following ways: [obtaining a canvas that can be directly displayed](#obtaining-a-canvas-that-can-be-directly-displayed) and [obtaining an off-screen canvas](#obtaining-and-displaying-an-offscreen-canvas). The former does not require additional operations after the drawing API is called, and the latter requires existing display approaches to display the drawing result.
+
 
 ## Obtaining a Canvas That Can Be Directly Displayed
 
@@ -56,6 +60,7 @@ Obtain the canvas that can be directly displayed through [RenderNode](../referen
          brush.setColor({red: 255, blue: 0, green: 0, alpha: 255});
          canvas.attachBrush(brush);
          canvas.drawRect({left: 0, right: 300, top: 0, bottom: 300});
+         canvas.detachBrush();
        }
      }
    }
@@ -110,6 +115,7 @@ Obtain the canvas that can be directly displayed through [RenderNode](../referen
        brush.setColor({red: 255, blue: 0, green: 0, alpha: 255});
        canvas.attachBrush(brush);
        canvas.drawRect({left: 0, right: 300, top: 0, bottom: 300});
+       canvas.detachBrush();
      }
    }
    ```
@@ -150,6 +156,7 @@ Obtain the canvas that can be directly displayed through [RenderNode](../referen
    }
    ```
 
+
 ## Obtaining and Displaying an Offscreen Canvas
 
 1. Import the required files.
@@ -172,9 +179,7 @@ Obtain the canvas that can be directly displayed through [RenderNode](../referen
 5. Override the [draw()](../reference//apis-arkui/js-apis-arkui-renderNode.md#draw) function of the custom **RenderNode** to obtain the offscreen canvas for drawing.
 
    1. Use the **PixelMap** created in Step 4 to construct the offscreen canvas.
-
    2. Perform custom drawing operations on the offscreen canvas.
-
    3. Pass the drawing result of the offscreen canvas to the **RenderNode**.
 
    <!-- @[arkts_graphics_draw_indirect_canvas_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
@@ -198,6 +203,7 @@ Obtain the canvas that can be directly displayed through [RenderNode](../referen
          brush.setColor({ alpha: 255, red: 0, green: 0, blue: 255 });
          canvas_.attachBrush(brush);
          canvas_.drawRect({ left: 150, right: 575, top: 0, bottom: 600 });
+         canvas_.detachBrush();
    
          // Pass the drawing result of the offscreen canvas to the RenderNode.
          canvas.drawImage(this.pixelMap, 0, 0);
@@ -285,11 +291,9 @@ Obtain the canvas that can be directly displayed through [RenderNode](../referen
    ```
 
 <!--RP1-->
-
 ## Samples
 
 The following samples are provided to help you better understand how to use the **Drawing** APIs (ArkTS) for development:
 
 - [ArkTSGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw)
-
 <!--RP1End-->

@@ -26,11 +26,11 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
 
 - 由于struct没有继承能力，上述所有的这些变量使用protected修饰时，会有编译告警日志提示。
 
-- [\@Require](./arkts-require.md)含义是当前被\@Require装饰的变量必须被外部初始化，当\@Require装饰器和private访问限定符同时修饰[\@State](./arkts-state.md)/[\@Prop](./arkts-prop.md)/[\@Provide](./arkts-provide-and-consume.md)/[\@BuilderParam](./arkts-builderparam.md)装饰的变量或常规成员变量(不涉及更新的普通变量)时，它们的含义是自相矛盾的，会有编译告警日志提示。
+- [\@Require](./arkts-require.md)含义是当前被\@Require装饰的变量必须被外部初始化，当\@Require装饰器和private访问限定符同时修饰[\@State](./arkts-state.md)/[\@Prop](./arkts-prop.md)/[\@Provide](./arkts-provide-and-consume.md)/[\@BuilderParam](./arkts-builderparam.md)装饰的变量或常规成员变量（不涉及更新的普通变量）时，它们的含义是自相矛盾的，会有编译告警日志提示。
 
 ## 使用场景
 
-1. 当成员变量被private访问限定符和\@State/\@Prop/\@Provide/\@BuilderParam装饰器同时修饰，并且通过父组件进行初始化赋值，ArkTS会进行校验并产生告警日志。
+1. 当\@State/\@Prop/\@Provide/\@BuilderParam装饰的变量或常规成员变量（不涉及更新的普通变量）被private访问限定符修饰，并且通过父组件进行初始化赋值，ArkTS会进行校验并产生告警日志。
 
    【反例】
     <!-- @[LinkWithPrivate_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/linkWithPrivate/LinkWithPrivateErrorCase.ets) -->

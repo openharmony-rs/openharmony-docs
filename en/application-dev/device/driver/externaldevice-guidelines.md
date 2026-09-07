@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:40:07.289Z pushedAt=2026-06-25T06:57:05.093Z -->
+<!-- md-trans-meta sourceCommit=b7d40f87aa2d142e8bb56c8840a8683306b0404d translatedAt=2026-09-01T02:12:49.585Z pushedAt=2026-09-01T12:03:22.435Z -->
 
 ## When to Use
 
@@ -24,8 +24,8 @@ The following table describes the basic peripheral management capabilities. For 
 | Name                                                      | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | queryDevices(busType?: number): Array&lt;Readonly&lt;Device&gt;&gt; | Queries the peripheral list.                                          |
-| bindDriverWithDeviceId(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): Promise&lt;RemoteDeviceDriver&gt;; | Binds a peripheral device. This API uses a promise to return the result. It is supported since API version 18.                      |
-| unbindDriverWithDeviceId(deviceId: number): Promise&lt;number&gt; | Unbinds a peripheral device. This API uses a promise to return the result. It is supported since API version 18.                      |
+| bindDriverWithDeviceId(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): Promise&lt;RemoteDeviceDriver&gt; | Binds a device. This API is supported since API 19.                       |
+| unbindDriverWithDeviceId(deviceId: number): Promise&lt;number&gt; | Unbinds a device. This API is supported since API 19.                       |
 
 <!--Del-->
 The following table describes the system APIs for peripheral management. For details, see [@ohos.driver.deviceManager (Peripheral Management) (System API)](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager-sys.md).
@@ -56,7 +56,7 @@ The following sample code is a demo that illustrates how to develop both the cli
 
    > **NOTE**
    >
-   > Write following sample code in the **entry/src/main/ets/pages/Index.ets** file.
+   > All the following sample code is written in the **entry/src/main/ets/pages/Index.ets** file.
 
    <!-- @[driver_ui_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
 
@@ -99,11 +99,11 @@ The following sample code is a demo that illustrates how to develop both the cli
          hilog.info(DOMAIN, 'testTag', `usbDevice.productId = ${usbDevice.productId}, usbDevice.vendorId = ${usbDevice.vendorId}`);
          return usbDevice.productId === productId && usbDevice.vendorId === vendorId;
        });
-       hilog.info(DOMAIN, 'testTag', `queryTargetDeviceId index = ${index}, deviceId = ${devices[index].deviceId}`);
        if (index < 0) {
          hilog.error(DOMAIN, 'testTag', 'can not find device');
          return -1;
        }
+       hilog.info(DOMAIN, 'testTag', `queryTargetDeviceId index = ${index}, deviceId = ${devices[index].deviceId}`);
        return devices[index].deviceId;
      } catch (error) {
        hilog.error(DOMAIN, 'testTag', `queryDevice failed, err: ${JSON.stringify(error)}`);
@@ -119,7 +119,7 @@ The following sample code is a demo that illustrates how to develop both the cli
    ``` TypeScript
    private async getDriverRemote(deviceId: number): Promise<rpc.IRemoteObject | null> {
      try {
-       let remoteDeviceDriver: deviceManager.RemoteDeviceDriver = await deviceManager.bindDeviceDriver(deviceId,
+       let remoteDeviceDriver: deviceManager.RemoteDeviceDriver = await deviceManager.bindDriverWithDeviceId(deviceId,
          (err: BusinessError, id: number) => {
            hilog.info(DOMAIN, 'testTag', `device[${id}] id disconnect, err: ${JSON.stringify(err)}`);
          });
@@ -131,7 +131,7 @@ The following sample code is a demo that illustrates how to develop both the cli
    }
    ```
 
-6. Defines the **sendMessageRequest** API, and use it to perform IPC with the remote object.
+6. Define the **sendMessageRequest** API, and use it to perform IPC with the remote object.
 
    <!-- @[driver_ui_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
 

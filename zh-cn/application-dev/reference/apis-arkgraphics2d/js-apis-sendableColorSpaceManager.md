@@ -28,7 +28,7 @@ type ISendable = lang.ISendable
 
 | 类型                | 说明                     |
 | ------------------ | ------------------------ |
-| [lang.ISendable](../apis-arkts/js-apis-arkts-lang.md#langisendable)  | 所有Sendable类型的父类型。               |
+| [lang.ISendable](../apis-arkts/js-apis-arkts-lang.md#isendable)  | 所有Sendable类型的父类型。               |
 
 ## sendableColorSpaceManager.create
 

@@ -1,12 +1,11 @@
 # Using the Ad Blocking Feature
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=28ca9f6fbe76ba1de91dad58d9ee3079cdad3c1a translatedAt=2026-08-14T03:42:20.952Z pushedAt=2026-08-14T07:16:16.415Z -->
+<!-- md-trans-meta sourceCommit=5191f5de3eca0919d8d5e44823dbef1bf6b74270 translatedAt=2026-09-01T02:50:57.453Z pushedAt=2026-09-02T07:24:00.052Z -->
 
 ArkWeb provides the ad blocking feature for applications, supporting default EasyList rules pushed by the cloud and custom rule files set by applications through APIs. It can intercept the advertisement resource download at the network layer or inject CSS rules into the web page to hide specific advertisement elements.
 
@@ -19,7 +18,7 @@ The current configuration file format uses [EasyList](https://easylist-downloads
 | URL blocking rule| Blocks all sub-resource requests whose URLs match **example.com/js/*_tv.js**. This rule is used to block a specified domain name and all its subdomain names.| \|\|example.com/js/*_tv.js   |
 | URL blocking rule| Blocks third-party resources whose URLs match **alimama.cn** on websites whose domain names are neither **alimama.com** nor **taobao.com**. **\$third\_party** is an options syntax used to match third-party resources. A tilde (~) before a domain name indicates that the domain name is not included.| \|\|alimama.cn^$third-party,domain\=~alimama.com\|\~taobao.com   |
 | Exception rule| Disables ad blocking on **example.com**. **@@** is the syntax keyword that indicates no blocking.| \@\@\|\|example.com^$document   |
-| Exception rule| Disables the blocking of subresources that match **.adserver** in the web page whose domain name is **litv.tv**.| \@\@.adserver.$domain=litv.tv   |
+| Exception rule| Disables the blocking of subresources that match **.adserver.** in the web page whose domain name is **litv.tv**.| \@\@.adserver.$domain=litv.tv   |
 | Element hiding rule| Hides all elements whose class is **i528** in the web page whose domain name is **myabandonware.com** or **myware.com**. **##** is used to hide an element.| myabandonware.com, myware.com##.i528   |
 | Element hiding exception rule| Disables the hiding of elements whose IDs are **ad_1** in **sdf-event.sakura.ne.jp**.| sdf-event.sakura.ne.jp#@##ad_1   |
 
@@ -50,11 +49,9 @@ For example, if you configure a blocking rule **||abc.com/js/123.js** to block w
 ## Application Scenarios
 
 ### Enabling Ad Blocking
-
 You can use [setAdsBlockRules()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#setadsblockrules12) provided by **AdsBlockManager** to set blocking rules in EasyList and use [enableAdsBlock()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#enableadsblock12) of the **Web** component to enable the ad blocking feature.
 
 The following example shows how to select the EasyList file using the file picker and how to enable the ad blocking feature in an application.
-
 <!-- @[app_select_list_rule_file_for_ad_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/EnablingAdsBlocking.ets) -->
 
 ``` TypeScript
@@ -108,9 +105,7 @@ When the component has a built-in EasyList, you can set the **replace** paramete
 The custom rule file is a global configuration file for the application that it takes effect for all **Web** components in the application processes. In addition, the file is persistent that it continues to work when the application is restarted.
 
 ### Disabling Ad Blocking on Pages with Specific Domain Names
-
 When the ad blocking feature of a **Web** component is enabled, in addition to the custom EasyList, you can also use [addAdsBlockDisallowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#addadsblockdisallowedlist12) provided by **AdsBlockManager** to disable the ad blocking feature.
-
 <!-- @[turn_off_ad_filtering_for_specific_domain_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/DisAdsBlockSpecDomPages_one.ets) -->
 
 ``` TypeScript
@@ -167,7 +162,6 @@ Add the domain name to **DisallowedList** of **AdsBlockManager** through [addAds
 **AdsBlockManager** caches two lists of domain names, namely **DisallowedList** and **AllowedList**. **DisallowedList** is used to disable ad filtering on web pages, while **AllowedList** is used to re-enable the ad filtering switch that has been turned off by **DisallowedList**. **AllowedList** has a higher priority. When a page is loaded, the page URL is first matched against **AllowedList**. If the matching is successful, ad filtering remains enabled for the web page. Otherwise, the URL is matched against **DisallowedList**. If the matching is successful, ad filtering is disabled for the web page. If the visited web page is in neither **AllowedList** nor **DisallowedList**, ad filtering remains enabled for the web page by default.
 
 For example, if you want to enable ad filtering for the domains 'news.example.com' and 'sport.example.com' in an app, but disable ad filtering for web pages under other domains of 'example.com', you can first call [addAdsBlockDisallowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#addadsblockdisallowedlist12) to add the 'example.com' domain to **DisallowedList**, and then call [addAdsBlockAllowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#addadsblockallowedlist12) to add the 'news.example.com' and 'sport.example.com' domains.
-
 <!-- @[set_up_page_level_ad_filtering_switch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/DisAdsBlockSpecDomPages_two.ets) -->
 
 ``` TypeScript
@@ -228,9 +222,7 @@ Note that the **DisallowedList** and **AllowedList** of the **AdsBlockManager** 
 If the ad blocking feature of the **Web** component is not enabled through [enableAdsBlock()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#enableadsblock12), the preceding APIs do not take effect in the **Web** component.
 
 ### Collecting Ad Blocking Information
-
 When ad blocking is enabled on the **Web** component, if any ad is blocked on the accessed web page, the [onAdsBlocked()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#onadsblocked12) callback of the **Web** component notifies the application. You can collect blocking information and statistics as needed.
-
 <!-- @[collect_information_about_ad_filtering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/CollectingAdsBlockingInformation.ets) -->
 
 ``` TypeScript

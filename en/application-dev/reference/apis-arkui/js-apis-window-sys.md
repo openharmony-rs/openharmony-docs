@@ -2488,7 +2488,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
-| 1300004 | Unauthorized operation. Invalid window type. Only system windows, global floating windows, and modal windows are supported. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only system windows, global floating windows, and modal windows are supported. |
 
 **Example**
 
@@ -2525,7 +2525,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
-| 1300004 | Unauthorized operation. Invalid window type. Only system windows, global floating windows, and modal windows are supported. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only system windows, global floating windows, and modal windows are supported. |
 
 **Example**
 
@@ -2568,7 +2568,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
-| 1300004 | Unauthorized operation. Invalid window type. Only system windows, global floating windows, and modal windows are supported. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only system windows, global floating windows, and modal windows are supported. |
 
 **Example**
 
@@ -2612,7 +2612,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
-| 1300004 | Unauthorized operation. Invalid window type. Only system windows, global floating windows, and modal windows are supported. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only system windows, global floating windows, and modal windows are supported. |
 
 **Example**
 
@@ -2653,7 +2653,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 | ------- | ------------------------------ |
 | 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
-| 1300004 | Unauthorized operation. Invalid window type. Only system windows, global floating windows, and modal windows are supported. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only system windows, global floating windows, and modal windows are supported. |
 
 **Example**
 
@@ -2686,7 +2686,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
-| 1300004 | Unauthorized operation. Invalid window type. Only system windows, global floating windows, and modal windows are supported. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only system windows, global floating windows, and modal windows are supported. |
 
 **Example**
 
@@ -2727,7 +2727,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
-| 1300004 | Unauthorized operation. Invalid window type. Only system windows, global floating windows, and modal windows are supported. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only system windows, global floating windows, and modal windows are supported. |
 
 **Example**
 
@@ -2765,7 +2765,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
-| 1300004 | Unauthorized operation. Invalid window type. Only system windows, global floating windows, and modal windows are supported. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only system windows, global floating windows, and modal windows are supported. |
 
 **Example**
 
@@ -2805,7 +2805,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
-| 1300004 | Unauthorized operation. Invalid window type. Only system windows, global floating windows, modal windows and subwindows are supported. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only system windows, global floating windows, modal windows and subwindows are supported. |
 
 **Example**
 
@@ -2841,8 +2841,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | ------------------------------ |
 | 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 1300002 | This window state is abnormal. |
-| 1300004 | Unauthorized operation.  |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| 1300004 | Invalid window type. Only subwindows and float windows are supported. |
 
 **Example**
 

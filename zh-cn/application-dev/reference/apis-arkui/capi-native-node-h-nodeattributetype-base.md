@@ -158,8 +158,8 @@ NODE_BACKGROUND_IMAGE_POSITION = 56
 | -- | -- |
 | .value[0].f32 | x轴位置，单位为px。 |
 | .value[1].f32 | y轴位置，单位为px。 |
-| .value[2]?.i32 | 可选值，对齐方式，参数类型[ArkUI_Alignment](capi-layout-h.md#arkui_alignment)，默认值为ARKUI_ALIGNMENT_TOP_START。该参数从API version 21开始支持。 |
-| .value[3]?.i32 | 可选值，布局方向，参数类型[ArkUI_Direction](capi-layout-h.md#arkui_direction)，默认值为ARKUI_DIRECTION_AUTO。多数场景下建议设置为AUTO，由系统自动处理布局方向；若需要固定方向，可设置为LTR或RTL。该参数从API version 21开始支持。 |
+| .value[2].?i32 | 可选值，对齐方式，参数类型[ArkUI_Alignment](capi-layout-h.md#arkui_alignment)，默认值为ARKUI_ALIGNMENT_TOP_START。该参数从API version 21开始支持。 |
+| .value[3].?i32 | 可选值，布局方向，参数类型[ArkUI_Direction](capi-layout-h.md#arkui_direction)，默认值为ARKUI_DIRECTION_AUTO。多数场景下建议设置为AUTO，由系统自动处理布局方向；若需要固定方向，可设置为LTR或RTL。该参数从API version 21开始支持。 |
 
 **返回：**
 
@@ -205,6 +205,12 @@ NODE_UNIQUE_ID = 95
 **起始版本：** 12
 
 **废弃版本：** 从API version 12开始支持，从API version 20开始废弃。建议使用[OH_ArkUI_NodeUtils_GetNodeUniqueId](capi-native-node-h.md#oh_arkui_nodeutils_getnodeuniqueid)替代。
+
+**返回：**
+
+| 类型| 说明|
+| -- | -- |
+| .value[0].i32 | 组件标识ID。|
 
 ## NODE_CLICK_DISTANCE
 

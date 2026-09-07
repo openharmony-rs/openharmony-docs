@@ -6,9 +6,9 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=87516eb2d53d74e50d8d0d5e2de34178ba62e0e2 translatedAt=2026-08-13T03:11:00.884Z pushedAt=2026-08-13T07:35:04.696Z -->
+<!-- md-trans-meta sourceCommit=b0e965054b682272b6c9e3890a6020b1129a6551 translatedAt=2026-08-22T02:17:15.332Z pushedAt=2026-08-22T07:06:12.650Z -->
 
-By default, notification messages support cross-device collaboration. If an app has already implemented cross-device collaboration through the distributed communication capability (for example, SMS notification messages are synchronized by the SMS app itself to devices such as wearables, tablets, and PCs/2-in-1 devices), you need to manage the devices that collaborate on distributed notifications to avoid duplicate delivery of notification messages on different devices.
+By default, notification messages are subject to [cross-device collaboration](notification-glossary.md#cross-device-collaboration). If an application has implemented cross-device collaboration through the distributed communication capability (for example, SMS notification messages are synchronized by the SMS application itself to devices such as wearables, tablets, and PCs/2-in-1 devices), the collaborative devices of [distributed notification](notification-glossary.md#distributed-notification) must be managed to prevent notification messages from being repeatedly sent on different devices.
 
 Since API version 18, a system application is supported to publish notifications in the following manners:
 
@@ -37,7 +37,7 @@ Since API version 18, a system application is supported to publish notifications
     import { BusinessError } from '@kit.BasicServicesKit';
     ```
 
-2. Set the manner for publishing a notification.
+2. Manage the [cross-device collaboration](notification-glossary.md#cross-device-collaboration) of notification messages.
 
   - Publish the notification only on the current device.
 

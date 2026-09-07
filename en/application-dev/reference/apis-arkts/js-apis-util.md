@@ -1,28 +1,30 @@
 # @ohos.util (util)
+
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=314415969ba967fe32041b2e695bd9c6c74bcafd translatedAt=2026-08-25T13:15:21.509Z pushedAt=2026-08-26T11:12:59.132Z -->
 
-The util module provides common utility functions, such as [TextEncoder](#textencoder) and [TextDecoder](#textdecoder) for string encoding and decoding, [RationalNumber<sup>8+</sup>](#rationalnumber8) for rational number operations, [LRUCache<sup>9+</sup>](#lrucache9) for cache management, [ScopeHelper<sup>9+</sup>](#scopehelper9) for range determination, [Base64Helper<sup>9+</sup>](#base64helper9) for Base64 encoding and decoding, [types<sup>8+</sup>](#types8) for built-in object type check, and [Aspect<sup>11+</sup>](#aspect11) for instrumentation and replacement on methods.
+This module mainly provides common utility functions, implementing string encoding and decoding ([TextEncoder](#textencoder), [TextDecoder](#textdecoder)), rational number operations ([RationalNumber<sup>8+</sup>](#rationalnumber8)), buffer management ([LRUCache<sup>9+</sup>](#lrucache9)), range checking ([ScopeHelper<sup>9+</sup>](#scopehelper9)), Base64 encoding and decoding ([Base64Helper<sup>9+</sup>](#base64helper9)), built-in object type checking ([types<sup>8+</sup>](#types8)), method instrumentation and replacement ([Aspect<sup>11+</sup>](#aspect11)), virtual machine debugging capabilities ([ArkTSVM<sup>23+</sup>](#arktsvm23)), binary stream decoding ([StringDecoder<sup>12+</sup>](#stringdecoder12)), and heap memory threshold configuration ([HeapMemoryThreshold<sup>24+</sup>](#heapmemorythreshold24)). In addition, it provides utility functions such as obtaining the hash value of an object ([util.getHash<sup>12+</sup>](#utilgethash12)) and obtaining the main thread stack trace information ([util.getMainThreadStackTrace<sup>20+</sup>](#utilgetmainthreadstacktrace20)).
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
 
 ## Modules to Import
 
 ```ts
 import { util } from '@kit.ArkTS';
 ```
+
 ## util.format<sup>9+</sup>
 
 format(format: string,  ...args: Object[]): string
 
-Formats a string by replacing the placeholders in it.
+Uses a styled string to output the input content in a specific format, suitable for scenarios such as log output and user interface text formatting.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -33,21 +35,13 @@ Formats a string by replacing the placeholders in it.
 | Name | Type    | Mandatory| Description          |
 | ------- | -------- | ---- | -------------- |
 | format  | string   | Yes  | Format string. This string contains zero or more placeholders, which specify the position and format of the arguments to be inserted.|
-| ...args | Object[] | No  | Data used to replace the placeholders in **format**. If **null** is passed in, the first argument is returned by default.|
+| ...args | Object[] | No | Data used to replace the placeholders in the format parameter. When this parameter is missing, the formatted string itself is returned directly. |
 
 **Return value**
 
 | Type  | Description             |
 | ------ | -----------------|
 | string | Formatted string.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Format Specifiers**
 
@@ -57,10 +51,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | %d     | Converts a parameter into a decimal integer for all values except **Symbol** and **BigInt**.|
 | %i     | Converts a string into a decimal integer for all values except **Symbol** and **BigInt**.|
 | %f     | Converts a string into a floating point number for all values except **BigInt** and **Symbol**.|
-| %j     | Converts a JavaScript object into a JSON string.|
+| %j     | Serializes a JavaScript object into a JSON string for formatted output. |
 | %o     | Converts a JavaScript object into a string, without containing the prototype chain information of the object.|
 | %O     | Converts a JavaScript object into a string.|
-| %c     | Valid only in the browser. It is ignored in other environments.|
+| %c     | CSS style placeholder, valid only in the browser environment, used to specify the style of formatted output; other environments ignore this placeholder. |
 | %%     | Placeholder for escaping the percent sign.|
 
 **Example**
@@ -121,7 +115,7 @@ Formatted object using %o: { name: 'John',
   address:
   { city: 'New York',
     country: 'USA' } }
-*/
+ */
 const percentage = 80;
 let arg = 'homework';
 formattedString = util.format('John finished %d%% of the %s', percentage, arg);
@@ -133,7 +127,7 @@ console.info(formattedString);
 
 errnoToString(errno: number): string
 
-Obtains detailed information about a system error code.
+Obtains the detailed information corresponding to a system error code. It is suitable for converting a numeric error code into a readable description when a system call fails, helping developers quickly locate and troubleshoot system-level errors. It is commonly used for error log recording and error prompt display.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -149,15 +143,7 @@ Obtains detailed information about a system error code.
 
 | Type  | Description                  |
 | ------ | ---------------------- |
-| string | Detailed information about the error code.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| string | Detailed information corresponding to the error code, including readable error description text to help developers locate the problem. |
 
 **Example**
 
@@ -190,9 +176,11 @@ Calls back an asynchronous function. In the callback, the first parameter indica
 
 > **NOTE**
 >
-> - **original** must be an asynchronous function. If a non-asynchronous function is passed in, the function is not intercepted, but the error message "callbackWrapper: The type of Parameter must be AsyncFunction" is displayed.
+> This API requires that the **original** parameter must be of the async function type. If the passed parameter is not an async function, no interception is performed, but an error message is output: "callbackWrapper: The type of Parameter must be AsyncFunction".
 >
-> - This API converts an async function that returns a promise into an error-first callback function. The function returned by this API accepts a callback as its second input parameter. When this method is called, the original function is executed first. When the promise of **original** returns **resolve**, the first parameter of the callback function is **null**, and the second parameter is the value of **resolve**. When the promise of **original** returns **reject**, the first parameter of the callback function is an error object, and the second parameter is **null**. When **original** is a function without input parameters, the first input parameter of the function returned by this API must be an invalid placeholder parameter.
+> This API is used to convert an async function that returns a Promise into an error-first callback style function. The function returned by calling this API receives a callback function as the second input parameter. When this method is called, the **original** function is executed first. When the Promise of **original** returns resolve, the first parameter of the input callback function is **null**, and the second parameter is the resolved value. When the Promise of **original** returns reject, the first parameter of the input callback function is the error object, and the second parameter is **null**.
+>
+> Since the return type of this method is declared as `(err: Object, value: Object) => void`, the TypeScript compiler performs parameter count validation according to this declaration. Therefore, when **original** is a function with no input parameters, the first input parameter of the function returned by this API must be an invalid placeholder parameter. When **original** is a function with multiple input parameters, the function returned by this API currently supports only one input parameter. You can use a container such as an array to pass multiple input parameters (refer to the sample code below).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -202,7 +190,7 @@ Calls back an asynchronous function. In the callback, the first parameter indica
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| original | Function | Yes| Asynchronous function.|
+| original | Function | Yes | Asynchronous function, which requires the function to return a Promise object. The resolve value of this asynchronous function is passed as the second parameter of the callback, and the reject reason is passed as the first parameter of the callback. |
 
 **Return value**
 
@@ -210,33 +198,41 @@ Calls back an asynchronous function. In the callback, the first parameter indica
 | -------- | -------- |
 | (err: Object, value: Object)=&gt;void | Callback function, in which the first parameter **err** indicates the cause of the rejection (the value is **null** if the promise has been resolved) and the second parameter **value** indicates the resolved value.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **Example**
 
 ```ts
+// original is an example of an input parameter
 async function fn(input: string) {
   return input;
 }
 let cb = util.callbackWrapper(fn);
 cb('hello world', (err : Object, ret : string) => {
-  if (err) throw new Error;
+  if (err) throw new Error();
   console.info(ret);
 });
 // Output: hello world
+```
+
+```ts
+// Example of passing multiple arguments to original
+async function fn(args: Array<string | number | Function>) {
+  console.info('args[0]: ' + args[0]); // args[0]: hello world
+  console.info('args[1]: ' + args[1]); // args[1]: 8
+  return args[0];
+}
+let cb = util.callbackWrapper(fn);
+let args: Array<string | number | Function> = ['hello world', 8]
+cb(args, (err : Object, ret : string) => {
+  if (err) throw new Error;
+  console.info(ret); // Output: hello world
+});
 ```
 
 ## util.promisify<sup>9+</sup>
 
 promisify(original: (err: Object, value: Object) =&gt; void): Function
 
-Receives a function that uses the error-first callback mode, that is, uses `(err, value) => callback` as the last parameter, and uses a promise to return the result.
+Receives a function that adopts the "error-first" callback pattern, that is, a function with `(err, value) => callback` as the last parameter, and returns its Promise function. It is suitable for converting legacy callback-style asynchronous APIs into Promise style, so that they can be called using the async/await syntax, thereby simplifying asynchronous code writing.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -252,15 +248,7 @@ Receives a function that uses the error-first callback mode, that is, uses `(err
 
 | Type| Description|
 | -------- | -------- |
-| Function | Promise function.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| Function | Returns a Promise function that resolves to the callback's value when the original callback function executes successfully, and rejects with an error object when the original callback function fails. |
 
 **Example**
 
@@ -294,21 +282,13 @@ Uses a secure random number generator to generate a random universally unique id
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| entropyCache | boolean | No| Whether to use a cached UUID. The value **true** means to use a cached UUID, and **false** means the opposite. The default value is **true**.|
+| entropyCache | boolean | No | Whether to use cached UUIDs. true means cached UUIDs are used to improve performance (up to 128 UUIDs are cached; after the cache is exhausted, UUIDs are regenerated to ensure randomness). false means cached UUIDs are not used. The default value is true. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
 | string | A string representing the UUID generated.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
 **Example**
 
@@ -322,7 +302,7 @@ console.info("RFC 4122 Version 4 UUID:" + uuid);
 
 generateRandomBinaryUUID(entropyCache?: boolean): Uint8Array
 
-Uses a secure random number generator to generate a random universally unique identifier (UUID) of RFC 4122 version 4.
+Uses a cryptographically secure random number generator to generate a random RFC 4122 version 4 UUID of the Uint8Array type. To improve performance, this API uses a cache by default, that is, the input parameter is **true**, and up to 128 random UUIDs can be cached. When the 128 UUIDs in the cache are exhausted, they are regenerated to ensure the randomness of the UUIDs. To disable the cache, set the input parameter to **false**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -340,14 +320,6 @@ Uses a secure random number generator to generate a random universally unique id
 | -------- | -------- |
 | Uint8Array | A Uint8Array value representing the UUID generated.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
-
 **Example**
 
 ```ts
@@ -360,7 +332,7 @@ console.info(JSON.stringify(uuid));
 
 parseUUID(uuid: string): Uint8Array
 
-Converts a UUID of the string type generated by **generateRandomUUID** to a UUID generated by **generateRandomBinaryUUID**, as described in RFC 4122.
+Converts the string-type UUID generated by generateRandomUUID into the UUID generated by [util.generateRandomBinaryUUID](#utilgeneraterandombinaryuuid9), conforming to the RFC 4122 version specification.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -370,21 +342,20 @@ Converts a UUID of the string type generated by **generateRandomUUID** to a UUID
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| uuid | string | Yes| A string representing the UUID.|
+| uuid | string | Yes | UUID string, which must comply with the RFC 4122 version specification. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Uint8Array | A Uint8Array value representing the UUID parsed. If the parsing fails, **SyntaxError** is thrown.|
+| Uint8Array | Returns a Uint8Array representing this UUID. If parsing fails, an exception is thrown with error code 10200002. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | 10200002 | Invalid uuid string. |
 
 **Example**
@@ -418,7 +389,7 @@ Formats a string by replacing the placeholders in it.
 
 | Type| Description|
 | -------- | -------- |
-| string | String containing the formatted values.|
+| string | String formatted according to the specified format, containing parameter values processed based on the format specifiers. |
 
 **Example**
 
@@ -427,7 +398,6 @@ let res = util.printf("%s", "hello world!");
 console.info(res);
 // Output: hello world!
 ```
-
 
 ## util.getErrorString<sup>(deprecated)</sup>
 
@@ -478,14 +448,13 @@ Receives a function that uses the error-first callback mode, that is, uses `(err
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| original | (err: Object, value: Object) =&gt; void | Yes| Asynchronous function.|
+| original | (err: Object, value: Object) =&gt; void | Yes | A function that adopts the error-first callback pattern. The first parameter err is the rejection reason, and the second parameter value is the resolved value. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
 | Object | Promise in the error-first style (that is, (err, value) => ... is called as the last parameter).|
-
 
 ## util.getHash<sup>12+</sup>
 
@@ -503,21 +472,13 @@ If no hash value has been obtained, a random hash value is generated, saved to t
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| object | object | Yes| Object whose hash value is to be obtained.|
+| object | object | Yes | Non-primitive type object for which the hash value needs to be obtained. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| number | Hash value.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| number | Hash value of the object. A random value is returned when it is obtained for the first time, and the returned value remains unchanged for multiple acquisitions of the same object. |
 
 **Example**
 
@@ -560,15 +521,35 @@ console.info(stack);
 // Obtain the stack trace information of the main thread.
 ```
 
+## MultithreadingDetectionOptions
+
+MultithreadingDetectionOptions is an interface class used to configure the behavior parameters of the [ArkTSVM.setMultithreadingDetectionEnabled](#setmultithreadingdetectionenabled23) function.
+
+**Since**: 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Attributes:**
+
+| Name | Type | Read-Only | Optional | Description |
+| -------- | -------- | -------- | -------- | -------- |
+| abort  | boolean  | No       | Yes       | Controls whether to crash when a multithreading issue is detected. Passing true means crashing immediately when a multithreading issue is detected, which is suitable for scenarios where multithreading issues need to be exposed quickly during development and debugging. Passing false means not crashing but only reporting fault information, which is suitable for scenarios where service availability needs to be maintained in production environments. The default value is true.|
+| frequency  | number  | No       | Yes       | Granularity of multithreading safety detection, indicating how many function calls occur before a multithreading safety detection is performed. A larger value means a lower sampling frequency and less impact on application performance, but some multithreading safety usage issue scenarios may be missed. The range is [100, 2147483647], and the default value is 100.|
+| interval  | number  | No       | Yes       | Fault reporting time interval of multithreading safety detection. It takes effect only when not crashing. The range is [0, 1440], the unit is minutes, and the default value is 5 minutes. (It is not recommended to set it below 5 minutes, as it has a severe performance impact.)|
+
 ## ArkTSVM<sup>23+</sup>
 
-A class that provides VM maintenance and test capabilities for developers.
+ArkTSVM is a class that provides developers with diagnostic and maintenance capabilities for the virtual machine, including multithreading safety detection, heap memory information acquisition, memory leak prevention, global reference tracking, and heap memory warning.
 
 ### setMultithreadingDetectionEnabled<sup>23+</sup>
 
-static setMultithreadingDetectionEnabled(enabled: boolean): void
+static setMultithreadingDetectionEnabled(enabled: boolean, options?: MultithreadingDetectionOptions): void
 
-Sets whether to enable multithreading detection. When **enabled** is set to **true**, the detection is turned on, and multithreading-related details will be included in the cppcrash files generated for multithreading issues. When **enabled** is set to **false**, the detection is turned off, and no such details will be present in the corresponding cppcrash files.
+If enabled is true, it is enabled; if false, it is disabled. When multithreading safety detection is enabled, the C/C++ crash dump file (cppcrash file) of multithreading issues will contain multithreading information (such as thread ID and lock status). When multithreading safety detection is disabled, the C/C++ crash dump file (cppcrash file) will not contain multithreading information.
+
+options is used to configure the behavior parameters of multithreading safety detection.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -578,18 +559,311 @@ Sets whether to enable multithreading detection. When **enabled** is set to **tr
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| enabled  | boolean  | Yes      | Controls whether to enable multithreading detection. **true** means enabling the detection, and **false** means disabling it.|
+| enabled  | boolean  | Yes       | Controls whether to enable or disable the multithreading safety detection switch. true means enabled, and false means disabled.|
+| options  | [MultithreadingDetectionOptions](#multithreadingdetectionoptions)  | No       | Parameter configuration for multithreading safety detection. When this parameter is not set, the corresponding properties take the default values of [MultithreadingDetectionOptions](#multithreadingdetectionoptions). **Initial Version:** 26.0.0|
 
 **Example**
 
 ```ts
 import { util } from '@kit.ArkTS';
 
-// Enable multithreading detection.
+// Enable the thread safety detection switch.
 util.ArkTSVM.setMultithreadingDetectionEnabled(true);
-// Disable multithreading detection.
+// Disable the thread safety detection switch.
 util.ArkTSVM.setMultithreadingDetectionEnabled(false);
+// Set the crash behavior.
+util.ArkTSVM.setMultithreadingDetectionEnabled(true, { abort: false });
+// Adjust the detection granularity.
+util.ArkTSVM.setMultithreadingDetectionEnabled(true, { frequency: 200 });
+// Adjust the reporting interval.
+util.ArkTSVM.setMultithreadingDetectionEnabled(true, { interval: 10 });
+// Set the three parameters at the same time.
+util.ArkTSVM.setMultithreadingDetectionEnabled(true, {
+  abort: false,
+  frequency: 500,
+  interval: 60
+});
 ```
+
+### getAllVMHeapMemoryInfo<sup>24+</sup>
+
+static getAllVMHeapMemoryInfo(): Promise<HeapMemoryInfo[]>
+
+Obtains the heap memory information of all VM threads, including thread ID, thread name, heap type, and heap object size. This is applicable to scenarios such as memory leak troubleshooting and memory usage analysis. A Promise is used for asynchronous callback.
+
+The heap obtained through this API contains two types: the local heap, which is the VM heap exclusive to each ArkTS thread in the application process; and the shared heap, which is the VM heap shared by all ArkTS threads in the application process.
+
+> **NOTE**
+>
+> When this API is executed, all VM threads are paused to obtain memory information. Because it needs to wait for all VM threads to pause, calling this API may take a long time in high-load scenarios.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| Promise<[HeapMemoryInfo](js-apis-util.md#heapmemoryinfo24)[]> | Promise object that resolves to an array of HeapMemoryInfo objects, each containing the thread ID, thread name, heap type, and heap object size. This method can obtain the memory information of both the local heap and the shared heap.|
+
+**Example**
+
+```ts
+import { util } from '@kit.ArkTS';
+
+util.ArkTSVM.getAllVMHeapMemoryInfo().then(
+  result => {
+    result.forEach(info => {
+      console.info(info.threadId?.toString());
+      console.info(info.threadName);
+      console.info(info.heapType);
+      console.info(info.heapObjectSize.toString());
+    })
+  }
+);
+```
+
+### enableLocalHandleDetection<sup>24+</sup>
+
+static enableLocalHandleDetection(): void
+
+When the asynchronous event loop mechanisms of EventHandler and libuv execute asynchronous tasks, the tasks are no longer executed within the management scope of the current handle scope, and the created napi_value is not automatically reclaimed. If developers do not add a scope in the task callback, a memory leak will occur. After this API is called, it ensures that tasks of these two mechanisms are executed within the scope, thereby avoiding memory leaks.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Example**
+
+``` C++
+// napi_init.cpp C++ example code
+#include "napi/native_api.h"
+#include "uv.h"
+
+static napi_value CreateObject(napi_env env, napi_callback_info info)
+{
+    uv_loop_s* loop = nullptr;
+    napi_status status = napi_get_uv_event_loop(env, &loop);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "napi_get_uv_event_loop fail");
+        return nullptr;
+    }
+    uv_work_t* work = new uv_work_t;
+    work->data = env;
+    int ret = uv_queue_work(loop, work,
+        [](uv_work_t* work){},
+        [](uv_work_t* work, int status){
+            napi_env env = static_cast<napi_env>(work->data);
+            for (int i = 0; i < 1000; i++) {
+                napi_value obj = nullptr;
+                // Not adding a scope in the asynchronous mechanism provided by libuv causes a memory leak
+                napi_create_object(env, &obj);
+            }
+            delete work;
+        }
+    );
+    if (ret != 0) {
+        delete work;
+    }
+    return nullptr;
+}
+```
+
+Add the following dynamic link library to **CMakeLists.txt**:
+
+```txt
+libuv.so
+```
+
+``` TypeScript
+// index.d.ts interface declaration
+export const createObject: () => void;
+```
+
+``` TypeScript
+// Index.ets ArkTS example code
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import testNapi from 'libentry.so';
+import { util } from '@kit.ArkTS';
+
+try {
+  // If the LocalHandle memory leak fallback mechanism is not enabled, memory overflow may occur. After this mechanism is enabled, the system automatically reclaims the napi_value created in EventHandler and libuv asynchronous tasks
+  util.ArkTSVM.enableLocalHandleDetection();
+  testNapi.createObject();
+  hilog.info(0x0000, 'testTag', 'Test Node-API createObject success');
+} catch (error) {
+  hilog.error(0x0000, 'testTag', 'Test Node-API createObject failed error: %{public}s', error.message);
+}
+```
+
+**Possible issues:**
+
+If an object that previously caused a memory leak continues to be used, after the enableLocalHandleDetection API is called, the system reclaims the memory-leaked object. Continuing to use this object will turn the memory leak problem into a stability problem.
+
+``` C++
+napi_value global_js_object;
+napi_value dangerous_function(napi_env env, napi_callback_info info) {
+    napi_value js_obj;
+    napi_create_object(env, &js_obj);
+    global_js_object = js_obj; // Stored directly in a global variable, and released after the LocalHandle memory leak fallback mechanism is enabled
+    return nullptr;
+}
+```
+
+### setTrackGlobalRef
+
+static setTrackGlobalRef(enable: boolean): void
+
+Enables or disables tracking of the association between napi_ref and global objects. After tracking is enabled, the global object nodes in the heap snapshot will contain the address information of napi_ref. After tracking is disabled (enable is false), tracking stops, and the association between napi_ref and global objects is no longer displayed in the heap snapshot.
+
+After tracking is enabled, the virtual machine additionally records the association between napi_ref and global objects, which may incur certain memory and performance overhead. When debugging is not required, it is recommended to call `util.ArkTSVM.setTrackGlobalRef(false)` to disable tracking.
+
+The switch of this API is process-level, and all threads in the process share the same switch state. After this API is called in any thread to set the switch, it takes effect for all threads in the process.
+
+For details about napi_ref, see the [napi_ref](../../napi/use-napi-life-cycle.md#napi_ref) usage guide.
+
+**Since**: 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| enable | boolean | Yes | Whether to enable tracking. true indicates enabling tracking (which may incur certain memory and performance overhead), and false indicates disabling tracking. It is recommended to set this parameter to false when debugging is not required to avoid performance overhead. |
+
+**Example**
+
+``` C++
+// napi_init.cpp C++ example code
+#include "napi/native_api.h"
+
+static napi_value CreateGlobalRef(napi_env env, napi_callback_info info)
+{
+    napi_value js_obj = nullptr;
+    napi_create_object(env, &js_obj);
+    // Create an napi_ref and associate it with the global handle
+    napi_ref ref = nullptr;
+    napi_create_reference(env, js_obj, 1, &ref);
+    // After setTrackGlobalRef is enabled, the heap snapshot contains the native reference address information corresponding to this ref
+    return nullptr;
+}
+```
+
+``` TypeScript
+// Index.d.ts interface declaration
+export const createGlobalRef: () => void;
+```
+
+``` TypeScript
+// Index.ets ArkTS example code
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import testNapi from 'libentry.so';
+import { util } from '@kit.ArkTS';
+
+try {
+  // Enable tracking of the association between napi_ref and the global handle. After it is enabled, the heap snapshot contains the native reference address information
+  util.ArkTSVM.setTrackGlobalRef(true);
+  testNapi.createGlobalRef();
+  hilog.info(0x0000, 'testTag', 'Test Node-API createGlobalRef success');
+} catch (error) {
+  hilog.error(0x0000, 'testTag', 'Test Node-API createGlobalRef failed error: %{public}s', error.message);
+}
+```
+
+### onVMHeapMemoryPressure<sup>24+</sup>
+
+static onVMHeapMemoryPressure(callback: Callback\<string\>, heapMemoryThreshold: HeapMemoryThreshold): boolean
+
+Registers a callback function. After the VM main thread completes garbage collection, if the heap memory exceeds the warning threshold, the callback is triggered. This is applicable to proactive memory management (triggering resource cleanup when memory pressure is high), OOM prevention, and other scenarios.
+
+The VM determines whether the memory warning threshold is reached by counting the size of surviving objects. Due to memory fragmentation and floating garbage in the VM heap, it cannot be guaranteed that the callback will definitely be triggered before OOM.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Utils.Lang
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| callback | Callback\<string\> | Yes | Callback function triggered when the memory reaches the warning threshold after garbage collection. The string parameter indicates the type of the memory pressure event. Currently, there are three event types: "LocalHeapMemPressure", "SharedHeapMemPressure", and "ProcessHeapMemPressure". |
+| heapMemoryThreshold | [HeapMemoryThreshold](#heapmemorythreshold24) | Yes | Heap memory warning threshold configuration, set as a percentage in the range [70, 95]. Values outside this range are automatically clamped to the valid interval. |
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| boolean | Returns true if registration succeeds, and false if it is not called on the main thread or the callback is already registered. |
+
+**Example**
+
+```ts
+import { util } from '@kit.ArkTS';
+
+let callback = (event: string) => {
+  console.info('Memory pressure event: ' + event);
+};
+
+let threshold: util.HeapMemoryThreshold = {
+  localHeapThreshold: 75,
+  sharedHeapThreshold: 80,
+  processHeapThreshold: 85
+};
+
+let result : boolean = util.ArkTSVM.onVMHeapMemoryPressure(callback, threshold);
+console.info('Registration result: ' + result);
+```
+
+### offVMHeapMemoryPressure<sup>24+</sup>
+
+static offVMHeapMemoryPressure(): void
+
+Cancels the registered memory pressure callback function. This API must be called in the main thread.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Example**
+
+```ts
+import { util } from '@kit.ArkTS';
+
+util.ArkTSVM.offVMHeapMemoryPressure();
+```
+
+## HeapMemoryThreshold<sup>24+</sup>
+
+Heap memory warning threshold configuration, used to specify the heap memory warning threshold that triggers the callback.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Utils.Lang
+
+| Name | Type | Read-Only | Optional | Description |
+| -------- | -------- | ---- | ---- | ---- |
+| localHeapThreshold | number | No | Yes | Local heap memory warning threshold configuration, set as a percentage in the range [70, 95]. Values out of range are automatically clamped to the valid range. If not set, the local heap is not monitored. |
+| sharedHeapThreshold | number | No | Yes | Shared heap memory warning threshold configuration, set as a percentage in the range [70, 95]. Values out of range are automatically clamped to the valid range. If not set, the shared heap is not monitored. |
+| processHeapThreshold | number | No | Yes | Process total VM heap memory warning threshold configuration, set as a percentage in the range [70, 95]. Values out of range are automatically clamped to the valid range. If not set, the process total VM heap size is not monitored. |
+
+## HeapMemoryInfo<sup>24+</sup>
+
+Describes the memory information of the local heap or shared heap, including detailed data such as the thread identifier and heap memory size.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Utils.Lang
+
+| Name | Type | Read-Only | Optional | Description |
+| -------- | -------- | -------- | -------- | -------- |
+| threadId | number | No | Yes | Thread ID. If this memory information describes the local heap, this value is an integer representing the running thread ID; if this memory information describes the shared heap, this value is **undefined**.|
+| threadName | string | No | Yes | Thread name. If this memory information describes the local heap, this value is a string representing the running thread name; if this memory information describes the shared heap, this value is **undefined**.|
+| heapType | string | No | No | Heap type. Currently there are two values: "local" indicates that the heap type is the local heap, and "shared" indicates that the heap type is the shared heap.|
+| heapObjectSize | number | No | No | Heap object size, in KB (an integer rounded up).|
 
 ## TextDecoderOptions<sup>11+</sup>
 
@@ -626,7 +900,7 @@ Defines whether decoding follows data blocks.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | ---- | ---- | -------- |
-| stream | boolean | No| Yes| Whether to allow data blocks in subsequent **decodeWithStream()**. If data is processed in blocks, set this parameter to **true**. If this is the last data block to process or data is not divided into blocks, set this parameter to **false**. The default value is **false**.|
+| stream | boolean | No | Yes | Whether to follow additional data blocks in subsequent [decodeWithStream](#decodewithstreamdeprecated) calls. Set to true if data is processed in chunks; set to false if the final data is processed without chunking. Defaults to false. |
 
 ## Aspect<sup>11+</sup>
 
@@ -636,7 +910,7 @@ Provides APIs that support Aspect Oriented Programming (AOP). These APIs can be 
 
 static addBefore(targetClass: Object, methodName: string, isStatic: boolean, before: Function): void
 
-Inserts a function before a method of a class object. The inserted function is executed in prior to the original method of the class object.
+Inserts a function before the original method of the specified class object is executed. It is suitable for scenarios such as logging, performance monitoring, and permission verification that require interception before method execution. After the addBefore API is executed, the inserted function logic runs first, and then the original method of the specified class object is executed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -650,14 +924,6 @@ Inserts a function before a method of a class object. The inserted function is e
 | methodName   | string   | Yes  | Name of the method. Read-only methods are not supported.                   |
 | isStatic     | boolean  | Yes  | Whether the method is a static method. The value **true** means a static method, and **false** means an instance method.     |
 | before       | Function | Yes  | Function to insert. If the function carries parameters, then the first parameter is the **this** object, which is the target class object (specified by **targetClass**) if **isStatic** is **true** or the instance object of the method if **isStatic** is **false**; other parameters are the parameters carried in the original method. If the function does not carry any parameter, no processing is performed.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -743,14 +1009,6 @@ Inserts a function after a method of a class object. The final return value is t
 | isStatic     | boolean  | Yes  | Whether the method is a static method. The value **true** means a static method, and **false** means an instance method.     |
 | after        | Function | Yes  | Function to insert. If the function carries parameters, then the first parameter is the **this** object, which is the target class object (specified by **targetClass**) if **isStatic** is **true** or the instance object of the method if **isStatic** is **false**; the second parameter is the return value of the original method (**undefined** if the original method does not have a return value); other parameters are the parameters carried by the original method. If the function does not carry any parameter, no processing is performed. |
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **Example**
 
 ```ts
@@ -788,7 +1046,7 @@ console.info('result is ' + result);
 console.info('asp.msg is ' + asp.msg);
 // Output: asp.msg is msg111
 
-// Examples of addBefore() and addAfter()
+// Example of adding pre- and post-instrumentation separately
 class AroundTest {
   foo(arg: string) {
     console.info('execute foo with arg ' + arg);
@@ -811,7 +1069,7 @@ util.Aspect.addAfter(AroundTest, 'foo', false, () => {
 
 static replace(targetClass: Object, methodName: string, isStatic: boolean, instead: Function) : void
 
-Replaces a method of a class object with another function. After the replacement, only the new function logic is executed. The final return value is the return value of the new function.
+Replaces the original method of the specified class with another function. It is suitable for scenarios such as behavior replacement, compatibility adaptation, and conditional execution that require completely changing the method implementation logic. After the replace API is executed, when the specified class method is called, only the replaced logic is executed. Finally, the return value of the replacement function is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -825,14 +1083,6 @@ Replaces a method of a class object with another function. After the replacement
 | methodName   | string   | Yes  | Name of the method. Read-only methods are not supported.                 |
 | isStatic     | boolean  | Yes  | Whether the method is a static method. The value **true** means a static method, and **false** means an instance method.      |
 | instead      | Function | Yes  | Function to be used replacement. If the function carries parameters, then the first parameter is the **this** object, which is the target class object (specified by **targetClass**) if **isStatic** is **true** or the instance object of the method if **isStatic** is **false**; other parameters are the parameters carried in the original method. If the function does not carry any parameter, no processing is performed.  |
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -885,13 +1135,13 @@ Provides APIs to decode byte arrays into strings. It supports multiple formats, 
 | -------- | -------- | -------- | -------- | -------- |
 | encoding | string | Yes| No| Encoding format.<br>The following formats are supported: utf-8, ibm866, iso-8859-2, iso-8859-3, iso-8859-4, iso-8859-5, iso-8859-6, iso-8859-7, iso-8859-8, iso-8859-8-i, iso-8859-10, iso-8859-13, iso-8859-14, iso-8859-15, koi8-r, koi8-u, macintosh, windows-874, windows-1250, windows-1251, windows-1252, windows-1253, windows-1254, windows-1255, windows-1256, windows-1257, windows-1258, x-mac-cyrillic, gbk, gb18030, big5, euc-jp, iso-2022-jp, shift_jis, euc-kr, utf-16be, utf-16le, gb2312, and iso-8859-1.|
 | fatal | boolean | Yes| No| Whether to display fatal errors. The value **true** means to display fatal errors, and **false** means the opposite.|
-| ignoreBOM | boolean | Yes| No| Whether to ignore the byte order marker (BOM). The default value is **false**, which indicates that the result contains the BOM.|
+| ignoreBOM | boolean | Yes | No | Whether to ignore the BOM (byte order marker). The value true means to ignore the BOM, and false means the decoding result contains the BOM. The default value is false. |
 
 ### constructor<sup>9+</sup>
 
 constructor()
 
-A constructor used to create a **TextDecoder** object.
+Constructor of TextDecoder. Creates a TextDecoder instance with the default encoding format 'utf-8', with fatal defaulting to false and ignoreBOM defaulting to false.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -905,6 +1155,7 @@ let retStr = textDecoder.encoding;
 console.info('retStr = ' + retStr);
 // Output: retStr = utf-8
 ```
+
 ### create<sup>9+</sup>
 
 static create(encoding?: string, options?: TextDecoderOptions): TextDecoder
@@ -919,22 +1170,14 @@ Creates a **TextDecoder** object. It provides the same function as the deprecate
 
 | Name  | Type  | Mandatory| Description                                            |
 | -------- | ------ | ---- | ------------------------------------------------ |
-| encoding | string | No  | Encoding format. The default format is **'utf-8'**.                     |
-| options  | [TextDecoderOptions](#textdecoderoptions11) | No  | Decoding-related options, which include **fatal** and **ignoreBOM**.|
+| encoding | string | No   | Encoding format. For supported formats, see [encoding](#properties). The default value is 'utf-8'.                      |
+| options  | [TextDecoderOptions](#textdecoderoptions11) | No   | Decoding-related option parameters, which include two attributes: fatal and ignoreBOM. When this parameter is not set, each attribute takes its default value. |
 
 **Return value**
 
 | Type      | Description              |
 | ---------- | ------------------ |
-| [TextDecoder](#textdecoder) | **TextDecoder** object created.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| [TextDecoder](#textdecoder) | Returns a TextDecoder object used to decode a byte array into a string in the specified encoding format. |
 
 **Example**
 
@@ -955,6 +1198,10 @@ decodeToString(input: Uint8Array, options?: DecodeToStringOptions): string
 
 Decodes the input content into a string.
 
+> **Note**
+>
+> This API parses bytes with the value \0 normally and converts them to the Unicode character \u0000 (null character), without causing decoding interruption or errors.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Utils.Lang
@@ -964,7 +1211,7 @@ Decodes the input content into a string.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | input | Uint8Array | Yes| Uint8Array object to decode.|
-| options | [DecodeToStringOptions](#decodetostringoptions12) | No| Decoding-related options. The default value is **undefined**.|
+| options | [DecodeToStringOptions](#decodetostringoptions12) | No | Decoding-related option parameters used to control the decoding behavior. Pass this parameter and set stream to true when data needs to be processed in chunks in streaming mode while preserving incomplete byte sequences. If not passed, it defaults to undefined, meaning incomplete byte sequences are not preserved and decoding is performed directly in the current call. |
 
 **Return value**
 
@@ -972,17 +1219,10 @@ Decodes the input content into a string.
 | -------- | -------- |
 | string | String obtained.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **Example**
 
 ```ts
+// Example code for parsing bytes that do not contain \0
 let textDecoderOptions: util.TextDecoderOptions = {
   fatal: false,
   ignoreBOM : true
@@ -995,6 +1235,25 @@ let uint8 = new Uint8Array([0xEF, 0xBB, 0xBF, 0x61, 0x62, 0x63]);
 let retStr = textDecoder.decodeToString(uint8, decodeToStringOptions);
 console.info("retStr = " + retStr);
 // Output: retStr = abc
+```
+
+```ts
+// Example code for parsing bytes containing \0
+let textDecoderOptions: util.TextDecoderOptions = {
+  fatal: false,
+  ignoreBOM : true
+}
+let decodeToStringOptions: util.DecodeToStringOptions = {
+  stream: false
+}
+let textDecoder = util.TextDecoder.create('utf-8', textDecoderOptions);
+let uint8 = new Uint8Array([97, 98, 0, 99]);
+let retStr = textDecoder.decodeToString(uint8, decodeToStringOptions);
+console.info("retStr = " + retStr);
+// Output: retStr = abc
+let retJson = JSON.stringify(retStr)
+console.info("retJson = " + retJson);
+// Output result: retJson = ab/u0000c
 ```
 
 ### decodeWithStream<sup>(deprecated)</sup>
@@ -1016,21 +1275,13 @@ Decodes the input content into a string. If **input** is an empty array, **undef
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | input | Uint8Array | Yes| Uint8Array object to decode.|
-| options | [DecodeWithStreamOptions](#decodewithstreamoptions11) | No| Decoding-related options.|
+| options | [DecodeWithStreamOptions](#decodewithstreamoptions11) | No | Decoding-related option parameters. This parameter does not need to be filled in; when omitted, each property takes its default value. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
 | string | String obtained.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -1073,7 +1324,7 @@ A constructor used to create a **TextDecoder** object.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | encoding | string | No| Encoding format. The default format is **'utf-8'**.|
-| options | { fatal?: boolean; ignoreBOM?: boolean } | No| Decoding-related options, which include **fatal** and **ignoreBOM**.|
+| options | { fatal?: boolean; ignoreBOM?: boolean } | No | Decoding-related option parameters, containing two properties: fatal and ignoreBOM. This parameter does not need to be filled in; when omitted, each property takes its default value false. |
 
   **Table 1** options
 
@@ -1105,7 +1356,7 @@ Decodes the input content into a string.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | input | Uint8Array | Yes| Uint8Array object to decode.|
-| options | { stream?: false } | No| Decoding-related options.|
+| options | { stream?: false } | No | Decoding-related option parameters. If this parameter is not passed, stream defaults to false, meaning it does not follow additional data blocks. |
 
 **Table 2** options
 
@@ -1151,7 +1402,6 @@ Encrypted information, including the number of read characters and the number of
 | read     | number  | Yes| No|Number of characters that have been read.|
 | written | number   | Yes|No|Number of bytes that have been written. |
 
-
 ## TextEncoder
 
 Provides APIs to encode strings into byte arrays. Multiple encoding formats are supported.
@@ -1168,12 +1418,11 @@ When **TextEncoder** is used for encoding, the number of bytes occupied by a cha
 | -------- | -------- | -------- | -------- | -------- |
 | encoding | string | Yes| No|  Encoding format.<br>The following formats are supported: utf-8, gb2312, gb18030, ibm866, iso-8859-1, iso-8859-2, iso-8859-3, iso-8859-4, iso-8859-5, iso-8859-6, iso-8859-7, iso-8859-8, iso-8859-8-i, iso-8859-10, iso-8859-13, iso-8859-14, iso-8859-15, koi8-r, koi8-u, macintosh, windows-874, windows-1250, windows-1251, windows-1252, windows-1253, windows-1254, windows-1255, windows-1256, windows-1257, windows-1258, gbk, big5, euc-jp, iso-2022-jp, shift_jis, euc-kr, x-mac-cyrillic, utf-16be, and utf-16le.<br>The default value is **'utf-8'**.|
 
-
 ### constructor
 
 constructor()
 
-A constructor used to create a **TextEncoder** object.
+Constructor of TextEncoder. Creates a TextEncoder instance with the default encoding format 'utf-8'.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1199,15 +1448,7 @@ A constructor used to create a **TextEncoder** object.
 
 | Name| Type| Mandatory| Description|
 | ----- | ---- | ---- | ---- |
-| encoding | string | No| Encoding format. The default format is **'utf-8'**.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| encoding | string | No | Encoding format. For supported formats, see [encoding](#properties-2). The default value is 'utf-8'. |
 
 **Example**
 
@@ -1235,15 +1476,7 @@ Creates a **TextEncoder** object.
 
 | Type      | Description              |
 | ---------- | ------------------ |
-| [TextEncoder](#textencoder) | **TextEncoder** object.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| [TextEncoder](#textencoder) | Returns a TextEncoder object used to encode a string into a byte array in the specified encoding format. |
 
 **Example**
 
@@ -1271,15 +1504,7 @@ Encodes the input content into a Uint8Array object.
 
 | Type      | Description              |
 | ---------- | ------------------ |
-| Uint8Array | Uint8Array object obtained.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| Uint8Array | Returns the encoded Uint8Array object. When the input parameter is an empty string, undefined is returned. |
 
 **Example**
 
@@ -1312,14 +1537,6 @@ Encodes the input content and stores the result into a Uint8Array object.
 | Type      | Description              |
 | ---------- | ------------------ |
 | [EncodeIntoUint8ArrayInfo](#encodeintouint8arrayinfo11) | Object obtained. **read** indicates the number of encoded characters, and **written** indicates the number of bytes in the encoded characters.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -1376,7 +1593,7 @@ console.info("uint8 = " + uint8);
 
 encode(input?: string): Uint8Array
 
-Encodes the input content in to a Uint8Array object.
+Encodes the input string and outputs the corresponding Uint8Array byte array.
 
 > **NOTE**
 >
@@ -1407,13 +1624,13 @@ console.info("result = " + result);
 
 ## RationalNumber<sup>8+</sup>
 
-Provides APIs to compare rational numbers and obtain numerators and denominators. For example, the **toString()** API can be used to convert a rational number into a string.
+RationalNumber is mainly used to compare rational numbers and provides methods for obtaining the numerator and denominator. RationalNumber stores rational numbers internally as numerator and denominator, and automatically simplifies the fraction when created. Note that when the denominator is 0, the rational number is represented as Infinity; when both the numerator and denominator are 0, the rational number is represented as NaN (not a number). The [toString()](#tostring8) method can be used to convert a rational number to a string, and this class can be used to conveniently perform various operations on rational numbers.
 
 ### constructor<sup>9+</sup>
 
 constructor()
 
-A constructor used to create a **RationalNumber** object.
+Constructor of RationalNumber, which creates a RationalNumber instance with a default numerator of 0 and denominator of 1.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1450,15 +1667,7 @@ Creates a **RationalNumber** instance with a given numerator and denominator.
 
 | Type| Description|
 | -------- | -------- |
-| [RationalNumber](#rationalnumber8) | **RationalNumber** object obtained.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [RationalNumber](#rationalnumber8) | A RationalNumber object with the given numerator and denominator. |
 
 **Example**
 
@@ -1484,21 +1693,13 @@ Creates a **RationalNumber** object based on the given string.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| rationalString | string | Yes| String used to create the **RationalNumber** object.|
+| rationalString | string | Yes | Rational number string format, for example, "3/4". If a decimal string format is passed in, it is not intercepted but an error message is output. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| [RationalNumber](#rationalnumber8)​ | **RationalNumber** object obtained.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | The type of rationalString must be string. |
+| [RationalNumber](#rationalnumber8) | A RationalNumber object created from the given string. |
 
 **Example**
 
@@ -1527,14 +1728,6 @@ Compares this **RationalNumber** object with another **RationalNumber** object.
 | Type  | Description                                                        |
 | ------ | ------------------------------------------------------------ |
 | number | Returns **0** if the two objects are equal; returns **1** if the given object is less than this object; return **-1** if the given object is greater than this object.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -1570,7 +1763,9 @@ let result = rationalNumber.valueOf();
 console.info("result = " + result);
 // Output: result = 0.5
 ```
+
 You are advised to use the following code snippet for API version 9 and later versions:
+
 ```ts
 let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
 let result = rationalNumber.valueOf();
@@ -1592,7 +1787,7 @@ Checks whether this **RationalNumber** object equals the given object.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| obj | Object | Yes| Object used to compare with this **RationalNumber** object.|
+| obj | Object | Yes | Object used to compare with the current RationalNumber object. Returns false when a non-RationalNumber type is passed in. |
 
 **Return value**
 
@@ -1609,7 +1804,9 @@ let result = rationalNumber.equals(rational);
 console.info("result = " + result);
 // Output: result = false
 ```
+
 You are advised to use the following code snippet for API version 9 and later versions:
+
 ```ts
 let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
 let rational = util.RationalNumber.createRationalFromString("3/4");
@@ -1645,14 +1842,6 @@ Obtains the greatest common divisor of two specified integers.
 | ------ | ------------------------------ |
 | number | Greatest common divisor obtained.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **Example**
 
 ```ts
@@ -1685,7 +1874,9 @@ let result = rationalNumber.getNumerator();
 console.info("result = " + result);
 // Output: result = 1
 ```
+
 You are advised to use the following code snippet for API version 9 and later versions:
+
 ```ts
 let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
 let result = rationalNumber.getNumerator();
@@ -1717,7 +1908,9 @@ let result = rationalNumber.getDenominator();
 console.info("result = " + result);
 // Output: result = 2
 ```
+
 You are advised to use the following code snippet for API version 9 and later versions:
+
 ```ts
 let rationalNumber = util.RationalNumber.parseRationalNumber(1,2)
 let result = rationalNumber.getDenominator();
@@ -1727,7 +1920,7 @@ console.info("result = " + result);
 
 ### isZero<sup>8+</sup>
 
-isZero():boolean
+isZero(): boolean
 
 Checks whether this **RationalNumber** object is **0**.
 
@@ -1749,7 +1942,9 @@ let result = rationalNumber.isZero();
 console.info("result = " + result);
 // Output: result = false
 ```
+
 You are advised to use the following code snippet for API version 9 and later versions:
+
 ```ts
 let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
 let result = rationalNumber.isZero();
@@ -1781,7 +1976,9 @@ let result = rationalNumber.isNaN();
 console.info("result = " + result);
 // Output: result = false
 ```
+
 You are advised to use the following code snippet for API version 9 and later versions:
+
 ```ts
 let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
 let result = rationalNumber.isNaN();
@@ -1791,7 +1988,7 @@ console.info("result = " + result);
 
 ### isFinite<sup>8+</sup>
 
-isFinite():boolean
+isFinite(): boolean
 
 Checks whether this **RationalNumber** object represents a finite value.
 
@@ -1813,7 +2010,9 @@ let result = rationalNumber.isFinite();
 console.info("result = " + result);
 // Output: result = true
 ```
+
 You are advised to use the following code snippet for API version 9 and later versions:
+
 ```ts
 let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
 let result = rationalNumber.isFinite();
@@ -1845,7 +2044,9 @@ let result = rationalNumber.toString();
 console.info("result = " + result);
 // Output: result = 1/2
 ```
+
 You are advised to use the following code snippet for API version 9 and later versions:
+
 ```ts
 let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
 let result = rationalNumber.toString();
@@ -1869,8 +2070,8 @@ A constructor used to create a **RationalNumber** object.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| numerator | number | Yes| Numerator, which is an integer.|
-| denominator | number | Yes| Denominator, which is an integer.|
+| numerator | number | Yes | Numerator, integer type. Value range: -Number.MAX_VALUE <= numerator <= Number.MAX_VALUE. |
+| denominator | number | Yes | Denominator, integer type. Value range: -Number.MAX_VALUE <= denominator <= Number.MAX_VALUE. |
 
 **Example**
 
@@ -1928,16 +2129,14 @@ Obtains the greatest common divisor of two specified integers.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| number1 | number | Yes| The first integer used to get the greatest common divisor.|
-| number2 | number | Yes| The second integer used to get the greatest common divisor.|
+| number1 | number | Yes | Integer type. -Number.MAX_VALUE <= number1 <= Number.MAX_VALUE. |
+| number2 | number | Yes | Integer type. -Number.MAX_VALUE <= number2 <= Number.MAX_VALUE. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
 | number | Greatest common divisor obtained.|
-
-
 
 ## LRUCache<sup>9+</sup>
 
@@ -1951,7 +2150,7 @@ Provides APIs to discard the least recently used data to make rooms for new elem
 
 | Name  | Type  | Read-Only| Optional| Description                  |
 | ------ | ------ | ---- | ---- | ---------------------- |
-| length | number | Yes  | No  | Total number of values in this cache.|
+| length | number | Yes   | No   | Total number of values in the current cache. |
 
 **Example**
 
@@ -1978,28 +2177,19 @@ A constructor used to create a **LRUCache** instance. The default capacity of th
 
 | Name  | Type  | Mandatory| Description                        |
 | -------- | ------ | ---- | ---------------------------- |
-| capacity | number | No  | Capacity of the cache to create. The default value is **64**, and the maximum value is **2147483647**.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Incorrect parameter types. |
+| capacity | number | No   | Indicates the custom capacity for the buffer. The value range is [0, 2147483647], and the default value is 64. |
 
 **Example**
 
 ```ts
-let pro = new util.LRUCache<number, number>();
+let lruCache = new util.LRUCache<number, number>();
 ```
-
 
 ### updateCapacity<sup>9+</sup>
 
 updateCapacity(newCapacity: number): void
 
-Changes the cache capacity. If the new capacity is less than or equal to **0**, an exception will be thrown. If the total number of values in the cache is greater than the specified capacity, the deletion operation is performed.
+Updates the cache capacity to the specified value. If newCapacity is less than or equal to 0, an exception is thrown. When the total number of values in the cache is greater than the specified capacity, deletion is performed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2009,15 +2199,7 @@ Changes the cache capacity. If the new capacity is less than or equal to **0**, 
 
 | Name     | Type  | Mandatory| Description                        |
 | ----------- | ------ | ---- | ---------------------------- |
-| newCapacity | number | Yes  | New capacity of the cache. The maximum value is **2147483647**.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. |
+| newCapacity | number | Yes  | Indicates the custom capacity for the buffer, with a value range of [0, 2147483647]. |
 
 **Example**
 
@@ -2030,7 +2212,7 @@ pro.updateCapacity(100);
 
 toString(): string
 
-Obtains the string representation of this cache.
+Returns the string representation of the object in the format LRUCache[ maxSize = maximum cache size, hits = number of successful query matches, misses = number of failed query matches, hitRate = query match rate ].
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2058,7 +2240,7 @@ console.info(pro.toString());
 
 getCapacity(): number
 
-Obtains the capacity of this cache.
+Obtains the current cache capacity.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2083,7 +2265,7 @@ console.info('result = ' + result);
 
 clear(): void
 
-Clears key-value pairs from this cache.
+Clears the key-value pairs in the current buffer and triggers the afterRemoval callback method to perform subsequent operations.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2172,7 +2354,7 @@ console.info('result = ' + result);
 
 getRemovalCount(): number
 
-Obtains the number of times that key-value pairs in the cache are recycled.
+Obtains the number of times cache key-value pairs have been recycled.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2227,7 +2409,7 @@ Obtains the number of times that the queried values are matched.
 
 getPutCount(): number
 
-Obtains the number of additions to this cache.
+Obtains the number of times values have been added to the cache.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2253,7 +2435,7 @@ console.info('result = ' + result);
 
 isEmpty(): boolean
 
-Checks whether this cache is empty.
+Checks whether the cache is empty.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2263,7 +2445,7 @@ Checks whether this cache is empty.
 
 | Type   | Description                                    |
 | ------- | ---------------------------------------- |
-| boolean | Returns **true** if the cache does not contain any value.|
+| boolean | Returns true if the cache does not contain any value; otherwise, returns false. |
 
 **Example**
 
@@ -2279,7 +2461,7 @@ console.info('result = ' + result);
 
 get(key: K): V | undefined
 
-Obtains the value of a key. If the key is not in the cache, [createDefault<sup>9+</sup>](#createdefault9) is called to create the key. If the value specified in **createDefault** is not **undefined**, [afterRemoval<sup>9+</sup>](#afterremoval9) is called to return the value specified in **createDefault**.
+Returns the value corresponding to the key. When the key is not in the cache, the value is created through [createDefault](#createdefault9). If the value created by createDefault is not undefined, the [afterRemoval](#afterremoval9) interface is called and the value created by createDefault is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2297,14 +2479,6 @@ Obtains the value of a key. If the key is not in the cache, [createDefault<sup>9
 | ------------------------ | ------------------------------------------------------------ |
 | V \| undefined | Value of the key. If no match is found, the value specified in **createDefault** is returned.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **Example**
 
 ```ts
@@ -2319,7 +2493,7 @@ console.info('result = ' + result);
 
 put(key: K,value: V): V
 
-Adds a key-value pair to this cache and returns the value associated with the key. If the total number of values in the cache is greater than the specified capacity, the deletion operation is performed.
+Adds a key-value pair to the cache and returns the value associated with the added key. When the total number of values in the cache exceeds the capacity, a removal operation is performed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2338,14 +2512,6 @@ Adds a key-value pair to this cache and returns the value associated with the ke
 | ---- | ------------------------------------------------------------ |
 | V    | Value of the key-value pair added. If the key or value is empty, an exception is thrown.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **Example**
 
 ```ts
@@ -2359,7 +2525,7 @@ console.info('result = ' + result);
 
 values(): V[]
 
-Obtains all values in this cache, listed from the least to the most recently accessed.
+Obtains all values in the current cache, in the order from least recently accessed to most recently accessed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2395,7 +2561,7 @@ console.info('result = ' + result);
 
 keys(): K[]
 
-Obtains all keys in this cache, listed from the least to the most recently accessed.
+Obtains all keys in the current cache, in the order from least recently accessed to most recently accessed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2431,7 +2597,7 @@ console.info('result = ' + result);
 
 remove(key: K): V | undefined
 
-Removes a key and its associated value from this cache and returns the value associated with the key. If the key does not exist, **undefined** is returned.
+Removes the specified key and its associated value from the current cache, and returns the value associated with the key. If the specified key does not exist, undefined is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2441,21 +2607,13 @@ Removes a key and its associated value from this cache and returns the value ass
 
 | Name| Type| Mandatory| Description          |
 | ------ | ---- | ---- | -------------- |
-| key    | K    | Yes  | Key to remove.|
+| key    | K    | Yes   | Key to be deleted. |
 
 **Return value**
 
 | Type                    | Description                                                        |
 | ------------------------ | ------------------------------------------------------------ |
-| V&nbsp;\|&nbsp;undefined | Returns an **Optional** object containing the removed key-value pair if the key exists in the cache; returns **undefined** if the key does not exist; throws an error if **null** is passed in for **key**.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| V&nbsp;\|&nbsp;undefined | Returns the value associated with the deleted key; returns undefined if the key does not exist, and throws an exception if the key is null. |
 
 **Example**
 
@@ -2489,14 +2647,6 @@ Performs subsequent operations after a value is removed. The subsequent operatio
 | key      | K       | Yes  | Key removed.                                              |
 | value    | V       | Yes  | Value removed.                                              |
 | newValue | V       | Yes  | New value for the key if the **put()** method is called and the key to be added already exists. In other cases, this parameter is left blank.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example 1**
 
@@ -2568,21 +2718,21 @@ lru.put('bb', test2);
 lru.put('cc', test3);    // Remove the key-value pair for 'aa'.
 lru.clear();             // Clear the entire cache buffer.
 /*
-Output: Entered via put.
+Output: call put to enter
          isEvict = true
          key = aa  valueStr = testA
-         Entered via clear.
+         call clear to enter
          isEvict = false
          key = bb, valueStr = testB
          key = cc, valueStr = testC
-*/
+ */
 ```
 
 ### contains<sup>9+</sup>
 
 contains(key: K): boolean
 
-Checks whether this cache contains the specified key.
+Checks whether the current cache contains the specified key.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2598,15 +2748,7 @@ Checks whether this cache contains the specified key.
 
 | Type   | Description                                      |
 | ------- | ------------------------------------------ |
-| boolean | Check result. The value **true** is returned if the cache contains the specified key; otherwise, **false** is returned.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| boolean | Returns true if the cache contains the specified key; otherwise, returns false. |
 
 **Example**
 
@@ -2622,7 +2764,7 @@ console.info('result = ' + result);
 
 createDefault(key: K): V
 
-Performs subsequent operations if no key is matched in the cache and returns the value (**undefined** by default) associated with the key.
+If no key is matched in the cache, the subsequent operation is performed. The parameter indicates the unmatched key, and the value associated with the key is returned. undefined is returned by default.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2639,14 +2781,6 @@ Performs subsequent operations if no key is matched in the cache and returns the
 | Type| Description              |
 | ---- | ------------------ |
 | V    | Value of the key.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -2671,7 +2805,7 @@ Returns an iterator object that traverses all key-value pairs ([key, value]) in 
 
 | Type       | Description                |
 | ----------- | -------------------- |
-| IterableIterator&lt;[K, V]&gt; | Iterable array.|
+| IterableIterator&lt;[K, V]&gt; | Returns an iterator object used to traverse all key-value pairs [key, value] in the current buffer in insertion order. |
 
 **Example**
 
@@ -2790,7 +2924,7 @@ Defines the type of values in a **Scope** object.
 
 ## ScopeHelper<sup>9+</sup>
 
-Provides APIs to define the valid range of a field. The constructor of this class creates comparable objects with lower and upper limits.
+The ScopeHelper interface is used to describe the valid range of a field, and is commonly used in scenarios such as input value range validation and configuration parameter interval judgment. The constructor is used to create objects with specified lower and upper limits, and requires these objects to be comparable. Through ScopeHelper, developers can conveniently perform range intersection and union calculations as well as determine whether a value is within the range, preventing invalid data from entering business logic.
 
 ### constructor<sup>9+</sup>
 
@@ -2806,16 +2940,8 @@ A constructor used to create a **ScopeHelper** object with the specified upper a
 
 | Name  | Type                    | Mandatory| Description                  |
 | -------- | ------------------------ | ---- | ---------------------- |
-| lowerObj | [ScopeType](#scopetype8) | Yes  | Lower limit of the **Scope** object.|
-| upperObj | [ScopeType](#scopetype8) | Yes  | Upper limit of the **Scope** object.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| lowerObj | [ScopeType](#scopetype8) | Yes | Specifies the lower bound of the scope instance, which must be comparable. |
+| upperObj | [ScopeType](#scopetype8) | Yes | Specifies the upper bound of the scope instance, which must be comparable. |
 
 **Example**
 
@@ -2915,14 +3041,6 @@ Obtains the intersection of this **Scope** and the given **Scope**. If the inter
 | ------------------------------ | ------------------------------ |
 | [ScopeHelper](#scopehelper9) | Intersection of this **Scope** and the given **Scope**.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **Example**
 
 ```ts
@@ -2979,14 +3097,6 @@ Obtains the intersection of this **Scope** and the given lower and upper limits.
 | Type                        | Description                                    |
 | ---------------------------- | ---------------------------------------- |
 | [ScopeHelper](#scopehelper9) | Intersection of this **Scope** and the given lower and upper limits.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -3138,14 +3248,6 @@ Obtains the union set of this **Scope** and the given lower and upper limits.
 | ---------------------------- | ------------------------------------ |
 | [ScopeHelper](#scopehelper9) | Union set of this **Scope** and the given lower and upper limits.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **Example**
 
 ```ts
@@ -3201,14 +3303,6 @@ Obtains the union set of this **Scope** and the given **Scope**.
 | ---------------------------- | ---------------------------------- |
 | [ScopeHelper](#scopehelper9) | Union set of this **Scope** and the given **Scope**.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **Example**
 
 ```ts
@@ -3257,21 +3351,13 @@ Obtains the union set of this **Scope** and the given value.
 
 | Name| Type                    | Mandatory| Description            |
 | ------ | ------------------------ | ---- | ---------------- |
-| value  | [ScopeType](#scopetype8) | Yes  | Value specified.|
+| value  | [ScopeType](#scopetype8) | Yes   | Value to check whether it is within the current scope. |
 
 **Return value**
 
 | Type                        | Description                            |
 | ---------------------------- | -------------------------------- |
 | [ScopeHelper](#scopehelper9) | Union set of this **Scope** and the given value.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -3327,14 +3413,6 @@ Checks whether a range is within this **Scope**.
 | ------- | --------------------------------------------------- |
 | boolean | Check result. The value **true** is returned if the value is within this **Scope**; otherwise, **false** is returned.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **Example**
 
 ```ts
@@ -3388,14 +3466,6 @@ Checks whether a range is within this **Scope**.
 | Type   | Description                                                 |
 | ------- | ----------------------------------------------------- |
 | boolean | Check result. The value **true** is returned if the range is within this **Scope**; otherwise, **false** is returned.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -3453,14 +3523,6 @@ Limits a value to this **Scope**.
 | ------------------------ | ------------------------------------------------------------ |
 | [ScopeType](#scopetype8) | Returns **lowerObj** if the specified value is less than the lower limit; returns **upperObj** if the specified value is greater than the upper limit; returns the specified value if it is within this **Scope**.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **Example**
 
 ```ts
@@ -3501,7 +3563,7 @@ Provides encoding and decoding for Base64 and Base64URL. The Base64 encoding tab
 
 constructor()
 
-A constructor used to create a **Base64Helper** instance.
+The constructor of Base64Helper creates a Base64Helper instance for Base64 encoding and decoding.
 
 **System capability**: SystemCapability.Utils.Lang
 
@@ -3536,14 +3598,6 @@ Encodes the input content into a Uint8Array object.
 | ---------- | ----------------------------- |
 | Uint8Array | Uint8Array object obtained.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **Example**
 
   ```ts
@@ -3553,7 +3607,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   console.info("result = " + result);
   // Output: result = 99,122,69,122
   ```
-
 
 ### encodeToStringSync<sup>9+</sup>
 
@@ -3578,14 +3631,6 @@ Performs Base64 encoding on the input Uint8Array byte array and returns a string
 | ------ | -------------------- |
 | string | String obtained.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **Example**
 
   ```ts
@@ -3602,10 +3647,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   let result = base64Helper.encodeToStringSync(array, util.Type.MIME);
   console.info("result = " + result);
   /*
-  // Output: result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNz
+  Output result: result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNz
   aW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZl
   aGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=
-  */
+   */
 
   // BASIC encoding
   let base64Helper = new util.Base64Helper();
@@ -3620,8 +3665,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   let result = base64Helper.encodeToStringSync(array, util.Type.BASIC);
   console.info("result = " + result);
   /*
-  Output: result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNzaW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZlaGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=
-  */
+  Output result: result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNzaW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZlaGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=
+   */
   
   // MIME_URL_SAFE encoding
   let base64Helper = new util.Base64Helper();
@@ -3636,8 +3681,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   let result = base64Helper.encodeToStringSync(array, util.Type.BASIC_URL_SAFE);
   console.info("result = " + result);
   /*
-  Output: result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNzaW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZlaGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU
-  */
+  Output result: result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNzaW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZlaGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU
+   */
   // MIME_URL_SAFE encoding
   let base64Helper = new util.Base64Helper();
   let array =
@@ -3651,10 +3696,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   let result = base64Helper.encodeToStringSync(array, util.Type.MIME_URL_SAFE);
   console.info("result = " + result);
   /*
-  // Output: result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNz
+  Output result: result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNz
   aW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZl
   aGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU
-  */
+   */
   ```
 
 ### decodeSync<sup>9+</sup>
@@ -3680,14 +3725,6 @@ Decodes a string into a Uint8Array object. This API returns the result synchrono
 | ---------- | ----------------------------- |
 | Uint8Array | Uint8Array object obtained.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **Example**
 
   ```ts
@@ -3696,10 +3733,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   let result = base64Helper.decodeSync(buff, util.Type.MIME);
   console.info("result = " + result);
   /*
-  Output: result = 77,97,110,105,115,100,105,115,116,105,110,103,117,105,115,104,101,100,110,111,116,111,110,108,121,98,121,104,105,115,114,101,97,115,111,110,98,117,116,98,121,116,104,105,115,115,105,110,103,117,108,97,114,112,97,115,115,105,111,110,102,114,111,109,111,116,104,101,114,97,110,105,109,97,108,115,119,104,105,99,104,105,115,97,108,117,115,116,111,102,116,104,101,109,105,110,100,101,120,99,101,101,100,115,116,104,101,115,104,111,114,116,118,101,104,101,109,101,110,99,101,111,102,97,110,121,99,97,114,110,97,108,112,108,101,97,115,117,114,101
-  */
+  Output result: result = 77,97,110,105,115,100,105,115,116,105,110,103,117,105,115,104,101,100,110,111,116,111,110,108,121,98,121,104,105,115,114,101,97,115,111,110,98,117,116,98,121,116,104,105,115,115,105,110,103,117,108,97,114,112,97,115,115,105,111,110,102,114,111,109,111,116,104,101,114,97,110,105,109,97,108,115,119,104,105,99,104,105,115,97,108,117,115,116,111,102,116,104,101,109,105,110,100,101,120,99,101,101,100,115,116,104,101,115,104,111,114,116,118,101,104,101,109,101,110,99,101,111,102,97,110,121,99,97,114,110,97,108,112,108,101,97,115,117,114,101
+   */
   ```
-
 
 ### encode<sup>9+</sup>
 
@@ -3722,15 +3758,7 @@ Encodes the input content into a Uint8Array object. This API uses a promise to r
 
 | Type                     | Description                             |
 | ------------------------- | --------------------------------- |
-| Promise&lt;Uint8Array&gt; | Promise used to return the Uint8Array object obtained.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| Promise&lt;Uint8Array&gt; | Promise object. Resolves to a newly allocated Uint8Array object when encoding succeeds, and rejects with an error object when encoding fails. |
 
 **Example**
 
@@ -3743,12 +3771,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   })
   ```
 
-
 ### encodeToString<sup>9+</sup>
 
 encodeToString(src: Uint8Array, options?: Type): Promise&lt;string&gt;
 
-Encodes the input content into a string. This API uses a promise to return the result.
+Encodes the input parameters asynchronously and outputs the corresponding text. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3765,15 +3792,7 @@ Encodes the input content into a string. This API uses a promise to return the r
 
 | Type                 | Description                    |
 | --------------------- | ------------------------ |
-| Promise&lt;string&gt; | Promise used to return the string obtained.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| Promise&lt;string&gt; | Promise object. Resolves to the Base64-encoded string when encoding succeeds, and rejects with an error object when encoding fails. |
 
 **Example**
 
@@ -3783,20 +3802,19 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   base64Helper.encodeToString(array, util.Type.MIME).then((val) => {
     console.info(val);
     /*
-    Output: TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNz
+    Output result: TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNz
     aW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZl
     aGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=
-    */
+     */
 
   })
   ```
-
 
 ### decode<sup>9+</sup>
 
 decode(src: Uint8Array | string, options?: Type): Promise&lt;Uint8Array&gt;
 
-Decodes the input content into a Uint8Array object. This API uses a promise to return the result.
+Decodes the input parameters asynchronously and outputs the corresponding Uint8Array object. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3814,14 +3832,6 @@ Decodes the input content into a Uint8Array object. This API uses a promise to r
 | Type                     | Description                             |
 | ------------------------- | --------------------------------- |
 | Promise&lt;Uint8Array&gt; | Promise used to return the Uint8Array object obtained.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -3844,7 +3854,7 @@ Provides the capability of decoding binary streams into strings. The following e
 
 constructor(encoding?: string)
 
-Constructor used to create a **StringDecoder** instance.
+Constructor of StringDecoder, which creates a StringDecoder instance with the default encoding 'utf-8'.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3855,14 +3865,6 @@ Constructor used to create a **StringDecoder** instance.
 | Name| Type                          | Mandatory| Description                             |
 | ------ | ------------------------------ | ---- | --------------------------------- |
 | encoding  | string | No  | Encoding type of the input data. The default value is **utf-8**.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -3890,15 +3892,7 @@ Decodes a string. Any incomplete multi-byte characters at the end of Uint8Array 
 
 | Type      | Description                         |
 | ---------- | ----------------------------- |
-| string | String decoded.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| string | Returns the decoded string. Incomplete multibyte characters have been filtered out of the return value and stored in the internal buffer for processing in the next call. |
 
 **Example**
 
@@ -3924,21 +3918,13 @@ Ends the decoding process and returns any remaining input stored in the internal
 
 | Name| Type      | Mandatory| Description               |
 | ------ | ---------- | ---- | ------------------- |
-| chunk  | string \| Uint8Array | No  | String to decode. The default value is **undefined**.|
+| chunk  | string \| Uint8Array | No   | The last portion of data to be decoded. Pass this parameter when there is remaining data to be processed together at the end of decoding. If not passed, it defaults to undefined, meaning only the decoding result of the incomplete byte sequence stored in the internal buffer is returned, and no new data is processed. The string to be decoded. Defaults to undefined. |
 
 **Return value**
 
 | Type      | Description                         |
 | ---------- | ----------------------------- |
-| string | String decoded.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| string | Returns a string consisting of all remaining decoded content stored in the internal buffer. |
 
 **Example**
 
@@ -3959,14 +3945,12 @@ Enumerates the Base64 encoding formats.
 
 **System capability**: SystemCapability.Utils.Lang
 
-
 | Name  |Value| Description              |
 | ----- |---| ----------------- |
-| BASIC | 0 | Basic format. **Atomic service API**: This API can be used in atomic services since API version 11.|
-| MIME  | 1 | MIME format. **Atomic service API**: This API can be used in atomic services since API version 11.|
-| BASIC_URL_SAFE<sup>12+</sup> | 2 | BASIC_URL_SAFE format.<br>This value is supported since API version 12. **Atomic service API**: This API can be used in atomic services since API version 12.|
-| MIME_URL_SAFE<sup>12+</sup> | 3 | MIME_URL_SAFE format.<br>This value is supported since API version 12. **Atomic service API**: This API can be used in atomic services since API version 12.|
-
+| BASIC | 0 | Indicates the BASIC encoding format. **Atomic service API:** Since API version 11, this API is supported in atomic services.|
+| MIME  | 1 | Indicates the MIME encoding format. **Atomic service API:** Since API version 11, this API is supported in atomic services.|
+| BASIC_URL_SAFE<sup>12+</sup> | 2 | Indicates the BASIC_URL_SAFE encoding format.<br/>This enum is supported since API version 12. **Atomic service API:** Since API version 12, this API is supported in atomic services.|
+| MIME_URL_SAFE<sup>12+</sup> | 3 | Indicates the MIME_URL_SAFE encoding format.<br/>This enum is supported since API version 12. **Atomic service API:** Since API version 12, this API is supported in atomic services. |
 
 ## types<sup>8+</sup>
 
@@ -3976,7 +3960,7 @@ Provides APIs to check different types of built-in objects, such as ArrayBuffer,
 
 constructor()
 
-A constructor used to create a **Types** object.
+Constructor of Types, which creates a types instance for built-in object type checking.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3987,7 +3971,6 @@ A constructor used to create a **Types** object.
   ```ts
   let type = new util.types();
   ```
-
 
 ### isAnyArrayBuffer<sup>8+</sup>
 
@@ -4019,7 +4002,6 @@ Checks whether the value is of the ArrayBuffer or SharedArrayBuffer type.
   console.info("result = " + result);
   // Output: result = true
   ```
-
 
 ### isArrayBufferView<sup>8+</sup>
 
@@ -4053,7 +4035,6 @@ Checks whether the value is of the ArrayBufferView type.
   console.info("result = " + result);
   // Output: result = true
   ```
-
 
 ### isArgumentsObject<sup>8+</sup>
 
@@ -4089,7 +4070,6 @@ Checks whether the value is an **arguments** object.
   // Output: result = true
   ```
 
-
 ### isArrayBuffer<sup>8+</sup>
 
 isArrayBuffer(value: Object): boolean
@@ -4120,7 +4100,6 @@ Checks whether the value is of the ArrayBuffer type.
   console.info("result = " + result);
   // Output: result = true
   ```
-
 
 ### isAsyncFunction<sup>8+</sup>
 
@@ -4153,6 +4132,43 @@ Checks whether the value is an asynchronous function.
   // Output: result = true
   ```
 
+> **NOTE**
+>
+> This API cannot effectively determine an AsyncGenerator Function. It is recommended to obtain the `constructor.name` property of the function and compare it with `'AsyncGeneratorFunction'` instead.
+>
+> This API cannot effectively determine an async member function in a Sendable class. There is no alternative.
+
+  <!--code_no_check-->
+
+  ```ts
+  // /entry/src/main/ets/pages/test.ts
+  export async function* asyncGeneratorFunc() {}
+  ```
+
+  <!--code_no_check-->
+
+  ```ts
+  import { asyncGeneratorFunc } from './test'
+
+  @Sendable
+  class SendableClass {
+    async asyncFunction() {}
+  }
+
+  let type = new util.types();
+  let result1 = type.isAsyncFunction(asyncGeneratorFunc);
+  console.info("result = " + result1);
+  // Output: result = false
+
+  console.info("asyncGeneratorFunc.constructor.name === AsyncGeneratorFunction : " +
+    (asyncGeneratorFunc.constructor.name === 'AsyncGeneratorFunction'));
+  // Output: asyncGeneratorFunc.constructor.name === AsyncGeneratorFunction : true
+
+  const instance = new SendableClass();
+  let result2 = type.isAsyncFunction(instance.asyncFunction);
+  console.info("result = " + result2);
+  // Output: result = false
+  ```
 
 ### isBooleanObject<sup>(deprecated)</sup>
 
@@ -4162,7 +4178,7 @@ Checks whether the value is of the Boolean type.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 14. No substitute is provided.
+> This API is supported since API version 8 and deprecated since API version 14. There is no alternative API.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -4188,7 +4204,6 @@ Checks whether the value is of the Boolean type.
   console.info("result = " + result);
   // Output: result = true
   ```
-
 
 ### isBoxedPrimitive<sup>(deprecated)</sup>
 
@@ -4225,7 +4240,6 @@ Checks whether the value is of the Boolean, Number, String, or Symbol type.
   // Output: result = true
   ```
 
-
 ### isDataView<sup>8+</sup>
 
 isDataView(value: Object): boolean
@@ -4258,7 +4272,6 @@ Checks whether the value is of the DataView type.
   // Output: result = true
   ```
 
-
 ### isDate<sup>8+</sup>
 
 isDate(value: Object): boolean
@@ -4289,7 +4302,6 @@ Checks whether the value is of the Date type.
   console.info("result = " + result);
   // Output: result = true
   ```
-
 
 ### isExternal<sup>8+</sup>
 
@@ -4343,11 +4355,12 @@ Checks whether the value is of the native external type.
   }
   EXTERN_C_END
   // The code for module registration is omitted here. You may need to register the Testexternal method.
-  ...
+  // ...
 
   ```
 
   <!--code_no_check-->
+
   ```ts
   import testNapi from 'libentry.so';
 
@@ -4361,7 +4374,6 @@ Checks whether the value is of the native external type.
   // Output: result = true
   // Output: result01 = false
   ```
-
 
 ### isFloat32Array<sup>8+</sup>
 
@@ -4394,7 +4406,6 @@ Checks whether the value is of the Float32Array type.
   // Output: result = true
   ```
 
-
 ### isFloat64Array<sup>8+</sup>
 
 isFloat64Array(value: Object): boolean
@@ -4426,7 +4437,6 @@ Checks whether the value is of the Float64Array type.
   // Output: result = true
   ```
 
-
 ### isGeneratorFunction<sup>8+</sup>
 
 isGeneratorFunction(value: Object): boolean
@@ -4450,13 +4460,16 @@ Checks whether the value is a generator function.
 | boolean | Check result. The value **true** is returned if the value is a generator function; otherwise, **false** is returned.|
 
 **Example**
+
 <!--code_no_check-->
+
   ```ts
   // /entry/src/main/ets/pages/test.ts
   export function* foo() {}
   ```
 
   <!--code_no_check-->
+
   ```ts
   import { foo } from './test'
 
@@ -4466,6 +4479,31 @@ Checks whether the value is a generator function.
   // Output: result = true
   ```
 
+> **NOTE**
+>
+> This API cannot effectively determine an AsyncGenerator Function. It is recommended to obtain the `constructor.name` property of the function and compare it with `'AsyncGeneratorFunction'` instead.
+
+  <!--code_no_check-->
+
+  ```ts
+  // /entry/src/main/ets/pages/test.ts
+  export async function* asyncGeneratorFunc() {}
+  ```
+
+  <!--code_no_check-->
+
+  ```ts
+  import { asyncGeneratorFunc } from './test'
+
+  let type = new util.types();
+  let result = type.isGeneratorFunction(asyncGeneratorFunc);
+  console.info("result = " + result);
+  // Output: result = false
+
+  console.info("asyncGeneratorFunc.constructor.name === AsyncGeneratorFunction : " +
+    (asyncGeneratorFunc.constructor.name === 'AsyncGeneratorFunction'));
+  // Output: asyncGeneratorFunc.constructor.name === AsyncGeneratorFunction : true
+  ```
 
 ### isGeneratorObject<sup>8+</sup>
 
@@ -4490,7 +4528,9 @@ Checks whether the value is a generator object.
 | boolean | Check result. The value **true** is returned if the value is a generator object; otherwise, **false** is returned.|
 
 **Example**
+
 <!--code_no_check-->
+
   ```ts
   // /entry/src/main/ets/pages/test.ts
   function* foo() {}
@@ -4498,6 +4538,7 @@ Checks whether the value is a generator object.
   ```
 
   <!--code_no_check-->
+
   ```ts
   import { generator } from './test'
 
@@ -4506,7 +4547,6 @@ Checks whether the value is a generator object.
   console.info("result = " + result);
   // Output: result = true
   ```
-
 
 ### isInt8Array<sup>8+</sup>
 
@@ -4539,7 +4579,6 @@ Checks whether the value is of the Int8Array type.
   // Output: result = true
   ```
 
-
 ### isInt16Array<sup>8+</sup>
 
 isInt16Array(value: Object): boolean
@@ -4570,7 +4609,6 @@ Checks whether the value is of the Int16Array type.
   console.info("result = " + result);
   // Output: result = true
   ```
-
 
 ### isInt32Array<sup>8+</sup>
 
@@ -4603,7 +4641,6 @@ Checks whether the value is of the Int32Array type.
   // Output: result = true
   ```
 
-
 ### isMap<sup>8+</sup>
 
 isMap(value: Object): boolean
@@ -4624,7 +4661,7 @@ Checks whether the value is of the Map type.
 
 | Type| Description|
 | -------- | -------- |
-| boolean | Check result. The value **true** is returned if the value is of the Map type; otherwise, **false** is returned.|
+| boolean | Returns true if the type is Map; returns false otherwise. |
 
 **Example**
 
@@ -4634,7 +4671,6 @@ Checks whether the value is of the Map type.
   console.info("result = " + result);
   // Output: result = true
   ```
-
 
 ### isMapIterator<sup>8+</sup>
 
@@ -4647,7 +4683,6 @@ Checks whether the value is of the MapIterator type.
 **System capability**: SystemCapability.Utils.Lang
 
 **Parameters**
-
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
@@ -4668,7 +4703,6 @@ Checks whether the value is of the MapIterator type.
   console.info("result = " + result);
   // Output: result = true
   ```
-
 
 ### isNativeError<sup>8+</sup>
 
@@ -4700,7 +4734,6 @@ Checks whether the value is of the Error type.
   console.info("result = " + result);
   // Output: result = true
   ```
-
 
 ### isNumberObject<sup>(deprecated)</sup>
 
@@ -4737,7 +4770,6 @@ Checks whether the value is of the Number type.
   // Output: result = true
   ```
 
-
 ### isPromise<sup>8+</sup>
 
 isPromise(value: Object): boolean
@@ -4768,7 +4800,6 @@ Checks whether the value is a promise.
   console.info("result = " + result);
   // Output: result = true
   ```
-
 
 ### isProxy<sup>8+</sup>
 
@@ -4805,7 +4836,6 @@ Checks whether the value is a proxy.
   // Output: result = true
   ```
 
-
 ### isRegExp<sup>8+</sup>
 
 isRegExp(value: Object): boolean
@@ -4836,7 +4866,6 @@ Checks whether the value is of the RegExp type.
   console.info("result = " + result);
   // Output: result = true
   ```
-
 
 ### isSet<sup>8+</sup>
 
@@ -4870,7 +4899,6 @@ Checks whether the value is of the Set type.
   // Output: result = true
   ```
 
-
 ### isSetIterator<sup>8+</sup>
 
 isSetIterator(value: Object): boolean
@@ -4902,7 +4930,6 @@ Checks whether the value is of the SetIterator type.
   console.info("result = " + result);
   // Output: result = true
   ```
-
 
 ### isStringObject<sup>(deprecated)</sup>
 
@@ -4939,7 +4966,6 @@ Checks whether the value is a string object.
   // Output: result = true
   ```
 
-
 ### isSymbolObject<sup>(deprecated)</sup>
 
 isSymbolObject(value: Object): boolean
@@ -4964,16 +4990,19 @@ Checks whether the value is a symbol object.
 
 | Type| Description|
 | -------- | -------- |
-| boolean | Check result. The value **true** is returned if the value is a symbol object; otherwise, **false** is returned.|
+| boolean | Returns true if the object is of the Symbol type; otherwise, returns false. |
 
 **Example**
+
 <!--code_no_check-->
+
   ```ts
   // /entry/src/main/ets/pages/test.ts
   export const symbols = Symbol('foo');
   ```
 
   <!--code_no_check-->
+
   ```ts
   import { symbols } from './test'
 
@@ -4982,7 +5011,6 @@ Checks whether the value is a symbol object.
   console.info("result = " + result);
   // Output: result = true
   ```
-
 
 ### isTypedArray<sup>8+</sup>
 
@@ -5017,7 +5045,6 @@ Checks whether the value is of the TypedArray type.
   // Output: result = true
   ```
 
-
 ### isUint8Array<sup>8+</sup>
 
 isUint8Array(value: Object): boolean
@@ -5048,7 +5075,6 @@ Checks whether the value is of the Uint8Array type.
   console.info("result = " + result);
   // Output: result = true
   ```
-
 
 ### isUint8ClampedArray<sup>8+</sup>
 
@@ -5081,7 +5107,6 @@ Checks whether the value is of the Uint8ClampedArray type.
   // Output: result = true
   ```
 
-
 ### isUint16Array<sup>8+</sup>
 
 isUint16Array(value: Object): boolean
@@ -5113,7 +5138,6 @@ Checks whether the value is of the Uint16Array type.
   // Output: result = true
   ```
 
-
 ### isUint32Array<sup>8+</sup>
 
 isUint32Array(value: Object): boolean
@@ -5144,7 +5168,6 @@ Checks whether the value is of the Uint32Array type.
   console.info("result = " + result);
   // Output: result = true
   ```
-
 
 ### isWeakMap<sup>8+</sup>
 
@@ -5178,7 +5201,6 @@ Checks whether the value is of the WeakMap type.
   // Output: result = true
   ```
 
-
 ### isWeakSet<sup>8+</sup>
 
 isWeakSet(value: Object): boolean
@@ -5209,7 +5231,6 @@ Checks whether the value is of the WeakSet type.
   console.info("result = " + result);
   // Output: result = true
   ```
-
 
 ### isBigInt64Array<sup>8+</sup>
 
@@ -5242,7 +5263,6 @@ Checks whether the value is of the BigInt64Array type.
   // Output: result = true
   ```
 
-
 ### isBigUint64Array<sup>8+</sup>
 
 isBigUint64Array(value: Object): boolean
@@ -5273,7 +5293,6 @@ Checks whether the value is of the BigUint64Array type.
   console.info("result = " + result);
   // Output: result = true
   ```
-
 
 ### isModuleNamespaceObject<sup>8+</sup>
 
@@ -5307,6 +5326,7 @@ Checks whether the value is a module namespace object.
   ```
 
   <!--code_no_check-->
+
   ```ts
   import * as nameSpace from './test';
 
@@ -5315,7 +5335,6 @@ Checks whether the value is a module namespace object.
   console.info("result = " + result);
   // Output: result = true
   ```
-
 
 ### isSharedArrayBuffer<sup>8+</sup>
 
@@ -5374,7 +5393,7 @@ Defines the resource cleanup callback that triggers automatically when an object
 
 ## AutoFinalizerCleaner&lt;T&gt;<sup>22+</sup>
 
-AutoFinalizerCleaner is a utility class that associates an object's lifecycle with resource cleanup logic. Its primary role is to bind an object implementing AutoFinalizer&lt;T&gt; to a specific value, and automatically trigger the resource cleanup callback when the object is reclaimed.
+AutoFinalizerCleaner is a utility class used to associate object lifecycle with resource cleanup logic, and it must be used together with AutoFinalizer&lt;T&gt;. Its main purpose is to bind an object that implements the AutoFinalizer&lt;T&gt; interface to a specific value, so that the resource cleanup callback is automatically triggered when the object is reclaimed. Using AutoFinalizerCleaner alone without implementing the AutoFinalizer interface has no effect.
 
 ### register&lt;T&gt;<sup>22+</sup>
 
@@ -5426,6 +5445,8 @@ const device = new DeviceManageViewModel("test");
 
 **Example**
 
+  <!--code_no_check-->
+
   ```ts
   let pro : util.LruBuffer<number,number>= new util.LruBuffer();
   pro.put(2,10);
@@ -5451,7 +5472,7 @@ A constructor used to create a **LruBuffer** instance. The default capacity of t
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| capacity | number | No| Capacity of the cache to create. The default value is **64**.|
+| capacity | number | No | Indicates the custom capacity for the buffer. The value range is [0, 2147483647], and the default value is 64. |
 
 **Example**
 
@@ -5475,7 +5496,7 @@ Changes the cache capacity. If the new capacity is less than or equal to **0**, 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| newCapacity | number | Yes| New capacity of the cache.|
+| newCapacity | number | Yes | Indicates the capacity to be customized for the buffer, with a value range of [0, 2147483647]. |
 
 **Example**
 
@@ -5545,7 +5566,7 @@ Obtains the capacity of this cache.
 
 clear(): void
 
-Clears key-value pairs from this cache. The **afterRemoval()** API will be called to perform subsequent operations.
+Clears the key-value pairs in the current buffer, and then calls the [afterRemoval](#afterremoval9) method to perform the operation.
 
 > **NOTE**
 >
@@ -5722,7 +5743,7 @@ Checks whether this cache is empty.
 
 | Type| Description|
 | -------- | -------- |
-| boolean | Returns **true** if the cache does not contain any value.|
+| boolean | Returns true if the current buffer does not contain any value; otherwise returns false. |
 
 **Example**
 
@@ -5738,7 +5759,7 @@ Checks whether this cache is empty.
 
 get(key: K): V | undefined
 
-Obtains the value of the specified key.
+Returns the value corresponding to the key. If the key is not in the buffer, undefined is returned.
 
 > **NOTE**
 >
@@ -5784,7 +5805,7 @@ Adds a key-value pair to this cache.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| key | K | Yes| Key of the key-value pair to add.|
+| key | K | Yes | Key to be added. |
 | value | V | Yes| Value of the key-value pair to add.|
 
 **Return value**
@@ -5876,7 +5897,7 @@ Removes the specified key and its value from this cache.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| key | K | Yes| Key to remove.|
+| key | K | Yes | Key to be deleted. |
 
 **Return value**
 
@@ -5946,7 +5967,6 @@ contains(key: K): boolean
 
 Checks whether this cache contains the specified key.
 
-
 > **NOTE**
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [LRUCache.contains<sup>9+</sup>](#contains9) instead.
@@ -5963,7 +5983,7 @@ Checks whether this cache contains the specified key.
 
 | Type| Description|
 | -------- | -------- |
-| boolean | Check result. The value **true** is returned if the cache contains the specified key; otherwise, **false** is returned.|
+| boolean | Returns true if the buffer contains the specified key; otherwise returns false. |
 
 **Example**
 
@@ -5979,7 +5999,7 @@ Checks whether this cache contains the specified key.
 
 createDefault(key: K): V
 
-Creates a value if the value of the specified key is not available.
+When no matching key is found in the buffer, executes the subsequent processing logic. The parameter indicates the unmatched key, and the value associated with the key is returned, with undefined returned by default.
 
 > **NOTE**
 >
@@ -6074,7 +6094,6 @@ A constructor used to create a **Scope** object with the specified upper and low
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [ScopeHelper.constructor<sup>9+</sup>](#constructor9-4) instead.
 
-
 **System capability**: SystemCapability.Utils.Lang
 
 **Parameters**
@@ -6085,6 +6104,7 @@ A constructor used to create a **Scope** object with the specified upper and low
 | upperObj | [ScopeType](#scopetype8) | Yes| Upper limit of the **Scope** object.|
 
 **Example**
+
 ```ts
 class Temperature implements util.ScopeComparable {
   private readonly _temp: number;
@@ -6664,7 +6684,6 @@ console.info("result = " + result);
 
 ### clamp<sup>(deprecated)</sup>
 
-
 clamp(value: ScopeType): ScopeType
 
 Limits a value to this **Scope**.
@@ -6718,7 +6737,6 @@ let result = range.clamp(tempMiDF);
 console.info("result = " + result);
 // Output: result = 35
 ```
-
 
 ## Base64<sup>(deprecated)</sup>
 
@@ -6917,7 +6935,6 @@ Encodes the input content into a string. This API uses a promise to return the r
   ```
 
 ### decode<sup>(deprecated)</sup>
-
 
 decode(src: Uint8Array | string): Promise&lt;Uint8Array&gt;
 

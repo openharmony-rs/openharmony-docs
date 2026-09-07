@@ -100,9 +100,9 @@ static JSVM_Value TriggerGC(JSVM_Env env, JSVM_CallbackInfo info)
     if (OH_JSVM_AddHandlerForGC(vm, JSVM_CB_TRIGGER_AFTER_GC, OnAfterGC2, JSVM_GC_TYPE_ALL, NULL) == JSVM_INVALID_ARG) {
         add_repeated = true;
     }
-    // 移除OnAfter2回调函数
+    // 移除OnAfterGC2回调函数
     JSVM_CALL(OH_JSVM_RemoveHandlerForGC(vm, JSVM_CB_TRIGGER_AFTER_GC, OnAfterGC2, NULL));
-    // 重复移除OnAfter2属于无效用法
+    // 重复移除OnAfterGC2属于无效用法
     if (OH_JSVM_RemoveHandlerForGC(vm, JSVM_CB_TRIGGER_AFTER_GC, OnAfterGC2, NULL) == JSVM_INVALID_ARG) {
         remove_repeated = true;
     }

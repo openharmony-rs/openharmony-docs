@@ -33,7 +33,7 @@ ArcList({
 
 >**说明：**
 >
->[ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md)的子组件必须是[ArcListItem](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md)，[ArcListItem](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md)必须配合[ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md)来使用。
+>[ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md)仅支持[ArcListItem](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md)和自定义组件作为子组件。ArcListItem必须配合ArcList来使用。使用自定义组件时，请使用ArcListItem作为自定义组件的顶层组件，请勿直接给自定义组件设置属性和事件方法，因为ArcList通过ArcListItem管理子组件的布局和事件处理，直接设置可能导致部分功能无法正常生效。
 
 ## 在弧形列表中显示数据
 

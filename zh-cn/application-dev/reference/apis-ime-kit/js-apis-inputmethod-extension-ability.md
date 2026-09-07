@@ -122,7 +122,7 @@ want参数使用建议：
 **示例：**
 
 ```ts
-import { InputMethodExtensionAbility, InputMethodAbility, KeyboardDelegate, PanelInfo, PanelType, PanelFlag, inputMethodEngine } from '@kit.IMEKit';
+import { InputMethodExtensionAbility, inputMethodEngine } from '@kit.IMEKit';
 import { Want } from '@kit.AbilityKit';
 
 class InputMethodExt extends InputMethodExtensionAbility {
@@ -130,15 +130,15 @@ class InputMethodExt extends InputMethodExtensionAbility {
     console.info(`onCreate, want: ${want.abilityName}`);
 
     // 获取输入法能力对象
-    let ability: InputMethodAbility = inputMethodEngine.getInputMethodAbility();
+    let ability: inputMethodEngine.InputMethodAbility = inputMethodEngine.getInputMethodAbility();
 
     // 获取键盘代理对象
-    let keyboardDelegate: KeyboardDelegate = inputMethodEngine.getKeyboardDelegate();
+    let keyboardDelegate: inputMethodEngine.KeyboardDelegate = inputMethodEngine.getKeyboardDelegate();
 
     // 创建面板
-    let panelInfo: PanelInfo = {
-      type: PanelType.SOFT_KEYBOARD,
-      flag: PanelFlag.FLG_FIXED
+    let panelInfo: inputMethodEngine.PanelInfo = {
+      type: inputMethodEngine.PanelType.SOFT_KEYBOARD,
+      flag: inputMethodEngine.PanelFlag.FLG_FIXED
     };
     ability.createPanel(this.context, panelInfo, (err, panel) => {
       if (err) {

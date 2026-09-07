@@ -5,8 +5,8 @@
 <!--Owner: @chenkun613227-->
 <!--Designer: @yxc2-->
 <!--Tester: @zengxi_3007-->
-<!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=d23f27e4e91626bb44da832d5d2b617b9743db25 translatedAt=2026-08-11T01:51:32.959Z pushedAt=2026-08-12T04:32:17.107Z -->
+<!--Adviser: @zzs911-->
+<!-- md-trans-meta sourceCommit=9debe03e456cd9546017cca228787eecf595247b translatedAt=2026-08-22T02:09:29.244Z pushedAt=2026-08-22T06:48:24.431Z -->
 
 - [About This Kit](media-kit-intro.md)
 

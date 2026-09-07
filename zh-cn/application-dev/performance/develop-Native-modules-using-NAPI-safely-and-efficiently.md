@@ -254,7 +254,7 @@ struct TestAdd {
 
 Function Flow 编程模型（[Function Flow Runtime，FFRT](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-development-guideline.md)）是一种基于任务和数据驱动的并发编程模型，允许开发者通过任务及其依赖关系描述的方式进行应用开发。方舟 ArkTS 运行时提供了扩展 qos 信息的接口，支持传入 qos，并调用 FFRT，根据系统资源使用情况降低功耗、提升性能。 
 
-* 接口示例：napi_status napi_queue_async_work_with_qos(napi_env env, napi_async_work work, napi_qos_t qos)（） 
+* 接口示例：napi_status napi_queue_async_work_with_qos(napi_env env, napi_async_work work, napi_qos_t qos)； 
   * [in] env:调用API的环境；
   * [in] napi_async_work: 异步任务；
   * [in] napi_qos_t: qos 等级；

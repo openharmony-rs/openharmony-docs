@@ -1,12 +1,11 @@
 # ArkTS Widget Adaptation FAQs
-
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @Qian-Win-->
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=8ab9874d54f8c367c583074e1d2f36e4d070727b translatedAt=2026-08-03T02:24:46.641Z pushedAt=2026-08-03T03:34:59.299Z -->
+<!-- md-trans-meta sourceCommit=7684c21bdf740a9966befea3081bab050626adf0 translatedAt=2026-09-01T02:24:09.851Z pushedAt=2026-09-01T13:38:55.913Z -->
 
 ## Using V2 Decorators for State Management in ArkTS Widgets
 
@@ -17,22 +16,19 @@ For details about the syntax differences, migration procedure, and sample code, 
 <!--RP1--><!--RP1End-->
 
 ## Adapting ArkTS Widgets to Dark Mode
-
 The system currently supports both light and dark display modes. To provide a better user experience and ensure visual consistency between widgets and pages, ArkTS widgets support light and dark mode adaptation. For details, see [Implementing Dark and Light Mode Adaptation](../ui/ui-dark-light-color-adaptation.md).
 
 ## App Crash Caused by Importing particleAbility, audio, camera, media, or backgroundTaskManager Modules
 
 ### Symptom
-
 After importing `particleAbility`, `audio`, `camera`, `media`, or `backgroundTaskManager`, the app crashes, and the `FaultLog` points to the relevant call line.<br>
 ![Screenshot of the crash code line](figures/Crash-code.png)<br>
 The code line corresponding to the error is as follows:<br>
 ![Screenshot of the crash error message](figures/Crash-info.png)
 
 ### Possible Causes
-
 The `FormExtensionAbility` of ArkTS widgets does not support loading the above modules. For details, see [@ohos.app.form.FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md). Forcibly loading these modules results in an `undefined` object, which causes a JS crash when used.
 
 ### Solution
-
 Check the import chain of `FormExtensionAbility`, and separate the files that involve the above modules from the files used by the ArkTS widget to prevent them from being loaded by `FormExtensionAbility`.
+

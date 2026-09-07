@@ -163,8 +163,8 @@ struct Index {
         Stack({ alignContent: Alignment.Center }) {
           Column() {
             // 模拟上半区和下半区
-            Stack().width('200vp').height('100vp').backgroundColor(Color.Red)
-            Stack().width('200vp').height('100vp').backgroundColor(Color.Blue)
+            Stack().width('200').height('100').backgroundColor(Color.Red)
+            Stack().width('200').height('100').backgroundColor(Color.Blue)
           }.width('200vp').height('200vp')
 
           // Stack的下半区是绑定了拖动手势的图像区域
@@ -173,12 +173,12 @@ struct Index {
             .onDragStart(() => {
               this.promptAction.showToast({ message: 'Drag 下半区蓝色区域，Image响应' });
             })
-            .width('200vp').height('200vp')
+            .width('200').height('200')
           // Stack的上半区是绑定了长按手势的浮动区域
           Stack() {
           }
-          .width('200vp')
-          .height('200vp')
+          .width('200')
+          .height('200')
           .hitTestBehavior(HitTestMode.Transparent)
           .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
             // 确定gestureInfo的tag标志是否有值

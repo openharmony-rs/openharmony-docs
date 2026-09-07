@@ -2,7 +2,7 @@
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @amunra03-->
+<!--Owner: @yh1719-->
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
@@ -41,7 +41,7 @@ isNfcAvailable(): boolean
 Checks whether the device supports NFC.
 
 > **NOTE**
-> This API is supported since API version 7 and deprecated since API version 9. Use [canIUse("SystemCapability.Communication.NFC.Core")](../common/init.md#caniuse) instead.
+> This API is supported since API version 7 and deprecated since API version 9. For versions earlier than API version 26, you are advised to use [canIUse("SystemCapability.Communication.NFC.Core")](../common/syscap__ndk_8h.md#caniuse) and **nfcController.isNfcAvailable** to determine whether the device supports NFC. For API version 26 and later, you are advised to use [canIUse("SystemCapability.Communication.NFC.Core")](../common/syscap__ndk_8h.md#caniuse) and [nfcController.isNfcSupported](#nfccontrollerisnfcsupported) instead.
 
 **System capability**: SystemCapability.Communication.NFC.Core
 
@@ -102,7 +102,7 @@ Enables NFC. This API can be called only by system applications.
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -144,7 +144,7 @@ Disables NFC. This API can be called only by system applications.
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -241,7 +241,7 @@ Unsubscribes from the NFC state changes. Upon successful unsubscription, the sub
 import { nfcController } from '@kit.ConnectivityKit';
 
 // Register a callback for NFC status change events.
-nfcController.on("nfcStateChange", (nfcState : number)=> {
+nfcController.on("nfcStateChange", (nfcState : number) => {
   console.info("nfcController on callback nfcState: " + nfcState);
 });
 

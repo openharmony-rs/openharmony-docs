@@ -5923,7 +5923,7 @@ close(): Promise\<void\>
 Stops listening for events of the **LocalSocketServer** object and releases the port bound by [listen](#listen11). This API uses a promise to return the result.
 
 > **NOTE**
-> This API does not close existing connections. To close the connection, call the [close] (#close11-1) API of [LocalSocketConnection] (#localsocketconnection11).
+> This API does not close existing connections. To close the connection, call the [close](#close11-1) API of [LocalSocketConnection](#localsocketconnection11).
 
 **System capability**: SystemCapability.Communication.NetStack
 

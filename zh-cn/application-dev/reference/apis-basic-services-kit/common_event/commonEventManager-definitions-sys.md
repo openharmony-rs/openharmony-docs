@@ -267,7 +267,7 @@
 **取值：** "usual.event.USER_REMOVED"
 
 
-### COMMON_EVENT_DOMAIN_ACCOUNT_STATUS_CHANGED
+### COMMON_EVENT_DOMAIN_ACCOUNT_STATUS_CHANGED<sup>10+</sup>
 
 表示域账号状态发生变化。
 
@@ -301,7 +301,7 @@
 **取值：** "usual.event.USER_SWITCHED"
 
 
-### COMMON_EVENT_USER_LOCKING
+### COMMON_EVENT_USER_LOCKING<sup>20+</sup>
 
 表示用户即将被锁定的公共事件的动作。
 
@@ -314,7 +314,7 @@
 **取值：** "usual.event.USER_LOCKING"
 
 
-### COMMON_EVENT_USER_LOCKED
+### COMMON_EVENT_USER_LOCKED<sup>20+</sup>
 
 表示用户锁定完成的公共事件的动作。
 
@@ -537,7 +537,7 @@
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力：** SystemCapability.FileManagement.CloudDiskManager
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **订阅者所需权限：** ohos.permission.ACCESS_CLOUD_DISK_INFO（该权限仅系统应用可申请）
 
@@ -560,7 +560,7 @@
 
 ## Media Kit
 
-### COMMON_EVENT_SCREEN_SHARE
+### COMMON_EVENT_SCREEN_SHARE<sup>20+</sup>
 
 表示系统中发生了屏幕共享事件。
 
@@ -665,7 +665,7 @@
 
 **订阅者所需权限：** 无
 
-**取值：** "usual.event.DEFAULT_SMS_SUBSCRIPTION_CHANGED"
+**取值：** "usual.event.SIM.DEFAULT_SMS_SUBSCRIPTION_CHANGED"
 
 
 ### COMMON_EVENT_SIM_CARD_DEFAULT_DATA_SUBSCRIPTION_CHANGED<sup>10+</sup>
@@ -680,7 +680,7 @@
 
 **订阅者所需权限：** 无
 
-**取值：** "usual.event.DEFAULT_DATA_SUBSCRIPTION_CHANGED"
+**取值：** "usual.event.SIM.DEFAULT_DATA_SUBSCRIPTION_CHANGED"
 
 
 ### COMMON_EVENT_SIM_CARD_DEFAULT_MAIN_SUBSCRIPTION_CHANGED<sup>10+</sup>
@@ -740,7 +740,7 @@
 
 **订阅者所需权限：** 无
 
-**取值：** "usual.event.DEFAULT_VOICE_SUBSCRIPTION_CHANGED"
+**取值：** "usual.event.SIM.DEFAULT_VOICE_SUBSCRIPTION_CHANGED"
 
 
 ### COMMON_EVENT_CELLULAR_DATA_STATE_CHANGED<sup>10+</sup>
@@ -800,7 +800,7 @@
 
 **订阅者所需权限：** 无
 
-**取值：** "usual.event.DIALER_SPECIAL_CODE"
+**取值：** "common.event.SPECIAL_CODE"
 
 
 ### COMMON_EVENT_AUDIO_QUALITY_CHANGE<sup>10+</sup>

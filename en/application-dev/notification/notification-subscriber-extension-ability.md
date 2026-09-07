@@ -6,11 +6,11 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=14ca614ebb030bf413b2d8393352ad7521a1d1b9 translatedAt=2026-08-13T03:12:00.202Z pushedAt=2026-08-13T07:44:03.638Z -->
+<!-- md-trans-meta sourceCommit=b0e965054b682272b6c9e3890a6020b1129a6551 translatedAt=2026-08-22T02:21:07.943Z pushedAt=2026-08-22T07:16:09.090Z -->
 
 ## Functionality Overview
 
-The core purpose of this extension ability is to allow third-party apps to receive system notifications. In this extension ability, an app can implement data transmission with a wearable. After the app sends a notification to the distributed notification service, the service forwards the notification to the [NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md) implemented by the third-party app. If no new notification is published within a certain period of time, the currently running [NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md) is automatically destroyed by the system.
+The core purpose of this extension ability is to allow third-party apps to receive system notifications. In this extension ability, an app can implement data transmission with a wearable. After the app sends a notification to the [distributed notification](notification-glossary.md#distributed-notification) service, the service forwards the notification to the [NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md) implemented by the third-party app. If no new notification is published within a certain period of time, the currently running [NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md) is automatically destroyed by the system.
 
 ## Prerequisites
 
@@ -45,5 +45,3 @@ The core purpose of this extension ability is to allow third-party apps to recei
 ## Working Principles
 
 ![notification_subscription_extension_ability](figures/notification_subscription_extension_ability.png)
-
-<!--no_check-->

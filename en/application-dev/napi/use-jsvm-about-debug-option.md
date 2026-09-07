@@ -1,12 +1,11 @@
 # Performing Debug Operations Using JSVM-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=f34ddda28f1bcebae0ddfbd293a9ffe8cb2789f9 translatedAt=2026-08-12T06:30:34.996Z pushedAt=2026-08-12T10:54:37.485Z -->
+<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-08-26T02:55:14.028Z pushedAt=2026-08-26T03:33:21.118Z -->
 
 ## Overview
 
@@ -18,8 +17,7 @@ All debug options are of the JSVM_DebugOption type.
 
 ### JSVM_SCOPE_CHECK
 
-- During development, you may call **JSVM_Value** variables in the previous **HandleScope** after it ends, causing application crash. **JSVM_SCOPE_CHECK** is a method for checking whether the called **JSVM_Value** variable exceeds the scope of **HandleScope**. If yes, the error "Run in wrong HandleScope" is reported.
-
+- During development, you may call **JSVM_Value** variables in the previous **HandleScope** after it ends, causing the application to crash. **JSVM_SCOPE_CHECK** is a method for checking whether the called **JSVM_Value** variable exceeds the scope of **HandleScope**. If yes, the error "Run in wrong HandleScope" is reported.
 - After this debug option is enabled, if JSVM-API creates a **JSVM_Value**, **ADD_VAL_TO_SCOPE_CHECK in function: [function name]** is output in HiLog logs, for example, **ADD_VAL_TO_SCOPE_CHECK in function: OH_JSVM_GetBoolean**. If JSVM-API uses **JSVM_Value**, **CHECK_SCOPE in function: [function name]** is output in HiLog logs, indicating that **HandleScope** verification is performed on the used **JSVM_Value**, for example, **CHECK_SCOPE in function: OH_JSVM_IsBoolean**.
 
 ## Available APIs
@@ -27,6 +25,7 @@ All debug options are of the JSVM_DebugOption type.
 | Name                                   | Description                      |
 |-----------------------------------------|-------------------------------|
 | OH_JSVM_SetDebugOption                  | Enables or disables a specified debug option in a specific **JSVM_Env**. The input **debugOption** must be of the **JSVM_DebugOption** type. The Boolean parameter **isEnabled** is used to control whether to enable the debug option. This API is used only for debugging. Enabling this API may cause performance deterioration.|
+
 
 ## Sample Code
 
@@ -37,7 +36,6 @@ If you are just starting out with JSVM-API, see [JSVM-API Development Process](u
 Replace the **TestJSVM()** function in the sample code of [JSVM-API Development Process](use-jsvm-process.md).
 
 - Call the JSVM_Value variable in the correct **HandleScope**.
-
 ```cpp
 static int32_t TestJSVM()
 {
@@ -66,7 +64,7 @@ static int32_t TestJSVM()
     // Call the demo function using the script.
     JSVM_Script script;
     JSVM_Value jsSrc, result;
-    CHECK_RET(OH_JSVM_CreateStringUtf8(env, srcCallNative, JSVM_AUTO_LENGTH, &jsSrc));
+    CHECK_RET(OH_JSVM_CreateStringUtf8(env, SRC_CALL_NATIVE, JSVM_AUTO_LENGTH, &jsSrc));
     CHECK_RET(OH_JSVM_CompileScript(env, jsSrc, nullptr, 0, true, nullptr, &script));
     CHECK_RET(OH_JSVM_RunScript(env, script, &result));
 
@@ -91,7 +89,6 @@ static int32_t TestJSVM()
     return 0;
 }
 ```
-
 **Execution result**
 
 The following information is displayed in the HiLog:
@@ -130,7 +127,7 @@ static int32_t TestJSVM()
     // Call the demo function using the script.
     JSVM_Script script;
     JSVM_Value jsSrc, result;
-    CHECK_RET(OH_JSVM_CreateStringUtf8(env, srcCallNative, JSVM_AUTO_LENGTH, &jsSrc));
+    CHECK_RET(OH_JSVM_CreateStringUtf8(env, SRC_CALL_NATIVE, JSVM_AUTO_LENGTH, &jsSrc));
     CHECK_RET(OH_JSVM_CompileScript(env, jsSrc, nullptr, 0, true, nullptr, &script));
     CHECK_RET(OH_JSVM_RunScript(env, script, &result));
 
@@ -150,11 +147,9 @@ static int32_t TestJSVM()
     return 0;
 }
 ```
-
 **Execution result**
 
 The application crashes, the cppcrash log is generated, and the following information is displayed in HiLog:
-
 ```txt
 JSVM Fatal Error Position : "../../../../../../../arkcompiler/jsvm/src/js_native_api_v8.cpp":4537
 JSVM Fatal Error Message : "Run in wrong HandleScope"

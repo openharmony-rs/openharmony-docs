@@ -215,7 +215,7 @@ int32_t OH_ArkUI_CustomSpanMetrics_SetWidth(ArkUI_CustomSpanMetrics* metrics, fl
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 参数验证失败。<br>         可能原因：参数验证失败，参数不能为空。<br>         处理步骤：请确保传入的metrics参数不为空指针。 |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 参数验证失败。<br>         可能原因：参数不能为空。<br>         处理步骤：请确保传入的metrics参数不为空指针。|
 
 ### OH_ArkUI_CustomSpanMetrics_SetHeight()
 
@@ -246,7 +246,7 @@ int32_t OH_ArkUI_CustomSpanMetrics_SetHeight(ArkUI_CustomSpanMetrics* metrics, f
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 参数验证失败。<br>         可能原因：参数验证失败，参数不能为空。<br>         处理步骤：请确保传入的metrics参数不为空指针。 |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 参数验证失败。<br>         可能原因：参数不能为空。<br>         处理步骤：请确保传入的metrics参数不为空指针。|
 
 ### OH_ArkUI_CustomSpanDrawInfo_Create()
 
@@ -322,7 +322,7 @@ float OH_ArkUI_CustomSpanDrawInfo_GetXOffset(ArkUI_CustomSpanDrawInfo* info)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_CustomSpanDrawInfo](capi-arkui-nativemodule-arkui-customspandrawinfo.md)* info | 自定义绘制Span绘制信息指针，用于传入需要获取x轴偏移值的绘制信息对象。参数不能为空，否则会导致参数验证失败。 |
+| [ArkUI_CustomSpanDrawInfo](capi-arkui-nativemodule-arkui-customspandrawinfo.md)* info | 自定义绘制Span绘制信息指针，用于传入需要获取x轴偏移值的绘制信息对象。参数不能为空，否则会导致参数验证失败。必须是通过OH_ArkUI_CustomSpanDrawInfo_Create()创建的有效对象。 |
 
 **返回：**
 
@@ -382,7 +382,7 @@ float OH_ArkUI_CustomSpanDrawInfo_GetLineBottom(ArkUI_CustomSpanDrawInfo* info)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_CustomSpanDrawInfo](capi-arkui-nativemodule-arkui-customspandrawinfo.md)* info | 自定义绘制Span绘制信息指针，用于传入需要获取下边距的绘制信息对象。参数不能为空，否则会导致参数验证失败。 |
+| [ArkUI_CustomSpanDrawInfo](capi-arkui-nativemodule-arkui-customspandrawinfo.md)* info | 自定义绘制Span绘制信息指针，用于传入需要获取下边距的绘制信息对象。参数不能为空，否则会导致参数验证失败。必须是通过OH_ArkUI_CustomSpanDrawInfo_Create()创建的有效对象。 |
 
 **返回：**
 

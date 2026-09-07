@@ -6,7 +6,7 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=4575f288d13c429dbede3c0b33d0bfd71bcb7755 translatedAt=2026-08-10T03:47:44.115Z pushedAt=2026-08-10T08:38:26.914Z -->
+<!-- md-trans-meta sourceCommit=cbc788541d3c92f56dce788e128dfa81de46aa31 translatedAt=2026-08-22T02:05:22.427Z pushedAt=2026-08-22T06:38:14.122Z -->
 
 ## Basic Concepts
 
@@ -35,7 +35,7 @@ To enable a system application that accesses the AVSession service as the contro
    import { audio } from '@kit.AudioKit';
    ```
 
-2. Use **castAudio** in **AVSessionManager** to project all sessions of the local device to another device.
+2. Use **castAudio** in **AVSessionManager** to project all sessions of the local device to the obtained device list.
 
    ```ts
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';

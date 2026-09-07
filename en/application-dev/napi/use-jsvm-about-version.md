@@ -1,12 +1,11 @@
 # Obtaining the JSVM-API Version Using JSVM-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=d475d826f8ab6e97b4b69944b8a9a6d84f792324 translatedAt=2026-08-12T06:33:53.751Z pushedAt=2026-08-12T11:01:03.548Z -->
+<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-09-01T02:42:33.628Z pushedAt=2026-09-02T06:39:06.794Z -->
 
 ## Introduction
 
@@ -58,7 +57,7 @@ static JSVM_Value GetVMInfo(JSVM_Env env, JSVM_CallbackInfo info)
     // Obtain the VM information.
     JSVM_VMInfo result;
     JSVM_CALL(OH_JSVM_GetVMInfo(&result));
-    // Output VM information.
+    // Output the VM information.
     PrintVmInfo(result);
     return nullptr;
 }
@@ -80,7 +79,6 @@ static const char *STR_TASK = R"JS(getVersion();getVMInfo();)JS";
 ```
 
 Expected result:
-
 ```txt
 JSVM GetVersion success:9
 JSVM API apiVersion: 1

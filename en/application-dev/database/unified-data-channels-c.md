@@ -1,12 +1,12 @@
 # Sharing Data via Unified Data Channels (C/C++)
-
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @jcwen-->
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=4b90a346c35ae86f50b36d420ba72b66b13ac32f translatedAt=2026-08-18T11:02:16.724Z pushedAt=2026-08-18T11:26:46.377Z -->
+<!-- md-trans-meta sourceCommit=8b7d62a1c88006f9a8776a109a702ecc165908b3 translatedAt=2026-08-26T02:54:17.038Z pushedAt=2026-08-26T03:21:16.550Z -->
+
 
 ## When to Use
 
@@ -18,7 +18,7 @@ The Unified Data Management Framework (UDMF) provides unified data channels and 
 
 Unified data channels are used to write and read data across applications in various service scenarios. They can temporarily store unified data objects that need to be shared by applications and comply with unified data definitions, and provide the data objects for other applications to access. In addition, they manage the modification permissions, deletion permissions, and lifecycles of temporarily stored data based on certain policies.
 
-The unified data channel is implemented by the system ability provided by UDMF. When an application (data provider) needs to share data, it calls the **insertData()** method to write the data to the UDMF data channel, and calls **updateData()** or **deleteData()** to update or delete the data saved by the application. The target application (data consumer) can access the data by the APIs provided by UDMF.
+The unified data channel is implemented by the system ability provided by UDMF. When an application (data provider) needs to share data, it calls the **insertData()** method to write the data to the UDMF data channel, and calls **updateData()** or **deleteData()** to update or delete the data saved by the application. The target application (data consumer) can access the data using the APIs provided by UDMF.
 
 Avoid using **unifiedDataChannel** APIs in multi-threaded calls.
 
@@ -65,6 +65,7 @@ For details about the APIs, see [udmf.h](../reference/apis-arkdata/capi-udmf-h.m
 | OH_UdmfOptions* OH_UdmfOptions_Create()        | Creates a pointer to an **OH_UdmfOptions** instance.                         |
 | void OH_UdmfOptions_Destroy(OH_UdmfOptions* pThis)  | Destroys the pointer to an **OH_UdmfOptions** instance.                         |
 
+
 ## Adding Dynamic Link Libraries
 
 Add the following libraries to **CMakeLists.txt**.
@@ -94,19 +95,12 @@ libudmf.so, libhilog_ndk.z.so
 ## Writing UDS Data Using UDMF
 
 To write the **OH_UdsHyperlink** data, perform the following steps:
-
 1. Create a UDS data structure for hyperlink.
-
 2. Set the URL and description for the hyperlink.
-
 3. Create an **OH_UdmfRecord** object and add the hyperlink data to it.
-
 4. Create an **OH_UdmfData** object and add **OH_UdmfRecord** to it.
-
 5. Construct an **OH_UdmfOptions**.
-
 6. Construct and write data to the database. The key of the data is returned.
-
 7. Destroy all the pointers created.
 
 <!-- @[unified_data_channels_c_write_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels_C/entry/src/main/cpp/napi_init.cpp) -->
@@ -139,6 +133,7 @@ int32_t SetHyperlinkData(OH_UdsHyperlink* hyperlink, OH_UdmfRecord* record, OH_U
     }
     return UDMF_E_OK;
 }
+
 int32_t CreateDataTest()
 {
     // 1. Create the UDS data structure, OH_UdmfRecord object, and OH_UdmfData object for the hyperlink.
@@ -188,15 +183,10 @@ int32_t CreateDataTest()
 ## Obtaining UDS Data Using UDMF
 
 To obtain the **OH_UdsHyperlink** data, perform the following steps:
-
 1. Construct an **OH_UdmfOptions**.
-
 2. Obtain data through **OH_UdmfOptions**.
-
 3. Check whether **OH_UdmfData** has the required data type.
-
 4. Obtain data records and hyperlink data.
-
 5. Destroy all the pointers created.
 
 <!-- @[unified_data_channels_c_get_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels_C/entry/src/main/cpp/napi_init.cpp) -->
@@ -300,19 +290,12 @@ int32_t GetDataTest()
 ## Updating UDS Data Using UDMF
 
 To update the **OH_UdsHyperlink** data, perform the following steps:
-
 1. Create a UDS data structure for hyperlink.
-
 2. Set the URL and description for the hyperlink.
-
 3. Create an **OH_UdmfRecord** object and add the hyperlink data to it.
-
 4. Create an **OH_UdmfData** object and add **OH_UdmfRecord** to it.
-
 5. Construct an **OH_UdmfOptions**.
-
 6. Update data and write the data to the database.
-
 7. Destroy all the pointers created.
 
 <!-- @[unified_data_channels_c_update_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels_C/entry/src/main/cpp/napi_init.cpp) -->
@@ -397,17 +380,11 @@ int32_t UpdateDataTest()
 ## Deleting UDS Data Using UDMF
 
 To delete the **OH_UdsHyperlink** data, perform the following steps:
-
 1. Construct an **OH_UdmfOptions**.
-
 2. Delete data through **OH_UdmfOptions**.
-
 3. Check whether **OH_UdmfData** has the required data type.
-
 4. Obtain data records and hyperlink data.
-
 5. Obtain elements in data records.
-
 6. Destroy all the pointers created.
 
 <!-- @[unified_data_channels_c_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels_C/entry/src/main/cpp/napi_init.cpp) -->
@@ -518,13 +495,9 @@ int32_t DeleteDataTest()
 ### Defining a Function for Providing UDS Data
 
 The following uses hyperlink data as an example to describe how to define a callback function that provides UDS data.
-
 1. Define a data providing function for **OH_UdmfRecordProvider**.
-
 2. Create a UDS of the hyperlink type in the data providing function.
-
 3. Set the URL and description for the hyperlink.
-
 4. Define a callback to be invoked when **OH_UdmfRecordProvider** is destroyed.
 
 <!-- @[unified_data_channels_c_define_get_data_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels_C/entry/src/main/cpp/napi_init.cpp) -->
@@ -553,13 +526,9 @@ static void ProviderFinalizeCallback(void* context) { OH_LOG_INFO(LOG_APP, "OH_U
 The following uses hyperlink data as an example to describe how to use OH_UdmfRecordProvider and UDMF to write data in delayed mode. The hyperlink data is not written to the database until the **GetDataCallback** function is triggered when the data consumer obtains **OH_UdsHyperlink** from **OH_UdmfRecord**.
 
 1. Create an **OH_UdmfRecordProvider** instance and set a data providing function for it and a callback to be invoked when this instance is destroyed.
-
 2. Create an **OH_UdmfRecord** object and configure **OH_UdmfRecordProvider** in it.
-
 3. Create an **OH_UdmfData** object and add **OH_UdmfRecord** to it.
-
 4. Construct and write data to the database. The key of the data is returned.
-
 5. Destroy all the pointers created.
 
 <!-- @[unified_data_channels_c_delay_write_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels_C/entry/src/main/cpp/napi_init.cpp) -->
@@ -598,6 +567,7 @@ int32_t ProviderSetDataTest()
     OH_UdmfRecord_Destroy(record);
     OH_UdmfData_Destroy(data);
     OH_UdmfOptions_Destroy(options);
+    OH_UdmfRecordProvider_Destroy(provider);
     return UDMF_E_OK;
 }
 ```

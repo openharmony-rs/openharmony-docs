@@ -6,7 +6,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=aa9545020692baaf11004432a3eb3c2a031071bf translatedAt=2026-08-17T08:49:59.787Z pushedAt=2026-08-19T02:23:38.891Z -->
+<!-- md-trans-meta sourceCommit=d2cbdffcfd61421386c0169fb6c4af94f4013c73 translatedAt=2026-08-25T10:02:13.552Z pushedAt=2026-08-25T12:10:16.770Z -->
 
 - ArkTS APIs<!--connectivity-arkts-->
 
@@ -79,6 +79,8 @@
   - [@ohos.bluetooth.a2dp (Bluetooth A2DP Module) (System API)](js-apis-bluetooth-a2dp-sys.md)
 
   - [@ohos.bluetooth.access (Bluetooth Access Module) (System API)](js-apis-bluetooth-access-sys.md)
+
+  - [@ohos.bluetooth.bas (Bluetooth BAS Module) (System API)](js-apis-bluetooth-bas-sys.md)
 
   - [@ohos.bluetooth.baseProfile (Bluetooth baseProfile Module) (System API)](js-apis-bluetooth-baseProfile-sys.md)
 

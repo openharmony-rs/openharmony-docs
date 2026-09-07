@@ -6,6 +6,7 @@
 <!--Designer: @liyiming13-->
 <!--Tester: @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=ce54139d1685b975f701d518f7149cf8c16360b0 translatedAt=2026-08-22T02:11:35.496Z pushedAt=2026-08-22T06:49:42.829Z -->
 
 In many complex app projects, C++ source code is built via command-line build systems such as CMake. This section describes how to switch an existing CMake project to the OpenHarmony toolchain, so that you can build the project using command-line CMake.
 
@@ -187,7 +188,7 @@ int sum(int a, int b)
 
 **In Linux and Mac System Environments**
 
-In the module directory of the project, create a build directory to store intermediate files generated during CMake build. Note: `ohos-sdk` is the root directory of the downloaded SDK. You need to replace it with the actual download directory.
+In the module directory of the project, create a `build` directory to store intermediate files generated during the CMake build. `ohos-sdk` is the root directory of the downloaded SDK. You need to replace it with the actual download directory.
 
 1. Use `OHOS_STL=c++_shared` to dynamically link the C++ library for building the project. If not specified, `c++_shared` is used by default. The `OHOS_ARCH` parameter determines the specific value based on the system architecture. For example, when `OHOS_ARCH=armeabi-v7a`, a 32-bit dynamic library is compiled; when `OHOS_ARCH=arm64-v8a`, a 64-bit dynamic library is compiled.
 

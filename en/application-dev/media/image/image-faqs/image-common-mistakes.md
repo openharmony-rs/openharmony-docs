@@ -6,7 +6,7 @@
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=9ad5e24eaa1ac95d00b48a8436556bc45cf5aa32 translatedAt=2026-08-11T10:27:41.624Z pushedAt=2026-08-11T11:31:49.918Z -->
+<!-- md-trans-meta sourceCommit=baa6342393c04fcdac4db76418b040e6bcf63bed translatedAt=2026-08-22T02:07:26.033Z pushedAt=2026-08-22T06:48:11.026Z -->
 
 This section demonstrates typical misuse cases of Image Kit APIs, helping you avoid common development issues and improve app stability and performance.
 
@@ -60,7 +60,7 @@ import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function wrongPackingExample(pixelMap: image.PixelMap, fd: number): Promise<void> {
-  let imagePacker = image.ImagePacker | null = null;
+  let imagePacker: image.ImagePacker | null = null;
 
   try {
     imagePacker = image.createImagePacker();
@@ -91,7 +91,7 @@ async function wrongPackingExample(pixelMap: image.PixelMap, fd: number): Promis
 import { image } from '@kit.ImageKit';
 
 async function correctPackingExample(pixelMap: image.PixelMap, fd: number): Promise<void> {
-  let imagePacker = image.ImagePacker | null = null;
+  let imagePacker: image.ImagePacker | null = null;
 
   try {
     imagePacker = image.createImagePacker();

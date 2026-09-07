@@ -6,11 +6,11 @@
 <!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=d6200ee580e2d2b406a92c0e4a15bf6480d0d39a translatedAt=2026-08-13T09:05:36.340Z pushedAt=2026-08-13T13:48:08.313Z -->
+<!-- md-trans-meta sourceCommit=9389b4377843102b8f7fb1d104bdafe9f6f56511 translatedAt=2026-08-26T02:59:22.070Z pushedAt=2026-08-26T03:47:19.363Z -->
 
 ArkTS is a new programming language that brings new development experience and opportunities to developers familiar with Java. It inherits the features of modern languages in terms of syntax and programming paradigms, and is deeply optimized for the ecosystem. Understanding the differences and commonalities between Java and ArkTS can help you quickly get started with application development and avoid common programming pitfalls.
 
-This document compares and introduces ArkTS based on the Java language. For more details, see [ArkTS syntax](./arkts-language-guide-basics.md).
+This document introduces ArkTS by comparing it with Java. For more details, see [Introduction to ArkTS](./introduction-to-arkts.md).
 
 ## Exploring the Differences Between Java and ArkTS
 
@@ -34,7 +34,6 @@ let version = 5.0;
 ```
 
 ### Primitive Types
-
 | Java      | ArkTS           | Sample Code                         | Key Difference                 |
 |----------------|----------------------|-----------------------------------|-------------------------------|
 | `boolean`      | `boolean`            | `let isDone: boolean = false;`    | They are defined similarly and used for logical judgments in Java and ArkTS, with no runtime boxing or unboxing operations.                     |
@@ -48,7 +47,6 @@ let version = 5.0;
 | `String`       | `string`             | `let message: string = 'Hello';`  | They are defined similarly, but the **string** type of ArkTS supports template literals (for example, **${name}**) and more flexible operations. |
 
 ### Complication Types
-
 | Java               | ArkTS           | Sample Code in ArkTS                                                                | Key Difference                                                                |
 |-----------------------------|--------------------------|-------------------------------------------------------------------------|-----------------------------------------------------------------------------|
 | **Array**: `int[] arr = new int[5];`| **Array**: `let arr: Array<number> = [1, 2, 3];`| `// Initialize an array at fixed length (similar to Java).`<br>`let fixedArr: number[] = new Array<number>(5);`<br>`// Initialize an array at dynamic length. Syntactic sugar is used.`<br>`let dynamicArr = [4, 5, 6];`<br>| The length of a Java array is fixed.<br>The length of an ArkTS array is dynamic. Operations such as **push** and **pop** are supported. You can use **[]** to simplify initialization. ArkTS array does not go out of bounds. If the array subscript exceeds the array length, **undefined** is returned.|
@@ -57,6 +55,7 @@ let version = 5.0;
 | **Interface**: `interface Shape { double area(); }` | **interface**: `interface Shape { area(): number; }` | ```class Rectangle implements Shape {```<br>```  public width: number = 0;```<br>```  public height: number = 0;```<br>```  area(): number { return this.width * this.height; }```<br>```}```<br> | The syntax is similar, but ArkTS interface implementations do not require explicit modifiers (such as Java's `public`), and they support optional properties (such as `name?: string`). |
 | **Class**: `class Circle implements Shape { /* Class definition */ }` | **class**: `class Circle implements Shape { /* Class definition */ }` | ```class Circle {```<br>```  radius: number;```<br>```  constructor(radius: number = 10) { // Support default parameter values.```<br>```    this.radius = radius;```<br>```  }```<br>```}```<br> | ArkTS classes support default property values and optional parameters, making the syntax more concise. |
 | **Enum**: `enum Color { RED, GREEN, BLUE; }`| **enum**: `enum Colors { Red, Green, Blue }`| `enum Colors { Red = 1, Green, Blue };`<br>`let color = Colors.Green; // The value is 2, which is automatically incremented.`<br>| The basic concepts are the same. However, ArkTS enum does not support custom constructors and methods like Java. Only a simple numeric or string enum is supported.|
+
 
 ### Functions
 
@@ -249,6 +248,7 @@ function callFunction(fn: () => void) {
 The type system of ArkTS is different from that of Java.
 
 ### Type Inference and Optional Types
+
 
 Compared with Java that requires explicit type declaration and strict null check, the type system of ArkTS provides more flexible expression modes.
 

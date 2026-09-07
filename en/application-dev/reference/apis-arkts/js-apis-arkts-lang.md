@@ -52,7 +52,7 @@ class CustomData implements lang.ISendable {
 
 ## RetentionPolicy<sup>24+</sup>
 
-Enumerates the retention policies of [annotation](../../quick-start/arkts-language-guide-annotations.md#basic-concepts-of-annotations) types. Its enum values are used together with [Retention](#retention24) to specify the lifecycle of an annotation.
+Enumerates the retention policies of annotation types. Its enum values are used together with [Retention](#retention24) to specify the lifecycle of an annotation.
 
 **Model restriction**: This API can be used only in the stage model.
 

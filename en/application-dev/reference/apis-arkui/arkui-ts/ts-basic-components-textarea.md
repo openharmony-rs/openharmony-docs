@@ -2473,14 +2473,13 @@ struct TextAreaExample {
   // Set the font size.
   async setFontScale(scale: number): Promise<void> {
     let configInit: Configuration = {
-      language: 'zh-Ch',
-      fontSizeScale: scale,
+      fontSizeScale: scale
     };
     // Update system font scaling.
     // Add the ohos.permission.UPDATE_CONFIGURATION permission to the requestPermissions field in the module.json5 file of the project.
     abilityManager.updateConfiguration(configInit, (err: BusinessError) => {
       if (err) {
-        console.error(`updateConfiguration fail, err: ${JSON.stringify(err)}`);
+        console.error(`Failed to updateConfiguration. Code: ${err.code}, message: ${err.message}`);
       } else {
         this.currentFontSizeScale = scale;
         console.info('updateConfiguration success.');
@@ -2491,7 +2490,7 @@ struct TextAreaExample {
   build() {
     Column() {
       Column({ space: 30 }) {
-        Text("Configure the minimum and maximum font scale factors using minFontScale and maxFontScale.")
+        Text('Use minFontScale and maxFontScale to adjust the maximum and minimum font scale factors for text display.')
         TextArea({
           placeholder: 'The text area can hold an unlimited amount of text. input your word...',
           text: 'Use minFontScale and maxFontScale to adjust the maximum and minimum font scale factors for text display.'
@@ -2499,6 +2498,7 @@ struct TextAreaExample {
           .minFontScale(this.minFontScale)// Set the minimum font scale factor. If the parameter is set to undefined, the default scale factor is used.
           .maxFontScale(this.maxFontScale) // Set the maximum font scale factor. If the parameter is set to undefined, the default scale factor is used.
       }.width('100%')
+      //The following buttons are only used for adjusting the font‑size multiplier and are not displayed in the sample image.
 
       Column() {
         Row() {
@@ -2802,6 +2802,9 @@ struct Index {
 ### Example 25: Setting the Placeholder Rich Text Style
 
 This example demonstrates how to set the placeholder rich text style using the [setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22) API, available since API version 22.
+
+The base text supports multiple languages, and start and length values vary by language. This example implements rich text styling on Chinese text.
+
 ```ts
 // xxx.ets
 import { LengthMetrics } from '@kit.ArkUI';

@@ -214,7 +214,7 @@ You can use **env(safe-area-inset-*)** to define the CSS style, ensuring that te
 }
 .content {
     margin: 8px;
-    padding-top: calc(env(safe-area-inset-top) + 40px); / * Set the title bar to increase the padding-top height. */
+    padding-top: calc(env(safe-area-inset-top) + 40px); /* Set the title bar to increase the padding-top height. */
 }
 .tabs {
     justify-content: space-around;

@@ -6,7 +6,7 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=bf8f4e66ff4670425bebf86f62c06d3a07dae9d4 translatedAt=2026-08-03T11:23:46.768Z pushedAt=2026-08-04T07:42:16.906Z -->
+<!-- md-trans-meta sourceCommit=0876b7ba2fa1777332890da7f5059310feded633 translatedAt=2026-08-22T01:36:53.732Z pushedAt=2026-08-22T03:32:02.170Z -->
 
 ## Overview
 
@@ -50,7 +50,7 @@ The following table lists the common APIs used for text measurement. For details
    import { text, drawing } from '@kit.ArkGraphics2D';
    ```
 
-2. Create a paragraph style and use **ParagraphBuilder** to generate a paragraph instance.
+2. Create a paragraph style and construct a **ParagraphBuilder** instance.
 
    <!-- @[ts_text_metrics_create_paragraphBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
 

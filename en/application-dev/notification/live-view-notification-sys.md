@@ -1,12 +1,11 @@
 # Publishing a Live View Notification (for System Applications Only)
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=a56d795a51f9068e61c2cc2726ea675f5d93d82a translatedAt=2026-08-13T03:10:14.313Z pushedAt=2026-08-13T07:27:26.301Z -->
+<!-- md-trans-meta sourceCommit=ec449b4fe5ef265eace4d39527adbd9cd013cca4 translatedAt=2026-09-01T02:48:14.869Z pushedAt=2026-09-02T07:18:13.689Z -->
 
 The live view notification provides real-time progress of long-duration tasks, including voice recording, screen recording, audio and video playback, timing, and phone call. Such type of notification is not stored persistently, and its lifecycle is consistent with that of the notification publisher.
 
@@ -18,12 +17,13 @@ The live view notification provides real-time progress of long-duration tasks, i
 
 ## Available APIs
 
-The following table describes the APIs for notification publishing. You can specify the notification information – content, ID, slot type, and delivery time – by setting the [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md#notificationrequest) parameter in the APIs. The information can include the notification content, notification ID, notification channel type, and notification sending time.
+The following table describes the APIs for publishing notifications. The details of a notification to publish can be specified through the input parameter [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md#notificationrequest), including the [notification content](notification-glossary.md#notification-content), notification ID, notification channel type, and notification sending time.
 
 | **API**| **Description**|
 | -------- | -------- |
 | [publish](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerpublish)(request:&nbsp;NotificationRequest,&nbsp;callback:&nbsp;AsyncCallback&lt;void&gt;):&nbsp;void | Publishes a notification.                |
 | [cancel](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagercancel)(id:&nbsp;number,&nbsp;label:&nbsp;string,&nbsp;callback:&nbsp;AsyncCallback&lt;void&gt;):&nbsp;void | Cancels a notification.     |
+
 
 ## How to Develop
 
@@ -41,7 +41,7 @@ The following table describes the APIs for notification publishing. You can spec
 
 2. Publish a notification.
 
-   In addition to the parameters in the normal text notification, the system live view notification provides the **typeCode**, **capsule**, **button**, **time**, and **progress** parameters. For details, see [NotificationSystemLiveViewContent](../reference/apis-notification-kit/js-apis-inner-notification-notificationContent.md#notificationsystemliveviewcontent).
+   In addition to the parameters in the normal text notification, the [system live view](notification-glossary.md#system-live-view) notification provides the **typeCode**, **capsule**, **button**, **time**, and **progress** parameters. For details, see [NotificationSystemLiveViewContent](../reference/apis-notification-kit/js-apis-inner-notification-notificationContent.md#notificationsystemliveviewcontent).
 
       ```ts
       let imagePixelMap: image.PixelMap | undefined = undefined; // Obtain the image pixel map information.
@@ -71,7 +71,7 @@ The following table describes the APIs for notification publishing. You can spec
               capsule: {
                 title: "testTitle",
                 icon: imagePixelMap,
-                backgroundColor: "testColor",
+                backgroundColor: "testColor", // Replace with a valid color value, such as '#FF0000'.
               },
               // Progress. To update the progress, you only need to modify the progress value and publish the notification again.
               progress: {

@@ -6,13 +6,13 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=a56d795a51f9068e61c2cc2726ea675f5d93d82a translatedAt=2026-08-13T03:11:57.597Z pushedAt=2026-08-13T07:47:14.183Z -->
+<!-- md-trans-meta sourceCommit=b0e965054b682272b6c9e3890a6020b1129a6551 translatedAt=2026-08-22T02:22:05.523Z pushedAt=2026-08-22T07:16:47.275Z -->
 
 Starting from API version 18, applications can update only published notifications, such as the upload/download progress and IMs.
 
 ## Available APIs
 
-The table below lists the API for updating notifications. You can use the **updateOnly** field in [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1) to specify the notification to update. The value is set to **false** if no notification is specified.
+The following table describes the APIs for publishing and updating notifications. [Notification update](notification-glossary.md#notification-update) can be specified by carrying the **updateOnly** field in the [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1) parameter. If this field is not specified, it defaults to **false**.
 
 - When **updateOnly** is set to **true**, if a notification with the same ID exists, it will be updated. If no notification with the same ID exists, the update fails and no new notification is created.
 

@@ -3890,6 +3890,7 @@ getStringIndexForPosition(point: common2D.Point): number
 **示例：**
 
 ```ts
+import { common2D } from '@kit.ArkGraphics2D'
 let point : common2D.Point = { x: 15.0, y: 2.0 };
 let index = lines[0].getStringIndexForPosition(point);
 ```

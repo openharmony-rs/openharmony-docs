@@ -6,7 +6,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=f2cd623d606ddf44ee1a12cd7214615ae69df40f translatedAt=2026-08-03T02:24:29.316Z pushedAt=2026-08-03T06:39:46.393Z -->
+<!-- md-trans-meta sourceCommit=04869f9e89f730a6d0eb27f25db0b204c50aad54 translatedAt=2026-08-22T01:26:49.750Z pushedAt=2026-08-22T03:11:10.849Z -->
 
 Many apps want to leverage widget capabilities to achieve the same functionality as when the app is running in the foreground. For example, a music widget provides buttons such as play and pause. Tapping different buttons triggers different functions of the music app, thereby improving the user experience. Using the call capability of the [postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1) API in a widget, you can pull the UIAbility specified by the widget provider app to the background. In addition, the call capability allows you to invoke a specified method of the app and pass data, so that the app can execute different functions through the buttons on the widget while running in the background.
 
@@ -18,7 +18,7 @@ Many apps want to leverage widget capabilities to achieve the same functionality
 
 1. Create a dynamic widget.
 
-    Create a dynamic widget named WidgetEventCall.
+    Create an ArkTS dynamic widget named **WidgetEventCall**.
 
 2. Implement page layout.
 

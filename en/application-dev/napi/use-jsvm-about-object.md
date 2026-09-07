@@ -1,12 +1,11 @@
 # Working with Objects Using JSVM-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=f34ddda28f1bcebae0ddfbd293a9ffe8cb2789f9 translatedAt=2026-08-12T06:32:22.614Z pushedAt=2026-08-12T10:57:40.079Z -->
+<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-08-26T02:56:48.911Z pushedAt=2026-08-26T03:35:29.919Z -->
 
 ## Overview
 
@@ -17,7 +16,6 @@ JSVM-API provides APIs for basic JavaScript (JS) object operations, including cr
 You may need to define and operate objects when using JSVM-API in development. For example, define an API with an object as an input parameter, perform operations on the object, and have a result object returned. In this process, you need to ensure that the API definition is clear and compatible with the properties and methods of the object.
 
 - API: defines the interaction protocol between components. An API includes input parameters, output result, and possible error handling. By calling APIs, components can interact and exchange data with each other without knowing the internal implementation details.
-
 - Object: a composite data type that allows values of different types in an independent entity in JS. An object is a collection of properties and methods. A property is a value associated with an object, and a method is an operation that the object can perform.
 
 ## Available APIs
@@ -86,7 +84,6 @@ const char* SRC_CALL_NATIVE = R"JS(const myObject = {};
 ```
 
 Expected result:
-
 ```ts
 JSVM GetPrototype success
 ```
@@ -121,7 +118,7 @@ static JSVM_Value CreateObject(JSVM_Env env, JSVM_CallbackInfo info)
     // Set the property name to "name"
     OH_JSVM_CreateStringUtf8(env, "name", JSVM_AUTO_LENGTH, &name);
     JSVM_Value value = nullptr;
-    // Set the property value to "Hello from N-API!"
+    // Set the property value to "Hello OH_JSVM_CreateObject!"
     OH_JSVM_CreateStringUtf8(env, "Hello OH_JSVM_CreateObject!", JSVM_AUTO_LENGTH, &value);
     // Set the property on the object
     OH_JSVM_SetProperty(env, object, name, value);
@@ -141,7 +138,6 @@ const char* SRC_CALL_NATIVE = R"JS(createObject())JS";
 ```
 
 Expected result:
-
 ```ts
 JSVM CreateObject success
 ```
@@ -195,7 +191,6 @@ const char* SRC_CALL_NATIVE = R"JS(let obj = { data: 55, message: "hello world"}
 ```
 
 Expected result:
-
 ```ts
 Test JSVM OH_JSVM_ObjectFreeze success
 ```
@@ -262,7 +257,6 @@ const char* SRC_CALL_NATIVE = R"JS( let obj = { data: 55, message: "hello world"
 ```
 
 Expected result:
-
 ```ts
 Test JSVM OH_JSVM_ObjectSeal success
 ```
@@ -352,7 +346,6 @@ const char* SRC_CALL_NATIVE = R"JS(getTypeof(true);)JS";
 ```
 
 Expected result:
-
 ```ts
 JSVM Input type is boolean
 ```
@@ -412,7 +405,6 @@ const char* SRC_CALL_NATIVE = R"JS(class Person {
 ```
 
 Expected result:
-
 ```ts
 JSVM InstanceOf: 1
 ```
@@ -511,7 +503,6 @@ const char* SRC_CALL_NATIVE = R"JS(
 ```
 
 Expected result:
-
 ```ts
 JSVM SetTypeTagToObject success
 JSVM CheckObjectTypeTag:1
@@ -574,7 +565,6 @@ const char* SRC_CALL_NATIVE = R"JS(createExternal())JS";
 ```
 
 Expected result:
-
 ```ts
 JSVM CreateExternal success
 ```
@@ -631,7 +621,6 @@ const char* SRC_CALL_NATIVE = R"JS(getValueExternal())JS";
 ```
 
 Expected result:
-
 ```ts
 JSVM OH_JSVM_CreateExternal success
 JSVM GetValueExternal success
@@ -682,7 +671,6 @@ const char* SRC_CALL_NATIVE = R"JS(createSymbol())JS";
 ```
 
 Expected result:
-
 ```ts
 JSVM CreateSymbol Success
 ```
@@ -739,7 +727,6 @@ const char* SRC_CALL_NATIVE = R"JS(symbolFor())JS";
 ```
 
 Expected result:
-
 ```ts
 JSVM OH_JSVM_SymbolFor success
 ```

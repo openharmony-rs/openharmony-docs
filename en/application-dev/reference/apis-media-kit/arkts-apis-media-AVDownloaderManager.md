@@ -5,8 +5,8 @@
 <!--Owner: @chenkun613227-->
 <!--Designer: @zhaoyunfei-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=39ee8583645d55abbaea4002eba3f819dc0cd1a2 translatedAt=2026-08-17T10:24:40.261Z pushedAt=2026-08-19T06:51:40.448Z -->
+<!--Adviser: @zzs911-->
+<!-- md-trans-meta sourceCommit=9debe03e456cd9546017cca228787eecf595247b translatedAt=2026-08-24T02:55:35.116Z pushedAt=2026-08-25T06:53:00.850Z -->
 
 This module provides APIs for managing offline download tasks of media resources, including creating, pausing, resuming, and removing download tasks, as well as listening for download status and progress change events. This module is applicable to scenarios where streaming media resources need to be cached offline in an app and played without network access. It helps users save traffic and improves media playback experience in poor network connection or offline scenarios. You can call [createAVDownloaderManager()](arkts-apis-media-f.md#mediacreateavdownloadermanager) to create an instance.
 

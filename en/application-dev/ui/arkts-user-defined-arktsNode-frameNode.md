@@ -60,7 +60,7 @@ With **FrameNode**, you can add, delete, query, and modify nodes, thereby changi
 >
 > Node queries only return UI-related nodes and do not include syntax nodes.
 >
-> In scenarios using custom components, you may query and obtain newly added nodes of the custom components, with the node type being **\_\_Common\_\_**.
+> In scenarios using custom components, you may query and obtain newly added nodes of the custom components, with the node type being \_\_Common\_\_.
 
 <!-- @[frameNodeTree_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeTree.ets) --> 
 
