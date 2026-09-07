@@ -2,7 +2,7 @@
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
-<!--Designer: @wyxpku-->
+<!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
 
@@ -139,7 +139,9 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统接口**：此接口为系统接口
+**系统接口**：此接口为系统接口。
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
@@ -182,7 +184,9 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统接口**：此接口为系统接口
+**系统接口**：此接口为系统接口。
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
@@ -194,7 +198,9 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统接口**：此接口为系统接口
+**系统接口**：此接口为系统接口。
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称                | 值   | 说明                   |
 | ------------------- | ---- | ---------------------- |
@@ -218,7 +224,9 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统接口**：此接口为系统接口
+**系统接口**：此接口为系统接口。
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
@@ -230,7 +238,9 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统接口**：此接口为系统接口
+**系统接口**：此接口为系统接口。
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
@@ -243,7 +253,9 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统接口**：此接口为系统接口
+**系统接口**：此接口为系统接口。
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
@@ -271,7 +283,9 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统接口**：此接口为系统接口
+**系统接口**：此接口为系统接口。
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
@@ -460,14 +474,16 @@ subscribe(capability: OnscreenAwarenessCap, callback: Callback&lt;OnscreenAwaren
 
 **需要权限**：
 
-- API版本26+：ohos.permission.ONSCREEN_AWARENESS.
+- API版本26+：ohos.permission.GET_SCREEN_CONTENT或ohos.permission.ONSCREEN_AWARENESS.
 - API版本23-24：ohos.permission.GET_SCREEN_CONTENT.
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **设备行为差异**：该接口在Phone和Tablet中可正常调用，在其他设备类型中返回801错误码。
 
-**系统接口**：此接口为系统接口
+**系统接口**：此接口为系统接口。
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数**：
 
@@ -483,7 +499,7 @@ subscribe(capability: OnscreenAwarenessCap, callback: Callback&lt;OnscreenAwaren
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.ONSCREEN_AWARENESS or ohos.permission.GET_SCREEN_CONTENT. |
+| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.GET_SCREEN_CONTENT or ohos.permission.ONSCREEN_AWARENESS. |
 | 202      | Permission check failed. A non-system application uses the system API. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
 | 34000001 | Service exception. |
@@ -492,7 +508,7 @@ subscribe(capability: OnscreenAwarenessCap, callback: Callback&lt;OnscreenAwaren
 **示例**：
 
    ```ts
-   import onScreen from "@ohos.multimodalAwareness.onScreen";
+   import { onScreen } from '@kit.MultimodalAwarenessKit';
    let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
       groupId: 'SmartEdge',
    }
@@ -521,7 +537,7 @@ unsubscribe(capability: OnscreenAwarenessCap, callback?: Callback&lt;OnscreenAwa
 
 **需要权限**：
 
-- API版本26+：ohos.permission.ONSCREEN_AWARENESS.
+- API版本26+：ohos.permission.GET_SCREEN_CONTENT或ohos.permission.ONSCREEN_AWARENESS.
 - API版本23-24：ohos.permission.GET_SCREEN_CONTENT.
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
@@ -529,6 +545,8 @@ unsubscribe(capability: OnscreenAwarenessCap, callback?: Callback&lt;OnscreenAwa
 **设备行为差异**：该接口在Phone和Tablet中可正常调用，在其他设备类型中返回801错误码。
 
 **系统接口**：此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数**：
 
@@ -543,7 +561,7 @@ unsubscribe(capability: OnscreenAwarenessCap, callback?: Callback&lt;OnscreenAwa
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.ONSCREEN_AWARENESS or ohos.permission.GET_SCREEN_CONTENT. |
+| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.GET_SCREEN_CONTENT or ohos.permission.ONSCREEN_AWARENESS. |
 | 202      | Permission check failed. A non-system application uses the system API. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
 | 34000001 | Service exception. |
@@ -551,7 +569,7 @@ unsubscribe(capability: OnscreenAwarenessCap, callback?: Callback&lt;OnscreenAwa
 **示例**：
 
 ```ts
-import onScreen from "@ohos.multimodalAwareness.onScreen";
+import { onScreen } from '@kit.MultimodalAwarenessKit';
 let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
    groupId: 'SmartEdge'
 }
@@ -573,7 +591,7 @@ trigger(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): P
 
 **需要权限**：
 
-- API版本26+：ohos.permission.ONSCREEN_AWARENESS.
+- API版本26+：ohos.permission.GET_SCREEN_CONTENT或ohos.permission.ONSCREEN_AWARENESS.
 - API版本23-24：ohos.permission.GET_SCREEN_CONTENT.
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
@@ -581,6 +599,8 @@ trigger(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): P
 **设备行为差异**：该接口在Phone和Tablet中可正常调用，在其他设备类型中返回801错误码。
 
 **系统接口**：此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数**：
 
@@ -601,7 +621,7 @@ trigger(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): P
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.ONSCREEN_AWARENESS or ohos.permission.GET_SCREEN_CONTENT. |
+| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.GET_SCREEN_CONTENT or ohos.permission.ONSCREEN_AWARENESS. |
 | 202      | Permission check failed. A non-system application uses the system API. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
 | 34000001 | Service exception. |
@@ -610,7 +630,7 @@ trigger(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): P
 **示例**：
 
 ```ts
-import onScreen from "@ohos.multimodalAwareness.onScreen";
+import { onScreen } from '@kit.MultimodalAwarenessKit';
 let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
   capList: [
     'UiImage'
@@ -639,7 +659,7 @@ capture(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): P
 
 **需要权限**：
 
-- API版本26+：ohos.permission.ONSCREEN_AWARENESS.
+- API版本26+：ohos.permission.GET_SCREEN_CONTENT或ohos.permission.ONSCREEN_AWARENESS.
 - API版本23-24：ohos.permission.GET_SCREEN_CONTENT.
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
@@ -647,6 +667,8 @@ capture(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): P
 **设备行为差异**：该接口仅支持 Phone、Tablet 以及 Car 设备（Car 设备下需满足 capList 为 UiTree），在其余设备类型中调用将返回801错误码。
 
 **系统接口**：此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数**：
 
@@ -674,7 +696,7 @@ capture接口支持的capList能力列表，如下：
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.ONSCREEN_AWARENESS or ohos.permission.GET_SCREEN_CONTENT. |
+| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.GET_SCREEN_CONTENT or ohos.permission.ONSCREEN_AWARENESS. |
 | 202      | Permission check failed. A non-system application uses the system API. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
 | 34000001 | Service exception. |
@@ -683,7 +705,7 @@ capture接口支持的capList能力列表，如下：
 **UiImage 示例**：
 
 ```ts
-import onScreen from "@ohos.multimodalAwareness.onScreen";
+import { onScreen } from '@kit.MultimodalAwarenessKit';
 let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
   capList: [
     'UiImage',
@@ -700,7 +722,7 @@ try {
 **UiTree 示例**：
 
 ```ts
-import onScreen from "@ohos.multimodalAwareness.onScreen";
+import { onScreen } from '@kit.MultimodalAwarenessKit';
 let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
   capList: [
     'UiTree',
@@ -722,7 +744,7 @@ interact(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): 
 
 **需要权限**：
 
-- API版本26+：ohos.permission.ONSCREEN_AWARENESS.
+- API版本26+：ohos.permission.GET_SCREEN_CONTENT或ohos.permission.ONSCREEN_AWARENESS.
 - API版本23-24：ohos.permission.GET_SCREEN_CONTENT.
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
@@ -730,6 +752,8 @@ interact(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): 
 **设备行为差异**：该接口仅支持Phone、Tablet以及Car设备（Car 设备下需满足 capList 为 InjectEvent），在其余设备类型中调用将返回801错误码。
 
 **系统接口**：此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数**：
 
@@ -757,7 +781,7 @@ interact接口支持的capList能力列表，如下：
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.ONSCREEN_AWARENESS or ohos.permission.GET_SCREEN_CONTENT. |
+| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.GET_SCREEN_CONTENT or ohos.permission.ONSCREEN_AWARENESS. |
 | 202      | Permission check failed. A non-system application uses the system API. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
 | 34000001 | Service exception. |
@@ -766,7 +790,7 @@ interact接口支持的capList能力列表，如下：
 **JumpContext 示例**：
 
 ```ts
-import onScreen from "@ohos.multimodalAwareness.onScreen";
+import { onScreen } from '@kit.MultimodalAwarenessKit';
 let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
   capList: [
     'JumpContext',
@@ -794,7 +818,7 @@ try {
 **InjectEvent 示例**：
 
 ```ts
-import onScreen from "@ohos.multimodalAwareness.onScreen";
+import { onScreen } from '@kit.MultimodalAwarenessKit';
 let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
   capList: [
     'InjectEvent',    // （必填字段）注入事件能力：表示当前业务需要使用事件注入（如按键、点击、返回等系统事件注入）。
@@ -830,7 +854,7 @@ apperceive(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions)
 
 **需要权限**：
 
-- API版本26+：ohos.permission.ONSCREEN_AWARENESS.
+- API版本26+：ohos.permission.GET_SCREEN_CONTENT或ohos.permission.ONSCREEN_AWARENESS.
 - API版本23-24：ohos.permission.GET_SCREEN_CONTENT.
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
@@ -838,6 +862,8 @@ apperceive(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions)
 **设备行为差异**：该接口在Phone和Tablet中可正常调用，在其他设备类型中返回801错误码。
 
 **系统接口**：此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数**：
 
@@ -867,7 +893,7 @@ apperceive接口支持的groupId能力列表，如下：
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.ONSCREEN_AWARENESS or ohos.permission.GET_SCREEN_CONTENT. |
+| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.GET_SCREEN_CONTENT or ohos.permission.ONSCREEN_AWARENESS. |
 | 202      | Permission check failed. A non-system application uses the system API. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
 | 34000001 | Service exception. |
@@ -876,7 +902,7 @@ apperceive接口支持的groupId能力列表，如下：
 **示例**：
 
 ```ts
-import onScreen from "@ohos.multimodalAwareness.onScreen";
+import { onScreen } from '@kit.MultimodalAwarenessKit';
 let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
   groupId: 'SmartEdge'
 }
@@ -900,7 +926,9 @@ onReadingScreenPermissionListener(callback: Callback&lt;ReadingScreenPermissionS
 
 **设备行为差异**：该接口在Phone和Tablet中可正常调用，在其他设备类型中返回801错误码。
 
-**系统接口**：此接口为系统接口
+**系统接口**：此接口为系统接口。
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数**：
 
@@ -922,7 +950,7 @@ onReadingScreenPermissionListener(callback: Callback&lt;ReadingScreenPermissionS
 **示例**：
 
 ```ts
-import onScreen from "@ohos.multimodalAwareness.onScreen";
+import { onScreen } from '@kit.MultimodalAwarenessKit';
 try {
    onScreen.onReadingScreenPermissionListener((info: onScreen.ReadingScreenPermissionStatus) => {
       console.info(`onReadingScreenPermissionListener succeeded, readingState: ${info.readingState}`);
@@ -946,6 +974,8 @@ offReadingScreenPermissionListener(callback?: Callback&lt;ReadingScreenPermissio
 
 **系统接口**：此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数**：
 
 | 参数名   | 类型                             | 必填 | 说明               |
@@ -966,7 +996,7 @@ offReadingScreenPermissionListener(callback?: Callback&lt;ReadingScreenPermissio
 **示例**：
 
 ```ts
-import onScreen from "@ohos.multimodalAwareness.onScreen";
+import { onScreen } from '@kit.MultimodalAwarenessKit';
 try {
   onScreen.offReadingScreenPermissionListener();
   console.info(`offReadingScreenPermissionListener succeeded.`);
