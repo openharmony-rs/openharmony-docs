@@ -14,14 +14,15 @@
 
 1. 设置底部Tabs悬浮并为Tabs组件开启沉浸光感，同时使用[ExpandSafeArea](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#expandsafearea)将显示内容延伸至状态栏区域，使应用整体体验更加一致。
    <!-- @[immersive_tabs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/BestPractice.ets) -->
-   ```TypeScript
+   
+   ``` TypeScript
    @Entry
    @ComponentV2
    struct BestPractise {
      @Local currentTab: number = 0
      exploreStack: NavPathStack = new NavPathStack()
      gameStack: NavPathStack = new NavPathStack()
-
+   
      @Builder
      BottomTabBarItem(title: string, icon: Resource, index: number) {
        Column() {
@@ -36,7 +37,7 @@
        .width('100%')
        .height('100%')
      }
-
+   
      @Builder
      tabExploreContent() {
        // 通过系统路由表的方式配置对应的页面跳转
@@ -44,7 +45,7 @@
          .hideTitleBar(true)
          .expandSafeArea([SafeAreaType.SYSTEM])
      }
-
+   
      @Builder
      tabGameContent() {
        // 通过系统路由表的方式配置对应的页面跳转
@@ -52,7 +53,7 @@
          .hideTitleBar(true)
          .expandSafeArea([SafeAreaType.SYSTEM])
      }
-
+   
      build() {
        Tabs({ index: this.currentTab }) {
          TabContent() {
@@ -60,15 +61,15 @@
          }.tabBar(this.BottomTabBarItem('探索', $r('sys.symbol.compass'), 0))
          // 内容区延伸到状态栏区域，形成整体的交互体验
          .expandSafeArea([SafeAreaType.SYSTEM])
-
+   
          TabContent() {
            this.tabGameContent()
          }.tabBar(this.BottomTabBarItem('游戏', $r('sys.symbol.gamecontroller'), 1))
          .expandSafeArea([SafeAreaType.SYSTEM])
-
+   
          TabContent() {
          }.tabBar(this.BottomTabBarItem('应用', $r('sys.symbol.grid'), 2))
-
+   
          TabContent() {
          }.tabBar(this.BottomTabBarItem('元服务', $r('sys.symbol.gearshape'), 3))
        }
@@ -185,7 +186,7 @@
 
 1. 提取内容区中小标题为独立组件。
    <!-- @[classify_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/Utils.ets) -->
-
+   
    ``` TypeScript
    @ComponentV2
    export struct ClassifyComponent {
@@ -226,7 +227,7 @@
 2. 滑动内容区，当内容区标题滑动到标题栏区域时，将其切换到标题栏中显示。
 
    <!-- @[game_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/GamePage.ets) -->
-  
+   
    ``` TypeScript
    @ComponentV2
    struct GamePage {
