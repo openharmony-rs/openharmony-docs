@@ -2,12 +2,13 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @shengu_lancer; @yylong-->
-<!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Owner: @shengu_lancer; @rongShao-Z-->
+<!--Designer: @yangcan18-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=19810e056ea944483a18f856178807bee4322d5f translatedAt=2026-09-03T11:51:19.811Z -->
 
-The **ScrollBar** component is designed to be used together with scrollable components such as [ArcList](ts-container-arclist.md), [List](ts-container-list.md), [Grid](ts-container-grid.md), [Scroll](ts-container-scroll.md), and [WaterFlow](ts-container-waterflow.md).
+The **ScrollBar** component is used together with scrollable components, such as [ArcList](ts-container-arclist.md), [List](ts-container-list.md), [Grid](ts-container-grid.md), [Scroll](ts-container-scroll.md), and [WaterFlow](ts-container-waterflow.md), to provide visual scrolling indication and control capabilities, and supports custom scrollbar styles.
 
 >  **NOTE**
 >
@@ -44,9 +45,11 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 enableNestedScroll(enabled: Optional\<boolean>)
 
-Sets whether nested scrolling is enabled.
+Sets whether the scrollbar supports nested scrolling. It is used in scenarios such as multi-layer scroll containers and nested lists where the inner scrollable component needs to be dragged through the scrollbar and linked with the parent scrolling. It takes effect only when the ScrollBar is bound to a scrollable component through a Scroller.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,23 +57,25 @@ Sets whether nested scrolling is enabled.
 
 | Name| Type   | Mandatory| Description                                 |
 | ------ | ------- | ---- | ------------------------------------- |
-| enabled  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether nested scrolling is enabled. The value **true** means that nested scrolling is enabled, and **false** means the opposite.<br>Default value: **false**|
+| enabled  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes   | Whether to perform nested scrolling. Set this parameter to **true** to pass scroll events between multiple layers of scroll containers; set it to **false** when nested scrolling is not required.<br/>Default value: **false** |
 
 >  **NOTE**
 >
-> When nested scrolling is enabled, the scroll offset is first passed to the inner scrollable component, which then passes it to the outer parent scrollable component based on the set nested scrolling priority.
+> When nested scrolling is enabled for the scrollbar, the scroll offset is first sent to the bound inner scrollable component, which then passes it to the outer parent scrollable component in sequence based on the set nested scrolling priority.
 >
-> Nested scrolling is not supported when the **WaterFlow** component is in [WaterFlowLayoutMode.SLIDING_WINDOW](ts-container-waterflow.md#waterflowlayoutmode12) layout mode.
+> Nested scrolling is not supported when the layout mode of the WaterFlow component is the sliding window mode ([WaterFlowLayoutMode.SLIDING_WINDOW](ts-container-waterflow.md#waterflowlayoutmode12)).
 >
-> When the nested scrolling mode is set to [PARALLEL](ts-appendix-enums.md#nestedscrollmode10), both the parent and child components scroll simultaneously. You need to manage the scroll order in the [onScrollFrameBegin](ts-container-scroll.md#onscrollframebegin9) event according to the desired logic.
+> When the nested scrolling mode is set to [PARALLEL](ts-appendix-enums.md#nestedscrollmode10), the parent and child components scroll simultaneously. In this case, you need to set the scrolling order of the parent and child components in [onScrollFrameBegin](ts-container-scroll.md#onscrollframebegin9) based on the required logic.
 
 ### scrollBarColor<sup>20+</sup>
 
 scrollBarColor(color: Optional\<ColorMetrics\>)
 
-Sets the color of the scrollbar slider. This parameter is valid only when the scrollbar does not contain child components.
+Sets the color of the scrollbar. This parameter takes effect only when the scrollbar does not contain child components.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,7 +83,7 @@ Sets the color of the scrollbar slider. This parameter is valid only when the sc
 
 | Name| Type                                                        | Mandatory| Description          |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| color  |  [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)\> | Yes  | Scrollbar color.<br>Default value: **ColorMetrics.numeric(0x66182431)**  |
+| color  |  [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)\> | Yes   | Color of the scrollbar. This parameter takes effect only when the scrollbar does not contain any child component.<br/>Default value: ColorMetrics.numeric(0x66182431)   |
 
 ## ScrollBarOptions
 
@@ -86,10 +91,10 @@ Parameters of the **ScrollBar** component.
 
 >  **NOTE**
 >
->  - The **ScrollBar** component defines the behavior style of the scrollable area, and its child nodes define the behavior style of the scrollbar.
->  - This component is bound to a scrollable component through **scroller**, and can be used to scroll the scrollable component only when their directions are the same. The **ScrollBar** component can be bound to only one scrollable component, and vice versa.
->  - Since API version 12, the **ScrollBar** component displays a default scrollbar style when without child nodes.
->  - The visibility of the **ScrollBar** component is set through **BarState**. The component automatically adjusts **opacity** based on the **BarState** setting to control its visibility. Therefore, setting the [opacity](./ts-universal-attributes-opacity.md#opacity18) attribute for the **ScrollBar** component does not take effect.
+>  - The ScrollBar component is used to display and control the scroll position of the bound scrollable component. When child components are set, the child component serves as a custom scrollbar slider and moves with the scroll position of the scrollable component.
+>  - The scrollbar component is bound to the scrollable component through a Scroller, and they can be linked only when their directions are the same. A scrollable component can be bound to multiple ScrollBar components, while a ScrollBar component can be bound to only one scrollable component.
+>  - Since API version 12, the ScrollBar component supports displaying a scrollbar in the default style when it has no child nodes.
+>  - The visibility of the ScrollBar component is set through BarState. The component automatically adjusts opacity based on the BarState setting to control visibility. Therefore, the [opacity](./ts-universal-attributes-opacity.md#opacity18) attribute set for the ScrollBar component does not take effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -97,9 +102,9 @@ Parameters of the **ScrollBar** component.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -- | -------- |
-| scroller | [Scroller](ts-container-scroll.md#scroller) | No| No| Scroller, which can be bound to scrollable components for scrolling control.|
-| direction | [ScrollBarDirection](#scrollbardirection) | No| Yes| Scrollbar direction in which scrollable components scroll.<br>Default value: **ScrollBarDirection.Vertical**|
-| state | [BarState](ts-appendix-enums.md#barstate) | No| Yes| Scrollbar state.<br>Default value: **BarState.Auto**|
+| scroller | [Scroller](ts-container-scroll.md#scroller) | No | No | Controller of the scrollable component. It is used to bind to the scrollable component, and linkage is possible only when the ScrollBar and the scrollable component have the same direction. A scrollable component can be bound to multiple ScrollBar components, while a ScrollBar component can be bound to only one scrollable component. |
+| direction | [ScrollBarDirection](#scrollbardirection) | No | Yes | Direction of the scroll bar, which controls the scrolling of the scrollable component in the corresponding direction. Set it to ScrollBarDirection.Vertical when the scrollable content is laid out vertically; set it to ScrollBarDirection.Horizontal when the scrollable content is laid out horizontally.<br/>Default value: ScrollBarDirection.Vertical |
+| state | [BarState](ts-appendix-enums.md#barstate) | No | Yes | State of the scroll bar. BarState.Auto indicates that the scroll bar is displayed on demand, BarState.On indicates that it is always displayed, and BarState.Off indicates that it is not displayed.<br/>Default value: BarState.Auto |
 
 ## ScrollBarDirection
 
@@ -163,7 +168,7 @@ struct ScrollBarExample {
 }
 ```
 
-![scrollBar1](figures/scrollBar1.gif)
+![scrollBar](figures/scrollBar.gif)
 
 ## Example 2: Implementing a ScrollBar Component Without Child Components
 
@@ -214,7 +219,7 @@ struct ScrollBarExample {
 
 ## Example 3: Enabling Nested Scrolling
 
-This example demonstrates how to enable nested scrolling for a **ScrollBar** component using the [enableNestedScroll](#enablenestedscroll14) attribute. This feature is available from API version 20.
+Since API version 14, the ScrollBar component supports nested scrolling through the [enableNestedScroll](#enablenestedscroll14) attribute. This example also uses the [scrollBarColor](#scrollbarcolor20) attribute, supported since API version 20, to set the scrollbar color.
 ```ts
 import { ColorMetrics } from '@kit.ArkUI'
 

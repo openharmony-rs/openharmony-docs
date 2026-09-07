@@ -11,7 +11,7 @@
 
 **变更影响**
 
-此变更不涉及应用适配。
+此变更涉及应用适配。
 
 - 变更前：应用对沙箱路径`/storage/Users/currentUser/appdata`下没有权限的目录执行stat和access时，可以成功。
 

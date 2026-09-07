@@ -258,130 +258,6 @@
     import { distributedDeviceManager } from '@kit.DistributedServiceKit';
     import { promptAction } from '@kit.ArkUI';
     
-    const DOMAIN_NUMBER: number = 0xFF00;
-    const TAG: string = '[Page_CollaborateAbility]';
-    let dmClass: distributedDeviceManager.DeviceManager;
-    
-    function getRemoteDeviceId(): string | undefined {
-      if (typeof dmClass === 'object' && dmClass !== null) {
-        let list = dmClass.getAvailableDeviceListSync();
-        hilog.info(DOMAIN_NUMBER, TAG, JSON.stringify(dmClass), JSON.stringify(list));
-        if (typeof (list) === 'undefined' || typeof (list.length) === 'undefined') {
-          hilog.error(DOMAIN_NUMBER, TAG, 'getRemoteDeviceId err: list is null');
-          return;
-        }
-        if (list.length === 0) {
-          hilog.error(DOMAIN_NUMBER, TAG, `getRemoteDeviceId err: list is empty`);
-          return;
-        }
-        return list[0].networkId;
-      } else {
-        hilog.error(DOMAIN_NUMBER, TAG, 'getRemoteDeviceId err: dmClass is null');
-        return;
-      }
-    };
-    
-    @Entry
-    @Component
-    struct Page_CollaborateAbility {
-      private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-      build() {
-        Row() {
-          Column() {
-          //...
-            List({ initialIndex: 0 }) {
-              //...
-              ListItem() {
-                Button('test').onClick(() => {
-                  let want: Want = {
-                    deviceId: getRemoteDeviceId(),
-                    bundleName: 'com.samples.stagemodelabilityinteraction', //替换成本地包名和页面名
-                    abilityName: 'ServiceExtAbility',
-                    moduleName: 'entry' // moduleName非必选
-                  };
-                  // 退出由startAbility接口启动的ServiceExtensionAbility
-                  this.context.stopServiceExtensionAbility(want).then(() => {
-                    hilog.info(DOMAIN_NUMBER, TAG, 'stop service extension ability success')
-                    promptAction.openToast({
-                      message: 'SuccessfullyStop'
-                    });
-                  }).catch((err: BusinessError) => {
-                    hilog.error(DOMAIN_NUMBER, TAG, `stop service extension ability err is ` + JSON.stringify(err));
-                 });
-                })
-              }
-              //...
-            }
-            //...
-          }
-          //...
-        }
-      }
-    }
-    ```
-
-4. 在目标端[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)任务完成后，调用[terminateSelfWithResult()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)方法，将数据返回给发起端的UIAbility。
-
-    ```ts
-    import { common } from '@kit.AbilityKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    const TAG: string = '[Page_CollaborateAbility]';
-    const DOMAIN_NUMBER: number = 0xFF00;
-
-    @Entry
-    @Component
-    struct Page_CollaborateAbility {
-      private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-
-      build() {
-        Row() {
-          Column() {
-            //...
-            List({ initialIndex: 0 }) {
-              //...
-              ListItem() {
-              
-                Button('test').onClick(() => {
-                  const RESULT_CODE: number = 1001;
-                  // context为目标端UIAbility的AbilityContext
-                  this.context.terminateSelfWithResult(
-                    {
-                      resultCode: RESULT_CODE,
-                      want: {
-                        bundleName: 'ohos.samples.stagemodelabilitydevelop',
-                        abilityName: 'CollaborateAbility',
-                        moduleName: 'entry',
-                        parameters: {
-                          info: '来自Page_CollaborateAbility页面'
-                        }
-                      }
-                    },
-                    (err: BusinessError) => {
-                      hilog.error(DOMAIN_NUMBER, TAG, `terminateSelfWithResult err: ` + JSON.stringify(err));
-                    });
-                })
-              }
-              //...
-            }
-            //...
-          }
-          //...
-        }
-      }
-    }
-    ```
-
-5. 发起端[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)接收到目标端UIAbility返回的信息，对其进行处理。
-
-    ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    import { Want, common } from '@kit.AbilityKit';
-    import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-    import { promptAction } from '@kit.ArkUI';
-    
     const TAG: string = '[Page_CollaborateAbility]';
     const DOMAIN_NUMBER: number = 0xFF00;
     let dmClass: distributedDeviceManager.DeviceManager;
@@ -451,6 +327,58 @@
     }
     ```
 
+4. 在目标端[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)任务完成后，调用[terminateSelfWithResult()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)方法，将数据返回给发起端的UIAbility。
+
+    ```ts
+    import { common } from '@kit.AbilityKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
+
+    const TAG: string = '[Page_CollaborateAbility]';
+    const DOMAIN_NUMBER: number = 0xFF00;
+
+    @Entry
+    @Component
+    struct Page_CollaborateAbility {
+      private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+      build() {
+        Row() {
+          Column() {
+            //...
+            List({ initialIndex: 0 }) {
+              //...
+              ListItem() {
+              
+                Button('test').onClick(() => {
+                  const RESULT_CODE: number = 1001;
+                  // context为目标端UIAbility的AbilityContext
+                  this.context.terminateSelfWithResult(
+                    {
+                      resultCode: RESULT_CODE,
+                      want: {
+                        bundleName: 'ohos.samples.stagemodelabilitydevelop',
+                        abilityName: 'CollaborateAbility',
+                        moduleName: 'entry',
+                        parameters: {
+                          info: '来自Page_CollaborateAbility页面'
+                        }
+                      }
+                    },
+                    (err: BusinessError) => {
+                      hilog.error(DOMAIN_NUMBER, TAG, `terminateSelfWithResult err: ` + JSON.stringify(err));
+                    });
+                })
+              }
+              //...
+            }
+            //...
+          }
+          //...
+        }
+      }
+    }
+    ```
 
 ## 通过跨设备连接ServiceExtensionAbility组件实现多端协同
 
@@ -633,7 +561,7 @@
 
 ## 通过跨设备Call调用实现多端协同
 
-跨设备Call调用的基本原理与设备内Call调用相同，请参见[通过Call调用实现UIAbility交互（仅对系统应用开放）](uiability-intra-device-interaction.md#通过call调用实现uiability交互仅对系统应用开放)。
+跨设备Call调用的基本原理与设备内Call调用相同，请参见[通过Call调用实现UIAbility交互（仅对系统应用开放）](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#call通过call调用实现uiability交互仅对系统应用开放)。
 
 下面介绍跨设备Call调用实现多端协同的方法。
 

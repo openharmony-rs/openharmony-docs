@@ -6,6 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=c27e0e5f22d6b3cf08575f1a30584cd1902be584 translatedAt=2026-09-01T01:18:57.174Z pushedAt=2026-09-03T06:26:09.984Z -->
 
 ## Overview
 
@@ -39,13 +40,13 @@ enum Input_PointerStyle
 
 **Description**
 
-Enumerates the pointer styles.
+Enumerates the cursor styles.
 
 **Since**: 22
 
 | Enum Item       | Description    |Legend|
 | ------------ | ------ |------ |
-| DEFAULT = 0    | Default     |![Default.png](./figures/Default.png)|
+| DEFAULT = 0    | Cursor style displayed when no style is set by the app.    |![Default.png](./figures/Default.png)|
 | EAST = 1    | East arrow  |![East.png](./figures/East.png)|
 | WEST = 2    | West arrow  |![West.png](./figures/West.png)|
 | SOUTH = 3    | South arrow  |![South.png](./figures/South.png)|
@@ -84,7 +85,7 @@ Enumerates the pointer styles.
 | MIDDLE_BTN_SOUTH_EAST = 36   | Scrolling south-east |![MID_Btn_South_East.png](./figures/MID_Btn_South_East.png)|
 | MIDDLE_BTN_SOUTH_WEST = 37   | Scrolling south-west |![MID_Btn_South_West.png](./figures/MID_Btn_South_West.png)|
 | MIDDLE_BTN_NORTH_SOUTH_WEST_EAST = 38   | Moving as a cone in four directions|![MID_Btn_North_South_West_East.png](./figures/MID_Btn_North_South_West_East.png)|
-| HORIZONTAL_TEXT_CURSOR = 39 | Horizontal text selection|![Horizontal_Text_Cursor.png](./figures/Horizontal_Text_Cursor.png)|
+| HORIZONTAL_TEXT_CURSOR = 39 | Selecting text horizontally |![Horizontal_Text_Cursor.png](./figures/Horizontal_Text_Cursor.png)|
 | CURSOR_CROSS = 40 | Cross|![Cursor_Cross.png](./figures/Cursor_Cross.png)|
 | CURSOR_CIRCLE = 41 | Circle|![Cursor_Circle.png](./figures/Cursor_Circle.png)|
 | LOADING = 42 | Loading|![Loading.png](./figures/Loading.png)|
@@ -92,9 +93,9 @@ Enumerates the pointer styles.
 | MIDDLE_BTN_EAST_WEST = 44   | Scrolling east-west|![MID_Btn_East_West.png](./figures/MID_Btn_East_West.png)|
 | RUNNING_LEFT = 45   | Running in the background (extension 1)|![Loading_Left.png](./figures/Loading_Left.png)|
 | RUNNING_RIGHT = 46   | Running in the background (extension 2)|![Loading_Right.png](./figures/Loading_Right.png)|
-| AECH_DEVELOPER_DEFINED_ICON = 47   | Custom circular pointer|![Custom_Cursor_Circle.png](./figures/Custom_Cursor_Circle.png)|
-| SCREENRECORDER_CURSOR = 48   | Screen recording |![ScreenRecorder_Cursor.png](./figures/ScreenRecorder_Cursor.png)|
-| LASER_CURSOR = 49   | Floating This pointer can be used only when the stylus enters the air mouse mode and cannot be directly set.<br>In air mouse mode, you can rotate the stylus in the air to control the movement of the virtual pointer on the screen and press the button on the stylus to turn pages up or down. This mode is used PPT presentation and air gesture control.|![Laser_Cursor.png](./figures/Laser_Cursor.png)|
-| LASER_CURSOR_DOT = 50   | Click This pointer can be used only when the stylus enters the air mouse mode and cannot be directly set.<br>In air mouse mode, you can rotate the stylus in the air to control the movement of the virtual pointer on the screen and press the button on the stylus to turn pages up or down. This mode is used PPT presentation and air gesture control.|![Laser_Cursor_Dot.png](./figures/Laser_Cursor_Dot.png)|
-| LASER_CURSOR_DOT_RED = 51   | Laser pointer This pointer can be used only when the stylus enters the air mouse mode and cannot be directly set.<br>In air mouse mode, you can rotate the stylus in the air to control the movement of the virtual pointer on the screen and press the button on the stylus to turn pages up or down. This mode is used PPT presentation and air gesture control.|![Laser_Cursor_Dot_Red.png](./figures/Laser_Cursor_Dot_Red.png)|
+| AECH_DEVELOPER_DEFINED_ICON = 47   | Custom circular cursor|![Custom_Cursor_Circle.png](./figures/Custom_Cursor_Circle.png)|
+| SCREENRECORDER_CURSOR = 48   | Screen recording cursor |![ScreenRecorder_Cursor.png](./figures/ScreenRecorder_Cursor.png)|
+| LASER_CURSOR = 49   | Floating cursor. This cursor is used when the stylus enters air mouse mode and cannot be set directly.<br>In air mouse mode, the stylus can be rotated in the air to control the movement of the virtual cursor on the screen, and the buttons on the stylus body can be used to implement page up/down, for scenarios such as PPT presentations and air gesture operations.|![Laser_Cursor.png](./figures/Laser_Cursor.png)|
+| LASER_CURSOR_DOT = 50   | Click cursor. This cursor is used when the stylus enters air mouse mode and cannot be set directly.<br>In air mouse mode, the stylus can be rotated in the air to control the movement of the virtual cursor on the screen, and the buttons on the stylus body can be used to implement page up/down, for scenarios such as PPT presentations and air gesture operations.|![Laser_Cursor_Dot.png](./figures/Laser_Cursor_Dot.png)|
+| LASER_CURSOR_DOT_RED = 51   | Laser pointer cursor. This cursor is used when the stylus enters air mouse mode and cannot be set directly.<br>In air mouse mode, the stylus can be rotated in the air to control the movement of the virtual cursor on the screen, and the buttons on the stylus body can be used to implement page up/down, for scenarios such as PPT presentations and air gesture operations.|![Laser_Cursor_Dot_Red.png](./figures/Laser_Cursor_Dot_Red.png)|
 | DEVELOPER_DEFINED_ICON = -100 | Custom pointer. You can use the [OH_Input_SetCustomCursor](./capi-oh-input-manager-h.md#oh_input_setcustomcursor) to set a custom pointer, but not the [OH_Input_SetPointerStyle](./capi-oh-input-manager-h.md#oh_input_setpointerstyle).|You can customize pointers as needed via API.|

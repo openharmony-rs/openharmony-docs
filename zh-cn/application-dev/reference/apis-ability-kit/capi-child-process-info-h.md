@@ -143,7 +143,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetProcessName(OH_Ab
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 接口调用成功。<br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - processName、info或requiredSize为空指针，或者processNameSize为0。<br>ABILITY_RUNTIME_ERROR_CODE_BUFFER_TOO_SMALL - 缓冲区过小。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 接口调用成功。<br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - processName、info或requiredSize为空指针，或者processNameSize为0。<br>ABILITY_RUNTIME_ERROR_CODE_BUFFER_TOO_SMALL - 缓冲区过小。<br>ABILITY_RUNTIME_ERROR_CODE_INTERNAL - 字符串拷贝失败。 |
 
 ### OH_AbilityRuntime_ReleaseChildProcessInfos()
 

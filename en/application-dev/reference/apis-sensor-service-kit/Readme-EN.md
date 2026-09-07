@@ -3,8 +3,9 @@
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
 <!--Designer: @andeszhang-->
-<!--Tester: @liuhaonan2-->
+<!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=2cc3d788470dfc527ff67f0d956b9e3149129ee5 translatedAt=2026-09-02T07:41:55.833Z pushedAt=2026-09-06T06:30:34.836Z -->
 
 - ArkTS API<!--sensor-service-arkts-->
   - [@ohos.sensor (Sensor)](js-apis-sensor.md)

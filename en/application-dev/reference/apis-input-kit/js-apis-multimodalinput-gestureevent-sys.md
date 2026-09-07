@@ -6,6 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=0b8116f3d07d6bc6355383279731c43671d374ff translatedAt=2026-09-01T01:21:52.178Z pushedAt=2026-09-03T08:36:00.731Z -->
 
 The **gestureEvent** module provides gesture events reported by devices.
 
@@ -18,7 +19,7 @@ The **gestureEvent** module provides gesture events reported by devices.
 ## Modules to Import
 
 ```js
-import { Touch , SwipeInward } from '@kit.InputKit';
+import { Touch, SwipeInward } from '@kit.InputKit';
 ```
 
 ## TouchGestureEvent<sup>18+</sup>

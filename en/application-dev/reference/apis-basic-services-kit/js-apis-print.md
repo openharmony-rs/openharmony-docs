@@ -3,11 +3,11 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
 <!--Owner: @guoshengbang-->
-<!--Designer: @gcw_4D6e0BBd-->
-<!--Tester: @guoshengbang-->
+<!--Designer: @baozewei-->
+<!--Tester: @baozewei-->
 <!--Adviser: @fang-jinxu-->
 
-The **print** module provides APIs for basic print operations.
+This module provides APIs for printing-related operations, including file printing, print job event monitoring, printer discovery and management, and print job status update. It is applicable to scenarios where printing capabilities need to be integrated into an app.
 
 > **NOTE**
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
@@ -20,7 +20,7 @@ import { print } from '@kit.BasicServicesKit';
 
 ## PrintTask
 
-Implements event listeners for print jobs.
+Defines a callback class for listening for print job status change events (such as blocking, success, failure, and cancellation) during print job execution. After obtaining a **PrintTask** instance using **print.print**, you can register a listener to listen for the status changes of the print job.
 
 ### on
 
@@ -70,7 +70,7 @@ struct Index {
                         })
                         // ...
                     }).catch((error: BusinessError) => {
-                        console.error('print err ' + JSON.stringify(error));
+                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
                     })
                 })
             }
@@ -131,7 +131,7 @@ struct Index {
                         })
                         // ...
                     }).catch((error: BusinessError) => {
-                        console.error('print err ' + JSON.stringify(error));
+                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
                     })
                 })
             }
@@ -192,7 +192,7 @@ struct Index {
                         })
                         // ...
                     }).catch((error: BusinessError) => {
-                        console.error('print err ' + JSON.stringify(error));
+                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
                     })
                 })
             }
@@ -253,7 +253,7 @@ struct Index {
                         })
                         // ...
                     }).catch((error: BusinessError) => {
-                        console.error('print err ' + JSON.stringify(error));
+                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
                     })
                 })
             }
@@ -270,7 +270,7 @@ struct Index {
 
 off(type: 'block', callback?: Callback&lt;void&gt;): void
 
-Unsubscribes from the block events of a print job. This API uses an asynchronous callback to return the result.
+Unsubscribes from the block events of a print job.
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -281,7 +281,7 @@ Unsubscribes from the block events of a print job. This API uses an asynchronous
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Listening type.<br>The value is fixed at **'block'**.<br>The print job is blocked.|
-| callback | Callback&lt;void&gt; | No| Callback used to unsubscribe from the block events of a specified print job.|
+| callback | Callback&lt;void&gt; | No| Callback used to unsubscribe from the block events of a specified print job. If this parameter is not passed, all registered callbacks of the caller will be unregistered.|
 
 **Error codes**
 
@@ -314,7 +314,7 @@ struct Index {
                         })
                         // ...
                     }).catch((error: BusinessError) => {
-                        console.error('print err ' + JSON.stringify(error));
+                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
                     })
                 })
             }
@@ -331,7 +331,7 @@ struct Index {
 
 off(type: 'succeed', callback?: Callback&lt;void&gt;): void
 
-Unsubscribes from the success events of a print job. This API uses an asynchronous callback to return the result.
+Unsubscribes from the success events of a print job.
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -342,7 +342,7 @@ Unsubscribes from the success events of a print job. This API uses an asynchrono
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Listening type.<br>The value is fixed at **'succeed'**.<br>The print job is successful.|
-| callback | Callback&lt;void&gt; | No| Callback used to unsubscribe from the success events of a specified print job.|
+| callback | Callback&lt;void&gt; | No| Callback used to unsubscribe from the success events of a specified print job. If this parameter is not passed, all registered callbacks of the caller will be unregistered.|
 
 **Error codes**
 
@@ -375,7 +375,7 @@ struct Index {
                         })
                         // ...
                     }).catch((error: BusinessError) => {
-                        console.error('print err ' + JSON.stringify(error));
+                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
                     })
                 })
             }
@@ -392,7 +392,7 @@ struct Index {
 
 off(type: 'fail', callback?: Callback&lt;void&gt;): void
 
-Unsubscribes from the failure events of a print job. This API uses an asynchronous callback to return the result.
+Unsubscribes from the failure events of a print job.
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -403,7 +403,7 @@ Unsubscribes from the failure events of a print job. This API uses an asynchrono
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Listening type.<br>The value is fixed at **'fail'**.<br>The print job fails.|
-| callback | Callback&lt;void&gt; | No| Callback used to unsubscribe from the failure events of a specified print job.|
+| callback | Callback&lt;void&gt; | No| Callback used to unsubscribe from the failure events of a specified print job. If this parameter is not passed, all registered callbacks of the caller will be unregistered.|
 
 **Error codes**
 
@@ -436,7 +436,7 @@ struct Index {
                         })
                         // ...
                     }).catch((error: BusinessError) => {
-                        console.error('print err ' + JSON.stringify(error));
+                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
                     })
                 })
             }
@@ -453,7 +453,7 @@ struct Index {
 
 off(type: 'cancel', callback?: Callback&lt;void&gt;): void
 
-Unsubscribes from the cancellation events of a print job. This API uses an asynchronous callback to return the result.
+Unsubscribes from the cancellation events of a print job.
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -464,7 +464,7 @@ Unsubscribes from the cancellation events of a print job. This API uses an async
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Listening type.<br>The value is fixed at **'cancel'**.<br>The print job is canceled.|
-| callback | Callback&lt;void&gt; | No| Callback used to unsubscribe from the cancellation events of a specified print job.|
+| callback | Callback&lt;void&gt; | No| Callback used to unsubscribe from the cancellation events of a specified print job. If this parameter is not passed, all registered callbacks of the caller will be unregistered.|
 
 **Error codes**
 
@@ -497,7 +497,7 @@ struct Index {
                         })
                         // ...
                     }).catch((error: BusinessError) => {
-                        console.error('print err ' + JSON.stringify(error));
+                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
                     })
                 })
             }
@@ -512,13 +512,13 @@ struct Index {
 
 ## PrintDocumentAdapter<sup>11+</sup>
 
-Provides information about the document to print. This API must be implemented by a third-party application.
+Provides information about the document to print. This API must be implemented by a third-party application. This API provides a callback to listen for file rendering and print job status events. You can pass a **PrintDocumentAdapter** instance through the **print.print** API.
 
 ### onStartLayoutWrite<sup>11+</sup>
 
 onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs: PrintAttributes, fd: number, writeResultCallback: (jobId: string, writeResult: PrintFileCreationState) => void): void
 
-Sends an empty PDF file descriptor to a third-party application. The third-party application updates the file with the new print attributes and then calls **writeResultCallback** to print the file.
+The printing service uses this API to pass the file descriptor of an empty PDF file to the third-party app. The third-party app uses the new printing parameters to update the file to be printed. After the update is complete, the third-party app notifies the printing service using **writeResultCallback**.
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -530,7 +530,7 @@ Sends an empty PDF file descriptor to a third-party application. The third-party
 | -------- | -------- | -------- | -------- |
 | jobId | string | Yes| ID of the print job.|
 | oldAttrs | [PrintAttributes](#printattributes11) | Yes| Old print attributes.|
-| newAttrs | [PrintAttributes](#printattributes11) | Yes| New print attributes.|
+| newAttrs | [PrintAttributes](#printattributes11) | Yes| New print attributes. The app uses this parameter to update the file to be printed.|
 | fd | number | Yes| PDF file descriptor sent to the API caller.|
 | writeResultCallback | (jobId: string, writeResult: [PrintFileCreationState](#printfilecreationstate11)) => void | Yes| Callback used to print the updated file.|
 
@@ -552,17 +552,17 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
     onStartLayoutWrite(jobId: string, oldAttrs: print.PrintAttributes, newAttrs: print.PrintAttributes, fd: number,
         writeResultCallback: (jobId: string, writeResult: print.PrintFileCreationState) => void) {
         writeResultCallback(jobId, print.PrintFileCreationState.PRINT_FILE_CREATED);
-    };
+    }
     onJobStateChanged(jobId: string, state: print.PrintDocumentAdapterState) {
-        if (state == print.PrintDocumentAdapterState.PREVIEW_DESTROY) {
+        if (state === print.PrintDocumentAdapterState.PREVIEW_DESTROY) {
             console.info('PREVIEW_DESTROY');
-        } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_SUCCEED) {
+        } else if (state === print.PrintDocumentAdapterState.PRINT_TASK_SUCCEED) {
             console.info('PRINT_TASK_SUCCEED');
-        } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_FAIL) {
+        } else if (state === print.PrintDocumentAdapterState.PRINT_TASK_FAIL) {
             console.info('PRINT_TASK_FAIL');
-        } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_CANCEL) {
+        } else if (state === print.PrintDocumentAdapterState.PRINT_TASK_CANCEL) {
             console.info('PRINT_TASK_CANCEL');
-        } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_BLOCK) {
+        } else if (state === print.PrintDocumentAdapterState.PRINT_TASK_BLOCK) {
             console.info('PRINT_TASK_BLOCK');
         }
     }
@@ -605,17 +605,17 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
     onStartLayoutWrite(jobId: string, oldAttrs: print.PrintAttributes, newAttrs: print.PrintAttributes, fd: number,
         writeResultCallback: (jobId: string, writeResult: print.PrintFileCreationState) => void) {
         writeResultCallback(jobId, print.PrintFileCreationState.PRINT_FILE_CREATED);
-    };
+    }
     onJobStateChanged(jobId: string, state: print.PrintDocumentAdapterState) {
-        if (state == print.PrintDocumentAdapterState.PREVIEW_DESTROY) {
+        if (state === print.PrintDocumentAdapterState.PREVIEW_DESTROY) {
             console.info('PREVIEW_DESTROY');
-        } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_SUCCEED) {
+        } else if (state === print.PrintDocumentAdapterState.PRINT_TASK_SUCCEED) {
             console.info('PRINT_TASK_SUCCEED');
-        } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_FAIL) {
+        } else if (state === print.PrintDocumentAdapterState.PRINT_TASK_FAIL) {
             console.info('PRINT_TASK_FAIL');
-        } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_CANCEL) {
+        } else if (state === print.PrintDocumentAdapterState.PRINT_TASK_CANCEL) {
             console.info('PRINT_TASK_CANCEL');
-        } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_BLOCK) {
+        } else if (state === print.PrintDocumentAdapterState.PRINT_TASK_BLOCK) {
             console.info('PRINT_TASK_BLOCK');
         }
     }
@@ -628,11 +628,9 @@ print(files: Array&lt;string&gt;, callback: AsyncCallback&lt;PrintTask&gt;): voi
 
 Prints files. This API uses an asynchronous callback to return the result. To start the system print preview page, call the [print](#printprint11-1) API and pass in context.
 
-**Since:** 10
-
-**Deprecated from**: 26.0.0
-
-**Substitute**: [print](#printprint11)
+> **NOTE**
+>
+> This API is supported since API version 10 and deprecated since API version 26.0.0. You are advised to use [print](#printprint11) instead.
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -663,9 +661,9 @@ import { fileUri } from '@kit.CoreFileKit';
 
 // Pass in the URIs of the files.
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-print.print([fileUri.getUriFromPath(filePath)], (err: BusinessError, printTask: print.PrintTask) => {
-    if (err) {
-        console.error('print err ' + JSON.stringify(err));
+print.print([fileUri.getUriFromPath(filePath)], (error: BusinessError, printTask: print.PrintTask) => {
+    if (error) {
+        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
     } else {
         printTask.on('succeed', () => {
             console.info('print state is succeed');
@@ -681,11 +679,9 @@ print(files: Array&lt;string&gt;): Promise&lt;PrintTask&gt;
 
 Prints files. This API uses a promise to return the result. To start the system print preview page, call the [print](#printprint11-1) API and pass in context.
 
-**Since:** 10
-
-**Deprecated from**: 26.0.0
-
-**Substitute**: [print](#printprint11)
+> **NOTE**
+>
+> This API is supported since API version 10 and deprecated since API version 26.0.0. You are advised to use [print](#printprint11-1) instead.
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -727,7 +723,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
     })
     // ...
 }).catch((error: BusinessError) => {
-    console.error('print err ' + JSON.stringify(error));
+    console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
 })
 ```
 
@@ -735,7 +731,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 
 print(files: Array&lt;string&gt;, context: Context, callback: AsyncCallback&lt;PrintTask&gt;): void
 
-Prints files. This API uses an asynchronous callback to return the result.
+Prints files. The system print preview page is started. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -745,7 +741,7 @@ Prints files. This API uses an asynchronous callback to return the result.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| files | Array&lt;string&gt; | Yes| List of files to be printed. Currently, the following file types are supported: ".bm", ".bmp", ".doc", ".docm", ".docx", ".dot", ".dotm", ".dotx", ".gif", ".jfif", ".jpe", ".jpeg", ".jpg", "pdf", ".pot", ".potm", ".potx", ".pps", ".ppsm", ".ppsx", ".ppt", ".pptm", ".pptx", ".png", ".rtf", ".txt", ".webp", ".wps", ".xls", ".xlsb", ".xlsm", ".xlsx", ".xlt", ".xltx", and ".xml". You should save the files to the application sandbox, obtain the sandbox URI through **fileUri.getUriFromPath**, and then pass this URI as a parameter to this API.|
+| files | Array&lt;string&gt; | Yes| List of files to be printed. Currently, the following file types are supported: .bm, .bmp, .doc, .docm, .docx, .dot, .dotm, .dotx, .gif, .jfif, .jpe, .jpeg, .jpg, pdf, .pot, .potm, .potx, .pps, .ppsm, .ppsx, .ppt, .pptm, .pptx, .png, .rtf, .txt, .webp, .wps, .xls, .xlsb, .xlsm, .xlsx, .xlt, .xltx, and .xml. You should save the files to the application sandbox, obtain the sandbox URI through **fileUri.getUriFromPath**, and then pass this URI as a parameter to this API.|
 | context | Context | Yes| UIAbilityContext used to start the system print UI.|
 | callback | AsyncCallback&lt;[PrintTask](#printtask)&gt; | Yes| Callback to be invoked when the print job is finished.|
 
@@ -774,9 +770,9 @@ struct Index {
                 Button("Print").width('90%').height(50).onClick(() => {
                     let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
                     let context = this.getUIContext().getHostContext();
-                    print.print([fileUri.getUriFromPath(filePath)], context, (err: BusinessError, printTask: print.PrintTask) => {
-                        if (err) {
-                            console.error('print err ' + JSON.stringify(err));
+                    print.print([fileUri.getUriFromPath(filePath)], context, (error: BusinessError, printTask: print.PrintTask) => {
+                        if (error) {
+                            console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
                         } else {
                             printTask.on('succeed', () => {
                                 console.info('print state is succeed');
@@ -799,7 +795,7 @@ struct Index {
 
 print(files: Array&lt;string&gt;, context: Context): Promise&lt;PrintTask&gt;
 
-Prints files. This API uses a promise to return the result.
+Prints files. The system print preview page is started. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -809,7 +805,7 @@ Prints files. This API uses a promise to return the result.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| files | Array&lt;string&gt; | Yes| List of files to be printed. Currently, the following file types are supported: ".bm", ".bmp", ".doc", ".docm", ".docx", ".dot", ".dotm", ".dotx", ".gif", ".jfif", ".jpe", ".jpeg", ".jpg", "pdf", ".pot", ".potm", ".potx", ".pps", ".ppsm", ".ppsx", ".ppt", ".pptm", ".pptx", ".png", ".rtf", ".txt", ".webp", ".wps", ".xls", ".xlsb", ".xlsm", ".xlsx", ".xlt", ".xltx", and ".xml". You should save the files to the application sandbox, obtain the sandbox URI through **fileUri.getUriFromPath**, and then pass this URI as a parameter to this API.|
+| files | Array&lt;string&gt; | Yes| List of files to be printed. Currently, the following file types are supported: .bm, .bmp, .doc, .docm, .docx, .dot, .dotm, .dotx, .gif, .jfif, .jpe, .jpeg, .jpg, pdf, .pot, .potm, .potx, .pps, .ppsm, .ppsx, .ppt, .pptm, .pptx, .png, .rtf, .txt, .webp, .wps, .xls, .xlsb, .xlsm, .xlsx, .xlt, .xltx, and .xml. You should save the files to the application sandbox, obtain the sandbox URI through **fileUri.getUriFromPath**, and then pass this URI as a parameter to this API.|
 | context | Context | Yes| UIAbilityContext used to start the system print UI.|
 
 **Return value**
@@ -849,7 +845,7 @@ struct Index {
                         })
                         // ...
                     }).catch((error: BusinessError) => {
-                        console.error('print err ' + JSON.stringify(error));
+                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
                     })
                 })
             }
@@ -866,7 +862,7 @@ struct Index {
 
 print(jobName: string, printAdapter: PrintDocumentAdapter, printAttributes: PrintAttributes, context: Context): Promise&lt;PrintTask&gt;
 
-Prints a file. This API uses a promise to return the result. Currently, only the .pdf file type is supported.
+Prints a file. This API uses a promise to return the result. Currently, only the .pdf file type is supported. When a third-party app needs to pass the file descriptor (FD) to start the system print preview page for printing, this API can be used to pass a **custom PrintDocumentAdapter** value to update the file to be printed.
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -909,8 +905,9 @@ struct Index {
         Scroll() {
             Column({ space: 10 }) {
                 Button("Print").width('90%').height(50).onClick(() => {
-                    let jobName : string = "jobName";
-                    let printAdapter : print.PrintDocumentAdapter | null = null;
+                    let jobName : string = 'jobName';
+                    // The PrintDocumentAdapter API needs to be implemented for printAdapter. The following is a simple example for reference.
+                    let printAdapter : print.PrintDocumentAdapter = new MyPrintDocumentAdapter();
                     let printAttributes : print.PrintAttributes = {
                         copyNumber: 1,
                         pageRange: {
@@ -922,7 +919,7 @@ struct Index {
                         directionMode: print.PrintDirectionMode.DIRECTION_MODE_AUTO,
                         colorMode: print.PrintColorMode.COLOR_MODE_MONOCHROME,
                         duplexMode: print.PrintDuplexMode.DUPLEX_MODE_NONE
-                    }
+                    };
                     let context = this.getUIContext().getHostContext();
 
                     print.print(jobName, printAdapter, printAttributes, context).then((printTask: print.PrintTask) => {
@@ -931,7 +928,7 @@ struct Index {
                         })
                         // ...
                     }).catch((error: BusinessError) => {
-                        console.error('print err ' + JSON.stringify(error));
+                        console.error(`Failed to print. Code: ${error.code}, message: ${error.message}`);
                     })
                 })
             }
@@ -940,6 +937,26 @@ struct Index {
             .width('100%')
         }
         .height('100%')
+    }
+}
+
+class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
+    onStartLayoutWrite(jobId: string, oldAttrs: print.PrintAttributes, newAttrs: print.PrintAttributes, fd: number,
+        writeResultCallback: (jobId: string, writeResult: print.PrintFileCreationState) => void) {
+        writeResultCallback(jobId, print.PrintFileCreationState.PRINT_FILE_CREATED);
+    }
+    onJobStateChanged(jobId: string, state: print.PrintDocumentAdapterState) {
+        if (state === print.PrintDocumentAdapterState.PREVIEW_DESTROY) {
+            console.info('PREVIEW_DESTROY');
+        } else if (state === print.PrintDocumentAdapterState.PRINT_TASK_SUCCEED) {
+            console.info('PRINT_TASK_SUCCEED');
+        } else if (state === print.PrintDocumentAdapterState.PRINT_TASK_FAIL) {
+            console.info('PRINT_TASK_FAIL');
+        } else if (state === print.PrintDocumentAdapterState.PRINT_TASK_CANCEL) {
+            console.info('PRINT_TASK_CANCEL');
+        } else if (state === print.PrintDocumentAdapterState.PRINT_TASK_BLOCK) {
+            console.info('PRINT_TASK_BLOCK');
+        }
     }
 }
 ```
@@ -954,12 +971,12 @@ Defines the print attributes.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| copyNumber | number | No| Yes| Number of printed file copies. The default value is **1**.|
-| pageRange | [PrintPageRange](#printpagerange11) | No| Yes| Page range of the file to print.|
-| pageSize | [PrintPageSize](#printpagesize11) \| [PrintPageType](#printpagetype11) | No| Yes| Page size of the file to print.|
-| directionMode | [PrintDirectionMode](#printdirectionmode11) | No| Yes| Print direction mode.|
-| colorMode | [PrintColorMode](#printcolormode11) | No| Yes| Color mode of the files to print.|
-| duplexMode | [PrintDuplexMode](#printduplexmode11) | No| Yes| Duplex mode of the files to print.|
+| copyNumber | number | No| Yes| Number of printed file copies. The value must be a positive integer. If no value is passed, **0** is used by default.|
+| pageRange | [PrintPageRange](#printpagerange11) | No| Yes| Page range of the file to print. If no value is passed, the default value is an empty range object.|
+| pageSize | [PrintPageSize](#printpagesize11) \| [PrintPageType](#printpagetype11) | No| Yes| Paper size of the file to print. If no value is passed, the default value is an empty paper size object.|
+| directionMode | [PrintDirectionMode](#printdirectionmode11) | No| Yes| Print direction mode. If no value is passed, **0** is used by default.|
+| colorMode | [PrintColorMode](#printcolormode11) | No| Yes| Color mode of the files to print. If no value is passed, **0** is used by default.|
+| duplexMode | [PrintDuplexMode](#printduplexmode11) | No| Yes| Duplex mode of the files to print. If no value is passed, **0** is used by default.|
 
 ## PrintPageRange<sup>11+</sup>
 
@@ -971,8 +988,8 @@ Defines the print range.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| startPage | number | No| Yes| Start page. The default value is **1**.|
-| endPage | number | No| Yes| End page. The default value is the maximum number of pages of the file to be printed.|
+| startPage | number | No| Yes| Start page. The value is a positive integer. The default value is **1**.|
+| endPage | number | No| Yes| End page. The value must be a positive integer. The default value is the maximum number of pages in the file to be printed.|
 | pages | Array&lt;number&gt; | No| Yes| Page range set of the file to print. The default value is empty.|
 
 
@@ -988,8 +1005,8 @@ Defines the size of the printed page.
 | -------- | -------- | -------- | -------- | -------- |
 | id | string | No| No| Paper size ID.|
 | name | string | No| No| Paper size name.|
-| width | number | No| No| Page width, in millimeters.|
-| height | number | No| No| Page height, in millimeters.|
+| width | number | No| No| Page width, in mils (1 mil = 1/1000 inch).|
+| height | number | No| No| Page height, in mils (1 mil = 1/1000 inch).|
 
 
 
@@ -1057,7 +1074,7 @@ Enumerates the print job states.
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
-| PREVIEW_DESTROY | 0 | The preview fails.|
+| PREVIEW_DESTROY | 0 | Print preview page destroyed.|
 | PRINT_TASK_SUCCEED | 1 | The print job is successful.|
 | PRINT_TASK_FAIL | 2 | The print job fails.|
 | PRINT_TASK_CANCEL | 3 | The print job is canceled.|
@@ -1085,7 +1102,7 @@ Enumerates the printer states.
 | -------- | -------- | -------- |
 | PRINTER_ADDED | 0 | A new printer is added.|
 | PRINTER_REMOVED | 1 | The printer is removed.|
-| PRINTER_CAPABILITY_UPDATED | 2 | The printer is updated.|
+| PRINTER_CAPABILITY_UPDATED | 2 | The printer capabilities are updated.|
 | PRINTER_CONNECTED | 3 | The printer is connected.|
 | PRINTER_DISCONNECTED | 4 | The printer is disconnected.|
 | PRINTER_RUNNING | 5 | The printer is running.|
@@ -1155,17 +1172,17 @@ Enumerates the print error codes.
 | Name| Value| Description|
 | -------- | -------- | -------- |
 | E_PRINT_NONE | 0 | No error.|
-| E_PRINT_NO_PERMISSION | 201 | No permission.|
-| E_PRINT_INVALID_PARAMETER | 401 | Invalid parameters.|
-| E_PRINT_GENERIC_FAILURE | 13100001 | Printing failure.|
-| E_PRINT_RPC_FAILURE | 13100002 | RPC failure.|
-| E_PRINT_SERVER_FAILURE | 13100003 | Print service failure.|
-| E_PRINT_INVALID_EXTENSION | 13100004 | Invalid printer extension.|
-| E_PRINT_INVALID_PRINTER | 13100005 | Invalid printer.|
-| E_PRINT_INVALID_PRINT_JOB | 13100006 | Invalid print job.|
-| E_PRINT_FILE_IO | 13100007 | Incorrect file input/output.|
+| E_PRINT_NO_PERMISSION | 201 | No permission. Request the required permission based on the permission requirements of the corresponding API and declare the permission in the configuration file.|
+| E_PRINT_INVALID_PARAMETER | 401 | Invalid parameter. Check the parameter type and value range.|
+| E_PRINT_GENERIC_FAILURE | 13100001 | Generic printing failure. Check the running status of the print service and try again.|
+| E_PRINT_RPC_FAILURE | 13100002 | RPC failure. Check the RPC communication status and try again.|
+| E_PRINT_SERVER_FAILURE | 13100003 | Print service failure. Check whether the print service is running properly and try again.|
+| E_PRINT_INVALID_EXTENSION | 13100004 | Invalid print extension. Check whether the extension capability is correctly implemented.|
+| E_PRINT_INVALID_PRINTER | 13100005 | Invalid printer. Check whether the printer ID and printer information are correct and try again.|
+| E_PRINT_INVALID_PRINT_JOB | 13100006 | Invalid print job. Check whether the job ID and status are correct.|
+| E_PRINT_FILE_IO | 13100007 | File input/output error. Check whether the file path, file status, and operation are correct.|
 | E_PRINT_TOO_MANY_FILES<sup>18+</sup> | 13100010 | Excessive files. Maximum number: 99.|
-| E_PRINT_SMB_LOGIN_LOCKOUT<sup>24+</sup> | 13100012 | The SMB-based shared printer account is locked due to multiple failed login attempts.<br>**Model restriction**: This API can be used only in the stage model.<br>|
+| E_PRINT_SMB_LOGIN_LOCKOUT<sup>24+</sup> | 13100012 | The SMB-based shared printer account is locked due to multiple failed login attempts. Try again after the account is unlocked, or contact the administrator.<br>**Model restriction**: This API can be used only in the stage model.<br>|
 | E_PRINT_SMB_CONNECTION_FAILURE<sup>24+</sup> | 13100013 | The SMB-based shared printer fails to be connected (due to a network error, unreachable host, or blocked port).<br>**Model restriction**: This API can be used only in the stage model.<br>|
 | E_PRINT_SMB_INVALID_CREDENTIALS<sup>24+</sup> | 13100014 | The SMB-based shared printer account or password is incorrect.<br>**Model restriction**: This API can be used only in the stage model.<br>|
 
@@ -1201,7 +1218,7 @@ Adds a printer to the printer discovery list. This API uses a promise to return 
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. **resolve** indicates that the operation is successful, and **reject** indicates that the operation fails.|
 
 **Error codes**
 
@@ -1219,7 +1236,7 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let printerInformation : print.PrinterInformation = {
-    printerId : 'testPrinterId',
+    printerId : 'testPrinterId', // printer ID can be obtained from the on('printerChange') callback.
     printerName : 'testPrinterName',
     printerStatus : 0,
     description : 'testDesc',
@@ -1230,7 +1247,7 @@ let printerInformation : print.PrinterInformation = {
 print.addPrinterToDiscovery(printerInformation).then(() => {
     console.info('addPrinterToDiscovery success');
 }).catch((error: BusinessError) => {
-    console.error('addPrinterToDiscovery error : ' + JSON.stringify(error));
+    console.error(`Failed to addPrinterToDiscovery. Code: ${error.code}, message: ${error.message}`);
 })
 ```
 
@@ -1254,7 +1271,7 @@ Updates the printer capabilities to the printer discovery list. This API uses a 
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. **resolve** indicates that the operation is successful, and **reject** indicates that the operation fails.|
 
 **Error codes**
 
@@ -1289,7 +1306,7 @@ let testCapability : print.PrinterCapabilities = {
 };
 
 let printerInformation : print.PrinterInformation = {
-    printerId : 'testPrinterId',
+    printerId : 'testPrinterId', // printer ID can be obtained from the on('printerChange') callback.
     printerName : 'testPrinterName',
     printerStatus : 0,
     description : 'testDesc',
@@ -1301,7 +1318,7 @@ let printerInformation : print.PrinterInformation = {
 print.updatePrinterInDiscovery(printerInformation).then(() => {
     console.info('updatePrinterInDiscovery success');
 }).catch((error: BusinessError) => {
-    console.error('updatePrinterInDiscovery error : ' + JSON.stringify(error));
+    console.error(`Failed to updatePrinterInDiscovery. Code: ${error.code}, message: ${error.message}`);
 })
 ```
 
@@ -1319,13 +1336,13 @@ Removes a printer from the printer discovery list. This API uses a promise to re
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| printerId | string | Yes| Printer to remove.|
+| printerId | string | Yes| ID of the printer to be removed.|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. **resolve** indicates that the operation is successful, and **reject** indicates that the operation fails.|
 
 **Error codes**
 
@@ -1342,11 +1359,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// printer ID can be obtained from the on('printerChange') callback.
 let printerId : string = 'testPrinterId';
 print.removePrinterFromDiscovery(printerId).then(() => {
     console.info('removePrinterFromDiscovery success');
 }).catch((error: BusinessError) => {
-    console.error('removePrinterFromDiscovery error : ' + JSON.stringify(error));
+    console.error(`Failed to removePrinterFromDiscovery. Code: ${error.code}, message: ${error.message}`);
 })
 ```
 
@@ -1387,11 +1405,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// printer ID can be obtained from the on('printerChange') callback.
 let printerId : string = 'testPrinterId';
 print.getPrinterInformationById(printerId).then((printerInformation : print.PrinterInformation) => {
     console.info('getPrinterInformationById data : ' + JSON.stringify(printerInformation));
 }).catch((error: BusinessError) => {
-    console.error('getPrinterInformationById error : ' + JSON.stringify(error));
+    console.error(`Failed to getPrinterInformationById. Code: ${error.code}, message: ${error.message}`);
 })
 ```
 
@@ -1408,15 +1427,15 @@ Defines the printer information.
 | printerId | string | No| No| Printer ID.|
 | printerName | string | No| No| Printer name.|
 | printerStatus | [PrinterStatus](#printerstatus14) | No| No| Printer state.|
-| description | string | No| Yes| Printer description.|
+| description | string | No| Yes| Printer description. If no value is passed, the default value is an empty string.|
 | capability | [PrinterCapabilities](#printercapabilities14) | No| Yes| Printer capabilities.|
-| uri | string | No| Yes| Printer URI.|
-| printerMake | string | No| Yes| Printer model.|
+| uri | string | No| Yes| Printer URI. If no value is passed, the default value is an empty string.|
+| printerMake | string | No| Yes| Printer model. If no value is passed, the default value is an empty string.|
 | preferences<sup>18+</sup> | [PrinterPreferences](#printerpreferences18) | No| Yes| Printer preferences.|
-| alias<sup>18+</sup> | string | No| Yes| Printer alias.|
+| alias<sup>18+</sup> | string | No| Yes| Printer alias. If no value is passed, the default value is an empty string.|
 | selectedDriver<sup>24+</sup> | [PpdInfo](#ppdinfo24) | No| Yes| Information about the driver selected when a printer is added.<br>**Model restriction**: This API can be used only in the stage model.<br>|
-| selectedProtocol<sup>24+</sup> | string | No| Yes| Protocol used when a printer is added.<br>**Model restriction**: This API can be used only in the stage model.<br>|
-| options | string | No| Yes| Printer details.|
+| selectedProtocol<sup>24+</sup> | string | No| Yes| Protocol used when a printer is added. If no value is passed, the default value is an empty string.<br>**Model restriction**: This API can be used only in the stage model.<br>|
+| options | string | No| Yes| Printer details. If no value is passed, the default value is an empty string.|
 
 ## PrinterCapabilities<sup>14+</sup>
 
@@ -1431,10 +1450,12 @@ Defines the printer capabilities.
 | supportedPageSizes | Array&lt;[PrintPageSize](#printpagesize11)&gt; | No| No| List of paper sizes supported by the printer.|
 | supportedColorModes | Array&lt;[PrintColorMode](#printcolormode11)&gt; | No| No| List of color modes supported by the printer.|
 | supportedDuplexModes | Array&lt;[PrintDuplexMode](#printduplexmode11)&gt; | No| No| List of single- and double-sided modes supported by the printer.|
-| supportedMediaTypes | Array&lt;string&gt; | No| Yes| List of paper types supported by the printer.|
-| supportedQualities | Array&lt;[PrintQuality](#printquality14)&gt; | No| Yes| List of print quality supported by the printer.|
-| supportedOrientations | Array&lt;[PrintOrientationMode](#printorientationmode14)&gt; | No| Yes| List of print directions supported by the printer.|
-| options | string | No| Yes| Printer capability details.|
+| supportedMediaTypes | Array&lt;string&gt; | No| Yes| List of paper types supported by the printer. If no value is passed, the default value is an empty list.|
+| supportedQualities | Array&lt;[PrintQuality](#printquality14)&gt; | No| Yes| List of print quality supported by the printer. If no value is passed, the default value is an empty list.|
+| supportedOrientations | Array&lt;[PrintOrientationMode](#printorientationmode14)&gt; | No| Yes| List of print directions supported by the printer. If no value is passed, the default value is an empty list.|
+| options | string | No| Yes| Printer capability details. If no value is passed, the default value is an empty string.|
+| vendorPrinterPrefAbility | string | No| Yes| Printer preference settings page provided by the printer driver vendor. If no value is passed, the default value is an empty string.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since:** 26.0.0<br>|
+| vendorJobAttrAbility | string | No| Yes| Print job settings page provided by the printer driver vendor. If no value is passed, the default value is an empty string.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since:** 26.0.0<br>|
 
 ## PrintQuality<sup>14+</sup>
 
@@ -1493,7 +1514,8 @@ Defines the printer preferences.
 | defaultColorMode<sup>24+</sup> | [PrintColorMode](#printcolormode11) | No| Yes| Default color mode. The default value is black and white.<br>**Model restriction**: This API can be used only in the stage model.<br>|
 | defaultCollate<sup>24+</sup> | boolean | No| Yes| Default output order. The value **true** means that pages are printed collated, and **false** means the opposite. The default value is **true**.<br>**Model restriction**: This API can be used only in the stage model.<br>|
 | defaultReverse<sup>24+</sup> | boolean | No| Yes| Default print order. The value **true** means that pages are printed in reverse order, and **false** means that pages are printed in normal order. The default value is **false**.<br>**Model restriction**: This API can be used only in the stage model.<br>|
-| options | string | No| Yes| Other fields in the printer preferences. The fields are queried from the printer or obtained from the printer driver and stored in the string in JSON format.|
+| options | string | No| Yes| Other fields in the printer preferences. The fields are obtained from the printer or the printer driver and stored in the string in JSON format.|
+| vendorOptions | string | No| Yes| Vendor-specific printer preferences of the printer driver, in JSON format.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since:** 26.0.0<br>|
 
 ## PrinterEvent<sup>18+</sup>
 
@@ -1512,7 +1534,7 @@ Enumerates printer-related events.
 
 ## DefaultPrinterType<sup>18+</sup>
 
-Enumerates default printer types.
+Enumerates the methods for determining the default printer.
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -1555,7 +1577,7 @@ print.getAddedPrinters().then((printers: string[]) => {
     console.info('getAddedPrinters success ' + JSON.stringify(printers));
     // ...
 }).catch((error: BusinessError) => {
-    console.error('failed to getAddedPrinters because ' + JSON.stringify(error));
+    console.error(`Failed to getAddedPrinters. Code: ${error.code}, message: ${error.message}`);
 })
 ```
 
@@ -1578,7 +1600,7 @@ Defines a callback that takes the printer event and printer information as param
 
 on(type: 'printerChange', callback: PrinterChangeCallback): void
 
-Registers a listener for the printer change events. This API uses a callback to return the result.
+Registers a listener for the printer change events. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -1617,7 +1639,7 @@ print.on('printerChange', onPrinterChange);
 
 off(type: 'printerChange', callback?: PrinterChangeCallback): void
 
-Unregisters the listener for printer state change events. This API uses a callback to return the result.
+Unregisters the callback for printer change events.
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -1628,7 +1650,7 @@ Unregisters the listener for printer state change events. This API uses a callba
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | 'printerChange' | Yes| Printer change event.|
-| callback | [PrinterChangeCallback](#printerchangecallback18) | No| Callback to unregister.|
+| callback | [PrinterChangeCallback](#printerchangecallback18) | No| Callback for printer change events to be unregistered. If this parameter is not passed, all registered callbacks of the caller will be unregistered.|
 
 **Error codes**
 
@@ -1657,7 +1679,7 @@ print.off('printerChange');
 
 startDiscoverPrinter(extensionList: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Discovers printers by specifying the extension list. The discovered printers contain the specified print extension abilities. If an empty extension list is specified, all extension abilities are loaded. This API uses an asynchronous callback to return the result.
+Discovers printers by specifying the extension list. The discovered printers have the specified print extension abilities. If an empty extension list is specified, all extension abilities are loaded. This API uses an asynchronous callback to return the result. When printer discovery is no longer needed, call [stopDiscoverPrinter](#printstopdiscoverprinter20) to stop the discovery and release system resources. Otherwise, the system will continuously discover printers, consuming system resources.
 
 **Required permissions**: ohos.permission.MANAGE_PRINT_JOB or ohos.permission.PRINT
 
@@ -1688,9 +1710,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let extensionList: string[] = [];
 // Specify the bundle name of your applications to load required print extension abilities during printer discovery.
 // let extensionList: string[] = ['com.myapplication.test'];
-print.startDiscoverPrinter(extensionList, (err: BusinessError) => {
-    if (err) {
-        console.error('failed to start Discover Printer because : ' + JSON.stringify(err));
+print.startDiscoverPrinter(extensionList, (error: BusinessError) => {
+    if (error) {
+        console.error(`Failed to startDiscoverPrinter. Code: ${error.code}, message: ${error.message}`);
     } else {
         console.info('start Discover Printer success');
     }
@@ -1701,7 +1723,7 @@ print.startDiscoverPrinter(extensionList, (err: BusinessError) => {
 
 startDiscoverPrinter(extensionList: Array&lt;string&gt;): Promise&lt;void&gt;
 
-Discovers printers by specifying the extension list. The discovered printers contain the specified print extension abilities. If an empty extension list is specified, all extension abilities are loaded. This API uses a promise to return the result.
+Discovers printers by specifying the extension list. The discovered printers have the specified print extension abilities. If an empty extension list is specified, all extension abilities are loaded. This API uses a promise to return the result. When printer discovery is no longer needed, call [stopDiscoverPrinter](#printstopdiscoverprinter20) to stop the discovery and release system resources. Otherwise, the system will continuously discover printers, consuming system resources.
 
 **Required permissions**: ohos.permission.MANAGE_PRINT_JOB or ohos.permission.PRINT
 
@@ -1717,7 +1739,7 @@ Discovers printers by specifying the extension list. The discovered printers con
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. **resolve** indicates that the operation is successful, and **reject** indicates that the operation fails.|
 
 **Error codes**
 
@@ -1740,7 +1762,7 @@ let extensionList: string[] = [];
 print.startDiscoverPrinter(extensionList).then(() => {
     console.info('start Discovery success');
 }).catch((error: BusinessError) => {
-    console.error('failed to start Discovery because : ' + JSON.stringify(error));
+    console.error(`Failed to startDiscoverPrinter. Code: ${error.code}, message: ${error.message}`);
 })
 ```
 
@@ -1774,9 +1796,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-print.stopDiscoverPrinter((err: BusinessError) => {
-    if (err) {
-        console.error('failed to stop Discover Printer because : ' + JSON.stringify(err));
+print.stopDiscoverPrinter((error: BusinessError) => {
+    if (error) {
+        console.error(`Failed to stopDiscoverPrinter. Code: ${error.code}, message: ${error.message}`);
     } else {
         console.info('stop Discover Printer success');
     }
@@ -1797,7 +1819,7 @@ Stops discovering printers. This API uses a promise to return the result.
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. **resolve** indicates that the operation is successful, and **reject** indicates that the operation fails.|
 
 **Error codes**
 
@@ -1816,7 +1838,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 print.stopDiscoverPrinter().then(() => {
     console.info('stop Discovery success');
 }).catch((error: BusinessError) => {
-    console.error('failed to stop Discovery because : ' + JSON.stringify(error));
+    console.error(`Failed to stopDiscoverPrinter. Code: ${error.code}, message: ${error.message}`);
 })
 ```
 
@@ -1851,10 +1873,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// printer ID can be obtained from the on('printerChange') callback.
 let printerId: string = 'printerId_32';
-print.connectPrinter(printerId, (err: BusinessError) => {
-    if (err) {
-        console.error('failed to connect Printer because : ' + JSON.stringify(err));
+print.connectPrinter(printerId, (error: BusinessError) => {
+    if (error) {
+        console.error(`Failed to connectPrinter. Code: ${error.code}, message: ${error.message}`);
     } else {
         console.info('start connect Printer success');
     }
@@ -1881,7 +1904,7 @@ Connects to a printer by printer ID. This API uses a promise to return the resul
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. **resolve** indicates that the operation is successful, and **reject** indicates that the operation fails.|
 
 **Error codes**
 
@@ -1897,11 +1920,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// printer ID can be obtained from the on('printerChange') callback.
 let printerId: string = 'printerId_32';
 print.connectPrinter(printerId).then(() => {
     console.info('start connect Printer success');
 }).catch((error: BusinessError) => {
-    console.error('failed to connect Printer because : ' + JSON.stringify(error));
+    console.error(`Failed to connectPrinter. Code: ${error.code}, message: ${error.message}`);
 })
 ```
 
@@ -1909,7 +1933,7 @@ print.connectPrinter(printerId).then(() => {
 
 startPrint(job: PrintJobData): Promise&lt;void&gt;
 
-Prints a file or binary data. This API uses a promise to return the result.
+Prints a file or binary data. This API uses a promise to return the result. This API directly creates a print job by specifying the target printer ID and print parameters in **PrintJobData**. Call **print.print** to display the system print preview page.
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -1927,7 +1951,7 @@ Prints a file or binary data. This API uses a promise to return the result.
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. **resolve** indicates that the operation is successful, and **reject** indicates that the operation fails.|
 
 **Error codes**
 
@@ -1949,21 +1973,21 @@ let file: fileIo.File;
 file = fileIo.openSync(tempPath, 4);
 
 let printJobData: print.PrintJobData = {
-    printerId: "printerId",
-    jobName: "jobName",
+    printerId: 'printerId', // printer ID can be obtained from the on('printerChange') callback.
+    jobName: 'jobName',
     documentFormat: print.PrintDocumentFormat.DOCUMENT_FORMAT_AUTO,
     docFlavor: print.DocFlavor.FILE_DESCRIPTOR,
     copyNumber: 1,
     isLandscape: false,
     colorMode: print.PrintColorMode.COLOR_MODE_MONOCHROME,
     duplexMode: print.PrintDuplexMode.DUPLEX_MODE_NONE,
-    pageSize: {id: "ISO_A4", name: "ISO_A4", width:8268, height: 11692},
+    pageSize: {id: 'ISO_A4', name: 'ISO_A4', width: 8268, height: 11692},
     fdList: [file.fd],
-}
+};
 print.startPrint(printJobData).then(() => {
     console.info('start print success');
 }).catch((error: BusinessError) => {
-    console.error('failed to print because : ' + JSON.stringify(error));
+    console.error(`Failed to startPrint. Code: ${error.code}, message: ${error.message}`);
 })
 ```
 ## PrintDocumentFormat<sup>23+</sup>
@@ -1993,7 +2017,7 @@ Enumerates the data source types for printing.
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
-| FILE_DESCRIPTOR | 0 | File data.|
+| FILE_DESCRIPTOR | 0 | File descriptor.|
 | BYTES | 1 | Binary data.|
 
 ## PrintJobData<sup>23+</sup>
@@ -2009,23 +2033,24 @@ Defines a print job.
 | printerId | string | No| No| Printer ID.|
 | jobName | string | No| No| Name of the print job.|
 | documentFormat | [PrintDocumentFormat](#printdocumentformat23) | No| No| Format of the print data.|
-| docFlavor | [DocFlavor](#docflavor23) | No| No| Data source type.|
-| copyNumber | number | No| No| Number of file list copies.|
+| docFlavor | [DocFlavor](#docflavor23) | No| No| Data source type. If this parameter is set to **FILE_DESCRIPTOR**, the **fdList** parameter must be provided. If this parameter is set to **BYTES**, the **binaryData** parameter must be provided.|
+| copyNumber | number | No| No| Number of printed file copies. The value is a positive integer. The default value is **1**.|
 | isLandscape | boolean | No| No| Whether pages are printed in landscape mode. The value **true** indicates that pages are printed in landscape mode, and **false** indicates that pages are printed in portrait mode. The default value is **false**.|
 | colorMode | [PrintColorMode](#printcolormode11) | No| No| Color mode.|
 | duplexMode | [PrintDuplexMode](#printduplexmode11) | No| No| Simplex or duplex mode.|
 | pageSize | [PrintPageSize](#printpagesize11) | No| No| Selected page size.|
 | jobId | string | No| Yes| Unique identifier of the print job.|
-| fdList | number[]; | No| Yes| FD list of files to print.|
-| binaryData | Uint8Array | No| Yes| Binary data to print.|
+| fdList | number[] | No| Yes| FD list of files to print. This parameter is required when **docFlavor** is set to **FILE_DESCRIPTOR**.|
+| binaryData | Uint8Array | No| Yes| Binary data to print. This parameter is required when **docFlavor** is set to **BYTES**.|
 | printQuality | [PrintQuality](#printquality14) | No| Yes| Print quality.|
 | mediaType | string | No| Yes| Type of the paper to print.|
 | isBorderless | boolean | No| Yes| Whether to print without margins. The value **true** means to print without margins, and **false** means the opposite. Default value: **true**.|
 | isAutoRotate | boolean | No| Yes| Whether to automatically rotate the page. The value **true** means to automatically rotate the page, and **false** means the opposite. Default value: **true**.|
 | isReverse | boolean | No| Yes| Whether pages are printed in reverse order. The value **true** means that pages are printed in reverse order, and **false** means that pages are printed in normal order. The default value is **false**.|
-| isCollate | boolean | No| Yes| Whether pages are printed uncollated. The value **true** means that pages are printed uncollated, and **false** means the opposite. Default value: **true**.|
+| isCollate | boolean | No| Yes| Whether pages are printed uncollated. The value **true** means that pages are printed collated, and **false** means the opposite. Default value: **true**.|
 | isSequential | boolean | No| Yes| Whether the printing is sequential. The value **true** means that the printing is sequential, and **false** means the opposite. The default value is **false**.|
-| options | string | No| Yes| Object stringified in JSON format.|
+| options | string | No| Yes| Additional information about the print job, in JSON format. The parameter must contain the **printerUri**, **printerName**, and **documentFormat** fields. If the value is not passed or the format is invalid, the CUPS task will fail to be created.|
+| vendorOptions | string | No| Yes| Vendor-specific print job attributes of the printer driver, in JSON format.<br>**Since:** 26.0.0<br>|
 
 ## PrintMargin<sup>24+</sup>
 
@@ -2052,8 +2077,8 @@ Defines the print range.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| startPage | number | No| Yes| Start page. The default value is **1**.|
-| endPage | number | No| Yes| End page. The default value is the maximum number of pages of the file to be printed.|
+| startPage | number | No| Yes| Start page. The value is a positive integer. The default value is **1**.|
+| endPage | number | No| Yes| End page. The value must be a positive integer. The default value is the maximum number of pages in the file to be printed.|
 | pages | Array&lt;number&gt; | No| Yes| Page range set of the file to print. The default value is empty.|
 
 ## PreviewAttribute<sup>24+</sup>
@@ -2067,7 +2092,7 @@ Defines the print preview attributes.
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | previewRange | [PrinterRange](#printerrange24) | No| No| Preview page range.|
-| result | number | No| Yes| Print preview result. The default value is **-1**.|
+| result | number | No| Yes| Preview file generation result. The value is defined by the developer.|
 
 ## PrintResolution<sup>24+</sup>
 
@@ -2093,16 +2118,16 @@ Defines the printer capabilities.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| colorMode | number | No| No| Color mode.|
-| duplexMode | number | No| No| Simplex or duplex mode.|
+| colorMode | number | No| No| Color mode. For details, see [PrintColorMode](#printcolormode11).|
+| duplexMode | number | No| No| Simplex or duplex mode. For details about the value, see [PrintDuplexMode](#printduplexmode11).|
 | pageSize | Array&lt;[PrintPageSize](#printpagesize11)&gt; | No| No| List of page sizes supported by the printer.|
 | resolution | Array&lt;[PrintResolution](#printresolution24)&gt; | No| Yes| List of resolutions supported by the printer.|
 | minMargin | [PrintMargin](#printmargin24) | No| Yes| Minimum margin of the printer.|
-| options | Object | No| Yes| Printer options. The value is a JSON object string.|
+| options | Object | No| Yes| Printer capability information, in JSON format.|
 
 ## PrinterInfo<sup>24+</sup>
 
-Provides the printer information.
+Defines the printer information.
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -2115,8 +2140,8 @@ Provides the printer information.
 | printerState | [PrinterState](#printerstate14) | No| No| Printer state.|
 | printerIcon | number | No| Yes| Resource ID of the printer icon. The default value is **-1**.|
 | description | string | No| Yes| Printer description.|
-| capability | [PrinterCapability](#printercapability24) | No| Yes| Printer capability.|
-| options | Object | No| Yes| Printer options. The value is a JSON object string.|
+| capability | [PrinterCapability](#printercapability24) | No| Yes| Printer capabilities.|
+| options | Object | No| Yes| Printer information, in JSON format.|
 
 ## PrintJob<sup>24+</sup>
 
@@ -2133,16 +2158,17 @@ Defines a print job.
 | printerId | string | No| No| ID of the printer used for printing.|
 | jobState | [PrintJobState](#printjobstate14) | No| No| State of the print job.|
 | jobSubstate | [PrintJobSubState](#printjobsubstate14) | No| No| Substate of the print job.|
-| copyNumber | number | No| No| Copy of the file list.|
-| pageRange | [PrinterRange](#printerrange24) | No| No| Print range.|
+| copyNumber | number | No| No| Number of printed file copies. The value is a positive integer. The default value is **1**.|
+| pageRange | [PrinterRange](#printerrange24) | No| No| Print page range.|
 | isSequential | boolean | No| No| Whether the printing is sequential. The value **true** means that the printing is sequential, and **false** means the opposite. The default value is **false**.|
 | pageSize | [PrintPageSize](#printpagesize11) | No| No| Selected page size.|
 | isLandscape | boolean | No| No| Whether pages are printed in landscape mode. The value **true** indicates that pages are printed in landscape mode, and **false** indicates that pages are printed in portrait mode. The default value is **false**.|
-| colorMode | number | No| No| Color mode.|
-| duplexMode | number | No| No| Simplex or duplex mode.|
+| colorMode | number | No| No| Color mode. For details, see [PrintColorMode](#printcolormode11).|
+| duplexMode | number | No| No| Simplex or duplex mode. For details about the value, see [PrintDuplexMode](#printduplexmode11).|
 | margin | [PrintMargin](#printmargin24) | No| Yes| Current page margin.|
 | preview | [PreviewAttribute](#previewattribute24) | No| Yes| Preview settings.|
-| options | Object | No| Yes| Printer options. The value is a JSON object string.|
+| options | Object | No| Yes| Detailed information about a print job, in JSON format.|
+| vendorOptions | string | No| Yes| Vendor-specific print job attributes of the printer driver, in JSON format.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since:** 26.0.0<br>|
 
 ## print.updatePrintJobState<sup>24+</sup>
 
@@ -2178,12 +2204,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Obtain the job ID from the onStartPrintJob callback of the PrintExtensionAbility.
 let jobId : string = 'jobId';
 let state : print.PrintJobState = print.PrintJobState.PRINT_JOB_PREPARE;
 let subState : print.PrintJobSubState = print.PrintJobSubState.PRINT_JOB_COMPLETED_SUCCESS;
-print.updatePrintJobState(jobId, state, subState, (err: BusinessError) => {
-    if (err) {
-        console.error('updatePrintJobState failed, because : ' + JSON.stringify(err));
+print.updatePrintJobState(jobId, state, subState, (error: BusinessError) => {
+    if (error) {
+        console.error(`Failed to updatePrintJobState. Code: ${error.code}, message: ${error.message}`);
     } else {
         console.info('updatePrintJobState success');
     }
@@ -2212,7 +2239,7 @@ Updates the print job state. This API uses a promise to return the result.
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. **resolve** indicates that the operation is successful, and **reject** indicates that the operation fails.|
 
 **Error codes**
 
@@ -2229,13 +2256,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Obtain the job ID from the onStartPrintJob callback of the PrintExtensionAbility.
 let jobId : string = 'jobId';
 let state : print.PrintJobState = print.PrintJobState.PRINT_JOB_PREPARE;
 let subState : print.PrintJobSubState = print.PrintJobSubState.PRINT_JOB_COMPLETED_SUCCESS;
 print.updatePrintJobState(jobId, state, subState).then(() => {
     console.info('update print job state success');
 }).catch((error: BusinessError) => {
-    console.error('update print job state error : ' + JSON.stringify(error));
+    console.error(`Failed to updatePrintJobState. Code: ${error.code}, message: ${error.message}`);
 })
 ```
 
@@ -2253,13 +2281,13 @@ Updates the information of a printer in the system. This API uses a promise to r
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| printerInformation | [PrinterInformation](#printerinformation14) | Yes| Printer information to be updated.|
+| printerInformation | [PrinterInformation](#printerinformation14) | Yes| Printer information to be updated. Currently, only the **alias** and **options** fields can be updated.|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. **resolve** indicates that the operation is successful, and **reject** indicates that the operation fails.|
 
 **Error codes**
 
@@ -2294,7 +2322,7 @@ let testCapability : print.PrinterCapabilities = {
 };
 
 let printerInformation : print.PrinterInformation = {
-    printerId : 'testPrinterId',
+    printerId : 'testPrinterId', // printer ID can be obtained from the on('printerChange') callback.
     printerName : 'testPrinterName',
     printerStatus : 0,
     description : 'testDesc',
@@ -2306,7 +2334,7 @@ let printerInformation : print.PrinterInformation = {
 print.updatePrinterInformation(printerInformation).then(() => {
     console.info('updatePrinterInformation success');
 }).catch((error: BusinessError) => {
-    console.error('updatePrinterInformation error : ' + JSON.stringify(error));
+    console.error(`Failed to updatePrinterInformation. Code: ${error.code}, message: ${error.message}`);
 })
 ```
 
@@ -2346,7 +2374,7 @@ Defines the shared device information.
 
 addPrinter(printerName: string, uri: string, ppdName?: string, options?: string): Promise&lt;boolean&gt;
 
-Adds a printer to the system. This API uses a promise to return the result.
+Adds a printer to the system. This API uses a promise to return the result. This API is intended for scenarios where printers or scanners need to be managed, such as the management of the printer drivers, printing management software, third-party printing management software, and cloud printing.
 
 **Required permissions**: ohos.permission.MANAGE_PRINT_JOB or ohos.permission.PRINTER_DRIVER
 
@@ -2360,14 +2388,14 @@ Adds a printer to the system. This API uses a promise to return the result.
 | -------- | -------- | -------- | -------- |
 | printerName | string | Yes| Printer name.|
 | uri | string | Yes| Printer URI.|
-| ppdName | string | No| PPD file name of the printer.|
-| options | string | No| JSON object string, which indicates the printer option parameter.|
+| ppdName | string | No| PPD driver file name of the printer in the file system. The name is generated after the driver is installed on the device, which is in the format of **package name_module name_file name**. For details about the name, contact the driver vendor. This parameter is passed when a specific PPD driver file needs to be specified. If this parameter is not passed, the system automatically matches a PPD driver file.|
+| options | string | No| JSON object string, which indicates the printer option parameter. This is a reserved field, which is not used currently.|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;boolean&gt; | Promise used to return the result indicating whether the printer is successfully added.|
+| Promise&lt;boolean&gt; | Promise used to return the result indicating whether the printer is successfully added. **true** if the operation is successful, and **false** otherwise.|
 
 **Error codes**
 
@@ -2390,7 +2418,7 @@ let ppdName : string = 'ppdName';
 print.addPrinter(printerName, uri, ppdName).then(() => {
     console.info('add printer success');
 }).catch((error: BusinessError) => {
-    console.error('add printer error : ' + JSON.stringify(error));
+    console.error(`Failed to addPrinter. Code: ${error.code}, message: ${error.message}`);
 })
 ```
 
@@ -2411,7 +2439,7 @@ Enumerates the results of forcible watermark processing.
 
 type WatermarkCallback = (jobId: string, fd: number) => void
 
-Defines the callback type used to register an event listener for forcible watermark processing.
+Callback type used to register an event listener for forcible watermark processing.
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -2428,7 +2456,7 @@ Defines the callback type used to register an event listener for forcible waterm
 
 registerWatermarkCallback(callback: WatermarkCallback): void
 
-Registers an event listener for forcible watermark processing.
+Registers an event listener for forcible watermark processing. A forcible watermark is the watermark that must be added to printed files according to enterprise management policies. In enterprise management scenarios, when a watermark (such as a company logo or confidentiality level mark) needs to be forcibly added to printed files, you can use this API to register a watermark processing callback.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_PRINT
 
@@ -2454,17 +2482,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let watermarkCallback: print.WatermarkCallback = (jobId: string, fd: number) => {
     console.info('Watermark callback triggered, jobId: ' + jobId + ', fd: ' + fd);
-}
+};
 
 try {
     print.registerWatermarkCallback(watermarkCallback);
     console.info('registerWatermarkCallback success');
 } catch (error) {
-    console.error('registerWatermarkCallback error: ' + JSON.stringify(error));
+    console.error(`Failed to registerWatermarkCallback. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -2472,7 +2499,7 @@ try {
 
 unregisterWatermarkCallback(callback?: WatermarkCallback): void
 
-Deregisters an event listener for forcible watermark processing.
+Deregisters an event listener for forcible watermark processing. When an enterprise management app no longer needs to forcibly add watermarks to printed files, you can call this API to unregister the previously registered watermark processing callback.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_PRINT
 
@@ -2484,7 +2511,7 @@ Deregisters an event listener for forcible watermark processing.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | [WatermarkCallback](#printwatermarkcallback24) | No| Callback type used to register an event listener for forcible watermark processing.|
+| callback | [WatermarkCallback](#printwatermarkcallback24) | No| Watermark processing callback to be unregistered. If this parameter is not passed, all registered callbacks of the caller will be unregistered.|
 
 **Error codes**
 
@@ -2498,11 +2525,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let watermarkCallback: print.WatermarkCallback = (jobId: string, fd: number) => {
     console.info('Watermark callback triggered, jobId: ' + jobId + ', fd: ' + fd);
-}
+};
 
 try {
     print.registerWatermarkCallback(watermarkCallback);
@@ -2511,7 +2537,7 @@ try {
     print.unregisterWatermarkCallback(watermarkCallback);
     console.info('unregisterWatermarkCallback success');
 } catch (error) {
-    console.error('unregisterWatermarkCallback error: ' + JSON.stringify(error));
+    console.error(`Failed to unregisterWatermarkCallback. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -2519,7 +2545,7 @@ try {
 
 notifyWatermarkComplete(jobId: string, result: WatermarkHandleResult): void
 
-Notifies that watermark processing is complete.
+Notifies that watermark processing is complete so that the subsequent printing process can continue.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_PRINT
 
@@ -2546,7 +2572,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let watermarkCallback: print.WatermarkCallback = (jobId: string, fd: number) => {
     console.info('Watermark callback triggered, jobId: ' + jobId + ', fd: ' + fd);
@@ -2556,14 +2581,14 @@ let watermarkCallback: print.WatermarkCallback = (jobId: string, fd: number) => 
         print.notifyWatermarkComplete(jobId, print.WatermarkHandleResult.WATERMARK_HANDLE_SUCCESS);
         console.info('notifyWatermarkComplete success');
     } catch (error) {
-        console.error('notifyWatermarkComplete error: ' + JSON.stringify(error));
+        console.error(`Failed to notifyWatermarkComplete. Code: ${error.code}, message: ${error.message}`);
     }
-}
+};
 
 try {
     print.registerWatermarkCallback(watermarkCallback);
     console.info('registerWatermarkCallback success');
 } catch (error) {
-    console.error('registerWatermarkCallback error: ' + JSON.stringify(error));
+    console.error(`Failed to registerWatermarkCallback. Code: ${error.code}, message: ${error.message}`);
 }
 ```

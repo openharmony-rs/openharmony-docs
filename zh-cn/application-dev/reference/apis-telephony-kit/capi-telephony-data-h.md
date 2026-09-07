@@ -50,6 +50,6 @@ int32_t OH_Telephony_GetDefaultCellularDataSlotId(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 默认移动数据的SIM卡接口 (0 表示卡槽1, 1 表示卡槽2)。 |
+| int32_t | 默认移动数据的卡槽（0表示卡槽1，1表示卡槽2）。 |
 
 

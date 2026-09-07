@@ -1,25 +1,29 @@
 # NodeContainer
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=af1c409994db2fe8f6b1e73fc3517a651a9626fe translatedAt=2026-09-03T04:19:21.272Z -->
 
-**NodeContainer** is a basic component for mounting custom nodes (such as [FrameNode](../js-apis-arkui-frameNode.md) or [BuilderNode](../js-apis-arkui-builderNode.md)) and dynamically managing node attachment and detachment through [NodeController](../js-apis-arkui-nodeController.md). This component does not support adding trailing child components and requires a [NodeController](../js-apis-arkui-nodeController.md) instance for operation. It must be used in combination with **NodeController**.
+A basic component used to mount custom nodes (such as [FrameNode](../js-apis-arkui-frameNode.md) or the root FrameNode obtained from [BuilderNode](../js-apis-arkui-builderNode.md)) and dynamically control the mounting and unmounting of nodes through [NodeController](../js-apis-arkui-nodeController.md). It is suitable for scenarios where custom nodes need to be dynamically inserted into and removed from the component tree to implement on-demand UI loading and node reuse, which improves page rendering efficiency and reduces node creation overhead. The component does not support appending child nodes. It accepts a [NodeController](../js-apis-arkui-nodeController.md) instance and must be used together with NodeController.
 
 > **NOTE**
 >
-> This component is supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> Only custom [FrameNodes](../js-apis-arkui-frameNode.md) or the root FrameNode obtained from a [BuilderNode](../js-apis-arkui-builderNode.md) can be attached to this component.
-> [Proxy nodes](../js-apis-arkui-frameNode.md#ismodifiable12) of built-in system components obtained through querying cannot be attached to this component.
+> - The APIs of this module can be used only in the stage model.
 >
-> This component does not work with the [attribute modifier](./ts-universal-attributes-attribute-modifier.md).
+> - This component supports mounting only custom nodes, that is, [FrameNode](../js-apis-arkui-frameNode.md) or the root FrameNode obtained from [BuilderNode](../js-apis-arkui-builderNode.md).
 >
-> A [UIContext](../arkts-apis-uicontext-uicontext.md) instance is used to construct the node tree for this component. During instance switching, the input parameter of the [makeNode](../js-apis-arkui-nodeController.md#makenode) callback method of the bound [NodeController](../js-apis-arkui-nodeController.md) may be **undefined** due to instance mismatch. Therefore, this component does not support cross-instance node reuse.
+> - Mounting the proxy node of a system component obtained through a query is not supported. For details, see [isModifiable](../js-apis-arkui-frameNode.md#ismodifiable12).
 >
-> When this component is not destroyed, the unmounting of its mounted child nodes will not be triggered.
+> - [Dynamic attribute setting](./ts-universal-attributes-attribute-modifier.md) is not supported.
+>
+> - When the node tree under this component is built, the UI instance [UIContext](../arkts-apis-uicontext-uicontext.md) is used. When the instance is switched, the input parameter of the [makeNode](../js-apis-arkui-nodeController.md#makenode) callback of the bound [NodeController](../js-apis-arkui-nodeController.md) may be undefined due to instance mismatch. Therefore, this component does not support cross-instance node reuse.
+>
+> - When this component is not destroyed, it does not proactively trigger the unmounting of the mounted node.
 
 ## Child Components
 
@@ -29,7 +33,7 @@ Not supported
 
 ### NodeContainer
 
-NodeContainer(controller: NodeController)
+NodeContainer(controller: import('../api/@ohos.arkui.node').NodeController)
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -39,14 +43,14 @@ NodeContainer(controller: NodeController)
 
 | Name    | Type                                                | Mandatory| Description                                                        |
 | ---------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| controller | [NodeController](../js-apis-arkui-nodeController.md) | Yes  | **NodeController** instance used to control the upper and lower tree nodes in the **NodeContainer**. It represents the lifecycle of the **NodeContainer**.|
+| controller | import('../api/@ohos.arkui.node').[NodeController](../js-apis-arkui-nodeController.md) | Yes | NodeController is used to control the attaching and detaching of nodes in NodeContainer, reflecting the lifecycle of the NodeContainer container. |
 ## Attributes
 
-The [universal attributes](ts-component-general-attributes.md) are supported.
+[Universal attributes](./ts-component-general-attributes.md) are supported, but [dynamic attribute setting](./ts-universal-attributes-attribute-modifier.md) is not supported.
 
 ## Events
 
-The [universal events](ts-component-general-events.md) are supported.
+[Universal events](./ts-component-general-events.md) are supported.
 
 ## Example
 
@@ -80,9 +84,13 @@ class MyNodeController extends NodeController {
   makeNode(uiContext: UIContext): FrameNode | null {
     if (this.rootNode === null) {
       this.rootNode = new BuilderNode(uiContext);
-      this.rootNode.build(this.wrapBuilder, { text: "This is a Text" })
+      this.rootNode.build(this.wrapBuilder, { text: 'This is a Text' })
     }
     return this.rootNode.getFrameNode();
+  }
+
+  aboutToDisappear() {
+    this.rootNode?.dispose();
   }
 }
 
@@ -94,13 +102,13 @@ struct Index {
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceEvenly }) {
-      Text("This is a NodeContainer contains a text and a button ")
+      Text('This is a NodeContainer contains a text and a button ')
         .fontSize(9)
         .fontColor(0xCCCCCC)
       NodeContainer(this.baseNode)
         .borderWidth(1)
         .onClick(() => {
-          console.info("click event");
+          console.info('click event');
         })
     }
     .padding({ left: 35, right: 35, top: 35 })
@@ -109,4 +117,4 @@ struct Index {
   }
 }
 ```
-![patternlock](figures/nodeContainer_sample.jpg)
+![NodeContainer example](figures/nodeContainer_sample.jpg)

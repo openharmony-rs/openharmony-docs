@@ -5,8 +5,9 @@
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=39ca26def5c22dc659f3dc0b76ef62a29421e77a translatedAt=2026-09-02T12:14:31.816Z -->
 
-The **useEffect** attribute is used to combine the drawing of special effects, such as background blur.
+Used to set whether the component applies an effect template to merge the drawing of background blur and other effects.
 
 > **NOTE**
 >
@@ -17,7 +18,7 @@ The **useEffect** attribute is used to combine the drawing of special effects, s
 
 useEffect(value: boolean): T
 
-Specifies whether to combine the drawing of special effects, such as background blur.
+Used to control whether the component inherits the effect attribute parameters<!--Del--> of the parent [EffectComponent](ts-container-effectcomponent-sys.md)<!--DelEnd--> to merge the drawing of background blur and other effects.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -27,19 +28,19 @@ Specifies whether to combine the drawing of special effects, such as background 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | boolean | Yes| Whether the component inherits the special effect settings of the **EffectComponent** component.<br>The value **true** means the component inherits the special effect settings of the **EffectComponent** component, and **false** means the opposite.<br>Default value: **false**|
+| value | boolean | Yes | Whether the component inherits the effect attribute parameters<!--Del--> of the parent [EffectComponent](ts-container-effectcomponent-sys.md)<!--DelEnd--> to merge the rendering of effects.<br>When useEffect is true, the child component inherits the effect attribute parameters<!--Del--> of the parent [EffectComponent](ts-container-effectcomponent-sys.md); when it is false, the child component does not inherit the effect attribute parameters<!--Del--> of the parent [EffectComponent](ts-container-effectcomponent-sys.md).<br>Default value: false|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## useEffect<sup>14+</sup>
 
 useEffect(useEffect: boolean, effectType: EffectType): T
 
-Specifies whether to apply the effect defined by <!--Del-->the parent [EffectComponent](ts-container-effectcomponent-sys.md) or <!--DelEnd-->the window.
+Used to set whether the component applies the effect template defined by<!--Del--> the parent [EffectComponent](ts-container-effectcomponent-sys.md) or<!--DelEnd--> the window. When effectType is DEFAULT, this attribute must be used on a child component of EffectComponent, and EffectComponent must be configured with effect attributes for it to take effect. When effectType is WINDOW_EFFECT, it must be used together with the window effect template. When it is not used in the corresponding container, useEffect produces no effect. An effect template is a set of predefined visual effect parameters (including blur radius, saturation, brightness, and color) applied to a component to achieve a unified visual effect style.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -49,20 +50,20 @@ Specifies whether to apply the effect defined by <!--Del-->the parent [EffectCom
 
 | Name    | Type                                                        | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| useEffect  | boolean                                                      | Yes  | Whether to apply the effect defined by <!--Del-->the parent **EffectComponent** or <!--DelEnd-->the window.<br>The value **true** means to apply the effect defined by <!--Del-->the parent **EffectComponent** or <!--DelEnd-->the window.<br>Default value: **false**|
-| effectType | [EffectType](ts-universal-attributes-use-effect.md#effecttype14) | Yes  | Type of effect to apply to the component, which is defined by <!--Del-->the parent **EffectComponent** or <!--DelEnd-->the window.<br>Default value: **EffectType.DEFAULT**|
+| useEffect  | boolean                                                      | Yes  | Whether the component applies the effect template defined by<!--Del--> the parent **EffectComponent** or<!--DelEnd--> the window.<br>When useEffect is true, the effect template defined by<!--Del--> the parent EffectComponent or<!--DelEnd--> the window is applied; when it is false, the effect template defined by<!--Del--> the parent EffectComponent or<!--DelEnd--> the window is not applied.<br>Default value: false |
+| effectType | [EffectType](#effecttype14) | Yes  | Used to set the component to apply the effect template defined by<!--Del--> the parent EffectComponent or<!--DelEnd--> the window. This parameter takes effect only when useEffect is true.<br>Default value: EffectType.DEFAULT |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## useEffect<sup>18+</sup>
 
 useEffect(useEffect: Optional\<boolean>, effectType?: EffectType): T
 
-Specifies whether to apply the effect defined by <!--Del-->the parent [EffectComponent](ts-container-effectcomponent-sys.md) or <!--DelEnd-->the window. Compared with [useEffect<sup>14+</sup>](#useeffect14), this **useEffect** attribute supports the **undefined** type.
+Used to set whether the component applies the effect template defined by<!--Del--> the parent [EffectComponent](ts-container-effectcomponent-sys.md) or<!--DelEnd--> the window. Compared with [useEffect<sup>14+</sup>](#useeffect14), the useEffect parameter adds support for the undefined type. When effectType is DEFAULT, this attribute must be used on a child component of EffectComponent, and EffectComponent must be configured with effect attributes for it to take effect. When effectType is WINDOW_EFFECT, it must be used together with the window effect template. When it is not used in the corresponding container, useEffect produces no effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -72,18 +73,18 @@ Specifies whether to apply the effect defined by <!--Del-->the parent [EffectCom
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| useEffect | Optional\<boolean> | Yes| Whether to apply the effect defined by <!--Del-->the parent **EffectComponent** or <!--DelEnd-->the window.<br>The value **true** means to apply the effect defined by <!--Del-->the parent **EffectComponent** or <!--DelEnd-->the window.<br>Default value: **false**<br>If **useEffect** is set to **undefined**, the previous value is retained.|
-| effectType | [EffectType](ts-universal-attributes-use-effect.md#effecttype14) | No| Type of effect to apply to the component, which is defined by <!--Del-->the parent **EffectComponent** or <!--DelEnd-->the window.<br>Default value: **EffectType.DEFAULT**|
+| useEffect | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes | Whether the component applies the effect template defined by<!--Del--> the parent EffectComponent or<!--DelEnd--> the window.<br>When useEffect is true, the effect template defined by<!--Del--> the parent EffectComponent or<!--DelEnd--> the window is applied. The specific effect template to apply is determined by the effectType parameter.<br>When useEffect is false, no effect template is applied.<br>Default value: false<br>When the value of useEffect is undefined, the value from the last time this attribute took effect is retained. |
+| effectType | [EffectType](#effecttype14) | No | Specifies the type of the effect template, and applies the effect template defined by<!--Del--> the parent EffectComponent or<!--DelEnd--> the window.<br>Default value: EffectType.DEFAULT |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## EffectType<sup>14+</sup>
 
-Enumerates the types of effect templates.
+Enumerates the effect template types. An effect template is a preset visual effect parameter configuration, including parameters such as blur radius, saturation, brightness, and color.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -91,27 +92,27 @@ Enumerates the types of effect templates.
 
 | Name    | Value  | Description                  |
 | -------- | ---- | ---------------------- |
-| DEFAULT  | 0   | Uses the effect template defined<!--Del--> by the parent **EffectComponent** or <!--DelEnd-->.|
-| WINDOW_EFFECT  | 1   | Uses the effect template defined by the window.|
+| DEFAULT  | 0   | Uses the effect template <!--Del-->defined by the parent EffectComponent <!--DelEnd-->to render the component effect. |
+| WINDOW_EFFECT  | 1   | Uses the effect template defined by the window to render the component effect. |
 
 Effect Template
 
-|  Device Type   | Fuzzy Radius (Unit: px)  | Saturation                |  Brightness |  Color |
+|  Device Type    | Blur Radius (Unit: px)   | Saturation                 |  Brightness  |  Color  |
 | -------- | ---- | ---------------------- | -------- | -------- |
-| Mobile device | 0   | 0 | 0 | '#ffffffff', displayed as white.|
-| 2-in-1 device: dark mode | 80   | 1.5 | 1.0 | '#e52e3033', displayed as a semi-transparent light red.|
-| 2-in-1 device: light mode | 80   | 1.9 | 1.0 | '#e5ffffff', displayed as a semi-transparent dark red.|
-| Tablet | 0   | 0 | 0 | '#ffffffff', displayed as white.|
+| Mobile device  | 0   | 0 | 0 | '#ffffffff', displayed as white. |
+| 2-in-1 device: dark mode  | 80   | 1.5 | 1.0 | '#e52e3033', displayed as semi-transparent dark gray. |
+| 2-in-1 device: light mode  | 80   | 1.9 | 1.0 | '#e5ffffff', displayed as semi-transparent white. |
+| Tablet device  | 0   | 0 | 0 | '#ffffffff', displayed as white. |
 
 <!--Del-->
 ## Example
 
-This example shows how to combine the drawing of special effects, including background blur.
+This example demonstrates the merging of drawing for background blur and other effects.
 
 <!--code_no_check-->
 
 ```ts
-//Index.ets
+// Index.ets
 @Entry
 @Component
 struct Index {
@@ -119,7 +120,7 @@ struct Index {
 
   build() {
     Stack() {
-      Image($r("app.media.mountain"))
+      Image($r('app.media.mountain'))
         .autoResize(true)
       EffectComponent() {
         Column({ space: 20 }) {

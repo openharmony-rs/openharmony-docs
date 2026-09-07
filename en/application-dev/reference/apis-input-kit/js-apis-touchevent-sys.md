@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:25:24.283Z pushedAt=2026-06-15T00:13:39.975Z -->
+<!-- md-trans-meta sourceCommit=0b8116f3d07d6bc6355383279731c43671d374ff translatedAt=2026-09-01T01:22:50.258Z pushedAt=2026-09-03T08:34:12.442Z -->
 
 The **touchEvent** module provides touch events reported by a device. It is inherited from [InputEvent](./js-apis-inputevent.md).
 
@@ -24,7 +24,7 @@ import { FixedMode, Touch, TouchEvent } from '@kit.InputKit';
 
 ## FixedMode
 
-Enumerates coordinate correction modes.
+Coordinate correction mode. The default value is NONE.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
@@ -45,9 +45,9 @@ Defines the touch point information.
 
 | Name         | Type  | Read-Only  | Optional  | Description                                 |
 | ----------- | ------ | ---- | ---- | ----------------------------------- |
-| fixedDisplayX | number | No    | Yes    | Corrected value of the screenX coordinate in one-hand mode, in px. |
-| fixedDisplayY | number | No    | Yes    | Corrected value of the screenY coordinate in one-hand mode, in px. |
-| blobId<sup>24+</sup> | number | No   | Yes   | Touch point attribute ID. Currently, only single-finger touch is supported. The value **1** indicates left-hand touch, and the value **2** indicates right-hand touch.|
+| fixedDisplayX | number | No | Yes | Correction value of the screenX coordinate in one-handed mode, in pixels. The default value is 0. |
+| fixedDisplayY | number | No | Yes | Correction value of the screenY coordinate in one-handed mode, in pixels. The default value is 0. |
+| blobId<sup>24+</sup> | number | No | Yes | Attribute identifier of the touch point. Currently, only single-finger touch is supported: the value is 1 for a left-hand touch and 2 for a right-hand touch. By default, the system automatically identifies the value. By default, this attribute is not set. |
 
 ## TouchEvent
 
@@ -59,5 +59,5 @@ Defines a touch event.
 
 | Name        | Type      | Read-Only  | Optional  | Description       |
 | ---------- | ---------- | ---- | ---- | --------- |
-| fixedMode  | [FixedMode](#fixedmode)   | No   | Yes   | Coordinate correction mode.|
-| isInject<sup>20+</sup>  | boolean   | No   | Yes   | Whether the touch event is an injection event. For details about injection events, see [@ohos.multimodalInput.inputEventClient](js-apis-inputeventclient-sys.md).|
+| fixedMode | [FixedMode](#fixedmode) | No | Yes | Coordinate correction mode. The default value is FixedMode.NONE.|
+| isInject<sup>20+</sup> | boolean | No | Yes | Whether the touchscreen input event is an injection event. The default value is false. For details about injection events, see [@ohos.multimodalInput.inputEventClient](js-apis-inputeventclient-sys.md).|

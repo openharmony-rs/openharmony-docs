@@ -5,6 +5,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=78d27a16851062ae03d6a51de8b99e33aec772a0 translatedAt=2026-09-02T07:23:59.859Z pushedAt=2026-09-04T02:43:39.934Z -->
 
 - ArkTS APIs<!--crypto-architecture-arkts-->
   - [@ohos.security.cryptoFramework (Crypto Framework)](js-apis-cryptoFramework.md)

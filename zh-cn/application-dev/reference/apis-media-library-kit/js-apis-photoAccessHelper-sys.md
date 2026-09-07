@@ -13791,7 +13791,7 @@ async function example(context: Context) {
 | --- | --- | --- | --- | --- |
 | attr | [AlbumAttribute](#albumattribute) | 否 | 否 | 设置相册的属性类型。|
 | type | [AlbumOperationType](#albumoperationtype) | 否 | 否 | 设置相册属性的操作类型。 |
-| values | string[] | 否 | 否 | 设置相册属性的字符串参数。数组最大长度为20；数组中的每个字符串长度不超过500个字符。|
+| values | string[] | 否 | 否 | 设置相册属性的字符串参数。数组最大长度为20。<br>在API版本26.0.0，数组中的每个字符串长度不超过500个字符。<br>从API版本26.1.0开始，数组中的每个字符串长度不超过8192个字符。|
 
 ## AlbumAttributeInfo
 

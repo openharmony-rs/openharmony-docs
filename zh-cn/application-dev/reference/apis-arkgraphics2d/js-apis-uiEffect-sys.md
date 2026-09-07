@@ -2025,7 +2025,7 @@ struct Index {
 ```
 
 ### createRadialGradientMask<sup>20+</sup>
-static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY: number, values: Array<[number, number]>): Mask
+static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY: number, gradients: Array<[number, number]>): Mask
 
 通过输入椭圆中心点的位置、长短轴和形状参数创建椭圆遮罩效果[Mask](#mask20)实例。
 
@@ -2039,7 +2039,7 @@ static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY
 | center | [common2D.Point](js-apis-graphics-common2D.md#point12)  | 是 | 设置椭圆的中心点，[0, 0]为组件左上角，[1, 1]为组件的右下角。<br>取值范围为[-10, 10]，可取浮点数，超出边界会在实现时自动截断。 |
 | radiusX | number  | 是 | 设置椭圆的X方向的半径，半径为1等于组件的高度。<br>取值范围为[0, 10]，可取浮点数，超出边界会在实现时自动截断。 |
 | radiusY | number  | 是 | 设置椭圆的Y方向的半径，半径为1等于组件的高度。<br>取值范围为[0, 10]，可取浮点数，超出边界会在实现时自动截断。 |
-| values | Array<[number, number]>     | 是 | 数组中保存的二元数组表示梯度：[RGBA颜色, 位置]。RGBA颜色四通道使用相同的值，可看作一个灰度值；位置表示沿径向方向向外时RGBA颜色对应的分布位置；RGBA颜色与位置的取值范围均为[0, 1]，可取浮点数，小于0的转为0，大于1的转为1。<br>位置参数值需严格递增，Array数组中二元数组个数必须大于等于2，二元数组中的元素不能为空，否则该椭圆分布效果不生效。 |
+| gradients | Array<[number, number]>     | 是 | 数组中保存的二元数组表示梯度：[RGBA颜色, 位置]。RGBA颜色四通道使用相同的值，可看作一个灰度值；位置表示沿径向方向向外时RGBA颜色对应的分布位置；RGBA颜色与位置的取值范围均为[0, 1]，可取浮点数，小于0的转为0，大于1的转为1。<br>位置参数值需严格递增，Array数组中二元数组个数必须大于等于2，二元数组中的元素不能为空，否则该椭圆分布效果不生效。 |
 
 **返回值：**
 

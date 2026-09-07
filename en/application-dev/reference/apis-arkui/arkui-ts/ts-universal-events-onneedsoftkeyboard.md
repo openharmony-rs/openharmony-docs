@@ -5,12 +5,15 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=92567145241181b97abe57e944e177355e50f4eb translatedAt=2026-09-02T12:30:39.903Z -->
 
-A keyboard determination event is triggered when a component gains focus. The system determines whether a keyboard is required based on the return value of the callback function.
+When a component gains focus, the focused component triggers this event, which is used to flexibly control the display and hiding of the soft keyboard during focus switching. The system determines whether a keyboard is required based on the return value of the callback function of this event. It is mainly applicable to keyboard continuation scenarios, helping developers avoid frequent keyboard collapse and pop-up, and optimizing the user interaction experience.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 24. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 24. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 
 ## onNeedSoftkeyboard
 
@@ -22,11 +25,13 @@ This API does not take effect for components that cannot gain focus.
 
 For the text box, if the return value of this API is set to **false**, the keyboard will not be displayed when the text box is tapped.
 
-For the **Web** component, this component checks whether there are editable nodes when the return value is **true** and retains the keyboard if editable nodes exist; otherwise, the keyboard is not retained regardless of whether editable nodes exist.
+When the **Web** component uses this method, if the return value is `true`, the **Web** component checks whether there are editable nodes in the component and retains the keyboard only if editable nodes exist; if the return value is `false`, the keyboard is not retained regardless of whether editable nodes exist.
 
-For the **XComponent**, the keyboard is retained only if the return value is **true** and **XComponent** sets [OH_NativeXComponent_SetNeedSoftKeyboard](../capi-native-interface-xcomponent-h.md#oh_arkui_xcomponent_setneedsoftkeyboard) to **true**. If the return value is **false**, the keyboard will not be retained regardless of the setting of **OH_NativeXComponent_SetNeedSoftKeyboard**.
+When the **XComponent** component uses this method, the keyboard is retained only if the return value is `true` and the **XComponent** component sets [OH_ArkUI_XComponent_SetNeedSoftKeyboard()](../capi-native-interface-xcomponent-h.md#oh_arkui_xcomponent_setneedsoftkeyboard) to request a keyboard; if the return value is `false`, the keyboard is not retained regardless of how the component is configured.
 
-When **onNeedSoftkeyboard** returns **true**, the text box of the application needs to proactively call [attach](../../apis-ime-kit/js-apis-inputmethod.md#attach15) to establish the communication between the input method framework and the input method application. Otherwise, the keyboard will not respond to the click event. (When the keyboard is out of focus, the communication will be disconnected.)
+When the return value is `true`, the self-drawn input box of the application needs to proactively call [attach](../../apis-ime-kit/js-apis-inputmethod.md#attach15) upon focus acquisition to establish the communication between the input method framework and the input method application; otherwise, tapping the keyboard will not respond. Note: The communication between the input method framework and the input method application is disconnected upon focus loss and needs to be re-established upon focus acquisition.
+
+This API is applicable only to the scenario of input method application continuation and does not take effect for custom keyboards. For custom keyboard continuation, see [setCustomKeyboardContinueFeature](../arkts-apis-uicontext-uicontext.md#setcustomkeyboardcontinuefeature23).
 
 **Atomic service API**: This API can be used in atomic services since API version 24.
 
@@ -38,7 +43,7 @@ When **onNeedSoftkeyboard** returns **true**, the text box of the application ne
 
 | Name                    | Type                                  | Mandatory| Description                                    |
 | -------------------------- | ------------------------------------- | ---- | ---------------------------------------- |
-| onNeedSoftkeyboardCallback | [OnNeedSoftkeyboardCallback](#onneedsoftkeyboardcallback) \| undefined | Yes| Callback to be invoked when the keyboard determination event is triggered. The system determines whether to display the keyboard based on the return value.<br> If this parameter is set to **undefined**, the callback is not invoked; however, the keyboard is displayed when the text box is tapped and collapses when the user interacts with other components.|
+| onNeedSoftkeyboardCallback | [OnNeedSoftkeyboardCallback](#onneedsoftkeyboardcallback) \| undefined | Yes | Callback invoked when the event is triggered. The system determines whether the keyboard is needed based on the return value of the callback.<br>When set to undefined, the callback is not triggered, and input box components behave as if returning true. Other components behave as if returning false. Prerequisite: The component must be focusable; otherwise, this API does not take effect. When the return value is true, the self-drawn input box must proactively call the [attach](../../apis-ime-kit/js-apis-inputmethod.md#attach15) method upon focus acquisition to establish communication with the input method; otherwise, tapping the keyboard will not respond. |
 
 **Return value**
 
@@ -48,9 +53,9 @@ When **onNeedSoftkeyboard** returns **true**, the text box of the application ne
 
 ## OnNeedSoftkeyboardCallback
 
-OnNeedSoftkeyboardCallback = () => boolean
+type OnNeedSoftkeyboardCallback = () => boolean
 
-Called when the component determines whether the keyboard is required.
+This callback is triggered when the component bound to this method determines whether a keyboard is required. Prerequisite: The component must be focusable; otherwise, this API does not take effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 24.
 
@@ -62,7 +67,7 @@ Called when the component determines whether the keyboard is required.
 
 | Type| Description|
 | -------- | -------- |
-| boolean | Whether the keyboard is required.<br>Returns **true** if the component requires the keyboard; returns **false** otherwise.|
+| boolean | Whether the component needs a keyboard.<br>If the return value of this callback is `true`, the component needs a keyboard; if the return value is `false`, the component does not need a keyboard. |
 
 ## Example
 
@@ -80,7 +85,7 @@ struct Index {
     Column() {
       Button('Switch Focus to the Button')
         .onClick(() => {
-          this.getUIContext().getFocusController().requestFocus('Button')
+          this.getUIContext().getFocusController().requestFocus('Button');
         })
         .key('Button')
         .fontSize(20)

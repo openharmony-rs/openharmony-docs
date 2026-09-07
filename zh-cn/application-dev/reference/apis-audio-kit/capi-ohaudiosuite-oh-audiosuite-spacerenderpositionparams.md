@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct {...} OH_AudioSuite_SpaceRenderPositionParams
+typedef struct OH_AudioSuite_SpaceRenderPositionParams {...} OH_AudioSuite_SpaceRenderPositionParams
 ```
 
 ## 概述

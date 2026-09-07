@@ -150,7 +150,7 @@ Failed to send the message.
 
 **错误描述**
 
-发送信息失败。
+发送消息失败。
 
 **可能原因**
 
