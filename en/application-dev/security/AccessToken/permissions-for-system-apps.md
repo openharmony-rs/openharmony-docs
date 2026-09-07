@@ -9061,6 +9061,20 @@ Allows an application to use the wired projection service to query information s
 
 **Since**: 26.1.0
 
+## ohos.permission.vehicle.ACCESS_EXTERNAL_DVR_DATA
+
+Allows an application to access data on the external storage card of the dashcam.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.2.0
+
 ## ohos.permission.AUTH_MODEL_DOWNLOAD
 
 Allows a system application to send the authorization results for model download requests to the model management service.
