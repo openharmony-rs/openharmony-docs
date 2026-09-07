@@ -80,10 +80,8 @@ Web网页上发起资源加载请求，应用层收到资源请求信息。应�
   <!-- @[build_response_resources_to_implement_custom_page_response_scenarios](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageLoadBrowse/CustomizePageResp/entry/src/main/ets/pages/OnInterceptRequest_one.ets) -->
 
   ``` TypeScript
-  'use static'
-
   import { $rawfile, Column, Component, Entry, State, Web, WebResourceResponse } from '@kit.ArkUI';
-  import { webview, WebResourceResponse } from '@kit.ArkWeb';
+  import { webview } from '@kit.ArkWeb';
   
   @Entry
   @Component
@@ -227,10 +225,8 @@ Web网页上发起资源加载请求，应用层收到资源请求信息。应�
   <!-- @[build_response_resource_enable_gen](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageLoadBrowse/CustomizePageResp/entry/src/main/ets/pages/OnInterceptRequest_two.ets) -->
 
   ``` TypeScript
-  'use static'
-  
   import { $rawfile, Column, Component, Entry, State, Web, WebResourceResponse } from '@kit.ArkUI';
-  import { webview, WebResourceResponse } from '@kit.ArkWeb';
+  import { webview } from '@kit.ArkWeb';
   
   @Entry
   @Component
