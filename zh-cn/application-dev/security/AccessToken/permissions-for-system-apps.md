@@ -7468,7 +7468,7 @@
 
 **是否支持证书授权**：true
 
-**支持设备**：PC/2in1
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
 
 **起始版本**：24
 

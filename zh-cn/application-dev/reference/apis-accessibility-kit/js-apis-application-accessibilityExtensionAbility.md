@@ -5,7 +5,7 @@
 <!--Owner: @fanzexuan-->
 <!--Designer: @z7o-->
 <!--Tester: @A_qqq-->
-<!--Adviser: @wwwyyyhhhh-->
+<!--Adviser: @w_Machine_cc-->
 
 AccessibilityExtensionAbility基于ExtensionAbility框架，提供辅助功能扩展业务的能力。
 

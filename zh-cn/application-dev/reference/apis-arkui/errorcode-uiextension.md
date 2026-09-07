@@ -18,17 +18,17 @@ Failed to start the UIExtension ability.
 
 **错误描述**
 
-扩展Ability启动失败，请检查扩展Ability的Want参数。
+扩展Ability启动失败。
 
 **可能原因**
 
 1. Want参数配置错误；
 2. type类型不一致，具体请参考EmbeddedComponent组件[接口](arkui-ts/ts-container-embedded-component.md#接口)；
-3. 提供方应用未安装；
+3. 提供方应用未安装。
 
 **处理步骤**
 
-检查Want参数配置、应用是否安装等。
+检查Want参数配置、type类型是否一致、应用是否安装等。
 
 ## 1012 扩展Ability切后台失败
 
@@ -46,7 +46,7 @@ Failed to switch the UIExtension ability to the background.
 
 1. Ability生命周期状态异常；
 
-2. 系统资源不足。若仍无法定位，需根据AMS（Ability Manager Service）日志具体分析。
+2. 系统资源不足。
 
 **处理步骤**
 
@@ -68,7 +68,7 @@ Failed to destroy the UIExtension ability.
 
 1. Ability生命周期回调执行异常；
 
-2. 资源释放过程中发生错误。若仍无法定位，需根据AMS（Ability Manager Service）日志具体分析。
+2. 资源释放过程中发生错误。
 
 **处理步骤**
 
@@ -115,7 +115,7 @@ Transferring data failed.
 
 **处理步骤**
 
-根据AMS（Ability Manager Service）日志进行分析。
+检查发送的数据量是否超过限制、待发送的数据是否可序列化；若仍无法定位，根据AMS（Ability Manager Service）日志进行分析。
 
 ## 100013 禁止嵌套
 
@@ -135,7 +135,7 @@ UIExtension组件不允许嵌套使用；在特定页面布局或组件复用等
 
 请确认UIExtension组件规格，避免在组件复用、条件渲染、动态加载等场景下产生意外嵌套。
 
-## 100014 Ability退出异常
+## 100014 扩展Ability退出异常
 
 **错误信息**
 
@@ -205,7 +205,7 @@ Key event processing by the UIExtension ability has timed out.
 
 **错误信息**
 
-Start ui extension ability failed, please check the want of UIextensionAbility.
+Start UIExtensionAbility failed, please check the want of UIExtensionAbility.
 
 **错误描述**
 
@@ -216,7 +216,7 @@ Start ui extension ability failed, please check the want of UIextensionAbility.
 1. Want参数配置错误；
 2. type类型不一致，具体请参考EmbeddedComponent组件[接口](arkui-ts/ts-container-embedded-component.md#接口)；
 3. 提供方应用未安装；
-4. 设备类型不支持；
+4. 设备类型不支持。
 
 **处理步骤**
 
@@ -230,17 +230,21 @@ background ui extension ability failed, please check AMS log.
 
 **错误描述**
 
-设置onTerminated回调场景下，扩展Ability切后台失败。
+设置onTerminated回调场景下，扩展Ability切后台失败，请根据AMS（Ability Manager Service）日志进行排查。
 
 **可能原因**
 
-扩展Ability切后台失败，需根据AMS（Ability Manager Service）日志具体分析。
+扩展Ability切后台失败，可能原因包括但不限于：
+
+1. Ability生命周期状态异常；
+
+2. 系统资源不足。
 
 **处理步骤**
 
 根据AMS（Ability Manager Service）日志进行分析。
 
-## 100020 扩展Ability销毁失败（onTerminated场景）
+## 100020 扩展Ability销毁失败
 
 **错误信息**
 
@@ -248,11 +252,15 @@ terminate ui extension ability failed, please check AMS log.
 
 **错误描述**
 
-设置onTerminated回调场景下，扩展Ability销毁失败。
+设置onTerminated回调场景下，扩展Ability销毁失败，请根据AMS（Ability Manager Service）日志进行排查。
 
 **可能原因**
 
-扩展Ability销毁失败，需根据AMS（Ability Manager Service）日志具体分析。
+扩展Ability销毁失败，可能原因包括但不限于：
+
+1. Ability生命周期回调执行异常；
+
+2. 资源释放过程中发生错误。
 
 **处理步骤**
 
@@ -270,7 +278,7 @@ Transparent node is detected in the UIExtension ability.
 
 **可能原因**
 
-检测到扩展Ability存在透明节点，可能导致事件分发阻塞。
+组件或其父组件透明度被设置为0、使用了透明样式或透明背景等，导致扩展Ability中生成透明节点。
 
 **处理步骤**
 

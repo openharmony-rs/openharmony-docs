@@ -133,7 +133,7 @@ libusb_serial_ndk.z.so
    params.baudRate = NUM_BAUDRATE;
    params.nDataBits = NUM_EIGHT;
    params.nStopBits = 1;
-   params.parity = 0;
+   params.parity = USB_SERIAL_PARITY_NONE;
    // 设置串口参数
    OH_UsbSerial_SetParams(dev, &params);
        

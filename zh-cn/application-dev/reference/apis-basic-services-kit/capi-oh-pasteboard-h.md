@@ -38,8 +38,8 @@
 | [PASTEBOARD_MIMETYPE_TEXT_PLAIN](#pasteboard_mimetype_text_plain)  "text/plain" | 纯文本类型。 |
 | [PASTEBOARD_MIMETYPE_TEXT_URI](#pasteboard_mimetype_text_uri)  "text/uri" | URI类型。 |
 | [PASTEBOARD_MIMETYPE_TEXT_HTML](#pasteboard_mimetype_text_html)  "text/html" | HTML类型。 |
-| [PASTEBOARD_MIMETYPE_PIXELMAP](#pasteboard_mimetype_pixelmap)  "pixelMap" | pixelMap类型。 |
-| [PASTEBOARD_MIMETYPE_TEXT_WANT](#pasteboard_mimetype_text_want)  "text/want" | want类型。 |
+| [PASTEBOARD_MIMETYPE_PIXELMAP](#pasteboard_mimetype_pixelmap)  "pixelMap" | PixelMap类型。 |
+| [PASTEBOARD_MIMETYPE_TEXT_WANT](#pasteboard_mimetype_text_want)  "text/want" | Want类型。 |
 
 ### 枚举
 
@@ -130,7 +130,7 @@ HTML类型。
 
 **描述**
 
-pixelMap类型。
+PixelMap类型。
 
 **起始版本：** 22
 
@@ -142,7 +142,7 @@ pixelMap类型。
 
 **描述**
 
-want类型。
+Want类型。
 
 **起始版本：** 22
 
@@ -560,7 +560,9 @@ OH_UdmfData* OH_Pasteboard_GetData(OH_Pasteboard* pasteboard, int* status)
 
 **起始版本：** 13
 
-**需要权限**：ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
+应用使用自定义控件访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。应用[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容，无需申请权限。
+
+**需要权限：** ohos.permission.READ_PASTEBOARD
 
 
 **参数：**
@@ -827,7 +829,9 @@ OH_UdmfData* OH_Pasteboard_GetDataWithProgress(OH_Pasteboard* pasteboard, Pasteb
 
 **起始版本：** 15
 
-**需要权限**：ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
+应用使用自定义控件访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。应用[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容，无需申请权限。
+
+**需要权限：** ohos.permission.READ_PASTEBOARD
 
 
 **参数：**

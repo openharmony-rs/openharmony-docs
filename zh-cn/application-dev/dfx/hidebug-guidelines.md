@@ -368,6 +368,16 @@ HiDebug提供修改转储堆快照级别的接口。
 |--------|------|
 | OH_HiDebug_StartProfiler | 按指定类型启动资源分配栈信息采集，须与OH_HiDebug_StopProfiler配对使用。<br/>**说明**：从API version 24开始，支持该接口。 |
 | OH_HiDebug_StopProfiler | 停止资源分配栈信息采集，须与OH_HiDebug_StartProfiler配对使用。<br/>**说明**：从API version 24开始，支持该接口。 |
+| OH_HiDebug_CreateProfilerOptions | 创建资源Profiler配置对象。须与OH_HiDebug_DestroyProfilerOptions配对使用。<br/>**说明**：从API版本26.1.0开始，支持该接口。 |
+| OH_HiDebug_DestroyProfilerOptions | 释放通过OH_HiDebug_CreateProfilerOptions创建的配置对象。<br/>**说明**：从API版本26.1.0开始，支持该接口。 |
+| OH_HiDebug_SetMaxAsyncNestingDepth | 设置异步调用最大嵌套深度（也称为最大嵌套层数）。<br/>**说明**：从API版本26.1.0开始，支持该接口。 |
+| OH_HiDebug_SetMaxAsyncTaskStackDepth | 设置异步任务函数的最大回栈深度。<br/>**说明**：从API版本26.1.0开始，支持该接口。 |
+| OH_HiDebug_SetSampleIntervalBytes | 设置采样间隔，单位字节。<br/>**说明**：从API版本26.1.0开始，支持该接口。 |
+| OH_HiDebug_SetStatisticsIntervalSec | 设置统计间隔，单位秒。<br/>**说明**：从API版本26.1.0开始，支持该接口。 |
+| OH_HiDebug_SetMaxStackDepth | 设置最大回栈深度。<br/>**说明**：从API版本26.1.0开始，支持该接口。 |
+| OH_HiDebug_SetFilterSize | 设置内存分配过滤大小。<br/>**说明**：从API版本26.1.0开始，支持该接口。 |
+| OH_HiDebug_SetMaxDurationSec | 设置最大采集时长，单位秒。<br/>**说明**：从API版本26.1.0开始，支持该接口。 |
+| OH_HiDebug_StartProfilerWithOptions | 按指定资源类型和配置开启资源分配栈信息采集。须与OH_HiDebug_StopProfiler配对使用。<br/>**说明**：从API版本26.1.0开始，支持该接口。 |
 
 ## 导出内存快照
 

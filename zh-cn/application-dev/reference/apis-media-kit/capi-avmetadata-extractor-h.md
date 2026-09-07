@@ -169,7 +169,7 @@ OH_AVErrCode OH_AVMetadataExtractor_FetchFramesByTimes(OH_AVMetadataExtractor *e
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md) *extractor | 指向OH_AVMetadataExtractor实例的指针。 |
-| int64_t timesUs[] | 从视频源提取图像时的时间点数组（单位：微秒）。 |
+| int64_t timesUs[] | 从视频源提取图像时的时间点数组，单位为微秒（μs）。 |
 | uint16_t timesUsSize | 输入时间点数组的长度。 |
 | [OH_AVMedia_SeekMode](capi-avmedia-base-h.md#oh_avmedia_seekmode) seekMode | 定义每个给定时间与关键帧之间关系的跳转选项，详见[OH_AVMedia_SeekMode](capi-avmedia-base-h.md#oh_avmedia_seekmode)。 |
 | [const OH_AVMetadataExtractor_OutputParam](capi-avmetadataextractor-oh-avmetadataextractor-outputparam.md)* outputParam | 图像的输出参数，例如图像的高度或者宽度。详见[OH_AVMetadataExtractor_OutputParam](capi-avmetadataextractor-oh-avmetadataextractor-outputparam.md)。若该参数为空指针，则获取的帧使用视频原始尺寸。 |

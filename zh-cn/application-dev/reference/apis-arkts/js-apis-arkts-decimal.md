@@ -4638,7 +4638,8 @@ ArkTS-Sta: static sign(n: Value): double
 
 | 类型   | 说明                               |
 | ------ | ---------------------------------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: double | 返回参数的符号判断结果。<br>1：参数为正数。<br>-1：参数为负数。<br>0：参数为0。<br>NaN：参数为NaN。 |
+| Decimal | 适用版本：12-17。返回参数的符号判断结果。 |
+| number | 适用版本：18+。返回参数的符号判断结果。<br>1：参数为正数。<br>-1：参数为负数。<br>0：参数为0。<br>NaN：参数为NaN。 |
 
 **错误码：**
 

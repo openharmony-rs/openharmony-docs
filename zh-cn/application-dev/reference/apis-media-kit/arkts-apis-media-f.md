@@ -663,7 +663,7 @@ ArkTS-Sta: createMediaSourceWithUrl(url: string, headers?: Record\<string, strin
 
 ```ts
 let headers: Record<string, string> = {"User-Agent" : "User-Agent-Value"};
-let mediaSource : media.MediaSource = media.createMediaSourceWithUrl("http://xxx",  headers);
+let mediaSource : media.MediaSource = media.createMediaSourceWithUrl("http://xxx", headers);
 ```
 
 **示例2：**
@@ -673,7 +673,6 @@ let mediaSource : media.MediaSource = media.createMediaSourceWithUrl("http://xxx
 import { media } from "@kit.MediaKit";
 
 async function test(context: Context){
-    // this.getUIContext().getHostContext();
     let mgr = context?.resourceManager;
     if (!mgr) {
         return;

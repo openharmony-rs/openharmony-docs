@@ -44,7 +44,7 @@
 | -- | -- |
 | [OH_Drawing_Pen* OH_Drawing_PenCreate(void)](#oh_drawing_pencreate) | 用于创建一个画笔对象。 |
 | [OH_Drawing_Pen* OH_Drawing_PenCopy(OH_Drawing_Pen* pen)](#oh_drawing_pencopy) | 创建一个画笔对象副本[OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md)，用于拷贝一个已有画笔对象。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>pen为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
-| [void OH_Drawing_PenDestroy(OH_Drawing_Pen* pen)](#oh_drawing_pendestroy) | 用于销毁画笔对象并回收该对象占有的内存。 |
+| [void OH_Drawing_PenDestroy(OH_Drawing_Pen* pen)](#oh_drawing_pendestroy) | 用于销毁画笔对象并回收该对象占用的内存。 |
 | [bool OH_Drawing_PenIsAntiAlias(const OH_Drawing_Pen* pen)](#oh_drawing_penisantialias) | 用于获取画笔是否设置抗锯齿属性，如果为真则说明画笔会启用抗锯齿功能，在绘制图形时会对图形的边缘像素进行半透明的模糊处理。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>pen为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [void OH_Drawing_PenSetAntiAlias(OH_Drawing_Pen* pen, bool antiAlias)](#oh_drawing_pensetantialias) | 用于设置画笔的抗锯齿属性，设置为真则画笔在绘制图形时会对图形的边缘像素进行半透明的模糊处理。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>pen为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [uint32_t OH_Drawing_PenGetColor(const OH_Drawing_Pen* pen)](#oh_drawing_pengetcolor) | 用于获取画笔的颜色属性，颜色属性描述了画笔绘制图形轮廓时使用的颜色，用一个32位（ARGB）的变量表示。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>pen为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
@@ -169,7 +169,7 @@ void OH_Drawing_PenDestroy(OH_Drawing_Pen* pen)
 
 **描述**
 
-用于销毁画笔对象并回收该对象占有的内存。
+用于销毁画笔对象并回收该对象占用的内存。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 

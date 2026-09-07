@@ -74,7 +74,7 @@ CodecBase模块提供用于音视频封装、解封装、编解码基础功能�
 | OH_AVCODEC_MIMETYPE_VIDEO_MSVIDEO1 | MSVIDEO1（Microsoft Video 1）视频编解码器的MIME类型。<br>从API version 22开始支持。 |
 | OH_AVCODEC_MIMETYPE_VIDEO_WMV3 | WMV3视频编解码器的MIME类型。<br>从API version 22开始支持。 |
 | OH_AVCODEC_MIMETYPE_VIDEO_MJPEG | MJPEG（Motion JPEG）视频编解码器的MIME类型。<br>从API version 22开始支持。 |
-| OH_AVCODEC_MIMETYPE_VIDEO_MPEG4 | MPEG4视频编码的MIME类型，仅用于封装MPEG4视频码流使用。（API11废弃） |
+| OH_AVCODEC_MIMETYPE_VIDEO_MPEG4 | MPEG4视频编码的MIME类型，仅用于封装MPEG4视频码流使用。<br>**起始版本：** 10<br>**废弃版本：** 11<br>**替代接口：** OH_AVCODEC_MIMETYPE_VIDEO_MPEG4_PART2 |
 | OH_AVCODEC_MIMETYPE_VIDEO_MPEG4_PART2 | 视频MPEG4 Part2编解码器的MIME类型。 |
 | OH_AVCODEC_MIMETYPE_VIDEO_MPEG2 | 视频MPEG2编解码器的MIME类型。 |
 | OH_AVCODEC_MIMETYPE_VIDEO_AV1 | AV1视频编解码器的MIME类型。<br>从API version 23开始支持。 |
@@ -157,7 +157,7 @@ CodecBase模块提供用于音视频封装、解封装、编解码基础功能�
 | OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_MAX_COUNT         | 描述编码器在没有新的帧可用的情况下，可以对之前的帧进行重复编码的最大次数，值类型为int32_t。该键仅在OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_FRAME_AFTER可用时生效，在Configure阶段使用。|
 | OH_MD_KEY_VIDEO_DECODER_OUTPUT_COLOR_SPACE   | 设置视频解码器输出色彩空间的键，值类型为int32_t。 支持的值为OH_COLORSPACE_BT709_LIMIT。|
 | OH_MD_KEY_ROTATION                    | surface旋转角度的键，旋转方向为顺时针。值类型为int32_t，值为{0, 90, 180, 270}，默认值为0。该键只在视频解码Surface模式下使用。该键是可选的。 |
-| OH_MD_KEY_SCALING_MODE            | 视频缩放模式，值类型为int32_t，请参见[OH_ScalingMode](capi-native-avcodec-base-h.md#oh_scalingmode)。该键是可选的且只用于视频解码Surface模式。建议直接调用[OH_NativeWindow_NativeWindowSetScalingModeV2](../apis-arkgraphics2d/capi-external-window-h.md#oh_nativewindow_nativewindowsetscalingmodev2)接口进行设置。（API14废弃）|
+| OH_MD_KEY_SCALING_MODE            | 视频缩放模式，值类型为int32_t，请参见[OH_ScalingMode](capi-native-avcodec-base-h.md#oh_scalingmode)。<br> 建议直接调用[OH_NativeWindow_NativeWindowSetScalingModeV2](../apis-arkgraphics2d/capi-external-window-h.md#oh_nativewindow_nativewindowsetscalingmodev2)接口进行设置。该键是可选的且只用于视频解码Surface模式。<br>**起始版本：** 10<br>**废弃版本：** 14<br>**替代接口：** [OH_NativeWindow_NativeWindowSetScalingModeV2](../apis-arkgraphics2d/capi-external-window-h.md#oh_nativewindow_nativewindowsetscalingmodev2) |
 | OH_MD_KEY_VIDEO_CROP_TOP       | 描述裁剪矩形顶部坐标（y）值的键，值类型为int32_t。该键是可选的且只用于视频解码。 |
 | OH_MD_KEY_VIDEO_CROP_BOTTOM        | 描述裁剪矩形底部坐标（y）值的键，值类型为int32_t。该键是可选的且只用于视频解码。 |
 | OH_MD_KEY_VIDEO_CROP_LEFT     | 描述裁剪矩形左坐标（x）值的键，值类型为int32_t。该键是可选的且只用于视频解码。 |

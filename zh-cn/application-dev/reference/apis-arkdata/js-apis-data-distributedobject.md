@@ -278,6 +278,8 @@ ArkTS-Sta: type ProgressObserver = (sessionId: string, progress: int) => void
 
 表示一个分布式数据对象。在使用以下接口前，需调用[create()](#distributeddataobjectcreate9)获取DataObject对象。
 
+**系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
 ### setSessionId<sup>9+</sup>
 
 setSessionId(sessionId: string, callback: AsyncCallback&lt;void&gt;): void

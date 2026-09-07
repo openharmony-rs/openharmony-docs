@@ -28,8 +28,8 @@ typedef struct {...} ArkUI_AccessibleGridItemInfo
 | -- |--------|
 | bool heading | 是否是标题。true表示是标题，false表示不是标题。 |
 | bool selected | 是否被选中。true表示被选中，false表示未被选中。 |
-| int32_t columnIndex | 列下标。取值范围为大于等于0的整数。传入0或负数时该字段不生效。 |
-| int32_t rowIndex | 行下标。取值范围为大于等于0的整数。传入0或负数时该字段不生效。 |
+| int32_t columnIndex | 列下标。取值范围为大于等于0的整数。传入负数时该字段不生效。 |
+| int32_t rowIndex | 行下标。取值范围为大于等于0的整数。传入负数时该字段不生效。 |
 | int32_t columnSpan | 列跨度。取值范围为大于0的整数。传入0或负数时该字段不生效。 |
 | int32_t rowSpan | 行跨度。取值范围为大于0的整数。传入0或负数时该字段不生效。 |
 
