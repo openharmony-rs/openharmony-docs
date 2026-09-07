@@ -1,12 +1,11 @@
 # Managing Page Redirection and Browsing History Navigation
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=4248a04d1b026b87b7cace162036b2fac054f3a9 translatedAt=2026-08-14T03:49:29.607Z pushedAt=2026-08-14T09:30:42.513Z -->
+<!-- md-trans-meta sourceCommit=5191f5de3eca0919d8d5e44823dbef1bf6b74270 translatedAt=2026-09-01T02:55:01.986Z pushedAt=2026-09-02T07:30:34.992Z -->
 
 To improve page access speed, history navigation allows users to switch between pages in the history using the **Forward** and **Backward** buttons. The **Web** component supports redirecting users to other pages within the app or performing cross-app redirection.
 
@@ -25,7 +24,6 @@ To obtain network resources during page loading, configure the network access pe
   ```
 
 In the following example, when a user clicks the button, **backward()** is called to go back to the previous page.
-
 <!-- @[button_click_trigger_back](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/ManagePageRedirectNav/entry/src/main/ets/pages/HistoryNavigati.ets) -->
 
 ``` TypeScript
@@ -50,7 +48,9 @@ struct WebComponent {
 }
 ```
 
+
 If a historical record exists, [accessBackward()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#accessbackward) will return **true**. Similarly, you can call [accessForward()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#accessforward) to check whether a next record exists. If you skip the check, [forward()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#forward) and [backward()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#backward) will not trigger any action if the user has navigated to the end of history records.
+
 
 ## Page Redirection
 
@@ -59,7 +59,6 @@ The **Web** component provides the [onLoadIntercept()](../reference/apis-arkweb/
 In the following example, the app home page **Index.ets** loads the frontend page **route.html**. Tapping the **Personal Center** hyperlink on the **route.html** page redirects you to the **ProfilePage.ets** page of the app.
 
 - Code of the **Index.ets** page:
-
   <!-- @[index_load_route_link_to_profile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/ManagePageRedirectNav/entry/src/main/ets/pages/PageRedirection.ets) -->
 
   ``` TypeScript
@@ -106,7 +105,6 @@ In the following example, the app home page **Index.ets** loads the frontend pag
   ```
 
 - Code of the **ProfilePage.ets** page:
-
   <!-- @[navigate_to_profile_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/ManagePageRedirectNav/entry/src/main/ets/pages/ProfilePage.ets) -->
 
   ``` TypeScript
@@ -124,6 +122,7 @@ In the following example, the app home page **Index.ets** loads the frontend pag
   }
   ```
 
+
 ## Cross-Application Redirection
 
 The **Web** component supports redirection from one application to another.
@@ -131,7 +130,6 @@ The **Web** component supports redirection from one application to another.
 In the following example, when a user clicks the link on the frontend page **call.html**, the user will be redirected to the dial screen of the phone app.
 
 - Application code:
-
   <!-- @[click_link_call_html_to_reach_phone_dialing_screen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/ManagePageRedirectNav/entry/src/main/ets/pages/CrossApplicationRedirection.ets) -->
 
   ``` TypeScript
@@ -182,5 +180,4 @@ In the following example, when a user clicks the link on the frontend page **cal
   </body>
   </html>
   ```
-
 ![web-redirection-and-browsing-history-mgmt](figures/web-call-telephone.gif)

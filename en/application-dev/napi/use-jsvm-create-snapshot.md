@@ -1,12 +1,11 @@
 # Working with VM Snapshots Using JSVM-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=fa3fc214ef4b265f033bc3f0d0a2df54f511a497 translatedAt=2026-08-12T06:35:05.132Z pushedAt=2026-08-12T11:02:18.417Z -->
+<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-09-01T02:43:32.595Z pushedAt=2026-09-02T06:47:49.636Z -->
 
 ## Introduction
 
@@ -24,7 +23,6 @@ It helps simplify complex programming tasks and shorten the creation time of a J
 |----------------------------|-------------------------------|
 | OH_JSVM_CreateSnapshot     | Creates a VM startup snapshot.       |
 |OH_JSVM_CreateEnvFromSnapshot| Creates an environment based on the start snapshot of a VM.|
-
 ## Example
 
 ### OH_JSVM_CreateSnapshot & OH_JSVM_CreateEnvFromSnapshot
@@ -336,17 +334,13 @@ struct Index {
   }
 }
 ```
-
 Execution Result
 
 Log output when the screen is clicked once:
-
 ```ts
 Test JSVM RunVMSnapshot read file blobSize = : 300064
 ```
-
 Log output when the screen is clicked multiple times:
-
 ```ts
 Test JSVM RunVMSnapshot read file blobSize = : 300176
 Test JSVM RunVMSnapshot read file blobSize = : 300064
@@ -355,5 +349,4 @@ Test JSVM RunVMSnapshot read file blobSize = : 300032
 Test JSVM RunVMSnapshot read file blobSize = : 300176
 Test JSVM RunVMSnapshot read file blobSize = : 300048
 ```
-
 **blobSize** is the snapshot file size obtained through **file.tellg()** when the file is read. Therefore, different values are displayed.

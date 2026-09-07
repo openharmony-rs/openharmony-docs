@@ -1,12 +1,11 @@
 # Setting Up the Environment
-
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
 <!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=d8985113333b8c3c0dd4e2a9924806e724527539 translatedAt=2026-08-01T02:50:06.628Z pushedAt=2026-08-01T06:24:47.020Z -->
+<!-- md-trans-meta sourceCommit=bf2c7dec6618c889ba9f8aba11f191335ed707dc translatedAt=2026-09-01T02:11:54.594Z pushedAt=2026-09-01T11:39:51.242Z -->
 
 ## Development Tool and Configuration
 
@@ -42,11 +41,7 @@ HarmonyOS Device Connector (hdc) is a command-line debugging tool. It enables in
 > Configuring the environment variable **hdc_server_port** and global environment variables is mandatory.
 
 ## Development Device
-
 <!--RP1-->
-
 - This section uses RK3568 as the device for development, debugging, and verification. For compiling and burning the RK3568, refer to [Burning an Image](../../../device-dev/quick-start/quickstart-pkg-3568-burn.md).<!--RP1End-->
-
 - When developing an peripheral driver client or peripheral driver, you need an external USB device for debugging. Currently, **only external devices connected over the USB bus are supported**.
-
 - The product ID and vendor ID of the USB device are required for defining drivers and implementing IPC.

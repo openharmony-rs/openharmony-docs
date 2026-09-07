@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-媒体资源处理器，应用在onDataPrepared方法中可自定义媒体资源处理逻辑。
+媒体资源处理器接口，可通过实现onDataPrepared方法来自定义媒体资源处理逻辑。
 
 > **说明：**
 >
@@ -25,8 +25,6 @@ onDataPrepared(data: T, map?: Map<string, string>): void
 
 媒体资源就绪通知，系统在资源准备就绪时回调此方法。若资源准备出错，回调的data为undefined。资源请求与回调一一对应。
 
-T支持ArrayBuffer，[ImageSource](../apis-image-kit/arkts-apis-image-ImageSource.md)，[MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md)和boolean四种数据类型。其中，ArrayBuffer表示图片/视频资源数据，[ImageSource](../apis-image-kit/arkts-apis-image-ImageSource.md)表示图片源，[MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md)表示动态照片对象，boolean表示图片/视频资源是否成功写入应用沙箱，true表示成功，false表示失败。
-
 map支持返回的信息：
 
 | map键名  | 值说明 |
@@ -39,7 +37,7 @@ map支持返回的信息：
 
 | 参数名  | 类型 | 必填 | 说明                                                                            |
 |------|---| ---- |-------------------------------------------------------------------------------|
-| data | T | 是   | 已就绪的图片资源数据。泛型，支持ArrayBuffer, [ImageSource](../apis-image-kit/arkts-apis-image-ImageSource.md), [MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md)和boolean四种数据类型。 |
+| data | T | 是   | 已就绪的图片/视频资源数据。<br>若资源准备出错，此参数为undefined。<br>支持ArrayBuffer、[ImageSource](../apis-image-kit/arkts-apis-image-ImageSource.md)、[MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md)和boolean四种数据类型。<br>当此参数类型为boolean时，true表示成功，false表示失败。 |
 | map<sup>12+</sup> | Map<string, string> | 否   | 用于获取图片资源的额外信息，如图片质量。当前仅支持'quality'。 |
 
 **示例：**
@@ -54,7 +52,7 @@ class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<image.Imag
       return;
     }
     // 自定义对ImageSource的处理逻辑。
-    console.info('on image data prepared, photo quality is ' + map['quality']);
+    console.info('on image data prepared, photo quality is ' + map.get('quality'));
   }
 }
 
@@ -65,7 +63,7 @@ class MediaDataHandler implements photoAccessHelper.MediaAssetDataHandler<ArrayB
       return;
     }
     // 自定义对ArrayBuffer的处理逻辑。
-    console.info('on image data prepared, photo quality is ' + map['quality']);
+    console.info('on image data prepared, photo quality is ' + map.get('quality'));
   }
 }
 
@@ -76,7 +74,7 @@ class MovingPhotoHandler implements photoAccessHelper.MediaAssetDataHandler<phot
       return;
     }
     // 自定义对MovingPhoto的处理逻辑。
-    console.info('on image data prepared, photo quality is ' + map['quality']);
+    console.info('on image data prepared, photo quality is ' + map.get('quality'));
   }
 }
 ```

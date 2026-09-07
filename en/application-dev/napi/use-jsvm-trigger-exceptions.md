@@ -1,12 +1,11 @@
 # Customizing Exception Handling Using JSVM-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=f34ddda28f1bcebae0ddfbd293a9ffe8cb2789f9 translatedAt=2026-08-12T06:36:41.753Z pushedAt=2026-08-12T11:05:00.066Z -->
+<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-09-01T02:45:00.332Z pushedAt=2026-09-02T06:58:06.916Z -->
 
 ## Introduction
 
@@ -35,7 +34,6 @@ Promise rejection without a catch handler: You can use JSVM-API to register a pr
 If you are just starting out with JSVM-API, see [JSVM-API Development Process](use-jsvm-process.md). The following demonstrates only the C++ code involved in exception handling.
 
 ### OH_JSVM_SetHandlerForOOMError
-
 Call **OH_JSVM_SetHandlerForOOMError** to set a function for handling the OOM error. If this API is called multiple times, only the last setting takes effect. If **NULL** is passed in for the function to set in this API, the previously set handler will be canceled.
 
 **CPP Code**
@@ -94,23 +92,17 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"triggerOOMError", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 ```
-
 **JS Example**
-
 ```cpp
 const char *srcCallNative = R"JS(triggerOOMError();)JS";
 ```
-
 **Execution Result**
 
 Log output:
-
 ```cpp
 JSVM Trigger OOM Error: success
 ```
-
 ### OH_JSVM_SetHandlerForFatalError
-
 Call **OH_JSVM_SetHandlerForFatalError** to set a function for handling the fatal error. If this API is called multiple times, only the last setting takes effect. If **NULL** is passed in for the function to set in this API, the previously set handler will be canceled.
 **CPP Code**
 
@@ -167,23 +159,17 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"triggerFatalError", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 ```
-
 **JS Example**
-
 ```cpp
 const char* srcCallNative = R"JS(triggerFatalError())JS";
 ```
-
 **Execution Result**
 
 Log output:
-
 ```cpp
 JSVM Trigger Fatal Error: success
 ```
-
 ### OH_JSVM_SetHandlerForPromiseReject
-
 Call **OH_JSVM_SetHandlerForPromiseReject** to set the function for handling promise rejection. If this API is called multiple times, only the last setting takes effect. If **NULL** is passed in for the function to set in this API, the previously set handler will be canceled.
 **CPP Code**
 
@@ -249,17 +235,13 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"triggerPromiseReject", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 ```
-
 **JS Example**
-
 ```cpp
 const char* srcCallNative = R"JS(triggerPromiseReject())JS";
 ```
-
 **Execution Result**
 
 Log output:
-
 ```cpp
 JSVM Trigger Promise Reject: success
 ```

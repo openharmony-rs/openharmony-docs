@@ -6,15 +6,15 @@
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=4e8c8649f5f2efb4d6a6d42fbee5df7e42731663 translatedAt=2026-08-03T11:24:19.984Z pushedAt=2026-08-04T07:53:48.440Z -->
+<!-- md-trans-meta sourceCommit=39a9e003216daede3f45c712299412a7891e82ae translatedAt=2026-09-01T02:31:26.858Z pushedAt=2026-09-02T01:59:20.283Z -->
 
 ## Overview
 
-A TextBlob is a set of texts. You can draw both a single text and a paragraph by using TextBlobs.
+A TextBlob is a collection of text. You can draw both a single character and a large block of text by using TextBlobs.
 
 In addition to the basic TextBlob drawing, you can add various drawing effects to texts. Common TextBlob drawing scenarios include [text stroke](#text-stroke) and [text gradient](#text-gradient). For more effects, see [Overview of Drawing Effects](drawing-effect-overview.md).
 
-This topic does not involve text measurement and typography. For details about how to handle text drawing requirements, see [Introduction to Text Development](text-overview.md). This topic describes the typography policies and related usage.
+This topic does not involve text measurement and typography. For details about how to handle text drawing requirements, see [Introduction to Text Development](text-overview.md).
 
 ## Basic TextBlob Drawing
 
@@ -45,7 +45,7 @@ OH_Drawing_FontSetTextSize(font, value100_);
 const char *str = "Hello world";
 // Create a TextBlob object.
 OH_Drawing_TextBlob *textBlob =
-    OH_Drawing_TextBlobCreateFromString(str, font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
+    OH_Drawing_TextBlobCreateFromString(str, font, TEXT_ENCODING_UTF8);
 // Draw the TextBlob.
 OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
 // Release the TextBlob object.
@@ -58,7 +58,7 @@ OH_Drawing_FontDestroy(font);
 
 ## Text Stroke
 
-Based on the basic TextBlob drawing, you can also use the brush to implement the text stroke effect. For details, see [Stroke Effect](basic-drawing-effect-c.md#stroke-effect).
+Based on the basic TextBlob drawing, you can also use the pen to implement the text stroke effect. For details, see [Stroke Effect](basic-drawing-effect-c.md#stroke-effect).
 
 The following uses English and Chinese text strokes as examples.
 
@@ -86,7 +86,7 @@ OH_Drawing_FontSetTextSize(font, value150_);
 const char *str = "Hello world";
 // Create a TextBlob object.
 OH_Drawing_TextBlob *textBlob =
-    OH_Drawing_TextBlobCreateFromString(str, font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
+    OH_Drawing_TextBlobCreateFromString(str, font, TEXT_ENCODING_UTF8);
 // Draw the TextBlob.
 OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
 // Remove the stroke effect.
@@ -114,7 +114,7 @@ OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
 OH_Drawing_Pen *pen = OH_Drawing_PenCreate();
 // Set anti-aliasing for the brush.
 OH_Drawing_BrushSetAntiAlias(brush, true);
-// Set the stroke color of the brush.
+// Set the brush fill color.
 OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0xFF, 0xFF));
 // Set anti-aliasing for the pen.
 OH_Drawing_PenSetAntiAlias(pen, true);
@@ -131,14 +131,16 @@ OH_Drawing_FontSetTextSize(font, value150_);
 const char *str = "你好";
 // Create a TextBlob object.
 OH_Drawing_TextBlob *textBlob =
-    OH_Drawing_TextBlobCreateFromString(str, font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
+    OH_Drawing_TextBlobCreateFromString(str, font, TEXT_ENCODING_UTF8);
 // Draw the TextBlob.
 OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
 // Remove the stroke effect.
 OH_Drawing_CanvasDetachPen(canvas);
-// Set the stroke effect of the brush.
+// Set the brush fill effect.
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
+// Remove the brush from the canvas.
+OH_Drawing_CanvasDetachBrush(canvas);
 
 // Destroy objects.
 OH_Drawing_TextBlobDestroy(textBlob);
@@ -168,7 +170,7 @@ uint32_t colors[] = {0xFFFFFF00, 0xFFFF0000, 0xFF0000FF};
 float pos[] = {0.0f, 0.5f, 1.0f};
 // Create a linear gradient shader effect.
 OH_Drawing_ShaderEffect *colorShaderEffect =
-    OH_Drawing_ShaderEffectCreateLinearGradient(startPt, endPt, colors, pos, 3, OH_Drawing_TileMode::CLAMP);
+    OH_Drawing_ShaderEffectCreateLinearGradient(startPt, endPt, colors, pos, 3, CLAMP);
 // Create a brush object.
 OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
 // Set the shader effect based on the brush.
@@ -182,7 +184,7 @@ OH_Drawing_FontSetTextSize(font, value150_);
 const char *str = "Hello world";
 // Create a TextBlob object.
 OH_Drawing_TextBlob *textBlob =
-    OH_Drawing_TextBlobCreateFromString(str, font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
+    OH_Drawing_TextBlobCreateFromString(str, font, TEXT_ENCODING_UTF8);
 // Draw the TextBlob.
 OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
 // Cancel the fill effect.
@@ -191,6 +193,9 @@ OH_Drawing_CanvasDetachBrush(canvas);
 OH_Drawing_TextBlobDestroy(textBlob);
 OH_Drawing_FontDestroy(font);
 OH_Drawing_BrushDestroy(brush);
+OH_Drawing_ShaderEffectDestroy(colorShaderEffect);
+OH_Drawing_PointDestroy(startPt);
+OH_Drawing_PointDestroy(endPt);
 ```
 
 ![Screenshot_20241225173900576](figures/Screenshot_20241225173900576.jpg)
@@ -214,7 +219,7 @@ OH_Drawing_FontSetThemeFontFollowed(font, true);
 const char *str = "Hello World";
 // Create a TextBlob object.
 OH_Drawing_TextBlob *textBlob =
-    OH_Drawing_TextBlobCreateFromString(str, font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
+    OH_Drawing_TextBlobCreateFromString(str, font, TEXT_ENCODING_UTF8);
 // Draw the TextBlob.
 OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
 // Release the TextBlob object.
@@ -296,20 +301,18 @@ OH_Drawing_FontFeaturesDestroy(features);
 OH_Drawing_FontDestroy(font);
 ```
 
-![Snapshot_drawSingleCharacter](figures/Snapshot_drawSingleCharacterWithFeatures.png)
+![Snapshot_drawSingleCharacterWithFeatures](figures/Snapshot_drawSingleCharacterWithFeatures.png)
 
 > **NOTE**
 >
 > If `OH_Drawing_CanvasDrawSingleCharacterWithFeatures` and `OH_Drawing_FontMeasureSingleCharacter` are used together, or `OH_Drawing_CanvasDrawSingleCharacter` and `OH_Drawing_FontMeasureSingleCharacterWithFeatures` are used together, font drawing may overlap.
 
 <!--RP1-->
-
 ## Samples
 
 The following samples are provided to help you better understand how to use the **Drawing** APIs (C/C++) for development:
 
 - [NDKGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw)
-
 <!--RP1End-->
 
 <!--no_check-->

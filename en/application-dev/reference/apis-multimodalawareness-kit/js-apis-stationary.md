@@ -80,7 +80,7 @@ Subscribes to the device status.
 | -------------------- | -------------------------------------------------- | ---- | ---------------------------- |
 | activity  | [ActivityType](#activitytype)  | Yes  | Device status type.             |
 | event  | [ActivityEvent](#activityevent)  | Yes  | Event type.             |
-| reportLatencyNs  | number  | Yes  | Report latency, in ns. The value range is [1000000000, 3000000000].             |
+| reportLatencyNs  | number  | Yes  | Report delay, in ns. The value range is [1000000000, 3000000000].             |
 | callback             | Callback<[ActivityResponse](#activityresponse)\>  | Yes  | Callback used to receive reported data.   |
 
 **Example**

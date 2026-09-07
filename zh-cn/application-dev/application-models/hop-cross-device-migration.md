@@ -58,7 +58,7 @@
      "module": {
        "abilities": [
          {
-           "continuable": true,
+           "continuable": true
          }
        ]
      }
@@ -384,8 +384,7 @@ export default class MigrationAbility extends UIAbility {
          {
            "name": "EntryAbility",
            "continueType": ["continueType"],
-           "continueBundleName": ["com.demo.example2"],
-          
+           "continueBundleName": ["com.demo.example2"]
          }
        ]
        
@@ -400,8 +399,7 @@ export default class MigrationAbility extends UIAbility {
          {
            "name": "EntryAbility",
            "continueType": ["continueType"],
-           "continueBundleName": ["com.demo.example1"],
-          
+           "continueBundleName": ["com.demo.example1"]
          }
        ]
        
@@ -432,8 +430,7 @@ export default class MigrationAbility extends UIAbility {
       {
         "name": "EntryAbility",
         "continueType": ["continueType"],
-        "continueBundleName": ["com.demo.example2"],
-       
+        "continueBundleName": ["com.demo.example2"]
       }
     ]
     
@@ -448,8 +445,7 @@ export default class MigrationAbility extends UIAbility {
       {
         "name": "EntryAbility",
         "continueType": ["continueType"],
-        "continueBundleName": ["com.demo.example1"],
-       
+        "continueBundleName": ["com.demo.example1"]
       }
     ]
     
@@ -467,7 +463,7 @@ export default class MigrationAbility extends UIAbility {
        "abilities": [
          {
            "name": "EntryAbility",
-           "continueType": ['EntryAbility_ContinueQuickStart'],
+           "continueType": ["EntryAbility_ContinueQuickStart"]
          }
        ]
      }
@@ -658,7 +654,7 @@ export default class MigrationAbility extends UIAbility {
 
 使用分布式数据对象，需要在源端[onContinue()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncontinue)接口中进行数据保存，并在对端的[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)/[onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)接口中进行数据恢复。
 
-在源端，将需要迁移的数据保存到分布式数据对象[DataObject](../reference/apis-arkdata/js-apis-data-distributedobject.md#dataobject)中。
+在源端，将需要迁移的数据保存到分布式数据对象[DataObject](../reference/apis-arkdata/js-apis-data-distributedobject.md#dataobject9)中。
 
 - 在onContinue()接口中使用[create()](../reference/apis-arkdata/js-apis-data-distributedobject.md#distributeddataobjectcreate9)接口创建分布式数据对象，将所要迁移的数据填充到分布式数据对象数据中。
 - 调用[genSessionId()](../reference/apis-arkdata/js-apis-data-distributedobject.md#distributeddataobjectgensessionid)接口生成数据对象组网id，并使用该id调用[setSessionId()](../reference/apis-arkdata/js-apis-data-distributedobject.md#setsessionid9)加入组网，激活分布式数据对象。
@@ -820,7 +816,7 @@ export default class MigrationAbility extends UIAbility {
 
 对于图片、文档等文件类数据，需要先将其转换为[资产`commonType.Asset`](../reference/apis-arkdata/js-apis-data-commonType.md#asset)类型，再封装到分布式数据对象中进行迁移。迁移实现方式与普通的分布式数据对象类似，下例中仅针对区别部分进行说明。
 
-在源端，将需要迁移的文件资产保存到分布式数据对象[DataObject](../reference/apis-arkdata/js-apis-data-distributedobject.md#dataobject)中。
+在源端，将需要迁移的文件资产保存到分布式数据对象[DataObject](../reference/apis-arkdata/js-apis-data-distributedobject.md#dataobject9)中。
 
 - 将文件资产拷贝到[分布式文件目录](application-context-stage.md#获取应用文件路径)下，相关接口与用法详见[基础文件接口](../file-management/app-file-access.md)。
 - 使用分布式文件目录下的文件创建`Asset`资产对象。

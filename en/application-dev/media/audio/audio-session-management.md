@@ -1,12 +1,11 @@
 # Audio Session Management (ArkTS)
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @funny_sunix-->
 <!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=f9938d6881d9e92a63ad87d1f78918b5a1c28c39 translatedAt=2026-08-22T01:44:50.687Z pushedAt=2026-08-22T06:21:57.299Z -->
+<!-- md-trans-meta sourceCommit=827f02bd18610a1b7ab381e75aefc2cee15de330 translatedAt=2026-09-01T02:33:07.132Z pushedAt=2026-09-02T02:59:34.660Z -->
 
 In the scenario where multiple audio streams are concurrently playing, the system has preset a default [audio focus strategy](audio-playback-concurrency.md#audio-focus-strategy) for unified audio focus management across all audio streams (including playback and recording).
 
@@ -66,7 +65,6 @@ The system preset audio concurrency modes are as follows:
 - Concurrency mode (CONCURRENCY_MIX_WITH_OTHERS): Plays concurrently with other audio streams.
 
   **Typical scenarios:**
-
   - When an app plays music, it may be interrupted by subsequent music or video. The app expects its own audio stream to play concurrently with the subsequent music or video. (This scenario requires the app to activate the AudioSession before starting the audio stream.)
 
   - When an app records audio, it interrupts background music or video that is playing. The app expects its own audio stream to play concurrently with the background music or video. (This scenario requires the app to activate the AudioSession before starting the audio stream.)
@@ -81,7 +79,7 @@ The system preset audio concurrency modes are as follows:
 
 > **NOTE**
 >
-> - When an app uses the above modes through AudioSession, the system will try its best to satisfy the focus policy, but it may not be fully guaranteed in all scenarios.
+> - When an app uses the above modes through AudioSession, the system will try its best to satisfy the focus strategy, but it may not be fully guaranteed in all scenarios.
 > - The concurrency mode (CONCURRENCY_MIX_WITH_OTHERS) takes effect both when the current app requests focus and when other apps subsequently request focus. The duck mode (CONCURRENCY_DUCK_OTHERS) and pause mode (CONCURRENCY_PAUSE_OTHERS) take effect only when the current app requests focus. When other apps subsequently request focus, their concurrency modes take precedence.
 
 ## Independent Focus Management for Audio Streams
@@ -98,7 +96,7 @@ For OHAudio development, see [Using OHAudio for Audio Session (C/C++)](using-oha
 
 ### AudioSession Deactivation Event
 
-When using AudioSession, you are recommended to listen for the audio session deactivation event (AudioSessionDeactivatedEvent). When the AudioSession is deactivated (not proactively), the app receives this event notification. You can perform corresponding operations based on your service requirements, for example, releasing resources or reactivating the AudioSession.
+When using AudioSession, it is recommended that you listen for the audio session deactivation event (AudioSessionDeactivatedEvent). When the AudioSession is deactivated (not proactively), the app receives this event notification. You can perform corresponding operations based on your service requirements, for example, releasing resources or reactivating the AudioSession.
 
 The audio session deactivation event (AudioSessionDeactivatedEvent) contains the `AudioSessionDeactivatedReason` parameter, which identifies the specific reason for session deactivation (such as focus preemption or timeout).
 
@@ -262,11 +260,8 @@ When activating the AudioSession, the system requests the corresponding audio fo
 For OHAudio development, see [Using OHAudio for Audio Session (C/C++)](using-ohaudio-for-session.md).
 
 Typical usage scenarios are as follows:
-
 - When swiping through multiple short videos, frequent focus requests and releases by multiple audio streams may cause audio leakage. Using AudioSession to request focus once can avoid frequent focus requests and releases during the playback of multiple audio streams, thereby preventing audio leakage.
-
 - In a VoIP call scenario, you may need to start a ringtone stream, a recording stream, and a playback stream. These audio streams have different focus priorities, and some may be interrupted by audio streams from other apps. To maintain the continuity of the service experience, you can use AudioSession to request focus and prevent audio streams from being interrupted.
-
 - An app uses a player SDK to play audio streams, does not hold an AudioRenderer object, but wants to listen for focus changes.
 
 > **NOTE**
@@ -447,7 +442,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
   audioSessionManager.setAudioSessionScene(audio.AudioSessionScene.AUDIO_SESSION_SCENE_MEDIA);
   // ...
 
-  // Set the audio session policy.
+  // Set the audio session strategy.
   let strategy: audio.AudioSessionStrategy = {
     concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
   };
@@ -556,7 +551,7 @@ Starting from API version 23, when the current application plays audio in the **
 
 After enabling mute suggestion notifications, if other applications play audio that cannot be played concurrently with the current application while the current application is playing audio, the current application will receive a mute suggestion notification. The current application can either choose to take no action (allowing concurrent playback with other applications) or mute itself to let other applications play audio alone.
 
-To enable mute suggestion notifications for mixed playback, you need to first call [setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20) to set the scene parameters, call [enableMuteSuggestionWhenMixWithOthers](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#enablemutesuggestionwhenmixwithothers23) to enable the feature, subscribe to audio session state change events [AudioSessionStateChangedEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiosessionstatechangedevent20), and finally call [activateAudioSession](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#activateaudiosession12) to activate the AudioSession. The prerequisite for enabling mute suggestion notifications is that the [AudioConcurrencyMode](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioconcurrencymode12) mode must be CONCURRENCY_MIX_WITH_OTHERS.
+To enable mute suggestion notifications for mixed playback, you need to first call [setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20) to set the scene parameters, call [enableMuteSuggestionWhenMixWithOthers](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#enablemutesuggestionwhenmixwithothers23) to enable the mute suggestion notification feature, subscribe to audio session state change events [AudioSessionStateChangedEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiosessionstatechangedevent20), and finally call [activateAudioSession](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#activateaudiosession12) to activate the AudioSession. The prerequisite for enabling mute suggestion notifications is that the [AudioConcurrencyMode](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioconcurrencymode12) mode must be `CONCURRENCY_MIX_WITH_OTHERS`.
 
 <!-- @[enable_mute_suggestion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
 
@@ -571,7 +566,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
   // This API takes effect only when called before the audio session is activated.
   audioSessionManager.enableMuteSuggestionWhenMixWithOthers(true);
 
-  // Set the audio session policy.
+  // Set the audio session strategy.
   let strategy: audio.AudioSessionStrategy = {
     concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
   };
@@ -609,7 +604,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
   let behavior = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
   audioSessionManager.setAudioSessionBehavior(behavior);
 
-  // Set the audio session policy.
+  // Set the audio session strategy.
   let strategy: audio.AudioSessionStrategy = {
     concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_PAUSE_OTHERS
   };

@@ -1,12 +1,11 @@
 # Using Node-API Extension APIs
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=2cc827181a31e0a77238ca42eb3b41991d5fd686 translatedAt=2026-08-12T06:49:03.920Z pushedAt=2026-08-12T11:13:22.030Z -->
+<!-- md-trans-meta sourceCommit=91bde58d6c780494fae7f2754471f66b0a70a3f3 translatedAt=2026-09-01T02:47:33.418Z pushedAt=2026-09-02T07:05:48.764Z -->
 
 ## Introduction
 
@@ -15,7 +14,6 @@ The Node-API [extension APIs](napi-data-types-interfaces.md#extended-capabilitie
 If you are just starting out with Node-API, see [Node-API Development Process](use-napi-process.md). The following demonstrates only the C++ and ArkTS code involved in the Node-API extension APIs.
 
 The following header files are required for the C++ code:
-
 ```cpp
 #include "napi/native_api.h"
 #include <bits/alltypes.h>
@@ -24,9 +22,7 @@ The following header files are required for the C++ code:
 #include <uv.h>
 #include "hilog/log.h"
 ```
-
 The following modules are required for the ArkTS code:
-
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
@@ -119,6 +115,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 }
 ```
 
+
 API declaration:
 
 <!-- @[node_api_module_add_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
@@ -127,6 +124,7 @@ API declaration:
 export const add: (a: number, b: number) => number; // Module loading.
 ```
 
+
 ArkTS code:
 
 <!-- @[ark_node_api_module_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) -->     
@@ -134,6 +132,7 @@ ArkTS code:
 ``` TypeScript
 hilog.info(0x0000, 'testTag', 'Test Node-API 2 + 3 = %{public}d', testNapi.add(2, 3));
 ```
+
 
 ## ArkTS Object Operations
 
@@ -176,6 +175,7 @@ static napi_value CreateObjectWithProperties(napi_env env, napi_callback_info in
 }
 ```
 
+
 API declaration:
 
 <!-- @[node_api_module_create_object_properties_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
@@ -183,6 +183,7 @@ API declaration:
 ``` TypeScript
 export const createObjectWithProperties: (data: string) => {name:string}; // napi_create_object_with_properties related to the ArkTS object.
 ```
+
 
 ArkTS code:
 
@@ -194,6 +195,7 @@ let value1 = testNapi.createObjectWithProperties('createObject');
 hilog.info(0x0000, 'testTag', 'Node-API napi_create_object_with_properties:%{public}s',
   JSON.stringify(value1));
 ```
+
 
 **napi_create_object_with_named_properties**
 
@@ -252,6 +254,7 @@ try {
 }
 ```
 
+
 ## Running an .abc File
 
 ### Available APIs
@@ -294,6 +297,7 @@ static napi_value RunScriptPath(napi_env env, napi_callback_info info)
 }
 ```
 
+
 API declaration:
 
 <!-- @[node_api_module_run_script_path_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
@@ -301,6 +305,7 @@ API declaration:
 ``` TypeScript
 export const runScriptPath: () => boolean; // Call napi_run_script_path to run the specified .abc file.
 ```
+
 
 ArkTS code:
 
@@ -322,7 +327,6 @@ try { // If the execution fails, false is returned. Otherwise, true is returned.
 To compile JS code, **test.js** for example, into an .abc file, perform the following steps:
 
 1. Place the **test.js** file in the **ets/build-tools/ets-loader/bin/ark/build-win/bin** directory of the SDK.
-
 2. Run the **es2abc.exe test.js --output test.abc** command. The **test.abc** file is generated.
 
 Save the file to the **/entry/resources/rawfile** directory.
@@ -349,9 +353,7 @@ add(1, 2);
 Call **napi_queue_async_work_with_qos** to add an async work to the queue. Then, the async work will be scheduled for execution based on the specified QoS priority.
 
 <!--Del-->
-
 See [Prioritizing Asynchronous Tasks](../performance/develop-Native-modules-using-NAPI-safely-and-efficiently.md#prioritizing-asynchronous-tasks).
-
 <!--DelEnd-->
 
 ## Binding an ArkTS Object and a Native Callback with Parameters
@@ -585,6 +587,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 }
 ```
 
+
 API declaration:
 
 <!-- @[napi_coerce_to_native_binding_object_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
@@ -601,6 +604,7 @@ export const erase: (a: number) => void;
 
 export const clear: () => void;
 ```
+
 
 ArkTS code:
 
@@ -670,9 +674,10 @@ async function test01(): Promise<void> {
 test01();
 ```
 
+
 **NOTE**
 
-Call **napi_coerce_to_native_binding_object** to add the **detach()** and **attach()** callbacks and native object information to ArkTs object A, and then pass object A across threads. To pass object A across threads, you need to serialize and deserialize it by calling the **napi_serialize** and **napi_deserialize** APIs. As shown in the following figure, in thread 1, "data" is obtained after object A is serialized, and the **detach()** callback is invoked in the serialization process. Then, "data" is passed to thread 2 and deserialized in thread 2. The **attach()** callback is invoked to obtain the ArkTS object A. The **detach()** and **attach()** callback are used to notify that serialization and deserialization are complete.
+Call **napi_coerce_to_native_binding_object** to add the **detach()** and **attach()** callbacks and native object information to ArkTs object A, and then pass object A across threads. To pass object A across threads, you need to serialize and deserialize it by calling the **napi_serialize** and **napi_deserialize** APIs. As shown in the following figure, in thread 1, "data" is obtained after object A is serialized, and the **detach()** callback is invoked in the serialization process. Then, "data" is passed to thread 2 and deserialized in thread 2. The **attach()** callback is invoked to obtain the ArkTS object A. The **detach()** and **attach()** callbacks are used to notify that serialization and deserialization are complete.
 
 ![napi_coerce_to_native_binding_object](figures/napi_coerce_to_native_binding_object.png)
 
@@ -704,7 +709,7 @@ See [Running or Stopping an Event Loop in an Asynchronous Thread Using Node-API 
 
 **napi_create_ark_runtime** and **napi_destroy_ark_runtime**
 
-See [Creating an ArkTs Runtime Environment Using Node-API](use-napi-ark-runtime.md).
+See [Creating an ArkTS Runtime Environment Using Node-API](use-napi-ark-runtime.md).
 
 ## Serialization and Deserialization
 
@@ -764,6 +769,7 @@ static napi_value AboutSerialize(napi_env env, napi_callback_info info)
 }
 ```
 
+
 API declaration:
 
 <!-- @[napi_serialize_deserialize_delete_serialization_data_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
@@ -771,6 +777,7 @@ API declaration:
 ``` TypeScript
 export const aboutSerialize: (obj: {numKey:number}) => number | undefined; // Serialization and deserialization.
 ```
+
 
 ArkTS code:
 
@@ -781,7 +788,6 @@ class Obj {
   numKey: number = 0;
 }
 ```
-
 <!-- @[ark_napi_serialize_deserialize_delete_serialization_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
@@ -796,7 +802,7 @@ hilog.info(0x0000, 'testTag', ' Node-API aboutSerialize: %{public}d', testNapi.a
 
 | API| Description|
 | -------- | -------- |
-| napi_call_threadsafe_function_with_priority | Calls a task with the specified priority and enqueuing mode into the ArkTS main thread.|
+| napi_call_threadsafe_function_with_priority | Posts a task with the specified priority and enqueuing mode to the ArkTS main thread.|
 
 ### Example
 
@@ -847,6 +853,7 @@ static napi_value IsSendable(napi_env env, napi_callback_info info)
 }
 ```
 
+
 API declaration:
 
 <!-- @[napi_is_sendable_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
@@ -854,6 +861,7 @@ API declaration:
 ``` TypeScript
 export const isSendable: <T>(a: T) => boolean; // napi_is_sendable related to Sendable.
 ```
+
 
 ArkTS code:
 
@@ -864,6 +872,7 @@ ArkTS code:
 let value = testNapi.isSendable('createObject');
 hilog.info(0x0000, 'testTag', 'Node-API napi_is_sendable: %{public}s', JSON.stringify(value));
 ```
+
 
 **napi_define_sendable_class**
 
@@ -941,6 +950,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 }
 ```
 
+
 API declaration:
 
 <!-- @[napi_define_sendable_class_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
@@ -955,6 +965,7 @@ export class SendableClass {
 } // napi_define_sendable_class related to Sendable.
 ```
 
+
 ArkTS code:
 
 <!-- @[ark_napi_define_sendable_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) -->      
@@ -964,6 +975,7 @@ ArkTS code:
 let value = new testNapi.SendableClass();
 hilog.info(0x0000, 'testTag', 'Node-API napi_define_sendable_class: %{public}s', value.str);
 ```
+
 
 **napi_create_sendable_object_with_properties**
 
@@ -988,6 +1000,7 @@ static napi_value GetSendableObject(napi_env env, napi_callback_info info)
 }
 ```
 
+
 API declaration:
 
 <!-- @[napi_create_sendable_object_with_properties_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
@@ -995,6 +1008,7 @@ API declaration:
 ``` TypeScript
 export const getSendableObject: () => { x: true }; // napi_create_sendable_object_with_properties related to Sendable.
 ```
+
 
 ArkTS code:
 
@@ -1006,6 +1020,7 @@ let value = testNapi.getSendableObject();
 hilog.info(0x0000, 'testTag', 'Node-API napi_create_sendable_object_with_properties: %{public}s',
   JSON.stringify(value));
 ```
+
 
 **napi_create_sendable_array**
 
@@ -1025,6 +1040,7 @@ static napi_value GetSendableArray(napi_env env, napi_callback_info info)
 }
 ```
 
+
 API declaration:
 
 <!-- @[napi_create_sendable_array_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
@@ -1032,6 +1048,7 @@ API declaration:
 ``` TypeScript
 export const getSendableArray: () => []; // napi_create_sendable_array related to Sendable. 
 ```
+
 
 ArkTS code:
 
@@ -1043,6 +1060,7 @@ let value = testNapi.getSendableArray();
 hilog.info(0x0000, 'testTag', 'Node-API napi_create_sendable_array: %{public}s',
   JSON.stringify(value));
 ```
+
 
 **napi_create_sendable_array_with_length**
 
@@ -1062,6 +1080,7 @@ static napi_value GetSendableArrayWithLength(napi_env env, napi_callback_info in
 }
 ```
 
+
 API declaration:
 
 <!-- @[napi_create_sendable_array_with_length_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
@@ -1069,6 +1088,7 @@ API declaration:
 ``` TypeScript
 export const getSendableArrayWithLength: () => []; // Sendable-related napi_create_sendable_array_with_length
 ```
+
 
 ArkTS code:
 
@@ -1080,6 +1100,7 @@ let value = testNapi.getSendableArrayWithLength();
 hilog.info(0x0000, 'testTag', 'Node-API napi_create_sendable_array_with_length: %{public}s',
   JSON.stringify(value.length));
 ```
+
 
 **napi_create_sendable_arraybuffer**
 
@@ -1104,6 +1125,7 @@ static napi_value GetSendableArrayBuffer(napi_env env, napi_callback_info info)
 }
 ```
 
+
 API declaration:
 
 <!-- @[napi_create_sendable_arraybuffer_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
@@ -1111,6 +1133,7 @@ API declaration:
 ``` TypeScript
 export const getSendableArrayBuffer: () => ArrayBuffer; // Sendable-related napi_create_sendable_arraybuffer
 ```
+
 
 ArkTS code:
 
@@ -1120,6 +1143,7 @@ ArkTS code:
 // Sendable-related napi_create_sendable_arraybuffer
 testNapi.getSendableArrayBuffer();
 ```
+
 
 **napi_create_sendable_typedarray**
 
@@ -1148,6 +1172,7 @@ static napi_value GetSendableTypedArray(napi_env env, napi_callback_info info)
 }
 ```
 
+
 API declaration:
 
 <!-- @[napi_create_sendable_typed_array_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
@@ -1155,6 +1180,7 @@ API declaration:
 ``` TypeScript
 export const getSendableTypedArray: () => Uint8Array; // Sendable-related napi_create_sendable_typedarray.
 ```
+
 
 ArkTS code:
 
@@ -1164,6 +1190,7 @@ ArkTS code:
 // Sendable-related: napi_create_sendable_typedarray
 testNapi.getSendableTypedArray();
 ```
+
 
 **napi_wrap_sendable**
 
@@ -1193,6 +1220,7 @@ static napi_value WrapSendable(napi_env env, napi_callback_info info)
 }
 ```
 
+
 API declaration:
 
 <!-- @[napi_wrap_sendable_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
@@ -1200,6 +1228,7 @@ API declaration:
 ``` TypeScript
 export const wrapSendable: () => void; // Sendable: napi_wrap_sendable
 ```
+
 
 ArkTS code:
 
@@ -1209,6 +1238,7 @@ ArkTS code:
 // Sendable-related napi_wrap_sendable
 testNapi.wrapSendable();
 ```
+
 
 **napi_wrap_sendable_with_size**
 
@@ -1240,6 +1270,7 @@ static napi_value WrapSendableWithSize(napi_env env, napi_callback_info info)
 }
 ```
 
+
 API declaration:
 
 <!-- @[napi_wrap_sendable_with_size_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
@@ -1247,6 +1278,7 @@ API declaration:
 ``` TypeScript
 export const wrapSendableWithSize: () => void; // Sendable-related napi_wrap_sendable_with_size
 ```
+
 
 ArkTS code:
 
@@ -1256,6 +1288,7 @@ ArkTS code:
 // napi_wrap_sendable_with_size for Sendable
 testNapi.wrapSendableWithSize();
 ```
+
 
 **napi_unwrap_sendable**
 
@@ -1289,6 +1322,7 @@ static napi_value UnwrapSendable(napi_env env, napi_callback_info info)
 }
 ```
 
+
 API declaration:
 
 <!-- @[napi_unwrap_sendable_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
@@ -1296,6 +1330,7 @@ API declaration:
 ``` TypeScript
 export const unwrapSendable: () => void; // Sendable-related napi_unwrap_sendable
 ```
+
 
 ArkTS code:
 
@@ -1305,6 +1340,7 @@ ArkTS code:
 // Sendable-related napi_unwrap_sendable
 testNapi.unwrapSendable();
 ```
+
 
 **napi_remove_wrap_sendable**
 
@@ -1338,6 +1374,7 @@ static napi_value RemoveWrapSendable(napi_env env, napi_callback_info info)
 }
 ```
 
+
 API declaration:
 
 <!-- @[napi_remove_wrap_sendable_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
@@ -1345,6 +1382,7 @@ API declaration:
 ``` TypeScript
 export const removeWrapSendable: () => void; // Sendable-related napi_remove_wrap_sendable
 ```
+
 
 ArkTS code:
 
@@ -1355,6 +1393,7 @@ ArkTS code:
 testNapi.removeWrapSendable();
 ```
 
+
 To print logs in the native CPP, add the following information to the **CMakeLists.txt** file and add the header file by using **#include "hilog/log.h"**.
 
 ```text
@@ -1362,6 +1401,7 @@ To print logs in the native CPP, add the following information to the **CMakeLis
 target_compile_definitions(entry PRIVATE LOG_DOMAIN=0xd0d0 LOG_TAG="testTag")
 target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
 ```
+
 
 ## napi_wrap Enhancement
 
@@ -1428,7 +1468,6 @@ testNapi.testNapiWrapEnhance();
 | napi_create_ark_context | Creates a basic runtime context.|
 | napi_switch_ark_context | Switches to the specified runtime context environment.|
 | napi_destroy_ark_context | Destroys the basic runtime context.|
-
 ### Example
 
 **napi_create_ark_context, napi_switch_ark_context, and napi_destroy_ark_context**
@@ -1476,7 +1515,7 @@ testNapi.testNapiWrapEnhance();
 
 ### Example
 
-**napi_create_strong_reference, napi_delete_strong_reference, napi_get_value_strong_reference**
+**napi_create_strong_reference, napi_delete_strong_reference, napi_get_strong_reference_value**
 
 [Creating a Strong Reference to an ArkTS Object Using Node-API Extension APIs](use-napi-about-strong-reference.md)
 
@@ -1503,6 +1542,7 @@ testNapi.testNapiWrapEnhance();
 | API                     | Description                                                      |
 | ------------------------- | ---------------------------------------------------------- |
 | napi_throw_business_error | Throws an ArkTS error with the text information, where the code property of the error object is of the number type.|
+
 
 ### Example
 

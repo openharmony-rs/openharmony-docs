@@ -1,12 +1,11 @@
 # Comparing JS Values Using JSVM-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=d475d826f8ab6e97b4b69944b8a9a6d84f792324 translatedAt=2026-08-12T06:36:20.791Z pushedAt=2026-08-12T11:03:57.997Z -->
+<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-09-01T02:45:00.402Z pushedAt=2026-09-02T06:50:29.463Z -->
 
 ## Introduction
 
@@ -20,7 +19,7 @@ Strictly equal: If two values are strictly equal, they are equal in both value a
 
 | API                      | Description                           |
 |----------------------------|-------------------------------------|
-| OH_JSVM_StrictEquals         | Checks whether two **JSVM_Value** objects are strictly equal.|
+| OH_JSVM_StrictEquals         | Checks whether two JSVM_Value objects are strictly equal |
 
 ## Example
 
@@ -42,7 +41,7 @@ CPP code:
 // Sample method for OH_JSVM_StrictEquals
 static JSVM_Value IsStrictEquals(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    // Accept two input parameters.
+    // Receive two input parameters.
     size_t argc = 2;
     JSVM_Value args[2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);

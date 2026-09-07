@@ -1,12 +1,11 @@
 # Mutual Invoking Between the Application and the Frontend Page (C/C++)
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=df43b8cd7284167bf41a7a5f049ab6572e368164 translatedAt=2026-08-14T03:41:36.292Z pushedAt=2026-08-14T07:07:23.889Z -->
+<!-- md-trans-meta sourceCommit=5191f5de3eca0919d8d5e44823dbef1bf6b74270 translatedAt=2026-09-01T02:49:53.512Z pushedAt=2026-09-02T07:21:26.703Z -->
 
 This guide applies to the communication between ArkWeb applications and frontend pages. You can use the ArkWeb native APIs to conduct the service communication mechanism (native JSBridge for short) based on the application architecture.
 
@@ -14,7 +13,7 @@ For details about how to optimize the performance of JSBridge, see [JSBridge Opt
 
 ## Applicable Application Architecture
 
-If an application is developed using ArkTS and C++ language, or if its architecture is close to that of an applet and has a built-in C++ environment, you are advised to use [ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md) and [ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md) provided by ArkWeb on the native side to implement the JSBridge capabilities.
+If an application is developed using a mix of ArkTS and C++, or if the application has an architecture close to that of an applet and a built-in C++ environment, you are advised to use [ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md) and [ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md) provided by ArkWeb on the native side to implement the JSBridge capabilities.
 
   ![arkweb_jsbridge_arch](figures/arkweb_jsbridge_arch.png)
 
@@ -27,7 +26,6 @@ If an application is developed using ArkTS and C++ language, or if its architect
   The native JSBridge APIs are provided to avoid unnecessary switching to the ArkTS environment and allow callbacks to run in non-UI threads to avoid UI blocking.
 
 ## Using Native APIs to Implement JSBridge Communication (Recommended)
-
 In the previous version, the return value of native synchronization APIs is fixed to void. However, to meet service requirements, alternative APIs are introduced since API version 18 to support return values of the Boolean and string types.
 
 In addition, the [permission](#invoking-application-functions-on-the-frontend-page) field is added for the synchronous API [registerJavaScriptProxyEx](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxyex) and asynchronous API [registerAsyncJavaScriptProxyEx](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerasyncjavascriptproxyex) to control the invoking permission.
@@ -63,7 +61,7 @@ In addition, the [permission](#invoking-application-functions-on-the-frontend-pa
   }
   ```
 
-* C++ Side:
+* C++ side:
 
   <!-- @[parse_and_store_webtags](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/hello.cpp)-->    
 
@@ -159,7 +157,6 @@ Register the application functions with the frontend page through [registerJavaS
   ```
 
   - The **permission** parameter is a JSON string as follows:
-
   ```json5
   {
     "javascriptProxyPermission": {

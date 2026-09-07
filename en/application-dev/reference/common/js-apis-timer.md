@@ -1,10 +1,12 @@
 # Timer
+
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @yao_dashuai-->
-<!--Designer: @yao_dashuai-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=93f5a6010905da0e1599de10431e844a6a99db6d translatedAt=2026-08-27T03:51:03.718Z pushedAt=2026-08-27T07:22:53.333Z -->
 
 The **Timer** module provides basic timer capabilities. You can use the APIs of this module to execute functions at the specified time.
 
@@ -31,7 +33,7 @@ The timer is automatically deleted after callback execution, or you may manually
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | handler | Function \| string | Yes| When the type is function, this parameter specifies the callback function to be invoked upon the timer's expiration. <br>When the type is string, error information is printed with no additional processing.|
-| delay | number | No| Number of milliseconds delayed before the execution. It is recommended that an integer be passed in; a decimal will be rounded down.<br>If this parameter is omitted, the default value of **0** is used.<br>**NOTE**<br>1. This timer is not a precise timer, and there may be a discrepancy between the actual delay and the expected delay.<br>2. If the value is less than 1, it will be defaulted to **0**.<br>3. The value is subject to system limitations. If it exceeds 2^31 – 1, the value will be **0**.|
+| delay | number | No | Delay in milliseconds, after which the function is called. An integer is recommended. If a decimal is passed in, it is rounded down.<br>If this parameter is omitted, the default value 0 is used.<br>**NOTE**<br>1. This timer is not a precise timer, and the actual delay may differ from the expected delay.<br>2. If the value is less than 1, it is set to 0 by default.<br>3. The **delay** value is subject to system limits. If it exceeds 2^31 - 1, it overflows and is set to 0.|
 | ...arguments | any[] | No| Additional parameters that are passed to **handler** only when **handler** is of the function type.<br>If the number of arguments is less than that of the **handler** function parameters, the parameters that are not overwritten by arguments are set to **undefined**.<br>If the number of arguments exceeds that of the **handler** function parameters, the excess arguments will be ignored. However, they can still be accessed via the built-in arguments object within the **handler** function.|
 
 **Return value**
@@ -70,6 +72,7 @@ The timer is automatically deleted after callback execution, or you may manually
   }
   setTimeout(myFunction, 1000, 'hello', 'world', 'C++', 'js');
   ```
+
 **Example 4**: more **handler** function parameters than arguments
 
   ```ts
@@ -111,7 +114,6 @@ The timer object is stored in the thread where the timer is created and must be 
   clearTimeout(timeoutID);
   ```
 
-
 ## setInterval
 
 setInterval(handler: Function | string, delay: number, ...arguments: any[]): number
@@ -129,7 +131,7 @@ The timer can only be manually deleted when the **clearInterval** API is called.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | handler | Function \| string | Yes| When the type is function, this parameter specifies the callback function to be invoked upon the timer's expiration. <br>When the type is string, error information is printed with no additional processing.|
-| delay | number | Yes| Number of milliseconds delayed before the execution. It is recommended that an integer be passed in; a decimal will be rounded down.<br>If this parameter is omitted, the default value of **0** is used.<br>**NOTE**<br>1. This timer is not a precise timer, and there may be a discrepancy between the actual delay and the expected delay.<br>2. If the value is less than 1, it will be defaulted to **0**.<br>3. The value is subject to system limitations. If it exceeds 2^31 – 1, the value will be **0**.|
+| delay | number | Yes | Delay in milliseconds, after which the function is called. It is recommended that an integer be passed in. If a decimal is passed in, it is rounded down.<br>**Note:**<br>1. This timer is not a precise timer, and the actual delay may differ from the expected delay.<br>2. If the value is less than 1, it is set to 0 by default.<br>3. The **delay** value is subject to system limits. If it exceeds 2^31 - 1, an overflow occurs and the delay value is 0.|
 | ...arguments | any[] | No| Additional parameters that are passed to **handler** only when **handler** is of the function type.<br>If the number of arguments is less than that of the **handler** function parameters, the parameters that are not overwritten by arguments are set to **undefined**.<br>If the number of arguments exceeds that of the **handler** function parameters, the excess arguments will be ignored. However, they can still be accessed via the built-in arguments object within the **handler** function.|
 
 **Return value**
@@ -145,7 +147,6 @@ The timer can only be manually deleted when the **clearInterval** API is called.
     console.info('do every 1s.');
   }, 1000);
   ```
-
 
 ## clearInterval
 
@@ -175,8 +176,11 @@ The timer object is stored in the thread where the timer is created and must be 
   ```
 
 ## Other Description
+
 ### Timeout Delay
+
 If the page is engaged in other operations, the timeout may be later than expected. The function or code snippet passed to **setTimeout** is executed in the next tick. Example:
+
   ```ts
   function foo() {
     console.info('OH test foo is called')
@@ -188,12 +192,17 @@ If the page is engaged in other operations, the timeout may be later than expect
   After OH test setTimeout
   OH test foo is called
   ```
+
 Although a 0 ms delay is specified for **setTimeout()**, the task is not executed immediately. Instead, it is placed in the queue and waits for the next event loop tick. The functions in the queue can be executed only after the ongoing code execution is complete. As such, the final execution sequence may differ from the expected sequence.
 
 ### Maximum Delay
+
 The timer internally stores the delay as a 32-bit signed integer. If the delay is greater than 2147483647 ms (about 24.8 days), the overflow occurs and the timer is executed immediately.
 
 ### Timer Suspension
+
 The timer triggering mechanism is controlled by the bottom-layer task scheduling. If an application is switched to the background, timers that have reached their set time will not be triggered. Once the application is restored to the foreground, the expired timers will be triggered in sequence. You can run the **trace** command to check whether the process is still scheduled. If the process is not scheduled, the timer is suspended.
+
 ### Timer ID
-The **setTimeout()** and **setInterval()** APIs shares an ID pool. This means that, in theory, **clearTimeout()** and **clearInterval()** can be used interchangeably to clear timers. However, to ensure code readability and maintainability, it is advised to use the corresponding clearing method to avoid intermixing.
+
+The **setTimeout()** and **setInterval()** APIs share an ID pool. This means that, in theory, **clearTimeout()** and **clearInterval()** can be used interchangeably to clear timers. However, to ensure code readability and maintainability, it is advised to use the corresponding clearing method to avoid intermixing.

@@ -1,12 +1,11 @@
 # Invoking Application Functions on the Frontend Page
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=df43b8cd7284167bf41a7a5f049ab6572e368164 translatedAt=2026-08-14T03:47:10.104Z pushedAt=2026-08-14T08:40:38.913Z -->
+<!-- md-trans-meta sourceCommit=5191f5de3eca0919d8d5e44823dbef1bf6b74270 translatedAt=2026-09-01T02:53:50.925Z pushedAt=2026-09-02T07:30:09.915Z -->
 
 You can use the Web component to register application-side code with the frontend page. After registration, the frontend page can call methods on the application side by using the registered object name.
 
@@ -215,7 +214,6 @@ struct WebComponent {
    ```
 
 - The optional parameter `permission` is a JSON string. The following is an example:
-
   ```json5
   {
     "javascriptProxyPermission": {
@@ -292,13 +290,11 @@ struct WebComponent {
   </body>
   </html>
   ```
-
 ## Usage of Complex Types
 
 ### Passing Arrays Between the Application and the Frontend Page
 
  Arrays can be used as parameters or return values of object registration methods and passed between applications and frontend pages.
-
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -374,7 +370,6 @@ struct WebComponent {
 ### Using Complex Types Excluding Functions
 
   Sample code for passing complex types (excluding functions) as parameters or return values in object registration methods between the application and the frontend page:
-
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -453,11 +448,9 @@ struct WebComponent {
   </body>
   </html>
   ```
-
 ### Invoking a Callback of the Frontend Page from the Application
 
   Callbacks can be used as parameters or return values of object registration methods and passed between applications and frontend pages.
-
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -529,11 +522,9 @@ struct WebComponent {
   </body>
   </html>
   ```
-
 ### Calling the Function in an Object of the Frontend Page from the Application Side
 
   The function in an object of the frontend page can be used as the parameter or return value of the registration object method and passed between the application side and the frontend page.
-
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -633,7 +624,6 @@ struct WebComponent {
 ### Calling the Function in an Object of the Application Side from the Frontend Page
 
   The function in an object of the application side can be used as the parameter or return value of the registration object method and passed between the application side and the frontend page.
-
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -724,7 +714,6 @@ struct WebComponent {
 ### Using Promises
 
   Create a promise on the application side. Use the promise as the parameter or return value of the object method and pass it to the frontend page.
-
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -802,9 +791,7 @@ struct WebComponent {
   </body>
   </html>
   ```
-
   Create a promise on the frontend page. Use the promise as the parameter or return value of the object method and pass it to the application side.
-
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -879,7 +866,6 @@ struct WebComponent {
   </body>
   </html>
   ```
-
 ## Checking Whether the Channel Is Successfully Established
 
 1. Enable web debugging.

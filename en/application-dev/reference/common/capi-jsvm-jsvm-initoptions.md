@@ -1,10 +1,12 @@
 # JSVM_InitOptions
-<!--Kit: Common Basic Capability-->
+
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-08-27T03:48:36.271Z pushedAt=2026-08-27T06:40:31.975Z -->
 
 ```c
 typedef struct {...} JSVM_InitOptions
@@ -13,6 +15,10 @@ typedef struct {...} JSVM_InitOptions
 ## Overview
 
 Defines options for initializing a JavaScript VM.
+
+**Use scenario:** Initialization of an app that embeds the JavaScript engine, scenarios where JavaScript code needs to be executed in an app, and development and debugging scenarios that require custom VM configuration.
+
+**System capability:** SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
 

@@ -3170,8 +3170,7 @@ struct TextInputExample {
   // Set the font size.
   async setFontScale(scale: number): Promise<void> {
     let configInit: Configuration = {
-      language: 'zh-Ch',
-      fontSizeScale: scale,
+      fontSizeScale: scale
     };
     // Update system font scaling.
     // Add the ohos.permission.UPDATE_CONFIGURATION permission to the requestPermissions field in the module.json5 file of the project.
@@ -3188,30 +3187,31 @@ struct TextInputExample {
   build() {
     Column() {
       Column({ space: 30 }) {
-        Text("通过minFontScale、maxFontScale调整文本显示的最大和最小字体缩放倍数。")
+        Text('Use minFontScale and maxFontScale to adjust the maximum and minimum font scale factors for text display.')
         TextInput({
           placeholder: 'The text area can hold an unlimited amount of text. input your word...',
-          text: '通过minFontScale、maxFontScale调整文本显示的最大和最小字体缩放倍数。'
+          text: 'Use minFontScale and maxFontScale to adjust the maximum and minimum font scale factors for text display.'
         })
           .minFontScale(this.minFontScale)// Set the minimum font scale factor. If the parameter is set to undefined, the default scale factor is used.
           .maxFontScale(this.maxFontScale) // Set the maximum font scale factor. If the parameter is set to undefined, the default scale factor is used.
       }.width('100%')
+      //The following buttons are only used for adjusting the font‑size multiplier and are not displayed in the sample image.
 
       Column() {
         Row() {
-          Button('1倍').onClick(() => {
+          Button('1x').onClick(() => {
             this.setFontScale(1)
           }).margin(10)
-          Button('1.75倍').onClick(() => {
+          Button('1.75x').onClick(() => {
             this.setFontScale(1.75)
           }).margin(10)
         }
 
         Row() {
-          Button('2倍').onClick(() => {
+          Button('2x').onClick(() => {
             this.setFontScale(2)
           }).margin(10)
-          Button('3.2倍').onClick(() => {
+          Button('3.2x').onClick(() => {
             this.setFontScale(3.2)
           }).margin(10)
         }

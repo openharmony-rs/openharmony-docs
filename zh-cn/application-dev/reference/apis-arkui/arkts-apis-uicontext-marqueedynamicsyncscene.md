@@ -79,7 +79,7 @@ struct MarqueeExample {
           this.start = true;
           this.controller.start();
           this.scenes.forEach((scene: MarqueeDynamicSyncScene) => {
-            if (scene.type == MarqueeDynamicSyncSceneType.ANIMATION) {
+            if (scene.type === MarqueeDynamicSyncSceneType.ANIMATION) {
               scene.setFrameRateRange(this.frameRateRange);
             }
           });
