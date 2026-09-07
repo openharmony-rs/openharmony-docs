@@ -44,7 +44,7 @@ AlbumPickerComponent({albumPickerOptions?: AlbumPickerOptions, onAlbumClick?: (a
 | albumPickerOptions | [AlbumPickerOptions](#albumpickeroptions)           | 否   | AlbumPicker的配置信息。若不传入此参数，则使用默认配置。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。              |
 | onAlbumClick       | (albumInfo: [AlbumInfo](#albuminfo)) => boolean     | 否   | 用户选择某个相册时产生的回调事件，将相册信息（AlbumInfo，包含URI和albumName）作为参数传递给应用，应用可通过此回调通知图片选择器组件刷新。若不传入此参数，则不监听相册选择事件。返回值无实际作用，可返回true或false。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。    |
 | onEmptyAreaClick<sup>13+</sup>   | [EmptyAreaClickCallback](#emptyareaclickcallback13) | 否   | 点击相册组件空白区域时产生的回调事件，并将该次点击通知给应用。若不传入此参数，则不监听空白区域点击事件。<br> **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
-| albumPickerController<sup>20+</sup>   | [AlbumPickerController](#albumpickercontroller20) | 否   | 应用可通过AlbumPickerController向组件发送数据。若不传入此参数，则无法通过控制器控制组件。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| albumPickerController<sup>20+</sup>   | [AlbumPickerController](#albumpickercontroller20) | 否   | 应用可通过AlbumPickerController向组件发送数据。需在相册选择组件创建时传入AlbumPickerController实例，若不传入此参数，则无法通过控制器控制组件。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## AlbumPickerOptions
 
@@ -94,6 +94,10 @@ type EmptyAreaClickCallback = () => void
 setFontSize(fontSize: number | string): void
 
 应用可通过该接口设置相册列表的字体大小。需要在创建相册选择组件时传入albumPickerController参数。
+
+> **说明：**
+>
+> 若同时通过AlbumPickerOptions.fontSize设置了字体大小，则以本方法设置的值为准。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 

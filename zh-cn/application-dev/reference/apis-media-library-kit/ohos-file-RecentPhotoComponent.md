@@ -58,8 +58,8 @@ RecentPhotoComponent({ recentPhotoOptions?: RecentPhotoOptions, onRecentPhotoChe
 |-------------------------|-----------------------------------------------------------------------------------------|-------|-------|--------|
 | period                  | number                                                                                  | 否 | 是    | 配置显示多久时间段内按创建时间排序的最新一个照片或视频，单位为秒（s），取值范围(0, 86400]。最长可配置时长为1天（86400s）。<br>当值小于等于0、大于86400或者未设置该值时，默认显示1天内最近照片或视频。当配置时间段内无符合的照片或视频时，组件不显示。<br> **注意：**<br>当isAutoRefreshSupported为true时，period字段失效。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | MIMEType                | [photoAccessHelper.PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes) | 否    | 是 | 最近图片控件显示的文件类型。可设置为IMAGE_TYPE（仅显示图片）、VIDEO_TYPE（仅显示视频）或IMAGE_VIDEO_TYPE（显示图片和视频）。默认为IMAGE_VIDEO_TYPE。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                         |
-| photoSource             | [PhotoSource](#photosource)                                                             | 否    | 是 | 配置最近照片或视频显示内容的来源，比如拍照、截屏等。默认不限制来源。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                               |
-| isAutoRefreshSupported<sup>20+</sup>  | boolean                                                                                 | 否    | 是| 配置最近图片组件在符合要求的最近照片或视频发生变更（包括新增、删除、修改）时是否进行刷新。<br>当组件原显示的最近照片或视频被删除，而无符合要求的照片或视频时，则显示占位符，组件不自动退出。<br>默认为false，不支持自动刷新。<br>配置为true时显示全部符合筛选条件的照片或视频（不受period限制，仍受photoSource和MIMEType约束）。<br>period字段失效。<br> **说明**：开启自动刷新会监听媒体库变更，建议在需要实时更新场景使用，避免频繁刷新影响性能。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| photoSource             | [PhotoSource](#photosource)                                                             | 否    | 是 | 配置最近照片或视频显示内容的来源，比如拍照、截屏等。默认不限制来源。<br>**说明：**当isAutoRefreshSupported为true时，仍受此字段约束。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                               |
+| isAutoRefreshSupported<sup>20+</sup>  | boolean                                                                                 | 否    | 是| 配置最近图片组件在符合要求的最近照片或视频发生变更（包括新增、删除、修改）时是否进行刷新。<br>当组件原显示的最近照片或视频被删除，而无符合要求的照片或视频时，则显示占位符（可通过colorMode配置占位符颜色模式），组件不自动退出。<br>默认为false，不支持自动刷新。<br>配置为true时显示全部符合筛选条件的照片或视频（不受period限制，仍受photoSource和MIMEType约束）。<br>period字段失效。<br> **说明**：开启自动刷新会监听媒体库变更，建议在需要实时更新场景使用，避免频繁刷新影响性能。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 | colorMode<sup>20+</sup>               | [PickerColorMode](ohos-file-PhotoPickerComponent.md#pickercolormode)                                                      | 否    | 是 | 支持应用配置占位符的颜色模式。<br>当isAutoRefreshSupported为true，且无符合要求的最近照片或视频时，显示占位符，colorMode字段生效。<br>默认为跟随系统深浅色模式。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 
 ## RecentPhotoInfo<sup>13+</sup>
@@ -72,8 +72,8 @@ RecentPhotoComponent({ recentPhotoOptions?: RecentPhotoOptions, onRecentPhotoChe
 
 | 名称         | 类型     | 只读 | 可选  | 说明                                                        |
 |------------|--------|-------|-------|-----------------------------------------------------------|
-| dateTaken  | number | 否 | 是    | 最近图片/视频的拍摄时间，单位为毫秒（ms）。（距1970年1月1日的毫秒数值）。                     |
-| identifier | string | 否 | 是    | 最近图片/视频的名称hash值，用于辅助应用区分最新图片组件将要显示的图片/视频与之前曾显示过的图片/视频是否为同一个。 |
+| dateTaken  | number | 否 | 是    | 最近照片/视频的拍摄时间，单位为毫秒（ms）。（距1970年1月1日的毫秒数值）。                     |
+| identifier | string | 否 | 是    | 最近照片/视频的名称hash值，用于辅助应用区分最新图片组件将要显示的图片/视频与之前曾显示过的图片/视频是否为同一个。 |
 
 ## RecentPhotoCheckResultCallback
 
@@ -111,7 +111,7 @@ type RecentPhotoClickCallback = (recentPhotoInfo: BaseItemInfo) => boolean
 
 | 类型    | 说明                                                         |
 | ------- | ------------------------------------------------------------ |
-| boolean | 应用回调中处理最近图片的结果返回。true表示处理完成。 |
+| boolean | 返回值无实际作用，可返回true或false。 |
 
 ## RecentPhotoCheckInfoCallback<sup>13+</sup>
 
