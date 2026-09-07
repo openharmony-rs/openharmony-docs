@@ -599,8 +599,8 @@
 | animationParams             | [StartAnimationParams](arkts-apis-window-i.md#startanimationparams20)                 | 否   | 是   | 启动动画参数配置。默认值为undefined，若不配置将保持系统默认动效。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 | needAnimation<sup>23+</sup> | boolean | 否 | 是 | 是否启用窗口创建动效。<br>传入true时，跟随系统默认动效。传入false时，表示关闭窗口创建动效，仅在[自由窗口状态](../../windowmanager/window-terminology.md#freeform-window自由窗口)的情况下生效。<br>此参数不填时，默认为undefined，跟随系统默认动效。<br> **模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 | minimizeOnStart| boolean | 否 | 是 | 窗口是否以最小化状态启动。<br>true表示当前窗口以最小化状态启动，false表示窗口启动到前台。默认值为false。<br>仅在同应用间传递参数生效。<br> **设备行为差异：** 该参数在PC/2in1设备、其他设备的电脑模式中可正常调用，在其他设备和其他模式中作为入参使用时，不生效不报错。<br> **ArkTS-Dyn起始版本：** 26.1.0 <br> **ArkTS-Sta起始版本：** 26.1.0 <br> **模型约束：** 此接口仅可在Stage模型下使用。|
-| excludeFromDock| boolean | 否 | 是 | 是否屏蔽Dock栏图标及预览窗。<br>true表示当前窗口屏蔽Dock栏图标及预览窗，false表示窗口正常显示Dock栏图标及预览窗。默认值为undefined，窗口正常显示Dock栏图标及预览窗。<br>仅在同应用间传递参数生效；该参数需要添加应用图标到状态栏。<br> **设备行为差异：** 该参数在PC/2in1设备、其他设备的电脑模式中可正常调用，在其他设备和其他模式中作为入参使用时，不生效不报错。<br> **ArkTS-Dyn起始版本：** 26.1.0 <br> **ArkTS-Sta起始版本：** 26.1.0 <br> **模型约束：** 此接口仅可在Stage模型下使用。|
-| excludeFromRecent| boolean | 否 | 是 | 是否屏蔽多任务视图预览窗。<br>true表示当前窗口屏蔽多任务视图预览窗，false表示窗口正常显示多任务视图预览窗。默认值为undefined，窗口正常显示多任务视图预览窗。<br>仅在同应用间传递参数生效；该参数需要添加应用图标到状态栏。<br>**设备行为差异：** 该参数在PC/2in1设备、其他设备的电脑模式中可正常调用，在其他设备和其他模式中作为入参使用时，不生效不报错。<br> **ArkTS-Dyn起始版本：** 26.1.0 <br> **ArkTS-Sta起始版本：** 26.1.0 <br> **模型约束：** 此接口仅可在Stage模型下使用。|
+| excludeFromDock| boolean | 否 | 是 | 是否屏蔽Dock栏图标及预览窗。<br>true表示当前窗口屏蔽Dock栏图标及预览窗，false表示窗口正常显示Dock栏图标及预览窗。默认值为undefined，不设置参数，默认行为。<br>仅在同应用间传递参数生效；需要添加应用图标到状态栏，参考[应用接入状态栏](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/statusbar-extension-guide)。否则，参数调用不生效不报错，默认行为。<br> **设备行为差异：** 该参数在PC/2in1设备、其他设备的电脑模式中可正常调用，在其他设备和其他模式中作为入参使用时，不生效不报错。<br> **ArkTS-Dyn起始版本：** 26.1.0 <br> **ArkTS-Sta起始版本：** 26.1.0 <br> **模型约束：** 此接口仅可在Stage模型下使用。|
+| excludeFromRecent| boolean | 否 | 是 | 是否屏蔽多任务视图预览窗。<br>true表示当前窗口屏蔽多任务视图预览窗，false表示窗口正常显示多任务视图预览窗。默认值为undefined，不设置参数，默认行为。<br>仅在同应用间传递参数生效；需要添加应用图标到状态栏，参考[应用接入状态栏](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/statusbar-extension-guide)。否则，参数调用不生效不报错，默认行为。<br>**设备行为差异：** 该参数在PC/<br> **ArkTS-Dyn起始版本：** 26.1.0 <br> **ArkTS-Sta起始版本：** 26.1.0 <br> **模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## Callback<sup>15+</sup>
 
@@ -634,7 +634,7 @@ Callback<T, V = void> {
 | -------------------------------- | ------------------------------------ |
 | V | 回调函数需要返回V类型的返回值。 |
 
-## RotationChangeInfo<sup>19+</sup>
+## RotationChangeInfo<sup>19+<2in1设备、其他设备的电脑模式中可正常调用，在其他设备和其他模式中作为入参使用时，不生效不报错。/sup>
 
 窗口旋转变化时的窗口信息。
 
