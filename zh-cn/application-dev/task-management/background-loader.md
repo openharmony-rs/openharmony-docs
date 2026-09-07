@@ -9,13 +9,29 @@
 
 ## 概述
 
-从API版本26.1.0开始，系统提供后台加载任务能力，适用于期望通过后台预先加载应用数据以优化应用启动体验的场景（如资讯刷新、消息获取、视频缓存等），不适用于需要定时或条件触发的通用后台任务及长时间后台运行场景。
+从API版本26.1.0开始，系统提供后台加载任务能力，适用于期望通过后台预先加载应用数据以优化应用启动体验的场景（如资讯刷新、消息获取、视频缓存等），不适用于需要定时或条件触发的通用后台任务及长时间后台运行场景。如需定时或条件触发的后台任务，请使用[延迟任务](work-scheduler.md)；如需长时间后台运行，请使用[长时任务](continuous-task.md)。
 
 ## 实现原理
 
 1. 需要启用后台加载任务功能的应用，可在前台启动时向系统注册任务。
 2. 任务注册后，系统允许应用查询和取消注册任务。
-3. 系统的后台加载任务管理模块会根据用户使用应用的习惯及系统状态（包括系统可用内存、电池电量、设备温度等）统一决策应用执行后台加载任务时机。应用无法对任务触发时机进行干预。
+
+```mermaid
+sequenceDiagram
+    participant App as 应用
+    participant Sys as 后台加载任务管理模块
+    Note over App: 应用启动，在主UIAbility.onCreate中通过Callee注册ON_START/ON_STOP回调
+    App->>Sys: registerTask(taskInfo) 注册后台加载任务
+    Sys-->>App: 注册成功
+    App->>Sys: getTaskInfo(taskId) / unregisterTask(taskInfo)（可选）
+    Sys-->>App: 任务信息 / 取消结果
+    Note over Sys: 系统决定调度时机
+    Sys->>App: 拉起应用，触发ON_START回调
+    App->>App: 执行后台加载逻辑（最长30秒，禁止音频/定位/闪光灯等可感知操作）
+    App->>Sys: finishTask(taskInfo) 通知任务完成
+    Sys->>App: 任务停止，触发ON_STOP回调
+    Note over Sys: 任务完成；多次超时或存在可感知操作，将禁用该应用后续调度
+```
 
 ## 约束与限制
 
@@ -52,6 +68,7 @@
 3. 在应用主UIAbility的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)生命周期中，通过[Callee](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)注册ON_START和ON_STOP回调函数。Callee回调注册随主UIAbility生命周期存在，随其销毁自动释放，无需手动注销。
 
    <!-- @[backgroundLoader_register_callee](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
    ``` TypeScript
    try {
      // 注册ON_START回调，当后台加载任务启动时触发funCallBack
@@ -70,9 +87,10 @@
 1. 注册后台加载任务。
 
    <!-- @[backgroundLoader_registerTask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
    ``` TypeScript
    const taskInfo: backgroundLoader.TaskInfo = {
-     abilityname: abilityname,
+     abilityName: abilityName,
      taskId: taskId
    };
    try {
@@ -89,9 +107,10 @@
 2. 取消注册后台加载任务。
 
    <!-- @[backgroundLoader_unregisterTask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
    ``` TypeScript
    const taskInfo: backgroundLoader.TaskInfo = {
-     abilityname: abilityname,
+     abilityName: abilityName,
      taskId: taskId
    };
    try {
@@ -108,9 +127,10 @@
 3. 查询后台加载任务信息。
 
    <!-- @[backgroundLoader_getTaskInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
    ``` TypeScript
    try {
-     const taskInfoData = backgroundLoader.getTaskInfo(taskId);
+     const taskInfoData = await backgroundLoader.getTaskInfo(taskId);
      const result = `taskId=${taskInfoData.taskId}, abilityName=${taskInfoData.abilityName}`;
      hilog.info(DOMAIN, 'testTag', 'getTaskInfo result: %{public}s', result);
      return result;
@@ -126,9 +146,10 @@
 1. 完成后台加载任务。
 
    <!-- @[backgroundLoader_finishTask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
    ``` TypeScript
    const taskInfo: backgroundLoader.TaskInfo = {
-     abilityname: abilityname,
+     abilityName: abilityName,
      taskId: taskId
    };
    try {
