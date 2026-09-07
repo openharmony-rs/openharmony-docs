@@ -942,7 +942,7 @@ Picker上次退出时现场的信息。
 | 名称 | 类型                                             | 只读 | 可选 | 说明      |
 | ---- | ------------------------------------------------ | ---- | ---- |---------|
 | mimeType | string | 否   | 否 | 媒体文件类型。 |
-| photoSubType | [photoAccessHelper.PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype)  | 否   | 否 | PhotoSubtype。 |
+| photoSubType | [photoAccessHelper.PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)  | 否   | 否 | PhotoSubtype。 |
  
 
 ## DataType
