@@ -669,7 +669,7 @@ export struct TaskSwitchMainPage {
               this.cardOffset = this.lastCardOffset + event.offsetX;
             })
             .onActionEnd((event: GestureEvent): void => {
-              let time: long = 0;
+              let time: double = 0;
               if (this.startTime) {
                 time = event.timestamp - this.startTime!;
               }
