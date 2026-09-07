@@ -672,9 +672,9 @@ let tmp = one;
 one = two;
 two = tmp;
 
-let data: Number[] = [1, 2, 3, 4];
+let data: number[] = [1, 2, 3, 4];
 let head = data[0];
-let tail: Number[] = [];
+let tail: number[] = [];
 for (let i = 1; i < data.length; ++i) {
   tail.push(data[i]);
 }
@@ -1009,7 +1009,7 @@ drawText({ text: 'Hello, world!', location: [100, 50], bold: true });
 <!-- @[no_destructParams](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDestructParams.ets) -->
 
 ``` TypeScript
-function drawText(text: String, location: number[], bold: boolean) {
+function drawText(text: string, location: number[], bold: boolean) {
   let x = location[0];
   let y = location[1];
   text;
