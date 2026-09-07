@@ -5,7 +5,7 @@
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=555be954f1c8289c7271884e98d8aa7e12085b2a translatedAt=2026-09-03T03:51:19.455Z -->
+<!-- md-trans-meta sourceCommit=555be954f1c8289c7271884e98d8aa7e12085b2a translatedAt=2026-09-03T03:51:19.455Z pushedAt=2026-09-07T08:22:51.987Z -->
 
 This component uses a background and a depth map to generate content with a depth space effect.
 
@@ -43,8 +43,8 @@ Creates a **DepthComponent** component.
 
 | Name | Type | Required | Description |
 | -------- | -------- | -------- | -------- |
-| background | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes | Background resource. Supports static images or 3D models.<br>Static images support loading data sources of the PixelMap and ResourceStr types. For details about how to reference them, see [Loading Image Resources](../../../ui/arkts-graphics-display.md#loading-image-resources).<br>3D models support loading only data sources of the ResourceStr type, and only the glTF and glb 3D model formats are supported. ResourceStr includes the Resource and string formats. The string format can be used to load local 3D models, and supports absolute paths or sandbox URIs with the file:// prefix. It does not support loading network resources. The Resource format can access model resource files across packages/modules. It is recommended to load local 3D models in this way. |
-| options | [DepthComponentOptions](#depthcomponentoptions) | No | Configuration options of the Depth Component. Default value: `{ depthSpace: DepthSpaceType.INSTANCE }`. |
+| background | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes | Background resource, which supports static images or 3D models.<br>Static images support loading data sources of the **PixelMap** and **ResourceStr** types. For details about how to reference them, see [Loading Image Resources](../../../ui/arkts-graphics-display.md#loading-image-resources).<br>3D models support loading only data sources of the **ResourceStr** type, and only the glTF and GLB 3D model formats are supported. **ResourceStr** includes the Resource and string formats. The string format can be used to load local 3D models, and supports absolute paths or sandbox URIs with the **file://** prefix. Loading network resources is not supported. The Resource format can access model resource files across packages or modules. It is recommended to load local 3D models in this way. |
+| options | [DepthComponentOptions](#depthcomponentoptions) | No | Configuration options of **DepthComponent**. Default value: `{ depthSpace: DepthSpaceType.INSTANCE }`. |
 
 ## DepthComponentOptions
 
@@ -56,15 +56,15 @@ Provides configuration options of **DepthComponent**.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System API**: This is a system API.
 
 | Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
 | depthSpace | [DepthSpaceType](#depthspacetype) | No | Yes | Depth space type. |
-| render3DScale | number | No | Yes | Scaling ratio of the 3D rendering window, applied to both width and height. Value range: (0.0, 1.0]. Values outside this range are invalid (the previous value is inherited; if no value has been set, the default value is used). Default value: 1.0. |
-| colorSpace | import('../api/@ohos.graphics.colorSpaceManager').default.[ColorSpace](../../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace) | No | Yes | Color gamut of the rendering surface. When set, the color gamut information is applied to the underlying rendering surface; when not set, no color gamut information is applied and the rendering surface keeps the default color gamut. Default value: colorSpaceManager.ColorSpace.SRGB. |
+| render3DScale | number | No | Yes | Scale factor of the 3D rendering window, applied to both width and height. Value range: (0.0, 1.0]. Values outside this range are invalid (the previous value is inherited; if no value has been set, the default value is used). Default value: **1.0**. |
+| colorSpace | import('../api/@ohos.graphics.colorSpaceManager').default.[ColorSpace](../../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace) | No | Yes | Color space of the rendering surface. When set, the color space information is applied to the underlying rendering surface. When not set, no color space information is applied, and the rendering surface retains the default color space. Default value: **colorSpaceManager.ColorSpace.SRGB**. |
 
 ## DepthSpaceType
 
@@ -80,14 +80,14 @@ Enumerates depth space types.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System API**: This is a system API.
 
 | Name | Value | Description |
 | -------- | -------- | -------- |
-| INSTANCE | 0 | Instance mode. Uses the background, depth map, camera parameters, and lighting parameters of the current process. |
-| GLOBAL | 1 | Global mode. Uses the global background, depth map, camera parameters, and lighting parameters. |
+| INSTANCE | 0 | Instance mode, which uses the background, depth map, camera parameters, and lighting parameters of the current process. |
+| GLOBAL | 1 | Global mode, which uses the global background, depth map, camera parameters, and lighting parameters. |
 
 ## Attributes
 
@@ -118,8 +118,8 @@ Sets the depth map used for depth calculation and rendering. This API returns th
 
 | Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| depthMap | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes | Depth map resource or PixelMap object, referenced in the same way as a static background image. The depth map needs to be set only when the background is a static image. The resolution of the depth map must be consistent with that of the background image. |
-| callback | [DepthMapCallback](#depthmapcallback) | No | Callback function invoked when the depth map is loaded. On load success, error.code is 0. On load failure, error contains the error code and error information. |
+| depthMap | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes | Depth map resource or **PixelMap** object, referenced in the same way as a static background image. The depth map needs to be set only when the background is a static image. The depth map must have the same resolution as the background image. |
+| callback | [DepthMapCallback](#depthmapcallback) | No | Callback invoked when the depth map finishes loading. On load success, **error.code** is **0**; on load failure, **error** contains the error code and error message. |
 
 ### camera
 
@@ -137,7 +137,7 @@ Sets the camera parameters used for depth rendering.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System API**: This is a system API.
 
@@ -167,7 +167,7 @@ Sets the lighting parameters used for depth rendering.
 
 | Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| light | [DepthLightParams](#depthlightparams) | Yes | Lighting parameters, including direction, color, and intensity. |
+| light | [DepthLightParams](#depthlightparams) | Yes | Lighting parameters, including the direction, color, and intensity. |
 
 ## Events
 
@@ -213,7 +213,7 @@ Triggered when an error occurs during background resource loading. This API retu
 
 | Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| callback | [DepthComponentErrorCallback](#depthcomponenterrorcallback) | Yes | Callback invoked when the background resource fails to load. |
+| callback | [DepthComponentErrorCallback](#depthcomponenterrorcallback) | Yes | Callback invoked when the background resource fails to be loaded. |
 
 ## DepthMapCallback
 
@@ -227,7 +227,7 @@ type DepthMapCallback = (error: BusinessError&lt;void&gt;) => void
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System API**: This is a system API.
 
@@ -235,7 +235,7 @@ type DepthMapCallback = (error: BusinessError&lt;void&gt;) => void
 
 | Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| error | [BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)&lt;void&gt; | Yes | Error information returned when the depth map resource is loaded. If the loading succeeds, error.code is 0. If the loading fails, error contains the error code and error information. |
+| error | [BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)&lt;void&gt; | Yes | Error information returned when the depth map resource finishes loading. On load success, **error.code** is **0**; on load failure, **error** contains the error code and error message. |
 
 ## DepthCameraParams
 
@@ -253,12 +253,12 @@ Provides camera parameters.
 
 | Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| position | [DepthVector3](ts-universal-attributes-spatial-effect-sys.md#depthvector3) | No | No | Position of the camera in 3D space. Unitless. The value represents the coordinates in 3D space. |
-| quaternion | [DepthVector4](ts-universal-attributes-spatial-effect-sys.md#depthvector4) | No | No | Rotation quaternion of the camera, represented as (x, y, z, w). Unitless. |
+| position | [DepthVector3](ts-universal-attributes-spatial-effect-sys.md#depthvector3) | No | No | Position of the camera in 3D space, without a unit. The value indicates the coordinates in 3D space. |
+| quaternion | [DepthVector4](ts-universal-attributes-spatial-effect-sys.md#depthvector4) | No | No | Rotation quaternion of the camera, represented as (x, y, z, w). There is no unit. |
 | yFov | number | No | No | Vertical field of view of the camera, in radians. |
-| zNear | number | No | No | Distance to the near clipping plane. Unitless. Must be a positive number. |
-| zFar | number | No | No | Distance to the far clipping plane. Unitless. Must be a positive number. |
-| cameraBufferCrop | [CameraBufferCrop](#camerabuffercrop) | No | Yes | Tilt-shift crop parameters of the camera. If not set, the component layout size is used as the default image reference size, the crop offset is (0, 0), and the scale is 1.0. |
+| zNear | number | No | No | Distance to the near clipping plane, without a unit. The value must be a positive number. |
+| zFar | number | No | No | Distance to the far clipping plane, without a unit. The value must be a positive number. |
+| cameraBufferCrop | [CameraBufferCrop](#camerabuffercrop) | No | Yes | Camera buffer crop parameters. If not set, the component layout size is used as the default image reference size, with a crop offset of (0, 0) and a scale factor of 1.0. |
 
 ## CameraBufferCrop
 
@@ -270,16 +270,16 @@ Provides camera buffer crop parameters.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System API**: This is a system API.
 
 | Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| bufferWidth | number | No | No | Width of the base image. Unit: Pixel. Ensure that the width of the input image is consistent with the actual image width; otherwise, display exceptions such as position offset may occur. |
-| bufferHeight | number | No | No | Height of the base image. Unit: Pixel. Ensure that the height of the input image is consistent with the actual image height; otherwise, display exceptions such as position offset may occur. |
-| cropOffset | [CropOffset](#cropoffset) | No | No | Offset of the crop area. |
-| cropScale | number | No | No | Scale ratio of the crop area. The base size of the crop area is the size of the DepthComponent. |
+| bufferWidth | number | No | No | Width of the base image, in pixels. Ensure that the width of the input image is consistent with the actual image width; otherwise, display exceptions such as position offset may occur. |
+| bufferHeight | number | No | No | Height of the base image, in pixels. Ensure that the height of the input image is consistent with the actual image height; otherwise, display exceptions such as position offset may occur. |
+| cropOffset | [CropOffset](#cropoffset) | No | No | Crop offset. |
+| cropScale | number | No | No | Scale factor of the crop area. The base size of the crop area is the size of the **DepthComponent** component. |
 
 ## CropOffset
 
@@ -291,7 +291,7 @@ Provides crop offset.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System API**: This is a system API.
 
@@ -310,15 +310,15 @@ Provides lighting parameters.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System API**: This is a system API.
 
 | Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| direction | [DepthVector3](ts-universal-attributes-spatial-effect-sys.md#depthvector3) | No | No | Lighting direction vector. Unitless. Its value represents the coordinates in 3D space. |
+| direction | [DepthVector3](ts-universal-attributes-spatial-effect-sys.md#depthvector3) | No | No | Lighting direction vector, without a unit. The value indicates the coordinates in 3D space. |
 | color | [DepthColorRGB](ts-universal-attributes-spatial-effect-sys.md#depthcolorrgb) | No | No | Lighting color. |
-| intensity | number | No | No | Lighting intensity. Unitless. Value range: [0, +∞).<br>Recommended value range: [0, 1]. When set to 0, there is no lighting. |
+| intensity | number | No | No | Lighting intensity, without a unit. The value range is [0, +∞).<br>The recommended value range is [0, 1]. When set to 0, there is no light. |
 
 ## DepthComponentCompleteCallback
 
@@ -332,7 +332,7 @@ type DepthComponentCompleteCallback = (event: DepthComponentCompleteEvent) => vo
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System API**: This is a system API.
 
@@ -340,7 +340,7 @@ type DepthComponentCompleteCallback = (event: DepthComponentCompleteEvent) => vo
 
 | Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| event | [DepthComponentCompleteEvent](#depthcomponentcompleteevent) | Yes | Event information of the background resource load success. |
+| event | [DepthComponentCompleteEvent](#depthcomponentcompleteevent) | Yes | Event information about the successful loading of the background resource. |
 
 ## DepthComponentCompleteEvent
 
@@ -352,14 +352,14 @@ Provides the event information about the successful loading of the background re
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System API**: This is a system API.
 
 | Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| componentWidth | number | Yes | No | Component width, in vp. |
-| componentHeight | number | Yes | No | Component height, in vp. |
+| componentWidth | number | Yes | No | Width of the component, in vp. |
+| componentHeight | number | Yes | No | Height of the component, in vp. |
 
 ## DepthComponentErrorCallback
 
@@ -373,7 +373,7 @@ type DepthComponentErrorCallback = (error: DepthComponentErrorEvent) => void
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System API**: This is a system API.
 
@@ -381,7 +381,7 @@ type DepthComponentErrorCallback = (error: DepthComponentErrorEvent) => void
 
 | Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| error | [DepthComponentErrorEvent](#depthcomponenterrorevent) | Yes | Event information about the failure to load the background resource. |
+| error | [DepthComponentErrorEvent](#depthcomponenterrorevent) | Yes | Event information about the background resource load failure. |
 
 ## DepthComponentErrorEvent
 
@@ -393,7 +393,7 @@ Provides the event information about the background resource load failure.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System API**: This is a system API.
 
@@ -420,7 +420,7 @@ import { colorSpaceManager } from '@kit.ArkGraphics2D';
 struct DepthComponentInstanceExample {
   build() {
     Column() {
-      // Replace with actual resource files.
+      // Replace it with the resource file you use.
       DepthComponent($r('app.media.background'), {
         colorSpace: colorSpaceManager.ColorSpace.DISPLAY_P3
       }) {
@@ -439,7 +439,7 @@ struct DepthComponentInstanceExample {
         .width('100%')
         .height('100%')
         .depthMap($r('app.media.depth_map'), (error: BusinessError<void>) => {
-          // Replace with actual resource files.
+          // Replace it with the resource file you use.
           if (error && error.code !== 0) {
             console.error(`Depth map load failed: ${error.code} - ${error.message}`);
           } else {
@@ -488,7 +488,7 @@ This example demonstrates how to implement occlusion of part of the text by an i
 struct DepthComponentInstanceExample {
   build() {
     Column() {
-      // Replace with actual resource files.
+      // Replace it with the resource file you use.
       DepthComponent($r('app.media.background')) {
         Text('Spatial Effect')
           .fontSize(100)
@@ -499,7 +499,7 @@ struct DepthComponentInstanceExample {
       }
         .width('100%')
         .height('100%')
-        .depthMap($r('app.media.depth_map')) // Replace with actual resource files.
+        .depthMap($r('app.media.depth_map')) // Replace it with the resource file you use.
         .camera({
           position: { x: 0, y: 0, z: 0 },
           quaternion: { x: 0, y: 0, z: 0, w: 1 },
@@ -533,7 +533,7 @@ Since API version 26.0.0, the **cameraBufferCrop** attribute of **DepthCameraPar
 struct DepthComponentInstanceExample {
   build() {
     Column() {
-      // Replace with the actual resource file.
+      // Replace it with the resource file you use.
       DepthComponent($r('app.media.background')) {
         Text('Spatial Effect')
           .fontSize(100)
@@ -544,7 +544,7 @@ struct DepthComponentInstanceExample {
       }
         .width('100%')
         .height('100%')
-        .depthMap($r('app.media.depth_map')) // Replace with the actual resource file.
+        .depthMap($r('app.media.depth_map')) // Replace it with the resource file you use.
         .camera({
           position: { x: 0, y: 0, z: 0 },
           quaternion: { x: 0, y: 0, z: 0, w: 1 },
@@ -552,8 +552,8 @@ struct DepthComponentInstanceExample {
           zNear: 0.1,
           zFar: 100,
           cameraBufferCrop: {
-            bufferWidth: 1262,       // Width of the reference image.
-            bufferHeight: 2560,      // Height of the reference image.
+            bufferWidth: 1262,       // Width of the base image.
+            bufferHeight: 2560,      // Height of the base image.
             cropOffset: { x: 100.0, y: 100.0 },
             cropScale: 0.65
           }

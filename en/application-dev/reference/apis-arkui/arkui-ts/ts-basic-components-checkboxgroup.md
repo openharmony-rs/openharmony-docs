@@ -5,9 +5,9 @@
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=ecf5d58a25055daa53a34747272770e0f3c1f57a translatedAt=2026-09-03T03:47:09.138Z -->
+<!-- md-trans-meta sourceCommit=ecf5d58a25055daa53a34747272770e0f3c1f57a translatedAt=2026-09-03T03:47:09.138Z pushedAt=2026-09-07T03:48:27.366Z -->
 
-A check box group used to control the select-all or deselect-all state of check boxes. It is suitable for scenarios where the selection states of multiple **Checkbox** components need to be managed in batches, such as batch selection of list items and select-all in forms, simplifying user operations and improving the interaction experience.
+The **CheckboxGroup** component is used control the select-all or deselect-all state of check boxes. It is suitable for scenarios where the selection states of multiple **Checkbox** components need to be managed in batches, such as batch selection of list items and select-all in forms, simplifying user operations and improving the interaction experience.
 
 >  **NOTE**
 >
@@ -77,7 +77,7 @@ Since API version 18, this attribute supports two-way binding through [!!](../..
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Whether to select all.<br/>Default value: **false**<br/>If the value is **true**, all check boxes in the group are selected. If the value is **false**, all check boxes in the group are deselected.<br/>If a [Checkbox](ts-basic-components-checkbox.md) in the same group has the **select** attribute explicitly set, the **select** attribute of the Checkbox takes precedence. |
+| value  | boolean | Yes  | Whether to select all.<br/>Default value: **false**<br/>If the value is **true**, all check boxes in the group are selected. If the value is **false**, all check boxes in the group are deselected.<br/>If the [Checkbox](ts-basic-components-checkbox.md) in the same group has the **select** attribute explicitly set, the **select** attribute of the **Checkbox** takes precedence. |
 
 ### selectAll<sup>18+</sup>
 
@@ -85,7 +85,7 @@ selectAll(isAllSelected: Optional\<boolean>)
 
 Sets whether to select all. If the **select** attribute is set for a [Checkbox](ts-basic-components-checkbox.md) component in the same group, the setting of the **Checkbox** has a higher priority. Compared with [selectAll](#selectall), this API supports the **undefined** type for the **isAllSelected** parameter.
 
-When used with components that have caching functionality (such as [List](ts-container-list.md)), the selection state of uncreated check boxes must be controlled by the developer.
+When used with components that have caching functionality (such as [List](ts-container-list.md)), the selected state of uncreated check boxes must be controlled by the developer.
 
 This attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md) and [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).
 
@@ -193,7 +193,7 @@ Sets the check mark style of the check box.
 
 | Name| Type                                        | Mandatory| Description                |
 | ------ | -------------------------------------------- | ---- | -------------------- |
-| value  | [MarkStyle](ts-types.md#markstyle10) | Yes   | Style of the icon inside the check box.<br/>Abnormal values are handled based on the default value. |
+| value  | [MarkStyle](ts-types.md#markstyle10) | Yes   | Check mark style of the check box.<br/>An invalid value is handled as the default value. |
 
 ### mark<sup>18+</sup>
 
@@ -231,7 +231,7 @@ Sets the check box shape of the check box group.
 
 | Name| Type                                                 | Mandatory| Description                                                        |
 | ------ | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [CheckBoxShape](ts-appendix-enums.md#checkboxshape11) | Yes   | Sets the shape of the CheckboxGroup component, including circle and rounded square.<br/>Default value: CheckBoxShape.CIRCLE <br />**NOTE**<br/>The CheckboxGroup component is displayed in the set shape.<br/>All Checkbox components in the CheckboxGroup for which the shape type is not set separately use the same shape as the CheckboxGroup.<br/>For a Checkbox component in the CheckboxGroup for which the shape type is set separately, its own shape setting takes precedence over that of the CheckboxGroup, and it is displayed in its own shape.<br/>An invalid value is handled as the default value. |
+| value  | [CheckBoxShape](ts-appendix-enums.md#checkboxshape11) | Yes   | Check box shape of the **CheckboxGroup** component, including circle and rounded square.<br/>Default value: **CheckBoxShape.CIRCLE** <br />**Note:**<br/>The **CheckboxGroup** component is displayed in the set shape.<br/>All check boxes in the **CheckboxGroup** component for which the shape type is not set separately use the same shape as the **CheckboxGroup** component.<br/>For the check box in the **CheckboxGroup** component for which the shape type is set separately, its own shape setting takes precedence over that of the **CheckboxGroup** component, and it is displayed in its own shape.<br/>An invalid value is handled as the default value. |
 
 ### checkboxShape<sup>18+</sup>
 
@@ -251,7 +251,7 @@ Sets the check box shape of the check box group. Available options include circl
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| shape  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CheckBoxShape](ts-appendix-enums.md#checkboxshape11)> | Yes   | Sets the shape of the CheckboxGroup component, including circle and rounded square.<br/>When the value of shape is undefined, the default value is CheckBoxShape.CIRCLE.<br />**Note:**<br/>The CheckboxGroup component is displayed in the set shape.<br/>All Checkbox components in the CheckboxGroup for which the shape type is not set separately have the same shape as the CheckboxGroup.<br/>For a Checkbox component in the CheckboxGroup for which the shape type is set separately, its shape takes precedence over the CheckboxGroup setting and is displayed according to its own setting.<br/>Abnormal values are handled as the default value. |
+| shape  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CheckBoxShape](ts-appendix-enums.md#checkboxshape11)> | Yes   | Check box shape of the check box group, including circle and rounded square.<br/>When the value of **shape** is **undefined**, the default value is **CheckBoxShape.CIRCLE**.<br />**Note:**<br/>The **CheckboxGroup** component is displayed in the set shape.<br/>All check boxes in the **CheckboxGroup** component for which the shape type is not set separately use the same shape as the **CheckboxGroup** component.<br/>For the check box in the **CheckboxGroup** component for which the shape type is set separately, its own shape setting takes precedence over that of the **CheckboxGroup** component, and it is displayed in its own shape.<br/>An invalid value is handled as the default value. |
 
 ### contentModifier<sup>21+</sup>
 
@@ -283,9 +283,9 @@ In addition to the [universal events](ts-component-general-events.md), the follo
 
 onChange(callback: OnCheckboxGroupChangeCallback)
 
-Triggered when the selection state of the **CheckboxGroup** or of a **Checkbox** within the group changes. When used with components that support caching, such as [List](ts-container-list.md), note the impact of the selection states of **Checkbox** components that have not been created on the callback result.
+Triggered when the selected state of the **CheckboxGroup** component or of the check box within the group changes. When this event is used with components that support caching, such as [List](ts-container-list.md), note the impact of the selected state of the check box that has not been created on the callback result.
 
-**Widget capability**: Since API version 9, this feature is supported in ArkTS widgets.
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -301,7 +301,7 @@ Triggered when the selection state of the **CheckboxGroup** or of a **Checkbox**
 
 onChange(callback: Optional\<OnCheckboxGroupChangeCallback>)
 
-Triggered when the selection state of the **CheckboxGroup** or of a **Checkbox** within the group changes. Compared with [onChange](#onchange), the **callback** parameter additionally supports the **undefined** type. When used with components that support caching, such as [List](ts-container-list.md), note the impact of the selection states of **Checkbox** components that have not been created on the callback result.
+Triggered when the selected state of the **CheckboxGroup** component or of the checkbox within the group changes. Compared with [onChange](#onchange), the **callback** parameter additionally supports the **undefined** type. When this event is used with components that support caching, such as [List](ts-container-list.md), note the impact of the selected states of the check box that has not been created on the callback result.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -350,11 +350,11 @@ Name and status of a check box group.
 | Name   | Type  | Read-Only| Optional| Description     |
 | ------ | ------ | ------- | ------- | ------- |
 | name   | Array&lt;string&gt; | No| No| Names of all the selected check boxes in the group.|
-| status | [SelectStatus](#selectstatus) | No | No | Selected state of the checkbox group. |
+| status | [SelectStatus](#selectstatus) | No | No | Selected state of the check box in the group. |
 
 ## SelectStatus
 
-Enumerates the selection states of check boxes in the check box group.
+Enumerates the selected states of check boxes in the check box group.
 
 **Widget capability**: Since API version 9, this feature is supported in ArkTS widgets.
 
@@ -380,7 +380,7 @@ You must customize this class to implement the ContentModifier interface. For de
 
 | Name| Type   |    Read-Only   |    Optional     |  Description             |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
-| name | string | No | No | Name of the current checkbox group, used to identify and associate Checkbox with CheckboxGroup. When the value is the same as the group attribute of Checkbox, they belong to the same group. |
+| name | string | No | No | Name of the current check box group, used to identify and associate **Checkbox** with **CheckboxGroup**. When the value is the same as the **group** attribute of **Checkbox**, they are the same group. |
 | status | [SelectStatus](#selectstatus) | No| No| Selected status of the check box group.|
 | triggerChange |Callback\<boolean>| No| No|Triggers a change in the selection state of the check box group. The value true indicates that the selected status changes from partially selected or unselected to fully selected, and the value false indicates that the selected status changes from fully selected or partially selected to fully unselected.|
 
@@ -388,7 +388,7 @@ You must customize this class to implement the ContentModifier interface. For de
 
 ### Example 1: Setting a Check Box Group
 
-This example controls the select-all or deselect-all state of a check box group.
+This example demonstrates how to control the select-all or deselect-all state of a check box group.
 
 ```ts
 // xxx.ets
@@ -398,7 +398,7 @@ struct CheckboxExample {
   build() {
     Scroll() {
       Column() {
-        // Checkbox group
+        // Check box group
         Flex({ justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center }) {
           CheckboxGroup({ group: 'checkboxGroup' })
             .checkboxShape(CheckBoxShape.ROUNDED_SQUARE)
@@ -409,7 +409,7 @@ struct CheckboxExample {
           Text('Select All').fontSize(14).lineHeight(20).fontColor('#182431').fontWeight(500)
         }
 
-        // Checkbox 1
+        // Check box 1
         Flex({ justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center }) {
           Checkbox({ name: 'checkbox1', group: 'checkboxGroup' })
             .selectedColor('#007DFF')
@@ -420,7 +420,7 @@ struct CheckboxExample {
           Text('Checkbox1').fontSize(14).lineHeight(20).fontColor('#182431').fontWeight(500)
         }.margin({ left: 36 })
 
-        // Checkbox 2
+        // Check box 2
         Flex({ justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center }) {
           Checkbox({ name: 'checkbox2', group: 'checkboxGroup' })
             .selectedColor('#007DFF')
@@ -431,7 +431,7 @@ struct CheckboxExample {
           Text('Checkbox2').fontSize(14).lineHeight(20).fontColor('#182431').fontWeight(500)
         }.margin({ left: 36 })
 
-        // Checkbox 3
+        // Check box 3
         Flex({ justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center }) {
           Checkbox({ name: 'checkbox3', group: 'checkboxGroup' })
             .selectedColor('#007DFF')
@@ -450,7 +450,7 @@ struct CheckboxExample {
 
 ### Example 2: Customizing Check Mark Style
 
-This example customizes the check mark style of a check box group by configuring the **mark** attribute of **CheckboxGroup**.
+This example shows how to customize the check mark style of a check box group by setting the **mark** attribute of **CheckboxGroup**.
 
 ```ts
 // xxx.ets
@@ -529,7 +529,7 @@ struct Index {
 
 ### Example 3: Customizing Check Box Group Style
 
-This example customizes the style of a check box group through the [contentModifier](#contentmodifier21) attribute. The custom style implements a pentagonal check box group. If all check boxes are selected, a red triangle pattern appears inside and the title displays "Select all"; if some are selected, the triangle pattern turns blue and the title displays "Partially selected"; if none are selected, the triangle pattern disappears and the title displays "Not selected".
+This example demonstrates how to customize the style of a check box group through the [contentModifier](#contentmodifier21) attribute. The custom style implements a pentagonal check box group. If all check boxes are selected, a red triangle pattern is displayed inside and the title displays "fully selected"; if some are selected, the triangle pattern turns blue and the title displays "partially selected"; if none are selected, the triangle pattern is hidden and the title displays "unselected".
 
 The **contentModifier** attribute is supported since API version 21.
 
@@ -651,7 +651,7 @@ struct Index {
 
 ### Example 4: Implementing the Select-All Functionality
 
-This example demonstrates manually controlling the selection state of **Checkbox** components that have not been created when used with components that support caching, such as **List**.
+This example demonstrates how to manually control the selected state of the check box that has not been created when used with components that support caching, such as **List**.
 
 ```ts
 class BasicDataSource implements IDataSource {

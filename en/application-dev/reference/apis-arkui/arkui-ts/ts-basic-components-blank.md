@@ -5,7 +5,7 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=75a7d62c0702c21a06ca0119552a942305a023cc translatedAt=2026-09-03T03:45:18.529Z -->
+<!-- md-trans-meta sourceCommit=75a7d62c0702c21a06ca0119552a942305a023cc translatedAt=2026-09-03T03:45:18.529Z pushedAt=2026-09-07T03:00:52.615Z -->
 
 The **Blank** component is a spacer in the layout, automatically filling the remaining space along the main axis of its parent container. It works only when the parent component is [Row](ts-container-row.md), [Column](ts-container-column.md), or [Flex](ts-container-flex.md).
 
@@ -128,7 +128,7 @@ struct BlankExample {
   }
 }
 ```
-If the width of the parent container is not set, set **min** to specify the minimum width of the **Blank** component.
+If the width of the parent container is not set, there is no blank space between child components. Set **min** to specify the minimum width of the **Blank** component.
 
 ![blankmin](figures/blankmin.png)
 
