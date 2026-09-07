@@ -81,7 +81,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { media } from '@kit.MediaKit';
 import { image } from '@kit.ImageKit';
 
-async function test() {
+async function test(context: Context) {
   // 创建转码实例。
   let avTranscoder = await media.createAVTranscoder();
   
@@ -94,6 +94,24 @@ async function test() {
       height: 300,
   };
 
+  // 获取资源管理器。
+  let resourceManager = context.resourceManager;
+  // 获取rawfile中水印图片的描述符，'img.png'可替换为实际水印图片文件名。
+  let rawFileDescriptor = resourceManager.getRawFdSync('img.png');
+  // 根据文件描述符创建ImageSource。
+  let watermarkImageSource = image.createImageSource(rawFileDescriptor.fd);
+
+  // 创建水印PixelMap。
+  const decodingOptions: image.DecodingOptions = {
+    // 可编辑像素。
+    editable: true,
+    // 像素格式。
+    desiredPixelFormat: image.PixelMapFormat.RGBA_8888,
+  };
+  const watermarkPixelMap = await watermarkImageSource.createPixelMap(decodingOptions);
+  console.info('PixelMap created for watermark');
+
+  // 添加水印。
   avTranscoder.addWatermark(watermarkPixelMap, watermarkConfig).then((watermarkId: number) => {
     console.info('addWatermark success, watermarkId: ' + watermarkId);
   }).catch((err: BusinessError) => {
