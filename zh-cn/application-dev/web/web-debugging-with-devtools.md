@@ -86,26 +86,16 @@ ArkTS-Sta示例：
        >  代码中使用的8888端口仅作为示例展示，开发者使用过程中，应保证端口号可以被应用使用。如果因为端口被占用或者应用无权限使用等因素导致端口无法被应用使用，会导致接口抛出异常或者ArkWeb无法开启调试模式。
    2. 开启调试功能需要在DevEco Studio应用工程hap模块的module.json5文件中增加如下权限，添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
-ArkTS-Dyn示例：
+
 <!-- @[web_Debugging_Permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/module.json5) -->
-       ``` JSON5
-        "requestPermissions":[
-          {
-            "name" : "ohos.permission.INTERNET"
-          }
-        ]
-        ```
+``` JSON5
+"requestPermissions":[
+  {
+    "name" : "ohos.permission.INTERNET"
+  }
+]
+```
 
-        ArkTS-Sta示例：
-        <!-- @[web_Debugging_Permissions](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebDebuggingWithDevtools/entry/src/main/module.json5) -->
-
-        ``` JSON5
-        "requestPermissions":[
-          {
-            "name" : "ohos.permission.INTERNET"
-          }
-        ]
-        ```
 ### 在Chrome浏览器上打开调试工具页面
 
    1. 在电脑端Chrome浏览器地址栏中输入调试工具地址 chrome://inspect/\#devices 并打开该页面。  
@@ -187,27 +177,14 @@ ArkTS-Dyn示例：
 
 2. 开启调试功能需要在DevEco Studio应用工程hap模块的module.json5文件中增加如下权限，添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
-    ArkTS-Dyn示例：
-    <!-- @[web_Debugging_Permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/module.json5) -->
-    ``` JSON5
-    "requestPermissions":[
-      {
-        "name" : "ohos.permission.INTERNET"
-      }
-    ]
-    ```
-
-    ArkTS-Sta示例：
-    <!-- @[web_Debugging_Permissions](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebDebuggingWithDevtools/entry/src/main/module.json5) -->
-
-    ``` JSON5
-    "requestPermissions":[
-      {
-        "name" : "ohos.permission.INTERNET"
-      }
-    ]
-    ```
-
+<!-- @[web_Debugging_Permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/module.json5) -->
+``` JSON5
+"requestPermissions":[
+  {
+    "name" : "ohos.permission.INTERNET"
+  }
+]
+```
 
 ### 将设备连接至电脑
 
