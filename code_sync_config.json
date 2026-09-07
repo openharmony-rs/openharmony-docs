@@ -66684,5 +66684,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-immersive-light-sample.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/BestPractice.ets",
+				"functions":[
+					{
+						"end_line":87,
+						"name":"immersive_tabs",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/Utils.ets",
+				"functions":[
+					{
+						"end_line":72,
+						"name":"classify_component",
+						"start_line":37
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/GamePage.ets",
+				"functions":[
+					{
+						"end_line":130,
+						"name":"game_page",
+						"start_line":23
+					}
+				]
+			}
+		]
 	}
 ]
