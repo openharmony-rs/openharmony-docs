@@ -1455,7 +1455,7 @@ setCBConfigList\(configs: CBConfigListConfigs\): Promise\<void\>
 import { sms } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let cbConfigListConfigsLsms.CBConfigListConfigs = {
+let cbConfigListConfigs: sms.CBConfigListConfigs = {
     slotId: 0,
     messageOds: [100, 200, 300],
     ranType: sms.RanType.TYPE_GSM
