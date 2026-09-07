@@ -452,8 +452,8 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception. |
-| 6600103  | The session controller does not exist. |
+| 600101  | Session service exception. |
+| 600103  | The session controller does not exist. |
 
 **Example**
 
@@ -483,8 +483,8 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 6600101  | Session service exception. |
-| 6600103  | The session controller does not exist. |
+| 600101  | Session service exception. |
+| 600103  | The session controller does not exist. |
 
 **Example**
 
@@ -521,11 +521,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception. |
-| 6600102  | The session does not exist. |
-| 6600103  | The session controller does not exist. |
-| 6600105  | Invalid session command. |
-| 6600106  | The session is not activated. |
+| 600101  | Session service exception. |
+| 600102  | The session does not exist. |
+| 600103  | The session controller does not exist. |
+| 600105  | Invalid session command. |
+| 600106  | The session is not activated. |
 
 **Return value**
 
@@ -568,11 +568,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception. |
-| 6600102  | The session does not exist. |
-| 6600103  | The session controller does not exist. |
-| 6600105  | Invalid session command. |
-| 6600106  | The session is not activated. |
+| 600101  | Session service exception. |
+| 600102  | The session does not exist. |
+| 600103  | The session controller does not exist. |
+| 600105  | Invalid session command. |
+| 600106  | The session is not activated. |
 
 **Example**
 
