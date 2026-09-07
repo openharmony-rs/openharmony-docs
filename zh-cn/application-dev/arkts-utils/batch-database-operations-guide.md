@@ -31,7 +31,7 @@ async function create(context: Context) {
 
   // 默认数据库文件路径为 context.databaseDir + "/rdb/" + StoreConfig.name
   let store: relationalStore.RdbStore = await relationalStore.getRdbStore(context, CONFIG);
-  console.info(`Insert data successfully!`);
+  console.info(`Get Store.db successfully!`);
 
   // 创建表
   const CREATE_TABLE_SQL = 'CREATE TABLE IF NOT EXISTS test (' +
@@ -53,7 +53,7 @@ async function insert(context: Context, valueBucketArray: Array<relationalStore.
 
   // 默认数据库文件路径为 context.databaseDir + "/rdb/" + StoreConfig.name
   let store: relationalStore.RdbStore = await relationalStore.getRdbStore(context, CONFIG);
-  console.info(`Insert data successfully!`);
+  console.info(`Get Store.db successfully!`);
 
   // 数据插入
   await store.batchInsert('test', valueBucketArray as Object as Array<relationalStore.ValuesBucket>);
@@ -68,7 +68,7 @@ async function query(context: Context): Promise<Array<relationalStore.ValuesBuck
 
   // 默认数据库文件路径为 context.databaseDir + "/rdb/" + StoreConfig.name
   let store: relationalStore.RdbStore = await relationalStore.getRdbStore(context, CONFIG);
-  console.info(`Insert data successfully!`);
+  console.info(`Get Store.db successfully!`);
 
   // 获取结果集
   let predicates: relationalStore.RdbPredicates = new relationalStore.RdbPredicates('test');
@@ -198,7 +198,7 @@ struct Index {
    
      // 默认数据库文件路径为 context.databaseDir + "/rdb/" + StoreConfig.name
      let store: relationalStore.RdbStore = await relationalStore.getRdbStore(context, CONFIG);
-     console.info(`Insert data successfully!`);
+     console.info(`Get Store.db successfully!`);
    
      // 创建表
      const CREATE_TABLE_SQL = 'CREATE TABLE IF NOT EXISTS test (' +
@@ -220,7 +220,7 @@ struct Index {
    
      // 默认数据库文件路径为 context.databaseDir + "/rdb/" + StoreConfig.name
      let store: relationalStore.RdbStore = await relationalStore.getRdbStore(context, CONFIG);
-     console.info(`Insert data successfully!`);
+     console.info(`Get Store.db successfully!`);
    
      // 数据插入
      await store.batchInsert('test', valueBucketArray as Object as Array<relationalStore.ValuesBucket>);
@@ -235,7 +235,7 @@ struct Index {
    
      // 默认数据库文件路径为 context.databaseDir + "/rdb/" + StoreConfig.name
      let store: relationalStore.RdbStore = await relationalStore.getRdbStore(context, CONFIG);
-     console.info(`Insert data successfully!`);
+     console.info(`Get Store.db successfully!`);
    
      // 获取结果集
      let predicates: relationalStore.RdbPredicates = new relationalStore.RdbPredicates('test');
@@ -400,7 +400,7 @@ struct Index {
      try {
        // 默认数据库文件路径为 context.databaseDir + "/rdb/" + StoreConfig.name
        let store: relationalStore.RdbStore = await relationalStore.getRdbStore(context, CONFIG);
-       console.info('Insert data successfully!');
+       console.info('Get Store.db successfully!');
    
        // 创建表
        const CREATE_TABLE_SQL = 'CREATE TABLE IF NOT EXISTS test (' +
@@ -427,7 +427,7 @@ struct Index {
    
      // 默认数据库文件路径为 context.databaseDir + "/rdb/" + StoreConfig.name
      let store: relationalStore.RdbStore = await relationalStore.getRdbStore(context, CONFIG);
-     console.info('Insert data successfully!');
+     console.info('Get Store.db successfully!');
    
      // 数据插入
      await store.batchInsert('test', valueBucketArray as Object as Array<ValuesBucket>);
@@ -442,7 +442,7 @@ struct Index {
    
      // 默认数据库文件路径为 context.databaseDir + "/rdb/" + StoreConfig.name
      let store: relationalStore.RdbStore = await relationalStore.getRdbStore(context, CONFIG);
-     console.info('Insert data successfully!');
+     console.info('Get Store.db successfully!');
    
      // 获取用于查询的谓词
      let predicates: relationalStore.RdbPredicates = new relationalStore.RdbPredicates('test');
