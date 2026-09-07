@@ -508,7 +508,7 @@ async function test() {
   // 创建转码实例。
   let avTranscoder = await media.createAVTranscoder();
   avTranscoder.on('error', (err: BusinessError) => {
-    console.info('case avTranscoder.on(error) called, errMessage is ' + err.message);
+    console.error('case avTranscoder.on(error) called, errMessage is ' + err.message);
   });
 }
 ```
