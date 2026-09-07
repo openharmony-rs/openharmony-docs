@@ -1719,7 +1719,7 @@ Sets the touchpad pointer speed. This API uses an asynchronous callback to retur
 
 | Name      | Type                       | Mandatory  | Description                                   |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| speed | number                    | Yes   |Touchpad pointer speed The value range is [1,11]. The default value is **6**. |
+| speed | number                    | Yes   |Touchpad pointer speed The value range is [1, 11]. The default value is **6**. |
 | callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1776,7 +1776,7 @@ Sets the touchpad pointer speed. This API uses a promise to return the result.
 
 | Name   | Type    | Mandatory  | Description                                 |
 | ----- | ------ | ---- | ----------------------------------- |
-| speed| number | Yes   | Touchpad pointer speed The value range is [1,11]. The default value is **6**.   |
+| speed| number | Yes   | Touchpad pointer speed The value range is [1, 11]. The default value is **6**.   |
 
 **Return value**
 
@@ -1892,7 +1892,7 @@ Obtains the touchpad pointer speed. This API uses a promise to return the result
 
 | Type                   | Description                 |
 | --------------------- | ------------------- |
-| Promise\<number> | Promise used to return the touchpad pointer speed. The value range is [1,11].|
+| Promise\<number> | Promise used to return the touchpad pointer speed. The value range is [1, 11].|
 
 **Error codes**
 
