@@ -26,7 +26,7 @@
 import { hyperSnapManager } from '@kit.AbilityKit';
 ```
 
-## HyperSnapErrorType<sup>26.0.1</sup>
+## HyperSnapErrorType<sup>26.1.0+</sup>
 
 快启错误场景类型的枚举。
 
@@ -39,7 +39,7 @@ import { hyperSnapManager } from '@kit.AbilityKit';
 | CREATE_SNAPSHOT | 0 | 快启初始化过程中创建快照出现错误的场景类型。 |
 | FORK_FROM_SNAPSHOT | 1 | 快启过程中从快照生成进程期间发生错误的场景类型。 |
 
-## HyperSnapErrorCode<sup>26.0.1</sup>
+## HyperSnapErrorCode<sup>26.1.0+</sup>
 
 快启错误码的枚举。
 
@@ -58,7 +58,7 @@ import { hyperSnapManager } from '@kit.AbilityKit';
 | ERR_EXISTS_ILLEGAL_BINDER | 6 | 应用存在非法的Binder。 |
 | ERR_LAST_PROCESS_NOT_FULLY_EXITED | 7 | 上一个应用进程未完全退出。 |
 
-## HyperSnapErrorInfo<sup>26.0.1</sup>
+## HyperSnapErrorInfo<sup>26.1.0+</sup>
 
 描述快启的错误信息。
 
@@ -70,7 +70,7 @@ import { hyperSnapManager } from '@kit.AbilityKit';
 | -------- | -------- | -------- | -------- |
 | code | HyperSnapErrorCode | 是 | 错误码。 |
 | msg | string | 是 | 错误消息。 |
-| occurTimeStamp | number | 是 | 发生错误时的时间戳，即自Unix纪元（1970-01-01 00:00:00 UTC）以来经过的时间，单位为毫秒，取值为整数。 |
+| occurTimeStamp | ArkTs-Dyn: number<br>ArkTs-Sta: long | 是 | 发生错误时的时间戳，即自Unix纪元（1970-01-01 00:00:00 UTC）以来经过的时间，单位为毫秒，取值为整数。 |
 
 ## hyperSnapManager.setHyperSnapEnabled
 
@@ -155,7 +155,7 @@ try {
 }
 ```
 
-## hyperSnapManager.getLastError<sup>26.0.1</sup>
+## hyperSnapManager.getLastError<sup>26.1.0+</sup>
 
 getLastError(errType: HyperSnapErrorType): Promise&lt;HyperSnapErrorInfo&gt;
 
