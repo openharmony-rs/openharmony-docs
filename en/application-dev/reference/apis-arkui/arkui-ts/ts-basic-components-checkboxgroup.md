@@ -806,3 +806,5 @@ struct MyComponent {
 ```
 
 ![checkboxgroup04](figures/checkboxgroup04.gif)
+
+<!--no_check-->
