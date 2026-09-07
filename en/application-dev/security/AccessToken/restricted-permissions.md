@@ -1680,7 +1680,7 @@ Allows an application to use the aa tool to debug other applications locally in 
 
 Allows an application to use PTRACE read capabilities to obtain register and memory information of application processes.
 
-<!--RP108--><!--RP108End-->
+<!--RP110--><!--RP110End-->
 
 **Permission level**：system_basic
 
