@@ -5,7 +5,7 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=75a7d62c0702c21a06ca0119552a942305a023cc translatedAt=2026-09-03T03:53:30.367Z -->
+<!-- md-trans-meta sourceCommit=75a7d62c0702c21a06ca0119552a942305a023cc translatedAt=2026-09-03T03:53:30.367Z pushedAt=2026-09-07T08:56:56.473Z -->
 
 The **Divider** component is used to separate content blocks and content elements.
 
@@ -78,8 +78,8 @@ strokeWidth(value: number | string)
 Sets the stroke width of the divider. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 > **NOTE**
-> - The width of the divider does not support percentage settings.
-> - When a horizontal divider is used, strokeWidth controls the height, and its priority is lower than that of the universal attribute [height](ts-universal-attributes-size.md#height). When a vertical divider is used, strokeWidth controls the width, and its priority is lower than that of the universal attribute [width](ts-universal-attributes-size.md#width).
+> - The width of the divider cannot be in percentage.
+> - When a horizontal divider is used, **strokeWidth** controls the height, and its priority is lower than that of the universal attribute [height](ts-universal-attributes-size.md#height). When a vertical divider is used, **strokeWidth** controls the width, and its priority is lower than that of the universal attribute [width](ts-universal-attributes-size.md#width).
 > - If the size exceeds the value set by the universal attribute, the divider is clipped based on the universal attribute.
 > - If the divider is not displayed due to 1-pixel rounding on the device hardware, 2 pixels are recommended.
 
@@ -93,7 +93,7 @@ Sets the stroke width of the divider. This attribute can be dynamically set usin
 
 | Name| Type                      | Mandatory| Description                                                        |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;string | Yes   | Divider width.<br/>Default value: 1px  <br />Invalid values: handled based on default values. <br/>Unit: vp |
+| value  | number&nbsp;\|&nbsp;string | Yes   | Stroke width of the divider.<br/>Default value: **1px**  <br />Invalid values are treated as the default value. <br/>Unit: vp |
 
 ### lineCap
 
