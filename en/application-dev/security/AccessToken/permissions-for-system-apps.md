@@ -341,9 +341,11 @@ Allows a system application to obtain theme skinning resources in the skin direc
 
 **Certificate-based authorization**: true
 
-**Supported devices**: phones | PCs/2-in-1 devices | tablets
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | cars
 
 **Valid since**: 20
+
+**Changelog**: Since API version 26.0.1, this permission is also available on car.
 
 ## ohos.permission.READ_ACCESSIBILITY_CONFIG
 
