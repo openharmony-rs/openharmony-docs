@@ -1,4 +1,4 @@
-#  @ohos.multimodalInput.shortKey (系统预置全局快捷键)(系统接口)
+# @ohos.multimodalInput.shortKey (系统预置全局快捷键)(系统接口)
 
 <!--Kit: Input Kit-->
 <!--Subsystem: MultimodalInput-->
@@ -16,13 +16,13 @@
 > - 本模块接口为系统接口。
 
 
-##  导入模块
+## 导入模块
 
 ```js
 import { shortKey, FingerprintEvent } from '@kit.InputKit';
 ```
 
-##  shortKey.setKeyDownDuration
+## shortKey.setKeyDownDuration
 
 setKeyDownDuration(businessKey: string, delay: number, callback: AsyncCallback&lt;void&gt;): void
 
