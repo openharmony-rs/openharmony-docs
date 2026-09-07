@@ -157,7 +157,7 @@ try {
 
 ## hyperSnapManager.getLastError<sup>26.1.0+</sup>
 
-getLastError(errType: HyperSnapErrorType): Promise<HyperSnapErrorInfo>
+getLastError(errType: HyperSnapErrorType): Promise&lt;HyperSnapErrorInfo&gt;
 
 获取指定场景下当前应用的最后一次快启错误信息。
 
