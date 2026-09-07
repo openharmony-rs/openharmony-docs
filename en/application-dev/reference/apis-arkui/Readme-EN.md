@@ -228,7 +228,7 @@
       - [Toolbar Configuration](arkui-ts/ts-universal-attributes-toolbar.md)
   - Gesture Handling<!--gesture-handling-->
     - Gesture Binding<!--gesture-binding-->
-      - [Gesture Binding Methods](arkui-ts/ts-gesture-settings.md)
+      - [Binding Gesture Events](arkui-ts/ts-gesture-settings.md)
       - [Bound Gesture Configuration](arkui-ts/ts-uigestureevent.md)
       - [Gesture Handler](arkui-ts/ts-gesturehandler.md)
     - Basic Gestures<!--basic-gestures-->
