@@ -16,7 +16,7 @@ Use this module to subscribe to sensor data when your app needs to detect the de
 >
 > The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version. Before subscribing to sensor data, call [getSingleSensor](#sensorgetsinglesensor9) to obtain the target sensor. For details about how to use the API, see [Sensor Development](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/sensor-guidelines#how-to-develop). If any error occurs, see the error code description of the API. When you subscribe to the sensor data, ensure that the **on** and **off** APIs are used in pairs.
 
-The **sensor** module provides APIs fpr subscribing to and querying sensor data. The core process is as follows:
+The **sensor** module provides APIs for subscribing to and querying sensor data. The core process is as follows:
 
 1. Use [sensor.getSingleSensor](#sensorgetsinglesensor9) or [sensor.getSensorListSync](#sensorgetsensorlistsync12) to query sensor information and ensure that the device supports the target sensor.
 2. Use **sensor.on** to subscribe to sensor data and continuously receive data callbacks.
