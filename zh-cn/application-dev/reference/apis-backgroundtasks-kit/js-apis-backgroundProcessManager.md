@@ -153,8 +153,8 @@ ArkTS-Sta: setPowerSaveMode(pid: int, powerSaveMode: PowerSaveMode): Promise&lt;
 
 | 错误码ID    | 错误信息             |
 |----------|------------------|
-| 201      | Permission denied. |
-| 801      | Capability not supported. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 31800002      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. PowerSaveMode status is out of range. |
 | 31800003      | Setup error, This setting is overridden by settings in Task Manager |
 | 31800004      | The setting failed due to system scheduling reasons. |
@@ -213,8 +213,8 @@ ArkTS-Sta: isPowerSaveMode(pid: int): Promise&lt;boolean&gt;
 
 | 错误码ID    | 错误信息             |
 |----------|------------------|
-| 201      | Permission denied. |
-| 801      | Capability not supported. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 31800002      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types. |
 
 **示例：**
@@ -271,8 +271,8 @@ ArkTS-Sta: getPowerSaveMode(pid: int): Promise&lt;PowerSaveMode&gt;
 
 | 错误码ID    | 错误信息             |
 |----------|------------------|
-| 201      | Permission denied. |
-| 801      | Capability not supported. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 31800002      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types. |
 
 **示例：**

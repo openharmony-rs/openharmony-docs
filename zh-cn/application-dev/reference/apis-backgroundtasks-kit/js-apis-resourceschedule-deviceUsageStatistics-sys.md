@@ -43,10 +43,10 @@ isIdleState(bundleName: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.         |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -95,10 +95,10 @@ isIdleState(bundleName: string): Promise&lt;boolean&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.         |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -145,10 +145,10 @@ isIdleStateSync(bundleName: string): boolean
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.         |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -184,9 +184,9 @@ queryAppGroup(): Promise&lt;number&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -230,10 +230,10 @@ queryAppGroup(callback: AsyncCallback&lt;number&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -279,9 +279,9 @@ queryAppGroupSync(): number
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -326,10 +326,10 @@ queryAppGroup(bundleName : string): Promise&lt;number&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -376,10 +376,10 @@ queryAppGroup(bundleName : string, callback: AsyncCallback&lt;number&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -432,10 +432,10 @@ queryAppGroupSync(bundleName: string): number
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -481,10 +481,10 @@ setAppGroup(bundleName: string, newGroup: GroupType): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -532,10 +532,10 @@ setAppGroup(bundleName: string, newGroup: GroupType, callback: AsyncCallback&lt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -585,10 +585,10 @@ queryBundleStatsInfos(begin: number, end: number, callback: AsyncCallback&lt;Bun
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -641,10 +641,10 @@ queryBundleStatsInfos(begin: number, end: number): Promise&lt;BundleStatsMap&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -695,10 +695,10 @@ queryAppStatsInfos(begin: number, end: number): Promise&lt;AppStatsMap&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -748,10 +748,10 @@ queryLastUseTime(appInfo: Record&lt;string, Array&lt;number&gt;&gt;): Promise&lt
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -799,10 +799,10 @@ queryBundleStatsInfoByInterval(byInterval: IntervalType, begin: number, end: num
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -859,10 +859,10 @@ queryBundleStatsInfoByInterval(byInterval: IntervalType, begin: number, end: num
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -911,10 +911,10 @@ queryBundleEvents(begin: number, end: number, callback: AsyncCallback&lt;Array&l
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -977,8 +977,8 @@ queryBundleEvents(begin: number, end: number, maxNum: number): Promise&lt;Array&
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1032,10 +1032,10 @@ queryBundleEvents(begin: number, end: number): Promise&lt;Array&lt;BundleEvents&
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1082,9 +1082,9 @@ queryCurrentBundleEvents(begin: number, end: number, callback: AsyncCallback&lt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | Not System App. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1145,7 +1145,7 @@ queryCurrentBundleEvents(begin: number, end: number, maxNum: number): Promise&lt
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | Not System App. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1198,9 +1198,9 @@ queryCurrentBundleEvents(begin: number, end: number): Promise&lt;Array&lt;Bundle
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | Not System App. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1254,10 +1254,10 @@ queryDeviceEventStats(begin: number, end: number): Promise&lt;Array&lt;DeviceEve
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1303,10 +1303,10 @@ queryDeviceEventStats(begin: number, end: number, callback: AsyncCallback&lt;Arr
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1359,10 +1359,10 @@ queryNotificationEventStats(begin: number, end: number): Promise&lt;Array&lt;Dev
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1408,10 +1408,10 @@ queryNotificationEventStats(begin: number, end: number, callback: AsyncCallback&
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1459,10 +1459,10 @@ queryModuleUsageRecords(): Promise&lt;Array&lt;HapModuleInfo&gt;&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1510,10 +1510,10 @@ queryModuleUsageRecords(callback: AsyncCallback&lt;Array&lt;HapModuleInfo&gt;&gt
 
 | 错误码ID        | 错误信息                       |
 | ---------- | ----------------------------       |
-| 201  | Permission denied. |
-| 202  | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1568,10 +1568,10 @@ queryModuleUsageRecords(maxNum: number): Promise&lt;Array&lt;HapModuleInfo&gt;&g
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1619,10 +1619,10 @@ queryModuleUsageRecords(maxNum: number, callback: AsyncCallback&lt;Array&lt;HapM
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1677,10 +1677,10 @@ registerAppGroupCallBack(groupCallback: Callback&lt;AppGroupCallbackInfo&gt;): P
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1732,10 +1732,10 @@ registerAppGroupCallBack(groupCallback: Callback&lt;AppGroupCallbackInfo&gt;, ca
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1788,10 +1788,10 @@ unregisterAppGroupCallBack(): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1833,10 +1833,10 @@ unregisterAppGroupCallBack(callback: AsyncCallback&lt;void&gt;): void;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |

@@ -57,7 +57,7 @@ ArkTS-Sta: publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | If the input parameter is not valid parameter. |
 | 1700001    | Notification is not enabled. |
 | 1700002    | The number of reminders exceeds the limit. |
@@ -147,7 +147,7 @@ ArkTS-Sta: publishReminder(reminderReq: ReminderRequest): Promise\<int>
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | If the input parameter is not valid parameter. |
 | 1700001    | Notification is not enabled. |
 | 1700002    | The number of reminders exceeds the limit. |
@@ -838,7 +838,7 @@ getAllValidReminders(): Promise\<Array\<ReminderInfo>>
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例：**
 
@@ -900,7 +900,7 @@ ArkTS-Sta: addExcludeDate(reminderId: int, date: Date): Promise\<void>
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
-| 201      | Permission denied.                             |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | If the input parameter is not valid parameter. |
 | 1700003  | The reminder does not exist.                   |
 
@@ -967,7 +967,7 @@ ArkTS-Sta: deleteExcludeDates(reminderId: int): Promise\<void>
 
 | 错误码ID | 错误信息                     |
 | -------- | ---------------------------- |
-| 201      | Permission denied.           |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 1700003  | The reminder does not exist. |
 
 **示例：**
@@ -1031,7 +1031,7 @@ ArkTS-Sta: getExcludeDates(reminderId: int): Promise\<Array\<Date>>
 
 | 错误码ID | 错误信息                     |
 | -------- | ---------------------------- |
-| 201      | Permission denied.           |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 1700003  | The reminder does not exist. |
 
 **示例：**
@@ -1101,7 +1101,7 @@ ArkTS-Sta: updateReminder(reminderId: int, reminderReq: ReminderRequest): Promis
 
 | 错误码ID | 错误信息                     |
 | -------- | ---------------------------- |
-| 201      | Permission denied.           |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 1700003  | The reminder does not exist. |
 | 1700007  | If the input parameter is not valid parameter. |
 
@@ -1242,7 +1242,7 @@ subscribeReminderState(callback: Callback\<Array\<ReminderState>>): Promise\<voi
 
 | 错误码ID | 错误信息                     |
 | -------- | ---------------------------- |
-| 201      | Permission denied.           |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 1700007  | If the input parameter is not valid parameter. |
 
 **示例：**
@@ -1511,10 +1511,10 @@ reminderAgentManager.unsubscribeReminderState(reminderStateCallback).then(() => 
 | snoozeContentResourceId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 是 | 指明延时提醒内容的资源ID，通过`$r(资源名称).id`方法获取。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23 |
 | notificationId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 是 | 指明提醒使用的通知的id号，需开发者传入，相同id号的提醒会覆盖，默认值为0。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
 | groupId | string | 否 | 是 | 指明提醒使用相同的组id。相同组id中，一个提醒被点击不再提醒后，组内其他提醒也会被取消。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
-| slotType | [notification.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | 否 | 是 | 指明提醒的通道渠道类型。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| slotType | [notification.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | 否 | 是 | 指明提醒的通知渠道类型。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
 | tapDismissed | boolean | 否 | 是 | 通知是否自动清除，默认值为true，具体请参考[NotificationRequest.tapDismissed](../apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)。<br> - true：点击通知消息或通知按钮后，自动删除当前通知。<br> - false：点击通知消息或通知按钮后，保留当前通知。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23 |
 | autoDeletedTime | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否 | 是 | 自动清除的时间。<br> 数据格式：时间戳，单位：ms，具体请参考[NotificationRequest.autoDeletedTime](../apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23 |
-| snoozeSlotType | [notification.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | 否 | 是 | 指明延时提醒的通道渠道类型（不适用于倒计时提醒类型）。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| snoozeSlotType | [notification.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | 否 | 是 | 指明延时提醒的通知渠道类型（不适用于倒计时提醒类型）。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
 | customRingUri | string | 否 | 是 | 指明自定义提示音的uri，提示音文件必须放在resources/rawfile目录下，支持m4a、aac、mp3、ogg、wav、flac、amr等格式。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
 | ringChannel | [RingChannel](#ringchannel) | 否 | 是 | 指明自定义提示音的音频播放通道，默认为闹钟通道。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23 |
 | fixedTimeZone | [TimeZoneType](#timezonetype) | 否 | 是 | 时区类型，默认为TimeZoneType.DEFAULT。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br> **ArkTS-Sta起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
