@@ -73,7 +73,7 @@ SSAP服务端管理功能，完整的API说明以及示例代码请参考：[@oh
     }
     ```
 
-4. 添加服务端支持的服务。服务与属性使用自定义UUID（禁止使用标准UUID），参见[星闪常见问题 > 标准UUID与自定义UUID有什么区别](nearlink-faq-guide.md#标准uuid与自定义uuid有什么区别)；支持通知的属性需声明客户端属性值配置描述符，参见[星闪常见问题 > SSAP属性描述符的作用](nearlink-faq-guide.md#ssap属性描述符的作用)。服务添加成功后，服务端设备不会自动对外广播，需调用[advertising.startAdvertising()](../../reference/apis-connectivity-kit/js-apis-nearlink-advertising.md#advertisingstartadvertising)发起广播（参见[发现星闪设备 > 发起星闪广播](nearlink-device-discovery-guide.md#发起星闪广播)），客户端才能通过扫描发现服务端设备。
+4. 添加服务端支持的服务。服务与属性使用自定义UUID（禁止使用标准UUID），参见[星闪常见问题 > 标准UUID与自定义UUID有什么区别](nearlink-faq-guide.md#标准uuid与自定义uuid有什么区别)；支持通知的属性需声明客户端属性值配置描述符，参见[星闪常见问题 > SSAP属性描述符的作用](nearlink-faq-guide.md#ssap属性描述符的作用)。若需客户端通过扫描发现服务端并建立连接，服务端需调用[advertising.startAdvertising()](../../reference/apis-connectivity-kit/js-apis-nearlink-advertising.md#advertisingstartadvertising)主动发起广播，参见[发现星闪设备 > 发起星闪广播](nearlink-device-discovery-guide.md#发起星闪广播)。
 
     <!-- @[ssap_server_add_service](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapServerPage.ets) -->
 
