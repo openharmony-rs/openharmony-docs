@@ -288,6 +288,34 @@
    ArkTS-Sta示例：
 
    <!-- @[audioSessionManager_setMediaOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceSwitcher.ets) -->
+   
+   ``` TypeScript
+   import { audio } from '@kit.AudioKit';
+   // ...
+   
+   let audioManager = audio.getAudioManager();
+   let audioSessionManager = audioManager.getSessionManager();
+   // ...
+   
+     // 连接蓝牙耳机后，强制将媒体输出设备切换为扬声器。
+     audioSessionManager.setMediaOutputDevice(audio.DeviceType.SPEAKER).then(() => {
+       console.info('Succeeded in setting media output device to speaker.');
+       // ...
+     }).catch((err) => {
+       console.error(`Failed to set media output device. Code: ${err.code}, message: ${err.message}`);
+       // ...
+     });
+     // ...
+   
+     // 取消强制切换，将媒体输出设备选择权交还给系统默认路由策略。
+     audioSessionManager.setMediaOutputDevice(audio.DeviceType.DEFAULT).then(() => {
+       console.info('Succeeded in setting media output device to default.');
+       // ...
+     }).catch((err) => {
+       console.error(`Failed to set media output device. Code: ${err.code}, message: ${err.message}`);
+       // ...
+     });
+   ```
 
 ## PC/2in1设备输出设备切换
 
