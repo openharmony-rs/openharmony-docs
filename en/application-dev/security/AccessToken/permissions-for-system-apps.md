@@ -9244,3 +9244,17 @@ Allows an application to pass Linux commands with root privileges to a container
 **Supported devices**: PCs/2-in-1 devices | tablets
 
 **Valid since**: 26.1.0
+
+## ohos.permission.CLEAR_BACKGROUND_APPS
+
+Allows an application to clear background application resources.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | wearables | TVs | PCs/2-in-1 devices | tablets | cars
+
+**Valid since**: 26.1.0
