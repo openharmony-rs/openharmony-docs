@@ -1692,7 +1692,7 @@ Sets the mouse pointer moving speed of the touchpad. This API uses an asynchrono
 
 | Name      | Type                       | Mandatory  | Description                                   |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| speed | number                    | Yes   |Mouse pointer moving speed of the touchpad. The value range is [1,11]. The default value is **6**. |
+| speed | number                    | Yes   |Mouse pointer moving speed of the touchpad. The value range is [1, 11]. The default value is **6**. |
 | callback | AsyncCallback\<void> | Yes   | Callback used to return the result.|
 
 **Error codes**
@@ -1748,7 +1748,7 @@ Sets the mouse pointer moving speed of the touchpad. This API uses a promise to 
 
 | Name   | Type    | Mandatory  | Description                                 |
 | ----- | ------ | ---- | ----------------------------------- |
-| speed| number | Yes   | Mouse pointer moving speed of the touchpad. The value range is [1,11]. The default value is **6**.   |
+| speed| number | Yes   | Mouse pointer moving speed of the touchpad. The value range is [1, 11]. The default value is **6**.   |
 
 **Return value**
 

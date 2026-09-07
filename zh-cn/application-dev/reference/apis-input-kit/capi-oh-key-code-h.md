@@ -214,8 +214,8 @@ enum Input_KeyCode
 | KEYCODE_MACRO = 2610 | 宏键<br/>**起始版本：** 22 |
 | KEYCODE_NUMPAD_PLUSMINUS = 2611 | 数字键盘上的加号/减号键<br/>**起始版本：** 22 |
 | KEYCODE_SCALE = 2612 | 扩展键<br/>**起始版本：** 22 |
-| KEYCODE_HANGUEL = 2613 | 日文韩语键<br/>**起始版本：** 22 |
-| KEYCODE_HANJA = 2614 | 日文汉语键<br/>**起始版本：** 22 |
+| KEYCODE_HANGUEL = 2613 | 韩文键<br/>**起始版本：** 22 |
+| KEYCODE_HANJA = 2614 | 韩文汉字键<br/>**起始版本：** 22 |
 | KEYCODE_YEN = 2615 | 日元键<br/>**起始版本：** 22 |
 | KEYCODE_STOP = 2616 | 停止键<br/>**起始版本：** 22 |
 | KEYCODE_AGAIN = 2617 | 重复键<br/>**起始版本：** 22 |
@@ -380,7 +380,7 @@ enum Input_KeyCode
 | KEYCODE_WLAN = 2844 | 无线局域网<br/>**起始版本：** 22 |
 | KEYCODE_UWB = 2845 | 超宽带控制键<br/>**起始版本：** 22 |
 | KEYCODE_WWAN_WIMAX = 2846 | 移动网络控制键<br/>**起始版本：** 22 |
-| KEYCODE_RFKILL = 2847 | 控制所有收音机的键<br/>**起始版本：** 22 |
+| KEYCODE_RFKILL = 2847 | 控制所有无线设备的键<br/>**起始版本：** 22 |
 | KEYCODE_CHANNEL = 3001 | 向上频道键<br/>**起始版本：** 22 |
 | KEYCODE_BTN_0 = 3100 | 按键0<br/>**起始版本：** 22 |
 | KEYCODE_BTN_1 = 3101 | 按键1<br/>**起始版本：** 22 |
