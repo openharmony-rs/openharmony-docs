@@ -252,6 +252,8 @@
 | SPEAKER | 2 | 扬声器，强制将媒体输出切换到扬声器。 |
 | DEFAULT | 1000 | 系统默认设备，清除强制切换，恢复系统默认路由规则。 |
 
+   ArkTS-Dyn示例：
+
    <!-- @[audioSessionManager_setMediaOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceSwitcher.ets) -->
    
    ``` TypeScript
@@ -282,6 +284,10 @@
        // ...
      });
    ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[audioSessionManager_setMediaOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceSwitcher.ets) -->
 
 ## PC/2in1设备输出设备切换
 
