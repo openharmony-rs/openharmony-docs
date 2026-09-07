@@ -16745,6 +16745,16 @@
 						"start_line":17
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":38,
+						"name":"progress_create",
+						"start_line":36
+					}
+				]
 			}
 		]
 	},
@@ -17517,6 +17527,96 @@
 						"start_line":18
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/RequestFocusShowKeyboard.ets",
+				"functions":[
+					{
+						"end_line":39,
+						"name":"requestFocus_ShowKeyboard",
+						"start_line":18
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/TabKeyFocusShowKeyboard.ets",
+				"functions":[
+					{
+						"end_line":37,
+						"name":"tabKey_FocusShowKeyboard",
+						"start_line":18
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/CloseButtonClickKeyboard.ets",
+				"functions":[
+					{
+						"end_line":36,
+						"name":"closeButton_ClickKeyboard",
+						"start_line":18
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/DragTextCloseKeyboard.ets",
+				"functions":[
+					{
+						"end_line":38,
+						"name":"dragText_CloseKeyboard",
+						"start_line":18
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/PageChangeSource.ets",
+				"functions":[
+					{
+						"end_line":52,
+						"name":"page_ChangeSource",
+						"start_line":27
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/PageChangeDestination.ets",
+				"functions":[
+					{
+						"end_line":40,
+						"name":"page_ChangeDestination",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/ListScrollClearFocus.ets",
+				"functions":[
+					{
+						"end_line":49,
+						"name":"listScroll_ClearFocus",
+						"start_line":18
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/EmptyCustomKeyboard.ets",
+				"functions":[
+					{
+						"end_line":43,
+						"name":"empty_CustomKeyboard",
+						"start_line":18
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/KeepEditableStateOnSubmit.ets",
+				"functions":[
+					{
+						"end_line":40,
+						"name":"keepEditableState_OnSubmit",
+						"start_line":18
+					}
+				]
 			}
 		]
 	},
@@ -17774,6 +17874,36 @@
 					{
 						"end_line":72,
 						"name":"How_To_Set_Custom_Selection_Menu",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/WordBreakExample.ets",
+				"functions":[
+					{
+						"end_line":49,
+						"name":"Word_Break",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLongTwo.ets",
+				"functions":[
+					{
+						"end_line":47,
+						"name":"Text_Long_Two",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/faq/HowToDisableTextLongPress.ets",
+				"functions":[
+					{
+						"end_line":41,
+						"name":"How_To_Disable_Text_Long_Press",
 						"start_line":16
 					}
 				]
