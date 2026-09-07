@@ -1733,11 +1733,11 @@ console.info("arr.containsAll(sElements) = " + arr.containsAll(sElements)); // t
 
 containsAll(elements: BuiltinArray\<T>): boolean
 
-检查指定内建Array中的所有元素是否均包含在此ArkTS Array中。
+检查指定JavaScript原生容器Array中的所有元素是否均包含在此ArkTS Array中。
 
 > **说明：**
 >
-> BuiltinArray即JavaScript内建Array，并非ArkTS Array（collections.Array）。
+> BuiltinArray即JavaScript原生容器Array，并非ArkTS Array（collections.Array）。
 
 **起始版本：** 26.1.0
 
@@ -1751,13 +1751,13 @@ containsAll(elements: BuiltinArray\<T>): boolean
 
 | 参数名 | 类型 | 必填 | 说明                            |
 | ------ | ---- | ---- | ------------------------------- |
-| elements  | BuiltinArray\<T>  | 是   | 要检查的内建Array。 |
+| elements  | BuiltinArray\<T>  | 是   | 要检查的JavaScript原生容器Array。 |
 
 **返回值：**
 
 | 类型   | 说明               |
 | ------ | ------------------ |
-| boolean | 如果指定内建Array中的所有元素都包含在此ArkTS Array中，则返回true；否则返回false。当elements为空集合时，返回true。 |
+| boolean | 如果指定JavaScript原生容器Array中的所有元素都包含在此ArkTS Array中，则返回true；否则返回false。当elements为空集合时，返回true。 |
 
 **错误码：**
 
@@ -1783,7 +1783,7 @@ console.info("arr.containsAll(nElements) = " + arr.containsAll(nElements)); // t
 
 retainAll(elements: Array\<T>): boolean
 
-仅保留此ArkTS Array中同时存在于指定ArkTS Array中的元素。如果指定集合为空，则会清空当前ArkTS Array。
+仅保留此ArkTS Array中同时存在于指定ArkTS Array中的元素。
 
 **起始版本：** 26.1.0
 
@@ -1832,11 +1832,11 @@ console.info("arr = " + arr.toString()); // a
 
 retainAll(elements: BuiltinArray\<T>): boolean
 
-仅保留此ArkTS Array中同时存在于指定内建Array中的元素。如果指定集合为空，则会清空当前ArkTS Array。
+仅保留此ArkTS Array中同时存在于指定JavaScript原生容器Array中的元素。
 
 > **说明：**
 >
-> BuiltinArray即JavaScript内建Array，并非ArkTS Array（collections.Array）。
+> BuiltinArray即JavaScript原生容器Array，并非ArkTS Array（collections.Array）。
 
 **起始版本：** 26.1.0
 
@@ -1850,7 +1850,7 @@ retainAll(elements: BuiltinArray\<T>): boolean
 
 | 参数名 | 类型 | 必填 | 说明                            |
 | ------ | ---- | ---- | ------------------------------- |
-| elements  | BuiltinArray\<T>  | 是   | 允许保留元素的内建Array。如果集合为空，则会清空当前ArkTS Array。 |
+| elements  | BuiltinArray\<T>  | 是   | 允许保留元素的JavaScript原生容器Array。如果集合为空，则会清空当前ArkTS Array。 |
 
 **返回值：**
 
@@ -1918,7 +1918,7 @@ retainAll(predicate: [ArrayElementPredicateFn](arkts-apis-arkts-collections-Type
 let predicateArr: collections.Array<string> = new collections.Array<string>("foo", "bar", "bar");
 let changed = predicateArr.retainAll((e: string) => { return e === "bar" });
 console.info("changed = " + changed); // true
-console.info("predicateArr = " + predicateArr.toString()); // bar, bar
+console.info("predicateArr = " + predicateArr.toString()); // bar,bar
 ```
 
 ## [Symbol.iterator]

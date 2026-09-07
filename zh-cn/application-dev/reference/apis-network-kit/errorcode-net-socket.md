@@ -362,7 +362,7 @@ Resource temporarily unavailable. Try again.
 
 **错误信息**
 
-Not a socket.
+Socket operation on non-socket.
 
 **错误描述**
 
@@ -416,7 +416,7 @@ Address already in use.
 
 **错误信息**
 
-Address not available.
+Cannot assign requested address.
 
 **错误描述**
 
@@ -524,7 +524,7 @@ An error occurred when writing data on the TLS socket.
 
 **可能原因**
 
-发送端缓冲区已满时，底层套接字发送将给出EWOUDLBLOCK错误，这意味着服务器没有读取从客户端发送的消息。
+发送端缓冲区已满时，底层套接字发送将给出EWOULDBLOCK错误，这意味着服务器没有读取从客户端发送的消息。
 
 **处理步骤**
 
@@ -534,7 +534,7 @@ An error occurred when writing data on the TLS socket.
 
 **错误信息**
 
-An error occurred when verifying the x509 certificate.
+An error occurred when verifying the X.509 certificate.
 
 **错误描述**
 

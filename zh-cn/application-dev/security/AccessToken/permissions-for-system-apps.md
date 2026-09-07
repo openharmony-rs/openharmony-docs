@@ -7468,7 +7468,7 @@
 
 **是否支持证书授权**：true
 
-**支持设备**：PC/2in1
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
 
 **起始版本**：24
 
@@ -9092,6 +9092,20 @@
 
 **起始版本**：26.1.0
 
+## ohos.permission.vehicle.ACCESS_EXTERNAL_DVR_DATA
+
+允许应用访问行车记录仪的外置存储卡数据。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.2.0
+
 ## ohos.permission.AUTH_MODEL_DOWNLOAD
 
 允许系统应用将下载模型的授权结果发送给模型管理服务。
@@ -9189,5 +9203,89 @@
 **是否支持证书授权**：true
 
 **支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.ACCESS_SERVICE_NAVIGATION_PRIVATE_DATA
+
+允许系统应用获取使用导航信息服务的敏感数据。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.MANAGE_SHARE_PHOTO
+
+允许系统应用访问共享相册及相册内文件。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | Tablet | PC/2in1 | Car | TV | Wearable
+
+**起始版本**：26.1.0
+
+## ohos.permission.MANAGE_LOH
+
+允许应用调用Linux子系统虚拟化能力。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1 | Tablet
+
+**起始版本**：26.1.0
+
+## ohos.permission.MANAGE_LOH_PTY
+
+允许应用通过伪终端（Pseudo-Terminal，PTY）将具备普通权限的Linux命令传递到容器中执行。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1 | Tablet
+
+**起始版本**：26.1.0
+
+## ohos.permission.MANAGE_LOH_PTY_ROOT
+
+允许应用通过伪终端（Pseudo-Terminal，PTY）将具有root权限的Linux命令传递到容器中执行。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1 | Tablet
+
+**起始版本**：26.1.0
+
+## ohos.permission.CLEAR_BACKGROUND_APPS
+
+允许应用清理后台应用资源。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | Wearable | TV | PC/2in1 | Tablet | Car
 
 **起始版本**：26.1.0

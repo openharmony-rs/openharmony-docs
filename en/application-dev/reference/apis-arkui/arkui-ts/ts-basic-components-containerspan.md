@@ -5,12 +5,15 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=92567145241181b97abe57e944e177355e50f4eb translatedAt=2026-09-03T03:46:43.728Z -->
 
-As a child of the [Text](ts-basic-components-text.md) component, the **ContainerSpan** component is used to manage the background colors and rounded corners of multiple [Span](ts-basic-components-span.md) and [ImageSpan](ts-basic-components-imagespan.md) components in a unified manner.
+A child component of the [Text](ts-basic-components-text.md) component, used to manage the background colors and rounded corners of multiple [Span](ts-basic-components-span.md) and [ImageSpan](ts-basic-components-imagespan.md) components in a unified manner. It applies to scenarios where a unified background style needs to be set for a combination of text segments and images.
 
 > **NOTE**
 >
-> This component is supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 
 ## Child Components
 
@@ -32,7 +35,7 @@ Only the following attributes are supported.
 
 textBackgroundStyle(style: TextBackgroundStyle)
 
-Sets the text background style. If this attribute is not separately set for a child component, the child component inherits the settings from the component.
+Sets the text background style. Child components inherit this attribute value when they do not set it. When this API is not used, the default background color is Color.Transparent and the default rounded corner radius is 0.
 
 >**NOTE**
 >
@@ -46,7 +49,7 @@ Sets the text background style. If this attribute is not separately set for a ch
 
 | Name| Type                                               | Mandatory| Description                                                        |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| style  | [TextBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11) | Yes  | Text background style.<br>Default value:<br>{<br>  color: Color.Transparent,<br>  radius: 0<br>} |
+| style | [TextBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11) | Yes | Text background style, used to set the text background color and rounded corner radius of Span and ImageSpan in the ContainerSpan component. Child components inherit this style when this attribute is not set. |
 
 ### attributeModifier<sup>12+</sup>
 
@@ -62,7 +65,7 @@ Creates an attribute modifier.
 
 | Name| Type                                               | Mandatory| Description                                                        |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<ContainerSpanAttribute> | Yes  | Modifier for dynamically setting attributes on the current component.|
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<ContainerSpanAttribute> | Yes   | Dynamically sets the attributes of the component. Developers need to customize a class that inherits from the AttributeModifier interface, receive a ContainerSpanAttribute instance in the applyNormalAttribute method, and dynamically modify the attribute values of ContainerSpan. |
 
 ## Events
 
@@ -90,7 +93,7 @@ struct Index {
           Span('   Hello World !   ').fontSize('16fp').fontColor(Color.White)
         }
         .textBackgroundStyle({
-          color: "#7F007DFF",
+          color: '#7F007DFF',
           radius: {
             topLeft: 12,
             topRight: 12,
@@ -116,7 +119,7 @@ import { ContainerSpanModifier } from '@kit.ArkUI';
 class MyContainerSpanModifier extends ContainerSpanModifier {
   applyNormalAttribute(instance: ContainerSpanAttribute): void {
     super.applyNormalAttribute?.(instance);
-    this.textBackgroundStyle({ color: "#7F007DFF", radius: "12vp" });
+    this.textBackgroundStyle({ color: '#7F007DFF', radius: '12vp' });
   }
 }
 

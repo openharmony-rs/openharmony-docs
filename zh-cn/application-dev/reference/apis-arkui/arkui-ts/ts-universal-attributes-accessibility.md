@@ -87,7 +87,7 @@ accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions)
 
 accessibilityText(value: string): T
 
-设置无障碍文本。当组件不包含文本属性时，开发人员可通过设置无障碍文本属性，使不包含文字信息的组件能够播报无障碍文本的内容；当组件同时包含文本属性时，在朗读场景优先播报无障碍文本。
+设置无障碍文本。当组件不包含文本属性时，开发人员可通过设置无障碍文本属性，使不包含文字信息的组件能够播报无障碍文本的内容；当组件同时包含文本属性时，在朗读场景仅播报无障碍文本。
 
 > **说明：**
 >
@@ -115,7 +115,7 @@ accessibilityText(value: string): T
 
 accessibilityText(text: Resource): T
 
-设置无障碍文本，支持通过[Resource](ts-types.md#resource)引用资源文件。当组件不包含文本属性时，开发人员可通过设置无障碍文本属性，使不包含文字信息的组件能够播报无障碍文本的内容；当组件同时包含文本属性时，在朗读场景优先播报无障碍文本。
+设置无障碍文本，支持通过[Resource](ts-types.md#resource)引用资源文件。当组件不包含文本属性时，开发人员可通过设置无障碍文本属性，使不包含文字信息的组件能够播报无障碍文本的内容；当组件同时包含文本属性时，在朗读场景仅播报无障碍文本。
 
 > **说明：**
 >
@@ -860,7 +860,7 @@ struct Index {
 
 ### 示例4（设置无障碍组件类型和文本提示信息）
 
-该示例主要演示accessibilityRole无障碍组件类型和accessibilityTextHint供无障碍辅助应用查询的组件的文本提示信息。
+该示例主要演示accessibilityRole无障碍组件类型和accessibilityTextHint设置组件的文本提示信息（仅在与车机交互的场景下供车机的无障碍服务监听并响应）。
 
 ```ts
 // xxx.ets
@@ -1081,9 +1081,9 @@ struct Index {
   }
 }
 ```
-### 示例8（设置无障碍操作选项修改组件滚动步长）
+### 示例8（设置无障碍操作选项修改组件滑动步数）
 
-本示例主要演示如何通过[accessibilityActionOptions](ts-types.md#accessibilityactionoptions23对象说明)中的scrollStep参数，自定义组件的滚动步长。以下将以slider组件在屏幕朗读场景下滑动距离变化为例进行说明。
+本示例主要演示如何通过[accessibilityActionOptions](ts-types.md#accessibilityactionoptions23对象说明)中的scrollStep参数，自定义组件的滑动步数。以下将以slider组件在屏幕朗读场景下滑动距离变化为例进行说明。
 
 从API version 23开始，新增AccessibilityActionOptions。
 
@@ -1100,8 +1100,8 @@ struct Index {
           max: 100,
           style: SliderStyle.OutSet
         })
-        // 调整屏幕朗读手势下slider滑动的步长
-          .accessibilityActionOptions({ scrollStep: 10 })
+        // 调整屏幕朗读手势下slider滑动的步数
+        .accessibilityActionOptions({ scrollStep: 10 })
       }
       .width('80%')
     }

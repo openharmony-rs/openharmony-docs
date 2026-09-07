@@ -1,31 +1,32 @@
 # DatePicker
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Zhang-Dong-hui-->
-<!--Designer: @xiangyuan6-->
-<!--Tester: @jiaoaozihao-->
+<!--Owner: @luoying_ace_admin-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=bb8be30ac20777cbedde0933e1c8687834bf89bb translatedAt=2026-09-03T03:52:35.599Z -->
 
-**DatePicker** is a component for selecting a date through scrolling interaction.
+**DatePicker** is a component for selecting a date through scrolling interaction. It supports switching between the Gregorian and lunar calendars, and allows you to configure the date range, selection mode, and text style. It is used in application scenarios where users need to select a date, providing a unified date selection interaction experience, improving user experience, and reducing development workload.
 
 >  **NOTE**
 >
-> - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 8. New APIs added in later versions are marked with a superscript to indicate their earliest API version.
 >
-> - Avoid changing component attributes during animation processes.
+> - Avoid changing component attributes during an animation.
 >
-> - The maximum number of rows that can be displayed varies by screen orientation: In portrait mode, the default number of rows is 5. In landscape mode, the number of rows depends on the system configuration. If no system configuration is set, the default is 3 rows. To check the specific system configuration value for landscape mode, use **$r('sys.float.ohos_id_picker_show_count_landscape')**.
+> - The maximum number of displayed rows differs between landscape and portrait modes. In portrait mode, the default is 5 rows. In landscape mode, it depends on the system configuration; if not configured, the default display is 3 rows. You can use $r('sys.float.ohos_id_picker_show_count_landscape') to view the specific configuration value in landscape mode.
 
 ## Child Components
 
-Not supported
+This is a basic component and is not recommended to contain child components.
 
 
 ## APIs
 
 DatePicker(options?: DatePickerOptions)
 
-Creates a date picker in the given date range.
+Creates a date picker based on the specified date range. Use cases include application features that require users to select a date, such as birthday selection, meeting booking, and itinerary arrangement.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -35,7 +36,7 @@ Creates a date picker in the given date range.
 
 | Name | Type                                           | Mandatory| Description                      |
 | ------- | ----------------------------------------------- | ---- | -------------------------- |
-| options | [DatePickerOptions](#datepickeroptions) | No  | Parameters of the date picker.|
+| options | [DatePickerOptions](#datepickeroptions) | No | Parameters for configuring the date picker component. If this parameter is not passed, the default configuration is used (start defaults to Date('1970-01-01'), end defaults to Date('2100-12-31'), and selected defaults to the current system date). |
 
 ## DatePickerOptions
 
@@ -45,16 +46,19 @@ Describes the parameters of the date picker.
 
 | Name    | Type| Read Only| Optional| Description                                                        |
 | -------- | ---- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| start    | Date | No | Yes | Start date of the picker.<br>Default value: **Date('1970-1-1')**<br>Value range: \[Date('1900-01-31'), Date('2100-12-31')].<br>**Atomic service API**: This API can be used in atomic services since API version 11.         |
-| end      | Date | No | Yes | End date of the picker.<br>Default value: **Date('2100-12-31')**<br>Value range: \[Date('1900-01-31'), Date('2100-12-31')].<br>**Atomic service API**: This API can be used in atomic services since API version 11.       |
-| selected | Date | No | Yes | Date of the selected item.<br>Default value: current system date.<br>Value range: \[Date('1900-01-31'), Date('2100-12-31')].<br>Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| mode<sup>18+</sup> | [DatePickerMode](#datepickermode18) | No | Yes | Date display mode.<br>Default value: **DatePickerMode.DATE**, which means to display three columns: year, month, and day.<br>In [DatePickerDialog](ts-methods-datepicker-dialog.md), when **showTime** in [DatePickerDialogOptions](ts-methods-datepicker-dialog.md#datepickerdialogoptions) is **true**, this parameter is ignored and the year, month, day columns are always shown.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| start    | Date | No  | Yes  | Start date of the picker. It applies to scenarios where the lower limit of selectable dates needs to be restricted, for example, only dates after a certain date are allowed to be selected. <!--RP1--><!--RP1End--><br>Default value: Date('1970-01-01')<br>Value range: \[Date('1900-01-31'), Date('2100-12-31')]<br>**Note:**<br>When start or end is set to a non-default value, canLoop does not take effect.<br>**Atomic service API:** Since API version 11, this API is supported in atomic services.          |
+| end      | Date | No  | Yes  | End date of the picker. It applies to scenarios where the upper limit of selectable dates needs to be restricted, for example, setting the deadline of a validity period. <!--RP2--><!--RP2End--><br>Default value: Date('2100-12-31')<br>Value range: \[Date('1900-01-31'), Date('2100-12-31')]<br>**Note:**<br>When start or end is set to a non-default value, canLoop does not take effect.<br>**Atomic service API:** Since API version 11, this API is supported in atomic services.        |
+| selected | Date | No  | Yes  | Date of the selected item. It applies to scenarios where an initial selected date needs to be preset, for example, editing an existing record or displaying a specified date by default.<br>Default value: current system date (affected by the start and end parameters; see the abnormal situation description below for details).<br>Configurable date range of the Date object: \[Date('1900-01-31'), Date('2100-12-31')\]. The valid range of the selected parameter: it must be within the date range set by the start and end parameters.<br>Since API version 10, this parameter supports [$$](../../../ui/state-management/arkts-two-way-sync.md) two-way binding variables.<br>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
+| mode<sup>18+</sup> | [DatePickerMode](#datepickermode18) | No  | Yes  | Date display mode. It applies to scenarios where the date display columns need to be customized, for example, only the year and month or the month and day need to be selected. If this parameter is not passed, DatePickerMode.DATE is used by default, and the year, month, and day columns are displayed.<br>In [DatePickerDialog](ts-methods-datepicker-dialog.md), when showTime of [DatePickerDialogOptions](ts-methods-datepicker-dialog.md#datepickerdialogoptions) is set to true, this parameter does not take effect, and the year, month, and day columns are displayed by default. This is to ensure layout rationality, because an additional time column is displayed when showTime is true.<br>**Note:**<br>The preceding DatePickerDialog-related restriction applies only to the DatePickerDialog component.<br>**Atomic service API:** Since API version 18, this API is supported in atomic services.<br>**Model constraint:** This API can be used only in the stage model. |
 
 >  **NOTE**
 >
-> - For details about how to use **Date**, see [TimePickerOptions](ts-basic-components-timepicker.md#timepickeroptions).
+> - For details about how to use Date, see [TimePickerOptions](ts-basic-components-timepicker.md#timepickeroptions).
 >
-> - Property modifications made to **DatePickerOptions** during the **DatePicker** scrolling process may not take effect.
+> - Modifying the attributes in DatePickerOptions while the DatePicker component is scrolling will cause these attributes to fail to take effect.
+>
+> - If the start and end dates to be set are outside the range of \[Date('1900-01-31'), Date('2100-12-31')], it is recommended to use [DatePickerComponent](ohos-arkui-advanced-DatePickerComponent.md).
+
 
 **Handling in the case of date configuration exceptions**
 
@@ -84,13 +88,15 @@ Enumerates date display modes.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Value| Description|
 | -------- | - |-------- |
 | DATE | 0 | Three-column display: year, month, and day.|
-| YEAR_AND_MONTH | 1 | Two-column display: year and month.|
-| MONTH_AND_DAY | 2 | Two-column display: month and day.<br>In this mode, the year value remains fixed.|
+| YEAR_AND_MONTH | 1 | Displays the year and month columns. |
+| MONTH_AND_DAY | 2 | Displays the month and day columns.<br>In this mode, the year remains unchanged and takes the value specified by the selected parameter. If selected is not specified, the current system year is used. When scrolling the month causes the date to exceed the valid range, the date is automatically adjusted to the last day of the month. |
 
 ## Attributes
 
@@ -102,6 +108,10 @@ lunar(value: boolean)
 
 Sets whether to display dates in lunar calendar format.
 
+> **NOTE**
+>
+> This attribute takes effect only in the Simplified Chinese and Traditional Chinese language environments. In other language environments, setting this attribute has no effect.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -110,15 +120,21 @@ Sets whether to display dates in lunar calendar format.
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Whether to display dates in lunar calendar format.<br>- **true**: Display dates in lunar calendar format.<br>- **false**: Do not display dates in lunar calendar format.<br>Default value: **false**|
+| value  | boolean | Yes   | Whether the date is displayed in the lunar calendar.<br>- true: Displayed in the lunar calendar.<br>- false: Not displayed in the lunar calendar.<br>Default value: false |
 
 ### lunar<sup>18+</sup>
 
 lunar(isLunar: Optional\<boolean>)
 
-Sets whether to display dates in lunar calendar format. Compared to [lunar](#lunar), the **isLunar** parameter supports the **undefined** type.
+Sets whether the date is displayed in the lunar calendar. Compared with [lunar](#lunar), the isLunar parameter adds support for the undefined type.
+
+> **NOTE**
+>
+> This attribute takes effect only in the Simplified Chinese and Traditional Chinese language environments. In other language environments, setting this attribute has no effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -126,7 +142,7 @@ Sets whether to display dates in lunar calendar format. Compared to [lunar](#lun
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| isLunar | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to display dates in lunar calendar format.<br>- **true**: Display dates in lunar calendar format.<br>- **false**: Do not display dates in lunar calendar format.<br>Default value: **false**<br>If the value of **isLunar** is **undefined**, the default value is used.|
+| isLunar | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes | Whether the date is displayed in the lunar calendar.<br>- true: displayed in the lunar calendar.<br>- false: not displayed in the lunar calendar.<br>Default value: false<br>When the value of isLunar is undefined, the default value is used. |
 
 ### disappearTextStyle<sup>10+</sup>
 
@@ -136,13 +152,15 @@ Sets the text style for edge items (the second item above or below the selected 
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                         | Mandatory| Description                                                        |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle) | Yes  | Text color, font size, and font weight for edge items.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular<br>}<br>} |
+| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle) | Yes   | Text color, font size, and font weight of the edge items.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular<br>}<br>} |
 
 >  **NOTE**
 >
@@ -156,13 +174,15 @@ Sets the text style for edge items (the second item above or below the selected 
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)> | Yes  | Text color, font size, and font weight for edge items.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular<br>}<br>}<br>If the value of **style** is **undefined**, the default value is used.|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle) | Yes   | Text color, font size, and font weight of the edge items.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular<br>}<br>}<br>When the value of style is undefined, the default value is used. |
 
 >  **NOTE**
 >
@@ -176,13 +196,15 @@ Sets the text style for candidate items (the first item immediately above or bel
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                         | Mandatory| Description                                                        |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle) | Yes  | Text color, font size, and font weight for candidate items.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>}<br>} |
+| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle) | Yes   | Text color, font size, and font weight of the options.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>}<br>} |
 
 >  **NOTE**
 >
@@ -196,13 +218,15 @@ Sets the text style for candidate items (the first item immediately above or bel
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                         | Mandatory| Description                                                        |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| style | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)> | Yes  | Text color, font size, and font weight for candidate items.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>}<br>}<br>If the value of **style** is **undefined**, the default value is used.|
+| style | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle) | Yes | Text color, font size, and font weight of the options.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>}<br>}<br>When the value of style is undefined, the default value is used. |
 
 >  **NOTE**
 >
@@ -216,13 +240,15 @@ Sets the text style for the selected item.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                         | Mandatory| Description                                                        |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle) | Yes  | Font color, font size, and font weight of the selected item.<br>Default value:<br>{<br>color: '#ff007dff',<br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium<br>}<br>} |
+| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle) | Yes   | Text color, font size, and font weight of the selected item.<br>Default value:<br>{<br>color: '#ff007dff',<br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium<br>}<br>} |
 
 ### selectedTextStyle<sup>18+</sup>
 
@@ -232,13 +258,15 @@ Sets the text style for the selected item. Compared to [selectedTextStyle<sup>10
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)> | Yes  | Font color, font size, and font weight of the selected item.<br>Default value:<br>{<br>color: '#ff007dff',<br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium<br>}<br>}<br>If the value of **style** is **undefined**, the default value is used.|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle) | Yes   | Text color, font size, and font weight of the selected item.<br>Default value:<br>{<br>color: '#ff007dff',<br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium<br>}<br>}<br>When the value of style is undefined, the default value is used. |
 
 ### enableHapticFeedback<sup>18+</sup>
 
@@ -248,20 +276,22 @@ Sets whether to enable haptic feedback.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                         | Mandatory | Description                                                                                 |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**.<br>Whether this parameter takes effect after being set to **true** depends on hardware support.<br>If the value of **enable** is **undefined**, the default value is used.|
+| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes   | Sets whether to enable haptic feedback.<br>- true: Enables haptic feedback.<br>- false: Disables haptic feedback.<br>Default value: true<br>After it is set to true, whether it takes effect depends on whether the system hardware supports it.<br>When the value of enable is undefined, the default value is used.|
 
 To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.
 
 ```json
 "requestPermissions": [
    {
-      "name": "ohos.permission.VIBRATE",
+      "name": "ohos.permission.VIBRATE"
    }
 ]
 ```
@@ -273,13 +303,15 @@ Sets the sensitivity to the digital crown rotation.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name  | Type                                    | Mandatory  | Description                     |
 | ----- | ---------------------------------------- | ---- | ------------------------- |
-| sensitivity | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[CrownSensitivity](ts-appendix-enums.md#crownsensitivity18)> | Yes   | Sensitivity to the digital crown rotation.<br>Default value: **CrownSensitivity.MEDIUM**                   |
+| sensitivity | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CrownSensitivity](ts-appendix-enums.md#crownsensitivity18)> | Yes    | Crown response sensitivity.<br>Default value: CrownSensitivity.MEDIUM, indicating a moderate response speed.                    |
 
 >  **NOTE**
 >
@@ -293,13 +325,15 @@ Sets whether to enable cyclic scrolling.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| isLoop  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to enable cyclic scrolling.<br>- **true**: Cyclic scrolling is enabled, where the year values increment or decrement with month cycling, and month values increment or decrement with day cycling.<br>- **false**: Cyclic scrolling is disabled, preventing out-of-bounds scrolling in year, month, and day columns and cross-column value synchronization.<br>Default value: **true**.<br>If the value of **isLoop** is **undefined**, the default value is used.|
+| isLoop  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes   | Whether cyclic scrolling is supported.<br>- true: cyclic scrolling is supported. The year increments/decrements in a linked manner as the month scrolls cyclically, and the month increments/decrements in a linked manner as the day scrolls cyclically.<br>- false: non-cyclic scrolling. The year, month, and day stop scrolling when they reach the top or bottom of their respective columns, and they remain independent of each other without linked increment/decrement.<br>Default value: true<br>When the value of isLoop is undefined, the default value is used.<br>**Note:**<br>When [start](#datepickeroptions) or [end](#datepickeroptions) is set to a non-default value, canLoop does not take effect. This is because after a date range limit is set, cyclic scrolling may cause the date to exceed the valid range. To ensure the accuracy of date selection, the non-cyclic mode is forcibly used. |
 
 ## Events
 
@@ -319,15 +353,17 @@ This API is supported since API version 8 and deprecated since API version 10. Y
 
 | Name| Type                                         | Mandatory| Description            |
 | ------ | --------------------------------------------- | ---- | ---------------- |
-| callback | (value: [DatePickerResult](#datepickerresult)) => void | Yes  | Selected time.|
+| callback | (value: [DatePickerResult](#datepickerresult)) => void | Yes | Callback invoked to return the selected time, including the year, month, and day fields. |
 
 ### onDateChange<sup>10+</sup>
 
 onDateChange(callback: Callback\<Date>)
 
-Triggered when the date picker snaps to the selected item. This event cannot be triggered by two-way bound state variables.
+This callback is triggered when the options are completely settled at the selected position after the text content of the DatePicker is swiped. Settling means that the scrolling animation ends and the options stop stably at the selected position. It cannot be triggered by the state variable of two-way binding, but can respond to the user's swipe operation.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -335,7 +371,7 @@ Triggered when the date picker snaps to the selected item. This event cannot be 
 
 | Name| Type| Mandatory| Description                                                        |
 | ------ | ---- | ---- | ------------------------------------------------------------ |
-| callback  | [Callback](ts-types.md#callback12)\<Date> | Yes  | Selected date, where the year, month, and day portions are subject to the selection, the hour and minute portions are subject to the current system time, and the second portion is always **00**.|
+| callback  | [Callback](ts-types.md#callback12)\<Date> | Yes   | Callback invoked to return the selected time. The year, month, and day are the selected date; the hour and minute depend on the hour and minute of the current system time; and the second is always 00. This is applicable to scenarios where the selected date needs to be obtained, the UI needs to be updated, or business logic needs to be executed after the user confirms the date selection. |
 
 ### onDateChange<sup>18+</sup>
 
@@ -349,13 +385,15 @@ Triggered when the date picker snaps to the selected item. This event cannot be 
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[Callback](ts-types.md#callback12)\<Date>> | Yes  | Selected date, where the year, month, and day portions are subject to the selection, the hour and minute portions are subject to the current system time, and the second portion is always **00**.<br>If **callback** is set to **undefined**, the callback function is not used.|
+| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Callback](ts-types.md#callback12)\<Date>> | Yes | Callback invoked to return the selected time. The year, month, and day are the selected date; the hour and minute depend on the hour and minute of the current system time; and the second is always 00. This is applicable to scenarios where the selected date needs to be obtained, the UI needs to be updated, or business logic needs to be executed after the user confirms the date selection.<br>When the value of callback is undefined, the callback is not used. |
 
 ## DatePickerResult
 
@@ -367,9 +405,9 @@ Defines the time format returned by the date picker.
 
 | Name | Type  | Read Only| Optional| Description                                      |
 | ----- | ------ | ---- | ---- | ------------------------------------------ |
-| year  | number | No  | Yes  | Year of the selected date.<br>Value range: depends on **start** and **end**. If **start** and **end** are not set, the default range is [1970, 2100].                            |
-| month | number | No  | Yes  | Zero-based month index of the selected date. **0** indicates January, and **11** indicates December.<br>Value range: depends on **start** and **end**. If **start** and **end** are not set, the default range is [0, 11].|
-| day   | number | No  | Yes  | Day of the selected date.<br>Value range: depends on **start** and **end**. If **start** and **end** are not set, the default range is [1, 31].                            |
+| year  | number | No   | Yes   | Year of the selected date.<br>Value range: related to the configured start and end. If start and end are not set, the value range is [1970, 2100].                             |
+| month | number | No   | Yes   | Index of the month of the selected date. The index starts from 0, where 0 indicates January and 11 indicates December.<br>Value range: related to the configured start and end. If start and end are not set, the value range is [0, 11]. |
+| day   | number | No   | Yes   | Day of the selected date.<br>Value range: related to the configured start and end. If start and end are not set, the value range is [1, 31].                             |
 
 ## Example
 
@@ -466,7 +504,7 @@ struct DatePickerExample {
 
   build() {
     Column() {
-      Button('Switch Calendar')
+      Button('Switch Gregorian/Lunar Calendar')
         .margin({ top: 30, bottom: 30 })
         .onClick(() => {
           this.isLunar = !this.isLunar;
@@ -475,7 +513,7 @@ struct DatePickerExample {
         start: new Date('1970-1-1'),
         end: new Date('2100-1-1'),
         selected: this.selectedDate,
-        mode:this.datePickerModeList[this.datePickerModeIndex]
+        mode: this.datePickerModeList[this.datePickerModeIndex]
       })
         .lunar(this.isLunar)
         .onDateChange((value: Date) => {
@@ -486,7 +524,7 @@ struct DatePickerExample {
       Button('mode :' + this.datePickerModeIndex).margin({ top: 20 })
         .onClick(() => {
           this.datePickerModeIndex++;
-          if(this.datePickerModeIndex >= this.datePickerModeList.length){
+          if (this.datePickerModeIndex >= this.datePickerModeList.length) {
             this.datePickerModeIndex = 0;
           }
         })
@@ -511,8 +549,6 @@ struct DatePickerExample {
   build() {
     Column() {
       DatePicker({
-        start: new Date("2000-1-1"),
-        end: new Date("2100-12-31"),
         selected: this.selectedDate,
       })
         .canLoop(this.isLoop)
@@ -522,7 +558,7 @@ struct DatePickerExample {
 
       Row() {
         Text('Cyclic scrolling').fontSize(20)
-        Toggle({ type: ToggleType.Switch, isOn: true })
+        Toggle({ type: ToggleType.Switch, isOn: this.isLoop })
           .onChange((isOn: boolean) => {
             this.isLoop = isOn;
           })

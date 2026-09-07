@@ -6,8 +6,11 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=627767fa3527b3e4ea03a35d3df7c7dd0cac695b translatedAt=2026-09-02T11:26:47.995Z pushedAt=2026-09-03T02:40:06.423Z -->
 
-**@Watch** is used in state management V1 to listen for changes to state variables and trigger specified callback functions when the variables change. For details, see [@Watch Decorator: Getting Notified of State Variable Changes](../../../ui/state-management/arkts-watch.md).
+**\@Watch** is used in [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1) to listen for changes to state variables and trigger specified callback functions when the variables change. It applies to scenarios where linked logic, data synchronization, or derived value calculation needs to be automatically executed when a state variable changes.
+
+For details, see [@Watch Decorator: Getting Notified of State Variable Changes](../../../ui/state-management/arkts-watch.md).
 
 > **NOTE**
 >
@@ -63,3 +66,4 @@ struct Index {
   }
 }
 ```
+

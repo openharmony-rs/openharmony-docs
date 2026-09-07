@@ -300,7 +300,7 @@ OH_Drawing_FontFeaturesDestroy(features);
 OH_Drawing_FontDestroy(font);
 ```
 
-![Snapshot_drawSingleCharacter](figures/Snapshot_drawSingleCharacterWithFeatures.png)
+![Snapshot_drawSingleCharacterWithFeatures](figures/Snapshot_drawSingleCharacterWithFeatures.png)
 
 > **说明**
 >

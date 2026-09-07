@@ -103,7 +103,7 @@ OH_Drawing_RectDestroy(rect);
 OH_Drawing_PathEffectDestroy(pathEffect);
 ```
 
-| 不设置虚线路径效果的示意图 | 设置虚线效果的示意图 |
+| 不设置虚线路径效果的示意图 | 设置虚线路径效果的示意图 |
 | -------- | -------- |
 | ![Path-Without-Dashed-Lines](figures/Path-Without-Dashed-Lines.png) | ![Path-With-Dashed-Lines](figures/Path-With-Dashed-Lines.png) |
 

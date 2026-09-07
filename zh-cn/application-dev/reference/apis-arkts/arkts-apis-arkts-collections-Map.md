@@ -703,7 +703,7 @@ let putMap = new collections.Map<number, string>([
 myMap.putAll(putMap);
 // myMap内容为：[[1, "_ONE_"], [2, "two"], [3, "three"], [4, "four"]]
 for (const entry of myMap.entries()) {
-  console.info("key = " + entry[0] + ", value = " + entry[1])
+  console.info("key = " + entry[0] + ", value = " + entry[1]);
 }
 ```
 
@@ -711,11 +711,11 @@ for (const entry of myMap.entries()) {
 
 putAll(from: BuiltinMap\<K, V>): void
 
-使用指定内建Map中的键值对更新当前Map。如果指定内建Map中存在与当前Map相同的键，则覆盖当前Map中对应的值；否则新增键值对。
+使用指定JavaScript原生容器Map中的键值对更新当前Map。如果指定JavaScript原生容器Map中存在与当前Map相同的键，则覆盖当前Map中对应的值；否则新增键值对。
 
 > **说明：**
 >
-> BuiltinMap即JavaScript内建Map，并非ArkTS Map（collections.Map）。
+> BuiltinMap即JavaScript原生容器Map，并非ArkTS Map（collections.Map）。
 
 **起始版本：** 26.1.0
 
@@ -729,7 +729,7 @@ putAll(from: BuiltinMap\<K, V>): void
 
 | 参数名 | 类型 | 必填 | 说明      |
 | ------ | ---- | ---- | --------- |
-| from    | BuiltinMap\<K, V>    | 是   | 提供键值对的内建Map。 |
+| from    | BuiltinMap\<K, V>    | 是   | 提供键值对的JavaScript原生容器Map。 |
 
 **错误码：**
 
@@ -755,7 +755,7 @@ let builtinMap = new Map<number, string>([
 myMap.putAll(builtinMap);
 // myMap内容为：[[1, "one"], [2, "two"], [3, "_THREE_"], [5, "five"]]
 for (const entry of myMap.entries()) {
-  console.info("key = " + entry[0] + ", value = " + entry[1])
+  console.info("key = " + entry[0] + ", value = " + entry[1]);
 }
 ```
 
@@ -809,7 +809,7 @@ let myMap = new collections.Map<number, string>([
 console.info(myMap.remove(1)); // one
 // myMap内容为：[[2, "two"]]
 for (const entry of myMap.entries()) {
-  console.info("key = " + entry[0] + ", value = " + entry[1])
+  console.info("key = " + entry[0] + ", value = " + entry[1]);
 }
 
 let ret = myMap.remove(1);

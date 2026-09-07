@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-You can use the custom gesture judgment APIs to During hand gesture recognition, you can determine whether to respond to a gesture based on the gesture type and touch point position. This capability is applicable to scenarios where the gesture response logic of custom components is required, gestures are controlled by area, or specific gestures are filtered out.
+You can use the custom gesture judgment APIs. During hand gesture recognition, you can determine whether to respond to a gesture based on the gesture type and touch point position. This capability is applicable to scenarios where the gesture response logic of custom components is required, gestures are controlled by area, or specific gestures are filtered out.
 
 >  **NOTE**
 >

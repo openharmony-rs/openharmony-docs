@@ -6,9 +6,9 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-沉浸式系统材质由材质滤镜、折射、高光、阴影等多层效果叠加而成，渲染时需要消耗GPU资源，不合理使用会显著增加功耗。
+沉浸光感效果由材质滤镜、折射、高光、阴影等多层效果叠加而成，渲染时需要消耗GPU资源，不合理使用会显著增加功耗。
 
-总体优化原则：沉浸式系统材质作为一种"稀缺"视觉资源使用，需控制面积与层数、不应固定显示在视频动图动画等变化的内容之上。建议遵循以下功耗优化，获得沉浸光感体验的同时降低性能与功耗的影响。
+总体优化原则：沉浸光感效果作为一种"稀缺"视觉资源使用，需控制面积与层数、不应固定显示在视频动图动画等变化的内容之上。建议遵循以下功耗优化，获得沉浸光感体验的同时降低性能与功耗的影响。
 
 ## 控制材质使用面积
 
@@ -16,7 +16,7 @@
 
 > **说明：**
 >
-> 通过[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)为组件设置的沉浸式系统材质仅在Navigation/NavDestination标题栏子树，或横向Tabs中barPosition为BarPosition.End的底部TabBar子树中生效，范围外的普通组件不会显示材质效果。Slider、Toggle以及弹窗类组件不受此范围限制。
+> 沉浸光感开启后，弹窗类组件以及Slider、Toggle在页面内全部区域可生效；其余组件的生效区域为：Navigation/NavDestination标题栏，或横向Tab中barPosition为BarPosition.End的底部TabBar中。<br/>弹窗类组件和接口包括：[PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md)、[AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)、[ActionSheet](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md)、[CustomDialog](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)、[CalendarPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md)、[DatePickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md)、[TimePickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-timepicker-dialog.md)、[TextPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-textpicker-dialog.md)、[SelectionMenu](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SelectionMenu.md)、[ArkUI_NativeDialog](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialog.md)、[@ohos.promptAction (弹窗)](../reference/apis-arkui/js-apis-promptAction.md)、[Popup控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md)、[Tips控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-tips.md)、[菜单控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md)、[半模态转场](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md)、[AlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md)气泡弹窗、Select下拉菜单的[menuSystemMaterial](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md#menusystemmaterial)、[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)设置[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9)后长按或双击触发的文本菜单。
 
 ```ts
 import { uiMaterial } from '@kit.ArkUI';
@@ -59,7 +59,7 @@ Column() {
 }))
 ```
 
-## 减少材质嵌套
+## 避免材质嵌套
 
 材质嵌套使用会导致效果被重复计算，既增加功耗，视觉上又相互干扰。同一子树中只需在最外层设置一次沉浸式系统材质，内层节点不应再设置。
 
@@ -113,7 +113,7 @@ Column() {
 
 ## 控制弹窗尺寸
 
-高算力设备上，沉浸光感强度设置为强和均衡，Dialog、Menu组件默认附带形变、流光等沉浸式空间动效（参见[沉浸式空间动效](arkts-immersive-light-sense-overview.md#沉浸式空间动效)相关说明）。弹窗面积越大，动效的绘制开销越高，应避免接近全屏的超大面积Dialog或Menu，保持弹窗尺寸在合理范围。
+高算力设备上，沉浸光感强度设置为强或均衡，Dialog、Menu组件默认附带形变、流光等沉浸式空间动效（参见[沉浸式空间动效](arkts-immersive-light-sense-overview.md#沉浸式空间动效)相关说明）。弹窗面积越大，动效的绘制开销越高，应避免接近全屏的超大面积Dialog或Menu，保持弹窗尺寸在合理范围。
 
 ```ts
 // 正例：弹窗内容区域保持合理尺寸
@@ -168,7 +168,7 @@ Stack() {
 
 ## 控制自动反色的作用范围
 
-自动反色（colorInvert）会对材质子树中通过资源接口设置的颜色逐个计算反色。子树越大、参与反色的组件越多，计算量越高。应控制反色的作用范围，避免在包含大量文本、图标的大范围内整体开启反色。
+自动反色（[colorInvert](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)）会对材质子树中通过资源接口设置的颜色逐个计算反色。子树越大、参与反色的组件越多，计算量越高。应控制反色的作用范围，避免在包含大量文本、图标的大范围内整体开启反色。
 
 ```ts
 // 正例：缩小反色范围，仅对需要保证可读性的局部区域开启

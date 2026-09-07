@@ -5,6 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=a9e64d9949bb7122908af3acb8cd44ce378cf9b7 translatedAt=2026-09-03T12:22:45.321Z -->
 
 The **Text** component is used to display text content. It supports the configuration of font styles, text alignment, line height, and decorative lines. It also supports mixed arrangement of images and text, text selection, and text recognition. This component is applicable to various application scenarios where text information needs to be displayed.
 
@@ -121,7 +122,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 | caretColor<sup>14+</sup> | Sets the color of the handle for the selected area in the text component.|
 | copyOption<sup>9+</sup> | Sets whether copy and paste operations are allowed.|
 | draggable<sup>9+</sup> | Sets the drag effect of the selected text.|
-| selectedBackgroundColor<sup>14+</sup> | Sets the background color of the selected text.|
+| selectedBackgroundColor<sup>14+</sup> | Sets the highlight color of selected text. |
 | selection<sup>11+</sup> | Sets text selection.|
 | textSelectable<sup>12+</sup> | Sets whether the text is selectable and focusable.|
 
@@ -735,6 +736,8 @@ Sets font variations.
 
 **Since**: 26.0.0
 
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
+
 **Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **Model restriction**: This API can be used only in the stage model.
@@ -1344,7 +1347,7 @@ Sets whether to enable hanging punctuation at line ends. Hanging punctuation is 
 
 selectedBackgroundColor(color: ResourceColor)
 
-Sets the background color of the selected text. If opacity is not set, the default opacity is 20%. If this API is not called, the default background color of the selected text is **'#007DFF'** (blue).
+Sets the highlight color of the selected text. If opacity is not set or is set to fully opaque, the default opacity is 20%. If this API is not called, the default highlight color of the selected text is '#007DFF' (blue).
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -1356,7 +1359,7 @@ Sets the background color of the selected text. If opacity is not set, the defau
 
 | Name| Type                                      | Mandatory| Description                                      |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------ |
-| color  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Background color of the selected text.|
+| color  | [ResourceColor](ts-types.md#resourcecolor) | Yes   | Highlight color of the selected text. |
 
 ### selection<sup>11+</sup>
 
@@ -1725,7 +1728,7 @@ Defines the configuration object for text overflow behavior.
 
 > **NOTE**
 >
-> To standardize anonymous object definitions, the element definitions here have been revised in API version 18. While historical version information is preserved for anonymous objects, there may be cases where the outer element's @since version number is higher than inner elements'. This does not affect interface usability.
+> To standardize anonymous object definitions, the element definitions here have been revised in API version 18. While historical version information is preserved for anonymous objects, there may be cases where the outer element's @since version number is higher than inner elements'. This does not affect API usability.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -1960,7 +1963,7 @@ Describes the initialization options of the **Marquee** component.
 |--------------------|-------------------------------------------------|----|----|-------------------------------------------------------------------------------------|
 | start              | boolean                                         | No | No| Whether to start the marquee.<br>**true**: Start the marquee. **false**: Do not start the marquee.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | step               | number                                          | No | Yes| Step length of the scrolling animation text.<br>Unit: vp<br>Value range: (0, Text width]. If this parameter is set to a value less than or equal to 0, the default value is used.<br>Default value: **4.0** (in vp)<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                        |
-| spacing<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No | Yes| Spacing between two marquee rounds. The unit is vp. If the unit of **LengthMetrics** is **PERCENT**, the current setting does not take effect and the default value is used.<br>Default value: **48.0vp**<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| spacing<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | Yes | Spacing between two rounds of the marquee. Unit: vp. When the unit attribute of the LengthMetrics object is LengthUnit.PERCENT, the current setting does not take effect and the default value is used.<br>Default value: 48.0vp <br>**Atomic service API:** Since API version 23, this API can be used in atomic services. |
 | loop               | number                                          | No | Yes| Number of times the marquee will scroll. If the value is less than or equal to **0**, the marquee will scroll continuously.<br>Default value: **-1**<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                         |
 | fromStart          | boolean                                         | No | Yes| Whether the text scrolls from the start.<br>**true** to scroll from the start, **false** to scroll in reverse.<br>Default value: **true**<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | delay              | number                                          | No | Yes| Time interval between scroll movements.<br>The value range is [0, +∞). If the value is a negative number, the default value is used.<br>Default value: **0**<br>Unit: millisecond<br>**Atomic service API**: This API can be used in atomic services since API version 18.  |
@@ -3686,7 +3689,7 @@ struct TextExample {
 
 ![bindSelectionMenu](figures/bindSelectionMenu.gif)
 
-### Example 31: Setting the Paragraph Cache Policy for a Style String
+### Example 31: Setting the Paragraph Cache Policy for a Styled String
 
 This example shows how to use the [incrementalUpdatePolicy](#incrementalupdatepolicy) API to set the incremental update policy for text rendering and uses paragraph-level cache to optimize rendering performance.
 
@@ -3711,7 +3714,7 @@ struct StyledStringAppend {
     new ParagraphStyle({ textAlign: TextAlign.Start, textIndent: LengthMetrics.vp(20) });
   // Line height style.
   lineHeightStyle: LineHeightStyle = new LineHeightStyle(new LengthMetrics(30));
-  str: string = 'Example of paragraph cache for a style string'
+  str: string = 'Example of paragraph cache for a styled string'
   styledString1: MutableStyledString = new MutableStyledString(this.str, [{
     start: 0,
     length: this.str.length,

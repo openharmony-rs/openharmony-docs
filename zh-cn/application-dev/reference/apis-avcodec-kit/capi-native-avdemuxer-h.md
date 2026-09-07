@@ -83,6 +83,14 @@ DRM_MediaKeySystemInfo回调函数指针类型，返回解封装器实例，适�
 
 **起始版本：** 12
 
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AVDemuxer](capi-avdemuxer-oh-avdemuxer.md) *demuxer | 指向OH_AVDemuxer实例的指针。 |
+| [DRM_MediaKeySystemInfo](capi-avdemuxer-drm-mediakeysysteminfo.md) *mediaKeySystemInfo | 指向DRM信息的指针。 |
+
 ### OH_AVDemuxer_CreateWithSource()
 
 ```c

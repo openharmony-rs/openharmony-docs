@@ -666,6 +666,10 @@ stopServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 
 停止指定的ServiceExtensionAbility后台服务。使用callback异步回调。
 
+> **说明：**
+>
+> 该接口不支持停止应用分身的ServiceExtensionAbility。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
@@ -735,7 +739,11 @@ export default class EntryAbility extends UIAbility {
 
 stopServiceExtensionAbility(want: Want): Promise\<void>
 
-停止同一应用程序内的服务。使用Promise异步回调。
+停止指定的ServiceExtensionAbility服务。使用Promise异步回调。
+
+> **说明：**
+>
+> 该接口不支持停止应用分身的ServiceExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -809,11 +817,12 @@ export default class EntryAbility extends UIAbility {
 
 stopServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<void>): void
 
-停止同一应用程序内指定账户的服务。使用callback异步回调。
+停止指定账户的ServiceExtensionAbility服务。使用callback异步回调。
 
 > **说明：**
 > 
-> 当accountId为当前用户时，无需进行权限校验。
+> - 当accountId为当前用户时，无需进行权限校验。
+> - 该接口不支持停止应用分身的ServiceExtensionAbility。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -886,11 +895,12 @@ export default class EntryAbility extends UIAbility {
 
 stopServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\<void>
 
-停止同一应用程序内指定账户的服务。使用Promise异步回调。
+停止指定账户的ServiceExtensionAbility服务。使用Promise异步回调。
 
 > **说明：**
 > 
-> 当accountId为当前用户时，无需进行权限校验。
+> - 当accountId为当前用户时，无需进行权限校验。
+> - 该接口不支持停止应用分身的ServiceExtensionAbility。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -972,11 +982,9 @@ connectServiceExtensionAbilityWithAccount(want: Want, accountId: number, options
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
->
-> 当accountId为当前用户时，无需进行权限校验。
->
-> 该接口不支持应用分身。
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+> - 当accountId为当前用户时，无需进行权限校验。
+> - 该接口不支持连接分身应用的ServiceExtensionAbility。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 

@@ -1,38 +1,39 @@
 # FormComponent (System API)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=92cb4d2f8dca1d59bddc5aa0581a2b5f1a4d54e4 translatedAt=2026-09-03T03:56:41.282Z -->
 
-The **FormComponent** is used to display widgets.
+Provides the card component to display cards.
 
 >  **NOTE**
 >
-> - This component is supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - This component is intended for the widget host. For details about the widget provider, see [JS Service Widget UI Components](../js-service-widget-ui/js-service-widget-file.md).
+> - This component is the user of the card component. For details about the corresponding provider, see [JS Service Widget UI Component](../js-service-widget-ui/js-service-widget-file.md).
 >
-> - To use this component, you must have the system signature.
+> - This component requires a system signature.
 >
-> - The APIs provided by this module are system APIs.
+> - This module is a system API.
 
-## Required Permissions
+## Permissions
 
 ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 
 ## Child Components
 
-Not supported
+None
 
 
-## APIs
+## API
 
 ## FormComponent (value: FormInfo)
 
-Creates a **FormComponent** instance to display the provided widget.
+Creates a FormComponent to display the provided card.
 
 **System API**: This is a system API.
 
@@ -40,108 +41,112 @@ Creates a **FormComponent** instance to display the provided widget.
 
 **Parameters**
 
-| Name   | Type                       | Mandatory| Description                                                               |
+| Name    | Type                        | Mandatory | Description                                                                |
 | --------- | ------------------------------- | ---- | ----------------------------------------------------------------------- |
-| value        | [FormInfo](#forminfo12)                 | Yes  | Widget information.  |
+| value        | [FormInfo](#forminfo12)                 | Yes   | Card information.   |
 
 ## FormInfo<sup>12+</sup>
 
-Provides the widget information.
+Card information.
+
+> **NOTE**
+>
+> - The temporary parameter indicates whether the card is a temporary card. For details about the comparison between temporary cards and normal cards, see [Temporary and Normal Widgets](../../../form/widget-host-development-guide-sys.md#temporary-and-normal-widgets).
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type                       | Read-Only| Optional| Description                                                               |
+| Name    | Type                        | Read-Only | Optional | Description                                                                |
 | --------- | ------------------------------- | ---- |---- |-------|
-| id        | number \| string                    | No  | No  | Widget ID. Set this parameter to **0** for a new widget.<br>**NOTE**<br>Different widget hosts cannot use the same ID.<br>If a widget host uses the same ID for two widgets, the one added later is displayed.                                       |
-| name      | string                          |  No  | No  | Widget name.                                                             |
-| bundle    | string                          |  No  | No  | Bundle name of the widget.                                                         |
-| ability   | string                          |  No  | No  | Ability name of the widget.                                                  |
-| module    | string                          |  No  | No  | Module name of the widget.                                                         |
-| dimension | [FormDimension](#formdimension) |  No  | Yes  | Dimensions of the widget. The 2 x 2, 4 x 4, 4 x 2, and more options are available.<br>Default value: **Dimension_2_2**|
-| temporary | boolean                         |  No  | Yes  | Whether the widget is a temporary widget. **true**: The widget is a temporary widget. **false**: The widget is not a temporary widget.<br>Default value: **false**|
-| renderingMode | [FormRenderingMode](#formrenderingmode11) |  No  | Yes  | Widget rendering mode. Default value: **FULL_COLOR**. The options are as follows:<br>- **FULL_COLOR**: full color mode, where the widget framework does not change the widget effect, which means that the widget is displayed in the effect as you set it.<br>- **SINGLE_COLOR**: single color mode, where the widget framework sets the widget background to transparent. In this mode you need to set the widget style based on the best practices.<br>**NOTE**<br>If the system does not support unified rendering, the widget framework does not set the widget background to transparent in single color mode.|
-| want | [import('../api/@ohos.app.ability.Want').default](../../../reference/apis-ability-kit/js-apis-app-ability-want.md#want) |  No  | Yes  | Carrier for widget information.|
-| shape  | [FormShape](#formshape12)      | No   | Yes   | Widget shape.|
-| exemptAppLock<sup>20+</sup> |boolean        |  No  | Yes  | Whether the widget is exempt from app lock. **true**: The widget is exempt from app lock management. No app lock overlay is displayed when an app lock is applied to the host application. **false**: The widget is managed by app lock. The app lock overlay is displayed when an app lock is applied to the host application.<br>Default value: **false**|
+| id        | number \| string                    | No   | No   | Card ID (set to 0 for a new card).<br/>**Note:**<br>Different users cannot use the same ID.<br/>When the same user uses the same ID, the card added later is displayed.<br>The ID is greater than or equal to 0 and less than 2^32.                                        |
+| name      | string                          |  No   | No   | Card name.                                                              |
+| bundle    | string                          |  No   | No   | Bundle name of the target card.                                                          |
+| ability   | string                          |  No   | No   | Name of the target card ability.                                                   |
+| module    | string                          |  No   | No   | Module name of the card.                                                          |
+| dimension | [FormDimension](#formdimension) |  No   | Yes   | Card size. Cards of 2 x 2, 4 x 4, and 2 x 4 are supported.<br/>Default value: **Dimension_2_2**. |
+| temporary | boolean                         |  No   | Yes   | Whether the card is a temporary card. The value **true** indicates a temporary card, and **false** indicates a normal card.<br/>Default value: **false**. |
+| renderingMode | [FormRenderingMode](#formrenderingmode11) |  No   | Yes   | Rendering mode of the card. The value can be one of the following, and the default value is **FULL_COLOR**.<br>- **FULL_COLOR**: full-color mode. The card framework does not modify the card effect, which remains the same as that set by the card developer.<br>- **SINGLE_COLOR**: single-color mode. The card framework sets the card background to transparent. Developers need to set the card style based on best practices.<br>**Note:**<br>If the system does not support the unified rendering mode, the card framework does not set the card background to transparent even in single-color mode. |
+| want | [import('../api/@ohos.app.ability.Want').default](../../../reference/apis-ability-kit/js-apis-app-ability-want.md#want) |  No   | Yes   | Carrier for the information transferred by the card. |
+| shape  | [FormShape](#formshape12)      | No    | Yes    | Shape of the card. |
+| exemptAppLock<sup>20+</sup> |boolean        |  No   | Yes   | Whether the card is exempt from the app lock. The value **true** indicates that when the app to which the card belongs has an app lock, the card is not controlled by the app lock and no app lock mask is displayed. The value **false** indicates that when the app to which the card belongs has an app lock, the card is controlled by the app lock and the app lock mask is displayed normally.<br/>Default value: **false**. |
 
 ## FormCallbackInfo<sup>12+</sup>
 
-Represents the parameters for obtaining a widget ID (**formId**) when querying or uninstalling a widget.
+Parameter for obtaining the formId when a card is queried or uninstalled.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type                       | Read-Only| Optional| Description             |
+| Name    | Type                        | Read-Only | Optional | Description              |
 | --------- | ------------------------------- | ---- | ---- | ----------------- |
-| id        | number                 |   No  |  No  | Widget ID of the number type.<br>**NOTE**<br>If the obtained ID is **-1**, the ID is greater than or equal to 2^53. In this case, you need to use **idString** to obtain the ID.                                       |
-| idString      | string            |   No  |  No  | Widget ID of the string type.                            |
-| isLocked<sup>22+</sup>      | boolean             |   No  |   No  | Whether the widget is locked. **true** indicates that the widget is locked; false otherwise.|
+| id        | number                 |   No   |  No   | Card ID.<br/>**Note:**<br/>If the obtained id is -1, the id is greater than or equal to 2^53, and idString must be used to obtain it.                                        |
+| idString      | string            |   No   |   No   | Card ID.                             |
+| isLocked<sup>22+</sup>      | boolean             |   No   |   No   | Whether the card is locked. The value true indicates that the card is locked, and false indicates that the card is not locked.|
 
 ## FormSize<sup>18+</sup>
 
-Provides the widget size information.
+Card size information.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type                       | Read-Only| Optional| Description   |
+| Name    | Type                        | Read-Only | Optional | Description    |
 | --------- | ------------------------------- | ---- | ---- |---------|
-| width        | number                 | No  | No  | Width of the widget, in vp.<br>**NOTE**<br>The value range is (0, 2^53). The widget is not displayed if the value is out of the range.|
-| height      | number            | No  | No  | Height of the widget, in vp.<br>**NOTE**<br>The value range is (0, 2^53). The widget is not displayed if the value is out of the range.|
+| width        | number                 | No   | No   | Width of the card, in vp.<br/>**Note:**<br>The value range of width is greater than 0 and less than 2^53. If the value is out of range, the card is not displayed. |
+| height      | number            | No   | No   | Height of the card, in vp.<br/>**Note:**<br>The value range of height is greater than 0 and less than 2^53. If the value is out of range, the card is not displayed. |
 
 ## ErrorInformation<sup>18+</sup>
 
-Provides the widget error information.
+Card error information.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type                       | Read-Only| Optional| Description                    |
+| Name    | Type                        | Read-Only | Optional | Description                     |
 | --------- | ------------------------------- | ---- | ---- | ------------------------------ |
-| errcode        | number                 | No | No  | [Error code](../../apis-form-kit/errorcode-form.md).                                       |
-| msg      | string            | No      | No  | Error message.                            |
+| errcode        | number                 | No  | No   | [Error code](../../apis-form-kit/errorcode-form.md).                                        |
+| msg      | string            | No       | No   | Error message.                             |
 
 ## FormDimension
 
-Enumerates widget sizes.
+Enumerates the card sizes.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                      | Value    | Description    |
+| Name                       | Value     | Description     |
 | -------------------------- | -------- | -------- |
-| Dimension_1_2              | 0 | 1 x 2 widget.|
-| Dimension_2_2              | 1 | 2 x 2 widget.|
-| Dimension_2_4              | 2 | 2 x 4 widget.|
-| Dimension_4_4              | 3 | 4 x 4 widget.|
-| Dimension_2_1<sup>(deprecated)</sup> | 4 | 2 x 1 widget.<br>Note: This field is supported since API version 9 and deprecated since API version 20.|
-| Dimension_1_1<sup>11+</sup> | 6 | 1 x 1 widget.|
-| Dimension_6_4<sup>12+</sup> | 7 | 6 x 4 widget.|
-| Dimension_2_3<sup>18+</sup> | 8 | 2 x 3 widget. Available for wearable devices.|
-| Dimension_3_3<sup>18+</sup> | 9 | 3 x 3 widget. Available for wearable devices.|
+| Dimension_1_2              | 0 | 1*2 card |
+| Dimension_2_2              | 1 | 2*2 card |
+| Dimension_2_4              | 2 | 2*4 card |
+| Dimension_4_4              | 3 | 4*4 card |
+| Dimension_2_1<sup>(deprecated)</sup> | 4 | 2*1 card <br>**Note:** This field is supported since API version 9 and deprecated since API version 20.|
+| Dimension_1_1<sup>11+</sup> | 6 | 1*1 card |
+| Dimension_6_4<sup>12+</sup> | 7 | 6*4 card |
+| Dimension_2_3<sup>18+</sup> | 8 | 2*3 card for wearable devices |
+| Dimension_3_3<sup>18+</sup> | 9 | 3*3 card for wearable devices |
 
 ## FormRenderingMode<sup>11+</sup>
 
-Enumerates the widget rendering modes.
+Enumerates the card rendering modes.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                      | Value    | Description    |
+| Name                       | Value     | Description     |
 | -------------------------- | -------- | -------- |
-| FULL_COLOR                 | 0 | Full color mode.|
-| SINGLE_COLOR               | 1 | Single color mode.|
+| FULL_COLOR                 | 0 | Full color mode. |
+| SINGLE_COLOR               | 1 | Single color mode. |
 
 ## FormColorMode<sup>23+</sup>
 
-Enumerates the card color modes.
+Enumerates the color modes of the card.
 
 **System API**: This is a system API.
 
@@ -149,24 +154,24 @@ Enumerates the card color modes.
 
 **Model restriction**: This API can be used only in the stage model.
 
-| Name                      | Value    | Description     |
+| Name                       | Value     | Description      |
 | -------------------------- | -------- | -------- |
-| MODE_AUTO                  | -1 | Same with the system.|
-| MODE_DARK                  | 0 | Dark.|
-| MODE_LIGHT                 | 1 |Light.|
+| MODE_AUTO                  | -1 | Follows the system.|
+| MODE_DARK                  | 0 | Dark mode.|
+| MODE_LIGHT                 | 1 | Light mode.|
 
 ## FormShape<sup>12+</sup>
 
-Enumerates the widget shapes.
+Enumerates the card shapes.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                      | Value    | Description     |
+| Name                       | Value     | Description      |
 | -------------------------- | -------- | -------- |
-| RECT                  | 1 | Rectangular widget.|
-| CIRCLE                  | 2 | Circular widget.|
+| RECT                  | 1 | Rectangular card.|
+| CIRCLE                  | 2 | Circular card.|
 
 ## Attributes
 
@@ -174,87 +179,87 @@ Enumerates the widget shapes.
 
 size(formSize: FormSize)
 
-Sets the size for the widget.
+Sets the width and height.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
-| Name| Type                                                     | Mandatory| Description      |
+| Name | Type                                                      | Mandatory | Description       |
 | ------ | --------------------------------------------------------- | ---- | ---------- |
-| formSize  | [FormSize](#formsize18) | Yes  | Width and height.|
+| formSize  | [FormSize](#formsize18) | Yes   | Width and height. |
 
 ### moduleName
 
 moduleName(value: string)
 
-Sets the module name for the widget.
+Sets the card module name.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
-| Name| Type  | Mandatory| Description          |
+| Name | Type   | Mandatory | Description           |
 | ------ | ------ | ---- | -------------- |
-| value  | string | Yes  | Module name of the widget.|
+| value  | string | Yes   | Card module name. |
 
 ### dimension
 
 dimension(value: FormDimension)
 
-Sets the dimensions for the widget. The 2 x 2, 4 x 4, 2 x 4, and more options are available.
+Sets the card size, supporting cards of types such as 2 * 2, 4 * 4, and 2 * 4.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
-| Name| Type                           | Mandatory| Description                                |
+| Name | Type                            | Mandatory | Description                                 |
 | ------ | ------------------------------- | ---- | ------------------------------------ |
-| value  | [FormDimension](#formdimension) | Yes  | Dimensions of the widget.<br>Default value: **Dimension_2_2**|
+| value  | [FormDimension](#formdimension) | Yes   | Card size.<br/>Default value: Dimension_2_2. |
 
 ### allowUpdate
 
 allowUpdate(value: boolean)
 
-Sets whether to allow the widget to update.
+Sets whether to allow card updates.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
-| Name| Type   | Mandatory| Description                               |
+| Name | Type    | Mandatory | Description                                |
 | ------ | ------- | ---- | ----------------------------------- |
-| value  | boolean | Yes  | Whether to allow the widget to update. **true** to allow, **false** otherwise.<br>Default value: **true**|
+| value  | boolean | Yes  | Whether to allow card updates. The value **true** means to allow card updates, and **false** means the opposite.<br/>Default value: **true**. |
 
 ### visibility
 
 visibility(value: Visibility)
 
-Sets whether the widget is visible.
+Sets whether to allow the card to be visible.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
-| Name| Type                                         | Mandatory| Description                                  |
+| Name | Type                                          | Mandatory | Description                                   |
 | ------ | --------------------------------------------- | ---- | -------------------------------------- |
-| value  | [Visibility](ts-appendix-enums.md#visibility) | Yes  | Whether the widget is visible.<br>Default value: **Visible**|
+| value  | [Visibility](ts-appendix-enums.md#visibility) | Yes   | Whether to allow the card to be visible.<br/>Default value: **Visible** |
 
 ### colorMode<sup>23+</sup>
 
 colorMode(value: FormColorMode)
 
-Sets the color mode for the widget.
+Sets the card color mode.
 
 **System API**: This is a system API.
 
@@ -262,83 +267,83 @@ Sets the color mode for the widget.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Parameters**
+**Parameters** 
 
-| Name| Type                                         | Mandatory| Description                                  |
+| Name | Type                                          | Mandatory | Description                                   |
 | ------ | --------------------------------------------- | ---- | -------------------------------------- |
-| value  | [FormColorMode](#formcolormode23) | Yes  | Color mode of the widget.|
+| value  | [FormColorMode](#formcolormode23) | Yes   | Card color mode. |
 
 ## Events
 
 ### onAcquired
 
-onAcquired(callback:&nbsp;Callback[\<FormCallbackInfo>](#formcallbackinfo12))&nbsp;
+onAcquired(callback:&nbsp;Callback<[FormCallbackInfo](#formcallbackinfo12)>)&nbsp;
 
-Triggered when the widget is obtained.
+Called when the card is acquired.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
-| Name| Type                               | Mandatory| Description      |
+| Name | Type                                | Mandatory | Description       |
 | ------ | ----------------------------------- | ---- | ---------- |
-| callback | Callback<[FormCallbackInfo](#formcallbackinfo12)> | Yes  | Callback used to obtain the **FormCallbackInfo** object.|
+| callback | Callback<[FormCallbackInfo](#formcallbackinfo12)> | Yes   | Callback function used to obtain the FormCallbackInfo object. |
 
 ### onError<sup>18+</sup>
 
 onError(callback: Callback\<ErrorInformation\>)
 
-Triggered when a widget loading error occurs.
+Callback invoked when the card fails to load.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
-| Name| Type                                                        | Mandatory| Description                                           |
+| Name | Type                                                         | Mandatory | Description                                            |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------------------- |
-| callback   | Callback<[ErrorInformation](#errorinformation18)> | Yes  | **errcode**: error code.<br>**msg**: error message.|
+| callback   | Callback<[ErrorInformation](#errorinformation18)> | Yes   | errcode:&nbsp;Error code.<br/>msg:&nbsp;Error message. |
 
 ### onRouter<sup>18+</sup>
 
 onRouter(callback: Callback\<object\>)
 
-Triggered when the widget is tapped.
+Callback for the card click event.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
-| Name | Type| Mandatory| Description                                                        |
+| Name  | Type | Mandatory | Description                                                         |
 |------| - | ---- | ------------------------------------------------------------ |
-| callback | Callback\<object\>  | Yes  | [routerEvent](../js-service-widget-ui/js-service-widget-syntax-hml.md#event-binding) object obtained.|
+| callback | Callback\<object\>  | Yes   | Obtains the [routerEvent](../js-service-widget-ui/js-service-widget-syntax-hml.md#event-binding) object. |
 
 ### onUninstall
 
-onUninstall(callback:&nbsp;Callback[\<FormCallbackInfo>](#formcallbackinfo12))&nbsp;
+onUninstall(callback:&nbsp;Callback<[FormCallbackInfo](#formcallbackinfo12)>)&nbsp;
 
-Triggered when the widget is uninstalled.
+Card uninstall callback.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
-| Name     | Type                               | Mandatory| Description      |
+| Name      | Type                                | Mandatory | Description       |
 |----------| ----------------------------------- | ---- | ---------- |
-| callback | Callback<[FormCallbackInfo](#formcallbackinfo12)> | Yes  | Callback used to obtain the **FormCallbackInfo** object.|
+| callback | Callback<[FormCallbackInfo](#formcallbackinfo12)> | Yes   | Callback function used to obtain the FormCallbackInfo object. |
 
 ### onLoad<sup>18+</sup>
 
 onLoad(callback: VoidCallback)
 
-Triggered when the widget is loaded.
+Callback for the card loading event.
 
 **System API**: This is a system API.
 
@@ -346,15 +351,15 @@ Triggered when the widget is loaded.
 
 **Parameters**
 
-| Name     | Type                               | Mandatory| Description      |
+| Name      | Type                                | Mandatory | Description       |
 |----------| ----------------------------------- | ---- | ---------- |
-| callback | [VoidCallback](ts-types.md#voidcallback12) | Yes  | Callback that returns no value.|
+| callback | [VoidCallback](ts-types.md#voidcallback12) | Yes   | No return value. |
 
 ### onUpdate<sup>18+</sup>
 
-onUpdate(callback:&nbsp;Callback[\<FormCallbackInfo>](#formcallbackinfo12))&nbsp;
+onUpdate(callback:&nbsp;Callback<[FormCallbackInfo](#formcallbackinfo12)>)&nbsp;
 
-Triggered when the widget is updated.
+Callback invoked when the card content is updated.
 
 **System API**: This is a system API.
 
@@ -362,15 +367,15 @@ Triggered when the widget is updated.
 
 **Parameters**
 
-| Name     | Type                               | Mandatory| Description      |
+| Name      | Type                                | Mandatory | Description       |
 |----------| ----------------------------------- | ---- | ---------- |
-| callback | Callback<[FormCallbackInfo](#formcallbackinfo12)> | Yes  | Callback used to obtain the **FormCallbackInfo** object.|
+| callback | Callback<[FormCallbackInfo](#formcallbackinfo12)> | Yes   | Callback function used to obtain the FormCallbackInfo object. |
 
 ## Example
 
- 
+Card example.
 
-This example creates a 2 x 2 widget and registers event callbacks.
+This example creates a 2 x 2 card and registers the event callback.
 ```ts
 // card.ets
 @Entry

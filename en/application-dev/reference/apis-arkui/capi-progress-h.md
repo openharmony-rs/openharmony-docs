@@ -1,12 +1,11 @@
 # progress.h
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Zhang-Dong-hui-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8a65b118b29a0c9d1936c3b96f0e90c33fab49ab translatedAt=2026-08-10T03:36:38.875Z pushedAt=2026-08-10T08:04:18.235Z -->
+<!-- md-trans-meta sourceCommit=976793f1477a1ea1d1147f29cf593c7a491f596e translatedAt=2026-08-27T08:51:37.172Z pushedAt=2026-08-28T06:51:37.936Z -->
 
 ## Overview
 
@@ -43,7 +42,7 @@ Defines enumerations and APIs related to **Progress**, supporting multiple progr
 | Name| Description|
 | -- | -- |
 | [ArkUI_ProgressLinearStyleOption* OH_ArkUI_ProgressLinearStyleOption_Create(void)](#oh_arkui_progresslinearstyleoption_create) | Creates a **ProgressLinearStyleOption** instance. After use, you must call [OH_ArkUI_ProgressLinearStyleOption_Destroy](#oh_arkui_progresslinearstyleoption_destroy) to release resources and avoid memory leaks. |
-| [void OH_ArkUI_ProgressLinearStyleOption_Destroy(ArkUI_ProgressLinearStyleOption* option)](#oh_arkui_progresslinearstyleoption_destroy) | Destroys a **ProgressLinearStyleOption** instance. This API must be used in pair with [OH_ArkUI_ProgressLinearStyleOption_Create](#oh_arkui_progresslinearstyleoption_create). The **option** parameter should be obtained through **Create()**, and the object should not be used after **Destroy()** is called. |
+| [void OH_ArkUI_ProgressLinearStyleOption_Destroy(ArkUI_ProgressLinearStyleOption* option)](#oh_arkui_progresslinearstyleoption_destroy) | Destroys a **ProgressLinearStyleOption** instance. This API must be used in pair with [OH_ArkUI_ProgressLinearStyleOption_Create](#oh_arkui_progresslinearstyleoption_create). The **option** parameter should be obtained through **OH_ArkUI_ProgressLinearStyleOption_Create()**, and the object should not be used after **OH_ArkUI_ProgressLinearStyleOption_Destroy()** is called. |
 | [void OH_ArkUI_ProgressLinearStyleOption_SetSmoothEffectEnabled(ArkUI_ProgressLinearStyleOption* option, bool enabled)](#oh_arkui_progresslinearstyleoption_setsmootheffectenabled) | Sets whether to enable the smooth effect.|
 | [void OH_ArkUI_ProgressLinearStyleOption_SetScanEffectEnabled(ArkUI_ProgressLinearStyleOption* option, bool enabled)](#oh_arkui_progresslinearstyleoption_setscaneffectenabled) | Sets whether to enable the scan effect. This API is applicable to loading scenarios that require enhanced visual feedback of the progress indicator, such as data loading and file upload. The scan effect refers to the dynamic visual effect of a light beam scanning across the progress indicator. |
 | [void OH_ArkUI_ProgressLinearStyleOption_SetStrokeWidth(ArkUI_ProgressLinearStyleOption* option, float strokeWidth)](#oh_arkui_progresslinearstyleoption_setstrokewidth) | Sets the stroke width for a progress indicator.|
@@ -75,6 +74,7 @@ Enumerates progress indicator types.
 | ARKUI_PROGRESS_TYPE_SCALE_RING = 3 | Ring type with scale marks, which displays a clock-like progress effect. |
 | ARKUI_PROGRESS_TYPE_CAPSULE = 4 | Capsule type. The progress effect at both rounded ends is the same as **ARKUI_PROGRESS_TYPE_ECLIPSE**, and the progress effect in the middle section is the same as **ARKUI_PROGRESS_TYPE_LINEAR**. |
 
+
 ## Function Description
 
 ### OH_ArkUI_ProgressLinearStyleOption_Create()
@@ -103,7 +103,7 @@ void OH_ArkUI_ProgressLinearStyleOption_Destroy(ArkUI_ProgressLinearStyleOption*
 
 **Description**
 
-Destroys a **ProgressLinearStyleOption** instance. This API must be used in pair with [OH_ArkUI_ProgressLinearStyleOption_Create](#oh_arkui_progresslinearstyleoption_create). The **option** parameter should be obtained through **Create()**, and the object should not be used after **Destroy()** is called.
+Destroys a **ProgressLinearStyleOption** instance. This API must be used in pair with [OH_ArkUI_ProgressLinearStyleOption_Create](#oh_arkui_progresslinearstyleoption_create). The **option** parameter should be obtained through **OH_ArkUI_ProgressLinearStyleOption_Create()**, and the object should not be used after **OH_ArkUI_ProgressLinearStyleOption_Destroy()** is called.
 
 **Since:** 15
 
@@ -284,3 +284,5 @@ Obtains the corner radius of the progress indicator.
 | Type| Description|
 | -- | -- |
 | float | Corner radius of the progress indicator, in vp.|
+
+

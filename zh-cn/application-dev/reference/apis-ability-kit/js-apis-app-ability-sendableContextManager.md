@@ -43,7 +43,7 @@ import { sendableContextManager } from '@kit.AbilityKit';
 
 type SendableContext = _SendableContext
 
-Sendable上下文，符合[Sendable协议](../../arkts-utils/arkts-sendable.md#sendable协议)，继承自[lang.ISendable](../apis-arkts/js-apis-arkts-lang.md#langisendable)。
+Sendable上下文，符合[Sendable协议](../../arkts-utils/arkts-sendable.md#sendable协议)，继承自[lang.ISendable](../apis-arkts/js-apis-arkts-lang.md#isendable)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 

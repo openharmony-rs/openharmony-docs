@@ -41,7 +41,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [ArkUI_TextAlignment](#arkui_textalignment) | ArkUI_TextAlignment | 定义字体水平对齐样式枚举值。 |
+| [ArkUI_TextAlignment](#arkui_textalignment) | ArkUI_TextAlignment | 定义文本水平对齐样式枚举值。 |
 | [ArkUI_TextVerticalAlignment](#arkui_textverticalalignment) | ArkUI_TextVerticalAlignment | 定义文本垂直对齐样式枚举值。 |
 | [ArkUI_TextContentAlign](#arkui_textcontentalign) | ArkUI_TextContentAlign | 定义文本内容区垂直对齐样式枚举值。 |
 | [ArkUI_TextDirection](#arkui_textdirection) | ArkUI_TextDirection | 定义文本排版方向枚举值。 |

@@ -238,7 +238,7 @@ void OH_ArkUI_TextMarqueeOptions_Dispose(ArkUI_TextMarqueeOptions* option)
 
 **描述**
 
-销毁文本跑马灯模式配置项指针。与[OH_ArkUI_TextMarqueeOptions_Create](#oh_arkui_textmarqueeoptions_create)成对使用，否则会导致内存泄漏。
+销毁文本跑马灯模式配置项对象。与[OH_ArkUI_TextMarqueeOptions_Create](#oh_arkui_textmarqueeoptions_create)成对使用，否则会导致内存泄漏。
 
 **起始版本：** 23
 
@@ -351,7 +351,7 @@ void OH_ArkUI_TextMarqueeOptions_SetSpacing(ArkUI_TextMarqueeOptions* option, fl
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | 文本跑马灯模式配置项。 |
-| float spacing | 首尾间距。单位：vp。取值范围：[0, +∞)，超出取值范围时取48.0vp。默认值：48.0vp。设置后，跑马灯滚动一轮结束时，首尾文字之间的间隔距离为该间距值。建议根据显示区域宽度设置。 |
+| float spacing | 首尾间距。单位：vp。取值范围：[0, +∞)，小于0时取默认值48.0vp。默认值：48.0vp。设置后，跑马灯滚动一轮结束时，首尾文字之间的间隔距离为该间距值。建议根据显示区域宽度设置。 |
 
 ### OH_ArkUI_TextMarqueeOptions_GetSpacing()
 
@@ -728,7 +728,7 @@ void OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight(OH_ArkUI_FontWeightC
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* option | 指向待修改的文本字体粗细配置对象的指针。 |
-| bool enable | 是否启用可变字重调节。true表示启用可变字重调节。此时如果通过相关接口设置的字重weight取值为[100, 900]范围内任意整数，则字重取值为weight，否则取默认值400。false表示禁用可变字重调节。此时如果设置的字重weight取值为[100, 900]范围内的整百数值，字重取值为weight；weight是非整百数值时，字重取默认值400。默认值为false。 |
+| bool enable | 是否启用可变字重调节。默认值为false。true表示启用可变字重调节，此时若设置的字重weight为[100, 900]范围内任意整数，则取该值，否则取默认值400。false表示禁用，此时weight仅支持整百数值[100, 900]，非整百数值时取默认值400。 |
 
 ### OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight()
 
@@ -854,7 +854,7 @@ void OH_ArkUI_FontConfigs_SetFontWeightConfigs(OH_ArkUI_FontConfigs* option, OH_
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_FontConfigs](capi-arkui-nativemodule-oh-arkui-fontconfigs.md)* option | 指向待修改的文本字体配置对象的指针。 |
-| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* fontWeightConfigs | 文本字体粗细配置。当该配置不为空指针时，若用户未显式设置，各项配置将使用默认值（可变字重调节默认为禁用，文本字体粗细跟随设备字体粗细级别更新默认为启用）；字重weight可通过相关接口设置，取值范围为[100, 900]。当该配置为空指针时，不应用上述默认值，文本字体粗细行为与父组件保持一致。 |
+| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* fontWeightConfigs | 文本字体粗细配置。当该配置不为空指针时，若用户未显式设置，各项配置将使用默认值（可变字重调节默认为禁用，文本字体粗细跟随设备字体粗细级别更新默认为启用）。当该配置为空指针时，不应用上述默认值，文本字体粗细行为与父组件保持一致。 |
 
 ### OH_ArkUI_FontConfigs_GetFontWeightConfigs()
 

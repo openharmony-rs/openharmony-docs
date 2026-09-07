@@ -641,8 +641,8 @@ int32_t OH_NetConn_RegisterNetConnCallback(NetConn_NetSpecifier *specifier, NetC
 
 | 参数项 | 描述 |
 | -- | -- |
-| netSpecifier | 网络特征集。 |
-| callback | 注册的回调函数集合。 |
+| [NetConn_NetSpecifier](capi-netconnection-netconn-netspecifier.md) *netSpecifier | 网络特征集。 |
+| [NetConn_NetConnCallback](capi-netconnection-netconn-netconncallback.md) *callback | 注册的回调函数集合。 |
 | uint32_t timeout | 超时时间，单位为毫秒，为0时表示无限等待。 |
 | uint32_t *callbackId | 出参，对应本次注册成功的回调。 |
 
@@ -673,7 +673,7 @@ int32_t OH_NetConn_RegisterDefaultNetConnCallback(NetConn_NetConnCallback *netCo
 
 | 参数项 | 描述 |
 | -- | -- |
-| callback | 注册的回调函数集合。 |
+| [NetConn_NetConnCallback](capi-netconnection-netconn-netconncallback.md) *callback | 注册的回调函数集合。 |
 | uint32_t *callbackId | 出参，对应本次注册成功的回调。 |
 
 **返回：**

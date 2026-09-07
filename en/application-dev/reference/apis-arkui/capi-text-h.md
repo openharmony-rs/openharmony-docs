@@ -1,12 +1,11 @@
 # text.h
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Zhang-Dong-hui-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8a65b118b29a0c9d1936c3b96f0e90c33fab49ab translatedAt=2026-08-10T03:42:27.988Z pushedAt=2026-08-11T03:16:08.083Z -->
+<!-- md-trans-meta sourceCommit=5835a654c43d42e4957bbd83eedb5298c773b9b1 translatedAt=2026-08-29T09:16:43.134Z pushedAt=2026-08-31T02:16:36.408Z -->
 
 ## Overview
 
@@ -35,6 +34,7 @@ Defines enumerations and APIs related to **Text** for configuring text styles, c
 | [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md) | OH_ArkUI_FontWeightConfigs | Defines the font weight configurations of text, which is suitable for scenarios that require precise control over text font weight or where the text font weight needs to follow device font setting changes. You can create a text font weight configuration object through [OH_ArkUI_FontWeightConfigs_Create](#oh_arkui_fontweightconfigs_create), and must call [OH_ArkUI_FontWeightConfigs_Destroy](#oh_arkui_fontweightconfigs_destroy) to destroy the object and release resources after use to avoid memory leaks. After the configuration object is created, you can set and query the information through the following APIs: use [OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight](#oh_arkui_fontweightconfigs_setenablevariablefontweight) to set whether to enable variable font weight adjustment, use [OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight](#oh_arkui_fontweightconfigs_getenablevariablefontweight) to check whether variable font weight adjustment is enabled, use [OH_ArkUI_FontWeightConfigs_SetEnableDeviceFontWeightCategory](#oh_arkui_fontweightconfigs_setenabledevicefontweightcategory) to set whether the text font weight is updated with the font weight level of the device, and use [OH_ArkUI_FontWeightConfigs_GetEnableDeviceFontWeightCategory](#oh_arkui_fontweightconfigs_getenabledevicefontweightcategory) to check whether the text font weight is updated with the font weight level of the device. When this configuration object is used and is not a null pointer, if the user does not explicitly make the configuration through the APIs, each configuration item uses its default value (variable font weight adjustment is disabled by default, and text font weight is updated with the font weight level of the device by default). When this configuration object is a null pointer, the default values are not used, and the text font weight behavior is the same as that of the parent component. |
 | [OH_ArkUI_FontConfigs](capi-arkui-nativemodule-oh-arkui-fontconfigs.md) | OH_ArkUI_FontConfigs | Defines the font configurations of text. Currently, this struct supports setting and getting font weight configuration through related APIs, which is suitable for scenarios that require custom font weight display effects. You can create a font configuration object through [OH_ArkUI_FontConfigs_Create](#oh_arkui_fontconfigs_create), and destroy the font configuration object through [OH_ArkUI_FontConfigs_Destroy](#oh_arkui_fontconfigs_destroy). After the configuration object is created, you can set and query the information through the following APIs: use [OH_ArkUI_FontConfigs_SetFontWeightConfigs](#oh_arkui_fontconfigs_setfontweightconfigs) to set the font weight, and use [OH_ArkUI_FontConfigs_GetFontWeightConfigs](#oh_arkui_fontconfigs_getfontweightconfigs) to obtain the font weight. |
 | [OH_ArkUI_TextController](capi-arkui-nativemodule-oh-arkui-textcontroller.md) | OH_ArkUI_TextController | Defines a text component controller, which is used to control and interact with the text component on the native side. The controller must first be bound to the text component through a node attribute before subsequent operations can be performed. One controller can only be bound to one text component. After binding, the controller manages the style and content of the corresponding text component. You can create a controller object through [OH_ArkUI_TextController_Create](#oh_arkui_textcontroller_create), and must call [OH_ArkUI_TextController_Destroy](#oh_arkui_textcontroller_destroy) to destroy the object and release resources after use. The two APIs must be used in pairs; otherwise, memory leaks will occur. After creating the controller, you can bind it to the text component through a node attribute, and then use APIs such as [OH_ArkUI_TextController_SetStyledString](capi-native-type-h.md#oh_arkui_textcontroller_setstyledstring) to set the styled string of the text component, enabling dynamic management and style control of text content. This struct is suitable for scenarios where the text component needs to be operated on the native layer. |
+| [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) | OH_ArkUI_NativeModule_LineSpacingOptions | Defines a text line spacing option object, used to configure whether the text line spacing takes effect only between lines. The line spacing option object can be created through [OH_ArkUI_NativeModule_LineSpacingOptions_Create](#oh_arkui_nativemodule_linespacingoptions_create). After creation, [OH_ArkUI_NativeModule_LineSpacingOptions_Destroy](#oh_arkui_nativemodule_linespacingoptions_destroy) must be called after use to destroy the object to release resources. The two APIs must be used in pairs, otherwise it will cause memory leak. After the object is created, [OH_ArkUI_NativeModule_LineSpacingOptions_SetOnlyBetweenLines](#oh_arkui_nativemodule_linespacingoptions_setonlybetweenlines) can be used to set whether the line spacing takes effect only between lines, and [OH_ArkUI_NativeModule_LineSpacingOptions_GetOnlyBetweenLines](#oh_arkui_nativemodule_linespacingoptions_getonlybetweenlines) can be used to obtain the line spacing configuration. It is applicable to scenarios that require precise control of the text line spacing display effect, such as text display where the first and last lines do not add line spacing in typesetting. |
 
 ### Enums
 
@@ -76,7 +76,7 @@ Defines enumerations and APIs related to **Text** for configuring text styles, c
 | [OH_ArkUI_FontWeightConfigs* OH_ArkUI_FontWeightConfigs_Create()](#oh_arkui_fontweightconfigs_create) | Creates a text font weight configuration object. When the object is no longer used, call [OH_ArkUI_FontWeightConfigs_Destroy](#oh_arkui_fontweightconfigs_destroy) to destroy it and release resources to avoid memory leaks. |
 | [void OH_ArkUI_FontWeightConfigs_Destroy(OH_ArkUI_FontWeightConfigs* option)](#oh_arkui_fontweightconfigs_destroy) | Destroys the text font weight configuration object. This API must be used in pair with [OH_ArkUI_FontWeightConfigs_Create](#oh_arkui_fontweightconfigs_create); otherwise, memory leaks may occur. |
 | [void OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight(OH_ArkUI_FontWeightConfigs* option, bool enable)](#oh_arkui_fontweightconfigs_setenablevariablefontweight) | Sets whether to enable variable font weight adjustment. Variable font weight adjustment allows the font to display weight at any integer value from 100 to 900, enabling finer control over font weight. |
-| [bool OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight(OH_ArkUI_FontWeightConfigs* option)](#oh_arkui_fontweightconfigs_getenablevariablefontweight) | Obtains whether variable weight adjustment is enabled for the text font weight configuration object.|
+| [bool OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight(OH_ArkUI_FontWeightConfigs* option)](#oh_arkui_fontweightconfigs_getenablevariablefontweight) | Obtains whether variable font weight adjustment is enabled for the text font weight configuration object.|
 | [void OH_ArkUI_FontWeightConfigs_SetEnableDeviceFontWeightCategory(OH_ArkUI_FontWeightConfigs* option, bool enable)](#oh_arkui_fontweightconfigs_setenabledevicefontweightcategory) | Sets whether to automatically update the text font weight when the font weight level of the device changes. The font weight level of the device refers to the global font weight configuration in system settings, which users can adjust in the system settings. |
 | [bool OH_ArkUI_FontWeightConfigs_GetEnableDeviceFontWeightCategory(OH_ArkUI_FontWeightConfigs* option)](#oh_arkui_fontweightconfigs_getenabledevicefontweightcategory) | Obtains whether the text font weight is updated along with the font weight level of the device.|
 | [OH_ArkUI_FontConfigs* OH_ArkUI_FontConfigs_Create()](#oh_arkui_fontconfigs_create) | Creates a text font configuration object. When the object is no longer used, call [OH_ArkUI_FontConfigs_Destroy](#oh_arkui_fontconfigs_destroy) to destroy it and release resources to avoid memory leaks. |
@@ -85,6 +85,10 @@ Defines enumerations and APIs related to **Text** for configuring text styles, c
 | [OH_ArkUI_FontWeightConfigs* OH_ArkUI_FontConfigs_GetFontWeightConfigs(OH_ArkUI_FontConfigs* option)](#oh_arkui_fontconfigs_getfontweightconfigs) | Obtains the text font weight configurations of the text font configuration object.|
 | [OH_ArkUI_TextController* OH_ArkUI_TextController_Create()](#oh_arkui_textcontroller_create) | Creates a text controller object. When the object is no longer used, call [OH_ArkUI_TextController_Destroy](#oh_arkui_textcontroller_destroy) to destroy it and release resources to avoid memory leaks. |
 | [void OH_ArkUI_TextController_Destroy(OH_ArkUI_TextController* controller)](#oh_arkui_textcontroller_destroy) | Destroys the text controller object. This API must be used in pair with [OH_ArkUI_TextController_Create](#oh_arkui_textcontroller_create); otherwise, memory leaks may occur. |
+| [OH_ArkUI_NativeModule_LineSpacingOptions* OH_ArkUI_NativeModule_LineSpacingOptions_Create()](#oh_arkui_nativemodule_linespacingoptions_create) | Creates a text line spacing option object. Call [OH_ArkUI_NativeModule_LineSpacingOptions_Destroy](#oh_arkui_nativemodule_linespacingoptions_destroy) to destroy the object after use. |
+| [void OH_ArkUI_NativeModule_LineSpacingOptions_Destroy(OH_ArkUI_NativeModule_LineSpacingOptions* options)](#oh_arkui_nativemodule_linespacingoptions_destroy) | Destroys a text line spacing option object. |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_LineSpacingOptions_SetOnlyBetweenLines(OH_ArkUI_NativeModule_LineSpacingOptions* options, bool onlyBetweenLines)](#oh_arkui_nativemodule_linespacingoptions_setonlybetweenlines) | Sets the **onlyBetweenLines** parameter of the text line spacing options. When set to **true**, line spacing is applied only between lines, with no extra line spacing above the first line or below the last line. When set to **false**, line spacing also exists above the first line and below the last line. |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_LineSpacingOptions_GetOnlyBetweenLines(const OH_ArkUI_NativeModule_LineSpacingOptions* options, bool* onlyBetweenLines)](#oh_arkui_nativemodule_linespacingoptions_getonlybetweenlines) | Obtains the **onlyBetweenLines** parameter of the text line spacing options. |
 
 ## Enum Description
 
@@ -206,6 +210,7 @@ Enumerates marquee update policies.
 | ARKUI_MARQUEEUPDATEPOLICY_DEFAULT = 0 | Restarts the marquee from the start position after the attributes of the marquee component are updated.|
 | ARKUI_MARQUEEUPDATEPOLICY_PRESERVEPOSITION = 1 | Resumes the marquee from the current position after the attributes of the marquee component are updated.|
 
+
 ## Function Description
 
 ### OH_ArkUI_TextMarqueeOptions_Create()
@@ -234,7 +239,7 @@ void OH_ArkUI_TextMarqueeOptions_Dispose(ArkUI_TextMarqueeOptions* option)
 
 **Description**
 
-Disposes of the pointer to the text marquee option object. This API must be used in pair with [OH_ArkUI_TextMarqueeOptions_Create](#oh_arkui_textmarqueeoptions_create); otherwise, memory leaks will occur.
+Disposes of the text marquee option object. This API must be used in pair with [OH_ArkUI_TextMarqueeOptions_Create](#oh_arkui_textmarqueeoptions_create); otherwise, memory leaks will occur.
 
 **Since:** 23
 
@@ -347,7 +352,7 @@ Sets the distance between the start and end items of the text marquee option.
 | Name| Description|
 | -- | -- |
 | [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option object.|
-| float spacing | Spacing between the start and end items. Unit: vp. Value range: [0, +∞). If the value is out of range, **48.0vp** is used. Default value: **48.0vp**. After setting, when the marquee finishes one scroll cycle, the distance between the start and end text is this spacing value. It is recommended to set this value based on the width of the display area. |
+| float spacing | Spacing between the start and end items. Unit: vp. Value range: [0, +∞). If the value is less than 0, the default value **48.0vp** is used. Default value: **48.0vp**. After setting, when the marquee finishes one scroll cycle, the distance between the start and end text is this spacing value. It is recommended to set this value based on the width of the display area. |
 
 ### OH_ArkUI_TextMarqueeOptions_GetSpacing()
 
@@ -357,7 +362,7 @@ float OH_ArkUI_TextMarqueeOptions_GetSpacing(ArkUI_TextMarqueeOptions* option)
 
 **Description**
 
-Obtains the distance between the start and end items of the text marquee option.
+Obtains the spacing between the start and end items of the text marquee option.
 
 **Since:** 23
 
@@ -553,7 +558,7 @@ void OH_ArkUI_TextMarqueeOptions_SetStartPolicy(ArkUI_TextMarqueeOptions* option
 
 **Description**
 
-Sets the startup policy of the text marquee option.
+Sets the start policy of the text marquee option.
 
 **Since:** 23
 
@@ -724,7 +729,7 @@ Sets whether to enable variable font weight adjustment. Variable font weight adj
 | Name| Description|
 | -- | -- |
 | [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* option | Pointer to the text font weight configuration object to be modified.|
-| bool enable | Whether to enable variable font weight adjustment. **true** indicates to enable variable font weight adjustment. If the value of **weight** is any integer in the range of [100, 900], the value of **weight** is used. Otherwise, the default value **400** is used. **false** indicates to disable variable font weight adjustment. If the value of **weight** is an integer multiple of 100 in the range of [100, 900], the value of **weight** is used. Otherwise, the default value **400** is used. The default value is **false**. |
+| bool enable | Whether to enable variable font weight adjustment. The default value is **false**. The value true means to enable variable font weight adjustment. In this case, if the value of **weight** is any integer in the range [100, 900], the value is used; otherwise, the default value **400** is used. The value **false** means to disable variable font weight adjustment. In this case, the value of **weight** can only be multiples of 100 in the range [100, 900]; for a non-multiple of 100, the default value **400** is used. |
 
 ### OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight()
 
@@ -734,7 +739,7 @@ bool OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight(OH_ArkUI_FontWeightC
 
 **Description**
 
-Obtains whether variable weight adjustment is enabled for the text font weight configuration object.
+Obtains whether variable font weight adjustment is enabled for the text font weight configuration object.
 
 **Since:** 24
 
@@ -850,7 +855,7 @@ Sets the text font weight configurations for the text font configuration object.
 | Name| Description|
 | -- | -- |
 | [OH_ArkUI_FontConfigs](capi-arkui-nativemodule-oh-arkui-fontconfigs.md)* option | Pointer to the text font configuration object to be modified.|
-| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* fontWeightConfigs | Pointer to the text font weight configuration object. When the value is not a null pointer, if the user does not explicitly make configurations, the default values of the parameters are used (that is, variable font weight adjustment is disabled by default, and the text font weight is updated based on the device font weight level by default), and the value of **weight** is within [100, 900]. When the value is a null pointer, the default values are not used, and the text font weight behavior is the same as that of the parent component. |
+| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* fontWeightConfigs | Pointer to the text font weight configuration. When this parameter is not a null pointer, if the user does not explicitly set it, each configuration item uses the default value (variable font weight adjustment is disabled by default, and the text font weight following the device font weight level update is enabled by default). When this parameter is a null pointer, the above default values are not applied, and the text font weight behavior keeps consistent with that of the parent component. |
 
 ### OH_ArkUI_FontConfigs_GetFontWeightConfigs()
 
@@ -911,3 +916,89 @@ Destroys the text controller object. This API must be used in pair with [OH_ArkU
 | Name| Description|
 | -- | -- |
 | [OH_ArkUI_TextController](capi-arkui-nativemodule-oh-arkui-textcontroller.md)* controller | Pointer to the text component controller object.|
+
+### OH_ArkUI_NativeModule_LineSpacingOptions_Create()
+
+```c
+OH_ArkUI_NativeModule_LineSpacingOptions* OH_ArkUI_NativeModule_LineSpacingOptions_Create()
+```
+
+**Description**
+
+Creates a text line spacing option object. After use, call [OH_ArkUI_NativeModule_LineSpacingOptions_Destroy](#oh_arkui_nativemodule_linespacingoptions_destroy) to destroy the object.
+
+**Since**: 26.1.0
+
+**Return value**
+
+| Type | Description |
+| -- | -- |
+| [OH_ArkUI_NativeModule_LineSpacingOptions*](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) | Pointer to the [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) object. |
+
+### OH_ArkUI_NativeModule_LineSpacingOptions_Destroy()
+
+```c
+void OH_ArkUI_NativeModule_LineSpacingOptions_Destroy(OH_ArkUI_NativeModule_LineSpacingOptions* options)
+```
+
+**Description**
+
+Destroys a text line spacing option object.
+
+**Since**: 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md)* options | Pointer to the [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) object. |
+
+### OH_ArkUI_NativeModule_LineSpacingOptions_SetOnlyBetweenLines()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_NativeModule_LineSpacingOptions_SetOnlyBetweenLines(OH_ArkUI_NativeModule_LineSpacingOptions* options, bool onlyBetweenLines)
+```
+
+**Description**
+
+Sets the **onlyBetweenLines** parameter of the text line spacing options. When set to **true**, the line spacing is applied only between lines, with no extra line spacing above the first line or below the last line. When set to **false**, line spacing also exists above the first line and below the last line.
+
+**Since**: 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md)* options | Pointer to the [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) object. |
+| bool onlyBetweenLines | Whether the line spacing is applied only between lines. The value **true** indicates that the line spacing is applied only between lines, and **false** indicates that line spacing also exists above the first line and below the last line. The default value is **false**. |
+
+**Return value**
+
+| Type | Description |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful. Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the **options** parameter is a null pointer. |
+
+### OH_ArkUI_NativeModule_LineSpacingOptions_GetOnlyBetweenLines()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_NativeModule_LineSpacingOptions_GetOnlyBetweenLines(const OH_ArkUI_NativeModule_LineSpacingOptions* options, bool* onlyBetweenLines)
+```
+
+**Description**
+
+Obtains the **onlyBetweenLines** parameter of the text line spacing options.
+
+**Since**: 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| const [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md)* options | Pointer to the [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) object. |
+| bool* onlyBetweenLines | Output parameter, which is a pointer to a variable of the bool type, used to receive the value. The value **true** indicates that the line spacing is applied only between lines, and the value **false** indicates that the line spacing also exists above the first line and below the last line. The default value is **false**. |
+
+**Return value**
+
+| Type | Description |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful. Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if any parameter is a null pointer. |

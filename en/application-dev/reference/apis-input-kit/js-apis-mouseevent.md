@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:24:52.012Z pushedAt=2026-06-12T08:35:47.756Z -->
+<!-- md-trans-meta sourceCommit=9a1cb1c28d6db83260f62725623fc8e88729c2c6 translatedAt=2026-09-01T01:21:46.196Z pushedAt=2026-09-03T08:36:09.592Z -->
 
 The **mouseEvent** module provides mouse events reported by a device. It is inherited from [InputEvent](./js-apis-inputevent.md).
 
@@ -17,7 +17,7 @@ The **mouseEvent** module provides mouse events reported by a device. It is inhe
 ## Modules to Import
 
 ```js
-import { Action, Button, Axis, AxisValue, MouseEvent } from '@kit.InputKit';
+import { MouseAction, Button, Axis, AxisValue, MouseToolType, MouseEvent } from '@kit.InputKit';
 ```
 
 ## Action

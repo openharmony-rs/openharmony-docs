@@ -1661,3 +1661,17 @@ Allows an application on the rear display to call spatial gesture APIs to enable
 **Supported devices**: cars
  
 **Since**: 26.1.0
+
+## ohos.permission.LOCAL_DEBUG_OTHER_APPS
+
+Allows an application to use the aa tool to debug other applications locally in developer mode.
+
+<!--RP107--><!--RP107End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices | tablets
+
+**Since**: 26.1.0

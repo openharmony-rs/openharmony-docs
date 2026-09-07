@@ -88,7 +88,7 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 | ---- | ---- | ---- | --- | -------------------------- |
 | rules | Array<[SuppressWarningsType](#suppresswarningstype23)> | 否 | 否 | 支持告警消除的规则集合，用于指定需要抑制的告警类型。可通过数组传入多个规则同时抑制多种告警，数组至少包含一个元素。可选取值参见[SuppressWarningsType](#suppresswarningstype23)。建议仅在明确告警不影响应用功能或已做兼容性处理时使用，避免掩盖潜在问题。|
 
-**注解使用示例：**
+**示例：**
 
 <!--RP2-->
 兼容性告警消除预置条件：OpenHarmony工程根目录下，build-profile.json5文件设置的compatibleSdkVersion值为20。
@@ -106,6 +106,7 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
   import { SuppressWarnings, SuppressWarningsType, systemDateTime } from '@kit.BasicServicesKit';
   import { photoAccessHelper } from '@kit.MediaLibraryKit';
   import { common } from '@kit.AbilityKit';
+  // 注解场景
   // 兼容性告警消除部分
   systemDateTime.getAutoTimeStatus();  // 该接口起始版本为21，直接调用会生成兼容性告警。
   // The 'getAutoTimeStatus' API is supported since SDK version 21. However, the current compatible SDK version is 20.
@@ -154,7 +155,7 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 >
 > 不支持屏蔽容器节点下的子节点
 
-**注释使用示例：**
+**示例：**
 
 <!--RP3-->
 兼容性告警消除预置条件：OpenHarmony工程根目录下，build-profile.json5文件设置的compatibleSdkVersion值为20。
@@ -166,6 +167,7 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
   import { systemDateTime } from '@kit.BasicServicesKit';
   import { photoAccessHelper } from '@kit.MediaLibraryKit';
   import { common } from '@kit.AbilityKit';
+  // 注释场景
   // 兼容性告警消除部分
   systemDateTime.getAutoTimeStatus();  // 该接口起始版本为21，直接调用会生成兼容性告警。
   // The 'getAutoTimeStatus' API is supported since SDK version 21. However, the current compatible SDK version is 20.

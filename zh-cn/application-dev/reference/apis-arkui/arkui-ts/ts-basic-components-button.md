@@ -836,20 +836,55 @@ import { uiMaterial } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
-  build() {
+  @Builder
+  NavigationTitle() {
     Column() {
       Button('helloWorld')
         .width(200)
+        .fontColor(Color.Black)
         .systemMaterial(new uiMaterial.ImmersiveMaterial({
           style: uiMaterial.ImmersiveStyle.THIN
         }))
+        .backgroundColor('#7755bbff')
     }
-    .padding({ top: 50 })
     .width('100%')
     .height('100%')
-    // 请开发者替换为实际资源文件
-    .backgroundImage($r("app.media.img"))
-    .backgroundImageSize({ height: '100%' })
+  }
+
+  build() {
+    Column() {
+      Navigation() {
+        Row() {
+          Column()
+            .width('50%')
+            .height('100%')
+            .background(Color.White)
+
+          Column()
+            .width('50%')
+            .height('100%')
+            .background(Color.Black)
+        }
+        .height('100%')
+        .width('100%')
+        .margin({ top: 12, left: '10%' })
+      }
+      .title(this.NavigationTitle, {
+        systemMaterial: new uiMaterial.ImmersiveMaterial({
+          style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+          colorInvert: true,
+          interactive: true,
+          lightEffect: {}
+        }),
+        // systemMaterial和barStyle没有关联性，但是同时设置barStyle为STACK样式可获得最佳沉浸效果
+        barStyle: BarStyle.STACK
+      })
+      .hideTitleBar(false)
+      .titleMode(NavigationTitleMode.Free)
+      .onTitleModeChange((titleModel: NavigationTitleMode) => {
+        console.info('titleMode' + titleModel)
+      })
+    }
   }
 }
 ```

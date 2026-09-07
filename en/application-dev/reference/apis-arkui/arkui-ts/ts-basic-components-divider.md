@@ -2,9 +2,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zju_ljz-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=75a7d62c0702c21a06ca0119552a942305a023cc translatedAt=2026-09-03T03:53:30.367Z -->
 
 The **Divider** component is used to separate content blocks and content elements.
 
@@ -76,6 +77,12 @@ strokeWidth(value: number | string)
 
 Sets the stroke width of the divider. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
+> **NOTE**
+> - The width of the divider does not support percentage settings.
+> - When a horizontal divider is used, strokeWidth controls the height, and its priority is lower than that of the universal attribute [height](ts-universal-attributes-size.md#height). When a vertical divider is used, strokeWidth controls the width, and its priority is lower than that of the universal attribute [width](ts-universal-attributes-size.md#width).
+> - If the size exceeds the value set by the universal attribute, the divider is clipped based on the universal attribute.
+> - If the divider is not displayed due to 1-pixel rounding on the device hardware, 2 pixels are recommended.
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -86,7 +93,7 @@ Sets the stroke width of the divider. This attribute can be dynamically set usin
 
 | Name| Type                      | Mandatory| Description                                                        |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
-| value  | number \| string | Yes  | Stroke width of the divider.<br>Default value: **1px**<br>Invalid values are treated as the default value.<br>Unit: vp<br>**NOTE**<br>Percentage values are not supported. This attribute has lower priority than the [height](ts-universal-attributes-size.md#height) attribute. If its value exceeds the **height** setting, cropping is performed based on the **height** constraint. Due to hardware limitations on some devices where 1 px dividers may not display properly after rounding, you are advised to use the **2px** value.|
+| value  | number&nbsp;\|&nbsp;string | Yes   | Divider width.<br/>Default value: 1px  <br />Invalid values: handled based on default values. <br/>Unit: vp |
 
 ### lineCap
 
@@ -186,7 +193,7 @@ struct DividerExample {
 }
 ```
 
-![divider1](figures/divider1.png)
+![divider](figures/divider.png)
 
 ### Example 2: Configuring the Divider Line Cap Style
 
