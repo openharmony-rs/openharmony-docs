@@ -122,3 +122,18 @@ EnterpriseAdminExtensionContext是[EnterpriseAdminExtensionAbility](js-apis-Ente
 | functionName        | string       | 否   | 否 | 接口名称。例如调用[setPasswordPolicy](./js-apis-enterprise-securityManager.md#securitymanagersetpasswordpolicy)接口时，该字段返回值为setPasswordPolicy。            |
 | parameters        | string       | 否   | 否 | 调用接口时传入的参数值（不包含admin参数），JSON格式字符串。例如调用[setPasswordPolicy](./js-apis-enterprise-securityManager.md#securitymanagersetpasswordpolicy)接口，该字段返回值为{"policy":{"complexityRegex":"^(?=.\*[a-zA-Z])(?=.\*\\\\d).{8},$","validityPeriod":1808309786000,"additionalDescription":"至少8个字符，且包含数字和字母。"}}。            |
 | time        | number       | 否   | 否 | 调用接口的时间戳，单位：ms。           |
+
+## QueryPolicy
+
+获取策略。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+| 名称         | 值 | 说明                            |
+| ----------- | -------- | ------------------------------- |
+| SELF | 0  | 当前Admin设置的策略。|
+| ALL | 1  | 全部Admin设置的策略。|
