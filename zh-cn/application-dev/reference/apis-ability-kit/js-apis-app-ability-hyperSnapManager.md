@@ -26,7 +26,7 @@
 import { hyperSnapManager } from '@kit.AbilityKit';
 ```
 
-## HyperSnapErrorType<sup>26.1.0+</sup>
+## HyperSnapErrorType<sup>26.0.1</sup>
 
 快启错误场景类型的枚举。
 
@@ -36,10 +36,10 @@ import { hyperSnapManager } from '@kit.AbilityKit';
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| CREATE_SNAPSHOT | 0 | 快启初始化过程中创建镜像出现错误的场景类型。 |
-| FORK_FROM_SNAPSHOT | 1 | 快启过程中从镜像生成进程期间发生错误的场景类型。 |
+| CREATE_SNAPSHOT | 0 | 快启初始化过程中创建快照出现错误的场景类型。 |
+| FORK_FROM_SNAPSHOT | 1 | 快启过程中从快照生成进程期间发生错误的场景类型。 |
 
-## HyperSnapErrorCode<sup>26.1.0+</sup>
+## HyperSnapErrorCode<sup>26.0.1</sup>
 
 快启错误码的枚举。
 
@@ -51,14 +51,14 @@ import { hyperSnapManager } from '@kit.AbilityKit';
 | -------- | -------- | -------- |
 | ERR_OK | 0 | 快启未发生错误，或未触发快启 |
 | ERR_SYSTEM_INNER | 1 | 系统内部错误。 |
-| ERR_SNAPSHOT_EXIST | 2 | 快启镜像已制作成功，非法再次触发进行快启初始化过程 |
+| ERR_SNAPSHOT_EXIST | 2 | 快启初始化过程已成功制作快照，非法再次触发进行快启初始化过程 |
 | ERR_PROCESS_IS_RUNNING | 3 | 系统在准备进行应用快启初始化时，应用进程正在运行中。 |
-| ERR_SNAPSHOT_PROCESS_IS_DIED | 4 | 快启制作镜像的过程中，用于制作镜像的进程被终止。 |
+| ERR_SNAPSHOT_PROCESS_IS_DIED | 4 | 快启初始化制作快照的过程中，用于制作快照的进程被终止。 |
 | ERR_SNAPSHOT_IS_INTERRUPTED | 5 | 系统在准备进行应用快启初始化时，用户启动应用 |
 | ERR_EXISTS_ILLEGAL_BINDER | 6 | 应用存在非法的Binder。 |
 | ERR_LAST_PROCESS_NOT_FULLY_EXITED | 7 | 上一个应用进程未完全退出。 |
 
-## HyperSnapErrorInfo<sup>26.1.0+</sup>
+## HyperSnapErrorInfo<sup>26.0.1</sup>
 
 描述快启的错误信息。
 
@@ -70,7 +70,7 @@ import { hyperSnapManager } from '@kit.AbilityKit';
 | -------- | -------- | -------- | -------- |
 | code | HyperSnapErrorCode | 是 | 错误码。 |
 | msg | string | 是 | 错误消息。 |
-| occurTimeStamp | long | 是 | 发生错误时的时间戳，即自Unix纪元（1970-01-01 00:00:00 UTC）以来经过的时间，单位为毫秒，取值为整数。 |
+| occurTimeStamp | number | 是 | 发生错误时的时间戳，即自Unix纪元（1970-01-01 00:00:00 UTC）以来经过的时间，单位为毫秒，取值为整数。 |
 
 ## hyperSnapManager.setHyperSnapEnabled
 
@@ -155,7 +155,7 @@ try {
 }
 ```
 
-## hyperSnapManager.getLastError<sup>26.1.0+</sup>
+## hyperSnapManager.getLastError<sup>26.0.1</sup>
 
 getLastError(errType: HyperSnapErrorType): Promise&lt;HyperSnapErrorInfo&gt;
 
@@ -166,7 +166,7 @@ getLastError(errType: HyperSnapErrorType): Promise&lt;HyperSnapErrorInfo&gt;
 > - 每个场景的错误信息独立存储，互不影响；该场景已存储的错误信息会在后续快启操作成功后被清除。
 > - 设备重启后，所有错误信息都会被清除。
 > - 若指定场景未发生过错误，则返回的errorInfo中code的值为ERR_OK，occurTimeStamp的值为0。
-> - 只保留应用最后一次快启相关错误，不区分具体是哪一个快启镜像。
+> - 只保留应用最后一次快启相关错误，不区分具体是哪一个快照。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
