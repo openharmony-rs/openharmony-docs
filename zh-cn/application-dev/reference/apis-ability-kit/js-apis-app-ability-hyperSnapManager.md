@@ -6,7 +6,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-应用启动过程中的初始化流程可以提前进行快启初始化，快启启动的应用不再重复执行初始化流程，从而起到加速启动的作用。hyperSnapManager模块提供应用快启管理的能力，包括启用或禁用应用的快启功能、请求重新初始化应用快启等。
+应用启动过程中的初始化流程可以提前进行快启初始化，快启启动的应用不再重复执行初始化流程，从而起到加速启动的作用。hyperSnapManager模块提供应用快启管理的能力，包括启用或禁用应用的快启功能、请求重新初始化应用快启、查询快启错误信息等。
 
 > **说明：**
 >
@@ -25,6 +25,52 @@
 ```ts
 import { hyperSnapManager } from '@kit.AbilityKit';
 ```
+
+## HyperSnapErrorType<sup>26.0.1</sup>
+
+快启错误场景类型的枚举。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**模型约束**：仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| CREATE_SNAPSHOT | 0 | 快启初始化过程中创建快照出现错误的场景类型。 |
+| FORK_FROM_SNAPSHOT | 1 | 快启过程中从快照生成进程期间发生错误的场景类型。 |
+
+## HyperSnapErrorCode<sup>26.0.1</sup>
+
+快启错误码的枚举。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**模型约束**：仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| ERR_OK | 0 | 快启未发生错误，或未触发快启 |
+| ERR_SYSTEM_INNER | 1 | 系统内部错误。 |
+| ERR_SNAPSHOT_EXIST | 2 | 快启初始化过程已成功制作快照，非法再次触发进行快启初始化过程 |
+| ERR_PROCESS_IS_RUNNING | 3 | 系统在准备进行应用快启初始化时，应用进程正在运行中。 |
+| ERR_SNAPSHOT_PROCESS_IS_DIED | 4 | 快启初始化制作快照的过程中，用于制作快照的进程被终止。 |
+| ERR_SNAPSHOT_IS_INTERRUPTED | 5 | 系统在准备进行应用快启初始化时，用户启动应用 |
+| ERR_EXISTS_ILLEGAL_BINDER | 6 | 应用存在非法的Binder。 |
+| ERR_LAST_PROCESS_NOT_FULLY_EXITED | 7 | 上一个应用进程未完全退出。 |
+
+## HyperSnapErrorInfo<sup>26.0.1</sup>
+
+描述快启的错误信息。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**模型约束**：仅可在Stage模型下使用。
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| code | HyperSnapErrorCode | 是 | 错误码。 |
+| msg | string | 是 | 错误消息。 |
+| occurTimeStamp | number | 是 | 发生错误时的时间戳，即自Unix纪元（1970-01-01 00:00:00 UTC）以来经过的时间，单位为毫秒，取值为整数。 |
 
 ## hyperSnapManager.setHyperSnapEnabled
 
@@ -106,5 +152,69 @@ try {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
   console.error(`Failed to request Hyper Snap rebuild. Code: ${code}, Message: ${message}`);
+}
+```
+
+## hyperSnapManager.getLastError<sup>26.0.1</sup>
+
+getLastError(errType: HyperSnapErrorType): Promise&lt;HyperSnapErrorInfo&gt;
+
+获取指定场景下当前应用的最后一次快启错误信息。
+
+> **说明：**
+>
+> - 每个场景的错误信息独立存储，互不影响；该场景已存储的错误信息会在后续快启操作成功后被清除。
+> - 设备重启后，所有错误信息都会被清除。
+> - 若指定场景未发生过错误，则返回的errorInfo中code的值为ERR_OK，occurTimeStamp的值为0。
+> - 只保留应用最后一次快启相关错误，不区分具体是哪一个快照。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| errType | HyperSnapErrorType | 是 | 表示快启错误类型。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;HyperSnapErrorInfo&gt; | Promise对象，返回指定场景下当前应用的最后一次快启错误信息。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000050 | Internal error. |
+
+**示例：**
+
+```ts
+import { hyperSnapManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 查询创建快启场景下的最后一次错误信息
+try {
+  hyperSnapManager.getLastError(hyperSnapManager.HyperSnapErrorType.CREATE_SNAPSHOT)
+    .then((errInfo: hyperSnapManager.HyperSnapErrorInfo) => {
+      if (errInfo.code === hyperSnapManager.HyperSnapErrorCode.ERR_OK) {
+        console.info('No Hyper Snap error occurred.');
+        return;
+      }
+      console.info(`Last error code: ${errInfo.code}, msg: ${errInfo.msg}, occurTimeStamp: ${errInfo.occurTimeStamp}`);
+    })
+    .catch((err: BusinessError) => {
+      console.error(`Failed to get last error. Code: ${err.code}, message: ${err.message}`);
+    });
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`Failed to get last error. Code: ${code}, Message: ${message}`);
 }
 ```
