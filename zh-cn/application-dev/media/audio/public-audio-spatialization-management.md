@@ -98,7 +98,7 @@ import { audio } from '@kit.AudioKit';
 
 ArkTS-Sta示例：
 
-<!-- @[check_isspacesoundon](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRendererSampleJS_Sta/entry/src/main/ets/pages/renderer.ets) -->
+<!-- @[check_isspacesoundon](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRendererSampleJS_Sta/entry/src/main/ets/pages/renderer.ets) -->  
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
