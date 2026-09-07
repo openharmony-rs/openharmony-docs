@@ -8170,7 +8170,7 @@ on(event: 'dataChange', type: SubscribeType, listener: Callback&lt;ChangeNotific
 | **错误码ID** | **错误信息**                           |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
-| 15100001     | Over max limits.                     |
+| 15100001     | Over max limits. |
 | 15100005     | Database or result set already closed. |
 
 **示例：**
