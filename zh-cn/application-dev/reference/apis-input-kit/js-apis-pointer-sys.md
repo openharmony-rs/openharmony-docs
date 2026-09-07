@@ -241,7 +241,7 @@ ArkTS-Sta: setPointerSpeedSync(speed: int): void
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| speed | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标移动速度，范围1-20，默认为10。 |
+| speed | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标移动速度，取值范围[1, 20]，默认为10。 |
 
 **错误码**：
 
@@ -513,7 +513,7 @@ ArkTS-Sta: getPointerSpeedSync(): int
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回鼠标移动速度，范围1-20。  |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回鼠标移动速度，取值范围[1, 20]。  |
 
 **错误码**：
 
@@ -1334,7 +1334,7 @@ setMouseScrollRows(rows: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| rows     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                    | 是    | 鼠标滚动行数，范围1-100，默认为3。   |
+| rows     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                    | 是    | 鼠标滚动行数，取值范围[1, 100]，默认为3。   |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置鼠标滚动行数成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
@@ -1432,7 +1432,7 @@ ArkTS-Sta: setMouseScrollRows(rows: int): Promise&lt;void&gt;
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| rows  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标滚动行数，范围1-100，默认为3。 |
+| rows  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标滚动行数，取值范围[1, 100]，默认为3。 |
 
 **返回值**：
 

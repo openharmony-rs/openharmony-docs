@@ -450,7 +450,7 @@ enum Input_Result
 | INPUT_INJECTION_AUTHORIZING = 3900005 | 正在授权中。<br>**起始版本：** 20 |
 | INPUT_INJECTION_OPERATION_FREQUENT = 3900006 | 重复请求。<br>**起始版本：** 20 |
 | INPUT_INJECTION_AUTHORIZED = 3900007 | 当前应用已经授权。<br>**起始版本：** 20 |
-| INPUT_INJECTION_AUTHORIZED_OTHERS = 3900008 | 其它应用已经授权。<br>**起始版本：** 20 |
+| INPUT_INJECTION_AUTHORIZED_OTHERS = 3900008 | 其他应用已经授权。<br>**起始版本：** 20 |
 | INPUT_APP_NOT_FOCUSED = 3900009 | 当前应用不是焦点应用。<br>**起始版本：** 20 |
 | INPUT_DEVICE_NO_POINTER = 3900010 | 无鼠标类输入外设。<br>**起始版本：** 20 |
 | INPUT_INVALID_WINDOWID = 26500001 |  无效的窗口ID。<br>**起始版本：** 22 |
@@ -2050,7 +2050,7 @@ Input_Result OH_Input_RequestInjection(Input_InjectAuthorizeCallback callback)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | 函数返回值，参见[Input_Result](capi-oh-input-manager-h.md#input_result)。<br>      INPUT_SUCCESS = 0 申请授权成功，等待用户授权结果并回调授权状态。<br>      INPUT_PARAMETER_ERROR = 401  参数错误，参数callback为空。<br>      INPUT_DEVICE_NOT_SUPPORTED = 801  表示不支持该功能。<br>      INPUT_SERVICE_EXCEPTION = 3800001  服务异常。<br>      INPUT_INJECTION_AUTHORIZING =  3900005 正在授权中。<br>      INPUT_INJECTION_OPERATION_FREQUENT = 3900006 重复请求（当前应用连续申请授权弹窗成功，间隔时间不超过3秒）。<br>      INPUT_INJECTION_AUTHORIZED = 3900007 当前应用已经授权。<br>      INPUT_INJECTION_AUTHORIZED_OTHERS = 3900008   其它应用已经授权。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | 函数返回值，参见[Input_Result](capi-oh-input-manager-h.md#input_result)。<br>      INPUT_SUCCESS = 0 申请授权成功，等待用户授权结果并回调授权状态。<br>      INPUT_PARAMETER_ERROR = 401  参数错误，参数callback为空。<br>      INPUT_DEVICE_NOT_SUPPORTED = 801  表示不支持该功能。<br>      INPUT_SERVICE_EXCEPTION = 3800001  服务异常。<br>      INPUT_INJECTION_AUTHORIZING =  3900005 正在授权中。<br>      INPUT_INJECTION_OPERATION_FREQUENT = 3900006 重复请求（当前应用连续申请授权弹窗成功，间隔时间不超过3秒）。<br>      INPUT_INJECTION_AUTHORIZED = 3900007 当前应用已经授权。<br>      INPUT_INJECTION_AUTHORIZED_OTHERS = 3900008   其他应用已经授权。 |
 
 ### OH_Input_QueryAuthorizedStatus()
 
@@ -2174,7 +2174,7 @@ Input_Result OH_Input_GetAxisEventAction(const Input_AxisEvent* axisEvent, Input
 | 参数项 | 描述 |
 | -- | -- |
 | const [Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | 轴事件对象，通过[OH_Input_CreateAxisEvent](#oh_input_createaxisevent)接口可以创建轴事件对象。<br>使用完需使用[OH_Input_DestroyAxisEvent](#oh_input_destroyaxisevent)接口销毁轴事件对象。 |
-| [InputEvent_AxisAction](capi-oh-axis-type-h.md#inputevent_axisaction) *action | action 出参，返回轴事件动作，具体请参考在[InputEvent_AxisAction](capi-oh-axis-type-h.md#inputevent_axisaction)。 |
+| [InputEvent_AxisAction](capi-oh-axis-type-h.md#inputevent_axisaction) *action | 出参，返回轴事件动作，具体请参考[InputEvent_AxisAction](capi-oh-axis-type-h.md#inputevent_axisaction)。 |
 
 **返回：**
 
@@ -2673,7 +2673,7 @@ Input_Result OH_Input_AddMouseEventMonitor(Input_MouseEventCallback callback)
 
 添加鼠标事件监听，包含鼠标点击，移动，不包含滚轮事件，滚轮事件归属于轴事件。
 
-该接口处于录屏场景时才允许调用，否则调用该接口不生效。
+应用处于录屏场景时才允许调用该接口，否则调用不生效。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -3552,7 +3552,7 @@ Input_Result OH_Input_GetDevice(int32_t deviceId, Input_DeviceInfo **deviceInfo)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) 表示操作成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示deviceInfo为空指针或deviceId无效。<br> 可以通过 [OH_Input_GetDeviceIds](#oh_input_getdeviceids) 表示接口查询系统支持的设备ID。 |
+| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) 表示操作成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示deviceInfo为空指针或deviceId无效。<br> 可以通过 [OH_Input_GetDeviceIds](#oh_input_getdeviceids) 接口查询系统支持的设备ID。 |
 
 ### OH_Input_CreateDeviceInfo()
 
@@ -3615,7 +3615,7 @@ Input_Result OH_Input_GetKeyboardType(int32_t deviceId, int32_t *keyboardType)
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t deviceId | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
-| int32_t *keyboardType | keyboardType 指向输入设备的键盘指针。 |
+| int32_t *keyboardType | keyboardType 指向输入设备的键盘类型的指针。 |
 
 **返回：**
 
