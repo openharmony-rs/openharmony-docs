@@ -1,12 +1,11 @@
 # Tooltip Control
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=680bf7716703da5d9a1a9e8718e14287307af1ba translatedAt=2026-08-24T07:03:05.125Z pushedAt=2026-08-25T07:34:57.855Z -->
+<!-- md-trans-meta sourceCommit=e6c8f80367b2ac46842bf47d90ff527cf89d1de0 translatedAt=2026-09-02T12:08:40.639Z -->
 
 You can bind a floating tooltip to a component. The tooltip automatically appears when a pointer hovers over the component and disappears when the pointer moves away.
 
@@ -19,7 +18,6 @@ You can bind a floating tooltip to a component. The tooltip automatically appear
 > - Tips control depends on the device being able to trigger [hover events](./ts-universal-events-hover.md). Tips control cannot be used on hardware devices that cannot trigger [hover events](./ts-universal-events-hover.md).
 
 ## bindTips
-
 bindTips(message: TipsMessageType, options?: TipsOptions): T
 
 Binds a tooltip to the component.
@@ -79,10 +77,8 @@ Defines the type of the tooltip message.
 | [ResourceStr](ts-types.md#resourcestr)                     | Type used to represent the types that can be used by input parameters of the string type.|
 | [StyledString](ts-universal-styled-string.md#styledstring) | Styled string.                                  |
 
-## Example
-
+## Examples
 You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
-
 ### Example 1: Binding a Tooltip
 
 This example shows how to bind a tooltip to a button using **bindTips**.
@@ -109,7 +105,6 @@ struct TipsExample {
 ```
 
 ![](figures/tips01.gif)
-
 ### Example 2: Displaying and Hiding Multiple Tooltips
 
 This example demonstrates how to configure multiple tooltips to appear and disappear in sequence using **bindTips**.
@@ -150,9 +145,11 @@ struct TipsExample {
 
 ![](figures/tips02.gif)
 
-### Example 3: Setting the System Material Effect of a Tooltip
+### Example 3: Setting the Immersive Light-Sensing Visual Effect of a Floating Bubble
 
-This example implements the system material effect of **bindTips** by setting the **systemMaterial** attribute in [TipsOptions](#tipsoptions).
+This example sets the system material of a component through the **systemMaterial** attribute in [TipsOptions](#tipsoptions), implementing the immersive light-sensing visual effect of **bindTips**.
+
+The immersive light-sensing effect of a component is adaptively adjusted based on the device computing power and the immersive light-sensing effect set by the user in the system, requiring no additional adaptation by developers.
 
 Since API version 26.0.0, the **systemMaterial** attribute is added to **TipsOptions**.
 
@@ -167,7 +164,7 @@ struct TipsExample {
     Flex({ direction: FlexDirection.Column }) {
       Button('Hover Tips')
         .bindTips("Floating Bubble Test", {
-          // Control whether to set the system material.
+          // Control whether to set the system material interface.
           systemMaterial: new uiMaterial.ImmersiveMaterial({
             style: uiMaterial.ImmersiveStyle.THIN
           })
