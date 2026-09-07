@@ -5,7 +5,7 @@
 <!--Designer: @lingminghw-->
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=c68ee3b9aca136aa0cab50a5bff69a240c48dbd0 translatedAt=2026-09-01T08:40:06.076Z pushedAt=2026-09-04T09:59:21.327Z -->
+<!-- md-trans-meta sourceCommit=c68ee3b9aca136aa0cab50a5bff69a240c48dbd0 translatedAt=2026-09-01T08:40:06.076Z pushedAt=2026-09-07T01:07:36.279Z -->
 
 - ArkTS API<!--basic-services-arkts-->
   - Account Management<!--account-management-arkts-->
@@ -27,22 +27,22 @@
     - [@ohos.usbManager (USB Manager)](js-apis-usbManager.md)
     - [@ohos.usbManager.serial (Serial Port Management)](js-apis-serialManager.md)
     <!--Del-->
-    - [@ohos.batteryInfo (battery information)(system interface)](js-apis-battery-info-sys.md)
-    - [@ohos.batteryStatistics (power consumption statistics)(system interface)](js-apis-batteryStatistics-sys.md)
-    - [@ohos.brightness (screen brightness)(system interface)](js-apis-brightness-sys.md)
+    - [@ohos.batteryInfo (battery information)(System API)](js-apis-battery-info-sys.md)
+    - [@ohos.batteryStatistics (power consumption statistics)(System API)](js-apis-batteryStatistics-sys.md)
+    - [@ohos.brightness (screen brightness)(System API)](js-apis-brightness-sys.md)
     - [@ohos.busManager.serial (Serial Port Management) (System API)](js-apis-busmanager-serial-sys.md)
-    - [@ohos.charger (charging type)(system interface)](js-apis-charger-sys.md)
-    - [@ohos.deviceAttest (device attestation)(system interface)](js-apis-deviceAttest-sys.md)
-    - [@ohos.power (system power management)(system interface)](js-apis-power-sys.md)
-    - [@ohos.systemCapability (system capability)(system interface)](js-apis-system-capability-sys.md)
+    - [@ohos.charger (charging type)(System API)](js-apis-charger-sys.md)
+    - [@ohos.deviceAttest (device attestation)(System API)](js-apis-deviceAttest-sys.md)
+    - [@ohos.power (system power management)(System API)](js-apis-power-sys.md)
+    - [@ohos.systemCapability (system capability)(System API)](js-apis-system-capability-sys.md)
     - [@ohos.systemParameterEnhance (System Parameter) (System API)](js-apis-system-parameterEnhance-sys.md)
-    - [@ohos.screenLock (screen lock management)(system interface)](js-apis-screen-lock-sys.md)
+    - [@ohos.screenLock (screen lock management)(System API)](js-apis-screen-lock-sys.md)
     - [@ohos.usbManager (USB Manager) (System API)](js-apis-usbManager-sys.md)
     - [@ohos.usbManager.serial (Serial Port Management) (System API)](js-apis-serialManager-sys.md)
     - [@ohos.update (Update)(System Interface)](js-apis-update-sys.md)
     <!--DelEnd-->
   - Data File Processing<!--data-file-processing-arkts-->
-    - [@ohos.app.ability.PrintExtensionAbility (Print Extension Capability)](js-apis-app-ability-PrintExtensionAbility.md)
+    - [@ohos.app.ability.PrintExtensionAbility (Print Extension Ability)](js-apis-app-ability-PrintExtensionAbility.md)
     - [PrintExtensionContext](js-apis-PrintExtensionContext.md)
     - [@ohos.pasteboard (Pasteboard)](js-apis-pasteboard.md)
     - [@ohos.print (Print)](js-apis-print.md)
@@ -55,22 +55,22 @@
     - [@ohos.selectionInput.selectionManager (Selection Manager)](js-apis-selectionInput-selectionManager.md)
     - [@ohos.selectionInput.SelectionPanel (Selection Panel)](js-apis-selectionInput-selectionPanel.md)
     <!--Del-->
-    - [@ohos.app.ability.PrintExtensionAbility (Print Extension Ability) (system interface)](js-apis-app-ability-PrintExtensionAbility-sys.md)
-    - [@ohos.print (Print) (system interface)](js-apis-print-sys.md)
-    - [@ohos.scan (Scan) (system interface)](js-apis-scan-sys.md)
-    - [@ohos.request (Upload and Download) (system interface)](js-apis-request-sys.md)
+    - [@ohos.app.ability.PrintExtensionAbility (Print Extension Ability) (System API)](js-apis-app-ability-PrintExtensionAbility-sys.md)
+    - [@ohos.print (Print) (System API)](js-apis-print-sys.md)
+    - [@ohos.scan (Scan) (System API)](js-apis-scan-sys.md)
+    - [@ohos.request (Upload and Download) (System API)](js-apis-request-sys.md)
     <!--DelEnd-->
   - Process and Thread Communication<!--process-thread-communi-arkts-->
     - [System-Defined Common Events](common_event/commonEventManager-definitions.md)
     <!--Del-->
-    - [System-defined common events (system interface)](common_event/commonEventManager-definitions-sys.md)
+    - [System-defined common events (System API)](common_event/commonEventManager-definitions-sys.md)
     <!--DelEnd-->
     - [@ohos.commonEventManager (Common Event Module)](js-apis-commonEventManager.md)
     - [@ohos.events.emitter (Emitter)](js-apis-emitter.md)
     <!--Del-->
     - [@ohos.commonEventManager (Common Event Module) (system application)](js-apis-commonEventManager-sys.md)
-    - [@ohos.application.StaticSubscriberExtensionAbility (StaticSubscriberExtensionAbility) (system interface)](js-apis-application-staticSubscriberExtensionAbility-sys.md)
-    - [@ohos.application.StaticSubscriberExtensionContext (StaticSubscriberExtensionContext) (system interface)](js-apis-application-StaticSubscriberExtensionContext-sys.md)
+    - [@ohos.application.StaticSubscriberExtensionAbility (StaticSubscriberExtensionAbility) (System API)](js-apis-application-staticSubscriberExtensionAbility-sys.md)
+    - [@ohos.application.StaticSubscriberExtensionContext (StaticSubscriberExtensionContext) (System API)](js-apis-application-StaticSubscriberExtensionContext-sys.md)
     <!--DelEnd-->
     - commonEvent<!--commonevent-->
       - [CommonEventData](js-apis-inner-commonEvent-commonEventData.md)
@@ -91,13 +91,13 @@
     - [@ohos.systemDateTime (system time and time zone)](js-apis-date-time.md)
     - [@ohos.intelligentScene (intelligent scene)](js-apis-intelligentScene.md)
     <!--Del-->
-    - [@ohos.configPolicy (configuration policy)(system interface)](js-apis-configPolicy-sys.md)
-    - [@ohos.settings (setting data item name)(system interface)](js-apis-settings-sys.md)
-    - [@ohos.systemDateTime (system time and time zone)(system interface)](js-apis-system-date-time-sys.md)<!--DelEnd-->
+    - [@ohos.configPolicy (configuration policy)(System API)](js-apis-configPolicy-sys.md)
+    - [@ohos.settings (setting data item name)(System API)](js-apis-settings-sys.md)
+    - [@ohos.systemDateTime (system time and time zone)(System API)](js-apis-system-date-time-sys.md)<!--DelEnd-->
      <!--Del-->
-    - [@ohos.wallpaper (wallpaper)(system interface)](js-apis-wallpaper-sys.md)
-    - [@ohos.WallpaperExtensionAbility (WallpaperExtensionAbility)(system interface)](js-apis-WallpaperExtensionAbility-sys.md)
-    - [@ohos.systemTimer (system timer)(system interface)](js-apis-system-timer-sys.md)
+    - [@ohos.wallpaper (wallpaper)(System API)](js-apis-wallpaper-sys.md)
+    - [@ohos.WallpaperExtensionAbility (WallpaperExtensionAbility)(System API)](js-apis-WallpaperExtensionAbility-sys.md)
+    - [@ohos.systemTimer (system timer)(System API)](js-apis-system-timer-sys.md)
     <!--DelEnd-->
   - Deprecated interfaces<!--basic-services-arkts-dep-->
     - [System common event definitions](common_event/commonEvent-definitions.md)
