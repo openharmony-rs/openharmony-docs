@@ -6,9 +6,9 @@
 <!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
 
-The **@ohos.sensor** module is a sensor service module provided by HarmonyOS in Sensor Service Kit. This module provides unified APIs to access to sensor data, including data subscription, query, and algorithm calculation for various physical sensors on the device.
+The **@ohos.sensor** module is a sensor service module provided by HarmonyOS in Sensor Service Kit. This module provides unified APIs to access sensor data, including data subscription, query, and algorithm calculation for various physical sensors on the device.
 
-The **sensor** module provides unified APIs to access to sensor data, including data subscription, query, and algorithm calculation for various physical sensors on the device.
+The **sensor** module provides unified APIs to access sensor data, including data subscription, query, and algorithm calculation for various physical sensors on the device.
 
 Use this module to subscribe to sensor data when your app needs to detect the device motion status (such as shake and flip), detect environmental conditions (such as automatic screen brightness adjustment and atmospheric pressure measurement for altitude estimation), obtain the device orientation (such as compass navigation), or monitor health data (such as heart rate and step count). When mathematical transformation and calculation of sensor data are required, use the sensor algorithm APIs.
 
