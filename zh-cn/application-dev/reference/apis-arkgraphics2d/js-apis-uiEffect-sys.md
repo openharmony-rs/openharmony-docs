@@ -1276,6 +1276,64 @@ struct example {
 }
 ```
 
+### mapColorByBrightness
+
+mapColorByBrightness(colors: Array<Color>, positions: Array<number>): Filter
+
+根据图片的明暗程度进行颜色渐变映射。根据输入的colors和对应的亮度锚点位置进行颜色映射，图片越暗对应的亮度值越小，图片中黑色的部分最暗，亮度值为0.0；白色部分最亮，亮度值为1.0。颜色映射为循环方式，如输入5个颜色，按照亮度锚点位置从小到大排序，则颜色映射顺序为 1-->2-->3-->4-->5-->1。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名      | 类型                       | 必填 | 说明                                                                                                                          |
+| ----------- | -------------------------- | ---- | ----------------------------------------------------------------------------------------------------------------------------- |
+| colors      | Array<[Color](#color20)>   | 是   | 应用的颜色。每个颜色值必须大于等于0.0，推荐使用范围为[0, 1]。小于0时无效果。颜色值大于1.0时按1.0处理。数量范围为[1, 5]，数量小于1时无效果；数量为1时为纯色效果；数量大于5时，效果仅应用前5个颜色。 |
+| positions   | Array<number>              | 是   | 每个颜色对应的亮度锚点位置。数量必须与colors的数量一致，不一致时无效果。取值范围为[0.0, 1.0]，超出范围时按边界值处理。           |
+
+**返回值：**
+
+| 类型              | 说明                               |
+| ----------------- | ---------------------------------- |
+| [Filter](#filter) | 返回挂载了颜色亮度映射效果的Filter。 |
+
+**示例：**
+
+```ts
+import { uiEffect } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct Index {
+  @State colors: Array<uiEffect.Color> = [
+    { red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0 },
+    { red: 1.0, green: 0.1, blue: 0.1, alpha: 1.0 },
+    { red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0 }
+  ];
+  @State positions: Array<number> = [0.0, 0.5, 1.0];
+
+  build() {
+    RelativeContainer() {
+      Stack() {
+        Image($r("app.media.startIcon"))
+          .width(200)
+          .height(200)
+          // 根据图片的明暗程度进行颜色渐变映射
+          .foregroundFilter(uiEffect.createFilter().mapColorByBrightness(this.colors, this.positions))
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## TileMode
 像素填充模式枚举。
 
