@@ -117,7 +117,6 @@
     ```ts
     try {
       await advertising.stopAdvertising(advId);
-      // ...
     } catch (err) {
       hilog.error(0x0000, 'testTag',
         `errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
@@ -367,7 +366,6 @@
     ```ts
     try {
       await scan.stopScan();
-      // ...
     } catch (err) {
       hilog.error(0x0000, 'testTag',
         `errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);

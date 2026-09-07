@@ -66,11 +66,11 @@
 
 低功耗、小数据量的业务用SSAP交互即可；需要持续大流量传输时，选择端口传输。
 
-## 手机、平板和PC之间为什么无法通过设置界面建立星闪连接
+## 手机、平板和PC/2in1之间为什么无法通过设置界面建立星闪连接
 
-手机、平板和PC之间可以完成星闪配对，但无法通过设置界面建立连接。设置界面发起的连接为系统连接流程，与应用通过星闪接口发起的连接（如[SSAP连接](nearlink-ssap-connection-guide.md)、[端口数据传输](nearlink-data-transfer-guide.md)）不同：链路建立后，系统会检查对端设备是否提供本端可用的服务，若没有可用的服务，连接会立即断开。
+手机、平板和PC/2in1之间可以完成星闪配对，但无法通过设置界面建立连接。设置界面发起的连接为系统连接流程，与应用通过星闪接口发起的连接（如[SSAP连接](nearlink-ssap-connection-guide.md)、[端口数据传输](nearlink-data-transfer-guide.md)）不同：链路建立后，系统会检查对端设备是否提供本端可用的服务，若没有可用的服务，连接会立即断开。
 
-手机、平板和PC一般作为中心设备使用外围设备提供的服务（如键盘、鼠标、手写笔等HID设备提供的服务），是服务的使用者而非提供者，这些设备之间没有可用的服务，因此无法从设置界面建立连接。需要建立设备间的业务连接时，应通过[ssap.Client.connect()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#connect)（SSAP连接）或[dataTransfer.connect()](../../reference/apis-connectivity-kit/js-apis-nearlink-data-transfer-api.md#datatransferconnect)（端口数据传输）等接口发起连接，由应用明确业务。
+手机、平板和PC/2in1一般作为中心设备使用外围设备提供的服务（如键盘、鼠标、手写笔等HID设备提供的服务），是服务的使用者而非提供者，这些设备之间没有可用的服务，因此无法从设置界面建立连接。需要建立设备间的业务连接时，应通过[ssap.Client.connect()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#connect)（SSAP连接）或[dataTransfer.connect()](../../reference/apis-connectivity-kit/js-apis-nearlink-data-transfer-api.md#datatransferconnect)（端口数据传输）等接口发起连接，由应用明确业务。
 
 ## 连续调用writeData为什么会发送失败
 
