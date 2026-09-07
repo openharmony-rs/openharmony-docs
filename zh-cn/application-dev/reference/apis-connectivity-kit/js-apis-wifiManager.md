@@ -4675,11 +4675,6 @@ isWlanSupported(): boolean
 
 以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
-<<<<<<< HEAD
-  | **错误码ID** | **错误信息** |
-  | -------- | -------- |
-  | 2401000  | Operation failed. |
-=======
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 2401000  | Operation failed. |
@@ -4918,4 +4913,3 @@ wifiManager.getLocalP2pServices().then((data: wifiManager.WifiP2pServiceInfo[]) 
   console.error("failed: " + JSON.stringify(error));
 });
 ```
->>>>>>> a905d72862c (新增服务发现接口)
