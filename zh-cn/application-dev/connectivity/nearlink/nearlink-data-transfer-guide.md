@@ -69,7 +69,7 @@
     }
     ```
 
-4. 订阅端口通道连接状态变更事件。
+4. 订阅端口通道连接状态变更事件。不再需要订阅事件时，调用[offConnectionStateChanged()](../../reference/apis-connectivity-kit/js-apis-nearlink-data-transfer-api.md#datatransferoffconnectionstatechanged)取消订阅。
 
     <!-- @[datatransfer_on_conn_state](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/DataTransferPage.ets) -->
 
@@ -85,7 +85,7 @@
     }
     ```
 
-5. 订阅端口通道数据接收事件。
+5. 订阅端口通道数据接收事件。不再需要订阅事件时，调用[offReadData()](../../reference/apis-connectivity-kit/js-apis-nearlink-data-transfer-api.md#datatransferoffreaddata)取消订阅。
 
     <!-- @[datatransfer_on_read_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/DataTransferPage.ets) -->
 
