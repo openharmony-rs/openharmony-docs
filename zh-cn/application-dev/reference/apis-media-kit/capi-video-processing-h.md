@@ -586,7 +586,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_UseAutoEffect(uint32_t type, bool e
 
 **描述**
 
-在将要创建的XComponent中是否启用指定的显示效果增强类型。在内部映射中记录type、enable和name之间的映射关系。此接口应在[OH_VideoProcessing_SetAutoEffectParam](#oh_videoprocessing_setautoeffectparam)之前调用。
+在将要创建名字为name的XComponent中指定是否启用类型为type的增强显示效果。此接口应在[OH_VideoProcessing_SetAutoEffectParam](#oh_videoprocessing_setautoeffectparam)之前调用。
 
 **起始版本：** 26.1.0
 
