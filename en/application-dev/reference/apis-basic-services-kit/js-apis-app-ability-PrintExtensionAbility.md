@@ -1,4 +1,4 @@
-# @ohos.app.ability.PrintExtensionAbility (PrintExtensionAbility)
+# @ohos.app.ability.PrintExtensionAbility (Print Extension Ability)
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
@@ -6,7 +6,7 @@
 <!--Designer: @baozewei-->
 <!--Tester: @baozewei-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=2dd275ce017b43144b8b5631392ae3d24fe5affc translatedAt=2026-09-01T03:31:10.243Z pushedAt=2026-09-05T05:55:39.419Z -->
+<!-- md-trans-meta sourceCommit=2dd275ce017b43144b8b5631392ae3d24fe5affc translatedAt=2026-09-01T03:31:10.243Z pushedAt=2026-09-07T02:34:15.901Z -->
 
 This module provides the APIs for calling the print extension ability. **PrintExtensionAbility** runs based on the lifecycle callback mechanism. The system invokes the corresponding callback methods to connect to the print extension, discover printers, connect to or disconnect from printers, query printer capabilities, and start or cancel print jobs. You need to implement the print extension logic in each callback.
 
