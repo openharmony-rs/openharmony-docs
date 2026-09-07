@@ -341,9 +341,11 @@
 
 **是否支持证书授权**：true
 
-**支持设备**：Phone | PC/2in1 | Tablet
+**支持设备**：Phone | PC/2in1 | Tablet | Car
 
 **起始版本**：20
+
+**变更信息**：从API版本26.0.1开始，增加支持在设备类型car上申请。
 
 ## ohos.permission.READ_ACCESSIBILITY_CONFIG
 
