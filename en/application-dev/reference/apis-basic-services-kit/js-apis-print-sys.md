@@ -6,7 +6,7 @@
 <!--Designer: @gcw_4D6e0BBd-->
 <!--Tester: @guoshengbang-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=a077482f26289b96749dbeb1a0c6856695ebea0a translatedAt=2026-09-01T04:04:12.234Z pushedAt=2026-09-05T07:27:32.944Z -->
+<!-- md-trans-meta sourceCommit=a077482f26289b96749dbeb1a0c6856695ebea0a translatedAt=2026-09-01T04:04:12.234Z pushedAt=2026-09-07T01:26:58.364Z -->
 
 This module provides the system APIs for print management, including querying printer extension services, discovering and managing printers, setting printer preferences and the default printer, managing print jobs, and listening for state change events.
 
@@ -2152,7 +2152,7 @@ Notifies the print service of the print app events. This API uses a promise to r
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| event | [ApplicationEvent](js-apis-print.md#applicationevent14) | Yes | Print appn event, which is used to notify the print service of the app lifecycle event. |
+| event | [ApplicationEvent](js-apis-print.md#applicationevent14) | Yes | Print app event, which is used to notify the print service of the app lifecycle event. |
 | jobId | string | Yes | ID of the created print job. |
 
 **Return value**
