@@ -335,6 +335,7 @@ ArkTS示例：
 <!--RP1-->
 ArkTS-Dyn示例：
 [拦截Web组件发起的网络请求](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler)
+
 ArkTS-Sta示例：
 [拦截Web组件发起的网络请求](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebSchemeHandler)
 <!--RP1End-->
