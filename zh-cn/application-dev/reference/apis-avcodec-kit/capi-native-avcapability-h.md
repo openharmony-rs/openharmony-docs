@@ -8,7 +8,7 @@
 
 ## 概述
 
-声明用于编解码能力查询到的Native API。
+声明用于编解码能力查询的Native API。
 
 **引用文件：** <multimedia/player_framework/native_avcapability.h>
 
@@ -250,7 +250,7 @@ bool OH_AVCapability_IsHardware(OH_AVCapability *capability)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 如果能力实例描述的是硬件编解码器，则返回true，如果功能实例描述的是软件编解码器，则为false。 |
+| bool | 如果能力实例描述的是硬件编解码器，则返回true，如果能力实例描述的是软件编解码器，则为false。 |
 
 ### OH_AVCapability_IsSecure()
 
