@@ -3673,7 +3673,7 @@ ArkTS-Sta: updateBindSheet(bindSheetContent: ComponentContentBase, sheetOptions:
 **示例：**
 
 ```ts
-import { FrameNode, ComponentContent } from "@kit.ArkUI";
+import { FrameNode, ComponentContent } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 class Params {
