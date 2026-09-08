@@ -225,7 +225,9 @@
         }
       }
     }
+  ```
 
+  ``` TypeScript
     // pageTwo.ets
     @Entry
     @Component
@@ -264,7 +266,9 @@
         }
       }
     }
+  ```
 
+  ``` TypeScript
     // pageTwo.ets
     @Extend(Button)
     function ButtonUse2() {
