@@ -164,28 +164,28 @@ Popup和Tips支持通过应用级开启、组件级开启方式开启沉浸光�
 
 组件开启沉浸光感的效果请参见[示例10（设置滑动条的沉浸光感效果）](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md#示例10设置滑动条的沉浸光感效果)。
 
-### 子页签（ChipGroup）
+### 子页签（ChipGroup/ChipGroupV2）
 
 子页签支持通过应用级开启、组件级开启方式开启沉浸光感。
 
 应用级开启：应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)模式下，子页签默认开启沉浸光感，沉浸式系统材质样式默认取值为ULTRA_THIN。
  
-组件级开启：子页签支持通过[ChipGroup](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipGroup.md)的backgroundSystemMaterial、selectedBackgroundSystemMaterial（选中状态）和iconBackgroundSystemMaterial（图标）字段设置沉浸光感效果。
+组件级开启：子页签支持通过[ChipGroup](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipGroup.md)、[ChipGroupV2](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipGroupV2.md)的backgroundSystemMaterial、selectedBackgroundSystemMaterial（选中状态）和iconBackgroundSystemMaterial（图标）字段设置沉浸光感效果。
 
 需要文字、图标颜色随材质自动反色时，颜色应使用系统预定义的可反色颜色资源（如`$r('sys.color.font_primary')`），硬编码颜色值不会触发自动反色，详见[设置沉浸式系统材质反色](arkts-immersive-light-sense-common-capability.md#设置沉浸式系统材质反色)。
  
 组件开启沉浸光感的效果请参见[示例6（设置系统材质样式）](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipGroup.md#示例6设置系统材质样式)和[示例7（设置组件选中状态的系统材质样式）](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipGroup.md#示例7设置组件选中状态的系统材质样式)。
  
-### 操作块（SegmentButton）
+### 分段按钮（SegmentButton/SegmentButtonV2）
 
-操作块支持通过应用级开启、组件级开启方式开启沉浸光感。
+分段按钮支持通过应用级开启、组件级开启方式开启沉浸光感。
 
-应用级开启：应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)模式下，操作块默认开启沉浸光感，沉浸式系统材质样式默认取值为THIN。
+应用级开启：应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)模式下，分段按钮默认开启沉浸光感，沉浸式系统材质样式默认取值为THIN。
  
 组件级开启：[SegmentButton](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md)支持通过SegmentButtonOptions中的backgroundSystemMaterial字段设置沉浸光感效果；[SegmentButtonV2](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md)通过各类分段按钮options参数中的backgroundSystemMaterial字段设置。
  
-- SegmentButton的胶囊类多选分段按钮（[SegmentButtonOptions](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md#segmentbuttonoptions)的type为“capsule”且[SegmentButtonOptions](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md#segmentbuttonoptions)的multiply为true）不支持backgroundSystemMaterial，设置后不生效。
-- SegmentButtonV2开启沉浸光感后，支持选中项背景跟随手指拖拽，否则不支持跟随手指拖拽。
+- SegmentButton的胶囊类多选分段按钮（[SegmentButtonOptions](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md#segmentbuttonoptions)的type为“capsule”且[SegmentButtonOptions](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md#segmentbuttonoptions)的multiply为true）不支持backgroundSystemMaterial，设置后不生效。MultiCapsuleSegmentButtonV2不支持沉浸光感。
+- 分段按钮开启沉浸光感后，支持选中项背景跟随手指拖拽，否则不支持跟随手指拖拽。
 - 设置自动反色时，即colorInvert为true，如果SegmentButton中的fontColor、selectedFontColor，或SegmentButtonV2中的itemFontColor、itemSelectedFontColor、itemIconFillColor、itemSelectedIconFillColor等使用支持反色的系统资源，颜色自动适配到材质背景色的反色。
  
 组件开启沉浸光感的效果请参见[示例8（设置背景板材质）](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md#示例8设置背景板材质)和[示例6（设置背景板材质）](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md#示例6设置背景板材质)。

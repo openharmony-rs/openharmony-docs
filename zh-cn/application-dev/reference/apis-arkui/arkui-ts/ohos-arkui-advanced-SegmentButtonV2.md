@@ -1161,7 +1161,9 @@ export struct VCard {
 }
 ```
 
-![SegmentButtonV2NewMaterial](figures/segment_button_v2_material.gif)
+该示例配图为高算力设备强档效果。
+
+![SegmentButtonV2NewMaterial](figures/segment-button-v2-material.gif)
 
 ### 示例7（监听对象类型属性内部属性的变化）
 
