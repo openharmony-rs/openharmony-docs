@@ -123,9 +123,9 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
            } else {
                OH_LOG_ERROR(LOG_APP, "Failed to stat user document directory, error code is %{public}d", result);
            }
-           free(documentPath);
        } else {
            OH_LOG_ERROR(LOG_APP, "Failed to get user document directory, error code is %{public}d", ret);
        }
+       free(documentPath);
    }
    ```
