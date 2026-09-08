@@ -562,7 +562,6 @@ function buildText(params: Params) {
 
 // 继承NodeController实现自定义textNode控制器
 class TextNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
   private textNode: BuilderNode<[Params]> | null = null;
   private message: string = '';
 

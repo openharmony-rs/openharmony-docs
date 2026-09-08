@@ -5754,7 +5754,7 @@ struct NavigationExample {
 
 ### 示例20（设置systemMaterial开启标题栏材质效果）
 
-该示例演示如何使用systemMaterial属性，开启标题栏材质效果。
+该示例演示如何通过systemMaterial属性设置组件的系统材质，开启标题栏沉浸光感效果。
 
 从API版本26.0.0开始，[NavigationTitleOptions](#navigationtitleoptions11)新增了systemMaterial属性。
 

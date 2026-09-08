@@ -1,18 +1,20 @@
 # @ohos.bundle.overlay (overlay Module) (System API)
+
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=1bd317f06f1afd85920306c4a4cf71333749080f translatedAt=2026-08-13T02:42:37.105Z pushedAt=2026-08-13T06:27:05.419Z -->
 
-The module provides APIs for installing a [module with the overlay feature](js-apis-overlay.md), querying the [module information](js-apis-bundleManager-overlayModuleInfo.md), and disabling and enabling the module.
+This module provides the capabilities of installing a featured application with the overlay feature, querying the [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md) information of the featured application, and disabling/enabling the featured application.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.bundle.overlay](js-apis-overlay.md).
+> This page contains only the system APIs of this module. For other public APIs, see [@ohos.bundle.overlay](js-apis-overlay.md).
 
 ## Modules to Import
 
@@ -46,7 +48,7 @@ No permission is required when the specified application is the caller itself.
 
 | Type                       | Description                |
 | ------------------------- | ------------------ |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise that returns no value. |
 
 **Error codes**
 
@@ -108,7 +110,7 @@ No permission is required when the specified application is the caller itself.
 | bundleName  | string | Yes   | Bundle name of the application.                |
 | moduleName  | string | Yes   | Name of the module with the overlay feature.   |
 | isEnabled   | boolean  | Yes | Whether to enable the module with the overlay feature. **true** to enable, **false** otherwise.|
-| callback    | AsyncCallback\<void> | Yes   | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**; otherwise, **err** is an error object.                   |
+| callback    | AsyncCallback\<void> | Yes    | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback). Callback invoked when the disable/enable state of the overlay module of the specified application is set successfully. In this case, err is undefined; otherwise, err is an error object.                    |
 
 **Error codes**
 
@@ -154,7 +156,7 @@ try {
 
 getOverlayModuleInfoByBundleName(bundleName: string, moduleName?: string): Promise\<Array\<OverlayModuleInfo>>
 
-Obtains the information about a module with the overlay feature in another application. This API uses a promise to return the result.
+Obtains the OverlayModuleInfo information of the specified module in the specified application. This API uses a promise to return the result.
 
 No permission is required when the specified application is the caller itself.
 
@@ -207,7 +209,7 @@ let moduleName = "feature";
   } catch (err) {
     let code = (err as BusinessError).code;
     let message = (err as BusinessError).message;
-    console.error('getTargetOverlayModuleInfos failed due to err code : ' + code + ' ' + 'message :' + message);
+    console.error('getOverlayModuleInfoByBundleName failed due to err code : ' + code + ' ' + 'message :' + message);
   }
 })();
 ```
@@ -232,7 +234,7 @@ No permission is required when the specified application is the caller itself.
 | ----------- | ------ | ---- | --------------------------------------- |
 | bundleName | string | Yes   | Bundle name of the application.                   |
 | moduleName | string | Yes   | Name of the module with the overlay feature. If this parameter is not specified, the API obtains the information of all modules with the overlay feature in that application.    |
-| callback    | AsyncCallback\<Array\<[OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md)>> | Yes   | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result, which is an array of [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md) objects. If the operation is successful, **err** is **null**; otherwise, **err** is an error object.   |
+| callback    | AsyncCallback\<Array\<[OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md)>> | Yes    | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback). When the [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md) information of the specified module in the specified application is obtained successfully, err returns undefined. Otherwise, the callback returns a specific error object.    |
 
 **Error codes**
 
@@ -292,7 +294,7 @@ No permission is required when the specified application is the caller itself.
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
 | bundleName | string | Yes   | Bundle name of the application.                   |
-| callback    | AsyncCallback\<Array\<[OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md)>> | Yes   | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result, which is an array of [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md) objects. If the operation is successful, **err** is **null**; otherwise, **err** is an error object.                  |
+| callback    | AsyncCallback\<Array\<[OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md)>> | Yes    | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback), used to return the result. When the [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md) information of all modules in the specified application is obtained successfully, err returns undefined. Otherwise, the callback returns a specific error object.                   |
 
 **Error codes**
 
@@ -334,7 +336,7 @@ try {
 
 getTargetOverlayModuleInfosByBundleName(targetBundleName: string, moduleName?: string): Promise\<Array\<OverlayModuleInfo>>
 
-Obtains the information about modules with the overlay feature in another application based on the target module name. This API uses a promise to return the result.
+Obtains all OverlayModuleInfo information associated with the specified module in the specified application. This API uses a promise to return the result.
 
 No permission is required when the specified application is the caller itself.
 
@@ -413,7 +415,7 @@ No permission is required when the specified application is the caller itself.
 | ----------- | ------ | ---- | --------------------------------------- |
 | targetBundleName | string | Yes   | Bundle name of the application.                   |
 | moduleName | string | Yes   | Name of the target module. If this parameter is not specified, the API obtains the information associated with all modules in that application.    |
-| callback    | AsyncCallback\<Array\<[OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md)>> | Yes   | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result, which is an array of [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md) objects. If the operation is successful, **err** is **null**; otherwise, **err** is an error object.                  |
+| callback    | AsyncCallback\<Array\<[OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md)>> | Yes    | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback). When all associated [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md) information of the specified module in the specified application is obtained successfully, err returns undefined. Otherwise, the callback returns a specific error object.                   |
 
 **Error codes**
 
@@ -474,7 +476,7 @@ No permission is required when the specified application is the caller itself.
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
 | targetBundleName | string | Yes   | Bundle name of the application.                   |
-| callback    | AsyncCallback\<Array\<[OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md)>> | Yes   | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result, which is an array of [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md) objects. If the operation is successful, **err** is **null**; otherwise, **err** is an error object.                  |
+| callback    | AsyncCallback\<Array\<[OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md)>> | Yes    | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback). When the information of all [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md) associated with all modules in the specified application is obtained successfully, err returns undefined. Otherwise, the callback returns a specific error object.                   |
 
 **Error codes**
 

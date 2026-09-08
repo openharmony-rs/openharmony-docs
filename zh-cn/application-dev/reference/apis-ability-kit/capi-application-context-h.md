@@ -46,6 +46,7 @@
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLaunchParameter(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetlaunchparameter) | 获取本应用首次启动UIAbility的WantParams参数。|
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLatestParameter(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetlatestparameter)| 获取本应用最近一次启动UIAbility的WantParams参数。|
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextNotifyPageChanged(const char* targetPageName, int32_t targetPageNameLength, int32_t windowId)](#oh_abilityruntime_applicationcontextnotifypagechanged) | 该接口仅支持三方框架调用。三方框架每次切换页面时，将目标页面信息（包含目标页面路径、目标页面路径长度、目标页面对应的窗口ID）通知给系统。使系统能够感知到当前应用窗口处于哪个页面，从而进行页面管理。 |
+| [AbilityRuntime_ErrorCode OH_AbilityRuntime_AcquireUIAbilityChildProcessInfos(OH_AbilityRuntime_ChildProcessInfosHandle* infos, uint32_t* count)](#oh_abilityruntime_acquireuiabilitychildprocessinfos) | 获取当前应用的UIAbility子进程信息。 |
 
 ## 函数说明
 
@@ -721,3 +722,30 @@ static bool NotifyPageChanged(napi_env env, napi_callback_info info)
     return true;
 }
 ```
+
+### OH_AbilityRuntime_AcquireUIAbilityChildProcessInfos()
+
+```c
+AbilityRuntime_ErrorCode OH_AbilityRuntime_AcquireUIAbilityChildProcessInfos(OH_AbilityRuntime_ChildProcessInfosHandle* infos, uint32_t* count)
+```
+
+**描述**
+
+获取当前应用的UIAbility子进程信息，包括通过[startSelfUIAbilityInChildProcess](js-apis-inner-application-uiAbilityContext.md#startselfuiabilityinchildprocess)接口启动的子进程，以及通过[startAbility](js-apis-inner-application-uiAbilityContext.md#startability-2)接口启动且[StartOptions](js-apis-app-ability-startOptions.md)参数中[processMode](js-apis-app-ability-contextConstant.md#processmode12)设置为NEW_PROCESS_ATTACH_TO_PARENT模式启动的子进程。
+
+获取到的 `infos` 使用完毕后需要调用[OH_AbilityRuntime_ReleaseChildProcessInfos](capi-child-process-info-h.md#oh_abilityruntime_releasechildprocessinfos)释放，避免内存泄漏。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AbilityRuntime_ChildProcessInfosHandle](capi-nativechildprocess-infos.md)* infos | 输出参数，子进程信息集合句柄的指针，不能为nullptr。调用成功后，`*infos` 指向子进程信息集合；使用完毕后需要调用[OH_AbilityRuntime_ReleaseChildProcessInfos](capi-child-process-info-h.md#oh_abilityruntime_releasechildprocessinfos)释放。 |
+| uint32_t* count | 输出参数，子进程数量，不能为nullptr。调用成功后，`*count` 表示当前应用的UIAbility子进程数量；当无子进程时，`*count` 为 0。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。<br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。<br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 传入参数infos或count为nullptr。<br>ABILITY_RUNTIME_ERROR_CODE_INTERNAL - 内部错误，例如连接系统服务失败。<br>详细内容参考AbilityRuntime_ErrorCode。 |

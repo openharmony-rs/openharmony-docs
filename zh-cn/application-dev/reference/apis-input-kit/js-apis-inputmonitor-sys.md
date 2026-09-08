@@ -408,8 +408,6 @@ type TouchEventReceiver = (touchEvent: TouchEvent) => boolean
 
 触屏输入事件的回调函数。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
-
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **参数：**
@@ -423,36 +421,6 @@ type TouchEventReceiver = (touchEvent: TouchEvent) => boolean
 | 类型      | 说明                                       |
 | ------- | ---------------------------------------- |
 | boolean | 若返回true，本次触屏后续产生的事件不再分发到窗口；若返回false，本次触屏后续产生的事件还会分发到窗口。 |
-
-**示例：**
-
-```js
-import { inputMonitor } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // 订阅触摸事件
-            inputMonitor.on('touch', touchEvent => {
-              if (touchEvent.touches.length === 3) { // 当前有三个手指按下
-                return true;
-              }
-              return false;
-            });
-          } catch (error) {
-            console.error(`Failed to monitor the touch screen event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
 
 ## inputMonitor.on('pinch')<sup>10+</sup>
 
@@ -1363,7 +1331,7 @@ on(type: 'touchscreenSwipe', fingers: number, receiver: Callback&lt;TouchGesture
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 输入设备事件类型，取值'touchscreenSwipe'。                    |
-| fingers  | number                                                       | 是   | 滑动手势的手指数，取值范围：[3,5]。 |
+| fingers  | number                                                       | 是   | 滑动手势的手指数，取值范围：[3, 5]。 |
 | receiver | Callback&lt;[TouchGestureEvent](js-apis-multimodalinput-gestureevent-sys.md#touchgestureevent18)&gt; | 是   | 回调函数，返回触摸屏滑动手势事件。 |
 
 **错误码**：
@@ -1420,7 +1388,7 @@ off(type: 'touchscreenSwipe', fingers: number, receiver?: Callback&lt;TouchGestu
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 输入设备事件类型，取值'touchscreenSwipe'。                    |
-| fingers  | number                                                       | 是   | 滑动手势的手指数，取值范围：[3,5]。 |
+| fingers  | number                                                       | 是   | 滑动手势的手指数，取值范围：[3, 5]。 |
 | receiver | Callback&lt;[TouchGestureEvent](js-apis-multimodalinput-gestureevent-sys.md#touchgestureevent18)&gt; | 否   | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。 |
 
 **错误码**：
@@ -1511,7 +1479,7 @@ on(type: 'touchscreenPinch', fingers: number, receiver: Callback&lt;TouchGesture
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 输入设备事件类型，取值'touchscreenPinch'。                    |
-| fingers  | number                                                       | 是   | 捏合手势的手指数，取值范围：[4,5]。 |
+| fingers  | number                                                       | 是   | 捏合手势的手指数，取值范围：[4, 5]。 |
 | receiver | Callback&lt;[TouchGestureEvent](js-apis-multimodalinput-gestureevent-sys.md#touchgestureevent18)&gt; | 是   | 回调函数，返回触摸屏捏合手势事件。 |
 
 **错误码**：
@@ -1568,7 +1536,7 @@ off(type: 'touchscreenPinch', fingers: number, receiver?: Callback&lt;TouchGestu
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 输入设备事件类型，取值'touchscreenPinch'。                    |
-| fingers  | number                                                       | 是   | 捏合手势的手指数，取值范围：[4,5]。 |
+| fingers  | number                                                       | 是   | 捏合手势的手指数，取值范围：[4, 5]。 |
 | receiver | Callback&lt;[TouchGestureEvent](js-apis-multimodalinput-gestureevent-sys.md#touchgestureevent18)&gt; | 否   | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。 |
 
 **错误码**：

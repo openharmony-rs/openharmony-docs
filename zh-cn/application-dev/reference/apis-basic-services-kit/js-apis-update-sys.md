@@ -2964,7 +2964,7 @@ deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise\<void>
 - 必须先调用getDeepFactoryResetInfo查询预计耗时，向用户提示等待时长，确保设备电量充足后再执行深度恢复出厂操作。
 - 执行完成后设备将自动重启恢复到出厂初始状态，应用需提前做好状态保存。
 
-**起始版本**：26.0.0。
+**起始版本**：26.0.0
 
 **模型约束**： 此接口仅可在Stage模型（OpenHarmony应用开发模型，详见[Stage模型开发指导](../../application-models/stage-model-development-overview.md)）下使用。
 
@@ -3040,7 +3040,7 @@ getDeepFactoryResetInfo(factoryResetStrategy: FactoryResetStrategy): Promise\<Fa
 - 当设备电量不足（建议电量高于50%）时，不应执行深度恢复出厂操作，以避免中途断电导致操作失败。
 - 必须在执行deepFactoryReset前调用，帮助用户做好时间和电量准备。
 
-**起始版本**： 26.0.0。
+**起始版本**：26.0.0
 
 **模型约束**： 此接口仅可在Stage模型下使用。
 
@@ -3547,10 +3547,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称       | 类型                            | 属性 | 说明   |
-| ------------ | ----------------------------- | -------- | ------ |
-| upgradeApp   | string                        | 只读：否， 可选：否 | 调用方包名，用于标识调用此升级接口的应用身份。格式为com.xxx.xxx.xxx，由点号分隔的多段组成。长度范围[1，255]，单位：字符，每段长度范围[1，64]，单位：字符，仅支持字母、数字和点号。每段必须以字母开头，不能包含连续点号或以点号开头结尾。超出范围或格式错误时抛出异常。|
-| businessType | [BusinessType](#businesstype) | 只读：否， 可选：否 | 升级业务类型。 |
+| 名称        | 类型                             | 只读 | 可选 | 说明    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| upgradeApp   | string                        | 否 | 否 | 调用方包名，用于标识调用此升级接口的应用身份。格式为com.xxx.xxx.xxx，由点号分隔的多段组成。长度范围[1，255]，单位：字符，每段长度范围[1，64]，单位：字符，仅支持字母、数字和点号。每段必须以字母开头，不能包含连续点号或以点号开头结尾。超出范围或格式错误时抛出异常。|
+| businessType | [BusinessType](#businesstype) | 否 | 否 | 升级业务类型。 |
 
 ## BusinessType
 
@@ -3560,10 +3560,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称       | 类型                            | 属性 | 说明   |
-| ------------ | ----------------------------- | -------- | ------ |
-| vendor  | [BusinessVendor](#businessvendor)   | 只读：否， 可选：否 | 供应商类型，用于标识升级包的来源厂商。<br>使用场景：系统根据供应商类型选择对应的升级包管理服务器和验证策略。<br>可选值：PUBLIC（开源厂商，适用于开源版本的升级场景）。<br>建议根据实际升级包来源选择对应类型，开源版本升级时使用PUBLIC。 |
-| subType | [BusinessSubType](#businesssubtype) | 只读：否， 可选：否 | 升级类型，用于指定升级的目标对象。<br>使用场景：系统根据升级类型选择相应的升级包和升级流程。<br>可选值：FIRMWARE（固件升级，用于升级系统固件而非应用）。<br>建议：系统固件升级场景使用FIRMWARE，应用升级场景使用其他类型。 |
+| 名称        | 类型                             | 只读 | 可选 | 说明    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| vendor  | [BusinessVendor](#businessvendor)   | 否 | 否 | 供应商类型，用于标识升级包的来源厂商。<br>使用场景：系统根据供应商类型选择对应的升级包管理服务器和验证策略。<br>可选值：PUBLIC（开源厂商，适用于开源版本的升级场景）。<br>建议根据实际升级包来源选择对应类型，开源版本升级时使用PUBLIC。 |
+| subType | [BusinessSubType](#businesssubtype) | 否 | 否 | 升级类型，用于指定升级的目标对象。<br>使用场景：系统根据升级类型选择相应的升级包和升级流程。<br>可选值：FIRMWARE（固件升级，用于升级系统固件而非应用）。<br>建议：系统固件升级场景使用FIRMWARE，应用升级场景使用其他类型。 |
 
 ## CheckResult
 
@@ -3573,10 +3573,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称              | 类型                              | 属性         | 说明   |
-| ----------------- | --------------------------------- | ------------ | ------ |
-| isExistNewVersion | boolean                              | 只读：否， 可选：否 | 是否有新版本。true表示有新版本，false表示没有新版本。|
-| newVersionInfo    | [NewVersionInfo](#newversioninfo) | 只读：否， 可选：否 | 新版本数据。 |
+| 名称        | 类型                             | 只读 | 可选 | 说明    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| isExistNewVersion | boolean                           | 否 | 否 | 是否有新版本。true表示有新版本，false表示没有新版本。|
+| newVersionInfo    | [NewVersionInfo](#newversioninfo) | 否 | 否 | 新版本数据。 |
 
 ## NewVersionInfo
 
@@ -3586,10 +3586,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称              | 类型                              | 属性         | 说明   |
-| ----------------- | ---------------------------------------- | --------- |---- |
-| versionDigestInfo | [VersionDigestInfo](#versiondigestinfo)  | 只读：否， 可选：否 | 版本摘要。 |
-| versionComponents | Array\<[VersionComponent](#versioncomponent)> | 只读：否， 可选：否 | 版本组件。 |
+| 名称        | 类型                             | 只读 | 可选 | 说明    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| versionDigestInfo | [VersionDigestInfo](#versiondigestinfo)  | 否 | 否 | 版本摘要。 |
+| versionComponents | Array\<[VersionComponent](#versioncomponent)> | 否 | 否 | 版本组件。 |
 
 ## VersionDigestInfo
 
@@ -3599,9 +3599,9 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称              | 类型                              | 属性         | 说明   |
-| --------------- | ----------------------------------- | --------- | -------- |
-| versionDigest | string | 只读：否， 可选：否 | 版本摘要。长度范围[1，128]，单位：字符。从版本检查结果中获取，用于标识具体版本。超出范围时抛出异常。 |
+| 名称        | 类型                             | 只读 | 可选 | 说明    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| versionDigest | string | 否 | 否 | 版本摘要。长度范围[1，128]，单位：字符。从版本检查结果中获取，用于标识具体版本。超出范围时抛出异常。 |
 
 ## VersionComponent
 
@@ -3611,16 +3611,16 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称              | 类型                              | 属性         | 说明   |
-| --------------- | ----------------------------------- | --------- | -------- |
-| componentId     | string                              | 只读：否， 可选：否 | 组件标识，用于唯一标识升级包中的组件。从版本检查结果的versionComponents数组中获取，用于后续描述信息查询或组件信息展示等场景。 |
-| componentType   | [ComponentType](#componenttype)     | 只读：否， 可选：否 | 组件类型。|
-| upgradeAction   | [UpgradeAction](#upgradeaction)     | 只读：否， 可选：否 | 升级方式，取值原则：UPGRADE为差分包，适用于增量升级场景；RECOVERY为修复包，适用于系统故障修复场景。|
-| displayVersion  | string                              | 只读：否， 可选：否 | 显示版本号。    |
-| innerVersion    | string                              | 只读：否， 可选：否 | 版本号。      |
-| size            | int                              | 只读：否， 可选：否 | 升级包大小，单位为B，取值范围[0, +∞]。超出范围时抛出异常。 |
-| effectiveMode   | [EffectiveMode](#effectivemode)     | 只读：否， 可选：否 | 生效模式，取值原则：COLD为冷升级，需重启设备生效；LIVE为热升级，无需重启即可生效；LIVE_AND_COLD为融合升级，结合两者特性。|
-| otaMode | [OtaMode](#otamode)                 | 只读：否， 可选：是 | 升级模式。当需要指定特定的升级模式时传入此参数，适用于存储空间受限、快速升级或A/B分区设备等特殊场景。取值原则：REGULAR_OTA为正常升级，适用于大多数常规升级场景；STREAM_OTA为流式升级，适用于存储空间受限或需要快速升级的场景；AB_REGULAR_OTA为AB正常升级，适用于A/B分区设备；AB_STREAM_OTA为AB流式升级，适用于A/B分区设备。不传入时默认为REGULAR_OTA，使用正常升级模式。|
+| 名称        | 类型                             | 只读 | 可选 | 说明    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| componentId     | string                              | 否 | 否 | 组件标识，用于唯一标识升级包中的组件。从版本检查结果的versionComponents数组中获取，用于后续描述信息查询或组件信息展示等场景。 |
+| componentType   | [ComponentType](#componenttype)     | 否 | 否 | 组件类型。|
+| upgradeAction   | [UpgradeAction](#upgradeaction)     | 否 | 否 | 升级方式，取值原则：UPGRADE为差分包，适用于增量升级场景；RECOVERY为修复包，适用于系统故障修复场景。|
+| displayVersion  | string                              | 否 | 否 | 显示版本号。    |
+| innerVersion    | string                              | 否 | 否 | 版本号。      |
+| size            | int                              | 否 | 否 | 升级包大小，单位为B，取值范围[0, +∞]。超出范围时抛出异常。 |
+| effectiveMode   | [EffectiveMode](#effectivemode)     | 否 | 否 | 生效模式，取值原则：COLD为冷升级，需重启设备生效；LIVE为热升级，无需重启即可生效；LIVE_AND_COLD为融合升级，结合两者特性。|
+| otaMode | [OtaMode](#otamode)                 | 否 | 是 | 升级模式。当需要指定特定的升级模式时传入此参数，适用于存储空间受限、快速升级或A/B分区设备等特殊场景。取值原则：REGULAR_OTA为正常升级，适用于大多数常规升级场景；STREAM_OTA为流式升级，适用于存储空间受限或需要快速升级的场景；AB_REGULAR_OTA为AB正常升级，适用于A/B分区设备；AB_STREAM_OTA为AB流式升级，适用于A/B分区设备。不传入时默认为REGULAR_OTA，使用正常升级模式。|
 
 ## DescriptionOptions
 
@@ -3630,10 +3630,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称              | 类型                              | 属性         | 说明   |
-| --------------- | ----------------------------------- | --------- | -------- |
-| format   | [DescriptionFormat](#descriptionformat) | 只读：否， 可选：否 | 描述文件格式。取值原则：STANDARD适合需要完整描述信息的场景，SIMPLIFIED适合仅需精简描述信息的场景。 |
-| language | string                                  | 只读：否， 可选：否 | 描述文件语言，格式如'zh-cn'(中文)、'en-us'(英文)、'ja-jp'(日文)等，长度范围[2，10]，单位：字符。有效字符包括字母（区分大小写）和连字符（-），建议使用小写格式。超出范围或包含无效字符时抛出异常。 |
+| 名称        | 类型                             | 只读 | 可选 | 说明    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| format   | [DescriptionFormat](#descriptionformat) | 否 | 否 | 描述文件格式。取值原则：STANDARD适合需要完整描述信息的场景，SIMPLIFIED适合仅需精简描述信息的场景。 |
+| language | string                                  | 否 | 否 | 描述文件语言，格式如'zh-cn'(中文)、'en-us'(英文)、'ja-jp'(日文)等，长度范围[2，10]，单位：字符。有效字符包括字母（区分大小写）和连字符（-），建议使用小写格式。超出范围或包含无效字符时抛出异常。 |
 
 ## ComponentDescription
 
@@ -3643,10 +3643,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称              | 类型                              | 属性         | 说明   |
-| --------------- | ----------------------------------- | --------- | -------- |
-| componentId     | string                              | 只读：否， 可选：否 | 组件标识，用于唯一标识升级包中的组件。<br>使用场景：在获取版本描述信息(getNewVersionDescription)时需要传入componentId以获取对应组件的描述内容；在展示版本详情时可通过componentId区分不同组件。<br>获取方式：从版本检查结果的versionComponents数组中获取对应组件的componentId字段。 |
-| descriptionInfo | [DescriptionInfo](#descriptioninfo) | 只读：否， 可选：否 | 描述文件信息。 |
+| 名称        | 类型                             | 只读 | 可选 | 说明    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| componentId     | string                              | 否 | 否 | 组件标识，用于唯一标识升级包中的组件。<br>使用场景：在获取版本描述信息(getNewVersionDescription)时需要传入componentId以获取对应组件的描述内容；在展示版本详情时可通过componentId区分不同组件。<br>获取方式：从版本检查结果的versionComponents数组中获取对应组件的componentId字段。 |
+| descriptionInfo | [DescriptionInfo](#descriptioninfo) | 否 | 否 | 描述文件信息。 |
 
 ## DescriptionInfo
 
@@ -3656,10 +3656,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称              | 类型                              | 属性         | 说明   |
-| --------------- | ----------------------------------- | --------- | -------- |
-| descriptionType | [DescriptionType](#descriptiontype) | 只读：否， 可选：否 | 描述文件类型，取值原则：CONTENT为内容，适用于描述内容较短或需要即时展示的场景；URI为链接，适用于描述内容较长或需要从外部资源获取的场景。应根据描述内容长度和展示方式选择。 |
-| content         | string                              | 只读：否， 可选：否 | 描述文件内容。 |
+| 名称        | 类型                             | 只读 | 可选 | 说明    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| descriptionType | [DescriptionType](#descriptiontype) | 否 | 否 | 描述文件类型，取值原则：CONTENT为内容，适用于描述内容较短或需要即时展示的场景；URI为链接，适用于描述内容较长或需要从外部资源获取的场景。应根据描述内容长度和展示方式选择。 |
+| content         | string                              | 否 | 否 | 描述文件内容。 |
 
 ## CurrentVersionInfo
 
@@ -3669,11 +3669,11 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称              | 类型                              | 属性         | 说明   |
-| --------------- | ----------------------------------- | --------- | -------- |
-| osVersion         | string                                   | 只读：否， 可选：否 | 系统版本号。 |
-| deviceName        | string                                   | 只读：否， 可选：否 | 设备名。   |
-| versionComponents | Array\<[VersionComponent](#versioncomponent)> | 只读：否， 可选：否 | 版本组件。  |
+| 名称        | 类型                             | 只读 | 可选 | 说明    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| osVersion         | string                                   | 否 | 否 | 系统版本号。 |
+| deviceName        | string                                   | 否 | 否 | 设备名。   |
+| versionComponents | Array\<[VersionComponent](#versioncomponent)> | 否 | 否 | 版本组件。  |
 
 ## DownloadOptions
 
@@ -3683,10 +3683,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称              | 类型                              | 属性         | 说明   |
-| --------------- | ----------------------------------- | --------- | -------- |
-| allowNetwork | [NetType](#nettype) | 只读：否， 可选：否 | 网络类型，允许下载的网络类型。设置CELLULAR仅允许数据网络下载，设置WIFI仅允许WIFI下载，设置CELLULAR_AND_WIFI允许两者均可下载。建议根据升级包大小和网络环境选择：大文件升级包建议使用WIFI避免流量消耗和提升下载速度；移动场景或无WIFI环境可使用CELLULAR；不确定网络环境建议使用CELLULAR_AND_WIFI。|
-| order        | [Order](#order)     | 只读：否， 可选：否 | 取值原则：DOWNLOAD仅下载，适用于先下载后手动安装场景；INSTALL仅安装，适用于直接安装已下载的升级包场景；DOWNLOAD_AND_INSTALL下载并安装，适用于完整升级流程；APPLY仅生效，适用于已安装需重启生效场景；INSTALL_AND_APPLY安装并生效，适用于安装后立即重启生效场景。 |
+| 名称        | 类型                             | 只读 | 可选 | 说明    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| allowNetwork | [NetType](#nettype) | 否 | 否 | 网络类型，允许下载的网络类型。设置CELLULAR仅允许数据网络下载，设置WIFI仅允许WIFI下载，设置CELLULAR_AND_WIFI允许两者均可下载。建议根据升级包大小和网络环境选择：大文件升级包建议使用WIFI避免流量消耗和提升下载速度；移动场景或无WIFI环境可使用CELLULAR；不确定网络环境建议使用CELLULAR_AND_WIFI。|
+| order        | [Order](#order)     | 否 | 否 | 取值原则：DOWNLOAD仅下载，适用于先下载后手动安装场景；INSTALL仅安装，适用于直接安装已下载的升级包场景；DOWNLOAD_AND_INSTALL下载并安装，适用于完整升级流程；APPLY仅生效，适用于已安装需重启生效场景；INSTALL_AND_APPLY安装并生效，适用于安装后立即重启生效场景。 |
 
 ## ResumeDownloadOptions
 
@@ -3696,9 +3696,9 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称              | 类型                              | 属性         | 说明   |
-| --------------- | ----------------------------------- | --------- | -------- |
-| allowNetwork | [NetType](#nettype)                    | 只读：否， 可选：否 | 网络类型，允许恢复下载的网络类型。仅当已调用pauseDownload暂停下载后才能设置此参数。设置CELLULAR仅允许数据网络恢复下载，设置WIFI仅允许WIFI网络恢复下载，设置CELLULAR_AND_WIFI允许两者均可恢复下载。建议根据升级包大小和网络环境选择：升级包大小超过100MB建议使用WIFI避免流量消耗和提升下载速度；移动场景或无WIFI环境可使用CELLULAR；不确定网络环境建议使用CELLULAR_AND_WIFI。|
+| 名称        | 类型                             | 只读 | 可选 | 说明    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| allowNetwork | [NetType](#nettype)                    | 否 | 否 | 网络类型，允许恢复下载的网络类型。仅当已调用pauseDownload暂停下载后才能设置此参数。设置CELLULAR仅允许数据网络恢复下载，设置WIFI仅允许WIFI网络恢复下载，设置CELLULAR_AND_WIFI允许两者均可恢复下载。建议根据升级包大小和网络环境选择：升级包大小超过100MB建议使用WIFI避免流量消耗和提升下载速度；移动场景或无WIFI环境可使用CELLULAR；不确定网络环境建议使用CELLULAR_AND_WIFI。|
 
 ## PauseDownloadOptions
 
@@ -3708,9 +3708,9 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称              | 类型                              | 属性         | 说明   |
-| --------------- | ----------------------------------- | --------- | -------- |
-| isAllowAutoResume | boolean | 只读：否， 可选：否 | 是否允许自动恢复。仅当有正在进行的下载任务时才能设置此参数。<br>true表示允许自动恢复，系统可能自动恢复下载；false表示不允许，需手动调用resumeDownload恢复。<br>使用建议：网络不稳定场景建议设置true启用自动恢复，提升下载成功率；需要精确控制下载时机或避免在特定网络环境下恢复的场景建议设置false，通过手动调用resumeDownload控制恢复时机。|
+| 名称        | 类型                             | 只读 | 可选 | 说明    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| isAllowAutoResume | boolean | 否 | 否 | 是否允许自动恢复。仅当有正在进行的下载任务时才能设置此参数。<br>true表示允许自动恢复，系统可能自动恢复下载；false表示不允许，需手动调用resumeDownload恢复。<br>使用建议：网络不稳定场景建议设置true启用自动恢复，提升下载成功率；需要精确控制下载时机或避免在特定网络环境下恢复的场景建议设置false，通过手动调用resumeDownload控制恢复时机。|
 
 ## UpgradeOptions
 
@@ -3720,9 +3720,9 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称              | 类型                              | 属性         | 说明   |
-| --------------- | ----------------------------------- | --------- | -------- |
-| order | [Order](#order) | 只读：否， 可选：否 | 升级指令。用于指定升级操作的执行方式。取值原则：DOWNLOAD仅下载升级包，适用于需要先下载后手动安装的场景；INSTALL仅安装已下载的升级包，适用于已下载完成需直接安装的场景；DOWNLOAD_AND_INSTALL下载并安装，适用于完整升级流程；APPLY仅生效，适用于已安装需重启生效的场景；INSTALL_AND_APPLY安装并生效，适用于安装后立即重启生效的场景。应根据当前升级状态和业务需求选择合适的指令。 |
+| 名称        | 类型                             | 只读 | 可选 | 说明    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| order | [Order](#order) | 否 | 否 | 升级指令。用于指定升级操作的执行方式。取值原则：DOWNLOAD仅下载升级包，适用于需要先下载后手动安装的场景；INSTALL仅安装已下载的升级包，适用于已下载完成需直接安装的场景；DOWNLOAD_AND_INSTALL下载并安装，适用于完整升级流程；APPLY仅生效，适用于已安装需重启生效的场景；INSTALL_AND_APPLY安装并生效，适用于安装后立即重启生效的场景。应根据当前升级状态和业务需求选择合适的指令。 |
 
 ## ClearOptions
 
@@ -3732,9 +3732,9 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称              | 类型                              | 属性         | 说明   |
-| --------------- | ----------------------------------- | -------------- | -------- |
-| status | [UpgradeStatus](#upgradestatus) | 只读：否， 可选：否 | 异常状态，用于指定要清除的状态。仅当upgrade方法执行失败(状态为UPGRADE_FAIL)后才能设置此参数为UPGRADE_FAIL。<br>使用场景：当升级失败(状态为UPGRADE_FAIL)后，系统会保留异常状态阻止重新升级，此时需要调用clearError传入status参数清除异常状态，使系统恢复到初始状态以便重新开始升级流程。<br>常用值：UPGRADE_FAIL(升级失败状态)。注意事项：仅支持清除UPGRADE_FAIL状态。|
+| 名称        | 类型                             | 只读 | 可选 | 说明    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| status | [UpgradeStatus](#upgradestatus) | 否 | 否 | 异常状态，用于指定要清除的状态。仅当upgrade方法执行失败(状态为UPGRADE_FAIL)后才能设置此参数为UPGRADE_FAIL。<br>使用场景：当升级失败(状态为UPGRADE_FAIL)后，系统会保留异常状态阻止重新升级，此时需要调用clearError传入status参数清除异常状态，使系统恢复到初始状态以便重新开始升级流程。<br>常用值：UPGRADE_FAIL(升级失败状态)。注意事项：仅支持清除UPGRADE_FAIL状态。|
 
 ## UpgradePolicy
 
@@ -3752,11 +3752,11 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称              | 类型                              | 属性         | 说明   |
-| --------------- | ----------------------------------- | ------------------- | -------- |
-| downloadStrategy    | boolean                        | 只读：否， 可选：否 | 自动下载策略。<br>true表示可自动下载(适用于希望系统自动检测并下载新版本的场景，减少用户手动操作)。<br>false表示不可自动下载(适用于需要用户手动确认下载的场景，避免后台消耗流量或存储空间)。根据用户偏好和流量策略选择。|
-| autoUpgradeStrategy | boolean                        | 只读：否， 可选：否 | 自动升级策略。 <br>true表示可自动升级(适用于希望系统自动完成升级流程的场景，提升用户体验)。<br>false表示不可自动升级(适用于需要用户手动确认升级的场景，避免意外升级或确保用户知情)。根据用户体验需求和升级控制策略选择。 |
-| autoUpgradePeriods  | Array\<[UpgradePeriod](#upgradeperiod)> | 只读：否， 可选：是 | 自动升级时间段，当需要在特定时间段内自动升级时传入此参数(如夜间时段)，此参数为可选参数。不传入此参数时默认为空数组[]，表示不限制自动升级时间段，可在任意时间自动升级。 |
+| 名称        | 类型                             | 只读 | 可选 | 说明    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| downloadStrategy    | boolean                        | 否 | 否 | 自动下载策略。<br>true表示可自动下载(适用于希望系统自动检测并下载新版本的场景，减少用户手动操作)。<br>false表示不可自动下载(适用于需要用户手动确认下载的场景，避免后台消耗流量或存储空间)。根据用户偏好和流量策略选择。|
+| autoUpgradeStrategy | boolean                        | 否 | 否 | 自动升级策略。 <br>true表示可自动升级(适用于希望系统自动完成升级流程的场景，提升用户体验)。<br>false表示不可自动升级(适用于需要用户手动确认升级的场景，避免意外升级或确保用户知情)。根据用户体验需求和升级控制策略选择。 |
+| autoUpgradePeriods  | Array\<[UpgradePeriod](#upgradeperiod)> | 否 | 是 | 自动升级时间段，当需要在特定时间段内自动升级时传入此参数(如夜间时段)，此参数为可选参数。不传入此参数时默认为空数组[]，表示不限制自动升级时间段，可在任意时间自动升级。 |
 
 ## UpgradePeriod
 
@@ -3766,10 +3766,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称              | 类型                              | 属性         | 说明   |
-| --------------- | ----------------------------------- | ------------------- | -------- |
-| start | int | 只读：否， 可选：否 | 开始时间，取值范围[0, 1440]，单位为min。表示一天中的分钟数，0表示00:00，1440表示24:00。<br>必须小于或等于end，超出范围时抛出异常。 |
-| end   | int | 只读：否， 可选：否 | 结束时间，取值范围[0, 1440]，单位为min。表示一天中的分钟数，0表示00:00，1440表示24:00。<br>必须大于或等于start，超出范围时抛出异常。 |
+| 名称        | 类型                             | 只读 | 可选 | 说明    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| start | int | 否 | 否 | 开始时间，取值范围[0, 1440]，单位为min。表示一天中的分钟数，0表示00:00，1440表示24:00。<br>必须小于或等于end，超出范围时抛出异常。 |
+| end   | int | 否 | 否 | 结束时间，取值范围[0, 1440]，单位为min。表示一天中的分钟数，0表示00:00，1440表示24:00。<br>必须大于或等于start，超出范围时抛出异常。 |
 
 ## TaskInfo
 
@@ -3779,10 +3779,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称       | 类型                            | 属性 | 说明   |
-| ------------ | ----------------------------- | -------- | ------ |
-| existTask |  boolean                  | 只读：否， 可选：否 | 是否存在升级任务，用于判断当前是否有进行中的升级任务。<br>使用场景：在执行升级操作前查询任务状态，避免重复操作；在升级流程中监控任务状态变化。true表示存在进行中的升级任务(如下载或安装任务)，需要等待任务完成或取消后再执行新任务。false表示当前无任务，可以开始新的升级流程。 |
-| taskBody  | [TaskBody](#taskbody) | 只读：否， 可选：否 | 任务数据。 |
+| 名称        | 类型                             | 只读 | 可选 | 说明    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| existTask |  boolean                  | 否 | 否 | 是否存在升级任务，用于判断当前是否有进行中的升级任务。<br>使用场景：在执行升级操作前查询任务状态，避免重复操作；在升级流程中监控任务状态变化。true表示存在进行中的升级任务(如下载或安装任务)，需要等待任务完成或取消后再执行新任务。false表示当前无任务，可以开始新的升级流程。 |
+| taskBody  | [TaskBody](#taskbody) | 否 | 否 | 任务数据。 |
 
 ## EventInfo
 
@@ -3794,10 +3794,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称       | 类型                            | 属性 | 说明   |
-| ------------ | ----------------------------- | -------- | ------ |
-| eventId  | [EventId](#eventid)   | 只读：否， 可选：否 | 事件ID，用于标识具体的升级事件类型。通过eventId可判断当前发生的具体事件(如EVENT_DOWNLOAD_START表示开始下载、EVENT_UPGRADE_SUCCESS表示升级成功等)，从而采取相应处理。<br>常见事件类型包括下载事件(EVENT_DOWNLOAD_START等)、升级事件(EVENT_UPGRADE_START等)、完成事件(EVENT_UPGRADE_SUCCESS、EVENT_UPGRADE_FAIL)。建议在事件回调中根据eventId执行不同的业务逻辑。 |
-| taskBody | [TaskBody](#taskbody) | 只读：否， 可选：否 | 任务数据。 |
+| 名称        | 类型                             | 只读 | 可选 | 说明    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| eventId  | [EventId](#eventid)   | 否 | 否 | 事件ID，用于标识具体的升级事件类型。通过eventId可判断当前发生的具体事件(如EVENT_DOWNLOAD_START表示开始下载、EVENT_UPGRADE_SUCCESS表示升级成功等)，从而采取相应处理。<br>常见事件类型包括下载事件(EVENT_DOWNLOAD_START等)、升级事件(EVENT_UPGRADE_START等)、完成事件(EVENT_UPGRADE_SUCCESS、EVENT_UPGRADE_FAIL)。建议在事件回调中根据eventId执行不同的业务逻辑。 |
+| taskBody | [TaskBody](#taskbody) | 否 | 否 | 任务数据。 |
 
 ## TaskBody
 
@@ -3807,15 +3807,15 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称       | 类型                            | 属性 | 说明   |
-| ------------ | ----------------------------- | -------- | ------ |
-| versionDigestInfo | [VersionDigestInfo](#versiondigestinfo)  | 只读：否， 可选：否 | 版本摘要。 |
-| status            | [UpgradeStatus](#upgradestatus)          | 只读：否， 可选：否 | 升级状态。用于标识升级任务的当前执行阶段。包含下载状态（WAITING_DOWNLOAD到DOWNLOAD_FAIL）、安装状态（WAITING_INSTALL到UPDATING）、生效状态（WAITING_APPLY到APPLYING）和最终结果（UPGRADE_SUCCESS或UPGRADE_FAIL），用于任务状态监控、进度展示和异常处理等场景。 |
-| subStatus         | int                                   | 只读：否， 可选：否 | 子状态，取值范围参考[UpgradeStatus](#upgradestatus)状态码。  |
-| progress          | int                                   | 只读：否， 可选：否 | 进度，单位为%，取值范围[0, 100]，超出范围时抛出异常。 |
-| installMode       | int                                   | 只读：否， 可选：否 | 安装模式，取值范围[0, 2]。取值原则：0为正常升级，适用于用户主动触发升级的场景；1为夜间升级，适用于设置夜间时段自动升级的场景；2为自动升级，适用于系统自动检测并执行升级的场景。应根据升级策略和用户体验需求选择。超出范围时抛出异常。|
-| errorMessages     | Array\<[ErrorMessage](#errormessage)>    | 只读：否， 可选：否 | 错误信息。 |
-| versionComponents | Array\<[VersionComponent](#versioncomponent)> | 只读：否， 可选：否 | 版本组件。 |
+| 名称        | 类型                             | 只读 | 可选 | 说明    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| versionDigestInfo | [VersionDigestInfo](#versiondigestinfo)  | 否 | 否 | 版本摘要。 |
+| status            | [UpgradeStatus](#upgradestatus)          | 否 | 否 | 升级状态。用于标识升级任务的当前执行阶段。包含下载状态（WAITING_DOWNLOAD到DOWNLOAD_FAIL）、安装状态（WAITING_INSTALL到UPDATING）、生效状态（WAITING_APPLY到APPLYING）和最终结果（UPGRADE_SUCCESS或UPGRADE_FAIL），用于任务状态监控、进度展示和异常处理等场景。 |
+| subStatus         | int                                   | 否 | 否 | 子状态，取值范围参考[UpgradeStatus](#upgradestatus)状态码。  |
+| progress          | int                                   | 否 | 否 | 进度，单位为%，取值范围[0, 100]，超出范围时抛出异常。 |
+| installMode       | int                                   | 否 | 否 | 安装模式，取值范围[0, 2]。取值原则：0为正常升级，适用于用户主动触发升级的场景；1为夜间升级，适用于设置夜间时段自动升级的场景；2为自动升级，适用于系统自动检测并执行升级的场景。应根据升级策略和用户体验需求选择。超出范围时抛出异常。|
+| errorMessages     | Array\<[ErrorMessage](#errormessage)>    | 否 | 否 | 错误信息。 |
+| versionComponents | Array\<[VersionComponent](#versioncomponent)> | 否 | 否 | 版本组件。 |
 
 ## ErrorMessage
 
@@ -3825,10 +3825,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称       | 类型                            | 属性 | 说明   |
-| ------------ | ----------------------------- | -------- | ------ |
-| errorCode    | int | 只读：否， 可选：否 | 错误码，用于标识具体的错误类型。通过errorCode可快速定位升级失败的原因（如权限错误201、参数错误401、IPC错误11500104等），从而采取针对性的处理措施。<br>使用场景：在升级失败事件(EVENT_UPGRADE_FAIL)回调中，通过errorCode判断失败原因，进行相应的错误处理或提示用户。建议结合errorMessage进行详细的错误分析和处理。 |
-| errorMessage | string | 只读：否， 可选：否 | 错误描述文本，用于提供错误的详细说明信息。errorMessage提供了错误的具体描述（如'Permission denied.'、'Parameter verification failed'等），帮助开发者理解错误原因和进行调试。<br>使用场景：在错误处理时，可将errorMessage用于日志记录、错误提示展示或错误分析。建议结合errorCode一起使用，errorCode提供错误类型，errorMessage提供详细说明。|
+| 名称        | 类型                             | 只读 | 可选 | 说明    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| errorCode    | int | 否 | 否 | 错误码，用于标识具体的错误类型。通过errorCode可快速定位升级失败的原因（如权限错误201、参数错误401、IPC错误11500104等），从而采取针对性的处理措施。<br>使用场景：在升级失败事件(EVENT_UPGRADE_FAIL)回调中，通过errorCode判断失败原因，进行相应的错误处理或提示用户。建议结合errorMessage进行详细的错误分析和处理。 |
+| errorMessage | string | 否 | 否 | 错误描述文本，用于提供错误的详细说明信息。errorMessage提供了错误的具体描述（如'Permission denied.'、'Parameter verification failed'等），帮助开发者理解错误原因和进行调试。<br>使用场景：在错误处理时，可将errorMessage用于日志记录、错误提示展示或错误分析。建议结合errorCode一起使用，errorCode提供错误类型，errorMessage提供详细说明。|
 
 ## EventClassifyInfo
 
@@ -3838,10 +3838,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称       | 类型                            | 属性 | 说明   |
-| ------------ | ----------------------------- | -------- | ------ |
-| eventClassify | [EventClassify](#eventclassify) | 只读：否， 可选：否 | 事件类型，用于指定要监听的事件分类。可取值：TASK（任务事件）。 |
-| extraInfo     | string                          | 只读：否， 可选：是 | 额外信息，用于传递扩展数据。默认值为空字符串，表示无额外信息。长度范围[0, 128]，单位：字符。有效字符包括字母、数字、下划线、连字符和空格，超出范围或包含无效字符时抛出异常。 |
+| 名称        | 类型                             | 只读 | 可选 | 说明    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| eventClassify | [EventClassify](#eventclassify) | 否 | 否 | 事件类型，用于指定要监听的事件分类。可取值：TASK（任务事件）。 |
+| extraInfo     | string                          | 否 | 是 | 额外信息，用于传递扩展数据。默认值为空字符串，表示无额外信息。长度范围[0, 128]，单位：字符。有效字符包括字母、数字、下划线、连字符和空格，超出范围或包含无效字符时抛出异常。 |
 
 ## UpgradeFile
 
@@ -3851,16 +3851,16 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称       | 类型                            | 属性 | 说明   |
-| ------------ | ----------------------------- | -------- | ------ |
-| fileType | [ComponentType](#componenttype) | 只读：否， 可选：否 | 文件类型，用于指定升级包类型。设置为OTA表示OTA升级包，系统将根据OTA类型执行固件升级流程，包括完整性校验和系统分区写入等操作。 |
-| filePath | string                          | 只读：否， 可选：否 | 文件路径，支持绝对路径或相对路径。路径长度范围[1，255]，单位：字符，超出范围时抛出异常。 |
+| 名称        | 类型                             | 只读 | 可选 | 说明    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| fileType | [ComponentType](#componenttype) | 否 | 否 | 文件类型，用于指定升级包类型。设置为OTA表示OTA升级包，系统将根据OTA类型执行固件升级流程，包括完整性校验和系统分区写入等操作。 |
+| filePath | string                          | 否 | 否 | 文件路径，支持绝对路径或相对路径。路径长度范围[1，255]，单位：字符，超出范围时抛出异常。 |
 
 ## FactoryResetStrategy
 
 恢复出厂设置策略，包含scope(重置范围)和strategy(重置策略描述)字段。
 
-**起始版本**： 26.0.0。
+**起始版本**：26.0.0
 
 **模型约束**： 此接口仅可在Stage模型下使用。
 
@@ -3868,16 +3868,16 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称       | 类型                            | 属性 | 说明   |
-| ------------ | ----------------------------- | -------- | ------ |
-| scope | [FactoryResetScope](#factoryresetscope) | 只读：否， 可选：否 | 重置范围。DATA仅清除用户数据分区，适用于仅清除数据的场景；DATA_AND_OS同时清除用户数据分区和操作系统分区，适用于同时清除系统和数据的场景。 |
-| strategy | string                          | 只读：否， 可选：否 | 重置策略，用于记录重置操作的具体策略信息。长度范围[0，64]，单位：字符，有效字符包括字母、数字、下划线、连字符和空格。超出范围或包含无效字符时抛出异常。为重置操作的自定义描述文本，如quick erase表示快速擦除、deep erase表示深度擦除等。 |
+| 名称        | 类型                             | 只读 | 可选 | 说明    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| scope | [FactoryResetScope](#factoryresetscope) | 否 | 否 | 重置范围。DATA仅清除用户数据分区，适用于仅清除数据的场景；DATA_AND_OS同时清除用户数据分区和操作系统分区，适用于同时清除系统和数据的场景。 |
+| strategy | string                          | 否 | 否 | 重置策略，用于记录重置操作的具体策略信息。长度范围[0，64]，单位：字符，有效字符包括字母、数字、下划线、连字符和空格。超出范围或包含无效字符时抛出异常。为重置操作的自定义描述文本，如quick erase表示快速擦除、deep erase表示深度擦除等。 |
 
 ## FactoryResetInfo
 
 恢复出厂设置信息。
 
-**起始版本**： 26.0.0。
+**起始版本**：26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -3885,15 +3885,15 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称       | 类型                            | 属性 | 说明   |
-| ------------ | ----------------------------- | -------- | ------ |
-| duration | int                          | 只读：否， 可选：否 | 恢复出厂设置所需持续时间。单位为min。取值范围[0, +∞]。超出范围时抛出异常。|
+| 名称        | 类型                             | 只读 | 可选 | 说明    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| duration | int                          | 否 | 否 | 恢复出厂设置所需持续时间。单位为min。取值范围[0, +∞]。超出范围时抛出异常。|
 
 ## FactoryResetScope
 
 恢复出厂设置范围。
 
-**起始版本**：API version 26。
+**起始版本**：26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -3911,8 +3911,6 @@ try {
 type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 事件回调。
-
-**版本说明**： 从API version 23开始支持。
 
 **系统接口**：此接口为系统接口。
 
@@ -4111,10 +4109,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 | EVENT_DOWNLOAD_RESUME  | 0x01000007 | 恢复下载。   |
 | EVENT_DOWNLOAD_SUCCESS | 0x01000008 | 下载成功。   |
 | EVENT_DOWNLOAD_FAIL    | 0x01000009 | 下载失败。   |
-| EVENT_UPGRADE_WAIT     | 0x0100000A | 待升级。    |
-| EVENT_UPGRADE_START    | 0x0100000B | 开始升级。   |
-| EVENT_UPGRADE_UPDATE   | 0x0100000C | 升级中。    |
-| EVENT_APPLY_WAIT       | 0x0100000D | 待生效。    |
-| EVENT_APPLY_START      | 0x0100000E | 开始生效。   |
-| EVENT_UPGRADE_SUCCESS  | 0x0100000F | 升级成功。   |
+| EVENT_UPGRADE_WAIT     | 0x0100000a | 待升级。    |
+| EVENT_UPGRADE_START    | 0x0100000b | 开始升级。   |
+| EVENT_UPGRADE_UPDATE   | 0x0100000c | 升级中。    |
+| EVENT_APPLY_WAIT       | 0x0100000d | 待生效。    |
+| EVENT_APPLY_START      | 0x0100000e | 开始生效。   |
+| EVENT_UPGRADE_SUCCESS  | 0x0100000f | 升级成功。   |
 | EVENT_UPGRADE_FAIL     | 0x01000010 | 升级失败。   |

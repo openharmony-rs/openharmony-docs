@@ -150,7 +150,7 @@ USB设备详细信息，继承自[DeviceInfo](#deviceinfo)。
 |-------------------|--------------------------------------------------------------------|-----|-----|------------------|
 | vendorId          | number                                                             | 否   | 否   | USB设备Vendor ID。  |
 | productId         | number                                                             | 否   | 否   | USB设备Product ID。 |
-| interfaceDescList | Array&lt;Readonly&lt;[USBInterfaceDesc](#usbinterfacedesc)&gt;&gt; | 是   | 否   | USB设备接口描述符列表。    |
+| interfaceDescList | Array&lt;Readonly&lt;[USBInterfaceDesc](#usbinterfacedesc)&gt;&gt; | 否   | 否   | USB设备接口描述符列表。    |
 
 ## USBInterfaceDesc
 

@@ -1,18 +1,19 @@
 # @ohos.wifi (WLAN) (System API)
-
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @qq_43802146-->
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-The **WLAN** module provides basic wireless local area network (WLAN) functions, peer-to-peer (P2P) functions, and WLAN message notification services. It allows applications to communicate with other devices over WLAN.
+<!-- md-trans-meta sourceCommit=8788cc48214c139da8601c2cd957fee98d8eb5be translatedAt=2026-08-27T04:04:31.193Z pushedAt=2026-08-27T11:56:16.116Z -->
+
+This module provides basic Wi-Fi functions (such as enabling or disabling Wi-Fi, network configuration management, and hotspot management), peer-to-peer (P2P) functions (such as device discovery, connection management, and persistent group management), and Wi-Fi notifications (such as notifications of connection status changes, and hotspot device connection or disconnection). It is applicable to scenarios where devices connect to Wi-Fi and perform hotspot sharing, P2P data transmission, and other connections over Wi-Fi.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.wifi (WLAN)](js-apis-wifi.md).
-> The APIs of this module are no longer maintained since API version 9. You are advised to use [@ohos.wifiManager (WLAN)](js-apis-wifiManager-sys.md).
+> This module is supported since API version 6 and deprecated since API version 9. You are advised to use [@ohos.wifiManager (WLAN)](js-apis-wifiManager-sys.md) instead.
 
 
 ## Modules to Import
@@ -25,7 +26,7 @@ import wifi from '@ohos.wifi';
 
 enableWifi(): boolean
 
-Enables WLAN.
+Enables Wi-Fi.
 
 **System API**: This is a system API.
 
@@ -46,7 +47,7 @@ import wifi from '@ohos.wifi';
 
 try {
     wifi.enableWifi();
-}catch(error){
+} catch (error) {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
@@ -55,7 +56,7 @@ try {
 
 disableWifi(): boolean
 
-Disables WLAN.
+Disables Wi-Fi.
 
 **System API**: This is a system API.
 
@@ -82,7 +83,6 @@ try {
 
 ```
 
-
 ## wifi.addDeviceConfig
 
 addDeviceConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
@@ -99,7 +99,7 @@ Adds network configuration. This API uses a promise to return the result.
 
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfig) | Yes| WLAN configuration to add.|
+  | **config** | [WifiDeviceConfig](#wifideviceconfig) | Yes | Wi-Fi configuration information. |
 
 **Return value**
 
@@ -142,10 +142,9 @@ try {
 
 ## WifiDeviceConfig
 
-Represents the WLAN configuration.
+Represents the Wi-Fi configuration information.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
-
 
 | **Name**| **Type**| **Readable**| **Writable**| **Description**|
 | -------- | -------- | -------- | -------- | -------- |
@@ -155,10 +154,9 @@ Represents the WLAN configuration.
 | randomMacType | number | Yes| No| Random MAC type.<br> **System API**: This is a system API.|
 | randomMacAddr | string | Yes| No| Random MAC address.<br> **System API**: This is a system API.|
 | ipType | [IpType](#iptype7) | Yes| No| IP address type.<br> **System API**: This is a system API.|
-| family<sup>20+</sup> | number | No| Yes| IP protocol version.<br> **System API**: This is a system API.|
+| family<sup>20+</sup> | number | No | Yes | IP protocol version. <br /> **System API:** This API is a system API. |
 | staticIp | [IpConfig](#ipconfig7) | No| Yes| Static IPv4 address information.<br> **System API**: This is a system API.|
 | staticIpv6<sup>20+</sup> | [Ipv6Config](#ipv6config20) | No| Yes| Static IPv6 address information.<br> **System API**: This is a system API.|
-
 
 ## IpType<sup>7+</sup>
 
@@ -168,13 +166,11 @@ Enumerates the IP address types.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
-
 | Name| Value| Description|
 | -------- | -------- | -------- |
 | STATIC | 0 | Static IP address.|
 | DHCP | 1 | IP address allocated by DHCP.|
 | UNKNOWN | 2 | Not specified.|
-
 
 ## IpConfig<sup>7+</sup>
 
@@ -192,7 +188,6 @@ Defines the IPv4 address information.
 | dnsServers | number[] | No| No| Domain name server (DNS) information.|
 | domains | Array&lt;string&gt; | No| No| Domain information.|
 
-
 ## Ipv6Config<sup>20+</sup>
 
 Defines the IPv6 address information.
@@ -208,8 +203,6 @@ Defines the IPv6 address information.
 | prefixLength | number | No| No| Prefix length.|
 | dnsServers | Array\<string> | No| No| Domain name server (DNS) information.|
 | domains | Array\<string> | No| No| Domain information.|
-
-
 
 ## wifi.addDeviceConfig
 
@@ -227,8 +220,8 @@ Adds network configuration. This API uses an asynchronous callback to return the
 
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfig) | Yes| WLAN configuration to add.|
-  | callback | AsyncCallback&lt;number&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the network configuration ID. If **data** is **-1**, the operation has failed. If **err** is not **0**, an error has occurred.|
+  | config | [WifiDeviceConfig](#wifideviceconfig) | Yes | Wi-Fi configuration information. |
+  | callback | AsyncCallback&lt;number&gt; | Yes | Callback used to return the result. If the operation is successful, **error** is **0** and **data** is the network configuration ID. If **data** is **-1**, the candidate network configuration fails to be added. If **err** is not **0**, an error has occurred. |
 
 **Example**
 
@@ -262,7 +255,6 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
-
 
 ## wifi.connectToNetwork
 
@@ -318,7 +310,7 @@ Connects to the specified network.
 
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfig) | Yes| WLAN configuration to add.|
+  | config | [WifiDeviceConfig](#wifideviceconfig) | Yes | Wi-Fi configuration information. |
 
 **Return value**
 
@@ -387,10 +379,9 @@ try {
 }
 ```
 
-
 ## WifiLinkedInfo
 
-Represents the WLAN connection information.
+Provides information about a Wi-Fi connection.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
@@ -398,7 +389,7 @@ Represents the WLAN connection information.
 | -------- | -------- | -------- | -------- | -------- |
 | networkId | number | Yes| No| ID of the network configuration to disable.<br> **System API**: This is a system API.|
 | chload | number | Yes| No| Channel load. A larger value indicates a higher load.<br> **System API**: This is a system API.|
-| snr | number | Yes| No| Signal-to-noise ratio (SNR).<br> **System API**: This is a system API.|
+| **snr** | number | Yes | No | Signal-to-noise ratio (SNR), in dB. <br /> **System API**: This API is a system API. |
 | suppState | [SuppState](#suppstate) | Yes| No| Supplicant state.<br> **System API**: This is a system API.|
 
 
@@ -424,8 +415,6 @@ Enumerates the supplicant states.
 | COMPLETED | 9 | The authentication is complete.|
 | UNINITIALIZED | 10 | The supplicant failed to set up the connection.|
 | INVALID | 11 | Invalid value.|
-
-
 
 ## wifi.getSupportedFeatures<sup>7+</sup>
 
@@ -454,14 +443,11 @@ Obtains the features supported by this device.
 | 0x0004 | Generic Advertisement Service (GAS)/Access Network Query Protocol (ANQP) feature|
 | 0x0008 | Wi-Fi Direct|
 | 0x0010 | SoftAP|
-| 0x0040 | Wi-Fi Aware|
+| 0x0040 | Wi-Fi Aware |
 | 0x8000 | WLAN AP/STA concurrency|
 | 0x8000000 | WPA3 Personal (WPA-3 SAE)|
 | 0x10000000 | WPA3-Enterprise Suite B |
 | 0x20000000 | Enhanced open feature|
-
-
-
 
 ## wifi.getDeviceMacAddress<sup>7+</sup>
 
@@ -493,7 +479,6 @@ try {
 }
 
 ```
-
 
 ## wifi.reassociate<sup>7+</sup>
 
@@ -599,7 +584,7 @@ Updates network configuration.
 
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfig) | Yes| WLAN configuration to add.|
+  | config | [WifiDeviceConfig](#wifideviceconfig) | Yes | Wi-Fi configuration information. |
 
 **Return value**
 
@@ -642,7 +627,7 @@ try {
 
 disableNetwork(netId: number): boolean
 
-Disables network configuration.
+Disables the network configuration.
 
 **System API**: This is a system API.
 
@@ -660,7 +645,7 @@ Disables network configuration.
 
   | **Type**| **Description**|
   | -------- | -------- |
-  | boolean | Returns **true** if the operation is successful; returns **false** otherwise.|
+  | boolean | Whether the network configuration is disabled. **true**: The operation is successful. **false**: The operation fails. |
 
 **Example**
 ```ts
@@ -725,7 +710,7 @@ Removes the specified network configuration.
 
   | **Type**| **Description**|
   | -------- | -------- |
-  | boolean | Returns **true** if the operation is successful; returns **false** otherwise.|
+  | boolean | Whether the specified network configuration is removed. **true**: The operation is successful. **false**: The operation fails. |
 
 **Example**
 ```ts
@@ -743,7 +728,7 @@ try {
 
 enableHotspot(): boolean
 
-Enables this hotspot.
+Enables the hotspot.
 
 **System API**: This is a system API.
 
@@ -755,7 +740,7 @@ Enables this hotspot.
 
   | **Type**| **Description**|
   | -------- | -------- |
-  | boolean | Returns **true** if the operation is successful; returns **false** otherwise.|
+  | boolean | Whether the hotspot is enabled. **true**: The operation is successful. **false**: The operation fails.|
 
 **Example**
 ```ts
@@ -772,7 +757,7 @@ try {
 
 disableHotspot(): boolean
 
-Disables this hotspot.
+Disables the hotspot.
 
 **System API**: This is a system API.
 
@@ -831,7 +816,7 @@ try {
 
 isHotspotActive(): boolean
 
-Checks whether this hotspot is active.
+Checks whether the hotspot is activated.
 
 **System API**: This is a system API.
 
@@ -843,7 +828,7 @@ Checks whether this hotspot is active.
 
   | **Type**| **Description**|
   | -------- | -------- |
-  | boolean | Returns **true** if WLAN is enabled; returns **false** otherwise.|
+  | boolean | Whether the hotspot is activated. **true**: The hotspot is activated. **false**: The hotspot is not activated.|
 
 **Example**
 ```ts
@@ -912,7 +897,7 @@ Represents the hotspot configuration.
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | Yes| No| SSID of the hotspot, in UTF-8 format.|
 | securityType | [WifiSecurityType](js-apis-wifi.md#wifisecuritytypedeprecated) | Yes| No| Security type.|
-| band | number | Yes| No| Hotspot band. The value **1** stands for 2.4 GHz, the value **2** for 5 GHz, and the value **3** for dual band.|
+| band | number | Yes| No| Hotspot band. The value **1** stands for 2.4 GHz, the value **2** for 5 GHz, and the value **3** for dual bands.|
 | preSharedKey | string | Yes| No| PSK of the hotspot.|
 | maxConn | number | Yes| No| Maximum number of connections allowed.|
 
@@ -1015,7 +1000,7 @@ Deletes a persistent group.
 
   | Type| Description|
   | -------- | -------- |
-  | boolean | Returns **true** if the operation is successful; returns **false** otherwise.|
+  | boolean | Whether the persistent group is deleted. **true** if the operation is successful; **false** otherwise. |
 
 **Example**
 ```ts
@@ -1052,7 +1037,7 @@ Sets the device name.
 
   | **Type**| **Description**|
   | -------- | -------- |
-  | boolean | Returns **true** if the operation is successful; returns **false** otherwise.|
+  | boolean | Whether the device name is set successfully. **true**: The operation is successful. **false**: The operation fails. |
 
 **Example**
 ```ts
@@ -1070,26 +1055,7 @@ try {
 
 on(type: "streamChange", callback: Callback&lt;number&gt;): void
 
-Subscribes to Wi-Fi stream changes.
-
-**System API**: This is a system API.
-
-**Required permissions**: ohos.permission.MANAGE_WIFI_CONNECTION
-
-**System capability**: SystemCapability.Communication.WiFi.STA
-
-**Parameters**
-
-  | **Name**| **Type**| **Mandatory**| **Description**|
-  | -------- | -------- | -------- | -------- |
-  | type | string | Yes| Event type, which has a fixed value of **streamChange**.|
-  | callback | Callback&lt;number&gt; | Yes| Callback invoked to return the status change, which can be any of the following values:<br>- **0**: No change.<br>- **1**: Downward.<br>- **2**: Upward.<br>- **3**: Bidirectional.|
-
-## wifi.off('streamChange')<sup>7+</sup>
-
-off(type: "streamChange", callback?: Callback&lt;number&gt;): void
-
-Unsubscribes from Wi-Fi stream changes.
+Subscribes to Wi-Fi stream changes. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1102,15 +1068,34 @@ Unsubscribes from Wi-Fi stream changes.
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **streamChange**.|
-| callback | Callback&lt;number&gt; | No| Callback invoked to return the status change, which can be any of the following values:<br>- **0**: No change.<br>- **1**: Downward.<br>- **2**: Upward.<br>- **3**: Bidirectional.|
+| callback | Callback&lt;number&gt; | Yes | Callback used to return the status change. **0**: No stream. **1**: Downward. **2**: Upward. **3**: Bidirectional. |
+
+## wifi.off('streamChange')<sup>7+</sup>
+
+off(type: "streamChange", callback?: Callback&lt;number&gt;): void
+
+Unsubscribes from Wi-Fi stream changes. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.MANAGE_WIFI_CONNECTION
+
+**System capability**: SystemCapability.Communication.WiFi.STA
+
+**Parameters**
+
+| **Name**| **Type**| **Mandatory**| **Description**|
+| -------- | -------- | -------- | -------- |
+| type | string | Yes| Event type, which has a fixed value of **streamChange**.|
+| callback | Callback&lt;number&gt; | No | Callback used to return the status change. **0**: No stream. **1**: Downward. **2**: Upward. **3**: Bidirectional. |
 
 **Example**
 ```ts
 import wifi from '@ohos.wifi';
 
-let recvStreamChangeFunc = (result:number) => {
+let recvStreamChangeFunc = (result: number) => {
     console.info("Receive stream change event: " + result);
-}
+};
 
 // Register an event.
 wifi.on("streamChange", recvStreamChangeFunc);
@@ -1120,12 +1105,11 @@ wifi.off("streamChange", recvStreamChangeFunc);
 
 ```
 
-
 ## wifi.on('hotspotStaJoin')<sup>7+</sup>
 
 on(type: "hotspotStaJoin", callback: Callback&lt;StationInfo&gt;): void
 
-Subscribes to the addition of a STA to a Wi-Fi hotspot.
+Subscribes to the connection of an STA to a Wi-Fi hotspot. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_WIFI_HOTSPOT
 
@@ -1138,13 +1122,13 @@ Subscribes to the addition of a STA to a Wi-Fi hotspot.
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **hotspotStaJoin**.|
-  | callback | Callback&lt;StationInfo&gt; | Yes| Callback invoked to return the WLAN state.|
+  | callback | Callback&lt;[StationInfo](#stationinfo7)&gt; | Yes | Callback used to return the **StationInfo** object. |
 
 ## wifi.off('hotspotStaJoin')<sup>7+</sup>
 
 off(type: "hotspotStaJoin", callback?: Callback&lt;StationInfo&gt;): void
 
-Unsubscribes from the addition of a STA to a Wi-Fi hotspot.
+Unsubscribes from the connection of an STA to a Wi-Fi hotspot. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_WIFI_HOTSPOT
 
@@ -1157,15 +1141,15 @@ Unsubscribes from the addition of a STA to a Wi-Fi hotspot.
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **hotspotStaJoin**.|
-  | callback | Callback&lt;StationInfo&gt; | No| Callback invoked to return the WLAN state.|
+  | callback | Callback&lt;[StationInfo](#stationinfo7)&gt; | No | Callback used to return the **StationInfo** object. |
 
   **Example**
 ```ts
 import wifi from '@ohos.wifi';
 
-let recvHotspotStaJoinFunc = (result:wifi.StationInfo) => {
+let recvHotspotStaJoinFunc = (result: wifi.StationInfo) => {
     console.info("Receive hotspot sta join event: " + result);
-}
+};
 
 // Register an event.
 wifi.on("hotspotStaJoin", recvHotspotStaJoinFunc);
@@ -1179,7 +1163,7 @@ wifi.off("hotspotStaJoin", recvHotspotStaJoinFunc);
 
 on(type: "hotspotStaLeave", callback: Callback&lt;StationInfo&gt;): void
 
-Subscribes to the disconnection of a STA from a Wi-Fi hotspot.
+Subscribes to the disconnection of a STA from a Wi-Fi hotspot. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_WIFI_HOTSPOT
 
@@ -1192,13 +1176,13 @@ Subscribes to the disconnection of a STA from a Wi-Fi hotspot.
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **hotspotStaLeave**.|
-  | callback | Callback&lt;StationInf&gt; | Yes| Callback invoked to return the WLAN state.|
+  | **callback** | Callback&lt;[StationInfo](#stationinfo7)&gt; | Yes | Callback used to return the **StationInfo** object. |
 
 ## wifi.off('hotspotStaLeave')<sup>7+</sup>
 
 off(type: "hotspotStaLeave", callback?: Callback&lt;StationInfo&gt;): void
 
-Unsubscribes from the disconnection of a STA from a Wi-Fi hotspot.
+Unsubscribes from the disconnection of a STA from a Wi-Fi hotspot. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_WIFI_HOTSPOT
 
@@ -1211,15 +1195,15 @@ Unsubscribes from the disconnection of a STA from a Wi-Fi hotspot.
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **hotspotStaLeave**.|
-  | callback | Callback&lt;StationInf&gt; | No| Callback invoked to return the WLAN state.|
+  | callback | Callback&lt;[StationInfo](#stationinfo7)&gt; | No | Callback used to return the **StationInfo** object. |
 
   **Example**
 ```ts
 import wifi from '@ohos.wifi';
 
-let recvHotspotStaLeaveFunc = (result:wifi.StationInfo) => {
+let recvHotspotStaLeaveFunc = (result: wifi.StationInfo) => {
     console.info("Receive hotspot sta leave event: " + result);
-}
+};
 
 // Register an event.
 wifi.on("hotspotStaLeave", recvHotspotStaLeaveFunc);

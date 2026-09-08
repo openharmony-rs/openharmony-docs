@@ -119,7 +119,7 @@ unlock(callback: AsyncCallback&lt;boolean&gt;): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 202  | permission verification failed, application which is not a system application uses system API.         |
 | 13200002  | the screenlock management service is abnormal.         |
-| 13200003  | illegal use.         |
+| 13200003  | Invalid use.         |
 
 **示例：** 
 
@@ -137,7 +137,7 @@ unlock(callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 在 api11 中 增加错误码`13200003 illegal use` 。
+> 在 api11 中 增加错误码`13200003 Invalid use` 。
 
 ## screenLock.unlock<sup>9+</sup>
 
@@ -163,7 +163,7 @@ unlock(): Promise&lt;boolean&gt;
 | -------- | ---------------------------------------- |
 | 202  | permission verification failed, application which is not a system application uses system API.         |
 | 13200002  | the screenlock management service is abnormal.         |
-| 13200003  | illegal use.         |
+| 13200003  | Invalid use.       |
 
 **示例：** 
 
@@ -179,7 +179,7 @@ unlock(): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 在 api11 中 增加错误码`13200003 illegal use` 。
+> 在 api11 中 增加错误码`13200003 Invalid use` 。
 
 ## screenLock.lock<sup>9+</sup>
 

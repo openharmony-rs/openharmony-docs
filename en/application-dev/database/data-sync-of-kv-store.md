@@ -6,7 +6,6 @@
 <!--Designer: @ding_dong_dong-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:37:57.773Z pushedAt=2026-06-25T07:34:13.247Z -->
 
 ## When to Use
 
@@ -360,3 +359,23 @@ The following uses a single KV store as an example to describe how to implement 
      }
    })
    ```
+
+## Samples
+
+For the development of distributed applications, the following samples are available for reference:
+
+- [Distributed Authentication (ArkTS) (Full SDK) (API10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/DistributedAppDev/DistributedAuthentication)
+
+- [Distributed KV Store (ArkTS) (Full SDK) (API9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/Kvstore)
+
+- [Distributed Music Player (JS) (Full SDK) (API10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/JsDistributedMusicPlayer)
+
+- [Distributed Music Player (ArkTS) (Full SDK) (API9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/ArkTSDistributedMusicPlayer)
+
+- [Distributed Calculator (JS) (Full SDK) (API10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/DistributeCalc)
+
+- [Distributed Calculator (ArkTS) (Full SDK) (API9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/ArkTSDistributedCalc)
+
+- [Distributed Gobang (ArkTS) (Full SDK) (API9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Game/DistributedDataGobang)
+
+- [Distributed Draw (ArkTS) (Full SDK) (API10)](https://gitcode.com/openharmony/codelabs/tree/master/Distributed/DistributeDraw)

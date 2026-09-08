@@ -1,5 +1,12 @@
 # 在线视频播放卡顿优化实践
 
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 ## 概述
 
 在观看在线视频时，流畅播放是至关重要的。当使用[AVPlayer](../reference/apis-media-kit/arkts-apis-media-AVPlayer.md)+[XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)渲染播放在线视频时，有时会遇到在线视频播放卡顿的问题。这种情况可能是设备网络环境较差或需要加载高码率片源，导致视频缓冲时间不足，造成在线视频播放卡顿。当视频缓冲时间不足时，设备需要不断地从服务器上下载视频数据，这会导致视频播放卡顿或者停止播放。为了解决这个问题，通过合理地设置[preferredBufferDuration](../reference/apis-media-kit/arkts-apis-media-i.md#playbackstrategy12)属性可以增加视频缓冲时间，从而确保视频播放的流畅性。
@@ -28,7 +35,7 @@
 | ------------ | :----------------------------------------------------------- | ------------------------------------------------------------ |
 | 起播水线     | 若下载速率 >= 码率场景，起播水线取值：0.3秒 * 码率；若下载速率 < 码率场景，起播水线取值：5秒 * 码率；若起播水线小于10KB，取10KB | 在快速起播和顺滑播放间进行一个相对合理的分割，暂不支持修改。 |
 | 止播水线     | 单次读取数据量，若小于5KB则取5KB                             | 避免将缓冲区中的可用数据耗尽，暂不支持修改。                 |
-| 下载启动水线 | 480KB                                                        | 降低线程启动频率，进行集中下载，降低cpu及指令书消耗，暂不支持修改。 |
+| 下载启动水线 | 480KB                                                        | 降低线程启动频率，进行集中下载，降低cpu及指令数消耗，暂不支持修改。 |
 | 下载暂停水线 | 缓冲区大小                                                   | 当缓冲区写满时，停止下载，支持修改。                         |
 
 >**说明：**
@@ -57,8 +64,7 @@
 
 AVPlayer支持用户自定义缓冲区大小，可通过[setMediaSource](../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#setmediasource12)接口设置PlaybackStrategy中的preferredBufferDuration，自定义缓冲区大小。preferredBufferDuration的单位为秒，缓冲区大小将设置为preferredBufferDuration * 1MB。如：preferredBufferDuration设置为20秒，缓冲区大小将设置为20MB。示例可参考[视频播放](../media/media/video-playback.md)。缓冲区的大小是根据资源文件的大小来设置的，缓冲区大小需要大于整个媒体文件大小。如果媒体文件大小超过用户自定义缓冲区最大值20MB，此时可将缓冲区设置为最大值20MB。
 
-```
-import { media } from '@kit.MediaKit';
+```typescript
 // 创建avPlayer实例对象
 let player = await media.createAVPlayer();
 let headers: Record<string, string> = {"User-Agent" : "User-Agent-Value"};
@@ -100,7 +106,7 @@ player.setMediaSource(mediaSource, playStrategy);
 
 ### 设置preferredBufferDuration后，刚开始视频正常播放，但当用户拖动进度条后，为什么视频卡顿暂停播放？
 
-读取尚未缓存位置的数据，包括用户拖动进度条，及部分特殊片源在播放过程中会来回跳跃下载数据。缓冲区中读取所需的数据量可能会低于止播水线，此时会暂停播放开始缓存数据，缓存至起播水线后继续播放，该缓存时间即为卡顿时间。如果媒体文件未大于20MB，可根据媒体文件的大小来这设置preferredBufferDuration的大小。如果媒体文件的大小大于20MB，只需要设置默认值20MB就能最大程度的减少卡顿。
+读取尚未缓存位置的数据，包括用户拖动进度条，及部分特殊片源在播放过程中会来回跳跃下载数据。缓冲区中读取所需的数据量可能会低于止播水线，此时会暂停播放开始缓存数据，缓存至起播水线后继续播放，该缓存时间即为卡顿时间。如果媒体文件未大于20MB，可根据媒体文件的大小来设置preferredBufferDuration的大小。如果媒体文件的大小大于20MB，只需要设置默认值20MB就能最大程度的减少卡顿。
 
 >**说明：**
 >

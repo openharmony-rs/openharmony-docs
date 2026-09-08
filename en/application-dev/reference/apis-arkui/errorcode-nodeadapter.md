@@ -6,7 +6,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e98b791a1f57fab5012a75ce7d9ff0a0466dd410 translatedAt=2026-07-17T07:01:28.910Z pushedAt=2026-07-17T07:10:50.082Z -->
+<!-- md-trans-meta sourceCommit=66d449f865d808c2ab2228de4384c97bf7b4883d translatedAt=2026-08-19T08:37:25.324Z pushedAt=2026-08-19T08:43:32.298Z -->
 
 > **NOTE**
 >
@@ -64,17 +64,17 @@ The component already has a child node, and the NodeAdapter cannot be applied to
 
 **Solution**
 
-Remove the existing child node or select a parent component for the NodeAdapter.
+Remove the existing child node or set the NodeAdapter elsewhere.
 
-## 106107 Index Out of Range
+## 106107 Parameter Index Out of Range in the Component Event
 
 **Error Message**
 
-The parameter length in the parameter event exceeds the limit.
+The parameter index in the component event is out of range.
 
 **Description**
 
-This error code is reported when the **index** parameter in a component event exceeds the array length limit.
+This error code is reported when the **index** parameter in the component event is out of range.
 
 **Possible Causes**
 
@@ -84,7 +84,7 @@ The **index** parameter passed exceeds the array length limit.
 
 Make sure the index parameter does not exceed the length limit of the input array.
 
-## 106108 Data Not Found
+## 106108 Data Requested by the Caller Does Not Exist in the Component Event
 
 **Error Message**
 
@@ -92,7 +92,7 @@ The data does not exist in the component event.
 
 **Description**
 
-This error code is reported when the specified data does not exist in the component event.
+This error code is reported when the data requested by the caller does not exist in the component event.
 
 **Possible Causes**
 

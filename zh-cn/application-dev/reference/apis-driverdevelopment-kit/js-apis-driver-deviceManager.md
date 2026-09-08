@@ -14,7 +14,7 @@
 
 本模块的外设访问能力需要多个 API 组合完成，典型调用流程为：**查询设备 → 绑定设备获取通信对象 → 通过通信对象与驱动交互 → 解绑设备释放资源**。设备绑定的生命周期视图如下：
 
-![DriverDeviceManager_flowchart](../figures/DriverDeviceManager_flowchart.png)
+![DriverDeviceManager_flowchart](figures/DriverDeviceManager_flowchart.png)
 
 >  **说明：**
 > 

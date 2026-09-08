@@ -23,7 +23,7 @@ ISendable是所有Sendable类型（除`null`和`undefined`）的父类型。自�
 
 | 类型 | 说明   |
 | ------ | ------ |
-| [lang.ISendable](js-apis-arkts-lang.md#langisendable)   | 所有Sendable类型的父类型。 |
+| [lang.ISendable](js-apis-arkts-lang.md#isendable)   | 所有Sendable类型的父类型。 |
 
 ## ArrayFromMapFn<sup>18+</sup>
 type ArrayFromMapFn<FromElementType, ToElementType> = (value: FromElementType, index: number) => ToElementType
@@ -94,7 +94,31 @@ ArkTS Array归约函数类型，被Array类的[reduceRight](arkts-apis-arkts-col
 | ------ | --------------------------- |
 | AccType | 归约函数的结果，该结果会作为下一次调用ArrayReduceCallback时的previousValue参数。 |
 
+## ArrayElementPredicateFn
 
+type ArrayElementPredicateFn\<ElementType> = (value: ElementType) => boolean
+
+ArkTS Array断言函数类型，被Array类的[retainAll](arkts-apis-arkts-collections-Array.md#retainall-2)接口使用，用来判断数组元素是否满足测试条件。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此类型仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名  | 类型   | 必填 | 说明                          |
+| ------- | ------ | ---- | --------------------------- |
+| value | ElementType | 是 | 当前遍历的ArkTS Array元素，用于判断是否满足测试条件。|
+
+**返回值：**
+
+| 类型   | 说明                          |
+| ------ | --------------------------- |
+| boolean | 断言函数的结果。为true时表示当前元素满足条件，为false时表示当前元素不满足条件。 |
 
 ## TypedArrayFromMapFn
 type TypedArrayFromMapFn\<FromElementType, ToElementType> = (value: FromElementType, index: number) => ToElementType
@@ -154,9 +178,9 @@ ArkTS TypedArray遍历函数类型，被TypedArray类的forEach()接口使用。
 
 | 参数名  | 类型   | 必填 | 说明                          |
 | ------- | ------ | ---- | --------------------------- |
-| value | ElementType | 否 | 当前遍历的ArkTS TypedArray元素。 |
-| index | number | 否 | 当前遍历的ArkTS TypedArray元素索引，从0开始。 |
-| array | ArrayType | 否 | 当前遍历的ArkTS TypedArray实例。 |
+| value | ElementType | 是 | 当前遍历的ArkTS TypedArray元素。 |
+| index | number | 是 | 当前遍历的ArkTS TypedArray元素索引，从0开始。 |
+| array | ArrayType | 是 | 当前遍历的ArkTS TypedArray实例。 |
 
 ## TypedArrayMapCallback
 type TypedArrayMapCallback\<ElementType, ArrayType> = (value: ElementType, index: number, array: ArrayType) => ElementType

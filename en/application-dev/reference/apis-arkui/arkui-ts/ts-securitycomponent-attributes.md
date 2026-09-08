@@ -6,19 +6,15 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=0ec9256974bbb2d1638203cef188296923565691 translatedAt=2026-06-15T07:44:08.611Z pushedAt=2026-06-18T11:27:56.655Z -->
+<!-- md-trans-meta sourceCommit=50713b5507bc1dd76af41b33f945afecf178d99e translatedAt=2026-09-07T08:06:26.232Z -->
 
-## Overview
+The security component universal attribute module provides unified configuration capabilities for the layout, size, text, icon, color, border, and interaction universal attributes of security controls.
 
-The universal attributes module for security components enables unified configuration of universal attributes such as layout, size, text, icon, color, border, and interaction behaviors.
+This module applies to the following scenarios:
 
-This module is mainly used in the following scenarios:
-
-- Set layout, size, text, icon, color, border, and interaction-related attributes for security components such as [PasteButton](ts-security-components-pastebutton.md#pastebutton-1) and [SaveButton](ts-security-components-savebutton.md#savebutton-1).
-
-- Adjust the display effect and interaction experience of security components while ensuring compliance with the security component specifications. For specific constraints, see [Constraints](../../../security/AccessToken/security-component-overview.md#constraints).
-
-- Reuse the universal attribute capabilities of security components through chained calls.
+- Uniformly sets layout, size, text, icon, color, border, and interaction related attributes for security controls such as [PasteButton](ts-security-components-pastebutton.md#pastebutton-1) and [SaveButton](ts-security-components-savebutton.md#savebutton-1).
+- Adjusts the display effect and interaction experience of security controls while complying with the security control specifications. For details about the constraints, see [Constraints](../../../security/AccessToken/security-component-overview.md#constraints).
+- Reuses the security control universal attribute capabilities through chained calls.
 
 > **NOTE**
 >
@@ -28,918 +24,908 @@ This module is mainly used in the following scenarios:
 
 ### Key Enums
 
-- **[SecurityComponentLayoutDirection](#securitycomponentlayoutdirection):** Enumeration of icon and text layout directions for the security component. Specifies horizontal or vertical layout.
-
-- **[ButtonType](#buttontype):** Enumeration of button styles for the security component. Specifies capsule, circle, rounded rectangle, or normal button style.
+- **[SecurityComponentLayoutDirection](#securitycomponentlayoutdirection):** Enumerates the layout direction of the security control icon and text, used to specify a horizontal or vertical layout.
+- **[ButtonType](#buttontype):** Enumerates the button styles of a security control, used to specify a capsule, circle, rounded rectangle, or normal button style.
 
 ### Key APIs
 
-- **SecurityComponentMethod&lt;T&gt;:** A collection of universal attribute methods for security components. Configures layout, size, text, icon, color, border, and interaction attributes for specific security components.
+- **SecurityComponentMethod&lt;T&gt;:** A collection of security control universal attribute methods, used to configure the layout, size, text, icon, color, border, and interaction attributes for a specific security control.
 
 ## iconSize
 
 iconSize(value: Dimension): T
 
-Sets the icon size of the security component.
+Sets the size of the security control icon.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type | Mandatory | Description |
 |------------|------|-------|---------|
-| value | [Dimension](ts-types.md#dimension10) | Yes | Icon size of the security component, in vp by default when no unit is specified.<br>Default value: **16vp**<br>Percentage strings are not supported.<br/>If an invalid value or unit is passed, the attribute does not take effect, and the component is displayed according to the default value. |
+| value | [Dimension](ts-types.md#dimension10) | Yes | Size of the icon on the security control. If no unit is explicitly specified, the unit is vp.<br/>Default value: **16vp**.<br/>This parameter does not support percentage strings.<br/>If an invalid value or invalid unit is passed in, the attribute does not take effect and the control is displayed with the default value. |
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Security control attribute. |
 
 ## layoutDirection
 
 layoutDirection(value: SecurityComponentLayoutDirection): T
 
-Sets the layout direction of the icon and text on the security component.
+Sets the direction in which the icon and text are distributed on the security control.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-Parameters
+**Parameters**
 
 | Name | Type | Mandatory | Description |
 |------------|------|-------|---------|
-| value | [SecurityComponentLayoutDirection](#securitycomponentlayoutdirection) | Yes | Layout direction of the icon and text on the security component.<br/>Default value: **SecurityComponentLayoutDirection.HORIZONTAL** |
+| value | [SecurityComponentLayoutDirection](#securitycomponentlayoutdirection) | Yes | Direction in which the icon and text are distributed on the security control.<br/>Default value: SecurityComponentLayoutDirection.HORIZONTAL. |
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Attribute of the security control. |
 
 ## position
 
 position(value: Position): T
 
-Sets the absolute position, which is the offset of the top-left corner of the security component relative to the top-left corner of the parent container.
+Sets the absolute position, that is, the offset of the upper left corner of the security control relative to the upper left corner of the parent container.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type | Mandatory | Description |
 |------------|------|-------|---------|
-| value | [Position](ts-types.md#position) | Yes | Offset position of the security component's top-left corner relative to the parent container's top-left corner. Applicable to scenarios where the security component is placed in a fixed area of the page through absolute positioning.<br/>When the unit is not explicitly specified, the unit is vp.<br/>It is recommended that you pass numeric coordinates for both **x** and **y**.<br/>If the parameter is **undefined** or **null**, or **x** and **y** are non-numeric types, this attribute does not take effect, and invalid coordinates are treated as **0**. |
+| value | [Position](ts-types.md#position) | Yes | Offset of the upper left corner of the security control relative to the upper left corner of the parent container. It applies to scenarios where the security control is placed in a fixed area of the page through absolute positioning.<br/>If no unit is explicitly specified, the unit is vp.<br/>It is recommended that both x and y be numeric coordinates.<br/>If the parameter is undefined or null, or if x or y is a non-numeric type, this attribute does not take effect, and the abnormal coordinates are processed as 0. |
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Returns the attributes of the security control. |
 
 ## markAnchor
 
 markAnchor(value: Position): T
 
-Sets the anchor of the security component for moving the component with its top-left corner as the reference point.
+Sets the anchor of the security control during position locating, with the upper left corner of the control as the reference point for offsetting.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name | Type                   | Mandatory | Description                   |
+| Name | Type | Mandatory | Description |
 |------------|------|-------|---------|
-| value | [Position](ts-types.md#position) | Yes | Anchor of the security component for moving the component with its top-left corner as the reference point. Generally, this attribute is used in conjunction with **position()** and **offset()** for more precise positioning.<br>No default value.<br>This attribute does not take effect when it is set to an invalid value.
+| value | [Position](ts-types.md#position) | Yes | Anchor of the security control during position locating, with the upper left corner of the control as the reference point for offsetting. It is usually used together with position() and offset() to set the display position of the control more precisely.<br/>If no unit is explicitly specified, the unit is vp.<br/>There is no default value.<br/>If an invalid value is passed in, this attribute does not take effect. |
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Attribute of the security control. |
 
 ## offset
 
 offset(value: Position | Edges | LocalizedEdges): T
 
-Sets the coordinate offset of the security component relative to its own layout position.
+Sets the coordinate offset of the security control relative to its own layout position.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                   | Mandatory | Description                   |
 |------------|------|-------|---------|
-| value | [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12) \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) | Yes | Coordinate offset of the security component relative to its own layout position. This attribute does not affect the layout in the parent container. The offset is used only during drawing.<br>When the unit is not explicitly specified, the unit is vp.<br>No default value.<br>This attribute does not take effect when it is set to an invalid value.
+| value | [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12) \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) | Yes | Coordinate offset of the security control relative to its own layout position. After being set, this attribute does not affect the layout of the parent container; it only adjusts the display position of the control during the drawing phase.<br/>When no unit is explicitly specified, the unit is vp.<br/>There is no default value.<br/>When the input parameter is invalid, this attribute does not take effect. |
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Attribute of the security control. |
 
 ## fontSize
 
 fontSize(value: Dimension): T
 
-Sets the font size of the text for the security component.
+Sets the size of the security control text.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name | Type                   | Mandatory | Description                   |
+| Name | Type | Mandatory | Description |
 |------------|------|-------|---------|
-| value | [Dimension](ts-types.md#dimension10) | Yes | Font size of the text on the security component. When the unit is not explicitly specified, the unit is fp.<br/>Default value: **$r('sys.float.ohos_id_text_size_button1')**<br/>Percentage strings are not supported.<br/>This attribute does not take effect when it is set to an invalid value.<br/>Note: When the security component text is not fully displayed, clicking it does not perform authorization. The **fontSize** setting determines whether the text can be fully displayed and thereby affects the authorization behavior of the security component. |
+| value | [Dimension](ts-types.md#dimension10) | Yes | Size of the text on the security control. If no unit is explicitly specified, the unit is fp.<br/>Default value: $r('sys.float.ohos_id_text_size_button1').<br/>This parameter does not support percentage strings.<br/>If an invalid value is set, this attribute does not take effect.<br/>**Note:** When the security control text is not fully displayed, tapping does not grant authorization. The fontSize setting affects whether the text can be fully displayed, which in turn affects the authorization behavior of the security control. |
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Attributes of the security control. |
 
 ## fontStyle
 
 fontStyle(value: FontStyle): T
 
-Sets the font style of the text on the security component.
+Sets the style of the text on the security control.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name | Type                   | Mandatory | Description                   |
+| Name | Type | Mandatory | Description |
 |------------|------|-------|---------|
-| value | [FontStyle](ts-appendix-enums.md#fontstyle) | Yes | Font style of the text on the security component.<br/>Default value: **FontStyle.Normal** |
+| value | [FontStyle](ts-appendix-enums.md#fontstyle) | Yes | Style of the text on the security control.<br/>Default value: FontStyle.Normal. |
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Returns the attributes of the security control. |
 
 ## fontWeight
 
 fontWeight(value: number | FontWeight | string | Resource): T
 
-Sets the font weight of the text on the security component.
+Sets the font weight of the security control text.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                   | Mandatory | Description                   |
 |------------|------|-------|---------|
-| value | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| [Resource](ts-types.md#resource)<sup>20+</sup> | Yes | Font weight of the text on the security component.<br/>For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a heavier font weight.<br>For the string type, only numeric strings, for example, **'400'**, and the enumerated values of **FontWeight** are supported, including **'bold'**, **'bolder'**, **'lighter'**, **'regular'**, and **'medium'**.<br>The Resource type is supported since API version 20. The Resource type supports only **'integer'** and **'string'** formats. Values follow the number type specifications for the **'integer'** type and the string type specifications for the **'string'** type, both described earlier.<br>If **fontWeight** is not set for the component, the font weight is set to **FontWeight.Medium** by default. If **value** is **undefined** or **null**, a number outside the [100, 900] range, or a string that does not match the string format of **FontWeight** enums, the font weight is set to **FontWeight.Normal**. |
+| value | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| [Resource](ts-types.md#resource)<sup>20+</sup> | Yes | Font weight of the text on the security control.<br/>For the number type, the value ranges from 100 to 900, in increments of 100. A larger value indicates a bolder font.<br/>For the string type, numeric strings (for example, '400') and strings corresponding to the enum values in FontWeight (for example, 'bold', 'bolder', 'lighter', 'regular', and 'medium') are supported.<br/>Since API version 20, the Resource type is supported. The Resource type supports only 'integer' and 'string'. When the type is 'integer', the value follows the number type described above. When the type is 'string', the value follows the string type described above.<br/>If fontWeight is not set for the control, the font weight is set to FontWeight.Medium by default. If the value parameter is undefined or null, or the number type value is outside the range [100, 900], or the string type value does not conform to the string format corresponding to the FontWeight enum values, the font weight is set to FontWeight.Normal. |
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Attribute of the security control. |
 
 ## fontFamily
 
 fontFamily(value: string | Resource): T
 
-Sets the font family of the text on the security component.
+Sets the font of the security control text.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                   | Mandatory | Description                   |
 |------------|------|-------|---------|
-| value | string \| [Resource](ts-types.md#resource) | Yes | Font family of the text on the security component.<br/>Default font: **'HarmonyOS Sans'**|
+| value | string \| [Resource](ts-types.md#resource) | Yes | Font of the text on the security control.<br/>Default font: 'HarmonyOS Sans'. |
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Attributes of the security control. |
 
 ## fontColor
 
 fontColor(value: ResourceColor): T
 
-Sets the font color of the text on the security component.
+Sets the color of the text on the security control.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                   | Mandatory | Description                   |
 |------------|------|-------|---------|
-| value | [ResourceColor](ts-types.md#resourcecolor) | Yes | Font color of the text on the security component.<br>Default value: **$r('sys.color.font_on_primary')**|
+| value | [ResourceColor](ts-types.md#resourcecolor) | Yes | Color of the text on the security control.<br/>Default value: $r('sys.color.font_on_primary'). |
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Attribute of the security control. |
 
 ## iconColor
 
 iconColor(value: ResourceColor): T
 
-Sets the icon color of the security component.
+Sets the color of the security control icon.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                   | Mandatory | Description                   |
 |------------|------|-------|---------|
-| value | [ResourceColor](ts-types.md#resourcecolor) | Yes | Icon color of the security component.<br>Default value: **$r('sys.color.icon_on_primary')**
+| value | [ResourceColor](ts-types.md#resourcecolor) | Yes | Color of the icon on the security control.<br/>Default value: $r('sys.color.icon_on_primary'). |
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Attribute of the security control. |
 
 ## backgroundColor
 
 backgroundColor(value: ResourceColor): T
 
-Sets the background color of the security component.
+Sets the background color of the security control.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                   | Mandatory | Description                   |
 |------------|------|-------|---------|
-| value | [ResourceColor](ts-types.md#resourcecolor) | Yes | Background color of the security component. If the alpha value of the upper eight bits of the security component's background color is less than **0x1a** (for example, **0x1800ff00**), the system will forcibly adjust this alpha value to **0xff**. This ensures the security component remains sufficiently visible and prevents users from inadvertently triggering authorization due to an overly transparent component.<br/>Default value: **$r('sys.color.icon_emphasize')**|
+| value | [ResourceColor](ts-types.md#resourcecolor) | Yes | Background color of the security control. When the alpha value of the upper eight bits of the security control button background color is lower than 0x1a (for example, 0x1800ff00), the system forcibly adjusts it to 0xff to ensure that the security control is visible enough and prevent users from triggering authorization unknowingly due to an overly transparent control.<br/>Default value: $r('sys.color.icon_emphasize').|
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Attribute of the security control. |
 
 ## borderStyle
 
 borderStyle(value: BorderStyle): T
 
-Sets the border style of the security component.
+Sets the style of the security control border.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name | Type                   | Mandatory | Description                   |
+| Name | Type | Mandatory | Description |
 |------------|------|-------|---------|
-| value | [BorderStyle](ts-appendix-enums.md#borderstyle) | Yes | Border style of the security component.<br>No border style is set by default.|
+| value | [BorderStyle](ts-appendix-enums.md#borderstyle) | Yes | Style of the security control border.<br/>By default, no border style is set.|
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Attributes of the security control. |
 
 ## borderWidth
 
 borderWidth(value: Dimension): T
 
-Sets the border width of the security component.
+Sets the border width of the security control.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name | Type                   | Mandatory | Description                   |
+| Name | Type | Mandatory | Description |
 |------------|------|-------|---------|
-| value | [Dimension](ts-types.md#dimension10) | Yes | Border width of the security component.<br/>Default value: **0vp**. When the unit is not explicitly specified, the unit is vp.<br/>Percentage strings are not supported. This attribute does not take effect when it is set to an invalid value.|
+| value | [Dimension](ts-types.md#dimension10) | Yes | Border width of the security control.<br/>Default value: **0vp**. If no unit is explicitly specified, the unit is vp.<br/>Percentage strings are not supported. If an invalid value is set, this attribute does not take effect.|
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Attribute of the security control. |
 
 ## borderColor
 
 borderColor(value: ResourceColor): T
 
-Sets the border color of the security component.
+Sets the border color of the security control.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                   | Mandatory | Description                   |
 |------------|------|-------|---------|
-| value | [ResourceColor](ts-types.md#resourcecolor) | Yes | Border color of the security component.<br/>No border color is set by default.|
+| value | [ResourceColor](ts-types.md#resourcecolor) | Yes | Border color of the security control.<br/>By default, no border color is set.|
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Attributes of the security control. |
 
 ## borderRadius
 
 borderRadius(value: Dimension): T
 
-Sets the border radius of the security component.
+Sets the border corner radius of the security control.
 
-The effect of **borderRadius** is influenced by **ButtonType**. When **ButtonType** is **Capsule** or **Circle**, the **borderRadius** setting does not take effect, and the corner radius is automatically determined by the button type. When the **ButtonType** is **Normal** or **ROUNDED_RECTANGLE**, the **borderRadius** setting takes effect. For details, see [ButtonType](#buttontype).
+The effect of borderRadius is affected by ButtonType. When the button type is Capsule or Circle, the borderRadius setting does not take effect, and the button corner radius is automatically determined by the button type. When the button type is Normal or ROUNDED_RECTANGLE, the borderRadius setting takes effect. For details, see [ButtonType](#buttontype).
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                   | Mandatory | Description                   |
 |------------|------|-------|---------|
-| value |  [Dimension](ts-types.md#dimension10) | Yes | Border radius of the security component. If no unit is explicitly specified, the unit is vp.<br/>Default value: **0vp**<br/>Percentage strings are not supported. The border radius is constrained by the component size, with a minimum of **0** and a maximum of half the smaller of the width and height. If an invalid value is set, this attribute does not take effect. |
+| value |  [Dimension](ts-types.md#dimension10) | Yes | Border corner radius of the security control. If no unit is explicitly specified, the unit is vp.<br/>Default value: **0vp**.<br/>Percentage strings are not supported. The corner radius is limited by the component size. The minimum value is 0, and the maximum value is half of the smaller value between the width and height. If an invalid value is set, this attribute does not take effect.|
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Returns the attributes of the security control. |
 
 ## borderRadius<sup>15+</sup>
 
 borderRadius(radius: Dimension | BorderRadiuses): T
 
-Sets the border radius of the security component, allowing individual setting of the four corner radii.
+Sets the border corner radius of the security control. The radius of each of the four corners can be set separately.
 
-The effect of **borderRadius** is influenced by **ButtonType**. When **ButtonType** is **Capsule** or **Circle**, the **borderRadius** setting does not take effect, and the corner radius is automatically determined by the button type. When the **ButtonType** is **Normal** or **ROUNDED_RECTANGLE**, the **borderRadius** setting takes effect. For details, see [ButtonType](#buttontype).
+The effect of borderRadius is affected by ButtonType. When the button type is Capsule or Circle, the borderRadius setting does not take effect, and the button corner radius is automatically determined by the button type. When the button type is Normal or ROUNDED_RECTANGLE, the borderRadius setting takes effect. For details, see [ButtonType](#buttontype).
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API**: This API can be used in atomic services since API version 15.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                   | Mandatory | Description                   |
 |------------|------|-------|---------|
-| radius |  [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](ts-types.md#borderradiuses9) | Yes | Border radius of the security component. When the unit is not explicitly specified, the unit is vp.<br/>Default value: **0vp**.<br/>The Dimension type does not support setting percentage strings. The border radius is constrained by the component size, with a minimum value of **0** and a maximum value of half the smaller dimension of width and height. When an invalid value is set, this attribute does not take effect.|
+| radius |  [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](ts-types.md#borderradiuses9) | Yes | Border corner radius of the security control. If no unit is explicitly specified, the unit is vp.<br/>Default value: **0vp**.<br/>The Dimension type does not support percentage strings. The corner radius is limited by the component size. The minimum value is 0, and the maximum value is half of the smaller value between the width and height. If an invalid value is set, this attribute does not take effect.|
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Returns the attributes of the security control. |
 
 ## padding
 
 padding(value: Padding | Dimension): T
 
-Sets the padding of the security component.
+Sets the padding of the security control.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name | Type | Mandatory | Description |
+| Name | Type                   | Mandatory | Description                   |
 |------------|------|-------|---------|
-| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) | Yes | Padding of the security component. When the unit is not explicitly specified, the unit is vp.<br>Default value: 8 vp for the top and bottom and 16 vp for the left and right.<br>Note: Percentage strings are not supported. If a percentage string is set, the corresponding padding is **0**.|
+| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) | Yes | Padding of the security control. If no unit is explicitly specified, the unit is vp.<br/>Default value: 8 vp for top and bottom, 16 vp for left and right.<br/>**Note:** This parameter does not support the percentage string data type. If a percentage string is set, the corresponding padding is displayed as 0.|
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Attribute of the security control. |
 
 ## align<sup>15+</sup>
 
 align(alignType: Alignment): T
 
-Sets the alignment of the icon and text on the security component.
+Sets the alignment of the icon and text of the security control.
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API**: This API can be used in atomic services since API version 15.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                   | Mandatory | Description                   |
 |------------|------|-------|---------|
-| alignType | [Alignment](ts-appendix-enums.md#alignment) | Yes | Alignment of the icon and text within the security component. The icon and text are aligned as a unit within the component's background area. The alignment is applied based on the **alignType** value after [padding](ts-securitycomponent-attributes.md#padding) takes effect, which also affects the visual result.<br>Default value: **Alignment.Center**|
+| alignType | [Alignment](ts-appendix-enums.md#alignment) | Yes | Alignment of the icon and text of the security control. The icon and text are aligned as a whole within the control background. The display effect is affected by [padding](ts-securitycomponent-attributes.md#padding). After padding takes effect, alignment is performed according to the alignment specified by the alignType parameter.<br/>Default value: **Alignment.Center**.|
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Attribute of the security control. |
 
 ## textIconSpace
 
 textIconSpace(value: Dimension): T
 
-Sets the spacing between the icon and text in the security component.
+Sets the spacing between the icon and text in a security control.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name | Type                   | Mandatory | Description                   |
+| Name | Type | Mandatory | Description |
 |------------|------|-------|---------|
-| value | [Dimension](ts-types.md#dimension10) | Yes | Spacing between the icon and text in the security component. When the unit is not explicitly specified, the unit is vp.<br/>Default value: **4vp**<br/>Note: Percentage strings are not supported. If a percentage string is set, the corresponding spacing between the icon and text is **0**. Since API version 14, negative values are treated as the default value.|
+| value | [Dimension](ts-types.md#dimension10) | Yes | Spacing between the icon and text in a security control. If no unit is explicitly specified, the unit is vp.<br/>Default value: **4vp**<br/>**Note:** This parameter does not support the percentage string data type. If a percentage string is set, the spacing between the icon and text is displayed as 0. Since API version 14, if a negative value is set, the default value is used.|
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Attribute of the security control. |
 
 ## width<sup>11+</sup>
 
 width(value: Length): T
 
-Sets the width of the security component. If not set, the width adapts to the element content. When used in conjunction with adaptive font size attributes, the width setting affects whether the text is fully displayed.
+Sets the width of the security control. If this attribute is not set, the width is adapted based on the element content. When used together with adaptive font size attributes, the width setting affects whether the text can be fully displayed.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API**: This API can be used in atomic services since API version 12.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                   | Mandatory | Description                   |
 |------------|------|-------|---------|
-| value | [Length](ts-types.md#length) | Yes | Width of the security component itself. If not set, the width adapts to the element content. When the unit is not explicitly specified, the unit is vp.<br/>When used in conjunction with [minFontSize](#minfontsize18), [maxFontSize](#maxfontsize18), [maxLines](#maxlines18), and [heightAdaptivePolicy](#heightadaptivepolicy18) for adaptive font sizing, if the text on the security component is truncated, clicking the component does not perform authorization. If an invalid value is set, this attribute does not take effect.|
+| value | [Length](ts-types.md#length) | Yes | Width of the security control. If this attribute is not set, the width is adapted based on the element content. If no unit is explicitly specified, the unit is vp.<br/>When used together with [minFontSize](#minfontsize18), [maxFontSize](#maxfontsize18), [maxLines](#maxlines18), and [heightAdaptivePolicy](#heightadaptivepolicy18) to implement adaptive font size, if the security control text is not fully displayed, a tap will not be authorized. If an invalid value is set, this attribute does not take effect.|
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Attribute of the security control. |
 
 ## height<sup>11+</sup>
 
 height(value: Length): T
 
-Sets the height of the security component. If not set, the height adapts to the element content. When used in conjunction with adaptive font size attributes, the height setting affects whether the text is fully displayed.
+Sets the height of the security control. If this attribute is not set, the height is adapted based on the element content. When used together with adaptive font size attributes, the height setting affects whether the text can be fully displayed.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API**: This API can be used in atomic services since API version 12.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                   | Mandatory | Description                   |
 |------------|------|-------|---------|
-| value | [Length](ts-types.md#length) | Yes | Height of the security component. If not set, the height adapts to the element content. If no unit is explicitly specified, the unit is vp.<br/>When used in conjunction with [minFontSize](#minfontsize18), [maxFontSize](#maxfontsize18), [maxLines](#maxlines18), and [heightAdaptivePolicy](#heightadaptivepolicy18) for adaptive font sizing, if the text on the security component is truncated, clicking the component does not perform authorization. If an invalid value is set, this attribute does not take effect.|
+| value | [Length](ts-types.md#length) | Yes | Height of the security control. If this attribute is not set, the height is adapted based on the element content. If no unit is explicitly specified, the unit is vp.<br/>When used together with [minFontSize](#minfontsize18), [maxFontSize](#maxfontsize18), [maxLines](#maxlines18), and [heightAdaptivePolicy](#heightadaptivepolicy18) to implement adaptive font size, if the text of the security control is not fully displayed, tapping the control does not grant authorization. If an invalid value is set, this attribute does not take effect.|
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Attribute of the security control. |
 
 ## size<sup>11+</sup>
 
 size(value: SizeOptions): T
 
-Sets the width and height. If not set, the width and height adapt to the element content. The **size** method is used to set both width and height at the same time. To set the width or height individually, use the [width](#width11) or [height](#height11) method.
+Sets the width and height. If they are not set, the width and height are adapted based on the element content. The size method is used to set the width and height at the same time. To set the width or height separately, use the [width](#width11) or [height](#height11) method.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API**: This API can be used in atomic services since API version 12.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name | Type | Mandatory | Description |
-|------------|------|-------|---------|
-| value | [SizeOptions](ts-types.md#sizeoptions) | Yes | Width and height of the security component. When this parameter is not specified, the security component automatically adapts its size to the element content. If no unit is explicitly specified, the unit is vp.<br/>When used in conjunction with [minFontSize](#minfontsize18), [maxFontSize](#maxfontsize18), [maxLines](#maxlines18), and [heightAdaptivePolicy](#heightadaptivepolicy18) for adaptive font sizing, if the text on the security component is truncated, clicking the component does not perform authorization. If an invalid value is set, this attribute does not take effect.|
-
-**Return value**
-
-| Type | Description |
-| -------- | -------- |
-| T | Attribute of the security component. |
-
-## constraintSize<sup>11+</sup>
-
-constraintSize(value: ConstraintSizeOptions): T
-
-Sets the constraint size, limiting the size range during component layout.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                   | Mandatory | Description                   |
 |------------|------|-------|---------|
-| value | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | Yes | Constraint size, limiting the size range during component layout. When the unit is not explicitly specified, the unit is vp.<br/>**constraintSize** takes precedence over **width** and **height**.<br>When used in conjunction with adaptive font size attributes, if the text on the security component is truncated, clicking the component does not perform authorization. The **constraintSize** setting affects whether the text is fully displayed.<br/>For the value results, see [impact of constraintSize values on width/height](ts-universal-attributes-size.md#constraintsize).<br/>Default value:<br/>{<br/>minWidth:&nbsp;0,<br/>maxWidth:&nbsp;Infinity,<br/>minHeight:&nbsp;0,<br/>maxHeight:&nbsp;Infinity<br/>}.|
+| value | [SizeOptions](ts-types.md#sizeoptions) | Yes | Width and height. If they are not set, the width and height are adapted based on the element content. If no unit is explicitly specified, the unit is vp.<br/>When used together with [minFontSize](#minfontsize18), [maxFontSize](#maxfontsize18), [maxLines](#maxlines18), and [heightAdaptivePolicy](#heightadaptivepolicy18) to implement adaptive font size, if the security control text is not fully displayed, tapping the control will not trigger authorization. The size setting affects whether the text can be fully displayed.|
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Returns the attributes of the security control. |
+
+## constraintSize<sup>11+</sup>
+
+constraintSize(value: ConstraintSizeOptions): T
+
+Sets the constraint size to limit the size range during component layout.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+|------------|------|-------|---------|
+| value | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | Yes | Constraint size, which limits the size range during component layout. If no unit is explicitly specified, the unit is vp.<br/>The priority of constraintSize is higher than that of width and height.<br/>When attributes related to adaptive font size are used, incomplete display of the security control text will cause the tap to fail to authorize. The setting of constraintSize affects whether the text can be fully displayed.<br/>For the value result, see [Impact of constraintSize on width/height](ts-universal-attributes-size.md#constraintsize).<br/>Default value:<br/>{<br/>minWidth:&nbsp;0,<br/>maxWidth:&nbsp;Infinity,<br/>minHeight:&nbsp;0,<br/>maxHeight:&nbsp;Infinity<br/>}. |
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| T | Returns the attributes of the security control. |
 
 ## alignRules<sup>15+</sup>
 
 alignRules(alignRule: AlignRuleOption): T
 
-Sets the alignment rules for child components within a relative container. This API takes effect only when the parent container is [RelativeContainer](ts-container-relativecontainer.md).
+Sets the alignment rules of a child component in a relative container. This attribute takes effect only when the parent container is [RelativeContainer](ts-container-relativecontainer.md).
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API**: This API can be used in atomic services since API version 15.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name | Type                                        | Mandatory | Description                     |
+| Name | Type                                        | Required | Description                     |
 | ------ | ------------------------------------------- | ---- | ------------------------ |
-| alignRule | [AlignRuleOption](ts-universal-attributes-location.md#alignruleoption9) | Yes   | Alignment rule configuration object that defines anchor alignment options (**top**, **bottom**, **left**, **right**, and **center**). Specifies the alignment position and method of the security component in [RelativeContainer](ts-container-relativecontainer.md). |
+| alignRule | [AlignRuleOption](ts-universal-attributes-location.md#alignruleoption9) | Yes   | Alignment rule configuration object, which contains anchor alignment configurations such as top, bottom, left, right, and center, and is used to specify the alignment position and mode of the security control in [RelativeContainer](ts-container-relativecontainer.md). |
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Returns the attributes of the security control. |
 
 ## alignRules<sup>15+</sup>
 
 alignRules(alignRule: LocalizedAlignRuleOptions): T
 
-Sets the alignment rules for child components within a relative container. This API takes effect only when the parent container is [RelativeContainer](ts-container-relativecontainer.md). In the horizontal direction, this method replaces **left** and **right** in the [alignRules](#alignrules15) above with **start** and **end**, respectively, allowing the layout to be mirrored in RTL mode. You are advised to use this method preferentially.
+Sets the alignment rules of a child component in a relative container. This method takes effect only when the parent container is [RelativeContainer](ts-container-relativecontainer.md). Horizontally, this method uses start and end to replace left and right in [alignRules](#alignrules15), so that the layout can be mirrored in RTL mode. It is recommended to use this method preferentially.
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API**: This API can be used in atomic services since API version 15.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                                        | Mandatory | Description                     |
 | ------ | ------------------------------------------- | ---- | ------------------------ |
-| alignRule | [LocalizedAlignRuleOptions](ts-universal-attributes-location.md#localizedalignruleoptions12) | Yes   | Alignment rule configuration object that uses **start** and **end** in place of **left** and **right** to support RTL layout mirroring. Includes anchor alignment settings for **top**, **bottom**, **start**, **end**, and **center**, specifying the alignment position and method of the security component within [RelativeContainer](ts-container-relativecontainer.md). |
+| alignRule | [LocalizedAlignRuleOptions](ts-universal-attributes-location.md#localizedalignruleoptions12) | Yes   | Alignment rule configuration object, which uses start/end to replace left/right to support RTL layout mirroring. It contains anchor alignment configurations such as top, bottom, start, end, and center, and is used to specify the alignment position and mode of the security control in [RelativeContainer](ts-container-relativecontainer.md). |
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Returns the attributes of the security control. |
 
 ## id<sup>15+</sup>
 
 id(id: string): T
 
-Unique ID you assigned for the component.
+Unique identifier of the component. The uniqueness is guaranteed by the user.
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API**: This API can be used in atomic services since API version 15.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name   | Type      | Mandatory | Description                       |
 | ------ | -------- | -----|---------------------- |
-| id | string   | Yes | Unique ID you assigned for the component.<br/>Default value: **''** |
+| id | string   | Yes | Unique identifier of the component. The uniqueness is guaranteed by the user.<br/>Default value: ''. |
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Returns the attributes of the security control. |
 
 ## chainMode<sup>15+</sup>
 
 chainMode(direction: Axis, style: ChainStyle): T
 
-Sets the parameters of the chain in which the component is the head. This API takes effect only when the parent container is [RelativeContainer](ts-container-relativecontainer.md).
+Sets the parameters (including the direction and style of the chain) of the chain layout formed with this component as the chain head. This attribute takes effect only when the parent container is [RelativeContainer](ts-container-relativecontainer.md).
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API**: This API can be used in atomic services since API version 15.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                                        | Mandatory | Description                     |
 | ------ | ------------------------------------------- | ---- | ------------------------ |
-| direction | [Axis](ts-appendix-enums.md#axis) | Yes   | Direction of the chain layout. Specifies the arrangement direction of the chain headed by this component in the [RelativeContainer](ts-container-relativecontainer.md). |
-| style | [ChainStyle](ts-universal-attributes-location.md#chainstyle12) | Yes   | Style of the chain layout. Controls how child components are distributed within the chain, such as evenly distributed, aligned at both ends, or compactly arranged. For specific values and effects, see [ChainStyle](ts-universal-attributes-location.md#chainstyle12). |
+| direction | [Axis](ts-appendix-enums.md#axis) | Yes   | Direction of the chain layout, which specifies the arrangement direction of the chain with this component as the chain head in [RelativeContainer](ts-container-relativecontainer.md). |
+| style | [ChainStyle](ts-universal-attributes-location.md#chainstyle12) | Yes   | Style of the chain layout, which controls the distribution of child components in the chain, such as even distribution, both-end alignment, or compact arrangement. For details about the values and effects, see [ChainStyle](ts-universal-attributes-location.md#chainstyle12). |
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Attribute of the security control. |
 
 ## minFontScale<sup>18+</sup>
 
 minFontScale(scale: number | Resource): T
 
-Sets the minimum font scale factor for the text. When this API is invoked and the system font scaling causes the text to shrink, the font scale factor will not fall below the set minimum scale factor.
+Sets the minimum font scale-down factor for the text. After this API is called, when the system font scaling shrinks the text, the text scale-down factor will not be lower than the set minimum scale-down factor.
 
-This API can be used in conjunction with [maxFontScale](#maxfontscale18). **minFontScale** controls the lower limit of the scale factor and **maxFontScale** controls the upper limit. They can be set independently or together to precisely control font scaling.
+It can be used together with [maxFontScale](#maxfontscale18). minFontScale controls the lower limit of the scale-down factor, and maxFontScale controls the upper limit of the scale-up factor. The two can be set independently or simultaneously to precisely control the font scaling range.
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                                          | Mandatory | Description                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | number \| [Resource](ts-types.md#resource) | Yes   | Minimum font scale factor for the text.<br/>Value range: [0, 1]<br/>NOTE<br/>If the set value is less than 0, the value **0** is used, meaning scaling down to any factor is allowed. If the set value is greater than 1, the value **1** is used, meaning font scaling is not allowed. If the value is **undefined**, **null**, or another invalid value, the attribute has no effect. |
+| scale  | number \| [Resource](ts-types.md#resource) | Yes   | Minimum font scale-down factor for the text.<br/>Value range: [0, 1].<br/>**Note:** <br/>If the value is less than 0, it is processed as 0, which means the text can be scaled down to any factor. If the value is greater than 1, it is processed as 1, which means the font cannot be scaled down. If the value is an invalid value such as undefined or null, the attribute does not take effect. |
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Attribute of the security control. |
 
 ## maxFontScale<sup>18+</sup>
 
 maxFontScale(scale: number | Resource): T
 
-Sets the maximum font scale factor. When this API is invoked and the system font scaling causes the text to enlarge, the font scale factor will not exceed the set maximum scale factor.
+Sets the maximum font scale factor for text. After this API is called, when the system font scaling enlarges the text, the text scale factor will not exceed the set maximum scale factor.
 
-This API can be used in conjunction with [minFontScale](#minfontscale18). **maxFontScale** controls the upper limit of the scale factor, and **minFontScale** controls the lower limit. They can be set independently or together to precisely control font scaling.
+It can be used together with [minFontScale](#minfontscale18). maxFontScale controls the upper limit of the scale factor, and minFontScale controls the lower limit of the scale factor. They can be set independently or simultaneously to precisely control the font scaling range.
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                                          | Mandatory | Description                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | number \| [Resource](ts-types.md#resource) | Yes   | Maximum font scale factor for the text.<br/>Value range: [1, +∞)<br/>**NOTE**<br/>If the set value is less than 1, the value **1** is used. If the value is **undefined**, **null**, or another invalid value, the attribute has no effect. |
+| scale  | number \| [Resource](ts-types.md#resource) | Yes   | Maximum font scale factor for text.<br/>Value range: [1, +∞).<br/>**Note:** <br/>If the set value is less than 1, it is processed as 1. If the set value is an invalid value such as undefined or null, the attribute does not take effect. |
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Attribute of the security control. |
 
 ## minFontSize<sup>18+</sup>
 
 minFontSize(minSize: number | string | Resource): T
 
-Sets the minimum font size for text display.
+Sets the minimum font size for the text.
+- Use it together with [maxFontSize](#maxfontsize18) and [maxLines](#maxlines18) or layout size constraints to implement adaptive font size. Setting it alone does not take effect.
+- minFontSize must be smaller than maxFontSize. If the set value is greater than maxFontSize, maxFontSize is used.
+- If minFontSize is less than or equal to 0, adaptive font size does not take effect.
+- When adaptive font size takes effect, the fontSize setting does not take effect.
+- When the text of a security control is not fully displayed, tapping it does not grant authorization. The minFontSize setting affects whether the text can be fully displayed, which in turn affects the authorization behavior of the security control.
 
-- When used in conjunction with [maxFontSize](#maxfontsize18) and [maxLines](#maxlines18), or in combination with layout size constraints, this attribute enables font size adaptation. Using this attribute alone will not take effect.
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
-- **minFontSize** must be smaller than **maxFontSize**. If the set value is greater than **maxFontSize**, **maxFontSize** is used instead.
-
-- When **minFontSize** is less than or equal to 0, adaptive font size does not take effect.
-
-- When adaptive font size is effective, the **fontSize** setting does not take effect.
-
-- If the security component text is not fully displayed, clicking does not trigger authorization. The **minFontSize** setting affects text visibility, which in turn affects authorization behavior.
-
-**Atomic service API:** This API can be used in atomic services since API version 18.
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                                                         | Mandatory | Description               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| minSize  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes   | Minimum display font size of the text. When the unit is not explicitly specified, the unit is fp.<br/>Value range: (0, +∞). **minFontSize** must be less than **maxFontSize**. If the set value is greater than **maxFontSize**, **maxFontSize** is used instead. If this parameter is less than or equal to 0, the adaptive font size does not take effect. |
+| minSize  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes   | Minimum font size for the text. If no unit is explicitly specified, the unit is fp.<br/>Value range: (0, +∞). minFontSize must be smaller than maxFontSize. If the set value is greater than maxFontSize, maxFontSize is used; if it is less than or equal to 0, adaptive font size does not take effect. |
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Returns the attributes of the security control. |
 
 ## maxFontSize<sup>18+</sup>
 
 maxFontSize(maxSize: number | string | Resource): T
 
-Sets the maximum font size for text display.
+Sets the maximum font size for the text.
+- Used together with [minFontSize](#minfontsize18) and [maxLines](#maxlines18) or layout size constraints to implement adaptive font size. It does not take effect when set alone.
+- maxFontSize must be greater than minFontSize. If maxFontSize is smaller than minFontSize, minFontSize is processed as maxFontSize.
+- When adaptive font size takes effect, the configured fontSize does not take effect.
+- When the security control text is not fully displayed, tapping does not grant authorization. The setting of maxFontSize affects whether the text can be fully displayed, which in turn affects the authorization behavior of the security control.
 
-- When used in conjunction with [minFontSize](#minfontsize18) and [maxLines](#maxlines18), or in combination with layout size constraints, this attribute enables font size adaptation. Using this attribute alone will not take effect.
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
-- **maxFontSize** must be greater than **minFontSize**. If **maxFontSize** is less than **minFontSize**, **minFontSize** will be treated as **maxFontSize**.
-
-- When adaptive font size is effective, the **fontSize** setting does not take effect.
-
-- If the security component text is not fully displayed, clicking does not trigger authorization. The **maxFontSize** setting affects text visibility, which in turn affects authorization behavior.
-
-**Atomic service API:** This API can be used in atomic services since API version 18.
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                                                         | Mandatory | Description               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| maxSize  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes   | Maximum display font size of the text. When the unit is not explicitly specified, the unit is fp.<br/>Value range: (0, +∞)<br/>**NOTE**<br/>When the set value is less than or equal to 0, the adaptive font size does not take effect. When an invalid value is set, this attribute does not take effect. |
+| maxSize  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes   | Maximum font size for the text. When no unit is explicitly specified, the unit is fp.<br/>Value range: (0, +∞).<br/>**NOTE**<br/>When the set value is less than or equal to 0, adaptive font size does not take effect. When an invalid value is set, this attribute does not take effect. |
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Attribute of the security control. |
 
 ## maxLines<sup>18+</sup>
 
 maxLines(line: number | Resource): T
 
-Sets the maximum number of lines for text. By default, text wraps automatically. When this attribute is specified, the text will display at most the specified number of lines. It can be used independently to limit text lines, or in conjunction with [minFontSize](#minfontsize18), [maxFontSize](#maxfontsize18), and [heightAdaptivePolicy](#heightadaptivepolicy18). When used with adaptive font size attributes, if the security component text is not fully displayed, the click will not trigger authorization. The **maxLines** setting affects whether the text can be fully displayed, thereby affecting the authorization behavior of the security component.
+Sets the maximum number of lines for the text. By default, the text wraps automatically. After this attribute is specified, the maximum number of displayed lines of the text does not exceed the specified value. It can be used independently to limit the number of text lines, or together with [minFontSize](#minfontsize18), [maxFontSize](#maxfontsize18), and [heightAdaptivePolicy](#heightadaptivepolicy18). When used together with the adaptive font size attributes, if the security control text is not fully displayed, a tap does not grant authorization. The setting of maxLines affects whether the text can be fully displayed, which in turn affects the authorization behavior of the security control.
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type   | Mandatory | Description             |
 | ------ | ------ | ---- | ---------------- |
-| line  | number \| [Resource](ts-types.md#resource)<sup>20+</sup> | Yes   | Maximum number of lines for the text.<br/>The number type accepts values in [1, +∞). The Resource type is supported since API version 20. The parameter of the Resource type supports only integers in the range [1, +∞).<br>**NOTE**<br>A value less than 1 is handled as the default value **1000000**. |
+| line  | number \| [Resource](ts-types.md#resource)<sup>20+</sup> | Yes   | Maximum number of lines for the text.<br/>Value range of the number type input parameter: [1, +∞). Since API version 20, the Resource type is supported. The Resource type supports only 'integer', with a value range of [1, +∞).<br/>**Note:** <br/>If the set value is less than 1, the default value 1000000 is used. |
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Attribute of the security control. |
 
 ## heightAdaptivePolicy<sup>18+</sup>
 
 heightAdaptivePolicy(policy: TextHeightAdaptivePolicy): T
 
-Sets the method for text height adaptation. This is applicable to scenarios where the text display of a security component needs to be dynamically adjusted to ensure complete text visibility under different sizes or language environments.
+Sets the text height adaptation mode. This attribute applies to scenarios where a security control needs to dynamically adjust text display to ensure the text is fully displayed under different sizes or language environments.
 
-The security component text is laid out at [maxFontSize](#maxfontsize18). If the text can be completely displayed and no adaptive adjustment is needed, this API does not take effect. Otherwise, adaptation proceeds according to the specified policy, as follows:
+The security control text is laid out with the value of [maxFontSize](#maxfontsize18). If the text can be fully displayed, no adaptive adjustment is required and this API does not take effect. Otherwise, the text is adjusted according to the specified text height adaptation mode. The specific adaptive adjustment rules are as follows:
 
-**TextHeightAdaptivePolicy.MAX_LINES_FIRST**: prioritizes the [maxLines](#maxlines18) attribute for adjusting the text height. If the layout size with **maxLines** exceeds the layout constraints, the security component attempts to reduce the font size within the range of [minFontSize](#minfontsize18) and [maxFontSize](#maxfontsize18) to fit more text. If the text still cannot be fully displayed, the security component adaptively adjusts its height to show all text.
+When set to TextHeightAdaptivePolicy.MAX_LINES_FIRST, the [maxLines](#maxlines18) attribute is preferentially used to adjust the text height. If the layout size using the maxLines attribute exceeds the layout constraints, the font size is reduced within the range of [minFontSize](#minfontsize18) and [maxFontSize](#maxfontsize18) to display more text. If the text still cannot be fully displayed, the security control adaptively adjusts its height so that the text is fully displayed.
 
-**TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST**: prioritizes the [minFontSize](#minfontsize18) attribute for adjusting the text height. If the text can be laid out in a single line using **minFontSize**, the security component attempts to increase the font size within the range of **minFontSize** and [maxFontSize](#maxfontsize18) to use the largest possible font size. If the text cannot be laid out in a single line using **minFontSize**, the security component attempts to use the [maxLines](#maxlines18) attribute for layout. If the text still cannot be fully displayed, the security component adaptively adjusts its height to fully display the text.
+When set to TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST, the [minFontSize](#minfontsize18) attribute is preferentially used to adjust the text height. If the text can be laid out in one line using the minFontSize attribute, the font size is increased within the range of minFontSize and [maxFontSize](#maxfontsize18) and the largest possible font size is used. If the text cannot be laid out in one line using the minFontSize attribute, the [maxLines](#maxlines18) attribute is used for layout. If the text still cannot be fully displayed, the security control adaptively adjusts its height so that the text is fully displayed.
 
-**TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST**: prioritizes layout constraints for adjusting the text height. If the layout size exceeds the constraints, the security component attempts to reduce the font size within the range of [minFontSize](#minfontsize18) and [maxFontSize](#maxfontsize18). If the layout size still exceeds the constraints after the font size is reduced to **minFontSize**, the security component truncates the excess lines. If the [maxLines](#maxlines18) attribute is set, the number of lines does not exceed the **maxLines** value (horizontal truncation may occur). If **maxLines** is not set, there is no limit on the number of lines.
+When set to TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST, the layout constraints are preferentially used to adjust the text height. If the layout size exceeds the layout constraints, the font size is reduced within the range of [minFontSize](#minfontsize18) and [maxFontSize](#maxfontsize18) to meet the layout constraints. If the layout size still exceeds the layout constraints after the font size is reduced to minFontSize, the lines exceeding the layout constraints are removed. If the [maxLines](#maxlines18) attribute is set, the number of lines after layout does not exceed the maxLines value (horizontal truncation may occur). If the maxLines attribute is not set, the number of lines after layout is not limited.
 
-If the security component text is not fully displayed, clicking does not trigger authorization. Whether the text is fully displayed depends on attributes such as **heightAdaptivePolicy**, **minFontSize**, **maxFontSize**, **maxLines**, **width**, and **height**.
+When the security control text is not fully displayed, tapping does not grant authorization. Whether the text is fully displayed is affected by attributes such as heightAdaptivePolicy, minFontSize, maxFontSize, maxLines, width, and height.
 
-For details, see [Example](#example-3).
+For details about the effect, see [Example](#example-3).
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                                                         | Mandatory | Description                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| policy  | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | Yes   | Policy for text height adaptation.<br>Default value: **TextHeightAdaptivePolicy.MAX_LINES_FIRST** |
+| policy  | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | Yes   | Text height adaptation mode.<br/>Default value: TextHeightAdaptivePolicy.MAX_LINES_FIRST. |
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Attributes of the security control. |
 
 ## enabled<sup>18+</sup>
 
 enabled(respond: boolean): T
 
-Sets whether the security component is interactive.
+Sets whether the security control is interactive.
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type | Mandatory | Description |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| respond  | boolean | Yes | Whether the security component is interactive.<br>**true**: The component is interactive and responds to operations such as clicks.<br>**false**: The component is non-interactive and does not respond to operations such as clicks.<br>Default value: **true**. |
+| respond  | boolean | Yes  | Whether the component is interactive and responds to operations such as tapping.<br/>The value **true** means the component is interactive and responds to operations such as tapping.<br/>The value **false** means the component is not interactive and does not respond to operations such as tapping.<br/>Default value: **true**. |
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Returns the attributes of the security control. |
 
 ## focusBox<sup>22+</sup>
 
 focusBox(style: FocusBoxStyle): T
 
-Sets the style of the system focus box for the security component.
+Sets the system focus box style of the security control.
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
-| style  | [FocusBoxStyle](ts-universal-attributes-focus.md#focusboxstyle12) | Yes   | Configuration object for the focus box style. Contains properties such as **margin** (the spacing between the focus box and the component) and **strokeColor** (the stroke color of the focus box) to customize the appearance of the system focus box. |
+| style  | [FocusBoxStyle](ts-universal-attributes-focus.md#focusboxstyle12) | Yes   | Focus box style configuration object, which contains attributes such as margin (the spacing between the focus box and the control) and strokeColor (the border color of the focus box), used to customize the appearance of the system focus box. |
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Attribute of the security control. |
 
 ## fallbackLineSpacing
 
 fallbackLineSpacing(enabled: boolean): T
 
-Enables adaptive line height based on the actual text height for multi-line text.
+For multi-line text overlay, supports adaptive line height based on the actual text height.
 
-The **fallbackLineSpacing** attribute is closely coupled with the **lineHeight** attribute of [RichEditorTextStyle](ts-basic-components-richeditor.md#richeditortextstyle). When the **lineHeight** value is less than the actual rendering height of the text at the current font size, the **fallbackLineSpacing** value determines whether the line height should adapt based on the actual text height.
+The fallbackLineSpacing attribute is strongly related to the lineHeight attribute of [RichEditorTextStyle](ts-basic-components-richeditor.md#richeditortextstyle). When the set lineHeight value is smaller than the actual rendering height of the text at the current font size, whether the line height adapts to the actual text height is determined by the fallbackLineSpacing attribute value.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type | Mandatory | Description |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| enabled | boolean | Yes | Whether the line height adapts based on the actual text height.<br/>**true**: The line height adapts based on the actual text height. **false**: The line height does not adapt based on the actual text height. |
+| enabled | boolean | Yes | Whether the line height adapts to the actual text height.<br/>The value **true** means the line height adapts to the actual text height; the value **false** means the line height does not adapt to the actual text height. |
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Attribute of the security component. |
+| T | Returns the attributes of the security control. |
 
 ## accessibilityRole
 
 accessibilityRole(role: SecurityComponentRoleType): T
 
-Sets the accessibility component type. Each component type is announced in a specific way. You can modify the component type based on your app's requirements to control how the component is announced and what content is announced in accessibility mode.
+Sets the accessibility component type. A specific component type has a specific reading mode. You can modify the component type based on application requirements to control how the component is read and what content is read in accessibility mode.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name   | Type    | Mandatory | Description                                                         |
+| Name | Type | Mandatory | Description |
 | -------- | ------- | ---- | ------------------------------------------------------------ |
-| role | [SecurityComponentRoleType](#securitycomponentroletype) | Yes   | The component type, such as button or chart, that determines how the component is announced by the screen reader. The specific type can be customized. |
+| role | [SecurityComponentRoleType](#securitycomponentroletype) | Yes | Component type read aloud by the screen reader, such as button or chart. The specific type can be customized by the developer. |
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Current object. |
+| T | Returns the current object. |
 
 ## accessibilityDefaultFocus
 
 accessibilityDefaultFocus(focus: boolean): T
 
-Sets the initial focus for the screen reader on the page, specifying the component that the screen reader announces first after the page loads.
+Sets the initial focus for screen reading on a page, which is used to specify the component that is first announced by the screen reader after the page is loaded.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name | Type | Mandatory | Description |
+| Name | Type    | Mandatory | Description                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| focus | boolean | Yes | Sets the initial focus of the screen reader on the page. **true** means the component is the default first focus on the current page; **false** or any other value is invalid. |
+| focus  | boolean | Yes   | Whether to set the initial focus for screen reading on the page. The value **true** indicates that this component is the default first focus of the current page, and the value **false** or any other value is invalid. |
 
 **Return value**
 
@@ -951,21 +937,21 @@ Sets the initial focus for the screen reader on the page, specifying the compone
 
 accessibilityNextFocusId(nextId: string): T
 
-Specifies the next focus component for the screen reader.
+Specifies the next component to be focused during screen reading.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name   | Type   | Mandatory | Description                                                         |
-| ------ | ------ | --------- | ------------------------------------------------------------ |
-| nextId | string | Yes       | The [unique ID](ts-universal-attributes-component-id.md#id) of the next component to be focused. If the unique ID does not correspond to any component, the setting is invalid. |
+| Name | Type | Mandatory | Description |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| nextId | string | Yes | [Unique ID](ts-universal-attributes-component-id.md#id) of the next component to be focused. If no component matches the unique ID, the setting does not take effect. |
 
 **Return value**
 
@@ -977,97 +963,92 @@ Specifies the next focus component for the screen reader.
 
 accessibilityDescription(description: string | Resource): T
 
-Provides an accessibility description for the component. You can set detailed text descriptions to help users understand the component's functionality and the actions it will perform.
+This attribute is used to provide an accessibility description for the control. Developers can set detailed text descriptions to help users understand the function of the component and the operation to be performed.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type | Mandatory | Description |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| description | string \| [Resource](ts-types.md#resource) | Yes | Accessibility description for the component. Provides details about the component's operation, helping users understand what the current action does and its potential consequences. When the component is selected, if it has both text attributes and an accessibility description, the text content is announced first, followed by the accessibility description. The default value is an empty string. |
+| description | string \| [Resource](ts-types.md#resource) | Yes | Accessibility description of the control. It supplements the detailed operation explanation of the component to help users understand the specific content of the current operation and its potential consequences. When the control is selected, if the component contains both a text attribute and an accessibility description, the text content is announced first, followed by the accessibility description. The default value of this parameter is an empty string. |
 
 **Return value**
 
 | Type | Description |
 | -------- | -------- |
-| T | Current object. |
+| T | Returns the current object. |
+
 
 ## SecurityComponentLayoutDirection
 
-Enumerates the layout directions of the icon and text on a security component.
+Enumerates the layout direction of the icon and text on a security control.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name | Value | Description |
 | -------- | -------- | -------- |
-| HORIZONTAL | 0 | The icon and text on the security component are arranged horizontally. |
-| VERTICAL | 1 | The icon and text on the security component are arranged vertically. |
+| HORIZONTAL | 0 | The icon and text on the security control are arranged horizontally. |
+| VERTICAL | 1 | The icon and text on the security control are arranged vertically. |
 
 ## ButtonType
 
 Enumerates the button types.
 
-The button type affects how the setting for the [borderRadius](ts-securitycomponent-attributes.md#borderradius) attribute is applied. The specific impact is as follows:
+Different button types affect the setting effect of the [borderRadius (border corner radius)](ts-securitycomponent-attributes.md#borderradius) attribute. The effects are as follows:
 
-- When the button type is **Capsule**, the **borderRadius** setting does not take effect, and the button's corner radius is half the smaller of the width and height.
+- When the button type is Capsule, the borderRadius setting does not take effect, and the button corner radius is always half of the smaller value between the width and height.
+- When the button type is Circle, the borderRadius setting does not take effect:
+  - If both the width and height are set, the button corner radius is half of the smaller value between the width and height;
+  - If only one of the width and height is set, the button corner radius is half of the set width or height value;
+  - If neither the width nor the height is set, or the borderRadius value is negative, the button corner radius is automatically calculated based on the actual layout size of the button. This applies to icon buttons, such as volume control and play/pause scenarios.
+- When the button type is Normal, the button corner radius can be set through borderRadius. The corner size is limited by the component size, with a minimum value of 0 and a maximum value of half of the smaller value between the component width and height. This applies to button scenarios that require a custom corner size or right angles.
+- When the button type is ROUNDED_RECTANGLE, if borderRadius is not set, the corner radius of the rounded rectangle button remains at the default value of 20vp and does not change with the button height. This applies to button scenarios that require a unified corner style.
 
-- When the button type is **Circle**, the **borderRadius** setting does not take effect:
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
-  - If both the width and height are set, the button's corner radius is half the smaller of the width and height.
-
-  - If only one of width or height is set, the button's corner radius is half of the set width or height.
-
-  - If neither width nor height is set, or if the value of **borderRadius** is negative, the button's corner radius is automatically calculated based on the button's actual layout size. This is applicable to icon buttons, such as volume control, play/pause, and similar scenarios.
-
-- When the button type is **Normal**, the button's corner radius can be set via **borderRadius**. The corner size is constrained by the component size, with a minimum value of **0** and a maximum value of half the smaller dimension of the component's width and height. This applies to button scenarios that require custom corner sizes or right-angle corners.
-
-- When the button type is **ROUNDED_RECTANGLE**, if **borderRadius** is not set, the corner radius defaults to **20 vp** and does not change with the button height. This applies to button scenarios that require a uniform corner style.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name      | Value | Description               |
 | ------- | -------- | ------------------ |
 | Normal  | 0 | Normal button.      |
-| Capsule | 1 | Capsule button, with a corner radius half the height. |
+| Capsule | 1 | Capsule button (the corner radius is half the height). |
 | Circle  | 2 | Circle button.              |
-| ROUNDED_RECTANGLE<sup>16+</sup> | 8 | Rounded rectangle button, with a default corner radius of 20 vp. |
+| ROUNDED_RECTANGLE<sup>16+</sup> | 8 | Rounded rectangle button (default value: corner radius of 20 vp). |
 
 ## SecurityComponentRoleType
 
-Defines the screen reader role type of the component.
+Defines the screen reader role type of a component.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name | Value | Description |
 | ---- | ---- | ------------------ |
-| ROLE_NONE | 0 | Null. |
+| ROLE_NONE | 0 | NULL. |
 | BUTTON | 1 | Button. |
 
 ## Examples
 
 > **NOTE**
-> You may want to learn the [constraints of security component styles](../../../security/AccessToken/security-component-overview.md#constraints) to avoid authorization failures caused by styles that do not comply with the rules.
+> To prevent authorization failure caused by invalid control styles, developers are advised to first understand the [constraints](../../../security/AccessToken/security-component-overview.md#constraints) of security control styles.
 
 ### Example 1
 
-This example demonstrates how to create a **SaveButton** component and set its security component attributes.
+Sets the basic attributes of SecurityComponent to create a save control.
 
 ```ts
 @Entry
@@ -1076,7 +1057,7 @@ struct Index {
   build() {
     Row() {
       Column({ space: 5 }) {
-        // Generate a save button and set its SecurityComponent attributes.
+        // Create a save control and set its SecurityComponent attributes.
         SaveButton()
           .fontSize(35)
           .fontColor(Color.White)
@@ -1096,13 +1077,13 @@ struct Index {
           })
           .textIconSpace(20)
           .backgroundColor(0x3282f6)
-        // Generate a save button and set its fixed width and height.
+        // Create a save control and set its fixed width and height.
         SaveButton().size({ width: 200, height: 100 })
-        // Generate a save button, set its fixed width and height, and set the icon and text to be left-aligned.
+        // Create a save control, set its fixed width and height, and align the icon and text to the left.
         SaveButton()
           .size({ width: 200, height: 100 })
           .align(Alignment.Start)
-        // Generate a save button of the Normal type and set the four corner radii respectively.
+        // Create a save control of the Normal type and set its four corner radii separately.
         SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD, buttonType: ButtonType.Normal })
           .size({ width: 150, height: 80 })
           .borderRadius({
@@ -1111,7 +1092,7 @@ struct Index {
             bottomRight: 30,
             bottomLeft: 35
           })
-        // Generate a save button and set the maximum width constraint.
+        // Create a save control and set its maximum width constraint.
         SaveButton().constraintSize({ maxWidth: 60 })
       }.width('100%')
     }.height('100%')
@@ -1119,9 +1100,11 @@ struct Index {
 }
 ```
 
+![SaveButton-Basic-demo](figures/SaveButton-Basic-demo.png)
+
 ### Example 2
 
-This example demonstrates how to use the container and components within the container as anchors for layout.
+Use the container and the components inside the container as anchors for layout.
 
 ```ts
 @Entry
@@ -1130,7 +1113,7 @@ struct Index {
   build() {
     Row() {
       RelativeContainer() {
-        // Use the container as the anchor, position it at the top-left corner, and set an ID for other components to reference.
+        // Use the container as the anchor to position the control at the upper left corner, and set an ID for other components to reference.
         SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD, buttonType: ButtonType.Normal })
           .width(100)
           .height(100)
@@ -1141,7 +1124,7 @@ struct Index {
           })
           .id('row1')
 
-        // Use the container as the anchor, position it at the top-right corner, and set an ID for other components to reference.
+        // Use the container as the anchor to position the control at the upper right corner, and set an ID for other components to reference.
         SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD, buttonType: ButtonType.Normal })
           .width(100)
           .height(100)
@@ -1152,7 +1135,7 @@ struct Index {
           })
           .id('row2')
 
-        // Use row1 and row2 as anchors and place the component between and below the two rows.
+        // Use row1 and row2 as anchors to position the control between and below them.
         SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD, buttonType: ButtonType.Normal })
           .height(100)
           .backgroundColor('#0A59F7')
@@ -1163,7 +1146,7 @@ struct Index {
           })
           .id('row3')
 
-        // Use row3, the container, and row1 as anchors to constrain the component's layout range in the bottom-left area.
+        // Use row3, the container, and row1 as anchors to constrain the layout range of the control in the lower left area.
         SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD, buttonType: ButtonType.Normal })
           .backgroundColor('#2CA9E0')
           .alignRules({
@@ -1174,7 +1157,7 @@ struct Index {
           })
           .id('row4')
 
-        // Use row3, row2, and the container as anchors to constrain the component's layout range in the bottom-right area.
+        // Use row3, row2, and the container as anchors to constrain the layout range of the control in the lower right area.
         SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD, buttonType: ButtonType.Normal })
           .backgroundColor('#30C9F7')
           .alignRules({
@@ -1198,7 +1181,7 @@ struct Index {
 
 ### Example 3
 
-This example demonstrates how to implement text height adaptation of the security component.
+The security control text height is adaptive.
 
 ```ts
 @Entry
@@ -1210,13 +1193,13 @@ struct Index {
         Column({ space: 10 }) {
           Column({ space: 10 }) {
             Row() {
-              Text('FontSize = 20. Example: ').fontSize(20)
-              Text('Quick Save Image').fontSize(20).fontColor(Color.Blue)
+              Text('FontSize = 20, legend:').fontSize(20)
+              Text('Quickly save image').fontSize(20).fontColor(Color.Blue)
             }.width('100%')
 
             Row() {
-              Text('FontSize = 10. Example: ').fontSize(20)
-              Text('Quick Save Image').fontSize(10).fontColor(Color.Blue)
+              Text('FontSize = 10, legend:').fontSize(20)
+              Text('Quickly save image').fontSize(10).fontColor(Color.Blue)
             }.width('100%')
           }.width('100%')
 
@@ -1230,10 +1213,10 @@ struct Index {
             Column() {
               Column({ space: 10 }) {
                 Row() {
-                  Text('No adaptive adjustment')
+                  Text('No adaptive adjustment required')
                 }.width('90%')
 
-                // The text can be fully displayed in the current layout without adjustment.
+                // The current layout can display the text completely without adjustment, so no adaptive adjustment is required.
                 SaveButton({
                   text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
                 })
@@ -1254,7 +1237,7 @@ struct Index {
                   Text('Reduce font size first')
                 }.width('90%')
 
-                // The text cannot be fully displayed in the current layout. Reduce the font size first so that the text can be displayed in one line.
+                // The current layout cannot display the text completely. Reduce fontSize first so that the text can be displayed in one line.
                 SaveButton({
                   text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
                 })
@@ -1272,11 +1255,11 @@ struct Index {
             Column() {
               Column({ space: 10 }) {
                 Row() {
-                  Text('Reduce font size first, then wrap text')
+                  Text('Reduce font size first, then wrap')
                 }.width('90%')
 
-                // The text cannot be fully displayed in the current layout. Reduce the font size first. If the text still cannot be fully displayed after the font size is reduced, use maxLines to wrap lines.
-                // The height is automatically adjusted to ensure that the text can be fully displayed.
+                // The current layout cannot display the text completely. Reduce fontSize first. If the text still cannot be displayed completely, use the maxLines attribute to wrap the layout.
+                // Since the height is insufficient to display the text completely, automatically adjust the height so that the text is displayed completely.
                 SaveButton({
                   text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
                 })
@@ -1294,12 +1277,12 @@ struct Index {
             Column() {
               Column({ space: 10 }) {
                 Row() {
-                  Text('Reduce font size + wrap text, text is truncated')
+                  Text('Reduce font size + wrap, text truncated')
                 }.width('90%')
 
-                // The text cannot be fully displayed in the current layout. Reduce the font size first. If the text still cannot be fully displayed after the font size is reduced, use maxLines to wrap lines.
-                //The maxLines attribute is set to 3, and only three lines can be displayed. Therefore, the text is truncated.
-                // The height is automatically adjusted to ensure that the text can be fully displayed.
+                // The current layout cannot display the text completely. Reduce fontSize first; if the text still cannot be displayed completely, try using the maxLines attribute for line wrapping.
+                // Since the maxLines attribute is 3, only three lines can be displayed, so the text is truncated.
+                // Since the height is insufficient for complete display, the height is automatically adjusted to display the text completely.
                 SaveButton({
                   text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
                 })
@@ -1325,10 +1308,10 @@ struct Index {
             Column() {
               Column({ space: 10 }) {
                 Row() {
-                  Text('No adaptive adjustment')
+                  Text('No adaptive adjustment required')
                 }.width('90%')
 
-                // The text can be fully displayed in the current layout without adjustment.
+                // The current layout can display the text completely without adjustment, so no adaptive adjustment is required.
                 SaveButton({
                   text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
                 })
@@ -1349,8 +1332,8 @@ struct Index {
                   Text('Wrap first')
                 }.width('90%')
 
-                // The text cannot be fully displayed in the current layout. Use the maxlines attribute first to wrap text.
-                // The height is automatically adjusted to ensure that the text can be fully displayed.
+                // The current layout cannot display the text completely. Use the maxLines attribute for line wrapping first; after wrapping, the text can be displayed completely.
+                // Since the height is insufficient for complete display, the height is automatically adjusted to display the text completely.
                 SaveButton({
                   text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
                 })
@@ -1371,8 +1354,8 @@ struct Index {
                   Text('Wrap first, then reduce font size')
                 }.width('90%')
 
-                // The text cannot be fully displayed in the current layout. Use the maxlines attribute first to wrap text. After wrapping, the text still cannot be fully displayed. Reduce the font size and the text can be fully displayed.
-                // The height is automatically adjusted to ensure that the text can be completely displayed.
+                // The current layout cannot fully display the text. Prefer the maxLines attribute for line wrapping. If the text still cannot be fully displayed after wrapping, reduce fontSize to attempt layout, and the text can be fully displayed after the font size is reduced.
+                // Because the height is insufficient for full display, the height is automatically adjusted so that the text is fully displayed.
                 SaveButton({
                   text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
                 })
@@ -1390,12 +1373,12 @@ struct Index {
             Column() {
               Column({ space: 10 }) {
                 Row() {
-                  Text('Wrap lines and reduce font size, yet text remains truncated')
+                  Text('Line wrap + reduced font size, text truncated')
                 }.width('90%')
 
-                // The text cannot be fully displayed in the current layout. Use the maxlines attribute first to wrap text. After wrapping, the text still cannot be fully displayed. Reduce the font size to attempt to change the layout.
-                //The minFontSize attribute is set to 10, and only one character can be displayed. Therefore, the text is truncated.
-                // The height is automatically adjusted to ensure that the text can be completely displayed.
+                // The current layout cannot fully display the text. Prefer the maxLines attribute for line wrapping. If the text still cannot be fully displayed after wrapping, reduce fontSize to attempt layout.
+                // Because the minFontSize attribute is 10, only one character can be displayed per line, so the text is truncated.
+                // Because the height is insufficient for full display, the height is automatically adjusted so that the text is fully displayed.
                 SaveButton({
                   text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
                 })
@@ -1422,10 +1405,10 @@ struct Index {
             Column() {
               Column({ space: 10 }) {
                 Row() {
-                  Text('No adaptive adjustment')
+                  Text('No adaptive adjustment required')
                 }.width('90%')
 
-                // The text can be fully displayed in the current layout without adjustment.
+                // The current layout can fully display the text without adjustment, so no adaptive adjustment of the text is required.
                 SaveButton({
                   text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
                 })
@@ -1443,10 +1426,10 @@ struct Index {
             Column() {
               Column({ space: 10 }) {
                 Row() {
-                  Text('Keep layout constraints unchanged; reduce font size first')
+                  Text('Keep the layout constraints unchanged and prefer reducing the font size')
                 }.width('90%')
 
-                // The text cannot be fully displayed in the current layout. Reduce the font size first so that the text can be displayed in one line.
+                // The current layout cannot fully display the text. Prefer reducing fontSize, and the text can be displayed in one line after the reduction.
                 SaveButton({
                   text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
                 })
@@ -1464,11 +1447,11 @@ struct Index {
             Column() {
               Column({ space: 10 }) {
                 Row() {
-                  Text('Keep layout constraints unchanged; reduce font size first, then wrap lines')
+                  Text('Keep the layout constraints unchanged, reduce the font size first, and then wrap the text.')
                 }.width('90%')
 
-                // The text cannot be fully displayed in the current layout. Reduce the font size first. If the text still cannot be fully displayed after the font size is reduced, use maxLines to wrap lines. The text can be fully displayed now.
-                // In LAYOUT_CONSTRAINT_FIRST mode, the height of the security component does not support adaptive adjustment.
+                // If the current layout cannot fully display the text, reduce fontSize first. If the text still cannot be fully displayed after the reduction, use the maxLines attribute to wrap the text. After the layout, the text can be fully displayed.
+                // In LAYOUT_CONSTRAINT_FIRST mode, the height of the security control does not support adaptive adjustment.
                 SaveButton({
                   text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
                 })
@@ -1486,11 +1469,11 @@ struct Index {
             Column() {
               Column({ space: 10 }) {
                 Row() {
-                  Text(`Insufficient maxLines\nText truncated`)
+                  Text(`Maxlines is insufficient \n the text is truncated`)
                 }.width('90%')
 
-                //The text cannot be fully displayed in the current layout. Reduce the font size first. After reduction, it still cannot be fully displayed. Because the component can only display one line for the height, the text is truncated.
-                // In LAYOUT_CONSTRAINT_FIRST mode, the height of the security component does not support adaptive adjustment.
+                // If the current layout cannot fully display the text, reduce fontSize first. If the text still cannot be fully displayed after the reduction, the text is truncated because height can display only one line.
+                // In LAYOUT_CONSTRAINT_FIRST mode, the height of the security control does not support adaptive adjustment.
                 SaveButton({
                   text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
                 })
@@ -1508,11 +1491,11 @@ struct Index {
             Column() {
               Column({ space: 10 }) {
                 Row() {
-                  Text(`Insufficient height\nText truncated`)
+                  Text(`Insufficient height \n the text is truncated`)
                 }.width('90%')
 
-                // The text cannot be fully displayed in the current layout. Reduce the font size first. After reduction, it still cannot be fully displayed. Because the component can only display one line for the height, the text is truncated.
-                // In LAYOUT_CONSTRAINT_FIRST mode, the height of the security component does not support adaptive adjustment.
+                // If the current layout cannot fully display the text, reduce fontSize first. If the text still cannot be fully displayed after the reduction, the text is truncated because height can display only one line.
+                // In LAYOUT_CONSTRAINT_FIRST mode, the height of the security control does not support adaptive adjustment.
                 SaveButton({
                   text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
                 })
@@ -1535,9 +1518,11 @@ struct Index {
 }
 ```
 
+<!--Del--> <!--DelEnd-->
+
 ### Example 4
 
-This example demonstrates how to set the style of the system focus box for the security component.
+Sets the system focus box style of the security control.
 
 ```ts
 import { ColorMetrics, LengthMetrics } from '@kit.ArkUI';
@@ -1549,14 +1534,14 @@ struct Index {
     Row() {
       Column({ space: 30 }) {
         Column({ space: 15 }) {
-          Text('Default security component (focusBox unset)')
-          // Leave focusBox unset to use the system default focus box style.
+          Text('Default security control without the focusBox attribute set')
+          // Do not set the focusBox attribute; use the system default focus box style.
           SaveButton()
         }
 
         Column({ space: 15 }) {
-          Text('Black focus box tightly fitted to the security component')
-          // Set margin to 0 to attach the focus box flush to the component; set stroke color to black.
+          Text('Black focus box close to the security control')
+          // Set margin to 0 so that the focus box is close to the control, and set strokeColor to black.
           SaveButton()
             .focusBox({
               margin: new LengthMetrics(0),
@@ -1565,8 +1550,8 @@ struct Index {
         }
 
         Column({ space: 15 }) {
-          Text('Red focus box larger than the security component')
-          // Set margin to 10 vp, stroke color to red, and stroke width to 10 px.
+          Text('Larger red focus box')
+          // Set margin to 10vp, strokeColor to red, and strokeWidth to 10px.
           SaveButton()
             .focusBox({
               margin: new LengthMetrics(10),
@@ -1576,8 +1561,8 @@ struct Index {
         }
 
         Column({ space: 15 }) {
-          Text('Rectangular security component')
-          // Set a custom focus box for the Normal type component. The focus box renders along the rectangular outer outline of component.
+          Text('Rectangular security control')
+          // Set a custom focus box for the Normal type control. The focus box is displayed along the outer contour of the rectangular control.
           SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD, buttonType: ButtonType.Normal })
             .focusBox({
               margin: new LengthMetrics(10),
@@ -1587,8 +1572,8 @@ struct Index {
         }
 
         Column({ space: 15 }) {
-          Text('Circular security component')
-          // Set a custom focus box for a Circle type component. The focus box renders along the circular outer outline of component.
+          Text('Circular security control')
+          // Set a custom focus frame for the Circle-type control. The focus frame is displayed along the outer contour of the circular control.
           SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD, buttonType: ButtonType.Circle })
             .focusBox({
               margin: new LengthMetrics(10),
@@ -1604,9 +1589,11 @@ struct Index {
 }
 ```
 
+<!--Del--> <!--DelEnd-->
+
 ### Example 5
 
-This example demonstrates how to set whether the security component supports adaptive text height and related behavior in screen reader mode.
+Sets whether the security control supports adaptive actual text height and the related behavior in screen reader mode.
 
 ```ts
 @Entry
@@ -1615,28 +1602,28 @@ struct Index {
   build() {
     Row() {
       Column({ space: 10 }) {
-        // Set fallbackLineSpacing of the save button to true.
+        // Set fallbackLineSpacing of the save control to true.
         SaveButton()
           .fallbackLineSpacing(true)
           .id('btn1')
 
-        // Set the save button as the initial focus for the screen reader on the page.
+        // Set the save control as the initial focus for screen reading on the page.
         SaveButton()
           .accessibilityDefaultFocus(true)
           .id('btn2')
 
-        // Specify btn1 as the next focus after this save button during screen reader navigation.
+        // Specify btn1 as the next focus of the save control during screen reader swipe focus traversal.
         SaveButton()
           .accessibilityDefaultFocus(true)
           .id('btn3')
           .accessibilityNextFocusId('btn1')
 
-        // Specify the accessibility component type of this save button as null.
+        // Specify the accessibility component type of the save control as null.
         SaveButton()
           .accessibilityRole(SecurityComponentRoleType.ROLE_NONE)
           .id('btn4')
 
-        // Set the accessibility description of this save button.
+        // Specify the accessibility component description of the save control as test text.
         SaveButton()
           .accessibilityDescription("test text for description")
           .id('btn5')

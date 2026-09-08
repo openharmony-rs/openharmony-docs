@@ -808,3 +808,45 @@
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.0.0
+
+## ohos.permission.UPDATE_SCOPE_FONT
+
+允许应用管理应用级和会话级字体。
+
+获取该权限后，应用可使用字体管理接口安装、卸载和查询应用级和会话级字体，并注册字体服务状态监听器。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.1.0
+
+## ohos.permission.REQUEST_LOCAL_ACCOUNT_AUTHORIZATION
+
+允许应用获取本地账号授权。
+
+获取该权限后，应用可调用接口请求本地账号授权。用户将通过系统授权弹窗进行本地账号身份认证后授予目标特权，应用可执行目标特权对应的敏感操作（如网络抓包等）。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | Car | TV | Wearable
+
+**起始版本**：26.1.0
+
+## ohos.permission.ACCESS_USER_PASSIVE_RECOGNITION
+
+允许应用识别当前使用者是否为用户本人。
+
+获取该权限后，应用可以使用用户被动识别能力，识别当前使用者是否为用户本人，并获取用户ID、认证可信等级等信息。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | Car
+
+**起始版本**：26.1.0

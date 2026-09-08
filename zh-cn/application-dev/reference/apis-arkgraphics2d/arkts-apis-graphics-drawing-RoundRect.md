@@ -61,7 +61,7 @@ constructor(rect: common2D.Rect, xRadii: number, yRadii: number)
 
 | 参数名         | 类型                                       | 必填   | 说明                  |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
-| rect        | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 是    | 需要创建的圆角矩形区域。      |
+| rect        | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 是    | 需要创建的圆角矩形的矩形区域。      |
 | xRadii        | number                  | 是    | x轴方向的圆角半径，该参数为浮点数，取值大于0时圆角生效，小于等于0时圆角不生效。单位为物理像素px。     |
 | yRadii        | number                  | 是    | y轴方向的圆角半径，该参数为浮点数，取值大于0时圆角生效，小于等于0时圆角不生效。单位为物理像素px。     |
 

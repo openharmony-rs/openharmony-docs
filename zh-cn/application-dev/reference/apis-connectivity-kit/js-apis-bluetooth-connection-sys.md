@@ -7,12 +7,12 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-connection模块提供了对蓝牙操作和管理的方法。
+connection模块提供了蓝牙设备配对、配对取消、连接断开、设备信息查询、设备类型管理、带外配对、车钥匙维测、云设备管理等操作和管理方法，适用于系统应用需要对蓝牙设备进行配对管理、连接控制和设备信息维护的场景。
 
 > **说明：**
 >
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.bluetooth.connection (蓝牙connection模块)](js-apis-bluetooth-connection.md)
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.bluetooth.connection (蓝牙connection模块)](js-apis-bluetooth-connection.md)。
 
 
 ## 导入模块
@@ -26,7 +26,7 @@ import { connection } from '@kit.ConnectivityKit';
 
 pairCredibleDevice(deviceId: string, transport: BluetoothTransport, callback: AsyncCallback&lt;void&gt;): void
 
-向可信的远端设备发起蓝牙配对。通过非蓝牙扫描的方式(例如NFC等)获取到外设的地址，可以通过该接口发起配对。使用Callback异步回调。
+向可信的远端设备发起蓝牙配对。通过非蓝牙扫描的方式（例如NFC等）获取到外设的地址，可以通过该接口发起配对。使用Callback异步回调。蓝牙配对状态通过[on('bondStateChange')](js-apis-bluetooth-connection.md#connectiononbondstatechange)的回调结果获取。
 
 **系统接口**：此接口为系统接口。
 
@@ -79,7 +79,7 @@ try {
 
 pairCredibleDevice(deviceId: string, transport: BluetoothTransport): Promise&lt;void&gt;
 
-向可信的远端设备发起蓝牙配对。通过非蓝牙扫描的方式(例如NFC等)获取到外设的地址，可以通过该接口发起配对。使用Promise异步回调。
+向可信的远端设备发起蓝牙配对。通过非蓝牙扫描的方式（例如NFC等）获取到外设的地址，可以通过该接口发起配对。使用Promise异步回调。蓝牙配对状态通过[on('bondStateChange')](js-apis-bluetooth-connection.md#connectiononbondstatechange)的回调结果获取。
 
 **系统接口**：此接口为系统接口。
 
@@ -98,7 +98,7 @@ pairCredibleDevice(deviceId: string, transport: BluetoothTransport): Promise&lt;
 
 | 类型                                              | 说明                |
 | ------------------------------------------------- | ------------------- |
-| Promise&lt;void&gt; | 返回promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -200,7 +200,7 @@ cancelPairedDevice(deviceId: string): Promise&lt;void&gt;
 
 | 类型                  | 说明            |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | 返回promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -238,7 +238,7 @@ try {
 
 cancelPairingDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
-删除正在配对中的远程设备。使用Callback异步回调。
+删除正在配对中的远程设备。与cancelPairedDevice（用于删除已配对的设备）不同，本接口用于取消正在进行中的配对流程。使用Callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -283,7 +283,7 @@ try {
 
 cancelPairingDevice(deviceId: string): Promise&lt;void&gt;
 
-删除正在配对中的远程设备。使用Promise异步回调。
+删除正在配对中的远程设备。与cancelPairedDevice（用于删除已配对的设备）不同，本接口用于取消正在进行中的配对流程。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -301,7 +301,7 @@ cancelPairingDevice(deviceId: string): Promise&lt;void&gt;
 
 | 类型                  | 说明            |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | 返回promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -391,7 +391,7 @@ getLocalProfileUuids(): Promise&lt;Array&lt;ProfileUuids&gt;&gt;
 
 | 类型                  | 说明            |
 | ------------------- | ------------- |
-|   Promise&lt;Array&lt;[ProfileUuids](js-apis-bluetooth-constant.md#profileuuids12)&gt;&gt; | 返回promise对象。 |
+|   Promise&lt;Array&lt;[ProfileUuids](js-apis-bluetooth-constant.md#profileuuids12)&gt;&gt; | Promise对象，返回本端设备的ProfileUuids数组。 |
 
 **错误码**：
 
@@ -442,7 +442,7 @@ disconnectAllowedProfiles(deviceId: string, callback: AsyncCallback&lt;void&gt;)
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
 | deviceId | string | 是    | 表示断开的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
-| callback | AsyncCallback&lt;void&gt; | 是    | 以callback形式异步返回结果。当发起断开成功，err为undefined，否则为错误对象。   |
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当发起断开成功，err为undefined，否则为错误对象。   |
 
 **错误码**：
 
@@ -536,7 +536,10 @@ try {
 
 getRemoteProductId(deviceId: string): string
 
-获取对端蓝牙设备的Product ID。从API16开始不再校验ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH权限。
+获取对端蓝牙设备的Product ID。
+
+**需要权限**：
+- API版本11-15：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
 **系统接口**：此接口为系统接口。
 
@@ -581,7 +584,7 @@ try {
 
 setRemoteDeviceType(deviceId: string, type: DeviceType): Promise&lt;void&gt;
 
-设置蓝牙远端设备自定义类型。使用Promise异步回调。
+设置蓝牙远端设备自定义类型，适用于蓝牙设置或设备管理应用中按设备类型（如汽车、耳机、助听器等）进行分类展示或差异化处理的场景。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -632,9 +635,12 @@ try {
 
 getRemoteDeviceType(deviceId: string): Promise&lt;DeviceType&gt;
 
-获取蓝牙远端设备自定义类型。使用Promise异步回调。从API18开始不再校验ohos.permission.ACCESS_BLUETOOTH权限。
+获取通过setRemoteDeviceType设置的蓝牙远端设备自定义类型。使用Promise异步回调。从API version 18开始不再校验ohos.permission.ACCESS_BLUETOOTH权限。
 
 **系统接口**：此接口为系统接口。
+
+**需要权限**：
+- API版本12-17：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -648,7 +654,7 @@ getRemoteDeviceType(deviceId: string): Promise&lt;DeviceType&gt;
 
 | 类型                  | 说明         |
 | ------------------- | ------------- |
-| Promise&lt;[DeviceType](#devicetype12)&gt; | 以Promise形式返回设置蓝牙远端设备类型的结果，返回值为设备类型。 |
+| Promise&lt;[DeviceType](#devicetype12)&gt; | 以Promise形式返回获取蓝牙远端设备类型的结果，返回值为设备类型。 |
 
 **错误码**：
 
@@ -698,7 +704,7 @@ controlDeviceAction(controlDeviceActionParams: ControlDeviceActionParams): Promi
 
 | 类型                  | 说明            |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | 返回promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -740,7 +746,7 @@ try {
 
 updateCloudBluetoothDevice(trustedPairedDevices: TrustedPairedDevices): Promise&lt;void&gt;
 
-更新云设备到蓝牙设置。使用Promise异步回调。
+更新云设备到蓝牙设置，适用于换机恢复或跨设备同步场景下，将云端已配对设备信息同步到本地蓝牙设置中。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -822,7 +828,7 @@ try {
 
 pairDeviceOutOfBand(transport: BluetoothTransport, p192Data: OobData | null, p256Data: OobData | null): Promise&lt;void&gt;
 
-通过带外（Out of Band, [OOB](../../connectivity/bluetooth/terminology.md#oob)）通信机制发起与对端蓝牙设备的配对流程。使用Promise异步回调。
+通过带外（Out of Band, [OOB](../../connectivity/bluetooth/terminology.md#oob)）通信机制发起与对端蓝牙设备的配对流程。本接口所需的OobData可通过[generateLocalOobData](#connectiongeneratelocaloobdata23)生成本机OOB数据并经带外通道传输至本端后使用。使用Promise异步回调。
 
 - 蓝牙配对状态通过[on('bondStateChange')](js-apis-bluetooth-connection.md#connectiononbondstatechange)的回调结果获取。
 
@@ -896,7 +902,7 @@ try {
 
 generateLocalOobData(transport: BluetoothTransport): Promise&lt;OobData&gt;
 
-获取本机的带外（Out of Band, [OOB](../../connectivity/bluetooth/terminology.md#oob)）通信数据。使用Promise异步回调。
+获取本机的带外（Out of Band, [OOB](../../connectivity/bluetooth/terminology.md#oob)）通信数据。生成的OOB数据经带外通道传输至对端设备后，对端设备可通过[pairDeviceOutOfBand](#connectionpairdeviceoutofband23)使用该数据发起配对流程。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -950,7 +956,7 @@ try {
 
 setCarKeyDfxData(deviceId: string, action: CarKeyActionType): void
 
-把车钥匙执行开卡、删卡的操作通知蓝牙。
+把车钥匙执行开卡、删卡操作的事件通知蓝牙，以便蓝牙模块记录相应的维测（DFX）数据用于后续问题定位。
 
 **起始版本**：26.0.0
 
@@ -965,7 +971,7 @@ setCarKeyDfxData(deviceId: string, action: CarKeyActionType): void
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
 | deviceId | string  | 是    | 表示远端设备MAC地址，例如："XX:XX:XX:XX:XX:XX"。 |
-| action | [CarKeyActionType](js-apis-bluetooth-connection-sys.md#carkeyactiontype)  | 是    | 表示车钥匙执行的操作，例如开卡、删卡。 |
+| action | [CarKeyActionType](#carkeyactiontype)  | 是    | 表示车钥匙执行的操作，例如开卡、删卡。 |
 
 **错误码**：
 
@@ -1051,7 +1057,7 @@ try {
 
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
-| deviceId | string | 否    | 否 | 表示要配对的设备ID。 |
+| deviceId | string | 否    | 否 | 表示要控制的设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 | type | [ControlType](#controltype15) | 否    | 否    | 表示控制类型。 |
 | typeValue | [ControlTypeValue](#controltypevalue15) | 否 | 否 | 表示控制动作。 |
 | controlObject | [ControlObject](#controlobject15) | 否 | 否 | 表示控制对象。|
@@ -1185,7 +1191,7 @@ try {
 | hiLinkVersion  | string | 否    | 否    | 表示hilink版本信息。   |
 | macAddress  | string | 否    | 否    | 表示设备MAC地址。   |
 | serviceType  | string | 否    | 否    | 表示设备服务类型。   |
-| serviceId  | string | 否    | 否    | 表示设备id。   |
+| serviceId  | string | 否    | 否    | 表示设备ID。   |
 | deviceName  | string | 否    | 否    | 表示设备名字。   |
 | uuids  | string | 否    | 否    | 表示设备的UUID。   |
 | bluetoothClass  | number | 否    | 否    | 表示远端设备类型。   |

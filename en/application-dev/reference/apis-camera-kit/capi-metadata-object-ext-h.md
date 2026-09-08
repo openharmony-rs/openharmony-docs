@@ -1,10 +1,12 @@
 # metadata_object_ext.h
+
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=d7c4ac9d6c0d0daf31bd0f9ac536ad489c61e6db translatedAt=2026-08-20T09:37:39.806Z pushedAt=2026-08-21T03:28:41.109Z -->
 
 ## Overview
 
@@ -42,6 +44,7 @@ Declares the metadata object extension concepts.
 | [Camera_ErrorCode OH_MetadataObjectExt_GetRightEyeBoundingBox(const OH_Camera_MetadataObjectExt* metadataObjectExt, OH_Camera_Rect_Ext* boundingBox)](#oh_metadataobjectext_getrighteyeboundingbox) | Obtains the right eye bounding box of a metadata object (such as a face).|
 | [Camera_ErrorCode OH_MetadataObjectExt_GetEmotion(const OH_Camera_MetadataObjectExt* metadataObjectExt, OH_Camera_MetadataObjectEmotion* emotion)](#oh_metadataobjectext_getemotion) | Obtains the emotion of a metadata object (such as a face).|
 | [void OH_MetadataObjectExt_Destroy(OH_Camera_MetadataObjectExt** metadataObjectExt, uint32_t objectCount)](#oh_metadataobjectext_destroy) | Destroys an **OH_Camera_MetadataObjectExt** instance array.|
+| [bool OH_MetadataObjectExt_IsLockFocusTracked(const OH_Camera_MetadataObjectExt* metadataObjectExt)](#oh_metadataobjectext_islockfocustracked) | Checks whether the focus is locked for tracking. |
 
 ## Function Description
 
@@ -61,7 +64,7 @@ Obtains the metadata object type.
 
 | Name| Description|
 | -- | -- |
-| [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance.|
+| const [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance. |
 | [Camera_MetadataObjectType](capi-camera-h.md#camera_metadataobjecttype)* type | Pointer to a **Camera_MetadataObjectType** instance.|
 
 **Returns**
@@ -86,7 +89,7 @@ Obtains the timestamp of a metadata object.
 
 | Name| Description|
 | -- | -- |
-| [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance.|
+| const [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance. |
 | int64_t* timestamp | Pointer to the timestamp.|
 
 **Returns**
@@ -111,7 +114,7 @@ Obtains the bounding box of a metadata object.
 
 | Name| Description|
 | -- | -- |
-| [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance.|
+| const [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance. |
 | [OH_Camera_Rect_Ext](capi-oh-camera-oh-camera-rect-ext.md)* boundingBox | Pointer to an **OH_Camera_Rect_Ext** instance.|
 
 **Returns**
@@ -136,7 +139,7 @@ Obtains the pitch angle of a metadata object (such as a face). The value range i
 
 | Name| Description|
 | -- | -- |
-| [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance.|
+| const [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance. |
 | float* pitchAngle | Pointer to the pitch angle.|
 
 **Returns**
@@ -161,7 +164,7 @@ Obtains the yaw angle of a metadata object (such as a face). The value range is 
 
 | Name| Description|
 | -- | -- |
-| [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance.|
+| const [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance. |
 | float* yawAngle | Pointer to the yaw angle.|
 
 **Returns**
@@ -186,7 +189,7 @@ Obtains the roll angle of a metadata object (such as a face). The value range is
 
 | Name| Description|
 | -- | -- |
-| [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance.|
+| const [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance. |
 | float* rollAngle | Pointer to the roll angle.|
 
 **Returns**
@@ -211,7 +214,7 @@ Obtains the left eye bounding box of a metadata object (such as a face).
 
 | Name| Description|
 | -- | -- |
-| [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance.|
+| const [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance. |
 | [OH_Camera_Rect_Ext](capi-oh-camera-oh-camera-rect-ext.md)* boundingBox | Pointer to an **OH_Camera_Rect_Ext** instance.|
 
 **Returns**
@@ -236,7 +239,7 @@ Obtains the right eye bounding box of a metadata object (such as a face).
 
 | Name| Description|
 | -- | -- |
-| [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance.|
+| const [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance. |
 | [OH_Camera_Rect_Ext](capi-oh-camera-oh-camera-rect-ext.md)* boundingBox | Pointer to an **OH_Camera_Rect_Ext** instance.|
 
 **Returns**
@@ -261,7 +264,7 @@ Obtains the emotion of a metadata object (such as a face).
 
 | Name| Description|
 | -- | -- |
-| [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance.|
+| const [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance. |
 | [OH_Camera_MetadataObjectEmotion](capi-camera-h.md#oh_camera_metadataobjectemotion)* emotion | Pointer to an **OH_Camera_MetadataObjectEmotion** instance.|
 
 **Returns**
@@ -288,3 +291,27 @@ Destroys an **OH_Camera_MetadataObjectExt** instance array.
 | -- | -- |
 | [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)** metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance.|
 | uint32_t objectCount | Number of metadata objects to destroy.|
+
+### OH_MetadataObjectExt_IsLockFocusTracked()
+
+```c
+bool OH_MetadataObjectExt_IsLockFocusTracked(const OH_Camera_MetadataObjectExt* metadataObjectExt)
+```
+
+**Description**
+
+Checks whether the focus is locked for tracking.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| const [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| bool | Whether the focus is locked for tracking. The value **true** means it is locked, and **false** means that it is not locked. |

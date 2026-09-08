@@ -120,8 +120,8 @@ enum HiDebug_ErrorCode
 | HIDEBUG_NO_PERMISSION = 11400103 | 没有写文件的权限。 |
 | HIDEBUG_TRACE_ABNORMAL = 11400104 | 系统内部错误。 |
 | HIDEBUG_NO_TRACE_RUNNING = 11400105 | 当前没有trace正在运行。 |
-| OH_HIDEBUG_TRACE_STORAGE_LIMIT = 11400120 | trace文件存储达到限制。<br/>**起始版本：** 24。 |
-| HIDEBUG_INVALID_SYMBOLIC_PC_ADDRESS = 11400200 | 传入符号解析函数的pc地址是无效的。<br/>**起始版本：** 20。 |
+| OH_HIDEBUG_TRACE_STORAGE_LIMIT = 11400120 | trace文件存储达到限制。<br/>**起始版本：** 24 |
+| HIDEBUG_INVALID_SYMBOLIC_PC_ADDRESS = 11400200 | 传入符号解析函数的pc地址是无效的。<br/>**起始版本：** 20 |
 | HIDEBUG_NOT_SUPPORTED = 11400300 | 当前设备不支持。<br>**起始版本：** 22 |
 | HIDEBUG_UNDER_SAMPLING = 11400301 | 当前进程正在采样。<br>**起始版本：** 22 |
 | HIDEBUG_RESOURCE_UNAVAILABLE = 11400302 | 采样资源不可用。<br>**起始版本：** 22 |
@@ -136,14 +136,16 @@ enum HiDebug_ErrorCode
 | HIDEBUG_RES_PROF_PERMISSION_DENIED = 11400420 | 资源采集权限不足，采集资源的目标进程仅支持调用接口进程本身。<br>**起始版本：** 24 |
 | HIDEBUG_RES_PROF_ALREADY_STARTED = 11400421 | 资源采集重复启动。<br>**起始版本：** 24 |
 | HIDEBUG_RES_PROF_NOT_STARTED = 11400422 | 资源采集未启动，停止失败。<br>**起始版本：** 24 |
-| HIDEBUG_RES_PROF_PROCESS_OVERLIMIT = 11400423 | 资源采集进程数超出 4 个限制。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_PROCESS_OVERLIMIT = 11400423 | 资源采集并行进程数超出限制，整机最多4个不同应用并行采集，应用内最多2个进程并行采集。<br>**起始版本：** 24 |
 | HIDEBUG_RES_PROF_CONFLICT = 11400424 | 资源采集与命令行工具或系统采集任务冲突。<br>**起始版本：** 24 |
 | HIDEBUG_RES_PROF_AUTO_STOPPED_BY_DURATION = 11400425 | 资源采集到达指定最大持续时间限制自动停止。<br>**起始版本：** 24 |
-| HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED = 11400426 | 资源采集每日配额超出 10 次限制。<br>**起始版本：** 24 |
-| HIDEBUG_RES_PROF_CPU_OVERLOADED = 11400427 | 系统 CPU 处于高负载状态，CPU 占用率超过 70%。<br>**起始版本：** 24 |
-| HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL = 11400428 | 内存可用空间紧张，可用空间少于 15%。<br>**起始版本：** 24 |
-| HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL = 11400429 | 存储可用空间紧张，可用空间少于 15%。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED = 11400426 | 资源采集每日配额超出限制，整机每日最多4次，应用每日最多2次。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_CPU_OVERLOADED = 11400427 | 整机系统CPU占用率超过70%。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL = 11400428 | 整机系统可用内存低于2GB。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL = 11400429 | 整机系统可用存储空间低于存储阈值，阈值为总存储容量的3%与15GB中的较大值。<br>**起始版本：** 24 |
 | HIDEBUG_RES_PROF_FAILURE = 11400430 | 资源采集启动/停止失败。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_NESTING_DEPTH = 11400431 | 资源采集异步嵌套深度参数无效。<br>**起始版本：** 26.1.0 |
+| HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_TASK_STACK_DEPTH = 11400432 | 资源采集异步任务回栈深度参数无效。<br>**起始版本：** 26.1.0 |
 
 ### HiDebug_TraceFlag
 
@@ -219,6 +221,9 @@ enum OH_HiDebug_ResourceType
 | OH_RES_TYPE_NATIVE | Native 内存<br>**起始版本：** 24 |
 | OH_RES_TYPE_GPU | GPU 内存<br>**起始版本：** 24 |
 | OH_RES_TYPE_GLOBAL_HANDLE | 全局句柄<br>**起始版本：** 24 |
+| OH_RES_TYPE_DMA | DMA内存<br>**起始版本：** 26.1.0 |
+| OH_RES_TYPE_ASHMEM | 匿名共享内存<br>**起始版本：** 26.1.0 |
+| OH_RES_TYPE_COMPOSITE_HEAP | 组合堆<br>**起始版本：** 26.1.0 |
 
 ### OH_HiDebug_MemListenerType
 

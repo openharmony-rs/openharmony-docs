@@ -1,8 +1,8 @@
 # 本地媒体会话概述
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -34,7 +34,7 @@
 
 ## 媒体会话管理器
 
-媒体会话管理器（AVSessionManager），提供了管理AVSession的能力，可以创建AVSession、创建AVSessionController、发送系统控制事件，也支持对AVSession的状态进行监听。
+媒体会话管理器（AVSessionManager），提供了创建AVSession、创建AVSessionController、发送系统控制事件以及对AVSession状态进行监听的相关类型和函数。
 
 实际上，AVSessionManager与AVSession、AVSessionController对象不同，并不是一个具体的对象，而是媒体会话的模块命名域。在实际编程过程中，可以通过如下方式引入：
 

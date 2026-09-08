@@ -5,6 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=a08d450b4f575e3d4749ddeef9dd32275ec0a19e translatedAt=2026-08-26T04:51:37.087Z pushedAt=2026-08-28T08:46:05.596Z -->
 
 Both the widget host (for example, the home screen) and the widget provider can trigger updates to the widget page. Moreover, the widget framework notifies the widget provider of updates according to the scheduled information. Therefore, widget updates include active updates initiated by the widget provider, active updates initiated by the widget host, and interval-based or time-specific updates. In all these update modes, the widget provider is responsible for pushing the widget data to be updated.
 
@@ -32,7 +33,7 @@ If there is a need to update widget data, the widget provider, as long as it is 
 
 ![requestForm](figures/requestForm.PNG)
 
-If changes in system language or color scheme are detected, the widget host, as long as it is running, can proactively request to update the widget using the **requestForm** API provided by formHost. The Widget Manager then instructs the widget provider to complete the update.
+When the widget host detects a change in the system language or theme mode (such as light or dark mode), it can proactively request a widget update through the `requestForm` API provided by `formHost` (available only for system apps). The widget management service then notifies the widget provider to complete the update.
 
 ### Passive Update
 
@@ -56,4 +57,4 @@ Based on the scheduled update information configured by the widget provider, the
 
 1. The widget provider is only allowed to update its own widgets.
 2. The widget host is only allowed to update the widgets added to it.
-3. Since API version 20, if the widget data is updated using shared memory, the total size of the updated data cannot exceed 10 MB, and the number of updated images cannot exceed 20. In API version 19 and earlier versions, the maximum number of image files is 5, and the maximum memory size of each image is 2 MB. Exceeding this 2 MB limit for any image will result in abnormal display.
+3. Starting from API version 20, if the widget refresh data is updated through shared memory, the total refresh data size must not exceed 10 MB, and the number of refreshed images must not exceed 20. For API version 19 and earlier, the maximum number of image files is 5, with each image limited to 2 MB of memory. Images exceeding the limit may display abnormally.

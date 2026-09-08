@@ -427,7 +427,7 @@ struct ArcListAndIndexer {
 }
 ```
 
-![arc-alphabet-indexer-preview1](figures/arc-alphabet-indexer-preview1.gif)
+![arc-alphabet-indexer-preview1-w200](figures/arc-alphabet-indexer-preview1.gif)
 
 ### Example 2: Setting Popup Display
 
@@ -525,4 +525,4 @@ struct ArcListAndIndexer {
 }
 ```
 
-![arc-alphabet-indexer-preview2](figures/arc-alphabet-indexer-preview2.gif)
+![arc-alphabet-indexer-preview2-w200](figures/arc-alphabet-indexer-preview2.gif)

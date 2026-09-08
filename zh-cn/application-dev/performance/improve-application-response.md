@@ -70,7 +70,7 @@ struct ImageExample2 {
 
 ### 使用TaskPool线程池异步处理
 
-当前系统提供了[TaskPool线程池](../reference/apis-arkts/js-apis-taskpool.md)，TaskPool提供了任务优先级设置、线程池自动管理机制，示例如下：
+当前系统提供了[@ohos.taskpool (启动任务池)](../reference/apis-arkts/js-apis-taskpool.md)，TaskPool提供了任务优先级设置、线程池自动管理机制，示例如下：
 
 ```typescript
 import { taskpool } from '@kit.ArkTS';
@@ -189,7 +189,7 @@ struct Index {
 
 ![正例总时长](./figures/improve-application-response-settimeout-all-duration.png)
 
-正例中启动时aboutToAppear阶段耗时为167us。
+正例中启动时aboutToAppear阶段耗时为167μs。
 
 ![正例时长](./figures/improve-application-response-settimeout-duration.png)
 
@@ -210,6 +210,7 @@ struct Index {
 反例：如果一个容器没有同时指定宽高，此时改变容器内部的布局，那么该容器外同级的所有组件都会重新做布局计算和测量更新，导致主线程UI刷新耗时过长。
 
 以下代码的Text('New Page')组件被状态变量isVisible控制，isVisible为true时创建，false时销毁。当isVisible发生变化时，由于其外包裹的Stack容器没有同时指定宽高，
+
 因此会扩散影响到容器外ForEach中的Text渲染：
 
 ```typescript
@@ -763,7 +764,7 @@ export class ControllerManager {
 }
 ```
 
-通过SmartPerf-Host工具抓取相关trace进行分析首页响应时延，其中主要关注两个trace tag分别是DispatchTouchEvent代表点击事件和MarshRSTransactionData代表响应,如下图所示：
+通过SmartPerf-Host工具抓取相关trace进行分析首页响应时延，其中主要关注两个trace tag分别是DispatchTouchEvent代表点击事件和MarshRSTransactionData代表响应，如下图所示：
 
 反例响应时延：18.1ms。
 
@@ -857,7 +858,7 @@ struct ArticleSkeletonView { // 自定义骨架图
 
 将使用和未使用骨架图的组件通过SmartPerf-Host工具抓取trace后对比可得：
 
-未使用骨架图时，响应时间约为321.5ms。(其中包含setTimeout的300ms)。
+未使用骨架图时，响应时间约为321.5ms。（其中包含setTimeout的300ms）。
 
 ![骨架图占位](./figures/improve-application-response-no-skeleton-duration.png)
 
@@ -870,7 +871,7 @@ struct ArticleSkeletonView { // 自定义骨架图
 将相机的关闭和释放操作放在setTimeout函数中执行，使其延迟到系统相对空闲的时刻进行，可以避免在程序忙碌时段占用关键资源，提升整体性能及响应能力；确保相机资源在系统任务负载减轻时得以释放，维护了应用的稳定性和效率。
 ### 反例
 
-这段代码定义了在相机页面隐藏时触发的函数，用于释放相机相关资源。通过“停止拍摄进程 > 暂停并释放相机会话 > 关闭和释放预览及拍照的输入输出对象 > 清空相机管理对象”的过程，确保应用程序在不再使用相机时能够有效管理并回收所有相机资源。但是直接调用的release方法中captureSession、cameraInput、previewOutput、cameraOutput都用了await,使相机关闭和释放顺序执行可能会导致应用程序的响应性下降，造成用户界面卡顿。
+这段代码定义了在相机页面隐藏时触发的函数，用于释放相机相关资源。通过“停止拍摄进程 > 暂停并释放相机会话 > 关闭和释放预览及拍照的输入输出对象 > 清空相机管理对象”的过程，确保应用程序在不再使用相机时能够有效管理并回收所有相机资源。但是直接调用的release方法中captureSession、cameraInput、previewOutput、cameraOutput都用了await，使相机关闭和释放顺序执行可能会导致应用程序的响应性下降，造成用户界面卡顿。
 ```ts
 // 相机页面每次隐藏时触发一次
 onPageHide() {

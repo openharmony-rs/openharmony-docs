@@ -128,6 +128,6 @@ try {
   console.info('set surface id successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`set surface id failed, Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to set surface id. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```

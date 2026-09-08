@@ -6,7 +6,7 @@
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=37f8010684f98f039dd93a2bbbd1faa73c74fcbb translatedAt=2026-08-07T04:40:28.641Z pushedAt=2026-08-07T08:12:24.060Z -->
+<!-- md-trans-meta sourceCommit=37f8010684f98f039dd93a2bbbd1faa73c74fcbb translatedAt=2026-08-07T04:40:28.641Z pushedAt=2026-08-12T01:46:50.748Z -->
 
 > **NOTE**
 >
@@ -16,7 +16,7 @@
 
 ## WebOptions
 
-Defines Web options through the [API](./arkts-basic-components-web.md#api), including the web page resource URL, controller, rendering mode, and more.
+Defines Web options through the [APIs](./arkts-basic-components-web.md#apis), including the web page resource URL, controller, rendering mode, and more.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -741,7 +741,7 @@ Return value of the callback that intercepts the soft keyboard started from edit
 
 ## FirstMeaningfulPaint<sup>12+</sup>
 
-Provides detailed information about the first meaningful paint on the web page, including the navigation time and paint time. It is suitable for scenarios where monitoring page rendering performance is required, improving performance optimization accuracy and user experience.
+Provides detailed information about the main content paint on the web page, including the navigation time and paint time. It is suitable for scenarios where monitoring page rendering performance is required, improving performance optimization accuracy and user experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -972,4 +972,3 @@ Custom AI session configuration object, used to define the lifecycle callbacks o
 | onCreateAISession | [OnCreateAISession](./arkts-basic-components-web-t.md#oncreateaisession) | No | No | Callback function triggered when an AI session is created. Returns **true** to skip the system default behavior, and **false** to continue executing the system default logic. |
 | onExecuteAIAction | [OnExecuteAIAction](./arkts-basic-components-web-t.md#onexecuteaiaction) | No | No | Callback function triggered when an AI session executes an action. |
 | onDestroyAISession | [OnDestroyAISession](./arkts-basic-components-web-t.md#ondestroyaisession) | No | No | Callback function triggered when an AI session is destroyed, used to clean up resources associated with the custom AI model. |
-<!--no_check-->

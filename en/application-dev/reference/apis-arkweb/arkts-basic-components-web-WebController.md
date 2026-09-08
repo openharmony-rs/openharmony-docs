@@ -6,7 +6,7 @@
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d1b85ec7ea193eefc4ef0fcb99c42629d3e17584 translatedAt=2026-08-07T04:39:30.026Z pushedAt=2026-08-07T08:12:42.383Z -->
+<!-- md-trans-meta sourceCommit=d1b85ec7ea193eefc4ef0fcb99c42629d3e17584 translatedAt=2026-08-07T04:39:30.026Z pushedAt=2026-08-12T04:09:03.919Z -->
 
 WebController is the controller class of the ArkWeb component, used to control various behaviors of the Web component. A WebController object can be bound to only one Web component. After binding, developers can use the controller to perform operations on the Web component, such as page navigation (forward/backward/loading), focus control, zoom adjustment, page refresh and stop, cookie management, and JavaScript injection and execution.
 
@@ -564,7 +564,7 @@ Sets a zoom factor for the current web page.
 
 | Name   | Type  | Mandatory  | Description                          |
 | ------ | ------ | ---- | ------------------------------ |
-| factor | number | Mandatory | Zoom factor. The value **1** indicates that the current zoom ratio remains unchanged. A value less than **1** indicates zooming out, and a value greater than **1** indicates zooming in. The value ranges from (0, 100]. |
+| factor | number | Yes | Zoom factor. The value **1** indicates that the current zoom ratio remains unchanged. A value less than **1** indicates zooming out, and a value greater than **1** indicates zooming in. The value ranges from (0, 100]. |
 
 **Example**
 
@@ -720,7 +720,7 @@ Executes a JavaScript script. This API uses an asynchronous callback to return t
 | Name     | Type                    | Mandatory| Description                                    |
 | -------- | ------------------------ | ---- | ---------------------------------------- |
 | script   | string                   | Yes  | JavaScript script.                           |
-| callback | (result: string) => void | Optional | Callback invoked to return the result of JavaScript script execution. If the JavaScript script fails to execute or returns no value, **null** is returned. No callback is performed when this parameter is not passed. |
+| callback | (result: string) => void | No | Callback invoked to return the result of JavaScript script execution. If the JavaScript script fails to execute or returns no value, **null** is returned. No callback is performed when this parameter is not passed. |
 
 **Example**
 

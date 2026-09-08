@@ -1,13 +1,13 @@
 # AVSession_OutputDeviceInfo
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct AVSession_OutputDeviceInfo {...}
+typedef struct AVSession_OutputDeviceInfo {...} AVSession_OutputDeviceInfo
 ```
 
 ## 概述
@@ -26,5 +26,5 @@ typedef struct AVSession_OutputDeviceInfo {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t size | 设备信息数组的大小。 |
-| [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) **deviceInfos | 设备信息数组。 |
+| uint32_t size | 设备信息数组的大小，表示deviceInfos数组的元素数量。 |
+| [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) **deviceInfos | 指向设备信息数组的指针，数组长度由size字段指定。 |

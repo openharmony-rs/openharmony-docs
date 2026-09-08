@@ -1,4 +1,4 @@
-# \@LocalBuilder装饰器： 维持组件关系
+# \@LocalBuilder装饰器：维持组件关系
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhangboren-->
@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-当开发者使用局部\@Builder进行引用数据传递时，需要考虑组件的父子关系。然而在使用.bind(this)的方式更改函数调用上下文后，会出现组件的父子关系与状态管理的父子关系不一致的问题。为了解决这一问题，引入[\@LocalBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-localbuilder.md#localbuilder)装饰器。\@LocalBuilder拥有和局部\@Builder相同的功能，且比局部\@Builder能够更好的确定组件的父子关系和状态管理的父子关系。
+当开发者使用局部\@Builder进行引用数据传递时，需要考虑组件的父子关系。然而在使用.bind(this)的方式更改函数调用上下文后，会出现组件的父子关系与状态管理的父子关系不一致的问题。为了解决这一问题，引入[\@LocalBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-localbuilder.md#localbuilder)装饰器。\@LocalBuilder拥有和局部\@Builder相同的功能，且比局部\@Builder能够更好地确定组件的父子关系和状态管理的父子关系。
 
 在阅读本文档前，建议提前阅读：[@Builder](./arkts-builder.md)。
 
@@ -55,7 +55,7 @@ this.myBuilderFunction()
 >
 > bind()方法创建一个新的函数，称为绑定函数，当调用者绑定bind()时，该绑定函数会以创建时传入的第一个this作为原函数的this。
 
-下方用例中，当函数componentBuilder被\@Builder修饰时，显示效果为“Child”；当函数componentBuilder被\@LocalBuilder修饰时，显示效果是“Parent”。
+下方用例中，当函数componentBuilder被\@Builder修饰时，显示效果为“Child”；当函数componentLocalBuilder被\@LocalBuilder修饰时，显示效果是“Parent”。
 <!-- @[component_builder_modify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ComponentBuilderModify.ets) -->  
 
 ``` TypeScript
@@ -129,7 +129,7 @@ struct Parent {
 
 ### 按回调传递参数
 
-从API version 20开始，开发者可以通过使用`UIUtils.makeBinding()`函数、`Binding`类和`MutableBinding`类实现\@Builder函数中状态变量的刷新。详情请参考[makeBinding](../../reference/apis-arkui/js-apis-stateManagement.md#makebinding20)。
+从API version 20开始，开发者可以通过使用`UIUtils.makeBinding()`函数、`Binding`类和`MutableBinding`类实现@LocalBuilder函数中状态变量的刷新。详情请参考[makeBinding](../../reference/apis-arkui/js-apis-stateManagement.md#makebinding20)。
 <!-- @[builder_make_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/BuilderMakeBinding.ets) -->  
 
 ``` TypeScript
@@ -195,7 +195,7 @@ struct Parent {
         .fontSize(20)
         .margin(10)
     }
-  };
+  }
 
   build() {
     Column() {
@@ -351,7 +351,7 @@ struct Child {
 
   @Builder
   customBuilder() {
-  };
+  }
 
   @BuilderParam contentBuilder: ((data: Data) => void) = this.customBuilder;
   @BuilderParam contentLocalBuilder: ((data: Data) => void) = this.customBuilder;
@@ -417,7 +417,7 @@ struct Parent {
 
 ### \@LocalBuilder在\@ComponentV2修饰的自定义组件中使用
 
-在[@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件中使用局部的@LocalBuilder，修改变量时会触发UI刷新。
+在[@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件中使用局部的@LocalBuilder，修改状态变量时会触发UI刷新。
 
 <!-- @[LocalBuilder_in_V2_use](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/V2LocalBuilderUpdate.ets) -->  
 

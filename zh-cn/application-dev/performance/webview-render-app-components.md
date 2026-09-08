@@ -1,4 +1,4 @@
-# 使用同层渲染在Web上渲染原生组件
+# 使用同层渲染在Webview上渲染原生组件
 
 <!--Kit: Common-->
 <!--Subsystem: Demo&Sample-->
@@ -15,7 +15,9 @@
 - 原生组件已经实现，复用以减少开发成本。
 
 目前要实现在Web上使用原生组件有两种方案：  
+
 方案一：直接将组件堆叠到H5页面上。  
+
 方案二：使用**同层渲染**，使用Web和原生组件交互的方式，将原生组件替代Web中部分组件，提升交互体验和性能。
 
 ## 什么是同层渲染
@@ -133,7 +135,7 @@ export struct SearchComponent {
 ### 直接使用H5加载  
 首先的想法是，将搜索框和列表组件使用原生H5实现，直接用web加载页面。数据交互的部分则需要与原生交互部分通过WebMessagePort与Web交互。关键代码步骤如下：
 
-1. 应用侧使用单Web组件挂在H5页面，但是同时需要设置javaScriptProxy传入参数，并在PageEnd回调中建立WebMessagePort通道传输数据。
+1. 应用侧使用单Web组件挂载H5页面，但是同时需要设置javaScriptProxy传入参数，并在PageEnd回调中建立WebMessagePort通道传输数据。
 
     ```typescript
     Web({ src: $rawfile("web.html"), controller: this.browserTabController })
@@ -260,6 +262,7 @@ export struct SearchComponent {
     }
     ```
 2. 用Web加载nativeembed_view.html文件，在加载完成后的onPageEnd回调中，获取Web侧预留的Embed元素大小，并通过px2vp方法转换为组件大小。  
+
    需要在H5侧添加getEmbedSize方法来获取元素大小，如下：
 
     ```javascript
@@ -296,7 +299,7 @@ export struct SearchComponent {
 在上述的方案中，实现方法非常简单。但是这只是限于底层H5网页比较简单，不会滚动的情况。如果H5页面可以上下滑动或者放大缩小比较复杂，此方案就会出现问题，就会发现原生组件是很难去定位，很难跟随H5页面一起滚动。而且在性能上，Web是整体渲染的，即使被原生组件遮住的部分也会消耗性能。于是我们可以通过同层渲染来完美解决这个问题，方案如下：  
 
 ### 同层渲染实现  
-同层渲染简单来说就是，底层使用空白的H5页面，用**Embed标签**进行占位，原生使用**NodeContainer**来站位，最后将Web侧的surfaceId和原生组件绑定，渲染在**NodeContainer**上。详细的步骤可以参考前面[什么是同层渲染](#什么是同层渲染)中的链接，这里给出一些大致步骤。
+同层渲染简单来说就是，底层使用空白的H5页面，用**Embed标签**进行占位，原生使用**NodeContainer**来占位，最后将Web侧的surfaceId和原生组件绑定，渲染在**NodeContainer**上。详细的步骤可以参考前面[什么是同层渲染](#什么是同层渲染)中的链接，这里给出一些大致步骤。
 
 1. 用Stack组件层叠NodeContainer和Web组件，并开启enableNativeEmbedMode模式。
     ```typescript
@@ -409,7 +412,9 @@ export struct SearchComponent {
 ### 直接使用H5加载  
 
 **图三：H5的Trace图**
+
 ![alt text](./figures/webview-render-app-components_5.png)  
+
 H5的分析：
 - 在应用侧，情况比较特殊，因为H5页面是在web侧渲染，所以app侧只有开始加载web之前的js处理阶段，在PageEnd后应用侧没有什么处理。
 - 在render_service侧，每一帧ReceiveVsync的耗时无明显变化。  
@@ -417,20 +422,26 @@ H5的分析：
 ### 使用非同层渲染加载  
 
 **图四：非同层渲染的Trace图**  
+
 ![alt text](./figures/webview-render-app-components_4.png)  
+
 非同层渲染的分析：
 - 在应用侧，红蓝线之间为测量和计算布局，图片加载被延后到了蓝线之外。  
 - 在render_service侧，蓝线之后每一帧ReceiveVsync的耗时大幅增加。
   
 
 **图五：非同层渲染情况下的单帧放大图**  
+
 ![alt text](./figures/webview-render-app-components_6.png)  
-从图五可以明显的看到，其中的RSUniRender::Process耗时比起其他帧大幅增加，说明是应用侧组件层叠导致render_service侧的绘任务过重。 
+
+从图五可以明显的看到，其中的RSUniRender::Process耗时比起其他帧大幅增加，说明是应用侧组件层叠导致render_service侧的绘制任务过重。 
 
 ### 使用同层渲染加载  
 
 **图六：同层渲染的Trace图**  
+
 ![alt text](./figures/webview-render-app-components_3.png)  
+
 同层渲染的分析：
 - 在应用侧，红蓝线之间由于NodeContainer的原因，组件布局的测量和绘制划分成了两部分，同时将图片加载提前到了红蓝线之间。
 - 在render_service侧，每一帧ReceiveVsync的耗时无明显变化。  
@@ -464,7 +475,9 @@ H5的分析：
 ### 使用同层渲染
 
   **图八：同层渲染滑动时单帧图**  
+
   ![alt text](./figures/webview-render-app-components_7.png)
+
   上述两张图经过对比也可以发现，render_service每一帧的耗时大幅增加，其中的RSUniRender::Process耗时也大幅增加，结论和上述保持一致，再次验证了同样的结果。
 
 ## 总结

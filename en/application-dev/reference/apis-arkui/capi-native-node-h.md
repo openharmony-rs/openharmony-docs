@@ -5,6 +5,7 @@
 <!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=1582c0b05d7d015379c4deb84601269f9eabf1d4 translatedAt=2026-08-29T08:59:27.593Z pushedAt=2026-08-31T01:21:03.528Z -->
 
 ## Overview
 
@@ -30,15 +31,15 @@ Provides type definitions for **NativeNode** APIs.
 | -- | -- |------------------------------------------------------------------------------|
 | [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) | ArkUI_AttributeItem | Defines the [setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute) function. This is a general input parameter struct.|
 | [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) | ArkUI_NodeComponentEvent | Defines the parameter type for component callback events.                                                              |
-| [ArkUI_StringAsyncEvent](capi-arkui-nativemodule-arkui-stringasyncevent.md) | ArkUI_StringAsyncEvent | Defines the string type parameter used by the component callback event.                                                         |
-| [ArkUI_TextChangeEvent](capi-arkui-nativemodule-arkui-textchangeevent.md) | ArkUI_TextChangeEvent | Defines hybrid-type data for component events.                                                              |
+| [ArkUI_StringAsyncEvent](capi-arkui-nativemodule-arkui-stringasyncevent.md) | ArkUI_StringAsyncEvent | Defines the type of string parameters used in component callback events. This struct is used to pass string data in the asynchronous event callback of a component. It is applicable to scenarios where the component callback event needs to carry text information.|
+| [ArkUI_TextChangeEvent](capi-arkui-nativemodule-arkui-textchangeevent.md) | ArkUI_TextChangeEvent | Defines a text change event, which is used to listen to and handle text change events in text input scenarios. This struct contains the text content, extended information, and numeric parameters. It allows you to obtain text change data in real time, making it suitable for scenarios such as listening to text box content, real-time search, and word count.|
 | [ArkUI_NativeNodeAPI_1](capi-arkui-nativemodule-arkui-nativenodeapi-1.md) | ArkUI_NativeNodeAPI_1 | Defines a collection of Node-type APIs provided by ArkUI on the native side. APIs related to the Node module must be called on the main thread.                              |
 | [OH_ArkUI_TextEditorChangeEvent](capi-arkui-nativemodule-oh-arkui-texteditorchangeevent.md) | OH_ArkUI_TextEditorChangeEvent | Defines a text content change event of the **TextEditor** component.|
 | [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) | ArkUI_NodeEvent | Defines a component event. This is a general struct type.                                                              |
-| [ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md) | ArkUI_NodeCustomEvent | Defines a custom component event. This is a general struct type.                                                           |
-| [ArkUI_NodeAdapter*](capi-arkui-nativemodule-arkui-nodeadapter8h.md) | ArkUI_NodeAdapterHandle | Defines a component adapter object, which is used for lazy loading of elements in scrollable components.                                                    |
-| [ArkUI_NodeAdapterEvent](capi-arkui-nativemodule-arkui-nodeadapterevent.md) | ArkUI_NodeAdapterEvent | Defines an adapter event object.                                                                  |
-| [ArkUI_NodeContentEvent](capi-arkui-nativemodule-arkui-nodecontentevent.md) | ArkUI_NodeContentEvent | Defines a node content event. This is a general struct type.                                                     |
+| [ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md) | ArkUI_NodeCustomEvent | Defines a custom component event. This is a general struct type. It is used to pass event information in the measurement, layout, and drawing event callbacks of a custom component.                                                           |
+| [ArkUI_NodeAdapter*](capi-arkui-nativemodule-arkui-nodeadapter8h.md) | ArkUI_NodeAdapterHandle | Defines the pointer to a component adapter object, which is used for lazy loading of elements in scrollable components. This is applicable to scenarios where a large amount of scrollable content needs to be loaded on demand. It prevents all elements from being created at once, reducing memory usage and improving scrolling performance.                                                    |
+| [ArkUI_NodeAdapterEvent](capi-arkui-nativemodule-arkui-nodeadapterevent.md) | ArkUI_NodeAdapterEvent | Defines a component adapter event object, which is used to pass information such as the event type, host node, and data item index in the event callback of a node adapter.                                                                  |
+| [ArkUI_NodeContentEvent](capi-arkui-nativemodule-arkui-nodecontentevent.md) | ArkUI_NodeContentEvent | Defines a node content event. This is a general struct type. It is used as the event parameter of the node content event callback to obtain the event type and the node content object that triggers the event.                                                     |
 
 ### Enums
 
@@ -115,9 +116,9 @@ Provides type definitions for **NativeNode** APIs.
 | [int32_t OH_ArkUI_NodeUtils_GetPositionWithTranslateInScreen(ArkUI_NodeHandle node, ArkUI_IntOffset* translateOffset)](#oh_arkui_nodeutils_getpositionwithtranslateinscreen) | - | Obtains the position of the component on the screen, including the translate attribute.|
 | [void OH_ArkUI_NodeUtils_AddCustomProperty(ArkUI_NodeHandle node, const char* name, const char* value)](#oh_arkui_nodeutils_addcustomproperty) | - | Sets a custom property for a component. This API takes effect only in the main thread.|
 | [void OH_ArkUI_NodeUtils_RemoveCustomProperty(ArkUI_NodeHandle node, const char* name)](#oh_arkui_nodeutils_removecustomproperty) | - | Removes a custom property that has been set for the specified component.|
-| [int32_t OH_ArkUI_NodeUtils_GetCustomProperty(ArkUI_NodeHandle node, const char* name, ArkUI_CustomProperty** handle)](#oh_arkui_nodeutils_getcustomproperty) | - | Obtains the value of a custom property of the specified component.|
-| [ArkUI_NodeHandle OH_ArkUI_NodeUtils_GetParentInPageTree(ArkUI_NodeHandle node)](#oh_arkui_nodeutils_getparentinpagetree) | - | Obtains the parent node, which can be a component node created with ArkTS.|
-| [int32_t OH_ArkUI_NodeUtils_GetActiveChildrenInfo(ArkUI_NodeHandle head, ArkUI_ActiveChildrenInfo** handle)](#oh_arkui_nodeutils_getactivechildreninfo) | - | Obtains all active child nodes of the specified node. Spans are not counted as child nodes.|
+| [int32_t OH_ArkUI_NodeUtils_GetCustomProperty(ArkUI_NodeHandle node, const char* name, ArkUI_CustomProperty** handle)](#oh_arkui_nodeutils_getcustomproperty) | - | Obtains the custom property of a component and returns an **ArkUI_CustomProperty** instance through a handle.|
+| [ArkUI_NodeHandle OH_ArkUI_NodeUtils_GetParentInPageTree(ArkUI_NodeHandle node)](#oh_arkui_nodeutils_getparentinpagetree) | - | Obtains the parent node, which can be a component node created with ArkTS. |
+| [int32_t OH_ArkUI_NodeUtils_GetActiveChildrenInfo(ArkUI_NodeHandle head, ArkUI_ActiveChildrenInfo** handle)](#oh_arkui_nodeutils_getactivechildreninfo) | - | Obtains the FrameNode child node whose internal active state is **true** and generates an **ArkUI_ActiveChildrenInfo** instance. Spans are not counted as child nodes. After the child node is obtained, you can query the number of child nodes and read the child nodes by subscript. After the instance is used, you must call **OH_ArkUI_ActiveChildrenInfo_Destroy** to destroy it.|
 | [ArkUI_NodeHandle OH_ArkUI_NodeUtils_GetCurrentPageRootNode(ArkUI_NodeHandle node)](#oh_arkui_nodeutils_getcurrentpagerootnode) | - | Obtains the root node of the current page.|
 | [bool OH_ArkUI_NodeUtils_IsCreatedByNDK(ArkUI_NodeHandle node)](#oh_arkui_nodeutils_iscreatedbyndk) | - | Checks whether the specified component is created with C APIs.|
 | [int32_t OH_ArkUI_NodeUtils_GetNodeType(ArkUI_NodeHandle node)](#oh_arkui_nodeutils_getnodetype) | - | Obtains the type of the specified node.|
@@ -156,9 +157,9 @@ Provides type definitions for **NativeNode** APIs.
 | [int32_t OH_ArkUI_PostAsyncUITask(ArkUI_ContextHandle context, void* asyncUITaskData, void (\*asyncUITask)(void\* asyncUITaskData), void (\*onFinish)(void\* asyncUITaskData))](#oh_arkui_postasyncuitask) | - | Submits the **asyncUITask** function to a non-UI thread provided by the ArkUI framework for execution. After **asyncUITask** finishes execution, the **onFinish** function is called in the UI thread. This is suitable for scenarios involving multi-threaded UI component creation. You can use this API to create UI components in non-UI threads and then mount the created components to the main tree in the UI thread.|
 | [int32_t OH_ArkUI_PostUITask(ArkUI_ContextHandle context, void* taskData, void (\*task)(void\* taskData))](#oh_arkui_postuitask) | - | Submits the **task** function to the UI thread for execution. This is suitable for scenarios involving multi-threaded UI component creation. When you create UI components in a self-built thread, you can use this API to mount the created components to the main tree on the UI thread.|
 | [int32_t OH_ArkUI_PostUITaskAndWait(ArkUI_ContextHandle context, void* taskData, void (\*task)(void\* taskData))](#oh_arkui_postuitaskandwait) | - | Submits the **task** function to the UI thread for execution. The thread calling this API will block until the **task** function completes execution. Calling this API from the UI thread is equivalent to synchronously calling the **task** function. This is suitable for scenarios involving multi-threaded UI component creation. When you need to call functions that are only supported on the UI thread during the multi-threaded component creation process, you can use this API to return to the UI thread to call the function and then resume multi-threaded component creation after the call completes. When the UI thread is under high load, non-UI threads calling this API may block for extended periods, affecting the performance of multi-threaded UI component creation. Frequent use is not recommended.|
-| [int32_t OH_ArkUI_NativeModule_RegisterCommonEvent(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType, void* userData, void (*callback)(ArkUI_NodeEvent* event))](#oh_arkui_nativemodule_registercommonevent) | - | Registers a basic event callback for the target node.|
+| [int32_t OH_ArkUI_NativeModule_RegisterCommonEvent(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType, void\* userData, void (\*callback)(ArkUI_NodeEvent\* event))](#oh_arkui_nativemodule_registercommonevent) | - | Registers a basic event callback for the target node. |
 | [int32_t OH_ArkUI_NativeModule_UnregisterCommonEvent(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType)](#oh_arkui_nativemodule_unregistercommonevent) | - | Unregisters the basic event callback for the target node.|
-| [int32_t OH_ArkUI_NativeModule_RegisterCommonVisibleAreaApproximateChangeEvent(ArkUI_NodeHandle node, float* ratios, int32_t size, float expectedUpdateInterval, void* userData, void (*callback)(ArkUI_NodeEvent* event))](#oh_arkui_nativemodule_registercommonvisibleareaapproximatechangeevent) | - | Registers a basic event callback for visible area changes with a constrained callback interval.|
+| [int32_t OH_ArkUI_NativeModule_RegisterCommonVisibleAreaApproximateChangeEvent(ArkUI_NodeHandle node, float\* ratios, int32_t size, float expectedUpdateInterval, void\* userData, void (\*callback)(ArkUI_NodeEvent\* event))](#oh_arkui_nativemodule_registercommonvisibleareaapproximatechangeevent) | - | Registers a basic event callback for visible area changes with a constrained callback interval. |
 | [int32_t OH_ArkUI_NativeModule_UnregisterCommonVisibleAreaApproximateChangeEvent(ArkUI_NodeHandle node)](#oh_arkui_nativemodule_unregistercommonvisibleareaapproximatechangeevent) | - | Unregisters the basic event callback for visible area changes with a constrained callback interval.|
 | [int32_t OH_ArkUI_Swiper_FinishAnimation(ArkUI_NodeHandle node)](#oh_arkui_swiper_finishanimation) | - | Stops the page turning animation that is being executed on the specified **Swiper** node.|
 | [int32_t OH_ArkUI_SetForceDarkConfig(ArkUI_ContextHandle uiContext, bool forceDark, ArkUI_NodeType nodeType, uint32_t (*colorInvertFunc)(uint32_t color))](#oh_arkui_setforcedarkconfig) | - | Sets the color inversion algorithm for the component and instance.|
@@ -172,13 +173,16 @@ Provides type definitions for **NativeNode** APIs.
 | [int32_t OH_ArkUI_Swiper_IsFakeDragging(ArkUI_NodeHandle node, bool* isFakeDragging)](#oh_arkui_swiper_isfakedragging) | - | Obtains the drag simulation status on a **Swiper** node.|
 | [int32_t OH_ArkUI_Swiper_ShowPrevious(ArkUI_NodeHandle node)](#oh_arkui_swiper_showprevious) | - | Displays the previous page of a **Swiper** node.|
 | [int32_t OH_ArkUI_Swiper_ShowNext(ArkUI_NodeHandle node)](#oh_arkui_swiper_shownext) | - | Displays the next page of a **Swiper** node.|
+| [int32_t OH_ArkUI_ArcSwiper_ShowPrevious(ArkUI_NodeHandle node)](#oh_arkui_arcswiper_showprevious) | - | Displays the previous page of the **ArcSwiper** node.|
+| [int32_t OH_ArkUI_ArcSwiper_ShowNext(ArkUI_NodeHandle node)](#oh_arkui_arcswiper_shownext) | - | Displays the next page of the **ArcSwiper** node.|
+| [int32_t OH_ArkUI_ArcSwiper_FinishAnimation(ArkUI_NodeHandle node)](#oh_arkui_arcswiper_finishanimation) | - | Finishes the animation being executed by the **ArcSwiper** node.|
 | [int32_t OH_ArkUI_NativeModule_AtomicServiceMenuBarSetVisible(ArkUI_ContextHandle uiContext, bool visible)](#oh_arkui_nativemodule_atomicservicemenubarsetvisible) | - | Sets the visibility of the menu bar.|
 | [int32_t OH_ArkUI_NativeModule_GetPageRootNodeHandleByContext(ArkUI_ContextHandle context, ArkUI_NodeHandle* rootNode)](#oh_arkui_nativemodule_getpagerootnodehandlebycontext) | - | Obtains the root node of the page in the window corresponding to the specified UI context.|
-| [int32_t OH_ArkUI_NativeModule_RegisterCommonAreaApproximateChangeEvent(ArkUI_NodeHandle node, float expectedUpdateInterval, void* userData, void (*callback)(ArkUI_NodeEvent* event))](#oh_arkui_nativemodule_registercommonareaapproximatechangeevent) | - | Registers a callback for listening for component size and area changes. This API can be called for a valid [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node at any time. The newly registered callback will replace the previously registered callback for this event and take effect from the next frame. When the callback is no longer needed, use [OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent](#oh_arkui_nativemodule_unregistercommonareaapproximatechangeevent) to unregister it. Otherwise, the callback will be automatically unregistered when the node is released.|
+| [int32_t OH_ArkUI_NativeModule_RegisterCommonAreaApproximateChangeEvent(ArkUI_NodeHandle node, float expectedUpdateInterval, void* userData, void (\*callback)(ArkUI_NodeEvent\* event))](#oh_arkui_nativemodule_registercommonareaapproximatechangeevent) | - | Registers a callback for listening for component size and area changes. This API can be called for a valid [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node at any time. The newly registered callback will replace the previously registered callback for this event and take effect from the next frame. When the callback is no longer needed, use [OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent](#oh_arkui_nativemodule_unregistercommonareaapproximatechangeevent) to unregister it. Otherwise, the callback will be automatically unregistered when the node is released.|
 | [int32_t OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent(ArkUI_NodeHandle node)](#oh_arkui_nativemodule_unregistercommonareaapproximatechangeevent) | - | Unregisters the callback for listening for component size and area changes.|
 | [ArkUI_GestureCollectInterceptInfo* OH_ArkUI_NodeEvent_GetGestureCollectInterceptInfo(ArkUI_NodeEvent* nodeEvent)](#oh_arkui_nodeevent_getgesturecollectinterceptinfo) | - | Obtains the **ArkUI_GestureCollectInterceptInfo** object from a specified **ArkUI_NodeEvent** object.<br>**Since**: 26.0.0|
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_SetChildMountPolicy(ArkUI_NodeHandle node, OH_ArkUI_NodeMountPolicy policy)](#oh_arkui_nativemodule_setchildmountpolicy) | - | Sets the child node mounting policy for a target node.<br>**Since**: 26.0.0|
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_GetChildMountPolicy(ArkUI_NodeHandle node, OH_ArkUI_NodeMountPolicy policy)](#oh_arkui_nativemodule_getchildmountpolicy) | - | Obtains the current child node mounting policy of a target node. The default child node mounting policy of a target node is [OH_ARKUI_NODE_MOUNT_POLICY_SINGLE_IF_RENDER_NODE](./capi-native-type-h.md#oh_arkui_nodemountpolicy).<br>**Since**: 26.0.0|
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_GetChildMountPolicy(ArkUI_NodeHandle node, OH_ArkUI_NodeMountPolicy\* policy)](#oh_arkui_nativemodule_getchildmountpolicy) | - | Obtains the current child node mounting policy of a target node. The default child node mounting policy of a target node is [OH_ARKUI_NODE_MOUNT_POLICY_SINGLE_IF_RENDER_NODE](./capi-native-type-h.md#oh_arkui_nodemountpolicy).<br>**Since**: 26.0.0 |
 
 ### Macros
 
@@ -227,6 +231,7 @@ Enumerates the component types that can be created by ArkUI on the native side.
 | ARKUI_NODE_XCOMPONENT_TEXTURE = 20 | XComponent of the TEXTURE type.<br>**Since**: 18|
 | ARKUI_NODE_CHECKBOX_GROUP = 21 | Check box group.<br>**Since**: 15               |
 | ARKUI_NODE_TEXT_EDITOR = 22 | Text editor.<br>**Since**: 24|
+| ARKUI_NODE_ARC_ALPHABET_INDEXER = 23 | Arc alphabet index component.<br>**Since**: 26.1.0|
 | ARKUI_NODE_STACK = MAX_NODE_SCOPE_NUM | Stack container.                               |
 | ARKUI_NODE_SWIPER = 1001 | Swiper.                               |
 | ARKUI_NODE_SCROLL = 1002 | Scrollable container.                               |
@@ -249,6 +254,7 @@ Enumerates the component types that can be created by ArkUI on the native side.
 | ARKUI_NODE_ARC_LIST = 1019 | Arc list.<br>**Since**: 26.0.0|
 | ARKUI_NODE_ARC_LIST_ITEM = 1020 | Arc list item.<br>**Since**: 26.0.0|
 | ARKUI_NODE_ARC_SCROLL_BAR = 1021 | Arc scrollbar.<br>**Since**: 26.0.0|
+| ARKUI_NODE_ARC_SWIPER = 1022 | Arc swipe container.<br>**Since**: 26.1.0|
 
 ### ArkUI_NodeAttributeType
 
@@ -275,11 +281,11 @@ Enumerates the attribute types that can be set by ArkUI on the native side.
 | [Form component attribute](./capi-native-node-h-nodeattributetype-form.md)| Enumerates the attribute types that can be set by ArkUI on the native side for form components including **Toggle**, **Button**, **CheckBox**, **CheckBoxGroup**, **Slider**, and **Radio**.|
 | [Scrollable container component attribute](./capi-native-node-h-nodeattributetype-scrollablecontainer.md)| Enumerates the attribute types that can be set by ArkUI on the native side for scrollable container components including the **Scroll**, **List**, **ListItem**, **ListItemGroup**, **Refresh**, **WaterFlow**, **Grid**, and **GridItem** components.|
 | [Navigation component attribute](./capi-native-node-h-nodeattributetype-navigationrelatedcomponents.md)| Enumerates the attribute types that can be set by ArkUI on the native side for navigation components including **Swiper**.|
-| [Information display component attribute](./capi-native-node-h-nodeattributetype-informationdisplay.md)| Enumerates the attribute types that can be set by ArkUI on the native side for information display components including **LoadingProgress** and **Progress**.|
+| [Information display component attribute](./capi-native-node-h-nodeattributetype-informationdisplay.md)| Enumerates the attribute types that can be set by ArkUI on the native side for information display components, including the color, animation, progress value, and type of components such as **LoadingProgress** and **Progress**. This is applicable to scenarios where the appearance and behavior of information display components need to be precisely controlled at the native layer. Through a unified attribute set API, you can easily implement features such as loading animation control, progress visualization, and style customization.|
 | [Information selection component attribute](./capi-native-node-h-nodeattributetype-informationselection.md)| Enumerates the attribute types that can be set by ArkUI on the native side for information selection components including **DatePicker**, **TimePicker**, **TextPicker**, and **CalendarPicker**.|
 | [Accessibility attribute](./capi-native-node-h-nodeattributetype-accessibility.md)| Enumerates the accessibility attribute types that can be set by ArkUI on the native side, including the accessibility text, description, mode, status, and information.|
-| [Text display component attribute](./capi-native-node-h-nodeattributetype-text.md)| Enumerates the attribute types that can be set by ArkUI on the native side for text display components including **Text**, **Span**, and **ImageSpan**.|
-| [Text input component attribute](./capi-native-node-h-nodeattributetype-textinputcategory.md)| Enumerates the attribute types that can be set by ArkUI on the native side for text input components including **TextInput**.|
+| [Text display component attribute](./capi-native-node-h-nodeattributetype-text.md)| Enumerates the attribute types that can be set by ArkUI on the native side for text display components including **Text**, **Span**, and **ImageSpan**. In native development scenarios, you can use the attribute setting and obtaining APIs to configure the style attributes of text components, such as the font size, color, line height, and decoration line, to implement refined control and customization of the text display effect.|
+| [Text input component attribute](./capi-native-node-h-nodeattributetype-textinputcategory.md)| Enumerates the attribute types that can be set by ArkUI on the native side for text input components including **TextInput** and **TextArea**. This attribute set supports multiple styles and interaction configurations, such as the caret style, placeholder text, input filtering, autofill, text selection, and counter. It is applicable to scenarios such as form input, search box, password input, and multi-line text editing, enabling you to manage the appearance and behavior of text input components in a unified manner.|
 | [Rich text component attribute](./capi-native-node-h-nodeattributetype-richeditor.md)| Enumerates the attribute types that can be set by ArkUI on the native side for rich text components including **TextEditor**.|
 | [Image component attribute](./capi-native-node-h-nodeattributetype-image.md)| Enumerates the attribute types that can be set by ArkUI on the native side for image components including **Image** and **ImageAnimator**.|
 | [XComponent attribute](./capi-native-node-h-nodeattributetype-xcomponent.md)| Enumerates the **XComponent** attribute types that can be set by ArkUI on the native side.|
@@ -345,7 +351,7 @@ Enumerates the event types supported by the **NativeNode** component.
 | NODE_TEXT_ON_TEXT_SELECTION_CHANGE = 1002 | Event triggered when the text selection position changes. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameters:<br> **ArkUI_NodeComponentEvent.data[0].i32**: start position of the text selection range.<br> **ArkUI_NodeComponentEvent.data[1].i32**: end position of the text selection range.<br><br>**Since**: 26.0.0|
 | NODE_TEXT_ON_COPY = 1003 | Event triggered when the copy button on the clipboard, which displays when the text box is long pressed, is clicked. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_StringAsyncEvent](capi-arkui-nativemodule-arkui-stringasyncevent.md).<br> [ArkUI_StringAsyncEvent](capi-arkui-nativemodule-arkui-stringasyncevent.md) contains the following parameter:<br> **ArkUI_StringAsyncEvent.pStr**: text to be copied.<br>**Since**: 26.0.0|
 | NODE_TEXT_ON_WILL_COPY = 1004 | Event triggered before text is copied. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_StringAsyncEvent](capi-arkui-nativemodule-arkui-stringasyncevent.md).<br> [ArkUI_StringAsyncEvent](capi-arkui-nativemodule-arkui-stringasyncevent.md) contains the following parameter:<br> **ArkUI_StringAsyncEvent.pStr**: text to be copied.<br>You can use [OH_ArkUI_NodeEvent_SetReturnNumberValue](#oh_arkui_nodeevent_setreturnnumbervalue) to set the return value.<br>**value.i32** whose **index** is set to **0** indicates whether to intercept the default copying behavior of the component.<br>**0**: intercept the default copying behavior of the component. **1**: not intercept the default copying behavior of the component.<br>**Since**: 26.0.0|
-| NODE_IMAGE_ON_COMPLETE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_IMAGE = 4000 | Image loading success event. This event is triggered when an image is successfully loaded or decoded.<br> When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameters:<br> **ArkUI_NodeComponentEvent.data[0].i32**: loading status. The value **0** indicates that the image is loaded successfully, and **1** indicates that the image is decoded successfully.<br> **ArkUI_NodeComponentEvent.data[1].f32**: width of the image, in px.<br> **ArkUI_NodeComponentEvent.data[2].f32**: height of the image, in px.<br> **ArkUI_NodeComponentEvent.data[3].f32**: width of the component, in px.<br> **ArkUI_NodeComponentEvent.data[4].f32**: height of the component, in px.<br> **ArkUI_NodeComponentEvent.data[5].f32**: offset of the rendered content relative to the component on the x-axis, in px.<br> **ArkUI_NodeComponentEvent.data[6].f32**: offset of the rendered content relative to the component on the y-axis, in px.<br> **ArkUI_NodeComponentEvent.data[7].f32**: actual rendered width of the image, in px.<br> **ArkUI_NodeComponentEvent.data[8].f32**: actual rendered height of the image, in px. |
+| NODE_IMAGE_ON_COMPLETE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_IMAGE = 4000 | Image loading success event. This event is triggered when an image is successfully loaded or decoded.<br> When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameters:<br> **ArkUI_NodeComponentEvent.data[0].i32**: loading status. The value **0** indicates that the image is loaded successfully as a byte stream, and the value **1** indicates that the byte stream is decoded successfully into pixel data.<br> **ArkUI_NodeComponentEvent.data[1].f32**: width of the image, in px.<br> **ArkUI_NodeComponentEvent.data[2].f32**: height of the image, in px.<br> **ArkUI_NodeComponentEvent.data[3].f32**: width of the component, in px.<br> **ArkUI_NodeComponentEvent.data[4].f32**: height of the component, in px.<br> **ArkUI_NodeComponentEvent.data[5].f32**: offset of the rendered content relative to the component on the x-axis, in px.<br> **ArkUI_NodeComponentEvent.data[6].f32**: offset of the rendered content relative to the component on the y-axis, in px.<br> **ArkUI_NodeComponentEvent.data[7].f32**: actual rendered width of the image, in px.<br> **ArkUI_NodeComponentEvent.data[8].f32**: actual rendered height of the image, in px.  |
 | NODE_IMAGE_ON_ERROR = 4001 | Image loading failure event. This event is triggered when an error occurs during image loading.<br> When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameter:<br> **ArkUI_NodeComponentEvent.data[0].i32**: result code.<br> **401**: The image could not be obtained because the image path is invalid.<br> **103101**: The image format is not supported. |
 | NODE_IMAGE_ON_SVG_PLAY_FINISH = 4002 | SVG animation playback completion event. This event is triggered when the animation playback in the loaded SVG image is complete.<br> When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) does not contain parameters. |
 | NODE_IMAGE_ON_DOWNLOAD_PROGRESS = 4003 | Event triggered during image download. This event is triggered when the page component downloads a web page image.<br> When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameters:<br> **ArkUI_NodeComponentEvent.data[0].u32**: number of bytes that have been downloaded.<br> **ArkUI_NodeComponentEvent.data[1].u32**: total number of bytes of the image to be downloaded. |
@@ -411,7 +417,7 @@ Enumerates the event types supported by the **NativeNode** component.
 | NODE_TEXT_EDITOR_ON_DID_CHANGE = 22008 | Event triggered when the **TextEditor** component changes the content.<br>When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameters:<br> **ArkUI_NodeComponentEvent.data[0].i32**: start index of the text range to be replaced before the text changes.<br> **ArkUI_NodeComponentEvent.data[1].i32**: end index of the text range to be replaced before the text changes.<br> **ArkUI_NodeComponentEvent.data[2].i32**: start index of the text range of the new content after the text changes.<br> **ArkUI_NodeComponentEvent.data[3].i32**: end index of the text range of the new content after the text changes.<br>**Since**: 24|
 | NODE_SWIPER_EVENT_ON_CHANGE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_SWIPER = 1001000 | Event triggered when the index of the currently displayed element of this **ARKUI_NODE_SWIPER** instance changes. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameter:<br> **ArkUI_NodeComponentEvent.data[0].i32**: index of the currently displayed element. |
 | NODE_SWIPER_EVENT_ON_ANIMATION_START = 1001001 | Event triggered when the switching animation of this **ARKUI_NODE_SWIPER** instance starts. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameters:<br> **ArkUI_NodeComponentEvent.data[0].i32**: index of the currently displayed element.<br> **ArkUI_NodeComponentEvent.data[1].i32**: index of the target element to switch to.<br> **ArkUI_NodeComponentEvent.data[2].f32**: offset of the currently displayed element relative to the start position of the swiper along the main axis.<br> **ArkUI_NodeComponentEvent.data[3].f32**: offset of the target element relative to the start position of the swiper along the main axis.<br> **ArkUI_NodeComponentEvent.data[4].f32**: hands-off velocity. |
-| NODE_SWIPER_EVENT_ON_ANIMATION_END = 1001002 | Event triggered when the switching animation of this **ARKUI_NODE_SWIPER** instance ends. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameters:<br> **ArkUI_NodeComponentEvent.data[0].i32**: index of the currently displayed element.<br> **ArkUI_NodeComponentEvent.data[1].f32**: offset of the currently displayed element relative to the start position of the swiper along the main axis. |
+| NODE_SWIPER_EVENT_ON_ANIMATION_END = 1001002 | Event triggered when the transition animation of **ARKUI_NODE_SWIPER** ends. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameters:<br> **ArkUI_NodeComponentEvent.data[0].i32**: index of the currently displayed element.<br> **ArkUI_NodeComponentEvent.data[1].f32**: offset of the currently displayed element relative to the start position of the swiper along the main axis. |
 | NODE_SWIPER_EVENT_ON_GESTURE_SWIPE = 1001003 | Event triggered on a frame-by-frame basis when the page is turned by a swipe. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameters:<br> **ArkUI_NodeComponentEvent.data[0].i32**: index of the currently displayed element.<br> **ArkUI_NodeComponentEvent.data[1].f32**: offset of the currently displayed element relative to the start position of the swiper along the main axis.|
 | NODE_SWIPER_EVENT_ON_CONTENT_DID_SCROLL = 1001004 | Event triggered when the [Swiper](arkui-ts/ts-container-swiper.md) page scrolls, which is listened by **ARKUI_NODE_SWIPER**. Instructions:<br> 1. This API does not work when **NODE_SWIPER_DISPLAY_COUNT** is set to **'auto'**.<br> 2. This API does not work when **prevMargin** and **nextMargin** are set in such a way that the **Swiper** frontend and backend display the same page during loop playback.<br> 3. During page scrolling, the **ContentDidScrollCallback** callback is invoked for all pages in the viewport on a frame-by-frame basis.<br> For example, when there are two pages whose subscripts are 0 and 1 in the viewport, two callbacks whose indexes are 0 and 1 are invoked in each frame.<br> 4. When the **swipeByGroup** parameter of the **displayCount** attribute is set to **true**, the callback is invoked<br> for all pages in a group if any page in the group is within the viewport.<br> When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameters:<br> **ArkUI_NodeComponentEvent.data[0].i32**: index of the **Swiper** component, which is the same as the index in the [onChange](arkui-ts/ts-container-swiper.md#onchange) event.<br> **ArkUI_NodeComponentEvent.data[1].i32**: index of a page in the viewport.<br> **ArkUI_NodeComponentEvent.data[2].f32**: position of the page relative to the start position of the **Swiper** component's main axis (start position of the page corresponding to **selectedIndex**).<br> **ArkUI_NodeComponentEvent.data[3].f32**: length of the page in the main axis direction.  |
 | NODE_SWIPER_EVENT_ON_SELECTED = 1001005 | Event triggered when the selection changes in the **ARKUI_NODE_SWIPER** component. This event is triggered in the following scenarios:<br> 1. When the page switching animation starts after the user lifts their finger after swiping and the swipe meets the threshold for page turning.<br> 2. When the page is changed programmatically using either **NODE_SWIPER_INDEX** or **NODE_SWIPER_SWIPE_TO_INDEX**.<br> When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameter:<br> **ArkUI_NodeComponentEvent.data[0].i32**: index of the currently selected element.<br>**Since**: 18   |
@@ -465,9 +471,13 @@ Enumerates the event types supported by the **NativeNode** component.
 | NODE_ARC_LIST_ON_REACH_END = 1019002 | Event triggered when the **ArcList** component reaches the end position. <br> When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) does not contain parameters.<br>**Since**: 26.0.0|
 | NODE_ARC_LIST_ON_SCROLL_START = 1019003 | Event triggered when the **ArcList** component starts scrolling. <br> When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) does not contain parameters.<br>**Since**: 26.0.0|
 | NODE_ARC_LIST_ON_SCROLL_STOP = 1019004 | Event triggered when the **ArcList** component stops scrolling. <br> When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) does not contain parameters.<br>**Since**: 26.0.0|
-| NODE_ARC_LIST_ON_WILL_SCROLL = 1019005 | Event triggered when the **ArcList** component is about to scroll. This event is triggered in the following scenarios:<br> 1. The **ArcList** component is about to scroll.<br> 2. Scrolling is initiated by calling the controller API.<br> When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameters:<br> **ArkUI_NodeComponentEvent.data[0].f32**: distance of this scrolling, in vp. A positive value indicates that the content scrolls upwards, and a negative value indicates that the content scrolls downwards.<br> **ArkUI_NodeComponentEvent.data[1].f32**: current scroll state. The data type is [ArkUI_ScrollState](capi-scroll-h.md#arkui_scrollstate).<br> **ArkUI_NodeComponentEvent.data[2].i32**: scroll source. The parameter type is [ArkUI_ScrollSource](capi-scroll-h.md#arkui_scrollsource).<br>**Since**: 26.0.0|
-| NODE_ARC_LIST_ON_DID_SCROLL = 1019006 | Event triggered when the **ArcList** component scrolls. This event is triggered in the following scenarios:<br> 1. The **ArcList** component scrolls.<br> 2. Scrolling is initiated by calling the controller API.<br> When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameters:<br> **ArkUI_NodeComponentEvent.data[0].f32**: scrolling distance of this frame, in vp. A positive value indicates that the content scrolls upwards, and a negative value indicates that the content scrolls downwards.<br> **ArkUI_NodeComponentEvent.data[1].f32**: current scroll state. The data type is [ArkUI_ScrollState](capi-scroll-h.md#arkui_scrollstate).<br>**Since**: 26.0.0 |
-
+| NODE_ARC_LIST_ON_WILL_SCROLL = 1019005 | Event triggered when the **ArcList** component is about to scroll. This event is triggered in the following scenarios:<br> 1. The **ArcList** component is about to scroll.<br> 2. Scrolling is initiated by calling the controller API.<br> When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameters:<br> **ArkUI_NodeComponentEvent.data[0].f32**: distance of this scrolling, in vp. A positive value indicates that the content scrolls upwards, and a negative value indicates that the content scrolls downwards.<br> **ArkUI_NodeComponentEvent.data[1].i32**: current scroll state. The data type is [ArkUI_ScrollState](capi-scroll-h.md#arkui_scrollstate).<br> **ArkUI_NodeComponentEvent.data[2].i32**: scroll source. The parameter type is [ArkUI_ScrollSource](capi-scroll-h.md#arkui_scrollsource).<br>**Since**: 26.0.0|
+| NODE_ARC_LIST_ON_DID_SCROLL = 1019006 | Event triggered when the **ArcList** component scrolls. This event is triggered in the following scenarios:<br> 1. The **ArcList** component scrolls.<br> 2. Scrolling is initiated by calling the controller API.<br> When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameters:<br> **ArkUI_NodeComponentEvent.data[0].f32**: scrolling distance of this frame, in vp. A positive value indicates that the content scrolls upwards, and a negative value indicates that the content scrolls downwards.<br> **ArkUI_NodeComponentEvent.data[1].i32**: current scroll state. The data type is [ArkUI_ScrollState](capi-scroll-h.md#arkui_scrollstate).<br>**Since**: 26.0.0 |
+| NODE_ARC_ALPHABET_INDEXER_EVENT_ON_SELECT = MAX_NODE_SCOPE_NUM * ARKUI_NODE_ARC_ALPHABET_INDEXER = 23000 | Triggered when the index of the currently displayed element of **ARKUI_NODE_ARC_ALPHABET_INDEXER** changes.<br>When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameter:<br>**ArkUI_NodeComponentEvent.data[0].i32**: index of the currently displayed element.<br>**Since**: 26.1.0|
+| NODE_ARC_SWIPER_EVENT_ON_CHANGE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_ARC_SWIPER = 1022000 | Triggered when the index of the currently displayed element of the arc swipe container ([ARKUI_NODE_ARC_SWIPER](#arkui_nodetype)) changes.<br>When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameter:<br>**ArkUI_NodeComponentEvent.data[0].i32**: index of the currently displayed element.<br>**Since**: 26.1.0|
+| NODE_ARC_SWIPER_EVENT_ON_ANIMATION_START = 1022001 | Triggered when the transition animation of the arc swipe container ([ARKUI_NODE_ARC_SWIPER](#arkui_nodetype)) starts.<br>When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameters:<br>**ArkUI_NodeComponentEvent.data[0].i32**: index of the currently displayed element.<br>**ArkUI_NodeComponentEvent.data[1].i32**: index of the target element to switch to.<br>**ArkUI_NodeComponentEvent.data[2].f32**: offset of the currently displayed element relative to the start position of the **Swiper** component along the main axis.<br>**ArkUI_NodeComponentEvent.data[3].f32**: offset of the target element relative to the start position of the **Swiper** component along the main axis.<br>**ArkUI_NodeComponentEvent.data[4].f32**: hands-off velocity.<br>**Since**: 26.1.0|
+| NODE_ARC_SWIPER_EVENT_ON_ANIMATION_END = 1022002 | Triggered when the transition animation of the arc swipe container ([ARKUI_NODE_ARC_SWIPER](#arkui_nodetype)) ends.<br>When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameters:<br>**ArkUI_NodeComponentEvent.data[0].i32**: index of the currently displayed element.<br>**ArkUI_NodeComponentEvent.data[1].f32**: offset of the currently displayed element relative to the start position of the **Swiper** component along the main axis.<br>**Since**: 26.1.0|
+| NODE_ARC_SWIPER_EVENT_ON_GESTURE_SWIPE = 1022003 | Triggered on a frame-by-frame basis when the arc swipe container ([ARKUI_NODE_ARC_SWIPER](#arkui_nodetype)) is being swiped on the page.<br>When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameters:<br>**ArkUI_NodeComponentEvent.data[0].i32**: index of the currently displayed element.<br>**ArkUI_NodeComponentEvent.data[1].f32**: offset of the currently displayed element relative to the start position of the **Swiper** component along the main axis.<br>**Since**: 26.1.0|
 ### ArkUI_NodeDirtyFlag
 
 ```c
@@ -781,7 +791,7 @@ Obtains the numeric-type parameter of a component event.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INDEX_OUT_OF_RANGE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the parameter length in the parameter event exceeds the limit.<br>         Returns [ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the data does not exist in the component event.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INDEX_OUT_OF_RANGE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the parameter index in the component event is out of range.<br>         Returns [ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the data requested by the caller does not exist in the component event.|
 
 ### OH_ArkUI_NodeEvent_GetStringValue()
 
@@ -810,7 +820,7 @@ Obtains the string-type parameter of a component event. The string data is valid
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INDEX_OUT_OF_RANGE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the parameter length in the parameter event exceeds the limit.<br>         Returns [ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the data does not exist in the component event.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INDEX_OUT_OF_RANGE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the parameter index in the component event is out of range.<br>         Returns [ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the data requested by the caller does not exist in the component event.|
 
 ### OH_ArkUI_NodeEvent_SetReturnNumberValue()
 
@@ -838,7 +848,7 @@ Sets the return value for a component event.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the data does not exist in the component event.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the data requested by the caller does not exist in the component event.|
 
 ### OH_ArkUI_NodeAdapter_Create()
 
@@ -959,7 +969,7 @@ Registers an event callback for the specified adapter. After the callback event 
 | -- | -- |
 | [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapter8h.md) handle | Component adapter object.|
 | void* userData | Pointer to the custom data.|
-| receiver | Event receiving callback.|
+| void (\*receiver)(ArkUI_NodeAdapterEvent\* event) | Event receiving callback. |
 
 **Return value**
 
@@ -2078,7 +2088,7 @@ int32_t OH_ArkUI_NodeUtils_GetCustomProperty(ArkUI_NodeHandle node, const char* 
 **Description**
 
 
-Obtains the value of a custom property of the specified component.
+Obtains the custom property of a component and returns an **ArkUI_CustomProperty** instance through a handle.
 
 **Since**: 14
 
@@ -2132,7 +2142,9 @@ int32_t OH_ArkUI_NodeUtils_GetActiveChildrenInfo(ArkUI_NodeHandle head, ArkUI_Ac
 **Description**
 
 
-Obtains all active child nodes of the specified node. Spans are not counted as child nodes. In **LazyForEach** scenarios, you are advised to use the [OH_ArkUI_NodeUtils_GetChildWithExpandMode](#oh_arkui_nodeutils_getchildwithexpandmode) API for traversal.
+Obtains the FrameNode child node whose internal active state is **true** and generates an [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) instance. Spans are not counted as child nodes.
+
+After the child node is obtained, you can call [OH_ArkUI_ActiveChildrenInfo_GetCount](capi-native-type-h.md#oh_arkui_activechildreninfo_getcount) to obtain the number of child nodes and call [OH_ArkUI_ActiveChildrenInfo_GetNodeByIndex](capi-native-type-h.md#oh_arkui_activechildreninfo_getnodebyindex) to read the child nodes by index. After the instance is used, you must call [OH_ArkUI_ActiveChildrenInfo_Destroy](capi-native-type-h.md#oh_arkui_activechildreninfo_destroy) to destroy it. In **LazyForEach** scenarios, you are advised to use the [OH_ArkUI_NodeUtils_GetChildWithExpandMode](#oh_arkui_nodeutils_getchildwithexpandmode) API for traversal.
 
 **Since**: 14
 
@@ -2226,7 +2238,7 @@ Obtains the type of the specified node.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Type of the node. Returns **-1** if the type is not supported yet. For details about the available types, see [ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype).|
+| int32_t | Type of the node. Returns **-1** if the type is not supported yet. For details about the available types, see [ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype). |
 
 ### OH_ArkUI_NodeUtils_GetWindowInfo()
 
@@ -2333,7 +2345,7 @@ Collapses the list items in the expanded state.
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Node object for which an event needs to be registered.|
 | void* userData | Pointer to the custom event parameter, which is passed in the callback when the event is triggered.|
-| onFinish | Callback triggered after the collapse animation is complete.|
+| void (\*onFinish)(void\* userData) | Pointer to the callback invoked when the collapse animation is complete.|
 
 **Return value**
 
@@ -2387,7 +2399,7 @@ Registers an event listener for system color mode changes. A single component ca
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Specified node.|
 | void* userData | Pointer to the custom event parameter, which is passed in the callback when the event is triggered.|
-| onColorModeChange | Callback to be executed when the event is triggered. [ArkUI_SystemColorMode](capi-native-type-h.md#arkui_systemcolormode) defines the system color mode (light/dark).|
+| void (\*onColorModeChange)(ArkUI_SystemColorMode colorMode, void\* userData) | Pointer to the callback to be executed when the event is triggered. [ArkUI_SystemColorMode](capi-native-type-h.md#arkui_systemcolormode) defines the system color mode (light/dark). |
 
 **Return value**
 
@@ -2435,7 +2447,7 @@ Registers an event listener for system font style changes. A single component ca
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Specified node.|
 |  void* userData | Pointer to the custom event parameter, which is passed in the callback when the event is triggered.|
-| onFontStyleChange | Callback to be executed when the event is triggered.|
+| void (\*onFontStyleChange)(ArkUI_SystemFontStyleEvent\* event, void\* userData) | Pointer to the callback to be executed when the event is triggered. |
 
 **Return value**
 
@@ -2535,7 +2547,7 @@ Registers a layout completion callback function for a specific node.
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node for which the callback function is to be registered.|
 | void* userData | Pointer to the custom parameter passed to the callback function when it is invoked.|
-| onLayoutCompleted | Callback function to be invoked when layout is completed.|
+| void (\*onLayoutCompleted)(void\* userData) | Pointer to the callback function to be invoked when layout is completed. |
 
 **Return value**
 
@@ -2563,7 +2575,7 @@ Registers a drawing completion callback function for a specific node.
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node for which the callback function is to be registered.|
 | void* userData | Pointer to the custom parameter passed to the callback function when it is invoked.|
-| onDrawCompleted | Callback function to be invoked when drawing is completed.|
+| void (\*onDrawCompleted)(void\* userData) | Pointer to the callback function to be invoked when drawing is completed. |
 
 **Return value**
 
@@ -2649,7 +2661,7 @@ Obtains a snapshot of a given component. If the node is not in the component tre
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_INTERNAL_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the snapshot fails, returning a null pointer.<br>         Returns [ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_TIMEOUT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the snapshot operation times out.<br>         Returns [ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_MODE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the color space or dynamic range mode is not supported in the screenshot configuration.<br>         Returns [ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_AUTO_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the **isAuto** parameter of the color space or dynamic range mode cannot be set to **true** for the offscreen node snapshot.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_INTERNAL_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the snapshot fails, returning a null pointer.<br>         Returns [ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_TIMEOUT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the snapshot operation times out.<br>         Returns [ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_MODE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the color space or dynamic range mode set in the screenshot options is not supported.<br>         Returns [ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_AUTO_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the **isAuto** parameter of the color space or dynamic range mode cannot be set to **true** for the offscreen node snapshot.|
 
 ### OH_ArkUI_GetNodeSnapshotSizeLimitation()
 
@@ -2781,7 +2793,7 @@ Adopts the target node as an affiliated node. The adopted node must not have an 
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a C API initialization error occurs.<br>         Returns [ARKUI_ERROR_CODE_NODE_HAS_PARENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the adopted node already has a parent node.<br>         Returns [ARKUI_ERROR_CODE_NODE_CAN_NOT_BE_ADOPTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the node cannot be adopted as an affiliated node.<br>         Returns [ARKUI_ERROR_CODE_NODE_CAN_NOT_ADOPT_TO](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the node cannot adopt other affiliated nodes.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a C API initialization error occurs.<br>         Returns [ARKUI_ERROR_CODE_NODE_HAS_PARENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the adopted node already has a parent node.<br>         Returns [ARKUI_ERROR_CODE_NODE_CAN_NOT_BE_ADOPTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the node cannot be adopted as an affiliated node.<br>         Returns [ARKUI_ERROR_CODE_NODE_CAN_NOT_ADOPT_TO](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the node cannot adopt other affiliated nodes. |
 
 ### OH_ArkUI_NativeModule_RemoveAdoptedChild()
 
@@ -3103,8 +3115,8 @@ This is suitable for scenarios involving multi-threaded UI component creation. Y
 | -------- | -------- |
 | [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) context | Pointer to the UI instance object.|
 | void* asyncUITaskData | Pointer to the user-defined data, which is passed as the input parameter of **asyncUITask** and **onFinish**. A null pointer is allowed.|
-| asyncUITask| Function executed in the non-UI thread.|
-| onFinish | Function executed on the UI thread after **asyncUITask** is completed. A null pointer is allowed.|
+| void (\*asyncUITask)(void\* asyncUITaskData) | Pointer to the function executed in the non-UI thread.|
+| void (\*onFinish)(void\* asyncUITaskData) | Pointer to the function executed on the UI thread after **asyncUITask** is completed. A null pointer is allowed. |
 
 **Return value**
 
@@ -3131,7 +3143,7 @@ This is suitable for scenarios involving multi-threaded UI component creation. W
 | -------- | -------- |
 | [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) context | Pointer to the UI instance object. |
 | void* taskData | Pointer to the user-defined data, which is passed as the input parameter of **task**. A null pointer is allowed.|
-| task | Function executed in the UI thread.|
+| void (\*task)(void\* taskData) | Pointer to the function executed in the UI thread. |
 
 **Return value**
 
@@ -3160,7 +3172,7 @@ When the UI thread is under high load, non-UI threads calling this API may block
 | -------- | -------- |
 | [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) context | Pointer to the UI instance object. |
 | void* taskData | Pointer to the user-defined data, which is passed as the input parameter of **task**. A null pointer is allowed.|
-| task | Function executed in the UI thread.|
+| void (\*task)(void\* taskData) | Pointer to the function executed in the UI thread. |
 
 **Return value**
 
@@ -3171,7 +3183,7 @@ When the UI thread is under high load, non-UI threads calling this API may block
 ### OH_ArkUI_NativeModule_RegisterCommonEvent()
 
 ```c
-int32_t OH_ArkUI_NativeModule_RegisterCommonEvent(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType, void* userData, void (*callback)(ArkUI_NodeEvent* event))
+int32_t OH_ArkUI_NativeModule_RegisterCommonEvent(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType, void\* userData, void (\*callback)(ArkUI_NodeEvent\* event))
 ```
 **Description**
 
@@ -3188,7 +3200,7 @@ Currently, the following event types are supported: **NODE_ON_CLICK_EVENT**, **N
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node. |
 | [ArkUI_NodeEventType](capi-native-node-h.md#arkui_nodeeventtype) eventType | Event type.|
 | void* userData | Pointer to the user-defined data for processing custom data within the callback function. You are responsible for ensuring the validity of the data when the custom function is executed.|
-| callback | User-defined callback function.|
+| void (\*callback)(ArkUI_NodeEvent\* event) | Pointer to the user-defined callback function.|
 
 **Return value**
 
@@ -3242,7 +3254,7 @@ Registers a basic event callback for visible area changes with a constrained cal
 | int32_t size | Size of the array of threshold ratios.|
 | float expectedUpdateInterval | Expected calculation interval.|
 | void* userData | Pointer to the user-defined data for processing custom data within the callback function. You are responsible for ensuring the validity of the data when the custom function is executed.|
-| callback | User-defined callback function.|
+| void (\*callback)(ArkUI_NodeEvent* event) | Pointer to the user-defined callback function. |
 
 **Return value**
 
@@ -3320,7 +3332,7 @@ Sets the color inversion algorithm for the component and instance. For details, 
 | [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | Pointer to the UI instance object.<br>  If the value is **null**, this function applies to the entire application process.|
 | bool forceDark | Whether to use the color inversion capability. **true** to use; **false** otherwise.|
 | [ArkUI_NodeType](#arkui_nodetype) nodeType | Component scope where the color inversion capability takes effect.<br>   **ARKUI_NODE_UNDEFINED** indicates that the setting takes effect for all component types.|
-| colorInvertFunc | Custom color inversion algorithm function.<br> If the value is **nullptr**, the default color inversion algorithm is used for the component, that is, the three primary colors are inverted.|
+| uint32_t (\*colorInvertFunc)(uint32_t color) | Pointer to the custom color inversion algorithm function.<br> If the value is **nullptr**, the default color inversion algorithm is used for the component, that is, the three primary colors are inverted. |
 
 **Return value**
 
@@ -3585,6 +3597,78 @@ Displays the next page of a **Swiper** node.
 | -- | -- |
 | int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
+### OH_ArkUI_ArcSwiper_ShowPrevious()
+
+```c
+int32_t OH_ArkUI_ArcSwiper_ShowPrevious(ArkUI_NodeHandle node)
+```
+
+**Description**
+
+Displays the previous page of the **ArcSwiper** node.
+
+**Since:** 26.1.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_NodeHandle** pointer.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Result code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_ArcSwiper_ShowNext()
+
+```c
+int32_t OH_ArkUI_ArcSwiper_ShowNext(ArkUI_NodeHandle node)
+```
+
+**Description**
+
+Displays the next page of the **ArcSwiper** node.
+
+**Since:** 26.1.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_NodeHandle** pointer.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Result code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_ArcSwiper_FinishAnimation()
+
+```c
+int32_t OH_ArkUI_ArcSwiper_FinishAnimation(ArkUI_NodeHandle node)
+```
+
+**Description**
+
+Finishes the animation being executed by the **ArcSwiper** node.
+
+**Since:** 26.1.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_NodeHandle** pointer.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Result code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
+
 ### OH_ArkUI_NativeModule_AtomicServiceMenuBarSetVisible()
 
 ```c
@@ -3737,7 +3821,7 @@ Sets the child node mounting policy for a target node.
 ### OH_ArkUI_NativeModule_GetChildMountPolicy()
 
 ```c
-ArkUI_ErrorCode OH_ArkUI_NativeModule_GetChildMountPolicy(ArkUI_NodeHandle node, OH_ArkUI_NodeMountPolicy* policy)
+ArkUI_ErrorCode OH_ArkUI_NativeModule_GetChildMountPolicy(ArkUI_NodeHandle node, OH_ArkUI_NodeMountPolicy\* policy)
 ```
 
 **Description**

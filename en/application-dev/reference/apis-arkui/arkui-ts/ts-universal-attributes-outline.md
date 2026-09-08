@@ -5,20 +5,23 @@
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=39ca26def5c22dc659f3dc0b76ef62a29421e77a translatedAt=2026-09-02T11:59:52.564Z -->
 
 You can set outline attributes for components. Drawn outside the component, the outline does not affect the component's layout or increase its size.
 
 ![outlineTest](figures/outlineTest.PNG)
 
->  **NOTE**
+> **NOTE**
 >
->  The initial APIs of this module are supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
+> - This feature is supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 
 ## outline
 
 outline(value: OutlineOptions): T
 
-Sets the outline attributes in one declaration.
+Sets the outer stroke style of a component in a unified manner, allowing you to set the outline width, color, corner radius, and style at once. You can also set each outline attribute separately through the outlineStyle, outlineWidth, outlineColor, and outlineRadius methods. When both are set, the attribute set later takes effect.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 11.
 
@@ -30,19 +33,19 @@ Sets the outline attributes in one declaration.
 
 | Name| Type                                     | Mandatory| Description        |
 | ------ | ----------------------------------------- | ---- | ------------ |
-| value  | [OutlineOptions](ts-types.md#outlineoptions11)| Yes  | Outline attributes.|
+| value  | [OutlineOptions](ts-types.md#outlineoptions11) | Yes   | Outer stroke style. The width and radius do not support percentages. The maximum effective value of radius is component width/2 + outlineWidth or component height/2 + outlineWidth. |
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## outline<sup>18+</sup>
 
 outline(options: Optional\<OutlineOptions>): T
 
-Sets the outline attributes in one declaration. Compared with [outline](#outline), this API supports the **undefined** type for the **options** parameter.
+Sets the outer stroke style of a component in a unified manner. The outline is drawn outside the component, without affecting the layout or occupying the component's own size. The outline is visible only when outlineWidth is set to a value greater than 0. Compared with [outline](#outline), the options parameter additionally supports the undefined type.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -54,13 +57,13 @@ Sets the outline attributes in one declaration. Compared with [outline](#outline
 
 | Name| Type                                     | Mandatory| Description|
 | ------ | ----------------------------------------- | ---- | ---- |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OutlineOptions](ts-types.md#outlineoptions11)>| Yes  |   Outline attributes.<br>If **options** is **undefined**, the component reverts to its original style with no outline.  |
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OutlineOptions](ts-types.md#outlineoptions11) | Yes | Outer stroke style. The width and radius do not support percentages. The maximum effective value of radius is component width/2 + outlineWidth or component height/2 + outlineWidth.<br>When the value of options is undefined, the no-outline effect is restored. |
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## OutlineStyle
 
@@ -80,9 +83,9 @@ Enumerates outline styles.
 
 ## outlineStyle
 
-outlineStyle(value: OutlineStyle | EdgeOutlineStyles): T
+outlineStyle(value: OutlineStyle \| EdgeOutlineStyles): T
 
-Sets the outline style. If this API is not used, a solid line is displayed by default.
+Sets the outer stroke style of an element. When not set, a solid line is displayed by default. The outer stroke style is visible only when outlineWidth is set to a value greater than 0.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 11.
 
@@ -94,19 +97,19 @@ Sets the outline style. If this API is not used, a solid line is displayed by de
 
 | Name| Type                                                        | Mandatory| Description                                                 |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
-| value  | [OutlineStyle](#outlinestyle)&nbsp;\|&nbsp;[EdgeOutlineStyles](ts-types.md#edgeoutlinestyles11)| Yes  | Outline style.|
+| value  | [OutlineStyle](#outlinestyle)&nbsp;\|&nbsp;[EdgeOutlineStyles](ts-types.md#edgeoutlinestyles11 ) | Yes   | Sets the outer stroke style of the element. When not set, a solid line is displayed by default. |
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## outlineStyle<sup>18+</sup>
 
-outlineStyle(style: Optional\<OutlineStyle | EdgeOutlineStyles>): T
+outlineStyle(style: Optional\<OutlineStyle \| EdgeOutlineStyles>): T
 
-Sets the outline style. If this API is not used, a solid line is displayed by default. Compared with [outlineStyle](#outlinestyle), this API supports the **undefined** type for the **style** parameter.
+Sets the outer stroke style of an element. The outer stroke style is visible only when outlineWidth is set to a value greater than 0. When not set, a solid line is displayed by default. Compared with [outlineStyle](#outlinestyle), the style parameter additionally supports the undefined type.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -118,19 +121,19 @@ Sets the outline style. If this API is not used, a solid line is displayed by de
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OutlineStyle](#outlinestyle)&nbsp;\|&nbsp;[EdgeOutlineStyles](ts-types.md#edgeoutlinestyles11)>| Yes  | Outline style.<br>If **style** is **undefined**, the component reverts to its original style with no outline.|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OutlineStyle](#outlinestyle)&nbsp;\|&nbsp;[EdgeOutlineStyles](ts-types.md#edgeoutlinestyles11) | Yes   | Sets the outer stroke style of the element. The outer stroke style is visible only when outlineWidth is set to a value greater than 0.<br>When the value of style is undefined, the outer stroke style is restored to solid. |
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## outlineWidth
 
-outlineWidth(value: Dimension | EdgeOutlineWidths): T
+outlineWidth(value: Dimension \| EdgeOutlineWidths): T
 
-Sets the thickness of the outline. If this API is not used, there will be no change by default.
+Sets the outline width of an element. When not set, the default value is 0, which means no outline width.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 11.
 
@@ -142,19 +145,19 @@ Sets the thickness of the outline. If this API is not used, there will be no cha
 
 | Name| Type                                                        | Mandatory| Description                                                 |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
-| value  | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](ts-types.md#edgeoutlinewidths11)| Yes  | Outline thickness. Percentage values are not supported.|
+| value  | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](ts-types.md#edgeoutlinewidths11) | Yes   | Sets the outer stroke width of the element. Percentage is not supported. When not set, the default value is 0. |
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## outlineWidth<sup>18+</sup>
 
-outlineWidth(width: Optional\<Dimension | EdgeOutlineWidths>): T
+outlineWidth(width: Optional\<Dimension \| EdgeOutlineWidths>): T
 
-Sets the thickness of the outline. If this API is not used, there will be no change by default. Compared with [outlineWidth](#outlinewidth), this API supports the **undefined** type for the **width** parameter.
+Sets the outer stroke width of an element. When not set, the default value is 0, that is, no outer stroke width. Compared with [outlineWidth](#outlinewidth), the **width** parameter adds support for the **undefined** type.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -166,19 +169,19 @@ Sets the thickness of the outline. If this API is not used, there will be no cha
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](ts-types.md#edgeoutlinewidths11)>| Yes  | Outline thickness. Percentage values are not supported.<br>If **width** is **undefined**, the component reverts to its original style with no outline width.|
+| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](ts-types.md#edgeoutlinewidths11) | Yes   | Sets the outer stroke width of the element. Percentage is not supported; when a percentage is passed in, it does not take effect.<br>When the value of width is undefined, the outer stroke width is restored to 0. |
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## outlineColor
 
-outlineColor(value: ResourceColor | EdgeColors | LocalizedEdgeColors): T
+outlineColor(value: ResourceColor \| EdgeColors \| LocalizedEdgeColors): T
 
-Sets the outline color. If this API is not used, the default color black will be applied.
+Sets the outer stroke color of an element. The outer stroke color is visible only when **outlineWidth** is greater than 0. When not set, the default display is black.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 11.
 
@@ -190,19 +193,19 @@ Sets the outline color. If this API is not used, the default color black will be
 
 | Name| Type                                                        | Mandatory| Description                                            |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](ts-types.md#edgecolors9)&nbsp;\|&nbsp;[LocalizedEdgeColors](ts-types.md#localizededgecolors12)<sup>12+</sup> | Yes  | Outline color.|
+| value  | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](ts-types.md#edgecolors9)&nbsp;\|&nbsp;[LocalizedEdgeColors](ts-types.md#localizededgecolors12)<sup>12+</sup> | Yes   | Outline color of the element. When not set, the default color is black. |
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## outlineColor<sup>18+</sup>
 
-outlineColor(color: Optional\<ResourceColor | EdgeColors | LocalizedEdgeColors>): T
+outlineColor(color: Optional\<ResourceColor \| EdgeColors \| LocalizedEdgeColors>): T
 
-Sets the outline color. If this API is not used, the default color black will be applied. Compared with [outlineColor](#outlinecolor), this API supports the **undefined** type for the **color** parameter.
+Sets the outer stroke color of an element. The outer stroke color is visible only when **outlineWidth** is greater than 0. When not set, the default display is black. Compared with [outlineColor](#outlinecolor), the **color** parameter adds support for the **undefined** type.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -214,19 +217,19 @@ Sets the outline color. If this API is not used, the default color black will be
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](ts-types.md#edgecolors9)&nbsp;\|&nbsp;[LocalizedEdgeColors](ts-types.md#localizededgecolors12)> | Yes  | Outline color.<br>If **color** is **undefined**, the component reverts to its original style with the outline color of **Color.Black**.|
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](ts-types.md#edgecolors9)&nbsp;\|&nbsp;[LocalizedEdgeColors](ts-types.md#localizededgecolors12)> | Yes   | Sets the outline color of the element.<br>When the value of color is undefined, the outline color is restored to Color.Black. |
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## outlineRadius
 
-outlineRadius(value: Dimension | OutlineRadiuses): T
+outlineRadius(value: Dimension \| OutlineRadiuses): T
 
-Sets the radius of the outline corners. If this API is not used, there will be no change by default.
+Sets the corner radius of the outer stroke of an element. The outer stroke corner radius is visible only when **outlineWidth** is greater than 0. When not set, the default outer stroke corner radius is 0.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 11.
 
@@ -238,19 +241,19 @@ Sets the radius of the outline corners. If this API is not used, there will be n
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[OutlineRadiuses](ts-types.md#outlineradiuses11)| Yes  | Radius of the outline corners. Percentage values are not supported.<br>Maximum effective value: Component width/2 + outlineWidth or component height/2 + outlineWidth|
+| value  | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[OutlineRadiuses](ts-types.md#outlineradiuses11) | Yes   | Sets the outer stroke corner radius of the element. Percentage is not supported. The default value is 0 when not set.<br>Maximum effective value: component width/2 + outlineWidth or component height/2 + outlineWidth. |
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## outlineRadius<sup>18+</sup>
 
-outlineRadius(radius: Optional\<Dimension | OutlineRadiuses>): T
+outlineRadius(radius: Optional\<Dimension \| OutlineRadiuses>): T
 
-Sets the radius of the outline corners. If this API is not used, there will be no change by default. Compared with [outlineRadius](#outlineradius), this API supports the **undefined** type for the **radius** parameter.
+Sets the corner radius of the outer stroke of an element. The outer stroke corner radius is visible only when **outlineWidth** is greater than 0. When not set, the default outer stroke corner radius is 0. Compared with [outlineRadius](#outlineradius), the **radius** parameter adds support for the **undefined** type.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -262,15 +265,15 @@ Sets the radius of the outline corners. If this API is not used, there will be n
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| radius | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[OutlineRadiuses](ts-types.md#outlineradiuses11)>| Yes  | Radius of the outline corners. Percentage values are not supported.<br>Maximum effective value: Component width/2 + outlineWidth or component height/2 + outlineWidth<br>If **radius** is **undefined**, the component reverts to its original style with the outline corner radius of 0.|
+| radius | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[OutlineRadiuses](ts-types.md#outlineradiuses11) | Yes | Sets the outer stroke corner radius of the element. Percentage is not supported.<br>Maximum effective value: component width/2 + outlineWidth or component height/2 + outlineWidth.<br>When the value of radius is undefined, the outer stroke corner radius is restored to 0. |
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
-## Example
+## Examples
 
 ### Example 1: Creating Outlines
 
@@ -317,7 +320,7 @@ struct OutlineExample {
 }
 ```
 
-![outlineStyling1](figures/outlineStyling1.png)
+![outlineRadius](figures/outlineRadius.png)
 
 ### Example 2: Using the LocalizedEdgeColors Type
 
@@ -332,7 +335,7 @@ struct OutlineExample {
   build() {
     Column() {
       Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
-        // Dashed line
+        // Dashed line.
         Text('DASHED')
           .backgroundColor(Color.Pink)
           .outlineStyle(OutlineStyle.DASHED).outlineWidth(5).outlineColor(0xAFEEEE).outlineRadius(10)
@@ -351,6 +354,7 @@ struct OutlineExample {
         .height(300)
         .outline({
           width: { left: 3, right: 6, top: 10, bottom: 15 },
+          // color uses the LocalizedEdgeColors type, where start and end correspond to the start edge and end edge colors in different display directions, respectively.
           color: { start: '#e3bbbb', end: Color.Blue, top: Color.Red, bottom: Color.Green },
           radius: { topLeft: 10, topRight: 20, bottomLeft: 40, bottomRight: 80 },
           style: {
@@ -367,8 +371,8 @@ struct OutlineExample {
 
 The following shows how the example is represented with left-to-right scripts.
 
-![en-us_image_outling_ltr](figures/image-outling-ltr.png)
+![zh-cm_image_outling_ltr](figures/image-outling-ltr.png)
 
 The following shows how the example is represented with right-to-left scripts.
 
-![en-us_image_outling_rtl](figures/image-outling-rtl.png)
+![zh-cm_image_outling_rtl](figures/image-outling-rtl.png)

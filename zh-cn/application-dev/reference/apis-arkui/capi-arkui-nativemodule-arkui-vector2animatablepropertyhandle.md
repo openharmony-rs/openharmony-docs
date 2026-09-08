@@ -1,4 +1,4 @@
-# ArkUI_Vector2AnimatablePropertyHandle
+# ArkUI_Vector2AnimatableProperty*
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->

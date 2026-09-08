@@ -2,54 +2,64 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=75a7d62c0702c21a06ca0119552a942305a023cc translatedAt=2026-09-01T12:28:54.860Z -->
 
-A safe area refers to the display area that is not covered by system-defined non-safe area components such as the status bar, navigation bar, or other system UI elements. By default, all content you develop is placed within the safe area. If necessary, you can expand a component's safe area through the [expandSafeArea](#expandsafearea) attribute. This allows the component to extend its rendering area beyond the safe area without altering the layout. In addition, you can specify how to make space for the virtual keyboard through the [setKeyboardAvoidMode](#setkeyboardavoidmode11) attribute. To prevent text elements, such as a title bar, from overlapping with non-safe areas, you are advised to set the **expandSafeArea** attribute for the component to achieve an immersive effect. Alternatively, you can use the [setWindowLayoutFullScreen](../arkts-apis-window-Window.md#setwindowlayoutfullscreen9) API directly to set an immersive layout.
+A safe area refers to the display area of a page. By default, the UI developed by developers is laid out within the safe area and does not overlap with the system-defined non-safe areas (such as the status bar and navigation bar). Attribute methods are provided to allow developers to set the drawing content of a component to break through the safe area restrictions:
+- The [expandSafeArea](#expandsafearea) attribute allows a component to extend its drawing area beyond the safe area without changing its layout.
+- Configure the page avoidance mode when the virtual keyboard is raised by setting [setKeyboardAvoidMode](#setkeyboardavoidmode11).
+- The [ignoreLayoutSafeArea](#ignorelayoutsafearea20) attribute expands the safe area during component layout, and the layout position and size of the component may change.
+
+When a page contains text such as a title bar that should not overlap with the non-safe areas, it is recommended to set the **expandSafeArea** attribute on the component to achieve an immersive effect. You can also directly use the window API [setWindowLayoutFullScreen](../arkts-apis-window-Window.md#setwindowlayoutfullscreen9) to achieve a full-screen immersive effect.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.<br>
-> The camera cutout area is not considered part of the non-safe area by default, and pages do not automatically avoid it.<br>
-> You can set the camera cutout area as a non-safe area since API version 12, so that content is not displayed in this area. To do so, add the following to the **module.json5** file:<br>
+> - The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.<br>
+>
+> - The APIs of this module can be used only in the stage model.
+>
+> - The camera cutout area is not a non-safe area, and the page does not avoid the cutout by default.<br>
+>
+> - Since API version 12, you can add the following configuration to module.json5 so that the camera cutout area is treated as a non-safe area and the page avoids the cutout by default:<br>
   "metadata": [<br>
     &nbsp;&nbsp;{<br>
     &nbsp;&nbsp;&nbsp;&nbsp;"name": "avoid_cutout",<br>
     &nbsp;&nbsp;&nbsp;&nbsp;"value": "true",<br>
     &nbsp;&nbsp;}<br>
   ],<br>
-  
+
 
 ## expandSafeArea
 
 expandSafeArea(types?: Array&lt;SafeAreaType&gt;, edges?: Array&lt;SafeAreaEdge&gt;): T
 
-Sets the safe area to be expanded to.
+Controls a component to expand its safe area to achieve an immersive effect.
 
->  **NOTE**
+> **NOTE**
 >
-> - When using **expandSafeArea** to expand the drawing of a component, avoid setting fixed width and height values (except percentages). If fixed width and height values are set (including **'auto'**), the edges for expanding the safe area can only be **[SafeAreaEdge.TOP, SafeAreaEdge.START]**, and the size of the component remains unchanged after safe area expansion.
+> - When using **expandSafeArea** to expand the drawing of a component, avoid setting fixed width and height values (except percentages). If fixed width and height values or 'auto' are set, the safe area can be expanded only upward (SafeAreaEdge.TOP) and toward the start direction (SafeAreaEdge.START, which indicates the left side in LTR mode and the right side in RTL mode), and the size of the expanded component remains unchanged.
 >
-> - The safe area does not restrict the layout or size of components inside, nor does it clip the components.
+> - The safe area does not restrict the layout and size of internal components, nor does it clip internal components.
 >
-> - If the parent container is a scrollable container, the component does not extend after the **expandSafeArea** attribute is set, but it can still trigger updates to the extension range of its child nodes that have **expandSafeArea** set.
+> - When the parent container is a scrollable container, after the **expandSafeArea** attribute is set on a component, the component itself does not extend, but it can still trigger the update of the extension range of its child nodes on which **expandSafeArea** is set.
 >
-> - When **expandSafeArea()** is set without parameters, default values are applied. When **expandSafeArea([],[])** is used with empty arrays, the setting has no effect.
->   
-> - Prerequisites for the **expandSafeArea** attribute to take effect: 
->  1. When **type** is set to **SafeAreaType.KEYBOARD**, the settings take effect by default. This behaves as the component not avoiding the virtual keyboard.<br>
->  2. When **type** is set to any other value, the settings take effect only if its boundaries overlap with the safe area. For example, if the height of the status bar is 100, the absolute position of the component on the screen must be 0 <= y <= 100 for the settings to take effect.
->   
-> - When a component extends into a non-safe area, events in the non-safe area (such as click events) may be intercepted by the system. Built-in components like the status bar will be given priority to respond to these events.
->  
-> - Avoid setting the **expandSafeArea** attribute for components within scrollable containers. If you do set it, you must apply the **expandSafeArea** attribute to all direct nodes from the current node to the scrollable ancestor container, following the component nesting relationship. Otherwise, the **expandSafeArea** attribute may become ineffective after scrolling. For the correct implementation, see [Example 7](#example-7-expanding-the-safe-area-in-scrollable-containers).
-> 
-> - The **expandSafeArea** attribute only affects the current component and does not propagate to parent or child components. Therefore, all relevant components must be configured individually.
-> 
-> - When both **expandSafeArea** and **position** attributes are set, the **position** attribute takes effect first, followed by the **expandSafeArea** attribute. For components that do not have **position**, **offset**, or other rendering attributes set, such as dialog boxes and sheets, the **expandSafeArea** attribute will not take effect if their boundaries do not overlap with the non-safe area.
-> 
-> - In scenarios where the **expandSafeArea** attribute is ineffective, and you need to place a component in the safe area, you will need to manually adjust the component's coordinates.
+> - When **expandSafeArea()** is set without parameters, the default values are used. When **expandSafeArea([],[])** is set, the input parameters are empty arrays, and the **expandSafeArea** attribute does not take effect.
+>
+> - The conditions for the **expandSafeArea** attribute to take effect on a component are as follows:
+>  1. When type is SafeAreaType.KEYBOARD, it takes effect by default, meaning that the component does not avoid the keyboard.<br>
+>  2. When other types are set, the component can extend under the safe area only when the component boundary coincides with the safe area. For example, if the height of the status bar at the top of the device is 100, the absolute position of the component on the screen must satisfy 0 <= y <= 100.
+>
+> - When a component extends into a non-safe area, events in the non-safe area, such as click events, may be intercepted by the system and preferentially responded to by system components such as the status bar.
+>
+> - It is not recommended to set the **expandSafeArea** attribute on components in a scrollable container. If it is set, the **expandSafeArea** attribute must be set on all direct nodes from the current node to the scrollable ancestor container according to the component nesting relationship. Otherwise, the **expandSafeArea** attribute may become invalid after scrolling. For the usage, see [Example 7](#example-7-expanding-the-safe-area-in-scrollable-containers).
+>
+> - The **expandSafeArea** attribute takes effect only on the current component and is not passed to parent or child components. Therefore, developers must configure this attribute separately for all related components.
+>
+> - When both **expandSafeArea** and **position** are set, the **position** attribute takes effect first, and the **expandSafeArea** attribute takes effect later. For components on which drawing attributes such as position and offset are not set, if their boundaries do not overlap with the non-safe area, setting the **expandSafeArea** attribute does not take effect, such as dialog boxes and semi-modal components.
+>
+> - For scenarios where the **expandSafeArea** attribute cannot take effect, to place a component in the non-safe area, you need to manually adjust the coordinates of the component.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -59,8 +69,8 @@ Sets the safe area to be expanded to.
 
 | Name| Type                                              | Mandatory| Description                                                        |
 | ------ | -------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| types  | Array <[SafeAreaType](#safeareatype)> | No  | Types of non-safe areas to extend into. For the **CUTOUT** type to take effect, the [Metadata](../../apis-ability-kit/js-apis-bundleManager-metadata.md) item must be added to the configuration file.<br>Default value: **[SafeAreaType.SYSTEM, SafeAreaType.CUTOUT, SafeAreaType.KEYBOARD]**<br>Invalid values are treated as the default value.|
-| edges  | Array <[SafeAreaEdge](#safeareaedge)> | No  | Edges for expanding the safe area.<br>Default value: **[SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM, SafeAreaEdge.START, SafeAreaEdge.END]**<br>Invalid values are treated as the default value.<br>The default value means to extend to all non-safe areas.|
+| types  | Array <[SafeAreaType](#safeareatype)> | No   | Types of the safe areas to expand. By default, SafeAreaType.CUTOUT is included. However, if the [Metadata](../../apis-ability-kit/js-apis-bundleManager-metadata.md) configuration item is not added, the page does not avoid the cutout, and the CUTOUT type does not take effect.<br>Default value: [SafeAreaType.SYSTEM, SafeAreaType.CUTOUT, SafeAreaType.KEYBOARD] <br>Invalid value: handled by default.|
+| edges  | Array<[SafeAreaEdge](#safeareaedge)> | No   | Edges of the safe areas to expand. By default, the component expands to all avoidance areas.<br>Default value: [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM, SafeAreaEdge.START, SafeAreaEdge.END].<br>Invalid value: handled by default. |
 
 **Return value**
 
@@ -79,7 +89,7 @@ Enumerates the types for expanding layout safe areas.
 | Name   | Value  | Description                              |
 | ------- | ---- | ---------------------------------- |
 | SYSTEM   |0| Default non-safe area of the system, including the status bar and navigation bar.  |
-| CUTOUT   |1 | Device-specific non-safe area, such as the notch area or camera cutout area.|
+| CUTOUT   | 1 | The non-safe area of the device, for example, the notch or punch-hole area. The CUTOUT type does not take effect when no Metadata configuration item is added. |
 | KEYBOARD |2 |Soft keyboard area.                              |
 
 ## SafeAreaEdge
@@ -101,7 +111,7 @@ Enumerates the edges for expanding the safe area.
 
 setKeyboardAvoidMode(value: KeyboardAvoidMode): void
 
-Sets the avoidance mode for the virtual keyboard.
+Sets the avoidance mode of the page when the virtual keyboard is raised. Three modes are supported: OFFSET (raise), RESIZE (compress), and NONE (no avoidance).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -111,21 +121,23 @@ Sets the avoidance mode for the virtual keyboard.
 
 | Name| Type                                                | Mandatory| Description                                                        |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [KeyboardAvoidMode](../arkts-apis-uicontext-e.md#keyboardavoidmode11) | Yes  | Avoidance mode of the virtual keyboard.<br>Default value: **KeyboardAvoidMode.OFFSET**, which means that the page moves up when the keyboard is displayed.<br>When **setKeyboardAvoidMode** is set to an invalid value, this attribute does not take effect.|
+| value  | [KeyboardAvoidMode](../arkts-apis-uicontext-e.md#keyboardavoidmode11) | Yes   | Avoidance mode of the page when the virtual keyboard is raised. Options: OFFSET (raise), RESIZE (compress), NONE (no avoidance).<br>Default value: KeyboardAvoidMode.OFFSET, which means the default avoidance mode is raised when the keyboard is raised.<br>If an invalid value is passed to setKeyboardAvoidMode, this attribute setting does not take effect. |
 
->  **NOTE**
+> **NOTE**
 >
->  With **KeyboardAvoidMode.RESIZE**, the page is resized to prevent the virtual keyboard from obstructing the view. Regarding components on the page, those whose width and height are set in percentage are resized with the page, and those whose width and height are set to specific values are laid out according to their settings. With **KeyboardAvoidMode.RESIZE**, **expandSafeArea([SafeAreaType.KEYBOARD],[SafeAreaEdge.BOTTOM])** does not take effect.
+>  In **KeyboardAvoidMode.RESIZE** mode, the page is resized to prevent the virtual keyboard from obstructing the view. Components on the page whose width and height are set in percentages are resized along with the page, while components whose width and height are set directly are laid out according to the fixed sizes. When the RESIZE mode of **KeyboardAvoidMode** is set, expandSafeArea([SafeAreaType.KEYBOARD],[SafeAreaEdge.BOTTOM]) does not take effect.
 >
->  With **KeyboardAvoidMode.NONE**, keyboard avoidance is disabled, and the page will be covered by the displayed keyboard.
+>  In **KeyboardAvoidMode.NONE** mode, the page does not avoid the keyboard, and the page is covered by the raised keyboard.
 >
->  **setKeyboardAvoidMode** only affects page layouts. It does not apply to popup components, including the following: **Dialog**, **Popup**, **Menu**, **BindSheet**, **BindContentCover**, **Toast**, **OverlayManager**. For details about the avoidance mode of popup components, see [CustomDialogControllerOptions](./ts-methods-custom-dialog-box.md#customdialogcontrolleroptions).
+>  **setKeyboardAvoidMode** takes effect on the page but not on dialog box components, such as Dialog, Popup, Menu, BindSheet, BindContentCover, Toast, and OverlayManager. For the avoidance mode of dialog box components, see [CustomDialogControllerOptions](./ts-methods-custom-dialog-box.md#customdialogcontrolleroptions).
+>
+>  In performance-sensitive or high-load scenarios, the animations of the keyboard and the application UI may not be fully synchronized, causing a gap between the keyboard and the application UI during the animation. In this case, you can configure [expandSafeArea](#expandsafearea) to make the application background fill the screen and avoid undesirable visual effects.
 
 ## getKeyboardAvoidMode<sup>11+</sup>
 
 getKeyboardAvoidMode(): KeyboardAvoidMode
 
-Obtains the avoidance mode of the virtual keyboard.
+Avoidance mode of the page when the virtual keyboard is raised.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -133,15 +145,15 @@ Obtains the avoidance mode of the virtual keyboard.
 
 **Return value**
 
-| Name                                                | Description                              |
+| Type                                                 | Description                               |
 | ---------------------------------------------------- | ---------------------------------- |
-| [KeyboardAvoidMode](../arkts-apis-uicontext-e.md#keyboardavoidmode11) | Avoidance mode of the virtual keyboard.|
+| [KeyboardAvoidMode](../arkts-apis-uicontext-e.md#keyboardavoidmode11) | Avoidance mode of the page when the virtual keyboard is raised. |
 
 ## ignoreLayoutSafeArea<sup>20+</sup>
 
 ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt;, edges?: Array&lt;LayoutSafeAreaEdge&gt;): T
 
-Ignores the safe area for component layout.
+Safe area when expanding the component layout. The component layout position and size may change, which differs from the expandSafeArea mechanism (which only expands the drawing area and keeps the layout unchanged).
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -151,8 +163,8 @@ Ignores the safe area for component layout.
 
 | Name| Type                                              | Mandatory| Description                                                        |
 | ------ | -------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| types  | Array <[LayoutSafeAreaType](#layoutsafeareatype12)> | No  | Types of layout safe areas to expand.<br>Default value: [LayoutSafeAreaType.SYSTEM] (expands to all safe areas, including the status bar, navigation bar, and component-level safe area ([safeAreaPadding](./ts-universal-attributes-size.md#safeareapadding14))).<br>Invalid values are treated as the default value.|
-| edges  | Array <[LayoutSafeAreaEdge](#layoutsafeareaedge12)> | No  | Edges of the layout safe area to expand, with mirroring capability supported.<br>Default value: [LayoutSafeAreaEdge.ALL] (expands all edges of the component).<br>Invalid values are treated as the default value.|
+| types  | Array<[LayoutSafeAreaType](#layoutsafeareatype12)> | No   | Type of the expanded layout safe area.<br>Default value: [LayoutSafeAreaType.SYSTEM], which extends to the system safe area, for example, the status bar, navigation bar, punch-hole area, and component-level safe area ([safeAreaPadding](./ts-universal-attributes-size.md#safeareapadding14)).<br>Invalid value: handled by default. |
+| edges  | Array<[LayoutSafeAreaEdge](#layoutsafeareaedge12)> | No   | Edges of the expanded layout safe area, with mirroring supported.<br>Default value: [LayoutSafeAreaEdge.ALL], which expands all edges of the component.<br>Invalid value: handled by default. |
 
 **Return value**
 
@@ -184,7 +196,7 @@ Enumerates the types for expanding layout safe areas.
 
 ## LayoutSafeAreaEdge<sup>12+</sup>
 
-Enumerates the edges for expanding the safe area.
+Edge of the safe area for expanding the layout.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -192,11 +204,11 @@ Enumerates the edges for expanding the safe area.
 | ------- | ---- | ---------------------------------- |
 | TOP    | 0 | Top edge.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | BOTTOM | 1 | Bottom edge.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| START<sup>20+</sup>      | 2 | Start edge. This represents the left edge for in LTR mode and the right edge in RTL mode.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| END<sup>20+</sup>        | 3 |End edge. This represents the right edge for in LTR mode and the left edge in RTL mode.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| START<sup>20+</sup>      | 2 | Start edge. This represents the left edge in LTR mode and the right edge in RTL mode.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| END<sup>20+</sup>        | 3 |End edge. This represents the right edge in LTR mode and the left edge in RTL mode.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | VERTICAL<sup>20+</sup>   | 4 |Vertical edges.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | HORIZONTAL<sup>20+</sup> | 5 |Horizontal edges.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| ALL<sup>20+</sup>        | 6 |All edges.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| ALL<sup>20+</sup>        | 6 | All edges.<br>**Atomic service API:** This API can be used in atomic services since API version 20. |
 
 ## Example
 
@@ -209,9 +221,6 @@ This example demonstrates how to use the **expandSafeArea** attribute to expand 
 @Entry
 @Component
 struct SafeAreaExample1 {
-  @State text: string = ''
-  controller: TextInputController = new TextInputController()
-
   build() {
     Row() {
       Column()
@@ -319,9 +328,8 @@ export default class EntryAbility extends UIAbility{
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
     windowStage.loadContent('pages/Index', (err, data) => {
-      let keyboardAvoidMode = windowStage.getMainWindowSync().getUIContext().getKeyboardAvoidMode();
       // When the virtual keyboard is displayed, the page is resized to its original height minus the keyboard height.
-    windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
+      windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
@@ -374,9 +382,8 @@ export default class EntryAbility extends UIAbility{
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
     windowStage.loadContent('pages/Index', (err, data) => {
-      let keyboardAvoidMode = windowStage.getMainWindowSync().getUIContext().getKeyboardAvoidMode();
       // When the virtual keyboard is displayed, the page is moved up until the caret is displayed.
-    windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.OFFSET);
+      windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.OFFSET);
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
@@ -422,9 +429,9 @@ This example demonstrates how to switch between **OFFSET**, **RESIZE**, and **NO
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { KeyboardAvoidMode } from '@kit.ArkUI';
+
 @Entry
 @Component
-
 struct KeyboardAvoidExample3 {
   build() {
     Column() {
@@ -576,7 +583,7 @@ struct IgnoreLayoutSafeAreaTest1 {
   }
 }
 ```
-![ignoreLayoutSafeArea1](figures/ignoreLayoutSafeArea1.jpg)
+<!--Del--> <!--DelEnd-->
 
 ### Example 9: Extending the Component Layout Area with ignoreLayoutSafeArea and LayoutPolicy.matchParent
 
@@ -621,8 +628,6 @@ struct IgnoreLayoutSafeAreaTest2 {
 This example demonstrates the layout effects of a container with **expandSafeArea** and **ignoreLayoutSafeArea** set, respectively, and their impact on the layout of child components. In both cases, the container visibly extends. However, the child components of the container with **expandSafeArea** are not affected by the container's extension, while the child components of the container with **ignoreLayoutSafeArea** have their positions adjusted due to the container's extension.
 
 ```ts
-import { LengthMetrics } from '@kit.ArkUI'
-
 @Entry
 @Component
 struct IgnoreLayoutSafeAreaTest3 {

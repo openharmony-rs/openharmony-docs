@@ -48,6 +48,10 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 卡片信息。
 
+> **说明：**
+>
+> - temporary参数标识卡片是否为临时卡片，临时卡片与常态卡片的对比详见[临时卡片和常态卡片](../../../form/widget-host-development-guide-sys.md#临时卡片和常态卡片)。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

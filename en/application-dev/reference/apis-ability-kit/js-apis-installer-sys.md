@@ -1,10 +1,12 @@
 # @ohos.bundle.installer (installer Module) (System API)
+
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=0204cb477050612384e22af1de117191721fc715 translatedAt=2026-08-13T02:44:57.824Z pushedAt=2026-08-13T03:43:05.552Z -->
 
 The module provides APIs for you to install, uninstall, and recover bundles on devices.
 
@@ -12,7 +14,7 @@ The module provides APIs for you to install, uninstall, and recover bundles on d
 >
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> The APIs provided by this module are system APIs.
+> The APIs of this module are system APIs.
 
 ## Modules to Import
 
@@ -34,7 +36,7 @@ Obtains a BundleInstaller object. This API uses an asynchronous callback to retu
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<BundleInstaller> | Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null** and **data** is the BundleInstaller object obtained; otherwise, **err** is an error object.|
+| callback | AsyncCallback\<BundleInstaller> | Yes | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback), used to obtain the BundleInstaller object. If err is undefined, data is the obtained BundleInstaller object; otherwise, err is an error object. |
 
 **Error codes**
 
@@ -76,6 +78,7 @@ Obtains a BundleInstaller object. This API uses a promise to return the result.
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
 **Return value**
+
 | Type                                                        | Description                                |
 | ------------------------------------------------------------ | ------------------------------------ |
 | Promise\<BundleInstaller> | Promise used to return the BundleInstaller object obtained.|
@@ -117,6 +120,7 @@ Obtains a BundleInstaller object. This API is a synchronous API.
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
 **Return value**
+
 | Type                                                        | Description                                |
 | ------------------------------------------------------------ | ------------------------------------ |
 | BundleInstaller | BundleInstaller object.|
@@ -145,20 +149,26 @@ try {
 ```
 
 ## BundleInstaller.install
+
 install(hapFilePaths: Array&lt;string&gt;, installParam: InstallParam, callback: AsyncCallback&lt;void&gt;): void
 
-Installs an application. This API uses an asynchronous callback to return the result.
+Installs a specified app. This API uses an asynchronous callback to return the result. Since API version 26.0.0, installing an APP package is supported.
 > **NOTE**
 >
-> To install applications of different distribution types, the appropriate permissions must be requested. For details on distribution types, see the **appDistributionType** field in [ApplicationInfo](../../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1).
+> To install apps of different distribution types, you need to apply for the corresponding permissions. For details about the distribution types, see the description of the appDistributionType field in [ApplicationInfo](../../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1).
 
 **System API**: This is a system API.
 
 **Required permissions**: ohos.permission.INSTALL_BUNDLE, ohos.permission.INSTALL_ENTERPRISE_BUNDLE, ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE, ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE, or a combination of ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE
+
 - Starting from API version 9, installing a common application requires the ohos.permission.INSTALL_BUNDLE permission.
+
 - Starting from API version 10, installing an enterprise internal application requires the ohos.permission.INSTALL_ENTERPRISE_BUNDLE permission.
+
 - Starting from API version 10, installing a common enterprise application requires the ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE permission.
+
 - Starting from API version 10, installing an enterprise MDM application requires the ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE permission.
+
 - Starting from API version 23, installing an application in downgrade mode requires the ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE permissions. Downgrade installation is supported only for third-party applications with a signing certificate distribution type of **app_gallery** or a signing certificate type of **debug**. For details, please refer to the description of **parameters** in [InstallParam](#installparam).
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
@@ -167,9 +177,9 @@ Installs an application. This API uses an asynchronous callback to return the re
 
 | Name          | Type                                                | Mandatory| Description                                                        |
 | --------------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| hapFilePaths | Array&lt;string&gt;                                  | Yes  | Paths where the HAP files of the bundle are stored, which are the data directories. If only one directory is passed, the HAP files in the directory must belong to the same bundle and have the same signature.|
+| hapFilePaths | Array&lt;string&gt;                                  | Yes  | Path for storing the application package. The path should be the data directory where the HAP or APP of the current app is stored. When the path is a directory, the directory can contain only the HAPs of the same app or one APP. The signatures of the HAPs of the same app must be consistent. |
 | installParam           | [InstallParam](#installparam)                        | Yes  | Parameters required for the installation.                                    |
-| callback | AsyncCallback&lt;void&gt; | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**; otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the app is installed successfully, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -236,21 +246,28 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
+
 ## BundleInstaller.install
+
 install(hapFilePaths: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Installs an application. This API uses an asynchronous callback to return the result.
+Installs a specified app. This API uses an asynchronous callback to return the result. Since API version 26.0.0, installing an APP package is supported.
 > **NOTE**
 >
-> To install applications of different distribution types, the appropriate permissions must be requested. For details on distribution types, see the **appDistributionType** field in [ApplicationInfo](../../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1).
+> To install apps of different distribution types, you need to apply for the corresponding permissions. For details about the distribution types, see the description of the appDistributionType field in [ApplicationInfo](../../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1).
 
 **System API**: This is a system API.
 
 **Required permissions**: ohos.permission.INSTALL_BUNDLE, ohos.permission.INSTALL_ENTERPRISE_BUNDLE, ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE, ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE, or a combination of ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE
+
 - Starting from API version 9, installing a common application requires the ohos.permission.INSTALL_BUNDLE permission.
+
 - Starting from API version 10, installing an enterprise internal application requires the ohos.permission.INSTALL_ENTERPRISE_BUNDLE permission.
+
 - Starting from API version 10, installing a common enterprise application requires the ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE permission.
+
 - Starting from API version 10, installing an enterprise MDM application requires the ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE permission.
+
 - Starting from API version 23, installing an application in downgrade mode requires the ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE permissions. Downgrade installation is supported only for third-party applications with a signing certificate distribution type of **app_gallery** or a signing certificate type of **debug**. For details, please refer to the description of **parameters** in [InstallParam](#installparam).
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
@@ -259,8 +276,8 @@ Installs an application. This API uses an asynchronous callback to return the re
 
 | Name          | Type                                                | Mandatory| Description                                                        |
 | --------------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| hapFilePaths | Array&lt;string&gt;                                  | Yes  | Paths where the HAP files of the bundle are stored, which are the data directories. If only one directory is passed, the HAP files in the directory must belong to the same bundle and have the same signature.|
-| callback | AsyncCallback&lt;void&gt; | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**; otherwise, **err** is an error object.|
+| hapFilePaths | Array&lt;string&gt;                                  | Yes   | Paths for storing the application packages. The path should be the data directory where the HAP or APP is stored in the current app. When the path passed in is a directory, the directory can contain only the HAPs of the same app or one APP. The signatures of the HAPs of the same app must be consistent. |
+| callback | AsyncCallback&lt;void&gt; | Yes | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the app is installed successfully, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -326,18 +343,23 @@ try {
 
 install(hapFilePaths: Array\<string\>, installParam?: InstallParam) : Promise\<void\>
 
-Installs an application. This API uses a promise to return the result.
+Installs a specified app. This API uses a promise to return the result. Since API version 26.0.0, installing an APP package is supported.
 > **NOTE**
 >
-> To install applications of different distribution types, the appropriate permissions must be requested. For details on distribution types, see the **appDistributionType** field in [ApplicationInfo](../../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1).
+> To install apps of different distribution types, you need to apply for the corresponding permissions. For details about the distribution types, see the description of the appDistributionType field in [ApplicationInfo](../../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1).
 
 **System API**: This is a system API.
 
 **Required permissions**: ohos.permission.INSTALL_BUNDLE, ohos.permission.INSTALL_ENTERPRISE_BUNDLE, ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE, ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE, or a combination of ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE
+
 - Starting from API version 9, installing a common application requires the ohos.permission.INSTALL_BUNDLE permission.
+
 - Starting from API version 10, installing an enterprise internal application requires the ohos.permission.INSTALL_ENTERPRISE_BUNDLE permission.
+
 - Starting from API version 10, installing a common enterprise application requires the ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE permission.
+
 - Starting from API version 10, installing an enterprise MDM application requires the ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE permission.
+
 - Starting from API version 23, installing an application in downgrade mode requires the ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE permissions. Downgrade installation is supported only for third-party applications with a signing certificate distribution type of **app_gallery** or a signing certificate type of **debug**. For details, please refer to the description of **parameters** in [InstallParam](#installparam).
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
@@ -346,14 +368,14 @@ Installs an application. This API uses a promise to return the result.
 
 | Name      | Type                         | Mandatory| Description                                                        |
 | ------------ | ----------------------------- | ---- | ------------------------------------------------------------ |
-| hapFilePaths | Array\<string\>               | Yes  | Paths where the HAP files of the bundle are stored, which are the data directories. If only one directory is passed, the HAP files in the directory must belong to the same bundle and have the same signature.|
+| hapFilePaths | Array\<string\>               | Yes   | Path for storing the application package. The path should be the data directory where the HAP or APP is stored in the current app. When the path passed in is a directory, the directory can contain only the HAPs of the same app or one APP. The signatures of the HAPs of the same app must be consistent. |
 | installParam | [InstallParam](#installparam) | No  | Parameters required for the installation. For details about their default values, see [InstallParam](#installparam).                                    |
 
 **Return value**
 
 | Type           | Description                                  |
 | --------------- | -------------------------------------- |
-| Promise\<void\> | Promise that returns no value.|
+| Promise\<void\> | Promise that returns no value. |
 
 **Error codes**
 
@@ -438,7 +460,7 @@ Uninstalls an application. This API uses an asynchronous callback to return the 
 | ---------- | ---------------------------------------------------- | ---- | ---------------------------------------------- |
 | bundleName | string                                               | Yes  | Name of the target bundle.                                          |
 | installParam      | [InstallParam](#installparam)                        | Yes  | Parameters required for the installation.                      |
-| callback | AsyncCallback&lt;void&gt; | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**; otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback used to return the result. If the app is uninstalled successfully, **err** is undefined; otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -506,7 +528,7 @@ Uninstalls an application. This API uses an asynchronous callback to return the 
 | Name     | Type                                                | Mandatory| Description                                          |
 | ---------- | ---------------------------------------------------- | ---- | ---------------------------------------------- |
 | bundleName | string                                               | Yes  | Name of the target bundle.                                          |
-| callback | AsyncCallback&lt;void&gt; | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**; otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the app is uninstalled successfully, **err** is undefined; otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -549,6 +571,7 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
+
 ## BundleInstaller.uninstall
 
 uninstall(bundleName: string, installParam?: InstallParam) : Promise\<void\>
@@ -572,7 +595,7 @@ Uninstalls an application. This API uses a promise to return the result.
 
 | Type           | Description                                  |
 | --------------- | -------------------------------------- |
-| Promise\<void\> | Promise that returns no value.|
+| Promise\<void\> | Promise that returns no value. |
 
 **Error codes**
 
@@ -640,7 +663,7 @@ Rolls back an application to the initial installation state. This API uses an as
 | ---------- | ---------------------------------------------------- | ---- | ---------------------------------------------- |
 | bundleName | string                                               | Yes  | Name of the target bundle.                                          |
 | installParam      | [InstallParam](#installparam)                        | Yes  | Parameters required for the installation.                      |
-| callback | AsyncCallback&lt;void&gt; | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**; otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback) invoked to return the result. If the app rollback is successful, err is undefined; otherwise, err is an error object. |
 
 **Error codes**
 
@@ -687,7 +710,6 @@ try {
 }
 ```
 
-
 ## BundleInstaller.recover
 
 recover(bundleName: string, callback: AsyncCallback&lt;void&gt;): void
@@ -705,7 +727,7 @@ Rolls back an application to the initial installation state. This API uses an as
 | Name     | Type                                                | Mandatory| Description                                          |
 | ---------- | ---------------------------------------------------- | ---- | ---------------------------------------------- |
 | bundleName | string                                               | Yes  | Name of the target bundle.                              |
-| callback | AsyncCallback&lt;void&gt; | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**; otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the app is rolled back successfully, err is undefined; otherwise, err is an error object. |
 
 **Error codes**
 
@@ -769,7 +791,7 @@ Rolls back an application to the initial installation state. This API uses a pro
 
 | Type           | Description                                  |
 | --------------- | -------------------------------------- |
-| Promise\<void\> | Promise that returns no value.|
+| Promise\<void\> | Promise that returns no value. |
 
 **Error codes**
 
@@ -786,6 +808,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 17700073 | Failed to install the HAP because an application with the same bundle name but different signature information exists on the device. |
 
 **Example**
+
 ```ts
 import { installer } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -831,7 +854,7 @@ Uninstalls a shared package. This API uses an asynchronous callback to return th
 | Name        | Type                               | Mandatory| Description                                                    |
 | -------------- | ----------------------------------- | ---- | -------------------------------------------------------- |
 | uninstallParam | [UninstallParam](#uninstallparam10) | Yes  | Parameters required for the uninstall.                            |
-| callback       | AsyncCallback&lt;void&gt;           | Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**; otherwise, **err** is an error object.|
+| callback       | AsyncCallback&lt;void&gt;           | Yes   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback), which is used to return the result. If the app is uninstalled successfully, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -896,7 +919,7 @@ Uninstalls a shared package. This API uses a promise to return the result.
 
 | Type         | Description                                  |
 | ------------- | -------------------------------------- |
-| Promise\<void\> | Promise that returns no value.|
+| Promise\<void\> | Promise that returns no value. |
 
 **Error codes**
 
@@ -962,7 +985,7 @@ Adds extended resources based on the specified bundle name and HSP file path. Th
 
 | Type         | Description                                  |
 | ------------- | -------------------------------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise that returns no value. |
 
 **Error codes**
 
@@ -980,7 +1003,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName : string = 'com.ohos.demo';
@@ -988,9 +1010,9 @@ let filePaths : Array<string> = ['/data/storage/el2/base/a.hsp'];
 try {
     installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
         data.addExtResource(bundleName, filePaths).then((data) => {
-            hilog.info(0x0000, 'testTag', 'addExtResource successfully');
+            console.info('addExtResource successfully');
         }).catch((err: BusinessError) => {
-            hilog.error(0x0000, 'testTag', 'addExtResource failed. Cause: %{public}s', err.message);
+            console.error('addExtResource failed. Cause: ' + err.message);
         });
     }).catch((error: BusinessError) => {
         console.error('getBundleInstaller failed. Cause: ' + error.message);
@@ -1024,7 +1046,7 @@ Removes extended resources based on the specified bundle name and module names. 
 
 | Type         | Description                                  |
 | ------------- | -------------------------------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise that returns no value. |
 
 **Error codes**
 
@@ -1042,7 +1064,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName : string = 'com.ohos.demo';
@@ -1050,9 +1071,9 @@ let moduleNames : Array<string> = ['moduleTest'];
 try {
     installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
         data.removeExtResource(bundleName, moduleNames).then((data) => {
-            hilog.info(0x0000, 'testTag', 'removeExtResource successfully');
+            console.info('removeExtResource successfully');
         }).catch((err: BusinessError) => {
-            hilog.error(0x0000, 'testTag', 'removeExtResource failed. Cause: %{public}s', err.message);
+            console.error('removeExtResource failed. Cause: ' + err.message);
         });
     }).catch((error: BusinessError) => {
         console.error('getBundleInstaller failed. Cause: ' + error.message);
@@ -1081,7 +1102,7 @@ Updates the current bundle. This API can be called only by enterprise MDM applic
 | --------------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | hapFilePaths | Array&lt;string&gt;                                  | Yes  | Paths where the HAP files of the bundle are stored, which are the data directories. If only one directory is passed, the HAP files in the directory must belong to the same bundle and have the same signature.|
 | installParam           | [InstallParam](#installparam)                        | Yes  | Parameters required for the installation.                                    |
-| callback | AsyncCallback&lt;void&gt; | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**; otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback used to return the result. If the app is installed successfully, **err** is undefined; otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -1159,7 +1180,7 @@ Updates the current bundle. This API can be called only by enterprise MDM applic
 | Name          | Type                                                | Mandatory| Description                                                        |
 | --------------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | hapFilePaths | Array&lt;string&gt;                                  | Yes  | Paths where the HAP files of the bundle are stored, which are the data directories. If only one directory is passed, the HAP files in the directory must belong to the same bundle and have the same signature.|
-| callback | AsyncCallback&lt;void&gt; | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**; otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback), used to return the result. If the app is installed successfully, **err** is undefined; otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -1237,7 +1258,7 @@ Updates the current bundle. This API can be called only by enterprise MDM applic
 
 | Type         | Description                                  |
 | ------------- | -------------------------------------- |
-| Promise\<void\> | Promise that returns no value.|
+| Promise\<void\> | Promise that returns no value. |
 
 **Error codes**
 
@@ -1320,7 +1341,7 @@ Uninstalls and updates a preinstalled application and restores it to the initial
 
 | Type           | Description                                  |
 | --------------- | -------------------------------------- |
-| Promise\<void\> | Promise that returns no value.|
+| Promise\<void\> | Promise that returns no value. |
 
 **Error codes**
 
@@ -1407,6 +1428,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 17700069 | The app does not support the creation of an appClone instance. |
 
 **Example**
+
 ```ts
 import { installer } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1438,7 +1460,7 @@ try {
 
 destroyAppClone(bundleName: string, appIndex: number, userId?: number): Promise\<void\>;
 
-Destroys an application clone. This API uses a promise to return the result.
+Destroys an app clone or a CLI sandbox app. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1450,15 +1472,15 @@ Destroys an application clone. This API uses a promise to return the result.
 
 | Name       | Type                         | Mandatory| Description                                                         |
 | ------------ | ----------------------------- | ---- | ------------------------------------------------------------ |
-| bundleName   | string                        | Yes  | Bundle name of the application for which a clone is to be destroyed.                                        |
-| appIndex     | number                        | Yes  | Index of the clone to destroy.                                        |
-| userId       | number                        | No  | ID of the user for whom the clone is to be destroyed. You can obtain the user ID by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). The default value is the user ID of the caller.                |
+| bundleName   | string                        | Yes  | Bundle name of the app clone or CLI sandbox app to be deleted.                                         |
+| appIndex     | number                        | Yes  | Index of the app clone or CLI sandbox app to be deleted. Value range: [1, 5] and [2000, 3000]. 1 to 5 indicates an app clone, and 2000 to 3000 indicates a CLI sandbox app. Since API version 26.0.0, the value range [2000, 3000] is supported.                                         |
+| userId       | number                        | No  | User ID to which the app clone or CLI sandbox app to be deleted belongs. It can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). Default value: the caller's user.                |
 
 **Return value**
 
 | Type           | Description                                  |
 | --------------- | -------------------------------------- |
-| Promise\<void\> | Promise that returns no value.|
+| Promise\<void\> | Promise that returns no value. |
 
 **Error codes**
 
@@ -1474,6 +1496,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 17700061 | AppIndex not in valid range. |
 
 **Example**
+
 ```ts
 import { installer } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1503,7 +1526,7 @@ try {
 
 destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: DestroyAppCloneParam): Promise\<void\>;
 
-Destroys an application clone. This API uses a promise to return the result.
+Destroys an app clone or a CLI sandbox app. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1515,15 +1538,15 @@ Destroys an application clone. This API uses a promise to return the result.
 
 | Name       | Type                         | Mandatory| Description                                                         |
 | ------------ | ----------------------------- | ---- | ------------------------------------------------------------ |
-| bundleName   | string                        | Yes  | Bundle name of the application for which a clone is to be destroyed.                                        |
-| appIndex     | number                        | Yes  | Index of the clone to destroy.                                        |
-| destroyAppCloneParam       | [DestroyAppCloneParam](#destroyappcloneparam15)   | No  | Other parameters required for destroying the clone. For details about the default values of these parameters, see [DestroyAppCloneParam](#destroyappcloneparam15).  |
+| bundleName   | string                        | Yes   | Bundle name of the app clone or CLI sandbox app to be deleted.                                         |
+| appIndex     | number                        | Yes   | Index of the app clone or CLI sandbox app to be deleted. Value range: [1, 5] and [2000, 3000]. 1 to 5 indicates an app clone, and 2000 to 3000 indicates a CLI sandbox app. Since API version 26.0.0, the value range [2000, 3000] is supported.                                         |
+| destroyAppCloneParam       | [DestroyAppCloneParam](#destroyappcloneparam15)   | No   | Other parameters required for deleting the app clone or CLI sandbox app. Default value: refer to the default value of [DestroyAppCloneParam](#destroyappcloneparam15).   |
 
 **Return value**
 
 | Type           | Description                                  |
 | --------------- | -------------------------------------- |
-| Promise\<void\> | Promise that returns no value.|
+| Promise\<void\> | Promise that returns no value. |
 
 **Error codes**
 
@@ -1540,6 +1563,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 17700062 | Failed to uninstall the app because the app is locked. |
 
 **Example**
+
 ```ts
 import { installer } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1577,10 +1601,10 @@ try {
 
 installPreexistingApp(bundleName: string, userId?: number): Promise\<void\>;
 
-Installs an application. This API uses a promise to return the result.
+Installs the app with the specified bundleName for the specified user. This API uses a promise to return the result.
 > **NOTE**
 >
-> This API does not support the installation of applications whose [distribution type of the application signing certificate](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) is set to **enterprise**, **enterprise_mdm**, or **enterprise_normal**.
+> This API does not support installing apps whose [appDistributionType](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) is enterprise, enterprise_mdm, or enterprise_normal.
 
 **System API**: This is a system API.
 
@@ -1593,13 +1617,13 @@ Installs an application. This API uses a promise to return the result.
 | Name       | Type                         | Mandatory| Description                                                         |
 | ------------ | ----------------------------- | ---- | ------------------------------------------------------------ |
 | bundleName   | string                        | Yes  | Bundle name of the application to install.                                          |
-| userId       | number                        | No  | ID of the user for whom the bundle is to be installed. You can obtain the user ID by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). The value must be greater than 0. The default value is the user ID of the caller.   |
+| userId       | number                        | No   | User ID of the app to be installed. It can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). The value must be greater than 0. Default value: the user of the caller.   |
 
 **Return value**
 
 | Type           | Description                                  |
 | --------------- | -------------------------------------- |
-| Promise\<void\> | Promise that returns no value.|
+| Promise\<void\> | Promise that returns no value. |
 
 **Error codes**
 
@@ -1616,6 +1640,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 17700058 | Failed to install the HAP because this application is prohibited from being installed on this device or by specified users. |
 
 **Example**
+
 ```ts
 import { installer } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1664,7 +1689,7 @@ Installs a plugin for an application. This API uses a promise to return the resu
 
 | Type           | Description                                  |
 | --------------- | -------------------------------------- |
-| Promise\<void\> | Promise that returns no value.|
+| Promise\<void\> | Promise that returns no value. |
 
 **Error codes**
 
@@ -1692,6 +1717,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 17700091 | Failed to install the plugin because the plugin name is same as host bundle name. |
 
 **Example**
+
 ```ts
 import { installer } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1743,7 +1769,7 @@ Uninstalls a plugin for an application. This API uses a promise to return the re
 
 | Type           | Description                                  |
 | --------------- | -------------------------------------- |
-| Promise\<void\> | Promise that returns no value.|
+| Promise\<void\> | Promise that returns no value. |
 
 **Error codes**
 
@@ -1758,6 +1784,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 17700092 | Failed to uninstall the plugin because the specified plugin is not found. |
 
 **Example**
+
 ```ts
 import { installer } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1785,6 +1812,66 @@ try {
 }
 ```
 
+## BundleInstaller.uninstallNewPreinstalledApps<sup>24+</sup>
+
+uninstallNewPreinstalledApps(bundleNames: Array\<string\>): Promise\<void\>
+
+Uninstalls newly added preinstalled apps in batches. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions:** ohos.permission.UNINSTALL_BUNDLE
+
+**System capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Parameters**
+
+| Name        | Type                           | Mandatory | Description                       |
+| ------------  | ----------------------------- | ---- | ------------------------- |
+| bundleNames   | Array\<string\>               | Yes   | List of bundle names of the apps to be uninstalled.          |
+
+**Return value**
+
+| Type            | Description                                   |
+| --------------- | -------------------------------------- |
+| Promise\<void\> | Promise that returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                            |
+| -------- | ----------------------------------- |
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+
+**Example**
+
+```ts
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleNames = ['com.example.application', 'com.example.demo'];
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.uninstallNewPreinstalledApps(bundleNames)
+            .then(() => {
+                console.info('uninstallNewPreinstalledApps successfully.');
+        }).catch((error: BusinessError) => {
+            console.error('uninstallNewPreinstalledApps failed:' + error.message);
+        });
+    }).catch((error: BusinessError) => {
+        console.error('getBundleInstaller failed. Cause: ' + error.message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('uninstallNewPreinstalledApps failed. Cause: ' + message);
+}
+```
+
 ## HashParam
 
 Defines the hash parameters for bundle installation and uninstall.
@@ -1806,19 +1893,20 @@ Defines the parameters that need to be specified for bundle installation, uninst
 
 **System API**: This is a system API.
 
-| Name                       | Type                          |  Read-Only |  Optional | Description              |
+| Name                        | Type                           |  Read-Only  |  Optional  | Description               |
 | ------------------------------ | ------------------------------ | ------------------| ------------------ | ------------------ |
-| userId                         | number                         | No                      | Yes | User ID. The default value is the user ID of the caller. The value must be greater than or equal to 0. You can call [queryOsAccountLocalIdFromProcess](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9) to obtain the user ID of the current process. When a driver application is installed, uninstalled, or restored, this parameter is ignored and the operation is executed for all users.|
-| installFlag                    | number                         | No                      | Yes| Installation flag. The value **0x00** means initial installation, **0x01** means overwrite installation, and **0x10** means installation-free. The default value is **0x00**.|
-| isKeepData                     | boolean                        | No                      | Yes| Whether to retain the data directory during bundle uninstall. The default value is **false**. **true** to retain, **false** otherwise.|
-| hashParams        | Array<[HashParam](#hashparam)> | No| Yes| Hash parameters. By default, no value is passed.        |
-| crowdtestDeadline| number                         | No                      | Yes| End date of crowdtesting. The default value is **-1**, indicating that no end date is specified for crowdtesting.|
-| sharedBundleDirPaths<sup>10+</sup> | Array\<string> | No| Yes|Paths of the shared bundle files. By default, no value is passed.|
-| specifiedDistributionType<sup>10+</sup> | string | No| Yes|[Distribution type](../../security/app-provision-structure.md) specified during application installation. By default, no value is passed. The maximum length is 128 bytes. This field is usually specified by the application market of the operating system operator.|
-| additionalInfo<sup>10+</sup> | string | No| Yes|Additional information during application installation (usually an enterprise application). By default, no value is passed. The maximum length is 3,000 bytes. This field is usually specified by the application market of the operating system operator.|
-| verifyCodeParams<sup>(deprecated)<sup> | Array<[VerifyCodeParam](#verifycodeparamdeprecated)> | No| Yes| Information about the code signature file. The default value is null.<br>**NOTE**<br> Starting from API version 10, the code signature file of an application is integrated into the installation package, rather than being specified by using this field. This field is deprecated since API version 11. |
-| pgoParams<sup>11+</sup> | Array<[PGOParam](#pgoparam11)> | No| Yes| Parameters of the Profile-guided Optimization (PGO) configuration file. The default value is null.        |
-| parameters<sup>15+</sup> | Array<[Parameters](#parameters15)> | No| Yes| Extended parameters, represented as an array of the Parameters type. The default value is empty. The options of **Parameters.key** are as follows:<br> - **ohos.bms.param.renameInstall**: If the value is **true**, the installation package is moved from the application sandbox to the installation directory using a shared directory. Otherwise, it is copied from the application sandbox to the installation directory using a regular directory.<br> - **ohos.bms.param.enterpriseForAllUser**: If the value is **true**, the enterprise app is installed for all users. This parameter takes effect only for applications whose [distribution type of the application signing certificate](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) is **enterprise_mdm** or **enterprise_normal**.<br> - **ohos.bms.param.verifyUninstallRule**: If the value is **true**, an uninstallation handling rule is set to block application uninstallation.<br> - **ohos.bms.param.enterpriseManifest**: The value is the sandbox path of the JSON file used to store the application's manifest, including the bundle name. It is used in the scenario of cloning enterprise applications. If this JSON file exists during cloning, the application package from the old device is copied to the new device for installation.<br> - **ohos.bms.param.installBundleName**: The value is the bundle name of the application. It is used in application installation scenarios and supported since API version 23. If this field is passed during installation, the [getBundleInstallStatus](./js-apis-bundleManager-sys.md#bundlemanagergetbundleinstallstatus23) API can be called to obtain the installation status of the application.<br> - **ohos.bms.param.installAllowDowngrade**: If the value is **true**, the application can be installed in downgrade mode (supported since API version 23). That is, if a higher version of the application is already installed on the device, a lower version can be installed over it. Only third-party applications with the signing certificate distribution type set to **app_gallery** or the signing certificate type set to **debug** support downgrade installation. To use downgrade installation, you must request the ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE permissions.|
+| userId                         | number                         | No                       | Yes  | User ID. Default value: the user of the caller. Value range: greater than or equal to 0. You can use [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9) to obtain the user of the current process. When installing, uninstalling, or recovering a driver app, this parameter is ignored and the operation is performed for all users. |
+| installFlag                    | number                         | No                       | Yes | Installation flag. Enumerated values: 0x00: initial installation of the app, 0x01: overwrite installation of the app, 0x10: free installation of the app. Default value: initial installation of the app. |
+| isKeepData                     | boolean                        | No                       | Yes| Whether to retain the data directory during uninstall. Default value: false. The value **true** indicates that the data directory is retained during uninstall, and **false** indicates that the data directory is not retained during uninstall. |
+| hashParams        | Array<[HashParam](#hashparam)> | No | Yes| Hash parameters. Default value: empty. The maximum length of the list is 1000.         |
+| crowdtestDeadline| number                         | No                       | Yes | Deadline of the crowdtesting activity. Default value: -1, which indicates no deadline constraint. Unit: second. |
+| sharedBundleDirPaths<sup>10+</sup> | Array\<string> | No | Yes|Path of the shared bundle file. Default value: empty. The maximum length of the list is 500. Since API version 24, when a directory is specified, multiple HSPs with the same bundle name but different module names can exist in the directory. In API version 23 and earlier, only one HSP can exist in the directory. |
+| specifiedDistributionType<sup>10+</sup> | string | No | Yes|[Distribution type](../../security/app-provision-structure.md) specified during app installation. Default value: empty. The maximum length is 128 bytes. This field is usually specified by the app market of the OS operator. |
+| additionalInfo<sup>10+</sup> | string | No | Yes|Additional information during app installation. Default value: empty. The maximum length is 3000 bytes. This field is usually specified by the app market of the OS operator when installing an enterprise app, and is used to store additional information about the app. |
+| verifyCodeParams<sup>(deprecated)<sup> | Array<[VerifyCodeParam](#verifycodeparamdeprecated)> | No | Yes| Code signing file parameters. Default value: empty. The maximum length of the list is 500.<br/>**NOTE**<br/> Supported since API version 10 and deprecated since API version 11. The code signing file of an app will be integrated into the installation package, and it is no longer necessary to specify the code signing file of the installation package through this API.  |
+| pgoParams<sup>11+</sup> | Array<[PGOParam](#pgoparam11)> | No | Yes| PGO profile parameters. Default value: empty. The maximum length of the list is 500.         |
+| parameters<sup>15+</sup> | Array<[Parameters](#parameters15)> | No | Yes| Extended parameters, which are an array of the Parameters type. Default value: empty. The maximum length of the list is 1000. The supported values of Parameters.key are as follows:</br> - "ohos.bms.param.renameInstall": If the corresponding value is "true", the shared directory is used to move the installation package from the app sandbox to the installation directory during installation. Otherwise, the regular directory is used to copy the installation package from the app sandbox to the installation directory.</br> - "ohos.bms.param.enterpriseForAllUser": If the corresponding value is "true", the enterprise app is installed for all users. This parameter takes effect only for apps whose [appDistributionType](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) is enterprise_mdm or enterprise_normal.</br> - "ohos.bms.param.verifyUninstallRule": If the corresponding value is "true", the uninstall handling rule is set to intercept app uninstall.</br> - "ohos.bms.param.enterpriseManifest": The value is the sandbox path of a JSON file. The JSON file is used to store the description file of the app, including the app bundle name. This field is used in the enterprise app clone scenario. During cloning, if the JSON file exists, the app installation package on the old device is copied to the new device for installation.</br> - "ohos.bms.param.installBundleName": The value is the bundle name of the app. This field is used in the app installation scenario (supported since API version 23). If this field is passed in during installation, the [getBundleInstallStatus](./js-apis-bundleManager.md#bundlemanagergetbundleinstallstatus) API can be called during app installation to query the installing status of the app.</br> - "ohos.bms.param.installAllowDowngrade": If the corresponding value is "true", this field indicates that app downgrade installation is supported (supported since API version 23). That is, if a higher-version app is already installed on the device, a lower-version app can still be installed to overwrite it. Downgrade installation is supported only for third-party apps whose signature certificate distribution type is app_gallery or whose certificate type is debug. To use the downgrade installation capability, you need to apply for both ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE.</br> - "ohos.bms.param.originalInstallSource": Used to specify the original installation source of the app to be installed. The corresponding value range is the value of the installSource field in [ApplicationInfo](../../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1). For an app installed with this parameter, its installation source installSource is set to the specified value. Conditions for the parameter to take effect: the app to be installed must not be installed on the device; when the value is specified as an app bundle name, the specified app must be installed and be a system app. Supported since API version 23.|
+
 ## UninstallParam<sup>10+</sup>
 
 Defines the parameters required for the uninstall of a shared bundle.
@@ -1883,7 +1971,7 @@ Describes the parameters used for creating an application clone.
 
 | Name       | Type  | Read-Only |  Optional| Description                                                         |
 | ----------- | ------ | ---- |---- | ------------------------------------------------------------ |
-| userId      | number | No| Yes | ID of the user for whom the clone is to be created. You can obtain the user ID by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). The default value is the user ID of the caller.            |
+| userId      | number | No | Yes  | Specifies the user ID for creating the app clone. You can obtain the user ID by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). Default value: the user of the caller.            |
 | appIndex    | number |  No| Yes  | Index of the clone. The default value is the currently available minimum index.          |
 
 ## DestroyAppCloneParam<sup>15+</sup>
@@ -1896,8 +1984,8 @@ Describes the parameters used for destroying an application clone.
 
 | Name       | Type  | Read-Only |  Optional| Description                                                         |
 | ----------- | ------ | ----| ---- | ------------------------------------------------------------ |
-| userId      | number | No| Yes | ID of the user for whom the clone is to be destroyed. You can obtain the user ID by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). The default value is the user ID of the caller.            |
-| parameters  | Array<[Parameters](#parameters15)> | No| Yes  | Extended parameters for destroying the clone. The default value is null. The options of **Parameters.key** are as follows:<br> - **ohos.bms.param.clone.isKeepData**: Supported since API version 21. If the value of this parameter is **true**, the user data of the clone will be retained when the clone is destroyed. Otherwise, the user data will not be retained.           |
+| userId      | number | No  | Yes  | User ID of the user for which the app clone or CLI sandbox app is to be deleted. You can obtain the user ID by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). Default value: the user that calls this API.            |
+| parameters  | Array<[Parameters](#parameters15)> | No  | Yes   | Extended parameters for deleting the app clone. The default value is empty. This parameter is not supported for CLI sandbox apps. The supported values of Parameters.key are as follows:</br> - "ohos.bms.param.clone.isKeepData": supported since API version 21. If the corresponding value is "true", the user data of the app clone is retained when the app clone is deleted; otherwise, the user data is not retained.            |
 
 ## PluginParam<sup>19+</sup>
 
@@ -1909,5 +1997,6 @@ Defines the parameters for installing or uninstalling a plugin.
 
 | Name       | Type  | Read-Only |  Optional| Description                                                         |
 | ----------- | ------ | ---- |---- | ------------------------------------------------------------ |
-| userId      | number | No| Yes  | ID of the user for whom the plugin is to be installed or uninstalled. You can obtain the user ID by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). The default value is the user ID of the caller.            |
+| userId      | number | No  | Yes  | User ID of the user for installing or uninstalling the plug-in program. It can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). Default value: the user that invokes the API.            |
 | parameters  | Array<[Parameters](#parameters15)> | No| Yes  | Extension parameters for installing or uninstalling the plugin. The default value is empty.           |
+<!--no_check-->

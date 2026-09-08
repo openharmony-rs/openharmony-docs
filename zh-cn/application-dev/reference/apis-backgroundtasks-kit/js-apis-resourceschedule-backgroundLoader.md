@@ -9,7 +9,7 @@
 
 本模块支持后台加载任务的注册、取消及查询操作。在开发过程中，如果需要通过预先加载应用数据来提升应用启动速度，可调用本模块提供的接口来注册后台加载任务。系统将在空闲时段，综合当前内存占用、剩余电量及设备温度等因素进行智能调度与 执行。开发指导请参考[延迟任务开发指南](../../task-management/work-scheduler.md)。
 
-**起始版本：**  26.0.0
+**起始版本：**  26.1.0
 
 ## 导入模块
 
@@ -18,7 +18,7 @@ import { backgroundLoader } from '@kit.BackgroundTasksKit';
 ```
 ## 常量
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -29,15 +29,15 @@ import { backgroundLoader } from '@kit.BackgroundTasksKit';
 | 名称 | 类型 | 值 | 说明 |
 | -------- | -------- | -------- | -------- |
 | ON_START | string | 'onStart' | 应用需要实现后台加载任务onStart的回调方法，在这个回调方法中实现后台处理应用页面数据的加载逻辑。应用需要将回调方法使用ON_START作为方法名通过Callee注册给系统。系统会通过Caller实现该回调。Callee/Caller回调机制的介绍请参考[Callee](../apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)。 代码示例参考[finishTask](#backgroundloaderfinishtask)函数的完整实例。 |
-| ON_STOP | string | 'onStop' | 应用需要实现后台加载任务onStop的回调方法，处理后台加载任务被异常终止的情况。应用需要将回调方法使用ON_START作为方法名通过Callee注册给系统。系统会通过Caller实现该回调。Callee/Caller回调机制的介绍请参考[Callee](../apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)。代码示例参考[finishTask](#backgroundloaderfinishtask)函数的完整实例。|
+| ON_STOP | string | 'onStop' | 应用需要实现后台加载任务onStop的回调方法，处理后台加载任务被异常终止的情况。应用需要将回调方法使用ON_STOP作为方法名通过Callee注册给系统。系统会通过Caller实现该回调。Callee/Caller回调机制的介绍请参考[Callee](../apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)。代码示例参考[finishTask](#backgroundloaderfinishtask)函数的完整实例。|
 
 ## backgroundLoader.registerTask
 
 registerTask(taskInfo: TaskInfo): void
 
-注册后台加载任务，成功后会将任务添加到后台加载任务队列，满足触发条件后由系统调度执行。
+注册后台加载任务，成功后会将任务添加到后台加载任务队列，满足触发条件后由系统调度执行。多次注册会覆盖原有任务，仅最后一次生效。
 
-**起始版本：**  26.0.0
+**起始版本：**  26.1.0
 
 **需要权限**：ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -93,7 +93,7 @@ unregisterTask(taskInfo: TaskInfo): void
 
 取消注册后台加载任务。
 
-**起始版本：**  26.0.0
+**起始版本：**  26.1.0
 
 **需要权限**：ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -147,7 +147,7 @@ getTaskInfo(taskId: number): Promise\<TaskInfo>
 
 查询已经注册的后台加载任务，使用Promise形式返回。
 
-**起始版本：**  26.0.0
+**起始版本：**  26.1.0
 
 **需要权限**：ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -195,12 +195,11 @@ getTaskInfo(taskId: number): Promise\<TaskInfo>
 
 finishTask(taskInfo: TaskInfo): void
  
-应用需要实现后台加载任务的[常量](#常量)的主业务回调方法，在完成业务加载任务后，需要通过调用finishTask方法通知系统加载任务完成。运行在异步回调函数或其他线程中执行finishTask调用。
+后台加载完成后，应用必须通过异步回调后独立线程执行finishTask，以实现任务结束状态的系统通知。
 
-**起始版本：**  26.0.0
+**起始版本：**  26.1.0
 
-**超时时间限制**：应用需要确保后台加载任务尽量在30秒内执行完成，从开始执行ON_START回调方法之后，需要在30秒内完成finishTask任务完成的调用。
-如果应用在执行后台加载任务时出现多次超时，系统将禁用后续的后台加载任务调度。
+**超时时间限制**：应用需要确保后台加载任务在30秒内执行完成。 如果应用在执行后台加载任务时出现多次超时，系统将禁用后续的后台加载任务调度。
 
 **需要权限**：ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -295,7 +294,7 @@ finishTask(taskInfo: TaskInfo): void
 
 应用定义和指定的后台加载任务信息。
 
-**起始版本：**  26.0.0
+**起始版本：**  26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -309,9 +308,9 @@ finishTask(taskInfo: TaskInfo): void
 
 ## TaskStopInfo
 
-系统回调应用的onStop方法中，若应用需要处理具体的任务停止原因，则需要从参数进行反序列化获得结构TaskStopInfo。具体示例参考[finishTask](#backgroundloaderfinishtask)函数的完整实例。
+当系统回调应用的ON_STOP时，若应用需要处理具体的任务停止原因，则需要从参数进行反序列化获得结构TaskStopInfo。具体示例参考[finishTask](#backgroundloaderfinishtask)函数的完整实例。
 
-**起始版本：**  26.0.0
+**起始版本：**  26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -328,7 +327,7 @@ finishTask(taskInfo: TaskInfo): void
 
 系统回调应用的onStop方法的TaskStopInfo参数结构体中的错误码枚举定义。
 
-**起始版本：**  26.0.0
+**起始版本：**  26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

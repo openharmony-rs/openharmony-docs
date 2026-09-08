@@ -48,7 +48,7 @@ Slider(options?: SliderOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| value | number | 否 | 是 | 当前进度值。<br/>默认值：与属性min的取值一致。<br />从API version 10开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />该属性支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/>取值范围： [min, max]<br/>小于min时取min，大于max时取max。<br/>$$运算符为系统组件提供TS变量的引用，使TS变量和slider组件的value值保持同步。详细使用示例请参考[示例7（设置滑动条的双向绑定）](#示例7设置滑动条的双向绑定)。 |
+| value | number | 否 | 是 | 当前进度值。<br/>默认值：与属性min的取值一致。<br />从API version 10开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />该属性支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/>取值范围： [min, max]<br/>小于min时取min，大于max时取max。<br/>$$运算符为系统组件提供TS变量的引用，使TS变量和Slider组件的value值保持同步。详细使用示例请参考[示例7（设置滑动条的双向绑定）](#示例7设置滑动条的双向绑定)。 |
 | min | number | 否 | 是 | 设置最小值。<br/>默认值：0 |
 | max | number | 否 | 是 | 设置最大值。<br/>默认值：100<br/>**说明：** <br/>当min >= max时，min取默认值0，max取默认值100。<br/>当value不在[min, max]范围内时，取min或者max，靠近min取min，靠近max取max。 |
 | step | number | 否 | 是 | 设置Slider滑动步长。<br/>默认值：1<br/>取值范围：[0.01, max - min]<br/>**说明：** <br/>若设置的step值小于0或大于max - min值，则按默认值显示。 |
@@ -1848,9 +1848,11 @@ struct SliderExample {
 
 ![slider_9](figures/slider_9.png)
 
-### 示例10（设置滑动条的系统材质）
+### 示例10（设置滑动条的沉浸光感效果）
 
-该示例通过通用属性[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)为滑动条设置沉浸式材质。
+该示例通过通用属性[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)设置滑动条的系统材质，实现沉浸光感效果。设置系统材质后，Slider滑动过程中会产生粒子动画效果。
+
+组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
 
 从API版本26.0.0开始，新增systemMaterial接口。
 
@@ -1876,9 +1878,15 @@ struct SliderSystemMaterial {
     }
     .height('100%')
     .width('100%')
-    .backgroundColor(Color.Grey)
+    // 请开发者替换为实际资源文件
+    .backgroundImage($r("app.media.img"))
   }
 }
 ```
+未设置系统材质时：
 
-![slider_10](figures/slider_10.png)
+![未设置系统材质时](figures/slider_10_without_new_material.gif)
+
+设置系统材质后：
+
+![设置系统材质后](figures/slider_10_new_material.gif)

@@ -1,7 +1,7 @@
 # 使用Node-API接口产生的异常日志/崩溃分析
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -236,7 +236,7 @@ napi_value TriggerDFXDelRef(napi_env, napi_callback_info info)
         napi_value obj = nullptr;
         STRICT_NAPI_CALL(napi_create_object(localEnv, &obj));
         napi_ref ref = nullptr;
-        // 在使用完成后调用napi_delete_reference来释放引用，避免内存泄露
+        // 在使用完成后调用napi_delete_reference来释放引用，避免内存泄漏
         napi_create_reference(localEnv, obj, 1, &ref);
         if (!localEnv.RecreateSame()) {
             if (ref != nullptr) {

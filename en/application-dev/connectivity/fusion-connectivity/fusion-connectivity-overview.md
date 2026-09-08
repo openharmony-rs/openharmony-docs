@@ -3,10 +3,10 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @guoxiadi-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:38:21.726Z pushedAt=2026-06-22T07:23:33.820Z -->
+<!-- md-trans-meta sourceCommit=1cdd305776bcaacdd45f57f863b06eb9c8b2cb12 translatedAt=2026-08-19T07:05:46.736Z pushedAt=2026-08-19T07:44:51.523Z -->
 
 ## Overview
 

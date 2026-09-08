@@ -6,7 +6,7 @@
 <!--Designer: @yuxiaoyang-->
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=cec291ce3b51a6a8511ccfd5197aae531861edc0 translatedAt=2026-08-01T12:31:40.243Z pushedAt=2026-08-01T12:33:00.488Z -->
+<!-- md-trans-meta sourceCommit=aafa18cca50e669e3fd5470a9d1248e0885402aa translatedAt=2026-08-20T06:25:59.259Z pushedAt=2026-08-20T13:29:04.466Z -->
 
 ## Overview
 
@@ -50,7 +50,7 @@ Third-party apps can use the metadata binding function to map App Linking links 
    import { Callback } from '@kit.BasicServicesKit';
    ```
 
-2. Define the callback used to return the encoded metadata and the bundle name.  
+2. Define the callback used to return the encoded metadata and the bundle name. The function receives the encoded content returned.   
 
    <!-- @[metadata_binding_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) -->
 

@@ -12,17 +12,20 @@
   - [@ohos.multimodalAwareness.metadataBinding (记忆链接)](js-apis-awareness-metadataBinding.md)
   - [@ohos.multimodalAwareness.deviceStatus (设备状态感知)](js-apis-awareness-deviceStatus.md)
   - [@ohos.multimodalAwareness.userStatus (用户状态感知)](js-apis-awareness-userStatus.md) 
+  - [@ohos.multimodalAwareness.carAwareness (车辆感知)](js-apis-awareness-carAwareness.md)
   <!--Del-->
   - [@ohos.multimodalAwareness.metadataBinding (记忆链接)(系统接口)](js-apis-awareness-metadataBinding-sys.md)
   - [@ohos.multimodalAwareness.deviceStatus (设备状态感知)(系统接口)](js-apis-awareness-deviceStatus-sys.md)
   - [@ohos.multimodalAwareness.onScreen (屏上感知)(系统接口)](js-apis-awareness-onScreen-sys.md)
   - [@ohos.multimodalAwareness.spatialAwareness (空间感知)(系统接口)](js-apis-awareness-spatialAwareness-sys.md)
+  - [@ohos.multimodalAwareness.carAwareness (车辆感知)(系统接口)](js-apis-awareness-carAwareness-sys.md)
   <!--DelEnd-->
 - 错误码<!--multimodal-awareness-arkts-errcode-->
   - [动作感知错误码](errorcode-motion.md)
   - [记忆链接错误码](errorcode-metadataBinding.md)
   - [设备状态感知错误码](errorcode-deviceStatus.md)
   - [用户状态感知错误码](errorcode-userStatus.md)
+  - [车辆感知错误码](errorcode-carAwareness.md)
   <!--Del-->
   - [空间感知错误码](errorcode-spatialAwareness.md)
   - [屏上感知错误码](errorcode-onScreen.md)

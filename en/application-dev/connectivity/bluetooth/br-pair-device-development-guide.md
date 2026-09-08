@@ -3,10 +3,10 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:37:49.611Z pushedAt=2026-06-18T01:27:28.072Z -->
+<!-- md-trans-meta sourceCommit=1cdd305776bcaacdd45f57f863b06eb9c8b2cb12 translatedAt=2026-08-19T07:05:21.242Z pushedAt=2026-08-19T07:25:07.667Z -->
 
 ## Introduction
 
@@ -29,9 +29,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 ### Subscribing to Pairing Status Change Events
 
-You can subscribe to pairing status change events to obtain the real-time pairing status. Multiple status transitions occur during the pairing process. Through the [BOND_STATE_BONDED](../../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#bondstate) event,
+You can subscribe to pairing status change events to obtain the real-time pairing status. During the entire pairing process, multiple status transitions occur, among which [BOND_STATE_BONDED](../../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#bondstate) indicates that the devices are paired.
 
-you can obtain the pairing status of the device that initiates pairing proactively or is paired.
+Whether an app initiates pairing with another device or another device initiates pairing with the app's device, the app can obtain the pairing state through this event.
 
 ```ts
 // Define the callback for pairing status changes.
