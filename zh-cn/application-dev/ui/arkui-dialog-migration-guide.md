@@ -254,6 +254,91 @@ DialogTextStyleOptions
 - **关键方法：** `constructor()`、`close(): void`、`getState(): DialogState`
 - **参考文档：** [js-apis-dialog.md#dialogbasecontroller](../reference/apis-arkui/js-apis-dialog.md#dialogbasecontroller)
 
+<!-- @[dialog_migration_state](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/DialogStatePage.ets) -->
+
+```typescript
+import { dialog } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct DialogStatePage {
+  private presenter: dialog.DialogPresenter = this.getUIContext().getDialogPresenter();
+  private controller: dialog.DialogBaseController = new dialog.DialogBaseController();
+  @State stateText: string = '';
+
+  build() {
+    Row() {
+      Column() {
+        Text('DialogBaseController 状态查询示例')
+          .fontSize(18)
+          .fontWeight(FontWeight.Bold)
+          .margin({ bottom: 20 })
+
+        Button('弹出弹窗（通过 controller 控制）')
+          .width('90%')
+          .margin({ bottom: 10 })
+          .onClick(() => {
+            this.showDialogWithController();
+          })
+
+        Button('查询状态 getState()')
+          .width('90%')
+          .margin({ bottom: 10 })
+          .onClick(() => {
+            this.queryState();
+          })
+
+        Button('关闭 close()')
+          .width('90%')
+          .margin({ bottom: 10 })
+          .onClick(() => {
+            this.controller.close();
+            this.stateText = '已调用 close()';
+          })
+
+        if (this.stateText) {
+          Text(this.stateText)
+            .fontSize(14)
+            .margin({ top: 10 })
+        }
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+
+  private showDialogWithController(): void {
+    this.presenter.present(() => {
+      Column() {
+        Text('通过 DialogBaseController 控制的弹窗')
+          .fontSize(16)
+          .margin({ bottom: 10 })
+        Button('内部关闭')
+          .onClick(() => {
+            this.controller.close();
+          })
+      }
+      .padding(20)
+    }, {
+      controller: this.controller,
+      alignment: dialog.DialogBaseAlignment.CENTER,
+      autoCancel: true
+    }).then((result: dialog.DialogResult) => {
+      this.stateText = 'present success, dialogId: ' + result.dialogId;
+    }).catch((error: BusinessError) => {
+      this.stateText = `present error: ${error.code}`;
+    });
+  }
+
+  private queryState(): void {
+    const state = this.controller.getState();
+    const stateNames = ['UNINITIALIZED', 'INITIALIZED', 'APPEARING', 'APPEARED', 'DISAPPEARING', 'DISAPPEARED'];
+    this.stateText = '当前状态: ' + stateNames[state];
+  }
+}
+```
+
 #### 9. DialogBaseAlignment
 
 - **定位：** 弹窗对齐方式枚举。
@@ -326,29 +411,76 @@ struct Index {
 
 **迁移后示例（新接口）：**
 
+<!-- @[dialog_migration_custom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/CustomDialogMigrationPage.ets) -->
+
 ```typescript
-import { DialogPresenter, DialogResult } from '@kit.ArkUI';
+import { dialog } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
-struct Index {
-  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
+struct CustomDialogMigrationPage {
+  private presenter: dialog.DialogPresenter = this.getUIContext().getDialogPresenter();
+  @State result: string = '';
 
   build() {
-    Button('打开弹窗')
-      .onClick(() => {
-        this.presenter.present(() => {
-          Column() {
-            Text('自定义弹窗内容')
-            Button('关闭')
-              .onClick(() => { /* dismiss via controller or dismiss() */ })
-          }
-        }, {
-          alignment: dialog.DialogBaseAlignment.CENTER,
-          autoCancel: true,
-          maskColor: 0x33000000
-        })
-      })
+    Row() {
+      Column() {
+        Text('CustomDialog 迁移示例')
+          .fontSize(18)
+          .fontWeight(FontWeight.Bold)
+          .margin({ bottom: 20 })
+
+        Button('老接口：@CustomDialog + CustomDialogController')
+          .width('90%')
+          .margin({ bottom: 10 })
+          .onClick(() => {
+            this.showOldCustomDialog();
+          })
+
+        Button('新接口：DialogPresenter.present（自定义弹窗）')
+          .width('90%')
+          .margin({ bottom: 10 })
+          .onClick(() => {
+            this.showNewCustomDialog();
+          })
+
+        if (this.result) {
+          Text(this.result)
+            .fontSize(14)
+            .margin({ top: 10 })
+        }
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+
+  private showOldCustomDialog(): void {
+    this.result = '老接口示例请参考 DialogProject 工程';
+  }
+
+  private showNewCustomDialog(): void {
+    this.presenter.present(() => {
+      Column() {
+        Text('自定义弹窗内容')
+          .fontSize(16)
+          .margin({ bottom: 10 })
+        Button('关闭弹窗')
+          .onClick(() => {
+            this.presenter.dismiss(0);
+          })
+      }
+      .padding(20)
+    }, {
+      alignment: dialog.DialogBaseAlignment.CENTER,
+      autoCancel: true,
+      maskColor: 0x33000000
+    }).then((result: dialog.DialogResult) => {
+      this.result = 'present success, dialogId: ' + result.dialogId;
+    }).catch((error: BusinessError) => {
+      this.result = `present error: ${error.code}`;
+    });
   }
 }
 ```
@@ -378,27 +510,83 @@ AlertDialog.show({
 
 **迁移后示例（新接口）：**
 
+<!-- @[dialog_migration_alert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/AlertDialogMigrationPage.ets) -->
+
 ```typescript
-import { DialogPresenter } from '@kit.ArkUI';
+import { dialog } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
-struct Index {
-  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
+struct AlertDialogMigrationPage {
+  private presenter: dialog.DialogPresenter = this.getUIContext().getDialogPresenter();
+  @State result: string = '';
 
   build() {
-    Button('弹出确认框')
-      .onClick(() => {
-        this.presenter.present({
-          title: '提示',
-          message: { content: '确认删除？' },
-          buttons: [
-            { value: '取消', action: () => console.info('取消') },
-            { value: '确认', action: () => console.info('确认') }
-          ],
-          alignment: dialog.DialogBaseAlignment.BOTTOM
-        })
-      })
+    Row() {
+      Column() {
+        Text('AlertDialog 迁移示例')
+          .fontSize(18)
+          .fontWeight(FontWeight.Bold)
+          .margin({ bottom: 20 })
+
+        Button('老接口：AlertDialog.show')
+          .width('90%')
+          .margin({ bottom: 10 })
+          .onClick(() => {
+            this.showOldAlertDialog();
+          })
+
+        Button('新接口：DialogPresenter.present（固定样式）')
+          .width('90%')
+          .margin({ bottom: 10 })
+          .onClick(() => {
+            this.showNewAlertDialog();
+          })
+
+        if (this.result) {
+          Text(this.result)
+            .fontSize(14)
+            .margin({ top: 10 })
+        }
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+
+  private showOldAlertDialog(): void {
+    this.result = '老接口示例请参考 ts-methods-alert-dialog-box.md';
+  }
+
+  private showNewAlertDialog(): void {
+    this.presenter.present({
+      title: '提示',
+      message: { content: '确认删除？' },
+      buttons: [
+        {
+          value: '取消',
+          action: () => {
+            this.result = '用户点击取消';
+          }
+        },
+        {
+          value: '确认',
+          action: () => {
+            this.result = '用户点击确认';
+          }
+        }
+      ],
+      alignment: dialog.DialogBaseAlignment.BOTTOM,
+      onWillDismiss: (dismissal: dialog.DialogDismissal) => {
+        this.result = 'onWillDismiss, reason: ' + dismissal.reason;
+        dismissal.dismiss();
+      }
+    }).then((result: dialog.DialogResult) => {
+      this.result = 'present success, dialogId: ' + result.dialogId;
+    }).catch((error: BusinessError) => {
+      this.result = `present error: ${error.code}`;
+    });
   }
 }
 ```
@@ -424,26 +612,69 @@ TextPickerDialog.show({
 
 **迁移后示例（新接口）：**
 
+<!-- @[dialog_migration_textpicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/TextPickerMigrationPage.ets) -->
+
 ```typescript
-import { DialogPresenter } from '@kit.ArkUI';
+import { dialog } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
-struct Index {
-  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
+struct TextPickerMigrationPage {
+  private presenter: dialog.DialogPresenter = this.getUIContext().getDialogPresenter();
   @State selected: number = 0;
+  @State result: string = '';
+  private range: string[] = ['A', 'B', 'C', 'D'];
 
   build() {
-    Button('弹出文本选择')
-      .onClick(() => {
-        this.presenter.present(() => {
-          TextPicker({ range: ['A', 'B', 'C'], selected: this.selected })
-            .onChange((value: string) => { this.selected = ['A','B','C'].indexOf(value) })
-            .onAccept((value: string) => console.info('选中: ' + value))
-        }, {
-          alignment: dialog.DialogBaseAlignment.CENTER
+    Row() {
+      Column() {
+        Text('TextPickerDialog 迁移示例')
+          .fontSize(18)
+          .fontWeight(FontWeight.Bold)
+          .margin({ bottom: 20 })
+
+        Button('老接口：TextPickerDialog.show')
+          .width('90%')
+          .margin({ bottom: 10 })
+          .onClick(() => {
+            this.result = '老接口示例请参考 ts-methods-textpicker-dialog.md';
+          })
+
+        Button('新接口：DialogPresenter.present + TextPicker')
+          .width('90%')
+          .margin({ bottom: 10 })
+          .onClick(() => {
+            this.showNewTextPickerDialog();
+          })
+
+        if (this.result) {
+          Text(this.result)
+            .fontSize(14)
+            .margin({ top: 10 })
+        }
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+
+  private showNewTextPickerDialog(): void {
+    this.presenter.present(() => {
+      TextPicker({ range: this.range, selected: this.selected })
+        .onChange((value: string) => {
+          this.selected = this.range.indexOf(value);
         })
-      })
+        .onAccept((value: string) => {
+          this.result = '选中: ' + value;
+        })
+    }, {
+      alignment: dialog.DialogBaseAlignment.CENTER
+    }).then((result: dialog.DialogResult) => {
+      this.result = 'present success, dialogId: ' + result.dialogId;
+    }).catch((error: BusinessError) => {
+      this.result = `present error: ${error.code}`;
+    });
   }
 }
 ```
@@ -469,24 +700,64 @@ TimePickerDialog.show({
 
 **迁移后示例（新接口）：**
 
+<!-- @[dialog_migration_timepicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/TimePickerMigrationPage.ets) -->
+
 ```typescript
-import { DialogPresenter } from '@kit.ArkUI';
+import { dialog } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
-struct Index {
-  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
+struct TimePickerMigrationPage {
+  private presenter: dialog.DialogPresenter = this.getUIContext().getDialogPresenter();
+  @State result: string = '';
 
   build() {
-    Button('弹出时间选择')
-      .onClick(() => {
-        this.presenter.present(() => {
-          TimePicker({ selected: new Date(), useMilitaryTime: true })
-            .onChange((value) => console.info('时间变化'))
-        }, {
-          alignment: dialog.DialogBaseAlignment.CENTER
+    Row() {
+      Column() {
+        Text('TimePickerDialog 迁移示例')
+          .fontSize(18)
+          .fontWeight(FontWeight.Bold)
+          .margin({ bottom: 20 })
+
+        Button('老接口：TimePickerDialog.show')
+          .width('90%')
+          .margin({ bottom: 10 })
+          .onClick(() => {
+            this.result = '老接口示例请参考 ts-methods-timepicker-dialog.md';
+          })
+
+        Button('新接口：DialogPresenter.present + TimePicker')
+          .width('90%')
+          .margin({ bottom: 10 })
+          .onClick(() => {
+            this.showNewTimePickerDialog();
+          })
+
+        if (this.result) {
+          Text(this.result)
+            .fontSize(14)
+            .margin({ top: 10 })
+        }
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+
+  private showNewTimePickerDialog(): void {
+    this.presenter.present(() => {
+      TimePicker({ selected: new Date(), useMilitaryTime: true })
+        .onChange((value: TimePickerValue) => {
+          this.result = '时间变化: ' + value.hour + ':' + value.minute;
         })
-      })
+    }, {
+      alignment: dialog.DialogBaseAlignment.CENTER
+    }).then((result: dialog.DialogResult) => {
+      this.result = 'present success, dialogId: ' + result.dialogId;
+    }).catch((error: BusinessError) => {
+      this.result = `present error: ${error.code}`;
+    });
   }
 }
 ```
@@ -512,34 +783,74 @@ DatePickerDialog.show({
 
 **迁移后示例（新接口）：**
 
+<!-- @[dialog_migration_datepicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/DatePickerMigrationPage.ets) -->
+
 ```typescript
-import { DialogPresenter } from '@kit.ArkUI';
+import { dialog } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
-struct Index {
-  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
+struct DatePickerMigrationPage {
+  private presenter: dialog.DialogPresenter = this.getUIContext().getDialogPresenter();
+  @State result: string = '';
 
   build() {
-    Button('弹出日期选择')
-      .onClick(() => {
-        this.presenter.present(() => {
-          DatePicker({
-            start: new Date('2020-01-01'),
-            end: new Date('2030-12-31')
+    Row() {
+      Column() {
+        Text('DatePickerDialog 迁移示例')
+          .fontSize(18)
+          .fontWeight(FontWeight.Bold)
+          .margin({ bottom: 20 })
+
+        Button('老接口：DatePickerDialog.show')
+          .width('90%')
+          .margin({ bottom: 10 })
+          .onClick(() => {
+            this.result = '老接口示例请参考 ts-methods-datepicker-dialog.md';
           })
-            .onChange((value) => console.info('日期变化'))
-        }, {
-          alignment: dialog.DialogBaseAlignment.CENTER
-        })
+
+        Button('新接口：DialogPresenter.present + DatePicker')
+          .width('90%')
+          .margin({ bottom: 10 })
+          .onClick(() => {
+            this.showNewDatePickerDialog();
+          })
+
+        if (this.result) {
+          Text(this.result)
+            .fontSize(14)
+            .margin({ top: 10 })
+        }
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+
+  private showNewDatePickerDialog(): void {
+    this.presenter.present(() => {
+      DatePicker({
+        start: new Date('2020-01-01'),
+        end: new Date('2030-12-31')
       })
+        .onChange((value: DatePickerResult) => {
+          this.result = '日期变化: ' + value.year + '-' + (value.month + 1) + '-' + value.day;
+        })
+    }, {
+      alignment: dialog.DialogBaseAlignment.CENTER
+    }).then((result: dialog.DialogResult) => {
+      this.result = 'present success, dialogId: ' + result.dialogId;
+    }).catch((error: BusinessError) => {
+      this.result = `present error: ${error.code}`;
+    });
   }
 }
 ```
 
 ## 同源示例
 
-以下示例片段与 samples 工程 `ArkuiDialogMigrationSample` 中的代码逐段同源，开发者可在工程中找到完整可运行代码。
+上方"迁移映射"章节中每个"迁移后示例（新接口）"代码块前均标注了 `<!-- @[tag](sample 文件 URL) -->` 同源注释，指向 samples 工程中对应的 `.ets` 文件。代码块内容为该文件的逐字摘录，开发者可点击注释中的链接查看完整源文件。
 
 > 示例工程路径：`applications_app_samples/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/`
 
