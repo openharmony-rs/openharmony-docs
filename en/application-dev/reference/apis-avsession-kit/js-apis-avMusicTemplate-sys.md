@@ -1,11 +1,11 @@
-# @ohos.multimedia.avMusicTemplate (Audio Template)(System API)
+# @ohos.multimedia.avMusicTemplate (Audio Template) (System API)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @gcw_gyH0B0hP-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=2a3dfcf597b531028f9b6c38458354ce1ab5a67d translatedAt=2026-09-01T13:13:06.227Z pushedAt=2026-09-07T11:36:51.686Z -->
+<!-- md-trans-meta sourceCommit=2a3dfcf597b531028f9b6c38458354ce1ab5a67d translatedAt=2026-09-01T13:13:06.227Z pushedAt=2026-09-08T01:25:05.240Z -->
 
 This module provides APIs for controlling the audio template. You can use these APIs to query data from media applications that use the audio template, display pages in a unified style, and deliver page operation instructions.
 
