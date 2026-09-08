@@ -332,31 +332,30 @@ ArkWeb组件将跟随ArkUI重新布局，效果如图1和图2所示。
    ArkTS-Sta示例：
 
    <!-- @[soft_keyboard_setmode_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry/src/main/ets/pages/SetSKBMode_one.ets) -->
-
-``` TypeScript
-// Index.ets
-'use static'
-import { $rawfile, TextAlign, Color, Web, Row, Text, ColumnOptions, Entry, Component, Column, Button, WebKeyboardAvoidMode } from '@ohos.arkui.component';
-import webview from '@ohos.web.webview';
-
-@Entry
-@Component
-struct KeyboardAvoidExample {
-  controller: webview.WebviewController = new webview.WebviewController();
-  build() {
-    Column() {
-      Row().height('50%').width('100%').backgroundColor(Color.Gray)
-      Web({ src: $rawfile('index.html'),controller: this.controller})
-        .keyboardAvoidMode(WebKeyboardAvoidMode.OVERLAYS_CONTENT) // 此时ArkWeb组件不会调整任何视口的大小
-      Text('I can see the bottom of the page')    
-        .width('100%')
-        .textAlign(TextAlign.Center)
-        .backgroundColor(Color.Pink)
-        .layoutWeight(1)
-    }.width('100%').height('100%')
-  }
-}
-```
+   
+   ``` TypeScript
+   // Index.ets
+   import { $rawfile, TextAlign, Color, Web, Row, Text, ColumnOptions, Entry, Component, Column, Button, WebKeyboardAvoidMode } from '@ohos.arkui.component';
+   import webview from '@ohos.web.webview';
+   
+   @Entry
+   @Component
+   struct KeyboardAvoidExample {
+     controller: webview.WebviewController = new webview.WebviewController();
+     build() {
+       Column() {
+         Row().height('50%').width('100%').backgroundColor(Color.Gray)
+         Web({ src: $rawfile('index.html'),controller: this.controller})
+           .keyboardAvoidMode(WebKeyboardAvoidMode.OVERLAYS_CONTENT) // 此时ArkWeb组件不会调整任何视口的大小。
+         Text('I can see the bottom of the page')    
+           .width('100%')
+           .textAlign(TextAlign.Center)
+           .backgroundColor(Color.Pink)
+           .layoutWeight(1)
+       }.width('100%').height('100%')
+     }
+   }
+   ```
 
 
    ArkWeb组件根据避让模式进行避让，效果见图3。
