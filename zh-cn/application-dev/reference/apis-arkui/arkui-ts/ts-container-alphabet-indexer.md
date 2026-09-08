@@ -1108,6 +1108,6 @@ struct AlphabetIndexerSample {
 
 ![未设置系统材质时](figures/alphabetIndexerWithoutMaterial.gif)
 
-设置沉浸光感后：
+设置系统材质后：
 
 ![设置系统材质后](figures/alphabetIndexerWithMaterial.gif)
