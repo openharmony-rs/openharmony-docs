@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-access模块提供了打开蓝牙、关闭蓝牙和获取蓝牙状态的方法。
+access模块提供了打开蓝牙、关闭蓝牙和获取蓝牙状态等方法，适用于应用中需要控制蓝牙开关状态、查询蓝牙连接信息以及进行蓝牙系统级配置管理的场景。
 
 > **说明：**
 >
@@ -38,7 +38,7 @@ factoryReset(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                                               | 必填  | 说明                                                       |
 | -------- | ------------------------------------------------- | ----- | ---------------------------------------------------------- |
-| callback     | AsyncCallback&lt;void&gt;             | 是    | 回调函数。当恢复蓝牙出厂设置时成功，err为undefined，否则为错误对象。       |
+| callback     | AsyncCallback&lt;void&gt;             | 是    | 回调函数。当恢复蓝牙出厂设置成功时，err为undefined，否则为错误对象。       |
 
 **错误码**：
 
@@ -159,7 +159,7 @@ try {
 
 restrictBluetooth(): Promise&lt;void&gt;
 
-约束当前蓝牙设备的BR/EDR能力。
+约束当前蓝牙设备的BR/EDR能力，约束后设备的传统蓝牙功能将受限，适用于仅需使用低功耗蓝牙的场景。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -203,7 +203,7 @@ try {
 
 notifyDialogResult(notifyDialogResultParams: NotifyDialogResultParams): Promise&lt;void&gt;
 
-通知用户操作蓝牙对话框的行为。使用Promise异步回调。
+将用户操作蓝牙对话框的行为通知给蓝牙服务。使用Promise异步回调。
 - 与API version 20开始支持的[access.enableBluetoothAsync](js-apis-bluetooth-access.md#accessenablebluetoothasync20)搭配使用，应用申请开启蓝牙，调用该接口会将用户操作开关蓝牙对话框的行为通知给蓝牙服务。
 - 与API version 20开始支持的[access.disableBluetoothAsync](js-apis-bluetooth-access.md#accessdisablebluetoothasync20)搭配使用，应用申请关闭蓝牙，调用该接口会将用户操作开关蓝牙对话框的行为通知给蓝牙服务。
 

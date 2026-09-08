@@ -137,7 +137,7 @@ MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_GetWriteCacheHandler(OH_MediaA
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md)* changeRequest | [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md)实例。 |
-| int32_t* fd | 临时文件写句柄。 |
+| int32_t* fd | 输出参数，用于获取临时文件的写句柄，通过该句柄可以向临时文件写入数据。使用完毕后请及时关闭句柄，避免资源泄漏。 |
 
 **返回：**
 

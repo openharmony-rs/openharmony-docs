@@ -27,6 +27,6 @@ SCSI命令（TEST UNIT READY）的请求结构体，通常用于确认逻辑单�
 | 名称 | 描述 |
 | -- | -- |
 | uint8_t control | Control字段，用于指定SCSI命令的控制信息。 |
-| uint32_t timeout | 超时时间（单位：毫秒）。 |
+| uint32_t timeout | 超时时间（单位：ms）。 |
 
 

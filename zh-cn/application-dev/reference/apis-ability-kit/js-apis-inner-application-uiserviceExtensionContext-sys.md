@@ -229,7 +229,7 @@ struct SubIndex {
               'email': [encodeURI('xxx@example.com'),
                 encodeURI('xxx@example.com')], // 收件人邮箱地址，多值以逗号分隔，对数组内容使用encodeURI()方法进行url编码
               'cc': [encodeURI('xxx@example.com'),
-                encodeURI('xxx@example.com')], // 抄收人邮箱地址，多值以逗号分隔，对数组内容使用encodeURI()方法进行url编码
+                encodeURI('xxx@example.com')], // 抄送人邮箱地址，多值以逗号分隔，对数组内容使用encodeURI()方法进行url编码
               'bcc': [encodeURI('xxx@example.com'),
                 encodeURI('xxx@example.com')], // 密送人邮箱地址，多值以逗号分隔，对数组内容使用encodeURI()方法进行url编码
               'subject': encodeURI('邮件主题'), // 邮件主题，对内容使用encodeURI()方法进行url编码

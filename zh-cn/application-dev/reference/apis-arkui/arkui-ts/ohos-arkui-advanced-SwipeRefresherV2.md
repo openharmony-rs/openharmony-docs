@@ -17,7 +17,7 @@ SwipeRefresherV2组件用于实现下拉刷新功能，支持自定义加载提�
 >
 > - 该组件仅可在Stage模型下使用。
 >
-> - 如果SwipeRefresherV2设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到SwipeRefresherV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议SwipeRefresherV2设置通用属性和通用事件。
+> - 如果SwipeRefresherV2设置[通用属性](ts-component-general-attributes.md)或[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到SwipeRefresherV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议SwipeRefresherV2设置通用属性和通用事件。
 
 **起始版本：** 26.0.0
 
@@ -26,7 +26,6 @@ SwipeRefresherV2组件用于实现下拉刷新功能，支持自定义加载提�
 ```ts
 import { SwipeRefresherV2 } from '@kit.ArkUI';
 ```
-
 
 ## 子组件
 
@@ -70,10 +69,6 @@ build函数用于构造SwipeRefresherV2高级组件。
 **设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **ArkTS-Sta起始版本：** 26.0.0
-
-## 事件
-
-不支持[通用事件](ts-component-general-events.md)。
 
 ## 示例
 

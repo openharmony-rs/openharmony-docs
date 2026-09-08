@@ -29,7 +29,7 @@
 
 | 名称      | 类型   | 只读 | 可选 | 说明                      |
 | --------- | ------ | ---- | ---- | ------------------------- |
-| glyph     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 存储文字的索引，该参数为整数，传入浮点类型时向下取整。 |
+| glyph     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 存储字形的索引，该参数为整数，传入浮点类型时向下取整。 |
 | positionX | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 否   | 文本的起点x轴坐标，该参数为浮点数。 |
 | positionY | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 否   | 文本的起点y轴坐标，该参数为浮点数。 |
 

@@ -208,7 +208,7 @@ sys.symbol.ohos_lungs图标不支持设置fontWeight。
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                |
 | ------ | ------------------------------------------------------------ | ---- | --------------------------------------------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string <br>ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;undefined| 是   | SymbolGlyph组件字体粗细。<br>number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如“400”，以及“bold”、“bolder”、“lighter”、“regular”、“medium”，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。传入超出取值范围或不符合间隔要求的值时取默认值。<br>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string <br>ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;undefined| 是   | SymbolGlyph组件字体粗细。<br>number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型支持number类型取值的字符串形式，例如“400”，以及“bold”、“bolder”、“lighter”、“regular”、“medium”，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。<br>**说明：**<br>传入超出取值范围的值时取默认值。传入不符合间隔要求的值时也取默认值（仅支持100整数倍的值）。<br>取值为undefined时，按默认值处理。 |
 
 ### renderingStrategy
 
@@ -372,7 +372,7 @@ ArkTS-Sta: minFontScale(scale: double | Resource | undefined)
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| scale  |ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)><br>ArkTS-Sta: double \| [Resource](ts-types.md#resource) \| undefined | 是   | SymbolGlyph组件最小的字体缩放倍数。<br>取值范围：[0, 1] <br>设置为0，缩放最小。<br>**说明：** <br>设置的值小于0时，按值为0处理。设置的值大于1时，按值为1处理。异常值默认不生效。<br>取值为undefined时，不生效。 |
+| scale  |ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)><br>ArkTS-Sta: double \| [Resource](ts-types.md#resource) \| undefined | 是   | SymbolGlyph组件最小的字体缩放倍数。<br>取值范围：[0, 1] <br>设置为0，缩放最小。<br>**说明：** <br>设置的值小于0时，按值为0处理。设置的值大于1时，按值为1处理。异常值默认不生效。<br>取值为undefined时，不生效。<br>未设置时，不限制最小缩放倍数。  |
 
 ### maxFontScale<sup>18+</sup>
 
@@ -394,7 +394,7 @@ ArkTS-Sta: maxFontScale(scale: double | Resource | undefined)
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| scale  |ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)><br>ArkTS-Sta: double \| [Resource](ts-types.md#resource) \| undefined | 是   | SymbolGlyph组件最大的字体缩放倍数。<br>取值范围：[1, +∞)<br>**说明：** <br>设置的值小于1时，按值为1处理。<br>取值为undefined时，不生效。 |
+| scale  |ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)><br>ArkTS-Sta: double \| [Resource](ts-types.md#resource) \| undefined | 是   | SymbolGlyph组件最大的字体缩放倍数。<br>取值范围：[1, +∞)<br>**说明：** <br>设置的值小于1时，按值为1处理。<br>取值为undefined时，不生效。<br>未设置时，不限制最大缩放倍数。 |
 
 ### shaderStyle<sup>20+</sup>
 
@@ -444,7 +444,7 @@ ArkTS-Sta: symbolShadow(shadow: ShadowOptions | undefined)
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| shadow  |ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)\><br>ArkTS-Sta: [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明) \| undefined   | 是  | SymbolGlyph组件的阴影效果。<br>单位：[vp](ts-pixel-units.md#基本像素单位) <br>值为undefined时，与传以下值的效果一致：{<br>radius：0,<br>color：Color.Black,<br>offsetX：0,<br>offsetY：0<br>} <br>不支持fill、type属性和color中的ColoringStrategy枚举值。|
+| shadow  |ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)\><br>ArkTS-Sta: [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明) \| undefined   | 是  | SymbolGlyph组件的阴影效果。<br>单位：[vp](ts-pixel-units.md#基本像素单位) <br>值为undefined时，与传以下值的效果一致：{<br>radius：0,<br>color：Color.Black,<br>offsetX：0,<br>offsetY：0<br>} <br>**说明：** <br>仅支持ShadowOptions中的radius、color、offsetX、offsetY属性，不支持fill、type属性和color中的ColoringStrategy枚举值。|
 
 ## ScaleSymbolEffect<sup>12+</sup>
 

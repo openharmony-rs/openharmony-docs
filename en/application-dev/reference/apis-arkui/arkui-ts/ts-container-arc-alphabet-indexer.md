@@ -430,4 +430,4 @@ struct ArcListAndIndexer {
 }
 ```
 
-![arc_alphabet_indexer_preview](figures/arc_alphabet_indexer_preview.gif)
+![arc_alphabet_indexer_preview-w200](figures/arc_alphabet_indexer_preview.gif)

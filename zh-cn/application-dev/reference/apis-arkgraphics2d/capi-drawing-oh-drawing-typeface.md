@@ -12,7 +12,7 @@ typedef struct OH_Drawing_Typeface OH_Drawing_Typeface
 
 ## 概述
 
-用于描述字形。
+用于描述字体。
 
 **起始版本：** 11
 

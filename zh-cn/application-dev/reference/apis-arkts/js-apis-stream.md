@@ -989,7 +989,7 @@ console.info("Readable test pause", readableStream.isPaused()); // 期望结果:
 
 setEncoding(encoding?: string): boolean
 
-设置可读流的字符编码类型。
+设置可读流的字符编码类型，当传入encoding为'utf8'时，会被自动转换为'utf-8'。
 
 当缓冲区有数据时，不允许设置字符编码类型，返回值为false。
 
@@ -1005,7 +1005,7 @@ setEncoding(encoding?: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| encoding | string | 否 | 需要设置的字符编码类型。默认值是'utf8'，当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。 |
+| encoding | string | 否 | 需要设置的字符编码类型。默认值是'utf-8'，当前版本支持'utf-8'、'gb18030'、'gbk'以及'gb2312'。 |
 
 **返回值：**
 
@@ -1045,6 +1045,7 @@ class TestReadable extends stream.Readable {
 let readableStream = new TestReadable();
 let result = readableStream.setEncoding("utf8");
 console.info("Readable result", result); // 期望结果: Readable result true
+console.info('setEncoding result', readableStream.readableEncoding); // 期望结果: setEncoding result utf-8
 ```
 
 ### isPaused

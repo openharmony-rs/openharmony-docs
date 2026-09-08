@@ -28,7 +28,7 @@ import { browser } from '@kit.MDMKit';
 
 setPolicies(admin: Want, appId: string, policies: string, callback: AsyncCallback&lt;void&gt;): void
 
-为指定的浏览器设置浏览策略，使用callback异步回调。
+为指定的浏览器设置浏览器策略，使用callback异步回调。
 
 **废弃版本：** 26.0.0
 
@@ -90,7 +90,7 @@ browser.setPolicies(wantTemp, appId, policies, (err) => {
 
 setPolicies(admin: Want, appId: string, policies: string): Promise&lt;void&gt;
 
-为指定的浏览器设置浏览策略，使用Promise异步回调。
+为指定的浏览器设置浏览器策略，使用Promise异步回调。
 
 **废弃版本：** 26.0.0
 

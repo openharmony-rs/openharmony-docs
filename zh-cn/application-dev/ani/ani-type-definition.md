@@ -33,7 +33,7 @@ typedef double   ani_double;   // 双精度浮点型    ETS声明：double/numbe
 | `ani_ref`           | 所有引用类型的基类型       | -                                                 |
 | `ani_object`        | 任何非基本类型             | 不包括像`ani_int`这样的基本类型                    |
 | `ani_error`         | `Error`                   | -                                                 |
-| `ani_fn_object`     | `Function/()=>void`       | -                                                 |
+| `ani_fn_object`     | `Function/() => void`       | -                                                 |
 | `ani_enum_item`     | 枚举项                    | -                                                 |
 | `ani_tuple_value`   | 元组值                    | -                                                 |
 | `ani_arraybuffer`   | `ArrayBuffer`             | -                                                 |
@@ -43,7 +43,8 @@ typedef double   ani_double;   // 双精度浮点型    ETS声明：double/numbe
 | `ani_module`        | 模块类型                  | -                                                 |
 | `ani_namespace`     | 命名空间类型              | -                                                 |
 | `ani_enum`          | 枚举类型                  | -                                                 |
-| `ani_fixedarray`    | `FixedArray<T>`           | 所有fixed array的基类型                           |
+| `ani_fixedarray`    | `FixedArray<T>`           | 引用元素定长数组类型                              |
+| `ani_valuearray`    | `ValueArray<T>`           | 基本类型元素定长数组的基类型                      |
 | `ani_array`         | `T[]`                     | 等价于`Array<T>`                                  |
 
 
@@ -70,16 +71,16 @@ ani_ref
 │   │       ├── ani_namespace
 │   │       └── ani_enum
 │   ├── ani_array
-│   └── ani_fixedarray
-│       ├── ani_fixedarray_boolean
-│       ├── ani_fixedarray_char
-│       ├── ani_fixedarray_byte
-│       ├── ani_fixedarray_short
-│       ├── ani_fixedarray_int
-│       ├── ani_fixedarray_long
-│       ├── ani_fixedarray_float
-│       ├── ani_fixedarray_double
-│       └── ani_fixedarray_ref
+│   ├── ani_fixedarray
+│   └── ani_valuearray
+│       ├── ani_valuearray_boolean
+│       ├── ani_valuearray_char
+│       ├── ani_valuearray_byte
+│       ├── ani_valuearray_short
+│       ├── ani_valuearray_int
+│       ├── ani_valuearray_long
+│       ├── ani_valuearray_float
+│       └── ani_valuearray_double
 ```
 例如`auto str = static_cast<ani_string>(string_ref);`
 
@@ -92,14 +93,15 @@ ani_ref
 参数中的`ani_object`代表所有非基本对象类型。如果存在像`A | B`这样的联合类型参数，则必须使用`Object_InstanceOf`来识别实际类型。
 
 ```ts
-type DataType = string | ArrayBuffer | FixedArray<int> | FixedArray<string>
+type DataType = string | ArrayBuffer | ValueArray<int> | FixedArray<string>
 native function handleData(data: DataType): void
 
 function main(){
     loadLibrary("libraryName")
     handleData("hello")                 // 将会输出 "Object is String; content: hello"
     handleData(new ArrayBuffer(1024))   // 将会输出 "Object is ArrayBuffer; length: 1024"
-    handleData(new FixedArray<int>())   // 将会输出 "Object is FixedArray"
+    handleData(new ValueArray<int>())      // 将会输出 "Object is ValueArray"
+    handleData(new FixedArray<string>())   // 将会输出 "Object is FixedArray"
 }
 ```
 
@@ -107,40 +109,77 @@ function main(){
 static void handleData_union(ani_env *env, ani_object union_obj) {
     // 注意：在生产代码中，通过`GlobalReference_Create`将FindClass找到的类缓存会大大提高效率
     ani_class stringClass {};
-    env->FindClass("std.core.String", &stringClass);
+    ani_status status = env->FindClass("std.core.String", &stringClass);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
 
     ani_class arrayBufferClass {};
-    env->FindClass("std.core.ArrayBuffer", &arrayBufferClass);
+    status = env->FindClass("std.core.ArrayBuffer", &arrayBufferClass);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
 
-    ani_class fixedArrayIntClass {};
-    env->FindClass("A{i}", &fixedArrayIntClass);
+    ani_class valueArrayIntClass {};
+    status = env->FindClass("A{i}", &valueArrayIntClass);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
 
     ani_class fixedArrayStringClass {};
-    env->FindClass("A{C{std.core.String}}", &fixedArrayStringClass);
+    status = env->FindClass("A{C{std.core.String}}", &fixedArrayStringClass);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
 
     ani_boolean isString = ANI_FALSE;
-    env->Object_InstanceOf(union_obj, stringClass, &isString);
+    status = env->Object_InstanceOf(union_obj, stringClass, &isString);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
     if (isString) {
-        auto stringContent = ANIUtils_ANIStringToStdString(env, static_cast<ani_string>(union_obj));
-        std::cout << "Object is String; content: " << stringContent.c_str() << std::endl;
+        ani_size sz {};
+        env->String_GetUTF8Size(static_cast<ani_string>(union_obj), &sz);
+        std::string result(sz + 1, 0);
+        env->String_GetUTF8(static_cast<ani_string>(union_obj), result.data(), result.size(), &sz);
+        result.resize(sz);
+        std::cout << "Object is String; content: " << result.c_str() << std::endl;
         return;
     }
 
     ani_boolean isArrayBuffer = ANI_FALSE;
-    env->Object_InstanceOf(union_obj, arrayBufferClass, &isArrayBuffer);
+    status = env->Object_InstanceOf(union_obj, arrayBufferClass, &isArrayBuffer);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
     if (isArrayBuffer) {
         ani_int length;
-        env->Object_CallMethodByName_Int(union_obj, "getByteLength", nullptr, &length);
+        status = env->Object_CallMethodByName_Int(union_obj, "getByteLength", nullptr, &length);
+        if (status != ANI_OK) {
+            // handle error and return
+        }
         std::cout << "Object is ArrayBuffer; length: " << length << std::endl;
         return;
     }
 
-    ani_boolean isIntArray = ANI_FALSE;
-    env->Object_InstanceOf(union_obj, fixedArrayIntClass, &isIntArray);
-    ani_boolean isStringArray = ANI_FALSE;
-    env->Object_InstanceOf(union_obj, fixedArrayStringClass, &isStringArray);
-    assert(isIntArray || isStringArray);
-    std::cout << "Object is FixedArray"<< std::endl;
+    ani_boolean isIntValueArray = ANI_FALSE;
+    status = env->Object_InstanceOf(union_obj, valueArrayIntClass, &isIntValueArray);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
+    if (isIntValueArray) {
+        std::cout << "Object is ValueArray"<< std::endl;
+        return;
+    }
+
+    ani_boolean isStringFixedArray = ANI_FALSE;
+    status = env->Object_InstanceOf(union_obj, fixedArrayStringClass, &isStringFixedArray);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
+    if (isStringFixedArray) {
+        std::cout << "Object is FixedArray"<< std::endl;
+    }
     return;
 }
 ```

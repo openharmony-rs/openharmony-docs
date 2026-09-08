@@ -37,7 +37,7 @@
 | OH_Drawing_Point\* OH_Drawing_PointCreate(float x, float y) | 用于创建一个坐标点对象。 |
 | OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPoint(OH_Drawing_Canvas \*canvas, const OH_Drawing_Point2D \*point) | 用于画一个点。 |
 | OH_Drawing_Rect\* OH_Drawing_RectCreate(float left, float top, float right, float bottom) | 用于创建一个矩形对象。 |
-| void OH_Drawing_CanvasDrawArc(OH_Drawing_Canvas \*canvas, const OH_Drawing_Rect \*rect, float startAngle, float sweepAngle) | 用于画一个弧。 |
+| void OH_Drawing_CanvasDrawArc(OH_Drawing_Canvas \*canvas, const OH_Drawing_Rect \*rect, float startAngle, float sweepAngle) | 用于画一个圆弧。 |
 | void OH_Drawing_CanvasDrawCircle(OH_Drawing_Canvas \*canvas, const OH_Drawing_Point \*point, float radius) | 用于画一个圆形。 |
 | OH_Drawing_Path\* OH_Drawing_PathCreate(void) | 用于创建一个路径对象。 |
 | void OH_Drawing_CanvasDrawPath(OH_Drawing_Canvas \*canvas, const OH_Drawing_Path \*path) | 用于画一个自定义路径。 |
@@ -66,7 +66,6 @@ OH_Drawing_PenSetWidth(pen, 40);
 // 设置画布的画笔
 OH_Drawing_CanvasAttachPen(canvas, pen);
 // 绘制5个点
-AdaptationUtil* adaptationUtil = AdaptationUtil::GetInstance();
 OH_Drawing_Point2D point1 = {value200_, value200_};
 OH_Drawing_CanvasDrawPoint(canvas, &point1);
 OH_Drawing_Point2D point2 = {value400_, value400_};
@@ -266,7 +265,7 @@ OH_Drawing_Region *region2 = OH_Drawing_RegionCreate();
 OH_Drawing_Rect *rect2 = OH_Drawing_RectCreate(value300_, value300_, value900_, value900_);
 OH_Drawing_RegionSetRect(region2, rect2);
 // 两个矩形区域组合
-OH_Drawing_RegionOp(region1, region2, OH_Drawing_RegionOpMode::REGION_OP_MODE_XOR);
+OH_Drawing_RegionOp(region1, region2, REGION_OP_MODE_XOR);
 OH_Drawing_CanvasDrawRegion(canvas, region1);
 // 去除掉画布中的画刷
 OH_Drawing_CanvasDetachBrush(canvas);

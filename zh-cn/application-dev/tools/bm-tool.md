@@ -70,7 +70,7 @@ bm install [-h] [-p filePath] [-r] [-w waitingTime] [-s hspDirPath] [-u userId] 
 | -p | 可选参数，指定待安装的HAP/HSP路径，多HAP/HSP应用可指定多HAP/HSP所在文件夹路径。从API version 22开始，支持指定待安装的APP路径，也可指定只存在一个APP的文件夹路径。 |
 | -r | 可选参数，覆盖安装一个HAP/HSP。默认缺省，缺省时表示覆盖安装。 |
 | -s | 安装应用间HSP时为必选参数，其他场景为可选参数。用于指定待安装应用间HSP的路径。从API version 24开始，当指定目录时，路径目录下可以存在多个同包名、不同模块名的HSP。API version 23及之前版本，路径目录下只能存在一个HSP。<br>**说明：**<br> 应用间HSP不对三方应用开放，三方无法安装应用间HSP。 |
-| -w | 可选参数，安装HAP时指定bm工具等待时间，最小的等待时长为180s，最大的等待时长为600s,&nbsp;默认缺省为180s。 |
+| -w | 可选参数，安装HAP时指定bm工具等待时间，最小的等待时长为180s，最大的等待时长为600s，默认缺省为180s。 |
 | -u | 可选参数，指定[用户](#userid)，默认在当前活跃用户下安装应用。仅支持在当前活跃用户或0用户下安装。<br>**说明：**<br> 如果当前活跃用户是100，使用命令`bm install -p /data/local/tmp/ohos.app.hap -u 102`安装时，只会在当前活跃用户100下安装应用。 |
 | -d | 可选参数，允许应用降级安装，即设备已安装较高版本的应用，也可以覆盖安装较低版本的应用。仅支持签名证书分发类型为app_gallery或者签名证书类型为debug的三方应用降级安装。从API version 23开始支持。 |
 | -g | 可选参数，安装签名证书类型为debug的应用时自动授予[user_grant](../security/AccessToken/app-permission-mgmt-overview.md#user_grant用户授权)和[manual_settings](../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)权限。<br>仅对[开发者模式](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-developer-mode#section530763213432)下的签名证书类型为debug的应用生效。可以通过<!--RP5-->[Profile签名文件](../security/app-provision-structure.md)<!--RP5End-->中的type字段查看签名证书类型。<br>签名证书类型为debug的应用更新为签名证书类型为release的应用时取消已授予的[user_grant](../security/AccessToken/app-permission-mgmt-overview.md#user_grant用户授权)和[manual_settings](../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)权限。从API version 24开始支持。 |

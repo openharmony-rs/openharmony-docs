@@ -76,7 +76,7 @@ ArkGraphics 3D支持用户创建环境资源，定义3D场景的背景。
    <!-- @[scene_camera_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
 
    ``` TypeScript
-   this.cam = await this.rf.createCamera({ 'name': 'Camera1' });
+   this.cam = await this.rf.createCamera({ name: 'Camera1' });
    this.cam.enabled = true;
    this.cam.position.z = 5;
    ```
@@ -85,7 +85,7 @@ ArkGraphics 3D支持用户创建环境资源，定义3D场景的背景。
    <!-- @[scene_camera_init](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics3D/ArkGraphics3DSta/entry/src/main/ets/arkgraphic/resource.ets) -->
 
    ``` TypeScript
-   this.cam = await this.rf!.createCamera({ 'name': 'Camera1' });
+   this.cam = await this.rf!.createCamera({ name: 'Camera1' });
    this.cam!.enabled = true;
    this.cam!.position.z = 5;
    ```
@@ -186,7 +186,10 @@ ArkGraphics 3D支持用户创建环境资源，定义3D场景的背景。
        envEntity.indirectDiffuseFactor.z = 1;
        return envEntity;
      } catch (error) {
-       throw new Error('Failed to create environment:' + error);
+       if (error instanceof Error) {
+         throw error;
+       }
+       throw new Error('Failed to create environment: ${String(error)}')
      }
    }
    ```

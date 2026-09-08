@@ -14,27 +14,29 @@
 
 ## 将`std::string`转换为`ani_string`
 ```cpp
-std::optional<ani_string> ANIUtils_StdStringToANIString(ani_env *env, std::string str)
-{
-    ani_string result_string {};
-    if (env->String_NewUTF8(str.c_str(), str.size(), &result_string) != ANI_OK) {
-        return {};
-    }
-    return result_string;
+// str为std::string，通过UTF-8编码创建ani_string。
+ani_string result_string {};
+ani_status status = env->String_NewUTF8(str.c_str(), str.size(), &result_string);
+if (status != ANI_OK) {
+    // handle error and return
 }
 ```
 
 ## 将`ani_string`转换为`std::string`
 ```cpp
-std::string ANIUtils_ANIStringToStdString(ani_env *env, ani_string ani_str)
-{
-    ani_size sz {};
-    env->String_GetUTF8Size(ani_str, &sz);
-
-    std::string result(sz + 1, 0);
-    env->String_GetUTF8(ani_str, result.data(), result.size(), &sz);
-    result.resize(sz);
-    return result;
+// 1. 获取UTF-8编码的字节数。
+ani_size sz {};
+ani_status status = env->String_GetUTF8Size(ani_str, &sz);
+if (status != ANI_OK) {
+    // handle error and return
 }
+
+// 2. 拷贝到缓冲区。
+std::string result(sz + 1, 0);
+status = env->String_GetUTF8(ani_str, result.data(), result.size(), &sz);
+if (status != ANI_OK) {
+    // handle error and return
+}
+result.resize(sz);
 ```
 

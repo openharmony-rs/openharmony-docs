@@ -11,11 +11,13 @@
     - [@ohos.account.appAccount (应用账号管理)](js-apis-appAccount.md)
     - [@ohos.account.distributedAccount (分布式账号管理)](js-apis-distributed-account.md)
     - [@ohos.account.osAccount (系统账号管理)](js-apis-osAccount.md)
+    - [@ohos.account.osAccount.authorization (系统账号授权管理)](js-apis-osAccount-authorization.md)
     <!--Del-->
     - [@ohos.account.distributedAccount (分布式账号管理)(系统接口)](js-apis-distributed-account-sys.md)
     - [@ohos.account.osAccount (系统账号管理)(系统接口)](js-apis-osAccount-sys.md)
     <!--DelEnd-->
     - [系统账号约束列表](appendix-osAccount-constraints.md)
+    - [系统账号特权列表](appendix-osAccount-authorization-privileges.md)
   - 设备管理<!--device-management-arkts-->
     - [@ohos.batteryInfo (电量信息)](js-apis-battery-info.md)
     - [@ohos.busManager.serial (串口通信管理)](js-apis-busmanager-serial.md)

@@ -3269,7 +3269,7 @@ export default class EntryAbility extends UIAbility {
       let systemBarProperties: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
-        // 以下两个属性从API Version8开始支持
+        // 以下两个属性从API version 8开始支持
         statusBarContentColor: '#ffffff',
         navigationBarContentColor: '#00ffff'
       };
@@ -3310,7 +3310,7 @@ export default class EntryAbility extends UIAbility {
       let systemBarProperties: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
-        //以下两个属性从API Version8开始支持
+        // 以下两个属性从API version 8开始支持
         statusBarContentColor: '#ffffff',
         navigationBarContentColor: '#00ffff'
       };
@@ -18635,7 +18635,7 @@ export default class EntryAbility extends UIAbility {
       let systemBarProperties: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
-        // 以下两个属性从API Version8开始支持
+        // 以下两个属性从API version 8开始支持
         statusBarContentColor: '#ffffff',
         navigationBarContentColor: '#00ffff'
       };
@@ -19739,7 +19739,7 @@ export default class EntryAbility extends UIAbility {
       let systemBarProperties: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
-        // 以下两个属性从API Version8开始支持
+        // 以下两个属性从API version 8开始支持
         statusBarContentColor: '#ffffff',
         navigationBarContentColor: '#00ffff'
       };
@@ -19809,7 +19809,7 @@ export default class EntryAbility extends UIAbility {
       let systemBarProperties: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
-        // 以下两个属性从API Version8开始支持
+        // 以下两个属性从API version 8开始支持
         statusBarContentColor: '#ffffff',
         navigationBarContentColor: '#00ffff'
       };

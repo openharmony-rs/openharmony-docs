@@ -6,7 +6,7 @@
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
 
-该模块主要提供WLAN基础功能（如WLAN扫描、连接管理、连接信息查询、信号强度获取等）、P2P（peer-to-peer）功能（如设备发现、群组创建与管理、P2P连接等）和WLAN消息通知服务，适用于应用通过WLAN接入网络或与其他设备进行点对点数据传输和互联互通的场景。
+该模块主要提供Wi-Fi基础功能（如Wi-Fi扫描、连接管理、连接信息查询、信号强度获取等）、P2P（peer-to-peer）功能（如设备发现、群组创建与管理、P2P连接等）和Wi-Fi消息通知服务，适用于应用通过Wi-Fi接入网络或与其他设备进行点对点数据传输和互联互通的场景。
 
 > **说明：**
 >
@@ -25,7 +25,7 @@ import wifi from '@ohos.wifi';
 
 isWifiActive(): boolean
 
-查询WLAN是否已使能。
+查询Wi-Fi是否已使能。
 
 > **说明：**
 >
@@ -58,7 +58,7 @@ try {
 
 scan(): boolean
 
-启动WLAN扫描。
+启动Wi-Fi扫描。
 
 > **说明：**
 >
@@ -152,7 +152,7 @@ wifi.getScanInfos().then(result => {
 
 ## WifiScanInfo<sup>(deprecated)</sup>
 
-WLAN热点信息。
+Wi-Fi热点信息。
 
 > **说明：**
 >
@@ -166,11 +166,11 @@ WLAN热点信息。
 | ssid | string | 否 | 否 | 热点的SSID，最大长度为32字节，编码格式为UTF-8。 |
 | bssid | string | 否 | 否 | 热点的BSSID，例如：00:11:22:33:44:55。 |
 | capabilities | string | 否 | 否 | 热点能力。 |
-| securityType | [WifiSecurityType](#wifisecuritytypedeprecated) | 否 | 否 | WLAN加密类型。 |
+| securityType | [WifiSecurityType](#wifisecuritytypedeprecated) | 否 | 否 | Wi-Fi加密类型。 |
 | rssi | number | 否 | 否 | 热点的信号强度(dBm)。 |
-| band | number | 否 | 否 | WLAN接入点的频段。1表示2.4GHz；2表示5GHz。|
-| frequency | number | 否 | 否 | WLAN接入点的频率，单位：MHz。 |
-| channelWidth | number | 否 | 否 | WLAN接入点的带宽。 |
+| band | number | 否 | 否 | Wi-Fi接入点的频段。1表示2.4GHz；2表示5GHz。|
+| frequency | number | 否 | 否 | Wi-Fi接入点的频率。 |
+| channelWidth | number | 否 | 否 | Wi-Fi接入点的带宽。 |
 | timestamp | number | 否 | 否 | 时间戳。 |
 
 
@@ -195,7 +195,7 @@ WLAN热点信息。
 
 ## WifiDeviceConfig<sup>(deprecated)</sup>
 
-WLAN配置信息。
+Wi-Fi配置信息。
 
 > **说明：**
 >
@@ -231,7 +231,7 @@ addUntrustedConfig(config: WifiDeviceConfig): Promise&lt;boolean&gt;
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | 是 | WLAN配置信息。 |
+  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | 是 | Wi-Fi配置信息。 |
 
 **返回值：**
 
@@ -289,8 +289,8 @@ addUntrustedConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;boolean&
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | 是 | WLAN配置信息。 |
-  | callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当操作成功时，err为0，data表示操作结果，true: 成功， false: 失败。如果error为非0，表示处理出现错误。 |
+  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | 是 | Wi-Fi配置信息。 |
+  | callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当操作成功时，异步错误对象error为0，data表示操作结果，true: 成功， false: 失败。如果error为非0，表示处理出现错误。 |
 
 **示例：**
 ```ts
@@ -342,7 +342,7 @@ removeUntrustedConfig(config: WifiDeviceConfig): Promise&lt;boolean&gt;
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | 是 | WLAN配置信息。 |
+  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | 是 | Wi-Fi配置信息。 |
 
 **返回值：**
 
@@ -402,8 +402,8 @@ removeUntrustedConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;boole
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | 是 | WLAN配置信息。 |
-  | callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当操作成功时，err为0，data表示操作结果，true: 成功， false: 失败。如果error为非0，表示处理出现错误。 |
+  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | 是 | Wi-Fi配置信息。 |
+  | callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当操作成功时，异步错误对象error为0，data表示操作结果，true: 成功， false: 失败。如果error为非0，表示处理出现错误。 |
 
 **示例：**
 ```ts
@@ -441,7 +441,7 @@ try {
 
 getSignalLevel(rssi: number, band: number): number
 
-查询WLAN信号强度。
+查询Wi-Fi信号强度。
 
 > **说明：**
 >
@@ -456,7 +456,7 @@ getSignalLevel(rssi: number, band: number): number
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | rssi | number | 是 | 热点的信号强度(dBm)。 |
-  | band | number | 是 | WLAN接入点的频段。 |
+  | band | number | 是 | Wi-Fi接入点的频段。 |
 
 **返回值：**
 
@@ -483,7 +483,7 @@ try {
 
 getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 
-获取WLAN连接信息。使用Promise异步回调。
+获取Wi-Fi连接信息。使用Promise异步回调。
 
 > **说明：**
 >
@@ -497,14 +497,14 @@ getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | Promise&lt;[WifiLinkedInfo](#wifilinkedinfodeprecated)&gt; | Promise对象。表示WLAN连接信息。 |
+  | Promise&lt;[WifiLinkedInfo](#wifilinkedinfodeprecated)&gt; | Promise对象。表示Wi-Fi连接信息。 |
 
 
 ## wifi.getLinkedInfo<sup>(deprecated)</sup>
 
 getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 
-获取WLAN连接信息。使用callback异步回调。
+获取Wi-Fi连接信息。使用callback异步回调。
 
 > **说明：**
 >
@@ -518,7 +518,7 @@ getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[WifiLinkedInfo](#wifilinkedinfodeprecated)&gt; | 是 | 回调函数。当获取成功时，err为0，data表示WLAN连接信息。如果error为非0，表示处理出现错误。 |
+  | callback | AsyncCallback&lt;[WifiLinkedInfo](#wifilinkedinfodeprecated)&gt; | 是 | 回调函数。当获取成功时，err为0，data表示Wi-Fi连接信息。如果err为非0，表示处理出现错误。 |
 
 **示例：**
 ```ts
@@ -542,7 +542,7 @@ wifi.getLinkedInfo().then(data => {
 
 ## WifiLinkedInfo<sup>(deprecated)</sup>
 
-提供WLAN连接的相关信息。
+提供Wi-Fi连接的相关信息。
 
 > **说明：**
 >
@@ -555,19 +555,19 @@ wifi.getLinkedInfo().then(data => {
 | ssid | string | 否 | 否 | 热点的SSID，最大长度为32字节，编码格式为UTF-8。 |
 | bssid | string | 否 | 否 | 热点的BSSID，例如：00:11:22:33:44:55。 |
 | rssi | number | 否 | 否 | 热点的信号强度(dBm)。 |
-| band | number | 否 | 否 | WLAN接入点的频段。1表示2.4GHz；2表示5GHz。|
-| linkSpeed | number | 否 | 否 | WLAN接入点的速度，单位Mbps。 |
-| frequency | number | 否 | 否 | WLAN接入点的频率，单位：MHz。 |
-| isHidden | boolean | 否 | 否 | WLAN接入点是否是隐藏网络。true:是隐藏网络，false:不是隐藏网络。 |
-| isRestricted | boolean | 否 | 否 | WLAN接入点是否限制数据量。true: 限制，false:不限制。 |
+| band | number | 否 | 否 | Wi-Fi接入点的频段。1表示2.4GHz；2表示5GHz。|
+| linkSpeed | number | 否 | 否 | Wi-Fi接入点的速度，单位Mbps。 |
+| frequency | number | 否 | 否 | Wi-Fi接入点的频率。 |
+| isHidden | boolean | 否 | 否 | Wi-Fi接入点是否是隐藏网络。true:是隐藏网络，false:不是隐藏网络。 |
+| isRestricted | boolean | 否 | 否 | Wi-Fi接入点是否限制数据量。true: 限制，false:不限制。 |
 | macAddress | string | 否 | 否 | 设备的MAC地址。 |
-| ipAddress | number | 否 | 否 | WLAN连接的IP地址。 |
-| connState | [ConnState](#connstatedeprecated) | 否 | 否 | WLAN连接状态。 |
+| ipAddress | number | 否 | 否 | Wi-Fi连接的IP地址。 |
+| connState | [ConnState](#connstatedeprecated) | 否 | 否 | Wi-Fi连接状态。 |
 
 
 ## ConnState<sup>(deprecated)</sup>
 
-表示WLAN连接状态的枚举。
+表示Wi-Fi连接状态的枚举。
 
 > **说明：**
 >
@@ -578,20 +578,20 @@ wifi.getLinkedInfo().then(data => {
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | SCANNING | 0 | 设备正在搜索可用的AP。 |
-| CONNECTING | 1 | 正在建立WLAN连接。 |
-| AUTHENTICATING | 2 | WLAN连接正在认证中。 |
-| OBTAINING_IPADDR | 3 | 正在获取WLAN连接的IP地址。 |
-| CONNECTED | 4 | WLAN连接已建立。 |
-| DISCONNECTING | 5 | WLAN连接正在断开。 |
-| DISCONNECTED | 6 | WLAN连接已断开。 |
-| UNKNOWN | 7 | WLAN连接建立失败。 |
+| CONNECTING | 1 | 正在建立Wi-Fi连接。 |
+| AUTHENTICATING | 2 | Wi-Fi连接正在认证中。 |
+| OBTAINING_IPADDR | 3 | 正在获取Wi-Fi连接的IP地址。 |
+| CONNECTED | 4 | Wi-Fi连接已建立。 |
+| DISCONNECTING | 5 | Wi-Fi连接正在断开。 |
+| DISCONNECTED | 6 | Wi-Fi连接已断开。 |
+| UNKNOWN | 7 | Wi-Fi连接建立失败。 |
 
 
 ## wifi.isConnected<sup>(deprecated)</sup>
 
 isConnected(): boolean
 
-查询WLAN是否已连接。
+查询Wi-Fi是否已连接。
 
 > **说明：**
 >
@@ -809,7 +809,7 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfodeprecated)&gt; | 是 | 回调函数。当操作成功时，err为0，data表示P2P连接信息。如果error为非0，表示处理出现错误。 |
+  | callback | AsyncCallback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfodeprecated)&gt; | 是 | 回调函数。当操作成功时，err为0，data表示P2P连接信息。如果err为非0，表示处理出现错误。 |
 
 **示例：**
 ```ts
@@ -867,7 +867,7 @@ getCurrentGroup(callback: AsyncCallback&lt;WifiP2pGroupInfo&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[WifiP2pGroupInfo](#wifip2pgroupinfodeprecated)&gt; | 是 | 回调函数。当操作成功时，err为0，data表示当前组信息。如果error为非0，表示处理出现错误。 |
+  | callback | AsyncCallback&lt;[WifiP2pGroupInfo](#wifip2pgroupinfodeprecated)&gt; | 是 | 回调函数。当操作成功时，err为0，data表示当前组信息。如果err为非0，表示处理出现错误。 |
 
 **示例：**
 ```ts
@@ -925,7 +925,7 @@ getP2pPeerDevices(callback: AsyncCallback&lt;WifiP2pDevice[]&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[WifiP2pDevice](#wifip2pdevicedeprecated)[]&gt; | 是 | 回调函数。当操作成功时，err为0，data表示对端设备列表信息。如果error为非0，表示处理出现错误。 |
+  | callback | AsyncCallback&lt;[WifiP2pDevice](#wifip2pdevicedeprecated)[]&gt; | 是 | 回调函数。当操作成功时，err为0，data表示对端设备列表信息。如果err为非0，表示处理出现错误。 |
 
 **示例：**
 ```ts
@@ -1310,7 +1310,7 @@ try {
 
 on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 
-注册WLAN状态改变事件。
+注册Wi-Fi状态改变事件。
 
 > **说明：**
 >
@@ -1341,7 +1341,7 @@ on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 
 off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;): void
 
-取消注册WLAN状态改变事件。
+取消注册Wi-Fi状态改变事件。
 
 > **说明：**
 >
@@ -1378,7 +1378,7 @@ wifi.off("wifiStateChange", recvPowerNotifyFunc);
 
 on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
 
-注册WLAN连接状态改变事件。
+注册Wi-Fi连接状态改变事件。
 
 > **说明：**
 >
@@ -1407,7 +1407,7 @@ on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
 
 off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;): void
 
-取消注册WLAN连接状态改变事件。
+取消注册Wi-Fi连接状态改变事件。
 
 > **说明：**
 >

@@ -185,17 +185,12 @@ import { Link } from '@kit.ArkUI';
     
     import { Column, Component, Entry, Link, State, Text } from '@kit.ArkUI';
     
-    class Info {
-      info: string = 'Hello';
-    }
-    
     @Component
     struct Child {
       @Link msg: string;
-      @Link info: string;
     
       build() {
-        Text(this.msg + this.info)
+        Text(this.msg)
       }
     }
     
@@ -203,12 +198,11 @@ import { Link } from '@kit.ArkUI';
     @Component
     struct LinkExample {
       @State message: string = 'Hello';
-      @State info: Info = new Info();
     
       build() {
         Column() {
           // 错误写法，常规变量不能初始化@Link
-          Child({msg: 'World', info: this.info.info})
+          Child({msg: 'World'})
         }
       }
     }
@@ -221,17 +215,12 @@ import { Link } from '@kit.ArkUI';
     ``` TypeScript
     import { Column, Component, Entry, Link, State, Text } from '@kit.ArkUI';
     
-    class Info {
-      info: string = 'Hello';
-    }
-    
     @Component
     struct Child {
       @Link msg: string;
-      @Link info: Info;
     
       build() {
-        Text(this.msg + this.info.info)
+        Text(this.msg)
       }
     }
     
@@ -239,12 +228,11 @@ import { Link } from '@kit.ArkUI';
     @Component
     struct LinkExample {
       @State message: string = 'Hello';
-      @State info: Info = new Info();
     
       build() {
         Column() {
           // 正确写法
-          Child({msg: this.message, info: this.info})
+          Child({msg: this.message})
         }
       }
     }
