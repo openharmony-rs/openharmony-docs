@@ -1,12 +1,11 @@
 # Focus Control
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8de0c2610841efa4333c462e6a318256c709bce8 translatedAt=2026-08-24T06:56:57.641Z pushedAt=2026-08-25T07:34:51.247Z -->
+<!-- md-trans-meta sourceCommit=3ddb6f7d5458e03f96ae5f64e626eb2fb03d26f6 translatedAt=2026-09-01T12:31:29.464Z -->
 
 Focus control manages the focus capability and focus movement behavior of components. It supports setting whether a component can gain focus, the default focus, focus on touch, focus box style, focus group and focus priority, Tab key and arrow key focus navigation order, focus stay rules, as well as actively requesting focus and customizing focus navigation logic through APIs. It is suitable for non-touch interaction scenarios such as keyboards and remote controls, helping improve focus navigation efficiency on complex pages.
 
@@ -59,7 +58,6 @@ Sets the Tab key focus navigation capability of the component. When **tabIndex**
 **Parameters**
 
 <!--Table: 10%; 10%; 10%; 70%-->
-
 | Name| Type  | Mandatory| Description           |
 | ------ | ------ | ---- | ------------------------------------ |
 | index  | number | Yes   | Index for the Tab key focus navigation order of the component. If there are components with **tabIndex** greater than 0, Tab key focus navigation traverses only the components with **tabIndex** greater than 0, in ascending order of **tabIndex** values and cyclically. If there is no component with **tabIndex** greater than 0, components with **tabIndex** equal to 0 are traversed according to the preset focus navigation rules of the components.<br>The [UiExtension](../js-apis-arkui-uiExtension.md) component does not adapt to **tabIndex**. Using **tabIndex** in a [hierarchical page](../../../ui/arkts-common-events-focus-event.md#basic-concepts) that contains a [UiExtension](../js-apis-arkui-uiExtension.md) component causes focus navigation disorder.<br>- **tabIndex** greater than 0: indicates that the element is focusable and can be accessed through Tab key focus navigation.<br>- **tabIndex** equal to 0: indicates that the element is focusable and can be accessed through Tab key focus navigation when no node with **tabIndex** greater than 0 exists in the hierarchical page.<br>- **tabIndex** less than 0 (usually **tabIndex** equal to -1): indicates that the element is focusable but cannot be accessed through Tab key focus navigation.<br> **NOTE**<br>**tabIndex** and **focusScopeId** cannot be used together; otherwise, the focus navigation result may not meet expectations.|
@@ -87,7 +85,6 @@ Sets whether the current component is the default focus on the current [hierarch
 **Parameters**
 
 <!--Table: 10%; 10%; 10%; 70%-->
-
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | value  | boolean | Yes   | Whether the current component is the default focus on the current [hierarchical page](../../../ui/arkts-common-events-focus-event.md#basic-concepts). This takes effect only when the [hierarchical page](../../../ui/arkts-common-events-focus-event.md#basic-concepts) is entered for the first time after initial creation.<br>**NOTE**<br>The value **true** indicates that the component is the default focus, and **false** indicates that it is not.<br>If no component in the [hierarchical page](../../../ui/arkts-common-events-focus-event.md#basic-concepts) has **defaultFocus(true)** set, before API version 11, the default focus of the [hierarchical page](../../../ui/arkts-common-events-focus-event.md#basic-concepts) is the first focusable non-container component on the current [hierarchical page](../../../ui/arkts-common-events-focus-event.md#basic-concepts); from API version 11 onward, the default focus of the [hierarchical page](../../../ui/arkts-common-events-focus-event.md#basic-concepts) is the root container of the [hierarchical page](../../../ui/arkts-common-events-focus-event.md#basic-concepts).<br>If multiple components in a [hierarchical page](../../../ui/arkts-common-events-focus-event.md#basic-concepts) have **defaultFocus(true)** set, the first component found by depth-first traversal of the component tree is used as the default focus. |
@@ -111,7 +108,6 @@ Specifies whether to set the component as the default focus of the container. If
 **Parameters**
 
 <!--Table: 10%; 10%; 10%; 70%-->
-
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | value  | boolean | Yes  | Whether the current component is the default focus when the container where it resides gains focus. This takes effect only when the container node is created and gains focus for the first time. The value **true** means that the current component is the default focus when the container where it resides gains focus, and **false** means the opposite.<br>**NOTE**<br>This attribute must be used together with [tabIndex](#tabindex9). Setting **groupDefaultFocus** alone does not take effect. When a container has **tabIndex** set and a child component inside the container or the container itself has **groupDefaultFocus**(**true**) set, the focus is automatically transferred to the specified component when the container gains focus through the Tab key for the first time. If multiple components inside the container (including the container itself) have **groupDefaultFocus**(**true**) set, the first component found through depth-first traversal of the component tree is used as the final result. |
@@ -249,7 +245,7 @@ Sets the focus priority of this component in a specified container. It must be u
 | -------- | -------- |
 | T | Current component.|
 
-### FocusPriority<sup>12+</sup>
+## FocusPriority<sup>12+</sup>
 
 Sets the focus priority of the component.
 
@@ -346,7 +342,6 @@ Sets the **tabStop** of the current container component, which determines whethe
 **Parameters**
 
 <!--Table: auto; 10%; 10%; auto-->
-
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | isTabStop  | boolean  | Yes   | Whether the current container component is a focus-stay container. The value **true** means that the current container component is a focus-stay container, and **false** means the opposite.<br>**NOTE**<br>1. To configure **tabStop**, ensure that the component is a container component with focusable child components. By default, a container component cannot directly gain focus.<br>2. When focus is requested through [requestFocus](../arkts-apis-uicontext-focuscontroller.md#requestfocus12), if the component is a container component with **tabStop** configured, the focus can stay on the container component. If the target container component does not have **tabStop** configured, the target component can still gain focus even if there is a component with **tabStop** configured on the entire focus chain.<br>3. Containers with **tabStop** configured cannot be nested more than two levels.<br>**tabStop** focus navigation rules:<br>1. When navigating focus with the Tab key and arrow keys, the focus stays on the component with **tabStop** configured. If the focus stays inside a container with **tabStop** configured, it can navigate to the next focusable component inside the container. If the focus stays outside a container with **tabStop** configured, it can navigate to the next focusable component outside the container.<br>2. When the focus stays on **tabStop**, pressing Enter navigates the focus to the first focusable component inside, pressing ESC returns the focus to the previous component with **tabStop** configured that does not exceed the root container of the current [hierarchical page](../../../ui/arkts-common-events-focus-event.md#basic-concepts), and pressing the spacebar triggers the **onClick** event of the container.<br>3. Configuring **tabStop** on the root container is not recommended. If the root container has **tabStop** configured, after the focus is cleared to the root container through [clearFocus](../arkts-apis-uicontext-focuscontroller.md#clearfocus12), pressing Enter navigates the focus back to the last focused component inside, and after the focus is cleared to the root container through the ESC key, pressing Enter navigates the focus to the first focusable component inside.|
@@ -542,7 +537,6 @@ struct FocusableExample {
   }
 }
 ```
-
 Diagrams:
 
 On first-time access, the focus is on the **TextInput** component bound to **defaultFocus**.
@@ -686,6 +680,7 @@ struct FocusBoxExample {
 
 ![focusBox](figures/focusBox.gif)
 
+
 ### Example 4: Setting Focus Group Traversal
 
 This example demonstrates how to set a component as the initial focus when its container gains focus by configuring [focusScopePriority](#focusscopepriority12). Configuring [focusScopeId](#focusscopeid12) allows the bound container component to become a focus group.
@@ -818,7 +813,6 @@ struct FocusableExample {
   }
 }
 ```
-
 Diagrams:
 
 When the **Tab** key is pressed for the first time, the focus transfers to the component bound to **focusScopePriority** in container 1.
@@ -908,7 +902,6 @@ struct TabStop {
   }
 }
 ```
-
 Diagrams:
 
 Press the **Tab** key twice consecutively, and the focus transfers to **button2**.
@@ -989,5 +982,4 @@ struct Index {
   }
 }
 ```
-
 ![focusBox](figures/nextStep.gif)

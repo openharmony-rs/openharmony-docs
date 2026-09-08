@@ -129,7 +129,7 @@ struct InitialRendering {
 
 **错误案例：键值相同导致渲染异常**
 
-当不同数据项生成的键值相同时，框架的行为是不可预测的。例如，在以下代码中，`LazyForEach`渲染的数据项键值均相同，在滑动过程中，`LazyForEach`会预加载划入划出当前页面的子组件，而新建的子组件和销毁的旧子组件具有相同的键值，框架可能取用错误的缓存，导致子组件渲染出现问题。
+当不同数据项生成的键值相同时，框架的行为是不可预测的。例如，在以下代码中，`LazyForEach`渲染的数据项键值均相同，在滑动过程中，`LazyForEach`会预加载滑入滑出当前页面的子组件，而新建的子组件和销毁的旧子组件具有相同的键值，框架可能取用错误的缓存，导致子组件渲染出现问题。
 
 BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 

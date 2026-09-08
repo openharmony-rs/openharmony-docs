@@ -2573,7 +2573,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('removeGalleryFormInfoDemo');
   let info: photoAccessHelper.GalleryFormInfo = {
-    // formId是一个由纯数字组成的字符串，移除卡片时assertUris不填。
+    // formId是一个由纯数字组成的字符串，移除卡片时assetUris不填。
     formId: "20230116123"
   }
 
@@ -2879,11 +2879,11 @@ phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-a
 ```ts
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2938,11 +2938,11 @@ phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-a
 ```ts
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2999,11 +2999,11 @@ phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-a
 ```ts
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -3057,11 +3057,11 @@ phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-a
 ```ts
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -13088,7 +13088,7 @@ onDownloadProgressChange(callback: Callback\<CloudAssetDownloadProgressInfo\>): 
 
 ```ts
 let onCallback = (changeData: photoAccessHelper.CloudAssetDownloadProgressInfo) => {
-  console.info('batchdownload downloadProgressChange onCallback success, changData: ' + JSON.stringify(changeData));
+  console.info('batchdownload downloadProgressChange onCallback success, changeData: ' + JSON.stringify(changeData));
 }
 async function example(context: Context) {
   console.info('OnDownloadProgressChangeDemo');
@@ -13791,7 +13791,7 @@ async function example(context: Context) {
 | --- | --- | --- | --- | --- |
 | attr | [AlbumAttribute](#albumattribute) | 否 | 否 | 设置相册的属性类型。|
 | type | [AlbumOperationType](#albumoperationtype) | 否 | 否 | 设置相册属性的操作类型。 |
-| values | string[] | 否 | 否 | 设置相册属性的字符串参数。数组最大长度为20；数组中的每个字符串长度不超过500个字符。|
+| values | string[] | 否 | 否 | 设置相册属性的字符串参数。数组最大长度为20。<br>在API版本26.0.0，数组中的每个字符串长度不超过500个字符。<br>从API版本26.1.0开始，数组中的每个字符串长度不超过8192个字符。|
 
 ## AlbumAttributeInfo
 

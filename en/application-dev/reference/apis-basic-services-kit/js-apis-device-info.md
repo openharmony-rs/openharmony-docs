@@ -5,7 +5,7 @@
 <!--Designer: @chenjinxiang3-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=dedb6730301e201bd92e89c565e2c1a291211a57 translatedAt=2026-09-01T03:43:17.501Z pushedAt=2026-09-01T08:15:36.231Z -->
+<!-- md-trans-meta sourceCommit=dedb6730301e201bd92e89c565e2c1a291211a57 translatedAt=2026-09-01T03:43:17.501Z pushedAt=2026-09-05T02:42:54.723Z -->
 
 This module provides APIs for querying terminal device information, including the device type, brand, model, system version, security patch tag, and unique device ID. It is applicable to scenarios such as device adaptation, version compatibility check, device identification, and statistical analysis, helping you quickly obtain device information for application adaptation and optimization. You cannot configure this information.
 
@@ -54,8 +54,8 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | featureVersion | number | Yes | Feature version number, which identifies the planned new feature version. The value is the third digit in **osFullName**. You are advised to use **deviceInfo.featureVersion** instead of parsing **osFullName** to obtain the value, facilitating efficiency improvement.<br>Example: 0 |
 | buildVersion | number | Yes | Build version number, which identifies the build version. The value is the fourth digit in **osFullName**. You are advised to use **deviceInfo.buildVersion** instead of parsing **osFullName** to obtain the value, facilitating efficiency improvement.<br>Example: 1 |
 | sdkApiVersion | number | Yes | SDK API version.<br>**Atomic service API**: This API can be used in atomic services since API version 14.<br>Example: 12 |
-| sdkMinorApiVersion | number | Yes | SDK minor API version. Starting from API version 26.0.0, the system API version is in the format of **sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>Example: 0 |
-| sdkPatchApiVersion | number | Yes | SDK patch API version. Starting from API version 26.0.0, the system API version is in the format of **sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>Example: 0 |
+| sdkMinorApiVersion | number | Yes | SDK minor API version. Starting from API version 26.0.0, the OS API version is in the format of **sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>Example: 0 |
+| sdkPatchApiVersion | number | Yes | SDK patch API version. Starting from API version 26.0.0, the OS API version is in the format of **sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>Example: 0 |
 | firstApiVersion | number | Yes | First API version.<br>Example: 3 |
 | versionId | string | Yes | Version ID, which is a concatenation of **deviceType**, **manufacture**, **brand**, **productSeries**, **osFullName**, **productModel**, **softwareModel**, **sdkApiVersion**, **incrementalVersion**, and **buildType**. To obtain a specific field value, you are advised to use the corresponding field directly (such as **deviceType** and **manufacture**) instead of parsing **versionId**, facilitating efficiency improvement. |
 | buildType | string | Yes | Build type.<br>Example: default |
@@ -330,7 +330,7 @@ Enumerates device types, which can be used to verify the return value of **devic
 apiAvailable(version: string | number): boolean;
 
 Checks whether a specified API version is available on the current device.<br>
-This API provides compatibility check for OpenHarmony and its released versions. A suitable version check method is automatically selected based on the input format and supported API versions.
+This API provides compatibility check for OpenHarmony and its distribution OS API versions. A suitable version check method is automatically selected based on the input format and supported API versions.
 
 **Since**: 26.0.0
 
@@ -342,7 +342,7 @@ This API provides compatibility check for OpenHarmony and its released versions.
 
 | Name   | Type                                     | Mandatory| Description                              |
 | --------- | ----------------------------------------- | ---- | ---------------------------------- |
-| version | string \| number | Yes | API version to be verified. Supports both integer and string formats. The string uses the M.S.F format (for example, "26.0.0" and "5.0.1"): for API 26.0.0 and later (version >= 26.0.0), it represents the OpenHarmony and distribution system API version. For API earlier than 26.0.0 (version < 26.0.0), it represents the distribution system API version. The integer format (for example, 13) represents the OpenHarmony SDK API version. (Only API earlier than 26 is supported.) M>=26, 0<=S<=99, 0<=F<=99. A compilation error occurs when an invalid literal is passed. |
+| version | string \| number | Yes | API version to be verified. Supports both integer and string formats. The string uses the M.S.F format (for example, "26.0.0" and "5.0.1"): for API 26.0.0 and later (version >= 26.0.0), it represents the OpenHarmony and distribution OS API version. For API earlier than 26.0.0 (version < 26.0.0), it represents the distribution OS API version. The integer format (for example, 13) represents the OpenHarmony SDK API version. (Only API earlier than 26 is supported.) M>=26, 0<=S<=99, 0<=F<=99. A compilation error occurs when an invalid literal is passed. |
 
 **Return value**
 
@@ -361,7 +361,7 @@ if (deviceInfo.apiAvailable("26.0.0")) {
 }
 
 
-// For Distribution OS-specific APIs, that is, APIs marked with since M.S.F(N)
+// For distribution OS-specific APIs, that is, APIs marked with since M.S.F(N)
 if (deviceInfo.apiAvailable("5.0.1")) {
    // Method that requires version isolation
 }

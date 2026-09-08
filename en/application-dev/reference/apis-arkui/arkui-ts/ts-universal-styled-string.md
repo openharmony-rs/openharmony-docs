@@ -1,12 +1,11 @@
 # Styled String
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hddgzw-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=5db2edcb9d284b0fedb322ba7424ef07b303f800 translatedAt=2026-08-24T07:29:48.225Z pushedAt=2026-08-25T07:35:01.552Z -->
+<!-- md-trans-meta sourceCommit=77f0ac919735ea8b52870b0c3cfc4e073acc3031 translatedAt=2026-09-02T12:34:42.668Z -->
 
 A styled string is an object that associates text styles with text content. Styles specify text ranges through **start** and **length**, and multiple styles can be applied to the same range in a stacked manner. A styled string is an object used to create rich text. It supports setting various style types such as font style, decoration line, shadow, line height, and paragraph style, and also supports inserting images and custom drawing content. It can be bound to a **Text** component through [setStyledString](./ts-basic-components-text.md#setstyledstring12) in [TextController](./ts-basic-components-text.md#textcontroller11), or bound to a [RichEditor](./ts-basic-components-richeditor.md) component through [setStyledString](./ts-basic-components-richeditor.md#setstyledstring12) in [RichEditorStyledStringController](./ts-basic-components-richeditor.md#richeditorstyledstringcontroller12). It is suitable for scenarios that require flexible text style settings, such as rich text editing, chat message display, and document annotation. It supports dynamic modification of style content, style stacking, and conflict handling.
 
@@ -25,13 +24,9 @@ A styled string is an object that associates text styles with text content. Styl
 ## Rules of Use
 
 * If a styled string conflicts with the current style settings in a component, the style set in the styled string takes effect.
-
 * If a styled string conflicts with the child components in [Text](./ts-basic-components-text.md), the style set in the styled string is applied to the **Text** component, and style settings of the child components, including [Span](./ts-basic-components-span.md), are ignored.
-
 * The [@State](../../../ui/state-management/arkts-state.md) decorator is not supported.
-
 * Define **StyledString** as a member variable to prevent it from being destroyed when the application moves to the background.
-
 * Creation before [loadContent()](../arkts-apis-window-Window.md#loadcontent9) is not supported.
 
 ## StyledString
@@ -606,7 +601,6 @@ Describes the text style.
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 <!--Table: 20%; 20%; 10%; 10%; 40%-->
-
 | Name       | Type                                    | Read-Only| Optional| Description                                                                                                                             |
 | ----------- | ---------------------------------------- | ---- | ---- | --------------------------------------------------------------------------------------------------------------------------------- |
 | fontColor   | [ResourceColor](ts-types.md#resourcecolor)  | Yes   | Yes   | Text color of the styled string.<br>**Atomic service API:** This API can be used in atomic services since API version 12.                                               |
@@ -621,8 +615,8 @@ Describes the text style.
 | fontVariations | Array&lt;[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation)&gt; | Yes | Yes | Attribute array of the variable font.<br>Default value: **undefined**, indicating that the variable font attributes are not set.<br>**Since:** 26.0.0 <br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. |
 | strokeJoinStyle | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) | Yes | Yes | Text stroke join style of the styled string. For details about the enum values, see **StrokeJoinStyle**.<br>Default value: **StrokeJoinStyle.MITER_JOIN**, indicating a miter join with a sharp corner.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. |
 
-The relationship between the **fontWeight** parameter and the return value is as follows.
 
+The relationship between the **fontWeight** parameter and the return value is as follows.
 | Parameter       | Return Value|
 | ----------- | ----------- |
 | 100 |  '0' |
@@ -1213,6 +1207,7 @@ The style of a paragraph is the one (if any) set for the first element or the pa
 
 Before API version 26.0.0, if the first placeholder in a styled string paragraph is [CustomSpan](#customspan) or [ImageAttachment](#imageattachment), the paragraph style set on that paragraph does not take effect. Since API version 26.0.0, the paragraph style takes effect.
 
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### Properties
@@ -1798,7 +1793,7 @@ struct StyledStringSetTextStyleDemo {
   build() {
     Column() {
       Column({ space: 10 }) {
-        // Display the styled string with various font styles configured. For conflicting parts, the styled string configuration takes effect; for non-conflicting parts, the Text component attribute settings take effect.
+        // Display the attribute string configured with various font styles. The Text component also configures the conflicting parts to take effect from the attribute string configuration, while the non-conflicting ranges take effect from the Text component's attribute settings.
         Text(undefined, this.options)
           .fontColor(this.fontColor1)
           .font({ size: 20, weight: 500, style: FontStyle.Normal })
@@ -1886,7 +1881,6 @@ struct StyledStringSetTextStyleDemo {
   }
 }
 ```
-
 ![](figures/styledstring_3.png)
 
 ### Example 4: Setting Images
@@ -2431,6 +2425,7 @@ struct StyledStringSetUrlstyleDemo {
 
 ![](figures/styledString_9.gif)
 
+
 ### Example 9: Setting a Color Filter for an Image
 
 This example demonstrates how to apply a color filter to an image by setting **colorFilter** for [ImageAttachment](#imageattachmentinterface), available since API version 15.
@@ -2890,7 +2885,6 @@ struct StyledStringImageAttachmentInterfaceDemo {
   }
 }
 ```
-
 ![](figures/styledString_16.gif)
 
 ### Example 15: Setting Custom Paragraph Indentation
@@ -3009,13 +3003,10 @@ struct leadingMarginSpanDemo {
   }
 }
 ```
-
 ![](figures/styledString_15.gif)
 
 ### Example 16: Displaying an SVG Image Using the supportSvg2 Property
-
 Since API version 22, this example sets the **supportSvg2** property for [ResourceImageAttachmentOptions](#resourceimageattachmentoptions15) to enable the [improved SVG usability](ts-image-svg2-capabilities.md#improved-svg-usability) capability of the [Enhanced SVG Tag Parsing](ts-image-svg2-capabilities.md) feature.
-
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
 import { LengthMetrics } from '@kit.ArkUI';
@@ -3187,7 +3178,6 @@ struct StyledStringFontConfigsDemo {
   }
 }
 ```
-
 ![styledString_18](figures/styledString_18.png)
 
 ### Example 18: Conversion Using fromHtml
@@ -3222,7 +3212,6 @@ struct html_convert_demo {
   }
 }
 ```
-
 <!--Del--> <!--DelEnd-->
 
 ### Example 19: Setting the Properties of a Variable Font
@@ -3273,7 +3262,6 @@ struct StyledStringExample {
   }
 }
 ```
-
 <!--Del--> <!--DelEnd-->
 
 ### Example 20: Setting the Text Shader Effect
@@ -3403,7 +3391,6 @@ struct ShaderColorStyle {
   }
 }
 ```
-
 <!--Del--> <!--DelEnd-->
 
 ### Example 21: Setting the Text Tail Indentation
@@ -3504,4 +3491,3 @@ struct TailIndentsExample {
 ```
 
 <!--Del--> <!--DelEnd-->
-<!--no_check-->

@@ -25,7 +25,7 @@
 
 **解决措施**
 
-将需要沉浸光感效果的组件置于Navigation/NavDestination标题栏子树，或横向Tabs中barPosition为BarPosition.End的底部TabBar子树中。
+将需要沉浸光感效果的组件置于Navigation/NavDestination标题栏，或横向Tabs中barPosition为BarPosition.End的底部TabBar中。
 
 若无法满足生效范围要求，可改用[backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)等通用属性替代材质效果。
 

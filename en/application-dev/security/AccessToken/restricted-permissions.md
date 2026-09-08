@@ -1682,10 +1682,25 @@ Allows an application to use PTRACE read capabilities to obtain register and mem
 
 <!--RP110--><!--RP110End-->
 
-**Permission level**：system_basic
+**Permission level**: system_basic
 
-**Authorization mode**：system_grant
+**Authorization mode**: system_grant
 
-**Supported devices**：PCs/2-in-1 devices
+**Supported devices**: PCs/2-in-1 devices
 
-**Since**：26.1.0
+**Since**: 26.1.0
+
+## ohos.permission.GET_ALL_BUNDLE_INFO
+ 
+Allows an application to obtain the list of applications installed on the device.
+ 
+<!--RP111--><!--RP111End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: user_grant
+ 
+**Supported devices**: PCs/2-in-1 devices
+ 
+**Since**: 26.1.0
+
