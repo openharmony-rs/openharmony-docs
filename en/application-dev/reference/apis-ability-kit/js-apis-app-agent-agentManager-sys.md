@@ -1,4 +1,4 @@
-# @ohos.app.agent.agentManager (Agent Intelligent Component Management) (System API)
+# @ohos.app.agent.agentManager (Agent Component Management) (System API)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -6,7 +6,7 @@
 <!--Designer: @ccllee1-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=7fe4eacae9c952d492316e40f501d71d3714186d translatedAt=2026-09-03T10:45:02.118Z pushedAt=2026-09-05T10:47:30.485Z -->
+<!-- md-trans-meta sourceCommit=7fe4eacae9c952d492316e40f501d71d3714186d translatedAt=2026-09-03T10:45:02.118Z pushedAt=2026-09-08T08:11:18.758Z -->
 
 The agentManager module provides Agent management capabilities, including connecting to and disconnecting from AgentExtensionAbility, lifecycle management of LOW_CODE Agents, connection management between AgentExtensionAbility and ServiceExtensionAbility, and obtaining AgentCard information on the device.
 

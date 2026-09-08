@@ -6,7 +6,7 @@
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=3710d9e6218f1ff30d75ca1e496a60e0f8529dc7 translatedAt=2026-09-03T10:29:05.288Z pushedAt=2026-09-05T10:47:30.424Z -->
+<!-- md-trans-meta sourceCommit=3710d9e6218f1ff30d75ca1e496a60e0f8529dc7 translatedAt=2026-09-03T10:29:05.288Z pushedAt=2026-09-07T07:00:02.804Z -->
 
 The sendableContextManager module provides APIs for converting between Context and [SendableContext](js-apis-inner-application-sendableContext.md) objects.
 
@@ -596,7 +596,7 @@ Enables the cross-thread data transfer feature of [EventHub](./js-apis-inner-app
 
 | Name | Type          | Mandatory| Description                                                        |
 | ------- | -------------- | ---- | ------------------------------------------------------------ |
-| context | [common.Context](js-apis-inner-application-context.md) | Yes | Context object. For the serializable data types supported by EventHub, see [Serialization Supported Types](../apis-arkts/js-apis-taskpool.md#serialization-supported-types), and the data size cannot exceed 16 MB. |
+| context | [common.Context](js-apis-inner-application-context.md) | Yes | Context object. For the serializable data types supported by EventHub, see [Serialization Supported Types](../apis-arkts/js-apis-taskpool.md#sequenceable-data-types), and the data size cannot exceed 16 MB. |
 | enabled  | boolean        | Yes  | Whether to enable the cross-thread data transfer feature.<br>- **true**: The cross-thread data transfer feature is enabled, and data is passed by reference.<br>- **false**: The cross-thread data transfer feature is disabled. Data is passed through serialization, which means that the data of the sender thread is independent of that of the receiver thread.|
 
 **Example**

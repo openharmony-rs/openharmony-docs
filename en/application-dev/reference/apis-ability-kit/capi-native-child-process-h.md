@@ -593,3 +593,4 @@ After the obtained `infos` is no longer needed, call [OH_AbilityRuntime_ReleaseC
 | Type | Description |
 | -- | -- |
 | [Ability_NativeChildProcess_ErrCode](#ability_nativechildprocess_errcode) | Result code.<br>NCP_NO_ERROR - The operation is successful.<br>NCP_ERR_INVALID_PARAM - The input parameter infos or count is nullptr.<br>NCP_ERR_INTERNAL - An internal error occurs, for example, failing to connect to the system service.<br>For details, see Ability_NativeChildProcess_ErrCode. |
+<!--no_check-->

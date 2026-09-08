@@ -1,4 +1,4 @@
-# @ohos.app.ability.common (Ability Common Module) (System APIs)
+# @ohos.app.ability.common (Ability Common Module) (System API)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -6,7 +6,7 @@
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=938bc44e514b9eed279585f3283eccb3aaf0ac72 translatedAt=2026-09-03T10:08:40.899Z pushedAt=2026-09-05T10:47:30.350Z -->
+<!-- md-trans-meta sourceCommit=938bc44e514b9eed279585f3283eccb3aaf0ac72 translatedAt=2026-09-03T10:08:40.899Z pushedAt=2026-09-08T07:19:00.017Z -->
 
 You can use this module to reference the ability public module class.
 

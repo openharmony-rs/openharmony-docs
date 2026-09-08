@@ -1,11 +1,11 @@
-# @ohos.app.ability.systemConfiguration
+# @ohos.app.ability.systemConfiguration (System Environment Module)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @RuiChen_01-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=8bf852b2046babdde40e5fda6e0beeb685c8696d translatedAt=2026-09-03T10:34:13.827Z pushedAt=2026-09-05T10:47:30.439Z -->
+<!-- md-trans-meta sourceCommit=8bf852b2046babdde40e5fda6e0beeb685c8696d translatedAt=2026-09-03T10:34:13.827Z pushedAt=2026-09-08T08:03:50.669Z -->
 
 The systemConfiguration module provides the capability to listen for system environment changes, including callbacks for changes in the system dark/light color mode, system language, and system font scale.
 

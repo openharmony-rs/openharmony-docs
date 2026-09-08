@@ -5,7 +5,7 @@
 <!--Designer: @hanfeng6-->
 <!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=3a7b8d1fce741c2abccde7cccac39375139c4568 translatedAt=2026-09-03T11:21:14.153Z pushedAt=2026-09-05T10:47:30.612Z -->
+<!-- md-trans-meta sourceCommit=3a7b8d1fce741c2abccde7cccac39375139c4568 translatedAt=2026-09-03T11:21:14.153Z pushedAt=2026-09-07T11:21:34.676Z -->
 
 The module provides APIs for obtaining application information, including [bundle information](js-apis-bundleManager-bundleInfo.md), [application information](js-apis-bundleManager-applicationInfo.md), [ability information](js-apis-bundleManager-abilityInfo.md) (information about a UIAbility), and [ExtensionAbility information](js-apis-bundleManager-extensionAbilityInfo.md).
 
@@ -1863,7 +1863,7 @@ Sets the alternate icon of the caller based on the given alternate icon name. Th
 
 | Name     | Type   | Mandatory | Description                       |
 | ----------- | ------ | ---- | ---------------------------- |
-| alternateIconName  | string | Yes   | Name of the alternate icon to set. The alternate icon name must be in the name field of the [alternateIcons tag](../../quick-start/app-configuration-file.md#alternateicons-tag) in app.json5.<br/>If alternateIconName is empty, the alternate icon is canceled. |
+| alternateIconName  | string | Yes   | Name of the alternate icon to set. The alternate icon name must be in the name field of the [alternateIcons tag](../../quick-start/app-configuration-file.md#alternateicons) in app.json5.<br/>If alternateIconName is empty, the alternate icon is canceled. |
 
 **Return value**
 
@@ -2280,3 +2280,4 @@ Alternate icon information of the app.
 | Type                                                         | Description           |
 | ------------------------------------------------------------ | -------------- |
 | [_BundleInfo.AlternateIconInfo](js-apis-bundleManager-bundleInfo.md#alternateiconinfo) | Alternate icon information of the application. |
+<!--no_check-->

@@ -6,7 +6,7 @@
 <!--Designer: @ccllee1-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=27b6f4111ead7a083f316fdee6f7ca15eaa4c87b translatedAt=2026-09-03T11:38:29.376Z pushedAt=2026-09-05T10:47:30.663Z -->
+<!-- md-trans-meta sourceCommit=27b6f4111ead7a083f316fdee6f7ca15eaa4c87b translatedAt=2026-09-03T11:38:29.376Z pushedAt=2026-09-07T11:47:08.726Z -->
 
 The AbilityStateData module defines a struct for ability state information. Once a lifecycle change listener is registered using [on](js-apis-app-ability-appManager.md#appmanageronapplicationstate14), you can obtain an instance of this struct from the input parameter of the **onAbilityStateChanged** callback of [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md).
 
@@ -31,7 +31,7 @@ import { appManager } from '@kit.AbilityKit';
 | bundleName              | string   | No  | No | Bundle name.         |
 | abilityName            | string   | No  | No  | Ability name.              |
 | uid                    | number   | No   | No   | UID of the application.                  |
-| state                   | number   | No   | No   | Ability state.<br>- [Stage model](../../application-models/ability-terminology.md#stage-model): For the state of [UIAbility](js-apis-app-ability-uiAbility.md), see [UIAbility State](#uiability-state); for the state of [ExtensionAbility](js-apis-app-ability-extensionAbility.md), see [ExtensionAbility State](#extensionability-state); for the state of [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md), see [UIExtensionAbility State](#uiextensionability-state).<br>- [FA model](../../application-models/ability-terminology.md#fa-model): See [Ability State](#ability-state-fa-model).                |
+| state                   | number   | No   | No   | Ability state.<br>- [Stage model](../../application-models/ability-terminology.md#stage-model): For the state of [UIAbility](js-apis-app-ability-uiAbility.md), see [UIAbility States](#uiability-states); for the state of [ExtensionAbility](js-apis-app-ability-extensionAbility.md), see [ExtensionAbility States](#extensionability-states); for the state of [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md), see [UIExtensionAbility States](#uiextensionability-states).<br>- [FA model](../../application-models/ability-terminology.md#fa-model): See [Ability States](#ability-states-fa-model).                |
 | moduleName | string   | No  | No  | Module name to which the ability belongs.   |
 | abilityType | number | No  | No  | [Ability type](#ability-types), which can be [UIAbility](js-apis-app-ability-uiAbility.md) or [ExtensionAbility](js-apis-app-ability-extensionAbility.md).|
 | isAtomicService | boolean | No| No| Whether the ability belongs to an atomic service.<br>**true**: The ability belongs to an atomic service.<br>**false**: The ability does not belong to an atomic service.|

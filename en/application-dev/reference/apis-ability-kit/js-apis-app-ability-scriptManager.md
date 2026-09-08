@@ -5,13 +5,13 @@
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=3710d9e6218f1ff30d75ca1e496a60e0f8529dc7 translatedAt=2026-09-03T10:28:43.594Z pushedAt=2026-09-05T10:47:30.422Z -->
+<!-- md-trans-meta sourceCommit=3710d9e6218f1ff30d75ca1e496a60e0f8529dc7 translatedAt=2026-09-03T10:28:43.594Z pushedAt=2026-09-08T02:10:41.836Z -->
 
 This module provides the capability to manage and organize script information, and supports reporting the execution results of ArkTS scripts in an app.
 
 > **NOTE**
 >
-> - The ArkTS script of an app must be bound to an ability. Configure the corresponding ability in the [skillProfiles tag](../../quick-start/module-configuration-file.md#skillprofiles-tag) of [module.json5](../../quick-start/module-configuration-file.md).
+> - The ArkTS script of an app must be bound to an ability. Configure the corresponding ability in the [skillProfiles tag](../../quick-start/module-configuration-file.md#skillprofiles) of [module.json5](../../quick-start/module-configuration-file.md).
 > - The script is exported through `export default class`. The first parameter of its entry function is fixed as [ArkTSScriptInfo](#arktsscriptinfo), which is used to receive the script context information passed by the system. Developers can add custom parameters after the first parameter.
 
 ## Modules to Import

@@ -5,7 +5,7 @@
 <!--Designer: @yzkp-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=a914ec5c20531defc3768aa8242b62bbe2d1d08f translatedAt=2026-09-03T10:45:17.436Z pushedAt=2026-09-05T10:47:30.477Z -->
+<!-- md-trans-meta sourceCommit=a914ec5c20531defc3768aa8242b62bbe2d1d08f translatedAt=2026-09-03T10:45:17.436Z pushedAt=2026-09-05T11:31:25.463Z -->
 
 
 This module provides the capability of configuring the [application startup framework](../../application-models/app-startup.md), including setting the execution timeout of the startup framework, registering a startup completion listener, and customizing startup task matching rules. It applies to scenarios where the execution behavior of startup tasks needs to be controlled on demand during the AbilityStage startup phase of different HAPs, helping developers flexibly configure the running policy of the startup framework.
@@ -75,7 +75,7 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
 
 onRequestCustomMatchRule(want: Want): string
 
-If the [startup framework configuration](../../application-models/app-startup.md#defining-startup-parameter-configuration) is [defined](../../application-models/app-startup.md#defining-startup-parameter-configuration) in the startup framework configuration file of the HAP corresponding to the AbilityStage, this callback is triggered before [AbilityStage.onCreate](js-apis-app-ability-abilityStage.md#oncreate) and after [StartupConfigEntry.onConfig](#onconfig).
+If the [startup framework configuration is defined](../../application-models/app-startup.md#defining-startup-parameter-configuration) in the startup framework configuration file of the HAP corresponding to the AbilityStage, this callback is triggered before [AbilityStage.onCreate](js-apis-app-ability-abilityStage.md#oncreate) and after [StartupConfigEntry.onConfig](#onconfig).
 
 Developers can use this callback to return different custom matching rules based on different parameters in the Want object passed by the caller to start the [UIAbility](js-apis-app-ability-uiAbility.md). The startup framework matches these rules with the **customization** field in the matchRules of the startup task configuration. If the match succeeds, the task is executed in automatic mode. For details about the matching rules, see [Adding Task Matching Rules](../../application-models/app-startup.md#adding-task-matching-rules).
 

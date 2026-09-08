@@ -1,4 +1,4 @@
-# @ohos.app.agent.agentConstant (Agent Constants)(System API)
+# @ohos.app.agent.agentConstant (Agent Constants) (System API)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -6,7 +6,7 @@
 <!--Designer: @ccllee1-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=79ff6b5cab3530f52af035cd9f5c5b50875571fe translatedAt=2026-09-03T10:41:23.026Z pushedAt=2026-09-05T10:47:30.462Z -->
+<!-- md-trans-meta sourceCommit=79ff6b5cab3530f52af035cd9f5c5b50875571fe translatedAt=2026-09-03T10:41:23.026Z pushedAt=2026-09-08T08:07:38.640Z -->
 
 This module provides constants related to Agent.
 

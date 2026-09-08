@@ -1,4 +1,4 @@
-# @ohos.app.ability.AgentUIExtensionAbility (UI-Enabled Agent Extension Component)
+# @ohos.app.ability.AgentUIExtensionAbility (UI-based Agent Extension Component)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -6,7 +6,7 @@
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=3710d9e6218f1ff30d75ca1e496a60e0f8529dc7 translatedAt=2026-09-03T09:33:47.425Z pushedAt=2026-09-05T10:47:30.187Z -->
+<!-- md-trans-meta sourceCommit=3710d9e6218f1ff30d75ca1e496a60e0f8529dc7 translatedAt=2026-09-03T09:33:47.425Z pushedAt=2026-09-08T08:02:23.727Z -->
 
 AgentUIExtensionAbility inherits from [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md) and provides developers with the capability to display the on-device Agent UI.
 

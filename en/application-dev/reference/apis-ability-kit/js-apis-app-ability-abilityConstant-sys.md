@@ -1,4 +1,4 @@
-# @ohos.app.ability.AbilityConstant (Ability-related Constants) (System APIs)
+# @ohos.app.ability.AbilityConstant (Ability-related Constants) (System API)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -6,7 +6,7 @@
 <!--Designer: @ccllee1-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=39c91f6014aebaf032e76cba1dba0db7318cd7f0 translatedAt=2026-09-03T09:41:21.007Z pushedAt=2026-09-05T10:47:30.195Z -->
+<!-- md-trans-meta sourceCommit=39c91f6014aebaf032e76cba1dba0db7318cd7f0 translatedAt=2026-09-03T09:41:21.007Z pushedAt=2026-09-08T07:14:41.018Z -->
 
 AbilityConstant provides enums related to abilities, including the window mode.
 

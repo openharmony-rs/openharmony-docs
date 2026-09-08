@@ -578,3 +578,4 @@ childProcessManager.getChildProcessInfos().then((data) => {
   console.error(`getChildProcessInfos failed, code: ${err.code}, msg: ${err.message}`);
 });
 ```
+<!--no_check-->

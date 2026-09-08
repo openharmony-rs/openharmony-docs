@@ -6,7 +6,7 @@
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=b3bc27a342923ac4fafa55153b55c4f3b627330f translatedAt=2026-09-03T10:21:21.065Z pushedAt=2026-09-05T10:47:30.400Z -->
+<!-- md-trans-meta sourceCommit=b3bc27a342923ac4fafa55153b55c4f3b627330f translatedAt=2026-09-03T10:21:21.065Z pushedAt=2026-09-05T11:51:38.607Z -->
 
 The InsightIntentDecorator module provides several types of intent decorators for decorating classes or methods. You can [use decorators to develop intents](../../application-models/insight-intent-decorator-development.md) to define the functions of an application as intents and integrate them into AI entries such as intelligent Q&A, intelligent search, and intelligent recommendation.
 
@@ -154,7 +154,7 @@ Common properties for intent decorators, used to define basic information about 
 | icon               | ResourceStr | No   | Yes   | Indicates the intent icon, which is displayed at the AI entry.<br>- When the value is of the string type, the icon is read from a network resource.<br>- When the value is of the [Resource](../../reference/apis-localization-kit/js-apis-resource-manager.md) type, the icon is read from a local resource. |
 | llmDescription     | string      | No           | Yes   | Indicates the functional description of the intent, which is used by a large language model to understand the intent.                  |
 | keywords           | string[]     | No         | Yes  | Search keywords for the intent.                                      |
-| parameters         | Record\<string, Object\>| No | Yes   | Indicates the data format declaration of the intent parameters, which is used to define the data format of the input parameters during intent invocation. For details about the values, see [Intent Schema for Each Vertical Domain](https://developer.huawei.com/consumer/cn/doc/service/intents-schema-0000001901962713). |
+| parameters         | Record\<string, Object\>| No | Yes   | Indicates the data format declaration of the intent parameters, which is used to define the data format of the input parameters during intent invocation. For details about the values, see Intent Schema for Each Vertical Domain. |
 | result           | Record\<string, Object\>     | No          | Yes   | Indicates the data format declaration of the result returned by intent invocation, which is used to define the data format of the result returned by intent invocation.                                       |
 
 ## LinkIntentDecoratorInfo

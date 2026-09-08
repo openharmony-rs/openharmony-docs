@@ -5,7 +5,7 @@
 <!--Designer: @hanfeng6-->
 <!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=4ed65a1f272fc46dcb7e8ce0faf8d5df1c93af54 translatedAt=2026-09-03T09:20:59.683Z pushedAt=2026-09-05T10:47:30.204Z -->
+<!-- md-trans-meta sourceCommit=4ed65a1f272fc46dcb7e8ce0faf8d5df1c93af54 translatedAt=2026-09-03T09:20:59.683Z pushedAt=2026-09-07T03:48:37.820Z -->
 
 > **NOTE**
 >
@@ -856,7 +856,7 @@ Failed to install the HAP because the code signature verification failed.
 
 **Description**
 
-During application installation, the code signing file of the installation package fails verification. When [BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall) throws this error code, an internal error code is appended to the error message to locate the cause of the error, for example, `[8519687]`.
+During application installation, the code signing file of the installation package fails verification. <!--Del-->When [BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall) throws this error code, an internal error code is appended to the error message to locate the cause of the error, for example, `[8519687]`.
 
 **Possible Causes**
 
@@ -2067,3 +2067,4 @@ const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
 Check whether there are different combinations of bundleName and appIndex in the shortcutInfo list.
 
 <!--DelEnd-->
+<!--no_check-->

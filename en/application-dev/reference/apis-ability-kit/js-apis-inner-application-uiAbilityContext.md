@@ -6,7 +6,7 @@
 <!--Designer: @ccllee1-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=7fe4eacae9c952d492316e40f501d71d3714186d translatedAt=2026-09-03T12:13:37.339Z pushedAt=2026-09-05T10:47:30.912Z -->
+<!-- md-trans-meta sourceCommit=7fe4eacae9c952d492316e40f501d71d3714186d translatedAt=2026-09-03T12:13:37.339Z pushedAt=2026-09-07T12:42:59.107Z -->
 
 UIAbilityContext provides the context environment for a [UIAbility](./js-apis-app-ability-uiAbility.md). It inherits from [Context](./js-apis-inner-application-context.md). For details about the relationships and differences between various types of contexts, see [Context](../../application-models/application-context-stage.md).
 
@@ -2611,7 +2611,7 @@ Sets whether to enable backup and restore for this UIAbility.
 
 > **NOTE**
 >
-> If the application sets [removeMissionAfterTerminate](../../quick-start/module-configuration-file.md#abilities-tag) to true, the backup and restore function does not take effect.
+> If the application sets [removeMissionAfterTerminate](../../quick-start/module-configuration-file.md#abilities) to true, the backup and restore function does not take effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -3161,7 +3161,7 @@ Starts an [AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAb
 
 > **NOTE**
 >
-> - The caller of this API must be the application to which the [AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md) belongs, or an application in the application list supported by the AppServiceExtensionAbility (that is, the application in the appIdentifierAllowList attribute of the [extensionAbilities tag](../../quick-start/module-configuration-file.md#extensionabilities-tag)).
+> - The caller of this API must be the application to which the [AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md) belongs, or an application in the application list supported by the AppServiceExtensionAbility (that is, the application in the appIdentifierAllowList attribute of the [extensionAbilities tag](../../quick-start/module-configuration-file.md#extensionabilities)).
 >
 > - This API does not support starting an AppServiceExtensionAbility instance of a cloned application.
 
@@ -3321,7 +3321,7 @@ Connects this UIAbility to an [AppServiceExtensionAbility](js-apis-app-ability-a
 
 > **NOTE**
 >
-> - If the [AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md) instance is not started, the caller of this API must be the application to which the AppServiceExtensionAbility belongs, or an application in the application list supported by the AppServiceExtensionAbility (that is, the application in the appIdentifierAllowList attribute of the [extensionAbilities tag](../../quick-start/module-configuration-file.md#extensionabilities-tag)).
+> - If the [AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md) instance is not started, the caller of this API must be the application to which the AppServiceExtensionAbility belongs, or an application in the application list supported by the AppServiceExtensionAbility (that is, the application in the appIdentifierAllowList attribute of the [extensionAbilities tag](../../quick-start/module-configuration-file.md#extensionabilities)).
 >
 > - This API does not support connecting to the AppServiceExtensionAbility of a cloned application.
 
@@ -3796,7 +3796,7 @@ Starts the current UIAbility instance and switches it to the foreground. This AP
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**Device behavior differences:** This API is supported on 2-in-1 and tablet devices. On other device types, it returns error code 801.
+**Device behavior differences:** This API can be called normally only on PC/2-in-1 and tablet devices. On other device types, it returns error code 801.
 
 **Return value**
 
@@ -3861,14 +3861,14 @@ Starts the UIAbility of the current application in a child process. The UIAbilit
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**Device behavior differences:** This API is supported on 2-in-1 and tablet devices. On other device types, it returns error code 801.
+**Device behavior differences:** This API can be called normally only on PC/2-in-1 and tablet devices. On other device types, it returns error code 801.
 
 **Parameters**
 
 | Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md)  | Yes | Necessary information for starting the ability. Only [explicit launch](../../application-models/explicit-implicit-want-mappings.md#explicit-want-matching) is supported, and [implicit launch](../../application-models/explicit-implicit-want-mappings.md#implicit-want-matching) is not supported. |
-| specifiedFlag | string  | Yes | Developer-defined identifier of the UIAbility. This identifier must be different from the identifiers of the started UIAbilities; otherwise, an error is returned. <br>**Note:**<br>When this API is used to start a UIAbility whose launch type is [specified](../../application-models/uiability-launch-type.md#specified-launch-type), the [onAcceptWant](./js-apis-app-ability-abilityStage.md#onacceptwant) callback will not be triggered. |
+| want | [Want](js-apis-app-ability-want.md)  | Yes | Necessary information for starting the ability. Only [explicit launch](../../application-models/explicit-implicit-want-mappings.md#matching-rules-of-explicit-want) is supported, and [implicit launch](../../application-models/explicit-implicit-want-mappings.md#matching-rules-of-implicit-want) is not supported. |
+| specifiedFlag | string  | Yes | Developer-defined identifier of the UIAbility. This identifier must be different from the identifiers of the started UIAbilities; otherwise, an error is returned. <br>**Note:**<br>When this API is used to start a UIAbility whose launch type is [specified](../../application-models/uiability-launch-type.md#specified), the [onAcceptWant](./js-apis-app-ability-abilityStage.md#onacceptwant) callback will not be triggered. |
 **Return value**
 
 | Type | Description |
@@ -3924,3 +3924,4 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+<!--no_check-->

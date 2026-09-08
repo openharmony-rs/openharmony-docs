@@ -1,4 +1,4 @@
-# @ohos.app.agent.AgentExtensionAbility (Agent Extension Component)(System API)
+# @ohos.app.agent.AgentExtensionAbility (Agent Extension Component) (System API)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -6,7 +6,7 @@
 <!--Designer: @ccllee1-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=7fe4eacae9c952d492316e40f501d71d3714186d translatedAt=2026-09-03T10:43:12.323Z pushedAt=2026-09-05T10:47:30.471Z -->
+<!-- md-trans-meta sourceCommit=7fe4eacae9c952d492316e40f501d71d3714186d translatedAt=2026-09-03T10:43:12.323Z pushedAt=2026-09-08T08:09:20.700Z -->
 
 AgentExtensionAbility inherits from [ExtensionAbility](js-apis-app-ability-extensionAbility.md) and provides agent extension capabilities. This module provides the callback interface invoked when an Agent of the [LOW_CODE](js-apis-app-agent-agentConstant-sys.md#agentconstantagentcardtype) type is called, which is used to perform initialization operations (such as downloading resources from the cloud and loading configurations).
 

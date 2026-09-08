@@ -259,3 +259,4 @@ export class AppIntentEntityImpl extends insightIntent.AppIntentEntity<AppIntent
   }
 }
 ```
+<!--no_check-->

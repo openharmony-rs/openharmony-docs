@@ -1,11 +1,11 @@
-# @ohos.app.ability.kioskManager (Kiosk Mode Management) (System APIs)
+# @ohos.app.ability.kioskManager (Kiosk Mode Management) (System API)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @zhu-feimo-->
 <!--Designer: @ccllee1-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=9b45198dbdb6f53f8bf0896d62425626f2442690 translatedAt=2026-09-03T10:23:02.822Z pushedAt=2026-09-05T10:47:30.408Z -->
+<!-- md-trans-meta sourceCommit=9b45198dbdb6f53f8bf0896d62425626f2442690 translatedAt=2026-09-03T10:23:02.822Z pushedAt=2026-09-08T07:20:18.733Z -->
 
 The KioskManager module provides Kiosk mode management capabilities, including entering/exiting Kiosk mode for the system and querying the current Kiosk mode status of the system.
 

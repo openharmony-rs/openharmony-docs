@@ -1,4 +1,4 @@
-# @ohos.app.ability.UIExtensionContentSession (UI Content Operation Class with UI Extension Capability) (System API)
+# @ohos.app.ability.UIExtensionContentSession (UI Operation Class of UI-based Extension Ability)(system API)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -6,7 +6,7 @@
 <!--Designer: @xhz-sz-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=68b6c358aa355441ba00a2df89af84c41abac871 translatedAt=2026-09-03T10:34:56.948Z pushedAt=2026-09-05T10:47:30.437Z -->
+<!-- md-trans-meta sourceCommit=68b6c358aa355441ba00a2df89af84c41abac871 translatedAt=2026-09-03T10:34:56.948Z pushedAt=2026-09-07T08:24:17.315Z -->
 
 UIExtensionContentSession is an instance created when the [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md) loads UI content. When the UIExtensionComponent starts a UIExtensionAbility, the UIExtensionAbility creates a UIExtensionContentSession instance and returns it through the [onSessionCreate](js-apis-app-ability-uiExtensionAbility.md#onsessioncreate) callback. One UIExtensionComponent corresponds to one UIExtensionContentSession instance, which provides methods such as UI loading and result notification. The UIExtensionContentSession instances of multiple UIExtensionAbilities are operated separately.
 
@@ -1004,3 +1004,4 @@ export default class UIExtAbility extends UIExtensionAbility {
   }
 }
 ```
+<!--no_check-->

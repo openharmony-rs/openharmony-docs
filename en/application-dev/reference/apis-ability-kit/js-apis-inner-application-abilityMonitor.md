@@ -66,3 +66,4 @@ abilityDelegator.addAbilityMonitor(monitor, (error: BusinessError) => {
   }
 });
 ```
+<!--no_check-->

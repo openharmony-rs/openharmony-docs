@@ -5,7 +5,7 @@
 <!--Designer: @yzkp-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=b49af0976afe6155e5bfe3169381b3e1f0a172f0 translatedAt=2026-09-03T10:48:25.214Z pushedAt=2026-09-05T10:47:30.483Z -->
+<!-- md-trans-meta sourceCommit=b49af0976afe6155e5bfe3169381b3e1f0a172f0 translatedAt=2026-09-03T10:48:25.214Z pushedAt=2026-09-07T08:50:32.473Z -->
 
 This module provides the capability to manage startup tasks in the [application startup framework](../../application-models/app-startup.md), supporting task dependency scheduling, parallel execution, .so preloading, and task result management. It can be called only on the main thread.
 
@@ -40,7 +40,7 @@ Runs startup framework startup tasks or loads .so files. During the application 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| startupTasks | Array\<string\> | Yes | Array of the names of the startup tasks [StartupTask](js-apis-app-appstartup-startupTask.md) to be executed or the names of the preloaded so files. This API does not support startup tasks in feature-type HAPs. The names must be consistent with the name values configured in the startup_config.json configuration file. For details, see [Define Startup Task Configuration](../../application-models/app-startup.md#define-startup-task-configuration) and [Define Preload so Task Configuration](../../application-models/app-startup.md#define-preload-so-task-configuration). |
+| startupTasks | Array\<string\> | Yes | Array of the names of the startup tasks [StartupTask](js-apis-app-appstartup-startupTask.md) to be executed or the names of the preloaded so files. This API does not support startup tasks in feature-type HAPs. The names must be consistent with the name values configured in the startup_config.json configuration file. For details, see [Define Startup Task Configuration](../../application-models/app-startup.md#defining-startup-task-configuration) and [Define Preload so Task Configuration](../../application-models/app-startup.md#defining-so-file-preloading-task-configuration). |
 | config | [StartupConfig](js-apis-app-appstartup-startupConfig.md) | No | Startup task configuration information, used to customize the behavior of the startup framework. Pass this parameter when a custom timeout period needs to be set or the startup task completion status needs to be listened for. If this parameter is not passed, the default configuration is used (the default timeout period is 10000 ms, and no startup task listener is set). |
 
 **Return value**
@@ -107,7 +107,7 @@ Runs startup framework startup tasks or loads .so files. You can specify [Abilit
 
 | Name      | Type                                                        | Mandatory| Description                                                        |
 | ------------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| startupTasks | Array\<string\>                                              | Yes   | Array of the names of the startup tasks [StartupTask](js-apis-app-appstartup-startupTask.md) to be executed or the names of the preloaded so files. The names must be consistent with the **name** values configured in the startup_config.json configuration file. For details, see [Define Startup Task Configuration](../../application-models/app-startup.md#define-startup-task-configuration) and [Define Preload so Task Configuration](../../application-models/app-startup.md#define-preload-so-task-configuration). |
+| startupTasks | Array\<string\>                                              | Yes   | Array of the names of the startup tasks [StartupTask](js-apis-app-appstartup-startupTask.md) to be executed or the names of the preloaded so files. The names must be consistent with the **name** values configured in the startup_config.json configuration file. For details, see [Define Startup Task Configuration](../../application-models/app-startup.md#defining-startup-task-configuration) and [Define Preload so Task Configuration](../../application-models/app-startup.md#defining-so-file-preloading-task-configuration). |
 | context      | [common.AbilityStageContext](js-apis-inner-application-abilityStageContext.md) | Yes  | AbilityStage context that executes the [StartupTask](js-apis-app-appstartup-startupTask.md). It is passed as an input parameter to [init](js-apis-app-appstartup-startupTask.md#init) of the task.|
 | config       | [StartupConfig](js-apis-app-appstartup-startupConfig.md)   | Yes   | Startup task configuration information, including the startup framework timeout period and the startup task listener configuration. |
 
@@ -229,7 +229,7 @@ Obtains the execution result of a specified startup task or .so preloading task.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| startupTask | string | Yes | Name of the startup task [StartupTask](js-apis-app-appstartup-startupTask.md) or name of the preload so. The name must be consistent with the value of **name** configured in the configuration file startup_config.json. For details, see [Define Startup Task Configuration](../../application-models/app-startup.md#define-startup-task-configuration) and [Define Preload so Task Configuration](../../application-models/app-startup.md#define-preload-so-task-configuration). |
+| startupTask | string | Yes | Name of the startup task [StartupTask](js-apis-app-appstartup-startupTask.md) or name of the preload so. The name must be consistent with the value of **name** configured in the configuration file startup_config.json. For details, see [Define Startup Task Configuration](../../application-models/app-startup.md#defining-startup-task-configuration) and [Define Preload so Task Configuration](../../application-models/app-startup.md#defining-so-file-preloading-task-configuration). |
 
 **Return value**
 
@@ -295,7 +295,7 @@ Obtains whether a specified startup task or .so preloading task is initialized. 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| startupTask | string | Yes | Name of the startup task [StartupTask](js-apis-app-appstartup-startupTask.md) or the preloaded so name. The name must be consistent with the value of **name** configured in the configuration file startup_config.json. For details, see [Define Startup Task Configuration](../../application-models/app-startup.md#define-startup-task-configuration) and [Define Preload so Task Configuration](../../application-models/app-startup.md#define-preload-so-task-configuration). |
+| startupTask | string | Yes | Name of the startup task [StartupTask](js-apis-app-appstartup-startupTask.md) or the preloaded so name. The name must be consistent with the value of **name** configured in the configuration file startup_config.json. For details, see [Define Startup Task Configuration](../../application-models/app-startup.md#defining-startup-task-configuration) and [Define Preload so Task Configuration](../../application-models/app-startup.md#defining-so-file-preloading-task-configuration). |
 
 **Return value**
 
@@ -374,7 +374,7 @@ Removes the result of a specified startup task or .so preloading task.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| startupTask | string | Yes | Name of the startup task [StartupTask](js-apis-app-appstartup-startupTask.md) or the preloaded so name. The name must be consistent with the value of **name** configured in the configuration file startup_config.json. For details, see [Define Startup Task Configuration](../../application-models/app-startup.md#define-startup-task-configuration) and [Define Preload so Task Configuration](../../application-models/app-startup.md#define-preload-so-task-configuration). |
+| startupTask | string | Yes | Name of the startup task [StartupTask](js-apis-app-appstartup-startupTask.md) or the preloaded so name. The name must be consistent with the value of **name** configured in the configuration file startup_config.json. For details, see [Define Startup Task Configuration](../../application-models/app-startup.md#defining-startup-task-configuration) and [Define Preload so Task Configuration](../../application-models/app-startup.md#defining-so-file-preloading-task-configuration). |
 
 **Error codes**
 
@@ -420,3 +420,4 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+<!--no_check-->

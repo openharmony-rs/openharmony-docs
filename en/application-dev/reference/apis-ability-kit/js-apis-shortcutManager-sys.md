@@ -1,11 +1,11 @@
-# @ohos.bundle.shortcutManager (shortcutManager) (System API)
+# @ohos.bundle.shortcutManager (shortcutManager Module) (System API)
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=e5b78af6b5bbb1a9a38bb4bd5c5ed13eb9c1e2bf translatedAt=2026-09-03T12:32:41.015Z pushedAt=2026-09-05T10:47:30.945Z -->
+<!-- md-trans-meta sourceCommit=e5b78af6b5bbb1a9a38bb4bd5c5ed13eb9c1e2bf translatedAt=2026-09-03T12:32:41.015Z pushedAt=2026-09-08T07:53:25.301Z -->
 
 This module provides system applications with the capabilities of adding, deleting, and querying shortcuts, including adding, deleting, and querying [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1) information.
 

@@ -6,7 +6,7 @@
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=68b6c358aa355441ba00a2df89af84c41abac871 translatedAt=2026-09-03T12:07:11.031Z pushedAt=2026-09-05T10:47:30.873Z -->
+<!-- md-trans-meta sourceCommit=68b6c358aa355441ba00a2df89af84c41abac871 translatedAt=2026-09-03T12:07:11.031Z pushedAt=2026-09-08T01:48:46.493Z -->
 
 UIExtensionContext provides the context environment for [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md). It inherits from [ExtensionContext](js-apis-inner-application-extensionContext.md) and provides UIExtensionAbility-related configuration and APIs for operating the UIExtensionAbility. For example, you can use the APIs to start a UIExtensionAbility.
 
@@ -433,7 +433,7 @@ Starts a second UIAbility after the first UIAbility instance is created, and dis
 >
 > If the first UIAbility instance is destroyed, the second UIAbility is started in full-screen mode.
 >
-> The second UIAbility supports only [explicit startup](../../application-models/explicit-implicit-want-mappings.md#explicit-want-matching-principle).
+> The second UIAbility supports only [explicit startup](../../application-models/explicit-implicit-want-mappings.md#matching-rules-of-explicit-want).
 >
 > If the caller is in the background, the ohos.permission.START_ABILITIES_FROM_BACKGROUND permission is also required (this permission is available only to system applications).
 >
@@ -605,3 +605,4 @@ export default class ShareExtAbility extends ShareExtensionAbility {
   }
 }
 ```
+<!--no_check-->

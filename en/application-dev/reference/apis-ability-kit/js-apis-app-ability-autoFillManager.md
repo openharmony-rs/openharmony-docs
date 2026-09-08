@@ -1,4 +1,4 @@
-# @ohos.app.ability.autoFillManager (AutoFill Framework)
+# @ohos.app.ability.autoFillManager (Auto-Fill Framework)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -6,7 +6,7 @@
 <!--Designer: @ccllee1-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=9b45198dbdb6f53f8bf0896d62425626f2442690 translatedAt=2026-09-03T10:02:07.841Z pushedAt=2026-09-05T10:47:30.251Z -->
+<!-- md-trans-meta sourceCommit=9b45198dbdb6f53f8bf0896d62425626f2442690 translatedAt=2026-09-03T10:02:07.841Z pushedAt=2026-09-08T07:17:43.115Z -->
 
 The autoFillManager module provides applications with the AutoFill capability for user information such as accounts, passwords, addresses, and phone numbers.
 

@@ -1,4 +1,4 @@
-# @ohos.app.agent.AgentExtensionAbility
+# @ohos.app.agent.AgentExtensionAbility (Agent Extension Component)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -6,7 +6,7 @@
 <!--Designer: @ccllee1-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=7fe4eacae9c952d492316e40f501d71d3714186d translatedAt=2026-09-03T10:43:32.270Z pushedAt=2026-09-05T10:47:30.473Z -->
+<!-- md-trans-meta sourceCommit=7fe4eacae9c952d492316e40f501d71d3714186d translatedAt=2026-09-03T10:43:32.270Z pushedAt=2026-09-07T06:40:06.406Z -->
 
 AgentExtensionAbility inherits from [ExtensionAbility](js-apis-app-ability-extensionAbility.md) and provides agent extension capabilities, including lifecycle callback APIs for creating, destroying, connecting, and disconnecting an agent service, as well as callback APIs for receiving data sent by the client and for security authentication.
 

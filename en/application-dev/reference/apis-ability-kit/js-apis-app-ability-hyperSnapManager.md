@@ -1,11 +1,11 @@
-# @ohos.app.ability.hyperSnapManager (Quick Launch Management)
+# @ohos.app.ability.hyperSnapManager (Application Quick Startup Management)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @jsjzju-->
 <!--Designer: @jsjzju-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=b64fba1a3bfa56ac6a22a458a141c3f45d9c160b translatedAt=2026-09-03T10:18:09.518Z pushedAt=2026-09-05T10:48:14.190Z -->
+<!-- md-trans-meta sourceCommit=b64fba1a3bfa56ac6a22a458a141c3f45d9c160b translatedAt=2026-09-03T10:18:09.518Z pushedAt=2026-09-07T02:48:47.008Z -->
 
 The initialization process during app startup can be performed in advance as quick launch initialization, so that apps started via Quick Launch do not repeat the initialization process, thereby accelerating startup. The hyperSnapManager module provides Quick Launch management capabilities, including enabling or disabling the Quick Launch feature of an app and requesting re-initialization of Quick Launch.
 
@@ -19,7 +19,6 @@ Quick Launch initializes an app only once, which saves the time required for app
 
 **Figure 1** Quick Launch startup process
 
-![Snapshot-Start](./figures/Snapshot-Start.png)
 
 ## Modules to Import
 

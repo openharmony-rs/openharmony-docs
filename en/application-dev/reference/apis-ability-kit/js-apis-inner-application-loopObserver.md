@@ -6,9 +6,9 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe--> 
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=d7833d54288ec20034339cf7164e5aaef52722e9 translatedAt=2026-09-03T11:58:23.192Z pushedAt=2026-09-05T10:47:30.823Z -->
+<!-- md-trans-meta sourceCommit=d7833d54288ec20034339cf7164e5aaef52722e9 translatedAt=2026-09-03T11:58:23.192Z pushedAt=2026-09-07T12:14:32.975Z -->
 
-Defines a listener for exceptions on the main thread of an application. It can be used as an input parameter of [ErrorManager.on](./js-apis-app-ability-error-manager.md#errormanageronloopobserver12) to listen for timeouts in main thread event processing. Through the callback mechanism, the actual execution time of main thread messages is obtained in real time, helping developers detect and locate faults in a timely manner.
+Defines a listener for exceptions on the main thread of an application. It can be used as an input parameter of [ErrorManager.on](./js-apis-app-ability-errorManager.md#errormanageronloopobserver12) to listen for timeouts in main thread event processing. Through the callback mechanism, the actual execution time of main thread messages is obtained in real time, helping developers detect and locate faults in a timely manner.
 
 > **NOTE**
 > 

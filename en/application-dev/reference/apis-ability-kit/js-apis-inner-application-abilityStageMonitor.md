@@ -49,3 +49,4 @@ abilityDelegator.waitAbilityStageMonitor(monitor, (error, data) => {
   }
 });
 ```
+<!--no_check-->
