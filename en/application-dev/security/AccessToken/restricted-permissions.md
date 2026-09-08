@@ -1020,3 +1020,17 @@ Allows an application to customize the BLE advertiser name.
 **Supported devices**：General
 
 **Since**：23
+
+## ohos.permission.GET_AUDIO_ADAPTER_INFO
+
+Allows an application to obtain sound card information.
+
+<!--RP99--><!--RP99End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PC/2in1
+
+**Since**: 26.2.0
