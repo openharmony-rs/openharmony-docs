@@ -2427,19 +2427,19 @@ addDockApp(admin: Want, bundleName: string, abilityName: string, index?: number)
 
 > **说明：**
 >
-> 1.若位置0或1上已存在“应用中心”或“任务中心”，则尝试向该位置添加应用会返回错误码9201019；若该位置为其他应用，则可正常添加。
+> 1. 若位置0或1上已存在“应用中心”或“任务中心”，则尝试向该位置添加应用会返回错误码9201019；若该位置为其他应用，则可正常添加。
 >
-> 2.以下应用不可通过本接口添加到快捷栏：“应用中心”、“任务中心”、“文件管理”、“回收站”。
+> 2. 以下应用不可通过本接口添加到快捷栏：“应用中心”、“任务中心”、“文件管理”、“回收站”。
 >
-> 3.仅支持添加具有应用程序入口（即有图标）的应用，无图标的应用不支持添加。
+> 3. 仅支持添加具有应用程序入口（即有图标）的应用，无图标的应用不支持添加。
 >
-> 4.仅支持配置当前用户下的快捷栏，每个用户的快捷栏最多可容纳100个应用。
+> 4. 仅支持配置当前用户下的快捷栏，每个用户的快捷栏最多可容纳100个应用。
 >
-> 5.在已有应用的位置插入新应用时，新应用将直接占用该位置，原应用及其后的应用依次向后顺移一位。
+> 5. 在已有应用的位置插入新应用时，新应用将直接占用该位置，原应用及其后的应用依次向后顺移一位。
 >
-> 6.若不传index参数，或传入的index值大于快捷栏当前应用数量，则新应用默认追加到快捷栏末尾。
+> 6. 若不传index参数，或传入的index值大于快捷栏当前应用数量，则新应用默认追加到快捷栏末尾。
 >
-> 7.通过本接口添加应用到快捷栏后，用户可以手动移除或调整应用的位置。
+> 7. 通过本接口添加应用到快捷栏后，用户可以手动移除或调整应用的位置。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -2641,10 +2641,10 @@ addAllowedNotificationBundles(admin: Want, bundleNames: Array\<string\>, account
 添加允许发送通知的应用名单。设置通知允许名单后，不在此名单内的应用无法发送通知。
 > **说明：**
 >
-> 1.如果Kiosk模式与通知允许名单策略同时设置，那么设置Kiosk模式的应用与通知允许名单中的应用都可以发送通知。<br>
-> 2.当已经通过[setDisallowedPolicy](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)设置了禁用设备通知能力时，再通过本接口设置通知允许名单，会抛出错误码9200010。<br>
-> 3.通知允许名单对系统服务不生效，系统服务始终可以发送通知。系统应用受通知允许名单管控。<br>
-> 4.支持跨用户设置，设置后跨用户立即生效。
+> 1. 如果Kiosk模式与通知允许名单策略同时设置，那么设置Kiosk模式的应用与通知允许名单中的应用都可以发送通知。<br>
+> 2. 当已经通过[setDisallowedPolicy](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)设置了禁用设备通知能力时，再通过本接口设置通知允许名单，会抛出错误码9200010。<br>
+> 3. 通知允许名单对系统服务不生效，系统服务始终可以发送通知。系统应用受通知允许名单管控。<br>
+> 4. 支持跨用户设置，设置后跨用户立即生效。
 
 **起始版本：** 26.0.0
 
@@ -2822,8 +2822,8 @@ addAllowedDistributeAbilityConnBundles(admin: Want, appIdentifiers: Array&lt;str
 当前支持的分布式业务类型有：[协同业务](#servicetype)。
 > **说明：**
 >
-> 1.如果要设置允许使用特定分布式业务的应用名单，在调用本接口前必须已经通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)接口禁用了向其他设备传输数据的设备间单向传输数据的能力，否则会抛出错误码9201043。<br>
-> 2.当向其他设备传输数据的设备间单向传输数据的能力被解除禁用时，通过本接口设置的允许使用特定分布式业务的应用名单会被同步清除。
+> 1. 如果要设置允许使用特定分布式业务的应用名单，在调用本接口前必须已经通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)接口禁用了向其他设备传输数据的设备间单向传输数据的能力，否则会抛出错误码9201043。<br>
+> 2. 当向其他设备传输数据的设备间单向传输数据的能力被解除禁用时，通过本接口设置的允许使用特定分布式业务的应用名单会被同步清除。
 
 **起始版本：** 26.0.0
 
