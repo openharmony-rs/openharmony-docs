@@ -87,6 +87,19 @@ sequenceDiagram
 3. 查询后台加载任务信息。
 
    <!-- @[backgroundLoader_getTaskInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) --> 
+   
+   ``` TypeScript
+   try {
+     const taskInfoData = backgroundLoader.getTaskInfo(taskId);
+     const result = `taskId=${taskInfoData.taskId}, abilityName=${taskInfoData.abilityName}`;
+     hilog.info(DOMAIN, 'testTag', 'getTaskInfo result: %{public}s', result);
+     return result;
+   } catch (err) {
+     const errMsg = JSON.stringify(err);
+     hilog.error(DOMAIN, 'testTag', 'getTaskInfo failed: %{public}s', errMsg);
+     return `Failed: ${(err as BusinessError).message ?? errMsg}`;
+   }
+   ```
 
 
 ### 完成后台加载任务
