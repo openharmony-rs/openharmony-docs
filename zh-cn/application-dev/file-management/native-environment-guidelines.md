@@ -93,10 +93,10 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
        FileManagement_ErrCode ret = OH_Environment_GetUserDocumentDir(&documentPath);
        if (ret == 0) {
            OH_LOG_INFO(LOG_APP, "Succeeded in getting user document directory, path=%{public}s", documentPath);
-           free(documentPath);
        } else {
            OH_LOG_ERROR(LOG_APP, "Failed to get user document path, error code is %{public}d", ret);
        }
+       free(documentPath);
    }
    ```
 
