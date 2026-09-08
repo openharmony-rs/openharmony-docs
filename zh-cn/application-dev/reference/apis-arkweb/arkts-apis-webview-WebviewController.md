@@ -414,8 +414,8 @@ struct WebComponent {
          contentDiv.innerHTML = '<h1>Home Page</h1><p>Welcome to the Home Page!</p>';
        } else {
          contentDiv.innerHTML = '<h1>Default Page</h1><p>This is the default content.</p>';
-    }   
-  }   
+       }
+     }
 
      // 加载界面
      window.addEventListener('load', loadContent);
@@ -8639,114 +8639,114 @@ setPathAllowingUniversalAccess放开目录的跨域访问限制是一个高风�
 
    当路径列表中有其中一个路径不满足以上条件之一，则会抛出异常码401，并且设置路径列表失败。当设置的路径列表为空，则file协议可访问范围以[fileAccess](./arkts-basic-components-web-attributes.md#fileaccess)的行为为准。
 
-   **系统能力：** SystemCapability.Web.Webview.Core
+**系统能力：** SystemCapability.Web.Webview.Core
 
-   **参数：**
+**参数：**
 
-   | 参数名   | 类型 | 必填 | 说明                  |
-   | -------- | -------- | ---- | ------------------------- |
-   | pathList | Array\<string\>   | 是   | 路径列表 |
+| 参数名   | 类型 | 必填 | 说明                  |
+| -------- | -------- | ---- | ------------------------- |
+| pathList | Array\<string\>   | 是   | 路径列表 |
 
-   **错误码：**
+**错误码：**
 
-   以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
-   | 错误码ID | 错误信息                 |
-   | -------- | ------------------------ |
-   | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Parameter string is too long. 3.Parameter verification failed. |
-   | 17100001 | Init error. The WebviewController must be associated with a Web component. |
+| 错误码ID | 错误信息                 |
+| -------- | ------------------------ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Parameter string is too long. 3.Parameter verification failed. |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
 
-   **示例：**
+**示例：**
 
-   ```ts
-   // xxx.ets
-   import { webview } from '@kit.ArkWeb';
-   import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-   @Entry
-   @Component
-   struct WebComponent {
-     controller: WebviewController = new webview.WebviewController();
-     uiContext: UIContext = this.getUIContext();
+@Entry
+@Component
+struct WebComponent {
+  controller: WebviewController = new webview.WebviewController();
+  uiContext: UIContext = this.getUIContext();
 
-     build() {
-       Row() {
-         Web({ src: "", controller: this.controller })
-           .onControllerAttached(() => {
-             try {
-               // 设置允许可以跨域访问的路径列表
-               this.controller.setPathAllowingUniversalAccess([
-                 this.uiContext.getHostContext()!.resourceDir,
-                 this.uiContext.getHostContext()!.filesDir + "/example"
-               ])
-               this.controller.loadUrl("file://" + this.getUIContext().getHostContext()!.resourceDir + "/index.html")
-             } catch (error) {
-               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-             }
-           })
-           .javaScriptAccess(true)
-           .fileAccess(true)
-           .domStorageAccess(true)
-       }
-     }
-   }
+  build() {
+    Row() {
+      Web({ src: "", controller: this.controller })
+        .onControllerAttached(() => {
+          try {
+            // 设置允许可以跨域访问的路径列表
+            this.controller.setPathAllowingUniversalAccess([
+              this.uiContext.getHostContext()!.resourceDir,
+              this.uiContext.getHostContext()!.filesDir + "/example"
+            ])
+            this.controller.loadUrl("file://" + this.getUIContext().getHostContext()!.resourceDir + "/index.html")
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        .javaScriptAccess(true)
+        .fileAccess(true)
+        .domStorageAccess(true)
+    }
+  }
+}
 
-   ```
+```
 
-   加载的html文件，位于应用资源目录resource/resfile/index.html。
-   ```html
-   <!-- index.html -->
-   <!DOCTYPE html>
-   <html lang="en">
+加载的html文件，位于应用资源目录resource/resfile/index.html。
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
 
-   <head>
-       <meta charset="utf-8">
-       <title>Demo</title>
-       <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
-       <script>
-           function getFile() {
-               var file = "file:///data/storage/el1/bundle/entry/resources/resfile/js/script.js";
-               var xmlHttpReq = new XMLHttpRequest();
-               xmlHttpReq.onreadystatechange = function(){
-                   console.info("readyState:" + xmlHttpReq.readyState);
-                   console.info("status:" + xmlHttpReq.status);
-                   if(xmlHttpReq.readyState == 4){
-                       if (xmlHttpReq.status == 200) {
-                   // 如果ets侧正确设置路径列表，则此处能正常获取资源
-                           const element = document.getElementById('text');
-                           element.textContent = "load " + file + " success";
-                       } else {
-                   // 如果ets侧不设置路径列表，则此处会触发CORS跨域检查错误
-                           const element = document.getElementById('text');
-                           element.textContent = "load " + file + " failed";
-                       }
-                   }
-               }
-               xmlHttpReq.open("GET", file);
-               xmlHttpReq.send(null);
-           }
+<head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
+    <script>
+        function getFile() {
+            var file = "file:///data/storage/el1/bundle/entry/resources/resfile/js/script.js";
+            var xmlHttpReq = new XMLHttpRequest();
+            xmlHttpReq.onreadystatechange = function(){
+                console.info("readyState:" + xmlHttpReq.readyState);
+                console.info("status:" + xmlHttpReq.status);
+                if(xmlHttpReq.readyState == 4){
+                    if (xmlHttpReq.status == 200) {
+                // 如果ets侧正确设置路径列表，则此处能正常获取资源
+                        const element = document.getElementById('text');
+                        element.textContent = "load " + file + " success";
+                    } else {
+                // 如果ets侧不设置路径列表，则此处会触发CORS跨域检查错误
+                        const element = document.getElementById('text');
+                        element.textContent = "load " + file + " failed";
+                    }
+                }
+            }
+            xmlHttpReq.open("GET", file);
+            xmlHttpReq.send(null);
+        }
 
-       </script>
-   </head>
+    </script>
+</head>
 
-   <body>
-   <div class="page">
-       <button id="example" onclick="getFile()">stealFile</button>
-   </div>
-   <div id="text"></div>
-   </body>
+<body>
+<div class="page">
+    <button id="example" onclick="getFile()">stealFile</button>
+</div>
+<div id="text"></div>
+</body>
 
-   </html>
-   ```
+</html>
+```
 
-   html中使用file协议通过XMLHttpRequest跨域访问本地js文件，js文件位于resource/resfile/js/script.js。
-   <!--code_no_check-->
-   ```javascript
-   const body = document.body;
-   const element = document.createElement('div');
-   element.textContent = 'success';
-   body.appendChild(element);
-   ```
+html中使用file协议通过XMLHttpRequest跨域访问本地js文件，js文件位于resource/resfile/js/script.js。
+<!--code_no_check-->
+```javascript
+const body = document.body;
+const element = document.createElement('div');
+element.textContent = 'success';
+body.appendChild(element);
+```
 
 ## enableBackForwardCache<sup>12+</sup>
 
