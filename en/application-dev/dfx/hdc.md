@@ -801,7 +801,7 @@ hdc file send [-a|-sync|-z|-m|-cwd path|-b bundlename] SOURCE DEST
 | Name| Description|
 | -------- | -------- |
 | SOURCE | Path of the file to send.|
-| DEST | Path of the target file.<br>Since API version 21, some operations on the media library file can be performed through hdc. (In earlier versions, "[Fail]Error opening file: ..." is displayed.)<br>Path of the media library file: **/mnt/data/\<uid\>/media_fuse/Photo/** directory and its subdirectories. **\<uid\>** is the ID of the current user.
+| DEST | Path of the target file.<br>Since API version 21, some operations on the media library file can be performed through hdc. (In earlier versions, "[Fail]Error opening file: ..." is displayed.)<br>Path of the media library file: **/mnt/data/\<uid\>/media_fuse/Photo/** directory and its subdirectories. **\<uid\>** is the ID of the current user.<br>For details about how to operate the media library through hdc, see [mediatool](../tools/mediatool.md#hdc-commands).|
 | -a | Used to retain the file modification timestamp.|
 | -sync | Used to transfer only the files whose **mtime** is updated.<br>**mtime** (modified timestamp): timestamp after modification.|
 | -z | Used to compress and transmit files in LZ4 format. This parameter is unavailable.|
@@ -843,7 +843,7 @@ hdc file recv [-a|-sync|-z|-m|-cwd path|-b bundlename] DEST SOURCE
 | Name| Description|
 | -------- | -------- |
 | SOURCE | Destination path on the local device.|
-| DEST | Path of the file to send.<br>Since API version 21, some operations on the media library file can be performed through hdc. (In earlier versions, "[Fail]Error opening file: ..." is displayed.)<br>Path of the media library file: **/mnt/data/\<uid\>/media_fuse/Photo/** directory and its subdirectories. **\<uid\>** is the ID of the current user.
+| DEST | Path of the file to send.<br>Since API version 21, some operations on the media library file can be performed through hdc. (In earlier versions, "[Fail]Error opening file: ..." is displayed.)<br>Path of the media library file: **/mnt/data/\<uid\>/media_fuse/Photo/** directory and its subdirectories. **\<uid\>** is the ID of the current user.<br>For details about media library operations, see [mediatool](../tools/mediatool.md#hdc-commands).|
 | -a | Used to retain the file modification timestamp.|
 | -sync | Used to transfer only the files whose **mtime** is updated.<br>**mtime** (modified timestamp): timestamp after modification.|
 | -z | Used to compress and transmit files in LZ4 format. This parameter is unavailable.|
