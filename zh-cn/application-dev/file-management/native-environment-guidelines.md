@@ -74,10 +74,10 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
        FileManagement_ErrCode ret = OH_Environment_GetUserDesktopDir(&desktopPath);
        if (ret == 0) {
            OH_LOG_INFO(LOG_APP, "Succeeded in getting user desktop directory, path=%{public}s", desktopPath);
-           free(desktopPath);
        } else {
            OH_LOG_ERROR(LOG_APP, "Failed to get user desktop path, error code is %{public}d", ret);
        }
+       free(desktopPath);
    }
    ```
 
