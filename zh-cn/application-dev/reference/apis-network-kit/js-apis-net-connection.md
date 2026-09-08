@@ -1982,9 +1982,9 @@ setPacFileUrl(pacFileUrl: string): void
 
 设置PAC脚本（Proxy Auto-Configuration Script，代理自动配置脚本）的URL地址，并启动PAC代理能力，比如：http://127.0.0.1:21998/PacProxyScript.pac 。可通过调用[findProxyForUrl](#connectionfindproxyforurl20)解析URL地址来获取代理信息。
 
->**注意：**
+>**说明：** 
 >
-> 1、本接口当前在PC/2in1<sup>20+</sup>、Phone<sup>23+</sup>、Tablet<sup>23+</sup>、TV<sup>23+</sup>设备上支持解析脚本并启用PAC代理能力，Wearable设备类型上只保存脚本地址，不会启用PAC代理能力。<br>
+> 1、设备行为差异：本接口当前在PC/2in1<sup>20+</sup>、Phone<sup>23+</sup>、Tablet<sup>23+</sup>、TV<sup>23+</sup>设备上支持解析脚本并启用PAC代理能力，Wearable设备类型上只保存脚本地址，不会启用PAC代理能力。<br>
 > 2、该接口不会校验URL真实性，在启动PAC代理时，若URL有误，则启动代理失败，返回2100002错误码。
 
 **需要权限**：ohos.permission.SET_PAC_URL
