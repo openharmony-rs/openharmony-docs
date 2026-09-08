@@ -5,7 +5,7 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=24e474de4473251d020526f4b2e5c7927649d47c translatedAt=2026-09-01T13:04:53.795Z pushedAt=2026-09-07T10:19:21.505Z -->
+<!-- md-trans-meta sourceCommit=24e474de4473251d020526f4b2e5c7927649d47c translatedAt=2026-09-01T13:04:53.795Z pushedAt=2026-09-08T04:40:57.075Z -->
 
 ## Overview
 
@@ -179,7 +179,7 @@ Creates a session object.
 | const char* sessionTag | Custom session tag set by the application. |
 | const char* bundleName |   Bundle name.|
 | const char* abilityName | Ability component name. |
-| [OH_AVSession](capi-ohavsession-oh-avsession.md)** avsession |    Sssion object created.|
+| [OH_AVSession](capi-ohavsession-oh-avsession.md)** avsession |    Session object created.|
 
 **Returns**
 
