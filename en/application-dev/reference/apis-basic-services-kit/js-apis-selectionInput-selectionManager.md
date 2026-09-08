@@ -198,7 +198,7 @@ For details about the following error codes, see [Word Selection Error Codes](er
 
 | ID  | Error Message                      |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service invocation exception. |
+| 33600001   | Selection service exception. |
 | 33600003   | The application calling the API does not match the application selected in the system settings. |
 
 **Example**
@@ -275,7 +275,7 @@ For details about the following error codes, see [Word Selection Error Codes](er
 
 | ID  | Error Message                      |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service invocation exception. |
+| 33600001   | Selection service exception. |
 
 **Example**
 
@@ -396,7 +396,7 @@ For details about the following error codes, see [Word Selection Error Codes](er
 
 | ID  | Error Message                      |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service invocation exception. |
+| 33600001   | Selection service exception. |
 | 33600002   | This selection window has been destroyed. |
 
 **Example**
@@ -440,7 +440,7 @@ For details about the following error codes, see [Word Selection Error Codes](er
 
 | ID  | Error Message                      |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service invocation exception. |
+| 33600001   | Selection service exception. |
 | 33600002   | This selection window has been destroyed. |
 
 **Example**
@@ -480,7 +480,7 @@ For details about the following error codes, see [Word Selection Error Codes](er
 
 | ID  | Error Message                      |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service invocation exception. |
+| 33600001   | Selection service exception. |
 | 33600002   | This selection window has been destroyed. |
 
 **Example**
@@ -520,7 +520,7 @@ For details about the following error codes, see [Word Selection Error Codes](er
 
 | ID  | Error Message                      |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service invocation exception. |
+| 33600001   | Selection service exception. |
 | 33600002   | This selection window has been destroyed. |
 
 **Example**
@@ -585,7 +585,7 @@ For details about the following error codes, see [Word Selection Error Codes](er
 
 | ID  | Error Message                      |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service invocation exception. |
+| 33600001   | Selection service exception. |
 | 33600002   | This selection window has been destroyed. |
 
 **Example**
@@ -638,7 +638,7 @@ For details about the following error codes, see [Word Selection Error Codes](er
 
 | ID  | Error Message                      |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service invocation exception. |
+| 33600001   | Selection service exception. |
 | 33600002   | This selection window has been destroyed. |
 
 **Example**
