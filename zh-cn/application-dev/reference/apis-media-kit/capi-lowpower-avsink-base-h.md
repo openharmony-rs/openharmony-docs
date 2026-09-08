@@ -27,6 +27,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [OH_AVSamplesBuffer](capi-avsinkbase-oh-avsamplesbuffer.md) | OH_AVSamplesBuffer | LowPowerAVSink输入数据的结构体。应用在收到DataNeeded回调后需要将数据打包装进OH_AVSamplesBuffer实例中送给对应的LowPowerAVSink。 |
+| OH_LowPowerAVSink_Capability | OH_LowPowerAVSink_Capability | OH_LowPowerAVSink_Capability的前向声明。 |
 
 ### 函数
 
