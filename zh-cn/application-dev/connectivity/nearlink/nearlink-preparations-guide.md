@@ -52,8 +52,8 @@
 2. 发起当前设备是否支持星闪的状态查询。
 
     <!-- @[manager_issupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ManagerPage.ets) -->
-
-    ```ts
+    
+    ``` TypeScript
     try {
       let supported: boolean = manager.isNearLinkSupported();
       // ...
@@ -82,8 +82,8 @@
 1. 导入相关模块。
 
     <!-- @[manager_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ManagerPage.ets) -->
-
-    ```ts
+    
+    ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     import { manager } from '@kit.ConnectivityKit';
@@ -92,8 +92,8 @@
 2. 发起星闪状态查询。
 
     <!-- @[manager_getstate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ManagerPage.ets) -->
-
-    ```ts
+    
+    ``` TypeScript
     try {
       let state: manager.NearlinkState = manager.getState();
       // ...
@@ -106,8 +106,8 @@
 3. 订阅星闪开关状态变化。
 
     <!-- @[manager_on_state_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ManagerPage.ets) -->
-
-    ```ts
+    
+    ``` TypeScript
     try {
       manager.onStateChange((state: manager.NearlinkState) => {
         hilog.info(0x0000, 'testTag', `NearLink state changed: ${state}`);
@@ -122,8 +122,8 @@
 4. 取消订阅星闪开关状态变化。
 
     <!-- @[manager_off_state_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ManagerPage.ets) -->
-
-    ```ts
+    
+    ``` TypeScript
     try {
       manager.offStateChange();
     } catch (err) {

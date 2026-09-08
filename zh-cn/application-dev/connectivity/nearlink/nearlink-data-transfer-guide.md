@@ -38,8 +38,8 @@
 1. 导入相关模块。
 
     <!-- @[datatransfer_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/DataTransferPage.ets) -->
-
-    ```ts
+    
+    ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     import { dataTransfer } from '@kit.ConnectivityKit';
@@ -48,8 +48,8 @@
 2. 定义端口UUID与设备地址变量，供后续步骤使用。
 
     <!-- @[datatransfer_declare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/DataTransferPage.ets) -->
-
-    ```ts
+    
+    ``` TypeScript
     let serviceUuid: string = 'FFFFFFFF-1234-5678-ABCD-000000001244';
     let chosenDeviceAddr: string;
     ```
@@ -57,8 +57,8 @@
 3. 注册端口通道，发送端和接收端均需注册。
 
     <!-- @[datatransfer_create_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/DataTransferPage.ets) -->
-
-    ```ts
+    
+    ``` TypeScript
     try {
       dataTransfer.createPort(serviceUuid);
       // ...
@@ -72,8 +72,8 @@
 4. 订阅端口通道连接状态变更事件。不再需要订阅事件时，调用[offConnectionStateChanged()](../../reference/apis-connectivity-kit/js-apis-nearlink-data-transfer-api.md#datatransferoffconnectionstatechanged)取消订阅。
 
     <!-- @[datatransfer_on_conn_state](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/DataTransferPage.ets) -->
-
-    ```ts
+    
+    ``` TypeScript
     try {
       dataTransfer.onConnectionStateChanged((data: dataTransfer.ConnectionResult) => {
         hilog.info(0x0000, 'testTag', `Connection state: ${JSON.stringify(data)}`);
@@ -88,8 +88,8 @@
 5. 订阅端口通道数据接收事件。不再需要订阅事件时，调用[offReadData()](../../reference/apis-connectivity-kit/js-apis-nearlink-data-transfer-api.md#datatransferoffreaddata)取消订阅。
 
     <!-- @[datatransfer_on_read_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/DataTransferPage.ets) -->
-
-    ```ts
+    
+    ``` TypeScript
     try {
       dataTransfer.onReadData((data: dataTransfer.DataParams) => {
         hilog.info(0x0000, 'testTag', `Data received: ${JSON.stringify(data)}`);
@@ -104,8 +104,8 @@
 6. 连接远端设备，建立端口通道。其中chosenDeviceAddr为从[发起星闪扫描](nearlink-device-discovery-guide.md#发起星闪扫描)结果中选择的设备地址，UUID需与步骤3中注册的保持一致。
 
     <!-- @[datatransfer_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/DataTransferPage.ets) -->
-
-    ```ts
+    
+    ``` TypeScript
     try {
       let params: dataTransfer.ConnectionParams = {
         address: chosenDeviceAddr,
@@ -128,8 +128,8 @@
     > 连续多次调用writeData可能导致发送队列拥塞而发送失败。建议通过setInterval设置数据发送时间间隔，推荐间隔为10ms（参见[星闪常见问题 > 连续调用writeData为什么会发送失败](nearlink-faq-guide.md#连续调用writedata为什么会发送失败)）。
 
     <!-- @[datatransfer_write_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/DataTransferPage.ets) -->
-
-    ```ts
+    
+    ``` TypeScript
     try {
       // 使用固定示例数据填充负载，实际开发中替换为业务数据
       let dataBuffer = new ArrayBuffer(4);
@@ -138,7 +138,7 @@
       data[1] = 0x02;
       data[2] = 0x03;
       data[3] = 0x04;
-
+    
       let params: dataTransfer.DataParams = {
         address: chosenDeviceAddr,
         uuid: serviceUuid,
@@ -156,8 +156,8 @@
 8. 断开端口通道连接。
 
     <!-- @[datatransfer_disconnect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/DataTransferPage.ets) -->
-
-    ```ts
+    
+    ``` TypeScript
     try {
       let params: dataTransfer.ConnectionParams = {
         address: chosenDeviceAddr,
@@ -175,8 +175,8 @@
 9. 销毁端口。数据传输完成后，应用销毁端口，释放端口通道及相关资源。
 
     <!-- @[datatransfer_destroy_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/DataTransferPage.ets) -->
-
-    ```ts
+    
+    ``` TypeScript
     try {
       dataTransfer.destroyPort(serviceUuid);
       // ...

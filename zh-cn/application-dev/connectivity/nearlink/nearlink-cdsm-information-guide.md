@@ -28,8 +28,8 @@
 1. 导入相关模块。
 
     <!-- @[cdsm_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/CdsmPage.ets) -->
-
-    ```ts
+    
+    ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     import { cdsm } from '@kit.ConnectivityKit';
@@ -38,8 +38,8 @@
 2. 定义CDSM客户端变量与设备地址变量，供后续步骤使用。其中deviceAddress是通过[getPairedDevices()](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managergetpaireddevices)获取的设备地址，且该设备是合作设备集合的成员设备。
 
     <!-- @[cdsm_declare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/CdsmPage.ets) -->
-
-    ```ts
+    
+    ``` TypeScript
     let cdsmClient: cdsm.CdsmClient;
     let deviceAddress: string;
     ```
@@ -47,8 +47,8 @@
 3. 创建合作设备集合客户端实例。
 
     <!-- @[cdsm_create_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/CdsmPage.ets) -->
-
-    ```ts
+    
+    ``` TypeScript
     try {
       cdsmClient = cdsm.createCdsmClient(deviceAddress);
       // ...
@@ -62,8 +62,8 @@
 4. 主动查询合作设备集合里所有成员设备的信息。
 
     <!-- @[cdsm_get_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/CdsmPage.ets) -->
-
-    ```ts
+    
+    ``` TypeScript
     try {
       let cdsmInfo: cdsm.CdsmInfo = cdsmClient.getCdsmInfo();
       // ...
@@ -77,8 +77,8 @@
 5. 通过注册的方式订阅合作设备集合成员设备的信息变化。
 
     <!-- @[cdsm_on_info_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/CdsmPage.ets) -->
-
-    ```ts
+    
+    ``` TypeScript
     try {
       cdsmClient.onCdsmInfoChange((data: cdsm.CdsmInfo) => {
         hilog.info(0x0000, 'testTag', `CDSM info changed: ${JSON.stringify(data)}`);
@@ -94,8 +94,8 @@
 6. 取消订阅合作设备集合成员设备的信息变化。
 
     <!-- @[cdsm_off_info_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/CdsmPage.ets) -->
-
-    ```ts
+    
+    ``` TypeScript
     try {
       cdsmClient.offCdsmInfoChange();
     } catch (err) {
