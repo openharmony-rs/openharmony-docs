@@ -12,7 +12,7 @@
 UNSET = 0x300
 ```
 
-表示未设置场景信息。表示[LocationRequestScenario](#locationrequestscenario)字段无效。
+表示未设置场景信息。表示[LocationRequestScenario](arkts-location-geolocationmanager-locationrequestscenario-e.md)字段无效。
 
 **起始版本：** 9
 

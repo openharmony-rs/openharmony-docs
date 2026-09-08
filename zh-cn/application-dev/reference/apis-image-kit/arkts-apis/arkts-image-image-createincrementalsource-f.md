@@ -71,7 +71,7 @@ async function CreateIncrementalImageSource(context : Context) {
 function CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource
 ```
 
-通过缓冲区以增量的方式创建ImageSource实例，IncrementalSource不支持读写Exif信息。此接口支持的功能与[CreateIncrementalSource(buf: ArrayBuffer): ImageSource](#createincrementalsource)所生成的实例支持的功能相 同。由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](arkts-image-image-imagesource-i.md#release)方法及时 释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
+通过缓冲区以增量的方式创建ImageSource实例，IncrementalSource不支持读写Exif信息。此接口支持的功能与[CreateIncrementalSource(buf: ArrayBuffer): ImageSource](arkts-image-image-createincrementalsource-f.md)所生成的实例支持的功能相 同。由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](arkts-image-image-imagesource-i.md#release)方法及时 释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **起始版本：** 9
 

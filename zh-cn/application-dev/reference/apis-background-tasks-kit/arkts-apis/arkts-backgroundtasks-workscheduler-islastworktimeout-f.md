@@ -18,7 +18,7 @@ function isLastWorkTimeOut(workId: number, callback: AsyncCallback<void>): boole
 
 **废弃版本：** 10
 
-**替代接口：** [isLastWorkTimeOut](#islastworktimeout)(workId: int, callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [isLastWorkTimeOut](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md)(workId: int, callback: AsyncCallback&lt;boolean&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

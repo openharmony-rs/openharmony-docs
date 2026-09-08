@@ -11,7 +11,7 @@
 - **[SwitchType](arkts-ability-abilityaccessctrl-switchtype-e.md)：** 全局开关类型枚举，用于表示需要请求的系统全局开关类型。  
 - **[PermissionStateChangeType](arkts-ability-abilityaccessctrl-permissionstatechangetype-e.md)：** 权限状态变化类型枚举，用于表示授权、取消授权等变化。  
 - **[PermissionStatus](arkts-ability-abilityaccessctrl-permissionstatus-e.md)：** 权限状态枚举，用于表示当前权限状态。  
-- **[SelectedResult](#selectedresult)：** 设置页授权选择结果枚举，用于表示用户在权限设置弹窗中的选择结果。
+- **[SelectedResult](arkts-ability-abilityaccessctrl-selectedresult-e.md)：** 设置页授权选择结果枚举，用于表示用户在权限设置弹窗中的选择结果。
 
 ## 核心接口类型
 

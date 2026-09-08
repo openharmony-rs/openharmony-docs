@@ -23,7 +23,7 @@ function setDisallowedPolicy(admin: Want, feature: string, disallow: boolean): v
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setDisallowedPolicy](#setdisallowedpolicy)(admin: Want, feature: FeatureForDevice, disallow: boolean)
+**替代接口：** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md)(admin: Want, feature: FeatureForDevice, disallow: boolean)
 
 **需要权限：** 
 - API版本20+：ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS or ohos.permission.ENTERPRISE_MANAGE_NETWORK

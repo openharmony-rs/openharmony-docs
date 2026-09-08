@@ -67,7 +67,7 @@ export function getSimpleDateTimeFormatBySkeleton(skeleton: string, locale?: int
 
 **废弃版本：** 20
 
-**替代接口：** [getSimpleDateTimeFormatBySkeleton](#getsimpledatetimeformatbyskeleton)(skeleton: string, locale?: Intl.Locale)
+**替代接口：** [getSimpleDateTimeFormatBySkeleton](arkts-localization-i18n-getsimpledatetimeformatbyskeleton-f.md)(skeleton: string, locale?: Intl.Locale)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 

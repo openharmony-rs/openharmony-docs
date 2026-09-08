@@ -12,7 +12,7 @@
 
 ## 核心接口类型
 
-- **[SecurityComponentMethod](#securitycomponentmethod)：** 安全控件通用属性方法集合，用于为具体安全控件配置布局、尺寸、文字、图标、颜色、边框和交互属性。
+- **[SecurityComponentMethod](arkts-arkui-securitycomponentmethod-c.md)：** 安全控件通用属性方法集合，用于为具体安全控件配置布局、尺寸、文字、图标、颜色、边框和交互属性。
 
 ## 子组件
 

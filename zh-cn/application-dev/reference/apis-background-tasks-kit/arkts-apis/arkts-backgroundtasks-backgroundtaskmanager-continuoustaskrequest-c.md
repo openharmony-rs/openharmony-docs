@@ -145,7 +145,7 @@ export default class EntryAbility extends UIAbility {
 isModeSupported(): boolean
 ```
 
-查询当前[ContinuousTaskRequest](#continuoustaskrequest)设置的长时任务主类型，是否支持申请长时任务。是否支持申请长时任务请参考 [BackgroundTaskMode](arkts-backgroundtasks-backgroundtaskmanager-backgroundtaskmode-e.md)的说明。
+查询当前[ContinuousTaskRequest](arkts-backgroundtasks-backgroundtaskmanager-continuoustaskrequest-c.md)设置的长时任务主类型，是否支持申请长时任务。是否支持申请长时任务请参考 [BackgroundTaskMode](arkts-backgroundtasks-backgroundtaskmanager-backgroundtaskmode-e.md)的说明。
 
 **起始版本：** 21
 

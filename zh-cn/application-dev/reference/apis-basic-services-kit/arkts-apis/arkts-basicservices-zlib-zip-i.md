@@ -332,7 +332,7 @@ deflateCopy(source: Zip): Promise<ReturnStatus>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| source | [Zip](arkts-basicservices-zlib-zip-i.md) | 是 | 参考[Zip定义](#zip)。 |
+| source | [Zip](arkts-basicservices-zlib-zip-i.md) | 是 | 参考[Zip定义](arkts-basicservices-zlib-zip-i.md)。 |
 
 **返回值：**
 
@@ -1641,7 +1641,7 @@ inflateCopy(source: Zip): Promise<ReturnStatus>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| source | [Zip](arkts-basicservices-zlib-zip-i.md) | 是 | 参考[Zip定义](#zip)。 |
+| source | [Zip](arkts-basicservices-zlib-zip-i.md) | 是 | 参考[Zip定义](arkts-basicservices-zlib-zip-i.md)。 |
 
 **返回值：**
 

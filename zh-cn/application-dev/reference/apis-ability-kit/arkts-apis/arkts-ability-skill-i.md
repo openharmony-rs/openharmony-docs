@@ -12,7 +12,7 @@ skill标签对象。
 readonly actions: Array<string>
 ```
 
-Skill接收的[Action集合](arkts-ability-wantconstant-action-depr-e.md#action)。
+Skill接收的[Action集合](arkts-ability-wantconstant-action-depr-e.md)。
 
 **类型：** Array&lt;string&gt;
 
@@ -44,7 +44,7 @@ Skill接收的DomainVerify值，仅在AbilityInfo中存在，表示是否开启�
 readonly entities: Array<string>
 ```
 
-Skill接收的[Entity集合](arkts-ability-wantconstant-entity-depr-e.md#entity)。
+Skill接收的[Entity集合](arkts-ability-wantconstant-entity-depr-e.md)。
 
 **类型：** Array&lt;string&gt;
 

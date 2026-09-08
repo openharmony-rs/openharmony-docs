@@ -77,7 +77,7 @@ try {
 function addAutoStartApps(admin: Want, autoStartApps: Array<Want>, accountId: number, disallowModify: boolean): void
 ```
 
-为指定用户添加开机自启动应用名单，并设置是否禁止该用户手动取消应用自启动。通过本接口、[addAutoStartApps](#addautostartapps)接口均可添加开机自启动应用名单，两个接口的设置可同时生效。同一用户下，开机自启动应用名单最多支持 包含10个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加7个应用。
+为指定用户添加开机自启动应用名单，并设置是否禁止该用户手动取消应用自启动。通过本接口、[addAutoStartApps](arkts-mdm-applicationmanager-addautostartapps-f.md)接口均可添加开机自启动应用名单，两个接口的设置可同时生效。同一用户下，开机自启动应用名单最多支持 包含10个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加7个应用。
 
 **起始版本：** 20
 

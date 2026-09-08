@@ -38,7 +38,7 @@ consumeKeyEvents?: boolean
 编辑框是否具有完整处理字母、字符、功能等按键的能力。默认值为false。   
 - 值为true，表示具备此能力。   
 - 值为false，表示不具备此能力。   
-- 该字段在调用 [attach](arkts-ime-inputmethod-inputmethodcontroller-i.md#attach) / [InputAttribute](#inputattribute)时提供给输入法应用。
+- 该字段在调用 [attach](arkts-ime-inputmethod-inputmethodcontroller-i.md#attach) / [InputAttribute](arkts-ime-inputmethod-inputattribute-i.md)时提供给输入法应用。
 
 **类型：** boolean
 

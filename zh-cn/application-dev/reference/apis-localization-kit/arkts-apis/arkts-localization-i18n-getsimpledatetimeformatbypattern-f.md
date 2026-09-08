@@ -67,7 +67,7 @@ export function getSimpleDateTimeFormatByPattern(pattern: string, locale?: intl.
 
 **废弃版本：** 20
 
-**替代接口：** [getSimpleDateTimeFormatByPattern](#getsimpledatetimeformatbypattern)(pattern: string, locale?: Intl.Locale)
+**替代接口：** [getSimpleDateTimeFormatByPattern](arkts-localization-i18n-getsimpledatetimeformatbypattern-f.md)(pattern: string, locale?: Intl.Locale)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 

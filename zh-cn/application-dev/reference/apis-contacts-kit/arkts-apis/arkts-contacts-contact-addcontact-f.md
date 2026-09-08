@@ -18,7 +18,7 @@ function addContact(contact: Contact, callback: AsyncCallback<number>): void
 
 **废弃版本：** 10
 
-**替代接口：** [addContact](#addcontact)(context: Context, contact: Contact, callback: AsyncCallback&lt;number&gt;)
+**替代接口：** [addContact](arkts-contacts-contact-addcontact-f.md)(context: Context, contact: Contact, callback: AsyncCallback&lt;number&gt;)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -128,7 +128,7 @@ function addContact(contact: Contact): Promise<number>
 
 **废弃版本：** 10
 
-**替代接口：** [addContact](#addcontact)(context: Context, contact: Contact)
+**替代接口：** [addContact](arkts-contacts-contact-addcontact-f.md)(context: Context, contact: Contact)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 

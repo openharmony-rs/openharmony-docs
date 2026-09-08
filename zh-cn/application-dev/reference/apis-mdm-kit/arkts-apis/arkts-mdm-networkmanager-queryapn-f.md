@@ -91,7 +91,7 @@ function queryApn(admin: Want, apnId: string): Record<string, string>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| apnId | string | 是 | 指定的APN ID。设置后将查询该APN ID对应的详细参数配置信息。可以通过 [networkManager.queryApn](#queryapn)获取设备信息。 |
+| apnId | string | 是 | 指定的APN ID。设置后将查询该APN ID对应的详细参数配置信息。可以通过 [networkManager.queryApn](arkts-mdm-networkmanager-queryapn-f.md)获取设备信息。 |
 
 **返回值：**
 

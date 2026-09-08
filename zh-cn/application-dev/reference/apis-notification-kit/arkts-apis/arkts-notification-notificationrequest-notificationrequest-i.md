@@ -210,7 +210,7 @@ extraInfo?: { [key: string]: any }
 
 扩展参数。为应用提供定制服务。默认为空。以下Key由系统赋值，开发者手动修改也不会生效，系统在数据传递时会自动修改为实际值。  
 - 'ohos.notificationManager.wantUri'：用户点击通知时传递给应用的Want 中的uri字段，使用  
-[getActiveNotifications](arkts-notification-notification-getactivenotifications-depr-f.md#getactivenotifications) 接口获取该信息。
+[getActiveNotifications](arkts-notification-notification-getactivenotifications-depr-f.md) 接口获取该信息。
 
 **类型：** { [key: string]: any }
 

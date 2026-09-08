@@ -121,4 +121,4 @@ declare function ftruncate(fd: number, len: number, callback: AsyncCallback<void
 
 **示例**
 
-参见 [ftruncate](#ftruncate)
+参见 [ftruncate](arkts-corefile-fileio-ftruncate-f.md)

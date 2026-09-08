@@ -21,14 +21,14 @@ appManager模块提供应用管理的能力，包括查询当前系统是否处�
 
 | 名称 | 说明 |
 | --- | --- |
-| [getAppMemorySize](arkts-ability-appmanager-getappmemorysize-depr-f.md#getappmemorysize) | 获取当前应用程序可以使用的最大内存（RAM）值。使用Promise异步回调。 |
-| [getAppMemorySize](arkts-ability-appmanager-getappmemorysize-depr-f.md#getappmemorysize) | 获取当前应用程序可以使用的最大内存（RAM）值。使用callback异步回调。 |
-| [getProcessRunningInfos](arkts-ability-appmanager-getprocessrunninginfos-depr-f.md#getprocessrunninginfos) | 获取有关运行进程的信息。使用Promise异步回调。 |
-| [getProcessRunningInfos](arkts-ability-appmanager-getprocessrunninginfos-depr-f.md#getprocessrunninginfos) | 获取有关运行进程的信息。使用callback异步回调。 |
-| [isRamConstrainedDevice](arkts-ability-appmanager-isramconstraineddevice-depr-f.md#isramconstraineddevice) | 查询当前设备是否为RAM受限设备（内存资源严重受限的设备）。使用Promise异步回调。 |
-| [isRamConstrainedDevice](arkts-ability-appmanager-isramconstraineddevice-depr-f.md#isramconstraineddevice) | 查询当前设备是否为RAM受限设备（内存资源严重受限的设备）。使用callback异步回调。 |
-| [isRunningInStabilityTest](arkts-ability-appmanager-isrunninginstabilitytest-depr-f.md#isrunninginstabilitytest) | 查询当前系统是否处于稳定性测试场景。使用callback异步回调。 |
-| [isRunningInStabilityTest](arkts-ability-appmanager-isrunninginstabilitytest-depr-f.md#isrunninginstabilitytest) | 查询当前系统是否处于稳定性测试场景。使用Promise异步回调。 |
+| [getAppMemorySize](arkts-ability-appmanager-getappmemorysize-depr-f.md) | 获取当前应用程序可以使用的最大内存（RAM）值。使用Promise异步回调。 |
+| [getAppMemorySize](arkts-ability-appmanager-getappmemorysize-depr-f.md) | 获取当前应用程序可以使用的最大内存（RAM）值。使用callback异步回调。 |
+| [getProcessRunningInfos](arkts-ability-appmanager-getprocessrunninginfos-depr-f.md) | 获取有关运行进程的信息。使用Promise异步回调。 |
+| [getProcessRunningInfos](arkts-ability-appmanager-getprocessrunninginfos-depr-f.md) | 获取有关运行进程的信息。使用callback异步回调。 |
+| [isRamConstrainedDevice](arkts-ability-appmanager-isramconstraineddevice-depr-f.md) | 查询当前设备是否为RAM受限设备（内存资源严重受限的设备）。使用Promise异步回调。 |
+| [isRamConstrainedDevice](arkts-ability-appmanager-isramconstraineddevice-depr-f.md) | 查询当前设备是否为RAM受限设备（内存资源严重受限的设备）。使用callback异步回调。 |
+| [isRunningInStabilityTest](arkts-ability-appmanager-isrunninginstabilitytest-depr-f.md) | 查询当前系统是否处于稳定性测试场景。使用callback异步回调。 |
+| [isRunningInStabilityTest](arkts-ability-appmanager-isrunninginstabilitytest-depr-f.md) | 查询当前系统是否处于稳定性测试场景。使用Promise异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）

@@ -18,7 +18,7 @@ function queryContactsByPhoneNumber(phoneNumber: string, callback: AsyncCallback
 
 **废弃版本：** 10
 
-**替代接口：** [queryContactsByPhoneNumber](#querycontactsbyphonenumber)(context: Context, phoneNumber: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**替代接口：** [queryContactsByPhoneNumber](arkts-contacts-contact-querycontactsbyphonenumber-f.md)(context: Context, phoneNumber: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -110,7 +110,7 @@ function queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, callbac
 
 **废弃版本：** 10
 
-**替代接口：** [queryContactsByPhoneNumber](#querycontactsbyphonenumber)(context: Context, phoneNumber: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**替代接口：** [queryContactsByPhoneNumber](arkts-contacts-contact-querycontactsbyphonenumber-f.md)(context: Context, phoneNumber: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -212,7 +212,7 @@ function queryContactsByPhoneNumber(phoneNumber: string, attrs: ContactAttribute
 
 **废弃版本：** 10
 
-**替代接口：** [queryContactsByPhoneNumber](#querycontactsbyphonenumber)(context: Context, phoneNumber: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**替代接口：** [queryContactsByPhoneNumber](arkts-contacts-contact-querycontactsbyphonenumber-f.md)(context: Context, phoneNumber: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -309,7 +309,7 @@ function queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, attrs: 
 
 **废弃版本：** 10
 
-**替代接口：** [queryContactsByPhoneNumber](#querycontactsbyphonenumber)(context: Context, phoneNumber: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**替代接口：** [queryContactsByPhoneNumber](arkts-contacts-contact-querycontactsbyphonenumber-f.md)(context: Context, phoneNumber: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -417,7 +417,7 @@ function queryContactsByPhoneNumber(phoneNumber: string, holder?: Holder, attrs?
 
 **废弃版本：** 10
 
-**替代接口：** [queryContactsByPhoneNumber](#querycontactsbyphonenumber)(context: Context, phoneNumber: string, holder?: Holder, attrs?: ContactAttributes)
+**替代接口：** [queryContactsByPhoneNumber](arkts-contacts-contact-querycontactsbyphonenumber-f.md)(context: Context, phoneNumber: string, holder?: Holder, attrs?: ContactAttributes)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 

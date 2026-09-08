@@ -83,4 +83,4 @@ function getCurrentGroup(callback: AsyncCallback<WifiP2pGroupInfo>): void
 
 **示例**
 
-参见 [getCurrentGroup](#getcurrentgroup)
+参见 [getCurrentGroup](arkts-connectivity-wifimanager-getcurrentgroup-f.md)

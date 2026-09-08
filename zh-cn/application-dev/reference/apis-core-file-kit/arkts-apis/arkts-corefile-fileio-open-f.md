@@ -118,7 +118,7 @@ declare function open(path: string, flags: number, callback: AsyncCallback<numbe
 
 **示例**
 
-参见 [open](#open)
+参见 [open](arkts-corefile-fileio-open-f.md)
 
 
 ## open

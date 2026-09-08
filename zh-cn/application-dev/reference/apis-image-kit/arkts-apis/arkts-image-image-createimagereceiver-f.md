@@ -16,13 +16,13 @@ function createImageReceiver(width: number, height: number, format: number, capa
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 11废弃，建议使用[createImageReceiver](#createimagereceiver)代替。
+> 从API version 9开始支持，从API version 11废弃，建议使用[createImageReceiver](arkts-image-image-createimagereceiver-f.md)代替。
 
 **起始版本：** 9
 
 **废弃版本：** 11
 
-**替代接口：** [createImageReceiver](#createimagereceiver)(size: Size, format: ImageFormat, capacity: int)
+**替代接口：** [createImageReceiver](arkts-image-image-createimagereceiver-f.md)(size: Size, format: ImageFormat, capacity: int)
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 

@@ -1203,7 +1203,7 @@ function on(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback: Callback<Ac
 
 **废弃版本：** 9
 
-**替代接口：** [on](#on)(type: SensorId.ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&gt;, options?: Options)
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md)(type: SensorId.ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&gt;, options?: Options)
 
 **需要权限：** ohos.permission.ACCELEROMETER
 
@@ -1251,7 +1251,7 @@ function on(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, callback
 
 **废弃版本：** 9
 
-**替代接口：** [on](#on)(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback: Callback&lt;AccelerometerUncalibratedResponse&gt;, options?: Options)
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md)(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback: Callback&lt;AccelerometerUncalibratedResponse&gt;, options?: Options)
 
 **需要权限：** ohos.permission.ACCELEROMETER
 
@@ -1302,7 +1302,7 @@ function on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback: Callback<Li
 
 **废弃版本：** 9
 
-**替代接口：** [on](#on)(type: SensorId.AMBIENT_LIGHT, callback: Callback&lt;LightResponse&gt;, options?: Options)
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md)(type: SensorId.AMBIENT_LIGHT, callback: Callback&lt;LightResponse&gt;, options?: Options)
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -1346,7 +1346,7 @@ function on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback: Callb
 
 **废弃版本：** 9
 
-**替代接口：** [on](#on)(type: SensorId.AMBIENT_TEMPERATURE, callback: Callback&lt;AmbientTemperatureResponse&gt;, options?: Options)
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md)(type: SensorId.AMBIENT_TEMPERATURE, callback: Callback&lt;AmbientTemperatureResponse&gt;, options?: Options)
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -1390,7 +1390,7 @@ function on(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback: Callback<Barome
 
 **废弃版本：** 9
 
-**替代接口：** [on](#on)(type: SensorId.BAROMETER, callback: Callback&lt;BarometerResponse&gt;, options?: Options)
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md)(type: SensorId.BAROMETER, callback: Callback&lt;BarometerResponse&gt;, options?: Options)
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -1434,7 +1434,7 @@ function on(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback: Callback<GravityR
 
 **废弃版本：** 9
 
-**替代接口：** [on](#on)(type: SensorId.GRAVITY, callback: Callback&lt;GravityResponse&gt;, options?: Options)
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md)(type: SensorId.GRAVITY, callback: Callback&lt;GravityResponse&gt;, options?: Options)
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -1480,7 +1480,7 @@ function on(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback: Callback<Gyrosc
 
 **废弃版本：** 9
 
-**替代接口：** [on](#on)(type: SensorId.GYROSCOPE, callback: Callback&lt;GyroscopeResponse&gt;, options?: Options)
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md)(type: SensorId.GYROSCOPE, callback: Callback&lt;GyroscopeResponse&gt;, options?: Options)
 
 **需要权限：** ohos.permission.GYROSCOPE
 
@@ -1528,7 +1528,7 @@ function on(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED, callback: Ca
 
 **废弃版本：** 9
 
-**替代接口：** [on](#on)(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback&lt;GyroscopeUncalibratedResponse&gt;, options?: Options)
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md)(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback&lt;GyroscopeUncalibratedResponse&gt;, options?: Options)
 
 **需要权限：** ohos.permission.GYROSCOPE
 
@@ -1579,7 +1579,7 @@ function on(type: SensorType.SENSOR_TYPE_ID_HALL, callback: Callback<HallRespons
 
 **废弃版本：** 9
 
-**替代接口：** [on](#on)(type: SensorId.HALL, callback: Callback&lt;HallResponse&gt;, options?: Options)
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md)(type: SensorId.HALL, callback: Callback&lt;HallResponse&gt;, options?: Options)
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -1623,7 +1623,7 @@ function on(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback: Callback<Heart
 
 **废弃版本：** 9
 
-**替代接口：** [on](#on)(type: SensorId.HEART_RATE, callback: Callback&lt;HeartRateResponse&gt;, options?: Options)
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md)(type: SensorId.HEART_RATE, callback: Callback&lt;HeartRateResponse&gt;, options?: Options)
 
 **需要权限：** ohos.permission.HEALTH_DATA
 
@@ -1657,7 +1657,7 @@ function on(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback: Callback<Humidit
 
 **废弃版本：** 9
 
-**替代接口：** [on](#on)(type: SensorId.HUMIDITY, callback: Callback&lt;HumidityResponse&gt;, options?: Options)
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md)(type: SensorId.HUMIDITY, callback: Callback&lt;HumidityResponse&gt;, options?: Options)
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -1701,7 +1701,7 @@ function on(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, callback: Callb
 
 **废弃版本：** 9
 
-**替代接口：** [on](#on)(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback&lt;LinearAccelerometerResponse&gt;, options?: Options)
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md)(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback&lt;LinearAccelerometerResponse&gt;, options?: Options)
 
 **需要权限：** ohos.permission.ACCELEROMETER
 
@@ -1735,7 +1735,7 @@ function on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback: Callback<M
 
 **废弃版本：** 9
 
-**替代接口：** [on](#on)(type: SensorId.MAGNETIC_FIELD, callback: Callback&lt;MagneticFieldResponse&gt;, options?: Options)
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md)(type: SensorId.MAGNETIC_FIELD, callback: Callback&lt;MagneticFieldResponse&gt;, options?: Options)
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -1781,7 +1781,7 @@ function on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callbac
 
 **废弃版本：** 9
 
-**替代接口：** [on](#on)(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback: Callback&lt;MagneticFieldUncalibratedResponse&gt;, options?: Options)
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md)(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback: Callback&lt;MagneticFieldUncalibratedResponse&gt;, options?: Options)
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -1830,7 +1830,7 @@ function on(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback: Callback<Orie
 
 **废弃版本：** 9
 
-**替代接口：** [on](#on)(type: SensorId.ORIENTATION, callback: Callback&lt;OrientationResponse&gt;, options?: Options)
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md)(type: SensorId.ORIENTATION, callback: Callback&lt;OrientationResponse&gt;, options?: Options)
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -1876,7 +1876,7 @@ function on(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback: Callback<Pedome
 
 **废弃版本：** 9
 
-**替代接口：** [on](#on)(type: SensorId.PEDOMETER, callback: Callback&lt;PedometerResponse&gt;, options?: Options)
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md)(type: SensorId.PEDOMETER, callback: Callback&lt;PedometerResponse&gt;, options?: Options)
 
 **需要权限：** ohos.permission.ACTIVITY_MOTION
 
@@ -1922,7 +1922,7 @@ function on(type: SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, callback: Callb
 
 **废弃版本：** 9
 
-**替代接口：** [on](#on)(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionResponse&gt;, options?: Options)
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md)(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionResponse&gt;, options?: Options)
 
 **需要权限：** ohos.permission.ACTIVITY_MOTION
 
@@ -1968,7 +1968,7 @@ function on(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback: Callback<Proxim
 
 **废弃版本：** 9
 
-**替代接口：** [on](#on)(type: SensorId.PROXIMITY, callback: Callback&lt;ProximityResponse&gt;, options?: Options)
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md)(type: SensorId.PROXIMITY, callback: Callback&lt;ProximityResponse&gt;, options?: Options)
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -2012,7 +2012,7 @@ function on(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback: Callback<
 
 **废弃版本：** 9
 
-**替代接口：** [on](#on)(type: SensorId.ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;, options?: Options)
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md)(type: SensorId.ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;, options?: Options)
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -2059,7 +2059,7 @@ function on(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback: Callba
 
 **废弃版本：** 9
 
-**替代接口：** [on](#on)(type: SensorId.SIGNIFICANT_MOTION, callback: Callback&lt;SignificantMotionResponse&gt;, options?: Options)
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md)(type: SensorId.SIGNIFICANT_MOTION, callback: Callback&lt;SignificantMotionResponse&gt;, options?: Options)
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -2103,7 +2103,7 @@ function on(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback: Callback<W
 
 **废弃版本：** 9
 
-**替代接口：** [on](#on)(type: SensorId.WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;, options?: Options)
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md)(type: SensorId.WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;, options?: Options)
 
 **系统能力：** SystemCapability.Sensors.Sensor
 

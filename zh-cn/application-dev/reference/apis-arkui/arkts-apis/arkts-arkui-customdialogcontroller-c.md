@@ -13,7 +13,7 @@ dialogController : CustomDialogController | null = new CustomDialogController(Cu
 > - CustomDialogController仅在作为@CustomDialog和@Component struct成员变量，且在@Component struct内部定义时赋值才有效，具体用法可参考下方示例。
 > 
 > - 若尝试在CustomDialog中传入多个其他的Controller，以实现在CustomDialog中打开另一个或另一些CustomDialog，那么此处需要将指向自己的controller放在所有controller的后
-> 面。详细用法可参考[CustomDialogController](#customdialogcontroller)。
+> 面。详细用法可参考[CustomDialogController](arkts-arkui-customdialogcontroller-c.md)。
 
 **起始版本：** 7
 

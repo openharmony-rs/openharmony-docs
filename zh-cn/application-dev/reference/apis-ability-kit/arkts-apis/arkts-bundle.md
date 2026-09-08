@@ -1,6 +1,6 @@
 # @ohos.bundle
 
-本模块提供应用信息查询能力，支持包信息、[ApplicationInfo](arkts-ability-applicationinfo-applicationinfo-depr-i.md#applicationinfo)、 [AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md#abilityinfo)等信息的查询，以及应用禁用状态的查询、设置等。
+本模块提供应用信息查询能力，支持包信息、[ApplicationInfo](arkts-ability-applicationinfo-applicationinfo-depr-i.md)、 [AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md)等信息的查询，以及应用禁用状态的查询、设置等。
 
 > **说明：**
 > 

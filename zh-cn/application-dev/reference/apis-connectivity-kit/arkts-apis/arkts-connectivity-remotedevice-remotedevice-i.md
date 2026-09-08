@@ -1,6 +1,6 @@
 # RemoteDevice
 
-提供远端设备的操作方法，使用前需要使用[remoteDevice.createRemoteDevice](arkts-connectivity-remotedevice-createremotedevice-f.md)方法创建一个远端设备 [RemoteDevice](#remotedevice)实例。一个设备只需要创建一次，无需多次创建。
+提供远端设备的操作方法，使用前需要使用[remoteDevice.createRemoteDevice](arkts-connectivity-remotedevice-createremotedevice-f.md)方法创建一个远端设备 [RemoteDevice](arkts-connectivity-remotedevice-remotedevice-i.md)实例。一个设备只需要创建一次，无需多次创建。
 
 **起始版本：** 26.0.0
 

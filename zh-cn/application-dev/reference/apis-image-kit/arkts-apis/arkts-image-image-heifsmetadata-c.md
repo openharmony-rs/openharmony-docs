@@ -70,7 +70,7 @@ async function heifsMetadataClone(context: Context) {
 static createInstance(): HeifsMetadata
 ```
 
-创建一个空的[HeifsMetadata](#heifsmetadata)实例。
+创建一个空的[HeifsMetadata](arkts-image-image-heifsmetadata-c.md)实例。
 
 **起始版本：** 23
 

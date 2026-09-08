@@ -117,4 +117,4 @@ declare function access(path: string, mode: number, callback: AsyncCallback<void
 
 **示例**
 
-参见 [access](#access)
+参见 [access](arkts-corefile-fileio-access-f.md)

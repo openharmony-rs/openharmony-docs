@@ -17,7 +17,7 @@ function run(startupTasks: Array<string>, config?: StartupConfig): Promise<void>
 > **说明：**
 > 
 > 本接口不支持执行feature类型HAP中的启动任务，如需要使用相关能力请调用
-> [startupManager.run](#run)
+> [startupManager.run](arkts-ability-startupmanager-run-f.md)
 > 接口。
 
 **起始版本：** 12

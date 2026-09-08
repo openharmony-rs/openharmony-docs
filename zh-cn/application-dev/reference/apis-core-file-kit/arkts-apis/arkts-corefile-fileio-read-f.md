@@ -139,7 +139,7 @@ declare function read(fd: number, buffer: ArrayBuffer, callback: AsyncCallback<R
 
 **示例**
 
-参见 [read](#read)
+参见 [read](arkts-corefile-fileio-read-f.md)
 
 
 ## read
@@ -178,4 +178,4 @@ declare function read(
 
 **示例**
 
-参见 [read](#read)
+参见 [read](arkts-corefile-fileio-read-f.md)

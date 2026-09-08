@@ -1,6 +1,6 @@
 # TagInfo
 
-在对相关Tag类型卡片进行读写之前，必须先获取[TagInfo](#taginfo)相关属性值，以确认设备读取到的Tag卡片支持哪些技术类型。这样Tag应用程序才能调用正确的接口和所读取到的Tag卡片进行通信。
+在对相关Tag类型卡片进行读写之前，必须先获取[TagInfo](arkts-connectivity-tag-taginfo-i.md)相关属性值，以确认设备读取到的Tag卡片支持哪些技术类型。这样Tag应用程序才能调用正确的接口和所读取到的Tag卡片进行通信。
 
 **起始版本：** 7
 
@@ -19,7 +19,7 @@ supportedProfiles: number[]
 ```
 
 支持的技术类型。  
-**说明：** 从API version 7开始支持，从API version 9开始废弃，使用[tag.TagInfo#technology](#taginfo)替代。
+**说明：** 从API version 7开始支持，从API version 9开始废弃，使用[tag.TagInfo#technology](arkts-connectivity-tag-taginfo-i.md)替代。
 
 **类型：** number[]
 

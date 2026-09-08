@@ -18,7 +18,7 @@ function getUserRestricted(admin: Want, settingsItem: string): boolean
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getUserRestricted](#getuserrestricted)(admin: Want, settingsItem: SettingsForDevice)
+**替代接口：** [getUserRestricted](arkts-mdm-restrictions-getuserrestricted-f.md)(admin: Want, settingsItem: SettingsForDevice)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_USER_RESTRICTION
 

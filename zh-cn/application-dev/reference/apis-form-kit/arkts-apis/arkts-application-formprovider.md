@@ -25,7 +25,7 @@ FormProvider模块提供了卡片提供方相关接口的能力，开发者在�
 
 | 名称 | 说明 |
 | --- | --- |
-| [setFormNextRefreshTime(formProvider)](arkts-form-formprovider-setformnextrefreshtime-depr-f.md#setformnextrefreshtime) | 设置指定卡片的下一次刷新时间，使用callback异步回调。 |
-| [setFormNextRefreshTime(formProvider)](arkts-form-formprovider-setformnextrefreshtime-depr-f.md#setformnextrefreshtime) | 设置指定卡片的下一次刷新时间，使用Promise异步回调。 |
-| [updateForm(formProvider)](arkts-form-formprovider-updateform-depr-f.md#updateform) | 更新指定的卡片，使用callback异步回调。 |
-| [updateForm(formProvider)](arkts-form-formprovider-updateform-depr-f.md#updateform) | 更新指定的卡片，使用Promise异步回调。 |
+| [setFormNextRefreshTime(formProvider)](arkts-form-formprovider-setformnextrefreshtime-depr-f.md) | 设置指定卡片的下一次刷新时间，使用callback异步回调。 |
+| [setFormNextRefreshTime(formProvider)](arkts-form-formprovider-setformnextrefreshtime-depr-f.md) | 设置指定卡片的下一次刷新时间，使用Promise异步回调。 |
+| [updateForm(formProvider)](arkts-form-formprovider-updateform-depr-f.md) | 更新指定的卡片，使用callback异步回调。 |
+| [updateForm(formProvider)](arkts-form-formprovider-updateform-depr-f.md) | 更新指定的卡片，使用Promise异步回调。 |

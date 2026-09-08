@@ -120,4 +120,4 @@ declare function truncate(path: string, len: number, callback: AsyncCallback<voi
 
 **示例**
 
-参见 [truncate](#truncate)
+参见 [truncate](arkts-corefile-fileio-truncate-f.md)

@@ -21,35 +21,35 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [addSlot](arkts-notification-notification-addslot-depr-f.md#addslot) | 创建指定类型的通知通道（callback形式）。 |
-| [addSlot](arkts-notification-notification-addslot-depr-f.md#addslot) | 创建指定类型的通知通道（Promise形式）。 |
-| [cancel](arkts-notification-notification-cancel-depr-f.md#cancel) | 取消与指定通知ID相匹配的已发布通知（callback形式）。 |
-| [cancel](arkts-notification-notification-cancel-depr-f.md#cancel) | 通过通知ID和通知标签取消已发布的通知（callback形式）。 |
-| [cancel](arkts-notification-notification-cancel-depr-f.md#cancel) | 取消与指定通知ID相匹配的已发布通知，label可以指定也可以不指定（Promise形式）。 |
-| [cancelAll](arkts-notification-notification-cancelall-depr-f.md#cancelall) | 取消所有已发布的通知（callback形式）。 |
-| [cancelAll](arkts-notification-notification-cancelall-depr-f.md#cancelall) | 取消所有已发布的通知（Promise形式）。 |
-| [cancelGroup](arkts-notification-notification-cancelgroup-depr-f.md#cancelgroup) | 取消本应用指定组下的通知（Callback形式）。 |
-| [cancelGroup](arkts-notification-notification-cancelgroup-depr-f.md#cancelgroup) | 取消本应用指定组下的通知（Promise形式）。 |
-| [getActiveNotificationCount](arkts-notification-notification-getactivenotificationcount-depr-f.md#getactivenotificationcount) | 获取当前应用未删除的通知数（Callback形式）。 |
-| [getActiveNotificationCount](arkts-notification-notification-getactivenotificationcount-depr-f.md#getactivenotificationcount) | 获取当前应用未删除的通知数（Promise形式）。 |
-| [getActiveNotifications](arkts-notification-notification-getactivenotifications-depr-f.md#getactivenotifications) | 获取当前应用未删除的通知列表（Callback形式）。 |
-| [getActiveNotifications](arkts-notification-notification-getactivenotifications-depr-f.md#getactivenotifications) | 获取当前应用未删除的通知列表（Promise形式）。 |
-| [getSlot](arkts-notification-notification-getslot-depr-f.md#getslot) | 获取一个指定类型的通知通道（callback形式）。 |
-| [getSlot](arkts-notification-notification-getslot-depr-f.md#getslot) | 获取一个指定类型的通知通道（Promise形式）。 |
-| [getSlots](arkts-notification-notification-getslots-depr-f.md#getslots) | 获取此应用程序的所有通知通道（callback形式）。 |
-| [getSlots](arkts-notification-notification-getslots-depr-f.md#getslots) | 获取此应用程序的所有通知通道（Promise形式）。 |
-| [isDistributedEnabled](arkts-notification-notification-isdistributedenabled-depr-f.md#isdistributedenabled) | 查询设备是否支持分布式通知（Callback形式）。 |
-| [isDistributedEnabled](arkts-notification-notification-isdistributedenabled-depr-f.md#isdistributedenabled) | 查询设备是否支持分布式通知（Promise形式）。 |
-| [isSupportTemplate](arkts-notification-notification-issupporttemplate-depr-f.md#issupporttemplate) | 在使用[通知模板](arkts-notification-notificationtemplate-notificationtemplate-i.md)发布通知前， 可以通过该接口查询是否支持对应的通知模板。使用callback异步回调。 |
-| [isSupportTemplate](arkts-notification-notification-issupporttemplate-depr-f.md#issupporttemplate) | 在使用[通知模板](arkts-notification-notificationtemplate-notificationtemplate-i.md)发布通知前， 可以通过该接口查询是否支持对应的通知模板。使用Promise异步回调。 |
-| [publish](arkts-notification-notification-publish-depr-f.md#publish) | 发布通知（callback形式）。 |
-| [publish](arkts-notification-notification-publish-depr-f.md#publish) | 发布通知（Promise形式）。 |
-| [removeAllSlots](arkts-notification-notification-removeallslots-depr-f.md#removeallslots) | 删除所有通知通道（callback形式）。 |
-| [removeAllSlots](arkts-notification-notification-removeallslots-depr-f.md#removeallslots) | 删除所有通知通道（Promise形式）。 |
-| [removeSlot](arkts-notification-notification-removeslot-depr-f.md#removeslot) | 删除指定类型的通知通道（callback形式）。 |
-| [removeSlot](arkts-notification-notification-removeslot-depr-f.md#removeslot) | 删除指定类型的通知通道（Promise形式）。 |
-| [requestEnableNotification](arkts-notification-notification-requestenablenotification-depr-f.md#requestenablenotification) | 应用请求通知使能（Callback形式）。 |
-| [requestEnableNotification](arkts-notification-notification-requestenablenotification-depr-f.md#requestenablenotification) | 应用请求通知使能（Promise形式）。 |
+| [addSlot](arkts-notification-notification-addslot-depr-f.md) | 创建指定类型的通知通道（callback形式）。 |
+| [addSlot](arkts-notification-notification-addslot-depr-f.md) | 创建指定类型的通知通道（Promise形式）。 |
+| [cancel](arkts-notification-notification-cancel-depr-f.md) | 取消与指定通知ID相匹配的已发布通知（callback形式）。 |
+| [cancel](arkts-notification-notification-cancel-depr-f.md) | 通过通知ID和通知标签取消已发布的通知（callback形式）。 |
+| [cancel](arkts-notification-notification-cancel-depr-f.md) | 取消与指定通知ID相匹配的已发布通知，label可以指定也可以不指定（Promise形式）。 |
+| [cancelAll](arkts-notification-notification-cancelall-depr-f.md) | 取消所有已发布的通知（callback形式）。 |
+| [cancelAll](arkts-notification-notification-cancelall-depr-f.md) | 取消所有已发布的通知（Promise形式）。 |
+| [cancelGroup](arkts-notification-notification-cancelgroup-depr-f.md) | 取消本应用指定组下的通知（Callback形式）。 |
+| [cancelGroup](arkts-notification-notification-cancelgroup-depr-f.md) | 取消本应用指定组下的通知（Promise形式）。 |
+| [getActiveNotificationCount](arkts-notification-notification-getactivenotificationcount-depr-f.md) | 获取当前应用未删除的通知数（Callback形式）。 |
+| [getActiveNotificationCount](arkts-notification-notification-getactivenotificationcount-depr-f.md) | 获取当前应用未删除的通知数（Promise形式）。 |
+| [getActiveNotifications](arkts-notification-notification-getactivenotifications-depr-f.md) | 获取当前应用未删除的通知列表（Callback形式）。 |
+| [getActiveNotifications](arkts-notification-notification-getactivenotifications-depr-f.md) | 获取当前应用未删除的通知列表（Promise形式）。 |
+| [getSlot](arkts-notification-notification-getslot-depr-f.md) | 获取一个指定类型的通知通道（callback形式）。 |
+| [getSlot](arkts-notification-notification-getslot-depr-f.md) | 获取一个指定类型的通知通道（Promise形式）。 |
+| [getSlots](arkts-notification-notification-getslots-depr-f.md) | 获取此应用程序的所有通知通道（callback形式）。 |
+| [getSlots](arkts-notification-notification-getslots-depr-f.md) | 获取此应用程序的所有通知通道（Promise形式）。 |
+| [isDistributedEnabled](arkts-notification-notification-isdistributedenabled-depr-f.md) | 查询设备是否支持分布式通知（Callback形式）。 |
+| [isDistributedEnabled](arkts-notification-notification-isdistributedenabled-depr-f.md) | 查询设备是否支持分布式通知（Promise形式）。 |
+| [isSupportTemplate](arkts-notification-notification-issupporttemplate-depr-f.md) | 在使用[通知模板](arkts-notification-notificationtemplate-notificationtemplate-i.md)发布通知前， 可以通过该接口查询是否支持对应的通知模板。使用callback异步回调。 |
+| [isSupportTemplate](arkts-notification-notification-issupporttemplate-depr-f.md) | 在使用[通知模板](arkts-notification-notificationtemplate-notificationtemplate-i.md)发布通知前， 可以通过该接口查询是否支持对应的通知模板。使用Promise异步回调。 |
+| [publish](arkts-notification-notification-publish-depr-f.md) | 发布通知（callback形式）。 |
+| [publish](arkts-notification-notification-publish-depr-f.md) | 发布通知（Promise形式）。 |
+| [removeAllSlots](arkts-notification-notification-removeallslots-depr-f.md) | 删除所有通知通道（callback形式）。 |
+| [removeAllSlots](arkts-notification-notification-removeallslots-depr-f.md) | 删除所有通知通道（Promise形式）。 |
+| [removeSlot](arkts-notification-notification-removeslot-depr-f.md) | 删除指定类型的通知通道（callback形式）。 |
+| [removeSlot](arkts-notification-notification-removeslot-depr-f.md) | 删除指定类型的通知通道（Promise形式）。 |
+| [requestEnableNotification](arkts-notification-notification-requestenablenotification-depr-f.md) | 应用请求通知使能（Callback形式）。 |
+| [requestEnableNotification](arkts-notification-notification-requestenablenotification-depr-f.md) | 应用请求通知使能（Promise形式）。 |
 
 <!--Del-->
 ### 函数（系统接口）

@@ -84,7 +84,7 @@ abstract makeNode(uiContext: UIContext): FrameNode | null
 > 
 > NodeContainer不支持跨实例复用。如果出现跨实例复用
 > NodeContainer，传入
-> NodeContainer的[NodeController](#nodecontroller)触发
+> NodeContainer的[NodeController](arkts-arkui-nodecontroller-c.md)触发
 > [makeNode](#makenode)回调方法时，入参中的[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)对象可能为undefined，此时需要开发者
 > 判断该对象是否为undefined，防止后续使用此入参时出现[UIContext无效的JS异常](../../../ui/arkts-wrong-uicontext-debug.md#定位uicontext错误问题)。
 

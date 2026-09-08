@@ -18,7 +18,7 @@ function setUserRestrictionForAccount(admin: Want, settingsItem: string, account
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setUserRestrictionForAccount](#setuserrestrictionforaccount)(admin: Want, settingsItem: SettingsForAccount, accountId: int, restricted: boolean)
+**替代接口：** [setUserRestrictionForAccount](arkts-mdm-restrictions-setuserrestrictionforaccount-f.md)(admin: Want, settingsItem: SettingsForAccount, accountId: int, restricted: boolean)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_USER_RESTRICTION
 

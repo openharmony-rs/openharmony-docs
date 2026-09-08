@@ -4565,7 +4565,7 @@ try {
 writeRemoteObject(obj: IRemoteObject): void
 ```
 
-序列化远程对象并将其写入[MessageSequence](#messagesequence)对象。调用此方法后，IRemoteObject对象会被序列化为特定格式并存入MessageSequence的缓冲区 中，同时会更新内部写指针位置。该序列化对象可在接收端通过readRemoteObject方法反序列化读取。  
+序列化远程对象并将其写入[MessageSequence](arkts-ipc-rpc-messagesequence-c.md)对象。调用此方法后，IRemoteObject对象会被序列化为特定格式并存入MessageSequence的缓冲区 中，同时会更新内部写指针位置。该序列化对象可在接收端通过readRemoteObject方法反序列化读取。  
 - 只能写入有效的IRemoteObject对象，传入无效对象会抛出异常。  
 - 序列化后的对象占用固定大小的缓冲区空间。  
 - 写入的对象必须与对应的readRemoteObject方法配对使用。

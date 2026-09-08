@@ -4,13 +4,13 @@
 
 > **说明：**
 > 
-> 从API version 9开始，该模块不再维护，建议使用[bundleManager-HapModuleInfo](arkts-ability-hapmoduleinfo-hapmoduleinfo-depr-i.md#hapmoduleinfo)替代。
+> 从API version 9开始，该模块不再维护，建议使用[bundleManager-HapModuleInfo](arkts-ability-hapmoduleinfo-hapmoduleinfo-depr-i.md)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [HapModuleInfo](arkts-ability-hapmoduleinfo-hapmoduleinfo-depr-i.md#hapmoduleinfo)
+**替代接口：** [HapModuleInfo](arkts-ability-hapmoduleinfo-hapmoduleinfo-depr-i.md)
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 

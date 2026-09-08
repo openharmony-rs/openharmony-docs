@@ -18,7 +18,7 @@ function setUserRestriction(admin: Want, settingsItem: string, restricted: boole
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setUserRestriction](#setuserrestriction)(admin: Want, settingsItem: SettingsForDevice, restricted: boolean)
+**替代接口：** [setUserRestriction](arkts-mdm-restrictions-setuserrestriction-f.md)(admin: Want, settingsItem: SettingsForDevice, restricted: boolean)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_USER_RESTRICTION
 

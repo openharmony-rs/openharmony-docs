@@ -32,9 +32,9 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [write(应用事件打点)](arkts-performanceanalysis-hiappevent-write-depr-f.md#write) | 应用事件打点方法，将事件写入到当天的事件文件中，使用Promise方式作为异步回调。 |
-| [write(应用事件打点)](arkts-performanceanalysis-hiappevent-write-depr-f.md#write) | 应用事件打点方法，将事件写入到当天的事件文件中，使用callback方式作为异步回调。 |
-| [configure(应用事件打点)](arkts-performanceanalysis-hiappevent-configure-depr-f.md#configure) | 应用事件打点配置方法，可用于配置打点开关、文件目录存储限额大小等功能。 |
+| [write(应用事件打点)](arkts-performanceanalysis-hiappevent-write-depr-f.md) | 应用事件打点方法，将事件写入到当天的事件文件中，使用Promise方式作为异步回调。 |
+| [write(应用事件打点)](arkts-performanceanalysis-hiappevent-write-depr-f.md) | 应用事件打点方法，将事件写入到当天的事件文件中，使用callback方式作为异步回调。 |
+| [configure(应用事件打点)](arkts-performanceanalysis-hiappevent-configure-depr-f.md) | 应用事件打点配置方法，可用于配置打点开关、文件目录存储限额大小等功能。 |
 
 ### 接口
 

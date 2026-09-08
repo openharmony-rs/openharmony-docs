@@ -3,14 +3,14 @@
 
 > **说明：**
 > 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[UsedScene](#usedscene)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[UsedScene](arkts-ability-bundleinfo-usedscene-depr-i.md)替代。
 描述权限使用的场景和时机。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [UsedScene](#usedscene)
+**替代接口：** [UsedScene](arkts-ability-bundleinfo-usedscene-depr-i.md)
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
