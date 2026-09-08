@@ -1,12 +1,11 @@
 # Node-API Data Types and APIs
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=5c6e465f4cb7e5e44777311b9850301a734295d4 translatedAt=2026-08-12T06:28:16.922Z pushedAt=2026-08-12T12:00:35.772Z -->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-08T08:21:50.316Z pushedAt=2026-09-08T08:24:14.598Z -->
 
 ## Data Types
 
@@ -121,7 +120,7 @@ Node-API provides the following memory management types:
 
 **napi_handle_scope**
 
-Data used to manage the lifecycle of ArkTS/JS objects. It allows ArkTS/JS objects to remain active within a certain range for use in ArkTS/JS code. When **napi_handle_scope** is created, all ArkTS/JS objects created in this range remain active until the end. This minimizes their lifecycles and [prevents memory leaks](napi-guidelines.md#lifecycle-management). For details about **napi_handle_scope**, see <!--RP1-->Precautions for Lifecycle Management.<!--RP1End-->
+Data used to manage the lifecycle of ArkTS/JS objects. It allows ArkTS/JS objects to remain active within a certain range for use in ArkTS/JS code. When **napi_handle_scope** is created, all ArkTS/JS objects created in this range remain active until the end. This minimizes their lifecycles and [prevents memory leaks](napi-guidelines.md#lifecycle-management).
 
 **napi_escapable_handle_scope**
 
@@ -605,7 +604,6 @@ napi_status napi_run_script_path(napi_env env,
                                  const char* abcPath,
                                  napi_value* result);
 ```
-
 **Note**: For details about the restrictions, see [What should I observe when using napi_run_script_path() to execute the abc files in a package](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs/faqs-ndk-65).
 **napi_load_module**
 
@@ -650,7 +648,6 @@ napi_status napi_coerce_to_native_binding_object(napi_env env,
 ```c
 napi_status napi_create_ark_runtime(napi_env *env);
 ```
-
 [Creating an ArkTS Runtime Environment Using napi_create_ark_runtime and napi_destroy_ark_runtime](use-napi-ark-runtime.md)
 
 **napi_destroy_ark_runtime**
@@ -810,20 +807,17 @@ napi_status napi_wrap_enhance(napi_env env,
 ```
 
 **napi_create_ark_context**
-
 ```c
 napi_status napi_create_ark_context(napi_env env,
                                     napi_env* newEnv);
 ```
 
 **napi_switch_ark_context**
-
 ```c
 napi_status napi_switch_ark_context(napi_env env);
 ```
 
 **napi_destroy_ark_context**
-
 ```c
 napi_status napi_destroy_ark_context(napi_env env);
 ```
