@@ -19,7 +19,7 @@ MDM应用的详细介绍，请参考[MDM Kit简介](../../mdm/mdm-kit-intro.md)�
 
 ## ohos.permission.ENTERPRISE_GET_DEVICE_INFO
 
-允许应用激活设备管理应用。
+允许设备管理应用获取设备信息。
 
 包括读取设备ID、读取设备硬盘序列号，读取OS版本、读取机器名。
 
@@ -31,6 +31,8 @@ MDM应用的详细介绍，请参考[MDM Kit简介](../../mdm/mdm-kit-intro.md)�
 
 <!--Del-->
 **是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：10
 

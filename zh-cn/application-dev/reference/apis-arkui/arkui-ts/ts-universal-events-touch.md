@@ -179,6 +179,7 @@ struct TouchExample {
             if (event.touches.length > 0) {
               this.text = 'TouchType:' + this.eventType
                 + '\nDistance between touch point and touch element:'
+                + '\n  id: ' + event.touches[0].id
                 + '\n  x: ' + event.touches[0].x + '\n  y: ' + event.touches[0].y
                 + '\n  width: ' + event.touches[0].width + '\n  height: ' + event.touches[0].height
                 + '\n  pressedTime: ' + event.touches[0].pressedTime
@@ -210,6 +211,7 @@ struct TouchExample {
             if (event.touches.length > 0) {
               this.text = 'TouchType:' + this.eventType
                 + '\nDistance between touch point and touch element:'
+                + '\n  id: ' + event.touches[0].id
                 + '\n  x: ' + event.touches[0].x + '\n  y: ' + event.touches[0].y
                 + '\n  width: ' + event.touches[0].width + '\n  height: ' + event.touches[0].height
                 + '\n  pressedTime: ' + event.touches[0].pressedTime

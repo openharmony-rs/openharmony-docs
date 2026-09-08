@@ -6,7 +6,7 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=66d449f865d808c2ab2228de4384c97bf7b4883d translatedAt=2026-08-04T11:03:35.765Z pushedAt=2026-08-05T04:07:24.075Z -->
+<!-- md-trans-meta sourceCommit=6faae6c6d1d1f7e6a2a6053a6b0eb7a97c68ae25 translatedAt=2026-08-21T04:10:00.458Z pushedAt=2026-08-21T08:25:15.728Z -->
 
 ## Overview
 
@@ -826,8 +826,8 @@ Starts data synchronization using the specified synchronization parameters. When
 | -- | -- |
 | [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md)* event | Pointer to the target **ArkUI_DragEvent** object.|
 | [OH_UdmfGetDataParams](../apis-arkdata/capi-udmf-oh-udmfgetdataparams.md)* options | Pointer to the option array for data obtaining, used to configure data request options during this drag data synchronization. |
-| char* key | Pointer to the key value allocated after data loading is successfully started. The length of the character array used to receive the key must be no less than that specified by [UDMF_KEY_BUFFER_LEN](../apis-arkdata/capi-udmf-h.md#udmf_key_buffer_len). |
-| unsigned int keyLen | Length of the key string. It must be no less than the length defined by [UDMF_KEY_BUFFER_LEN](../apis-arkdata/capi-udmf-h.md#udmf_key_buffer_len), which is used to ensure that the key can be completely received. |
+| char* key | Pointer to the key value allocated after data loading is successfully started. The length of the character array used to receive the key must be no less than that specified by [UDMF_KEY_BUFFER_LEN](../apis-arkdata/capi-udmf-h.md#macros). |
+| unsigned int keyLen | Length of the key string. It must be no less than the length defined by [UDMF_KEY_BUFFER_LEN](../apis-arkdata/capi-udmf-h.md#macros), which is used to ensure that the key can be completely received. |
 
 **Return value**
 
@@ -1530,7 +1530,7 @@ Registers a drag status listener, which can perceive the status of the drag havi
 | -- | -- |
 | [ArkUI_DragAction](capi-arkui-nativemodule-arkui-dragaction.md)* dragAction | Pointer to the target drag action object.|
 | void* userData | Pointer to the user-defined data. After the status listener is registered, the data will be passed back through the **userData** parameter of the listener when the callback is triggered. |
-| listener | Status listener callback. The signature is **void(*listener)(ArkUI_DragAndDropInfo* dragAndDropInfo, void* userData)**. **dragAndDropInfo** indicates the pointer to the drag status object returned by the system. This pointer will be destroyed after the callback execution is complete, and the application should no longer hold it. **userData** indicates the user-defined data passed in during registration. |
+| void(\*listener)(ArkUI_DragAndDropInfo\* dragAndDropInfo, void\* userData) | Pointer to the state listener callback. **dragAndDropInfo** indicates the pointer to the drag state object returned by the system. This pointer will be destroyed after the callback execution is complete, and the application should no longer hold it. **userData** indicates the user-defined data passed during registration. |
 
 **Return value**
 
@@ -1676,7 +1676,7 @@ Requests deferred processing of the drag end event, allowing the application to 
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the request operation is not allowed in the current drag-and-drop event processing phase. |
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the requested operation is not allowed in the current drag event processing phase. |
 
 ### OH_ArkUI_NotifyDragResult()
 
@@ -1701,12 +1701,12 @@ Notifies the system of the final drag result. The system will verify whether the
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the request operation is not allowed in the current drag-and-drop event processing phase. |
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the requested operation is not allowed in the current drag event processing phase. |
 
 ### OH_ArkUI_NotifySuggestedDropOperation()
 
 ```c
-int32_t OH_ArkUI_NotifySuggestedDropOperation(int32_t requestIdentify, ArkUI_DropOperation operation)
+int32_t OH_ArkUI_NotifySuggestedDropOperation(int32_t requestIdentity, ArkUI_DropOperation operation)
 ```
 
 **Description**
@@ -1719,7 +1719,7 @@ Notifies the drag initiator of the operation type of the current drop. This API 
 
 | Name| Description|
 | -- | -- |
-| int32_t requestIdentify | Identifier returned by [OH_ArkUI_DragEvent_RequestDragEndPending](capi-drag-and-drop-h.md#oh_arkui_dragevent_requestdragendpending), which is used to identify the drag event.|
+| int32_t requestIdentity | Identifier returned by [OH_ArkUI_DragEvent_RequestDragEndPending](capi-drag-and-drop-h.md#oh_arkui_dragevent_requestdragendpending), which is used to identify the drag event. |
 | [ArkUI_DropOperation](capi-drag-and-drop-h.md#arkui_dropoperation) operation | Operation type of the current drop.|
 
 **Return value**
@@ -1744,7 +1744,7 @@ Notifies the system whether to disable the default drop animation. This API must
 
 | Name| Description|
 | -- | -- |
-| int32_t requestIdentify | Identifier returned by [OH_ArkUI_DragEvent_RequestDragEndPending](capi-drag-and-drop-h.md#oh_arkui_dragevent_requestdragendpending), which is used to identify the drag event.|
+| int32_t requestIdentity | Identifier returned by [OH_ArkUI_DragEvent_RequestDragEndPending](capi-drag-and-drop-h.md#oh_arkui_dragevent_requestdragendpending), which is used to identify the drag event. |
 | bool disable | Whether to disable the default drop animation. **true** if disable; **false** otherwise.|
 
 **Return value**
@@ -1775,7 +1775,7 @@ Notifies the system that all asynchronous processing is complete and the drag en
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the request operation is not allowed in the current drag-and-drop event processing phase. |
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the requested operation is not allowed in the current drag event processing phase. |
 
 ### OH_ArkUI_EnableDropDisallowedBadge()
 
@@ -1900,3 +1900,5 @@ Checks whether the current drag operation is a cross-device drag. This API is su
 | Type| Description|
 | -- | -- |
 | [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
+
+<!--no_check-->

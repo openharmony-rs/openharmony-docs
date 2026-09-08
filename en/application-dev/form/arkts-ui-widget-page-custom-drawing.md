@@ -5,6 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=a08d450b4f575e3d4749ddeef9dd32275ec0a19e translatedAt=2026-08-26T04:54:17.320Z pushedAt=2026-08-28T08:48:17.599Z -->
 
 You can apply custom drawing in your ArkTS widget to create a more vibrant experience. Use the [\<Canvas>](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md) component to create a canvas on the widget, and then use the [CanvasRenderingContext2D](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md) object to draw custom graphics on the canvas. The following code snippet draws a smiling face in the center of a canvas.
 
@@ -34,7 +35,7 @@ struct CustomCanvasDrawingCard {
             // Draw the background of the canvas.
             this.context.fillStyle = '#EEF0FF';
             this.context.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
-            // Draw a circle in the center of the canvas.
+            // Draw a circle at the center of the canvas.
             this.context.beginPath();
             let radius = this.context.width / 3;
             let circleX = this.context.width / 2;
@@ -44,7 +45,7 @@ struct CustomCanvasDrawingCard {
             this.context.closePath();
             this.context.fillStyle = '#5A5FFF';
             this.context.fill();
-            // Draw the left eye of the smiling face.
+            // Draw the left eye of the smiley face.
             let leftR = radius / 13;
             let leftX = circleX - (radius / 2.3);
             let leftY = circleY - (radius / 4.5);
@@ -54,7 +55,7 @@ struct CustomCanvasDrawingCard {
             this.context.strokeStyle = '#FFFFFF';
             this.context.lineWidth = 15;
             this.context.stroke();
-            // Draw the right eye of the smiling face.
+            // Draw the right eye of the smiley face.
             let rightR = radius / 13;
             let rightX = circleX + (radius / 2.3);
             let rightY = circleY - (radius / 4.5);
@@ -64,7 +65,7 @@ struct CustomCanvasDrawingCard {
             this.context.strokeStyle = '#FFFFFF';
             this.context.lineWidth = 15;
             this.context.stroke();
-            // Draw the nose of the smiling face.
+            // Draw the nose of the smiley face.
             let startX = circleX;
             let startY = circleY - 20;
             this.context.beginPath();
@@ -76,7 +77,7 @@ struct CustomCanvasDrawingCard {
             this.context.lineCap = 'round';
             this.context.lineJoin = 'round';
             this.context.stroke();
-            // Draw the mouth of the smiling face.
+            // Draw the mouth of the smiley face.
             let mouthR = radius / 2;
             let mouthX = circleX;
             let mouthY = circleY + 10;
@@ -93,6 +94,6 @@ struct CustomCanvasDrawingCard {
 }
 ```
 
-The figure below shows the effect.
+The following figure shows the running effect.
 
 ![WidgetCanvasDemo](figures/WidgetCanvasDemo.jpeg)

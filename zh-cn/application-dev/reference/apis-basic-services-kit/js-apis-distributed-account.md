@@ -407,11 +407,11 @@ updateOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise&lt;void&gt
 
 | 名称 | 类型 | 只读  | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| name | string | 否 | 否  | 分布式账号名称，非空字符串。 |
-| id | string | 否 | 否  | 分布式账号UID，非空字符串。 |
+| name | string | 否 | 否  | 分布式账号名称，非空字符串。最大长度为256个字节。  |
+| id | string | 否 | 否  | 分布式账号UID，非空字符串。最大长度为512个字节。  |
 | event | string | 否 | 否  | 分布式账号登录状态，包括登录、登出、Token失效和注销，分别对应以下字符串：<br/>-&nbsp;Ohos.account.event.LOGIN<br/>-&nbsp;Ohos.account.event.LOGOUT<br/>-&nbsp;Ohos.account.event.TOKEN_INVALID<br/>-&nbsp;Ohos.account.event.LOGOFF |
-| nickname<sup>9+</sup> | string | 否 | 是  | 分布式账号的昵称，当需要显示用户昵称时设置。不设置时默认为空，不影响账号功能使用。 |
-| avatar<sup>9+</sup> | string | 否 | 是  | 分布式账号的头像，当需要显示用户头像时设置。不设置时默认为空，不影响账号功能使用。 |
+| nickname<sup>9+</sup> | string | 否 | 是  | 分布式账号的昵称，当需要显示用户昵称时设置。不设置时默认为空，不影响账号功能使用。最大长度为1024个字节。|
+| avatar<sup>9+</sup> | string | 否 | 是  | 分布式账号的头像，当需要显示用户头像时设置。不设置时默认为空，不影响账号功能使用。 最大长度为10M（10485760个字节）。|
 | status<sup>10+</sup> | [DistributedAccountStatus](#distributedaccountstatus10) | 是 | 是  | 分布式账号的状态，枚举类型。当需要查询或设置账号登录状态时使用。不设置时默认为NOT_LOGGED_IN（未登录状态）。 |
 | scalableData<sup>8+</sup> | object | 否 | 是  | 分布式账号扩展信息，当需要传递定制化业务信息时设置，以k-v形式传递。不设置时默认为空，不影响账号基本功能。|
 

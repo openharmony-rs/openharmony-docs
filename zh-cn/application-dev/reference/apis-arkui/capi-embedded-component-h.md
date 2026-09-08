@@ -29,7 +29,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [AbilityBase_Want](capi-arkui-nativemodule-abilitybase-want.md) | AbilityBase_Want | 声明元能力Want结构。 |
-| [ArkUI_EmbeddedComponentOption](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md) | ArkUI_EmbeddedComponentOption | 为EmbeddedComponent定义参数EmbeddedComponentOption。 |
+| [ArkUI_EmbeddedComponentOption](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md) | ArkUI_EmbeddedComponentOption | 为EmbeddedComponent定义配置参数ArkUI_EmbeddedComponentOption，用于在创建或配置EmbeddedComponent时设置该组件的配置选项，适用于需要在页面中嵌入本应用内（或满足跨应用嵌入权限条件的）EmbeddedUIExtensionAbility提供的UI并管理其生命周期的嵌入式UI开发场景。 |
 
 ### 函数
 

@@ -155,7 +155,7 @@ setPointerSpeedSync(speed: number): void
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| speed | number | 是    | 鼠标移动速度，范围1-20，默认为10。 |
+| speed | number | 是    | 鼠标移动速度，取值范围[1, 20]，默认为10。 |
 
 **错误码**：
 
@@ -315,7 +315,7 @@ getPointerSpeedSync(): number
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| number | 返回鼠标移动速度，范围1-20。  |
+| number | 返回鼠标移动速度，取值范围[1, 20]。  |
 
 **错误码**：
 
@@ -819,7 +819,7 @@ setMouseScrollRows(rows: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| rows     | number                    | 是    | 鼠标滚动行数，范围1-100，默认为3。   |
+| rows     | number                    | 是    | 鼠标滚动行数，取值范围[1, 100]，默认为3。   |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置鼠标滚动行数成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
@@ -876,7 +876,7 @@ setMouseScrollRows(rows: number): Promise&lt;void&gt;
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| rows  | number | 是    | 鼠标滚动行数，范围1-100，默认为3。 |
+| rows  | number | 是    | 鼠标滚动行数，取值范围[1, 100]，默认为3。 |
 
 **返回值**：
 
@@ -1151,7 +1151,7 @@ struct Index {
 
 ## pointer.getTouchpadScrollSwitch<sup>10+</sup>
 
-getTouchpadScrollSwitch(callback:  AsyncCallback\<boolean>): void
+getTouchpadScrollSwitch(callback: AsyncCallback\<boolean>): void
 
 获取触控板滚轴能力开启状态，使用callback异步回调。
 
@@ -1378,7 +1378,7 @@ struct Index {
 
 ## pointer.getTouchpadScrollDirection<sup>10+</sup>
 
-getTouchpadScrollDirection(callback:  AsyncCallback\<boolean>): void
+getTouchpadScrollDirection(callback: AsyncCallback\<boolean>): void
 
 获取触控板滚轴方向，使用callback异步回调。
 
@@ -1605,7 +1605,7 @@ struct Index {
 
 ## pointer.getTouchpadTapSwitch<sup>10+</sup>
 
-getTouchpadTapSwitch(callback:  AsyncCallback\<boolean>): void
+getTouchpadTapSwitch(callback: AsyncCallback\<boolean>): void
 
 获取触控板轻触能力开启状态，使用callback异步回调。
 
@@ -1726,7 +1726,7 @@ setTouchpadPointerSpeed(speed: number, callback: AsyncCallback\<void>): void
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| speed | number                    | 是    |speed代表光标移动速度。speed取值范围[1,11]，默认6。  |
+| speed | number                    | 是    |speed代表光标移动速度。speed取值范围[1, 11]，默认6。  |
 | callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板光标移动速度成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
@@ -1783,7 +1783,7 @@ setTouchpadPointerSpeed(speed: number): Promise\<void>
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| speed| number | 是    | speed代表光标移动速度。speed取值范围[1,11]，默认6。    |
+| speed| number | 是    | speed代表光标移动速度。speed取值范围[1, 11]，默认6。    |
 
 **返回值**：
 
@@ -1899,7 +1899,7 @@ getTouchpadPointerSpeed(): Promise\<number>
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<number> | Promise对象，返回触控板光标移动速度，speed取值范围[1,11]。 |
+| Promise\<number> | Promise对象，返回触控板光标移动速度，speed取值范围[1, 11]。 |
 
 **错误码**：
 
@@ -2058,7 +2058,7 @@ struct Index {
 
 ## pointer.getTouchpadPinchSwitch<sup>10+</sup>
 
-getTouchpadPinchSwitch(callback:  AsyncCallback\<boolean>): void
+getTouchpadPinchSwitch(callback: AsyncCallback\<boolean>): void
 
 获取触控板双指捏合功能开启状态，使用callback异步回调。
 
@@ -2285,7 +2285,7 @@ struct Index {
 
 ## pointer.getTouchpadSwipeSwitch<sup>10+</sup>
 
-getTouchpadSwipeSwitch(callback:  AsyncCallback\<boolean>): void
+getTouchpadSwipeSwitch(callback: AsyncCallback\<boolean>): void
 
 获取触控板多指滑动功能开启状态，使用callback异步回调。
 

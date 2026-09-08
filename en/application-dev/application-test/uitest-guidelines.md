@@ -51,7 +51,7 @@ Perform the following steps:
 
 1. Write the **clickToAfter.ets** page code in the **main** > **ets** > **pages** folder as the test demo.
     
-    <!-- @[clickToAfter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/main/ets/pages/ClickToAfter.ets) -->
+    <!-- @[clickToAfter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/main/ets/pages/ClickToAfter.ets) --> 
     
     ``` TypeScript
     @Entry
@@ -86,7 +86,7 @@ Perform the following steps:
     
 2. Create the test file in the **ohosTest** > **ets** > **test** folder and write the test code.
     
-    <!-- @[click_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/basicExampleTest/BasicExample.test.ets) -->
+    <!-- @[click_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/basicExampleTest/BasicExample.test.ets) --> 
     
     ``` TypeScript
     import { describe, expect, it, Level } from '@ohos/hypium';
@@ -135,7 +135,7 @@ With UITest, you can <!--RP3-->[create a matcher based on attributes](../referen
 
 The following example shows how to search for and operate a component. Before executing the following code, implement the code of the **Index.ets** page by referring to "UI Test Example".
 
-<!-- @[findAndOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/findCommentExampleTest/Component/FindComAndOp.test.ets) -->    
+<!-- @[findAndOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/findCommentExampleTest/Component/FindComAndOp.test.ets) -->     
 
 ``` TypeScript
 import { describe, it, TestType } from '@ohos/hypium';
@@ -181,7 +181,7 @@ UITest supports simulating events such as tap, double-tap, long press, swipe, dr
 
 The following example shows how to simulate touch operations at the coordinate level. Before executing the following code, implement the **Index.ets page** code by referring to "UI Test Example".
 
-<!-- @[touchScreen_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/TouchScreenEvent.test.ets) -->
+<!-- @[touchScreen_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/TouchScreenEvent.test.ets) --> 
 
 ``` TypeScript
 import { describe, it, Level, Size, TestType } from '@ohos/hypium';
@@ -228,7 +228,7 @@ When interacting with a page, you can determine whether the page redirection is 
 
 The following example describes how to wait for page loading completion. Before executing the following code, implement the **Index.ets** page code by referring to "UI Test Example".
 
-<!-- @[waitForComp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/WaitForCom.test.ets) -->
+<!-- @[waitForComp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/WaitForCom.test.ets) --> 
 
 ``` TypeScript
 import { describe, it, Level, Size, TestType } from '@ohos/hypium';
@@ -263,7 +263,7 @@ UITest supports text input at a specified coordinate or to a specified component
 
 The following example describes how to input text based on components and coordinates. Before running the following code, implement the **Index.ets page** code by referring to "UI Test Example".
 
-<!-- @[inputText_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/InputText.test.ets) -->
+<!-- @[inputText_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/InputText.test.ets) --> 
 
 ``` TypeScript
 import { describe, it, Level, Size, TestType } from '@ohos/hypium';
@@ -338,7 +338,7 @@ export default function abilityTest() {
 
 The following example shows how to capture a screenshot with the display ID and area specified and save the screenshot to a specified path. Before running the following code, implement the **Index.ets page** code by referring to "UI Test Example". In the multi-display scenario, to capture a screenshot of a specified display, you can call the API of the display module to <!--RP8-->[obtain the display object](../displaymanager/screenProperty-guideline.md#obtaining-a-display-object)<!--RP8End-->, and then <!--RP9-->[obtain display properties](../displaymanager/screenProperty-guideline.md#obtaining-display-properties)<!--RP9End-->.
 
-<!-- @[screenCap_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/ScreenCap.test.ets) -->
+<!-- @[screenCap_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/ScreenCap.test.ets) --> 
 
 ``` TypeScript
 import { describe, it, Level, Size, TestType } from '@ohos/hypium';
@@ -384,7 +384,7 @@ export default function abilityTest() {
 
 The following example describes how to listen for UI events, including setting the listening callback, listening for the **Toast** and **Dialog** components, and proceeding after an event occurs. Before running the following code, implement the **Index.ets page** code by referring to "UI Test Example".
 
-<!-- @[eventObserver_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/EventObserver.test.ets) -->    
+<!-- @[eventObserver_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/EventObserver.test.ets) -->     
 
 ``` TypeScript
 import { describe, it, TestType } from '@ohos/hypium';
@@ -412,7 +412,7 @@ export default function abilityTest() {
 
 The following example describes how to simulate keyboard and mouse operations, including single key and combination key input, mouse click, move, and drag, and key and mouse combination operations. Before running the following code, implement the **Index.ets page** code by referring to "UI Test Example".
 
-<!-- @[mouseAndKey_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/MouseAndKeyOp.test.ets) -->
+<!-- @[mouseAndKey_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/MouseAndKeyOp.test.ets) --> 
 
 ``` TypeScript
 import { describe, it, Level, Size, TestType } from '@ohos/hypium';
@@ -457,7 +457,7 @@ export default function abilityTest() {
 ### Searching for and Operating Windows
 The following example describes how to search for and minimize a window based on the window properties. Before running the following code, implement the **Index.ets page** code by referring to "UI Test Example".
 
-<!-- @[findWindowAndOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/window/FindWindowAndOp.test.ets) -->    
+<!-- @[findWindowAndOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/window/FindWindowAndOp.test.ets) -->     
 
 ``` TypeScript
 import { describe, expect, it, TestType } from '@ohos/hypium';
@@ -487,7 +487,7 @@ export default function abilityTest() {
 ### Simulating Touchpad Operations
 The following example describes how to simulate the touchpad operations of swiping up with three fingers to return to the home screen and swiping down with three fingers to return to the application window. Before running the following code, implement the **Index.ets page** code by referring to "UI Test Example".
 
-<!-- @[touchPadOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/TouchPadOp.test.ets) -->    
+<!-- @[touchPadOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/TouchPadOp.test.ets) -->     
 
 ``` TypeScript
 import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
@@ -519,7 +519,7 @@ export default function abilityTest() {
 ### Simulating Stylus Operations
 The following example describes how to simulate stylus operations such as clicking, swiping, and setting pressure. Before running the following code, implement the **Index.ets page** code by referring to "UI Test Example".
 
-<!-- @[penOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/PenOp.test.ets) -->
+<!-- @[penOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/PenOp.test.ets) --> 
 
 ``` TypeScript
 import { describe, it, Level, Size, TestType } from '@ohos/hypium';
@@ -547,7 +547,7 @@ export default function abilityTest() {
 ### Simulating Crown Operations
 The following example shows how to simulate clockwise and counter-clockwise crown rotations. Before running the following code, implement the **Index.ets page** code by referring to "UI Test Example".
 
-<!-- @[watchOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/WatchOp.test.ets) -->    
+<!-- @[watchOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/WatchOp.test.ets) -->     
 
 ``` TypeScript
 import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
@@ -579,7 +579,7 @@ export default function abilityTest() {
 ### Simulating Display Operations
 The following example shows how to simulate display operations, including obtaining display properties such as size and density, waking up the display, and rotating it. Before running the following code, implement the **Index.ets page** code by referring to "UI Test Example".
 
-<!-- @[displayOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/DisplayOp.test.ets) -->
+<!-- @[displayOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/DisplayOp.test.ets) --> 
 
 ``` TypeScript
 import { describe, it, Level, Size, TestType } from '@ohos/hypium';
@@ -871,40 +871,40 @@ hdc shell uitest start-daemon
 ## UI Test Script Examples
 
 ### Example of Searching for Specified Components
-For details about how to search for a component in an application UI by specifying the attributes of the component, see [Example of Searching for Specified Components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/findCommentExampleTest/Component/findCommentExample.test.ets).
+For details about how to search for a component in an application UI by specifying the attributes of the component, see [Example of Searching for Specified Components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/findCommentExampleTest/Component/findCommentExample.test.ets).
 
 ### Example of Simulating Click Events
-For details about how to simulate the click, long-click or double-click event, see [Example of Simulating Click Events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/clickEvent.test.ets).
+For details about how to simulate the click, long-click or double-click event, see [Example of Simulating Click Events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/clickEvent.test.ets).
 
 ### Example of Simulating Mouse Events
-For details about how to simulate the left-click, right-click, or scroll event using a mouse, see [Example of Simulating Mouse Events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/MouseEvent.test.ets).
+For details about how to simulate the left-click, right-click, or scroll event using a mouse, see [Example of Simulating Mouse Events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/MouseEvent.test.ets).
 
 ### Example of Simulating Text Input Events
-For details about how to simulate Chinese and English text input, see [Example of Simulating Text Input Events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/InputEvent.test.ets).
+For details about how to simulate Chinese and English text input, see [Example of Simulating Text Input Events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/InputEvent.test.ets).
 
 ### Example of Simulating Screenshot Capture Events
-For details about how to simulate capturing a screenshot (in a specified area), see [Example of Simulating Screenshot Capture Events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/ScreenCapEvent.test.ets).
+For details about how to simulate capturing a screenshot (in a specified area), see [Example of Simulating Screenshot Capture Events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/ScreenCapEvent.test.ets).
 
 ### Example of Simulating Fling Events
-For details about how to simulate a fling event (the finger leaves the screen after swiping), see [Example of Simulating Fling Events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/FlingEvent.test.ets).
+For details about how to simulate a fling event (the finger leaves the screen after swiping), see [Example of Simulating Fling Events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/FlingEvent.test.ets).
 
 ### Example of Simulating Swipe Events
-For details about how to simulate a swipe event (the finger stays on the screen after swiping), see [Example of Simulating Swipe Events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/SwipeEvent.test.ets).
+For details about how to simulate a swipe event (the finger stays on the screen after swiping), see [Example of Simulating Swipe Events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/SwipeEvent.test.ets).
 
 ### Example of Simulating Pinch Events
-For details about how to simulate a zoom-in and zoom-out operation on pictures, see [Example of Simulating Pinch Events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/PinchEvent.test.ets).
+For details about how to simulate a zoom-in and zoom-out operation on pictures, see [Example of Simulating Pinch Events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/PinchEvent.test.ets).
 
 ### Example of Simulating Scroll Events
-For details about how to simulate components scrolling, see [Example of Simulating Scroll Events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/ScrollerEvent.test.ets).
+For details about how to simulate components scrolling, see [Example of Simulating Scroll Events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/ScrollerEvent.test.ets).
 
 ### Example of Searching for Specified Windows
-For details about how to search for an application window based on the bundle name, see [Example of Searching for Specified Windows](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/findCommentExampleTest/window/findWindowExample.test.ets).
+For details about how to search for an application window based on the bundle name, see [Example of Searching for Specified Windows](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/findCommentExampleTest/window/findWindowExample.test.ets).
 
 ### Example of Simulating Window Movement Events
-For details about how to simulate the window movement to a specified position, see [Example of Simulating Window Movement Events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/window/MoveToEvent.test.ets).
+For details about how to simulate the window movement to a specified position, see [Example of Simulating Window Movement Events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/window/MoveToEvent.test.ets).
 
 ### Example of Simulating Window Size Adjustments
-For details about how to simulate a window size adjustment in a specified direction, see [Example of Simulating Window Size Adjustments](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/window/ReSizeWindow.test.ets).
+For details about how to simulate a window size adjustment in a specified direction, see [Example of Simulating Window Size Adjustments](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/window/ReSizeWindow.test.ets).
 <!--DelEnd-->
 
 ## FAQs

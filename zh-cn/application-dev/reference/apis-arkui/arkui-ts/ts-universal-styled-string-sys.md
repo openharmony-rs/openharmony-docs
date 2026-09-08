@@ -63,7 +63,7 @@ static marshalling(styledString: StyledString, callback: StyledStringMarshallCal
 
 | 类型              |说明       |
 | ------- | --------------------------------- | 
-| ArrayBuffer | 序列化后的buffer信息。<br>**说明：** <br>目前支持文本和图片。 |
+| ArrayBuffer | 序列化后的buffer信息。<br>**说明：** <br>支持文本、图片及自定义UserDataSpan的序列化。|
 
 ### unmarshalling
 
@@ -121,7 +121,7 @@ static unmarshalling(buffer: ArrayBuffer, callback: StyledStringUnmarshallCallba
 
 | 类型                             | 说明                  |
 | -------------------------------- | --------------------- |
-| Promise\<[StyledString](ts-universal-styled-string.md#styledstring)> |Promise对象，成功时返回属性字符串，失败时返回错误码，详见错误码部分。<br>**说明：** <br>目前支持文本和图片。 |
+| Promise\<[StyledString](ts-universal-styled-string.md#styledstring)> |Promise对象，成功时返回属性字符串，失败时返回错误码，详见错误码部分。<br>**说明：** <br>支持文本、图片及自定义UserDataSpan的反序列化。 |
 
 **错误码**：
 

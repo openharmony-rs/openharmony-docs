@@ -3427,8 +3427,8 @@ static updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: Doma
 
 | 名称      | 类型   | 只读  | 可选 | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
-| domain      | string | 否 | 否  | 域名。     |
-| accountName | string | 否 | 否  | 域账号名。 |
+| domain      | string | 否 | 否  | 域名。最大长度为128个字节。|
+| accountName | string | 否 | 否  | 域账号名。最大长度为256个字节。|
 | serverConfigId<sup>18+</sup> | string | 否 | 是  | 域账号配置ID，默认为空字符串。 |
 | additionalInfo | Record<string, Object> | 否 | 是 | 域账号附加信息，默认为空。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 

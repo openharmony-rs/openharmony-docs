@@ -1,7 +1,7 @@
 # Interfaces（其他）
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
@@ -262,7 +262,7 @@ Web同层渲染的配置。用于配置Web同层渲染选项，包括支持固�
 
 ## OnRenderExitedEvent<sup>12+</sup>
 
-定义渲染过程退出时触发。适用于需要监控渲染进程异常的场景，提升渲染稳定性和故障排查效率。
+定义渲染进程退出时触发。适用于需要监控渲染进程异常的场景，提升渲染稳定性和故障排查效率。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

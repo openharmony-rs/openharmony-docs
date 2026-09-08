@@ -6,7 +6,7 @@
 <!--Designer: @chensiyi_CE-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=cb84f8fe2e38bbeba25c5506a75a0804a063c158 translatedAt=2026-07-16T09:13:32.431Z pushedAt=2026-07-17T13:41:54.757Z -->
+<!-- md-trans-meta sourceCommit=38f2b743335b25dbcff55ffef3757db0d590d086 translatedAt=2026-08-24T09:25:23.417Z pushedAt=2026-08-31T12:08:50.382Z -->
 
 This module provides basic capabilities for component effects, including blur, brightening, and more. Effects are categorized into the Filter and VisualEffect classes, and effects of the same class can be cascaded under an instance of that effect class. Using this module, you can quickly implement complex visual effects without needing to master underlying image processing algorithms, reducing development complexity and improving user experience. In actual development, blur can be used for background blurring, and brightening can be used for bright screen display, etc.
 
@@ -25,7 +25,7 @@ This module provides basic capabilities for component effects, including blur, b
 ## Modules to Import
 
 ```ts
-import { uiEffect } from "@kit.ArkGraphics2D";
+import { uiEffect } from '@kit.ArkGraphics2D';
 ```
 
 ## uiEffect.createBrightnessBlender
@@ -56,9 +56,9 @@ Creates a **BrightnessBlender** instance, which can be used to apply the brightn
 
 ```ts
 // Create a BrightnessBlender instance to add a brightening effect to a component.
-let blender : uiEffect.BrightnessBlender =
+let blender: uiEffect.BrightnessBlender =
   uiEffect.createBrightnessBlender({cubicRate:1.0, quadraticRate:1.0, linearRate:1.0, degree:1.0, saturation:1.0,
-    positiveCoefficient:[2.3, 4.5, 2.0], negativeCoefficient:[0.5, 2.0, 0.5], fraction:0.0})
+    positiveCoefficient:[2.3, 4.5, 2.0], negativeCoefficient:[0.5, 2.0, 0.5], fraction:0.0});
 ```
 
 ## uiEffect.createHdrBrightnessBlender<sup>20+</sup>
@@ -94,21 +94,21 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
-import { uiEffect } from '@kit.ArkGraphics2D'
+import { uiEffect } from '@kit.ArkGraphics2D';
 
 // Create a BrightnessBlender instance that supports HDR.
-let blender : uiEffect.HdrBrightnessBlender =
+let blender: uiEffect.HdrBrightnessBlender =
   uiEffect.createHdrBrightnessBlender({cubicRate:1.0, quadraticRate:1.0, linearRate:1.0, degree:1.0, saturation:1.0,
-    positiveCoefficient:[2.3, 4.5, 2.0], negativeCoefficient:[0.5, 2.0, 0.5], fraction:0.0})
+    positiveCoefficient:[2.3, 4.5, 2.0], negativeCoefficient:[0.5, 2.0, 0.5], fraction:0.0});
 
 @Entry
 @Component
 struct Example {
   build() {
     RelativeContainer() {
-      Image($r("app.media.screenshot"))
-        .width("100%")
-        .height("100%")
+      Image($r('app.media.screenshot'))
+        .width('100%')
+        .height('100%')
         .advancedBlendMode(blender)
     }
   }
@@ -153,11 +153,11 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
-import { uiEffect } from '@kit.ArkGraphics2D'
+import { uiEffect } from '@kit.ArkGraphics2D';
 
 // Create an HDR darken blender instance.
-let blender : uiEffect.HdrDarkenBlender = 
-  uiEffect.createHdrDarkenBlender(1.3, [0.299, 0.587, 0.114])
+let blender: uiEffect.HdrDarkenBlender =
+  uiEffect.createHdrDarkenBlender(1.3, [0.299, 0.587, 0.114]);
 
 @Entry
 @Component
@@ -165,10 +165,10 @@ struct Example {
   build() { 
     RelativeContainer() { 
       Stack(){ 
-          Text("TextWord") 
-          Image($r("app.media.screenshot")) 
-            .width("100%") 
-            .height("100%") 
+          Text('TextWord')
+          Image($r('app.media.screenshot'))
+            .width('100%')
+            .height('100%')
             .advancedBlendMode(blender) 
       } 
     } 
@@ -207,8 +207,8 @@ Applies the pixel stretch effect onto the component.
 
 ```ts
 // Add the edge pixel extension effect to the component.
-let filter = uiEffect.createFilter()
-filter.pixelStretch([0.2, 0.2, 0.2, 0.2], uiEffect.TileMode.CLAMP)
+let filter = uiEffect.createFilter();
+filter.pixelStretch([0.2, 0.2, 0.2, 0.2], uiEffect.TileMode.CLAMP);
 ```
 
 ### waterRipple
@@ -249,8 +249,8 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 // Add the water ripple effect to the component.
-let filter = uiEffect.createFilter()
-filter.waterRipple(0.5, 2, 0.5, 0.5, uiEffect.WaterRippleMode.SMALL2SMALL)
+let filter = uiEffect.createFilter();
+filter.waterRipple(0.5, 2, 0.5, 0.5, uiEffect.WaterRippleMode.SMALL2SMALL);
 ```
 
 ### flyInFlyOutEffect
@@ -288,8 +288,8 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 // Add the fly in/out transformation effect to the component.
-let filter = uiEffect.createFilter()
-filter.flyInFlyOutEffect(0.5, uiEffect.FlyMode.TOP)
+let filter = uiEffect.createFilter();
+filter.flyInFlyOutEffect(0.5, uiEffect.FlyMode.TOP);
 ```
 
 ### distort<sup>13+</sup>
@@ -330,8 +330,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 // Add the lens distortion effect to the component.
-let filter = uiEffect.createFilter()
-filter.distort(-0.5)
+let filter = uiEffect.createFilter();
+filter.distort(-0.5);
 ```
 
 ### radiusGradientBlur<sup>19+</sup>
@@ -368,14 +368,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { uiEffect } from '@kit.ArkGraphics2D'
+import { uiEffect } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
 struct RadiusGradientBlurExample {
-  @State blurRadiusExample: number = 64
+  @State blurRadiusExample: number = 64;
   @State linearGradientBlurOptionsExample: LinearGradientBlurOptions =
-    {fractionStops: [[0.0, 0.0], [1.0, 1.0]], direction: GradientDirection.Bottom}
+    {fractionStops: [[0.0, 0.0], [1.0, 1.0]], direction: GradientDirection.Bottom};
 
   build() {
     Column() {
@@ -421,7 +421,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { common2D, uiEffect } from '@kit.ArkGraphics2D'
+import { common2D, uiEffect } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
@@ -430,7 +430,7 @@ struct BezierWarpExample {
     { x: 0, y: 0 }, { x: 1 / 3, y: 0 }, { x: 2 / 3, y: 0 }, // top edge
     { x: 0.5, y: 0 }, { x: 0.5, y: 1 / 3 }, { x: 1, y: 2 / 3 }, // right edge
     { x: 1, y: 1 }, { x: 2 / 3, y: 1 }, { x: 1 / 3, y: 1 }, // bottom edge
-    { x: 0, y: 1 }, { x: 0, y: 2 / 3 }, { x: 0, y: 1 / 3 }] // left edge
+    { x: 0, y: 1 }, { x: 0, y: 2 / 3 }, { x: 0, y: 1 / 3 }]; // left edge
 
   build() {
     Column() {
@@ -478,7 +478,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { common2D, uiEffect } from '@kit.ArkGraphics2D'
+import { common2D, uiEffect } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
@@ -486,19 +486,20 @@ struct ColorGradientExample {
   @State gradientColors: Array<uiEffect.Color> = [
     {red: 1.0, green: 0.8, blue: 0.5, alpha: 0.8},
     {red: 1.0, green: 1.5, blue: 0.5, alpha: 1.0}
-  ]
+  ];
 
   @State gradientPositions: Array<common2D.Point> = [
     {x: 0.2, y: 0.2},
-    {x: 0.8, y: 0.6}]
+    {x: 0.8, y: 0.6}
+  ];
 
-  @State gradientStrengths: Array<number> = [0.3, 0.3]
+  @State gradientStrengths: Array<number> = [0.3, 0.3];
 
   build() {
     Column() {
       Row()
-        .width("100%")
-        .height("100%")
+        .width('100%')
+        .height('100%')
         // Add a color gradient effect to the component content.
         .backgroundFilter(uiEffect.createFilter().colorGradient(this.gradientColors, this.gradientPositions, this.gradientStrengths))
     }
@@ -542,21 +543,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { common2D, uiEffect } from '@kit.ArkGraphics2D'
+import { common2D, uiEffect } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
 struct Index {
   @State contentLightPosition: common2D.Point3d = {
     x: 0, y: 0, z: 2
-  }
+  };
   @State contentLightColor: common2D.Color = {
     red: 1,
     green: 1,
     blue: 1,
     alpha: 1
-  }
-  @State lightIntensity: number = 1
+  };
+  @State lightIntensity: number = 1;
 
   build() {
     Column() {
@@ -615,21 +616,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { uiEffect } from '@kit.ArkGraphics2D'
+import { uiEffect } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
 struct EdgeLightExample {
-  @State edgeLightColor: uiEffect.Color = {red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0}
+  @State edgeLightColor: uiEffect.Color = {red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0};
   
-  @State edgeLightMask: uiEffect.Mask = uiEffect.Mask.createRippleMask({x: 0.5, y: 0.5}, 0.2, 0.5, 0.5)
+  @State edgeLightMask: uiEffect.Mask = uiEffect.Mask.createRippleMask({x: 0.5, y: 0.5}, 0.2, 0.5, 0.5);
   
   build() {
     Stack() {
       Image($rawfile('test.png'))
       Row()  
-        .width("100%")
-        .height("100%")
+        .width('100%')
+        .height('100%')
         // Detect edges for the component content and add an edge highlighting effect.
         .backgroundFilter(uiEffect.createFilter().edgeLight(1.0, this.edgeLightColor, this.edgeLightMask, false))
     }
@@ -671,19 +672,19 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { uiEffect } from '@kit.ArkGraphics2D'
+import { uiEffect } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
 struct DisplacementDistortExample {
-  @State distortMask: uiEffect.Mask = uiEffect.Mask.createRippleMask({x: 0.5, y: 0.5}, 0.2, 0.3, 0.0)
+  @State distortMask: uiEffect.Mask = uiEffect.Mask.createRippleMask({x: 0.5, y: 0.5}, 0.2, 0.3, 0.0);
   
   build() {
     Stack() {
       Image($rawfile('test.png'))
       Row()  
-        .width("100%")
-        .height("100%")
+        .width('100%')
+        .height('100%')
         // Add a distortion effect to the component content.
         .backgroundFilter(uiEffect.createFilter().displacementDistort(this.distortMask, [5.0, 5.0]))
     }
@@ -728,25 +729,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import {image} from '@kit.ImageKit'
-import {common2D, uiEffect} from '@kit.ArkGraphics2D'
-import {common} from '@kit.AbilityKit'
+import {image} from '@kit.ImageKit';
+import {common2D, uiEffect} from '@kit.ArkGraphics2D';
+import {common} from '@kit.AbilityKit';
 
 @Entry
 @Component
 struct MaskDispersion {
-  @State pixelMap: PixelMap | null = null
-  @State src: common2D.Rect = { left: 0, top: 0, right: 1.0, bottom: 1.0 }
-  @State dst: common2D.Rect = { left: 0, top: 0, right: 1.0, bottom: 1.0 }
-  @State fillColor: uiEffect.Color = { red: 0, green: 0, blue: 0, alpha: 0 }
+  @State pixelMap: PixelMap | null = null;
+  @State src: common2D.Rect = { left: 0, top: 0, right: 1.0, bottom: 1.0 };
+  @State dst: common2D.Rect = { left: 0, top: 0, right: 1.0, bottom: 1.0 };
+  @State fillColor: uiEffect.Color = { red: 0, green: 0, blue: 0, alpha: 0 };
 
   onPageShow(): void {
-    let context = this.getUIContext().getHostContext() as common.UIAbilityContext
-    context.resourceManager.getMediaByName("mask_alpha").then(val => {
-      let buffer = val.buffer.slice(0, val.buffer.byteLength)
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    context.resourceManager.getMediaByName('mask_alpha').then(val => {
+      let buffer = val.buffer.slice(0, val.buffer.byteLength);
       let imageSource = image.createImageSource(buffer);
       imageSource.createPixelMap().then(pixelMap => {
-        this.pixelMap = pixelMap
+        this.pixelMap = pixelMap;
       })
     })
   }
@@ -812,23 +813,23 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { uiEffect, common2D } from "@kit.ArkGraphics2D";
+import { uiEffect, common2D } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
 struct Index {
-  context = this.getUIContext()
-  @State alpha: number = 0
-  @State enterNewPage:boolean = false
-  @State rippleMaskCenter: common2D.Point = {x:0.5, y:0.5}
-  @State rippleMaskRadius: number = 0.1
+  context = this.getUIContext();
+  @State alpha: number = 0;
+  @State enterNewPage:boolean = false;
+  @State rippleMaskCenter: common2D.Point = {x:0.5, y:0.5};
+  @State rippleMaskRadius: number = 0.1;
   build() {
     Stack() {
       // Page before the transition.
-      Image($r("app.media.before")).width("100%").height("100%")
+      Image($r('app.media.before')).width('100%').height('100%')
         if (this.enterNewPage) {
           // Page after the transition.
-          Column().width("100%").height("100%").backgroundImage($r("app.media.after"))
+          Column().width('100%').height('100%').backgroundImage($r('app.media.after'))
             // Provide a mask-based transition effect for the component content.
             .backgroundFilter(uiEffect.createFilter()
               .maskTransition(
@@ -836,19 +837,19 @@ struct Index {
                 this.alpha))
             .onAppear(() => {
               this.context.animateTo({ duration: 1000 }, () => {
-                this.rippleMaskRadius = 1.3
+                this.rippleMaskRadius = 1.3;
               })
               this.context.animateTo({ duration: 800 }, () => {
-                this.alpha = 1
+                this.alpha = 1;
               })
             })
         }
     }.borderWidth(2)
     .onClick(()=>{
-      this.enterNewPage=!this.enterNewPage;
+      this.enterNewPage = !this.enterNewPage;
       if (this.enterNewPage) {
-        this.alpha=0;
-        this.rippleMaskRadius=0.1;
+        this.alpha = 0;
+        this.rippleMaskRadius = 0.1;
       }
     })
   }
@@ -892,23 +893,23 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { uiEffect, common2D } from "@kit.ArkGraphics2D";
+import { uiEffect, common2D } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
 struct Index {
-  @State rippleMaskCenter: common2D.Point = {x:0.5, y:0.5}
-  @State rippleMaskRadius: number = 0.0
-  @State rippleMaskWidth: number = 0.0
-  @State color: Color = Color.Transparent
+  @State rippleMaskCenter: common2D.Point = {x:0.5, y:0.5};
+  @State rippleMaskRadius: number = 0.0;
+  @State rippleMaskWidth: number = 0.0;
+  @State color: Color = Color.Transparent;
 
   build() {
     Column() {
       RelativeContainer() {
-        Image($r("app.media.back")).width("100%").height("100%")
+        Image($r('app.media.back')).width('100%').height('100%')
         Stack()
-          .width("100%")
-          .height("100%")
+          .width('100%')
+          .height('100%')
           .backgroundColor(this.color)
           // Provide a lighting effect based on mask and parallel light for the component content.
           .backgroundFilter(uiEffect.createFilter()
@@ -966,7 +967,7 @@ import { uiEffect } from '@kit.ArkGraphics2D';
 @Entry
 @Component
 struct VariableRadiusBlurExample {
-  @State blurMask: uiEffect.Mask = uiEffect.Mask.createRippleMask({x: 0.5, y: 0.5}, 0.2, 0.1)
+  @State blurMask: uiEffect.Mask = uiEffect.Mask.createRippleMask({x: 0.5, y: 0.5}, 0.2, 0.1);
 
   build() {
     Stack() {
@@ -1090,12 +1091,12 @@ struct BlurBubblesRiseExample {
     let resourceMgr = context.resourceManager;
     resourceMgr?.getMediaContent($r('app.media.drawBlurMask').id)
       .then((val: Uint8Array) => {
-        let buffer: ArrayBuffer = val.buffer.slice(0, val.buffer.byteLength)
+        let buffer: ArrayBuffer = val.buffer.slice(0, val.buffer.byteLength);
         let imageSource: image.ImageSource = image.createImageSource(buffer);
         imageSource.createPixelMap().then((pixelmap: image.PixelMap) => {
           this.maskImage = pixelmap as PixelMap;
-        })
-      })
+        });
+      });
   }
 
   build() {
@@ -1189,13 +1190,13 @@ A blender used to change the background color of a component. Currently, only th
 **Example**
 
 ```ts
-import { uiEffect } from '@kit.ArkGraphics2D'
-let blender : uiEffect.BrightnessBlender =
+import { uiEffect } from '@kit.ArkGraphics2D';
+let blender: uiEffect.BrightnessBlender =
   uiEffect.createBrightnessBlender({cubicRate:1.0, quadraticRate:1.0, linearRate:1.0, degree:1.0, saturation:1.0,
-    positiveCoefficient:[2.3, 4.5, 2.0], negativeCoefficient:[0.5, 2.0, 0.5], fraction:0.0})
+    positiveCoefficient:[2.3, 4.5, 2.0], negativeCoefficient:[0.5, 2.0, 0.5], fraction:0.0});
 let visualEffect = uiEffect.createEffect();
 // Add the blender to the component to change the component background color.
-visualEffect.backgroundColorBlender(blender)
+visualEffect.backgroundColorBlender(blender);
 ```
 
 ### borderLight<sup>20+</sup>
@@ -1234,19 +1235,19 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { common2D, uiEffect } from '@kit.ArkGraphics2D'
+import { common2D, uiEffect } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
 struct Index {
   @State borderLightPosition: common2D.Point3d = {
     x: 0, y: 0, z: 2
-  }
+  };
   @State borderLightColor: common2D.Color = {
     red: 1, green: 1, blue: 1, alpha: 1
-  }
-  @State lightIntensity: number = 1
-  @State borderWidth_: number = 20
+  };
+  @State lightIntensity: number = 1;
+  @State borderWidth_: number = 20;
 
   build() {
     Column() {
@@ -1310,7 +1311,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { common2D, uiEffect } from '@kit.ArkGraphics2D'
+import { common2D, uiEffect } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
@@ -1337,11 +1338,11 @@ struct ColorGradientExample {
           uiEffect.Mask.createRippleMask({x: 0.5, y: 0.5}, 0.2, 0.1)
         )
       )
-      .width("1024px")
-      .height("1024px")
+      .width('1024px')
+      .height('1024px')
     }
-    .width("100%")
-    .height("100%")
+    .width('100%')
+    .height('100%')
   }
 }
 ```
@@ -1402,13 +1403,13 @@ struct Index {
     let effect: uiEffect.VisualEffect = uiEffect.createEffect();
     effect.liquidMaterial({
       enable: true,
-      distortProgress : this.distortProgress,
+      distortProgress: this.distortProgress,
       rippleProgress: this.rippleProgress,
       distortFactor: this.distortFactor,
-      materialFactor : this.materialFactor,
-      refractionFactor : this.refractionFactor,
+      materialFactor: this.materialFactor,
+      refractionFactor: this.refractionFactor,
       reflectionFactor: this.reflectionFactor,
-      tintColor : [this.tintColorR, this.tintColorG, this.tintColorB, this.tintColorA],
+      tintColor: [this.tintColorR, this.tintColorG, this.tintColorB, this.tintColorA],
       ripplePosition: undefined,
     },
       uiEffect.Mask.createUseEffectMask(true),
@@ -1429,10 +1430,10 @@ struct Index {
       .backgroundEffect({
         radius: 15,
       }, { disableSystemAdaptation: true })
-      .width("100%").height("100%").align(Alignment.Center)
+      .width('100%').height('100%').align(Alignment.Center)
     }
     .backgroundImage($r('app.media.bg6'), ImageRepeat.NoRepeat)
-    .width("100%").height("100%").align(Alignment.Center)
+    .width('100%').height('100%').align(Alignment.Center)
   }
 }
 ```
@@ -1445,10 +1446,10 @@ Applies a nonlinear distortion effect to a component. Typical application scenar
 
 > **NOTE**
 >
-> - This visual effect supports rendering beyond the component bounds, but it is still affected by the parent component's clipping.
-> - Because it includes a foreground filter, when not used together with [EffectComponent](../apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md), it is incompatible with certain visual effects of the component itself and its child components, such as [BrightnessBlender](#brightnessblender) or [systemMaterial](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect-sys.md#systemmaterial23).
-> - It supports distortion of system materials, but when used together with [EffectComponent](../apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md), it causes distortion of the system material background.
-> - When this API is called, an offscreen canvas of the same size as the distorted area is created, the content of the current component (including child components) is drawn onto the offscreen canvas, and then the component content drawn on the canvas is distorted. With this implementation, if not used together with [EffectComponent](../apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md), APIs that require screen capture, such as [systemMaterial](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect-sys.md#systemmaterial23), [backgroundEffect](../apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundeffect19), [brightness](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#brightness), or [blur](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#blur19), will fail to capture the correct image.
+> - The distortion effect allows drawing beyond the component boundary, but the rendering result is still affected by the clipping attribute of the parent component.
+> - Calling this API creates an off-screen rendering canvas of the same size as the distorted area. To avoid display anomalies or excessive performance overhead, it is not recommended to distort a component beyond the screen size.
+> - This API includes a foreground Filter. When used in combination with APIs that depend on background screenshots, such as [backgroundEffect](../apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundeffect19), [brightness](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#brightness), [blur](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#blur19), and [backgroundColorBlender](#backgroundcolorblender), it must be nested in [EffectComponent](../apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md); otherwise, some visual effects may fail or behave abnormally.
+> - When a child node calls the [systemMaterial](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect-sys.md#systemmaterial23) API, the node that calls this API must be nested in [EffectComponent](../apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md); otherwise, the system material will be lost. Note, however, that this calling method additionally increases the background distortion of the system material.
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1689,40 +1690,40 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { image } from '@kit.ImageKit';
 import { uiEffect, common2D } from '@kit.ArkGraphics2D';
-import { BusinessError } from '@kit.BasicServicesKit'
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const colorBuffer = new ArrayBuffer(96);
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
     height: 4,
     width: 6
   }
-}
+};
 image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
-  let srcRect : common2D.Rect = {
+  let srcRect: common2D.Rect = {
     left: 0,
     top: 0,
     right: 1,
     bottom: 1
-  }
-  let dstRect : common2D.Rect = {
+  };
+  let dstRect: common2D.Rect = {
     left: 0,
     top: 0,
     right: 1,
     bottom: 1
-  }
-  let fillColor : uiEffect.Color = {
+  };
+  let fillColor: uiEffect.Color = {
     red: 0,
     green: 0,
     blue: 0,
     alpha: 1
-  }
+  };
   let mask = uiEffect.Mask.createPixelMapMask(pixelMap, srcRect, dstRect, fillColor);
 }).catch((error: BusinessError)=>{
   console.error(`Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
-})
+});
 ```
 
 ### createPixelMapMask<sup>22+</sup>
@@ -1785,7 +1786,7 @@ struct Index {
     try {
       let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
       // this path should be created in local
-      const path: string = context.resourceDir + "/perlin_worley_noise_3d_64.bmp";
+      const path: string = context.resourceDir + '/perlin_worley_noise_3d_64.bmp';
       const imageSource: image.ImageSource = image.createImageSource(path);
       if (!imageSource) {
         return undefined;
@@ -1810,13 +1811,13 @@ struct Index {
     }
     effect.liquidMaterial({
       enable: true,
-      distortProgress : this.distortProgress,
+      distortProgress: this.distortProgress,
       rippleProgress: this.rippleProgress,
       distortFactor: this.distortFactor,
-      materialFactor : this.materialFactor,
-      refractionFactor : this.refractionFactor,
+      materialFactor: this.materialFactor,
+      refractionFactor: this.refractionFactor,
       reflectionFactor: this.reflectionFactor,
-      tintColor : [this.tintColorR, this.tintColorG, this.tintColorB, this.tintColorA],
+      tintColor: [this.tintColorR, this.tintColorG, this.tintColorB, this.tintColorA],
       ripplePosition: undefined,
     },
       uiEffect.Mask.createUseEffectMask(true),
@@ -1838,10 +1839,10 @@ struct Index {
       .backgroundEffect({
         radius: 15,
       }, { disableSystemAdaptation: true })
-      .width("100%").height("100%").align(Alignment.Center)
+      .width('100%').height('100%').align(Alignment.Center)
     }
     .backgroundImage($r('app.media.bg6'), ImageRepeat.NoRepeat) // the image should be created in local
-    .width("100%").height("100%").align(Alignment.Center)
+    .width('100%').height('100%').align(Alignment.Center)
   }
 }
 ```
@@ -1882,7 +1883,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { uiEffect } from '@kit.ArkGraphics2D'
+import { uiEffect } from '@kit.ArkGraphics2D';
 // values: [[1.0, 0.5], [1.0, 1.0]] => color0: 1.0; color1: 1.0; position0: 0.5; position1: 1.0
 let mask = uiEffect.Mask.createRadialGradientMask({x: 0.0, y: 0.0}, 0.5, 0.5, [[1.0, 0.5], [1.0, 1.0]]);
 @Entry
@@ -1938,7 +1939,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { uiEffect } from "@kit.ArkGraphics2D";
+import { uiEffect } from '@kit.ArkGraphics2D';
 // center: [0.5, 0.5]; width: 0.01; propagationRadius: 0.5; blurRadius: 0.1; turbulenceStrength: 0.1
 let mask = uiEffect.Mask.createWaveGradientMask({x: 0.5, y: 0.5}, 0.01, 0.5, 0.1, 0.1);
 @Entry
@@ -2010,13 +2011,13 @@ struct Index {
     let effect: uiEffect.VisualEffect = uiEffect.createEffect();
     effect.liquidMaterial({
         enable: true,
-        distortProgress : this.distortProgress,
+        distortProgress: this.distortProgress,
         rippleProgress: this.rippleProgress,
         distortFactor: this.distortFactor,
-        materialFactor : this.materialFactor,
-        refractionFactor : this.refractionFactor,
+        materialFactor: this.materialFactor,
+        refractionFactor: this.refractionFactor,
         reflectionFactor: this.reflectionFactor,
-        tintColor : [this.tintColorR, this.tintColorG, this.tintColorB, this.tintColorA],
+        tintColor: [this.tintColorR, this.tintColorG, this.tintColorB, this.tintColorA],
         ripplePosition: undefined,
       },
       uiEffect.Mask.createUseEffectMask(true), // Example of using useEffectMask.
@@ -2037,10 +2038,10 @@ struct Index {
       .backgroundEffect({
         radius: 15,
       }, { disableSystemAdaptation: true })
-      .width("100%").height("100%").align(Alignment.Center)
+      .width('100%').height('100%').align(Alignment.Center)
     }
     .backgroundImage($r('app.media.bg6'), ImageRepeat.NoRepeat)
-    .width("100%").height("100%").align(Alignment.Center)
+    .width('100%').height('100%').align(Alignment.Center)
   }
 }
 ```

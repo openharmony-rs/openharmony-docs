@@ -53,6 +53,8 @@ createRdbPredicates(name: string, dataAbilityPredicates: DataAbilityPredicates):
 
 提供用于实现不同查询方法的谓词。
 
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
 **初始化：**
 
   ```js
@@ -767,7 +769,7 @@ export default class EntryAbility extends UIAbility {
       };
       // 表结构：EMPLOYEE (ID, NAME, AGE, SALARY, CODES)
       const SQL_CREATE_TABLE =
-        'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)'; // 建表Sql语句
+        'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)'; // 建表SQL语句
       store = await relationalStore.getRdbStore(context, STORE_CONFIG);
       console.info('Succeeded in getting RdbStore.');
       await store.executeSql(SQL_CREATE_TABLE); // 创建数据表

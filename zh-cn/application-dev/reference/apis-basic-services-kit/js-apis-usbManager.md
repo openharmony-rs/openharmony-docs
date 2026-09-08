@@ -347,7 +347,7 @@ claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): numb
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 | iface | [USBInterface](#usbinterface) | 是 | 用于确定需要获取控制的接口对象，需要调用[getDevices](#usbmanagergetdevices)获取设备信息并通过id确定唯一接口。|
-| force | boolean | 否 | 可选参数，是否强制获取。默认值为false，表示不强制获取；设置为true时，将强制从内核驱动或其他程序中释放该接口的控制权并交由用户空间程序控制。如果接口已被其他程序占用，使用true可强制获取但可能导致该程序功能异常；如果接口未被占用，建议使用false以避免不必要的强制操作。用户按需选择。|
+| force | boolean | 否 | 可选参数，是否强制获取。默认值为false，表示不强制获取，如果无内核驱动占用该接口，则获取成功，否则获取失败；设置为true时，将强制释放内核驱动对该接口的控制权并交由用户空间程序控制。|
 
 **返回值：**
 

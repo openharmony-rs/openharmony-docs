@@ -1,14 +1,14 @@
 # Enums
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
 > **说明：**
 >
-> 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## MessageLevel
 
@@ -374,7 +374,7 @@ ProtectedResourceType 枚举定义了 Web 组件需要访问的受保护资源�
 | RESIZE_VISUAL      | 0 | 软键盘避让时，仅调整可视视口大小，不调整布局视口大小。   |
 | RESIZE_CONTENT     | 1 | 默认值，软键盘避让时，同时调整可视视口和布局视口的大小。 |
 | OVERLAYS_CONTENT   | 2 | 不调整任何视口大小，不会触发软键盘避让。   |
-| RETURN_TO_UICONTEXT<sup>22+</sup> | 3 | Web组件的软键盘避让行为将跟随UIcontext设置的[KeyboardAvoidMode](../apis-arkui/arkts-apis-uicontext-e.md#keyboardavoidmode11)模式，Web组件不再处理组件的避让。 |
+| RETURN_TO_UICONTEXT<sup>22+</sup> | 3 | Web组件的软键盘避让行为将跟随UIContext设置的[KeyboardAvoidMode](../apis-arkui/arkts-apis-uicontext-e.md#keyboardavoidmode11)模式，Web组件不再处理组件的避让。 |
 
 ## WebElementType<sup>13+</sup>
 

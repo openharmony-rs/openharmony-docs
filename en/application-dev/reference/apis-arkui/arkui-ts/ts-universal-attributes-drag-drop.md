@@ -5,33 +5,36 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9430c77017ca73641537d932a3d7d8a4c99c078b translatedAt=2026-09-01T12:28:49.504Z -->
 
-Components provide attributes and APIs to configure their response to drag events and influence system handling of drag operations, including drag enablement settings and drag preview customization.
+Components provide attributes and APIs to configure their response to drag events and influence system handling of drag operations, including drag enablement settings, data types, preview image styles, and interaction effects.
 
 > **NOTE**
-> 
-> The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+>
+> - The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 
 The ArkUI framework provides default drag and drop capabilities for the following components, allowing them to serve as the drag source (from which data can be dragged) or drop target (to which data can be dropped). You can also define drag responses by implementing common drag events.
 
-- The following component supports drag actions by default: [Search](ts-basic-components-search.md), [TextInput](ts-basic-components-textinput.md), [TextArea](ts-basic-components-textarea.md), [RichEditor](ts-basic-components-richeditor.md), [Text](ts-basic-components-text.md), [Image](ts-basic-components-image.md), [Hyperlink](ts-container-hyperlink.md). You can control the default drag behavior by setting the [draggable](ts-universal-attributes-drag-drop.md#draggable) attribute.
+- The following components support drag actions by default (data can be dragged out of them): [Search](ts-basic-components-search.md), [TextInput](ts-basic-components-textinput.md), [TextArea](ts-basic-components-textarea.md), [RichEditor](ts-basic-components-richeditor.md), [Text](ts-basic-components-text.md), [Image](ts-basic-components-image.md), [Hyperlink](ts-container-hyperlink.md). Developers can control the use of the default drag capability by setting the [draggable](#draggable) attribute of these components.
 
-- The following component supports drop actions by default: [Search](ts-basic-components-search.md), [TextInput](ts-basic-components-textinput.md), [TextArea](ts-basic-components-textarea.md), [RichEditor](ts-basic-components-richeditor.md). You can disable the default drag behavior by setting the [allowDrop](ts-universal-attributes-drag-drop.md#allowdrop) attribute to **null**.
+- The following components support drop actions by default (the target component can respond to dropped data): [Search](ts-basic-components-search.md), [TextInput](ts-basic-components-textinput.md), [TextArea](ts-basic-components-textarea.md), [RichEditor](ts-basic-components-richeditor.md). Developers can disable the default drop capability by setting the [allowDrop](#allowdrop) attribute of these components to null.
 
 - The following components do not support drag actions: [ArcScrollBar](./ts-basic-components-arcscrollbar.md), [MultiNavigation](./ohos-arkui-advanced-MultiNavigation.md), [ToolBarItem](./ts-basic-components-toolbaritem.md), [ArcSlider](./ohos-arkui-advanced-ArcSlider.md), [Span](./ts-basic-components-span.md), [ImageSpan](./ts-basic-components-imagespan.md), [ContainerSpan](./ts-basic-components-containerspan.md), [SymbolSpan](./ts-basic-components-symbolSpan.md), [ArcAlphabetIndexer](./ts-container-arc-alphabet-indexer.md), [OffscreenCanvas](./ts-components-offscreencanvas.md), [Menu](./ts-basic-components-menu.md), [MenuItem](./ts-basic-components-menuitem.md), [MenuItemGroup](./ts-basic-components-menuitemgroup.md), [PasteButton](./ts-security-components-pastebutton.md), [SaveButton](./ts-security-components-savebutton.md), [WithTheme](./ts-container-with-theme.md), [NavPushPathHelper](./ohos-atomicservice-NavPushPathHelper.md), [ContentSlot](./ts-components-contentSlot.md), [Chip](./ohos-arkui-advanced-Chip.md), [ExceptionPrompt](./ohos-arkui-advanced-ExceptionPrompt.md), [Filter](./ohos-arkui-advanced-Filter.md), [FormMenu](./ohos-arkui-advanced-formmenu.md), [Popup](./ohos-arkui-advanced-Popup.md), [SelectionMenu](./ohos-arkui-advanced-SelectionMenu.md), [SplitLayout](./ohos-arkui-advanced-SplitLayout.md), and all popup window components.
 
 <!--RP1--><!--RP1End-->
-To enable drag and drop for other components, you need to set the **draggable** attribute to **true** and implement data transmission in APIs such as [onDragStart](./ts-universal-events-drag-drop.md#ondragstart).
+To enable drag and drop for other components, you need to set the **draggable** attribute to **true** and implement data encapsulation and transmission in APIs such as [onDragStart](./ts-universal-events-drag-drop.md#ondragstart) to correctly handle drag operations.
 
 > **NOTE**
 >
-> When using the **Text** component, set [copyOption](ts-basic-components-text.md#copyoption9) to **CopyOptions.InApp** or **CopyOptions.LocalDevice**.
+> When using the **Text** component for dragging, set [copyOption](ts-basic-components-text.md#copyoption9) to **CopyOptions.InApp** or **CopyOptions.LocalDevice** to enable text dragging.
 
 ## allowDrop
 
 allowDrop(value: Array&lt;UniformDataType&gt; | null | Array&lt;string&gt;): T
 
-Sets the types of data that can be dropped to the component. If **allowDrop** is not set, the component accepts all data types by default.
+Sets the data types allowed to be dropped on this component. If **allowDrop** is not set, the component accepts all data types by default. If **allowDrop** is set, only dropped data that matches the specified data types is allowed to be dropped on this component; data that does not match the specified data types is rejected and does not trigger the [onDrop](./ts-universal-events-drag-drop.md#ondrop) event.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -41,13 +44,13 @@ Sets the types of data that can be dropped to the component. If **allowDrop** is
 
 | Name| Type                                                        | Mandatory| Description                                           |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------------------- |
-| value  | Array\<[UniformDataType](#uniformdatatype)> \| null<sup>12+</sup> \| Array\<string><sup>23+</sup> | Yes  | Types of data that can be dropped to the component. Since API version 12, this parameter can be set to **null** to make the component reject all data types. Starting from API version 23, this parameter can be set to an application-defined data type string array Array\<string> is supported. While there is no strict format requirement for the string, it should not duplicate the format of standard types in **UniformDataType**. You are advised to define them based on the principle of being easy to remember and distinguish.|
+| value  | Array\<[UniformDataType](#uniformdatatype)> \| null<sup>12+</sup> \| Array\<string><sup>23+</sup> | Yes   | Sets the data types allowed to be dropped on this component. Since API version 12, null can be set so that this component does not accept any data type. Since API version 23, custom data types Array\<string> can be set. A custom data type is a data type string defined by the application. The string has no explicit format requirements, but it should not duplicate the standard type format of UniformDataType to avoid confusion with standard types. It is recommended to define it based on the principle of being easy to remember and distinguish. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
+| T | Current component, which can be used for chained calls. |
 
 ## draggable
 
@@ -69,13 +72,17 @@ Sets whether the component is draggable. By default, the component is not dragga
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
+| T | Current component, which can be used for chained calls. |
 
 ## dragPreview<sup>11+</sup>
 
 dragPreview(value: CustomBuilder | DragItemInfo | string): T
 
 Sets the preview image displayed during component drag operations.
+
+> **NOTE**
+>
+> When this API is called in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier), passing a value of the [CustomBuilder](ts-types.md#custombuilder8) type to the **preview** parameter is not supported, nor is setting the **builder** field in [DragItemInfo](ts-universal-events-drag-drop.md#dragiteminfo).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -85,23 +92,23 @@ Sets the preview image displayed during component drag operations.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[DragItemInfo](ts-universal-events-drag-drop.md#dragiteminfo) \| string<sup>12+</sup> | Yes  | Preview image displayed during component drag operations. It only applies to [onDragStart](ts-universal-events-drag-drop.md#ondragstart) drag mode.<br>If the component supports drag and drop and a preview is specified through [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8), that specified preview is displayed when the component is dragged. The priority of the background image returned in [onDragStart](ts-universal-events-drag-drop.md#ondragstart) is lower than that of the preview set in [dragPreview](ts-universal-attributes-drag-drop.md#dragpreview11). This means that, once set, the latter will be used in place of the former. Using [CustomBuilder](ts-types.md#custombuilder8) requires offline rendering and may increase performance overhead and latency. In light of this, you are advised to use [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) in [DragItemInfo](ts-universal-events-drag-drop.md#dragiteminfo) instead.<br> When an ID of the string type is passed in, the snapshot of the component assigned the ID is used as the preview image. If the component assigned the ID cannot be found or its [Visibility](ts-appendix-enums.md#visibility) attribute is set to **None** or **Hidden**, a snapshot of the current component is used as the preview image. Currently, snapshots do not support visual effects, such as brightness, shadow, blur, and rotation.|
+| value  | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[DragItemInfo](ts-universal-events-drag-drop.md#dragiteminfo) \| string<sup>12+</sup> | Yes   | Sets the preview image of the component during the float and drag process. This parameter is valid only in the [onDragStart](ts-universal-events-drag-drop.md#ondragstart) drag mode.<br>When the component supports drag and the preview image of [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8) is set simultaneously, the preview image for long press float is determined by the preview image set in [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8). The backdrop image returned by the developer in [onDragStart](ts-universal-events-drag-drop.md#ondragstart) has a lower priority than the preview image set in [dragPreview](#dragpreview11). When the [dragPreview](#dragpreview11) preview image is set, the backdrop image during the drag process uses the [dragPreview](#dragpreview11) preview image. Since [CustomBuilder](ts-types.md#custombuilder8) can be used only after offline rendering, it incurs certain performance overhead and latency. It is recommended to preferentially use the [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) method in [DragItemInfo](ts-universal-events-drag-drop.md#dragiteminfo).<br> When an ID of the string type is passed in, the screenshot of the component corresponding to the ID is used as the preview image. If the component corresponding to the ID cannot be found, or if the [Visibility](ts-appendix-enums.md#visibility) attribute of the component corresponding to the ID is set to None or Hidden, a screenshot of the component itself is taken as the drag preview image. Currently, the screenshot does not contain visual effects such as brightness, shadow, blur, and rotation.|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
+| T | Current component, which can be used for chained calls. |
 
 ## dragPreview<sup>15+</sup>
 
 dragPreview(preview: CustomBuilder | DragItemInfo | string, config?: PreviewConfiguration):T
 
-Sets the drag preview for the component. This API specifically configures or disables the lift animation effect.
+Sets the preview image displayed during the component float and drag process. The **config** parameter can be used to configure whether the preview image is used only for the float effect and whether its creation is delayed.
 
 > **NOTE**
 >
-> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+> When this API is called in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier), passing a value of the [CustomBuilder](ts-types.md#custombuilder8) type to the **preview** parameter is not supported, nor is setting the **builder** field in [DragItemInfo](ts-universal-events-drag-drop.md#dragiteminfo).
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -111,22 +118,22 @@ Sets the drag preview for the component. This API specifically configures or dis
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| preview  | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[DragItemInfo](ts-universal-events-drag-drop.md#dragiteminfo) \| string | Yes  | Preview image displayed during component drag operations. It only applies to [onDragStart](ts-universal-events-drag-drop.md#ondragstart) drag mode.<br>If the component supports drag and drop and a preview is specified through [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8), that specified preview is displayed when the component is dragged. The priority of the background image returned in [onDragStart](ts-universal-events-drag-drop.md#ondragstart) is lower than that of the preview set in [dragPreview](ts-universal-attributes-drag-drop.md#dragpreview11). This means that, once set, the latter will be used in place of the former. Using [CustomBuilder](ts-types.md#custombuilder8) requires offline rendering and may increase performance overhead and latency. In light of this, you are advised to use [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) in [DragItemInfo](ts-universal-events-drag-drop.md#dragiteminfo) instead.<br> When an ID of the string type is passed in, the snapshot of the component assigned the ID is used as the preview image. If the component assigned the ID cannot be found or its [Visibility](ts-appendix-enums.md#visibility) attribute is set to **None** or **Hidden**, a snapshot of the current component is used as the preview image. Currently, snapshots do not support visual effects, such as brightness, shadow, blur, and rotation.|
-| config | [PreviewConfiguration](ts-universal-events-drag-drop.md#previewconfiguration15) | No| Additional settings for the drag preview.<br>This parameter is effective only for previews set using [dragPreview](#dragpreview11).|
+| preview  | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[DragItemInfo](ts-universal-events-drag-drop.md#dragiteminfo) \| string | Yes   | Sets the preview image during the component float and drag process. This parameter takes effect only in the [onDragStart](ts-universal-events-drag-drop.md#ondragstart) drag mode.<br>When the component supports drag and the preview image of [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8) is set at the same time, the preview image for long press float is determined by the preview image set by [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8). The backdrop image returned by the developer in [onDragStart](ts-universal-events-drag-drop.md#ondragstart) has a lower priority than the preview image set by [dragPreview](#dragpreview11). When the [dragPreview](#dragpreview11) preview image is set, the backdrop image during the drag process uses the [dragPreview](#dragpreview11) preview image. Because [CustomBuilder](ts-types.md#custombuilder8) can be used only after offline rendering, it increases the performance overhead and latency of preview image generation. It is recommended to use the [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) method in [DragItemInfo](ts-universal-events-drag-drop.md#dragiteminfo).<br> When an ID of the string type is passed in, the screenshot of the component corresponding to the ID is used as the preview image. If the component corresponding to the ID cannot be found, or the [Visibility](ts-appendix-enums.md#visibility) attribute of the component corresponding to the ID is set to None or Hidden, a screenshot of the component itself is taken as the drag preview image. Currently, the screenshot does not contain visual effects such as brightness, shadow, blur, and rotation.|
+| config | [PreviewConfiguration](ts-universal-events-drag-drop.md#previewconfiguration15) | No | Configures the preview image during the custom drag process. This parameter takes effect only for the preview in [dragPreview](#dragpreview15). Pass this parameter when you need to configure custom preview behaviors such as whether the preview image is used only for the float effect and whether to delay creation. If this parameter is not passed, the system default drag preview behavior is used, that is, the preview image is not restricted to the float effect only and is not created with a delay.|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
+| T | Current component, which can be used for chained calls. |
 
 ## dragPreviewOptions<sup>11+</sup>
 
 dragPreviewOptions(value: DragPreviewOptions, options?: DragInteractionOptions): T
 
-Sets the preview image processing mode, badge count, and interaction behavior during drag operations. The **onItemDragStart** drag mode is not supported.
+Sets the preview image processing mode, the display of the number badge, and the interaction mode of preview image floating during the drag process. Dragging a GridItem through the Grid [onItemDragStart](ts-container-grid.md#onitemdragstart8) and dragging a ListItem through the List [onItemDragStart](ts-container-list.md#onitemdragstart8) are not supported.
 
->**NOTE**
+> **NOTE**
 >
 > This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
@@ -138,27 +145,28 @@ Sets the preview image processing mode, badge count, and interaction behavior du
 
 | Name| Type                                                           | Mandatory| Description                                                        |
 | ------ | -------------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [DragPreviewOptions](#dragpreviewoptions11-1)<sup>11+</sup>      | Yes  | Preview image processing mode and badge count during dragging.|
-| options<sup>12+</sup>| [DragInteractionOptions](#draginteractionoptions12)<sup>12+</sup>| No  | Interaction behavior for the floating preview image.<br>Default value: empty|
+| value  | [DragPreviewOptions](#dragpreviewoptions11-1)<sup>11+</sup>      | Yes   | Sets the preview image handling mode, number badge display, backdrop image style, and the transition effect between float and drag preview images during the drag process.|
+| options<sup>12+</sup>| [DragInteractionOptions](#draginteractionoptions12)<sup>12+</sup>| No   | Sets the interaction mode for the preview image float during the drag process. Pass this parameter when interaction capabilities such as multi-selection aggregation, default tap effect, disabling float, edge auto-scrolling, or vibration feedback need to be enabled. If this parameter is not passed, the drag interaction is handled according to the default values of the fields in [DragInteractionOptions](#draginteractionoptions12).|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
+| T | Current component, which can be used for chained calls. |
 
 ## DragPreviewOptions<sup>11+</sup>
 
-Preview image processing mode and badge count during dragging.
+Sets the preview image processing mode, the display of the number badge, the backdrop image style, and the transition effect during the drag process.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Read-Only| Optional| Description|
+<!--Table: 20%; 27%; 8%; 8%; 37%-->
+| Name | Type | Read-Only | Optional | Description |
 | -------- | -------- | -------- | -------- | --- |
-| mode | [DragPreviewMode](#dragpreviewmode11) &nbsp;\|&nbsp; Array<[DragPreviewMode](#dragpreviewmode11)><sup>12+</sup>| No| Yes| How the background image is processed when the component is dragged.<br>Default value: **DragPreviewMode.AUTO**<br>If **DragPreviewMode.AUTO** is set concurrently with other enumerated values, **DragPreviewMode.AUTO** takes precedence and the other values are ignored.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| numberBadge<sup>12+</sup> | boolean &nbsp;\|&nbsp; number | No| Yes| Whether to display the number badge or the number displayed on the badge. For a number badge, the value range is [0, 2<sup>31</sup>-1]. Values outside this range will be processed as the default state. If the value specified is a floating-point number, only the integer part is displayed.<br>**NOTE**<br>When multiple items are dragged, use this API to set the number of items dragged.<br>Default value: **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| modifier<sup>12+</sup> | [ImageModifier](#imagemodifier12)| No| Yes| Drag preview style modifier. It applies image component attributes and styles to configure preview appearance (see Example 6). Supported effects: opacity, shadow, background blur, and rounded corners. Text drag previews only support default styling.<br>1. Opacity<br>Use [opacity](ts-universal-attributes-opacity.md#opacity). The value ranges from 0 to 1. If this parameter is set to **0** or left empty, the default opacity 0.95 is used. If this parameter is set to **1** or an abnormal value, the opacity is 1.<br>2. Shadow<br>Use [shadow](ts-universal-attributes-image-effect.md#shadow).<br>3. Background blur<br>Use [backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11) or [backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle9). If both are set, the latter setting takes precedence.<br>4. Rounded corners<br>Use [border](ts-universal-attributes-border.md#border) or [borderRadius](ts-universal-attributes-border.md#borderradius). Modifier settings override mode settings.<br>Default value: empty (unmodifiable).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| sizeChangeEffect<sup>19+</sup> | [DraggingSizeChangeEffect](#draggingsizechangeeffect19)<sup>19+</sup> | No| Yes| Transition effect between the floating image and drag preview.<br>Default value: **DraggingSizeChangeEffect.DEFAULT**.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| mode | [DragPreviewMode](#dragpreviewmode11) \| Array<[DragPreviewMode](#dragpreviewmode11)><sup>12+</sup> | No | Yes | Indicates the preview image processing mode during dragging.<br>Default value: DragPreviewMode.AUTO<br>When a component has both DragPreviewMode.AUTO and other enumeration values set at the same time, DragPreviewMode.AUTO takes effect, and the settings of the other enumeration values do not take effect.<br>**Atomic service API:** Since API version 12, this API is supported in atomic services. |
+| numberBadge<sup>12+</sup> | boolean \| number | No | Yes | Controls whether the count badge is displayed, or forcibly sets the displayed count. When set to true, the badge is displayed and the actual number of dragged objects is used. When set to false, the badge is not displayed. When set to a number value, the badge forcibly displays the specified count. When setting the count badge, the value range is [0, 2<sup>31</sup>-1]; values outside this range are processed as the default value true. When set to a floating-point number, only the integer part is displayed.<br>**Note:** <br>In multi-select drag scenarios, use this API to set the number of dragged objects.<br>Default value: true.<br>**Atomic service API:** Since API version 12, this API is supported in atomic services. |
+| modifier<sup>12+</sup> | [ImageModifier](#imagemodifier12) | No | Yes | Used to configure the style Modifier object of the drag backdrop image. You can use the attributes and styles supported by the image component to configure the backdrop image style (see Example 6). Currently, opacity, shadow, background blur, rounded corners, and material effects are supported. Text drag supports only the default effect and does not support customization through modifier.<br>1. Opacity.<br>Set the opacity through [opacity](ts-universal-attributes-opacity.md#opacity). The value range of opacity is [0, 1]. When set to 0 or not set, the default backdrop image opacity 0.95 is used. When set to 1 or a value outside the range, the image is opaque.<br>2. Shadow.<br>Set the shadow through [shadow](ts-universal-attributes-image-effect.md#shadow).<br>3. Background blur.<br>Set the background blur through [backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11) or [backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle9). If both are set, the attribute set later takes effect.<br>4. Rounded corners.<br>Set the rounded corners through [border](ts-universal-attributes-border.md#border) or [borderRadius](ts-universal-attributes-border.md#borderradius). When rounded corners are set in both mode and modifier, the rounded corners set in mode have a lower display priority than those set in modifier.<br>5. Material effect, supported since API version 26.0.0.<br>Set the system material effect through [systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial).<br>Default value: empty, meaning no style is set for the drag backdrop image.<br>**Atomic service API:** Since API version 12, this API is supported in atomic services.<br>**Note:** <br>1. If a node has background blur or material effect set, using it directly as the drag preview causes the screenshot to include these effects, conflicting with the drag modifier attribute. It is recommended to use [dragPreview](#dragpreview11) to customize a preview that does not include background blur and material effects.<br>2. The [colorInvert](../arkts-apis-uimaterial.md#immersiveoptions) parameter of [ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial) does not take effect during dragging. |
+| sizeChangeEffect<sup>19+</sup> | [DraggingSizeChangeEffect](#draggingsizechangeeffect19)<sup>19+</sup> | No | Yes | Used to select the transition effect between the long-press floating image and the drag preview image.<br>Default value: DraggingSizeChangeEffect.DEFAULT.<br>**Atomic service API:** Since API version 19, this API is supported in atomic services. |
 
 ## DragPreviewMode<sup>11+</sup>
 
@@ -168,13 +176,13 @@ Sets the display mode of the drag preview.
 
 | Name| Value| Description|
 | -------- | ------- | -------- |
-| AUTO  | 1 | Enables the system to automatically change the position of the dragged point based on the scenario and apply scaling transformations to the drag preview based on set rules.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| DISABLE_SCALE  | 2 | Disables the system's scaling behavior for the drag preview.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| ENABLE_DEFAULT_SHADOW<sup>12+</sup> | 3 | Enables the default shadow effect for non-text components.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| ENABLE_DEFAULT_RADIUS<sup>12+</sup> | 4 | Enables a unified rounded corner effect for non-text components, with the default value of 12 vp. If the custom rounded corner value set by the application is greater than the default value or the value set by **modifier**, the custom value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| ENABLE_DRAG_ITEM_GRAY_EFFECT<sup>18+</sup> | 5 | Enables the grayscale effect for the original drag item, which does not apply to text content dragging. When the user starts dragging, the original item displays a grayscale effect. When released, the original item returns to its original appearance. After enabling the default grayscale effect, avoid manually modifying the opacity after dragging starts. Otherwise, the grayscale effect will be overridden, and the original opacity will not be correctly restored when dragging ends.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| ENABLE_MULTI_TILE_EFFECT<sup>18+</sup> | 6 | Enables multi-tile display for mouse-dragged multi-selected objects, with each drag preview maintaining its original relative position. Requires multi-select mode with **isMultiSelectionEnabled** set to **true**. Takes precedence over [dragPreview](#dragpreview11). Does not support secondary dragging, rounded corners, or scaling effects.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW<sup>19+</sup> | 7 | Enables touch point calculation based on the initial drag preview size. Used when the floating image differs from the drag preview. Incompatible with mouse dragging and **DragPreviewMode.ENABLE_MULTI_TILE_EFFECT**.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| AUTO  | 1 | The system automatically changes the follow-finger point position based on the drag scenario and automatically scales the drag backdrop image.<br>**Atomic service API:** Since API version 12, this API is supported in atomic services. |
+| DISABLE_SCALE  | 2 | Disables the system scaling behavior on the drag backdrop image. Applicable to scenarios where the original size of the drag preview image needs to be maintained and automatic system scaling is not desired, such as precise-size dragging or custom preview image size control.<br>**Atomic service API:** Since API version 12, this API is supported in atomic services. |
+| ENABLE_DEFAULT_SHADOW<sup>12+</sup> | 3 | Enables the default shadow effect for non-text components. Applicable to scenarios where visual hierarchy needs to be added to the drag preview image and the recognizability of the dragged object needs to be improved.<br>**Atomic service API:** Since API version 12, this API is supported in atomic services. |
+| ENABLE_DEFAULT_RADIUS<sup>12+</sup> | 4 | Enables the unified corner radius effect for non-text components. Applicable to scenarios where a consistent rounded-corner appearance needs to be provided for the drag preview image. The default value is 12vp. When the corner radius set by the application itself is greater than the default value or the corner radius set by the modifier, the application's custom corner radius effect is displayed.<br>**Atomic service API:** Since API version 12, this API is supported in atomic services. |
+| ENABLE_DRAG_ITEM_GRAY_EFFECT<sup>18+</sup> | 5 | Enables the gray-out (opacity) effect for the original dragged object. This effect does not take effect for text content dragging. When the user lifts the object, the original object displays the gray-out effect; when released, the original object restores its original effect. After the default gray-out effect is enabled, it is not recommended to modify the opacity after dragging starts. If the developer modifies the application opacity after dragging is initiated, the gray-out effect will be overwritten, and the original opacity effect cannot be correctly restored when dragging ends.<br>**Atomic service API:** Since API version 18, this API is supported in atomic services. |
+| ENABLE_MULTI_TILE_EFFECT<sup>18+</sup> | 6 | Enables the effect of not clustering multiple selected objects during mouse dragging. This effect does not take effect for text content dragging. Each drag image is displayed at a position relative to its original position. This parameter takes effect only when multiple [GridItem](./ts-container-griditem.md) or [ListItem](./ts-container-listitem.md) are selected and isMultiSelectionEnabled is true. The non-clustering effect has a higher priority than [dragPreview](#draggingsizechangeeffect19). Secondary dragging, corner radius, and scaling settings are not supported.<br>**Atomic service API:** Since API version 18, this API is supported in atomic services. |
+| ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW<sup>19+</sup> | 7 | Enables calculation of the follow-finger point position based on the original size of the final drag preview image before scaling. Used when the long press float image and the drag preview image are inconsistent. This does not take effect for mouse dragging when DragPreviewMode.ENABLE_MULTI_TILE_EFFECT is set.<br>**Atomic service API:** Since API version 19, this API is supported in atomic services. |
 
 ## DraggingSizeChangeEffect<sup>19+</sup>
 
@@ -195,17 +203,18 @@ Enumerates the transition effects for switching between the floating image (set 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 25%; 15%; 8%; 8%; 44%-->
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | ---- |
-| isMultiSelectionEnabled | boolean | No| Yes| Whether to enable multi-select clustering during drag operations. **true** to enable, **false** otherwise. This parameter takes effect only for the [grid items](ts-container-griditem.md) and [list items](ts-container-listitem.md) in the [Grid](ts-container-grid.md) and [List](ts-container-list.md) containers.<br>When this feature is enabled, child components cannot be dragged individually. Preview priority: string in [dragPreview](#dragpreview11) > PixelMap in **dragPreview** > component snapshot. Builder previews not supported.<br>This parameter is incompatible with bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu12) using **isShown** parameter.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| defaultAnimationBeforeLifting | boolean | No| Yes| Whether to enable the default press animation (scale-down) during long-press lift phase. **true** to enable, **false** otherwise.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| isLiftingDisabled<sup>15+</sup> | boolean | No| Yes| Whether to disable the lift animation effect during dragging. <br>**true**: Disable the lifting effect during dragging.<br>**false**: Enable the lifting effect during dragging.<br>With the value **true**, only the custom menu preview (set using [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8)), also known as the long-press preview, is displayed if both the long-press preview and drag preview are configured.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
-| enableEdgeAutoScroll<sup>18+</sup> | boolean | No| Yes| Whether to trigger automatic scrolling when users drag to the edges of a scrollable container. <br>**true**: Trigger automatic scrolling.<br>**false**: Do not trigger automatic scrolling.<br>Default value: **true**<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| enableHapticFeedback<sup>18+</sup> | boolean | No| Yes| Whether to enable haptic feedback during dragging. <br>**true**: Enable haptic feedback during dragging.<br>**false**: Disable haptic feedback during dragging. This parameter is effective only for previews with masks (configured using [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu12)).<br>Note: The settings take effect only when the application has the **ohos.permission.VIBRATE** permission and the user has enabled haptic feedback.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| isMultiSelectionEnabled | boolean | No | Yes | Indicates whether the backdrop image supports the multi-select aggregation effect during the drag process. The value **true** means the multi-select aggregation effect is supported, and **false** means the opposite. This parameter takes effect only for the [GridItem](ts-container-griditem.md) component in the [Grid](ts-container-grid.md) component and the [ListItem](ts-container-listitem.md) component in the [List](ts-container-list.md) component.<br>When an item component is set to multi-select drag, its child components cannot be dragged. The priority of the preview image set for the aggregated components is the string in [dragPreview](#dragpreviewmode11), the PixelMap in dragPreview, and the component self-screenshot, in descending order. The Builder form in dragPreview is not supported.<br>The mode in which the **isShown** parameter exists in [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu12) bound to the component is not supported.<br>Default value: **false**<br>**Atomic Service API:** This API is supported in atomic services since API version 12. |
+| defaultAnimationBeforeLifting | boolean | No | Yes | Indicates whether to enable the default tap effect (shrinking) of the component itself during the long press float phase. The value **true** means the default tap effect is enabled, and **false** means the opposite.<br>Default value: **false**<br>**Atomic Service API:** This API is supported in atomic services since API version 12. |
+| isLiftingDisabled<sup>15+</sup> | boolean | No | Yes | Indicates whether to disable the float effect during long press drag. The value **true** means the float effect is disabled, and **false** means the opposite.<br>If this parameter is set to **true**, when the component supports drag and [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8) is set at the same time, only the configured custom menu preview is displayed.<br>Default value: **false**<br>**Atomic Service API:** This API is supported in atomic services since API version 15. |
+| enableEdgeAutoScroll<sup>18+</sup> | boolean | No | Yes | Sets whether to trigger automatic scrolling when dragging to the edge of a scrollable component. The value **true** means automatic scrolling is triggered, and **false** means the opposite.<br>Default value: **true**<br>**Atomic Service API:** This API is supported in atomic services since API version 18. |
+| enableHapticFeedback<sup>18+</sup> | boolean | No | Yes | Indicates whether to enable vibration during drag. The value **true** means vibration is enabled, and **false** means the opposite. This takes effect only in the preview scenario with a mask (through [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu12)).<br>**Note:** This takes effect only when the application has the **ohos.permission.VIBRATE** permission and the user has enabled haptic feedback.<br>Default value: **false**<br>**Atomic Service API:** This API is supported in atomic services since API version 18. |
 
 ## UniformDataType
 
-type UniformDataType = UniformDataType
+type UniformDataType = import('../api/@ohos.data.uniformTypeDescriptor').default.UniformDataType
 
 Defines the uniform data type.
 
@@ -215,11 +224,11 @@ Defines the uniform data type.
 
 | Type| Description|
 | ----- | ----------------- |
-| [UniformDataType](../../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype) | Uniform data type.|
+| import('../api/@ohos.data.uniformTypeDescriptor').default.[UniformDataType](../../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype) | Standardized data type. |
 
 ## ImageModifier<sup>12+</sup>
 
-type ImageModifier = ImageModifier
+type ImageModifier = import('../api/arkui/ImageModifier').ImageModifier
 
 Defines the image component modifier.
 
@@ -229,7 +238,7 @@ Defines the image component modifier.
 
 | Type| Description|
 | ----- | ----------------- |
-| [ImageModifier](ts-universal-attributes-attribute-modifier.md) | Image component modifier.|
+| import('../api/arkui/ImageModifier').[ImageModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier) | Modifier object of the image component. |
 
 ## Example
 ### Example 1: Allowing Drag and Drop
@@ -243,11 +252,10 @@ import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 @Entry
 @Component
 struct ImageExample {
-  @State uri: string = "";
-  @State aBlockArr: string[] = [];
-  @State bBlockArr: string[] = [];
-  @State AVisible: Visibility = Visibility.Visible;
-  @State dragSuccess: Boolean = false;
+  @State uri: string = '';
+  @State disallowedBlockArr: string[] = [];
+  @State allowedBlockArr: string[] = [];
+  @State disallowedAreaVisible: Visibility = Visibility.Visible;
 
   build() {
     Column() {
@@ -259,16 +267,16 @@ struct ImageExample {
           .width(100)
           .height(100)
           .border({ width: 1 })
-          .visibility(this.AVisible)
+          .visibility(this.disallowedAreaVisible)
           .draggable(true)
           .onDragEnd((event: DragEvent) => {
             let ret = event.getResult();
             if (ret == 0) {
-              console.info("enter ret == 0")
-              this.AVisible = Visibility.Hidden;
+              console.info('enter ret == 0');
+              this.disallowedAreaVisible = Visibility.Hidden;
             } else {
-              console.info("enter ret != 0")
-              this.AVisible = Visibility.Visible;
+              console.info('enter ret != 0');
+              this.disallowedAreaVisible = Visibility.Visible;
             }
           })
       }
@@ -280,7 +288,7 @@ struct ImageExample {
             .fontSize('15dp')
             .height('10%')
           List() {
-            ForEach(this.aBlockArr, (item: string, index) => {
+            ForEach(this.disallowedBlockArr, (item: string, index) => {
               ListItem() {
                 Image(item)
                   .width(100)
@@ -295,13 +303,13 @@ struct ImageExample {
           .allowDrop([uniformTypeDescriptor.UniformDataType.TEXT])
           .onDrop((event?: DragEvent, extraParams?: string) => {
             this.uri = JSON.parse(extraParams as string)?.extraInfo;
-            this.aBlockArr.splice(JSON.parse(extraParams as string)?.insertIndex, 0, this.uri);
-            console.info("ondrop not udmf data");
+            this.disallowedBlockArr.splice(JSON.parse(extraParams as string)?.insertIndex, 0, this.uri);
+            console.info('ondrop not udmf data');
           })
           .border({ width: 1 })
         }
-        .height("50%")
-        .width("45%")
+        .height('50%')
+        .width('45%')
         .border({ width: 1 })
         .margin({ left: 12 })
 
@@ -310,7 +318,7 @@ struct ImageExample {
             .fontSize('15dp')
             .height('10%')
           List() {
-            ForEach(this.bBlockArr, (item: string, index) => {
+            ForEach(this.allowedBlockArr, (item: string, index) => {
               ListItem() {
                 Image(item)
                   .width(100)
@@ -325,26 +333,25 @@ struct ImageExample {
           .width('100%')
           .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
           .onDrop((event?: DragEvent, extraParams?: string) => {
-            console.info("enter onDrop")
+            console.info('enter onDrop');
             let dragData: UnifiedData = (event as DragEvent).getData() as UnifiedData;
             if (dragData != undefined) {
               let arr: Array<unifiedDataChannel.UnifiedRecord> = dragData.getRecords();
               if (arr.length > 0) {
                 let image = arr[0] as unifiedDataChannel.Image;
                 this.uri = image.imageUri;
-                this.bBlockArr.splice(JSON.parse(extraParams as string)?.insertIndex, 0, this.uri);
+                this.allowedBlockArr.splice(JSON.parse(extraParams as string)?.insertIndex, 0, this.uri);
               } else {
-                console.info(`dragData arr is null`)
+                console.info(`dragData arr is null`);
               }
             } else {
-              console.info(`dragData  is undefined`)
+              console.info(`dragData  is undefined`);
             }
-            console.info("ondrop udmf data");
-            this.dragSuccess = true
+            console.info('ondrop udmf data');
           })
         }
-        .height("50%")
-        .width("45%")
+        .height('50%')
+        .width('45%')
         .border({ width: 1 })
         .margin({ left: 12 })
       }
@@ -367,7 +374,7 @@ struct DragPreviewDemo {
   @Builder
   dragPreviewBuilder() {
     Column() {
-      Text("dragPreview")
+      Text('dragPreview')
         .width(150)
         .height(50)
         .fontSize(20)
@@ -379,9 +386,9 @@ struct DragPreviewDemo {
   }
 
   @Builder
-  MenuBuilder() {
+  menuBuilder() {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-      Text("menu item 1")
+      Text('menu item 1')
         .fontSize(15)
         .width(100)
         .height(40)
@@ -390,7 +397,7 @@ struct DragPreviewDemo {
         .backgroundColor(Color.Pink)
       Divider()
         .height(5)
-      Text("menu item 2")
+      Text('menu item 2')
         .fontSize(15)
         .width(100)
         .height(40)
@@ -406,17 +413,17 @@ struct DragPreviewDemo {
       Column() {
         // Replace $r('app.media.image') with the image resource file you use.
         Image($r('app.media.image'))
-          .width("30%")
+          .width('30%')
           .draggable(true)
-          .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
+          .bindContextMenu(this.menuBuilder, ResponseType.LongPress)
           .onDragStart(() => {
-            console.info("Image onDragStart")
+            console.info('Image onDragStart');
           })
           .dragPreview(this.dragPreviewBuilder)
       }
-      .width("100%")
+      .width('100%')
     }
-    .height("100%")
+    .height('100%')
   }
 }
 ```
@@ -431,20 +438,20 @@ This example demonstrates how to configure the drag preview style using [dragPre
 // xxx.ets
 @Entry
 @Component
-struct dragPreviewOptionsDemo {
+struct DragPreviewOptionsDemo {
   build() {
     Row() {
       Column() {
         // Replace $r('app.media.image') with the image resource file you use.
         Image($r('app.media.image'))
           .margin({ top: 10 })
-          .width("30%")
+          .width('30%')
           .draggable(true)
           .dragPreviewOptions({ mode: DragPreviewMode.AUTO })
         // Replace $r('app.media.image') with the image resource file you use.
         Image($r('app.media.image'))
           .margin({ top: 10 })
-          .width("30%")
+          .width('30%')
           .border({
             radius: {
               topLeft: 1,
@@ -455,15 +462,15 @@ struct dragPreviewOptionsDemo {
           })
           .draggable(true)
           .onDragStart(() => {
-            console.info("Image onDragStart")
+            console.info('Image onDragStart');
           })
           .dragPreviewOptions({
             mode: [DragPreviewMode.ENABLE_DEFAULT_SHADOW, DragPreviewMode.ENABLE_DEFAULT_RADIUS,
               DragPreviewMode.ENABLE_DRAG_ITEM_GRAY_EFFECT]
           })
       }
-      .width("100%")
-      .height("100%")
+      .width('100%')
+      .height('100%')
     }
   }
 }
@@ -500,7 +507,7 @@ struct Example {
           .onDragStart(() => {
 
           })
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .columnsTemplate('1fr 1fr 1fr')
       .rowsTemplate('1fr 1fr 1fr')
@@ -541,7 +548,7 @@ struct Example {
           .onDragStart(() => {
 
           })
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .columnsTemplate('1fr 1fr 1fr')
       .rowsTemplate('1fr 1fr 1fr')
@@ -564,40 +571,35 @@ import { ImageModifier } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct dragPreviewOptionsDemo {
+struct DragPreviewOptionsDemo {
   @State myModifier: ImageAttribute = new ImageModifier().opacity(0.5)
-  @State vis: boolean = true
-  @State changeValue: string = ''
-  @State submitValue: string = ''
-  @State positionInfo: CaretOffset = { index: 0, x: 0, y: 0 }
-  controller: SearchController = new SearchController()
-  @State OpacityIndex: number = 0
-  @State OpacityList: (number | undefined | null)[] = [
+  @State opacityIndex: number = 0
+  @State opacityList: (number | undefined | null)[] = [
     0.3, 0.5, 0.7, 1, -50, 0, 10, undefined, null
   ]
 
   build() {
     Row() {
       Column() {
-        Text(this.OpacityList[this.OpacityIndex] + "")
-        Button("Opacity")
+        Text(this.opacityList[this.opacityIndex] + '')
+        Button('Opacity')
           .onClick(() => {
-            this.OpacityIndex++
-            if (this.OpacityIndex > this.OpacityList.length - 1) {
-              this.OpacityIndex = 0
+            this.opacityIndex++;
+            if (this.opacityIndex > this.opacityList.length - 1) {
+              this.opacityIndex = 0;
             }
           })
         // Replace $r('app.media.image') with the image resource file you use.
         Image($r('app.media.image'))
           .margin({ top: 10 })
-          .width("100%")
+          .width('100%')
           .draggable(true)
           .dragPreviewOptions({
-            modifier: this.myModifier.opacity(this.OpacityList[this.OpacityIndex]) as ImageModifier
+            modifier: this.myModifier.opacity(this.opacityList[this.opacityIndex]) as ImageModifier
           })
       }
-      .width("50%")
-      .height("50%")
+      .width('50%')
+      .height('50%')
     }
   }
 }
@@ -630,19 +632,19 @@ struct ImageDrag {
   filesDir = this.context?.filesDir;
 
   public async createPixelMap(pixelMap: unifiedDataChannel.SystemDefinedPixelMap): Promise<image.PixelMap | null> {
-    let mWidth: number = (pixelMap.details?.width ?? -1) as number;
-    let mHeight: number = (pixelMap.details?.height ?? -1) as number;
-    let mPixelFormat: image.PixelMapFormat =
+    let pixelMapWidth: number = (pixelMap.details?.width ?? -1) as number;
+    let pixelMapHeight: number = (pixelMap.details?.height ?? -1) as number;
+    let pixelMapPixelFormat: image.PixelMapFormat =
       (pixelMap.details?.['pixel-format'] ?? image.PixelMapFormat.UNKNOWN) as image.PixelMapFormat;
-    let mItemPixelMapData: Uint8Array = pixelMap.rawData;
+    let itemPixelMapData: Uint8Array = pixelMap.rawData;
     const opts: image.InitializationOptions = {
-      editable: false, pixelFormat: mPixelFormat, size: {
-        height: mHeight,
-        width: mWidth
+      editable: false, pixelFormat: pixelMapPixelFormat, size: {
+        height: pixelMapHeight,
+        width: pixelMapWidth
       }
     };
-    const buffer: ArrayBuffer = mItemPixelMapData.buffer.slice(mItemPixelMapData.byteOffset,
-      mItemPixelMapData.byteLength + mItemPixelMapData.byteOffset);
+    const buffer: ArrayBuffer = itemPixelMapData.buffer.slice(itemPixelMapData.byteOffset,
+      itemPixelMapData.byteLength + itemPixelMapData.byteOffset);
     try {
       let pixelMap: image.PixelMap = await image.createPixelMap(buffer, opts);
       return pixelMap;
@@ -658,7 +660,7 @@ struct ImageDrag {
         // Drag an online image.
         Column() {
           Text('Online Image').fontSize(14)
-          Image('https://www.example.com/xxx.png')// Enter a specific online image URL.
+          Image('https://www.example.com/xxx.png') // Fill in a specific network image address.
             .objectFit(ImageFit.Contain)
             .draggable(true)
             .onDragStart(() => {
@@ -743,7 +745,7 @@ struct ImageDrag {
                   let buf = buffer.from(arrayBuffer, 0, readLen);
                   console.info(`The content of file: ${buf.toString()}`);
                   fileIo.closeSync(file);
-                })
+                });
               } catch (error) {
               }
             }
@@ -806,14 +808,16 @@ struct ImageDrag {
 
               // Save data to local storage.
               const imagePackerApi = image.createImagePacker();
-              let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 };
+              let packOpts: image.PackingOption = { format: 'image/jpeg', quality: 98 };
               const path: string = this.context?.cacheDir + "/pixel_map.jpg";
               let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
               imagePackerApi.packToFile(this.targetImage3, file.fd, packOpts).then(() => {
                 // Pack the image into the file.
+                fileIo.closeSync(file);
               }).catch((error: BusinessError) => {
+                fileIo.closeSync(file);
                 console.error('Failed to pack the image. And the error is: ' + error);
-              })
+              });
             }
           })
       }
@@ -836,16 +840,18 @@ struct ImageDrag {
 ![imageDrag.gif](figures/imageDrag.gif)
 
 ### Example 8: Enabling Haptic Feedback for Dragging
+
 This example demonstrates enabling haptic feedback during image drag operations by configuring [enableHapticFeedback](#draginteractionoptions12), supported since API version 18.
+
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct DragPreviewDemo {
   @Builder
-  MenuBuilder() {
+  menuBuilder() {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-      Text("menu item 1")
+      Text('menu item 1')
         .fontSize(15)
         .width(100)
         .height(40)
@@ -854,7 +860,7 @@ struct DragPreviewDemo {
         .backgroundColor(Color.Pink)
       Divider()
         .height(5)
-      Text("menu item 2")
+      Text('menu item 2')
         .fontSize(15)
         .width(100)
         .height(40)
@@ -870,18 +876,18 @@ struct DragPreviewDemo {
       Column() {
         // Replace $r('app.media.app_icon') with the image resource file you use.
         Image($r('app.media.app_icon'))
-          .width("30%")
+          .width('30%')
           .draggable(true)
           .dragPreviewOptions({},
             { isMultiSelectionEnabled: true, defaultAnimationBeforeLifting: true, enableHapticFeedback: true })
-          .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
+          .bindContextMenu(this.menuBuilder, ResponseType.LongPress)
           .onDragStart(() => {
-            console.info("Image onDragStart")
+            console.info('Image onDragStart');
           })
       }
-      .width("100%")
+      .width('100%')
     }
-    .height("100%")
+    .height('100%')
   }
 }
 ```
@@ -896,7 +902,7 @@ struct LiftingExampleDemo {
   @Builder
   dragPreviewBuilder() {
     Column() {
-      Text("dragPreview builder")
+      Text('dragPreview builder')
         .width(150)
         .height(50)
         .fontSize(20)
@@ -908,9 +914,9 @@ struct LiftingExampleDemo {
   }
 
   @Builder
-  MenuBuilder() {
+  menuBuilder() {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-      Text("menu 1")
+      Text('menu 1')
         .fontSize(25)
         .width(200)
         .height(60)
@@ -919,7 +925,7 @@ struct LiftingExampleDemo {
         .backgroundColor(Color.Green)
       Divider()
         .height(5)
-      Text("menu 2")
+      Text('menu 2')
         .fontSize(25)
         .width(200)
         .height(60)
@@ -933,17 +939,17 @@ struct LiftingExampleDemo {
   build() {
     Column() {
       Column() {
-        Text("Lifting effect disabled")
+        Text('Lifting effect disabled')
           .fontSize(30)
           .height(30)
           .backgroundColor('#FFFFFF')
           .margin({ top: 30 })
         // Replace $r('app.media.startIcon') with the image resource file you use.
         Image($r('app.media.startIcon'))
-          .width("40%")
+          .width('40%')
           .draggable(true)
           .margin({ top: 15 })
-          .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
+          .bindContextMenu(this.menuBuilder, ResponseType.LongPress)
           .onDragStart(() => {
           })
           .dragPreviewOptions({}, {
@@ -953,17 +959,17 @@ struct LiftingExampleDemo {
             onlyForLifting: true,
             delayCreating: true
           })
-      }.width("%")
+      }.width('100%')
 
       Column() {
-        Text("Lifting effect only")
+        Text('Lifting effect only')
           .fontSize(30)
           .height(30)
           .backgroundColor('#FFFFFF')
           .margin({ top: 80 })
         // Replace $r('app.media.startIcon') with the image resource file you use.
         Image($r('app.media.startIcon'))
-          .width("40%")
+          .width('40%')
           .draggable(true)
           .margin({ top: 15 })
           .onDragStart(() => {
@@ -975,8 +981,8 @@ struct LiftingExampleDemo {
             onlyForLifting: true,
             delayCreating: true
           })
-      }.width("100%")
-    }.height("100%")
+      }.width('100%')
+    }.height('100%')
   }
 }
 ```
@@ -990,16 +996,18 @@ Custom preview with the lifting effect disabled
 ![isLiftingDisabled.gif](figures/isLiftingDisabled.gif)
 
 ### Example 10: Implementing Touch Point Calculation Based on Initial Drag Preview Size
-This example configures [DragPreviewMode](#dragpreviewmode11) as **ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW** to calculate touch point positions using the initial drag preview size, supported since API version 19. This setting has no effect when [DragPreviewMode](#dragpreviewmode11) is set to **ENABLE_MULTI_TILE_EFFECT**.
+
+Since API version 19, Example 10 implements the calculation of the follow-finger point position during the drag process based on the original size of the final drag preview image by configuring [DragPreviewMode](#draginteractionoptions12) to ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW. When [DragPreviewMode](#dragpreviewmode11) is set to ENABLE_MULTI_TILE_EFFECT, this attribute does not take effect.
+
 ```ts
 @Entry
 @Component
 struct Index {
   // Replace $r('app.media.app_icon') with the image resource file you use.
-  private iconStr: ResourceStr = $r("app.media.app_icon")
+  private iconStr: ResourceStr = $r('app.media.app_icon')
 
   @Builder
-  MyPreview() {
+  myPreview() {
     // Replace $r('app.media.image') with the image resource file you use.
     Image($r('app.media.image'))
       .width(100)
@@ -1007,7 +1015,7 @@ struct Index {
   }
 
   @Builder
-  MyMenuPreview() {
+  myMenuPreview() {
     Column() {
       // Replace $r('app.media.image') with the image resource file you use.
       Image($r('app.media.image'))
@@ -1020,18 +1028,10 @@ struct Index {
   }
 
   @Builder
-  MyMenu() {
+  myMenu() {
     Menu() {
-      MenuItem({ startIcon: this.iconStr, content: "Menu option" })
-      MenuItem({ startIcon: this.iconStr, content: "Menu option" })
-    }
-  }
-
-  @Builder
-  SubMenu() {
-    Menu() {
-      MenuItem({ content: "Copy", labelInfo: "Ctrl+C" })
-      MenuItem({ content: "Paste", labelInfo: "Ctrl+V" })
+      MenuItem({ startIcon: this.iconStr, content: 'Menu option' })
+      MenuItem({ startIcon: this.iconStr, content: 'Menu option' })
     }
   }
 
@@ -1039,26 +1039,26 @@ struct Index {
     NavDestination() {
       Scroll() {
         Column() {
-          Text("no ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW")
+          Text('no ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW')
           // Replace $r('app.media.image') with the image resource file you use.
           Image($r('app.media.image'))
             .width(200)
             .height(200)
-            .bindContextMenu(this.MyMenu, ResponseType.LongPress, {
-              preview: this.MyPreview
+            .bindContextMenu(this.myMenu, ResponseType.LongPress, {
+              preview: this.myPreview
             })
-            .dragPreview(this.MyMenuPreview)
+            .dragPreview(this.myMenuPreview)
             .draggable(true)
 
-          Text("ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW")
+          Text('ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW')
           // Replace $r('app.media.image') with the image resource file you use.
           Image($r('app.media.image'))
             .width(200)
             .height(200)
-            .bindContextMenu(this.MyMenu, ResponseType.LongPress, {
-              preview: this.MyPreview
+            .bindContextMenu(this.myMenu, ResponseType.LongPress, {
+              preview: this.myPreview
             })
-            .dragPreview(this.MyMenuPreview)
+            .dragPreview(this.myMenuPreview)
             .draggable(true)
             .dragPreviewOptions({
               mode: [DragPreviewMode.ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW]
@@ -1081,10 +1081,10 @@ This example demonstrates how to implement different transition effects between 
 @Component
 struct Index {
   // Replace $r('app.media.app_icon') with the image resource file you use.
-  private iconStr: ResourceStr = $r("app.media.app_icon")
+  private iconStr: ResourceStr = $r('app.media.app_icon');
 
   @Builder
-  MyPreview() {
+  myPreview() {
     // Replace $r('app.media.image') with the image resource file you use.
     Image($r('app.media.image'))
       .width(200)
@@ -1092,7 +1092,7 @@ struct Index {
   }
 
   @Builder
-  MyMenuPreviewSame() {
+  myMenuPreviewSame() {
     Column() {
       // Replace $r('app.media.image') with the image resource file you use.
       Image($r('app.media.image'))
@@ -1102,7 +1102,7 @@ struct Index {
   }
 
   @Builder
-  MyMenuPreview() {
+  myMenuPreview() {
     Column() {
       // Replace $r('app.media.startIcon') with the image resource file you use.
       Image($r('app.media.startIcon'))
@@ -1112,48 +1112,40 @@ struct Index {
   }
 
   @Builder
-  MyMenu() {
+  myMenu() {
     Menu() {
-      MenuItem({ startIcon: this.iconStr, content: "Menu option" })
-      MenuItem({ startIcon: this.iconStr, content: "Menu option" })
-    }
-  }
-
-  @Builder
-  SubMenu() {
-    Menu() {
-      MenuItem({ content: "Copy", labelInfo: "Ctrl+C" })
-      MenuItem({ content: "Paste", labelInfo: "Ctrl+V" })
+      MenuItem({ startIcon: this.iconStr, content: 'Menu option' })
+      MenuItem({ startIcon: this.iconStr, content: 'Menu option' })
     }
   }
 
   build() {
     Column() {
-      Text("sizeChangeEffect: SIZE_TRANSITION - Long press to open menu, and drag to transition from menu preview to drag preview with scaling effect (no overlay).")
+      Text('sizeChangeEffect: SIZE_TRANSITION - Long press to open menu, and drag to transition from menu preview to drag preview with scaling effect (no overlay).')
         .margin({ top: 10 })
       // Replace $r('app.media.image') with the image resource file you use.
       Image($r('app.media.image'))
         .width(200)
         .height(200)
-        .bindContextMenu(this.MyMenu, ResponseType.LongPress, {
-          preview: this.MyMenuPreviewSame
+        .bindContextMenu(this.myMenu, ResponseType.LongPress, {
+          preview: this.myMenuPreviewSame
         })
-        .dragPreview(this.MyPreview)
+        .dragPreview(this.myPreview)
         .dragPreviewOptions({
           sizeChangeEffect: DraggingSizeChangeEffect.SIZE_TRANSITION
         })
         .draggable(true)
 
-      Text("sizeChangeEffect: SIZE_CONTENT_TRANSITION - Long press to open menu, and drag to transition with two-layer overlay effect (menu preview and drag preview).")
+      Text('sizeChangeEffect: SIZE_CONTENT_TRANSITION - Long press to open menu, and drag to transition with two-layer overlay effect (menu preview and drag preview).')
         .margin({ top: 10 })
       // Replace $r('app.media.image') with the image resource file you use.
       Image($r('app.media.image'))
         .width(200)
         .height(200)
-        .bindContextMenu(this.MyMenu, ResponseType.LongPress, {
-          preview: this.MyMenuPreview
+        .bindContextMenu(this.myMenu, ResponseType.LongPress, {
+          preview: this.myMenuPreview
         })
-        .dragPreview(this.MyPreview)
+        .dragPreview(this.myPreview)
         .dragPreviewOptions({
           sizeChangeEffect: DraggingSizeChangeEffect.SIZE_CONTENT_TRANSITION
         })
@@ -1203,7 +1195,7 @@ struct CustomExample {
               let customCardData: Record<string, string> = {
                 'uniformDataType': 'custom.card',
                 'value': 'Custom card'
-              }
+              };
               let unifiedRecord = new unifiedDataChannel.UnifiedRecord('custom.card', customCardData);
               let unifiedData = new unifiedDataChannel.UnifiedData(unifiedRecord);
               event.setData(unifiedData);
@@ -1241,12 +1233,12 @@ struct CustomExample {
         .allowDrop(['custom.card'])
         .onDrop((event: DragEvent) => {
           console.info('setData onDrop success');
-          let data = event.getData()
+          let data = event.getData();
           let arr: Array<unifiedDataChannel.UnifiedRecord> = data.getRecords();
           if (arr.length > 0) {
             if (arr[0].getTypes()[0] === 'custom.card') {
               let customCardData = arr[0].getValue() as Record<string, string>;
-              this.droppedItems.push(customCardData.value)
+              this.droppedItems.push(customCardData.value);
             }
           }
         })
@@ -1270,8 +1262,8 @@ struct CustomExample {
 // Custom card.
 @Component
 struct CustomCard {
-  title: string ='Default Title'
-  color: Color = Color.Gray
+  title: string = 'Default Title';
+  color: Color = Color.Gray;
 
   build() {
     Column() {
@@ -1295,3 +1287,90 @@ struct CustomCard {
 ```
 
 ![customComponentAllowDrop.gif](figures/customComponentAllowDrop.gif)
+
+### Example 13: Setting the Material Effect of the Drag Backdrop Image
+
+This example sets the material effect of the drag backdrop by configuring the [systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial) attribute in [allowDrop](#allowdrop).
+
+Since API version 26.0.0, the modifier parameter in the [DragPreviewOptions](#imagemodifier12) interface additionally supports the [systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial) attribute.
+
+```ts
+// xxx.ets
+import { ImageModifier } from '@kit.ArkUI';
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct DragPreviewMaterialDemo {
+  @State materialIndex: number = 0;
+  @State materialName: string = 'ULTRA_THIN';
+  // Material style list
+  @State materialList: uiMaterial.ImmersiveStyle[] = [
+    uiMaterial.ImmersiveStyle.ULTRA_THIN,
+    uiMaterial.ImmersiveStyle.THIN,
+    uiMaterial.ImmersiveStyle.REGULAR,
+    uiMaterial.ImmersiveStyle.THICK,
+    uiMaterial.ImmersiveStyle.ULTRA_THICK
+  ]
+  @State materialNames: string[] = [
+    'ULTRA_THIN', 'THIN', 'REGULAR', 'THICK', 'ULTRA_THICK'
+  ]
+
+  build() {
+    Row() {
+      Column() {
+        Text('Current material style:' + this.materialName)
+          .fontSize(16)
+          .margin({ bottom: 10 })
+
+        Button('Switch material style')
+          .onClick(() => {
+            this.materialIndex++;
+            if (this.materialIndex > this.materialList.length - 1) {
+              this.materialIndex = 0;
+            }
+            this.materialName = this.materialNames[this.materialIndex];
+          })
+          .margin({ bottom: 20 })
+
+        Column() {
+          Text('Material effect')
+            .fontSize(20)
+            .fontColor(Color.White)
+            .margin({ top: 30, bottom: 10 })
+          Text('Drag to view the effect')
+            .fontSize(14)
+            .fontColor(Color.White)
+        }
+        .width(150)
+        .height(150)
+        .backgroundColor('rgba(100, 150, 255, 0.3)')
+        .justifyContent(FlexAlign.Center)
+        .draggable(true)
+        .onDragStart((event: DragEvent) => {
+        })
+        .dragPreviewOptions({
+          modifier: new ImageModifier().systemMaterial(
+            new uiMaterial.ImmersiveMaterial({
+              style: this.materialList[this.materialIndex]
+            })
+          ) as ImageModifier
+        })
+
+        Text('Instructions: long press the square and drag\nView different material effects')
+          .fontSize(14)
+          .fontColor(Color.Gray)
+          .margin({ top: 20 })
+          .textAlign(TextAlign.Center)
+      }
+      .width('100%')
+      .height('100%')
+      .padding(20)
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor('#f5f5f5')
+  }
+}
+```
+<!--Del--> <!--DelEnd-->

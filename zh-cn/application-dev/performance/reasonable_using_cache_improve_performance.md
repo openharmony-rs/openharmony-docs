@@ -110,7 +110,7 @@ struct Index {
   }
 
   /**
-   * 使用createPixelMap将ArrayBuffer类型的图片装换为PixelMap类型
+   * 使用createPixelMap将ArrayBuffer类型的图片转换为PixelMap类型
    * @param data：网络获取到的资源
    */
   transcodePixelMap(data: http.HttpResponse) {
@@ -356,7 +356,7 @@ struct Index {
 
 ![reasonable_using_cache_improve_performance_use_api](./figures/reasonable_using_cache_improve_performance_use_api.png)
 
-优化后使用本地缓存（通过PersistentStorage获取地址数据）的测试步骤：在使用getCurrentLocation获取地址数据后退出应用（本例中在getCurrentLocation获取地址数据数据后会保存到本地缓存），再使用Launch工具抓取性能数据。
+优化后使用本地缓存（通过PersistentStorage获取地址数据）的测试步骤：在使用getCurrentLocation获取地址数据后退出应用（本例中在getCurrentLocation获取地址数据后会保存到本地缓存），再使用Launch工具抓取性能数据。
 
 图6 优化后使用本地缓存
 

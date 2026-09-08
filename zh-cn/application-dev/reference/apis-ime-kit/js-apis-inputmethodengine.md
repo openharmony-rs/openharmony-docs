@@ -2,7 +2,7 @@
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->
-<!--Designer: @andeszhang-->
+<!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -2822,8 +2822,6 @@ setImmersiveEffect(effect: ImmersiveEffect): void
   - [resize](#resize10)(支持API version 10)
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**设备行为差异**：该接口仅在phone和tablet设备中可正常调用，在其他设备中返回错误码801。
 
 **参数：**
 

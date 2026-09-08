@@ -36,3 +36,22 @@ constructor()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+### setSVGResourceLimitLevel
+
+setSVGResourceLimitLevel(limit: image.SVGResourceLimitLevel): void
+
+设置SVG解码的资源限制等级。未通过该接口设置时，默认值为image.[SVGResourceLimitLevel](../apis-image-kit/js-apis-image-sys.md#svgresourcelimitlevel).NONE。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名     | 类型              | 必填  | 说明                                       |
+| --------- | ---------------- | ---- | ------------------------------------------ |
+| limit | image.[SVGResourceLimitLevel](../apis-image-kit/js-apis-image-sys.md#svgresourcelimitlevel)  | 是   | SVG解码的资源限制等级。  |

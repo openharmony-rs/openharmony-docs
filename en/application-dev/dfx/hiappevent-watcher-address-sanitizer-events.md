@@ -1,10 +1,12 @@
 # Address Sanitizer Event Overview
+
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @mlkgeek-->
 <!--Designer: @StevenLai1994-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=b8305a550528c0cbc83fb737a1c2658198f914df translatedAt=2026-08-21T03:18:17.058Z pushedAt=2026-08-21T09:00:24.535Z -->
 
 ## Overview
 
@@ -73,10 +75,10 @@ The **params** field in address sanitizer event information is described as foll
 | bundle_name | string | Application name.|
 | pid | number | Process ID of the application.|
 | uid | number | User ID of the application.|
-| type | string | Address sanitizer error type. For details, see **type**.|
+| type | string | Address out-of-bounds error type. For details about the value range, see [type](#type). |
 | external_log | string[] | Path of the fault log file. **To prevent new log files from failing to be written because the directory storage exceeds the limit (see `log_over_limit`), delete the log files promptly after they are processed.**|
-| log_over_limit | boolean | Whether the total size of generated fault log files and existing log files exceeds the upper limit of 5 MB. The value **true** indicates that the limit is exceeded and log writing fails. The value **false** indicates that the limit is not exceeded.<br>When minidump is enabled, the upper limit is adjusted to 35 MB. When minidump is disabled, the upper limit is restored to 5 MB.|
-| page_switch_log | string | Path of the page switch log.<br>**NOTE**: Supported since API version 24.|
+| log_over_limit | boolean | Whether the total size of generated and existing fault log files exceeds the 5 MB upper limit. The value **true** indicates that the limit is exceeded and log writing fails; **false** indicates that the limit is not exceeded.<br>When [minidump](performance-analysis-kit-terminology.md#minidump) is enabled, the upper limit is adjusted to 35 MB; when minidump is disabled, the upper limit is restored to 5 MB. |
+| page_switch_log | string | Path of the page switch log. For details, see [Page Switch Logs](pageswitch-log.md).<br>**NOTE**: Supported since API version 24.|
 
 ### type
 

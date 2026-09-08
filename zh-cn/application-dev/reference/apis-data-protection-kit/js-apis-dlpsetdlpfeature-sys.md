@@ -69,6 +69,7 @@ setDlpFeature(status: DlpFeatureStatus): Promise&lt;StatusInfoResult&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 202 | Non-system applications use system APIs. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 

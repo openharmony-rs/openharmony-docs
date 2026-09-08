@@ -5,8 +5,9 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=8aa8522c1582655206875d9c89c21656113a2dda translatedAt=2026-09-03T04:24:11.468Z -->
 
-The **Progress** component represents a progress indicator that displays the progress of content loading or an operation.
+The **Progress** component is a progress indicator that displays the progress of content loading or an operation. It supports multiple styles such as linear, ring, circular, and capsule, and allows customization of colors, gradient effects, and animations. It is suitable for scenarios that require displaying progress status, such as file download, data loading, and task processing. With rich style and animation configurations, progress visualization can be quickly implemented to improve user experience.
 
 >  **NOTE**
 >
@@ -39,16 +40,14 @@ Creates a progress indicator.
 
 Defines progress bar options.
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name                       | Type                               | Read-Only| Optional| Description                                    |
 | -------------------------- | ----------------------------------- | ---- | ---------------------------------------- | ---------------------------------------- |
-| value                      | number                              | No  | No  | Current progress. Values less than 0 are adjusted to **0**, and values greater than the **total** value are capped at the **total** value.<br>Default value: **0**<br>Value range: [0, total]<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
-| total                      | number                              | No  | Yes  | Total progress. If this parameter is set to a value less than or equal to 0, the value **100** is used.<br>Default value: **100**<br>Value range: [0, 2147483647]<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
-| type<sup>8+</sup>          | [ProgressType](#progresstype8)   | No  | Yes  | Style of the progress indicator.<br>Default value: **ProgressType.Linear**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>Note: Different types must correspond to different [style](#style8) attribute settings. For details about the mapping, see [ProgressStyleMap](#progressstylemap10).|
-| style<sup>(deprecated)</sup> | [ProgressStyle](#progressstyle) | No  | Yes  | Style of the progress indicator.<br>This parameter is deprecated since API version 8. You are advised to use **type** instead.<br>Default value: **ProgressStyle.Linear**|
+| value                      | number                              | No   | No   | Specified progress value.<br>Default value: **0**<br>Value range: [0, total]. When the value is set less than 0, it is set to 0. When the value is set greater than total, it is set to total. When an invalid value is set, it is handled as the default value.<br>**Widget capability:** Since API version 9, this API supports use in ArkTS cards.<br>**Atomic service API:** Since API version 11, this API supports use in atomic services. |
+| total                      | number                              | No   | Yes   | Specifies the total length of the progress. When the value is set less than 0, it is set to 100.<br>Default value: **100**<br>Value range: (0, +∞).<br>**Widget capability:** Since API version 9, this API supports use in ArkTS cards.<br>**Atomic service API:** Since API version 11, this API supports use in atomic services. |
+| type<sup>8+</sup>          | Type   | No   | Yes   | Specifies the progress bar type. Type inherits from [ProgressStyleMap](#progressstylemap10).<br>Default value: **ProgressType.Linear**<br>**Widget capability:** Since API version 9, this API supports use in ArkTS cards.<br>**Note:** Different [ProgressType](#progresstype8) values must correspond to the respective [style](#style8) attribute settings. For the detailed mapping, see [ProgressStyleMap](#progressstylemap10).<br>**Atomic service API:** Since API version 11, this API supports use in atomic services. |
+| style<sup>(deprecated)</sup> | [ProgressStyle](#progressstyle) | No | Yes | Specifies the progress bar style.<br>Supported since API version 7, deprecated since API version 8. You are advised to use [type](#progresstype8) instead.<br>Default value: **ProgressStyle.Linear** |
 
 ## ProgressType<sup>8+</sup>
 
@@ -63,10 +62,10 @@ Enumerates progress indicator types.
 | Name                    | Value| Description                                    |
 | ---------------------- | - | ---------------------------------------- |
 | Linear                 | 0 | Linear type. Since API version 9, the progress indicator adapts to vertical display when its height is greater than its width.  |
-| Ring      | 1 | Indeterminate ring type. The ring fills up as the progress increases.                |
+| Ring      | 1 | Ring type without scales. The ring gradually displays until it is fully filled.                |
 | Eclipse  | 2 | Eclipse type, which visualizes the progress in a way similar to the moon waxing from new to full.        |
 | ScaleRing | 3 | Ring style with scales, which is similar to the clock scale style. Since API version 9, the progress indicator automatically switches to a non‑scaled ring style when the outer scales overlap.|
-| Capsule   | 4 | Capsule type. At both ends, the progress indicator works in the same manner as the eclipse type. In the middle part of the capsule, the progress indicator works in the same manner as the linear type. When the height is greater than the width, the progress indicator adapts to vertical display.|
+| Capsule   | 4 | Capsule style. The progress display effect at the arc ends is the same as that of Eclipse, and the progress display effect in the middle section is the same as that of Linear. Since API version 9, when the height is greater than the width, the component is displayed vertically in an adaptive manner. |
 
 ##  ProgressStyle
 
@@ -80,11 +79,11 @@ Enumerates progress indicator styles.
 
 | Name       | Value| Description                                    |
 | --------- | - | ---------------------------------------- |
-| Linear    | 0 | Linear style.                                   |
-| Ring<sup>8+</sup>      | 1 | The ring is gradually displayed until completely filled.                |
+| Linear    | 0 | Linear style. The progress bar is gradually filled from one end to the other along a straight line.                                    |
+| Ring<sup>8+</sup>      | 1 | Ring without scale. The ring is gradually displayed until it is completely filled.                 |
 | Eclipse   | 2 | Eclipse style, which visualizes the progress in a way similar to the moon waxing from new to full.        |
-| ScaleRing<sup>8+</sup> | 3 | Ring style with scales, which is similar to the clock scale style.              |
-| Capsule<sup>8+</sup>   | 4 | Capsule style. At both ends, the progress indicator works in the same manner as the eclipse style. In the middle part of the capsule, the progress indicator works in the same manner as the linear style. When the height is greater than the width, the progress indicator adapts to vertical display.|
+| ScaleRing<sup>8+</sup> | 3 | Ring with scale. Displays a progress effect similar to a clock scale. Since API version 9, when the outer ring of the scale overlaps, it is automatically converted to a ring without scale.               |
+| Capsule<sup>8+</sup>   | 4 | Capsule style. The progress display effect at the arc ends is the same as that of Eclipse, and the progress display effect in the middle is the same as that of Linear. Since API version 9, when the height is greater than the width, it is adaptively displayed vertically. |
 
 ##  ProgressStyleMap<sup>10+</sup>
 
@@ -92,15 +91,17 @@ Defines the mapping between progress indicators and styles.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name       | Type                                     |
 | --------- | ---------------------------------------- |
-| ProgressType.Linear | [LinearStyleOptions<sup>10+</sup>](#linearstyleoptions10)&nbsp; \| &nbsp;[ProgressStyleOptions](#progressstyleoptions8)&nbsp; |
-| ProgressType.Ring | [RingStyleOptions<sup>10+</sup>](#ringstyleoptions10)&nbsp; \| &nbsp;[ProgressStyleOptions](#progressstyleoptions8)&nbsp; |
-| ProgressType.Eclipse | [EclipseStyleOptions<sup>10+</sup>](#eclipsestyleoptions10)&nbsp;  \| &nbsp;[ProgressStyleOptions](#progressstyleoptions8)&nbsp; |
-| ProgressType.ScaleRing| [ScaleRingStyleOptions<sup>10+</sup>](#scaleringstyleoptions10)&nbsp; \| &nbsp;[ProgressStyleOptions](#progressstyleoptions8)&nbsp; |
-| ProgressType.Capsule | [CapsuleStyleOptions<sup>10+</sup>](#capsulestyleoptions10)&nbsp; \| &nbsp;[ProgressStyleOptions](#progressstyleoptions8)&nbsp; |
+| [ProgressType.Linear] | [LinearStyleOptions](#linearstyleoptions10)&nbsp; \| &nbsp;[ProgressStyleOptions](#progressstyleoptions8)&nbsp; |
+| [ProgressType.Ring] | [RingStyleOptions](#ringstyleoptions10)&nbsp; \| &nbsp;[ProgressStyleOptions](#progressstyleoptions8)&nbsp; |
+| [ProgressType.Eclipse] | [EclipseStyleOptions](#eclipsestyleoptions10)&nbsp;  \| &nbsp;[ProgressStyleOptions](#progressstyleoptions8)&nbsp; |
+| [ProgressType.ScaleRing] | [ScaleRingStyleOptions](#scaleringstyleoptions10)&nbsp; \| &nbsp;[ProgressStyleOptions](#progressstyleoptions8)&nbsp; |
+| [ProgressType.Capsule] | [CapsuleStyleOptions](#capsulestyleoptions10)&nbsp; \| &nbsp;[ProgressStyleOptions](#progressstyleoptions8)&nbsp; |
 
 ## Attributes
 
@@ -114,7 +115,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 value(value: number)
 
-Current progress. Values less than 0 are adjusted to **0**, and values greater than the **total** value are capped at the **total** value. Invalid values do not take effect.
+Sets the current progress value. When a value less than 0 is set, it is set to 0; when a value greater than total is set, it is set to total. When an invalid value is set, it is handled as the default value. When the status attribute of the Ring style is set to ProgressStatus.LOADING, setting the progress value does not take effect.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -126,7 +127,7 @@ Current progress. Values less than 0 are adjusted to **0**, and values greater t
 
 | Name| Type  | Mandatory| Description        |
 | ------ | ------ | ---- | ------------ |
-| value  | number | Yes  | Current progress.<br> Default value: **0**|
+| value  | number | Yes   | Current progress value.<br>Default value: 0<br>Value range: [0, total]. When the value is set to less than 0, it is set to 0. When the value is set to greater than total, it is set to total. When an invalid value is set, it is handled as the default value.<br>**Note:** When the status of a Ring type progress bar is set to ProgressStatus.LOADING, the set progress value does not take effect. |
 
 ### color
 
@@ -136,7 +137,7 @@ Sets the foreground color of the progress indicator.
 
 Since API version 10, [LinearGradient](ts-basic-components-datapanel.md#lineargradient10) can be used to set a gradient color for the ring style. Setting opacity is not recommended for the ring type. If opacity is required, use [DataPanel](ts-basic-components-datapanel.md).
 
-Since API version 23, [LinearGradient](ts-basic-components-datapanel.md#lineargradient10) can be used to set gradient colors for the linear and capsule styles. In API version 22 and earlier versions, setting gradient colors via **LinearGradient** for the **Linear** and **Capsule** styles will not render the custom colors; the system's default theme colors will be used instead.
+Since API version 23, LinearGradient can be used to set the gradient color of the Linear style and Capsule style. In API version 22 and earlier, when this method is used, the default theme color is displayed.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9, except that **LinearGradient** is not supported.
 
@@ -148,13 +149,17 @@ Since API version 23, [LinearGradient](ts-basic-components-datapanel.md#lineargr
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](ts-basic-components-datapanel.md#lineargradient10) | Yes  | Foreground color of the progress indicator.<br>Default value:<br>- Capsule:<br>&nbsp;&nbsp;&nbsp;API version 9 or earlier: **'\#ff007dff'**<br>&nbsp;&nbsp;&nbsp;API version 10: **'\#33006cde'**<br>&nbsp;&nbsp;&nbsp;API version 11 or later: **'\#33007dff'**<br>- Ring:<br>&nbsp;&nbsp;&nbsp;API version 9 or earlier: **'\#ff007dff'**<br>&nbsp;&nbsp;&nbsp;API version 10 or later: start: **'\#ff86c1ff'**, end: **'\#ff254ff7'**<br>- Other styles: **'\#ff007dff'**|
+| value  | [ResourceColor](ts-types.md#resourcecolor) \| [LinearGradient](ts-basic-components-datapanel.md#lineargradient10) | Yes   | Foreground color of the progress bar.<br>Since API version 10, LinearGradient is supported for setting the gradient color of the Ring style. Since API version 23, LinearGradient is supported for setting the gradient color of the Linear style and Capsule style.<br>Default value:<br>- Capsule:<br>&nbsp;&nbsp;&nbsp;API version 9 and earlier: '\#ff007dff'<br>&nbsp;&nbsp;&nbsp;API version 10: '\#33006cde'<br>&nbsp;&nbsp;&nbsp;API version 11 and later: '\#33007dff'<br>- Ring:<br>&nbsp;&nbsp;&nbsp;API version 9 and earlier: '\#ff007dff'<br>&nbsp;&nbsp;&nbsp;API version 10 and later: start: '\#ff86c1ff', end: '\#ff254ff7'<br>- Other styles: '\#ff007dff' |
 
 ### style<sup>8+</sup>
 
-style(value: ProgressStyleOptions \| CapsuleStyleOptions \| RingStyleOptions \| LinearStyleOptions \| ScaleRingStyleOptions \| EclipseStyleOptions)
+style(value: Style)
 
 Sets the component style.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -162,7 +167,7 @@ Sets the component style.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ProgressStyleOptions<sup>8+</sup>](#progressstyleoptions8)&nbsp;\|&nbsp;[CapsuleStyleOptions<sup>10+</sup>](#capsulestyleoptions10)&nbsp;\|&nbsp;<br>[RingStyleOptions<sup>10+</sup>](#ringstyleoptions10)&nbsp;\|&nbsp;[LinearStyleOptions<sup>10+</sup>](#linearstyleoptions10)&nbsp;\|&nbsp;<br>[ScaleRingStyleOptions<sup>10+</sup>](#scaleringstyleoptions10)&nbsp;\|&nbsp;[EclipseStyleOptions<sup>10+</sup>](#eclipsestyleoptions10) | Yes  | Component style.<br>- **CapsuleStyleOptions**: capsule style.<br>- **RingStyleOptions**: ring style.<br>- **LinearStyleOptions**: linear style.<br>- **ScaleRingStyleOptions**: determinate ring style.<br>- **EclipseStyleOptions**: eclipse style.<br>- **ProgressStyleOptions**: **strokeWidth**, **scaleCount**, and **scaleWidth** of a progress indicator. This parameter is valid only for the progress indicator that supports these style settings.|
+| value  | Style | Yes   | Style of the component. Style inherits from [ProgressStyleMap](#progressstylemap10).<br>**Note:** Different [ProgressType](#progresstype8) values must correspond to the respective [style](#style8) attribute settings. For the detailed mapping, see [ProgressStyleMap](#progressstylemap10).<br>- [CapsuleStyleOptions](#capsulestyleoptions10): Sets the style of Capsule.<br>- [RingStyleOptions](#ringstyleoptions10): Sets the style of Ring.<br>- [LinearStyleOptions](#linearstyleoptions10): Sets the style of Linear.<br>- [ScaleRingStyleOptions](#scaleringstyleoptions10): Sets the style of ScaleRing.<br>- [EclipseStyleOptions](#eclipsestyleoptions10): Sets the style of Eclipse.<br>- [ProgressStyleOptions](#progressstyleoptions8): Can only set strokeWidth, scaleCount, and scaleWidth of each type of progress bar, and takes effect only for progress bars that support these style settings. |
 
 ### contentModifier<sup>12+</sup>
 contentModifier(modifier:ContentModifier\<ProgressConfiguration\>)
@@ -171,12 +176,14 @@ Creates a content modifier.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 | Name| Type  | Mandatory| Description        |
 | ------ | ------ | ---- | ------------ |
-| modifier | [ContentModifier\<ProgressConfiguration\>](#progressconfiguration12) | Yes  | Content modifier to apply to the current component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.|
+| modifier | [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)<[ProgressConfiguration](#progressconfiguration12)> | Yes | Method for customizing the content area on the Progress component.<br>modifier: content modifier. Developers need to customize a class to implement the ContentModifier interface. |
 
 ### privacySensitive<sup>12+</sup>
 
@@ -192,13 +199,15 @@ Sets whether to enable privacy-sensitive mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                                     | Mandatory| Description                                                 |
 | ------ | --------------------------------------------------------- | ---- | ----------------------------------------------------- |
-| isPrivacySensitiveMode  | [Optional\<boolean\>](ts-universal-attributes-custom-property.md#optionalt) | Yes  | Whether to enable privacy-sensitive mode, in which the progress indicator is cleared and text content is masked. **true**: The privacy-sensitive mode is enabled. **false**: The privacy-sensitive mode is disabled.<br> Default value: **false**<br>**NOTE**<br>Setting this parameter to **null** indicates that no specific privacy sensitivity is applied.<!--Del--><br>For widgets, this property must be used with [FormComponent](./ts-basic-components-formcomponent-sys.md) and the [obscured](./ts-universal-attributes-obscured.md) attribute to display privacy masking effects.<!--DelEnd--> |
+| isPrivacySensitiveMode  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean\> | Yes   | Sets privacy sensitivity. In privacy mode, the progress is cleared and the text is masked. true: enables privacy sensitivity; false: disables privacy sensitivity.<br> Default value: false<br>**Note:** <br>Setting null indicates that the component is not sensitive. <!--Del--><br>To use Progress in a card and set the [privacy mask](./ts-universal-attributes-obscured.md) attribute with the [FormComponent](./ts-basic-components-formcomponent-sys.md) component, the privacy mask effect is available only when the card is displayed.<!--DelEnd--> |
 
 ## ProgressConfiguration<sup>12+</sup>
 
@@ -206,12 +215,14 @@ Provides progress indicator configuration. Inherits from [CommonConfiguration](t
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type | Read-Only| Optional|Description        |
 | ------ | ------ | ------- |------------|------------|
-| value  | number | No| No| Current progress. Values less than 0 are adjusted to **0**. Values greater than the value of **total** are capped at the value of **total**.<br>Default value: **0**<br>Value range: [0, total]|
-| total  | number | No| No| Total progress.<br>Value range: [0, 2147483647]<br>**NOTE**<br>If the value of **total** is a negative number, it is treated as 100.|
+| value  | number | No | No | Current progress value. When the set value is less than 0, it is set to 0. When the set value is greater than total, it is set to total.<br>Default value: 0<br>Value range: [0, total]<br>**Note:** When the status of a Ring type progress bar is set to ProgressStatus.LOADING, the set progress value does not take effect.|
+| total  | number | No | No | Total progress length.<br>Value range: (0, +∞)<br>**NOTE**<br>When total is less than or equal to 0, it is handled as 100.|
 
 ## CommonProgressStyleOptions<sup>10+</sup>
 
@@ -219,11 +230,13 @@ Provides common style configuration options for the progress indicator.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name         | Type                     | Read-Only| Optional| Description                                                                                       |
 | ------------ | ---------------------------- | ---- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| enableSmoothEffect | boolean | No| Yes| Whether to enable the smooth effect. When this feature is enabled, the progress value transitions from the current value to the target value with a progress change animation displayed on the page. When this feature is disabled, the progress value jumps directly to the target value without any animation.<br>**true**: The smooth effect is enabled.<br>**false**: The smooth effect is disabled.<br>Default value: **true**|
+| enableSmoothEffect | boolean | No | Yes | Switch for the progress smooth effect. When the smooth effect is enabled, setting the progress changes it gradually from the current value to the specified value, with an animation on the page. Otherwise, the progress changes abruptly from the current value to the specified value, with no animation on the page.<br>true: enables the progress smooth effect.<br>false: disables the progress smooth effect.<br>Default value: true |
 
 ## ScanEffectOptions<sup>10+</sup>
 
@@ -231,11 +244,13 @@ Defines the scan effect options.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name         | Type| Read-Only| Optional| Description|
 | ------------- | ------- | ---- | -------- | -------- |
-| enableScanEffect | boolean | No| Yes| Whether to enable the scan effect. Only the progress indicator of the [linear, ring, and capsule](#progresstype8) type is supported.<br>**true**: The scan effect is enabled.<br>**false**: The scan effect is disabled.<br>Default value: **false**|
+| enableScanEffect | boolean | No | Yes | Whether to enable the scan effect. This parameter is supported only for the progress bar whose [ProgressType](#progresstype8) is Linear, Ring, or Capsule.<br>true: enable the scan effect.<br>false: disable the scan effect.<br>Default value: false |
 
 ## ProgressStyleOptions<sup>8+</sup>
 
@@ -251,9 +266,9 @@ Inherits from [CommonProgressStyleOptions](#commonprogressstyleoptions10).
 
 | Name         | Type                     | Read-Only| Optional| Description                                                                                       |
 | ------------ | ---------------------------- | ---- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| strokeWidth  | [Length](ts-types.md#length) | No | Yes | Stroke width of the progress indicator. Percentage values are not supported.<br>Default value: **4.0vp**<br>If the value is out of the range, the default value is used.                                           |
-| scaleCount   | number                       | No | Yes | Number of divisions on the ring-style process indicator.<br>Default value: **120vp**<br>Value range: [2, min(width, height)/scaleWidth/2/π]. If the value is outside this range, the progress indicator is displayed in the indeterminate ring style. By default, the minimum width and height are 77 vp.                    |
-| scaleWidth   | [Length](ts-types.md#length) | No | Yes | Scale width of the ring-style progress indicator. Percentage values are not supported. If the scale width is greater than the stroke width of the progress indicator, the default scale width is used.<br>Default value: **2.0vp**|
+| strokeWidth  | [Length](ts-types.md#length) | No  | Yes  | Sets the progress bar width (percentage setting not supported).<br>Default value: 4.0vp<br>Value range: a value greater than 0.<br>When the value exceeds the value range or an invalid value is set, the default value is used.|
+| scaleCount   | number                       | No  | Yes  | Sets the total number of scale marks on the ring progress bar.<br>Default value: 120 <br>Value range: [2, min(width, height)*π/scaleWidth]. When the value exceeds the value range, the style is displayed as a ring progress bar without scale marks.<br>When both scaleCount and scaleWidth are equal to their default values, setting the component width or height to less than 77vp displays a ring progress bar without scale marks.                     |
+| scaleWidth   | [Length](ts-types.md#length) | No  | Yes  | Sets the thickness of the scale marks on the ring progress bar (percentage setting not supported).<br>Default value: 2.0vp<br>Value range: a value greater than 0.<br>When the value exceeds the value range or an invalid value is set, the default value is used.<br>When the scale mark thickness is greater than the progress bar width, the system default thickness is used.<br>When both scaleCount and scaleWidth are equal to their default values, setting the component width or height to less than 77vp displays a ring progress bar without scale marks.      |
 
 ## CapsuleStyleOptions<sup>10+</sup>
 
@@ -261,19 +276,19 @@ Capsule style options.
 
 Inherits from [ScanEffectOptions](#scaneffectoptions10) and [CommonProgressStyleOptions](#commonprogressstyleoptions10).
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name         | Type| Read-Only| Optional| Description|
 | ------------- | ------- | ---- | -------- | -------- |
-| borderColor | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Border color.<br>Default value:<br>API version 10: **'\#33006cde'**<br>API version 11 or later: **'\#33007dff'**|
-| borderWidth | [Length](ts-types.md#length) | No| Yes| Border width. Percentage values are not supported.<br>Default value: **1vp**|
-| content | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Text content, which can be customized.<br>The Resource type is supported since API version 20.|
-| font | [Font](ts-types.md#font) | No| Yes| Text style.<br>Default value:<br>Font size (percentage values are not supported): **12fp**<br>Other text parameters are subject to the theme values of the [Text](ts-basic-components-text.md) component.|
-| fontColor | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Font color.<br>Default value: **'\#ff182431'**|
-| showDefaultPercentage | boolean | No| Yes| Whether to display the percentage text. After this feature is enabled, the progress percentage is displayed on the progress indicator. This property does not take effect when **content** is set.<br>**true**: The percentage text is displayed. **false**: The percentage text is not displayed.<br>Default value: **false**|
-| borderRadius<sup>18+</sup> |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No| Yes| Border radius. Percentage values are not supported.<br>Value range: [0, height/2]<br> Default value: height/2<br>If an invalid value is set, the default value is used.|
+| borderColor | [ResourceColor](ts-types.md#resourcecolor) | No | Yes | Inner stroke color.<br>Default value:<br>API version 10: '\#33006cde'<br>API version 11 and later: '\#33007dff' <br>**Atomic service API:** This API supports use in atomic services since API version 11.|
+| borderWidth | [Length](ts-types.md#length) | No | Yes | Inner stroke width.<br>Default value: 1vp<br>Value range: a value greater than or equal to 0. Percentage setting not supported.<br>A value out of range or an invalid value is handled as the default value.<br>**Atomic service API:** This API supports use in atomic services since API version 11.|
+| content | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Text content, which can be customized by the application.<br>Pass this parameter when custom text needs to be displayed on the capsule progress bar. If it is not passed, no text is displayed (to display the percentage text, set showDefaultPercentage to true).<br>Since API version 20, the Resource type is supported.<br>**Atomic service API:** This API supports use in atomic services since API version 11.|
+| font | [Font](ts-types.md#font) | No | Yes | Text style.<br>Default value:<br>Text size (percentage setting not supported): 12fp<br>Other text parameters follow the theme values of the [Text](ts-basic-components-text.md) component.<br>**Atomic service API:** This API supports use in atomic services since API version 11.|
+| fontColor | [ResourceColor](ts-types.md#resourcecolor) | No | Yes | Text color.<br>Default value: '\#ff182431' <br>**Atomic service API:** This API supports use in atomic services since API version 11.|
+| showDefaultPercentage | boolean | No | Yes | Whether to display the percentage text. When enabled, the progress bar displays the percentage of the current progress. This attribute does not take effect when the content attribute is set.<br>true: displays the percentage text; false: does not display the percentage text.<br>Default value: false<br>**Atomic service API:** This API supports use in atomic services since API version 11.|
+| borderRadius<sup>18+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No | Yes | Corner radius of the capsule progress bar (percentage setting not supported).<br>Value range: [0, component height/2]. Default value: component height/2.<br>An invalid value is handled as the default value.<br>**Atomic service API:** This API supports use in atomic services since API version 18.|
 
 ## RingStyleOptions<sup>10+</sup>
 
@@ -283,13 +298,15 @@ Inherits from [ScanEffectOptions](#scaneffectoptions10) and [CommonProgressStyle
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name          | Type                     | Read-Only| Optional| Description                                                                                       |
 | ------------- | ---------------------------- | ---- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| strokeWidth   | [Length](ts-types.md#length) | No | Yes | Stroke width of the progress indicator. Percentage values are not supported. When the width is greater than or equal to the radius, it defaults to half the radius.<br>Default value: **4.0vp**|
-| shadow        | boolean                      | No | Yes | Whether to enable the shadow effect.<br>**true**: The shadow effect is enabled. **false**: The shadow effect is disabled.<br>Default value: **false**                                                            |
-| status        | [ProgressStatus<sup>10+</sup>](#progressstatus10) | No| Yes| Progress state. When this parameter is set to **ProgressStatus.LOADING**, the update check animation is enabled, and the progress value setting does not take effect. When the value changes from **ProgressStatus.LOADING** to **ProgressStatus.PROGRESSING**, the update check animation runs to completion and then stops.<br>Default value: **ProgressStatus.PROGRESSING**|
+| strokeWidth   | [Length](ts-types.md#length) | No  | Yes  | Sets the width of the progress bar.<br>Default value: **4.0vp**<br>Value range: a value greater than 0. Percentage setting is not supported.<br>If the value exceeds the value range or an invalid value is set, the default value is used.<br>When the width is greater than or equal to the radius, the width is changed to half of the radius by default.|
+| shadow        | boolean                      | No  | Yes  | Whether to enable the shadow of the progress bar.<br>true: enables the shadow of the progress bar; false: disables the shadow of the progress bar.<br>Default value: **false**                                                             |
+| status        | [ProgressStatus<sup>10+</sup>](#progressstatus10) | No | Yes | Sets the status of the progress bar. When the value is set to **ProgressStatus.LOADING**, the check-and-update animation is enabled. When the value changes from **ProgressStatus.LOADING** to **ProgressStatus.PROGRESSING**, the check-and-update animation runs to the end point before stopping.<br>Default value: **ProgressStatus.PROGRESSING**<br>**Note:** When the value is set to **ProgressStatus.LOADING**, the progress value setting does not take effect. For details, see the description of [value](#value). |
 
 ## LinearStyleOptions<sup>10+</sup>
 
@@ -299,12 +316,14 @@ Inherits from [ScanEffectOptions](#scaneffectoptions10) and [CommonProgressStyle
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name          | Type                     | Read-Only| Optional| Description                                                                                       |
 | ------------- | ---------------------------- | ---- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| strokeWidth   | [Length](ts-types.md#length) | No | Yes | Stroke width of the progress indicator. Percentage values are not supported.<br>Default value: **4.0vp**|
-| strokeRadius   | [PX](ts-types.md#px10)    \| [VP](ts-types.md#vp10)    \| [LPX](ts-types.md#lpx10)    \| [Resource](ts-types.md#resource)| No | Yes | Border radius of the linear progress indicator.<br>Value range: [0, strokeWidth/2] Default value: **strokeWidth/2**|
+| strokeWidth   | [Length](ts-types.md#length) | No  | Yes  | Sets the progress bar width.<br>Default value: **4.0vp**<br>Value range: a value greater than 0. Percentage setting is not supported.<br>If the value exceeds the value range or an invalid value is set, the default value is used.|
+| strokeRadius   | [PX](ts-types.md#px10)    \| [VP](ts-types.md#vp10)    \| [LPX](ts-types.md#lpx10)    \| [Resource](ts-types.md#resource)| No  | Yes  | Sets the corner radius of the linear progress bar.<br>Value range: [0, strokeWidth / 2]. Default value: **strokeWidth / 2**.<br>If the value exceeds the value range, the default value is used.|
 
 ## ScaleRingStyleOptions<sup>10+</sup>
 
@@ -314,13 +333,15 @@ Inherits from [CommonProgressStyleOptions](#commonprogressstyleoptions10).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name         | Type                     | Read-Only| Optional| Description                                                                                       |
 | ------------ | ---------------------------- | ---- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| strokeWidth  | [Length](ts-types.md#length) | No | Yes | Stroke width of the progress indicator. Percentage values are not supported.<br>Default value: **4.0vp**                                           |
-| scaleCount   | number                       | No | Yes | Number of divisions on the ring-style process indicator.<br>Default value: **120vp**<br>Value range: [2, min(width, height)/scaleWidth/2/π]. If the value is outside this range, the progress indicator is displayed in the indeterminate ring style. By default, the minimum width and height are 77 vp.                    |
-| scaleWidth   | [Length](ts-types.md#length) | No | Yes | Scale width of the ring-style progress indicator. Percentage values are not supported. If the scale width is greater than the stroke width of the progress indicator, the default scale width is used.<br>Default value: **2.0vp**|
+| strokeWidth  | [Length](ts-types.md#length) | No  | Yes  | Sets the progress bar width.<br>Default value: 4.0vp<br>Value range: a value greater than 0 (unit: vp). Percentage setting is not supported.<br>Exceeding the value range or setting an invalid value is handled as the default value.|
+| scaleCount   | number                       | No  | Yes  | Sets the total number of scales of the ring progress bar.<br>Default value: 120 <br>Value range: [2, min(width, height)*π/scaleWidth]. When the value exceeds the range, the style is displayed as a ring progress bar without scales.<br>When both scaleCount and scaleWidth are equal to their default values, setting the component width or height to less than 77 vp displays a ring progress bar without scales.                     |
+| scaleWidth   | [Length](ts-types.md#length) | No  | Yes  | Sets the thickness of the scales of the ring progress bar (percentage setting is not supported).<br>Default value: 2.0vp<br>Value range: a value greater than 0 (unit: vp).<br>When the scale thickness is greater than the progress bar width, the system default thickness is used.<br>When both scaleCount and scaleWidth are equal to their default values, setting the component width or height to less than 77 vp displays a ring progress bar without scales.|
 
 ## EclipseStyleOptions<sup>10+</sup>
 
@@ -330,6 +351,8 @@ Inherits from [CommonProgressStyleOptions](#commonprogressstyleoptions10).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ## ProgressStatus<sup>10+</sup>
@@ -338,11 +361,13 @@ Current state of the progress indicator.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name                   | Value    | Description     |
 | ----------------------- | ---------------- | ---------------- |
-| LOADING  | 'LOADING' | Loading.|
+| LOADING  | 'LOADING' | Loading state. Enables the check-update animation, in which case the set progress value does not take effect. |
 | PROGRESSING | 'PROGRESSING' | Progressing.|
 
 ## Events
@@ -425,7 +450,7 @@ This example demonstrates how to set attributes of a ring progress indicator usi
 @Component
 struct ProgressExample {
   private gradientColor: LinearGradient = new LinearGradient([{ color: Color.Yellow, offset: 0.5 },
-    { color: Color.Orange, offset: 1.0 }])
+    { color: Color.Orange, offset: 1.0 }]);
 
   build() {
     Column({ space: 15 }) {
@@ -600,7 +625,6 @@ function myProgress(config: ProgressConfiguration) {
 struct Index {
   @State currentValue: number = 0;
   modifier = new MyProgressModifier('rgb(39, 135, 217)');
-  @State myModifier: (MyProgressModifier | undefined) = this.modifier;
 
   build() {
     Column() {
@@ -704,22 +728,22 @@ This example demonstrates how to implement the gradient color of the linear prog
 @Entry
 @Component
 struct ProgressExample {
-  private gradientColor: LinearGradient = new LinearGradient([{ color: "#87BDF9", offset: 0.5 },
-    { color: "#3662F0", offset: 1.0 }])
-  public gradientColor2: LinearGradient = new LinearGradient([{ color: "#A5A5AF", offset: 0.5 }, 
-    { color: "#67666C", offset: 1.0 }])
+  private linearGradientColor: LinearGradient = new LinearGradient([{ color: "#87BDF9", offset: 0.5 },
+    { color: "#3662F0", offset: 1.0 }]);
+  public capsuleGradientColor: LinearGradient = new LinearGradient([{ color: "#A5A5AF", offset: 0.5 }, 
+    { color: "#67666C", offset: 1.0 }]);
 
   build() {
     Column({ space: 15 }) {
       Text('Linear: ').fontSize(9).fontColor(0xCCCCCC).width('90%')
       Progress({ value: 70, total: 100, type: ProgressType.Linear })
         .width(100).style({ strokeWidth: 20 })
-        .color(this.gradientColor)
+        .color(this.linearGradientColor)
 
       Text('Capsule: ').fontSize(9).fontColor(0xCCCCCC).width('90%')
       Progress({ value: 50, total: 100, type: ProgressType.Capsule })
         .width(120).style({ strokeWidth: 40 })
-        .color(this.gradientColor2)
+        .color(this.capsuleGradientColor)
     }.width('100%').padding({ top: 5 })
   }
 }

@@ -129,6 +129,30 @@ import { bundleManager } from '@kit.AbilityKit';
 | MAIN_APP          | 1   | 默认使用主应用。 |
 | CLONE_APP         | 2   | 默认使用分身应用。 |
 
+## DeviceModeDistributionPolicy
+
+设备模式分发策略枚举，用于指定应用程序如何分发到设备上。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| --------------- | --- | --- |
+| UNSPECIFIED | 0 | 未指定设备模式分发策略。 |
+| MAIN_ONLY | 1 | 应用程序仅在主模式下可用。 |
+| SUB_ONLY | 2 | 应用程序仅在副模式下可用。 |
+| UNIVERSAL_IDENTICAL_PACKAGE | 3 | 应用程序在两种模式下都可用，具有相同的包体。 |
+| UNIVERSAL_DIFFERENT_PACKAGE | 4 | 应用程序在两种模式下都可用，具有不同的包体。 |
+| PARTIAL_COMPATIBLE_IDENTICAL_PACKAGE | 5 | 应用程序在不同模式之间部分兼容，具有相同的包体。 |
+| PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE | 6 | 应用程序在不同模式之间部分兼容，具有不同的包体。 |
+| FULL_COMPATIBLE_IDENTICAL_PACKAGE | 7 | 应用程序在不同模式之间完全兼容，具有相同的包体。 |
+| FULL_COMPATIBLE_DIFFERENT_PACKAGE | 8 | 应用程序在不同模式之间完全兼容，具有不同的包体。 |
+
 ## bundleManager.getApplicationInfo
 
 getApplicationInfo(bundleName: string, appFlags: number, userId: number, callback: AsyncCallback\<ApplicationInfo>): void
@@ -4324,7 +4348,7 @@ try {
 
 getRecoverableApplicationInfo(): Promise\<Array\<RecoverableApplicationInfo\>\>
 
-获取所有可恢复的预置应用信息。使用Promise异步回调。
+获取所有可恢复的预置应用信息。使用Promise异步回调。接口调用失败时可能返回空数组，需校验返回值后使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4420,7 +4444,7 @@ try {
 
 getAllPreinstalledApplicationInfo(): Promise\<Array\<PreinstalledApplicationInfo\>\>
 
-获取所有预置应用信息。使用Promise异步回调。
+获取所有预置应用信息。使用Promise异步回调。接口调用失败时可能返回空数组，需校验返回值后使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4647,7 +4671,7 @@ try {
 
 getDeveloperIds(appDistributionType?: number): Array\<string>
 
-根据给定的应用[appDistributionType](#appdistributiontype12)获取当前用户下的所有开发者ID列表。
+根据给定的应用[appDistributionType](#appdistributiontype12)获取当前用户下的所有开发者ID列表。接口调用失败时可能返回空数组，需校验返回值后使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4745,7 +4769,7 @@ try {
 
 getAllPluginInfo(hostBundleName: string, userId?: number): Promise<Array\<PluginBundleInfo>>
 
-根据给定的hostBundleName和userId获取所有的PluginBundleInfo。使用Promise异步回调。
+根据给定的hostBundleName和userId获取所有的PluginBundleInfo。使用Promise异步回调。接口调用失败时可能返回空数组，需校验返回值后使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -6429,6 +6453,71 @@ try {
 } catch (err) {
   let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'getAbilityIcon failed: %{public}s', message);
+}
+```
+
+## bundleManager.filterBundleListByDeviceModeDistributionPolicies
+
+filterBundleListByDeviceModeDistributionPolicies(policies: Array\<DeviceModeDistributionPolicy>): Promise\<void>
+
+支持按设备模式分发策略过滤应用列表。使用Promise异步回调。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                       |
+| ---------- | ------ | ---- | ---------------------------|
+| policies | Array\<[DeviceModeDistributionPolicy](#devicemodedistributionpolicy)> | 是 | DeviceModeDistributionPolicy值的数组。入参不能为空，所有值必须在DeviceModeDistributionPolicy的枚举值范围内，且必须包含所有不同包体的策略（UNIVERSAL_DIFFERENT_PACKAGE、PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE和FULL_COMPATIBLE_DIFFERENT_PACKAGE）。 |
+
+**返回值：**
+
+| 类型                                                        | 说明                        |
+| ----------------------------------------------------------- | --------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | --------------------------------------|
+| 201 | Permission denied. |
+| 202 | Permission denied. Non-system APP calling system API. |
+| 17700097 | The device does not support the dual mode. |
+| 17700098 | The input parameter is invalid. It is either outside the range of valid enum values or does not include the following required enum values: [DeviceModeDistributionPolicy.UNIVERSAL_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.FULL_COMPATIBLE_DIFFERENT_PACKAGE]. |
+| 17700099 | The device is installing or uninstalling an application, or a previous API call is still being processed. Please try again. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let policies: Array<bundleManager.DeviceModeDistributionPolicy> = [
+  bundleManager.DeviceModeDistributionPolicy.UNIVERSAL_DIFFERENT_PACKAGE,
+  bundleManager.DeviceModeDistributionPolicy.PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE,
+  bundleManager.DeviceModeDistributionPolicy.FULL_COMPATIBLE_DIFFERENT_PACKAGE
+];
+
+try {
+  bundleManager.filterBundleListByDeviceModeDistributionPolicies(policies).then(() => {
+    hilog.info(0x0000, 'testTag', 'filterBundleListByDeviceModeDistributionPolicies successfully');
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'filterBundleListByDeviceModeDistributionPolicies failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'filterBundleListByDeviceModeDistributionPolicies failed. Cause: %{public}s', message);
 }
 ```
 

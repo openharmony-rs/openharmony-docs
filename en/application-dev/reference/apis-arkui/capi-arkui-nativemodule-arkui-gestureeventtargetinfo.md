@@ -6,7 +6,7 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=f8ecdb82f3ec053eb7dde21e27a6f047d194898a translatedAt=2026-07-17T09:23:53.945Z pushedAt=2026-07-17T10:44:35.424Z -->
+<!-- md-trans-meta sourceCommit=307c96700aa31ceaed2d16437f8e9e4fabcbd960 translatedAt=2026-08-19T08:23:24.060Z pushedAt=2026-08-19T09:02:54.227Z -->
 
 ```c
 typedef struct ArkUI_GestureEventTargetInfo ArkUI_GestureEventTargetInfo
@@ -14,7 +14,7 @@ typedef struct ArkUI_GestureEventTargetInfo ArkUI_GestureEventTargetInfo
 
 ## Overview
 
-Defines the object of gesture event target information, which represents the target information associated with a gesture event, facilitating the retrieval of the scroll state and other related information of the target object during gesture processing.
+Defines gesture event target information. This struct is used to query the status of the gesture event target object, such as scroll start and scroll end, during gesture processing. It is mainly applicable to scrollable container components. You can obtain this object from the gesture recognizer through [OH_ArkUI_GetGestureEventTargetInfo](capi-native-gesture-h.md#oh_arkui_getgestureeventtargetinfo), and read the target status through the target information query API.
 
 **Since**: 12
 

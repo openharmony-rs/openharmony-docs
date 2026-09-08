@@ -2,12 +2,13 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z-->
-<!--Designer: @yylong; @zcdqs-->
+<!--Owner: @rongShao-Z; @yangcan18-->
+<!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=937aa556d9f58747c9a612a2370c25cbc5101587 translatedAt=2026-08-19T07:16:58.108Z pushedAt=2026-08-20T10:45:03.062Z -->
 
-The common attributes and events for scrollable components currently only support the [List](ts-container-list.md), [Grid](ts-container-grid.md), [Scroll](ts-container-scroll.md), and [WaterFlow](ts-container-waterflow.md) components.
+The common scrollable component APIs currently support only the [List](ts-container-list.md), [Grid](ts-container-grid.md), [Scroll](ts-container-scroll.md), and [WaterFlow](ts-container-waterflow.md) components. They provide common attributes such as scrollbar style, edge effect, nested scrolling, friction coefficient control, and content clipping, as well as event callbacks such as scroll start, scroll stop, and reaching the boundary. You can use these APIs to uniformly manage the behavior of various scrollable components, which are applicable to scenarios such as list display, grid layout, waterfall flow arrangement, and page scrolling.
 
 >  **NOTE**
 >
@@ -23,13 +24,15 @@ Sets the scrollbar state.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name  | Type                                     | Mandatory| Description                                  |
 | -------- | ----------------------------------------- | ---- | -------------------------------------- |
-| barState | [BarState](ts-appendix-enums.md#barstate) | Yes  | Scrollbar state.<br>Default value: **BarState.Auto** for the **List**, **Grid**, and **Scroll** components and **BarState.Off** for the **WaterFlow** component|
+| barState | [BarState](ts-appendix-enums.md#barstate) | Yes  | Scrollbar state. **BarState.Off** indicates that the scrollbar is not displayed; **BarState.Auto** indicates that the scrollbar is displayed as needed; **BarState.On** indicates that the scrollbar is always displayed.<br/>Default value: **BarState.Auto** for the **List**, **Grid**, and **Scroll** components, and **BarState.Off** for the **WaterFlow** component. |
 
 **Return value**
 
@@ -45,13 +48,15 @@ Sets the scrollbar color.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                                        | Mandatory| Description          |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| color  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string | Yes  | Scrollbar color.<br>Default value: **'\#182431'** (40% opacity)<br>A number value indicates a HEX color in RGB or ARGB format, for example, **0xffffff**. A string value indicates a color in RGB or ARGB format, for example, **'#ffffff'**.|
+| color  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string | Yes   | Scrollbar color.<br>The default value on children's smartwatches is **'\#ffffff'**, which indicates white (100% opacity). The default value on other devices is **'\#182431'**, which indicates dark blue-gray (40% opacity).<br>A number value indicates a HEX color in RGB or ARGB format, for example, **0xffffff**. A string value indicates a color in RGB or ARGB format, for example, **'#ffffff'**. |
 
 **Return value**
 
@@ -67,13 +72,15 @@ Sets the scrollbar color. Compared with [scrollBarColor<sup>11+</sup>](#scrollba
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                                        | Mandatory| Description          |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| color  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Scrollbar color.<br>Default value: **'\#182431'** (40% opacity)<br>A number value indicates a HEX color in RGB or ARGB format, for example, **0xffffff**. A string value indicates a color in RGB or ARGB format, for example, **'#ffffff'**.|
+| color  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes   | Scrollbar color.<br>The default value on children's smartwatches is **'\#ffffff'**, which indicates white (100% opacity). The default value on other devices is **'\#182431'**, which indicates dark blue-gray (40% opacity).<br>A number value indicates a HEX color in RGB or ARGB format, for example, **0xffffff**. A string value indicates a color in RGB or ARGB format, for example, **'#ffffff'**. |
 
 **Return value**
 
@@ -85,9 +92,11 @@ Sets the scrollbar color. Compared with [scrollBarColor<sup>11+</sup>](#scrollba
 
 scrollBarWidth(value: number | string): T
 
-Sets the scrollbar width. This attribute cannot be set in percentage. After the width is set, the scrollbar is displayed with the set width in normal state and pressed state. If the set width exceeds the height of the scrollable component on the main axis, the scrollbar reverts to the default width.
+Sets the width of the scrollbar. Percentage values are not supported. After the width is set, the scrollbar width in both the normal state and the pressed state is the set value. If the scrollbar width exceeds the visible size of the scrollable component along the main axis, the scrollbar width changes to the default value of 4 vp.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -95,7 +104,7 @@ Sets the scrollbar width. This attribute cannot be set in percentage. After the 
 
 | Name| Type                      | Mandatory| Description                                     |
 | ------ | -------------------------- | ---- | ----------------------------------------- |
-| value  | number&nbsp;\|&nbsp;string | Yes  | Scrollbar width.<br>Default value: **4**<br>Unit: vp<br>If this parameter is set to a value less than or equal to 0, the default value is used. The value **0** means not to show the scrollbar.|
+| value  | number&nbsp;\|&nbsp;string | Yes   | Width of the scrollbar.<br/>Default value: **4**<br/>Unit: vp <br/>Value range: [0, +∞). If the value is less than 0, the default value is used, and on a children's smartwatch, the default value 5 vp is restored. If the value is 0, the scrollbar is not displayed. |
 
 **Return value**
 
@@ -107,9 +116,9 @@ Sets the scrollbar width. This attribute cannot be set in percentage. After the 
 
 scrollBarWidth(value: number | string | Resource): T
 
-Sets the scrollbar width. This attribute cannot be set in percentage. After the width is set, the scrollbar is displayed with the set width in normal state and pressed state. If the set width exceeds the height of the scrollable component on the main axis, the scrollbar width changes to 4 vp. The **Resource** type is supported.
+Sets the width of the scrollbar. Percentage values are not supported. After the width is set, the scrollbar width in both the normal state and the pressed state is the set value. If the scrollbar width exceeds the visible size of the scrollable component along the main axis, the scrollbar width changes to the default value of 4 vp. Resource type is supported.
 
-If this attribute is not set, the scrollbar width is 4 vp.
+If this API is not used, the scrollbar width is 4 vp.
 
 **Since**: 26.0.0
 
@@ -123,13 +132,45 @@ If this attribute is not set, the scrollbar width is 4 vp.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;string \|&nbsp;[Resource](ts-types.md#resource) | Yes  | Scrollbar width.<br>Unit: vp<br>Value range: [0, +∞). If this parameter is set to a value less than 0, **4vp** is used. The value **0** means not to show the scrollbar.|
+| value  | number&nbsp;\|&nbsp;string \|&nbsp;[Resource](ts-types.md#resource) | Yes   | Scrollbar width.<br>Unit: vp<br>The value range is [0, +∞). If this parameter is set to a value less than 0, **4vp** is used, and **5vp** is used for children's smartwatches. The value **0** means not to show the scrollbar. |
 
 **Return value**
 
 | Type| Description          |
 | --- | -------------- |
 | T | Current scrollable component.|
+
+### scrollBarHeight
+
+scrollBarHeight(height: LengthMetrics | undefined): T
+
+Sets the height of the scrollbar track.
+
+If this API is not called, the height of the scrollbar track adapts to the height of the scrollable component by default. The default height on a wearable is 37 vp.
+
+>  **NOTE**
+>
+>  Ensure that the sum of the values set for **scrollBarHeight** and [scrollBarMargin](#scrollbarmargin20) does not exceed the height of the scrollable component. Otherwise, the scrollbar may fail to display properly.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters** 
+
+| Name | Type | Mandatory | Description |
+| ------ | ---- | ---- | ---- |
+| height | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | Yes | Height of the scrollbar track.<br/>The value must be greater than or equal to 0. If it is set to **undefined** or a value less than 0, the height adapts to the scrollable component, and on a wearable it is restored to the default value 37 vp. If it is set to 0, the scrollbar is not displayed. |
+
+**Return value**
+
+| Type | Description |
+| --- | -------------- |
+| T | Current scrollable component. |
 
 ### edgeEffect<sup>11+</sup>
 
@@ -139,6 +180,8 @@ Sets the effect used when the scroll boundary is reached.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -146,7 +189,7 @@ Sets the effect used when the scroll boundary is reached.
 | Name               | Type                                             | Mandatory| Description                                                        |
 | --------------------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | edgeEffect            | [EdgeEffect](ts-appendix-enums.md#edgeeffect)     | Yes  | Effect used when the scroll boundary is reached. The spring and shadow effects are supported.<br>Default value: **EdgeEffect.None** for the **Grid**, **Scroll**, and **WaterFlow** components and **EdgeEffect.Spring** for the **List** component|
-| options | [EdgeEffectOptions](#edgeeffectoptions11) | No  | Whether edge effects are enabled when content is smaller than component size, and effective edges. The value **{ alwaysEnabled: true }** means to enable the scroll effect, and **{ alwaysEnabled: false }** means the opposite.<br>Default value:<br>For the **List**, **Grid**, and **WaterFlow** components, the default value is **{ alwaysEnabled: false, EffectEdge: EffectEdge.START \| EffectEdge.END}**. For the **Scroll** component, the default value is **{ alwaysEnabled: true, EffectEdge: EffectEdge.START \| EffectEdge.END}**.|
+| options | [EdgeEffectOptions](#edgeeffectoptions11) | No | Whether to enable the sliding effect when the component content size is smaller than the component itself. Since API version 18, the edge where the edge effect takes effect can be set. Setting it to **{ alwaysEnabled: true }** enables the sliding effect, and **{ alwaysEnabled: false }** disables it.<br/>Default value:<br/>For the **List**, **Grid**, and **WaterFlow** components, the default value is **{ alwaysEnabled: false }**; for the **Scroll** component, the default value is **{ alwaysEnabled: true }**. Since API version 18, the **effectEdge** field is added by default, with the value **EffectEdge.START \| EffectEdge.END**.|
 
 **Return value**
 
@@ -161,6 +204,8 @@ nestedScroll(value: NestedScrollOptions): T
 Sets the nested scrolling mode in the forward and backward directions to implement scrolling linkage with the parent component.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -184,13 +229,15 @@ Sets whether to support scroll gestures.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type   | Mandatory| Description                               |
 | ------ | ------- | ---- | ----------------------------------- |
-| value  | boolean | Yes  | Whether to support scroll gestures. With the value **true**, scrolling via finger or mouse is enabled. With the value **false**, scrolling via finger or mouse is disabled, but this does not affect the scrolling APIs of the [Scroller](ts-container-scroll.md#scroller).<br>Default value: **true**|
+| value  | boolean | Yes   | Whether to support finger or mouse wheel gestures. The value **true** means supported, and **false** means not supported. However, this does not affect the scrolling APIs of the controller [Scroller](ts-container-scroll.md#scroller) or the [backToTop](#backtotop15) attribute.<br/>Default value: **true** |
 
 **Return value**
 
@@ -202,9 +249,11 @@ Sets whether to support scroll gestures.
 
 friction(value: number | Resource): T
 
-Sets the friction coefficient. It applies only to gestures in the scrolling area, and it affects only indirectly the scroll chaining during the inertial scrolling process. If this attribute is set to a value less than or equal to 0, the default value is used.
+Sets the friction coefficient. It takes effect when the scroll area is swiped manually, and affects only the inertial scrolling process. It indirectly affects the linkage effect between nested scrollable components during inertial scrolling (for example, the chain animation [chainAnimation](ts-container-list.md#chainanimation) of the List component). It applies to scenarios where the deceleration speed of inertial scrolling needs to be adjusted. If the value is set to less than or equal to 0, the default value is used.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -238,6 +287,8 @@ Sets the maximum initial speed for inertial animation after a fling gesture.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -259,14 +310,18 @@ fadingEdge(enabled: Optional&lt;boolean&gt;, options?: FadingEdgeOptions): T
 Sets whether to enable the edge fading effect and the length of the fading edge.
 
 > **NOTE**
-> 
-> The **fadingEdge** effect is implemented by configuring the [overlay](ts-universal-attributes-overlay.md#overlay) and [blendMode](ts-universal-attributes-image-effect.md#blendmode11) attributes (parameter values: **BlendMode.SRC_OVER** and **BlendApplyType.OFFSCREEN**). When the **fadingEdge** effect takes effect, the **.overlay()** and **.blendMode()** attributes of the original component are overwritten. As a result, the screenshot APIs of the current component and its child components cannot capture the correct image. APIs that require screen capture: [blur](ts-universal-attributes-image-effect.md#blur), [linearGradientBlur](ts-universal-attributes-image-effect.md#lineargradientblur12), [brightness](ts-universal-attributes-image-effect.md#brightness), [visualEffect](ts-universal-attributes-filter-effect.md#visualeffect), [grayscale](ts-universal-attributes-image-effect.md#grayscale), [saturate](ts-universal-attributes-image-effect.md#saturate), [contrast](ts-universal-attributes-image-effect.md#contrast), [invert](ts-universal-attributes-image-effect.md#invert), [sepia](ts-universal-attributes-image-effect.md#sepia), [hueRotate](ts-universal-attributes-image-effect.md#huerotate), [colorBlend](ts-universal-attributes-image-effect.md#colorblend), [lightUpEffect](ts-universal-attributes-image-effect.md#lightupeffect12), [pixelStretchEffect](ts-universal-attributes-image-effect.md#pixelstretcheffect12), [blendMode](ts-universal-attributes-image-effect.md#blendmode11) and [backgroundBrightness](ts-universal-attributes-background.md#backgroundbrightness12).
 >
-> When **fadingEdge** is enabled, avoid setting [background](ts-universal-attributes-background.md#background10)-related attributes on the component with **fadingEdge**, as this may interfere with the fade effect.
+> **fadingEdge** is implemented by setting the [overlay](ts-universal-attributes-overlay.md#overlay) attribute and the [blendMode](ts-universal-attributes-image-effect.md#blendmode11) attribute (with the parameter values **BlendMode.SRC_OVER** and **BlendApplyType.OFFSCREEN**). When **fadingEdge** takes effect, it overrides the **.overlay()** and **.blendMode()** attributes of the original component, and causes the APIs that require screen capture of the current component and its child components to fail to capture the correct image. The APIs that require screen capture include [blur](ts-universal-attributes-image-effect.md#blur), [linearGradientBlur](ts-universal-attributes-image-effect.md#lineargradientblur12), [brightness](ts-universal-attributes-image-effect.md#brightness), [visualEffect](ts-universal-attributes-filter-effect.md#visualeffect), [grayscale](ts-universal-attributes-image-effect.md#grayscale), [saturate](ts-universal-attributes-image-effect.md#saturate), [contrast](ts-universal-attributes-image-effect.md#contrast), [invert](ts-universal-attributes-image-effect.md#invert), [sepia](ts-universal-attributes-image-effect.md#sepia), [hueRotate](ts-universal-attributes-image-effect.md#huerotate), [colorBlend](ts-universal-attributes-image-effect.md#colorblend), [lightUpEffect](ts-universal-attributes-image-effect.md#lightupeffect12), [pixelStretchEffect](ts-universal-attributes-image-effect.md#pixelstretcheffect12), [blendMode](ts-universal-attributes-image-effect.md#blendmode11), and [backgroundBrightness](ts-universal-attributes-background.md#backgroundbrightness12).
 >
-> With **fadingEdge** set to **true**, the component is clipped to the boundary, and setting the component's [clip](ts-universal-attributes-sharp-clipping.md#clip12) attribute to **false** will not take effect.
+> When **fadingEdge** takes effect, it is recommended not to set the [background](ts-universal-attributes-background.md#background10) related attributes on the component on which the **fadingEdge** attribute is set, because doing so affects the fading display effect.
+>
+> When **fadingEdge** takes effect, it is recommended not to set the [systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial) related attributes on the component on which the **fadingEdge** attribute is set or on its child components, because doing so affects the display effect of the system material and causes the material effect to be inconsistent with the expected effect.
+>
+> When **fadingEdge** takes effect, the component on which the **fadingEdge** attribute is set is clipped to the boundary. Setting the [clip](ts-universal-attributes-sharp-clipping.md#clip12) attribute to **false** on this component does not take effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -289,7 +344,11 @@ clipContent(clip: ContentClipMode | RectShape): T
 
 Sets the content clipping area for this scrollable component.
 
+Since API version 26.0.0, child components within the content-layer clipping area can be displayed normally. In versions earlier than API version 26.0.0, when the content-layer clipping area of the [List](ts-container-list.md) component is larger than the component itself, child components that are completely outside the component area but within the clipping area are not displayed by default. To display them, set the **show** parameter of the **cachedCount** attribute of the component to **true**. However, because the preloaded child components set by the **cachedCount** attribute are executed only in idle time slots, flickering may occur due to untimely updates in scenarios such as component size changes and data updates.
+
 **Atomic service API**: This API can be used in atomic services since API version 14.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -297,7 +356,7 @@ Sets the content clipping area for this scrollable component.
 
 | Name | Type                                             | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| clip | [ContentClipMode](#contentclipmode14)&nbsp;\|&nbsp;[RectShape](../js-apis-arkui-shape.md#rectshape)  | Yes  | Clipping to apply, which is effective only for the content (that is, child components) of the scrollable component, not the background. When a custom rectangular area is passed through **RectShape**, only width, height, and [offset](../js-apis-arkui-shape.md#offset) relative to the component's upper left corner are supported, and rounded corners are not supported.<br></div>Default value: The default value for **Grid** and **Scroll** is **ContentClipMode.BOUNDARY**, and the default value for **List** and **WaterFlow** is **ContentClipMode.CONTENT_ONLY**.|
+| clip | [ContentClipMode](#contentclipmode14)&nbsp;\|&nbsp;[RectShape](../js-apis-arkui-shape.md#rectshape)   | Yes   | Clipping applies only to the content of the scroll container, that is, its child nodes, and the background is not affected. When a custom rectangular area is passed in through **RectShape**, only the width, height, and [offset](../js-apis-arkui-shape.md#offset) relative to the upper left corner of the component are supported, and rounded corners are not supported.<br>Default value: the default value for **Grid** and **Scroll** is **ContentClipMode.BOUNDARY**, and the default value for **List** and **WaterFlow** is **ContentClipMode.CONTENT_ONLY**. |
 
 **Return value**
 
@@ -314,6 +373,8 @@ Sets whether to enable the back-to-top feature for the scrollable component when
 When a status bar touch event is received, the scrollable component on the current page can scroll to the top with an animation. This behavior does not affect scrollable components in background applications, which will not scroll to the top. This attribute is independent of the [enableScrollInteraction](#enablescrollinteraction11) setting.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -333,9 +394,11 @@ When a status bar touch event is received, the scrollable component on the curre
 
 scrollBarMargin(margin: ScrollBarMargin): T
 
-Sets the margin of the scrollbar. The margin is calculated from the offset distance where the scrollbar avoids corners. If the scrollbar area is smaller than the minimum scrollbar length, the scrollbar remains hidden.
+Sets the margin of the scrollbar. The margin is calculated based on the distance by which the scrollbar avoids the rounded corner area of the scrollable component. If the scrollbar area is smaller than the minimum length of the scrollbar, the scrollbar is not displayed. If this attribute is set, the automatic margin adjustment of [autoAdjustScrollBarMargin](#autoadjustscrollbarmargin) does not take effect. Ensure that the sum of [scrollBarHeight](#scrollbarheight) and the value of this attribute does not exceed the height of the scrollable component; otherwise, the scrollbar may not be displayed properly.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -343,7 +406,7 @@ Sets the margin of the scrollbar. The margin is calculated from the offset dista
 
 | Name| Type   | Mandatory| Description                                 |
 | ------ | ------- | ---- | ------------------------------------- |
-| margin  | [ScrollBarMargin](ts-types.md#scrollbarmargin20)  | Yes  |Start and end margins of the scrollbar.<br>Default value: {start: LengthMetrics.vp(0), end: LengthMetrics.vp(0)}|
+| margin  | [ScrollBarMargin](ts-types.md#scrollbarmargin20)  | Yes   |Start and end margins of the scrollbar.<br/>Default value for children's smartwatches: **{start: LengthMetrics.vp(42), end: LengthMetrics.vp(0)}**<br/>Default value for other devices: **{start: LengthMetrics.vp(0), end: LengthMetrics.vp(0)}** |
 
 **Return value**
 
@@ -363,7 +426,7 @@ When the automatic margin adjustment feature is enabled, the scrolling direction
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -377,7 +440,7 @@ When the automatic margin adjustment feature is enabled, the scrolling direction
 
 | Type| Description          |
 | --- | -------------- |
-| T | Current component.|
+| T | Current scrollable component. |
 
 ### digitalCrownSensitivity<sup>18+</sup>
 
@@ -389,13 +452,15 @@ A component must have focus to receive [crown events](ts-universal-events-crown.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name     | Type                                                        | Mandatory| Description                                                        |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| sensitivity | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[CrownSensitivity](ts-appendix-enums.md#crownsensitivity18)&gt; | Yes  | Sensitivity to the digital crown rotation.<br>Default value: **CrownSensitivity.MEDIUM**|
+| sensitivity | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[CrownSensitivity](ts-appendix-enums.md#crownsensitivity18)&gt; | Yes | Crown response sensitivity. **CrownSensitivity.LOW** indicates low sensitivity, with a slower scrolling response; **CrownSensitivity.MEDIUM** indicates medium sensitivity, with a moderate scrolling response; **CrownSensitivity.HIGH** indicates high sensitivity, with a faster scrolling response.<br/>Default value: **CrownSensitivity.MEDIUM**, with a moderate response speed. |
 
 **Return value**
 
@@ -413,13 +478,15 @@ If the combined value of contentStartOffset and contentEndOffset exceeds the scr
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type  | Mandatory| Description                                           |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| offset  | number \| [Resource](ts-types.md#resource) | Yes  | Offset from the start of the content to the boundary of the content area.<br>Default value: **0**<br>Unit: vp<br>Invalid values (negative numbers or non-numeric Resource values) revert to the default value.|
+| offset  | number \| [Resource](ts-types.md#resource) | Yes   | Offset of the start position of the content area.<br/>Default value: **0**<br/>Unit: vp<br/>Value range: [0, +∞)<br/>If an invalid value such as a negative number or a non-numeric Resource is set, the default value is used.|
 
 **Return value**
 
@@ -437,20 +504,21 @@ If the combined value of contentStartOffset and contentEndOffset exceeds the scr
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type  | Mandatory| Description                                         |
 | ------ | ------ | ---- | --------------------------------------------- |
-| offset  | number \| [Resource](ts-types.md#resource) | Yes  | Offset from content end to component display boundary.<br>Default value: **0**<br>Unit: vp<br>Invalid values (negative numbers or non-numeric Resource values) revert to the default value.|
+| offset  | number \| [Resource](ts-types.md#resource) | Yes   | Offset of the end of the content area.<br/>Default value: **0**<br/>Unit: vp <br/>Value range: [0, +∞)<br/>If an invalid value such as a negative number or a non-numeric Resource is set, the default value is used.|
 
 **Return value**
 
 | Type| Description          |
 | --- | -------------- |
 | T | Current scrollable component.|
-
 
 ### enableScrollWithMouse
 
@@ -462,10 +530,9 @@ Sets whether to support scrolling by dragging with the left mouse button pressed
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 
 **Parameters**
 
@@ -477,7 +544,7 @@ Sets whether to support scrolling by dragging with the left mouse button pressed
 
 | Type| Description          |
 | --- | -------------- |
-| T | Current component.|
+| T | Current scrollable component. |
 
 ## Events
 
@@ -490,6 +557,8 @@ Triggered when the scrollable component reaches the start position.
 This event is triggered once when the component is initialized and once when the component scrolls to the start position. If the edge effect is set to a spring effect, this event is triggered once when the swipe passes the start position, and triggered again when the swipe rebounds back to the start position.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -511,9 +580,11 @@ onReachEnd(event: () => void): T
 
 Triggered when the scrollable component reaches the end position.
 
-If the edge effect is set to a spring effect, this event is triggered once when the swipe passes the end position, and triggered again when the swipe rebounds back to the end position.
+Triggered once when the scrollable component is initialized and is already at the end position. When the edge effect is a spring effect, this event is triggered once when the component is swiped past the end position, and once again when it bounces back to the end position.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -533,7 +604,7 @@ If the edge effect is set to a spring effect, this event is triggered once when 
 
 onScrollStart(event: () => void): T
 
-Triggered when the scrollable component starts scrolling initiated by the user's finger dragging the component or its scrollbar. For animated scrolling initiated via the [Scroller](ts-container-scroll.md#scroller) controller, this event is triggered when the animation starts.
+Triggered when the scrollable component starts scrolling initiated by the user's finger dragging the component or its scrollbar. This event is also triggered when the animation contained in the scrolling triggered by [Scroller](ts-container-scroll.md#scroller) starts.
 
 Trigger conditions:
 
@@ -542,6 +613,8 @@ Trigger conditions:
 2. Scrolling is initiated through scroller controller API calls with transition animation effects.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -561,7 +634,7 @@ Trigger conditions:
 
 onScrollStop(event: () => void): T
 
-Triggered when scrolling stops. This event is triggered when scrolling initiated by dragging the scrollable component or its scrollbar stops after the finger leaves the screen. For animated scrolling initiated via the [Scroller](ts-container-scroll.md#scroller) controller, this event is triggered when the animation stops.
+Triggered when the scrollable component stops scrolling after the user's finger leaves the screen. This event is also triggered when the animation contained in the scrolling triggered by [Scroller](ts-container-scroll.md#scroller) stops.
 
 Trigger conditions:
 
@@ -570,6 +643,8 @@ Trigger conditions:
 2. The animation stops after scroller controller API calls with transition effects.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -585,13 +660,13 @@ Trigger conditions:
 | --- | -------------- |
 | T | Current scrollable component.|
 
-### onWillScroll<sup>12+</sup> 
+### onWillScroll<sup>12+</sup>
 
 onWillScroll(handler: Optional&lt;OnWillScrollCallback&gt;): T
 
-Triggered when the scrollable component is about to scroll.
+Triggered before the scrollable component scrolls. Comparison with [onDidScroll](#ondidscroll12): **onWillScroll** is triggered before scrolling occurs and can specify the offset to be scrolled through its return value, making it suitable for scenarios where scrolling needs to be intercepted or customized; **onDidScroll **is triggered when scrolling occurs and returns the actual scroll offset and scrolling state of the current frame, making it suitable for scenarios where only the scrolling process needs to be monitored. The two can be used together.
 
-The callback provides the amount of offset that is about to be scrolled in the current frame, along with the current scroll status and the source of the scrolling operation. The offset provided in the callback is the calculated intended scrolling offset, not the final actual scrolling offset. You can specify the intended scrolling offset for the scrollable component through the return value of this callback. The parameter type of the [onWillScroll](./ts-container-scroll.md#onwillscroll12) API of the [Scroll](./ts-container-scroll.md) component is [ScrollOnWillScrollCallback](./ts-container-scroll.md#scrollonwillscrollcallback12).
+Called to return the offset to be scrolled in the current frame, the current scroll state, and the source of the scroll operation. The offset returned in the callback is the calculated offset to be scrolled, not the final actual scroll offset. You can specify the offset to be scrolled by the scrollable component through the return value of this callback. The parameter type of the [onWillScroll](./ts-container-scroll.md#onwillscroll12) API of the [Scroll](./ts-container-scroll.md) component is [ScrollOnWillScrollCallback](./ts-container-scroll.md#scrollonwillscrollcallback12).
 
 >**NOTE**
 >
@@ -600,6 +675,8 @@ The callback provides the amount of offset that is about to be scrolled in the c
 > - When [ScrollEdge](ts-container-scroll.md#scrolledge) and [ScrollToIndex](ts-container-scroll.md#scrolltoindex) without animation are called, **onWillScroll** is not triggered.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -615,7 +692,7 @@ The callback provides the amount of offset that is about to be scrolled in the c
 | --- | -------------- |
 | T | Current scrollable component.|
 
-### onDidScroll<sup>12+</sup> 
+### onDidScroll<sup>12+</sup>
 
 onDidScroll(handler: OnScrollCallback): T
 
@@ -628,6 +705,8 @@ Triggered when the scrollable component scrolls. The return value is the offset 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -651,9 +730,11 @@ Triggered when the scrollable component scrolls.
 
 > **NOTE**
 >
-> This API is supported since API version 11 and deprecated since API version 12. If the **onScroll** events of the [List](ts-container-list.md), [Grid](ts-container-grid.md), and [WaterFlow](ts-container-waterflow.md) components are triggered after the layout, you are advised to use [onDidScroll](#ondidscroll12) instead. If the **onScroll** event of the [Scroll](ts-container-scroll.md) component is triggered before the layout, you are advised to use [onWillScroll](#onwillscroll12) instead.
+> This API is supported since API version 11 and deprecated since API version 12. The **onScroll** event of the [List](ts-container-list.md), [Grid](ts-container-grid.md), and [WaterFlow](ts-container-waterflow.md) components is triggered after layout. You are advised to use [onDidScroll](#ondidscroll12) instead. The **onScroll** event of the [Scroll](ts-container-scroll.md) component is triggered before layout. You are advised to use [onWillScroll](#onwillscroll12) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -679,6 +760,8 @@ Triggered when the scrollable component starts to be dragged.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -703,6 +786,8 @@ Triggered when the scrollable component is released. It is not triggered for scr
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -721,11 +806,13 @@ Triggered when the scrollable component is released. It is not triggered for scr
 
 onDidStopDragging(handler: OnDidStopDraggingCallback): T
 
-Triggered when dragging of the scrollable component ends.
+Called when the scrollable component stops being dragged.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 21.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -757,6 +844,8 @@ Triggered when the scrollable component is about to initiate an inertial animati
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -780,6 +869,8 @@ Triggered when the inertial animation of the scrollable component ends. It is no
 **Widget capability**: This API can be used in ArkTS widgets since API version 21.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -814,16 +905,20 @@ Implements an object used to configure the [nestedScroll](#nestedscroll11) attri
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name  | Type | Read-Only| Optional| Description             |
 | ----- | ------ | ------ | -- | ----------------- |
-| scrollForward | [NestedScrollMode](ts-appendix-enums.md#nestedscrollmode10) | No| No| Nested scrolling options when the scrollable component scrolls forward.|
-| scrollBackward | [NestedScrollMode](ts-appendix-enums.md#nestedscrollmode10) | No| No| Nested scrolling options when the scrollable component scrolls backward.|
+| scrollForward | [NestedScrollMode](ts-appendix-enums.md#nestedscrollmode10) | No | No | Nested scrolling options when the scrollable component scrolls toward the end. **NestedScrollMode.SELF_ONLY** means the component scrolls by itself only and does not scroll with the parent component; **NestedScrollMode.SELF_FIRST** means the component scrolls first, and the parent component scrolls after the component reaches the edge; **NestedScrollMode.PARENT_FIRST** means the parent component scrolls first, and the component scrolls after the parent component reaches the edge. |
+| scrollBackward | [NestedScrollMode](ts-appendix-enums.md#nestedscrollmode10) | No | No | Nested scrolling options when the scrollable component scrolls toward the start. **NestedScrollMode.SELF_ONLY** means the component scrolls by itself only and does not scroll with the parent component; **NestedScrollMode.SELF_FIRST** means the component scrolls first, and the parent component scrolls after the component reaches the edge; **NestedScrollMode.PARENT_FIRST** means the parent component scrolls first, and the component scrolls after the parent component reaches the edge. |
 
 ## EdgeEffectOptions<sup>11+</sup>
 
 Implements an object used to configure the [edgeEffect](#edgeeffect11) attribute.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -838,11 +933,13 @@ Implements an object used to configure the [fadingEdge](#fadingedge14) attribute
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name          | Type                                                        | Read-Only| Optional| Description                                                        |
 | ---------------- | ------------------------------------------------------------ | ---- | -- | ------------------------------------------------------------ |
-| fadingEdgeLength | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | Yes| Length of the fading edge.|
+| fadingEdgeLength | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | Yes | Fading edge length. The default value is 32 vp. If the value is less than 0, **undefined**, or not set, the default value is used. If the set length exceeds half of the container height, the fading edge length is half of the container height. |
 
 ## EditModeOptions<sup>23+</sup>
 
@@ -857,12 +954,15 @@ Sets attributes of the **List** or **Grid** component in edit mode.
 | enableGatherSelectedItemsAnimation | boolean | No  | Yes| Whether to enable the multi-selection gather animation. If this parameter is set to **true**, the gather animation is enabled. If this parameter is set to **false**, the gather animation is disabled.<br>The multi-selection gather animation is displayed only when [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8) is set on **GridItem** or **ListItem**, **responseType** is set to [ResponseType](ts-appendix-enums.md#responsetype8).LongPress, and [preview](ts-universal-attributes-menu.md#contextmenuoptions10) is set to **MenuPreviewMode.IMAGE** or **CustomBuilder**.<br>If [drag events](ts-universal-events-drag-drop.md) are set on **GridItem** or **ListItem**, whether to enable the gather animation is subject to the [dragPreviewOptions](ts-universal-attributes-drag-drop.md#dragpreviewoptions11) setting.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | onGetPreviewBadge | [OnGetPreviewBadgeCallback](#ongetpreviewbadgecallback23) | No  | Yes| Callback triggered to obtain the number of selected items when the animation for gathering selected items upon long press is about to start.<br>If this parameter is omitted, the number of selected items within the display range of the **Grid** or **List** component is used as the badge for the menu preview image shown after the animation for gathering selected items upon long press.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | useDefaultMultiSelectStyle | boolean | No  | Yes| Whether to use the default multi-selection style.<br>The value **true** indicates that the check box is displayed after the **GridItem** or **ListItem** enters the multi-selection state. The value **false** indicates that no default style is available after the GridItem or ListItem enters the multi-selection state.<br>Default value: **true**<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| enableTwoFingerMultiSelect | boolean | No   | Yes | Whether to enable two-finger swipe multi-select.<br>The value **true** indicates that a two-finger swipe can enter edit mode and perform multi-select, which takes effect only when **List**/**Grid** uses [enableEditMode](ts-container-grid.md#enableeditmode) two-way binding or sets the [onEditModeChange](ts-container-grid.md#oneditmodechange) event callback; the value **false** indicates that a two-finger swipe cannot perform multi-select.<br>Default value: **true**<br>**Since:** 26.0.0<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. |
 
 ## EffectEdge<sup>18+</sup>
 
 Enumerates the edges where the edge effect is applied.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -876,6 +976,8 @@ Enumerates the edges where the edge effect is applied.
 Enumerates the content clipping modes for the scrollable container.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -896,6 +998,8 @@ type OnWillScrollCallback = (scrollOffset: number, scrollState: ScrollState, scr
 Triggered when the scrollable component is about to scroll.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -923,6 +1027,8 @@ Triggered when the scrollable component scrolls.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -946,7 +1052,7 @@ Called when a list or grid element starts to be dragged.
 
 | Name   | Type                                                     | Mandatory| Description                  |
 | --------- | --------------------------------------------------------- | ---- | ---------------------- |
-| event     | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo) | Yes  | Information about the drag point.        |
+| event     | [ItemDragInfo](#itemdraginfo) | Yes   | Information about the drag point.         |
 | itemIndex | number                                                    | Yes  | Index of the dragged element.|
 
 **Return value**
@@ -979,6 +1085,8 @@ Implements a return value object of the [OnWillScrollCallback](#onwillscrollcall
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type| Read-Only| Optional| Description|
@@ -995,6 +1103,8 @@ Provides the size information of the child components of the **List** or **ListI
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### constructor<sup>12+</sup>
@@ -1004,6 +1114,8 @@ constructor(childDefaultSize: number)
 A constructor used to create a **ChildrenMainSize** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1021,7 +1133,6 @@ For details about the error codes, see [Universal Error Codes](../../errorcode-u
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.   |
 
-
 ### childDefaultSize<sup>12+</sup>
 
 set childDefaultSize(value: number)
@@ -1029,6 +1140,8 @@ set childDefaultSize(value: number)
 Sets the default size of the child component along the main axis.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1068,6 +1181,8 @@ Performs batch operations to add, delete, or modify the size information of chil
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -1078,7 +1193,6 @@ Performs batch operations to add, delete, or modify the size information of chil
 | deleteCount | number | No   | Number of size information entries to be deleted starting from the **start** position.<br>**NOTE**<br>1.  The value must be a finite non-negative number; otherwise, it will be treated as **0**.<br>2. Non-integer values are truncated to the nearest integer.<br>3. The result of (start + deleteCount - 1) can exceed the maximum index, which will delete all size information of child components starting from the **start** position.<br>Default value: **+∞**<br>Value range: [0, +∞)|
 | childrenSize | Array\<number > | No   | Size information of all child components to be inserted, starting from the **start** position.<br>Unit for each value in the array: vp<br>**NOTE**<br>1. If the values in the array are finite non-negative number, they are considered specified sizes and will not change with the default size.<br>2. If the values in the array are not finite non-negative number, they will be treated as the default size and will change with the default size.<br>The default value is an empty array.<br>Value range: [0, +∞)|
 
-
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../../errorcode-universal.md).
@@ -1087,13 +1201,12 @@ For details about the error codes, see [Universal Error Codes](../../errorcode-u
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.   |
 
-
 > **NOTE**
 >
-> - If only the **start** parameter is used, it means to delete the size information of the child components starting from the **start** position and beyond.
-> - If only the **start** and **deleteCount** parameters are used, it means to delete the **deleteCount**-specified number of size information entries starting from the **start** position. This is generally used when you remove child components.
-> - If all three parameters are used, it means to delete the **deleteCount**-specified number of size information entries starting from the **start** position, and then insert all the size information from **childrenSize** at the **start** position. This is generally used when you add child components or batch update the main axis size of child components. If it's only about adding child components, **deleteCount** should be **0**, and the number of elements in **childrenSize** should be equal to the number of child components being added. If it's only about batch updating the main axis size of child components, the number of elements in **childrenSize** should be equal to **deleteCount**, which is the number of updates being made.
-> - If you want to notify that the size of a child component should be the default size, the corresponding value in **childrenSize** should not be given as a finite non-negative value, but rather as **NaN**, any negative value, or any other value that can be processed as the default size.
+> - If only the **start** parameter is used, the size information of the child components starting from the index **start** is deleted.
+> - If only the **start** and **deleteCount** parameters are used, the size information of **deleteCount** child components starting from the index **start** is deleted. This is generally used when child components are deleted.
+> - If all three parameters are used, the size information of **deleteCount** child components starting from the index **start** is deleted, and then all size information in **childrenSize** is inserted at the **start** position. This is generally used when child components are added or the sizes of child components in the main axis direction are updated in batches. If child components are only added, **deleteCount** should be 0, and the number of elements in **childrenSize** should be equal to the number of added child components. If only the sizes of child components in the main axis direction are updated in batches, the number of elements in **childrenSize** should be equal to **deleteCount**.
+> - To notify that the size of a child component is the default size, the corresponding value in **childrenSize** should not be a finite non-negative value. Instead, it should be a value that can be processed as the default size, such as NaN or any negative value.
 
 ### update<sup>12+</sup>
 
@@ -1102,6 +1215,8 @@ update(index: number, childSize: number): void
 Updates the main axis size information of the child component corresponding to the specified index.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1121,16 +1236,20 @@ For details about the error codes, see [Universal Error Codes](../../errorcode-u
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.   |
 
 ## UIScrollableCommonEvent<sup>19+</sup>
+
 Configures scroll event callbacks.
+
 ### setOnReachStart<sup>19+</sup>
 
 setOnReachStart(callback: Callback\<void> | undefined): void
 
-Sets the callback for the [onReachStart](./ts-container-scrollable-common.md#onreachstart11) event.
+Sets the callback for the [onReachStart](#onreachstart11) event.
 
-If the input parameter of an API is **undefined**, the corresponding event callback is reset.
+If the input parameter is **undefined**, the event callback is reset.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1144,11 +1263,13 @@ If the input parameter of an API is **undefined**, the corresponding event callb
 
 setOnReachEnd(callback: Callback\<void> | undefined): void
 
-Sets the callback for the [onReachEnd](./ts-container-scrollable-common.md#onreachend11) event.
+Sets the callback for the [onReachEnd](#onreachend11) event.
 
 If the input parameter is **undefined**, the event callback is reset.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1158,16 +1279,17 @@ If the input parameter is **undefined**, the event callback is reset.
 | ------ | ------ | ---- | -------------------------- |
 | callback  | [Callback](./ts-types.md#callback12)\<void> &nbsp;\|&nbsp;undefined | Yes  | Callback for the **onReachEnd** event.|
 
-
 ### setOnScrollStart<sup>19+</sup>
 
 setOnScrollStart(callback: Callback\<void> | undefined): void
 
-Sets the callback for the [onScrollStart](./ts-container-scrollable-common.md#onscrollstart11) event.
+Sets the callback for the [onScrollStart](#onscrollstart11) event.
 
 If the input parameter is **undefined**, the event callback is reset.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1177,16 +1299,17 @@ If the input parameter is **undefined**, the event callback is reset.
 | ------ | ------ | ---- | -------------------------- |
 | callback  | [Callback](./ts-types.md#callback12)\<void> &nbsp;\|&nbsp; undefined | Yes  | Callback for the **onScrollStart** event.|
 
-
 ### setOnScrollStop<sup>19+</sup>
 
 setOnScrollStop(callback: Callback\<void> | undefined): void
 
-Sets the callback for the [onScrollStop](./ts-container-scrollable-common.md#onscrollstop11) event.
+Sets the callback for the [onScrollStop](#onscrollstop11) event.
 
 If the input parameter is **undefined**, the event callback is reset.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1206,6 +1329,8 @@ If the input parameter is **undefined**, the event callback is reset.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -1213,7 +1338,6 @@ If the input parameter is **undefined**, the event callback is reset.
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
 | callback  | [OnScrollFrameBeginCallback](./ts-container-scroll.md#onscrollframebegincallback18)&nbsp;\|&nbsp;undefined | Yes  | Callback for the **onScrollFrameBegin** event.|
-
 
 ## OnWillStopDraggingCallback<sup>20+</sup>
 
@@ -1224,6 +1348,8 @@ Defines the callback invoked when the scrollable component is released.
 **Widget capability**: This API can be used in ArkTS widgets since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1243,6 +1369,8 @@ Defines the callback invoked when the scrollable component stops being dragged.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -1255,12 +1383,12 @@ Defines the callback invoked when the scrollable component stops being dragged.
 
 type OnVisibleIndexesChangeCallback = (start: number, end: number) => void
 
-Called when the index of the child component displayed in the [LazyColumnLayout](ts-container-lazycolumnlayout.md) component changes.
+Defines the callback type invoked when the indexes of the child components displayed by the lazy loading layout containers [LazyColumnLayout](ts-container-lazycolumnlayout.md), [LazyVGridLayout](ts-container-lazyvgridlayout.md), and [LazyVWaterFlowLayout](ts-container-lazyvwaterflowlayout.md) change.
 
 > **NOTE**
 >
-> - If **LazyColumnLayout** has no child components, both **start** and **end** return **-1**.
-> - If **LazyColumnLayout** has no child components in the visible area, both **start** and **end** return **-1**.
+> - When the lazy loading layout container has no child components, both **start** and **end** return -1.
+> - When the lazy loading layout container has no child components in the visible area, both **start** and **end** return -1.
 
 **Since**: 26.0.0
 
@@ -1274,17 +1402,19 @@ Called when the index of the child component displayed in the [LazyColumnLayout]
 
 | Name| Type  | Mandatory| Description                                 |
 | ------ | ------ | ---- | ------------------------------------- |
-| start  | number | Yes  | Index of the start position in the visible area.<br>Value range: [0, total number of child nodes - 1].|
-| end    | number | Yes  | Index of the end position in the visible area.<br>Value range: [0, total number of child nodes - 1].|
+| start  | number | Yes   | Index of the start position of the visible area.<br/>Value range: [0, total number of child nodes - 1]. The value **-1** is returned when there is no child node or all child nodes are outside the visible area. |
+| end    | number | Yes   | Index of the end position of the visible area.<br/>Value range: [0, total number of child nodes - 1]. The value **-1** is returned when there is no child node or all child nodes are outside the visible area. |
 
 ## Example
 
 ### Example 1: Implementing Gesture-based Scrolling
-This example configures the [enableScrollInteraction](ts-container-scrollable-common.md#enablescrollinteraction11) attribute to enable gesture-based scrolling in a vertical list, with index callbacks triggered during page transitions.
+
+This example sets the [enableScrollInteraction](#enablescrollinteraction11) attribute to scroll a vertical list with gestures and call back the index when the currently displayed interface changes.
 
 For details about ListDataSource and the complete code, see [Example 1: Adding a Scroll Event](./ts-container-list.md#example-1-adding-a-scroll-event).
 
 <!--code_no_check-->
+
 ```ts
 // xxx.ets
 import { ListDataSource } from './ListDataSource';
@@ -1334,7 +1464,7 @@ struct ListExample {
           ' end index in group: ' + end.itemIndexInGroup);
       })
       .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
-        console.info(`onScroll scrollState = ScrollState` + scrollState + `, scrollOffset = ` + scrollOffset);
+        console.info(`onDidScroll scrollState = ` + scrollState + `, scrollOffset = ` + scrollOffset);
       })
       .width('90%')
     }
@@ -1349,11 +1479,13 @@ struct ListExample {
 ![list1](figures/list1.gif)
 
 ### Example 2: Setting Edge Fading
-This example demonstrates how to use [fadingEdge](ts-container-scrollable-common.md#fadingedge14) to implement a [List](ts-container-list.md) component with an edge fading effect and set the length of the fading edge.
+
+This example sets the [fadingEdge](#fadingedge14) attribute to enable the edge fading effect for the [List](ts-container-list.md) component and set the edge fading length.
 
 For details about ListDataSource and the complete code, see [Example 1: Adding a Scroll Event](./ts-container-list.md#example-1-adding-a-scroll-event).
 
 <!--code_no_check-->
+
 ```ts
 // xxx.ets
 import { LengthMetrics } from '@kit.ArkUI';
@@ -1394,7 +1526,8 @@ struct ListExample {
 ![fadingEdge_list](figures/fadingEdge_list.gif)
 
 ### Example 3: Setting the Clipping Region
-This example demonstrates how to use the [clipContent](ts-container-scrollable-common.md#clipcontent14) attribute to modify the clipping region of the component's content layer.
+
+This example sets the [clipContent](#clipcontent14) attribute to change the clipping area of the component's content layer.
 
 ```ts
 // xxx.ets
@@ -1418,7 +1551,7 @@ struct ScrollExample {
               .fontSize(20)
               .textAlign(TextAlign.Center)
               .backgroundColor(Color.Grey)
-          }, (item: string) => item)
+          }, (item: number) => item.toString())
         }
       }
       .backgroundColor(Color.Blue)
@@ -1454,11 +1587,13 @@ struct ScrollExample {
 ![clipContent_scroll](figures/clipContent_scroll.gif)
 
 ### Example 4: Setting the Scrollbar Margin
+
 This example demonstrates how to use the [scrollBarMargin](#scrollbarmargin20) attribute to adjust the scrollbar margins of a scrollable component, available since API version 20.
 
 For details about ListDataSource and the complete code, see [Example 1: Adding a Scroll Event](./ts-container-list.md#example-1-adding-a-scroll-event).
 
 <!--code_no_check-->
+
 ```ts
 // xxx.ets
 import { ListDataSource } from './ListDataSource';
@@ -1474,7 +1609,7 @@ struct ListExample {
     Stack({ alignContent: Alignment.TopStart }) {
       Column() {
         List({ space: 20, initialIndex: 0 }) {
-          LazyForEach(this.arr, (item: number, index?: number) => {
+          LazyForEach(this.arr, (item: number) => {
             ListItem() {
               Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) {
                 Text('' + item)

@@ -26,7 +26,7 @@ setOverlayEnabledByBundleName(bundleName: string, moduleName: string, isEnabled:
 
 设置指定应用的overlay module的禁用使能状态。使用Promise异步回调。
 
-指定应用是调用方自身时不需要权限。
+指定应用是调用方自身时不需要权限。接口调用失败时可能返回null，需校验返回值后使用。
 
 **需要权限：** ohos.permission.CHANGE_OVERLAY_ENABLED_STATE
 
@@ -336,7 +336,7 @@ getTargetOverlayModuleInfosByBundleName(targetBundleName: string, moduleName?: s
 
 获取指定应用中指定module关联的所有OverlayModuleInfo信息。使用Promise异步回调。
 
-指定应用是调用方自身时不需要权限。
+指定应用是调用方自身时不需要权限。接口调用失败时可能返回null，需校验返回值后使用。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 

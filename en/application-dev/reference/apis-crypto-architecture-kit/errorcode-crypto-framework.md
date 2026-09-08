@@ -6,7 +6,6 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=ee3aff3c192b61804c6eafd655527edff9eb980a translatedAt=2026-08-10T09:36:35.000Z pushedAt=2026-08-11T01:19:28.680Z -->
 
 > **NOTE**
 >
@@ -29,7 +28,6 @@ The memory allocation failed.
 **Solution**
 
 1. Check whether the system is running properly.
-
 2. Check whether the service data is too long. 
 
 ## 17620002 Failed to Obtain the Native Object or Convert Parameters
@@ -40,7 +38,7 @@ Failed to obtain the native object or convert parameters.
 
 **Description**
 
-The Native object fails to be obtained or the parameter conversion fails.
+The **Native** object fails to be obtained or the parameter conversion fails.
 
 **Possible Causes**
 
@@ -122,14 +120,10 @@ Error 17630001 is often reported during decryption, which is analyzed in detail 
 If **doFinal** fails, the tag verification fails because the input value of **tag** for decryption is inconsistent with that of **tag** calculated during decryption. If any of the input values of **key**, **iv**, **aad**, **tag**, and **ciphertext** for decryption is incorrect, this error is reported.
 
 1. If **key** is incorrect, the plaintext obtained by **update** is incorrect, and **doFinal** fails. That is, the tag verification fails.
-
 2. If **iv** is incorrect, the plaintext obtained by **update** is incorrect, and **doFinal** fails. That is, the tag verification fails.
-
 3. If **aad** is incorrect, the plaintext obtained by **update** is correct, and **doFinal** fails. That is, the tag verification fails.
-
 4. If **ciphertext** is incorrect, the plaintext obtained by **update** is incorrect, and **doFinal** fails. That is, the tag verification fails.
-
-5. If **tag** is incorrect, the plaintext obtained by **update** is correct, and **doFinal** fails. That is, the tag verification fails.
+5. If **tag** is incorrect, the plaintext obtained by **update** is correct, and **doFinal** fails. That is, the tag verification fails. 
 
 **Solution**
 
@@ -152,9 +146,7 @@ Ensure that the **key**, **iv**, and **aad** parameters for encryption and decry
 If **doFinal** fails, the padding fails to be verified. **doFinal** decrypts the last block of ciphertext data and verifies whether the padding is valid. If any of the input values of **key**, **iv**, and **ciphertext** for decryption is incorrect, this error is reported.
 
 1. If **key** is incorrect, the plaintext obtained by **update** is incorrect, and **doFinal** fails. That is, the padding verification fails.
-
 2. If **iv** is incorrect, the complete ciphertext length is 16 bytes, **update** has no output, and **doFinal** fails. That is, the padding verification fails. If the complete ciphertext length is an integer multiple of 16 bytes (excluding 16 bytes), the plaintext obtained by **update** is partially correct, and **doFinal** is successful.
-
 3. If **ciphertext** is incorrect, the last or second-to-last ciphertext block is incorrect, the plaintext obtained by **update** is partially correct (or no output is generated), and **doFinal** fails. That is, the padding verification fails. If other ciphertext blocks are incorrect, the plaintext obtained by **update** is partially correct, and **doFinal** is successful.
 
 **Solution**
@@ -178,14 +170,10 @@ Ensure that the **key** and **iv** parameters for encryption and decryption are 
 If **doFinal** fails, the tag verification fails because the input value of **tag** for decryption is inconsistent with that of **tag** calculated during decryption. If any of the input values of **key**, **iv**, **aad**, **tag**, and **ciphertext** for decryption is incorrect, this error is reported.
 
 1. If **key** is incorrect, the plaintext obtained by **update** is incorrect, and **doFinal** fails. That is, the tag verification fails.
-
 2. If **iv** is incorrect, the plaintext obtained by **update** is incorrect, and **doFinal** fails. That is, the tag verification fails.
-
 3. If **aad** is incorrect, the plaintext obtained by **update** is correct, and **doFinal** fails. That is, the tag verification fails.
-
 4. If **ciphertext** is incorrect, the plaintext obtained by **update** is incorrect, and **doFinal** fails. That is, the tag verification fails.
-
-5. If **tag** is incorrect, the plaintext obtained by **update** is correct, and **doFinal** fails. That is, the tag verification fails.
+5. If **tag** is incorrect, the plaintext obtained by **update** is correct, and **doFinal** fails. That is, the tag verification fails. 
 
 **Solution**
 
@@ -208,14 +196,12 @@ Ensure that the **key**, **iv**, and **aad** parameters for encryption and decry
 If **doFinal** fails, the padding fails to be verified. **doFinal** decrypts the last block of ciphertext data and verifies whether the padding is valid. If any of the input values of **key** and **ciphertext** for decryption is incorrect, this error is reported.
 
 1. If **key** is incorrect, the plaintext obtained by **update** is incorrect, and **doFinal** fails. That is, the padding verification fails.
-
 2. If **ciphertext** is incorrect, the last ciphertext block is incorrect, the plaintext obtained by **update** is partially correct, and **doFinal** fails. That is, the padding verification fails. If other ciphertext blocks are incorrect, the plaintext obtained by **update** is partially correct, and **doFinal** is successful.
-
 3. If the length of **ciphertext** is not an integer multiple of 16 bytes (block size) when PKCS #7 is used for padding, **doFinal** fails.
 
 **Solution**
 
-Ensure that the **key** parameter for encryption and decryption is the same, the input value of **ciphertext** during decryption is correct, and the length of the ciphertext is an integer multiple of the block size (16 bytes).
+Ensure that the **key** and **iv** parameters for encryption and decryption are the same, the input value of **ciphertext** during decryption is correct, and the length of the ciphertext is an integer multiple of the block size (16 bytes).
 
 ### Failed to Call doFinal During Decryption Using DES/3DES
 
@@ -236,11 +222,8 @@ Ensure that the **key** parameter for encryption and decryption is the same, the
 If **doFinal** fails, the padding fails to be verified. This error may occur if the input value of **key** for decryption is incorrect (the length is correct but the key value is incorrect) or the **ciphertext** is incorrect.
 
 1. If **key** is incorrect, and the plaintext obtained by **update** is incorrect, **doFinal** fails. The DES key should be of 8 bytes, and the 3DES key should be of 24 bytes.
-
 2. If **iv** is incorrect, only the decryption of the first ciphertext block is affected in CBC or CFB mode, the plaintext obtained by **update** is incorrect, but **doFinal** is successful. OFB is a stream cipher algorithm. If **iv** is incorrect in OFB mode, all plaintexts are incorrect, but **doFinal** is still successful. In CBC, OFB, or CFB mode, **iv** should be of 8 bytes.
-
 3. If **ciphertext** is incorrect, and the last ciphertext block is incorrect in ECB mode or the last or the second-to-last ciphertext block is incorrect in CBC mode, **doFinal** fails, that is, padding verification fails. If other ciphertext blocks are incorrect, **doFinal** is successful, but the obtained plaintext is incorrect.
-
 4. If the length of **ciphertext** is not an integer multiple of 8 bytes (block size) when PKCS #7 is used for padding, **doFinal** fails.
 
 **Solution**
@@ -264,20 +247,16 @@ Ensure that the **key** and **iv** parameters for encryption and decryption are 
 If **doFinal** fails, the tag verification fails because the input value of **tag** for decryption is inconsistent with that of **tag** calculated during decryption. If any of the input values of **key**, **iv**, **aad**, **tag**, and **ciphertext** for decryption is incorrect, this error is reported.
 
 1. If **key** is incorrect, the plaintext obtained by **update** is incorrect, and **doFinal** fails. That is, the tag verification fails.
-
 2. If **iv** is incorrect, the plaintext obtained by **update** is incorrect, and **doFinal** fails. That is, the tag verification fails.
-
 3. If **aad** is incorrect, the plaintext obtained by **update** is correct, and **doFinal** fails. That is, the tag verification fails.
-
 4. If **ciphertext** is incorrect, the plaintext obtained by **update** is incorrect, and **doFinal** fails. That is, the tag verification fails.
-
-5. If **tag** is incorrect, the plaintext obtained by **update** is correct, and **doFinal** fails. That is, the tag verification fails.
+5. If **tag** is incorrect, the plaintext obtained by **update** is correct, and **doFinal** fails. That is, the tag verification fails. 
 
 **Solution**
 
 Ensure that the **key**, **iv**, and **aad** parameters for encryption and decryption are the same, and the **ciphertext** and **tag** input during decryption are correct.
 
-### Failed to Call doFinal During Decryption Using SM4-ECB/CBC
+### Failed‧to‧Call‧doFinal‧During‧Decryption‧Using‧SM4-ECB/CBC
 
 **Symptom**
 
@@ -294,11 +273,8 @@ Ensure that the **key**, **iv**, and **aad** parameters for encryption and decry
 If **doFinal** fails, the padding fails to be verified. If any of the input values of **key** and **ciphertext** for decryption is incorrect, this error is reported.
 
 1. If **key** is incorrect, the plaintext obtained by **update** is incorrect, and **doFinal** fails. That is, the padding verification fails. The SM4 key should be of 16 bytes.
-
 2. If **iv** is incorrect, only the decryption of the first ciphertext block is affected, the plaintext obtained by **update** is incorrect, but **doFinal** is successful. The **iv** value should be of 16 bytes in CBC mode.
-
 3. If **ciphertext** is incorrect, and the last ciphertext block is incorrect in ECB mode or the last or the second-to-last ciphertext block is incorrect in CBC mode, **doFinal** fails, that is, padding verification fails. If other ciphertext blocks are incorrect, **doFinal** is successful, but the obtained plaintext is incorrect.
-
 4. If the length of **ciphertext** is not an integer multiple of 16 bytes (block size) when PKCS #7 is used for padding, **doFinal** fails.
 
 **Solution**
@@ -322,14 +298,10 @@ Ensure that the **key** and **iv** parameters for encryption and decryption are 
 If **doFinal** fails, the tag verification fails because the input value of **tag** for decryption is inconsistent with that of **tag** calculated during decryption. If any of the input values of **key**, **nonce** (IV), **aad**, **tag**, and **ciphertext** for decryption is incorrect, this error is reported.
 
 1. If **key** is incorrect (with correct length but incorrect value), the plaintext obtained by **update** is incorrect, and **doFinal** fails. That is, the tag verification fails.
-
 2. If **nonce** is incorrect, the plaintext obtained by **update** is incorrect, and **doFinal** fails. That is, the tag verification fails. The **nonce** value should be of 12 bytes.
-
 3. If **aad** is incorrect, the plaintext obtained by **update** is correct, and **doFinal** fails. That is, the tag verification fails.
-
 4. If **ciphertext** is incorrect, the plaintext obtained by **update** is incorrect, and **doFinal** fails. That is, the tag verification fails.
-
-5. If **tag** is incorrect, the plaintext obtained by **update** is correct, and **doFinal** fails. That is, the tag verification fails.
+5. If **tag** is incorrect, the plaintext obtained by **update** is correct, and **doFinal** fails. That is, the tag verification fails. 
 
 **Solution**
 

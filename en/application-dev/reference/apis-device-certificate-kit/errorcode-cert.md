@@ -38,7 +38,7 @@ Runtime error.
 
 **Description**
 
-An external error occurs during running.
+This error code is reported if an error occurs during running.
 
 **Possible Causes**
 
@@ -52,7 +52,7 @@ Check whether the system is running properly.
 
 **Error Message**
 
-Indicates that parameter check failed.
+Parameter check failed.
 
 **Description**
 
@@ -66,7 +66,7 @@ The input value is out of range.
 
 Check whether the input parameters are correct.
 
-## 19030001 Crypto Operation Error
+## 19030001 Failed to Invoke the Third-party Cryptographic API
 
 **Error Message**
 
@@ -201,7 +201,7 @@ Check whether the certificate is correct.
 
 **Error Message**
 
-The password may be wrong.
+Maybe wrong password.
 
 **Description**
 
@@ -219,7 +219,7 @@ Check that the private key password is correct.
 
 **Error Message**
 
-The certificate is untrusted.
+Untrusted certificate.
 
 **Description**
 
@@ -251,15 +251,15 @@ The certificate is in the CRL or the OCSP response indicates that the certificat
 
 The certificate has been revoked. Do not trust the certificate. Replace the certificate with a valid one.
 
-## 19030011 Unsupported Key Extensions
+## 19030011 Unknown Key Extensions
 
 **Error Message**
 
-Unknown critical extension.
+Unsupported critical extension.
 
 **Description**
 
-This error code is reported if the certificate has unsupported key extensions.
+The certificate has unknown key extensions.
 
 **Possible Causes**
 
@@ -267,13 +267,13 @@ The certificate has unidentified key extensions. All key extensions must be proc
 
 **Solution**
 
-You can ignore the error by setting [ignoreErrs](js-apis-cert.md#x509certvalidatorparams), and obtain the extension data through the certificate algorithm library APIs for verification.
+You can ignore the error by setting [ignoreErrs](js-apis-cert.md#certvalidationparams), and obtain the extension data through the certificate algorithm library APIs for verification.
 
 ## 19030012 Host Name Mismatch
 
 **Error Message**
 
-Hostname mismatch.
+Hostname mismatch in the certificate.
 
 **Description**
 
@@ -285,13 +285,13 @@ The subject alternative name (SAN) or common name (CN) of the certificate does n
 
 **Solution**
 
-Check whether the [hostnames](js-apis-cert.md#x509certvalidatorparams) parameter is correct. If it is correct, do not trust the certificate.
+Check whether the [hostnames](js-apis-cert.md#certvalidationparams) parameter is correctly set. If it is correct, do not trust the certificate.
 
 ## 19030013 Email Address Mismatch
 
 **Error Message**
 
-Email address mismatch.
+Email address mismatch in the certificate.
 
 **Description**
 
@@ -303,17 +303,17 @@ The certificate does not contain the specified email address.
 
 **Solution**
 
-Check whether the [emailAddresses](js-apis-cert.md#x509certvalidatorparams) parameter is correctly set. If it is correct, do not trust the certificate.
+Check whether the [emailAddresses](js-apis-cert.md#certvalidationparams) parameter is correctly set. If it is correct, do not trust the certificate.
 
 ## 19030014 Key Usage Mismatch
 
 **Error Message**
 
-Key usage mismatch.
+Key usage mismatch in the certificate.
 
 **Description**
 
-This error code is reported if key usage is not matched in the certificate.
+Certificate key usage mismatch in the certificate.
 
 **Possible Causes**
 
@@ -321,17 +321,17 @@ The key usage extension of the certificate does not contain the specified key us
 
 **Solution**
 
-Check whether the [keyUsage](js-apis-cert.md#x509certvalidatorparams) parameter is correct. If it is correct, do not trust the certificate.
+Check whether the [keyUsage](js-apis-cert.md#certvalidationparams) parameter is correctly set. If it is correct, do not trust the certificate.
 
-## 19030015 CRL Not Found
+## 19030015 Failed to Obtain the CRL
 
 **Error Message**
 
-CRL not found.
+Failed to obtain the certificate revocation list.
 
 **Description**
 
-This error code is reported if the certificate revocation list (CRL) is not found.
+Failed to obtain the CRL.
 
 **Possible Causes**
 
@@ -344,17 +344,17 @@ This error code is reported if the certificate revocation list (CRL) is not foun
 1. Check whether the CRL data is provided.
 2. If online CRL download is enabled, check whether the certificate contains the CDP extension.
 3. If online CRL download is enabled, check whether the Internet connection is normal and ensure normal Internet access.
-4. You can set [ignoreErrs](js-apis-cert.md#x509certvalidatorparams) to ignore the error indicating that the CRL is not found during verification of the certificate revocation status if it is allowed.
+4. You can set [ignoreErrs](js-apis-cert.md#certvalidationparams) to ignore the error indicating that the CRL is not found during verification of the certificate revocation status if it is allowed.
 
 ## 19030016 Invalid CRL
 
 **Error Message**
 
-CRL not yet valid.
+The certificate revocation list has not taken effect.
 
 **Description**
 
-This error code is reported if the CRL has not taken effect.
+The CRL has not taken effect.
 
 **Possible Causes**
 
@@ -362,19 +362,19 @@ The effective time of the CRL is later than the current verification time.
 
 **Solution**
 
-1. You can set [ignoreErrs](js-apis-cert.md#x509certvalidatorparams) to ignore the error if the CRL effective time is allowed to be later than the current verification time.
-2. If [date](js-apis-cert.md#x509certvalidatorparams) is not set, check whether the device time is correct.
-3. If [date](js-apis-cert.md#x509certvalidatorparams) is set, check whether the parameter is set properly.
+1. You can set [ignoreErrs](js-apis-cert.md#certvalidationparams) to ignore the error if the CRL effective time is allowed to be later than the current verification time.
+2. If [date](js-apis-cert.md#certvalidationparams) is not set, check whether the device time is correct.
+3. If [date](js-apis-cert.md#certvalidationparams) is set, check whether the parameter is set properly.
 
-## 19030017 CRL Expired
+## 19030017 CRL Has Expired
 
 **Error Message**
 
-CRL has expired.
+The certificate revocation list has expired.
 
 **Description**
 
-This error code is reported if the CRL has expired.
+The CRL has expired.
 
 **Possible Causes**
 
@@ -382,19 +382,19 @@ The expiration time of the CRL is earlier than the current verification time.
 
 **Solution**
 
-1. You can set [ignoreErrs](js-apis-cert.md#x509certvalidatorparams) to ignore the error if the CRL expiration time is allowed to be earlier than the current verification time.
-2. If [date](js-apis-cert.md#x509certvalidatorparams) is not set, check whether the device time is correct.
-3. If [date](js-apis-cert.md#x509certvalidatorparams) is set, check whether the parameter is set properly.
+1. You can set [ignoreErrs](js-apis-cert.md#certvalidationparams) to ignore the error if the CRL expiration time is allowed to be earlier than the current verification time.
+2. If [date](js-apis-cert.md#certvalidationparams) is not set, check whether the device time is correct.
+3. If [date](js-apis-cert.md#certvalidationparams) is set, check whether the parameter is set properly.
 
-## 19030018 CRL Signature Verification Failure
+## 19030018 Failed to Verify the CRL Signature
 
 **Error Message**
 
-CRL signature verification failed.
+Failed to verify the signature of the certificate revocation list.
 
 **Description**
 
-This error code is reported if the CRL signature verification fails.
+Failed to verify the signature of the CRL.
 
 **Possible Causes**
 
@@ -404,15 +404,15 @@ The CRL signature verification fails. The possible cause is that the signature i
 
 Check whether the CRL data is correct and whether the issuer certificate is matched.
 
-## 19030019 CRL Issuer Not Found
+## 19030019 Failed to Obtain the CRL Issuer
 
 **Error Message**
 
-CRL issuer not found.
+Failed to find the issuer of the certificate revocation list.
 
 **Description**
 
-This error code is reported if the CRL issuer certificate is not found.
+Failed to obtain the issuer of the CRL.
 
 **Possible Causes**
 
@@ -422,15 +422,15 @@ The CRL issuer certificate is not found.
 
 This error may occur during partial certificate chain verification. You are advised to verify only the revocation status of the end entity certificate in this scenario. If you want to verify the revocation status of all certificates, do not to set partial certificate chain verification.
 
-## 19030020 OCSP Response Not Found
+## 19030020 Failed to Obtain the OCSP Response
 
 **Error Message**
 
-OCSP response not found.
+Failed to obtain the OCSP response.
 
 **Description**
 
-This error code is reported if the OCSP response cannot be found.
+Failed to obtain the Online Certificate Status Protocol (OCSP) response.
 
 **Possible Causes**
 
@@ -443,13 +443,13 @@ This error code is reported if the OCSP response cannot be found.
 1. Check whether the OCSP response data is provided.
 2. If online OCSP check is enabled, check whether the certificate contains the OCSP URL.
 3. If online OCSP check is enabled, check whether the Internet connection is normal and ensure normal Internet access.
-4. You can set [ignoreErrs](js-apis-cert.md#x509certvalidatorparams) to ignore the error indicating that no OCSP is found during verification of the certificate revocation status if it is allowed.
+4. You can set [ignoreErrs](js-apis-cert.md#certvalidationparams) to ignore the error indicating that the OCSP response is not found during verification of the certificate revocation status if it is allowed.
 
 ## 19030021 Invalid OCSP response.
 
 **Error Message**
 
-OCSP response invalid.
+Invalid OCSP response.
 
 **Description**
 
@@ -467,7 +467,7 @@ The OCSP response data is in an incorrect format, cannot be parsed, or has expir
 
 **Error Message**
 
-OCSP signature verification failed.
+Failed to verify the OCSP signature. 
 
 **Description**
 
@@ -485,11 +485,11 @@ Add the signer certificate and issuer certificate of the OCSP response to the un
 
 **Error Message**
 
-OCSP certificate status unknown.
+Unknown OCSP certificate status.
 
 **Description**
 
-The OCSP server returns an unknown certificate status.
+The status of the OCSP certificate is unknown.
 
 **Possible Causes**
 
@@ -503,7 +503,7 @@ Check whether the OCSP server is working properly or verify the certificate revo
 
 **Error Message**
 
-Network timeout.
+Network connection timed out.
 
 **Description**
 
@@ -518,4 +518,3 @@ This error code is reported if network connection times out.
 **Solution**
 
 Check the Internet connection and ensure that the related server can be accessed.
-<!--no_check-->

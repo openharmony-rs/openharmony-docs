@@ -1,12 +1,11 @@
 # LayoutAlgorithm
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zju_ljz-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=814c7cb9af37d443e12a84b71f28815df508c584 translatedAt=2026-07-29T09:26:41.670Z pushedAt=2026-07-31T06:20:20.134Z -->
+<!-- md-trans-meta sourceCommit=75a7d62c0702c21a06ca0119552a942305a023cc translatedAt=2026-08-29T09:33:01.878Z pushedAt=2026-08-31T11:35:40.228Z -->
 
 Provides layout algorithms supported by the [DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md) component.
 
@@ -51,7 +50,6 @@ A custom layout algorithm class, which allows you to implement custom measuremen
 > The object of the **CustomLayoutAlgorithm** class can be used as the input parameter of the [DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md) component to specify a layout algorithm.
 
 ### onMeasure
-
 onMeasure(self: FrameNode, constraint: LayoutConstraint): void
 
 Customizes the size of the child component to be measured. When the size of the dynamic layout component is determined, the ArkUI framework will transfer the FrameNode and layout constraint of the component to you through **onMeasure**. State variables should not be changed in this callback.
@@ -77,7 +75,6 @@ Customizes the size of the child component to be measured. When the size of the 
 | constraint | [LayoutConstraint](js-apis-arkui-frameNode.md#layoutconstraint12) | Yes| Layout constraint used by the dynamic layout component for measurement.|
 
 ### onLayout
-
 onLayout(self: FrameNode, position: Position): void
 
 Customizes the position of the child component to be arranged. When the position of the dynamic layout component is determined, the ArkUI framework will transfer the FrameNode and layout position of the component to you through **onLayout**. State variables should not be changed in this callback.

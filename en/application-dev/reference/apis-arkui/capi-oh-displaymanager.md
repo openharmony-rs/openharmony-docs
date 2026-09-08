@@ -1,10 +1,11 @@
 # OH_DisplayManager
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @logn; @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=00aa695a42976a3a58a556fb5c9c98adb86b2fa2 translatedAt=2026-08-27T08:42:34.973Z pushedAt=2026-08-28T02:09:34.535Z -->
 
 ## Overview
 

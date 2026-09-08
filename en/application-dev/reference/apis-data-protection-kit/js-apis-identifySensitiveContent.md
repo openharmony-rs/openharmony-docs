@@ -47,7 +47,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------- |
 | 201 | permission denied. |
 | 801 | Capability not supported. |
-| 19110001 | Parameter error.Possible causes: 1. Incorrect policy format. 2. Invalid parameter range. |
+| 19110001 | Parameter error. Possible causes: 1. Incorrect policy format. 2. Invalid parameter range. |
 | 19110002 | Sensitive file content identification timed out. |
 | 19110003 | The file is not supported. Possible causes: 1. The file path does not exist. 2. The file type is not supported. 3. The file permission is not supported. |
 | 19110004 | A system error has occurred. |
@@ -56,12 +56,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { identifySensitiveContent } from '@kit.DataProtectionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define the physical file path to be scanned.
-let filePath = "/data/service/el2/100/hmdfs/account/files/Docs/Documents/test.txt";
+const filePath = '/data/service/el2/100/hmdfs/account/files/Docs/Documents/test.txt';
 
 // Configure the policy for sensitive content identification.
-let policies: Array<identifySensitiveContent.Policy> = [
+const policies: Array<identifySensitiveContent.Policy> = [
   {"sensitiveLabel":"name", "keywords":["name"], "regex":""},
   {"sensitiveLabel":"phone", "keywords":[], "regex":"phone"},
   {"sensitiveLabel":"address", "keywords":["address"], "regex":"xx City, xx Province"}
@@ -77,10 +78,10 @@ try {
     }
   }).catch((err: BusinessError) => {
     // Identification fails.
-    console.error(`Failed to scanFile. Code:${err.code}, message:${err.message}`);
-  })
+    console.error(`Failed to scanFile. Code: ${err.code}, message: ${err.message}`);
+  });
 } catch (err) {
-  console.error('error message', err.message);
+  console.error(`Failed to scanFile. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 

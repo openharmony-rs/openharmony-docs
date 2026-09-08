@@ -1,11 +1,12 @@
 # effect_filter.h
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @hanamaru-->
 <!--Designer: @chensiyi_CE-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=4a9565e551366ed34544d1f8312df1c0ba36d0a9 translatedAt=2026-07-21T03:44:18.347Z pushedAt=2026-07-23T12:18:17.948Z -->
+<!-- md-trans-meta sourceCommit=840854f9fe10a258a0038fd37739f3e768710f28 translatedAt=2026-08-24T09:05:35.278Z pushedAt=2026-08-31T11:32:57.604Z -->
 
 ## Overview
 
