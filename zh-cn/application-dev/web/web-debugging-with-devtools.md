@@ -20,8 +20,8 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开�
 
    1. 在应用代码中开启Web调试开关，应用需要调用[setWebDebuggingAccess<sup>20+</sup>](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess20)接口，设置TCP Socket端口号并启用Web调试功能。
 
-ArkTS-Dyn示例：
-<!-- @[web_Debugging_Wireless](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/ets/pages/WebDebuggingWithWiFi.ets) -->
+      ArkTS-Dyn示例：
+      <!-- @[web_Debugging_Wireless](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/ets/pages/WebDebuggingWithWiFi.ets) -->
       ``` TypeScript
       import { webview } from '@kit.ArkWeb';
       import { BusinessError } from '@kit.BasicServicesKit';
@@ -49,7 +49,7 @@ ArkTS-Dyn示例：
       }
       ```
 
-ArkTS-Sta示例：
+      ArkTS-Sta示例：
       <!-- @[web_Debugging_Wireless](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebDebuggingWithDevtools/entry/src/main/ets/pages/WebDebuggingWithWiFi.ets) -->
 
       ``` TypeScript
@@ -87,14 +87,14 @@ ArkTS-Sta示例：
    2. 开启调试功能需要在DevEco Studio应用工程hap模块的module.json5文件中增加如下权限，添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
 
-<!-- @[web_Debugging_Permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/module.json5) -->
-``` JSON5
-"requestPermissions":[
-  {
-    "name" : "ohos.permission.INTERNET"
-  }
-]
-```
+      <!-- @[web_Debugging_Permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/module.json5) -->
+      ``` JSON5
+      "requestPermissions":[
+        {
+          "name" : "ohos.permission.INTERNET"
+        }
+      ]
+      ```
 
 ### 在Chrome浏览器上打开调试工具页面
 
@@ -127,64 +127,64 @@ ArkTS-Sta示例：
 
 1. 在应用代码中开启Web调试开关，具体如下：
 
-    ArkTS-Dyn示例：
-    <!-- @[web_Debugging_USB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/ets/pages/WebDebuggingWithUSB.ets) -->
-    ``` TypeScript
-    import { webview } from '@kit.ArkWeb';
-    
-    @Entry
-    @Component
-    struct WebComponent {
-      controller: webview.WebviewController = new webview.WebviewController();
-    
-      aboutToAppear() {
-        // 配置Web开启调试模式
-        webview.WebviewController.setWebDebuggingAccess(true);
-      }
-    
-      build() {
-        Column() {
-          Web({ src: 'www.example.com', controller: this.controller })
-        }
-      }
-    }
-    ```
+   ArkTS-Dyn示例：
+   <!-- @[web_Debugging_USB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/ets/pages/WebDebuggingWithUSB.ets) -->
+   ``` TypeScript
+   import { webview } from '@kit.ArkWeb';
+   
+   @Entry
+   @Component
+   struct WebComponent {
+     controller: webview.WebviewController = new webview.WebviewController();
+   
+     aboutToAppear() {
+       // 配置Web开启调试模式
+       webview.WebviewController.setWebDebuggingAccess(true);
+     }
+   
+     build() {
+       Column() {
+         Web({ src: 'www.example.com', controller: this.controller })
+       }
+     }
+   }
+   ```
 
-    ArkTS-Sta示例：
-    <!-- @[web_Debugging_USB](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebDebuggingWithDevtools/entry/src/main/ets/pages/WebDebuggingWithUSB.ets) -->
+   ArkTS-Sta示例：
+   <!-- @[web_Debugging_USB](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebDebuggingWithDevtools/entry/src/main/ets/pages/WebDebuggingWithUSB.ets) -->
 
-    ``` TypeScript
-    import { Column, Component, Entry, Web } from '@kit.ArkUI';
-    import { webview } from '@kit.ArkWeb';
-    
-    @Entry
-    @Component
-    struct WebComponent {
-      controller: webview.WebviewController = new webview.WebviewController(undefined);
-    
-      aboutToAppear() {
-        // 配置Web开启调试模式
-        webview.WebviewController.setWebDebuggingAccess(true);
-      }
-    
-      build() {
-        Column() {
-          Web({ src: 'www.example.com', controller: this.controller })
-        }
-      }
-    }
-    ```
+   ``` TypeScript
+   import { Column, Component, Entry, Web } from '@kit.ArkUI';
+   import { webview } from '@kit.ArkWeb';
+   
+   @Entry
+   @Component
+   struct WebComponent {
+     controller: webview.WebviewController = new webview.WebviewController(undefined);
+   
+     aboutToAppear() {
+       // 配置Web开启调试模式
+       webview.WebviewController.setWebDebuggingAccess(true);
+     }
+   
+     build() {
+       Column() {
+         Web({ src: 'www.example.com', controller: this.controller })
+       }
+     }
+   }
+   ```
 
 2. 开启调试功能需要在DevEco Studio应用工程hap模块的module.json5文件中增加如下权限，添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
-<!-- @[web_Debugging_Permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/module.json5) -->
-``` JSON5
-"requestPermissions":[
-  {
-    "name" : "ohos.permission.INTERNET"
-  }
-]
-```
+   <!-- @[web_Debugging_Permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/module.json5) -->
+   ``` JSON5
+   "requestPermissions":[
+     {
+       "name" : "ohos.permission.INTERNET"
+     }
+   ]
+   ```
 
 ### 将设备连接至电脑
 
