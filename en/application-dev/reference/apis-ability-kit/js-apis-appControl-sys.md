@@ -5,7 +5,7 @@
 <!--Designer: @hanfeng6-->
 <!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=bdf5bf0de2a6113c90791e021e843f8a4bb9faff translatedAt=2026-09-03T10:54:54.672Z pushedAt=2026-09-07T09:27:32.763Z -->
+<!-- md-trans-meta sourceCommit=bdf5bf0de2a6113c90791e021e843f8a4bb9faff translatedAt=2026-09-03T10:54:54.672Z pushedAt=2026-09-08T09:39:51.443Z -->
 
 The module provides APIs for setting, obtaining, and deleting the disposed status of an application. An application in the disposed status is forbidden to run. When a user clicks the application icon on the home screen, the corresponding page is displayed based on the disposal intent.  
 
@@ -429,7 +429,7 @@ Deletes the disposed status for an application. This API uses an asynchronous ca
 
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | Yes    | appId or appIdentifier of the application whose disposition status is to be deleted. A disposition status set using appId can only be deleted using appId, and the same applies to one set using appIdentifier.<br/>**Note:**<br/> appId is the unique identifier of the application, determined by the application bundle name and signature information. For details about how to obtain it, see [obtain the appId of the application](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information).<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo) is also the unique identifier of the application. For detailed information, see [what is appIdentifier](../../quick-start/common-problem-of-application.md#what-is-appidentifier). For details about how to obtain it, see [obtain the appIdentifier of the application](../../quick-start/common-problem-of-application.md#how-to-obtain-appidentifier-in-application-information).  |
+| appId  | string | Yes    | appId or appIdentifier of the application whose disposition status is to be deleted. A disposition status set using appId can only be deleted using appId, and the same applies to one set using appIdentifier.<br/>**Note:**<br/> appId is the unique identifier of the application, determined by the application bundle name and signature information. For details about how to obtain it, see [obtain the appId of the application](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information).<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo) is also the unique identifier of the application. For detailed information, see [what is appIdentifier](../../quick-start/common-problem-of-application.md#what-is-appidentifier). For details about how to obtain it, see [obtain the appIdentifier of the application](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appidentifier-from-application-information).  |
 | callback    | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)\<void> | Yes    | Callback function. If the disposition status is deleted successfully, err returns null; otherwise, the callback function returns a specific error object.                   |
 
 **Error codes**
@@ -958,7 +958,7 @@ Deletes an uninstallation disposed rule for an application or an application clo
 
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appIdentifier  | string | Yes    | appIdentifier of the application whose uninstall disposition rule is to be deleted.<br> If the application does not have an appIdentifier, appId can be used instead. appId is the unique identifier of the application, determined by the application Bundle name and signature information. For how to obtain it, see [Obtaining the appId of an Application](../../quick-start/common-problem-of-application.md#obtaining-the-appid-in-application-information).  |
+| appIdentifier  | string | Yes    | appIdentifier of the application whose uninstall disposition rule is to be deleted.<br> If the application does not have an appIdentifier, appId can be used instead. appId is the unique identifier of the application, determined by the application Bundle name and signature information. For how to obtain it, see [Obtaining the appId of an Application](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information).  |
 | appIndex   | number  | No  | Index of the application clone. The default value is **0**.<br> The value **0** means to delete the uninstallation disposed rule of the main application. A value greater than 0 means to delete the uninstallation disposed rule of the application clone.           |
 
 **Error codes**

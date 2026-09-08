@@ -6,7 +6,7 @@
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=b3bc27a342923ac4fafa55153b55c4f3b627330f translatedAt=2026-09-03T11:41:44.872Z pushedAt=2026-09-05T10:47:30.689Z -->
+<!-- md-trans-meta sourceCommit=b3bc27a342923ac4fafa55153b55c4f3b627330f translatedAt=2026-09-03T11:41:44.872Z pushedAt=2026-09-08T09:40:32.472Z -->
 
 The ApplicationContext module, inherited from [Context](js-apis-inner-application-context.md), provides the application-level context capabilities for developers, including registering and unregistering listeners for the lifecycle of in-application components.
 
@@ -306,7 +306,7 @@ Registers a listener for system environment changes. This API uses an asynchrono
 > **NOTE**
 >
 > - You can also use [onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate) to listen for system environment variable changes. Compared with the Ability [onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate) API, this API is more flexible in usage scenarios. It can be used not only in application components but also in pages. However, the environment variables that can be subscribed to differ from those of the Ability [onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate) API. For example, subscribing to direction, screenDensity, and displayId is not supported. For details, see the description of each environment variable in [Configuration](../apis-ability-kit/js-apis-app-ability-configuration.md#configuration).
-> - This API has certain limitations when actually triggered. For example, if a developer sets the application language through the [setLanguage](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetlanguage11) API, the [environmentCallback](js-apis-app-ability-environmentCallback.md) callback of this API will no longer be triggered even if the system language changes. For details, see [Usage Scenarios](../../application-models/subscribe-system-environment-variable-changes.md#usage-scenarios).
+> - This API has certain limitations when actually triggered. For example, if a developer sets the application language through the [setLanguage](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetlanguage11) API, the [environmentCallback](js-apis-app-ability-environmentCallback.md) callback of this API will no longer be triggered even if the system language changes. For details, see [Usage Scenarios](../../application-models/subscribe-system-environment-variable-changes.md#when-to-use).
 >
 > Supported since API version 9, deprecated since API version 10. Recommended to Use [ApplicationContext.on('environment')](js-apis-inner-application-applicationContext.md#applicationcontextonenvironment) as the replacement.
 
