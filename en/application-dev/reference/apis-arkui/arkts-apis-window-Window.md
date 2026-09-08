@@ -5618,8 +5618,6 @@ Subscribes to the focus state change event of the window. When the focus state o
 
 **Since**: 26.1.0
 
-**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
-
 **System capability**: SystemCapability.Window.SessionManager
 
 **Parameters**
@@ -5658,8 +5656,6 @@ off(type: 'windowFocusStateChange', callback?: Callback&lt;[WindowFocusState](ar
 Unsubscribes from the focus state change event of the window.
 
 **Since**: 26.1.0
-
-**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
 
 **System capability**: SystemCapability.Window.SessionManager
 

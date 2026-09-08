@@ -5708,8 +5708,6 @@ on(type: 'windowFocusStateChange', callback: Callback&lt;[WindowFocusState](arkt
 
 **起始版本：** 26.1.0
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
@@ -5748,8 +5746,6 @@ off(type: 'windowFocusStateChange', callback?: Callback&lt;[WindowFocusState](ar
 关闭窗口焦点状态变化事件的监听。
 
 **起始版本：** 26.1.0
-
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
