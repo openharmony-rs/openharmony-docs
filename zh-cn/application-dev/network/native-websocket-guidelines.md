@@ -54,30 +54,30 @@ libnet_websocket.so
 1. 在源文件中编写调用该API的代码，接受ArkTS传递过来的url字符串参数，创建WebSocket对象指针后，检查连接到服务器是否成功。
 
    <!-- @[websocket_build_project](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    #include "napi/native_api.h"
    #include "network/netstack/net_websocket.h"
    #include "network/netstack/net_websocket_type.h"
    #include "hilog/log.h"
-
+   
    #include <cstring>
-
+   
    #undef LOG_DOMAIN
    #undef LOG_TAG
    #define LOG_DOMAIN 0x3200 // 全局domain宏，标识业务领域
    #define LOG_TAG "WSDEMO"  // 全局tag宏，标识模块日志tag
-
-
+   
+   
    // WebSocket客户端全局变量
    static struct WebSocket *g_client = nullptr;
-
+   
    static void onOpen(struct WebSocket *wsClient, WebSocket_OpenResult openResult)
    {
        (void)wsClient;
        OH_LOG_INFO(LOG_APP, "onOpen: code: %{public}u, reason: %{public}s", openResult.code, openResult.reason);
    }
-
+   
    static void onMessage(struct WebSocket *wsClient, char *data, uint32_t length)
    {
        (void)wsClient;
@@ -89,35 +89,35 @@ libnet_websocket.so
        OH_LOG_INFO(LOG_APP, "onMessage: len: %{public}u, data: %{public}s", length, tmp);
        delete[] tmp;
    }
-
+   
    static void onError(struct WebSocket *wsClient, WebSocket_ErrorResult errorResult)
    {
        (void)wsClient;
        OH_LOG_INFO(LOG_APP, "onError: code: %{public}u, message: %{public}s", errorResult.errorCode,
                    errorResult.errorMessage);
    }
-
+   
    static void onClose(struct WebSocket *wsClient, WebSocket_CloseResult closeResult)
    {
        (void)wsClient;
        OH_LOG_INFO(LOG_APP, "onClose: code: %{public}u, reason: %{public}s", closeResult.code, closeResult.reason);
    }
-
+   
    static napi_value ConnectWebsocket(napi_env env, napi_callback_info info)
    {
        size_t argc = 2;
        napi_value args[2] = {nullptr};
        napi_value result;
-
+   
        napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
+   
        size_t length = 0;
        napi_status status = napi_get_value_string_utf8(env, args[0], nullptr, 0, &length);
        if (status != napi_ok) {
            napi_get_boolean(env, false, &result);
            return result;
        }
-
+   
        if (g_client != nullptr) {
            OH_LOG_INFO(LOG_APP, "there is already one websocket client running.");
            napi_get_boolean(env, false, &result);
@@ -135,28 +135,28 @@ libnet_websocket.so
        }
        // 连接buf存放的URL对应的WebSocket服务器
        int connectRet = OH_WebSocketClient_Connect(g_client, buf, {});
-
+   
        delete[] buf;
        napi_get_boolean(env, connectRet == 0, &result);
        return result;
    }
-
-
+   
+   
    static napi_value SendMessage(napi_env env, napi_callback_info info)
    {
        size_t argc = 1;
        napi_value args[1] = {nullptr};
        napi_value result;
-
+   
        napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
+   
        size_t length = 0;
        napi_status status = napi_get_value_string_utf8(env, args[0], nullptr, 0, &length);
        if (status != napi_ok) {
            napi_create_int32(env, -1, &result);
            return result;
        }
-
+   
        if (g_client == nullptr) {
            OH_LOG_INFO(LOG_APP, "websocket client not connected.");
            napi_create_int32(env, WebSocket_ErrCode::WEBSOCKET_CLIENT_NULL, &result);
@@ -167,12 +167,12 @@ libnet_websocket.so
        napi_get_value_string_utf8(env, args[0], buf, length + 1, &length);
        // 发送buf中的消息给服务器
        int ret = OH_WebSocketClient_Send(g_client, buf, length);
-
+   
        delete[] buf;
        napi_create_int32(env, ret, &result);
        return result;
    }
-
+   
    static napi_value CloseWebsocket(napi_env env, napi_callback_info info)
    {
        napi_value result;
@@ -183,9 +183,9 @@ libnet_websocket.so
        }
        // 关闭WebSocket连接
        int ret = OH_WebSocketClient_Close(g_client, {
-                                                     .code = 0,
-                                                     .reason = "Actively Close",
-                                                 });
+                                                      .code = 0,
+                                                      .reason = "Actively Close",
+                                                  });
        // 释放WebSocket资源并置空
        OH_WebSocketClient_Destroy(g_client);
        g_client = nullptr;
