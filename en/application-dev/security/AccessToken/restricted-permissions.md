@@ -1703,4 +1703,3 @@ Allows an application to obtain the list of applications installed on the device
 **Supported devices**: PCs/2-in-1 devices
  
 **Since**: 26.1.0
-
