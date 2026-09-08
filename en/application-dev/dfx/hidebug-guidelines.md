@@ -329,7 +329,7 @@ HiDebug provides APIs for setting the threshold of system resource leak detectio
 
 ## Managing GWP-ASan
 
-HiDebug provides the capabilities of enabling and disabling [GWP-ASan](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-gwpasan-detection) and querying the number of days when GWP-ASan is enabled.
+HiDebug provides the capabilities of enabling and disabling GWP-ASan and querying the number of days when GWP-ASan is enabled.
 
 ### APIs (ArkTS)
 

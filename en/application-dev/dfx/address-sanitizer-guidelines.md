@@ -425,7 +425,7 @@ The issue can be preliminarily scoped using the information above.
 
    - GWP-ASan
 
-     In [GWP-ASan logs](#gwp-asan-log-specifications), the fault type is extracted from the line containing "at" in the raw log. Possible fault types include Use After Free, Double Free, Invalid (Wild) Free, and others. For detailed type descriptions, see [GWP-ASan Anomaly Detection Types](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-gwpasan-detection#section73731529454).
+     In [GWP-ASan logs](#gwp-asan-log-specifications), the fault type is extracted from the line containing "at" in the raw log. Possible fault types include Use After Free, Double Free, Invalid (Wild) Free, and others.
 
    - ASan/HWASan/MemDebug
 
