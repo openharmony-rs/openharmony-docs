@@ -16698,6 +16698,26 @@
 						"end_line":467,
 						"name":"check_isspacesoundon",
 						"start_line":25
+					},
+					{
+						"end_line":92,
+						"name":"get_spacesound",
+						"start_line":23
+					},
+					{
+						"end_line":459,
+						"name":"check_spacesound",
+						"start_line":24
+					},
+					{
+						"end_line":480,
+						"name":"regist_spacesoundcallback",
+						"start_line":26
+					},
+					{
+						"end_line":487,
+						"name":"unregist_spacesoundcallback",
+						"start_line":27
 					}
 				]
 			}
