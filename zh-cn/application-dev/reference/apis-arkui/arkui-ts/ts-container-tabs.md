@@ -3396,7 +3396,7 @@ struct TabsExample {
 
 ### 示例24（TabBar悬浮样式）
 
-本示例展示了如何通过[barFloatingStyle](#barfloatingstyle)接口设置TabBar的悬浮样式和背板沉浸式材质。
+本示例展示了如何通过[barFloatingStyle](#barfloatingstyle)接口设置TabBar的悬浮样式和背板沉浸式材质。该示例配图为高算力设备强档效果。
 
 从API版本26.0.0开始，新增barFloatingStyle接口。
 

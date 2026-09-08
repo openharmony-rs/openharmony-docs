@@ -403,7 +403,7 @@ struct Index {
 
 该示例展示了Toggle组件Switch类型在开启沉浸光感前后的效果对比。示例使用通用属性[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)接口来实现沉浸光感效果。
 
-组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
+该示例配图为高算力设备强档效果，组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
 
 从API版本26.0.0开始，新增systemMaterial属性。
 

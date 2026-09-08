@@ -873,6 +873,8 @@ struct AlphabetIndexerSample {
 
 通过[popupBackgroundBlurStyle](#popupbackgroundblurstyle12)属性实现提示弹窗的背景模糊效果。
 
+该示例配图为高算力设备强档效果。
+
 ```ts
 // xxx.ets
 @Entry
