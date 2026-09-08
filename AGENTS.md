@@ -26,12 +26,12 @@ Guidance for AI agents working in the OpenHarmony **docs** repository.
 ## Doc authoring conventions
 
 - **File names**: kebab-case `.md`, e.g. `write-standard.md`. No spaces.
-- **Images**: place in a `figures/` folder **next to** the referencing doc; reference with relative paths `![](figures/xxx.png)`. Recommended: `.png`, ≤150 KB, ~640 px tall, ≤820 px wide. Text on images must match the doc's language.
+- **Images**: place in a `figures/` folder **next to** the referencing doc; reference with relative paths (markdown image syntax pointing to `figures/xxx.png`). Recommended: `.png`, ≤150 KB, ~640 px tall, ≤820 px wide. Text on images must match the doc's language.
 - **Tables**: every table needs a caption and a header; use `_` for empty cells, never leave blank.
 - **Start from a template.** `en/contribute/template/` holds required structures: `readme-template.md`, `ts-template.md`, `js-template.md`, `native-template.md`, `guide-template.md`, `faq-template.md`, `tutorial-template.md`, `errorcodes-template.md`. Match the template's section order.
 - **Navigation `Readme-EN.md` / `Readme-EN.md` files are TOCs.** When adding/renaming/deleting a `.md` page, update the relevant `Readme-EN.md` so links stay valid, and check for inbound links from other docs.
 - **Readme files carry HTML-comment metadata** that downstream tooling reads — preserve and update it:
-  ```
+  ```text
   <!--Kit: Common-->
   <!--Subsystem: Common-->
   <!--Owner: @username-->
