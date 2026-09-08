@@ -1,10 +1,11 @@
 # oh_preferences.h
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @ding_dong_dong-->
-<!--Designer: @ding_dong_dong-->
+<!--Owner: @cuile44-->
+<!--Designer: @cuile44-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=56ed0768936d754cf596777e5bea964ac3d6187b translatedAt=2026-09-04T02:48:47.594Z pushedAt=2026-09-09T09:11:03.646Z -->
 
 ## Overview
 
@@ -43,7 +44,7 @@ Provides APIs and structs for accessing the **Preferences** object.
 | [int OH_Preferences_SetBool(OH_Preferences *preference, const char *key, bool value)](#oh_preferences_setbool) | -                          | Sets a Boolean value based on the specified key in a **Preferences** instance.                  |
 | [int OH_Preferences_SetString(OH_Preferences *preference, const char *key, const char *value)](#oh_preferences_setstring) | -                          | Sets a string based on the specified key in a **Preferences** instance.                  |
 | [int OH_Preferences_Delete(OH_Preferences *preference, const char *key)](#oh_preferences_delete) | -                          | Deletes the KV data corresponding to the specified key from a **Preferences** instance.                |
-| [int OH_Preferences_RegisterDataObserver(OH_Preferences *preference, void *context,OH_PreferencesDataObserver observer, const char *keys[], uint32_t keyCount)](#oh_preferences_registerdataobserver) | -                          | Subscribes to data changes of the specified keys. If the value of the specified key changes, a callback will be invoked after **OH_Preferences_Close()** is called.|
+| [int OH_Preferences_RegisterDataObserver(OH_Preferences *preference, void *context,OH_PreferencesDataObserver observer, const char *keys[], uint32_t keyCount)](#oh_preferences_registerdataobserver) | -                          | Registers data change subscription for the selected keys. The callback is triggered after the value of a subscribed key changes and **OH_Preferences_Close()** is called. |
 | [int OH_Preferences_UnregisterDataObserver(OH_Preferences *preference, void *context,OH_PreferencesDataObserver observer, const char *keys[], uint32_t keyCount)](#oh_preferences_unregisterdataobserver) | -                          | Unsubscribes from data changes of the specified keys.                             |
 | [int OH_Preferences_IsStorageTypeSupported(Preferences_StorageType type, bool *isSupported)](#oh_preferences_isstoragetypesupported) | -                          | Checks whether the specified storage type is supported.                          |
 | [int OH_Preferences_DeletePreferences(OH_PreferencesOption *option)](#oh_preferences_deletepreferences) | - | Deletes the specified **Preferences** object.|
@@ -76,8 +77,8 @@ Defines a struct for the callback for data changes.
 | Name                                                      | Description                    |
 | ------------------------------------------------------------ | ------------------------ |
 | void *context                                                | Pointer to the application context.      |
-| const [OH_PreferencesPair](capi-preferences-oh-preferencespair.md) *pairs | Pointer to the changed KV data.|
-| uint32_t count                                               | Number of KV pairs changed.|
+| const [OH_PreferencesPair](capi-preferences-oh-preferencespair.md) *pairs | Pointer to the changed key-value (KV) data. |
+| uint32_t count                                               | Number of changed key-value (KV) data entries. |
 
 ### OH_Preferences_Open()
 
@@ -103,7 +104,7 @@ Opens a **Preferences** instance and creates a pointer to it.<br>If this pointer
 
 | Type                                    | Description                                                        |
 | ---------------------------------------- | ------------------------------------------------------------ |
-| [OH_Preferences](capi-preferences-oh-preferences.md) | Returns a pointer to the [OH_Preferences](capi-preferences-oh-preferences.md) instance opened if the operation is successful; returns a null pointer otherwise.|
+| [OH_Preferences](capi-preferences-oh-preferences.md) * | Pointer to the opened [OH_Preferences](capi-preferences-oh-preferences.md) instance when the operation is successful; a null pointer is returned on failure. |
 
 ### OH_Preferences_Close()
 
@@ -147,7 +148,7 @@ Obtains an integer corresponding to the specified key in a **Preferences** insta
 
 | Name                                              | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [OH_Preferences](capi-preferences-oh-preferences.md) *preference | Pointer to the [OH_Preferences](capi-preferences-oh-preferences.md) instance.|
+| [OH_Preferences](capi-preferences-oh-preferences.md) *preference | Pointer to the target [OH_Preferences](capi-preferences-oh-preferences.md) instance object. |
 | const char *key                                      | Pointer to the key of the value to obtain.                                       |
 | int *value                                           | Pointer to the integer value obtained.          |
 
@@ -174,7 +175,7 @@ Obtains a Boolean value corresponding to the specified key in a **Preferences** 
 
 | Name                                              | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [OH_Preferences](capi-preferences-oh-preferences.md) *preference | Pointer to the [OH_Preferences](capi-preferences-oh-preferences.md) instance.|
+| [OH_Preferences](capi-preferences-oh-preferences.md) *preference | Pointer to the target [OH_Preferences](capi-preferences-oh-preferences.md) instance object. |
 | const char *key                                      | Pointer to the key of the value to obtain.                                       |
 | bool *value                                          | Pointer to the Boolean value obtained.          |
 
@@ -182,7 +183,7 @@ Obtains a Boolean value corresponding to the specified key in a **Preferences** 
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.<br>**PREFERENCES_ERROR_KEY_NOT_FOUND** indicates the specified key does not exist.|
+| int  | Result code.<br>Returns **PREFERENCES_OK** if the operation is successful.<br>Returns **PREFERENCES_ERROR_INVALID_PARAM** if the parameter is invalid.<br>Returns **PREFERENCES_ERROR_STORAGE** if a storage exception occurs.<br>Returns **PREFERENCES_ERROR_MALLOC** if memory allocation fails.<br>Returns **PREFERENCES_ERROR_KEY_NOT_FOUND** if the queried key does not exist. |
 
 ### OH_Preferences_GetString()
 
@@ -201,7 +202,7 @@ Obtains a string corresponding to the specified key in a **Preferences** instanc
 
 | Name                                              | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [OH_Preferences](capi-preferences-oh-preferences.md) *preference | Pointer to the [OH_Preferences](capi-preferences-oh-preferences.md) instance.|
+| [OH_Preferences](capi-preferences-oh-preferences.md) *preference | Pointer to the target [OH_Preferences](capi-preferences-oh-preferences.md) instance object. |
 | const char *key                                      | Pointer to the key of the value to obtain.                                       |
 | char **value                                         | Double pointer to the string obtained. If the string is not required, you can use [OH_Preferences_FreeString](capi-oh-preferences-h.md#oh_preferences_freestring) to free the string (release the memory occupied by the string).|
 | uint32_t *valueLen                                   | Pointer to the length of the string obtained.          |
@@ -248,7 +249,7 @@ Sets an integer based on the specified key in a **Preferences** instance.
 
 | Name                                              | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [OH_Preferences](capi-preferences-oh-preferences.md) *preference | Pointer to the [OH_Preferences](capi-preferences-oh-preferences.md) instance.|
+| [OH_Preferences](capi-preferences-oh-preferences.md) *preference | Pointer to the target [OH_Preferences](capi-preferences-oh-preferences.md) instance object. |
 | const char *key                                      | Pointer to the key of the value to set.                                   |
 | int value                                            | Integer value to be set.                                          |
 
@@ -275,7 +276,7 @@ Sets a Boolean value based on the specified key in a **Preferences** instance.
 
 | Name                                              | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [OH_Preferences](capi-preferences-oh-preferences.md) *preference | Pointer to the [OH_Preferences](capi-preferences-oh-preferences.md) instance.|
+| [OH_Preferences](capi-preferences-oh-preferences.md) *preference | Pointer to the target [OH_Preferences](capi-preferences-oh-preferences.md) instance object. |
 | const char *key                                      | Pointer to the key of the value to set.                                   |
 | bool value                                           | Boolean value to be set.                                          |
 
@@ -302,7 +303,7 @@ Sets a string based on the specified key in a **Preferences** instance.
 
 | Name                                              | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [OH_Preferences](capi-preferences-oh-preferences.md) *preference | Pointer to the [OH_Preferences](capi-preferences-oh-preferences.md) instance.|
+| [OH_Preferences](capi-preferences-oh-preferences.md) *preference | Pointer to the target [OH_Preferences](capi-preferences-oh-preferences.md) instance object. |
 | const char *key                                      | Pointer to the key of the value to set.                                   |
 | const char *value                                    | Pointer to the string to set.                                  |
 
@@ -329,7 +330,7 @@ Deletes the KV data corresponding to the specified key from a **Preferences** in
 
 | Name                                              | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [OH_Preferences](capi-preferences-oh-preferences.md) *preference | Pointer to the [OH_Preferences](capi-preferences-oh-preferences.md) instance.|
+| [OH_Preferences](capi-preferences-oh-preferences.md) *preference | Pointer to the target [OH_Preferences](capi-preferences-oh-preferences.md) instance object. |
 | const char *key                                      | Pointer to the key of the KV pair to delete.                                   |
 
 **Returns**
@@ -346,7 +347,7 @@ int OH_Preferences_RegisterDataObserver(OH_Preferences *preference, void *contex
 
 **Description**
 
-Subscribes to data changes of the specified keys. If the value of the specified key changes, a callback will be invoked after **OH_Preferences_Close()** is called.
+Registers a data change subscription for the selected key. The callback is triggered after the value of the subscribed key changes and **OH_Preferences_Close()** is called.
 
 **Since**: 13
 
@@ -355,11 +356,11 @@ Subscribes to data changes of the specified keys. If the value of the specified 
 
 | Name                                                      | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [OH_Preferences](capi-preferences-oh-preferences.md) *preference         | Pointer to the [OH_Preferences](capi-preferences-oh-preferences.md) instance.|
+| [OH_Preferences](capi-preferences-oh-preferences.md) *preference         | Pointer to the target [OH_Preferences](capi-preferences-oh-preferences.md) instance object. |
 | void *context                                                | Pointer to the application context.                                          |
 | [OH_PreferencesDataObserver](#oh_preferencesdataobserver) observer | [OH_PreferencesDataObserver](capi-oh-preferences-h.md#oh_preferencesdataobserver) callback to be invoked when data changes.|
 | const char *keys[]                                           | Array of keys.                                         |
-| uint32_t keyCount                                            | Number of keys.                                       |
+| uint32_t keyCount                                            | Number of keys to subscribe to. The value range is greater than or equal to 1, and must be consistent with the actual length of the keys array.                                        |
 
 **Returns**
 
@@ -384,11 +385,11 @@ Unsubscribes from data changes of the specified keys.
 
 | Name                                                      | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [OH_Preferences](capi-preferences-oh-preferences.md) *preference         | Pointer to the [OH_Preferences](capi-preferences-oh-preferences.md) instance.|
+| [OH_Preferences](capi-preferences-oh-preferences.md) *preference         | Pointer to the target [OH_Preferences](capi-preferences-oh-preferences.md) instance. |
 | void *context                                                | Pointer to the application context.                                          |
 | [OH_PreferencesDataObserver](#oh_preferencesdataobserver) observer | [OH_PreferencesDataObserver](capi-oh-preferences-h.md#oh_preferencesdataobserver) callback to be invoked when data changes.|
 | const char *keys[]                                           | Pointer to the keys whose changes are not observed.                                     |
-| uint32_t keyCount                                            | Number of keys.                                   |
+| uint32_t keyCount                                            | Number of keys to unsubscribe from. The value must be greater than or equal to 1 and must match the actual length of the keys array.                                    |
 
 **Returns**
 
@@ -402,6 +403,9 @@ Unsubscribes from data changes of the specified keys.
 int OH_Preferences_IsStorageTypeSupported(Preferences_StorageType type, bool *isSupported)
 ```
 
+**Description**
+
+Checks whether the current platform supports the corresponding storage mode.
 
 **Since**: 18
 
@@ -417,7 +421,7 @@ int OH_Preferences_IsStorageTypeSupported(Preferences_StorageType type, bool *is
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Return an operation status code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.|
+| int  | Result code.<br>Returns **PREFERENCES_OK** if the operation is successful.<br>Returns **PREFERENCES_ERROR_INVALID_PARAM** if the parameter is invalid. |
 
 ### OH_Preferences_DeletePreferences()
 
@@ -443,7 +447,6 @@ Deletes the specified **Preferences** object.
 | -- | -- |
 | int | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_NOT_SUPPORTED** indicates the system capability is not supported.<br>**PREFERENCES_ERROR_DELETE_FILE** indicates the file fails to be deleted.|
 
-
 ### OH_Preferences_SetValue()
 
 ```c
@@ -468,7 +471,7 @@ Sets [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) in the **Pre
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates a storage exception.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
+| int | Result code.<br>Returns **PREFERENCES_OK** if the operation is successful.<br>Returns **PREFERENCES_ERROR_INVALID_PARAM** if the parameter is invalid.<br>Returns **PREFERENCES_ERROR_STORAGE** if a storage exception occurs.<br>Returns **PREFERENCES_ERROR_MALLOC** if memory allocation fails. |
 
 ### OH_Preferences_GetValue()
 
@@ -494,7 +497,7 @@ Obtains the value from the **Preferences** object based on the given key.
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates a storage exception.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.<br>**PREFERENCES_ERROR_KEY_NOT_FOUND** indicates the specified key does not exist.|
+| int | Result code. <br>Returns **PREFERENCES_OK** if the operation is successful.<br>Returns **PREFERENCES_ERROR_INVALID_PARAM** if the parameter is invalid.<br>Returns **PREFERENCES_ERROR_STORAGE** if a storage error occurs.<br>Returns **PREFERENCES_ERROR_MALLOC** if memory allocation fails.<br>Returns **PREFERENCES_ERROR_KEY_NOT_FOUND** if the queried key does not exist. |
 
 ### OH_Preferences_GetAll()
 
@@ -520,7 +523,7 @@ Obtains all the values from the **Preferences** object.
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates a storage exception.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.<br>**PREFERENCES_ERROR_KEY_NOT_FOUND** indicates the specified key does not exist.|
+| int | Result code. <br>Returns **PREFERENCES_OK** if the operation is successful.<br>Returns **PREFERENCES_ERROR_INVALID_PARAM** if the parameter is invalid.<br>Returns **PREFERENCES_ERROR_STORAGE** if a storage error occurs.<br>Returns **PREFERENCES_ERROR_MALLOC** if memory allocation fails.<br>Returns **PREFERENCES_ERROR_KEY_NOT_FOUND** if the key to query does not exist. |
 
 ### OH_Preferences_HasKey()
 
@@ -569,7 +572,7 @@ Saves the cache of the [OH_Preferences](capi-preferences-oh-preferences.md) obje
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_NOT_SUPPORTED** indicates the system capability is not supported.|
+| int | Result code.<br>Returns **PREFERENCES_OK** if the operation is successful.<br>Returns **PREFERENCES_ERROR_INVALID_PARAM** if the parameter is invalid.<br>Returns **PREFERENCES_ERROR_NOT_SUPPORTED** if the system capability is not supported. |
 
 ### OH_Preferences_ClearCache()
 
@@ -593,7 +596,7 @@ Clears all values in the cache of the [OH_Preferences](capi-preferences-oh-prefe
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_NOT_SUPPORTED** indicates the system capability is not supported.|
+| int | Result code.<br>Returns **PREFERENCES_OK** if the operation is successful.<br>Returns **PREFERENCES_ERROR_INVALID_PARAM** if the parameter is invalid.<br>Returns **PREFERENCES_ERROR_NOT_SUPPORTED** if the system capability is not supported. |
 
 ### OH_Preferences_RegisterMultiProcessDataObserver()
 
@@ -619,7 +622,7 @@ Registers a multi-process data observer for the **Preferences** object.
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates a storage exception.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.<br>**PREFERENCES_ERROR_GET_DATAOBSMGRCLIENT** indicates a failure in obtaining the data change subscription service.|
+| int | Result code. <br>Returns **PREFERENCES_OK** if the operation is successful. <br>Returns **PREFERENCES_ERROR_INVALID_PARAM** if the parameter is invalid. <br>Returns **PREFERENCES_ERROR_STORAGE** if a storage exception occurs. <br>Returns **PREFERENCES_ERROR_MALLOC** if memory allocation fails. <br>Returns **PREFERENCES_ERROR_GET_DATAOBSMGRCLIENT** if it fails to obtain the data change subscription service. |
 
 ### OH_Preferences_UnregisterMultiProcessDataObserver()
 
@@ -645,4 +648,4 @@ Unregisters the multi-process data observer of the **Preferences** object.
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates a storage exception.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
+| int | Result code. <br>Returns **PREFERENCES_OK** if the operation is successful. <br>Returns **PREFERENCES_ERROR_INVALID_PARAM** if the parameter is invalid. <br>Returns **PREFERENCES_ERROR_STORAGE** if a storage exception occurs. <br>Returns **PREFERENCES_ERROR_MALLOC** if memory allocation fails. |

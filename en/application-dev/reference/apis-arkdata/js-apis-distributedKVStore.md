@@ -5,6 +5,7 @@
 <!--Designer: @ding_dong_dong-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=6d0420fb94e31e8d87b8edab2079e2cc942d26bc translatedAt=2026-09-04T04:01:23.857Z pushedAt=2026-09-09T09:11:03.747Z -->
 
 The **distributedKVStore** module implements collaboration between databases for different devices that form a Super Device. You can use the APIs provided by this module to save application data to a distributed key-value (KV) store and perform operations, such as adding, deleting, modifying, and querying data, and synchronizing data across devices.
 
@@ -35,7 +36,7 @@ Provides the **KVManager** instance configuration, including the bundle name of 
 | Name    | Type             | Read Only| Optional| Description                                                        |
 | ---------- | ---------------|----- | ---- | ------------------------------------------------------------ |
 | context    | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md)    | No  | No  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).<br>Since API version 10, the parameter type of context is [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md).|
-| bundleName | string          | No  | No  | Bundle name of the caller. The value cannot be empty and must be a string of 1 to 256 bytes.                                              |
+| bundleName | string          | No   | No   | Bundle name of the caller. Must not be empty, with a length range of 1 to 256 bytes.                                               |
 
 ## Constants
 
@@ -45,11 +46,11 @@ Provides constants of the distributed KV store.
 
 | Name                 | Type  | Read Only| Optional| Description                                                      |
 | --------------------- | ------ | ---- | ---- | ---------------------------------------------------------- |
-| MAX_KEY_LENGTH        | number | Yes  | No  | Maximum length of a key in the database, which is 1024 bytes.       |
-| MAX_VALUE_LENGTH      | number | Yes  | No  | Maximum length of a value in the database, which is 4194303 bytes.  |
-| MAX_KEY_LENGTH_DEVICE | number | Yes  | No  | Maximum length of a key in a device KV store, which is 896 bytes.|
-| MAX_STORE_ID_LENGTH   | number | Yes  | No  | Maximum length of a KV store ID, which is 128 bytes.       |
-| MAX_QUERY_LENGTH      | number | Yes  | No  | Maximum query length, which is 512000 bytes.                  |
+| MAX_KEY_LENGTH        | number | Yes  | No   | The value is 1024, indicating the maximum length allowed for a key in the database, in bytes.        |
+| MAX_VALUE_LENGTH      | number | Yes  | No   | The value is 4194303, indicating the maximum length allowed for a value in the database, in bytes.   |
+| MAX_KEY_LENGTH_DEVICE | number | Yes  | No   | The value is 896, indicating the maximum length allowed for a key in the device collaboration database, in bytes. |
+| MAX_STORE_ID_LENGTH   | number | Yes  | No   | The value is 128, indicating the maximum length allowed for a database identifier, in bytes.        |
+| MAX_QUERY_LENGTH      | number | Yes  | No   | The value is 512000, indicating the maximum query length, in bytes.                   |
 | MAX_BATCH_SIZE        | number | Yes  | No  | Maximum number of batch operations allowed, which is 128.                         |
 
 ## ValueType
@@ -63,7 +64,7 @@ Enumerates the types of the value in a KV pair.
 | STRING     | 0 | String.  |
 | INTEGER    | 1 | Integer.    |
 | FLOAT      | 2 | Float (single-precision floating point).  |
-| BYTE_ARRAY | 3 | Byte array.|
+| BYTE_ARRAY | 3 | Byte array. |
 | BOOLEAN    | 4 | Boolean.  |
 | DOUBLE     | 5 | Double (double-precision floating point).|
 
@@ -130,8 +131,6 @@ Enumerates the subscription types.
 
 Enumerates the distributed KV store types.
 
-**System capability**: SystemCapability.DistributedDataManager.KVStore.Core
-
 | Name                | Value| Description                                                        |
 | -------------------- | - | ------------------------------------------------------------ |
 | DEVICE_COLLABORATION | 0 | Device KV store.<br>The device KV store manages data by device, which eliminates conflicts. Data can be queried by device.<br>**System capability**: SystemCapability.DistributedDataManager.KVStore.DistributedKVStore|
@@ -160,8 +159,6 @@ Enumerates the KV store security levels.
 ## Options
 
 Provides KV store configuration.
-
-**System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
 | Name         | Type                       | Read Only| Optional| Description                                                        |
 | --------------- | -------------- | ---- | ----| -------------------------|
@@ -196,7 +193,7 @@ Defines the schema of a KV store. You can create a **Schema** object and pass it
 | root    | [FieldNode](#fieldnode) | No | No | Definitions of all the fields in **Value**.|
 | indexes | Array\<string>          | No | No | Indexes of the fields in **Value**. Indexes are created only for **FieldNode** with this parameter specified. The format is **'$.field1'**, **'$.field2'**.|
 | mode    | number                  | No | No | Schema mode, which can be **0** (compatible mode) or **1** (strict mode).|
-| skip    | number                  | No | No | Number of bytes to be skipped during the value check. The value range is [0, 4 × 1024 × 1024 - 2].|
+| skip    | number                  | No  | No  | Specified number of bytes to be skipped when checking the Value. Value range: [0, 4 * 1024 * 1024 - 2] bytes. |
 
 Strict mode: In this mode, the value to be inserted must strictly match the schema defined, and the number and format of fields must be consistent with that defined in the schema. Otherwise, an error will be returned.
 
@@ -241,7 +238,7 @@ Represents a **Schema** instance, which provides the methods for defining the va
 | -------- | ------- | ---- | ---- |--------------------------------------------------------------------------------------------------------|
 | nullable | boolean | No  | No  | Whether the field can be null. The value **true** means the node field can be null; the value **false** means the opposite.                                                       |
 | default  | string  | No  | No  | Default value of **FieldNode**. The value of **default** must be a string literal that can be parsed by the type. Ensure that the value type is the same as **type**.                                       |
-| type     | number  | No  | No  | **FieldNode** data type, which is a value of [ValueType](#valuetype). Note: Currently, the **BYTE_ARRAY** type is not supported. Using this type may cause a failure in calling [getKVStore](#getkvstore). |
+| type     | number  | No   | No   | Data type of the specified node. The value is an enum of [ValueType](#valuetype). Note: BYTE_ARRAY is not supported. Using this type will cause [getKVStore](#getkvstore) to fail. |
 
 ### constructor
 
@@ -328,7 +325,7 @@ Creates a **KVManager** instance for KV store management.
 
 | Name| Type                     | Mandatory| Description                                                     |
 | ------ | ----------------------------- | ---- | --------------------------------------------------------- |
-| config | [KVManagerConfig](#kvmanagerconfig) | Yes  | Configuration of the **KVManager** instance , including the application context and the bundle name of the caller (cannot be empty).|
+| config | [KVManagerConfig](#kvmanagerconfig) | Yes  | Configuration of the **KVManager** instance, including the application context and the bundle name of the caller (cannot be empty).|
 
 **Return value**
 
@@ -549,7 +546,7 @@ Closes a distributed KV store. This API uses an asynchronous callback to return 
 
 | Name  | Type                 | Mandatory| Description                                                        |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| appId    | string                    | Yes  | Bundle name of the application. The value cannot be empty and contains 1 to 256 bytes.                                     |
+| appId    | string                    | Yes   | Bundle name of the application. Must not be empty, with a length range of 1-256 bytes.                                      |
 | storeId  | string                    | Yes  | Unique identifier of the KV store to close. The KV store ID allows only letters, digits, and underscores (_), and its length ranges from 1 to [MAX_STORE_ID_LENGTH](#constants) in length.|
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.    |
 
@@ -615,7 +612,7 @@ Closes a distributed KV store. If the **kvConfig** parameter is used, the distri
 
 | Name | Type| Mandatory| Description                                                        |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| appId   | string   | Yes  | Bundle name of the application. The value cannot be empty and contains 1 to 256 bytes.                          |
+| appId   | string   | Yes   | Bundle name of the application. Must not be empty, with a length range of 1 to 256 bytes.                           |
 | storeId | string   | Yes  | Unique identifier of the KV store to close. The KV store ID allows only letters, digits, and underscores (_), and its length ranges from 1 to [MAX_STORE_ID_LENGTH](#constants) in length.|
 | kvConfig<sup>24+</sup> | [Options](#options)  | No  | Configuration information of the KV store to close. Defaults to null.|
 
@@ -686,7 +683,7 @@ Deletes a distributed KV store. This API uses an asynchronous callback to return
 
 | Name  | Type                 | Mandatory| Description                                                        |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| appId    | string                    | Yes  | Bundle name of the application. The value cannot be empty and contains 1 to 256 bytes.                                     |
+| appId    | string                    | Yes   | Bundle name of the application. Must not be empty, with a length range of 1-256 bytes.                                      |
 | storeId  | string                    | Yes  | Unique identifier of the KV store to delete. The KV store ID allows only letters, digits, and underscores (_), and its length ranges from 1 to [MAX_STORE_ID_LENGTH](#constants) in length.|
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.    |
 
@@ -754,7 +751,7 @@ Deletes a distributed KV store. If the **kvConfig** parameter is used, the distr
 
 | Name | Type| Mandatory| Description                                                        |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| appId   | string   | Yes  | Bundle name of the application. The value cannot be empty and contains 1 to 256 bytes.                          |
+| appId   | string   | Yes   | Bundle name of the application. Must not be empty, and the length range is 1-256 bytes.                           |
 | storeId | string   | Yes  | Unique identifier of the KV store to delete. The KV store ID allows only letters, digits, and underscores (_), and its length ranges from 1 to [MAX_STORE_ID_LENGTH](#constants) in length.|
 | kvConfig<sup>24+</sup> | [Options](#options)  | No  | Configuration information of the KV store to delete. Defaults to null.|
 
@@ -826,7 +823,7 @@ Obtains the IDs of all distributed KV stores that are created by [getKVStore](#g
 
 | Name  | Type                     | Mandatory| Description                                               |
 | -------- | ----------------------------- | ---- | --------------------------------------------------- |
-| appId    | string                        | Yes  | Bundle name of the application. The value cannot be empty and contains 1 to 256 bytes.                             |
+| appId    | string                        | Yes   | Bundle name of the application. It must not be empty and its length range is 1 to 256 bytes.                              |
 | callback | AsyncCallback&lt;string[]&gt; | Yes  | Callback used to return the IDs of all the distributed KV stores created.|
 
 **Error codes**
@@ -870,7 +867,7 @@ Obtains the IDs of all distributed KV stores that are created by [getKVStore](#g
 
 | Name| Type| Mandatory| Description                  |
 | ------ | -------- | ---- | ---------------------- |
-| appId  | string   | Yes  | Bundle name of the application. The value cannot be empty and contains 1 to 256 bytes.|
+| appId  | string   | Yes   | Bundle name of the application. It must not be empty and its length ranges from 1 to 256 bytes. |
 
 **Return value**
 
@@ -950,7 +947,7 @@ try {
 
 off(event: 'distributedDataServiceDie', deathCallback?: Callback&lt;void&gt;): void
 
-Unsubscribes from the termination (death) of the distributed data service. You must call [on('distributedDataServiceDie')](#ondistributeddataservicedie) to subscribe to the termination of the distributed data service before calling **off** to cancel the subscription. The **deathCallback** parameter must be a callback registered for subscribing to the termination of the distributed data service. Otherwise, the unsubscription will fail.
+Unsubscribes from the service termination event. You must call [on('distributedDataServiceDie')](#ondistributeddataservicedie) to subscribe before calling off to unsubscribe. The deathCallback in the parameter must be the one that has been subscribed; otherwise, the unsubscription fails.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -958,7 +955,7 @@ Unsubscribes from the termination (death) of the distributed data service. You m
 
 | Name       | Type            | Mandatory| Description                                                        |
 | ------------- | -------------------- | ---- | ------------------------------------------------------------ |
-| event         | string               | Yes  | Event type. The value is **distributedDataServiceDie**, which indicates the termination of the distributed data service.|
+| event         | string               | Yes   | Name of the event to unsubscribe from. The value is fixed to 'distributedDataServiceDie', which indicates the service termination event. |
 | deathCallback | Callback&lt;void&gt; | No  | Callback function. If this parameter is not specified, this API unregisters all callbacks for the **distributedDataServiceDie** event.                                         |
 
 **Error codes**
@@ -2931,8 +2928,6 @@ try {
         console.info(`entries.length: ${entries.length}`);
         console.info(`entries[0]: ${entries[0]}`);
       });
-    } else {
-      console.error('KvStore is null'); // The subsequent sample code is the same as the code here.
     }
   });
 } catch (err) {
@@ -5367,7 +5362,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let devManager: distributedDeviceManager.DeviceManager;
 const KEY_TEST_SYNC_ELEMENT = 'key_test_sync';
 const VALUE_TEST_SYNC_ELEMENT = 'value-string-001';
-// create deviceManager
+
 export default class EntryAbility extends UIAbility {
   onCreate() {
     let context = this.context;
@@ -5453,7 +5448,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 const KEY_TEST_SYNC_ELEMENT = 'key_test_sync';
 const VALUE_TEST_SYNC_ELEMENT = 'value-string-001';
-// create deviceManager
+
 export default class EntryAbility extends UIAbility {
   onCreate() {
     let context = this.context;

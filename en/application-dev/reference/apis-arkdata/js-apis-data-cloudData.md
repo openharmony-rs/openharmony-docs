@@ -5,10 +5,11 @@
 <!--Designer: @lvcong_oh-->
 <!--Tester: @ltttjs; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=4dbe4a8881c6a45966d16b8767732fc4575d115a translatedAt=2026-09-04T03:21:49.654Z pushedAt=2026-09-09T09:11:03.702Z -->
 
-The **cloudData** module provides the device-cloud strategy capability, enabling you to configure the device-cloud sync strategy.
+The Device-Cloud Service provides device-cloud strategy capabilities.
 
- 
+The device-cloud strategy provides the capability of configuring device-cloud synchronization policies.
 
 > **NOTE**
 >
@@ -22,93 +23,93 @@ import { cloudData } from '@kit.ArkData';
 
 ## StrategyType
 
-Enumerates the types of the cloud-device sync strategy.
+Enumerates the cloud sync strategy types.
 
-**System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
+**System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
-| Name     | Value| Description       |
+| Name      | Value | Description        |
 | --------- |---|-----------|
-| NETWORK | 0 | Sync over the network.|
+| NETWORK | 0 | Synchronization over the network. |
 
 ## NetWorkStrategy
 
-Enumerates the network sync options.
+Enumerates the network policy parameters.
 
-**System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
+**System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
-| Name     | Value| Description       |
+| Name      | Value | Description        |
 | --------- |---|-----------|
-| WIFI | 1 | Sync over Wi-Fi.|
-| CELLULAR | 2 | Sync over the cellular network.  |
+| WIFI | 1 | Wi-Fi network policy. |
+| CELLULAR | 2 | Cellular network policy.   |
 
 ## AutoSyncTriggerMode
 
-Enumerates the auto-sync trigger modes.
+Enumerates the trigger modes of automatic synchronization.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
-**System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
+**System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
-| Name| Value| Description|
+| Name | Value | Description |
 |------|---|------|
-| ACCOUNT_LOGIN | 0 | Triggered for account login.|
-| CLOUD_SWITCH_ON | 1 | Triggered for sync switch.|
-| NETWORK_RECOVER | 2 | Triggered after network recovery.|
-| CLOUD_DATA_CHANGE | 3 | Triggered for cloud data changes.|
-| USER_CHANGE | 4 | Triggered for user changes.|
+| ACCOUNT_LOGIN | 0 | Account login trigger mode. |
+| CLOUD_SWITCH_ON | 1 | Sync switch trigger mode. |
+| NETWORK_RECOVER | 2 | Trigger mode after network recovery. |
+| CLOUD_DATA_CHANGE | 3 | Cloud data change trigger mode. |
+| USER_CHANGE | 4 | User change trigger mode. |
 
 ## AutoSyncTriggerInfo
 
-Defines the auto-sync trigger information.
+Automatic synchronization trigger information.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
-**System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
+**System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-only | Optional | Description |
 |------|------|------|------|------|
-| mode | [AutoSyncTriggerMode](#autosynctriggermode) | No| No| Auto-sync trigger mode.|
+| mode | [AutoSyncTriggerMode](#autosynctriggermode) | No | No | Automatic synchronization trigger mode. |
 
 ## cloudData.setCloudStrategy
 
 setCloudStrategy(strategy: StrategyType, param?: Array&lt;commonType.ValueType&gt;): Promise&lt;void&gt;
 
-Sets the cloud sync strategy of an application. This API uses a promise to return the result.
- 
-**System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
+Sets the cloud sync strategy of the application itself. This API uses a promise to return the result.
+
+**System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **Parameters**
 
-| Name    | Type                                                                         | Mandatory| Description                            |
-| ---------- |-----------------------------------------------------------------------------| ---- | -------------------------------- |
-| strategy  | [StrategyType](#strategytype)                                               | Yes  | Type of the strategy to set.            |
-| param | Array&lt;[commonType.ValueType](js-apis-data-commonType.md#valuetype)&gt; | No  | Strategy parameter. The type is **Array<commonType.ValueType>**. The actual input value is an enumerated value of [NetWorkStrategy](#networkstrategy), which can be **WIFI** or **CELLULAR**. By default, both Wi-Fi and cellular network strategies are supported.|
+| Parameter Name | Type                                                                          | Required | Description                             |
+| -------------- |-----------------------------------------------------------------------------| -------- | --------------------------------------- |
+| strategy  | [StrategyType](#strategytype)                                               | Yes   | Type of the strategy to configure.             |
+| param | Array&lt;[commonType.ValueType](js-apis-data-commonType.md#valuetype)&gt; | No   | Strategy parameter, of the Array&lt;commonType.ValueType&gt; type. The actual value passed in is a [NetWorkStrategy](#networkstrategy) enum value, which can be WIFI or CELLULAR. By default, both the Wi-Fi and cellular network strategies are supported. |
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                      |
+| ------------------- | ------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
-**Error codes**
+**Error Code**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                                                |
+| **Error Code ID** | **Error Message**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported.|
 
-**Example:**
+**Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// Sync data over Wi-Fi only.
+// Synchronize over Wi-Fi only.
 cloudData.setCloudStrategy(cloudData.StrategyType.NETWORK, [cloudData.NetWorkStrategy.WIFI]).then(() => {
   console.info('Succeeded in setting the cloud strategy');
 }).catch((err: BusinessError) => {
@@ -121,25 +122,25 @@ cloudData.setCloudStrategy(cloudData.StrategyType.NETWORK, [cloudData.NetWorkStr
 
 onAutoSyncTrigger(observer: Callback&lt;AutoSyncTriggerInfo&gt;): void
 
-Subscribes to an auto-sync trigger event when device-cloud sync is enabled and auto-sync is disabled for the application. When the auto-sync trigger condition is met, the callback is invoked.
+Registers the auto sync trigger event notification when device-cloud sync is enabled and automatic sync is disabled for the application. When the auto trigger condition is met, the callback function is invoked.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
-**System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
+**System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 |--------|------|------|------|
-| observer | Callback&lt;[AutoSyncTriggerInfo](#autosynctriggerinfo)&gt; | Yes| Callback used to return the result.|
+| observer | Callback&lt;[AutoSyncTriggerInfo](#autosynctriggerinfo)&gt; | Yes | Callback invoked to return the auto sync trigger information. |
 
-**Error codes**
+**Error Codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                            |
+| ID | Error Message                                             |
 | -------- | ---------------------------------------------------- |
 | 801      | Capability not supported. |
 
@@ -157,25 +158,25 @@ cloudData.onAutoSyncTrigger(autoSyncTriggerObserver);
 
 offAutoSyncTrigger(observer?: Callback&lt;AutoSyncTriggerInfo&gt;): void
 
-Unsubscribes from the auto-sync trigger event notification.
+Unsubscribes from the auto sync trigger event notification.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
-**System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
+**System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 |--------|------|------|------|
-| observer | Callback&lt;[AutoSyncTriggerInfo](#autosynctriggerinfo)&gt; | No| Callback to unsubscribe from. If an **observer** is passed, the specified callback is unsubscribed. If no **observer** is passed, all registered observers are unsubscribed.|
+| observer | Callback&lt;[AutoSyncTriggerInfo](#autosynctriggerinfo)&gt; | No | Callback for the auto sync trigger event. If observer is passed in, the subscription of the specified callback is canceled; if observer is not passed in, all registered subscriptions are canceled.|
 
-**Error codes**
+**Error code**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                            |
+| ID | Error Message                                             |
 | -------- | ---------------------------------------------------- |
 | 801      | Capability not supported. |
 
@@ -186,13 +187,13 @@ function autoSyncTriggerObserver(info: cloudData.AutoSyncTriggerInfo) {
   console.info(`Auto sync triggered, mode: ${info.mode}`);
 }
 
-// Subscribe to an observer.
+// Subscribe.
 cloudData.onAutoSyncTrigger(autoSyncTriggerObserver);
 
-// Unsubscribe from a specified observer.
+// Cancel the specified subscription.
 cloudData.offAutoSyncTrigger(autoSyncTriggerObserver);
 
-// Unsubscribe from all observers.
+// Cancel all subscriptions.
 cloudData.offAutoSyncTrigger();
 ```
- 
+<!--no_check-->
