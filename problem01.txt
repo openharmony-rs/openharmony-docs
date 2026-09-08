@@ -1,0 +1,22 @@
+仅检查这个文件 zh-cn/application-dev/web/web-in-page-app-function-invoking.md
+
+检查这笔修改，
+d1ca33c6437 20260828_092137  (HEAD -> guide_web_function_invoking, r_wml/guide_web_function_invoking) guide_web_function_invoking [wangmiaoliang]
+ zh-cn/application-dev/web/web-in-page-app-function-invoking.md | 208 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++---
+ 1 file changed, 203 insertions(+), 5 deletions(-)
+
+==== 检查sample代码同源
+这个代码 sample 是否同源检查下，包括空格不可见字符保持一致。仅检查这个代码段。
+比如：括号里的链接是sample 同源代码，需要和文档里的代码片段一致。
+
+
+举例：（仅仅是举例）
+ArkTS-Sta示例：
+<!-- @[get_the_current_default_user_agent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_one.ets) -->
+
+[get_the_current_default_user_agent]这个括号里的名称可能有误要检查。
+// [Start xxx]
+// [End xxx]
+这之间的代码段，必须完全一致。代码块里的和文档里的代码块必须一致。
+只修改，不提交git！！
+
