@@ -2,10 +2,11 @@
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @amunra03-->
+<!--Owner: @yh1719-->
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=37e87e28b1f57566fffb557016c871f107cbe03a translatedAt=2026-09-08T07:23:44.067Z pushedAt=2026-09-08T11:00:44.385Z -->
 
 The **nfcController** module provides APIs for opening and closing Near-Field Communication (NFC) and reading the NFC state.
 
@@ -41,7 +42,7 @@ isNfcAvailable(): boolean
 Checks whether the device supports NFC.
 
 > **NOTE**
-> This API is supported since API version 7 and deprecated since API version 9. Use [canIUse("SystemCapability.Communication.NFC.Core")](../common/init.md#caniuse) instead.
+> This API is supported since API version 7 and deprecated since API version 9. For versions earlier than API version 26, you are advised to use [canIUse("SystemCapability.Communication.NFC.Core")](../common/syscap__ndk_8h.md#caniuse) and **nfcController.isNfcAvailable** to determine whether the device supports NFC. For API version 26 and later, you are advised to use [canIUse("SystemCapability.Communication.NFC.Core")](../common/syscap__ndk_8h.md#caniuse) and [nfcController.isNfcSupported](#nfccontrollerisnfcsupported) instead.
 
 **System capability**: SystemCapability.Communication.NFC.Core
 
@@ -209,7 +210,7 @@ Enables listening for NFC state changes. This API uses an asynchronous callback 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **Parameters**
- 
+
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type. The value is **nfcStateChange**.|
@@ -234,14 +235,14 @@ Unsubscribes from the NFC state changes. Upon successful unsubscription, the sub
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type. The value is **nfcStateChange**.|
 | callback | Callback&lt;[NfcState](#nfcstate)&gt; | No| Callback for the NFC state changes. This parameter can be left blank. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
-  
+
 **Example**
 
 ```js
 import { nfcController } from '@kit.ConnectivityKit';
 
 // Register a callback for NFC status change events.
-nfcController.on("nfcStateChange", (nfcState : number)=> {
+nfcController.on("nfcStateChange", (nfcState : number) => {
   console.info("nfcController on callback nfcState: " + nfcState);
 });
 
