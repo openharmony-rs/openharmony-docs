@@ -369,25 +369,25 @@ ArkWeb组件将跟随ArkUI重新布局，效果如图1和图2所示。
    ArkTS-Dyn示例：
 
    <!-- @[use_expand_safe_area_to_enable_immersive_effect](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/CalcAdjustSafeArea.ets) -->
-
-``` TypeScript
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Web({ src: 'www.example.com', controller: this.controller })
-        .width('100%').height('100%')
-        // 扩展至系统默认非安全区域（状态栏、导航栏），并设置只扩展上方区域和下方区域
-        .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
-    }
-  }
-}
-```
+   
+   ``` TypeScript
+   import { webview } from '@kit.ArkWeb';
+   
+   @Entry
+   @Component
+   struct WebComponent {
+     controller: webview.WebviewController = new webview.WebviewController();
+   
+     build() {
+       Column() {
+         Web({ src: 'www.example.com', controller: this.controller })
+           .width('100%').height('100%')
+           // 扩展至系统默认非安全区域（状态栏、导航栏），并设置只扩展上方区域和下方区域
+           .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
+       }
+     }
+   }
+   ```
 
    ArkTS-Sta示例：
 
