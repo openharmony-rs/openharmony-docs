@@ -943,7 +943,6 @@ Picker上次退出时现场的信息。
 | ---- | ------------------------------------------------ | ---- | ---- |---------|
 | mimeType | string | 否   | 是 | 媒体文件类型。 |
 | photoSubType | [photoAccessHelper.PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)  | 否   | 是 | 图片资源的子类型。|
- 
 
 ## DataType
 
