@@ -1000,6 +1000,8 @@ struct AlphabetIndexerSample {
 
 该示例配图为高算力设备强档效果，组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
 
+从API版本26.0.0开始，索引条参数[popupBackground](#popupbackground)和[popupBackgroundBlurStyle](#popupbackgroundblurstyle12)均未主动设置（或参数value传入undefined）时，提示弹窗默认开启沉浸光感，默认材质样式为THICK。
+
 ```ts
 // xxx.ets
 @Entry
