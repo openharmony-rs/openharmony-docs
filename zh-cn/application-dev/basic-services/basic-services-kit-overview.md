@@ -32,10 +32,10 @@ Basic Services Kit为开发者提供了多种基础能力，满足开发者不�
 
 - 数据文件处理：
   - [剪贴板](../reference/apis-basic-services-kit/js-apis-pasteboard.md)：提供内容复制粘贴能力，支持多种数据类型包括文本、HTML数据、URI、PixelMap等。
-  - [压缩](../reference/apis-basic-services-kit/js-apis-zlib.md)：提供文件压缩解压缩的能力。
+  - [@ohos.zlib (Zip模块)](../reference/apis-basic-services-kit/js-apis-zlib.md)：提供文件压缩解压缩的能力。
   - [打印](../reference/apis-basic-services-kit/js-apis-print.md)：提供基础文件打印的能力，比如传入文件进行打印、设置打印参数等。
   - [上传下载](../reference/apis-basic-services-kit/js-apis-request.md)：提供文件上传下载、后台传输代理的基础能力。
-  - [划词服务](../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md)：提供划词信息监听、划词窗口管理能力。
+  - [@ohos.selectionInput.selectionManager (划词管理)](../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md)：提供划词信息监听、划词窗口管理能力。
 
 - 进程间/线程间通信：
   - [公共事件](../reference/apis-basic-services-kit/js-apis-commonEventManager.md)：提供进程间通信的能力，包括订阅、发布、退订公共事件等，相关开发指南请参考[公共事件简介](common-event/common-event-overview.md)。
@@ -44,16 +44,16 @@ Basic Services Kit为开发者提供了多种基础能力，满足开发者不�
 - 设备管理：
   - [设备信息](../reference/apis-basic-services-kit/js-apis-device-info.md)：提供查询产品信息的能力，比如查询设备类型、设备品牌名称、产品系列、产品版本号等。
   - [设置数据项](../reference/apis-basic-services-kit/js-apis-settings.md)：提供查询系统设置数据项的能力，比如查询是否启用飞行模式、是否启用触摸浏览等。
-  - [电量信息查询](../reference/apis-basic-services-kit/js-apis-battery-info.md)：提供查询电量信息的能力。
+  - [@ohos.batteryInfo (电量信息)](../reference/apis-basic-services-kit/js-apis-battery-info.md)：提供查询电量信息的能力。
   - [系统电源管理](../reference/apis-basic-services-kit/js-apis-power.md)：提供系统电源管理相关的能力，比如查询屏幕状态能力等。
-  - [RunningLock锁操作](../reference/apis-basic-services-kit/js-apis-runninglock.md)：提供RunningLock锁相关操作的能力，包括创建、查询、持锁、释放锁等操作。
+  - [@ohos.runningLock (RunningLock锁)](../reference/apis-basic-services-kit/js-apis-runninglock.md)：提供RunningLock锁相关操作的能力，包括创建、查询、持锁、释放锁等操作。
   - [热管理](../reference/apis-basic-services-kit/js-apis-thermal.md)：提供热管理相关的能力，比如热档位查询等。
   - [USB管理](../reference/apis-basic-services-kit/js-apis-usbManager.md)：提供USB设备管理相关的能力，比如查询USB设备列表、批量数据传输、控制命令传输、权限控制等，相关开发指南请参考[USB服务开发概述](usb/usbManager/usbHost-overview.md)。
 
 - 其他：
   - [应用账号管理](../reference/apis-basic-services-kit/js-apis-appAccount.md)：提供应用账号的生命周期管理以及数据管理的能力，相关开发指南请参考[管理应用账号](account/manage-application-account.md)。
   - [公共回调](../reference/apis-basic-services-kit/js-apis-base.md)：定义了OpenHarmony ArkTS接口的公共回调类型，包括接口调用时出现的公共回调和公共错误信息。
-  - [时间时区](../reference/apis-basic-services-kit/js-apis-date-time.md)：提供获取系统时间以及系统时区的能力。
+  - [@ohos.systemDateTime (系统时间、时区)](../reference/apis-basic-services-kit/js-apis-date-time.md)：提供获取系统时间以及系统时区的能力。
 
 ## 与其他Kit的关系
 
