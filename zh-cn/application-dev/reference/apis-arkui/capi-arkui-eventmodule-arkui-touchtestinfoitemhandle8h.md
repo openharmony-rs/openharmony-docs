@@ -19,4 +19,3 @@ typedef ArkUI_TouchTestInfoItemHandle* ArkUI_TouchTestInfoItemArray
 **相关模块：** [ArkUI_EventModule](capi-arkui-eventmodule.md)
 
 **所在头文件：** [ui_input_event.h](capi-ui-input-event-h.md)
-
