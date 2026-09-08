@@ -40,12 +40,12 @@ import { hyperSnapManager } from '@kit.AbilityKit';
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| CREATE_SNAPSHOT | 0 | 快启初始化阶段创建快照失败的场景类型。 |
-| FORK_FROM_SNAPSHOT | 1 | 快启过程中从快照生成进程失败的场景类型。 |
+| CREATE_SNAPSHOT | 0 | 在快启初始化阶段，因创建快照失败而导致的各类场景。 |
+| FORK_FROM_SNAPSHOT | 1 | 在快启过程中，因无法从快照生成新进程而导致的各类场景。 |
 
 ## HyperSnapErrorCode
 
-表示快启发生错误的错误码，每个错误码失败的具体原因详见对应的说明。
+表示快启发生错误的错误码。
 
 **ArkTS-Dyn起始版本：** 26.1.0
 
