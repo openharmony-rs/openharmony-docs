@@ -931,7 +931,7 @@
     - [ArkUI_FloatAnimatableProperty*](capi-arkui-nativemodule-arkui-floatanimatablepropertyhandle.md)
     - [ArkUI_FloatProperty*](capi-arkui-nativemodule-arkui-floatpropertyhandle.md)
     - [ArkUI_ImmersiveMaterial](./capi-arkui-nativemodule-arkui-immersivematerial.md)
-    - [ArkUI_ImmersiveMaterial*](./capi-arkui-nativemodule-arkui-immersivematerialhandle.md)
+    - [ArkUI_ImmersiveMaterial\*](./capi-arkui-nativemodule-arkui-immersivematerialhandle.md)
     - [ArkUI_LightEffectOptions](./capi-arkui-nativemodule-arkui-lighteffectoptions.md)
     - [ArkUI_LightEffectOptions*](./capi-arkui-nativemodule-arkui-lighteffectoptionshandle.md)
     - [ArkUI_NodeBorderColor](capi-arkui-nativemodule-arkui-nodebordercoloroption.md)
