@@ -276,7 +276,7 @@ try {
 
 ## offFontObserver
 
-offFontObserver(observer: FontClientObserver): void
+offFontObserver(): void
 
 注销字体服务死亡监听器。如需重新注册，请先注销再调用[onFontObserver](#onfontobserver)。
 
@@ -286,12 +286,6 @@ offFontObserver(observer: FontClientObserver): void
 
 **系统能力：** SystemCapability.Global.FontManager
 
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| ----- | ------ | ---- | ----- |
-| observer | [FontClientObserver](#fontclientobserver) | 是 | 已注册的字体服务死亡监听器。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[字体管理错误码](errorcode-font-manager.md)。
@@ -299,7 +293,6 @@ offFontObserver(observer: FontClientObserver): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 31100115 | The font observer is not registered. |
 
 **示例：**
@@ -307,12 +300,8 @@ offFontObserver(observer: FontClientObserver): void
 ```ts
 import { fontManager } from '@kit.LocalizationKit';
 
-const observer: fontManager.FontClientObserver = {
-  onServiceDied: () => {}
-};
-
 try {
-  fontManager.offFontObserver(observer);
+  fontManager.offFontObserver();
   console.info('offFontObserver suc');
 } catch (error) {
   console.error('offFontObserver err.' + error.code);
