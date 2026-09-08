@@ -33,7 +33,7 @@
 | [ArkUI_TouchTestInfo](capi-arkui-nativemodule-arkui-touchtestinfo.md) | ArkUI_TouchTestInfo | 定义触摸测试信息，用于在命中测试过程中获取触摸测试策略、参与命中测试的子组件ID及触摸测试信息项列表，适用于需要在子组件触摸事件中获取命中测试详细信息以自定义命中测试逻辑、优化触摸事件分发与响应的场景。 当用户通过[registerNodeEvent](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent)注册了[NODE_ON_CHILD_TOUCH_TEST](capi-native-node-h.md#arkui_nodeeventtype)事件时，才能接收到此事件。触摸测试信息包含触摸测试策略、命中测试过程中需要参与命中测试的子组件ID和触摸测试信息项的列表。 |
 | [ArkUI_TouchTestInfoItem](capi-arkui-nativemodule-arkui-touchtestinfoitem.md) | ArkUI_TouchTestInfoItem | 定义触摸测试信息项。触摸测试信息项包含触摸测试中子组件的信息，适用于触摸测试过程中获取和识别子组件相关信息的场景，可以通过[OH_ArkUI_TouchTestInfoItem_GetX](#oh_arkui_touchtestinfoitem_getx)、[OH_ArkUI_TouchTestInfoItem_GetY](#oh_arkui_touchtestinfoitem_gety)等接口获取子组件信息，帮助开发者处理触摸测试结果。 |
 | [ArkUI_TouchTestInfoItem*](capi-arkui-nativemodule-arkui-touchtestinfoitemhandle.md) | ArkUI_TouchTestInfoItemHandle | 定义触摸测试信息项句柄，用于表示触摸测试流程中的触摸测试信息项；触摸测试接口请参见[ui_input_event.h](capi-ui-input-event-h.md)。 |
-| [ArkUI_TouchTestInfoItemHandle*](capi-arkui-nativemodule-arkui-touchtestinfoitemhandlearray.md) | ArkUI_TouchTestInfoItemArray | 定义触摸测试信息项句柄数组，用于表示多个触摸测试信息项句柄。在触摸事件分发与测试过程中，可通过此数组类型统一管理和访问多个触摸测试结果，适用于需要同时处理多个触点测试信息的场景。 |
+| [ArkUI_TouchTestInfoItemHandle*](capi-arkui-eventmodule-arkui-touchtestinfoitemhandle8h.md) | ArkUI_TouchTestInfoItemArray | 定义触摸测试信息项句柄数组，用于表示多个触摸测试信息项句柄。在触摸事件分发与测试过程中，可通过此数组类型统一管理和访问多个触摸测试结果，适用于需要同时处理多个触点测试信息的场景。 |
 
 ### 枚举
 
@@ -4172,7 +4172,7 @@ ArkUI_ErrorCode OH_ArkUI_TouchTestInfo_GetTouchTestInfoList(ArkUI_TouchTestInfo*
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_TouchTestInfo](./capi-arkui-nativemodule-arkui-touchtestinfo.md)* info | 指向触摸测试信息的指针。 |
-| [ArkUI_TouchTestInfoItemArray](./capi-arkui-nativemodule-arkui-touchtestinfoitemhandlearray.md)* array | 输出参数，指向用于接收触摸测试信息项数组的指针，数组元素为触摸测试信息项，数组大小通过size参数返回。 |
+| [ArkUI_TouchTestInfoItemArray](./capi-arkui-eventmodule-arkui-touchtestinfoitemhandle8h.md)* array | 输出参数，指向用于接收触摸测试信息项数组的指针，数组元素为触摸测试信息项，数组大小通过size参数返回。 |
 | int32_t* size | 输出参数，表示array中返回的触摸测试信息项数量。 |
 
 **返回：**
