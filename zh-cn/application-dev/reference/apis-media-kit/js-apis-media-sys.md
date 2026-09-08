@@ -1316,7 +1316,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
-| 201      | permission denied.                |
+| 201      | permission denied. <br>适用版本：12+  |
 | 202      | Not System App. <br>适用版本：12+  |
 | 5400103  | I/O error. Return by callback.    |
 | 5400105  | Service died. Return by callback. |
