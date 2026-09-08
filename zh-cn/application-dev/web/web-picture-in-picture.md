@@ -51,7 +51,6 @@ togglePipButton.addEventListener("click", async () => {
 
 请求退出画中画模式，请使用Document接口的exitPictureInPicture()方法，视频将重新在原始标签页中显示。
 
-<!--RP1-->
 ```js
 // 示例：先获取video元素
 const video = document.getElementById('video');
@@ -62,10 +61,11 @@ try {
   } else {
     await document.exitPictureInPicture();
   }
-}
+} catch (err) {
+    console.error("Picture-in-Picture mode failed:", err);
+  }
 // ...
 ```
-<!--RP1End-->
 
 ## 监听画中画事件
 
