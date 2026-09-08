@@ -1,4 +1,4 @@
-# BuilderNode
+# BuilderNode (ArkTS-Dyn)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @sunbees-->

@@ -659,7 +659,7 @@
         - [@Provide](arkui-ts/ts-state-management-provide-static.md)
         - [@State](arkui-ts/ts-state-management-state-static.md)
         - [@StorageLink](arkui-ts/ts-state-management-storagelink-static.md)
-        - [@StoragePropref](arkui-ts/ts-state-management-storagepropref-static.md)
+        - [@StoragePropRef](arkui-ts/ts-state-management-storagepropref-static.md)
         - [@SyncMonitor](arkui-ts/ts-state-management-syncmonitor-static.md)
         - [@Track](arkui-ts/ts-state-management-track-static.md)
         - [@Watch](arkui-ts/ts-state-management-watch-static.md)
