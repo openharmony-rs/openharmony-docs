@@ -96,6 +96,10 @@ alignSelf(value: ItemAlign): T
 
 子组件在父容器交叉轴的对齐格式。
 
+> **说明：**
+>
+> 当父容器为[Flex](ts-container-flex.md)时，alignSelf仅在父容器设置FlexWrap.NoWrap时生效；设置FlexWrap.Wrap或FlexWrap.WrapReverse时不生效。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
