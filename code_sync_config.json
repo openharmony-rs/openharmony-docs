@@ -2734,7 +2734,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/SelectionService-Sta/SelectionAppSample/entry/src/main/ets/selectionextability/SelectionExtAbility.ets",
 				"functions":[
 					{
-						"end_line":126,
+						"end_line":136,
 						"name":"SelectionExtAbility",
 						"start_line":17
 					}
@@ -2744,7 +2744,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/SelectionService-Sta/SelectionAppSample/entry/src/main/ets/pages/MenuPanel.ets",
 				"functions":[
 					{
-						"end_line":108,
+						"end_line":120,
 						"name":"MenuPanel",
 						"start_line":17
 					}
