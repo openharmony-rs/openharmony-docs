@@ -80,7 +80,7 @@ import { hyperSnapManager } from '@kit.AbilityKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| code | HyperSnapErrorCode | 是 | 否 | 错误码。 |
+| code | [HyperSnapErrorCode](#hypersnaperrorcode) | 是 | 否 | 错误码。 |
 | msg | string | 是 | 否 | 错误消息。 |
 | occurTimeStamp | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是 | 否 | 发生错误时的时间戳，即自Unix纪元（1970-01-01 00:00:00 UTC）以来经过的时间，单位为毫秒，取值为整数。 |
 
@@ -192,13 +192,13 @@ getLastError(errType: HyperSnapErrorType): Promise&lt;HyperSnapErrorInfo&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| errType | HyperSnapErrorType | 是 | 表示快启错误类型。 |
+| errType | [HyperSnapErrorType](#hypersnaperrortype) | 是 | 表示快启错误类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;HyperSnapErrorInfo&gt; | Promise对象，返回指定场景下当前应用的最后一次快启错误信息。 |
+| Promise&lt;[HyperSnapErrorInfo](#hypersnaperrorinfo)&gt; | Promise对象，返回指定场景下当前应用的最后一次快启错误信息。 |
 
 **错误码**：
 
