@@ -3,10 +3,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @wkljy; @yangxuguang-huawei; @Luobniz21-->
 <!--Designer: @ccllee1; @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=9b45198dbdb6f53f8bf0896d62425626f2442690 translatedAt=2026-09-03T10:13:22.629Z pushedAt=2026-09-05T10:47:30.370Z -->
 
-The ContextConstant module defines context-related enums, including the file encryption partition level and process mode of the UIAbility after it is started.
+ContextConstant provides Context-related enums, including the file encryption area level and process mode. The file encryption area level is used to protect application data security, and developers can select an appropriate encryption level based on application requirements. The process mode is used to control the startup mode and process behavior of a UIAbility. These enums help developers implement more flexible application architectures and more secure data management.
 
 > **NOTE**
 > 
@@ -22,7 +23,7 @@ import { contextConstant } from '@kit.AbilityKit';
 
 ## AreaMode
 
-Enumerates the file encryption levels, which are used to ensure data security for applications across different scenarios. You can select the appropriate encryption level based on the application requirements to protect user data.
+Enumerates the file encryption area levels to ensure data security in different scenarios. Developers can select an appropriate encryption level based on application requirements.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -30,24 +31,24 @@ Enumerates the file encryption levels, which are used to ensure data security fo
 |-----| -------- |----------------------------------------------------------------------------------------------------------------------|
 | EL1 | 0 | Device-level encryption. Directories with this encryption level are accessible after the device is powered on.<br>**Atomic service API**: This API can be used in atomic services since API version 11.   |
 | EL2 | 1 | User-level encryption. Directories with this encryption level are accessible only after the device is powered on and the password is entered (for the first time).<br>**Atomic service API**: This API can be used in atomic services since API version 11.      |
-| EL3<sup>11+<sup> | 2 | User-level encryption. The file permissions vary according to their scenarios.<br>- An open file is always readable and writable regardless of whether the screen is locked.<br>- When the screen is locked, a closed file cannot be opened, read, or written. When the screen is unlocked, such a file can be opened, read, and written.<br>- When the screen is locked, a file can be created and then opened and written but not read. When the screen is unlocked, a file can be created and then opened, read, and written.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| EL4<sup>11+<sup> | 3 | User-level encryption. The file permissions vary according to their scenarios.<br>- When the screen is locked, an open file is not readable or writable. When the screen is unlocked, such a file is readable and writable.<br>- When the screen is locked, a closed file cannot be opened, read, or written. When the screen is unlocked, such a file can be opened, read, and written.<br>- When the screen is locked, a file cannot be created. When the screen is unlocked, a file can be created and then opened, read, and written.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
-| EL5<sup>12+<sup> | 4 | Application-level encryption. The file permissions vary according to their scenarios.<br>- An open file is always readable and writable regardless of whether the screen is locked.<br>When the screen is locked, a closed file can be opened, read, and written only if the reserved key is obtained by calling [Access](js-apis-screenLockFileManager.md#screenlockfilemanageracquireaccess). When the screen is unlocked, such a file can be opened, read, and written.<br>A file can be created and then opened, read, and written regardless of whether the screen is locked.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| EL3<sup>11+</sup> | 2 | User-level encryption area. The file permissions in different scenarios are as follows:<br/>Opened file: when locked, readable and writable; after unlocking, readable and writable.<br/>Unopened file: when locked, cannot be opened, not readable or writable; after unlocking, can be opened, readable and writable.<br/>Create a new file: when locked, can be created, can be opened, writable but not readable; after unlocking, can be created, can be opened, readable and writable.<br/>**Atomic service API**: Since API version 11, this API is supported in atomic services. |
+| EL4<sup>11+</sup> | 3 | User-level encryption area. The file permissions in different scenarios are as follows:<br/>Opened file: when locked, not readable or writable; after unlocking, readable and writable.<br/>Unopened file: when locked, cannot be opened, not readable or writable; after unlocking, can be opened, readable and writable.<br/>Create a new file: when locked, cannot be created; after unlocking, can be created, can be opened, readable and writable.<br/>**Atomic service API**: Since API version 11, this API is supported in atomic services.  |
+| EL5<sup>12+</sup> | 4 | Application-level encryption area. The file permissions in different scenarios are as follows:<br/>Opened file: when locked, readable and writable; after unlocking, readable and writable.<br/>Unopened file: when locked, after calling the [Access](js-apis-screenLockFileManager.md#screenlockfilemanageracquireaccess) API to obtain the retained key, can be opened, readable and writable; otherwise, cannot be opened, not readable or writable; after unlocking, can be opened, readable and writable.<br/>Create a new file: when locked, can be created, can be opened, readable and writable; after unlocking, can be created, can be opened, readable and writable.<br/>**Atomic service API**: Since API version 12, this API is supported in atomic services. |
 
 
 ## ProcessMode<sup>12+</sup>
 
-Enumerates the process modes of the UIAbility after it is started.
+Enumerates the process modes after a UIAbility is started, which are used to specify that the UIAbility is started in a new process and bound to a specified object (such as a parent process or a status bar icon).
 
 As a property of [StartOptions](js-apis-app-ability-startOptions.md), **ProcessMode** takes effect only in [UIAbilityContext.startAbility](js-apis-inner-application-uiAbilityContext.md#startability-1) and is used to specify the process mode of the target UIAbility.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**Device behavior differences**: This value takes effect only on 2-in-1 devices and tablets. If it is used on other devices, error code 801 is returned.
+**Device behavior differences:** This feature takes effect only on PC, 2-in-1 and tablet devices. On other device types, it returns error code 801.
 
 | Name | Value| Description                                                                                                                  |
 |-----| -------- |----------------------------------------------------------------------------------------------------------------------|
-| NEW_PROCESS_ATTACH_TO_PARENT | 1 | A new process is created, the UIAbility is started on the process, and the process exits along with the parent process.<br>**Constraints**:<br>In this mode, the target UIAbility and caller must be in the same application.                    |
+| NEW_PROCESS_ATTACH_TO_PARENT | 1 | Creates a new process and starts the UIAbility in this process. This process exits along with the parent process (the caller process). That is, when the parent process exits, this process also exits automatically.<br>**Constraint**<br>To use this mode, require the target UIAbility to be in the same application with the caller.                     |
 | NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM | 2 | A new process is created, the UIAbility is started on the process, and the process is bound to the status bar icon.<br>**Constraints**:<br>In this mode, the target UIAbility and caller must be in the same application, and the application must have an icon in the status bar.                 |
 | ATTACH_TO_STATUS_BAR_ITEM | 3 | The UIAbility is started, and the process of the UIAbility is bound to the status bar icon.<br>**Constraints**:<br>In this mode, the target UIAbility and caller must be in the same application, and the application must have an icon in the status bar.                 |
 
@@ -59,17 +60,20 @@ As a property of [StartOptions](js-apis-app-ability-startOptions.md), **ProcessM
 
   export default class EntryAbility extends UIAbility {
     onForeground() {
+      // Construct the Want object and specify the target UIAbility information.
       let want: Want = {
         deviceId: '',
         bundleName: 'com.example.myapplication',
         abilityName: 'MainAbility2'
       };
-      let options: StartOptions = {
-        processMode: contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM,
-        startupVisibility: contextConstant.StartupVisibility.STARTUP_HIDE
-      };
+    // Create the startup options and set the process mode and startup visibility.
+    let options: StartOptions = {
+          processMode: contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM,
+          startupVisibility: contextConstant.StartupVisibility.STARTUP_HIDE
+        };
 
       try {
+        // Start the target UIAbility.
         this.context.startAbility(want, options, (err: BusinessError) => {
           if (err.code) {
             // Process service logic errors.
@@ -99,7 +103,7 @@ As a property of [StartOptions](js-apis-app-ability-startOptions.md), **StartupV
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**Device behavior differences**: This value takes effect only on 2-in-1 devices and tablets. If it is used on other devices, error code 801 is returned.
+**Device behavior differences:** This feature takes effect only on PC, 2-in-1 and tablet devices. On other device types, it returns error code 801.
 
 | Name | Value| Description                                                                                                                  |
 |-----| -------- |----------------------------------------------------------------------------------------------------------------------|
@@ -132,11 +136,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    // Set the scenarios that do not trigger onNewWant, and combine multiple scenario flags.
     let scenarios: number = contextConstant.Scenarios.SCENARIO_MOVE_MISSION_TO_FRONT |
       contextConstant.Scenarios.SCENARIO_SHOW_ABILITY |
       contextConstant.Scenarios.SCENARIO_BACK_TO_CALLER_ABILITY_WITH_RESULT;
 
     try {
+      // Set the scenarios that skip onNewWant.
       this.context.setOnNewWantSkipScenarios(scenarios).then(() => {
         // Carry out normal service processing.
         console.info('setOnNewWantSkipScenarios succeed');
@@ -150,6 +156,40 @@ export default class EntryAbility extends UIAbility {
       let message = (err as BusinessError).message;
       console.error(`setOnNewWantSkipScenarios failed, code is ${code}, message is ${message}`);
     }
+  }
+}
+```
+
+## ContextType
+
+Enumerates the common context types, used by the [isContextOf](./js-apis-inner-application-context.md#iscontextof) API.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+| Name  | Value | Description                                                                                                                   |
+|-----| -------- |----------------------------------------------------------------------------------------------------------------------|
+| APPLICATION_CONTEXT | 0 | Type of [ApplicationContext](js-apis-inner-application-applicationContext.md), which provides application-level resources and capabilities.  |
+| ABILITY_STAGE_CONTEXT | 1 | Type of [AbilityStageContext](js-apis-inner-application-abilityStageContext.md), which provides module-level resources and capabilities.   |
+| UIABILITY_CONTEXT | 2 | Type of [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md), which provides capabilities such as UI interaction and component startup.     |
+| FORM_EXTENSION_CONTEXT | 3 | Type of [FormExtensionContext](../apis-form-kit/js-apis-inner-application-formExtensionContext.md), which provides card service capabilities.     |
+| APP_SERVICE_EXTENSION_CONTEXT | 4 | Type of [AppServiceExtensionContext](js-apis-inner-application-appServiceExtensionContext.md), which provides background service capabilities.     |
+
+**Example**
+
+```ts
+import { UIAbility, contextConstant } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    hilog.info(0x0000, 'testTag', `%{public}s`, 'Ability onCreate');
+    // Check whether the context type is UIAbilityContext.
+    let result = this.context.isContextOf(contextConstant.ContextType.UIABILITY_CONTEXT);
+    hilog.info(0x0000, 'testTag', `match contextType result is:%{public}s`, JSON.stringify(result));
   }
 }
 ```

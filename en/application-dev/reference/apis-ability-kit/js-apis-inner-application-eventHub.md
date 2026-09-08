@@ -4,16 +4,17 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=d7dae1423ba14ad249257c5083a18ed47fcfc6b0 translatedAt=2026-09-03T11:57:35.481Z pushedAt=2026-09-05T10:47:30.794Z -->
 
 EventHub is an event communication mechanism based on the publish-subscribe pattern. It decouples senders and subscribers through event names, supporting efficient data transfer and state synchronization between different service modules.
 
 It is primarily used for [data communication between UIAbility components and UI pages](../../application-models/uiability-data-sync-with-ui.md).
 
-Different Context objects have different EventHub objects, and different EventHub objects cannot communicate directly with each other. Event subscription, unsubscription, and triggering all take place on a specific EventHub object.
+Different Context objects have different EventHub objects, and different EventHub objects cannot communicate directly with each other. Event subscription, unsubscription, and triggering all take effect on a specific EventHub object. When a Context object changes, its associated EventHub becomes invalid. For example, when an application creates a clone, the ApplicationContext is refreshed, and the EventHub previously created on that ApplicationContext becomes invalid.
 
-Since Worker and TaskPool implement [multithreaded concurrency](../../arkts-utils/multi-thread-concurrency-overview.md#multithreaded-concurrency-models) through the actor model, where different virtual machine instances have exclusive memory, EventHub objects cannot be used for inter-thread data communication.
+Since Worker and TaskPool implement [multithreaded concurrency](../../arkts-utils/multi-thread-concurrency-overview.md#multithreaded-concurrency-models) through the actor model, where different virtual machine instances have exclusive memory, the EventHub object cannot be used for data communication between threads.
 
 
 > **NOTE**
@@ -23,13 +24,13 @@ Since Worker and TaskPool implement [multithreaded concurrency](../../arkts-util
 
 ## Constraints
 
-- EventHub cannot be used for data communication between processes.
+- Data communication between processes through the EventHub object is not supported.
 - EventHub cannot be used for data communication between Worker or TaskPool threads. Instead, use [Emitter for inter-thread communication](../../basic-services/common-event/itc-with-emitter.md).
 - Data communication between EventHub objects of different Context objects within the same thread is not supported.
 - A Context object converted by [sendableContextManager](js-apis-app-ability-sendableContextManager.md) is considered different from the original Context object, and data communication between their EventHub objects is not supported.
 
 ## Modules to Import
- 
+
 ```ts
 import { common } from '@kit.AbilityKit';
 ```
@@ -61,10 +62,10 @@ export default class EntryAbility extends UIAbility {
 
 on(event: string, callback: Function): void;
 
-Subscribes to an event.
+Subscribes to the specified event. Before using this API, obtain an EventHub instance through the Context object.
 > **NOTE**
 >
->  When the callback is triggered by **emit**, the invoker is the EventHub object. To change the direction of **this** in **callback**, use an arrow function.
+> When callback is triggered by emit, the caller is the EventHub object. To change the direction of this in callback, use an arrow function.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -75,7 +76,7 @@ Subscribes to an event.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | event | string | Yes| Event name.|
-| callback | Function | Yes| Callback invoked when the event is triggered.|
+| callback | Function | Yes | Callback invoked when the event is triggered. The callback has no return value and can receive the parameters passed by the emit method. |
 
 **Error codes**
 
@@ -123,8 +124,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-**Example 2**
-When the callback uses an arrow function, the invoker is the EntryAbility object. The EntryAbility object has the **value** property. Therefore, the result **12** is returned.
+**Example 2:**
+When callback uses an arrow function, this points to the EntryAbility object. The EntryAbility object has the value attribute, so the result is 12.
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -168,7 +169,7 @@ export default class EntryAbility extends UIAbility {
 
 off(event: string, callback?: Function): void;
 
-Unsubscribes from an event.
+Unsubscribes from the specified event. Before using this API, obtain an EventHub instance through the Context object.
  - If **callback** is specified, this API unsubscribes from the given event with the specified callback.
  - If **callback** is not specified, this API unsubscribes from the given event with all callbacks.
 
@@ -226,7 +227,7 @@ export default class EntryAbility extends UIAbility {
 
 emit(event: string, ...args: Object[]): void;
 
-Triggers an event.
+Triggers the specified event. Before using this API, obtain an EventHub instance through the Context object.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

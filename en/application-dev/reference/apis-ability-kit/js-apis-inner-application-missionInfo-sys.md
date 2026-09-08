@@ -4,10 +4,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=9b45198dbdb6f53f8bf0896d62425626f2442690 translatedAt=2026-09-03T11:59:45.770Z pushedAt=2026-09-05T10:47:30.828Z -->
 
-The module defines detailed information about a mission. The information can be obtained through [getMissionInfo](js-apis-app-ability-missionManager-sys.md#missionmanagergetmissioninfo).
+Indicates the mission details, including the mission ID, running state, creation or update time, and more. It is applicable to querying and managing mission states in system mission management scenarios. You can obtain the details through [getMissionInfo](js-apis-app-ability-missionManager-sys.md#missionmanagergetmissioninfo).
 
 > **NOTE**
 > 
@@ -28,12 +29,12 @@ import { missionManager } from '@kit.AbilityKit';
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| missionId | number | No| No| Mission ID.|
-| runningState | number | No| No| Running state of the mission.|
+| missionId | number | No | No | Indicates the mission ID, which uniquely identifies a mission instance. |
+| runningState | number | No | No | Indicates the running state of the mission. The value 0 indicates that the mission is enabled and active, and the corresponding ability is running or can be restored to the foreground. The value -1 indicates that the mission is not enabled, and the mission has been closed, destroyed, or cannot be restored. |
 | lockedState | boolean | No| No| Locked state of the mission. **true** if locked, **false** otherwise.|
-| timestamp | string | No| No| Latest time when the mission was created or updated.|
+| timestamp | string | No | No | Indicates the latest creation or update time of the mission. Unit: ns. |
 | want | [Want](js-apis-app-ability-want.md) | No| No| Want information of the mission.|
-| label | string | No| No| Label of the mission.|
+| label | string | No | No | Indicates the label of the mission, which is the mission name displayed in the mission list. |
 | iconPath | string | No| No| Path of the mission icon.|
 | continuable | boolean | No| No| Whether the mission can be continued on another device. **true** if the mission can be continued on another device, **false** otherwise.|
 | abilityState<sup>10+</sup> | number | No| No| Capability status of the mission.|
@@ -45,6 +46,7 @@ import { missionManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // Obtain the detailed mission information.
   missionManager.getMissionInfo('', 1, (error, data) => {
     if (error) {
       // Process service logic errors.

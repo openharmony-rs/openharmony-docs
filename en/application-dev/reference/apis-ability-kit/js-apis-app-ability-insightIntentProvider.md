@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=b3bc27a342923ac4fafa55153b55c4f3b627330f translatedAt=2026-09-03T10:22:22.502Z pushedAt=2026-09-05T10:47:30.406Z -->
 
 This module provides management capabilities for intent providers, such as proactively sending the execution result of a specified intent.
 > **NOTE**
@@ -24,10 +25,12 @@ import { insightIntentProvider } from '@kit.AbilityKit';
 
 sendExecuteResult(instanceId: number, result: insightIntent.ExecuteResult): Promise&lt;void&gt;
 
-If an intent provider needs to proactively send the execution result of an intent at a specific point in the service process, it can first set the [return mode of the intent execution result](./js-apis-app-ability-insightIntent.md#returnmode23) to **FUNCTION** by calling [setReturnModeForUIAbilityForeground](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiabilityforeground23) or [setReturnModeForUIExtensionAbility](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiextensionability23). Then, it can call this API to send the intent execution result. This is applicable for [configuration-type intents](../../application-models/insight-intent-config-development.md). Proactively sends the intent execution result. This API uses a promise to return the result.<br>
-After setting the [return mode of the intent execution result](./js-apis-app-ability-insightIntent.md#returnmode23) to **FUNCTION**, the application no longer needs to return the intent execution result through the return value of [onExecuteInUIAbilityForegroundMode](./js-apis-app-ability-insightIntentExecutor.md#onexecuteinuiabilityforegroundmode) or [onExecuteInUIExtensionAbility](./js-apis-app-ability-insightIntentExecutor.md#onexecuteinuiextensionability).
+If an intent provider needs to proactively send the execution result of an intent at a specific point in the service process, it can first set the [return mode](./js-apis-app-ability-insightIntent.md#returnmode23) of the intent execution result to FUNCTION through [setReturnModeForUIAbilityForeground](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiabilityforeground23) or [setReturnModeForUIExtensionAbility](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiextensionability23), and then call this API to send the intent execution result. This API applies to [configuration-type intents](../../application-models/insight-intent-config-development.md). This API uses a promise to return the result asynchronously.<br/>
+After the [return mode](./js-apis-app-ability-insightIntent.md#returnmode23) of the intent execution result is set to FUNCTION, the application no longer needs to return the intent execution result through the return value of the [onExecuteInUIAbilityForegroundMode API](./js-apis-app-ability-insightIntentExecutor.md#onexecuteinuiabilityforegroundmode) or [onExecuteInUIExtensionAbility](./js-apis-app-ability-insightIntentExecutor.md#onexecuteinuiextensionability).
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -60,6 +63,7 @@ Below is an example of setting the return mode of the intent execution result to
 import { InsightIntentExecutor, insightIntent } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class InsightIntentExecutorUI extends InsightIntentExecutor {
   onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>,
@@ -78,7 +82,7 @@ export default class InsightIntentExecutorUI extends InsightIntentExecutor {
     } catch (error) {
       let code = (error as BusinessError).code;
       let msg = (error as BusinessError).message;
-      console.error(`testTag setReturnModeForUIExtensionAbility fail, error code: ${code}, error msg: ${msg}.`);
+      console.error(`testTag setReturnModeForUIAbilityForeground fail, error code: ${code}, error msg: ${msg}.`);
     }
     // Pass the intent instance ID to the target page through localStorage.
     let localStorageData: Record<string, number> = {
@@ -124,15 +128,15 @@ struct Index {
             };
             insightIntentProvider.sendExecuteResult(this.insightId, result)
               .then(() => {
-                console.info('testTag setExecuteResult success');
+                console.info('testTag sendExecuteResult success');
               })
               .catch((error: BusinessError) => {
-                console.error(`testTag setExecuteResult fail1, error code: ${error.code}, error msg: ${error.message}.`);
+                console.error(`testTag sendExecuteResult fail 1, error code: ${error.code}, error msg: ${error.message}.`);
               });
           } catch (e) {
             let code = (e as BusinessError).code;
             let msg = (e as BusinessError).message;
-            console.error(`testTag setExecuteResult fail2, error code: ${code}, error msg: ${msg}`);
+            console.error(`testTag sendExecuteResult fail 2, error code: ${code}, error msg: ${msg}`);
           }
         })
     }
@@ -146,10 +150,12 @@ struct Index {
 
 sendIntentResult(instanceId: number, result: insightIntent.IntentResult&lt;T&gt;): Promise&lt;void&gt;
 
-If an intent provider needs to proactively send the execution result of an intent at a specific point in the service process, it can first set the [return mode of the intent execution result](./js-apis-app-ability-insightIntent.md#returnmode23) to **FUNCTION** by calling [setReturnModeForUIAbilityForeground](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiabilityforeground23) or [setReturnModeForUIExtensionAbility](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiextensionability23). Then, it can call this API to send the intent execution result. This is applicable for [intents decorated](../../application-models/insight-intent-decorator-development.md) with [@InsightIntentEntry](./js-apis-app-ability-InsightIntentDecorator.md#insightintententry). Proactively sends the intent execution result. This API uses a promise to return the result.<br>
-After setting the [return mode of the intent execution result](./js-apis-app-ability-insightIntent.md#returnmode23) to **FUNCTION**, the application no longer needs to return the intent execution result through the return value of [onExecute](./js-apis-app-ability-InsightIntentEntryExecutor.md#onexecute).
+If an intent provider needs to proactively send the execution result of an intent at a specific point in the service process, it can first set the [return mode](./js-apis-app-ability-insightIntent.md#returnmode23) of the intent execution result to FUNCTION through [setReturnModeForUIAbilityForeground](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiabilityforeground23) or [setReturnModeForUIExtensionAbility](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiextensionability23), and then call this API to send the intent execution result. This API applies to [decorator-type intents](../../application-models/insight-intent-decorator-development.md) decorated by [@InsightIntentEntry](./js-apis-app-ability-InsightIntentDecorator.md#insightintententry). This API uses a promise to return the result asynchronously.<br/>
+After the [return mode](./js-apis-app-ability-insightIntent.md#returnmode23) of the intent execution result is set to FUNCTION, the application no longer needs to return the intent execution result through the return value of the [onExecute API](./js-apis-app-ability-InsightIntentEntryExecutor.md#onexecute).
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -158,7 +164,7 @@ After setting the [return mode of the intent execution result](./js-apis-app-abi
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | [instanceId](./js-apis-app-ability-insightIntentContext.md#properties)| number | Yes| Unique ID of an intent instance.|
-  | result | [insightIntent.IntentResult](js-apis-app-ability-insightIntent.md#intentresultt20) | Yes| Intent execution result, representing the data returned to the system entry for this intent execution.|
+  | result | [insightIntent.IntentResult\<T>](js-apis-app-ability-insightIntent.md#intentresultt20) | Yes | Execution result of the return intent, indicating the data returned to the system entry by this intent execution. |
 
 **Return value**
 
@@ -180,6 +186,7 @@ For details about the error codes, see [Ability Error Codes](errorcode-ability.m
 Below is an example of setting the return mode of the intent execution result to **FUNCTION**.
 ```ts
 import { insightIntent, InsightIntentEntry, InsightIntentEntryExecutor } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 class PlayVideoResultDef {
   resultCode: number = 0;
@@ -203,9 +210,6 @@ class PlayVideoResultDef {
   executeMode: [insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND],
 })
 export default class PlayVideo extends InsightIntentEntryExecutor<PlayVideoResultDef> {
-  entityId: string = 'zhz';
-  episodeId: string = '50';
-  episodeNumber: number = 12;
 
   onExecute(): Promise<insightIntent.IntentResult<PlayVideoResultDef>> {
     console.info('testTag', 'PlayVideo onExecute success')
@@ -268,7 +272,7 @@ struct Index {
 
   build() {
     Column() {
-      // Return the intent execution result using the sendExecuteResult API.
+      // Proactively return the intent execution result through the sendIntentResult API.
       Button('insightIntentProvider sendIntentResult')
         .onClick(() => {
           try {

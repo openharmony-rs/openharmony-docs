@@ -3,8 +3,9 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=3a7b8d1fce741c2abccde7cccac39375139c4568 translatedAt=2026-09-03T12:23:29.917Z pushedAt=2026-09-05T10:47:30.908Z -->
 
 The module provides resource information of the entry ability of an application, such as the icon and label. The information can be obtained by calling [getLauncherAbilityResourceInfo](js-apis-bundleResourceManager-sys.md#bundleresourcemanagergetlauncherabilityresourceinfo).
 
@@ -30,7 +31,7 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 | ------------------------- | ------ | ---- | ---- | -------------------- |
 | bundleName              | string | Yes  | No  | Bundle name of the application.|
 | moduleName              | string | Yes  | No  | Module name of the application.|
-| abilityName              | string | Yes  | No  | Name of the entry ability.|
+| abilityName              | string | Yes  | No   | Name of the ability of the application. |
 | icon              | string | Yes  | No  | Application icon, which is encoded using Base64. |
 | label                     | string | Yes  | No  | Application label.|
 | drawableDescriptor<sup>12+</sup>                     | [DrawableDescriptor](../apis-arkui/js-apis-arkui-drawableDescriptor-sys.md) | Yes  | No  | **drawableDescriptor** object of the application icon.|
