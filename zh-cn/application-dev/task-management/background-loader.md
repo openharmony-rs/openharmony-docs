@@ -67,8 +67,18 @@ sequenceDiagram
 
 3. 在应用主UIAbility的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)生命周期中，通过[Callee](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)注册ON_START和ON_STOP回调函数。Callee回调注册随主UIAbility生命周期存在，随其销毁自动释放，无需手动注销。
 
-   <!-- @[backgroundLoader_register_callee](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) --> 
+   <!-- @[backgroundLoader_register_callee](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
    
+   ``` TypeScript
+   try {
+     // 注册ON_START回调，当后台加载任务启动时触发funCallBack
+     this.callee.on(backgroundLoader.ON_START, funCallBack);
+     // 注册ON_STOP回调，当后台加载任务停止时触发onStopCallBack
+     this.callee.on(backgroundLoader.ON_STOP, onStopCallBack);
+   } catch (error) {
+     console.error(`Callee.on catch error, error.code: ${error.code}, error.message: ${error.message}`);
+   }
+   ```
 
 ### 注册后台加载任务
 
@@ -76,12 +86,28 @@ sequenceDiagram
 
 1. 注册后台加载任务。
 
-   <!-- @[backgroundLoader_registerTask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) --> 
+   <!-- @[backgroundLoader_registerTask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
+   const taskInfo: backgroundLoader.TaskInfo = {
+     abilityname: abilityname,
+     taskId: taskId
+   };
+   try {
+     backgroundLoader.registerTask(taskInfo);
+     hilog.info(DOMAIN, 'testTag', 'registerTask successes');
+     return 'Success';
+   } catch (err) {
+     const errMsg = JSON.stringify(err);
+     hilog.error(DOMAIN, 'testTag', 'registerTask failed: %{public}s', errMsg);
+     return `Failed: ${(err as BusinessError).message ?? errMsg}`;
+   }
+   ```
 
 
 2. 取消注册后台加载任务。
 
-   <!-- @[backgroundLoader_unregisterTask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) --> 
+   <!-- @[backgroundLoader_unregisterTask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
    
    ``` TypeScript
    const taskInfo: backgroundLoader.TaskInfo = {
@@ -102,7 +128,7 @@ sequenceDiagram
 
 3. 查询后台加载任务信息。
 
-   <!-- @[backgroundLoader_getTaskInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) --> 
+   <!-- @[backgroundLoader_getTaskInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
    
    ``` TypeScript
    try {
@@ -122,7 +148,7 @@ sequenceDiagram
 
 1. 完成后台加载任务。
 
-   <!-- @[backgroundLoader_finishTask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) --> 
+   <!-- @[backgroundLoader_finishTask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
    
    ``` TypeScript
    const taskInfo: backgroundLoader.TaskInfo = {
