@@ -84,4 +84,8 @@
 
   ![image](figures/Dialog01.png)
 
+## 迁移指南
+
+从 API 版本 26.1.0 开始，`@ohos.arkui.dialog` 提供 Unified Dialog API（第三代弹窗接口），统一了固定样式弹窗和自定义弹窗的编程模型。如果您的应用正在使用老接口（CustomDialog、AlertDialog、TextPickerDialog、TimePickerDialog、DatePickerDialog），请参考 [弹窗迁移指南](arkui-dialog-migration-guide.md) 了解新老接口能力差异并按类别完成迁移。
+
 
