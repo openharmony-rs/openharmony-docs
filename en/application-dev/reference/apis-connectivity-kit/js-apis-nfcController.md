@@ -275,3 +275,4 @@ if (nfcController.isNfcOpen()) {
 // Unregister the callback for NFC status change events.
 nfcController.off("nfcStateChange");
 ```
+ <!--no_check-->
