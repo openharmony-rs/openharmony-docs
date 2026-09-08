@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 ```c
-typedef struct ArkUI_Context ArkUI_Context
+typedef struct ArkUI_Context* ArkUI_ContextHandle
 ```
 
 ## 概述
@@ -18,5 +18,5 @@ ArkUI native UI 的上下文实例对象，用于表示组件所在页面的 UIC
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**所在头文件：** [native_type.h](capi-native-type-h.md)
+**所在头文件：** [common_type.h](capi-common-type-h.md)
 
