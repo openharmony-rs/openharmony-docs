@@ -408,7 +408,7 @@ notificationSlotType?: notificationManager.SlotType
 overlayIcon?: image.PixelMap
 ```
 
-通知重叠图标，默认为空。图标像素的总字节数不超过192KB（图标像素的总字节数通过 [getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getpixelbytesnumber)获取），超出后设置不生效。 未设置`overlayIcon`时，通知将不展示重叠图标。此接口只在[notificationSlotType](#notificationrequest)类型设置为SOCIAL_COMMUNICATION时生效。 建议图标像素长宽为128*128。实际显示效果依赖于设备能力和通知中心UI样式。
+通知重叠图标，默认为空。图标像素的总字节数不超过192KB（图标像素的总字节数通过 [getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getpixelbytesnumber)获取），超出后设置不生效。 未设置`overlayIcon`时，通知将不展示重叠图标。此接口只在[notificationSlotType](#notificationslottype)类型设置为SOCIAL_COMMUNICATION时生效。 建议图标像素长宽为128*128。实际显示效果依赖于设备能力和通知中心UI样式。
 
 **类型：** image.PixelMap
 

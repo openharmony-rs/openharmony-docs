@@ -4,7 +4,7 @@
 
 > **说明：**
 > 
-> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.multimedia.camera (相机管理)](#ohosmultimediacameraautodeviceswitch)。
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见@ohos.multimedia.camera(AutoDeviceSwitch)。
 
 **起始版本：** 10
 
