@@ -118,4 +118,4 @@ function getScanResults(callback: AsyncCallback<Array<WifiScanInfo>>): void
 
 **示例**
 
-参见 [getScanResults](#getscanresults)
+参见 [getScanResults](arkts-connectivity-wifimanager-getscanresults-f.md)

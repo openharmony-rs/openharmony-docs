@@ -18,7 +18,7 @@ function requestEnableNotification(callback: AsyncCallback<void>): void
 
 **废弃版本：** 12
 
-**替代接口：** [requestEnableNotification](#requestenablenotification)
+**替代接口：** [requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md)
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -148,7 +148,7 @@ function requestEnableNotification(): Promise<void>
 
 **废弃版本：** 12
 
-**替代接口：** [requestEnableNotification](#requestenablenotification)
+**替代接口：** [requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md)
 
 **系统能力：** SystemCapability.Notification.Notification
 

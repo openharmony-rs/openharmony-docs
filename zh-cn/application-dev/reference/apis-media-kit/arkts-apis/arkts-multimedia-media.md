@@ -176,7 +176,7 @@ import { media } from '@kit.MediaKit';
 | --- | --- |
 | [AudioState](arkts-media-media-audiostate-t.md) | 音频播放的状态机。可通过state属性获取当前状态。 |
 | [AVDownloadTaskState](arkts-media-media-avdownloadtaskstate-t.md) | 离线下载任务状态枚举。 |
-| [AVPlayerState](arkts-media-media-avplayerstate-t.md) | [AVPlayer](#ohosmultimediamedia)的状态机，可通过state属性主动获取当前状态，也可通过监听 [stateChange](arkts-media-media-avplayer-i.md#onstatechange) 事件上报当前状态，状态机之间的切换规则，可参考[音频播放开发指导](../../../media/media/using-avplayer-for-playback.md)。 |
+| [AVPlayerState](arkts-media-media-avplayerstate-t.md) | [AVPlayer](arkts-media-media-avplayer-i.md)的状态机，可通过state属性主动获取当前状态，也可通过监听 [stateChange](arkts-media-media-avplayer-i.md#onstatechange) 事件上报当前状态，状态机之间的切换规则，可参考[音频播放开发指导](../../../media/media/using-avplayer-for-playback.md)。 |
 | [AVRecorderState](arkts-media-media-avrecorderstate-t.md) | 音视频录制的状态机。可通过state属性获取当前状态。 |
 | [OnAdsEventAdsStartedHandle](arkts-media-media-onadseventadsstartedhandle-t.md) | 广告内容播放开始事件回调方法。 |
 | [OnAdsEventLoadingErrorHandle](arkts-media-media-onadseventloadingerrorhandle-t.md) | 广告媒体资源加载失败事件回调方法。 |

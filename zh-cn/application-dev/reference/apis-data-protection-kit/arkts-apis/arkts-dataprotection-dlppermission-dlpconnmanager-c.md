@@ -22,7 +22,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 constructor()
 ```
 
-[DlpConnManager](#dlpconnmanager) 实例化时的构造函数。
+[DlpConnManager](arkts-dataprotection-dlppermission-dlpconnmanager-c.md) 实例化时的构造函数。
 
 **起始版本：** 21
 

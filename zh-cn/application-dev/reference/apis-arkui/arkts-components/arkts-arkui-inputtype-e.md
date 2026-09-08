@@ -98,7 +98,7 @@ NUMBER_PASSWORD = 8
 USER_NAME = 10
 ```
 
-用户名输入模式，无特殊限制。在已启用密码保险箱的情况下，支持用户名的自动保存和自动填充，用于配合[InputType.Password](#inputtype)、 [InputType.NUMBER_PASSWORD](#inputtype)、[InputType.NEW_PASSWORD](#inputtype)完成用户名密码配对填充。
+用户名输入模式，无特殊限制。在已启用密码保险箱的情况下，支持用户名的自动保存和自动填充，用于配合[InputType.Password](#password)、 [InputType.NUMBER_PASSWORD](#number_password)、[InputType.NEW_PASSWORD](#new_password)完成用户名密码配对填充。
 
 **起始版本：** 11
 

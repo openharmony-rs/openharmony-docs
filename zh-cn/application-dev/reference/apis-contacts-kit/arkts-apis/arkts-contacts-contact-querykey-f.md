@@ -18,7 +18,7 @@ function queryKey(id: number, callback: AsyncCallback<string>): void
 
 **废弃版本：** 10
 
-**替代接口：** [queryKey](#querykey)(context: Context, id: number, callback: AsyncCallback&lt;string&gt;)
+**替代接口：** [queryKey](arkts-contacts-contact-querykey-f.md)(context: Context, id: number, callback: AsyncCallback&lt;string&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -109,7 +109,7 @@ function queryKey(id: number, holder: Holder, callback: AsyncCallback<string>): 
 
 **废弃版本：** 10
 
-**替代接口：** [queryKey](#querykey)(context: Context, id: number, holder: Holder, callback: AsyncCallback&lt;string&gt;)
+**替代接口：** [queryKey](arkts-contacts-contact-querykey-f.md)(context: Context, id: number, holder: Holder, callback: AsyncCallback&lt;string&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -210,7 +210,7 @@ function queryKey(id: number, holder?: Holder): Promise<string>
 
 **废弃版本：** 10
 
-**替代接口：** [queryKey](#querykey)(context: Context, id: number, holder?: Holder)
+**替代接口：** [queryKey](arkts-contacts-contact-querykey-f.md)(context: Context, id: number, holder?: Holder)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 

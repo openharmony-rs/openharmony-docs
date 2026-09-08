@@ -18,7 +18,7 @@ function obtainAllWorks(callback: AsyncCallback<void>): Array<WorkInfo>
 
 **废弃版本：** 10
 
-**替代接口：** [obtainAllWorks](#obtainallworks)(callback: AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;)
+**替代接口：** [obtainAllWorks](arkts-backgroundtasks-workscheduler-obtainallworks-f.md)(callback: AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -112,4 +112,4 @@ function remove(id: string): Promise<void>
 
 **示例**
 
-参见 [remove](#remove)
+参见 [remove](arkts-basicservices-agent-remove-f.md)

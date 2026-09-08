@@ -79,4 +79,4 @@ function getSupportedPowerMode(callback: AsyncCallback<Array<PowerMode>>): void
 
 **示例**
 
-参见 [getSupportedPowerMode](#getsupportedpowermode)
+参见 [getSupportedPowerMode](arkts-connectivity-wifimanagerext-getsupportedpowermode-f.md)

@@ -40,7 +40,7 @@ onMessage(msgId: string, msgParam?: ArrayBuffer): void
    
 > 
    
-> 当已注册的[MessageHandler](#messagehandler)接收到来自已绑定当前输入法应用的编辑框应用所发送的自定义通信数据时，会触发该回调函数。
+> 当已注册的[MessageHandler](arkts-ime-inputmethodengine-messagehandler-i.md)接收到来自已绑定当前输入法应用的编辑框应用所发送的自定义通信数据时，会触发该回调函数。
    
 > 
    
@@ -86,11 +86,11 @@ onTerminated(): void
    
 > 
    
-> 当应用注册新的[MessageHandler](#messagehandler)对象时，会触发上一个已注册[MessageHandler](#messagehandler)对象的[onTerminated](#onterminated)回调函数。
+> 当应用注册新的[MessageHandler](arkts-ime-inputmethodengine-messagehandler-i.md)对象时，会触发上一个已注册[MessageHandler](arkts-ime-inputmethodengine-messagehandler-i.md)对象的[onTerminated](#onterminated)回调函数。
    
 > 
    
-> 当应用取消注册时，会触发当前已注册[MessageHandler](#messagehandler)对象的[onTerminated](#onterminated)回调函数。
+> 当应用取消注册时，会触发当前已注册[MessageHandler](arkts-ime-inputmethodengine-messagehandler-i.md)对象的[onTerminated](#onterminated)回调函数。
 
 **起始版本：** 15
 

@@ -77,7 +77,7 @@ function getDisallowedBluetoothProtocols(admin: Want | null, accountId: number, 
 
 > **说明：**
 > 
-> 1. 本接口与[getDisallowedBluetoothProtocols&lt;sup&gt;20+&lt;/sup&gt;](#getdisallowedbluetoothprotocols)接口为
+> 1. 本接口与[getDisallowedBluetoothProtocols&lt;sup&gt;20+&lt;/sup&gt;](arkts-mdm-bluetoothmanager-getdisallowedbluetoothprotocols-f.md)接口为
 > 重载接口。本接口增加了policy参数，用于按传输策略查询对应的禁用配置。
 
 **起始版本：** 26.0.0

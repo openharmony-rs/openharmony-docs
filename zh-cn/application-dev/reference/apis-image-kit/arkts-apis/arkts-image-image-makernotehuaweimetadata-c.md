@@ -20,7 +20,7 @@ import { image } from '@kit.ImageKit';
 clone(): Promise<MakerNoteHuaweiMetadata>
 ```
 
-对[MakerNoteHuaweiMetadata](#makernotehuaweimetadata)元数据进行克隆。使用Promise异步回调。
+对[MakerNoteHuaweiMetadata](arkts-image-image-makernotehuaweimetadata-c.md)元数据进行克隆。使用Promise异步回调。
 
 **起始版本：** 23
 
@@ -70,7 +70,7 @@ async function makerNoteHuaweiClone(context: Context) {
 static createInstance(): MakerNoteHuaweiMetadata
 ```
 
-返回[MakerNoteHuaweiMetadata](#makernotehuaweimetadata)的空实例。
+返回[MakerNoteHuaweiMetadata](arkts-image-image-makernotehuaweimetadata-c.md)的空实例。
 
 **起始版本：** 23
 

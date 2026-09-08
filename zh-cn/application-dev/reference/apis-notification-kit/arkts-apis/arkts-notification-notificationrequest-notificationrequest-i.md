@@ -210,7 +210,7 @@ extraInfo?: { [key: string]: any }
 
 扩展参数。为应用提供定制服务。默认为空。以下Key由系统赋值，开发者手动修改也不会生效，系统在数据传递时会自动修改为实际值。  
 - 'ohos.notificationManager.wantUri'：用户点击通知时传递给应用的Want 中的uri字段，使用  
-[getActiveNotifications](arkts-notification-notification-getactivenotifications-depr-f.md#getactivenotifications) 接口获取该信息。
+[getActiveNotifications](arkts-notification-notification-getactivenotifications-depr-f.md) 接口获取该信息。
 
 **类型：** { [key: string]: any }
 
@@ -408,7 +408,7 @@ notificationSlotType?: notificationManager.SlotType
 overlayIcon?: image.PixelMap
 ```
 
-通知重叠图标，默认为空。图标像素的总字节数不超过192KB（图标像素的总字节数通过 [getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getpixelbytesnumber)获取），超出后设置不生效。 未设置`overlayIcon`时，通知将不展示重叠图标。此接口只在[notificationSlotType](#notificationrequest)类型设置为SOCIAL_COMMUNICATION时生效。 建议图标像素长宽为128*128。实际显示效果依赖于设备能力和通知中心UI样式。
+通知重叠图标，默认为空。图标像素的总字节数不超过192KB（图标像素的总字节数通过 [getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getpixelbytesnumber)获取），超出后设置不生效。 未设置`overlayIcon`时，通知将不展示重叠图标。此接口只在[notificationSlotType](#notificationslottype)类型设置为SOCIAL_COMMUNICATION时生效。 建议图标像素长宽为128*128。实际显示效果依赖于设备能力和通知中心UI样式。
 
 **类型：** image.PixelMap
 

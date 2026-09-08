@@ -858,7 +858,7 @@ async function getRowExample(store : relationalStore.RdbStore) {
 getRows(maxCount: number, position?: number): Promise<Array<ValuesBucket>>
 ```
 
-从结果集中获取指定数量的数据，使用Promise异步回调。禁止与[LiteResultSet](#literesultset)的其他接口并发调用，否则获取的数据可能非预期。
+从结果集中获取指定数量的数据，使用Promise异步回调。禁止与[LiteResultSet](arkts-arkdata-relationalstore-literesultset-c.md)的其他接口并发调用，否则获取的数据可能非预期。
 
 **起始版本：** 23
 
@@ -963,7 +963,7 @@ async function getRowsExample(store : relationalStore.RdbStore) {
 getRowsData(maxCount: number, position?: number): Promise<RowsData>
 ```
 
-从指定位置position开始，最多获取maxCount行数据。使用Promise异步回调。禁止与[LiteResultSet](#literesultset)的其他接口并发调用，否则 获取的数据可能非预期。
+从指定位置position开始，最多获取maxCount行数据。使用Promise异步回调。禁止与[LiteResultSet](arkts-arkdata-relationalstore-literesultset-c.md)的其他接口并发调用，否则 获取的数据可能非预期。
 
 **起始版本：** 23
 

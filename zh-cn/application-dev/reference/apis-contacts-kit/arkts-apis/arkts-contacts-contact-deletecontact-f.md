@@ -18,7 +18,7 @@ function deleteContact(key: string, callback: AsyncCallback<void>): void
 
 **废弃版本：** 10
 
-**替代接口：** [deleteContact](#deletecontact)(context: Context, key: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [deleteContact](arkts-contacts-contact-deletecontact-f.md)(context: Context, key: string, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -119,7 +119,7 @@ function deleteContact(key: string): Promise<void>
 
 **废弃版本：** 10
 
-**替代接口：** [deleteContact](#deletecontact)(context: Context, key: string)
+**替代接口：** [deleteContact](arkts-contacts-contact-deletecontact-f.md)(context: Context, key: string)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 

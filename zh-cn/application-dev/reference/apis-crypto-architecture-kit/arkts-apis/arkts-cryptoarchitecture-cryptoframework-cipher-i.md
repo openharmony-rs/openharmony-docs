@@ -210,7 +210,7 @@ authTag为末尾的16字节；CCM模式下，authTag为末尾的12字节。其�
 
 > **说明：**
 > 
-> 1. 对称加解密中，调用**doFinal**标志着一次加解密流程已经完成，即[Cipher](#cipher)实例的状态被清除，
+> 1. 对称加解密中，调用**doFinal**标志着一次加解密流程已经完成，即[Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)实例的状态被清除，
 > 因此当后续开启新一轮加解密流程时，需要重新调用**init**并传入完整的参数列表进行初始化。即使是对同一个Cipher实例，采用同样的对称
 > 密钥，进行加密然后解密，则解密中调用**init**的时候仍需填写params参数，而不能直接省略为null。
 > 如果遇到解密失败，需检查加解密数据和**init**时的参数是否匹配，包括GCM模式下加密得到的authTag是否填入解密时的GcmParamsSpec等。
@@ -357,7 +357,7 @@ doFinal(data: DataBlob | null): Promise<DataBlob>
 
 > **说明：**
 > 
-> 1. 对称加解密中，调用**doFinal**标志着一次加解密流程已经完成，即[Cipher](#cipher)实例的状态被清除，
+> 1. 对称加解密中，调用**doFinal**标志着一次加解密流程已经完成，即[Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)实例的状态被清除，
 > 因此当后续开启新一轮加解密流程时，需要重新调用**init**并传入完整的参数列表进行初始化。即使是对同一个Cipher实例，采用同样的对称
 > 密钥，进行加密然后解密，则解密中调用**init**的时候仍需填写params参数，而不能直接省略为null。
 > 如果遇到解密失败，需检查加解密数据和**init**时的参数是否匹配，包括GCM模式下加密得到的authTag是否填入解密时的GcmParamsSpec等。
@@ -632,7 +632,7 @@ init、update和doFinal必须配合使用，其中init和doFinal是必选的，u
 init(opMode: CryptoMode, key: Key, params: ParamsSpec | null, callback: AsyncCallback<void>): void
 ```
 
-初始化加解密的[cipher](#cipher)对象，使用callback异步回调获取结果。
+初始化加解密的[cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)对象，使用callback异步回调获取结果。
 
 init、update、doFinal为三段式接口，需要成组使用。其中init和doFinal必选，update可选。
 
@@ -753,7 +753,7 @@ init、update、doFinal为三段式接口，需要成组使用。其中init和do
 initSync(opMode: CryptoMode, key: Key, params: ParamsSpec | null): void
 ```
 
-初始化加解密的[cipher](#cipher)对象，此API以同步方式返回结果。
+初始化加解密的[cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)对象，此API以同步方式返回结果。
 
 initSync、updateSync、doFinalSync为三段式接口，需要成组使用。其中initSync和doFinalSync必选，updateSync可选。
 
@@ -836,7 +836,7 @@ update(data: DataBlob, callback: AsyncCallback<DataBlob>): void
 
 更新要分段加密或解密的数据。使用Callback异步回调。
 
-必须在对[Cipher](#cipher)实例使用 [init()](#init)初始化后，才能 使用本函数。
+必须在对[Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)实例使用 [init()](#init)初始化后，才能 使用本函数。
 
 > **说明：**
 > 
@@ -897,7 +897,7 @@ update(data: DataBlob): Promise<DataBlob>
 
 分段更新加密或者解密数据操作。使用Promise异步回调。
 
-必须在对[Cipher](#cipher)实例使用 [init()](#init)初始化后，才能 使用本函数。
+必须在对[Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)实例使用 [init()](#init)初始化后，才能 使用本函数。
 
 > **说明：**
 > 
@@ -963,7 +963,7 @@ updateSync(data: DataBlob): DataBlob
 
 分段更新加密或者解密数据操作。
 
-必须在对[Cipher](#cipher)实例使用[initSync()](#initsync) 初始化后，才能使用本函数。
+必须在对[Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)实例使用[initSync()](#initsync) 初始化后，才能使用本函数。
 
 其他注意事项同上异步接口说明。
 

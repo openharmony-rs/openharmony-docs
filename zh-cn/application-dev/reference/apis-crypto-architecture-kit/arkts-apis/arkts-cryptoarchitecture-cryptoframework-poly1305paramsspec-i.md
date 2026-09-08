@@ -15,7 +15,7 @@
 > [DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md)末尾提取16字节，作为解密时
 > [init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init)或
 > [initSync()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#initsync)方法的参数
-> [Poly1305ParamsSpec](#poly1305paramsspec)中的authTag。
+> [Poly1305ParamsSpec](arkts-cryptoarchitecture-cryptoframework-poly1305paramsspec-i.md)中的authTag。
 
 **继承/实现关系：** Poly1305ParamsSpec extends [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md)
 

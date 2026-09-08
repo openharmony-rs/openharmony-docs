@@ -18,7 +18,7 @@ function isLocalContact(id: number, callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 10
 
-**替代接口：** [isLocalContact](#islocalcontact)(context: Context, id: number, callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [isLocalContact](arkts-contacts-contact-islocalcontact-f.md)(context: Context, id: number, callback: AsyncCallback&lt;boolean&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -110,7 +110,7 @@ function isLocalContact(id: number): Promise<boolean>
 
 **废弃版本：** 10
 
-**替代接口：** [isLocalContact](#islocalcontact)(context: Context, id: number)
+**替代接口：** [isLocalContact](arkts-contacts-contact-islocalcontact-f.md)(context: Context, id: number)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 

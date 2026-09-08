@@ -16,13 +16,13 @@ function createImageCreator(width: number, height: number, format: number, capac
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 11废弃，建议使用[createImageCreator](#createimagecreator)代替。
+> 从API version 9开始支持，从API version 11废弃，建议使用[createImageCreator](arkts-image-image-createimagecreator-f.md)代替。
 
 **起始版本：** 9
 
 **废弃版本：** 11
 
-**替代接口：** [createImageCreator](#createimagecreator)(size: Size, format: ImageFormat, capacity: int)
+**替代接口：** [createImageCreator](arkts-image-image-createimagecreator-f.md)(size: Size, format: ImageFormat, capacity: int)
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageCreator
 

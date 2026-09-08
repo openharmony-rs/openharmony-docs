@@ -154,7 +154,7 @@ includeFontPadding?: boolean
 lineSpacing?: number
 ```
 
-行间距，单位为物理像素px，默认值为0。lineSpacing不受[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md)中lineHeightMaximum和lineHeightMinimum限制。尾行默认保留行间 距，可通过设置[ParagraphStyle](#paragraphstyle)的textHeightBehavior为DISABLE_ALL或DISABLE_LAST_ASCENT禁用尾行行间距。
+行间距，单位为物理像素px，默认值为0。lineSpacing不受[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md)中lineHeightMaximum和lineHeightMinimum限制。尾行默认保留行间 距，可通过设置[ParagraphStyle](arkts-arkgraphics2d-text-paragraphstyle-i.md)的textHeightBehavior为DISABLE_ALL或DISABLE_LAST_ASCENT禁用尾行行间距。
 
 **类型：** number
 

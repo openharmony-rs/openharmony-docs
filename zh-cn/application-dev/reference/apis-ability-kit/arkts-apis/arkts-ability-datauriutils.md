@@ -21,7 +21,7 @@ DataUriUtils模块提供用于处理uri对象的能力，包括获取、绑定�
 
 | 名称 | 说明 |
 | --- | --- |
-| [attachId(DataUriUtils模块)](arkts-ability-datauriutils-attachid-depr-f.md#attachid) | 将ID附加到uri的路径末尾。 |
-| [deleteId(DataUriUtils模块)](arkts-ability-datauriutils-deleteid-depr-f.md#deleteid) | 删除指定uri路径末尾的ID。 |
-| [getId(DataUriUtils模块)](arkts-ability-datauriutils-getid-depr-f.md#getid) | 获取指定uri路径末尾的ID。 |
-| [updateId(DataUriUtils模块)](arkts-ability-datauriutils-updateid-depr-f.md#updateid) | 更新指定uri中的ID。 |
+| [attachId(DataUriUtils模块)](arkts-ability-datauriutils-attachid-depr-f.md) | 将ID附加到uri的路径末尾。 |
+| [deleteId(DataUriUtils模块)](arkts-ability-datauriutils-deleteid-depr-f.md) | 删除指定uri路径末尾的ID。 |
+| [getId(DataUriUtils模块)](arkts-ability-datauriutils-getid-depr-f.md) | 获取指定uri路径末尾的ID。 |
+| [updateId(DataUriUtils模块)](arkts-ability-datauriutils-updateid-depr-f.md) | 更新指定uri中的ID。 |

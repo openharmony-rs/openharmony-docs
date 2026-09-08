@@ -18,7 +18,7 @@ function getDisallowedPolicyForAccount(admin: Want | null, feature: string, acco
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getDisallowedPolicyForAccount](#getdisallowedpolicyforaccount)(admin: Want | null, feature: FeatureForAccount, accountId: number)
+**替代接口：** [getDisallowedPolicyForAccount](arkts-mdm-restrictions-getdisallowedpolicyforaccount-f.md)(admin: Want | null, feature: FeatureForAccount, accountId: number)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS
 

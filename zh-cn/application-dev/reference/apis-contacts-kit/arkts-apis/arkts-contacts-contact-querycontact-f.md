@@ -18,7 +18,7 @@ function queryContact(key: string, callback: AsyncCallback<Contact>): void
 
 **废弃版本：** 10
 
-**替代接口：** [queryContact](#querycontact)(context: Context, key: string, callback: AsyncCallback&lt;Contact&gt;)
+**替代接口：** [queryContact](arkts-contacts-contact-querycontact-f.md)(context: Context, key: string, callback: AsyncCallback&lt;Contact&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -110,7 +110,7 @@ function queryContact(key: string, holder: Holder, callback: AsyncCallback<Conta
 
 **废弃版本：** 10
 
-**替代接口：** [queryContact](#querycontact)(context: Context, key: string, holder: Holder, callback: AsyncCallback&lt;Contact&gt;)
+**替代接口：** [queryContact](arkts-contacts-contact-querycontact-f.md)(context: Context, key: string, holder: Holder, callback: AsyncCallback&lt;Contact&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -212,7 +212,7 @@ function queryContact(key: string, attrs: ContactAttributes, callback: AsyncCall
 
 **废弃版本：** 10
 
-**替代接口：** [queryContact](#querycontact)(context: Context, key: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;)
+**替代接口：** [queryContact](arkts-contacts-contact-querycontact-f.md)(context: Context, key: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -310,7 +310,7 @@ function queryContact(key: string, holder: Holder, attrs: ContactAttributes, cal
 
 **废弃版本：** 10
 
-**替代接口：** [queryContact](#querycontact)(context: Context, key: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;)
+**替代接口：** [queryContact](arkts-contacts-contact-querycontact-f.md)(context: Context, key: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -418,7 +418,7 @@ function queryContact(key: string, holder?: Holder, attrs?: ContactAttributes): 
 
 **废弃版本：** 10
 
-**替代接口：** [queryContact](#querycontact)(context: Context, key: string, holder?: Holder, attrs?: ContactAttributes)
+**替代接口：** [queryContact](arkts-contacts-contact-querycontact-f.md)(context: Context, key: string, holder?: Holder, attrs?: ContactAttributes)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 

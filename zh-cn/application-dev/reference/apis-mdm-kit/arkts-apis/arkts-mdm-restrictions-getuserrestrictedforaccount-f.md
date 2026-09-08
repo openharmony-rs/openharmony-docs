@@ -18,7 +18,7 @@ function getUserRestrictedForAccount(admin: Want | null, settingsItem: string, a
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getUserRestrictedForAccount](#getuserrestrictedforaccount)(admin: Want | null, settingsItem: SettingsForAccount, accountId: int)
+**替代接口：** [getUserRestrictedForAccount](arkts-mdm-restrictions-getuserrestrictedforaccount-f.md)(admin: Want | null, settingsItem: SettingsForAccount, accountId: int)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_USER_RESTRICTION
 

@@ -75,4 +75,4 @@ function getP2pPeerDevices(callback: AsyncCallback<WifiP2pDevice[]>): void
 
 **示例**
 
-参见 [getP2pPeerDevices](#getp2ppeerdevices)
+参见 [getP2pPeerDevices](arkts-connectivity-wifi-getp2ppeerdevices-f.md)

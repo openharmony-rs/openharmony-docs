@@ -488,7 +488,7 @@ signSync(data: DataBlob | null): DataBlob
 
 对数据进行签名，通过同步方式返回签名结果。
 
-**说明：** 建议优先使用异步API，[sign](#sign)。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。 因此建议在子线程中调用同步API，以避免阻塞主线程。
+**说明：** 建议优先使用异步API，[sign](arkts-cryptoarchitecture-cryptoframework-sign-i.md)。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。 因此建议在子线程中调用同步API，以避免阻塞主线程。
 
 **起始版本：** 12
 
@@ -718,12 +718,12 @@ update(data: DataBlob, callback: AsyncCallback<void>): void
 
 追加待签名数据，使用callback异步回调完成更新。
 
-必须在对[Sign](#sign)实例使用[init](#init)或 [initSync](#initsync)初始化后，才能使用本函数。
+必须在对[Sign](arkts-cryptoarchitecture-cryptoframework-sign-i.md)实例使用[init](#init)或 [initSync](#initsync)初始化后，才能使用本函数。
 
 > **说明：**
 > 
 > 根据数据量，可以不调用update（即[init](#init)完成后直接调用
-> [sign](#sign)）或多次调用update。
+> [sign](arkts-cryptoarchitecture-cryptoframework-sign-i.md)）或多次调用update。
 > 
 > 算法库目前没有对update（单次或累计）的数据量设置大小限制，建议对于大数据量的签名操作，采用多次update的方式传入数据，避免一次性申请
 > 过大内存。
@@ -769,12 +769,12 @@ update(data: DataBlob): Promise<void>
 
 追加待签名数据，使用Promise异步回调方式完成更新。
 
-在使用本函数前，必须先使用[init](#init)对[Sign](#sign)实例进行初始化。
+在使用本函数前，必须先使用[init](#init)对[Sign](arkts-cryptoarchitecture-cryptoframework-sign-i.md)实例进行初始化。
 
 > **说明：**
 > 
 > 根据数据量，可以不调用update（即[init](#init)
-> 完成后直接调用[sign](#sign)）
+> 完成后直接调用[sign](arkts-cryptoarchitecture-cryptoframework-sign-i.md)）
 > 或多次调用update。
 > 
 > 算法库不对单次或累计的update数据量设置大小限制。建议在处理大数据量的签名操作时，采用多次update方式传入数据，以避免一次性申请过大内
@@ -825,7 +825,7 @@ updateSync(data: DataBlob): void
 
 追加待签名数据，通过同步方式完成更新。
 
-必须在对[Sign](#sign)实例使用[initSync()](#initsync)初始化 后，才能使用本函数。
+必须在对[Sign](arkts-cryptoarchitecture-cryptoframework-sign-i.md)实例使用[initSync()](#initsync)初始化 后，才能使用本函数。
 
 > **说明：**
 > 

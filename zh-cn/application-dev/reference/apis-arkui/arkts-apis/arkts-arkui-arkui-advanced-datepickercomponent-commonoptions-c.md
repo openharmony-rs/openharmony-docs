@@ -135,7 +135,7 @@ loop?: boolean
 
 > **说明：**
 > 
-> 设置了[start](#commonoptions)或[end](#commonoptions)且为有效值的场景下，本参数不生效。
+> 设置了[start](#start)或[end](#end)且为有效值的场景下，本参数不生效。
 
 **类型：** boolean
 

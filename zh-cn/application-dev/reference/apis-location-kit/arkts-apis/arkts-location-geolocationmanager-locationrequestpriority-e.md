@@ -12,7 +12,7 @@
 UNSET = 0x200
 ```
 
-表示未设置优先级，表示[LocationRequestPriority](#locationrequestpriority)无效。
+表示未设置优先级，表示[LocationRequestPriority](arkts-location-geolocationmanager-locationrequestpriority-e.md)无效。
 
 **起始版本：** 9
 

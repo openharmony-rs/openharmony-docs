@@ -18,7 +18,7 @@ function queryContactsByEmail(email: string, callback: AsyncCallback<Array<Conta
 
 **废弃版本：** 10
 
-**替代接口：** [queryContactsByEmail](#querycontactsbyemail)(context: Context, email: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**替代接口：** [queryContactsByEmail](arkts-contacts-contact-querycontactsbyemail-f.md)(context: Context, email: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -109,7 +109,7 @@ function queryContactsByEmail(email: string, holder: Holder, callback: AsyncCall
 
 **废弃版本：** 10
 
-**替代接口：** [queryContactsByEmail](#querycontactsbyemail)(context: Context, email: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**替代接口：** [queryContactsByEmail](arkts-contacts-contact-querycontactsbyemail-f.md)(context: Context, email: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -211,7 +211,7 @@ function queryContactsByEmail(email: string, attrs: ContactAttributes, callback:
 
 **废弃版本：** 10
 
-**替代接口：** [queryContactsByEmail](#querycontactsbyemail)(context: Context, email: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**替代接口：** [queryContactsByEmail](arkts-contacts-contact-querycontactsbyemail-f.md)(context: Context, email: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -309,7 +309,7 @@ function queryContactsByEmail(email: string, holder: Holder, attrs: ContactAttri
 
 **废弃版本：** 10
 
-**替代接口：** [queryContactsByEmail](#querycontactsbyemail)(context: Context, email: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**替代接口：** [queryContactsByEmail](arkts-contacts-contact-querycontactsbyemail-f.md)(context: Context, email: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -416,7 +416,7 @@ function queryContactsByEmail(email: string, holder?: Holder, attrs?: ContactAtt
 
 **废弃版本：** 10
 
-**替代接口：** [queryContactsByEmail](#querycontactsbyemail)(context: Context, email: string, holder?: Holder, attrs?: ContactAttributes)
+**替代接口：** [queryContactsByEmail](arkts-contacts-contact-querycontactsbyemail-f.md)(context: Context, email: string, holder?: Holder, attrs?: ContactAttributes)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 

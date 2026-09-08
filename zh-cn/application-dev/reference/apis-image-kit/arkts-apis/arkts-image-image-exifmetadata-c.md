@@ -70,7 +70,7 @@ async function exifMetadataClone(context: Context) {
 static createInstance(): ExifMetadata
 ```
 
-创建一个空的[ExifMetadata](#exifmetadata)实例。
+创建一个空的[ExifMetadata](arkts-image-image-exifmetadata-c.md)实例。
 
 **起始版本：** 23
 
