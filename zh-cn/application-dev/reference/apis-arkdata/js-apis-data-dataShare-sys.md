@@ -55,7 +55,7 @@ createDataShareHelper(context: Context, uri: string, callback: AsyncCallback&lt;
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：19+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700010 | The DataShareHelper fails to be initialized. |
 
@@ -114,7 +114,7 @@ createDataShareHelper(context: Context, uri: string, options: DataShareHelperOpt
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：19+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700010 | The DataShareHelper fails to be initialized. |
 
@@ -178,7 +178,7 @@ createDataShareHelper(context: Context, uri: string, options?: DataShareHelperOp
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：19+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700010 | The DataShareHelper fails to be initialized. |
 
@@ -241,7 +241,7 @@ enableSilentProxy(context: Context, uri?: string): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：19+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700011 | The URI does not exist. |
 
@@ -296,7 +296,7 @@ disableSilentProxy(context: Context, uri?: string): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：19+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700011 | The URI does not exist. |
 
@@ -464,9 +464,9 @@ on(type: 'dataChange', uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：12+ |
+| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types. <br> 适用版本：12+ |
+| 15700013 | The DataShareHelper instance is already closed. <br> 适用版本：12+ |
 
 **示例：**
 
@@ -555,9 +555,9 @@ off(type: 'dataChange', uri: string, callback?: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：12+ |
+| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types. <br> 适用版本：12+ |
+| 15700013 | The DataShareHelper instance is already closed. <br> 适用版本：12+ |
 
 **示例：**
 
@@ -640,10 +640,10 @@ addTemplate(uri: string, subscriberId: string, template: Template): void
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700011 | The URI is not exist.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> 适用版本：12+ |
 
 **示例：**
 
@@ -690,10 +690,10 @@ delTemplate(uri: string, subscriberId: string): void
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700011 | The URI is not exist.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> 适用版本：12+ |
 
 **示例：**
 
@@ -751,9 +751,9 @@ on(type: 'rdbDataChange', uris: Array&lt;string&gt;, templateId: TemplateId, cal
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> 适用版本：12+ |
 
 **示例：**
 
@@ -814,9 +814,9 @@ off(type: 'rdbDataChange', uris: Array&lt;string&gt;, templateId: TemplateId, ca
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> 适用版本：12+ |
 
 **示例：**
 
@@ -857,9 +857,9 @@ on(type: 'publishedDataChange', uris: Array&lt;string&gt;, subscriberId: string,
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> 适用版本：12+ |
 
 **示例：**
 
@@ -915,9 +915,9 @@ off(type: 'publishedDataChange', uris: Array&lt;string&gt;, subscriberId: string
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> 适用版本：12+ |
 
 **示例：**
 
@@ -959,10 +959,10 @@ publish(data: Array&lt;PublishedItem&gt;, bundleName: string, version: number, c
 
 | 错误码ID | 错误信息                    |
 | -------- | -------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700012 | The data area is not exist.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> 适用版本：12+ |
 
 **示例：**
 
@@ -1009,10 +1009,10 @@ publish(data: Array&lt;PublishedItem&gt;, bundleName: string, callback: AsyncCal
 
 | 错误码ID | 错误信息                    |
 | -------- | -------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700012 | The data area does not exist.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> 适用版本：12+ |
 
 **示例：**
 
@@ -1061,10 +1061,10 @@ publish(data: Array&lt;PublishedItem&gt;, bundleName: string, version?: number):
 
 | 错误码ID | 错误信息                    |
 | -------- | -------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700012 | The data area does not exist.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> 适用版本：12+ |
 
 **示例：**
 
@@ -1101,10 +1101,10 @@ getPublishedData(bundleName: string, callback: AsyncCallback&lt;Array&lt;Publish
 
 | 错误码ID | 错误信息                    |
 | -------- | -------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700012 | The data area does not exist.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> 适用版本：12+ |
 
 **示例：**
 
@@ -1147,10 +1147,10 @@ getPublishedData(bundleName: string): Promise&lt;Array&lt;PublishedItem&gt;&gt;
 
 | 错误码ID | 错误信息                    |
 | -------- | -------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700012 | The data area does not exist.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> 适用版本：12+ |
 
 **示例：**
 
@@ -1186,9 +1186,9 @@ insert(uri: string, value: ValuesBucket, callback: AsyncCallback&lt;number&gt;):
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> 适用版本：12+ |
 
 **示例：**
 
@@ -1256,9 +1256,9 @@ insert(uri: string, value: ValuesBucket): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> 适用版本：12+ |
 
 **示例：**
 
@@ -1319,9 +1319,9 @@ delete(uri: string, predicates: dataSharePredicates.DataSharePredicates, callbac
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> 适用版本：12+ |
 
 **示例：**
 
@@ -1380,9 +1380,9 @@ delete(uri: string, predicates: dataSharePredicates.DataSharePredicates): Promis
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> 适用版本：12+ |
 
 **示例：**
 
@@ -1437,9 +1437,9 @@ query(uri: string, predicates: dataSharePredicates.DataSharePredicates, columns:
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> 适用版本：12+ |
 
 **示例：**
 
@@ -1502,9 +1502,9 @@ query(uri: string, predicates: dataSharePredicates.DataSharePredicates, columns:
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> 适用版本：12+ |
 
 **示例：**
 
@@ -1558,9 +1558,9 @@ update(uri: string, predicates: dataSharePredicates.DataSharePredicates, value: 
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> 适用版本：12+ |
 
 **示例：**
 
@@ -1631,9 +1631,9 @@ update(uri: string, predicates: dataSharePredicates.DataSharePredicates, value: 
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> 适用版本：12+ |
 
 **示例：**
 
@@ -1701,7 +1701,7 @@ batchUpdate(operations: Record&lt;string, Array&lt;UpdateOperation&gt;&gt;): Pro
 | 202      | Permission verification failed. A non-system application calls a system API.|
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700000 | Inner error. Possible causes: 1.The internal status is abnormal; 2.The interface is incorrectly used; 3.Permission configuration error; 4.A system error. |
-| 15700013 | The DataShareHelper instance is already closed. |
+| 15700013 | The DataShareHelper instance is already closed.|
 
 **示例：**
 
@@ -1785,9 +1785,9 @@ batchInsert(uri: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCallb
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> 适用版本：12+ |
 
 **示例：**
 
@@ -1846,9 +1846,9 @@ batchInsert(uri: string, values: Array&lt;ValuesBucket&gt;): Promise&lt;number&g
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> 适用版本：12+ |
 
 **示例：**
 
@@ -1896,7 +1896,7 @@ close(): Promise &lt;void&gt;
 
 | 错误码ID | 错误信息     |
 | -------- | ------------ |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：19+ |
 | 15700000 | Inner error. |
 
 **示例：**
@@ -1928,9 +1928,9 @@ normalizeUri(uri: string, callback: AsyncCallback&lt;string&gt;): void
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：12+ |
+| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types. <br> 适用版本：12+ |
+| 15700013 | The DataShareHelper instance is already closed. <br> 适用版本：12+ |
 
 **示例：**
 
@@ -1975,9 +1975,9 @@ normalizeUri(uri: string): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：12+ |
+| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types. <br> 适用版本：12+ |
+| 15700013 | The DataShareHelper instance is already closed. <br> 适用版本：12+ |
 
 **示例：**
 
@@ -2015,9 +2015,9 @@ denormalizeUri(uri: string, callback: AsyncCallback&lt;string&gt;): void
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：12+ |
+| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types. <br> 适用版本：12+ |
+| 15700013 | The DataShareHelper instance is already closed. <br> 适用版本：12+ |
 
 **示例：**
 
@@ -2062,9 +2062,9 @@ denormalizeUri(uri: string): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：12+ |
+| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types. <br> 适用版本：12+ |
+| 15700013 | The DataShareHelper instance is already closed. <br> 适用版本：12+ |
 
 **示例：**
 
@@ -2104,9 +2104,9 @@ notifyChange(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error.Mandatory parameters are left unspecified.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：12+ |
+| 401      | Parameter error.Mandatory parameters are left unspecified. <br> 适用版本：12+ |
+| 15700013 | The DataShareHelper instance is already closed. <br> 适用版本：12+ |
 
 **示例：**
 
@@ -2147,9 +2147,9 @@ notifyChange(uri: string): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error.Mandatory parameters are left unspecified.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> 适用版本：12+ |
+| 401      | Parameter error.Mandatory parameters are left unspecified. <br> 适用版本：12+ |
+| 15700013 | The DataShareHelper instance is already closed. <br> 适用版本：12+ |
 
 **示例：**
 
