@@ -3267,97 +3267,97 @@ ArkTS-Sta: layoutMode(mode: WebLayoutMode | undefined)
 
 **示例：**
 
-  1、指明layoutMode为`WebLayoutMode.FIT_CONTENT`模式，为避免默认渲染模式下(`RenderMode.ASYNC_RENDER`)视口高度超过7680px导致页面渲染出错，需要显式指明渲染模式(`RenderMode.SYNC_RENDER`)。
+  1. 指明layoutMode为`WebLayoutMode.FIT_CONTENT`模式，为避免默认渲染模式下(`RenderMode.ASYNC_RENDER`)视口高度超过7680px导致页面渲染出错，需要显式指明渲染模式(`RenderMode.SYNC_RENDER`)。
 
-  ArkTS-Dyn示例：
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
+     ArkTS-Dyn示例：
+     ```ts
+     // xxx.ets
+     import { webview } from '@kit.ArkWeb';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-    mode: WebLayoutMode = WebLayoutMode.FIT_CONTENT;
+     @Entry
+     @Component
+     struct WebComponent {
+       controller: webview.WebviewController = new webview.WebviewController();
+       mode: WebLayoutMode = WebLayoutMode.FIT_CONTENT;
 
-    build() {
-      Column() {
-        Web({ src: 'www.example.com', controller: this.controller, renderMode: RenderMode.SYNC_RENDER })
-          .layoutMode(this.mode)
-      }
-    }
-  }
-  ```
+       build() {
+         Column() {
+           Web({ src: 'www.example.com', controller: this.controller, renderMode: RenderMode.SYNC_RENDER })
+             .layoutMode(this.mode)
+         }
+       }
+     }
+     ```
 
-  ArkTS-Sta示例：
-  ```ts
-  // xxx.ets
-  'use static'
-  import { Entry, Component, Web, Column, WebLayoutMode, RenderMode } from '@kit.ArkUI';
-  import { webview } from '@kit.ArkWeb';
+     ArkTS-Sta示例：
+     ```ts
+     // xxx.ets
+     'use static'
+     import { Entry, Component, Web, Column, WebLayoutMode, RenderMode } from '@kit.ArkUI';
+     import { webview } from '@kit.ArkWeb';
 
-  @Entry
-  @Component
-  struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-  mode: WebLayoutMode = WebLayoutMode.FIT_CONTENT;
+     @Entry
+     @Component
+     struct WebComponent {
+     controller: webview.WebviewController = new webview.WebviewController(undefined);
+     mode: WebLayoutMode = WebLayoutMode.FIT_CONTENT;
 
-  build() {
-    Column() {
-      Web({ src: 'www.example.com', controller: this.controller, renderMode: RenderMode.SYNC_RENDER })
-        .layoutMode(this.mode)
-      }
-    }
-  }
-  ```
+     build() {
+       Column() {
+         Web({ src: 'www.example.com', controller: this.controller, renderMode: RenderMode.SYNC_RENDER })
+           .layoutMode(this.mode)
+         }
+       }
+     }
+     ```
 
-  2、指明layoutMode为`WebLayoutMode.FIT_CONTENT`模式，为避免嵌套滚动场景下，Web滚动到边缘时会优先触发过滚动的过界回弹效果影响用户体验，建议指定[overScrollMode](#overscrollmode11)为`OverScrollMode.NEVER`。
+  2. 指明layoutMode为`WebLayoutMode.FIT_CONTENT`模式，为避免嵌套滚动场景下，Web滚动到边缘时会优先触发过滚动的过界回弹效果影响用户体验，建议指定[overScrollMode](#overscrollmode11)为`OverScrollMode.NEVER`。
 
-  ArkTS-Dyn示例：
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
+     ArkTS-Dyn示例：
+     ```ts
+     // xxx.ets
+     import { webview } from '@kit.ArkWeb';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-    layoutMode: WebLayoutMode = WebLayoutMode.FIT_CONTENT;
-    @State overScrollMode: OverScrollMode = OverScrollMode.NEVER;
+     @Entry
+     @Component
+     struct WebComponent {
+       controller: webview.WebviewController = new webview.WebviewController();
+       layoutMode: WebLayoutMode = WebLayoutMode.FIT_CONTENT;
+       @State overScrollMode: OverScrollMode = OverScrollMode.NEVER;
 
-    build() {
-      Column() {
-        Web({ src: 'www.example.com', controller: this.controller, renderMode: RenderMode.SYNC_RENDER })
-          .layoutMode(this.layoutMode)
-          .overScrollMode(this.overScrollMode)
-      }
-    }
-  }
-  ```
+       build() {
+         Column() {
+           Web({ src: 'www.example.com', controller: this.controller, renderMode: RenderMode.SYNC_RENDER })
+             .layoutMode(this.layoutMode)
+             .overScrollMode(this.overScrollMode)
+         }
+       }
+     }
+     ```
 
-  ArkTS-Sta示例：
-  ```ts
-  // xxx.ets
-  'use static'
-  import { State,Entry, Component, Web, Column, WebLayoutMode, RenderMode, OverScrollMode } from '@kit.ArkUI';
-  import { webview } from '@kit.ArkWeb';
+     ArkTS-Sta示例：
+     ```ts
+     // xxx.ets
+     'use static'
+     import { State,Entry, Component, Web, Column, WebLayoutMode, RenderMode, OverScrollMode } from '@kit.ArkUI';
+     import { webview } from '@kit.ArkWeb';
 
-  @Entry
-  @Component
-  struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-  layoutMode: WebLayoutMode = WebLayoutMode.FIT_CONTENT;
-  @State overScrollMode: OverScrollMode = OverScrollMode.NEVER;
+     @Entry
+     @Component
+     struct WebComponent {
+     controller: webview.WebviewController = new webview.WebviewController(undefined);
+     layoutMode: WebLayoutMode = WebLayoutMode.FIT_CONTENT;
+     @State overScrollMode: OverScrollMode = OverScrollMode.NEVER;
 
-  build() {
-    Column() {
-      Web({ src: 'www.example.com', controller: this.controller, renderMode: RenderMode.SYNC_RENDER })
-        .layoutMode(this.layoutMode)
-        .overScrollMode(this.overScrollMode)
-      }
-    }
-  }
-  ```
+     build() {
+       Column() {
+         Web({ src: 'www.example.com', controller: this.controller, renderMode: RenderMode.SYNC_RENDER })
+           .layoutMode(this.layoutMode)
+           .overScrollMode(this.overScrollMode)
+         }
+       }
+     }
+     ```
 
 ## nestedScroll<sup>11+</sup>
 

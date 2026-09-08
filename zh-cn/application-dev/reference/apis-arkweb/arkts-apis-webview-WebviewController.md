@@ -542,169 +542,169 @@ struct WebComponent {
 
 加载本地网页，加载本地资源文件有三种方式。
 
-1.$rawfile方式。
+1. $rawfile方式。
 
-ArkTS-Dyn示例：
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
+   ArkTS-Dyn示例：
+   ```ts
+   // xxx.ets
+   import { webview } from '@kit.ArkWeb';
+   import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
+   @Entry
+   @Component
+   struct WebComponent {
+     controller: webview.WebviewController = new webview.WebviewController();
 
-  build() {
-    Column() {
-      Button('loadUrl')
-        .onClick(() => {
-          try {
-            // 通过$rawfile加载本地资源文件。
-            this.controller.loadUrl($rawfile('index.html'));
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
+     build() {
+       Column() {
+         Button('loadUrl')
+           .onClick(() => {
+             try {
+               // 通过$rawfile加载本地资源文件。
+               this.controller.loadUrl($rawfile('index.html'));
+             } catch (error) {
+               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+             }
+           })
+         Web({ src: 'www.example.com', controller: this.controller })
+       }
+     }
+   }
+   ```
 
-ArkTS-Sta示例：
-```ts
-'use static'
-import { Web, Column, Component, Entry, Button, $rawfile } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@ohos.base';
+   ArkTS-Sta示例：
+   ```ts
+   'use static'
+   import { Web, Column, Component, Entry, Button, $rawfile } from '@kit.ArkUI';
+   import { webview } from '@kit.ArkWeb';
+   import { BusinessError } from '@ohos.base';
 
 
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
+   Entry
+   @Component
+   struct WebComponent {
+     controller: webview.WebviewController = new webview.WebviewController(undefined);
 
-  build() {
-    Column() {
-      Button('loadUrl')
-        .onClick(() => {
-          try {
-            // 通过$rawfile加载本地资源文件。
-            this.controller.loadUrl($rawfile('index.html'));
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
+     build() {
+       Column() {
+         Button('loadUrl')
+           .onClick(() => {
+             try {
+               // 通过$rawfile加载本地资源文件。
+               this.controller.loadUrl($rawfile('index.html'));
+             } catch (error) {
+               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+             }
+           })
+         Web({ src: 'www.example.com', controller: this.controller })
+       }
+     }
+   }
+   ```
 
-2.resource协议。
+2. resource协议。
 
-使用 `resource://rawfile/` 协议前缀可以避免常规 `$rawfile` 方式在处理带有“#”路由链接时URL会被“#”截断的问题。当URL中包含“#”号时，“#”后面的内容会被视为锚点（fragment）。
+   使用 `resource://rawfile/` 协议前缀可以避免常规 `$rawfile` 方式在处理带有“#”路由链接时URL会被“#”截断的问题。当URL中包含“#”号时，“#”后面的内容会被视为锚点（fragment）。
 
-ArkTS-Dyn示例：
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
+   ArkTS-Dyn示例：
+   ```ts
+   // xxx.ets
+   import { webview } from '@kit.ArkWeb';
+   import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
+   @Entry
+   @Component
+   struct WebComponent {
+     controller: webview.WebviewController = new webview.WebviewController();
 
-  build() {
-    Column() {
-      Button('loadUrl')
-        .onClick(() => {
-          try {
-            // 通过resource协议加载本地资源文件。
-            this.controller.loadUrl("resource://rawfile/index.html#home");
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
+     build() {
+       Column() {
+         Button('loadUrl')
+           .onClick(() => {
+             try {
+               // 通过resource协议加载本地资源文件。
+               this.controller.loadUrl("resource://rawfile/index.html#home");
+             } catch (error) {
+               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+             }
+           })
+         Web({ src: 'www.example.com', controller: this.controller })
+       }
+     }
+   }
+   ```
 
-ArkTS-Sta示例：
-```ts
-'use static'
-import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@ohos.base';
+   ArkTS-Sta示例：
+   ```ts
+   'use static'
+   import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
+   import { webview } from '@kit.ArkWeb';
+   import { BusinessError } from '@ohos.base';
 
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
+   @Entry
+   @Component
+   struct WebComponent {
+     controller: webview.WebviewController = new webview.WebviewController(undefined);
 
-  build() {
-    Column() {
-      Button('loadUrl')
-        .onClick(() => {
-          try {
-            // 通过resource协议加载本地资源文件。
-            this.controller.loadUrl("resource://rawfile/index.html");
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
+     build() {
+       Column() {
+         Button('loadUrl')
+           .onClick(() => {
+             try {
+               // 通过resource协议加载本地资源文件。
+               this.controller.loadUrl("resource://rawfile/index.html");
+             } catch (error) {
+               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+             }
+           })
+         Web({ src: 'www.example.com', controller: this.controller })
+       }
+     }
+   }
+   ```
 
-在“src\main\resources\rawfile”文件夹下创建index.html：
-```html
-<!-- index.html -->
-<!DOCTYPE html>
-<html>
-<body>
-<div id="content"></div>
+   在“src\main\resources\rawfile”文件夹下创建index.html：
+   ```html
+   <!-- index.html -->
+   <!DOCTYPE html>
+   <html>
+   <body>
+   <div id="content"></div>
 
-<script>
-  function loadContent() {
-    var hash = window.location.hash;
-    var contentDiv = document.getElementById('content');
+   <script>
+     function loadContent() {
+       var hash = window.location.hash;
+       var contentDiv = document.getElementById('content');
 
-    if (hash === '#home') {
-      contentDiv.innerHTML = '<h1>Home Page</h1><p>Welcome to the Home Page!</p>';
-    } else {
-      contentDiv.innerHTML = '<h1>Default Page</h1><p>This is the default content.</p>';
-    }
-  }
+       if (hash === '#home') {
+         contentDiv.innerHTML = '<h1>Home Page</h1><p>Welcome to the Home Page!</p>';
+       } else {
+         contentDiv.innerHTML = '<h1>Default Page</h1><p>This is the default content.</p>';
+       }
+     }
 
-  // 加载界面
-  window.addEventListener('load', loadContent);
+     // 加载界面
+     window.addEventListener('load', loadContent);
 
-  // 当hash变化时，更新界面
-  window.addEventListener('hashchange', loadContent);
-</script>
-</body>
-</html>
-```
+     // 当hash变化时，更新界面
+     window.addEventListener('hashchange', loadContent);
+   </script>
+   </body>
+   </html>
+   ```
 
-3.通过沙箱路径加载本地文件，可以参考[web](../../web/web-page-loading-with-web-components.md#加载本地页面)加载沙箱路径的示例代码。
+3. 通过沙箱路径加载本地文件，可以参考[web](../../web/web-page-loading-with-web-components.md#加载本地页面)加载沙箱路径的示例代码。
 
-加载的html文件。
-```html
-<!-- index.html -->
-<!DOCTYPE html>
-<html>
-  <body>
-    <p>Hello World</p>
-  </body>
-</html>
-```
+   加载的html文件。
+   ```html
+   <!-- index.html -->
+   <!DOCTYPE html>
+   <html>
+     <body>
+       <p>Hello World</p>
+     </body>
+   </html>
+   ```
 
 ## loadData
 
@@ -6897,113 +6897,113 @@ serializeWebState(): Uint8Array
 
 **示例：**
 
-1.对文件的操作需要导入文件管理模块，详情请参考[文件管理](../apis-core-file-kit/js-apis-file-fs.md)。
+1. 对文件的操作需要导入文件管理模块，详情请参考[文件管理](../apis-core-file-kit/js-apis-file-fs.md)。
 
-ArkTS-Dyn示例：
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo } from '@kit.CoreFileKit';
+   ArkTS-Dyn示例：
+   ```ts
+   // xxx.ets
+   import { webview } from '@kit.ArkWeb';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { fileIo } from '@kit.CoreFileKit';
 
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
+   @Entry
+   @Component
+   struct WebComponent {
+     controller: webview.WebviewController = new webview.WebviewController();
 
-  build() {
-    Column() {
-      Button('serializeWebState')
-        .onClick(() => {
-          try {
-            let state = this.controller.serializeWebState();
-            let path:string | undefined = AppStorage.get("cacheDir");
-            if (path) {
-              path += '/WebState';
-              // 以同步方法打开文件。
-              let file = fileIo.openSync(path, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
-              fileIo.writeSync(file.fd, state.buffer);
-              fileIo.closeSync(file.fd);
-            }
-          } catch (error) {
+     build() {
+       Column() {
+         Button('serializeWebState')
+           .onClick(() => {
+             try {
+               let state = this.controller.serializeWebState();
+               let path:string | undefined = AppStorage.get("cacheDir");
+               if (path) {
+                 path += '/WebState';
+                 // 以同步方法打开文件。
+                 let file = fileIo.openSync(path, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+                 fileIo.writeSync(file.fd, state.buffer);
+                 fileIo.closeSync(file.fd);
+               }
+             } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
+             }
+           })
+         Web({ src: 'www.example.com', controller: this.controller })
+       }
+     }
+   }
+   ```
 
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { Entry, Column, Component, Button, Web, AppStorage } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo } from '@kit.CoreFileKit';
+   ArkTS-Sta示例：
+   ```ts
+   // xxx.ets
+   'use static'
+   import { Entry, Column, Component, Button, Web, AppStorage } from '@kit.ArkUI';
+   import { webview } from '@kit.ArkWeb';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { fileIo } from '@kit.CoreFileKit';
 
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
+   @Entry
+   @Component
+   struct WebComponent {
+     controller: webview.WebviewController = new webview.WebviewController(undefined);
 
-  build() {
-    Column() {
-      Button('serializeWebState')
-        .onClick(() => {
-          try {
-            let state = this.controller.serializeWebState();
-            let path:string | undefined = AppStorage.get<string>("cacheDir") as string;
-            if (path) {
-              path += '/WebState';
-              // 以同步方法打开文件。
-              let file = fileIo.openSync(path as string, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
-              fileIo.writeSync(file.fd, state.buffer);
-              fileIo.closeSync(file.fd);
-            }
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
+     build() {
+       Column() {
+         Button('serializeWebState')
+           .onClick(() => {
+             try {
+               let state = this.controller.serializeWebState();
+               let path:string | undefined = AppStorage.get<string>("cacheDir") as string;
+              if (path) {
+                path += '/WebState';
+                // 以同步方法打开文件。
+                let file = fileIo.openSync(path as string, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+                fileIo.writeSync(file.fd, state.buffer);
+                fileIo.closeSync(file.fd);
+              }
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+             }
+           })
+         Web({ src: 'www.example.com', controller: this.controller })
+       }
+     }
+   }
+   ```
 
-2.修改EntryAbility.ets。
+2. 修改EntryAbility.ets。
 
-获取应用缓存文件路径。
+   获取应用缓存文件路径。
 
-ArkTS-Dyn示例：
-```ts
-// xxx.ets
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+   ArkTS-Dyn示例：
+   ```ts
+   // xxx.ets
+   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        // 通过在AppStorage对象上绑定cacheDir，可以实现UIAbility组件与Page之间的数据同步。
-        AppStorage.setOrCreate("cacheDir", this.context.cacheDir);
-    }
-}
-```
+   export default class EntryAbility extends UIAbility {
+       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+           // 通过在AppStorage对象上绑定cacheDir，可以实现UIAbility组件与Page之间的数据同步。
+           AppStorage.setOrCreate("cacheDir", this.context.cacheDir);
+       }
+   }
+   ```
 
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { AppStorage } from '@kit.ArkUI';
+   ArkTS-Sta示例：
+   ```ts
+   // xxx.ets
+   'use static'
+   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+   import { AppStorage } from '@kit.ArkUI';
 
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        // 通过在AppStorage对象上绑定cacheDir，可以实现UIAbility组件与Page之间的数据同步。
-        AppStorage.setOrCreate("cacheDir", this.context.cacheDir);
-    }
-}
-```
+   export default class EntryAbility extends UIAbility {
+       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+           // 通过在AppStorage对象上绑定cacheDir，可以实现UIAbility组件与Page之间的数据同步。
+           AppStorage.setOrCreate("cacheDir", this.context.cacheDir);
+       }
+   }
+   ```
 
 ## restoreWebState
 
@@ -7036,133 +7036,133 @@ restoreWebState(state: Uint8Array): void
 
 **示例：**
 
-1.对文件的操作需要导入文件管理模块，详情请参考[文件管理](../apis-core-file-kit/js-apis-file-fs.md)。
+1. 对文件的操作需要导入文件管理模块，详情请参考[文件管理](../apis-core-file-kit/js-apis-file-fs.md)。
 
-ArkTS-Dyn示例：
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo } from '@kit.CoreFileKit';
+   ArkTS-Dyn示例：
+   ```ts
+   // xxx.ets
+   import { webview } from '@kit.ArkWeb';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { fileIo } from '@kit.CoreFileKit';
 
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
+   @Entry
+   @Component
+   struct WebComponent {
+     controller: webview.WebviewController = new webview.WebviewController();
 
-  build() {
-    Column() {
-      Button('RestoreWebState')
-        .onClick(() => {
-          try {
-            let path: string | undefined = AppStorage.get("cacheDir");
-            if (path) {
-              path += '/WebState';
-              // 以同步方法打开文件。
-              let file = fileIo.openSync(path, fileIo.OpenMode.READ_WRITE);
-              let stat = fileIo.statSync(path);
-              let size = stat.size;
-              let buf = new ArrayBuffer(size);
-              fileIo.read(file.fd, buf, (err, readLen) => {
-                if (err) {
-                  console.error("console error with error message: " + err.message + ", error code: " + err.code);
-                } else {
-                  console.info("read file data succeed");
-                  this.controller.restoreWebState(new Uint8Array(buf.slice(0, readLen)));
-                  fileIo.closeSync(file);
-                }
-              });
-            }
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
+     build() {
+       Column() {
+         Button('RestoreWebState')
+           .onClick(() => {
+             try {
+               let path: string | undefined = AppStorage.get("cacheDir");
+               if (path) {
+                 path += '/WebState';
+                 // 以同步方法打开文件。
+                 let file = fileIo.openSync(path, fileIo.OpenMode.READ_WRITE);
+                 let stat = fileIo.statSync(path);
+                 let size = stat.size;
+                 let buf = new ArrayBuffer(size);
+                 fileIo.read(file.fd, buf, (err, readLen) => {
+                   if (err) {
+                     console.error("console error with error message: " + err.message + ", error code: " + err.code);
+                   } else {
+                     console.info("read file data succeed");
+                     this.controller.restoreWebState(new Uint8Array(buf.slice(0, readLen)));
+                     fileIo.closeSync(file);
+                   }
+                 });
+               }
+             } catch (error) {
+               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+             }
+           })
+         Web({ src: 'www.example.com', controller: this.controller })
+       }
+     }
+   }
+   ```
 
-ArkTS-Sta示例：
-```ts
-'use static'
-import { Entry, Text, Column, Component, Button, Web, AppStorage} from '@kit.ArkUI'
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo } from '@kit.CoreFileKit';
+   ArkTS-Sta示例：
+   ```ts
+   'use static'
+   import { Entry, Text, Column, Component, Button, Web, AppStorage} from '@kit.ArkUI'
+   import { webview } from '@kit.ArkWeb';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { fileIo } from '@kit.CoreFileKit';
 
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
+   @Entry
+   @Component
+   struct WebComponent {
+     controller: webview.WebviewController = new webview.WebviewController(undefined);
 
-  build() {
-    Column() {
-      Button('RestoreWebState')
-        .onClick(() => {
-          try {
-            let path: string | undefined = AppStorage.get<string>("cacheDir") as string;
-            if (path !== undefined) {
-              let pathTemp: string = path + '/WebState';
-              // 以同步方法打开文件。
-              let file = fileIo.openSync(pathTemp, fileIo.OpenMode.READ_WRITE);
-              let stat = fileIo.statSync(pathTemp);
-              let size = stat.size;
-              let buf = new ArrayBuffer(size);
-              fileIo.read(file.fd, buf, (err, readLen) => {
-                if (err) {
-                  console.error("console error with error message: " + err.message + ", error code: " + err.code);
-                } else {
-                  if (readLen) {
-                    let readLenTemp = readLen as Int;
-                    console.info("read file data succeed");
-                    this.controller.restoreWebState(new Uint8Array(buf.slice(0, readLen)));
-                    fileIo.closeSync(file);
-                  }
-                }
-              });
-            }
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
+     build() {
+       Column() {
+         Button('RestoreWebState')
+           .onClick(() => {
+             try {
+               let path: string | undefined = AppStorage.get<string>("cacheDir") as string;
+               if (path !== undefined) {
+                 let pathTemp: string = path + '/WebState';
+                 // 以同步方法打开文件。
+                 let file = fileIo.openSync(pathTemp, fileIo.OpenMode.READ_WRITE);
+                 let stat = fileIo.statSync(pathTemp);
+                 let size = stat.size;
+                 let buf = new ArrayBuffer(size);
+                 fileIo.read(file.fd, buf, (err, readLen) => {
+                   if (err) {
+                     console.error("console error with error message: " + err.message + ", error code: " + err.code);
+                   } else {
+                     if (readLen) {
+                       let readLenTemp = readLen as Int;
+                       console.info("read file data succeed");
+                       this.controller.restoreWebState(new Uint8Array(buf.slice(0, readLen)));
+                       fileIo.closeSync(file);
+                     }
+                   }
+                 });
+               }
+             } catch (error) {
+               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+             }
+           })
+         Web({ src: 'www.example.com', controller: this.controller })
+       }
+     }
+   }
+   ```
 
-2.修改EntryAbility.ets。
+2. 修改EntryAbility.ets。
 
-获取应用缓存文件路径。
+   获取应用缓存文件路径。
 
-ArkTS-Dyn示例：
-```ts
-// xxx.ets
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+   ArkTS-Dyn示例：
+   ```ts
+   // xxx.ets
+   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    // 通过在AppStorage对象上绑定cacheDir，可以实现UIAbility组件与Page之间的数据同步。
-    AppStorage.setOrCreate("cacheDir", this.context.cacheDir);
-  }
-}
-```
+   export default class EntryAbility extends UIAbility {
+     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+       // 通过在AppStorage对象上绑定cacheDir，可以实现UIAbility组件与Page之间的数据同步。
+       AppStorage.setOrCreate("cacheDir", this.context.cacheDir);
+     }
+   }
+   ```
 
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { AppStorage} from '@kit.ArkUI'
+   ArkTS-Sta示例：
+   ```ts
+   // xxx.ets
+   'use static'
+   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+   import { AppStorage} from '@kit.ArkUI'
 
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    // 通过在AppStorage对象上绑定cacheDir，可以实现UIAbility组件与Page之间的数据同步。
-    AppStorage.setOrCreate("cacheDir", this.context.cacheDir);
-  }
-}
-```
+   export default class EntryAbility extends UIAbility {
+     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+       // 通过在AppStorage对象上绑定cacheDir，可以实现UIAbility组件与Page之间的数据同步。
+       AppStorage.setOrCreate("cacheDir", this.context.cacheDir);
+     }
+   }
+   ```
 
 ## customizeSchemes
 
@@ -14696,26 +14696,26 @@ setPathAllowingUniversalAccess(pathList: Array\<string\>): void
  
 setPathAllowingUniversalAccess放开目录的跨域访问限制是一个高风险操作。基于最小权限原则，当前el1，el2放开的路径是固定的，路径列表中的路径应符合以下任一路径格式：
 
-1.应用文件目录的子目录（应用文件目录通过Ability Kit中的[Context.filesDir](../apis-ability-kit/js-apis-inner-application-context.md#属性)获取），例如：
+1. 应用文件目录的子目录（应用文件目录通过Ability Kit中的[Context.filesDir](../apis-ability-kit/js-apis-inner-application-context.md#属性)获取），例如：
 
-* /data/storage/el2/base/files/example
-* /data/storage/el2/base/haps/entry/files/example
+   * /data/storage/el2/base/files/example
+   * /data/storage/el2/base/haps/entry/files/example
 
-2.应用资源目录及其子目录（应用资源目录通过Ability Kit中的[Context.resourceDir](../apis-ability-kit/js-apis-inner-application-context.md#属性)获取），例如：
+2. 应用资源目录及其子目录（应用资源目录通过Ability Kit中的[Context.resourceDir](../apis-ability-kit/js-apis-inner-application-context.md#属性)获取），例如：
 
-* /data/storage/el1/bundle/entry/resources/resfile
-* /data/storage/el1/bundle/entry/resources/resfile/example
+   * /data/storage/el1/bundle/entry/resources/resfile
+   * /data/storage/el1/bundle/entry/resources/resfile/example
 
-3.从API version 21开始，还包括了应用缓存目录及其子目录（应用缓存目录通过Ability Kit中的[Context.cacheDir](../apis-ability-kit/js-apis-inner-application-context.md#属性)获取），例如：
+3. 从API version 21开始，还包括了应用缓存目录及其子目录（应用缓存目录通过Ability Kit中的[Context.cacheDir](../apis-ability-kit/js-apis-inner-application-context.md#属性)获取），例如：
 
-* /data/storage/el2/base/cache
-* /data/storage/el2/base/haps/entry/cache/example
-* 设置的目录路径中，不允许包含cache/web，否则会抛出异常码401。如果设置目录路径是cache，cache/web也不允许访问。
+   * /data/storage/el2/base/cache
+   * /data/storage/el2/base/haps/entry/cache/example
+   * 设置的目录路径中，不允许包含cache/web，否则会抛出异常码401。如果设置目录路径是cache，cache/web也不允许访问。
 
-4.从API version 21开始，还包括了应用临时目录及其子目录（应用临时目录通过Ability Kit中的[Context.tempDir](../apis-ability-kit/js-apis-inner-application-context.md#属性)获取），例如：
+4. 从API version 21开始，还包括了应用临时目录及其子目录（应用临时目录通过Ability Kit中的[Context.tempDir](../apis-ability-kit/js-apis-inner-application-context.md#属性)获取），例如：
 
-* /data/storage/el2/base/temp
-* /data/storage/el2/base/haps/entry/temp/example
+   * /data/storage/el2/base/temp
+   * /data/storage/el2/base/haps/entry/temp/example
 
 当路径列表中有其中一个路径不满足以上条件之一，则会抛出异常码401，并且设置路径列表失败。当设置的路径列表为空，则file协议可访问范围以[fileAccess](./arkts-basic-components-web-attributes.md#fileaccess)的行为为准。
 
