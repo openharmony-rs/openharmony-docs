@@ -8,7 +8,7 @@
 
 ## 概述
 
-提供ArkUI在Native侧的RenderNode能力，适用于需要在Native侧创建、销毁和管理RenderNode渲染节点的场景。开发者可以通过 `ArkUI_RenderNodeHandle` 组织RenderNode节点树，并设置背景色、尺寸、位置等渲染属性。
+提供ArkUI在Native侧的RenderNode能力，适用于需要在Native侧创建、销毁和管理RenderNode渲染节点的场景。开发者可以通过`ArkUI_RenderNodeHandle`组织RenderNode节点树，并设置背景色、尺寸、位置等渲染属性。
 
 **起始版本：** 20
 
