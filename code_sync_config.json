@@ -66763,23 +66763,11 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/AppLevelCompatibilityExample.ets",
-				"functions":[
-					{
-						"end_line":46,
-						"name":"app_level_compatibility",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/ComponentLevelCompatibilityExample.ets",
-				"functions":[
-					{
-						"end_line":46,
-						"name":"component_level_compatibility",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			}
 		]
 	},
