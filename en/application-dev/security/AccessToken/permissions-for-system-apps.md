@@ -345,7 +345,7 @@ Allows a system application to obtain theme skinning resources in the skin direc
 
 **Valid since**: 20
 
-**Changelog**: Since API version 26.0.1, this permission is also available on car.
+**Changelog**: Since API version 26.0.1, this permission is also available on cars.
 
 ## ohos.permission.READ_ACCESSIBILITY_CONFIG
 
