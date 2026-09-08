@@ -8637,7 +8637,7 @@ setPathAllowingUniversalAccess放开目录的跨域访问限制是一个高风�
    * /data/storage/el2/base/temp
    * /data/storage/el2/base/haps/entry/temp/example
 
-   当路径列表中有其中一个路径不满足以上条件之一，则会抛出异常码401，并且设置路径列表失败。当设置的路径列表为空，则file协议可访问范围以[fileAccess](./arkts-basic-components-web-attributes.md#fileaccess)的行为为准。
+当路径列表中有其中一个路径不满足以上条件之一，则会抛出异常码401，并且设置路径列表失败。当设置的路径列表为空，则file协议可访问范围以[fileAccess](./arkts-basic-components-web-attributes.md#fileaccess)的行为为准。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
