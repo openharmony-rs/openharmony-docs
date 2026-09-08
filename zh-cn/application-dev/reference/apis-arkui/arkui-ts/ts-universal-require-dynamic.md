@@ -1,4 +1,4 @@
-# \@Require装饰器：校验构造传参
+# @Require装饰器：校验构造传参
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
