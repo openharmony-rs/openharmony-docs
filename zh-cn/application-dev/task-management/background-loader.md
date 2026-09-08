@@ -94,6 +94,22 @@ sequenceDiagram
 1. 完成后台加载任务。
 
    <!-- @[backgroundLoader_finishTask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) --> 
+   
+   ``` TypeScript
+   const taskInfo: backgroundLoader.TaskInfo = {
+     abilityname: abilityname,
+     taskId: taskId
+   };
+   try {
+     backgroundLoader.finishTask(taskInfo);
+     hilog.info(DOMAIN, 'testTag', 'finishTask successes');
+     return 'Success';
+   } catch (err) {
+     const errMsg = JSON.stringify(err);
+     hilog.error(DOMAIN, 'testTag', 'finishTask failed: %{public}s', errMsg);
+     return `Failed: ${(err as BusinessError).message ?? errMsg}`;
+   }
+   ```
 
 ### 调测验证
 
