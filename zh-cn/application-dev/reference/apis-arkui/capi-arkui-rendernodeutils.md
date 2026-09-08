@@ -8,7 +8,7 @@
 
 ## 概述
 
-提供 ArkUI 在 Native 侧的 RenderNode 能力，适用于需要在 Native 侧创建、销毁和管理 RenderNode 渲染节点的场景。开发者可以通过 `ArkUI_RenderNodeHandle` 组织 RenderNode 节点树，并设置背景色、尺寸、位置等渲染属性。
+提供 ArkUI在Native侧的 RenderNode 能力，适用于需要在 Native 侧创建、销毁和管理 RenderNode 渲染节点的场景。开发者可以通过 `ArkUI_RenderNodeHandle` 组织 RenderNode 节点树，并设置背景色、尺寸、位置等渲染属性。
 
 **起始版本：** 20
 
