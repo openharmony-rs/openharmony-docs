@@ -561,7 +561,7 @@ async speedLimitDownload(url: string, fileName: string, callback: (progress: num
 
 ### Intercepting HTTP
 
-You can set the configuration file to intercept HTTP. After HTTP is disabled for the **ohos.request** module, upload and download tasks using plaintext HTTP cannot be created. The configuration file is stored in the **src/main/resources/base/profile/network_config.json** directory of the application. For details about the parameters to be configured, see [Network Connection Security Configuration](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-network-ca-security#section5454123841911).
+You can set the configuration file to intercept HTTP. After HTTP is disabled for the **ohos.request** module, upload and download tasks using plaintext HTTP cannot be created. The configuration file is stored in the **src/main/resources/base/profile/network_config.json** directory of the application. For details about the parameters to be configured, see Network Connection Security Configuration.
 
 The sample configuration file is as follows:
 
