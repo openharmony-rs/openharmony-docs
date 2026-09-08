@@ -33,7 +33,7 @@
   }
   ```
 
-  ArkTS-Sta示例：
+  ArkTS-Sta示例： 
   <!-- @[create_a_web_component_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/IncognitoMode_one.ets) -->
 
   ``` TypeScript
