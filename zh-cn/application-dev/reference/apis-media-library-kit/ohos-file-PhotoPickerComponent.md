@@ -471,7 +471,7 @@ type UnselectableItemClickedCallback = (unselectableItemInfo: UnselectableItemIn
  
 | 参数名 | 类型                            | 必填 | 说明 |
 | ----- |-------------------------------| ----- |----------------------------------------------|
-| unselectableItemInfo  | [UnselectableItemInfo](#unselectableiteminfo) | 是 | 被点击的不可选中的图片详情 |
+| unselectableItemInfo  | [UnselectableItemInfo](#unselectableiteminfo) | 是 | 被点击的不可选中的图片详情。 |
 
 ## PickerController
 
