@@ -111,7 +111,7 @@ type RecentPhotoClickCallback = (recentPhotoInfo: BaseItemInfo) => boolean
 
 | 类型    | 说明                                                         |
 | ------- | ------------------------------------------------------------ |
-| boolean | 返回值无实际作用，可返回true或false。 |
+| boolean | 应用回调中处理最近图片的结果返回。返回值无实际作用，可返回true或false。 |
 
 ## RecentPhotoCheckInfoCallback<sup>13+</sup>
 
