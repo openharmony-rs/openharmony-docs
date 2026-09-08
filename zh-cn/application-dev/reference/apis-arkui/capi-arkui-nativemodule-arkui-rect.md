@@ -18,7 +18,7 @@ typedef struct {...} ArkUI_Rect
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**所在头文件：** [native_type.h](capi-native-type-h.md)
+**所在头文件：** [common_type.h](capi-common-type-h.md)
 
 ## 汇总
 
@@ -30,5 +30,4 @@ typedef struct {...} ArkUI_Rect
 | float y | 区域在y轴的位置，单位：vp。 |
 | float width | 区域宽度，单位：vp。 |
 | float height | 区域高度，单位：vp。 |
-
 
