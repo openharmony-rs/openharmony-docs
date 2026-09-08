@@ -77,7 +77,7 @@
         } catch (err) {
           let code = (err as BusinessError).code;
           let msg = (err as BusinessError).message;
-          console.error(`sendData failed, err code: ${code}, err msg: ${msg}.`);
+          console.error(`authorize failed, err code: ${code}, err msg: ${msg}.`);
         }
       }
       // 销毁
@@ -165,7 +165,7 @@ export default class AgentExtAbility extends AgentExtensionAbility {
     } catch (err) {
       let code = (err as BusinessError).code;
       let msg = (err as BusinessError).message;
-      console.error(`sendData failed, err code: ${code}, err msg: ${msg}.`);
+      console.error(`authorize failed, err code: ${code}, err msg: ${msg}.`);
     }
   }
   // ...
