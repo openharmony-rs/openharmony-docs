@@ -847,7 +847,7 @@ struct Index {
       Button('helloWorld')
         .width(200)
         .fontColor(Color.Black)
-        // 不设置此接口，可以关闭Button沉浸光感效果
+        // 通过systemMaterial设置系统材质
         .systemMaterial(new uiMaterial.ImmersiveMaterial({
           style: uiMaterial.ImmersiveStyle.THIN
         }))
