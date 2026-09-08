@@ -28,7 +28,7 @@ import { hyperSnapManager } from '@kit.AbilityKit';
 
 ## HyperSnapErrorType
 
-快启错误场景类型的枚举。
+表示快启发生错误的场景，用户可以传入不同的错误场景枚举值来获取快启不同场景发生的错误信息。
 
 **起始版本：** 26.1.0
 
@@ -38,12 +38,12 @@ import { hyperSnapManager } from '@kit.AbilityKit';
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| CREATE_SNAPSHOT | 0 | 快启初始化过程中创建快照出现错误的场景类型。 |
-| FORK_FROM_SNAPSHOT | 1 | 快启过程中从快照生成进程期间发生错误的场景类型。 |
+| CREATE_SNAPSHOT | 0 | 快启初始化阶段创建快照失败的场景类型。 |
+| FORK_FROM_SNAPSHOT | 1 | 快启过程中从快照生成进程失败的场景类型。 |
 
 ## HyperSnapErrorCode
 
-快启错误码的枚举。
+表示快启发生错误的错误码，每个错误码失败的具体原因详见对应的说明。
 
 **起始版本：** 26.1.0
 
@@ -53,12 +53,12 @@ import { hyperSnapManager } from '@kit.AbilityKit';
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| ERR_OK | 0 | 快启未发生错误，或未触发快启 |
+| ERR_OK | 0 | 快启未发生错误，或未触发快启。 |
 | ERR_SYSTEM_INNER | 1 | 系统内部错误。 |
-| ERR_SNAPSHOT_EXIST | 2 | 快启初始化过程已成功制作快照，非法再次触发进行快启初始化过程 |
+| ERR_SNAPSHOT_EXIST | 2 | 快启初始化过程已成功制作快照，非法再次触发进行快启初始化过程。 |
 | ERR_PROCESS_IS_RUNNING | 3 | 系统在准备进行应用快启初始化时，应用进程正在运行中。 |
 | ERR_SNAPSHOT_PROCESS_IS_DIED | 4 | 快启初始化制作快照的过程中，用于制作快照的进程被终止。 |
-| ERR_SNAPSHOT_IS_INTERRUPTED | 5 | 系统在准备进行应用快启初始化时，用户启动应用 |
+| ERR_SNAPSHOT_IS_INTERRUPTED | 5 | 系统在准备进行应用快启初始化时，用户启动应用。 |
 | ERR_EXISTS_ILLEGAL_BINDER | 6 | 应用存在非法的Binder。 |
 | ERR_LAST_PROCESS_NOT_FULLY_EXITED | 7 | 上一个应用进程未完全退出。 |
 
@@ -75,7 +75,7 @@ import { hyperSnapManager } from '@kit.AbilityKit';
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | code | [HyperSnapErrorCode](#hypersnaperrorcode) | 是 | 否 | 错误码。 |
-| msg | string | 是 | 否 | 错误消息。 |
+| msg | string | 是 | 否 | 错误消息，表明快启失败的原因。 |
 | occurTimeStamp | number | 是 | 否 | 发生错误时的时间戳，即自Unix纪元（1970-01-01 00:00:00 UTC）以来经过的时间，单位为毫秒，取值为整数。 |
 
 ## hyperSnapManager.setHyperSnapEnabled
