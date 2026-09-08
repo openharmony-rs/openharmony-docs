@@ -4381,3 +4381,75 @@ class DrawingRenderNode extends RenderNode {
   }
 }
 ```
+
+## drawRecordCmd
+
+drawRecordCmd(recordCmd: RecordCmd): void
+
+回放已录制的绘制指令。该接口会按录制顺序在当前画布上执行[RecordCmd](arkts-apis-graphics-drawing-i.md#recordcmd)中记录的所有绘制操作。录制指令对象由[RecordCmdUtils.finishRecording](arkts-apis-graphics-drawing-RecordCmdUtils.md#finishrecording)生成。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名     | 类型                | 必填 | 说明                       |
+| ------     | ------------------- | ---- | -------------------------- |
+| recordCmd | [RecordCmd](arkts-apis-graphics-drawing-i.md#recordcmd) | 是   | 已录制的绘制指令对象，由[finishRecording](arkts-apis-graphics-drawing-RecordCmdUtils.md#finishrecording)生成。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const recordCmdUtils = new drawing.RecordCmdUtils();
+    const recordCanvas = recordCmdUtils.beginRecording(200.0, 200.0);
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    recordCanvas.attachPen(pen);
+    recordCanvas.drawRect({ left : 0, right : 100, top : 0, bottom : 100 });
+    recordCanvas.detachPen();
+    const recordCmd = recordCmdUtils.finishRecording();
+    canvas.drawRecordCmd(recordCmd);
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const recordCmdUtils = new drawing.RecordCmdUtils();
+    const recordCanvas = recordCmdUtils.beginRecording(200, 200);
+    if (recordCanvas === undefined) {
+      return;
+    }
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    recordCanvas!.attachPen(pen);
+    recordCanvas!.drawRect({ left : 0, right : 100, top : 0, bottom : 100 });
+    recordCanvas!.detachPen();
+    const recordCmd = recordCmdUtils.finishRecording();
+    if (recordCmd === undefined) {
+      return;
+    }
+    canvas.drawRecordCmd(recordCmd!);
+  }
+}
+```
