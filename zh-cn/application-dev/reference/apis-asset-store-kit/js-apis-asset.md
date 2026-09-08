@@ -49,7 +49,7 @@ add(attributes: AssetMap): Promise\<void>
 
 | 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
-| 201      | The caller doesn't have the permission.                    |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                    |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed.           |
 | 24000001 | The ASSET service is unavailable.                          |
 | 24000003 | The asset already exists.                                  |
@@ -110,7 +110,7 @@ addSync(attributes: AssetMap): void
 
 | 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
-| 201      | The caller doesn't have the permission.                    |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                    |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed.           |
 | 24000001 | The ASSET service is unavailable.                          |
 | 24000003 | The asset already exists.                                  |
@@ -250,7 +250,7 @@ remove(query: AssetMap): Promise\<void>
 
 | 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: <br> 1. Incorrect parameter types.  <br> 2. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed. |
 | 24000001 | The ASSET service is unavailable.                          |
 | 24000002 | The asset is not found.                        |
 | 24000006 | Insufficient memory.                                       |
@@ -302,7 +302,7 @@ removeSync(query: AssetMap): void
 
 | 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: <br> 1. Incorrect parameter types.  <br> 2. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed. |
 | 24000001 | The ASSET service is unavailable.                          |
 | 24000002 | The asset is not found.                        |
 | 24000006 | Insufficient memory.                                       |
@@ -620,7 +620,7 @@ preQuery(query: AssetMap): Promise\<Uint8Array>
 
 | 错误码ID | 错误信息                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: <br> 1. Incorrect parameter types.  <br> 2. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed. |
 | 24000001 | The ASSET service is unavailable.                            |
 | 24000002 | The asset is not found.                          |
 | 24000005 | The screen lock status does not match.                           |
@@ -681,7 +681,7 @@ preQuerySync(query: AssetMap): Uint8Array
 
 | 错误码ID | 错误信息                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: <br> 1. Incorrect parameter types.  <br> 2. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed. |
 | 24000001 | The ASSET service is unavailable.                            |
 | 24000002 | The asset is not found.                          |
 | 24000005 | The screen lock status does not match.                           |
@@ -743,7 +743,7 @@ query(query: AssetMap): Promise\<Array\<AssetMap>>
 
 | 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: <br> 1. Incorrect parameter types.  <br> 2. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed. |
 | 24000001 | The ASSET service is unavailable.                          |
 | 24000002 | The asset is not found.                        |
 | 24000004 | Access denied.                             |
@@ -813,7 +813,7 @@ querySync(query: AssetMap): Array\<AssetMap>
 
 | 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: <br> 1. Incorrect parameter types.  <br> 2. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed. |
 | 24000001 | The ASSET service is unavailable.                          |
 | 24000002 | The asset is not found.                        |
 | 24000004 | Access denied.                            |
@@ -1214,9 +1214,9 @@ type AssetMap = Map\<Tag, Value>
 
 | 名称                       | 值    | 说明 |
 | -------------------------- | ----- | ---- |
-| PERMISSION_DENIED | 201     |调用方无权限。|
-| NOT_SYSTEM_APPLICATION<sup>12+</sup> | 202     |调用方不是一个系统应用。|
-| INVALID_ARGUMENT | 401    |参数错误。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
+| PERMISSION_DENIED | 201     |权限校验失败，应用无权限使用该API，需要申请权限。|
+| NOT_SYSTEM_APPLICATION<sup>12+</sup> | 202     |权限校验失败，非系统应用使用了系统API。|
+| INVALID_ARGUMENT | 401    |参数错误。可能原因：1. 必选参数未指定。2. 参数类型错误。3. 参数校验失败。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | SERVICE_UNAVAILABLE | 24000001    |关键资产服务不可用。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | NOT_FOUND | 24000002    |未找到关键资产。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | DUPLICATED | 24000003    |关键资产已存在。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
