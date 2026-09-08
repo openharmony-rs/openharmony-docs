@@ -26,9 +26,11 @@
 import { hyperSnapManager } from '@kit.AbilityKit';
 ```
 
-## HyperSnapErrorType<sup>26.1.0+</sup>
+## HyperSnapErrorType
 
 快启错误场景类型的枚举。
+
+**起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -39,9 +41,11 @@ import { hyperSnapManager } from '@kit.AbilityKit';
 | CREATE_SNAPSHOT | 0 | 快启初始化过程中创建快照出现错误的场景类型。 |
 | FORK_FROM_SNAPSHOT | 1 | 快启过程中从快照生成进程期间发生错误的场景类型。 |
 
-## HyperSnapErrorCode<sup>26.1.0+</sup>
+## HyperSnapErrorCode
 
 快启错误码的枚举。
+
+**起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -58,19 +62,21 @@ import { hyperSnapManager } from '@kit.AbilityKit';
 | ERR_EXISTS_ILLEGAL_BINDER | 6 | 应用存在非法的Binder。 |
 | ERR_LAST_PROCESS_NOT_FULLY_EXITED | 7 | 上一个应用进程未完全退出。 |
 
-## HyperSnapErrorInfo<sup>26.1.0+</sup>
+## HyperSnapErrorInfo
 
 描述快启的错误信息。
+
+**起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **模型约束**：仅可在Stage模型下使用。
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| code | HyperSnapErrorCode | 是 | 错误码。 |
-| msg | string | 是 | 错误消息。 |
-| occurTimeStamp | number | 是 | 发生错误时的时间戳，即自Unix纪元（1970-01-01 00:00:00 UTC）以来经过的时间，单位为毫秒，取值为整数。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| code | HyperSnapErrorCode | 是 | 否 | 错误码。 |
+| msg | string | 是 | 否 | 错误消息。 |
+| occurTimeStamp | number | 是 | 否 | 发生错误时的时间戳，即自Unix纪元（1970-01-01 00:00:00 UTC）以来经过的时间，单位为毫秒，取值为整数。 |
 
 ## hyperSnapManager.setHyperSnapEnabled
 
@@ -155,7 +161,7 @@ try {
 }
 ```
 
-## hyperSnapManager.getLastError<sup>26.1.0+</sup>
+## hyperSnapManager.getLastError
 
 getLastError(errType: HyperSnapErrorType): Promise&lt;HyperSnapErrorInfo&gt;
 
@@ -167,6 +173,8 @@ getLastError(errType: HyperSnapErrorType): Promise&lt;HyperSnapErrorInfo&gt;
 > - 设备重启后，所有错误信息都会被清除。
 > - 若指定场景未发生过错误，则返回的errorInfo中code的值为ERR_OK，occurTimeStamp的值为0。
 > - 只保留应用最后一次快启相关错误，不区分具体是哪一个快照。
+
+**起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
