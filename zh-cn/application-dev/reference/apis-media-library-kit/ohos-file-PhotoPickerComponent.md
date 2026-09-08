@@ -457,7 +457,7 @@ PhotoPickerComponent进入大图后，大图放大缩小时的回调。
  
 type UnselectableItemClickedCallback = (unselectableItemInfo: UnselectableItemInfo) => void
  
-在picker宫格或大图界面，不可选中的图片被点击时的回调。
+在picker宫格或大图界面，当不可选中的图片被点击时产生的回调。
  
 **起始版本：** 26.1.0
  
