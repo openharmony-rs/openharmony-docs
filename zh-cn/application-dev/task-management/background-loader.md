@@ -82,6 +82,22 @@ sequenceDiagram
 2. 取消注册后台加载任务。
 
    <!-- @[backgroundLoader_unregisterTask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) --> 
+   
+   ``` TypeScript
+   const taskInfo: backgroundLoader.TaskInfo = {
+     abilityname: abilityname,
+     taskId: taskId
+   };
+   try {
+     backgroundLoader.unregisterTask(taskInfo);
+     hilog.info(DOMAIN, 'testTag', 'unregisterTask successes');
+     return 'Success';
+   } catch (err) {
+     const errMsg = JSON.stringify(err);
+     hilog.error(DOMAIN, 'testTag', 'unregisterTask failed: %{public}s', errMsg);
+     return `Failed: ${(err as BusinessError).message ?? errMsg}`;
+   }
+   ```
 
 
 3. 查询后台加载任务信息。
