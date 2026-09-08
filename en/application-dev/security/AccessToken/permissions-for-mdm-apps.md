@@ -11,7 +11,7 @@ The following permissions are available only to Mobile Device Management (MDM) a
 
 > **NOTE**
 > 
-> The following permissions do not support automatic code signing. You must [manually sign the code](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233) during the debugging and release phases.
+> The following permissions do not support automatic code signing. You must [manually sign the code](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual) during the debugging and release phases.
 
 ## ohos.permission.ENTERPRISE_GET_DEVICE_INFO
 
