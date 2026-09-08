@@ -90,7 +90,7 @@ ArkTS-Dyn: getCurrentLocalPosition?(): Coordinate2D
  
 ArkTS-Sta: default getCurrentLocalPosition(): Coordinate2D
 
-获取鼠标位置相对于当前组件实时位置的左上角坐标。
+获取鼠标位置相对于当前组件实时位置的左上角坐标。在事件无法提供有效的实时组件坐标时，返回空值，使用前请进行判空处理。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
