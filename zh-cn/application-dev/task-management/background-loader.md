@@ -43,7 +43,6 @@ sequenceDiagram
 
 - 禁止执行可感知操作：在UIAbility创建阶段和加载任务执行阶段，禁止应用执行音频播放、音频录制、定位、操作闪光灯等可感知行为。如果系统检测到应用存在此类操作，系统将禁用该应用的后台加载任务调度，取消后续的任务调度。
 
-
 ## 开发步骤
 
 后台加载任务的开发步骤分为三步：
@@ -104,7 +103,6 @@ sequenceDiagram
    }
    ```
 
-
 2. 取消注册后台加载任务。
 
    <!-- @[backgroundLoader_unregisterTask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
@@ -125,7 +123,6 @@ sequenceDiagram
    }
    ```
 
-
 3. 查询后台加载任务信息。
 
    <!-- @[backgroundLoader_getTaskInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
@@ -142,7 +139,6 @@ sequenceDiagram
      return `Failed: ${(err as BusinessError).message ?? errMsg}`;
    }
    ```
-
 
 ### 完成后台加载任务
 
@@ -181,7 +177,6 @@ sequenceDiagram
 $ hidumper -s 1901 -a 'backgroundLoader com.example.myapplication EntryAbility'
 
 -------------------------------[ability]-------------------------------
-
 
 ----------------------------------ResourceSched----------------------------------
 ```
