@@ -44,6 +44,20 @@ libnet_trafficfilter.so
 
 <!-- @[header_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Redirect_case/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+#include <cstdint>
+#include <cstring>
+#include <string>
+#include <sstream>
+#include <vector>
+#include <algorithm>
+#include <arpa/inet.h>
+
+#include "napi/native_api.h"
+#include "hilog/log.h"
+#include "network/netmanager_ext/net_trafficfilter.h"
+```
+
 ### 实现流量重定向
 
 在开始实现前，请确保已完成以下前置条件：
