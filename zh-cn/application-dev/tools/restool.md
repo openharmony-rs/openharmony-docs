@@ -216,29 +216,29 @@ entry/src/main
 
 1. 全量资源编译，命令如下：
 
-```sh
-restool -i entry/src/main -j entry/src/main/module.json -p com.ohos.demo -o out -r out/ResourceTable.txt -f
-```
+   ```sh
+   restool -i entry/src/main -j entry/src/main/module.json -p com.ohos.demo -o out -r out/ResourceTable.txt -f
+   ```
 
 2. 增量资源编译，具体步骤如下：
 
-步骤一：生成资源中间件，命令如下:
+   步骤一：生成资源中间件，命令如下:
 
-```sh
-restool -x entry/src/main/resource -o out
-```
-步骤二：编译资源中间件，命令如下:
+   ```sh
+   restool -x entry/src/main/resource -o out
+   ```
+   步骤二：编译资源中间件，命令如下:
 
-```sh
-restool -i out1 -i out2 -o out -p com.ohos.demo -r out/ResourceTable.txt -j entry/src/main/module.json -f -z
-```
+   ```sh
+   restool -i out1 -i out2 -o out -p com.ohos.demo -r out/ResourceTable.txt -j entry/src/main/module.json -f -z
+   ```
 
 3. 叠加资源编译，命令如下：
 
-```sh
-# hapResource为解压后的HAP包路径
-restool -i entry/src/main -i hapResource -j entry/src/main/module.json -p com.ohos.demo -o out -r out/ResourceTable.txt -f
-```
+   ```sh
+   # hapResource为解压后的HAP包路径
+   restool -i entry/src/main -i hapResource -j entry/src/main/module.json -p com.ohos.demo -o out -r out/ResourceTable.txt -f
+   ```
 
 ### 固定资源ID
 
