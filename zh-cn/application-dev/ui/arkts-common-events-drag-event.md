@@ -2644,7 +2644,7 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
    ArkTS-Sta示例：
 
    <!-- @[springLoading_onDragSpringLoading_null](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
-  
+   
    ``` TypeScript
    .onDragSpringLoading(null)
    ```
