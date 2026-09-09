@@ -8,7 +8,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 <!-- md-trans-meta sourceCommit=0ecc390317140dcc7c4726f5897f445275bf3259 translatedAt=2026-08-01T00:27:40.538Z pushedAt=2026-08-01T04:55:46.667Z -->
 
-This document provides common issues and solutions encountered during the development of immersive light sense. For a complete introduction and development guide to immersive light sense, see [Immersive Light Sense](arkts-immersive-light-sense.md).
+This document provides common issues and solutions encountered during the development of immersive light sense. For a complete introduction and development guide to immersive light sense, see [Immersive Light Sense](arkts-immersive-light-sense-overview.md).
 
 ## No Material Effect Is Visible After Setting Immersive System Material for a Component
 
