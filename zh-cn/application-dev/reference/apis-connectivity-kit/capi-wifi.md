@@ -15,4 +15,4 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [oh_wifi.h](capi-oh-wifi-h.md) | 定义查询WIFI开关状态的接口。 |
+| [oh_wifi.h](capi-oh-wifi-h.md) | 定义查询Wi-Fi开关状态的接口。 |
