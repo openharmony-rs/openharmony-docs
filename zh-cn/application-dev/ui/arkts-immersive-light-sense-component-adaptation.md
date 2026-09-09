@@ -43,16 +43,16 @@ Navigation标题栏支持通过应用级开启、组件级开启方式开启沉�
 
 ### 索引条（AlphabetIndexer）
 
-索引条支持通过应用级开启、组件级开启方式开启沉浸光感。
+索引条提示弹窗支持通过应用级开启、组件级开启方式开启沉浸光感。
 
-应用级开启：应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)模式下，索引条默认开启沉浸光感，沉浸式系统材质样式默认取值为THICK。
+应用级开启：应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)模式下，索引条提示弹窗默认开启沉浸光感，沉浸式系统材质样式默认取值为THICK。
  
-组件级开启：索引条参数[popupBackground](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md#popupbackground)和[popupBackgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md#popupbackgroundblurstyle12)均未主动设置（或参数value传入undefined）时，提示弹窗默认开启沉浸光感，默认材质样式为THICK；也可通过[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)属性主动设置沉浸光感效果。
+组件级开启：索引条参数[popupBackground](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md#popupbackground)和[popupBackgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md#popupbackgroundblurstyle12)均未主动设置（或参数value传入undefined）时，提示弹窗默认开启沉浸光感，默认材质样式为THICK。
  
 - 高算力、中算力设备默认显示为沉浸光感THICK样式，低算力设备不显示沉浸光感效果，显示为白色背景。
 - popupBackground、popupBackgroundBlurStyle属性和沉浸光感能力互斥。主动设置popupBackground或popupBackgroundBlurStyle后无沉浸光感效果。
 
-组件开启沉浸光感的效果请参见[示例3（设置提示弹窗背景模糊材质）](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md#示例3设置提示弹窗背景模糊材质)。
+组件开启沉浸光感的效果请参见[示例4（设置提示弹窗的沉浸光感效果）](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md#示例4设置提示弹窗的沉浸光感效果)。
 
 ## 弹窗类组件
 
