@@ -1,10 +1,11 @@
 # @ohos.app.ability.AppServiceExtensionAbility (ExtensionAbility for Application Background Services)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @yewei0794-->
+<!--Owner: @zhang_hao_zheng-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=05c3f4051518466831c5042e19b758ea590cb7c8 translatedAt=2026-09-09T03:08:15.559Z pushedAt=2026-09-09T03:46:32.648Z -->
 
 The AppServiceExtensionAbility module provides extended capabilities for background services, including lifecycle callbacks for creating, destroying, connecting, and disconnecting background services.
 
@@ -16,8 +17,9 @@ The AppServiceExtensionAbility module provides extended capabilities for backgro
 
 ## Constraints
 
-- Currently, only 2-in-1 devices are supported.
+- Currently, only PC/2-in-1 devices are supported.
 - To integrate an AppServiceExtensionAbility, applications must request the ACL permission (ohos.permission.SUPPORT_APP_SERVICE_EXTENSION). Currently, the ACL permission is available only to common enterprise applications. For details about how to apply for the permission, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
+- To ensure system security and stability and prevent AppServiceExtensionAbility from abusing system resources, the system manages its capabilities and does not support referencing the [@ohos.window (Window)](../apis-arkui/arkts-apis-window.md) module.
 
 ## Lifecycle
 
@@ -59,6 +61,8 @@ The AppServiceExtensionAbility module provides extended capabilities for backgro
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device Behavior Differences**: This attribute can be called normally only on PC/2-in-1 devices and does not take effect on other devices.
+
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | context | [AppServiceExtensionContext](js-apis-inner-application-appServiceExtensionContext.md)  | No| No| Context environment for an AppServiceExtensionAbility. This context inherits from [ExtensionContext](js-apis-inner-application-extensionContext.md).|
@@ -68,13 +72,15 @@ The AppServiceExtensionAbility module provides extended capabilities for backgro
 
 onCreate(want: Want): void
 
-Called when an AppServiceExtensionAbility instance is created. Applications can perform initialization operations, such as registering common event listeners, in this callback.
+When an AppServiceExtensionAbility instance is created, the system triggers this callback. Applications can perform business logic initialization operations in this API, such as registering common event listeners.
 
 > **NOTE**
 >
 > If an AppServiceExtensionAbility instance has already been created, the **onCreate()** callback is not invoked again when the instance is started or connected.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device Behavior Differences**: This API executes the callback normally only on PC/2-in-1 devices and does not execute the callback on other devices.
 
 **Parameters**
 
@@ -101,9 +107,11 @@ Called when an AppServiceExtensionAbility instance is created. Applications can 
 
 onDestroy(): void
 
-Called when an AppServiceExtensionAbility instance is destroyed. Applications can perform resource cleanup operations, such as unregistering listeners, in this callback.
+When an AppServiceExtensionAbility instance is destroyed, the system triggers this callback. Applications can perform operations such as resource cleanup in this API, for example, unregistering listeners.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device Behavior Differences**: This API executes the callback normally only on PC/2-in-1 devices and does not execute the callback on other devices.
 
 **Example**
 
@@ -127,6 +135,8 @@ onRequest(want: Want, startId: number): void
 Called each time an AppServiceExtensionAbility instance is started by calling [startAppServiceExtensionAbility()](js-apis-inner-application-uiAbilityContext.md#startappserviceextensionability20).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device Behavior Differences**: This API executes the callback normally only on PC/2-in-1 devices and does not execute the callback on other devices.
 
 **Parameters**
 
@@ -161,11 +171,13 @@ Applications need to return a RemoteObject in this callback for communication be
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device Behavior Differences**: This API executes the callback normally only on PC/2-in-1 devices and does not execute the callback on other devices.
+
 **Parameters**
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want |  [Want](js-apis-app-ability-want.md)| Yes| Want information about the target AppServiceExtensionAbility instance, including the ability name and bundle name.|
+| want | [Want](js-apis-app-ability-want.md) | Yes | Want type information passed when the caller connects to the current AppServiceExtensionAbility instance, including the Ability name, Bundle name, and so on. |
 
 **Return value**
 
@@ -206,6 +218,8 @@ onDisconnect(want: Want): void
 Called when all connections to an AppServiceExtensionAbility instance are interrupted.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device Behavior Differences**: This API executes the callback normally only on PC/2-in-1 devices and does not execute the callback on other devices.
 
 **Parameters**
 
