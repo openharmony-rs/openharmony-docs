@@ -95,17 +95,17 @@ Driver Development Kit提供的C-API仅支持在DriverExtension进程中使用�
 | AbilityKit             | 引入[@ohos.application.Want (Want)](../../reference/apis-ability-kit/js-apis-application-want.md)用于生命周期管理。|
 
 ## 驱动应用规格说明
-1.驱动应用定义
+1. 驱动应用定义
 - 驱动应用是基于Driver Development Kit开发的、面向非标外设的用户态驱动。
 - 驱动应用基于DriverExtensionAbility，开发者需要重写该Ability的生命周期回调接口。
 
-2.驱动应用安装卸载规格
+2. 驱动应用安装卸载规格
 - 安装策略
   - 当用户安装某一驱动应用时，系统会将应用安装到当前已有的所有用户环境下。
   - 当创建新用户时，系统会将已安装的驱动应用在该用户环境下进行安装。
 - 卸载策略：当用户在任意用户环境下发起卸载某一驱动应用，系统会将所有用户环境下的该驱动应用卸载。
 
-3.基于DriverExtensionAbility生命周期管理说明
+3. 基于DriverExtensionAbility生命周期管理说明
 - ExtensionAbility是基于场景服务的扩展能力的统称，简称为扩展能力（例如用户态扩展驱动、卡片、输入法等）以便满足不同的使用场景。
 - 各类Extension的生命周期由各个SA管理，通过connectAbility启动Extension，并驱动定义的业务接口；业务结束，SA调用disconnectAbility接口断开Extension连接，AMS会根据该Extension是否有SA连接来决定是否销毁该Extension及进程。在用户态扩展驱动开发场景下，管理DriverExtensionAbility生命周期的系统SA为外设扩展服务SA。
 - DriverExtensionAbility的生命周期取决于外设的接入时间，具体来说表现为：
@@ -113,7 +113,7 @@ Driver Development Kit提供的C-API仅支持在DriverExtension进程中使用�
   - 当DriverExtensionAbility配置的“VID + PID”设备列表中的多个外设依次接入时，其生命周期区间从第一个外设的接入持续到最后一个外设的拔出。
   - 接入的外设同时出现在多个DriverExtensionAbility配置的“VID + PID”列表中时，该外设只会影响最先安装的驱动Ability的生命周期，详见[多个驱动Ability配置了同一型号外设的情况下，插入该外设只会拉起一个驱动Ability](./externaldevice-faqs.md#多个驱动ability配置了同一型号外设的情况下插入该外设只会拉起一个驱动ability)。
 
-4.在DriverExtensionAbility中API访问安全管控说明
+4. 在DriverExtensionAbility中API访问安全管控说明
 - 系统支持基于ExtensionAbility构建场景化扩展Ability，DriverExtensionAbility为支持开发用户态扩展驱动的一类Ability。
 - 在DriverExtensionAbility中仅支持访问DDK（Driver Development Kit）API，实现对非标外设进行访问控制和数据通信。
 - 基于驱动开发安全约束及驱动开发业务场景，在DriverExtensionAbility中不支持访问其它ArkTS API，以防止恶意行为和数据泄露。
