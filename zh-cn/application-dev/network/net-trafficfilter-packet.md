@@ -395,6 +395,37 @@ libnet_trafficfilter.so
    ```
 
    <!-- @[destroy_packet_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   static napi_value DestroyPacketControllerNapi(napi_env env, napi_callback_info info)
+   {
+       size_t argc = 1;
+       napi_value args[1] = {nullptr};
+   
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+   
+       uint32_t id;
+       if (argc >= 1) {
+           napi_get_value_uint32(env, args[0], &id);
+       }
+   
+       int ret = -1;
+       OH_LOG_Print(LOG_APP, LOG_INFO, GLOBAL_NETSTACK, TAG,
+                    "DestroyPacketControllerNapi id: %{public}d", id);
+   
+       OH_TrafficFilter_PacketController* controller = g_controllerMap[id];
+       if (controller != nullptr) {
+           OH_LOG_Print(LOG_APP, LOG_INFO, GLOBAL_NETSTACK, TAG,
+                        "DestroyPacketControllerNapi id111: %{public}d", id);
+           ret = OH_TrafficFilter_DestroyPacketController(controller);
+           g_controllerMap[id] = nullptr;
+       }
+   
+       napi_value result;
+       napi_create_int32(env, ret, &result);
+       return result;
+   }
+   ```
 
 5. 初始化并导出通过N-API封装的`napi_value`类型对象。
 
