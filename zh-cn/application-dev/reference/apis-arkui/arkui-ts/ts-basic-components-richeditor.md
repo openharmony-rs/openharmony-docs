@@ -1023,7 +1023,7 @@ onWillAttachIME(callback: Callback\<IMEClient> \| undefined)
 | --------------------- | ---------------------------------------- | ---- | -----|-------------- |
 | offset                | number                                   | 否 | 否    | 删除内容的偏移位置。          |
 | direction             | [RichEditorDeleteDirection](#richeditordeletedirection) | 否 | 否    | 删除操作的方向。            |
-| length                | number                                   | 否 | 否    | 删除内容长度。             |
+| length                | number                                   | 否 | 否    | 删除内容长度，删除范围为[offset, offset + length)，结束位置对应的内容不包含在内。             |
 | richEditorDeleteSpans | Array<[RichEditorTextSpanResult](#richeditortextspanresult) \| [RichEditorImageSpanResult](#richeditorimagespanresult)> | 否 | 否    | 删除的文本或图片Span的信息。 |
 
 
@@ -1053,7 +1053,7 @@ onWillAttachIME(callback: Callback\<IMEClient> \| undefined)
 | spanPosition                  | [RichEditorSpanPosition](#richeditorspanposition) | 否 | 否    | Span位置。                <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | value                         | string                                    | 否 | 否    | 文本Span内容或Symbol的id。              <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | textStyle                     | [RichEditorTextStyleResult](#richeditortextstyleresult)  | 否 | 否   | 文本Span样式信息。            <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| offsetInSpan                  | [number, number]                          | 否 | 否    | 文本Span内容里有效内容的起始和结束位置。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| offsetInSpan                  | [number, number]                          | 否 | 否    | 文本Span内容里有效内容的起始和结束位置，取值范围为[起始位置, 结束位置)，结束位置对应的内容不包含在内。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | valueResource<sup>11+</sup>   | [Resource](ts-types.md#resource)          | 否 | 是    | SymbolSpan资源内容。<br>默认值：undefined。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。        |
 | symbolSpanStyle<sup>11+</sup> | [RichEditorSymbolSpanStyle](#richeditorsymbolspanstyle11)  | 否 | 是    | 组件SymbolSpan样式信息。      <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | paragraphStyle<sup>12+</sup>  | [RichEditorParagraphStyle](#richeditorparagraphstyle11)   | 否 | 是   | 段落样式。<br>省略时，使用系统默认段落样式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
@@ -1072,7 +1072,7 @@ Span位置信息。
 | 名称        | 类型           | 只读 | 可选   | 说明                          |
 | --------- | ---------------- |----| ---- | --------------------------- |
 | spanIndex | number           | 否 | 否    | Span索引值。                    |
-| spanRange | [number, number] | 否 | 否    | Span内容在RichEditor内的起始和结束位置。 |
+| spanRange | [number, number] | 否 | 否    | Span内容在RichEditor内的起始和结束位置，取值范围为[起始位置, 结束位置)，结束位置对应的Span不包含在内。 |
 
 ## RichEditorSpanType
 
@@ -1195,7 +1195,7 @@ RichEditorSymbolSpanStyle和RichEditorSymbolSpanStyleResult中fontWeight的转�
 | valuePixelMap    | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)                    | 否 | 是   | 图片内容。|
 | valueResourceStr | [ResourceStr](ts-types.md#resourcestr)                            | 否 | 是   | 图片资源id。|
 | imageStyle       | [RichEditorImageSpanStyleResult](#richeditorimagespanstyleresult) | 否 | 否 | 图片样式。|
-| offsetInSpan     | [number, number] | 否 | 否 | Span里图片的起始和结束位置。|
+| offsetInSpan     | [number, number] | 否 | 否 | Span里图片的起始和结束位置，取值范围为[起始位置, 结束位置)，结束位置对应的内容不包含在内。|
 
 ## RichEditorImageSpanStyleResult
 
@@ -1396,7 +1396,7 @@ selectionStart和selectionEnd均为-1时表示全选，均为0时可以清空选
 | 参数名            | 类型   | 必填   | 说明    |
 | -------------- | ------ | ---- | ------- |
 | selectionStart | number | 是    | 选中开始位置。 |
-| selectionEnd   | number | 是    | 选中结束位置。 |
+| selectionEnd   | number | 是    | 选中结束位置，选中范围为[selectionStart, selectionEnd)，结束位置对应的内容不包含在内。 |
 | options<sup>12+</sup>   | [SelectionOptions](ts-universal-attributes-text-style.md#selectionoptions12对象说明) | 否    | 选择项配置，用于控制选中操作时的菜单弹出策略。<br>当需要自定义菜单弹出行为（如强制显示或隐藏菜单）时传入此参数；<br>省略时默认使用MenuPolicy.DEFAULT，遵循系统默认菜单弹出策略。<br>各MenuPolicy取值的适用场景请参考SelectionOptions对象说明。 |
 
 ### isEditing<sup>12+</sup>
@@ -1914,7 +1914,7 @@ onContentChanged(listener: StyledStringChangedListener): void
 
 | 名称        | 类型                                        | 只读 | 可选   | 说明      |
 | --------- | ---------------------------------------- | ---- | ---|---- |
-| selection | [number, number]                        | 否 | 否    | 选中范围。   |
+| selection | [number, number]                        | 否 | 否    | 选中范围，取值范围为[起始位置, 结束位置)，结束位置对应的内容不包含在内。   |
 | spans     | Array<[RichEditorTextSpanResult](#richeditortextspanresult) \| [RichEditorImageSpanResult](#richeditorimagespanresult)> | 否 | 否    | span信息。 |
 
 ## RichEditorRange
@@ -1928,7 +1928,7 @@ onContentChanged(listener: StyledStringChangedListener): void
 | 名称  | 类型      | 只读 | 可选 | 说明                                                         |
 | ----- | ------ | ---- | ---------|--------------------------------------------------- |
 | start | number | 否 | 是   | 文本的起始位置，省略或者设置负值时表示从0开始。  |
-| end   | number | 否 | 是   | 文本的结束位置，省略或者超出文本范围时表示无穷大。 |
+| end   | number | 否 | 是   | 文本的结束位置，与start共同表示选中文本的范围[start, end)，结束位置对应的内容不包含在内，省略或者超出文本范围时表示无穷大。 |
 
 
 ## RichEditorSpanStyleOptions
@@ -2041,7 +2041,7 @@ SymbolSpan样式选项。
 | 名称    | 类型                                        | 只读 | 可选   | 说明      |
 | ----- | ---------------------------------------- | ---- | ---|---- |
 | style | [RichEditorParagraphStyle](#richeditorparagraphstyle11) |否| 否    | 段落样式。   |
-| range | \[number, number\]                      |否 | 否    | 段落起始和结束位置。 |
+| range | \[number, number\]                      |否 | 否    | 段落起始和结束位置，取值范围为[起始位置, 结束位置)，结束位置对应的内容不包含在内。 |
 
 ## RichEditorTextSpanOptions
 
@@ -2302,7 +2302,7 @@ type MenuOnAppearCallback = (start: number, end: number) => void
 | 参数名  | 类型                                             | 必填 | 说明                                                     |
 | -------- | ------------------------------------------------ | ---- | -------------------------------------------------------- |
 | start | number | 是   | 选中内容的起始位置。 |
-| end    | number         | 是   | 选中内容的终止位置。         |
+| end    | number         | 是   | 选中内容的终止位置，选中范围为[start, end)，结束位置对应的内容不包含在内。         |
 
 ## MenuCallback<sup>15+</sup>
 
@@ -2319,7 +2319,7 @@ type MenuCallback = (start: number, end: number) => void
 | 参数名  | 类型                                             | 必填 | 说明                                                     |
 | -------- | ------------------------------------------------ | ---- | -------------------------------------------------------- |
 | start | number | 是   | 选中内容的起始位置。 |
-| end    | number         | 是   | 选中内容的终止位置。         |
+| end    | number         | 是   | 选中内容的终止位置，选中范围为[start, end)，结束位置对应的内容不包含在内。         |
 
 ## PasteEventCallback<sup>12+</sup>
 
