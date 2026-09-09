@@ -75,6 +75,53 @@ libnet_trafficfilter.so
    使用[OH_TrafficFilter_AddRedirectRule](../reference/apis-network-kit/capi-net-trafficfilter-h.md#oh_trafficfilter_addredirectrule)接口向重定向器添加规则。`OH_TrafficFilter_RedirectRule`中`protocol`固定为TCP，`hookPoint`（Netfilter钩子点）仅支持`PREROUTING`和`OUTPUT`，`proxy_ip`与`proxy_port`指定代理服务器地址。
 
    <!-- @[add_redirect_rule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Redirect_case/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   // 添加重定向规则：解析JSON字符串并调用系统API将规则加入重定向器
+   static napi_value AddRedirectRuleNapi(napi_env env, napi_callback_info info)
+   {
+       // 获取JS调用参数
+       size_t argc = 1;
+       napi_value args[1] = {nullptr};
+   
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+   
+       // 校验ruleJson参数是否传入
+       if (argc <= 0) {
+           char msg[] = "ERROR: ruleJson parameter required";
+           napi_value result;
+           napi_create_string_utf8(env, msg, strlen(msg), &result);
+           return result;
+       }
+   
+       // 读取JSON字符串长度并分配缓冲区
+       size_t jsonLen = 0;
+       napi_get_value_string_utf8(env, args[0], nullptr, 0, &jsonLen);
+       char* jsonStr = new char[jsonLen + 1];
+       napi_get_value_string_utf8(env, args[0], jsonStr, jsonLen + 1, &jsonLen);
+       std::string json(jsonStr);
+       delete[] jsonStr;
+   
+       // 将JSON字符串解析为OH_TrafficFilter_RedirectRule结构体
+       OH_TrafficFilter_RedirectRule rule;
+       int32_t parseRet = BuildRedirectRuleFromJson(json, rule);
+       if (parseRet != OH_TRAFFICFILTER_OK) {
+           char msg[BUFFER_SIZE];
+           napi_value result;
+           napi_create_string_utf8(env, msg, strlen(msg), &result);
+           return result;
+       }
+   
+       // 调用系统API向重定向器添加规则
+       int32_t ret = OH_TrafficFilter_AddRedirectRule(g_redirector, &rule);
+   
+       // 构造结果字符串并返回给JS
+       char msg[BUFFER_SIZE * 2];
+       napi_value result;
+       napi_create_string_utf8(env, msg, strlen(msg), &result);
+       return result;
+   }
+   ```
 
 3. 清除规则并销毁重定向器。
 
