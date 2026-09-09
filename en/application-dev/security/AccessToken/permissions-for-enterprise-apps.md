@@ -21,7 +21,7 @@ For details about how to request the permissions for enterprise applications, se
 
 > **NOTE**
 >
-> The following permissions do not support automatic code signing. You must [manually sign the code](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-manual) during the debugging and release phases.
+> The following permissions do not support automatic code signing. You must [manually sign the code](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual) during the debugging and release phases.
 
 ## ohos.permission.SET_FILE_GUARD_POLICY
 

@@ -3117,7 +3117,7 @@ error: install parse syscap error.
 
 Failed to obtain the [SysCap](./../reference/syscap.md#purpose-of-syscap) information from the installation package during the installation.
 
-**Possible Causes**d
+**Possible Causes**
 
 The HAP/HSP file is damaged.
 
