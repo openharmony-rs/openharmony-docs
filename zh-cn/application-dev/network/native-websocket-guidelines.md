@@ -246,7 +246,7 @@ libnet_websocket.so
 
 5. 在index.ets文件中对上述封装好的接口进行调用。
 
-  <!-- @[WebSocket_C_full_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[WebSocket_C_full_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C/entry/src/main/ets/pages/Index.ets) -->
   
   ``` TypeScript
   import testWebsocket from 'libentry.so';

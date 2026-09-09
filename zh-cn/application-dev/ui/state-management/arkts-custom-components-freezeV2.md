@@ -113,13 +113,13 @@ struct Page2 {
 
 2. 在页面1中点击`go to next page`，跳转到页面2，然后延迟1s更新状态变量bookTest。在更新bookTest的时候，已经跳转到页面2，页面1处于inactive状态，[@Local](./arkts-new-local.md)装饰的状态变量bookTest将不响应更新，其@Monitor不会调用，关联的节点不会刷新。
 
-Trace如下：
+   Trace如下：
 
-![Example Image](./figures/freeze1.png)
+   ![Example Image](./figures/freeze1.png)
 
 3. 点击`Back`，页面2被销毁，页面1的状态由inactive变为active。状态变量bookTest的更新被观察到，@Monitor中注册的方法onMessageChange被调用，对应的Text显示内容改变。
 
-![freezeV2Page](./figures/freezeV2page.gif)
+   ![freezeV2Page](./figures/freezeV2page.gif)
 
 ### TabContent
 

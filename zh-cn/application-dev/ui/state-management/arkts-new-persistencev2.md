@@ -163,25 +163,25 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 
    如下展示开发者持久化相同的`Array<number>`类型的部分示例代码片段：
 
-  ```typescript
-  @Entry
-  @ComponentV2
-  struct Page1 {
-    // 持久化相同容器类型的数据，建议开发者使用不同的key来区分持久化数据
-    @Local arr1: Array<number> = PersistenceV2.globalConnect({
-      type: Array<number>,
-      key: 'arr1',
-      defaultCreator: () => UIUtils.makeObserved(new Array<number>()),
-    })!;
+     ```typescript
+     @Entry
+     @ComponentV2
+     struct Page1 {
+       // 持久化相同容器类型的数据，建议开发者使用不同的key来区分持久化数据
+       @Local arr1: Array<number> = PersistenceV2.globalConnect({
+         type: Array<number>,
+         key: 'arr1',
+         defaultCreator: () => UIUtils.makeObserved(new Array<number>()),
+       })!;
 
-    @Local arr2: Array<number> = PersistenceV2.globalConnect({
-      type: Array<number>,
-      key: 'arr2',
-      defaultCreator: () => UIUtils.makeObserved(new Array<number>()),
-    })!;
-    // ...
-  }
-  ```
+       @Local arr2: Array<number> = PersistenceV2.globalConnect({
+         type: Array<number>,
+         key: 'arr2',
+         defaultCreator: () => UIUtils.makeObserved(new Array<number>()),
+       })!;
+       // ...
+     }
+     ```
 
 3. 不支持非built-in类型，如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)、NativePointer、[ArrayList](../../reference/apis-arkts/js-apis-arraylist.md)等Native类型。
 
@@ -193,9 +193,9 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 
    - 从API version 23开始，支持持久化Class类型、容器类型（Array、Set、Map）和Date类型。支持built-in的构造对象类型（如String、Number）及基本类型（如string、number、boolean）作为class属性的持久化（String、Number是不可变的数据对象，没法直接作为[顶层数据类型](#globalconnect顶层持久化数据类型及非顶层数据类型)进行持久化）。对于不支持的类型，会抛出运行时报错，从API version 23开始，将返回错误码[140103](../../reference/apis-arkui/errorcode-stateManagement.md#140103-appstoragev2和persistencev2使用不支持的数据类型)。
 
-   如下为新增globalConnect支持`Array<ClassA>`类型的持久化示例：
+     如下为新增globalConnect支持`Array<ClassA>`类型的持久化示例：
 
-    <!-- @[top_level_array_classa](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelArrayClassA.ets) -->
+     <!-- @[top_level_array_classa](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelArrayClassA.ets) -->
    
     ``` TypeScript
     import { PersistenceV2, UIUtils } from '@kit.ArkUI';
@@ -253,11 +253,11 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
     }
     ```
 
-   ![persistencev2-sync-1](./figures/persistencev2-sync-1.gif)
+     ![persistencev2-sync-1](./figures/persistencev2-sync-1.gif)
 
-   如下为globalConnect支持Date类型的持久化示例：
+     如下为globalConnect支持Date类型的持久化示例：
 
-    <!-- @[top_level_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelDate.ets) --> 
+     <!-- @[top_level_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelDate.ets) --> 
     
     ``` TypeScript
     import { PersistenceV2, UIUtils } from '@kit.ArkUI';
@@ -289,11 +289,11 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
     }
     ```
 
-    ![persistencev2-sync-2](./figures/persistencev2-sync-2.gif)
+     ![persistencev2-sync-2](./figures/persistencev2-sync-2.gif)
 
-  如下为globalConnect支持Number类型作为class子属性的持久化示例：
+     如下为globalConnect支持Number类型作为class子属性的持久化示例：
 
-  <!-- @[non_top_level_number_of_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/NonTopLevelNumberOfClass.ets) --> 
+     <!-- @[non_top_level_number_of_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/NonTopLevelNumberOfClass.ets) --> 
   
   ``` TypeScript
   import { PersistenceV2 } from '@kit.ArkUI';
@@ -332,15 +332,15 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
   }
   ```
 
-  ![persistencev2-sync-3](./figures/persistencev2-sync-3.png)
+     ![persistencev2-sync-3](./figures/persistencev2-sync-3.png)
 
 6. 在API version 23以前，不支持循环引用对象的持久化。
 
    - 在API version 23开始，提供globalConnect接口支持循环引用的对象持久化。
 
-   如下为globalConnect支持循环引用的对象的持久化示例：
+     如下为globalConnect支持循环引用的对象的持久化示例：
 
-   <!-- @[circular_reference_of_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/CircularReferenceOfObject.ets) --> 
+     <!-- @[circular_reference_of_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/CircularReferenceOfObject.ets) --> 
    
    ``` TypeScript
    import { PersistenceV2 } from '@kit.ArkUI';
@@ -404,7 +404,7 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
    }
    ```
 
-   ![persistencev2-sync-4](./figures/persistencev2-sync-4.png)
+     ![persistencev2-sync-4](./figures/persistencev2-sync-4.png)
 
 7. 只有[\@Trace](./arkts-new-observedV2-and-trace.md)的数据改变会触发自动持久化，如V1状态变量、[\@Observed](./arkts-observed-and-objectlink.md)对象、普通数据的改变不会触发持久化。
 
@@ -1476,13 +1476,13 @@ struct Index {
 
 > **说明：** 
 >
->1、oldValue为notifyOnError的入参回调的参数，用于在反序列化失败时，获取旧的序列化数据。
+>1. oldValue为notifyOnError的入参回调的参数，用于在反序列化失败时，获取旧的序列化数据。
 >
->2、下表中会触发notifyOnError的类型，指的是将原始类型改变后，会触发notifyOnError回调的类型。
+>2. 下表中会触发notifyOnError的类型，指的是将原始类型改变后，会触发notifyOnError回调的类型。
 >
->3、下表中的类型，均是指class中属性的类型。
+>3. 下表中的类型，均是指class中属性的类型。
 >
->4、在反序列化时，如果属性类型为Object，则会递归遍历并反序列化其内部属性。
+>4. 在反序列化时，如果属性类型为Object，则会递归遍历并反序列化其内部属性。
 
 **使用PersistenceV2.connect在数据结构变更后触发notifyOnError情况表**
 

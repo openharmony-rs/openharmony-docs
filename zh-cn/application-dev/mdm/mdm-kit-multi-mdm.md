@@ -16,9 +16,7 @@ Admin组件可以通过不同的方式激活，不同的激活方式，成为的
 
 1. 通过[adminManager.enableDeviceAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md#adminmanagerenabledeviceadmin23)接口，激活后成为[DA角色](./mdm-kit-term.md#device-admin-da普通设备管理员)。当MDM应用仅需对设备进行管控，无需管理其他DA应用时，可选择被激活为DA。
 
-2. 通过[adminManager.startAdminProvision](../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)接口，激活后成为[BDA角色](./mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)。当MDM应用需要对员工使用的个人设备在特殊场景进行有限管控（如禁用拍照、录音等）时，可选择被激活为BDA。
-
-<!--Del-->
+2. 通过[adminManager.startAdminProvision](../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)接口，激活后成为[BDA角色](./mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)。当MDM应用需要对员工使用的个人设备在特殊场景进行有限管控（如禁用拍照、录音等）时，可选择被激活为BDA。<!--Del-->
 3. 通过[adminManager.enableAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin)接口，第三个参数[AdminType](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#admintype)传入ADMIN_TYPE_SUPER，激活后成为[SDA角色](./mdm-kit-term.md#super-device-admin-sda超级设备管理员)。当MDM应用需要管理多个其他DA应用时，可选择被激活为SDA。
 
 4. 通过[adminManager.enableAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin)接口，第三个参数[AdminType](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#admintype)传入ADMIN_TYPE_NORMAL，激活后成为[DA角色](./mdm-kit-term.md#device-admin-da普通设备管理员)。<!--DelEnd-->
