@@ -56,7 +56,7 @@ Navigation标题栏支持通过应用级开启、组件级开启方式开启沉�
 
 ## 弹窗类组件
 
-弹窗类组件包括Toast、Popup、Tips、Menu和Dialog（包含AlertDialog、CustomDialog、bindSheet及各类PickerDialog），是浮层元素，在内容之上建立视觉层次。沉浸光感为弹窗类组件赋予了核心价值：沉浸式系统材质让弹窗背景呈现轻盈通透的质感，底层内容透过材质层自然渗透，配合折射、高光、阴影等多层效果，使弹窗在内容之上建立清晰的视觉层次；沉浸式空间动效为弹窗和菜单的弹出过程增添形变、流光等动态表现，使弹出过程灵动自然。弹窗类组件通常使用较厚的材质样式（THICK或ULTRA_THICK），以获得更强的背景模糊效果，确保弹窗内容与背景内容之间有清晰的视觉分离。
+弹窗类组件包括Toast、Popup、Tips、Menu和Dialog（包含AlertDialog、CustomDialog、bindSheet及各类PickerDialog），是浮层元素，在内容之上建立视觉层次。沉浸光感为弹窗类组件赋予了核心价值：沉浸式系统材质让弹窗背景呈现轻盈通透的质感，底层内容透过材质层自然渗透，配合折射、高光、阴影等多层效果，使弹窗在内容之上建立清晰的视觉层次；沉浸式空间动效为弹窗和菜单的弹出过程增添形变、流光等动态表现，使弹出过程灵动自然。弹窗类组件通常使用较厚的材质样式（THICK或ULTRA_THICK），以获得更强的背景模糊效果，确保弹窗内容与背景内容之间有清晰的视觉分离。沉浸光感开启后，主动设置的背景色、背景模糊等自定义样式属性不生效。
 
 ### 即时反馈（Toast）
 
@@ -65,8 +65,6 @@ Toast支持通过应用级开启、组件级开启方式开启沉浸光感。
 应用级开启：应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)模式下，Toast默认开启沉浸光感，沉浸式系统材质样式默认取值为THICK。
 
 组件级开启：Toast支持通过[ShowToastOptions](../reference/apis-arkui/js-apis-promptAction.md#showtoastoptions)中的systemMaterial字段设置沉浸光感效果。如果未主动设置背景色、背景模糊等自定义样式属性且未设置systemMaterial字段，弹出框沉浸式系统材质样式ImmersiveStyle默认取值为ImmersiveStyle.THICK。
-
-沉浸光感开启后，主动设置的背景色、背景模糊等自定义样式属性不生效。具体请参考[Dialog或Toast组件默认没有材质效果](arkts-immersive-light-sense-faq.md#dialog或toast组件默认没有材质效果)。
 
 组件开启沉浸光感的效果请参见[showToast](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showtoast)。
 
@@ -98,7 +96,6 @@ Popup和Tips支持通过应用级开启、组件级开启方式开启沉浸光�
 
 组件级开启：弹出框支持通过弹出框options参数中的systemMaterial字段设置沉浸光感效果，如[CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明)、[AlertDialogParam](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明)、[ActionSheetOptions](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明)、[SheetOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)等。如果未主动设置背景色、背景模糊等自定义样式属性且未设置systemMaterial字段，弹出框沉浸式系统材质样式ImmersiveStyle默认取值为ImmersiveStyle.ULTRA_THICK。
 
-- 沉浸光感开启后，主动设置的背景色、背景模糊等自定义样式属性不生效。具体请参考[Dialog或Toast组件默认没有材质效果](arkts-immersive-light-sense-faq.md#dialog或toast组件默认没有材质效果)。
 - 大面积的弹出框开启沉浸光感效果，会带来更多的动效绘制开销，不建议开启。详见[控制弹窗尺寸](arkts-immersive-light-sense-constraints.md#控制弹窗尺寸)中的尺寸建议。
 - [CalendarPicker](../reference/apis-arkui/arkui-ts/ts-basic-components-calendarpicker.md)组件拉起的弹出框目前暂不支持开启沉浸光感效果，通过通用属性设置的沉浸光感效果会体现在CalendarPicker组件本身。
 - [CalendarPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md)、[DatePickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md)、[TextPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-textpicker-dialog.md)、[TimePickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-timepicker-dialog.md)组件沉浸光感效果同CustomDialog相同。
