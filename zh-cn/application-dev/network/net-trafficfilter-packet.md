@@ -344,6 +344,29 @@ libnet_trafficfilter.so
    - 使用[OH_TrafficFilter_DestroyPacketController](../reference/apis-network-kit/capi-net-trafficfilter-h.md#oh_trafficfilter_destroypacketcontroller)销毁控制器并释放资源。
 
    <!-- @[unregister_packet_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   static napi_value UnregisterPacketCallbackNapi(napi_env env, napi_callback_info info)
+   {
+       size_t argc = 1;
+       napi_value args[1] = {nullptr};
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+   
+       int ret = -1;
+       if (argc >= 1) {
+           uint32_t id;
+           napi_get_value_uint32(env, args[0], &id);
+           OH_TrafficFilter_PacketController* controller = g_controllerMap[id];
+           if (controller != nullptr) {
+               ret = OH_TrafficFilter_UnregisterPacketCallback(controller);
+           }
+       }
+   
+       napi_value result;
+       napi_create_int32(env, ret, &result);
+       return result;
+   }
+   ```
 
    <!-- @[clear_packet_rule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp) -->
 
