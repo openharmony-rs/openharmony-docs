@@ -5,13 +5,13 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=ad4754b39ea804eeff70d3e1abea09f3987cefbe translatedAt=2026-09-03T04:10:53.697Z -->
+<!-- md-trans-meta sourceCommit=ad4754b39ea804eeff70d3e1abea09f3987cefbe translatedAt=2026-09-03T04:10:53.697Z pushedAt=2026-09-09T07:45:58.369Z -->
 
-**ImageSpan** is a child component of [Text](ts-basic-components-text.md) and [ContainerSpan](ts-basic-components-containerspan.md), used to display inline images in text. It supports setting the image alignment, scale type, loading placeholder image, and color filter, and is suitable for scenarios where images need to be embedded in text paragraphs to implement image-text layout.
+As a child of the [Text](ts-basic-components-text.md) and [ContainerSpan](ts-basic-components-containerspan.md) components, the **ImageSpan** is used to display inline images in text. It supports setting the image alignment mode, scale type, loading placeholder image, and color filter, and is suitable for scenarios where images need to be embedded in text paragraphs to implement image-text layout.
 
 >  **NOTE**
 >
-> - This component is supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 >
 > - The APIs of this module can be used only in the stage model.
 
@@ -33,7 +33,7 @@ ImageSpan(value: ResourceStr | PixelMap)
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | [ResourceStr](ts-types.md#resourcestr) \|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp; | Yes | Image data source, which supports local and network images.<br>When a network image is used, the ohos.permission.INTERNET permission is required. For details about how to request the permission, see [Declaring Permissions](../../../security/AccessToken/declare-permissions.md).<br>When a relative path is used to reference an image resource, for example, `ImageSpan("common/test.jpg")`, cross-package or cross-module invocation of the ImageSpan component is not supported. You are advised to use `$r` to manage image resources that need to be used globally.<br>\- The supported image formats include png, jpg, bmp, svg, gif, webp, and heif.<br>\- `Base64` strings are supported. The format is `data:image/[png\|jpeg\|bmp\|webp\|heif];base64,[base64 data]`, where `[base64 data]` is the `Base64` string data.<br>\- Strings with the file://data/storage path prefix are supported, which are used to read image resources in the file folder under the installation directory of the application. Ensure that the files under the application installation directory have read permission. |
+| value | [ResourceStr](ts-types.md#resourcestr) \|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp; | Yes | Image data source, which supports local and network images.<br>When using a network image, you need to apply for the **ohos.permission.INTERNET** permission. For details about how to apply for the permission, see [Declaring Permissions](../../../security/AccessToken/declare-permissions.md).<br>When a relative path is used to reference an image resource, for example, `ImageSpan("common/test.jpg")`, cross-package or cross-module calling of the **ImageSpan** component is not supported. You are advised to use `$r` to manage image resources that need to be used globally.<br>\- The supported formats include PNG, JPG, BMP, SVG, GIF, WebP, and HEIF.<br>\- `Base64` strings are supported. The format is `data:image/[png\|jpeg\|bmp\|webp\|heif];base64,[base64 data]`, where `[base64 data]` is the `Base64` string data.<br>\- Strings with the **file://data/storage** path prefix are supported, which are used to read image resources in the **file** folder under the installation directory of the application. Ensure that the files under the application installation directory have read permission. |
 
 
 ## Attributes
@@ -44,7 +44,7 @@ The attributes inherit from [BaseSpan](ts-basic-components-span.md#basespan). Am
 
 verticalAlign(value: ImageSpanAlignment)
 
-Sets the alignment of the image based on the line height. It is suitable for adjusting the vertical alignment between the image and text in image-text layout scenarios. If this API is not used, the default alignment is **ImageSpanAlignment.BOTTOM**.
+Sets the alignment mode of the image relative to the line height. It is suitable for adjusting the vertical alignment between the image and text in image-text layout scenarios. If this API is not used, the default alignment mode is **ImageSpanAlignment.BOTTOM**.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -54,13 +54,13 @@ Sets the alignment of the image based on the line height. It is suitable for adj
 
 | Name| Type                                     | Mandatory| Description                                                        |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10) | Yes   | Alignment mode of the image based on the line height. |
+| value  | [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10) | Yes   | Alignment mode of the image relative to the line height. |
 
 ### objectFit
 
 objectFit(value: ImageFit)
 
-Sets the scale type of the image. It is suitable for controlling how the image is displayed in the container. If this API is not used, the default scale type is **ImageFit.Cover**.
+Sets the image scale type. It is suitable for controlling how the image is displayed in the container. If this API is not used, the default scale type is **ImageFit.Cover**.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -70,13 +70,13 @@ Sets the scale type of the image. It is suitable for controlling how the image i
 
 | Name| Type                                     | Mandatory| Description                                       |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------- |
-| value  | [ImageFit](ts-appendix-enums.md#imagefit) | Yes   | Scale type of the image. |
+| value  | [ImageFit](ts-appendix-enums.md#imagefit) | Yes   | Image scale type. |
 
 ### alt<sup>12+</sup>
 
 alt(value:&nbsp;PixelMap)
 
-Sets the placeholder image displayed during image loading. If this API is not used, the default value is **null**, and no placeholder image is displayed.
+Sets the placeholder image displayed during image loading. If this API is not used, the default value is **null**, indicating no placeholder image is displayed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -86,7 +86,7 @@ Sets the placeholder image displayed during image loading. If this API is not us
 
 | Name| Type                                                    | Mandatory| Description                                                        |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes   | Placeholder image displayed during image loading, which supports the [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) type. |
+| value  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes   | Placeholder image displayed during image loading. The [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) type is supported. |
 
 ### colorFilter<sup>14+</sup>
 
@@ -102,13 +102,13 @@ Sets the color filter for the image.
 
 | Name| Type                                   | Mandatory| Description                                                        |
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| filter  | [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](ts-basic-components-image.md#drawingcolorfilter12) | Yes   | 1. Sets a color filter effect for the image. The input parameter is a 4x5 RGBA conversion matrix.<br>The first row of the matrix is used to calculate R' (the new red component), the second row to calculate G' (the new green component), the third row to calculate B' (the new blue component), and the fourth row to calculate A' (the new alpha component). The four rows represent different RGBA components.<br>When the diagonal values of the matrix are 1 and the other values are 0, the original colors of the image are retained.<br> **Calculation rule:**<br>If the input filter matrix is:<br>![image-matrix-1](figures/image_matrix_1.png)<br>and the pixel is [R, G, B, A] with color values in the range [0, 255],<br>then the filtered color is [R', G', B', A']<br>![image-matrix-2](figures/image_matrix_2.png)<br>2. Supports the ColorFilter type of @ohos.graphics.drawing as the input parameter.<br>**NOTE**<br>The DrawingColorFilter type in this API can be used in atomic services. For SVG image sources, the filter takes effect only on the stroke attribute.|
+| filter  | [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](ts-basic-components-image.md#drawingcolorfilter12) | Yes   | 1. Color filter of the image. The input parameter is a 4 x 5 RGBA transformation matrix.<br>The first row of the matrix is used to calculate R' (the new red component), the second row to calculate G' (the new green component), the third row to calculate B' (the new blue component), and the fourth row to calculate A' (the new alpha component). The four rows represent different RGBA components.<br>When the diagonal values of the matrix are 1 and the other values are 0, the original colors of the image are retained.<br> **Calculation rule:**<br>If the input filter matrix is as follows:<br>![image-matrix-1](figures/image_matrix_1.png)<br>And the pixel point is [R, G, B, A] with color values in the [0, 255] range,<br>then the color after filtering is [R', G', B', A']<br>![image-matrix-2](figures/image_matrix_2.png)<br>2. The **ColorFilter** type of **@ohos.graphics.drawing** can be used as the input parameter.<br>**NOTE**<br>The **DrawingColorFilter** type in this API can be used in atomic services. The SVG image source takes effect only for the **stroke** attribute.|
 
 ### supportSvg2<sup>22+</sup>
 
 supportSvg2(enable: Optional\<boolean>)
 
-Enables or disables the [Enhanced SVG Tag Parsing](ts-image-svg2-capabilities.md). When enabled, new SVG parsing capabilities are supported, which is suitable for scenarios that require new SVG features. When disabled, the original SVG parsing capability is retained, which is suitable for scenarios that require compatibility with the display of SVG images in earlier versions. If this API is not used, the original SVG parsing capability is retained by default.
+Sets whether to enable [enhanced SVG tag parsing](ts-image-svg2-capabilities.md). When enabled, the new SVG parsing capability is supported, which is suitable for scenarios that require new SVG features. When disabled, the original SVG parsing capability is retained, which is suitable for scenarios that require compatibility with the display of SVG images in earlier versions. If this API is not used, the original SVG parsing capability is retained by default.
 
 After the **ImageSpan** component is created, the value of this attribute cannot be dynamically changed.
 
@@ -120,13 +120,13 @@ After the **ImageSpan** component is created, the value of this attribute cannot
 
 | Name| Type                                                    | Mandatory| Description                                                        |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| enable  | Optional\<boolean> | Yes   | Whether to enable the [Enhanced SVG Tag Parsing](ts-image-svg2-capabilities.md).<br>true: supports the new SVG parsing capability; false: retains the original SVG parsing capability. |
+| enable  | Optional\<boolean> | Yes   | Whether to enable [enhanced SVG tag parsing](ts-image-svg2-capabilities.md).<br>**true**: support the new SVG parsing capability; **false**: retain the original SVG parsing capability. |
 
 ### resizable
 
 resizable(value: ResizableOptions)
 
-Sets the resizing options when the image is stretched. Stretching takes effect on the drag thumbnail and placeholder image.
+Sets the resizable image options when the image is stretched. Stretching takes effect on the drag thumbnail and placeholder image.
 
 When `top + bottom` is greater than the height of the original image or `left + right` is greater than the width of the original image, the [ResizableOptions](ts-basic-components-image.md#resizableoptions11) attribute does not take effect.
 
@@ -134,7 +134,7 @@ When the parameter type of the component is an animated image, [AnimatedDrawable
 
 **Since**: 26.1.0
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -212,11 +212,11 @@ Describes the object returned after the callback is triggered when an image is s
 | height                       | number | No   | No   | Height of the image.<br>Unit: [px](ts-pixel-units.md#basic-pixel-units)                                    |
 | componentWidth               | number | No   | No   | Width of the component.<br>Unit: [px](ts-pixel-units.md#basic-pixel-units)                                    |
 | componentHeight              | number | No   | No   | Height of the component.<br>Unit: [px](ts-pixel-units.md#basic-pixel-units)                                    |
-| loadingStatus                | number | No   | No   | Status value of image loading success.<br>**NOTE**<br>When the returned status value is 0, it indicates image data load success. When the returned status value is 1, it indicates image decoding success. |
-| contentWidth   | number | No   | No   | Width of the image actually drawn.<br>Unit: [px](ts-pixel-units.md#basic-pixel-units)<br>**NOTE**<br>Valid only when loadingStatus returns 1. |
-| contentHeight  | number | No   | No   | Height of the image actually drawn.<br>Unit: [px](ts-pixel-units.md#basic-pixel-units)<br>**NOTE**<br>Valid only when loadingStatus returns 1. |
-| contentOffsetX | number | No   | No   | X-axis offset of the actually drawn content relative to the component itself.<br>Unit: [px](ts-pixel-units.md#basic-pixel-units)<br>**NOTE**<br>Valid only when loadingStatus returns 1. |
-| contentOffsetY | number | No   | No   | Y-axis offset of the actually drawn content relative to the component itself.<br>Unit: [px](ts-pixel-units.md#basic-pixel-units)<br>**NOTE**<br>Valid only when loadingStatus returns 1. |
+| loadingStatus                | number | No   | No   | Loading status of the image.<br>**NOTE**<br>If the return value is **0**, the image is successfully loaded. If the return value is **1**, the image is successfully decoded. |
+| contentWidth   | number | No   | No   | Actual rendered width of the image.<br>Unit: [px](ts-pixel-units.md#basic-pixel-units)<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**. |
+| contentHeight  | number | No   | No   | Actual rendered height of the image.<br>Unit: [px](ts-pixel-units.md#basic-pixel-units)<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**. |
+| contentOffsetX | number | No   | No   | Offset of the rendered content relative to the component on the x-axis.<br>Unit: [px](ts-pixel-units.md#basic-pixel-units)<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**. |
+| contentOffsetY | number | No   | No   | Offset of the rendered content relative to the component on the y-axis.<br>Unit: [px](ts-pixel-units.md#basic-pixel-units)<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**. |
 
 
 
@@ -239,7 +239,7 @@ struct SpanExample {
       }.width('100%').textAlign(TextAlign.Center)
 
       Text() {
-        // Replace $r('app.media.app_icon') with the actual image resource file.
+        // Replace $r('app.media.app_icon') with the image resource file you use.
         ImageSpan($r('app.media.app_icon'))
           .width('200px')
           .height('200px')
@@ -287,7 +287,7 @@ struct Index {
     Row() {
       Column() {
         Text() {
-          // Replace $r('app.media.sky') with the actual image resource file.
+          // Replace $r('app.media.sky') with the image resource file you use.
           ImageSpan($r('app.media.sky'))
             .width('60vp')
             .height('60vp')
@@ -311,7 +311,7 @@ This example demonstrates how to add load success and load error events to the *
 @Entry
 @Component
 struct Index {
-  // Replace $r('app.media.app_icon') with the actual image resource file.
+  // Replace $r('app.media.app_icon') with the image resource file you use.
   @State src: ResourceStr = $r('app.media.app_icon');
 
   build() {
@@ -349,7 +349,7 @@ struct SpanExample {
       Column({ space: 10 }) {
         // Create a ColorFilter object to set a color filter for the image.
         Text() {
-          // Replace $r('app.media.sky') with the actual image resource file.
+          // Replace $r('app.media.sky') with the image resource file you use.
           ImageSpan($r('app.media.sky'))
             .width('60vp')
             .height('60vp')
@@ -358,7 +358,7 @@ struct SpanExample {
 
         // Set a color filter for the image through drawing.ColorFilter.
         Text() {
-          // Replace $r('app.media.sky') with the actual image resource file.
+          // Replace $r('app.media.sky') with the image resource file you use.
           ImageSpan($r('app.media.sky'))
             .width('60vp')
             .height('60vp')
@@ -378,9 +378,9 @@ struct SpanExample {
 
 ### Example 5: Setting a Placeholder Image
 
-Since API version 12, this example uses the [alt](#alt12) attribute to demonstrate the placeholder image effect when ImageSpan loads a network image.
+This example demonstrates how to use the [alt](#alt12) attribute to display a placeholder image in the **ImageSpan** component while loading a network image, available since API version 12.
 
-When using a network image, you need to request the ohos.permission.INTERNET permission. For details about how to request the permission, see [Declaring Permissions](../../../security/AccessToken/declare-permissions.md).
+When using a network image, you need to apply for the **ohos.permission.INTERNET** permission. For details about how to apply for the permission, see [Declaring Permissions](../../../security/AccessToken/declare-permissions.md).
 
 ```ts
 // xxx.ets
@@ -415,7 +415,7 @@ struct SpanExample {
           'scaleMode': 1, // Scale mode.
           'size': { height: 100, width: 100 }
         };
-        // Create a PixelMap through ImageSource.
+        // Create a PixelMap object through ImageSource.
         imageSource.createPixelMap(option).then((pixelMap: PixelMap) => {
           console.info('image createPixelMap success');
           this.imageAlt = pixelMap;
@@ -429,13 +429,13 @@ struct SpanExample {
 
   build() {
     Column() {
-      Button('Obtain network image')
+      Button('Obtain Network Image')
         .onClick(() => {
           this.httpRequest();
         })
 
       Text() {
-        // Enter an image URL.
+        // Enter an image URL to load the image.
         ImageSpan('https://www.example.com/xxx.png')
           .alt(this.imageAlt)
           .width(300)
@@ -450,7 +450,7 @@ struct SpanExample {
 ![imagespan](figures/image_span_alt.gif)
 ### Example 6: Displaying an SVG Image Using the supportSvg2 Property
 
-Since API version 22, this example sets the [supportSvg2](#supportsvg222) attribute to enable the [improved SVG usability](ts-image-svg2-capabilities.md#improved-svg-usability) of the [Enhanced SVG Tag Parsing](ts-image-svg2-capabilities.md).
+This example shows how to make the [SVG usability improvement capability](ts-image-svg2-capabilities.md#improved-svg-usability) of the [SVG tag parsing enhancement feature](ts-image-svg2-capabilities.md) take effect by configuring the [supportSvg2](#supportsvg222) attribute, available since API version 22.
 
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
@@ -461,7 +461,7 @@ struct Index {
     Row() {
       Column() {
         Text('Styled string with supportSvg2: false')
-        // Replace $r('app.media.ice') with the actual image resource file.
+        // Replace $r('app.media.ice') with the image resource file you use.
         Text() {
           ImageSpan($r('app.media.ice'))
             .width(50)
@@ -470,7 +470,7 @@ struct Index {
               drawing.Tool.makeColorFromResourceColor(Color.Blue), drawing.BlendMode.SRC_IN))
         }
         Text('Styled string with supportSvg2: true')
-        // Replace $r('app.media.ice') with the actual image resource file.
+        // Replace $r('app.media.ice') with the image resource file you use.
         Text() {
           ImageSpan($r('app.media.ice'))
             .width(50)
@@ -489,11 +489,11 @@ struct Index {
 
 ![styledString_17](figures/styledString_17.png)
 
-### Example 7 (Set Image Stretching)
+### Example 7: Setting Image Stretching
 
-This example uses the slice option of the [resizable](#resizable) attribute to stretch the ImageSpan image in different directions.
+This example shows how to stretch the **ImageSpan** image in different directions using the slice option of the [resizable](#resizable) attribute.
 
-Since API version 26.1.0, the resizable attribute is added.
+Since API version 26.1.0, the **resizable** attribute is added.
 
 ```ts
 @Entry
@@ -543,5 +543,3 @@ struct ImageSpanResizablePage {
 ```
 
 ![resizable](figures/imagespan-resizable.png)
-
-<!--no_check-->
