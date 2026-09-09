@@ -203,7 +203,7 @@ export default class EntryAbility extends UIAbility {
   }
 
   onWindowStageDestroy(): void {
-    // 主窗销毁，释放与UI相关的资源
+    // 主窗口销毁，释放与UI相关资源
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
   }
 
