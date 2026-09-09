@@ -64,7 +64,7 @@
   - [@ohos.nearlink.manager (Basic NearLink Management Capability) (System API)](js-apis-nearlink-manager-sys.md)
   - [@ohos.nearlink.scan (NearLink Scanning Capability) (System API)](js-apis-nearlink-scan-sys.md)
   - [@ohos.nearlink.ssap (NearLink SSAP Connection Capability) (System API)](js-apis-nearlink-ssap-sys.md)
-  - [@ohos.nearlink.constant (NearLink Common Constant Definitions) (System API)](js-apis-nearlink-constant-sys.md)
+  - [@ohos.nearlink.constant (NearLink Common Constants) (System API)](js-apis-nearlink-constant-sys.md)
   - [@ohos.nearlink.remoteDevice (NearLink Remote Device Connection Capability) (System API)](js-apis-nearlink-remote-device-sys.md)
   <!--DelEnd-->
   - tag<!--connectivity-nfc-tag-arkts-->
