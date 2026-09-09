@@ -590,8 +590,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_UseAutoEffect(uint32_t type, bool e
 
 **使用场景**
 
-在视频播放场景使用。AISR是AutoEffect中的一种，叫AI超分。视频只支持SDR，不支持HDR。应用进行SDR视频播放，希望对播放的画面进行清晰度提升时，可使用AUTOEFFECT的AISR超分能力，
-对视频播放的XComponent组件使能此效果。
+在视频播放场景使用。AISR称作AI超分，是AutoEffect中的一种。视频只支持SDR，不支持HDR。应用进行SDR视频播放，希望对播放的画面进行清晰度提升时，可使用AUTOEFFECT的AISR超分能力，对视频播放的XComponent组件使能此效果。
 
 **起始版本：** 26.1.0
 
