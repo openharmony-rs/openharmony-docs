@@ -6,7 +6,7 @@
 <!--Designer: @ccllee1-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=3eda1cb235ac8f0dfd9fd410f670260f7b392e09 translatedAt=2026-09-09T03:11:33.561Z pushedAt=2026-09-09T03:57:44.102Z -->
+<!-- md-trans-meta sourceCommit=3eda1cb235ac8f0dfd9fd410f670260f7b392e09 translatedAt=2026-09-09T03:11:33.561Z pushedAt=2026-09-09T06:31:59.435Z -->
 
 UIAbilityContext provides the context environment for a [UIAbility](./js-apis-app-ability-uiAbility.md). It inherits from [Context](./js-apis-inner-application-context.md). For details about the relationships and differences between various types of contexts, see [Context](../../application-models/application-context-stage.md).
 
@@ -3815,7 +3815,7 @@ Starts the UIAbility of the current application in a child process. The UIAbilit
 | Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md)  | Yes | Necessary information for starting the ability. Only [explicit start](../../application-models/explicit-implicit-want-mappings.md#matching-rules-of-explicit-want) is supported, and [implicit start](../../application-models/explicit-implicit-want-mappings.md#matching-rules-of-implicit-want) is not supported. |
-| specifiedFlag | string  | Yes | Custom UIAbility identifier defined by the developer. This identifier must be different from the identifiers of the UIAbilities that have been started. Otherwise, an error is returned. <br>**NOTE**<br>When this API is used to start a UIAbility whose launch type is [specified](../../application-models/uiability-launch-type.md#specified-launch-type), the [onAcceptWant](./js-apis-app-ability-abilityStage.md#onacceptwant) callback will not be triggered. |
+| specifiedFlag | string  | Yes | Custom UIAbility identifier defined by the developer. This identifier must be different from the identifiers of the UIAbilities that have been started. Otherwise, an error is returned. <br>**NOTE**<br>When this API is used to start a UIAbility whose launch type is [specified](../../application-models/uiability-launch-type.md), the [onAcceptWant](./js-apis-app-ability-abilityStage.md#onacceptwant) callback will not be triggered. |
 **Return value**
 
 | Type | Description |
