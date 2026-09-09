@@ -50,7 +50,7 @@
     ![划词应用工程](figures/selection-application-project.png)
 
 2. 在[SelectionModel.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/models/SelectionModel.ets)文件中，开发者可自定义划词模块管理类，用于统一管理划词内容、窗口等信息。并且实现一些get、set接口，便于信息的类间传递。
-    <!-- @[SelectionModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/models/SelectionModel.ets) -->
+    <!-- @[SelectionModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/models/SelectionModel.ets) --> 
     
     ``` TypeScript
     import { selectionManager, SelectionExtensionContext } from '@kit.BasicServicesKit';
@@ -160,7 +160,7 @@
 
 
 4. 在划词扩展被拉起时，可以提前创建划词窗口（但不调用[show](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#show)接口），以缩短用户在第一次划词时的响应延迟。同时，可以在[onConnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md#onconnect)中监听划词事件，执行后续的弹窗操作。通过监听[selectionCompleted](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectionmanageronselectioncompleted)获取[SelectionInfo](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectioninfo)其中包含了划词操作的起始和结束坐标等信息。通过调用[getSelectionContent](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#getselectioncontent)接口获取划词内容。
-    <!-- @[SelectionExtAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/selectionextability/SelectionExtAbility.ets) -->
+    <!-- @[SelectionExtAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/selectionextability/SelectionExtAbility.ets) --> 
 
     ``` TypeScript
     import { selectionManager, PanelInfo, PanelType, SelectionExtensionAbility, BusinessError } from '@kit.BasicServicesKit';
@@ -267,7 +267,7 @@
     ```
 
 5. 在[MenuPanel.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MenuPanel.ets)文件中，开发者可根据业务内容自主实现菜单面板的显示效果，例如提供翻译、查询、扩写等按钮。并且可以通过绑定点击事件，弹出不同的主面板，以展示不同的内容。本示例仅提供了一个简单的点击按钮，用于展示如何弹出主面板。
-    <!-- @[MenuPanel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MenuPanel.ets) -->
+    <!-- @[MenuPanel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MenuPanel.ets) --> 
 
     ``` TypeScript
     import { SelectionModel } from '../models/SelectionModel';
@@ -364,7 +364,7 @@
     ```
 
 6. 在[MainPanel.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MainPanel.ets)文件中，开发者可根据业务场景，自行实现主面板的显示效果。本示例仅提供了一个简单的展示划词内容的主面板，具体的业务侧功能需要开发者自行实现。
-    <!-- @[MainPanel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MainPanel.ets) -->
+    <!-- @[MainPanel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MainPanel.ets) --> 
 
     ``` TypeScript
     import { SelectionModel } from '../models/SelectionModel';
@@ -420,7 +420,7 @@
 8.  配置[module.json5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/module.json5)文件。
 
     在`extensionAbilities`字段中配置划词扩展类文件路径。
-    <!-- @[extensionAbilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/module.json5) -->
+    <!-- @[extensionAbilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/module.json5) --> 
     
     ``` JSON5
     "extensionAbilities": [
