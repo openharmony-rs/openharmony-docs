@@ -79,76 +79,76 @@ HiDebug可获取应用占用的显存资源数据。在图形密集型应用中�
 
 hiview进程每10秒获取一次当前CPU的运行数据并缓存，作为CPU使用率计算的基准，主要包括以下数据：
 
-1.系统CPU使用数据：
+1. 系统CPU使用数据：
 
-/proc/stat节点包含了自系统启动以来CPU 运行数据的统计信息，可在终端中使用以下命令查看该节点信息：
+   /proc/stat节点包含了自系统启动以来CPU 运行数据的统计信息，可在终端中使用以下命令查看该节点信息：
 
-``` text
-cat  /proc/stat
-cpu  648079 547 703220 16994706 23006 101071 0 0 0 0
-...
-```
+   ``` text
+   cat  /proc/stat
+   cpu  648079 547 703220 16994706 23006 101071 0 0 0 0
+   ...
+   ```
 
-CPU 指标字段含义：
+   CPU 指标字段含义：
 
-CPU的统计信息从左到右分别代表以下含义（其中cpu为所有cpu运行数据的总和，单位：jiffies）：
+   CPU的统计信息从左到右分别代表以下含义（其中cpu为所有cpu运行数据的总和，单位：jiffies）：
 
-- user: 非低优先级进程（nice <= 0）所占用的用户态时间。
+   - user: 非低优先级进程（nice <= 0）所占用的用户态时间。
 
-- nice: 低优先级进程（nice > 0）所占用的用户态时间。
+   - nice: 低优先级进程（nice > 0）所占用的用户态时间。
 
-- system: 内核态时间。
+   - system: 内核态时间。
 
-- idle: 空闲时间（不包含 IO 等待时间）。
+   - idle: 空闲时间（不包含 IO 等待时间）。
 
-- iowait: IO 等待时间。
+   - iowait: IO 等待时间。
 
-- irq: 硬中断时间。
+   - irq: 硬中断时间。
 
-- softirq: 软中断时间。
+   - softirq: 软中断时间。
 
-- steal: 虚拟化环境中，运行在非该虚拟机内进程上的时间。
+   - steal: 虚拟化环境中，运行在非该虚拟机内进程上的时间。
 
-- guest: 操作系统运行虚拟机中非低优先级进程（nice <= 0）的时间（已包含在user字段中）。
+   - guest: 操作系统运行虚拟机中非低优先级进程（nice <= 0）的时间（已包含在user字段中）。
 
-- guest_nice: 操作系统运行虚拟机中低优先级进程（nice > 0）的时间（已包含在nice字段中）。
+   - guest_nice: 操作系统运行虚拟机中低优先级进程（nice > 0）的时间（已包含在nice字段中）。
 
-2.进程CPU使用数据/线程CPU使用数据：
+2. 进程CPU使用数据/线程CPU使用数据：
 
-``` text
-// 内核统计的进程cpu运行数据
-struct ucollection_process_cpu_item {
-    int pid;
-    unsigned int thread_total;
-    unsigned long long min_flt;
-    unsigned long long maj_flt;
-    unsigned long long cpu_usage_utime; // 用户态CPU运行时长
-    unsigned long long cpu_usage_stime;// 内核态CPU运行时长
-    unsigned long long cpu_load_time;
-};
-// 内核统计的线程cpu运行数据
-struct ucollection_thread_cpu_item {
-    int tid;
-    char name[16]; // 16 ：max length of thread name
-    unsigned long long cpu_usage_utime;// 用户态CPU运行时长
-    unsigned long long cpu_usage_stime;// 内核态CPU运行时长
-    unsigned long long cpu_load_time;
-};
-```
+   ``` text
+   // 内核统计的进程cpu运行数据
+   struct ucollection_process_cpu_item {
+       int pid;
+       unsigned int thread_total;
+       unsigned long long min_flt;
+       unsigned long long maj_flt;
+       unsigned long long cpu_usage_utime; // 用户态CPU运行时长
+       unsigned long long cpu_usage_stime;// 内核态CPU运行时长
+       unsigned long long cpu_load_time;
+   };
+   // 内核统计的线程cpu运行数据
+   struct ucollection_thread_cpu_item {
+       int tid;
+       char name[16]; // 16 ：max length of thread name
+       unsigned long long cpu_usage_utime;// 用户态CPU运行时长
+       unsigned long long cpu_usage_stime;// 内核态CPU运行时长
+       unsigned long long cpu_load_time;
+   };
+   ```
 
-调用接口，获取当前数据，计算与基准数据的增量，使用以下公式获取CPU使用率：
+   调用接口，获取当前数据，计算与基准数据的增量，使用以下公式获取CPU使用率：
 
-系统CPU使用率：
+   系统CPU使用率：
 
-``` text
-(systemUsage增量 + niceUsage增量 + userUsage增量) /(userTime增量 + niceTime增量 + systemTime增量 + idleTime增量 + ioWaitTime增量 + irqTime增量 + softIrqTime增量)
-```
+   ``` text
+   (systemUsage增量 + niceUsage增量 + userUsage增量) /(userTime增量 + niceTime增量 + systemTime增量 + idleTime增量 + ioWaitTime增量 + irqTime增量 + softIrqTime增量)
+   ```
 
-进程CPU使用率/线程CPU使用率 ：
+   进程CPU使用率/线程CPU使用率：
 
-``` text
-(cpu_usage_utime增量 + cpu_usage_stime增量) /(ms级时间戳增量)
-```
+   ``` text
+   (cpu_usage_utime增量 + cpu_usage_stime增量) /(ms级时间戳增量)
+   ```
 
 ### 接口说明（ArkTS）
 
