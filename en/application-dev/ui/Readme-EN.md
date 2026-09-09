@@ -193,7 +193,8 @@
         - [Binding a Full-Modal Page (bindContentCover)](arkts-contentcover-page.md)
      - [Using Toasts (Toast)](arkts-create-toast.md)
      - [Managing Overlays (OverlayManager)](arkts-create-overlaymanager.md)<!--RP9--><!--RP9End-->
-  - [Immersive Light Sense](arkts-immersive-light-sense.md)
+  - Immersive Light Sense<!--arkts-immersive-light-sense-->
+    - [Immersive Light Sense Overview](arkts-immersive-light-sense-overview.md)
   - Geometric Shapes<!--arkts-draw-graphics-->
     - [Geometric Shape Drawing Overview](arkts-shape-overview.md)
     - [Drawing Geometric Shapes (Shape)](arkts-geometric-shape-drawing.md)
