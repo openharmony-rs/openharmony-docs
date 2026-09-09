@@ -90,6 +90,24 @@ libnet_trafficfilter.so
 4. 初始化并导出通过N-API封装的`napi_value`类型对象，通过外部函数接口将函数提供给JavaScript调用。
 
    <!-- @[init_exports](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Redirect_case/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   EXTERN_C_START
+   static napi_value Init(napi_env env, napi_value exports)
+   {
+       napi_property_descriptor desc[] = {
+           { "createRedirector", nullptr, CreateRedirectorNapi, nullptr, nullptr, nullptr, napi_default, nullptr },
+           { "destroyRedirector", nullptr, DestroyRedirectorNapi, nullptr, nullptr, nullptr, napi_default, nullptr },
+           { "addRedirectRule", nullptr, AddRedirectRuleNapi, nullptr, nullptr, nullptr, napi_default, nullptr },
+           { "clearRedirectRule", nullptr, ClearRedirectRuleNapi, nullptr, nullptr, nullptr, napi_default, nullptr },
+           { "getRuleTemplate", nullptr, GetRuleTemplateNapi, nullptr, nullptr, nullptr, napi_default, nullptr },
+           { "queryProcess", nullptr, QueryProcessNapi, nullptr, nullptr, nullptr, napi_default, nullptr }
+       };
+       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+       return exports;
+   }
+   EXTERN_C_END
+   ```
 
 5. 将上一步中初始化成功的对象通过`RegisterEntryModule`函数，使用`napi_module_register`函数将模块注册到Node.js中。
 
