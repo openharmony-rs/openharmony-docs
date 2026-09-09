@@ -23,15 +23,19 @@ import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 
 ## backgroundProcessManager.clearBackgroundApps
 
-function clearBackgroundApps(clearType: ClearType): Promise\<void>;
+clearBackgroundApps(clearType: ClearType): Promise\<void>;
 
 主动清理后台资源。使用Promise异步回调。
+
+**起始版本：** 26.1.0
 
 **需要权限：** ohos.permission.CLEAR_BACKGROUND_APPS
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Resourceschedule.BackgroundProcessManager
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -71,11 +75,15 @@ backgroundProcessManager.clearBackgroundApps(backgroundProcessManager.ClearType.
 
 ## ClearType
 
-清理类型。
+资源清理类型。
+
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Resourceschedule.BackgroundProcessManager
+
+**系统接口：** 此接口为系统接口。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
