@@ -55,7 +55,7 @@
     ``` TypeScript
     import { selectionManager, SelectionExtensionContext } from '@kit.BasicServicesKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-    
+
     export class SelectionModel {
       private selectionInfo: selectionManager.SelectionInfo | undefined;
       private selectionContent: string | undefined;
