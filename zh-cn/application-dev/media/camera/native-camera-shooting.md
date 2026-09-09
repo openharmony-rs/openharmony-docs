@@ -32,7 +32,6 @@
    #include <cstdio>
    #include <fcntl.h>
    #include <map>
-   #include <string>
    #include <vector>
    #include <native_buffer/native_buffer.h>
    #include "iostream"
@@ -92,7 +91,7 @@
    ``` C++
    Camera_ErrorCode NDKCamera::CreatePhotoOutputWithoutSurfaceId()
    {
-       OH_LOG_ERROR(LOG_APP, "CreatePhotoOutputWithoutSurfaceId enter.");
+       OH_LOG_INFO(LOG_APP, "CreatePhotoOutputWithoutSurfaceId enter.");
        profile_ = cameraOutputCapability_->photoProfiles[0];
        Camera_Profile* profile = cameraOutputCapability_->photoProfiles[0];
        profile->size.width = NUM_1920;
