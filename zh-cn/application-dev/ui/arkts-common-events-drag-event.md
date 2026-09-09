@@ -1411,7 +1411,7 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
    实现半模态弹框的UI界面。
 
    <!-- @[springLoading_builder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
-  
+   
    ``` TypeScript
    @Builder
    SheetBuilder() {
