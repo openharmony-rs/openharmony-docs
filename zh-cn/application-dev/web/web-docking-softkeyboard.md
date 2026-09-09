@@ -195,21 +195,21 @@ ArkWeb组件将跟随ArkUI重新布局，效果如图1和图2所示。
 
 ![arkui-keyboardavoid](figures/arkui-keyboardavoid.png)
 
-2.在UIContext的键盘避让模式为Offset模式时，应用可通过[WebKeyboardAvoidMode()](../reference/apis-arkweb/arkts-basic-components-web-e.md#webkeyboardavoidmode12)设置ArkWeb组件的键盘避让模式。Web组件的[WebKeyboardAvoidMode()](../reference/apis-arkweb/arkts-basic-components-web-e.md#webkeyboardavoidmode12)接口优先级高于W3C侧virtualKeyboard.overlayContent。
+2. 在UIContext的键盘避让模式为Offset模式时，应用可通过[WebKeyboardAvoidMode()](../reference/apis-arkweb/arkts-basic-components-web-e.md#webkeyboardavoidmode12)设置ArkWeb组件的键盘避让模式。Web组件的[WebKeyboardAvoidMode()](../reference/apis-arkweb/arkts-basic-components-web-e.md#webkeyboardavoidmode12)接口优先级高于W3C侧virtualKeyboard.overlayContent。
 
-- RESIZE_VISUAL：仅调整可视视口的大小，而不调整布局视口的大小。
-- RESIZE_CONTENT：调整可视视口和布局视口的大小。
-- OVERLAYS_CONTENT：不调整任何视口的大小，获焦input元素没有滚动到可视区域的行为。
+   - RESIZE_VISUAL：仅调整可视视口的大小，而不调整布局视口的大小。
+   - RESIZE_CONTENT：调整可视视口和布局视口的大小。
+   - OVERLAYS_CONTENT：不调整任何视口的大小，获焦input元素没有滚动到可视区域的行为。
 
->**说明：** 
->
->可视视口指用户正在看到的网站的区域，该区域的宽度等于移动设备的浏览器窗口的宽度。
->
->布局视口指网页本身的宽度。
+   > **说明：** 
+   >
+   > 可视视口指用户正在看到的网站的区域，该区域的宽度等于移动设备的浏览器窗口的宽度。
+   >
+   > 布局视口指网页本身的宽度。
 
-在应用代码中设置ArkWeb的软键盘避让模式。
+   在应用代码中设置ArkWeb的软键盘避让模式。
 
-<!-- @[soft_keyboard_setmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/SetSKBMode_one.ets) -->
+   <!-- @[soft_keyboard_setmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/SetSKBMode_one.ets) -->
 
 ``` TypeScript
 // Index.ets
@@ -233,32 +233,32 @@ struct KeyboardAvoidExample {
   }
 }
 ```
-ArkWeb组件根据避让模式进行避让，效果见图3。
+   ArkWeb组件根据避让模式进行避让，效果见图3。
 
-**图3**  Web组件网页自身软键盘避让模式
+   **图3**  Web组件网页自身软键盘避让模式
 
-![web-keyboardavoid](figures/web-keyboardavoid.png)
+   ![web-keyboardavoid](figures/web-keyboardavoid.png)
 
-3.在软键盘弹出时，为使Web组件不发生避让行为，可通过调用[expandSafeArea()](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#expandsafearea)设置Web组件扩展安全区域。更多详细示例可参考[网页中安全区域计算和避让适配](../web/web-safe-area-insets.md)。
+3. 在软键盘弹出时，为使Web组件不发生避让行为，可通过调用[expandSafeArea()](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#expandsafearea)设置Web组件扩展安全区域。更多详细示例可参考[网页中安全区域计算和避让适配](../web/web-safe-area-insets.md)。
 
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
+     ```ts
+     // xxx.ets
+     import { webview } from '@kit.ArkWeb';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
+     @Entry
+     @Component
+     struct WebComponent {
+       controller: webview.WebviewController = new webview.WebviewController();
 
-    build() {
-      Column() {
-        Web({ src: 'www.example.com', controller: this.controller })
-          .width('100%').height('100%')
-          .expandSafeArea([SafeAreaType.KEYBOARD, SafeAreaType.SYSTEM])
-      }
-    }
-  }
-  ```
+       build() {
+         Column() {
+           Web({ src: 'www.example.com', controller: this.controller })
+             .width('100%').height('100%')
+             .expandSafeArea([SafeAreaType.KEYBOARD, SafeAreaType.SYSTEM])
+         }
+       }
+     }
+     ```
 
 
 与其他Web组件行为的交互场景：
