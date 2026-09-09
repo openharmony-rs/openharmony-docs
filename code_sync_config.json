@@ -45248,5 +45248,65 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/file-management/native-environment-guidelines.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":136,
+						"name":"get_user_download_dir_path_example",
+						"start_line":124
+					},
+					{
+						"end_line":156,
+						"name":"get_user_desktop_dir_path_example",
+						"start_line":144
+					},
+					{
+						"end_line":175,
+						"name":"get_user_document_dir_path_example",
+						"start_line":163
+					},
+					{
+						"end_line":202,
+						"name":"get_user_download_dir_size_example",
+						"start_line":183
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/file-management/native-fileio-guidelines.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/CoreFile/NDKAppFileSample/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":44,
+						"name":"get_file_location_example",
+						"start_line":26
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/file-management/request-dir-permission.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":44,
+						"name":"get_user_download_dir_example",
+						"start_line":32
+					}
+				]
+			}
+		]
 	}
 ]
