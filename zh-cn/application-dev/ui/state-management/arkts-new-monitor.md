@@ -1877,8 +1877,9 @@ struct Index {
 
 1. 将\@Monitor定义在自定义组件中。由于自定义组件在销毁时，状态管理框架会手动取消\@Monitor的监听，因此在自定义组件调用完aboutToDisappear，尽管自定义组件的数据不一定已经被释放，但\@Monitor回调已不会再被触发。
 
-   <!-- @[monitor_problem_class_failure_time_set_comp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemClassFailureTimeSetComp.ets) -->   
-   
+   <!-- @[monitor_problem_class_failure_time_set_comp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemClassFailureTimeSetComp.ets) -->
+
+   <div class="same-source-code">
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    
@@ -1968,6 +1969,11 @@ struct Index {
      }
    }
    ```
+
+   <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemClassFailureTimeSetComp.ets?same_code_link_text=monitor_problem_class_failure_time_set_comp" target="_blank" rel="nofollow">MonitorProblemClassFailureTimeSetComp.ets</a></p>
+
+   </div>
+
 
    ![monitor-sync-22](./figures/monitor-sync-22.gif)
 
