@@ -284,6 +284,10 @@ type AvailableDeviceStatusCallback = (deviceStatusList: DeviceStatus[]) => void
 
 状态监听器对象。用于监听或获取模板状态、持续认证状态、可添加设备状态等信息。通过[getStatusMonitor](#companiondeviceauthgetstatusmonitor)获取此对象。
 
+**系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
+
+**系统接口：** 此接口为系统接口。
+
 ### getTemplateStatus
 
 getTemplateStatus(): Promise&lt;TemplateStatus[]&gt;

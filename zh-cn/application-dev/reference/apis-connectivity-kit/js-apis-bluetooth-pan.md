@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供基于蓝牙个人局域网协议（Personal Area Networking，[PAN](../../connectivity/bluetooth/terminology.md#pan)）的蓝牙共享网络能力，支持获取连接状态等方法。
+本模块提供基于蓝牙个人局域网协议（Personal Area Networking，[PAN](../../connectivity/bluetooth/terminology.md#pan)）的蓝牙共享网络能力，支持本端作为[NAP](../../connectivity/bluetooth/terminology.md#nap)设备和[PANU](../../connectivity/bluetooth/terminology.md#panu)设备查询PAN支持状态、网络共享状态及获取连接状态等，适用于需要通过蓝牙实现个人局域网共享网络的场景。
 
 > **说明：**
 >
@@ -47,7 +47,7 @@ createPanProfile(): PanProfile
 
 | 类型                            | 说明         |
 | ----------------------------- | ---------- |
-| PanProfile | 返回PAN实例。该类继承于[BaseProfile](#baseprofile)，因此可以使用其父类中的方法。 |
+| [PanProfile](#panprofile) | 返回PAN实例。该类继承于[BaseProfile](#baseprofile)，因此可以使用其父类中的方法。 |
 
 **错误码**：
 
@@ -71,7 +71,7 @@ try {
 
 ## PanProfile
 
-表示蓝牙PAN通信的实例。
+表示蓝牙PAN通信的实例，提供查询本端PAN支持状态、网络共享状态等能力，适用于蓝牙个人局域网共享网络场景。
 - 使用PanProfile方法之前需要创建该类的实例进行操作，通过[createPanProfile](#pancreatepanprofile)方法构造此实例。
 - 该类继承于[BaseProfile](#baseprofile)，因此可以使用其父类中的方法。
 
@@ -79,7 +79,7 @@ try {
 
 isPanSupported(): boolean
 
-本端作为NAP角色时使用，获取本端网络共享状态。
+本端作为NAP角色时使用，查询本端设备是否支持PAN能力。
 
 **起始版本**：26.0.0
 

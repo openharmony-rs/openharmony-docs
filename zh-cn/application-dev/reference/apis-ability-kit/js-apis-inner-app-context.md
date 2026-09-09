@@ -734,7 +734,7 @@ setShowOnLockScreen(show: boolean, callback: AsyncCallback\<void>): void
 >
 > 该接口功能仅对系统应用生效。
 > 
-> 从API version 7开始支持，从API version 9开始废弃。建议使用window.setShowOnLockScreen替代，新接口为系统接口。
+> 从API version 7开始支持，从API version 9开始废弃，<!--Del-->建议使用[setShowOnLockScreen](../apis-arkui/js-apis-window-sys.md#setshowonlockscreen9)替代，<!--DelEnd-->替代接口仅面向系统应用开放。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -768,7 +768,7 @@ setShowOnLockScreen(show: boolean): Promise\<void>
 >
 > 该接口功能仅对系统应用生效。
 > 
-> 从API version 7开始支持，从API version 9开始废弃。建议使用window.setShowOnLockScreen替代，新接口为系统接口。
+> 从API version 7开始支持，从API version 9开始废弃，<!--Del-->建议使用[setShowOnLockScreen](../apis-arkui/js-apis-window-sys.md#setshowonlockscreen9)替代，<!--DelEnd-->替代接口仅面向系统应用开放。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 

@@ -293,7 +293,7 @@ setUsbStorageDeviceAccessPolicy(admin: Want, usbPolicy: UsbPolicy): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控), 严格优先级： 禁用 > 只读 > 可读可写。
+**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)，严格优先级： 禁用 > 只读 > 可读可写。
 
 **参数：**
 

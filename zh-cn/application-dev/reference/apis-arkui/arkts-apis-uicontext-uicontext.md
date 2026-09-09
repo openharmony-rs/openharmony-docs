@@ -3232,7 +3232,7 @@ updateBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>, sheet
 **示例：**
 
 ```ts
-import { FrameNode, ComponentContent } from "@kit.ArkUI";
+import { FrameNode, ComponentContent } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 class Params {
@@ -4158,7 +4158,7 @@ setCustomKeyboardContinueFeature(feature: CustomKeyboardContinueFeature): void
 
 ```ts
 // xxx.ets
-import { CustomKeyboardContinueFeature } from '@ohos.arkui.UIContext';
+import { CustomKeyboardContinueFeature } from '@kit.ArkUI';
 
 @Entry
 @Component

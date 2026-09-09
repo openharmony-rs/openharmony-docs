@@ -358,7 +358,7 @@ export default class EntryAbility extends UIAbility {
 
 startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent): Promise&lt;void&gt;
 
-申请长时任务，支持申请一种类型，使用Promise异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持通过本接口申请一个长时任务，可以通过API version 21新增接口[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)申请多个长时任务。</br>从API版本26.1.0开始，通过本接口申请的长时任务，包含数据传输类型时，可以通过[updateDataTransferProgress()](#backgroundtaskmanagerupdatedatatransferprogress)接口更新长时任务通知，可选择通知是否有进度环，进度为100时是否响铃。。
+申请长时任务，支持申请一种类型，使用Promise异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持通过本接口申请一个长时任务，可以通过API version 21新增接口[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)申请多个长时任务。</br>从API版本26.1.0开始，通过本接口申请的长时任务，包含数据传输类型时，可以通过[updateDataTransferProgress()](#backgroundtaskmanagerupdatedatatransferprogress)接口更新长时任务通知，可选择通知是否有进度环，进度为100时是否响铃。
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 

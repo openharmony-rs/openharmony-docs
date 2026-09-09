@@ -121,7 +121,7 @@ Text(content?: string \| Resource , value?: TextOptions)
 | caretColor<sup>14+</sup> | 设置文本组件选中区域手柄颜色。 |
 | copyOption<sup>9+</sup> | 设置组件是否支持文本可复制粘贴。 |
 | draggable<sup>9+</sup> | 设置选中文本拖拽效果。 |
-| selectedBackgroundColor<sup>14+</sup> | 设置文本选中底板颜色。 |
+| selectedBackgroundColor<sup>14+</sup> | 设置文本选中高亮颜色。 |
 | selection<sup>11+</sup> | 设置选中区域。 |
 | textSelectable<sup>12+</sup> | 设置是否支持文本可选择、可获焦。 |
 
@@ -735,6 +735,8 @@ fontVariations(fontVariations: Array&lt;FontVariation&gt;)
 
 **起始版本：** 26.0.0
 
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1344,7 +1346,7 @@ punctuationOverflow(enabled: Optional\<boolean>)
 
 selectedBackgroundColor(color: ResourceColor)
 
-设置文本选中底板颜色。如果未设置不透明度，默认不透明度为20%。未通过该接口设置时，默认文本选中底板颜色为'#007DFF'（蓝色）。
+设置文本选中高亮颜色。如果未设置不透明度或设置为完全不透明，默认使用20%不透明度。未通过该接口设置时，默认文本选中高亮颜色为'#007DFF'（蓝色）。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -1356,7 +1358,7 @@ selectedBackgroundColor(color: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                       |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------ |
-| color  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 文本选中底板颜色。 |
+| color  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 文本选中高亮颜色。 |
 
 ### selection<sup>11+</sup>
 
@@ -1960,7 +1962,7 @@ Marquee初始化参数。
 |--------------------|-------------------------------------------------|----|----|-------------------------------------------------------------------------------------|
 | start              | boolean                                         | 否  | 否 | 控制跑马灯进入播放状态。<br>true表示播放，false表示不播放。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | step               | number                                          | 否  | 是 | 滚动动画文本滚动步长。<br>单位：vp<br>取值范围：(0, 文本宽度]。设置小于等于0的值时按默认值处理。<br>默认值：4.0vp <br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                         |
-| spacing<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  | 是 | 两轮跑马灯之间的间距。单位：vp。如果LengthMetrics的unit值是PERCENT，当前设置不生效，按默认值处理。<br>默认值：48.0vp <br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| spacing<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  | 是 | 两轮跑马灯之间的间距。单位：vp。当LengthMetrics对象的unit属性为LengthUnit.PERCENT时，当前设置不生效，按默认值处理。<br>默认值：48.0vp <br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | loop               | number                                          | 否  | 是 | 设置重复滚动的次数，小于等于零时无限循环。<br>默认值：-1  <br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                          |
 | fromStart          | boolean                                         | 否  | 是 | 设置文本从头开始滚动或反向滚动。<br>true表示从头开始滚动，false表示反向滚动。<br>默认值：true <br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | delay              | number                                          | 否  | 是 | 设置每次滚动的时间间隔。<br>取值范围：[0, +∞)。设置负数时按默认值处理。<br>默认值：0 <br>单位：毫秒  <br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。   |
@@ -2743,7 +2745,7 @@ struct TextExample9 {
 
 ### 示例10（获取文本信息）
 
-从API version 12开始，该示例通过[getLayoutManager](#getlayoutmanager12)接口调用文本的布局管理对象获取文本信息，同时，[LayoutManager](ts-text-common.md#layoutmanager12)中的[getRectsForRange](./ts-text-common.md#getrectsforrange14)（从API version 14开始）接口可以获取指定矩形宽度和高度下，文本中任意区间范围内字符或占位符的绘制区域信息。
+从API version 12开始，该示例通过[getLayoutManager](#getlayoutmanager12)接口调用文本的布局管理对象获取文本信息，同时，[LayoutManager](ts-text-common.md#layoutmanager12)中的[getRectsForRange](./ts-text-common.md#getrectsforrange14)（从API version 14开始）接口可以获取指定矩形宽度样式和高度样式下，文本中任意区间范围内字符或占位符的绘制区域信息。
 
 ```ts
 // xxx.ets
@@ -2816,7 +2818,7 @@ struct TextExample10 {
         Text(this.lineMetrics)
 
         Text('getRectsForRange').fontSize(15).fontColor(0xCCCCCC).width('90%').padding(10)
-        Button('获取指定矩形宽度和高度下，文本中任意区间范围内字符或占位符的绘制区域信息')
+        Button('获取指定矩形宽度样式和高度样式下，文本中任意区间范围内字符或占位符的绘制区域信息')
           .onClick(() => {
             let layoutManager: LayoutManager = this.controller.getLayoutManager();
             if (!layoutManager) {

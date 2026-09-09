@@ -24,6 +24,7 @@ enableSmartTapAndSlideGestures(enabled: boolean): void
 >
 > - 该接口仅影响智慧手势的敲一敲和划一划手势，不影响翻腕手势。
 > - 关闭后，组件侧[smartGestureShortcut](arkui-ts/ts-universal-attributes-smart-gesture-shortcut.md#smartgestureshortcut)配置仍会保留，但不会响应智慧手势的敲一敲和划一划手势。
+> - 该接口不支持在子窗场景下使用。
 
 **起始版本：** 26.0.0
 

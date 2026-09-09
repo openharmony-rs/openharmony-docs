@@ -1506,9 +1506,9 @@ type DataLoadHandler = (acceptableInfo?: DataLoadInfo) => UnifiedData | null
 
 type DelayedDataLoadHandler = (acceptableInfo?: DataLoadInfo) => Promise<UnifiedData | null>
 
-用于延迟加载数据的处理函数。支持数据发送方根据接收方传入的信息，动态生成数据，实现更灵活、精准的数据交互策略。
+用于延迟加载数据的处理函数。支持数据发送方根据接收方传入的信息，动态生成数据，实现更灵活、精准的数据交互策略。使用Promise异步回调。
 
-该处理函数为异步函数，返回Promise对象，不阻塞主线程，可处理复杂业务逻辑、执行长耗时任务。
+该处理函数为异步函数，不阻塞主线程，可处理复杂业务逻辑、执行长耗时任务。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 

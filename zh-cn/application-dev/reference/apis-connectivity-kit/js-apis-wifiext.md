@@ -6,7 +6,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-该模块主要提供WLAN扩展接口，供非通用类型产品使用。
+该模块主要提供Wi-Fi扩展接口，供非通用类型产品使用。
 
 > **说明：**
 >
@@ -24,7 +24,7 @@ import wifiext from '@ohos.wifiext';
 
 enableHotspot(): boolean;
 
-启用WLAN热点。
+启用Wi-Fi热点。
 
 > **说明：**
 >
@@ -45,7 +45,7 @@ enableHotspot(): boolean;
 
 disableHotspot(): boolean;
 
-禁用WLAN热点。
+禁用Wi-Fi热点。
 
 > **说明：**
 >

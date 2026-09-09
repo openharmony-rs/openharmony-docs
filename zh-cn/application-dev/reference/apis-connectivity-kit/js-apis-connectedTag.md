@@ -2,9 +2,9 @@
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @bitbegin-->
-<!--Designer: @guofan912-->
-<!--Tester: @wuqingyang1-->
+<!--Owner: @yh1719-->
+<!--Designer: @wenxiaolin-->
+<!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
 
 本模块提供有源标签的使用，包括初始化有源标签芯片、读取有源标签内容、写入内容到有源标签等。

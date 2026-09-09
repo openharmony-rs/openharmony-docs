@@ -392,7 +392,7 @@ int32_t OH_ScsiPeripheral_CreateDeviceMemMap(ScsiPeripheral_Device *dev, size_t 
 | 参数项 | 描述 |
 |------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
 | [ScsiPeripheral_Device](capi-scsiperipheralddk-scsiperipheral-device.md) *dev  | 设备句柄，详情参见[ScsiPeripheral_Device](capi-scsiperipheralddk-scsiperipheral-device.md)。   |
-| size_t size | 缓冲区的大小，单位：字节。|
+| size_t size | 缓冲区的大小，单位：Byte。|
 | [ScsiPeripheral_DeviceMemMap](capi-scsiperipheralddk-scsiperipheral-devicememmap.md) **devMmap | 创建的缓冲区通过该参数返回给调用者，详情参见[ScsiPeripheral_DeviceMemMap](capi-scsiperipheralddk-scsiperipheral-devicememmap.md)。 |
 
 **返回：**
@@ -444,13 +444,13 @@ int32_t OH_ScsiPeripheral_ParseBasicSenseInfo(uint8_t *senseData, uint8_t senseD
 | 参数项 | 描述 |
 | -- | -- |
 | uint8_t *senseData | 待解析的Sense Data。 |
-| uint8_t senseDataLen | Sense Data长度，即senseData参数指向的数据长度，单位：字节。 |
+| uint8_t senseDataLen | Sense Data长度，即senseData参数指向的数据长度，单位：Byte。 |
 | [ScsiPeripheral_BasicSenseInfo](capi-scsiperipheralddk-scsiperipheral-basicsenseinfo.md) *senseInfo | 用于保存解析后的基本信息，详情参见[ScsiPeripheral_BasicSenseInfo](capi-scsiperipheralddk-scsiperipheral-basicsenseinfo.md)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [SCSIPERIPHERAL_DDK_SUCCESS](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode) 调用接口成功。<br>         [SCSIPERIPHERAL_DDK_INVALID_PARAMETER](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode) senseData格式不是描述符或固定格式、senseDataLen小于<br>         [SCSIPERIPHERAL_MIN_DESCRIPTOR_FORMAT_SENSE](capi-scsi-peripheral-types-h.md#scsiperipheral_min_descriptor_format_sense)或者senseDataLen小于[SCSIPERIPHERAL_MIN_FIXED_FORMAT_SENSE](capi-scsi-peripheral-types-h.md#scsiperipheral_min_fixed_format_sense)。 |
+| int32_t | [SCSIPERIPHERAL_DDK_SUCCESS](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode) 调用接口成功。<br>         [SCSIPERIPHERAL_DDK_INVALID_PARAMETER](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode) senseData格式不是描述符或固定格式、senseDataLen小于<br>         [SCSIPERIPHERAL_MIN_DESCRIPTOR_FORMAT_SENSE](capi-scsi-peripheral-types-h.md#宏定义)或者senseDataLen小于[SCSIPERIPHERAL_MIN_FIXED_FORMAT_SENSE](capi-scsi-peripheral-types-h.md#宏定义)。 |
 
 

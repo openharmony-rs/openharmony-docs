@@ -63,6 +63,7 @@
 
 **加载完成时延起始点**
 APP_LIST_FLING终点视为滑动停止，则是加载完成时延起始点。
+
 滑动页面占位符加载完成，是以滑动停止为起始点，在Trace中APP_LIST_FLING泳道可以体现滚动视图的FLING惯性滚动状态的起止，滚动停止，此时开始计算占位符加载时延。
 
 图2 时延起始点
@@ -97,7 +98,7 @@ APP_LIST_FLING终点视为滑动停止后，图片加载完成即页面不再发
 
 **定位问题点**
 
-1. 如果从应用UI上发现有网络加载的动作，则可以在ArkTS CallStack泳道查找是否发送网络请求，关键Trace点createHttp，继续查找请求响应点off(request)，parse数据解析，OnDataReload（LazyForEach刷新数据）来判断请求结束数据刷新时间点。因为在长列表应用中，一般使用分页加载功能实现更多数据，在滚动停止或者将要停止时触发加载更多功能，发送网络请求，收到响应数据后解析并刷新数据源，驱动页面刷新。
+1. 如果从应用UI上发现有网络加载的动作，则可以在ArkTS CallStack泳道查找是否发送网络请求，关键Trace点createHttp，继续查找请求响应点off(request)，parse数据解析，OnDataReloaded（LazyForEach刷新数据）来判断请求结束数据刷新时间点。因为在长列表应用中，一般使用分页加载功能实现更多数据，在滚动停止或者将要停止时触发加载更多功能，发送网络请求，收到响应数据后解析并刷新数据源，驱动页面刷新。
 
 图5 createHttp
 
@@ -139,27 +140,27 @@ APP_LIST_FLING终点视为滑动停止后，图片加载完成即页面不再发
 
 1. 根据起始点确定问题Trace起始点和终止点，如下图加载完成时延总共700ms。
 
-图8 时延时长
+   图8 时延时长
 
-![](./figures/delay_related_performance_6.png)
+   ![](./figures/delay_related_performance_6.png)
 
-2. 根据场景上拉加载更多，数据通过网络请求后刷新，放大Trace找到APP_LIST_FLING尾部，末尾触发request请求数据，即滚动到尾部将要停止时会触发上拉加载，发送请求获取网络接口数据。关键Trace点信息详见“网络关键Trace点”。
+2. 根据场景上拉加载更多，数据通过网络请求后刷新，放大Trace找到APP_LIST_FLING尾部，末尾触发request请求数据，即滚动到尾部将要停止时会触发上拉加载，发送请求获取网络接口数据。关键Trace点信息详见"网络关键Trace点"。
 
- 图9 发送请求request
+   图9 发送请求request
 
-![](./figures/delay_related_performance_7.png)
+   ![](./figures/delay_related_performance_7.png)
 
-发送网络数据请求后，会有Response体现在应用中则是解析后刷新数据，LazyForEach绑定的IDataSource会触发刷新监听，通过OnDataReloaded找出刷新数据Trace点，可得到网络请求耗时177ms。
+   发送网络数据请求后，会有Response体现在应用中则是解析后刷新数据，LazyForEach绑定的IDataSource会触发刷新监听，通过OnDataReloaded找出刷新数据Trace点，可得到网络请求耗时177ms。
 
-图10 开始刷新数据OnDataReloaded
+   图10 开始刷新数据OnDataReloaded
 
-![](./figures/delay_related_performance_8.png)
+   ![](./figures/delay_related_performance_8.png)
 
 3. 本案例中列表中主要占位符为Image组件，加载是通过ImageSource解码生成PixelMap。加载网络图片时，发送图片地址网络请求，接着将返回的数据解码为Image组件中的PixelMap。通过搜索CreateImagePixelMap搜索创建图像像素图，耗时14ms。
 
-图11 加载网络图片资源 CreateImagePixelMap
+   图11 加载网络图片资源 CreateImagePixelMap
 
-![](./figures/delay_related_performance_9.png)
+   ![](./figures/delay_related_performance_9.png)
 
 **优化方案**
 
@@ -184,38 +185,38 @@ APP_LIST_FLING终点视为滑动停止后，图片加载完成即页面不再发
 
 1. 分析Trace发现列表每次滚动停止触发上拉加载后，会有一个超长帧。
 
-图13 超长帧
+   图13 超长帧
 
-![](./figures/delay_related_performance_10.png)
+   ![](./figures/delay_related_performance_10.png)
 
-2. 分析Trace中应用主线程泳道超长帧，发现有大量组件创建和布局测算。关键Trace点信息详见“UI绘帧关键Trace点”。
-- 在应用主线程泳道超长帧前，有关键刷新Trace点：OnDataReloaded（LazyForEach通知控制器数据重新加载）。
-- 在ArkTS CallStack中查看调用栈发现，js调用notifyDataReload，说明应用侧此时触发了页面刷新。
-- 在应用主线程泳道两次超长帧加载LazyItem创建索引可以发现，0-51到0-71，单帧绘制的item越来越多。
+2. 分析Trace中应用主线程泳道超长帧，发现有大量组件创建和布局测算。关键Trace点信息详见"UI绘帧关键Trace点"。
+   - 在应用主线程泳道超长帧前，有关键刷新Trace点：OnDataReloaded（LazyForEach通知控制器数据重新加载）。
+   - 在ArkTS CallStack中查看调用栈发现，js调用notifyDataReload，说明应用侧此时触发了页面刷新。
+   - 在应用主线程泳道两次超长帧加载LazyItem创建索引可以发现，0-51到0-71，单帧绘制的item越来越多。
 
-总结如上3点，结合实际场景上拉加载次数越多，时延越久，说明应用侧使用了全量数据刷新。
+   总结如上3点，结合实际场景上拉加载次数越多，时延越久，说明应用侧使用了全量数据刷新。
 
-图14 OnDataReloaded开始触发UI刷新
+   图14 OnDataReloaded开始触发UI刷新
 
-![](./figures/delay_related_performance_11.png)
+   ![](./figures/delay_related_performance_11.png)
 
-图15 查看超长帧，第一次上拉加载更多
+   图15 查看超长帧，第一次上拉加载更多
 
-![](./figures/delay_related_performance_12.png)
+   ![](./figures/delay_related_performance_12.png)
 
-图16 查看超长帧，第二次上拉加载更多
+   图16 查看超长帧，第二次上拉加载更多
 
-![](./figures/delay_related_performance_13.png)
+   ![](./figures/delay_related_performance_13.png)
 
-3. 继续分析超长帧，通过应用主线程泳道发现单帧有大量BuildItem构建GridItem，而且在懒加载LazyForEach predict中大量aboutToBeDeleted发现析构处理，说明GridItem在滑动过程中被释放。从而分析出列表中子组件未做复用影响性能。关键Trace点信息见“UI绘帧关键Trace点”。
+3. 继续分析超长帧，通过应用主线程泳道发现单帧有大量BuildItem构建GridItem，而且在懒加载LazyForEach predict中大量aboutToBeDeleted发现析构处理，说明GridItem在滑动过程中被释放。从而分析出列表中子组件未做复用影响性能。关键Trace点信息见"UI绘帧关键Trace点"。
 
-图17 BuildItem构建GridItem
+   图17 BuildItem构建GridItem
 
-![](./figures/delay_related_performance_14.png)
+   ![](./figures/delay_related_performance_14.png)
 
-图18 LazyForEach predict中aboutToBeDeleted析构GridItem
+   图18 LazyForEach predict中aboutToBeDeleted析构GridItem
 
-![](./figures/delay_related_performance_15.png)
+   ![](./figures/delay_related_performance_15.png)
 
 **优化方案**
 
@@ -288,8 +289,8 @@ APP_LIST_FLING终点视为滑动停止后，图片加载完成即页面不再发
 |6|应用进程|FlushLayoutTask|执行布局任务。在此阶段会对组件做布局测算，如果层级较深或者组件较多会影响性能。|
 |7|应用进程|Builder:BuildLazyItem|需创建的项目索引，在需要时创建项，并进行缓存。|
 |8|应用进程|FlushMessage|发送信息通知图形侧进行渲染。|
-|9|应用进程|LazyForEach predict|Onldle下，一般会用来做预加载之类的。LazyForEach会触发。|
-|10|应用进程|aboutToDeleted|自定义组件生命周期函数。组件析构时出现，在未使用复用机制时，FlushDirtyNodeUpdate和LazyForEach predict下会析构组件，导致刷新时组件重复创建，影响性能。|
+|9|应用进程|LazyForEach predict|OnIdle下，一般会用来做预加载之类的。LazyForEach会触发。|
+|10|应用进程|aboutToBeDeleted|自定义组件生命周期函数。组件析构时出现，在未使用复用机制时，FlushDirtyNodeUpdate和LazyForEach predict下会析构组件，导致刷新时组件重复创建，影响性能。|
 
 **FlushDirtyNodeUpdate**
 - 执行js代码，修改状态变量。

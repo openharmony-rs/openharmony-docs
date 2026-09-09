@@ -412,6 +412,7 @@ Failed to install the application.
 2. 安装多个不同包名的应用。
 3. 当安装参数flag为0时再次安装已存在的应用。
 4. 传入无效用户id。
+5. 应用安装包中未包含有效证书。
 
 <!--RP3--><!--RP3End-->
 

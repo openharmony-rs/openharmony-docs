@@ -5,6 +5,7 @@
 <!--Designer: @shiyu-hu-->
 <!--Tester: @abec123-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=892ccc1267568dece54921013fb48099ac0ac493 translatedAt=2026-09-03T04:11:23.185Z -->
 
 The **MediaCachedImage** component, with APIs that inherit from [Image](ts-basic-components-image.md) and the added capability of loading texture resources (for system applications only), is typically used to display images in applications.
 
@@ -22,6 +23,8 @@ MediaCachedImage(src: PixelMap | ResourceStr | DrawableDescriptor | ASTCResource
 Obtains an image from the specified source for subsequent rendering and display.
 
 **System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +47,8 @@ The [universal events](ts-component-general-events.md) are supported.
 Describes texture stitching.
 
 **System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -89,4 +94,4 @@ struct MediaCachedImageExample {
 }
 ```
 
-![en-us_image_0000001592882500](figures/mediacachedimage-sample-picture.gif)
+![en-us_image_0000001592882500](figures/loadingImagesOfBasicTypes.gif)

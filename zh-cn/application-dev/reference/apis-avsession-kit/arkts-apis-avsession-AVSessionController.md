@@ -1,8 +1,8 @@
 # Interface (AVSessionController)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -619,6 +619,8 @@ getLaunchAbility(): Promise\<WantAgent>
 **示例：**
 
 ```ts
+import { WantAgent } from '@kit.AbilityKit';
+
 avcontroller.getLaunchAbility().then((agent: WantAgent) => {
   console.info(`Succeeded in getting launch ability: ${agent}`);
 });
@@ -651,6 +653,8 @@ getLaunchAbility(callback: AsyncCallback\<WantAgent>): void
 **示例：**
 
 ```ts
+import { WantAgent } from '@kit.AbilityKit';
+
 avcontroller.getLaunchAbility((err: BusinessError, agent: WantAgent) => {
   if (err) {
     console.error(`Failed to get launch ability, code: ${err.code}, message: ${err.message}`);
@@ -975,10 +979,10 @@ sendControlCommand(command: AVControlCommand, callback: AsyncCallback\<void>): v
 | -------- | ------------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | 6600101  | Session service exception. |
-| 6600102  | The session does not exist.     |
-| 6600103  | The session controller does not exist.   |
+| 6600102  | The session does not exist. |
+| 6600103  | The session controller does not exist. |
 | 6600105  | Invalid session command. |
-| 6600106  | The session is not activated.                |
+| 6600106  | The session is not activated. |
 | 6600107  | Too many commands or events. |
 
 **示例：**
@@ -1073,8 +1077,8 @@ sendCommonCommand(command: string, args: {[key: string]: Object}, callback: Asyn
 | -------- | ------------------------------- |
 | 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.|
 | 6600101  | Session service exception. |
-| 6600102  | The session does not exist.     |
-| 6600103  | The session controller does not exist.   |
+| 6600102  | The session does not exist. |
+| 6600103  | The session controller does not exist. |
 | 6600105  | Invalid session command. |
 | 6600106  | The session is not activated. |
 | 6600107  | Too many commands or events. |
@@ -1122,8 +1126,8 @@ sendCustomData(data: Record\<string, Object>): Promise\<void>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
-| 6600102  | The session does not exist.                                  |
-| 6600103  | The session controller does not exist.                       |
+| 6600102  | The session does not exist. |
+| 6600103  | The session controller does not exist. |
 
 **示例：**
 
@@ -2581,7 +2585,7 @@ on(type: 'customDataChange', callback: Callback\<Record\<string, Object>>): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 6600101  | Session service exception.|
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -2616,7 +2620,7 @@ off(type: 'customDataChange', callback?: Callback\<Record\<string, Object>>): vo
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 6600101  | Session service exception.|
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**

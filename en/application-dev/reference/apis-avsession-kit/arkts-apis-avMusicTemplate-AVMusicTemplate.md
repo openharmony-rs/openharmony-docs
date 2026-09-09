@@ -2,11 +2,11 @@
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @gcw_gyH0B0hP-->
-<!--Designer: @ccfriend-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
 
-After calling [avMusicTemplate.createAVMusicTemplate](arkts-apis-avMusicTemplate-f.md#avmusictemplatecreateavmusictemplate) to obtain an instance, you can obtain the instance ID, start the audio template page, and configure the data obtaining method. Then, you can synchronize the data to the template controller to complete the subsequent operations.
+After calling [avMusicTemplate.createAVMusicTemplate](arkts-apis-avMusicTemplate-f.md#avmusictemplatecreateavmusictemplate) to obtain an instance, you can obtain the instance ID, start the audio template page, and configure the data obtaining method. Then, you can synchronize the data to the template controller to complete operations such as data interaction and UI update.
 
 > **NOTE**
 >
@@ -37,7 +37,7 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
-  private static sInstance: TemplateManager;
+  private static instance: TemplateManager;
 
   private constructor() {
   }
@@ -48,11 +48,11 @@ export class TemplateManager {
    * @returns Template controller instance.
    */
   public static getInstance(): TemplateManager {
-    if (!TemplateManager.sInstance) {
-      TemplateManager.sInstance = new TemplateManager();
+    if (!TemplateManager.instance) {
+      TemplateManager.instance = new TemplateManager();
     }
-    return TemplateManager.sInstance;
-  };
+    return TemplateManager.instance;
+  }
 
   /**
    * Create an audio template.
@@ -60,7 +60,7 @@ export class TemplateManager {
   public createTemplate() {
     if (this.template) {
       console.warn('createTemplate: template not undefined');
-      return
+      return;
     }
     this.template = avMusicTemplate.createAVMusicTemplate(avMusicTemplate.AVMusicTemplateType.DEFAULT);
     console.info('Succeeded in creating template.');
@@ -143,10 +143,13 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
   private queryMainTabsEvent: avMusicTemplate.QueryMainTabsEvent = async () => {
-    return new Promise<avMusicTemplate.MediaTab[]>(async (resolve, reject) => {
-      let tabs: avMusicTemplate.MediaTab[] = await this.getMainTabs();
-      resolve(tabs);
-    });
+    try {
+      return await this.getMainTabs();
+    } catch (e) {
+      const msg = `Failed to queryMainTabsEvent. Code: ${e?.code}`;
+      console.error(msg);
+      throw e instanceof Error ? e : new Error(e?.message ?? msg);
+    }
   };
 
   /**
@@ -819,7 +822,7 @@ export class TemplateManager {
       isSupportPlayMode: true,
       isSupportPlayRate: true,
       supportedPlayRate: ['1', '2', '3'],
-      currentPlayRate: 'string;',
+      currentPlayRate: '1',
       isSupportSoundQuality: false,
       isSupportSoundEffect: true,
       totalDuration: 60,
@@ -839,7 +842,7 @@ export class TemplateManager {
       title: 'Track title',
       desc: 'Track description',
       imageUrl: '',
-      playState: 0,
+      playState: avMusicTemplate.PlaybackState.PLAYBACK_STATE_PREPARE,
       isVip: false,
       singer: '',
       tags: [],
@@ -2189,11 +2192,6 @@ export class TemplateManager {
   };
 
   /**
-   * Simulate a settings change.
-   *
-   * @returns Promise used to return the settings item.
-   */
-  /**
    * Simulate the operation result.
    *
    * @returns Operation result.
@@ -2575,6 +2573,114 @@ export class TemplateManager {
    */
   public unregisterListener() {
     this.template?.offPlayForSearch();
+  }
+}
+```
+
+## onCustomCommand
+
+onCustomCommand(callback: CustomCommandEvent): void
+
+Registers a listener for custom control command events. This API uses an asynchronous callback to return the result.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                      |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------- |
+| callback | [CustomCommandEvent](arkts-apis-avMusicTemplate-t.md#customcommandevent) | Yes  | Callback used to return the custom control command event.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Template Error Codes](errorcode-avmusictemplate.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function onCustomCommand can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
+
+**Example**
+
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+  private customCommandEvent: avMusicTemplate.CustomCommandEvent = async (command: string, args: string) => {
+    return new Promise<avMusicTemplate.OperResult>(async (resolve, reject) => {
+      let operResult: avMusicTemplate.OperResult = await this.createOperResult();
+      resolve(operResult);
+    });
+  };
+
+  /**
+   * Register a listener.
+   */
+  private registerListener() {
+    this.template?.onCustomCommand(this.customCommandEvent);
+  }
+
+  /**
+   * Simulate the operation result.
+   *
+   * @returns Operation result.
+   */
+  private async createOperResult(): Promise<avMusicTemplate.OperResult> {
+    let operResult: avMusicTemplate.OperResult = {
+      errorCode: 0,
+    }
+    return operResult;
+  };
+}
+```
+
+## offCustomCommand
+
+offCustomCommand(callback?: CustomCommandEvent): void
+
+Unregisters the listener for custom control commands.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                                              |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------------------------- |
+| callback | [CustomCommandEvent](arkts-apis-avMusicTemplate-t.md#customcommandevent) | No  | Callback used to return the result of unregistering the listener for custom control command events.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Template Error Codes](errorcode-avmusictemplate.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function offCustomCommand can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
+
+**Example**
+
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * Unregister the listener.
+   */
+  public unregisterListener() {
+    this.template?.offCustomCommand();
   }
 }
 ```
@@ -3037,61 +3143,61 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
-    private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
 
-    public async setCurrentSingle() {
-        let single: avMusicTemplate.Single = await this.createCurrentSingle()
-        this.template?.setCurrentSingle(single);
-    };
+  public async setCurrentSingle() {
+    let single: avMusicTemplate.Single = await this.createCurrentSingle()
+    this.template?.setCurrentSingle(single);
+  };
 
-    /**
-     * Simulate the obtaining of the current single track.
-     *
-     * @returns The current single track.
-     */
-    private async createCurrentSingle(): Promise<avMusicTemplate.Single> {
-        let playInfo: avMusicTemplate.PlayInfo = {
-            playCounts: '100w',
-            isSupportNext: true,
-            isSupportPrev: false,
-            isSupportQuickForward: true,
-            isSupportQuickBackward: true,
-            quickForwardStep: 10,
-            quickBackwardStep: 10,
-            isSupportSkipHead: false,
-            isSupportSkipTail: true,
-            isSupportPlayMode: true,
-            isSupportPlayRate: true,
-            supportedPlayRate: ['1', '2', '3'],
-            currentPlayRate: 'string;',
-            isSupportSoundQuality: false,
-            isSupportSoundEffect: true,
-            totalDuration: 60,
-            currentPlayDuration: 10,
-            isSupportProgress: false,
-        }
-        let favoriteData: avMusicTemplate.FavoriteData = {
-            isSupportFav: true,
-            isFavorite: false,
-            favCounts: '1000+'
-        }
-        let single: avMusicTemplate.Single = {
-            mediaId: 'mediaId',
-            mediaType: avMusicTemplate.EntityType.SINGLE,
-            parentId: 'parentId',
-            parentMediaType: avMusicTemplate.EntityType.SINGLE,
-            title: 'Track title',
-            desc: 'Track description',
-            imageUrl: '',
-            playState: 0,
-            isVip: false,
-            singer: '',
-            tags: [],
-            playInfo: playInfo,
-            favSubscribeData: favoriteData
-        }
-        return single;
-    };
+  /**
+   * Simulate the obtaining of the current single track.
+   *
+   * @returns The current single track.
+   */
+  private async createCurrentSingle(): Promise<avMusicTemplate.Single> {
+    let playInfo: avMusicTemplate.PlayInfo = {
+      playCounts: '100w',
+      isSupportNext: true,
+      isSupportPrev: false,
+      isSupportQuickForward: true,
+      isSupportQuickBackward: true,
+      quickForwardStep: 10,
+      quickBackwardStep: 10,
+      isSupportSkipHead: false,
+      isSupportSkipTail: true,
+      isSupportPlayMode: true,
+      isSupportPlayRate: true,
+      supportedPlayRate: ['1', '2', '3'],
+      currentPlayRate: '1',
+      isSupportSoundQuality: false,
+      isSupportSoundEffect: true,
+      totalDuration: 60,
+      currentPlayDuration: 10,
+      isSupportProgress: false,
+    }
+    let favoriteData: avMusicTemplate.FavoriteData = {
+      isSupportFav: true,
+      isFavorite: false,
+      favCounts: '1000+'
+    }
+    let single: avMusicTemplate.Single = {
+      mediaId: 'mediaId',
+      mediaType: avMusicTemplate.EntityType.SINGLE,
+      parentId: 'parentId',
+      parentMediaType: avMusicTemplate.EntityType.SINGLE,
+      title: 'Track title',
+      desc: 'Track description',
+      imageUrl: '',
+      playState: avMusicTemplate.PlaybackState.PLAYBACK_STATE_PREPARE,
+      isVip: false,
+      singer: '',
+      tags: [],
+      playInfo: playInfo,
+      favSubscribeData: favoriteData
+    }
+    return single;
+  };
 }
 ```
 
@@ -3133,23 +3239,23 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
-    private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
 
-    /**
-     * Media playback information, for example, the playback state of a playlist.
-     */
-    public setMediaEntities() {
-        let mediaEntities: avMusicTemplate.MediaEntity[] = [{
-            mediaId: 'mediaId',
-            mediaType: avMusicTemplate.EntityType.SINGLE,
-            parentId: 'parentId',
-            parentMediaType: avMusicTemplate.EntityType.SINGLE,
-            title: 'title',
-            imageUrl: 'imageUrl',
-            playState: avMusicTemplate.PlaybackState.PLAYBACK_STATE_PREPARE
-        }];
-        this.template?.setMediaEntities(mediaEntities);
-    };
+  /**
+   * Synchronizes media resource change information, such as the playback state of a playlist, to the audio template controller.
+   */
+  public setMediaEntities() {
+    let mediaEntities: avMusicTemplate.MediaEntity[] = [{
+      mediaId: 'mediaId',
+      mediaType: avMusicTemplate.EntityType.SINGLE,
+      parentId: 'parentId',
+      parentMediaType: avMusicTemplate.EntityType.SINGLE,
+      title: 'title',
+      imageUrl: 'imageUrl',
+      playState: avMusicTemplate.PlaybackState.PLAYBACK_STATE_PREPARE
+    }];
+    this.template?.setMediaEntities(mediaEntities);
+  };
 }
 ```
 ## setTabContent
@@ -3191,38 +3297,39 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
-    private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
-    /**
-     * Notify the UI to refresh when the content on a tab page changes.
-     */
-    public setTabContent() {
-        let mediaEntity: avMusicTemplate.MediaEntity[] = [{
-            mediaId: 'mediaId',
-            mediaType: avMusicTemplate.EntityType.SINGLE,
-            parentId: 'parentId',
-            parentMediaType: avMusicTemplate.EntityType.SINGLE,
-            title: 'title',
-            imageUrl: 'imageUrl',
-            playState: avMusicTemplate.PlaybackState.PLAYBACK_STATE_PREPARE
-        }]
-        let compilation: avMusicTemplate.Compilation[] = [{
-            errorCode: 0,
-            errorMsg: 'success',
-            id: 'id',
-            title: 'title',
-            hasMoreData: true,
-            totalSize: 2,
-            memberMediaType: avMusicTemplate.EntityType.SINGLE,
-            topElements: mediaEntity
-        }]
-        let mediaTabContent: avMusicTemplate.MediaTabContent = {
-            errorCode: 0,
-            errorMsg: 'success',
-            tabId: 'tabId',
-            compilations: compilation
-        }
-        this.template?.setTabContent('tabId', mediaTabContent);
-    };
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * Synchronizes tab content information to the audio template controller to refresh the UI after the tab content changes.
+   */
+  public setTabContent() {
+    let mediaEntity: avMusicTemplate.MediaEntity[] = [{
+      mediaId: 'mediaId',
+      mediaType: avMusicTemplate.EntityType.SINGLE,
+      parentId: 'parentId',
+      parentMediaType: avMusicTemplate.EntityType.SINGLE,
+      title: 'title',
+      imageUrl: 'imageUrl',
+      playState: avMusicTemplate.PlaybackState.PLAYBACK_STATE_PREPARE
+    }]
+    let compilation: avMusicTemplate.Compilation[] = [{
+      errorCode: 0,
+      errorMsg: 'success',
+      id: 'id',
+      title: 'title',
+      hasMoreData: true,
+      totalSize: 2,
+      memberMediaType: avMusicTemplate.EntityType.SINGLE,
+      topElements: mediaEntity
+    }]
+    let mediaTabContent: avMusicTemplate.MediaTabContent = {
+      errorCode: 0,
+      errorMsg: 'success',
+      tabId: 'tabId',
+      compilations: compilation
+    }
+    this.template?.setTabContent('tabId', mediaTabContent);
+  };
 }
 ```
 ## setPlaylist
@@ -3263,33 +3370,33 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
-    private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
 
-    /**
-     * Notify the UI to refresh after the playlist changes.
-     */
-    public setPlaylist() {
-        let mediaEntity: avMusicTemplate.MediaEntity = {
-            mediaId: 'mediaId',
-            mediaType: avMusicTemplate.EntityType.SINGLE,
-            parentId: 'parentId',
-            parentMediaType: avMusicTemplate.EntityType.SINGLE,
-            title: 'title',
-            imageUrl: 'imageUrl',
-            playState: avMusicTemplate.PlaybackState.PLAYBACK_STATE_PREPARE
-        }
-        let pageMediaEntity: avMusicTemplate.PageMediaEntity = {
-            errorCode: 0,
-            errorMsg: 'success',
-            pageIndex: 0,
-            pageSize: 1,
-            hasMoreData: true,
-            totalSize: 2,
-            memberMediaType: avMusicTemplate.EntityType.SINGLE,
-            elements: [mediaEntity]
-        }
-        this.template?.setPlaylist(pageMediaEntity);
-    };
+  /**
+   * Synchronizes the playlist to the audio template controller to refresh the UI after the playlist changes.
+   */
+  public setPlaylist() {
+    let mediaEntity: avMusicTemplate.MediaEntity = {
+      mediaId: 'mediaId',
+      mediaType: avMusicTemplate.EntityType.SINGLE,
+      parentId: 'parentId',
+      parentMediaType: avMusicTemplate.EntityType.SINGLE,
+      title: 'title',
+      imageUrl: 'imageUrl',
+      playState: avMusicTemplate.PlaybackState.PLAYBACK_STATE_PREPARE
+    }
+    let pageMediaEntity: avMusicTemplate.PageMediaEntity = {
+      errorCode: 0,
+      errorMsg: 'success',
+      pageIndex: 0,
+      pageSize: 1,
+      hasMoreData: true,
+      totalSize: 2,
+      memberMediaType: avMusicTemplate.EntityType.SINGLE,
+      elements: [mediaEntity]
+    }
+    this.template?.setPlaylist(pageMediaEntity);
+  };
 }
 ```
 
@@ -3307,7 +3414,7 @@ Synchronizes the single track download status to the audio template controller. 
 
 | Name| Type                                                        | Mandatory| Description      |
 | ------ | ------------------------------------------------------------ | ---- | ---------- |
-| single | [MediaEntity](arkts-apis-avMusicTemplate-i.md#mediaentity) | Yes  | Media entity.|
+| single | [MediaEntity](arkts-apis-avMusicTemplate-i.md#mediaentity) | Yes  | Single.|
 
 **Return value**
 
@@ -3334,7 +3441,7 @@ export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
 
   /**
-   * Download status and progress update.
+   * Synchronizes the single track download status to the audio template controller to update the download progress.
    */
   public setDownloadMediaEntityStatus(mediaEntity: avMusicTemplate.MediaEntity) {
     this.template?.setDownloadMediaEntityStatus(mediaEntity);
@@ -3392,38 +3499,38 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
-    private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
 
-    /**
-     * Notification is sent after the custom data changes.
-     */
-    public setCustomElements() {
-        let mediaEntity: avMusicTemplate.MediaEntity = {
-            mediaId: 'mediaId',
-            mediaType: avMusicTemplate.EntityType.SINGLE,
-            parentId: 'parentId',
-            parentMediaType: avMusicTemplate.EntityType.SINGLE,
-            title: 'title',
-            imageUrl: 'imageUrl',
-            playState: avMusicTemplate.PlaybackState.PLAYBACK_STATE_PREPARE
-        }
-        let compilation: avMusicTemplate.Compilation = {
-            errorCode: 0,
-            errorMsg: 'success',
-            id: 'id',
-            title: 'title',
-            hasMoreData: true,
-            totalSize: 2,
-            memberMediaType: avMusicTemplate.EntityType.SINGLE,
-            topElements: [mediaEntity]
-        }
-        let customElement: avMusicTemplate.CustomElement = {
-            errorCode: 0,
-            errorMsg: 'success',
-            customCompilations: [compilation]
-        }
-        this.template?.setCustomElements('add', 'COMPILATION', customElement);
-    };
+  /**
+   * Synchronizes custom element change information to the audio template controller.
+   */
+  public setCustomElements() {
+    let mediaEntity: avMusicTemplate.MediaEntity = {
+      mediaId: 'mediaId',
+      mediaType: avMusicTemplate.EntityType.SINGLE,
+      parentId: 'parentId',
+      parentMediaType: avMusicTemplate.EntityType.SINGLE,
+      title: 'title',
+      imageUrl: 'imageUrl',
+      playState: avMusicTemplate.PlaybackState.PLAYBACK_STATE_PREPARE
+    }
+    let compilation: avMusicTemplate.Compilation = {
+      errorCode: 0,
+      errorMsg: 'success',
+      id: 'id',
+      title: 'title',
+      hasMoreData: true,
+      totalSize: 2,
+      memberMediaType: avMusicTemplate.EntityType.SINGLE,
+      topElements: [mediaEntity]
+    }
+    let customElement: avMusicTemplate.CustomElement = {
+      errorCode: 0,
+      errorMsg: 'success',
+      customCompilations: [compilation]
+    }
+    this.template?.setCustomElements('add', 'COMPILATION', customElement);
+  };
 }
 ```
 ## setSettings
@@ -3464,22 +3571,22 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
-    private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
 
-    /**
-     * Notification is sent after the settings item changes.
-     */
-    public setSettings() {
-        let settingItems: avMusicTemplate.SettingItem[] = [{
-            id: 'id',
-            title: 'title',
-            desc: 'desc',
-            mediaId: 'mediaId',
-            settingType: avMusicTemplate.SettingType.SWITCH,
-            settingValue: false
-        }];
-        this.template?.setSettings(settingItems);
-    };
+  /**
+   * Synchronizes settings information to the audio template controller.
+   */
+  public setSettings() {
+    let settingItems: avMusicTemplate.SettingItem[] = [{
+      id: 'id',
+      title: 'title',
+      desc: 'desc',
+      mediaId: 'mediaId',
+      settingType: avMusicTemplate.SettingType.SWITCH,
+      settingValue: false
+    }];
+    this.template?.setSettings(settingItems);
+  };
 }
 ```
 
@@ -3522,16 +3629,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
-    private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
 
-    /**
-     * Simulates the operation of synchronizing action execution information to the media center.
-     */
-    public reportExecuteAction() {
-        let actionType: string = 'actionType';
-        let params: string = 'params';
-        this.template?.reportExecuteAction(actionType, params);
-    };
+  /**
+   * Synchronizes action execution information to the audio template controller.
+   */
+  public reportExecuteAction() {
+    let actionType: string = 'actionType';
+    let params: string = 'params';
+    this.template?.reportExecuteAction(actionType, params);
+  };
 }
 ```
 
@@ -3572,36 +3679,34 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { avMusicTemplate } from '@kit.AVSessionKit';
 import { wantAgent } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 export class TemplateManager {
-    private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
 
-    /**
-     * Called when a media application needs to launch a custom application UI.
-     */
-    public setExtensionAbility() {
-        let wantAgentInfo: wantAgent.WantAgentInfo = {
-            wants: [
-                {
-                    bundleName: "com.example.templateprovider",
-                    abilityName: 'EntryAbility',
-                    type: 'action',
-                    parameters: {
-                        'ability.want.params.uiExtensionType': 'action'
-                    }
-                }
-            ],
-            actionType: wantAgent.OperationType.START_ABILITIES,
-            requestCode: 0
+  /**
+   * Called when a media application needs to launch a custom application UI.
+   */
+  public setExtensionAbility() {
+    let wantAgentInfo: wantAgent.WantAgentInfo = {
+      wants: [
+        {
+          bundleName: "com.example.templateprovider",
+          abilityName: 'EntryAbility',
+          type: 'action',
+          parameters: {
+            'ability.want.params.uiExtensionType': 'action'
+          }
         }
-        wantAgent.getWantAgent(wantAgentInfo).then((agent) => {
-            this.template?.setExtensionAbility(agent);
-        })
-    };
+      ],
+      actionType: wantAgent.OperationType.START_ABILITIES,
+      requestCode: 0
+    }
+    wantAgent.getWantAgent(wantAgentInfo).then((agent) => {
+      this.template?.setExtensionAbility(agent);
+    })
+  };
 }
 ```
-
 
 ## destroy
 

@@ -6,7 +6,7 @@
 <!--Designer: @zhanglu161-->
 <!--Tester: @lotsof-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=9f53a9e77747af975b5a889ab884bf4bcac288aa translatedAt=2026-06-30T10:23:25.914Z pushedAt=2026-06-30T13:40:35.702Z -->
+<!-- md-trans-meta sourceCommit=2c4338d41d205f3532fb2f34d47ca81854cbd9d5 translatedAt=2026-08-24T11:37:18.878Z pushedAt=2026-08-25T06:47:39.019Z -->
 
 ## Overview
 
@@ -26,7 +26,7 @@ You can use the FFRT paradigm to perform the following modeling:
 
 - **Service window**: concurrency of the concurrent queue, which also equals the number of FFRT Worker threads.
 
-- **Customer level**: priority of concurrent queue tasks.
+- **User level**: priority of concurrent queue tasks.
 
 The implementation code is as follows:
 
@@ -45,7 +45,7 @@ The implementation code is as follows:
 
 ``` C++
 
-const int SLEEP_TIME = 100 * 1000;
+const int SLEEP_TIME = 100 * 1000; // 100ms
 const int BANK_CONCURRENCY = 2;
 
 class BankQueueSystem {
@@ -129,9 +129,9 @@ The main FFRT APIs involved in the preceding example are as follows:
 
 > **NOTE**
 >
-> - For details about how to use FFRT C++ APIs, see [Using FFRT C++ APIs](ffrt-development-guideline.md#using-ffrt-c-api-1).
-> - When using FFRT C or C++ APIs, you can use the FFRT C++ API third-party library to simplify header file inclusion, that is, use the `#include "ffrt/ffrt.h"` header file to include statements.
+> - For details about how to use FFRT C++ APIs, see [Using FFRT C++ API](ffrt-development-guideline.md#using-ffrt-c-api-1).
+> - When using FFRT C or C++ APIs, you can use the FFRT C++ API third-party library to simplify header file inclusion, that is, use the `#include "ffrt/ffrt.h"` header file inclusion statement.
 
 ## Constraints
 
-It is recommended that the maximum concurrency of a concurrent queue be within a proper range. If the value is too large, it is meaningless to exceed the number of Worker threads. If the value is too small, the system resource utilization may be low.
+It is recommended that the maximum concurrency of a concurrent queue be within a proper range. If the value is too large and exceeds the number of Worker threads, it is meaningless. If the value is too small, the system resource utilization may be low.

@@ -450,6 +450,26 @@ type PhotoBrowserZoomCallback = (scale: number) => void
 | ----- |-------------------------------| ----- |----------------------------------------------|
 | scale  | number | 是 | 图片相比原图放大缩小的比例。 |
 
+## UnselectableItemClickedCallback 
+ 
+type UnselectableItemClickedCallback = (unselectableItemInfo: UnselectableItemInfo) => void
+ 
+在picker宫格或大图预览界面，当不可选中的图片被点击时产生的回调。
+ 
+**起始版本：** 26.1.0
+ 
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+ 
+**参数：**
+ 
+| 参数名 | 类型                            | 必填 | 说明 |
+| ----- |-------------------------------| ----- |----------------------------------------------|
+| unselectableItemInfo  | [UnselectableItemInfo](#unselectableiteminfo) | 是 | 被点击的不可选中的图片详情。 |
+
 ## PickerController
 
 应用可通过PickerController向picker组件发送数据。
@@ -919,6 +939,23 @@ Picker上次退出时现场的信息。
 | photoUris | Array&lt;string&gt; | 否   | 否 | 已选择的图片或视频URI。该URI数组仅支持通过临时授权方式调用photoAccessHelper.getAssets使用。 |
 | contextRecoveryInfo |  [photoAccessHelper.ContextRecoveryInfo](arkts-apis-photoAccessHelper-class.md#contextrecoveryinfo21)   | 否   | 否 | 图片选择器组件退出状态的上下文信息。  |
 | movingPhotoBadgeStates | Array&lt;[photoAccessHelper.MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22)&gt;  | 否   | 否 | 已选择媒体文件的动态照片状态。当isMovingPhotoBadgeShown为true时，movingPhotoBadgeStates包含动态照片状态；否则为空。 |
+
+## UnselectableItemInfo
+ 
+被点击的不可选中的图片详情。
+ 
+**起始版本：** 26.1.0
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+ 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+ 
+| 名称 | 类型                                             | 只读 | 可选 | 说明      |
+| ---- | ------------------------------------------------ | ---- | ---- |---------|
+| mimeType | string | 否   | 是 | 媒体文件类型。 |
+| photoSubType | [photoAccessHelper.PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)  | 否   | 是 | 图片资源的子类型。|
 
 ## DataType
 

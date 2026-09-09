@@ -255,6 +255,8 @@ onStartAppFromLauncher(startingWindowTarget: WindowAnimationTarget,finishCallbac
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名               | 类型                                                         | 必填 | 说明               |
@@ -275,6 +277,8 @@ onStartAppFromRecent(startingWindowTarget: WindowAnimationTarget,finishCallback:
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -297,6 +301,8 @@ onStartAppFromOther(startingWindowTarget: WindowAnimationTarget,finishCallback: 
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名               | 类型                                                         | 必填 | 说明               |
@@ -317,6 +323,8 @@ onAppTransition(fromWindowTarget: WindowAnimationTarget, toWindowTarget: WindowA
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -340,6 +348,8 @@ onMinimizeWindow(minimizingWindowTarget: WindowAnimationTarget,finishCallback: W
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名               | 类型                            | 必填 | 说明             |
@@ -360,6 +370,8 @@ onCloseWindow(closingWindowTarget: WindowAnimationTarget,finishCallback: WindowA
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -382,6 +394,8 @@ onScreenUnlock(finishCallback: [WindowAnimationFinishedCallback](#windowanimatio
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名         | 类型                                                         | 必填 | 说明               |
@@ -401,6 +415,8 @@ onWindowAnimationTargetsUpdate(fullScreenWindowTarget: WindowAnimationTarget, fl
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 

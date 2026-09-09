@@ -2,7 +2,7 @@
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @amunra03-->
+<!--Owner: @yh1719-->
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
@@ -140,6 +140,8 @@ import cardEmulation from '@ohos.nfc.cardEmulation';
 > 
 > 从 API version 6 开始支持，从 API version 9 开始废弃，建议使用[hasHceCapability](#cardemulationhashcecapability9)替代。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Communication.NFC.CardEmulation
 
 | 名称   | 值    | 说明       |
@@ -151,6 +153,8 @@ import cardEmulation from '@ohos.nfc.cardEmulation';
 ## CardType<sup>9+</sup>
 
 定义卡模拟应用所使用的业务类型，是支付类型，还是其他类型。
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Communication.NFC.CardEmulation
 
@@ -170,6 +174,8 @@ isSupported(feature: number): boolean
 > **说明：**
 > 
 > 从 API version 6 开始支持，从 API version 9 开始废弃，建议使用[hasHceCapability](#cardemulationhashcecapability9)替代。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Communication.NFC.CardEmulation
 
@@ -263,6 +269,8 @@ isDefaultService(elementName: ElementName, type: CardType): boolean
 
 判断指定的应用是否为指定业务类型的默认应用。
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Communication.NFC.CardEmulation
 
 **需要权限：** ohos.permission.NFC_CARD_EMULATION
@@ -329,6 +337,8 @@ startHCE(aidList: string[]): boolean
 
 > **说明：**
 > 从 API version 8 开始支持，从 API version 9 开始废弃，建议使用[start](#start9)替代。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **需要权限：** ohos.permission.NFC_CARD_EMULATION
 
@@ -416,6 +426,8 @@ start(elementName: [ElementName](../apis-ability-kit/js-apis-bundleManager-eleme
 
 启动HCE业务功能。包括设置当前应用为前台优先，动态注册AID列表。
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **需要权限：** ohos.permission.NFC_CARD_EMULATION
 
 **系统能力：** SystemCapability.Communication.NFC.CardEmulation
@@ -448,6 +460,8 @@ stopHCE(): boolean
 
 > **说明：**
 > 从 API version 8 开始支持，从 API version 9 开始废弃，建议使用[stop](#stop9)替代。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **需要权限：** ohos.permission.NFC_CARD_EMULATION
 
@@ -527,6 +541,8 @@ stop(elementName: [ElementName](../apis-ability-kit/js-apis-bundleManager-elemen
 
 停止HCE业务功能。包括取消APDU数据接收的订阅，退出当前应用前台优先，释放动态注册的AID列表。应用程序需要在HCE卡模拟页面的onDestroy函数里调用该接口。
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **需要权限：** ohos.permission.NFC_CARD_EMULATION
 
 **系统能力：** SystemCapability.Communication.NFC.CardEmulation
@@ -555,6 +571,8 @@ stop(elementName: [ElementName](../apis-ability-kit/js-apis-bundleManager-elemen
 on(type: 'hceCmd', callback: AsyncCallback\<number[]>): void
 
 订阅回调，用于接收对端读卡设备发送的APDU数据，应用程序需要在HCE卡模拟页面的onCreate函数里面调用该订阅函数。使用callback异步回调。
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **需要权限：** ohos.permission.NFC_CARD_EMULATION
 
@@ -661,6 +679,8 @@ export default {
 off(type: 'hceCmd', callback?: AsyncCallback\<number[]>): void
 
 取消APDU数据接收的订阅。使用callback异步回调。
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **需要权限：** ohos.permission.NFC_CARD_EMULATION
 
@@ -816,6 +836,8 @@ transmit(response: number[]): Promise\<void>
 
 发送APDU数据到对端读卡设备，使用Promise异步回调。应用程序必须在[on](#on8)收到读卡设备发送的APDU数据后，才调用该接口响应数据。
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **需要权限：** ohos.permission.NFC_CARD_EMULATION
 
 **系统能力：** SystemCapability.Communication.NFC.CardEmulation
@@ -884,6 +906,8 @@ console.info("transmit Promise end.");
 transmit(response: number[], callback: AsyncCallback\<void>): void
 
 发送APDU数据到对端读卡设备，应用程序必须在[on](#on8)收到读卡设备发送的APDU数据后，才调用该接口响应数据。使用callback异步回调。
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **需要权限：** ohos.permission.NFC_CARD_EMULATION
 

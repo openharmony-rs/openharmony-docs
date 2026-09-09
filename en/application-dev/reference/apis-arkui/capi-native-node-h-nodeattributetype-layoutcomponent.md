@@ -3,10 +3,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8ba6bc39fe942d4f7703731c1dea9b29e95f2e3a translatedAt=2026-08-04T11:11:44.125Z pushedAt=2026-08-06T10:58:41.894Z -->
+<!-- md-trans-meta sourceCommit=75a7d62c0702c21a06ca0119552a942305a023cc translatedAt=2026-08-25T02:19:27.939Z pushedAt=2026-08-26T08:00:20.503Z -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -83,7 +83,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Vertical alignment mode of the child components. The parameter type is [ArkUI_FlexAlignment](capi-layout-h.md#arkui_flexalignment). The value options are as follows: **START** (alignment with the start edge), **CENTER** (center alignment), **END** (alignment with the end edge), **SPACE_BETWEEN** (justified alignment), **SPACE_AROUND** (circular alignment), and SPACE_EVENLY (even alignment). For the mapping between enumerated values and numbers, see the definition of [ArkUI_FlexAlignment](capi-layout-h.md#arkui_flexalignment). Select the corresponding alignment mode when a specific distribution of child elements in the **Column** container in the vertical direction is needed. The default value is **ARKUI_FLEX_ALIGNMENT_START** (alignment with the start edge). |
+| .value[0].i32 | Vertical alignment mode of the child components. The parameter type is [ArkUI_FlexAlignment](capi-layout-h.md#arkui_flexalignment). The value options are as follows: **START** (alignment with the start edge), **CENTER** (center alignment), **END** (alignment with the end edge), **SPACE_BETWEEN** (justified alignment), **SPACE_AROUND** (circular alignment), and **SPACE_EVENLY** (even alignment). For the mapping between enumerated values and numbers, see the definition of [ArkUI_FlexAlignment](capi-layout-h.md#arkui_flexalignment). Select the corresponding alignment mode when a specific distribution of child elements in the **Column** container in the vertical direction is needed. The default value is **ARKUI_FLEX_ALIGNMENT_START** (alignment with the start edge). |
 
 **Returns**
 

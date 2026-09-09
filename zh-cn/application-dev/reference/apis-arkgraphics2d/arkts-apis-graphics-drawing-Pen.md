@@ -544,7 +544,7 @@ let alpha = pen.getAlpha();
 
 setColorFilter(filter: ColorFilter \| null) : void
 
-给画笔添加额外的颜色滤波器。
+设置画笔的颜色滤波器。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -576,7 +576,7 @@ pen.setColorFilter(colorFilter);
 
 setMaskFilter(filter: MaskFilter \| null): void
 
-给画笔添加额外的蒙版滤镜。
+设置画笔的蒙版滤镜。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

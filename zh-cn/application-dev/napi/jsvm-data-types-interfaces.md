@@ -1,4 +1,4 @@
-# JSVM-API 支持的数据类型和接口
+# JSVM-API支持的数据类型和接口
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
@@ -33,7 +33,7 @@
         JSVM_CALLBACK_SCOPE_MISMATCH,         /* 回调作用域不匹配 */
         JSVM_QUEUE_FULL,                      /* 队列满 */
         JSVM_CLOSING,                         /* 关闭中 */
-        JSVM_BIGINT_EXPECTED,                 /* 期望传入Bigint类型 */
+        JSVM_BIGINT_EXPECTED,                 /* 期望传入BigInt类型 */
         JSVM_DATE_EXPECTED,                   /* 期望传入日期类型 */
         JSVM_ARRAYBUFFER_EXPECTED,            /* 期望传入ArrayBuffer类型 */
         JSVM_DETACHABLE_ARRAYBUFFER_EXPECTED, /* 可分离的数组缓冲区预期状态 */
@@ -595,7 +595,7 @@ static napi_value MyJSVMDemo([[maybe_unused]] napi_env _env, [[maybe_unused]] na
 | OH_JSVM_CompileScriptWithOrigin | 编译JavaScript代码并返回绑定到当前环境的编译脚本，同时传入包括 sourceMapUrl 和源文件名在内的源代码信息，用于处理 source map 信息 |
 | OH_JSVM_CompileScriptWithOptions | 通用的编译接口，通过传入 option 数组完成前面的 compile 接口全部功能，同时支持后续选项扩展 |
 | OH_JSVM_CreateCodeCache         | 为编译脚本创建code cache                                                                  |
-| OH_JSVM_RunScript               | 执行编译脚本，如果没有 JIT 权限支持，执行含wasm的脚本会失败，在特定场景下存在性能差异，并打印一行日志提示开发者                                                                             |
+| OH_JSVM_RunScript               | 执行编译脚本，如果没有 JIT 权限支持，执行含Wasm的脚本会失败，在特定场景下存在性能差异，并打印一行日志提示开发者                                                                             |
 
 场景示例：
 
@@ -1369,8 +1369,8 @@ JS对象属性的增加、删除、获取和判断。
 **接口说明**
 | 接口 | 功能说明 |
 | -------- | -------- |
-|OH_JSVM_GetPropertyNames | 获取给定对象的所有可枚举属性名称, 结果变量将存储一个包含所有可枚举属性名称的JavaScript数组。 |
-|OH_JSVM_GetAllPropertyNames | 获取给定对象的所有可用属性名称, 结果变量将存储一个包含所有可枚举属性名称的JavaScript数组。 |
+|OH_JSVM_GetPropertyNames | 获取给定对象的所有可枚举属性名称，结果变量将存储一个包含所有可枚举属性名称的JavaScript数组。 |
+|OH_JSVM_GetAllPropertyNames | 获取给定对象的所有可用属性名称，结果变量将存储一个包含所有可枚举属性名称的JavaScript数组。 |
 |OH_JSVM_SetProperty | 为给定对象设置一个属性。 |
 |OH_JSVM_GetProperty | 用给定的属性的名称，检索目标对象的属性。 |
 |OH_JSVM_HasProperty | 用给定的属性的名称，查询目标对象是否有此属性。 |
@@ -1384,7 +1384,7 @@ JS对象属性的增加、删除、获取和判断。
 |OH_JSVM_HasElement | 若给定对象的指定索引处拥有属性，获取该元素。 |
 |OH_JSVM_DeleteElement | 尝试删除给定对象的指定索引处的元素。 |
 |OH_JSVM_DefineProperties |  在给定对象中定义多个属性。 |
-|OH_JSVM_ObjectFreeze | 冻结给定的对象,防止向其添加新属性，删除现有属性，防止更改现有属性的可枚举性、可配置性或可写性，并防止更改现有属性的值。 |
+|OH_JSVM_ObjectFreeze | 冻结给定的对象，防止向其添加新属性，删除现有属性，防止更改现有属性的可枚举性、可配置性或可写性，并防止更改现有属性的值。 |
 |OH_JSVM_ObjectSeal | 密封给定的对象。这可以防止向其添加新属性，以及将所有现有属性标记为不可配置。 |
 |OH_JSVM_ObjectSetPrototypeOf | 为给定对象设置一个原型。 |
 |OH_JSVM_ObjectGetPrototypeOf | 获取给定JavaScript对象的原型。 |

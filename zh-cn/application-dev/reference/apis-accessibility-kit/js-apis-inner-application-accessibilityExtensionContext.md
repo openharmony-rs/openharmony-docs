@@ -5,7 +5,7 @@
 <!--Owner: @fanzexuan-->
 <!--Designer: @z7o-->
 <!--Tester: @A_qqq-->
-<!--Adviser: @wwwyyyhhhh-->
+<!--Adviser: @w_Machine_cc-->
 
 AccessibilityExtensionContext是AccessibilityExtensionAbility上下文环境，继承自ExtensionContext。
 

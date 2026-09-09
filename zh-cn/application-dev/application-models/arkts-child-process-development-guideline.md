@@ -16,7 +16,7 @@
 
 ## 子进程创建方式选择
 
-| 对比项 | [创建基础ArkTS子进程](#创建基础arkts子进程) | [创建支持参数传递的ArkTS子进程](#创建支持参数传递的arkts子进程)| [创建支持参数传递的Native子进程](#创建支持参数传递的native子进程) |
+| 对比项 | 创建基础ArkTS子进程 | 创建支持参数传递的ArkTS子进程 | 创建支持参数传递的Native子进程 |
 | --- | --- | --- | --- |
 | 涉及接口 | [startChildProcess](../reference/apis-ability-kit/js-apis-app-ability-childProcessManager.md#childprocessmanagerstartchildprocess) | [startArkChildProcess](../reference/apis-ability-kit/js-apis-app-ability-childProcessManager.md#childprocessmanagerstartarkchildprocess12)<sup>12+</sup> | [startNativeChildProcess](../reference/apis-ability-kit/js-apis-app-ability-childProcessManager.md#childprocessmanagerstartnativechildprocess13)<sup>13+</sup> |
 | 适用场景 | 适用于无需传参的轻量ArkTS后台任务，如本地日志归档、配置解析、启动期数据预处理等。| 适用于需要传参或长时运行的ArkTS任务，如接收文件fd进行文档或图片解析、依据参数执行长时数据加工等。| 适用于高性能C/C++计算或复用现有Native库，如音视频编解码、图像处理、计算密集型任务等。|

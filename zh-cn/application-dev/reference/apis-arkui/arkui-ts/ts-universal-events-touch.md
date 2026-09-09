@@ -110,7 +110,7 @@ getHistoricalPoints(): Array&lt;HistoricalPoint&gt;
 
 getCurrentLocalPosition?(): Coordinate2D
 
-获取触摸位置相对于当前组件实时位置左上角的坐标。
+获取触摸位置相对于当前组件实时位置左上角的坐标。在事件无法提供有效的实时组件坐标时，返回空值，使用前请进行判空处理。
 
 **起始版本：** 26.0.0
 
@@ -179,6 +179,7 @@ struct TouchExample {
             if (event.touches.length > 0) {
               this.text = 'TouchType:' + this.eventType
                 + '\nDistance between touch point and touch element:'
+                + '\n  id: ' + event.touches[0].id
                 + '\n  x: ' + event.touches[0].x + '\n  y: ' + event.touches[0].y
                 + '\n  width: ' + event.touches[0].width + '\n  height: ' + event.touches[0].height
                 + '\n  pressedTime: ' + event.touches[0].pressedTime
@@ -210,6 +211,7 @@ struct TouchExample {
             if (event.touches.length > 0) {
               this.text = 'TouchType:' + this.eventType
                 + '\nDistance between touch point and touch element:'
+                + '\n  id: ' + event.touches[0].id
                 + '\n  x: ' + event.touches[0].x + '\n  y: ' + event.touches[0].y
                 + '\n  width: ' + event.touches[0].width + '\n  height: ' + event.touches[0].height
                 + '\n  pressedTime: ' + event.touches[0].pressedTime

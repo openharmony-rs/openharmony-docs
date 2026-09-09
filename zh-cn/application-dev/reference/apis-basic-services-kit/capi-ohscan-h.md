@@ -48,7 +48,7 @@
 | [Scan_ScannerOptions* OH_Scan_GetScannerParameter(const char* scannerId, int32_t* errorCode)](#oh_scan_getscannerparameter) | - | 此 API 可用于获取扫描仪可设置的选项列表。返回的结构体指针指向的内存会在[OH_Scan_Exit](#oh_scan_exit)时自动释放，每个扫描仪型号在内存中只会存储一份副本。 |
 | [int32_t OH_Scan_SetScannerParameter(const char* scannerId, const int32_t option, const char* value)](#oh_scan_setscannerparameter) | - | 此 API 可用于设置扫描仪的某个选项参数。传入的选项和值从[OH_Scan_GetScannerParameter](#oh_scan_getscannerparameter)获取。 |
 | [int32_t OH_Scan_StartScan(const char* scannerId, bool batchMode)](#oh_scan_startscan) | - | 此 API 用于启动扫描仪的扫描任务。 |
-| [int32_t OH_Scan_CancelScan(const char* scannerId)](#oh_scan_cancelscan) | - | 此 API 允许扫描仪取消扫描。 |
+| [int32_t OH_Scan_CancelScan(const char* scannerId)](#oh_scan_cancelscan) | - | 此 API 用于取消扫描仪正在进行的扫描任务。 |
 | [int32_t OH_Scan_GetPictureScanProgress(const char* scannerId, Scan_PictureScanProgress* prog)](#oh_scan_getpicturescanprogress) | - | 此 API 可获取扫描仪扫描图片的进度。prog 参数必须传入非空值，扫描进度将写入 prog 指针指向的结构体。 |
 | [int32_t OH_Scan_Exit()](#oh_scan_exit) | - | 此 API 可用于退出扫描服务，释放扫描框架内存，并注销扫描仪设备发现回调。 |
 
@@ -148,7 +148,7 @@ int32_t OH_Scan_StartScannerDiscovery(Scan_ScannerDiscoveryCallback callback)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Scan_ScannerDiscoveryCallback](#scan_scannerdiscoverycallback) callback | 扫描仪发现事件的[Scan_ScannerDiscoveryCallback](#scan_scannerdiscoverycallback)回调函数 |
+| [Scan_ScannerDiscoveryCallback](#scan_scannerdiscoverycallback) callback | 扫描仪发现事件的[Scan_ScannerDiscoveryCallback](#scan_scannerdiscoverycallback)回调函数，不能为NULL |
 
 **返回：**
 
@@ -233,7 +233,7 @@ Scan_ScannerOptions* OH_Scan_GetScannerParameter(const char* scannerId, int32_t*
 | 参数项 | 描述                                                                                                    |
 | -- |-------------------------------------------------------------------------------------------------------|
 | const char* scannerId | 用于获取扫描仪参数的 ID，取值应为已连接的有效扫描仪设备 ID。 |
-| int32_t* errorCode | 不能为NULL。如果执行成功，errorCode 返回[SCAN_ERROR_NONE](#scan_errorcode)，否则返回特定的错误码，参考[Scan_ErrorCode](#scan_errorcode)。 |
+| int32_t* errorCode | 不能为 NULL。如果执行成功，errorCode 返回[SCAN_ERROR_NONE](#scan_errorcode)，否则返回特定的错误码，参考[Scan_ErrorCode](#scan_errorcode)。 |
 
 **返回：**
 
@@ -263,7 +263,7 @@ int32_t OH_Scan_SetScannerParameter(const char* scannerId, const int32_t option,
 | -- | -- |
 | const char* scannerId | 此 ID 用于设置特定扫描仪的选项，取值应为已连接的有效扫描仪设备 ID。 |
 | const int32_t option | 要设置的选项编号。取值范围从0到 optionCount - 1，从[Scan_ScannerOptions](capi-oh-scan-scan-scanneroptions.md)获取。 |
-| const char* value | 要设置的选项值，有效值从 ranges 获取，从[Scan_ScannerOptions](capi-oh-scan-scan-scanneroptions.md)获取。 |
+| const char* value | 要设置的选项值，有效值从[Scan_ScannerOptions](capi-oh-scan-scan-scanneroptions.md)的 ranges 中获取。 |
 
 **返回：**
 
@@ -292,7 +292,7 @@ int32_t OH_Scan_StartScan(const char* scannerId, bool batchMode)
 | 参数项 | 描述 |
 | -- | -- |
 | const char* scannerId | 此 ID 用于启动指定扫描仪的扫描任务，取值应为已连接的有效扫描仪设备 ID。 |
-| bool batchMode | 是否以批处理模式启动扫描仪。ture表示开启批处理模式，扫描仪可连续扫描多页文档（通常经文档进纸器连续进纸）；false表示关闭批处理模式，仅扫描单页。 |
+| bool batchMode | 是否以批处理模式启动扫描仪。true表示开启批处理模式，扫描仪可连续扫描多页文档（通常经文档进纸器连续进纸）；false表示关闭批处理模式，仅扫描单页。 |
 
 **返回：**
 
@@ -308,7 +308,7 @@ int32_t OH_Scan_CancelScan(const char* scannerId)
 
 **描述**
 
-此 API 允许扫描仪取消正在进行的扫描任务。
+此 API 用于取消扫描仪正在进行的扫描任务。
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

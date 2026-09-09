@@ -9,7 +9,7 @@
 
 ## 简介
 
-[Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md) 画布组件是用来显示自绘内容的组件，它具有保留历史绘制内容、增量绘制的特点。Canvas 有 [CanvasRenderingContext2D](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)/[OffscreenCanvasRenderingContext2D](../reference/apis-arkui/arkui-ts/ts-offscreencanvasrenderingcontext2d.md) 和 [DrawingRenderingContext](../reference/apis-arkui/arkui-ts/ts-drawingrenderingcontext.md) 两套API，应用使用两套API绘制的内容都可以在绑定的 Canvas 组件上显示。其中 CanvasRenderingContext2D 按照W3C标准封装了 [Native Drawing](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md) 接口，可以方便快速复用web应用的绘制逻辑，因此非常适用于web应用和游戏、快速原型设计、数据可视化、在线绘图板、教学工具或创意应用等场景。然而，由于它的性能依赖于浏览器的实现，不如原生API那样接近硬件，因此对于性能要求比较高绘制比较复杂或者硬件依赖性比较强的场景如高性能游戏开发、专业图形处理软件、桌面或移动应用等，使用 Canvas CanvasRenderingContext2D 绘制会存在一定的卡顿、掉帧等性能问题，此时可以直接使用 Native Drawing 接口自绘制替代 Canvas 绘制来提升绘制性能。  
+[Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md) 画布组件是用来显示自绘内容的组件，它具有保留历史绘制内容、增量绘制的特点。Canvas 有 [CanvasRenderingContext2D](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)/[OffscreenCanvasRenderingContext2D](../reference/apis-arkui/arkui-ts/ts-offscreencanvasrenderingcontext2d.md) 和 [DrawingRenderingContext](../reference/apis-arkui/arkui-ts/ts-drawingrenderingcontext.md) 两套API，应用使用两套API绘制的内容都可以在绑定的 Canvas 组件上显示。其中 CanvasRenderingContext2D 按照W3C标准封装了 [drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md) 接口，可以方便快速复用web应用的绘制逻辑，因此非常适用于web应用和游戏、快速原型设计、数据可视化、在线绘图板、教学工具或创意应用等场景。然而，由于它的性能依赖于浏览器的实现，不如原生API那样接近硬件，因此对于性能要求比较高绘制比较复杂或者硬件依赖性比较强的场景如高性能游戏开发、专业图形处理软件、桌面或移动应用等，使用 Canvas CanvasRenderingContext2D 绘制会存在一定的卡顿、掉帧等性能问题，此时可以直接使用 Native Drawing 接口自绘制替代 Canvas 绘制来提升绘制性能。  
 
 | 方案                      | 适用场景 | 特点                                                       |
 | ------------------------- | -------- | ------------------------------------------------------------ |
@@ -17,7 +17,7 @@
 | 适用于Native Drawing绘制   | 高性能游戏开发、专业图形处理软件、桌面或移动应用   | 场景复杂、资源管理精细、硬件依赖强、与平台深度集成、性能要求高                                   |
 
 ## 原理机制
-由于 Canvas 的 CanvasRenderingContext2D 绘制本质上是对 Native Drawing 接口的封装，相对于直接使用 Native Drawing 接口，使用 Canvas 的 CanvasRenderingContext2D 绘制多了一层接口的调用，并且它依赖于浏览器的具体实现。如果图片绘制比较复杂，执行的绘制指令可能会成倍数的增长，进而绘制性能下降的更加严重，导致卡顿、掉帧等问题。下面我们以实现在背景图上绘制1000个透明空心圆的玻璃效果来对比两者的性能差异。
+由于 Canvas 的 CanvasRenderingContext2D 绘制本质上是对 Native Drawing 接口的封装，相对于直接使用 Native Drawing 接口，使用 Canvas 的 CanvasRenderingContext2D 绘制多了一层接口的调用，并且它依赖于浏览器的具体实现。如果图片绘制比较复杂，执行的绘制指令可能会成倍数的增长，进而绘制性能下降得更加严重，导致卡顿、掉帧等问题。下面我们以实现在背景图上绘制1000个透明空心圆的玻璃效果来对比两者的性能差异。
 
 ## 场景示例
 
@@ -158,7 +158,7 @@ export default struct GlassCoverView {
 
 - **正例(使用Native侧Drawing绘制)**  
 
-[Native Drawing](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md) 主要使用分层接口 [OH_Drawing_CanvasSaveLayer](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md#oh_drawing_canvassavelayer) 和融合接口 [OH_Drawing_BrushSetBlendMode](../reference/apis-arkgraphics2d/capi-drawing-brush-h.md#oh_drawing_brushsetblendmode) 来实现多图融合效果。通过在前端创建一个自绘制节点 [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md), 并将图形绘制上下文及背景图参数通过 Native 侧暴露的接口传入，由 Native 侧使用相应的 Drawing 接口进行绘制，具体实现步骤如下：
+[drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md) 主要使用分层接口 [OH_Drawing_CanvasSaveLayer](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md#oh_drawing_canvassavelayer) 和融合接口 [OH_Drawing_BrushSetBlendMode](../reference/apis-arkgraphics2d/capi-drawing-brush-h.md#oh_drawing_brushsetblendmode) 来实现多图融合效果。通过在前端创建一个自绘制节点 [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md)，并将图形绘制上下文及背景图参数通过 Native 侧暴露的接口传入，由 Native 侧使用相应的 Drawing 接口进行绘制，具体实现步骤如下：
 ### 前端实现
 1、前端定义一个 [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md) 自绘制渲染节点，将背景图 this.pMap 和图形绘制上下文 context 传入 Native，调用 Native 侧的 nativeOnDraw 接口进行绘制。
 
@@ -280,7 +280,7 @@ struct Index {
 ```
 
 ### Native侧实现
-1、Native 侧暴露绘制接口 nativeOnDraw 供前端调用，该接口绑定 Native侧的 OnDraw 函数，ArkTs传入的参数在该函数中处理。
+1、Native 侧暴露绘制接口 nativeOnDraw 供前端调用，该接口绑定 Native侧的 OnDraw 函数，ArkTS传入的参数在该函数中处理。
 ```C++
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports) {
@@ -417,4 +417,4 @@ static void NativeOnDrawPixelMap(OH_Drawing_Canvas *canvas, NativePixelMap *nati
 | Canvas 的 CanvasRenderingContext2D画透明圈（反例） | 1000  | 34.1毫秒 |
 | Native Drawing画透明圈（正例）   | 1000   | 1.2毫秒                                   |
 
-通过上述对比可以发现，在实现较大数量透明空心圆绘制时，相比于Canvas 的 [CanvasRenderingContext2D](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)，使用 [Native Drawing](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md) 绘制可以得到明显的性能提升。以上只是实现透明空心圆，针对实心圆及其他场景（如 [globalCompositeOperation](../reference/apis-arkui/arkui-js/js-components-canvas-canvasrenderingcontext2d.md#globalcompositeoperation) 属性的其他值），由于实现机制的不同，绘制的指令数量也存在差异，从而性能数据会存在一些差异。实际应用中，我们可以根据自己的需要等实际情况，在对性能要求不高的情况下采用 Canvas 的 CanvasRenderingContext2D 绘制，如果对性能要求比较高或者比较依赖于硬件，建议使用 [Native Drawing](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md)  进行绘制。
+通过上述对比可以发现，在实现较大数量透明空心圆绘制时，相比于Canvas 的 [CanvasRenderingContext2D](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)，使用 [drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md) 绘制可以得到明显的性能提升。以上只是实现透明空心圆，针对实心圆及其他场景（如 [globalCompositeOperation](../reference/apis-arkui/arkui-js/js-components-canvas-canvasrenderingcontext2d.md#globalcompositeoperation) 属性的其他值），由于实现机制的不同，绘制的指令数量也存在差异，从而性能数据会存在一些差异。实际应用中，我们可以根据自己的需要等实际情况，在对性能要求不高的情况下采用 Canvas 的 CanvasRenderingContext2D 绘制，如果对性能要求比较高或者比较依赖于硬件，建议使用 [drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md)  进行绘制。

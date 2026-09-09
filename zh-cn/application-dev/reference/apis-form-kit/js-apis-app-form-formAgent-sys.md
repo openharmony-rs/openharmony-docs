@@ -19,7 +19,7 @@ FormAgent模块提供了卡片代理相关接口的能力，目前仅包括请�
 import { formAgent } from '@kit.FormKit';
 ```
 
-## requestPublishForm
+## formAgent.requestPublishForm
 
 requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 
@@ -83,7 +83,7 @@ try {
 }
 ```
 
-## requestPublishForm
+## formAgent.requestPublishForm
 
 requestPublishForm(want: Want): Promise&lt;string&gt;
 
@@ -150,7 +150,7 @@ try {
 }
 ```
 
-## updateFormCrossBundle
+## formAgent.updateFormCrossBundle
 
 updateFormCrossBundle(formId: string, formBindingData: formBindingData.FormBindingData): Promise&lt;void&gt;
 
@@ -214,5 +214,142 @@ try {
   });
 } catch (error) {
   console.error(`catch error, code: ${error?.code}, message: ${error?.message}`);
+}
+```
+
+## formAgent.getAvailableFormHostServices
+
+getAvailableFormHostServices(): Promise&lt;Array&lt;formInfo.PeerFormHostServiceInfo&gt;&gt;
+
+获取可用的卡片使用方服务信息列表。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.AGENT_REQUIRE_FORM
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**起始版本：** 26.1.0
+
+**返回值：**
+
+| 类型                                                                                                                          | 说明                          |
+|----------------------------------------------------------------------------------------------------------------------------|-----------------------------|
+| Promise&lt;Array&lt;[formInfo.PeerFormHostServiceInfo](js-apis-app-form-formInfo-sys.md#peerformhostserviceinfo)&gt;&gt; | Promise对象，返回可用的卡片使用方服务信息列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 16500050 | IPC connection error. |
+| 16501000 | An internal functional error occurred. |
+
+**示例：**
+
+```ts
+import { formAgent, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formAgent.getAvailableFormHostServices().then((data: formInfo.PeerFormHostServiceInfo[]) => {
+    console.info(`formAgent getAvailableFormHostServices success, service count: ${data.length}`);
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formAgent.requestPublishFormCrossDevice
+
+requestPublishFormCrossDevice(peerServiceInfo: formInfo.PeerFormHostServiceInfo, want: Want, formBindingData?: formBindingData.FormBindingData): Promise&lt;formInfo.PublishFormCrossDeviceResult&gt;
+
+请求将卡片发布到远端设备的卡片使用方服务。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.AGENT_REQUIRE_FORM
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | -------|
+| peerServiceInfo | [formInfo.PeerFormHostServiceInfo](js-apis-app-form-formInfo-sys.md#peerformhostserviceinfo) | 是 | 远端设备的卡片使用方服务信息。 |
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 发布请求，需包含以下字段。<br>bundleName: 目标卡片所属应用的bundleName。<br>abilityName: 目标卡片所属应用的Ability。<br>parameters:<br>- ohos.extra.param.key.form_dimension: 目标卡片规格。<br>- ohos.extra.param.key.form_name: 目标卡片名。<br>- ohos.extra.param.key.module_name: 目标卡片moduleName。 |
+| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | 否 | 用于更新的卡片数据。 |
+
+**返回值：**
+
+| 类型                                                                                                                  | 说明                          |
+|--------------------------------------------------------------------------------------------------------------------|-----------------------------|
+| Promise&lt;[formInfo.PublishFormCrossDeviceResult](js-apis-app-form-formInfo-sys.md#publishformcrossdeviceresult)&gt; | Promise对象，返回跨设备发布卡片的结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 16500050 | IPC connection error. |
+| 16501020 | Remote form service is unavailable. |
+| 16501021 | The peer form application is not installed or the version is too old. |
+| 16501002 | The number of forms exceeds the maximum allowed. |
+| 16501017 | There is no space to publish the form. |
+| 16501018 | This form does not support publishing. |
+| 16501000 | An internal functional error occurred. |
+| 16501008 | Waiting for the form addition to the desktop timed out. |
+
+**示例：**
+
+```ts
+import { formBindingData, formAgent, formInfo } from '@kit.FormKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let want: Want = {
+  bundleName: 'com.ohos.exampledemo',
+  abilityName: 'FormAbility',
+  parameters: {
+    'ohos.extra.param.key.form_dimension': 2,
+    'ohos.extra.param.key.form_name': 'widget',
+    'ohos.extra.param.key.module_name': 'entry'
+  }
+};
+let peerServiceInfo: formInfo.PeerFormHostServiceInfo = {
+  serviceName: 'serviceName',
+  serviceDisplayName: 'serviceDisplayName',
+  displayId: '0',
+  deviceId: 'deviceId',
+  networkId: 'networkId',
+  serviceId: 'serviceId'
+};
+let param: Record<string, string> = {
+  'temperature': '22c',
+  'time': '22:00'
+};
+let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
+try {
+  formAgent.requestPublishFormCrossDevice(peerServiceInfo, want, obj).then((data: formInfo.PublishFormCrossDeviceResult) => {
+    console.info(`formAgent requestPublishFormCrossDevice success, form ID is: ${data.formId}`);
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```

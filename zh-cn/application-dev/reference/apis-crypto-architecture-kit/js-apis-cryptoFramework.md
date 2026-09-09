@@ -1140,7 +1140,7 @@ function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
   return eccCommonSpec;
 }
 
-async function testgetAsyKeySpec() {
+async function testGetAsyKeySpec() {
   let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
   let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
   let keyPair = await generatorBySpec.generateKeyPair();
@@ -1249,12 +1249,12 @@ let publicPkcs1Str1024: string =
     + 'SHy2gC+bvEpuIuRe64yXGuM/aP+ZvmIj9QBIVI9mJD8jLEOvQBBpAgMBAAE=\n'
     + '-----END RSA PUBLIC KEY-----\n';
 
-function TestPubKeyPkcs1ToX509BySync1024() {
+function testPubKeyPkcs1ToX509BySync1024() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let keyPair = rsaGenerator.convertPemKeySync(publicPkcs1Str1024, null);
   let pubPemKey = keyPair.pubKey;
   let pubString = pubPemKey.getEncodedPem('X509');
-  console.info('[sync]TestPubKeyPkcs1ToX509BySync1024 pubString output = ' + pubString);
+  console.info('[sync]testPubKeyPkcs1ToX509BySync1024 pubString output = ' + pubString);
 }
 ```
 
@@ -1456,12 +1456,12 @@ function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
   return eccCommonSpec;
 }
 
-async function testgetAsyKeySpec() {
+async function testGetAsyKeySpec() {
   let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
   let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
   let keyPair = await generatorBySpec.generateKeyPair();
-  let pirKey = keyPair.priKey;
-  let eccPrimeP = pirKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
+  let priKey = keyPair.priKey;
+  let eccPrimeP = priKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
   console.info('ecc item --- p: ' + eccPrimeP.toString(16));
 }
 ```
@@ -1849,7 +1849,7 @@ function generateAsyKey() {
 
 getKeyData(itemType: AsyKeyDataItem): Promise\<Uint8Array>
 
-指定密钥数据项类型，获取对应类型的公钥数据。使用Promise异步回调。
+指定密钥数据项类型，获取对应类型的私钥数据。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 

@@ -1,4 +1,4 @@
-# ArkUI_FloatAnimatablePropertyHandle
+# ArkUI_FloatAnimatableProperty*
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->

@@ -5,7 +5,7 @@
 <!--Owner: @fanzexuan-->
 <!--Designer: @z7o-->
 <!--Tester: @A_qqq-->
-<!--Adviser: @wwwyyyhhhh-->
+<!--Adviser: @w_Machine_cc-->
 
 AccessibilityExtensionAbility基于ExtensionAbility框架，提供无障碍扩展业务的能力，包括连接无障碍服务、断开无障碍服务、处理无障碍事件和处理无障碍按键事件等。
 

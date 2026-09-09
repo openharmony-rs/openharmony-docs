@@ -1,7 +1,7 @@
 # 事件
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
@@ -527,6 +527,7 @@ onErrorReceive(callback: Callback\<OnErrorReceiveEvent\>)
             if (event) {
               console.info('getErrorInfo:' + event.error.getErrorInfo());
               console.info('getErrorCode:' + event.error.getErrorCode());
+              console.info('getCustomErrorCode:' + event.error.getCustomErrorCode());
               console.info('url:' + event.request.getRequestUrl());
               console.info('isMainFrame:' + event.request.isMainFrame());
               console.info('isRedirect:' + event.request.isRedirect());
@@ -1250,7 +1251,7 @@ onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceRespon
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
-    responseWeb: webview.WebResourceResponse = new webview.WebResourceResponse();
+    responseWeb: WebResourceResponse = new WebResourceResponse();
     heads: Header[] = new Array();
     webData: string = "<!DOCTYPE html>\n" +
       "<html>\n" +

@@ -244,7 +244,7 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
     .lineHeight(20)
   ```
 
-  ![radio-default](figures/radio-default.png)
+  ![text-line-height](figures/text-line-height.png)
 
 - 通过[decoration](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#decoration)属性设置文本装饰线样式、颜色及其粗细。
 

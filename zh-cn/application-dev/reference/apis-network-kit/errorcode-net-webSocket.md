@@ -39,7 +39,7 @@ WebSocket连接失败。
 
 3. 检查添加header是否正确。
 
-4. 如果问题仍然存在，收集完整日志后联系技术支持获取帮助。 
+4. 如果问题仍然存在，收集完整日志后联系技术支持获取帮助。
 
 ## 2302001 Websocket URL错误
 
@@ -57,9 +57,9 @@ WebSocket URL错误。
 
 **处理步骤**
 
-1.检查URL是否为空或者未包含正确的协议（ws://或wss://）。
+1. 检查URL是否为空或者未包含正确的协议（ws://或wss://）。
 
-2.检查URL长度是否超过2048个字符。
+2. 检查URL长度是否超过2048个字符。
 
 ## 2302002 Websocket 证书不存在
 
@@ -77,9 +77,9 @@ WebSocket 证书不存在。
 
 **处理步骤**
 
-1.检查CA证书路径是否有效。
+1. 检查CA证书路径是否有效。
 
-2.如指定了WebSocketRequestOptions.clientCert，请检查证书路径与私钥路径是否有效。
+2. 如指定了[WebSocketRequestOptions](./js-apis-webSocket.md#websocketrequestoptions).clientCert，请检查证书路径与私钥路径是否有效。
 
 
 ## 2302003 Websocket 连接已经存在
@@ -104,7 +104,7 @@ WebSocket 连接已经建立。
 
 **错误信息**
 
-Can't listen to the given NIC.
+Can't listen on the given NIC.
 
 **错误描述**
 
@@ -122,7 +122,7 @@ WebSocketServer服务器配置文件中的IP地址无效。
 
 **错误信息**
 
-Can't listen to the given Port.
+Can't listen on the given Port.
 
 **错误描述**
 

@@ -18,11 +18,6 @@
 >
 >本模块首批接口从API version 22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
-
-本模块定义了输入法扩展信息的数据结构，用于编辑框应用向输入法应用传递自定义配置。`InputMethodExtraConfig`作为数据类型需与`@ohos.inputMethod`模块的API组合使用——在`InputMethodController.attach()`方法中，通过`TextConfig`的`extraConfig`属性将扩展信息传递给输入法应用。输入法应用侧通过`@ohos.inputMethodEngine`模块的`InputClient`获取并处理这些扩展信息，据此调整输入行为（如切换输入模式、更改主题等），实现编辑框应用与输入法应用之间的个性化配置协同。
-
-典型使用流程：编辑框应用构造`InputMethodExtraConfig` → 注入`TextConfig.extraConfig` → 通过`attach()`传递 → 输入法应用通过`InputClient`接收 → 输入法应用据此调整行为。
-
 本模块定义了以下关键Interface和数据类型：
 
 | Interface/类型 | 说明 |
@@ -30,37 +25,40 @@
 | InputMethodExtraConfig | 输入法扩展信息接口，包含`customSettings`属性，用于存储自定义键值对。这些键值对可以是任何与输入法相关的配置信息（如用户输入习惯、快捷键设置、主题颜色等），将在输入法应用绑定时加载，以提供个性化用户体验。信息总长度不超过32KB。 |
 | CustomValueType | 扩展信息值的联合类型，支持`number`、`string`、`boolean`三种值类型，接口参数具体类型根据其功能而定。 |
 
-本模块为纯数据定义模块，`InputMethodExtraConfig`作为数据类型需与其他模块的API组合使用。典型组合为：在`@ohos.inputMethod`模块的`InputMethodController.attach()`方法中，通过`TextConfig`将`InputMethodExtraConfig`传递给输入法应用。
+本模块为纯数据定义模块，`InputMethodExtraConfig`作为数据类型需与其他模块的API组合使用。典型组合为：在`TextInput`控件的`onWillAttachIME`方法中，通过`IMEClient.setExtraConfig`将`InputMethodExtraConfig`传递给输入法应用，输入法应用侧通过`@ohos.inputMethodEngine`模块的`EditorAttribute`接收并处理该配置。
 
 ```javascript
 // 以下为阐述调用逻辑的伪代码
+@Entry
+@Component
+struct Index2 {
+  // 1. 构造输入法扩展信息
+  private extraConfig: InputMethodExtraConfig = {
+    customSettings: {
+      'inputMode': 'chat',
+      'showEmojiPanel': true,
+      'themeColor': 'dark',
+      'autoCapitalize': false
+    }
+  };
 
-// 1. 构造输入法扩展信息
-let extraConfig = {
-  customSettings: {
-    'inputMode': 'chat',
-    'showEmojiPanel': true,
-    'themeColor': 'dark',
-    'autoCapitalize': false
+  build() {
+    Column() {
+      TextInput()
+        .onWillAttachIME((client: IMEClient): void => {
+          client.setExtraConfig(this.extraConfig);
+        })
+    }
+    .height('100%')
+    .width('100%')
   }
-};
-
-// 2. 将扩展信息注入TextConfig
-let textConfig = {
-  inputAttribute: { textInputType: 0, enterKeyType: 0 },
-  cursorInfo: { left: 100, top: 200, width: 2, height: 20 },
-  extraConfig: extraConfig
-};
-
-// 3. 绑定输入法时传递扩展信息
-let controller = inputMethod.getController();
-controller.attach(true, textConfig);
+}
 ```
 
 ## 导入模块
 
 ```ts
-import { InputMethodExtraConfig, CustomValueType } from '@kit.IMEKit';
+import { InputMethodExtraConfig } from '@kit.IMEKit';
 ```
 
 ## CustomValueType<sup>22+</sup> 
@@ -97,35 +95,36 @@ customSettings参数使用建议：
 - 规格限制：信息的总长度不超过32KB。当总长度超过32KB时，超出部分的信息将不被传递。开发者可通过计算所有键值对的JSON序列化长度来判断是否超出限制。
 - 生效机制：扩展信息在编辑框应用通过`@ohos.inputMethod`模块的`InputMethodController.attach()`绑定输入法时生效，随`TextConfig.extraConfig`属性一并传递给输入法应用。未调用`attach()`或`TextConfig`中未设置`extraConfig`时，扩展信息不会被传递。
 - 注意事项：
-  - 前提条件：需先构造`InputMethodExtraConfig`对象并注入`TextConfig.extraConfig`属性，再通过`InputMethodController.attach()`传递。
   - 开发建议：键名建议采用有意义的命名规范（如'inputMode'、'showEmojiPanel'），便于输入法应用解析和使用；避免使用过于简短或无意义的键名（如'a'、'x1'），以免降低可读性和可维护性。
   - 开发建议：键名应避免与输入法框架内部使用的键名冲突。建议使用应用专属前缀（如'com.example.chat.inputMode'）以防止命名冲突。
-- 相关接口间的配合/制约关系：`customSettings`需配合`@ohos.inputMethod`模块的`TextConfig.extraConfig`属性使用——将`InputMethodExtraConfig`对象赋值给`TextConfig.extraConfig`，再通过`InputMethodController.attach()`传递。输入法应用侧通过`@ohos.inputMethodEngine`模块的`InputClient`接收并处理该配置。
+- 相关接口间的配合/制约关系：典型组合为在`TextInput`控件的`onWillAttachIME`方法中，通过`IMEClient.setExtraConfig`将`InputMethodExtraConfig`传递给输入法应用，输入法应用侧通过`@ohos.inputMethodEngine`模块的`EditorAttribute`接收并处理该配置。
 
 **示例：**
 
 ```ts
-import { InputMethodExtraConfig, inputMethod } from '@kit.IMEKit';
+// 以下代码需要在EntryAbility的page页面中执行
+@Entry
+@Component
+struct Index2 {
+  // 1. 构造输入法扩展信息
+  private extraConfig: InputMethodExtraConfig = {
+    customSettings: {
+      'inputMode': 'chat',
+      'showEmojiPanel': true,
+      'themeColor': 'dark',
+      'autoCapitalize': false
+    }
+  };
 
-// 构造输入法扩展信息
-let extraConfig: InputMethodExtraConfig = {
-  customSettings: {
-    'inputMode': 'chat',
-    'showEmojiPanel': true,
-    'themeColor': 'dark',
-    'autoCapitalize': false,
-    'fontSize': 16
+  build() {
+    Column() {
+      TextInput()
+        .onWillAttachIME((client: IMEClient): void => {
+          client.setExtraConfig(this.extraConfig);
+        })
+    }
+    .height('100%')
+    .width('100%')
   }
-};
-
-// 将扩展信息注入TextConfig（配合@ohos.inputMethod模块使用）
-let textConfig = {
-  inputAttribute: { textInputType: 0, enterKeyType: 0 },
-  cursorInfo: { left: 100, top: 200, width: 2, height: 20 },
-  extraConfig: extraConfig
-};
-
-// 通过attach传递给输入法应用
-let controller = inputMethod.getController();
-controller.attach(true, textConfig);
+}
 ```

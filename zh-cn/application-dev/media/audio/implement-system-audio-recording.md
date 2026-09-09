@@ -6,7 +6,7 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-从API版本26.0.0开始，Audio Kit支持应用使用AudioCapturer（ArkTS API）或OH_AudioCapturer（C API）录制系统音频。本文介绍具体开发方法。
+从API版本26.0.0开始，Audio Kit支持应用使用AudioCapturer（ArkTS）或OH_AudioCapturer（C/C++）录制系统音频。本文介绍具体开发方法。
 
 Phone、Tablet和TV设备支持`SystemCapability.Multimedia.Audio.PlaybackCapture`系统能力，其他设备可以通过[canIUse()](../../reference/common/js-apis-syscap.md#caniuse)检查是否支持该系统能力。使用ArkTS API开发时，仅支持Stage模型。
 
@@ -18,7 +18,7 @@ Phone、Tablet和TV设备支持`SystemCapability.Multimedia.Audio.PlaybackCaptur
 
 ## 开发指导
 
-使用AudioCapturer（ArkTS API）或OH_AudioCapturer（C API）采集内录音频的基本流程如下：
+使用AudioCapturer（ArkTS）或OH_AudioCapturer（C/C++）采集内录音频的基本流程如下：
 
 1. 创建音频采集器，配置音频流参数和内录模式。
 2. 注册音频数据回调，准备接收采集到的PCM数据。
@@ -42,7 +42,7 @@ C/C++开发建议搭配[OH_AudioStreamBuilderStruct](../../reference/apis-audio-
 
 <img src="figures/playback-capture-authorization.jpg" width="320" alt="音频内录授权弹框">
 
-### AudioCapturer（ArkTS API）开发步骤及注意事项
+### 开发步骤及注意事项(ArkTS)
 
 以下ArkTS示例为片段代码，开发者可根据实际业务将采集到的PCM数据写入文件、送入编码器或交给自定义音频处理模块。
 
@@ -186,7 +186,7 @@ C/C++开发建议搭配[OH_AudioStreamBuilderStruct](../../reference/apis-audio-
    }
    ```
 
-### OH_AudioCapturer（C API）开发步骤及注意事项
+### 开发步骤及注意事项(C/C++)
 
 以下C/C++示例为片段代码，展示创建、启动、停止和释放OH_AudioCapturer的完整生命周期。OH_AudioCapturer的基础录制流程可参考[推荐使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)。
 

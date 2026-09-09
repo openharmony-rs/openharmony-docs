@@ -328,7 +328,7 @@ export class GlobalStaticSnapshot {
 
 **完整示例：**
 
-完整示例请参考[长截图](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-long-snapshot-practice#section1566681910427)。
+完整示例请参考[长截图](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkts-long-screenshot)。
 
 ## 组件截图最佳实践
 ### 合理控制截图时机

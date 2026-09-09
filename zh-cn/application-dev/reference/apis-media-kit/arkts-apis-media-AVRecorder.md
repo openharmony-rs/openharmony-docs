@@ -29,7 +29,7 @@ import { media } from '@kit.MediaKit';
 
 | 名称    | 类型                                 | 只读 | 可选 | 说明               |
 | ------- | ------------------------------------ | ---- | ---- | ------------------ |
-| state9+ | [AVRecorderState](arkts-apis-media-t.md#avrecorderstate9) | 是   | 否   | 音视频录制的状态。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| state<sup>9+</sup> | [AVRecorderState](arkts-apis-media-t.md#avrecorderstate9) | 是   | 否   | 音视频录制的状态。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## prepare<sup>9+</sup>
 

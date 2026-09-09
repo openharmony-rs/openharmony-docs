@@ -3,8 +3,9 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=850c7d4f71d6bc50d82f299a21bb9cea3a266f3d translatedAt=2026-09-03T12:24:08.759Z pushedAt=2026-09-05T10:47:30.910Z -->
 
 The module providers APIs for launcher applications (applications with icons on the home screen) to obtain the [launcher ability information](js-apis-bundleManager-launcherAbilityInfo.md).
 
@@ -33,7 +34,7 @@ Obtains the [launcher ability information](js-apis-bundleManager-launcherAbility
 | Name    | Type  | Mandatory| Description        |
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | Yes  | Bundle name.|
-| userId     | number | Yes  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9).|
+| userId     | number | Yes   | ID of the user to query, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). |
 
 **Returns**
 
@@ -59,8 +60,8 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let data = launcherBundleManager.getLauncherAbilityInfoSync("com.example.demo", 100);
-  console.info("data is " + JSON.stringify(data));
+  let launcherAbilityInfos = launcherBundleManager.getLauncherAbilityInfoSync("com.example.demo", 100);
+  console.info("data is " + JSON.stringify(launcherAbilityInfos));
 } catch (errData) {
   let code = (errData as BusinessError).code;
   let message = (errData as BusinessError).message;
@@ -72,7 +73,7 @@ try {
 
 type LauncherAbilityInfo = _LauncherAbilityInfo
 
-Defines the information about the launcher ability.
+Basic information about the home screen application ability, including core attributes such as the application identifier, icon, and name. For details, see [LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md).
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Launcher
 
@@ -115,3 +116,4 @@ Defines the custom data in the shortcut configuration.
 | Type                                                        | Description          |
 | ------------------------------------------------------------ | -------------- |
 | [_ParameterItem](./js-apis-bundleManager-shortcutInfo.md#parameteritem) | Custom data in the shortcut configuration.|
+
