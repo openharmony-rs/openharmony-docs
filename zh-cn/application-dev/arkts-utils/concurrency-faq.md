@@ -166,8 +166,8 @@
 
 **解决方案**
 
-1.分析其他任务执行耗时3s/5s是否合理；<br>
-2.调整taskA优先级。
+1. 分析其他任务执行耗时3s/5s是否合理；
+2. 调整taskA优先级。
 
 ### 排查方向：晚执行的TaskPool任务是串行任务或者依赖其他任务
 
@@ -210,7 +210,8 @@ TaskPool第一次执行任务慢，间隔几百毫秒，原因是子线程反序
 
 **解决方案**
 
-1.可拆分@Concurrent方法到单独的ets文件，减少模块初始化时间；2.使用延迟加载（[lazy import](arkts-lazy-import.md)）。
+1. 可拆分@Concurrent方法到单独的ets文件，减少模块初始化时间；
+2. 使用延迟加载（[lazy import](arkts-lazy-import.md)）。
 
 ## TaskPool序列化失败问题定位指导
 
