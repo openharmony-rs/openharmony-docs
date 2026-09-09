@@ -1416,7 +1416,7 @@ promise.then(() => {
 
 setCBConfigList\(configs: CBConfigListConfigs\): Promise\<void\>
 
-打开小区广播列表
+打开小区广播列表。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2381,17 +2381,17 @@ SIM卡消息状态。
 
 ## CBConfigListConfigs<sup>23+</sup>
 
-定义小区广播列表配置
+定义小区广播列表配置。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
-|  名称  | 类型                                   | 必填 | 说明           |
-| ------ | -------------------------------------- | ---- | -------------- |
-| slotId | number                                 | 是   | 指定当前小区广播配置列表对应的卡槽         |
-| messageIds   | number[]                         | 是   | 定义当前小区广播列表的消息号 |
-| ranType | [RanType](#rantype7)                  | 是   | 定义当前小区广播列表接入网类型 |
+|  名称  | 类型                                   | 只读 | 可选 | 说明           |
+| ------ | -------------------------------------- | ---- | ---- | -------------- |
+| slotId | number                                 | 否   | 否   | 指定当前小区广播配置列表对应的卡槽。        |
+| messageIds   | number[]                         | 否   | 否   | 定义当前小区广播列表的消息号。|
+| ranType | [RanType](#rantype7)                  | 否   | 否   | 定义当前小区广播列表接入网类型。|
 
 ## SimMessageOptions<sup>7+</sup>
 
