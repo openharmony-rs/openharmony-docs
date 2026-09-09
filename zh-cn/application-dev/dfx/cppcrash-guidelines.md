@@ -439,9 +439,9 @@ ARM 64位系统支持抓取CPP和JS之间跨语言的调用栈，因此如果在
 
 空指针解引用通常有以下两个常见的场景：
 
-1.形如SIGSEGV(SEGV_MAPERR)\@0x00000000或cppcrash日志的Register中打印的r0，r1等传参寄存器的值为0，应首先考虑调用时是否传入了空指针。
+1. 形如SIGSEGV(SEGV_MAPERR)\@0x00000000或cppcrash日志的Register中打印的r0，r1等传参寄存器的值为0，应首先考虑调用时是否传入了空指针。
 
-2.形如SIGSEGV(SEGV_MAPERR)\@0x0000000c（小于一个内存页大小）或cppcrash日志Register中打印的r1等传参寄存器的值为一个很小的值时应考虑调用入参的结构体成员是否包含空指针。
+2. 形如SIGSEGV(SEGV_MAPERR)\@0x0000000c（小于一个内存页大小）或cppcrash日志Register中打印的r1等传参寄存器的值为一个很小的值时应考虑调用入参的结构体成员是否包含空指针。
 
 该场景会在日志中打印出提示信息，表明故障很有可能是因为空指针解引用导致。以下是一份DevEco Studio归档在FaultLog的进程崩溃日志的核心内容。
 
