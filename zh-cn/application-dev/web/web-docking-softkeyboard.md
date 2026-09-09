@@ -288,141 +288,144 @@ ArkWeb组件将跟随ArkUI重新布局，效果如图1和图2所示。
 
 ![arkui-keyboardavoid](figures/arkui-keyboardavoid.png)
 
-2. 在UIContext的键盘避让模式为Offset模式时，应用可通过[WebKeyboardAvoidMode()](../reference/apis-arkweb/arkts-basic-components-web-e.md#webkeyboardavoidmode12)设置ArkWeb组件的键盘避让模式。Web组件的[WebKeyboardAvoidMode()](../reference/apis-arkweb/arkts-basic-components-web-e.md#webkeyboardavoidmode12)接口优先级高于W3C侧virtualKeyboard.overlayContent。
+2.在UIContext的键盘避让模式为Offset模式时，应用可通过[WebKeyboardAvoidMode()](../reference/apis-arkweb/arkts-basic-components-web-e.md#webkeyboardavoidmode12)设置ArkWeb组件的键盘避让模式。Web组件的[WebKeyboardAvoidMode()](../reference/apis-arkweb/arkts-basic-components-web-e.md#webkeyboardavoidmode12)接口优先级高于W3C侧virtualKeyboard.overlayContent。
 
-   - RESIZE_VISUAL：仅调整可视视口的大小，而不调整布局视口的大小。
-   - RESIZE_CONTENT：调整可视视口和布局视口的大小。
-   - OVERLAYS_CONTENT：不调整任何视口的大小，获焦input元素没有滚动到可视区域的行为。
+- RESIZE_VISUAL：仅调整可视视口的大小，而不调整布局视口的大小。
+- RESIZE_CONTENT：调整可视视口和布局视口的大小。
+- OVERLAYS_CONTENT：不调整任何视口的大小，获焦input元素没有滚动到可视区域的行为。
 
-   > **说明：** 
-   >
-   > 可视视口指用户正在看到的网站的区域，该区域的宽度等于移动设备的浏览器窗口的宽度。
-   >
-   > 布局视口指网页本身的宽度。
+>**说明：** 
+>
+>可视视口指用户正在看到的网站的区域，该区域的宽度等于移动设备的浏览器窗口的宽度。
+>
+>布局视口指网页本身的宽度。
 
-   在应用代码中设置ArkWeb的软键盘避让模式。
+在应用代码中设置ArkWeb的软键盘避让模式。
 
-   ArkTS-Dyn示例：
+ArkTS-Dyn示例：
 
-    <!-- @[soft_keyboard_setmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/SetSKBMode_one.ets) -->
-    
-    ``` TypeScript
-    // Index.ets
-    import { webview } from '@kit.ArkWeb';
-    
-    @Entry
-    @Component
-    struct KeyboardAvoidExample {
-      controller: webview.WebviewController = new webview.WebviewController();
-      build() {
-        Column() {
-          Row().height('50%').width('100%').backgroundColor(Color.Gray)
-          Web({ src: $rawfile('index.html'),controller: this.controller})
-            .keyboardAvoidMode(WebKeyboardAvoidMode.OVERLAYS_CONTENT) // 此时ArkWeb组件不会调整任何视口的大小。
-          Text('I can see the bottom of the page')    
-            .width('100%')
-            .textAlign(TextAlign.Center)
-            .backgroundColor(Color.Pink)
-            .layoutWeight(1)
-        }.width('100%').height('100%')
-      }
+ <!-- @[soft_keyboard_setmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/SetSKBMode_one.ets) -->
+
+``` TypeScript
+// Index.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct KeyboardAvoidExample {
+  controller: webview.WebviewController = new webview.WebviewController();
+  build() {
+    Column() {
+      Row().height('50%').width('100%').backgroundColor(Color.Gray)
+      Web({ src: $rawfile('index.html'),controller: this.controller})
+        .keyboardAvoidMode(WebKeyboardAvoidMode.OVERLAYS_CONTENT) // 此时ArkWeb组件不会调整任何视口的大小
+      Text('I can see the bottom of the page')    
+        .width('100%')
+        .textAlign(TextAlign.Center)
+        .backgroundColor(Color.Pink)
+        .layoutWeight(1)
+    }.width('100%').height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[soft_keyboard_setmode_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry/src/main/ets/pages/SetSKBMode_one.ets) -->
+
+``` TypeScript
+// Index.ets
+'use static'
+import { $rawfile, TextAlign, Color, Web, Row, Text, ColumnOptions, Entry, Component, Column, Button, WebKeyboardAvoidMode } from '@ohos.arkui.component';
+import webview from '@ohos.web.webview';
+
+@Entry
+@Component
+struct KeyboardAvoidExample {
+  controller: webview.WebviewController = new webview.WebviewController();
+  build() {
+    Column() {
+      Row().height('50%').width('100%').backgroundColor(Color.Gray)
+      Web({ src: $rawfile('index.html'),controller: this.controller})
+        .keyboardAvoidMode(WebKeyboardAvoidMode.OVERLAYS_CONTENT) // 此时ArkWeb组件不会调整任何视口的大小
+      Text('I can see the bottom of the page')    
+        .width('100%')
+        .textAlign(TextAlign.Center)
+        .backgroundColor(Color.Pink)
+        .layoutWeight(1)
+    }.width('100%').height('100%')
+  }
+}
+```
+
+
+ArkWeb组件根据避让模式进行避让，效果见图3。
+
+**图3**  Web组件网页自身软键盘避让模式
+
+![web-keyboardavoid](figures/web-keyboardavoid.png)
+
+3.在软键盘弹出时，为使Web组件不发生避让行为，可通过调用[expandSafeArea()](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#expandsafearea)设置Web组件扩展安全区域。更多详细示例可参考[网页中安全区域计算和避让适配](../web/web-safe-area-insets.md)。
+
+ArkTS-Dyn示例：
+
+<!-- @[use_expand_safe_area_to_enable_immersive_effect](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/CalcAdjustSafeArea.ets) -->
+
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .width('100%').height('100%')
+        // 扩展至系统默认非安全区域（状态栏、导航栏），并设置只扩展上方区域和下方区域
+        .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
     }
-    ```
+  }
+}
+```
 
-   ArkTS-Sta示例：
+ArkTS-Sta示例：
 
-   <!-- @[soft_keyboard_setmode_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry/src/main/ets/pages/SetSKBMode_one.ets) -->
-   
-   ``` TypeScript
-   // Index.ets
-   import { $rawfile, TextAlign, Color, Web, Row, Text, ColumnOptions, Entry, Component, Column, Button, WebKeyboardAvoidMode } from '@ohos.arkui.component';
-   import webview from '@ohos.web.webview';
-   
-   @Entry
-   @Component
-   struct KeyboardAvoidExample {
-     controller: webview.WebviewController = new webview.WebviewController();
-     build() {
-       Column() {
-         Row().height('50%').width('100%').backgroundColor(Color.Gray)
-         Web({ src: $rawfile('index.html'),controller: this.controller})
-           .keyboardAvoidMode(WebKeyboardAvoidMode.OVERLAYS_CONTENT) // 此时ArkWeb组件不会调整任何视口的大小。
-         Text('I can see the bottom of the page')    
-           .width('100%')
-           .textAlign(TextAlign.Center)
-           .backgroundColor(Color.Pink)
-           .layoutWeight(1)
-       }.width('100%').height('100%')
-     }
-   }
-   ```
+<!-- @[expandsafearea](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/webSafeAreaInsets/entry/src/main/ets/pages/expandSafeArea.ets) -->
 
+``` TypeScript
+'use static'
 
-   ArkWeb组件根据避让模式进行避让，效果见图3。
+import { Entry, Component, Web, Column, SafeAreaType, SafeAreaEdge } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
 
-   **图3**  Web组件网页自身软键盘避让模式
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
 
-   ![web-keyboardavoid](figures/web-keyboardavoid.png)
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .width('100%').height('100%')
+        // 扩展至系统默认非安全区域（状态栏、导航栏），并设置只扩展上方区域和下方区域
+        .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
+    }
+  }
+}
+```
 
-3. 在软键盘弹出时，为使Web组件不发生避让行为，可通过调用[expandSafeArea()](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#expandsafearea)设置Web组件扩展安全区域。更多详细示例可参考[网页中安全区域计算和避让适配](../web/web-safe-area-insets.md)。
+与其他Web组件行为的交互场景：
 
-   ArkTS-Dyn示例：
-
-   <!-- @[use_expand_safe_area_to_enable_immersive_effect](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/CalcAdjustSafeArea.ets) -->
-   
-   ``` TypeScript
-   import { webview } from '@kit.ArkWeb';
-   
-   @Entry
-   @Component
-   struct WebComponent {
-     controller: webview.WebviewController = new webview.WebviewController();
-   
-     build() {
-       Column() {
-         Web({ src: 'www.example.com', controller: this.controller })
-           .width('100%').height('100%')
-           // 扩展至系统默认非安全区域（状态栏、导航栏），并设置只扩展上方区域和下方区域
-           .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
-       }
-     }
-   }
-   ```
-
-   ArkTS-Sta示例：
-
-   <!-- @[expandsafearea](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/webSafeAreaInsets/entry/src/main/ets/pages/expandSafeArea.ets) -->
-   
-   ``` TypeScript
-   import { Entry, Component, Web, Column, SafeAreaType, SafeAreaEdge } from '@kit.ArkUI';
-   import { webview } from '@kit.ArkWeb';
-   
-   @Entry
-   @Component
-   struct WebComponent {
-     controller: webview.WebviewController = new webview.WebviewController();
-   
-     build() {
-       Column() {
-         Web({ src: 'www.example.com', controller: this.controller })
-           .width('100%').height('100%')
-           // 扩展至系统默认非安全区域（状态栏、导航栏），并设置只扩展上方区域和下方区域
-           .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
-       }
-     }
-   }
-   ```
-
-   与其他Web组件行为的交互场景：
-
-   | 交叉场景         | 规格                                       |
-   | ------------ | ---------------------------------------- |
-   | 同层渲染         | 同层Web：软键盘避让方式与普通场景相同。<br>同层系统组件：由ArkUI负责软键盘避让模式。 |
-   | 离屏创建组件       | 默认使用与非离屏创建一致的软键盘避让模式，在添加至组件树前设置其他避让模式即可生效。   |
-   | customDialog | customDialog自身避让。                        |
-   | 折叠屏          | 软键盘避让行为与普通场景行为一致。屏幕软键盘将根据屏幕开合状态进行调整。    |
-   | 软键盘托管        | 软键盘避让行为与普通场景行为一致。                        |
-   | Web嵌套滚动      | 在嵌套滚动场景下，建议不要使用Web软键盘避让，包括RESIZE_VISUAL和RESIZE_CONTENT。 |
+| 交叉场景         | 规格                                       |
+| ------------ | ---------------------------------------- |
+| 同层渲染         | 同层Web：软键盘避让方式与普通场景相同。<br>同层系统组件：由ArkUI负责软键盘避让模式。 |
+| 离屏创建组件       | 默认使用与非离屏创建一致的软键盘避让模式，在添加至组件树前设置其他避让模式即可生效。   |
+| customDialog | customDialog自身避让。                        |
+| 折叠屏          | 软键盘避让行为与普通场景行为一致。屏幕软键盘将根据屏幕开合状态进行调整。    |
+| 软键盘托管        | 软键盘避让行为与普通场景行为一致。                        |
+| Web嵌套滚动      | 在嵌套滚动场景下，建议不要使用Web软键盘避让，包括RESIZE_VISUAL和RESIZE_CONTENT。 |
 
 
 
