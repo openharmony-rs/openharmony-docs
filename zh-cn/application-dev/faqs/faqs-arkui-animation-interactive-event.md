@@ -310,17 +310,17 @@ struct ComponentChild2 {
 
 2. 在onDragStart回调中将所拖条目设置visibility为HIDDEN状态； 
 
-2. 在列表或宫格项(item)上注册onDragMove监听拖起的移动事件； 
+3. 在列表或宫格项(item)上注册onDragMove监听拖起的移动事件； 
 
-3. 拖动过程中，通过onDragMove的event参数获取到拖拽跟手点坐标； 
+4. 拖动过程中，通过onDragMove的event参数获取到拖拽跟手点坐标； 
 
-4. 计算跟手点坐标与item中线的距离关系，当重合时，启动挤位动效； 
+5. 计算跟手点坐标与item中线的距离关系，当重合时，启动挤位动效； 
 
-5. Item布局信息可通过componentUtils API获取到； 
+6. Item布局信息可通过componentUtils API获取到； 
 
-6. 挤位动效通过animateTo来改变datasource里的index，触发list的排序动效； 
+7. 挤位动效通过animateTo来改变datasource里的index，触发list的排序动效； 
 
-7. 落位动效可通过自定义动效完成。
+8. 落位动效可通过自定义动效完成。
 
 **示例代码**
 
