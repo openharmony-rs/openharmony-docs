@@ -324,23 +324,23 @@
         try {
           let panel: selectionManager.Panel = await selectionManager.createPanel(this.context, panelInfo);    // 创建菜单面板
           this.panel_ = panel;
-        try {
-          panel.on('hidden', () => {    // 监听弹窗隐藏（窗口失焦时会触发隐藏）
-            hilog.info(0x0000, 'SelectionExtensionAbility', 'panel has hidden.');
-          })
-        } catch (error) {
-          hilog.error(0x0000, 'SelectionExtensionAbility', 'Failed to listen panel hidden');
+          try {
+            panel.on('hidden', () => {    // 监听弹窗隐藏（窗口失焦时会触发隐藏）
+              hilog.info(0x0000, 'SelectionExtensionAbility', 'panel has hidden.');
+            })
+          } catch (error) {
+            hilog.error(0x0000, 'SelectionExtensionAbility', 'Failed to listen panel hidden');
+          }
+          try {
+            await panel.setUiContent('pages/MenuPanel')   // 设置菜单面板样式
+            hilog.info(0x0000, 'SelectionExtensionAbility', 'Succeed to setUiContent [pages/MenuPanel].');
+          } catch (error) {
+            hilog.error(0x0000, 'SelectionExtensionAbility', `Failed to setUiContent, error: ${JSON.stringify(error)}`);
+          }
+        } catch(error) {
+          hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to createPanel, error: ${JSON.stringify(error)}`);
         }
-        try {
-          await panel.setUiContent('pages/MenuPanel')   // 设置菜单面板样式
-          hilog.info(0x0000, 'SelectionExtensionAbility', 'Succeed to setUiContent [pages/MenuPanel].');
-        } catch (error) {
-          hilog.error(0x0000, 'SelectionExtensionAbility', `Failed to setUiContent, error: ${JSON.stringify(error)}`);
-        }
-      } catch(error) {
-        hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to createPanel, error: ${JSON.stringify(error)}`);
       }
-    }
 
       async onSelected(info: selectionManager.SelectionInfo) {
         SelectionModel.getInstance().setSelectionInfo(info);
