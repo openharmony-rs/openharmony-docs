@@ -83,6 +83,25 @@ libnet_trafficfilter.so
    - 使用[OH_TrafficFilter_DestroyRedirector](../reference/apis-network-kit/capi-net-trafficfilter-h.md#oh_trafficfilter_destroyredirector)销毁重定向器。
 
    <!-- @[clear_redirect_rule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Redirect_case/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   static napi_value ClearRedirectRuleNapi(napi_env env, napi_callback_info info)
+   {
+       if (g_redirector == nullptr) {
+           char msg[] = "ERROR: No redirector exists";
+           napi_value result;
+           napi_create_string_utf8(env, msg, strlen(msg), &result);
+           return result;
+       }
+   
+       int32_t ret = OH_TrafficFilter_ClearRedirectRule(g_redirector);
+   
+       char msg[BUFFER_SIZE * 2];
+       napi_value result;
+       napi_create_string_utf8(env, msg, strlen(msg), &result);
+       return result;
+   }
+   ```
 
    <!-- @[destroy_redirect_rule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Redirect_case/entry/src/main/cpp/napi_init.cpp) -->
    
