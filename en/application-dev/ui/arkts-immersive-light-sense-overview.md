@@ -25,7 +25,7 @@ Immersive Light Sense adaptively adjusts the degree of expression of the immersi
 
 ### Immersive System Material
 
-The immersive system material gives components a light and translucent quality: multiple layers of effects, including material filters, refraction, highlights, and shadows, are overlaid so that the underlying content naturally permeates through the material layer, delivering a premium visual presentation far beyond that of a solid-color background. You only need to [enable Immersive Light Sense](arkts-immersive-light-sense-enable.md), and the visual effects of a component, such as its background, border, and shadow, are then uniformly managed by the immersive system material, which automatically adapts to the light/dark mode and device computing power.
+The immersive system material gives components a light and translucent quality: multiple layers of effects, including material filters, refraction, highlights, and shadows, are overlaid so that the underlying content naturally permeates through the material layer, delivering a premium visual presentation far beyond that of a solid-color background. You only need to enable Immersive Light Sense, and the visual effects of a component, such as its background, border, and shadow, are then uniformly managed by the immersive system material, which automatically adapts to the light/dark mode and device computing power.
 
 The immersive system material provides five styles, ranging from ultra-thin to ultra-thick<!--RP2--><!--RP2End-->. After Immersive Light Sense is enabled, the default styles of different components vary.
 
@@ -37,7 +37,7 @@ The immersive system material provides five styles, ranging from ultra-thin to u
 | THICK | Thick style, with a strong blur effect. | Scenarios with a strongly blurred background, such as menus. |
 | ULTRA_THICK | Ultra-thick style, with a very strong blur effect. | Scenarios with a fully blurred background, such as dialogs. |
 
-In addition, the immersive system material supports personalized configurations such as material tinting, automatic color inversion, shadow toggling, interactive deformation, and point light sources. For details, see [Immersive System Material Visual Effects](arkts-immersive-light-sense-common-capability.md).
+In addition, the immersive system material supports personalized configurations such as material tinting, automatic color inversion, shadow toggling, interactive deformation, and point light sources.
 
 ### Immersive Spatial Animation
 Immersive spatial animation condenses the behavior of light into three mutually complementary animation types, as shown in the following table. It adapts automatically based on the device's computing power and the immersive light sense effect you configure in the system, so no additional adaptation is required.
