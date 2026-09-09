@@ -282,8 +282,13 @@
     
       CreateMainPanel() {
         this.selectionInfo = SelectionModel.getInstance().getSelectionInfo();
-        if (SelectionModel.getInstance().getSelectionPanel() !== undefined) {
-          hilog.info(0x0000, 'SelectionExtensionAbility', 'Main panel already exists, skip creating.');
+        let existingPanel = SelectionModel.getInstance().getSelectionPanel();
+        if (existingPanel !== undefined) {
+          try {
+            existingPanel.show();
+          } catch (error) {
+            SelectionModel.getInstance().setSelectionPanel(undefined);
+          }
           return;
         }
         let panelInfo: PanelInfo = {
@@ -303,15 +308,16 @@
             try {
               panel.on('destroyed', () => {
                 hilog.info(0x0000, 'SelectionExtensionAbility', 'panel has destroyed');
+                SelectionModel.getInstance().setSelectionPanel(undefined);
               })
             } catch (error) {
-              hilog.info(0x0000, 'SelectionExtensionAbility', 'Failed to listen window destroy');
+              hilog.error(0x0000, 'SelectionExtensionAbility', 'Failed to listen window destroy');
             }
             try {
               await panel.setUiContent('pages/MainPanel');
               hilog.info(0x0000, 'SelectionExtensionAbility', 'Succeed to setUiContent [pages/MainPanel].');
             } catch (error) {
-              hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to setUiContent of main panel, error: [${JSON.stringify(error)}]`);
+              hilog.error(0x0000, 'SelectionExtensionAbility', `Failed to setUiContent of main panel, error: [${JSON.stringify(error)}]`);
               return;
             }
     
@@ -319,7 +325,7 @@
               await panel.show();
               hilog.info(0x0000, 'SelectionExtensionAbility', 'Succeed to show main panel.');
             } catch (error) {
-              hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to show main panel, error: [${JSON.stringify(error)}]`);
+              hilog.error(0x0000, 'SelectionExtensionAbility', `Failed to show main panel, error: [${JSON.stringify(error)}]`);
             }
           })
           .catch((error: BusinessError) => {
