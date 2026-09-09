@@ -13,7 +13,7 @@ typedef struct OH_CryptoPrivKeyEncodingParams OH_CryptoPrivKeyEncodingParams
 
 ## 概述
 
-定义私钥编码参数结构体。
+私钥编码参数结构体，表示私钥编码参数。
 
 **起始版本：** 20
 
