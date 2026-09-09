@@ -4,15 +4,15 @@
 <!--Subsystem: Ability-->
 <!--Owner: @jayleehw-->
 <!--Designer: @jayleehw-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=c6807ccd3e6322f13c08345e517071d1cd3c3fa5 translatedAt=2026-09-09T02:58:17.726Z pushedAt=2026-09-09T03:11:34.926Z -->
 
 
 - [About This Kit](abilitykit-overview.md)
-- [Application Models](application-models.md)
-- Stage Model Development<!--stage-model-development-->
-  - [Stage Model Development Overview](stage-model-development-overview.md)
-  - Stage Model Application Components<!--stage-model-application-components-->
+- Application Models<!--application-models-->
+  - [Application Model Overview](stage-model-development-overview.md)
+  - Application Components<!--stage-model-application-components-->
     - [Application- or Component-Level Configuration](application-component-configuration-stage.md)
     - UIAbility Component<!--uiability-->
       - [UIAbility Overview](uiability-overview.md)
@@ -21,10 +21,11 @@
       - [UIAbility Usage](uiability-usage.md)
       - [Data Synchronization Between UIAbility and UI Page](uiability-data-sync-with-ui.md)
       - [Starting UIAbility Within the Same Application](uiability-intra-device-interaction.md)
-      - [Cross-Device Migration Through Call Invocation](uiability-cross-device-interaction.md)
+      - [Multi-device Collaboration Through Call Invocation](uiability-cross-device-interaction.md)
       - [UIAbility Backup and Restore](ability-recover-guideline.md)
     - [ExtensionAbility Component](extensionability-overview.md)
       <!--Del-->
+      - [Using the Agent Service Provided by the AgentExtensionAbility Component (Available Only to System Applications)](agent-manager-sys.md)
       - [ServiceExtensionAbility (for System Applications Only)](serviceextensionability-sys.md)
       - [UIServiceExtensionAbility (for System Applications Only)](uiserviceextension-sys.md)
       - [UIExtensionAbility (for System Applications Only)](uiextensionability-sys.md)
@@ -40,47 +41,63 @@
       - [Matching Rules of Explicit Want and Implicit Want](explicit-implicit-want-mappings.md)
       - [Using Explicit Want to Start an Application Component](ability-startup-with-explicit-want.md)
       - [Common action and entities Values (Not Recommended)](actions-entities.md)
-    - [Component Startup Rules (Stage Model)](component-startup-rules.md)
-    - [AppStartup](app-startup.md)
-    - [Application Preloading](preload-application.md)
-    - [Obtaining Reasons for Abnormal Application Exits](ability-exit-info-record.md)
+    - [Component Startup Rules](component-startup-rules.md)
+    - [Obtaining/Setting Environment Variables](subscribe-system-environment-variable-changes.md)
     <!--Del-->
     - Inter-Device Application Component Interaction (Hopping)<!--hop-->
       - [Hopping Overview](inter-device-interaction-hop-overview.md)
       - [Cross-Device Migration](hop-cross-device-migration.md)
       - [Multi-device Collaboration](hop-multi-device-collaboration.md)
-    <!--DelEnd-->
-    - [Obtaining/Setting Environment Variables](subscribe-system-environment-variable-changes.md)
-  - Inter-Application Redirection<!--inter-app-redirection-->
-    - [Overview of Application Redirection](link-between-apps-overview.md)
-    - Starting a Specified Application<!--directional-redirection-->
-      - [Overview of Starting a Specified Application](app-startup-overview.md)
-      - [(Optional) Using canOpenLink to Check Application Accessibility](canopenlink.md)
-      - [Using Deep Linking for Application Redirection](deep-linking-startup.md)
-      - [Using App Linking for Application Redirection](app-linking-startup.md)
-      - [Switching from Explicit Want Redirection to Linking Redirection](uiability-startup-adjust.md)
-      - [Application Link Description](app-uri-config.md)
-    - Starting an Application of the Specified Type<!--specified-type-app-redirection-->
-      - [Overview of Starting an Application of the Specified Type](start-intent-panel.md)
-      - [Using startAbilityByType to Start a Navigation Application](start-navigation-apps.md)
-      - [Using startAbilityByType to Start an Email Application](start-email-apps.md)
-      - [Using mailto to Start an Email Application](start-email-apps-by-mailto.md)
-      - [Using startAbilityByType to Start a Financial Application](start-finance-apps.md)
-      - [Using startAbilityByType to Start a Flight Application](start-flight-apps.md)
-      - [Using startAbilityByType to Start an Express Delivery Application](start-express-apps.md)
-      - [Using startAbilityByType to Start an Image Editing Application](photoEditorExtensionAbility.md)
-      - [Using startAbility to Start a File Application](file-processing-apps-startup.md)
-    - [Starting a System Application](system-app-startup.md)
-  - [Process Model (Stage Model)](process-model-stage.md)
-  - [Thread Model (Stage Model)](thread-model-stage.md)
+    <!--DelEnd-->  
+  - Process Model<!--process-model-stage-->
+    - [Process Model Overview](process-model-overview.md)
+    - Extended Process Development Guide<!--extended-process-development-->
+      - [Child Process Development Guide (ArkTS)](arkts-child-process-development-guideline.md)
+      - [Child Process Development Guide (C/C++)](capi-nativechildprocess-development-guideline.md)
+    - [Isolation Process Development Guide](isolation-process-development-guideline.md)
+  - [Thread Model](thread-model-stage.md)
   <!--Del-->
-  - Mission Management (for System Applications Only)<!--mission-management-->
-    - [Mission Management Scenarios (for System Applications Only)](mission-management-overview-sys.md)
-    - [Mission Management and Launch Type (for System Applications Only)](mission-management-launch-type-sys.md)
-    - [Page Stack and MissionList (for System Applications Only)](page-mission-stack-sys.md)
-    - [Setting the Icon and Name of a Mission Snapshot (for System Applications Only)](mission-set-icon-name-for-task-snapshot-sys.md)
+  - Mission Management (available only to system applications)<!--mission-management-->
+    - [Mission Management Scenario Overview (available only to system applications)](mission-management-overview-sys.md)
+    - [Mission and Launch Type (available only to system applications)](mission-management-launch-type-sys.md)
+    - [Page Stack and Mission Chain (available only to system applications)](page-mission-stack-sys.md)
+    - [Setting the Icon and Name of a Task Snapshot (available only to system applications)](mission-set-icon-name-for-task-snapshot-sys.md)
   <!--DelEnd-->
   - [Application Configuration File](config-file-stage.md)
+- Application Lifecycle<!--app-lifecycle-->
+  - [Application Lifecycle Overview](application-lifecycle.md)
+  - Application Startup<!--app-start-->
+    - [Application Startup Process](application-startup-process.md)
+    - [Application Startup Settings](application-startup-options.md)
+    - [Application Startup Framework AppStartup](app-startup.md)
+    - [Application Preloading](preload-application.md)
+    - [Application Quick Startup](hyperstartup-application.md)
+  - [Application Exit](app-stop.md)<!--RP2--><!--RP2End-->
+  - [Application Restart](app-restart.md)
+  - [Obtaining the Cause of Abnormal Application Exit](ability-exit-info-record.md)
+- Application Redirection<!--inter-app-redirection-->
+  - [Application Redirection Overview](link-between-apps-overview.md)
+  - Launch the Specified Application<!--directional-redirection-->
+    - [Launch the Specified Application Overview](app-startup-overview.md)
+    - [(Optional) Using canOpenLink to Check Whether an Application Is Accessible](canopenlink.md)
+    - [Obtaining the URL Information of the Target Application](obtaining-target-app-url-info.md)
+    - [Using Deep Linking for Application Redirection](deep-linking-startup.md)
+    - [Using App Linking for Application Redirection](app-linking-startup.md)
+    - [Explicit Want Redirection to App Linking Redirection Adaptation Guide](uiability-startup-adjust.md)
+    - [Application Link Description](app-uri-config.md)
+  - Launch the specified type of applications<!--specified-type-app-redirection-->
+    - [Overview of Launching the Specified Type of Applications](start-intent-panel.md)
+    - [Launching Navigation Applications (startAbilityByType)](start-navigation-apps.md)
+    - [Launching Email Applications (startAbilityByType)](start-email-apps.md)
+    - [Launching Email Applications (mailto)](start-email-apps-by-mailto.md)
+    - [Launching Finance Applications (startAbilityByType)](start-finance-apps.md)
+    - [Launching Flight Applications (startAbilityByType)](start-flight-apps.md)
+    - [Launching Express Delivery Applications (startAbilityByType)](start-express-apps.md)
+    - [Launching Image Editing Applications (startAbilityByType)](photoEditorExtensionAbility.md)
+    - [Launch File-Processing Applications (startAbility)](file-processing-apps-startup.md)
+  - [Launch System Applications](system-app-startup.md)<!--RP1--><!--RP1End-->
+- Ark Intelligent Development Framework Development Guide<!--ark-agentic-framework-->
+  - [Ark Intelligent Development Framework Overview](arkaf-overview.md)
   - InsightIntent Framework Development<!--insight-intent-->
     - [InsightIntent Framework Overview](insight-intent-overview.md)
     - Intent Development<!--insight-intent-development-->
@@ -89,80 +106,18 @@
       - [Developing Intents Using Decorators](insight-intent-decorator-development.md)
       - [Appendix: Standard Intent Access Specifications](insight-intent-access-specifications.md)
     - [Debugging Intents](insight-intent-debug.md)
-- FA Model Development<!--fa-model-development-->
-  - [FA Model Development Overview](fa-model-development-overview.md)
-    - [Application- or Component-Level Configuration](application-component-configuration-fa.md)
-      - [PageAbility Overview](pageability-overview.md)
-      - [PageAbility Configuration](pageability-configuration.md)
-      - [PageAbility Lifecycle](pageability-lifecycle.md)
-      - [PageAbility Launch Type](pageability-launch-type.md)
-      - [Creating a PageAbility](create-pageability.md)
-      - [Starting a Local PageAbility](start-local-pageability.md)
-      - [Stopping a PageAbility](stop-pageability.md)
+  - [Application Skill Development Guide Based on ArkTS Scripts](arkts-skill-development-guide.md)
+  - On-Device A2A Framework Development Guide<!--agent-guideline-->
+    - [On-Device A2A Framework Overview](agent-overview.md)
+    - Develop On-Device Agents<!--agent-development-->
+      - [Implement Agent Services Using the AgentExtensionAbility Component](agent-extension-ability.md)
+      - [AgentExtensionAbility Configuration File Description](agent-extension-configuration.md)
       <!--Del-->
-      - [Starting a Remote PageAbility (for System Applications Only)](start-remote-pageability-sys.md)
+      - [Using the Agent Service Provided by the AgentExtensionAbility Component (available only to system applications)](agent-manager-sys.md)
       <!--DelEnd-->
-      - [Starting a Specified Page](start-page.md)
-      - [Window Properties](window-properties.md)
-      - [Requesting Permissions](request-permissions.md)
-      - [Redirection Rules](redirection-rules.md)
-      - [ServiceAbility Overview](serviceability-overview.md)
-      - [ServiceAbility Configuration](serviceability-configuration.md)
-      - [ServiceAbility Lifecycle](serviceability-lifecycle.md)
-      - [Creating a ServiceAbility](create-serviceability.md)
-      - [Starting a ServiceAbility](start-serviceability.md)
-      - [Connecting to a ServiceAbility](connect-serviceability.md)
-      - [DataAbility Overview](dataability-overview.md)
-      - [DataAbility Configuration](dataability-configuration.md)
-      - [DataAbility Lifecycle](dataability-lifecycle.md)
-      - [Creating a DataAbility](create-dataability.md)
-      - [Starting a DataAbility](start-dataability.md)
-      - [Accessing a DataAbility](access-dataability.md)
-      - [DataAbility Permission Control](dataability-permission-control.md)
-    - [Context](application-context-fa.md)
-    - [Want](want-fa.md)
-    - [Component Startup Rules (FA Model)](component-startup-rules-fa.md)
-  - [Process Model (FA Model)](process-model-fa.md)
-  - [Thread Model (FA Model)](thread-model-fa.md)
-  <!--Del-->
-  - [Mission Management (for System Applications Only)](mission-management-fa-sys.md)
-  <!--DelEnd-->
-  - [Application Configuration File](config-file-fa.md)
-<!--Del-->
-- Development of Component Interaction Between the FA Model and Stage Model<!--fa-stage-interaction-->
-  - [Component Interaction Between the FA Model and Stage Model](fa-stage-interaction-overview.md)
-  - [Starting a UIAbility from the FA Model](start-uiability-from-fa.md)
-  - [Connecting to a ServiceExtensionAbility from the FA Model](bind-serviceextensionability-from-fa.md)
-  - [Accessing a DataShareExtensionAbility from the FA Model](access-datashareextensionability-from-fa.md)
-  - [Starting a PageAbility from the Stage Model](start-pageability-from-stage.md)
-  - [Connecting to a ServiceAbility from the Stage Model](bind-serviceability-from-stage.md)
-- Switching from the FA Model to the Stage Model<!--fa-to-stage-switch-->
-  - [Model Switching Overview](model-switch-overview.md)
-  - Configuration File Switching<!--configuration-file-switch-->
-    - [Differences in Configuration Files](configuration-file-diff.md)
-    - [Switching of app and deviceConfig](app-deviceconfig-switch.md)
-    - [Switching of module](module-switch.md)
-  - Component Switching<!--component-switch-->
-    - [PageAbility Switching](pageability-switch.md)
-    - [ServiceAbility Switching](serviceability-switch.md)
-    - [DataAbility Switching](dataability-switch.md)
-  - [Widget Switching](widget-switch.md)
-  - API Switching<!--api-switch-->
-    - [API Switching Overview](api-switch-overview.md)
-    - [Context Switching](context-switch.md)
-    - [featureAbility Switching](featureability-switch.md)
-    - [particleAbility Switching](particleability-switch.md)
-    - [LifecycleForm Switching](lifecycleform-switch.md)
-    - [LifecycleApp Switching](lifecycleapp-switch.md)
-    - [LifecycleService Switching](lifecycleservice-switch.md)
-    - [LifecycleData Switching](lifecycledata-switch.md)
-    - [DataAbilityHelper Switching](dataabilityhelper-switch.md)
-    - [request Switching](request-switch.md)
-    - [resourceManager Switching](resourcemanager-switch.md)
-    - [window Switching](window-switch.md)
-    - [Storage Switching](storage-switch.md)
-<!--DelEnd-->
-- Native Child Process Development<!--native-childprocess-development-->
-    - [Creating/Terminating Native Child Processes (C/C++)](capi-nativechildprocess-development-guideline.md)
-    - [Obtaining Exit Information of Native Child Processes](capi-nativechildprocess-exit-info.md)
+- Modular Object Development Guide Based on ModularObjectExtensionAbility (C/C++)<!--modular-object-extension-ability-->
+  - [Modular Object Model Overview (C/C++)](modular-object-extension-overview.md)
+  - [Using ModularObjectExtensionAbility to Implement Modular Objects (C/C++)](modular-object-extension-development.md)
+  - [Using Taihe to Implement IPC Communication for ModularObjectExtensionAbility (C/C++)](modular-object-extension-ability-taihe.md)
+  - [Using ModularObjectDispatcher to Implement Dynamic Interface Invocation (C/C++)](modular-object-dispatcher-development.md)
 - [Ability Kit Terminology](ability-terminology.md)

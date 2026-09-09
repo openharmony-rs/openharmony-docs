@@ -1,10 +1,11 @@
 # ArkTS
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @flyingwolf-->
-<!--Designer: @flyingwolf-->
+<!--Owner: @vigavi; @wang_zhaoyong-->
+<!--Designer: @vigavi-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=314415969ba967fe32041b2e695bd9c6c74bcafd translatedAt=2026-09-09T02:58:14.778Z pushedAt=2026-09-09T03:19:02.935Z -->
 
 - [About This Kit](arkts-overview.md)
 - ArkTS Common Library<!--arkts-utils-->
@@ -20,12 +21,13 @@
     - [Overview of the ArkTS Container Library](container-overview.md)
     - [Linear Containers](linear-container.md)
     - [Nonlinear Containers](nonlinear-container.md)
+  - [Common Library FAQ](commonlibrary-faq.md)
 - ArkTS Concurrency<!--arkts-concurrency-->
   - [Overview of Concurrency](concurrency-overview.md)
-  - [Asynchronous Concurrency](async-concurrency-overview.md)
+  - [Asynchronous Concurrency (Promise and async/await)](async-concurrency-overview.md)
   - Multithreaded Concurrency<!--multithread-concurrency-->
     - [Overview of Multithreaded Concurrency](multi-thread-concurrency-overview.md)
-    - [TaskPool](taskpool-introduction.md)
+    - [TaskPool Introduction](taskpool-introduction.md)<!--RP1--><!--RP1End-->
     - [Worker](worker-introduction.md)
     - [Comparison Between TaskPool and Worker](taskpool-vs-worker.md)
   - Inter-Thread Communication<!--interthread-communication-->
@@ -48,12 +50,13 @@
         - [Freezing Sendable Objects](sendable-freeze.md)
         - [Use Scenarios of Sendable](sendable-guide.md)
     - Communication Between Threads<!--interthread-communication-guide-->
-      - [Using TaskPool for Independent Time-consuming Tasks](independent-time-consuming-task.md)
-      - [Using TaskPool for Multiple Time-consuming Tasks](multi-time-consuming-tasks.md)
+      - [Using TaskPool for Independent Time-Consuming Tasks](independent-time-consuming-task.md)
+      - [Using TaskPool for Multiple Time-Consuming Tasks](multi-time-consuming-tasks.md)
       - [Communication Between the TaskPool Task and Host Thread](taskpool-communicates-with-mainthread.md)
       - [Real-Time Communication Between the Worker Thread and Host Thread](worker-communicates-with-mainthread.md)
       - [Synchronous Calls to Host Thread Interfaces from Worker](worker-invoke-mainthread-interface.md)
       - [High-Performance Communication Between Multi-Level Workers](worker-postMessage-sendable.md)
+      - [Worker Message Queue-Jumping Communication to the Host Thread](worker-postMessageAtFront.md)
   - Multithreaded Development<!--multithread-develop-guide-->
     - [Overview of Multithreaded Development](multithread-develop-overview.md)
     - Concurrency in Time-Consuming Tasks<!--time-consuming-task-->
@@ -63,10 +66,10 @@
       - [Synchronous Task Development (TaskPool and Worker)](sync-task-development.md)
     - Concurrency in Continuous Tasks<!--long-time-task-->
       - [Overview of Concurrency in Continuous Tasks](long-time-task-overview.md)
-      - [Continuous Task Development (TaskPool)](long-time-task-guide.md)
+      - [Long-Running Task Development Guide (TaskPool)](long-time-task-guide.md)
     - Concurrency in Resident Tasks<!--resident-task-->
       - [Overview of Concurrency in Resident Tasks](resident-task-overview.md)
-      - [Resident Task Development (Worker)](resident-task-guide.md)
+      - [Resident Task Development Guide (Worker)](resident-task-guide.md)
     - Multithreaded Development Practice Cases<!--multithread-develop-case-->
       - [Batch Database Operations](batch-database-operations-guide.md)
       - [Concurrent Loading of Service Modules](concurrent-loading-modules-guide.md)
@@ -80,6 +83,7 @@
       - [Multithreaded Operations with Custom Native Transferable Objects](napi-coerce-to-native-binding-object.md)
       - [Multithreaded Operations with Custom Native Sendable Objects](napi-define-sendable-object.md)
       - [Persistent Worker Threads Handling Concurrent Tasks via TaskPool](worker-and-taskpool.md)
+      - [Sendable Object Transformation Practice](sendable-trans-guide.md)
   - [Common Concurrency Issues](concurrency-faq.md)
 - [ArkTS Cross-Language Interaction](arkts-cross-language-interaction.md)
 - ArkTS Runtime<!--arkts-runtime-->
@@ -88,12 +92,13 @@
   - ArkTS Modularization<!--arkts-runtime-module-->
     - [Overview of Modular Operation](module-principle.md)
     - [Dynamic Import](arkts-dynamic-import.md)
-    - [Lazy Import](arkts-lazy-import.md)
+    - [Lazy Loading (lazy import)](arkts-lazy-import.md)
     - [Dynamically Loading Native Modules in Synchronous Mode](js-apis-load-native-module.md)
     - [Statically Loading Native Modules](arkts-import-native-module.md)
     - [Loading Modules Using Node-API](load-module-base-nodeapi.md)
     - [Side Effects and Optimization of Module Loading](arkts-module-side-effects.md)
-    - [Modularization Debugging Tools](arkts-module-debug.md)
+    - [Module Debugging Tool](arkts-module-debug.md)
+    - [Module FAQ](arkts-module-faq.md)
   - [ArkTS Runtime FAQs](arkts-runtime-faq.md)
 - ArkTS Compilation Toolchain<!--arkts-compilation-tool-chain-->
   - [Overview of the ArkTS Compilation Toolchain](compilation-tool-chain-overview.md)
@@ -106,9 +111,12 @@
     - [Ark Bytecode Generation FAQs](es2abc-faq.md)
   - [Disassembler](tool-disassembler.md)
   - ArkGuard for Source Code Obfuscation<!--arkts-arkguard-->
-    - [Overview of ArkGuard for Source Code Obfuscation](source-obfuscation-overview.md)
-    - [ArkGuard Principles and Capabilities for Source Code Obfuscation](source-obfuscation.md)
+    - [Overview of the ArkGuard Source Code Obfuscation Tool](source-obfuscation-overview.md)
+    - [ArkGuard Obfuscation Principles](source-obfuscation.md)
+    - [ArkGuard Obfuscation Configuration Options](source-obfuscation-rule-options.md)
+    - [ArkGuard Obfuscation Keep Options](source-obfuscation-keep-options.md)
     - [Using ArkGuard for Source Code Obfuscation](source-obfuscation-guide.md)
+    - [ArkGuard Obfuscation Practice Guide](source-obfuscation-apply-code.md)
     - [Package-specific Source Code Obfuscation Recommendations](source-obfuscation-practice.md)
     - [Common Issues with ArkGuard in Source Code Obfuscation](source-obfuscation-questions.md)
   - ArkGuard for Bytecode Obfuscation<!--arkts-arkguard-bytecode-->
@@ -118,3 +126,5 @@
     - [Package-specific Bytecode Obfuscation Recommendations](bytecode-obfuscation-practice.md)
     - [Common Issues with ArkGuard in Bytecode Obfuscation](bytecode-obfuscation-questions.md)
   - [Configuring arkOptions in build-profile.json5](arkoptions-guide.md)
+- [ArkTS Glossary](arkts-glossary.md)
+

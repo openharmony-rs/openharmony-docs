@@ -1,10 +1,11 @@
 # ArkTS
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025; @xliu-huanwei-->
-<!--Designer: @weng-changcheng; @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @weng-changcheng; @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=58e0aac1ecb6b253638163c0254ed24f4d229ae6 translatedAt=2026-09-09T03:05:16.639Z pushedAt=2026-09-09T04:22:52.677Z -->
 
 - ArkTS APIs<!--arkts-arkts--> 
   - @arkts.collections (ArkTS Collections)<!--js-apis-arkts-collections-->
@@ -29,11 +30,11 @@
   - @arkts.utils (ArkTS Utils)<!--js-apis-arkts-utils-->
     - [Module Description](arkts-apis-arkts-utils.md)
     - [Functions](arkts-apis-arkts-utils-f.md)
-    - [ArkTSUtils.locks](arkts-apis-arkts-utils-locks.md)
-    - [ArkTSUtils.ASON](arkts-apis-arkts-utils-ASON.md)
-    - [SendableLruCache<K, V>](arkts-apis-arkts-utils-SendableLruCache.md)
+    - [namespace (locks)](arkts-apis-arkts-utils-locks.md)
+    - [namespace (ASON)](arkts-apis-arkts-utils-ASON.md)
+    - [Class (SendableLruCache)](arkts-apis-arkts-utils-SendableLruCache.md)
   - [@ohos.buffer (Buffer)](js-apis-buffer.md)
-  - [@ohos.convertxml (XML-to-JavaScript Conversion)](js-apis-convertxml.md)
+  - [@ohos.convertxml (XML to JavaScript Conversion)](js-apis-convertxml.md)
   - [@ohos.fastbuffer (FastBuffer)](js-apis-fastbuffer.md)
   - [@ohos.process (Obtaining Process Information)](js-apis-process.md)
   - [@ohos.taskpool (Starting the Task Pool)](js-apis-taskpool.md)
@@ -64,7 +65,7 @@
     - [@ohos.util.Vector (Linear Container Vector)](js-apis-vector.md)
 - Error Codes<!--arkts-arkts-errcode-->
   - [Utils Error Codes](errorcode-utils.md)
-  - [TypeScript Compiler Error Codes](errorcode-tsc.md)
+  - [TSC Error Code Introduction](errorcode-tsc.md)
   - [Compilation Toolchain Error Codes](errorcode-ets-loader.md)
   - [es2abc Compiler Error Codes](errorcode-es2abc.md)
   - [Source Code Obfuscation Error Codes](errorcode-source-obfuscation.md)
