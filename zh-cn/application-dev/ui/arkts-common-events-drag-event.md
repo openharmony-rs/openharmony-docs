@@ -1445,7 +1445,7 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
    为了达到提醒效果，为目标组件也增加`onDragEnter`和`onDragLeave`的处理。当用户拖拽文字进入到组件范围时，变化背景色，以提醒用户在此处停留。
 
    <!-- @[springLoading_onDragEnter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) --> 
-  
+   
    ``` TypeScript
    .onDragEnter(() => {
      // 当用户拖拽进入按钮范围，即提醒用户，此处是可以处理数据的
