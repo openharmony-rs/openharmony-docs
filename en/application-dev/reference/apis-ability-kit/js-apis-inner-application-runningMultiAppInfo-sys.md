@@ -4,10 +4,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @wendel-->
 <!--Designer: @wendel-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=83eb20b2da17b66d3089c14abb21986b856a3985 translatedAt=2026-09-03T12:03:17.761Z pushedAt=2026-09-05T10:47:30.867Z -->
 
-The RunningMultiAppInfo module defines the information of an application in multi-app mode in the running state.
+Defines the runtime structural information of app multi-open, including the app bundle name, multi-open mode (app clone mode or multi-instance mode), and the corresponding running instance information. It applies to scenarios where the multi-open status of apps needs to be managed and monitored. For guides on app multi-open modes, see [Creating an App Clone](../../quick-start/app-clone.md) and [Creating Multiple App Instances](../../quick-start/multiInstance.md).
 
 > **NOTE**
 > 
@@ -17,7 +18,7 @@ The RunningMultiAppInfo module defines the information of an application in mult
 
 ## How to Use
 
-The RunningMultiAppInfo struct is obtained from [getRunningMultiAppInfo](js-apis-app-ability-appManager-sys.md#appmanagergetrunningmultiappinfo12) of **appManager**.
+Obtain the information through [getRunningMultiAppInfo](js-apis-app-ability-appManager-sys.md#appmanagergetrunningmultiappinfo12) of appManager. This API queries the multi-open runtime information of an app by its bundle name. The returned RunningMultiAppInfo structure contains the multi-open mode ([MultiAppMode](js-apis-inner-application-multiAppMode-sys.md#multiappmode)) of the app and the corresponding running instance information: when the app is in app clone mode (APP_CLONE), the runningAppClones field returns the app clone information; when the app is in multi-instance mode (MULTI_INSTANCE), the runningMultiInstances field returns the multi-instance app information.
 
 ## RunningMultiAppInfo
 
@@ -39,16 +40,18 @@ import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let bundleName = "ohos.samples.etsclock";
+  let bundleName = 'ohos.samples.etsclock';
+  // Obtain the running state information of the multi-open app.
   appManager.getRunningMultiAppInfo(bundleName)
     .then((info: appManager.RunningMultiAppInfo) => {
       console.info(`getRunningMultiAppInfo success, data: ${JSON.stringify(info)}`);
     }).catch((err: BusinessError) => {
-    console.error(`getRunningMultiAppInfo failed, code: ${err.code}, msg:${err.message}`);
-  })
+      console.error(`getRunningMultiAppInfo failed, code: ${err.code}, message: ${err.message}`);
+    });
 } catch (err) {
+  // Handle the input parameter error exception.
   let code = (err as BusinessError).code;
   let msg = (err as BusinessError).message;
-  console.error(`getRunningMultiAppInfo error, code: ${code}, msg:${msg}`);
+  console.error(`getRunningMultiAppInfo error, code: ${code}, message: ${msg}`);
 }
 ```

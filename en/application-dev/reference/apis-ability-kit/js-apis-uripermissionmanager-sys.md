@@ -4,10 +4,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @dsz2025-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=1e2bfcc9b4f85d9126c23f626a7a73b4bb891227 translatedAt=2026-09-03T12:36:39.243Z pushedAt=2026-09-05T10:47:30.952Z -->
 
-The **uriPermissionManager** module provides capabilities for granting the permission on a file to another application and revoking the granted permissions. The file is identified by a uniform resource identifier (URI).
+The URI permission management module is used by application A to grant or revoke URI permissions to application B. It supports secure sharing of file access permissions between applications. After authorization, the target application can access the file specified by the URI. The temporarily granted permission is automatically reclaimed after the target application exits. It is applicable to scenarios that require temporary authorization, such as file sharing between applications and cross-application data access.
 
 > **NOTE**
 > 
@@ -17,7 +18,7 @@ The **uriPermissionManager** module provides capabilities for granting the permi
 
 ## Modules to Import
 
-  
+
 ```ts
 import { uriPermissionManager } from '@kit.AbilityKit';
 ```
@@ -31,23 +32,25 @@ Grants the URI permission to an application. If the call is successful, the appl
 
 > **NOTE**
 >
->- If an application has the ohos.permission.PROXY_AUTHORIZATION_URI permission, it can grant the accessible URIs of another application. If the application does not have this permission, it can grant only its own URI permissions.
->- URI processing involves encoding and decoding. Therefore, the input URI must be obtained through the [getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) API. For URIs combined by the application, the system cannot guarantee their functions.
+>- If an application has the ohos.permission.PROXY_AUTHORIZATION_URI permission, it can grant URIs that do not belong to itself but are accessible to it. If the application does not have this permission, it can grant only its own URIs.
+>- Because URI processing involves encoding and decoding, the URI passed in must be obtained by calling [getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath). For a URI concatenated by the application itself, the system cannot guarantee its functionality.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior difference**: This API can be called normally only on Phone, PC/2in1, and Tablet devices. On other devices, it can be called but does not take effect.
+
 **Required permissions**: ohos.permission.PROXY_AUTHORIZATION_URI
 
 **Parameters**
 
-  | Name| Type| Mandatory| Description| 
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | uri | string | Yes| URI of the file. The scheme has a fixed value of **file**. For details, see [FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#constructor10).| 
-  | flag | [wantConstant.Flags](js-apis-app-ability-wantConstant.md#flags) | Yes| Read or write permission on the file to grant.| 
-  | targetBundleName | string | Yes| Bundle name of the target application.| 
-  | callback | AsyncCallback&lt;number&gt; | Yes| Callback used to return the result. If the operation is successful, **0** is returned; otherwise, **-1** is returned.| 
+  | uri | string | Yes | URI of the file. The scheme is fixed to "file". For details, see [FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#fileuri10). |
+  | flag | [wantConstant.Flags](js-apis-app-ability-wantConstant.md#flags) | Yes| Read or write permission on the file to grant.|
+  | targetBundleName | string | Yes| Bundle name of the target application.|
+  | callback | AsyncCallback&lt;number&gt; | Yes | Callback used to return the result. The value 0 indicates that the authorization is successful, and -1 indicates that the authorization fails. |
 
 **Error codes**
 
@@ -58,7 +61,7 @@ Grants the URI permission to an application. If the call is successful, the appl
 | 201 | Permission denied. |
 | 202 | Not System App. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-| 801 | Capability not supported. |
+| 801 | Capability not supported. <br>Applicable version: 19+ |
 | 16000050 | Internal error. |
 | 16000058 | Invalid URI flag. |
 | 16000059 | Invalid URI type. |
@@ -66,29 +69,31 @@ Grants the URI permission to an application. If the call is successful, the appl
 
 
 **Example**
-    
+
   ```ts
   import { uriPermissionManager, wantConstant } from '@kit.AbilityKit';
   import { fileIo, fileUri } from '@kit.CoreFileKit';
 
-  let targetBundleName = 'com.example.test_case1'
+  let targetBundleName = 'com.example.test_case1';
   let path = 'file://com.example.test_case1/data/storage/el2/base/haps/entry_test/files/newDir';
+  // Create the directory.
   fileIo.mkdir(path, (err) => {
     if (err) {
       console.error(`mkdir failed, err code: ${err.code}, err msg: ${err.message}.`);
-    } else {
-      console.info(`mkdir success.`);
+      return;
     }
+    console.info(`mkdir success.`);
+    let uri = fileUri.getUriFromPath(path);
+    // Grant the URI permission to the specified application.
+    uriPermissionManager.grantUriPermission(uri, wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION, targetBundleName,
+      (error) => {
+        if (error && error.code !== 0) {
+          console.error(`grantUriPermission failed, err code: ${error.code}, err msg: ${error.message}.`);
+          return;
+        }
+        console.info(`grantUriPermission success.`);
+      });
   });
-  let uri = fileUri.getUriFromPath(path);
-  uriPermissionManager.grantUriPermission(uri, wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION, targetBundleName,
-    (error) => {
-      if (error && error.code !== 0) {
-        console.error(`grantUriPermission failed, err code: ${error.code}, err msg: ${error.message}.`);
-        return;
-      }
-      console.info(`grantUriPermission success.`);
-    });
   ```
 
 
@@ -100,28 +105,30 @@ Grants the URI permission to an application. If the call is successful, the appl
 
 > **NOTE**
 >
->- If an application has the ohos.permission.PROXY_AUTHORIZATION_URI permission, it can grant the accessible URIs of another application. If the application does not have this permission, it can grant only its own URI permissions.
->- URI processing involves encoding and decoding. Therefore, the input URI must be obtained through the [getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) API. For URIs combined by the application, the system cannot guarantee their functions.
+>- If an application has the ohos.permission.PROXY_AUTHORIZATION_URI permission, it can grant URIs that do not belong to itself but are accessible to it. If the application does not have this permission, it can grant only its own URIs.
+>- Because URI processing involves encoding and decoding, the URI passed in must be obtained by calling [getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath). For a URI concatenated by the application itself, the system cannot guarantee its functionality.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior difference**: This API can be called normally only on Phone, PC/2in1, and Tablet devices. It can be called on other devices but does not take effect.
+
 **Required permissions**: ohos.permission.PROXY_AUTHORIZATION_URI
 
 **Parameters**
 
-  | Name| Type| Mandatory| Description| 
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | uri | string | Yes| URI of the file. The scheme has a fixed value of **file**. For details, see [FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#constructor10).| 
-  | flag | [wantConstant.Flags](js-apis-app-ability-wantConstant.md#flags) | Yes| Read or write permission on the file to grant.| 
-  | targetBundleName | string | Yes| Bundle name of the target application.|  
+  | uri | string | Yes | URI pointing to the file. The scheme is fixed to "file". For details, see [FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#fileuri10). |
+  | flag | [wantConstant.Flags](js-apis-app-ability-wantConstant.md#flags) | Yes| Read or write permission on the file to grant.|
+  | targetBundleName | string | Yes| Bundle name of the target application.|
 
 **Return value**
 
-  | Type| Description| 
+  | Type| Description|
   | -------- | -------- |
-  | Promise&lt;number&gt; | Promise used to return the result. If the operation is successful, **0** is returned; otherwise, **-1** is returned.| 
+  | Promise&lt;number&gt; | Promise object. The value 0 indicates that the authorization is successful, and -1 indicates that the authorization fails. |
 
 **Error codes**
 
@@ -132,14 +139,14 @@ Grants the URI permission to an application. If the call is successful, the appl
   | 201 | Permission denied. |
   | 202 | Not System App. Interface caller is not a system app. |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-  | 801 | Capability not supported. |
+  | 801 | Capability not supported. <br>Applicable version: 19+ |
   | 16000050 | Internal error. |
   | 16000058 | Invalid URI flag. |
   | 16000059 | Invalid URI type. |
   | 16000060 | A sandbox application cannot grant URI permission. |
 
 **Example**
-    
+
   ```ts
   import { uriPermissionManager, wantConstant } from '@kit.AbilityKit';
   import { fileIo, fileUri } from '@kit.CoreFileKit';
@@ -148,19 +155,21 @@ Grants the URI permission to an application. If the call is successful, the appl
   let targetBundleName = 'com.example.test_case1'
   let path = 'file://com.example.test_case1/data/storage/el2/base/haps/entry_test/files/newDir';
 
+  // Create the directory.
   fileIo.mkdir(path, (err) => {
     if (err) {
       console.error(`mkdir failed, err code: ${err.code}, err msg: ${err.message}.`);
-    } else {
-      console.info(`mkdir succeed.`);
+      return;
     }
-  });
-  let uri = fileUri.getUriFromPath(path);
-  uriPermissionManager.grantUriPermission(uri, wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION, targetBundleName)
-    .then((data) => {
-      console.info(`Verification succeeded, data: ${JSON.stringify(data)}.`);
-    }).catch((err: BusinessError) => {
-    console.error(`Verification failed, err code: ${err.code}, err msg: ${err.message}.`);
+    console.info(`mkdir success.`);
+    let uri = fileUri.getUriFromPath(path);
+    // Grant the URI to the specified application.
+    uriPermissionManager.grantUriPermission(uri, wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION, targetBundleName)
+      .then((data) => {
+        console.info(`grantUriPermission succeeded, data: ${JSON.stringify(data)}.`);
+      }).catch((err: BusinessError) => {
+      console.error(`grantUriPermission failed, err code: ${err.code}, err msg: ${err.message}.`);
+    });
   });
   ```
 
@@ -172,24 +181,26 @@ Grants the URI permission to an application. If the call is successful, the appl
 
 > **NOTE**
 > 
->- If an application has the ohos.permission.PROXY_AUTHORIZATION_URI permission, it can grant the accessible URIs of another application. If the application does not have this permission, it can grant only its own URI permissions.
->- This API can be used to grant URI access permission to a cloned application. You need to specify the application bundle name and index of the cloned application.
->- URI processing involves encoding and decoding. Therefore, the input URI must be obtained through the [getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) API. For URIs combined by the application, the system cannot guarantee their functions.
+>- When an application has the ohos.permission.PROXY_AUTHORIZATION_URI permission, it can grant permissions to URIs that do not belong to itself but to which it has access. Without this permission, it can grant permissions only to URIs that belong to itself.
+>- This API supports granting permissions to an app clone. You need to specify the bundle name and clone index of the target application.
+>- Because URI processing involves encoding and decoding, the URI passed in must be obtained by calling [getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath). For a URI concatenated by the application itself, the system cannot guarantee its functionality.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior difference**: This API can be called normally only on Phone, PC/2in1, and Tablet devices. It can be called on other devices but does not take effect.
+
 **Required permissions**: ohos.permission.PROXY_AUTHORIZATION_URI
 
 **Parameters**
 
-  | Name| Type| Mandatory| Description| 
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | uri | string | Yes| URI of the file. The scheme has a fixed value of **file**. For details, see [FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#constructor10).| 
-  | flag | [wantConstant.Flags](js-apis-app-ability-wantConstant.md#flags) | Yes| Read or write permission on the file to grant.| 
+  | uri | string | Yes | URI pointing to the file. The scheme is fixed to "file". For details, see [FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#fileuri10). |
+  | flag | [wantConstant.Flags](js-apis-app-ability-wantConstant.md#flags) | Yes| Read or write permission on the file to grant.|
   | targetBundleName | string | Yes| Bundle name of the target application.|
-  | appCloneIndex | number | Yes| Index of the cloned application. The value range is [0, 1000]. The value **0** indicates the application itself.|
+  | appCloneIndex | number | Yes | Clone index of the authorized application. The valid range is [0, 1000], and the value 0 indicates the main application. |
 
 **Return value**
 
@@ -206,7 +217,7 @@ Grants the URI permission to an application. If the call is successful, the appl
   | 201 | Permission denied. |
   | 202 | Not System App. Interface caller is not a system app. |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-  | 801 | Capability not supported. |
+  | 801 | Capability not supported. <br>Applicable version: 19+ |
   | 16000050 | Internal error. |
   | 16000058 | Invalid URI flag. |
   | 16000059 | Invalid URI type. |
@@ -228,7 +239,7 @@ Grants the URI permission to an application. If the call is successful, the appl
       let targetBundleName: string = 'com.example.demo1';
       let filePath: string = this.context.filesDir + "/test.txt";
       let uri: string = fileUri.getUriFromPath(filePath);
-      // grant uri permission to main application
+      // Grant the URI permission to the main application.
       try {
         let appCloneIndex: number = 0;
         uriPermissionManager.grantUriPermission(uri, wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION, targetBundleName,
@@ -242,7 +253,7 @@ Grants the URI permission to an application. If the call is successful, the appl
         console.error(`grantUriPermission failed. error: ${JSON.stringify(error)}.`);
       }
 
-      // grant uri permission to clone application
+      // Grant the URI permission to the clone application.
       try {
         let appCloneIndex: number = 1;
         uriPermissionManager.grantUriPermission(uri, wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION, targetBundleName,
@@ -275,13 +286,15 @@ Revokes the URI permission from an application. This API uses an asynchronous ca
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior difference**: This API can be called normally only on Phone, PC/2in1, and Tablet devices. It can be called on other devices but does not take effect.
+
 **Parameters**
 
-  | Name| Type| Mandatory| Description| 
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | uri | string | Yes| URI of the file. The scheme has a fixed value of **file**. For details, see [FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#constructor10).| 
-  | targetBundleName | string | Yes| Bundle name of the application, from which the permission is revoked.| 
-  | callback | AsyncCallback&lt;number&gt; | Yes| Callback used to return the result. If the operation is successful, **0** is returned; otherwise, **-1** is returned.| 
+  | uri | string | Yes | URI pointing to the file. The scheme is fixed to "file". For details, see [FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#fileuri10). |
+  | targetBundleName | string | Yes | Bundle name of the application to which the URI permission is granted. |
+  | callback | AsyncCallback&lt;number&gt; | Yes | Callback used to return the result. The value 0 indicates that the permission is revoked successfully, and -1 indicates that the revocation fails. |
 
 **Error codes**
 
@@ -289,26 +302,29 @@ Revokes the URI permission from an application. This API uses an asynchronous ca
 
   | ID| Error Message|
   | ------- | -------------------------------- |
+  | 201 | Permission denied. <br>Applicable version: 10 - 11 |
   | 202 | Not System App. Interface caller is not a system app. |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
   | 801 | Capability not supported. |
   | 16000050 | Internal error. |
   | 16000059 | Invalid URI type. |
+  | 801 | Capability not supported. <br>Applicable version: 19+ |
 
 **Example**
-    
+
   ```ts
   import { uriPermissionManager } from '@kit.AbilityKit';
 
   let targetBundleName = 'com.example.test_case2';
   let uri = "file://com.example.test_case1/data/storage/el2/base/haps/entry_test/files/newDir";
 
+  // Revoke the URI permission of the specified application.
   uriPermissionManager.revokeUriPermission(uri, targetBundleName, (error) => {
     if (error && error.code !== 0) {
-      console.error("revokeUriPermission failed, error.code = " + error.code);
+      console.error(`revokeUriPermission failed. Code: ${error.code}, message: ${error.message}.`);
       return;
     }
-    console.info("revokeUriPermission success");
+    console.info('revokeUriPermission success');
   });
   ```
 
@@ -328,18 +344,20 @@ Revokes the URI permission from an application. This API uses a promise to retur
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior difference**: This API can be called normally only on Phone, PC/2in1, and Tablet devices. It can be called on other devices but does not take effect.
+
 **Parameters**
 
-  | Name| Type| Mandatory| Description| 
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | uri | string | Yes| URI of the file. The scheme has a fixed value of **file**. For details, see [FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#constructor10).| 
-  | targetBundleName | string | Yes| Bundle name of the target application.|  
+  | uri | string | Yes | URI pointing to the file. The scheme is fixed to "file". For details, see [FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#fileuri10). |
+  | targetBundleName | string | Yes| Bundle name of the target application.|
 
 **Return value**
 
-  | Type| Description| 
+  | Type| Description|
   | -------- | -------- |
-  | Promise&lt;number&gt; | Promise used to return the result. If the operation is successful, **0** is returned; otherwise, **-1** is returned.| 
+  | Promise&lt;number&gt; | Promise object. The value 0 indicates that the revocation is successful, and -1 indicates that the revocation failed. |
 
 **Error codes**
 
@@ -347,15 +365,16 @@ Revokes the URI permission from an application. This API uses a promise to retur
 
   | ID| Error Message|
   | ------- | -------------------------------- |
+  | 201 | Permission denied. <br>Applicable version: 10 - 11 |
   | 202 | Not System App. Interface caller is not a system app. |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-  | 801 | Capability not supported. |
+  | 801 | Capability not supported. <br>Applicable version: 19+ |
   | 16000050 | Internal error. |
   | 16000059 | Invalid URI type. |
 
 
 **Example**
-    
+
   ```ts
   import { uriPermissionManager } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -363,6 +382,7 @@ Revokes the URI permission from an application. This API uses a promise to retur
   let targetBundleName = 'com.example.test_case2';
   let uri = 'file://com.example.test_case1/data/storage/el2/base/haps/entry_test/files/newDir';
 
+  // Revoke the URI permission of the specified application.
   uriPermissionManager.revokeUriPermission(uri, targetBundleName)
     .then((data) => {
       console.info(`Verification success, data: ${JSON.stringify(data)}.`);
@@ -386,13 +406,15 @@ Revokes the URI permission from an application. This API uses a promise to retur
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior differences** This API is supported on phone, 2-in-1, and tablet devices. On other device types, it can be called but does not take effect.
+
 **Parameters**
 
-  | Name| Type| Mandatory| Description| 
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | uri | string | Yes| URI of the file. The scheme has a fixed value of **file**. For details, see [FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#constructor10).| 
+  | uri | string | Yes | URI pointing to the file. The scheme is fixed to "file". For details, see [FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#fileuri10). |
   | targetBundleName | string | Yes| Bundle name of the target application.|
-  | appCloneIndex | number | Yes| Index of the cloned application. The value range is [0, 1000]. The value **0** indicates the application itself.|
+  | appCloneIndex | number | Yes | Clone index of the authorized application. The valid range is [0, 1000], and the value 0 indicates the main application. |
 
 **Return value**
 
@@ -408,7 +430,7 @@ Revokes the URI permission from an application. This API uses a promise to retur
   | ------- | -------------------------------- |
   | 202 | Not System App. Interface caller is not a system app. |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-  | 801 | Capability not supported. |
+  | 801 | Capability not supported. <br>Applicable version: 19+ |
   | 16000050 | Internal error. |
   | 16000059 | Invalid URI type. |
   | 16000081 | Failed to obtain the target application information. |
@@ -429,7 +451,7 @@ Revokes the URI permission from an application. This API uses a promise to retur
       let targetBundleName: string = 'com.example.demo1';
       let filePath: string = this.context.filesDir + "/test.txt";
       let uri: string = fileUri.getUriFromPath(filePath);
-      // revoke uri permission of main application
+      // Revoke the URI permission of the main application.
       try {
         let appCloneIndex: number = 0;
         uriPermissionManager.revokeUriPermission(uri, targetBundleName, appCloneIndex)
@@ -442,7 +464,7 @@ Revokes the URI permission from an application. This API uses a promise to retur
         console.error(`revokeUriPermission failed. error: ${JSON.stringify(error)}.`);
       }
 
-      // revoke uri permission of clone application
+      // Revoke the URI permission of the clone application.
       try {
         let appCloneIndex: number = 1;
         uriPermissionManager.revokeUriPermission(uri, targetBundleName, appCloneIndex)
@@ -468,15 +490,15 @@ Grants the URI access permission of the current application to the target applic
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**Device behavior differences**: This API can be properly called only on phones, 2-in-1 devices, and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences** This API is supported on phone, 2-in-1, and tablet devices. On other device types, it returns error code 801.
 
 **Parameters**
 
-  | Name| Type| Mandatory| Description| 
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | key | string | Yes| Unique key of the target UDMF data. The key must be created by the caller using [unifiedDataChannel.insertData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddatachannelinsertdata), and the written data must be the URIs of the authorized files.<br>Currently, only the keys of the [UDMF data channels](../apis-arkdata/js-apis-data-unifiedDataChannel.md#intention) of the **SYSTEM_SHARE**, **PICKER**, and **MENU** types are supported. For details about how to create and use a key, see [Sharing Data via Unified Data Channels](../../database/unified-data-channels.md).| 
+  | key | string | Yes| Unique key of the target UDMF data. The key must be created by the caller using [unifiedDataChannel.insertData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddatachannelinsertdata), and the written data must be the URIs of the authorized files.<br>Currently, only the keys of the [UDMF data channels](../apis-arkdata/js-apis-data-unifiedDataChannel.md#intention) of the **SYSTEM_SHARE**, **PICKER**, and **MENU** types are supported. For details about how to create and use a key, see [Sharing Data via Unified Data Channels](../../database/unified-data-channels.md).|
   | flag | [wantConstant.Flags](js-apis-app-ability-wantConstant.md#flags) | Yes| Read or write permission on the file to grant. The options are as follows:<br>- **FLAG_AUTH_READ_URI_PERMISSION**: read permission.<br>- **FLAG_AUTH_WRITE_URI_PERMISSION**: write permission.|
-  | targetTokenId  | number  | Yes| Identity of the target application, which can be obtained through [bundleManager.getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo).|
+  | targetTokenId  | number  | Yes | Identity of the target application, which can be obtained through [bundleManager.getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo). The target application must be different from the API caller. |
 
 **Return value**
 
@@ -502,8 +524,8 @@ Grants the URI access permission of the current application to the target applic
 **Example**
 
   ```ts
-  // The bundle name of the API caller is com.example.test.
-  // ExntryAbility.ets
+  // The bundle name of the API caller application is com.example.test.
+  // EntryAbility.ets
   import { AbilityConstant, UIAbility, Want, wantConstant, uriPermissionManager } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -544,16 +566,16 @@ Grants the URI access permission of the specified application to the target appl
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**Device behavior differences**: This API can be properly called only on phones, 2-in-1 devices, and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences** This API is supported on phone, 2-in-1, and tablet devices. On other device types, it returns error code 801.
 
 **Parameters**
 
-  | Name| Type| Mandatory| Description| 
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | key | string | Yes| Unique key of the target UDMF data. The key must be created by the application (corresponding to **callerTokenId**) through [unifiedDataChannel.insertData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddatachannelinsertdata), and the written data must be the URIs of the authorized files.<br>Currently, only the keys of the [UDMF data channels](../apis-arkdata/js-apis-data-unifiedDataChannel.md#intention) of the **SYSTEM_SHARE**, **PICKER**, and **MENU** types are supported. For details about how to create and use a key, see [Sharing Data via Unified Data Channels](../../database/unified-data-channels.md).| 
-  | flag | [wantConstant.Flags](js-apis-app-ability-wantConstant.md#flags) | Yes| Read or write permission on the file to grant. The options are as follows:<br>- **FLAG_AUTH_READ_URI_PERMISSION**: read permission.<br>- **FLAG_AUTH_WRITE_URI_PERMISSION**: write permission.| 
+  | key | string | Yes| Unique key of the target UDMF data. The key must be created by the application (corresponding to **callerTokenId**) through [unifiedDataChannel.insertData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddatachannelinsertdata), and the written data must be the URIs of the authorized files.<br>Currently, only the keys of the [UDMF data channels](../apis-arkdata/js-apis-data-unifiedDataChannel.md#intention) of the **SYSTEM_SHARE**, **PICKER**, and **MENU** types are supported. For details about how to create and use a key, see [Sharing Data via Unified Data Channels](../../database/unified-data-channels.md).|
+  | flag | [wantConstant.Flags](js-apis-app-ability-wantConstant.md#flags) | Yes| Read or write permission on the file to grant. The options are as follows:<br>- **FLAG_AUTH_READ_URI_PERMISSION**: read permission.<br>- **FLAG_AUTH_WRITE_URI_PERMISSION**: write permission.|
   | callerTokenId  | number  | Yes| Identity of the caller application. You can obtain the value from the **ohos.aafwk.param.callerToken** field in [want](js-apis-app-ability-want.md).|
-  | targetTokenId  | number  | Yes| Identity of the target application, which can be obtained through [bundleManager.getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo).|
+  | targetTokenId  | number  | Yes | Identity of the target application, which can be obtained through [bundleManager.getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo). The target application must be different from the caller application. |
 
 **Return value**
 
@@ -648,3 +670,4 @@ Grants the URI access permission of the specified application to the target appl
     }
   }
   ```
+

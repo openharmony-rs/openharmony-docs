@@ -1675,3 +1675,17 @@ Allows an application to use the aa tool to debug other applications locally in 
 **Supported devices**: PCs/2-in-1 devices | tablets
 
 **Since**: 26.1.0
+
+## ohos.permission.GET_ALL_BUNDLE_INFO
+ 
+Allows an application to obtain the list of applications installed on the device.
+ 
+<!--RP111--><!--RP111End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: user_grant
+ 
+**Supported devices**: PCs/2-in-1 devices
+ 
+**Since**: 26.1.0

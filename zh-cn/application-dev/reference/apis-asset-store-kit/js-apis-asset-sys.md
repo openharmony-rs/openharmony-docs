@@ -53,8 +53,8 @@ addAsUser(userId: number, attributes: AssetMap): Promise\<void>
 
 | 错误码ID | 错误信息                                                   |
 | -------- | ---------------------------------------------------------- |
-| 201      | The caller doesn't have the permission.                    |
-| 202      | Non-system applications use system APIs.                   |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                    |
+| 202      | Permission verification failed. A non-system application calls a system API.                   |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed.           |
 | 24000001 | The ASSET service is unavailable.                          |
 | 24000003 | The asset already exists.                                  |
@@ -123,8 +123,8 @@ removeAsUser(userId: number, query: AssetMap): Promise\<void>
 
 | 错误码ID | 错误信息                                                   |
 | -------- | ---------------------------------------------------------- |
-| 201      | The caller doesn't have the permission.                    |
-| 202      | Non-system applications use system APIs.                   |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                    |
+| 202      | Permission verification failed. A non-system application calls a system API.                   |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed. |
 | 24000001 | The ASSET service is unavailable.                          |
 | 24000002 | The asset is not found.                        |
@@ -188,8 +188,8 @@ updateAsUser(userId: number, query: AssetMap, attributesToUpdate: AssetMap): Pro
 
 | 错误码ID | 错误信息                                                   |
 | -------- | ---------------------------------------------------------- |
-| 201      | The caller doesn't have the permission.                    |
-| 202      | Non-system applications use system APIs.                   |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                    |
+| 202      | Permission verification failed. A non-system application calls a system API.                   |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed.           |
 | 24000001 | The ASSET service is unavailable.                          |
 | 24000002 | The asset is not found.                        |
@@ -256,8 +256,8 @@ preQueryAsUser(userId: number, query: AssetMap): Promise\<Uint8Array>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | The caller doesn't have the permission.                      |
-| 202      | Non-system applications use system APIs.                     |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                      |
+| 202      | Permission verification failed. A non-system application calls a system API.                     |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed. |
 | 24000001 | The ASSET service is unavailable.                            |
 | 24000002 | The asset is not found.                          |
@@ -323,8 +323,8 @@ queryAsUser(userId: number, query: AssetMap): Promise\<Array\<AssetMap>>
 
 | 错误码ID | 错误信息                                                   |
 | -------- | ---------------------------------------------------------- |
-| 201      | The caller doesn't have the permission.                    |
-| 202      | Non-system applications use system APIs.                   |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                    |
+| 202      | Permission verification failed. A non-system application calls a system API.                   |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed. |
 | 24000001 | The ASSET service is unavailable.                          |
 | 24000002 | The asset is not found.                        |
@@ -395,8 +395,8 @@ postQueryAsUser(userId: number, handle: AssetMap): Promise\<void>
 
 | 错误码ID | 错误信息                                                   |
 | -------- | ---------------------------------------------------------- |
-| 201      | The caller doesn't have the permission.                    |
-| 202      | Non-system applications use system APIs.                   |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                    |
+| 202      | Permission verification failed. A non-system application calls a system API.                   |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed.           |
 | 24000001 | The ASSET service is unavailable.                          |
 | 24000006 | Insufficient memory.                                       |

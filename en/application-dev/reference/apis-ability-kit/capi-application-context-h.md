@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=f0ca4679538114d37c428618ebeb98dcc5067c5b translatedAt=2026-09-03T08:42:06.580Z pushedAt=2026-09-05T10:47:30.100Z -->
 
 ## Overview
 
@@ -30,21 +31,23 @@ The file declares the APIs related to the application-level context.
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetCacheDir(char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetcachedir) | Obtains the application-level cache directory of the application.|
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetAreaMode(AbilityRuntime_AreaMode* areaMode)](#oh_abilityruntime_applicationcontextgetareamode) | Obtains the application-level file data encryption level of the application.|
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetBundleName(char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetbundlename) | Obtains the bundle name of the application.|
-| [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetTempDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgettempdir) | Obtains the application-level temporary file directory of the application.|
-| [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetFilesDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetfilesdir) | Obtains the application-level common file directory of the application.|
+| [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetTempDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgettempdir) | Gets the application-level temporary file directory of the current application. This directory is used to store temporary files during application running, which may be deleted when the application exits or the system performs cleanup. |
+| [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetFilesDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetfilesdir) | Gets the application-level general file directory of the current application. This directory is used to store files that need to be persisted by the application, such as user-generated documents, downloaded files, and application data. |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetDatabaseDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetdatabasedir) | Obtains the application-level database file directory of the application.|
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetPreferencesDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetpreferencesdir) | Obtains the application-level preferences file directory of the application.|
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetBundleCodeDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetbundlecodedir) | Obtains the application-level installation file directory of the application.|
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetDistributedFilesDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetdistributedfilesdir) | Obtains the application-level distributed file directory of the application.|
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetCloudFileDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetcloudfiledir) | Obtains the application-level cloud file directory of the application.|
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLogFileDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetlogfiledir) | Obtains the application-level log file directory of the application.|
-| [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetResourceDir(const char* moduleName, char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetresourcedir) | Obtains the application-level resource directory of the application.    |
+| [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetResourceDir(const char* moduleName, char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetresourcedir) | Gets the application-level resource directory of the current application. |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbility(AbilityBase_Want *want)](#oh_abilityruntime_startselfuiability) | Starts the UIAbility of the current application.|
-| [AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithStartOptions(AbilityBase_Want *want,AbilityRuntime_StartOptions *options)](#oh_abilityruntime_startselfuiabilitywithstartoptions) | Starts the UIAbility of the current application using **StartOptions**.|
+| [AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithStartOptions(AbilityBase_Want *want, AbilityRuntime_StartOptions *options)](#oh_abilityruntime_startselfuiabilitywithstartoptions) | Starts the UIAbility of the current app with StartOptions. |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetVersionCode(int64_t* versionCode)](#oh_abilityruntime_applicationcontextgetversioncode) | Obtains the application version code.|
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithPidResult(AbilityBase_Want *want, AbilityRuntime_StartOptions *options, int32_t *targetPid)](#oh_abilityruntime_startselfuiabilitywithpidresult) | Starts the UIAbility of the current application using **StartOptions** and obtains the process ID of the target UIAbility.|
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLaunchParameter(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetlaunchparameter) | Obtains **WantParams** passed for the initial launch of the UIAbility of the current application.|
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLatestParameter(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetlatestparameter)| Obtains **WantParams** passed for the most recent launch of the UIAbility of the current application.|
+| [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextNotifyPageChanged(const char* targetPageName, int32_t targetPageNameLength, int32_t windowId)](#oh_abilityruntime_applicationcontextnotifypagechanged) | This API is only supported for third-party framework calls. Each time the third-party framework switches pages, it notifies the system of the target page information (including the target page path, target page path length, and the window ID corresponding to the target page). This enables the system to perceive which page the current application window is on, thereby performing page management. |
+| [AbilityRuntime_ErrorCode OH_AbilityRuntime_AcquireUIAbilityChildProcessInfos(OH_AbilityRuntime_ChildProcessInfosHandle* infos, uint32_t* count)](#oh_abilityruntime_acquireuiabilitychildprocessinfos) | Gets the UIAbility child process information of the current application. |
 
 ## Function Description
 
@@ -72,7 +75,7 @@ Obtains the application-level cache directory of the application.
 
 | Type| Description|
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results:<br>**ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful.<br>**ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: The passed-in value of **buffer** or **writeLength** is null, or the buffer size is less than the size of the string to be written.<br>**ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the [child process](capi-childprocess.md) created by the application.|
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | Result code.<br>Returns ABILITY_RUNTIME_ERROR_CODE_NO_ERROR if the query succeeds.<br>Returns ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID if the input parameter buffer or writeLength is null, or the buffer size is smaller than the required write size.<br>Returns ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST if the application context does not exist, for example, the application-level context does not exist in the [ChildProcess](capi-childprocess.md) created by the application. |
 
 ### OH_AbilityRuntime_ApplicationContextGetAreaMode()
 
@@ -96,7 +99,7 @@ Obtains the application-level file data encryption level of the application.
 
 | Type| Description|
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results:<br>**ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful.<br>**ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: The passed-in value of **buffer** or **writeLength** is null, or the buffer size is less than the size of the string to be written.<br>**ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the [child process](capi-childprocess.md) created by the application.|
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | Result code.<br>Returns ABILITY_RUNTIME_ERROR_CODE_NO_ERROR if the query succeeds.<br>Returns ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID if areaMode is null.<br>Returns ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST if the application context does not exist, for example, the application-level context does not exist in the [ChildProcess](capi-childprocess.md) created by the application. |
 
 ### OH_AbilityRuntime_ApplicationContextGetBundleName()
 
@@ -122,7 +125,7 @@ Obtains the bundle name of the application.
 
 | Type| Description|
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results:<br>**ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful.<br>**ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: The passed-in value of **buffer** or **writeLength** is null, or the buffer size is less than the size of the string to be written.<br>**ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the [child process](capi-childprocess.md) created by the application.|
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | Result code.<br>Returns ABILITY_RUNTIME_ERROR_CODE_NO_ERROR if the query succeeds.<br>Returns ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID if the input parameter buffer or writeLength is null, or the buffer size is smaller than the required write size.<br>Returns ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST if the application context does not exist, for example, the application-level context does not exist in the [ChildProcess](capi-childprocess.md) created by the application. |
 
 ### OH_AbilityRuntime_ApplicationContextGetTempDir()
 
@@ -132,7 +135,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetTempDir(char* bu
 
 **Description**
 
-Obtains the application-level temporary file directory of the application.
+Obtains the application-level temporary file directory of the current application. This directory is used to store temporary files during application running, which may be deleted when the application exits or the system cleans up.
 
 **Since**: 16
 
@@ -148,7 +151,7 @@ Obtains the application-level temporary file directory of the application.
 
 | Type| Description|
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results:<br>**ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful.<br>**ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: The passed-in value of **buffer** or **writeLength** is null, or the buffer size is less than the size of the string to be written.<br>**ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the [child process](capi-childprocess.md) created by the application.|
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | Result code.<br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - query success.<br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - the input parameter buffer or writeLength is null, or the buffer size is smaller than the required write size.<br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - the application context does not exist, for example, the application-level context does not exist in the [ChildProcess](capi-childprocess.md) created by the application. |
 
 ### OH_AbilityRuntime_ApplicationContextGetFilesDir()
 
@@ -158,7 +161,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetFilesDir(char* b
 
 **Description**
 
-Obtains the application-level common file directory of the application.
+Obtains the application-level general file directory of the current application. This directory is used to store files that need to be persisted by the application, such as user-generated documents, downloaded files, and application data.
 
 **Since**: 16
 
@@ -174,7 +177,7 @@ Obtains the application-level common file directory of the application.
 
 | Type| Description|
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results:<br>**ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful.<br>**ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: The passed-in value of **buffer** or **writeLength** is null, or the buffer size is less than the size of the string to be written.<br>**ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the [child process](capi-childprocess.md) created by the application.|
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | Result code.<br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - query success.<br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - the input parameter buffer or writeLength is null, or the buffer size is smaller than the required write size.<br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - the application context does not exist, for example, the application-level context does not exist in the [ChildProcess](capi-childprocess.md) created by the application. |
 
 ### OH_AbilityRuntime_ApplicationContextGetDatabaseDir()
 
@@ -200,7 +203,7 @@ Obtains the application-level database file directory of the application.
 
 | Type| Description|
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results:<br>**ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful.<br>**ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: The passed-in value of **buffer** or **writeLength** is null, or the buffer size is less than the size of the string to be written.<br>**ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the [child process](capi-childprocess.md) created by the application.|
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | Result code.<br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - query success.<br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - the input parameter buffer or writeLength is null, or the buffer size is smaller than the required write size.<br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - the application context does not exist, for example, the application-level context does not exist in the [ChildProcess](capi-childprocess.md) created by the application. |
 
 ### OH_AbilityRuntime_ApplicationContextGetPreferencesDir()
 
@@ -226,7 +229,7 @@ Obtains the application-level preferences file directory of the application.
 
 | Type| Description|
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results:<br>**ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful.<br>**ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: The passed-in value of **buffer** or **writeLength** is null, or the buffer size is less than the size of the string to be written.<br>**ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the [child process](capi-childprocess.md) created by the application.|
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | Result code.<br>Returns ABILITY_RUNTIME_ERROR_CODE_NO_ERROR if the query is successful.<br>Returns ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID if the input parameter buffer or writeLength is null, or the buffer size is smaller than the required write size.<br>Returns ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST if the application context does not exist, for example, the application-level context does not exist in the [ChildProcess](capi-childprocess.md) created by the application. |
 
 ### OH_AbilityRuntime_ApplicationContextGetBundleCodeDir()
 
@@ -252,7 +255,7 @@ Obtains the application-level installation file directory of the application.
 
 | Type| Description|
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results:<br>**ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful.<br>**ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: The passed-in value of **buffer** or **writeLength** is null, or the buffer size is less than the size of the string to be written.<br>**ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the [child process](capi-childprocess.md) created by the application.|
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | Result code.<br>Returns ABILITY_RUNTIME_ERROR_CODE_NO_ERROR if the query succeeds.<br>Returns ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID if the input parameter buffer or writeLength is null, or the buffer size is smaller than the required write size.<br>Returns ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST if the application context does not exist, for example, the application-level context does not exist in the [ChildProcess](capi-childprocess.md) created by the application. |
 
 ### OH_AbilityRuntime_ApplicationContextGetDistributedFilesDir()
 
@@ -278,7 +281,7 @@ Obtains the application-level distributed file directory of the application.
 
 | Type| Description|
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results:<br>**ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful.<br>**ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: The passed-in value of **buffer** or **writeLength** is null, or the buffer size is less than the size of the string to be written.<br>**ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the [child process](capi-childprocess.md) created by the application.|
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | Result code.<br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - query success.<br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - the input parameter buffer or writeLength is null, or the buffer size is smaller than the required write size.<br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - the application context does not exist, for example, the application-level context does not exist in the [ChildProcess](capi-childprocess.md) created by the application. |
 
 ### OH_AbilityRuntime_ApplicationContextGetCloudFileDir()
 
@@ -304,7 +307,7 @@ Obtains the application-level cloud file directory of the application.
 
 | Type| Description|
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results:<br>**ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful.<br>**ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: The passed-in value of **buffer** or **writeLength** is null, or the buffer size is less than the size of the string to be written.<br>**ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the [child process](capi-childprocess.md) created by the application.|
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | Result code.<br>Returns ABILITY_RUNTIME_ERROR_CODE_NO_ERROR if the query is successful.<br>Returns ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID if the input parameter buffer or writeLength is null, or the buffer size is smaller than the required write size.<br>Returns ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST if the application context does not exist, for example, the application-level context does not exist in the [ChildProcess](capi-childprocess.md) created by the application. |
 
 ### OH_AbilityRuntime_ApplicationContextGetLogFileDir()
 
@@ -330,7 +333,7 @@ Obtains the application-level log file directory of the application.
 
 | Type| Description|
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results:<br>**ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful.<br>**ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: The passed-in value of **buffer** or **writeLength** is null, or the buffer size is less than the size of the string to be written.<br>**ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the [child process](capi-childprocess.md) created by the application.|
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | Result code.<br>Returns ABILITY_RUNTIME_ERROR_CODE_NO_ERROR if the query succeeds.<br>Returns ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID if the input parameter buffer or writeLength is null, or the buffer size is smaller than the required write size.<br>Returns ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST if the application context does not exist, for example, the application-level context does not exist in the [ChildProcess](capi-childprocess.md) created by the application. |
 
 ### OH_AbilityRuntime_ApplicationContextGetResourceDir()
 
@@ -348,16 +351,16 @@ Obtains the application-level resource directory of the application.
 
 | Name| Description|
 | -- | -- |
-| char* moduleName | Pointer to the module name.|
+| const char* moduleName | Module name, used to specify the target module whose resource directory is to be obtained. Developers can obtain the list of module names contained in the application through the bundleManager module APIs. Different module names correspond to different resource directory paths. |
 | char* buffer | Pointer to the buffer, which is used to receive the resource directory.|
-| int32_t bufferSize | Buffer size, in bytes.|
+| const int32_t bufferSize | Buffer size, in bytes. |
 | int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results:<br>**ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful.<br>**ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: The passed-in value of **buffer** or **writeLength** is null, or the buffer size is less than the size of the string to be written.<br>**ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the [child process](capi-childprocess.md) created by the application.|
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | Result code.<br>Returns ABILITY_RUNTIME_ERROR_CODE_NO_ERROR if the query succeeds.<br>Returns ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID if the input parameter buffer or writeLength is null, or the buffer size is smaller than the required write size.<br>Returns ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST if the application context does not exist, for example, the application-level context does not exist in the [ChildProcess](capi-childprocess.md) created by the application. |
 
 ### OH_AbilityRuntime_StartSelfUIAbility()
 
@@ -374,7 +377,7 @@ Starts the UIAbility of the current application.
 
 **Since**: 15
 
-**Device behavior differences**: This API can be properly called only on 2-in-1 devices and tablets. If it is called on other device types, error code **ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED** is returned.
+**Device behavior difference**: This API can be called normally only on PC/2in1 and Tablet devices. On other devices, it returns the ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED error code.
 
 **Parameters**
 
@@ -426,7 +429,7 @@ Starts the UIAbility of the current application using **StartOptions**.
 
 **Since**: 17
 
-**Device behavior differences**: This API can be properly called only on 2-in-1 devices and tablets. If it is called on other device types, error code **ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED** is returned.
+**Device behavior difference**: This API can be called normally only on PC/2in1 and Tablet devices. On other devices, it returns the ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED error code.
 
 **Parameters**
 
@@ -501,7 +504,7 @@ Obtains the application version code.
 
 | Type| Description|
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results:<br>**ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful.<br>**ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: **versionCode** is null.<br>**ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the [child process](capi-childprocess.md) created by the application.<br>**ABILITY_RUNTIME_ERROR_CODE_GET_APPLICATION_INFO_FAILED**: Failed to obtain the application information.|
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | Result code.<br>Returns ABILITY_RUNTIME_ERROR_CODE_NO_ERROR if the query succeeds.<br>Returns ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID if the input parameter versionCode is null.<br>Returns ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST if the application context does not exist, for example, the application-level context does not exist in the [ChildProcess](capi-childprocess.md) created by the application.<br>Returns ABILITY_RUNTIME_ERROR_CODE_GET_APPLICATION_INFO_FAILED if getting the application information fails, for example, the application is not installed or the application information is corrupted. |
 
 ### OH_AbilityRuntime_StartSelfUIAbilityWithPidResult()
 
@@ -513,7 +516,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithPidResult(Abili
 
 Starts the UIAbility of the current application using **StartOptions** and obtains the process ID of the target UIAbility.
 
-This function cannot be called on the main thread of an application, but can be called on the main thread of a [child process](capi-childprocess.md) created by the application.
+This API cannot be called on the main thread of the application, but can be called on the main thread of the [ChildProcess](capi-childprocess.md) created by the application.
 
 If it is called on the main thread of the application, error code **ABILITY_RUNTIME_ERROR_CODE_MAIN_THREAD_NOT_SUPPORTED** is returned.
 
@@ -521,7 +524,7 @@ If it is called on the main thread of the application, error code **ABILITY_RUNT
 
 **Since**: 21
 
-**Device behavior differences**: This API can be properly called only on 2-in-1 devices and tablets. If it is called on other device types, error code **ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED** is returned.
+**Device behavior difference**: This API can be called normally only on PC/2in1 and Tablet devices. On other devices, it returns the ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED error code.
 
 **Parameters**
 
@@ -576,7 +579,7 @@ void demo()
 }
 ```
 
-### OH_AbilityRuntime_ApplicationContextGetLaunchParameter
+### OH_AbilityRuntime_ApplicationContextGetLaunchParameter()
 
 ```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLaunchParameter(
@@ -601,7 +604,7 @@ Obtains **WantParams** passed for the initial launch of the UIAbility of the cur
 
 | Type| Description|
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results:<br>**ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful.<br>**ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: The passed-in value of **buffer** or **writeLength** is null, or the buffer size is less than the size of the string to be written.<br>**ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the [child process](capi-childprocess.md) created by the application.|
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | Result code.<br>Returns ABILITY_RUNTIME_ERROR_CODE_NO_ERROR if the query is successful.<br>Returns ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID if the input parameter buffer or writeLength is null, or the buffer size is smaller than the required write size.<br>Returns ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST if the application context does not exist, for example, the application-level context does not exist in the [ChildProcess](capi-childprocess.md) created by the application.|
 
 **Example**
 ```cpp
@@ -625,7 +628,7 @@ static napi_value GetLaunchParameter(napi_env env, napi_callback_info info)
 }
 ```
 
-### OH_AbilityRuntime_ApplicationContextGetLatestParameter
+### OH_AbilityRuntime_ApplicationContextGetLatestParameter()
 
 ```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLatestParameter(
@@ -634,7 +637,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLatestParameter(
 
 **Description**
 
-Obtains **WantParams** passed for the mose recent launch of the UIAbility of the current application. For details about **WantParams**, see [parameters in Want](js-apis-inner-ability-want.md).
+Obtains the WantParams parameters used when the current application last started a UIAbility. For details about WantParams, see [parameters in Want](js-apis-inner-ability-want.md). This API is applicable to scenarios where the parameters passed at the last startup need to be obtained, such as processing the latest startup request and parsing page redirection parameters.
 
 **Since**: 21
 
@@ -650,7 +653,7 @@ Obtains **WantParams** passed for the mose recent launch of the UIAbility of the
 
 | Type| Description|
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results:<br>**ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful.<br>**ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: The passed-in value of **buffer** or **writeLength** is null, or the buffer size is less than the size of the string to be written.<br>**ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the [child process](capi-childprocess.md) created by the application.|
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | Result code.<br>Returns ABILITY_RUNTIME_ERROR_CODE_NO_ERROR if the query succeeds.<br>Returns ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID if the input parameter buffer or writeLength is null, or the buffer size is smaller than the required write size.<br>Returns ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST if the application context does not exist, for example, the application-level context does not exist in the [ChildProcess](capi-childprocess.md) created by the application. |
 
 **Example**
 ```cpp
@@ -674,7 +677,7 @@ static napi_value GetLatestParameter(napi_env env, napi_callback_info info)
 }
 ```
 
-### OH_AbilityRuntime_ApplicationContextNotifyPageChanged
+### OH_AbilityRuntime_ApplicationContextNotifyPageChanged()
 
 ```cpp
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextNotifyPageChanged(
@@ -683,7 +686,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextNotifyPageChanged(
 
 **Description**
 
-This API can be called only from third-party frameworks. Each time a third-party framework switches pages, it notifies the system of the target page information (including the target page path, the length of the target page path, and the window ID corresponding to the target page). The system can adjust or recover the page according to product policies.
+This API only supports calls from third-party frameworks. Each time a third-party framework switches pages, it notifies the system of the target page information (including the target page path, target page path length, and window ID corresponding to the target page). The system can adjust or restore the page based on the product policy. This API is applicable to scenarios such as page navigation tracking, page state synchronization, and system-level page optimization for third-party frameworks.
 
 **Since**: 23
 
@@ -693,7 +696,7 @@ This API can be called only from third-party frameworks. Each time a third-party
 | -- | -- |
 | const char* targetPageName | Target page path.|
 | int32_t targetPageNameLength | Length of the target page path.|
-| int32_t windowId | [Window ID](../apis-arkui/arkts-apis-window-i.md#windowinfo18) corresponding to the target page.|
+| int32_t windowId | Window ID in [WindowInfo](../apis-arkui/arkts-apis-window-i.md#windowinfo18) corresponding to the target page.|
 
 **Returns**
 
@@ -720,3 +723,30 @@ static bool NotifyPageChanged(napi_env env, napi_callback_info info)
     return true;
 }
 ```
+
+### OH_AbilityRuntime_AcquireUIAbilityChildProcessInfos()
+
+```c
+AbilityRuntime_ErrorCode OH_AbilityRuntime_AcquireUIAbilityChildProcessInfos(OH_AbilityRuntime_ChildProcessInfosHandle* infos, uint32_t* count)
+```
+
+**Description**
+
+Obtains the UIAbility child process information of the current application, including the child processes started through the [startSelfUIAbilityInChildProcess](js-apis-inner-application-uiAbilityContext.md#startselfuiabilityinchildprocess) API, and the child processes started through the [startAbility](js-apis-inner-application-uiAbilityContext.md#startability-2) API with [processMode](js-apis-app-ability-contextConstant.md#processmode12) in [StartOptions](js-apis-app-ability-startOptions.md) set to NEW_PROCESS_ATTACH_TO_PARENT.
+
+After the obtained `infos` is used, call [OH_AbilityRuntime_ReleaseChildProcessInfos](capi-child-process-info-h.md#oh_abilityruntime_releasechildprocessinfos) to release it to avoid memory leaks.
+
+**Since:** 26.1.0
+
+**Parameters**
+
+| Parameter | Description |
+| -- | -- |
+| [OH_AbilityRuntime_ChildProcessInfosHandle](capi-nativechildprocess-infos.md)* infos | Output parameter. Pointer to the handle of the child process information set. It cannot be nullptr. After a successful call, `*infos` points to the child process information set. After use, call [OH_AbilityRuntime_ReleaseChildProcessInfos](capi-child-process-info-h.md#oh_abilityruntime_releasechildprocessinfos) to release it. |
+| uint32_t* count | Output parameter. Number of child processes. It cannot be nullptr. After a successful call, `*count` indicates the number of UIAbility child processes of the current application. If there is no child process, `*count` is 0. |
+
+**Return**
+
+| Type | Description |
+| -- | -- |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | Result code.<br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - The operation is successful.<br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - The input parameter infos or count is nullptr.<br>ABILITY_RUNTIME_ERROR_CODE_INTERNAL - An internal error occurs, for example, failed to connect to the system service.<br>For details, see AbilityRuntime_ErrorCode. |

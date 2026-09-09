@@ -4,7 +4,8 @@
 <!--Owner: @hobbycao-->
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=1e357e1a9db0c5699e6a05a0f31a4e4d2907a0a5 translatedAt=2026-09-03T11:25:19.298Z pushedAt=2026-09-05T10:47:30.651Z -->
 
 The distributedMissionManager module implements mission management across devices. You can use the APIs provided by this module to register or unregister a mission status listener, start or stop synchronizing a remote mission list, and continue a mission on a remote device by mission ID or bundle name.
 
@@ -12,7 +13,9 @@ The distributedMissionManager module implements mission management across device
 >
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> The APIs provided by this module are system APIs.
+> The APIs of this module are system APIs.
+>
+> The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 
@@ -20,23 +23,29 @@ The distributedMissionManager module implements mission management across device
 import { distributedMissionManager } from '@kit.AbilityKit';
 ```
 
+**Device behavior difference:** This API does not take effect on Wearable devices that do not support distributed services.
+
 ## distributedMissionManager.registerMissionListener
 
 registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback, callback: AsyncCallback&lt;void&gt;): void;
 
-Registers a mission status listener. This API uses an asynchronous callback to return the result.
+Registers a mission state listener. This API uses an asynchronous callback to return the result. After the call succeeds, the system starts listening for mission state changes on the specified device. This listener must be used in pair with `unRegisterMissionListener`. After registration, call `unRegisterMissionListener` in a timely manner to unregister listening when mission state listening is no longer needed, so as to release resources.
 
 **Required permissions**: ohos.permission.MANAGE_MISSIONS
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
+
+**Device behavior difference:** This API does not take effect on Wearable devices that do not support distributed services.
 
 **Parameters**
 
 | Name      | Type                                     | Mandatory  | Description       |
 | --------- | --------------------------------------- | ---- | --------- |
-| parameter | [MissionDeviceInfo](#missiondeviceinfo) | Yes   | Information about the device to listen for.|
-| options   | [MissionCallback](#missioncallback)     | Yes   | Callback to register.|
-| callback  | AsyncCallback&lt;void&gt;               | Yes   | Callback used to return the result. If the listener is registered, **err** is **undefined**; otherwise, **err** is an error object.|
+| parameter | [MissionDeviceInfo](#missiondeviceinfo10) | Yes    | Device information used for register listening. The deviceId is the device identifier. |
+| options   | [MissionCallback](#missioncallback10)     | Yes    | Callback function registered. |
+| callback  | AsyncCallback&lt;void&gt;               | Yes    | Callback function invoked when register listening is complete. The err is undefined if the operation succeeds; otherwise, it is an error object. |
 
 **Error codes**
 
@@ -76,37 +85,41 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       },
       (error: BusinessError) => {
         if (error) {
-          console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
+          console.error(`Failed to register mission listener. Code: ${error.code}, message: ${error.message}`);
           return;
         }
         console.info('registerMissionListener finished');
       });
-  } catch (error) {
-    console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
+     } catch (error) {
+    console.error(`Failed to register mission listener. Code: ${error.code}, message: ${error.message}`);
   }
   ```
 ## distributedMissionManager.registerMissionListener
 
 registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback): Promise&lt;void&gt;
 
-Registers a mission status listener. This API uses a promise to return the result.
+Registers a mission state listener. This API uses a promise to return the result. After the call succeeds, the system starts listening for mission state changes on the specified device. This listener must be used in pair with `unRegisterMissionListener`. After registration, call `unRegisterMissionListener` in a timely manner to unregister listening when mission state listening is no longer needed, so as to release resources.
 
 **Required permissions**: ohos.permission.MANAGE_MISSIONS
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
+
+**Device behavior difference:** This API does not take effect on Wearable devices that do not support distributed services.
 
 **Parameters**
 
 | Name      | Type                                      | Mandatory  | Description      |
 | --------- | ---------------------------------------- | ---- | -------- |
-| parameter | [MissionDeviceInfo](#missiondeviceinfo)  | Yes   | Information about the device to listen for.  |
-| options   | <a href="#missioncallback">MissionCallback</a> | Yes   | Callback to register.|
+| parameter | [MissionDeviceInfo](#missiondeviceinfo10)  | Yes    | Device information used for register listening. The deviceId is the device identifier.   |
+| options   | [MissionCallback](#missioncallback10) | Yes    | Callback function registered.|
 
 **Return value**
 
 | Type                 | Description              |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object returned. When the operation succeeds, it indicates that the task state listener has been successfully registered; when it fails, an error message is returned. |
 
 **Error codes**
 
@@ -126,7 +139,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   // Implement a callback function.
   function NotifyMissionsChanged(deviceId: string): void {
     console.info('NotifyMissionsChanged deviceId ' + JSON.stringify(deviceId));
-  }
+   }
   function NotifySnapshot(deviceId: string, missionId: number): void {
     console.info('NotifySnapshot deviceId ' + JSON.stringify(deviceId));
     console.info('NotifySnapshot missionId ' + JSON.stringify(missionId));
@@ -157,18 +170,22 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 unRegisterMissionListener(parameter: MissionDeviceInfo, callback: AsyncCallback&lt;void&gt;): void;
 
-Unregisters a mission status listener. This API uses an asynchronous callback to return the result.
+Unregisters a mission state listener. This API uses an asynchronous callback to return the result. Before stopping listening, ensure that registration has been completed through registerMissionListener; otherwise, the call is invalid. After the call succeeds, the system no longer listens for mission state changes on the device.
 
 **Required permissions**: ohos.permission.MANAGE_MISSIONS
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
+
+**Device behavior difference:** This API does not take effect on Wearable devices that do not support distributed services.
 
 **Parameters**
 
 | Name      | Type                                     | Mandatory  | Description       |
 | --------- | --------------------------------------- | ---- | --------- |
-| parameter | [MissionDeviceInfo](#missiondeviceinfo) | Yes   | Information about the device to listen for.   |
-| callback  | AsyncCallback&lt;void&gt;               | Yes   | Callback used to return the result. If the listener is unregistered, **err** is **undefined**; otherwise, **err** is an error object.|
+| parameter | [MissionDeviceInfo](#missiondeviceinfo10) | Yes | Device information specified when unregistering listening. The deviceId field is the device identifier. |
+| callback  | AsyncCallback&lt;void&gt;               | Yes | Callback for the unregister listening event. The err parameter is undefined when unregistering succeeds, and is an error object otherwise. |
 
 **Error codes**
 
@@ -186,11 +203,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
+    // Unregister task state listening.
     distributedMissionManager.unRegisterMissionListener(
       { deviceId: "" },
       (error: BusinessError) => {
         if (error) {
-            console.error('unRegisterMissionListener failed, cause: ' + JSON.stringify(error));
+            console.error(`unRegisterMissionListener failed. Code: ${error.code}, message: ${error.message}`);
             return;
         }
         console.info('unRegisterMissionListener finished');
@@ -204,23 +222,27 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 unRegisterMissionListener(parameter: MissionDeviceInfo): Promise&lt;void&gt;
 
-Unregisters a mission status listener. This API uses a promise to return the result.
+Unregisters a mission state listener. This API uses a promise to return the result. Before stopping listening, ensure that registration has been completed through registerMissionListener; otherwise, the call is invalid. After the call succeeds, the system no longer listens for mission state changes on the device.
 
 **Required permissions**: ohos.permission.MANAGE_MISSIONS
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
+
+**Device behavior difference:** This API does not take effect on Wearable devices that do not support distributed services.
 
 **Parameters**
 
 | Name      | Type                                     | Mandatory  | Description   |
 | --------- | --------------------------------------- | ---- | ----- |
-| parameter | [MissionDeviceInfo](#missiondeviceinfo) | Yes   | Information about the device to listen for.|
+| parameter | [MissionDeviceInfo](#missiondeviceinfo10) | Yes | Device information used when unregistering listening. The deviceId is the device identifier. |
 
 **Return value**
 
 | Type                 | Description              |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; |Promise that returns no value.|
+| Promise&lt;void&gt; |Promise object. It indicates that the task state listening has been successfully unregistered when the operation succeeds, and returns an error message when the operation fails.|
 
 **Error codes**
 
@@ -241,8 +263,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     distributedMissionManager.unRegisterMissionListener({deviceId: ""}).then(() => {
       console.info('unRegisterMissionListener finished successfully');
     }).catch((error: BusinessError) => {
-        console.error('unRegisterMissionListener failed, cause: ' + JSON.stringify(error));
-    })
+        console.error(`unRegisterMissionListener failed. Code: ${error.code}, message: ${error.message}`);
+    });
   } catch (error) {
       console.error('unRegisterMissionListener failed, cause: ' + JSON.stringify(error));
   }
@@ -252,18 +274,22 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 startSyncRemoteMissions(parameter: MissionParameter, callback: AsyncCallback&lt;void&gt;): void;
 
-Starts to synchronize the remote mission list. This API uses an asynchronous callback to return the result.
+Starts to synchronize the mission list of a remote device. This API uses an asynchronous callback to return the result. It must be used in strict pairing with stopSyncRemoteMissions, following the "start first, then stop" order. After synchronization is complete, stop it immediately to release system resources.
 
 **Required permissions**: ohos.permission.MANAGE_MISSIONS
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
+
+**Device behavior difference:** This API does not take effect on Wearable devices that do not support distributed services.
 
 **Parameters**
 
 | Name      | Type                                   | Mandatory  | Description       |
 | --------- | ------------------------------------- | ---- | --------- |
-| parameter | [MissionParameter](#missionparameter) | Yes   | Parameters required for synchronization.    |
-| callback  | AsyncCallback&lt;void&gt;             | Yes   | Callback used to return the result. If the synchronization is started, **err** is **undefined**; otherwise, **err** is an error object.|
+| parameter | [MissionParameter](#missionparameter10) | Yes | Synchronization information, including the deviceId, fixConflict, and tag fields. tag is the synchronization identifier used to distinguish different synchronization sessions, and its value must meet the scenario requirements. fixConflict indicates whether to resolve conflicts. It is recommended to set it to true in scenarios where mission conflicts may occur to avoid mission conflict issues. |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback function. When the remote mission list is synchronized, err is undefined; otherwise, an error object is returned. |
 
 **Error codes**
 
@@ -281,6 +307,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
+    // Start synchronization of the mission list of the remote device.
     distributedMissionManager.startSyncRemoteMissions(
       {
         deviceId: "",
@@ -289,13 +316,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       },
       (error: BusinessError) => {
         if (error) {
-          console.error('startSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
+          console.error(`startSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
           return;
         }
         console.info('startSyncRemoteMissions finished');}
     )
   } catch (error) {
-    console.error('startSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
+    console.error(`startSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
   }
   ```
 
@@ -303,23 +330,27 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 startSyncRemoteMissions(parameter: MissionParameter): Promise&lt;void&gt;
 
-Starts to synchronize the remote mission list. This API uses a promise to return the result.
+Starts to synchronize the mission list of a remote device. This API uses a promise to return the result. It must be used in strict pairing with stopSyncRemoteMissions, following the "start first, then stop" order. After synchronization is complete, stop it immediately to release system resources.
 
 **Required permissions**: ohos.permission.MANAGE_MISSIONS
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
+
+**Device behavior difference:** This API does not take effect on Wearable devices that do not support distributed services.
 
 **Parameters**
 
 | Name      | Type                                   | Mandatory  | Description   |
 | --------- | ------------------------------------- | ---- | ----- |
-| parameter | [MissionParameter](#missionparameter) | Yes   | Parameters required for synchronization.|
+| parameter | [MissionParameter](#missionparameter10) | Yes    | Synchronization information, including the deviceId, fixConflict, and tag fields. tag is the synchronization identifier used to distinguish different synchronization sessions, and its value must meet the scenario requirements. fixConflict indicates whether to resolve conflicts. It is recommended to set it to true in scenarios where mission conflicts may occur to avoid mission conflict issues.|
 
 **Return value**
 
 | Type                 | Description              |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Returned Promise object. On operation success, it indicates that the remote device mission list synchronization has been started successfully. On failure, it returns the error message.|
 
 **Error codes**
 
@@ -346,10 +377,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     ).then(() => {
         console.info('startSyncRemoteMissions finished successfully');
       }).catch((error: BusinessError) => {
-      console.error('startSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
-    })
+      console.error(`startSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
+    });
   } catch (error) {
-    console.error('startSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
+    console.error(`startSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
   }
   ```
 
@@ -357,18 +388,22 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 stopSyncRemoteMissions(parameter: MissionDeviceInfo, callback: AsyncCallback&lt;void&gt;): void;
 
-Stops synchronizing the remote mission list. This API uses an asynchronous callback to return the result.
+Stops synchronizing the mission list of a remote device. This API uses an asynchronous callback to return the result. After the call succeeds, the system stops synchronizing the mission list of the specified remote device. You must call startSyncRemoteMissions to start synchronization before calling this API. Calling this API without starting synchronization does not take effect.
 
 **Required permissions**: ohos.permission.MANAGE_MISSIONS
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
+
+**Device behavior difference:** This API does not take effect on Wearable devices that do not support distributed services.
 
 **Parameters**
 
 | Name      | Type                                     | Mandatory  | Description       |
 | --------- | --------------------------------------- | ---- | --------- |
-| parameter | [MissionDeviceInfo](#missiondeviceinfo) | Yes   | Parameters required for synchronization.    |
-| callback  | AsyncCallback&lt;void&gt;               | Yes   | Callback used to return the result. If the synchronization is stopped, **err** is **undefined**; otherwise, **err** is an error object.|
+| parameter | [MissionDeviceInfo](#missiondeviceinfo10) | Yes | Device information for stopping synchronization. The deviceId is the ID of the remote device whose synchronization is to be stopped. |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback invoked when the synchronization of the remote mission list is stopped. The err is undefined if the operation succeeds; otherwise, it is an error object. |
 
 **Error codes**
 
@@ -386,19 +421,20 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
+    // Stop synchronization of the mission list of the remote device.
     distributedMissionManager.stopSyncRemoteMissions(
       {
         deviceId: ""
       },
       (error: BusinessError) => {
         if (error) {
-          console.error('stopSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
+          console.error(`stopSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
           return;
         }
         console.info('stopSyncRemoteMissions finished');}
     )
   } catch (error) {
-    console.error('stopSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
+    console.error(`stopSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
   }
   ```
 
@@ -406,23 +442,27 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 stopSyncRemoteMissions(parameter: MissionDeviceInfo): Promise&lt;void&gt;
 
-Stops synchronizing the remote mission list. This API uses a promise to return the result.
+Stops synchronizing the mission list of a remote device. This API uses a promise to return the result. After the call succeeds, the system stops synchronizing the mission list of the specified remote device. You must call startSyncRemoteMissions to start synchronization before calling this API. Calling this API without starting synchronization does not take effect.
 
 **Required permissions**: ohos.permission.MANAGE_MISSIONS
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
+
+**Device behavior difference:** This API does not take effect on Wearable devices that do not support distributed services.
 
 **Parameters**
 
 | Name      | Type                                     | Mandatory  | Description   |
 | --------- | --------------------------------------- | ---- | ----- |
-| parameter | [MissionDeviceInfo](#missiondeviceinfo) | Yes   | Parameters required for synchronization.|
+| parameter | [MissionDeviceInfo](#missiondeviceinfo10) | Yes    | Device information for stopping synchronization. deviceId is the ID of the remote device whose synchronization is to be stopped. |
 
 **Return value**
 
 | Type                 | Description              |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | The returned Promise object, which indicates that the remote device mission list synchronization has been successfully stopped when the operation succeeds, and returns an error message on failure.|
 
 **Error codes**
 
@@ -446,10 +486,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       }).then(() => {
         console.info('stopSyncRemoteMissions finished successfully');
       }).catch((error: BusinessError) => {
-      console.error('stopSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
-    })
+      console.error(`stopSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
+    });
   } catch (error) {
-    console.error('stopSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
+    console.error(`stopSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
   }
   ```
 
@@ -461,19 +501,23 @@ Continues a mission on a remote device, with the mission ID specified. This API 
 
 **Required permissions**: ohos.permission.MANAGE_MISSIONS and ohos.permission.DISTRIBUTED_DATASYNC
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
+
+**Device behavior difference:** This API does not take effect on Wearable devices that do not support distributed services.
 
 **Parameters**
 
 | Name      | Type                                     | Mandatory  | Description   |
 | --------- | --------------------------------------- | ---- | ----- |
-| parameter | [ContinueDeviceInfo](js-apis-inner-application-continueDeviceInfo-sys.md) | Yes   | Parameters required for mission continuation.|
-| options | [ContinueCallback](js-apis-inner-application-continueCallback-sys.md) | Yes   | Callback invoked when the mission continuation is complete.|
-| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the mission is continued, **err** is **undefined**; otherwise, **err** is an error object.|
+| parameter | [ContinueDeviceInfo](js-apis-inner-application-continueDeviceInfo-sys.md) | Yes    | Migration information for continuing a mission by mission ID, including the source device ID, target device ID, and mission ID. |
+| options | [ContinueCallback](js-apis-inner-application-continueCallback-sys.md) | Yes    | Callback invoked when the mission is continued by mission ID, used to receive the continuation result. |
+| callback | AsyncCallback&lt;void&gt; | Yes    | Callback function. When the mission is continued, **err** is **undefined** if the operation succeeds; otherwise, it is an error object. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Distributed Scheduler Error Codes](errorcode-DistributedSchedule.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Distributed Scheduler Error Codes](./errorcode-DistributedSchedule.md).
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |
@@ -498,24 +542,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     console.info('onContinueDone resultCode: ' + JSON.stringify(resultCode));
   };
   try {
-    // Call continueMission.
+    // Migrate the mission by mission ID.
+    // Obtain the actual mission ID through the system API.
     distributedMissionManager.continueMission(
       {
-        srcDeviceId: "",
-        dstDeviceId: "",
+        srcDeviceId: '',
+        dstDeviceId: '',
         missionId: 1,
-        wantParam: {"key": "value"}
+        wantParam: {'key': 'value'}
       },
       { onContinueDone: onContinueDone },
       (error: BusinessError) => {
         if (error) {
-          console.error('continueMission failed, cause: ' + JSON.stringify(error));
+          console.error(`continueMission failed. Code: ${error.code}, message: ${error.message}`);
           return;
         }
         console.info('continueMission finished');
     })
   } catch (error) {
-    console.error('continueMission failed, cause: ' + JSON.stringify(error));
+    console.error(`continueMission failed. Code: ${error.code}, message: ${error.message}`);
   }
   ```
 
@@ -523,28 +568,32 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback): Promise&lt;void&gt;
 
-Continues a mission on a remote device, with the mission ID specified. This API uses a promise to return the result.
+Continues a mission from the source device to the target device by specifying the mission ID. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_MISSIONS and ohos.permission.DISTRIBUTED_DATASYNC
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
+
+**Device behavior difference:** This API does not take effect on Wearable devices that do not support distributed services.
 
 **Parameters**
 
 | Name      | Type                                     | Mandatory  | Description   |
 | --------- | --------------------------------------- | ---- | ----- |
-| parameter | [ContinueDeviceInfo](js-apis-inner-application-continueDeviceInfo-sys.md) | Yes   | Parameters required for mission continuation.|
+| parameter | [ContinueDeviceInfo](js-apis-inner-application-continueDeviceInfo-sys.md) | Yes    | Migration information, including the source device ID, target device ID, mission ID, and custom parameters. |
 | options | [ContinueCallback](js-apis-inner-application-continueCallback-sys.md) | Yes   | Callback invoked when the mission continuation is complete.|
 
 **Return value**
 
 | Type                 | Description              |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; |Promise that returns no value.|
+| Promise&lt;void&gt; |Promise object returned. It indicates that the mission migration by mission ID is complete when the operation succeeds, and returns an error message when the operation fails.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Distributed Scheduler Error Codes](errorcode-DistributedSchedule.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Distributed Scheduler Error Codes](./errorcode-DistributedSchedule.md).
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |
@@ -569,21 +618,22 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     console.info('onContinueDone resultCode: ' + JSON.stringify(resultCode));
   };
   try {
-    // Call continueMission.
+    // Continue the mission by mission ID.
+    // Obtain the actual mission ID through the system API for missionId.
     distributedMissionManager.continueMission(
       {
-        srcDeviceId: "",
-        dstDeviceId: "",
+        srcDeviceId: '',
+        dstDeviceId: '',
         missionId: 1,
-        wantParam: {"key": "value"}
+        wantParam: {'key': 'value'}
       },
       { onContinueDone: onContinueDone }).then(() => {
         console.info('continueMission finished successfully');
       }).catch((error: BusinessError) => {
-      console.error('continueMission failed, cause: ' + JSON.stringify(error));
-    })
+      console.error(`continueMission failed. Code: ${error.code}, message: ${error.message}`);
+    });
   } catch (error) {
-    console.error('continueMission failed, cause: ' + JSON.stringify(error));
+    console.error(`continueMission failed. Code: ${error.code}, message: ${error.message}`);
   }
   ```
 
@@ -591,22 +641,26 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 continueMission(parameter: ContinueMissionInfo, callback: AsyncCallback&lt;void&gt;): void;
 
-Continues a mission on a remote device, with the bundle name specified. This API uses an asynchronous callback to return the result.
+Continues the mission of a specified application from the source device to the target device by specifying the bundle name. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_MISSIONS and ohos.permission.DISTRIBUTED_DATASYNC
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
+
+**Device behavior difference:** This API does not take effect on Wearable devices that do not support distributed services.
 
 **Parameters**
 
 | Name      | Type                                     | Mandatory  | Description   |
 | --------- | --------------------------------------- | ---- | ----- |
-| parameter | [ContinueMissionInfo](./js-apis-inner-application-continueMissionInfo-sys.md) | Yes   | Parameters required for mission continuation.|
+| parameter | [ContinueMissionInfo](./js-apis-inner-application-continueMissionInfo-sys.md) | Yes    | Migration information, including the source device ID, target device ID, application bundle name, and custom parameters.|
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the mission is continued, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Distributed Scheduler Error Codes](errorcode-DistributedSchedule.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Distributed Scheduler Error Codes](./errorcode-DistributedSchedule.md).
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |
@@ -629,20 +683,20 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   try {
     distributedMissionManager.continueMission(
       {
-        srcDeviceId: "",
-        dstDeviceId: "",
-        bundleName: "ohos.test.continueapp",
-        wantParam: {"key": "value"}
+        srcDeviceId: '',
+        dstDeviceId: '',
+        bundleName: 'ohos.test.continueapp',
+        wantParam: {'key': 'value'}
       },
       (error: BusinessError) => {
         if (error) {
-          console.error('continueMission failed, cause: ' + JSON.stringify(error));
+          console.error(`continueMission failed. Code: ${error.code}, message: ${error.message}`);
           return;
         }
         console.info('continueMission finished');
     })
   } catch (error) {
-    console.error('continueMission failed, cause: ' + JSON.stringify(error));
+    console.error(`continueMission failed. Code: ${error.code}, message: ${error.message}`);
   }
   ```
 
@@ -650,27 +704,31 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 continueMission(parameter: ContinueMissionInfo): Promise&lt;void&gt;
 
-Continues a mission on a remote device, with the bundle name specified. This API uses a promise to return the result.
+Continues the mission of a specified application from the source device to the target device by specifying the bundle name. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_MISSIONS and ohos.permission.DISTRIBUTED_DATASYNC
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
+
+**Device behavior difference:** This API does not take effect on Wearable devices that do not support distributed services.
 
 **Parameters**
 
 | Name      | Type                                     | Mandatory  | Description   |
 | --------- | --------------------------------------- | ---- | ----- |
-| parameter | [ContinueMissionInfo](./js-apis-inner-application-continueMissionInfo-sys.md) | Yes   | Parameters required for mission continuation.|
+| parameter | [ContinueMissionInfo](./js-apis-inner-application-continueMissionInfo-sys.md) | Yes    | Migration information, including fields such as source device ID, target device ID, application bundle name, and custom parameters. |
 
 **Return value**
 
 | Type                 | Description              |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Return value of the Promise object. When the operation succeeds, it indicates that the mission migration by bundle name is complete. When the operation fails, it returns an error message. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Distributed Scheduler Error Codes](errorcode-DistributedSchedule.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Distributed Scheduler Error Codes](./errorcode-DistributedSchedule.md).
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |
@@ -693,36 +751,40 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   try {
       distributedMissionManager.continueMission(
         {
-          srcDeviceId: "",
-          dstDeviceId: "",
-          bundleName: "ohos.test.continueapp",
+          srcDeviceId: '',
+          dstDeviceId: '',
+          bundleName: 'ohos.test.continueapp',
           wantParam: {"key": "value"}
         }
       ).then(() => {
           console.info('continueMission finished successfully');
       }).catch((error: BusinessError) => {
-          console.error('continueMission failed, cause: ' + JSON.stringify(error));
-      })
+          console.error(`Failed to continue mission. Code: ${error.code}, message: ${error.message}`);
+      });
   } catch (error) {
-      console.error('continueMission failed, cause: ' + JSON.stringify(error));
+      console.error(`Failed to continue mission. Code: ${error.code}, message: ${error.message}`);
   }
   ```
 
-## distributedMissionManager.on('continueStateChange')<sup>11+</sup>
+## distributedMissionManager.on('continueStateChange')<sup>10+</sup>
 
 on(type: 'continueStateChange',  callback: Callback&lt;ContinueCallbackInfo&gt;): void
 
-Subscribes to continuation state change events of the current mission.
+Registers listening for the mission continuation state change event. This API must be used in pair with `off('continueStateChange')`. When listening is no longer needed, unregister it in a timely manner. The calling sequence is to register listening through `on` first, and then call `off` to unregister listening when it is no longer needed.
 
 **Required permissions**: ohos.permission.MANAGE_MISSIONS
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
+
+**Device behavior difference** This API does not take effect on Wearable devices that do not support distributed services.
 
 **Parameters**
 
 | Name      | Type                                      | Mandatory  | Description      |
 | --------- | ---------------------------------------- | ---- | -------- |
-| type | string  | Yes   | Event type. The value **'continueStateChange'** indicates the continuation state change event of the current mission.    |
+| type | string  | Yes    | Type of the event to subscribe to. The value is 'continueStateChange', indicating subscription to the mission state change event. |
 | callback | Callback&lt;[ContinueCallbackInfo](#continuecallbackinfo11)&gt; | Yes   | Callback used to return the continuation state and information of the current mission.   |
 
 **Error codes**
@@ -740,30 +802,35 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { distributedMissionManager } from '@kit.AbilityKit';
 
   try {
+    // Register a listener for mission continuation state change events.
     distributedMissionManager.on('continueStateChange', (data) => {
       console.info("continueStateChange on:" + JSON.stringify(data));
     });
   } catch (error) {
-    console.error("continueStateChange err: " + JSON.stringify(error));
+    console.error(`continueStateChange failed. Code: ${error.code}, message: ${error.message}`);
   }
 ```
 
-## distributedMissionManager.off('continueStateChange')<sup>11+</sup>
+## distributedMissionManager.off('continueStateChange')<sup>10+</sup>
 
 off(type: 'continueStateChange',  callback?: Callback&lt;ContinueCallbackInfo&gt;): void
 
-Unsubscribes from continuation state change events of the current mission.
+Unregisters the state listening for the current mission continuation. This API must be used in pair with `on('continueStateChange')`, and it should be called in a timely manner to release resources when listening is no longer needed.
 
 **Required permissions**: ohos.permission.MANAGE_MISSIONS
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
+
+**Device behavior difference:** This API does not take effect on Wearable devices that do not support distributed services.
 
 **Parameters**
 
 | Name      | Type                                      | Mandatory  | Description      |
 | --------- | ---------------------------------------- | ---- | -------- |
-| type | string  | Yes   | Event type. The value **'continueStateChange'** indicates the continuation state change event of the current mission.    |
-| callback | Callback&lt;[ContinueCallbackInfo](#continuecallbackinfo11)&gt; | No   | Callback used for unsubscription.<br>If the callback is unspecified, all subscriptions to the specified event are canceled.   |
+| type | string  | Yes    | Event type to unregister. The value is fixed at 'continueStateChange', which indicates unregistering the mission continuation state change event.    |
+| callback | Callback&lt;[ContinueCallbackInfo](#continuecallbackinfo11)&gt; | No    | Callback to be unregistered.<br>Pass this parameter to unregister a specific callback listener; do not pass it to unregister all callback listeners of the type. If this parameter is not passed, all callback listeners of this event type are unregistered.|
 
 **Error codes**
 
@@ -780,55 +847,72 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { distributedMissionManager } from '@kit.AbilityKit';
 
   try {
+    // Unregister listening for mission continuation state change events.
     distributedMissionManager.off('continueStateChange', (data) => {
       console.info("continueStateChange off:" + JSON.stringify(data));
     });
   } catch (err) {
-    console.error("continueStateChange err: " + JSON.stringify(err));
+    console.error(`continueStateChange failed. Code: ${err.code}, message: ${err.message}`);
   }
 ```
 
-## MissionCallback
+## MissionCallback<sup>10+</sup>
 
 type MissionCallback = _MissionCallback
 
-Defines the callback invoked after synchronization starts. It is used as an input parameter in [registerMissionListener](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerregistermissionlistener).
+Callback function used to listen for task state changes, including mission list change notification, mission snapshot notification, and disconnection notification. As the input parameter of [registerMissionListener](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerregistermissionlistener), it indicates the callback function established after register listening.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
 
+**Device behavior difference:** This API does not take effect on Wearable devices that do not support distributed services.
+
 | Type| Description|
 | --- | --- |
-| [_MissionCallback](js-apis-inner-application-missionCallbacks-sys.md) | Callback invoked after synchronization starts. It is used as an input parameter in **registerMissionListener**.|
+| [_MissionCallback](js-apis-inner-application-missionCallbacks-sys.md) | Callback function used to listen for task state changes, including mission list change notifications, mission snapshot notifications, and disconnection notifications. As an input parameter of registerMissionListener, it represents the callback function established after register listening.|
 
-## MissionParameter
+## MissionParameter<sup>10+</sup>
 
 type MissionParameter = _MissionParameter
 
-Defines the parameters required for mission synchronization. It is used an input parameter in [startSyncRemoteMissions](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerstartsyncremotemissions).
+Parameter object required for synchronizing the remote mission list, containing fields such as deviceId, fixConflict, and tag. It is used as the input parameter of [startSyncRemoteMissions](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerstartsyncremotemissions).
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
 
+**Device behavior difference:** This API does not take effect on Wearable devices that do not support distributed services.
+
 | Type| Description|
 | --- | --- |
-| [_MissionParameter](js-apis-inner-application-missionParameter-sys.md) | Parameters required for mission synchronization. It is used as an input parameter in **startSyncRemoteMissions**.|
+| [_MissionParameter](js-apis-inner-application-missionParameter-sys.md) | Parameter object required for synchronizing the mission list of a remote device, including fields such as deviceId, fixConflict, and tag.|
 
-## MissionDeviceInfo
+## MissionDeviceInfo<sup>10+</sup>
 
 type MissionDeviceInfo = _MissionDeviceInfo
 
-Defines the parameters required for registering a listener. It is used as an input parameter in [registerMissionListener](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerregistermissionlistener).
+Defines the device information object required for registering a mission state listener, including device identifier fields such as deviceId. It is used as an input parameter of [registerMissionListener](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerregistermissionlistener).
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
 
+**Device behavior difference:** This API does not take effect on Wearable devices that do not support distributed services.
+
 | Type| Description|
 | --- | --- |
-| [_MissionDeviceInfo](js-apis-inner-application-missionDeviceInfo-sys.md) | Parameters required for registering a listener. It can be used as an input parameter in **registerMissionListener**.|
+| [_MissionDeviceInfo](js-apis-inner-application-missionDeviceInfo-sys.md) | Device information object required for register listening, including the deviceId field. |
 
 ## ContinueState<sup>10+</sup>
 
 Enumerates the mission continuation states.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
+
+**Device behavior difference:** This API does not take effect on Wearable devices that do not support distributed services.
 
 | Name          | Value      | Description                                                        |
 | ------------- | --------- | ------------------------------------------------------------ |
@@ -837,11 +921,15 @@ Enumerates the mission continuation states.
 
 ## ContinueCallbackInfo<sup>11+</sup>
 
-Defines the information about the callback that is triggered for mission continuation state changes.
+Defines the information object returned in the mission continuation state listening callback, including two fields: state (continuation state) and info (continuation details). A state value of ACTIVE indicates that the continuation is in the active state, and INACTIVE indicates that the continuation is in the inactive state.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
 
+**Device behavior difference:** This API does not take effect on Wearable devices that do not support distributed services.
+
 | Name      | Type   | Read-Only  | Optional  | Description         |
 | -------- | ------ | ---- | ---- | ----------- |
-| state | [ContinueState](#continuestate10)   | No   | No   |   Continuation state of the mission.|
+| state | [ContinueState](#continuestate10) | No | No | Current continuation state of the mission. The value is ACTIVE or INACTIVE, set based on the actual continuation state of the mission. |
 | info  | [ContinuableInfo](./js-apis-inner-application-continuableInfo-sys.md) | No   | No   |   Continuation information of the mission.|

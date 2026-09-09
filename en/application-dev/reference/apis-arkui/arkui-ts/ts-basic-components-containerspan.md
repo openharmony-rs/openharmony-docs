@@ -5,9 +5,9 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=92567145241181b97abe57e944e177355e50f4eb translatedAt=2026-09-03T03:46:43.728Z -->
+<!-- md-trans-meta sourceCommit=92567145241181b97abe57e944e177355e50f4eb translatedAt=2026-09-03T03:46:43.728Z pushedAt=2026-09-07T03:49:24.341Z -->
 
-A child component of the [Text](ts-basic-components-text.md) component, used to manage the background colors and rounded corners of multiple [Span](ts-basic-components-span.md) and [ImageSpan](ts-basic-components-imagespan.md) components in a unified manner. It applies to scenarios where a unified background style needs to be set for a combination of text segments and images.
+As a child component of the [Text](ts-basic-components-text.md) component, the **ContainerSpan** component is used to manage the background colors and rounded corners of multiple [Span](ts-basic-components-span.md) and [ImageSpan](ts-basic-components-imagespan.md) components in a unified manner. It applies to scenarios where a unified background style needs to be set for a combination of text segments and images.
 
 > **NOTE**
 >
@@ -35,7 +35,7 @@ Only the following attributes are supported.
 
 textBackgroundStyle(style: TextBackgroundStyle)
 
-Sets the text background style. Child components inherit this attribute value when they do not set it. When this API is not used, the default background color is Color.Transparent and the default rounded corner radius is 0.
+Sets the text background style. Child components inherit this attribute value when they do not set it. When this API is not used, the default background color is **Color.Transparent** and the default corner radius is 0.
 
 >**NOTE**
 >
@@ -49,7 +49,7 @@ Sets the text background style. Child components inherit this attribute value wh
 
 | Name| Type                                               | Mandatory| Description                                                        |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| style | [TextBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11) | Yes | Text background style, used to set the text background color and rounded corner radius of Span and ImageSpan in the ContainerSpan component. Child components inherit this style when this attribute is not set. |
+| style | [TextBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11) | Yes | Text background style, used to set the text background color and corner radius of **Span** and **ImageSpan** in the **ContainerSpan** component. Child components inherit this parameter value when they do not set it. |
 
 ### attributeModifier<sup>12+</sup>
 
@@ -65,7 +65,7 @@ Creates an attribute modifier.
 
 | Name| Type                                               | Mandatory| Description                                                        |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<ContainerSpanAttribute> | Yes   | Dynamically sets the attributes of the component. Developers need to customize a class that inherits from the AttributeModifier interface, receive a ContainerSpanAttribute instance in the applyNormalAttribute method, and dynamically modify the attribute values of ContainerSpan. |
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<ContainerSpanAttribute> | Yes   | Modifier for dynamically setting attributes on the current component. You need to customize a class that inherits from the **AttributeModifier** API to receive a **ContainerSpanAttribute** instance in the **applyNormalAttribute** API and dynamically modify the value of the **ContainerSpan** attribute. |
 
 ## Events
 

@@ -21,7 +21,7 @@
 ```ts
 import { uiMaterial } from '@kit.ArkUI';
 
-// 正例：在Navigation标题栏子树中为局部容器设置沉浸式系统材质，材质生效且面积可控
+// 正例：在Navigation标题栏中为局部容器设置沉浸式系统材质，材质生效且面积可控
 @Entry
 @Component
 struct MaterialAreaExample {

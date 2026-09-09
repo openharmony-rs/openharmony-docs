@@ -52,7 +52,7 @@
     - [@ohos.zlib (Zip Module)](js-apis-zlib.md)
     - [@ohos.selectionInput.SelectionExtensionAbility (Selection Extension Ability)](js-apis-selectionInput-selectionExtensionAbility.md)
     - [@ohos.selectionInput.SelectionExtensionContext (Selection Extension Context)](js-apis-selectionInput-selectionExtensionContext.md)
-    - [@ohos.selectionInput.selectionManager (Selection Manager)](js-apis-selectionInput-selectionManager.md)
+    - [@ohos.selectionInput.selectionManager (Word Selection Management)](js-apis-selectionInput-selectionManager.md)
     - [@ohos.selectionInput.SelectionPanel (Selection Panel)](js-apis-selectionInput-selectionPanel.md)
     <!--Del-->
     - [@ohos.app.ability.PrintExtensionAbility (Print Extension Ability) (System API)](js-apis-app-ability-PrintExtensionAbility-sys.md)

@@ -5,9 +5,9 @@
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=ecf5d58a25055daa53a34747272770e0f3c1f57a translatedAt=2026-09-03T03:47:28.534Z -->
+<!-- md-trans-meta sourceCommit=ecf5d58a25055daa53a34747272770e0f3c1f57a translatedAt=2026-09-03T03:47:28.534Z pushedAt=2026-09-07T03:32:55.845Z -->
 
-Provides a checkbox component for selecting among multiple options.
+Provides the **Checkbox** component for selection among multiple options.
 
 >  **NOTE**
 >
@@ -25,7 +25,7 @@ Not supported
 
 Checkbox(options?: CheckboxOptions)
 
-Provides a checkbox component for selecting among multiple options.
+Provides **Checkbox** component for selection among multiple options.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -37,7 +37,7 @@ Provides a checkbox component for selecting among multiple options.
 
 | Name | Type                                       | Mandatory| Description              |
 | ------- | ------------------------------------------- | ---- | ------------------ |
-| options | [CheckboxOptions](#checkboxoptions) | No | Configures the parameters of the checkbox. If this parameter is not passed, the checkbox uses the default configuration. |
+| options | [CheckboxOptions](#checkboxoptions) | No | Checkbox parameters. If this parameter is not passed, the check box uses the default configuration. |
 
 ## CheckboxOptions
 
@@ -47,9 +47,9 @@ Provides information about the check box.
 
 | Name | Type| Read-Only| Optional| Description|
 | --------| --------| ------ | -------- | -------- |
-| name    | string | No | Yes | Name of the checkbox, used to identify different checkbox instances.<br/> Default value: undefined. <br/>**Widget Capability:** Since API version 9, this API is supported in ArkTS widgets.<br/>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
-| group   | string | No | Yes | Name of the group to which the checkbox belongs (that is, the name of the CheckboxGroup to which it belongs).<br/> Default value: undefined, used with nodes whose group information is undefined in [CheckboxGroupOptions](ts-basic-components-checkboxgroup.md#checkboxgroupoptions). <br/>**NOTE**<br/>This value is useless when the [CheckboxGroup](ts-basic-components-checkboxgroup.md) component is not used together. <br/>**Widget Capability:** Since API version 9, this API is supported in ArkTS widgets.<br/>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
-| indicatorBuilder<sup>12+</sup> | [CustomBuilder](ts-types.md#custombuilder8) | No | Yes | Configures the selected style of the checkbox as a custom component. Use this parameter when a selected style other than the default check icon (such as text, numbers, or a custom icon) is required. The custom component and the Checkbox component are aligned and displayed with their center points. When indicatorBuilder is set to undefined/null, it defaults to the state where indicatorBuilder is not set, and the default check icon style is used.<br/>**Atomic service API:** Since API version 12, this API is supported in atomic services.<br/>**Model restriction:** This API can be used only in the stage model.|
+| name    | string | No | Yes | Name of the check box, used to identify different check box instances.<br/> Default value: **undefined**. <br/>**Widget capability:** This API can be used in ArkTS widgets since API version 9.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| group   | string | No | Yes | Name of the group to which the check box belongs (that is, the name of the **CheckboxGroup** to which it belongs).<br/> Default value: **undefined**, used with nodes whose group information is undefined in [CheckboxGroupOptions](ts-basic-components-checkboxgroup.md#checkboxgroupoptions). <br/>**Note:**<br/>This value is useless when the [CheckboxGroup](ts-basic-components-checkboxgroup.md) component is not used together. <br/>**Widget capability:** This API can be used in ArkTS widgets since API version 9.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| indicatorBuilder<sup>12+</sup> | [CustomBuilder](ts-types.md#custombuilder8) | No | Yes | Custom component to indicate that the check box is selected. You can use this parameter when you need to implement the selected style other than the default check icon (such as the text, number, or custom icon). The custom component and the **Checkbox** component are aligned with their center points for display. When **indicatorBuilder** is set to **undefined** or **null**, it defaults to the state where **indicatorBuilder** is not set, and the default check icon style is used.<br/>**Atomic service API:** This API can be used in atomic services since API version 12.<br/>**Model restriction:** This API can be used only in the stage model.|
 
 ## Attributes
 
@@ -97,7 +97,7 @@ This attribute supports two-way binding through [$$](../../../ui/state-managemen
 
 | Name    | Type                                                        | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| isSelected | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes | Whether the checkbox is selected.<br/>The default value is false when the value of isSelected is undefined.<br/>The checkbox is selected when the value is true, and is not selected when the value is false. |
+| isSelected | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes | Whether the check box is selected.<br/>The default value is **false** when the value of **isSelected** is **undefined**.<br/>The value **true** indicates the check box is selected, and **false** indicates the opposite. |
 
 ### selectedColor
 
@@ -135,7 +135,7 @@ Sets the color of the check box when it is selected. Compared with [selectedColo
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes | Color of the checkbox in the selected state.<br/>When the value of resColor is undefined, the default value $r('sys.color.ohos_id_color_text_primary_activated') is used.<br/>Invalid values are handled as the default value. |
+| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes | Color of the check box when it is selected.<br/>When the value of **resColor** is **undefined**, the default value **$r('sys.color.ohos_id_color_text_primary_activated')** is used.<br/>An invalid value is handled as the default value. |
 
 ### unselectedColor<sup>10+</sup>
 
@@ -171,7 +171,7 @@ Sets the border color of the check box when it is not selected. Compared with [u
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes | Border color of the checkbox in the unselected state.<br/>When the value of resColor is undefined, the default value $r('sys.color.ohos_id_color_switch_outline_off') is used.|
+| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes | Border color of the check box when it is not selected.<br/>When the value of **resColor** is **undefined**, the default value **$r('sys.color.ohos_id_color_switch_outline_off')** is used.|
 
 ### mark<sup>10+</sup>
 
@@ -207,13 +207,13 @@ Sets the check mark style of the check box. Compared with [mark](#mark10)<sup>10
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[MarkStyle](ts-types.md#markstyle10) | Yes   | Style of the internal icon of the checkbox. When indicatorBuilder is set, the content in indicatorBuilder is displayed.<br/>When the value of style is undefined, the default value is: {<br/>strokeColor : `$r('sys.color.ohos_id_color_foreground_contrary')`,<br/>strokeWidth: `$r('sys.float.ohos_id_checkbox_stroke_width')`,<br/>size: '20vp'<br/>} |
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[MarkStyle](ts-types.md#markstyle10) | Yes   | Check mark style of the check box. If **indicatorBuilder** is set, the content in **indicatorBuilder** is displayed.<br/>If the value of **style** is **undefined**, the default value is used: {<br/>strokeColor:  `$r('sys.color.ohos_id_color_foreground_contrary')`,<br/>strokeWidth: `$r('sys.float.ohos_id_checkbox_stroke_width')`,<br/>size: '20vp'<br/>} |
 
 ### shape<sup>11+</sup>
 
 shape(value: CheckBoxShape)
 
-Sets the check box shape. To adjust the style of the current check box, use [contentModifier](#contentmodifier12).
+Sets the check box shape, including circle and rounded square. To adjust the style of the current check box, use [contentModifier](#contentmodifier12).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 11.
 
@@ -227,13 +227,13 @@ Sets the check box shape. To adjust the style of the current check box, use [con
 
 | Name| Type                                                 | Mandatory| Description                                                        |
 | ------ | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [CheckBoxShape](ts-appendix-enums.md#checkboxshape11) | Yes  | Shape of the check box.<br>Default value: **CheckBoxShape.CIRCLE**|
+| value  | [CheckBoxShape](ts-appendix-enums.md#checkboxshape11) | Yes  | Shape of the check box, including circle and rounded square.<br>Default value: **CheckBoxShape.CIRCLE**|
 
 ### shape<sup>18+</sup>
 
 shape(shape: Optional\<CheckBoxShape>)
 
-Sets the shape of the **Checkbox** component. Compared with [shape](#shape11)<sup>11+</sup>, the shape parameter adds support for the undefined type. To adjust the style of the current **Checkbox**, use the [contentModifier](#contentmodifier12) attribute to customize the **Checkbox** style.
+Sets the check box shape. Compared with [shape](#shape11)<sup>11+</sup>, this API supports the **undefined** type for the **shape** parameter. To adjust the style of the current check box, use the [contentModifier](#contentmodifier12) attribute.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -247,7 +247,7 @@ Sets the shape of the **Checkbox** component. Compared with [shape](#shape11)<su
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| shape  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CheckBoxShape](ts-appendix-enums.md#checkboxshape11)> | Yes   | Component shape of the Checkbox, which can be a circle or a rounded square.<br/>When the value of shape is undefined, the default value is CheckBoxShape.CIRCLE. |
+| shape  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CheckBoxShape](ts-appendix-enums.md#checkboxshape11)> | Yes   | Shape of the check box, which can be a circle or a rounded square.<br/>When the value of **shape** is **undefined**, the default value is **CheckBoxShape.CIRCLE**. |
 
 ### contentModifier<sup>12+</sup>
 
@@ -265,7 +265,7 @@ Creates a content modifier for the **Checkbox** component. Setting this attribut
 
 | Name| Type                                         | Mandatory| Description                                            |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)\<[CheckBoxConfiguration](#checkboxconfiguration12)\> | Yes   | Method for customizing the content area on the Checkbox component.<br/>modifier: content modifier. Developers need to customize a class to implement the ContentModifier interface. |
+| modifier  | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)\<[CheckBoxConfiguration](#checkboxconfiguration12)\> | Yes   | Content modifier to apply to the **Checkbox** component.<br/>**modifier**: content modifier. You need to customize a class to implement the **ContentModifier** API. |
 
 ### contentModifier<sup>18+</sup>
 
@@ -283,7 +283,7 @@ Creates a content modifier for the **Checkbox** component. Compared with [conten
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)\<[CheckBoxConfiguration](#checkboxconfiguration12)\>\> | Yes | Method for customizing the content area on the Checkbox component.<br/>modifier: content modifier. The developer needs to customize a class to implement the ContentModifier interface.<br/>When the value of modifier is undefined, the content modifier is not used. |
+| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)\<[CheckBoxConfiguration](#checkboxconfiguration12)\>\> | Yes | Content modifier to apply to the **Checkbox** component.<br/>**modifier**: content modifier. You need to customize a class to implement the **ContentModifier** API.<br/>When the value of **modifier** is **undefined**, the content modifier is not used. |
 
 ## Events
 
@@ -305,7 +305,7 @@ Invoked when the selected state of the check box changes.
 
 | Name  | Type                                                   | Mandatory| Description            |
 | -------- | ------------------------------------------------------- | ---- | ---------------- |
-| callback | [OnCheckboxChangeCallback](#oncheckboxchangecallback18) | Yes | Callback invoked to return the selected state. The value **true** indicates that the checkbox is selected, and **false** indicates that it is not selected. |
+| callback | [OnCheckboxChangeCallback](#oncheckboxchangecallback18) | Yes | Callback used to return the selected state. The value **true** indicates that the check box is selected, and **false** indicates the opposite. |
 
 ### onChange<sup>18+</sup>
 
@@ -325,13 +325,13 @@ Invoked when the selected state of the check box changes. Compared with [onChang
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnCheckboxChangeCallback](#oncheckboxchangecallback18)> | Yes | Returns the selected state. The value true indicates that the checkbox is selected, and false indicates that it is not selected.<br/>When the value of callback is undefined, the callback is not used. |
+| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnCheckboxChangeCallback](#oncheckboxchangecallback18)> | Yes | Callback used to return the selected state. The value **true** indicates that the check box is selected, and **false** indicates the opposite.<br/>When the value of **callback** is **undefined**, the callback is not used. |
 
 ## OnCheckboxChangeCallback<sup>18+</sup>
 
 type OnCheckboxChangeCallback  = (value: boolean) => void
 
-Callback invoked when the selected state of the checkbox changes.
+Invoked when the selected state of the check box changes.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -349,7 +349,7 @@ Callback invoked when the selected state of the checkbox changes.
 
 ## CheckBoxConfiguration<sup>12+</sup>
 
-You need a custom class to implement the **ContentModifier** API. Inherits from [CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt).
+You need a custom class to implement the **ContentModifier** API. It inherits from [CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -360,8 +360,8 @@ You need a custom class to implement the **ContentModifier** API. Inherits from 
 | Name| Type   |    Read-Only   |    Optional     |  Description             |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
 | name | string | No| No|Name of the check box.|
-| selected | boolean| No | No | Whether the checkbox is selected. The value true means the checkbox is selected, and the value false means the checkbox is not selected.<br/>If the select attribute is not set, the default value is false.<br/>If the select attribute is set, this value is the same as the select attribute. |
-| triggerChange |Callback\<boolean>| No | No |Callback invoked when the selected state of the checkbox changes. The value true sets the checkbox to the selected state, and the value false sets the checkbox to the unselected state. |
+| selected | boolean| No | No | Whether the check box is selected. The value **true** means the check box is selected, and **false** means the opposite.<br/>If the **select** attribute is not set, the default value is **false**.<br/>If the **select** attribute is set, the attribute value is used here. |
+| triggerChange |Callback\<boolean>| No | No |Callback invoked when the selected state of the check box changes. The value **true** indicates the checkbox is set to the selected state, and **false** indicates the opposite. |
 
 ## Example
 
@@ -451,7 +451,7 @@ struct Index {
 ![](figures/checkbox2.gif)
 
 ### Example 3: Customizing the Check Box Style
-This example uses the [contentModifier](#contentmodifier12) attribute to implement a custom checkbox style, which implements a pentagon-shaped checkbox. When selected, a red triangle pattern is displayed inside and the title shows "Selected"; when deselected, the red triangle pattern disappears and the title shows "Unselected".
+This example demonstrates how to implement a custom check box style using the [contentModifier](#contentmodifier12) attribute, which implements a pentagon-shaped check box. When the check box is selected, a red triangle pattern is displayed inside and the title shows "Selected"; when the check box is deselected, the red triangle pattern is hidden and the title shows "Unselected".
 
 ```ts
 // xxx.ets
@@ -481,9 +481,9 @@ function buildCheckbox(config: CheckBoxConfiguration) {
         .strokeWidth(3)
         .onClick(() => {
           if (config.selected) {
-            config.triggerChange(false); // Trigger the checkbox selected state change and set it to unselected.
+            config.triggerChange(false); // Trigger the change on the check box selected state and set the state to unselected.
           } else {
-            config.triggerChange(true); // Trigger the checkbox selected state change and set it to selected.
+            config.triggerChange(true); // Trigger the change on the check box selected state and set the state to selected.
           }
         })
         .opacity(config.enabled ? 1 : 0.1)
@@ -721,7 +721,7 @@ struct CheckboxExample {
         }
       }.margin({ bottom: 15 })
 
-      // Select all button.
+      // Select All button.
       Flex({ justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center }) {
         Row() {
           CheckboxGroup({ group: 'checkboxGroup' })
@@ -962,8 +962,8 @@ struct Index {
 
 enum SelectedState {
   None, // Default state.
-  Selected, // Selected state. Adds selected items when swiping.
-  Remove // Remove state. Removes selected items when swiping.
+  Selected, // Selected state. Add selected items when swiping.
+  Remove // Remove state. Remove selected items when swiping.
 }
 ```
 

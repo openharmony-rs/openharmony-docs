@@ -4,12 +4,13 @@
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=9dc7d46e30a06bb4ba3bf8a4a074cbf67858fce9 translatedAt=2026-09-03T12:39:11.342Z pushedAt=2026-09-05T10:47:30.954Z -->
 
 <!--deprecated_code_no_check-->
 
-The WantAgent module provides APIs for creating and comparing WantAgent objects, and obtaining the user ID and bundle name of a WantAgent object.
+The WantAgent module provides the capabilities of creating a WantAgent instance, obtaining the user ID of an instance, obtaining Want information, comparing WantAgent instances, and obtaining the bundle name.
 
 > **NOTE**
 > 
@@ -47,7 +48,7 @@ import { BusinessError } from '@ohos.base';
 // getWantAgent callback
 function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
     if (err.code) {
-        console.info('getWantAgent Callback err:' + JSON.stringify(err));
+        console.error('getWantAgent Callback err:' + JSON.stringify(err));
     } else { 
         console.info('getWantAgent Callback success');
     }
@@ -101,7 +102,7 @@ Creates a WantAgent object. If the creation fails, a null WantAgent object is re
 
 | Type                                                       | Description                                                        |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<WantAgent\> | Promise used to return the WantAgent object.|
+| Promise\<WantAgent\> | Promise object used to return the WantAgent instance for triggering the specified operation. |
 
 **Example**
 
@@ -153,7 +154,7 @@ Obtains the bundle name of a WantAgent object. This API uses an asynchronous cal
 | Name    | Type                   | Mandatory| Description                             |
 | -------- | ----------------------- | ---- | --------------------------------- |
 | agent    | WantAgent               | Yes  | WantAgent object.                    |
-| callback | AsyncCallback\<string\> | Yes  | Callback used to return the bundle name.|
+| callback | AsyncCallback\<string\> | Yes | Callback invoked to return the bundle name of the WantAgent instance. |
 
 **Example**
 
@@ -512,7 +513,7 @@ Cancels a WantAgent object. This API uses a promise to return the result.
 
 | Type           | Description                           |
 | --------------- | ------------------------------- |
-| Promise\<void\> | Promise used to return the result.|
+| Promise\<void\> | Promise that returns no value. |
 
 **Example**
 
@@ -811,10 +812,10 @@ wantAgent.getWantAgent({
 | UNKNOWN_TYPE      | 0 | Unknown operation type.           |
 | START_ABILITY     | 1 | Starts an ability with a UI.|
 | START_ABILITIES   | 2 | Starts multiple abilities with a UI.|
-| START_SERVICE     | 3 | Starts an ability without a UI.|
+| START_SERVICE     | 3 | Starts an Ability without a page. |
 | SEND_COMMON_EVENT | 4 | Sends a common event.       |
 
-## CompleteData 
+## CompleteData
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -822,9 +823,9 @@ wantAgent.getWantAgent({
 
 | Name          | Type                          | Read-Only| Optional| Description               |
 | -------------- | ----------------------------- | ---- | ---- | ------------------ |
-| info           | WantAgent                       | No  | No  | A triggered WantAgent object.      |
-| want           | Want                            | No  | No  | An existing triggered Want.    |
-| finalCode      | number                          | No  | No  | Request code that triggers the WantAgent object.|
+| info           | WantAgent                       | No   | No   | WantAgent to trigger.       |
+| want           | Want                            | No   | No   | Want that exists and is triggered.     |
+| finalCode      | number                          | No   | No   | Request code for triggering the WantAgent.|
 | finalData      | string                          | No  | No  | Final data collected by the common event. |
 | extraInfo      | { [key: string]: any }          | No  | Yes  | Extra information.              |
 

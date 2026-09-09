@@ -5,7 +5,7 @@
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=20f4cce8d470c93e7d47720e0c5e53f33bf074e1 translatedAt=2026-09-03T03:47:56.313Z -->
+<!-- md-trans-meta sourceCommit=20f4cce8d470c93e7d47720e0c5e53f33bf074e1 translatedAt=2026-09-03T03:47:56.313Z pushedAt=2026-09-07T01:35:08.073Z -->
 
 The **Button** component can be used to create different types of buttons.
 
@@ -25,7 +25,7 @@ This component can contain only one child component.
 
 Button(options: ButtonOptions)
 
-Creates a button that can contain a single child component.
+Creates a button that can contain a single child component. If this API is not called, use the default value of each parameters in **ButtonOptions**.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -45,7 +45,7 @@ Button(label: ResourceStr, options?: ButtonOptions)
 
 Creates a button based on text content. In this case, the component cannot contain child components.
 
-By default, the text content is displayed in a one line.
+By default, the text content is displayed in one line.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -58,7 +58,7 @@ By default, the text content is displayed in a one line.
 | Name | Type                                   | Mandatory| Description                |
 | ------- | --------------------------------------- | ---- | -------------------- |
 | label   | [ResourceStr](ts-types.md#resourcestr)  | Yes  | Button text.<br>Note: If the text is longer than the width of the button, it is truncated.|
-| options | [ButtonOptions](#buttonoptions) | No  | Button settings.|
+| options | [ButtonOptions](#buttonoptions) | No  | Button settings.<br>If not set, the default values of the parameters in ButtonOptions are used.|
 
 ### Button
 
@@ -80,11 +80,11 @@ Describes the button style.
 
 | Name                     | Type                                         | Read Only| Optional| Description                                                      |
 | ------------------------- | --------------------------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| type                      | [ButtonType](#buttontype)             | No   | Yes  | Display style of the button.<br/>Default value: **ButtonType.ROUNDED_RECTANGLE** since API version 18, and **ButtonType.Capsule** before API version 18.<br/>**Widget capability:** Since API version 9, this API is supported in ArkTS widgets.<br/>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
-| stateEffect               | boolean                                       | No   | Yes  | Whether to enable the pressed state display effect when the button is pressed.<br/>**true**: enables the pressed effect; **false**: disables the pressed effect.<br/>Default value: **true**<br/>**Note:** <br/>When the pressed state display effect is enabled and the developer sets a state style, the color is overlaid based on the background color after the state style is set. When using a polymorphic style to set the pressed state, set **stateEffect** to **false** first to prevent the built-in pressed state from conflicting with the polymorphic style pressed state.<br/>**Widget capability:** Since API version 9, this API is supported in ArkTS widgets.<br/>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
-| buttonStyle<sup>11+</sup> | [ButtonStyleMode](#buttonstylemode11) | No   | Yes  | Style and importance of the button. Based on the set enum value, the system automatically adjusts the background color and text color of the button. The background color and text color can also be set by the developer through [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [fontColor](#fontcolor), and [role](#role12). The actual display effect is subject to the last setting.<br/>Default value: **ButtonStyleMode.EMPHASIZED** <br/>**Note:** Button importance: emphasized button > normal button > text button.<br/>**Widget capability:** Since API version 11, this API is supported in ArkTS widgets.<br/>**Atomic service API:** Since API version 12, this API is supported in atomic services.<br/>**Model restriction:** This API can be used only in the stage model. |
-| controlSize<sup>11+</sup> | [ControlSize](#controlsize11)         | No   | Yes  | Size of the button.<br/>Default value: **ControlSize.NORMAL**<br/>**Widget capability:** Since API version 11, this API is supported in ArkTS widgets.<br/>**Atomic service API:** Since API version 12, this API is supported in atomic services.<br/>**Model restriction:** This API can be used only in the stage model. |
-| role<sup>12+</sup> | [ButtonRole](#buttonrole12)         | No   | Yes  | Role of the button. Based on the set enum value, the system automatically adjusts the background color and text color of the button. The background color and text color can also be set by the developer through [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [fontColor](#fontcolor), and [buttonStyle](#buttonstyle11). The actual display effect is subject to the last setting.<br/>Default value: **ButtonRole.NORMAL** <br/>**Widget capability:** Since API version 12, this API is supported in ArkTS widgets.<br/>**Atomic service API:** Since API version 12, this API is supported in atomic services.<br/>**Model restriction:** This API can be used only in the stage model. |
+| type                      | [ButtonType](#buttontype)             | No   | Yes  | Button display style.<br/>Default value: **ButtonType.ROUNDED_RECTANGLE** since API version 18, and **ButtonType.Capsule** before API version 18.<br/>**Widget capability:** This API can be used in ArkTS widgets since API version 9.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| stateEffect               | boolean                                       | No   | Yes  | Whether to enable the pressed state effect when the button is pressed.<br/>**true**: enable the pressed state effect; **false**: disable the pressed state effect.<br/>Default value: **true**<br/>**Note:** <br/>When the pressed state effect is enabled and a custom pressed state style is configured, the resulting color displayed after pressing is a composite blend of the original background color and the newly defined pressed state color. When using a polymorphic style to set the pressed state, you need to set **stateEffect** to **false** first to prevent the built-in pressed state from conflicting with the pressed state in polymorphic style.<br/>**Widget capability:** This API can be used in ArkTS widgets since API version 9.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| buttonStyle<sup>11+</sup> | [ButtonStyleMode](#buttonstylemode11) | No   | Yes  | Style and importance of the button. The system automatically adjusts the button background color and text color based on the enumerated value. You can also use the [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [fontColor](#fontcolor), and [role](#role12) APIs to set the background color and text color. The actual displayed effect will be determined by the last setting.<br/>Default value: **ButtonStyleMode.EMPHASIZED** <br/>**Note:** The button primacy is as follows, from high to low: emphasized button, normal button, text button.<br/>**Widget capability:** This API can be used in ArkTS widgets since API version 11.<br/>**Atomic service API:** This API can be used in atomic services since API version 12.<br/>**Model restriction:** This API can be used only in the stage model. |
+| controlSize<sup>11+</sup> | [ControlSize](#controlsize11)         | No   | Yes  | Button size.<br/>Default value: **ControlSize.NORMAL**<br/>**Widget capability:** This API can be used in ArkTS widgets since API version 11.<br/>**Atomic service API:** This API can be used in atomic services since API version 12.<br/>**Model restriction:** This API can be used only in the stage model. |
+| role<sup>12+</sup> | [ButtonRole](#buttonrole12)         | No   | Yes  | Role of the button. The system automatically adjusts the button background color and text color based on the enumerated value. You can also use the [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [fontColor](#fontcolor), and [buttonStyle](#buttonstyle11) APIs to set the background color and text color. The actual displayed effect will be determined by the last setting.<br/>Default value: **ButtonRole.NORMAL** <br/>**Widget capability:** This API can be used in ArkTS widgets since API version 12.<br/>**Atomic service API:** This API can be used in atomic services since API version 12.<br/>**Model restriction:** This API can be used only in the stage model. |
 
 ## Attributes
 
@@ -106,7 +106,7 @@ Sets the button type.
 
 | Name| Type                             | Mandatory| Description                                       |
 | ------ | --------------------------------- | ---- | ------------------------------------------- |
-| value  | [ButtonType](#buttontype) | Yes  | Button type.<br>API version 18 and later: The default value is **ButtonType.ROUNDED_RECTANGLE**.|
+| value  | [ButtonType](#buttontype) | Yes  | Button type.<br>API version 18 and later: The default value changes from **ButtonType.Capsule** to **ButtonType.ROUNDED_RECTANGLE**.|
 
 ### fontSize
 
@@ -124,7 +124,7 @@ Sets the font size for the button.
 
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | Yes  | Sets the font size of the text.<br/>Default value: when controlSize is ControlSize.NORMAL, the default value is `$r('sys.float.Body_L')`.<br/>When controlSize is ControlSize.SMALL, the default value is `$r('sys.float.Body_S')`.<br/>**Note:** when the value is of the string type, units such as vp and fp are supported, but percentages are not. |
+| value  | [Length](ts-types.md#length) | Yes  | Font size of the button.<br/>Default value: When **controlSize** is set to **ControlSize.NORMAL**, the default value is `$r('sys.float.Body_L')`.<br/>When **controlSize** is set to **ControlSize.SMALL**, the default value is `$r('sys.float.Body_S')`.<br/>**Note:** For the string type, units such as vp and fp are supported, but percentages are not. |
 
 ### fontColor
 
@@ -142,7 +142,7 @@ Sets the font color for the button.
 
 | Name| Type                                      | Mandatory| Description                                                        |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes   | Text display color.<br/>Default value: $r('sys.color.font_on_primary'). |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes   | Font color of the button.<br/>Default value: **$r('sys.color.font_on_primary')**. |
 
 ### fontWeight
 
@@ -218,7 +218,7 @@ Sets the font family.
 
 | Name| Type                                                | Mandatory| Description                                                        |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Font family. The 'HarmonyOS Sans' font and [registered custom fonts](../js-apis-font.md) are supported.|
+| value  | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Font family. The default font is **'HarmonyOS Sans'**. The 'HarmonyOS Sans' font and [registered custom fonts](../js-apis-font.md) are currently supported.|
 
 ### labelStyle<sup>10+</sup>
 
@@ -242,7 +242,7 @@ Sets the label style for the button.
 
 buttonStyle(value: ButtonStyleMode)
 
-Sets the style and primacy of the **Button** component. The system automatically adjusts the background color and text color of the button based on the enumerated value. The background color and text color can also be set by developers through the [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [fontColor](#fontcolor), and [role](#role12) APIs. The actual display effect is subject to the last setting.
+Sets the style and primacy for the button. The system automatically adjusts the button background color and text color based on the enumerated value. You can also use the [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [fontColor](#fontcolor), and [role](#role12) APIs to set the background color and text color. The actual displayed effect will be determined by the last setting.
 
 >**NOTE**
 >
@@ -290,7 +290,7 @@ Sets the size for the button.
 
 role(value: ButtonRole)
 
-Sets the role of the **Button** component. The system automatically adjusts the background color and text color of the button based on the enumerated value. The background color and text color can also be set by developers through the [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [fontColor](#fontcolor), and [buttonStyle](#buttonstyle11) APIs. The actual display effect is subject to the last setting. The ERROR role is typically used for dangerous or warning operations such as deletion and clearing.
+Sets the role of the button. The system automatically adjusts the background color and text color of the button based on the enumerated value. You can also use the [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [fontColor](#fontcolor), and [buttonStyle](#buttonstyle11) APIs to set the background color and text color. The actual displayed effect will be determined by the last setting. The **ERROR** role is typically used for dangerous or warning operations such as deletion and clearing.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -304,7 +304,7 @@ Sets the role of the **Button** component. The system automatically adjusts the 
 
 | Name| Type                               | Mandatory| Description                                                |
 | ------ | ----------------------------------- | ---- | ---------------------------------------------------- |
-| value  | [ButtonRole](#buttonrole12) | Yes   | Role of the button component.<br/>Default value: ButtonRole.NORMAL |
+| value  | [ButtonRole](#buttonrole12) | Yes   | Role of the button.<br/>Default value: **ButtonRole.NORMAL** |
 
 ### contentModifier<sup>12+</sup>
 
@@ -369,18 +369,18 @@ Enumerates the button types.
 | Name     | Value    | Description              |
 | ------- | ------- | ------- |
 | Normal | 0 | Normal button, with no rounded corners by default.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| Capsule | 1 | Capsule button (the default corner radius is half of the smaller value between the width and height).<br/>**Widget capability:** Since API version 9, this API is supported in ArkTS widgets.<br/>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
+| Capsule | 1 | Capsule-styled button (the rounded corner radius is half of the smaller value between the width and height).<br/>**Widget capability:** This API can be used in ArkTS widgets since API version 9.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
 | Circle  | 2 | Circle button.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.       |
-| ROUNDED_RECTANGLE<sup>15+</sup> | 8 | Rounded rectangle button (when borderRadius is not set, the default corner radius is 20 vp if controlSize is NORMAL, and 14 vp if controlSize is SMALL).<br/>**Widget capability:** Since API version 15, this API is supported in ArkTS widgets.<br/>**Atomic service API:** Since API version 15, this API is supported in atomic services.<br/>**Model restriction:** This API can be used only in the stage model. |
+| ROUNDED_RECTANGLE<sup>15+</sup> | 8 | Rounded rectangle button (when **borderRadius** is not set, the default corner radius is 20 vp if **controlSize** is set to **NORMAL** and 14 vp if **controlSize** is set to **SMALL**).<br/>**Widget capability:** This API can be used in ArkTS widgets since API version 15.<br/>**Atomic service API:** This API can be used in atomic services since API version 15.<br/>**Model restriction:** This API can be used only in the stage model. |
 
 >  **NOTE**
->  - The button corner radius is set through the universal attribute [borderRadius](ts-universal-attributes-border.md#borderradius).
->  - When the button type is Capsule, the borderRadius setting does not take effect, and the button corner radius is always half of the smaller value between the width and height.
->  - When the button type is Circle, if both the width and height are set, borderRadius does not take effect, and the button radius is half of the smaller value between the width and height; if only one of the width and height is set, borderRadius does not take effect, and the button radius is half of the set width or height; if neither the width nor the height is set, the button radius is the value of borderRadius; if the value of borderRadius is negative, it is processed as 0.
->  - The button text is set through [fontSize](#fontsize), [fontColor](#fontcolor), [fontStyle](#fontstyle8), [fontFamily](#fontfamily8), and [fontWeight](#fontweight).
->  - To set a [color gradient](ts-universal-attributes-gradient-color.md), set [backgroundColor](ts-universal-attributes-background.md#backgroundcolor) to a transparent color first.
->  - When borderRadius is not set, the corner radius of a rounded rectangle button remains at the default value. The corner radius does not change with the button height; it is related to the controlSize attribute. When controlSize is NORMAL, the corner radius is 20 vp; when controlSize is SMALL, the corner radius is 14 vp.
->  - When setting the [border](ts-universal-attributes-border.md#border) of the **Button**, there is a default [borderRadius](ts-universal-attributes-border.md#borderradius) value. If both `border` and `borderRadius` are used, place `borderRadius` after `border` to ensure that `borderRadius` is not overwritten by the default `radius` in `border`.
+>  - The rounded corner radius of the button is set using the universal attribute [borderRadius](ts-universal-attributes-border.md#borderradius).
+>  - For a button of the **Capsule** type, the **borderRadius** settings do not take effect, and the radius of its rounded corner is always half of the button height or width, whichever is smaller.
+>  - For a button of the **Circle** type: (1) If both its width and height are set, **borderRadius** does not take effect, and the button radius is half of the width or height (whichever is smaller). (2) If either its width or height is set, **borderRadius** does not take effect, and the button radius is half of the set width or height. (3) If neither its width nor height is set, the button radius is as specified by **borderRadius**; if **borderRadius** is set to a negative value, the value **0** will be used.
+>  - The button text is set using [fontSize](#fontsize), [fontColor](#fontcolor), [fontStyle](#fontstyle8), [fontFamily](#fontfamily8), and [fontWeight](#fontweight).
+>  - Before setting the [gradient color](ts-universal-attributes-gradient-color.md), you need to set [backgroundColor](ts-universal-attributes-background.md#backgroundcolor) to transparent first.
+>  - When **borderRadius** is not set, the corner radius of the rounded rectangle button remains at the default value. In this case, the corner radius does not change with the button height and is subject to the **controlSize** property. When **controlSize** is set to **NORMAL**, the corner radius is 20 vp; when **controlSize** is set to **SMALL**, the corner radius is 14 vp.
+>  - When [border](ts-universal-attributes-border.md#border) is set for the button, a default [borderRadius](ts-universal-attributes-border.md#borderradius) value is automatically applied. When both `border` and `borderRadius` are used, `borderRadius` must be specified after `border` to ensure that the value of `borderRadius` is not overwritten by the default value of `radius` in `border`.
 
 ## LabelStyle<sup>10+</sup>
 
@@ -392,13 +392,13 @@ Label text and font style of the button.
 
 | Name                | Type                                                        | Read Only| Optional| Description                                                        |
 | -------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| overflow             | [TextOverflow](ts-appendix-enums.md#textoverflow)            | No  | Yes  | Display mode when the label text is too long. Text is clipped at the transition between words. To clip text in the middle of a word, add zero-width spaces between characters.<br>Default value: **TextOverflow.Ellipsis**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| maxLines             | number                                                       | No  | Yes  | Maximum number of lines in the label text. If this attribute is specified, the text will not exceed the specified number of lines. If there is extra text, you can use **overflow** to specify how it is displayed.<br>Default value: **1**<br>**NOTE**<br>If this parameter is set to a value less than or equal to 0, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| minFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | No   | Yes   | Minimum font size of the label text. It must be used together with maxFontSize and maxLines or layout size constraints.<br/>**Note:**  <br/>When minFontSize is less than or equal to 0, the adaptive font size does not take effect. When the type is number, the unit is fp.<br>**Atomic service API:** Since API version 11, this API is supported in atomic services.|
-| maxFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | No   | Yes   | Maximum font size of the label text. It must be used together with minFontSize and maxLines or layout size constraints. When the type is number, the unit is fp.<br/>**Note:** <br/>When maxFontSize is less than or equal to 0, the adaptive font size does not take effect.<br>**Atomic service API:** Since API version 11, this API is supported in atomic services.|
+| overflow             | [TextOverflow](ts-appendix-enums.md#textoverflow)            | No  | Yes  | Display mode when the label text is too long. Text is clipped at the transition between words. For example, English text is clipped by word as the minimum unit. To clip text in the middle of a word, add zero-width spaces between characters.<br>Default value: **TextOverflow.Ellipsis**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| maxLines             | number                                                       | No  | Yes  | Maximum number of lines in the label text. If this parameter is specified, the text will not exceed the specified number of lines. If there is extra text, you can use **overflow** to specify how it is displayed.<br>Default value: **1**<br>**Note:**<br>If this parameter is set to a value less than or equal to 0, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| minFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | No   | Yes   | Minimum font size of the label text. It must be used together with **maxFontSize** and **maxLines** or layout constraints.<br/>**Note:**  <br/>If the value of **minFontSize** is less than or equal to 0, the adaptive font size does not take effect. For the number type, the unit is fp.<br>**Atomic service API:** This API can be used in atomic services since API version 11.|
+| maxFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | No   | Yes   | Maximum font size of the label text. It must be used together with **minFontSize** and **maxLines** or layout size constraints. For the number type, the unit is fp.<br/>**Note:** <br/>If the value of **maxFontSize** is less than or equal to 0, the adaptive font size does not take effect.<br>**Atomic service API:** This API can be used in atomic services since API version 11.|
 | heightAdaptivePolicy | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | No  | Yes  | How the adaptive height is determined for the label text.<br>Default value: **TextHeightAdaptivePolicy.MAX_LINES_FIRST**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | font                 | [Font](ts-types.md#font)                                     | No  | Yes  | Font of the label text.<br>Default value:<br> {<br>size:'16.0fp',<br> weight:FontWeight.Medium,<br> style:FontStyle.Normal,<br>  family:'HarmonyOS Sans'<br>} <br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| textAlign<sup>23+</sup> | [TextAlign](ts-appendix-enums.md#textalign)                  | No   | Yes   | Horizontal alignment of the label text. This attribute takes effect when the label text is truncated. When the label is set through the Text component of a child node, this attribute does not take effect, and the actual text alignment is determined by the textAlign attribute of the child node's Text component.<br> The default value is TextAlign.Center for wearable devices and TextAlign.Start for other devices. <br>**Atomic service API:** Since API version 23, this API is supported in atomic services.|
+| textAlign<sup>23+</sup> | [TextAlign](ts-appendix-enums.md#textalign)                  | No   | Yes   | Horizontal alignment of the label text. This parameter takes effect when the label text is truncated. When the label is set through the **Text** component of a child node, this parameter does not take effect, and the actual text alignment is determined by the **textAlign** attribute of the **Text** component of the child node.<br> The default value is **TextAlign.Center** for wearables and **TextAlign.Start** for other devices. <br>**Atomic service API:** This API can be used in atomic services since API version 23.|
 
 ## ButtonStyleMode<sup>11+</sup>
 
@@ -414,13 +414,13 @@ Enumerates the button importance levels.
 
 | Name     | Value| Description              |
 | ------- | -- |------------------ |
-| NORMAL  | 0 |Normal button (for general UI operations), used for non-critical interactions such as cancel and close.              |
-| EMPHASIZED | 1 |Emphasized button (used to emphasize the current operation), used for critical operations such as submitting a form and confirming deletion. |
-| TEXTUAL  | 2 |Text button (plain text without a background color), used for secondary operations or scenarios that do not require emphasis.      |
+| NORMAL  | 0 |Normal button (used for general UI operations), which is used for non-critical interactions such as cancel and close.              |
+| EMPHASIZED | 1 |Emphasized button (used for emphasizing the current operation), which is used for critical operations such as submitting a form and confirming deletion. |
+| TEXTUAL  | 2 |Text button (displayed as plain text without a background color), which is used for secondary operations or scenarios that do not need to be emphasized.      |
 
 ## ControlSize<sup>11+</sup>
 
-Button size.
+Enumerates the button sizes.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 11.
 
@@ -437,7 +437,7 @@ Button size.
 
 ## ButtonRole<sup>12+</sup>
 
-Role of the button.
+Enumerates the button roles.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -454,7 +454,7 @@ Role of the button.
 
 ## ButtonConfiguration<sup>12+</sup>
 
-You need a custom class to implement the **ContentModifier** API. Inherits from [CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt).
+You need a custom class to implement the **ContentModifier** API. It inherits from [CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -464,9 +464,9 @@ You need a custom class to implement the **ContentModifier** API. Inherits from 
 
 | Name | Type   | Read Only | Optional| Description             |
 | ------ | ------ | ---------------- | ---------------- | ---------------- |
-| label | string | No | No | Text label of the button, used to identify the function of the button.<br/>**Note:** When the text length exceeds the width of the button, the text will be truncated. |
-| pressed | boolean | No| No| Whether the button is pressed.<br>**true**: pressed; **false**: not pressed.<br>Default value: **false**<br>**NOTE**<br>This setting applies to the original button size, not to any new component constructed using the builder.|
-| triggerClick | [ButtonTriggerClickCallback](#buttontriggerclickcallback12) | No | No | Callback for the click event, used to handle the click operation of the component newly built by the builder. |
+| label | string | No | No | Text label of the button, used to identify the feature of the button.<br/>**Note:** When the text length exceeds the width of the button, the text will be truncated. |
+| pressed | boolean | No| No| Whether the button is pressed.<br>**true**: pressed; **false**: not pressed.<br>Default value: **false**<br>**Note:**<br>This setting applies to the original button size, not to any new component constructed using the builder.|
+| triggerClick | [ButtonTriggerClickCallback](#buttontriggerclickcallback12) | No | No | Callback for the click event, used to handle the click operation of the component newly constructed by the builder. |
 
 ## ButtonTriggerClickCallback<sup>12+</sup>
 
@@ -494,7 +494,7 @@ The [universal events](ts-component-general-events.md) are supported.
 
 ### Example 1: Setting the Button Display Style
 
-This example demonstrates two ways to create a button: by including a child component or by using text content.
+This example demonstrates two methods to create buttons, either with child components or using text content.
 
 ```ts
 // xxx.ets
@@ -505,7 +505,7 @@ struct ButtonExample {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween }) {
       Text('Normal button').fontSize(9).fontColor(0xCCCCCC)
       Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
-        Button('OK', { type: ButtonType.Normal, stateEffect: true }) // Create a normal button and enable the press effect.
+        Button('OK', { type: ButtonType.Normal, stateEffect: true }) // Create a normal button and enable the pressed state effect.
           .borderRadius(8) // Set the corner radius.
           .backgroundColor(0x317aff) // Set the background color.
           .width(90) // Set the button width.
@@ -572,11 +572,11 @@ struct ButtonRenderControlExample {
         .onClick(() => {
           this.count++;
         })
-      if (this.count <= 0) { // Display the negative button when count is less than or equal to 0.
+      if (this.count <= 0) { // Display the negative button when the value of count is less than or equal to 0.
         Button('count is negative').fontSize(30).height(50)
-      } else if (this.count % 2 === 0) { // Display the even button when count is an even number.
+      } else if (this.count % 2 === 0) { // Display the even button when the value of count is an even number.
         Button('count is even').fontSize(30).height(50)
-      } else { // Display the odd button when count is an odd number.
+      } else { // Display the odd button when the value of count is an odd number.
         Button('count is odd').fontSize(30).height(50)
       }
     }.height('100%').width('100%').justifyContent(FlexAlign.Center)
@@ -630,7 +630,7 @@ struct ButtonTestDemo {
 
 ### Example 4: Setting Importance of Different Sized Buttons
 
-This example demonstrates buttons of different sizes and styles by configuring **controlSize** and **buttonStyle**.
+This example demonstrates how to set the importance of buttons of different sizes by configuring **controlSize** and **buttonStyle**.
 
 ```ts
 // xxx.ets
@@ -668,7 +668,7 @@ struct ButtonExample {
 
 ### Example 5: Setting the Button Role
 
-This example demonstrates how to set the button role by configuring **role**.
+This example demonstrates how to set the role of the button by configuring **role**.
 
 ```ts
 // xxx.ets
@@ -696,7 +696,7 @@ struct ButtonExample {
 ![buttonrole](figures/buttonrole.jpeg)
 
 ### Example 6: Implementing a Custom Button
-This example replaces the original button style with a circle through a custom style. If the button is pressed, the circle turns red and the title displays the pressed text; if the button is not pressed, the circle turns black and the title displays the unpressed text.
+This example implements a custom button in the shape of a circle. The circle is red when pressed, accompanied by the text "Pressed" in the title. It is black when not pressed, accompanied by the text "Not pressed" in the title.
 ```ts
 class MyButtonStyle implements ContentModifier<ButtonConfiguration> {
   x: number = 0;
@@ -762,7 +762,7 @@ struct ButtonExample {
 ![buttonbuilder](figures/buttonbuilder.gif)
 
 ### Example 7: Setting Rounded Rectangle Buttons
-This example demonstrates the creation of a rounded rectangle button, the setting of its corner radius, and the truncation effect of long text.
+This example demonstrates how to set a rounded rectangle button, and set its corner radius and the truncation effect of long text.
 ```ts
 @Entry
 @Component
@@ -823,13 +823,13 @@ struct Index {
 ```
 ![buttontextalign](figures/buttontextalign.jpeg)
 
-### Example 9 (Setting the Immersive Light Effect of a Button)
+### Example 9: Setting the Immersive Light Effect for a Button
 
-This example uses the universal attribute [systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial) API to set the system material of a component, so as to achieve the immersive light effect.
+This example shows how to use the universal attribute [systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial) to set the system material of a component, so as to achieve the immersive light effect.
 
-The immersive light effect of a component is adaptively adjusted based on the device computing capability and the immersive light effect set by the user in the system, without requiring additional adaptation by developers.
+The immersive light effect of a component is adaptively adjusted based on the device computing power and the immersive light effect set by the user in the system, without requiring your additional adaptation.
 
-Since API version 26.0.0, the systemMaterial attribute is added.
+Since API version 26.0.0, the **systemMaterial** attribute is added.
 
 ```ts
 import { uiMaterial } from '@kit.ArkUI';
@@ -890,10 +890,10 @@ struct Index {
 }
 ```
 
-When the system material is not set:
+System material not set
 
 ![When the system material is not set](figures/buttonWithoutNewMaterial.png)
 
-After the immersive light effect is set:
+Immersive light effect set
 
 ![After the system material is set](figures/buttonNewMaterial.png)

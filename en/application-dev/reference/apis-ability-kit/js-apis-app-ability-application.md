@@ -1,11 +1,12 @@
-#  @ohos.app.ability.application (Application Utility Class)
+# @ohos.app.ability.application (Application Utility Class)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @li-weifeng2024-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=9dc7d46e30a06bb4ba3bf8a4a074cbf67858fce9 translatedAt=2026-09-03T09:54:47.309Z pushedAt=2026-09-05T10:47:30.227Z -->
 
 You can use this module to manage and obtain the application [context](../../application-models/application-context-stage.md) and control the application process state.
 
@@ -34,11 +35,11 @@ Enumerates the preloading types of the current application process.
 | TYPE_CREATE_WINDOW_STAGE     | 3   |    Preloads the process up to the point of [WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) creation completion.          |
 | TYPE_CREATE_BACKGROUND_ABILITY <sup>23+</sup>          | 4   |    Preloads the process up to the point of [onBackground](./js-apis-app-ability-uiAbility.md#onbackground) execution completion.     |
 
-## application.createModuleContext<sup>12+</sup>
+## application.createModuleContext
 
 createModuleContext(context: Context, moduleName: string): Promise\<Context>
 
-Creates the context for a module. The [resourceManager.Configuration](../apis-localization-kit/js-apis-resource-manager.md#configuration) in the created module context inherits from the input context, making it convenient for you to access [application resources across HAP/HSP packages](../../quick-start/resource-categories-and-access.md#cross-haphsp-resources). This API uses a promise to return the result.
+Creates the context of a specified module. In the created module context, the [resourceManager.Configuration](../apis-localization-kit/js-apis-resource-manager.md#configuration) resources are inherited from the input context, making it easier for developers to obtain [cross-HAP/HSP package resources](../../quick-start/resource-categories-and-access.md#cross-haphsp-resources). This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -79,7 +80,7 @@ export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     let moduleContext: common.Context;
     try {
-      application.createModuleContext(this.context, 'entry').then((data: Context) => {
+      application.createModuleContext(this.context, 'entry').then((data: common.Context) => {
         moduleContext = data;
         console.info('createModuleContext success!');
       }).catch((error: BusinessError) => {
@@ -145,7 +146,7 @@ export default class EntryAbility extends UIAbility {
 
 getApplicationContextInstance(): ApplicationContext
 
-Obtains the application context. This API provides context access independent of the base class **Context**.
+Obtains the app context instance. When using this API, developers do not need to depend on the Context base class.
 
 Repeated calls to this API obtain the same ApplicationContext instance.
 
@@ -219,7 +220,7 @@ export default class EntryAbility extends UIAbility {
     let moduleContext: common.Context;
     try {
       application.createPluginModuleContext(this.context, 'com.example.pluginBundleName', 'pluginModuleName')
-        .then((data: Context) => {
+        .then((data: common.Context) => {
           moduleContext = data;
           console.info('createPluginModuleContext success!');
         })
@@ -275,7 +276,7 @@ When the [master process](../../application-models/ability-terminology.md#master
 
 | Type              | Description               |
 | ------------------ | ------------------- |
-|Promise\<void> | Promise that returns no result.|
+|Promise\<void> | Promise object, no return result. |
 
 **Error codes**
 
@@ -326,7 +327,7 @@ Removes the current process from the candidate master process list. This API use
 
 | Type              | Description               |
 | ------------------ | ------------------- |
-|Promise\<void> | Promise that returns no result.|
+|Promise\<void> | Promise object, no return result. |
 
 **Error codes**
 
@@ -367,11 +368,11 @@ export default class EntryAbility extends UIAbility {
 
 exitMasterProcessRole(): Promise\<void>
 
-Relinquishes the [master-process](../../application-models/ability-terminology.md#master-process) role from the current process. This API uses a promise to return the result.
+Exits the [master process](../../application-models/ability-terminology.md#master-process) role of the current process. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-**Device behavior differences**: This API can be properly called only on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences:** This API is supported on 2-in-1 and tablet devices. On other device types, it returns error code 801.
 
 **Return value**
 
@@ -441,6 +442,56 @@ import { AbilityStage, application } from '@kit.AbilityKit';
 export default class MyAbilityStage extends AbilityStage{
   onCreate() {
     let appPreloadType = application.getAppPreloadType();
+  }
+}
+```
+
+## application.createModuleContextSync
+
+createModuleContextSync(context: Context, moduleName: string): Context
+
+Creates the context of a specified module. In the created module context, the [resourceManager.Configuration](../apis-localization-kit/js-apis-resource-manager.md#configuration) resources are inherited from the input context, making it easier for developers to obtain [cross-HAP/HSP package resources](../../quick-start/resource-categories-and-access.md#cross-haphsp-resources). This API is a synchronous API.
+
+> **NOTE**
+>
+> Creating a module context involves resource querying and initialization, which can be time-consuming. In scenarios where application fluidity is critical, avoid frequently or repeatedly calling the **createModuleContextSync** API to create multiple context instances, as this may negatively impact user experience.
+
+**Since:** 26.1.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Parameters**
+
+| Name        | Type                                       | Required   | Description             |
+| --------- | ---------------------------------------- | ---- | -------------- |
+| context | [Context](js-apis-inner-application-context.md) | Yes | Indicates the application context. |
+| moduleName | string | Yes | Indicates the application module name. |
+
+**Return value**
+
+| Type               | Description                |
+| ------------------ | ------------------- |
+| [Context](../../reference/apis-ability-kit/js-apis-inner-application-context.md) | Context created. |
+
+**Error codes**
+
+For details about the error codes, see [Ability Error Codes](./errorcode-ability.md).
+
+| ID | Error Message        |
+| -------- | --------------- |
+| 16000011  | The context does not exist. |
+| 16000021  | The module does not exist. |
+
+**Example**
+
+```ts
+import { AbilityConstant, UIAbility, application, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    let moduleContext = application.createModuleContextSync(this.context, 'entry');
   }
 }
 ```

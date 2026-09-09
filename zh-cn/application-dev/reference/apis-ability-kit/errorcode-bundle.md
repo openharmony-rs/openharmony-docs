@@ -2020,6 +2020,23 @@ Invalid fileTypes.
 
 请检查文件类型数组是否错误，阅读参数规格约束，按照可能原因进行排查。
 
+## 18000001 设置默认浏览器时应用缺少默认浏览器权限
+**错误信息**
+
+The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.
+
+**错误描述**
+
+通过[defaultAppManager](js-apis-defaultAppManager-sys.md)设置默认浏览器时，指定的应用未被授予ohos.permission.DEFAULT_WEB_BROWSER权限。
+
+**可能原因**
+
+目标应用被设置为默认浏览器，但该应用未持有ohos.permission.DEFAULT_WEB_BROWSER权限。
+
+**处理步骤**
+
+设置默认浏览器时选择被授予ohos.permission.DEFAULT_WEB_BROWSER权限的应用。
+
 ## 18100001 ShortcutInfo列表中bundleName和appIndex不一一对应
 **错误信息**
 

@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=baf3287259f8efd23ff8ec99c9af8cbdb75e24ac translatedAt=2026-09-03T09:52:44.997Z pushedAt=2026-09-05T10:47:30.216Z -->
 
 AbilityStage is a [module](../../../application-dev/quick-start/application-package-overview.md#multi-module-design-mechanism)-level component manager. It is used for initializing operations such as resource preloading and thread creation at the module level, as well as maintaining the application state under the module. An AbilityStage instance corresponds to a module.
 
@@ -82,7 +83,7 @@ If a UIAbility instance with the same ID already exists in the system, that inst
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want type parameter that includes the launch parameters provided by the caller, such as the ability name and bundle name.|
+| want | [Want](js-apis-app-ability-want.md) | Yes | Want type parameter, indicating the startup parameters passed by the caller, such as the ability name and bundle name. |
 
 **Return value**
 
@@ -125,7 +126,9 @@ The **isolationProcess** field can be set to **true** in the [module.json5](../.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**Device behavior differences**: This API executes the callback normally only on 2-in-1 devices and tablets. It does not execute the callback on other devices.
+**Device behavior differences**:
+- Since API version 12, this API executes the callback normally on tablet devices, but does not execute the callback on other devices.
+- Since API version 13, this API executes the callback normally on PCs, 2-in-1 devices, and tablets, but does not execute the callback on other devices.
 
 **Parameters**
 
@@ -137,7 +140,7 @@ The **isolationProcess** field can be set to **true** in the [module.json5](../.
 
 | Type| Description|
 | -------- | -------- |
-| string | Custom process identifier. If the process with this identifier has been created, the ability runs in the process. Otherwise, a new process is created and the ability runs in it.|
+| string | A process string identifier determined by the developer. If the process corresponding to this identifier has already been created, the Ability runs in this process; otherwise, a new process is created. |
 
 **Example**
 
@@ -195,7 +198,7 @@ This API returns the result synchronously and does not support asynchronous call
 
 > **NOTE**
 > 
-> Releasing UI components in the **onMemoryLevel** callback may block the main thread tasks of the current process. Therefore, you are advised not to release UI components in this callback.
+> The onMemoryLevel callback runs in the main thread of the current process. If time-consuming UI component release is performed in this callback, the main thread tasks will be blocked. Therefore, it is not recommended to release UI components in this callback.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -205,7 +208,7 @@ This API returns the result synchronously and does not support asynchronous call
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | level | [AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel) | Yes| Memory level that indicates the memory usage status. When the specified memory level is reached, a callback will be invoked and the system will start adjustment.<br>**NOTE**<br>The trigger conditions may differ across various devices. For example, on a standard device with 12 GB of memory:<br>- A callback with value 0 is triggered when available memory drops between 1700 MB and 1800 MB.<br>- A callback with value 1 is triggered when available memory drops between 1600 MB and 1700 MB.<br>- A callback with value 2 is triggered when available memory falls below 1600 MB.|
+  | level | [AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel) | Yes | Memory level of the entire device. For details about the corresponding trigger scenarios, see [AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel).|
 
 **Example**
 
@@ -219,7 +222,7 @@ export default class MyAbilityStage extends AbilityStage {
 }
 ```
 
-### onDestroy<sup>12+<sup>
+### onDestroy<sup>12+</sup>
 
 onDestroy(): void
 
@@ -241,7 +244,7 @@ export default class MyAbilityStage extends AbilityStage {
 }
 ```
 
-### onPrepareTermination<sup>15+<sup>
+### onPrepareTermination<sup>15+</sup>
 
 onPrepareTermination(): AbilityConstant.PrepareTermination
 
@@ -249,9 +252,9 @@ Called when the application is closed by the user, allowing the user to choose b
 
 > **NOTE**
 >
-> - The API is called only when the application exits under normal circumstances (for example, when the application is closed through the doc bar or tray, or when the application shuts down along with the device). It will not be called if the application is terminated forcibly.
+> - This API is called only when the application exits under normal circumstances (for example, when the application is closed through the task bar or tray, or when the application exits as the device shuts down). If the application is forcibly closed, this API is not called.
 >
-> - This API is not executed when [AbilityStage.onPrepareTerminationAsync](#onprepareterminationasync15) is implemented.
+> - When [AbilityStage.onPrepareTerminationAsync](#onprepareterminationasync15) is implemented, this callback function is not executed.
 
 **Required permissions**: ohos.permission.PREPARE_APP_TERMINATE
 
@@ -260,8 +263,8 @@ Called when the application is closed by the user, allowing the user to choose b
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Device behavior differences**
-- Starting from API version 15, this API executes the callback normally only on 2-in-1 devices. It does not execute the callback on other devices.
-- Starting from API version 19, this API executes the callback normally only on 2-in-1 devices and tablets. It does not execute the callback on other devices.
+- Starting from API version 15, this API executes the callback normally only on PC/2-in-1 devices. It does not execute the callback on other devices.
+- Starting from API version 19, this API executes the callback normally only on PC/2-in-1 devices and tablets. It does not execute the callback on other devices.
 
 **Return value**
 
@@ -282,7 +285,7 @@ export default class MyAbilityStage extends AbilityStage {
 }
 ```
 
-### onPrepareTerminationAsync<sup>15+<sup>
+### onPrepareTerminationAsync<sup>15+</sup>
 
 onPrepareTerminationAsync(): Promise\<AbilityConstant.PrepareTermination>
 
@@ -290,9 +293,9 @@ Called when the application is closed by the user, allowing the user to choose b
 
 > **NOTE**
 >
-> - The API is called only when the application exits under normal circumstances (for example, when the application is closed through the doc bar or tray, or when the application shuts down along with the device). It will not be called if the application is terminated forcibly.
+> - This API is called only when the application exits under normal circumstances (for example, when the application is closed through the task bar or tray, or when the application exits as the device shuts down). If the application is forcibly closed, this API is not called.
 >
-> - If an asynchronous callback crashes, it will be handled as a timeout. If the application does not respond within 10 seconds, it will be terminated forcibly.
+> - If a crash occurs in the asynchronous callback, it is handled as a timeout. If no response is received after waiting for more than 10 seconds, the application is forcibly closed.
 
 **Required permissions**: ohos.permission.PREPARE_APP_TERMINATE
 
@@ -301,8 +304,8 @@ Called when the application is closed by the user, allowing the user to choose b
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Device behavior differences**
-- Starting from API version 15, this API executes the callback normally only on 2-in-1 devices. It does not execute the callback on other devices.
-- Starting from API version 19, this API executes the callback normally only on 2-in-1 devices and tablets. It does not execute the callback on other devices.
+- Starting from API version 15, this API executes the callback normally only on PC/2-in-1 devices. It does not execute the callback on other devices.
+- Starting from API version 19, this API executes the callback normally only on PC/2-in-1 and tablet devices. It does not execute the callback on other devices.
 
 **Return value**
 
@@ -352,12 +355,13 @@ If a UIAbility instance with the same ID already exists in the system, that inst
 **Example**
 
 ```ts
-import { AbilityStage } from '@kit.AbilityKit';
+import { AbilityStage, Want } from '@kit.AbilityKit';
 
 class MyAbilityStage extends AbilityStage {
-  async onAcceptWantAsync(): Promise<string> {
+  async onAcceptWantAsync(want: Want): Promise<string> {
     await new Promise<string>((res, rej) => {
       setTimeout(res, 1000); // Execute the operation after 1 second.
+      console.info(`onAcceptWantAsync, want: ${JSON.stringify(want)}`);
     });
     return 'default';
   }
@@ -380,7 +384,7 @@ The **isolationProcess** field can be set to **true** in the [module.json5](../.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**Device behavior differences**: This API executes the callback normally only on 2-in-1 devices and tablets. It does not execute the callback on other devices.
+**Device Behavior**: This API executes the callback normally only on PC/2-in-1 and tablet devices. It does not execute the callback on other devices.
 
 **Parameters**
 
@@ -397,14 +401,109 @@ The **isolationProcess** field can be set to **true** in the [module.json5](../.
 **Example**
 
 ```ts
-import { AbilityStage } from '@kit.AbilityKit';
+import { AbilityStage, Want } from '@kit.AbilityKit';
 
 class MyAbilityStage extends AbilityStage {
-  async onNewProcessRequestAsync(): Promise<string> {
+  async onNewProcessRequestAsync(want: Want): Promise<string> {
     await new Promise<string>((res, rej) => {
       setTimeout(res, 1000); // Execute the operation after 1 second.
+      console.info(`onNewProcessRequestAsync, want: ${JSON.stringify(want)}`);
     });
     return '';
+  }
+}
+```
+
+### onLaunchFromHyperSnap<sup>24+</sup>
+
+onLaunchFromHyperSnap(): void
+
+Called when the process is launched from [application quick launch](./js-apis-app-ability-hyperSnapManager.md#implementation-principle).
+
+Developers can override this method to handle specific logic during application quick launch, for example, reinitializing certain resources or states.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Example**
+
+```ts
+import { AbilityStage } from '@kit.AbilityKit';
+
+export default class MyAbilityStage extends AbilityStage {
+  onLaunchFromHyperSnap(): void {
+    console.info('Launched from Hyper Snap, reinitializing resources...');
+    // Add the initialization logic for quick startup here.
+  }
+}
+```
+
+### onAboutToCreateAbility<sup>24+</sup>
+
+onAboutToCreateAbility(): void
+
+Called when the AbilityStage is about to create the first Ability.
+
+Developers can override this method to perform preparations before the first Ability is created.
+
+> **NOTE**
+>
+> - Since API version 26.0.0, if [AbilityStage.onAboutToCreateAbilityAsync](#onabouttocreateabilityasync) is implemented, this callback function will not be triggered.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Example**
+
+```ts
+import { AbilityStage } from '@kit.AbilityKit';
+
+export default class MyAbilityStage extends AbilityStage {
+  onAboutToCreateAbility(): void {
+    console.info('About to create first ability, preparing...');
+    // Add the preparation work before creating the first ability here.
+  }
+}
+```
+
+### onAboutToCreateAbilityAsync
+
+onAboutToCreateAbilityAsync(): Promise\<void\>
+
+Called when the AbilityStage is about to create the first ability. This API uses a promise to return the result asynchronously.
+
+The subsequent lifecycle callbacks are executed only after the promise returned by this method is resolved successfully; otherwise, they are suspended.
+
+By overriding this method, developers can perform necessary asynchronous initialization and preparation before the AbilityStage creates the first ability.
+
+**Since:** 26.0.0
+
+> **NOTE**
+>
+> If both [onAboutToCreateAbility](#onabouttocreateability24) and this method are implemented, only this method takes effect.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| Promise\<void\> | Promise object that returns no value. The subsequent lifecycle callbacks are executed only after the promise is resolved successfully. |
+
+**Example**
+
+```ts
+import { AbilityStage } from '@kit.AbilityKit';
+
+export default class MyAbilityStage extends AbilityStage {
+  async onAboutToCreateAbilityAsync(): Promise<void> {
+    console.info('About to create first ability, preparing...');
+    // Perform the asynchronous initialization.
+    await new Promise<void>((resolve) => {
+      setTimeout(() => {
+        console.info('Async preparation completed');
+        resolve();
+      }, 1000);
+    });
+    // The ability is created only after the initialization is complete.
   }
 }
 ```

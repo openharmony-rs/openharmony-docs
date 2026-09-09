@@ -401,7 +401,7 @@ struct Index {
 
 ### 示例4（Toggle沉浸光感效果）
 
-该示例展示了Toggle组件Switch类型在开启沉浸光感前后的效果对比，包括不设置系统材质、设置undefined、设置系统材质以及设置系统材质并配合[switchPointColor](#switchpointcolor)设置点光源颜色的效果。示例使用通用属性[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)接口来实现沉浸光感效果。
+该示例展示了Toggle组件Switch类型在开启沉浸光感前后的效果对比。示例使用通用属性[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)接口来实现沉浸光感效果。
 
 组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
 
@@ -419,32 +419,21 @@ import { uiMaterial } from '@kit.ArkUI';
 @Component
 struct ToggleMaterialTest {
   build() {
-    Column({ space: 10 }) {
-      // 不设置系统材质接口，无沉浸光感效果
-      Toggle({ type: ToggleType.Switch, isOn: true })
-
-      // systemMaterial设置undefined，恢复为无沉浸光感的效果
-      Toggle({ type: ToggleType.Switch, isOn: true })
-        .systemMaterial(undefined)
-
+    Stack() {
       // 设置系统材质，开启沉浸光感效果（systemMaterial参数任意仅作为系统材质开关，最终使用组件侧固定参数），默认白色点光源（颜色为switchPointColor默认值）
       Toggle({ type: ToggleType.Switch, isOn: true })
         .systemMaterial(new uiMaterial.Material())
-
-      // 设置系统材质，开启沉浸光感效果（systemMaterial参数任意仅作为系统材质开关，最终使用组件侧固定参数），点光源颜色跟随switchPointColor设置
-      Toggle({ type: ToggleType.Switch, isOn: true })
-        .systemMaterial(new uiMaterial.Material())
-        .switchPointColor(Color.Red)
     }
     .width('100%')
+    .height('100%')
   }
 }
 ```
 
-高算力设备场景示例图：
+未设置系统材质时：
 
-![toggle](figures/toggle-material-high.gif)
+![toggle](figures/toggleWithoutSystemMaterial.gif)
 
-低算力设备场景示例图：
+设置系统材质后：
 
-![toggle](figures/toggle-material-low.gif)
+![toggle](figures/toggleWithSystemMaterial.gif)

@@ -271,8 +271,8 @@
       - [Toolbar Configuration](arkui-ts/ts-universal-attributes-toolbar.md)
       - [Node Inspector Label](arkui-ts/ts-universal-attributes-inspector-label.md)
   - Gesture Handling<!--gesture-handling-->
-    - Binding Gestures<!--gesture-binding-->
-      - [Gesture Binding](arkui-ts/ts-gesture-settings.md)
+    - Gesture Binding<!--gesture-binding-->
+      - [Binding Gesture Events](arkui-ts/ts-gesture-settings.md)
       - [Bound Gesture Configuration](arkui-ts/ts-uigestureevent.md)
       - [Gesture Handler](arkui-ts/ts-gesturehandler.md)
     - Basic Gestures<!--basic-gestures-->
