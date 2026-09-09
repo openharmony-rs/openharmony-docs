@@ -1387,8 +1387,8 @@ When you start debugging or run an application, the error message "error: instal
 
 **Possible Causes**
 
-1. The signatures of the application already installed on the device and the newly installed application are inconsistent, or the signatures of multiple packages (HAPs and HSPs) differ. If at least one of the [keys](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual#section1245916381106) or the app-identifier in the application [Profile signature file](../security/app-provision-structure.md)<!--RP7End--> of the two applications is the same, their signatures are considered consistent. If **Keep Application Data** is selected in **Edit Configurations** in DevEco Studio (that is, the application is overwritten and installed without being uninstalled) and the application is re-signed, this error is reported.
-2. If an application is uninstalled but its data is retained, when an application with the same bundle name is installed later, the consistency of its signature information must be verified. If neither the [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual#section1245916381106) nor the app-identifier in the application [Profile signature file](../security/app-provision-structure.md)<!--RP7End--> of the two signatures is consistent, this error is reported.
+1. The signatures of the application already installed on the device and the newly installed application are inconsistent, or the signatures of multiple packages (HAPs and HSPs) differ. If at least one of the [keys](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual#section1245916381106) or <!--RP7-->the app-identifier in the application [Profile signature file](../security/app-provision-structure.md)<!--RP7End--> of the two applications is the same, their signatures are considered consistent. If **Keep Application Data** is selected in **Edit Configurations** in DevEco Studio (that is, the application is overwritten and installed without being uninstalled) and the application is re-signed, this error is reported.
+2. If an application is uninstalled but its data is retained, when an application with the same bundle name is installed later, the consistency of its signature information must be verified. If neither the [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual#section1245916381106) nor <!--RP7-->the app-identifier in the application [Profile signature file](../security/app-provision-structure.md)<!--RP7End--> of the two signatures is consistent, this error is reported.
 
 
 **Solution**
@@ -2790,13 +2790,13 @@ The new bundle cannot be installed because its bundle name matches that of the u
 
 **Possible Causes**
 
-Although the pre-installed bundle has been uninstalled, the system still installs the preset bundle before installing the new bundle package. This is because the key in the installation signature information of the pre-installed bundle and the <!--RP7-->**app-identifier** in the bundle profile<!--RP7End--> are different from those of the newly installed bundle.
+Although the pre-installed bundle has been uninstalled, the system still installs the preset bundle before installing the new bundle package. This is because the key in the installation signature information of the pre-installed bundle and <!--RP7-->the **app-identifier** in the bundle profile<!--RP7End--> are different from those of the newly installed bundle.
 
 **Solution**
 
 Method 1: Re-sign the bundle.
 
-Re-sign the application to ensure that at least one of the [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual#section1245916381106) in the application signature information or the app-identifier in the application [Profile signature file](../security/app-provision-structure.md)<!--RP7End--> is consistent with that of the preinstalled application.
+Re-sign the application to ensure that at least one of the [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual#section1245916381106) in the application signature information or <!--RP7-->the app-identifier in the application [Profile signature file](../security/app-provision-structure.md)<!--RP7End--> is consistent with that of the preinstalled application.
 
 <!--RP11--><!--RP11End-->
 

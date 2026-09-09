@@ -10,7 +10,7 @@
 
 Starting from API version 22, the algorithm library supports this algorithm.
 
-For details about the algorithm specifications, see [ChaCha20](crypto-encryption-decryption.md#chacha20).
+<!--Del-->For details about the algorithm specifications, see [ChaCha20](crypto-encryption-decryption.md#chacha20).<!--DelEnd-->
 
 ## Adding the Dynamic Library in the CMake Script
 ```txt
@@ -24,7 +24,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 Call [OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_create) and [OH_CryptoSymKeyGenerator_Generate](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_generate) to generate a symmetric key (**OH_CryptoSymKey**) with the key algorithm being ChaCha20.
 
-For how to generate a ChaCha20 symmetric key, refer to the following example and also see [Symmetric Key Generation and Conversion Specifications: ChaCha20](crypto-key-generation-conversion.md#chacha20) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly-ndk.md). Note that the reference documents and examples may differ in input parameters.
+For how to generate a ChaCha20 symmetric key, refer to the following example and also see <!--Del-->[Symmetric Key Generation and Conversion Specifications: ChaCha20](crypto-key-generation-conversion.md#chacha20) and <!--DelEnd-->[Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly-ndk.md). Note that the reference documents and examples may differ in input parameters.
 
 **Encryption**
 
@@ -181,7 +181,7 @@ end:
 
 Call [OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_create) and [OH_CryptoSymKeyGenerator_Generate](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_generate) to generate a symmetric key (**OH_CryptoSymKey**) with the key algorithm being ChaCha20.
 
-For how to generate a ChaCha20 symmetric key, refer to the following example and also see [Symmetric Key Generation and Conversion Specifications: ChaCha20](crypto-key-generation-conversion.md#chacha20) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly-ndk.md). Note that the reference documents and examples may differ in input parameters.
+For how to generate a ChaCha20 symmetric key, refer to the following example and also see <!--Del-->[Symmetric Key Generation and Conversion Specifications: ChaCha20](crypto-key-generation-conversion.md#chacha20) and <!--DelEnd-->[Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly-ndk.md). Note that the reference documents and examples may differ in input parameters.
 
 **Encryption**
 
