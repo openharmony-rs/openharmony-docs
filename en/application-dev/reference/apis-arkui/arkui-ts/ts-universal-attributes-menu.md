@@ -589,7 +589,7 @@ Defines the menu grid style options.
 | horizontalSize | number | No| Yes| Horizontal dimensions of elements in a grid, indicating the number of elements that can be displayed in each row of the grid.<br>Default value: **3**<br>**NOTE**<br>When the grid style is top image and bottom text, the horizontal dimensions range from 1 to 3, that is, the number of grid rows ranges from 1 to 2.<br>For a grid style that contains only icons, the horizontal dimensions range from 1 to 4, meaning that the number of rows in the grid is 1.<br>If this parameter is not set or an invalid value is passed, the default value will be used.|
 | position | [MenuGridPosition](#menugridposition) | No| Yes| Position of the grid in the menu.<br>Default value: **MenuGridPosition.TOP**|
 
-## Example
+## Examples
 
 ### Example 1: Displaying a Basic Menu
 
@@ -1167,7 +1167,7 @@ struct MenuExample {
 
 ![preview-builder](figures/image-backgroundEffect.png)
 
-### Sample 13: Configuring Lift-Finger Interruption for a Shared Element Transition
+### Example 13: Configuring Lift-Finger Interruption for a Shared Element Transition
 
 This example demonstrates how to implement a shared element transition by setting the **previewAnimationOptions** property in [ContextMenuOptions](#contextmenuoptions10) for **bindContextMenu** and how to control whether lifting the finger after a long press can cancel the menu pop-up by setting **hoverScaleInterruption**.
 
@@ -1226,7 +1226,7 @@ struct Index {
 
 ![hoverScaleInterruption](figures/hoverScaleInterruption.gif)
 
-### Sample 14: Setting the Radius of the Rounded Corners of the Preview Image Border
+### Example 14: Setting the Radius of the Rounded Corners of the Preview Image Border
 
 This example demonstrates how to implement the function using **bindContextMenu** with [responseType](ts-appendix-enums.md#responsetype8).LongPress set. In addition, the [MenuPreviewMode](#menupreviewmode11) type of the **preview** property in [ContextMenuOptions](#contextmenuoptions10) is set to determine the menu preview mode. **previewBorderRadius** is set to implement the radius of the rounded corners of the preview image.
 
@@ -1273,7 +1273,7 @@ struct Index {
 
 ![hoverScaleInterruption](figures/menuPreviewBorderRadius.jpg)
 
-### Sample 15: Configuring Lifecycle Callbacks for bindMenu
+### Example 15: Configuring Lifecycle Callbacks for bindMenu
 
 This sample shows how to configure lifecycle callbacks for **bindMenu**<sup>11+</sup>.
 
@@ -1493,7 +1493,7 @@ struct Index {
 
 ![bindMenu-CustomBuilder](figures/bindMenuWithCustomBuilder.gif)
 
-### Sample 19: Displaying Different Menus Based on the Trigger Mode
+### Example 19: Displaying Different Menus Based on the Trigger Mode
 
 This example demonstrates how to bind a menu to the target component by passing **CustomBuilderT\<ResponseType>** to [bindContextMenuWithResponse](#bindcontextmenuwithresponse23). The component returns the mode of triggering menu display in the UI function. You can implement differentiated display based on the returned trigger mode.
 
@@ -1684,7 +1684,7 @@ struct Index {
 
 ![anchorPositionMenu](figures/anchorPositionMenu.gif)
 
-### Sample 22: Setting the Maximum Height of a Menu
+### Example 22: Setting the Maximum Height of a Menu
 
 This sample shows how to use the **maxHeight** attribute in [ContextMenuOptions](#contextmenuoptions10) to set the maximum height of a menu.
 
