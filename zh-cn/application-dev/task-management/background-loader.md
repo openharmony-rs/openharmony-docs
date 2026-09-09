@@ -21,16 +21,7 @@
 4. 系统在决策满足时拉起应用并触发ON_START回调，应用在ON_START回调中执行预先加载逻辑（如数据请求、缓存写入等），完成后调用finishTask接口通知系统任务结束，任务停止时系统触发ON_STOP回调。
 5. 任务执行受约束：单次执行最长30秒；执行期间禁止音频播放、音频录制、定位、操作闪光灯等可感知行为；若应用多次超时或存在可感知操作，系统将禁用该应用后续的后台加载任务调度。
 
-```mermaid
-sequenceDiagram
-    participant App as 应用
-    participant Sys as 后台加载任务管理模块
-    App->>Sys: registerTask(taskInfo) 注册后台加载任务
-    Sys->>App: 拉起应用，触发ON_START回调
-    App->>App: 执行后台加载逻辑
-    App->>Sys: finishTask(taskInfo) 通知任务完成
-    Sys->>App: 任务停止，触发ON_STOP回调
-```
+![backgroundloader](figures/backgroundloader.png)
 
 ## 约束与限制
 
