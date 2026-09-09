@@ -566,3 +566,14 @@ mouse2TouchEventMode可配置字段说明：
 }
 ```
 **3. 配置示例**
+在PC/2in1设备上，配置为鼠标事件不转换成触摸事件，示例如下：
+``` json
+{
+  "common": {},
+  "2in1": {
+    "multiModalInputOptions": {
+      "mouse2TouchEventMode": "disabled"
+    }
+  }
+}
+```
