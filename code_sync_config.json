@@ -8790,7 +8790,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/CustomDrawIrregularSample/entry/src/main/cpp/ArkUIIrregularGridNode.h",
 				"functions":[
 					{
-						"end_line":227,
+						"end_line":225,
 						"name":"irregular-grid",
 						"start_line":15
 					}
@@ -8815,7 +8815,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/ets/pages/MixedModule.ets",
 				"functions":[
 					{
-						"end_line":144,
+						"end_line":143,
 						"name":"mixed_module",
 						"start_line":15
 					}
@@ -8855,7 +8855,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/ArkUIMixedRefresh.h",
 				"functions":[
 					{
-						"end_line":112,
+						"end_line":118,
 						"name":"arkui_mixed_refresh",
 						"start_line":15
 					}
@@ -8875,7 +8875,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/MixedRefreshExample.h",
 				"functions":[
 					{
-						"end_line":62,
+						"end_line":68,
 						"name":"mixed_refresh_example",
 						"start_line":15
 					}
@@ -8885,7 +8885,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/NativeEntry.cpp",
 				"functions":[
 					{
-						"end_line":59,
+						"end_line":65,
 						"name":"native_entry",
 						"start_line":15
 					}
@@ -8895,7 +8895,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/types/libentry/Index.d.ts",
 				"functions":[
 					{
-						"end_line":21,
+						"end_line":50,
 						"name":"bridge_index",
 						"start_line":15
 					}
@@ -8925,7 +8925,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/ArkUIMixedRefresh.cpp",
 				"functions":[
 					{
-						"end_line":225,
+						"end_line":233,
 						"name":"arkui_mixed_refresh_cpp",
 						"start_line":15
 					}
@@ -9378,7 +9378,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/InquireUniqueId.cpp",
 				"functions":[
 					{
-						"end_line":62,
+						"end_line":64,
 						"name":"ndknodequeryoperate1_start",
 						"start_line":24
 					}
@@ -9428,7 +9428,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/MoveToExample.h",
 				"functions":[
 					{
-						"end_line":164,
+						"end_line":165,
 						"name":"ndknodequeryoperate5_start",
 						"start_line":16
 					}
@@ -9468,7 +9468,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/ShowSubcomponentInfo.h",
 				"functions":[
 					{
-						"end_line":43,
+						"end_line":44,
 						"name":"ndknodequeryoperate9_start",
 						"start_line":30
 					}
@@ -13043,7 +13043,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/UIContext.ets",
 				"functions":[
 					{
-						"end_line":58,
+						"end_line":62,
 						"name":"Common_PixelUtils",
 						"start_line":15
 					}
@@ -13053,7 +13053,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/ContextUtils.ets",
 				"functions":[
 					{
-						"end_line":32,
+						"end_line":35,
 						"name":"Common_ContextUtils",
 						"start_line":15
 					}
@@ -13073,7 +13073,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/LocalStoragePage.ets",
 				"functions":[
 					{
-						"end_line":45,
+						"end_line":44,
 						"name":"Main_LocalStoragePage",
 						"start_line":15
 					}
@@ -38802,14 +38802,14 @@
 						"start_line":641
 					},
 					{
-						"end_line":729,
+						"end_line":741,
 						"name":"Adopt_Node",
-						"start_line":711
+						"start_line":710
 					},
 					{
-						"end_line":744,
+						"end_line":762,
 						"name":"Remove_Adopt_Node",
-						"start_line":732
+						"start_line":744
 					}
 				]
 			},
@@ -38817,7 +38817,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/ets/pages/GetNode.ets",
 				"functions":[
 					{
-						"end_line":130,
+						"end_line":127,
 						"name":"Create_Node",
 						"start_line":16
 					}
