@@ -430,6 +430,30 @@ libnet_trafficfilter.so
 5. 初始化并导出通过N-API封装的`napi_value`类型对象。
 
    <!-- @[init_exports](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   EXTERN_C_START
+   static napi_value Init(napi_env env, napi_value exports)
+   {
+       napi_property_descriptor desc[] = {
+           { "createPacketController", nullptr, CreatePacketControllerNapi, nullptr, nullptr,
+             nullptr, napi_default, nullptr },
+           { "destroyPacketController", nullptr, DestroyPacketControllerNapi, nullptr, nullptr,
+             nullptr, napi_default, nullptr },
+           { "addPacketRule", nullptr, AddPacketRuleNapi, nullptr, nullptr,
+             nullptr, napi_default, nullptr },
+           { "clearPacketRule", nullptr, ClearPacketRuleNapi, nullptr, nullptr,
+             nullptr, napi_default, nullptr },
+           { "registerPacketCallback", nullptr, RegisterPacketCallbackNapi, nullptr, nullptr,
+             nullptr, napi_default, nullptr },
+           { "unregisterPacketCallback", nullptr, UnregisterPacketCallbackNapi, nullptr, nullptr,
+             nullptr, napi_default, nullptr }
+       };
+       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+       return exports;
+   }
+   EXTERN_C_END
+   ```
 
 6. 将初始化成功的对象通过`RegisterEntryModule`函数，使用`napi_module_register`函数将模块注册到Node.js中。
 
