@@ -50,12 +50,12 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 
 ## 使用限制
 
-1.需要配合UI使用（UI线程），不能在其他线程使用。在API version 23以前，不支持@Sendable。
+1. 需要配合UI使用（UI线程），不能在其他线程使用。在API version 23以前，不支持@Sendable。
 
    -  从API version 23开始，提供globalConnect接口，支持在UI线程持久化`@Sendable`装饰的类对象，其成员属性的类型需为基础内置类型（`string`、`number`和`boolean`）。
   
 
-2.在API version 23以前，不支持`collections.Set`、`collections.Map`等类型。
+2. 在API version 23以前，不支持`collections.Set`、`collections.Map`等类型。
 
    - 从API version 23开始，提供globalConnect接口，支持[collections.Set](../../reference/apis-arkts/arkts-apis-arkts-collections-Set.md)、[collections.Map](../../reference/apis-arkts/arkts-apis-arkts-collections-Map.md)和[collections.Array](../../reference/apis-arkts/arkts-apis-arkts-collections-Array.md)。`collections.Set`、`collections.Map`和`collections.Array`本身无法观察，在globalConnect接口使用defaultCreator时，需要使用[UIUtils.makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved)，才能在值变化时自动保存，如果不使用，开发者需要手动调用[PersistenceV2.save(key)](../../reference/apis-arkui/js-apis-stateManagement.md#save)保存变化的数据。
 
