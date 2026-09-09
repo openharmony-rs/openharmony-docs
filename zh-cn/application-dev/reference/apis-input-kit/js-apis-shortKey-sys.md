@@ -221,7 +221,7 @@ struct Index {
 
 指纹手势事件类型的枚举。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 **ArkTS-Dyn起始版本**：12
 
@@ -239,7 +239,7 @@ struct Index {
 
 指纹手势事件的类型和相对侧边指纹器件的偏移位置。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 **ArkTS-Dyn起始版本**：12
 

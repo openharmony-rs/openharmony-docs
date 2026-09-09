@@ -40,7 +40,7 @@ on(type: 'key', keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): v
 
 **相关接口**: 该接口对应的ArkTS-Sta接口是[onKey](#inputconsumeronkey23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+**系统能力**：SystemCapability.MultimodalInput.Input.InputConsumer
 
 **ArkTS-Dyn起始版本**：8
 
@@ -175,7 +175,7 @@ off(type: 'key', keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;):
 
 **相关接口**: 该接口对应的ArkTS-Sta接口是[offKey](#inputconsumeroffkey23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+**系统能力**：SystemCapability.MultimodalInput.Input.InputConsumer
 
 **ArkTS-Dyn起始版本**：8
 
@@ -349,9 +349,9 @@ onKey(keyOptions: KeyOptions, callback: KeyCommandCallback): void
 
 **ArkTS-Sta起始版本：** 26.0.0
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+**系统能力**：SystemCapability.MultimodalInput.Input.InputConsumer
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -451,9 +451,9 @@ offKey(keyOptions: KeyOptions, callback?: KeyCommandCallback): void
 
 **ArkTS-Sta起始版本：** 26.0.0
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+**系统能力**：SystemCapability.MultimodalInput.Input.InputConsumer
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -533,11 +533,11 @@ type KeyCommandCallback = (keyOptions: KeyOptions, keyEvent: KeyEvent) => void
 
 **ArkTS-Sta起始版本：** 26.0.0
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+**系统能力**：SystemCapability.MultimodalInput.Input.InputConsumer
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
-**系统API：** 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
@@ -550,9 +550,9 @@ setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void
 
 设置系统快捷键屏蔽类型。
 
-**需要权限**: ohos.permission.INPUT_CONTROL_DISPATCHING
+**需要权限**：ohos.permission.INPUT_CONTROL_DISPATCHING
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+**系统能力**：SystemCapability.MultimodalInput.Input.InputConsumer
 
 **ArkTS-Dyn起始版本**：11
 
@@ -638,9 +638,9 @@ getShieldStatus(shieldMode: ShieldMode): boolean
 
 获取系统快捷键屏蔽类型。
 
-**需要权限**: ohos.permission.INPUT_CONTROL_DISPATCHING
+**需要权限**：ohos.permission.INPUT_CONTROL_DISPATCHING
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+**系统能力**：SystemCapability.MultimodalInput.Input.InputConsumer
 
 **ArkTS-Dyn起始版本**：11
 
@@ -727,7 +727,7 @@ struct Index {
 
 组合键选项。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+**系统能力**：SystemCapability.MultimodalInput.Input.InputConsumer
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
@@ -742,7 +742,7 @@ struct Index {
 
 系统快捷键屏蔽类型。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+**系统能力**：SystemCapability.MultimodalInput.Input.InputConsumer
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -760,11 +760,11 @@ struct Index {
 
 **ArkTS-Sta起始版本：** 26.0.0
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+**系统能力**：SystemCapability.MultimodalInput.Input.InputConsumer
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
-**系统API：** 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 | 名称 | 值 | 说明 |
 | --- | --- | --- |
