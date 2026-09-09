@@ -2703,7 +2703,7 @@ struct TextInputExample {
             console.info('selection change: ', selectionStart, selectionEnd);
             this.lastCaretPosition = selectionStart;
             this.lastCaretPositionEnd = selectionEnd;
-          })// 从API version 10开始支持
+          }) // 从API version 10开始支持
       }
     }
     .width('100%')
@@ -2736,7 +2736,7 @@ struct TextInputExample {
         })
           .margin(10)
           .fontSize(16)
-          .style(TextInputStyle.Inline)// Inline模式
+          .style(TextInputStyle.Inline) // Inline模式
           .wordBreak(WordBreak.NORMAL) // 非Inline模式该属性无效
 
         Text('TextInput为inline模式，英文文本，wordBreak属性为BREAK_ALL的样式：').fontSize(16).fontColor(0xCCCCCC)
@@ -2910,7 +2910,7 @@ struct TextInputExample {
       .width('100%')
       .padding({ bottom: 50 })
 
-      TextInput({ controller: this.controller, text: this.inputValue })// 绑定自定义键盘
+      TextInput({ controller: this.controller, text: this.inputValue }) // 绑定自定义键盘
         .customKeyboard(this.CustomKeyboardBuilder(), { supportAvoidance: this.supportAvoidance })
         .margin(10)
         .border({ width: 1 })
@@ -3302,7 +3302,7 @@ struct TextInputExample {
           .onEditChange((status: boolean) => {
             this.editStatus = status;
           })
-          .defaultFocus(true)// 设置TextInput默认获焦
+          .defaultFocus(true) // 设置TextInput默认获焦
           .enableKeyboardOnFocus(false)
           .selectAll(false)
 
@@ -3458,7 +3458,7 @@ struct TextInputExample {
           placeholder: 'The text area can hold an unlimited amount of text. input your word...',
           text: '通过minFontScale、maxFontScale调整文本显示的最大和最小字体缩放倍数。'
         })
-          .minFontScale(this.minFontScale)// 设置最小字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
+          .minFontScale(this.minFontScale) // 设置最小字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
           .maxFontScale(this.maxFontScale) // 设置最大字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
       }.width('100%')
       // 以下按钮只用做字体大小倍数调整，不在示例图中呈现
