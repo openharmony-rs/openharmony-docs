@@ -496,7 +496,6 @@
    // 定义传递参数的接口
    interface ParamsInterface {
      text: string;
-     func: Function;
    }
    class MyNodeController extends NodeController {
      private imperativeNode: FrameNode | null = null;
@@ -515,27 +514,25 @@
        let buildNode = new BuilderNode<[ParamsInterface]>(uiContext);
        // 创建节点树
        buildNode.build(wrapBuilder<[ParamsInterface]>(buildText), {
-         text: message, func: () => {
-           return 'FUNCTION';
-         }
+         text: message
        }, { nestingBuilderSupported: true });
        this.buildNode = buildNode.getFrameNode();
        entry.adopt(buildNode);
      }
-     removeAdoptedNode(uiContext:UIContext):void {
+     removeAdoptedNode(): void {
        entry.removeAdopt();
      }
    }
    
    @Builder
-   function buildTextWithFunc(fun: Function) {
+   function buildTextWithFunc() {
      Web({ src: 'https://www.example.com', controller: new webview.WebviewController() })
    }
    
    @Builder
    function buildText(params: ParamsInterface) {
      Column() {
-       buildTextWithFunc(params.func)
+       buildTextWithFunc()
      }
    }
    
@@ -585,7 +582,7 @@
              Button(this.adoptmsg)
                .onClick(() => {
                  if (this.isAdopt) {
-                   this.myNodeController.removeAdoptedNode(this.getUIContext());
+                   this.myNodeController.removeAdoptedNode();
                    this.adoptmsg = 'adopt web component';
                  } else {
                    this.myNodeController.adoptNode(this.getUIContext(),this.message);
@@ -613,14 +610,27 @@
        size_t argc = 1;
        napi_value args[1] = {nullptr};
        napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-       // 获取ArkTS侧组件挂载点。
+       // 获取ArkTS侧节点句柄。
        int32_t result = OH_ArkUI_GetNodeHandleFromNapiValue(env, args[0], &nodeHandle_);
        if (result != ARKUI_ERROR_CODE_NO_ERROR) {
            return nullptr;
        }
        result = OH_ArkUI_NativeModule_AdoptChild(custom_->GetHandle(), nodeHandle_);
-       OH_ArkUI_RenderNodeUtils_GetRenderNode(nodeHandle_, &renderHandle_);
-       OH_ArkUI_RenderNodeUtils_AddChild(render_->GetHandle(), renderHandle_);
+       if (result != ARKUI_ERROR_CODE_NO_ERROR) {
+           return nullptr;
+       }
+       result = OH_ArkUI_RenderNodeUtils_GetRenderNode(nodeHandle_, &renderHandle_);
+       if (result != ARKUI_ERROR_CODE_NO_ERROR) {
+           OH_ArkUI_NativeModule_RemoveAdoptedChild(custom_->GetHandle(), nodeHandle_);
+           return nullptr;
+       }
+       result = OH_ArkUI_RenderNodeUtils_AddChild(render_->GetHandle(), renderHandle_);
+       if (result != ARKUI_ERROR_CODE_NO_ERROR) {
+           OH_ArkUI_RenderNodeUtils_DisposeNode(renderHandle_);
+           renderHandle_ = nullptr;
+           OH_ArkUI_NativeModule_RemoveAdoptedChild(custom_->GetHandle(), nodeHandle_);
+           return nullptr;
+       }
        return nullptr;
    }
    ```
@@ -633,9 +643,15 @@
    
    napi_value RemoveAdopt(napi_env env, napi_callback_info info)
    {
-       OH_ArkUI_NativeModule_RemoveAdoptedChild(custom_->GetHandle(), nodeHandle_);
+       int32_t result = OH_ArkUI_NativeModule_RemoveAdoptedChild(custom_->GetHandle(), nodeHandle_);
+       if (result != ARKUI_ERROR_CODE_NO_ERROR) {
+           return nullptr;
+       }
        // 解除节点的接纳状态后，需要额外调用OH_ArkUI_RenderNodeUtils_DisposeNode释放对应的渲染节点，否则会导致内存泄漏。
-       OH_ArkUI_RenderNodeUtils_DisposeNode(renderHandle_);
+       result = OH_ArkUI_RenderNodeUtils_DisposeNode(renderHandle_);
+       if (result != ARKUI_ERROR_CODE_NO_ERROR) {
+           return nullptr;
+       }
        nodeHandle_ = nullptr;
        renderHandle_ = nullptr;
        return nullptr;
