@@ -1,12 +1,11 @@
 # text_input.h
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Zhang-Dong-hui-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8a65b118b29a0c9d1936c3b96f0e90c33fab49ab translatedAt=2026-08-10T03:38:32.822Z pushedAt=2026-08-11T03:34:49.925Z -->
+<!-- md-trans-meta sourceCommit=b5ca6cc7369ee8af1740e3aa6db559b91a21474f translatedAt=2026-08-27T08:56:05.420Z pushedAt=2026-08-28T08:44:47.629Z -->
 
 ## Overview
 
@@ -61,7 +60,7 @@ Enumerates the input types of single-line text.
 | ARKUI_TEXTINPUT_TYPE_USER_NAME = 10 | Username input type with no special restrictions.<br>When Password Vault is enabled, usernames can be auto-saved and auto-filled. |
 | ARKUI_TEXTINPUT_TYPE_NEW_PASSWORD = 11 | New password input type.<br>By default, the input text is briefly displayed and then changed to dots. Since API version 12, on PCs/2-in-1 devices, the input text is directly displayed as dots.<br>On TV devices, the eye icon is hidden by default at the end of the input box. On other devices, the eye icon is shown by default at the end of the input box. |
 | ARKUI_TEXTINPUT_TYPE_NUMBER_DECIMAL = 12 | Number input type with a decimal point.<br>It supports digits and a decimal point (only one decimal point allowed), and does not support negative numbers (including negative integers and negative decimals). |
-| ARKUI_TEXTINPUT_TYPE_ONE_TIME_CODE = 14 | Verification code input type with no special restrictions.<br>**Since:** 20 |
+| ARKUI_TEXTINPUT_TYPE_ONE_TIME_CODE = 14 | Verification code input type with no special restrictions. In this type, the system input method is shown by default when the component gains focus.<br>**Since:** 20 |
 
 ### ArkUI_CancelButtonStyle
 
@@ -149,3 +148,5 @@ Enumerates text input styles.
 | -- | -- |
 | ARKUI_TEXTINPUT_STYLE_DEFAULT = 0 | Default style. The caret width is 1.5 vp, and the selection background height is related to the font size. This style is suitable for most input box scenarios. |
 | ARKUI_TEXTINPUT_STYLE_INLINE = 1 | Inline style. The text selection background height is the same as the input box height. This style is suitable for scenarios where the input box height is fixed and the text selection background height needs to be consistent with the input box height, such as input boxes in compact layouts or inline editing. |
+
+

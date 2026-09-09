@@ -210,7 +210,7 @@ bool OH_CryptoVerify_Final(OH_CryptoVerify *ctx, Crypto_DataBlob *in, Crypto_Dat
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回bool类型的验签结果。返回true表示验签通过，返回false表示验签失败。可能的原因：公钥不正确、签名数据损坏、摘要算法不匹配、<br>     填充模式不匹配，或数据与原始签名数据不匹配。 |
+| bool | 返回bool类型的验签结果。返回true表示验签通过，返回false表示验签失败。可能的原因：公钥不正确、签名数据损坏、摘要算法不匹配、填充模式不匹配，或数据与原始签名数据不匹配。 |
 
 ### OH_CryptoVerify_Recover()
 
@@ -288,7 +288,7 @@ OH_Crypto_ErrCode OH_CryptoVerify_SetParam(OH_CryptoVerify *ctx, CryptoSignature
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | CRYPTO_SUCCESS：操作成功。<br>CRYPTO_INVALID_PARAMS：ctx或value为NULL，value->data为NULL，<br>            value->len与type期望的大小不匹配，或type不是有效的CryptoSignature_ParamType。<br>CRYPTO_NOT_SUPPORTED：不支持的操作或算法。<br>CRYPTO_MEMORY_ERROR：内存操作失败。<br>CRYPTO_OPERTION_ERROR：设置参数失败。 |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | CRYPTO_SUCCESS：操作成功。<br>CRYPTO_INVALID_PARAMS：ctx或value为NULL，value->data为NULL，value->len与type期望的大小不匹配，或type不是有效的CryptoSignature_ParamType。<br>CRYPTO_NOT_SUPPORTED：不支持的操作或算法。<br>CRYPTO_MEMORY_ERROR：内存操作失败。<br>CRYPTO_OPERTION_ERROR：设置参数失败。 |
 
 ### OH_CryptoVerify_GetParam()
 

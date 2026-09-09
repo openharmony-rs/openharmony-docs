@@ -55,7 +55,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| HID_MAX_REPORT_BUFFER_SIZE (16 * 1024 - 1) | 最大报告缓冲区大小。 |
+| HID_MAX_REPORT_BUFFER_SIZE (16 * 1024 - 1) | 最大报告缓冲区大小。 **起始版本：** 18|
 
 ## 枚举类型说明
 
@@ -381,14 +381,5 @@ enum Hid_ReportType
 | HID_FEATURE_REPORT = 2 | 特性报告，用于设备配置和状态查询。 |
 
 
-### HID_MAX_REPORT_BUFFER_SIZE
 
-```c
-HID_MAX_REPORT_BUFFER_SIZE (16 * 1024 - 1)
-```
 
-**描述**
-
-最大报告缓冲区大小。
-
-**起始版本：** 18

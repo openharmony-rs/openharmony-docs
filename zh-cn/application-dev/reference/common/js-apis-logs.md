@@ -78,7 +78,7 @@ console.log('count:'); // 仅打印message
 
 static info(message: string, ...arguments: any[]): void
 
-以格式化输出方式打印日志信息。(console.log()的别名）。
+以格式化输出方式打印日志信息（console.log()的别名）。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 

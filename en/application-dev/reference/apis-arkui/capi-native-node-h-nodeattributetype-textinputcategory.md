@@ -6,7 +6,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=b9a7c339aff114212b4730e0945a2d00427fb022 translatedAt=2026-08-04T11:05:15.710Z pushedAt=2026-08-10T08:24:10.469Z -->
+<!-- md-trans-meta sourceCommit=00d8471aa555cf6cc5dfeff4258ec5a6b23f56d0 translatedAt=2026-08-25T02:27:25.541Z pushedAt=2026-08-27T01:21:39.196Z -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -83,13 +83,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Caret color, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
+| .value[0].u32 | Caret color, in 0xARGB format. For example, **0xFFFF0000** indicates red. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Caret color, in 0xARGB format.|
+| .value[0].u32 | Caret color, in 0xARGB format. |
 
 ## NODE_TEXT_INPUT_CARET_STYLE
 
@@ -198,13 +198,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Color, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
+| .value[0].u32 | Color, in 0xARGB format. For example, **0xFFFF0000** indicates red. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Color, in 0xARGB format.|
+| .value[0].u32 | Color, in 0xARGB format. |
 
 ## NODE_TEXT_INPUT_PLACEHOLDER_FONT
 
@@ -224,7 +224,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[0]?.f32 | Font size, in fp. This parameter is optional. The default value is **16.0**. Value range: [0, +∞). When a negative value is passed, the setting does not take effect. |
 | .value[1]?.i32 | Font style. This parameter is optional. The value is an enumerated value of [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle). Default value: **ARKUI_FONT_STYLE_NORMAL**, which indicates the normal font style. |
 | .value[2]?.i32 | Font weight. This parameter is optional. The value is an enumerated value of [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). Default value: **ARKUI_FONT_WEIGHT_NORMAL**, which indicates the normal font weight. |
-| ?.string | Font family. Multiple font families are separated by commas (,). For example, "font weight; font family 1, font family 2". When not passed, the system default font family is used. |
+| ?.string | Font family. Multiple font families are separated by commas (,). For example, "font family 1,font family 2". When not passed, the system default font family is used. |
 
 **Returns**
 
@@ -233,7 +233,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[0].f32 | Font size, in fp.|
 | .value[1].i32 | Font style. The value is an enumerated value of [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle).|
 | .value[2].i32 | Font weight. The value is an enumerated value of [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight).|
-| .string | Font family. Multiple font families are separated by commas (,).|
+| .string | Font family. Multiple font families are separated by commas (,). |
 
 ## NODE_TEXT_INPUT_ENABLE_KEYBOARD_ON_FOCUS
 
@@ -296,13 +296,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Color, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
+| .value[0].u32 | Color, in 0xARGB format. For example, **0xFFFF0000** indicates red. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Color, in 0xARGB format.|
+| .value[0].u32 | Color, in 0xARGB format. |
 
 ## NODE_TEXT_INPUT_SHOW_PASSWORD_ICON
 
@@ -376,7 +376,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].i32 | Button style. The value is an enumerated value of [ArkUI_CancelButtonStyle](capi-text-input-h.md#arkui_cancelbuttonstyle).|
 | .value[1].f32 | Button icon size, in vp.|
-| .value[2].u32 | Button icon color, in 0xARGB format.|
+| .value[2].u32 | Button icon color, in 0xARGB format. |
 | .string | Button icon address.|
 
 ## NODE_TEXT_INPUT_TEXT_SELECTION
@@ -883,7 +883,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Whether to enable the autofill animation. When enabled, the animation takes effect during auto-fill only for the input box whose [ArkUI_TextInputType](capi-text-input-h.md#arkui_textinputtype) set to **ARKUI_TEXTINPUT_TYPE_PASSWORD**, **ARKUI_TEXTINPUT_TYPE_NUMBER_PASSWORD**, or **ARKUI_TEXTINPUT_TYPE_NEW_PASSWORD**.<br>**1** to enable;**0** otherwise.<br>Default value: **1**. |
+| .value[0].i32 | Whether to enable the autofill animation. When enabled, the animation takes effect during auto-fill only for the input box whose [ArkUI_TextInputType](capi-text-input-h.md#arkui_textinputtype) is set to **ARKUI_TEXTINPUT_TYPE_PASSWORD**, **ARKUI_TEXTINPUT_TYPE_NUMBER_PASSWORD**, or **ARKUI_TEXTINPUT_TYPE_NEW_PASSWORD**.<br>**1** to enable; **0** otherwise.<br>Default value: **1**. |
 
 **Returns**
 
@@ -906,13 +906,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Text height, in fp. The default value is adaptive font size. When this parameter is not passed, the text height is set to 5 fp. |
+| .value[0].i32 | Text line height, in fp. The default value is adaptive to the font size. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Text height, in fp. |
+| .value[0].i32 | Text line height, in fp. |
 
 ## NODE_TEXT_INPUT_ENABLE_SELECTED_DATA_DETECTOR
 
@@ -1186,7 +1186,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[0].f32 | Start angle of the linear gradient. When the direction of the linear gradient is **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM** of [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection), the start angle of the linear gradient is the set value. In other cases, the default value **0** is used. |
 | .value[1].i32 | Direction of the linear gradient. For details about the values and meanings, see [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection).|
 | .value[2].i32 | Whether the gradient colors are repeated. The value **0** indicates that the gradient colors are not repeated, and **1** indicates that the gradient colors are repeated. The default value is **0**. |
-| .object | Color stop. The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md).<br> **colors**: colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.<br> **stops**: stop positions of the color stops. The value range is [0, 1.0]. **0** represents the start of the gradient container, and **1.0** represents the end.<br> **size**: number of effective gradient colors.|
+| .object | Color stop. The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md).<br> **colors**: colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.<br> **stops**: stop positions of the color stops. The value range is [0, 1.0]. **0** represents the start of the gradient container, and **1.0** represents the end.<br> **size**: number of effective gradient colors. |
 
 ## NODE_TEXT_INPUT_RADIAL_GRADIENT
 
@@ -1217,7 +1217,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[1]?.f32 | Y-coordinate of the radial gradient center relative to the upper left corner of the text box, in vp. |
 | .value[2]?.f32 | Radius of the radial gradient, in vp. Default value: **0**. |
 | .value[3]?.i32 | Whether the gradient colors are repeated. The value **0** indicates that the gradient colors are not repeated, and **1** indicates that the gradient colors are repeated. The default value is **0**. |
-| .object | Color stop. The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md).<br> **colors**: colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.<br> **stops**: stop positions of the color stops. The value range is [0, 1.0]. **0** represents the start of the gradient container, and **1.0** represents the end.<br> **size**: number of effective gradient colors.|
+| .object | Color stop. The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md).<br> **colors**: colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red. <br> **stops**: stop positions of the color stops. The value range is [0, 1.0]. **0** represents the start of the gradient container, and **1.0** represents the end. <br> **size**: number of effective gradient colors. |
 
 ## NODE_TEXT_INPUT_TEXT_OVERFLOW
 
@@ -1251,7 +1251,7 @@ NODE_TEXT_INPUT_DECORATION = 7050
 Text decorative line style and color of the single-line text box. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since:** 24
+**Since:** 26.0.0
 
 **Parameters**
 
@@ -1372,13 +1372,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Color, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
+| .value[0].u32 | Color, in 0xARGB format. For example, **0xFFFF0000** indicates red. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Color, in 0xARGB format.|
+| .value[0].u32 | Color, in 0xARGB format. |
 
 ## NODE_TEXT_AREA_PLACEHOLDER_FONT
 
@@ -1398,7 +1398,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[0]?.f32 | Font size, in fp. This parameter is optional. The default value is **16.0**. Unit: fp. Value range: [0, +∞). |
 | .value[1]?.i32 | Font style. This parameter is optional. The value is an enumerated value of [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle). For specific style values, see the enumeration of **ArkUI_FontStyle**. Default value: **ARKUI_FONT_STYLE_NORMAL**, indicating the standard font style. |
 | .value[2]?.i32 | Font weight. This parameter is optional. The value is an enumerated value of [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). For specific weight values, see the enumeration of **ArkUI_FontWeight**. Default value: **ARKUI_FONT_WEIGHT_NORMAL**, indicating the normal font weight. |
-| ?.string | Font family. Multiple font families are separated by commas (,). For example, "font weight; font family 1, font family 2". When not passed, the system default font family is used. |
+| ?.string | Font family. Multiple font families are separated by commas (,). For example, "font family 1,font family 2". When not passed, the system default font family is used. |
 
 **Returns**
 
@@ -1407,7 +1407,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[0].f32 | Font size, in fp.|
 | .value[1].i32 | Font style. The value is an enumerated value of [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle).|
 | .value[2].i32 | Font weight. The value is an enumerated value of [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight).|
-| .string | Font family. Multiple font families are separated by commas (,).|
+| .string | Font family. Multiple font families are separated by commas (,). |
 
 ## NODE_TEXT_AREA_CARET_COLOR
 
@@ -1424,13 +1424,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Caret color, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
+| .value[0].u32 | Caret color, in 0xARGB format. For example, **0xFFFF0000** indicates red. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Caret color, in 0xARGB format.|
+| .value[0].u32 | Caret color, in 0xARGB format. |
 
 ## NODE_TEXT_AREA_EDITING
 
@@ -1591,13 +1591,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Color, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
+| .value[0].u32 | Color, in 0xARGB format. For example, **0xFFFF0000** indicates red. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Color, in 0xARGB format.|
+| .value[0].u32 | Color, in 0xARGB format. |
 
 ## NODE_TEXT_AREA_ENTER_KEY_TYPE
 
@@ -1980,13 +1980,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Minimum number of lines. The value range is [1, +∞). The setting does not take effect when 0 or a negative value is passed. |
+| .value[0].i32 | Minimum number of lines. The value range is [1, +∞). The setting does not take effect when 0 or a negative value is passed. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].f32 | Minimum number of lines. The value range is [1, +∞). |
+| .value[0].i32 | Minimum number of lines. The value range is [1, +∞). |
 
 ## NODE_TEXT_AREA_MAX_LINES_WITH_SCROLL
 
@@ -2003,13 +2003,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Maximum number of lines when scrolling is enabled. Value range: [1, +∞). |
+| .value[0].i32 | Maximum number of lines when scrolling is enabled. Value range: [1, +∞). |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].f32 | Maximum number of lines when scrolling is enabled. Value range: [1, +∞). |
+| .value[0].i32 | Maximum number of lines when scrolling is enabled. Value range: [1, +∞). |
 
 ## NODE_TEXT_AREA_LINE_HEIGHT
 
@@ -2026,13 +2026,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Line height of the text, in fp. The default value is adaptive font size. When not passed, the text height is set to 5 fp. |
+| .value[0].i32 | Text line height, in fp. The default value is adaptive to the font size. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Line height of the text, in fp. |
+| .value[0].i32 | Text line height, in fp. |
 
 ## NODE_TEXT_AREA_BAR_STATE
 
@@ -2095,13 +2095,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Color of the scrollbar, in 0xARGB format. The default value is **0x66182431**, which indicates gray.|
+| .data[0].u32 | Scrollbar color, in 0xARGB format. Default value: **0x66182431**, indicating gray. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Color of the scrollbar, in 0xARGB format. |
+| .data[0].u32 | Scrollbar color, in 0xARGB format. |
 
 ## NODE_TEXT_AREA_CUSTOM_KEYBOARD
 
@@ -2376,7 +2376,7 @@ NODE_TEXT_AREA_DECORATION = 8047
 Text decorative line style and color of the multi-line text box. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since:** 24
+**Since:** 26.0.0
 
 **Parameters**
 
@@ -2408,7 +2408,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[0].f32 | Start angle of the linear gradient, in degree. When the linear gradient direction is **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM** of [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection), the start angle of the linear gradient takes effect. Otherwise, the linear gradient direction is used as the main layout mode. The value range is (-∞,+∞). A positive value indicates a clockwise rotation from the origin (0, 0). When the value exceeds 360, the remainder of 360 is used. The default value is **180**. |
 | .value[1].i32 | Direction of the linear gradient. The value is an enumerated value of [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection). If the linear gradient direction is set to a value other than **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM** of [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection), the start angle of the linear gradient does not take effect. Default value: **ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM** of [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection)|
 | .value[2].i32 | Whether the gradient colors are repeated. The value **0** indicates that the gradient colors are not repeated, and **1** indicates that the gradient colors are repeated. The default value is **0**. |
-| .object | Color stop. The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md).<br> **colors**: colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.<br> **stops**: stop positions of the color stops. The value range is [0, 1.0]. **0** represents the start of the gradient container, and **1.0** represents the end. To create a gradient with multiple color stops, you are advised to set the array elements in ascending order. If a later element is smaller than a previous one, it will be treated as equal to the previous value.<br> **size**: number of colors. If the value is smaller than the length of the **colors** array, only the first **size** colors take effect. Values greater than the **colors** array length, values less than or equal to 0, or invalid values are not recommended.|
+| .object | Color stop. The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md).<br> **colors**: colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red. <br> **stops**: stop positions of the color stops. The value range is [0, 1.0]. **0** represents the start of the gradient container, and **1.0** represents the end. To create a gradient with multiple color stops, you are advised to set the array elements in ascending order. If a later element is smaller than a previous one, it will be treated as equal to the previous value. <br> **size**: number of colors. If the value is smaller than the length of the **colors** array, only the first **size** colors take effect. Values greater than the **colors** array length, values less than or equal to 0, or invalid values are not recommended. |
 
 **Returns**
 
@@ -2417,7 +2417,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[0].f32 | Start angle of the linear gradient, in degree. When the direction of the linear gradient is ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM of [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection), the start angle is the set value. In other cases, the default value **0** is used. |
 | .value[1].i32 | Direction of the linear gradient. For details about the values and meanings, see [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection).|
 | .value[2].i32 | Whether the gradient colors are repeated. The value **0** indicates that the gradient colors are not repeated, and **1** indicates that the gradient colors are repeated. The default value is **0**. |
-| .object | Color stop. The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md).<br> **colors**: colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.<br> **stops**: stop positions of the color stops. The value range is [0, 1.0]. **0** represents the start of the gradient container, and **1.0** represents the end.<br> **size**: number of effective gradient colors.|
+| .object | Color stop. The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md).<br> **colors**: colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.<br> **stops**: stop positions of the color stops. The value range is [0, 1.0]. **0** represents the start of the gradient container, and **1.0** represents the end.<br> **size**: number of effective gradient colors. |
 
 ## NODE_TEXT_AREA_RADIAL_GRADIENT
 
@@ -2438,7 +2438,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[1]?.f32 | Y-coordinate of the radial gradient center relative to the upper left corner of the multi-line text box, in vp. The default value is half the height of the multi-line text input box. |
 | .value[2]?.f32 | Radius of the radial gradient. The value range is [0, +∞), and the default value is **0**. If a negative value is passed, the setting does not take effect. |
 | .value[3]?.i32 | Whether the gradient colors are repeated. The value **0** indicates that the gradient colors are not repeated, and **1** indicates that the gradient colors are repeated. The default value is **0**. |
-| .object | Color stop. The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md).<br> **colors**: colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.<br> **stops**: stop positions of the color stops. The value range is [0, 1.0]. **0** represents the start of the gradient container, and **1.0** represents the end. To create a gradient with multiple color stops, you are advised to set the array elements in ascending order. If a later element is smaller than a previous one, it will be treated as equal to the previous value.<br> **size**: number of colors. If the value is smaller than the length of the **colors** array, only the first **size** colors take effect. Values greater than the **colors** array length, values less than or equal to 0, or invalid values are not recommended.|
+| .object | Color stop. The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md).<br> **colors**: colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.<br> **stops**: stop positions of the color stops. The value range is [0, 1.0]. **0** represents the start of the gradient container, and **1.0** represents the end. To create a gradient with multiple color stops, you are advised to set the array elements in ascending order. If a later element is smaller than a previous one, it will be treated as equal to the previous value.<br> **size**: number of colors. If the value is smaller than the length of the **colors** array, only the first **size** colors take effect. Values greater than the **colors** array length, values less than or equal to 0, or invalid values are not recommended. |
 
 **Returns**
 
@@ -2448,7 +2448,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[1]?.f32 | Y-coordinate of the radial gradient center relative to the upper left corner of the multi-line text box, in vp. |
 | .value[2]?.f32 | Radius of the radial gradient, in vp. Default value: **0**. |
 | .value[3]?.i32 | Whether the gradient colors are repeated. The value **0** indicates that the gradient color is not repeated, and **1** indicates that the gradient color is repeated. The default value is **0**. |
-| .object | Color stop. The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md).<br> **colors**: colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.<br> **stops**: stop positions of the color stops. The value range is [0, 1.0]. **0** represents the start of the gradient container, and **1.0** represents the end.<br> **size**: number of effective gradient colors.|
+| .object | Color stop. The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md).<br> **colors**: colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.<br> **stops**: stop positions of the color stops. The value range is [0, 1.0]. **0** represents the start of the gradient container, and **1.0** represents the end.<br> **size**: number of effective gradient colors. |
 
 ## NODE_TEXT_AREA_PUNCTUATION_OVERFLOW
 

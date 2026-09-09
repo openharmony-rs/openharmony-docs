@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供了基于低功耗蓝牙（Bluetooth Low Energy，[BLE](../../connectivity/bluetooth/terminology.md#ble)）技术的蓝牙能力，首批接口包括基于通用属性协议（Generic Attribute Profile，[GATT](../../connectivity/bluetooth/terminology.md#gatt)）的写特征值方法。
+本模块提供了基于低功耗蓝牙（Bluetooth Low Energy，[BLE](../../connectivity/bluetooth/terminology.md#ble)）技术的蓝牙能力，首批接口包括基于通用属性协议（Generic Attribute Profile，[GATT](../../connectivity/bluetooth/terminology.md#gatt)）的写特征值方法。适用于需要与低功耗蓝牙设备进行GATT数据写入交互的场景，帮助应用在完成特征值写入后获取server端响应信息，提升数据传输的可靠性与可追溯性。
 
 > **说明：**
 >
@@ -24,7 +24,7 @@ import { ble } from '@kit.ConnectivityKit';
 
 ## GattClientDevice
 
-GATT客户端类，提供了和服务端进行连接和数据传输等操作方法。
+GATT client端类，提供了和server端进行连接和数据传输等操作方法。
 
 - 使用该类的方法前，需通过[createGattClientDevice](js-apis-bluetooth-ble.md#blecreategattclientdevice)方法构造该类的实例。
 - 通过创建不同的该类实例，可以管理多路GATT连接。
@@ -36,7 +36,7 @@ writeCharacteristicValueWithContext(characteristic: BLECharacteristic, writeType
 client端向指定的server端特征值写入数据。使用Promise异步回调。<br>
 - 与[writeCharacteristicValue](js-apis-bluetooth-ble.md#writecharacteristicvalue)接口不同，此接口新增了返回server端响应信息的功能。在完成特征值写入操作后，调用方可以获取本端接收到server端回复消息的时间戳等信息。
 - 为获取server端的响应信息，此接口仅支持writeType为[WRITE](js-apis-bluetooth-ble.md#gattwritetype)的写入模式。
-- 需要先调用[getServices](js-apis-bluetooth-ble.md#getservices)，获取到server端所有支持的能力，且包含指定的入参特征值UUID；否则会写入失败。<br>
+- 需要先调用[getServices](js-apis-bluetooth-ble.md#getservices)，获取到server端所有支持的能力，且这些能力中需包含指定的入参特征值UUID；否则会写入失败。<br>
 - 异步回调结果返回后，才能调用下一次读取或者写入操作，如[readCharacteristicValue](js-apis-bluetooth-ble.md#readcharacteristicvalue)、[readDescriptorValue](js-apis-bluetooth-ble.md#readdescriptorvalue)、[writeCharacteristicValue](js-apis-bluetooth-ble.md#writecharacteristicvalue)、[writeDescriptorValue](js-apis-bluetooth-ble.md#writedescriptorvalue)、[setCharacteristicChangeNotification](js-apis-bluetooth-ble.md#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](js-apis-bluetooth-ble.md#setcharacteristicchangeindication)。<br>
 - 应用单次可写入的特征值数据长度限制为（MTU-3）字节。调用方可根据实际需要通过[setBLEMtuSize](js-apis-bluetooth-ble.md#setblemtusize)接口指定MTU大小，进而修改单次可写入的特征值数据长度。
 
@@ -50,14 +50,14 @@ client端向指定的server端特征值写入数据。使用Promise异步回调�
 
 | 参数名            | 类型                                      | 必填   | 说明                  |
 | -------------- | --------------------------------------- | ---- | ------------------- |
-| characteristic | [BLECharacteristic](js-apis-bluetooth-ble.md#blecharacteristic) | 是    | 需要写入的特征值，包含写入的数据内容。 |
-| writeType | [GattWriteType](js-apis-bluetooth-ble.md#gattwritetype) | 是    | 写入特征值的方式。 |
+| characteristic | [BLECharacteristic](js-apis-bluetooth-ble.md#blecharacteristic) | 是    | 需要写入的特征值，包含写入的数据内容。单次可写入的数据长度限制为（MTU-3）字节，可通过setBLEMtuSize接口调整。 |
+| writeType | [GattWriteType](js-apis-bluetooth-ble.md#gattwritetype) | 是    | 写入特征值的方式，当前仅支持WRITE类型。 |
 
 **返回值：**
 
 | 类型                                       | 说明                         |
 | ---------------------------------------- | -------------------------- |
-| Promise&lt;GattRspContext&gt; | Promise对象，返回[GattRspContext](#gattrspcontext)对象。 |
+| Promise&lt;[GattRspContext](#gattrspcontext)&gt; | Promise对象，返回GattRspContext对象。 |
 
 **错误码**：
 
@@ -125,4 +125,4 @@ client端调用[writeCharacteristicValueWithContext](#writecharacteristicvaluewi
 
 | 名称                                     | 类型    | 只读 | 可选  | 说明                                                         |
 | ------------------------------------------ | -------- | ---- | ---- | ------------------------------------------------------------ |
-| irk<sup>23+</sup> | Uint8Array | 否 | 是 | 通过蓝牙设备地址解析密钥（Identity Resolving Key, IRK）过滤携带可解析私有地址([BluetoothRawAddressType](./js-apis-bluetooth-common.md#bluetoothrawaddresstype23))的BLE广播报文。<br>蓝牙设备的可解析私有地址会随时间变化，若已知该设备的IRK和Public类型地址或者Static Random类型的地址，即可过滤同一个蓝牙设备在不同时间发出的BLE广播报文。<br>使用本参数时，必须同时通过[ScanFilter](js-apis-bluetooth-ble.md#scanfilter)中的address参数指定地址和地址类型等信息。其中，地址必须为有效的Public类型地址或Static Random类型地址，[addressType](js-apis-bluetooth-common.md#bluetoothaddresstype)必须设置为REAL，[rawAddressType](js-apis-bluetooth-common.md#bluetoothrawaddresstype23)必须根据address的实际情况进行设置。<br>**系统接口**：此接口为系统接口。|
+| irk<sup>23+</sup> | Uint8Array | 否 | 是 | 通过蓝牙设备地址解析密钥（Identity Resolving Key, IRK）过滤携带可解析私有地址([BluetoothRawAddressType](./js-apis-bluetooth-common.md#bluetoothrawaddresstype23))的BLE广播报文。<br>蓝牙设备的可解析私有地址会随时间变化，若已知该设备的IRK和Public类型地址或者Static Random类型的地址，即可过滤同一个蓝牙设备在不同时间发出的BLE广播报文。<br>使用本参数时，必须同时通过[ScanFilter](js-apis-bluetooth-ble.md#scanfilter)中的address参数指定地址和地址类型等信息。其中，地址必须为有效的Public类型地址或Static Random类型地址，[addressType](js-apis-bluetooth-common.md#bluetoothaddresstype)必须设置为REAL，[rawAddressType](js-apis-bluetooth-common.md#bluetoothrawaddresstype23)必须根据address的实际情况进行设置，否则将无法正确过滤携带可解析私有地址的BLE广播报文。<br>**系统接口**：此接口为系统接口。|

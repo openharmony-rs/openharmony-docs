@@ -6,11 +6,11 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=509c629682129872c95431baa7fdea382080692f translatedAt=2026-08-10T02:21:11.015Z pushedAt=2026-08-10T03:42:31.986Z -->
+<!-- md-trans-meta sourceCommit=53787af5f94c98e730d62fcc5514158329723f73 translatedAt=2026-08-28T01:33:06.412Z pushedAt=2026-08-28T06:17:24.129Z -->
 
-The **SwipeRefresherV2** component is used for content loading, which refers to obtaining and loading content. It is commonly used to display pull-to-refresh content.
+The **SwipeRefresherV2** component is used to implement the pull-to-refresh feature. It supports custom loading prompt text and loading state control, and is suitable for scenarios where pull-to-refresh interaction needs to be implemented on a page.
 
-This component is implemented based on [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2). Compared with [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1), state management V2 delivers enhanced capabilities for deep observation and management of data objects, and is no longer limited to the component level. With state management V2, you can more flexibly control the data and state of content loading through this component, achieving more efficient UI refresh.
+This component is implemented based on [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2). It provides developers with a standardized pull-to-refresh UI and simplifies the implementation of refresh logic. Compared with [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1), state management V2 delivers enhanced capabilities for deep observation and management of data objects, and is no longer limited to the component level. Developers can more flexibly control the data and state of content loading, achieving more efficient UI refresh.
 
 > **NOTE**
 >
@@ -32,9 +32,9 @@ Not supported
 
 ## SwipeRefresherV2
 
-SwipeRefresherV2({content?: string, isLoading: boolean})
+SwipeRefresherV2({content?: ResourceStr, isLoading: boolean})
 
-Implements the pull-to-refresh feature. When the user pulls down the page, a content loading operation is triggered, that is, new content is obtained from the data source and dynamically displayed on the UI.
+Implements the pull-to-refresh feature. It is commonly used in scenarios where the latest content needs to be obtained by pulling down, such as refreshing the message list in a social app and loading information in a news app. When the user pulls down the page, the component displays the loading state. Developers need to implement the data acquisition logic themselves and control the switching of the loading state through the **isLoading** parameter.
 
 **Since:** 26.0.0
 
@@ -50,7 +50,7 @@ Implements the pull-to-refresh feature. When the user pulls down the page, a con
 
 | Name | Type | Mandatory | Decorator | Description |
 | -------- | -------- | -------- | -------- |----------|
-| content | string | No | @Param | Text displayed during content loading.<br/>Default value: empty string.<br/>**Note:** If the text exceeds the column width, it is truncated. |
+| content | [ResourceStr](ts-types.md#resourcestr) | No | @Param | Text displayed when content is loading.<br/>Default value: an empty string.<br/>**Note:** If the text is wider than the column, it is truncated. |
 | isLoading | boolean | Yes | @Require<br/>@Param | Whether the content is currently being loaded.<br> **true**: The content is being loaded.<br> **false**: The content is not being loaded. |
 
 ## Events
@@ -59,7 +59,7 @@ The [universal events](ts-component-general-events.md) are not supported.
 
 ## Examples
 
-The **SwipeRefresherV2** component is supported since API version 26.0.0. The following example demonstrates different loading effects when the **content** attribute is set to an empty string or a non-empty string, and **isLoading** is set to **true** or **false**.
+The **SwipeRefresherV2** component is supported since API version 26.0.0. The following example demonstrates different loading effects when the **content** parameter is set to an empty string or a non-empty string, and **isLoading** is set to **true** or **false**.
 
 ```ts
 import { SwipeRefresherV2 } from '@kit.ArkUI';

@@ -6,7 +6,7 @@
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
-本模块提供无障碍悬浮事件能力。在开启无障碍模式后，Touch事件会转换为无障碍悬浮事件，开发者可通过监听该事件响应无障碍模式下的单指触摸交互，适用于需要为障碍用户提升应用可访问性的场景。该模块提供onAccessibilityHover和onAccessibilityHoverTransparent接口，用于在无障碍模式下监听和处理单指触摸产生的悬浮事件。适用于需要为视障用户提供触摸交互无障碍支持的组件开发场景。开发者可借助该模块捕获无法被无障碍聚焦的组件的Touch事件，提升应用的无障碍访问能力。
+本模块提供无障碍悬浮事件能力，包含onAccessibilityHover和onAccessibilityHoverTransparent接口，用于在开启无障碍模式后监听和处理由Touch事件转换成的单指触摸悬浮事件，适用于需要为视障用户提供触摸交互无障碍支持的组件开发场景。开发者可借助onAccessibilityHoverTransparent捕获无法被无障碍聚焦的组件的Touch事件，提升应用的无障碍访问能力。
 
 >  **说明：**
 >
@@ -20,7 +20,7 @@
 
 onAccessibilityHover(callback: AccessibilityCallback): T
 
-开启无障碍模式后，单指触摸绑定该回调的组件时触发该回调。
+开启无障碍模式后，单指触摸绑定了该回调且可被无障碍聚焦的组件时，触发该回调。
 
 > **说明：**
 >
@@ -69,7 +69,7 @@ type AccessibilityCallback = (isHover: boolean, event: AccessibilityHoverEvent) 
 
 | 名称              | 类型       | 只读 | 可选 | 说明      |
 | --------------- | ---------- | ------- | ------- | ------- |
-| type             | [AccessibilityHoverType](ts-appendix-enums.md#accessibilityhovertype12) | 否 | 否 | 无障碍悬浮动作类型，包括HOVER_ENTER（手指进入组件）、HOVER_MOVE（手指在组件内移动）、HOVER_EXIT（手指离开组件）和HOVER_CANCEL（悬浮事件被取消）。                |
+| type             | [AccessibilityHoverType](ts-appendix-enums.md#accessibilityhovertype12) | 否 | 否 | 无障碍悬浮动作类型，包括HOVER_ENTER（手指按下时触发）、HOVER_MOVE（触摸移动时触发）、HOVER_EXIT（手指抬起时触发）和HOVER_CANCEL（打断取消当前触发的事件）。                |
 | x                      | number                         | 否 | 否 | 手指位置相对于当前组件左上角的x轴坐标。<br>单位：vp<br>取值范围：[0, +∞)<br> |
 | y                      | number                         | 否 | 否 | 手指位置相对于当前组件左上角的y轴坐标。<br>单位：vp<br>取值范围：[0, +∞)<br> |
 | windowX                | number                         | 否 | 否 | 手指位置相对于应用窗口左上角的x轴坐标。<br>单位：vp<br>取值范围：[0, +∞)<br> |
@@ -98,7 +98,7 @@ onAccessibilityHoverTransparent(callback: AccessibilityTransparentCallback): T
 **参数：**
 | 参数名        | 类型                    | 必填  | 说明                          |
 | ---------- | -------------------------- | ------- | ----------------------------- |
-| callback      | [AccessibilityTransparentCallback](#accessibilitytransparentcallback20) | 是   |  提供开启朗读类辅助应用后未能响应的用户输入的触摸事件。当手指触摸在组件区域，且该组件及子组件全部没有被无障碍悬浮识别为可聚焦时，触发该回调。 |
+| callback      | [AccessibilityTransparentCallback](#accessibilitytransparentcallback20) | 是   |  提供开启朗读类辅助应用后未能被无障碍悬浮响应的触摸事件。当手指触摸在组件区域，且该组件及子组件全部没有被无障碍悬浮识别为可聚焦时，触发该回调。 |
 
 **返回值：**
 
@@ -160,7 +160,7 @@ struct OnAccessibilityHoverEventExample {
 
 该示例代码在无障碍模式下通过onAccessibilityHoverTransparent接口捕获无法无障碍聚焦的组件的触摸事件，最后再将事件信息显示在组件下方的文本中。
 
-从API version 20开始，新增了入参类型为AccessibilityTransparentCallback的[onAccessibilityHoverTransparent](#onaccessibilityhovertransparent20)接口。
+从API version 20开始，新增了[onAccessibilityHoverTransparent](#onaccessibilityhovertransparent20)接口。
 
 ```ts
 @Entry

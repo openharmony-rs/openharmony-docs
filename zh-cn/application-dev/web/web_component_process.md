@@ -1,8 +1,8 @@
 # ArkWeb进程
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @weixin_41848015-->
-<!--Designer: @libing23232323-->
+<!--Owner: @xingyihang-->
+<!--Designer: @spruceovo-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -36,7 +36,7 @@ ArkWeb是多进程模型，分为应用进程、Web渲染进程、Web GPU进程�
 
   - 负责运行Web渲染进程引擎（HTML解析、排版、绘制、渲染）。
 
-  - 负责运行ArkWeb执行引擎（JavaScript、Web Assembly）。
+  - 负责运行ArkWeb执行引擎（JavaScript、WebAssembly）。
 
   - 提供接口供应用选择多Web实例间是否共享渲染进程，满足不同场景对安全性、稳定性、内存占用的诉求。
 

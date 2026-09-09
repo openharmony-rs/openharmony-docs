@@ -1,4 +1,4 @@
-# 数据防泄漏服务开发指导(ArkTS)
+# 数据防泄露（DLP）简介
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
@@ -6,531 +6,97 @@
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
-<!--RP1-->
-DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称为DLP的文件格式。后缀格式为“原始文件名（包含原始文件后缀）.dlp”，例如“test.docx.dlp”，文件由授权凭证和原始文件密文组成。
+## 企业接入DLP文件适配
 
-通过端云协同认证（需要联网）来获取文件的访问授权，授权类型包含只读、编辑、文件拥有者三种。
+### 介绍
 
-- 只读：能读取文件内容但不能修改。
-- 编辑：能够读写文件内容，但不能修改文件权限配置。
-- 文件拥有者：可读写文件、修改权限配置、恢复原始文件等。
+企业日常办公中大量敏感文档（合同、财务报表、设计稿等）需要在员工设备间流转和使用，面临被截屏泄露、未经授权复制或转发到非受控环境等数据泄露风险。
 
-应用需要访问DLP文件时，系统会自动安装应用的DLP沙箱分身应用，相当于完全独立的应用，数据和配置会继承原应用，但相互之间并不共享。分身应用在运行时会处于DLP沙箱环境中，访问外部的权限会被限制，以防止数据的泄漏。每当打开一个新的DLP文件会生成一个应用沙箱分身，沙箱应用之间也是相互隔离的，当应用关闭后应用分身会自动卸载，沙箱期间产生的临时数据也会丢弃。
+传统的企业数据保护方案需要开发者自行定义加密文件格式、实现权限管控逻辑和构建运行时隔离环境，开发成本高且难以与系统底层安全机制有效协同。
 
-正常情况下，应用不会感知到沙箱的存在，访问的也是解密后的明文，和访问普通文件没有区别，但由于DLP沙箱会限制其访问外部的权限（例如网络、剪贴板、截屏、录屏、蓝牙等）。为了更好的用户体验，需要应用进行适配，例如文件只读的情况下，不应显示“保存”按钮，不应主动联网等。
+系统级的数据防泄露（Data Loss Prevention，DLP）是一种面向企业文档保护场景，提供文件加密、访问授权、权限管控和运行时防护的原生能力。基于系统统一的文件格式、授权机制和受控运行环境，企业安全应用开发者可在此基础上构建安全、可控的企业数据保护方案。
 
-## 沙箱限制
+DLP的核心能力包括文件加密保护和文件权限管控。系统定义了统一的DLP文件格式，文件后缀为“原始文件名（包含原始文件后缀）.dlp”，例如 “test.docx.dlp”。DLP文件由文件通用信息、授权策略和原始文件密文组成，其中授权策略用于描述文件访问控制信息，原始文件密文则用于保护明文内容的机密性。基于统一定义的DLP文件格式，系统能够对DLP文件进行统一识别和处理，并在文件访问过程中结合授权信息完成鉴权和解密。企业安全应用无需自行定义受保护文件格式和相关处理逻辑，即可基于系统能力接入文件加密、权限管控等功能。
 
-当应用进入DLP沙箱状态时，可以申请的权限将受到限制，根据DLP文件授权类型不同，限制也不相同，如下表：
+在企业场景下，DLP文件通常由企业安全应用基于相关接口完成加密生成。企业可在加密时为文件配置访问权限，当前支持设置只读和编辑两种类型，不同权限对应不同的文件访问和使用范围。DLP文件打开后，系统还会对DLP沙箱应用的运行环境施加限制，例如对蓝牙、网络、NFC等能力进行限制，以降低文件使用过程中的数据泄露风险。
 
-| 权限名 | 说明 | 授权类型：只读 | 授权类型：编辑/文件拥有者 |
-| -------- | -------- | -------- | -------- |
-| ohos.permission.USE_BLUETOOTH | 允许应用使用蓝牙。 | 禁止 | 禁止 |
-| ohos.permission.INTERNET |允许应用访问网络。 |  禁止 | 禁止 |
-| ohos.permission.DISTRIBUTED_DATASYNC | 允许应用与远程设备交换用户数据（如图片、音乐、视频、应用数据等）。 | 禁止 | 禁止 |
-| ohos.permission.WRITE_MEDIA | 应用读写用户媒体文件，如视频、音频、图片等，需要申请此权限。 | 禁止 | 允许 |
-| ohos.permission.NFC_TAG | 允许应用使用NFC。 | 禁止 | 允许 |
+面向企业安全应用，DLP提供接入能力，支持对原始文件进行加密生成DLP文件、恢复DLP文件中的原始文件、获取文件策略，以及向DLP服务注册企业安全应用插件。在企业场景下，企业安全应用客户端可通过该插件与DLP服务进行交互，并进一步与企业服务器通信，以获取加密公钥、重封装的策略密文等信息，用于支撑DLP文件生成、解密等流程。企业安全应用可基于这些能力，构建面向企业场景的数据保护、权限控制和策略管理能力。
 
-## 接口说明
+企业接入DLP文件的层次结构如下图所示。企业安全应用基于系统DLP能力与云服务，实现文件加密和权限管控等数据保护能力。
 
-| 接口名 | 描述 |
-| -------- | -------- |
-| isDLPFile(fd: number): Promise&lt;boolean&gt; <br> isDLPFile(fd: number, callback: AsyncCallback&lt;boolean&gt;): void| 判断是否是dlp文件。 |
-| getDLPPermissionInfo(): Promise&lt;DLPPermissionInfo&gt; <br>getDLPPermissionInfo(callback: AsyncCallback&lt;DLPPermissionInfo&gt;): void  | 获取当前沙箱应用的权限类型。 |
-| getOriginalFileName(fileName: string): string | 获取dlp文件原始文件名。 |
-| getDLPSuffix(): string | 获取dlp文件dlp后缀名。 |
-| on(type: 'openDLPFile', listener: Callback&lt;AccessedDLPFileInfo&gt;): void | 注册dlp文件打开事件监听，用于原始应用获取dlp文件打开事件。 |
-| off(type: 'openDLPFile', listener?: Callback&lt;AccessedDLPFileInfo&gt;): void | 取消dlp文件打开事件监听。 |
-| isInSandbox(): Promise&lt;boolean&gt; <br>isInSandbox(callback: AsyncCallback&lt;boolean&gt;): void | 判断当前是否是dlp沙箱应用。 |
-| getDLPSupportedFileTypes(): Promise&lt;Array&lt;string&gt;&gt;<br>getDLPSupportedFileTypes(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void | 获取当前系统支持添加权限保护的文件格式类型。 |
-| setRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt; <br> setRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void | 设置dlp分身应用保留状态。 |
-| cancelRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;<br> cancelRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void | 取消dlp分身应用保留状态。 |
-| getRetentionSandboxList(bundleName?: string): Promise&lt;Array&lt;RetentionSandboxInfo&gt;&gt; <br> getRetentionSandboxList(bundleName: string, callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo&gt;&gt;): void  <br> getRetentionSandboxList(callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo&gt;&gt;): void| 获取当前保留沙箱列表。 |
-| getDLPFileAccessRecords(): Promise&lt;Array&lt;AccessedDLPFileInfo&gt;&gt; <br> getDLPFileAccessRecords(callback: AsyncCallback&lt;Array&lt;AccessedDLPFileInfo&gt;&gt;): void | 获取dlp文件访问记录。 |
-|setSandboxAppConfig(configInfo: string): Promise&lt;void&gt;|设置沙箱应用配置信息。|
-|getSandboxAppConfig(): Promise&lt;string&gt;|查询沙箱应用配置信息。|
-|cleanSandboxAppConfig(): Promise&lt;void&gt;|清理沙箱应用配置信息。|
-| startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise&lt;DLPManagerResult&gt; <br> | 在当前UIAbility界面以无边框形式打开DLP权限管理应用（只支持Stage模式）。 |
-|setEnterprisePolicy(policy: EnterprisePolicy): void|设置企业应用防护策略。|
-| scanFile(filePath: string, identifyPolicies: Array&lt;Policy&gt;):  Promise&lt;Array&lt;MatchResult&gt;&gt;| 识别指定文件中的敏感内容。 <br>从API 21开始支持该接口。 |
+![](figures/enterprise-integration-into-dlp-solution.png)
 
-## 开发步骤
+### 基本概念
 
-本文档提供接口示例代码，如需要了解工程项目创建方式，可参考[工程创建](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-project)。
-1. 引入[dlpPermission](../../reference/apis-data-protection-kit/js-apis-dlppermission.md)模块。
+在接入企业场景下的DLP能力前，开发者需要先了解DLP文件、权限类型、DLP沙箱和企业安全应用通信插件等基本概念。
 
-    <!-- @[dlp_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
-    
-    ``` TypeScript
-    import { dlpPermission } from '@kit.DataProtectionKit';
-    import { identifySensitiveContent } from '@kit.DataProtectionKit';
-    ```
+- **DLP文件**
 
-2. 打开加密文件，系统会自动安装应用的DLP沙箱分身应用。以下代码应在应用页Ability中使用。  
+    DLP文件是采用系统定义的受保护文件格式生成的文件，文件后缀为“原始文件名（包含原始文件后缀）.dlp”，例如test.docx.dlp。DLP文件由文件通用信息、授权策略和原始文件密文组成。其中，授权策略用于描述文件访问控制信息，主要包含可访问文件的用户范围及对应的权限类型，并通过保护机制确保相关信息的机密性和完整性。
 
-   使用该接口的前置条件：连接DLP凭据服务器。  
+- **权限类型**
 
-    <!-- @[dlp_prepareForOpenDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
-    
-    ``` TypeScript
-    openDlpFile(dlpUri: string, fileName: string, fd: number) {
-      let want:Want = {
-        'action': 'ohos.want.action.viewData',
-        'uri': dlpUri,
-        'parameters' : {
-          'fileName': {
-            'name': fileName
-          },
-          'keyFd': {
-            'type': 'FD',
-            'value': fd
-          }
-        }
-      }
-    
-      let context = new UIContext().getHostContext() as common.UIAbilityContext; // 获取当前UIAbilityContext
-    
-      try {
-        console.info('openDLPFile:' + JSON.stringify(want));
-        console.info('openDLPFile: delegator:' + JSON.stringify(context));
-        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'openDLPFile:' + JSON.stringify(want));
-        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'openDLPFile: delegator:' + JSON.stringify(context));
-        context.startAbility(want);
-      } catch (err) {
-        console.error('openDLPFile startAbility failed' + (err as BusinessError).code);
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'openDLPFile startAbility failed' + (err as BusinessError).code);
-        this.result = 'openDLPFile startAbility failed' + (err as BusinessError).code;
-        return;
-      }
-    }
-    
-    prepareForOpenDlpFile() {
-      let file = this.openFile(this.uri);
-      if (!file) {
-        return;
-      }
-      this.openDlpFile(this.uri, this.fileName, file.fd);
-        
-    }
-    ```
+    企业安全应用可在生成DLP文件时，为用户配置授权类型。当前支持只读和编辑两种类型，不同权限类型对应不同的用户操作管控范围。
 
-    以上代码需要在module.json5文件中增加ohos.want.action.viewData：
-    <!-- @[dlp_configurationModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/module.json5) -->
-    
-    ``` JSON5
-    "skills": [
-      {
-        "entities": [
-          "entity.system.home"
-        ],
-        "actions": [
-          "action.system.home",
-          "ohos.want.action.viewData"
-        ]
-      }
-    ]
-    ```
-    
+    | 授权类型 | 修改 | 复制 | 打印 | 截屏/录屏 | 拖拽 |
+    | -------- | -------- | -------- | -------- | -------- | -------- |
+    | 只读 | 禁止 | 禁止 | 禁止 | 禁止 | 禁止 |
+    | 编辑 | 允许 | 允许 | 允许 | 允许 | 允许 |
 
-3. 2B生成dlp加密文件。  
+    当前版本中，不同权限类型对应的用户操作管控范围如上表所示，后续版本可能根据产品能力演进进行调整。
 
-   使用该接口的前置条件：连接DLP凭据服务器。
+- **DLP沙箱**
 
-   [该功能云端对接模块当前需要开发者自行搭建](../DataProtectionKit/dlp-overview.md)，并且该功能需要配置域账号环境。
+    打开DLP文件时，系统会为目标应用安装并启动对应的沙箱应用。沙箱应用本质上是面向DLP文件访问场景创建的受控应用实例。系统会对该应用实例对应的运行身份施加能力限制，例如限制蓝牙、网络和NFC等能力，以降低文件使用过程中的数据泄露风险。
 
-    3.1 当前支持生成DLP文件的原文件类型: ".doc", ".docm", ".docx", ".dot", ".dotm", ".dotx", ".odp", ".odt", ".pdf", ".pot", ".potm", ".potx", ".ppa", ".ppam", ".pps", ".ppsm", ".ppsx", ".ppt", ".pptm", ".pptx", ".rtf", ".txt", ".wps", ".xla", ".xlam", ".xls", ".xlsb", ".xlsm", ".xlsx", ".xlt", ".xltm", ".xltx", ".xlw", ".xml", ".xps"。
-
-    3.2 首先要有一个DLP权限应用有读写权限的(比如文件管理的文档目录下)并且属于以上文件类型之一的原文件。
-
-    3.3 以无边框形式打开DLP权限管理应用。此方法只能在UIAbility上下文中调用，只支持Stage模式。调用以下代码，拉起DLP管理应用的设置权限页面，输入相关的授权账号信息，点击保存，在拉起的filepicker中选择DLP文件的保存路径，保存DLP文件。
-    <!-- @[dlp_generateDlpFiles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
-    
-    ``` TypeScript
-    generateDlpFiles() {
-      try {
-        let fileUri: string = this.uri;
-        let fileName: string = this.fileName;
-        let context = new UIContext().getHostContext() as common.UIAbilityContext; // 获取当前UIAbilityContext
-        let want: Want = {
-          'uri': fileUri,
-          'parameters': {
-            'displayName': fileName
-          }
-        };// 请求参数
-        dlpPermission.startDLPManagerForResult(context, want).then((res: dlpPermission.DLPManagerResult) => {
-          this.result = 'startDLPManagerForResult result.resultCode:' + res.resultCode;
-          console.info('startDLPManagerForResult res.resultCode:' + res.resultCode);
-          console.info('startDLPManagerForResult res.want:' + JSON.stringify(res.want));
-          hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'startDLPManagerForResult res.resultCode:' + res.resultCode);
-          hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'startDLPManagerForResult res.want:' + JSON.stringify(res.want));
-        });
-      } catch (err) {
-        this.result = 'startDLPManagerForResult error:' + (err as BusinessError).code + (err as BusinessError).message;
-        console.error('startDLPManagerForResult error:' + (err as BusinessError).code + (err as BusinessError).message);
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'startDLPManagerForResult error:' + (err as BusinessError).code + (err as BusinessError).message);
-      }
-    }
-    ```
-
-4. 查询当前应用是否在沙箱中。 
-
-   使用该接口的前置条件：由demo应用打开DLP文件。
-
-    <!-- @[dlp_isInSandBox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
-    
-    ``` TypeScript
-    isInSandbox() {
-      dlpPermission.isInSandbox().then((data) => {
-        this.result = 'isInSandbox result: ' + JSON.stringify(data);
-        console.info('isInSandbox result: ' + JSON.stringify(data));
-        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'isInSandbox result: ' + JSON.stringify(data));
-      }).catch((err:BusinessError) => {
-        this.result = 'isInSandbox error: ' + JSON.stringify(err);
-        console.error('isInSandbox error: ' + JSON.stringify(err));
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'isInSandbox error: ' + JSON.stringify(err));
-      });
-    }
-    ```
-
-
-5. 查询当前编辑的文件权限，根据文件授权的不同，DLP沙箱被限制的权限有所不同，参考[沙箱限制](#沙箱限制)。  
-   
-   使用该接口的前置条件：由demo应用打开DLP文件。
-
-    <!-- @[dlp_getDLPPermissionInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
-    
-    ``` TypeScript
-    getDLPPermissionInfo() {
-      dlpPermission.getDLPPermissionInfo().then((data) => {
-        this.result = 'getDLPPermissionInfo result: ' + JSON.stringify(data);
-        console.info('getDLPPermissionInfo, result: ' + JSON.stringify(data));
-        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPPermissionInfo result: ' + JSON.stringify(data));
-      }).catch((err:BusinessError) => {
-        this.result = 'getDLPPermissionInfo error: ' + JSON.stringify(err);
-        console.error('getDLPPermissionInfo: ' + JSON.stringify(err));
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPPermissionInfo error: ' + JSON.stringify(err));
-      });
-    }
-    ```
-
-6. 获取当前可支持DLP方案的文件扩展名类型列表，用于应用判断能否生成DLP文件，可用在实现类似文件管理器设置DLP权限的场景。
-
-    <!-- @[dlp_getDLPSupportedFileTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
-    
-    ``` TypeScript
-    getDLPSupportedFileTypes() {
-      dlpPermission.getDLPSupportedFileTypes((err, result) => {
-        console.info('getDLPSupportedFileTypes: ' + JSON.stringify(err));
-        console.info('getDLPSupportedFileTypes: ' + JSON.stringify(result));
-        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPSupportedFileTypes: ' + JSON.stringify(err));
-        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPSupportedFileTypes: ' + JSON.stringify(result));
-        this.result = 'getDLPSupportedFileTypes result: ' + JSON.stringify(result);
-      });
-    }
-    ```
-
-7. 判断当前打开文件是否是DLP文件。 
-
-   使用该接口的前置条件：需要dlp文件进行判断。
-
-    <!-- @[dlp_isCurrentDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->  
-    
-    ``` TypeScript
-    isCurrentDlpFile() {
-      let file = this.openFile(this.uri);
-      if(!file) {
-        this.result = '请打开一个文件！';
-        return;
-      }
-      dlpPermission.isDLPFile(file.fd).then((res) => {
-        if (res.valueOf()) {
-          this.result = 'isDLPFile result: ' + JSON.stringify(res);
-        } else {
-          this.result = '请打开一个dlp文件! ';
-        }
-        console.info('res', res);
-        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'res' + res);
-      }).catch((err:BusinessError) => {
-        this.result = 'isDLPFile error: ' + (err as BusinessError).code + (err as BusinessError).message;
-        console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
-      }).finally(() => {
-        fileIo.closeSync(file);
-      });
-    }
-    ```
-    
-8. 订阅、取消订阅DLP打开事件。
-
-    <!-- @[dlp_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
-    
-    ``` TypeScript
-    event(info: dlpPermission.AccessedDLPFileInfo) {
-      console.info('openDlpFile event');
-      hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'openDlpFile event');
-    }
-    
-    unSubscribe() {
-      try {
-        dlpPermission.off('openDLPFile', this.event); // 取消订阅
-        this.result = 'unSubscribe result: 已取消注册';
-        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'unSubscribe result: 已取消注册');
-      } catch (err) {
-        console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
-        this.result = 'unSubscribe error: 取消注册失败';
-      }
-    }
-      
-    subscribe() {
-      try {
-        dlpPermission.on('openDLPFile', this.event); // 订阅
-        this.result = 'subscribe result: 已注册';
-        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'subscribe result: 已注册');
-      } catch (err) {
-        console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
-        this.result = 'subscribe error: 注册失败';
-      }
-    }
-    ```
-
-
-9. 获取DLP文件打开记录。  
-
-   使用该接口的前置条件：由demo应用打开DLP文件。
-
-    <!-- @[dlp_getDLPFileAccessRecords](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
-    
-    ``` TypeScript
-    getDLPFileAccessRecords() {
-      dlpPermission.getDLPFileAccessRecords().then((res) => {
-        this.result = 'getDLPFileAccessRecords result: ' + JSON.stringify(res);
-        console.info('res', JSON.stringify(res));
-        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'res' + JSON.stringify(res));
-      }).catch((err: BusinessError) => {
-        this.result = 'getDLPFileAccessRecords error: ' + (err as BusinessError).code + (err as BusinessError).message;
-        console.error('error: ', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
-      });
-    }
-    ```
-
-10. 获取DLP文件保留沙箱记录。
-
-    使用该接口的前置条件：由demo应用打开DLP文件。
-
-    <!-- @[dlp_getRetentionSandboxList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
-    
-    ``` TypeScript
-    getRetentionSandboxList() {
-      dlpPermission.getRetentionSandboxList().then((res) => {
-        this.result = 'getRetentionSandboxList result: ' + JSON.stringify(res);
-        console.info('res', JSON.stringify(res));
-        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'res' + JSON.stringify(res));
-      }).catch((err: BusinessError) => {
-        this.result = 'getRetentionSandboxList error' + (err as BusinessError).code + (err as BusinessError).message;
-        console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
-      });
-    }
-    ```
-11. 设置沙箱应用配置信息。
-
-    <!-- @[dlp_setSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
-    
-    ``` TypeScript
-    setSandboxAppConfig() {
-      dlpPermission.setSandboxAppConfig('configInfo').then(() => {
-        this.result = 'setSandboxAppConfig result: 设置沙箱应用配置信息成功';
-        console.info('res', '设置沙箱应用配置信息成功');
-        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'setSandboxAppConfig result: 设置沙箱应用配置信息成功');
-      }).catch((err: BusinessError) => {
-        this.result = 'setSandboxAppConfig error: ' + (err as BusinessError).code + (err as BusinessError).message;
-        console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
-      });
-    }
-    ```
-
-
-12. 清理沙箱应用配置信息。
-
-    <!-- @[dlp_cleanSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
-    
-    ``` TypeScript
-    cleanSandboxAppConfig() {
-      dlpPermission.cleanSandboxAppConfig().then(() => {
-        this.result = 'cleanSandboxAppConfig result: 清理沙箱成功';
-        console.info('res', '清理沙箱成功');
-        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'cleanSandboxAppConfig result: 清理沙箱成功');
-      }).catch((err: BusinessError) => {
-        this.result = 'cleanSandboxAppConfig error: ' + (err as BusinessError).code + (err as BusinessError).message;
-        console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
-      });
-    }
-    ```
-
-13. 查询沙箱应用配置信息。
-
-    <!-- @[dlp_getSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
-    
-    ``` TypeScript
-    getSandboxAppConfig() {
-      dlpPermission.getSandboxAppConfig().then((res) => {
-        this.result = 'getSandboxAppConfig result: ' + JSON.stringify(res);
-        console.info('res', JSON.stringify(res));
-        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getSandboxAppConfig result: ' + JSON.stringify(res));
-      }).catch((err: BusinessError) => {
-        this.result = 'getSandboxAppConfig error: ' + (err as BusinessError).code + (err as BusinessError).message;
-        console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
-      });
-    }
-    ```
-
-14. 以无边框形式打开DLP权限管理应用。此方法只能在UIAbility上下文中调用，只支持Stage模式。  
-    
-    使用该接口的前置条件：连接DLP凭据服务器。
-
-    <!-- @[dlp_startDLPManagerForResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
-    
-    ``` TypeScript
-    startDLPManagerForResult() {
-      try {
-        let context = new UIContext().getHostContext() as common.UIAbilityContext; // 获取当前UIAbilityContext
-        let want:Want = {
-          'uri': this.uri,
-          'parameters' : {
-            'displayName': this.fileName
-          }
-        }; // 请求参数
-        dlpPermission.startDLPManagerForResult(context, want).then((res) => {
-          this.result = 'startDLPManagerForResult resultCode: ' + res.resultCode;
-          console.info('res.resultCode', res.resultCode);
-          console.info('res.want', JSON.stringify(res.want));
-          hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'res.resultCode' + res.resultCode);
-          hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'res.want' + JSON.stringify(res.want));
-        }); // 打开DLP权限管理应用
-      } catch (err) {
-        this.result = 'startDLPManagerForResult error' + err.code + err.message;
-        console.error('error', err.code, err.message); // 失败报错
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
-      }
-    }
-    ```
-15. 查询当前系统是否提供DLP特性。  
-
-    使用该接口的前置条件：连接DLP凭据服务器。
-    <!-- @[dlp_isDLPFeature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
-    
-    ``` TypeScript
-    isDLPFeature() {
-      dlpPermission.isDLPFeatureProvided().then((res) => {
-        this.result = 'isDLPFeatureProvided result: ' + JSON.stringify(res.valueOf());
-        console.info('res', JSON.stringify(res.valueOf()));
-        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'isDLPFeatureProvided result: ' + JSON.stringify(res.valueOf()));
-      }).catch((err: BusinessError) => {
-        this.result = 'isDLPFeatureProvided error: ' + (err as BusinessError).code + (err as BusinessError).message;
-        console.error('error: ', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
-      });
-    }
-    ```
-16. 设置企业应用防护策略。   
-
-    使用该接口的前置条件：连接DLP凭据服务器。
-    
-    16.1 策略格式。
-    | 字段名 | 类型 | 说明 |
-    | -------- | -------- | -------- |
-    | rules | Array&lt;Rule&gt; | 具体规则列表，一条策略可以设置多条规则，最多32条。 |
-    | policyId |string | 策略名称。长度不超过64字节，只允许由字母（包括大写和小写）、数字（0-9）、下划线（_）组成。 |
-    | ruleConflictAlg | number | 规则冲突解决算法，0表示首次匹配，1表示完全匹配。 |
-
-    16.2 规则格式。
-    | 字段名 | 类型 | 说明 |
-    | -------- | -------- | -------- |
-    | ruleId |string | 规则名称，长度不超过64字节，只允许由字母（包括大写和小写）、数字（0-9）、下划线（_）组成。 |
-    | attributes | Array&lt;Attribute&gt; | 具体属性信息列表，一条规则可以设置多条属性，最多32条。 |
-
-    16.3 属性信息格式。
-    | 字段名 | 类型 | 说明 |
-    | -------- | -------- | -------- |
-    | attributeId |string | 属性信息名称。 |
-    | attributeValues | Array&lt;string&gt; | 属性值，一条属性信息可以设置多个属性值，最多32个。 |
-    | valueType | number | 属性值类型，0表示整型，1代表字符串。 |
-    | opt | number | 判断方法，用于真实属性信息与策略属性信息作比较。 |
-
-    16.4 当前支持的属性信息。
-    | 属性信息名称 | 属性值 | 属性值类型 | 场景 |
+    | 权限名 | 说明 | 授权类型：只读 | 授权类型：编辑 |
     | -------- | -------- | -------- | -------- |
-    | DeviceHealthyStatus |1 <br> 2 <br> 3 <br> 4 | 整型 | 1：设备健康报告显示正常。 <br>2：设备有健康风险，但风险因子和root无关。 <br> 3：设备有健康风险，且风险因子和root相关。 <br> 4：异常场景。 |
-    | NetStatus | InterNet <br> ExtraNet <br> NoNet | 字符串 | InterNet：设备在公司内部使用。<br>ExtraNet：设备在公司外部使用。<br>NoNet：设备处于离线断网状态。 |
-    | DebugMode | 1 <br> 2 | 整型 | 1：该设备已开启调试模式。<br>2：该设备未开启调试模式。 |
-    | AdvancedSecurityMode | 1 <br> 2 | 整型 | 1：该设备已开启高级安全模式。<br>2：该设备未开启高级安全模式。  |
+    | ohos.permission.USE_BLUETOOTH | 允许应用使用蓝牙。 | 禁止 | 禁止 |
+    | ohos.permission.INTERNET |允许应用访问网络。 |  禁止 | 禁止 |
+    | ohos.permission.DISTRIBUTED_DATASYNC | 允许应用与远程设备交换用户数据（如图片、音乐、视频、应用数据等）。 | 禁止 | 禁止 |
+    | ohos.permission.WRITE_MEDIA | 应用读写用户媒体文件，如视频、音频、图片等，需要申请此权限。 | 禁止 | 允许 |
+    | ohos.permission.NFC_TAG | 允许应用使用NFC。 | 禁止 | 允许 |
 
-    <!-- @[dlp_setDLPProtectPolicy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+- **企业安全应用通信插件**
     
-    ``` TypeScript
-    setDLPProtectPolicy() {
-      try {
-        let attributeValues: string[] = [ '1' ];
-        let attribute: Attribute = {
-          attributeId: 'DeviceHealthyStatus',
-          attributeValues: attributeValues,
-          valueType: 0,
-          opt: 2
-        }; // 属性信息。
-        let rule: Rule = {
-          ruleId: 'ruleId',
-          attributes: [ attribute ]
-        }; // 规则。
-        let policy: Policy = {
-          rules: [ rule ],
-          policyId: 'policyId',
-          ruleConflictAlg: 0
-        }; // 策略。
-        let enterprisePolicy: dlpPermission.EnterprisePolicy = {
-          policyString: JSON.stringify(policy)
-        };
-        dlpPermission.setEnterprisePolicy(enterprisePolicy);
-        console.info('set enterprise policy success');
-        this.result = 'set enterprise policy success';
-        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'set enterprise policy success');
-      } catch (err) {
-        console.error('error:' + err.code + err.message); // 失败报错。
-        this.result = 'error:' + err.code + err.message;
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
-      }
-    }
-    ```
-17. （API 21开始支持）识别指定文件中的敏感内容。  
-    <!-- @[dlp_scanSensitiveInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
-    
-    ``` TypeScript
-    scanSensitiveInfo() {
-      let filepath = this.uri;
-      let policies: identifySensitiveContent.Policy[] = [
-        {'sensitiveLabel':'1', 'keywords':[], 'regex':''}
-      ];
-      try {
-        identifySensitiveContent.scanFile(filepath, policies).then(records => {
-          console.info('scanFile finish');
-          this.result = 'scanFile finish';
-          hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'scanFile finish');
-        }).catch((err:Error) => {
-          console.error('error message', err.message);
-          this.result = 'error message' + err.message;
-          hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error message' + err.message);
-        })
-      } catch (err) {
-        console.error('error message', err.message);
-        this.result = 'error message' + err.message;
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error message' + err.message);
-      }
-    }
-    ```
+    企业安全应用通信插件是由企业安全应用客户端实现并注册到DLP服务中的插件，是企业场景下使能DLP服务的必要组件。企业安全应用完成插件注册后，DLP服务才能与企业安全应用客户端建立交互通道。在DLP文件生成、解密等流程中，DLP服务可通过该插件与企业安全应用客户端进行交互；企业安全应用客户端还可进一步与企业服务器通信，获取加密公钥等相关信息。
 
-<!--RP1End-->
+### 约束与限制
+
+- 当前企业安全应用接入DLP的各项功能仅支持在PC/2in1设备上使用。
+- 企业场景下，企业安全应用需先完成企业安全应用插件注册，才能使能相关DLP能力（具体可参考[企业接入DLP文件适配](./enterprise-dlp-file-integration.md)）。
+- 企业场景下接入DLP能力时，需配套部署企业DLP服务器，用于支撑加密公钥获取、解密相关处理等流程。
+
+
+## 应用适配打开DLP文件介绍
+
+### 介绍
+数据防泄露服务（Data Loss Prevention，简称为DLP），是系统级的数据防泄露解决方案，提供文件权限管理、加密存储、授权访问等能力，数据所有者可以基于账号认证对机密文件进行权限配置，允许设置只读、编辑、拥有者等权限，随后机密文件会通过密文存储，在支持DLP机制的设备上可以通过端云协调进行认证授权，获取对数据的访问和修改的能力。
+
+应用适配建议：根据权限状态调整UI（如只读文件隐藏保存按钮）；避免主动触发被限制的功能；对用户进行友好提示。
+
+### 文件格式
+- 命名规则：原始文件名.扩展名.dlp（如 test.docx.dlp）
+- 文件组成：文件通用信息 + 授权策略 + 原始文件密文
+
+### 基本概念
+
+- **沙箱机制**
+
+    访问DLP文件时，系统会：
+    - 创建应用的独立沙箱分身。
+    - 解密文件供应用访问。
+    - 限制外部访问权限（网络/剪贴板/截屏/蓝牙等）。
+    - 关闭后自动清理分身和临时数据。
+
+- **沙箱限制**
+
+    当应用进入DLP沙箱状态时，可以申请的权限将受到限制，根据DLP文件授权类型不同，限制也不相同，如下表：
+
+    | 权限名 | 说明 | 授权类型：只读 | 授权类型：编辑/文件拥有者 |
+    | -------- | -------- | -------- | -------- |
+    | ohos.permission.USE_BLUETOOTH | 允许应用使用蓝牙。 | 禁止 | 禁止 |
+    | ohos.permission.INTERNET |允许应用访问网络。 |  禁止 | 禁止 |
+    | ohos.permission.DISTRIBUTED_DATASYNC | 允许应用与远程设备交换用户数据（如图片、音乐、视频、应用数据等）。 | 禁止 | 禁止 |
+    | ohos.permission.WRITE_MEDIA | 应用读写用户媒体文件，如视频、音频、图片等，需要申请此权限。 | 禁止 | 允许 |
+    | ohos.permission.NFC_TAG | 允许应用使用NFC。 | 禁止 | 允许 |

@@ -6,11 +6,11 @@
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=b4797ff84520f34081469c8824bbfa37af31b0f1 translatedAt=2026-07-17T09:57:48.043Z pushedAt=2026-07-21T01:04:55.126Z -->
+<!-- md-trans-meta sourceCommit=ca610c3b31eac2a84ffac21a107ce522b473feb1 translatedAt=2026-08-28T01:31:05.169Z pushedAt=2026-08-28T09:09:11.041Z -->
 
 The **ComposeTitleBarV2** component is a title bar that supports setting a title, an avatar (optional), and a subtitle (optional). It can be used on primary pages, secondary pages, and higher-level UIs to configure the back button.
 
-This component is implemented based on [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2). Compared with [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1), state management V2 delivers enhanced capabilities for deep observation and management of data objects, and is no longer limited to the component level. With state management V2, you can control the data and state of the common title bar more flexibly, achieving more efficient UI refresh.
+This component is implemented based on [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2). Compared with [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1), state management V2 delivers enhanced capabilities for deep observation and management of data objects, and is no longer limited to the component level. With state management V2, you can more flexibly control the data and state of the title bar through this component, achieving more efficient UI refresh.
 
 > **NOTE**
 >
@@ -34,7 +34,7 @@ None
 
 ComposeTitleBarV2({item?: ComposeTitleBarV2MenuItem, title: ResourceStr, subtitle?: ResourceStr, menuItems?: Array&lt;ComposeTitleBarV2MenuItem&gt;})
 
-Defines a title bar that supports setting a title, an avatar (optional), and a subtitle (optional). It can be used on primary pages, secondary pages, and higher-level UIs to configure the back button.
+The **ComposeTitleBarV2** component is a title bar that supports setting a title, an avatar (optional), a subtitle (optional), and menu items on the right (optional). It can be used on primary pages, secondary pages, and higher-level UIs to configure the back button and quick operations.
 
 > **NOTE**
 > 
@@ -54,14 +54,14 @@ Defines a title bar that supports setting a title, an avatar (optional), and a s
 
 | Name | Type | Mandatory | Decorator Type | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| item | [ComposeTitleBarV2MenuItem](#composetitlebarv2menuitem) | No | \@Param | Single menu item for the left avatar. |
+| item | [ComposeTitleBarV2MenuItem](#composetitlebarv2menuitem) | No | \@Param | Single menu item used for the avatar on the left side. When not set, no avatar is displayed on the left side. When used as the **item** attribute, this menu item is displayed only as an avatar, and the **isEnabled**, **action**, and **symbolStyle** attributes are not supported. |
 | title | [ResourceStr](ts-types.md#resourcestr) | Yes | \@Param | Title. |
-| subtitle | [ResourceStr](ts-types.md#resourcestr) | No | \@Param | Subtitle. |
-| menuItems | Array&lt;[ComposeTitleBarV2MenuItem](#composetitlebarv2menuitem)&gt; | No | \@Param | List of right-side menu items. |
+| subtitle | [ResourceStr](ts-types.md#resourcestr) | No | \@Param | Subtitle. When not set, no subtitle is displayed. |
+| menuItems | Array&lt;[ComposeTitleBarV2MenuItem](#composetitlebarv2menuitem)&gt; | No | \@Param | List of menu items on the right side. When not set, no menu items are displayed on the right side of the title bar. |
 
 ## ComposeTitleBarV2MenuItem
 
-Defines a menu item class, which is used for the left avatar or right menu items on the title bar.
+Defines a menu item class used to define the avatar on the left or the menu items on the right of the title bar. When used as the **item** attribute, this menu item is displayed only as an avatar and, because it does not support interaction, the **isEnabled**, **action**, and **symbolStyle** attributes cannot be set. When used as the **menuItems** attribute, this menu item supports all attributes.
 
 **Decorator:** @ObservedV2
 
@@ -79,14 +79,14 @@ Defines a menu item class, which is used for the left avatar or right menu items
 
 | Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| value | [ResourceStr](ts-types.md#resourcestr) | No | No | Icon resource.<br>Decorator: **@Trace** |
-| symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No | Yes | Symbol icon resource, which takes priority over **value**. This attribute cannot be set for the left-side avatar of an item.<br>Decorator: **@Trace** |
-| label | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Icon label description.<br>Decorator: **@Trace** |
-| isEnabled | boolean | No | Yes | Whether to enable the item. It is enabled by default.<br>When **isEnabled** is **true**, the item is enabled.<br>When **isEnabled** is **false**, the item is disabled.<br>The item attribute does not support triggering the **isEnabled** attribute.<br/>Default value: **true**. |
-| action | [OnActionCallback](#onactioncallback) | No | Yes | Action closure triggered for the event. The item attribute does not support triggering the **action** event.<br>Decorator: **@Trace** |
-| accessibilityLevel | string | No | Yes | Accessibility level of the right-side custom button of the title bar. It controls whether the current item can be recognized by the accessibility service.<br/>Supported values:<br/>**"auto"**: The attribute value of the current component is converted to **"yes"** or **"no"** based on the context.<br/>**"yes"**: The current component can be recognized by the accessibility service.<br/>**"no"**: The current component cannot be recognized by the accessibility service.<br/>**"no-hide-descendants"**: The current component and all its child components cannot be recognized by the accessibility service.<br/>Default value: **"auto"**.<br>Decorator: **@Trace** |
-| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility text of the right-side custom button of the title bar. When a component does not contain the text attribute, the screen reader does not announce anything when selecting this component, leaving users unaware of what they have selected. To address this issue, you can set accessibility text for components that do not contain text information. When the screen reader selects this component, it announces the accessibility text, helping users clearly understand what they have selected.<br/>Default value: If **label** is set, the default value is the content of the **label** attribute. If **label** is not set, the default value is **" "**. <br>Decorator: **@Trace**|
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility description of the right-side custom button of the title bar. This description is used to explain the current component in detail to users. You should provide a relatively detailed text description for this attribute to help users understand the action to be performed and its potential consequences, especially when these consequences cannot be directly inferred from the component's attributes and accessibility text. When a component has both the text attribute and the accessibility description attribute and it is selected, the system first announces the component's text attribute, followed by the accessibility description.<br/>Default value: "Double-tap with one finger to execute".<br>Decorator: **@Trace** |
+| value | [ResourceStr](ts-types.md#resourcestr) | No | No | Icon resource.<br/>**Decorator:** @Trace |
+| symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No | Yes | Symbol icon resource, which takes precedence over **value**. This attribute is not supported for the avatar on the left of the item. When it is not set, the **value** attribute is used as the icon resource.<br/>**Decorator:** @Trace |
+| label | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Icon label description. When it is not set, the icon label is not displayed.<br/>**Decorator:** @Trace |
+| isEnabled | boolean | No | Yes | Whether to enable the item. The value **true** means enabled, and **false** means disabled. This attribute is not supported for the item attribute. Default value: **true**.<br/>**Decorator:** @Trace |
+| action | [OnActionCallback](#onactioncallback) | No | Yes | Closure invoked when the item is triggered. The item parameter does not support triggering the action event. When it is not set, no action is triggered.<br/>**Decorator:** @Trace |
+| accessibilityLevel | string | No | Yes | Accessibility level of the custom button on the right of the title bar. This attribute controls whether the current item can be recognized by accessibility services.<br/>Supported values:<br/>**"auto"**: The attribute value of the current component is converted to **"yes"** or **"no"** based on the situation.<br/>**"yes"**: The current component can be recognized by accessibility services.<br/>**"no"**: The current component cannot be recognized by accessibility services.<br/>**"no-hide-descendants"**: The current component and all its child components cannot be recognized by accessibility services.<br/>Default value: **"auto"**.<br/>**Decorator:** @Trace |
+| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | No | Yes | When a component does not contain a text attribute, it is not announced when selected by the screen reader. Developers can set accessibility text for components that do not contain text information, so that the text content is announced when the component is selected by the screen reader.<br/>**Decorator:** @Trace |
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility description of the custom button. This attribute is not supported for the avatar on the left of the item. This description is used to explain the current component to users in detail. Developers should provide a relatively detailed text description for this attribute to help users understand the action to be performed and its possible consequences, especially when such consequences cannot be directly inferred from the component's attributes and accessibility text alone. If a component has both a text attribute and an accessibility description attribute, the system first announces the text attribute and then the content of the accessibility description attribute when the component is selected.<br/>**Decorator:** @Trace |
 
 ### constructor
 
@@ -127,13 +127,13 @@ Defines the menu item parameters for creating a **ComposeTitleBarV2MenuItem** in
 | Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
 | value | [ResourceStr](ts-types.md#resourcestr) | No | No | Icon resource.|
-| symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No | Yes | Symbol icon resource, which takes priority over **value**. This attribute cannot be set for the left-side avatar of an item.|
+| symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No | Yes | Symbol icon resource, which has a higher priority than **value**. The avatar on the left of the item does not support this attribute. If this attribute is not set, the **value** attribute is used as the icon resource. |
 | label | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Icon label description. |
-| isEnabled | boolean | No | Yes | Whether to enable the item. It is enabled by default.<br>When **isEnabled** is **true**, the item is enabled.<br>When **isEnabled** is **false**, the item is disabled.<br>The item attribute does not support triggering the **isEnabled** attribute.<br/>Default value: **true**.|
-| action | [OnActionCallback](#onactioncallback) | No | Yes | Action closure triggered for the event. The item attribute does not support triggering the **action** event. |
-| accessibilityLevel | string | No | Yes | Accessibility level of the right-side custom button of the title bar. It controls whether the current item can be recognized by the accessibility service.<br/>Supported values:<br/>**"auto"**: The attribute value of the current component is converted to **"yes"** or **"no"** based on the context.<br/>**"yes"**: The current component can be recognized by the accessibility service.<br/>**"no"**: The current component cannot be recognized by the accessibility service.<br/>**"no-hide-descendants"**: The current component and all its child components cannot be recognized by the accessibility service.<br/>Default value: **"auto"**. |
-| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility text of the right-side custom button of the title bar. When a component does not contain the text attribute, the screen reader does not announce anything when selecting this component, leaving users unaware of what they have selected. To address this issue, you can set accessibility text for components that do not contain text information. When the screen reader selects this component, it announces the accessibility text, helping users clearly understand what they have selected.<br/>Default value: If **label** is set, the default value is the content of the **label** attribute. If **label** is not set, the default value is **" "**. |
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility description of the right-side custom button of the title bar. This description is used to explain the current component in detail to users. You should provide a relatively detailed text description for this attribute to help users understand the action to be performed and its potential consequences, especially when these consequences cannot be directly inferred from the component's attributes and accessibility text. When a component has both the text attribute and the accessibility description attribute and it is selected, the system first announces the component's text attribute, followed by the accessibility description.<br/>Default value: "Double-tap with one finger to execute". |
+| isEnabled | boolean | No | Yes | Whether the menu item is enabled. The value **true** indicates that the menu item is enabled and can be interacted with normally, and **false** indicates that the menu item is disabled, grayed out, and cannot be interacted with. |
+| action | [OnActionCallback](#onactioncallback) | No | Yes | Action closure invoked when the menu item is triggered. The **item** parameter does not support triggering the action event. If this attribute is not set, no action is triggered. |
+| accessibilityLevel | string | No | Yes | Accessibility level of the custom button, which controls whether the current item can be recognized by the accessibility service.<br/>Supported values:<br/>**"auto"**: The attribute value of the current component is converted to **"yes"** or **"no"** based on the situation.<br/>**"yes"**: The current component can be recognized by the accessibility service.<br/>**"no"**: The current component cannot be recognized by the accessibility service.<br/>**"no-hide-descendants"**: The current component and all its child components cannot be recognized by the accessibility service.<br/>Default value: **"auto"** |
+| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility text of the custom button on the right of the title bar. The avatar on the left of the item does not support this attribute. When the component does not contain a text attribute, the screen reader does not announce anything when this component is selected. After the accessibility text is set, the screen reader announces the text content when this component is selected. |
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility description of the custom button on the right of the title bar. The avatar on the left of the item does not support this attribute. This description is used to explain to users in detail the operation of the current component and its possible consequences. When the component has both a text attribute and an accessibility description attribute, the system announces the text attribute first and then the accessibility description.<br/>Default value: **"Double-tap to activate."** |
 
 ## OnActionCallback
 
@@ -153,9 +153,9 @@ Defines the callback triggered when a menu item is tapped.
 
 ## Events
 
-[Universal events](ts-component-general-events.md) are not supported.
+Setting the [universal events](ts-component-general-events.md) is not recommended.
 
-## Example
+## Examples
 
 ### Example 1: Setting a Simple Title Bar
 
@@ -240,7 +240,7 @@ struct Index {
 }
 ```
 
-![Example 1](figures/image-composetitlebarv2-example-01.png)
+<!--Del--> <!--DelEnd-->
 
 ### Example 2: Setting a Right-side Custom Button Announcement
 
@@ -341,7 +341,7 @@ struct Index {
 }
 ```
 
-![Example 2](figures/image-composetitlebarv2-example-02.png)
+<!--Del--> <!--DelEnd-->
 
 ### Example 3: Setting a Symbol Icon
 
@@ -429,5 +429,4 @@ struct Index {
 }
 ```
 
-![Example 3](figures/image-composetitlebarv2-example-03.png)
-<!--no_check-->
+<!--Del--> <!--DelEnd-->

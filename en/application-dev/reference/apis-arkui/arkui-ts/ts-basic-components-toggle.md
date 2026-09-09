@@ -5,12 +5,19 @@
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=e6c8f80367b2ac46842bf47d90ff527cf89d1de0 translatedAt=2026-09-03T12:52:31.870Z -->
 
-The **Toggle** component provides a clickable element of the checkbox, button, or switch type.
+The component provides checkbox, button, and switch styles, and is suitable for scenarios that require quick state switching or single-choice confirmation, effectively improving the interaction experience and interface intuitiveness.
 
 >  **NOTE**
 >
-> This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+>
+> - Since API version 26.0.0, the Toggle component supports the system material effect. When the Toggle component uses the universal system material attribute [systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial), the effect varies with the [ToggleType](#toggletype) type:
+>   - ToggleType.Checkbox: The system material effect is not adapted yet. Setting the system material does not produce system material-related animations or visual effects.
+>   - ToggleType.Switch: When material parameters are passed in, the preset visual parameters inside the component are used. The passed-in material parameters serve only as a switch flag for enabling the system material and do not affect the actual visual effect. They mainly affect the visual attributes of the Toggle, such as the slider size, slider style, and shadow. After the system material is enabled, a default white point light effect appears on the slider. After [switchPointColor](#switchpointcolor) is set, the point light color follows the switchPointColor setting. When undefined is passed in, the system material does not take effect, and the original Toggle style is displayed.
+>   - ToggleType.Button: The effect of setting the system material is the same as that of setting the system material for the [Button](ts-basic-components-button.md) component, mainly affecting visual attributes such as the background color, border, and shadow.
+
 
 ## Child Components
 
@@ -30,11 +37,11 @@ Toggle(options: ToggleOptions)
 
 | Name| Type| Mandatory  | Description          |
 | ---- | ---------- | -----| -------------- |
-| options | [ToggleOptions](#toggleoptions18) | Yes  | Options of the toggle.|
+| options | [ToggleOptions](#toggleoptions18) | Yes | Configuration options of the Toggle component, used to configure the style type and initial state of the switch. |
 
 ## ToggleOptions<sup>18+</sup>
 
-Options of the toggle.
+Configuration information of the Toggle component.
 
 > **NOTE**
 >
@@ -43,6 +50,8 @@ Options of the toggle.
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,6 +64,10 @@ Options of the toggle.
 
 Enumerates toggle types.
 
+> **NOTE**
+>
+> The style of Toggle inherits the default value of the corresponding component style and does not support setting. For example, if ToggleType is Button, the component style inherits the default value of [ButtonType](ts-basic-components-button.md#buttontype). Since API version 18, the default type of Button.type has changed from capsule to rounded rectangle. Capsule buttons do not support setting [borderRadius](ts-universal-attributes-border.md#borderradius). In this case, setting borderRadius for the Toggle component also does not take effect.
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -63,8 +76,8 @@ Enumerates toggle types.
 
 | Name    | Value  | Description                                                        |
 | -------- | ---- | ------------------------------------------------------------ |
-| Checkbox | 0    | Checkbox type.<br>**NOTE**<br>Since API version 11, the default style of the **Checkbox** component is changed from rounded square to circle.<br>The default value of the universal attribute [margin](ts-universal-attributes-size.md#margin) is as follows:<br>{<br>&nbsp;top: '14px',<br>&nbsp;right: '14px',<br>&nbsp;bottom: '14px',<br>&nbsp;left: '14px'<br> }.<br>Default size:<br>{width:'20vp', height:'20vp'}|
-| Switch   | 1    | Switch type.<br>**NOTE**<br>The default value of the universal attribute [margin](ts-universal-attributes-size.md#margin) is as follows:<br>{<br>&nbsp;top: '6px',<br>&nbsp;right: '14px',<br>&nbsp;bottom: '6px',<br>&nbsp;left: '14px'<br> }.<br>Default size:<br>{width:'36vp', height:'20vp'}|
+| Checkbox | 0    | Provides the checkbox style.<br/>**Note:**<br/>Since API version 11, the default style of Checkbox changes from a rounded square to a circle.<br/>The default value of the [universal attribute margin](ts-universal-attributes-size.md#margin) is:<br/>{<br/>&nbsp;top: '14px',<br/>&nbsp;right: '14px',<br/>&nbsp;bottom: '14px',<br/>&nbsp;left: '14px'<br/> }.<br/>The default size is:<br/>{width:'20vp', height:'20vp'}. |
+| Switch   | 1    | Provides the switch style.<br>**Note:**<br/>The default value of the [universal attribute margin](ts-universal-attributes-size.md#margin) is:<br/>{<br/>&nbsp;top: '6px',<br/>&nbsp;right: '14px',<br/>&nbsp;bottom: '6px',<br/>&nbsp;left: '14px'<br/> }.<br/>The default size is:<br>{width:'36vp', height:'20vp'}. |
 | Button   | 2    | Status button type. If child content contains text, the text is displayed on the button. The default height is 28 vp, and there is no default width.|
 
 ## Attributes
@@ -76,6 +89,10 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 selectedColor(value: ResourceColor)
 
 Sets the background color of the component when it is turned on.
+
+> **NOTE**
+>
+> For the impact on the background color when systemMaterial is set, see the description at the beginning of the component.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -105,7 +122,7 @@ Sets the color of the circular slider when the component is of the **Switch** ty
 
 | Name| Type                                      | Mandatory| Description                      |
 | ------ | ------------------------------------------ | ---- | -------------------------- |
-| color  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Color of the circular slider when the component is of the **Switch** type.<br>Default value: **$r('sys.color.ohos_id_color_foreground_contrary')**|
+| color  | [ResourceColor](ts-types.md#resourcecolor) | Yes   | Color of the circular slider of the Switch type.<br/>Default value: $r('sys.color.ohos_id_color_foreground_contrary')<br/>**Note:**<br/>When the [systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial) system material is set simultaneously, the slider shows a default white point light effect. After this attribute is set, the point light color follows the setting of this attribute. |
 
 ### switchStyle<sup>12+</sup>
 
@@ -113,7 +130,13 @@ switchStyle(value: SwitchStyle)
 
 Sets the style for the component of the **Switch** type. This attribute is valid only when **type** is set to **ToggleType.Switch**.
 
+> **NOTE**
+>
+> When set simultaneously with the systemMaterial system material, see the description at the beginning of the component and the universal system material attribute document.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -131,19 +154,29 @@ Creates a content modifier.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                         | Mandatory| Description                                            |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<ToggleConfiguration>](#toggleconfiguration12) | Yes  | Content modifier to apply to the current component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.|
+| modifier  | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)\<[ToggleConfiguration](#toggleconfiguration12)> | Yes   | Method for customizing the content area on the Toggle component.<br/>modifier: content modifier. Developers need to customize a class to implement the ContentModifier API. |
+
+
 
 ## SwitchStyle<sup>12+</sup>
 
 Sets the style for the component of the **Switch** type.
 
+> **NOTE**
+>
+> When set simultaneously with the systemMaterial system material, see the description at the beginning of the component and the universal system material attribute document.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -182,13 +215,15 @@ You need a custom class to implement the **ContentModifier** API. This API inher
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name | Type   |    Read-Only   |    Optional   |  Description             |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
 | isOn   | boolean| No | No| Whether the toggle is turned on.<br>**true**: The toggle is turned on. **false**: The toggle is turned off.<br>Default value: **false**|
 | enabled | boolean | No| No| Whether the toggle is enabled for state switching.<br>**true**: The state can be changed. **false**: The state cannot be changed.<br>Default value: **true**|
-| triggerChange |Callback\<boolean>| No| No|Callback invoked when the toggle's state changes.<br>**true**: The toggle is turned on. **false**: The toggle is turned off.|
+| triggerChange | Callback\<boolean> | No | No | Callback used to trigger a change in the Toggle switch state. It is usually used in a custom ContentModifier to change the switch state programmatically. Calling this callback with true sets the switch state to on, and calling it with false sets the switch state to off. |
 
 
 ## Example
@@ -311,8 +346,11 @@ This example shows how to implement a custom toggle style. The toggle button swi
 
 ```ts
 // xxx.ets
+// Custom Switch style modifier that implements the ContentModifier API to customize the Toggle content area.
 class MySwitchStyle implements ContentModifier<ToggleConfiguration> {
+  // Background color when the switch is on.
   selectedColor: Color = Color.White;
+  // Text displayed on the button.
   lamp: string = 'string';
 
   constructor(selectedColor: Color, lamp: string) {
@@ -348,6 +386,7 @@ function buildSwitch(config: ToggleConfiguration) {
 struct Index {
   build() {
     Column({ space: 50 }) {
+      // Use the custom style modifier to customize the Toggle content, and listen for state changes through onChange.
       Toggle({ type: ToggleType.Switch })
         .enabled(true)
         .contentModifier(new MySwitchStyle(Color.Yellow, 'light'))
@@ -360,3 +399,53 @@ struct Index {
 ```
 
 ![toggle](figures/Toggle_builder.gif)
+
+### Example 4 (Immersive Light Effect of Toggle)
+
+This example shows the effect comparison of the Switch type of the Toggle component before and after the immersive light effect is enabled, including the effects of not setting the system material, setting undefined, setting the system material, and setting the system material together with [switchPointColor](#switchpointcolor) to set the point light source color. The example uses the universal attribute [systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial) API to implement the immersive light effect.
+
+The immersive light effect of the component is adaptively adjusted based on the device computing power and the immersive light effect set by the user in the system, and no additional adaptation is required by developers.
+
+Since API version 26.0.0, the systemMaterial attribute is added.
+
+> **NOTE**
+>
+> The actual display effect of the system material is related to the computing power tier of the device. The same code produces different display effects on devices of different computing power tiers, and a simplified material effect is displayed on low-computing-power devices. The computing power tier is automatically divided and managed by the system based on the hardware capabilities of the device. Applications do not need to be aware of it or perform additional settings. The system automatically adapts the material display effect based on the computing power tier of the current device.
+
+```ts
+import { uiMaterial } from '@kit.ArkUI';
+
+// xxx.ets
+@Entry
+@Component
+struct ToggleMaterialTest {
+  build() {
+    Column({ space: 10 }) {
+      // Do not set the system material API, and there is no immersive light effect.
+      Toggle({ type: ToggleType.Switch, isOn: true })
+
+      // Set systemMaterial to undefined to restore the effect without immersive light.
+      Toggle({ type: ToggleType.Switch, isOn: true })
+        .systemMaterial(undefined)
+
+      // Set the system material to enable the immersive light effect (the systemMaterial parameter is arbitrary and serves only as the system material switch; the component-side fixed parameters are ultimately used), with a white point light source by default (the color is the default value of switchPointColor).
+      Toggle({ type: ToggleType.Switch, isOn: true })
+        .systemMaterial(new uiMaterial.Material())
+
+      // Set the system material to enable the immersive light effect (the systemMaterial parameter is arbitrary and serves only as the system material switch; the component-side fixed parameters are ultimately used), with the point light color following the switchPointColor setting.
+      Toggle({ type: ToggleType.Switch, isOn: true })
+        .systemMaterial(new uiMaterial.Material())
+        .switchPointColor(Color.Red)
+    }
+    .width('100%')
+  }
+}
+```
+
+Example image of a high-computing-power device scenario:
+
+![toggle](figures/toggle-material-high.gif)
+
+Example image of a low-computing-power device scenario:
+
+![toggle](figures/toggle-material-low.gif)

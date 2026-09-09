@@ -137,7 +137,7 @@ hasAxis(axisType: AxisType): boolean
 
 getCurrentLocalPosition?(): Coordinate2D
 
-获取鼠标光标相对于当前组件实时位置左上角的坐标。
+获取鼠标光标相对于当前组件实时位置左上角的坐标。在事件无法提供有效的实时组件坐标时，返回空值，使用前请进行判空处理。
 
 **起始版本：** 26.0.0
 

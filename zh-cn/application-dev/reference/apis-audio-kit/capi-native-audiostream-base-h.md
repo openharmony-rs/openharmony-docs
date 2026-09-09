@@ -402,11 +402,11 @@ enum OH_AudioStream_DeviceChangeReason
 | 枚举项 | 描述 |
 | -- | -- |
 | REASON_UNKNOWN = 0 | 未知原因。 |
-| REASON_NEW_DEVICE_AVAILABLE = 1 | 新设备可用。 |
-| REASON_OLD_DEVICE_UNAVAILABLE = 2 | 旧设备不可用。当报告此原因时，应用程序应考虑暂停音频播放。 |
-| REASON_OVERRODE = 3 | 用户或系统强制选择切换。 |
-| REASON_SESSION_ACTIVATED = 4 | 音频会话激活触发的设备切换。<br>**起始版本：** 20 |
-| REASON_STREAM_PRIORITY_CHANGED = 5 | 更高优先级的音频流出现导致的系统设备切换。<br>**起始版本：** 20 |
+| REASON_NEW_DEVICE_AVAILABLE = 1 | 新设备可用。例如，音频播放过程中连接有线/蓝牙耳机。 |
+| REASON_OLD_DEVICE_UNAVAILABLE = 2 | 旧设备不可用。例如，音频播放过程中断开有线/蓝牙耳机。当报告此原因时，应用程序应考虑暂停音频播放。 |
+| REASON_OVERRODE = 3 | 用户或系统强制选择切换。例如，在播控中心强选设备。 |
+| REASON_SESSION_ACTIVATED = 4 | [音频会话管理(ArkTS)](../../media/audio/audio-session-management.md)中激活音频会话触发的设备切换。<br>**起始版本：** 20 |
+| REASON_STREAM_PRIORITY_CHANGED = 5 | 更高优先级的音频流出现导致的系统设备切换。例如，音乐播放过程中来电，通话流优先级更高导致音乐设备被切换。<br>**起始版本：** 20 |
 
 ### OH_AudioStream_PrivacyType
 
@@ -459,7 +459,7 @@ enum OH_AudioStream_LatencyType
 | -- | -- |
 | AUDIOSTREAM_LATENCY_TYPE_ALL = 0 | 获取包含软件与硬件在内的整体音频处理时延。 |
 | AUDIOSTREAM_LATENCY_TYPE_SOFTWARE = 1 | 获取软件部分的时延，包括软件侧音效处理。 |
-| AUDIOSTREAM_LATENCY_TYPE_HARDWARE = 2 | 获取硬件部分的时延，包括硬件抽象层（HAL） 、驱动与硬件侧音效处理。 |
+| AUDIOSTREAM_LATENCY_TYPE_HARDWARE = 2 | 获取硬件部分的时延，包括硬件抽象层（HAL）、驱动与硬件侧音效处理。 |
 
 ### OH_AudioStream_PlaybackCaptureMode
 

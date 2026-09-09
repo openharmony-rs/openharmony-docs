@@ -1,8 +1,8 @@
 # Interface (AVCastController)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -1488,7 +1488,7 @@ on(type: 'error', callback: ErrorCallback): void
 | 5400103  | I/O error.             |
 | 5400104  | Time out.      |
 | 5400105  | Service died.         |
-| 5400106  | Unsupport format.     |
+| 5400106  | Unsupported format.     |
 | 6600101  | Session service exception. |
 
 **示例：**
@@ -1529,7 +1529,7 @@ off(type: 'error'): void
 | 5400103  | I/O error.             |
 | 5400104  | Time out.      |
 | 5400105  | Service died.         |
-| 5400106  | Unsupport format.     |
+| 5400106  | Unsupported format.     |
 | 6600101  | Session service exception. |
 
 **示例：**

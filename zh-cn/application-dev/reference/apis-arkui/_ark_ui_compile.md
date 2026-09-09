@@ -31,7 +31,7 @@
 @BuilderParam装饰的变量只能被@Builder或@LocalBuilder装饰的函数初始化。
 
 **可能原因**<br> 
-用普通函数其他类型变量初始化@BuilderParam装饰的变量。
+用普通函数或其他类型变量初始化@BuilderParam装饰的变量。
 
 **处理步骤**<br>
 定义@LocalBuilder或@Builder装饰的函数并用来初始化@BuilderParam装饰的变量。
@@ -892,7 +892,7 @@ The \'xxx\' can decorate only member variables in a \'class\'.
 开发者使用@Type等装饰器装饰了class中的方法导致报错。
 
 **处理步骤**<br>
-删除去掉class中方法上的@Type等装饰器即可。
+删除class中方法上的@Type等装饰器即可。
 
 ## 10905341 @Type等装饰器与@Observed同时使用校验异常
 **错误信息**<br>
@@ -1000,7 +1000,7 @@ The \'xxx\' decorator can decorate only member variables of a class.
 
 ## 10905117 方法装饰器混用校验异常
 **错误信息**<br>
-A function can only be decorated by one of the \'@AnimatedExtend\'，\'@Builder\'，\'@Extend\'，\'@Styles\'，\'@Concurrent\' and \'@Sendable\''.
+A function can only be decorated by one of the \'@AnimatedExtend\', \'@Builder\', \'@Extend\', \'@Styles\', \'@Concurrent\' and \'@Sendable\''.
 
 **错误描述**<br>
 两个不同方法装饰器定义在同一个方法上。
@@ -1104,7 +1104,7 @@ The struct \'xxx\' cannot have the same name as the built-in attribute \'xxx\'.
 
 ## 10905229 struct装饰器校验异常
 **错误信息**<br>
-The struct \'xxx\' can not be decorated with \'@ComponentV2\' and \'@Component\'，\'@Reusable\'，\'@CustomDialog\' at the same time.
+The struct \'xxx\' can not be decorated with \'@ComponentV2\' and \'@Component\', \'@Reusable\', \'@CustomDialog\' at the same time.
 
 **错误描述**<br>
 struct不能同时使用 \'@ComponentV2\'、\'@Component\'、\'@Reusable\'和\'@CustomDialog\'一起装饰。
@@ -1117,7 +1117,7 @@ struct不能同时使用 \'@ComponentV2\'、\'@Component\'、\'@Reusable\'和\'@
 
 ## 10905230 子组件调用校验异常
 **错误信息**<br>
-Decorator \'@Component\'，\'@ComponentV2\'，or \'@CustomDialog\' is missing for struct \'xxx\'.
+Decorator \'@Component\', \'@ComponentV2\', or \'@CustomDialog\' is missing for struct \'xxx\'.
 
 **错误描述**<br>
 子组件未用\'@Component\'、\'@ComponentV2\'或\'@CustomDialog\'进行装饰。
@@ -1182,7 +1182,7 @@ struct必须有名称。
 
 ## 10905233 子组件调用校验异常
 **错误信息**<br>
-Decorator \'@Component\'，\'@ComponentV2\'，or \'@CustomDialog\' is missing for struct \'xxx\'.
+Decorator \'@Component\', \'@ComponentV2\', or \'@CustomDialog\' is missing for struct \'xxx\'.
 
 **错误描述**<br>
 子组件未用\'@Component\'、\'@ComponentV2\'或\'@CustomDialog\'进行装饰而被父组件调用。

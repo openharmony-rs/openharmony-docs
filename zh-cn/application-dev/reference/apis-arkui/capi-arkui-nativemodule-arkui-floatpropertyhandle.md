@@ -1,4 +1,4 @@
-# ArkUI_FloatPropertyHandle
+# ArkUI_FloatProperty*
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->

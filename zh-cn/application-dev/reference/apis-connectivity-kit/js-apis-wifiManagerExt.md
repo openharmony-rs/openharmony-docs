@@ -6,7 +6,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-该模块主要提供WLAN扩展接口，供非通用类型产品使用。
+该模块主要提供Wi-Fi扩展接口，供非通用类型产品使用。
 
 > **说明：**
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -23,7 +23,7 @@ import { wifiManagerExt } from '@kit.ConnectivityKit';
 
 enableHotspot(): void
 
-启用WLAN热点。
+启用Wi-Fi热点。
 
 > **说明：**
 > 从API version 9开始支持，从API version 10开始废弃。
@@ -58,7 +58,7 @@ enableHotspot(): void
 
 disableHotspot(): void
 
-禁用WLAN热点。
+禁用Wi-Fi热点。
 
 > **说明：**
 > 从API version 9开始支持，从API version 10开始废弃。

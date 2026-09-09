@@ -327,7 +327,7 @@ struct PageTwo {
       "pageSourceFile": "src/main/ets/pages/PageTwo.ets",
       "buildFunction": "PageTwoBuilder",
       "data": {
-        "description" : "AppStorageV2 example"
+        "description": "AppStorageV2 example"
       }
     }
   ]

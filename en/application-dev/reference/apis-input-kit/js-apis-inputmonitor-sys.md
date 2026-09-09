@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:26:12.015Z pushedAt=2026-06-12T08:22:39.248Z -->
+<!-- md-trans-meta sourceCommit=c27e0e5f22d6b3cf08575f1a30584cd1902be584 translatedAt=2026-09-01T01:22:01.225Z pushedAt=2026-09-03T08:40:30.385Z -->
 
 The **inputMonitor** module implements listening for events of input devices, including the touchscreen, mouse, and touchpad.
 
@@ -48,7 +48,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | Permission denied, non-system app called system api.   |
+| 202  | Permission denied, non-system app called system api.<br/>Applicable version: 12+ |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -56,6 +56,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { TouchEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -103,7 +104,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | Permission denied, non-system app called system api.   |
+| 202  | Permission denied, non-system app called system api.<br/>Applicable Version: 12+ |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -111,6 +112,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { MouseEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -159,7 +161,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | SystemAPI permit error.  |
+| 202  | SystemAPI permit error.<br/>Applicable version: 12+ |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -168,6 +170,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { inputMonitor } from '@kit.InputKit';
 import { MouseEvent } from '@kit.InputKit';
 import { display } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -238,7 +241,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | Permission denied, non-system app called system api.  |
+| 202  | Permission denied, non-system app called system api.<br/>Applicable version: 12+ |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -246,6 +249,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { TouchEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -277,6 +281,7 @@ struct Index {
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { TouchEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -329,7 +334,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | Permission denied, non-system app called system api.   |
+| 202  | Permission denied, non-system app called system api.<br/>Applicable version: 12+ |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -337,6 +342,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { MouseEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -368,6 +374,7 @@ struct Index {
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { MouseEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -402,8 +409,6 @@ type TouchEventReceiver = (touchEvent: TouchEvent) => boolean
 
 Callback used to return the touch event.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
-
 **System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
@@ -417,35 +422,6 @@ Callback used to return the touch event.
 | Type     | Description                                      |
 | ------- | ---------------------------------------- |
 | boolean | If **true** is returned, subsequent events generated by this touchscreen interaction will no longer be dispatched to the window. If **false** is returned, subsequent events generated by this touchscreen interaction will still be dispatched to the window. |
-
-**Example**
-
-```js
-import { inputMonitor } from '@kit.InputKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // Subscribe to Touch Events
-            inputMonitor.on('touch', touchEvent => {
-              if (touchEvent.touches.length === 3) { // Three fingers are pressed.
-                return true;
-              }
-              return false;
-            });
-          } catch (error) {
-            console.error(`Failed to monitor the touch screen event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
 
 ## inputMonitor.on('pinch')<sup>10+</sup>
 
@@ -478,6 +454,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -533,6 +510,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { Pinch } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -564,6 +542,7 @@ struct Index {
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { Pinch } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -623,6 +602,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -678,6 +658,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { ThreeFingersSwipe } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -695,7 +676,7 @@ struct Index {
             // Subscribe to Three-Finger Swipe Event
             inputMonitor.on('threeFingersSwipe', callback);
             // Unsubscribe from Three-Finger Swipe Event
-            inputMonitor.off("threeFingersSwipe", callback);
+            inputMonitor.off('threeFingersSwipe', callback);
             console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
             console.error(`Failed to cancel monitor three fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -709,6 +690,7 @@ struct Index {
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { ThreeFingersSwipe } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -724,9 +706,9 @@ struct Index {
           };
           try {
             // Subscribe to Three-Finger Swipe Events
-            inputMonitor.on("threeFingersSwipe", callback);
+            inputMonitor.on('threeFingersSwipe', callback);
             // Unsubscribe from Three-Finger Swipe Events
-            inputMonitor.off("threeFingersSwipe");
+            inputMonitor.off('threeFingersSwipe');
             console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
             console.error(`Failed to cancel monitor three fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -768,6 +750,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -823,6 +806,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { FourFingersSwipe } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -854,6 +838,7 @@ struct Index {
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { FourFingersSwipe } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -915,6 +900,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { Rotate } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -971,6 +957,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { Rotate } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1002,6 +989,7 @@ struct Index {
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { Rotate } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1063,6 +1051,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { Pinch } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1119,6 +1108,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { Pinch } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1150,6 +1140,7 @@ struct Index {
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { Pinch } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1209,6 +1200,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1264,6 +1256,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { ThreeFingersTap } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1281,7 +1274,7 @@ struct Index {
             // Subscribe to three-finger tap event
             inputMonitor.on('threeFingersTap', callback);
             // Unsubscribe from three-finger tap event
-            inputMonitor.off("threeFingersTap", callback);
+            inputMonitor.off('threeFingersTap', callback);
             console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
             console.error(`Failed to cancel monitor three fingers tap, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1295,6 +1288,7 @@ struct Index {
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { ThreeFingersTap } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1312,7 +1306,7 @@ struct Index {
             // Subscribe to three-finger tap event
             inputMonitor.on('threeFingersTap', callback);
             // Unsubscribe from three-finger tap event
-            inputMonitor.off("threeFingersTap");
+            inputMonitor.off('threeFingersTap');
             console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
             console.error(`Failed to cancel monitor three fingers tap, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1356,6 +1350,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1412,6 +1407,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1442,6 +1438,7 @@ struct Index {
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1501,6 +1498,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1557,6 +1555,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1574,7 +1573,7 @@ struct Index {
             // Subscribe to Touchscreen Pinch Event
             inputMonitor.on('touchscreenPinch', fingers, callback);
             // Unsubscribe from Touchscreen Pinch Event
-            inputMonitor.off("touchscreenPinch", fingers, callback);
+            inputMonitor.off('touchscreenPinch', fingers, callback);
           } catch (error) {
             console.error(`Failed to cancel monitor touch screen pinch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -1587,6 +1586,7 @@ struct Index {
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1603,7 +1603,7 @@ struct Index {
               console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
             });
             // Unsubscribe from Touchscreen Pinch Event
-            inputMonitor.off("touchscreenPinch", fingers);
+            inputMonitor.off('touchscreenPinch', fingers);
           } catch (error) {
             console.error(`Failed to cancel monitor touch screen pinch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -1646,6 +1646,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputMonitor, KeyEvent, KeyCode } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1700,6 +1701,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputMonitor, KeyEvent, KeyCode } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1717,7 +1719,7 @@ struct Index {
             // Subscribe to Key Press Event
             inputMonitor.on('keyPressed', keys, callback);
             // Unsubscribe from Key Press Event
-            inputMonitor.off("keyPressed", callback);
+            inputMonitor.off('keyPressed', callback);
           } catch (error) {
             console.error(`Failed to cancel monitor key pressed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -1729,6 +1731,7 @@ struct Index {
 
 ```js
 import { inputMonitor, KeyEvent, KeyCode } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1745,7 +1748,7 @@ struct Index {
               console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
             });
             // Unsubscribe from Key Press Events
-            inputMonitor.off("keyPressed");
+            inputMonitor.off('keyPressed');
           } catch (error) {
             console.error(`Failed to cancel monitor key pressed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -1769,7 +1772,7 @@ Queries recent touchscreen input events. A maximum of 100 events can be queried.
 
 | Name  | Type                                                     | Mandatory| Description                                                        |
 | -------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| count     | number                                                    | Mandatory   | Number of touchscreen input events to query. The value range is an integer from 0 to 100. If the value is less than 0, the value **0** is used. If the value is greater than 100, the value **100** is used. Since API version 26.0.0, if the value is greater than 60, the value **60** is used. If there are only 30 actual touchscreen input events but this parameter is set to **50**, only 30 touchscreen input events can be queried. |
+| count     | number                                                    | Yes   | Number of touchscreen input events to query. The value range is an integer in [0, 100]. If the value is less than 0, it is set to 0; if greater than 100, it is set to 100. Since API version 26.0.0, if the value is greater than 60, it is set to 60. If there are only 30 actual touchscreen input events but this parameter is set to 50, only 30 touchscreen input events can be queried. |
 
 **Return value**
 
@@ -1789,7 +1792,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor, TouchEvent } from '@kit.InputKit'
+import { inputMonitor, TouchEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
@@ -1822,7 +1825,7 @@ Listens for inward swipe events. This API uses an asynchronous callback to retur
 
 | Name  | Type                                                       | Mandatory| Description                                |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------ |
-| type     | string                                                      | Yes  | Input event type. The value is fixed at **SwipeInward**.|
+| type     | string                                                      | Yes   | Input event type, with the unique value 'swipeInward'. |
 | receiver | Callback&lt;[SwipeInward](js-apis-multimodalinput-gestureevent-sys.md#swipeinward)&gt;    | Mandatory   | Callback used to return the inward swipe event.         |
 
 **Error codes**
@@ -1839,6 +1842,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1893,6 +1897,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputMonitor, SwipeInward } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1910,7 +1915,7 @@ build() {
           // Subscribe to Swipe Inward Event
           inputMonitor.on('swipeInward', callback);
           // Unsubscribe from Swipe Inward Event
-          inputMonitor.off("swipeInward", callback);
+          inputMonitor.off('swipeInward', callback);
           console.info(`Succeeded in turning off monitor.`);
         } catch (error) {
           console.error(`Failed to cancel monitor swipe inward, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1923,6 +1928,7 @@ build() {
 
 ```js
 import { inputMonitor, SwipeInward } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1940,7 +1946,7 @@ build() {
           // Subscribe to Swipe Inward Event
           inputMonitor.on('swipeInward', callback);
           // Unsubscribe from Swipe Inward Event
-          inputMonitor.off("swipeInward");
+          inputMonitor.off('swipeInward');
           console.info(`Succeeded in turning off monitor.`);
         } catch (error) {
           console.error(`Failed to cancel monitor swipe inward, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1982,6 +1988,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2037,6 +2044,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { FingerprintEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2054,7 +2062,7 @@ struct Index {
             // Subscribe to Fingerprint Events
             inputMonitor.on('fingerprint', callback);
             // Unsubscribe from Fingerprint Events
-            inputMonitor.off("fingerprint", callback);
+            inputMonitor.off('fingerprint', callback);
             console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
             console.error(`Failed to cancel monitor finger print event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -2068,6 +2076,7 @@ struct Index {
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { FingerprintEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2085,7 +2094,7 @@ struct Index {
             // Subscribe to Fingerprint Events
             inputMonitor.on('fingerprint', callback);
             // Unsubscribe from Fingerprint Events
-            inputMonitor.off("fingerprint");
+            inputMonitor.off('fingerprint');
             console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
             console.error(`Failed to cancel monitor finger print event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);

@@ -1,4 +1,4 @@
-# ArkUI_NodeBorderColorOption
+# ArkUI_NodeBorderColor
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->

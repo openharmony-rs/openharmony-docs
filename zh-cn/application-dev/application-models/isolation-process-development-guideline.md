@@ -10,9 +10,7 @@
 
 在多模块应用开发场景中，开发者常面临模块间相互影响、异常传播导致整体崩溃等问题。进程隔离机制允许开发者将不同功能模块配置到独立进程中运行，实现模块间的进程隔离，提升应用的稳定性和安全性。该机制适用于需要模块隔离、故障隔离、安全隔离等场景。
 
-> **说明：**
->
-> 本模块接口仅可在[Stage模型](ability-terminology.md#stage模型)下使用。
+进程隔离包括[静态指定进程](#静态指定进程)、[动态指定进程](#动态指定进程)和[模块独立进程](#模块独立进程)三种方式，开发者可根据进程分配时机和隔离粒度按需选择。
 
 ## 静态指定进程
 
@@ -117,7 +115,7 @@
 
 2. 实现AbilityStage的onNewProcessRequest回调方法。
 
-    在srcEntry指定的AbilityStage源文件中，实现[onNewProcessRequest](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onnewprocessrequest11)回调方法。系统在启动配置isolationProcess为true的UIAbility实例时会触发该回调方法，然后根据该方法返回的字符串来动态的指定UIAbility实例所运行的独立进程。
+    在srcEntry指定的AbilityStage源文件中，实现[onNewProcessRequest](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onnewprocessrequest11)回调方法。系统在启动配置isolationProcess为true的UIAbility实例时会触发该回调方法，然后根据该方法返回的字符串来动态地指定UIAbility实例所运行的独立进程。
 
     <!-- @[dynamic_isolation_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/DynamicIsolationProcess/entry/src/main/ets/MyAbilityStage/MyAbilityStage.ets) --> 
     

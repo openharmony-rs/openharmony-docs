@@ -6,7 +6,7 @@
 <!--Designer: @zhanglu161-->
 <!--Tester: @lotsof-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=9f53a9e77747af975b5a889ab884bf4bcac288aa translatedAt=2026-06-30T10:23:25.085Z pushedAt=2026-06-30T13:42:42.420Z -->
+<!-- md-trans-meta sourceCommit=2c4338d41d205f3532fb2f34d47ca81854cbd9d5 translatedAt=2026-08-24T11:36:24.684Z pushedAt=2026-08-25T06:48:10.990Z -->
 
 ## Overview
 
@@ -26,7 +26,7 @@ You can use the FFRT paradigm to perform the following modeling:
 
 - **Service window**: concurrency of the concurrent queue, which also equals the number of FFRT Worker threads.
 
-- **Customer level**: priority of concurrent queue tasks.
+- **User level**: priority of concurrent queue tasks.
 
 The implementation code is as follows:
 
@@ -46,7 +46,7 @@ The implementation code is as follows:
 
 ``` C++
 
-const int SLEEP_TIME = 100 * 1000;
+const int SLEEP_TIME = 100 * 1000; // 100ms
 const int BANK_CONCURRENCY = 2;
 
 ffrt_queue_t CreateBankSystem(const char *name, int concurrency)
@@ -92,7 +92,9 @@ ffrt_task_handle_t CommitRequest(ffrt_queue_t bank, void (*func)(void *), const 
     ffrt_task_attr_set_queue_priority(&task_attr, level);
     ffrt_task_attr_set_delay(&task_attr, delay);
 
-    return ffrt_queue_submit_h_f(bank, func, (void*)name, &task_attr);
+    ffrt_task_handle_t handle = ffrt_queue_submit_h_f(bank, func, (void*)name, &task_attr);
+    ffrt_task_attr_destroy(&task_attr);
+    return handle;
 }
 
 // Encapsulate the function for canceling queue tasks.
@@ -145,20 +147,20 @@ int ConcurrentQueueCExec()
 
 ## Available APIs
 
-The main FFRT APIs involved in the preceding example are as follows:
+The main FFRT APIs involved in the preceding sample are as follows. For details, see the methods in [Function Flow Runtime C APIs](ffrt-api-guideline-c.md):
 
 | Name                                                                            | Description                                                                 |
 | -------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| [ffrt_queue_create](ffrt-api-guideline-c.md#ffrt_queue_t)                        | Creates a queue.                                                           |
-| [ffrt_queue_destroy](ffrt-api-guideline-c.md#ffrt_queue_t)                       | Destroys a queue.                                                           |
-| [ffrt_task_attr_set_queue_priority](ffrt-api-guideline-c.md#ffrt_task_attr_t)    | Sets the priority of a task in a queue.                                                 |
-| [ffrt_queue_attr_set_max_concurrency](ffrt-api-guideline-c.md#ffrt_queue_attr_t) | Sets the concurrency of the concurrent queue.                                               |
-| [ffrt_queue_submit_h_f](ffrt-api-guideline-c.md#ffrt_queue_t)                    | Submits a task to a queue.<br>**Note**: This API is supported since API version 20.|
+| ffrt_queue_create                        | Creates a queue.                                                            |
+| ffrt_queue_destroy                       | Destroys a queue.                                                            |
+| ffrt_task_attr_set_queue_priority        | Sets the task priority of a queue.                                                   |
+| ffrt_queue_attr_set_max_concurrency      | Sets the concurrency of a concurrent queue.                                                 |
+| ffrt_queue_submit_h_f                    | Submits a task to a queue.<br/>**Note:** This API is supported since API version 20.    |
 
 > **NOTE**
 >
-> - For details about how to use FFRT C++ APIs, see [Using FFRT C++ APIs](ffrt-development-guideline.md#using-ffrt-c-api-1).
-> - When using FFRT C or C++ APIs, you can use the FFRT C++ API third-party library to simplify header file inclusion, that is, use the `#include "ffrt/ffrt.h"` header file to include statements.
+> - For details about how to use FFRT C++ APIs, see [Using FFRT C++ API](ffrt-development-guideline.md#using-ffrt-c-api-1).
+> - When using FFRT C or C++ APIs, you can use the FFRT C++ API third-party library to simplify header file inclusion, that is, use the `#include "ffrt/ffrt.h"` header file inclusion statement.
 
 ## Constraints
 
@@ -166,4 +168,4 @@ The main FFRT APIs involved in the preceding example are as follows:
 
 2. `ffrt_queue_t` must explicitly call `ffrt_queue_destroy` to release resources before the process exits.
 
-3. It is recommended that the maximum concurrency of a concurrent queue be within a proper range. If the value is too large, it is meaningless to exceed the number of Worker threads. If the value is too small, the system resource utilization may be low.
+3. It is recommended that the maximum concurrency of a concurrent queue be within a proper range. If the value is too large and exceeds the number of Worker threads, it is meaningless. If the value is too small, the system resource utilization may be low.

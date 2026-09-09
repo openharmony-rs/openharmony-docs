@@ -1,7 +1,7 @@
 # 属性
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
@@ -3366,6 +3366,9 @@ ArkWeb内核在解析HTML文档结构时采取分段解析策略，旨在避免�
 enableWebAVSession(enabled: boolean)
 
 设置是否支持应用对接到播控中心。当属性没有显式设置时，默认支持应用对接到播控中心。
+
+<!--RP2-->
+<!--RP2End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

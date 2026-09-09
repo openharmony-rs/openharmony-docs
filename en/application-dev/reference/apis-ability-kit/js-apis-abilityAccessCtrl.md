@@ -6,18 +6,14 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=7fb5bd7ccfe62b909963659269cc03a975018baf translatedAt=2026-06-17T03:27:46.065Z pushedAt=2026-06-18T12:56:34.955Z -->
-
-## Module Overview
+<!-- md-trans-meta sourceCommit=b6f23fc781c027208a60731b03098d27546fc86a translatedAt=2026-09-03T09:32:04.373Z pushedAt=2026-09-05T10:47:30.177Z -->
 
 Program access control provides permission verification and management capabilities for apps, supporting permission status checks before accessing protected resources, runtime authorization requests, settings page authorization guidance, and permission status change monitoring. Permissions are divided into three categories: system_grant (automatically granted by the system), user_grant (requires manual user authorization), and [manual_settings](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings-manual-authorization) (manual setting authorization). Apps must declare the required permissions in the configuration file. For details about the permission management mechanism, see [Application Permission Management Overview](../../security/AccessToken/app-permission-mgmt-overview.md).
 
 This module is mainly used in the following scenarios:
 
 - Before executing a service, verify whether the current app has the permissions required to access protected resources.
-
 - When a permission is not granted, bring up the runtime permission dialog box or the permission settings page to request user authorization.
-
 - Subscribe to permission status change events of the current app, and adjust the service process in a timely manner after the permission status changes.
 
 > **NOTE**
@@ -29,21 +25,15 @@ This module is mainly used in the following scenarios:
 ### Core Enum Types
 
 - **[GrantStatus](#grantstatus):** Enum for permission authorization status, used to indicate the authorization status of the current permission.
-
 - **[SwitchType](#switchtype12):** Enum for global switch types, used to indicate the type of system global switch to request.
-
 - **[PermissionStateChangeType](#permissionstatechangetype18):** Enum for permission state change types, used to indicate changes such as authorization and deauthorization.
-
 - **[PermissionStatus](#permissionstatus20):** Enum for permission status, used to indicate the current permission status.
-
 - **[SelectedResult](#selectedresult22):** Enum for the selection result on the settings page authorization, used to indicate the user's selection result in the permission settings dialog box.
 
 ### Core Interface Types
 
 - **[PermissionStateChangeInfo](#permissionstatechangeinfo18):** Permission state change event object, used to return the change type, app identity, and permission name.
-
 - **[PermissionRequestResult](#permissionrequestresult10):** Permission request result object, used to return the list of requested permission names, authorization results, and dialog box display results.
-
 - **[Context](#context10):** Context object, used to initiate a permission request or open the permission settings dialog box.
 
 ### Core Classes
@@ -148,6 +138,7 @@ Creates a program access control management instance for scenarios such as permi
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Security.AccessToken
+
 
 **Return value**
 
@@ -281,15 +272,11 @@ console.info(`Result: ${data}`);
 on(type: 'selfPermissionStateChange', permissionList: Array&lt;Permissions&gt;, callback: Callback&lt;PermissionStateChangeInfo&gt;): void
 
 Subscribes to permission authorization status change events for a specified permission list of this app, using an asynchronous callback. It can be used in scenarios such as updating the UI or service logic in real time based on permission status, and monitoring user authorization behavior. When monitoring is no longer needed, call [off](#off18) to unsubscribe.
-
 - When this subscription API is called for multiple times, if the subscribed permission lists are the same but the callbacks are different, the subscription is successful.
-
 - When this subscription API is called for multiple times, if the subscribed permission lists contain the same subset and the callbacks are the same, the subscription fails.
 
 There are two possible scenarios when the permission status changes from "authorized" to "unauthorized":
-
 - User actively revokes: The system will terminate the corresponding app process.
-
 - System actively reclaims: The app process will not be terminated. A typical scenario is the one-time authorization of a security component, which is automatically reclaimed by the system after the authorization period ends.
 
 This API is usually used in conjunction with [off](#off18). When monitoring is no longer needed, call off to unsubscribe.
@@ -316,7 +303,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 12100001 | Invalid parameter. Possible causes: 1. The permissionList exceeds the size limit; 2. The permissionNames in the list are all invalid. |
 | 12100004 | The API is used repeatedly with the same input. |
 | 12100005 | The registration time has exceeded the limit. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 
 **Example**
 
@@ -372,7 +359,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100004 | The API is not used in pair with "on". |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 
 **Example**
 
@@ -437,7 +424,6 @@ For details about how to obtain the context in the example, see [Obtaining the C
 
 For details about the process and example of applying for user authorization, see [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
 <!--code_no_check-->
-
 ```ts
 import { abilityAccessCtrl, Context, PermissionRequestResult, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -466,7 +452,7 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 
 Used by <!--RP1-->[UIAbility](js-apis-app-ability-uiAbility.md#uiability)<!--RP1End--> to bring up a dialog box to request [user authorization](../../security/AccessToken/request-user-authorization.md), and returns the authorization result of the permissions requested this time. This API uses a promise to return the result.
 
-Applicable to scenarios where an app proactively applies for user_grant permissions from the user before accessing protected resources for the first time.
+Applicable to scenarios where an app proactively applies for [user_grant](../../security/AccessToken/app-permission-mgmt-overview.md#user_grant-user-authorization) permissions from the user before accessing protected resources for the first time.
 
 If the user denies authorization, the authorization dialog box cannot be brought up again through this API. The developer can guide the user to go to the system settings interface for manual authorization, or call [requestPermissionOnSetting](#requestpermissiononsetting12) to bring up the permission settings dialog box to guide the user to complete authorization.
 
@@ -497,7 +483,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | (Deprecated in 12) Invalid parameter. The context is invalid when it does not belong to the application itself. |
-| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining user operation results. |
+| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining the user operation result. <br>Applicable version: 11+ |
 
 **Example**
 
@@ -505,7 +491,6 @@ For details about how to obtain the context in the example, see [Obtaining the C
 
 For details about the process and example of applying for user authorization, see [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
 <!--code_no_check-->
-
 ```ts
 import { abilityAccessCtrl, Context, PermissionRequestResult, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -566,15 +551,16 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 | ID| Error Message|
 | -------- | -------- |
 | 12100001 | Invalid parameter. Possible causes:<br>1. The context is invalid because it does not belong to the application itself;<br>2. The permission list contains the permission that is not declared in the module.json file;<br>3. The permission list is invalid because the permissions in it do not belong to the same permission group;<br>4. The permission list contains one or more system_grant permissions. |
-| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining user operation result. |
+| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining the user operation result. |
+| 12100010 | The request already exists. <br>Applicable version: 12-20 |
 | 12100011 | All permissions in the permission list have been granted. |
 | 12100012 | The permission list contains the permission that has not been revoked by the user. |
-| 12100014 | Unexpected permission. You cannot request this type of permission from users via a pop-up window. |
+| 12100014 | Unexpected permission. You cannot request this type of permission from users via a pop-up window. <br>Applicable version: 21+ |
 
 **Example**
+
 For details about how to obtain the context in the example, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 <!--code_no_check-->
-
 ```ts
 import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -631,14 +617,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 12100001 | Invalid parameter. Possible causes: 1. The context is invalid because it does not belong to the application itself; 2. The type of global switch is not support. |
+| 12100001 | Invalid parameter. Possible causes: 1. The context is invalid because it does not belong to the application itself; 2. The type of global switch is not supported. |
 | 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining user operation result. |
 | 12100013 | The specific global switch is already open. |
 
 **Example**
+
 For details about how to obtain the context in the example, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 <!--code_no_check-->
-
 ```ts
 import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -686,7 +672,7 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 | ID| Error Message|
 | -------- | -------- |
 | 12100001 | Invalid parameter. The permissionName is empty or exceeds 256 characters. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 
 **Example**
 
@@ -738,7 +724,7 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 | ID| Error Message|
 | -------- | -------- |
 | 12100001 | Invalid parameter. Possible causes:<br>1. The context is invalid because it does not belong to the application itself;<br>2. The permission is invalid or not declared in the module.json file. |
-| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining user operation result. |
+| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining the user operation result. |
 | 12100014 | Unexpected permission. The permission is not a manual_settings permission. |
 
 **Example**
@@ -936,6 +922,8 @@ Enumerates the global switch types.
 
 **System capability**: SystemCapability.Security.AccessToken
 
+**Model restriction:** This API can be used only in the stage model.
+
 | Name              |    Value| Description       |
 | ------------------ | ----- | ----------- |
 | CAMERA  | 0    | Global switch of the camera.|
@@ -1022,6 +1010,8 @@ Enumerates the permission states.
 Enumerates the results of the dialog box for redirection to the settings page.
 
 **System capability**: SystemCapability.Security.AccessToken
+
+**Model restriction:** This API can be used only in the stage model.
 
 | Name              |    Value| Description       |
 | ------------------ | ----- | ----------- |

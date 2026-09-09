@@ -956,9 +956,8 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
->
-> 该接口不支持应用分身。
+> - 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+> - 该接口不支持连接分身应用的ServiceExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1863,7 +1862,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityByType(type: string, wantParam: Record<string, Object>, abilityStartCallback: AbilityStartCallback, callback: AsyncCallback\<void>) : void
 
-通过type隐式启动[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)。使用callback异步回调。仅支持在主线程调用，仅支持处于前台的应用调用。
+通过type隐式启动[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)。使用callback异步回调。仅支持在主线程调用，仅支持处于前台的应用调用。该接口不支持启动分身应用的UIExtensionAbility。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1926,7 +1925,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityByType(type: string, wantParam: Record<string, Object>, abilityStartCallback: AbilityStartCallback) : Promise\<void>
 
-通过type隐式启动[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)。使用Promise异步回调。仅支持在主线程调用，仅支持处于前台的应用调用。
+通过type隐式启动[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)。使用Promise异步回调。仅支持在主线程调用，仅支持处于前台的应用调用。该接口不支持启动分身应用的UIExtensionAbility。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2446,7 +2445,7 @@ struct Index {
             });
           }
           catch (e) {
-            hilog.error(DOMAIN, TAG, `exception occured, errCode ${JSON.stringify(e.code)}`);
+            hilog.error(DOMAIN, TAG, `exception occurred, errCode ${JSON.stringify(e.code)}`);
           }
         })
     }
@@ -2662,9 +2661,8 @@ startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)。
->
-> 该接口不支持应用分身。
+> - 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)。
+> - 该接口不支持启动分身应用的UIServiceExtensionAbility。
 
 **原子化服务API**：从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -2751,9 +2749,8 @@ connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnect
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)。
->
-> 该接口不支持应用分身。
+> - 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)。
+> - 该接口不支持连接分身应用的UIServiceExtensionAbility。
 
 **原子化服务API**：从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -3022,12 +3019,18 @@ export default class EntryAbility extends UIAbility {
       };
       let imagePixelMap: image.PixelMap = await image.createPixelMap(color, opts);
       // 设置UIAbility实例的图标和标签信息
-      this.context.setAbilityInstanceInfo(newLabel, imagePixelMap)
-        .then(() => {
-          console.info('setAbilityInstanceInfo success');
-        }).catch((err: BusinessError) => {
-        console.error(`setAbilityInstanceInfo failed, code is ${err.code}, message is ${err.message}`);
-      });
+      try {
+        this.context.setAbilityInstanceInfo(newLabel, imagePixelMap)
+          .then(() => {
+            console.info('setAbilityInstanceInfo success');
+          }).catch((err: BusinessError) => {
+            console.error(`setAbilityInstanceInfo failed, code is ${err.code}, message is ${err.message}`);
+          });
+      } catch (paramError) {
+        let code = (paramError as BusinessError).code;
+        let message = (paramError as BusinessError).message;
+        console.error(`setAbilityInstanceInfo failed, code is ${code}, message is ${message}`);
+      }
     });
   }
 }
@@ -3163,9 +3166,9 @@ startAppServiceExtensionAbility(want: Want): Promise\<void>
 
 > **说明：**
 >
-> 该接口的调用方必须为[AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md)所属应用或者在AppServiceExtensionAbility支持的应用清单（即[extensionAbilities标签](../../quick-start/module-configuration-file.md#extensionabilities标签)的appIdentifierAllowList属性）中的应用。
+> - 该接口的调用方必须为[AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md)所属应用或者在AppServiceExtensionAbility支持的应用清单（即[extensionAbilities标签](../../quick-start/module-configuration-file.md#extensionabilities标签)的appIdentifierAllowList属性）中的应用。
 >
-> 该接口不支持应用分身。
+> - 该接口不支持启动分身应用的AppServiceExtensionAbility实例。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -3323,9 +3326,9 @@ connectAppServiceExtensionAbility(want: Want, callback: ConnectOptions): number
 
 > **说明：**
 >
-> 如果[AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md)实例未启动，该接口的调用方必须为AppServiceExtensionAbility所属应用或者在AppServiceExtensionAbility支持的应用清单（即[extensionAbilities标签](../../quick-start/module-configuration-file.md#extensionabilities标签)的appIdentifierAllowList属性）中的应用。
+> - 如果[AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md)实例未启动，该接口的调用方必须为AppServiceExtensionAbility所属应用或者在AppServiceExtensionAbility支持的应用清单（即[extensionAbilities标签](../../quick-start/module-configuration-file.md#extensionabilities标签)的appIdentifierAllowList属性）中的应用。
 >
-> 该接口不支持应用分身。
+> - 该接口不支持连接分身应用的AppServiceExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 

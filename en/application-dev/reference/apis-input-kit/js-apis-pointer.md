@@ -6,9 +6,9 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:25:53.918Z pushedAt=2026-06-12T09:30:27.751Z -->
+<!-- md-trans-meta sourceCommit=c27e0e5f22d6b3cf08575f1a30584cd1902be584 translatedAt=2026-09-01T01:23:26.658Z pushedAt=2026-09-03T09:10:07.594Z -->
 
-The **pointer** module provides APIs related to pointer attribute management, such as querying and setting pointer attributes.
+This module provides mouse cursor management, used to query and set mouse cursor related properties.
 
 > **NOTE**
 >
@@ -18,13 +18,14 @@ The **pointer** module provides APIs related to pointer attribute management, su
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 ## pointer.setPointerVisible
 
 setPointerVisible(visible: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-Sets whether the mouse pointer is visible in the current window. This API uses an asynchronous callback to return the result.
+Sets the cursor display/hidden state. This state applies to all windows of the current process. The actual display/hidden effect of the cursor on the screen is also affected by the render service process. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -42,7 +43,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801  | Capability not supported. |
+| 801  | Capability not supported.<br/>Applicable version: 18+ |
 
 **Example**
 
@@ -69,7 +70,7 @@ struct Index {
           } catch (error) {
             console.error(`Failed to set pointer cursor visible, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
-        })
+        });
     }
   }
 }
@@ -79,7 +80,7 @@ struct Index {
 
 setPointerVisible(visible: boolean): Promise&lt;void&gt;
 
-Sets whether the mouse pointer is visible in the current window. This API uses a promise to return the result.
+Sets the cursor display/hidden state. This state applies to all windows of the current process. The actual display/hidden effect of the cursor on the screen is also affected by the render service process. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -102,7 +103,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801  | Capability not supported. |
+| 801  | Capability not supported.<br/>Applicable version: 18+ |
 
 **Example**
 
@@ -137,7 +138,7 @@ struct Index {
 
 setPointerVisibleSync(visible: boolean): void
 
-Sets whether the mouse pointer is visible in the current window. This API returns the result synchronously.
+Sets the cursor display/hidden state. This state applies to all windows of the current process. The actual display/hidden effect of the cursor on the screen is also affected by the render service process. This API is called synchronously.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -159,6 +160,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -184,7 +186,7 @@ struct Index {
 
 isPointerVisible(callback: AsyncCallback&lt;boolean&gt;): void
 
-Obtains the visible status of the mouse pointer. This API uses an asynchronous callback to return the result.
+Obtains the display/hidden state of the current window. This state reflects the cursor display/hidden state of the multimodal process for the process where the window resides, not the actual cursor display/hidden status. Whether the cursor is correctly displayed/hidden is also affected by the render service process. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -237,7 +239,7 @@ struct Index {
 
 isPointerVisible(): Promise&lt;boolean&gt;
 
-Obtains the visible status of the mouse pointer. This API uses a promise to return the result.
+Obtains the display/hidden state of the current window. This state reflects the cursor display/hidden state of the multimodal process for the process where the window resides, not the actual cursor display/hidden status. Whether the cursor is correctly displayed/hidden is also affected by the render service process. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -280,7 +282,7 @@ struct Index {
 
 isPointerVisibleSync(): boolean
 
-Checks whether the mouse pointer is visible in the current window. This API returns the result synchronously.
+Obtains the display/hidden state of the current window. This state reflects the cursor display/hidden state of the multimodal process for the process where the window resides, not the actual cursor display/hidden status. Whether the cursor is correctly displayed/hidden is also affected by the render service process. This API is called synchronously.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -294,6 +296,7 @@ Checks whether the mouse pointer is visible in the current window. This API retu
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -353,7 +356,7 @@ struct Index {
         .onClick(() => {
           // Obtains the most recent window in the application.
           window.getLastWindow(this.getUIContext().getHostContext(), (error: BusinessError, win: window.Window) => {
-            if (error.code) {
+            if (error) {
               console.error(`Failed to obtain the top window, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
               return;
             }
@@ -365,6 +368,10 @@ struct Index {
             try {
               // Obtains the mouse pointer style.
               pointer.getPointerStyle(windowId, (error: BusinessError, style: pointer.PointerStyle) => {
+                if (error) {
+                  console.error(`Failed to get pointer style, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                  return;
+                }
                 console.info(`Succeeded in getting pointer style, style: ${JSON.stringify(style)}.`);
               });
             } catch (error) {
@@ -479,6 +486,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -577,7 +585,7 @@ Sets the mouse pointer style type for a specified window. This API can set only 
 | Name                 | Type                            | Mandatory  | Description              |
 | ------------------- | ------------------------------ | ---- | ---------------- |
 | windowId            | number                         | Yes   | Window ID. The value is an integer greater than or equal to 0.<br>If the window ID is valid and the corresponding window exists, the mouse pointer style of the window can be set properly.<br>If the window ID is valid but the window does not exist, the mouse pointer style can also be set properly.<br>The result can be obtained through [getPointerStyle](#pointergetpointerstyle-1).      |
-| pointerStyle        | [PointerStyle](#pointerstyle) | Yes   | Pointer style.         |
+| pointerStyle | [PointerStyle](#pointerstyle) | Yes | Mouse cursor style. DEVELOPER_DEFINED_ICON cannot be passed as a parameter. |
 
 **Return value**
 
@@ -648,7 +656,7 @@ Sets the mouse pointer style type for a specified window and returns the result 
 | Name                 | Type                            | Mandatory  | Description              |
 | ------------------- | ------------------------------ | ---- | ---------------- |
 | windowId            | number                         | Yes   | Window ID. The value is an integer greater than or equal to 0.<br>If the window ID is valid and the corresponding window exists, the mouse pointer style of the window can be set properly.<br>If the window ID is valid but the window does not exist, the mouse pointer style can also be set properly.<br>The result can be obtained through [getPointerStyleSync](#pointergetpointerstylesync10).      |
-| pointerStyle        | [PointerStyle](#pointerstyle) | Yes   | Pointer style.         |
+| pointerStyle        | [PointerStyle](#pointerstyle) | Yes    | Mouse cursor style. DEVELOPER_DEFINED_ICON cannot be passed in as a parameter.          |
 
 **Error codes**
 
@@ -688,7 +696,7 @@ struct Index {
               pointer.setPointerStyleSync(windowId, pointer.PointerStyle.CROSS);
               console.info(`Succeeded in setting pointer style.`);
             } catch (error) {
-              console.error(`Failed to get pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              console.error(`Failed to set pointer style, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             }
           });
         })
@@ -749,7 +757,7 @@ Mouse pointer style types.
 | COLOR_SUCKER                     | 16   | Color picker    |![Colorsucker.png](./figures/Colorsucker.png)|
 | HAND_GRABBING                    | 17   | Grabbing hand  |![Hand_Grabbing.png](./figures/Hand_Grabbing.png)|
 | HAND_OPEN                        | 18   | Opening hand  |![Hand_Open.png](./figures/Hand_Open.png)|
-| HAND_POINTING                    | 19   | Hand-shaped pointer  |![Hand_Poniting.png](./figures/Hand_Pointing.png)|
+| HAND_POINTING                    | 19   | Hand pointer   |![Hand_Pointing.png](./figures/Hand_Pointing.png)|
 | HELP                             | 20   | Help   |![Help.png](./figures/Help.png)|
 | MOVE                             | 21   | Move    |![Move.png](./figures/Move.png)|
 | RESIZE_LEFT_RIGHT                | 22   | Left and right resizing|![Resize_Left_Right.png](./figures/Resize_Left_Right.png)|
@@ -769,7 +777,7 @@ Mouse pointer style types.
 | MIDDLE_BTN_SOUTH_EAST            | 36   | Scrolling south-east |![MID_Btn_South_East.png](./figures/MID_Btn_South_East.png)|
 | MIDDLE_BTN_SOUTH_WEST            | 37   | Scrolling south-west |![MID_Btn_South_West.png](./figures/MID_Btn_South_West.png)|
 | MIDDLE_BTN_NORTH_SOUTH_WEST_EAST | 38   | Moving as a cone in four directions|![MID_Btn_North_South_West_East.png](./figures/MID_Btn_North_South_West_East.png)|
-| HORIZONTAL_TEXT_CURSOR<sup>10+</sup> | 39 | Horizontal text selection|![Horizontal_Text_Cursor.png](./figures/Horizontal_Text_Cursor.png)|
+| HORIZONTAL_TEXT_CURSOR<sup>10+</sup> | 39 | Selecting text horizontally |![Horizontal_Text_Cursor.png](./figures/Horizontal_Text_Cursor.png)|
 | CURSOR_CROSS<sup>10+</sup> | 40 | Cross|![Cursor_Cross.png](./figures/Cursor_Cross.png)|
 | CURSOR_CIRCLE<sup>10+</sup> | 41 | Circle|![Cursor_Circle.png](./figures/Cursor_Circle.png)|
 | LOADING<sup>10+</sup> | 42 | Animation loading<br>**Atomic service API**: This API can be used in atomic services since API version 12.|![Loading.png](./figures/Loading.png)|
@@ -790,13 +798,15 @@ setCustomCursor(windowId: number, pixelMap: image.PixelMap, focusX?: number, foc
 
 Sets a custom pointer style for a specified window. This API can set only the custom pointer style of windows within the current application process. For details about how to set the custom pointer style of the host window through the **UIExtensionAbility** process, see [setCustomCursor](../apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcustomcursor). This API uses a promise to return the result.
 
+Changes to the app window layout, hot zone switching, page navigation, the cursor moving out of and back into the window, and the cursor moving across different areas of the window may cause the cursor to switch back to the system style. In these scenarios, you need to set the cursor style again.
+
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
 **Parameters**
 
 | Name   | Type    | Mandatory  | Description                                 |
 | ----- | ------ | ---- | ----------------------------------- |
-| windowId  | number  | Yes   | Window ID.                         |
+| windowId  | number  | Yes    | Window ID. The value is an integer greater than 0.                          |
 | pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes   | Custom cursor resource.|
 | focusX  | number | No    | Custom cursor focus X, in px. The value must be greater than or equal to 0. The default value is **0**. |
 | focusY  | number | No    | Custom cursor focus Y, in px. The value must be greater than or equal to 0. The default value is **0**. |
@@ -832,7 +842,7 @@ struct Index {
         .onClick(() => {
           // app_icon is an example resource. Configure the resource file based on the actual requirements.
           this.getUIContext()?.getHostContext()?.resourceManager.getMediaContent(
-            $r("app.media.app_icon").id, (error: BusinessError, svgFileData: Uint8Array) => {
+            $r('app.media.app_icon').id, (error: BusinessError, svgFileData: Uint8Array) => {
             const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
             let svgImageSource: image.ImageSource = image.createImageSource(svgBuffer);
             let svgDecodingOptions: image.DecodingOptions = { desiredSize: { width: 50, height: 50 } };
@@ -868,7 +878,7 @@ Defines custom cursor resources.
 | -------- | ------- | -------- | -------- | ------- |
 | pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | No  | No  | Pixel map. The minimum size is subject to the minimum limit of the image. The maximum size is 256 x 256 px.|
 | focusX  | number | No   | Yes   | Horizontal coordinate of the custom pointer focus, in px. This coordinate is limited by the custom pointer size. The minimum value is 0, and the maximum value is the maximum width of the resource image. The default value is **0** when this parameter is omitted. |
-| focusY  | number | No   | Yes   | Vertical coordinate of the custom pointer focus, in px. This coordinate is limited by the custom pointer size. The minimum value is 0, and the maximum value is the maximum width of the resource image. The default value is **0** when this parameter is omitted. |
+| focusY  | number | No   | Yes   | Vertical coordinate of the custom pointer focus, in px. This coordinate is limited by the custom pointer size. The minimum value is 0, and the maximum value is the maximum height of the resource image. The default value is **0** when this parameter is omitted. |
 
 ## CursorConfig<sup>15+</sup>
 
@@ -878,7 +888,7 @@ Defines custom cursor configuration.
 
 | Name    | Type    | Read-Only    | Optional    | Description    |
 | -------- | ------- | -------- | -------- | ------- |
-| followSystem  | boolean  | No  | No  | Whether to adjust the cursor size based on system settings. The value **true** means to adjust the cursor size based on system settings, and the value **false** means to use the custom cursor size. The adjustment range is [size of the cursor image, 256 x 256].|
+| followSystem  | boolean  | No   | No   | Whether to adjust the cursor size based on system settings. The value **false** indicates using the custom cursor style size, and **true** indicates adjusting the cursor size based on system settings. The adjustable range is [cursor resource image size, 256×256]. |
 
 ## pointer.setCustomCursor<sup>15+</sup>
 
@@ -894,9 +904,9 @@ The cursor may be switched back to the system style in the following cases: appl
 
 | Name   | Type   | Mandatory   | Description   |
 | -------- | -------- | -------- | -------- |
-| windowId  | number  | Yes   | Window ID.                         |
+| windowId  | number  | Yes    | Window ID. The value is an integer greater than 0.                          |
 | cursor  | [CustomCursor](#customcursor15) | Yes   | Custom cursor resource.|
-| config  | [CursorConfig](#cursorconfig15) | Yes   | Custom cursor configuration, which specifies whether to adjust the cursor size based on system settings. If **followSystem** in **CursorConfig** is set to **true**, the supported adjustment range is [size of the cursor image, 256 x 256].|
+| config  | [CursorConfig](#cursorconfig15) | Yes    | Custom cursor configuration, used to configure whether to adjust the cursor size based on system settings. If followSystem in CursorConfig is set to true, the adjustable range of the cursor size is [cursor resource image size, 256×256]. |
 
 **Return value**
 
@@ -930,7 +940,7 @@ struct Index {
         .onClick(() => {
           // app_icon is an example resource. Configure the resource file based on the actual requirements.
           this.getUIContext()?.getHostContext()?.resourceManager.getMediaContent(
-            $r("app.media.app_icon").id, (error: BusinessError, svgFileData: Uint8Array) => {
+            $r('app.media.app_icon').id, (error: BusinessError, svgFileData: Uint8Array) => {
             const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
             let svgImageSource: image.ImageSource = image.createImageSource(svgBuffer);
             let svgDecodingOptions: image.DecodingOptions = { desiredSize: { width: 50, height: 50 } };
@@ -964,6 +974,8 @@ struct Index {
 setCustomCursorSync(windowId: number, pixelMap: image.PixelMap, focusX?: number, focusY?: number): void
 
 Sets a custom pointer style for a specified window synchronously. This API can set only the custom pointer style of windows within the current application process. For details about how to set the custom pointer style of the host window through the **UIExtensionAbility** process, see [setCustomCursor](../apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcustomcursor).
+
+Changes to the app window layout, hot zone switching, page navigation, the cursor moving out of and back into the window, and the cursor moving across different areas of the window may cause the cursor to switch back to the system style. In these scenarios, you need to set the cursor style again.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1001,7 +1013,7 @@ struct Index {
         .onClick(() => {
           // app_icon is an example resource. Configure the resource file based on the actual requirements.
           this.getUIContext()?.getHostContext()?.resourceManager.getMediaContent(
-            $r("app.media.app_icon").id, (error: BusinessError, svgFileData: Uint8Array) => {
+            $r('app.media.app_icon').id, (error: BusinessError, svgFileData: Uint8Array) => {
             const svgBuffer = svgFileData.buffer;
             let svgImageSource: image.ImageSource = image.createImageSource(svgBuffer);
             // Width and height of the pointer image

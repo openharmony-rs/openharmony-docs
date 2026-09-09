@@ -46,7 +46,7 @@ CSP与Actor之间的主要区别：
 
 ### 基本概念和运作原理
 
-当前系统中的Worker是一个独立的线程，基本概念可参见[TaskPool和Worker的对比](../arkts-utils/taskpool-vs-worker.md)。Worker拥有独立的运行环境，每个Worker线程和主线程一样拥有自己的内存空间、消息队列（MessageQueue）、事件轮询机制（EventLoop）、调用栈（CallStack）等。线程之间通过消息（Massage）进行交互，如下图所示：  
+当前系统中的Worker是一个独立的线程，基本概念可参见[TaskPool和Worker的对比](../arkts-utils/taskpool-vs-worker.md)。Worker拥有独立的运行环境，每个Worker线程和主线程一样拥有自己的内存空间、消息队列（MessageQueue）、事件轮询机制（EventLoop）、调用栈（CallStack）等。线程之间通过消息（Message）进行交互，如下图所示：  
 
 **图2**  线程交互示意图
 
@@ -583,9 +583,9 @@ workerPort.onmessage = (e: MessageEvents): void => {
   import { common } from '@kit.AbilityKit';
   import { Contact } from '../constant/Contact';
   
-  /**
-   * 批量插入数据库
-   */
+   /**
+    * 批量插入数据库
+    */
   public async batchInsertData(context: common.Context, array: Array<Contact>): Promise<void> {
     Logger.info(TAG, 'batch insert begin');
     if (!context) {

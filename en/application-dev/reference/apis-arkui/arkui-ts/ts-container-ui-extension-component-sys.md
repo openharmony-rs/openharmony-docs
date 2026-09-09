@@ -1,31 +1,34 @@
 # UIExtensionComponent (System API)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=7a9882ee5242543d92919229e2e1f78806e99a9b translatedAt=2026-08-21T02:28:17.848Z pushedAt=2026-08-22T03:24:31.781Z -->
 
-**UIExtensionComponent** is used to embed UIs provided by other applications in the local application UI. The embedded content runs in another process, and the local application does not participate in its layout and rendering.
+**UIExtensionComponent** is used to embed UIs provided by other apps in the local page. The displayed content runs in another process, and the local app does not participate in its layout or rendering. Through process isolation, secure UI isolation and crash isolation between apps can be achieved, while supporting independent development and deployment of modules.
 
-It is usually used in modular development scenarios where process isolation is required.
+It is usually used in modular development scenarios where process isolation is required, such as embedding functional modules provided by third-party apps and implementing UI capability extension between apps.
 
 > **NOTE**
 >
-> This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 10. New APIs added in later versions will be marked with a superscript to indicate their earliest API version.
 >
-> The APIs provided by this module are system APIs.
+> - The APIs of this module can be used only in the stage model.
+>
+> - The APIs provided by this module are system APIs.
 
 ## Constraints
 
 This component does not support preview.
 
-The ability to be started must be a UIExtensionAbility, an extension ability with UI. For details about how to implement a UIExtensionAbility, see [@ohos.app.ability.UIExtensionAbility (Base Class for ExtensionAbilities with UI)](../../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md).
+The launched Ability (app component) must be a UI-enabled Ability extension. For details about how to implement a UI-enabled Ability extension, see [UIExtensionAbility Component](../../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md).
 
 The width and height of the component must be explicitly set to non-zero valid values.
 
 The scenario where scrolling continues after the edge is reached is not supported. When both the **UIExtensionComponent** host and the UIExtensionAbility support content scrolling, gesture-based scrolling will cause simultaneous responses from both inside and outside the **UIExtensionComponent**. This includes, but is not limited to, scrollable containers such as [Scroll](ts-container-scroll.md), [Swiper](ts-container-swiper.md), [List](ts-container-list.md), and [Grid](ts-container-grid.md). For details about how to avoid the simultaneous scrolling inside and outside the **UIExtensionComponent**, see [Example 2](#example-2-isolating-scrolling-inside-and-outside-of-uiextensioncomponent).
-
 
 ## Child Components
 
@@ -43,8 +46,8 @@ UIExtensionComponent(want: Want, options?: UIExtensionOptions)
 
 | Name               | Type                                                  | Mandatory| Description          |
 | --------------------- | ---------------------------------------------------------- | ---- | ------------------ |
-| want                  | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | Ability to start. |
-| options<sup>11+</sup> | [UIExtensionOptions](#uiextensionoptions11)                | No  | Construction parameters.|
+| want                  | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | Ability to load, which must be a UI-capable Ability extension. In the **parameters** of Want, set the **ability.want.params.uiExtensionType** field, whose value must be consistent with the type configured for the extension Ability in **module.json5**.  |
+| options<sup>11+</sup> | [UIExtensionOptions](#uiextensionoptions11) | No | Construction parameters to pass, used to customize the configuration of **UIExtensionComponent** (such as setting the placeholder, DPI following policy, window mode following policy, etc.). Pass this parameter when the preceding configurations need to be customized; otherwise, the default configuration is used. |
 
 ## Attributes
 
@@ -54,7 +57,7 @@ The [universal attributes](ts-component-general-attributes.md) are supported.
 
 Universal events, such as the [click event](ts-universal-events-click.md), are not supported.
 
-The events are passed to the remote UIExtensionAbility for processing after coordinate conversion.
+The component converts the coordinates of the event and then passes it to the launched Ability for processing.
 
 The following events are supported:
 
@@ -72,7 +75,7 @@ Invoked when the connection to the remote UIExtensionAbility is set up, that is,
 
 | Name                      | Type  | Mandatory| Description                                                        |
 | ---------------------------- | ------ | ------ | ------------------------------------------------------- |
-| callback                        | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<UIExtensionProxy> | Yes| Callback invoked to send data to the remote Ability.                         |
+| callback                        | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](#uiextensionproxy)> | Yes | Callback invoked when the **UIExtensionAbility** is connected. The input parameter is **UIExtensionProxy**, through which data can be sent to the launched **Ability**.                          |
 
 ### onReceive
 
@@ -88,15 +91,15 @@ Invoked when the data sent by the started UIExtensionAbility is received. This A
 
 | Name                      | Type  | Mandatory| Description                                                        |
 | ---------------------------- | ------ | ------ | ------------------------------------------------------- |
-| callback                        | [ReceiveCallback](#receivecallback18) | Yes| Callback invoked to return the data received from the remote ability.                |
+| callback | [ReceiveCallback](#receivecallback18) | Yes | Callback invoked to return the data received from the launched Ability. |
 
 ### onResult<sup>(deprecated)</sup>
 
 onResult(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<{code: number; want?: Want}>)
 
-Invoked when the started UIExtensionAbility calls **terminateSelfWithResult**. After this callback is invoked, **OnRelease** is invoked.
+When the launched Ability extension calls **terminateSelfWithResult**, this callback is invoked first, and then **onRelease** is invoked.
 
-The result data of the remote UIExtensionAbility can be processed in this callback. For details, see [AbilityResult](../../apis-ability-kit/js-apis-inner-ability-abilityResult.md).
+The result data of the launched **Ability** can be processed in this callback. For details, see [AbilityResult](../../apis-ability-kit/js-apis-inner-ability-abilityResult.md).
 
 > **NOTE**
 > This API is supported since API version 10 and deprecated since API version 12. You are advised to use [onTerminated](#onterminated12) instead.
@@ -109,8 +112,7 @@ The result data of the remote UIExtensionAbility can be processed in this callba
 
 | Name                      | Type  | Mandatory|Description                                                        |
 | ---------------------------- | ------ | ------ | ------------------------------------------------------------ |
-| code                        | number | Yes| Result code from the remote UIExtensionAbility.                         |
-| want                        | Want | No|[Want](../../apis-ability-kit/js-apis-app-ability-want.md) of the result from the remote UIExtensionAbility.|
+| callback                        | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<{code: number; want?: [Want](../../apis-ability-kit/js-apis-app-ability-want.md)}> | Yes | Callback invoked to return the result data when the launched **Ability** extension calls **terminateSelfWithResult**.                          |
 
 ### onRelease<sup>(deprecated)</sup>
 
@@ -123,7 +125,7 @@ If the UIExtensionAbility is destroyed correctly by calling **terminateSelfWithR
 If the UIExtensionAbility is destroyed because it crashes or is forced stopped, the value of **releaseCode** is **1**.
 
 > **NOTE**
-> This API is supported since API version 10 and deprecated since API version 12. You are advised to use [onTerminated](#onterminated12) or [onError](#onerror) instead.
+> This API is supported since API version 10 and deprecated since API version 12. You are advised to use [onTerminated](#onterminated12) and [onError](#onerror) instead.
 
 **System API**: This is a system API.
 
@@ -165,7 +167,7 @@ Called when the started UIExtensionAbility is terminated by calling **terminateS
 
 | Name  | Type  | Mandatory| Description                                                                                    |
 | -------  | ------ | ------ | ------------------------------------------------------------------------------------- |
-| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](#terminationinfo12)> | Yes| Callback used to return the result from the UIExtensionAbility.|
+| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](#terminationinfo12)> | Yes| Callback used to return the result from the **UIExtensionAbility**. The type is [TerminationInfo](#terminationinfo12). |
 
 > **NOTE**
 >
@@ -198,10 +200,11 @@ Triggered when the started UIExtensionAbility exits properly by calling **termin
 
 |  Name| Type  | Read-Only|Optional| Description                                                |
 | ------- | ------ | ------ | ------ |---------------------------------------------------  |
-| code    | number | No| No| Result code returned when the UIExtensionAbility is started. The result code is determined by the data passed when **terminateSelfWithResult** or **terminateSelf** is called.|
-| want    | [Want](../../apis-ability-kit/js-apis-app-ability-want.md)   | No| Yes| Data returned when the UIExtensionAbility exits.  |
+| code    | number | No | No | Result code returned when the launched **UIExtensionAbility** exits. The result code is determined by the data passed in when `terminateSelfWithResult` or `terminateSelf` is called. |
+| want    | [Want](../../apis-ability-kit/js-apis-app-ability-want.md)   | No | Yes | Data returned when the launched **UIExtensionAbility** exits. The default value is **undefined**.   |
 
 ## ReceiveCallback<sup>18+</sup>
+
 type ReceiveCallback = [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record\<string, Object\>\>
 
 Triggered to encapsulate the data sent by the started ability.
@@ -216,20 +219,19 @@ Triggered to encapsulate the data sent by the started ability.
 
 ## UIExtensionOptions<sup>11+</sup>
 
-Describes the optional construction parameters during **UIExtensionComponent** construction.
+Used to pass optional construction parameters when the **UIExtensionComponent** is constructed.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-
 | Name              | Type                            | Read-Only| Optional| Description                                                                                                     |
 | ----                 | ---------------------------------------- | ---- | ---- | ---------------                                                                                               |
-| isTransferringCaller | boolean                                  | No| Yes | Whether the **UIExtensionComponent** forwards the upper-level caller information when it is used for nesting.<br> Default value: **false**|
-| placeholder<sup>12+</sup> | [ComponentContent](../js-apis-arkui-ComponentContent.md)       | No| Yes  | Placeholder to be displayed before the UIExtensionComponent establishes a connection with the UIExtensionAbility.|
-| dpiFollowStrategy<sup>12+</sup> | [DpiFollowStrategy](ts-container-ui-extension-component-sys.md#dpifollowstrategy12)                 | No| Yes  | Whether the DPI settings follow the host or UIExtensionAbility.<br> Default value: **FOLLOW_UI_EXTENSION_ABILITY_DPI**|
-| areaChangePlaceholder<sup>14+</sup> | Record<string, [ComponentContent](../js-apis-arkui-ComponentContent.md)>      | No| Yes  | Placeholder for size changes, displayed when the UIExtensionComponent's size changes and the internal rendering of **UIExtension** is not completed. The key value can be **FOLD_TO_EXPAND** (size change for folding and expanding) or **UNDEFINED** (default size change).|
-| windowModeFollowStrategy<sup>18+</sup> | [WindowModeFollowStrategy](ts-container-ui-extension-component-sys.md#windowmodefollowstrategy18)   | No| Yes  | Following strategy of the window mode.<br> Default value: **FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE**|
+| isTransferringCaller | boolean                                  | No | Yes  | Whether to forward the Caller information of the previous level when **UIExtensionComponent** is nested. The value **true** indicates that the Caller information of the previous level is forwarded, and **false** indicates that it is not forwarded.<br> Default value: **false** |
+| placeholder<sup>12+</sup> | [ComponentContent](../js-apis-arkui-ComponentContent.md) | No | Yes | Placeholder displayed before the connection between **UIExtensionComponent** and **UIExtensionAbility** is established. Pass this parameter when a loading state or prompt content needs to be displayed to users before the connection is established. If this parameter is not set, no placeholder content is displayed by default. |
+| dpiFollowStrategy<sup>12+</sup> | [DpiFollowStrategy](#dpifollowstrategy12)                 | No | Yes   | Provides an API for setting whether the DPI follows the host or the **UIExtensionAbility**.<br> Default value: **FOLLOW_UI_EXTENSION_ABILITY_DPI** |
+| areaChangePlaceholder<sup>14+</sup> | Record<string, [ComponentContent](../js-apis-arkui-ComponentContent.md)>      | No | Yes   | Placeholder displayed when the size of **UIExtensionComponent** changes and the internal rendering of **UIExtensionAbility** is not complete. The key supports only "FOLD_TO_EXPAND" (fold-to-expand size change) and "UNDEFINED" (default size change). Other key values do not take effect. If this parameter is not set, no size-change placeholder content is displayed by default. |
+| windowModeFollowStrategy<sup>18+</sup> | [WindowModeFollowStrategy](#windowmodefollowstrategy18)   | No | Yes   | Provides an API for setting the window mode so that it follows the host or the **UIExtensionAbility**.<br> Default value: **FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE** |
 
 ## DpiFollowStrategy<sup>12+</sup>
 
@@ -257,13 +259,20 @@ Enumerates the following strategies of the window mode.
 
 ## UIExtensionProxy
 
-Implements a **UIExtensionProxy** instance for the component host to send data to, subscribe to, or unsubscribe from the started UIExtensionAbility through the connection established between the two parties.
+Used for the component user to send data to the launched Ability and to subscribe to and unsubscribe from the registration events of the extension Ability after a connection is successfully established between the two parties.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### send
 
 send(data: Record\<string, Object\>): void
 
-Asynchronously sends data from the component host to the started UIExtensionAbility through the connection established between the two parties.
+Used in the scenario where the component user sends data to the launched Ability after a connection is successfully established between the two parties, providing asynchronous data sending.
+
+> **NOTE**
+> Both **send** and **sendSync** can be used to send data to the launched Ability. **send** is asynchronous and has no return value, and is suitable for scenarios where the reply from the extension Ability is not required. **sendSync** is synchronous and can obtain the reply data from the extension Ability, and is suitable for scenarios where the processing result needs to be obtained synchronously.
 
 **System API**: This is a system API.
 
@@ -273,13 +282,13 @@ Asynchronously sends data from the component host to the started UIExtensionAbil
 
 | Name | Type                                    | Mandatory  | Description           |
 | ---- | ---------------------------------------- | ---- | --------------- |
-| data | Record\<string, Object\> | Yes   | Data to be asynchronously sent to the started UIExtensionAbility. In versions earlier than API version 18, the data type is **Object**.|
+| data | Record\<string, Object\> | Yes | Data asynchronously sent to the launched **UIExtensionAbility**. In versions earlier than API version 18, the type of data is Object. |
 
 ### sendSync<sup>11+</sup>
 
 sendSync(data: Record\<string, Object\>): Record\<string, Object\>
 
-Synchronously sends data from the component host to the started UIExtensionAbility through the connection established between the two parties.
+Used in the scenario where the component user sends data to the launched Ability after a connection is successfully established between the two parties, providing synchronous data sending.
 
 **System API**: This is a system API.
 
@@ -289,17 +298,18 @@ Synchronously sends data from the component host to the started UIExtensionAbili
 
 | Name | Type                                    | Mandatory  | Description           |
 | ---- | ---------------------------------------- | ---- | --------------- |
-| data | Record\<string, Object\> | Yes   | Data to be synchronously sent to the started UIExtensionAbility.|
+| data | Record\<string, Object\> | Yes | Data synchronously sent to the launched **UIExtensionAbility**. Before API version 18, the type of data is Object. |
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | ---- | ----|
-| Record\<string, Object\> | Data returned by the UIExtensionAbility.|
+| Record\<string, Object\> | Data replied by the extension Ability. |
 
 **Error codes**
 
 For details about the error codes, see [UIExtension Error Codes](../errorcode-uiextension.md).
+
 | ID| Error Message|
 | ------- | --------|
 | 100011 | No callback has been registered to respond to this request. |
@@ -311,6 +321,9 @@ on(type: 'asyncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 
 Subscribes to asynchronous registration of the started UIExtensionAbility through the connection established between the component host and UIExtensionAbility.
 
+> **NOTE**
+> **asyncReceiverRegister** and **syncReceiverRegister** subscribe to the asynchronous and synchronous data receiving registration events of the extension Ability, respectively. When the extension Ability calls **setReceiveDataCallback** to register asynchronous receiving, the **asyncReceiverRegister** callback is triggered. When the extension Ability calls **setReceiveDataForResultCallback** to register synchronous receiving, the **syncReceiverRegister** callback is triggered. Developers should select the corresponding event to subscribe to based on the data receiving mode used by the extension Ability.
+
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -319,12 +332,12 @@ Subscribes to asynchronous registration of the started UIExtensionAbility throug
 
 | Name | Type|Mandatory| Description|
 | ------ | -------- |---- | ------- |
-| type   | string | Yes| Event type. The value is fixed at **'asyncReceiverRegister'**.|
-| callback   | Callback\<UIExtensionProxy\> | Yes| Callback. It is triggered after UIExtensionAbility registers the **setReceiveDataCallback** method.|
+| type   | string | Yes | Event type. The value is **'asyncReceiverRegister'**, indicating subscription to the asynchronous registration callback of the extended Ability. |
+| callback   | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](#uiextensionproxy)> | Yes | Callback invoked when the extended Ability registers **setReceiveDataCallback**. |
 
 ### on('syncReceiverRegister')<sup>11+</sup>
 
-on(type: 'syncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void;
+on(type: 'syncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 
 Subscribes to synchronous registration of the started UIExtensionAbility through the connection established between the component host and UIExtensionAbility.
 
@@ -336,14 +349,14 @@ Subscribes to synchronous registration of the started UIExtensionAbility through
 
 | Name | Type|Mandatory| Description|
 | ------ | -------- |---- | ------- |
-| type   | string | Yes| Event type. The value is fixed at **'syncReceiverRegister'**.|
-| callback   | Callback\<UIExtensionProxy\> | Yes| Callback. It is triggered after the UIExtensionAbility registers **setReceiveDataForResultCallback**.|
+| type   | string | Yes | Event type. The value is **'syncReceiverRegister'**, indicating subscription to the synchronous registration callback of the extension Ability. |
+| callback   | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](#uiextensionproxy)> | Yes | Callback invoked when the extension Ability registers **setReceiveDataForResultCallback**. |
 
 ### off('asyncReceiverRegister')<sup>11+</sup>
 
 off(type: 'asyncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 
-Unsubscribes from asynchronous registration of the started UIExtensionAbility through the connection established between the component host and UIExtensionAbility.
+Used in the scenario where the component user unsubscribes from the asynchronous registration event of the launched Ability after a connection is successfully established between the two parties. This method is used together with **on('asyncReceiverRegister')** to cancel the subscription registered through **on('asyncReceiverRegister')**. When it is no longer necessary to listen for the asynchronous registration event (for example, before the component is destroyed), call this method to unsubscribe to avoid the callback being unable to be released.
 
 **System API**: This is a system API.
 
@@ -353,14 +366,14 @@ Unsubscribes from asynchronous registration of the started UIExtensionAbility th
 
 | Name | Type| Mandatory| Description|
 | ------ | -------- | ----- | ------- |
-| type   | string | Yes| Event type. The value is fixed at **'asyncReceiverRegister'**.|
-| callback | Callback\<UIExtensionProxy\> | No| Callback. If this parameter is left empty, it means unsubscribing from all callbacks triggered after UIExtensionAbility's asynchronous registration.<br> If this parameter is not empty, it means unsubscribing from callbacks corresponding to **type**.|
+| type   | string | Yes | Event type. The value is **'asyncReceiverRegister'**, which indicates unsubscribing from the asynchronous registration callback of the extension Ability. |
+| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](#uiextensionproxy)> | No | Callback for the asynchronous registration event. If this parameter is left empty, all asynchronous registration callbacks of the extension Ability are unsubscribed.<br> If it is not empty, the corresponding asynchronous registration callback is unsubscribed. |
 
 ### off('syncReceiverRegister')<sup>11+</sup>
 
 off(type: 'syncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 
-Unsubscribes from synchronous registration of the started UIExtensionAbility through the connection established between the component host and UIExtensionAbility.
+Used in the scenario where the component user unsubscribes from the synchronous registration event of the launched Ability after a connection is successfully established between the two parties. This method is used together with **on('syncReceiverRegister')** to cancel the subscription registered through **on('syncReceiverRegister')**. When it is no longer necessary to listen for the synchronous registration event (for example, before the component is destroyed), call this method to unsubscribe to avoid the callback being unable to be released.
 
 **System API**: This is a system API.
 
@@ -370,8 +383,8 @@ Unsubscribes from synchronous registration of the started UIExtensionAbility thr
 
 | Name | Type| Mandatory| Description|
 | ------ | -------- | ----- | ------- |
-| type   | string | Yes| Event type. The value is fixed at **'syncReceiverRegister'**.|
-| callback | Callback\<UIExtensionProxy\> | No| Callback. If this parameter is left empty, it means unsubscribing from all callbacks triggered after UIExtensionAbility's synchronous registration.<br> If this parameter is not empty, it means unsubscribing from callbacks corresponding to **type**.|
+| type   | string | Yes | Event type. The value is **'syncReceiverRegister'**, which indicates unsubscribing from the synchronous registration callback of the extension Ability. |
+| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](#uiextensionproxy)> | No | Callback for the synchronous registration event. If this parameter is left empty, it indicates unsubscribing from all callbacks triggered after the synchronous registration of the extension Ability.<br> If this parameter is not empty, it indicates unsubscribing from the corresponding synchronous registration callback. |
 
 ## Example
 
@@ -381,7 +394,8 @@ The **UIExtensionComponent** component can be used by both the host and provider
 
 **Component host**
 
-The entry point file **Index.ets** for the user side is as follows:
+The content of the user's entry page Index.ets is as follows:
+
 ```ts
 import { ComponentContent } from '@kit.ArkUI';
 
@@ -408,7 +422,6 @@ struct Second {
   @State message1: string = 'Hello World 1';
   @State message2: string = 'Hello World 2';
   @State message3: string = 'Hello World 3';
-  @State visible: Visibility = Visibility.Hidden;
   @State wid: number = 300;
   @State hei: number = 300;
   @State windowStrategy: WindowModeFollowStrategy = WindowModeFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE;
@@ -449,7 +462,7 @@ struct Second {
             this.message3 = JSON.stringify(data['data']);
           })
           .onError((info) => {
-            console.error(`onError: code = ${info.code}`);
+            console.error(`onError: code = ${info.code}, message = ${info.message}`);
           })
           .onTerminated((info) => {
             console.info('onTerminated: code =' + info.code + ', want = ' + JSON.stringify(info.want));
@@ -461,7 +474,7 @@ struct Second {
             this.proxy.on("syncReceiverRegister", syncRegisterCallback1);
 
             this.proxy.on("asyncReceiverRegister", (proxy1) => {
-              console.info("on invoke for test, type is asyncReceiverRegister");
+              console.info('on invoke for test, type is asyncReceiverRegister');
             });
           })
 
@@ -473,7 +486,7 @@ struct Second {
               let re = this.proxy.sendSync({data: "Hello 2"});
               console.info("for test, re=" + JSON.stringify(re));
             } catch (err) {
-              console.error(`sendSync failed for test. errCode=${err.code}, msg=${err.message}`);
+              console.error(`sendSync failed for test. Code: ${err.code}, message: ${err.message}`);
             }
           }
         })
@@ -486,16 +499,19 @@ struct Second {
 
 function syncRegisterCallback1(proxy: UIExtensionProxy) {
   console.info("on invoke for test, syncRegisterCallback1, type is syncReceiverRegister");
-}
+};
 
 function syncRegisterCallback2(proxy: UIExtensionProxy) {
   console.info("on invoke for test, syncRegisterCallback2, type is syncReceiverRegister");
-}
+};
 ```
+
 **Component provider**
 
-The provider has the following files that need to be modified:
+The provider has three files that need to be modified:
+
 - /src/main/ets/uiextensionability/UIExtensionProvider.ets
+
 ```ts
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
@@ -533,35 +549,39 @@ export default class UIExtAbility extends UIExtensionAbility {
 }
 ```
 
-- /src/main/ets/pages/extension.ets
+- Entry page file of the provider's extension Ability: **/src/main/ets/pages/extension.ets**
+
 ```ts
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 
-let storage = new LocalStorage();
 AppStorage.setOrCreate('message', 'UIExtensionAbility');
 
-@Entry(storage)
+@Entry
 @Component
 struct Extension {
   @StorageLink('message') storageLink: string = '';
-  private session: UIExtensionContentSession | undefined = storage.get<UIExtensionContentSession>('session');
+  private session: UIExtensionContentSession | undefined = undefined;
   pathStack: NavPathStack = new NavPathStack();
 
   @Builder
   PageMap(name: string) {
     if (name === "hello") {
-      pageOneTmp();
+      PageOne();
     }
+  }
+
+  aboutToAppear() {
+    this.session = this.getUIContext().getLocalStorage()?.get<UIExtensionContentSession>('session');
   }
 
   onPageShow() {
     if (this.session != undefined) {
-      this.session.setReceiveDataCallback((data)=> {
+      this.session.setReceiveDataCallback((data) => {
         this.storageLink = JSON.stringify(data);
         console.info("invoke for test, handle callback set by setReceiveDataCallback successfully");
       })
 
-      this.session.setReceiveDataForResultCallback(func1);
+      this.session.setReceiveDataForResultCallback(onReceiveDataForResult);
     }
   }
 
@@ -572,19 +592,19 @@ struct Extension {
           Text(this.storageLink)
             .fontSize(20)
             .fontWeight(FontWeight.Bold)
-          Button("Send to Component").onClick(()=>{
+          Button("Send to Component").onClick(() => {
             if (this.session != undefined) {
               this.session.sendData({"data": 543321});
               console.info('send 543321, for test');
             }
           })
-          Button("terminate").onClick(()=> {
+          Button("terminate").onClick(() => {
             if (this.session != undefined) {
               this.session.terminateSelf();
             }
-            storage.clear();
+            this.getUIContext().getLocalStorage()?.clear();
           })
-          Button("terminate with result").onClick(()=>{
+          Button("terminate with result").onClick(() => {
             if (this.session != undefined) {
               this.session.terminateSelfWithResult({
                 resultCode: 0,
@@ -594,10 +614,10 @@ struct Extension {
                 }
               });
             }
-            storage.clear();
+            this.getUIContext().getLocalStorage()?.clear();
           })
 
-          Button("Redirect").onClick(()=> {
+          Button("Redirect").onClick(() => {
             this.pathStack.pushPath({ name: "hello"});
           })
         }
@@ -610,8 +630,8 @@ struct Extension {
 
 // pageOne
 @Component
-export struct pageOneTmp {
-  pathStack: NavPathStack = new NavPathStack()
+export struct PageOne {
+  pathStack: NavPathStack = new NavPathStack();
 
   build() {
     NavDestination() {
@@ -630,7 +650,7 @@ export struct pageOneTmp {
   }
 }
 
-function func1(data: Record<string, Object>): Record<string, Object> {
+function onReceiveDataForResult(data: Record<string, Object>): Record<string, Object> {
   let linkToMsg: SubscribedAbstractProperty<string> = AppStorage.link('message');
   linkToMsg.set(JSON.stringify(data));
   console.info("invoke for test, handle callback set by setReceiveDataForResultCallback successfully");
@@ -639,7 +659,8 @@ function func1(data: Record<string, Object>): Record<string, Object> {
 
 ```
 
-- /src/main/module.json5
+- The provider's extension Ability. Add the corresponding configuration to the module configuration file **/src/main/module.json5**.
+
 ```json
 {
     "name": "UIExtensionProvider",
@@ -647,7 +668,7 @@ function func1(data: Record<string, Object>): Record<string, Object> {
     "description": "1",
     "label": "$string:EntryAbility_label",
     "type": "sys/commonUI",
-    "exported": true,
+    "exported": true
 }
 ```
 
@@ -661,13 +682,14 @@ Scrolling inside the component: scrolling within the component using touch gestu
 
 Scrolling outside the component: scrolling of the outer container using the scrollbar
 
-Before running, ensure that an ability whose **bundleName** is **UIExtensionProvider** and **abilityName** as **UIExtensionProvider** is installed on the device.
+Before running, ensure that an ability whose **bundleName** is **com.example.newdemo** and **abilityName** as **UIExtensionProvider** is installed on the device.
 
-The entry point file **UIExtensionProvider.ets** and the module configuration file** UIExtensionProvider.ets** are identical to those in [Example 1](#example-1-loading-a-uiextension).
+The entry point file **UIExtensionProvider.ets** and the module configuration file **UIExtensionProvider.ets** are identical to those in [Example 1](#example-1-loading-a-uiextension).
 
-The entry point file **UIExtensionProvider.ets** and the module configuration file** module.json5** are identical to those in [Example 1](#example-1-loading-a-uiextension).
+The provider's extension Ability and module configuration file are the same as the module.json5 code of the extension module in [Example 1](#example-1-loading-a-uiextension).
 
-- Usage example of the component host:
+- Example of the user's component usage:
+
 ```ts
 @Entry
 @Component
@@ -675,7 +697,6 @@ struct Second {
   @State message1: string = 'Hello World 1';
   @State message2: string = 'Hello World 2';
   @State message3: string = 'Hello World 3';
-  @State visible: Visibility = Visibility.Hidden;
   @State wid: number = 300;
   @State hei: number = 300;
   private scroller: Scroller = new Scroller();
@@ -716,7 +737,7 @@ struct Second {
               .onRemoteReady((proxy) => {
                 console.info('onRemoteReady, for test');
               })
-            }, (item: string) => item)
+            }, (item: number) => item.toString())
         }
         .width('100%')
       }
@@ -742,11 +763,11 @@ struct Second {
 ```
 
 - extension.ets (entry page file of the provider's UIExtensionAbility)
+
 ```ts
 @Entry
 @Component
 struct Extension {
-  @StorageLink('message') storageLink: string = '';
   private scroller: Scroller = new Scroller();
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -768,7 +789,7 @@ struct Extension {
               .fontSize(16)
               .textAlign(TextAlign.Center)
               .margin({ top: 10 })
-          }, (item: string) => item)
+          }, (item: number) => item.toString())
         }
       }
 

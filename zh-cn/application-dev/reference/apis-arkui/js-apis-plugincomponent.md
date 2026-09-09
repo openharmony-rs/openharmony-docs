@@ -55,7 +55,7 @@ import { pluginComponentManager } from '@kit.ArkUI';
 
 | 名称    | 类型   | 只读 | 可选 | 说明                        |
 | ------- | ------ | ---- | ---- | --------------------------- |
-| source  | string | 否 | 否 | 组件模板名。                |
+| source  | string | 否 | 否 | 组件模板路径。                |
 | ability | string | 否 | 否 | 提供方Ability的bundleName。 |
 
 ## pluginComponentManager
@@ -74,7 +74,7 @@ type KVObject = { [key: string]: number | string | boolean | [] | KVObject }
 
 | 名称    | 类型   | 必填 | 说明                        |
 | ------- | ------ | ---- | --------------------------- |
-|  [key: string]  | number \| string \| boolean \| [] \| [KVObject](#kvobject)  | 否   | 键值对形式存储。<br>number：键值，表示值类型为数字。<br> string：键值，表示值类型为字符串，可取空字符串。<br> boolean：键值，表示值类型为布尔值。<br> []：键值，表示值类型为空数组。<br>[KVObject](#kvobject)：键值，表示值类型为KVObject。            |
+|  [key: string]  | number \| string \| boolean \| [] \| [KVObject](#kvobject)  | 否   | 键值对形式存储。<br>number：表示值类型为数字。<br> string：表示值类型为字符串，可取空字符串。<br> boolean：表示值类型为布尔值。<br> []：表示值类型为空数组。<br>[KVObject](#kvobject)：表示值类型为KVObject。            |
 
 
 ### PushParameters
@@ -132,7 +132,7 @@ pluginComponentManager.request方法接收到的回调结果。
 
 | 名称       | 类型                  | 只读 | 可选  | 说明    |
 | --------- | --------------------- | ---- | ---- | ----- |
-| template  | string                | 否 | 是    | 组件模板。该字段为可选字段，不提供时默认不包含在返回结果中。当需要返回组件模板信息时设置此字段；不需要返回模板时可省略。 |
+| template  | string                | 否 | 是    | 组件模板路径。该字段为可选字段，不提供时默认不包含在返回结果中。 |
 | data      | [KVObject](#kvobject) | 否 | 是    | 组件数据，以键值对形式存储，用于回应请求时传递的业务数据，键和值类型由业务定义。该字段为可选字段，不提供时默认不包含在返回结果中。 |
 | extraData | [KVObject](#kvobject) | 否 | 是    | request事件中传递的附加数据。该字段为可选字段，不提供时默认不包含在返回结果中。 |
 
@@ -207,7 +207,7 @@ const onRequestListener = (source: Want, name: string, data: pluginComponentMana
   console.info("onRequestListener name=" + name);
   console.info("onRequestListener data=" + JSON.stringify(data));
   // 构建Request事件回调的返回数据，指定组件模板路径并携带请求数据返回给请求方
-  let returnData: Record<string, string | pluginComponentManager.KVObject> = {
+  const returnData: Record<string, string | pluginComponentManager.KVObject> = {
     "template": "ets/pages/plugin.js",
     "data": data,
   }
@@ -350,7 +350,7 @@ const onRequestListener = (source:Want, name:string, data:pluginComponentManager
   console.info("onRequestListener source=" + JSON.stringify(source));
   console.info("onRequestListener name=" + name);
   console.info("onRequestListener data=" + JSON.stringify(data));
-  let returnData: Record<string, string | pluginComponentManager.KVObject> = { "template": "ets/pages/plugin.js", "data": data };
+  const returnData: Record<string, string | pluginComponentManager.KVObject> = { "template": "ets/pages/plugin.js", "data": data };
   return returnData;
 }
 pluginComponentManager.on("push", onPushListener);

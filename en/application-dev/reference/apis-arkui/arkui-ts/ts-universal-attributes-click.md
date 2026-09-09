@@ -6,8 +6,9 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 <!--deprecated_code_no_check-->
+<!-- md-trans-meta sourceCommit=a982f9d9be2aa48466f66955fc58f87c03f60f05 translatedAt=2026-09-01T12:18:16.720Z -->
 
-Click control attributes are used to set whether a component can respond to finger interactions such as click and touch events.
+Sets whether the component can respond to finger interaction events such as click and touch events based on interaction requirements, meeting the control requirements for component interaction responses in different scenarios.
 
 >  **NOTE**
 >
@@ -17,7 +18,7 @@ Click control attributes are used to set whether a component can respond to fing
 
 touchable(value: boolean): T
 
-Whether the component can respond to finger interactions such as click and touch events.
+Sets the interaction response capability of the current component.
 
 > **NOTE**
 >
@@ -43,28 +44,28 @@ Whether the component can respond to finger interactions such as click and touch
 // xxx.ets
 @Entry
 @Component
-struct TouchAbleExample {
-  @State text1: string = ''
-  @State text2: string = ''
+struct TouchableExample {
+  @State text1: string = '';
+  @State text2: string = '';
 
   build() {
     Stack() {
       Rect()
         .fill(Color.Gray).width(150).height(150)
         .onClick(() => {
-          console.info(this.text1 = 'Rect Clicked')
+          console.info(this.text1 = 'Rect Clicked');
         })
         .overlay(this.text1, { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
       Ellipse()
         .fill(Color.Pink).width(150).height(80)
         .touchable(false) // When the Ellipse area is touched, the message "Ellipse Clicked" is not displayed.
         .onClick(() => {
-          console.info(this.text2 = 'Ellipse Clicked')
+          console.info(this.text2 = 'Ellipse Clicked');
         })
         .overlay(this.text2, { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
-    }.margin(100)
+    }.margin(100);
   }
 }
 ```
 
-![ellipse](figures/ellipse.gif)
+![touchable](figures/touchable.gif)

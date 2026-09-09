@@ -13,8 +13,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从 API version 11 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.net.vpnExtension (VPN 增强管理)](js-apis-net-vpnExtension.md)。
+> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.net.vpnExtension (VPN增强管理)](js-apis-net-vpnExtension.md)。
 
 ## 导入模块
 
@@ -48,9 +48,11 @@ setAlwaysOnVpnEnabled(enable: boolean, bundleName: string): Promise\<void>
 
 | 类型           | 说明                    |
 | -------------- | ----------------------- |
-| Promise\<void> | 无返回值的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码 ID | 错误信息                                 |
 | --------- | ---------------------------------------- |
@@ -103,9 +105,11 @@ isAlwaysOnVpnEnabled(bundleName: string): Promise\<boolean>
 
 | 类型              | 说明                           |
 | ----------------- | ------------------------------ |
-| Promise\<boolean> | Promise对象。返回true表示应用alway on vpn开启状态；返回false表示关闭状态。 |
+| Promise\<boolean> | Promise对象。返回true表示应用always on vpn开启状态；返回false表示关闭状态。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码 ID | 错误信息                                 |
 | --------- | ---------------------------------------- |
@@ -161,6 +165,8 @@ updateVpnAuthorizedState(bundleName: string): boolean
 | boolean | 返回值用来判断是否成功更新vpn弹框授权状态。true：成功更新vpn弹框授权状态；false：没有成功更新vpn弹框授权状态。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码 ID | 错误信息                                 |
 | --------- | ---------------------------------------- |

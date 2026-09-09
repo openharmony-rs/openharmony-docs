@@ -745,14 +745,6 @@ getErrorInfo(): HuksExternalErrorInfo
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 
-function stringToUint8Array(str: string) {
-  let arr: number[] = [];
-  for (let i = 0, j = str.length; i < j; ++i) {
-    arr.push(str.charCodeAt(i));
-  }
-  return new Uint8Array(arr);
-}
-
 const resourceId = JSON.stringify({
   providerName: "testProviderName",
   bundleName: "com.example.cryptoapplication",
@@ -761,18 +753,11 @@ const resourceId = JSON.stringify({
     key: "testKey"
   } as ESObject
 });
-const pin = '123456'; // 此处为示例，实际业务中应替换为真实的用户PIN码
-const params: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
-  {
-    tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_UKEY_PIN,
-    value: stringToUint8Array(pin)
-  }
-];
 
 async function testFunction() : Promise<void>
 {
   try {
-    await huksExternalCrypto.authUkeyPin(resourceId, params);
+    await huksExternalCrypto.openResource(resourceId);
   } catch (error) {
     const errorInfo = huksExternalCrypto.getErrorInfo();
     console.error(`errno: ${errorInfo.errno}`);

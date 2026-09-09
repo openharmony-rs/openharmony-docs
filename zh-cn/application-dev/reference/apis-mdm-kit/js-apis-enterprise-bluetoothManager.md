@@ -840,7 +840,7 @@ addDisallowedBluetoothProtocols(admin: Want, accountId: number, protocols: Array
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
 | accountId | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。|
 | protocols | Array&lt;[Protocol](#protocol20)&gt; | 是 | 蓝牙协议数组，指定需要添加至禁用名单的协议。|
-| policy | [TransferPolicy](#transferpolicy) | 是 | 传输策略,用于指定蓝牙协议的禁用方式。可选值包括:SEND_ONLY(禁止发送)、RECEIVE_ONLY(禁止接收)、RECEIVE_SEND(禁止发送和接收)。|
+| policy | [TransferPolicy](#transferpolicy) | 是 | 传输策略，用于指定蓝牙协议的禁用方式。可选值包括：SEND_ONLY(禁止发送)、RECEIVE_ONLY(禁止接收)、RECEIVE_SEND(禁止发送和接收)。|
 
 **错误码**：
 

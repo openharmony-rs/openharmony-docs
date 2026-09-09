@@ -1539,8 +1539,8 @@ API version 21及之前版本，仅支持IPv4。从API version 22开始，支持
 
 | 名称      | 类型                    | 只读 | 可选 | 说明                                                         |
 | --------- | ----------------------- | ---- | ---- |------------------------------------------------------------ |
-| srcAddr   | string                  | 否   | 是 |ip源地址。支持IP段，例如：192.168.0.0/22或者192.168.1.100-192.168.1.200 |
-| destAddr  | string                  | 否   | 是 |ip目标地址。支持IP段，例如：192.168.0.0/22或者192.168.1.100-192.168.1.200 |
+| srcAddr   | string                  | 否   | 是 |IP源地址。支持IP段，例如：192.168.0.0/22或者192.168.1.100-192.168.1.200 |
+| destAddr  | string                  | 否   | 是 |IP目标地址。支持IP段，例如：192.168.0.0/22或者192.168.1.100-192.168.1.200 |
 | srcPort   | string                  | 否   | 是 |源端口。                                                     |
 | destPort  | string                  | 否   | 是 |目标端口。                                                   |
 | appUid    | string                  | 否   | 是 |应用uid，可以通过接口[bundleManager.getInstalledBundleList](./js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20)获取bundleInfo.appInfo.uid。                                                    |

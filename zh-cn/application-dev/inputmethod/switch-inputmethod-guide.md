@@ -23,8 +23,10 @@
    ``` TypeScript
    async switchCurrentInputMethodSubtype(item: InputMethodSubtype) {
      try {
-       await inputMethod.switchCurrentInputMethodSubtype(item);
-       this.currentInputMethodSubtype = inputMethod.getCurrentInputMethodSubtype().id;
+       let isSuccess = await inputMethod.switchCurrentInputMethodSubtype(item);
+       if (isSuccess) {
+         this.currentInputMethodSubtype = inputMethod.getCurrentInputMethodSubtype().id;
+       }
      } catch (err) {
        let error: BusinessError = err as BusinessError;
        console.error(`SwitchCurrentInputMethodSubtype error: ${error.code} ${error.message}`);
@@ -41,10 +43,10 @@
    // 设置监听子类型事件，改变输入法应用界面
    inputMethodAbility.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
      if (inputMethodSubtype.id === 'InputMethodExtAbility') {
-       AppStorage.setOrCreate('subtypeChange', 0);
+       AppStorage.setOrCreate('subtypeChange', CustomInputMethodSubtype.english);
      }
      if (inputMethodSubtype.id === 'InputMethodExtAbility1') {
-       AppStorage.setOrCreate('subtypeChange', 1);
+       AppStorage.setOrCreate('subtypeChange', CustomInputMethodSubtype.chinese);
      }
    });
    ```
