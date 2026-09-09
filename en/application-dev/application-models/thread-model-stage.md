@@ -1,4 +1,4 @@
-# Thread Model (Stage Model)
+# Thread Model
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -8,7 +8,7 @@
 <!--Adviser: @huipeizi-->
 
 
-A thread is the basic unit for the operating system to perform computing and scheduling. It is an execution flow within a [process](./process-model-stage.md) and shares the resources of the process. A process can contain multiple threads.
+A thread is the basic unit for the operating system to perform computing and scheduling. It is an execution flow within a process and shares the resources of the process. A process can contain multiple threads.
 
 ## Thread Type
 There are three types of threads in the [stage model](ability-terminology.md#stage-model):
@@ -32,7 +32,7 @@ There are three types of threads in the [stage model](ability-terminology.md#sta
 >
 > - **TaskPool** manages the number of threads that can be created and their lifecycle. However, you need to maintain the lifecycle of [Worker](../arkts-utils/worker-introduction.md) threads.
 > - Multiple components can exist in the same thread. For example, both UIAbility and UI components exist in the main thread. In the stage model, [EventHub](#using-eventhub-for-intra-thread-communication) is used for data communication.
-> - To view thread information about an application process, run the **hdc shell** command to enter the shell CLI of the device, and then run the **ps -p *\<pid>* -T command**, where *\<pid>* indicates the [process ID](process-model-stage.md) of the application.
+> - To view thread information about an application process, run the **hdc shell** command to enter the shell CLI of the device, and then run the **ps -p *\<pid>* -T command**, where *\<pid>* indicates the process ID of the application.
 
 
 
