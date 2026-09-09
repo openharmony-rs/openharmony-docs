@@ -97,7 +97,7 @@ export async function getLocalCapabilities(): Promise<void> {
 
 开发者可以根据能力文件提供的应用信息，选择需要备份的应用数据。
 
-备份过程中，备份恢复服务会将应用的数据打包成文件，打包后的文件会以打开的文件句柄形式，通过创建实例时所注册的回调[onFileReady](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#onfileready)接口返回。
+备份过程中，备份恢复服务会将应用的数据打包成文件，打包后的文件会以打开的文件句柄形式，通过创建实例时所注册的回调[onFileReady](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#generalcallbacks)接口返回。
 
 开发者可以根据需要将文件内容保存到本地。
 
@@ -196,13 +196,13 @@ export async function getLocalCapabilities(): Promise<void> {
 
 开发者可以根据能力文件提供的应用信息，选择需要恢复的应用数据。
 
-恢复过程中，备份恢复服务会根据开发者调用[getFileHandle](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#getfilehandle)的请求内容，将应用待恢复数据的文件句柄，通过创建实例时注册的回调[onFileReady](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#onfileready)接口返回。可以根据返回的[uri](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#filemeta)将应用对应的待恢复数据写入到文件句柄中。写入完成后开发者调用[publishFile](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#publishfile)通知服务写入完成。
+恢复过程中，备份恢复服务会根据开发者调用[getFileHandle](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#getfilehandle)的请求内容，将应用待恢复数据的文件句柄，通过创建实例时注册的回调[onFileReady](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#generalcallbacks)接口返回。可以根据返回的[uri](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#filemeta)将应用对应的待恢复数据写入到文件句柄中。写入完成后开发者调用[publishFile](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#publishfile)通知服务写入完成。
 
 待应用所有恢复数据准备就绪后，服务开始恢复应用数据。
 
 **示例**
 
-  <!-- @[session_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->
+  <!-- @[session_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->  
   
   ``` TypeScript
   import { fileIo } from '@kit.CoreFileKit';
