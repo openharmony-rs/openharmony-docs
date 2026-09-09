@@ -221,6 +221,58 @@ libnet_trafficfilter.so
    - 同一控制器内添加的多个规则为**逻辑或**关系。
 
    <!-- @[add_packet_rule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   // 添加报文过滤规则：按控制器ID查找控制器并添加过滤规则
+   static napi_value AddPacketRuleNapi(napi_env env, napi_callback_info info)
+   {
+       // 获取JS调用参数
+       size_t argc = ARG_IDX_RULE_CONFIG;
+       napi_value args[ARG_IDX_RULE_CONFIG] = {nullptr};
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+   
+       // 解析控制器ID并查找对应控制器
+       uint32_t id = -1;
+       napi_get_value_uint32(env, args[0], &id);
+       OH_TrafficFilter_PacketController* controller = g_controllerMap[id];
+       if (controller == nullptr) {
+           napi_value result;
+           napi_create_int32(env, -1, &result);
+           return result;
+       }
+   
+       // 规则配置对象
+       napi_value configObj = args[1];
+   
+       // 从配置对象中读取规则优先级
+       uint32_t priority = DEFAULT_PRIORITY;
+       bool hasProp = false;
+       napi_value propVal;
+       if (napi_has_named_property(env, configObj, "priority", &hasProp) == napi_ok && hasProp) {
+           napi_get_named_property(env, configObj, "priority", &propVal);
+           napi_get_value_uint32(env, propVal, &priority);
+       }
+   
+       // 解析钩子点与协议类型
+       OH_TrafficFilter_HookPoint hookPoint = ParseHookPointFromConfig(env, configObj);
+       uint32_t protocol = ParseProtocolFromConfig(env, configObj);
+   
+       // 根据配置构建OH_TrafficFilter_FilterRule过滤规则
+       OH_TrafficFilter_FilterRule rule = BuildFilterRuleFromConfig(env, configObj, priority, hookPoint, protocol);
+   
+       OH_LOG_Print(LOG_APP, LOG_INFO, GLOBAL_NETSTACK, TAG,
+                    "AddPacketRuleNapi srcMac: %{public}s", rule.macMatch.srcMac);
+   
+       // 调用系统API添加过滤规则
+       int ret = OH_TrafficFilter_AddPacketRule(controller, &rule);
+       OH_LOG_Print(LOG_APP, LOG_INFO, GLOBAL_NETSTACK, TAG,
+                    "AddPacketRuleNapi ret: %{public}d", ret);
+   
+       napi_value result;
+       napi_create_int32(env, ret, &result);
+       return result;
+   }
+   ```
 
 3. 注册报文回调，在回调中根据报文信息返回放行或丢弃决策。
 
