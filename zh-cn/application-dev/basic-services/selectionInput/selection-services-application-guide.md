@@ -168,12 +168,12 @@
     import { Want } from '@kit.AbilityKit';
     import { rpc } from '@kit.IPCKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-    
+
     class SelectionAbilityStub extends rpc.RemoteObject {
       constructor(des: string) {
         super(des);
       }
-    
+
       onRemoteMessageRequest(
         code: number,
         data: rpc.MessageSequence,
@@ -273,7 +273,7 @@
     import { selectionManager, PanelInfo, BusinessError, PanelType, SelectionExtensionContext } from '@kit.BasicServicesKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { Want } from '@kit.AbilityKit';
-    
+
     @Entry
     @Component
     struct MenuPanel {
