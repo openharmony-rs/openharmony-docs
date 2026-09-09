@@ -85,6 +85,25 @@ libnet_trafficfilter.so
    <!-- @[clear_redirect_rule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Redirect_case/entry/src/main/cpp/napi_init.cpp) -->
 
    <!-- @[destroy_redirect_rule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Redirect_case/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   static napi_value DestroyRedirectorNapi(napi_env env, napi_callback_info info)
+   {
+       if (g_redirector != nullptr) {
+           OH_TrafficFilter_DestroyRedirector(g_redirector);
+           g_redirector = nullptr;
+   
+           char msg[] = "SUCCESS: Redirector destroyed";
+           napi_value result;
+           napi_create_string_utf8(env, msg, strlen(msg), &result);
+           return result;
+       }
+       char msg[] = "WARNING: No redirector to destroy";
+       napi_value result;
+       napi_create_string_utf8(env, msg, strlen(msg), &result);
+       return result;
+   }
+   ```
 
 
 4. 初始化并导出通过N-API封装的`napi_value`类型对象，通过外部函数接口将函数提供给JavaScript调用。
