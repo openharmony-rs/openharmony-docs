@@ -565,3 +565,4 @@ mouse2TouchEventMode可配置字段说明：
   }
 }
 ```
+**3. 配置示例**
