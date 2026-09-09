@@ -5,6 +5,7 @@
 <!--Designer: @hanfeng6-->
 <!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=887569e800d1542799b971140e0fb4e21989a448 translatedAt=2026-09-08T10:58:34.588Z pushedAt=2026-09-08T11:48:41.210Z -->
 
 Bundle Manager (bm) is a tool for installing, uninstalling, updating, and querying bundles. It provides basic capabilities for debugging application installation bundles.
 
@@ -45,7 +46,7 @@ bm help
 
 ### userId
 
-ID of the current system account. For details about the APIs related to system accounts, see [@ohos.account.osAccount (OS Account Management)](../reference/apis-basic-services-kit/js-apis-osAccount.md). The following lists several common system accounts.
+Indicates the ID of the current system account. For details, see [System Account ID System](../basic-services/account/os-account-introduction.md#system-account-id-system). For APIs related to system accounts, see [@ohos.account.osAccount (System Account Management)](../reference/apis-basic-services-kit/js-apis-osAccount.md). The following lists several common system accounts.
 
 - **userId = 100**: System account with ID 100. This is the default system account, which is created by the system account management module when the device is started for the first time after delivery. After the account is created, all pre-installed bundles are installed for ID 100.
 
@@ -53,6 +54,7 @@ ID of the current system account. For details about the APIs related to system a
 
 - **userId = 0**: Shared system account, also called account 0. Unlike the system account, the shared system account is not created by the system account management module. Bundles installed for account 0 are shared by all system accounts and are displayed for each system account. All third-party bundles cannot be installed for account 0.
 
+- userId = 1: Indicates the enterprise-level public service account. Enterprise-level services and applications are installed and run under this account. To install applications under this account, you need to request the [ohos.permission.SUPPORT_INSTALL_ON_U1](../security/AccessToken/permissions-for-enterprise-apps.md#ohospermissionsupport_install_on_u1) permission.
 
 ## install
 
@@ -66,12 +68,12 @@ bm install [-h] [-p filePath] [-r] [-w waitingTime] [-s hspDirPath] [-u userId] 
 | Parameter| Description|
 | -------- | -------- |
 | -h | Used to display help information.|
-| -p | Used to specify the path of the HAP or HSP file to be installed. This parameter is optional. If multiple HAPs or HSPs are required, you can specify the folder path of the HAPs or HSPs. Since API version 22, you can specify the path of the APP file to be installed or the folder path of only one APP.|
-| -r | Used to overwrite an existing HAP or HSP file. This parameter is optional. This parameter is not specified by default, indicating that the existing file will be overwritten.|
-| -s | Used to specify the path of the inter-bundle HSP to be installed. This parameter is mandatory for installing an inter-bundle HSP, and optional in all other scenarios. Since API version 24, the specified directory can contain multiple HSPs with the same bundle name but different module names. In API version 23 and earlier, the directory can contain only one HSP.<br>**NOTE**<br> The inter-application HSP is not available to third-party applications and cannot be installed by third parties.|
-| -w | Used to wait for a specified time before installing a HAP. The minimum waiting time is 180s, and the maximum waiting time is 600s. The default waiting time is 180s. This parameter is optional.|
+| -p | Used to specify the path of the HAP or HSP file to be installed. This parameter is optional. For an application with multiple HAPs or HSPs, you can specify the folder path of the HAPs or HSPs. Since API version 22, you can specify the path of the APP file to be installed or the folder path of only one APP.|
+| -r | Used to overwrite an existing HAP or HSP file. This parameter is optional. This parameter is not specified by default, indicating that overwrite installation is performed.|
+| -s | Used to specify the path of the inter-bundle HSP to be installed. This parameter is mandatory for installing an inter-bundle HSP, and optional in all other scenarios. Since API version 24, the specified directory can contain multiple HSPs with the same bundle name but different module names. In API version 23 and earlier, the directory can contain only one HSP.<br>**NOTE**<br> Inter‑application HSPs are not open to third‑party applications, and third‑party applications cannot install inter‑application HSPs.|
+| -w | Optional parameter. Specifies the wait time of the bm tool when installing a HAP. The minimum wait time is 180s, the maximum wait time is 600s, and the default value is 180s. |
 | -u | Used to specify the [user](#userid). By default, the bundle is installed for the current active user. This parameter is optional. The bundle can be installed only for the current active user or user 0.<br>**NOTE**<br> If the current active user is 100, the bundle is installed only for user 100 after the **bm install -p /data/local/tmp/ohos.app.hap -u 102** command is executed.|
-| -d | Used to allow an application to be downgraded; that is, an earlier version of the application can overwrite a later version. This parameter is optional. Only third-party applications with the signing certificate distribution type set to **app_gallery** or the signing certificate type set to **debug** can be downgraded. This parameter is supported since API version 23.|
+| -d | Used to allow an application to be installed as a downgrade; that is, an earlier version of the application can overwrite a later version. This parameter is optional. Only third-party applications with the signing certificate distribution type set to **app_gallery** or the signing certificate type set to **debug** can be downgraded. This parameter is supported since API version 23.|
 | -g | Used to automatically grant the [user_grant](../security/AccessToken/app-permission-mgmt-overview.md#user_grant-user-authorization) and [manual_settings](../security/AccessToken/app-permission-mgmt-overview.md#manual_settings-manual-authorization) permissions when installing a bundle whose signing certificate is of the **debug** type. This parameter is optional.<br>This parameter is valid only for the bundles whose signing certificate is of the **debug** type in [developer mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-developer-mode#section530763213432). You can view the **type** field (signing certificate type) in the <!--RP5-->[profile signing file](../security/app-provision-structure.md)<!--RP5End--> file.<br>This parameter is also used to revoke the granted [user_grant](../security/AccessToken/app-permission-mgmt-overview.md#user_grant-user-authorization) and [manual_settings](../security/AccessToken/app-permission-mgmt-overview.md#manual_settings-manual-authorization) permissions when the signing certificate type of a bundle is updated from **debug** to **release**. This parameter is supported since API version 24.|
 
 
@@ -589,9 +591,9 @@ The signature file of the HAP file is abnormal.
 
 **Solution**
 
-Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-auto). After the device is connected, sign the application again.
 
-Method 2: Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
+Method 2: Use manual signing. For details, see [Manual Signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual).
 
 ### 9568320 The Signature File Does Not Exist
 **Error Message**
@@ -608,16 +610,16 @@ The HAP/HSP file is not signed.
 
 **Solution**
 
-You can choose to use automatic or manual signing based on the actual scenario. For example, if the Internet is unavailable, manual signing is recommended. For details, see [Application Scenarios](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section54361623194519).
+You can choose automatic or manual signing based on the actual scenario. For example, if the Internet is unavailable, manual signing is recommended. For details, see [Application Scenarios](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing).
 
 > **NOTE**
 >
 > In the **products** tag of the project-level **build-profile.json5** file, the **signingConfig** field is optional. If this field is missing, the signature will become invalid. For details, see the field description under the [products](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile-app#section45865492619) tag.
 >
 
-Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-auto). After the device is connected, sign the application again.
 
-Method 2: Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
+Method 2: Use manual signing. For details, see [Manual Signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual).
 
 Method 3: If this error code is reported during application installation, set **appWithSignedPkg** of [packOptions](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile-app#section03812484215) to **true** in the [project-level build-profile.json5 file](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile-app) to ensure that the HAP or HSP in the APP is signed.
 
@@ -636,9 +638,9 @@ The signature file of the HAP file is abnormal.
 
 **Solution**
 
-Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-auto). After the device is connected, sign the application again.
 
-Method 2: Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
+Method 2: Use manual signing. For details, see [Manual Signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual).
 
 ### 9568323 Signature Digest Verification Failed
 **Error Message**
@@ -655,9 +657,9 @@ The signature of the HAP file is incorrect.
 
 **Solution**
 
-Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-auto). After the device is connected, sign the application again.
 
-Method 2: Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
+Method 2: Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual).
 
 ### 9568324 Signature Integrity Verification Failed
 **Error Message**
@@ -674,9 +676,9 @@ The signature of the HAP file is incorrect.
 
 **Solution**
 
-Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-auto) to sign the HAP file after the device is connected.
 
-Method 2: Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
+Method 2: Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual).
 
 ### 9568326 Abnormal Signature Public Key
 **Error Message**
@@ -693,9 +695,9 @@ The signature of the HAP file is incorrect.
 
 **Solution**
 
-Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-auto) to sign the HAP file after the device is connected.
 
-Method 2: Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
+Method 2: Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual).
 
 ### 9568327 Failed to Obtain the Signature
 **Error Message**
@@ -712,9 +714,9 @@ The signature of the HAP file is incorrect.
 
 **Solution**
 
-Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-auto) to sign the HAP file after the device is connected.
 
-Method 2: Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
+Method 2: Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual).
 
 ### 9568328 No Configuration File Block Found
 **Error Message**
@@ -731,9 +733,9 @@ The signature of the HAP file is incorrect.
 
 **Solution**
 
-Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-auto) to sign the HAP file after the device is connected.
 
-Method 2: Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
+Method 2: Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual).
 
 ### 9568330 Failed to Initialize the Signature Source
 **Error Message**
@@ -750,9 +752,9 @@ The signature of the HAP file is incorrect.
 
 **Solution**
 
-Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-auto) to sign the HAP file after the device is connected.
 
-Method 2: Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
+Method 2: Use manual signing. For details, see [manual signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual).
 
 ### 9568257 Failed to Verify the Signature File PKCS#7
 
@@ -774,9 +776,9 @@ The signature PKCS#7 verification fails during bundle installation.
 
 **Solution**
 
-Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-auto). After the device is connected, re-sign the application.
 
-Method 2: Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
+Method 2: Use manual signing. For details, see [manual signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual).
 
 
 ### 9568344 The Configuration File Fails to Be Parsed
@@ -969,7 +971,7 @@ An internal service error occurs during the installation.
 **Solution**
 
 Restart the device and try again.
- 
+
 
 ### 9568261 Failed to Construct the Installer Object
 **Error Message**
@@ -1138,7 +1140,7 @@ When you start debugging or run an application, the error message "error: signat
 
 <!--RP9-->
 
-1. Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.<!--RP9End--><!--Del-->
+1. Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-auto). After the device is connected, re-sign the application.<!--RP9End--><!--Del-->
 
 2. If manual signing is used, for OpenHarmony bundles, add the **UDID** of the debugging device to the **UnsgnedDebugProfileTemplate.json** file. For details, see [hapsigner Guide](../security/hapsigntool-guidelines.md).
 
@@ -1385,8 +1387,8 @@ When you start debugging or run an application, the error message "error: instal
 
 **Possible Causes**
 
-1. The signatures of the existing bundle and new bundle are different, or the signatures of HAPs and HSPs are different. (If the [keys](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section462703710326) or <!--RP7-->**app-identifier**s in the bundle [profiles](../security/app-provision-structure.md)<!--RP7End--> of two bundles are the same, their signatures are the same.) However, **Keep Bundle Data** (the bundle installation is overwritten) is selected in **Edit Configurations** of DevEco Studio and the bundle is re-signed.
-2. If a bundle is uninstalled but its data is kept, and a new bundle with the same bundle name is later installed, it is necessary to check whether the signature details match. This error is reported if the values of [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section462703710326) in the signature information and <!--RP7-->the values of **app-identifier** in the [profiles](../security/app-provision-structure.md)<!--RP7End--> of the bundles are different.
+1. The signatures of the application already installed on the device and the newly installed application are inconsistent, or the signatures of multiple packages (HAPs and HSPs) differ. If at least one of the [keys](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual#section1245916381106) or the app-identifier in the application [Profile signature file](../security/app-provision-structure.md)<!--RP7End--> of the two applications is the same, their signatures are considered consistent. If **Keep Application Data** is selected in **Edit Configurations** in DevEco Studio (that is, the application is overwritten and installed without being uninstalled) and the application is re-signed, this error is reported.
+2. If an application is uninstalled but its data is retained, when an application with the same bundle name is installed later, the consistency of its signature information must be verified. If neither the [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual#section1245916381106) nor the app-identifier in the application [Profile signature file](../security/app-provision-structure.md)<!--RP7End--> of the two signatures is consistent, this error is reported.
 
 
 **Solution**
@@ -1517,7 +1519,7 @@ The signature file is abnormal or the installation package is damaged.
 
 **Solution**
 
-Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) or [manual signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233) to re-sign the bundle for installation and debugging.
+Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-auto) or [manual signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual) to re-sign the application, and then install and debug it.
 
 ### 9568325 Signature Verification Failed Due to Oversized File
 **Error Message**
@@ -1534,7 +1536,7 @@ The size of the signature file exceeds the upper limit.
 
 **Solution**
 
-Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) or apply for a new signing certificate, and then use [manual signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233) to re-sign the bundle for installation and debugging.
+Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-auto) or apply for a new signing certificate, and then use [manual signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual) to re-sign the application before installing and debugging it.
 
 ### 9568336 The Debugging Type of the Bundle Is Different From That of the Installed Bundle
 **Error Message**
@@ -2775,7 +2777,7 @@ The installed bundle is encrypted.
 
 **Solution**
 
-1. Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) or [manual signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233) to re-sign the bundle for installation and debugging.
+1. Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-auto) or [manual signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual) to re-sign the application, and then install and debug it.
 
 ### 9568417 Failed to Verify the Signature
 **Error Message**
@@ -2794,7 +2796,7 @@ Although the pre-installed bundle has been uninstalled, the system still install
 
 Method 1: Re-sign the bundle.
 
-Re-sign the bundle to ensure that either the [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section462703710326) in the bundle signature information or the <!--RP7-->**app-identifier** in the bundle [profile](../security/app-provision-structure.md)<!--RP7End--> is the same as that of the pre-installed bundle.
+Re-sign the application to ensure that at least one of the [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual#section1245916381106) in the application signature information or the app-identifier in the application [Profile signature file](../security/app-provision-structure.md)<!--RP7End--> is consistent with that of the preinstalled application.
 
 <!--RP11--><!--RP11End-->
 
@@ -2849,7 +2851,7 @@ error: install version code not same.
 1. Ensure that the version of the new bundle is the same as that of the existing bundle, or uninstall the bundle on the device (ensure that the bundle is uninstalled for all users on the PCs or 2-in-1 devices<!--RP10--><!--RP10End-->), and then install the new bundle.
 2. Ensure that the version codes of all new bundles are the same.
 
-### 9568421 The Bundle Fails to Be Installed on the Device Because the Type of the Signing Certificate Profile Is Not Supported 
+### 9568421 The Bundle Fails to Be Installed on the Device Because the Type of the Signing Certificate Profile Is Not Supported
 **Error Message**
 
 error: Failed to install the HAP or HSP because the app distribution type is not allowed.
@@ -2882,7 +2884,7 @@ The bundle's <!--RP5-->[profile](../security/app-provision-structure.md)<!--RP5E
 **Solution**
 
 <!--RP6-->
-Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file.
+Re-sign the HAP file using [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-auto).
 <!--RP6End-->
 
 
@@ -3339,8 +3341,8 @@ The **U1Enabled** configuration of the **allowed-acls** field in the bundle's <!
 
 **Solution**
 
-Solution 1: Re-sign the bundle by referring to the ACL permission in [Signing Your App/Service Automatically](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) or the ACL permission configuration guide in [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233). Ensure that the configuration of the new bundle is the same as that of the existing bundle.<br>
-Solution 2: Uninstall the existing bundle on the device (ensure that the bundle is uninstalled for all users on PCs or 2-in-1 devices, <!--RP10--><!--RP10End-->) and then install the new bundle.
+Method 1: Re-sign the bundle. During signing, configure the ACL permission by referring to [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-auto) or the ACL signing configuration guide in [manual signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual), and ensure that the application to be installed has the same configuration as the installed application.<br>
+Method 2: Uninstall the installed application from the device first (for PC/2-in-1 devices, ensure that the application is uninstalled under all users<!--RP10--><!--RP10End-->), and then try to install the application to be installed.
 
 ### 9568442 Inconsistent U1Enable Configurations
 **Error Message**
@@ -3357,7 +3359,7 @@ The <!--RP5-->[profiles](../security/app-provision-structure.md)<!--RP5End--> us
 
 **Solution**
 
-Re-sign the HAPs by referring to the ACL permission in [Signing Your App/Service Automatically](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) or the ACL permission configuration guide in [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233). Ensure that **U1Enabled** in **allowed-acls** of the HAPs is consistent.
+Re-sign the HAPs. During signing, configure the ACL permission by referring to [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-auto) or the ACL signing configuration guide in [manual signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual), so that the U1Enabled information of allowed-acls in the signing information of multiple HAP packages is consistent.
 
 ### 9568445 Only One APP File Can Be Installed at a Time
 **Error Message**
@@ -3429,9 +3431,9 @@ The HAP file signature is incorrect or no signature is available.
 
 **Solution**
 
-Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-auto). After the device is connected, re-sign the application.
 
-Method 2: Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
+Method 2: Use manual signing. For details, see [manual signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual).
 
 
 ### 9568449 Binary File Verification Failed
@@ -3487,6 +3489,3 @@ The security control capability is enhanced for pre-installed bundles that have 
 
 Rectify the fault based on the error information and error code.
 <!--DelEnd-->
-
-
-<!--no_check-->
