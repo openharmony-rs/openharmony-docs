@@ -1,4 +1,4 @@
-# Thread Model (Stage Model)
+# Thread Model
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
