@@ -2862,12 +2862,12 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
    ArkTS-Sta示例：
 
    <!-- @[springLoading_handleSpringLoading](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
-  
+   
    ``` TypeScript
    handleSpringLoading(context: dragController.SpringLoadingContext): void {
      // BEGIN 状态时检查拖拽数据类型
      if (context.state == dragController.DragSpringLoadingState.BEGIN) {
-        // ...
+       // ...
        // 进行必要判断，决定是否要终止触发
        return;
      }
@@ -2881,7 +2881,7 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
        // ...
        // 视图激活或跳转
        return;
-     } 
+     }
      // 处理CANCEL状态，复原UI
      if (context.state == dragController.DragSpringLoadingState.CANCEL) {
        // ...
