@@ -674,7 +674,7 @@ saveTrustedPhotoAssetsEx(trustedUris: Array\<string>,settings?: Array\<photoAcce
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| Promise\<Array\<string>> | Promise对象，返回保存后新生成的媒体库文件对应的URI。 |
+| Promise\<Array\<string>> | Promise对象，返回保存后新生成的媒体库文件对应的URI数组。 |
 
 ### setMovingPhotoState<sup>23+</sup>
 
@@ -702,7 +702,7 @@ setMovingPhotoState(movingPhotoState: photoAccessHelper.MovingPhotoBadgeStateTyp
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 23800151 | Scene parameters validate failed, possible causes: 1. An invalid enumeration value was passed. Only MOVING_PHOTO_ENABLED and MOVING_PHOTO_DISABLED are supported for configuration | 
+| 23800151 | Scene parameters validate failed, possible causes: 1. An invalid enumeration value was passed. Only MOVING_PHOTO_ENABLED and MOVING_PHOTO_DISABLED are supported for configuration; | 
 | 23800202 | Invalid call context. Possible causes: 1. The API is called outside the photo browsing scenario. 2. The API is called when isMovingPhotoBadgeShown is already set to true.     |   
 
 **返回值：**

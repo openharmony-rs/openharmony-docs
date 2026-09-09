@@ -95,10 +95,6 @@ setFontSize(fontSize: number | string): void
 
 应用可通过该接口设置相册列表的字体大小。需要在创建相册选择组件时传入albumPickerController参数。
 
-> **说明：**
->
-> 若同时通过AlbumPickerOptions.fontSize设置了字体大小，则以本方法设置的值为准。
-
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
