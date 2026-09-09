@@ -447,19 +447,19 @@
         try {
           let panel: selectionManager.Panel = await selectionManager.createPanel(this.context, panelInfo);    // 创建菜单面板
           this.panel_ = panel;
-        try {
-          panel.onHide(() => {    // 监听弹窗隐藏（窗口失焦时会触发隐藏）
-            hilog.info(0x0000, 'SelectionExtensionAbility', 'panel has hidden.');
-          })
-        } catch (error) {
-          hilog.error(0x0000, 'SelectionExtensionAbility', 'Failed to listen panel hidden');
+          try {
+            panel.onHide(() => {    // 监听弹窗隐藏（窗口失焦时会触发隐藏）
+              hilog.info(0x0000, 'SelectionExtensionAbility', 'panel has hidden.');
+            })
+          } catch (error) {
+            hilog.error(0x0000, 'SelectionExtensionAbility', 'Failed to listen panel hidden');
+          }
+            await panel.setUiContent('pages/MenuPanel')   // 设置菜单面板样式
+          } catch(error) {
+            hilog.info(0x0000, 'SelectionExtensionAbility',
+              `Failed to createPanel, error code: ${error.code}, error message: ${error.message}`);
+          }
         }
-          await panel.setUiContent('pages/MenuPanel')   // 设置菜单面板样式
-        } catch(error) {
-          hilog.info(0x0000, 'SelectionExtensionAbility',
-            `Failed to createPanel, error code: ${error.code}, error message: ${error.message}`);
-        }
-      }
     
       async onSelected(info: selectionManager.SelectionInfo): Promise<void> {
         SelectionModel.getInstance()?.setSelectionInfo(info);
