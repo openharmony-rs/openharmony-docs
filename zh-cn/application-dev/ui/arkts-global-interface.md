@@ -345,14 +345,13 @@ export default class EntryAbility extends UIAbility {
     // 注册主窗的回调。
     WindowUIContextUtils.registerWindowCallback(window);
     // 在loadContent前调用getUIContext时，UI实例未创建，存在异常。
+    // 调用loadContent后，UI实例的创建与初始化为异步进行。因此，UIContext的获取应在loadContent的完成回调中，而不是在调用loadContent之后。
     windowStage.loadContent('pages/Index', localStorage, (err) => {
-      // 需要在loadContent完成后获取UIContext。
       if (err.code) {
         hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         return;
       }
       hilog.info(DOMAIN, 'testTag', `loadContent success.`);
-      // 需要在回调中调用。
       try {
         let uiContext = window.getUIContext();
         PixelUtils.setUIContext(uiContext);
@@ -367,7 +366,7 @@ export default class EntryAbility extends UIAbility {
       } catch (e) {
         hilog.error(DOMAIN, 'testTag', `Can't get UIContext, ${e}`);
       }
-      // loadContent是异步接口，在此处调用不能保证UI实例已经创建成功。
+      // loadContent是异步接口，在loadContent之后并不能保证UI实例已经创建并初始化。此时调用例如vp2px等依赖UI实例的函数，可能应实例不正确导致结果不符合预期。
     });
   }
 
@@ -376,7 +375,7 @@ export default class EntryAbility extends UIAbility {
   onWindowStageDestroy(): void {
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
     // 在窗口销毁时需要移除失效的UIContext
-    PixelUtil.removeUIContext();
+    PixelUtils.removeUIContext();
   }
 
   // ...
@@ -655,7 +654,7 @@ export default class EntryAbility extends UIAbility {
       let pxValue = resolvedUIContext.vp2px(20);
       hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
     });
-    // loadContent是异步接口，在此处调用不能保证UI实例已经创建成功。
+    // loadContent是异步接口，在loadContent之后并不能保证UI实例已经创建并初始化。此时调用例如vp2px等依赖UI实例的函数，可能因实例不正确导致结果不符合预期。
   }
 
   onWindowStageDestroy(): void {
@@ -1074,14 +1073,13 @@ export default class EntryAbility extends UIAbility {
     // 注册主窗的回调。
     WindowUIContextUtils.registerWindowCallback(window);
     // 在loadContent前调用getUIContext时，UI实例未创建，存在异常。
+    // 调用loadContent后，UI实例的创建与初始化为异步进行。因此，UIContext的获取应在loadContent的完成回调中，而不是在调用loadContent之后。
     windowStage.loadContent('pages/Index', localStorage, (err) => {
-      // 需要在loadContent完成后获取UIContext。
       if (err.code) {
         hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         return;
       }
       hilog.info(DOMAIN, 'testTag', `loadContent success.`);
-      // 需要在回调中调用。
       try {
         let uiContext = window.getUIContext();
         PixelUtils.setUIContext(uiContext);
@@ -1096,7 +1094,7 @@ export default class EntryAbility extends UIAbility {
       } catch (e) {
         hilog.error(DOMAIN, 'testTag', `Can't get UIContext, ${e}`);
       }
-      // loadContent是异步接口，在此处调用不能保证UI实例已经创建成功。
+      // loadContent是异步接口，在loadContent之后并不能保证UI实例已经创建并初始化。此时调用例如vp2px等依赖UI实例的函数，可能应实例不正确导致结果不符合预期。
     });
   }
 
@@ -1105,7 +1103,7 @@ export default class EntryAbility extends UIAbility {
   onWindowStageDestroy(): void {
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
     // 在窗口销毁时需要移除失效的UIContext
-    PixelUtil.removeUIContext();
+    PixelUtils.removeUIContext();
   }
 
   // ...
@@ -1299,7 +1297,7 @@ export class WindowUIContextUtils {
         }
       });
     } catch (exception) {
-      console.error(`Failed to unregister callback. Cause: ${exception}`);
+      console.error(`Failed to register callback. Cause: ${exception}`);
     }
   }
 
@@ -1409,14 +1407,13 @@ export default class EntryAbility extends UIAbility {
     // 注册主窗的回调。
     WindowUIContextUtils.registerWindowCallback(window);
     // 在loadContent前调用getUIContext时，UI实例未创建，存在异常。
+    // 调用loadContent后，UI实例的创建与初始化为异步进行。因此，UIContext的获取应在loadContent的完成回调中，而不是在调用loadContent之后。
     windowStage.loadContent('pages/Index', localStorage, (err) => {
-      // 需要在loadContent完成后获取UIContext。
       if (err.code) {
         hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         return;
       }
       hilog.info(DOMAIN, 'testTag', `loadContent success.`);
-      // 需要在回调中调用。
       try {
         let uiContext = window.getUIContext();
         PixelUtils.setUIContext(uiContext);
@@ -1431,7 +1428,7 @@ export default class EntryAbility extends UIAbility {
       } catch (e) {
         hilog.error(DOMAIN, 'testTag', `Can't get UIContext, ${e}`);
       }
-      // loadContent是异步接口，在此处调用不能保证UI实例已经创建成功。
+      // loadContent是异步接口，在loadContent之后并不能保证UI实例已经创建并初始化。此时调用例如vp2px等依赖UI实例的函数，可能应实例不正确导致结果不符合预期。
     });
   }
 
@@ -1826,6 +1823,10 @@ export class PixelUtils {
     PixelUtils.uiContext = uiContext;
   }
 
+  static removeUIContext(): void {
+    PixelUtils.uiContext = undefined;
+  }
+
   static vp2px(vpValue: number, uiContext?: UIContext): number | undefined {
     let _uiContext = uiContext ?? PixelUtils.uiContext;
     if (!_uiContext || !_uiContext.isAvailable()) {
@@ -1969,6 +1970,9 @@ ArkTS-Dyn示例：
 
 ``` TypeScript
 // Common/ContextUtils.ets
+import { Context } from '@kit.AbilityKit';
+import { UIContext } from '@kit.ArkUI';
+
 export class ContextUtils {
   public static context: Context | undefined;
 
@@ -2038,6 +2042,7 @@ export default class EntryAbility extends UIAbility {
 
   onDestroy(): void {
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onDestroy');
+    ContextUtils.context = undefined;
   }
   // ...
 }
@@ -2260,7 +2265,6 @@ struct LocalStoragePage {
           let storage = uiContext.getSharedLocalStorage();
           if (storage) {
             storage.setOrCreate('message', 'onClick is called.');
-            this.message = 'LocalStoragePageHelloWorld';
           }
         })
     }
@@ -2331,8 +2335,8 @@ export default class EntryAbility extends UIAbility {
     let localStorage = new LocalStorage();
     localStorage.setOrCreate('message', 'Message from Storage')
   // ...
+    // 调用loadContent后，UI实例的创建与初始化为异步进行。因此，UIContext的获取应在loadContent的完成回调中，而不是在调用loadContent之后。
     windowStage.loadContent('pages/Index', localStorage, (err) => {
-      // 需要在loadContent完成后获取UIContext。
       if (err.code) {
         hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         return;
