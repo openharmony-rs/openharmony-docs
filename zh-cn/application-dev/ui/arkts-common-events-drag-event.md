@@ -2796,7 +2796,7 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
    ArkTS-Dyn示例：
 
    <!-- @[springLoading_onDragEnter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) --> 
-  
+   
    ``` TypeScript
    .onDragEnter(() => {
      // 当用户拖拽进入按钮范围，即提醒用户，此处是可以处理数据的
