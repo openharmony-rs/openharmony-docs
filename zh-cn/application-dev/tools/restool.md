@@ -52,11 +52,11 @@ MccMnc匹配规则：Mcc（国家码）必须相同；Mnc（网络码）不存�
 
 Locale匹配规则：Locale匹配需满足以下三条规则。
 
-1、语言须相同。
+1. 语言须相同。
 
-2、脚本（文字）不存在时默认匹配，否则必须相同。
+2. 脚本（文字）不存在时默认匹配，否则必须相同。
 
-3、国家或地区不存在时默认匹配，否则必须相同。
+3. 国家或地区不存在时默认匹配，否则必须相同。
 
 参数举例说明：Locale[zh_CN,en_US];Device[phone]，该参数过滤其他语言，保留能匹配上zh_CN和en_US的语言；过滤其他设备，保留phone；其他参数（如MccMnc、Orientation等）配置不过滤均保留。
 
@@ -214,31 +214,31 @@ entry/src/main
 
 编译资源的方式有三种，分别是全量资源编译、增量资源编译和叠加资源编译。其中增量编译仅预览模式可用，用于预览开发阶段的组件效果；全量编译用于构建工程的资源文件；叠加编译支持将工程中的资源叠加进已有的HAP模板资源中，复用已编译的资源项。
 
-1、全量资源编译，命令如下：
+1. 全量资源编译，命令如下：
 
-```sh
-restool -i entry/src/main -j entry/src/main/module.json -p com.ohos.demo -o out -r out/ResourceTable.txt -f
-```
+   ```sh
+   restool -i entry/src/main -j entry/src/main/module.json -p com.ohos.demo -o out -r out/ResourceTable.txt -f
+   ```
 
-2、增量资源编译，具体步骤如下：
+2. 增量资源编译，具体步骤如下：
 
-步骤一：生成资源中间件，命令如下:
+   步骤一：生成资源中间件，命令如下:
 
-```sh
-restool -x entry/src/main/resource -o out
-```
-步骤二：编译资源中间件，命令如下:
+   ```sh
+   restool -x entry/src/main/resource -o out
+   ```
+   步骤二：编译资源中间件，命令如下:
 
-```sh
-restool -i out1 -i out2 -o out -p com.ohos.demo -r out/ResourceTable.txt -j entry/src/main/module.json -f -z
-```
+   ```sh
+   restool -i out1 -i out2 -o out -p com.ohos.demo -r out/ResourceTable.txt -j entry/src/main/module.json -f -z
+   ```
 
-3、叠加资源编译，命令如下：
+3. 叠加资源编译，命令如下：
 
-```sh
-# hapResource为解压后的HAP包路径
-restool -i entry/src/main -i hapResource -j entry/src/main/module.json -p com.ohos.demo -o out -r out/ResourceTable.txt -f
-```
+   ```sh
+   # hapResource为解压后的HAP包路径
+   restool -i entry/src/main -i hapResource -j entry/src/main/module.json -p com.ohos.demo -o out -r out/ResourceTable.txt -f
+   ```
 
 ### 固定资源ID
 
@@ -448,7 +448,7 @@ Failed to create the directory or file 'xxx'.
 2. 检查文件权限。若文件权限为只读，修改文件权限为可读可写。具体操作如下：
    - Windows：选中文件，点击鼠标右键，选择属性，取消勾选"只读"属性。
    - Linux/MacOS：执行chmod命令"chmod 644 文件路径"。
-    > **说明**
+    > **说明：**
     >
     > 若报错的文件路径为编译产物build目录下的路径，需先手动删除报错的文件，再修改其对应的源文件的权限。如报错路径为"entry\build\default\intermediates\res\default\resources\base\profile\form_config.json"，则修改对应的源文件"entry\src\main\resources\base\profile\form_config.json"的权限。
 
@@ -472,7 +472,7 @@ Failed to delete the directory or file 'xxx'.
 2. 检查文件权限。若文件权限为只读，修改文件权限为可读可写。具体操作如下：
    - Windows：选中文件，点击鼠标右键，选择属性，取消勾选"只读"属性。
    - Linux/MacOS：执行chmod命令"chmod 644 文件路径"。
-    > **说明**
+    > **说明：**
     >
     > 若报错的文件路径为编译产物build目录下的路径，需先手动删除报错的文件，再修改其对应的源文件的权限。如报错路径为"entry\build\default\intermediates\res\default\resources\base\profile\form_config.json"，则修改对应的源文件"entry\src\main\resources\base\profile\form_config.json"的权限。
 
@@ -496,7 +496,7 @@ Failed to copy the file from 'xxx' to 'xxx'.
 2. 检查文件权限。若文件权限为只读，修改文件权限为可读可写。具体操作如下：
    - Windows：选中文件，点击鼠标右键，选择属性，取消勾选"只读"属性。
    - Linux/MacOS：执行chmod命令"chmod 644 文件路径"。
-    > **说明**
+    > **说明：**
     >
     > 若报错的文件路径为编译产物build目录下的路径，需先手动删除报错的文件，再修改其对应的源文件的权限。如报错路径为"entry\build\default\intermediates\res\default\resources\base\profile\form_config.json"，则修改对应的源文件"entry\src\main\resources\base\profile\form_config.json"的权限。
 
@@ -520,7 +520,7 @@ Failed to open the file 'xxx'.
 2. 检查文件权限。若文件权限为只读，修改文件权限为可读可写。具体操作如下：
    - Windows：选中文件，点击鼠标右键，选择属性，取消勾选"只读"属性。
    - Linux/MacOS：执行chmod命令"chmod 644 文件路径"。
-    > **说明**
+    > **说明：**
     >
     > 若报错的文件路径为编译产物build目录下的路径，需先手动删除报错的文件，再修改其对应的源文件的权限。如报错路径为"entry\build\default\intermediates\res\default\resources\base\profile\form_config.json"，则修改对应的源文件"entry\src\main\resources\base\profile\form_config.json"的权限。
 
