@@ -1878,6 +1878,96 @@ struct Index {
 1. 将\@Monitor定义在自定义组件中。由于自定义组件在销毁时，状态管理框架会手动取消\@Monitor的监听，因此在自定义组件调用完aboutToDisappear，尽管自定义组件的数据不一定已经被释放，但\@Monitor回调已不会再被触发。
 
    <!-- @[monitor_problem_class_failure_time_set_comp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemClassFailureTimeSetComp.ets) -->
+   
+   ``` TypeScript
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   @ObservedV2
+   class InfoWrapper {
+     public info?: Info;
+   
+     constructor(info: Info) {
+       this.info = info;
+     }
+   }
+   
+   @ObservedV2
+   class Info {
+     @Trace public age: number;
+   
+     constructor(age: number) {
+       this.age = age;
+     }
+   }
+   
+   @ComponentV2
+   struct Child {
+     @Param @Require infoWrapper: InfoWrapper;
+   
+     @Monitor('infoWrapper.info.age')
+     onInfoAgeChange(monitor: IMonitor) {
+       hilog.info(0xFF00, 'testTag', '%{public}s',
+         `age change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+     }
+   
+     aboutToDisappear(): void {
+       hilog.info(0xFF00, 'testTag', '%{public}s', `Child aboutToDisappear, age: ${this.infoWrapper.info?.age}`);
+     }
+   
+     build() {
+       Column() {
+         Text(`${this.infoWrapper.info?.age}`)
+           .fontSize(20)
+           .margin(10)
+       }
+     }
+   }
+   
+   @Entry
+   @ComponentV2
+   struct Index {
+     dataArray: Info[] = [];
+     @Local showFlag: boolean = true;
+   
+     aboutToAppear(): void {
+       for (let i = 0; i < 5; i++) {
+         this.dataArray.push(new Info(i));
+       }
+     }
+   
+     build() {
+       Column() {
+         // 点击Button切换showFlag，触发Child组件的创建/销毁
+         Button('change showFlag')
+           .onClick(() => {
+             this.showFlag = !this.showFlag;
+           })
+           .margin(10)
+         Button('change number')
+           .onClick(() => {
+             hilog.info(0xFF00, 'testTag', '%{public}s', 'click to change age');
+             this.dataArray.forEach((info: Info) => {
+               info.age += 100;
+             })
+           })
+           .margin(10)
+         if (this.showFlag) {
+           Column() {
+             Text('Children')
+               .fontSize(20)
+               .margin(10)
+             ForEach(this.dataArray, (info: Info) => {
+               Child({ infoWrapper: new InfoWrapper(info) })
+             })
+           }
+           .borderColor(Color.Red)
+           .borderWidth(2)
+         }
+       }
+       .width('100%')
+     }
+   }
+   ```
 
    <div class="same-source-code">
    ``` TypeScript
