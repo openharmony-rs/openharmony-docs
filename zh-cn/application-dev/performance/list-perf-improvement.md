@@ -73,7 +73,7 @@ LazyForEach懒加载的原理如下：
 
 4. LazyForEach懒加载中的键值生成函数keyGenerator用于给数据源中的每一个数据项生成唯一且固定的键值。键值生成器必须针对每个数据生成唯一的值，如果键值相同，将导致键值相同的UI组件渲染出现问题。
 
-LazyForEach实现了按需加载，针对列表数据量大、列表组件复杂的场景，减少了页面首次启动时一次性加载数据的时间消耗，减少了内存峰值。可以显著提升页面的能效比和用户体验。
+    LazyForEach实现了按需加载，针对列表数据量大、列表组件复杂的场景，减少了页面首次启动时一次性加载数据的时间消耗，减少了内存峰值。可以显著提升页面的能效比和用户体验。
 
 ### 使用场景和限制
 
@@ -243,88 +243,88 @@ build() {
 
 接下来将结合示例代码，详细介绍LazyForEach懒加载的实现过程，包含下图所示的三部分内容：
 
-1、准备数据源类
+1. 准备数据源类。
 
-2、遍历数据源创建列表组件项
+2. 遍历数据源创建列表组件项。
 
-3、为列表项指定唯一的键值编码
+3. 为列表项指定唯一的键值编码。
 
-![](figures/list-perf-realization.png)
+    ![](figures/list-perf-realization.png)
 
-代码实现如下。首先，在使用LazyForEach数据懒加载之前，需要实现懒加载数据源接口类IDataSource。数据源接口类提供了获取数据总量，返回指定索引位置的数据，以及注册、注销数据监听器的接口。编写一个实现数据源接口IDataSource的数据源类BasicDataSource，该类包含数据变更监听器DataChangeListener类型的实例变量listeners，用于维护注册的数据变更监听器，在数据变更时调用相应的回调函数。每一个listener实例对应一个ArkUI框架侧的LazyForEach实例，数据源数据发生变更时，listener实例会通知LazyForEach需要触发界面刷新。详细代码请参考[BasicDataSource.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/IM/Chat/features/chatlist/src/main/ets/viewmodel/BasicDataSource.ets)。
+    代码实现如下。首先，在使用LazyForEach数据懒加载之前，需要实现懒加载数据源接口类IDataSource。数据源接口类提供了获取数据总量，返回指定索引位置的数据，以及注册、注销数据监听器的接口。编写一个实现数据源接口IDataSource的数据源类BasicDataSource，该类包含数据变更监听器DataChangeListener类型的实例变量listeners，用于维护注册的数据变更监听器，在数据变更时调用相应的回调函数。每一个listener实例对应一个ArkUI框架侧的LazyForEach实例，数据源数据发生变更时，listener实例会通知LazyForEach需要触发界面刷新。详细代码请参考[BasicDataSource.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/IM/Chat/features/chatlist/src/main/ets/viewmodel/BasicDataSource.ets)。
 
-BasicDataSource是一个抽象类，不同的具体列表页面的数据源需要根据业务场景分别实现该抽象类。以聊天列表场景为例，数据源具体类ChatListData实现如下。其中，列表项数组变量chatList: Array用于为List子组件提供数据。ChatModel类表示聊天列表中列表项，包含联系人信息、最后一条消息内容、时间戳、未读消息数量等信息；totalCount()和getData(index: number)是实现数据源接口类IDataSource中定义的方法，用于给LazyForEach提供数据，应用框架会调用这些方法；addData()和pushData()方法为数据源类中定义的方法，可用于给数据源增加数据。需要注意的是，在这2个方法中需要调用notifyDataAdd方法，用于调用DataChangeListener中的接口来触发LazyForEach刷新。
+    BasicDataSource是一个抽象类，不同的具体列表页面的数据源需要根据业务场景分别实现该抽象类。以聊天列表场景为例，数据源具体类ChatListData实现如下。其中，列表项数组变量chatList: Array用于为List子组件提供数据。ChatModel类表示聊天列表中列表项，包含联系人信息、最后一条消息内容、时间戳、未读消息数量等信息；totalCount()和getData(index: number)是实现数据源接口类IDataSource中定义的方法，用于给LazyForEach提供数据，应用框架会调用这些方法；addData()和pushData()方法为数据源类中定义的方法，可用于给数据源增加数据。需要注意的是，在这2个方法中需要调用notifyDataAdd方法，用于调用DataChangeListener中的接口来触发LazyForEach刷新。
 
-```ts
-class ChatListData extends BasicDataSource {  
-    /**
-     * 聊天列表项数组
-     */
-    private chatList: Array<ChatModel> = [];
-    /**
-     * 数据源的数据总量
-     */
-    public totalCount(): number {  
-        return this.chatList.length;
-    }  
+    ```ts
+    class ChatListData extends BasicDataSource {  
+        /**
+         * 聊天列表项数组
+        */
+        private chatList: Array<ChatModel> = [];
+        /**
+         * 数据源的数据总量
+        */
+        public totalCount(): number {  
+            return this.chatList.length;
+        }  
 
-    /**
-     * 返回指定索引位置的数据
-     */
-    public getData(index: number): ChatModel {  
-        return this.chatList[index];
-    }  
-    /**
-     * 指定位置添加一条聊天列表数据
-     */
-    public addData(index: number, data: ChatModel): void {  
-        this.chatList.splice(index, 0, data);  
-        this.notifyDataAdd(index);  
-    }  
-    /**
-     * 添加一条聊天列表数据
-     */
-    public pushData(data: ChatModel): void {  
-        this.chatList.push(data);  
-        this.notifyDataAdd(this.chatList.length - 1);  
-    }  
-}
-```
+        /**
+         * 返回指定索引位置的数据
+        */
+        public getData(index: number): ChatModel {  
+            return this.chatList[index];
+        }  
+        /**
+         * 指定位置添加一条聊天列表数据
+        */
+        public addData(index: number, data: ChatModel): void {  
+            this.chatList.splice(index, 0, data);  
+            this.notifyDataAdd(index);  
+        }  
+        /**
+         * 添加一条聊天列表数据
+        */
+        public pushData(data: ChatModel): void {  
+            this.chatList.push(data);  
+            this.notifyDataAdd(this.chatList.length - 1);  
+        }  
+    }
+    ```
 
-接下来，需要创建示例数据。在自定义组件ChatListDisplayView中，创建一个ChatListData类型的局部变量chatListLazy，并在aboutToAppear()方法中创建示例数据，详细代码请参考[文件ChatListPage.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/IM/Chat/features/chatlist/src/main/ets/pages/ChatListPage.ets)。
+    接下来，需要创建示例数据。在自定义组件ChatListDisplayView中，创建一个ChatListData类型的局部变量chatListLazy，并在aboutToAppear()方法中创建示例数据，详细代码请参考[文件ChatListPage.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/IM/Chat/features/chatlist/src/main/ets/pages/ChatListPage.ets)。
 
-```ts
-@Component
-export struct ChatListDisplayView {
-  private chatListLazy = new ChatListData();
-  // ...
-  async aboutToAppear(): Promise<void> {
-    // ...
-    await makeDataLocal(this.chatListLazy, ChatListJsonData.CHAT_LIST_JSON_DATA[i]);
-    // ...
-  }
-}
-```
-
-最后，在List组件容器中，使用LazyForEach接口遍历数据源this.chatListLazy循环生成ListItem列表项。其中，chatViewBuilder()方法用于布局页面列表项；代码行(msg: ChatModel) => msg.user.userId使用用户的编码作为列表项唯一的键值编码，用于区分不同的列表项。至此，使用懒加载代码实现完成，可以访问[Chat聊天示例程序](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/IM/Chat)获取详细代码。
-
-```ts
-build() {
-  Column() {
-    List() {
+    ```ts
+    @Component
+    export struct ChatListDisplayView {
+      private chatListLazy = new ChatListData();
       // ...
-      LazyForEach(this.chatListLazy, (msg: ChatModel) => {
-        ListItem() {
+      async aboutToAppear(): Promise<void> {
+        // ...
+        await makeDataLocal(this.chatListLazy, ChatListJsonData.CHAT_LIST_JSON_DATA[i]);
+        // ...
+      }
+    }
+    ```
+
+    最后，在List组件容器中，使用LazyForEach接口遍历数据源this.chatListLazy循环生成ListItem列表项。其中，chatViewBuilder()方法用于布局页面列表项；代码行(msg: ChatModel) => msg.user.userId使用用户的编码作为列表项唯一的键值编码，用于区分不同的列表项。至此，使用懒加载代码实现完成，可以访问[Chat聊天示例程序](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/IM/Chat)获取详细代码。
+
+    ```ts
+    build() {
+      Column() {
+        List() {
           // ...
-          this.chatViewBuilder(msg);
+          LazyForEach(this.chatListLazy, (msg: ChatModel) => {
+            ListItem() {
+              // ...
+              this.chatViewBuilder(msg);
+              // ...
+            }
+          }, (msg: ChatModel) => msg.user.userId)
           // ...
         }
-      }, (msg: ChatModel) => msg.user.userId)
-      // ...
+      }
     }
-  }
-}
-```
+    ```
 
 ### 效果对比
 
