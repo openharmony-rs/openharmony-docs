@@ -59,7 +59,9 @@ try {
   if (video !== document.pictureInPictureElement) {
     await video.requestPictureInPicture();
   }
-}
+} catch (err) {
+    console.error("Picture-in-Picture mode failed:", err);
+  }
 // ...
 ```
 
