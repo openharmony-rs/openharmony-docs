@@ -341,68 +341,68 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
      如下为globalConnect支持循环引用的对象的持久化示例：
 
      <!-- @[circular_reference_of_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/CircularReferenceOfObject.ets) --> 
-   
-   ``` TypeScript
-   import { PersistenceV2 } from '@kit.ArkUI';
-   
-   @ObservedV2
-   class ClassA {
-     @Trace public value: string = 'a';
-     @Trace public refB: ClassB | undefined;
-   }
-   
-   @ObservedV2
-   class ClassB {
-     @Trace public value: string = 'b';
-     @Trace public refA: ClassA | undefined;
-   }
-   
-   @ObservedV2
-   class ClassC {
-     @Trace public value: string = 'c';
-     @Trace public objA: ClassA = new ClassA();
-     @Trace public objB: ClassB = new ClassB();
-   
-     // ClassC是循环引用对象
-     constructor() {
-       this.objA.refB = this.objB;
-       this.objB.refA = this.objA;
+     
+     ``` TypeScript
+     import { PersistenceV2 } from '@kit.ArkUI';
+     
+     @ObservedV2
+     class ClassA {
+       @Trace public value: string = 'a';
+       @Trace public refB: ClassB | undefined;
      }
-   }
-   
-   @Entry
-   @ComponentV2
-   struct Page1 {
-     @Local test: ClassC = PersistenceV2.globalConnect({
-       type: ClassC,
-       defaultCreator: () => new ClassC()
-     })!;
-     output: string[] = [];
-   
-     aboutToAppear(): void {
-       const refAValue = this.test.objA?.refB?.refA?.value;
-       const refBValue = this.test.objB?.refA?.refB?.value;
-       this.output.push(`${refAValue}, ${refBValue}`);
-       this.test.objA.value += 'a';
-       this.test.objB.value += 'b';
+     
+     @ObservedV2
+     class ClassB {
+       @Trace public value: string = 'b';
+       @Trace public refA: ClassA | undefined;
      }
-   
-     build() {
-       Column() {
-         Row() {
-           // 第一次打开应用，界面显示'a, b'
-           // 第二次打开应用，界面显示'aa, bb'
-           Text(this.output.join('\n\n'))
-             .fontSize(20)
-             .width(300)
-             .margin(10)
-         }
-         .height('100%')
+     
+     @ObservedV2
+     class ClassC {
+       @Trace public value: string = 'c';
+       @Trace public objA: ClassA = new ClassA();
+       @Trace public objB: ClassB = new ClassB();
+     
+       // ClassC是循环引用对象
+       constructor() {
+         this.objA.refB = this.objB;
+         this.objB.refA = this.objA;
        }
-       .width('100%')
      }
-   }
-   ```
+     
+     @Entry
+     @ComponentV2
+     struct Page1 {
+       @Local test: ClassC = PersistenceV2.globalConnect({
+         type: ClassC,
+         defaultCreator: () => new ClassC()
+       })!;
+       output: string[] = [];
+     
+       aboutToAppear(): void {
+         const refAValue = this.test.objA?.refB?.refA?.value;
+         const refBValue = this.test.objB?.refA?.refB?.value;
+         this.output.push(`${refAValue}, ${refBValue}`);
+         this.test.objA.value += 'a';
+         this.test.objB.value += 'b';
+       }
+     
+       build() {
+         Column() {
+           Row() {
+             // 第一次打开应用，界面显示'a, b'
+             // 第二次打开应用，界面显示'aa, bb'
+             Text(this.output.join('\n\n'))
+               .fontSize(20)
+               .width(300)
+               .margin(10)
+           }
+           .height('100%')
+         }
+         .width('100%')
+       }
+     }
+     ```
 
      ![persistencev2-sync-4](./figures/persistencev2-sync-4.png)
 
