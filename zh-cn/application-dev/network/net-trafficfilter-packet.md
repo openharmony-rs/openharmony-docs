@@ -279,6 +279,62 @@ libnet_trafficfilter.so
    使用[OH_TrafficFilter_RegisterPacketCallback](../reference/apis-network-kit/capi-net-trafficfilter-h.md#oh_trafficfilter_registerpacketcallback) 接口注册回调函数。回调运行在非JS线程，如需将报文信息展示到ArkTS层，需通过`napi_threadsafe_function` 创建线程安全函数，在回调中调用`napi_call_threadsafe_function`将数据转发到ArkTS线程。
 
    <!-- @[register_packet_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   // 注册报文回调：将内核报文通过线程安全函数转发到JS层
+   OH_TrafficFilter_PacketDecision MyPacketHandler(
+       const OH_TrafficFilter_PacketDesc* packet,
+       void* userData)
+   {
+       // 通过线程安全函数将报文信息转发到JS线程
+       napi_acquire_threadsafe_function(tsFn);
+       g_asyncContext->packet = packet;
+       napi_call_threadsafe_function(tsFn, g_asyncContext, napi_tsfn_nonblocking);
+       napi_release_threadsafe_function(tsFn, napi_tsfn_release);
+   
+       // 默认丢弃该报文
+       return OH_TRAFFICFILTER_DECISION_DROP;
+   }
+   
+   static napi_value RegisterPacketCallbackNapi(napi_env env, napi_callback_info info)
+   {
+       // 注册报文回调的N-API入口
+       size_t argc = ARG_IDX_JS_CALLBACK + 1;
+       napi_value args[ARG_IDX_JS_CALLBACK + 1] = {nullptr};
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+   
+       // 解析控制器ID并查找对应控制器
+       uint32_t id = -1;
+       napi_get_value_uint32(env, args[0], &id);
+       OH_TrafficFilter_PacketController* controller = g_controllerMap[id];
+       if (controller == nullptr) {
+           napi_value result;
+           napi_create_int32(env, ERR_CONTROLLER_NOT_FOUND, &result);
+           return result;
+       }
+   
+       // 读取用户自定义数据
+       size_t copyLen = 0;
+       char buf[BUFFER_SIZE] = {0};
+       napi_get_value_string_utf8(env, args[1], buf, BUFFER_SIZE, &copyLen);
+       void* userData = reinterpret_cast<void*>(buf);
+   
+       // 创建线程安全函数，用于将报文信息转发到JS线程
+       napi_value workName;
+       napi_create_string_utf8(env, "ThreadSafeCase", NAPI_AUTO_LENGTH, &workName);
+       napi_create_threadsafe_function(env, nullptr, nullptr, workName, 0, 1, nullptr, nullptr,
+                                       nullptr, ThreadSafeCallJs, &tsFn);
+   
+       g_asyncContext->env = env;
+       napi_create_reference(env, args[ARG_IDX_JS_CALLBACK], 1, &g_asyncContext->jsCallbackRef);
+   
+       // 向控制器注册报文处理回调
+       int ret = OH_TrafficFilter_RegisterPacketCallback(controller, MyPacketHandler, userData);
+       napi_value result;
+       napi_create_int32(env, 0, &result);
+       return result;
+   }
+   ```
 
 4. 注销回调、清除规则并销毁报文控制器。
 
