@@ -3575,7 +3575,7 @@ struct TextExample14 {
         // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
         ImageSpan($r('app.media.startIcon'))
           .width(30).height(30)
-          .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH)// 从API version 20开始，支持ImageSpanAlignment.FOLLOW_PARAGRAPH
+          .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH) // 从API version 20开始，支持ImageSpanAlignment.FOLLOW_PARAGRAPH
         Span('World')
       }
       .textVerticalAlign(TextVerticalAlign.CENTER)
@@ -4225,7 +4225,7 @@ struct TextExample {
           // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
           ImageSpan($r('app.media.startIcon'))
             .width(30).height(30)
-            .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH)// 从API version 20开始，支持ImageSpanAlignment.FOLLOW_PARAGRAPH
+            .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH) // 从API version 20开始，支持ImageSpanAlignment.FOLLOW_PARAGRAPH
           Span('World')
         }
         .textVerticalAlign(TextVerticalAlign.CENTER)
@@ -4268,7 +4268,7 @@ struct TextExample {
           // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
           ImageSpan($r('app.media.startIcon'))
             .width(30).height(30)
-            .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH)// 从API version 20开始，支持ImageSpanAlignment.FOLLOW_PARAGRAPH
+            .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH) // 从API version 20开始，支持ImageSpanAlignment.FOLLOW_PARAGRAPH
           Span('World')
         }
         .textVerticalAlign(TextVerticalAlign.CENTER)
