@@ -395,13 +395,13 @@ answerCall(videoState: VideoStateType, callId: int, isRtt:boolean\): Promise\<vo
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | videoState | VideoStateType | 是   | 表示以视频或语音接听呼叫。|
 | callId | number | 是   | 表示待接听的callId。|
-| isRtt | boolean | 是   | 表示该呼叫是否为实时传输(rtt)。|
+| isRtt | boolean | 是   | 表示该呼叫是否为实时传输(rtt)。<br>true:使能实时传输<br>false:禁用实时传输 |
 
 **返回值：**
 
 | 类型                | 说明                        |
 | ------------------- | --------------------------- |
-| Promise&lt;void&gt; | 以Promise形式异步返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
