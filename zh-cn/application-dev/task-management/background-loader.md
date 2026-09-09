@@ -13,29 +13,27 @@
 
 ## 实现原理
 
-1. 需要启用后台加载任务功能的应用，可在前台启动时向系统注册任务。
-2. 任务注册后，系统允许应用查询和取消注册任务。
+应用通过本模块注册后台加载任务后，由系统的后台加载任务管理模块在空闲时段统一调度执行，应用本身无法决定任务的具体触发时机。其基本工作流程如下：
+
+1. 应用在主UIAbility的onCreate生命周期中，通过Callee注册ON_START和ON_STOP回调函数，用于接收系统触发的任务开始与停止事件。Callee回调随主UIAbility生命周期存在，随其销毁自动释放，无需手动注销。
+2. 应用调用registerTask接口注册后台加载任务，任务信息通过TaskInfo（包含目标abilityName和taskId）指定。注册后，应用还可通过getTaskInfo查询任务信息，或通过unregisterTask取消注册。
+3. 系统后台加载任务管理模块统一决策何时执行后台加载任务，应用无法对触发时机进行干预。
+4. 系统在决策满足时拉起应用并触发ON_START回调，应用在ON_START回调中执行预先加载逻辑（如数据请求、缓存写入等），完成后调用finishTask接口通知系统任务结束，任务停止时系统触发ON_STOP回调。
+5. 任务执行受约束：单次执行最长30秒；执行期间禁止音频播放、音频录制、定位、操作闪光灯等可感知行为；若应用多次超时或存在可感知操作，系统将禁用该应用后续的后台加载任务调度。
 
 ```mermaid
 sequenceDiagram
     participant App as 应用
     participant Sys as 后台加载任务管理模块
-    Note over App: 应用启动，在主UIAbility.onCreate中通过Callee注册ON_START/ON_STOP回调
     App->>Sys: registerTask(taskInfo) 注册后台加载任务
-    Sys-->>App: 注册成功
-    App->>Sys: getTaskInfo(taskId) / unregisterTask(taskInfo)（可选）
-    Sys-->>App: 任务信息 / 取消结果
-    Note over Sys: 系统决定调度时机
     Sys->>App: 拉起应用，触发ON_START回调
-    App->>App: 执行后台加载逻辑（最长30秒，禁止音频/定位/闪光灯等可感知操作）
+    App->>App: 执行后台加载逻辑
     App->>Sys: finishTask(taskInfo) 通知任务完成
     Sys->>App: 任务停止，触发ON_STOP回调
-    Note over Sys: 任务完成；多次超时或存在可感知操作，将禁用该应用后续调度
 ```
 
 ## 约束与限制
 
-**规格限制**
 
 - 数量限制：一个应用只能注册一个后台加载任务，任务中只能指定唯一的主UIAbility。
 
