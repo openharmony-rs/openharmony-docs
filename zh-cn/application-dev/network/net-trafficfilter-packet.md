@@ -1,4 +1,4 @@
-# 过滤网络报文 (C/C++)
+# 过滤网络报文(C/C++)
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wmyao_mm-->
@@ -14,7 +14,7 @@
 - 应用流量管控：对特定进程的网络行为进行审计或限制。
 
 > **说明：**
-
+>
 > 报文过滤能力需要系统权限支持，应用需在`module.json5`中声明`ohos.permission.kernel.TRAFFIC_FILTER`权限，并在原生侧调用C API。该权限为系统权限，仅系统应用或经签名的特权应用可申请使用。
 
 ## 约束与限制
@@ -208,7 +208,7 @@ libnet_trafficfilter.so
 2. 添加报文过滤规则。规则中可配置源/目的IP、端口、接口、UID、MAC、TCP标志位以及连接跟踪状态。
 
    使用[OH_TrafficFilter_AddPacketRule](../reference/apis-network-kit/capi-net-trafficfilter-h.md#oh_trafficfilter_addpacketrule)接口向指定控制器添加规则。`OH_TrafficFilter_FilterRule`支持以下匹配条件：
-   - **IP匹配**：不限制、单个、CIDR（无类别域间路由，支持如`192.168.1.0/24`的网络前缀）、范围、多个。
+   - **IP匹配**：不限制、单个、CIDR（无类别域间路由，支持如`192.168.1.0/24`的网络前缀）、范围（192.168.1.0~192.168.1.10）、多个（192.168.1.0,192.168.1.100，...）。
    - **端口匹配**：不限制、单个、范围（如端口5050~8080）、多个（5050,5051,8081，...）。
    - **接口匹配**：按入接口或出接口名称匹配，支持前缀匹配和取反。
    - **UID范围**：按应用UID范围匹配，`UINT32_MAX`表示任意UID。

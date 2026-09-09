@@ -1,4 +1,4 @@
-# 重定向网络流量 (C/C++)
+# 重定向网络流量(C/C++)
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wmyao_mm-->
@@ -15,7 +15,7 @@
 - VPN透明代理：将需要代理的应用流量无感知地引流到本地或远程代理服务。
 
 > **说明：**
-
+>
 > 流量重定向能力需要系统权限支持，应用需在`module.json5`中声明`ohos.permission.kernel.TRAFFIC_FILTER`权限，并在原生侧调用C API。
 
 ## 约束与限制
