@@ -101,6 +101,156 @@ libnet_trafficfilter.so
 
 <!-- @[query_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Redirect_case/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+// 查询连接所属进程：根据五元组信息查询发起该连接的进程
+struct QueryArgs {
+    std::string srcIp;      // 源IP地址
+    std::string dstIp;      // 目的IP地址
+    uint32_t srcPort = 0;   // 源端口
+    uint32_t dstPort = 0;   // 目的端口
+    uint32_t protocol = PROTOCOL_TCP; // 协议类型
+};
+
+static std::string ParseQueryArgsFromNapi(napi_env env, const napi_value args[], QueryArgs& queryArgs)
+{
+    // 从 JS参数中解析五元组（源/目的IP、端口、协议）
+    int ardIdxDstIp = 2;
+    int argIdxDstPort = 3;
+    int argIdxProtocol = 4;
+    size_t srcIpLen = 0;
+    size_t dstIpLen = 0;
+
+    // 获取源IP与目的IP字符串长度
+    napi_get_value_string_utf8(env, args[0], nullptr, 0, &srcIpLen);
+    napi_get_value_string_utf8(env, args[ardIdxDstIp], nullptr, 0, &dstIpLen);
+
+    std::vector<char> srcIpBuf(srcIpLen + 1);
+    std::vector<char> dstIpBuf(dstIpLen + 1);
+
+    napi_get_value_string_utf8(env, args[0], srcIpBuf.data(), srcIpBuf.size(), &srcIpLen);
+    napi_get_value_string_utf8(env, args[ardIdxDstIp], dstIpBuf.data(), dstIpBuf.size(), &dstIpLen);
+
+    queryArgs.srcIp = srcIpBuf.data();
+    queryArgs.dstIp = dstIpBuf.data();
+
+    // 获取源端口、目的端口与协议类型
+    napi_get_value_uint32(env, args[1], &queryArgs.srcPort);
+    napi_get_value_uint32(env, args[argIdxDstPort], &queryArgs.dstPort);
+    napi_get_value_uint32(env, args[argIdxProtocol], &queryArgs.protocol);
+
+    // 校验端口范围与协议类型是否合法
+    if (queryArgs.srcPort > PORT_MAX_VALUE || queryArgs.dstPort > PORT_MAX_VALUE) {
+        return "ERROR: Invalid port value";
+    }
+
+    if (queryArgs.protocol != OH_TRAFFICFILTER_PROTO_TCP && queryArgs.protocol != OH_TRAFFICFILTER_PROTO_UDP) {
+        return "ERROR: Invalid protocol value (must be TCP=6 or UDP=17)";
+    }
+
+    return "";
+}
+
+static std::string BuildQueryConnectionInfo(
+    napi_env env,
+    const napi_value args[],
+    OH_TrafficFilter_ConnectionInfo& connectionInfo)
+{
+    // 根据五元组构建OH_TrafficFilter_ConnectionInfo结构体
+    QueryArgs queryArgs;
+    std::string error = ParseQueryArgsFromNapi(env, args, queryArgs);
+    if (!error.empty()) {
+        return error;
+    }
+
+    OH_LOG_INFO(LOG_APP,
+        "QueryProcessNapi - srcIp=%{public}s, srcPort=%{public}u, dstIp=%{public}s, "
+        "dstPort=%{public}u, protocol=%{public}u",
+        queryArgs.srcIp.c_str(), queryArgs.srcPort,
+        queryArgs.dstIp.c_str(), queryArgs.dstPort, queryArgs.protocol);
+
+    memset(&connectionInfo, 0, sizeof(connectionInfo));
+    connectionInfo.size = sizeof(OH_TrafficFilter_ConnectionInfo);
+
+    // 解析源IP并按地址族填充
+    connectionInfo.srcIp.family = DetectIPFamilyFromAddr(queryArgs.srcIp);
+    if (!ParseIPAddressByFamily(queryArgs.srcIp, connectionInfo.srcIp.family,
+        connectionInfo.srcIp.addr)) {
+        return "ERROR: Invalid source IP address";
+    }
+    connectionInfo.src_port = static_cast<uint16_t>(queryArgs.srcPort);
+
+    connectionInfo.dstIp.family = DetectIPFamilyFromAddr(queryArgs.dstIp);
+    if (!ParseIPAddressByFamily(queryArgs.dstIp, connectionInfo.dstIp.family,
+        connectionInfo.dstIp.addr)) {
+        return "ERROR: Invalid destination IP address";
+    }
+    connectionInfo.dstPort = static_cast<uint16_t>(queryArgs.dstPort);
+
+    connectionInfo.protocol = static_cast<uint8_t>(queryArgs.protocol);
+    return "";
+}
+
+static napi_value CreateQueryResponseNapi(
+    napi_env env,
+    int32_t ret,
+    const OH_TrafficFilter_ProcessInfo& processInfo)
+{
+    char response[BUFFER_SIZE * 2];
+    if (ret == OH_TRAFFICFILTER_OK) {
+        OH_LOG_INFO(LOG_APP,
+            "QueryProcessNapi - Process found: pid=%{public}u, uid=%{public}u",
+            processInfo.pid, processInfo.uid);
+    } else if (ret == OH_TRAFFICFILTER_ERROR_NOT_FOUND) {
+        OH_LOG_INFO(LOG_APP, "QueryProcessNapi - Process not found");
+    } else if (ret == OH_TRAFFICFILTER_ERROR_INVALID_PARAM) {
+        OH_LOG_ERROR(LOG_APP, "QueryProcessNapi - Invalid parameters");
+    } else {
+        OH_LOG_ERROR(LOG_APP, "QueryProcessNapi - Query failed with ret=%{public}d", ret);
+    }
+
+    napi_value result;
+    napi_create_string_utf8(env, response, strlen(response), &result);
+    return result;
+}
+
+static napi_value QueryProcessNapi(napi_env env, napi_callback_info info)
+{
+    // 查询连接所属进程的主入口
+    size_t argc = REQUIRED_ARG_COUNT;
+    napi_value args[REQUIRED_ARG_COUNT] = {nullptr};
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    auto CreateStringResult = [env](const char* msg) -> napi_value {
+        napi_value result;
+        napi_create_string_utf8(env, msg, strlen(msg), &result);
+        return result;
+    };
+
+    // 校验必需参数个数
+    if (argc < REQUIRED_ARG_COUNT) {
+        return CreateStringResult("ERROR: Missing required parameters");
+    }
+
+    // 构建连接信息结构体
+    OH_TrafficFilter_ConnectionInfo connectionInfo;
+    std::string error = BuildQueryConnectionInfo(env, args, connectionInfo);
+    if (!error.empty()) {
+        return CreateStringResult(error.c_str());
+    }
+
+    // 清零并设置进程信息结构体大小
+    OH_TrafficFilter_ProcessInfo processInfo;
+    memset(&processInfo, 0, sizeof(processInfo));
+    processInfo.size = sizeof(OH_TrafficFilter_ProcessInfo);
+
+    // 调用系统 API 查询进程信息
+    int32_t ret = OH_TrafficFilter_QueryProcess(&connectionInfo, &processInfo);
+
+    return CreateQueryResponseNapi(env, ret, processInfo);
+}
+```
+
 ## 调测验证
 
 1. 连接设备，使用DevEco Studio打开搭建好的工程。
