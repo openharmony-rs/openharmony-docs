@@ -752,7 +752,6 @@
     - [error_code.h](capi-arkui-nativemodule-arkui-error-code-h.md)
   - 结构体<!--arkui-struct-->
     - [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)
-    - [ArkUI_Context](capi-arkui-nativemodule-arkui-context.md)
     - [ArkUI_Context\*](capi-arkui-nativemodule-arkui-context8h.md)
     - [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md)
     - [ArkUI_DragPreviewOption](capi-arkui-nativemodule-arkui-dragpreviewoption.md)
