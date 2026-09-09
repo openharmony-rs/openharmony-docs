@@ -974,11 +974,11 @@ struct CustomNode {
 >
 > router页面的生命周期和Navigation页面的生命周期关系如下：
 >
-> 1.router页面的跳转会影响其内部Navigation页面的生命周期。
+> 1. router页面的跳转会影响其内部Navigation页面的生命周期。
 >
-> 2.Navigation页面的跳转不会影响其所在router页面的生命周期。
+> 2. Navigation页面的跳转不会影响其所在router页面的生命周期。
 >
-> 3.应用前后台切换会同时触发router页面和Navigation页面的生命周期。
+> 3. 应用前后台切换会同时触发router页面和Navigation页面的生命周期。
 
 Router页面[生命周期](arkts-routing.md#生命周期)为`@Entry`页面中的通用方法，主要有如下四个生命周期：
 
