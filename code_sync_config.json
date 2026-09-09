@@ -14784,6 +14784,26 @@
 						"end_line":189,
 						"name":"springLoading_onDragEnter",
 						"start_line":180
+					},
+					{
+						"end_line":192,
+						"name":"springLoading_onDragSpringLoading_null",
+						"start_line":190
+					},
+					{
+						"end_line":212,
+						"name":"springLoading_example",
+						"start_line":151
+					},
+					{
+						"end_line":68,
+						"name":"springLoading_builder",
+						"start_line":37
+					},
+					{
+						"end_line":150,
+						"name":"springLoading_handleSpringLoading",
+						"start_line":99
 					}
 				]
 			}
