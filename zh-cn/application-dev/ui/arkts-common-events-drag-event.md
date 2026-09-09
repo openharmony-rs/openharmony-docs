@@ -2693,34 +2693,34 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
    ArkTS-Sta示例：
 
    <!-- @[springLoading_example](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
-  
+   
    ``` TypeScript
    build(): void {
      Column() {
        // ...
-        Column() {
+         Column() {
            // 请将$r('app.string.DoubleClick_Text')替换为实际资源文件，在本示例中该资源文件的value值为"双击文字选择后拖出: \n     DeviceName"
            Text($r('app.string.DoubleClick_Text'))
              .fontSize(30)
              .copyOption(CopyOptions.InApp) // 开启copyOption之后，文本组件即可支持选择内容进行拖拽
-          }.padding({ bottom: 30 } as Padding)
+         }.padding({ bottom: 30 } as Padding)
    
          // 请将$r('app.string.Search_Device')替换为实际资源文件，在本示例中该资源文件的value值为"搜索设备"
          Button($r('app.string.Search_Device'))
            .width('80%')
-            .height('80vp')
+           .height('80vp')
            .fontSize(30)
            .bindSheet(this.isShowSheet, this.SheetBuilder, {
              detents: [SheetSize.MEDIUM, SheetSize.LARGE,
                600.0] as [SheetSize | String | Double | Resource, SheetSize | String | Double | Resource | undefined, SheetSize | String | Double | Resource | undefined],
              preferType: SheetType.BOTTOM,
-              // 请将$r('app.string.Search_Device')替换为实际资源文件，在本示例中该资源文件的value值为"搜索设备"
+             // 请将$r('app.string.Search_Device')替换为实际资源文件，在本示例中该资源文件的value值为"搜索设备"
              title: { title: $r('app.string.Search_Device') },
            } as SheetOptions)
            // ...
-      }.width('100%').height('100%')
-      .justifyContent(FlexAlign.Center)
-    }
+     }.width('100%').height('100%')
+     .justifyContent(FlexAlign.Center)
+   }
    ```
 
 2. 实现SheetBuilder
