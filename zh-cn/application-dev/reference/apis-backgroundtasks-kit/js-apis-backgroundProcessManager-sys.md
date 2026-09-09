@@ -74,6 +74,8 @@ backgroundProcessManager.clearBackgroundApps(backgroundProcessManager.ClearType.
 
 清理类型。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Resourceschedule.BackgroundProcessManager
 
 | 名称 | 值 | 说明 |
