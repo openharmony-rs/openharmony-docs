@@ -369,6 +369,30 @@ libnet_trafficfilter.so
    ```
 
    <!-- @[clear_packet_rule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   static napi_value ClearPacketRuleNapi(napi_env env, napi_callback_info info)
+   {
+       size_t argc = 1;
+       napi_value args[1] = {nullptr};
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+   
+       uint32_t id;
+       if (argc >= 1) {
+           napi_get_value_uint32(env, args[0], &id);
+       }
+   
+       int ret = -1;
+       OH_TrafficFilter_PacketController* controller = g_controllerMap[id];
+       if (controller != nullptr) {
+           ret = OH_TrafficFilter_ClearPacketRule(controller);
+       }
+   
+       napi_value result;
+       napi_create_int32(env, ret, &result);
+       return result;
+   }
+   ```
 
    <!-- @[destroy_packet_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/TrafficFilter_Packet_case/entry/src/main/cpp/napi_init.cpp) -->
 
