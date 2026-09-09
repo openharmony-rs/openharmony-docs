@@ -590,7 +590,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_UseAutoEffect(uint32_t type, bool e
 
 **使用场景**
 
-在视频播放场景使用。AISR称作AI超分，是AutoEffect中的一种。视频只支持SDR，不支持HDR。应用进行SDR视频播放，希望对播放的画面进行清晰度提升时，可使用AUTOEFFECT的AISR超分能力，对视频播放的XComponent组件使能此效果。
+在视频播放场景使用。AISR称作AI超分，是AutoEffect中的一种。应用在进行SDR视频播放，希望对播放的画面进行清晰度提升时，可使用AUTOEFFECT的AISR超分能力，对视频播放的XComponent组件使能此效果。HDR视频类型不支持本功能。
 
 **起始版本：** 26.1.0
 
@@ -599,7 +599,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_UseAutoEffect(uint32_t type, bool e
 | 参数项 | 描述 |
 | -- | -- |
 | uint32_t type | 指定要使用的自动增强效果类型。 |
-| bool enable | 启用或禁用在随后创建的名为name的XComponent中的该类型效果。 |
+| bool enable | 启用或禁用指定的XComponent中该自动增强效果类型。|
 | const char *name | 指定XComponent的名称。如果当前应用有多个同名的XComponent，此接口的效果只对第一个活跃的XComponent生效。 |
 
 **返回：**
