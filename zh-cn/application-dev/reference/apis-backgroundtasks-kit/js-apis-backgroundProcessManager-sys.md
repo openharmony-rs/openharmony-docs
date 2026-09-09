@@ -41,7 +41,7 @@ clearBackgroundApps(clearType: ClearType): Promise\<void>;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| clearType | [ClearType](#cleartype) | 是 | 清理类型 |
+| clearType | [ClearType](#cleartype) | 是 | 资源清理类型 |
 
 **返回值：**
 
