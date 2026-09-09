@@ -11656,7 +11656,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/UIContext.ets",
 				"functions":[
 					{
-						"end_line":58,
+						"end_line":62,
 						"name":"Common_PixelUtils",
 						"start_line":15
 					}
@@ -11676,7 +11676,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/ContextUtils.ets",
 				"functions":[
 					{
-						"end_line":32,
+						"end_line":35,
 						"name":"Common_ContextUtils",
 						"start_line":15
 					}
@@ -11716,7 +11716,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/LocalStoragePage.ets",
 				"functions":[
 					{
-						"end_line":45,
+						"end_line":44,
 						"name":"Main_LocalStoragePage",
 						"start_line":15
 					}
