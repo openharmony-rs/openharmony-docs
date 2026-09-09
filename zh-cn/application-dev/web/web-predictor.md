@@ -293,29 +293,68 @@ struct WebComponent {
 
   以下示例，在Ability的onCreate中，提前初始化Web内核并预获取首页的POST请求。
 
-```ts
-// xxx.ets
+ArkTS-Dyn示例：
+<!-- @[initialize_kernel_in_onCreate_and_pre_fetch_post_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry2/src/main/ets/pages/PrefetchingAPOSTRequest_two.ets) -->
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    console.info("EntryAbility onCreate");
-    webview.WebviewController.initializeWebEngine();
-    // 预获取时，需要将"https://www.example1.com/post?e=f&g=h"替换成真实要访问的网站地址。
-    webview.WebviewController.prefetchResource(
-      {
-        url: "https://www.example1.com/post?e=f&g=h",
-        method: "POST",
-        formData: "a=x&b=y",
-      },
-      [{
-        headerKey: "c",
-        headerValue: "z",
-      },],
-      "KeyX", 500);
-    AppStorage.setOrCreate("abilityWant", want);
-    console.info("EntryAbility onCreate done");
+@Entry
+@Component
+struct WebComponent {
+  webviewController: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: $r('app.string.web_path'), controller: this.webviewController})
+        .onPageEnd(() => {
+          // 预获取时，需要將'https://www.example1.com/post?e=f&g=h'替换成真实要访问的网站地址。
+          webview.WebviewController.prefetchResource(
+            {
+              url: 'https://www.example1.com/post?e=f&g=h',
+              method: 'POST',
+              formData: 'a=x&b=y',
+            },
+            [{
+              headerKey: 'c',
+              headerValue: 'z',
+            },],
+            'KeyX', 500);
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+<!-- @[initialize_kernel_in_onCreate_and_pre_fetch_post_request](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageLoadBrowse/AcceleratePageAccess/entry2/src/main/ets/pages/PrefetchingAPOSTRequest_two.ets) -->
+
+``` TypeScript
+import { Column, Component, Entry, Web, $r } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  webviewController: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: $r('app.string.web_path'), controller: this.webviewController})
+        .onPageEnd(() => {
+          // 预获取时，需要將'https://www.example1.com/post?e=f&g=h'替换成真实要访问的网站地址。
+          webview.WebviewController.prefetchResource(
+            {
+              url: 'https://www.example1.com/post?e=f&g=h',
+              method: 'POST',
+              formData: 'a=x&b=y',
+            },
+            [{
+              headerKey: 'c',
+              headerValue: 'z',
+            },],
+            'KeyX', 500);
+        })
+    }
   }
 }
 ```
