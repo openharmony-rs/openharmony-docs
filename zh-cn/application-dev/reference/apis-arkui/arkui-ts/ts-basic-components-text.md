@@ -1292,8 +1292,6 @@ orphanCharOptimization(enabled: Optional\<boolean>)
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -3126,7 +3124,7 @@ struct TextExample14 {
         // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
         ImageSpan($r('app.media.startIcon'))
           .width(30).height(30)
-          .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH)// 从API version 20开始，支持ImageSpanAlignment.FOLLOW_PARAGRAPH
+          .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH) // 从API version 20开始，支持ImageSpanAlignment.FOLLOW_PARAGRAPH
         Span('World')
       }
       .textVerticalAlign(TextVerticalAlign.CENTER)
@@ -3668,7 +3666,7 @@ struct TextExample {
           // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
           ImageSpan($r('app.media.startIcon'))
             .width(30).height(30)
-            .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH)// 从API version 20开始，支持ImageSpanAlignment.FOLLOW_PARAGRAPH
+            .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH) // 从API version 20开始，支持ImageSpanAlignment.FOLLOW_PARAGRAPH
           Span('World')
         }
         .textVerticalAlign(TextVerticalAlign.CENTER)
