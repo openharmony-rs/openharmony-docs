@@ -50,7 +50,7 @@ ChipGroup({ <br>
 | 名称            | 类型                                            | 必填 | 装饰器类型 | 说明                                                                                     |
 | --------------- | ----------------------------------------------- | ---- | ------------------------------------------------------------                             | ------------------------------------------------------------                             |
 | items           | [ChipGroupItemOptions[]](#chipgroupitemoptions) | 是   | @Require &nbsp;@Prop | 每个Chip的特定属性，参考[ChipGroupItemOptions[]](#chipgroupitemoptions)类型。<br>若为undefined时，ChipGroup默认为空。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| itemStyle       | [ChipItemStyle](#chipitemstyle)                 | 否   | @Prop | `Chip`的`style`属性，如颜色、大小等，参考[ChipItemStyle](#chipitemstyle)类型。当需要自定义Chip的外观样式（如改变背景色、字体颜色、尺寸）时传入此参数。<br>默认值：<br>{  size: ChipSize.NORMAL, backgroundColor: $r('sys.color.ohos_id_color_button_normal'), fontColor: $r('sys.color.ohos_id_color_text_primary'), selectedFontColor: $r('sys.color.ohos_id_color_text_primary_contrary'), selectedBackgroundColor: $r('sys.color.ohos_id_color_emphasize') }<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| itemStyle       | [ChipItemStyle](#chipitemstyle)                 | 否   | @Prop | `Chip`的样式属性，如颜色、大小等，参考[ChipItemStyle](#chipitemstyle)类型。当需要自定义Chip的外观样式（如改变背景色、字体颜色、尺寸）时传入此参数。<br>默认值：<br>{  size: ChipSize.NORMAL, backgroundColor: $r('sys.color.ohos_id_color_button_normal'), fontColor: $r('sys.color.ohos_id_color_text_primary'), selectedFontColor: $r('sys.color.ohos_id_color_text_primary_contrary'), selectedBackgroundColor: $r('sys.color.ohos_id_color_emphasize') }<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | selectedIndexes | Array&lt;number&gt;                             | 否   | @Prop | 被选中Chip的索引，索引从0开始计数。<br>取值范围：索引值为非负整数，且不能超过items数组长度减1。<br>传入负数、超出数组范围的索引值或非整数时，该索引值不生效。<br>默认值：[0]<br>若multiple=false，selectedIndexes为空数组时默认选中第1个；selectedIndexes包含多个元素时仅第一个索引生效。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
 | multiple        | boolean                                         | 否   | @Prop | 是否选中多个`Chip`。<br>`true`：支持多个`Chip`选中，适用于需要同时选择多个选项的场景（如多标签选择、多条件筛选）；`false`：仅支持单个`Chip`选中，适用于单选场景（如单项选择）。<br>默认值：`false`<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | chipGroupSpace  | [ChipGroupSpaceOptions](#chipgroupspaceoptions) | 否   | @Prop | 左右内边距及Chip之间间距。参考[ChipGroupSpaceOptions](#chipgroupspaceoptions)类型。当默认间距无法满足布局要求或需要根据UI设计调整Chip之间的间隔时传入此参数。<br>默认值：{ itemSpace: 8, startSpace: 16, endSpace: 16 }<br>单位：vp<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -712,6 +712,8 @@ export struct ChipGroupExample2 {
 }
 ```
 
+![](figures/chipgroupDemo4.png)
+
 ### 示例5（多选时无障碍朗读）
 
 该示例实现了ChipGroup在多选模式下，有后缀区域和无后缀区域的屏幕朗读功能，具体播报内容为accessibilityText属性中的内容。
@@ -864,6 +866,8 @@ export struct ChipGroupExample2 {
 }
 ```
 
+![](figures/chipgroupDemo5.png)
+
 ### 示例6（设置系统材质样式）
 
 该示例通过配置backgroundSystemMaterial和iconBackgroundSystemMaterial实现系统材质样式，开启自动反色功能使文本颜色适配背景色。
@@ -948,7 +952,9 @@ struct ChipGroupMaterialExample {
 }
 ```
 
-![](figures/chip_group_material.png)
+该示例配图为高算力设备强档效果。
+
+![](figures/chip-group-material.png)
 
 ### 示例7（设置组件选中状态的系统材质样式）
 
@@ -1040,5 +1046,7 @@ struct ChipGroupMaterialExample {
 }
 
 ```
+
+该示例配图为高算力设备强档效果。
 
 ![](figures/chip-group-material-selected.png)
