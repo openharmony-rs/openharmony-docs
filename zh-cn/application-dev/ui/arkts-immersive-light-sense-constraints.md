@@ -219,7 +219,7 @@ setInterval(() => {
 
 ## 避免重复叠加阴影
 
-沉浸式系统材质默认已通过[applyShadow](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)提供阴影，再额外设置通用[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)属性既与材质效果冲突，又造成重复绘制开销。如需自定义阴影，应将applyShadow置为false后再使用shadow，避免两套效果同时生效。
+沉浸式系统材质默认已通过[applyShadow](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)提供阴影，再额外设置通用[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)属性既与材质效果冲突，又造成重复绘制开销。如需自定义阴影，应将applyShadow置为false后再使用shadow，避免重复叠加阴影造成额外开销。
 
 ```ts
 // 正例：如需自定义阴影，先关闭沉浸式系统材质自带阴影（applyShadow:false）
