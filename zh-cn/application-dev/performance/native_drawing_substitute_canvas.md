@@ -77,14 +77,14 @@ Canvas 的 CanvasRenderingContext2D 绘制使用 [globalCompositeOperation](../r
     import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
     /**
      * 玻璃蒙层效果
-    */
+     */
 
     @Preview
     @Component
     export default struct GlassCoverView {
       /**
        * 位置列表，x、y都在[0,1]之间
-      */
+       */
       @Prop
       @Watch('onDraw')
       pointsToDraw: number[][] = [];

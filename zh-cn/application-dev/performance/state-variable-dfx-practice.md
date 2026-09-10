@@ -372,10 +372,10 @@ struct ComponentB {
     > -stateVariables只支持打印指定viewId的状态变量信息，不支持递归打印。所以只能获取单个自定义组件的状态变量信息进行逐级分析，目前无法从全局查看某个状态变量影响到的所有组件。
 
 4. 打印所有信息，包含自定义组件树和状态变量信息。未指定节点时默认打印根节点，携带-viewId参数打印指定节点信息，携带-r参数递归打印。
-  ```shell
-  hdc shell "hidumper -s WindowManagerService -a '-w 11 -jsdump -dumpAll'"
-  ```
-  输出结果如下图：
+    ```shell
+    hdc shell "hidumper -s WindowManagerService -a '-w 11 -jsdump -dumpAll'"
+    ```
+    输出结果如下图：
 
     ![](./figures/state-variable-dfx-practice-pic6.png) 
 
@@ -383,7 +383,7 @@ struct ComponentB {
 
     2. 状态变量信息，对应命令-stateVariables。
 
-       dumpAll命令携带-r和-viewId参数时，输出结果中对应各个命令的部分与单独使用该命令携带相应参数时的结果相同。
+    dumpAll命令携带-r和-viewId参数时，输出结果中对应各个命令的部分与单独使用该命令携带相应参数时的结果相同。
 
 ## 参考资料
 
