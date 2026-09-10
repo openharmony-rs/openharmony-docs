@@ -221,7 +221,6 @@ struct MaterialInteractiveLightExample {
 
 <!-- @[custom_shadow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/CustomShadowExample.ets) -->
 
-
 ``` TypeScript
 import { uiMaterial } from '@kit.ArkUI';
 
@@ -255,7 +254,7 @@ struct CustomShadowExample {
   build() {
     Column() {
       Navigation() {
-        // 页面内容
+        // $r('app.media.invert')需要替换为开发者所需的图像资源文件
         Image($r('app.media.invert'))
           .width('100%')
           .height('100%')
