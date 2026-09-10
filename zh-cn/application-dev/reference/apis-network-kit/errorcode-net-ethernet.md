@@ -86,7 +86,7 @@ The device information does not exist.
 
 **处理步骤**
 
-```
+```shell
 > hdc shell ifconfig
 ```
 查看是否有对应的设备，比如eth0，eth1。
