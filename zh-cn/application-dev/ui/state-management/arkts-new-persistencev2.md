@@ -20,7 +20,7 @@ PersistenceV2提供状态变量持久化能力，开发者可以通过connect或
 >
 >globalConnect从API version 18开始支持，行为和connect保持一致，唯一的区别为connect的底层存储路径为module级别的路径，而globalConnect的底层存储路径为应用级别，详细区别见使用场景[在不同的module中使用connect和globalConnect](#在不同的module中使用connect和globalconnect)。
 >
->globalConnect从API version 23开始支持[集合类型](#globalconnect支持集合的类型)（Array、Map、Set、Date、collections.Array、collections.Map、collections.Set）的持久化，支持在UI线程持久化@Sendable类型的数据持久化，支持持久化循环引用的对象，支持持久化单个key超过8k的数据。目前建议开发者使用API version 23的新增的globalConnect接口。
+>globalConnect从API version 23开始支持[集合类型](#globalconnect支持的集合类型)（Array、Map、Set、collections.Array、collections.Map、collections.Set）和Date类型的持久化，支持在UI线程持久化@Sendable类型的数据，支持持久化循环引用的对象，支持持久化单个key超过8k的数据。目前建议开发者使用API version 23新增的globalConnect接口。
 
 ## 概述
 
@@ -75,7 +75,7 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
         // 定义持久化的数据类型
         type: collections.Array<number>,
         // 定义默认构造器，返回时需要调用makeObserved，才能实现自动持久化
-        defaultCreator: () => UIUtils.makeObserved(new collections.Array<number>(1,2))
+        defaultCreator: () => UIUtils.makeObserved(new collections.Array<number>(2, 1))
       })!;
       // 基于collections.Array构建Repeat的数据源
       toArray<T>(array: collections.Array<T>): Array<T> {
@@ -101,53 +101,53 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
               .key((item: number, index: number) => `${index} - ${item}`)
           }
           Divider().width('100%')
-          // 点击'array.push(0)'，重启应用，Repeat数组项是：1, 2, 0
-          Button('array.push(0)')
+          // 以下按钮依次演示对collections.Array的操作；数据已自动持久化，重启应用后保持当前数组状态
+          // 点击后追加元素4，数组项变为：2, 1, 4
+          Button('array.push(4)')
             .onClick(() => {
-              this.array.push(Math.round(0));
+              this.array.push(4);
             })
             .width(300)
             .margin(10)
-          // 点击'array.pop()'，重启应用，Repeat数组项是：1, 2
+          // 点击后对数组升序排序，数组项变为：1, 2, 4
+          Button('array.sort')
+            .onClick(() => {
+              this.array.sort((a, b) => a - b);
+            })
+            .width(300)
+            .margin(10)
+          // 点击后反转数组，数组项变为：4, 2, 1
+          Button('array.reverse')
+            .onClick(() => {
+              this.array.reverse();
+            })
+            .width(300)
+            .margin(10)
+          // 点击后在索引1处插入元素9，数组项变为：4, 9, 2, 1
+          Button('array.splice(1, 0, 9)')
+            .onClick(() => {
+              this.array.splice(1, 0, 9);
+            })
+            .width(300)
+            .margin(10)
+          // 点击后替换前两个元素为7和8，数组项变为：7, 8, 2, 1
+          Button('array.splice(0, 2, 7, 8)')
+            .onClick(() => {
+              this.array.splice(0, 2, 7, 8);
+            })
+            .width(300)
+            .margin(10)
+          // 点击后移除末尾元素，数组项变为：7, 8, 2
           Button('array.pop()')
             .onClick(() => {
               this.array.pop();
             })
             .width(300)
             .margin(10)
-          // 点击'array.splice(0)'，重启应用，Repeat数组项为空
+          // 点击后清空数组，数组项为空
           Button('array.splice(0)')
             .onClick(() => {
               this.array.splice(0);
-            })
-            .width(300)
-            .margin(10)
-          // 点击'splice(1, 0, random)'，重启应用：Repeat组件再次显示相同的数组项
-          Button('array.splice(1, 0, random)')
-            .onClick(() => {
-              this.array.splice(1, 0, Math.round(100*Math.random()));
-            })
-            .width(300)
-            .margin(10)
-          // 点击'array.splice(0, 2, random, random)'，前两个数组项目被替换，记录下来
-          // 重启应用：Repeat组件再次显示数组项
-          Button('array.splice(0, 2, random, random)')
-            .onClick(() => {
-              this.array.splice(0, 2, Math.round(100*Math.random()), Math.round(100*Math.random()));
-            })
-            .width(300)
-            .margin(10)
-          // 点击'array.sort', 对数组项升序排列，重启应用，Repeat组件展示升序数组
-          Button('array.sort')
-            .onClick(() => {
-              this.array.sort((a, b) => a -b);
-            })
-            .width(300)
-            .margin(10)
-          // 点击'array.reverse', 对数组项降序排列，重启应用，Repeat组件展示降序数组
-          Button('array.reverse')
-            .onClick(() => {
-              this.array.reverse();
             })
             .width(300)
             .margin(10)
@@ -159,7 +159,7 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 
      ![persistencev2-sync-0](./figures/persistencev2-sync-0.gif)
 
-- globalConnect在持久化多个相同[集合类型](#globalconnect支持集合的类型)时，需要提供不同的`key`来区分持久化数据。
+- globalConnect在持久化多个相同[集合类型](#globalconnect支持的集合类型)时，需要提供不同的`key`来区分持久化数据。
 
    如下展示开发者持久化相同的`Array<number>`类型的部分示例代码片段：
 
@@ -187,11 +187,11 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 
 4、在API version 23以前，单个key支持数据大小约8k，过大会导致持久化失败。
 
-- 在API version 23开始，解除单个key只能持久化8K数据的限制，读取和写入持久化存储的数据会在UI线程中同步进行，但开发者需要注意，不建议开发者在UI线程存储大量的持久化数据，会导致界面卡顿。
+- 从API version 23开始，解除单个key只能持久化8K数据的限制，读取和写入持久化存储的数据会在UI线程中同步进行，但开发者需要注意，不建议开发者在UI线程存储大量的持久化数据，会导致界面卡顿。
 
 5、在API version 23以前，持久化的数据必须是class对象，不支持容器类型（如Array、Set、Map），不支持built-in的构造对象（如String、Number），不支持持久化基本类型（如string、number、boolean）。如果需要持久化非class对象，建议使用[Preferences](../../database/preferences-guidelines.md)进行数据持久化。
 
-- 在API version 23开始，支持持久化Class类型和容器类型（Array、Set、Map，Date）。支持built-in的构造对象类型（如String、Number）及基本类型（如string、number、boolean）作为class属性的持久化（String、Number是不可变的数据对象，没法直接作为[顶层数据类型](#globalconnect顶层持久化数据类型及非顶层数据类型)进行持久化）。对于不支持的类型，会抛出运行时报错，从API version 23开始，将返回错误码[140103](../../reference/apis-arkui/errorcode-stateManagement.md#140103-appstoragev2和persistencev2使用不支持的数据类型)。
+- 从API version 23开始，支持持久化Class类型、容器类型（Array、Set、Map）和Date类型。支持built-in的构造对象类型（如String、Number）及基本类型（如string、number、boolean）作为class属性的持久化（String、Number是不可变的数据对象，没法直接作为[顶层数据类型](#globalconnect顶层持久化数据类型及非顶层数据类型)进行持久化）。对于不支持的类型，会抛出运行时报错，从API version 23开始，将返回错误码[140103](../../reference/apis-arkui/errorcode-stateManagement.md#140103-appstoragev2和persistencev2使用不支持的数据类型)。
 
    如下为新增globalConnect支持`Array<ClassA>`类型的持久化示例：
 
@@ -440,7 +440,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 12、globalConnect仅支持设置EL1-EL5加密级别，否则会抛出运行时异常，从API version 23开始，将返回错误码[140106](../../reference/apis-arkui/errorcode-stateManagement.md#140106-使用persistencev2存储数据到不支持的加密级别)，示例见[使用globalConnect存储数据](#使用globalconnect存储数据)。
 
 13、当存储数据的结构与当前数据的结构不一致时，可能会导致反序列化失败。在API版本26.0.0以前，开发者无法获取旧的序列化数据，进而无法判断自己的数据结构有哪些改变。
-- 从API版本26.0.0开始，[PersistenceErrorCallback](../../reference/apis-arkui/js-apis-stateManagement.md#persistenceerrorcallback)支持传入oldValue参数，开发者可通过该参数获取存于磁盘的旧的序列化数据，具体用例可见[通过notifyonerror获取旧的序列化数据](#通过notifyonerror获取旧的序列化数据)。
+- 从API版本26.0.0开始，[PersistenceErrorCallback](../../reference/apis-arkui/js-apis-stateManagement.md#persistenceerrorcallback)支持传入oldValue参数，开发者可通过该参数获取存于磁盘的旧的序列化数据，具体用例可见[通过notifyOnError获取旧的序列化数据](#通过notifyonerror获取旧的序列化数据)。
 
 14、不支持在使用connect或globalConnect的类中使用[\@Computed](./arkts-new-computed.md)。\@Computed为只读属性，不支持赋值操作，因此会导致反序列化失败。
 
@@ -448,9 +448,9 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 
 ### globalConnect顶层持久化数据类型及非顶层数据类型
 
-在API version 23以前，持久化的顶层数据类型必须是用户自定义的`class`对象，不支持容器类型（如`Array`、`Set`、`Map`，`Date`）。在API version 23开始，持久化的顶层数据类型可以是用户自定义的`class`，也可以是容器类型。非顶层数据类型，是指定义在用户自定义`class`属性的类型。
+在API version 23以前，持久化的顶层数据类型必须是用户自定义的`class`对象，不支持容器类型（如`Array`、`Set`、`Map`）和Date类型。在API version 23开始，持久化的顶层数据类型可以是用户自定义的`class`，可以是容器类型，也可以是Date类型。非顶层数据类型，是指定义在用户自定义`class`属性的类型。
 
-如下示例中，`Array<ClassA>`是顶层持久化数据类型, 可作为`globalConnect`的直接返回值类型，`collections.Map`是`CollectionMapClass`类中属性的类型，属于非顶层持久化的数据类型。
+如下示例中，`Array<ClassA>`是顶层持久化数据类型，可作为`globalConnect`的直接返回值类型，`collections.Map`是`CollectionMapClass`类中属性的类型，属于非顶层持久化的数据类型。
 
 ```typescript
 class ClassA {
@@ -515,7 +515,7 @@ class PersistClass {
 }
 ```
 
-### globalConnect支持集合的类型
+### globalConnect支持的集合类型
 
 集合类型是指`Array<V>`、`Map<K, V>`、`Set<V>`、`collections.Array<V>`、`collections.Map<K, V>`、`collections.Set<V>`。
 
@@ -534,7 +534,8 @@ import { PersistenceV2, UIUtils } from '@kit.ArkUI';
 
 class ClassA {
   public propA: number = 0;
-  public classAToString() : string {
+
+  public classAToString(): string {
     return this.propA?.toString()
   }
 }
@@ -544,7 +545,13 @@ class ClassA {
 struct Page1 {
   @Local arr: Array<ClassA> = PersistenceV2.globalConnect({
     type: Array<ClassA>,
-    defaultCreator: () => UIUtils.makeObserved(new Array<ClassA>()),
+    defaultCreator: () => {
+      const arr = UIUtils.makeObserved(new Array<ClassA>());
+      const item = new ClassA();
+      item.propA = 2;
+      arr.push(UIUtils.makeObserved(item));
+      return arr;
+    },
     // 添加defaultSubCreator，通知状态管理框架如何创建ClassA对象
     // 另外持久化后的数据需要加上makeObserved，否则会持久化失败
     defaultSubCreator: () => UIUtils.makeObserved(new ClassA())
@@ -559,7 +566,8 @@ struct Page1 {
               Text(`Item: `)
                 .fontSize(20)
                 .margin(10)
-              Text(ri.item?.classAToString ? ri.item?.classAToString(): `classAToString() missing from object, propA: ${ri.item?.propA}`)
+              Text(ri.item?.classAToString ? ri.item?.classAToString() :
+                `classAToString() missing from object, propA: ${ri.item?.propA}`)
                 .fontSize(20)
                 .margin(10)
             }
@@ -569,69 +577,64 @@ struct Page1 {
       .width('100%')
 
       Divider().width('100%')
-      // 点击'array.push(0)'，重启应用，Repeat数组项是：1, 2, 0
-      Button('array.push(0)')
+      // 以下按钮依次演示对Array<ClassA>的操作；数据已自动持久化，重启应用后保持当前数组状态
+      // 点击后追加元素(propA=1)，数组propA序列变为：2, 1
+      Button('array.push(1)')
         .width(300)
         .margin(10)
         .onClick(() => {
           let temp = new ClassA();
-          temp.propA = 0;
+          temp.propA = 1;
           this.arr.push(UIUtils.makeObserved(temp));
         })
-        .fontSize(24)
-      // 点击'array.pop()'，重启应用，Repeat数组项是：1, 2
-      Button('array.pop()')
-        .width(300)
-        .margin(10)
-        .onClick(() => {
-          this.arr.pop();
-        })
-        .fontSize(24)
-      // 点击'array.splice(0)'，重启应用，Repeat数组项为空
-      Button('array.splice(0)')
-        .width(300)
-        .margin(10)
-        .onClick(() => {
-          this.arr.splice(0);
-        })
-        .fontSize(24)
-      // 点击'splice(1, 0, random)'，重启应用：Repeat组件再次显示相同的数组项
-      Button('array.splice(1, 0, random)')
-        .margin(10)
-        .onClick(() => {
-          let temp = new ClassA();
-          temp.propA = Math.round(100 * Math.random());
-          this.arr.splice(1, 0, UIUtils.makeObserved(temp));
-        })
-        .fontSize(24)
-      // 点击'array.splice(0, 2, random, random)'，前两个数组项目被替换，记录下来
-      // 重启应用：Repeat组件再次显示数组项
-      Button('array.splice(0, 2, random, random)')
-        .margin(10)
-        .onClick(() => {
-          let tempA = new ClassA();
-          tempA.propA = Math.round(100 * Math.random());
-          this.arr.splice(0, 2,
-            UIUtils.makeObserved(tempA),
-            UIUtils.makeObserved(tempA));
-        })
-        .fontSize(18)
-      // 点击'array.sort', 对数组项升序排列，重启应用，Repeat组件展示升序数组
+      // 点击后按propA升序排序，数组propA序列变为：1, 2
       Button('array.sort')
         .width(300)
         .margin(10)
         .onClick(() => {
-          this.arr.sort((tempA, tempB)=> tempA?.propA - tempB?.propA);
+          this.arr.sort((tempA, tempB) => tempA?.propA - tempB?.propA);
         })
-        .fontSize(24)
-      // 点击'array.reverse', 对数组项降序排列，重启应用，Repeat组件展示降序数组
+      // 点击后反转数组，数组propA序列变为：2, 1
       Button('array.reverse')
         .width(300)
         .margin(10)
         .onClick(() => {
           this.arr.reverse();
         })
-        .fontSize(24)
+      // 点击后在索引1处插入元素(propA=9)，数组propA序列变为：2, 9, 1
+      Button('array.splice(1, 0, 9)')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          let temp = new ClassA();
+          temp.propA = 9;
+          this.arr.splice(1, 0, UIUtils.makeObserved(temp));
+        })
+      // 点击后替换前两个元素(propA=7、8)，数组propA序列变为：7, 8, 1
+      Button('array.splice(0, 2, 7, 8)')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          let tempA = new ClassA();
+          tempA.propA = 7;
+          let tempB = new ClassA();
+          tempB.propA = 8;
+          this.arr.splice(0, 2, UIUtils.makeObserved(tempA), UIUtils.makeObserved(tempB));
+        })
+      // 点击后移除末尾元素，数组propA序列变为：7, 8
+      Button('array.pop()')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.arr.pop();
+        })
+      // 点击后清空数组，数组为空
+      Button('array.splice(0)')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.arr.splice(0);
+        })
     }
     .width('100%')
   }
@@ -887,7 +890,7 @@ struct Page1 {
   build() {
     Column() {
       // 显示数据
-      // 被@Trace修饰的数据可以自动持久化进磁盘
+      // 被@Trace装饰的属性可以自动持久化进磁盘
       Text('Key SampleGlobalConnect: ' + this.p.father.childId.toString())
         .onClick(() => {
           this.p.father.childId += 1;
@@ -972,7 +975,7 @@ struct Page1 {
       // save接口
       Text('not save key SampleGlobalConnect: ' + this.p.father.groupId.toString() + ' refresh: ' + this.refresh)
         .onClick(() => {
-          // 未被@Trace保存的对象无法自动存储
+          // 未被@Trace装饰的属性无法自动存储
           this.p.father.groupId += 1;
           this.refresh += 1;
         })
@@ -980,7 +983,7 @@ struct Page1 {
         .margin(5)
       Text('save key SampleGlobalConnect: ' + this.p.father.groupId.toString() + ' refresh: ' + this.refresh)
         .onClick(() => {
-          // 未被@Trace保存的对象无法自动存储，需要调用save存储
+          // 未被@Trace装饰的属性无法自动存储，需要调用save存储
           this.p.father.groupId += 1;
           PersistenceV2.save(SampleGlobalConnect);
           this.refresh += 1;
@@ -1233,10 +1236,10 @@ struct Index {
         .fontColor(Color.Red)
 
       // save接口
-      // 未被@Trace装饰的变量需要借助状态变量refresh才能刷新
+      // 未被@Trace装饰的属性需要借助状态变量refresh才能刷新
       Text('save key connectSample: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
         .onClick(() => {
-          // 未被@Trace保存的对象无法自动存储，需要调用save存储
+          // 未被@Trace装饰的属性无法自动存储，需要调用save存储
           this.p.father.groupId += 1;
           PersistenceV2.save('connectSample');
           this.refresh += 1;
@@ -1308,10 +1311,10 @@ struct Page1 {
         .fontColor(Color.Red)
 
       // save接口
-      // 未被@Trace装饰的变量需要借助状态变量refresh才能刷新
+      // 未被@Trace装饰的属性需要借助状态变量refresh才能刷新
       Text('save key connect3: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
         .onClick(() => {
-          // 未被@Trace保存的对象无法自动存储，需要调用save存储
+          // 未被@Trace装饰的属性无法自动存储，需要调用save存储
           this.p.father.groupId += 1;
           PersistenceV2.save('connect3');
           this.refresh += 1;
@@ -1365,7 +1368,7 @@ function move() {
     let p: Sample = PersistenceV2.connect(Sample, 'connect3', () => new Sample())!;
     PersistenceV2.remove('connect3');
     let p1 = PersistenceV2.globalConnect({ type: Sample, key: 'connect4', defaultCreator: () => p })!; // 使用默认构造函数也可以
-    // 赋值数据，@Trace修饰的会自动保存
+    // 赋值数据，@Trace装饰的属性会自动保存
     p1.father = p.father;
     // 将迁移标志设置为true
     movingState.isCompleteMoving = true;
@@ -1394,10 +1397,10 @@ struct Page1 {
         .fontColor(Color.Red)
 
       // save接口
-      // 未被@Trace装饰的变量需要借助状态变量refresh才能刷新
+      // 未被@Trace装饰的属性需要借助状态变量refresh才能刷新
       Text('save key connect4: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
         .onClick(() => {
-          // 未被@Trace保存的对象无法自动存储，需要调用save存储
+          // 未被@Trace装饰的属性无法自动存储，需要调用save存储
           this.p.father.groupId += 1;
           PersistenceV2.save('connect4');
           this.refresh += 1;

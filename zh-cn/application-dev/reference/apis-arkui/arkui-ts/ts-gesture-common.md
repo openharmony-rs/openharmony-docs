@@ -350,7 +350,7 @@ getEventTargetInfo(): EventTargetInfo
 
 ### isValid<sup>12+</sup>
 
-isValid(): boolean;
+isValid(): boolean
 
 返回当前手势识别器是否有效。
 
@@ -756,8 +756,6 @@ getDistanceMap(): Map\<SourceTool, number\>
 
 定义手势类型。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称  | 值 | 说明                                   |
@@ -816,7 +814,7 @@ getDistanceMap(): Map\<SourceTool, number\>
 
 getCurrentLocalPosition?(): Coordinate2D
 
-获取手指位置相对于当前组件实时位置左上角的坐标。
+获取手指位置相对于当前组件实时位置左上角的坐标。在事件无法提供有效的实时组件坐标时，返回空值，使用前请进行判空处理。
 
 **起始版本：** 26.0.0
 

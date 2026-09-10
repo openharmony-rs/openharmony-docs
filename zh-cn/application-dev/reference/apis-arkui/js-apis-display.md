@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->
-<!--Designer: @logn; @wulong158-->
+<!--Designer: @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -363,7 +363,7 @@ getBrightnessInfo(displayId: number): BrightnessInfo
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 801     | Capability not supported. Function getBrightnessInfo can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. |
 | 1400003 | This display manager service works abnormally. |
 | 1400004 | Parameter error. Possible cause: 1. Invalid parameter range. |
 
@@ -667,7 +667,7 @@ onChangeWithAttribute(displayAttributeOption: Array&lt;string&gt;, callback: Cal
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 801     | Capability not supported. Function onChangeWithAttribute can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. |
 | 1400003 | This display manager service works abnormally. Possible causes: Internal IPC error. |   
 
 **示例：**
@@ -751,7 +751,7 @@ getFoldDisplayMode(): FoldDisplayMode
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持多种显示模式的设备中可正常调用，在其他设备中返回FoldDisplayMode.FOLD_DISPLAY_MODE_UNKNOWN。
+**设备行为差异：** 该接口在支持多种显示模式（[getAllDisplayPhysicalResolution](#displaygetalldisplayphysicalresolution12)接口返回值中包含设备支持的所有显示模式）的设备中可正常调用，在其他设备中返回FoldDisplayMode.FOLD_DISPLAY_MODE_UNKNOWN。
 
 **返回值：**
 
@@ -917,7 +917,7 @@ on(type: 'brightnessInfoChange', callback: BrightnessCallback&lt;number, Brightn
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 801     | Capability not supported. Function on('brightnessInfoChange') can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. |
 | 1400003 | This display manager service works abnormally. |
 | 1400004 | Parameter error. Possible cause: 1. Invalid parameter range. |
 
@@ -957,7 +957,7 @@ off(type: 'brightnessInfoChange', callback?: BrightnessCallback&lt;number, Brigh
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 801     | Capability not supported. Function off('brightnessInfoChange') can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. |
 | 1400003 | This display manager service works abnormally. |
 | 1400004 | Parameter error. Possible cause: 1. Invalid parameter range. |
 
@@ -1327,7 +1327,7 @@ createVirtualScreen(config:VirtualScreenConfig): Promise&lt;number&gt;
 | ------- | ----------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801     | Capability not supported. Function createVirtualScreen can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. |
 | 1400001 | Invalid display or screen. |
 
 **示例：**
@@ -1381,7 +1381,7 @@ destroyVirtualScreen(screenId:number): Promise&lt;void&gt;
 | ------- | ----------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801     | Capability not supported. Function destroyVirtualScreen can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. |
 | 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
 
@@ -1503,7 +1503,7 @@ makeUnique(screenId:number): Promise&lt;void&gt;
 | ------- | ----------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801     | Capability not supported. Function makeUnique can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. |
 | 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
 
@@ -1781,8 +1781,8 @@ promise.then((data: Array<display.Display>) => {
 | yDPI | number | 是 | 否 | y轴方向中每英寸屏幕的确切物理像素值，该参数为浮点数。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                    |
 | colorSpaces<sup>11+</sup> | Array<[colorSpaceManager.ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md)> | 是 | 否 | 显示设备支持的所有色域类型。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                |
 | hdrFormats<sup>11+</sup> | Array<[hdrCapability.HDRFormat](../apis-arkgraphics2d/js-apis-hdrCapability.md#hdrformat)> | 是 | 否 | 显示设备支持的所有HDR格式。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                               |
-| availableWidth<sup>12+</sup> | number | 是 | 否 | 显示设备的可用区域宽度，单位为px，该参数为大于0的整数。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **设备行为差异：**<br>在搭载OpenHarmony 7.0.0及以上版本的设备上，该接口可正常调用。<br>针对低于该版本的设备，该接口在PC/2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过width属性获取当前设备屏幕的可用区域宽度。                                                 |
-| availableHeight<sup>12+</sup> | number | 是 | 否 | 显示设备的可用区域高度，单位为px，该参数为大于0的整数。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **设备行为差异：** <br>在搭载OpenHarmony 7.0.0及以上版本的设备上，该接口可正常调用。<br>针对低于该版本的设备，该接口在PC/2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过height属性获取当前设备屏幕的可用区域高度。                                                 |
+| availableWidth<sup>12+</sup> | number | 是 | 否 | 显示设备的可用区域宽度，单位为px，该参数为大于0的整数。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **设备行为差异：**<br>在搭载OpenHarmony 7.0.0及以上版本的设备上，该接口可正常调用。<br>针对OpenHarmony 7.0.0以下版本的设备，该接口在PC/2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过width属性获取当前设备屏幕的可用区域宽度。                                                 |
+| availableHeight<sup>12+</sup> | number | 是 | 否 | 显示设备的可用区域高度，单位为px，该参数为大于0的整数。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **设备行为差异：** <br>在搭载OpenHarmony 7.0.0及以上版本的设备上，该接口可正常调用。<br>针对OpenHarmony 7.0.0以下版本的设备，该接口在PC/2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过height属性获取当前设备屏幕的可用区域高度。                                                 |
 | screenShape<sup>18+</sup> | [ScreenShape](#screenshape18) | 是 | 是 | 显示设备的屏幕形状，默认值为ScreenShape.RECTANGLE。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | sourceMode<sup>19+</sup> | [DisplaySourceMode](#displaysourcemode19) | 是 | 是 | 显示设备的显示模式枚举，默认值为DisplaySourceMode.NONE。<br>**系统能力：** SystemCapability.Window.SessionManager <br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。                                                                                    |
 | x<sup>19+</sup> | number | 是 | 是 | 显示设备左上角相对于原点的x轴坐标，原点为主屏左上角，单位为px，该参数为整数，默认值为0。仅DisplaySourceMode为MAIN和EXTEND时返回实际值，其余返回默认值0。<br>**系统能力：** SystemCapability.Window.SessionManager<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。                                                                                    |
@@ -1810,7 +1810,7 @@ getRoundedCorner(): Array&lt;RoundedCorner&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 801     | Capability not supported. Function getRoundedCorner can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. |
 | 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
 
@@ -1922,7 +1922,7 @@ getAvailableArea(): Promise&lt;Rect&gt;
 
 - 在搭载OpenHarmony 7.0.0及以上版本的设备上，该接口可正常调用。
 
-- 针对低于该版本的设备，该接口在PC/2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过[Display属性](#属性)中的width、height属性获取当前设备屏幕的可用区域。
+- 针对OpenHarmony 7.0.0以下版本的设备，该接口在PC/2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过[Display属性](#属性)中的width、height属性获取当前设备屏幕的可用区域。
 
 **返回值：**
 
@@ -1936,7 +1936,7 @@ getAvailableArea(): Promise&lt;Rect&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801     | Capability not supported. |
 | 1400001 | Invalid display or screen. Possible cause: 1. This display is abnormal. 2. Internal task error. |
 
 **示例：**
@@ -1971,7 +1971,7 @@ on(type: 'availableAreaChange', callback: Callback&lt;Rect&gt;): void
 
 - 在搭载OpenHarmony 7.0.0及以上版本的设备上，该接口可正常调用。
 
-- 针对低于该版本的设备，该接口在PC/2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
+- 针对OpenHarmony 7.0.0以下版本的设备，该接口在PC/2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
 
 **参数：**
 
@@ -2020,7 +2020,7 @@ off(type: 'availableAreaChange', callback?: Callback&lt;Rect&gt;): void
 
 - 在搭载OpenHarmony 7.0.0及以上版本的设备上，该接口可正常调用。
 
-- 针对低于该版本的设备，该接口在PC/2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
+- 针对OpenHarmony 7.0.0以下版本的设备，该接口在PC/2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
 
 **参数：**
 
@@ -2074,7 +2074,7 @@ getLiveCreaseRegion(): FoldCreaseRegion
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801     | Capability not supported. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
@@ -2087,5 +2087,45 @@ try {
   console.info(`Succeeded in getting the live crease region. Data: ${JSON.stringify(data)}`);
 } catch (exception) {
   console.error(`Failed to get the live crease region. Code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+### getDisplayCapability<sup>18+</sup>
+getDisplayCapability(): string
+
+获取当前设备屏幕的折叠状态、显示模式、旋转角度和显示方向信息。
+
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**测试接口：** 此接口仅在自动化测试脚本中使用。
+
+**返回值：**
+
+| 类型   | 说明                                               |
+| ------ | -------------------------------------------------- |
+| string | JSON字符串，包含以下字段：<br>- capability：设备支持的各折叠状态foldStatus（取值及含义可见[FoldStatus](#foldstatus10)）与显示模式foldDisplayMode（取值及含义可见[FoldDisplayMode](#folddisplaymode10)）组合，以及各组合下支持的旋转角度rotation（取值及含义可见[Display属性](#属性)中的rotation属性）和显示方向orientation（取值及含义可见[Orientation](#orientation10)）。<br>- foldScreenType：设备折叠产品类型。例如“6,1,0,0”，其中第一位参数表示：1：大折叠（内折），2：小折叠，3：大折叠（外折），4：阔折叠，5：折叠PC，6：双折轴设备；第二位参数表示存在几块物理屏幕；第三、四位参数暂未使用，返回默认值0。<br>- buildin_screen：设备是否存在内置屏幕。值为“0”时表示无内置屏幕，值为“1”时表示有内置屏幕。<br>- allCreaseRegion：各显示模式foldDisplayMode（取值及含义可见[FoldDisplayMode](#folddisplaymode10)）下不同显示方向displayOrientation（取值及含义可见[Orientation](#orientation10)）对应的折痕区域creaseRects（取值及含义可见[FoldCreaseRegion](#foldcreaseregion10)）。该字段仅在可折叠设备上返回。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[屏幕错误码](errorcode-display.md)。
+
+| 错误码ID | 错误信息                                       |
+| -------- | --------------------------------------------- |
+| 801      | Capability not supported. |
+| 1400001  | Invalid display or screen. |
+| 1400003  | This display manager service works abnormally. |
+
+**示例：**
+
+```ts
+let displayClass: display.Display | null = null;
+try {
+  displayClass = display.getDefaultDisplaySync();
+  let data: string = displayClass.getDisplayCapability();
+  console.info(`Succeeded in getting the display capability. Data: ${data}`);
+} catch (exception) {
+  console.error(`Failed to get the display capability. Code: ${exception.code}, message: ${exception.message}`);
 }
 ```

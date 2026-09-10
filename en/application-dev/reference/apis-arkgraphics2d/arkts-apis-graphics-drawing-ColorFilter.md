@@ -2,12 +2,13 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=9d24e15ef82b33c8322a412e3fad5e8314ad7c4e translatedAt=2026-08-24T07:53:11.229Z pushedAt=2026-08-25T03:21:12.004Z -->
 
-Defines a color filter.
+A color filter is used to transform and process the colors of images or graphics. It supports creating various types of color filters, including blend mode color filters, composite color filters, matrix color filters, gamma color space conversion filters, luma color filters, and lighting color filters.
 
 > **NOTE**
 >
@@ -25,7 +26,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 ## createBlendModeColorFilter
 
-createBlendModeColorFilter(color: common2D.Color, mode: BlendMode) : ColorFilter
+static createBlendModeColorFilter(color: common2D.Color, mode: BlendMode) : ColorFilter
 
 Creates a **ColorFilter** object with a given color and blend mode.
 
@@ -35,14 +36,14 @@ Creates a **ColorFilter** object with a given color and blend mode.
 
 | Name| Type                                                | Mandatory| Description            |
 | ------ | ---------------------------------------------------- | ---- | ---------------- |
-| color  | [common2D.Color](js-apis-graphics-common2D.md#color) | Yes  | Color in ARGB format. The value of each color channel is an integer ranging from 0 to 255.|
-| mode   | [BlendMode](arkts-apis-graphics-drawing-e.md#blendmode)                              | Yes  | Blend mode.|
+| color  | [common2D.Color](js-apis-graphics-common2D.md#color) | Yes   | Color in ARGB format. The value of each color channel is an integer in the range [0, 255]. |
+| mode   | [BlendMode](arkts-apis-graphics-drawing-e.md#blendmode)                              | Yes   | Blend mode, which specifies the color blending algorithm used when two shaders are overlaid. |
 
 **Returns**
 
 | Type                       | Description              |
 | --------------------------- | ------------------ |
-| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | Color filter.|
+| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | Returns a color filter created based on the specified color and blend mode. |
 
 **Error codes**
 
@@ -65,7 +66,7 @@ let colorFilter = drawing.ColorFilter.createBlendModeColorFilter(color, drawing.
 
 static createBlendModeColorFilter(color: common2D.Color | number, mode: BlendMode) : ColorFilter
 
-Creates a **ColorFilter** object with a given color and blend mode.
+Creates a color filter with the specified color and blend mode.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -73,14 +74,14 @@ Creates a **ColorFilter** object with a given color and blend mode.
 
 | Name| Type                                                | Mandatory| Description            |
 | ------ | ---------------------------------------------------- | ---- | ---------------- |
-| color  | [common2D.Color](js-apis-graphics-common2D.md#color) \| number | Yes  | Color, represented by an unsigned integer in hexadecimal ARGB format.|
-| mode   | [BlendMode](arkts-apis-graphics-drawing-e.md#blendmode)                              | Yes  | Blend mode.|
+| color  | [common2D.Color](js-apis-graphics-common2D.md#color) \| number | Yes   | Color. When the type is common2D.Color, the value of each color channel is an integer in the range [0, 255]; when the type is number, the color is represented by an unsigned integer in hexadecimal ARGB format, with a value range of [0, 0xFFFFFFFF]. |
+| mode   | [BlendMode](arkts-apis-graphics-drawing-e.md#blendmode)                              | Yes   | Blend mode, which specifies the color blending algorithm used when two shaders are overlaid. |
 
 **Returns**
 
 | Type                       | Description              |
 | --------------------------- | ------------------ |
-| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | Color filter.|
+| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | Returns a color filter created based on the specified color and blend mode. |
 
 **Error codes**
 
@@ -100,7 +101,7 @@ let colorFilter = drawing.ColorFilter.createBlendModeColorFilter(0xffff0000, dra
 
 ## createComposeColorFilter
 
-createComposeColorFilter(outer: ColorFilter, inner: ColorFilter) : ColorFilter
+static createComposeColorFilter(outer: ColorFilter, inner: ColorFilter) : ColorFilter
 
 Creates a **ColorFilter** object by combining another two color filters.
 
@@ -117,7 +118,7 @@ Creates a **ColorFilter** object by combining another two color filters.
 
 | Type                       | Description              |
 | --------------------------- | ------------------ |
-| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | Color filter.|
+| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | Returns the created combined color filter. |
 
 **Error codes**
 
@@ -140,7 +141,7 @@ let colorFilter = drawing.ColorFilter.createComposeColorFilter(colorFilter1, col
 
 ## createLinearToSRGBGamma
 
-createLinearToSRGBGamma() : ColorFilter
+static createLinearToSRGBGamma() : ColorFilter
 
 Creates a **ColorFilter** object that applies the sRGB gamma curve to the RGB channels.
 
@@ -150,7 +151,7 @@ Creates a **ColorFilter** object that applies the sRGB gamma curve to the RGB ch
 
 | Type                       | Description              |
 | --------------------------- | ------------------ |
-| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | Color filter.|
+| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | Returns the created color filter. |
 
 **Example**
 
@@ -162,7 +163,7 @@ let colorFilter = drawing.ColorFilter.createLinearToSRGBGamma();
 
 ## createSRGBGammaToLinear
 
-createSRGBGammaToLinear() : ColorFilter
+static createSRGBGammaToLinear() : ColorFilter
 
 Creates a **ColorFilter** object that applies the RGB channels to the sRGB gamma curve.
 
@@ -172,7 +173,7 @@ Creates a **ColorFilter** object that applies the RGB channels to the sRGB gamma
 
 | Type                       | Description              |
 | --------------------------- | ------------------ |
-| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | Color filter.|
+| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | Returns the created color filter. |
 
 **Example**
 
@@ -184,9 +185,9 @@ let colorFilter = drawing.ColorFilter.createSRGBGammaToLinear();
 
 ## createLumaColorFilter
 
-createLumaColorFilter() : ColorFilter
+static createLumaColorFilter() : ColorFilter
 
-Creates a **ColorFilter** object that multiplies the luma into the alpha channel and sets the RGB channels to zero.
+Creates a color filter that multiplies the luma of its input by the alpha channel value and sets the red, green, and blue channels to zero.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -194,7 +195,7 @@ Creates a **ColorFilter** object that multiplies the luma into the alpha channel
 
 | Type                       | Description              |
 | --------------------------- | ------------------ |
-| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | Color filter.|
+| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | Color filter created. |
 
 **Example**
 
@@ -208,7 +209,7 @@ let colorFilter = drawing.ColorFilter.createLumaColorFilter();
 
 static createMatrixColorFilter(matrix: Array\<number>): ColorFilter
 
-Creates a color filter object with a 4*5 color matrix.
+Creates a color filter that transforms colors through a 4x5 color matrix.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -216,13 +217,13 @@ Creates a color filter object with a 4*5 color matrix.
 
 | Name  | Type                                        | Mandatory| Description                           |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
-| matrix | Array\<number> | Yes  | An array of 20 numbers, indicating the 4*5 matrix.                |
+| matrix | Array\<number> | Yes | Array of length 20, representing a 4×5 matrix for color transformation. |
 
 **Returns**
 
 | Type                       | Description              |
 | --------------------------- | ------------------ |
-| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | Color filter.|
+| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | Returns the created color filter. |
 
 **Error codes**
 
@@ -245,11 +246,12 @@ let matrix: Array<number> = [
 ];
 let colorFilter = drawing.ColorFilter.createMatrixColorFilter(matrix);
 ```
+
 ## createLightingColorFilter<sup>20+</sup>
 
 static createLightingColorFilter(mutColor: common2D.Color | number, addColor: common2D.Color | number): ColorFilter
 
-Creates a lighting color filter. It multiplies the RGB channel values by one color and then adds another color value. The final output stays between 0 and 255.
+Creates a lighting color filter that multiplies the RGB channel color values by the multiplication color (mutColor) and adds the addition color (addColor). The result is clamped to the range of 0 to 255.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -257,14 +259,14 @@ Creates a lighting color filter. It multiplies the RGB channel values by one col
 
 | Name  | Type                                        | Mandatory| Description                           |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
-| mutColor | [common2D.Color](js-apis-graphics-common2D.md#color) \| number | Yes  | Color used for multiplication. The value is in the ARGB format, and each color channel is an integer ranging from 0 to 255. If the value is of the number type, it must be an unsigned integer in the hexadecimal ARGB format.|
-| addColor | [common2D.Color](js-apis-graphics-common2D.md#color) \| number | Yes  | Color used for addition. The value is in the ARGB format, and each color channel is an integer ranging from 0 to 255. If the value is of the number type, it must be an unsigned integer in the hexadecimal ARGB format.|
+| mutColor | [common2D.Color](js-apis-graphics-common2D.md#color) \| number | Yes | Color used for multiplication. When the value is of the common2D.Color type, the value of each color channel is an integer in the range [0, 255]. When the value is of the number type, it is represented by an unsigned integer in hexadecimal ARGB format, with a value range of [0, 0xFFFFFFFF]. |
+| addColor | [common2D.Color](js-apis-graphics-common2D.md#color) \| number | Yes | Color used for addition. When the value is of the common2D.Color type, the value of each color channel is an integer in the range [0, 255]. When the value is of the number type, it is represented by an unsigned integer in hexadecimal ARGB format, with a value range of [0, 0xFFFFFFFF]. |
 
 **Returns**
 
 | Type                       | Description               |
 | --------------------------- | ------------------ |
-| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | **ColorFilter** object created.|
+| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | Returns the created lighting color filter. |
 
 **Example**
 

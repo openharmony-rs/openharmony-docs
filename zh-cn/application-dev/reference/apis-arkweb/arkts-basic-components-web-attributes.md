@@ -1,7 +1,7 @@
 # 属性
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 示例效果请以真机运行为准。
 
@@ -3366,6 +3366,10 @@ ArkWeb内核在解析HTML文档结构时采取分段解析策略，旨在避免�
 enableWebAVSession(enabled: boolean)
 
 设置是否支持应用对接到播控中心。当属性没有显式设置时，默认支持应用对接到播控中心。
+
+> **说明：**
+>
+> - 当enabled为false时，Web音视频不接入播控中心。若应用退至后台后，网页音频继续播放，Web组件代理申请AUDIO_PLAYBACK类型长时任务。API版本26.0.0及以上，系统会在通知栏显示对应的[长时任务](../../task-management/continuous-task.md)通知；删除该通知会停止对应的长时任务。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

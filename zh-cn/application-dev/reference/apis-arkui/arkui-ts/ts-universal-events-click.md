@@ -131,7 +131,7 @@ onClick(event: (event: ClickEvent) => void): T
 
 getCurrentLocalPosition?(): Coordinate2D
 
-获取点击位置相对于当前组件实时位置的左上角坐标，适用于组件发生位移、动画或布局变化后，需要获取点击点相对于组件当前位置坐标的场景。
+获取点击位置相对于当前组件实时位置的左上角坐标，适用于组件发生位移、动画或布局变化后，需要获取点击点相对于组件当前位置坐标的场景。在事件无法提供有效的实时组件坐标时，返回空值，使用前请进行判空处理。
 
 **起始版本：** 26.0.0
 
@@ -171,6 +171,42 @@ getCurrentLocalPosition?(): Coordinate2D
 | axisPinch<sup>21+</sup> | number | 否 | 是 |  双指缩放比例。<br>默认值：0<br>**说明：**<br>仅在触控板上通过双指缩放操作触发的Pinch手势，或在轴事件中，可以获取该值；在其他场景下，获取到的将是默认值。<br>缩放比例是指在双指缩放事件触发过程中，双指当前距离与最初按下时距离的比值。<br>取值范围：[0, +∞)<br>**卡片能力：** 从API version 21开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | deviceId<sup>12+</sup> | number | 否 | 是 | 触发当前事件的输入设备ID。<br>默认值：0<br>取值范围：[0, +∞)<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 | targetDisplayId<sup>15+</sup> | number | 否 | 是 | 事件发生的屏幕ID。  <br>默认值：0<br>取值范围：[0, +∞)<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+
+### getModifierKeyState<sup>12+</sup>
+
+getModifierKeyState?(keys: Array\<string>): boolean
+
+获取修饰键按压状态，可用于在手势事件处理中判断Ctrl、Alt、Shift修饰键是否被按下，以处理组合键交互逻辑。报错信息请参考以下错误码。支持修饰键'Ctrl'\|'Alt'\|'Shift'。
+
+>  **说明：**
+>
+> 此接口不支持在手写笔场景下使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                              | 必填 | 说明                 |
+| ------ | --------------------------------- | ---- | -------------------- |
+| keys  | Array&lt;string&gt; | 是   | 修饰键列表，数组元素支持 'Ctrl'、'Alt'、'Shift'，用于查询指定修饰键是否均处于按压状态。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | 返回修饰键按压状态。当修饰键均处于按压状态时返回true，否则返回false。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. 2. Parameter verification failed. |
 
 ## EventTarget<sup>8+</sup>
 

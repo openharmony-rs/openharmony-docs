@@ -33,7 +33,7 @@ ArcList({
 
 >**说明：**
 >
->[ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md)的子组件必须是[ArcListItem](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md)，[ArcListItem](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md)必须配合[ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md)来使用。
+>[ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md)仅支持[ArcListItem](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md)和自定义组件作为子组件。ArcListItem必须配合ArcList来使用。使用自定义组件时，请使用ArcListItem作为自定义组件的顶层组件，请勿直接给自定义组件设置属性和事件方法，因为ArcList通过ArcListItem管理子组件的布局和事件处理，直接设置可能导致部分功能无法正常生效。
 
 ## 在弧形列表中显示数据
 
@@ -554,6 +554,10 @@ ArcList() {
 ## 响应旋转表冠
 
 手表设备上弧形列表在获焦的情况下可对旋转表冠做出响应，用户可通过旋转表冠的操作滑动列表，浏览列表项数据。弧形列表可通过下列[焦点控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md)相关属性成为所在页面的默认焦点。
+
+> **说明：**
+>
+> 仅设置默认焦点相关属性不能保证ArcList获焦。ArcList中还需包含可获焦的叶子节点组件，具体设置方式请参考[设置组件是否可获焦](arkts-common-events-focus-event.md#设置组件是否可获焦)。
 
 <!-- @[arcListCrown_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListCrown.ets) -->
 

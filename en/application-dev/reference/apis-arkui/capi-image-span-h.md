@@ -1,14 +1,16 @@
 # image_span.h
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Zhang-Dong-hui-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=8a65b118b29a0c9d1936c3b96f0e90c33fab49ab translatedAt=2026-08-21T04:09:19.525Z pushedAt=2026-08-21T08:58:13.715Z -->
 
 ## Overview
 
-Defines enumerations and APIs related to **ImageSpan**.
+Defines enumerations related to **ImageSpan**, which are used to embed images in rich text and control the alignment between images and text. Multiple alignment modes are supported for mixed image-text layout scenarios, enabling precise alignment of images with text and improving the display of rich text.
 
 **File to include:** <arkui/node_attributes/image_span.h>
 
@@ -46,7 +48,7 @@ Enumerates image alignment modes based on text.
 
 | Value| Description|
 | -- | -- |
-| ARKUI_IMAGE_SPAN_ALIGNMENT_BASELINE = 0 | The image is bottom aligned with the text baseline.|
+| ARKUI_IMAGE_SPAN_ALIGNMENT_BASELINE = 0 | The image is bottom aligned with the text baseline. |
 | ARKUI_IMAGE_SPAN_ALIGNMENT_BOTTOM = 1 | The image is bottom aligned with the text.|
 | ARKUI_IMAGE_SPAN_ALIGNMENT_CENTER = 2 | The image is centered aligned with the text.|
 | ARKUI_IMAGE_SPAN_ALIGNMENT_TOP = 3 | The image is top aligned with the text.|

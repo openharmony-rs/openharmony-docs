@@ -16,7 +16,7 @@
 
 ## 导入模块
 
-```js
+```TypeScript
 import { conversation } from '@kit.DistributedServiceKit';
 ```
 
@@ -202,10 +202,6 @@ unregisterConversationListener(bundleName:&nbsp;string,&nbsp;abilityName:&nbsp;s
 **系统接口**：此接口为系统接口。
 
 **模型约束**：此接口仅可在Stage模型下使用。
-
-**ArkTS-Dyn起始版本：** 26.1.0
-
-**ArkTS-Sta起始版本：** 26.1.0
 
 **参数**：
 

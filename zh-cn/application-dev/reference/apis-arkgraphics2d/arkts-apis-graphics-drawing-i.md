@@ -25,7 +25,7 @@
 
 | 名称      | 类型   | 只读 | 可选 | 说明                      |
 | --------- | ------ | ---- | ---- | ------------------------- |
-| glyph     | number | 否   | 否   | 存储文字的索引，该参数为整数，传入浮点类型时向下取整。|
+| glyph     | number | 否   | 否   | 存储字形的索引，该参数为整数，传入浮点类型时向下取整。|
 | positionX | number | 否   | 否   | 文本的起点x轴坐标，该参数为浮点数。单位为物理像素px。 |
 | positionY | number | 否   | 否   | 文本的起点y轴坐标，该参数为浮点数。单位为物理像素px。 |
 
@@ -68,3 +68,11 @@
 | ------- | ------ | ---- | ---- | ------------------ |
 | name   | string | 否   | 否   | 字体特征的名称。通常为4个ASCII字符组成的标签（如liga、frac、case等），需对应的ttf文件支持才能生效。建议通过字体查看工具或查阅字体文档，确定有效名称。|
 | value | number | 否 | 否 | 字体特征的数值，浮点数。需要对应的ttf文件支持才能生效。建议通过字体查看工具或查阅字体文档，确定具体的有效取值范围。|
+
+## RecordCmd
+
+描述一组已录制的绘制指令。该对象为不可变对象，由[RecordCmdUtils.finishRecording](arkts-apis-graphics-drawing-RecordCmdUtils.md#finishrecording)创建，可传递给[Canvas.drawRecordCmd](arkts-apis-graphics-drawing-Canvas.md#drawrecordcmd)进行指令回放，从而复现已录制的绘制操作。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**起始版本：** 26.1.0

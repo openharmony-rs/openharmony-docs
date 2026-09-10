@@ -635,7 +635,7 @@ struct ParentComponent {
 
 通过[\@Watch](./arkts-watch.md)可以在双向同步时更改本地变量。
 
-以下示例中，在\@Link的\@Watch里面修改了一个\@State装饰的变量memberMessage，实现父子组件间的变量同步，但是\@State装饰的变量memberMessage在本地修改不会影响到父组件中的变量改变。
+以下示例中，通过@Link的双向同步机制触发@Watch回调，在回调中修改了子组件本地的@State装饰的变量memberMessage。需要注意的是，@State装饰的变量memberMessage仅在子组件本地生效，在本地修改不会影响到父组件中的变量。
 
 <!-- @[link_watch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/UseWatchToChangeLocalVariables.ets) -->  
 
@@ -697,7 +697,7 @@ struct ChangeVariablesChild {
 
 ### \@Link支持联合类型实例
 
-`@Link`支持联合类型、`undefined`和`null`。在以下示例中，`name`类型为`string | undefined`。点击父组件`UnionTypes`中的按钮可以改变`name`的属性或类型，`UnionChild`组件也会相应刷新。
+`@Link`支持联合类型、`undefined`和`null`。在以下示例中，`name`类型为`string | undefined`。点击父组件`UnionTypes`中的按钮可以改变`name`的值或类型，`UnionChild`组件也会相应刷新。
 
 <!-- @[link_union_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/UsingUnionTypes.ets) -->  
 

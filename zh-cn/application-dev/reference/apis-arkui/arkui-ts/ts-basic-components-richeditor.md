@@ -220,7 +220,7 @@ AI菜单生效时，选中范围内需包括且仅包括一个完整的AI实体�
 
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
-| enable | boolean \| undefined | 是 | 是否启用选择文本识别，true表示启用，false表示不启用。<br>默认值：true。<br>设置为undefined或null时，取默认值。 |
+| enable | boolean \| undefined | 是 | 是否启用文本选择AI菜单功能，true表示启用，false表示不启用。<br>默认值：true。<br>设置为undefined或null时，取默认值。 |
 
 ### enablePreviewText<sup>12+</sup>
 
@@ -295,7 +295,7 @@ caretColor(value: ResourceColor)
 
 selectedBackgroundColor(value: ResourceColor)
 
-设置文本选中的底板颜色。如果未设置不透明度，默认为20%不透明度。
+设置文本选中高亮颜色。如果未设置不透明度或设置为完全不透明，默认使用20%不透明度。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -305,7 +305,7 @@ selectedBackgroundColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                       |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 文本选中的底板颜色。<br/>默认为20%不透明度。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 文本选中高亮颜色。<br/>默认为20%不透明度。 |
 
 ### editMenuOptions<sup>12+</sup>
 
@@ -1085,8 +1085,8 @@ Span类型信息。
 | TEXT  | 0 | Span类型为文字。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
 | IMAGE | 1 | Span类型为图像。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
 | MIXED | 2 | Span类型为图文混合。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| BUILDER<sup>12+</sup> | 3 | Span类型为BuilderSpan。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| DEFAULT<sup>15+</sup> | 4 | 注册此类型的菜单，但未注册TEXT、IMAGE、MIXED、BUILDER菜单时，文字类型、图像类型、图文混合类型、BuilderSpan类型都会触发并显示此类型对应的菜单。 <br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
+| BUILDER<sup>12+</sup> | 3 | Span类型为自定义布局。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| DEFAULT<sup>15+</sup> | 4 | 注册此类型的菜单，但未注册TEXT、IMAGE、MIXED、BUILDER菜单时，文字类型、图像类型、图文混合类型、自定义布局类型都会触发并显示此类型对应的菜单。 <br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
 
 ## RichEditorResponseType<sup>11+</sup>
 
@@ -1210,6 +1210,7 @@ RichEditorSymbolSpanStyle和RichEditorSymbolSpanStyleResult中fontWeight的转�
 | verticalAlign | [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10) | 否 | 否    | 图片垂直对齐方式。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | objectFit     | [ImageFit](ts-appendix-enums.md#imagefit) | 否 | 否    | 图片缩放类型。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | layoutStyle<sup>12+</sup> | [RichEditorLayoutStyle](#richeditorlayoutstyle11)     | 否 | 是   | 图片布局样式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| resizable | [ResizableOptions](ts-basic-components-image.md#resizableoptions11)     | 否 | 是   | 图片拉伸选项。<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## RichEditorLayoutStyle<sup>11+</sup> 
 
@@ -2123,6 +2124,7 @@ SymbolSpan样式选项。
 | verticalAlign             | [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10)| 否| 是    | 图片垂直对齐方式。<br>默认值：ImageSpanAlignment.BOTTOM <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | objectFit                 | [ImageFit](ts-appendix-enums.md#imagefit) | 否| 是    | 图片缩放类型。<br> 默认值：ImageFit.Cover。  <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
 | layoutStyle<sup>11+</sup> | [RichEditorLayoutStyle](#richeditorlayoutstyle11) | 否| 是    | 图片布局样式。默认值：{"borderRadius":"","margin":""}<br>   <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                          |
+| resizable | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) | 否| 是    | 图片拉伸选项。<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## RichEditorSymbolSpanOptions<sup>11+</sup>
 
@@ -2156,7 +2158,7 @@ SymbolSpan样式选项。
 
 ## RichEditorBuilderSpanOptions<sup>11+</sup>
 
-设置builder的偏移位置和样式。
+设置builder插入的偏移位置和样式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4647,8 +4649,8 @@ struct TextExample7 {
   }
 }
 ```
-### 示例12（设置光标、手柄和底板颜色）
-通过[caretColor](#caretcolor12)属性设置输入框光标、手柄颜色，通过[selectedBackgroundColor](#selectedbackgroundcolor12)属性设置文本选中底板颜色。
+### 示例12（设置光标、手柄和高亮颜色）
+通过[caretColor](#caretcolor12)属性设置输入框光标、手柄颜色，通过[selectedBackgroundColor](#selectedbackgroundcolor12)属性设置文本选中高亮颜色。
 
 ``` ts
 @Entry
@@ -6993,3 +6995,72 @@ struct ScrollToVisibleDemo {
 
 ![RichEditorScrollToVisible](figures/richEditorScrollToVisible.gif)
 
+### 示例44（设置图片拉伸）
+
+该示例通过设置[RichEditorImageSpanStyle](#richeditorimagespanstyle)的resizable属性，对图片不同方向进行拉伸。
+
+从API版本26.1.0开始，RichEditorImageSpanStyle新增resizable属性。
+
+```ts
+@Entry
+@Component
+struct RichEditorResizablePage {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+
+  build() {
+    Column({ space: 20 }) {
+      Text('RichEditor resizable Demo')
+        .fontSize(28)
+        .fontWeight(FontWeight.Bold)
+
+      RichEditor(this.options)
+        .onReady(() => {
+          this.controller.addTextSpan('原图\n', {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 28
+            }
+          });
+          this.controller.addImageSpan($r('app.media.landscape'), {
+            imageStyle: {
+              size: [260, 260],
+            }
+          });
+          this.controller.addTextSpan('\nRichEditor 中 ImageSpan resizable 拉伸效果\n', {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 28
+            }
+          });
+          this.controller.addImageSpan($r('app.media.landscape'), {
+            imageStyle: {
+              size: [260, 260],
+              resizable: {
+                slice: {
+                  left: '200px',
+                  top: '200px',
+                  right: '20px',
+                  bottom: '20px'
+                }
+              }
+            }
+          });
+
+        })
+        .width('90%')
+        .borderWidth(1)
+        .borderColor('#cccccc')
+        .borderRadius(8)
+        .padding(10)
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+
+```
+
+![richEditorResizable](figures/richeditor-resizable.png)

@@ -18,8 +18,7 @@
     - [查找设备](bluetooth/ble-development-guide.md)
     - [连接和传输数据](bluetooth/gatt-development-guide.md)
   - 蓝牙常见问题<!--bluetooth-faq-->
-    - [蓝牙接口调用报错2900099](bluetooth/bluetooth-faq-2900099-errorcode.md)<!--RP1--><!--RP1End-->
-    - [可选属性显式设置为undefined报401无效参数](bluetooth/bluetooth-faq-401-invalid-parameter.md)
+    - [可选属性显式设置为undefined报401无效参数](bluetooth/bluetooth-faq-401-invalid-parameter.md)<!--RP1--><!--RP1End-->
   - [蓝牙术语](bluetooth/terminology.md)
 - NFC<!--nfc-->
   - [NFC服务开发概述](nfc/nfc-overview.md)
@@ -36,3 +35,12 @@
   - [融合短距服务开发概述](fusion-connectivity/fusion-connectivity-overview.md)
   - [伙伴设备与OpenHarmony设备互通的开发指南](fusion-connectivity/partneragent-life-application-guide.md)
   - [融合短距术语](fusion-connectivity/fusion-connectivity-terminology.md)
+- 星闪<!--nearlink-->
+  - [星闪简介](nearlink/nearlink-introduction-guide.md)
+  - [开发准备](nearlink/nearlink-preparations-guide.md)
+  - [发现星闪设备](nearlink/nearlink-device-discovery-guide.md)
+  - [管理SSAP连接及服务](nearlink/nearlink-ssap-connection-guide.md)
+  - [使用星闪传输数据](nearlink/nearlink-data-transfer-guide.md)
+  - [获取星闪合作设备集合信息](nearlink/nearlink-cdsm-information-guide.md)
+  - [星闪常见问题](nearlink/nearlink-faq-guide.md)
+  - [星闪术语](nearlink/nearlink-glossary-guide.md)

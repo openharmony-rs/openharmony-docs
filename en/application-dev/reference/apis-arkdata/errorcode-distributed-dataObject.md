@@ -2,9 +2,10 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @lvcong_oh-->
-<!--Designer: @hollokin; @yuchaozhng-->
-<!--Tester: @lj_liujing; @yippo; @logic42-->
+<!--Designer: @yuchaozhng-->
+<!--Tester: @logic42; @hanjiawei-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=7f0249fa78f26df558bf1bb1399934cbda3430c2 translatedAt=2026-09-04T03:16:26.494Z pushedAt=2026-09-09T09:11:03.695Z -->
 
 > **NOTE**
 >
@@ -26,7 +27,7 @@ The same session ID is set for another distributed data object.
 
 **Solution**
 
-Use [genSessionId](../../reference/apis-arkdata/js-apis-data-distributedobject.md#distributeddataobjectgensessionid) to generate a random session ID to avoid using an existing session ID.
+Use [genSessionId](js-apis-data-distributedobject.md#distributeddataobjectgensessionid) to generate a random **sessionId**, and avoid using the same **sessionId** as other distributed data objects.
 
 ## 15400002 Incorrect Parameter
 
@@ -40,7 +41,7 @@ Parameter error.
 
 2. This error code is reported if the **uri** parameter is invalid. For example, the value is an empty string ("").
 
-3. This error code is reported if the **uris** parameter is invalid. For example, the number of elements in the **uris** array exceeds 50.
+3. The **uris** parameter is invalid. For example, the **uris** array is empty or the number of elements in the array is greater than 50.
 
 **Possible Causes**
 
@@ -50,7 +51,7 @@ Parameter error.
 
 3. The **uris** array for storing the asset to be set is empty or the number of elements in the array is greater than 50.
 
-4. One or more URIs in the **uris** array are invalid. For example, they are set to **null**, **undefined**, or **''** (empty string).
+4. One or more URIs in the **uris** array for storing the asset to be set are invalid. For example, they are set to **null**, **undefined**, or **''** (empty string).
 
 **Solution**
 
@@ -58,9 +59,9 @@ Parameter error.
 
 2. Define a correct distributed URI, for example, **"file://docs/storage/Users/username/tmp.txt"**.
 
-3. Pass in correct distributed URIs in the **uris** array, whose elements are within the valid range, for example, **["file://docs/storage/Users/username/tmp.txt", "file://com.example.demo/data/storage/el2/base/files/test.txt"]**.
+3. Pass in correct distributed URIs in the **uris** array, with a valid count of [1, 50], for example, **["file://docs/storage/Users/username/tmp.txt", "file://com.example.demo/data/storage/el2/base/files/test.txt"]**.
 
-4. Ensure that each URI in the **uris** array is correct.
+4. Ensure that each URI in the **uris** array is a correct distributed path.
 
 ## 15400003 sessionId Already Set
 

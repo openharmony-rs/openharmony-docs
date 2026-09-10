@@ -1,4 +1,4 @@
-# 消息摘要计算介绍及算法规格
+# 消息摘要计算
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->

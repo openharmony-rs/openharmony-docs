@@ -609,12 +609,14 @@ NODE_TEXT_LINE_SPACING = 1023
 | 参数项 | 描述 |
 | -- | -- |
 | .value[0].f32 | 表示行间距值，单位为fp。取值范围：[0, +∞)。传入负数时参数不生效。 |
+| ?.object | 可选。指向[OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md)对象的指针，用于设置行间距选项。从API版本26.1.0开始支持。使用[OH_ArkUI_NativeModule_LineSpacingOptions_Create](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_create)创建对象，使用[OH_ArkUI_NativeModule_LineSpacingOptions_Destroy](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_destroy)销毁对象。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
 | .value[0].f32 | 表示行间距值，单位为fp。 |
+| .object | 指向[OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md)对象的指针，用于获取行间距选项。从API版本26.1.0开始支持。 |
 
 ## NODE_FONT_FEATURE
 
@@ -1674,3 +1676,34 @@ NODE_IMAGE_SPAN_SUPPORT_SVG2 = 3005
 | 类型 | 说明 |
 | -- | -- |
 | .value[0].i32 | 是否启用SVG新解析能力开关。1表示支持SVG解析新能力，0表示保持原有SVG解析能力。 |
+
+## NODE_IMAGE_SPAN_RESIZABLE
+
+```c
+NODE_IMAGE_SPAN_RESIZABLE = 3006
+```
+
+imageSpan组件图片拉伸时，支持通过设置边缘宽度或者使用栅格对象调整其大小，支持属性设置、属性重置和属性获取接口。接口调用时需要保证设置和获取的参数类型是相同的。<br>
+作为属性设置方法参数、属性获取方法返回值的[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].f32 | 左边缘宽度，单位为vp。取值范围：[0, +∞)。传入负数时使用默认值0。 |
+| .value[1].f32 | 上边缘宽度，单位为vp。取值范围：[0, +∞)。传入负数时使用默认值0。 |
+| .value[2].f32 | 右边缘宽度，单位为vp。取值范围：[0, +∞)。传入负数时使用默认值0。 |
+| .value[3].f32 | 下边缘宽度，单位为vp。取值范围：[0, +∞)。传入负数时使用默认值0。 |
+| .object | 栅格对象，参数类型为[OH_Drawing_Lattice](../apis-arkgraphics2d/capi-drawing-oh-drawing-lattice.md)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].f32 | 左边缘宽度，单位为vp。取值范围：[0, +∞)。传入负数时使用默认值0。 |
+| .value[1].f32 | 上边缘宽度，单位为vp。取值范围：[0, +∞)。传入负数时使用默认值0。 |
+| .value[2].f32 | 右边缘宽度，单位为vp。取值范围：[0, +∞)。传入负数时使用默认值0。 |
+| .value[3].f32 | 下边缘宽度，单位为vp。取值范围：[0, +∞)。传入负数时使用默认值0。 |
+| .object | 栅格对象，参数类型为[OH_Drawing_Lattice](../apis-arkgraphics2d/capi-drawing-oh-drawing-lattice.md)。 |

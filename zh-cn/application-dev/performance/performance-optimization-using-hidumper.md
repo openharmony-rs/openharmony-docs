@@ -1,5 +1,12 @@
 # 使用HiDumper命令行工具优化性能
 
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 ## 简介
 
 HiDumper是系统为开发、测试人员、IDE工具提供的系统信息获取工具，帮助开发者分析、定位问题。在应用开发过程中，开发者可以使用HiDumper命令行工具获取UI界面组件树信息，配合ArkUI Inspector等图形化工具定位布局性能问题；还可以使用该命令行工具获取如内存和CPU使用情况等各项系统数据，对应用性能进行评估。本文通过一些示例介绍在优化应用性能过程中如何使用HiDumper命令行工具。
@@ -12,12 +19,12 @@ HiDumper是系统为开发、测试人员、IDE工具提供的系统信息获取
 开发者可以按照以下步骤获取组件信息，相比ArkUI Inspector可更灵活的获取组件的细粒度信息。
 
 1. 开启ArkUI的debug模式。
-    ```
+    ```shell
     hdc shell param set persist.ace.debug.enabled 1
     ```
 2. 重新启动应用。
 3. 获取当前页面对应应用的window ID。
-    ```
+    ```shell
     hdc shell hidumper -s WindowManagerService -a '-a'
     ```
 
@@ -38,7 +45,7 @@ HiDumper是系统为开发、测试人员、IDE工具提供的系统信息获取
      | ScreenLockWindow     | 锁屏   |
 
 4. 通过WinId获取对应页面的控件树文件。
-   ```
+   ```shell
    hdc shell hidumper -s WindowManagerService -a '-w 28 -element -c' // 28 即为查找到的WinId
    ```
 
@@ -46,18 +53,18 @@ HiDumper是系统为开发、测试人员、IDE工具提供的系统信息获取
 
 
 5. 下载组件树文件到本地。由于安全机制此处的路径非真实路径，需要使用 `find` 命令查找对应文件的准确路径。
-   ```
+   ```shell
    hdc shell find /data/ -name arkui.dump
    ```
 
    ![CorrectFilePath2](figures/hidumper-filepath2.PNG)
 
-   ```
+   ```shell
    hdc file recv /data/app/el2/100/base/com.example.demo/haps/entry/files/arkui.dump  // 获取文件到本地
    ```
 6. 打开文件查看应用组件树。组件树文件详细列出了每个组件的各项属性，如子组件数量childSize、组件ID、背景色BackgroundColor等。
-   ```
-   // arkui.dump文件内容片断
+   ```shell
+   // arkui.dump文件内容片段
    |-> GridItem childSize:1
      | ID: 22
      | Depth: 9
@@ -98,7 +105,7 @@ HiDumper是系统为开发、测试人员、IDE工具提供的系统信息获取
 ### 查看if/else控件
 
 当使用if/else时，if/else语句会被当成一个组件，作为节点存在于组件树上。使用HiDumper命令时，打印的组件树内容包含if/else组件信息（使用ArkUI Inspector工具，if/else组件不会被作为节点项显示在组件树上）。下述代码中通过if语句： `if(this.isShow)` 实现Row组件的创建和销毁。
-```
+```typescript
 @Entry
 @Component
 struct ConditionComponent {
@@ -119,7 +126,7 @@ struct ConditionComponent {
 }
 ```
 当isShow为true时，Row组件显示，此时使用HiDumper查看组件树文件，可以发现使用if/else条件语句时，if/else组件也被当作节点被创建，Row组件被当作子组件嵌套在其中。
-```
+```text
 |-> IfElse childSize:1
   | ID: 9
   | Depth: 6
@@ -137,7 +144,7 @@ struct ConditionComponent {
       ...
 ```
 当isShow为false时，Row组件隐藏，此时使用HiDumper查看组件树文件，可以发现使用if/else条件语句时，if/else组件也被当作节点被创建，但Row组件并不会被加载。
-```
+```text
 |-> IfElse childSize:0
     ID: 9
     Depth: 6
@@ -147,7 +154,7 @@ struct ConditionComponent {
 ### 查看visibility属性
 
 开发者可以使用visibility属性控制组件的显隐。下述代码中通过visibility属性： `visibility(this.isVisible)` 实现Row组件的显示和隐藏。
-```
+```typescript
 @Entry
 @Component
 struct VisibilityComponent {
@@ -174,7 +181,7 @@ struct VisibilityComponent {
 }
 ```
 当isVisible为Visible时，Row组件显示，此时使用HiDumper查看控件树文件，Visible属性为0，FrameRect属性内组件的宽和高为450。
-```
+```text
 |-> Row childSize:0
     ID: 13
     Depth: 6
@@ -188,7 +195,7 @@ struct VisibilityComponent {
     ...
 ```
 当isVisible为Hidden时，Row组件隐藏，此时使用HiDumper查看控件树文件，Visible属性为1，FrameRect属性内组件的宽和高为450。
-```
+```text
 |-> Row childSize:0
     ID: 13
     Depth: 6
@@ -202,7 +209,7 @@ struct VisibilityComponent {
     ...
 ```
 当isVisible为None时，Row组件隐藏，此时使用HiDumper查看控件树文件，Visible属性为2，FrameRect属性内组件的宽和高为0。
-```
+```text
 |-> Row childSize:0
     ID: 13
     Depth: 6
@@ -225,7 +232,7 @@ struct VisibilityComponent {
 
 1. 打开示例应用，运行 `hdc shell hidumper -s WindowManagerService -a '-a'` ，获取到当前应用的pid。
 2. 输入 `hidumper --mem [pid]` ，并将命令中的 `[pid]` 换成当前应用的pid，就可以获取到示例应用的内存信息了，如下图所示：
-```
+```shell
 hdc shell hidumper --mem [pid]
 ```
 
@@ -238,11 +245,11 @@ hdc shell hidumper --mem [pid]
 在应用开发中，经常会遇到需要大量计算的场景，HiDumper提供了查看CPU使用率的功能，方便开发者进行性能优化。下面将以[Chat](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/IM/Chat)为例，展示如何使用HiDumper查看CPU信息。 
 
 1. 编译项目、安装并打开Chat应用，运行以下HiDumper命令获取当前应用的Pid。
-    ```
+    ```shell
     hdc shell hidumper -s WindowManagerService -a '-a'
     ```
 2. 运行 `hidumper --cpuusage [pid]` ，获取Chat应用的CPU信息，如下图所示：
-    ```
+    ```shell
     hdc shell hidumper --cpuusage [pid]
     ```
    

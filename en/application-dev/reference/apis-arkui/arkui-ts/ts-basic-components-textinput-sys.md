@@ -1,12 +1,13 @@
 # TextInput (System API)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @kangshihui-->
+<!--Owner: @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=89682c631d1be2b78acdb9477c9eda01133e0baf translatedAt=2026-09-03T12:41:29.196Z -->
 
-The **TextInput** component provides single-line text input.
+A single-line text input component that receives single-line text entered by the user. It supports multiple input types, such as password and voice, and can be used in scenarios such as form filling, search boxes, and login and registration, helping developers quickly build user interaction interfaces.
 
 > **NOTE**
 >
@@ -22,15 +23,16 @@ Sets the single-line text input box type.
 
 | Name                                | Value| Description                                      |
 | ---------------------------------- | --- | ---------------------------------------- |
-| SCREEN_LOCK_PASSWORD<sup>11+</sup> | 9 | Lock screen password input mode. This mode accepts only digits, letters, underscores (_), spaces, and special characters. An eye icon is used to show or hide the password, and the entered text is hidden behind dots by default. Since API version 12, on specific devices, the entered text is displayed directly as dots. The password input mode does not support underlines.<br>**System API**: This is a system API.|
-
+| SCREEN_LOCK_PASSWORD<sup>11+</sup> | 9 | Lock screen application password input mode. Supports input of digits, letters, underscores, spaces, and special characters. The password displays a small eye icon and the text is converted to dots by default. Since API version 12, text entered on Wearable devices is directly displayed as dots. The password input mode does not support the underline style. <br>**System API:** This is a system API.<br>**Model restriction:** This API can be used only in the stage model. |
 ## voiceButton<sup>23+</sup>
 
 voiceButton(options: Optional\<VoiceButtonOptions\>)
 
-Sets the voice button options.
+Sets the voice button options. When enabled, a voice input button is displayed in the input box, allowing the user to enter text by voice.
 
 **System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +42,7 @@ Sets the voice button options.
 
 | Name| Type| Mandatory| Description|
 | ----- | ----- | ---- | ---- |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)<[VoiceButtonOptions](./ts-text-common-sys.md#voicebuttonoptions23)> | Yes | Voice button options.|
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[VoiceButtonOptions](./ts-text-common-sys.md#voicebuttonoptions23)\> | Yes  | Voice button configuration options, used to control the enabled state and behavior of the voice input button. Use this parameter when the voice input feature needs to be enabled in the TextInput component. For details about the configuration items, see the VoiceButtonOptions type definition. |
 
 
 ## Examples
@@ -55,7 +57,7 @@ The [voiceButton](#voicebutton23) API is added since API version 23.
 // xxx.ets
 @Entry
 @Component
-struct TextInputxample {
+struct TextInputExample {
 
   build() {
     Column() {

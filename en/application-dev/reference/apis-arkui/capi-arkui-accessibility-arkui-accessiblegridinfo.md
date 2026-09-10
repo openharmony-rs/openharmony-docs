@@ -6,7 +6,7 @@
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e98b791a1f57fab5012a75ce7d9ff0a0466dd410 translatedAt=2026-07-16T10:41:58.935Z pushedAt=2026-07-17T02:24:06.008Z -->
+<!-- md-trans-meta sourceCommit=86516607de4ae31b89a087b4feaa5c2b41c67026 translatedAt=2026-08-19T04:16:11.124Z pushedAt=2026-08-19T06:35:43.509Z -->
 
 ```c
 typedef struct {...} ArkUI_AccessibleGridInfo
@@ -30,4 +30,4 @@ Describes the overall layout attributes of a grid component. This struct is used
 | -- | -- |
 | int32_t rowCount | Number of rows in the grid. The value range is a positive integer greater than 0. If a non-positive integer is passed, the setting does not take effect. |
 | int32_t columnCount | Number of columns in the grid. The value range is a positive integer greater than 0. If a non-positive integer is passed, the setting does not take effect. |
-| int32_t selectionMode | Selection mode. The value 0 means that only one row in the grid is selected, and a non-zero value means that multiple rows in the grid are selected. |
+| int32_t selectionMode | Selection mode. The value **0** means that only one row in the grid is selected, and a non-zero value means that multiple rows in the grid are selected. |

@@ -5,7 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=92fad92320c327a07cb31c689545113f874871a6 translatedAt=2026-06-26T06:35:56.802Z pushedAt=2026-06-29T02:15:43.574Z -->
+<!-- md-trans-meta sourceCommit=5132c4c17b0f557197a655ef79c7a05df0e0bea5 translatedAt=2026-09-04T03:05:49.509Z pushedAt=2026-09-09T09:11:03.683Z -->
 
 ## Overview
 
@@ -51,7 +51,7 @@ Enumerates the RDB store error codes.
 | RDB_E_NOT_SUPPORTED = 801                                    | The RDB store does not have this capability.                                          |
 | RDB_E_ERROR = E_BASE                                         | Common exception.                                       |
 | RDB_E_INVALID_ARGS = (E_BASE + 1)                            | Invalid parameter.                                                 |
-| RDB_E_CANNOT_UPDATE_READONLY = (E_BASE + 2)                  | Failed to update data because the RDB store is read-only.                                           |
+| RDB_E_CANNOT_UPDATE_READONLY = (E_BASE + 2)                  | Failed to update the read-only RDB store.                                        |
 | RDB_E_REMOVE_FILE = (E_BASE + 3)                             | Failed to delete the file.                                             |
 | RDB_E_EMPTY_TABLE_NAME = (E_BASE + 5)                        | The table name is empty.                                                 |
 | RDB_E_EMPTY_VALUES_BUCKET = (E_BASE + 6)                     | The content of the KV pair is empty.                                           |
@@ -72,7 +72,7 @@ Enumerates the RDB store error codes.
 | RDB_E_INVALID_CONFLICT_FLAG = (E_BASE + 21)                  | The conflict resolution type is invalid.                                         |
 | RDB_E_HAVING_CLAUSE_NOT_IN_GROUP_BY = (E_BASE + 22)          | The **HAVING** keyword can be used only after **GROUP BY**.                          |
 | RDB_E_NOT_SUPPORTED_BY_STEP_RESULT_SET = (E_BASE + 23)       | The result set by step is not supported.                               |
-| RDB_E_STEP_RESULT_SET_CROSS_THREADS = (E_BASE + 24)          | Failed to obtain the result set.                                           |
+| RDB_E_STEP_RESULT_SET_CROSS_THREADS = (E_BASE + 24)          | Failed to query the result set across threads.                                  |
 | RDB_E_STEP_RESULT_QUERY_NOT_EXECUTED = (E_BASE + 25)         | The result set query statement is not executed.                                   |
 | RDB_E_STEP_RESULT_IS_AFTER_LAST = (E_BASE + 26)              | The pointer of the result set is already in the last row.                             |
 | RDB_E_STEP_RESULT_QUERY_EXCEEDED = (E_BASE + 27)             | The number of result set query times exceeds the limit.                               |
@@ -98,7 +98,7 @@ Enumerates the RDB store error codes.
 | RDB_E_WAL_SIZE_OVER_LIMIT = (E_BASE + 47)                    | The WAL log file size exceeds the default value.                                |
 | RDB_E_CON_OVER_LIMIT = (E_BASE + 48)                         | The number of database connections has reached the limit.                                       |
 | RDB_E_ALREADY_CLOSED = (E_BASE + 50)                         | The RDB store is already closed.<br>**Since**: 18                        |
-| RDB_E_DATABASE_BUSY = (E_BASE + 51)                          | The database does not respond.<br>**Since**: 18                        |
+| RDB_E_DATABASE_BUSY = (E_BASE + 51)                          | The RDB store is busy.<br>**Since:** 18                         |
 | RDB_E_SQLITE_CORRUPT = (E_BASE + 52)                         | The database is corrupted.<br>**Since**: 18                          |
 | RDB_E_SQLITE_PERM = (E_BASE + 53)                            | SQLite: access denied.<br>**Since**: 18        |
 | RDB_E_SQLITE_BUSY = (E_BASE + 54)                            | SQLite: database file locked.<br>**Since**: 18      |

@@ -5,10 +5,11 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=6562fbd401d378f77bd26dc6da64bda65c04a650 translatedAt=2026-09-01T13:02:33.608Z pushedAt=2026-09-07T09:48:20.322Z -->
 
 ## Overview
 
-Declares the basic information about **AVSession**.
+Declares the basic information of **AVSession**.
 
 **File to include:** <multimedia/av_session/native_avsession_base.h>
 
@@ -58,7 +59,7 @@ Enumerates the session types.
 | -- | -- |
 | SESSION_TYPE_AUDIO = 0 | Audio session (media audio, such as music).|
 | SESSION_TYPE_VIDEO = 1 | Video session (media casting video).|
-| SESSION_TYPE_VOICE_CALL = 2 | Voice call session (human-machine interaction audio, such as voice assistant).|
+| SESSION_TYPE_VOICE_CALL = 2 | Audio call session (voice call). |
 | SESSION_TYPE_VIDEO_CALL = 3 | Video call session (video call).|
 | SESSION_TYPE_PHOTO = 4 | Photo session.|
 
@@ -106,7 +107,7 @@ Enumerates the loop modes of media playback.
 | -- | -- |
 | LOOP_MODE_SEQUENCE = 0 | Play in sequence.|
 | LOOP_MODE_SINGLE = 1 | Single loop.|
-| LOOP_MODE_LIST = 2 | Loop by playlist.|
+| LOOP_MODE_LIST = 2 | Loop list. |
 | LOOP_MODE_SHUFFLE = 3 | Shuffle.|
 | LOOP_MODE_CUSTOM = 4 | Custom playback.|
 
@@ -181,7 +182,7 @@ Enumerates the device connection states.
 | -- | -- |
 | STATE_CONNECTING = 0 | The device is being connected.|
 | STATE_CONNECTED = 1 | The device is connected.|
-| STATE_DISCONNECTED = 6 | The device is in the default disconnected state.|
+| STATE_DISCONNECTED = 6 | The device is disconnected. |
 
 ### AVSession_AVCastCategory
 
@@ -214,10 +215,10 @@ Enumerates the device types.
 
 | Enum Item| Description|
 | -- | -- |
-| DEVICE_TYPE_LOCAL = 0 | Built-in speaker or audio jack of the device.|
-| DEVICE_TYPE_TV = 2 | TV.|
-| DEVICE_TYPE_SMART_SPEAKER = 3 | Smart speaker.|
-| DEVICE_TYPE_BLUETOOTH = 10 | Bluetooth device.|
+| DEVICE_TYPE_LOCAL = 0 | Built-in speaker or audio jack of the device. |
+| DEVICE_TYPE_TV = 2 | TV. |
+| DEVICE_TYPE_SMART_SPEAKER = 3 | Smart speaker. |
+| DEVICE_TYPE_BLUETOOTH = 10 | Bluetooth device. |
 
 ### AVSession_ProtocolType
 
@@ -234,8 +235,8 @@ Enumerates the protocol types.
 | Enum Item| Description|
 | -- | -- |
 | TYPE_LOCAL = 0 | Local device, which is used by default. It includes the device's built-in speaker, audio jack, and A2DP (Advanced Audio Distribution Profile) devices.|
-| TYPE_CAST_PLUS_STREAM = 2 | Cast+ stream mode. It indicates that the media is being displayed on another device. The application needs an **AVCastController** to control remote playback.|
-| TYPE_DLNA = 4 | Digital Living Network Alliance (DLNA) protocol. It indicates that the device supports the DLNA protocol. The application needs an **AVCastController** to control remote playback.|
+| TYPE_CAST_PLUS_STREAM = 2 | Cast+ stream mode. The media is being displayed on another device, and the application needs a [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md) to control remote playback. |
+| TYPE_DLNA = 4 | Digital Living Network Alliance (DLNA) protocol. It indicates that the device supports the DLNA protocol. The application needs an [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md) to control remote playback. |
 | TYPE_CAST_PLUS_AUDIO = 8 | Used to indicate that the device supports high-definition audio casting for better sound quality.|
 
 ### AVSession_AVCastControlCommandType
@@ -259,7 +260,7 @@ Enumerates the command types.
 | CAST_CONTROL_CMD_PLAY_PREVIOUS = 4 | Command for playing the previous media asset.|
 | CAST_CONTROL_CMD_FAST_FORWARD = 5 | Fast-forward command.|
 | CAST_CONTROL_CMD_REWIND = 6 | Rewind command.|
-| CAST_CONTROL_CMD_SEEK = 7 | Command for seeking to a playback position.|
+| CAST_CONTROL_CMD_SEEK = 7 | Command for seeking to the specified playback position. |
 | CAST_CONTROL_CMD_SET_VOLUME = 8 | Command for setting the volume.|
 | CAST_CONTROL_CMD_SET_SPEED = 9 | Command for setting the playback speed.|
 
@@ -277,13 +278,13 @@ Enumerates the playback speed types.
 
 | Enum Item| Description|
 | -- | -- |
-| SPEED_FORWARD_0_75_X = 0 | Plays the video at 0.75 times the normal speed.|
-| SPEED_FORWARD_1_00_X = 1 | Plays the video at the normal speed (1.00x).|
-| SPEED_FORWARD_1_25_X = 2 | Plays the video at 1.25 times the normal speed.|
-| SPEED_FORWARD_1_75_X = 3 | Plays the video at 1.75 times the normal speed.|
-| SPEED_FORWARD_2_00_X = 4 | Plays the video at 2 times the normal speed.|
-| SPEED_FORWARD_0_50_X = 5 | Plays the video at 0.5 times the normal speed.|
-| SPEED_FORWARD_1_50_X = 6 | Plays the video at 1.5 times the normal speed.|
+| SPEED_FORWARD_0_75_X = 0 | Plays audio or video at 0.75 times the normal speed. |
+| SPEED_FORWARD_1_00_X = 1 | Plays audio or video at the normal speed (1.00x). |
+| SPEED_FORWARD_1_25_X = 2 | Plays audio or video at 1.25 times the normal speed. |
+| SPEED_FORWARD_1_75_X = 3 | Plays audio or video at 1.75 times the normal speed. |
+| SPEED_FORWARD_2_00_X = 4 | Plays audio or video at 2 times the normal speed. |
+| SPEED_FORWARD_0_50_X = 5 | Plays audio or video at 0.5 times the normal speed. |
+| SPEED_FORWARD_1_50_X = 6 | Plays audio or video at 1.5 times the normal speed.|
 
 ### AVSession_PlaybackFilter
 
@@ -299,7 +300,9 @@ Enumerates the playback state filters.
 
 | Enum Item| Description|
 | -- | -- |
-| FILTER_STATE = 1 << 0 | State filter.|
-| FILTER_POSITION = 1 << 1 | Position filter.|
-| FILTER_SPEED = 1 << 2 | Speed filter.|
-| FILTER_VOLUME = 1 << 3 | Volume filter.|
+| FILTER_STATE = 1 << 0 | Filter state. |
+| FILTER_POSITION = 1 << 1 | Filter position. |
+| FILTER_SPEED = 1 << 2 | Filter speed. |
+| FILTER_VOLUME = 1 << 3 | Filter volume. |
+
+

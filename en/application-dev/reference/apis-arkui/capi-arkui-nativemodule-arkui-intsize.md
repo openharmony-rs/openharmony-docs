@@ -1,10 +1,12 @@
 # ArkUI_IntSize
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @fenglinbailu-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=75a7d62c0702c21a06ca0119552a942305a023cc translatedAt=2026-08-19T08:23:46.375Z pushedAt=2026-08-20T02:10:18.701Z -->
 
 ```c
 typedef struct {...} ArkUI_IntSize

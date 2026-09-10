@@ -4,10 +4,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zhu-feimo; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=1e2bfcc9b4f85d9126c23f626a7a73b4bb891227 translatedAt=2026-09-03T10:02:37.805Z pushedAt=2026-09-05T10:47:30.249Z -->
 
-The autoStartupManager module provides APIs for an application to query whether it is configured to start automatically at boot time.
+The autoStartupManager module provides the capabilities to obtain the auto-start on boot status of the current application and check whether the device supports auto-start on boot.
 
 > **NOTE**
 >
@@ -55,6 +56,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class EntryAbility extends UIAbility {
   onForeground() {
     try {
+      // Obtains the auto-start on boot status of the current application.
       autoStartupManager.getAutoStartupStatusForSelf().then((isAutoStartup: boolean) => {
         console.info(`getAutoStartupStatusForSelf success, isAutoStartup: ${JSON.stringify(isAutoStartup)}.`);
       }).catch((err: BusinessError) => {
@@ -65,6 +67,40 @@ export default class EntryAbility extends UIAbility {
       let msg = (err as BusinessError).message;
       console.error(`getAutoStartupStatusForSelf failed, err code: ${code}, err msg: ${msg}.`);
     }
+  }
+}
+```
+
+## autoStartupManager.isAutoStartupSupported
+
+isAutoStartupSupported(): boolean
+
+Checks whether the current device supports auto-start on boot.
+
+> **NOTE**
+>
+> It is recommended that you call this API to check the device capability before calling [autoStartupManager.getAutoStartupStatusForSelf](#autostartupmanagergetautostartupstatusforself). If false is returned, the current device does not support auto-start on boot.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 26.0.0
+
+**Return value**
+
+| Type | Description |
+| -------- | -------------------------------------------- |
+| boolean | Whether the current device supports auto-start on boot. The value true means that auto-start on boot is supported, and false means the opposite. |
+
+**Example**
+
+```ts
+import { autoStartupManager, UIAbility } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    // Check whether the current device supports auto-start on boot.
+    const isSupported: boolean = autoStartupManager.isAutoStartupSupported();
+    console.info(`isAutoStartupSupported: ${isSupported}.`);
   }
 }
 ```

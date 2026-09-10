@@ -6,7 +6,7 @@
 <!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=b6f38d021a31abc28b1dd271b68098ebc074e7ab translatedAt=2026-07-30T02:40:39.550Z pushedAt=2026-08-01T06:42:55.900Z -->
+<!-- md-trans-meta sourceCommit=a1851c4d823f8d0aa6d877d6e720d89b0f7206a1 translatedAt=2026-08-21T02:21:01.411Z pushedAt=2026-08-21T06:17:14.538Z -->
 
 An arc list consists of a series of list items arranged along an arc, suitable for circular screen devices. It is ideal for continuously presenting multiple rows of similar data, such as images and text.
 
@@ -233,7 +233,7 @@ Sets the color of the scrollbar.
 
 | Name| Type                                                        | Mandatory| Description                                    |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------- |
-| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | Yes   | Scrollbar color.<br>Default value: ColorMetrics.numeric(0xA9FFFFFF) |
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | Yes   | Scrollbar color.<br>Default value: **ColorMetrics.numeric(0xA9FFFFFF)**<br>The abnormal values **undefined** and **null** are treated as invalid values, and this setting does not take effect. |
 
 ### flingSpeedLimit
 
@@ -249,7 +249,7 @@ Sets the maximum initial speed for inertial scrolling after a fling gesture. If 
 
 | Name| Type             | Mandatory| Description                           |
 | ------ | ----------------- | ---- | ------------------------------- |
-| speed  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> | Yes   | Maximum initial speed when the inertial scrolling animation starts. If this parameter is set to a value less than or equal to 0, the default value is used.<br>Default value: **9000**<br>Unit: vp/s<br>Value range: (0, +∞) |
+| speed  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> | Yes   | Maximum initial speed when the inertial scrolling animation starts. If this parameter is set to a value less than or equal to 0, the default value is used.<br>Default value: **9000**<br>Unit: vp/s<br>Value range: (0, +∞)<br>The abnormal values **undefined** and **null** are treated as invalid values, and this setting does not take effect. |
 
 ### childrenMainSize
 

@@ -1,10 +1,12 @@
 # DRM解决方案开发指导
+
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @qin_wei_jie-->
+
 DRM 解决方案插件实现DRM HDI接口（链接），DRM Kit的DRM框架将通过HDI接口加载DRM解决方案插件。
 
 插件由DRM解决方案集成方开发，放置在设备的/vendor分区中。
@@ -368,9 +370,7 @@ group("hdf_clearplay_interfaces") {
 
 ### 服务代码编译
 
-与编译系统部件编译类似：
-
-`./build.sh --product-name rk3568 --ccache --build-target drivers_peripheral_clearplay`
+与编译系统部件编译类似：`./build.sh --product-name rk3568 --ccache --build-target drivers_peripheral_clearplay`
 
 编译生成的二进制文件如下：
 
@@ -469,7 +469,9 @@ clearplay :: host {
 
 selinux用于限制服务进程可访问的资源，以下给定基础的selinux配置，在此基础上按业务添加所需规则。
 
-注意：以下示例中，clearplay_host表示hcs中的hostName值，clearplay_service表示服务名称。
+> **注意：**
+>
+> 以下示例中，clearplay_host表示hcs中的hostName值，clearplay_service表示服务名称。
 
 //base/security/selinux_adapter/sepolicy/ohos_policy/drivers/adapter/public/hdf_service_contexts
 

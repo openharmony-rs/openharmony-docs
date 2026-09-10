@@ -28,9 +28,9 @@
     // 请将$r('app.string.CreateApply_Text_Forty_Five')替换为实际资源文件，在本示例中该资源文件的value值为"运动45分钟"
     styledString1: StyledString = new StyledString( this.getUIContext()
       .getHostContext()!.resourceManager.getStringSync($r('app.string.CreateApply_Text_Forty_Five').id));
-    // 请将$r('app.string.CreateApply_Text_Third_Five')替换为实际资源文件，在本示例中该资源文件的value值为"运动35分钟"
+    // 请将$r('app.string.CreateApply_Text_Thirty_Five')替换为实际资源文件，在本示例中该资源文件的value值为"运动35分钟"
     mutableStyledString1: MutableStyledString = new MutableStyledString( this.getUIContext()
-      .getHostContext()!.resourceManager.getStringSync($r('app.string.CreateApply_Text_Third_Five').id));
+      .getHostContext()!.resourceManager.getStringSync($r('app.string.CreateApply_Text_Thirty_Five').id));
     controller1: TextController = new TextController();
     controller2: TextController = new TextController();
   
@@ -126,7 +126,7 @@
   @Component
   struct styled_string_demo3 {
     @State str: string =
-      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('CreateApply_Text_Third_Five') as string;
+      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('CreateApply_Text_Thirty_Five') as string;
     mutableStyledString: MutableStyledString = new MutableStyledString(this.str, [
       {
         start: 0,
@@ -170,7 +170,7 @@
   struct styled_string_demo4 {
     @State str: string =
       this.getUIContext()
-        .getHostContext()?.resourceManager.getStringByNameSync('CreateApply_Text_Third_Five') as string;
+        .getHostContext()?.resourceManager.getStringByNameSync('CreateApply_Text_Thirty_Five') as string;
     mutableStyledString: MutableStyledString = new MutableStyledString(this.str, [
       {
         start: 0,
@@ -237,7 +237,7 @@
   @Component
   struct styled_string_demo5 {
     @State str: string =
-      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('CreateApply_Text_Third_Five') as string;
+      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('CreateApply_Text_Thirty_Five') as string;
   
     mutableStyledString: MutableStyledString = new MutableStyledString(this.str, [
       {
@@ -318,7 +318,7 @@
   @Component
   struct styled_string_demo7 {
     @State str: string =
-      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('CreateApply_Text_Third_Five') as string;
+      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('CreateApply_Text_Thirty_Five') as string;
     mutableStyledString: MutableStyledString = new MutableStyledString(this.str, [
       {
         start: 0,
@@ -347,7 +347,7 @@
 
 ## 设置段落样式
 
-可通过[ParagraphStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#paragraphstyle)设置段落样式布局。下图显示了如何分割文本中的段落，段落以换行符 \n 结尾。
+可通过[ParagraphStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#paragraphstyle)设置段落样式布局。下图显示了如何分割文本中的段落，段落之间以换行符`\n`分隔。
 
 ![paragraphs](figures/styledstringParagraphs.png)
 
@@ -515,7 +515,7 @@
 
 可通过[getParagraphs](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20)将属性字符串根据文本布局选项转换成对应的[Paragraph](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraph)数组。
 
-- 以下示例展示了通过[MeasureUtils](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md)的getParagraphs方法测算文本，当内容超出最大显示行数的时候，截断文本显示并展示“...全文”的效果。
+- 以下示例展示了通过getParagraphs方法将属性字符串转换为Paragraph对象，进而通过Paragraph对象实现文本测算功能。当内容超出最大显示行数的时候，截断文本显示并展示“...全文”的效果。
 
   <!-- @[styledStringConvertedToParagraph_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringConvertedToParagraph.ets) -->
   
@@ -776,8 +776,8 @@
   
     private async getPixmapFromMedia(resource: Resource) {
       try {
-        let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
-        let imageSource = image.createImageSource(unit8Array?.buffer?.slice(0, unit8Array?.buffer?.byteLength));
+        let uint8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
+        let imageSource = image.createImageSource(uint8Array?.buffer?.slice(0, uint8Array?.buffer?.byteLength));
         let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
           desiredPixelFormat: image.PixelMapFormat.RGBA_8888
         });
@@ -1110,8 +1110,8 @@ struct StyledStringHtml {
 
   private async getPixmapFromMedia(resource: Resource) {
     try {
-      let unit8Array = await this.uiContext.getHostContext()?.resourceManager?.getMediaContent(resource.id);
-      let imageSource = image.createImageSource(unit8Array?.buffer?.slice(0, unit8Array?.buffer?.byteLength));
+      let uint8Array = await this.uiContext.getHostContext()?.resourceManager?.getMediaContent(resource.id);
+      let imageSource = image.createImageSource(uint8Array?.buffer?.slice(0, uint8Array?.buffer?.byteLength));
       let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
         desiredPixelFormat: image.PixelMapFormat.RGBA_8888
       });

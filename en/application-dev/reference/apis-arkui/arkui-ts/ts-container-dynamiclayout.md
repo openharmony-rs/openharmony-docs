@@ -3,10 +3,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zju_ljz-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=814c7cb9af37d443e12a84b71f28815df508c584 translatedAt=2026-07-30T02:40:02.687Z pushedAt=2026-08-01T06:42:55.898Z -->
+<!-- md-trans-meta sourceCommit=dac4f2b07a7203d2a3ed445760648d35364b1673 translatedAt=2026-08-21T02:22:25.492Z pushedAt=2026-08-21T07:28:16.897Z -->
 
 A dynamic layout container component that supports dynamically switching between different layout algorithms at runtime without altering the state of child components. Using **DynamicLayout** improves layout flexibility and simplifies the development process for UI adaptation and multi-view switching. It is suitable for scenarios such as responsive layouts (adapting to different screen sizes), multi-view mode switching (e.g., switching between list, grid, and waterfall layouts), and user-defined layouts.
 
@@ -67,7 +67,7 @@ This example shows how to override the [onMeasure](../js-apis-arkui-layoutAlgori
 Since API version 24, **onMeasure** and **onLayout** are added.
 
 ```typescript
-import { DynamicLayout, DynamicLayoutAttribute, CustomLayoutAlgorithm, LayoutAlgorithm, FrameNode, LayoutConstraint, Position } from '@kit.ArkUI';
+import { DynamicLayout, CustomLayoutAlgorithm, LayoutAlgorithm, FrameNode, LayoutConstraint, Position } from '@kit.ArkUI';
 
 // Waterfall layout algorithm
 class WaterfallLayout extends CustomLayoutAlgorithm {
@@ -245,7 +245,7 @@ This example shows how to dynamically switch the layout algorithm of the **Dynam
 Since API version 24, **RowLayoutAlgorithm**, **ColumnLayoutAlgorithm**, **StackLayoutAlgorithm**, and **GridLayoutAlgorithm** have been added.
 
 ```typescript
-import { DynamicLayout, DynamicLayoutAttribute, RowLayoutAlgorithm, ColumnLayoutAlgorithm, StackLayoutAlgorithm, GridLayoutAlgorithm, LayoutAlgorithm, LengthMetrics } from '@kit.ArkUI';
+import { DynamicLayout, RowLayoutAlgorithm, ColumnLayoutAlgorithm, StackLayoutAlgorithm, GridLayoutAlgorithm, LayoutAlgorithm, LengthMetrics } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -362,7 +362,7 @@ This example shows how to modify the **space** and **justifyContent** attributes
 Since API version 24, the **space** and **justifyContent** attributes are added.
 
 ```typescript
-import { DynamicLayout, DynamicLayoutAttribute, RowLayoutAlgorithm, LengthMetrics } from '@kit.ArkUI';
+import { DynamicLayout, RowLayoutAlgorithm, LengthMetrics } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2

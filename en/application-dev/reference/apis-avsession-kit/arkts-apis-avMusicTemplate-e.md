@@ -5,6 +5,7 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=26cd53432c3138bbfd0544959135ffafd85d0cf2 translatedAt=2026-09-01T12:37:31.199Z pushedAt=2026-09-07T03:24:31.613Z -->
 
 > **NOTE**
 >
@@ -21,7 +22,7 @@ Enumerates the audio template types.
 
 | Name   | Value        | Description                                                        |
 | ------- | ---------- | ------------------------------------------------------------ |
-| DEFAULT | 'smartCar' | Default value of the audio template type.<br>It identifies the service type of the current audio template. You can change the value based on your service requirements when creating a template.|
+| DEFAULT | 'smartCar' | Default value of the audio template type.<br>This parameter identifies the service type of the current audio template. |
 
 ## EntityType
 
@@ -51,7 +52,7 @@ Enumerates the playback states of media resources.
 
 | Name                    | Value  | Description                                                        |
 | ------------------------ | ---- | ------------------------------------------------------------ |
-| PLAYBACK_STATE_PREPARE   | 0    | Preparing.<br>The media file is being loaded or buffered, and is not ready for playback.|
+| PLAYBACK_STATE_PREPARE   | 0    | Preparing.<br>The media file is being loaded or buffered, and is not ready for playback. |
 | PLAYBACK_STATE_PLAY      | 1    | Playing.                                              |
 | PLAYBACK_STATE_PAUSE     | 2    | Paused.                                                  |
 | PLAYBACK_STATE_STOP      | 3    | Stopped.                                                  |
@@ -69,7 +70,7 @@ Enumerates the sorting types of the queried list data.
 
 | Name         | Value  | Description       |
 | ------------- | ---- |-----------|
-| NONE          | 0    | Default value, which is ascending order.|
+| NONE          | 0    | No sorting mode specified. The default ascending order is used. |
 | ORDER         | 1    | Ascending order      |
 | REVERSE_ORDER | 2    | Reverse order.      |
 
@@ -83,7 +84,7 @@ Enumerates the setting types.
 
 | Name  | Value  | Description                                            |
 | ------ | ---- | ------------------------------------------------ |
-| SWITCH | 0    | Switch setting, which is used to enable or disable a feature.|
+| SWITCH | 0    | Switch setting, which is used to enable or disable a feature. |
 | LIST   | 1    | List setting, which is used to select an option from multiple options.|
 | JUMP   | 2    | Jump setting, which is used to jump to another screen.            |
 
@@ -130,7 +131,7 @@ Enumerates the membership purchase types.
 | Name  | Value      | Description     |
 | ------ | -------- |---------|
 | NORMAL | 'normal' | Normal purchase.  |
-| BANNER | 'banner' | Membership promotion poster.|
+| BANNER | 'banner' | Purchase of a membership promotion poster. |
 
 ## SearchPlayInfoType
 
@@ -144,6 +145,8 @@ Enumerates the search playback information types.
 | ---------- | ----------- | ---------- |
 | PLAY_MUSIC | 'playMusic' | Plays music.|
 | PLAY_VIDEO | 'playVideo' | Plays a video.|
+| PLAY_MUSIC_LIST | 'playMusicList' | Music playlist (specified playlist).<br>**Since:** 26.1.0 |
+| PLAY_VIDEO_LIST | 'playVideoList' | Video playlist (specified video).<br>**Since:** 26.1.0 |
 
 ## DownloadStatus
 

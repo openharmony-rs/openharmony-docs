@@ -1,16 +1,17 @@
 # DataShare Error Codes
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @woodenarow-->
-<!--Designer: @woodenarow; @xuelei3-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @lvcong_oh-->
 <!--Tester: @chenwan188; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=290991ba34a14252faa986897a6b8fc4198384bb translatedAt=2026-09-04T03:15:55.215Z pushedAt=2026-09-09T09:11:03.694Z -->
 
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-##  15700000 Internal Error
+## 15700000 Internal Error
 
 **Error Message**
 
@@ -35,6 +36,7 @@ View the error log to determine the cause of the error. Possible causes include 
 3. Check whether the permission configuration is correct.
 4. If the problem persists, ask the user to restart or update the application or upgrade the device version.
 
+<!--Del-->
 ## 15700010 Failed to Create a DataShareHelper
 
 **Error Message**
@@ -47,9 +49,9 @@ The **DataShareHelper** class fails to be created.
 
 **Possible Causes**
 
-1. The **uri** specified in **createDataHelper** is incorrect.
-2. The **context** specified in **createDataHelper** is incorrect. **DataShare** supports only the stage model.
-3. The application does not have the permission to start **DataShareExtension** from the background when the client attempts to start **DataShareExtension** from the background to create **DataShareHelper**.
+1. The **uri** specified in **createDataShareHelper** is incorrect when creating a **DataShareHelper**.
+2. The **context** specified in **createDataShareHelper** is incorrect when creating a **DataShareHelper**.
+3. When creating **DataShareHelper**, the client does not have the background startup permission configured for starting **DataShareExtension** from the background.
 
 **Solution**
 
@@ -57,9 +59,10 @@ The **DataShareHelper** class fails to be created.
 2. Check that the context of the stage model is used.
 3. Check whether the client has the read or write permission on data. Perform the following steps:<br>
     (1) Obtain the data provider bundle name from the URI. For example, the bundle name in **uri = "datashareproxy://com.acts.ohos.data.datasharetest/test"** is **com.acts.ohos.data.datasharetest**.<br>
-    (2) Obtain the configuration based on the bundle name. For example, run **bm dump --bundle-name com.acts.ohos.data.datasharetest** to obtain the **DataShareExtension** configuration, and check whether the data consumer has **readPermission** or **writePermission**.
+    (2) Obtain the configuration based on the bundle name. For example, run **bm dump --bundle-name com.acts.ohos.data.datasharetest** to find the **DataShareExtension** configuration and check whether the data visitor has the permission configured in **readPermission** or **writePermission**.
+<!--DelEnd-->
 
-## 15700011 URI Not Exist
+## 15700011 URI Does Not Exist
 
 **Error Message**
 
@@ -78,6 +81,7 @@ This error code is generated when a template fails to be added or deleted, or an
 
 Obtain the correct URI.
 
+<!--Del-->
 ## 15700012 Data Area Not Exist
 
 **Error Message**
@@ -113,6 +117,7 @@ The closed **DataShareHelper** instance cannot be used.
 **Solution**
 
 Create a new **DataShareHelper** instance for use.
+<!--DelEnd-->
 
 ## 15700014 Incorrect Parameters for Shared Configuration
 
@@ -130,7 +135,7 @@ The parameter format is incorrect or the value range is invalid.
 
 1. The URI length exceeds 256 bytes.
 
-2. The value length of **proxyData** exceeds 4096 bytes.
+2. The value length of **proxyData** (proxy data configuration item) exceeds 4096 bytes.
 
 3. The number of elements in the URI array passed by the API exceeds 32.
 
@@ -148,5 +153,23 @@ The parameter format is incorrect or the value range is invalid.
 
 4. Check whether the number of elements in the **proxyData** array exceeds 32.
 
-5. Check whether the URIs in the URI array or **proxyData** array comple with the following format:<br>
-    **"datashareproxy://{*bundleName*}/{*path*}"**, where **bundleName** indicates the bundle name of the publisher application, and **path** can be set to any value.
+5. Check whether the URIs in the URI array or **proxyData** array passed in to the API meet the format verification: <br>
+    The fixed format of a URI is `"datashareproxy://{bundleName}/{path}"`, where bundleName is the bundle name of the application that publishes the configuration, and path can be filled in arbitrarily.
+
+## 15700015 Access URI Permission Error
+
+**Error Message**
+
+No permission to access the data specified by the URI.
+
+**Description**
+
+No permission to access the data specified by the URI.
+
+**Possible Causes**
+
+The permission required to access the specified data has not been requested.
+
+**Solution**
+
+Consult the data provider about the permission required to access the specified data.

@@ -20,7 +20,7 @@ import { formProvider } from '@kit.FormKit';
 ```
 
 
-## requestPublishForm
+## formProvider.requestPublishForm
 
 requestPublishForm(want: Want, formBindingData: formBindingData.FormBindingData, callback: AsyncCallback\<string>): void
 
@@ -49,6 +49,10 @@ requestPublishForm(want: Want, formBindingData: formBindingData.FormBindingData,
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>**起始版本：** 26.1.0 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>**起始版本：** 26.1.0 |
+| 16501017 | There is no space to publish form. <br/>**起始版本：** 26.1.0 |
+| 16501018 | This form does not support publishing. <br/>**起始版本：** 26.1.0 |
 
 **示例：**
 
@@ -83,7 +87,7 @@ try {
 }
 ```
 
-## requestPublishForm
+## formProvider.requestPublishForm
 
 requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 
@@ -111,6 +115,10 @@ requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>**起始版本：** 26.1.0 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>**起始版本：** 26.1.0 |
+| 16501017 | There is no space to publish form. <br/>**起始版本：** 26.1.0 |
+| 16501018 | This form does not support publishing. <br/>**起始版本：** 26.1.0 |
 
 **示例：**
 
@@ -140,7 +148,7 @@ try {
 }
 ```
 
-## requestPublishForm
+## formProvider.requestPublishForm
 
 requestPublishForm(want: Want, formBindingData?: formBindingData.FormBindingData): Promise&lt;string&gt;
 
@@ -174,6 +182,10 @@ requestPublishForm(want: Want, formBindingData?: formBindingData.FormBindingData
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>**起始版本：** 26.1.0 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>**起始版本：** 26.1.0 |
+| 16501017 | There is no space to publish form. <br/>**起始版本：** 26.1.0 |
+| 16501018 | This form does not support publishing. <br/>**起始版本：** 26.1.0 |
 
 **示例：**
 
@@ -201,7 +213,7 @@ try {
 }
 ```
 
-## isRequestPublishFormSupported
+## formProvider.isRequestPublishFormSupported
 
 isRequestPublishFormSupported(callback: AsyncCallback&lt;boolean&gt;): void
 
@@ -268,7 +280,7 @@ try {
 }
 ```
 
-## isRequestPublishFormSupported
+## formProvider.isRequestPublishFormSupported
 
 isRequestPublishFormSupported(): Promise&lt;boolean&gt;
 
@@ -330,7 +342,7 @@ try {
 }
 ```
 
-## activateSceneAnimation<sup>20+</sup>
+## formProvider.activateSceneAnimation<sup>20+</sup>
 
 activateSceneAnimation(formId: string): Promise&lt;void&gt;
 
@@ -389,7 +401,7 @@ try {
 }
 ```
 
-## deactivateSceneAnimation<sup>20+</sup>
+## formProvider.deactivateSceneAnimation<sup>20+</sup>
 
 deactivateSceneAnimation(formId: string): Promise&lt;void&gt;
 
@@ -448,7 +460,7 @@ try {
 }
 ```
 
-## updateTemplateFormDetailInfo<sup>23+</sup>
+## formProvider.updateTemplateFormDetailInfo<sup>23+</sup>
 
 updateTemplateFormDetailInfo(templateFormInfo: Array&lt;formInfo.TemplateFormDetailInfo&gt;): Promise&lt;void&gt;
 
@@ -509,7 +521,7 @@ try {
 }
 ```
 
-## onPublishFormCrossBundleControl<sup>23+</sup>
+## formProvider.onPublishFormCrossBundleControl<sup>23+</sup>
 
 onPublishFormCrossBundleControl(callback: formInfo.PublishFormCrossBundleControlCallback): void
 
@@ -556,7 +568,7 @@ try {
 ```
 
 
-## offPublishFormCrossBundleControl<sup>23+</sup>
+## formProvider.offPublishFormCrossBundleControl<sup>23+</sup>
 
 offPublishFormCrossBundleControl(callback?: formInfo.PublishFormCrossBundleControlCallback): void
 

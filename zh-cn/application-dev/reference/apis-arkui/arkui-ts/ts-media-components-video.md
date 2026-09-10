@@ -1298,7 +1298,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
 struct VideoControllerAsyncExample {
-  @State videoSrc: Resource = $rawfile('video1.mp4');// 替换为开发者所需的视频资源文件。
+  @State videoSrc: Resource = $rawfile('video1.mp4'); // 替换为开发者所需的视频资源文件。
   controller: VideoControllerAsync = new VideoControllerAsync();
 
   build() {
@@ -1357,7 +1357,7 @@ struct VideoControllerAsyncExample {
               console.info('start success')
             })
             .catch((err: BusinessError) => { // catch处理执行失败的场景。
-              console.info(`start failed: ${err.message}`)
+              console.error(`start failed: ${err.message}`)
             })
         }).margin(2)
         Button('pause').onClick(() => {
@@ -1366,7 +1366,7 @@ struct VideoControllerAsyncExample {
               console.info('pause success')
             })
             .catch((err: BusinessError) => {
-              console.info(`pause failed: ${err.message}`)
+              console.error(`pause failed: ${err.message}`)
             })
         }).margin(2)
         Button('stop').onClick(() => {
@@ -1375,7 +1375,7 @@ struct VideoControllerAsyncExample {
               console.info('stop success')
             })
             .catch((err: BusinessError) => {
-              console.info(`stop failed: ${err.message}`)
+              console.error(`stop failed: ${err.message}`)
             })
         }).margin(2)
         Button('reset').onClick(() => {
@@ -1384,7 +1384,7 @@ struct VideoControllerAsyncExample {
               console.info('reset success')
             })
             .catch((err: BusinessError) => {
-              console.info(`reset failed: ${err.message}`)
+              console.error(`reset failed: ${err.message}`)
             })
         }).margin(2)
       }

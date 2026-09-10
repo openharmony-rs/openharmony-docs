@@ -1,8 +1,8 @@
 # AVSession_PlaybackPosition
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -26,7 +26,7 @@ typedef struct AVSession_PlaybackPosition {...} AVSession_PlaybackPosition
 
 | 名称 | 描述 |
 | -- | -- |
-| int64_t elapsedTime | 已用时间，单位毫秒（ms）。 |
-| int64_t updateTime | 更新时间，单位毫秒（ms）。 |
+| int64_t elapsedTime | 已用时间，单位为毫秒（ms）。 |
+| int64_t updateTime | 更新时间，单位为毫秒（ms）。 |
 
 

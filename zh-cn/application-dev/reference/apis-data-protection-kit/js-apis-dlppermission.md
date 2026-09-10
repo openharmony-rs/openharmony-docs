@@ -25,6 +25,7 @@
 - **DLPFileAccess**：DLP 文件授权类型枚举，定义文件的访问级别。
 - **ActionType**：文件权限到期后执行动作的枚举。
 - **AccountType**：授权账号类型枚举。
+- **PluginCmd**：执行插件命令枚举。
 
 ### 核心接口类型
 
@@ -94,6 +95,7 @@ isDLPFile(fd: number): Promise&lt;boolean&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -141,6 +143,7 @@ isDLPFile(fd: number, callback: AsyncCallback&lt;boolean&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -187,6 +190,7 @@ getDLPPermissionInfo(): Promise&lt;DLPPermissionInfo&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100006 | No permission to call this API, which is available only for DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -230,6 +234,7 @@ getDLPPermissionInfo(callback: AsyncCallback&lt;DLPPermissionInfo&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100006 | No permission to call this API, which is available only for DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -280,6 +285,7 @@ getOriginalFileName(fileName: string): string
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -314,6 +320,7 @@ getDLPSuffix(): string
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100011 | The system ability works abnormally. |
 
 **示例：**
@@ -349,6 +356,7 @@ on(type: 'openDLPFile', listener: Callback&lt;AccessedDLPFileInfo&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -386,6 +394,7 @@ off(type: 'openDLPFile', listener?: Callback&lt;AccessedDLPFileInfo&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -422,6 +431,7 @@ isInSandbox(): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -460,6 +470,7 @@ isInSandbox(callback: AsyncCallback&lt;boolean&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -499,6 +510,7 @@ getDLPSupportedFileTypes(): Promise&lt;Array&lt;string&gt;&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -536,6 +548,7 @@ getDLPSupportedFileTypes(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): vo
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
@@ -581,6 +594,7 @@ setRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100006 | No permission to call this API, which is available only for DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -622,6 +636,7 @@ setRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;void&
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100006 | No permission to call this API, which is available only for DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -676,6 +691,7 @@ cancelRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -716,6 +732,7 @@ cancelRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;vo
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -763,6 +780,7 @@ getRetentionSandboxList(bundleName?: string): Promise&lt;Array&lt;RetentionSandb
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -803,6 +821,7 @@ getRetentionSandboxList(bundleName: string, callback: AsyncCallback&lt;Array&lt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -844,6 +863,7 @@ getRetentionSandboxList(callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -884,6 +904,7 @@ getDLPFileAccessRecords(): Promise&lt;Array&lt;AccessedDLPFileInfo&gt;&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -923,6 +944,7 @@ getDLPFileAccessRecords(callback: AsyncCallback&lt;Array&lt;AccessedDLPFileInfo&
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -977,6 +999,7 @@ startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise&
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 | 19100016 | The uri field is missing in the want parameter. |
@@ -1002,6 +1025,84 @@ if (context !== undefined) {
         console.info('res.want', JSON.stringify(res.want));
     }); // 打开DLP权限管理应用。
 }
+```
+
+## dlpPermission.startDLPManagerForResult
+
+startDLPManagerForResult(context: common.Context, want: Want, window: window.Window): Promise&lt;DLPManagerResult&gt;
+
+在指定窗口内以无边框形式打开DLP权限管理应用。使用Promise异步回调。
+
+该接口用于拉起DLP权限管理应用配置文件权限，并将用户操作结果返回给调用方。
+
+> **说明：**
+>
+> 该接口仅支持域账号调用。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.DataLossPrevention
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| context | [common.Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 当前应用上下文。 |
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 请求对象，必须包含uri和displayName字段。 |
+| window | [window.Window](../apis-arkui/arkts-apis-window-Window.md) | 是 | 应用创建的窗口实例。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;[DLPManagerResult](#dlpmanagerresult11)&gt; | Promise对象。打开DLP权限管理应用并退出后的结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. |
+| 19100001 | Invalid parameter value. |
+| 19100011 | The system ability works abnormally. |
+| 19100016 | The uri field is missing in the want parameter. |
+| 19100017 | The displayName field is missing in the want parameter. |
+
+**示例：**
+
+```ts
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { common, Want } from '@kit.AbilityKit';
+import { UIContext, window } from '@kit.ArkUI';
+
+let config: window.Configuration = {
+  name: "dlp_test_window",
+  windowType: window.WindowType.TYPE_FLOAT,
+  ctx: new UIContext().getHostContext() as common.Context
+};
+window.createWindow(config).then((windowClass) => {
+  windowClass.setUIContent('pages/index/BlankPage');
+  windowClass.setWindowFocusable(true);
+  windowClass.setWindowBackgroundColor("#00000000");
+
+  let context = new UIContext().getHostContext() as common.Context; // 获取当前Context。
+  if (context !== undefined) {
+    let want: Want = {
+      "uri": "file://docs/storage/Users/currentUser/Desktop/1.txt",
+      "parameters": {
+        "displayName": "1.txt"
+      }
+    }; // 构造请求参数，必须包含文件uri和displayName。
+    dlpPermission.startDLPManagerForResult(context, want, windowClass).then((res) => {
+      console.info('res.resultCode', res.resultCode);
+      console.info('res.want', JSON.stringify(res.want));
+      windowClass.destroyWindow();
+    }); // 打开DLP权限管理应用。
+  }
+});
 ```
 
 ## dlpPermission.setSandboxAppConfig<sup>11+</sup>
@@ -1032,6 +1133,7 @@ setSandboxAppConfig(configInfo: string): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -1070,6 +1172,7 @@ cleanSandboxAppConfig(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -1107,6 +1210,7 @@ getSandboxAppConfig(): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 | 19100018 | The application is not authorized. |
@@ -1147,6 +1251,7 @@ isDLPFeatureProvided(): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100011 | The system ability works abnormally. |
 
 **示例：**
@@ -1190,6 +1295,7 @@ setEnterprisePolicy(policy: EnterprisePolicy): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 | 19100021 | Failed to set the enterprise policy. |
@@ -1372,6 +1478,7 @@ generateDlpFileForEnterprise(plaintextFd: number, dlpFd: number, property: DLPPr
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1454,6 +1561,7 @@ decryptDlpFile(dlpFd: number, plaintextFd: number): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1525,6 +1633,7 @@ queryDlpPolicy(dlpFd: number): Promise&lt;string&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1667,6 +1776,7 @@ connectServer(requestId: string, requestData: string, callback: Callback\<string
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100011 | The system ability works abnormally. |
   
 **示例：**
@@ -1718,6 +1828,7 @@ constructor()
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
   
 **示例：**
 
@@ -1759,6 +1870,7 @@ static registerPlugin(plugin: DlpConnPlugin): number
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1811,6 +1923,7 @@ static unregisterPlugin(): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -2062,5 +2175,80 @@ dlpPermission.getControlledAppLists().then((res) => {
   console.error(JSON.stringify(error));
 }).finally(() => {
   console.info("Completed getControlledAppLists operation.");
+})
+```
+
+## PluginCmd
+
+可以执行的插件命令枚举。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.DataLossPrevention
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| CMD_BASE_INSTALL_PLUGIN | 0x1001 | 表示安装插件的命令。 |
+| CMD_BASE_INSTALL_CONFIG_FILE | 0x1002 | 表示安装配置文件的命令。 |
+| CMD_BASE_INSTALL_SUFFIX_FILTER_FILE | 0x1003 | 表示安装后缀过滤文件的命令。  |
+| CMD_BASE_UNINSTALL_PLUGIN | 0x1004 | 表示卸载插件的命令。 |
+| CMD_BASE_QUERY_TRANSPARENT_CRYPTO_STATUS | 0x1005 | 表示查询透明加解密状态的命令。 |
+| CMD_EVENT_REPORT_COMMON | 0x2001 | 表示向插件发送通用数据的命令。 |
+
+## dlpPermission.processPluginCommand
+
+processPluginCommand(code: PluginCmd, message: string): Promise&lt;string&gt;
+
+处理透明加解密场景下的插件相关命令。使用Promise异步回调。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.DLP_POLICY_MANAGER
+
+**系统能力：** SystemCapability.Security.DataLossPrevention
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| code | [PluginCmd](#plugincmd) | 是 | 表示要进行处理的插件命令。|
+| message | string | 是 | 要进行处理的信息。长度不超过4096字节，超出此范围抛出错误码19100001。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;string&gt; | Promise对象，返回当前命令执行结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
+| 19100001 | Invalid parameter value. |
+| 19100011 | The system ability works abnormally. |
+| 19100025 | The file is invalid. |
+
+**示例：**
+
+```ts
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const cmd: dlpPermission.PluginCmd = dlpPermission.PluginCmd.CMD_BASE_INSTALL_PLUGIN;
+const message: string = "testPath";
+dlpPermission.processPluginCommand(cmd, message).then((res) => {
+  console.info('res', JSON.stringify(res));
+}).catch((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+}).finally(() => {
+  console.info("Completed processPluginCommand operation.");
 })
 ```

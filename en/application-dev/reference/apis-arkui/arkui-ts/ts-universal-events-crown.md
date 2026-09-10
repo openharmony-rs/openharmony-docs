@@ -5,25 +5,29 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-   A crown event is an event triggered when the crown of a wearable device is rotated. Event dispatch relies on component focus, and you can customize event handling through [focus events](ts-universal-focus-event.md)d.
+<!-- md-trans-meta sourceCommit=b7d29dcb4c10e7f74b8709493d673af25bbc5983 translatedAt=2026-09-02T12:23:36.033Z -->
+
+A crown event is an event triggered when the crown is rotated. Event dispatch relies on application focus, and you can customize event handling through [focus events](ts-universal-focus-event.md).
 
 >  **NOTE**
 >
 > - The initial APIs of this module are supported since API version 18. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
->  - Manual rotation of the crown will trigger the default interaction logic. For example, rotating the crown causes the scrollbar to scroll in the direction of the rotation.
+> - The APIs of this module can be used only in the stage model.
 >
-> - A component must have focus to receive crown events. Focus control can be managed using [focusable](ts-universal-attributes-focus.md#focusable), [defaultFocus](ts-universal-attributes-focus.md#defaultfocus9), and [focusOnTouch](ts-universal-attributes-focus.md#focusontouch9).
+> - Default interaction logic exists when the crown is manually rotated to trigger an event. For example, after the crown of a watch is rotated, the scrollbar scrolls in the rotation direction of the crown.
 >
-> - This event is only supported on wearable devices.
+> - A component receives a crown event only when it gains focus. Focus control can be managed through [focusable](ts-universal-attributes-focus.md#focusable), [defaultFocus](ts-universal-attributes-focus.md#defaultfocus9), and [focusOnTouch](ts-universal-attributes-focus.md#focusontouch9).
 >
-> - By default, the following components support crown events: [Slider](ts-basic-components-slider.md), [DatePicker](ts-basic-components-datepicker.md), [TextPicker](ts-basic-components-textpicker.md), [TimePicker](ts-basic-components-timepicker.md), [Scroll](ts-container-scroll.md), [List](ts-container-list.md), [Grid](ts-container-grid.md), [WaterFlow](ts-container-waterflow.md), [ArcList](ts-container-arclist.md), [Refresh](ts-container-refresh.md), and [ArcSwiper](ts-container-arcswiper.md).
+> - This event is supported only on wearable devices. You can obtain the device type through deviceInfo.[deviceType](../../apis-basic-services-kit/js-apis-device-info.md#constants) to determine whether the device is a wearable device.
+>
+> - Components that support crown events by default: [Slider](ts-basic-components-slider.md), [DatePicker](ts-basic-components-datepicker.md), [TextPicker](ts-basic-components-textpicker.md), [TimePicker](ts-basic-components-timepicker.md), [Scroll](ts-container-scroll.md), [List](ts-container-list.md), [Grid](ts-container-grid.md), [WaterFlow](ts-container-waterflow.md), [ArcList](ts-container-arclist.md), [Refresh](ts-container-refresh.md), and [ArcSwiper](ts-container-arcswiper.md).
 
 ## onDigitalCrown
 
 onDigitalCrown(handler: Optional&lt;Callback&lt;CrownEvent&gt;&gt;): T
 
-Called when the crown is rotated while the component has focus.
+This callback is triggered when the crown is rotated after the component gains focus.
 
 > **NOTE**
 >
@@ -43,11 +47,11 @@ Called when the crown is rotated while the component has focus.
 **Return value**
 | Type     | Description          |
 | --------- | ---------------|
-| T         | Current component.  |
+| T         | Current component, used for chained calls.   |
 
 ## CrownEvent
 
-Defines a data structure for the crown event received by a component. It includes the timestamp, angular velocity, rotation angle, crown action, and event propagation disabling.
+Data structure of the crown event received by a component. It includes the timestamp, rotation angular velocity, rotation angle, crown action, and a callback used to stop event bubbling.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -55,20 +59,20 @@ Defines a data structure for the crown event received by a component. It include
 
 | Name                  | Type      | Read-Only   |  Optional  |  Description                                                      |
 | --------------------- | ------------- | ---------- |------------ |-------------------------------------- |
-| timestamp         | number   |  No    | No   |Timestamp.                                 |
-| angularVelocity | number   |  No    | No   |Angular velocity in degrees per second (°/s).                  |
-| degree          | number   |  No    | No   |Relative rotation angle.<br>Unit: degrees<br>Value range: [-360, 360]    |
+| timestamp         | number   |  No     | No    |Timestamp. Time elapsed since system startup when the event is triggered.<br>Unit: ns                                  |
+| angularVelocity | number   |  No     | No    |Angular velocity of rotation.<br>Unit: deg/s   |
+| degree          | number   |  No     | No    |Relative rotation angle.<br>Unit: deg <br>Value range: [-360, 360].     |
 | action          | [CrownAction](ts-appendix-enums.md#crownaction18)   |  No    | No   |Crown action. |
-| stopPropagation | Callback\<void>    |  No     | No   |Disables [event bubbling](../../../ui/arkts-interaction-basic-principles.md#event-bubbling) propagation.                        |
+| stopPropagation | Callback\<void>    |  No      | No    |Stops [event bubbling](../../../ui/arkts-interaction-basic-principles.md#event-bubbling). This can be used when the currently focused component has already handled the crown event and the parent component should not continue to respond to crown rotation.                         |
 
 ## Example
-This example demonstrates how to register a crown event on a component and receive event data.
+This example registers a crown event for a component and reports the received crown event data.
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct CityList {
-  @State message: string = "onDigitalCrown";
+  @State message: string = 'onDigitalCrown';
 
   build() {
     Column() {
@@ -77,7 +81,7 @@ struct CityList {
           Text(this.message)
             .fontSize(20)
             .fontColor(Color.White)
-            .backgroundColor("#262626")
+            .backgroundColor('#262626')
             .textAlign(TextAlign.Center)
             .focusable(true)
             .focusOnTouch(true)
@@ -88,11 +92,11 @@ struct CityList {
             .borderRadius(110)
             .onDigitalCrown((event: CrownEvent) => {
               event.stopPropagation();
-              this.message = "CrownEvent\n\n" + JSON.stringify(event);
+              this.message = 'CrownEvent\n\n' + JSON.stringify(event);
               console.info(`action: ${event.action}, angularVelocity: ${event.angularVelocity}, degree: ${event.degree}, timestamp: ${event.timestamp}`);
             })
-        }.width("100%").height("100%")
-      }.width("100%").height("100%")
+        }.width('100%').height('100%')
+      }.width('100%').height('100%')
     }
   }
 }
