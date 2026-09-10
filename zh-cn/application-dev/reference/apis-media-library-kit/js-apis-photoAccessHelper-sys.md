@@ -14491,6 +14491,7 @@ try {
 | ----- |  ---- |  ---- |
 | RETAIN_FORCE |  0 |  删除原文件在云空间的本地元数据和缩略图。 |
 | HDC_RETAIN_FORCE<sup>22+</sup> |  1 |  删除原文件在家庭存储设备的本地元数据和缩略图。 |
+| SHARE_RETAIN_FORCE |  2 |  删除共享相册的本地元数据、缩略图和原图。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## CloudMediaAssetTaskStatus<sup>14+</sup>
 
