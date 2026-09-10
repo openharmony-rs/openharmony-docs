@@ -8,7 +8,7 @@
 
 ## 概述
 
-声明用于编解码能力查询到的Native API。
+声明用于编解码能力查询的Native API。
 
 **引用文件：** <multimedia/player_framework/native_avcapability.h>
 
@@ -232,7 +232,7 @@ OH_AVCapability **OH_AVCodec_GetCapabilityList(OH_AVCodecType codecType, uint32_
 bool OH_AVCapability_IsHardware(OH_AVCapability *capability)
 ```
 
-**描述**
+**描述** 
 
 检查能力实例是否描述了硬件编解码器。
 
